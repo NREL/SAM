@@ -23,6 +23,12 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+build/
+cmake-build-export/
+cmake-build-debug/
+cmake-build-release/
+cmake-build-export/
+SAM*.app/
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -200,6 +206,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 orleans.codegen.cs
+*.DS_Store
 
 # Since there are multiple workflows, uncomment next line to ignore bower_components
 # (https://github.com/github/gitignore/pull/1529#issuecomment-104372622)
@@ -297,6 +304,7 @@ __pycache__/
 *.d
 *.mod
 *.run
+*.dylib
 
 # Specific SAM build ignores
 set_env_*
@@ -342,3 +350,23 @@ build_osx/SAM\.app/Contents/
 src/private_os\.h
 
 src/private_sam\.h
+
+samples/CSP/sco2_analysis_python/core/PySSC.py
+
+api/api_autogen/library/PySAM/
+
+api/api_autogen/library/C/
+
+
+*.json
+!tooltips.json
+
+
+
+src/private - nrel.h
+
+src/private - os.h
+
+sam\.bin
+
+deploy/libraries/CEC Modules.csv

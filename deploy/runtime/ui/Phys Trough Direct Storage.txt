@@ -5,7 +5,7 @@ Phys Trough Direct Storage
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 241
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -32,7 +35,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -49,6 +52,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -91,7 +97,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -108,6 +114,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -150,7 +159,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -167,6 +176,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -209,7 +221,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -226,6 +238,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -268,7 +283,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -285,6 +300,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -327,7 +345,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -344,6 +362,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -386,7 +407,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -403,6 +424,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -445,7 +469,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -462,6 +486,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -504,7 +531,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -521,6 +548,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -563,7 +593,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -580,6 +610,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -622,7 +655,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -639,6 +672,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -681,7 +717,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -698,6 +734,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -740,7 +779,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -757,6 +796,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -799,7 +841,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -816,6 +858,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -858,7 +903,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -875,6 +920,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -917,7 +965,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -934,6 +982,9 @@ Width
 Height
 3
 87
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -944,7 +995,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -961,6 +1012,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1003,7 +1057,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1020,6 +1074,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1062,7 +1119,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1079,6 +1136,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1121,7 +1181,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -1138,6 +1198,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1180,7 +1243,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1197,6 +1260,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1561,19 +1627,19 @@ Thermal Energy Storage
 0
 Numeric
 
-1768
+1781
 
 equations{ '$MIMO$ ui_tes_calcs' } = define()
 {
 	obj = ssc_create();
 
-	ssc_var(obj, "W_dot_pb_des", ${q_pb_design});			//[MWe]
-	ssc_var(obj, "eta_pb_des", 1.0);		//[-]
-	ssc_var(obj, "tes_hrs", ${tshours});			//[hrs]
-	ssc_var(obj, "T_HTF_hot", ${T_loop_out});	//[C]
-	ssc_var(obj, "T_HTF_cold", ${T_loop_in_des});	//[C]
-	ssc_var(obj, "TES_HTF_code", ${Fluid});		//[-]
-	ssc_var(obj, "TES_HTF_props", ${field_fl_props});	//[-]
+	ssc_var(obj, "P_ref", ${q_pb_design});			//[MWe]
+	ssc_var(obj, "design_eff", 1.0);		//[-]
+	ssc_var(obj, "tshours", ${tshours});			//[hrs]
+	ssc_var(obj, "T_htf_hot_des", ${T_loop_out});	//[C]
+	ssc_var(obj, "T_htf_cold_des", ${T_loop_in_des});	//[C]
+	ssc_var(obj, "rec_htf", ${Fluid});		//[-]
+	ssc_var(obj, "field_fl_props", ${field_fl_props});	//[-]
 	ssc_var(obj, "h_tank_min", ${h_tank_min});		//[m]
 	ssc_var(obj, "h_tank", ${h_tank});				//[m]
 	ssc_var(obj, "tank_pairs", ${tank_pairs});		//[-]
@@ -1583,12 +1649,12 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	
 	if(ret==0)
 	{
-		q_tes_des = ssc_var(obj, "q_tes_des");		//[MWt-hr]
-		vol_one_temp_avail = ssc_var(obj, "vol_one_temp_avail");	//[m^3]
-		vol_one_temp_total = ssc_var(obj, "vol_one_temp_total");	//[m^3]
-		d_tank = ssc_var(obj, "d_tank");			//[m]
-		q_dot_loss = ssc_var(obj, "q_dot_loss");	//[MWt]
-		dens = ssc_var(obj, "HTF_dens");			//[kg/m^3]
+		q_tes_des = ssc_var(obj, "q_tes");		//[MWt-hr]
+		vol_one_temp_avail = ssc_var(obj, "tes_avail_vol");	//[m^3]
+		vol_one_temp_total = ssc_var(obj, "vol_tank");	//[m^3]
+		d_tank = ssc_var(obj, "csp_pt_tes_tank_diameter");			//[m]
+		q_dot_loss = ssc_var(obj, "q_dot_tes_est");	//[MWt]
+		dens = ssc_var(obj, "csp_pt_tes_htf_density");			//[kg/m^3]
 	}
 	else
 	{
@@ -1630,8 +1696,38 @@ equations{ 'TES_COPY_T_htf_cold_des' } = define(){
 
 
 
-109
+832
 on_load{"Phys Trough Direct Storage"} = define() {
 	// Nothing here yet, but keep as placeholder
 	return;
 };
+
+function hx_derate_update_module() {
+	// Taken from Physical Trough Thermal Storage
+	// Need this for Physical Trough Solar Field
+	// Commented most things out	
+	
+	//obj = ssc_create();
+	
+	//ssc_var(obj, "HTF_code1", ${store_fluid});
+	//ssc_var(obj, "fl_props1", ${store_fl_props});
+	
+	//ssc_var(obj, "HTF_code2", ${Fluid});
+	//ssc_var(obj, "fl_props2", ${field_fl_props});
+
+	//ret = ssc_exec(obj, 'user_htf_comparison', {'show_dialog'=false, 'hold_dialog'=false});
+	
+	//are_equal = ssc_var(obj, "are_equal");
+
+	//is_hx = !(are_equal==1);
+	is_hx = 0;
+
+	//enable('dt_hot', is_hx );
+	//enable('dt_cold', is_hx );
+
+	// Set 'is_hx' here
+	//value("is_hx", is_hx);
+	//value("flux_max_dsg", flux_max_dsg);
+	
+	//ssc_free( obj );
+}

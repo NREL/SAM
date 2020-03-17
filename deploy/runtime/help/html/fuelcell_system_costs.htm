@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>System Costs</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "fuelcell_system_costs.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">System Costs</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The fuel cell System Costs page provides access to variables that define the installation and operating costs of the project. Debt-related and tax costs are specified on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
+<p class="p_Text"><span class="f_Text">SAM uses the variables on the System Costs page to calculate the project investment cost and annual operating costs reported in the project <a href="cashflow.htm" class="topiclink">cash flow</a> and used to calculate cost metrics.</span></p>
+<p class="p_Text"><span class="f_Text">Variable values in boxes with white backgrounds are values that you can edit. Boxes with blue backgrounds contain calculated values or values from other pages that SAM displays for your information.</span></p>
+<p class="p_Text"><span class="f_Text">SAM provides the categories under </span><span class="f_CHInterfaceElement">Direct Capital Costs</span><span class="f_Text"> and </span><span class="f_CHInterfaceElement">Indirect Capital Costs</span><span class="f_Text"> for your convenience to help keep track of project installation costs. Only the </span><span class="f_CHInterfaceElement">Total Installed Cost</span><span class="f_Text"> value affects the cash flow calculations, so you can assign capital costs to the different cost categories in whatever way makes sense for your analysis. For example, you could assign the cost of designing the array to the module cost category or to the engineering category with equivalent results. After you assign costs to the categories, you should verify that the total installed cost value is what you expect. SAM accounts for the total installed cost in Year 0 of the project <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
+<p class="p_Text"><span class="f_Text">The Operation and Maintenance Costs categories are where you specify recurring project costs. SAM reports these annual costs in the project <a href="cashflow.htm" class="topiclink">cash flow</a> under the Operating Expenses heading.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">The default cost values that appear when you create a file or case are intended to illustrate SAM's use. The cost data are meant to be realistic, but not to represent actual costs for a specific project. For more information and a list of online resources for cost data, see the technology pages on the <a href="https://sam.nrel.gov" target="_blank" class="weblink" title="https://sam.nrel.gov">SAM website</a>.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The System Costs page only available for cases with a cash-flow-based financial mode. It is not available with the No Financial Model option or the LCOE Calculator financial model.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Direct Capital Costs</span></h3>
+<p class="p_Text"><span class="f_Text">A direct capital cost represents an expense for a specific piece of equipment or installation service that applies in year zero of the cash flow.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note:</span><span class="f_Note"> Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different direct capital cost categories does not affect the final results.</span></p>
+<p class="p_Text"><span class="f_Text">A direct capital cost represents an expense for a specific piece of equipment or installation service that applies in year zero of the cash flow.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note:</span><span class="f_Note"> Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different direct capital cost categories does not affect the final results.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Module ($/Wdc or $/Unit)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">You can specify the module cost either in $/Wdc or $/unit:</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_VariableDescription">Dollars per watt multiplied by </span><span class="f_CHInterfaceElement">System nameplate capacity</span><span class="f_VariableDescription"> from the <a href="fuelcell_pv_system.htm" class="topiclink">PV System</a> page, or</span></p><p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_VariableDescription">Dollars per unit, where the number of modules is assumed to be one.</span></p><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Inverter ($/Wac or $/Unit)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For PVWatts, the inverter cost is either dollars per watt AC or DC, or dollars per inverter:</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_VariableDescription">Dollars per watt DC multiplied by the system nameplate capacity from the <a href="fuelcell_pv_system.htm" class="topiclink">PV System</a> page, or</span></p><p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_VariableDescription">Dollars per watt AC multiplied by the system nameplate capacity and divided by the DC to AC Derate Factor on the <a href="pvwatts_system_design.htm" class="topiclink">System Design</a> page, or</span></p><p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_VariableDescription">Dollars per unit where the number of inverters is assumed to be one.</span></p><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery rated power, $/kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Battery cost per unit of </span><span class="f_CHInterfaceElement">Battery rated power</span><span class="f_VariableDescription">, which is the maximum discharge power (kW AC) from the <a href="fuelcell_battery_storage.htm" class="topiclink">Battery Storage</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery rated capacity, $/kWh</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Battery cost per unit of </span><span class="f_CHInterfaceElement">Battery rated capacity</span><span class="f_VariableDescription">, which is the nominal bank capacity (kWh DC) from the <a href="fuelcell_battery_storage.htm" class="topiclink">Battery Storage</a> page.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If the battery is not enabled on the Battery Storage page, SAM sets the battery costs to zero.</span></p>
+<p class="p_Text"><span class="f_Text">The other direct capital cost categories, </span><span class="f_CHInterfaceElement">Balance of system equipment</span><span class="f_Text">, </span><span class="f_CHInterfaceElement">Installation labor</span><span class="f_Text">, and </span><span class="f_CHInterfaceElement">Installer margin and overhead</span><span class="f_Text"> can be specified using five units. SAM calculates the total amount for each category as shown below.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">$</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed cost in dollars.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">PV $/Wdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost proportional to the PV array's DC nameplate capacity, equal to the </span><span class="f_CHInterfaceElement">System nameplate size on the </span><span class="f_VariableDescription">on the <a href="fuelcell_pv_system.htm" class="topiclink">PV System</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery $/kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost proportional to the battery's nominal power rating, equal to the </span><span class="f_CHInterfaceElement">Maximum charge power (AC) </span><span class="f_VariableDescription">on the <a href="fuelcell_battery_storage.htm" class="topiclink">Battery Storage</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fuel Cell $/kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost proportional to the fuel cell stack nameplate capacity, equal to the </span><span class="f_CHInterfaceElement">Cell stack nameplate </span><span class="f_VariableDescription">on the <a href="fuelcell_fuel_cell.htm" class="topiclink">Fuel Cell</a> &nbsp;page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Contingency (%)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A percentage of the sum of the module, inverter, balance of system, installation labor, and installer margin and overhead costs that you can use to account for expected uncertainties in direct cost estimates.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Direct Cost ($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The sum of module, inverter, balance of system, installation labor, installer margin and overhead costs, and contingency costs.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Indirect Capital Costs</span></h3>
+<p class="p_Text"><span class="f_Text">An indirect cost is typically one that cannot be identified with a specific piece of equipment or installation service.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note:</span><span class="f_Note"> Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different indirect capital cost categories does not affect the final results.</span></p>
+<p class="p_Text"><span class="f_Text">The five indirect cost categories, </span><span class="f_CHInterfaceElement">Permitting and environmental studies</span><span class="f_Text">, </span><span class="f_CHInterfaceElement">Engineering and developer overhead</span><span class="f_Text">, </span><span class="f_CHInterfaceElement">Grid interconnection</span><span class="f_Text"> are each calculated as the sum of four values expressed in the following units:</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">% of Direct Cost</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A percentage of the </span><span class="f_CHInterfaceElement">Total direct cost</span><span class="f_VariableDescription"> value shown under Direct Capital Costs.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">PV $/Wdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost proportional to the PV array's DC nameplate capacity, equal to the </span><span class="f_CHInterfaceElement">System nameplate size on the </span><span class="f_VariableDescription">on the <a href="fuelcell_pv_system.htm" class="topiclink">PV System</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery $/kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost proportional to the battery's nominal power rating, equal to the </span><span class="f_CHInterfaceElement">Maximum charge power (AC) </span><span class="f_VariableDescription">on the <a href="fuelcell_battery_storage.htm" class="topiclink">Battery Storage</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fuel Cell $/kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost proportional to the fuel cell stack nameplate capacity, equal to the </span><span class="f_CHInterfaceElement">Cell stack nameplate </span><span class="f_VariableDescription">on the <a href="fuelcell_fuel_cell.htm" class="topiclink">Fuel Cell</a> &nbsp;page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">$</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed cost in dollars.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Land Costs</span></h4>
+<p class="p_Text"><span class="f_Text">SAM calculates the total land cost as the sum of </span><span class="f_CHInterfaceElement">Land area</span><span class="f_Text">, </span><span class="f_CHInterfaceElement">Land purchase</span><span class="f_Text">, and </span><span class="f_CHInterfaceElement">Land prep. and transmission</span><span class="f_Text">. The land cost categories use the Cost $/acre category in addition to the categories for the other indirect costs.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The land area input is independent of the PV array size or other input parameters. If you want to include land area costs in your analysis, be sure to specify a land area in acres that is appropriate for your system's design.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Sales Tax (%)</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Sales tax basis, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The percentage of total direct cost used to the calculate sales tax amount.</span></p>
+<p class="p_Text"><span class="f_Text">SAM calculates the total sales tax amount by multiplying the sales tax rate from the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page by the sales tax basis on the System Costs page: </span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Sales Tax ($) = Sales Tax Rate (%) × Sales Tax Basis (%) × Total Direct Cost ($)</span></p>
+<p class="p_Text"><span class="f_Text">For an explanation of the effect of sales tax on income tax, see </span><span class="f_CHInterfaceElement">Sales Tax</span><span class="f_Text"> on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> topic for the financial model you are using (Residential, Commercial, Single Owner, etc.)</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Total Installed Cost</span></h3>
+<p class="p_Text"><span class="f_Text">The total installed cost is the sum of all of the direct and indirect capital costs that you specify. SAM uses this value to calculate the project's <a href="mtf_costs.htm" class="topiclink">net capital cost</a>, which is the total installed cost less any cash incentives on the <a href="incentives.htm" class="topiclink">Incentives</a> page and plus any additional financing costs from <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total installed cost ($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The sum of total direct cost and total indirect cost.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total installed cost per capacity ($/Wdc or $/kW)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Total installed cost divided by the total system rated or nameplate capacity. This value is provided for reference only. SAM does not use it in cash flow calculations.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

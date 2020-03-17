@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for f in Files/*.sgv;
+do
+	dot -Tpng "$f" -o PNGs/"${f##*/}.png"
+done 
+
+for f in Files/*.gv;
+do
+	dot -Tpng "$f" -o PNGs/"${f##*/}.png"
+done

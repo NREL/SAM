@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>System Design</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "troughphysical_system_design.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">System Design</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The System Design page shows inputs for design point parameters that determine the system's nameplate capacity. Use the System Design inputs to define the nominal ratings of the system, and then specify details for each part of the system on the appropriate input pages.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> All of the system design inputs are nominal values, or values at the system's design point. SAM calculates actual values during simulation and reports them in the <a href="results_page.htm" class="topiclink">results</a>.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Solar Field</span></h4>
+<p class="p_Text"><span class="f_Text">The solar field design parameters determine the size of the solar field. See the <a href="troughphysical_solar_field.htm" class="topiclink">Solar Field</a>, <a href="troughphysical_collectors_scas.htm" class="topiclink">Collectors (SCAs)</a>, and <a href="troughphysical_receivers_hces.htm" class="topiclink">Receivers (HCEs)</a> pages to set detailed parameters for the field.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Option 1 and Option 2</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For Option 1 (solar multiple mode), SAM calculates the total required aperture and number of loops based on the value you enter for the solar multiple. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For option 2 (field aperture mode), SAM calculates the solar multiple based on the field aperture value you enter. Note that SAM does not use the value that appears dimmed for the inactive option. See <a href="solar_multiple.htm" class="topiclink">Solar Multiple</a> for details.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Solar Multiple</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The field aperture area expressed as a multiple of the aperture area required to operate the power cycle at its design capacity. See <a href="solar_multiple.htm" class="topiclink">Solar Multiple</a> for details.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Field Aperture (m²)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total solar energy collection area of the solar field in square meters. Note that this is less than the total mirror surface area.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For simulations, SAM uses the </span><span class="f_CHInterfaceElement">Actual Solar Multiple</span><span class="f_Note"> and </span><span class="f_CHInterfaceElement">Total Aperture Reflective Area</span><span class="f_Note"> values shown under </span><span class="f_CHInterfaceElement">Solar Field Design Point</span><span class="f_Note"> on the <a href="troughphysical_solar_field.htm" class="topiclink">Solar Field</a> page. The calculated value of the inactive option may differ from the value you see on the System Design page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design point DNI (W/m²)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The design point direct normal radiation value, used in solar multiple mode to calculate the aperture area required to drive the power cycle at its design capacity. Also used to calculate the design mass flow rate of the heat transfer fluid for header pipe sizing.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Field thermal power, MWt</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The field thermal power output at design.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Field Thermal Power (MWt) = Solar Multiple × Cycle Thermal Power (MWt)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Loop inlet HTF temperature (ºC)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The temperature of HTF at the loop inlet under design conditions. The actual temperature during operation may differ from this value. SAM sets the power cycle's design outlet temperature equal to this value.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Loop outlet HTF temperature (ºC)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The temperature of the HTF at the outlet of the loop under design conditions. During operation, the actual value may differ from this set point. This value represents the target temperature for control of the HTF flow through the solar field and will be maintained when possible.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of loops</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of loops in the field, equal to the solar multiple times the required number of loops at a solar multiple of 1.0. The required number of loops is rounded to the nearest integer to represent a realistic field layout.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Power Cycle</span></h4>
+<p class="p_Text"><span class="f_Text">The power cycle design parameters determine the capacity of the power cycle, and the nameplate capacity of the system. See the <a href="troughphysical_power_cycle.htm" class="topiclink">Power Cycle</a> page for more detailed power cycle options and detailed parameters.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design turbine gross output (MWe)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The power cycle's design output, not accounting for parasitic losses. SAM </span><span style="font-family: Verdana,Geneva,Arial,sans-serif;">uses this value to size system components, such as the solar field area when you use the solar multiple to specify the solar field size.</span><span style="font-size: 12pt; font-family: 'Times New Roman',Times,Georgia,serif;"> </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Estimated gross to net conversion factor</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">An estimate of the ratio of the electric energy delivered to the grid to the power cycle's gross output. SAM uses the factor to calculate the power cycle's nameplate capacity for capacity-related calculations, including the estimated total cost per net capacity value on the <a href="trough_system_costs.htm" class="topiclink">Trough System Costs page</a>, capacity-based incentives on the <a href="incentives.htm" class="topiclink">Incentives</a> page, and the capacity factor reported in the <a href="results_page.htm" class="topiclink">results</a>.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Estimated net output at design (nameplate) (MWe)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The power cycle's nameplate capacity, calculated as the product of the design gross output and estimated gross to net conversion factor.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Estimated Net Output at Design (MWe) = Design Gross Output (MWe) × Estimated Gross to Net Conversion Factor</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cycle thermal efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The thermal to electric conversion efficiency of the power cycle under design conditions</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cycle thermal power, MWt</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The power cycle thermal power input at design.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Cycle Thermal Power, MWt = Design Turbine Gross Output (MWe) ÷ Cycle Thermal Efficiency</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Thermal Storage</span></h4>
+<p class="p_Text"><span class="f_Text">The thermal storage design parameters determine the size of the thermal energy storage system (TES). See the <a href="troughphysical_thermal_storage.htm" class="topiclink">Thermal Storage</a> page for detailed TES parameters.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Hours of storage at design point (hours)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The thermal storage capacity expressed in number of hours of thermal energy delivered at the design power cycle thermal power. The physical capacity is the number of hours of storage multiplied by the power cycle design thermal input. Used to calculate the thermal energy system's maximum storage capacity.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+Marine Tidal Resource
+998
+866
+5
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+15
+Y
+3
+36
+Width
+3
+974
+Height
+3
+806
+Tool Tip
+5
+0
+Caption
+5
+14
+Tidal Resource
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+753
+Y
+3
+462
+Width
+3
+198
+Height
+3
+63
+Tool Tip
+5
+0
+Caption
+5
+99
+Sum of values in the Probability Distribution column must be equal to ~1 (between 0.995 and 1.005).
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
+15
+probability_sum
+X
+3
+657
+Y
+3
+462
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+DataMatrix
+
+1
+27
+Name
+5
+14
+tidal_resource
+X
+3
+24
+Y
+3
+57
+Width
+3
+400
+Height
+3
+775
+Tool Tip
+5
+0
+PasteAppendRows
+2
+0
+PasteAppendCols
+2
+0
+ShowButtons
+2
+1
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
+ShadeC0
+2
+0
+ShowCols
+2
+0
+ShowColLabels
+2
+1
+ColLabels
+5
+39
+Velocity (m/s),Probability Distribution
+NumRowsLabel
+5
+5
+Rows:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+1
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+0
+Plot
+
+1
+6
+Name
+5
+25
+tidal_resource_curve_plot
+X
+3
+432
+Y
+3
+60
+Width
+3
+540
+Height
+3
+380
+Tool Tip
+5
+0
+
+2
+probability_sum
+3
+1
+Sum of Probability Distribution Values
+ 
+ME Tidal Resource
+0
+8
+1
+1
+1
+1
+0
+Default
+tidal_resource
+3
+3
+Frequency distribution of resource as a function of stream speeds
+ 
+ME Tidal Resource
+0
+3
+1
+3
+3
+2
+0 0 
+0 0 
+0 0 
+
+DataMatrix
+
+181
+equations {'probability_sum'} = define() {
+
+	resourceMatrix = ${tidal_resource};
+	psum = 0;
+	for (i=0; i<#resourceMatrix; i++)
+	{
+		psum += resourceMatrix[i][1];
+	}
+	return psum;
+};
+979
+function plot_resource_curve()
+{
+	setplot('tidal_resource_curve_plot');
+	clearplot('tidal_resource_curve_plot');
+	plotopt( {'title'='Velocity Distribution','backcolor'=[255,255,255], 'popup'=true, 'legend'=false, 'legendpos'=[75,10]}  );
+	
+//	ws_all = ${tidal_resource_definition};
+	pc_all = ${tidal_resource};
+	ws=alloc(#pc_all);
+	pc=alloc(#pc_all);
+	for (i=0;i<#pc_all;i++)
+	{
+		ws[i] = pc_all[i][0];
+		pc[i] = pc_all[i][1] *100;
+	}
+	plot( ws, pc, {'thick'=10, 'scale'=true,  'series'='Resource Probability', 'type'='bar', 'color'=[111,164,196]});
+	
+	high = max( ws );
+	low = min( ws );
+	pad = 0;
+	axis( 'x1', {'label'='Velocity (m/s)', 'min'=low-pad, 'max'=high+pad });
+	
+	high = max( pc );
+	low = min( pc );
+	pad = 0;// (high - low) * 0.02;
+	axis( 'y1', {'label'='Probability distribution (%)', 'min'=(low-pad), 'max'=(high+pad) });
+
+}
+
+on_change{'tidal_resource'}=define()
+{
+	plot_resource_curve();
+};
+
+on_load{'Marine Tidal Resource'}=define()
+{
+	plot_resource_curve();
+};

@@ -1,51 +1,24 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #include <wx/panel.h>
 #include <wx/button.h>
@@ -744,7 +717,7 @@ bool ParametricViewer::ImportAsArray(wxString& vals, VarValue& vv) {
 	wxArrayString entries = wxSplit(vals, ';');
 	if (entries.Count() < 2) return false;
 	double valNum = 0.0;
-	std::vector<float> arr;
+	std::vector<double> arr;
 	for (size_t i = 0; i < entries.Count() - 1; i++) {
 		if (entries[i].ToDouble(&valNum)) {
 			arr.push_back(valNum);
@@ -763,13 +736,13 @@ bool ParametricViewer::ImportAsMatrix(wxString& vals, VarValue& vv) {
 	double valNum = 0.0;
 	size_t nr = rows.Count() - 1;
 	size_t nc = 0;
-	float* valArr = nullptr;
+	double* valArr = nullptr;
 	for (size_t i = 0; i < nr; i++) {
 		if (rows[i + 1].Find(']') != -1) {
 			wxArrayString entries = wxSplit(rows[i + 1].SubString(0, rows[i + 1].Len() - 2), ';');
 			if (i == 0) {
 				nc = entries.Count();
-				valArr = new float[nr * nc];
+				valArr = new double[nr * nc];
 			}
 			for (size_t j = 0; j < nc; j++) {
 				if (entries[j].ToDouble(&valNum)) {
@@ -1104,11 +1077,11 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 void ParametricViewer::ShowAllData()
 {
 	int col = m_selected_grid_col;
-	std::vector<std::vector<float> > values_vec;
+	std::vector<std::vector<double> > values_vec;
 	wxArrayString labels;
 	for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
 	{
-		std::vector<float> vec = m_grid_data->GetArray(row, col);
+		std::vector<double> vec = m_grid_data->GetArray(row, col);
 		if (vec.size() == 0) // single values
 			vec.push_back(m_grid_data->GetDouble(row, col));
 		values_vec.push_back(vec);
@@ -1230,12 +1203,12 @@ void ParametricViewer::AddPlot(const wxString &output_name)
 					for (int row = 0; row < m_grid_data->GetRowsCount(); row++)
 					{
 						size_t n;
-						float *y = m_grid_data->GetArray(row, col, &n);
+						double *y = m_grid_data->GetArray(row, col, &n);
 						size_t steps_per_hour = n/8760;
 						if ( steps_per_hour > 0 
 							&& steps_per_hour <= 60 
 							&& n == steps_per_hour*8760 )
-						{
+						{ 
 							dv->AddDataSet(new TimeSeriesData(y, n, 1.0/steps_per_hour, 0.0, // by default not instantaneous values for hourly data
 									m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", (int)(row + 1)), 
 									m_grid_data->GetUnits(col)), true );
@@ -1797,6 +1770,10 @@ wxString ParametricGridData::GetTypeName(int row, int col)
 				return "GridCellVarValue";
 			else if (type == "DataMatrix")
 				return "GridCellVarValue";
+			else if (type == "DataLifetimeArray")
+				return "GridCellVarValue";
+			else if (type == "DataLifetimeMatrix")
+				return "GridCellVarValue";
 			else if (type == "ShadingFactors")
 				return "GridCellVarValue";
 			else if (type == "ValueMatrix")
@@ -2057,9 +2034,9 @@ double ParametricGridData::GetDouble(int row, int col)
 	return ret_val;
 }
 
-std::vector<float> ParametricGridData::GetArray(int row, int col)
+std::vector<double> ParametricGridData::GetArray(int row, int col)
 {
-	std::vector<float> ret_val;
+	std::vector<double> ret_val;
 	if (VarValue *vv = GetVarValue(row, col))
 	{
 		if (vv->Type() == VV_ARRAY)
@@ -2068,9 +2045,9 @@ std::vector<float> ParametricGridData::GetArray(int row, int col)
 	return ret_val;
 }
 
-float *ParametricGridData::GetArray(int row, int col, size_t *n)
+double *ParametricGridData::GetArray(int row, int col, size_t *n)
 {
-	float *ret_val=NULL;
+	double *ret_val = NULL;
 	if (VarValue *vv = GetVarValue(row, col))
 	{
 		if (vv->Type() == VV_ARRAY)
@@ -2078,6 +2055,7 @@ float *ParametricGridData::GetArray(int row, int col, size_t *n)
 	}
 	return ret_val;
 }
+
 
 wxString ParametricGridData::GetUnits(int col)
 {

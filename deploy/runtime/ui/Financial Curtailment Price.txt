@@ -1,0 +1,291 @@
+Financial Curtailment Price
+859
+151
+5
+Label
+
+1
+13
+Name
+5
+22
+grid_curtailment_label
+X
+3
+195
+Y
+3
+120
+Width
+3
+300
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+53
+Inflation does not apply to curtailment compensation.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+1
+AlignTop
+2
+1
+SchedNumeric
+
+1
+12
+Name
+5
+22
+grid_curtailment_price
+X
+3
+351
+Y
+3
+69
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Label
+5
+5
+$/kWh
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+75
+Enter a curtailment compensation rate for each year of the analysis period.
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+26
+grid_curtailment_price_esc
+X
+3
+351
+Y
+3
+96
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+5
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+850
+Height
+3
+142
+Tool Tip
+5
+0
+Caption
+5
+24
+Curtailment Compensation
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+18
+Y
+3
+21
+Width
+3
+834
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+174
+Curtailment compensation is the product of the compensation rate ($/kWh) and the amount of curtailed energy as determined from the curtailment inputs on the Grid Limits page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+2
+grid_curtailment_price
+3
+2
+Curtailed energy compensation rate
+$/kWh
+Curtailment Compensation
+0
+2
+1
+2
+1
+1
+0
+SchedNumeric
+grid_curtailment_price_esc
+3
+1
+Curtailed compensation escalation
+%/year
+Curtailment Compensation
+0
+2
+1
+1
+1
+1
+0
+Numeric
+
+0
+543
+function curtailment_price_ctrl_refresh()
+{
+	show_escalation = (#${grid_curtailment_price} < 2);
+	// show/hide example
+	/*
+	show("grid_curtailment_group",show_escalation);
+	show("grid_curtailment_label",show_escalation);
+	show("grid_curtailment_price_esc",show_escalation);
+	refresh();
+	*/
+	// enable disable
+	enable("grid_curtailment_price_esc",show_escalation);
+}
+
+on_load{"Financial Curtailment Price"}=define()
+{
+	curtailment_price_ctrl_refresh();
+};	
+
+on_change{"grid_curtailment_price"}=define()
+{
+	curtailment_price_ctrl_refresh();
+};	

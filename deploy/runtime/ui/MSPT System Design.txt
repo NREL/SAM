@@ -5,7 +5,7 @@ MSPT System Design
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -81,6 +84,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +129,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -140,6 +146,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -182,7 +191,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -199,6 +208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -241,7 +253,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -258,6 +270,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -300,7 +315,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -317,6 +332,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -359,7 +377,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -376,6 +394,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -418,7 +439,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -435,6 +456,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -477,7 +501,7 @@ TabOrder
 Image
 
 1
-7
+8
 Name
 5
 9
@@ -494,6 +518,9 @@ Width
 Height
 3
 556
+Tool Tip
+5
+0
 Image
 7
 MSPT System Design_object 12.png
@@ -503,7 +530,7 @@ Centered
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -520,6 +547,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -539,7 +569,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -556,6 +586,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -575,7 +608,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -592,6 +625,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -611,7 +647,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -628,6 +664,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -647,7 +686,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -664,6 +703,9 @@ Width
 Height
 3
 354
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -674,7 +716,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -691,6 +733,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 294
@@ -719,7 +764,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 14
@@ -736,6 +781,9 @@ Width
 Height
 3
 555
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -745,7 +793,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -762,6 +810,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -804,7 +855,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -821,6 +872,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -863,7 +917,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -880,6 +934,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -922,7 +979,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -939,6 +996,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -981,7 +1041,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -998,6 +1058,9 @@ Width
 Height
 3
 87
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1219,24 +1282,41 @@ System Design
 0
 Label
 
-324
-equations{ 'nameplate' } = define() {
-	return ${P_ref}*${gross_net_conversion_factor}; }; //MWe
+807
+equations{ '$MIMO$ MSPT_System_Design_Equations' } = define() {
+	// nameplate
+	data.P_ref = ${P_ref};
+	data.gross_net_conversion_factor = ${gross_net_conversion_factor};
 	
-equations{ 'q_pb_design' } = define() 
-{
-	return ${P_ref}/${design_eff};
+	// q_pb_design
+	data.P_ref = ${P_ref};	// repeats not necessary, just for documentation
+	data.design_eff = ${design_eff};
+	
+	// Q_rec_des
+	data.solarm = ${solarm};
+	data.q_pb_design = nan();	// -> calculated from above
+	
+	// tshours_sf
+	data.tshours = ${tshours};
+	data.solarm = ${solarm};
+	
+	success = ssc_eqn("MSPT_System_Design_Equations", data);
+	if (!success) {
+		${nameplate} = -999.;
+		${q_pb_design} = -999.;
+		${Q_rec_des} = -999.;
+		${tshours_sf} = -999.;
+	}
+	else {
+		${nameplate} = data.nameplate;
+		${q_pb_design} = data.q_pb_design;
+		${Q_rec_des} = data.q_rec_des;
+		${tshours_sf} = data.tshours_sf;
+	}
+	
+	return 0;
 };
 
-equations{ 'Q_rec_des' } = define() 
-{
-	return ${solarm}*${q_pb_design}; 
-};
-
-equations{ 'tshours_sf' } = define()
-{
-	return ${tshours}/${solarm};
-};
 1047
 function change_msg ( v ) {
 	msg = '';

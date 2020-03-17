@@ -5,7 +5,7 @@ Physical Trough Collector Type 1
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 107
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 101
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -76,6 +82,9 @@ Width
 Height
 3
 80
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -86,7 +95,7 @@ Bold
 DataArray
 
 1
-9
+10
 Name
 5
 6
@@ -103,6 +112,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 2
@@ -119,7 +131,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 25
@@ -136,6 +148,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 25
@@ -146,7 +161,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -163,6 +178,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -205,7 +223,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -222,6 +240,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -264,7 +285,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -281,6 +302,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -323,7 +347,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -340,6 +364,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -382,7 +409,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -399,6 +426,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -441,7 +471,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -458,6 +488,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -500,7 +533,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -517,6 +550,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -559,7 +595,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -576,6 +612,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -618,7 +657,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -635,6 +674,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -677,7 +719,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -694,6 +736,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -736,7 +781,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -753,6 +798,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -795,7 +843,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -812,6 +860,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -854,7 +905,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 25
@@ -871,6 +922,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 0
@@ -895,7 +949,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -912,6 +966,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -954,7 +1011,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 28
@@ -971,6 +1028,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1013,7 +1073,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -1030,6 +1090,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0

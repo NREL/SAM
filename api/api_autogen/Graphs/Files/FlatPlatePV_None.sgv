@@ -1,0 +1,1588 @@
+digraph FlatPlatePV_None {
+	label ="Flat Plate PV-None";
+	labelloc=top;
+	rankdir=LR;
+	ranksep="1";
+	"subarray2_soiling" [style=filled, fillcolor=grey]
+	"snl_module_structure" [style=filled, fillcolor=grey]
+	"subarray3_nmody" [style=filled, fillcolor=grey]
+	"subarray4_nameplate_loss" [style=filled, fillcolor=grey]
+	"spe_rad1" [style=filled, fillcolor=grey]
+	"subarray4_tracking_loss" [style=filled, fillcolor=grey]
+	"subarray4_soiling" [style=filled, fillcolor=grey]
+	"snl_c3" [style=filled, fillcolor=grey]
+	"inv_cec_cg_paco" [style=filled, fillcolor=grey]
+	"subarray4_modules_per_string" [style=filled, fillcolor=grey]
+	"snl_area" [style=filled, fillcolor=grey]
+	"subarray3_tracking_loss" [style=filled, fillcolor=grey]
+	"subarray1_mod_orient" [style=filled, fillcolor=grey]
+	"subarray3_modules_per_string" [style=filled, fillcolor=grey]
+	"subarray3_mod_orient" [style=filled, fillcolor=grey]
+	"sd11par_d3" [style=filled, fillcolor=grey]
+	"cec_mounting_config" [style=filled, fillcolor=grey]
+	"subarray3_mismatch_loss" [style=filled, fillcolor=grey]
+	"par_aisc" [style=filled, fillcolor=grey]
+	"spe_eff1" [style=filled, fillcolor=grey]
+	"subarray1_dcwiring_loss" [style=filled, fillcolor=grey]
+	"sd11par_c1" [style=filled, fillcolor=grey]
+	"cec_temp_corr_mode" [style=filled, fillcolor=grey]
+	"snl_a4" [style=filled, fillcolor=grey]
+	"subarray2_nmody" [style=filled, fillcolor=grey]
+	"subarray3_gcr" [style=filled, fillcolor=grey]
+	"subarray2_enable" [style=filled, fillcolor=grey]
+	"subarray4_mismatch_loss" [style=filled, fillcolor=grey]
+	"cec_r_sh_ref" [style=filled, fillcolor=grey]
+	"snl_fd" [style=filled, fillcolor=grey]
+	"subarray1_soiling" [style=filled, fillcolor=grey]
+	"subarray1_diodeconn_loss" [style=filled, fillcolor=grey]
+	"spe_rad0" [style=filled, fillcolor=grey]
+	"subarray4_nmody" [style=filled, fillcolor=grey]
+	"snl_b1" [style=filled, fillcolor=grey]
+	"inv_cec_cg_vdcmax" [style=filled, fillcolor=grey]
+	"subarray3_dcwiring_loss" [style=filled, fillcolor=grey]
+	"snl_isco" [style=filled, fillcolor=grey]
+	"par_vmp" [style=filled, fillcolor=grey]
+	"spe_rad4" [style=filled, fillcolor=grey]
+	"spe_rad3" [style=filled, fillcolor=grey]
+	"subarray3_nmodx" [style=filled, fillcolor=grey]
+	"subarray2_mod_orient" [style=filled, fillcolor=grey]
+	"snl_voco" [style=filled, fillcolor=grey]
+	"cec_r_s" [style=filled, fillcolor=grey]
+	"module_aspect_ratio" [style=filled, fillcolor=grey]
+	"subarray4_dcwiring_loss" [style=filled, fillcolor=grey]
+	"cec_beta_oc" [style=filled, fillcolor=grey]
+	"subarray2_tracking_loss" [style=filled, fillcolor=grey]
+	"inv_snl_c1" [style=filled, fillcolor=grey]
+	"cec_v_mp_ref" [style=filled, fillcolor=grey]
+	"solar_resource_file" [style=filled, fillcolor=grey]
+	"snl_n" [style=filled, fillcolor=grey]
+	"inv_pd_eff" [style=filled, fillcolor=grey]
+	"inv_snl_paco" [style=filled, fillcolor=grey]
+	"snl_mbvmp" [style=filled, fillcolor=grey]
+	"subarray2_nmodx" [style=filled, fillcolor=grey]
+	"snl_bvoco" [style=filled, fillcolor=grey]
+	"snl_dtc" [style=filled, fillcolor=grey]
+	"inv_snl_c3" [style=filled, fillcolor=grey]
+	"snl_a1" [style=filled, fillcolor=grey]
+	"cec_alpha_sc" [style=filled, fillcolor=grey]
+	"inv_ds_paco" [style=filled, fillcolor=grey]
+	"snl_c2" [style=filled, fillcolor=grey]
+	"mppt_low_inverter" [style=filled, fillcolor=grey]
+	"snl_a3" [style=filled, fillcolor=grey]
+	"snl_aisc" [style=filled, fillcolor=grey]
+	"snl_b0" [style=filled, fillcolor=grey]
+	"subarray4_gcr" [style=filled, fillcolor=grey]
+	"subarray3_diodeconn_loss" [style=filled, fillcolor=grey]
+	"snl_a2" [style=filled, fillcolor=grey]
+	"cec_i_sc_ref" [style=filled, fillcolor=grey]
+	"snl_a" [style=filled, fillcolor=grey]
+	"subarray1_nmody" [style=filled, fillcolor=grey]
+	"sd11par_nser" [style=filled, fillcolor=grey]
+	"cec_i_mp_ref" [style=filled, fillcolor=grey]
+	"spe_vmp" [style=filled, fillcolor=grey]
+	"inv_pd_pdco" [style=filled, fillcolor=grey]
+	"inv_pd_paco" [style=filled, fillcolor=grey]
+	"mppt_hi_inverter" [style=filled, fillcolor=grey]
+	"dcoptimizer_loss" [style=filled, fillcolor=grey]
+	"subarray3_nstrings" [style=filled, fillcolor=grey]
+	"par_area" [style=filled, fillcolor=grey]
+	"sd11par_Egref" [style=filled, fillcolor=grey]
+	"sd11par_Isc0" [style=filled, fillcolor=grey]
+	"subarray2_mismatch_loss" [style=filled, fillcolor=grey]
+	"cec_v_oc_ref" [style=filled, fillcolor=grey]
+	"subarray1_gcr" [style=filled, fillcolor=grey]
+	"subarray4_mod_orient" [style=filled, fillcolor=grey]
+	"inv_tdc_ds" [style=filled, fillcolor=grey]
+	"module_model" [style=filled, fillcolor=grey]
+	"snl_ref_dT" [style=filled, fillcolor=grey]
+	"sd11par_area" [style=filled, fillcolor=grey]
+	"subarray2_gcr" [style=filled, fillcolor=grey]
+	"inv_cec_cg_vdco" [style=filled, fillcolor=grey]
+	"inv_snl_c0" [style=filled, fillcolor=grey]
+	"subarray2_nstrings" [style=filled, fillcolor=grey]
+	"inv_snl_vdco" [style=filled, fillcolor=grey]
+	"inv_cec_cg" [shape=polygon, style=filled, fillcolor=darkslategray3]
+	"inv_cec_cg_pdco" [style=filled, fillcolor=grey]
+	"spe_eff4" [style=filled, fillcolor=grey]
+	"cec_i_o_ref" [style=filled, fillcolor=grey]
+	"inverter_model" [style=filled, fillcolor=grey]
+	"inv_cec_cg_c2" [style=filled, fillcolor=grey]
+	"inv_snl_vdcmax" [style=filled, fillcolor=grey]
+	"sd11par_c2" [style=filled, fillcolor=grey]
+	"sd11par_Vmp0" [style=filled, fillcolor=grey]
+	"subarray3_enable" [style=filled, fillcolor=grey]
+	"spe_module_structure" [style=filled, fillcolor=grey]
+	"inv_cec_cg_c0" [style=filled, fillcolor=grey]
+	"inv_num_mppt" [style=filled, fillcolor=grey]
+	"inv_ds_eff" [style=filled, fillcolor=grey]
+	"cec_i_l_ref" [style=filled, fillcolor=grey]
+	"sd11par_Voc0" [style=filled, fillcolor=grey]
+	"snl_ref_b" [style=filled, fillcolor=grey]
+	"inv_snl_pso" [style=filled, fillcolor=grey]
+	"subarray2_diodeconn_loss" [style=filled, fillcolor=grey]
+	"subarray4_enable" [style=filled, fillcolor=grey]
+	"snl_b5" [style=filled, fillcolor=grey]
+	"inv_ds_vdcmax" [style=filled, fillcolor=grey]
+	"inv_cec_cg_c1" [style=filled, fillcolor=grey]
+	"inv_cec_cg_c3" [style=filled, fillcolor=grey]
+	"subarray2_modules_per_string" [style=filled, fillcolor=grey]
+	"subarray4_diodeconn_loss" [style=filled, fillcolor=grey]
+	"spe_eff2" [style=filled, fillcolor=grey]
+	"inv_cec_cg_eff_cec" [style=filled, fillcolor=grey]
+	"inv_snl_c2" [style=filled, fillcolor=grey]
+	"snl_c0" [style=filled, fillcolor=grey]
+	"par_bvoc" [style=filled, fillcolor=grey]
+	"subarray2_nameplate_loss" [style=filled, fillcolor=grey]
+	"inv_snl_eff_cec" [style=filled, fillcolor=grey]
+	"snl_mbvoc" [style=filled, fillcolor=grey]
+	"snl_b2" [style=filled, fillcolor=grey]
+	"cec_gamma_r" [style=filled, fillcolor=grey]
+	"snl_c1" [style=filled, fillcolor=grey]
+	"snl_b4" [style=filled, fillcolor=grey]
+	"spe_voc" [style=filled, fillcolor=grey]
+	"snl_b" [style=filled, fillcolor=grey]
+	"inv_tdc_cec_db" [style=filled, fillcolor=grey]
+	"spe_eff3" [style=filled, fillcolor=grey]
+	"iec61853par" [shape=polygon, style=filled, fillcolor=darkslategray3]
+	"snl_impo" [style=filled, fillcolor=grey]
+	"spe_reference" [style=filled, fillcolor=grey]
+	"subarray1_nameplate_loss" [style=filled, fillcolor=grey]
+	"cec_module_length" [style=filled, fillcolor=grey]
+	"par_isc" [style=filled, fillcolor=grey]
+	"snl_vmpo" [style=filled, fillcolor=grey]
+	"cec_area" [style=filled, fillcolor=grey]
+	"inv_cec_cg_psco" [style=filled, fillcolor=grey]
+	"inv_tdc_plc" [style=filled, fillcolor=grey]
+	"sd11par_d1" [style=filled, fillcolor=grey]
+	"subarray3_soiling" [style=filled, fillcolor=grey]
+	"spe_rad2" [style=filled, fillcolor=grey]
+	"spe_eff0" [style=filled, fillcolor=grey]
+	"subarray2_dcwiring_loss" [style=filled, fillcolor=grey]
+	"subarray1_mismatch_loss" [style=filled, fillcolor=grey]
+	"snl_series_cells" [style=filled, fillcolor=grey]
+	"inv_tdc_cec_cg" [style=filled, fillcolor=grey]
+	"snl_b3" [style=filled, fillcolor=grey]
+	"system_capacity" [style=filled, fillcolor=grey]
+	"snl_aimp" [style=filled, fillcolor=grey]
+	"inv_pd_vdcmax" [style=filled, fillcolor=grey]
+	"cec_a_ref" [style=filled, fillcolor=grey]
+	"cec_heat_transfer" [style=filled, fillcolor=grey]
+	"subarray1_modules_per_string" [style=filled, fillcolor=grey]
+	"snl_bvmpo" [style=filled, fillcolor=grey]
+	"cec_is_bifacial" [style=filled, fillcolor=grey]
+	"inverter_count" [style=filled, fillcolor=grey]
+	"par_imp" [style=filled, fillcolor=grey]
+	"snl_a0" [style=filled, fillcolor=grey]
+	"par_voc" [style=filled, fillcolor=grey]
+	"cec_module_width" [style=filled, fillcolor=grey]
+	"snl_ref_a" [style=filled, fillcolor=grey]
+	"sd11par_d2" [style=filled, fillcolor=grey]
+	"inv_snl_pdco" [style=filled, fillcolor=grey]
+	"spe_area" [style=filled, fillcolor=grey]
+	"sd11par_Il" [style=filled, fillcolor=grey]
+	"subarray1_tracking_loss" [style=filled, fillcolor=grey]
+	"subarray1_nmodx" [style=filled, fillcolor=grey]
+	"sd11par_alphaIsc" [style=filled, fillcolor=grey]
+	"sd11par_Imp0" [style=filled, fillcolor=grey]
+	"sd11par_c3" [style=filled, fillcolor=grey]
+	"subarray4_nmodx" [style=filled, fillcolor=grey]
+	"subarray3_nameplate_loss" [style=filled, fillcolor=grey]
+	"subarray1_nstrings" [style=filled, fillcolor=grey]
+	"sd11par_n" [style=filled, fillcolor=grey]
+	"subarray4_nstrings" [style=filled, fillcolor=grey]
+	"sd11par_Io" [style=filled, fillcolor=grey]
+
+	"user_specified_weather_file" -> "solar_resource_file" [label=0, style=dashed, color = black];
+	"use_specific_weather_file" -> "solar_resource_file" [label=0, style=dashed, color = black];
+	"inv_pd_eff_type" -> "inv_pd_eff" [label=1, style=dashed, color = brown4];
+	"inv_pd_num_mppt" -> "inv_num_mppt" [label=2, style=dashed, color = darkorange3];
+	"inv_ds_num_mppt" -> "inv_num_mppt" [label=2, style=dashed, color = darkorange3];
+	"inv_ds_eff_peak_or_nom" -> "inv_ds_eff" [label=3, style=dashed, color = lightslateblue];
+	"inv_ds_eff_weighted" -> "inv_ds_eff" [label=3, style=dashed, color = lightslateblue];
+	"inv_ds_eff_type" -> "inv_ds_eff" [label=3, style=dashed, color = lightslateblue];
+	"inv_snl_num_mppt" -> "inv_num_mppt" [label=2, style=dashed, color = darkorange3];
+	"par_bvoc_display" -> "par_bvoc" [label=4, style=dashed, color = mediumorchid];
+	"solar_data_file_name" -> "solar_resource_file" [label=0, style=dashed, color = black];
+	"snl_specified_dT" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_dT" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_a" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"pac" -> "y" [label=6, color = indigo];
+	"pac" -> "ylow" [label=6, color = indigo];
+	"pac" -> "yhi" [label=6, color = indigo];
+	"desired_size" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"desired_size" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"desired_size" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"desired_size" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"desired_size" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"desired_size" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_hi" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_hi" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_hi" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_hi" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_hi" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_hi" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_hi" -> "mppt_hi_inverter" [label=2, style=dashed, color = darkorange3];
+	"inv_ds_mppt_hi" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_hi" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_hi" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_hi" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_hi" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_hi" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_hi" -> "mppt_hi_inverter" [label=2, style=dashed, color = darkorange3];
+	"inv_ds_mppt_low" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_low" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_low" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_low" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_low" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_low" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_mppt_low" -> "mppt_low_inverter" [label=2, style=dashed, color = darkorange3];
+	"inv_snl_mppt_low" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_low" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_low" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_low" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_low" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_low" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_low" -> "mppt_low_inverter" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Pmp0" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Pmp0" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Pmp0" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Pmp0" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Pmp0" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Pmp0" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Pmp0" -> "system_capacity" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Pmp0" -> "sd11par_eff" [label=8, style=dashed, color = azure4];
+	"verbose" -> "iec61853par" [label=9, color = darkorchid4];
+	"inv_cec_cg_sample_power_units" -> "inv_cec_cg" [label=10, color = aquamarine3];
+	"inv_cec_cg_sample_power_units" -> "inv_cec_cg" [label=10, color = aquamarine3];
+	"inv_cec_cg_sample_power_units" -> "inv_cec_cg" [label=10, color = aquamarine3];
+	"type" -> "iec61853par" [label=9, color = darkorchid4];
+	"nser" -> "iec61853par" [label=9, color = darkorchid4];
+	"nser" -> "aop" [label=11, color = olivedrab];
+	"par_bvoc_units" -> "par_bvoc" [label=4, style=dashed, color = mediumorchid];
+	"input" -> "iec61853par" [label=9, color = darkorchid4];
+	"input" -> "nr" [label=12, color = palevioletred];
+	"input" -> "Vdc" [label=12, color = palevioletred];
+	"input" -> "T" [label=12, color = palevioletred];
+	"input" -> "slope" [label=12, color = palevioletred];
+	"subarray2_soiling" -> "subarray2_soiling_annual_average" [label=13, style=dashed, color = darkgoldenrod2];
+	"snl_module_structure" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_module_structure" -> "ms" [label=14, color = gold4];
+	"subarray3_nmody" -> "ui_subarray3_nrows" [label=15, style=dashed, color = crimson];
+	"subarray3_nmody" -> "ui_subarray3_row_spacing" [label=15, style=dashed, color = crimson];
+	"subarray3_nmody" -> "ui_subarray3_length_side" [label=15, style=dashed, color = crimson];
+	"subarray4_nameplate_loss" -> "subarray4_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"spe_rad1" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"subarray4_tracking_loss" -> "subarray4_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"Pso" -> "inv_cec_cg_psco" [label=17, color = sienna4];
+	"Pso" -> "inv_cec_cg_psco" [label=17, color = sienna4];
+	"subarray4_soiling" -> "subarray4_soiling_annual_average" [label=13, style=dashed, color = darkgoldenrod2];
+	"snl_c3" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c3" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"inv_cec_cg_paco" -> "inv_cec_cg" [label=10, color = aquamarine3];
+	"inv_cec_cg_paco" -> "inv_cec_cg_eff_cec" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_paco" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_paco" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_paco" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_paco" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_paco" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_paco" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_paco" -> "inv_cec_cg" [label=10, color = aquamarine3];
+	"inv_cec_cg_paco" -> "inv_cec_cg_eff_euro" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_paco" -> "total_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"inv_cec_cg_paco" -> "paco" [label=6, color = indigo];
+	"subarray4_modules_per_string" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray4_modules_per_string" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray4_modules_per_string" -> "subarray4_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray4_modules_per_string" -> "subarray4_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"subarray4_modules_per_string" -> "subarray4_string_voc" [label=2, style=dashed, color = darkorange3];
+	"subarray4_modules_per_string" -> "subarray4_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"snl_area" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_area" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"snl_area" -> "total_area" [label=2, style=dashed, color = darkorange3];
+	"snl_area" -> "module_area" [label=15, style=dashed, color = crimson];
+	"subarray3_tracking_loss" -> "subarray3_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"subarray1_mod_orient" -> "ui_subarray1_row_spacing" [label=15, style=dashed, color = crimson];
+	"subarray1_mod_orient" -> "ui_subarray1_length_side" [label=15, style=dashed, color = crimson];
+	"subarray3_modules_per_string" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray3_modules_per_string" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray3_modules_per_string" -> "subarray3_string_voc" [label=2, style=dashed, color = darkorange3];
+	"subarray3_modules_per_string" -> "subarray3_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray3_modules_per_string" -> "subarray3_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"subarray3_modules_per_string" -> "subarray3_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"subarray3_mod_orient" -> "ui_subarray3_row_spacing" [label=15, style=dashed, color = crimson];
+	"subarray3_mod_orient" -> "ui_subarray3_length_side" [label=15, style=dashed, color = crimson];
+	"cec_mounting_config" -> "mc" [label=19, color = orange3];
+	"subarray3_mismatch_loss" -> "subarray3_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"spe_eff1" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"subarray1_dcwiring_loss" -> "subarray1_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"cec_temp_corr_mode" -> "state" [label=19, color = orange3];
+	"snl_a4" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a4" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"subarray2_nmody" -> "ui_subarray2_nrows" [label=15, style=dashed, color = crimson];
+	"subarray2_nmody" -> "ui_subarray2_row_spacing" [label=15, style=dashed, color = crimson];
+	"subarray2_nmody" -> "ui_subarray2_length_side" [label=15, style=dashed, color = crimson];
+	"par_aisc_units" -> "par_aisc" [label=4, style=dashed, color = mediumorchid];
+	"subarray3_gcr" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray3_gcr" -> "subarray3_gcr_ref" [label=15, style=dashed, color = crimson];
+	"subarray2_enable" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray2_enable" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"subarray2_enable" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray2_enable" -> "num_strings_total" [label=2, style=dashed, color = darkorange3];
+	"subarray2_enable" -> "subarray2_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray2_enable" -> "num_enabled" [label=2, style=dashed, color = darkorange3];
+	"subarray2_enable" -> "subarray2_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"subarray4_mismatch_loss" -> "subarray4_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"cec_r_sh_ref" -> "r_sh_ref" [label=20, color = seashell4];
+	"snl_fd" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_fd" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"subarray1_soiling" -> "subarray1_soiling_annual_average" [label=13, style=dashed, color = darkgoldenrod2];
+	"subarray1_diodeconn_loss" -> "subarray1_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"spe_rad0" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"subarray4_nmody" -> "ui_subarray4_nrows" [label=15, style=dashed, color = crimson];
+	"subarray4_nmody" -> "ui_subarray4_row_spacing" [label=15, style=dashed, color = crimson];
+	"subarray4_nmody" -> "ui_subarray4_length_side" [label=15, style=dashed, color = crimson];
+	"snl_b1" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b1" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"inv_cec_cg_vdcmax" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_vdcmax" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_vdcmax" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_vdcmax" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_vdcmax" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_vdcmax" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_vdcmax" -> "vdcmax_inverter" [label=2, style=dashed, color = darkorange3];
+	"subarray3_dcwiring_loss" -> "subarray3_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"snl_isco" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_isco" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"par_vmp" -> "par_pmp" [label=4, style=dashed, color = mediumorchid];
+	"par_vmp" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"par_vmp" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"par_vmp" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"par_vmp" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"par_vmp" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"par_vmp" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"par_vmp" -> "par_mpeff" [label=4, style=dashed, color = mediumorchid];
+	"par_vmp" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"par_vmp" -> "subarray1_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"par_vmp" -> "subarray4_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"par_vmp" -> "subarray2_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"par_vmp" -> "subarray3_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"par_vmp" -> "x" [label=21, color = sienna];
+	"par_pmp" -> "system_capacity" [label=2, style=dashed, color = darkorange3];
+	"par_pmp" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"par_pmp" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"spe_rad4" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"inv_snl_mppt_hi" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_hi" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_hi" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_hi" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_hi" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_hi" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_mppt_hi" -> "mppt_hi_inverter" [label=2, style=dashed, color = darkorange3];
+	"spe_rad3" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"subarray3_nmodx" -> "ui_subarray3_nrows" [label=15, style=dashed, color = crimson];
+	"subarray2_mod_orient" -> "ui_subarray2_row_spacing" [label=15, style=dashed, color = crimson];
+	"subarray2_mod_orient" -> "ui_subarray2_length_side" [label=15, style=dashed, color = crimson];
+	"snl_voco" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_voco" -> "subarray3_string_voc" [label=2, style=dashed, color = darkorange3];
+	"snl_voco" -> "subarray1_string_voc" [label=2, style=dashed, color = darkorange3];
+	"snl_voco" -> "subarray4_string_voc" [label=2, style=dashed, color = darkorange3];
+	"snl_voco" -> "subarray2_string_voc" [label=2, style=dashed, color = darkorange3];
+	"cec_r_s" -> "r_s" [label=20, color = seashell4];
+	"module_aspect_ratio" -> "module_length" [label=15, style=dashed, color = crimson];
+	"module_aspect_ratio" -> "module_width" [label=15, style=dashed, color = crimson];
+	"subarray4_dcwiring_loss" -> "subarray4_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"cec_beta_oc" -> "beta_oc_calc" [label=22, style=dashed, color = sienna1];
+	"S" -> "code" [label=9, color = darkorchid4];
+	"subarray2_tracking_loss" -> "subarray2_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"iec61853_test_data" -> "sd11par_Imp0" [label=23, style=dashed, color = sienna2];
+	"iec61853_test_data" -> "sd11par_Voc0" [label=23, style=dashed, color = sienna2];
+	"iec61853_test_data" -> "sd11par_Vmp0" [label=23, style=dashed, color = sienna2];
+	"iec61853_test_data" -> "sd11par_Isc0" [label=23, style=dashed, color = sienna2];
+	"inv_snl_c1" -> "inv_snl_eff_cec" [label=24, style=dashed, color = sienna3];
+	"inv_snl_c1" -> "inv_snl_eff_euro" [label=24, style=dashed, color = sienna3];
+	"cec_v_mp_ref" -> "cec_p_mp_ref" [label=22, style=dashed, color = sienna1];
+	"cec_v_mp_ref" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_v_mp_ref" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_v_mp_ref" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_v_mp_ref" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"cec_v_mp_ref" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"cec_v_mp_ref" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"cec_v_mp_ref" -> "cec_eff" [label=22, style=dashed, color = sienna1];
+	"cec_v_mp_ref" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"cec_v_mp_ref" -> "subarray1_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"cec_v_mp_ref" -> "subarray4_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"cec_v_mp_ref" -> "subarray2_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"cec_v_mp_ref" -> "subarray3_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"cec_v_mp_ref" -> "x" [label=20, color = seashell4];
+	"solar_resource_file" -> "file_name" [label=0, style=dashed, color = black];
+	"solar_resource_file" -> "wf" [label=25, color = sienna4];
+	"solar_resource_file" -> "f_name" [label=26, color = skyblue];
+	"snl_n" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_n" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"inv_pd_eff" -> "inv_pd_pdco" [label=1, style=dashed, color = brown4];
+	"inv_snl_paco" -> "inv_snl_eff_cec" [label=24, style=dashed, color = sienna3];
+	"inv_snl_paco" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_paco" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_paco" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_paco" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_paco" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_paco" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_paco" -> "inv_snl_eff_euro" [label=24, style=dashed, color = sienna3];
+	"inv_snl_paco" -> "total_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"snl_mbvmp" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_mbvmp" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"subarray2_nmodx" -> "ui_subarray2_nrows" [label=15, style=dashed, color = crimson];
+	"snl_bvoco" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_bvoco" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_dtc" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"inv_snl_c3" -> "inv_snl_eff_cec" [label=24, style=dashed, color = sienna3];
+	"inv_snl_c3" -> "inv_snl_eff_euro" [label=24, style=dashed, color = sienna3];
+	"snl_a1" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a1" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"cec_alpha_sc" -> "alpha_sc_calc" [label=22, style=dashed, color = sienna1];
+	"inv_ds_paco" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_paco" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_paco" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_paco" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_paco" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_paco" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_paco" -> "inv_ds_pdco" [label=3, style=dashed, color = lightslateblue];
+	"inv_ds_paco" -> "inv_ds_pso_suggested" [label=3, style=dashed, color = lightslateblue];
+	"inv_ds_paco" -> "inv_ds_pnt_suggested" [label=3, style=dashed, color = lightslateblue];
+	"inv_ds_paco" -> "total_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"snl_c2" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c2" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"mppt_low_inverter" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"snl_a3" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a3" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_aisc" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b0" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"subarray4_gcr" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray4_gcr" -> "subarray4_gcr_ref" [label=15, style=dashed, color = crimson];
+	"subarray3_diodeconn_loss" -> "subarray3_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"snl_a2" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a2" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"cec_i_sc_ref" -> "alpha_sc_calc" [label=22, style=dashed, color = sienna1];
+	"cec_i_sc_ref" -> "y" [label=20, color = seashell4];
+	"snl_a" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"subarray1_nmody" -> "ui_subarray1_row_spacing" [label=15, style=dashed, color = crimson];
+	"subarray1_nmody" -> "ui_subarray1_nrows" [label=15, style=dashed, color = crimson];
+	"subarray1_nmody" -> "ui_subarray1_length_side" [label=15, style=dashed, color = crimson];
+	"sd11par_nser" -> "nser" [label=27, color = skyblue1];
+	"cec_i_mp_ref" -> "cec_p_mp_ref" [label=22, style=dashed, color = sienna1];
+	"cec_i_mp_ref" -> "cec_eff" [label=22, style=dashed, color = sienna1];
+	"cec_i_mp_ref" -> "i_mp_ref" [label=20, color = seashell4];
+	"spe_vmp" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_vmp" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_vmp" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_vmp" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"spe_vmp" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"spe_vmp" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"spe_vmp" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"spe_vmp" -> "subarray1_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"spe_vmp" -> "subarray4_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"spe_vmp" -> "subarray2_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"spe_vmp" -> "subarray3_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"inv_pd_pdco" -> "total_dc_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"inv_pd_paco" -> "inv_pd_pdco" [label=1, style=dashed, color = brown4];
+	"inv_pd_paco" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_paco" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_paco" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_paco" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_paco" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_paco" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_paco" -> "total_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"mppt_hi_inverter" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"dcoptimizer_loss" -> "subarray4_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"dcoptimizer_loss" -> "subarray3_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"dcoptimizer_loss" -> "subarray2_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"dcoptimizer_loss" -> "subarray1_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"subarray3_nstrings" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray3_nstrings" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray3_nstrings" -> "num_strings_total" [label=2, style=dashed, color = darkorange3];
+	"subarray3_nstrings" -> "subarray3_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray3_nstrings" -> "subarray3_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"par_area" -> "par_mpeff" [label=4, style=dashed, color = mediumorchid];
+	"par_area" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"par_area" -> "total_area" [label=2, style=dashed, color = darkorange3];
+	"par_area" -> "module_area" [label=15, style=dashed, color = crimson];
+	"sd11par_Egref" -> "Egref" [label=27, color = skyblue1];
+	"sd11par_Isc0" -> "imax" [label=27, color = skyblue1];
+	"subarray2_mismatch_loss" -> "subarray2_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"inv_pd_mppt_low" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_low" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_low" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_low" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_low" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_low" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_mppt_low" -> "mppt_low_inverter" [label=2, style=dashed, color = darkorange3];
+	"inv_pd_mppt_low" -> "mppt_low_inverter" [label=2, style=dashed, color = darkorange3];
+	"cec_p_mp_ref" -> "system_capacity" [label=2, style=dashed, color = darkorange3];
+	"cec_p_mp_ref" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"cec_p_mp_ref" -> "gamma_r_calc" [label=22, style=dashed, color = sienna1];
+	"cec_v_oc_ref" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_v_oc_ref" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_v_oc_ref" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"cec_v_oc_ref" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"cec_v_oc_ref" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"cec_v_oc_ref" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"cec_v_oc_ref" -> "beta_oc_calc" [label=22, style=dashed, color = sienna1];
+	"cec_v_oc_ref" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"cec_v_oc_ref" -> "subarray3_string_voc" [label=2, style=dashed, color = darkorange3];
+	"cec_v_oc_ref" -> "subarray1_string_voc" [label=2, style=dashed, color = darkorange3];
+	"cec_v_oc_ref" -> "subarray4_string_voc" [label=2, style=dashed, color = darkorange3];
+	"cec_v_oc_ref" -> "subarray2_string_voc" [label=2, style=dashed, color = darkorange3];
+	"cec_v_oc_ref" -> "x" [label=20, color = seashell4];
+	"inv_cec_cg_mppt_low" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_low" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_low" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_low" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_low" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_low" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_low" -> "mppt_low_inverter" [label=2, style=dashed, color = darkorange3];
+	"inv_cec_cg_mppt_low" -> "mppt_low" [label=6, color = indigo];
+	"inv_cec_cg_mppt_low" -> "bolShowmppt_low" [label=6, color = indigo];
+	"inv_cec_cg_mppt_low" -> "mppt_low_inverter" [label=2, style=dashed, color = darkorange3];
+	"subarray1_gcr" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray1_gcr" -> "subarray1_gcr_ref" [label=15, style=dashed, color = crimson];
+	"batt_max_power" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"batt_max_power" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"batt_max_power" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"batt_max_power" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"batt_max_power" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"batt_max_power" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"batt_max_power" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"subarray4_mod_orient" -> "ui_subarray4_row_spacing" [label=15, style=dashed, color = crimson];
+	"subarray4_mod_orient" -> "ui_subarray4_length_side" [label=15, style=dashed, color = crimson];
+	"inv_tdc_ds" -> "input" [label=12, color = palevioletred];
+	"module_model" -> "system_capacity" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"module_model" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"module_model" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"module_model" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"module_model" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"module_model" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"module_model" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "subarray3_string_voc" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "subarray1_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "total_area" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "subarray4_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "subarray1_string_voc" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "subarray2_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "subarray4_string_voc" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "subarray2_string_voc" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "subarray3_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"module_model" -> "module_area" [label=15, style=dashed, color = crimson];
+	"module_model" -> "module_model" [label=28, color = skyblue2];
+	"sd11par_area" -> "sd11par_eff" [label=8, style=dashed, color = azure4];
+	"sd11par_area" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"sd11par_area" -> "total_area" [label=2, style=dashed, color = darkorange3];
+	"sd11par_area" -> "module_area" [label=15, style=dashed, color = crimson];
+	"subarray2_gcr" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray2_gcr" -> "subarray2_gcr_ref" [label=15, style=dashed, color = crimson];
+	"c2" -> "inv_cec_cg_c2" [label=17, color = sienna4];
+	"c2" -> "inv_cec_cg_c2" [label=17, color = sienna4];
+	"c2" -> "pac" [label=17, color = sienna4];
+	"inv_cec_cg_vdco" -> "inv_cec_cg_eff_cec" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_vdco" -> "inv_cec_cg_eff_euro" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_vdco" -> "vdco" [label=6, color = indigo];
+	"inv_snl_c0" -> "inv_snl_eff_cec" [label=24, style=dashed, color = sienna3];
+	"inv_snl_c0" -> "inv_snl_eff_euro" [label=24, style=dashed, color = sienna3];
+	"subarray2_nstrings" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray2_nstrings" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray2_nstrings" -> "num_strings_total" [label=2, style=dashed, color = darkorange3];
+	"subarray2_nstrings" -> "subarray2_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray2_nstrings" -> "subarray2_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"inv_snl_vdco" -> "inv_snl_eff_cec" [label=24, style=dashed, color = sienna3];
+	"inv_snl_vdco" -> "inv_snl_eff_euro" [label=24, style=dashed, color = sienna3];
+	"inv_cec_cg" -> "Pdco" [label=10, color = aquamarine3];
+	"inv_cec_cg" -> "Vdco" [label=10, color = aquamarine3];
+	"inv_cec_cg" -> "Pso" [label=10, color = aquamarine3];
+	"inv_cec_cg" -> "c0" [label=10, color = aquamarine3];
+	"inv_cec_cg" -> "c1" [label=10, color = aquamarine3];
+	"inv_cec_cg" -> "c2" [label=10, color = aquamarine3];
+	"inv_cec_cg" -> "c3" [label=10, color = aquamarine3];
+	"inv_cec_cg_pdco" -> "inv_cec_cg_eff_cec" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_pdco" -> "inv_cec_cg_eff_euro" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_pdco" -> "total_dc_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"inv_cec_cg_pdco" -> "pdco" [label=6, color = indigo];
+	"Pdco" -> "inv_cec_cg_pdco" [label=17, color = sienna4];
+	"Pdco" -> "inv_cec_cg_pdco" [label=17, color = sienna4];
+	"inv_pd_eff_euro" -> "inv_pd_eff" [label=1, style=dashed, color = brown4];
+	"enable_auto_size" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"enable_auto_size" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"enable_auto_size" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"enable_auto_size" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"enable_auto_size" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"enable_auto_size" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"enable_auto_size" -> "auto_size" [label=29, color = skyblue3];
+	"spe_eff4" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"cec_i_o_ref" -> "i_o_ref" [label=20, color = seashell4];
+	"inverter_model" -> "mppt_hi_inverter" [label=2, style=dashed, color = darkorange3];
+	"inverter_model" -> "mppt_low_inverter" [label=2, style=dashed, color = darkorange3];
+	"inverter_model" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inverter_model" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inverter_model" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inverter_model" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inverter_model" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inverter_model" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inverter_model" -> "inv_num_mppt" [label=2, style=dashed, color = darkorange3];
+	"inverter_model" -> "vdcmax_inverter" [label=2, style=dashed, color = darkorange3];
+	"inverter_model" -> "total_dc_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"inverter_model" -> "total_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"inv_cec_cg_c2" -> "inv_cec_cg_eff_cec" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_c2" -> "inv_cec_cg_eff_euro" [label=18, style=dashed, color = skyblue4];
+	"inv_snl_vdcmax" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_vdcmax" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_vdcmax" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_vdcmax" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_vdcmax" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_vdcmax" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_snl_vdcmax" -> "vdcmax_inverter" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Vmp0" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Vmp0" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Vmp0" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Vmp0" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Vmp0" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Vmp0" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Vmp0" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Vmp0" -> "subarray1_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Vmp0" -> "subarray4_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Vmp0" -> "subarray2_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Vmp0" -> "subarray3_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"subarray3_enable" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray3_enable" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"subarray3_enable" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray3_enable" -> "num_strings_total" [label=2, style=dashed, color = darkorange3];
+	"subarray3_enable" -> "num_enabled" [label=2, style=dashed, color = darkorange3];
+	"subarray3_enable" -> "subarray3_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray3_enable" -> "subarray3_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"spe_module_structure" -> "ms" [label=30, color = skyblue4];
+	"inv_cec_cg_c0" -> "inv_cec_cg_eff_cec" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_c0" -> "inv_cec_cg_eff_euro" [label=18, style=dashed, color = skyblue4];
+	"inv_num_mppt" -> "multi_mppt" [label=29, color = skyblue3];
+	"inv_num_mppt" -> "num_mppt" [label=31, color = black];
+	"inv_ds_eff" -> "inv_ds_pdco" [label=3, style=dashed, color = lightslateblue];
+	"cec_i_l_ref" -> "i_l_ref" [label=20, color = seashell4];
+	"sd11par_Voc0" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Voc0" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Voc0" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Voc0" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Voc0" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Voc0" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"sd11par_Voc0" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Voc0" -> "subarray3_string_voc" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Voc0" -> "subarray1_string_voc" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Voc0" -> "subarray4_string_voc" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Voc0" -> "subarray2_string_voc" [label=2, style=dashed, color = darkorange3];
+	"sd11par_Voc0" -> "vmax" [label=27, color = skyblue1];
+	"inv_snl_pso" -> "inv_snl_eff_cec" [label=24, style=dashed, color = sienna3];
+	"inv_snl_pso" -> "inv_snl_eff_euro" [label=24, style=dashed, color = sienna3];
+	"subarray2_diodeconn_loss" -> "subarray2_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"subarray4_enable" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray4_enable" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"subarray4_enable" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray4_enable" -> "num_strings_total" [label=2, style=dashed, color = darkorange3];
+	"subarray4_enable" -> "subarray4_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray4_enable" -> "num_enabled" [label=2, style=dashed, color = darkorange3];
+	"subarray4_enable" -> "subarray4_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"snl_b5" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b5" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_ref_vmp" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_vmp" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"snl_ref_vmp" -> "subarray1_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"snl_ref_vmp" -> "subarray4_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"snl_ref_vmp" -> "subarray2_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"snl_ref_vmp" -> "subarray3_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"inv_ds_vdcmax" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_vdcmax" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_vdcmax" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_vdcmax" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_vdcmax" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_vdcmax" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_ds_vdcmax" -> "vdcmax_inverter" [label=2, style=dashed, color = darkorange3];
+	"inv_cec_cg_c1" -> "inv_cec_cg_eff_cec" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_c1" -> "inv_cec_cg_eff_euro" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_c3" -> "inv_cec_cg_eff_cec" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_c3" -> "inv_cec_cg_eff_euro" [label=18, style=dashed, color = skyblue4];
+	"subarray2_modules_per_string" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray2_modules_per_string" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray2_modules_per_string" -> "subarray2_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray2_modules_per_string" -> "subarray2_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"subarray2_modules_per_string" -> "subarray2_string_voc" [label=2, style=dashed, color = darkorange3];
+	"subarray2_modules_per_string" -> "subarray2_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"c1" -> "inv_cec_cg_c1" [label=17, color = sienna4];
+	"c1" -> "inv_cec_cg_c1" [label=17, color = sienna4];
+	"c1" -> "pac" [label=17, color = sienna4];
+	"subarray4_diodeconn_loss" -> "subarray4_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"spe_eff2" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"inv_snl_c2" -> "inv_snl_eff_cec" [label=24, style=dashed, color = sienna3];
+	"inv_snl_c2" -> "inv_snl_eff_euro" [label=24, style=dashed, color = sienna3];
+	"snl_c0" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c0" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"par_aisc_display" -> "par_aisc" [label=4, style=dashed, color = mediumorchid];
+	"c3" -> "inv_cec_cg_c3" [label=17, color = sienna4];
+	"c3" -> "inv_cec_cg_c3" [label=17, color = sienna4];
+	"c3" -> "pac" [label=17, color = sienna4];
+	"subarray2_nameplate_loss" -> "subarray2_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"snl_mbvoc" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_mbvoc" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b2" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"cec_gamma_r" -> "gamma_r_calc" [label=22, style=dashed, color = sienna1];
+	"snl_ref_pmp" -> "system_capacity" [label=2, style=dashed, color = darkorange3];
+	"snl_ref_pmp" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_pmp" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"snl_specified_b" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_specified_b" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_c1" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b4" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"spe_voc" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_voc" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_voc" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_voc" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"spe_voc" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"spe_voc" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"spe_voc" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"spe_voc" -> "subarray3_string_voc" [label=2, style=dashed, color = darkorange3];
+	"spe_voc" -> "subarray1_string_voc" [label=2, style=dashed, color = darkorange3];
+	"spe_voc" -> "subarray4_string_voc" [label=2, style=dashed, color = darkorange3];
+	"spe_voc" -> "subarray2_string_voc" [label=2, style=dashed, color = darkorange3];
+	"snl_b" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"snl_ref_voc" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"snl_ref_voc" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"inv_tdc_cec_db" -> "input" [label=32, color = brown4];
+	"spe_eff3" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"iec61853par" -> "sd11par_alphaIsc" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_n" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_Il" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_Io" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_Egref" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_c1" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_c2" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_c3" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_d1" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_d2" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_d3" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_betaVoc" [label=9, color = darkorchid4];
+	"iec61853par" -> "sd11par_gammaPmp" [label=9, color = darkorchid4];
+	"inv_cec_cg_mppt_hi" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_hi" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_hi" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_hi" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_hi" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_hi" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_cec_cg_mppt_hi" -> "mppt_hi_inverter" [label=2, style=dashed, color = darkorange3];
+	"inv_cec_cg_mppt_hi" -> "mppt_hi" [label=6, color = indigo];
+	"inv_cec_cg_mppt_hi" -> "bolShowmppt_hi" [label=6, color = indigo];
+	"inv_cec_cg_mppt_hi" -> "mppt_hi_inverter" [label=2, style=dashed, color = darkorange3];
+	"snl_impo" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_impo" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"x" -> "eff" [label=33, color = darkorange3];
+	"x" -> "paths" [label=34, color = lightslateblue];
+	"x" -> "numcols" [label=35, color = mediumorchid];
+	"spe_power" -> "system_capacity" [label=2, style=dashed, color = darkorange3];
+	"spe_power" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"spe_power" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"spe_reference" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"inv_cec_cg_num_mppt" -> "inv_num_mppt" [label=2, style=dashed, color = darkorange3];
+	"subarray1_nameplate_loss" -> "subarray1_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"par_isc" -> "par_aisc" [label=4, style=dashed, color = mediumorchid];
+	"par_isc" -> "y" [label=21, color = sienna];
+	"snl_vmpo" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_vmpo" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"cec_area" -> "cec_module_length" [label=22, style=dashed, color = sienna1];
+	"cec_area" -> "cec_eff" [label=22, style=dashed, color = sienna1];
+	"cec_area" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"cec_area" -> "total_area" [label=2, style=dashed, color = darkorange3];
+	"cec_area" -> "module_area" [label=15, style=dashed, color = crimson];
+	"inv_cec_cg_psco" -> "inv_cec_cg_eff_cec" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_psco" -> "inv_cec_cg_eff_euro" [label=18, style=dashed, color = skyblue4];
+	"inv_cec_cg_psco" -> "pso" [label=6, color = indigo];
+	"inv_pd_eff_cec" -> "inv_pd_eff" [label=1, style=dashed, color = brown4];
+	"inv_tdc_plc" -> "input" [label=36, color = firebrick];
+	"subarray3_soiling" -> "subarray3_soiling_annual_average" [label=13, style=dashed, color = darkgoldenrod2];
+	"spe_rad2" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"spe_eff0" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"subarray2_dcwiring_loss" -> "subarray2_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"subarray1_mismatch_loss" -> "subarray1_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"snl_series_cells" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_n_cells" [label=37, style=dashed, color = indigo];
+	"snl_series_cells" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_series_cells" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"inv_tdc_cec_cg" -> "input" [label=38, color = burlywood4];
+	"snl_b3" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_b3" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"system_capacity" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"system_capacity" -> "calculated_dcac_ratio" [label=2, style=dashed, color = darkorange3];
+	"snl_aimp" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_aimp" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"inv_pd_vdcmax" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_vdcmax" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_vdcmax" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_vdcmax" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_vdcmax" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_vdcmax" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"inv_pd_vdcmax" -> "vdcmax_inverter" [label=2, style=dashed, color = darkorange3];
+	"cec_a_ref" -> "a_ref" [label=20, color = seashell4];
+	"cec_heat_transfer" -> "ht" [label=19, color = orange3];
+	"subarray1_modules_per_string" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray1_modules_per_string" -> "subarray1_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray1_modules_per_string" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray1_modules_per_string" -> "subarray1_string_vmp" [label=2, style=dashed, color = darkorange3];
+	"subarray1_modules_per_string" -> "subarray1_string_voc" [label=2, style=dashed, color = darkorange3];
+	"subarray1_modules_per_string" -> "subarray1_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"snl_bvmpo" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_bvmpo" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"cec_is_bifacial" -> "is_bifacial" [label=28, color = skyblue2];
+	"Vdco" -> "inv_cec_cg_vdco" [label=17, color = sienna4];
+	"Vdco" -> "inv_cec_cg_vdco" [label=17, color = sienna4];
+	"inv_cec_cg_test_samples" -> "inv_cec_cg" [label=10, color = aquamarine3];
+	"inv_cec_cg_test_samples" -> "x" [label=10, color = aquamarine3];
+	"inv_cec_cg_test_samples" -> "inv_cec_cg" [label=10, color = aquamarine3];
+	"inverter_count" -> "total_dc_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"inverter_count" -> "total_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"par_imp" -> "par_pmp" [label=4, style=dashed, color = mediumorchid];
+	"par_imp" -> "par_mpeff" [label=4, style=dashed, color = mediumorchid];
+	"par_imp" -> "y" [label=21, color = sienna];
+	"snl_a0" -> "snl_ref_a" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_b" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_dT" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_vmp" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_pmp" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_voc" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_isc" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_isc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_isc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_imp" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_imp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_imp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_vmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_vmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_pmp_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_pmp_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_voc_temp_0" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_voc_temp_1" [label=5, style=dashed, color = firebrick];
+	"snl_a0" -> "snl_ref_eff" [label=5, style=dashed, color = firebrick];
+	"par_voc" -> "par_bvoc" [label=4, style=dashed, color = mediumorchid];
+	"par_voc" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"par_voc" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"par_voc" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"par_voc" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"par_voc" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"par_voc" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"par_voc" -> "layout_warning" [label=2, style=dashed, color = darkorange3];
+	"par_voc" -> "subarray3_string_voc" [label=2, style=dashed, color = darkorange3];
+	"par_voc" -> "subarray1_string_voc" [label=2, style=dashed, color = darkorange3];
+	"par_voc" -> "subarray4_string_voc" [label=2, style=dashed, color = darkorange3];
+	"par_voc" -> "subarray2_string_voc" [label=2, style=dashed, color = darkorange3];
+	"par_voc" -> "x" [label=21, color = sienna];
+	"cec_module_width" -> "cec_module_length" [label=22, style=dashed, color = sienna1];
+	"obj" -> "result" [label=10, color = aquamarine3];
+	"inv_snl_pdco" -> "inv_snl_eff_cec" [label=24, style=dashed, color = sienna3];
+	"inv_snl_pdco" -> "inv_snl_eff_euro" [label=24, style=dashed, color = sienna3];
+	"inv_snl_pdco" -> "total_dc_inverter_capacity" [label=2, style=dashed, color = darkorange3];
+	"spe_area" -> "spe_power" [label=16, style=dashed, color = chartreuse4];
+	"spe_area" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"spe_area" -> "total_area" [label=2, style=dashed, color = darkorange3];
+	"spe_area" -> "module_area" [label=15, style=dashed, color = crimson];
+	"sd11par_Il" -> "Il" [label=27, color = skyblue1];
+	"total_modules" -> "system_capacity" [label=2, style=dashed, color = darkorange3];
+	"total_modules" -> "total_area" [label=2, style=dashed, color = darkorange3];
+	"subarray1_tracking_loss" -> "subarray1_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"subarray1_nmodx" -> "ui_subarray1_nrows" [label=15, style=dashed, color = crimson];
+	"sd11par_alphaIsc" -> "aisc" [label=27, color = skyblue1];
+	"sd11par_Imp0" -> "Imp0" [label=27, color = skyblue1];
+	"subarray4_nmodx" -> "ui_subarray4_nrows" [label=15, style=dashed, color = crimson];
+	"subarray3_nameplate_loss" -> "subarray3_dcloss" [label=13, style=dashed, color = darkgoldenrod2];
+	"desired_dcac_ratio" -> "subarray2_enable" [label=7, style=dashed, color = burlywood4];
+	"desired_dcac_ratio" -> "subarray3_enable" [label=7, style=dashed, color = burlywood4];
+	"desired_dcac_ratio" -> "subarray4_enable" [label=7, style=dashed, color = burlywood4];
+	"desired_dcac_ratio" -> "subarray1_modules_per_string" [label=7, style=dashed, color = burlywood4];
+	"desired_dcac_ratio" -> "subarray1_nstrings" [label=7, style=dashed, color = burlywood4];
+	"desired_dcac_ratio" -> "inverter_count" [label=7, style=dashed, color = burlywood4];
+	"subarray1_nstrings" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray1_nstrings" -> "subarray1_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray1_nstrings" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray1_nstrings" -> "num_strings_total" [label=2, style=dashed, color = darkorange3];
+	"subarray1_nstrings" -> "subarray1_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"sd11par_n" -> "n" [label=27, color = skyblue1];
+	"subarray4_nstrings" -> "total_modules" [label=2, style=dashed, color = darkorange3];
+	"subarray4_nstrings" -> "total_land_area" [label=2, style=dashed, color = darkorange3];
+	"subarray4_nstrings" -> "num_strings_total" [label=2, style=dashed, color = darkorange3];
+	"subarray4_nstrings" -> "subarray4_nmodules" [label=2, style=dashed, color = darkorange3];
+	"subarray4_nstrings" -> "subarray4_ref_nmodules" [label=15, style=dashed, color = crimson];
+	"sd11par_Io" -> "Io" [label=27, color = skyblue1];
+	"c0" -> "inv_cec_cg_c0" [label=17, color = sienna4];
+	"c0" -> "inv_cec_cg_c0" [label=17, color = sienna4];
+	"c0" -> "pac" [label=17, color = sienna4];
+}

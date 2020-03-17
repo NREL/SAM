@@ -5,10 +5,9 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 <br><br> 
  
 <ol>
-<li> Maximizing Annual Energy Production (AEP)</li>
-<li> Maximizing Net Present Value (NPV) of System</li>
-<li> Maximizing Energy Yield (kWh/kW) of the System</li>
-<li> Minimizing Levelized Cost of Electricity (cents/kWh)</li>
+<li> Maximizing Annual Energy Production (AEP)
+<li> Maximizing Net Present Value (NPV) of System 
+<li> Maximizing Energy Yield (kWh/kW) of the System
 </ol>
 
 <br><br> Once the simulation is completed, you will have the option of automatically updating your current subarray layout based on one of the 3 optimization strategies outlined above. Optimized values that are updated include: strings in parallel, tilt, GCR, and number of modules along bottom of row.
@@ -27,6 +26,7 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 //@ name=subarray_x;type=combo;label=Subarray to be optimized;value=Subarray 1,Subarray 2,Subarray 3,Subarray 4,All Active Subarrays;sel=0
 //@ name=length;type=number;label=Enter the Length of Field or Rooftop (m):;value=35
 //@ name=width;type=number;label=Enter the width of Field or Rooftop (m):;value=25
+//@ name=setback;type=number;label=Enter the setback (in m) from edges:;value=1 
 //@ name=max_gcr;type=number;label=Enter the maximum GCR:;value=1 
 //@ name=min_gcr;type=number;label=Enter the minimum GCR(value cannot equal 0):;value=0.1 
 //@ name=gcr_steps;type=number;label=Enter the increments you would like to iterate GCR over:;value=0.1
@@ -34,8 +34,7 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 //@ name=min_tilt;type=number;label=Enter the minimum allowable (fixed) tilt angle (in Degrees):;value=0
 //@ name=tilt_steps;type=number;label=Enter the increments for tilt angle (in Degrees):;value=10
 //@ name=dcac;type=number;label=Desired DC to AC Ratio:;value=1.20
-//@ name=update_results;type=combo;label=Update subarray configuration in active case optimized for;value=Max AEP,Max NPV,Max Energy Yield,Min LCOE,Do Not Update;sel=4
-//@ name=show_in_browser;type=combo;label=Open results summary in default browser?;value=Yes, No;sel=1 
+//@ name=update_results;type=combo;label=Update subarray configuration in active case optimized for;value=Max AEP,Max NPV,Max Energy Yield,Do Not Update;sel=3
 
 // display warning if the macro is run outside of a case
 if ( typeof(macro) == 'unknown' ) {
@@ -47,8 +46,11 @@ if ( typeof(macro) == 'unknown' ) {
 
 //User Defined Inputs:
 subarray_x = macro.subarray_x;				//Subarray to be optimized 
-effective_length = macro.length;			//(Calculated Value) Actual length of the field that is available for placement of modules (m)
-effective_width = macro.width;				//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
+length = macro.length ; 					//Length of field (m)
+width = macro.width;						//Width of fiel (m)
+setback = macro.setback;					//Distance from edge of land that is off limits for placement of modules (m)
+effective_length = length - setback;		//(Calculated Value) Actual length of the field that is available for placement of modules (m)
+effective_width = width - setback;			//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
 area = effective_length * effective_width; 	//(Calculated Value) Total effective land area (in m^2)
 max_gcr = macro.max_gcr;					//Allow the user to input max GCR
 min_gcr = macro.min_gcr;					//Allow the user to input min GCR
@@ -59,9 +61,6 @@ tilt_steps = macro.tilt_steps;				//Allow the user the input the increments of t
 dcac = macro.dcac;							//Desired Dc to AC ratio 
 update_results = macro.update_results;		//Update subarray layout optimized for 1 of the 3 strategies, or do not update at all
 
-//Max number of subarrays allowed in SAM currently:
-max_subarrays = 4;			//Change this number if SAM changes max number of subarrays allowed in a simulation
-
 acreage = area*0.0002471;					//m^2 to acres conversion
 
 //If the user wants to iterate over fixed GCR or tilt angle, and sets either of
@@ -70,6 +69,10 @@ if(gcr_steps <= 0 ) gcr_steps = max_gcr;
 if(tilt_steps <= 0) tilt_steps = max_tilt;
 
 ////////////////////////////////////////EXCEPTION HANDLING////////////////////////////////////////////////
+
+//Max number of subarrays allowed in SAM currently:
+max_subarrays = 4;			//Change this number if SAM changes max number of subarrays allowed in a simulation
+
 
 //Check to see financial model selected (which determines name of NPV variable name):
 fin_model = configuration();
@@ -91,12 +94,6 @@ elseif(finConfig == 'Leveraged Partnership Flip' || finConfig == 'All Equity Par
 elseif(finConfig == 'Host Developer')	
 	stakeholder = choose_from_list([ 'Host' , 'Developer' ] , "Optimize NPV of project from perspective of: " );
 	
-//Currently, Third Party financial config does not use LCOE in its calculations:
-if(finConfig =='Third Party' && update_results == 'Min LCOE'){
-	msgbox('Sorry, ' + finConfig + ' configuration does not calculate LCOE. You can still use this macro, without selecting the minimize LCOE optimization strategy.');
-	exit;
-}
-	
 //If single_subarray is false implies that the user chose to optimize 'All Active Subarrays'
 single_subarray = false;
 if(subarray_x != 'All Active Subarrays') single_subarray = true;
@@ -117,8 +114,8 @@ if(get('subarray'+to_string(sub_number[1])+'_modules_per_string') == 0) {
 //This block contains declarations of all functions used in the rest of this script. 
 	
 //========================================================================================================================================================================================================================================================================
-//Display estimated time this macro will take to complet (in MM:SS format):
-function time_display(minute, second) {	
+
+function time_display(minute, second) {	//This function formats the time displayed 
 
 	if ( minute == 0 && (second / 10) < 1)
 		continue_macro = yesno("You are attempting to optimize entire system (all active subarrays). This will take 00:0" + second + " seconds to complete. Proceed?");
@@ -247,8 +244,7 @@ system_sizer = define(gcr) {
 
 
 //========================================================================================================================================================================================================================================================================
-//Function to calculate system NPV, regardless of financial configuration selected by the user (by accounting for the difference in variable 
-//names used for storing NPV based on the financial config.):
+
 function npv_getter (fin_config) {
 
 		if(fin_config == 'Residential' || fin_config == 'Commercial' || fin_config == 'Third Party' )	
@@ -271,182 +267,6 @@ function npv_getter (fin_config) {
 
 }
 
-//========================================================================================================================================================================================================================================================================
-//Function to creat a striped table to display optimal system configuration, as well as its techno-economic results for all 4 optimization strategies:
-function display_results(gcr, tilt, nmodx, nmody, nrows, row_spacing, total_modules, modules_per_string, 
-						 string_in_parallel , num_inverters, aep, sys_size, npv, yield, lcoe) {	//total of 14 arguments
-						 
-	h = '<table width="100%">';
-	h += '<tr>';
-	h += '<td bgcolor = #DCDCDC>';
-		h += '<table width="100%">';
-		h += '<th>';
-		h += 'Optimal Subarray Configuration:';
-		h += '</th>';
-		h += '<tr bgcolor = #FFFFFF>';
-		h += '<td > <b>GCR</b> </td>';
-		h += '<td>' + num_to_str(gcr , 3) + '</td>' ;
-		h += '</tr>';
-		h += '<tr>';
-		h += '<td > <b>Tilt Angle (in Degrees) </b></td>'; 
-		h += '<td>'+ tilt + '</td>' ; 
-		h += '</tr>';
-		h += '<tr bgcolor = #FFFFFF>';
-		h += '<td > <b>Number of modules along bottom </b></td>'; 
-		h += '<td>' + nmodx + ' modules</td>'; 
-		h += '</tr>';
-		h += '<tr>';
-		h += '<td><b>Number of modules along side of each row</b> <i>(Note: This was set by the user in the active case)</i></td>' ;
-		h += '<td>' + nmody + ' module(s)</td>';
-		h += '</tr>';
-		h += '<tr bgcolor = #FFFFFF>';
-		h += '<td ><b>Number of rows </b></td>';
-		h += '<td>' + num_to_str(nrows , 1) + ' rows</td>'; 
-		h += '</tr>';
-		h += '<tr>';
-		h += '<td ><b>Row spacing between successive rows </b></td>';
-		h += '<td>' + num_to_str( row_spacing, 2 ) + ' m</td>';
-		h += '</tr>';
-		h += '<tr bgcolor = #FFFFFF>';
-		h += '<td ><b>Total number of modules in subarray </b></td>'; 
-		h += '<td>' + total_modules + ' modules</td>';
-		h += '</tr>';
-		h += '<tr>';
-		h += '<td><b>Modules per string in subarray</b> <i>(Note: This was set by the user in the active case)</i></td>'; 
-		h += '<td>' + modules_per_string + ' modules</td>';
-		h += '</tr>';
-		h += '<tr bgcolor = #FFFFFF>';
-		h += '<td><b>Strings in parallel in subarray </b></td>';
-		h += '<td>' + string_in_parallel + ' strings</td>';
-		h += '</tr>';
-		h += '<tr>';
-		h += '<td><b>Number of inverters </b></td>'; 
-		h += '<td>' + num_inverters + '</td>';
-		h += '</tr>';
-		h += '</table>';
-	h += '</td>';
-	h += '</tr>';
-	h += '</table>';
-	h += '<br><br>';
-	
-	h += '<table width = "60%">';
-	h += '<tr>';
-	h += '<td bgcolor = #DCDCDC>';
-		h += '<table width="100%">';
-		h += '<th style="text-align: right">';
-		h += 'Techno-Economic Results:';
-		h += '</th>';
-		h += '<tr bgcolor = #FFFFFF>';
-		h += '<td><b>Annual Energy Production </b></td>'; 
-		h += '<td>' + num_to_str(aep , 0) + ' kWh</td>';
-		h += '</tr>';
-		h += '<tr>';
-		h += '<td><b>System Size </b></td>'; 
-		h += '<td>' + num_to_str(sys_size , 0) + ' kW</td>';
-		h += '</tr>';
-		h += '<tr bgcolor = #FFFFFF>';
-		h += '<td><b>Net Present Value (NPV)  </b></td>'; 
-		h += '<td>$' +num_to_str(npv , 0) + '</td>';
-		h += '</tr>';
-		h += '<tr>';
-		h += '<td><b>Energy Yield </b></td>'; 
-		h += '<td>' + num_to_str(yield , 1) + ' kWh/kW</td>';
-		h += '</tr>';
-		h += '<tr bgcolor = #FFFFFF>';
-		h += '<td><b>Levelized Cost of Electricity (cents/kWh) </b></td>'; 
-		h += '<td>' + num_to_str(lcoe , 2) + ' cents/kWh</td>';
-		h += '</tr>';
-		h += '</table>';
-	h += '</td>';
-	h += '</tr>';
-	h += '</table>';
-	
-	return h;
-}
-
-//========================================================================================================================================================================================================================================================================
-
-//Function to display a table of results obtained for each combination of GCR and Tilt angle:
-function display_table(min_gcr, max_gcr, gcr_steps, min_tilt, max_tilt, tilt_steps, array, dictionary, strategy) {	//strategy parameter checks if table is for LCOE -> in which case increase number of significant digits
-	h = '<table>'; 
-	h += '<table border = "1";  align = "center">';
-	h += '<th> </th>';
-	for (tilt = min_tilt  ; tilt <= max_tilt ; tilt = tilt + tilt_steps)
-	{
-		h += '<th bgcolor = #f2f2f2>Tilt Angle: ' + tilt + '</th>';
-	}
-
-	i = 0;
-	for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
-		j = -1;
-		h += '<tr>';
-		h += '<th bgcolor = #f2f2f2>GCR: ' + num_to_str( gcr , 3 ) + '</th>';
-		for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
-			j = j + 1;
-			if (array[i][j] == dictionary) h += '<td bgcolor = #00ff00>';
-			elseif (array[i][j]  < 0) h += '<td bgcolor = #ff0000>';
-			else h += '<td>';
-			if (strategy == true)
-				h += ' ' + num_to_str(array[i][j] , 3) + ' '; 
-			else
-				h += ' ' + num_to_str(array[i][j] , 0) + ' ';
-			h += '</td>';
-		}
-		i = i + 1;
-		h += '</tr>'; 
-	}
-	h += '</table>';
-	return h;
-}
-
-//========================================================================================================================================================================================================================================================================
-//Display green highlighted cell below results table (to display maximum/minimum value)
-function table_key(key) {
-	h = '<table  align = "center">';
-	h += '<tr>'; 
-	h += '<td bgcolor = #00ff00>';
-	h += '<font size="2">' + key + '</font>';
-	h += '</tr>'; 
-	h += '</table>';
-	return h;
-}
-
-//========================================================================================================================================================================================================================================================================
-//Defining colors for curves (with a maximum limit of 90 curves per graph):
-clr = ['#FF0000',	'#00FFFF',	'#FF00FF',	'#0000A0',	'#9ACD32',	'#800080',	'#FFFF00',	'#00FF00',	'#0000FF',	'#C0C0C0',	'#808080',	
-	   '#000000',	'#FFA500',	'#A52A2A',	'#800000',	'#008000',	'#F08080', 	'#90EE90',	'#FFB6C1',	'#FFA07A',	'#20B2AA',	'#87CEFA',	
-	   '#778899',	'#778899',	'#FFFFE0',	'#00FF00',	'#32CD32',	'#FAF0E6',	'#FF00FF',	'#800000',	'#66CDAA',	'#0000CD',	'#BA55D3',	
-	   '#9370DB',	'#3CB371',	'#7B68EE',	'#00FA9A',	'#48D1CC',	'#C71585',	'#191970',	'#F5FFFA',	'#FFE4E1',	'#FFE4B5',	'#FFDEAD',	
-	   '#000080',	'#FDF5E6',	'#808000',	'#6B8E23',	'#FFA500',	'#FF4500',	'#DA70D6',	'#EEE8AA',	'#98FB98',	'#AFEEEE',	'#DB7093',	
-	   '#FFEFD5',	'#FFDAB9',	'#CD853F',	'#FFC0CB',	'#DDA0DD',	'#B0E0E6',	'#800080',	'#663399',	'#FF0000',	'#BC8F8F',	'#4169E1',	
-	   '#8B4513',	'#FA8072',	'#F4A460',	'#2E8B57',	'#FFF5EE',	'#A0522D',	'#C0C0C0',	'#87CEEB',	'#6A5ACD',	'#708090',	'#708090',	
-	   '#FFFAFA',	'#00FF7F',	'#4682B4',	'#D2B48C',	'#008080',	'#D8BFD8',	'#FF6347',	'#40E0D0',	'#EE82EE',	'#F5DEB3', 	'#F5F5F5',	
-	   '#FFFF00',	'#ADD8E6'];
-
-//Create a plot with GCR on the y-axis and tilt angle on the x-axis:
-function new_plot(array, clr, yaxis_title, graph_title, graph_name){
-	newplot(true);
-	for ( count = 0; count <= (#array - 1) ; count = count + 1) {
-		plot(x, array[count],{series = num_to_str(type[count], 3), color = clr[count], size = 3});
-		axis('x1', {'label' = "Tilt Angle "});
-		axis('y1', {'label' = yaxis_title});
-		plotopt({'legendpos'='right', 'export_graph' = true, 'coarse'=true, 'fine'=true, 'title' = graph_title + " at Various GCR [" + subarray_x + "]"});
-	}
-	f_path=cwd();
-	f_name = graph_name;
-	f = f_path + '/' + f_name  + '.png';
-	ok = plotout( f , 'png'); // png, pdf, bmp, or jpg. Defaults to png if file type not given.
-	if ( ok == false)
-	{
-		outln('Could not save the plot to ' + f);
-		return null;
-
-	}
-	else
-		return f;
-}
-
-	
 ///////////////////////////////////////////////Return Estimated Time to Complete Macro////////////////////////////////////////////////////////////////////////
 
 //Keeping tab of all subarrays that the user enabled in the active case; and a reminder to re-enable subarray (if the subarray was enabled before the macro) after simulation is complete.
@@ -512,14 +332,14 @@ while (subarray_to_optimize < max_subarrays) {
 		
 		//If the user is optimizing all active subarrays, ask them to input the allotted area for each subarray:
 		if(single_subarray != true) {
-			length = in("Enter length (in m) of field or rooftop alloted for " + subarray_x +":");
-			width = in("Enter width (in m) of field or rooftop alloted for " + subarray_x +":");
-			effective_length = to_real(length);		//(Calculated Value) Actual length of the field that is available for placement of modules (m)
-			effective_width = to_real(width);			//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
+			length = in("Enter length (in m) of field or rooftop alloted for " + subarray_x +". [Note: this does not include setback length]");
+			width = in("Enter width (in m) of field or rooftop alloted for " + subarray_x +". [Note: this does not include setback length]");
+			effective_length = to_real(length) - setback;		//(Calculated Value) Actual length of the field that is available for placement of modules (m)
+			effective_width = to_real(width) - setback;			//(Calculated Value) Actual width of the field that is available for placement of modules	(m)
 			area = effective_length * effective_width; 	//(Calculated Value) Total effective land area (in m^2)
 		}
 		
-		outln('\n\tOptimizing Subarray ' + (subarray_to_optimize + 1) + ' over an area of ' + area + ' m^2:' );
+		outln('\t\nOptimizing Subarray ' + (subarray_to_optimize + 1) + ' over an area of ' + area + ' m^2' );
 		
 		//Store subarray 1's configuration information:
 		subarray1_modules_per_string = get('subarray1_modules_per_string');
@@ -565,22 +385,19 @@ while (subarray_to_optimize < max_subarrays) {
 
 		///////////////////////////////////**** DEFINING PLACEHOLDER VARIABLES ****///////////////////////////////////
 
-		db{"max_energy"} = {"energy" = 0, "gcr" = 0, "tilt" = 0, "system_size" = 0, "npv" = 0, "yield" = 0, "lcoe" = 99999}; 
-		db{"max_npv"} = {"energy" = 0, "gcr" = 0, "tilt" = 0, "system_size" = 0, "npv" = -9999999999, "yield" = 0, "lcoe" = 99999}; 
-		db{"max_yield"} = {"energy" = 0, "gcr" = 0, "tilt" = 0, "system_size" = 0, "npv" = 0, "yield" = 0, "lcoe" = 99999}; 
-		db{"min_lcoe"} = {"energy" = 0, "gcr" = 0, "tilt" = 0, "system_size" = 0, "npv" = 0, "yield" = 0, "lcoe" = 99999};
+		db{"max_energy"} = {"energy" = 0, "gcr" = 0, "tilt" = 0, "system_size" = 0, "npv" = 0, "yield" = 0}; 
+		db{"max_npv"} = {"energy" = 0, "gcr" = 0, "tilt" = 0, "system_size" = 0, "npv" = -9999999999, "yield" = 0}; 
+		db{"max_yield"} = {"energy" = 0, "gcr" = 0, "tilt" = 0, "system_size" = 0, "npv" = 0, "yield" = 0}; 
 		
 		db{"maxEnergy_config"} = {"nmodx" = 0, "nrows" = 0, "row_spacing" = 0, "total_modules" = 0};
 		db{"npv_config"} = {"nmodx" = 0, "nrows" = 0, "row_spacing" = 0, "total_modules" = 0};
 		db{"yield_config"} = {"nmodx" = 0, "nrows" = 0, "row_spacing" = 0, "total_modules" = 0};
-		db{"lcoe_config"} = {"nmodx" = 0, "nrows" = 0, "row_spacing" = 0, "total_modules" = 0};
 		
 		nmody =  get('subarray1_nmody');	//Number of modules along side row stays constant throughout, and is set by the user in the active case.
 		
 		///////////////////////////////////**** ARRAY PLACEMENT ****///////////////////////////////////
 
 		i = 0;	
-		//Loop over GCR to determine system size for each GCR, as well as determine number of modules required for each system size:
 		for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
 			module_power = module_info();
 			system_size[i] = to_int(system_sizer(gcr));
@@ -588,6 +405,7 @@ while (subarray_to_optimize < max_subarrays) {
 			i = i + 1;
 		}
 
+		//Variable to keep count of number of rows in the loop:
 		if (get('subarray1_mod_orient') == 1) {					//if module orientation is landscape, then length of panel is used in calculating length of row
 			module_length = get('module_length');				//Length of 1 module
 			bottom_length = module_length;						//Initial length of bottom row of modules 
@@ -603,22 +421,23 @@ while (subarray_to_optimize < max_subarrays) {
 		p = 0;
 		n = 0;		//number of panels along side bottom of row
 		i = 0;
-		//For loop to iterate over the entire range of (user input) GCRs, to make sure module placement along length and width of the field is 
-		//in sync with the respective GCRs. So, for instance, even though the field length could accomodate a longer row of modules, number of modules 
-		//in each row and alongside row is restricted to maintain GCR:	
-		for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {		//Fitting modules along length of field:				
-			
-			//Start by placing modules along effective lenght of field:	
-			n = to_int((effective_length/module_length) );									
+
+		//Fitting modules along length of field:
+		for(gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) {						//For loop to iterate over the entire range of (user input) GCRs, to make sure module placement along length and width of the field is in sync with the respective GCRs. So, for instance, even though the field length could accomodate a longer row of modules, number of modules in each row and alongside row is restricted.	
+				
+			n = to_int((effective_length/module_length) );									//Set modules along entire effective length
 			set('subarray1_nmodx',n);
 			
-			//While loop to make sure number of modules along bottom row doesn't exceed system size at that GCR.
-			while(get('subarray1_nmodx') < n){	
+			//At this point modules have been placed along bottom. System sizes have been calculated at respective GCRs.  
+			
+			//While loop to make sure number of modules along bottom row doesn't exceed system size at that GCR
+			while(get('subarray1_nmodx') < n){
 				n -= 1;
 				set('subarray1_nmodx',n);
 			}
 			
-			//Finding how many strings in parallel we need:
+			//So at this point, we set modules along bottom. Now, find how many strings in parallel you need.
+			//outln(get('subarray1_modules_per_string'));
 			strings_in_parallel[i] = to_int(number_of_modules[i] /get('subarray1_modules_per_string'));
 			set('subarray1_nstrings', strings_in_parallel[i]);
 			
@@ -630,12 +449,14 @@ while (subarray_to_optimize < max_subarrays) {
 				
 			}
 			
+			
 			bottom_modules[p] = n;
-			set('subarray1_nmodx', bottom_modules[p]);	
+			set('subarray1_nmodx', bottom_modules[p]);
 			
 			p = p + 1;
 			i = i + 1;
 		}
+
 
 		///////////////////////////////////**** S I M U L A T I O N ****///////////////////////////////////
 
@@ -676,9 +497,10 @@ while (subarray_to_optimize < max_subarrays) {
 				set('subarray1_tilt', tilt);
 				simulate();
 				annual_energy[i][j] = get('annual_energy');
+				
 				npv[i][j] = npv_getter(finConfig);
+				
 				yield[i][j] = get('kwh_per_kw');
-				lcoe[i][j] = get('lcoe_real');
 				type[i] = gcr;
 				
 				//Storing the appropriate results (when calculating maximum AEP) in the respective placeholders
@@ -689,7 +511,6 @@ while (subarray_to_optimize < max_subarrays) {
 					db{"max_energy"}.system_size = system_size[i];
 					db{"max_energy"}.npv = get('npv');
 					db{"max_energy"}.yield = yield[i][j];
-					db{"max_energy"}.lcoe = lcoe[i][j];
 					db{"maxEnergy_config"}.nmodx = get('subarray1_nmodx');
 					db{"maxEnergy_config"}.nrows = get('ui_subarray1_nrows');
 					db{"maxEnergy_config"}.row_spacing = get('ui_subarray1_row_spacing');
@@ -708,7 +529,6 @@ while (subarray_to_optimize < max_subarrays) {
 					db{"max_npv"}.system_size = system_size[i];
 					db{"max_npv"}.energy = annual_energy[i][j];
 					db{"max_npv"}.yield = yield[i][j];
-					db{"max_npv"}.lcoe = lcoe[i][j];
 					db{"npv_config"}.nmodx = get('subarray1_nmodx');
 					db{"npv_config"}.nrows = get('ui_subarray1_nrows');
 					db{"npv_config"}.row_spacing = get('ui_subarray1_row_spacing');
@@ -729,7 +549,6 @@ while (subarray_to_optimize < max_subarrays) {
 					db{"max_yield"}.system_size = system_size[i];
 					db{"max_yield"}.energy = annual_energy[i][j];
 					db{"max_yield"}.npv = npv[i][j];
-					db{"max_yield"}.lcoe = lcoe[i][j];
 					db{"yield_config"}.nmodx = get('subarray1_nmodx');
 					db{"yield_config"}.nrows = get('ui_subarray1_nrows');
 					db{"yield_config"}.row_spacing = get('ui_subarray1_row_spacing');
@@ -739,27 +558,6 @@ while (subarray_to_optimize < max_subarrays) {
 					modules_per_string_yield = get('subarray1_modules_per_string');
 					inverter_yield = get('inverter_count');
 				}
-				
-				//Storing the appropriate results when calculating minimum LCOE:
-				if (db{"min_lcoe"}.lcoe > lcoe[i][j]) {
-				
-					db{"min_lcoe"}.lcoe = lcoe[i][j];
-					db{"min_lcoe"}.yield = yield[i][j];
-					db{"min_lcoe"}.gcr = gcr;
-					db{"min_lcoe"}.tilt = tilt;
-					db{"min_lcoe"}.system_size = system_size[i];
-					db{"min_lcoe"}.energy = annual_energy[i][j];
-					db{"min_lcoe"}.npv = npv[i][j];
-					db{"lcoe_config"}.nmodx = get('subarray1_nmodx');
-					db{"lcoe_config"}.nrows = get('ui_subarray1_nrows');
-					db{"lcoe_config"}.row_spacing = get('ui_subarray1_row_spacing');
-					db{"lcoe_config"}.total_modules = get('total_modules');
-					
-					string_in_parallel_lcoe = get('subarray1_nstrings');
-					modules_per_string_lcoe = get('subarray1_modules_per_string');
-					inverter_lcoe = get('inverter_count');
-				}
-				
 			}
 			i = i + 1;		
 		}
@@ -774,47 +572,141 @@ while (subarray_to_optimize < max_subarrays) {
 				set('subarray' + to_string(count+1) + '_enable', 1);
 			count += 1;
 		}
-
-		if (subarray_x == 'Subarray '+to_string(sub_number[1])) {
-			//Values that stay constant throughout simulation
-			set('subarray'+to_string(sub_number[1])+'_modules_per_string', get('subarray1_modules_per_string'));	
-			set('subarray'+to_string(sub_number[1])+'_track_mode', get('subarray1_track_mode'));
-			set('subarray'+to_string(sub_number[1])+'_azimuth', get('subarray1_azimuth'));
-			set('subarray'+to_string(sub_number[1])+'_shade_mode', get('subarray1_shade_mode'));
-			set('subarray'+to_string(sub_number[1])+'_mod_orient', get('subarray1_mod_orient'));
-			set('subarray'+to_string(sub_number[1])+'_nmody', get('subarray1_nmody'));
-			
-			//Updating optimized values based on user's selection
+	
+		//Now update fields for subarray to be optimized:
+		if(subarray_x == 'Subarray 1') {
 			if(update_results == 'Max AEP') {
-				set('subarray'+to_string(sub_number[1])+'_nstrings', string_in_parallel_aep);
-				set('subarray'+to_string(sub_number[1])+'_tilt', db{"max_energy"}.tilt);
-				set('subarray'+to_string(sub_number[1])+'_gcr', db{"max_energy"}.gcr);
-				set('subarray'+to_string(sub_number[1])+'_nmodx', db{"maxEnergy_config"}.nmodx);
-				set('inverter_count', inverter_aep);
-				system_inverter_count = system_inverter_count + get('inverter_count');
-			}
+					set('subarray1_nstrings', string_in_parallel_aep);
+					set('subarray1_tilt', db{"max_energy"}.tilt);
+					set('subarray1_gcr', db{"max_energy"}.gcr);
+					set('subarray1_nmodx', db{"maxEnergy_config"}.nmodx);
+					set('inverter_count', inverter_aep);
+					system_inverter_count = system_inverter_count + get('inverter_count');
+				}
 			elseif(update_results == 'Max NPV'){
-				set('subarray'+to_string(sub_number[1])+'_nstrings', string_in_parallel_npv );
-				set('subarray'+to_string(sub_number[1])+'_tilt', db{"max_npv"}.tilt);
-				set('subarray'+to_string(sub_number[1])+'_gcr', db{"max_npv"}.gcr);
-				set('subarray'+to_string(sub_number[1])+'_nmodx', db{"npv_config"}.nmodx );
+				set('subarray1_nstrings', string_in_parallel_npv );
+				set('subarray1_tilt', db{"max_npv"}.tilt);
+				set('subarray1_gcr', db{"max_npv"}.gcr);
+				set('subarray1_nmodx', db{"npv_config"}.nmodx );
 				set('inverter_count', inverter_npv);
 				system_inverter_count = system_inverter_count + get('inverter_count');
 			}
 			elseif(update_results == 'Max Energy Yield') {
-				set('subarray'+to_string(sub_number[1])+'_nstrings', string_in_parallel_yield  );
-				set('subarray'+to_string(sub_number[1])+'_tilt', db{"max_yield"}.tilt);
-				set('subarray'+to_string(sub_number[1])+'_gcr', db{"max_yield"}.gcr);
-				set('subarray'+to_string(sub_number[1])+'_nmodx', db{"yield_config"}.nmodx );
+				set('subarray1_nstrings', string_in_parallel_yield  );
+				set('subarray1_tilt', db{"max_yield"}.tilt);
+				set('subarray1_gcr', db{"max_yield"}.gcr);
+				set('subarray1_nmodx', db{"yield_config"}.nmodx );
 				set('inverter_count', inverter_yield);
 				system_inverter_count = system_inverter_count + get('inverter_count');
 			}
-			elseif(update_results == 'Min LCOE') {
-				set('subarray'+to_string(sub_number[1])+'_nstrings', string_in_parallel_lcoe  );
-				set('subarray'+to_string(sub_number[1])+'_tilt', db{"min_lcoe"}.tilt);
-				set('subarray'+to_string(sub_number[1])+'_gcr', db{"min_lcoe"}.gcr);
-				set('subarray'+to_string(sub_number[1])+'_nmodx', db{"lcoe_config"}.nmodx );
-				set('inverter_count', inverter_lcoe);
+			
+		}
+
+
+		if (subarray_x == 'Subarray 2') {
+			//Value stays constant throughout simulation
+			set('subarray2_modules_per_string', get('subarray1_modules_per_string'));	
+			set('subarray2_track_mode', get('subarray1_track_mode'));
+			set('subarray2_azimuth', get('subarray1_azimuth'));
+			set('subarray2_shade_mode', get('subarray1_shade_mode'));
+			set('subarray2_mod_orient', get('subarray1_mod_orient'));
+			set('subarray2_nmody', get('subarray1_nmody'));
+			
+			//Updating optimized values based on user's selection
+			if(update_results == 'Max AEP') {
+				set('subarray2_nstrings', string_in_parallel_aep);
+				set('subarray2_tilt', db{"max_energy"}.tilt);
+				set('subarray2_gcr', db{"max_energy"}.gcr);
+				set('subarray2_nmodx', db{"maxEnergy_config"}.nmodx);
+				set('inverter_count', inverter_aep);
+				system_inverter_count = system_inverter_count + get('inverter_count');
+			}
+			elseif(update_results == 'Max NPV'){
+				set('subarray2_nstrings', string_in_parallel_npv );
+				set('subarray2_tilt', db{"max_npv"}.tilt);
+				set('subarray2_gcr', db{"max_npv"}.gcr);
+				set('subarray2_nmodx', db{"npv_config"}.nmodx );
+				set('inverter_count', inverter_npv);
+				system_inverter_count = system_inverter_count + get('inverter_count');
+			}
+			elseif(update_results == 'Max Energy Yield') {
+				set('subarray2_nstrings', string_in_parallel_yield  );
+				set('subarray2_tilt', db{"max_yield"}.tilt);
+				set('subarray2_gcr', db{"max_yield"}.gcr);
+				set('subarray2_nmodx', db{"yield_config"}.nmodx );
+				set('inverter_count', inverter_yield);
+				system_inverter_count = system_inverter_count + get('inverter_count');
+			}
+		}
+
+		if (subarray_x == 'Subarray 3') {
+			//Value stays constant throughout simulation
+			set('subarray3_modules_per_string', get('subarray1_modules_per_string'));	
+			set('subarray3_track_mode', get('subarray1_track_mode'));
+			set('subarray3_azimuth', get('subarray1_azimuth'));
+			set('subarray3_shade_mode', get('subarray1_shade_mode'));
+			set('subarray3_mod_orient', get('subarray1_mod_orient'));
+			set('subarray3_nmody', get('subarray1_nmody'));
+			
+			//Updating optimized values based on user's selection
+			if(update_results == 'Max AEP') {
+				set('subarray3_nstrings', string_in_parallel_aep);
+				set('subarray3_tilt', db{"max_energy"}.tilt);
+				set('subarray3_gcr', db{"max_energy"}.gcr);
+				set('subarray3_nmodx', db{"maxEnergy_config"}.nmodx);
+				set('inverter_count', inverter_aep);
+				system_inverter_count = system_inverter_count + get('inverter_count');
+			}
+			elseif(update_results == 'Max NPV'){
+				set('subarray3_nstrings', string_in_parallel_npv );
+				set('subarray3_tilt', db{"max_npv"}.tilt);
+				set('subarray3_gcr', db{"max_npv"}.gcr);
+				set('subarray3_nmodx', db{"npv_config"}.nmodx );
+				set('inverter_count', inverter_npv);
+				system_inverter_count = system_inverter_count + get('inverter_count');
+			}
+			elseif(update_results == 'Max Energy Yield') {
+				set('subarray3_nstrings', string_in_parallel_yield  );
+				set('subarray3_tilt', db{"max_yield"}.tilt);
+				set('subarray3_gcr', db{"max_yield"}.gcr);
+				set('subarray3_nmodx', db{"yield_config"}.nmodx );
+				set('inverter_count', inverter_yield);
+				system_inverter_count = system_inverter_count + get('inverter_count');
+			}
+		}
+
+		if (subarray_x == 'Subarray 4') {
+			//Value stays constant throughout simulation
+			set('subarray4_modules_per_string', get('subarray1_modules_per_string'));	
+			set('subarray4_track_mode', get('subarray1_track_mode'));
+			set('subarray4_azimuth', get('subarray1_azimuth'));
+			set('subarray4_shade_mode', get('subarray1_shade_mode'));
+			set('subarray4_mod_orient', get('subarray1_mod_orient'));
+			set('subarray4_nmody', get('subarray1_nmody'));
+			
+			//Updating optimized values based on user's selection
+			if(update_results == 'Max AEP') {
+				set('subarray4_nstrings', string_in_parallel_aep);
+				set('subarray4_tilt', db{"max_energy"}.tilt);
+				set('subarray4_gcr', db{"max_energy"}.gcr);
+				set('subarray4_nmodx', db{"maxEnergy_config"}.nmodx);
+				set('inverter_count', inverter_aep);
+				system_inverter_count = system_inverter_count + get('inverter_count');
+			}
+			elseif(update_results == 'Max NPV'){
+				set('subarray4_nstrings', string_in_parallel_npv );
+				set('subarray4_tilt', db{"max_npv"}.tilt);
+				set('subarray4_gcr', db{"max_npv"}.gcr);
+				set('subarray4_nmodx', db{"npv_config"}.nmodx );
+				set('inverter_count', inverter_npv);
+				system_inverter_count = system_inverter_count + get('inverter_count');
+			}
+			elseif(update_results == 'Max Energy Yield') {
+				set('subarray4_nstrings', string_in_parallel_yield  );
+				set('subarray4_tilt', db{"max_yield"}.tilt);
+				set('subarray4_gcr', db{"max_yield"}.gcr);
+				set('subarray4_nmodx', db{"yield_config"}.nmodx );
+				set('inverter_count', inverter_yield);
 				system_inverter_count = system_inverter_count + get('inverter_count');
 			}
 		}
@@ -835,144 +727,280 @@ while (subarray_to_optimize < max_subarrays) {
 			//set('inverter_count', inverter_count);
 		}
 
-		///////////////////////////////////**** R E S U L T S ****///////////////////////////////////
-		
-		str = '<html><body><h1><p align="center"> Summary of Results </p></h1>';
-		
-		str += '<br>Reported for case: <b>' + active_case() + '</b>';	
-			
-		if(single_subarray == true) {
-			str += '<br>Showing results for: <b>' + subarray_x + '</b>';
-			str += '<br><span  style="background-color: #FFFF00"><b>Note:</b> Optimal number of inverters reported are only for this particular subarray and not the entire system.</span>';
-			//str += '<br><i>(If you are using this macro to optimize all active subarrays, note down the recommended number of inverters for this subarray. Once you have optimized all active subarray configurations, add all the recommended number of inverters for each subarray to give you the recommended number of inverters for the entire system.)</i>';
-		}
-		else {
-			str += '<br>Showing results for: <b>'+ subarray_x + '</b>';
-			set('inverter_count', system_inverter_count);
-		}
-		
-		str += '<br><br>Given below is the subarray size at each iteration of GCR for total effective land/roof area of ' + round(area) + ' (m^2):';
-		str += '';
-		iter = 0;
-		str += '<table>'; 
-		str += '<table border = "1">';
-		str += '<th bgcolor = #DCDCDC>GCR </th>';
-		str += '<th bgcolor = #DCDCDC>Size (kW)</th>';
-		
-		for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
-			str += '<tr>';
-			//str += '<th>GCR: ' + num_to_str( gcr , 3) + '</th>';
-			str += '<th>' + num_to_str( gcr , 3) + '</th>';
-			str += '<td align="center">';
-			str += '	' + system_size[iter] ;
-			str += '</td>';
-			iter = iter + 1;
-			str += '</tr>'; 
-		}
-		str += '</table>';
-		
-		
-		//Max AEP Results:
-		str += '<br><h3 style="text-align: center">Results for Max Annual Energy Production (AEP): </h3>';
-		str += display_results(db{"max_energy"}.gcr, db{"max_energy"}.tilt, db{"maxEnergy_config"}.nmodx, nmody, db{"maxEnergy_config"}.nrows, 
-						db{"maxEnergy_config"}.row_spacing, db{"maxEnergy_config"}.total_modules, modules_per_string_aep, string_in_parallel_aep,
-						inverter_aep, db{"max_energy"}.energy, db{"max_energy"}.system_size, db{"max_energy"}.npv, db{"max_energy"}.yield, db{"max_energy"}.lcoe);
-						
-		//Table for AEP Results
-		strategy = false;	//checks if table is for fisplaying LCOE (which impacts number of significant digits to display on screen):
-		str += '<br><p style="text-align: center"><strong>Table 1:</strong> AEP at Specified Combinations of GCR and Tilt Angles (kWH): </p>';
-		str += display_table(min_gcr, max_gcr, gcr_steps, min_tilt, max_tilt, tilt_steps, annual_energy, db{"max_energy"}.energy, strategy);
-		key = 'Max AEP';
-		str += table_key(key);
-		
-		//Plot of AEP as a function of tilt angle (for various GCRs):
-		yaxis_title = 'Annual Energy Production (kWh)';
-		graph_title = 'Figure 1: Annual Energy Production';
-		graph_name = 'max_aep';
-		str += '<p style="text-align: center"><img src="'+new_plot(annual_energy, clr, yaxis_title, graph_title, graph_name) + '" /></p>';
-		
-		//Max NPV Results:
-		str += '<br><br><h3  style="text-align: center">Results for Max NPV: </h3>';
-		str += display_results(db{"max_npv"}.gcr, db{"max_npv"}.tilt, db{"npv_config"}.nmodx, nmody, db{"npv_config"}.nrows, 
-						db{"npv_config"}.row_spacing, db{"npv_config"}.total_modules, modules_per_string_npv, string_in_parallel_npv,
-						inverter_npv, db{"max_npv"}.energy, db{"max_npv"}.system_size, db{"max_npv"}.npv, db{"max_npv"}.yield, db{"max_npv"}.lcoe);
-		
-		//Table for NPV Results:
-		strategy = false;	//checks if table is for fisplaying LCOE (which impacts number of significant digits to display on screen):
-		str += '<br><p style="text-align: center"><strong>Table 2:</strong> NPV at Specified Combinations of GCR and Tilt Angles (in $): </p>';
-		str += display_table(min_gcr, max_gcr, gcr_steps, min_tilt, max_tilt, tilt_steps, npv, db{"max_npv"}.npv, strategy);
-		key = 'Max NPV';
-		str += table_key(key);
-		
-		//Plot of NPV as a function of tilt angle (for various GCRs):
-		yaxis_title = 'Net Present Value ($)';
-		graph_title = 'Figure 2: Net Present Value';
-		graph_name = 'max_npv';
-		str += '<p style="text-align: center"><img src="'+new_plot(npv, clr, yaxis_title, graph_title, graph_name) + '" /></p>';
-		
-		
-		//Max Energy Yield Results:
-		str += '<br><br><h3  style="text-align: center">Results for Max Energy Yield: </h3>';
-		str += display_results(db{"max_yield"}.gcr, db{"max_yield"}.tilt, db{"yield_config"}.nmodx, nmody, db{"yield_config"}.nrows, 
-						db{"yield_config"}.row_spacing, db{"yield_config"}.total_modules, modules_per_string_yield, string_in_parallel_yield,
-						inverter_yield, db{"max_yield"}.energy, db{"max_yield"}.system_size, db{"max_yield"}.npv, db{"max_yield"}.yield, db{"max_yield"}.lcoe);
-		
-		//Table for Energy Yield Results:
-		strategy = false;	//checks if table is for fisplaying LCOE (which impacts number of significant digits to display on screen):
-		str += '<br><p style="text-align: center"><strong>Table 3:</strong>Energy Yield at Specified Combinations of GCR and Tilt Angles (kWh/kW): </p>';
-		str += display_table(min_gcr, max_gcr, gcr_steps, min_tilt, max_tilt, tilt_steps, yield, db{"max_yield"}.yield, strategy);
-		key = 'Max Energy Yield';
-		str += table_key(key);
-		
-		//Plot of energy yield as a function of tilt angle (for various GCRs):
-		yaxis_title = 'Energy Yield (kWh/kW)';
-		graph_title = 'Figure 3: Energy Yield';
-		graph_name = 'max_yield';
-		str += '<p style="text-align: center"><img src="'+new_plot(yield, clr, yaxis_title, graph_title, graph_name) + '" /></p>';
-		
-		
-		if(finConfig !='Third Party'){	//Since LCOE is not calculated in TPO
-			//Min LCOE Results:
-			str += '<br><br><h3  style="text-align: center">Results for Min LCOE: </h3>';
-			str += display_results(db{"min_lcoe"}.gcr, db{"min_lcoe"}.tilt, db{"lcoe_config"}.nmodx, nmody, db{"lcoe_config"}.nrows, 
-							db{"lcoe_config"}.row_spacing, db{"lcoe_config"}.total_modules, modules_per_string_lcoe, string_in_parallel_lcoe,
-							inverter_lcoe, db{"min_lcoe"}.energy, db{"min_lcoe"}.system_size, db{"min_lcoe"}.npv, db{"min_lcoe"}.yield, db{"min_lcoe"}.lcoe);
-			
-			//Table for LCOE Results:
-			strategy = true;	//checks if table is for fisplaying LCOE (which impacts number of significant digits to display on screen):
-			str += '<br><p style="text-align: center"><strong>Table 4:</strong> LCOE at Specified Combinations of GCR and Tilt Angles (in cents/kWh): </p>';
-			str += display_table(min_gcr, max_gcr, gcr_steps, min_tilt, max_tilt, tilt_steps, lcoe, db{"min_lcoe"}.lcoe, strategy);
-			key = 'Min LCOE';
-			str += table_key(key);
-			
-			//Plot of LCOE as a function of tilt angle (for various GCRs):
-			yaxis_title = 'Levelized Cost of Electricity(cents/kWh)';
-			graph_title = 'Figure 4: Levelized Cost of Electricity';
-			graph_name = 'min_lcoe';
-			str += '<p style="text-align: center"><img src="'+new_plot(lcoe, clr, yaxis_title, graph_title, graph_name) + '" /></p>';
-		}
-		
-		
-		newplot(true);
-		
-		str += '</body></html>';
-		if ( macro.show_in_browser == 'Yes' )
-		{
-			html_file = cwd() + '/' + active_case() + '_' + to_string(sub_number[0]) 
-									+ to_string(sub_number[1]) + '_results' + '.html';
-			write_text_file( html_file , str );
-			browse( html_file );
-		}
-		else
-			html_dialog(str, 'Optimal Array Layout', [1000,800]);
 
-		subarray_to_optimize++;
-		if(single_subarray == true) break;			//If user is optimizing only a single subarray, exit the while loop, i.e., end the macro at this point.
-		
+
+
+
+///////////////////////////////////**** R E S U L T S ****///////////////////////////////////
+
+str = '<html><body><h1> Summary of Results </h1><p>Reported for case: ' + active_case() + '</p>\n';
+
+if(single_subarray == true) {
+	str += '<br>Showing results for: ' + subarray_x;
+	str += '<br><table bgcolor = #FFFF00><b>Note:</b> Optimal number of inverters reported are only for this particular subarray and not the entire system.</table>';
+	str += '<p><i>(If you are using this macro to optimize all active subarrays, note down the recommended number of inverters for this subarray. Once you have optimized all active subarray configurations, add all the recommended number of inverters for each subarray to give you the recommended number of inverters for the entire system.)</i></p>';
+}
+else {
+	str += '<br>Showing results for: '+ subarray_x;
+	set('inverter_count', system_inverter_count);
+}
+
+str += '<p>Given below is the system size at each iteration of GCR for total effective land/roof area of ' + round(area);
+str += ' (m^2). If you are only optimizing a single subarray, this table represents the subarray size (kW): </p>';
+str += '';
+iter = 0;
+str += '<table>'; 
+str += '<table border = "1">';
+str += '<th>GCR </th>';
+str += '<th>Size (kW)</th>';
+
+for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
+	str += '<tr>';
+	//str += '<th>GCR: ' + num_to_str( gcr , 3) + '</th>';
+	str += '<th>' + num_to_str( gcr , 3) + '</th>';
+	str += '<td align="center">';
+	str += '	' + system_size[iter] ;
+	str += '</td>';
+	iter = iter + 1;
+	str += '</tr>'; 
+}
+str += '</table>';
+
+
+//Max AEP Results:
+str += '<br><h5>Results for Max Annual Energy Production (AEP): </h5>';
+str += '<br>GCR: ' + num_to_str(db{"max_energy"}.gcr , 3) ;
+str += '<br>Tilt Angle (in Degrees): ' + db{"max_energy"}.tilt ; 
+str += '<br>Number of modules along bottom: ' + db{"maxEnergy_config"}.nmodx + ' modules'; 
+str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
+str += '<br>Number of rows: ' + num_to_str(db{"maxEnergy_config"}.nrows , 1) + ' rows'; 
+str += '<br>Row spacing estimate: ' + num_to_str( db{"maxEnergy_config"}.row_spacing, 2 ) + ' m';
+str += '<br>Total number of modules: ' + db{"maxEnergy_config"}.total_modules + ' modules\n';
+str += '<br>Modules per string in subarray (set by the user in the active case): ' + modules_per_string_aep + ' modules';
+str += '<br>Strings in parallel in subarray: ' + string_in_parallel_aep + ' strings';
+str += '<br>Number of inverters: ' + inverter_aep;
+str += '<br><br>AEP: '+ num_to_str(db{"max_energy"}.energy , 0) + ' kWh';
+str += '<br>System Size: '+ num_to_str(db{"max_energy"}.system_size , 0) + ' kW';
+str += '<br>Net Present Value (NPV): $ '+ num_to_str(db{"max_energy"}.npv , 0);
+str += '<br>Energy Yield: '+ num_to_str(db{"max_energy"}.yield , 1) + ' kWh/kW';
+
+
+
+
+
+//Table for AEP Results
+str += '<br><br><strong> AEP at Specified Combinations of GCR and Tilt Angles (kWH): <br></strong>';
+
+str += '<table>'; 
+str += '<table border = "1">';
+str += '<th> </th>';
+for (tilt = min_tilt  ; tilt <= max_tilt ; tilt = tilt + tilt_steps)
+{
+	str += '<th>Tilt Angle: ' + tilt + '</th>';
+}
+
+i = 0;
+for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
+	j = -1;
+	str += '<tr>';
+	str += '<th>GCR: ' + num_to_str( gcr , 3 ) + '</th>';
+	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
+		j = j + 1;
+		if (annual_energy[i][j] == db{"max_energy"}.energy) str += '<td bgcolor = #00ff00>';
+		elseif (annual_energy[i][j]  < 0) str += '<td bgcolor = #ff0000>';
+		else str += '<td>';
+		str += ' ' + num_to_str(annual_energy[i][j] , 0) + ' '; 
+		str += '</td>';
+	}
+	i = i + 1;
+	str += '</tr>'; 
+}
+
+str += '</table>';
+str += '<table>'; 
+str += '<table>';
+str += '<tr>'; 
+str += '<td bgcolor = #00ff00>';
+str += '<font size="2">Max AEP</font>';
+str += '</tr>'; 
+str += '</table>';
+
+
+
+//Max NPV Results:
+str += '<br><h5>Results for Max NPV: </h5>';
+str += '<br>GCR: ' + num_to_str(db{"max_npv"}.gcr,3);
+str +=  '<br>Tilt Angle (in Degrees): ' +  db{"max_npv"}.tilt;
+str += '<br>Number of modules along bottom: ' + db{"npv_config"}.nmodx +' modules'; 
+str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
+str += '<br>Number of rows: ' + num_to_str(db{"npv_config"}.nrows,1) +' rows '; 
+str += '<br>Row spacing estimate: ' + num_to_str(db{"npv_config"}.row_spacing , 2) + 'm';
+str += '<br>Total number of modules: ' + db{"npv_config"}.total_modules + ' modules';
+str += '<br>Modules per string in subarray (set by the user in the active case): ' + modules_per_string_npv + ' modules';
+str += '<br>Strings in parallel in subarray: ' + string_in_parallel_npv + ' strings';
+str += '<br>Number of inverters: ' + inverter_npv;
+str += '<br><br>AEP: '+ num_to_str(db{"max_npv"}.energy,0) + ' kWh'; 
+str += '<br>System Size : '+ num_to_str(db{"max_npv"}.system_size,0) + ' kW';
+str += '<br>NPV: $ ' + num_to_str(db{"max_npv"}.npv,0);
+str += '<br>Energy Yield: '+ num_to_str(db{"max_npv"}.yield,1) + ' kWh/kW';
+
+
+
+//Table for NPV Results:
+str += '<br><br><strong> NPV at Specified Combinations of GCR and Tilt Angles (in $): <br></strong>';
+
+str += '<table>'; 
+str += '<table border = "1">';
+str += '<th> </th>';
+for (tilt = min_tilt  ; tilt <= max_tilt ; tilt = tilt + tilt_steps)
+{
+	str += '<th>Tilt Angle: ' + tilt + '</th>';
+}
+
+i = 0;
+for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
+	j = -1;
+	str += '<tr>';
+	str += '<th>GCR: ' + num_to_str( gcr , 3) + '</th>';
+	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
+		j = j + 1;
+		if (npv[i][j] == db{"max_npv"}.npv) str += '<td bgcolor = #00ff00>';
+		elseif (npv[i][j]  < 0) str += '<td bgcolor = #ff0000>';
+		else str += '<td>';
+		str += '$ ' + num_to_str(npv[i][j] , 0) + ' '; 
+		str += '</td>';
+	}
+	i = i + 1;
+	str += '</tr>'; 
+}
+
+str += '</table>';
+str += '<table>'; 
+str += '<table>';
+str += '<tr>'; 
+str += '<td bgcolor = #00ff00>';
+str += '<font size="2">Max NPV</font>';
+str += '</tr>'; 
+str += '</table>';
+
+
+//Max Energy Yield Results:
+str += '<br><h5>Results for Max Energy Yield: </h5>';
+str += '<br>GCR: '+ num_to_str(db{"max_yield"}.gcr , 3);
+str += '<br>Tilt Angle (in Degrees): ' + db{"max_yield"}.tilt;
+str += '<br>Number of modules along bottom: ' + db{"yield_config"}.nmodx +' modules';
+str += '<br>Number of modules along side of each row (note: this was set by the user in the active case): ' + nmody + ' module(s)';
+str += '<br>Number of rows: ' + num_to_str(db{"yield_config"}.nrows,1) + ' rows'; 
+str += '<br>Row spacing estimate: ' + num_to_str(db{"yield_config"}.row_spacing,2) + ' m';
+str += '<br>Total number of modules: ' + db{"yield_config"}.total_modules + ' modules';
+str += '<br>Modules per string in subarray (set by the user in the active case): ' + modules_per_string_yield + ' modules';
+str += '<br>Strings in parallel in subarray: ' + string_in_parallel_yield + ' strings';
+str += '<br>Number of inverters: ' + inverter_yield;
+str += '<br><br>AEP: '+ num_to_str(db{"max_yield"}.energy,0) + ' kWh ' ; 
+str += '<br>System Size: '+ db{"max_yield"}.system_size + ' kW';
+str += '<br>NPV: $ ' + num_to_str(db{"max_yield"}.npv,0) ; 
+str += '<br>Energy Yield: '+ num_to_str(db{"max_yield"}.yield,1) + ' kWh/kW';
+
+
+//Table for Energy Yield Results:
+str += '<br><br><strong>Energy Yield at Specified Combinations of GCR and Tilt Angles (kWh/kW): <br></strong>';
+
+str += '<table>'; 
+str += '<table border = "1">';
+str += '<th> </th>';
+for (tilt = min_tilt  ; tilt <= max_tilt ; tilt = tilt + tilt_steps)
+{
+	str += '<th>Tilt Angle: ' + tilt + '</th>';
+}
+
+i = 0;
+for (gcr = min_gcr ; gcr <= max_gcr ; gcr = gcr + gcr_steps) { 
+	j = -1;
+	str += '<tr>';
+	str += '<th>GCR: ' + num_to_str( gcr , 3) + '</th>';
+	for (tilt = min_tilt ; tilt <= max_tilt ; tilt = tilt + tilt_steps) {
+		j = j + 1;
+		if (yield[i][j] == db{"max_yield"}.yield) str += '<td bgcolor = #00ff00>';
+		elseif (yield[i][j]  < 0) str += '<td bgcolor = #ff0000>';
+		else str += '<td>';
+		str += ' ' + num_to_str(yield[i][j], 0) + ' '; 
+		str += '</td>';
+	}
+	i = i + 1;
+	str += '</tr>'; 
+}
+
+str += '</table>';
+str += '<table>'; 
+str += '<table>';
+str += '<tr>'; 
+str += '<td bgcolor = #00ff00>';
+str += '<font size="2">Max Energy Yield</font>';
+str += '</tr>'; 
+str += '</table>';
+
+
+
+
+
+///////////////////////////////////**** P L O T T I N G ****///////////////////////////////////
+
+clr = ['#FF0000',	'#00FFFF',	'#FF00FF',	'#0000A0',	'#9ACD32',	'#800080',	'#FFFF00',	'#00FF00',	'#0000FF',	'#C0C0C0',	'#808080',	
+	   '#000000',	'#FFA500',	'#A52A2A',	'#800000',	'#008000',	'#F08080', 	'#90EE90',	'#FFB6C1',	'#FFA07A',	'#20B2AA',	'#87CEFA',	
+	   '#778899',	'#778899',	'#FFFFE0',	'#00FF00',	'#32CD32',	'#FAF0E6',	'#FF00FF',	'#800000',	'#66CDAA',	'#0000CD',	'#BA55D3',	
+	   '#9370DB',	'#3CB371',	'#7B68EE',	'#00FA9A',	'#48D1CC',	'#C71585',	'#191970',	'#F5FFFA',	'#FFE4E1',	'#FFE4B5',	'#FFDEAD',	
+	   '#000080',	'#FDF5E6',	'#808000',	'#6B8E23',	'#FFA500',	'#FF4500',	'#DA70D6',	'#EEE8AA',	'#98FB98',	'#AFEEEE',	'#DB7093',	
+	   '#FFEFD5',	'#FFDAB9',	'#CD853F',	'#FFC0CB',	'#DDA0DD',	'#B0E0E6',	'#800080',	'#663399',	'#FF0000',	'#BC8F8F',	'#4169E1',	
+	   '#8B4513',	'#FA8072',	'#F4A460',	'#2E8B57',	'#FFF5EE',	'#A0522D',	'#C0C0C0',	'#87CEEB',	'#6A5ACD',	'#708090',	'#708090',	
+	   '#FFFAFA',	'#00FF7F',	'#4682B4',	'#D2B48C',	'#008080',	'#D8BFD8',	'#FF6347',	'#40E0D0',	'#EE82EE',	'#F5DEB3', 	'#F5F5F5',	
+	   '#FFFF00',	'#ADD8E6'];
+
+//Plotting the AEP as a function of tilt angle (for various GCRs):
+newplot();
+for ( count = 0; count <= (#annual_energy - 1) ; count = count + 1) {
+	plot(x, annual_energy[count],{series = type[count], color = clr[count], size = 3});
+	axis('x1', {'label' = "Tilt Angle "});
+	axis('y1', {'label' = "Annual Energy Production  (kWh)"});
+	plotopt({'legendpos'='right', 'export_graph' = true, 'coarse'=true, 'fine'=true, 'title' = "Annual Energy Production at Various GCR [" + subarray_x + "]"});
+}
+
+
+//Plotting the NPV as a function of tilt angle (for various GCRs):
+newplot();
+for ( k = 0; k <= (#annual_energy - 1) ; k = k + 1) {
+	plot(x, npv[k],{series = type[k], color = clr[k], size = 3});
+	axis('x1', {'label' = "Tilt Angle"});
+	axis('y1', {'label' = "Net Present Value  ($)"});
+	plotopt({'legendpos'='right', 'coarse'=true, 'fine'=true, 'title' = "Net Present Value at Various GCR [" + subarray_x + "]"});
+}
+
+
+//Plotting the energy yield as a function of tilt angle (for various GCRs):
+newplot();
+for ( l = 0; l <= (#annual_energy - 1) ; l = l + 1) {
+	plot(x, yield[l],{series = type[l], color = clr[l], size = 3});   //This is the energy yield of the system
+	axis('x1', {'label' = "Tilt Angle "});
+	axis('y1', {'label' = "Energy Yield  (kWh/kW)"});
+	plotopt({'legendpos'='right', 'coarse'=true, 'fine'=true, 'title' = "Energy Yield at Various GCR [" + subarray_x + "]"});
+}
+
+
+str += '</body></html>';
+html_dialog(str, 'Optimal Array Layout', [1000,800]);
+
+
+subarray_to_optimize++;
+if(single_subarray == true) break;			//If user is optimizing only a single subarray, exit the while loop, i.e., end the macro at this point.
+
 }
 
 ///////////////////////////////////**** End of Script ****///////////////////////////////////
 
-outln('\n\t//////***** Simulation Complete *****//////');
-if (update_results != 'Do Not Update')
-			outln('\n\tSubarray configuration in active case has been updated with respect to the following strategy: ' + update_results);
+outln('\n//////***** Simulation Complete *****//////');
+
+
+
+////////////Function Declarations//////////////////////
+
+
+

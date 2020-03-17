@@ -1,11 +1,11 @@
 PVWatts
-587
-764
-32
+585
+907
+40
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 170
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -32,14 +35,14 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 12
 ac_nameplate
 X
 3
-249
+195
 Y
 3
 114
@@ -49,6 +52,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -91,30 +97,33 @@ TabOrder
 LossAdjustment
 
 1
-6
+7
 Name
 5
 6
 adjust
 X
 3
-273
+30
 Y
 3
-675
+813
 Width
 3
 294
 Height
 3
 78
+Tool Tip
+5
+0
 TabOrder
 3
 24
 Choice
 
 1
-8
+9
 Name
 5
 10
@@ -131,14 +140,17 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 5
 Fixed open rack
 Fixed roof mount
-1 Axis Tracking
-1 Axis Backtracking
-2 Axis Tracking
+1-axis tracking
+1-axis backtracking
+2-axis tracking
 Selection
 3
 4294967295
@@ -148,7 +160,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -165,6 +177,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -204,17 +219,50 @@ BackColour
 TabOrder
 3
 8
+CheckBox
+
+1
+9
+Name
+5
+18
+batt_simple_enable
+X
+3
+417
+Y
+3
+825
+Width
+3
+144
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+21
+Enable simple battery
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
-16
+17
 Name
 5
 11
 dc_ac_ratio
 X
 3
-249
+195
 Y
 3
 87
@@ -224,6 +272,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -266,23 +317,26 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 13
 edit_3d_scene
 X
 3
-336
+321
 Y
 3
-618
+690
 Width
 3
 210
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -293,23 +347,59 @@ TabOrder
 CheckBox
 
 1
-8
+9
+Name
+5
+11
+en_snowloss
+X
+3
+36
+Y
+3
+720
+Width
+3
+155
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Estimate snow losses
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
 Name
 5
 19
 en_user_spec_losses
 X
 3
-201
+234
 Y
 3
-528
+408
 Width
 3
 24
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -322,7 +412,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 3
@@ -339,6 +429,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -381,14 +474,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
 inv_eff
 X
 3
-249
+195
 Y
 3
 141
@@ -398,6 +491,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -440,23 +536,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
 loss_age
 X
 3
-459
+456
 Y
 3
-450
+540
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -499,23 +598,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
 loss_avail
 X
 3
-459
+456
 Y
 3
-477
+567
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -558,23 +660,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
 loss_conn
 X
 3
-459
+456
 Y
 3
-369
+459
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -617,23 +722,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
 loss_lid
 X
 3
-459
+456
 Y
 3
-396
+486
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -676,23 +784,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
 loss_mismatch
 X
 3
-171
+168
 Y
 3
-450
+540
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -735,23 +846,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
 loss_nameplate
 X
 3
-459
+456
 Y
 3
-423
+513
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -794,23 +908,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
 loss_shading
 X
 3
-171
+168
 Y
 3
-396
+486
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -853,23 +970,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
 loss_snow
 X
 3
-171
+168
 Y
 3
-423
+513
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -912,23 +1032,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
 loss_soiling
 X
 3
-171
+168
 Y
 3
-369
+459
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -971,23 +1094,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
 loss_wiring
 X
 3
-171
+168
 Y
 3
-477
+567
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1030,23 +1156,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
 losses
 X
 3
-459
+456
 Y
 3
-570
+597
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1089,23 +1218,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
 losses_user
 X
 3
-459
+456
 Y
 3
-528
+408
 Width
 3
 90
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1148,14 +1280,14 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 11
 module_type
 X
 3
-249
+195
 Y
 3
 60
@@ -1165,6 +1297,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 3
@@ -1177,10 +1312,57 @@ Selection
 TabOrder
 3
 2
+Label
+
+1
+13
+Name
+5
+16
+msg_pvwatts_snow
+X
+3
+195
+Y
+3
+726
+Width
+3
+348
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Image
 
 1
-7
+8
 Name
 5
 9
@@ -1197,6 +1379,9 @@ Width
 Height
 3
 102
+Tool Tip
+5
+0
 Image
 7
 PVWatts_object 12.png
@@ -1206,23 +1391,26 @@ Centered
 Divider
 
 1
-9
+10
 Name
 5
 9
-object 22
+object 21
 X
 3
-21
+75
 Y
 3
-654
+435
 Width
 3
-525
+477
 Height
 3
-19
+16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1234,31 +1422,34 @@ Colour
 255
 Caption
 5
-28
-Curtailment and Availability
+30
+Specify System Loss Categories
 Bold
 2
 1
 Divider
 
 1
-9
+10
 Name
 5
-11
-object 2228
+9
+object 22
 X
 3
-21
+24
 Y
 3
-603
+768
 Width
 3
 525
 Height
 3
-16
+19
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1270,15 +1461,93 @@ Colour
 255
 Caption
 5
-7
-Shading
+19
+System Availability
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+11
+object 2228
+X
+3
+27
+Y
+3
+351
+Width
+3
+525
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+13
+System Losses
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+13
+object 222823
+X
+3
+27
+Y
+3
+624
+Width
+3
+525
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+16
+Shading and Snow
 Bold
 2
 1
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -1294,7 +1563,10 @@ Width
 573
 Height
 3
-423
+567
+Tool Tip
+5
+0
 Caption
 5
 6
@@ -1305,7 +1577,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -1322,37 +1594,43 @@ Width
 Height
 3
 144
+Tool Tip
+5
+0
 Caption
 5
-11
-Orientation
+24
+Orientation and Tracking
 Bold
 2
 1
 Label
 
 1
-12
+13
 Name
 5
 8
 object 7
 X
 3
-33
+30
 Y
 3
-675
+366
 Width
 3
-228
+528
 Height
 3
-84
+36
+Tool Tip
+5
+0
 Caption
 5
-105
-Curtailment and availability losses reduce the system output to represent system outages or other events.
+125
+System losses account for performance losses you would expect in a real system that are not explicitly calculated by PVWatts.
 TextColour
 4
 0
@@ -1374,26 +1652,173 @@ AlignRight
 AlignTop
 2
 1
+Label
+
+1
+13
+Name
+5
+12
+object 73132
+X
+3
+30
+Y
+3
+645
+Width
+3
+519
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+143
+Shading losses are for shading by nearby objects. PVWatts calculates self-shading losses based on the system design and tracking options above.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+13
+object 731324
+X
+3
+30
+Y
+3
+786
+Width
+3
+519
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+96
+System availability losses reduce the system output to represent system outages or other events.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 735
+X
+3
+384
+Y
+3
+27
+Width
+3
+189
+Height
+3
+147
+Tool Tip
+5
+0
+Caption
+5
+255
+SAM uses PVWatts Version 7, which is different from the online PVWatts Calculator version. SAM's results will likely be different from the online calculator's results until the online calculator is updated. See Help for information about PVWatts versions.
+TextColour
+4
+255
+128
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 ShadingFactors
 
 1
-8
+9
 Name
 5
 7
 shading
 X
 3
-192
+180
 Y
 3
-618
+690
 Width
 3
 135
 Height
 3
 24
+Tool Tip
+5
+0
 ShowDBOptions
 2
 0
@@ -1406,14 +1831,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
 system_capacity
 X
 3
-249
+195
 Y
 3
 33
@@ -1423,6 +1848,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1465,7 +1893,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 4
@@ -1482,6 +1910,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1522,7 +1953,7 @@ TabOrder
 3
 7
 
-25
+27
 ac_nameplate
 3
 1
@@ -1557,7 +1988,7 @@ Array type
  
 PVWatts
 84
-Fixed open rack|Fixed roof mount|1 Axis Tracking|1 Axis Backtracking|2 Axis Tracking
+Fixed open rack|Fixed roof mount|1-axis tracking|1-axis backtracking|2-axis tracking
 2
 1
 1
@@ -1579,6 +2010,20 @@ PVWatts
 1
 180
 Numeric
+batt_simple_enable
+3
+1
+Enable simple battery
+ 
+PVWatts
+0
+12
+1
+1
+1
+1
+0
+Default
 dc_ac_ratio
 3
 1
@@ -1593,10 +2038,24 @@ PVWatts
 1
 1.1
 Numeric
+en_snowloss
+3
+1
+Estimate losses from snow
+ 
+PVWatts
+0
+3
+1
+1
+1
+1
+0
+Default
 en_user_spec_losses
 3
 1
-Enable user specified losses
+Specify total system loss
  
 PVWatts
 0
@@ -1792,7 +2251,7 @@ Numeric
 losses_user
 3
 1
-User-specified total system losses
+Total loss
 %
 PVWatts
 0
@@ -1846,7 +2305,7 @@ Default
 system_capacity
 3
 1
-System nameplate size
+System nameplate capacity
 kWdc
 PVWatts
 0
@@ -1872,7 +2331,7 @@ PVWatts
 42.82
 Numeric
 
-492
+493
 equations{'ac_nameplate'} = define() {
 	return ${system_capacity}/${dc_ac_ratio};
 };
@@ -1890,10 +2349,11 @@ equations{ 'losses' } = define() {
 					*(1-0.01*${loss_age})
 					*(1-0.01*${loss_avail}) );
 };
-1456
+
+2731
 function pvwatts_ui_update() {
 	arr = ${array_type};
-	enable( 'gcr', (arr==2||arr==3) );
+	enable( 'gcr', (arr==0||arr==2||arr==3) );
 	enable( 'tilt', (arr!=4));
 	enable( 'azimuth', (arr!=4));
 	
@@ -1902,10 +2362,43 @@ function pvwatts_ui_update() {
 	losses = [ 'soiling', 'shading', 'snow', 'mismatch', 'wiring', 'conn', 'lid', 'nameplate', 'age', 'avail' ];
 	for( i=0;i<#losses;i++ )
 		enable( 'loss_' + losses[i], !enul );
+	
+	snow_loss_checks();	
+		
+}
+
+function snow_loss_checks () {
+	msg_snow = '';
+	if ( isnan(value('annual_snow')) == true && value('en_snowloss') == 1 ) {
+		msg_snow = 'Weather file does not have snow depth data required to model snow losses. See Help for more information.';
+	}
+	property('msg_pvwatts_snow','Caption',msg_snow);
+	
+	if ( value('en_snowloss') == 1 && 
+	     value('loss_snow') !=0 && 
+	     isnan(value('annual_snow')) == false && 
+	     value('en_user_spec_losses') == 0 )
+	{
+		msgbox('Snow loss warning!\nThe snow loss model is enabled and the Snow input is set to ' + value('loss_snow') + '%. Set Snow to zero to avoid double-counting snow losses. Ignore this message to include losses from both the snow model and the Snow input value.');
+	}
+}
+
+// do this here instead of equations so
+// versions.lk will work for opening files
+// older than 2018.11.11
+function check_batt_config() {
+	 t = technology();
+	 if ( t == 'PVWatts Battery' ) 
+	 { value('batt_simple_enable', 1); }
+	 else 
+	 { value('batt_simple_enable', 0); }
+ 	show( 'batt_simple_enable', 0 ); // hidden variable set by equations
+	refresh();
 }
 
 on_load{'PVWatts'} = define() {
 	pvwatts_ui_update();
+	check_batt_config();
 };
 
 on_change{'array_type'} = define() {
@@ -1914,6 +2407,14 @@ on_change{'array_type'} = define() {
 
 on_change{'en_user_spec_losses'} = define() {
 	pvwatts_ui_update();
+};
+
+on_change{'en_snowloss'} = define() {
+	snow_loss_checks();	
+};
+
+on_change{'loss_snow'} = define() {
+	snow_loss_checks();
 };
 
 on_change{'edit_3d_scene'} = define() {

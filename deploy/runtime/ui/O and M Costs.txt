@@ -1,27 +1,30 @@
 O and M Costs
-795
-202
-12
+829
+189
+14
 GroupBox
 
 1
-7
+8
 Name
 5
 9
 GroupBox1
 X
 3
-6
+9
 Y
 3
 3
 Width
 3
-780
+812
 Height
 3
-196
+176
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -32,7 +35,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -49,6 +52,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 33
@@ -77,7 +83,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -94,6 +100,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -122,23 +131,26 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
 Label3
 X
 3
-531
+537
 Y
 3
-45
+54
 Width
 3
-235
+274
 Height
 3
-142
+110
+Tool Tip
+5
+0
 Caption
 5
 190
@@ -167,7 +179,7 @@ AlignTop
 SchedNumeric
 
 1
-11
+12
 Name
 5
 11
@@ -184,6 +196,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -207,7 +222,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -224,6 +239,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -267,7 +285,7 @@ TabOrder
 SchedNumeric
 
 1
-11
+12
 Name
 5
 8
@@ -284,6 +302,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -307,7 +328,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -324,6 +345,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -367,7 +391,7 @@ TabOrder
 SchedNumeric
 
 1
-11
+12
 Name
 5
 12
@@ -377,13 +401,16 @@ X
 219
 Y
 3
-117
+141
 Width
 3
 118
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -407,7 +434,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -417,13 +444,16 @@ X
 411
 Y
 3
-117
+141
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -467,7 +497,7 @@ TabOrder
 SchedNumeric
 
 1
-11
+12
 Name
 5
 13
@@ -484,6 +514,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -507,7 +540,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -524,6 +557,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -564,8 +600,114 @@ BackColour
 TabOrder
 3
 6
+SchedNumeric
 
+1
+12
+Name
+5
+20
+om_replacement_cost1
+X
+3
+219
+Y
+3
+117
+Width
+3
+118
+Height
+3
+21
+Tool Tip
+5
+0
+Label
+5
+5
+Value
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+124
+Type a battery replacement cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
+TabOrder
+3
+7
+Numeric
+
+1
+17
+Name
+5
+25
+om_replacement_cost_escal
+X
+3
+411
+Y
+3
+117
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+2
+ %
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
 8
+
+10
 om_capacity
 3
 2
@@ -626,7 +768,7 @@ om_fuel_cost
 3
 2
 Fossil fuel cost
-$/MMBTU
+$/MMBtu
 Operation and Maintenance Costs
 0
 2
@@ -678,29 +820,52 @@ Operation and Maintenance Costs
 1
 0
 Numeric
+om_replacement_cost1
+3
+2
+Battery replacement cost
+$/kWh
+Operation and Maintenance Costs
+0
+2
+1
+2
+1
+1
+0
+SchedNumeric
+om_replacement_cost_escal
+3
+1
+Escalation cost for battery replacements
+%/year
+Operation and Maintenance Costs
+0
+3
+1
+1
+1
+1
+0
+Numeric
 
 0
-773
-on_load{"O and M Costs"}=define(){
-tech=technology();
-// show for all techs that have non-zero system.annual_fuel(except biopower tech number 12 and gassification tech number 16 - fuel o and m on feedstock page)
-    show('om_fuel_cost', (tech=="Generic System") 
-    ||(tech=="Generic CSP System") 
-    ||(tech=="Empirical Trough") 
-    ||(tech=="MSPT") 
-    ||(tech=="DSPT") 
-    ||(tech=="Physical Trough") 
-    ||(tech=="DSLF") 
-    ||(tech=="MSLF") 
-    );// technology models 9 & 10 removed, Dec 11, 2012
-    show('om_fuel_cost_escal',  (tech=="Generic System") 
-    ||(tech=="Generic CSP System") 
-    ||(tech=="Empirical Trough") 
-    ||(tech=="MSPT") 
-    ||(tech=="DSPT") 
-    ||(tech=="Physical Trough") 
-    ||(tech=="DSLF") 
-    ||(tech=="MSLF") 
-     );
-	};
-	
+621
+on_load{'O and M Costs'}=define(){
+	tech=technology();
+	fuel_tech = ( (tech=='Generic System') 
+	||(tech=='Generic CSP System') 
+	||(tech=='Empirical Trough') 
+	||(tech=='MSPT') 
+	||(tech=='DSPT') 
+    ||(tech=='Physical Trough') 
+    ||(tech=='DSLF') 
+    ||(tech=='MSLF') );
+    // PVWatts Battery does not model replacements
+    batt_replacement_tech = ( (tech=='PV Battery')
+	|| (tech=='Generic Battery')    );
+    show('om_fuel_cost', fuel_tech );
+    show('om_fuel_cost_escal',  fuel_tech );
+	show('om_replacement_cost1', batt_replacement_tech );
+    show('om_replacement_cost_escal', batt_replacement_tech );
+	};	

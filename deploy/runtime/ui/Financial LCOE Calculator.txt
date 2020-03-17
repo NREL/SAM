@@ -5,7 +5,7 @@ Financial LCOE Calculator
 SchedNumeric
 
 1
-11
+12
 Name
 5
 19
@@ -22,6 +22,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5
@@ -44,7 +47,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -61,6 +64,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -103,7 +109,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -120,6 +126,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -162,7 +171,7 @@ TabOrder
 SchedNumeric
 
 1
-11
+12
 Name
 5
 23
@@ -179,6 +188,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5
@@ -201,7 +213,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -218,6 +230,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -260,7 +275,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -277,6 +292,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -319,7 +337,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -336,6 +354,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -378,7 +399,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -395,6 +416,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -437,7 +461,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -454,6 +478,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -496,7 +523,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -513,6 +540,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -555,7 +585,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -572,6 +602,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -614,7 +647,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -631,6 +664,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -673,7 +709,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 16
@@ -690,6 +726,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 33
@@ -718,7 +757,7 @@ AlignTop
 Hyperlink
 
 1
-8
+9
 Name
 5
 9
@@ -735,6 +774,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 62
@@ -749,7 +791,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -766,6 +808,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -785,7 +830,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -802,6 +847,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -821,7 +869,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -838,6 +886,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -857,7 +908,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -874,6 +925,9 @@ Width
 Height
 3
 693
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -884,7 +938,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -901,6 +955,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 375
@@ -929,7 +986,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -946,6 +1003,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -974,7 +1034,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -991,6 +1051,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 47
@@ -1019,7 +1082,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1036,6 +1099,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -1064,7 +1130,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1081,6 +1147,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1123,7 +1192,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1140,6 +1209,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1182,7 +1254,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1199,6 +1271,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1241,7 +1316,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 20
@@ -1258,6 +1333,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -1278,7 +1356,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -1295,6 +1373,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1337,7 +1418,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 19
@@ -1354,6 +1435,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -1374,7 +1458,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -1391,6 +1475,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1433,7 +1520,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 14
@@ -1450,6 +1537,9 @@ Width
 Height
 3
 144
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1477,7 +1567,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -1494,6 +1584,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1536,7 +1629,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -1553,6 +1646,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1595,7 +1691,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1612,6 +1708,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1654,7 +1753,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1671,6 +1770,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1713,7 +1815,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -1730,6 +1832,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1772,7 +1877,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1789,6 +1894,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1831,7 +1939,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -1848,6 +1956,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2358,30 +2469,14 @@ equations{ '$MIMO$ fixed_charge_rate_calculator' } = define() {
     ${fixed_charge_rate} = fcr;
   }
 };
-1586
-on_load{"Financial LCOE Calculator"} = define()
-{
-  on_change{'ui_cost_input_option'}();
-  on_change{'ui_fcr_input_option'}();
-  on_change{'c_construction_cost'}();
-  cfin_is_zero_check();
-};
-
-on_change{'ui_cost_input_option'} = define()
-{
+1618
+function enable_disable() {
   fixed = ( value('ui_cost_input_option') == 0 );
-  
   enable( 'ui_capital_cost_fixed', fixed );
   enable( 'ui_operating_cost_fixed', fixed );
-  
   enable( 'ui_capital_cost_capacity', !fixed );
   enable( 'ui_operating_cost_capacity', !fixed );
-};
-
-on_change{'ui_fcr_input_option'} = define()
-{
   calculator = ( value('ui_fcr_input_option') == 1 );
-  
   enable( 'c_lifetime', calculator );
   enable( 'c_inflation', calculator );
   enable( 'c_real_discount_rate', calculator );
@@ -2395,17 +2490,39 @@ on_change{'ui_fcr_input_option'} = define()
   enable( 'ui_crf', calculator );
   enable( 'ui_pfin', calculator );
   enable( 'ui_cfin', calculator );
-
   enable( 'ui_fixed_charge_rate', !calculator );
-  
-};
+}
 
-on_change{'c_construction_cost'} = define() { cfin_is_zero_check(); };
 function cfin_is_zero_check()
 {
 	msg = '';
-	if ( value('ui_cfin') == 0 ) 
-		msg = 'CFF=0. To remove construction financing from your analysis, set the annual cost during constrution to 100% instead of zero, and set the nominal construction interest rate to zero.';
+	if ( value('ui_cfin') == 0 && value('ui_fcr_input_option') == 1 )
+	{
+		msg = 'CFF=0. To remove construction financing from your analysis, set the annual cost during constrution to 100% instead of zero, and set the nominal construction interest rate to zero.'; 
+	}
 	property( 'ui_lbl_cff_msg', 'Caption', msg );
 }
+
+on_load{"Financial LCOE Calculator"} = define()
+{
+  cfin_is_zero_check();
+  enable_disable();
+};
+
+on_change{'ui_cost_input_option'} = define()
+{
+	enable_disable();
+};
+
+on_change{'ui_fcr_input_option'} = define()
+{
+	enable_disable();
+	cfin_is_zero_check();
+};
+
+on_change{'c_construction_cost'} = define() 
+{
+	cfin_is_zero_check(); 
+};
+
 

@@ -1,0 +1,3029 @@
+Fuel Cell
+963
+1135
+46
+Divider
+
+1
+10
+Name
+5
+11
+Degradation
+X
+3
+471
+Y
+3
+252
+Width
+3
+471
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+17
+Shutdown Schedule
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+12
+Degradation3
+X
+3
+468
+Y
+3
+120
+Width
+3
+471
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+11
+Degradation
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+16
+Dynamic Response
+X
+3
+21
+Y
+3
+264
+Width
+3
+432
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+16
+Dynamic Response
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+17
+Stack Replacement
+X
+3
+6
+Y
+3
+474
+Width
+3
+950
+Height
+3
+114
+Tool Tip
+5
+0
+Caption
+5
+17
+Stack Replacement
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+17
+degradation_label
+X
+3
+483
+Y
+3
+135
+Width
+3
+459
+Height
+3
+39
+Tool Tip
+5
+0
+Caption
+5
+154
+Annual degradation reduces cell stack maximum power output over time. Degradation due to restart applies when the cell stack restarts after shutting down.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+11
+fuelCellBox
+X
+3
+6
+Y
+3
+9
+Width
+3
+950
+Height
+3
+88
+Tool Tip
+5
+0
+Caption
+5
+14
+Fuel Cell Type
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+12
+fuelCellBox2
+X
+3
+6
+Y
+3
+102
+Width
+3
+950
+Height
+3
+370
+Tool Tip
+5
+0
+Caption
+5
+25
+Cell and Stack Properties
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+12
+fuelCellBox3
+X
+3
+6
+Y
+3
+591
+Width
+3
+950
+Height
+3
+406
+Tool Tip
+5
+0
+Caption
+5
+10
+Efficiency
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+12
+fuelCellBox4
+X
+3
+6
+Y
+3
+1002
+Width
+3
+950
+Height
+3
+127
+Tool Tip
+5
+0
+Caption
+5
+15
+Fuel Properties
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+17
+fuelCellFuelLabel
+X
+3
+459
+Y
+3
+1017
+Width
+3
+486
+Height
+3
+105
+Tool Tip
+5
+0
+Caption
+5
+353
+Different fuel types may not be compatible will all fuel cell technologies or may require additional system components to convert the fuel into usable hydrogen.  Selecting a fuel type in SAM simply modifies default values for the lower heating value and price, making the assumption that the user understands the fuel input limitations for their system.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+17
+fuelCellTypeLabel
+X
+3
+312
+Y
+3
+21
+Width
+3
+615
+Height
+3
+66
+Tool Tip
+5
+0
+Caption
+5
+320
+Modifying the fuel cell type changes default information about the system size, dynamic response, degradation and efficiency.  SAM models all fuel cell types the same way, by applying an electrical efficiency based upon the percent of max power at each timestep and limiting operation based upon dynamic response limits.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+DataMatrix
+
+1
+27
+Name
+5
+30
+fuelcell_availability_schedule
+X
+3
+483
+Y
+3
+273
+Width
+3
+460
+Height
+3
+174
+Tool Tip
+5
+0
+PasteAppendRows
+2
+0
+PasteAppendCols
+2
+0
+ShowButtons
+2
+1
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
+ShadeC0
+2
+0
+ShowCols
+2
+0
+ShowColLabels
+2
+1
+ColLabels
+5
+38
+Shutdown hour of year, Hours shut down
+NumRowsLabel
+5
+17
+No. of shutdowns:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+1
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+0
+Numeric
+
+1
+17
+Name
+5
+26
+fuelcell_degradation_input
+X
+3
+717
+Y
+3
+189
+Width
+3
+54
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+28
+fuelcell_degradation_restart
+X
+3
+717
+Y
+3
+216
+Width
+3
+54
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+26
+fuelcell_degradation_units
+X
+3
+777
+Y
+3
+189
+Width
+3
+78
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+kW/hr
+%/year
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+30
+fuelcell_dynamic_response_down
+X
+3
+231
+Y
+3
+441
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+36
+fuelcell_dynamic_response_down_input
+X
+3
+231
+Y
+3
+387
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+36
+fuelcell_dynamic_response_down_units
+X
+3
+291
+Y
+3
+387
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+kW/hr
+%/hour
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+28
+fuelcell_dynamic_response_up
+X
+3
+231
+Y
+3
+414
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+34
+fuelcell_dynamic_response_up_input
+X
+3
+231
+Y
+3
+360
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+34
+fuelcell_dynamic_response_up_units
+X
+3
+291
+Y
+3
+360
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+kW/hr
+%/hour
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+DataMatrix
+
+1
+27
+Name
+5
+19
+fuelcell_efficiency
+X
+3
+9
+Y
+3
+687
+Width
+3
+526
+Height
+3
+300
+Tool Tip
+5
+0
+PasteAppendRows
+2
+0
+PasteAppendCols
+2
+0
+ShowButtons
+2
+1
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
+ShadeC0
+2
+0
+ShowCols
+2
+0
+ShowColLabels
+2
+1
+ColLabels
+5
+61
+% Power, Electrical Efficiency LHV (%), Max Heat Recovery (%)
+NumRowsLabel
+5
+5
+Rows:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+1
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+0
+Choice
+
+1
+9
+Name
+5
+26
+fuelcell_efficiency_choice
+X
+3
+291
+Y
+3
+609
+Width
+3
+336
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+Power percent function of nameplate power
+Power percent as function of degraded max power
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+31
+fuelcell_efficiency_choice_help
+X
+3
+24
+Y
+3
+639
+Width
+3
+861
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+302
+The electrical efficiency is applied to the power generated to calculate fuel consumption, while heat recovery percent determines heat generation.  These efficiencies are calculated from the percent power output, which can be defined relative the original nameplate power, or to the degraded max power.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Plot
+
+1
+6
+Name
+5
+24
+fuelcell_efficiency_plot
+X
+3
+537
+Y
+3
+687
+Width
+3
+415
+Height
+3
+300
+Tool Tip
+5
+0
+Numeric
+
+1
+17
+Name
+5
+26
+fuelcell_fuel_available_in
+X
+3
+231
+Y
+3
+1098
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+29
+fuelcell_fuel_available_units
+X
+3
+324
+Y
+3
+1098
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+4
+L
+kg
+m3
+MCf
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+21
+fuelcell_fuel_limited
+X
+3
+231
+Y
+3
+1071
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+18
+fuelcell_fuel_type
+X
+3
+231
+Y
+3
+1017
+Width
+3
+168
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+3
+Natural Gas
+Hydrogen
+Custom
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+19
+fuelcell_is_started
+X
+3
+45
+Y
+3
+279
+Width
+3
+260
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+41
+Start simulation with fuel cell operating
+State
+2
+0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+15
+fuelcell_lhv_in
+X
+3
+231
+Y
+3
+1044
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+18
+fuelcell_lhv_units
+X
+3
+324
+Y
+3
+1044
+Width
+3
+75
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+3
+Btu/lbm
+MJ/kg
+Btu/ft3
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+24
+fuelcell_number_of_units
+X
+3
+231
+Y
+3
+189
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+18
+fuelcell_power_min
+X
+3
+231
+Y
+3
+243
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+24
+fuelcell_power_nameplate
+X
+3
+231
+Y
+3
+216
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+26
+fuelcell_replacement_label
+X
+3
+576
+Y
+3
+543
+Width
+3
+374
+Height
+3
+26
+Tool Tip
+5
+0
+Caption
+5
+57
+Click Edit Array and enter a 1 for each replacement year.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+27
+fuelcell_replacement_option
+X
+3
+60
+Y
+3
+504
+Width
+3
+219
+Height
+3
+76
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+No replacements
+Replace at specified capacity
+Replace at specified schedule
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+28
+fuelcell_replacement_percent
+X
+3
+516
+Y
+3
+516
+Width
+3
+54
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+DataArray
+
+1
+10
+Name
+5
+29
+fuelcell_replacement_schedule
+X
+3
+483
+Y
+3
+543
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+2
+Label
+5
+17
+Replacement (0,1)
+Description
+5
+74
+Fuel cell stack replacement schedule: Enter a 1 for each replacement year.
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+22
+fuelcell_shutdown_time
+X
+3
+231
+Y
+3
+333
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+21
+fuelcell_startup_time
+X
+3
+231
+Y
+3
+306
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+13
+fuelcell_type
+X
+3
+42
+Y
+3
+30
+Width
+3
+219
+Height
+3
+27
+Tool Tip
+5
+0
+Items
+6
+4
+Molten carbonate (MCFC)
+Phosphoric acid (PAFC)
+Solid oxide (SOFC)
+Custom
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+fuelcell_unit_max_power
+X
+3
+231
+Y
+3
+135
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+29
+fuelcell_unit_min_power_input
+X
+3
+231
+Y
+3
+162
+Width
+3
+57
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+23
+fuelcell_unit_min_units
+X
+3
+291
+Y
+3
+162
+Width
+3
+129
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+kW
+% of nameplate
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+24
+Y
+3
+123
+Width
+3
+432
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+4
+Size
+Bold
+2
+1
+
+35
+fuelcell_availability_schedule
+3
+3
+Fuelcell shutdown schedule
+ 
+Fuel Cell
+0
+1
+1
+3
+1
+2
+0 0 
+
+DataMatrix
+fuelcell_degradation
+3
+1
+Degradation
+kW/hour
+Fuel Cell
+0
+8
+1
+1
+1
+1
+0.01
+Numeric
+fuelcell_degradation_input
+3
+1
+Annual degradation
+ 
+Fuel Cell
+0
+2
+1
+1
+1
+1
+20
+Numeric
+fuelcell_degradation_restart
+3
+1
+Degradation due to restarting cell stack
+kW
+Fuel Cell
+0
+2
+1
+1
+1
+1
+1
+Numeric
+fuelcell_degradation_units
+3
+1
+Units for annual degradation
+ 
+Fuel Cell
+12
+kW/hr|%/year
+1
+1
+1
+1
+1
+1
+Choice
+fuelcell_dynamic_response_down
+3
+1
+Calculated ramp down limit (per unit)
+kW/h
+Fuel Cell
+0
+8
+1
+1
+1
+1
+20
+Numeric
+fuelcell_dynamic_response_down_input
+3
+1
+Ramp rate down limit (per unit)
+ 
+Fuel Cell
+0
+2
+1
+1
+1
+1
+20
+Numeric
+fuelcell_dynamic_response_down_units
+3
+1
+Dynamic response down units
+ 
+Fuel Cell
+10
+kW/hr|%/hr
+1
+1
+1
+1
+1
+0
+Choice
+fuelcell_dynamic_response_up
+3
+1
+Calculated ramp up limit (per unit)
+kW/h
+Fuel Cell
+0
+8
+1
+1
+1
+1
+20
+Numeric
+fuelcell_dynamic_response_up_input
+3
+1
+Ramp rate up limit (per unit)
+ 
+Fuel Cell
+0
+2
+1
+1
+1
+1
+20
+Numeric
+fuelcell_dynamic_response_up_units
+3
+1
+Dynamic response units
+ 
+Fuel Cell
+10
+kW/hr|%/hr
+1
+1
+1
+1
+1
+0
+Choice
+fuelcell_efficiency
+3
+3
+Thermal and electrical efficiency
+%
+Fuel Cell
+53
+% Power| Electrical Efficiency %| Max Heat Recovery %
+1
+1
+3
+11
+3
+0 0 50 
+16 21 50 
+25 25 50 
+34 32 50 
+44 37 50 
+53 42 50 
+62 47 49 
+72 50 48 
+82 52 47 
+90 52 46 
+100 51 45 
+
+DataMatrix
+fuelcell_efficiency_choice
+3
+1
+Choose power percentage definition
+ 
+Fuel Cell
+0
+2
+1
+1
+1
+1
+0
+Choice
+fuelcell_fuel_available
+3
+1
+Quantity available
+ MCF
+Fuel Cell
+0
+8
+1
+1
+1
+1
+10000
+Numeric
+fuelcell_fuel_available_in
+3
+1
+Fuel available
+ 
+Fuel Cell
+0
+2
+1
+1
+1
+1
+1000
+Numeric
+fuelcell_fuel_available_units
+3
+1
+Available fuel units
+ 
+Fuel Cell
+26
+Liters|kg|cubic meters|Mcf
+1
+1
+1
+1
+1
+3
+Choice
+fuelcell_fuel_limited
+3
+1
+Fuel limited on site
+ 
+Fuel Cell
+0
+0
+1
+1
+1
+1
+0
+CheckBox
+fuelcell_fuel_type
+3
+1
+Fuel type
+ 
+Fuel Cell
+27
+Natural Gas|Hydrogen|Custom
+2
+1
+1
+1
+1
+0
+Choice
+fuelcell_is_started
+3
+1
+Start simulation with fuel cell operating
+ 
+Fuel Cell
+0
+1
+1
+1
+1
+1
+0
+CheckBox
+fuelcell_lhv
+3
+1
+Lower heating value
+Btu/ft3
+Fuel Cell
+0
+8
+1
+1
+1
+1
+1033
+Numeric
+fuelcell_lhv_in
+3
+1
+Lower heating value
+ MJ/kg
+Fuel Cell
+0
+2
+1
+1
+1
+1
+20267
+Numeric
+fuelcell_lhv_units
+3
+1
+Lower heating value units
+ 
+Fuel Cell
+21
+Btu/lbm|MJ/kg|Btu/ft3
+1
+1
+1
+1
+1
+2
+Choice
+fuelcell_number_of_units
+3
+1
+Number of units in stack
+ 
+Fuel Cell
+0
+2
+1
+1
+1
+1
+1
+Numeric
+fuelcell_power_min
+3
+1
+Minimum cell stack output
+kW
+Fuel Cell
+0
+8
+1
+1
+1
+1
+0
+Numeric
+fuelcell_power_nameplate
+3
+1
+Cell stack nameplate
+kW
+Fuel Cell
+0
+8
+1
+1
+1
+1
+0
+Numeric
+fuelcell_replacement_option
+3
+1
+Replacement option
+ 
+Fuel Cell
+75
+No replacements|Replace at specified capacity|Replace at specified schedule
+1
+1
+1
+1
+1
+0
+RadioChoice
+fuelcell_replacement_percent
+3
+1
+Fuel cell stack replacement threshold
+%
+Fuel Cell
+0
+2
+1
+1
+1
+1
+50
+Numeric
+fuelcell_replacement_schedule
+3
+2
+Fuel cell replacement schedule
+ 
+Fuel Cell
+0
+0
+1
+2
+1
+1
+0
+DataArray
+fuelcell_shutdown_time
+3
+1
+Shutdown time
+hours
+Fuel Cell
+0
+2
+1
+1
+1
+1
+24
+Numeric
+fuelcell_startup_time
+3
+1
+Startup time
+hours
+Fuel Cell
+0
+2
+1
+1
+1
+1
+24
+Numeric
+fuelcell_type
+3
+1
+Fuel cell type
+ 
+Fuel Cell
+21
+MCFC|PAFC|SOFC|Custom
+3
+1
+1
+1
+1
+0
+Choice
+fuelcell_unit_max_power
+3
+1
+Unit nameplate 
+kW
+Fuel Cell
+0
+2
+1
+1
+1
+1
+100
+Numeric
+fuelcell_unit_min_power
+3
+1
+Minimum unit output
+kW
+Fuel Cell
+0
+8
+1
+1
+1
+1
+20
+Numeric
+fuelcell_unit_min_power_input
+3
+1
+Minimum unit output
+ 
+Fuel Cell
+0
+2
+1
+1
+1
+1
+20
+Numeric
+fuelcell_unit_min_units
+3
+1
+Units for minimum unit output
+ 
+Fuel Cell
+17
+kW|% of nameplate
+1
+1
+1
+1
+1
+1
+Choice
+
+2842
+equations{ 'fuelcell_fuel_available'} = define(){
+	liter_per_m3 = 1000;
+	MCF_per_liter = 28316.846592;
+	
+	// natural gas
+	kg_per_liter = 0.9/liter_per_m3; 
+	
+	// hydrogen
+	if (${fuelcell_fuel_type} == 1){
+		kg_per_liter = 0.071; // http://www.airproducts.com/Products/Gases/gas-facts/conversion-formulas/weight-and-volume-equivalents/hydrogen.aspx
+	} 
+	
+	fuel_available = ${fuelcell_fuel_available_in};
+	
+	// Convert L to MCF 
+	if (${fuelcell_fuel_available_units} == 0){
+		 fuel_available = fuel_available * MCF_per_liter;
+	}
+	// Convert kg to MCF
+	else if (${fuelcell_fuel_available_units} == 1){
+		 fuel_available = (fuel_available/ kg_per_liter) * MCF_per_liter;
+	}
+	// Convert m3 to MCF
+	else if (${fuelcell_fuel_available_units} == 2){
+		 fuel_available = fuel_available * liter_per_m3 * kg_per_liter * MCF_per_liter;
+	}
+	
+	
+	return fuel_available;
+};
+
+
+equations{ 'fuelcell_lhv'} = define(){
+	lhv = ${fuelcell_lhv_in};
+	kg_per_lb = 0.453592;
+	btu_per_mj = 0.0011;
+	
+	// natural gas density: https://www.engineeringtoolbox.com/gas-density-d_158.html
+	lb_per_ft3 = 0.44;
+		
+	// Hydrogen: http://www.airproducts.com/Products/Gases/gas-facts/conversion-formulas/weight-and-volume-equivalents/hydrogen.aspx
+	if (${fuelcell_fuel_type} == 1){
+		lb_per_ft3 = 1.0/192.0;
+	}
+	
+	// https://www.eia.gov/totalenergy/data/monthly/pdf/sec13_5.pdf
+	// Convert Btu/lbm to Btu/ft3 
+	if (${fuelcell_lhv_units} == 0){
+		lhv = lhv * lb_per_ft3;
+	}
+	// Convert MJ/kg to Btu/ft3
+	else if (${fuelcell_lhv_units} == 1){
+		lhv = lhv * kg_per_lb * btu_per_mj * lb_per_ft3;
+	}
+		
+	return lhv;
+};
+
+equations{'fuelcell_degradation'} = define()
+{
+	degradation = ${fuelcell_degradation_input};
+	
+	// Convert %/year into kW/hr per unit
+	if (${fuelcell_degradation_units}==1){
+		degradation = degradation * ${fuelcell_unit_max_power} * 0.01/8760;
+	}
+	
+	return degradation;
+};
+
+equations{'fuelcell_power_nameplate'} = define(){
+	return (${fuelcell_unit_max_power} * ${fuelcell_number_of_units});
+};
+
+equations{'fuelcell_power_min'} = define(){
+	return (${fuelcell_unit_min_power} * ${fuelcell_number_of_units});
+};
+
+equations{'fuelcell_unit_min_power'} = define()
+{
+	power_min = ${fuelcell_unit_min_power_input};
+	
+	// convert % to kW
+	if (${fuelcell_unit_min_units} == 1){
+		power_min = ${fuelcell_unit_max_power} * power_min * 0.01;
+	}
+	return power_min;
+};
+equations{'fuelcell_dynamic_response_up'} = define()
+{
+	response = ${fuelcell_dynamic_response_up_input};
+	// if %/hr
+	if (${fuelcell_dynamic_response_up_units} == 1){
+		response = response * ${fuelcell_power_nameplate} * 0.01;
+	}
+	return response;
+};
+equations{'fuelcell_dynamic_response_down'} = define()
+{
+	response = ${fuelcell_dynamic_response_down_input};
+	// if %/hr
+	if (${fuelcell_dynamic_response_down_units} == 1){
+		response = response * ${fuelcell_power_nameplate} * 0.01;
+	}
+	return response;
+};
+
+5343
+on_load{'Fuel Cell'} = define() {
+	on_change{'fuelcell_efficiency'}(); 
+	on_change{'fuelcell_fuel_type'}();
+	on_change{'fuelcell_replacement_option'}();
+	on_change{'fuelcell_fuel_limited'}();
+//	on_change{'fuelcell_is_started'}();
+	check_fuel_limited();	
+};
+
+function check_type()
+{
+	change = false;
+	type = value('fuelcell_type');
+	
+	if ( type < 3){
+		change = yesno('Change defaults for this fuel cell type?');
+	}
+	
+	if (change)
+	{
+		// MCFC
+		if (type == 0){
+			MCFC();
+		}
+		// PAFC
+		else if (type == 1){
+			PAFC();
+		}
+		// SOFC
+		else if (type == 2){
+			SOFC();
+		}
+	}
+}
+on_change{'fuelcell_type'} = define(){
+	check_type();
+};
+/*
+on_change{'fuelcell_is_started'} = define(){
+	enable('fuelcell_startup_time', !value('fuelcell_is_started'));
+	if (value('fuelcell_is_started')){
+		value('fuelcell_startup_time', 0);
+	}
+};
+*/
+on_change{'fuelcell_fuel_limited'} = define(){
+	check_fuel_limited();
+};
+
+on_change{'fuelcell_replacement_option'} = define(){
+	enable('fuelcell_replacement_percent', value('fuelcell_replacement_option')==1);
+	enable('fuelcell_replacement_schedule', value('fuelcell_replacement_option')==2);
+	show('fuelcell_replacement_label',value('fuelcell_replacement_option')==2);
+	refresh();
+};
+
+on_change{'fuelcell_efficiency'} = define(){
+	plot_efficiency();
+};
+
+on_change{'fuelcell_fuel_type'} = define(){
+	type = value('fuelcell_fuel_type');
+	lhv = value('fuelcell_lhv_in');
+	//price = value('fuelcell_fuel_price_in');
+	
+	lhv_unit = value('fuelcell_lhv_units'); /* Btu/lbm, MJ/kg, Btu/ft3 */
+	//price_unit = value('fuelcell_price_units'); /*$/MCf, $/MMBtu, $/gal */
+	
+	// Natural Gas 
+	if (type == 0){
+		lhv = 983;    // https://www.engineeringtoolbox.com/heating-values-fuel-gases-d_823.html
+		//price = 8.73; //https://www.eia.gov/naturalgas/data.php#prices
+		lhv_unit = 2;
+		//price_unit = 0;
+	}
+	// Hydrogen
+	else if (type == 1){
+		lhv = 51591; // https://www.engineeringtoolbox.com/heating-values-fuel-gases-d_823.html)
+		//price = 5.60; //https://cafcp.org/content/cost-refill
+		lhv_unit = 2;
+		//price_unit = 2;
+	}
+	// Custom
+	else {
+		lhv_unit = 2;
+		//price_unit = 0;
+	}
+	
+	value('fuelcell_lhv_in', lhv);
+	//value('fuelcell_fuel_price_in', price);
+	value('fuelcell_lhv_units', lhv_unit);
+	//value('fuelcell_price_units', price_unit);
+};
+
+
+function plot_efficiency()
+{
+	setplot( 'fuelcell_efficiency_plot' );
+	clearplot();
+	
+	fce = ${fuelcell_efficiency};
+	for (i=0; i<#fce; i++) {
+		powerPercent[i] = fce[i][0];
+		electricalPercent[i] = fce[i][1];
+		heatRecovery[i] = fce[i][2];
+	}
+			
+	plot( powerPercent, electricalPercent, {'thick'=2, 'type'='line', 'color'='blue', 'series'='Electrical efficiency %'});
+	plot( powerPercent, heatRecovery, {'thick'=2, 'type'='line', 'color'='red', 'style'='dash','series'='Max heat recovery %'});
+	
+	plotopt( {'title'='Efficiencies vs Power Load', 'legend'=true, 'legendpos'=[65,60], 'font'='Arial', 'scale'=1.3});
+	axis( 'x1', {'label'='Power Load (%)', 'min'=0, 'max'=100, size=12});
+	axis( 'y1', {'label'='Efficiency (%)', 'min'=0, 'max'=max(max(electricalPercent),max(heatRecovery))+10, size=12});
+}
+
+function check_fuel_limited()
+{
+	enable('fuelcell_fuel_available_in', value('fuelcell_fuel_limited'));
+	enable('fuelcell_fuel_available_units', value('fuelcell_fuel_limited'));
+	
+	if (value('fuelcell_fuel_limited') == 0){
+		value('fuelcell_fuel_available_in', 1e10);
+	}
+}
+
+// 300 kW MCFC
+function MCFC()
+{
+	value('fuelcell_unit_max_power', 300);
+	value('fuelcell_unit_min_units', 1);
+	value('fuelcell_unit_min_power_input', 20); 
+	value('fuelcell_dynamic_response_up_units', 1);
+	value('fuelcell_dynamic_response_down_units', 1);
+	value('fuelcell_dynamic_response_down_input', 17);
+	value('fuelcell_dynamic_response_up_input', 17);
+	
+	efficiencyTable = [ 
+				[0.0,3.0,50],
+				[16.1,19.0,50],
+				[25.5,22.8,50],
+				[34.8,28.5,50],
+				[44.1,33.9,50],
+				[53.4,38.4,50],
+				[62.7,43.0,49],
+				[72.0,45.3,48],
+				[81.4,47.2,47],
+				[90.7,47.0,46],
+				[100,46.1,45]
+				];
+	value('fuelcell_efficiency',efficiencyTable);
+}
+
+// 200 kW SOFC
+function SOFC()
+{
+	value('fuelcell_unit_max_power', 200);
+	value('fuelcell_unit_min_units', 1);
+	value('fuelcell_unit_min_power_input', 30); 
+	value('fuelcell_dynamic_response_up_units', 1);
+	value('fuelcell_dynamic_response_down_units', 1);
+	value('fuelcell_dynamic_response_down_input', 250);
+	value('fuelcell_dynamic_response_up_input', 250);
+	
+	efficiencyTable = [ 
+				[0.0,3.0,50],
+				[16.1,21.0,50],
+				[25.5,25.2,50],
+				[34.8,31.5,50],
+				[44.1,37.3,50],
+				[53.4,42.6,50],
+				[62.7,47.4,49],
+				[72.0,49.9,48],
+				[81.4,52.0,47],
+				[90.7,51.8,46],
+				[100,50.7,45]
+				];
+	value('fuelcell_efficiency',efficiencyTable);
+}
+
+// 400 kW PAFC
+function PAFC()
+{
+	value('fuelcell_unit_max_power', 400);
+	value('fuelcell_unit_min_units', 1);
+	value('fuelcell_unit_min_power_input', 133); 
+	value('fuelcell_dynamic_response_up_units', 1);
+	value('fuelcell_dynamic_response_down_units', 1);
+	value('fuelcell_dynamic_response_down_input', 100);
+	value('fuelcell_dynamic_response_up_input', 100);
+	
+	efficiencyTable = [ 
+				[0.0,10.5,71.6],
+				[10.0,20.3,63.8],
+				[20.0,26.9,58.5],
+				[30.0,31.4,54.9],
+				[40.0,34.1,52.8],
+				[50.0,35.9,51.3],
+				[60.0,36.9,50.5],
+				[70.0,37.5,50.0],
+				[80.0,37.7,49.8],
+				[90.0,37.7,49.9],
+				[100.0,37.4,50.0]
+				];
+	value('fuelcell_efficiency',efficiencyTable);
+}

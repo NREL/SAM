@@ -1,0 +1,14 @@
+{
+	"defaults": {
+		"Lifetime": {
+		},
+		"GridLimits": {
+			"enable_interconnection_limit": 0,
+			"grid_interconnection_limit_kwac": 20000
+		},
+		"SystemOutput": {
+		},
+		"Load": {
+		}
+	}
+}

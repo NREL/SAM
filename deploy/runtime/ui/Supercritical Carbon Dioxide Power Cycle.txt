@@ -5,7 +5,7 @@ Supercritical Carbon Dioxide Power Cycle
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -81,6 +84,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +129,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -140,6 +146,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -182,7 +191,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -199,6 +208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -241,7 +253,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -258,6 +270,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -300,7 +315,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -317,6 +332,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -359,7 +377,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -376,6 +394,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -418,7 +439,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -435,6 +456,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -477,7 +501,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -494,6 +518,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -536,7 +563,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -553,6 +580,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -595,7 +625,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -612,6 +642,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -654,7 +687,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -671,6 +704,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -713,7 +749,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -730,6 +766,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -772,7 +811,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -789,6 +828,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -831,7 +873,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -848,6 +890,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -890,7 +935,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -907,6 +952,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -949,7 +997,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 21
@@ -966,6 +1014,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 49
@@ -976,7 +1027,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 21
@@ -993,6 +1044,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 53
@@ -1003,7 +1057,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 20
@@ -1020,6 +1074,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -1034,7 +1091,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1051,6 +1108,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1093,7 +1153,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -1110,6 +1170,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1152,7 +1215,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -1169,6 +1232,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1211,7 +1277,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1228,6 +1294,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1270,7 +1339,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 18
@@ -1287,6 +1356,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 52
@@ -1300,7 +1372,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -1317,6 +1389,9 @@ Width
 Height
 3
 432
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -1327,7 +1402,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -1344,6 +1419,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 26
@@ -1372,7 +1450,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1389,6 +1467,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -1417,7 +1498,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -1434,6 +1515,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -1462,7 +1546,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -1479,6 +1563,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1521,7 +1608,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1538,6 +1625,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1580,7 +1670,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1597,6 +1687,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1639,7 +1732,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 11
@@ -1656,6 +1749,9 @@ Width
 Height
 3
 69
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -1683,7 +1779,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -1700,6 +1796,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2450,7 +2549,7 @@ equations{ 'sco2_cycle_config' } = define() {
    	];
 };
 
-16123
+16996
 on_load{"Supercritical Carbon Dioxide Power Cycle"} = define() {
 	
 	if( ${is_sco2_msg_disabled} == 0.0 )
@@ -2550,7 +2649,8 @@ on_change{"is_sco2_preprocess"} = define() {
 
 function compare_des_pars () {
 	is_des_par_diff = false;
-	if(${T_htf_hot_des} != ${_sco2_T_htf_hot_des})
+//	if(${T_htf_hot_des} != ${_sco2_T_htf_hot_des})
+	if(abs(${T_htf_hot_des} - ${_sco2_T_htf_hot_des}) > 1e-5*${T_htf_hot_des})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_T_htf_hot_des}))
@@ -2569,7 +2669,8 @@ function compare_des_pars () {
 		//property("_sco2_T_htf_hot_des", "BackColour", [192, 192, 192]);
 		enable("_sco2_T_htf_hot_des", false);
 	}
-	if(${deltaT_PHX} != ${_sco2_deltaT_PHX})
+//	if(${deltaT_PHX} != ${_sco2_deltaT_PHX})
+	if(abs(${deltaT_PHX} - ${_sco2_deltaT_PHX}) > 1e-5*${deltaT_PHX})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_deltaT_PHX}))
@@ -2588,7 +2689,8 @@ function compare_des_pars () {
 		//property("_sco2_deltaT_PHX", "BackColour", [192, 192, 192]);
 		enable("_sco2_deltaT_PHX", false);
 	}
-	if(${sco2_T_amb_des} != ${_sco2_T_amb_des})
+//	if(${sco2_T_amb_des} != ${_sco2_T_amb_des})
+	if(abs(${sco2_T_amb_des} - ${_sco2_T_amb_des}) > 1e-5*${sco2_T_amb_des})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_T_amb_des}))
@@ -2607,7 +2709,8 @@ function compare_des_pars () {
 		//property("_sco2_T_amb_des", "BackColour", [192, 192, 192]);
 		enable("_sco2_T_amb_des", false);
 	}
-	if(${sco2_T_approach} != ${_sco2_T_approach})
+//	if(${sco2_T_approach} != ${_sco2_T_approach})
+	if(abs(${sco2_T_approach} - ${_sco2_T_approach}) > 1e-5*${sco2_T_approach})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_T_approach}))
@@ -2626,7 +2729,8 @@ function compare_des_pars () {
 		//property("_sco2_T_approach", "BackColour", [192, 192, 192]);
 		enable("_sco2_T_approach", false);
 	}
-	if(${P_ref} != ${_sco2_P_ref})
+//	if(${P_ref} != ${_sco2_P_ref})
+	if(abs(${P_ref} - ${_sco2_P_ref}) > 1e-5*${P_ref})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_P_ref}))
@@ -2645,7 +2749,8 @@ function compare_des_pars () {
 		//property("_sco2_P_ref", "BackColour", [192, 192, 192]);
 		enable("_sco2_P_ref", false);
 	}
-	if(${design_eff} != ${_sco2_design_eff})
+//	if(${design_eff} != ${_sco2_design_eff})
+	if(abs(${design_eff} - ${_sco2_design_eff}) > 1e-5*${design_eff})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_design_eff}))
@@ -2664,7 +2769,9 @@ function compare_des_pars () {
 		//property("_sco2_design_eff", "BackColour", [192, 192, 192]);
 		enable("_sco2_design_eff", false);
 	}
-	if(${eta_c} != ${_sco2_eta_c})
+//	if(${eta_c} != ${_sco2_eta_c})
+//msgbox("eta_c, _sco2_eta_c" + ${eta_c} + "," + ${_sco2_eta_c});
+	if(abs(${eta_c} - ${_sco2_eta_c}) > 1e-5*${eta_c})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_eta_c}))
@@ -2683,7 +2790,8 @@ function compare_des_pars () {
 		//property("_sco2_eta_c", "BackColour", [192, 192, 192]);
 		enable("_sco2_eta_c", false);
 	}
-	if(${eta_t} != ${_sco2_eta_t})
+//	if(${eta_t} != ${_sco2_eta_t})
+	if(abs(${eta_t} - ${_sco2_eta_t}) > 1e-5*${eta_t})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_eta_t}))
@@ -2702,7 +2810,8 @@ function compare_des_pars () {
 		//property("_sco2_eta_t", "BackColour", [192, 192, 192]);
 		enable("_sco2_eta_t", false);
 	}
-	if(${recup_eff_max} != ${_sco2_recup_eff_max})
+//	if(${recup_eff_max} != ${_sco2_recup_eff_max})
+	if(abs(${recup_eff_max} - ${_sco2_recup_eff_max}) > 1e-5*${recup_eff_max})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_recup_eff_max}))
@@ -2721,7 +2830,8 @@ function compare_des_pars () {
 		//property("_sco2_recup_eff_max", "BackColour", [192, 192, 192]);
 		enable("_sco2_recup_eff_max", false);
 	}
-	if(${P_high_limit} != ${_sco2_P_high_limit})
+//	if(${P_high_limit} != ${_sco2_P_high_limit})
+	if(abs(${P_high_limit} - ${_sco2_P_high_limit}) > 1e-5*${P_high_limit})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_P_high_limit}))
@@ -2740,7 +2850,8 @@ function compare_des_pars () {
 		//property("_sco2_P_high_limit", "BackColour", [192, 192, 192]);
 		enable("_sco2_P_high_limit", false);
 	}
-	if(${fan_power_perc_net} != ${_sco2_fan_power_perc_net})
+//	if(${fan_power_perc_net} != ${_sco2_fan_power_perc_net})
+	if(abs(${fan_power_perc_net} - ${_sco2_fan_power_perc_net}) > 1e-5*${fan_power_perc_net})
 	{
 		is_des_par_diff = true;
 		if(isnan(${_sco2_fan_power_perc_net}))
@@ -2759,7 +2870,8 @@ function compare_des_pars () {
 		//property("_sco2_P_high_limit", "BackColour", [192, 192, 192]);
 		enable("_sco2_fan_power_perc_net", false);
 	}
-	if(${dd_sco2_cycle_config} != ${_dd_sco2_cycle_config})
+//	if(${dd_sco2_cycle_config} != ${_dd_sco2_cycle_config})
+	if(abs(${dd_sco2_cycle_config} - ${_dd_sco2_cycle_config}) > 1e-5*${dd_sco2_cycle_config})
 	{
 		is_des_par_diff = true;
 	}
@@ -2915,8 +3027,8 @@ function sco2_design_point(is_gen_udpc) {
 	refresh();
 	
 	recomp_frac = ssc_var(obj, "recomp_frac");
-	LTR_UA_calc = ssc_var(obj, "UA_LTR");
-	HTR_UA_calc = ssc_var(obj, "UA_HTR");
+	LTR_UA_calc = ssc_var(obj, "LTR_UA_assigned");
+	HTR_UA_calc = ssc_var(obj, "HTR_UA_assigned");
 	if(${sco2_cycle_config}==1)
 	{
 		P_comp_in = ssc_var(obj, "P_comp_in");
@@ -2940,12 +3052,6 @@ function sco2_design_point(is_gen_udpc) {
 	
 	cycle_type_str = "recompression";
 	sco2_min_frac = 0.5;
-	
-	if(recomp_frac < 0.01)
-	{
-		cycle_type_str = "simple";
-		sco2_min_frac = 0.7;
-	}
 	
 	htm_str = "Cycle Design Considerations.";
 	htm_str += 

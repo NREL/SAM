@@ -1,0 +1,90 @@
+digraph EmpiricalTrough_None_legend {
+	label="Legend: Empirical Trough-None";
+	labelloc=top;
+	rankdir=LR;	ranksep="3";
+	key [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td align="right" port="e0">eqn_var0</td></tr>
+	<tr><td align="right" port="e1">eqn_var1</td></tr>
+	<tr><td align="right" port="e2">eqn_var2</td></tr>
+	<tr><td align="right" port="e3">eqn_var3</td></tr>
+	<tr><td align="right" port="e4">eqn_var4</td></tr>
+	<tr><td align="right" port="e5">eqn_var5</td></tr>
+	<tr><td align="right" port="e6">eqn_var6</td></tr>
+	<tr><td align="right" port="e7">eqn_var7</td></tr>
+	<tr><td align="right" port="o0">func_var0</td></tr>
+	<tr><td align="right" port="o1">func_var1</td></tr>
+	<tr><td align="right" port="o2">func_var2</td></tr>
+	<tr><td align="right" port="o3">func_var3</td></tr>
+	<tr><td align="right" port="o4">func_var4</td></tr>
+	<tr><td align="right" port="o5">func_var5</td></tr>
+	<tr><td align="right" port="o6">func_var6</td></tr>
+	<tr><td align="right" port="o7">func_var7</td></tr>
+	<tr><td align="right" port="o8">func_var8</td></tr>
+	<tr><td align="right" port="o9">func_var9</td></tr>
+	<tr><td align="right" port="o10">func_var10</td></tr>
+	<tr><td align="right" port="o11">func_var11</td></tr>
+	<tr><td align="right" port="o12">func_var12</td></tr>
+	<tr><td align="right" port="o13">func_var13</td></tr>
+	<tr><td align="right" port="o14">func_var14</td></tr>
+	<tr><td align="right" port="o15">func_var15</td></tr>
+	<tr><td align="right" port="o16">func_var16</td></tr>
+	<tr><td align="right" port="o17">func_var17</td></tr>
+	<tr><td align="right" port="o18">func_var18</td></tr>
+	</table>>]
+	key2 [label=<<table border="0" cellpadding="2" cellspacing="25" cellborder="0">
+	<tr><td port="e0">&nbsp;</td></tr>
+	<tr><td port="e1">&nbsp;</td></tr>
+	<tr><td port="e2">&nbsp;</td></tr>
+	<tr><td port="e3">&nbsp;</td></tr>
+	<tr><td port="e4">&nbsp;</td></tr>
+	<tr><td port="e5">&nbsp;</td></tr>
+	<tr><td port="e6">&nbsp;</td></tr>
+	<tr><td port="e7">&nbsp;</td></tr>
+	<tr><td port="o0">&nbsp;</td></tr>
+	<tr><td port="o1">&nbsp;</td></tr>
+	<tr><td port="o2">&nbsp;</td></tr>
+	<tr><td port="o3">&nbsp;</td></tr>
+	<tr><td port="o4">&nbsp;</td></tr>
+	<tr><td port="o5">&nbsp;</td></tr>
+	<tr><td port="o6">&nbsp;</td></tr>
+	<tr><td port="o7">&nbsp;</td></tr>
+	<tr><td port="o8">&nbsp;</td></tr>
+	<tr><td port="o9">&nbsp;</td></tr>
+	<tr><td port="o10">&nbsp;</td></tr>
+	<tr><td port="o11">&nbsp;</td></tr>
+	<tr><td port="o12">&nbsp;</td></tr>
+	<tr><td port="o13">&nbsp;</td></tr>
+	<tr><td port="o14">&nbsp;</td></tr>
+	<tr><td port="o15">&nbsp;</td></tr>
+	<tr><td port="o16">&nbsp;</td></tr>
+	<tr><td port="o17">&nbsp;</td></tr>
+	<tr><td port="o18">&nbsp;</td></tr>
+	</table>>]
+	key:e0:e -> key2:e0:w [style=dashed, label="22: Solar Resource Data:EQN"]
+	key:e1:e -> key2:e1:w [style=dashed, label="14: Empirical Trough Thermal Storage:EQN"]
+	key:e2:e -> key2:e2:w [style=dashed, label="6: Empirical Trough HCE:EQN"]
+	key:e3:e -> key2:e3:w [style=dashed, label="11: Empirical Trough Power Block:EQN"]
+	key:e4:e -> key2:e4:w [style=dashed, label="8: Empirical Trough Parasitics:EQN"]
+	key:e5:e -> key2:e5:w [style=dashed, label="7: CSP Dispatch Control:FossilFill_MIMO"]
+	key:e6:e -> key2:e6:w [style=dashed, label="15: Empirical Trough SCA:EQN"]
+	key:e7:e -> key2:e7:w [style=dashed, label="12: Empirical Trough Solar Field:EQN"]
+	key:o0:e -> key2:o0:w [label="25: Solar Resource Data"]
+	key:o1:e -> key2:o1:w [label="23: Solar Resource Data:update_info"]
+	key:o2:e -> key2:o2:w [label="21: apply_hce_library_1"]
+	key:o3:e -> key2:o3:w [label="18: apply_hce_library_4"]
+	key:o4:e -> key2:o4:w [label="26: Empirical Trough Parasitics:cooling_tower_operation_mode"]
+	key:o5:e -> key2:o5:w [label="10: Empirical Trough Parasitics:parasitics_library"]
+	key:o6:e -> key2:o6:w [label="3: copy_schedule"]
+	key:o7:e -> key2:o7:w [label="9: Empirical Trough SCA:sca_library"]
+	key:o8:e -> key2:o8:w [label="17: Empirical Trough HCE:hce_library"]
+	key:o9:e -> key2:o9:w [label="5: Empirical Trough Solar Field:ui_field_htf_type"]
+	key:o10:e -> key2:o10:w [label="24: btn_file_add"]
+	key:o11:e -> key2:o11:w [label="4: Solar Resource Data:update_library_folders"]
+	key:o12:e -> key2:o12:w [label="19: apply_hce_library_3"]
+	key:o13:e -> key2:o13:w [label="16: Empirical Trough Solar Field:ui_field_layout_option"]
+	key:o14:e -> key2:o14:w [label="20: apply_hce_library_2"]
+	key:o15:e -> key2:o15:w [label="0: btn_download:nsrdb"]
+	key:o16:e -> key2:o16:w [label="13: Empirical Trough Power Block:pb_library"]
+	key:o17:e -> key2:o17:w [label="1: btn_download:nsrdb_get"]
+	key:o18:e -> key2:o18:w [label="2: btn_download"]
+}

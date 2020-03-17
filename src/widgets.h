@@ -1,51 +1,24 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #ifndef __uiwidgets_h
 #define __uiwidgets_h
@@ -56,6 +29,7 @@
 #include <wx/panel.h>
 #include <wx/button.h>
 #include <wx/grid.h>
+#include <wx/stattext.h>
 
 #include <wex/numeric.h>
 
@@ -89,7 +63,7 @@ public:
 	void SetValue(double d);
 	void SetFormat( int deci, bool thousep, const wxString &pre, const wxString &post );
 	std::vector<double> GetSchedule();
-	void GetSchedule( std::vector<float> *vals );
+	void GetSchedule( std::vector<double> *vals );
 	int GetSchedLen();
 	void SetSchedule(const std::vector<double> &s);
 	void SetSchedule( const std::vector<float> &s );
@@ -159,14 +133,14 @@ public:
 	AFMonthlyFactorCtrl( wxWindow *parent, int id, 
 		const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
 
-	std::vector<float> Get( );
-	void Set( const std::vector<float> &data );
+	std::vector<double> Get( );
+	void Set( const std::vector<double> &data );
 	void SetDescription(const wxString &s);
 	wxString GetDescription();
 	void OnPressed(wxCommandEvent &evt);
 private:
 	wxString mDescription;
-	float mData[12];
+	double mData[12];
 	DECLARE_EVENT_TABLE();
 };
 
@@ -209,6 +183,130 @@ private:
 };
 
 
+
+#define EVT_DATALIFETIMEARRAYBUTTON(id, func)  EVT_BUTTON(id, func)
+
+enum {
+	DATA_LIFETIME_ARRAY_SINGLEVALUE,
+	DATA_LIFETIME_ARRAY_MONTHLY,
+	DATA_LIFETIME_ARRAY_DAILY,
+	DATA_LIFETIME_ARRAY_HOURLY,
+	DATA_LIFETIME_ARRAY_SUBHOURLY,
+	DATA_LIFETIME_ARRAY_ANNUAL,
+	DATA_LIFETIME_ARRAY_WEEKLY
+};
+
+class AFDataLifetimeArrayButton : public wxButton
+{
+public:
+	AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
+
+	void Set(const std::vector<double> &data);
+	void Get(std::vector<double> &data);
+	std::vector<double> Get() const { return mData; }
+
+	void SetDataLabel(const wxString &s);
+	wxString GetDataLabel();
+
+	void SetColumnLabel(const wxString &s);
+	wxString GetColumnLabel();
+
+	void SetShowMode(const bool &b) { mShowMode = b; };
+	bool GetShowMode() { return mShowMode; };
+
+	void SetDescription(const wxString &s) { mDescription = s; }
+	wxString GetDescription() { return mDescription; }
+
+	void SetAnalysisPeriod(const size_t &p);
+	size_t GetAnalysisPeriod() { return mAnalysisPeriod; }
+
+	void SetMinPerHour(const size_t &p) { mMinPerHour = p; }
+	size_t GetmMinPerHour() { return mMinPerHour; }
+
+	void SetMode(const size_t &p) { mMode = p; }
+	size_t GetMode() { return mMode; }
+
+	void SetAnnualEnabled(const bool &e) { mAnnualEnabled = e; }
+	bool GetAnnualEnabled() { return mAnnualEnabled; }
+
+	void SetWeeklyEnabled(const bool &e) { mWeeklyEnabled = e; }
+	bool GetWeeklyEnabled() { return mWeeklyEnabled; }
+
+	void OnPressed(wxCommandEvent &evt);
+private:
+	wxString mDataLabel, mColumnLabel;
+	size_t mAnalysisPeriod, mMinPerHour, mMode;
+	std::vector<double> mData;
+	wxString mDescription;
+	bool mAnnualEnabled, mWeeklyEnabled, mShowMode;
+
+	DECLARE_EVENT_TABLE();
+};
+
+
+#define EVT_DATALIFETIMEMATRIXBUTTON(id, func)  EVT_BUTTON(id, func)
+
+enum {
+	DATA_LIFETIME_MATRIX_SINGLEVALUE,
+	DATA_LIFETIME_MATRIX_MONTHLY,
+	DATA_LIFETIME_MATRIX_DAILY,
+	DATA_LIFETIME_MATRIX_HOURLY,
+	DATA_LIFETIME_MATRIX_SUBHOURLY,
+	DATA_LIFETIME_MATRIX_ANNUAL,
+	DATA_LIFETIME_MATRIX_WEEKLY
+};
+
+class AFDataLifetimeMatrixButton : public wxButton
+{
+public:
+	AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize);
+
+	void Set(const matrix_t<double> &data);
+	void Get(matrix_t<double> &data);
+	void Set(const std::vector<double> &data);
+	void Get(std::vector<double> &data);
+	matrix_t<double> Get() const { return mData; }
+
+	void SetDataLabel(const wxString &s);
+	wxString GetDataLabel();
+
+	void SetColumnLabels(const wxString &s);
+	wxString GetColumnLabels();
+
+	void SetShowMode(const bool &b) { mShowMode = b; };
+	bool GetShowMode() { return mShowMode; };
+
+	void SetDescription(const wxString &s) { mDescription = s; }
+	wxString GetDescription() { return mDescription; }
+
+	void SetAnalysisPeriod(const size_t &p);
+	size_t GetAnalysisPeriod() { return mAnalysisPeriod; }
+
+	void SetMinPerHour(const size_t &p) { mMinPerHour = p; }
+	size_t GetmMinPerHour() { return mMinPerHour; }
+
+	void SetMode(const size_t &p) { mMode = p; }
+	size_t GetMode() { return mMode; }
+
+	void SetAnnualEnabled(const bool &e) { mAnnualEnabled = e; }
+	bool GetAnnualEnabled() { return mAnnualEnabled; }
+
+	void SetWeeklyEnabled(const bool &e) { mWeeklyEnabled = e; }
+	bool GetWeeklyEnabled() { return mWeeklyEnabled; }
+
+	void OnPressed(wxCommandEvent &evt);
+private:
+	wxString mDataLabel;
+	wxString mColumnLabels;
+	size_t mAnalysisPeriod, mMinPerHour, mMode;
+	matrix_t<double> mData;
+	wxString mDescription;
+	bool mAnnualEnabled, mWeeklyEnabled, mShowMode;
+
+	DECLARE_EVENT_TABLE();
+};
+
+
 #define EVT_DATAARRAYBUTTON(id, func)  EVT_BUTTON(id, func)
 
 enum {
@@ -221,9 +319,9 @@ class AFDataArrayButton : public wxButton
 public:
 	AFDataArrayButton(wxWindow *parent, int id, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
 
-	void Set(const std::vector<float> &data);
-	void Get(std::vector<float> &data);
-	std::vector<float> Get() const { return mData; }
+	void Set(const std::vector<double> &data);
+	void Get(std::vector<double> &data);
+	std::vector<double> Get() const { return mData; }
 
 	void SetDataLabel(const wxString &s);
 	wxString GetDataLabel();
@@ -238,7 +336,7 @@ public:
 private:
 	wxString mDataLabel;
 	int mMode;
-	std::vector<float> mData;
+	std::vector<double> mData;
 	wxString m_description;
 
 	DECLARE_EVENT_TABLE();
@@ -272,6 +370,54 @@ private:
 	DECLARE_EVENT_TABLE();
 };
 
+
+
+
+
+class wxVerticalLabel : public wxPanel
+{
+public:
+	wxVerticalLabel(wxWindow* parent,
+		wxWindowID id,
+		const wxString& label,
+		const wxPoint& pos = wxDefaultPosition,
+		const wxSize& size = wxDefaultSize,
+		long style = 0,
+		const wxString& name = wxStaticTextNameStr);
+	virtual ~wxVerticalLabel();
+	void SetLabel(const wxString &label);
+	wxString const &GetLabel() { return m_Label; }
+
+protected:
+	void OnPaint(wxPaintEvent& );
+
+private:
+	void UpdateSize();
+	wxString m_Label;
+};
+
+
+class wxHorizontalLabel : public wxPanel
+{
+public:
+	wxHorizontalLabel(wxWindow* parent,
+		wxWindowID id,
+		const wxString& label,
+		const wxPoint& pos = wxDefaultPosition,
+		const wxSize& size = wxDefaultSize,
+		long style = 0,
+		const wxString& name = wxStaticTextNameStr);
+	virtual ~wxHorizontalLabel();
+	void SetLabel(const wxString &label);
+	wxString const &GetLabel() { return m_Label; }
+
+protected:
+	void OnPaint(wxPaintEvent& );
+
+private:
+	void UpdateSize();
+	wxString m_Label;
+};
 
 
 
@@ -401,12 +547,14 @@ public:
 		const wxString &rowlabels = wxEmptyString,
 		const wxString &choices = wxEmptyString,
 		const int &choice_col = -1,
-		bool bottombuttons = false);
+		bool bottombuttons = false,
+		const wxString &horizontalLabel = wxEmptyString,
+		const wxString &vericalLabel = wxEmptyString);
 
-	void SetData(const matrix_t<float> &mat);
-	void GetData(matrix_t<float> &mat);
-//	matrix_t<float> GetData() const;
-	matrix_t<float> GetData() const { return m_data; }
+	void SetData(const matrix_t<double> &mat);
+	void GetData(matrix_t<double> &mat);
+//	matrix_t<double> GetData() const;
+	matrix_t<double> GetData() const { return m_data; }
 
 	void SetValueLimits(float min = 0.0, float max = 0.0);
 	void GetValueLimits(float *min, float *max);
@@ -423,6 +571,9 @@ public:
 
 	void ShowRows(bool b);
 	bool ShowRows();
+
+	void ShowButtons(bool b);
+	bool ShowButtons();
 
 	void ShowRowLabels(bool b);
 	bool ShowRowLabels();
@@ -452,6 +603,9 @@ public:
 	void SetNumColsLabel(const wxString &numColsLabel);
 	wxString GetNumColsLabel();
 
+	void SetR0C0Label(const wxString &R0C0Label);
+	wxString GetR0C0Label();
+
 	void PasteAppendRows(bool b);
 	bool PasteAppendRows();
 
@@ -470,6 +624,10 @@ public:
 	void ShowCol(const int &col, bool show);
 	void ShowRow(const int &row, bool show);
 
+	void ColorMap(bool b);
+	bool ColorMap();
+
+	void UpdateColorMap();
 
 private:
 
@@ -482,15 +640,19 @@ private:
 	wxString m_colFormat;
 	double m_colY2, m_colY1, m_colY0;
 
-	matrix_t<float> m_data;
+	matrix_t<double> m_data;
 	float m_minVal, m_maxVal;
 	wxNumericCtrl *m_numRows, *m_numCols;
 	wxExtGridCtrl *m_grid;
 	wxStaticText *m_caption, *m_labelCols, *m_labelRows;
+	wxHorizontalLabel *m_horizontalLabel;
+	wxVerticalLabel *m_verticalLabel;
 	wxButton *m_btnImport, *m_btnExport, *m_btnCopy, *m_btnPaste;
+	bool m_showButtons;
 	bool m_showrows;
 	bool m_showRowLabels;
 	wxString m_rowLabels;
+	bool m_colorMap;
 	bool m_shadeR0C0;
 	bool m_shadeC0;
 	bool m_showcols;
@@ -533,14 +695,14 @@ public:
 	bool UseTable();
 	void UseTable(bool b);
 
-	void Set( const matrix_t<float> &mat );
-	matrix_t<float> Get();
+	void Set( const matrix_t<double> &mat );
+	matrix_t<double> Get();
 
 	float GetSingleValue();
-	void SetSingleValue(float val);
+	void SetSingleValue(double val);
 
-	void GetTableData(matrix_t<float> *mat);
-	void SetTableData(const matrix_t<float> &mat);
+	void GetTableData(matrix_t<double> *mat);
+	void SetTableData(const matrix_t<double> &mat);
 
 	void SetTableSize(int nr, int nc);
 	void GetTableSize(int *nr, int *nc);
@@ -560,7 +722,7 @@ private:
 	wxButton *mBtnEditTable;
 	wxNumericCtrl *mSingleValue;
 
-	matrix_t<float> mTable;
+	matrix_t<double> mTable;
 	wxArrayString mColLabels;
 
 	int m_switchWidth;
@@ -584,9 +746,9 @@ public:
 	AFMonthByHourFactorCtrl(wxWindow *parent, int id, const wxPoint &pos = wxDefaultPosition, const wxSize &sz = wxDefaultSize);
 	virtual ~AFMonthByHourFactorCtrl();
 
-	void SetData(const matrix_t<float> &data);
-	void GetData( matrix_t<float> &mat );
-	matrix_t<float> GetData();
+	void SetData(const matrix_t<double> &data);
+	void GetData( matrix_t<double> &mat );
+	matrix_t<double> GetData();
 	
 	void SetTitle( const wxString &title);
 	wxString GetTitle( );
@@ -615,7 +777,7 @@ private:
 	void ApplyVal(int r, int c, double sf);
 	void DispatchEvent();
 
-	matrix_t<float> mData;
+	matrix_t<double> mData;
 	wxNumericCtrl *mShadingVal;
 	wxButton *mBtnApply;
 	wxExtGridCtrl *mGrid;
@@ -628,6 +790,31 @@ private:
 
 	DECLARE_EVENT_TABLE();
 };
+
+BEGIN_DECLARE_EVENT_TYPES()
+	DECLARE_EVENT_TYPE(wxEVT_TOOLTIPCTRL_CHANGE, 0)
+END_DECLARE_EVENT_TYPES()
+#define EVT_TOOLTIPCTRL(id,func) EVT_COMMAND(id, wxEVT_TOOLTIPCTRL_CHANGE, func)
+
+
+class AFToolTipCtrl : public wxPanel
+{
+	wxBitmap m_image;
+public:
+	AFToolTipCtrl(wxWindow* parent);
+
+	void paintEvent(wxPaintEvent & evt);
+	void paintNow();
+
+	void render(wxDC& dc);
+
+	void mouseDown(wxMouseEvent& event);
+
+	DECLARE_EVENT_TABLE()
+
+	
+};
+
 
 #endif
 

@@ -1,11 +1,11 @@
 Solar Water Heating
-920
-1270
-61
+889
+1187
+57
 Numeric
 
 1
-16
+17
 Name
 5
 4
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 4
@@ -81,6 +84,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +129,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -136,10 +142,13 @@ Y
 108
 Width
 3
-892
+866
 Height
 3
 251
+Tool Tip
+5
+0
 Caption
 5
 6
@@ -150,7 +159,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -167,6 +176,9 @@ Width
 Height
 3
 125
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -177,7 +189,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -194,6 +206,9 @@ Width
 Height
 3
 128
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -204,7 +219,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -221,6 +236,9 @@ Width
 Height
 3
 443
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -231,7 +249,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -248,6 +266,9 @@ Width
 Height
 3
 92
+Tool Tip
+5
+0
 Caption
 5
 14
@@ -258,7 +279,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -274,7 +295,10 @@ Width
 866
 Height
 3
-176
+88
+Tool Tip
+5
+0
 Caption
 5
 8
@@ -282,36 +306,10 @@ Advanced
 Bold
 2
 1
-Image
-
-1
-7
-Name
-5
-8
-Picture1
-X
-3
-354
-Y
-3
-135
-Width
-3
-190
-Height
-3
-102
-Image
-7
-Solar Water Heating_Picture1.png
-Centered
-2
-1
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -328,6 +326,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -370,7 +371,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -387,6 +388,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -429,7 +433,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -446,6 +450,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -488,7 +495,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -505,6 +512,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -547,7 +557,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -564,6 +574,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -606,7 +619,7 @@ TabOrder
 LossAdjustment
 
 1
-6
+7
 Name
 5
 6
@@ -623,20 +636,23 @@ Width
 Height
 3
 69
+Tool Tip
+5
+0
 TabOrder
 3
 17
 Numeric
 
 1
-16
+17
 Name
 5
 6
 albedo
 X
 3
-681
+591
 Y
 3
 177
@@ -646,6 +662,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -688,7 +707,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -705,6 +724,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -747,7 +769,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -764,6 +786,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -806,23 +831,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
 azimuth
 X
 3
-192
+258
 Y
 3
-150
+153
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -865,7 +893,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 9
@@ -882,6 +910,9 @@ Width
 Height
 3
 44
+Tool Tip
+5
+0
 Selection
 3
 4294967295
@@ -902,23 +933,26 @@ TabOrder
 DataArray
 
 1
-9
+10
 Name
 5
-18
-custom_mains_input
+12
+custom_mains
 X
 3
 291
 Y
 3
-1191
+1137
 Width
 3
 110
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 0
@@ -934,7 +968,7 @@ TabOrder
 DataArray
 
 1
-9
+10
 Name
 5
 10
@@ -951,6 +985,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 1
@@ -966,7 +1003,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -983,6 +1020,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1025,7 +1065,7 @@ TabOrder
 DataArray
 
 1
-9
+10
 Name
 5
 4
@@ -1042,6 +1082,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 0
@@ -1057,7 +1100,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 13
@@ -1074,6 +1117,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -1084,23 +1130,26 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 5
 fluid
 X
 3
-192
+258
 Y
 3
-198
+201
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -1113,7 +1162,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -1130,6 +1179,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1172,7 +1224,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 3
@@ -1189,6 +1241,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1231,14 +1286,14 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 10
 irrad_mode
 X
 3
-681
+591
 Y
 3
 153
@@ -1248,6 +1303,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 2
@@ -1262,23 +1320,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 4
 mdot
 X
 3
-192
+258
 Y
 3
-174
+177
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1321,23 +1382,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 5
 ncoll
 X
 3
-192
+258
 Y
 3
-222
+225
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1380,7 +1444,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -1397,6 +1461,9 @@ Width
 Height
 3
 19
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1416,7 +1483,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 10
@@ -1433,6 +1500,9 @@ Width
 Height
 3
 19
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -1444,15 +1514,15 @@ Colour
 255
 Caption
 5
-27
-Curtailment and Availabilty
+18
+System Availabilty
 Bold
 2
 1
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -1469,6 +1539,9 @@ Width
 Height
 3
 165
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -1479,7 +1552,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -1496,6 +1569,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1538,7 +1614,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1555,6 +1631,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1597,7 +1676,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -1614,6 +1693,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1656,7 +1738,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1673,6 +1755,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1715,7 +1800,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1732,6 +1817,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1771,55 +1859,10 @@ BackColour
 TabOrder
 3
 37
-Label
-
-1
-12
-Name
-5
-10
-pump_label
-X
-3
-462
-Y
-3
-1023
-Width
-3
-396
-Height
-3
-50
-Caption
-5
-161
-The pump power is only used for parasitic calculations.  Include all pumps in the system.  The input pump size is assumed to be large enough to drive every loop.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1836,6 +1879,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1878,7 +1924,7 @@ TabOrder
 ShadingFactors
 
 1
-8
+9
 Name
 5
 7
@@ -1895,6 +1941,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 ShowDBOptions
 2
 0
@@ -1907,14 +1956,14 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 9
 sky_model
 X
 3
-681
+591
 Y
 3
 129
@@ -1924,6 +1973,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 3
@@ -1939,7 +1991,7 @@ TabOrder
 Library
 
 1
-7
+8
 Name
 5
 9
@@ -1956,6 +2008,9 @@ Width
 Height
 3
 243
+Tool Tip
+5
+0
 Library
 5
 15
@@ -1964,75 +2019,17 @@ Fields
 5
 66
 Name,SRCC Number,Type,Area,IAM,FRta,FRUL,Test Fluid,Test flow Rate
-MonthlyFactor
-
-1
-7
-Name
-5
-24
-swh_single_monthly_mains
-X
-3
-312
-Y
-3
-1161
-Width
-3
-90
-Height
-3
-24
-Description
-5
-25
-Annual or monthly profile
-TabOrder
-3
-4294967295
-Choice
-
-1
-8
-Name
-5
-22
-swh_single_or_ts_mains
-X
-3
-168
-Y
-3
-1128
-Width
-3
-233
-Height
-3
-24
-Items
-6
-2
-Input annual or monthly values
-Input hourly mains profile
-Selection
-3
-4294967295
-TabOrder
-3
-4294967295
 Numeric
 
 1
-16
+17
 Name
 5
 15
 system_capacity
 X
 3
-729
+591
 Y
 3
 225
@@ -2042,6 +2039,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2084,7 +2084,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -2101,6 +2101,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2143,7 +2146,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2160,6 +2163,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2202,7 +2208,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -2219,6 +2225,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2261,23 +2270,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 4
 tilt
 X
 3
-192
+258
 Y
 3
-126
+129
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2320,14 +2332,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
 total_area
 X
 3
-732
+591
 Y
 3
 201
@@ -2337,6 +2349,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2379,23 +2394,26 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 16
 use_custom_mains
 X
 3
-294
+291
 Y
 3
-1104
+1113
 Width
 3
 110
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -2408,7 +2426,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 14
@@ -2425,6 +2443,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -2437,7 +2458,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 16
@@ -2454,6 +2475,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 0
@@ -2466,7 +2490,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2483,6 +2507,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2525,7 +2552,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -2542,6 +2569,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2584,7 +2614,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -2601,6 +2631,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2643,7 +2676,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -2660,6 +2693,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2702,7 +2738,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -2719,6 +2755,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2761,7 +2800,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 15
@@ -2778,6 +2817,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -2788,7 +2830,7 @@ TabOrder
 3
 23
 
-61
+58
 FRUL
 3
 1
@@ -2971,20 +3013,6 @@ Solar Water Heating
 0
 RadioChoice
 custom_mains
-3
-2
-Hourly custom mains profile
-C
-Solar Water Heating
-0
-0
-1
-2
-1
-1
-0
-DataArray
-custom_mains_input
 3
 2
 Hourly custom mains profile
@@ -3401,34 +3429,6 @@ Solar Water Heating
 9
 <invalid>
 TextEntry
-swh_single_monthly_mains
-3
-2
-Annual or monthly mains profile
- 
- Solar Water Heating
-0
-0
-1
-2
-1
-1
-0
-MonthlyFactor
-swh_single_or_ts_mains
-3
-1
- 
- 
-Solar Water Heating
-0
-1
-1
-1
-1
-1
-0
-Choice
 system_capacity
 3
 1
@@ -3616,7 +3616,7 @@ user_test_flow
 3
 1
 Test flow
-kg/s-m2
+kg/s
 Solar Water Heating
 0
 2
@@ -3642,7 +3642,7 @@ Water|Glycol
 0
 Choice
 
-1883
+1188
 equations{ 'total_area' } = define() {
 	return ${area_coll}*${ncoll}; };
 	
@@ -3692,46 +3692,8 @@ equations{ '$MIMO$ total_annual_draw' } = define() {
 	${annual_draw} = ann_draw;	};
 
 
-equations{'custom_mains'} = define(){
-	
-	draw = alloc(12);
-	custom_mains = alloc(8760);
-	days_in_month = [31, 28, 31, 30, 30, 31, 31, 31, 30, 31, 30, 31];
-	
-	if (${use_custom_mains})
-	{
-		// single or monthly
-		if (${swh_single_or_ts_mains} == 0)
-		{
-			draw = ${swh_single_monthly_mains};
-			n_draw = #draw;
-			if (n_draw == 1)
-			{
-				d0 = draw[0];
-				draw = [];
-				for (m = 0; m < 12; m++)
-				{
-					draw[m] = d0;
-				}
-			}
-			i = 0;
-			for (m = 0; m < 12; m++){
-				for (d = 0; d < days_in_month[m]; d++){
-					for (h = 0; h < 24; h++){
-						custom_mains[i] = draw[m];
-						i++;
-					}
-				}
-			}
-		}
-		else {	
-			custom_mains = ${custom_mains_input};
-		}
-	}
-	return custom_mains;
-};
 
-2252
+1886
 
 on_load{"Solar Water Heating"} = define()
 {
@@ -3739,7 +3701,6 @@ on_load{"Solar Water Heating"} = define()
 	on_change{"coll_mode"}();	
 	on_change{"use_custom_set"}();
 	on_change{"use_custom_mains"}();
-	on_change{"swh_single_or_ts_mains"}();
 	
 //	on_change{"srcc_item"}();
 };
@@ -3788,21 +3749,9 @@ on_change{'use_custom_set'} = define()
 
 on_change{'use_custom_mains'} = define() {
 	state = value('use_custom_mains');
-	enable('swh_single_or_ts_mains', state);
-	check_mains_input();
+	enable( 'custom_mains', state );
 };
 
-on_change{'swh_single_or_ts_mains'} = define() {
-	check_mains_input();
-};
-
-function check_mains_input()
-{
-	custom = value('use_custom_mains');
-	state = value('swh_single_or_ts_mains');
-	enable('swh_single_monthly_mains', state==0 && custom);
-	enable( 'custom_mains_input', state==1 && custom);
-}
 
 
 on_change{'edit_3d_scene'} = define() {

@@ -1,11 +1,11 @@
 Battery Dispatch Behind the Meter
-1001
-285
-15
+998
+307
+16
 Label
 
 1
-12
+13
 Name
 5
 20
@@ -22,6 +22,9 @@ Width
 Height
 3
 36
+Tool Tip
+5
+0
 Caption
 5
 74
@@ -50,14 +53,14 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 21
 DispatchTimingControl
 X
 3
-9
+6
 Y
 3
 6
@@ -66,7 +69,10 @@ Width
 985
 Height
 3
-274
+298
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -77,7 +83,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 18
@@ -94,6 +100,9 @@ Width
 Height
 3
 106
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -104,7 +113,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 16
@@ -121,6 +130,9 @@ Width
 Height
 3
 106
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -131,14 +143,14 @@ Bold
 DataArray
 
 1
-9
+10
 Name
 5
 20
 batt_custom_dispatch
 X
 3
-474
+483
 Y
 3
 174
@@ -148,24 +160,27 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 1
 Label
 5
-29
-Battery custom dispatch input
+16
+Battery Dispatch
 Description
 5
-156
-Custom battery dispatch allows a user to get the dispatch from another tool and input into SAM directly.  Power < 0 for charging, Power > 0 for discharging.
+123
+For each simulation time step enter a rate in kW: less than zero to charge the battery, and greater than zero to discharge.
 TabOrder
 3
 4294967295
 CheckBox
 
 1
-8
+9
 Name
 5
 29
@@ -182,6 +197,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 30
@@ -195,7 +213,40 @@ TabOrder
 CheckBox
 
 1
-8
+9
+Name
+5
+37
+batt_dispatch_auto_can_fuelcellcharge
+X
+3
+75
+Y
+3
+273
+Width
+3
+258
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+33
+Battery can charge from fuel cell
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
 Name
 5
 33
@@ -212,6 +263,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 28
@@ -225,7 +279,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 20
@@ -242,6 +296,9 @@ Width
 Height
 3
 108
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -265,7 +322,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 19
@@ -282,6 +339,9 @@ Width
 Height
 3
 81
+Tool Tip
+5
+0
 Caption
 5
 161
@@ -310,7 +370,7 @@ AlignTop
 Divider
 
 1
-9
+10
 Name
 5
 17
@@ -327,6 +387,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -338,15 +401,15 @@ Colour
 255
 Caption
 5
-12
-Grid options
+14
+Charge options
 Bold
 2
 1
 Choice
 
 1
-8
+9
 Name
 5
 18
@@ -363,6 +426,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 2
@@ -377,7 +443,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 17
@@ -394,6 +460,9 @@ Width
 Height
 3
 81
+Tool Tip
+5
+0
 Caption
 5
 178
@@ -422,7 +491,7 @@ AlignTop
 DataArray
 
 1
-9
+10
 Name
 5
 17
@@ -439,13 +508,16 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 1
 Label
 5
 17
-Grid target power
+Grid Target Power
 Description
 5
 130
@@ -456,7 +528,7 @@ TabOrder
 MonthlyFactor
 
 1
-7
+8
 Name
 5
 25
@@ -473,6 +545,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 17
@@ -483,7 +558,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -500,6 +575,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -517,7 +595,7 @@ Bold
 2
 1
 
-7
+8
 batt_custom_dispatch
 3
 2
@@ -545,6 +623,20 @@ Battery
 1
 1
 1
+CheckBox
+batt_dispatch_auto_can_fuelcellcharge
+3
+1
+Battery can charge from fuel cell
+ 
+Battery
+0
+3
+1
+1
+1
+1
+0
 CheckBox
 batt_dispatch_auto_can_gridcharge
 3
@@ -619,13 +711,16 @@ Battery
 MonthlyFactor
 
 0
-1093
+1172
 on_load{'Battery Dispatch Behind the Meter'}=define()
 {	
 	toggle_dispatch();
 		
 	on_change{'batt_dispatch_choice'};
 	on_change{'batt_target_choice'};
+	
+	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
+	
 };
 
 on_change{'batt_dispatch_choice'}=define(){toggle_dispatch();};

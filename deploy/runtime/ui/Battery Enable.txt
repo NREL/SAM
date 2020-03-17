@@ -5,7 +5,7 @@ Battery Enable
 CheckBox
 
 1
-8
+9
 Name
 5
 7
@@ -15,17 +15,20 @@ X
 9
 Y
 3
-3
+0
 Width
 3
 375
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
-49
-Enable PV-integrated battery energy storage model
+20
+Enable battery model
 State
 2
 1
@@ -41,7 +44,7 @@ Enable battery model
  
 Battery
 0
-1
+5
 1
 1
 1
@@ -50,4 +53,25 @@ Battery
 CheckBox
 
 0
-0
+726
+// for battery configurations, need en_batt to determine
+// whether to display battery-related inputs on costs pages, etc.
+// 'en_batt' required as input to cmod_pvsamv1, cmod_battery
+// financial models also check 'en_batt' for replacement cost calcs
+// set en_batt here instead of equations so versions.lk works properly
+// for opening files from SAM 2018.11.11 and older
+on_load{'Battery Enable'} = define ()
+{
+	show('en_batt',false);
+	t = technology();
+	// for battery configs, enable battery and hide input
+	if ( t == 'PV Battery' || t == 'Generic Battery' )
+	{
+		${en_batt} = true;
+	}
+	// for fuel cell 'en_batt' is set by user, see exclusive var in Startup.lk
+	elseif( t != 'Fuel Cell' )
+	{
+		${en_batt} = false;
+	}
+};	

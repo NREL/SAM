@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Fuel Cell</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "fuelcell.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Fuel Cell</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">SAM's Fuel Cell model is based on the <a href="https://www.nrel.gov/hydrogen/fuel-cell-power-model.html" target="_blank" class="weblink" title="https://www.nrel.gov/hydrogen/fuel-cell-power-model.html">Fuel Cell Power Model</a> initially released in 2012 and designed to model molten carbonate, phosphoric acid, and solid oxide fuel cells for &quot;tri-generation&quot; systems that provide heat and electricity to a commercial building or facility and hydrogen for vehicles or for storage to generate electricity. The Fuel Cell Power model was originally implemented in Microsoft Excel workbooks with one workbook for each of the three types of fuel cell. These workbooks and their documentation are available for download from the Fuel Cell Power Model website linked above.</span></p>
+<p class="p_Text"><span class="f_Text">The model is implemented in SAM as the Fuel Cell performance model, available with either the Commercial or PPA Single Owner <a href="fin_overview.htm" class="topiclink">financial model</a>. The fuel cell converts natural gas, hydrogen, or another fuel into electricity and heat. The commercial model is for a commercial building or facility that uses electricity and heat from the system to reduce energy costs for the commercial operation. The PPA single owner model is for a revenue-generating power generation project.</span></p>
+<p class="p_Text" style="text-align: center;"><img alt="IMG_FuelCell-topology" width="600" height="424" style="margin:0 auto 0 auto;width:600px;height:424px;border:none" src="img_fuelcell-topology.png"/></p>
+<p class="p_Text"><span class="f_Text">The fuel cell performance model uses the following input pages to describe the components of a grid-connected tri-generation system:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List"><a href="fuelcell_fuel_cell.htm" class="topiclink">Fuel cell</a> model that converts a fuel into electricity, heat, and hydrogen.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List"><a href="fuelcell_pv_system.htm" class="topiclink">PVWatts</a> for a photovoltaic (PV) system.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List"><a href="fuelcell_battery_storage.htm" class="topiclink">Battery storage</a> model for an electric storage system.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">A <a href="fuelcell_dispatch.htm" class="topiclink">dispatch</a> model to determine how to operate the combined system.</span></p><p class="p_Text"><span class="f_Text">When you combine the fuel cell model with the Commercial financial model, you must also provide information about the electricity and thermal loads and retail rates for electricity and heat: retail electricity and heat costs:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">An <a href="electric_load.htm" class="topiclink">electric load</a> hourly or subhourly profile.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">A <a href="thermal_load.htm" class="topiclink">thermal load</a> (heat) hourly or subhourly profile.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List"><a href="electricity_rates.htm" class="topiclink">Electricity rates</a> are retail rates for fixed, energy, and demand charges with optional time-of-use and tiered rates.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast"><a href="thermal_rates.htm" class="topiclink">Thermal rates</a> are flat retail rates for heat purchases and sales.</span></p><p class="p_Text"><span class="f_Text">For the PPA single owner model with battery storage, there is no electric or thermal load because the system is not for a commercial building or facility, but you can specify retail rates to account for the cost of electricity to charge the battery.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

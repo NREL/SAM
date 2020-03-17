@@ -1,11 +1,11 @@
 PV Capital Costs
-828
-732
-103
+826
+681
+96
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -21,7 +21,10 @@ Width
 812
 Height
 3
-341
+287
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -42,13 +45,16 @@ X
 9
 Y
 3
-348
+297
 Width
 3
 812
 Height
 3
 284
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -69,13 +75,16 @@ X
 9
 Y
 3
-636
+585
 Width
 3
 812
 Height
 3
 89
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -86,7 +95,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -96,13 +105,16 @@ X
 306
 Y
 3
-366
+315
 Width
 3
 104
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -131,7 +143,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -141,13 +153,16 @@ X
 432
 Y
 3
-366
+315
 Width
 3
 101
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -176,7 +191,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -186,13 +201,16 @@ X
 552
 Y
 3
-366
+315
 Width
 3
 101
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -221,7 +239,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -231,13 +249,16 @@ X
 432
 Y
 3
-141
+87
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -266,7 +287,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -276,13 +297,16 @@ X
 309
 Y
 3
-141
+87
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -311,7 +335,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -321,13 +345,16 @@ X
 69
 Y
 3
-165
+111
 Width
 3
 239
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 27
@@ -356,7 +383,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -366,13 +393,16 @@ X
 69
 Y
 3
-189
+135
 Width
 3
 239
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -401,7 +431,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -411,13 +441,16 @@ X
 69
 Y
 3
-213
+159
 Width
 3
 239
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -446,7 +479,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -456,13 +489,16 @@ X
 69
 Y
 3
-390
+339
 Width
 3
 239
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 36
@@ -491,7 +527,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -501,13 +537,16 @@ X
 69
 Y
 3
-414
+363
 Width
 3
 239
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 34
@@ -536,7 +575,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -546,13 +585,16 @@ X
 69
 Y
 3
-438
+387
 Width
 3
 239
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -578,396 +620,10 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-12
-Name
-5
-18
-battery_cost_units
-X
-3
-579
-Y
-3
-84
-Width
-3
-58
-Height
-3
-21
-Caption
-5
-8
-$/kWh dc
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-12
-Name
-5
-21
-battery_cost_units_kw
-X
-3
-579
-Y
-3
-105
-Width
-3
-52
-Height
-3
-24
-Caption
-5
-7
-$/kW dc
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
 Numeric
 
 1
-16
-Name
-5
-14
-battery_energy
-X
-3
-378
-Y
-3
-84
-Width
-3
-75
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-3
-Numeric
-
-1
-16
-Name
-5
-14
-battery_per_kW
-X
-3
-501
-Y
-3
-108
-Width
-3
-76
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-6
-Numeric
-
-1
-16
-Name
-5
-15
-battery_per_kWh
-X
-3
-501
-Y
-3
-84
-Width
-3
-76
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-6
-Numeric
-
-1
-16
-Name
-5
-13
-battery_power
-X
-3
-378
-Y
-3
-108
-Width
-3
-75
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-3
-Numeric
-
-1
-16
-Name
-5
-13
-battery_total
-X
-3
-681
-Y
-3
-105
-Width
-3
-127
-Height
-3
-21
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-12
-Numeric
-
-1
-16
+17
 Name
 5
 15
@@ -977,13 +633,16 @@ X
 309
 Y
 3
-165
+111
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1026,7 +685,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1036,13 +695,16 @@ X
 552
 Y
 3
-165
+111
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1085,7 +747,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1095,13 +757,16 @@ X
 432
 Y
 3
-165
+111
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1144,7 +809,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1154,13 +819,16 @@ X
 681
 Y
 3
-165
+111
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1204,7 +872,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1214,13 +882,16 @@ X
 681
 Y
 3
-282
+228
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1264,7 +935,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -1274,13 +945,16 @@ X
 486
 Y
 3
-282
+228
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1323,7 +997,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1333,13 +1007,16 @@ X
 552
 Y
 3
-414
+363
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1382,7 +1059,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1392,13 +1069,16 @@ X
 432
 Y
 3
-414
+363
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1441,7 +1121,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1451,13 +1131,16 @@ X
 309
 Y
 3
-414
+363
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1500,7 +1183,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1510,13 +1193,16 @@ X
 681
 Y
 3
-414
+363
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1560,7 +1246,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1570,13 +1256,16 @@ X
 552
 Y
 3
-438
+387
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1619,7 +1308,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1629,13 +1318,16 @@ X
 432
 Y
 3
-438
+387
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1678,7 +1370,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1688,13 +1380,16 @@ X
 309
 Y
 3
-438
+387
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1737,7 +1432,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1747,13 +1442,16 @@ X
 681
 Y
 3
-438
+387
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1797,7 +1495,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -1807,13 +1505,16 @@ X
 309
 Y
 3
-189
+135
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1856,7 +1557,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1866,13 +1567,16 @@ X
 552
 Y
 3
-189
+135
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1915,7 +1619,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -1925,13 +1629,16 @@ X
 432
 Y
 3
-189
+135
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1974,7 +1681,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -1984,13 +1691,16 @@ X
 681
 Y
 3
-189
+135
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2034,7 +1744,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -2044,13 +1754,16 @@ X
 309
 Y
 3
-213
+159
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2093,7 +1806,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -2103,13 +1816,16 @@ X
 552
 Y
 3
-213
+159
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2152,7 +1868,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -2162,13 +1878,16 @@ X
 432
 Y
 3
-213
+159
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2211,7 +1930,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -2221,13 +1940,16 @@ X
 681
 Y
 3
-213
+159
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2271,23 +1993,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
 installed_per_capacity
 X
 3
-684
+681
 Y
 3
-687
+636
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2332,7 +2057,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 18
@@ -2349,6 +2074,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 3
@@ -2364,7 +2092,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -2381,6 +2109,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2423,7 +2154,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -2440,6 +2171,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2482,7 +2216,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -2499,6 +2233,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2542,7 +2279,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -2559,6 +2296,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2601,7 +2341,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -2611,13 +2351,16 @@ X
 189
 Y
 3
-474
+423
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2660,7 +2403,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -2670,13 +2413,16 @@ X
 552
 Y
 3
-498
+447
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2719,7 +2465,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -2729,13 +2475,16 @@ X
 189
 Y
 3
-498
+447
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2780,7 +2529,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -2790,13 +2539,16 @@ X
 432
 Y
 3
-498
+447
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2839,7 +2591,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -2849,13 +2601,16 @@ X
 309
 Y
 3
-498
+447
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2898,7 +2653,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -2908,13 +2663,16 @@ X
 681
 Y
 3
-498
+447
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2958,7 +2716,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -2968,13 +2726,16 @@ X
 552
 Y
 3
-522
+471
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3017,7 +2778,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -3027,13 +2788,16 @@ X
 189
 Y
 3
-522
+471
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3078,7 +2842,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -3088,13 +2852,16 @@ X
 432
 Y
 3
-522
+471
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3137,7 +2904,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -3147,13 +2914,16 @@ X
 309
 Y
 3
-522
+471
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3196,7 +2966,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -3206,13 +2976,16 @@ X
 681
 Y
 3
-522
+471
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3256,7 +3029,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 16
@@ -3266,13 +3039,16 @@ X
 45
 Y
 3
-660
+609
 Width
 3
 350
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 155
@@ -3301,7 +3077,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 17
@@ -3311,13 +3087,16 @@ X
 552
 Y
 3
-141
+87
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 4
@@ -3346,7 +3125,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 22
@@ -3356,13 +3135,16 @@ X
 537
 Y
 3
-189
+135
 Width
 3
 12
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -3391,7 +3173,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 13
@@ -3401,13 +3183,16 @@ X
 294
 Y
 3
-507
+456
 Width
 3
 12
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -3436,7 +3221,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 20
@@ -3446,13 +3231,16 @@ X
 18
 Y
 3
-522
+471
 Width
 3
 169
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 25
@@ -3481,7 +3269,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 17
@@ -3491,13 +3279,16 @@ X
 63
 Y
 3
-498
+447
 Width
 3
 124
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -3526,7 +3317,7 @@ AlignTop
 Choice
 
 1
-8
+9
 Name
 5
 16
@@ -3543,6 +3334,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 2
@@ -3557,7 +3351,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -3574,6 +3368,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3616,7 +3413,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -3633,6 +3430,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3675,7 +3475,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -3692,6 +3492,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3735,7 +3538,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -3752,6 +3555,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3794,7 +3600,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -3804,13 +3610,16 @@ X
 69
 Y
 3
-459
+408
 Width
 3
 582
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3830,7 +3639,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3840,13 +3649,16 @@ X
 681
 Y
 3
-585
+534
 Width
 3
 127
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3865,7 +3677,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3875,13 +3687,16 @@ X
 681
 Y
 3
-303
+249
 Width
 3
 127
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3900,7 +3715,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3910,13 +3725,16 @@ X
 69
 Y
 3
-267
+213
 Width
 3
 738
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3936,7 +3754,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3946,13 +3764,16 @@ X
 681
 Y
 3
-234
+180
 Width
 3
 127
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -3971,7 +3792,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -3981,13 +3802,16 @@ X
 72
 Y
 3
-546
+495
 Width
 3
 579
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -4007,7 +3831,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -4017,13 +3841,16 @@ X
 471
 Y
 3
-663
+612
 Width
 3
 210
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -4052,7 +3879,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4062,13 +3889,16 @@ X
 468
 Y
 3
-318
+264
 Width
 3
 210
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -4097,7 +3927,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4107,13 +3937,16 @@ X
 417
 Y
 3
-507
+456
 Width
 3
 12
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -4142,7 +3975,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4152,13 +3985,16 @@ X
 660
 Y
 3
-414
+363
 Width
 3
 12
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -4187,7 +4023,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4197,13 +4033,16 @@ X
 537
 Y
 3
-414
+363
 Width
 3
 12
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -4232,7 +4071,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4242,13 +4081,16 @@ X
 417
 Y
 3
-414
+363
 Width
 3
 12
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -4277,7 +4119,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4287,13 +4129,16 @@ X
 657
 Y
 3
-189
+135
 Width
 3
 12
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -4322,7 +4167,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4332,13 +4177,16 @@ X
 414
 Y
 3
-189
+135
 Width
 3
 12
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -4367,7 +4215,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4377,13 +4225,16 @@ X
 393
 Y
 3
-282
+228
 Width
 3
 90
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -4412,7 +4263,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4422,13 +4273,16 @@ X
 468
 Y
 3
-600
+549
 Width
 3
 210
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -4457,7 +4311,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4467,13 +4321,16 @@ X
 588
 Y
 3
-282
+228
 Width
 3
 90
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -4502,7 +4359,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4512,13 +4369,16 @@ X
 537
 Y
 3
-507
+456
 Width
 3
 12
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -4547,7 +4407,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -4557,13 +4417,16 @@ X
 660
 Y
 3
-507
+456
 Width
 3
 12
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -4592,7 +4455,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -4609,6 +4472,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4651,7 +4517,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -4668,6 +4534,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4710,7 +4579,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -4720,13 +4589,16 @@ X
 552
 Y
 3
-390
+339
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4769,7 +4641,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -4779,13 +4651,16 @@ X
 432
 Y
 3
-390
+339
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4828,7 +4703,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -4838,13 +4713,16 @@ X
 309
 Y
 3
-390
+339
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4887,7 +4765,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -4897,13 +4775,16 @@ X
 681
 Y
 3
-390
+339
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -4947,7 +4828,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -4957,13 +4838,16 @@ X
 285
 Y
 3
-561
+510
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5006,7 +4890,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -5016,13 +4900,16 @@ X
 681
 Y
 3
-561
+510
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5066,7 +4953,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -5076,13 +4963,16 @@ X
 492
 Y
 3
-561
+510
 Width
 3
 100
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5125,7 +5015,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -5135,13 +5025,16 @@ X
 681
 Y
 3
-249
+195
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5185,7 +5078,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -5195,13 +5088,16 @@ X
 681
 Y
 3
-318
+264
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5245,7 +5141,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -5255,13 +5151,16 @@ X
 681
 Y
 3
-600
+549
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5305,23 +5204,26 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
 total_installed_cost
 X
 3
-684
+681
 Y
 3
-663
+612
 Width
 3
 127
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -5363,77 +5265,7 @@ TabOrder
 3
 52
 
-64
-battery_energy
-3
-1
-Battery pack
-kWh
-Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Numeric
-battery_per_kW
-3
-1
-Battery cost per kW
-$/kW
-Capital Costs
-0
-3
-1
-1
-1
-1
-600
-Numeric
-battery_per_kWh
-3
-1
-Battery cost per kWh
-$/kWh
-Capital Costs
-0
-3
-1
-1
-1
-1
-600
-Numeric
-battery_power
-3
-1
-Battery power
-kW
-Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Numeric
-battery_total
-3
-1
-Total battery cost
-$
-Capital Costs
-0
-9
-1
-1
-1
-1
-0
-Numeric
+59
 bos_equip_fixed
 3
 1
@@ -6211,9 +6043,9 @@ system_use_recapitalization
 1
  
  
-Capital Costs
+ 
 0
-8
+0
 1
 1
 1
@@ -6252,7 +6084,7 @@ total_installed_cost
 3
 1
 Total installed cost
- 
+$
 Capital Costs
 0
 9
@@ -6263,7 +6095,7 @@ Capital Costs
 0
 Numeric
 
-5939
+4503
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6272,15 +6104,14 @@ equations{ 'engr_total' } = define() {
 
 equations{ 'inverter_num_units' } = define() {
 	if( technology() == "Flat Plate PV" ) return ${inverter_count};
-	elseif ( technology() == "PV_battery" ) return ${inverter_count};
 	elseif ( technology() == "PVWatts" ) return 1;
-	elseif ( technology() == "PVWatts_battery" ) return 1;
 	else return 0;
 };
 
 equations{ 'module_power' } = define() {
-	if( technology() == "PVWatts" ) return ${system_capacity};
-	elseif( technology() == "PVWatts_battery" ) return ${system_capacity};
+	if( technology() == "PVWatts" ) {
+		return ${system_capacity};
+	}	
 	else {
 		// Flat Plate PV
 		return 0.001*?${module_model}
@@ -6300,19 +6131,16 @@ equations{ 'contingency' } = define() {
 				+${inverter_total}
 				+${bos_equip_total}
 				+${install_labor_total} 
-				+${install_margin_total}
-				+${battery_total} );
+				+${install_margin_total});
 };
 
 equations{ 'land_area_value' } = define() {
 	if ( technology() == "PVWatts" ) return 0;
-	elseif ( technology() == "PVWatts_battery" ) return 0;
 	else return ${total_land_area};
 };
 
 equations{ 'inverter_power' } = define() {
 	if ( technology() == "PVWatts" ) return ${system_capacity}/${dc_ac_ratio};
-	elseif ( technology() == "PVWatts_battery" ) return ${system_capacity}/${dc_ac_ratio};
 	else return 0.001*?${inverter_model}
 			[
 				${inv_snl_paco},
@@ -6360,7 +6188,6 @@ equations{ 'install_labor_total' } = define() {
 
 equations{ 'module_num_units' } = define() {
 	if ( technology() == "PVWatts" ) return 1;
-	elseif ( technology() == "PVWatts_battery" ) return 1;
 	else return ${total_modules};
 };
 
@@ -6369,7 +6196,6 @@ equations{ 'landprep_total' } = define() {
 		+ ${landprep_percent}/100*${total_direct_cost} 
 		+ ${modulearray_power}*1000*${landprep_per_watt} 
 		+ ${landprep_fixed}; };
-
 
 equations{ 'install_margin_total' } = define() {
 	return ${install_margin_fixed}
@@ -6384,7 +6210,6 @@ equations{ 'inverterarray_power' } = define() {
 
 equations{ 'modulearray_area' } = define() {
 	if ( technology() == 'PVWatts' ) return 0;
-	elseif ( technology() == 'PVWatts_battery' ) return 0;
 	else return ${total_module_area};
 };
 
@@ -6416,14 +6241,12 @@ equations{ 'bos_equip_total' } = define() {
 + ${modulearray_power}*1000*${bos_equip_perwatt}
 + ${modulearray_area}*${bos_equip_perarea}; };
 
-
 equations{ 'installed_per_capacity' } = define() {
 	return 0.001*${total_installed_cost}/${modulearray_power}; };
 
 equations{ 'subtotal_direct' } = define() {
 	return ${module_total}
 		+${inverter_total}
-		+${battery_total}
 		+${bos_equip_total}
 		+${install_labor_total}
 		+${install_margin_total}; };
@@ -6431,70 +6254,21 @@ equations{ 'subtotal_direct' } = define() {
 equations{ 'total_direct_cost' } = define() {
 	return ${module_total}
 		+${inverter_total}
-		+${battery_total}
 		+${bos_equip_total}
 		+${install_labor_total}
 		+${install_margin_total}
 		+${contingency}; };
-
+		
+// set system_use_recapitalization = 0 for all techs except geothermal
 equations { 'system_use_recapitalization' } = define () {
-	if( technology() == "PVWatts" )
-		return 0;
-	else
-		return ${system_use_lifetime_output};
-	};
-
-equations { 'battery_total' } = define () {
-	return ${battery_energy}*${battery_per_kWh} + ${battery_power}*${battery_per_kW};};
+	return 0;
+};
 	
-equations { 'battery_energy' } = define () {
-	if( technology() == "Flat Plate PV" )
-			return ?${en_batt}
-				[0,	${batt_computed_bank_capacity}];
-	else if ((technology() == "PVWatts" ) && 
-		  ( (financing() == 'Residential') || 
-			(financing() == 'Commercial') || 
-		    (financing() == 'Third Party')))
-		{
-			return ?${batt_simple_enable}
-				[0,	${batt_simple_kwh}];
-		}
-	else
-		return 0;
-};
-equations { 'battery_power' } = define () {
-	if( technology() == "Flat Plate PV" )
-			return ?${en_batt}
-				[0,	${batt_power_discharge_max}];
-	else if ((technology() == "PVWatts" ) && 
-		  ( (financing() == 'Residential') || 
-			(financing() == 'Commercial') || 
-		    (financing() == 'Third Party')))
-		{
-			return ?${batt_simple_enable}
-				[0,	${batt_simple_kw}];
-		}
-	else
-		return 0;
-};
-1289
+
+575
 on_load{"PV Capital Costs"}=define()
 {
-	f = financing();
-	t = technology();
-	show_batt = show_battery_costs(t, f);
-	
-	show( "lblFinancingCost", 
-		(f!='None')&&(f!='Residential')&&(f!='Commercial')&&(f!='Third Party')&&(f!='Single Owner'));
-	
-	show( "battery_energy", show_batt);
-	show( "battery_per_kWh", show_batt);
-	show( "battery_power", show_batt);
-	show( "battery_per_kW", show_batt);
-	show( "battery_cost_units", show_batt);
-	show( "battery_total", show_batt);
-		
-	is_detailed_pv = ( t != "PVWatts" );
+	is_detailed_pv = ( technology() != "PVWatts" );
 	show("land_area_value",is_detailed_pv);
 	show("land_per_acre",is_detailed_pv);
 	show("landprep_per_acre",is_detailed_pv);
@@ -6506,17 +6280,4 @@ on_load{"PV Capital Costs"}=define()
 	show("bos_equip_perarea",is_detailed_pv);
 	show("install_labor_perarea",is_detailed_pv);
 	show("install_margin_perarea",is_detailed_pv);
-	
 };
-
-function show_battery_costs(t, f)
-{
-	show_battery = false;
-	if (t == "PVWatts" &&((f=='Residential')||(f=='Commercial')||(f=='Third Party')))
-		show_battery = true;
-	else if (t == 'Flat Plate PV' && (f !='LCOE Calculator') && (f !='None'))
-		show_battery = true;
-	
-	return show_battery;
-
-}

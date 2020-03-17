@@ -5,7 +5,7 @@ Wind Farm Costs
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -22,6 +22,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -65,7 +68,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -82,6 +85,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -126,7 +132,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -143,6 +149,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -187,7 +196,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -204,6 +213,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -247,7 +259,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 16
@@ -264,6 +276,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 36
@@ -274,7 +289,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 20
@@ -291,6 +306,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 26
@@ -301,7 +319,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 12
@@ -318,6 +336,9 @@ Width
 Height
 3
 48
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -338,7 +359,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -355,6 +376,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -374,7 +398,7 @@ Bold
 Divider
 
 1
-9
+10
 Name
 5
 11
@@ -391,6 +415,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -410,7 +437,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -427,6 +454,9 @@ Width
 Height
 3
 270
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -437,7 +467,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -454,6 +484,9 @@ Width
 Height
 3
 186
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -464,7 +497,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -481,6 +514,9 @@ Width
 Height
 3
 96
+Tool Tip
+5
+0
 Caption
 5
 371
@@ -509,7 +545,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -526,6 +562,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -554,7 +593,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -571,6 +610,9 @@ Width
 Height
 3
 30
+Tool Tip
+5
+0
 Caption
 5
 125
@@ -599,7 +641,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -616,6 +658,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -644,7 +689,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -661,6 +706,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -689,7 +737,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -706,6 +754,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 32
@@ -734,7 +785,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -751,6 +802,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -779,7 +833,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -796,6 +850,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -824,7 +881,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -841,6 +898,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -869,7 +929,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -886,6 +946,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 1
@@ -914,7 +977,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -931,6 +994,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 5
@@ -959,7 +1025,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -976,6 +1042,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -1004,7 +1073,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1021,6 +1090,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1063,7 +1135,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -1080,6 +1152,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1122,7 +1197,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 23
@@ -1139,6 +1214,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -1163,7 +1241,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -1180,6 +1258,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1222,7 +1303,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1239,6 +1320,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1281,7 +1365,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1298,6 +1382,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1341,7 +1428,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -1358,6 +1445,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1401,7 +1491,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -1418,6 +1508,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1462,7 +1555,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1479,6 +1572,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1522,7 +1618,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -1539,6 +1635,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1583,7 +1682,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1600,6 +1699,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1644,7 +1746,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1661,6 +1763,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1702,13 +1807,13 @@ TabOrder
 3
 4294967295
 
-21
+20
 bos_cost_fixed
 3
 1
 BOS fixed costs
 $
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -1722,7 +1827,7 @@ bos_cost_per_kw
 1
 BOS cost per kW
 $/kW
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -1736,7 +1841,7 @@ bos_cost_per_turbine
 1
 BOS cost per turbine
 $/turbine
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -1750,7 +1855,7 @@ bos_cost_total
 1
 Total BOS cost
 $
-Wind Farm Costs
+Wind Capital Costs
 0
 9
 1
@@ -1764,7 +1869,7 @@ est_bos_cost
 0
  
  
-Wind Farm Costs
+Wind Capital Costs
 0
 0
 1
@@ -1775,7 +1880,7 @@ est_turbine_cost
 1
  
  
-Wind Farm Costs
+Wind Capital Costs
 0
 0
 1
@@ -1789,7 +1894,7 @@ install_type
 1
 Land based or offshore installation
  
-Wind Farm Costs
+Wind Capital Costs
 0
 1
 1
@@ -1803,7 +1908,7 @@ reference_capacity
 1
 Wind farm capacity
 kW
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1817,7 +1922,7 @@ reference_number_turbines
 1
 Number of turbines
  
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1831,7 +1936,7 @@ reference_resource_file
 4
  
  
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1844,7 +1949,7 @@ reference_sales_tax_percent
 1
 Sales tax rate
 %
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1858,7 +1963,7 @@ sales_tax_basis
 1
 Sales tax basis, % of total equipment costs
 %
-Wind Farm Costs
+Wind Capital Costs
 0
 2
 1
@@ -1872,23 +1977,9 @@ sales_tax_total
 1
 Total sales tax amount
 $
-Wind Farm Costs
+Wind Capital Costs
 0
 9
-1
-1
-1
-1
-0
-Default
-system_use_lifetime_output
-3
-1
- 
- 
-Wind Farm Costs
-0
-0
 1
 1
 1
@@ -1900,7 +1991,7 @@ system_use_recapitalization
 1
  
  
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1914,7 +2005,7 @@ total_installed_cost
 1
 Total installed cost
  
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1928,7 +2019,7 @@ total_installed_cost_per_kw
 1
 Total installed cost per kW
  
-Wind Farm Costs
+Wind Capital Costs
 0
 8
 1
@@ -1942,7 +2033,7 @@ turbine_cost_fixed
 1
 Turbine fixed costs
 $
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -1956,7 +2047,7 @@ turbine_cost_per_kw
 1
 Turbine cost per kW
 $/kW
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -1970,7 +2061,7 @@ turbine_cost_per_turbine
 1
 Turbine cost per turbine
 $/turbine
-Wind Farm Costs
+Wind Capital Costs
 0
 3
 1
@@ -1984,7 +2075,7 @@ turbine_cost_total
 1
 Total turbine cost
 $
-Wind Farm Costs
+Wind Capital Costs
 0
 9
 1
@@ -1994,7 +2085,7 @@ Wind Farm Costs
 0
 Default
 
-1271
+1200
 equations{ 'reference_capacity' } = define() {
 	return ${system_capacity};
 };
@@ -2027,11 +2118,6 @@ equations{ 'reference_resource_file' } = define() {
 	return ${wind_resource_filename};
 };
 
-equations { 'system_use_lifetime_output' } = define () {
-	return 0;};
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
-	
 equations { 'reference_sales_tax_percent' } = define() {
 	return ${sales_tax_rate};
 };
@@ -2040,6 +2126,9 @@ equations { 'sales_tax_total' } = define() {
 	return (${turbine_cost_total} + ${bos_cost_total}) * 0.01 * 
 		${sales_tax_basis} * 0.01 * ${sales_tax_rate};
 };
+
+equations { 'system_use_recapitalization' } = define () {
+	return 0;};
 
 14149
 on_change{'install_type'} = define()

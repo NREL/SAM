@@ -1,51 +1,24 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (Alliance) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as System Advisor Model or SAM. Except
-*  to comply with the foregoing, the terms System Advisor Model, SAM, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #include <algorithm>
 #include <memory>
@@ -57,7 +30,8 @@
 
 #include <lk/parse.h>
 #include <lk/codegen.h>
-
+#include <lk/env.h>
+#include <lk/stdlib.h>
 
 
 #include <wx/log.h>
@@ -80,6 +54,7 @@
 #endif
 
 #include <ssc/sscapi.h>
+#include <ssc/ssc_equations.h>
 
 #include "main.h"
 #include "case.h"
@@ -96,6 +71,7 @@
 #include "stochastic.h"
 #include "codegencallback.h"
 #include "nsrdb.h"
+#include "graph.h"
 
 std::mutex global_mu;
 
@@ -200,9 +176,9 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 
 	// this information is consistent with the variable definitions in the wfreader module
 	wfvec vars[] = {
-		{ "global", "Global irradiance - GHI", "W/m2" },
 		{ "beam", "Beam irradiance - DNI", "W/m2" },
 		{ "diffuse","Diffuse irradiance - DHI", "W/m2" },
+		{ "global", "Global irradiance - GHI", "W/m2" },
 		{ "poa", "Plane of array irradiance -POA", "W/m2" },
 		{ "wspd", "Wind speed", "m/s" },
 		{ "wdir", "Wind direction", "deg" },
@@ -260,7 +236,7 @@ static void fcall_logmsg( lk::invoke_t &cxt )
 
 static void fcall_webapi( lk::invoke_t &cxt )
 {
-	LK_DOC( "webapi", "Returns the URL for the SAM web API requested.  No arguments returns a list of names.", "( [string:name] ):string");
+	LK_DOC( "webapi", "Returns the URL for the SAM web API requested.  No arguments returns the list of options: windtoolkit, biomass_resource, energy_crop, nsrdb_query, android_build, ios_build, website, ...", "( [string:name] ):string");
 	cxt.result().assign( SamApp::WebApi( cxt.arg_count() > 0 ? cxt.arg(0).as_string() : wxEmptyString ) );
 }
 
@@ -310,8 +286,10 @@ static void fcall_configopt( lk::invoke_t &cxt )
 		opt.LongName = vv->as_string();
 	if( lk::vardata_t *vv = tab.lookup( "short_name") ) 
 		opt.ShortName = vv->as_string();
-	if( lk::vardata_t *vv = tab.lookup( "description" ) )
+	if (lk::vardata_t *vv = tab.lookup("description"))
 		opt.Description = vv->as_string();
+	if (lk::vardata_t *vv = tab.lookup("tree_parent"))
+		opt.TreeParent = vv->as_string();
 
 	// eventually can add other options too, such as icon name, etc
 }
@@ -622,7 +600,7 @@ static void fcall_add_gain_term(lk::invoke_t &cxt)
 
 static void fcall_agraph( lk::invoke_t &cxt )
 {
-	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bootom, right, floating)]):none" );
+	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR), [number:Xmin value], [number:Xmax value]]:none" );
 	
 	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
@@ -635,6 +613,9 @@ static void fcall_agraph( lk::invoke_t &cxt )
 		ag.show_xvalues = true;
 		ag.show_legend = true;
 		ag.legend_pos = "bottom";
+		ag.Type = Graph::BAR;
+		ag.XMin = -1;
+		ag.XMax = -1;
 		if (cxt.arg_count() > 4)
 			ag.size = cxt.arg(4).as_integer();
 		if (cxt.arg_count() > 5)
@@ -643,7 +624,12 @@ static void fcall_agraph( lk::invoke_t &cxt )
 			ag.show_legend = cxt.arg(6).as_boolean();
 		if (cxt.arg_count() > 7)
 			ag.legend_pos = cxt.arg(7).as_string();
-
+		if (cxt.arg_count() > 8)
+			ag.Type = cxt.arg(8).as_integer();
+		if (cxt.arg_count() > 9)
+            ag.XMin = cxt.arg(9).as_number();
+        if (cxt.arg_count() > 10)
+            ag.XMax = cxt.arg(10).as_number();
 		ci->GetResultsViewer()->AddAutoGraph( ag );
 	}
 }
@@ -765,16 +751,22 @@ static void fcall_varinfo( lk::invoke_t &cxt )
 
 void fcall_value( lk::invoke_t &cxt )
 {
-	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value]):[variant]");
+	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value, bool:trigger value change (default true)]):[variant]");
 	
 	CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
 	if ( VarValue *vv = cc.GetValues().Get( name ) )
 	{
-		if ( cxt.arg_count() == 2 )
+		if ( cxt.arg_count() > 1 )
 		{
-			if ( vv->Read( cxt.arg(1), false ) )
-				cc.GetCase().VariableChanged( name );
+			if ( vv->Read( cxt.arg(1), false ) ){
+			    bool trigger = true;
+			    if (cxt.arg_count() == 3 )
+			        trigger = cxt.arg(2).as_boolean();
+				if (trigger){
+				    cc.GetCase().VariableChanged( name );
+				}
+			}
 			else
 				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
 		}
@@ -785,6 +777,17 @@ void fcall_value( lk::invoke_t &cxt )
 		cxt.error("variable '" + name + "' does not exist in this context" );
 }
 
+void fcall_is_assigned( lk::invoke_t &cxt )
+{
+    LK_DOC("is_assigned", "Check by name if an input or output variable exists in current case", "(string:name):bool");
+
+    CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
+    wxString name = cxt.arg(0).as_string();
+    if ( VarValue *vv = cc.GetCase().BaseCase().GetValue( name ) )
+        cxt.result().assign(1);
+    else
+        cxt.result().assign((double)0);
+}
 	
 static void plottarget( UICallbackContext &cc, const wxString &name )
 {
@@ -818,15 +821,25 @@ void fcall_clearplot( lk::invoke_t &cxt )
 void fcall_refresh( lk::invoke_t &cxt )
 {
 	LK_DOC("refresh", "Refresh the current form or a specific widget", "([string:name]):none" );
-	
+
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
+    Case* cur_case = &cc.GetCase();
 	if ( cxt.arg_count() == 0 )
 		cc.InputPage()->Refresh();
 	else
 	{
-		if ( wxUIObject *obj = cc.InputPage()->FindActiveObject( cxt.arg(0).as_string(), 0 ) )
+	    wxString var = cxt.arg(0).as_string();
+        ActiveInputPage *ipage = 0;
+        wxUIObject *obj = cc.InputPage()->FindActiveObject( var, &ipage );
+        VarValue *vv = cur_case->Values().Get( var );
+        if ( obj ){
 			if ( wxWindow *win = obj->GetNative() )
 				win->Refresh();
+            if ( ipage && vv )
+            {
+                ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+            }
+		}
 	}
 }
 
@@ -904,10 +917,14 @@ void fcall_property( lk::invoke_t &cxt )
 			if ( val.type() == lk::vardata_t::VECTOR
 				&& val.length() == 3 )
 			{
+// Strange error about conversion to wxColourBase::ChannelType, doesn't appear valid
+#pragma warning (push)
+#pragma warning (disable: 4242)
 				p.Set( wxColour(
-					val.index(0)->as_integer(),
-					val.index(1)->as_integer(),
-					val.index(2)->as_integer() ) );
+					val.index(0)->as_unsigned(),
+					val.index(1)->as_unsigned(),
+					val.index(2)->as_unsigned()) );
+#pragma warning (pop)
 			}
 			else
 			{
@@ -1290,13 +1307,13 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 		int rowCount, columnCount;
 		xl->Excel().getUsedCellRange(rowCount, columnCount, vals); 
 		
-		if (nskip >= rowCount - 1) nskip = 0;
+		if ((int)nskip >= rowCount - 1) nskip = 0;
 		if (astable)
 		{
 			if (rowMajor) {
 				wxArrayString colHeaders;
 				//read column headers from first nonskipped row
-				for (size_t c = 0; c < columnCount; c++) {
+				for (int c = 0; c < columnCount; c++) {
 					wxString name = vals[c*rowCount + nskip];
 					colHeaders.push_back(name);
 					if (name.IsEmpty()) continue;
@@ -1305,10 +1322,10 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 					it.empty_vector();
 					it.resize(rowCount - 1 - nskip);
 				}
-				for (size_t c = 0; c < columnCount; c++) {
+				for (int c = 0; c < columnCount; c++) {
 					lk::vardata_t* it = out.lookup(colHeaders[c]);
 					if (it == NULL) continue;
-					for (size_t r = 1 + nskip; r < rowCount; r++) {
+					for (int r = 1 + nskip; r < rowCount; r++) {
 						if (vals[c*rowCount + r] != wxEmptyString) {
 							if (tonum) it->index(r - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
 							else it->index(r - 1 - nskip)->assign(vals[c*rowCount + r]);
@@ -1319,7 +1336,7 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 			else {
 				wxArrayString rowHeaders;
 				//read row headers from first nonskipped column
-				for (size_t r = 0; r < rowCount; r++) {
+				for (int r = 0; r < rowCount; r++) {
 					wxString name = vals[nskip*rowCount + r];
 					rowHeaders.push_back(name);
 					if (name.IsEmpty()) continue;
@@ -1329,10 +1346,10 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 					it.resize(columnCount - 1 - nskip);
 				}
 
-				for (size_t r = 0; r < rowCount; r++) {
+				for (int r = 0; r < rowCount; r++) {
 					lk::vardata_t* it = out.lookup(rowHeaders[r]);
 					if (it == NULL) continue;
-					for (size_t c = 1 + nskip; c < columnCount; c++) {
+					for (int c = 1 + nskip; c < columnCount; c++) {
 						if (vals[c*rowCount + r] != wxEmptyString) {
 							if (tonum) it->index(c - 1 - nskip)->assign(wxAtof(vals[c*rowCount + r]));
 							else it->index(c - 1 - nskip)->assign(vals[c*rowCount + r]);
@@ -1345,11 +1362,11 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 			if (rowMajor == true) {
 				out.empty_vector();
 				out.vec()->resize(rowCount - nskip);
-				for (size_t r = nskip; r < rowCount; r++) {
+				for (int r = nskip; r < rowCount; r++) {
 					lk::vardata_t *row = out.index(r-nskip);
 					row->empty_vector();
 					row->vec()->resize(columnCount);
-					for (size_t c = 0; c < columnCount; c++)
+					for (int c = 0; c < columnCount; c++)
 					{
 						if (vals[c*rowCount + r] == wxEmptyString) continue;
 						if (tonum) {
@@ -1364,11 +1381,11 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 			else {
 				out.empty_vector();
 				out.vec()->resize(columnCount - nskip);
-				for (size_t c = nskip; c < columnCount; c++) {
+				for (int c = nskip; c < columnCount; c++) {
 					lk::vardata_t *col = out.index(c-nskip);
 					col->empty_vector();
 					col->vec()->resize(rowCount);
-					for (size_t r = 0; r < rowCount; r++)
+					for (int r = 0; r < rowCount; r++)
 					{
 						if (vals[c*rowCount + r] == wxEmptyString) continue;
 						if (tonum) {
@@ -1389,141 +1406,6 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 #endif
 
 
-static bool lkvar_to_sscvar( ssc_data_t p_dat, const char *name, lk::vardata_t &val )
-{	
-	switch (val.type())
-	{
-	case lk::vardata_t::NUMBER:
-		ssc_data_set_number( p_dat, name, (ssc_number_t)val.as_number() );
-		break;
-	case lk::vardata_t::STRING:
-		ssc_data_set_string( p_dat, name, (const char*)val.as_string().c_str() );
-		break;
-	case lk::vardata_t::VECTOR:
-		{
-			size_t dim1 = val.length(), dim2 = 0;
-			for (size_t i=0;i<val.length();i++)
-			{
-				lk::vardata_t *row = val.index(i);
-				if (row->type() == lk::vardata_t::VECTOR && row->length() > dim2 )
-					dim2 = row->length();
-			}
-
-			if (dim2 == 0 && dim1 > 0)
-			{
-				ssc_number_t *vec = new ssc_number_t[ dim1 ];
-				for ( size_t i=0;i<dim1;i++)
-					vec[i] = (ssc_number_t)val.index(i)->as_number();
-
-				ssc_data_set_array( p_dat, name, vec, dim1 );
-				delete [] vec;
-			}
-			else if ( dim1 > 0 && dim2 > 0 )
-			{
-				
-				ssc_number_t *mat = new ssc_number_t[ dim1*dim2 ];
-				for ( size_t i=0;i<dim1;i++)
-				{
-					for ( size_t j=0;j<dim2;j++ )
-					{
-						ssc_number_t x = 0;
-						if ( val.index(i)->type() == lk::vardata_t::VECTOR
-							&& j < val.index(i)->length() )
-							x = (ssc_number_t)val.index(i)->index(j)->as_number();
-
-						mat[ i*dim2 + j ] = x;
-					}
-				}
-
-				ssc_data_set_matrix( p_dat, name, mat, dim1, dim2 );
-				delete [] mat;
-			}
-		}
-		break;
-	case lk::vardata_t::HASH:		
-		{
-			ssc_data_t table = ssc_data_create();
-
-			lk::varhash_t &hash = *val.hash();
-			for ( lk::varhash_t::iterator it = hash.begin();
-				it != hash.end();
-				++it )
-				lkvar_to_sscvar( table, (const char*)(*it).first.c_str(), *(*it).second );
-
-			ssc_data_set_table( p_dat, name, table );
-			ssc_data_free( table );
-		}
-		break;
-	}
-
-	return true;
-}
-
-static void sscvar_to_lkvar( lk::vardata_t &out, const char *name, ssc_data_t p_dat )
-{
-	out.nullify();
-
-	int ty = ssc_data_query( p_dat, name );
-	switch( ty )
-	{
-	case SSC_NUMBER:
-		{
-			ssc_number_t num;
-			if ( ssc_data_get_number( p_dat, name, &num ) )
-			out.assign( (double) num );
-		}
-		break;
-	case SSC_STRING:
-		if ( const char *ss = ssc_data_get_string( p_dat, name ) )
-			out.assign( lk_string(ss) );
-		break;
-	case SSC_ARRAY:
-	{
-		int n = 0;
-		ssc_number_t *vv = ssc_data_get_array( p_dat, name, &n );
-		if ( vv && n > 0 )
-		{
-			out.empty_vector();
-			out.vec()->reserve( (size_t) n );
-			for (int i=0;i<n;i++)
-				out.vec_append( vv[i] );
-		}
-	}
-		break;
-	case SSC_MATRIX:
-	{
-		int nr = 0, nc = 0;
-		ssc_number_t *mat = ssc_data_get_matrix( p_dat, name, &nr, &nc );
-		if ( mat && nr > 0 && nc > 0 )
-		{
-			out.empty_vector();
-			out.vec()->reserve( nr );
-			for (int i=0;i<nr;i++)
-			{
-				out.vec()->push_back( lk::vardata_t() );
-				out.vec()->at(i).empty_vector();
-				out.vec()->at(i).vec()->reserve( nc );
-				for (int j=0;j<nc;j++)
-					out.vec()->at(i).vec_append( mat[ i*nc +j ] );
-			}
-		}
-	}
-		break;
-	case SSC_TABLE:
-		if ( ssc_data_t table = ssc_data_get_table( p_dat, name ) )
-		{
-			out.empty_hash();
-			const char *key = ::ssc_data_first( table );
-			while ( key != 0 )
-			{
-				lk::vardata_t &xvd = out.hash_item( lk_string(key) );
-				sscvar_to_lkvar( xvd, key, table );
-				key = ssc_data_next( p_dat );
-			}
-		}
-		break;
-	}
-}
 
 class lkSSCdataObj : public lk::objref_t
 {
@@ -1558,10 +1440,10 @@ void fcall_ssc_var( lk::invoke_t &cxt )
 	if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 	{
 		wxString name = cxt.arg(1).as_string();
-		if (cxt.arg_count() == 2)		
-			sscvar_to_lkvar( cxt.result(), (const char*)name.ToUTF8(), *ssc );
+		if (cxt.arg_count() == 2)
+            sscdata_to_lkvar(*ssc, (const char *) name.ToUTF8(), cxt.result());
 		else if (cxt.arg_count() == 3)
-			lkvar_to_sscvar( *ssc, (const char*)name.ToUTF8(), cxt.arg(2).deref() );
+            assign_lkvar_to_sscdata(cxt.arg(2).deref(), (const char *) name.ToUTF8(), *ssc);
 	}
 	else
 		cxt.error( "invalid ssc-obj-ref" );
@@ -1798,6 +1680,36 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 	}
 }
 
+void fcall_ssc_eqn(lk::invoke_t &cxt)
+{
+    LK_DOC("ssc_eqn", "Call equation with var_table inputs. Returns true upon success. Errors reported in inputs table.", "(string: eqn_name, table:inputs):bool");
+    wxString eqn_name = cxt.arg(0).as_string();
+
+    ssc_data_t vd_data = ssc_data_create();
+    if (cxt.arg(1).deref().type() != lk::vardata_t::HASH)
+        throw lk::error_t(lk_tr("Inputs to equation must be a table"));
+    lkhash_to_sscdata(cxt.arg(1).deref(), vd_data);
+
+    size_t i = 0;
+    while ( ssc_equation_table[i].func){
+        if (wxStrcmp(eqn_name, ssc_equation_table[i].name) == 0){
+            try {
+                (*ssc_equation_table[i].func)(vd_data);
+                cxt.result().assign(1.);
+            }
+            catch (std::runtime_error &e){
+				cxt.arg(1).deref().hash_item("error", e.what());
+                cxt.result().assign(0.);
+                return;
+            }
+            sscdata_to_lkhash(vd_data, cxt.arg(1).deref());
+            return;
+        }
+        i++;
+    }
+    throw lk::error_t(lk_tr("Equation by that name does not exist."));
+}
+
 void fcall_substance_density(lk::invoke_t &cxt)
 {
 	LK_DOC("substance_density", "Return the density given a substance ID and temperature in C", "(variant:substanceID, variant:tempC):variant");
@@ -1984,9 +1896,9 @@ void fcall_wfdownloaddir( lk::invoke_t &cxt)
 
 void fcall_nsrdbquery(lk::invoke_t &cxt)
 {
-	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all available resource files, downloads multiple solar resource files, and returns local file name for weather file", "(string:user_location) : string");
-	wxString user_location = cxt.arg(0).as_string();
-	NSRDBDialog dlgNSRDB(SamApp::Window(), "Advanced NSRDB Download", user_location);
+	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
+	//Create the wind data object
+	NSRDBDialog dlgNSRDB(SamApp::Window(), "Choose Weather Files to Download from NSRDB");
 	dlgNSRDB.CenterOnParent();
 	int code = dlgNSRDB.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -2015,7 +1927,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
 
 	//Create the wind data object
-	WindToolkitDialog spd(SamApp::Window(), "WIND Toolkit Download");
+	WindToolkitDialog spd(SamApp::Window(), "Download Wind Resource File");
 	spd.CenterOnParent();
 	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -2202,7 +2114,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 			if (!csv.ReadString(srw_api_data))
 			{
 				//			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
-				ecd.Log(wxString::Format("Failed to read downloaded weather file %s. Try the download again in case there was a problem connecting to the database.", filename));
+				ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
 				success=false;
 			}
 			if (i == 0)
@@ -2325,6 +2237,58 @@ static bool applydiurnalschedule(lk::invoke_t &cxt, wxString sched_name, double 
 	}
 	return true;
 }
+
+
+void fcall_calculated_list(lk::invoke_t &cxt)
+{
+	LK_DOC("calculated_list", "Returns all SSC compute module inputs from the current case that are a SAM UI calculated variable.", "():array");
+
+	wxString msg="";
+	Case *c = SamApp::Window()->GetCurrentCase();
+	if (!c) return;
+
+	ConfigInfo *ci = c->GetConfiguration();
+	if (!ci) return;
+
+	wxArrayString sim_list = ci->Simulations;
+	VarInfoLookup &vil = ci->Variables;
+
+	if (sim_list.size() == 0)
+	{
+		return cxt.result().assign("No simulation compute modules defined for this configuration.");
+	}
+
+	cxt.result().empty_vector();
+
+	for (size_t kk = 0; kk < sim_list.size(); kk++)
+	{
+		ssc_module_t p_mod = ssc_module_create(sim_list[kk].c_str());
+		if (!p_mod)
+		{
+			msg += ("could not create ssc module: " + sim_list[kk]);
+			break;
+		}
+
+		int pidx = 0;
+		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+		{
+			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+			wxString reqd(ssc_info_required(p_inf));
+
+			if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+			{
+				VarInfo* vi = vil.Lookup(name);
+				if (vi && (vi->Flags & VF_CALCULATED))
+					cxt.result().vec_append(name);
+			}
+		}
+	}
+	if (msg != "")
+		return	cxt.result().assign(msg);
+}
+
+
 
 
 void fcall_group_write(lk::invoke_t &cxt)
@@ -2462,7 +2426,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 
 void fcall_urdb_read(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_read", "Reads rate data from a file case to the current case.", "(string:filename):boolean");
+	LK_DOC("urdb_read", "Reads rate data from a file to the current case.", "(string:filename):boolean");
 	
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -2488,7 +2452,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			{
 				if ( !VarValue::Parse(vv->Type(), value, *vv) )
 				{
-					errors.Add("Problem assigning " + var_name + " to " + value );
+					errors.Add("Problem assigning " + value + " to " + var_name );
 					ret_val = false;
 				}
 				else
@@ -2499,7 +2463,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 				// try upgrading - see project file upgrader for 2015.11.16
 				// update to matrix for ec and dc
 				//errors.Add("Problem assigning " + var_name + " missing with " + value);
-				//ret_val = false;
+				ret_val = false;
 				upgrade_list.Add(var_name);
 				upgrade_value.Add(value);
 			}
@@ -3204,7 +3168,7 @@ void fcall_showsettings( lk::invoke_t &cxt )
 
 void fcall_rescanlibrary( lk::invoke_t &cxt )
 {
-	LK_DOC("rescanlibrary", "Rescan the indicated resource data library ('solar' or 'wind') and update any library widgets.", "(string:type):boolean");
+	LK_DOC("rescanlibrary", "Rescan the indicated resource data library ('solar' or 'wind' or 'wave') and update any library widgets.", "(string:type):boolean");
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
 
 	wxString type(cxt.arg(0).as_string().Lower());
@@ -3216,11 +3180,17 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		ScanSolarResourceData( solar_resource_db, true );
 		reloaded = Library::Load( solar_resource_db );
 	}
-	else if ( type == "wind" )
+	else if (type == "wind")
 	{
-		wxString wind_resource_db  = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
-		ScanWindResourceData( wind_resource_db, true );
-		reloaded = Library::Load( wind_resource_db );
+		wxString wind_resource_db = SamApp::GetUserLocalDataDir() + "/WindResourceData.csv";
+		ScanWindResourceData(wind_resource_db, true);
+		reloaded = Library::Load(wind_resource_db);
+	}
+	else if (type == "wave")
+	{
+		wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
+		ScanWaveResourceData(wave_resource_db, true);
+		reloaded = Library::Load(wave_resource_db);
 	}
 
 	if ( &cc != NULL && reloaded != 0 )
@@ -4460,7 +4430,7 @@ void fcall_parametric_get(lk::invoke_t &cxt)
 	else if (vv->Type() == VV_ARRAY) {
 		size_t n = 0;
 		for (size_t i = start; i < end; i++) {
-			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Array(&n);
+			double* val = sims[i]->GetValue(cxt.arg(0).as_string())->Array(&n);
 			lk::vardata_t* row = nullptr;
 			if (singleVal > -1) {
 				out.empty_vector();
@@ -4477,27 +4447,27 @@ void fcall_parametric_get(lk::invoke_t &cxt)
 		}
 	}
 	else if (vv->Type() == VV_MATRIX) {
-		size_t r = 0;
-		size_t c = 0;
+		size_t nr = 0;
+		size_t nc = 0;
 		for (size_t i = start; i < end; i++) {
-			float* val = sims[i]->GetValue(cxt.arg(0).as_string())->Matrix(&r, &c);
+			double* val = sims[i]->GetValue(cxt.arg(0).as_string())->Matrix(&nr, &nc);
 			lk::vardata_t* rows = nullptr;
 			if (singleVal > -1) {
 				out.empty_vector();
-				out.vec()->resize(r);
+				out.vec()->resize(nr);
 				rows = &out;
 			}
 			else {
 				rows = out.index(i);
 				rows->empty_vector();
-				rows->vec()->resize(r);
+				rows->vec()->resize(nr);
 			}
-			for (size_t n = 0; n < r; n++) {
+			for (size_t n = 0; n < nr; n++) {
 				lk::vardata_t *col = rows->index(n);
 				col->empty_vector();
-				col->vec()->resize(c);
-				for (size_t m = 0; m < c; m++) {
-					col->index(m)->assign(val[ n*c+m ]);				
+				col->vec()->resize(nc);
+				for (size_t m = 0; m < nc; m++) {
+					col->index(m)->assign(val[ n*nc+m ]);				
 				}
 			}
 		}
@@ -4541,31 +4511,210 @@ static void fcall_parametric_export(lk::invoke_t &cxt)
 		return;
 	}
 	wxString file = cxt.arg(0).as_string();
-	bool ext;
+	bool asExcel = false;
 	if (cxt.arg_count() > 1) {
-		ext = cxt.arg(1).as_boolean();
+		asExcel = cxt.arg(1).as_boolean();
 	}
-	if (cw->GetParametricViewer()->ExportFromMacro(file, ext)) cxt.result().assign(1.0);
+	if (cw->GetParametricViewer()->ExportFromMacro(file, asExcel)) cxt.result().assign(1.0);
 	else cxt.result().assign(0.0);
+}
+
+static void fcall_reopt_size_battery(lk::invoke_t &cxt)
+{
+    LK_DOC("reopt_size_battery", "From a detailed or simple photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "( none ): table");
+
+    ssc_data_t p_data = ssc_data_create();
+
+    // check if case exists and is correct configuration
+    Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
+    if (!sam_case || ((sam_case->GetTechnology() != "Flat Plate PV" && sam_case->GetTechnology() != "PVWatts") ||
+            (sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commercial" &&
+             sam_case->GetFinancing() != "Third Party" && sam_case->GetFinancing() != "Host Developer")))
+        throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Third Party or Host Developer model.");
+    bool pvsam = sam_case->GetTechnology() == "Flat Plate PV";
+
+    Simulation base_case = sam_case->BaseCase();
+    base_case.Clear();
+    base_case.Prepare();
+    bool success = base_case.Invoke();
+    if (!success){
+        ssc_data_free(p_data);
+        throw lk::error_t(base_case.GetErrors()[0]);
+    }
+
+    //
+    // copy over required inputs from SAM
+    //
+    VarValue* losses;
+    if (pvsam){
+        losses = base_case.GetOutput("annual_total_loss_percent");
+    }
+    else{
+        losses = base_case.GetInput("losses");
+    }
+    ssc_data_set_number(p_data, "losses", losses->Value());
+    ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
+    ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
+
+    auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
+        for (auto& i : captured_vec){
+            auto vd = base_case.GetValue(i);
+            if (vd){
+                switch(vd->Type()){
+                    case VV_NUMBER:
+                        ssc_data_set_number(p_data, i.c_str(), vd->Value());
+                        break;
+                    case VV_ARRAY:{
+                        size_t n;
+                        double* arr = vd->Array(&n);
+                        ssc_data_set_array(p_data, i.c_str(), arr, n);
+                        break;
+                    }
+                    case VV_MATRIX:{
+                        size_t n, m;
+                        double* mat = vd->Matrix(&n, &m);
+                        ssc_data_set_matrix(p_data, i.c_str(), mat, n, m);
+                        break;
+                    }
+                    default:
+                        throw lk::error_t("ReOpt_size_battery input error: " + i + " type must be number, array or matrix");
+                }
+            }
+        }
+    };
+
+    // variables that are disjoint between PVWatts and PVSam
+    std::vector<std::string> pvwatts_vars = {"array_type", "azimuth", "tilt",  "gcr", "inv_eff", "dc_ac_ratio",
+											 "module_type"};
+
+    std::vector<std::string> pvsam_vars = {"subarray1_track_mode", "subarray1_backtrack", "subarray1_azimuth",
+                                           "subarray1_tilt", "subarray1_gcr", "inverter_model", "inverter_count",
+                                           "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
+                                           "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
+                                           "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
+                                           "batt_minimum_SOC"};
+
+    if (pvsam){
+        copy_vars_into_ssc_data(pvsam_vars);
+    }
+    else{
+        copy_vars_into_ssc_data(pvwatts_vars);
+    }
+
+    // variables common to both models
+    std::vector<std::string> pv_vars = {"degradation", "itc_fed_percent", "system_capacity",
+                                        "pbi_fed_amount", "pbi_fed_term", "ibi_sta_percent", "ibi_sta_percent_maxvalue",
+                                        "ibi_uti_percent", "ibi_uti_percent_maxvalue", "om_fixed", "om_production",
+                                        "total_installed_cost", "depr_bonus_fed", "depr_bonus_fed"};
+
+    std::vector<std::string> batt_vars = {"battery_per_kW", "battery_per_kWh", "om_replacement_cost1", "batt_replacement_schedule"};
+
+    std::vector<std::string> rate_vars = {"ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
+                                          "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
+                                          "ur_ec_tou_mat", "load", "crit_load"};
+
+    std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
+                                         "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
+                                         "total_installed_cost", "value_of_lost_load"};
+
+    copy_vars_into_ssc_data(pv_vars);
+    copy_vars_into_ssc_data(batt_vars);
+    copy_vars_into_ssc_data(rate_vars);
+    copy_vars_into_ssc_data(fin_vars);
+
+    try{
+        Reopt_size_battery_params(p_data);
+    }
+    catch( std::exception& e){
+        ssc_data_free(p_data);
+        throw lk::error_t(e.what());
+    }
+
+    auto reopt_scenario = new lk::vardata_t;
+    sscdata_to_lkvar(p_data, "reopt_scenario", *reopt_scenario);
+    ssc_data_free(p_data);
+
+    cxt.result().empty_hash();
+    lk_string reopt_jsonpost = lk::json_write(*reopt_scenario);
+    cxt.result().hash_item("scenario", reopt_jsonpost);
+
+    // send the post
+    wxString post_url = SamApp::WebApi("reopt_post");
+    post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
+
+    wxEasyCurl curl;
+    curl.AddHttpHeader("Accept: application/json");
+    curl.AddHttpHeader("Content-Type: application/json");
+    curl.SetPostData(reopt_jsonpost);
+
+    wxString msg, err;
+    if (!curl.Get(post_url, msg))
+    {
+        cxt.result().assign(msg);
+        return;
+    }
+
+    // get the run_uuid to poll for result, checking the status
+    lk::vardata_t results;
+    if (!lk::json_read(curl.GetDataAsString(), results, &err))
+        cxt.result().assign("<ReOpt-error> " + err);
+
+	if (auto err_vd = results.lookup("messages"))
+		throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
+    if (auto err_vd = results.lookup("error"))
+        throw lk::error_t(err_vd->as_string() );
+
+    wxString poll_url = SamApp::WebApi("reopt_poll");
+    poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
+    poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
+    curl = wxEasyCurl();
+    cxt.result().hash_item("response", lk::vardata_t());
+    lk::vardata_t* cxt_result = cxt.result().lookup("response");
+
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "ReOpt Lite API",
+            wxCENTER, wxDefaultPosition, wxDefaultSize);
+    dlg.Show();
+    wxGetApp().Yield( true );
+    std::string optimizing_status = "Optimizing...";
+    while (optimizing_status == "Optimizing..."){
+        if (!curl.Get(poll_url, msg))
+        {
+            cxt.result().hash_item("error", msg);
+            break;
+        }
+        if (!lk::json_read(curl.GetDataAsString(), *cxt_result, &err)){
+            cxt.result().hash_item("error", "<json-error> " + err);
+            break;
+        }
+        if (lk::vardata_t* res = cxt_result->lookup("outputs")){
+            optimizing_status = res->lookup("Scenario")->lookup("status")->as_string();
+            if (optimizing_status.find("error") != std::string::npos){
+                std::string error = res->lookup("messages")->lookup("error")->as_string();
+                cxt.result().hash_item("error", error);
+                break;
+            }
+        }
+    }
+    dlg.Close();
 }
 
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
-		fcall_samver,
-		fcall_logmsg,
-		fcall_wfdownloaddir,
-		fcall_webapi,
-		fcall_appdir,
-		fcall_runtimedir,
-		fcall_userlocaldatadir,
-		fcall_copy_file,
-		fcall_case_name,
-		fcall_dview,
-		fcall_dview_solar_data_file,
-		fcall_pdfreport,
-		fcall_pagenote,
-		fcall_macrocall,
+            fcall_samver,
+            fcall_logmsg,
+            fcall_wfdownloaddir,
+            fcall_webapi,
+            fcall_appdir,
+            fcall_runtimedir,
+            fcall_userlocaldatadir,
+            fcall_copy_file,
+            fcall_case_name,
+            fcall_dview,
+            fcall_dview_solar_data_file,
+            fcall_pdfreport,
+            fcall_pagenote,
+            fcall_macrocall,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,
@@ -4578,37 +4727,38 @@ lk::fcall_t* invoke_general_funcs()
 		fcall_xl_get,
 		fcall_xl_autosizecols,
 #endif
-		fcall_lhs_threaded,
-		fcall_lhs_create,
-		fcall_lhs_free,
-		fcall_lhs_reset,
-		fcall_lhs_dist,
-		fcall_lhs_corr,
-		fcall_lhs_run,
-		fcall_lhs_error,
-		fcall_lhs_vector,
-		fcall_parametric_get,
-		fcall_parametric_set,
-		fcall_parametric_run,
-		fcall_parametric_export,
-		fcall_step_create,
-		fcall_step_free,
-		fcall_step_vector,
-		fcall_step_run,
-		fcall_step_error,
-		fcall_step_result,
-		fcall_sam_async,
-		fcall_sam_packaged_task,
-		fcall_showsettings,
-		fcall_setting,
-		fcall_getsettings,
-		fcall_setsettings,
-		fcall_rescanlibrary,
-		fcall_librarygetcurrentselection,
-		fcall_librarygetfiltertext,
-		fcall_librarygetnumbermatches,
-		fcall_librarynotifytext,
-		0 };
+            fcall_lhs_threaded,
+            fcall_lhs_create,
+            fcall_lhs_free,
+            fcall_lhs_reset,
+            fcall_lhs_dist,
+            fcall_lhs_corr,
+            fcall_lhs_run,
+            fcall_lhs_error,
+            fcall_lhs_vector,
+            fcall_parametric_get,
+            fcall_parametric_set,
+            fcall_parametric_run,
+            fcall_parametric_export,
+            fcall_step_create,
+            fcall_step_free,
+            fcall_step_vector,
+            fcall_step_run,
+            fcall_step_error,
+            fcall_step_result,
+            fcall_sam_async,
+            fcall_sam_packaged_task,
+            fcall_showsettings,
+            fcall_setting,
+            fcall_getsettings,
+            fcall_setsettings,
+            fcall_rescanlibrary,
+            fcall_librarygetcurrentselection,
+            fcall_librarygetfiltertext,
+            fcall_librarygetnumbermatches,
+            fcall_librarynotifytext,
+            fcall_reopt_size_battery,
+            0 };
 	return (lk::fcall_t*)vec;
 }
 
@@ -4621,6 +4771,7 @@ lk::fcall_t* invoke_ssc_funcs()
 		fcall_ssc_dump,
 		fcall_ssc_var,
 		fcall_ssc_exec,
+		fcall_ssc_eqn,
 		0 };
 	return (lk::fcall_t*)vec;
 }
@@ -4647,6 +4798,7 @@ lk::fcall_t* invoke_equation_funcs()
 		fcall_snlinverter,
 		fcall_current_at_voltage_cec,
 		fcall_current_at_voltage_sandia,
+		fcall_property,
 		// fcall_logmsg,
 		0 };
 	return (lk::fcall_t*)vec;
@@ -4656,6 +4808,7 @@ lk::fcall_t* invoke_casecallback_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_value,
+		fcall_is_assigned,
 		fcall_varinfo,
 		fcall_output,
 		fcall_technology,
@@ -4713,6 +4866,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,
+		fcall_calculated_list,
 		fcall_urdb_read,
 		fcall_urdb_write,
 		fcall_urdb_get,

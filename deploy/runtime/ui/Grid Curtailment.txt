@@ -1,0 +1,157 @@
+Grid Curtailment
+865
+129
+3
+DataArray
+
+1
+10
+Name
+5
+16
+grid_curtailment
+X
+3
+144
+Y
+3
+87
+Width
+3
+184
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+2
+MW
+Description
+5
+172
+Type or import a table of maximum system AC power output values in MW for each time step of the year. The number of rows in the table must match the weather file time step.
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+22
+grid_curtailment_label
+X
+3
+30
+Y
+3
+33
+Width
+3
+782
+Height
+3
+41
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+850
+Height
+3
+120
+Tool Tip
+5
+0
+Caption
+5
+16
+Grid Curtailment
+Bold
+2
+1
+
+1
+grid_curtailment
+3
+2
+Curtailment
+MW
+Financial Grid
+0
+2
+1
+2
+1
+1
+0
+DataArray
+
+0
+801
+on_load{'Grid Curtailment'} = define() {
+	check_grid_curtailment_fin();
+};
+
+function check_grid_curtailment_fin()
+{
+	is_compensated = (financing() == 'Merchant Plant' || financing() == 'Single Owner' );
+	caption = '';
+	if ( is_compensated )
+	{
+		caption = 'Click Edit Array to enter values in the curtailment schedule table. SAM limits the system power output to the MW power values in the table. Any curtailed system power is compensated at the curtailment rate on the Revenue page.';
+	}
+	else
+	{
+		caption = 'Click Edit Array to enter values in the curtailment schedule table. SAM limits the system power output to the MW power values in the table. Curtailed power is not compensated.';
+	}
+	property('grid_curtailment_label', 'Caption', caption);
+	show('grid_curtailment_label', true);
+	refresh();
+}

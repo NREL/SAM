@@ -1,7 +1,66 @@
 CEC Performance Model with User Entered Specifications
-1288
-708
-39
+1167
+831
+49
+Numeric
+
+1
+16
+Name
+5
+9
+6par_aisc
+X
+3
+981
+Y
+3
+621
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -12,10 +71,10 @@ Name
 6par_aisc_display
 X
 3
-333
+354
 Y
 3
-369
+273
 Width
 3
 100
@@ -71,10 +130,10 @@ Name
 6par_aisc_units
 X
 3
-435
+456
 Y
 3
-369
+273
 Width
 3
 64
@@ -102,10 +161,10 @@ Name
 6par_area
 X
 3
-255
+354
 Y
 3
-75
+78
 Width
 3
 100
@@ -161,13 +220,13 @@ Name
 6par_bifacial_ground_clearance_height
 X
 3
-420
+354
 Y
 3
-180
+516
 Width
 3
-90
+99
 Height
 3
 24
@@ -220,13 +279,13 @@ Name
 6par_bifacial_transmission_factor
 X
 3
-162
+354
 Y
 3
-177
+462
 Width
 3
-90
+99
 Height
 3
 24
@@ -279,10 +338,69 @@ Name
 6par_bifaciality
 X
 3
-162
+354
 Y
 3
-204
+489
+Width
+3
+99
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+9
+6par_bvoc
+X
+3
+981
+Y
+3
+594
 Width
 3
 90
@@ -338,10 +456,10 @@ Name
 6par_bvoc_display
 X
 3
-333
+354
 Y
 3
-345
+249
 Width
 3
 100
@@ -397,10 +515,10 @@ Name
 6par_bvoc_units
 X
 3
-435
+456
 Y
 3
-345
+249
 Width
 3
 64
@@ -428,13 +546,13 @@ Name
 6par_celltech
 X
 3
-255
+354
 Y
 3
-51
+54
 Width
 3
-181
+100
 Height
 3
 21
@@ -463,13 +581,13 @@ Name
 6par_data_filename
 X
 3
-381
+258
 Y
 3
-660
+780
 Width
 3
-539
+275
 Height
 3
 24
@@ -504,10 +622,10 @@ Name
 6par_gpmp
 X
 3
-333
+354
 Y
 3
-393
+297
 Width
 3
 100
@@ -563,10 +681,10 @@ Name
 6par_imp
 X
 3
-333
+354
 Y
 3
-273
+177
 Width
 3
 100
@@ -622,10 +740,10 @@ Name
 6par_is_bifacial
 X
 3
-57
+24
 Y
 3
-147
+465
 Width
 3
 147
@@ -652,10 +770,10 @@ Name
 6par_isc
 X
 3
-333
+354
 Y
 3
-321
+225
 Width
 3
 100
@@ -711,13 +829,13 @@ Name
 6par_module_name
 X
 3
-255
+147
 Y
 3
 27
 Width
 3
-259
+388
 Height
 3
 21
@@ -756,7 +874,7 @@ X
 237
 Y
 3
-519
+597
 Width
 3
 280
@@ -841,10 +959,10 @@ Name
 6par_nser
 X
 3
-333
+354
 Y
 3
-417
+321
 Width
 3
 100
@@ -949,6 +1067,360 @@ BackColour
 TabOrder
 3
 15
+Numeric
+
+1
+16
+Name
+5
+15
+6par_result_Adj
+X
+3
+981
+Y
+3
+567
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+14
+6par_result_Il
+X
+3
+645
+Y
+3
+594
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+14
+6par_result_Io
+X
+3
+645
+Y
+3
+621
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+14
+6par_result_Rs
+X
+3
+645
+Y
+3
+648
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+15
+6par_result_Rsh
+X
+3
+645
+Y
+3
+675
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+16
+Name
+5
+13
+6par_result_a
+X
+3
+645
+Y
+3
+567
+Width
+3
+90
+Height
+3
+24
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Choice
 
 1
@@ -962,7 +1434,7 @@ X
 237
 Y
 3
-495
+573
 Width
 3
 280
@@ -988,10 +1460,10 @@ Name
 6par_tnoct
 X
 3
-255
+354
 Y
 3
-99
+102
 Width
 3
 100
@@ -1047,10 +1519,10 @@ Name
 6par_vmp
 X
 3
-333
+354
 Y
 3
-249
+153
 Width
 3
 100
@@ -1106,10 +1578,10 @@ Name
 6par_voc
 X
 3
-333
+354
 Y
 3
-297
+201
 Width
 3
 100
@@ -1174,7 +1646,7 @@ Width
 533
 Height
 3
-224
+122
 Caption
 5
 19
@@ -1195,13 +1667,13 @@ X
 9
 Y
 3
-237
+132
 Width
 3
 533
 Height
 3
-248
+302
 Caption
 5
 25
@@ -1222,10 +1694,10 @@ X
 9
 Y
 3
-633
+753
 Width
 3
-941
+533
 Height
 3
 66
@@ -1249,13 +1721,13 @@ X
 9
 Y
 3
-486
+555
 Width
 3
 533
 Height
 3
-62
+71
 Caption
 5
 22
@@ -1300,16 +1772,16 @@ Name
 GroupBox5
 X
 3
-552
+549
 Y
 3
-108
+96
 Width
 3
-401
+608
 Height
 3
-419
+620
 Caption
 5
 34
@@ -1327,16 +1799,16 @@ Name
 btnCalcIVCurve
 X
 3
-687
+561
 Y
 3
-135
+132
 Width
 3
-131
+164
 Height
 3
-21
+24
 Caption
 5
 18
@@ -1354,20 +1826,20 @@ Name
 btnLoad6parData
 X
 3
-186
+141
 Y
 3
-660
+780
 Width
 3
-153
+111
 Height
 3
 24
 Caption
 5
-22
-Load data from file...
+17
+Load from file...
 TabOrder
 3
 4294967295
@@ -1384,56 +1856,47 @@ X
 27
 Y
 3
-660
+780
 Width
 3
-153
+111
 Height
 3
 24
 Caption
 5
-20
-Save data to file...
+15
+Save to file...
 TabOrder
 3
 4294967295
-Divider
+Button
 
 1
-9
+7
 Name
 5
-15
-dividerBifacial
+16
+copy_from_cec_db
 X
 3
-54
+63
 Y
 3
-129
+393
 Width
 3
-453
+420
 Height
 3
-16
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
+24
 Caption
 5
-23
-Bifacial Specifications
-Bold
-2
-1
+61
+Copy module specs from currently selected CEC database module
+TabOrder
+3
+4294967295
 GroupBox
 
 1
@@ -1447,13 +1910,13 @@ X
 9
 Y
 3
-549
+633
 Width
 3
-942
+533
 Height
 3
-87
+114
 Caption
 5
 10
@@ -1477,7 +1940,7 @@ Y
 168
 Width
 3
-381
+582
 Height
 3
 351
@@ -1494,10 +1957,10 @@ X
 27
 Y
 3
-609
+717
 Width
 3
-915
+498
 Height
 3
 21
@@ -1512,6 +1975,69 @@ https://sam.nrel.gov/performance
 TabOrder
 3
 4294967295
+Divider
+
+1
+9
+Name
+5
+9
+object 21
+X
+3
+573
+Y
+3
+537
+Width
+3
+555
+Height
+3
+16
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+44
+Calculated STC Single Diode Model Parameters
+Bold
+2
+0
+GroupBox
+
+1
+7
+Name
+5
+8
+object 4
+X
+3
+9
+Y
+3
+441
+Width
+3
+533
+Height
+3
+111
+Caption
+5
+23
+Bifacial Specifications
+Bold
+2
+1
 Label
 
 1
@@ -1525,7 +2051,7 @@ X
 18
 Y
 3
-441
+345
 Width
 3
 516
@@ -1570,13 +2096,13 @@ X
 27
 Y
 3
-564
+654
 Width
 3
-915
+498
 Height
 3
-42
+60
 Caption
 5
 181
@@ -1648,12 +2174,12 @@ AlignTop
 2
 1
 
-25
+31
 6par_aisc
 3
 1
 Temperature coefficient of Isc
- 
+A/C 
 PV Module (CEC User Specified)
 0
 10
@@ -1752,7 +2278,7 @@ Default
 3
 1
 Temperature coefficient of Voc
- 
+V/C
 PV Module (CEC User Specified)
 0
 10
@@ -1877,7 +2403,7 @@ Numeric
 6par_module_name
 3
 4
-Module description
+Module name
  
 PV Module (CEC User Specified)
 0
@@ -1944,6 +2470,90 @@ PV Module (CEC User Specified)
 1
 0
 Numeric
+6par_result_Adj
+3
+1
+Adjust
+%
+ 
+0
+4
+1
+1
+1
+1
+0
+Default
+6par_result_Il
+3
+1
+Il
+A
+ 
+0
+4
+1
+1
+1
+1
+0
+Default
+6par_result_Io
+3
+1
+Io
+A
+ 
+0
+4
+1
+1
+1
+1
+0
+Default
+6par_result_Rs
+3
+1
+Rs
+Ohm
+ 
+0
+4
+1
+1
+1
+1
+0
+Default
+6par_result_Rsh
+3
+1
+Rsh
+Ohm 
+ 
+0
+4
+1
+1
+1
+1
+0
+Default
+6par_result_a
+3
+1
+a
+V
+ 
+0
+4
+1
+1
+1
+1
+0
+Default
 6par_standoff
 3
 1
@@ -2016,7 +2626,7 @@ equations{ '6par_bvoc' } = define() {
 equations{ '6par_aisc' } = define() {
 	return ?${6par_aisc_units} [${6par_aisc_display}, 
 	0.01 * ${6par_aisc_display} * ${6par_isc} ]; };
-3362
+7770
 on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 
 	enable_bifacial();
@@ -2025,6 +2635,83 @@ on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 on_change{'6par_is_bifacial'} = define(){
 	enable_bifacial();
 };
+
+function cec_model_ivcurve( Irr, TcC,
+		a, Il, Io, Rs, Rsh, Adj, alpha, I_mp_ref,
+		vmax, np,
+		x, y )
+{
+	V = 0;
+	T_cell = TcC+273.15;
+	const q = 1.6*10^-19;
+	const KB = 1.38*10^-23;
+	const Tc_ref = 25+273.15;
+	const eg0 = 1.12;
+	const I_ref = 1000;
+	muIsc = alpha * (1-Adj/100);
+	
+	EG = eg0 * (1-0.0002677*(T_cell-Tc_ref));
+	IO_oper = Io * pow(T_cell/Tc_ref, 3) * exp( 1/KB*(eg0/Tc_ref - EG/T_cell) );
+	A_oper = a * T_cell / Tc_ref;
+	Rsh_oper = Rsh*(I_ref/Irr);
+	IL_oper = Irr/I_ref *( Il + muIsc*(T_cell-Tc_ref) );
+	if (IL_oper < 0.0) IL_oper = 0.0;
+	
+	/*
+	logmsg( '@ ' + Irr + ',' + TcC + ':: vmax, IL_oper, IO_oper, Rs, A_oper, Rsh_oper, I_mp_ref' );
+	logmsg( vmax );
+	logmsg( IL_oper );
+	logmsg( IO_oper );
+	logmsg( Rs );
+	logmsg( A_oper );
+	logmsg( Rsh_oper );
+	logmsg( I_mp_ref );
+	*/
+	
+	incr = vmax/(np-1);
+	for(i=0;i<np;i++)
+	{
+		x[i] = V;
+		y[i] = current_at_voltage_cec( V, IL_oper, IO_oper, Rs, A_oper, Rsh_oper, I_mp_ref );		
+		V += incr;
+	}
+	
+}
+
+
+function cec_model_make_plot( a, Il, Io, Rs, Rsh, Adj, alpha, beta, vmax, imax, I_mp_ref)
+{
+	curves = [ [ 1000, 25, 'black' ],
+			   [ 800,  25, 'blue' ],
+			   [ 600,  25, 'red' ],
+			   [ 400,  25, 'forest green' ],
+			   [ 200,  25, 'orange' ] ];
+		
+	const np = 150;
+	xx = alloc(np);
+	yy = alloc(np);
+
+	for( i=0;i<#curves;i++ )
+	{	
+		Irr = curves[i][0];
+		Tc = curves[i][1];
+		cec_model_ivcurve( Irr, Tc,	 
+			a, Il, Io, Rs, Rsh, Adj, alpha, I_mp_ref,
+			vmax, np,
+			xx, yy );
+			
+		plot(xx,yy,{'series'=sprintf('%g W/m^2, %g ^\\deg  C', Irr, Tc),
+			size= (Irr==1000 ? 3:1 ), "color"=curves[i][2]});
+
+	}
+		
+	
+	//Make the plot
+	plotopt({"title"='IV curves',"popup"=true,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='bottom'});
+	axis('x1', {'label'='Voltage (V)', 'min'=0, 'max'=ceil(vmax*1.01)});
+	axis('y1', {'label'='Current (A)', 'min'=0, 'max'= (imax*1.05)});
+}
+
 
 on_change{'btnCalcIVCurve'} = define() {
 
@@ -2055,46 +2742,26 @@ on_change{'btnCalcIVCurve'} = define() {
 	Io = ssc_var(obj, 'Io');
 	Rs = ssc_var(obj, 'Rs');
 	Rsh = ssc_var(obj, 'Rsh');
+	Adj = ssc_var(obj, 'Adj');
 	
 	ssc_free(obj);
 	
-	//allocations and size of array
-	array_size = 602;
-	interval = ${6par_vmp}/300;
-	x= alloc(array_size); y= alloc(array_size);
-	//First Point- Short Circuit
-	x[0]= 0; y[0]= ${6par_isc};
-	i=1;
-	//Before Max Power Point (MPP)
-	while(i<300)
-	{
-		Vcec= i*interval;
-		Icec= current_at_voltage_cec(Vcec, Il, Io, Rs, a, Rsh, ${6par_imp});
-		x[i] = Vcec; y[i] = Icec;
-		i= i + 1;
-	}
-	//MPP
-	x[i] = ${6par_vmp}; y[i] = ${6par_imp};
-	i= i + 1;
-	//After MPP
-	interval = (${6par_voc} - ${6par_vmp})/300;
-	while(i<601)
-	{
-		Vcec = ${6par_vmp} + (i-300) * interval;
-		Icec= current_at_voltage_cec(Vcec, Il, Io, Rs, a, Rsh, ${6par_imp});
-		x[i] = Vcec; y[i] = Icec;
-		i= i + 1;
-	}
-	//Last Point- Open Circuit
-	x[i] = ${6par_voc}; y[i] = 0;
+	${6par_result_a} = a;
+	${6par_result_Il} = Il;
+	${6par_result_Io} = Io;
+	${6par_result_Rs} = Rs;
+	${6par_result_Rsh} = Rsh;
+	${6par_result_Adj} = Adj;
+	
+	
 	//Make the plot
 	setplot("ivplot");
 	clearplot("ivplot");
-	plotopt({"title"=${6par_module_name},"popup"=true,"backcolor"=[255,255,255],"legend"=false});
-	plot(x,y,{"thick"=2, "scale"=true,"color"=[200,100,100]});
-	axis('x1', {'label'='Module Voltage (Volts)', 'min'=0, 'max'=ceil(${6par_voc})});
-	axis('y1', {'label'='Module Current (Amps)', 'min'=0, 'max'= (max(y) + 0.5)});
 	
+	cec_model_make_plot(
+		a, Il, Io, Rs, Rsh, Adj, 
+		${6par_aisc}, ${6par_bvoc}, 
+		${6par_voc}, ${6par_isc}, ${6par_imp});
 };
 
 
@@ -2144,3 +2811,109 @@ function enable_bifacial()
 	enable('6par_bifacial_transmission_factor', value('6par_is_bifacial'));
 	enable('6par_bifacial_ground_clearance_height', value('6par_is_bifacial'));
 }
+
+on_change{'copy_from_cec_db'} = define () {
+
+	value( '6par_isc', value('cec_i_sc_ref') );
+	value( '6par_is_bifacial', value('cec_is_bifacial') );
+	value( '6par_voc', value('cec_v_oc_ref') );
+	value( '6par_aisc_display', value('cec_alpha_sc') );
+	value( '6par_bifaciality', value('cec_bifaciality') );
+	value( '6par_aisc_units', 0 ); // always A/'C
+	value( '6par_gpmp', value('cec_gamma_r') );
+	value( '6par_area', value('cec_area') );
+	value( '6par_bifacial_ground_clearance_height', value('cec_bifacial_ground_clearance_height') );
+	value( '6par_bifacial_transmission_factor', value('cec_bifacial_transmission_factor') );
+	value( '6par_bvoc_display', value('cec_beta_oc') );
+	value( '6par_bvoc_units', 0 ); // always V/'C
+	
+	celltech = 0;
+	
+	m = lower(value('cec_material'));
+	if( strpos(m,'mono')>=0 ) celltech = 0;
+	elseif ( strpos(m, 'multi') >= 0 ) celltech = 1;
+	elseif( strpos(m, 'thin')>=0 ) celltech=2;
+	elseif( strpos(m, 'cis')>=0) celltech=3;
+	elseif( strpos(m, 'cigs')>=0) celltech=4;
+	elseif( strpos(m, 'a-si')>=0) celltech=5;
+	else
+	{
+		msgbox( 'pls check cell type.  could not translate unrecognized value from CEC database:' + m );
+	}
+	
+/*	Multi-c-Si
+	Mono-c-Si
+	Thin Film
+	a-Si/nc
+	CIS
+	CIGS
+	1-a-Si
+	CdTe
+	a-Si
+	2-a-Si
+	3-a-Si
+	HIT-Si
+	*/
+
+	
+	// 0:monoSi,1:multiSi,2:CdTe,3:CIS,4:CIGS,5:Amorphous
+	value( '6par_celltech', celltech );	
+	value( '6par_imp',  value('cec_i_mp_ref'));
+	value( '6par_module_name', value('module_name') + ' (from CEC database)' );
+	value( '6par_mounting', value('cec_height') );
+	value( '6par_nser', value( 'cec_n_s') );
+	value( '6par_standoff', value('cec_standoff') );
+	value( '6par_tnoct', value('cec_t_noct') );
+	value( '6par_vmp', value('cec_v_mp_ref') );
+	
+	
+	on_change{'btnCalcIVCurve'}();
+	msgbox('Copied module specs for ' + value('module_name') + ' from CEC database.');
+	
+	/*
+	
+	alpha_sc_calc	 	%/°C
+beta_oc_calc	 	%/°C
+cec_a_ref	A_ref	V
+cec_adjust	Adjust	%
+cec_alpha_sc	 	A/°C
+cec_area	Module area	m²
+cec_array_cols	Columns of modules in array	 
+cec_array_rows	Rows of modules in array	 
+cec_backside_temp	Temperature behind the module	°C
+cec_beta_oc	 	V/°C
+cec_bifacial_ground_clearance_height	Ground clearance height	m
+cec_bifacial_transmission_factor	Transmission fraction	0-1
+cec_bifaciality	Bifaciality	0-1
+cec_eff	Nominal efficiency	%
+cec_gamma_r	 	%/°C
+cec_gap_spacing	Space between module back and roof surface	m
+cec_heat_transfer	Heat transfer dimensions	 
+cec_height	Array height	 
+cec_i_l_ref	I_L_ref	A
+cec_i_mp_ref	Max power current (Imp)	Adc
+cec_i_o_ref	I_o_ref	A
+cec_i_sc_ref	Short circuit current (Isc)	Adc
+cec_is_bifacial	Use Bifacial Modules	 
+cec_material	Material	 
+cec_module_length	Module length	m
+cec_module_width	Module width	m
+cec_mounting_config	Mounting configuration	 
+cec_mounting_orientation	Mounting structure orientation	 
+cec_n_s	Number of cells	 
+cec_p_mp_ref	Maximum power (Pmp)	Wdc
+cec_r_s	R_s	Ohm
+cec_r_sh_ref	R_sh_ref	Ohm
+cec_standoff	Mounting standoff	 
+cec_t_noct	T_noct	°C
+cec_temp_corr_mode	Temperature Correction Model	 
+cec_v_mp_ref	Max power voltage (Vmp)	Vdc
+cec_v_oc_ref	Open circuit voltage (Voc)	Vdc
+gamma_r_calc	 	W/°C
+lbl_bifacial	Label indicating bifacial module from library 	 
+lib_is_bifacial	Bifacial designation from CEC module library	 
+module_name	Module Name	 
+ref_conditions	 	 
+
+*/
+};

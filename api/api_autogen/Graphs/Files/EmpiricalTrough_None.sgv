@@ -1,0 +1,238 @@
+digraph EmpiricalTrough_None {
+	label ="Empirical Trough-None";
+	labelloc=top;
+	rankdir=LR;
+	ranksep="1";
+	"E2TPLF0" [style=filled, fillcolor=grey]
+	"HhtfPar" [style=filled, fillcolor=grey]
+	"TSHOURS" [style=filled, fillcolor=grey]
+	"HhtfParPF" [style=filled, fillcolor=grey]
+	"E2TPLF1" [style=filled, fillcolor=grey]
+	"BOPParPF" [style=filled, fillcolor=grey]
+	"SfPipeHl2" [style=filled, fillcolor=grey]
+	"ConcFac" [style=filled, fillcolor=grey]
+	"PTTMIN" [style=filled, fillcolor=grey]
+	"TurTesOutAdj" [style=filled, fillcolor=grey]
+	"MirRef" [style=filled, fillcolor=grey]
+	"PTTMAX" [style=filled, fillcolor=grey]
+	"TurbEffG" [style=filled, fillcolor=grey]
+	"PbFixPar" [style=filled, fillcolor=grey]
+	"E2TPLF2" [style=filled, fillcolor=grey]
+	"system_capacity" [style=filled, fillcolor=grey]
+	"TrkTwstErr" [style=filled, fillcolor=grey]
+	"Solar_Field_Mult" [style=filled, fillcolor=grey]
+	"ChtfParPF" [style=filled, fillcolor=grey]
+	"TurbOutG" [style=filled, fillcolor=grey]
+	"CtPar" [style=filled, fillcolor=grey]
+	"SfPar" [style=filled, fillcolor=grey]
+	"SfInTempD" [style=filled, fillcolor=grey]
+	"MirCln" [style=filled, fillcolor=grey]
+	"SfPipeHl300" [style=filled, fillcolor=grey]
+	"TurTesEffAdj" [style=filled, fillcolor=grey]
+	"AntiFrPar" [style=filled, fillcolor=grey]
+	"E2TPLF4" [style=filled, fillcolor=grey]
+	"GeoAcc" [style=filled, fillcolor=grey]
+	"PFSmax" [style=filled, fillcolor=grey]
+	"HtrParPF" [style=filled, fillcolor=grey]
+	"MaxGrOut" [style=filled, fillcolor=grey]
+	"SfPipeHl3" [style=filled, fillcolor=grey]
+	"Solar_Field_Area" [style=filled, fillcolor=grey]
+	"SfParPF" [style=filled, fillcolor=grey]
+	"RefMirrAper" [style=filled, fillcolor=grey]
+	"E2TPLF3" [style=filled, fillcolor=grey]
+	"PTSmax" [style=filled, fillcolor=grey]
+	"SfOutTempD" [style=filled, fillcolor=grey]
+	"SCA_aper" [style=filled, fillcolor=grey]
+	"SfPipeHl1" [style=filled, fillcolor=grey]
+	"MinGrOut" [style=filled, fillcolor=grey]
+	"ChtfPar" [style=filled, fillcolor=grey]
+	"CtParPF" [style=filled, fillcolor=grey]
+	"BOPPar" [style=filled, fillcolor=grey]
+	"HCEdust" [style=filled, fillcolor=grey]
+	"HtrPar" [style=filled, fillcolor=grey]
+	"Row_Distance" [style=filled, fillcolor=grey]
+
+	"lib_HhtfParPF" -> "HhtfParPF" [label=0, color = black];
+	"lib_BOPParPF" -> "BOPParPF" [label=0, color = black];
+	"ui_par_fixedblock_const" -> "PbFixPar" [label=1, style=dashed, color = brown4];
+	"lib_TrkTwstErr" -> "TrkTwstErr" [label=2, color = darkorange3];
+	"ui_par_sf_const" -> "SfPar" [label=1, style=dashed, color = brown4];
+	"lib_HtrParPF" -> "HtrParPF" [label=0, color = black];
+	"lib_E2TPLF0" -> "E2TPLF0" [label=3, color = lightslateblue];
+	"lib_SCA_aper" -> "SCA_aper" [label=2, color = darkorange3];
+	"lib_MirRef" -> "MirRef" [label=2, color = darkorange3];
+	"lib_ConcFac" -> "ConcFac" [label=2, color = darkorange3];
+	"ui_par_htfpump_const" -> "ChtfPar" [label=1, style=dashed, color = brown4];
+	"lib_CtParPF" -> "CtParPF" [label=0, color = black];
+	"lib_MinGrOut" -> "MinGrOut" [label=3, color = lightslateblue];
+	"ui_solar_field_area" -> "Solar_Field_Mult" [label=4, style=dashed, color = mediumorchid];
+	"ui_solar_field_area" -> "Solar_Field_Area" [label=4, style=dashed, color = mediumorchid];
+	"lib_E2TPLF2" -> "E2TPLF2" [label=3, color = lightslateblue];
+	"ui_hce_opt_eff_1" -> "ui_hce_opt_eff_weighted" [label=5, style=dashed, color = firebrick];
+	"ui_hce_heat_losses_2" -> "ui_hce_thermloss_weighted_m" [label=5, style=dashed, color = firebrick];
+	"ui_solar_multiple" -> "Solar_Field_Mult" [label=4, style=dashed, color = mediumorchid];
+	"ui_solar_multiple" -> "Solar_Field_Area" [label=4, style=dashed, color = mediumorchid];
+	"E2TPLF0" -> "ui_min_therm_input" [label=6, style=dashed, color = indigo];
+	"E2TPLF0" -> "ui_max_therm_input" [label=6, style=dashed, color = indigo];
+	"ui_par_tes_const" -> "HhtfPar" [label=1, style=dashed, color = brown4];
+	"ui_hce_broken_glass_1" -> "ui_hce_opt_eff_1" [label=5, style=dashed, color = firebrick];
+	"HCEabs_1" -> "ui_hce_opt_eff_1" [label=5, style=dashed, color = firebrick];
+	"HCEabs_1" -> "HCEabs" [label=5, style=dashed, color = firebrick];
+	"ui_par_hb_const" -> "HtrPar" [label=1, style=dashed, color = brown4];
+	"lib_TurbEffG" -> "TurbEffG" [label=3, color = lightslateblue];
+	"HCEEnvTrans_1" -> "ui_hce_opt_eff_1" [label=5, style=dashed, color = firebrick];
+	"HCEEnvTrans_1" -> "HCEEnvTrans" [label=5, style=dashed, color = firebrick];
+	"lib_SfParPF" -> "SfParPF" [label=0, color = black];
+	"ui_field_htf_type" -> "PFSmax" [label=7, style=dashed, color = burlywood4];
+	"ui_field_htf_type" -> "PTSmax" [label=7, style=dashed, color = burlywood4];
+	"ui_field_htf_type" -> "HTFFluid" [label=4, style=dashed, color = mediumorchid];
+	"ui_field_htf_type" -> "ui_field_htf_min_operating_temp" [label=4, style=dashed, color = mediumorchid];
+	"ui_field_htf_type" -> "ui_field_htf_max_operating_temp" [label=4, style=dashed, color = mediumorchid];
+	"ui_field_htf_type" -> "calc_heat_ex_duty" [label=7, style=dashed, color = burlywood4];
+	"ui_field_htf_type" -> "bCustomHTF" [label=8, color = azure4];
+	"ui_field_htf_type" -> "max_temp" [label=8, color = azure4];
+	"ui_field_htf_type" -> "min_temp" [label=8, color = azure4];
+	"ui_tes_htf_type" -> "PFSmax" [label=7, style=dashed, color = burlywood4];
+	"ui_tes_htf_type" -> "PTSmax" [label=7, style=dashed, color = burlywood4];
+	"ui_tes_htf_type" -> "calc_heat_ex_duty" [label=7, style=dashed, color = burlywood4];
+	"ui_tes_htf_type" -> "calc_htf_max_opt_temp" [label=7, style=dashed, color = burlywood4];
+	"ui_tes_htf_type" -> "calc_htf_min_opt_temp" [label=7, style=dashed, color = burlywood4];
+	"HhtfPar" -> "ui_par_dp_total" [label=1, style=dashed, color = brown4];
+	"TSHOURS" -> "calc_max_energy" [label=7, style=dashed, color = burlywood4];
+	"ui_par_ct0_const" -> "CtPar" [label=1, style=dashed, color = brown4];
+	"HhtfParPF" -> "HhtfPar" [label=1, style=dashed, color = brown4];
+	"ui_par_antifreeze_const" -> "AntiFrPar" [label=1, style=dashed, color = brown4];
+	"lib_E2TPLF3" -> "E2TPLF3" [label=3, color = lightslateblue];
+	"E2TPLF1" -> "ui_min_therm_input" [label=6, style=dashed, color = indigo];
+	"E2TPLF1" -> "ui_max_therm_input" [label=6, style=dashed, color = indigo];
+	"BOPParPF" -> "BOPPar" [label=1, style=dashed, color = brown4];
+	"SfPipeHl2" -> "ui_piping_heat_loss" [label=4, style=dashed, color = mediumorchid];
+	"ConcFac" -> "calc_col_factor" [label=9, style=dashed, color = darkorchid4];
+	"ui_hce_HCEdust" -> "ui_hce_opt_eff_1" [label=5, style=dashed, color = firebrick];
+	"ui_hce_HCEdust" -> "ui_hce_opt_eff_4" [label=5, style=dashed, color = firebrick];
+	"ui_hce_HCEdust" -> "ui_hce_opt_eff_3" [label=5, style=dashed, color = firebrick];
+	"ui_hce_HCEdust" -> "ui_hce_opt_eff_2" [label=5, style=dashed, color = firebrick];
+	"HCEmisc_1" -> "ui_hce_opt_eff_1" [label=5, style=dashed, color = firebrick];
+	"HCEmisc_1" -> "HCEmisc" [label=5, style=dashed, color = firebrick];
+	"ui_field_layout_option" -> "Solar_Field_Mult" [label=4, style=dashed, color = mediumorchid];
+	"ui_field_layout_option" -> "Solar_Field_Area" [label=4, style=dashed, color = mediumorchid];
+	"ui_hce_thermloss_weighted_m" -> "ui_hce_thermloss_weighted_m2" [label=5, style=dashed, color = firebrick];
+	"ui_net_capacity" -> "system_capacity" [label=6, style=dashed, color = indigo];
+	"ui_net_capacity" -> "system_capacity" [label=6, style=dashed, color = indigo];
+	"TurTesOutAdj" -> "PFSmax" [label=7, style=dashed, color = burlywood4];
+	"MirRef" -> "calc_col_factor" [label=9, style=dashed, color = darkorchid4];
+	"TurbEffG" -> "ui_q_design" [label=6, style=dashed, color = indigo];
+	"PbFixPar" -> "ui_par_dp_total" [label=1, style=dashed, color = brown4];
+	"ui_hce_opt_eff_4" -> "ui_hce_opt_eff_weighted" [label=5, style=dashed, color = firebrick];
+	"E2TPLF2" -> "ui_min_therm_input" [label=6, style=dashed, color = indigo];
+	"E2TPLF2" -> "ui_max_therm_input" [label=6, style=dashed, color = indigo];
+	"TrkTwstErr" -> "calc_col_factor" [label=9, style=dashed, color = darkorchid4];
+	"Solar_Field_Mult" -> "calc_heat_ex_duty" [label=7, style=dashed, color = burlywood4];
+	"Solar_Field_Mult" -> "PTSmax" [label=7, style=dashed, color = burlywood4];
+	"Solar_Field_Mult" -> "ui_fixed_land_area" [label=4, style=dashed, color = mediumorchid];
+	"HCEBelShad_1" -> "ui_hce_opt_eff_1" [label=5, style=dashed, color = firebrick];
+	"HCEBelShad_1" -> "HCEBelShad" [label=5, style=dashed, color = firebrick];
+	"ChtfParPF" -> "ChtfPar" [label=1, style=dashed, color = brown4];
+	"lib_GeoAcc" -> "GeoAcc" [label=2, color = darkorange3];
+	"TurbOutG" -> "ui_net_capacity" [label=6, style=dashed, color = indigo];
+	"TurbOutG" -> "ui_q_design" [label=6, style=dashed, color = indigo];
+	"TurbOutG" -> "ui_par_turb_out_gr" [label=1, style=dashed, color = brown4];
+	"lib_MirCln" -> "MirCln" [label=2, color = darkorange3];
+	"ui_hce_hl_term_3" -> "ui_hce_heat_losses_2" [label=5, style=dashed, color = firebrick];
+	"ui_hce_hl_term_3" -> "ui_hce_heat_losses_3" [label=5, style=dashed, color = firebrick];
+	"ui_hce_hl_term_3" -> "ui_hce_heat_losses_4" [label=5, style=dashed, color = firebrick];
+	"ui_hce_hl_term_3" -> "ui_hce_heat_losses_1" [label=5, style=dashed, color = firebrick];
+	"ui_q_design" -> "ui_pb_q_design" [label=4, style=dashed, color = mediumorchid];
+	"ui_q_design" -> "PFSmax" [label=7, style=dashed, color = burlywood4];
+	"ui_q_design" -> "PTSmax" [label=7, style=dashed, color = burlywood4];
+	"ui_q_design" -> "PFSmax" [label=7, style=dashed, color = burlywood4];
+	"ui_q_design" -> "ui_min_therm_input" [label=6, style=dashed, color = indigo];
+	"ui_q_design" -> "ui_max_therm_input" [label=6, style=dashed, color = indigo];
+	"ui_q_design" -> "ui_tes_q_design" [label=7, style=dashed, color = burlywood4];
+	"ui_q_design" -> "calc_max_energy" [label=7, style=dashed, color = burlywood4];
+	"ui_par_turb_out_gr" -> "HtrPar" [label=1, style=dashed, color = brown4];
+	"ui_par_turb_out_gr" -> "BOPPar" [label=1, style=dashed, color = brown4];
+	"ui_par_turb_out_gr" -> "PbFixPar" [label=1, style=dashed, color = brown4];
+	"ui_par_turb_out_gr" -> "CtPar" [label=1, style=dashed, color = brown4];
+	"ui_par_turb_out_gr" -> "HhtfPar" [label=1, style=dashed, color = brown4];
+	"ui_par_turb_out_gr" -> "HhtfPar" [label=1, style=dashed, color = brown4];
+	"ui_hce_hl_term_2" -> "ui_hce_heat_losses_2" [label=5, style=dashed, color = firebrick];
+	"ui_hce_hl_term_2" -> "ui_hce_heat_losses_3" [label=5, style=dashed, color = firebrick];
+	"ui_hce_hl_term_2" -> "ui_hce_heat_losses_4" [label=5, style=dashed, color = firebrick];
+	"ui_hce_hl_term_2" -> "ui_hce_heat_losses_1" [label=5, style=dashed, color = firebrick];
+	"ui_hce_heat_losses_1" -> "ui_hce_thermloss_weighted_m" [label=5, style=dashed, color = firebrick];
+	"CtPar" -> "ui_par_dp_total" [label=1, style=dashed, color = brown4];
+	"ui_hce_heat_losses_4" -> "ui_hce_thermloss_weighted_m" [label=5, style=dashed, color = firebrick];
+	"lib_ChtfParPF" -> "ChtfParPF" [label=0, color = black];
+	"ui_hce_heat_losses_3" -> "ui_hce_thermloss_weighted_m" [label=5, style=dashed, color = firebrick];
+	"ui_hce_hl_term_4" -> "ui_hce_heat_losses_2" [label=5, style=dashed, color = firebrick];
+	"ui_hce_hl_term_4" -> "ui_hce_heat_losses_3" [label=5, style=dashed, color = firebrick];
+	"ui_hce_hl_term_4" -> "ui_hce_heat_losses_4" [label=5, style=dashed, color = firebrick];
+	"ui_hce_hl_term_4" -> "ui_hce_heat_losses_1" [label=5, style=dashed, color = firebrick];
+	"SfPar" -> "ui_par_dp_total" [label=1, style=dashed, color = brown4];
+	"calc_aperture_area_at_sm_1" -> "Solar_Field_Area" [label=4, style=dashed, color = mediumorchid];
+	"calc_aperture_area_at_sm_1" -> "Solar_Field_Mult" [label=4, style=dashed, color = mediumorchid];
+	"lib_E2TPLF4" -> "E2TPLF4" [label=3, color = lightslateblue];
+	"ui_hce_opt_eff_weighted" -> "ui_hce_weighted_optical_efficiency" [label=4, style=dashed, color = mediumorchid];
+	"ui_HCEdust" -> "HCEdust" [label=9, style=dashed, color = darkorchid4];
+	"calc_field_htf_average_temp" -> "ui_piping_heat_loss" [label=4, style=dashed, color = mediumorchid];
+	"SfInTempD" -> "calc_field_htf_average_temp" [label=4, style=dashed, color = mediumorchid];
+	"SfInTempD" -> "ui_hce_hl_term_4" [label=5, style=dashed, color = firebrick];
+	"SfInTempD" -> "ui_hce_hl_term_2" [label=5, style=dashed, color = firebrick];
+	"SfInTempD" -> "ui_hce_hl_term_3" [label=5, style=dashed, color = firebrick];
+	"MirCln" -> "calc_col_factor" [label=9, style=dashed, color = darkorchid4];
+	"ui_hce_thermloss_weighted_m2" -> "ui_hce_weighted_thermal_losses" [label=4, style=dashed, color = mediumorchid];
+	"SfPipeHl300" -> "ui_piping_heat_loss" [label=4, style=dashed, color = mediumorchid];
+	"lib_E2TPLF1" -> "E2TPLF1" [label=3, color = lightslateblue];
+	"TurTesEffAdj" -> "PFSmax" [label=7, style=dashed, color = burlywood4];
+	"AntiFrPar" -> "ui_par_dp_total" [label=1, style=dashed, color = brown4];
+	"E2TPLF4" -> "ui_min_therm_input" [label=6, style=dashed, color = indigo];
+	"E2TPLF4" -> "ui_max_therm_input" [label=6, style=dashed, color = indigo];
+	"ui_par_bop_const" -> "BOPPar" [label=1, style=dashed, color = brown4];
+	"ui_pb_q_design" -> "ui_design_exact_area_sm_1" [label=4, style=dashed, color = mediumorchid];
+	"GeoAcc" -> "calc_col_factor" [label=9, style=dashed, color = darkorchid4];
+	"HtrParPF" -> "HtrPar" [label=1, style=dashed, color = brown4];
+	"MaxGrOut" -> "PTTMAX" [label=6, style=dashed, color = indigo];
+	"MaxGrOut" -> "PFSmax" [label=7, style=dashed, color = burlywood4];
+	"MaxGrOut" -> "PTSmax" [label=7, style=dashed, color = burlywood4];
+	"MaxGrOut" -> "ui_max_therm_input" [label=6, style=dashed, color = indigo];
+	"SfPipeHl3" -> "ui_piping_heat_loss" [label=4, style=dashed, color = mediumorchid];
+	"calc_col_factor" -> "calc_hce_col_factor" [label=5, style=dashed, color = firebrick];
+	"Solar_Field_Area" -> "ui_par_sf_area" [label=1, style=dashed, color = brown4];
+	"ui_hce_opt_eff_3" -> "ui_hce_opt_eff_weighted" [label=5, style=dashed, color = firebrick];
+	"calc_hce_col_factor" -> "ui_hce_opt_eff_1" [label=5, style=dashed, color = firebrick];
+	"calc_hce_col_factor" -> "ui_hce_opt_eff_4" [label=5, style=dashed, color = firebrick];
+	"calc_hce_col_factor" -> "ui_hce_opt_eff_3" [label=5, style=dashed, color = firebrick];
+	"calc_hce_col_factor" -> "ui_hce_opt_eff_2" [label=5, style=dashed, color = firebrick];
+	"ui_hce_weighted_optical_efficiency" -> "ui_design_exact_area_sm_1" [label=4, style=dashed, color = mediumorchid];
+	"ui_hce_weighted_thermal_losses" -> "ui_design_exact_area_sm_1" [label=4, style=dashed, color = mediumorchid];
+	"SfParPF" -> "SfPar" [label=1, style=dashed, color = brown4];
+	"lib_MaxGrOut" -> "MaxGrOut" [label=3, color = lightslateblue];
+	"ui_design_exact_area_sm_1" -> "ui_design_exact_num_scas_sm_1" [label=4, style=dashed, color = mediumorchid];
+	"ui_design_exact_area_sm_1" -> "ui_fixed_land_area" [label=4, style=dashed, color = mediumorchid];
+	"ui_design_exact_num_scas_sm_1" -> "calc_aperture_area_at_sm_1" [label=4, style=dashed, color = mediumorchid];
+	"E2TPLF3" -> "ui_min_therm_input" [label=6, style=dashed, color = indigo];
+	"E2TPLF3" -> "ui_max_therm_input" [label=6, style=dashed, color = indigo];
+	"calc_heat_ex_duty" -> "PTSmax" [label=7, style=dashed, color = burlywood4];
+	"SfOutTempD" -> "calc_field_htf_average_temp" [label=4, style=dashed, color = mediumorchid];
+	"SfOutTempD" -> "ui_hce_hl_term_4" [label=5, style=dashed, color = firebrick];
+	"SfOutTempD" -> "ui_hce_hl_term_2" [label=5, style=dashed, color = firebrick];
+	"SfOutTempD" -> "ui_hce_hl_term_3" [label=5, style=dashed, color = firebrick];
+	"SCA_aper" -> "RefMirrAper" [label=9, style=dashed, color = darkorchid4];
+	"SCA_aper" -> "ui_hce_thermloss_weighted_m2" [label=5, style=dashed, color = firebrick];
+	"SCA_aper" -> "ui_fixed_land_area" [label=4, style=dashed, color = mediumorchid];
+	"SfPipeHl1" -> "ui_piping_heat_loss" [label=4, style=dashed, color = mediumorchid];
+	"MinGrOut" -> "PTTMIN" [label=6, style=dashed, color = indigo];
+	"MinGrOut" -> "ui_min_therm_input" [label=6, style=dashed, color = indigo];
+	"ui_par_sf_area" -> "ChtfPar" [label=1, style=dashed, color = brown4];
+	"ui_par_sf_area" -> "SfPar" [label=1, style=dashed, color = brown4];
+	"ChtfPar" -> "AntiFrPar" [label=1, style=dashed, color = brown4];
+	"ChtfPar" -> "ui_par_dp_total" [label=1, style=dashed, color = brown4];
+	"CtParPF" -> "CtPar" [label=1, style=dashed, color = brown4];
+	"ui_hce_opt_eff_2" -> "ui_hce_opt_eff_weighted" [label=5, style=dashed, color = firebrick];
+	"BOPPar" -> "ui_par_dp_total" [label=1, style=dashed, color = brown4];
+	"HCEdust" -> "ui_hce_HCEdust" [label=5, style=dashed, color = firebrick];
+	"ui_piping_heat_loss" -> "ui_design_exact_area_sm_1" [label=4, style=dashed, color = mediumorchid];
+	"HtrPar" -> "ui_par_dp_total" [label=1, style=dashed, color = brown4];
+	"Row_Distance" -> "ui_fixed_land_area" [label=4, style=dashed, color = mediumorchid];
+}

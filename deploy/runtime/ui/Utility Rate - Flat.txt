@@ -1,11 +1,11 @@
 Utility Rate - Flat
 985
 523
-21
+22
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -22,6 +22,9 @@ Width
 Height
 3
 129
+Tool Tip
+5
+0
 Caption
 5
 33
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 75
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -76,6 +82,9 @@ Width
 Height
 3
 66
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -86,7 +95,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -103,6 +112,9 @@ Width
 Height
 3
 51
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -113,7 +125,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -130,6 +142,9 @@ Width
 Height
 3
 170
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -140,7 +155,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -157,6 +172,9 @@ Width
 Height
 3
 126
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -167,7 +185,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -184,6 +202,9 @@ Width
 Height
 3
 61
+Tool Tip
+5
+0
 Caption
 5
 292
@@ -212,7 +233,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -229,6 +250,9 @@ Width
 Height
 3
 49
+Tool Tip
+5
+0
 Caption
 5
 235
@@ -257,7 +281,7 @@ AlignTop
 Button
 
 1
-7
+8
 Name
 5
 15
@@ -274,6 +298,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -284,7 +311,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 14
@@ -301,6 +328,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -311,7 +341,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 15
@@ -328,6 +358,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -338,7 +371,7 @@ TabOrder
 SchedNumeric
 
 1
-11
+12
 Name
 5
 15
@@ -355,6 +388,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Label
 5
 5
@@ -378,7 +414,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -395,6 +431,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -437,7 +476,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 18
@@ -447,17 +486,20 @@ X
 570
 Y
 3
-300
+273
 Width
 3
 374
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
-59
-Use hourly (subhourly) sell rates instead of TOU sell rates
+58
+Use hourly (subhourly) buy/sell rates instead of TOU rates
 State
 2
 0
@@ -467,7 +509,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 18
@@ -484,6 +526,9 @@ Width
 Height
 3
 134
+Tool Tip
+5
+0
 Selection
 3
 0
@@ -507,7 +552,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -524,6 +569,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -566,7 +614,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 21
@@ -583,6 +631,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -625,14 +676,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
 ur_nm_yearend_sell_rate
 X
 3
-786
+826
 Y
 3
 234
@@ -642,6 +693,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -684,7 +738,7 @@ TabOrder
 Hyperlink
 
 1
-8
+9
 Name
 5
 11
@@ -701,6 +755,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 43
@@ -715,7 +772,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 20
@@ -732,6 +789,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -756,23 +816,63 @@ TabOrder
 DataArray
 
 1
-9
+10
+Name
+5
+14
+ur_ts_buy_rate
+X
+3
+717
+Y
+3
+333
+Width
+3
+184
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+16
+Buy Rate ($/kWh)
+Description
+5
+47
+An array of $/kWh buy rates for each time step.
+TabOrder
+3
+3
+DataArray
+
+1
+10
 Name
 5
 15
 ur_ts_sell_rate
 X
 3
-741
+717
 Y
 3
-333
+303
 Width
 3
-119
+184
 Height
 3
 24
+Tool Tip
+5
+0
 Mode
 3
 1
@@ -788,7 +888,7 @@ TabOrder
 3
 3
 
-9
+10
 rate_escalation
 3
 2
@@ -895,11 +995,25 @@ Electricity rate file
  
 Electricity Rates - General
 0
-1
+9
 1
 4
 0
 TextEntry
+ur_ts_buy_rate
+3
+2
+Hourly (subhourly) buy rates
+$/kWh
+Electricity Rates - General
+0
+0
+1
+2
+1
+1
+0
+DataArray
 ur_ts_sell_rate
 3
 2
@@ -916,7 +1030,7 @@ Electricity Rates - General
 DataArray
 
 0
-4612
+4786
 on_load{"Utility Rate - Flat"} = define(){
 	check_configuration();
 	ur_flat_sell_rates(); // refresh when switching pages
@@ -945,16 +1059,22 @@ function ur_flat_sell_rates()
 	if ( eme==1 || eme==2 || eme==3|| eme==4)
 	{
 		enable( "ur_ts_sell_rate", true );
+		enable( "ur_ts_buy_rate", true );
 		enable( "ur_en_ts_sell_rate", true );
 		en = value("ur_en_ts_sell_rate");
-		if (en==1)
+		if (en==1){
 			property("ur_ec_tou_mat","HideColumn",5);
-		else
+			property("ur_ec_tou_mat","HideColumn",4);
+		}
+		else {
 			property("ur_ec_tou_mat","ShowColumn",5);
+			property("ur_ec_tou_mat","ShowColumn",4);
+		}
 	}
 	else
 	{
 		enable( "ur_ts_sell_rate", false );
+		enable( "ur_ts_buy_rate", false );
 		enable( "ur_en_ts_sell_rate", false );
 		property("ur_ec_tou_mat","HideColumn",5);
 	}

@@ -1,51 +1,24 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 
 #include <wx/clipbrd.h>
@@ -73,10 +46,11 @@ ShadingInputData::ShadingInputData()
 	clear();
 }
 
-void ShadingInputData::save( std::vector<float> &data )
+void ShadingInputData::save( std::vector<double> &data )
 {
 	data.clear();
-	data.push_back(3.0); // version number of data format - allows for expansion of options in future.
+//	data.push_back(3.0); // version number of data format - allows for expansion of options in future.
+	data.push_back(4.0); // version number of data format - allows for expansion of options in future.
 
 	data.push_back((en_mxh && mxh.nrows() == 12 && mxh.ncols() == 24) ? 1.0 : 0.0);
 	data.push_back( en_azal ? 1.0 : 0.0 );
@@ -135,7 +109,7 @@ void ShadingInputData::clear()
 	string_option = 0;
 }
 
-bool ShadingInputData::load( const std::vector<float> &data )
+bool ShadingInputData::load( const std::vector<double> &data )
 {
 	clear();
 
@@ -319,7 +293,7 @@ public:
 		m_timestep->SetDBCaption(wxString("Enable partial shading model (c-Si modules only)"));
 
 		int num_cols = 8;
-		matrix_t<float> ts_data(8760, num_cols, 0);
+		matrix_t<double> ts_data(8760, num_cols, 0.);
 		m_timestep->SetData(ts_data);
 
 		m_enableMxH = new wxCheckBox( m_scrollWin, ID_ENABLE_MXH, "Enable month-by-hour beam irradiance shading losses" );
@@ -338,7 +312,7 @@ public:
 		m_azal->PasteAppendRows(true);
 		m_azal->ShadeR0C0(true);
 
-		matrix_t<float> data(10, 18, 0);
+		matrix_t<double> data(10, 18, 0.);
 		for ( int c=0;c<18;c++ )
 			data.at(0, c) = c*20;
 		for ( int r=0;r<10;r++ )
@@ -498,7 +472,7 @@ public:
 			m_timestep->SetDBOption(string_option);
 //			m_timestep->SetStringOption(string_option);
 		}
-
+		 
 		if ( all || sh.en_mxh )
 		{
 			m_enableMxH->SetValue( sh.en_mxh );
@@ -630,7 +604,7 @@ bool ImportPVsystNearShading( ShadingInputData &dat, wxWindow *parent )
 	int linesok = 0;
 
 		
-	matrix_t<float> azaltvals;
+	matrix_t<double> azaltvals;
 	azaltvals.resize_fill(11,20, 0.0f);
 	azaltvals.at(0,0) = 0.0f;
 
@@ -1562,7 +1536,7 @@ void wxShadingFactorsCtrl::OnChoiceMinute(wxCommandEvent  &)
 	}
 }
 
-void wxShadingFactorsCtrl::SetData(const matrix_t<float> &mat)
+void wxShadingFactorsCtrl::SetData(const matrix_t<double> &mat)
 {
 	m_data = mat;
 
@@ -1578,7 +1552,7 @@ void wxShadingFactorsCtrl::SetData(const matrix_t<float> &mat)
 	m_grid->Refresh();
 }
 
-void wxShadingFactorsCtrl::GetData(matrix_t<float> &mat)
+void wxShadingFactorsCtrl::GetData(matrix_t<double> &mat)
 {
 	mat = m_data;
 }
@@ -1714,14 +1688,14 @@ int wxShadingFactorsCtrl::GetStringOption()
 }
 */
 
-wxShadingFactorsTable::wxShadingFactorsTable(matrix_t<float> *da, float _def_val, const wxString &_label)
+wxShadingFactorsTable::wxShadingFactorsTable(matrix_t<double> *da, float _def_val, const wxString &_label)
 {
 	label = _label;
 	d_mat = da;
 	def_val = _def_val;
 }
 
-void wxShadingFactorsTable::SetMatrix(matrix_t<float> *da)
+void wxShadingFactorsTable::SetMatrix(matrix_t<double> *da)
 {
 	d_mat = da;
 }
@@ -1830,7 +1804,7 @@ bool wxShadingFactorsTable::InsertRows(size_t pos, size_t nrows)
 	if (pos > d_mat->nrows()) pos = d_mat->nrows();
 
 	size_t new_rows = d_mat->nrows() + nrows;
-	matrix_t<float> old(*d_mat);
+	matrix_t<double> old(*d_mat);
 	d_mat->resize_fill(new_rows, d_mat->ncols(), def_val);
 
 	for (size_t r = 0; r < pos && r < old.nrows(); r++)
@@ -1863,7 +1837,7 @@ bool wxShadingFactorsTable::DeleteRows(size_t pos, size_t nrows)
 		nrows = d_mat->nrows() - pos;
 
 	size_t new_rows = d_mat->nrows() - nrows;
-	matrix_t<float> old(*d_mat);
+	matrix_t<double> old(*d_mat);
 	d_mat->resize_preserve(new_rows, d_mat->ncols(), def_val);
 
 	for (size_t r = pos; r < new_rows && r + nrows < old.nrows(); r++)
@@ -1911,7 +1885,7 @@ bool wxShadingFactorsTable::InsertCols(size_t pos, size_t ncols)
 	if (pos > d_mat->ncols()) pos = d_mat->ncols();
 
 	size_t new_cols = d_mat->ncols() + ncols;
-	matrix_t<float> old(*d_mat);
+	matrix_t<double> old(*d_mat);
 	d_mat->resize_fill(d_mat->nrows(), new_cols, def_val);
 
 	for (size_t r = 0; r < old.nrows(); r++)
@@ -1944,7 +1918,7 @@ bool wxShadingFactorsTable::DeleteCols(size_t pos, size_t ncols)
 		ncols = d_mat->ncols() - pos;
 
 	size_t new_cols = d_mat->ncols() - ncols;
-	matrix_t<float> old(*d_mat);
+	matrix_t<double> old(*d_mat);
 	d_mat->resize_preserve(d_mat->nrows(), new_cols, def_val);
 
 	for (size_t r = pos; r < old.nrows(); r++)

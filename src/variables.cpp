@@ -1,51 +1,24 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #include <cmath>
 #include <numeric>
@@ -57,14 +30,271 @@
 #include <wx/tokenzr.h>
 #include <wx/log.h>
 #include <wx/mstream.h>
-//#include <wx/txtstrm.h>
+#include <wx/filename.h>
 #include <wex/exttextstream.h>
 #include <lk/stdlib.h>
 #include <lk/eval.h>
 
 #include "variables.h"
 
-wxString vv_strtypes[7] = { "invalid", "number", "array", "matrix", "string", "table", "binary" };
+// can place in utility
+// reference http://c-faq.com/fp/fpequal.html
+#define Abs(x)    ((x) < 0 ? -(x) : (x))
+#define Max(a, b) ((a) > (b) ? (a) : (b))
+#define TOLERANCE (1.0e-6)
+
+double RelDif(double a, double b)
+{
+	double c = Abs(a);
+	double d = Abs(b);
+
+	d = Max(c, d);
+
+	return d == 0.0 ? 0.0 : Abs(a - b) / d;
+}
+
+bool lkhash_to_sscdata(lk::vardata_t &val, ssc_data_t table)
+{
+    ssc_data_clear(table);
+    ssc_var_t entry = ssc_var_create();
+
+    lk::varhash_t &hash = *val.hash();
+    for ( auto it = hash.begin(); it != hash.end(); ++it ){
+        if (!lkvar_to_sscvar(*(*it).second, entry)){
+            ssc_var_free(entry);
+            return false;
+        }
+        ssc_data_set_var(table, (const char*)(*it).first.c_str(), entry);
+    }
+    ssc_var_free(entry);
+    return true;
+}
+
+bool check_numeric(const lk::vardata_t& vec){
+    bool only_numeric = true;
+    for (size_t i = 0; i < vec.length(); i++){
+        if (vec.index(i)->type() == lk::vardata_t::VECTOR)
+            only_numeric &= check_numeric(*vec.index(i));
+        else if (vec.index(i)->type() != lk::vardata_t::NUMBER){
+            return false;
+        }
+    }
+    return only_numeric;
+};
+
+bool lkvar_to_sscvar(lk::vardata_t &val, ssc_var_t p_var)
+{
+    ssc_var_clear(p_var);
+    ssc_var_t entry = ssc_var_create();
+    switch (val.type())
+    {
+        case lk::vardata_t::REFERENCE:
+            lkvar_to_sscvar(val.deref(), p_var);
+            break;
+        case lk::vardata_t::NUMBER:
+            ssc_var_set_number(p_var, (ssc_number_t)val.as_number() );
+            break;
+        case lk::vardata_t::STRING:
+            ssc_var_set_string(p_var, (const char*)val.as_string().c_str() );
+            break;
+        case lk::vardata_t::VECTOR:
+        {
+            bool only_numeric = check_numeric(val);
+
+            size_t dim1 = val.length(), dim2 = 0;
+            for (size_t i=0;i<val.length();i++)
+            {
+                lk::vardata_t *row = val.index(i);
+                if (row->type() == lk::vardata_t::VECTOR && row->length() > dim2 )
+                    dim2 = row->length();
+            }
+
+            if (dim2 == 0 && dim1 > 0)
+            {
+                if (only_numeric){
+                    auto vec = new ssc_number_t[ dim1 ];
+                    for (size_t i=0;i<dim1;i++)
+                        vec[i] = (ssc_number_t)val.index(i)->as_number();
+                    ssc_var_set_array(p_var, vec, dim1 );
+                    delete [] vec;
+                }
+                else {
+                    for (size_t i=0;i<dim1;i++){
+                        lkvar_to_sscvar(*val.index(i), entry);
+                        ssc_var_set_data_array(p_var, entry, i);
+                    }
+                }
+            }
+            else if ( dim1 > 0 && dim2 > 0 )
+            {
+                if (only_numeric) {
+                    auto mat = new ssc_number_t[dim1 * dim2];
+                    for (size_t i = 0; i < dim1; i++) {
+                        for (size_t j = 0; j < dim2; j++) {
+                            ssc_number_t x = 0;
+                            if (val.index(i)->type() == lk::vardata_t::VECTOR && j < val.index(i)->length())
+                                x = (ssc_number_t) val.index(i)->index(j)->as_number();
+                            mat[i * dim2 + j] = x;
+                        }
+                    }
+                    ssc_var_set_matrix(p_var, mat, dim1, dim2);
+                    delete[] mat;
+                }
+                else {
+                    for (size_t i = 0; i < dim1; i++) {
+                        if (val.index(i)->type() == lk::vardata_t::VECTOR) {
+                            for (size_t j = 0; j < val.index(i)->length(); j++) {
+                                lkvar_to_sscvar(*val.index(i)->index(j), entry);
+                                ssc_var_set_data_matrix(p_var, entry, i, j);
+                            }
+                        }
+                        else{
+                            lkvar_to_sscvar(*val.index(i), entry);
+                            ssc_var_set_data_matrix(p_var, entry, i, 0);
+                        }
+                    }
+                }
+            }
+        }
+            break;
+        case lk::vardata_t::HASH:
+        {
+            ssc_data_t table = ssc_data_create();
+            lkhash_to_sscdata(val, table);
+            ssc_var_set_table(p_var, table );
+            ssc_data_free( table );
+        }
+            break;
+        default:
+            ssc_var_free(entry);
+            return false;
+    }
+    ssc_var_free(entry);
+    return true;
+}
+
+bool lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat)
+{
+    ssc_data_clear(p_dat);
+    return assign_lkvar_to_sscdata(val, name, p_dat);
+}
+
+bool assign_lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat)
+{
+    ssc_var_t entry = ssc_var_create();
+    if (!lkvar_to_sscvar(val, entry)){
+        ssc_var_free(entry);
+        return false;
+    }
+    ssc_data_set_var(p_dat, name, entry);
+    ssc_var_free(entry);
+    return true;
+}
+
+void sscdata_to_lkhash(ssc_data_t p_dat, lk::vardata_t &out) {
+    out.nullify();
+    out.empty_hash();
+
+    const char* key = ssc_data_first(p_dat);
+    while (key != nullptr){
+        auto vd = ssc_data_lookup_case(p_dat, key);
+        if (!vd)
+            vd = ssc_data_lookup(p_dat, key);
+        lk::vardata_t lkvar;
+        sscvar_to_lkvar(vd, lkvar);
+        out.hash_item(key, lkvar);
+        key = ssc_data_next(p_dat);
+    }
+}
+
+void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out)
+{
+    out.nullify();
+
+    int ty = ssc_var_query(vd);
+    switch( ty ) {
+        case SSC_NUMBER:
+            out.assign((double) ssc_var_get_number(vd));
+            break;
+        case SSC_STRING:
+            out.assign(lk_string(ssc_var_get_string(vd)));
+            break;
+        case SSC_ARRAY: {
+            int n = 0;
+            ssc_number_t* num = ssc_var_get_array(vd, &n);
+            out.empty_vector();
+            out.vec()->reserve((size_t) n);
+            for (int i = 0; i < n; i++)
+                out.vec_append(num[i]);
+        }
+            break;
+        case SSC_MATRIX: {
+            int nr = 0, nc = 0;
+            ssc_number_t* num = ssc_var_get_matrix(vd, &nr, &nc);
+            if (nr > 0 && nc > 0) {
+                out.empty_vector();
+                out.vec()->reserve(nr);
+                for (int i = 0; i < nr; i++) {
+                    out.vec()->push_back(lk::vardata_t());
+                    out.vec()->at(i).empty_vector();
+                    out.vec()->at(i).vec()->reserve(nc);
+                    for (int j = 0; j < nc; j++)
+                        out.vec()->at(i).vec_append(num[i * nc + j]);
+                }
+            }
+        }
+            break;
+        case SSC_TABLE: {
+            ssc_data_t table = ssc_var_get_table(vd);
+            sscdata_to_lkhash(table, out);
+            break;
+        }
+        case SSC_DATARR: {
+            int n;
+            ssc_var_size(vd, &n, nullptr);
+            out.empty_vector();
+            out.vec()->reserve((size_t) n);
+            for (int i = 0; i < n; i++){
+                lk::vardata_t lk_data;
+                ssc_var_t entry = ssc_var_get_var_array(vd, i);
+                sscvar_to_lkvar(entry, lk_data);
+                out.vec_append(lk_data);
+            }
+            break;
+        }
+        case SSC_DATMAT: {
+            int nr, nc;
+            ssc_var_size(vd, &nr, &nc);
+            out.empty_vector();
+            out.vec()->reserve(nr);
+            for (int i = 0; i < nr; i++) {
+                out.vec()->push_back(lk::vardata_t());
+                out.vec()->at(i).empty_vector();
+                out.vec()->at(i).vec()->reserve(nc);
+                for (int j = 0; j < nc; j++){
+                    lk::vardata_t lk_data;
+                    ssc_var_t entry = ssc_var_get_var_matrix(vd, i, j);
+                    sscvar_to_lkvar(entry, lk_data);
+                    out.vec()->at(i).vec_append(lk_data);
+                }
+            }
+            break;
+        }
+        case SSC_INVALID:
+        default:
+            break;
+    }
+}
+
+void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out) {
+    out.nullify();
+    auto var = ssc_data_lookup_case(p_dat, name);
+    if (!var)
+        var = ssc_data_lookup(p_dat, name);
+    sscvar_to_lkvar(var, out);
+}
+
+wxString vv_strtypes[9] = { "invalid", "number", "array", "matrix", "string", "table", "binary", "data array", "data matrix" };
 
 VarTable::VarTable()
 {
@@ -74,6 +304,18 @@ VarTable::VarTable()
 VarTable::VarTable( const VarTable &rhs )
 {
 	Copy( rhs );
+}
+
+VarTable::VarTable( ssc_data_t rhs)
+{
+    const char* key = ssc_data_first(rhs);
+    while (key != nullptr){
+        auto vd = ssc_data_lookup_case(rhs, key);
+        if (!vd)
+            vd = ssc_data_lookup(rhs, key);
+        Set(key, VarValue(vd));
+        key = ssc_data_next(rhs);
+    }
 }
 
 VarTable::~VarTable()
@@ -218,10 +460,12 @@ void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 			out.WriteString( it->first );
 			it->second->Write( _O );
 
-			if ( it->second->Type() == VV_BINARY )
+#ifdef _DEBUG
+            if ( it->second->Type() == VV_BINARY )
 			  {
 				wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)it->first.c_str(), (int)it->second->Binary().GetDataLen() );
 			  }
+#endif
 		}
 	}
 	else
@@ -259,10 +503,12 @@ void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 		{
 			out.WriteString( names[i] );
 			list[i]->Write( _O );
-			if ( list[i]->Type() == VV_BINARY )
+#ifdef _DEBUG
+            if ( list[i]->Type() == VV_BINARY )
 			  {
 				wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)list[i]->Binary().GetDataLen() );
 			  }
+#endif
 		}
 	}
 
@@ -292,10 +538,12 @@ bool VarTable::Read( wxInputStream &_I )
 		VarValue *value = new VarValue;
 		ok = ok && value->Read( _I );
 
+#ifdef _DEBUG
 		if( value->Type() == VV_BINARY )
 		  {
-			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen() );
+//			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen() );
 		  }
+#endif
 		
 		if ( find(name) == end() ) (*this)[name] = value;
 		else delete value;
@@ -348,11 +596,12 @@ void VarTable::Write_text(wxOutputStream &_O, size_t maxdim)
 				out.WriteString(names[i]);
 				out.PutChar('\n');
 				v->Write_text(_O);
-
+#ifdef _DEBUG
 				if (v->Type() == VV_BINARY)
 				{
 					wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)v->Binary().GetDataLen());
 				}
+#endif
 			}
 		}
 	}
@@ -418,11 +667,12 @@ void VarTable::Write_text(wxOutputStream &_O, size_t maxdim)
 				out.WriteString(names[i]);
 				out.PutChar('\n');
 				v->Write_text(_O);
-
+#ifdef _DEBUG
 				if (v->Type() == VV_BINARY)
 				{
 					wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)v->Binary().GetDataLen());
 				}
+#endif
 			}
 		}
 	}
@@ -449,16 +699,31 @@ bool VarTable::Read_text(wxInputStream &_I)
 		VarValue *value = new VarValue;
 		ok = ok && value->Read_text(_I);
 
-		if (value->Type() == VV_BINARY)
+#ifdef _DEBUG
+        if (value->Type() == VV_BINARY)
 		{
-			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen());
+//			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen());
 		}
+#endif
 
 		if (find(name) == end()) (*this)[name] = value;
 		else delete value;
 	}
 
 	return ok;
+}
+
+bool VarTable::AsSSCData(ssc_data_t p_dat) {
+    ssc_data_clear(p_dat);
+    ssc_var_t entry = ssc_var_create();
+    for( auto it = begin(); it != end(); ++it )
+    {
+        if (!it->second->AsSSCVar(entry))
+            return false;
+        ssc_data_set_var(p_dat, it->first.c_str(), entry);
+    }
+    ssc_var_free(entry);
+    return true;
 }
 
 VarValue VarValue::Invalid; // declaration
@@ -480,7 +745,7 @@ VarValue::VarValue( int i )
 	m_val = (float)i;
 }
 
-VarValue::VarValue( float f )
+VarValue::VarValue( double f )
 {
 	m_type = VV_NUMBER;
 	m_val = f;
@@ -492,25 +757,25 @@ VarValue::VarValue( bool b )
 	m_val = b ? 1 : 0;
 }
 
-VarValue::VarValue( const std::vector<float> &f )
+VarValue::VarValue( const std::vector<double> &f )
 {
 	m_type = VV_ARRAY;
 	if ( f.size() > 0 ) m_val.assign( &f[0], f.size() );
 }
 
-VarValue::VarValue( float *arr, size_t n )
+VarValue::VarValue( double *arr, size_t n )
 {
 	m_type = VV_ARRAY;
 	m_val.assign( arr, n );
 }
 
-VarValue::VarValue( float *mat, size_t r, size_t c )
+VarValue::VarValue( double *mat, size_t r, size_t c )
 {
 	m_type = VV_MATRIX;
 	m_val.assign( mat, r, c );
 }
 
-VarValue::VarValue( const ::matrix_t<float> &m )
+VarValue::VarValue( const matrix_t<double> &m )
 {
 	m_type = VV_MATRIX;
 	m_val = m;
@@ -533,6 +798,61 @@ VarValue::VarValue( const wxMemoryBuffer &mb )
 	m_type = VV_BINARY;
 	m_bin = mb;
 }
+
+typedef double ssc_number_t;
+
+VarValue::VarValue(ssc_var_t vd) {
+    int n, m;
+    ssc_number_t* arr;
+    int type = ssc_var_query(vd);
+    switch(type){
+        default:
+        case SSC_INVALID:
+            m_type = VV_INVALID;
+            break;
+        case SSC_STRING :
+            m_type = VV_STRING;
+            m_str = ssc_var_get_string(vd);
+            break;
+        case SSC_NUMBER :
+            m_type = VV_NUMBER;
+            m_val = ssc_var_get_number(vd);\
+            break;
+        case SSC_ARRAY :
+            m_type = VV_ARRAY;
+            arr = ssc_var_get_array(vd, &n);
+            m_val.assign(arr, n);
+            break;
+        case SSC_MATRIX :
+            m_type = VV_MATRIX;
+            arr = ssc_var_get_matrix(vd, &n, &m);
+            m_val.assign(arr, n, m);
+            break;
+        case SSC_TABLE :
+            m_type = VV_TABLE;
+            m_tab = VarTable(ssc_var_get_table(vd));
+            break;
+        case SSC_DATARR : {
+            m_type = VV_DATARR;
+            ssc_var_size(vd, &n, nullptr);
+            for (int i = 0; i < n; i++) {
+                m_datarr.emplace_back(VarValue(ssc_var_get_var_array(vd, i)));
+            }
+            break;
+        }
+        case SSC_DATMAT :
+            m_type = VV_DATMAT;
+            ssc_var_size(vd, &n, &m);
+            for (size_t i = 0; i < n; i++){
+                std::vector<VarValue> row;
+                for (size_t j = 0; j < m; j++)
+                    row.emplace_back(VarValue(ssc_var_get_var_matrix(vd, i, j)));
+                m_datmat.emplace_back(row);
+            }
+            break;
+    }
+}
+
 
 VarValue::~VarValue()
 {
@@ -566,7 +886,8 @@ bool VarValue::ValueEqual( VarValue &rhs )
 					for (size_t c = 0; c < m_val.ncols(); c++)
 					  {
 						if (equal)
-							equal = equal && (m_val(r, c) == rhs.m_val(r, c));
+//							equal = equal && (m_val(r, c) == rhs.m_val(r, c));
+							equal = equal && (RelDif(m_val(r, c),rhs.m_val(r, c)) < TOLERANCE);
 						else
 							break;
 					  }
@@ -607,6 +928,10 @@ bool VarValue::ValueEqual( VarValue &rhs )
 			else
 				equal = false;
 			break;
+		    case VV_DATARR:
+		        break;
+		    case VV_DATMAT:
+		        break;
 		}
 	}
 	return equal;
@@ -625,8 +950,20 @@ void VarValue::Copy( const VarValue &rhs )
 		//		m_bin = rhs.m_bin;
 		m_bin.Clear();
 		m_bin.AppendData(rhs.m_bin.GetData(),rhs.m_bin.GetDataLen());
-		// UI hints?
-	}
+        auto datarr = &(rhs.m_datarr);
+        for (auto& i : *datarr){
+            m_datarr.emplace_back(i);
+        }
+        auto datmat = &(rhs.m_datmat);
+        for (auto& i : *datmat){
+            std::vector<VarValue> row;
+            for (auto& j : i)
+                row.emplace_back(j);
+            m_datmat.emplace_back(row);
+        }
+
+        // UI hints?
+    }
 }
 
 
@@ -635,7 +972,8 @@ void VarValue::Write( wxOutputStream &_O )
 	wxDataOutputStream out(_O);
 
 	out.Write8( 0xf2 );
-	out.Write8( 1 );
+//	out.Write8(1);
+	out.Write8(2); // float to double
 
 	out.Write8( m_type );
 	
@@ -650,7 +988,8 @@ void VarValue::Write( wxOutputStream &_O )
 		out.Write32( m_val.ncols() );
 		for ( size_t r=0;r<m_val.nrows();r++ )
 			for( size_t c=0;c<m_val.ncols();c++ )
-				out.WriteFloat(m_val(r, c));
+				out.WriteDouble(m_val(r, c));
+//		out.WriteFloat(m_val(r, c));
 		break;
 	case VV_TABLE:
 		m_tab.Write( _O );
@@ -662,6 +1001,9 @@ void VarValue::Write( wxOutputStream &_O )
 		out.Write32( m_bin.GetDataLen() );
 		_O.Write( m_bin.GetData(), m_bin.GetDataLen() );
 		break;
+    case VV_DATMAT:
+    case VV_DATARR:
+        throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
 	}
 
 	out.Write8( 0xf2 );
@@ -672,7 +1014,7 @@ bool VarValue::Read(wxInputStream &_I)
 	wxDataInputStream in(_I);
 
 	wxUint8 code = in.Read8();
-	in.Read8(); // ver
+	wxUint8 ver = in.Read8(); // ver
 
 	m_type = in.Read8();
 
@@ -689,8 +1031,13 @@ bool VarValue::Read(wxInputStream &_I)
 		if (nr*nc < 1) return false; // big error
 		m_val.resize_fill(nr, nc, 0.0f);
 		for (size_t r = 0; r<nr; r++)
-			for (size_t c = 0; c<nc; c++)
-				m_val(r, c) = in.ReadFloat();
+			for (size_t c = 0; c < nc; c++)
+			{
+				if (ver == 1)
+					m_val(r, c) = in.ReadFloat();
+				else
+					m_val(r, c) = in.ReadDouble();
+			}
 		break;
 	case VV_TABLE:
 		m_tab.Read(_I);
@@ -703,6 +1050,9 @@ bool VarValue::Read(wxInputStream &_I)
 		_I.Read(m_bin.GetWriteBuf(len), len);
 		m_bin.UngetWriteBuf(len);
 		break;
+    case VV_DATMAT:
+    case VV_DATARR:
+        throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
 	}
 
 	return in.Read8() == code;
@@ -760,6 +1110,12 @@ void wxTextOutputStream::WriteDouble(double d)
 		break;
 	case VV_STRING:
 		x = m_str;
+		if (wxFileName::Exists(x))
+		{ // write filename only
+			wxString fn, ext;
+			wxFileName::SplitPath(x, NULL, &fn, &ext);
+			x = fn + "." + ext;
+		}
 		x.Replace("\r", "");
 		n = x.Len();
 		out.Write32((wxUint32)n);
@@ -773,6 +1129,9 @@ void wxTextOutputStream::WriteDouble(double d)
 		}
 		out.PutChar('\n');
 		break;
+    case VV_DATMAT:
+    case VV_DATARR:
+        throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
 	case VV_BINARY:
 		out.Write32(m_bin.GetDataLen());
 		out.PutChar('\n');
@@ -800,70 +1159,126 @@ bool VarValue::Read_text(wxInputStream &_I)
 	size_t nr, nc, len;
 	switch (m_type)
 	{
-	case VV_INVALID:
-		break;
-	case VV_NUMBER:
-	case VV_ARRAY:
-	case VV_MATRIX:
-		nr = in.Read32();
-		nc = in.Read32();
-		if (nr*nc < 1) return false; // big error
-		m_val.resize_fill(nr, nc, 0.0f);
-		if (nc*nr > 1)
-		{
-			for (size_t r = 0; r < nr; r++)
-			{
-				wxString x = in.ReadLine();
-				wxArrayString ar = wxStringTokenize(x, ' ');
-				if (nc != ar.Count()) return false;
-				for (size_t c = 0; c < nc; c++)
-				{
-					double y;
-					if (ar[c].ToDouble(&y))
-						m_val(r, c) = y;
-					else
-						return false;
-				}
-			}
-		}
-		else
-			m_val(0, 0) = in.ReadDouble();
-		/*
-		for (size_t r = 0; r < nr; r++)
-			for (size_t c = 0; c < nc; c++)
-			{
-		//		m_val(r, c) = in.ReadDouble();
-			}
-			*/
-		break;
-	case VV_TABLE:
-		ok = ok && m_tab.Read_text(_I);
-		break;
-	case VV_STRING:
-		n = in.Read32();
-		m_str.Clear();
-		if (n > 0)
-		{
-			for (size_t i = 0; i < n; i++)
-				m_str.Append(in.GetChar());
-		}
-		break;
-	case VV_BINARY:
-		len = in.Read32();
-		m_bin.SetBufSize(len);
-		m_bin.Clear();
-//		char *p = (char*)m_bin.GetWriteBuf(len);
-		for (size_t i = 0; i <len; i++)
-			m_bin.AppendByte(in.GetChar());
+	    default:
+        case VV_INVALID:
+            break;
+        case VV_NUMBER:
+        case VV_ARRAY:
+        case VV_MATRIX:
+            nr = in.Read32();
+            nc = in.Read32();
+            if (nr*nc < 1) return false; // big error
+            m_val.resize_fill(nr, nc, 0.0);
+            if (nc*nr > 1)
+            {
+                for (size_t r = 0; r < nr; r++)
+                {
+                    wxString x = in.ReadLine();
+                    wxArrayString ar = wxStringTokenize(x, ' ');
+                    if (nc != ar.Count()) return false;
+                    for (size_t c = 0; c < nc; c++)
+                    {
+                        double y;
+                        if (ar[c].ToDouble(&y))
+                            m_val(r, c) = y;
+                        else
+                            return false;
+                    }
+                }
+            }
+            else
+                m_val(0, 0) = in.ReadDouble();
+            /*
+            for (size_t r = 0; r < nr; r++)
+                for (size_t c = 0; c < nc; c++)
+                {
+            //		m_val(r, c) = in.ReadDouble();
+                }
+                */
+            break;
+        case VV_TABLE:
+            ok = ok && m_tab.Read_text(_I);
+            break;
+        case VV_STRING:
+            n = in.Read32();
+            m_str.Clear();
+            if (n > 0)
+            {
+                for (size_t i = 0; i < n; i++)
+                    m_str.Append(in.GetChar());
+            }
+            break;
+        case VV_BINARY:
+            len = in.Read32();
+            m_bin.SetBufSize(len);
+            m_bin.Clear();
+    //		char *p = (char*)m_bin.GetWriteBuf(len);
+            for (size_t i = 0; i <len; i++)
+                m_bin.AppendByte(in.GetChar());
 
-//		_I.Read(m_bin.GetWriteBuf(len), len);
-//		m_bin.UngetWriteBuf(len);
-		break;
+    //		_I.Read(m_bin.GetWriteBuf(len), len);
+    //		m_bin.UngetWriteBuf(len);
+            break;
+        case VV_DATMAT:
+        case VV_DATARR:
+                throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
 	}
 
 	return ok;
 //	return in.Read8() == code;
 }
+
+bool VarValue::AsSSCVar(ssc_var_t p_var) {
+    ssc_var_clear(p_var);
+    ssc_var_t entry = ssc_var_create();
+    switch (m_type){
+        case VV_STRING:
+            ssc_var_set_string(p_var, m_str.c_str());
+            break;
+        case VV_NUMBER:
+            ssc_var_set_number(p_var, m_val);
+            break;
+        case VV_ARRAY:
+            ssc_var_set_array(p_var, static_cast<ssc_number_t*>(&m_val[0]), (int)m_val.length());
+            break;
+        case VV_MATRIX:
+            ssc_var_set_matrix(p_var, static_cast<ssc_number_t*>(&m_val[0]), (int)m_val.nrows(), (int)m_val.ncols());
+            break;
+        case VV_TABLE:
+        {
+            ssc_data_t table = ssc_data_create();
+            m_tab.AsSSCData(table);
+            ssc_var_set_table(p_var, table);
+            ssc_data_free(table);
+            break;
+        }
+        case VV_DATARR:
+        {
+            for (size_t i = 0; i < m_datarr.size(); i++){
+                m_datarr[i].AsSSCVar(entry);
+                ssc_var_set_data_array(p_var, entry, i);
+            }
+            break;
+        }
+        case VV_DATMAT:
+            for (size_t i = 0; i < m_datmat.size(); i++){
+                for (size_t j = 0; j < m_datmat[0].size(); j++){
+                    m_datmat[i][j].AsSSCVar(entry);
+                    ssc_var_set_data_matrix(p_var, entry, i, j);
+                }
+            }
+            break;
+        case VV_INVALID:
+            break;
+        case VV_BINARY:
+        default:
+            ssc_var_free(entry);
+            return false;
+    }
+    ssc_var_free(entry);
+    return true;
+}
+
 
 int VarValue::Type() const { return m_type; }
 wxString VarValue::TypeAsString() const {
@@ -875,14 +1290,16 @@ wxString VarValue::TypeAsString() const {
 	case VV_STRING: return wxString("string");
 	case VV_BINARY: return wxString("binary");
 	case VV_TABLE: return wxString("table");
-	}
+	case VV_DATARR: return wxString("data_array");
+    case VV_DATMAT: return wxString("data_matrix");
+    }
 	return wxString();
 }
 
-void VarValue::ChangeType(int type) { m_type = type; }
-void VarValue::SetType( int ty ) { m_type = ty; }
+void VarValue::ChangeType(int type) { m_type = (unsigned char)type; }
+void VarValue::SetType( int ty ) { m_type = (unsigned char)ty; }
 void VarValue::Set( int val ) { m_type = VV_NUMBER; m_val = (float)val; }
-void VarValue::Set( float val ) { m_type = VV_NUMBER; m_val = val; }
+//void VarValue::Set( float val ) { m_type = VV_NUMBER; m_val = val; }
 void VarValue::Set( double val ) { m_type = VV_NUMBER; m_val = val; }
 
 void VarValue::Set( const std::vector<int> &ivec )
@@ -892,22 +1309,22 @@ void VarValue::Set( const std::vector<int> &ivec )
 	{
 		m_val.resize_fill( ivec.size(), 0 );
 		for( size_t i=0;i<ivec.size();i++ )
-			m_val.at(i) = (float)ivec[i];
+			m_val.at(i) = (double)ivec[i];
 	}
 	else
 		m_val.clear();
 }
 
-void VarValue::Set( const std::vector<float> &fvec )
+void VarValue::Set( const std::vector<double> &fvec )
 {
 	m_type = VV_ARRAY;
 	if( fvec.size() > 0 ) m_val.assign( &fvec[0], fvec.size() );
 	else m_val.clear();
 }
 
-void VarValue::Set( float *val, size_t n ) { m_type = VV_ARRAY; m_val.assign( val, n ); }
-void VarValue::Set( float *mat, size_t r, size_t c ) { m_type = VV_MATRIX; m_val.assign( mat, r, c ); }
-void VarValue::Set( const ::matrix_t<float> &mat ) { m_type = VV_MATRIX; m_val = mat; }
+void VarValue::Set( double *val, size_t n ) { m_type = VV_ARRAY; m_val.assign( val, n ); }
+void VarValue::Set(double *mat, size_t r, size_t c ) { m_type = VV_MATRIX; m_val.assign( mat, r, c ); }
+void VarValue::Set( const matrix_t<double> &mat ) { m_type = VV_MATRIX; m_val = mat; }
 void VarValue::Set( const wxString &str ) { m_type = VV_STRING; m_str = str; }
 void VarValue::Set( const VarTable &tab ) { m_type = VV_TABLE; m_tab.Copy( tab ); }
 void VarValue::Set( const wxMemoryBuffer &mb ) { m_type = VV_BINARY; m_bin = mb; }
@@ -924,10 +1341,10 @@ bool VarValue::Boolean()
 	else return 0;
 }
 
-float VarValue::Value()
+double VarValue::Value()
 {
-	if ( m_type == VV_NUMBER || Length() == 1) return (float)m_val;
-	else return std::numeric_limits<float>::quiet_NaN();
+	if ( m_type == VV_NUMBER || Length() == 1) return (double)m_val;
+	else return std::numeric_limits<double>::quiet_NaN();
 }
 
 size_t VarValue::Length()
@@ -947,7 +1364,7 @@ size_t VarValue::Columns()
 	else if (m_type == VV_NUMBER) return 1;
 	else return 0;
 }
-float *VarValue::Array( size_t *n )
+double *VarValue::Array( size_t *n )
 {
 	if ( m_type == VV_ARRAY )
 	{
@@ -961,17 +1378,17 @@ float *VarValue::Array( size_t *n )
 	}
 }
 
-std::vector<float> VarValue::Array()
+std::vector<double> VarValue::Array()
 {
 	if ( m_type == VV_ARRAY )
 	{
-		std::vector<float> vec( m_val.length(), 0.0f );
+		std::vector<double> vec( m_val.length(), 0.0 );
 		for( size_t i=0;i<m_val.length();i++)
 			vec[i] = m_val[i];
 		return vec;
 	}
 	else
-		return std::vector<float>();
+		return std::vector<double>();
 }
 
 std::vector<int> VarValue::IntegerArray()
@@ -986,13 +1403,13 @@ std::vector<int> VarValue::IntegerArray()
 	else
 		return std::vector<int>();
 }
-
-matrix_t<float> &VarValue::Matrix()
+ 
+matrix_t<double> &VarValue::Matrix()
 {
 	return m_val;
 }
 
-float *VarValue::Matrix( size_t *nr, size_t *nc )
+double *VarValue::Matrix( size_t *nr, size_t *nc )
 {
 	*nr = m_val.nrows();
 	*nc = m_val.ncols();
@@ -1014,6 +1431,13 @@ wxMemoryBuffer &VarValue::Binary()
 	return m_bin;
 }
 
+std::vector<VarValue>& VarValue::DataArray(){
+    return m_datarr;
+}
+
+std::vector<std::vector<VarValue>>& VarValue::DataMatrix(){
+    return m_datmat;
+}
 
 bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 {
@@ -1046,9 +1470,9 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 
 			if (dim2 == 0 && dim1 > 0)
 			{
-				float *vec = new float[dim1];
+				double *vec = new double[dim1];
 				for( size_t i=0;i<dim1;i++)
-					vec[i] = (float)val.index(i)->as_number();
+					vec[i] = (double)val.index(i)->as_number();
 
 
 				if ( Type() == VV_ARRAY || change_type )
@@ -1069,7 +1493,7 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 				if ( Type() == VV_MATRIX || change_type )
 				{
 					m_type = VV_MATRIX;
-					m_val.resize_fill( dim1, dim2, 0.0f );
+					m_val.resize_fill( dim1, dim2, 0.0 );
 
 					for ( size_t i=0;i<dim1;i++)
 					{
@@ -1078,7 +1502,7 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 							double x = 0;
 							if ( val.index(i)->type() == lk::vardata_t::VECTOR
 								&& j < val.index(i)->length() )
-								x = (float)val.index(i)->index(j)->as_number();
+								x = (double)val.index(i)->index(j)->as_number();
 
 							m_val.at(i,j) = x;
 						}
@@ -1126,7 +1550,7 @@ bool VarValue::Write( lk::vardata_t &val )
 	case VV_ARRAY:
 		{
 			size_t n = 0;
-			float *p = Array( &n );
+			double *p = Array( &n );
 			val.empty_vector();
 			if ( n > 0 )
 			{
@@ -1138,7 +1562,7 @@ bool VarValue::Write( lk::vardata_t &val )
 		break;
 	case VV_MATRIX:
 		{
-			::matrix_t<float> &mat = Matrix();
+			matrix_t<double> &mat = Matrix();
 			val.empty_vector();
 			val.vec()->reserve( mat.nrows() );
 			for (size_t i=0;i<mat.nrows();i++)
@@ -1167,6 +1591,9 @@ bool VarValue::Write( lk::vardata_t &val )
 	case VV_BINARY:
 			val.assign( wxString::Format("binary<%d>", (int)m_bin.GetDataLen() ) );
 		break;
+    case VV_DATMAT:
+    case VV_DATARR:
+        throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
 	}
 
 	return m_type != VV_INVALID;
@@ -1284,18 +1711,21 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 			value.m_tab = vt;
 		return true;
 		}
-	case VV_BINARY:
-		value.m_type = VV_BINARY;
-		value.m_bin.Clear();
-		if ( str.Len() > 0 )
-		{
-			int nbytes = str.Len()/2;
-			if ( nbytes*2 != (int)str.Len() ) return false;
-			char *data = (char*)value.m_bin.GetWriteBuf( nbytes );
-			hexstrtobin( str, data, nbytes );
-			value.m_bin.UngetWriteBuf( nbytes );
-		}
-		return true;
+	case VV_BINARY: {
+        value.m_type = VV_BINARY;
+        value.m_bin.Clear();
+        if (str.Len() > 0) {
+            int nbytes = str.Len() / 2;
+            if (nbytes * 2 != (int) str.Len()) return false;
+            char *data = (char *) value.m_bin.GetWriteBuf(nbytes);
+            hexstrtobin(str, data, nbytes);
+            value.m_bin.UngetWriteBuf(nbytes);
+        }
+        return true;
+    }
+    case VV_DATMAT:
+    case VV_DATARR:
+        throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
 	}
 	
 	return false;
@@ -1316,12 +1746,13 @@ wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 	}
 	case VV_ARRAY:
 	{
-		wxString buf="";
+		std::string buf = "";
 		for( size_t i=0;i<m_val.length();i++ )
 		{
 			buf += wxString::Format("%g", (float)m_val[i]  );
 			buf += arrsep;
 		}
+		buf.pop_back();
 		return buf;
 	}
 	case VV_MATRIX:
@@ -1353,8 +1784,31 @@ wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 	}
 	case VV_BINARY:
 		return bintohexstr( (char*)m_bin.GetData(), m_bin.GetDataLen() );
+    case VV_DATARR:{
+        std::string buf = "";
+        for (auto& i : m_datarr){
+            buf += i.AsString(arrsep, tabsep);
+            buf += arrsep;
+        }
+        buf.pop_back();
+        return buf;
+    }
+    case VV_DATMAT:{
+        std::string buf="";
+        for( auto& i : m_datmat )
+        {
+            buf += '[';
+            for( auto& j : i )
+            {
+                buf += j.AsString(arrsep, tabsep);
+                buf += arrsep;
+            }
+            buf.pop_back();
+            buf += ']';
+        }
+        return buf;
+    }
 	}
-
 	return "<no value found>";
 }
 

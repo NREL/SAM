@@ -1,51 +1,24 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #ifndef __variable_h
 #define __variable_h
@@ -64,21 +37,49 @@
 #include <lk/absyn.h>
 #include <lk/eval.h>
 
+#include <shared/lib_util.h>
+
+#include <ssc/sscapi.h>
+
 #include "object.h"
+
+// adds new entry to ssc_data from the value in vardata
+bool assign_lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat);
+
+// clears ssc_data and hashes all the variables entries into vardata's hash
+bool lkhash_to_sscdata(lk::vardata_t &val, ssc_data_t table);
+
+// clears ssc_data and hashes vardata under name
+bool lkvar_to_sscdata(lk::vardata_t &val, const char *name, ssc_data_t p_dat);
+
+// clears ssc_var and assigns the value from vardata
+bool lkvar_to_sscvar(lk::vardata_t &val, ssc_var_t p_var);
+
+// clears vardata and hashes all the variable entries in the ssc_data_t table
+void sscdata_to_lkhash(ssc_data_t p_dat, lk::vardata_t &out);
+
+// clears vardata and assigns the ssc_data to the ssc_data_t
+void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out);
+
+// clears vardata and assigns the value from ssc_var_t
+void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out);
+
 
 class VarValue;
 class VarDatabase;
 
 
 #define VV_INVALID 0
+#define VV_STRING 4
 #define VV_NUMBER 1
 #define VV_ARRAY 2
 #define VV_MATRIX 3
-#define VV_STRING 4
 #define VV_TABLE 5
 #define VV_BINARY 6
+#define VV_DATARR 7
+#define VV_DATMAT 8
 
-extern wxString vv_strtypes[7];
+extern wxString vv_strtypes[9];
 
 typedef unordered_map<wxString, VarValue*, wxStringHash, wxStringEqual> VarTableBase;
 
@@ -87,6 +88,7 @@ class VarTable : public VarTableBase
 public:
 	VarTable();
 	VarTable( const VarTable &rhs );
+	VarTable( ssc_data_t rhs);
 	~VarTable();
 
 	VarTable &operator=( const VarTable &rhs );
@@ -111,6 +113,8 @@ public:
 	bool Read_text(wxInputStream &);
 	bool Read_text(const wxString &file);
 
+    // returns a pointer to a ssc::var_table class that'll need to be freed using ssc_data_free
+    bool AsSSCData(ssc_data_t p_dat);
 };
 
 class VarValue
@@ -121,15 +125,16 @@ public:
 
 	explicit VarValue( int i );
 	explicit VarValue( bool b );
-	explicit VarValue( float f );
-	explicit VarValue( const std::vector<float> &f );
-	explicit VarValue( const matrix_t<float> &m );
+	explicit VarValue( double f );
+	explicit VarValue( const std::vector<double> &f );
+	explicit VarValue( const matrix_t<double> &m );
 	explicit VarValue( const wxString &s );
 	explicit VarValue( const VarTable &t );
 	explicit VarValue( const wxMemoryBuffer &mb );
+	explicit VarValue(ssc_var_t vd);
 
-	VarValue( float *arr, size_t n );
-	VarValue( float *mat, size_t r, size_t c );
+	VarValue( double *arr, size_t n );
+	VarValue( double *mat, size_t r, size_t c );
 
 	virtual ~VarValue();
 
@@ -143,38 +148,44 @@ public:
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &);
 
+	// returns a pointer to a ssc::var_data class that'll need to be freed using ssc_var_free
+    bool AsSSCVar(ssc_var_t p_var);
+
 	int Type() const;
 	wxString TypeAsString() const;
 	void ChangeType(int type);
 	void SetType( int t );
 	void Set( int val );
-	void Set( float val );
+//	void Set( float val );
 	void Set( double val );
 	void Set( const std::vector<int> &ivec );
-	void Set( const std::vector<float> &fvec );
-	void Set( float *val, size_t n );
-	void Set( float *mat, size_t r, size_t c );
-	void Set( const ::matrix_t<float> &mat );
+	void Set( const std::vector<double> &fvec );
+	void Set(double *val, size_t n);
+	void Set(double *mat, size_t r, size_t c);
+	void Set(const matrix_t<double> &mat);
 	void Set( const wxString &str );
 	void Set( const VarTable &tab );
 	void Set( const wxMemoryBuffer &mb );
 
 	int Integer();
 	bool Boolean();
-	float Value();
-	float *Array( size_t *n );
-	std::vector<float> Array();
+	double Value();
+	double *Array( size_t *n );
+	std::vector<double> Array();
 	size_t Length();
 	size_t Rows(); 
 	size_t Columns();
 	std::vector<int> IntegerArray();
-	::matrix_t<float> &Matrix();
-	float *Matrix( size_t *nr, size_t *nc );
+	matrix_t<double> &Matrix();
+	double *Matrix( size_t *nr, size_t *nc );
 	wxString String();
 	VarTable &Table();
 	wxMemoryBuffer &Binary();
+	std::vector<VarValue>& DataArray();
+    std::vector<std::vector<VarValue>>& DataMatrix();
 
-	bool Read( const lk::vardata_t &val, bool change_type = false );
+
+    bool Read( const lk::vardata_t &val, bool change_type = false );
 	bool Write( lk::vardata_t &val );
 
 	static bool Parse( int type, const wxString &str, VarValue &val );
@@ -183,10 +194,13 @@ public:
 	static VarValue Invalid;
 private:
 	unsigned char m_type;
-	::matrix_t<float> m_val;
+	matrix_t<double> m_val;
 	wxString m_str;
 	VarTable m_tab;
 	wxMemoryBuffer m_bin;
+	std::vector<VarValue> m_datarr;
+    std::vector<std::vector<VarValue>> m_datmat;
+
 };
 
 #define VF_NONE                0x00

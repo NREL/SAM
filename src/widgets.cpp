@@ -1,57 +1,31 @@
-/*******************************************************************************************************
-*  Copyright 2017 Alliance for Sustainable Energy, LLC
-*
-*  NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC
-*  (“Alliance”) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S.
-*  The Government retains for itself and others acting on its behalf a nonexclusive, paid-up,
-*  irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute
-*  copies to the public, perform publicly and display publicly, and to permit others to do so.
-*
-*  Redistribution and use in source and binary forms, with or without modification, are permitted
-*  provided that the following conditions are met:
-*
-*  1. Redistributions of source code must retain the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer.
-*
-*  2. Redistributions in binary form must reproduce the above copyright notice, the above government
-*  rights notice, this list of conditions and the following disclaimer in the documentation and/or
-*  other materials provided with the distribution.
-*
-*  3. The entire corresponding source code of any redistribution, with or without modification, by a
-*  research entity, including but not limited to any contracting manager/operator of a United States
-*  National Laboratory, any institution of higher learning, and any non-profit organization, must be
-*  made publicly available under this license for as long as the redistribution is made available by
-*  the research entity.
-*
-*  4. Redistribution of this software, without modification, must refer to the software by the same
-*  designation. Redistribution of a modified version of this software (i) may not refer to the modified
-*  version by the same designation, or by any confusingly similar designation, and (ii) must refer to
-*  the underlying software originally provided by Alliance as “System Advisor Model” or “SAM”. Except
-*  to comply with the foregoing, the terms “System Advisor Model”, “SAM”, or any confusingly similar
-*  designation may not be used to refer to any modified version of this software or any modified
-*  version of the underlying software originally provided by Alliance without the prior written consent
-*  of Alliance.
-*
-*  5. The name of the copyright holder, contributors, the United States Government, the United States
-*  Department of Energy, or any of their employees may not be used to endorse or promote products
-*  derived from this software without specific prior written permission.
-*
-*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
-*  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-*  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER,
-*  CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR
-*  EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-*  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
-*  IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
-*  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*******************************************************************************************************/
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #include <wx/dcbuffer.h>
 #include <wx/clipbrd.h>
 #include <wx/tokenzr.h>
 #include <wx/renderer.h>
 #include <wx/statline.h>
+#include <wx/arrstr.h>
 
 #include <wex/uiform.h>
 #include <wex/extgrid.h>
@@ -59,12 +33,14 @@
 #include <wex/csv.h>
 #include <wex/utils.h>
 #include <wex/extgrid.h>
+#include <wex/plot/plcolourmap.h>
 
 #ifndef S3D_STANDALONE
 #include "main.h"
 #endif
 
 #include "widgets.h"
+#include "../resource/info24.cpng"
 
 /******************************* AFSchedNumeric **********************************/
 enum { IDAFSN_NUMERIC=wxID_HIGHEST + 321, IDAFSN_SBUTTON };
@@ -156,10 +132,10 @@ std::vector<double> AFSchedNumeric::GetSchedule()
 	return mSchedValues;
 }
 
-void AFSchedNumeric::GetSchedule( std::vector<float> *vals )
+void AFSchedNumeric::GetSchedule( std::vector<double> *vals )
 {
 	vals->clear();
-	for( size_t i=0;i<mSchedValues.size();i++) vals->push_back( (float)mSchedValues[i] );
+	for( size_t i=0;i<mSchedValues.size();i++) vals->push_back( (double)mSchedValues[i] );
 }
 int AFSchedNumeric::GetSchedLen()
 {
@@ -389,7 +365,7 @@ END_EVENT_TABLE()
 
 void AFSchedNumeric::OnEditSchedule(wxCommandEvent &)
 {
-	SchedNumericDialog dlg(this, "Edit Schedule", GetLabel(), GetDescription(), m_fixedLen < 1 );
+	SchedNumericDialog dlg(this, "Edit Time Series Data (Schedule Numeric)", GetLabel(), GetDescription(), m_fixedLen < 1 );
 	wxExtGridCtrl *grid = dlg.GetGrid();
 
 	if ( m_fixedLen > 0 )
@@ -540,7 +516,7 @@ wxString AFTableDataCtrl::GetDescription()
 
 void AFTableDataCtrl::OnPressed(wxCommandEvent &evt)
 {
-	AFTableDataDialog dlg( this, "Edit values" );
+	AFTableDataDialog dlg( this, "Edit Values (Table Data)" );
 	dlg.SetData( m_values );
 	if ( wxID_OK == dlg.ShowModal() )
 	{
@@ -562,15 +538,15 @@ AFMonthlyFactorCtrl::AFMonthlyFactorCtrl( wxWindow *parent, int id,
 		mData[i] = 1.0f;
 }
 
-std::vector<float> AFMonthlyFactorCtrl::Get()
+std::vector<double> AFMonthlyFactorCtrl::Get()
 {
-	std::vector<float> data( 12, 0.0f );
+	std::vector<double> data( 12, 0.0f );
 	for (int i=0;i<12;i++)
 		data[i] = mData[i];
 	return data;
 }
 
-void AFMonthlyFactorCtrl::Set( const std::vector<float> &data )
+void AFMonthlyFactorCtrl::Set( const std::vector<double> &data )
 {
 	for (size_t i=0;i<12 && i<data.size();i++)
 		mData[i] = data[i];
@@ -624,7 +600,7 @@ public:
 		grdData->SetRowLabelSize( wxGRID_AUTOSIZE );
 		grdData->SetColLabelSize( wxGRID_AUTOSIZE );
 	
-		float d[12];
+		double d[12];
 		for (int i=0;i<12;i++) d[i] = 1;
 
 		SetData(d);
@@ -659,16 +635,16 @@ public:
 		else
 			grdData->Copy(true);
 	}
-	void SetData(float d[12])
+	void SetData(double d[12])
 	{
 		for (int i=0;i<12;i++)
 			grdData->SetCellValue( i, 0, wxString::Format("%g", d[i]) );
 	}
 
-	void GetData(float d[12])
+	void GetData(double d[12])
 	{
 		for (int i=0;i<12;i++)
-			d[i] = (float) wxAtof( grdData->GetCellValue(i,0) );
+			d[i] = (double) wxAtof( grdData->GetCellValue(i,0) );
 	}
 
 	void SetDescription(const wxString &data)
@@ -694,7 +670,7 @@ END_EVENT_TABLE()
 
 void AFMonthlyFactorCtrl::OnPressed(wxCommandEvent &evt)
 {
-	MonthlyFactorDialog dlg(this, "Edit Values");
+	MonthlyFactorDialog dlg(this, "Edit Values (Monthly Factors)");
 	
 	dlg.SetDescription( mDescription );
 	dlg.SetData( mData );
@@ -906,19 +882,19 @@ void AFSearchListBox::UpdateView()
 
 class AFFloatArrayTable : public wxGridTableBase
 {
-	std::vector<float> *d_arr;
+	std::vector<double> *d_arr;
 	int mode;
 	wxString label;
 
 public:
-	AFFloatArrayTable(std::vector<float> *da, int _mode, const wxString &_label)
+	AFFloatArrayTable(std::vector<double> *da, int _mode, const wxString &_label)
 	{
 		label = _label;
 		mode = _mode;
 		d_arr = da;
 	}
 
-	void SetArray(std::vector<float> *da)
+	void SetArray(std::vector<double> *da)
 	{
 		d_arr = da;
 	}
@@ -1226,13 +1202,13 @@ class AFDataMatrixTable : public wxGridTableBase
 
 public:
 	wxString label;
-	matrix_t<float> *d_mat ;
-	float def_val;
+	matrix_t<double> *d_mat ;
+	double def_val;
 	int choice_col;
 	wxString collabels;
 	wxString rowlabels;
 
-	AFDataMatrixTable(matrix_t<float> *da, const int &col, const wxString &_collabels, const wxString &_rowlabels)
+	AFDataMatrixTable(matrix_t<double> *da, const int &col, const wxString &_collabels, const wxString &_rowlabels)
 	{
 		SetMatrix(da);
 		choice_col = col;
@@ -1240,12 +1216,12 @@ public:
 		rowlabels = _rowlabels;
 	}
 
-	void SetMatrix(matrix_t<float> *da)
+	void SetMatrix(matrix_t<double> *da)
 	{
 		d_mat = da;
 	}
 
-	matrix_t<float> GetMatrix()
+	matrix_t<double> GetMatrix()
 	{
 		return *d_mat;
 	}
@@ -1359,7 +1335,7 @@ public:
 		if (pos > d_mat->nrows()) pos = d_mat->nrows();
 
 		size_t new_rows = d_mat->nrows() + nrows;
-		matrix_t<float> old(*d_mat);
+		matrix_t<double> old(*d_mat);
 		d_mat->resize_fill(new_rows, d_mat->ncols(), def_val);
 
 		for (size_t r = 0; r < pos && r < old.nrows(); r++)
@@ -1392,7 +1368,7 @@ public:
 			nrows = d_mat->nrows() - pos;
 
 		size_t new_rows = d_mat->nrows() - nrows;
-		matrix_t<float> old(*d_mat);
+		matrix_t<double> old(*d_mat);
 		d_mat->resize_preserve(new_rows, d_mat->ncols(), def_val);
 
 		for (size_t r = pos; r < new_rows && r + nrows < old.nrows(); r++)
@@ -1440,7 +1416,7 @@ public:
 		if (pos > d_mat->ncols()) pos = d_mat->ncols();
 
 		size_t new_cols = d_mat->ncols() + ncols;
-		matrix_t<float> old(*d_mat);
+		matrix_t<double> old(*d_mat);
 		d_mat->resize_fill(d_mat->nrows(), new_cols, def_val);
 
 		for (size_t r = 0; r < old.nrows(); r++)
@@ -1473,7 +1449,7 @@ public:
 			ncols = d_mat->ncols() - pos;
 
 		size_t new_cols = d_mat->ncols() - ncols;
-		matrix_t<float> old(*d_mat);
+		matrix_t<double> old(*d_mat);
 		d_mat->resize_preserve(d_mat->nrows(), new_cols, def_val);
 
 		for (size_t r = pos; r < old.nrows(); r++)
@@ -1509,7 +1485,7 @@ class AFDataArrayDialog : public wxDialog
 private:
 	wxString mLabel;
 	int mMode;
-	std::vector<float> mData;
+	std::vector<double> mData;
 	wxExtGridCtrl *Grid;
 	AFFloatArrayTable *GridTable;
 	wxStaticText *ModeLabel;
@@ -1566,7 +1542,7 @@ public:
 			Description->Wrap( 350 );
 			szv_main->Add( Description, 0, wxALL, 10 );
 		}
-		szv_main->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10);
+		szv_main->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 10);
 			
 		SetMode(DATA_ARRAY_8760_MULTIPLES);
 		
@@ -1601,7 +1577,7 @@ public:
 		return mMode;
 	}
 
-	void SetData(const std::vector<float> &data)
+	void SetData(const std::vector<double> &data)
 	{
 		mData = data;
 
@@ -1616,9 +1592,10 @@ public:
 
 		Grid->Layout();
 		Grid->Refresh();
+
 	}
 
-	void GetData(std::vector<float> &data)
+	void GetData(std::vector<double> &data)
 	{
 		data = mData;
 	}
@@ -1703,7 +1680,7 @@ public:
 				return;
 			}
 
-			std::vector<float> arr;
+			std::vector<double> arr;
 			arr.reserve( mData.size() );
 
 			char buf[128];
@@ -1719,7 +1696,7 @@ public:
 					break;
 				}
 
-				arr.push_back( (float) atof(buf) );
+				arr.push_back( (double) atof(buf) );
 			}
 
 			if (!error) SetData(arr);
@@ -1743,6 +1720,11 @@ public:
 				fprintf(fp, "%g\n", mData[i]);
 			fclose(fp);
 		}
+		else if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp("edit_array");
+		}
+
 	}
 	
 	DECLARE_EVENT_TABLE();
@@ -1754,24 +1736,25 @@ BEGIN_EVENT_TABLE(AFDataArrayDialog, wxDialog)
 	EVT_BUTTON( IDDD_IMPORT, AFDataArrayDialog::OnCommand )
 	EVT_BUTTON( IDDD_EXPORT, AFDataArrayDialog::OnCommand )
 	EVT_BUTTON( IDDD_CHANGENUMROWS, AFDataArrayDialog::OnCommand )
-END_EVENT_TABLE()
+	EVT_BUTTON( wxID_HELP, AFDataArrayDialog::OnCommand)
+	END_EVENT_TABLE()
 
 BEGIN_EVENT_TABLE(AFDataArrayButton, wxButton)
 EVT_BUTTON(wxID_ANY, AFDataArrayButton::OnPressed)
 END_EVENT_TABLE()
 
 AFDataArrayButton::AFDataArrayButton( wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton(parent, id, "Edit data...", pos, size)
+	: wxButton(parent, id, "Edit array...", pos, size)
 {
 	mData.resize(8760, 0.0);
 	mMode = DATA_ARRAY_8760_MULTIPLES;
 }
 
-void AFDataArrayButton::Get(std::vector<float> &data)
+void AFDataArrayButton::Get(std::vector<double> &data)
 {
 	data=mData;
 }
-void AFDataArrayButton::Set(const std::vector<float> &data)
+void AFDataArrayButton::Set(const std::vector<double> &data)
 {
 	if (mMode == DATA_ARRAY_8760_ONLY)
 	{
@@ -1814,7 +1797,7 @@ int AFDataArrayButton::GetMode()
 
 void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFDataArrayDialog dlg( this, "Edit Data", m_description, mDataLabel );
+	AFDataArrayDialog dlg( this, "Edit Array (Data Array)", m_description, mDataLabel );
 	
 	dlg.SetDataLabel( mDataLabel );
 	dlg.SetMode(mMode);
@@ -1825,10 +1808,1323 @@ void AFDataArrayButton::OnPressed(wxCommandEvent &evt)
 		dlg.GetData(mData);
 		evt.Skip(); // allow event to propagate indicating underlying value changed
 	}
+
 }
 
 
 
+class AFDataLifetimeArrayTable : public wxGridTableBase
+{
+	std::vector<double> *d_arr;
+	int mode;
+	wxString label;
+
+public:
+	AFDataLifetimeArrayTable(std::vector<double> *da, int _mode, const wxString &_label)
+	{
+		label = _label;
+		mode = _mode;
+		d_arr = da;
+	}
+
+	void SetArray(std::vector<double> *da)
+	{
+		d_arr = da;
+	}
+
+	virtual int GetNumberRows()
+	{
+		if (!d_arr) return 0;
+
+		return (int)d_arr->size();
+	}
+
+	virtual int GetNumberCols()
+	{
+		return 1;
+	}
+
+	virtual bool IsEmptyCell(int, int)
+	{
+		return false;
+	}
+
+	virtual wxString GetValue(int row, int)
+	{
+		if (d_arr && row >= 0 && row < (int)d_arr->size())
+			return wxString::Format("%g", d_arr->at(row));
+		else
+			return "-0.0";
+	}
+
+	virtual void SetValue(int row, int, const wxString& value)
+	{
+		if (d_arr && row >= 0 && row < (int)d_arr->size())
+			d_arr->at(row) = wxAtof(value);
+	}
+
+	virtual wxString GetRowLabelValue(int row)
+	{
+		/* TODO - setup row labels based on year and mode 
+		if (d_arr && mode == DATA_LIFETIME_SUBHOURLY)
+		{
+			int nmult = d_arr->size() / 8760;
+			if (nmult != 0)
+			{
+				double step = 1.0 / ((double)nmult);
+				double tm = step * (row + 1);
+				double frac = tm - ((double)(int)tm);
+				if (frac == 0.0)
+					return wxString::Format("%lg", tm);
+				else
+					return wxString::Format("   .%lg", frac * 60);
+			}
+		}
+		*/
+		return wxString::Format("%d", row + 1);
+	}
+
+	virtual wxString GetColLabelValue(int)
+	{
+		return label.IsEmpty() ? "Value" : label;
+	}
+
+	virtual wxString GetTypeName(int, int)
+	{
+		return wxGRID_VALUE_STRING;
+	}
+
+	virtual bool CanGetValueAs(int, int, const wxString& typeName)
+	{
+		return typeName == wxGRID_VALUE_STRING;
+	}
+
+	virtual bool CanSetValueAs(int, int, const wxString& typeName)
+	{
+		return typeName == wxGRID_VALUE_STRING;
+	}
+
+	virtual bool AppendRows(size_t nrows)
+	{
+		if (d_arr && nrows > 0)
+		{
+			if (d_arr->size() + nrows > d_arr->capacity())
+				d_arr->reserve(d_arr->size() + nrows);
+
+			for (size_t i = 0; i < nrows; i++)
+				d_arr->push_back(0.0);
+
+
+			if (GetView())
+			{
+				wxGridTableMessage msg(this,
+					wxGRIDTABLE_NOTIFY_ROWS_APPENDED,
+					nrows);
+
+				GetView()->ProcessTableMessage(msg);
+			}
+		}
+
+		return true;
+	}
+
+	virtual bool InsertRows(size_t pos, size_t nrows)
+	{
+
+		if (!d_arr) return true;
+
+		if (pos > d_arr->size()) pos = d_arr->size();
+
+		for (int i = 0; i < (int)nrows; i++)
+		{
+			d_arr->insert(d_arr->begin(), 0.0);
+		}
+
+		if (GetView())
+		{
+			wxGridTableMessage msg(this,
+				wxGRIDTABLE_NOTIFY_ROWS_INSERTED,
+				pos,
+				nrows);
+
+			GetView()->ProcessTableMessage(msg);
+		}
+
+		return true;
+	}
+
+	virtual bool DeleteRows(size_t pos, size_t nrows)
+	{
+		if (!d_arr) return true;
+
+		if (nrows > d_arr->size() - pos)
+			nrows = d_arr->size() - pos;
+
+		//applog("2 Delete Rows[ %d %d ] RowCount %d\n", pos, nrows, Stage->ElementList.size());
+		d_arr->erase(d_arr->begin() + pos, d_arr->begin() + pos + nrows);
+
+		if (GetView())
+		{
+			//	applog("RowCount Post Delete %d :: %d\n", Stage->ElementList.size(), this->GetNumberRows());
+			wxGridTableMessage msg(this,
+				wxGRIDTABLE_NOTIFY_ROWS_DELETED,
+				pos,
+				nrows);
+
+			GetView()->ProcessTableMessage(msg);
+		}
+
+		return true;
+	}
+};
+
+
+
+
+enum { ILDD_GRID = wxID_HIGHEST + 945, ILDD_MODEOPTIONS, ILDD_TIMESTEPS, ILDD_SINGLEVALUE, ILDD_COPY, ILDD_PASTE, ILDD_IMPORT, ILDD_EXPORT };
+
+class AFDataLifetimeArrayDialog : public wxDialog
+{
+private:
+	wxString mLabel, mColumnLabel;
+	size_t mAnalysisPeriod, mMinPerHour, mMode;
+	std::vector<double> mData;
+	wxExtGridCtrl *Grid;
+	AFDataLifetimeArrayTable *GridTable;
+	wxStaticText *Description, *AnalysisPeriodLabel;
+	wxStaticText *InputLabel, *TimestepsLabel;
+	wxComboBox *ModeOptions;
+	wxComboBox *Timesteps;
+	wxNumericCtrl *AnalysisPeriodValue;
+
+public:
+	AFDataLifetimeArrayDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &inputLabel, const wxString &columnLabel, const bool &optannual = false, const bool &optweekly = false, const bool &showMode = true)
+		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(500, 600),
+			wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
+	{
+		mLabel = inputLabel;
+		mColumnLabel = columnLabel;
+
+		GridTable = NULL;
+		wxButton *btn = NULL;
+		Grid = new wxExtGridCtrl(this, ILDD_GRID);
+		Grid->DisableDragCell();
+		//Grid->DisableDragColSize();
+		Grid->DisableDragRowSize();
+		Grid->DisableDragColMove();
+		Grid->DisableDragGridSize();
+		Grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
+
+		wxBoxSizer *szh_btns = new wxBoxSizer(wxHORIZONTAL);
+		wxBoxSizer *szv_copypaste = new wxBoxSizer(wxVERTICAL);
+		btn = new wxButton(this, ILDD_COPY, "Copy");
+		szv_copypaste->Add(btn, 0, wxALL | wxEXPAND, 1);
+		btn = new wxButton(this, ILDD_PASTE, "Paste");
+		szv_copypaste->Add(btn, 0, wxALL | wxEXPAND, 1);
+		wxBoxSizer *szv_exportimport = new wxBoxSizer(wxVERTICAL);
+		btn = new wxButton(this, ILDD_EXPORT, "Export");
+		szv_exportimport->Add(btn, 0, wxALL | wxEXPAND, 1);
+		btn = new wxButton(this, ILDD_IMPORT, "Import");
+		szv_exportimport->Add(btn, 0, wxALL | wxEXPAND, 1);
+		szh_btns->Add(szv_copypaste);
+		szh_btns->Add(szv_exportimport);
+		szh_btns->AddStretchSpacer();
+
+
+		wxBoxSizer *szh_top4 = new wxBoxSizer(wxHORIZONTAL);
+		wxArrayString timestepmin;
+		timestepmin.Add(" 1");
+		timestepmin.Add(" 5");
+		timestepmin.Add("10");
+		timestepmin.Add("15");
+		timestepmin.Add("20");
+		timestepmin.Add("30");
+		Timesteps = new wxComboBox(this, ILDD_TIMESTEPS, "30", wxDefaultPosition, wxDefaultSize, timestepmin);
+		TimestepsLabel = new wxStaticText(this, -1, "Select timestep minutes");
+		szh_top4->Add(TimestepsLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		szh_top4->AddSpacer(3);
+		szh_top4->Add(Timesteps, 0, wxALL | wxEXPAND, 1);
+		szh_top4->AddStretchSpacer();
+
+		wxBoxSizer *szh_top3 = new wxBoxSizer(wxHORIZONTAL);
+		wxArrayString modes;
+		modes.Add("Single Value");
+		modes.Add("Monthly");
+		modes.Add("Daily");
+		modes.Add("Hourly");
+		modes.Add("Subhourly");
+		if (optannual)	modes.Add("Annual");
+		if (optweekly) modes.Add("Weekly");
+		ModeOptions = new wxComboBox(this, ILDD_MODEOPTIONS, "Monthly", wxDefaultPosition, wxDefaultSize, modes);
+		szh_top3->Add(new wxStaticText(this, -1, "Mode"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		szh_top3->AddSpacer(3);
+		szh_top3->Add(ModeOptions, 0, wxALL | wxEXPAND, 1);
+		szh_top3->AddStretchSpacer();
+
+		wxBoxSizer *szh_top1 = new wxBoxSizer(wxHORIZONTAL);
+		InputLabel = new wxStaticText(this, wxID_ANY, mLabel);
+		szh_top1->AddSpacer(3);
+		szh_top1->Add(InputLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		szh_top1->AddStretchSpacer();
+
+		wxBoxSizer *szh_top2 = new wxBoxSizer(wxHORIZONTAL);
+		AnalysisPeriodValue = new wxNumericCtrl(this, wxID_ANY);
+		AnalysisPeriodValue->Enable(false);
+		AnalysisPeriodLabel = new wxStaticText(this, -1, "Analysis period");
+		szh_top2->Add(AnalysisPeriodLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		szh_top2->AddSpacer(3);
+		szh_top2->Add(AnalysisPeriodValue, 0, wxALL | wxEXPAND, 1);
+		szh_top2->AddStretchSpacer();
+
+
+		wxBoxSizer *szv_main_vert = new wxBoxSizer(wxVERTICAL);
+		szv_main_vert->Add(szh_top1, 0, wxALL | wxEXPAND, 4);
+		szv_main_vert->Add(szh_top2, 0, wxALL | wxEXPAND, 4);
+		szv_main_vert->Add(szh_top3, 0, wxALL | wxEXPAND, 4);
+		szv_main_vert->Add(szh_top4, 0, wxALL | wxEXPAND, 4);
+		szv_main_vert->Add(szh_btns, 0, wxALL | wxEXPAND, 4);
+		szv_main_vert->AddStretchSpacer();
+		szv_main_vert->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxALL | wxEXPAND, 10);
+		Description = 0;
+		if (!desc.IsEmpty())
+		{
+			Description = new wxStaticText(this, wxID_ANY, desc);
+			Description->Wrap(350);
+			szv_main_vert->Add(Description, 0, wxALL, 10);
+		}
+
+		wxBoxSizer *szh_main = new wxBoxSizer(wxHORIZONTAL);
+		szh_main->Add(szv_main_vert, 0, wxALL | wxEXPAND, 4);
+		szh_main->Add(Grid, 3, wxALL | wxEXPAND, 4);
+
+		szh_top3->Show(showMode);
+
+		SetSizer(szh_main);
+//		SetSizerAndFit(szh_main);
+		SetSizeHints(wxSize(1000, 800));
+	}
+
+	void SetMode(int m)
+	{
+		mMode = m;
+		size_t l;
+		switch (mMode)
+		{
+		case DATA_LIFETIME_ARRAY_MONTHLY:
+		{
+			l = mAnalysisPeriod * 12;
+			Grid->ResizeGrid(l, 1);
+			break;
+		}
+		case DATA_LIFETIME_ARRAY_DAILY: // assume 365
+		{
+			l = mAnalysisPeriod * 365;
+			Grid->ResizeGrid(l, 1);
+			break;
+		}
+		case DATA_LIFETIME_ARRAY_HOURLY: // assume 8760
+		{
+			l = mAnalysisPeriod * 8760;
+			Grid->ResizeGrid(l, 1);
+			break;
+		}
+		case DATA_LIFETIME_ARRAY_SUBHOURLY: // assume 8760 * timesteps per hour
+		{
+			// error handling
+			mMinPerHour = std::stoul(Timesteps->GetValue().ToStdString());
+			l = mAnalysisPeriod * 8760 * (60 / mMinPerHour);
+			Grid->ResizeGrid(l, 1);
+			break;
+		}
+		case DATA_LIFETIME_ARRAY_ANNUAL:
+		{
+			l = mAnalysisPeriod;
+			Grid->ResizeGrid(l, 1);
+			break;
+		}
+		case DATA_LIFETIME_ARRAY_WEEKLY: // assume 52 weeks or 364 days?
+		{
+			l = mAnalysisPeriod * 8760 / (24 * 7);
+			Grid->ResizeGrid(l, 1);
+			break;
+		}
+		default: // single value - no grid resize
+		{
+			break;
+		}
+		}
+		TimestepsLabel->Show((mMode == DATA_LIFETIME_ARRAY_SUBHOURLY));
+		Timesteps->Show((mMode == DATA_LIFETIME_ARRAY_SUBHOURLY));
+		ModeOptions->SetSelection(mMode);
+		Grid->Layout();
+		Grid->Refresh();
+		Layout();
+	}
+
+	int GetMode()
+	{
+		return mMode;
+	}
+
+	void SetData(const std::vector<double> &data)
+	{
+		mData = data;
+
+		if (GridTable) GridTable->SetArray(NULL);
+		Grid->SetTable(NULL);
+
+		GridTable = new AFDataLifetimeArrayTable(&mData, mMode, mColumnLabel);
+		GridTable->SetAttrProvider(new wxExtGridCellAttrProvider);
+
+		Grid->SetTable(GridTable, true);
+		Grid->SetColSize(0, (int)(130 * wxGetScreenHDScale()));
+		Grid->Layout();
+		Grid->Refresh();
+
+		// determine mode from data
+		size_t dataSize = mData.size();
+		if (dataSize < 1)
+		{
+			mData.push_back(0.0);
+			dataSize = 1;
+		}
+		if (dataSize == 1)
+			mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
+		else if (dataSize == (mAnalysisPeriod))
+			mMode = DATA_LIFETIME_ARRAY_ANNUAL;
+		else if (dataSize == (mAnalysisPeriod * 12))
+			mMode = DATA_LIFETIME_ARRAY_MONTHLY;
+		else if (dataSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+			mMode = DATA_LIFETIME_ARRAY_WEEKLY;
+		else if (dataSize == (mAnalysisPeriod * 365))
+			mMode = DATA_LIFETIME_ARRAY_DAILY;
+		else if (dataSize == (mAnalysisPeriod * 8760))
+			mMode = DATA_LIFETIME_ARRAY_HOURLY;
+		else
+		{
+			mMode = DATA_LIFETIME_ARRAY_SUBHOURLY;
+			size_t stepsPerHour = dataSize / (mAnalysisPeriod * 8760);
+			switch (stepsPerHour)
+			{
+			case 2: // 30 minute
+				Timesteps->SetSelection(5);
+				break;
+			case 3: // 20 minute
+				Timesteps->SetSelection(4);
+				break;
+			case 4: // 15 minute
+				Timesteps->SetSelection(3);
+				break;
+			case 6: // 10 minute
+				Timesteps->SetSelection(2);
+				break;
+			case 12: // 5 minute
+				Timesteps->SetSelection(1);
+				break;
+			default: // 1 minute
+				Timesteps->SetSelection(0);
+				break;
+			}
+		}
+
+		//Grid->SetTable(GridTable, true);
+		// can use max text width from column labels
+		for (size_t ic = 0; ic < (size_t)Grid->GetNumberCols(); ic++)
+			Grid->SetColSize(ic, (int)(140 * wxGetScreenHDScale()));
+
+
+		SetMode(mMode);
+		Move(GetPosition().x + 1, GetPosition().y + 1);
+		Move(GetPosition().x - 1, GetPosition().y - 1);
+
+	}
+
+	void GetData(std::vector<double> &data)
+	{
+		data = mData;
+	}
+
+	void SetDataLabel(const wxString &s)
+	{
+		mLabel = s;
+		InputLabel->SetLabel(s);
+	}
+
+	wxString GetDataLabel()
+	{
+		return mLabel;
+	}
+
+	void SetAnalysisPeriod(const size_t &p)
+	{
+		mAnalysisPeriod = p;
+		AnalysisPeriodValue->SetValue((double)p);
+//		SetMode(mMode);
+	}
+
+	size_t GetAnalysisPeriod()
+	{
+		return mAnalysisPeriod;
+	}
+
+	void SetMinPerHour(const size_t &p)
+	{
+		mMinPerHour = p;
+	}
+
+	size_t GetMinPerHour()
+	{
+		return mMinPerHour;
+	}
+
+
+	void OnCommand(wxCommandEvent &evt)
+	{
+		if (evt.GetId() == ILDD_MODEOPTIONS)
+			SetMode(ModeOptions->GetSelection());
+		else if (evt.GetId() == ILDD_TIMESTEPS)
+			SetMode(ModeOptions->GetSelection());
+		else if (evt.GetId() == ILDD_COPY)
+			Grid->Copy(true);
+		else if (evt.GetId() == ILDD_PASTE)
+			Grid->Paste(wxExtGridCtrl::PASTE_ALL);
+		else if (evt.GetId() == ILDD_IMPORT)
+		{
+			wxFileDialog dlg(this, "Select data file to import");
+			if (dlg.ShowModal() != wxID_OK) return;
+			FILE *fp = fopen(dlg.GetPath().c_str(), "r");
+			if (!fp)
+			{
+				wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath());
+				return;
+			}
+
+			std::vector<double> arr;
+			arr.reserve(mData.size());
+
+			char buf[128];
+			fgets(buf, 127, fp); // skip header line
+
+			bool error = false;
+			for (int i = 0; i < (int)mData.size(); i++)
+			{
+				if (fgets(buf, 127, fp) == NULL)
+				{
+					wxMessageBox(wxString::Format("Data file does not contain %d data value lines, only %d found.\n\nNote that the first line in the file is considered a header label and is ignored.", mData.size(), i));
+					error = true;
+					break;
+				}
+
+				arr.push_back((double)atof(buf));
+			}
+
+			if (!error) SetData(arr);
+
+			fclose(fp);
+		}
+		else if (evt.GetId() == ILDD_EXPORT)
+		{
+			wxFileDialog dlg(this, "Select data file to export to", wxEmptyString, wxEmptyString, "*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+			if (dlg.ShowModal() != wxID_OK) return;
+
+			FILE *fp = fopen(dlg.GetPath().c_str(), "w");
+			if (!fp)
+			{
+				wxMessageBox("Could not open file for writing.");
+				return;
+			}
+
+			fprintf(fp, "Exported Data (%d)\n", (int)mData.size());
+			for (size_t i = 0; i < mData.size(); i++)
+				fprintf(fp, "%g\n", mData[i]);
+			fclose(fp);
+		}
+		else if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp("edit_time_series_data");
+		}
+
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE(AFDataLifetimeArrayDialog, wxDialog)
+EVT_BUTTON(ILDD_COPY, AFDataLifetimeArrayDialog::OnCommand)
+EVT_BUTTON(ILDD_PASTE, AFDataLifetimeArrayDialog::OnCommand)
+EVT_BUTTON(ILDD_IMPORT, AFDataLifetimeArrayDialog::OnCommand)
+EVT_BUTTON(ILDD_EXPORT, AFDataLifetimeArrayDialog::OnCommand)
+EVT_BUTTON(wxID_HELP, AFDataLifetimeArrayDialog::OnCommand)
+EVT_COMBOBOX(ILDD_MODEOPTIONS, AFDataLifetimeArrayDialog::OnCommand)
+EVT_COMBOBOX(ILDD_TIMESTEPS, AFDataLifetimeArrayDialog::OnCommand)
+END_EVENT_TABLE()
+
+BEGIN_EVENT_TABLE(AFDataLifetimeArrayButton, wxButton)
+EVT_BUTTON(wxID_ANY, AFDataLifetimeArrayButton::OnPressed)
+END_EVENT_TABLE()
+
+AFDataLifetimeArrayButton::AFDataLifetimeArrayButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
+	: wxButton(parent, id, "Edit lifetime data...", pos, size)
+{
+	mAnalysisPeriod = 25;
+	mMinPerHour = 30;
+	mMode = DATA_LIFETIME_ARRAY_MONTHLY;
+	mData.resize(12*mAnalysisPeriod, 0.0);
+}
+
+void AFDataLifetimeArrayButton::Get(std::vector<double> &data)
+{
+	data = mData;
+}
+void AFDataLifetimeArrayButton::Set(const std::vector<double> &data)
+{
+	mData = data;
+	// set mode based potentially new analysis period and current data
+	size_t newSize = mData.size();
+	if (newSize == mAnalysisPeriod)
+		mMode = DATA_LIFETIME_ARRAY_ANNUAL;
+	else if (newSize == (mAnalysisPeriod * 12))
+		mMode = DATA_LIFETIME_ARRAY_MONTHLY;
+	else if (newSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+		mMode = DATA_LIFETIME_ARRAY_WEEKLY;
+	else if (newSize == (mAnalysisPeriod * 365))
+		mMode = DATA_LIFETIME_ARRAY_DAILY;
+	else if (newSize == (mAnalysisPeriod * 8760))
+		mMode = DATA_LIFETIME_ARRAY_HOURLY;
+	else if (newSize > (mAnalysisPeriod * 8760))
+		mMode = DATA_LIFETIME_ARRAY_SUBHOURLY;
+	else
+		mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
+
+}
+void AFDataLifetimeArrayButton::SetDataLabel(const wxString &s)
+{
+	mDataLabel = s;
+}
+wxString AFDataLifetimeArrayButton::GetDataLabel()
+{
+	return mDataLabel;
+}
+void AFDataLifetimeArrayButton::SetColumnLabel(const wxString &s)
+{
+	mColumnLabel = s;
+}
+wxString AFDataLifetimeArrayButton::GetColumnLabel()
+{
+	return mColumnLabel;
+}
+
+void AFDataLifetimeArrayButton::SetAnalysisPeriod(const size_t &p)
+{
+	mAnalysisPeriod = p;
+}
+
+void AFDataLifetimeArrayButton::OnPressed(wxCommandEvent &evt)
+{
+	AFDataLifetimeArrayDialog dlg(this, "Edit Lifetime Data (Lifetime Array)", mDescription, mDataLabel, mColumnLabel, mAnnualEnabled, mWeeklyEnabled, mShowMode);
+	dlg.SetAnalysisPeriod(mAnalysisPeriod);
+	dlg.SetData(mData);
+	dlg.SetMode(mMode); // to set when mode hidden
+	dlg.SetDataLabel(mDataLabel);
+
+
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		dlg.GetData(mData);
+		mMode = dlg.GetMode();
+		mMinPerHour = dlg.GetMinPerHour();
+		evt.Skip(); // allow event to propagate indicating underlying value changed
+	}
+}
+
+
+
+
+class AFDataLifetimeMatrixTable : public wxGridTableBase
+{
+	matrix_t<double> *d_mat;
+	int mode;
+	wxArrayString columnLabels;
+
+public:
+	AFDataLifetimeMatrixTable(matrix_t<double> *dm, int _mode, const wxArrayString &_columnLabels)
+	{
+		columnLabels = _columnLabels;
+		mode = _mode;
+		d_mat = dm;
+	}
+
+	void SetMatrix(matrix_t<double> *dm)
+	{
+		d_mat = dm;
+	}
+
+	virtual int GetNumberRows()
+	{
+		if (!d_mat) return 0;
+
+		return (int)d_mat->nrows();
+	}
+
+	virtual int GetNumberCols()
+	{
+		return (int)d_mat->ncols();
+	}
+
+	virtual bool IsEmptyCell(int, int)
+	{
+		return false;
+	}
+
+	virtual wxString GetValue(int row, int col)
+	{
+		if (d_mat && row >= 0 && row < (int)d_mat->nrows() && col < (int)d_mat->ncols())
+			return wxString::Format("%g", d_mat->at(row, col));
+		else
+			return "-0.0";
+	}
+
+	virtual void SetValue(int row, int col, const wxString& value)
+	{
+		if (d_mat && row >= 0 && row < (int)d_mat->nrows() && col < (int)d_mat->ncols())
+			d_mat->at(row, col) = wxAtof(value);
+	}
+
+	virtual wxString GetRowLabelValue(int row)
+	{
+		/* TODO - setup row labels based on year and mode
+		if (d_arr && mode == DATA_LIFETIME_SUBHOURLY)
+		{
+			int nmult = d_arr->size() / 8760;
+			if (nmult != 0)
+			{
+				double step = 1.0 / ((double)nmult);
+				double tm = step * (row + 1);
+				double frac = tm - ((double)(int)tm);
+				if (frac == 0.0)
+					return wxString::Format("%lg", tm);
+				else
+					return wxString::Format("   .%lg", frac * 60);
+			}
+		}
+		*/
+		return wxString::Format("%d", row + 1);
+	}
+
+	virtual wxString GetColLabelValue(int col)
+	{
+		wxString label = "Value";
+		if (col > -1 && col < (int)columnLabels.GetCount())
+			label = columnLabels[col];
+		return label;
+	}
+
+	virtual wxString GetTypeName(int, int)
+	{
+		return wxGRID_VALUE_STRING;
+	}
+
+	virtual bool CanGetValueAs(int, int, const wxString& typeName)
+	{
+		return typeName == wxGRID_VALUE_STRING;
+	}
+
+	virtual bool CanSetValueAs(int, int, const wxString& typeName)
+	{
+		return typeName == wxGRID_VALUE_STRING;
+	}
+
+	virtual bool AppendRows(size_t nrows)
+	{
+		if (d_mat && nrows > 0)
+		{
+			if (d_mat->nrows() + nrows > d_mat->nrows())
+				d_mat->resize_preserve(d_mat->nrows() + nrows, d_mat->ncols(), 0.0);
+
+			if (GetView())
+			{
+				wxGridTableMessage msg(this,
+					wxGRIDTABLE_NOTIFY_ROWS_APPENDED,
+					nrows);
+
+				GetView()->ProcessTableMessage(msg);
+			}
+		}
+
+		return true;
+	}
+
+
+	virtual bool AppendCols(size_t ncols)
+	{
+		if (d_mat && ncols > 0)
+		{
+			if (d_mat->ncols() + ncols > d_mat->ncols())
+				d_mat->resize_preserve(d_mat->nrows(), d_mat->ncols() + ncols, 0.0);
+
+			if (GetView())
+			{
+				wxGridTableMessage msg(this,
+					wxGRIDTABLE_NOTIFY_COLS_APPENDED,
+					ncols);
+
+				GetView()->ProcessTableMessage(msg);
+			}
+		}
+
+		return true;
+	}
+
+
+	virtual bool InsertRows(size_t pos, size_t nrows)
+	{
+
+		if (!d_mat) return true;
+
+		if (pos > d_mat->nrows()) pos = d_mat->nrows();
+
+		d_mat->resize_preserve(d_mat->nrows()+nrows, d_mat->ncols(), 0.0);
+
+		for (size_t i = pos + nrows; i < d_mat->nrows(); i++)
+			for (size_t j = 0; j < d_mat->ncols(); j++)
+				d_mat->at(i, j) = d_mat->at(i-nrows,j);
+		for (size_t i = pos; i < pos + nrows - 1; i++)
+			for (size_t j = 0; j < d_mat->ncols(); j++)
+				d_mat->at(i, j) = 0.0;
+
+		if (GetView())
+		{
+			wxGridTableMessage msg(this,
+				wxGRIDTABLE_NOTIFY_ROWS_INSERTED,
+				pos,
+				nrows);
+
+			GetView()->ProcessTableMessage(msg);
+		}
+
+		return true;
+	}
+
+	virtual bool InsertCols(size_t pos, size_t ncols)
+	{
+
+		if (!d_mat) return true;
+
+		if (pos > d_mat->ncols()) pos = d_mat->ncols();
+
+		d_mat->resize_preserve(d_mat->nrows(), d_mat->ncols()+ ncols, 0.0);
+
+		for (size_t i = 0; i < d_mat->nrows(); i++)
+			for (size_t j = pos+ncols; j < d_mat->ncols(); j++)
+				d_mat->at(i, j) = d_mat->at(i, j - ncols);
+		for (size_t i = 0; i < d_mat->nrows(); i++)
+			for (size_t j = pos; j < pos + ncols - 1; j++)
+				d_mat->at(i, j) = 0.0;
+
+		if (GetView())
+		{
+			wxGridTableMessage msg(this,
+				wxGRIDTABLE_NOTIFY_COLS_INSERTED,
+				pos,
+				ncols);
+
+			GetView()->ProcessTableMessage(msg);
+		}
+
+		return true;
+	}
+
+	virtual bool DeleteRows(size_t pos, size_t nrows)
+	{
+		if (!d_mat) return true;
+
+		if (nrows > d_mat->nrows() - pos)
+			nrows = d_mat->nrows() - pos;
+
+		for (size_t i = pos; (i + nrows) < d_mat->nrows() && i < (pos + nrows); i++)
+			for (size_t j = 0; j < d_mat->ncols(); j++)
+				d_mat->at(i, j) = d_mat->at(i + nrows, j);
+
+		d_mat->resize_preserve(d_mat->nrows() - nrows, d_mat->ncols(), 0.0);
+
+		if (GetView())
+		{
+			//	applog("RowCount Post Delete %d :: %d\n", Stage->ElementList.size(), this->GetNumberRows());
+			wxGridTableMessage msg(this,
+				wxGRIDTABLE_NOTIFY_ROWS_DELETED,
+				pos,
+				nrows);
+
+			GetView()->ProcessTableMessage(msg);
+		}
+
+		return true;
+	}
+
+	virtual bool DeleteCols(size_t pos, size_t ncols)
+	{
+		if (!d_mat) return true;
+
+		if (ncols > d_mat->ncols() - pos)
+			ncols = d_mat->ncols() - pos;
+
+		for (size_t i = 0; i < d_mat->nrows(); i++)
+			for (size_t j = pos; (j + ncols) < d_mat->ncols() && j < (pos + ncols); j++)
+				d_mat->at(i, j) = d_mat->at(i, j+ncols);
+
+		d_mat->resize_preserve(d_mat->nrows(), d_mat->ncols() - ncols, 0.0);
+
+		if (GetView())
+		{
+			//	applog("RowCount Post Delete %d :: %d\n", Stage->ElementList.size(), this->GetNumberRows());
+			wxGridTableMessage msg(this,
+				wxGRIDTABLE_NOTIFY_COLS_DELETED,
+				pos,
+				ncols);
+
+			GetView()->ProcessTableMessage(msg);
+		}
+
+		return true;
+	}
+};
+
+
+
+
+enum { ILDM_GRID = wxID_HIGHEST + 945, ILDM_MODEOPTIONS, ILDM_TIMESTEPS, ILDM_SINGLEVALUE, ILDM_COPY, ILDM_PASTE, ILDM_IMPORT, ILDM_EXPORT };
+
+class AFDataLifetimeMatrixDialog : public wxDialog
+{
+private:
+	wxString mLabel;
+	wxArrayString mColumnLabels;
+	size_t mAnalysisPeriod, mMinPerHour, mMode, mNumCols;
+	matrix_t<double> mData;
+	wxExtGridCtrl *Grid;
+	AFDataLifetimeMatrixTable *GridTable;
+	wxStaticText *Description, *AnalysisPeriodLabel;
+	wxStaticText *InputLabel, *TimestepsLabel;
+	wxComboBox *ModeOptions;
+	wxComboBox *Timesteps;
+	wxNumericCtrl *AnalysisPeriodValue;
+
+public:
+	AFDataLifetimeMatrixDialog(wxWindow *parent, const wxString &title, const wxString &desc, const wxString &inputLabel, const wxString &columnLabels, const bool &optannual = false, const bool &optweekly = false, const bool &showMode = true)
+		: wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(430, 510),
+			wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
+	{
+		mLabel = inputLabel;
+		mColumnLabels = wxSplit(columnLabels, ',');
+		mNumCols = mColumnLabels.Count();
+		if (mNumCols < 1) mNumCols = 1;
+		
+		GridTable = NULL;
+		wxButton *btn = NULL;
+		Grid = new wxExtGridCtrl(this, ILDM_GRID);
+		Grid->DisableDragCell();
+		//Grid->DisableDragColSize();
+		Grid->DisableDragRowSize();
+		Grid->DisableDragColMove();
+		Grid->DisableDragGridSize();
+		Grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
+
+		wxBoxSizer *szh_btns = new wxBoxSizer(wxHORIZONTAL);
+		wxBoxSizer *szv_copypaste = new wxBoxSizer(wxVERTICAL);
+		btn = new wxButton(this, ILDM_COPY, "Copy");
+		szv_copypaste->Add(btn, 0, wxALL | wxEXPAND, 1);
+		btn = new wxButton(this, ILDM_PASTE, "Paste");
+		szv_copypaste->Add(btn, 0, wxALL | wxEXPAND, 1);
+		wxBoxSizer *szv_exportimport = new wxBoxSizer(wxVERTICAL);
+		btn = new wxButton(this, ILDM_EXPORT, "Export");
+		szv_exportimport->Add(btn, 0, wxALL | wxEXPAND, 1);
+		btn = new wxButton(this, ILDM_IMPORT, "Import");
+		szv_exportimport->Add(btn, 0, wxALL | wxEXPAND, 1);
+		szh_btns->Add(szv_copypaste);
+		szh_btns->Add(szv_exportimport);
+		szh_btns->AddStretchSpacer();
+
+
+		wxBoxSizer *szh_top4 = new wxBoxSizer(wxHORIZONTAL);
+		wxArrayString timestepmin;
+		timestepmin.Add(" 1");
+		timestepmin.Add(" 5");
+		timestepmin.Add("10");
+		timestepmin.Add("15");
+		timestepmin.Add("20");
+		timestepmin.Add("30");
+		Timesteps = new wxComboBox(this, ILDM_TIMESTEPS, "30", wxDefaultPosition, wxDefaultSize, timestepmin);
+		TimestepsLabel = new wxStaticText(this, -1, "Select timestep minutes");
+		szh_top4->Add(TimestepsLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		szh_top4->AddSpacer(3);
+		szh_top4->Add(Timesteps, 0, wxALL | wxEXPAND, 1);
+		szh_top4->AddStretchSpacer();
+
+		wxBoxSizer *szh_top3 = new wxBoxSizer(wxHORIZONTAL);
+		wxArrayString modes;
+		modes.Add("Single Value");
+		modes.Add("Monthly");
+		modes.Add("Daily");
+		modes.Add("Hourly");
+		modes.Add("Subhourly");
+		if (optannual)	modes.Add("Annual");
+		if (optweekly) modes.Add("Weekly");
+		ModeOptions = new wxComboBox(this, ILDM_MODEOPTIONS, "Monthly", wxDefaultPosition, wxDefaultSize, modes);
+		szh_top3->Add(new wxStaticText(this, -1, "Mode"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		szh_top3->AddSpacer(3);
+		szh_top3->Add(ModeOptions, 0, wxALL | wxEXPAND, 1);
+		szh_top3->AddStretchSpacer();
+
+		wxBoxSizer *szh_top1 = new wxBoxSizer(wxHORIZONTAL);
+		InputLabel = new wxStaticText(this, wxID_ANY, mLabel);
+		szh_top1->AddSpacer(3);
+		szh_top1->Add(InputLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		szh_top1->AddStretchSpacer();
+
+		wxBoxSizer *szh_top2 = new wxBoxSizer(wxHORIZONTAL);
+		AnalysisPeriodValue = new wxNumericCtrl(this, wxID_ANY);
+		AnalysisPeriodValue->Enable(false);
+		AnalysisPeriodLabel = new wxStaticText(this, -1, "Analysis period");
+		szh_top2->Add(AnalysisPeriodLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+		szh_top2->AddSpacer(3);
+		szh_top2->Add(AnalysisPeriodValue, 0, wxALL | wxEXPAND, 1);
+		szh_top2->AddStretchSpacer();
+
+
+		wxBoxSizer *szv_main_vert = new wxBoxSizer(wxVERTICAL);
+		szv_main_vert->Add(szh_top1, 0, wxALL | wxEXPAND, 4);
+		szv_main_vert->Add(szh_top2, 0, wxALL | wxEXPAND, 4);
+		szv_main_vert->Add(szh_top3, 0, wxALL | wxEXPAND, 4);
+		szv_main_vert->Add(szh_top4, 0, wxALL | wxEXPAND, 4);
+		szv_main_vert->Add(szh_btns, 0, wxALL | wxEXPAND, 4);
+		szv_main_vert->AddStretchSpacer();
+		szv_main_vert->Add(CreateButtonSizer(wxOK | wxCANCEL | wxHELP), 0, wxALL | wxEXPAND, 10);
+		Description = 0;
+		if (!desc.IsEmpty())
+		{
+			Description = new wxStaticText(this, wxID_ANY, desc);
+			Description->Wrap(350);
+			szv_main_vert->Add(Description, 0, wxALL, 10);
+		}
+
+		wxBoxSizer *szh_main = new wxBoxSizer(wxHORIZONTAL);
+		szh_main->Add(szv_main_vert, 0, wxALL | wxEXPAND, 4);
+		szh_main->Add(Grid, 3, wxALL | wxEXPAND, 4);
+
+		szh_top3->Show(showMode);
+
+		SetSizer(szh_main);
+		SetSizeHints(wxSize(1000, 800));
+	}
+
+	void SetMode(int m)
+	{
+		mMode = m;
+		size_t l;
+		switch (mMode)
+		{
+		case DATA_LIFETIME_MATRIX_MONTHLY:
+		{
+			l = mAnalysisPeriod * 12;
+			Grid->ResizeGrid(l, mNumCols);
+			break;
+		}
+		case DATA_LIFETIME_MATRIX_DAILY: // assume 365
+		{
+			l = mAnalysisPeriod * 365;
+			Grid->ResizeGrid(l, mNumCols);
+			break;
+		}
+		case DATA_LIFETIME_MATRIX_HOURLY: // assume 8760
+		{
+			l = mAnalysisPeriod * 8760;
+			Grid->ResizeGrid(l, mNumCols);
+			break;
+		}
+		case DATA_LIFETIME_MATRIX_SUBHOURLY: // assume 8760 * timesteps per hour
+		{
+			// error handling
+			mMinPerHour = std::stoul(Timesteps->GetValue().ToStdString());
+			l = mAnalysisPeriod * 8760 * (60 / mMinPerHour);
+			Grid->ResizeGrid(l, mNumCols);
+			break;
+		}
+		case DATA_LIFETIME_MATRIX_ANNUAL:
+		{
+			l = mAnalysisPeriod;
+			Grid->ResizeGrid(l, mNumCols);
+			break;
+		}
+		case DATA_LIFETIME_MATRIX_WEEKLY: // assume 52 weeks or 364 days?
+		{
+			l = mAnalysisPeriod * 8760 / (24 * 7);
+			Grid->ResizeGrid(l, mNumCols);
+			break;
+		}
+		default: // single value - no grid resize
+		{
+			l = 1;
+			Grid->ResizeGrid(l, mNumCols);
+			break;
+		}
+		}
+		TimestepsLabel->Show((mMode == DATA_LIFETIME_MATRIX_SUBHOURLY));
+		Timesteps->Show((mMode == DATA_LIFETIME_MATRIX_SUBHOURLY));
+		ModeOptions->SetSelection(mMode);
+
+		Grid->Layout();
+		Grid->Refresh();
+		Layout();
+	}
+
+	int GetMode()
+	{
+		return mMode;
+	}
+
+	void SetData(matrix_t<double> &data)
+	{
+		mData = data;
+
+		if (GridTable) GridTable->SetMatrix(NULL);
+		Grid->SetTable(NULL);
+
+		// determine mode from data
+		size_t dataSize = mData.nrows();
+		if (dataSize < 1)
+		{
+			mData.at(0,0) = 0.0;
+			dataSize = 1;
+		}
+		if (dataSize == 1)
+			mMode = DATA_LIFETIME_MATRIX_SINGLEVALUE;
+		else if (dataSize == (mAnalysisPeriod))
+			mMode = DATA_LIFETIME_MATRIX_ANNUAL;
+		else if (dataSize == (mAnalysisPeriod * 12))
+			mMode = DATA_LIFETIME_MATRIX_MONTHLY;
+		else if (dataSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+			mMode = DATA_LIFETIME_MATRIX_WEEKLY;
+		else if (dataSize == (mAnalysisPeriod * 365))
+			mMode = DATA_LIFETIME_MATRIX_DAILY;
+		else if (dataSize == (mAnalysisPeriod * 8760))
+			mMode = DATA_LIFETIME_MATRIX_HOURLY;
+		else
+		{
+			mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
+			size_t stepsPerHour = dataSize / (mAnalysisPeriod * 8760);
+			switch (stepsPerHour)
+			{
+			case 2: // 30 minute
+				Timesteps->SetSelection(5);
+				break;
+			case 3: // 20 minute
+				Timesteps->SetSelection(4);
+				break;
+			case 4: // 15 minute
+				Timesteps->SetSelection(3);
+				break;
+			case 6: // 10 minute
+				Timesteps->SetSelection(2);
+				break;
+			case 12: // 5 minute
+				Timesteps->SetSelection(1);
+				break;
+			default: // 1 minute
+				Timesteps->SetSelection(0);
+				break;
+			}
+		}
+
+		GridTable = new AFDataLifetimeMatrixTable(&mData, mMode, mColumnLabels);
+		GridTable->SetAttrProvider(new wxExtGridCellAttrProvider);
+
+		Grid->SetTable(GridTable, true);
+		// can use max text width from column labels
+		for (size_t ic = 0; ic < (size_t)Grid->GetNumberCols(); ic++)
+			Grid->SetColSize(ic, (int)(140 * wxGetScreenHDScale()));
+
+
+		SetMode(mMode);
+		Move(GetPosition().x + 1, GetPosition().y + 1);
+		Move(GetPosition().x - 1, GetPosition().y - 1);
+
+	}
+
+	void GetData(matrix_t<double> &data)
+	{
+		data = mData;
+	}
+
+	void SetDataLabel(const wxString &s)
+	{
+		mLabel = s;
+		InputLabel->SetLabel(s);
+	}
+
+	wxString GetDataLabel()
+	{
+		return mLabel;
+	}
+
+	void SetAnalysisPeriod(const size_t &p)
+	{
+		mAnalysisPeriod = p;
+		AnalysisPeriodValue->SetValue((double)p);
+		//		SetMode(mMode);
+	}
+
+	size_t GetAnalysisPeriod()
+	{
+		return mAnalysisPeriod;
+	}
+
+	void SetMinPerHour(const size_t &p)
+	{
+		mMinPerHour = p;
+	}
+
+	size_t GetMinPerHour()
+	{
+		return mMinPerHour;
+	}
+
+
+	void OnCommand(wxCommandEvent &evt)
+	{
+		if (evt.GetId() == ILDM_MODEOPTIONS)
+			SetMode(ModeOptions->GetSelection());
+		else if (evt.GetId() == ILDM_TIMESTEPS)
+			SetMode(ModeOptions->GetSelection());
+		else if (evt.GetId() == ILDM_COPY)
+			Grid->Copy(true);
+		else if (evt.GetId() == ILDM_PASTE)
+			Grid->Paste(wxExtGridCtrl::PASTE_ALL);
+		else if (evt.GetId() == ILDM_IMPORT)
+		{
+			wxFileDialog dlg(this, "Select data file to import");
+			if (dlg.ShowModal() != wxID_OK) return;
+
+			matrix_t<double> mat;
+			mat.resize(mData.nrows(), mData.ncols());
+			wxCSVData csv;
+			if (!csv.ReadFile(dlg.GetPath())) return;
+
+			mat.resize_fill(csv.NumRows(), csv.NumCols(), 0.0f);
+
+			for (size_t r = 0; r < mat.nrows(); r++)
+				for (size_t c = 0; c < mat.ncols(); c++)
+					mat.at(r, c) = (float)wxAtof(csv(r, c));
+
+			SetData(mat);
+		}
+		else if (evt.GetId() == ILDM_EXPORT)
+		{
+			wxFileDialog dlg(this, "Select data file to export to", wxEmptyString, wxEmptyString, "*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+			if (dlg.ShowModal() != wxID_OK) return;
+			wxCSVData csv;
+			for (size_t r = 0; r < mData.nrows(); r++)
+				for (size_t c = 0; c < mData.ncols(); c++)
+					csv(r, c) = wxString::Format("%g", mData(r, c));
+
+			csv.WriteFile(dlg.GetPath());
+		}
+		else if (evt.GetId() == wxID_HELP)
+		{
+			SamApp::ShowHelp("edit_time_series_data");
+		}
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE(AFDataLifetimeMatrixDialog, wxDialog)
+EVT_BUTTON(ILDM_COPY, AFDataLifetimeMatrixDialog::OnCommand)
+EVT_BUTTON(ILDM_PASTE, AFDataLifetimeMatrixDialog::OnCommand)
+EVT_BUTTON(ILDM_IMPORT, AFDataLifetimeMatrixDialog::OnCommand)
+EVT_BUTTON(ILDM_EXPORT, AFDataLifetimeMatrixDialog::OnCommand)
+EVT_BUTTON(wxID_HELP, AFDataLifetimeMatrixDialog::OnCommand)
+EVT_COMBOBOX(ILDM_MODEOPTIONS, AFDataLifetimeMatrixDialog::OnCommand)
+EVT_COMBOBOX(ILDM_TIMESTEPS, AFDataLifetimeMatrixDialog::OnCommand)
+END_EVENT_TABLE()
+
+BEGIN_EVENT_TABLE(AFDataLifetimeMatrixButton, wxButton)
+EVT_BUTTON(wxID_ANY, AFDataLifetimeMatrixButton::OnPressed)
+END_EVENT_TABLE()
+
+AFDataLifetimeMatrixButton::AFDataLifetimeMatrixButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
+	: wxButton(parent, id, "Edit lifetime data...", pos, size)
+{
+	mAnalysisPeriod = 25;
+	mMinPerHour = 30;
+}
+
+
+void AFDataLifetimeMatrixButton::Get(matrix_t<double> &data)
+{
+	data = mData;
+}
+void AFDataLifetimeMatrixButton::Set(const matrix_t<double> &data)
+{
+	mData = data;
+	// set mode based potentially new analysis period and current data
+	size_t newSize = mData.nrows();
+	if (newSize == mAnalysisPeriod)
+		mMode = DATA_LIFETIME_MATRIX_ANNUAL;
+	else if (newSize == (mAnalysisPeriod * 12))
+		mMode = DATA_LIFETIME_MATRIX_MONTHLY;
+	else if (newSize == (mAnalysisPeriod * 8760 / (24 * 7)))
+		mMode = DATA_LIFETIME_MATRIX_WEEKLY;
+	else if (newSize == (mAnalysisPeriod * 365))
+		mMode = DATA_LIFETIME_MATRIX_DAILY;
+	else if (newSize == (mAnalysisPeriod * 8760))
+		mMode = DATA_LIFETIME_MATRIX_HOURLY;
+	else if (newSize > (mAnalysisPeriod * 8760))
+		mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
+	else
+		mMode = DATA_LIFETIME_MATRIX_SINGLEVALUE;
+
+}
+void AFDataLifetimeMatrixButton::SetDataLabel(const wxString &s)
+{
+	mDataLabel = s;
+}
+wxString AFDataLifetimeMatrixButton::GetDataLabel()
+{
+	return mDataLabel;
+}
+
+void AFDataLifetimeMatrixButton::SetColumnLabels(const wxString &s)
+{
+	mColumnLabels = s;
+}
+wxString AFDataLifetimeMatrixButton::GetColumnLabels()
+{
+	return mColumnLabels;
+}
+
+void AFDataLifetimeMatrixButton::SetAnalysisPeriod(const size_t &p)
+{
+	mAnalysisPeriod = p;
+}
+
+
+void AFDataLifetimeMatrixButton::OnPressed(wxCommandEvent &evt)
+{
+	AFDataLifetimeMatrixDialog dlg(this, "Edit Lifetime Data (Lifetime Matrix)", mDescription, mDataLabel, mColumnLabels, mAnnualEnabled, mWeeklyEnabled, mShowMode);
+	dlg.SetAnalysisPeriod(mAnalysisPeriod);
+	dlg.SetData(mData);
+	dlg.SetMode(mMode); // to set when mode hidden
+	dlg.SetDataLabel(mDataLabel);
+
+
+	if (dlg.ShowModal() == wxID_OK)
+	{
+		dlg.GetData(mData);
+		mMode = dlg.GetMode();
+		mMinPerHour = dlg.GetMinPerHour();
+		evt.Skip(); // allow event to propagate indicating underlying value changed
+	}
+}
 
 
 
@@ -2013,7 +3309,7 @@ EVT_BUTTON(wxID_ANY, AFStringArrayButton::OnPressed)
 END_EVENT_TABLE()
 
 AFStringArrayButton::AFStringArrayButton(wxWindow *parent, int id, const wxPoint &pos, const wxSize &size)
-	: wxButton(parent, id, "Edit data...", pos, size)
+	: wxButton(parent, id, "Edit array...", pos, size)
 {
 }
 
@@ -2037,7 +3333,7 @@ wxString AFStringArrayButton::GetStringLabel()
 
 void AFStringArrayButton::OnPressed(wxCommandEvent &evt)
 {
-	AFStringArrayDialog dlg(this, "Edit Data", m_description, mStringLabel);
+	AFStringArrayDialog dlg(this, "Edit Array (String Array)", m_description, mStringLabel);
 
 	dlg.SetStringLabel(mStringLabel);
 	dlg.SetData(&mData);
@@ -2053,7 +3349,86 @@ void AFStringArrayButton::OnPressed(wxCommandEvent &evt)
 
 
 
+wxVerticalLabel::wxVerticalLabel(wxWindow* parent,
+	wxWindowID id,
+	const wxString& label,
+	const wxPoint& pos,
+	const wxSize& size,
+	long style,
+	const wxString& name)
+	: wxPanel(parent, id, pos, size, style, name),
+	m_Label(label)
+{
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
+	UpdateSize();
+	Connect(GetId(), wxEVT_PAINT, wxPaintEventHandler(wxVerticalLabel::OnPaint));
+}
 
+wxVerticalLabel::~wxVerticalLabel()
+{
+
+}
+
+void wxVerticalLabel::SetLabel(const wxString &label)
+{
+	m_Label = label;
+	UpdateSize();
+}
+
+void wxVerticalLabel::UpdateSize()
+{
+	wxSize size = GetTextExtent(m_Label);
+	this->SetMinSize(wxSize(size.y, size.x + 5));
+}
+
+void wxVerticalLabel::OnPaint(wxPaintEvent& )
+{
+	wxAutoBufferedPaintDC dc(this);
+	dc.Clear();
+	wxSize size = GetMinSize();
+	dc.DrawRotatedText(m_Label, 0, size.y, 90);
+}
+
+
+wxHorizontalLabel::wxHorizontalLabel(wxWindow* parent,
+	wxWindowID id,
+	const wxString& label,
+	const wxPoint& pos,
+	const wxSize& size,
+	long style,
+	const wxString& name)
+	: wxPanel(parent, id, pos, size, style, name),
+	m_Label(label)
+{
+	SetBackgroundStyle(wxBG_STYLE_PAINT);
+	UpdateSize();
+	Connect(GetId(), wxEVT_PAINT, wxPaintEventHandler(wxHorizontalLabel::OnPaint));
+}
+
+wxHorizontalLabel::~wxHorizontalLabel()
+{
+
+}
+
+void wxHorizontalLabel::SetLabel(const wxString &label)
+{
+	m_Label = label;
+	UpdateSize();
+}
+
+void wxHorizontalLabel::UpdateSize()
+{
+	wxSize size = GetTextExtent(m_Label);
+	this->SetMinSize(wxSize(size.x, size.y));
+}
+
+void wxHorizontalLabel::OnPaint(wxPaintEvent& )
+{
+	wxAutoBufferedPaintDC dc(this);
+	dc.Clear();
+	wxSize size = GetMinSize();
+	dc.DrawText(m_Label, 0, 0);
+}
 
 
 
@@ -2091,7 +3466,9 @@ const wxString &collabels,
 const wxString &rowlabels,
 const wxString &choices,
 const int &choice_col,
-bool bottombuttons)
+bool bottombuttons, 
+const wxString &horizontalLabel,
+const wxString &verticalLabel)
 : wxPanel(parent, id, pos, sz)
 {
 	m_pasteappendrows = false;
@@ -2103,6 +3480,7 @@ bool bottombuttons)
 	m_shadeR0C0 = true;
 	m_shadeC0 = true;
 	m_showcols = true;
+	m_colorMap = false;
 	m_rowY2 = m_rowY1 = m_rowY0 = 0.0;
 	m_colY2 = m_colY1 = m_colY0 = 0.0;
 
@@ -2112,6 +3490,18 @@ bool bottombuttons)
 	m_colY1 = 1.0;
 
 	m_minVal = m_maxVal = 0.0f;
+	m_caption = new wxStaticText(this, wxID_ANY, "");
+	wxFont f(wxFontInfo(10).Bold(true).Family(wxFONTFAMILY_DEFAULT));
+	m_horizontalLabel = new wxHorizontalLabel(this, wxID_ANY, horizontalLabel);
+	m_horizontalLabel->SetBackgroundColour(*wxWHITE);
+	m_horizontalLabel->SetForegroundColour(*wxBLACK);
+	m_horizontalLabel->SetFont(f);
+	m_horizontalLabel->SetLabel(horizontalLabel);
+	m_verticalLabel = new wxVerticalLabel(this, wxID_ANY, verticalLabel);
+	m_verticalLabel->SetBackgroundColour(*wxWHITE);
+	m_verticalLabel->SetForegroundColour(*wxBLACK);
+	m_verticalLabel->SetFont(f);
+	m_verticalLabel->SetLabel(verticalLabel);
 
 	m_data.resize_fill(8, 6, 0.0f);
 
@@ -2135,7 +3525,7 @@ bool bottombuttons)
 	m_grid->DisableDragColMove();
 	m_grid->DisableDragGridSize();
 	m_grid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
-	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, true, m_shadeC0));
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, true, m_shadeC0, !m_colorMap));
 
 #ifndef S3D_STANDALONE
 	m_grid->RegisterDataType("GridCellChoice", new GridCellChoiceRenderer(choices), new GridCellChoiceEditor(choices));
@@ -2158,17 +3548,25 @@ bool bottombuttons)
 		v_tb_sizer->Add(m_btnExport, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->Add(m_btnCopy, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->Add(m_btnPaste, 0, wxALL | wxEXPAND, 2);
-//		v_tb_sizer->Add(m_labelRows, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		v_tb_sizer->Add(m_labelRows, 0, wxALL, 2);
 		v_tb_sizer->Add(m_numRows, 0, wxALL | wxEXPAND, 2);
-//		v_tb_sizer->Add(m_labelCols, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 		v_tb_sizer->Add(m_labelCols, 0, wxALL , 2);
 		v_tb_sizer->Add(m_numCols, 0, wxALL | wxEXPAND, 2);
 		v_tb_sizer->AddStretchSpacer();
 
 		wxBoxSizer *h_sizer = new wxBoxSizer(wxHORIZONTAL);
 		h_sizer->Add(v_tb_sizer, 0, wxALL | wxEXPAND, 1);
-		h_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+		if (!verticalLabel.IsEmpty())
+			h_sizer->Add(m_verticalLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+		if (!horizontalLabel.IsEmpty())
+		{
+			wxBoxSizer *v_lb_sizer = new wxBoxSizer(wxVERTICAL);
+			v_lb_sizer->Add(m_horizontalLabel, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
+			v_lb_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+			h_sizer->Add(v_lb_sizer, 1, wxALL | wxEXPAND, 1);
+		}
+		else
+			h_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
 
 		SetSizer(h_sizer);
 	}
@@ -2194,7 +3592,17 @@ bool bottombuttons)
 
 		wxBoxSizer *v_sizer = new wxBoxSizer(wxVERTICAL);
 		v_sizer->Add(h_tb_sizer, 0, wxALL | wxEXPAND, 1);
-		v_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+		if (!horizontalLabel.IsEmpty())
+			v_sizer->Add(m_horizontalLabel, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
+		if (!verticalLabel.IsEmpty())
+		{
+			wxBoxSizer *h_lb_sizer = new wxBoxSizer(wxHORIZONTAL);
+			h_lb_sizer->Add(m_verticalLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+			h_lb_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
+			v_sizer->Add(h_lb_sizer, 1, wxALL | wxEXPAND, 1);
+		}
+		else
+			v_sizer->Add(m_grid, 1, wxALL | wxEXPAND, 1);
 
 		wxBoxSizer *h_bb_sizer = new wxBoxSizer(wxHORIZONTAL);
 		if (bottombuttons)
@@ -2215,6 +3623,14 @@ bool bottombuttons)
 		m_caption->Show(false);
 	else
 		m_caption->Show(true);
+	if (m_horizontalLabel->GetLabel().Length() == 0)
+		m_horizontalLabel->Show(false);
+	else
+		m_horizontalLabel->Show(true);
+	if (m_verticalLabel->GetLabel().Length() == 0)
+		m_verticalLabel->Show(false);
+	else
+		m_verticalLabel->Show(true);
 
 	MatrixToGrid();
 }
@@ -2321,6 +3737,31 @@ bool AFDataMatrixCtrl::ShowCols()
 	return m_showcols;
 }
 
+void AFDataMatrixCtrl::ShowButtons(bool b)
+{
+	m_showButtons = b;
+	m_btnCopy->Show(m_showButtons);
+	m_btnPaste->Show(m_showButtons);
+	m_btnImport->Show(m_showButtons);
+	m_btnExport->Show(m_showButtons);
+	this->Layout();
+}
+
+bool AFDataMatrixCtrl::ShowButtons()
+{
+	return m_showButtons;
+}
+
+void AFDataMatrixCtrl::SetR0C0Label(const wxString &R0C0Label)
+{
+	m_grid->SetRowLabelValue(-1, R0C0Label);
+}
+
+wxString AFDataMatrixCtrl::GetR0C0Label()
+{
+	return m_grid->GetCellValue(0, 0);
+}
+
 void AFDataMatrixCtrl::ShowRows(bool b)
 {
 	m_showrows = b;
@@ -2381,7 +3822,7 @@ void AFDataMatrixCtrl::SetRowReadOnly(const int &row, bool readonly)
 void AFDataMatrixCtrl::ShadeR0C0(bool b)
 {
 	m_shadeR0C0 = b;
-	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(b, m_shadeR0C0, b || m_shadeC0));
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(b, m_shadeR0C0, b || m_shadeC0, !m_colorMap));
 	MatrixToGrid();
 }
 
@@ -2391,10 +3832,23 @@ bool AFDataMatrixCtrl::ShadeR0C0()
 }
 
 
+void AFDataMatrixCtrl::ColorMap(bool b)
+{
+	m_colorMap = b;
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, m_shadeC0 || m_shadeR0C0, !m_colorMap));
+	MatrixToGrid();
+}
+
+bool AFDataMatrixCtrl::ColorMap()
+{
+	return m_colorMap;
+}
+
+
 void AFDataMatrixCtrl::ShadeC0(bool b)
 {
 	m_shadeC0 = b;
-	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, b || m_shadeR0C0));
+	m_grid->GetTable()->SetAttrProvider(new wxExtGridCellAttrProvider(m_shadeR0C0, m_shadeR0C0, b || m_shadeR0C0, !m_colorMap));
 	MatrixToGrid();
 }
 
@@ -2404,13 +3858,14 @@ bool AFDataMatrixCtrl::ShadeC0()
 }
 
 
-void AFDataMatrixCtrl::SetData(const matrix_t<float> &mat)
+void AFDataMatrixCtrl::SetData(const matrix_t<double> &mat)
 {
 	m_data = mat;
 	NormalizeToLimits();
 	m_gridTable->SetMatrix(&m_data);
 	MatrixToGrid();
 }
+
 
 void AFDataMatrixCtrl::NormalizeToLimits()
 {
@@ -2427,7 +3882,7 @@ void AFDataMatrixCtrl::NormalizeToLimits()
 	}
 }
 
-void AFDataMatrixCtrl::GetData(matrix_t<float> &mat)
+void AFDataMatrixCtrl::GetData(matrix_t<double> &mat)
 {
 	mat = m_data;
 }
@@ -2496,9 +3951,46 @@ void AFDataMatrixCtrl::OnCellChange(wxGridEvent &evt)
 	m_gridTable->SetMatrix(&m_data);
 	m_grid->SetCellValue(irow, icol, wxString::Format("%g", val));
 
+	UpdateColorMap();
+
 	wxCommandEvent dmcevt(wxEVT_AFDataMatrixCtrl_CHANGE, this->GetId());
 	dmcevt.SetEventObject(this);
 	GetEventHandler()->ProcessEvent(dmcevt);
+}
+
+
+void AFDataMatrixCtrl::UpdateColorMap()
+{
+
+	if (m_colorMap)
+	{
+		size_t nr = m_data.nrows();
+		size_t nc = m_data.ncols();
+		size_t r, c;
+		double zmin = 1e38, zmax = -1e38;
+		for (r = 1; r < nr; r++)
+		{
+			for (c = 1; c < nc; c++)
+			{
+				if (m_data(r, c) < zmin) zmin = m_data.at(r, c);
+				if (m_data(r, c) > zmax) zmax = m_data.at(r, c);
+			}
+		}
+		double diff = zmax - zmin;
+		wxPLJetColourMap jet = wxPLJetColourMap(zmin - 0.35*diff, zmax+0.1*diff);
+//		wxPLCoarseRainbowColourMap jet = wxPLCoarseRainbowColourMap(zmin - 0.5*(zmax - zmin), zmax);
+		for (r = 1; r < nr; r++)
+		{
+			for (c = 1; c < nc; c++)
+			{
+				wxColour clr = jet.ColourForValue(m_data.at(r, c));
+				m_grid->SetCellBackgroundColour(r, c, clr);
+				//				m_grid->SetCellTextColour(r, c, *wxLIGHT_GREY);
+			}
+		}
+		m_grid->Refresh();
+	}
+
 }
 
 void AFDataMatrixCtrl::OnRowsColsChange(wxCommandEvent &)
@@ -2574,7 +4066,7 @@ void AFDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 	break;
 	case IDEDMC_IMPORT:
 	{
-		wxFileDialog dlg(this, "Select data matrix file to import");
+		wxFileDialog dlg(this, "Select data matrix file to import", wxEmptyString, wxEmptyString, "Comma-separated values (*.csv)|*.csv", wxFD_OPEN);
 		if (dlg.ShowModal() == wxID_OK)
 			if (!Import(dlg.GetPath()))
 				wxMessageBox("Error import data file:\n\n" + dlg.GetPath());
@@ -2582,7 +4074,7 @@ void AFDataMatrixCtrl::OnCommand(wxCommandEvent &evt)
 	break;
 	case IDEDMC_EXPORT:
 	{
-		wxFileDialog dlg(this, "Select file for data export", wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+		wxFileDialog dlg(this, "Save results as CSV", wxEmptyString, wxEmptyString, "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 		if (dlg.ShowModal() == wxID_OK)
 			if (!Export(dlg.GetPath()))
 				wxMessageBox("Error exporting data to file:\n\n" + dlg.GetPath());
@@ -2605,12 +4097,6 @@ void AFDataMatrixCtrl::MatrixToGrid()
 	m_numCols->SetValue(nc);
 
 	
-	//m_grid->ResizeGrid(nr, nc);
-	/*
-	for (r = 0; r<nr; r++)
-		for (c = 0; c<nc; c++)
-			m_grid->SetCellValue(r, c, wxString::Format("%g", m_data.at(r, c)));
-	*/
 	if (!m_rowFormat.IsEmpty())
 	{
 		for (r = 0; r<nr; r++)
@@ -2658,15 +4144,26 @@ void AFDataMatrixCtrl::MatrixToGrid()
 	else
 	{
 		m_grid->SetColLabelSize(1);
+		
+		for (c = 0; c < m_grid->GetNumberCols(); c++)
+		{
+			m_grid->AutoSizeColumn(c);
+		}
+
 	}
 
 	m_labelRows->SetLabel(m_numRowsLabel);
 	m_labelCols->SetLabel(m_numColsLabel);
+
+	UpdateColorMap();
+
 	Layout();
 	m_grid->Thaw();
 	m_grid->Refresh();
 
 }
+
+
 
 void AFDataMatrixCtrl::SetRowLabelFormat(const wxString &val_fmt, double y2, double y1, double y0)
 {
@@ -2738,7 +4235,7 @@ public:
 		SetSizer(szv_main);
 	}
 
-	void SetData(const matrix_t<float> &data, wxArrayString *collabels)
+	void SetData(const matrix_t<double> &data, wxArrayString *collabels)
 	{
 		if (data.nrows() < 1 || data.ncols() < 1)
 			return;
@@ -2767,14 +4264,14 @@ public:
 
 	}
 
-	void GetData(matrix_t<float> &data)
+	void GetData(matrix_t<double> &data)
 	{
 		int nr = Grid->GetNumberRows();
 		int nc = Grid->GetNumberCols();
 		data.resize_fill( nr, nc, 0.0f );
 		for (int r=0;r<nr;r++)
 			for (int c=0;c<nc;c++)
-				data.at(r,c) = wxAtof( Grid->GetCellValue(r,c) );
+				data.at(r,c) = (double)wxAtof( Grid->GetCellValue(r,c) );
 	}
 	
 	void OnCellChange(wxGridEvent &evt)
@@ -2847,7 +4344,7 @@ AFValueMatrixButton::AFValueMatrixButton(wxWindow *parent, int id, const wxPoint
 	bUseTable = false;
 
 	mSingleValue = new wxNumericCtrl(this, IDDGB_NUMERIC, 0.0, wxNUMERIC_REAL, wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
-	mBtnEditTable = new wxButton(this, IDDGB_BUTTON, "Table...", wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
+	mBtnEditTable = new wxButton(this, IDDGB_BUTTON, "Edit...", wxPoint(m_switchWidth,0), wxSize( sz.GetWidth()-m_switchWidth, sz.GetHeight()) );
 	mBtnEditTable->Show(false);
 
 	mTable.resize_fill(10,2, 0.0f);
@@ -2880,17 +4377,17 @@ float AFValueMatrixButton::GetSingleValue()
 	return (float)mSingleValue->Value();
 }
 
-void AFValueMatrixButton::SetSingleValue(float val)
+void AFValueMatrixButton::SetSingleValue(double val)
 {
 	mSingleValue->SetValue((double)val);
 }
 
-void AFValueMatrixButton::GetTableData(matrix_t<float> *mat)
+void AFValueMatrixButton::GetTableData(matrix_t<double> *mat)
 {
 	if (mat) *mat = mTable;
 }
 
-void AFValueMatrixButton::SetTableData(const matrix_t<float> &mat)
+void AFValueMatrixButton::SetTableData(const matrix_t<double> &mat)
 {
 	mTable = mat;
 }
@@ -2982,7 +4479,7 @@ void AFValueMatrixButton::DispatchEvent()
 	GetEventHandler()->ProcessEvent(evt);
 }
 
-void AFValueMatrixButton::Set( const matrix_t<float> &mat )
+void AFValueMatrixButton::Set( const matrix_t<double> &mat )
 {
 	if ( mat.nrows() == 1 && mat.ncols() == 1 )
 	{
@@ -2996,13 +4493,13 @@ void AFValueMatrixButton::Set( const matrix_t<float> &mat )
 	}
 }
 
-matrix_t<float> AFValueMatrixButton::Get()
+matrix_t<double> AFValueMatrixButton::Get()
 {
 	if ( bUseTable ) return mTable;
 	else 
 	{
-		matrix_t<float> mat;
-		mat.resize_fill( 1, 1, (float)mSingleValue->Value() );
+		matrix_t<double> mat;
+		mat.resize_fill( 1, 1, (double)mSingleValue->Value() );
 		return mat;
 	}
 }
@@ -3142,7 +4639,7 @@ wxString AFMonthByHourFactorCtrl::GetLegend()
 }
 
 
-void AFMonthByHourFactorCtrl::SetData(const matrix_t<float> &data)
+void AFMonthByHourFactorCtrl::SetData(const matrix_t<double> &data)
 {
 	for (size_t r=0;r<SFROWS;r++)
 	{
@@ -3158,12 +4655,12 @@ void AFMonthByHourFactorCtrl::SetData(const matrix_t<float> &data)
 	UpdateGrid();
 }
 
-void  AFMonthByHourFactorCtrl::GetData( matrix_t<float> &mat )
+void  AFMonthByHourFactorCtrl::GetData( matrix_t<double> &mat )
 {
 	mat = mData;
 }
 
-matrix_t<float> AFMonthByHourFactorCtrl::GetData()
+matrix_t<double> AFMonthByHourFactorCtrl::GetData()
 {
 	 return mData; 
 }
@@ -3216,12 +4713,12 @@ void AFMonthByHourFactorCtrl::OnGridCellChange(wxGridEvent &evt)
 	if ( r < 0 || c < 0 )
 	{
 		// paste event
-		for( int r=0;r<mGrid->GetNumberRows();r++ )
+		for( int ir=0;ir<mGrid->GetNumberRows();ir++ )
 		{
-			for( int c=0;c<mGrid->GetNumberCols();c++ )
+			for( int ic=0;ic<mGrid->GetNumberCols();ic++ )
 			{
-				mData.at(r,c) = wxAtof( mGrid->GetCellValue(r,c) );
-				UpdateCell(r,c);
+				mData.at(ir,ic) = wxAtof( mGrid->GetCellValue(ir,ic) );
+				UpdateCell(ir,ic);
 			}
 		}
 	}
@@ -3354,7 +4851,7 @@ void AFMonthByHourFactorCtrl::OnImport(wxCommandEvent &)
 			return;
 		}
 
-		matrix_t<float> grid;
+		matrix_t<double> grid;
 		grid.resize_fill( csv.NumRows(), csv.NumCols(), 0.0f );
 
 		for (size_t r=0;r<grid.nrows();r++)
@@ -3411,7 +4908,7 @@ void AFMonthByHourFactorCtrl::OnPaste(wxCommandEvent &)
 		int ncols = 0;
 		if (lines.Count() > 0)
 		{
-			matrix_t<float> grid;
+			matrix_t<double> grid;
 			grid.resize_fill(mData.nrows(), mData.ncols(), 0.0f);
 
 			for (size_t r = 0; r < grid.nrows(); r++)
@@ -3458,5 +4955,43 @@ void AFMonthByHourFactorCtrl::DispatchEvent()
 	wxCommandEvent change(wxEVT_AFMonthByHourFactorCtrl_CHANGE, this->GetId() );
 	change.SetEventObject( this );
 	GetEventHandler()->ProcessEvent(change);
+}
+
+
+BEGIN_EVENT_TABLE(AFToolTipCtrl, wxPanel)
+	EVT_LEFT_DOWN(AFToolTipCtrl::mouseDown)
+	EVT_PAINT(AFToolTipCtrl::paintEvent)
+END_EVENT_TABLE()
+
+DEFINE_EVENT_TYPE(wxEVT_TOOLTIPCTRL_CHANGE)
+
+AFToolTipCtrl::AFToolTipCtrl(wxWindow* parent) :
+	wxPanel(parent)
+{
+	m_image = wxBITMAP_PNG_FROM_DATA(info24);
+}
+
+void AFToolTipCtrl::mouseDown(wxMouseEvent& ) 
+{
+	wxCommandEvent change(wxEVT_TOOLTIPCTRL_CHANGE, this->GetId());
+	change.SetEventObject(this);
+	GetEventHandler()->ProcessEvent(change);
+}
+
+void AFToolTipCtrl::paintEvent(wxPaintEvent & )
+{
+	wxPaintDC dc(this);
+	render(dc);
+}
+
+void AFToolTipCtrl::paintNow()
+{
+	wxClientDC dc(this);
+	render(dc);
+}
+
+void AFToolTipCtrl::render(wxDC&  dc)
+{
+	dc.DrawBitmap(m_image, 0, 0, false);
 }
 

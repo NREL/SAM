@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>PV System</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "fuelcell_pv_system.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">PV System</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The PV System page is where you define the parameters of the photovoltaic system, which includes the photovoltaic array and inverter. The fuel cell model uses an implementation of PVWatts to represent the photovoltaic system.</span></p>
+<p class="p_Text"><span class="f_Text">The inputs on the System Design page describe the physical characteristics of the photovoltaic system. You only need to provide basic information about the system. PVWatts makes assumptions about modules, inverter, and other parts of the system so you do not need to provide detailed information about those parts of the system.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM uses PVWatts Version 7, which is different from the online <a href="https://pvwatts.nrel.gov" target="_blank" class="weblink" title="https://pvwatts.nrel.gov">PVWatts® Calculator</a>. SAM's results will likely be different from the online calculator's results until the online calculator is updated. See <a href="pvwatts.htm#versions" class="topiclink">About PVWatts Versions</a> for more information.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">System Parameters</span></h3>
+<p class="p_Text"><span class="f_Text">The system inputs define the size of the system, <a href="fuelcell_pv_system.htm#losses" class="topiclink">losses</a>, and the array orientation. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">System nameplate capacity, kWdc</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The DC system capacity is the DC (direct current) power rating of the photovoltaic array in kilowatts (kW) at standard test conditions (STC). PVWatts can model any size of array, from residential rooftop systems to large ground-mounted power generation systems.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Module type</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The type of modules in the system. If you do not have information about the modules in the system, use the default standard module type.</span></p>
+<div style="text-align: center; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table class="DefaultShadedRows" >
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Module </span><br />
+<span class="f_TableHeadColumn">Type</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Approximate </span><br />
+<span class="f_TableHeadColumn">Nominal Efficiency</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Module </span><br />
+<span class="f_TableHeadColumn">Cover</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Temperature </span><br />
+<span class="f_TableHeadColumn">Coefficient of Power</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Fill Factor (for self-shading)</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Standard (crystalline Silicon)</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">17%</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Glass</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.47 %/°C</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">77.1%</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Premium (crystalline Silicon)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">20.1</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Anti-reflective</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.35 %/°C</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">80.1%</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="height:15px; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Thin film</span></p>
+</td>
+<td class="DefaultShadedRows" style="height:15px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">15.6</span></p>
+</td>
+<td class="DefaultShadedRows" style="height:15px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">Glass</span></p>
+</td>
+<td class="DefaultShadedRows" style="height:15px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">-0.20 %/°C</span></p>
+</td>
+<td class="DefaultShadedRows" style="height:15px; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">70.6%</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_VariableDescription"><span class="f_VariableDescription">PVWatts uses a basic set of equations to represent the module's physical properties and performance. The module type determines how PVWatts calculates the angle-of-incidence correction factor as sunlight passes through the module cover to the photovoltaic cell, and the cell's operating temperature.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">DC to AC ratio</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The DC to AC size ratio is the ratio of the inverter's AC rated size to the array's DC rated size. Increasing the ratio increases the system's output over the year, but also increases the array's cost. The default value is 1.10, which means that a 4 kW system size would be for an array with a 4 DC kW nameplate size at standard test conditions (STC) and an inverter with a 3.63 AC kW nameplate size.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For a system with a high DC to AC size ratio, during times when the array's DC power output exceeds the inverter's rated DC input size, the inverter limits the array's power output by increasing the DC operating voltage, which moves the array's operating point down its current-voltage (I-V) curve. PVWatts models this effect by limiting the inverter's power output to its rated AC size.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The default value of 1.10 is reasonable for most systems. A typical range is 1.10 to 1.25, although some large-scale systems have ratios of as high as 1.50. The optimal value depends on the system's location, array orientation, and module cost.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Inverter efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The inverter's nominal rated DC-to-AC conversion efficiency, defined as the inverter's rated AC power in kilowatts divided by its rated DC power in kilowatts expressed as a percentage. The default value is 96%.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">PVWatts calculates the inverter's hourly operating efficiency based on the nominal efficiency and an efficiency curve.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Orientation</span></h3>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Array type</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The array type describes whether the PV modules in the array are fixed, or whether they move to track the movement of the sun across the sky with one or two axes of rotation. The default value is for a fixed array with no tracking.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fixed open rack and roof mount</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The array is fixed at the tilt and azimuth angles defined by the values of </span><span class="f_CHInterfaceElement">Tilt</span><span class="f_VariableDescription"> and </span><span class="f_CHInterfaceElement">Azimuth</span><span class="f_VariableDescription"> and does not follow the sun's movement.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="IMG_PVArray-fixed-tilt" width="156" height="179" style="margin:0 auto 0 auto;width:156px;height:179px;border:none" src="img_pvarray-fixed-tilt.png"/></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For systems with fixed arrays, you can choose between an open rack or a roof mount.</span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Fixed open rack</span><span class="f_VariableDescription"> is appropriate for ground-mounted systems. The open rack option assumes that air flows freely around the array, helping to cool the modules and reduce cell operating temperatures. (The array's output increases as the cell temperature decreases for at a given incident solar irradiance.) The open rack option also assumes that modules are arranged in rows and uses the ground coverage ratio (GCR) to estimate irradiance losses due to self shading caused when modules in neighboring rows cause shadows on the array.</span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Fixed roof mount</span><span class="f_VariableDescription"> is typical of residential installations where modules are attached to the roof surface with standoffs that providing limited air flow between the module back and roof surface (typically between two and six inches). The roof mount option assumes that there is no self shading between modules.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">1-axis tracking and 1-axis backtracking</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The array is fixed at the angle from the horizontal defined by the value of </span><span class="f_CHInterfaceElement">Tilt</span><span class="f_VariableDescription"> and rotates about the tilted axis from east in the morning to west in the evening to track the daily movement of the sun across the sky. </span><span class="f_CHInterfaceElement">Azimuth</span><span class="f_VariableDescription"> determines the array's orientation with respect to a line perpendicular to the equator.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="IMG_PVArray-one-axis" width="156" height="179" style="margin:0 auto 0 auto;width:156px;height:179px;border:none" src="img_pvarray-one-axis.png"/></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For </span><span class="f_CHInterfaceElement">1-axis tracking</span><span class="f_VariableDescription">, PVWatts models self shading based on the ground coverage ratio (GCR).</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For </span><span class="f_CHInterfaceElement">1-axis backtracking</span><span class="f_VariableDescription">, PVWatts assumes that there is no self shading because the trackers rotate modules to avoid it. Backtracking is a tracking algorithm that rotates the array toward the horizontal during early morning and late evening hours to reduce the effect of self shading. The one-axis tracking algorithm assumes a rotation limit of ±45 degrees from the horizontal.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">2-axis tracking</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The array rotates from east in the morning to west in the evening to track the daily movement of the sun across the sky, and north-south to track the sun's seasonal movement throughout the year. For two-axis tracking, SAM ignores the values of </span><span class="f_CHInterfaceElement">Tilt</span><span class="f_VariableDescription"> and </span><span class="f_CHInterfaceElement">Azimuth</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="IMG_PVArray-two-axis" width="156" height="179" style="margin:0 auto 0 auto;width:156px;height:179px;border:none" src="img_pvarray-two-axis.png"/></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">PVWatts does not model self shading for 2-axis tracking. You can adjust the <a href="pvwatts_system_design.htm#losses" class="topiclink">Losses</a> to account for those losses.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tilt, degrees</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The array's tilt angle in degrees from horizontal, where zero degrees is horizontal, and 90 degrees is vertical and facing the equator (in both the southern and northern hemispheres.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">As a rule of thumb, system designers sometimes use the location's latitude (shown on the <a href="pv_location_and_resource.htm" class="topiclink">Location and Resource</a> page) as the optimal array tilt angle. The actual tilt angle will vary based on project requirements.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Azimuth, degrees</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The array's east-west orientation in degrees. An azimuth value of zero is facing north, 90 degrees = east, 180 degrees = south, and 270 degrees = west, regardless of whether the array is in the northern or southern hemisphere.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For systems north of the equator, a typical azimuth value would be 180 degrees. For systems south of the equator, a typical value would be 0 degrees.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The azimuth angle does not apply to arrays with 2-axis tracking.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ground coverage ratio (GCR)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of the photovoltaic array area to the total ground area. PVWatts uses the GCR to estimate self-shading losses for the fixed open rack and 1-axis array types, and to determine when to backtrack for the 1-axis backtracking option. The GCR does not apply to the fixed open rack and 2-axis tracking array types.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For an array configured in rows of modules, the GCR is the length of the side of one row divided by the distance between the bottom of one row and the bottom of its neighboring row. An array with a low ground coverage ratio (closer to zero) has rows spaced further apart than an array with a high ground coverage ratio (closer to 1).</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The ground coverage ratio must be a value greater than 0.01 and less than 0.99.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="losses" class="hmanchor"></a><span class="f_Heading3_atocs_">Losses</span></h3>
+<p class="p_Text"><span class="f_Text">Losses account for reduction in performance not explicitly calculated by the PVWatts model. SAM applies the total system losses to the AC power output calculated by the model. You can either enter a total loss value, or have SAM calculate the total loss value from the loss categories.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Specify total system loss</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check this option if you want to specify a single loss value instead of values for each of the categories listed below.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Soiling</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Losses due to dust, dirt, and other foreign matter on the surface of the PV module that prevent solar radiation from reaching the cells. Soiling is location- and weather-dependent. There are greater soiling losses in high-traffic, high-pollution areas with infrequent rain.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Shading</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reduction in the incident solar radiation caused by hills, trees, or other objects on the horizon. The default value is 3%. Note that PVWatts accounts for self shading between rows of modules for the fixed open rack and 1-axis tracking array types, so you should not include self-shading in the shading loss for those options.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Snow</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reduction in the system's annual output due to snow covering the array. The default value is zero, assuming either that there is never snow on the array, or that the array is kept clear of snow.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If your weather file includes snow depth data and you enable the snow model, you should set the Snow loss to zero.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Mismatch</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Electrical losses due to slight differences caused by manufacturing imperfections between modules in the array that cause the modules to have slightly different current-voltage characteristics. The default value of is 2%.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Wiring</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Resistive losses in the DC and AC wires connecting modules, inverters, and other parts of the system. The default value is 2%.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Connections</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Resistive losses in electrical connectors in the system. The default value is 0.5%.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Light-Induced Degradation</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Effect of the reduction in the array's power during the first few months of its operation caused by light-induced degradation of photovoltaic cells. The default value is 1.5%.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Nameplate Rating</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nameplate rating loss accounts for the accuracy of the manufacturer's nameplate rating. Field measurements of the electrical characteristics of photovoltaic modules in the array may show that they differ from their nameplate rating. A nameplate rating loss of 5% indicates that testing yielded power measurements at STC that were 5% less than the manufacturer's nameplate rating. The default value is 1%.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Age</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Effect of weathering of the photovoltaic modules on the array's performance over time. The default value is zero.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If you specify a degradation rate on the <a href="lifetime.htm" class="topiclink">Lifetime and Degradation</a> page to represent module degradation, you should set the Age loss to zero.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Availability</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Reduction in the system's output cause by scheduled and unscheduled system shutdown for maintenance, grid outages, and other operational factors. The default value is 3%.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If you specify <a href="pvwatts_system_design.htm#curtailmentavailability" class="topiclink">system availability losses</a> to represent operating losses, you should set the Availability loss to zero.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total system losses</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total loss, either calculated from the loss categories listed above, or equal to the total system loss you specify.</span></p>
+<p class="p_EquationExcel" style="text-indent: -198px; margin: 0 0 6px 247px;"><span class="f_EquationExcel">Total system losses = 100% × { 1 - [ &nbsp;( 1 - Soiling ÷ 100% )</span><br />
+<span class="f_EquationExcel">× ( 1 - Shading ÷ 100% )</span><br />
+<span class="f_EquationExcel">× ( 1 - Snow ÷ 100% )</span><br />
+<span class="f_EquationExcel">× ( 1 - Mismatch ÷ 100% )</span><br />
+<span class="f_EquationExcel">× ( 1 - Wiring ÷ 100% )</span><br />
+<span class="f_EquationExcel">× ( 1 - Connections ÷ 100% )</span><br />
+<span class="f_EquationExcel">× ( 1 - Light-induced degradation ÷ 100% )</span><br />
+<span class="f_EquationExcel">× ( 1 - Nameplate ÷ 100% )</span><br />
+<span class="f_EquationExcel">× ( 1 - Age ÷ 100% )</span><br />
+<span class="f_EquationExcel">× ( 1 - Availability ÷ 100% ) &nbsp;] }</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 6px 0 6px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:18px"><a id="shading" class="hmanchor"></a><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="9" height="9" style="margin:0;width:9px;height:9px;border:none" src="hmtoggle_arrow1.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Shading and Snow</a></span></td></tr></table></div><div id="TOGGLE0186A1" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The shading losses represent a reduction of the incident solar irradiance due to external shading of the array caused by nearby objects such as trees and buildings. You can specify hourly beam shading losses and a single sky diffuse shading loss or import shading loss data from shade analysis tools or calculators in the Edit Shading window.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Shading</span></h4>
+<p class="p_Text"><span class="f_Text">The time series <a href="pvwatts_results.htm" class="topiclink">results</a> show the effect of external shading: SAM displays the shading factor for beam radiation and the plane-of-array (POA) irradiance. The beam and diffuse shading losses that you specify both reduce the POA irradiance.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Enabling and Disabling Shading</span></h4>
+<p class="p_Text"><span class="f_Text">SAM offers several options for specifying shading losses.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">You must choose at least one option.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">SAM does not prevent you from enabling more than one option even if that results in an unrealistic shading model. Be sure to verify that you have enabled the set of options you intend before running a simulation.</span></p><p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To enable the external shading:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit Shading</span><span class="f_ProcedureStep">.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">If you are working with a shading file from PVsyst, Solmetric Suneye, or Solar Pathfinder software, in the Edit Shading window, </span><span class="f_ProcedureStepNoNumber">click the appropriate button under</span><span class="f_CHInterfaceElement"> Import shading data from external tools</span><span class="f_ProcedureStepNoNumber"> to import the file.</span></p><p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">If you are using a table to specify shading factors (you can type, import, or paste values into the table), check the appropriate </span><span class="f_CHInterfaceElement">Enable</span><span class="f_ProcedureStep"> box in the Edit Shading window.</span></p><p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For detailed instructions on specifying shading losses, click </span><span class="f_CHInterfaceElement">Help</span><span class="f_Note"> in the Edit Shading Data window.</span></p>
+<p class="p_Text"><img alt="IMG_PVShading-EnableDisable" width="581" height="241" style="margin:0;width:581px;height:241px;border:none" src="img_pvshading-enabledisable.png"/><span class="f_ImageCaption"> </span></p>
+<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">If you use specify beam and diffuse shading losses, be sure to set the Shading loss under <a href="fuelcell_pv_system.htm#losses" class="topiclink">Losses</a> to zero.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Snow</span></h4>
+<p class="p_Text"><span class="f_Text">For a description of the snow model, see the following publications available along with other technical documentation from the <a href="https://sam.nrel.gov/photovoltaic/pv-sub-page-2.html" target="_blank" class="weblink" title="https://sam.nrel.gov/photovoltaic/pv-sub-page-2.html">SAM website</a>:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Gilman, P.; Dobos, A.; DiOrio, N.; Freeman, J.; Janzou, S.; Ryberg, D. (2018) SAM Photovoltaic Model Technical Reference Update. 93 pp.; NREL/TP-6A20-67399</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Ryberg, D.; Freeman, J. (2017). &nbsp;Integration, Validation and Application of a PV Snow Coverage Model in SAM. National Renewable Energy Laboratory. 33 pp. TP-6A20-68705 available along with other technical documentation from the <a href="https://sam.nrel.gov/photovoltaic/pv-sub-page-2.html" target="_blank" class="weblink" title="https://sam.nrel.gov/photovoltaic/pv-sub-page-2.html">SAM website</a>.</span></p><p class="p_Text"><span class="f_Text">Use the following output variables to explore the effect of snow cover (see <a href="pv_results.htm" class="topiclink">Results</a> for descriptions of the variables):</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_CHInterfaceElement" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Array DC power loss due to snow (kW)</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_CHInterfaceElement" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_CHInterfaceElement">Weather file snow depth file (cm)</span></p><p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Snow depth data is not available in the NSRDB PSM V3 dataset. It is available in the older MTS 1 data, which you can download using the </span><span class="f_CHInterfaceElement">Legacy data (advanced)</span><span class="f_Note"> option on the Location and Resource page if your project location is near an MTS 1 data site. If the Legacy option does not work, you can access the original NSRDB 1961 - 1990 TMY2 files from the <a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/" target="_blank" class="weblink" title="https://rredc.nrel.gov/solar/old_data/nsrdb/1961-1990/tmy2/">archived TMY2 website</a>. See the note on the <a href="https://sam.nrel.gov/weather-data.html" target="_blank" class="weblink" title="https://sam.nrel.gov/weather-data.html">Weather Data</a> page of the SAM website for a link to detailed instructions.</span></p>
+<p class="p_Text"><span class="f_Text">SAM's snow model for photovoltaic systems estimates the loss in system output during time steps when the array is covered in snow. It uses snow depth data from the weather file, and for time steps with snow, estimates the percentage of the photovoltaic array that is covered with snow based on the array's tilt angle, plane-of-array irradiance, and ambient temperature. The model assumes that the array is completely covered with snow when the snow depth data indicates a snowfall, and that snow slides off the array as the ambient temperature increases.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Estimate snow losses</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Check this option to model snow losses if the weather file on the <a href="pv_location_and_resource.htm" class="topiclink">Location and Resource</a> page includes snow depth data.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 6px 0 6px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:18px"><a id="curtailmentavailability" class="hmanchor"></a><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="9" height="9" style="margin:0;width:9px;height:9px;border:none" src="hmtoggle_arrow1.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">System Availability</a></span></td></tr></table></div><div id="TOGGLE0186A2" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">System availability losses are reductions in the system's output due to operational requirements such as maintenance down time or other situations that prevent the system from operating as designed. </span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To model curtailment, or forced outages or reduction in power output required by the grid operator, use the inputs on the <a href="grid_limits.htm" class="topiclink">Grid Limits</a> page.</span></p>
+<p class="p_Text"><span class="f_Text">To edit the system availability losses, click </span><span class="f_CHInterfaceElement">Edit losses</span><span class="f_Text">.</span></p>
+<p class="p_Text"><span class="f_Text">The <a href="edit_losses.htm" class="topiclink">Edit Losses</a> window allows you to define loss factors as follows:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Constant loss is a single loss factor that applies to the system's entire output. You can use this to model an availability factor.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Hourly losses apply to specific hours of the year.</span></p><p class="p_Text"><span class="f_Text">SAM reduces the system's output in each hour by the loss percentage that you specify for that hour. For a given hour, a loss of zero would result in no adjustment. A loss of 5% would reduce the output by 5%, and a loss of -5% would increase the output value by 5%. For subhourly simulations, SAM applies the loss factor for a given hour to each time step in that hour</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+</td></tr></table>
+
+<script type="text/javascript">
+HMInitToggle('TOGGLE0186A1_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A1\',\'TOGGLE0186A1_ICON\')');
+HMInitToggle('TOGGLE0186A1','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A2_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A2\',\'TOGGLE0186A2_ICON\')');
+HMInitToggle('TOGGLE0186A2','hm.type','dropdown','hm.state','0');
+</script>
+</body>
+</html>
