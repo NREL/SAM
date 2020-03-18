@@ -1287,40 +1287,7 @@ Battery
 0
 Default
 
-706
-/*
-// eventually move to PPA TOD factors page
-equations{'dispatch_tod_factors'} = define()
-{
-	dispatch = [];
-	if (${en_batt} && (${batt_dispatch_choice} != 3))
-	{
-		dispatch[0] = ${dispatch_factor1};
-		dispatch[1] = ${dispatch_factor2};
-		dispatch[2] = ${dispatch_factor3};
-		dispatch[3] = ${dispatch_factor4};
-		dispatch[4] = ${dispatch_factor5};
-		dispatch[5] = ${dispatch_factor6};
-		dispatch[6] = ${dispatch_factor7};
-		dispatch[7] = ${dispatch_factor8};
-		dispatch[8] = ${dispatch_factor9};
-	}
-	else
-	{
-		dispatch[0] = 0;
-		dispatch[1] = 0;
-		dispatch[2] = 0;
-		dispatch[3] = 0;
-		dispatch[4] = 0;
-		dispatch[5] = 0;
-		dispatch[6] = 0;
-		dispatch[7] = 0;
-		dispatch[8] = 0;
-	}
-	return dispatch;
-};
-
-*/
+0
 4373
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
