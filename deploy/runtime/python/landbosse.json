@@ -1,5 +1,5 @@
 {
 	"min_python_version": "3.7",
 	"run_cmd": "from landbosse.landbosse_api.run import run_landbosse;sam_dict = <input>;results = run_landbosse(sam_dict);print(results)",
-	"landbosse_version": "2.0.1"
+	"landbosse_version": "2.2.3.96"
 }
