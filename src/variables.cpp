@@ -890,11 +890,11 @@ bool VarValue::ValueEqual( VarValue &rhs )
 							double x = m_val(r, c);
 							double y = rhs.m_val(r, c);
 							if ((std::isnan(x)) || (std::isnan(y)))
-								equal = equal && ((std::isnan(x)) && (std::isnan(y)));
+								equal = ((std::isnan(x)) && (std::isnan(y)));
 							else if ((std::isinf(x)) || (std::isinf(y)))
-								equal = equal && ((std::isinf(x)) && (std::isinf(y)));
+								equal = ((std::isinf(x)) && (std::isinf(y)));
 							else
-								equal = equal && (RelDif(m_val(r, c), rhs.m_val(r, c)) < TOLERANCE);
+								equal = (RelDif(m_val(r, c), rhs.m_val(r, c)) < TOLERANCE);
 						}
 						else
 							break;
