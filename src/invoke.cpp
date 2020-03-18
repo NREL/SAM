@@ -105,10 +105,10 @@ static void fcall_dview(lk::invoke_t &cxt)
 #endif
 
 	wxDVPlotCtrl *dview = new wxDVPlotCtrl(frame, wxID_ANY);
-	
+
 	size_t data_index = 0;
 	while (ndx < cxt.arg_count())
-	{ 
+	{
 		wxString data_name = cxt.arg(ndx++).as_string();
 		wxString data_units = cxt.arg(ndx++).as_string();
 		double select_dataset = cxt.arg(ndx++).as_boolean();
@@ -130,7 +130,7 @@ static void fcall_dview(lk::invoke_t &cxt)
 			dview->SelectDataIndex(data_index);
 		data_index++;
 	}
-	
+
 	dview->GetStatisticsTable()->RebuildDataViewCtrl();
 	dview->DisplayTabs();
 
@@ -153,7 +153,7 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 		return;
 	}
 
-	
+
 	ssc_data_t pdata = ssc_data_create();
 	ssc_data_set_string(pdata, "file_name", (const char*)file.c_str());
 	ssc_data_set_number(pdata, "header_only", 0);
@@ -215,7 +215,7 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	}
 
 	ssc_data_free( pdata );
-	
+
 	dview->GetStatisticsTable()->RebuildDataViewCtrl();
 	if ( i > 0 )
 		dview->SelectDataIndex(0);
@@ -227,7 +227,7 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 
 static void fcall_logmsg( lk::invoke_t &cxt )
 {
-	LK_DOC("logmsg", "Output a data line to the SAM log.", "(...):none");	
+	LK_DOC("logmsg", "Output a data line to the SAM log.", "(...):none");
 	wxString output;
 	for (size_t i=0;i<cxt.arg_count();i++)
 		output += cxt.arg(i).as_string();
@@ -264,7 +264,7 @@ static void fcall_addconfig( lk::invoke_t &cxt )
 	lk::vardata_t &fins = cxt.arg(1);
 	for( size_t i=0;i<fins.length();i++ )
 		finlist.Add( fins.index(i)->as_string() );
-	
+
 	SamApp::Config().Add( cxt.arg(0).as_string(), finlist );
 
 	wxLogStatus( "Configuration: " + cxt.arg(0).as_string() + "  -> [ " + wxJoin(finlist,';') + " ]" );
@@ -284,7 +284,7 @@ static void fcall_configopt( lk::invoke_t &cxt )
 	lk::vardata_t &tab = cxt.arg(1).deref();
 	if( lk::vardata_t *vv = tab.lookup( "long_name" ) )
 		opt.LongName = vv->as_string();
-	if( lk::vardata_t *vv = tab.lookup( "short_name") ) 
+	if( lk::vardata_t *vv = tab.lookup( "short_name") )
 		opt.ShortName = vv->as_string();
 	if (lk::vardata_t *vv = tab.lookup("description"))
 		opt.Description = vv->as_string();
@@ -297,7 +297,7 @@ static void fcall_configopt( lk::invoke_t &cxt )
 static void fcall_setmodules( lk::invoke_t &cxt )
 {
 	LK_DOC("setmodules", "Sets the simulation models for the currently active configuration", "(array:module names):none");
-	
+
 	wxArrayString list;
 	lk::vardata_t &m = cxt.arg(0);
 	for( size_t i=0;i<m.length();i++ )
@@ -309,7 +309,7 @@ static void fcall_setmodules( lk::invoke_t &cxt )
 static void fcall_addpage( lk::invoke_t &cxt )
 {
 	LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, table:caption,help,exclusive,exclusive_var):none" );
-	
+
 	std::vector< std::vector<PageInfo> > pages;
 	lk::vardata_t &grps = cxt.arg(0);
 	for( size_t i=0;i<grps.length();i++ )
@@ -329,7 +329,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
 				x.Caption = x.Name; // by default, caption=name
 				x.CollapsedByDefault = true;
-			
+
 				if ( lk::vardata_t *capt = item.lookup( "caption" ) )
 					x.Caption = capt->as_string();
 
@@ -357,13 +357,13 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	}
 
 	if ( pages.size() == 0 || pages[0].size() == 0 ) return;
-	
+
 	wxString sidebar = pages[0][0].Name;
 	wxString help = sidebar;
 	wxString exclusive_var;
 	bool exclusive_tabs = false;
 	std::vector<PageInfo> excl_header_pages;
-	
+
 	if ( cxt.arg_count() > 1 )
 	{
 		lk::vardata_t &props = cxt.arg(1).deref();
@@ -373,7 +373,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
 		if ( lk::vardata_t *x = props.lookup("help") )
 			help = x->as_string();
-		
+
 		if ( lk::vardata_t *x = props.lookup("exclusive_var") )
 			exclusive_var = x->as_string();
 
@@ -449,14 +449,14 @@ static void fcall_setting( lk::invoke_t &cxt )
 static void fcall_technology( lk::invoke_t &cxt )
 {
 	LK_DOC( "technology", "Return the current technology option name", "(void):string" );
-	CaseCallbackContext &cc = *static_cast<CaseCallbackContext*>( cxt.user_data() ); 
+	CaseCallbackContext &cc = *static_cast<CaseCallbackContext*>( cxt.user_data() );
 	cxt.result().assign( cc.GetCase().GetTechnology() );
 }
 
 static void fcall_financing( lk::invoke_t &cxt )
 {
 	LK_DOC( "financing", "Return the current financing option name", "(void):string" );
-	CaseCallbackContext &cc = *static_cast<CaseCallbackContext*>( cxt.user_data() ); 
+	CaseCallbackContext &cc = *static_cast<CaseCallbackContext*>( cxt.user_data() );
 	cxt.result().assign( cc.GetCase().GetFinancing() );
 }
 
@@ -508,12 +508,12 @@ static void fcall_codegen_metric(lk::invoke_t &cxt)
 static void fcall_metric( lk::invoke_t &cxt )
 {
 	LK_DOC("metric", "Add an output metric to the current configuration. Options include mode,deci,thousep,pre,post,label,scale", "(string:variable, [table:options]):none");
-	 
+
 	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
 		MetricData md;
 		md.var = cxt.arg(0).as_string();
-		
+
 		if (cxt.arg_count() > 1 )
 		{
 			lk::vardata_t &opts = cxt.arg(1).deref();
@@ -523,7 +523,7 @@ static void fcall_metric( lk::invoke_t &cxt )
 				mm.MakeLower();
 				if ( mm == "f" ) md.mode = 'f';
 				else if ( mm == "e" ) md.mode = 'e';
-				else if ( mm == "h" ) md.mode = 'h';			
+				else if ( mm == "h" ) md.mode = 'h';
 			}
 
 			if ( lk::vardata_t *x = opts.lookup("deci") )
@@ -573,7 +573,7 @@ static void fcall_add_loss_term( lk::invoke_t &cxt )
 	{
 		Simulation &sim = ldcc->GetSimulation();
 		LossDiagramObject &ld = ldcc->GetDiagram();
-		
+
 		if ( VarValue *vv = sim.GetValue( cxt.arg(0).as_string() ) )
 		{
 			if ( vv->Type() == VV_NUMBER )
@@ -601,7 +601,7 @@ static void fcall_add_gain_term(lk::invoke_t &cxt)
 static void fcall_agraph( lk::invoke_t &cxt )
 {
 	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR), [number:Xmin value], [number:Xmax value]]:none" );
-	
+
 	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
 		AutoGraph ag;
@@ -752,7 +752,7 @@ static void fcall_varinfo( lk::invoke_t &cxt )
 void fcall_value( lk::invoke_t &cxt )
 {
 	LK_DOC("value", "Gets or sets the value of a variable by name", "(string:name [,variant:value, bool:trigger value change (default true)]):[variant]");
-	
+
 	CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
 	if ( VarValue *vv = cc.GetValues().Get( name ) )
@@ -788,7 +788,7 @@ void fcall_is_assigned( lk::invoke_t &cxt )
     else
         cxt.result().assign((double)0);
 }
-	
+
 static void plottarget( UICallbackContext &cc, const wxString &name )
 {
 	wxLKSetPlotTarget( 0 );
@@ -800,14 +800,14 @@ static void plottarget( UICallbackContext &cc, const wxString &name )
 void fcall_setplot( lk::invoke_t &cxt )
 {
 	LK_DOC("setplot", "Sets the current plot target by name", "(string:name):boolean");
-	
+
 	plottarget( *(UICallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
 }
 
 void fcall_clearplot( lk::invoke_t &cxt )
 {
 	LK_DOC("clearplot", "Clears the current plot, and optionally switches the plot target.", "([string:plot name]):none");
-	
+
 	if (cxt.arg_count() > 0)
 		plottarget( *(UICallbackContext*)cxt.user_data(), cxt.arg(0).as_string() );
 
@@ -983,7 +983,7 @@ static void fcall_case_name(lk::invoke_t &cxt)
 static void fcall_macrocall( lk::invoke_t &cxt )
 {
 	LK_DOC( "macrocall", "Run a macro (or external script in the macro environment), optionally passing arguments to it.", "(string:macro name or file, [variant:args]):boolean" );
-	
+
 	cxt.result().assign( 0.0 );
 
 	Case *c = SamApp::Window()->GetCurrentCase();
@@ -992,7 +992,7 @@ static void fcall_macrocall( lk::invoke_t &cxt )
 	wxString tech, fin;
 	c->GetConfiguration( &tech, &fin );
 	wxArrayString macros = MacroEngine::ListMacrosForConfiguration( tech, fin );
-	
+
 	wxString name = cxt.arg(0).as_string();
 	name.MakeLower();
 
@@ -1008,8 +1008,8 @@ static void fcall_macrocall( lk::invoke_t &cxt )
 
 	if ( imacro < 0 )
 		return;
-	
-	wxString script;	
+
+	wxString script;
 	wxFile fp( macros[imacro] );
 	if ( fp.IsOpened() )
 		fp.ReadAll( &script );
@@ -1031,11 +1031,11 @@ static void fcall_macrocall( lk::invoke_t &cxt )
 static void fcall_pagenote( lk::invoke_t &cxt )
 {
 	LK_DOC( "pagenote", "Set or get the page note for the current user interface page in the current case.", "( [string:note] ):string" );
-	
+
 	CaseWindow *cw = SamApp::Window()->GetCurrentCaseWindow();
 	if ( !cw ) return;
 
-	if ( cxt.arg_count() == 0 )	
+	if ( cxt.arg_count() == 0 )
 		cxt.result().assign( cw->GetCase()->RetrieveNote( cw->GetCurrentContext() ) );
 	else {
 		cw->SetPageNote( cxt.arg(0).as_string() );
@@ -1081,7 +1081,7 @@ static void fcall_copy_file(lk::invoke_t &cxt)
 
 	bool overwrite = false;
 	if (cxt.arg_count() == 3) overwrite = cxt.arg(2).as_boolean();
-	
+
 	wxString source = cxt.arg(0).as_string();
 
 	if (!wxFileExists(source)) return;
@@ -1123,7 +1123,7 @@ static void fcall_copy_file(lk::invoke_t &cxt)
 class lkXLObject : public lk::objref_t
 {
 	wxExcelAutomation m_xl;
-public: 
+public:
 	lkXLObject() { };
 	virtual ~lkXLObject() { };
 	virtual lk_string type_name() { return "ole-excel-automation"; }
@@ -1156,7 +1156,7 @@ static void fcall_xl_create( lk::invoke_t &cxt )
 static void fcall_xl_free( lk::invoke_t &cxt )
 {
 	LK_DOC("xl_free", "Frees up an Excel OLE automation object", "( xl-obj-ref:xl ):none" );
-	
+
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 	{
 		xl->Excel().QuitExcel();
@@ -1175,7 +1175,7 @@ static void fcall_xl_open(lk::invoke_t &cxt)
 		wxString fn = cxt.arg(1).as_string();
 		if (wxFileExists(fn))
 			xl->Excel().OpenFile( fn );
-	
+
 		bool show = true;
 		if ( cxt.arg_count() > 2 )
 			show = cxt.arg(2).as_boolean();
@@ -1190,7 +1190,7 @@ static void fcall_xl_close( lk::invoke_t &cxt )
 {
 	LK_DOC("xl_close", "Close the current Excel files without saving changes.", "( xl-obj-ref:xl ):none" );
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
-		cxt.result().assign( xl->Excel().CloseAllNoSave() ? 1.0 : 0.0 );	
+		cxt.result().assign( xl->Excel().CloseAllNoSave() ? 1.0 : 0.0 );
 	else
 		cxt.error( "invalid xl-obj-ref" );
 }
@@ -1198,9 +1198,9 @@ static void fcall_xl_close( lk::invoke_t &cxt )
 static void fcall_xl_autosizecols( lk::invoke_t &cxt )
 {
 	LK_DOC( "xl_autosizecols", "Automatically size columns in the current Excel file", "( xl-obj-ref:xl ):none" );
-	
+
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
-		xl->Excel().AutoFitColumns();	
+		xl->Excel().AutoFitColumns();
 	else
 		cxt.error( "invalid xl-obj-ref" );
 }
@@ -1208,7 +1208,7 @@ static void fcall_xl_autosizecols( lk::invoke_t &cxt )
 static void fcall_xl_wkbook( lk::invoke_t &cxt )
 {
 	LK_DOC( "xl_wkbook", "Create a new empty workbook in the Excel file", "( xl-obj-ref:xl ):none" );
-	
+
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 		xl->Excel().NewWorkbook();
 	else
@@ -1218,7 +1218,7 @@ static void fcall_xl_wkbook( lk::invoke_t &cxt )
 static void fcall_xl_sheet( lk::invoke_t &cxt )
 {
 	LK_DOC( "xl_sheet", "Create a new worksheet in the current workbook", "( xl-obj-ref:xl, [string: optional name] ):none");
-	
+
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 	{
 		if ( xl->Excel().AddWorksheet() && cxt.arg_count() == 2 )
@@ -1231,9 +1231,9 @@ static void fcall_xl_sheet( lk::invoke_t &cxt )
 static void fcall_xl_set( lk::invoke_t &cxt )
 {
 	LK_DOC("xl_set", "Sets a value in an Excel file", "( xl-obj-ref:xl, variant:value, [string:named range -or- row, col] ):none");
-	
+
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
-	{	
+	{
 		if ( cxt.arg_count() == 4 )
 			xl->Excel().SetCellValue( cxt.arg(2).as_integer(), cxt.arg(3).as_integer(), cxt.arg(1).as_string() );
 		else if ( cxt.arg_count() == 3 && cxt.arg(1).type() == lk::vardata_t::VECTOR )
@@ -1253,9 +1253,9 @@ static void fcall_xl_set( lk::invoke_t &cxt )
 static void fcall_xl_get( lk::invoke_t &cxt )
 {
 	LK_DOC( "xl_get", "Gets a value from the current Excel file", "( xl-obj-ref:xl, [string:named range -or- row, col] ):variant" );
-	
+
 	if ( lkXLObject *xl = dynamic_cast<lkXLObject*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
-	{	
+	{
 		wxString val;
 		if ( cxt.arg_count() == 2 )
 			ExcelExchange::ParseAndCaptureRange( cxt.arg(1).as_string(), val, xl->Excel() );
@@ -1305,8 +1305,8 @@ static void fcall_xl_read(lk::invoke_t &cxt)
 	{
 		wxArrayString vals;
 		int rowCount, columnCount;
-		xl->Excel().getUsedCellRange(rowCount, columnCount, vals); 
-		
+		xl->Excel().getUsedCellRange(rowCount, columnCount, vals);
+
 		if ((int)nskip >= rowCount - 1) nskip = 0;
 		if (astable)
 		{
@@ -1415,7 +1415,7 @@ public:
 	lkSSCdataObj() {
 		m_data = ssc_data_create();
 	}
-	
+
 	lkSSCdataObj(ssc_data_t p_data) {
 		m_data = p_data;
 	}
@@ -1425,16 +1425,16 @@ public:
 	}
 
 	virtual lk_string type_name() { return "ssc-data-object"; }
-	
-	operator ssc_data_t() { 
+
+	operator ssc_data_t() {
 		return m_data;
 	}
 };
 
 void fcall_ssc_var( lk::invoke_t &cxt )
 {
-	LK_DOC2( "ssc_var", "Sets or gets a variable value in the SSC data set.", 
-		"Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none", 
+	LK_DOC2( "ssc_var", "Sets or gets a variable value in the SSC data set.",
+		"Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none",
 		"Get a variable value", "(ssc-obj-ref:data, string:name):variant" );
 
 	if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
@@ -1451,19 +1451,19 @@ void fcall_ssc_var( lk::invoke_t &cxt )
 
 void fcall_ssc_create( lk::invoke_t &cxt )
 {
-	LK_DOC( "ssc_create", "Create a new empty SSC data container object.", "(none):ssc-obj-ref" );	
+	LK_DOC( "ssc_create", "Create a new empty SSC data container object.", "(none):ssc-obj-ref" );
 	cxt.result().assign( cxt.env()->insert_object( new lkSSCdataObj ) );
 }
 
 void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 {
 	LK_DOC("ssc_module_create_from_case", "Create a new SSC data container object populated from the input compute module values defined in the current case", "(string:compute_module_name):ssc-obj-ref");
-	
+
 	// Get the existing simulation object from the base
 	Case *c = SamApp::Window()->GetCurrentCase();
 	Simulation &sim = c->BaseCase();
 
-	// Create the ssc_data and compute module 
+	// Create the ssc_data and compute module
 	wxString cm = cxt.arg(0).as_string();
 	ssc_data_t p_data = ssc_data_create();
 	ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
@@ -1478,7 +1478,7 @@ void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
 	{
 		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+		int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
 		wxString name(ssc_info_name(p_inf)); // assumed to be non-null
 		wxString reqd(ssc_info_required(p_inf));
 
@@ -1545,7 +1545,7 @@ void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 void fcall_ssc_free( lk::invoke_t &cxt )
 {
 	LK_DOC( "ssc_free", "Frees up an SSC data object.", "(ssc-obj-ref:data):none" );
-	
+
 	if ( lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) ) )
 		cxt.env()->destroy_object( ssc );
 	else
@@ -1566,13 +1566,13 @@ void fcall_ssc_dump( lk::invoke_t &cxt )
 
 
 static ssc_bool_t ssc_exec_handler( ssc_module_t, ssc_handler_t,
-	int action_type, float f0, float, 
+	int action_type, float f0, float,
 	const char *s0, const char *,
 	void *user_data )
 {
 	wxThreadProgressDialog *tpd = (wxThreadProgressDialog*) user_data;
 	if (action_type == SSC_LOG)
-	{		
+	{
 		switch( (int)f0 )
 		{
 		case SSC_NOTICE:
@@ -1581,9 +1581,9 @@ static ssc_bool_t ssc_exec_handler( ssc_module_t, ssc_handler_t,
 			tpd->Log( s0 );
 			break;
 		}
-		
+
 		wxGetApp().Yield( true );
-		return tpd->IsCanceled() ? 0 : 1;		
+		return tpd->IsCanceled() ? 0 : 1;
 	}
 	else if (action_type == SSC_UPDATE)
 	{
@@ -1599,13 +1599,13 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 {
 	LK_DOC( "ssc_exec", "Run a compute module with the provided data context. returns zero if successful. Options include: show_dialog, hold_dialog, debug_file, dialog_title", "( ssc-obj-ref:data, string:module, [table:options] ):variant" );
 	cxt.result().assign( -999.0 );
-	
+
 	lkSSCdataObj *ssc = dynamic_cast<lkSSCdataObj*>( cxt.env()->query_object( cxt.arg(0).as_integer() ) );
 	if ( !ssc ) {
 		cxt.error( "invalid ssc-obj-ref" );
 		return;
 	}
-	
+
 	wxString cm(cxt.arg(1).as_string().Lower());
 
 	bool show_dialog = false;
@@ -1804,7 +1804,7 @@ void fcall_snlinverter( lk::invoke_t &cxt )
 
 	// Pac = {(Paco / (A - B))  C · (A - B)}· (Pdc- B) + C · (Pdc - B)**2
 
-	
+
 	  double vdcminusvdco = vdc - vdco;
 	  double A = pdco * (1 + c1 * vdcminusvdco);
 	  double B = pso * (1 + c2 * vdcminusvdco);
@@ -1857,8 +1857,8 @@ void fcall_current_at_voltage_sandia(lk::invoke_t &cxt)
 {
 	LK_DOC("current_at_voltage_sandia", "Calculates the Sandia module model voltage from module current and specs", "(number:V, number:VmaxPow, number:ImaxPow, number:Voc, number:Isc):number");
 
-	double V = cxt.arg(0).as_number(); 
-	double VmaxPow = cxt.arg(1).as_number(); 
+	double V = cxt.arg(0).as_number();
+	double VmaxPow = cxt.arg(1).as_number();
 	double ImaxPow = cxt.arg(2).as_number();
 	double Voc = cxt.arg(3).as_number();
 	double Isc = cxt.arg(4).as_number();
@@ -2004,7 +2004,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 	int nthread = hh.Count();
 	nthread = 1;
-	// no need to create extra unnecessary threads 
+	// no need to create extra unnecessary threads
 	if (nthread > (int)urls.size()) nthread = (int)urls.size();
 
 	ecd.NewStage("Retrieving weather data", nthread);
@@ -2129,7 +2129,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 			}
 			filename += "_" + hh[i];
 		}
-		// write out combined hub height file 
+		// write out combined hub height file
 		filename += ".srw";
 	}
 
@@ -2386,7 +2386,7 @@ void fcall_group_read(lk::invoke_t &cxt)
 void fcall_urdb_write(lk::invoke_t &cxt)
 {
 	LK_DOC("urdb_write", "Writes rate data from current case to a file.", "(string:filename):boolean");
-	
+
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
 
@@ -2418,7 +2418,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 			}
 		}
 	}
-	
+
 	cxt.result().assign( csv.WriteFile( cxt.arg(0).as_string() ) ? 1.0 : 0.0 );
 }
 
@@ -2427,7 +2427,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 void fcall_urdb_read(lk::invoke_t &cxt)
 {
 	LK_DOC("urdb_read", "Reads rate data from a file to the current case.", "(string:filename):boolean");
-	
+
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
 
@@ -2651,7 +2651,7 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 
 void fcall_urdb_get(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(string:guid):boolean");	
+	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(string:guid):boolean");
 	wxString guid = cxt.arg(0).as_string();
 	if (guid.IsEmpty()) return;
 
@@ -2672,7 +2672,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("basicinformationcomments").assign(rate.Header.BasicInformationComments);
 		cxt.result().hash_item("energycomments").assign(rate.Header.EnergyComments);
 		cxt.result().hash_item("demandcomments").assign(rate.Header.DemandComments);
-		
+
 		// applicability
 		cxt.result().hash_item("peakkwcapacityhistory").assign(rate.Applicability.peakkwcapacityhistory);
 		cxt.result().hash_item("peakkwcapacitymax").assign(rate.Applicability.peakkwcapacitymax);
@@ -2684,7 +2684,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("voltageminimum").assign(rate.Applicability.voltageminimum);
 		cxt.result().hash_item("voltagecategory").assign(rate.Applicability.voltagecategory);
 		cxt.result().hash_item("phasewiring").assign(rate.Applicability.phasewiring);
-		
+
 		// URLs
 		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
 		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);
@@ -2736,11 +2736,11 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		else
 			cxt.result().hash_item("ec_enable").assign(0.0);
 		*/
-		
+
 
 		/*
-		
-		
+
+
 		wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 
 		lk::vardata_t vd;
@@ -3341,7 +3341,7 @@ lk::vardata_t sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string l
 			}
 		}
 	}
-		
+
 	if (ndx_c > bc.constants.size())
 	{
 		err_str = "async_thread: No value found to change.";
@@ -3370,7 +3370,7 @@ lk::vardata_t sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string l
 
 //
 	start = std::chrono::system_clock::now();
-			
+
 			wxArrayString list = wxSplit(lk_result, ',');
 			for (size_t i_res = 0; i_res < list.size(); i_res++)
 			{
@@ -3457,7 +3457,7 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 //	start = std::chrono::system_clock::now();
 
 // add input value
-	// required input - changes in each thread 
+	// required input - changes in each thread
 	lk_string input_name = cxt.arg(1).as_string();
 	lk_string value = "\"ASSIGN|VALUE|HERE\";\n";
 	file_contents = input_name + "=" + value + file_contents;
@@ -3467,7 +3467,7 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 	{
 		lk_string add_input_name = cxt.arg(4).as_string();
 		value = "\"ADDITIONALASSIGN|VALUE|HERE\";\n";
-		lk::vardata_t add_input_value = cxt.arg(5);					
+		lk::vardata_t add_input_value = cxt.arg(5);
 		file_contents = add_input_name + "=" + value + file_contents;
 	}
 
@@ -3542,7 +3542,7 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 		}
 		else
 		{
-			lk::vardata_t add_input_value = cxt.arg(5);					
+			lk::vardata_t add_input_value = cxt.arg(5);
 			bc.constants[ndx_c] = add_input_value;
 		}
 	}
@@ -3564,7 +3564,7 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 
 	lk_string lk_result = "lk_result";
 	if (cxt.arg_count() > 3)
-		lk_result = cxt.arg(3).as_string(); 
+		lk_result = cxt.arg(3).as_string();
 
 
 	// testing with vector and then will move to table or other files as inputs.
@@ -3635,7 +3635,7 @@ static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 	//	start = std::chrono::system_clock::now();
 
 	// add input value
-	// required input - changes in each thread 
+	// required input - changes in each thread
 	lk_string input_name = cxt.arg(1).as_string();
 	lk_string value = "\"ASSIGN|VALUE|HERE\";\n";
 	file_contents = input_name + "=" + value + file_contents;
@@ -4086,7 +4086,7 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 	LK_DOC("lhs_threaded", "Run a Latin Hypercube Sampling and return samples", "(string:distribution, array:distribution_parameters, int:num_samples, [int: seed_value]): array:samples");
 	lk_string err_msg = "";
 	wxString workdir(wxFileName::GetTempDir());
-	// inputs 
+	// inputs
 	lk_string dist_name = cxt.arg(0).as_string();
 	int idist = -1;
 	for (int i = 0; i<LHS_NUMDISTS; i++)
@@ -4114,14 +4114,14 @@ void fcall_lhs_threaded(lk::invoke_t &cxt)
 		return;
 	}
 	int num_samples = cxt.arg(2).as_integer();
-	int seed_val = 0; 
+	int seed_val = 0;
 	if (cxt.arg_count() > 3)
 		seed_val = cxt.arg(3).as_integer();
 
 	int sv = wxGetLocalTime();
 	if (seed_val > 0)
 		sv = seed_val;
-	
+
 	wxString lhsexe(SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY));
 	if (!wxFileExists(lhsexe))
 	{
@@ -4154,7 +4154,7 @@ void fcall_lhs_create( lk::invoke_t &cxt )
 
 void fcall_lhs_free( lk::invoke_t &cxt )
 {
-	LK_DOC( "lhs_free", "Free an LHS object", "(lhs-obj-ref):none");	
+	LK_DOC( "lhs_free", "Free an LHS object", "(lhs-obj-ref):none");
 	if ( GETLHS )
 		cxt.env()->destroy_object( lhs );
 	else
@@ -4168,7 +4168,7 @@ void fcall_lhs_dist( lk::invoke_t &cxt )
 	{
 		wxString name( cxt.arg(1).as_string() );
 		wxString dist( cxt.arg(2).as_string().Lower() );
-		
+
 		int idist = -1;
 		for (int i=0;i<LHS_NUMDISTS;i++)
 		{
@@ -4190,9 +4190,9 @@ void fcall_lhs_dist( lk::invoke_t &cxt )
 			for( size_t i=0;i<p.length();i++ )
 				params.push_back( p.index(i)->as_number() );
 		}
-		else if ( cxt.arg_count() == 5 
+		else if ( cxt.arg_count() == 5
 			&& cxt.arg(3).type() == lk::vardata_t::VECTOR
-			&& cxt.arg(4).type() == lk::vardata_t::VECTOR 
+			&& cxt.arg(4).type() == lk::vardata_t::VECTOR
 			&& cxt.arg(3).length() == cxt.arg(4).length()
 			&& idist == LHS_USERCDF )
 		{
@@ -4299,7 +4299,7 @@ void fcall_step_create( lk::invoke_t &cxt )
 
 void fcall_step_free( lk::invoke_t &cxt )
 {
-	LK_DOC( "step_free", "Free an stepwise regression object", "(step-obj-ref):none");	
+	LK_DOC( "step_free", "Free an stepwise regression object", "(step-obj-ref):none");
 	if ( GETSTEP )
 		cxt.env()->destroy_object( step );
 	else
@@ -4382,7 +4382,7 @@ static void fcall_parametric_run(lk::invoke_t &cxt)
 void fcall_parametric_get(lk::invoke_t &cxt)
 {
 	LK_DOC("parametric_get", "Returns array of output variable from parametric simulation within the current case, or the output from a single run", "(string: output variable, {number:index}):variant");
-	
+
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if (!c) {
 		cxt.error("no case found");
@@ -4467,7 +4467,7 @@ void fcall_parametric_get(lk::invoke_t &cxt)
 				col->empty_vector();
 				col->vec()->resize(nc);
 				for (size_t m = 0; m < nc; m++) {
-					col->index(m)->assign(val[ n*nc+m ]);				
+					col->index(m)->assign(val[ n*nc+m ]);
 				}
 			}
 		}
@@ -4527,16 +4527,16 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     // check if case exists and is correct configuration
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
-    if (!sam_case || ((sam_case->GetTechnology() != "Flat Plate PV" && sam_case->GetTechnology() != "PVWatts") ||
+    if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
             (sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commercial" &&
              sam_case->GetFinancing() != "Third Party" && sam_case->GetFinancing() != "Host Developer")))
         throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Third Party or Host Developer model.");
-    bool pvsam = sam_case->GetTechnology() == "Flat Plate PV";
+    bool pvsam = sam_case->GetTechnology() == "PV Battery";
 
     Simulation base_case = sam_case->BaseCase();
     base_case.Clear();
     base_case.Prepare();
-    bool success = base_case.Invoke();
+    bool success = base_case.Invoke(true);
     if (!success){
         ssc_data_free(p_data);
         throw lk::error_t(base_case.GetErrors()[0]);
@@ -4611,7 +4611,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> rate_vars = {"ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
                                           "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
-                                          "ur_ec_tou_mat", "load", "crit_load"};
+                                          "ur_ec_tou_mat", "ur_metering_option", "ur_monthly_min_charge", "ur_annual_min_charge",
+                                          "load", "crit_load"};
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
@@ -4671,7 +4672,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "ReOpt Lite API",
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result... This may take a few minutes.", "ReOpt Lite API",
             wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();
     wxGetApp().Yield( true );
