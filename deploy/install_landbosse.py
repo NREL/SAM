@@ -74,7 +74,19 @@ def update_python_path(base_path, path):
     with open(filename) as f_in:
         data = json.load(f_in)
 
-    data["exec_path"] = path
+    # Make this a relative path from everything after "python".
+    directories = path.split(os.sep)
+    try:
+        start_index = directories.index("python") + 1
+    except ValueError:
+        raise Exception(f"malformed path; 'python' not present: {path}")
+
+    if start_index > len(directories):
+        raise Exception(f"malformed path: {path}")
+
+    relative_path = os.path.join(*directories[start_index:])
+
+    data["exec_path"] = relative_path
     with open(filename, "w") as f_out:
         json.dump(data, f_out, indent=4)
 
