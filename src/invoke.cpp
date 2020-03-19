@@ -4672,7 +4672,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "ReOpt Lite API",
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result... This may take a few minutes.", "ReOpt Lite API",
             wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();
     wxGetApp().Yield( true );
