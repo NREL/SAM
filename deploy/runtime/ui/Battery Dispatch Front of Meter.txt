@@ -1076,7 +1076,7 @@ TabOrder
 3
 9
 
-15
+14
 batt_auto_gridcharge_max_daily
 3
 1
@@ -1272,183 +1272,114 @@ Battery
 4
 0
 TextEntry
-dispatch_tod_factors
-3
-2
-PPA TOD factors
- 
-Battery
-0
-8
-1
-2
-1
-1
-0
-Default
 
 0
-4373
-on_load{'Battery Dispatch Front of Meter'}=define()
+3384
+on_load{'Financial TOD Factors'} = define()
 {	
-	// fom = front of meter
-	toggle_dispatch_fom();
-		
-	on_change{'batt_dispatch_choice'};
-	on_change{'batt_select_weather_file_forecast'};
-	on_change{'batt_cycle_cost_choice'};
+	toggle_inputs();
+};
+
+on_change{'ppa_multiplier_model'} = define()
+{
+	toggle_inputs();
+};
+
+function toggle_inputs()
+{
+	// enable time series
+	en_ts = value('ppa_multiplier_model') == 1; 
 	
-	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
-};
-
-on_change{'batt_dispatch_choice'}=define()
-{ 
-	toggle_dispatch_fom();
-};
-
-on_change{'batt_select_weather_file_forecast'}=define()
-{
-	file = choose_file( "", 'Choose a weather file', 
-			'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');
-	${batt_user_specified_weather_file} = file;
-	run_forecast(file);
-};
-
-on_change{'batt_cycle_cost_choice'} = define()
-{
-	toggle_cycle_cost();
-};
-
-function run_forecast(file)
-{
-	// only run forecast for DC-connected, AC-connected doesn't need
-	if (value('batt_ac_or_dc') == 0)
-	{
-		logmsg('Forecast file: ' + file);
-		
-		user_specified_weather_file_old = ${user_specified_weather_file};
-		use_specific_weather_file_old = ${use_specific_weather_file};
-		solar_resource_file_old = ${solar_resource_file};
-		
-		if ( file != '' ) {
-			file = replace(file, '\\', '/');
-		}	
-
-		forecast_run = ssc_module_create_from_case('pvsamv1');
-		ssc_var(forecast_run, 'en_batt', false);
-		ssc_var(forecast_run, 'use_specific_weather_file', true);	
-		ssc_var(forecast_run, 'user_specified_weather_file', file);
-		ssc_var(forecast_run, 'solar_resource_file', file);	
+	//time series inputs
+	enable('dispatch_factors_ts', en_ts );
 	
-		logmsg('use_specific_weather_file: ' + ssc_var(forecast_run, 'use_specific_weather_file'));
-		logmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));
-		logmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));
+	//schedule inputs
+	enable('apply_tod_library_values', !en_ts );
+	enable('tod_library', !en_ts );
+	enable( 'dispatch_sched_weekday', !en_ts );
+	enable( 'dispatch_sched_weekend', !en_ts );
+	enable( 'dispatch_factor1', !en_ts );
+	enable( 'dispatch_factor2', !en_ts );
+	enable( 'dispatch_factor3', !en_ts );
+	enable( 'dispatch_factor4', !en_ts );
+	enable( 'dispatch_factor5', !en_ts );
+	enable( 'dispatch_factor6', !en_ts );
+	enable( 'dispatch_factor7', !en_ts );
+	enable( 'dispatch_factor8', !en_ts );
+	enable( 'dispatch_factor9', !en_ts );
+	enable( 'btnSaveDispatchData', !en_ts );
+	enable( 'btnLoadDispatchData', !en_ts );
+	enable( 'dispatch_data_filename', !en_ts );
+}
 
-		status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=false, 'hold_dialog'=false});
+on_change{'apply_tod_library_values'} = define() {
+
+	value( 'dispatch_sched_weekday', value('lib_dispatch_sched_weekday') );
+	value( 'dispatch_sched_weekend', value('lib_dispatch_sched_weekend') );
+	value( 'dispatch_factor1',       value('lib_dispatch_factor1')       );
+	value( 'dispatch_factor2',       value('lib_dispatch_factor2')       );
+	value( 'dispatch_factor3',       value('lib_dispatch_factor3')       );
+	value( 'dispatch_factor4',       value('lib_dispatch_factor4')       );
+	value( 'dispatch_factor5',       value('lib_dispatch_factor5')       );
+	value( 'dispatch_factor6',       value('lib_dispatch_factor6')       );
+	value( 'dispatch_factor7',       value('lib_dispatch_factor7')       );
+	value( 'dispatch_factor8',       value('lib_dispatch_factor8')       );
+	value( 'dispatch_factor9',       value('lib_dispatch_factor9')       );
+	
+};
+
+on_change{'btnSaveDispatchData'} = define() {
+	logmsg('running btnSaveDispatchData');
+	file = choose_file( '', 'Save TOD Factors Data As', 
+		'Data Files (*.csv)|*.csv', true);
 		
-		if (status != 0)
-			logmsg('Battery forecast run failed with error: ' + status);
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+		if (group_write('Time of Delivery Factors',file))
+		{	
+			value( 'dispatch_data_filename', file );
+			msgbox("Data saved! \n");
+		}
 		else
 		{
-			${batt_pv_dc_forecast} = ssc_var(forecast_run, 'dc_net');
-			${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
+			value( 'dispatch_data_filename', "" );
+			msgbox("Data save failed! \n");
 		}
-		ssc_free(forecast_run);
 	}
-	else
-	{
-		${batt_pv_dc_forecast} = [0];
-		${batt_pv_clipping_forecast} = [0];
-	}
-	
-	//value('use_specific_weather_file', use_specific_weather_file_old);		
-	//value('user_specified_weather_file', user_specified_weather_file_old);
-}
+};
 
-
-function toggle_cycle_cost()
-{
-	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
-}
-function toggle_forecast()
-{
-	enable('batt_select_weather_file_forecast', ${batt_dispatch_choice} == 2);
-	enable('batt_user_specified_weather_file', ${batt_dispatch_choice} == 2);
-	
-	if (${batt_dispatch_choice} == 2){
-		file = ${batt_user_specified_weather_file};
-		run_forecast(file);
-	}
-
-}
-function toggle_custom_dispatch()
-{
-	enable('batt_custom_dispatch', ${batt_dispatch_choice} == 3);
-}
-function toggle_dispatch_fom()
-{
-	// call the common Battery Manual toggle dispatch
-	toggle_dispatch();
-	
-	// Turn on/off custom dispatch
-	toggle_custom_dispatch();
-	
-	// Turn on/off forecast input
-	toggle_forecast();
-	
-	mode = ${batt_dispatch_choice};
-	en_batt = ${en_batt}; 
-	
-	if (!en_batt){
-		enable_auto_inputs_fom(false);
-		enable_non_manual_inputs_fom(false);
-		return;
-	}
-
-	// manual disptch
-	if (mode == 4)
-	{
-		enable_auto_inputs_fom(false);
-		enable_non_manual_inputs_fom(false);
-	}
-	// custom dispatch
-	else if (mode == 3)
-	{
-		enable_auto_inputs_fom(false);
-		enable_non_manual_inputs_fom(true);
-	}
-	// Automated DC controllers
-	else if (mode < 3)
-	{
-		enable_auto_inputs_fom(true);
-		toggle_cycle_cost();
+on_change{'btnLoadDispatchData'} = define() {
+	logmsg('running btnLoadDispatchData');
+	file = choose_file( '', 'Open TOD Factors File', 
+		'Data Files (*.csv)|*.csv');
 		
-		// look ahead options
-		look_ahead = (mode == 0 || mode == 2);
-			enable('batt_look_ahead_hours', look_ahead);
-		
-		if (financing() != "Merchant Plant")
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+		update = false;
+		data = csvread(file);
+		for ( i=0; i<#data; i++ )
 		{
-		// can only use PPA input, not IRR target
-		if (${ppa_soln_mode} == 0)
-		{
-			msgbox('Automated dispatch requires "Specify PPA price" solution mode, changing from "Specify IRR target" mode.');
-			${ppa_soln_mode} = 1;
+			row = data[i];
+			if ( row[0] == 'use_tod_library_values' )
+			{
+				update = yesno('Update TOD data file before loading?\nSAM cannot load your TOD data file because it contains the variable \'use_tod_library_values\' from an older version of SAM that this version of SAM does not use. Click Yes if you want SAM to remove that variable from the file before loading it. Click No to return to the TOD factors page without modifying or loading the file.');
+				if (update == true )
+				{
+					data -@ i;
+					csvwrite( file, data );
+				}
+			}	
 		}
+
+		if (group_read('Time of Delivery Factors',file))
+		{	
+			value( 'dispatch_data_filename', file );
+			msgbox("Data loaded! \n");
+		}
+		else
+		{
+			value( 'dispatch_data_filename', "" );
+			msgbox("Data load failed! \n");
 		}
 	}
-}
-function enable_auto_inputs_fom(on_off)
-{
-	enable('batt_auto_gridcharge_max_daily', on_off);
-	enable('batt_dispatch_update_frequency_hours', on_off);
-	enable('batt_look_ahead_hours', on_off);
-	enable('batt_cycle_cost_choice', on_off);
-	enable('batt_cycle_cost', on_off);
-}
-function enable_non_manual_inputs_fom(on_off)
-{
-	enable('batt_dispatch_auto_can_gridcharge', on_off);
-	enable('batt_dispatch_auto_can_charge', on_off);
-	enable('batt_dispatch_auto_can_clipcharge', on_off);
-}
+};

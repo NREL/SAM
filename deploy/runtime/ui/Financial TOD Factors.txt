@@ -1614,7 +1614,7 @@ Fields
 101
 Name,Weekday Schedule,Weekend Schedule,TODF 1,TODF 2,TODF 3,TODF 4,TODF 5,TODF 6,TODF 7,TODF 8,TODF 9
 
-26
+27
 dispatch_data_filename
 3
 4
@@ -1761,7 +1761,7 @@ TOD Schedules and Factors|11
 1
 1
 1
- 
+Default
 dispatch_factors_ts
 3
 2
@@ -1831,6 +1831,20 @@ TOD Schedules and Factors|0
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
 DiurnalPeriod
+dispatch_tod_factors
+3
+2
+PPA TOD factors
+ 
+ Time of Delivery Factors
+0
+8
+1
+2
+1
+1
+0
+Default
 lib_dispatch_factor1
 3
 1
