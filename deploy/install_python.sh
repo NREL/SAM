@@ -102,7 +102,7 @@ fi
 # TODO: conda is redistributable. Do we need to publish their license somewhere?
 run_command "bash $CONDA_PACKAGE_PATH -b -p $INSTALL_PATH"
 run_command "$PYTHON $PYTHON_BASE_PATH/$LANDBOSSE_INSTALLER \
-	--python-base-path=$PYTHON_BASE_PATH \
+	--python-base-path=$INSTALL_BASE/runtime/python \
 	--python-exec=$PYTHON \
 	--pip=$PIP"
 run_command "rm -rf $CONDA_PACKAGE_PATH"
