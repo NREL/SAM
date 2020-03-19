@@ -1,3 +1,9 @@
+ param (
+    [Parameter(Mandatory=$true)][string]$version,
+    [Parameter(Mandatory=$true)][string]$config
+ )
+
+$PYTHON_CONFIG_FILE = "python_config.json"
 
 function Invoke-CommandExitOnError {
     param([string]$command)
@@ -34,33 +40,27 @@ function Invoke-WebRequestExitOnError {
 
 
 function Get-Python {
-    param([string]$fullVersion)
-    $version = $fullVersion -split "\."
-    if ($version.Count -ne 3) {
-        Write-Output "version must follow format x.y.z"
-        exit 1
-    }
+    param([string]$fullVersion, [string]$majorMinor)
 
     $origDir = (Get-Location).Path
-    $majorMinor = $version[0] + $version[1]
     $filename = "python-${fullVersion}-embed-amd64.zip"
     $url = "https://www.python.org/ftp/python/${fullVersion}/${filename}"
     Invoke-WebRequestExitOnError $url $filename
 
-    $pythonPath = New-Item -Path $origDir -Name "python-${fullVersion}" -ItemType "directory"
-    $filePath = Join-Path -Path $origDir -ChildPath $filename
-    $pythonStdLibDir = Join-Path -Path $pythonPath -ChildPath "python-${majorMinor}"
-    $pythonStdLibArchive = Join-Path -Path $pythonPath -ChildPath "python${majorMinor}.zip"
+    $pythonPath = New-Item -Path $origDir -Name "python-${fullVersion}" -ItemType directory
+    $filePath = Join-Path $origDir $filename
+    $pythonStdLibDir = Join-Path $pythonPath "python-${majorMinor}"
+    $pythonStdLibArchive = Join-Path $pythonPath "python${majorMinor}.zip"
 
     Set-Location $pythonPath
     Expand-Archive $filePath -DestinationPath .
     Remove-Item $filePath
     Expand-Archive $pythonStdLibArchive
     Remove-Item $pythonStdLibArchive
-    Fix-PythonPath $pythonPath $PYTHON_MAJOR_MINOR
+    Fix-PythonPath $pythonPath $majorMinor
     Get-Pip $pythonPath
     Set-Location $origDir
-    return $pythonPath
+    return $pythonPath.name
 }
 
 
@@ -82,11 +82,11 @@ $pythonPath\Lib
 $pythonPath\Lib\site-packages
 "@
 
-    $filename = Join-Path -Path $pythonPath -ChildPath "python${majorMinor}._pth"
+    $filename = Join-Path $pythonPath "python${majorMinor}._pth"
     if (Test-Path $filename) {
         Remove-Item $filename
     }
-    New-Item -ItemType "file" $filename
+    $unused = New-Item -ItemType file $filename
     Add-Content $filename $text
     Write-Debug "Set Python path in $filename"
 }
@@ -94,9 +94,11 @@ $pythonPath\Lib\site-packages
 
 ### MAIN ###
 #
-# This should be executed in PowerShell in the sam_dev directory.
+# Example usage:
+# .\install_python.ps1 -version 3.7.4 -config .\runtime\python
+#
 # To test the install run this command:
-# .\python\python-3.7.4\Scripts\pip.exe install pandas
+# .\python\python-3.7.4\python.exe --version
 #
 # To enable debug prints run this in the shell:
 # $DebugPreference="Continue"
@@ -106,18 +108,36 @@ $pythonPath\Lib\site-packages
 # the current shell:
 # Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
 
-# TODO: Allow user to specify the python version.
-
 $ErrorActionPreference = "Stop"
 
-$PYTHON_FULL_VERSION = "3.7.4"
-$PYTHON_MAJOR_MINOR = "37"
+$versionArray = $version -split "\."
+if ($versionArray.Count -ne 3) {
+    Write-Output "version must follow format x.y.z"
+    exit 1
+}
+$majorMinor = $versionArray[0] + $versionArray[1]
+Write-Debug "$version $majorMinor $config"
 
 $orig = Get-Location
-$basePath = Join-Path -Path $orig -ChildPath "python"
-if (!(Test-Path $basePath)) {
-    New-Item -Path . -Name python -ItemType "directory"
+if (!(Test-Path $config)) {
+    Write-Error "config path $config does not exist"
+    exit 1
 }
-Set-Location $basePath
-Get-Python $PYTHON_FULL_VERSION
+
+Set-Location $config
+if (!(Test-Path $PYTHON_CONFIG_FILE)) {
+    Write-Error "config file $PYTHON_CONFIG_FILE does not exist"
+    exit 1
+}
+
+$pythonPath = Get-Python $version $majorMinor
+$execPath = Join-Path $pythonPath python.exe
+$pipPath = Join-Path $pythonPath Scripts | Join-Path -ChildPath pip.exe
+
+# Update the python config file.
+$data = Get-Content -Raw -Path $PYTHON_CONFIG_FILE | ConvertFrom-Json
+$data.python_version = $version
+$data.exec_path = $execPath
+$data.pip_path = $pipPath
+ConvertTo-Json $data  | Out-File $PYTHON_CONFIG_FILE
 Set-Location $orig
