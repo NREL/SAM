@@ -1,5 +1,5 @@
 1
-746
+747
 A_sf_UI
 1
 1
@@ -748,7 +748,7 @@ const_per_interest1
 1
 1
 1
-29796930
+29796940
 const_per_interest2
 1
 1
@@ -808,7 +808,7 @@ const_per_interest_total
 1
 1
 1
-29796930
+29796940
 const_per_months1
 1
 1
@@ -905,7 +905,7 @@ const_per_principal1
 1
 1
 1
-744923264
+744923520
 const_per_principal2
 1
 1
@@ -935,13 +935,13 @@ const_per_principal_total
 1
 1
 1
-744923264
+744923520
 const_per_total1
 1
 1
 1
 1
-37246164
+37246176
 const_per_total2
 1
 1
@@ -1001,7 +1001,7 @@ construction_financing_cost
 1
 1
 1
-37246164
+37246176
 contingency_rate
 1
 1
@@ -1031,13 +1031,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-5.92884e+06
+5.92885e+06
 cost_dev_fee_value
 1
 1
 1
 1
-22347698
+22347706
 cost_equity_closing
 1
 1
@@ -1072,7 +1072,7 @@ csp.pt.cost.contingency
 1
 1
 1
-41548612
+41548628
 csp.pt.cost.epc.fixed
 1
 1
@@ -1102,7 +1102,7 @@ csp.pt.cost.epc.total
 1
 1
 1
-63510024
+63510048
 csp.pt.cost.fossil
 1
 1
@@ -1126,7 +1126,7 @@ csp.pt.cost.installed_per_capacity
 1
 1
 1
-7439.93
+7439.94
 csp.pt.cost.nameplate
 1
 1
@@ -1156,7 +1156,7 @@ csp.pt.cost.plm.total
 1
 1
 1
-20909028
+20909000
 csp.pt.cost.power_block
 1
 1
@@ -1180,7 +1180,7 @@ csp.pt.cost.receiver
 1
 1
 1
-11199560
+11199551
 csp.pt.cost.receiver.area
 1
 1
@@ -1192,7 +1192,7 @@ csp.pt.cost.sales_tax.total
 1
 1
 1
-25404010
+25404018
 csp.pt.cost.sales_tax.value
 1
 1
@@ -1234,7 +1234,7 @@ csp.pt.cost.tower
 1
 1
 1
-54493936
+54494152
 csp.pt.par.calc.aux
 1
 1
@@ -12337,7 +12337,7 @@ piping_length
 1
 1
 1
-455.498
+455.499
 piping_length_const
 1
 1
@@ -12361,7 +12361,7 @@ piping_loss_tot
 1
 1
 1
-4646.08
+4646.09
 plant_spec_cost
 1
 1
@@ -12421,7 +12421,7 @@ property_assessed_value
 1
 1
 1
-744923264
+744923520
 property_tax_rate
 1
 1
@@ -12932,6 +12932,12 @@ tank_pairs
 1
 1
 1
+tanks_in_parallel
+1
+1
+1
+1
+1
 tax_investor_equity_percent
 1
 1
@@ -13050,7 +13056,7 @@ total_direct_cost
 1
 1
 1
-635100224
+635100480
 total_indirect_cost
 1
 1
@@ -13062,7 +13068,7 @@ total_installed_cost
 1
 1
 1
-744923264
+744923520
 tower_exp
 1
 1
@@ -13476,7 +13482,7 @@ ui_direct_subtotal
 1
 1
 1
-593551616
+593551808
 ui_disp_1_turbout
 1
 1
