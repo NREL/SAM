@@ -76,10 +76,10 @@ function Fix-PythonPath {
     param([string]$pythonPath, [string]$majorMinor)
 
     $text = @"
-$pythonPath
-$pythonPath\python$majorMinor
-$pythonPath\Lib
-$pythonPath\Lib\site-packages
+.
+.\python$majorMinor
+.\Lib
+.\Lib\site-packages
 "@
 
     $filename = Join-Path $pythonPath "python${majorMinor}._pth"
