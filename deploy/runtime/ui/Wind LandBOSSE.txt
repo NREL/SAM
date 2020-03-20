@@ -74,10 +74,10 @@ Name
 btn_bos_apply
 X
 3
-348
+342
 Y
 3
-270
+282
 Width
 3
 147
@@ -417,7 +417,7 @@ X
 282
 Y
 3
-114
+138
 Width
 3
 90
@@ -665,7 +665,7 @@ X
 282
 Y
 3
-87
+111
 Width
 3
 90
@@ -1409,7 +1409,7 @@ X
 282
 Y
 3
-198
+222
 Width
 3
 90
@@ -1595,7 +1595,7 @@ X
 282
 Y
 3
-60
+84
 Width
 3
 90
@@ -1657,7 +1657,7 @@ X
 282
 Y
 3
-171
+195
 Width
 3
 90
@@ -1876,7 +1876,7 @@ Divider
 Name
 5
 11
-object 2217
+object 2226
 X
 3
 36
@@ -1915,7 +1915,7 @@ Divider
 Name
 5
 11
-object 2224
+object 2233
 X
 3
 36
@@ -1954,7 +1954,7 @@ Divider
 Name
 5
 11
-object 2234
+object 2243
 X
 3
 36
@@ -1993,7 +1993,7 @@ Divider
 Name
 5
 11
-object 2235
+object 2244
 X
 3
 36
@@ -2032,7 +2032,7 @@ Divider
 Name
 5
 11
-object 2247
+object 2256
 X
 3
 36
@@ -2071,7 +2071,7 @@ Divider
 Name
 5
 11
-object 2260
+object 2269
 X
 3
 36
@@ -2110,7 +2110,7 @@ Divider
 Name
 5
 11
-object 2261
+object 2270
 X
 3
 36
@@ -2149,7 +2149,7 @@ Divider
 Name
 5
 11
-object 2262
+object 2271
 X
 3
 480
@@ -2218,7 +2218,7 @@ GroupBox
 Name
 5
 12
-object 42565
+object 42573
 X
 3
 6
@@ -2329,10 +2329,10 @@ Name
 object 73
 X
 3
-498
+492
 Y
 3
-264
+276
 Width
 3
 291
@@ -2442,7 +2442,7 @@ X
 282
 Y
 3
-141
+165
 Width
 3
 90
@@ -2932,7 +2932,7 @@ Numeric
 Name
 5
 23
-total_collection_cost42
+total_collection_cost51
 X
 3
 282
@@ -3056,7 +3056,7 @@ Numeric
 Name
 5
 36
-total_collection_cost_per_capacity40
+total_collection_cost_per_capacity49
 X
 3
 282
@@ -3180,7 +3180,7 @@ Numeric
 Name
 5
 35
-total_collection_cost_per_turbine41
+total_collection_cost_per_turbine50
 X
 3
 282
@@ -4234,7 +4234,7 @@ Numeric
 Name
 5
 40
-total_sitepreparation_cost_per_turbine49
+total_sitepreparation_cost_per_turbine58
 X
 3
 282
@@ -4606,13 +4606,13 @@ Numeric
 Name
 5
 19
-wind_resource_shear
+wind_shear_exponent
 X
 3
-282
+624
 Y
 3
-225
+246
 Width
 3
 90
@@ -5570,14 +5570,14 @@ Wind LandBOSSE
 1
 0
 Default
-wind_resource_shear
+wind_shear_exponent
 3
 1
 Wind shear exponent
  
 Wind LandBOSSE
 0
-2
+8
 1
 1
 1
@@ -5585,9 +5585,13 @@ Wind LandBOSSE
 0
 Numeric
 
-7492
+7929
 equations{ 'turbine_rating_MW' } = define() {
 	return ${wind_turbine_kw_rating};
+};
+
+equations{ 'wind_shear_exponent' } = define() {
+	return ${wind_resource_shear};
 };
 
 equations{ 'rotor_diameter' } = define() {
@@ -5611,98 +5615,137 @@ equations{ 'row_spacing_rotor_diameters' } = define() {
 };
 
 equations{ '$MIMO$ BOS calculations' } = define() {
-    obj = ssc_create();
-    
-	ssc_var( obj, 'machine_rating',                ${wind_turbine_kw_rating} );
-	ssc_var( obj, 'rotor_diameter',                ${wind_turbine_rotor_diameter} );
-	ssc_var( obj, 'hub_height',                    ${wind_turbine_hub_ht} );
-	ssc_var( obj, 'number_of_turbines',            ${wind_farm_num_turbines} );
+	obj = ssc_create();
 
-	ssc_var( obj, 'interconnect_voltage',          ${interconnect_voltage} );
-	ssc_var( obj, 'distance_to_interconnect',      ${distance_to_interconnect} );
-	ssc_var( obj, 'site_terrain',                  ${site_terrain} );
-	ssc_var( obj, 'turbine_layout',                ${turbine_layout} );
-	ssc_var( obj, 'soil_condition',                ${soil_condition} );
-	ssc_var( obj, 'construction_time',             ${construction_time} );
-	ssc_var( obj, 'om_building_size',              ${om_building_size} );
-	ssc_var( obj, 'quantity_test_met_towers',      ${quantity_test_met_towers} );
-	ssc_var( obj, 'quantity_permanent_met_towers', ${quantity_permanent_met_towers} );
-	ssc_var( obj, 'weather_delay_days',            ${weather_delay_days} );
-	ssc_var( obj, 'crane_breakdowns',              ${crane_breakdowns} );
-	ssc_var( obj, 'access_road_entrances',         ${access_road_entrances} );
-	ssc_var( obj, 'turbine_capital_cost',          ${turbine_capital_cost} );
-	ssc_var( obj, 'tower_top_mass',                ${tower_top_mass} );
-	ssc_var( obj, 'delivery_assist_required',      ${delivery_assist_required} );
-	ssc_var( obj, 'pad_mount_transformer_required',${pad_mount_transformer_required} );
-	ssc_var( obj, 'new_switchyard_required',       ${new_switchyard_required} );
-	ssc_var( obj, 'rock_trenching_required',       ${rock_trenching_required} );
-	ssc_var( obj, 'mv_thermal_backfill',           ${mv_thermal_backfill} );
-	ssc_var( obj, 'mv_overhead_collector',         ${mv_overhead_collector} );
-	ssc_var( obj, 'performance_bond',              ${performance_bond} );
-	ssc_var( obj, 'contingency',                   ${contingency} );
-	ssc_var( obj, 'warranty_management',           ${warranty_management} );
-	ssc_var( obj, 'sales_and_use_tax',             ${sales_and_use_tax} );
-	ssc_var( obj, 'overhead',                      ${overhead} );
-	ssc_var( obj, 'profit_margin',                 ${profit_margin} );
-	ssc_var( obj, 'development_fee',               ${development_fee} );
-	ssc_var( obj, 'turbine_transportation',        ${turbine_transportation} );
-      
-    result = ssc_exec( obj, 'windbos' );
-    
-    rv = ssc_var(obj, 'project_total_budgeted_cost');
-    ${bos_total_budgeted_cost} = rv;
-    
-    rv = ssc_var(obj, 'transportation_cost');
-    ${transportation_cost} = rv;
-    
-    rv = ssc_var(obj, 'insurance_cost');
-    ${insurance_cost} = rv;
-    
-    rv = ssc_var(obj, 'engineering_cost');
-    ${engineering_cost} = rv;
+	ssc_var(obj, "wind_resource_filename", ${wind_resource_filename});
+	ssc_var(obj, "distance_to_interconnect_mi", ${distance_to_interconnect_mi});
+	ssc_var(obj, "interconnect_voltage_kV", ${interconnect_voltage_kV});
+	ssc_var(obj, "depth", ${depth});
+	ssc_var(obj, "rated_thrust_N", ${rated_thrust_N});
+	ssc_var(obj, "labor_cost_multiplier", ${labor_cost_multiplier});
+	ssc_var(obj, "gust_velocity_m_per_s", ${gust_velocity_m_per_s});
+	ssc_var(obj, "wind_resource_shear", ${wind_resource_shear});
+	ssc_var(obj, "num_turbines", ${num_turbines});
+	ssc_var(obj, "turbine_spacing_rotor_diameters", ${turbine_spacing_rotor_diameters});
+	ssc_var(obj, "row_spacing_rotor_diameters", ${row_spacing_rotor_diameters});
+	ssc_var(obj, "turbine_rating_MW", ${turbine_rating_MW});
+	ssc_var(obj, "wind_turbine_hub_ht", ${wind_turbine_hub_ht});
+	ssc_var(obj, "wind_turbine_rotor_diameter", ${wind_turbine_rotor_diameter});
 
-    rv = ssc_var(obj, 'power_performance_cost');
-    ${power_performance_cost} = rv;
+	result = ssc_exec( obj, 'wind_landbosse' );
 
-    rv = ssc_var(obj, 'site_compound_security_cost');
-    ${site_compound_security_cost} = rv;
+	    rv = ssc_var(obj, "bonding_usd");
+    ${bonding_usd} = rv;
 
-    rv = ssc_var(obj, 'building_cost');
-    ${building_cost} = rv;
+    rv = ssc_var(obj, "collection_equipment_rental_usd");
+    ${collection_equipment_rental_usd} = rv;
 
-    rv = ssc_var(obj, 'transmission_cost');
-    ${transmission_cost} = rv;
+    rv = ssc_var(obj, "collection_labor_usd");
+    ${collection_labor_usd} = rv;
 
-    rv = ssc_var(obj, 'markup_cost');
-    ${markup_cost} = rv;
+    rv = ssc_var(obj, "collection_material_usd");
+    ${collection_material_usd} = rv;
 
-    rv = ssc_var(obj, 'development_cost');
-    ${development_cost} = rv;
+    rv = ssc_var(obj, "collection_mobilization_usd");
+    ${collection_mobilization_usd} = rv;
 
-    rv = ssc_var(obj, 'access_roads_cost');
-    ${access_roads_cost} = rv;
+    rv = ssc_var(obj, "construction_permitting_usd");
+    ${construction_permitting_usd} = rv;
 
-    rv = ssc_var(obj, 'foundation_cost');
-    ${foundation_cost} = rv;
+    rv = ssc_var(obj, "development_labor_usd");
+    ${development_labor_usd} = rv;
 
-    rv = ssc_var(obj, 'erection_cost');
-    ${erection_cost} = rv;
+    rv = ssc_var(obj, "development_material_usd");
+    ${development_material_usd} = rv;
 
-    rv = ssc_var(obj, 'electrical_materials_cost');
-    ${electrical_materials_cost} = rv;
+    rv = ssc_var(obj, "development_mobilization_usd");
+    ${development_mobilization_usd} = rv;
 
-    rv = ssc_var(obj, 'electrical_installation_cost');
-    ${electrical_installation_cost} = rv;
+    rv = ssc_var(obj, "engineering_usd");
+    ${engineering_usd} = rv;
 
-    rv = ssc_var(obj, 'substation_cost');
-    ${substation_cost} = rv;
+    rv = ssc_var(obj, "erection_equipment_rental_usd");
+    ${erection_equipment_rental_usd} = rv;
 
-    rv = ssc_var(obj, 'project_mgmt_cost');
-    ${project_mgmt_cost} = rv;
+    rv = ssc_var(obj, "erection_fuel_usd");
+    ${erection_fuel_usd} = rv;
+
+    rv = ssc_var(obj, "erection_labor_usd");
+    ${erection_labor_usd} = rv;
+
+    rv = ssc_var(obj, "erection_material_usd");
+    ${erection_material_usd} = rv;
+
+    rv = ssc_var(obj, "erection_mobilization_usd");
+    ${erection_mobilization_usd} = rv;
+
+    rv = ssc_var(obj, "erection_other_usd");
+    ${erection_other_usd} = rv;
+
+    rv = ssc_var(obj, "foundation_equipment_rental_usd");
+    ${foundation_equipment_rental_usd} = rv;
+
+    rv = ssc_var(obj, "foundation_labor_usd");
+    ${foundation_labor_usd} = rv;
+
+    rv = ssc_var(obj, "foundation_material_usd");
+    ${foundation_material_usd} = rv;
+
+    rv = ssc_var(obj, "foundation_mobilization_usd");
+    ${foundation_mobilization_usd} = rv;
+
+    rv = ssc_var(obj, "insurance_usd");
+    ${insurance_usd} = rv;
+
+    rv = ssc_var(obj, "markup_contingency_usd");
+    ${markup_contingency_usd} = rv;
+
+    rv = ssc_var(obj, "project_management_usd");
+    ${project_management_usd} = rv;
+
+    rv = ssc_var(obj, "site_facility_usd");
+    ${site_facility_usd} = rv;
+
+    rv = ssc_var(obj, "sitepreparation_equipment_rental_usd");
+    ${sitepreparation_equipment_rental_usd} = rv;
+
+    rv = ssc_var(obj, "sitepreparation_labor_usd");
+    ${sitepreparation_labor_usd} = rv;
+
+    rv = ssc_var(obj, "sitepreparation_material_usd");
+    ${sitepreparation_material_usd} = rv;
+
+    rv = ssc_var(obj, "sitepreparation_mobilization_usd");
+    ${sitepreparation_mobilization_usd} = rv;
+
+    rv = ssc_var(obj, "total_collection_cost");
+    ${total_collection_cost} = rv;
+
+    rv = ssc_var(obj, "total_development_cost");
+    ${total_development_cost} = rv;
+
+    rv = ssc_var(obj, "total_erection_cost");
+    ${total_erection_cost} = rv;
+
+    rv = ssc_var(obj, "total_foundation_cost");
+    ${total_foundation_cost} = rv;
+
+    rv = ssc_var(obj, "total_gridconnection_cost");
+    ${total_gridconnection_cost} = rv;
+
+    rv = ssc_var(obj, "total_management_cost");
+    ${total_management_cost} = rv;
+
+    rv = ssc_var(obj, "total_sitepreparation_cost");
+    ${total_sitepreparation_cost} = rv;
+
+    rv = ssc_var(obj, "total_substation_cost");
+    ${total_substation_cost} = rv;
+
+    rv = ssc_var(obj, "total_project_cost");
+    ${total_project_cost} = rv;
 
 	ssc_free( obj );
-	
-    //msgbox("Result:\n" + result + '\n\nBOS Output=' +  rv2);   
 };
 
 equations{ 'bos_total_cost_per_kw' } = define() {
