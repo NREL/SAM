@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Edit Lifetime Data</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "edit_data_lifetime.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Edit Lifetime Data</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">Some input variables in SAM are arrays of time series data with values that apply over the analysis period. The length of the array is the product of the array's time scale and the analysis period, where the analysis period is the number of years in the simulation as defined on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page. The Edit Lifetime Data window allows you to create a table of values for this type of input variable. The table may have a single column for one variable or multiple columns for two or more variables.</span></p>
+<p class="p_Text"><span class="f_Text">The number of rows in the table depends on the length of the array. For example, an array with a daily time scale and a 30-year analysis period would have:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">365 days/year × 30 years = 10,950 rows</span></p>
+<p class="p_Text"><span class="f_Text">An array with an hourly time scale and a 25-year analysis period would have:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">8,760 time steps/year × 25 years = 219,000 rows</span></p>
+<p class="p_Text"><span class="f_Text">Or, for a 15-minute time scale:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">4 time steps/hour × 24 hours/day × 365 days/year = 35,040 time steps/year × 25 years = 876,000 rows</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM <a href="weather_time_convention.htm" class="topiclink">omits leap years</a> from the simulation, so it assumes there are </span><span class="f_Emphasis">24 hours/day × &nbsp;365 days/year = 8,760 hours/year</span><span class="f_Note">, regardless of the year. It also does not account for daylight savings, so all times are in local standard time throughout the year. See <a href="weather_time_convention.htm" class="topiclink">Time and Sun Position</a> for more details.</span></p>
+<p class="p_Text"><span class="f_Text">The window appears on the following input pages</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List"><a href="revenue_merchant_plant.htm" class="topiclink">Revenue</a> for Merchant Plant financial model.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List"><a href="lifetime.htm" class="topiclink">Lifetime and Degradation</a></span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast"><a href="battery_model.htm" class="topiclink">Battery Storage</a> to input battery dispatch profile.</span></p><p class="p_Text"><span class="f_Text">To assign values to an array input variable, you can either type values by hand into the table, or import them from another program:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Paste data from a spreadsheet program or from a text file. Use tab-delimited columns for more than one column of data.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Import data from a text file (with tab-delimited columns for more than one column of data).</span></p><p class="p_Text"><span class="f_Text">Before you try importing data from a text file, you may want to try exporting test data to a file so you can see the data format.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Analysis Period</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The analysis is the number of years in the system life. It is defined as an input on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page. The analysis period determines the number of rows in the table for all modes except the Single Value mode. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">To change the analysis period, change its value on the Financial Parameters page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Mode</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Depending on the variable, the Edit Time Series Data window may allow you to choose a mode to define the time scale. For other variables, the mode is fixed, so you cannot change it. The following table describes the five available modes for variables that allow you to choose the length of the array.</span></p>
+<p class="p_Text" style="text-align: center;"><img alt="SS_EditTimeSeries-mode" width="176" height="105" style="margin:0 auto 0 auto;width:176px;height:105px;border:none" src="ss_edittimeseries-mode.png"/></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table class="DefaultShadedRows" >
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Mode</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Description</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Analysis Period</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Number of Rows</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Single Value</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">One value applies to all time steps.</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">N</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Monthly</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">One value applies to all time steps in each each month over the analysis period.</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">N</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">12 × N</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Daily</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">One value applies to all time steps in each day over the analysis period.</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">N</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">365 × N</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Hourly</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">One value applies to each hour over the analysis period.</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">N</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">8,760 × N</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadRow" style="page-break-inside: avoid;"><span class="f_TableHeadRow">Subhourly</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">One value applies to each time step over the analysis period.</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">N</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">35,040 × N*</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Copy</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Copy the contents of the input table to your computer's clipboard.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Paste</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Paste data from you computer's clipboard to the input table. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Export</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Export</span><span class="f_VariableDescription"> to export data from the table to a text file. Be sure to include a file extension (.txt, .csv, etc.) when you save the file.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Import</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Import</span><span class="f_VariableDescription"> to import time series data from a properly formatted text file. The file should have one column of data, with a header in Row 1. SAM ignores the data in Row 1. To see an example of the file format, click </span><span class="f_CHInterfaceElement">Export</span><span class="f_VariableDescription"> and open the resulting file in a text editor.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Edit Data Table by Column</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "edit_data_table_column.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Edit Data Table by Column</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">For some variables, you can specify either a single value, or a column of values over a range. The range might be a range of temperatures for parabolic trough absorber emittances, or a time period, such as annual operation and maintenance costs.</span></p>
+<p class="p_Text"><span class="f_Text">The following are examples of input variables that have a schedule option:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Operation and maintenance costs on the System Costs page</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Annual degradation rate on the <a href="lifetime.htm" class="topiclink">Lifetime</a> page</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Production tax credit and production-based incentive on the <a href="incentives.htm" class="topiclink">Incentives</a> page</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Electricity price escalation rate on the <a href="electricity_rates.htm" class="topiclink">Electricity Rates</a> page (residential and commercial financial models only)</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Electric load escalation rate on the <a href="electric_load.htm" class="topiclink">Electric Load</a> page (residential and commercial financial models only)</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Occupancy and temperature schedules for the building energy load profile estimator on the <a href="electric_load.htm" class="topiclink">Electric Load</a> page.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Parabolic trough absorber emittance for the physical trough model <a href="troughphysical_receivers_hces.htm" class="topiclink">Receivers</a> page.</span></p><p class="p_Note"><span class="f_CHNote">Tip.</span><span class="f_Note"> When you first start working with schedule, it is a good idea to try some test values and see how they affect results to be sure you understand how SAM interprets the values. For example, you can see the effect of annual schedule inputs in the <a href="cashflow.htm" class="topiclink">cash flow</a> table.</span></p>
+<p class="p_Text"><span class="f_Text">Variables with a schedule option have a small </span><span class="f_CHInterfaceElement">Value</span><span class="f_Text"> / </span><span class="f_CHInterfaceElement">Sched</span><span class="f_Text"> button next to the variable label, or </span><span class="f_CHInterfaceElement">Value / Table</span><span class="f_Text"> for variables that require two columns of values. The variable's current mode is indicated in blue (or green for the table option):</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">When the word &quot;Value&quot; is highlighted in blue, the variable is in Value mode and has a single value that you define by typing its value in the input box: </span><br />
+<img alt="SS_AnnSched-Value" width="150" height="31" style="margin:0;width:150px;height:31px;border:none" src="ss_annsched-value.png"/></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">When the word &quot;Sched&quot; is highlighted in blue, the variable is in Schedule mode and has multiple values that you define using a table (the values do not have to follow a pattern):</span></p><div style="text-align: left; padding: 0 0 0 0; margin: 0 0 6px 48px;"><table class="DefaultNoBorder" >
+<tr class="DefaultNoBorder">
+<td class="DefaultNoBorder" style="width:164px;"><p class="p_Text"><img alt="SS_AnnSched-SchedEdit" width="150" height="31" style="margin:0;width:150px;height:31px;border:none" src="ss_annsched-schededit.png"/></p>
+</td>
+<td class="DefaultNoBorder"><p class="p_Normal"><img alt="SS_AnnSched-Table" width="385" height="346" style="margin:0;width:385px;height:346px;border:none" src="ss_annsched-table.png"/></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">In Schedule mode, be sure to use values with the correct units.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">When you specify currency values in Schedule mode, use the nominal or current dollar values. SAM does not apply the inflation rate to values you specify in an annual schedule.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">When you specify annual rates in Schedule mode, SAM applies the rate in each year to the first value in the table. For example, on the <a href="lifetime.htm" class="topiclink">Lifetime</a> page, a degradation rate 0.5% for Year 5 when the Year 1 net annual output is 10,000 kWh results in an annual output value of (1 - 0.005) × 10,000 kWh = 9,950 kWh in year 5. Similarly, on the <a href="electricity_rates.htm" class="topiclink">Electricity Rates</a> page, for a Year 1 buy rate of $0.10/kWh and an escalation rate of 0.25% results in a Year 3 buy rate of (1 + 0.0025) × $0.10/kWh = $0.10025/kWh.</span></p>
+<p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To enter a schedule of values for an input:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">1.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Sched</span><span class="f_ProcedureStep"> to change the variable's mode from a single value to schedule mode. SAM displays the Edit button.</span></p><p class="p_ProcedureStepNoNumber"><img alt="SS_AnnSched-SchedEdit" width="150" height="31" style="margin:0;width:150px;height:31px;border:none" src="ss_annsched-schededit.png"/></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep"> to open the Edit Schedule window.</span></p><p class="p_ProcedureStepNoNumber"><img alt="SS_AnnSched-Table" width="385" height="346" style="margin:0;width:385px;height:346px;border:none" src="ss_annsched-table.png"/></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">3.</span><span class="f_ProcedureStep">If </span><span class="f_CHInterfaceElement">Number of Values</span><span class="f_ProcedureStep"> is available, type the number of rows you need in the table. For an annual schedule, this number should be equal to or less than the number of years in the analysis period defined on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page. </span></p><p class="p_Note"><span class="f_CHNote">Important Note.</span><span class="f_Note"> If you specify a number greater than the number of years in the analysis period, SAM ignores any values in the table for years after the end of the analysis period, which does not affect analysis results. However, if you specify a number less than the analysis period, SAM assigns a zero to each year after the number of years you specify, which may cause unexpected results.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">4.</span><span class="f_ProcedureStep">For each row in the table, type a valid value for the input.</span></p><p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">You can also copy a row of values from Excel, or a line of comma-separated values from a text file to your computer's clipboard, and click </span><span class="f_CHInterfaceElement">Paste</span><span class="f_ProcedureStepNoNumber"> to paste them into the table.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ProcedureStep" style="display:inline-block;width:24px;margin-left:-24px">5.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">OK</span><span class="f_ProcedureStep"> to save the values and return to the SAM input page.</span></p>
+</td></tr></table>
+
+</body>
+</html>

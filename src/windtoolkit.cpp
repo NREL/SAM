@@ -159,7 +159,7 @@ void WindToolkitDialog::OnEvt( wxCommandEvent &e )
 	switch( e.GetId() )
 	{
 	case wxID_HELP:
-		SamApp::ShowHelp("download_weather_file");
+		SamApp::ShowHelp("wind_toolkit_download");
 		break;
 	case ID_radAddress:
 	case ID_radLatLon:
