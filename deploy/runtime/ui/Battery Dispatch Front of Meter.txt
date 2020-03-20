@@ -1,6 +1,6 @@
 Battery Dispatch Front of Meter
-997
-373
+995
+370
 27
 GroupBox
 
@@ -120,7 +120,7 @@ Name
 StorageDispatchBox
 X
 3
-9
+6
 Y
 3
 3
@@ -1321,7 +1321,7 @@ equations{'dispatch_tod_factors'} = define()
 };
 
 */
-4376
+4373
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
@@ -1372,8 +1372,7 @@ function run_forecast(file)
 		ssc_var(forecast_run, 'use_specific_weather_file', true);	
 		ssc_var(forecast_run, 'user_specified_weather_file', file);
 		ssc_var(forecast_run, 'solar_resource_file', file);	
-			
-		
+	
 		logmsg('use_specific_weather_file: ' + ssc_var(forecast_run, 'use_specific_weather_file'));
 		logmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));
 		logmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));
@@ -1394,8 +1393,6 @@ function run_forecast(file)
 		${batt_pv_dc_forecast} = [0];
 		${batt_pv_clipping_forecast} = [0];
 	}
-		
-	
 	
 	//value('use_specific_weather_file', use_specific_weather_file_old);		
 	//value('user_specified_weather_file', user_specified_weather_file_old);
@@ -1440,8 +1437,7 @@ function toggle_dispatch_fom()
 		enable_non_manual_inputs_fom(false);
 		return;
 	}
-	
-	
+
 	// manual disptch
 	if (mode == 4)
 	{
@@ -1469,7 +1465,7 @@ function toggle_dispatch_fom()
 		// can only use PPA input, not IRR target
 		if (${ppa_soln_mode} == 0)
 		{
-			msgbox('Automated dispatch requires PPA price to be fixed, changing from IRR target to fixed PPA rate');
+			msgbox('Automated dispatch requires "Specify PPA price" solution mode, changing from "Specify IRR target" mode.');
 			${ppa_soln_mode} = 1;
 		}
 		}

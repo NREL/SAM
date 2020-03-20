@@ -8,15 +8,18 @@
 			"insurance_rate": 0.5,
 			"loan_rate": 5,
 			"loan_term": 25,
+			"market": 0,
+			"mortgage": 1,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
-			"property_tax_rate": 2,
+			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
+			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 4
 		},
 		"SystemCosts": {
-			"om_capacity": [16.000000],
+			"om_capacity": [20.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -24,8 +27,9 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [0.000000],
-			"om_replacement_cost_escal": 0
+			"om_replacement_cost1": [500.000000],
+			"om_replacement_cost_escal": 0,
+			"total_installed_cost": 10044.4
 		},
 		"Depreciation": {
 		},
@@ -33,7 +37,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 30,
+			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -141,19 +145,13 @@
 			"pbi_uti_tax_sta": 1,
 			"pbi_uti_term": 0
 		},
-		"Battery": {
+		"BatterySystem": {
 			"battery_per_kWh": 300
 		},
 		"FuelCell": {
 		},
-		"Cashloan": {
-			"annual_energy_value": [0],
-			"market": 0,
-			"mortgage": 1,
-			"salvage_percentage": 0,
-			"total_installed_cost": 10783.1
-		},
 		"SystemOutput": {
+			"annual_energy_value": [0],
 			"degradation": [0.500000],
 			"gen": [0]
 		},

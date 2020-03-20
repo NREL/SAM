@@ -89,6 +89,10 @@ void builder_generator::select_ui_variables(std::string ui_name, std::map<std::s
 void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
     ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
 
+    digraph* graph = nullptr;
+    if (SAM_config_to_variable_graph.find(active_config) != SAM_config_to_variable_graph.end())
+        graph = SAM_config_to_variable_graph[active_config];
+
     int var_index = 0;
     ssc_info_t mod_info = ssc_module_var_info(p_mod, var_index);
     std::map<std::string, var_def> adj_map;
@@ -122,6 +126,14 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
 			}
         }
 
+        // get upstream and downstream variables
+        if (graph){
+            vertex* vert = graph->find_vertex(vd.name, true);
+            if (vert){
+                vd.downstream = graph->downstream_vertices(vert, cmod_name);
+                vd.upstream = graph->upstream_vertices(vert, cmod_name);
+            }
+        }
 
         std::vector<std::string> ssctype_str = {"invalid", "string", "number", "array", "matrix", "table"};
         vd.type_n = ssc_info_data_type(mod_info);
@@ -202,7 +214,13 @@ void builder_generator::gather_equations(const std::string &cmod) {
         std::string group_name;
         std::string func_name = entry.name;
         size_t pos = func_name.find('_');
+        // if the first underscore-delimited substring is a group name, the eqn goes under that group
         group_name = func_name.substr(0, pos);
+        if (m_vardefs.find(group_name) == m_vardefs.end()){
+            // otherwise the eqn goes under the cmod class
+            group_name = cmod_symbol;
+            pos = -1;
+        }
         func_name = func_name.substr(pos + 1);
         auto it = m_eqn_entries.find(group_name);
         if (it == m_eqn_entries.end()){
@@ -355,6 +373,11 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
             std::string var_symbol = it->first;
             var_def v = it->second;
 
+            // if it's a file name, don't assign
+            if (var_symbol.find("file") != std::string::npos){
+                continue;
+            }
+
             VarValue* vv = nullptr;
 
             // if adjustment factors, the default values are stored in a table
@@ -379,6 +402,10 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
             }
             else
                 vv = SAM_config_to_defaults[config_name][v.name];
+
+            // if it's a battery configuration, turn on battery by default
+            if ((cmod == "battery" && v.name == "en_batt") |  (cmod == "battwatts" && v.name == "batt_simple_enable"))
+                vv->Set(1);
 
             // vv can be null in the case of variables not available in UI
             if (!vv && v.reqif != "*")
@@ -820,7 +847,7 @@ void builder_generator::create_all(std::string cmod, const std::string &defaults
         builder_C_API c_API(this);
 
         c_API.create_SAM_headers(cmod, api_path + "/include");
-        c_API.create_SAM_definitions(cmod, api_path + "/src");
+        c_API.create_SAM_definitions(cmod, api_path + "/modules");
     }
 
     if (print_pysam){

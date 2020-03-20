@@ -1421,6 +1421,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcstroughEmpirical_Outputs_month_aget(SAM_TcstroughEmpirical ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcstroughEmpirical_Outputs_monthly_energy_aget(SAM_TcstroughEmpirical ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcstroughEmpirical_Outputs_o_SfTi_aget(SAM_TcstroughEmpirical ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcstroughEmpirical_Outputs_pres_aget(SAM_TcstroughEmpirical ptr, int* length, SAM_error *err);

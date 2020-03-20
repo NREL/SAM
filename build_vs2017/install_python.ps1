@@ -2,7 +2,7 @@
 function Invoke-CommandExitOnError {
     param([string]$command)
     Write-Debug "Run command [$command]"
-    
+
     $command_args = -split $command
     $exec = $command_args[0]
     if ($command_args.Count -gt 1) {
@@ -10,7 +10,7 @@ function Invoke-CommandExitOnError {
     } else {
         $args = @()
     }
-    
+
     $result = Start-Process $exec -ArgumentList $args -Wait -NoNewWindow -PassThru -RedirectStandardOutput nul
     if ($result.ExitCode -ne 0) {
         $msg = "failed to run [$command]: ExitCode={0}" -f $result.ExitCode
@@ -43,25 +43,21 @@ function Get-Python {
 
     $origDir = (Get-Location).Path
     $majorMinor = $version[0] + $version[1]
-    $filename = "python-" + $fullVersion + "-embed-amd64.zip"
-    $url = "https://www.python.org/ftp/python/" + $fullVersion + "/" + $filename
+    $filename = "python-${fullVersion}-embed-amd64.zip"
+    $url = "https://www.python.org/ftp/python/${fullVersion}/${filename}"
     Invoke-WebRequestExitOnError $url $filename
 
-    $pythonPath = $origDir + "\python-" + $fullVersion
-    $filePath = $origDir + "\" + $filename
-    $pythonStdLibDir = "python" + $majorMinor 
-    $pythonStdLibArchive = $pythonPath + "\$pythonStdLibDir" + ".zip"
+    $pythonPath = New-Item -Path $origDir -Name "python-${fullVersion}" -ItemType "directory"
+    $filePath = Join-Path -Path $origDir -ChildPath $filename
+    $pythonStdLibDir = Join-Path -Path $pythonPath -ChildPath "python-${majorMinor}"
+    $pythonStdLibArchive = Join-Path -Path $pythonPath -ChildPath "python${majorMinor}.zip"
 
-    Invoke-CommandExitOnError "mkdir $pythonPath"
     Set-Location $pythonPath
-    Invoke-CommandExitOnError "unzip -o $filePath"
-    Invoke-CommandExitOnError "rm $filePath"
-    Invoke-CommandExitOnError "mkdir $pythonStdLibDir"
-    Set-Location $pythonStdLibDir
-    Invoke-CommandExitOnError "unzip -o $pythonStdLibArchive"
-    Invoke-CommandExitOnError "rm $pythonStdLibArchive"
+    Expand-Archive $filePath -DestinationPath .
+    Remove-Item $filePath
+    Expand-Archive $pythonStdLibArchive
+    Remove-Item $pythonStdLibArchive
     Fix-PythonPath $pythonPath $PYTHON_MAJOR_MINOR
-    Set-Location $pythonPath
     Get-Pip $pythonPath
     Set-Location $origDir
     return $pythonPath
@@ -69,15 +65,10 @@ function Get-Python {
 
 
 function Get-Pip {
-    param([string]$pythonPath)
-    Write-Debug "download pip to pythonPath=$pythonPath"
-    $origDir = (Get-Location).Path
-    Set-Location $pythonPath
+    param([String]$path)
     Invoke-WebRequestExitOnError https://bootstrap.pypa.io/get-pip.py get-pip.py
-    
-    Invoke-CommandExitOnError ".\python.exe get-pip.py --prefix=$pythonPath --no-warn-script-location"
-    Invoke-CommandExitOnError "rm get-pip.py"
-    Set-Location $origDir
+    Invoke-CommandExitOnError ".\python.exe get-pip.py --prefix=$path --no-warn-script-location"
+    Remove-Item "get-pip.py"
 }
 
 
@@ -91,9 +82,11 @@ $pythonPath\Lib
 $pythonPath\Lib\site-packages
 "@
 
-    $filename = $pythonPath + "\python" + $majorMinor + "._pth"
-    rm $filename
-    touch $filename
+    $filename = Join-Path -Path $pythonPath -ChildPath "python${majorMinor}._pth"
+    if (Test-Path $filename) {
+        Remove-Item $filename
+    }
+    New-Item -ItemType "file" $filename
     Add-Content $filename $text
     Write-Debug "Set Python path in $filename"
 }
@@ -115,11 +108,13 @@ $pythonPath\Lib\site-packages
 
 # TODO: Allow user to specify the python version.
 
+$ErrorActionPreference = "Stop"
+
 $PYTHON_FULL_VERSION = "3.7.4"
 $PYTHON_MAJOR_MINOR = "37"
 
-$orig = (Get-Location).Path
-$basePath = "python"
+$orig = Get-Location
+$basePath = Join-Path -Path $orig -ChildPath "python"
 if (!(Test-Path $basePath)) {
     New-Item -Path . -Name python -ItemType "directory"
 }

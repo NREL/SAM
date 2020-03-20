@@ -5,7 +5,7 @@ MSPT Receiver
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -81,6 +84,9 @@ Width
 Height
 3
 182
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -91,7 +97,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -108,6 +114,9 @@ Width
 Height
 3
 146
+Tool Tip
+5
+0
 Caption
 5
 33
@@ -118,7 +127,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -135,6 +144,9 @@ Width
 Height
 3
 317
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -145,7 +157,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -162,6 +174,9 @@ Width
 Height
 3
 167
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -172,7 +187,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -189,6 +204,9 @@ Width
 Height
 3
 143
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -199,7 +217,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -216,6 +234,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -258,7 +279,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 19
@@ -275,6 +296,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 141
@@ -303,7 +327,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -320,6 +344,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -362,7 +389,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -379,6 +406,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -421,7 +451,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 22
@@ -438,6 +468,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -480,7 +513,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -497,6 +530,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -539,7 +575,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 23
@@ -556,6 +592,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 9
@@ -577,7 +616,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 19
@@ -594,6 +633,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Items
 6
 3
@@ -609,7 +651,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 24
@@ -626,6 +668,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 3
@@ -641,7 +686,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 26
@@ -658,6 +703,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -700,7 +748,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -717,6 +765,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -759,7 +810,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -776,6 +827,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -818,7 +872,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -835,6 +889,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -877,7 +934,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -894,6 +951,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -936,7 +996,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -953,6 +1013,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -995,7 +1058,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -1012,6 +1075,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1054,7 +1120,7 @@ TabOrder
 MaterialProperties
 
 1
-6
+7
 Name
 5
 14
@@ -1071,13 +1137,16 @@ Width
 Height
 3
 27
+Tool Tip
+5
+0
 TabOrder
 3
 24
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1094,6 +1163,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1136,7 +1208,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -1153,6 +1225,9 @@ Width
 Height
 3
 150
+Tool Tip
+5
+0
 Caption
 5
 33
@@ -1163,7 +1238,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -1180,6 +1255,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1222,7 +1300,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1239,6 +1317,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1281,7 +1362,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1298,6 +1379,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1340,7 +1424,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1357,6 +1441,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1399,7 +1486,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -1416,6 +1503,9 @@ Width
 Height
 3
 114
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -1426,7 +1516,7 @@ Bold
 Image
 
 1
-7
+8
 Name
 5
 7
@@ -1443,6 +1533,9 @@ Width
 Height
 3
 163
+Tool Tip
+5
+0
 Image
 7
 MSPT Receiver_pctFlow.png
@@ -1452,7 +1545,7 @@ Centered
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1469,6 +1562,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1511,7 +1607,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -1528,6 +1624,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1570,7 +1669,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1587,6 +1686,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1629,7 +1731,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 11
@@ -1646,6 +1748,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1688,7 +1793,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1705,6 +1810,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1747,7 +1855,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1764,6 +1872,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1806,7 +1917,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1823,6 +1934,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1865,7 +1979,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1882,6 +1996,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1924,7 +2041,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -1941,6 +2058,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1983,7 +2103,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -2000,6 +2120,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2042,7 +2165,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -2059,6 +2182,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2972,7 +3098,7 @@ Tower and Receiver
 0
 Default
 
-2361
+2954
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
@@ -2995,63 +3121,73 @@ equations{ 'Flow_type' } = define() {
 	return ${csp.pt.rec.flow_pattern} + 1;
 };
 
+equations{ '$MIMO$ MSPT_Receiver_Equations' } = define() {	
+	// csp.pt.rec.htf_t_avg
+	data.t_htf_cold_des = ${T_htf_cold_des};
+	data.t_htf_hot_des = ${T_htf_hot_des};
+	
+	// csp.pt.rec.htf_c_avg
+	data.csp_pt_rec_htf_t_avg = nan();
+	data.rec_htf = ${rec_htf};
+	data.field_fl_props = ${field_fl_props};
+	
+	// csp.pt.rec.max_flow_to_rec
+	data.csp_pt_rec_max_oper_frac = ${csp.pt.rec.max_oper_frac};
+	data.q_rec_des = ${Q_rec_des};
+	data.csp_pt_rec_htf_c_avg = nan();
+	data.t_htf_hot_des = ${T_htf_hot_des};
+	data.t_htf_cold_des = ${T_htf_cold_des};
+	
+	// csp.pt.rec.cav_ap_height
+	data.rec_d_spec = ${rec_d_spec};
+	data.csp_pt_rec_cav_ap_hw_ratio = ${csp.pt.rec.cav_ap_hw_ratio};
+	
+	// rec_aspect
+	data.d_rec = ${D_rec};
+	data.rec_height = ${rec_height};
+	
+	// piping_length
+	data.h_tower = ${h_tower};
+	data.piping_length_mult = ${piping_length_mult};
+	data.piping_length_const = ${piping_length_const};
+	
+	// piping_loss_tot
+	data.piping_length = nan();		// intermediate output for later input
+	data.piping_loss = ${piping_loss};
+	
+	success = ssc_eqn("MSPT_Receiver_Equations", data);
+	if (!success) {
+		//${csp.pt.rec.cav_lip_height} = -999.;		// not in Variables
+		//${csp.pt.rec.cav_panel_height} = -999.;   // not in Variables
+		${csp.pt.rec.max_flow_to_rec} = -999.;
+		${csp.pt.rec.htf_t_avg} = -999.;
+		${csp.pt.rec.cav_ap_height} = -999.;
+		${csp.pt.rec.htf_c_avg} = -999.;
+		${rec_aspect} = -999.;
+		${piping_length} = -999.;
+		${piping_loss_tot} = -999.;
+	}
+	else {
+		//${csp.pt.rec.cav_lip_height} = data.csp_pt_rec_cav_lip_height;
+		//${csp.pt.rec.cav_panel_height} = data.csp_pt_rec_cav_panel_height;
+		${csp.pt.rec.max_flow_to_rec} = data.csp_pt_rec_max_flow_to_rec;
+		${csp.pt.rec.htf_t_avg} = data.csp_pt_rec_htf_t_avg;
+		${csp.pt.rec.cav_ap_height} = data.csp_pt_rec_cav_ap_height;
+		${csp.pt.rec.htf_c_avg} = data.csp_pt_rec_htf_c_avg;
+		${rec_aspect} = data.rec_aspect;
+		${piping_length} = data.piping_length;
+		${piping_loss_tot} = data.piping_loss_tot;
+	}
 
-equations{ 'csp.pt.rec.cav_lip_height' } = define() 
-{
-	return 1;
+	return 0;
 };
-
-equations{ 'csp.pt.rec.cav_panel_height' } = define() 
-{
-	return 1.1;
-};
-
-equations{ 'csp.pt.rec.max_flow_to_rec' } = define() {
-	return (${csp.pt.rec.max_oper_frac}*${Q_rec_des}*1e6)
- / (${csp.pt.rec.htf_c_avg}*1e3*(${T_htf_hot_des}-${T_htf_cold_des})); };
-
-equations{ 'csp.pt.rec.htf_t_avg' } = define() {
-	return (${T_htf_cold_des}+${T_htf_hot_des})/2; };
-
-equations{ 'csp.pt.rec.cav_ap_height' } = define() {
-	return ${rec_d_spec}*${csp.pt.rec.cav_ap_hw_ratio}; };
-
-equations{ 'csp.pt.rec.htf_c_avg' } = define() {
-	return  ?${csp.pt.rec.htf_type}
-[
-  /* htf type 0 - TRNSYS fluid number 17
-     Salt (60% NaNO3, 40% KNO3) */
-	substance_specific_heat(17, ${csp.pt.rec.htf_t_avg}), 
-	/* htf type 1 - TRNSYS fluid number 10 
-     Salt (46.5% LiF, 11.5%NaF, 42%KF)  */
-	substance_specific_heat(10, ${csp.pt.rec.htf_t_avg}) , 
-	/* htf type 2 - TRNSYS fluid number 36 
-     user defined   */
-	substance_userhtf(${field_fl_props},${csp.pt.rec.htf_t_avg},"specific heat") 
-]; };
-
 
 equations{ 'user_fluid' } = define() {
 	return ${field_fl_props};
 };
 
-
-equations{ 'rec_aspect' } = define() {
-	aspect = 1;
-	if (${D_rec} != 0) 
-		aspect = ${rec_height} / ${D_rec};
-	return aspect;
-};
-
 equations{ 'tower_technology' } = define() {
 	return 0;	//MSPT
-};
-
-equations{ 'piping_length' } = define() {
-     return ${h_tower}*${piping_length_mult}+${piping_length_const}; };
-
-equations{ 'piping_loss_tot' } = define() {
-     return ${piping_length} * ${piping_loss} / 1000.;
 };
 
 equations{ 'receiver_type' } = define()

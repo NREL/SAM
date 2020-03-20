@@ -36,6 +36,14 @@ extern "C"
 	//
 
 	/**
+	 * Set use_specific_wf_wave: user specified file [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nset(SAM_WaveFileReader ptr, double number, SAM_error *err);
+
+	/**
 	 * Set wave_resource_filename: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
@@ -47,6 +55,8 @@ extern "C"
 	/**
 	 * WeatherReader Getters
 	 */
+
+	SAM_EXPORT double SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nget(SAM_WaveFileReader ptr, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_sget(SAM_WaveFileReader ptr, SAM_error *err);
 

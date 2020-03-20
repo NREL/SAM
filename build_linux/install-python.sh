@@ -57,33 +57,50 @@ function build_python
 {
 	info "Building Python $PYTHON_VERSION_FULL"
 	cd $PYTHON_SRC_PATH
-	./configure --prefix=$INSTALL_PATH > /dev/null 2>&1
+	configure_cmd="./configure --prefix=$INSTALL_PATH"
+	if [ $OPTIMIZE == 1 ]; then
+		configure_cmd="$configure_cmd --enable-optimizations"
+	fi
+	if [[ "$OSTYPE" == "darwin"* ]]; then
+		command -v brew
+		if [ $? != 0 ]; then
+			echo "Installation requires brew. Please install it and then run 'brew install openssl xz gdbm'."
+			exit 1
+		fi
+		configure_cmd="$configure_cmd --with-openssl=$(brew --prefix openssl)"
+	fi
+	debug "$configure_cmd"
+	$configure_cmd > /dev/null 2>&1
 	ret=$?
 	if [ $ret != 0 ]; then
 		error "configure failed, return_code=$ret. Refer to $(realpath $(pwd)/config.log)"
-		exit ret
+		exit $ret
 	fi
 
-	if [[ "$OSTYPE" == "linux-gnu" ]]; then
-		num_procs=$(nproc)
-	elif [[ "$OSTYPE" == "darwin"* ]]; then
-		num_procs=$(sysctl -n hw.ncpu)
-	else
-		error "unknown OS type $OSTYPE"
-		exit 1
+	if [[ "$NUM_CPUS" == 0 ]]; then
+		if [[ "$OSTYPE" == "linux-gnu" ]]; then
+			NUM_CPUS=$(nproc)
+		elif [[ "$OSTYPE" == "darwin"* ]]; then
+			NUM_CPUS=$(sysctl -n hw.ncpu)
+		else
+			error "unknown OS type $OSTYPE"
+			exit 1
+		fi
 	fi
 
-	make -j$num_procs > make.log 2>&1
+	make_cmd="make -j$NUM_CPUS"
+	debug "$make_cmd"
+	$make_cmd > make.log 2>&1
 	ret=$?
 	if [ $ret != 0 ]; then
 		error "make failed, return_code=$ret. Refer to $(realpath $(pwd)/make.log)"
-		exit ret
+		exit $ret
 	fi
 	make install > make-install.log 2>&1
 	ret=$?
 	if [ $ret != 0 ]; then
 		error "make install failed, return_code=$ret. Refer to $(realpath $(pwd)/make-install.log)"
-		exit ret
+		exit $ret
 	fi
 	cd -
 	run_command "rm -rf $PYTHON_SRC_PATH"
@@ -119,6 +136,12 @@ fi
 if [ -z $VERBOSE ]; then
 	VERBOSE=0
 fi
+if [ -z $OPTIMIZE ]; then
+	OPTIMIZE=0
+fi
+if [ -z $NUM_CPUS ]; then
+	NUM_CPUS=0
+fi
 
 # TODO: allow caller to pass in the python version
 PYTHON_VERSION=3.7
@@ -141,6 +164,7 @@ debug "PYTHON_PACKAGE_PATH=$PYTHON_PACKAGE_PATH"
 debug "PYTHON_SRC_URL=$PYTHON_SRC_URL"
 debug "INSTALL_PATH=$INSTALL_PATH"
 debug "PIP=$PIP"
+debug "NUM_CPUS=$NUM_CPUS OPTIMIZE=$OPTIMIZE"
 
 if [ ! -d $INSTALL_PATH ]; then
 	mkdir -p $INSTALL_PATH
@@ -150,9 +174,10 @@ if [ ! -f $PYTHON_PACKAGE_PATH ]; then
 	download_python_src
 fi
 
-if [ ! -d $PYTHON_SRC_PATH ]; then
-	extract_package $PYTHON_PACKAGE_PATH $PYTHON_SRC_PATH
+if [ -d $PYTHON_SRC_PATH ]; then
+	run_command rm -rf $PYTHON_SRC_PATH
 fi
+extract_package $PYTHON_PACKAGE_PATH $PYTHON_SRC_PATH
 
 build_python
 run_command "rm $PYTHON_PACKAGE_PATH"

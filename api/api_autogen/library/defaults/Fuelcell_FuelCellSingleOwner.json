@@ -67,6 +67,7 @@
 			"fuelcell_fixed_pct": 95,
 			"fuelcell_fuel_available": 2.83168e+14,
 			"fuelcell_fuel_type": 0,
+			"fuelcell_is_started": 0,
 			"fuelcell_lhv": 983,
 			"fuelcell_number_of_units": 1,
 			"fuelcell_operation_options": 1,

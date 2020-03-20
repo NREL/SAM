@@ -15,10 +15,10 @@ X
 99
 Y
 3
-39
+36
 Width
 3
-66
+84
 Height
 3
 42
@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-14
-Charge from PV
+18
+Charge from System
 TextColour
 4
 0
@@ -1500,7 +1500,7 @@ Name
 object 4
 X
 3
-9
+6
 Y
 3
 3
@@ -1626,7 +1626,7 @@ Name
 pv.storage.p1.charge
 X
 3
-123
+99
 Y
 3
 81
@@ -1658,7 +1658,7 @@ Name
 pv.storage.p1.discharge
 X
 3
-354
+342
 Y
 3
 81
@@ -1690,7 +1690,7 @@ Name
 pv.storage.p1.gridcharge
 X
 3
-201
+189
 Y
 3
 81
@@ -1722,7 +1722,7 @@ Name
 pv.storage.p2.charge
 X
 3
-123
+99
 Y
 3
 108
@@ -1754,7 +1754,7 @@ Name
 pv.storage.p2.discharge
 X
 3
-354
+342
 Y
 3
 108
@@ -1786,7 +1786,7 @@ Name
 pv.storage.p2.gridcharge
 X
 3
-201
+189
 Y
 3
 108
@@ -1818,7 +1818,7 @@ Name
 pv.storage.p3.charge
 X
 3
-123
+99
 Y
 3
 135
@@ -1850,7 +1850,7 @@ Name
 pv.storage.p3.discharge
 X
 3
-354
+342
 Y
 3
 135
@@ -1882,7 +1882,7 @@ Name
 pv.storage.p3.gridcharge
 X
 3
-201
+189
 Y
 3
 135
@@ -1914,7 +1914,7 @@ Name
 pv.storage.p4.charge
 X
 3
-123
+99
 Y
 3
 162
@@ -1946,7 +1946,7 @@ Name
 pv.storage.p4.discharge
 X
 3
-354
+342
 Y
 3
 162
@@ -1978,7 +1978,7 @@ Name
 pv.storage.p4.gridcharge
 X
 3
-201
+189
 Y
 3
 162
@@ -2010,7 +2010,7 @@ Name
 pv.storage.p5.charge
 X
 3
-123
+99
 Y
 3
 189
@@ -2042,7 +2042,7 @@ Name
 pv.storage.p5.discharge
 X
 3
-354
+342
 Y
 3
 189
@@ -2074,7 +2074,7 @@ Name
 pv.storage.p5.gridcharge
 X
 3
-201
+189
 Y
 3
 189
@@ -2106,7 +2106,7 @@ Name
 pv.storage.p6.charge
 X
 3
-123
+99
 Y
 3
 216
@@ -2138,7 +2138,7 @@ Name
 pv.storage.p6.discharge
 X
 3
-354
+342
 Y
 3
 216
@@ -2170,7 +2170,7 @@ Name
 pv.storage.p6.gridcharge
 X
 3
-201
+189
 Y
 3
 216

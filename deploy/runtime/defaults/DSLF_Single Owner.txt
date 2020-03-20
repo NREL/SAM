@@ -1,5 +1,5 @@
 1
-763
+762
 A_aperture
 1
 3
@@ -4674,10 +4674,6 @@ theta_stow
 1
 1
 10
-third_party_ownership_message
-1
-4
-0
 tilt
 1
 1

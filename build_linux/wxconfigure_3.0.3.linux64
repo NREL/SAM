@@ -1,4 +1,0 @@
-#export CXXFLAGS=-std=c++11 $(CFLAGS) $(CXXFLAGS)
-#export OBJCXXFLAGS=-std=c++11 $(OBJCXXFLAGS)
-#export LDFLAGS=-std=c++11 $(LDFLAGS)
-./configure --prefix=$HOME/local/wx-3.0.3 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11

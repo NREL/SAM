@@ -46,6 +46,12 @@ def cmod_sco2_csp_system(dat_dict):
     dat = dict_to_ssc_table(dat_dict, cmod_name)
     return ssc_cmod(dat, cmod_name)
 
+def cmod_sco2_air_cooler(dat_dict):
+
+    cmod_name = "sco2_air_cooler"
+    dat = dict_to_ssc_table(dat_dict, cmod_name)
+    return ssc_cmod(dat, cmod_name)
+
 def cmod_mspt_from_dict(dat_dict):
     
     mspt_name = "tcsmolten_salt"

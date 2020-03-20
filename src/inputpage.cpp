@@ -571,7 +571,7 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if ( dir == VAR_TO_OBJ )
 		{
 			if ( !ll->SetEntrySelection(val.String()))
-			//if ((ll->GetLibrary() != "SolarResourceData") && !ll->SetEntrySelection( val.String() ))
+			if ((ll->GetLibrary() != "SolarResourceData") && !ll->SetEntrySelection( val.String() ))
 				wxMessageBox(  "Error: '" + val.String() + "' is not available in the library. Choose a different item.", "Error", wxOK|wxICON_WARNING );
 		}
 		else val.Set( ll->GetEntrySelection() );

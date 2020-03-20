@@ -1,7 +1,69 @@
 AA Widgets
 987
 1758
-34
+36
+Numeric
+
+1
+17
+Name
+5
+15
+increment_count
+X
+3
+165
+Y
+3
+495
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 DiurnalPeriod
 
 1
@@ -351,95 +413,6 @@ Description
 TabOrder
 3
 4294967295
-DataMatrix
-
-1
-27
-Name
-5
-9
-object 28
-X
-3
-6
-Y
-3
-1566
-Width
-3
-400
-Height
-3
-186
-Tool Tip
-5
-0
-PasteAppendRows
-2
-0
-PasteAppendCols
-2
-0
-ShowButtons
-2
-0
-ShowRows
-2
-1
-ShowRowLabels
-2
-0
-RowLabels
-5
-0
-ShadeR0C0
-2
-0
-VerticalLabel
-5
-0
-HorizontalLabel
-5
-0
-ShadeC0
-2
-0
-ShowCols
-2
-0
-ShowColLabels
-2
-0
-ColLabels
-5
-0
-NumRowsLabel
-5
-23
-Number of coefficients:
-NumColsLabel
-5
-5
-Cols:
-Layout
-3
-0
-ChoiceColumn
-3
-4294967295
-Choices
-5
-15
-Choice1,Choice2
-HideColumn
-3
-4294967295
-ShowColumn
-3
-4294967295
-ColorMap
-2
-0
 DataMatrix
 
 1
@@ -1502,8 +1475,215 @@ AlignRight
 AlignTop
 2
 0
+Numeric
+
+1
+17
+Name
+5
+15
+on_change_count
+X
+3
+165
+Y
+3
+522
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+12
+test_numeric
+X
+3
+165
+Y
+3
+468
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+3
+increment_count
+3
+1
+increment_count
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+on_change_count
+3
+1
+on_change_count
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+test_numeric
+3
+1
+test_numeric
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 
 0
+884
+on_load{'AA Widgets'} = define()
+{
+	msgbox( 'on_load' );
+	//on_change{'test_numeric'}();
+	value('increment_count', 0);
+	value('on_change_count', 0);
+	//x = value('test_numeric');
+	//value('test_numeric',3);
+	//show('test_numeric',false);
+	//refresh('test_numeric');
+	refresh();
+};
 
-0
-0
+function do_nothing()
+{
+	x=0;
+}
+
+function increment( x )
+{
+	msgbox('Incrementing ' + x + ' by one.');
+	value('increment_count',value('increment_count')+1);
+	x+=1;
+	return x;
+}
+
+on_change{'test_numeric'} = define()
+{
+	msgbox( 'on_change test_numeric' );
+	/*if ( value('test_numeric')==0 ) { do_nothing(); }
+	else { do_nothing(); }*/
+	/*if ( value('increment_count') <= 10 ) 
+	{
+		value('on_change_count',value('on_change_count')+1);
+		x = value('test_numeric');
+		msgbox('initial value of x is = ' + x );
+		increment( x );
+		msgbox('incremented value of x is ' + x );
+		value('test_numeric',x);
+	}*/
+};

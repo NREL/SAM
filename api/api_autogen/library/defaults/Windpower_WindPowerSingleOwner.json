@@ -25,23 +25,29 @@
 			"wind_resource_turbulence_coeff": 0.1
 		},
 		"Losses": {
-			"avail_bop_loss": 6,
-			"avail_grid_loss": 0,
-			"avail_turb_loss": 3,
-			"elec_eff_loss": 8,
-			"env_degrad_loss": 0,
+			"avail_bop_loss": 0.5,
+			"avail_grid_loss": 1.5,
+			"avail_turb_loss": 3.58,
+			"elec_eff_loss": 1.91,
+			"elec_parasitic_loss": 0.1,
+			"env_degrad_loss": 1.8,
+			"env_env_loss": 0.4,
 			"env_exposure_loss": 0,
-			"env_ext_loss": 0,
-			"env_icing_loss": 4,
-			"ops_env_loss": 0,
-			"ops_grid_loss": 0,
-			"ops_load_loss": 2,
+			"env_icing_loss": 0.21,
+			"ops_env_loss": 1,
+			"ops_grid_loss": 0.84,
+			"ops_load_loss": 0.99,
 			"ops_strategies_loss": 0,
-			"turb_generic_loss": 0,
-			"turb_hysteresis_loss": 0,
-			"turb_perf_loss": 3,
-			"turb_specific_loss": 2,
-			"wake_loss": 0
+			"turb_generic_loss": 1.7,
+			"turb_hysteresis_loss": 0.4,
+			"turb_perf_loss": 1.1,
+			"turb_specific_loss": 0.81,
+			"wake_ext_loss": 1.1,
+			"wake_future_loss": 0,
+			"wake_int_loss": 0
+		},
+		"Uncertainty": {
+			"total_uncert": 12.085
 		},
 		"AdjustmentFactors": {
 			"constant": 0

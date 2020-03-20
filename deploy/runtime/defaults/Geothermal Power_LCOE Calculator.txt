@@ -1,5 +1,5 @@
 1
-171
+172
 CT
 1
 1
@@ -217,7 +217,7 @@ capital_cost
 1
 1
 1
-1.75648e+08
+175648032
 casing_size
 1
 1
@@ -303,7 +303,8 @@ excess_pressure_pump
 file_name
 1
 4
-0
+48
+blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 fixed_charge_rate
 1
 1
@@ -645,7 +646,8 @@ lat
 library_folder_list
 1
 4
-0
+1
+x
 library_paths
 1
 4
@@ -810,7 +812,8 @@ rock_thermal_conductivity
 solar_data_file_name
 1
 4
-0
+48
+blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
@@ -828,7 +831,8 @@ blythe_ca_33.617773_-114.588261_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+48
+blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 specified_pump_work_amount
 1
 1
@@ -875,6 +879,12 @@ system_capacity
 1
 1
 34788.7
+system_use_lifetime_output
+1
+1
+1
+1
+0
 temp_decline_max
 1
 1

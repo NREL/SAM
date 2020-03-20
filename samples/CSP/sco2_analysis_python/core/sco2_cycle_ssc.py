@@ -1136,6 +1136,163 @@ def sim_default_new_T_amb__T_amb_od_par(T_amb_des, T_amb_od_cold, T_amb_od_hot, 
     c_sco2.solve_sco2_case()
     return c_sco2.m_solve_dict
 
+def amb_temp_parametric__m_dot_ND_levels(dict_sco2_params, f_N_rc, f_N_mc, str_des):
+
+    # Constants, for now
+    part_load_list = [1.0, 0.75, 0.5, 0.4]   # Part-load levels. Results at part loads < 0.5 should be carefully reviewed"
+    T_amb_od_low = 20                        # Coldest off-design temperature (min allowable comp inlet is 32 C)
+    T_amb_od_high = 55                       # Warmest off-design temperature
+    T_amb_od_step = 1                        # Spacing betwen off-design temperatures
+
+    # Instantiate sco2 cycle simulation class
+    c_sco2 = C_sco2_sim(1)  # Initialize as same cycle config as specified above
+    c_sco2.overwrite_default_design_parameters(dict_sco2_params)
+
+    str_N_rc = ""
+    if(f_N_rc > 0.0):
+        str_N_rc = "N_rc_des_"
+    elif(f_N_rc == 0.0):
+        str_N_rc = "N_rc_opt_"
+    else:
+        str_N_rc = "N_rc_" + '{:.2f}'.format(abs(f_N_rc)) + "ND_"
+
+    str_N_mc = ""
+    if (f_N_mc > 0.0):
+        str_N_mc = "N_mc_des_"
+    elif (f_N_mc == 0.0):
+        str_N_mc = "N_mc_opt_"
+    else:
+        str_N_mc = "N_mc_" + '{:.2f}'.format(abs(f_N_mc)) + "ND_"
+
+    s_cycle = "undefined cycle"
+    if (dict_sco2_params["cycle_config"] == 1):
+        if(dict_sco2_params["is_recomp_ok"] == 0):
+            s_cycle = "Simple"
+        else:
+            s_cycle = "RC"
+    elif (dict_sco2_params["cycle_config"] == 2):
+        s_cycle = "PC"
+
+    od_sim_label_str = str_des + "_" + s_cycle + "_" + str_N_rc + str_N_mc + "__T_amb_od_par__array__part_load"
+
+    od_sol_dict_list = 0
+
+    for i_part_load in part_load_list:
+
+        i_part_load_str = '{:.2f}'.format(i_part_load)
+        i_sim_label_str = od_sim_label_str + i_part_load_str
+
+        i_T = T_amb_od_low
+        T_amb_od = []
+        while i_T <= T_amb_od_high:
+            T_amb_od.append([dict_sco2_params["T_htf_hot_des"], i_part_load, i_T, f_N_rc, f_N_mc])
+            i_T = i_T + T_amb_od_step
+
+        mod_base_dict = {"od_cases": T_amb_od}  # [[mod_base_dict["T_htf_hot_des"],1.0,mod_base_dict["T_amb_des"],-1.0]]
+
+        c_sco2.overwrite_des_par_base(mod_base_dict)  # Overwrite baseline design parameters
+        c_sco2.solve_sco2_case()  # Run design simulation
+
+        print(c_sco2.m_solve_dict["eta_thermal_calc"])
+        print("\nDid the simulation code with "
+              "modified design parameters solve successfully = ", c_sco2.m_solve_success)
+
+        c_sco2.m_also_save_csv = True
+        c_sco2.save_m_solve_dict("" + i_sim_label_str)  # Save design
+
+        if (od_sol_dict_list == 0):
+            od_sol_dict_list = [c_sco2.m_solve_dict]
+            od_leg_list = ["part load = " + i_part_load_str]
+        else:
+            od_sol_dict_list.append(c_sco2.m_solve_dict)
+            od_leg_list.append("part load = " + i_part_load_str)
+
+    # "Make off-design plot: Performance vs. Ambient Temperature"
+    od_plot = cy_plt.C_OD_stacked_outputs_plot(od_sol_dict_list)
+    od_plot.x_var = "T_amb"
+    od_plot.var_info_metrics["W_dot"].limit_var = ""
+    od_plot.is_label_leg_cols = ["Recompression Cycle - Inventory Control"]
+    od_plot.list_leg_spec = od_leg_list
+    od_plot.n_leg_cols = len(part_load_list)
+    od_plot.max_rows = 5
+    od_plot.bb_y_max_is_leg = 0.95
+    od_plot.is_save = True
+    od_plot.file_name = od_sim_label_str
+
+    od_plot.y_vars = ["eta", "W_dot", "Q_dot", "f_recomp", "LP_cooler_W_dot_fan",  # system
+                      "MC_T_in", "MC_P_in", "MC_T_out", "MC_P_out", "MC_rho_in",  # MC states
+                      "MC_m_dot", "MC_W_dot", "MC_eta", "MC_phi", "MC_tip_speed",  # MC performance
+                      "RC_m_dot", "RC_W_dot", "RC_eta", "RC_phi", "RC_tip_speed",  # RC performance
+                      "RC_T_in", "RC_P_in", "RC_T_out", "RC_P_out", "LP_cooler_rho_in",  # RC states
+                      "t_m_dot", "t_W_dot", "t_eta", "t_nu", "t_tip_speed",  # turbine performance
+                      "t_T_in", "t_P_in", "t_T_out", "t_P_out", "t_N",  # turbine states
+                      "T_htf_cold", "PHX_T_co2_in", "HTR_HP_T_in", "HTR_LP_T_out", "LTR_HP_T_out",
+                      # Remaining temps
+                      "LTR_eff", "LTR_q_dot", "LTR_min_dT", "LTR_LP_deltaP", "LTR_HP_deltaP",  # LTR performance
+                      "HTR_eff", "HTR_q_dot", "HTR_min_dT", "HTR_LP_deltaP", "HTR_HP_deltaP",  # HTR performance
+                      "PHX_eff", "Q_dot", "PHX_co2_deltaP", "m_dot_HTF", "T_HTF"]  # PHX performance
+
+    od_plot.create_plot()
+
+
+def get_air_cooler_default_des_pars():
+
+    pars = {}
+    pars["T_amb_des"] = 35.0        #[C]
+    pars["q_dot_des"] = 10.0 #[MWt]
+    pars["T_co2_hot_des"] = 80.0 #[C]
+    pars["P_co2_hot_des"] = 8.5  #[MPa]
+    pars["deltaP_co2_des"] = 0.1        #[MPa]
+    pars["T_co2_cold_des"] = 41.0   #[C]
+    pars["W_dot_fan_des"] = 0.2     #[MWe] (if cycle 50% efficient then 10 MWe output, so 2% is 0.2 Mwe)
+    pars["site_elevation"] = 300.0  #[m] Required for air properties
+
+    return pars
+
+class C_sco2_air_cooler_design:
+
+    def __init__(self, dict_des_pars):
+
+        self.m_solve_success = np.nan
+        self.m_solve_dict = np.nan
+
+        start_time = time.time()
+
+        sco2_return = ssc_sim.cmod_sco2_air_cooler(dict_des_pars)
+        self.m_solve_success = sco2_return[0]
+        self.m_solve_dict = sco2_return[1]
+
+        end_time = time.time()
+        self.m_solve_dict["solution_time"] = end_time - start_time
+
+        print("\nsolve time = ", end_time - start_time)
+        print("Length (flow direction) of one pass = ", self.m_solve_dict["length"])
+        print("")
+
+class C_sco2_air_cooler_des_and_offdes:
+
+    def __init__(self, dict_des_pars, dict_od_inputs):
+
+        self.m_solve_success = np.nan
+        self.m_solve_dict = np.nan
+
+        start_time = time.time()
+
+        dict_cmod_in = dict_des_pars.copy()
+        dict_cmod_in.update(dict_od_inputs)
+
+        sco2_return = ssc_sim.cmod_sco2_air_cooler(dict_cmod_in)
+        self.m_solve_success = sco2_return[0]
+        self.m_solve_dict = sco2_return[1]
+
+        end_time = time.time()
+        self.m_solve_dict["solution_time"] = end_time - start_time
+
+        print("\nsolve time = ", end_time - start_time)
+        print("Length (flow direction) of one pass = ", self.m_solve_dict["length"])
+        print("Off design fan power = ", self.m_solve_dict["W_dot_fan_od"])
+        print("")
+
 def get_one_des_dict_from_par_des_dict(par_dict, par_key, index):
     
     n_len = len(par_dict[par_key])

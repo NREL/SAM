@@ -1,7 +1,7 @@
 Physical Trough Dispatch Control
 844
 710
-47
+48
 Label
 
 1
@@ -62,13 +62,13 @@ X
 21
 Y
 3
-279
+294
 Width
 3
 233
 Height
 3
-87
+65
 Tool Tip
 5
 0
@@ -248,7 +248,7 @@ X
 51
 Y
 3
-111
+126
 Width
 3
 68
@@ -296,7 +296,7 @@ X
 51
 Y
 3
-207
+222
 Width
 3
 68
@@ -344,7 +344,7 @@ X
 51
 Y
 3
-135
+150
 Width
 3
 68
@@ -392,7 +392,7 @@ X
 51
 Y
 3
-231
+246
 Width
 3
 68
@@ -440,7 +440,7 @@ X
 51
 Y
 3
-159
+174
 Width
 3
 68
@@ -488,7 +488,7 @@ X
 51
 Y
 3
-255
+270
 Width
 3
 68
@@ -536,7 +536,7 @@ X
 51
 Y
 3
-183
+198
 Width
 3
 68
@@ -584,7 +584,7 @@ X
 51
 Y
 3
-63
+78
 Width
 3
 68
@@ -629,10 +629,10 @@ Name
 Label7
 X
 3
-23
+24
 Y
 3
-39
+54
 Width
 3
 167
@@ -680,7 +680,7 @@ X
 51
 Y
 3
-87
+102
 Width
 3
 68
@@ -1303,6 +1303,39 @@ BackColour
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+28
+is_tod_pc_target_also_pc_max
+X
+3
+24
+Y
+3
+24
+Width
+3
+268
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+43
+Use output fraction as maximum cycle output
+State
+2
+0
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -1796,7 +1829,7 @@ X
 126
 Y
 3
-63
+78
 Width
 3
 64
@@ -1858,7 +1891,7 @@ X
 126
 Y
 3
-87
+102
 Width
 3
 64
@@ -1920,7 +1953,7 @@ X
 126
 Y
 3
-111
+126
 Width
 3
 64
@@ -1982,7 +2015,7 @@ X
 126
 Y
 3
-135
+150
 Width
 3
 64
@@ -2044,7 +2077,7 @@ X
 126
 Y
 3
-159
+174
 Width
 3
 64
@@ -2106,7 +2139,7 @@ X
 126
 Y
 3
-183
+198
 Width
 3
 64
@@ -2168,7 +2201,7 @@ X
 126
 Y
 3
-207
+222
 Width
 3
 64
@@ -2230,7 +2263,7 @@ X
 126
 Y
 3
-231
+246
 Width
 3
 64
@@ -2292,7 +2325,7 @@ X
 126
 Y
 3
-255
+270
 Width
 3
 64
@@ -2414,7 +2447,7 @@ Min
 3
 1
 
-22
+23
 F_wc
 3
 2
@@ -2559,6 +2592,20 @@ hybrid_tou9
 3
 1
 Hybrid cooling fraction period 9
+ 
+System Control
+0
+3
+1
+1
+1
+1
+0
+Default
+is_tod_pc_target_also_pc_max
+3
+1
+Use turbine output fraction as maximum cycle output
  
 System Control
 0

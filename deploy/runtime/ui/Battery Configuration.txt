@@ -12,7 +12,7 @@ Name
 Battery Configuration
 X
 3
-9
+6
 Y
 3
 3
@@ -21,7 +21,7 @@ Width
 985
 Height
 3
-185
+191
 Tool Tip
 5
 0
@@ -490,22 +490,24 @@ Battery
 Numeric
 
 0
-577
+585
 on_load{'Battery Configuration'} = define()
 {
 	tech = technology();
-	if (tech == 'Generic System' || tech == 'Fuel Cell')
+	if (tech == 'Generic Battery' || tech == 'Fuel Cell')
 	{
 		value('batt_ac_or_dc',1);
 		enable('batt_ac_or_dc',0);
 		enable('batt_dc_dc_efficiency', 0);
 	}
 	else
+	{
 		enable('batt_ac_or_dc',1);
-
+	}	
 	check_configuration();
 	on_change{'batt_ac_or_dc'};
 };
+
 on_change{'batt_ac_or_dc'} = define()
 { 
 	check_configuration();
