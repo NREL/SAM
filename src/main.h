@@ -1,22 +1,22 @@
 /**
 BSD-3-Clause
 Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
 that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
 and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
 and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
 or promote products derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
@@ -64,7 +64,7 @@ class SamException : public std::exception
 	wxString m_err;
 public:
 	SamException( const wxString &err ) : m_err(err) { }
-	virtual ~SamException() throw() { } 
+	virtual ~SamException() throw() { }
 	const char *what() const throw() { return (const char*)m_err.c_str(); };
 };
 
@@ -83,8 +83,8 @@ public:
 	void ImportCases();
 
 	wxString GetUniqueCaseName( wxString base = wxEmptyString );
-	bool CreateNewCase( const wxString &name = wxEmptyString, 
-		wxString tech = wxEmptyString, 
+	bool CreateNewCase( const wxString &name = wxEmptyString,
+		wxString tech = wxEmptyString,
 		wxString fin = wxEmptyString );
 
 	CaseWindow *GetCaseWindow( Case *c );
@@ -104,7 +104,7 @@ public:
 	Case *GetCurrentCase();
 	CaseWindow *GetCurrentCaseWindow();
 	void CaseVarGrid(std::vector<Case*> &cases);
-	
+
 protected:
 	void OnClose( wxCloseEvent & );
 	void OnCommand( wxCommandEvent & );
@@ -126,7 +126,7 @@ private:
 
 	bool CheckVersionBeforeSaving( const wxString &file );
 	void UpdateFrameTitle();
-	
+
 	DECLARE_EVENT_TABLE();
 };
 
@@ -140,7 +140,7 @@ public:
 	bool LoadScript( const wxString &source );
 	void ClearAll();
 
-	lk::node_t *Lookup( const wxString &method_name, const wxString &obj_name );	
+	lk::node_t *Lookup( const wxString &method_name, const wxString &obj_name );
 	lk::env_t *GetEnv() { return &m_cbenv; }
 
 protected:
@@ -154,7 +154,7 @@ class InputPageData
 {
 	wxUIFormData m_form;
 	VarDatabase m_vars;
-	
+
 	wxString m_eqnScript;
 	wxString m_cbScript;
 
@@ -175,13 +175,13 @@ public:
 	VarDatabase &Variables() { return m_vars; }
 	wxString &EqnScript() { return m_eqnScript; }
 	wxString &CbScript() { return m_cbScript; }
-	
+
 	bool BuildDatabases();
 
 	EqnDatabase &Equations() { return m_eqns; }
 	ScriptDatabase &Callbacks() { return m_cbs; }
 
-	
+
 };
 
 
@@ -232,9 +232,9 @@ struct InputPageGroup
 	bool ExclusiveTabs;
 };
 
-	
+
 class ConfigInfo
-{ 
+{
 public:
 	ConfigInfo();
 	~ConfigInfo();
@@ -244,9 +244,9 @@ public:
 	wxArrayString Simulations;
 	std::vector<InputPageGroup*> InputPageGroups;
 	InputPageDataHash InputPages;
-	VarInfoLookup Variables;		
+	VarInfoLookup Variables;
 	EqnFastLookup Equations;
-	
+
 	StringHash Settings;
 
 	// storage for variables specific to this configuration
@@ -274,9 +274,9 @@ public:
 	void Add( const wxString &tech, const wxArrayString &fin );
 	void SetConfig( const wxString &t, const wxString &f );
 	ConfigInfo *CurrentConfig() { return m_curConfig; }
-	
+
 	void SetModules( const wxArrayString &list );
-	void AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, 
+	void AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages,
 		const wxString &sidebar,
 		const wxString &hlpcxt,
 		const wxString &exclvar,
@@ -285,7 +285,7 @@ public:
 
 	wxArrayString GetTechnologies();
 	wxArrayString GetFinancingForTech(const wxString &tech);
-	
+
 /*
 	std::vector<InputPageGroup*> &GetInputPageGroups(const wxString &tech, const wxString &financing );
 	VarInfoLookup &GetVariables( const wxString &tech, const wxString &financing );
@@ -325,10 +325,11 @@ public:
 	static wxString GetAppPath();
 	static wxString GetRuntimePath();
 	static wxString GetUserLocalDataDir();
+	static wxString GetPythonConfigPath();
 	static wxConfig &Settings();
 	static MainWindow *Window();
 	static ProjectFile &Project();
-	static wxFileHistory &FileHistory();	
+	static wxFileHistory &FileHistory();
 	static wxArrayString RecentFiles();
 	static void ShowHelp( const wxString &context = wxEmptyString );
 	static wxString VersionStr( bool with_patches = false, bool short_style = false );
@@ -339,7 +340,7 @@ public:
 	static int RevisionNumber();
 	static int NumReleases();
 
-	static wxWindow *CurrentActiveWindow();	
+	static wxWindow *CurrentActiveWindow();
 	static void CheckForUpdates( bool quiet );
 
 	static ConfigDatabase &Config();
@@ -347,6 +348,10 @@ public:
 	static ScriptDatabase &GlobalCallbacks();
 
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
+
+	static void InstallPython();
+    static void InstallPythonPackage(const std::string& pip_name);
+
 };
 
 // provide global function version for use in mswfatal.cpp
