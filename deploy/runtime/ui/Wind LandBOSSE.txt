@@ -5585,9 +5585,9 @@ Wind LandBOSSE
 0
 Numeric
 
-1796
+1801
 equations{ 'turbine_rating_MW' } = define() {
-	return ${wind_turbine_kw_rating};
+	return ${wind_turbine_kw_rating}/1000;
 };
 
 equations{ 'wind_shear_exponent' } = define() {

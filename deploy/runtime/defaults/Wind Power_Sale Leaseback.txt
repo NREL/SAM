@@ -925,7 +925,7 @@ depth
 1
 1
 1
-1
+2.36
 desired_farm_size
 1
 1
@@ -2172,7 +2172,7 @@ distance_to_interconnect_mi
 1
 1
 1
-0
+10
 dscr_reserve_months
 1
 1
@@ -2518,7 +2518,7 @@ gust_velocity_m_per_s
 1
 1
 1
-0
+50
 hextrap_approp_uncert
 1
 1
@@ -2944,7 +2944,7 @@ labor_cost_multiplier
 1
 1
 1
-0
+1
 lib_dispatch_factor1
 1
 1
@@ -3133,7 +3133,7 @@ num_turbines
 1
 1
 1
-32
+100
 number_install_seasons
 1
 1
@@ -3503,7 +3503,7 @@ rated_thrust_N
 1
 1
 1
-0
+589000
 real_discount_rate
 1
 1
@@ -3586,13 +3586,13 @@ rotor_diameter
 1
 1
 1
-77
+45
 row_spacing_rotor_diameters
 1
 1
 1
 1
-8
+10
 rows
 1
 1
@@ -4070,13 +4070,13 @@ turbine_rating_MW
 1
 1
 1
-1500
+1.5
 turbine_spacing_rotor_diameters
 1
 1
 1
 1
-8
+4
 use_specific_wf_wind
 1
 1
@@ -4548,7 +4548,7 @@ wind_turbine_rotor_diameter
 1
 1
 1
-77
+45
 wind_turbine_rotor_diameter_from_lib
 1
 1

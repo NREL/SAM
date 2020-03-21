@@ -965,7 +965,7 @@ depth
 1
 1
 1
-1
+2.36
 desired_farm_size
 1
 1
@@ -2212,7 +2212,7 @@ distance_to_interconnect_mi
 1
 1
 1
-0
+10
 dscr
 1
 1
@@ -2576,7 +2576,7 @@ gust_velocity_m_per_s
 1
 1
 1
-0
+50
 hextrap_approp_uncert
 1
 1
@@ -3002,7 +3002,7 @@ labor_cost_multiplier
 1
 1
 1
-0
+1
 lib_dispatch_factor1
 1
 1
@@ -3577,7 +3577,7 @@ rated_thrust_N
 1
 1
 1
-0
+589000
 real_discount_rate
 1
 1
