@@ -2800,13 +2800,16 @@ void SamApp::InstallPython() {
 #endif
     if (errors)
         throw std::runtime_error("Error installing python.");
+    LoadPythonConfig();
 }
 
 void SamApp::InstallPythonPackage(const std::string& pip_name) {
     if (CheckPythonPackageInstalled(pip_name, pythonConfig))
         return;
     auto packageConfig = ReadPythonPackageConfig(pip_name, GetPythonConfigPath() + "/" + pip_name + ".json");
-    if (InstallFromPip(GetPythonConfigPath() + "/"+ pythonConfig.pipPath, packageConfig) == 0){
+
+    std::string pip_exec = "cd " + GetPythonConfigPath() + " && " + pythonConfig.pipPath;
+    if (InstallFromPip(pip_exec, packageConfig) == 0){
         pythonConfig.packages.push_back(pip_name);
         WritePythonConfig(GetPythonConfigPath() + "/python_config.json", pythonConfig);
     }

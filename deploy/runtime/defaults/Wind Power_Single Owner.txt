@@ -1,5 +1,5 @@
 1
-599
+600
 a_error_test_number
 1
 1
@@ -3769,6 +3769,12 @@ show_construction_period
 1
 1
 1
+site_facility_usd
+1
+1
+1
+1
+0
 sitepreparation_equipment_rental_usd
 1
 1
@@ -4014,6 +4020,9 @@ total_project_cost
 0
 total_project_cost_per_capacity
 1
+1
+1
+1
 0
 total_sitepreparation_cost
 1
@@ -4164,7 +4173,7 @@ turbine_rating_MW
 1
 1
 1
-1500
+1.5
 turbine_spacing_rotor_diameters
 1
 1

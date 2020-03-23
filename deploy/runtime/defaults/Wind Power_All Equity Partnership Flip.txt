@@ -1,5 +1,5 @@
 1
-590
+591
 a_error_test_number
 1
 1
@@ -3163,7 +3163,7 @@ num_turbines
 1
 1
 1
-100
+32
 number_install_seasons
 1
 1
@@ -3616,13 +3616,13 @@ rotor_diameter
 1
 1
 1
-45
+77
 row_spacing_rotor_diameters
 1
 1
 1
 1
-10
+8
 rows
 1
 1
@@ -3689,6 +3689,12 @@ show_construction_period
 1
 1
 1
+site_facility_usd
+1
+1
+1
+1
+0
 sitepreparation_equipment_rental_usd
 1
 1
@@ -3964,6 +3970,9 @@ total_project_cost
 0
 total_project_cost_per_capacity
 1
+1
+1
+1
 0
 total_sitepreparation_cost
 1
@@ -4120,7 +4129,7 @@ turbine_spacing_rotor_diameters
 1
 1
 1
-4
+8
 use_specific_wf_wind
 1
 1
@@ -4592,7 +4601,7 @@ wind_turbine_rotor_diameter
 1
 1
 1
-45
+77
 wind_turbine_rotor_diameter_from_lib
 1
 1

@@ -63,35 +63,14 @@ bool CheckPythonInstalled(const PythonConfig& config){
     return !config.execPath.empty() && !config.pipPath.empty();
 }
 
-bool external_process_pipe(const std::string& cmd){
-    std::promise<int> install_result;
-    std::future<int> f_completes = install_result.get_future();
-    std::thread([&](std::promise<int> install_result)
-                {
-                    install_result.set_value_at_thread_exit(system(cmd.c_str()));
-                },
-                std::move(install_result)
-    ).detach();
-
-    std::chrono::system_clock::time_point time_passed
-            = std::chrono::system_clock::now() + std::chrono::seconds(60 * 10);
-
-    if(std::future_status::ready == f_completes.wait_until(time_passed))
-        return f_completes.get();
-    else
-        throw std::runtime_error("Python Installation error: process timed out with command: " + cmd);
-}
-
 bool InstallPythonWindows(const std::string& path, const PythonConfig& config){
-    std::string cmd = path + "/install_python.ps1 -version " + config.pythonVersion + " -config " + path;
-//    bool error = external_process_pipe(cmd);
+    std::string cmd = "cd " + path + " && ./install_python.ps1 -version " + config.pythonVersion + " -config " + path;
     int rvalue = system(cmd.c_str());
     return (bool)rvalue;
 }
 
 bool InstallPythonUnix(const std::string& path, const PythonConfig& config){
-    std::string cmd = path + "/install_python.sh " + config.minicondaVersion + " " + config.pythonVersion + " " + path;
-    printf("python install cmd:\n%s\n", cmd.c_str());
+    std::string cmd = "cd " + path + " && ./install_python.sh " + config.minicondaVersion + " " + config.pythonVersion + " " + path;
     int rvalue = system(cmd.c_str());
     return (bool)rvalue;
 }

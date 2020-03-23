@@ -4709,6 +4709,63 @@ static void fcall_setup_landbosse(lk::invoke_t &cxt)
 
 }
 
+static void fcall_run_landbosse(lk::invoke_t & cxt)
+{
+    LK_DOC("run_landbosse", "Runs the LandBOSSE model on the current case.", "( none ): none");
+
+    Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
+//    Simulation base_case = sam_case->BaseCase();
+
+    VarTable vartable = sam_case->Values();
+
+    ssc_data_t landbosse_data = ssc_data_create();
+
+    auto varValue = vartable.Get("wind_resource_filename");
+    if (!varValue)
+        throw std::runtime_error("Run LandBOSSE error: wind_resource_filename was not assigned.");
+    ssc_data_set_string(landbosse_data, "wind_resource_filename", varValue->String().c_str());
+
+    std::vector<std::string> input_names = {"distance_to_interconnect_mi",
+                                            "interconnect_voltage_kV", "depth", "rated_thrust_N",
+                                            "labor_cost_multiplier", "gust_velocity_m_per_s", "wind_resource_shear",
+                                            "num_turbines", "turbine_spacing_rotor_diameters",
+                                            "row_spacing_rotor_diameters", "turbine_rating_MW", "wind_turbine_hub_ht",
+                                            "wind_turbine_rotor_diameter"};
+
+    for (auto & i : input_names){
+        varValue = vartable.Get(i);
+        if (!varValue){
+            ssc_data_free(landbosse_data);
+            throw std::runtime_error("Run LandBOSSE error: " + i + " was not assigned.");
+        }
+        ssc_data_set_number(landbosse_data, i.c_str(), varValue->Value());
+    }
+
+
+    auto module = ssc_module_create("wind_landbosse");
+    bool success = ssc_module_exec(module, landbosse_data);
+
+    if (!success){
+        ssc_data_free(landbosse_data);
+        ssc_module_free(module);
+        throw std::runtime_error("Run LandBOSSE error: " + std::string(ssc_module_log(module, 0, nullptr, nullptr)));
+    }
+
+    std::string error = std::string(ssc_data_get_string(landbosse_data, "errors"));
+
+    if (!error.empty() && error != "0"){
+        ssc_data_free(landbosse_data);
+        ssc_module_free(module);
+        throw std::runtime_error("Run LandBOSSE error: " + error);
+    }
+
+    auto outputs = VarTable(landbosse_data);
+    vartable.Merge(outputs, false);
+
+    ssc_data_free(landbosse_data);
+    ssc_module_free(module);
+}
+
 lk::fcall_t* invoke_general_funcs()
 {
 	static const lk::fcall_t vec[] = {
@@ -4770,6 +4827,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_librarynotifytext,
             fcall_reopt_size_battery,
             fcall_setup_landbosse,
+            fcall_run_landbosse,
             0 };
 	return (lk::fcall_t*)vec;
 }
@@ -4812,6 +4870,7 @@ lk::fcall_t* invoke_equation_funcs()
 		fcall_current_at_voltage_sandia,
 		fcall_property,
 		fcall_setup_landbosse,
+        fcall_run_landbosse,
 		// fcall_logmsg,
 		0 };
 	return (lk::fcall_t*)vec;
