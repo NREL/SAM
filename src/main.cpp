@@ -2313,10 +2313,10 @@ wxString SamApp::GetUserLocalDataDir()
 	return path;
 }
 
-wxString SamApp::GetPythonConfigPath(){
+std::string SamApp::GetPythonConfigPath(){
     wxFileName path( GetAppPath() + "/../runtime/python" );
     path.Normalize();
-    return path.GetFullPath();
+    return path.GetFullPath().ToStdString();
 }
 
 wxConfig &SamApp::Settings()
@@ -2794,7 +2794,7 @@ void SamApp::InstallPython() {
 
 #ifdef __WXMSW__
     // windows
-    bool errors = InstallPythonWindows(python_path, config);
+    bool errors = InstallPythonWindows(python_path, pythonConfig);
 #else
     bool errors = InstallPythonUnix(python_path, pythonConfig);
 #endif

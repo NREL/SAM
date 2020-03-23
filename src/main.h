@@ -325,7 +325,6 @@ public:
 	static wxString GetAppPath();
 	static wxString GetRuntimePath();
 	static wxString GetUserLocalDataDir();
-	static wxString GetPythonConfigPath();
 	static wxConfig &Settings();
 	static MainWindow *Window();
 	static ProjectFile &Project();
@@ -349,6 +348,7 @@ public:
 
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
 
+	static std::string GetPythonConfigPath();
 	static void LoadPythonConfig();
 	static void InstallPython();
     static void InstallPythonPackage(const std::string& pip_name);

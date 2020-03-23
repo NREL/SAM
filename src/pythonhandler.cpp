@@ -64,7 +64,7 @@ bool CheckPythonInstalled(const PythonConfig& config){
 }
 
 bool InstallPythonWindows(const std::string& path, const PythonConfig& config){
-    std::string cmd = "cd " + path + " && ./install_python.ps1 -version " + config.pythonVersion + " -config " + path;
+    std::string cmd = "cd " + path + " && powershell.exe -windowstyle hidden -ExecutionPolicy Bypass -File install_python.ps1 -version " + config.pythonVersion + " -config " + path;
     int rvalue = system(cmd.c_str());
     return (bool)rvalue;
 }

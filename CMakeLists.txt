@@ -75,7 +75,8 @@ set(SAM_SRC
 	src/troughloop.cpp
 	src/shadingfactors.cpp
 	src/materials.cpp
-	src/codegenerator.cpp src/pythonhandler.cpp src/pythonhandler.h)
+	src/codegenerator.cpp
+	src/pythonhandler.cpp src/pythonhandler.h)
 
 
 #####################################################################################################################
