@@ -1,22 +1,22 @@
 /**
 BSD-3-Clause
 Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
 that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
 and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
 and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
 or promote products derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
@@ -341,6 +341,18 @@ void VarTable::Copy( const VarTable &rhs )
 	}
 }
 
+void VarTable::Merge(const VarTable &rhs, bool overwrite_existing){
+    for( const_iterator it = rhs.begin(); it != rhs.end(); ++it ){
+        VarValue* value = Get(it->first);
+        if (value){
+            if (overwrite_existing)
+                Set( it->first, *(it->second));
+        }
+        else
+            Set( it->first, *(it->second));
+    }
+}
+
 void VarTable::clear()
 {
 	for( iterator it = begin(); it != end(); ++it )
@@ -433,7 +445,7 @@ bool VarTable::Rename( const wxString &old_name, const wxString &new_name )
 
 	VarValue *vv = it->second;
 	erase( it );
-	
+
 	(*this)[ new_name ] = vv;
 	return true;
 }
@@ -477,7 +489,7 @@ void VarTable::Write( wxOutputStream &_O, size_t maxdim )
 		for( iterator it = begin(); it != end(); ++ it )
 		{
 			VarValue &vv = *(it->second);
-			if ( vv.Type() == VV_ARRAY 
+			if ( vv.Type() == VV_ARRAY
 				&& vv.Length() <= maxdim )
 			{
 				names.Add( it->first );
@@ -525,7 +537,7 @@ bool VarTable::Read( const wxString &file )
 bool VarTable::Read( wxInputStream &_I )
 {
 	clear();
-	
+
 	wxDataInputStream in(_I);
 	wxUint8 code = in.Read8();
 	in.Read8(); //ver
@@ -544,11 +556,11 @@ bool VarTable::Read( wxInputStream &_I )
 //			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen() );
 		  }
 #endif
-		
+
 		if ( find(name) == end() ) (*this)[name] = value;
 		else delete value;
 	}
-	
+
 	return in.Read8() == code;
 }
 
@@ -572,7 +584,7 @@ void VarTable::Write_text(wxOutputStream &_O, size_t maxdim)
 	{
 		out.Write32(size());
 		out.PutChar('\n');
-		// add sorting for consistent and comparable defaults 
+		// add sorting for consistent and comparable defaults
 		/*
 		for (iterator it = begin(); it != end(); ++it)
 		{
@@ -607,7 +619,7 @@ void VarTable::Write_text(wxOutputStream &_O, size_t maxdim)
 	}
 	else
 	{
-// add sorting for consistent and comparable defaults 
+// add sorting for consistent and comparable defaults
 //		wxArrayString names;
 /*
 		std::vector<VarValue*> list;
@@ -892,7 +904,7 @@ bool VarValue::ValueEqual( VarValue &rhs )
 							break;
 					  }
 			break;
-		case VV_TABLE: // not working correctly 
+		case VV_TABLE: // not working correctly
 			equal = (m_tab.size() == rhs.m_tab.size());
 			if (equal)
 				for (VarTable::iterator it1 = m_tab.begin(); it1 != m_tab.end(); ++it1)
@@ -976,7 +988,7 @@ void VarValue::Write( wxOutputStream &_O )
 	out.Write8(2); // float to double
 
 	out.Write8( m_type );
-	
+
 	switch( m_type )
 	{
 	case VV_INVALID:
@@ -1305,7 +1317,7 @@ void VarValue::Set( double val ) { m_type = VV_NUMBER; m_val = val; }
 void VarValue::Set( const std::vector<int> &ivec )
 {
 	m_type = VV_ARRAY;
-	if ( ivec.size() > 0 ) 
+	if ( ivec.size() > 0 )
 	{
 		m_val.resize_fill( ivec.size(), 0 );
 		for( size_t i=0;i<ivec.size();i++ )
@@ -1403,7 +1415,7 @@ std::vector<int> VarValue::IntegerArray()
 	else
 		return std::vector<int>();
 }
- 
+
 matrix_t<double> &VarValue::Matrix()
 {
 	return m_val;
@@ -1513,12 +1525,12 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 			}
 		}
 		break;
-	case lk::vardata_t::HASH:		
+	case lk::vardata_t::HASH:
 		{
 			if ( Type() == VV_TABLE || change_type )
 			{
 				Set( VarTable() ); // switch to an empty table
-				VarValue vv_inval;	
+				VarValue vv_inval;
 				lk::varhash_t &hash = *val.hash();
 				for ( lk::varhash_t::iterator it = hash.begin();
 					it != hash.end();
@@ -1609,7 +1621,7 @@ static inline unsigned char hex_to_nibble( char hex )
 	unsigned char bin = 0;
 	if ( hex >= '0' && hex <= '9' ) bin = hex-'0';
 	else if (hex >= 'A' && hex <= 'F') bin =  hex-'A'+10;
-	else if (hex >= 'a' && hex <= 'f') bin =  hex-'a'+10;	
+	else if (hex >= 'a' && hex <= 'f') bin =  hex-'a'+10;
 	return bin;
 }
 
@@ -1658,7 +1670,7 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 		{
 			value.m_type = VV_NUMBER;
 			value.m_val = wxAtof( str );
-			return true;		
+			return true;
 		}
 	case VV_ARRAY:
 		{
@@ -1682,7 +1694,7 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
 
 			value.m_type = VV_MATRIX;
 			value.m_val.resize_fill( nrows, ncols, 0.0 );
-			
+
 			for (size_t r=0; r < nrows; r++)
 			{
 				cols = wxStringTokenize(rows[r], " ,;|");
@@ -1727,7 +1739,7 @@ bool VarValue::Parse( int type, const wxString &str, VarValue &value )
     case VV_DATARR:
         throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
 	}
-	
+
 	return false;
 }
 
@@ -1777,7 +1789,7 @@ wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 		for (VarTable::iterator it = m_tab.begin(); it != m_tab.end(); ++it)
 		{
 			buf += (it->first) + ":" + wxString::Format("%d",it->second->Type()) + "=" + it->second->AsString();
-			if ( ++i < (m_tab.size())) buf += tabsep; 
+			if ( ++i < (m_tab.size())) buf += tabsep;
 		}
 
 		return buf;
@@ -1812,7 +1824,7 @@ wxString VarValue::AsString( wxChar arrsep, wxChar tabsep )
 	return "<no value found>";
 }
 
-VarInfo::VarInfo() 
+VarInfo::VarInfo()
 {
 	Type = VV_INVALID;
 	Flags = VF_NONE;
@@ -1881,7 +1893,7 @@ void VarInfo::Write_text(wxOutputStream &os)
 	out.PutChar('\n');
 	if (Label.Len() > 0)
 		out.WriteString(Label);
-	else 
+	else
 		out.WriteString(" ");
 	out.PutChar('\n');
 	if (Units.Len() > 0)
@@ -2017,13 +2029,13 @@ bool VarDatabase::Read( wxInputStream &is, const wxString &page )
 		VarInfo *vv = 0;
 
 		VarInfoHash::iterator it = find( name );
-		if ( it != end() ) 
+		if ( it != end() )
 			vv = it->second;
-		else 
+		else
 			vv = new VarInfo;
 
 		ok = ok && vv->Read( is );
-		
+
 		(*this)[name] = vv;
 		if ( !page.IsEmpty() ) list.Add( name );
 	}
@@ -2087,7 +2099,7 @@ bool VarDatabase::Read_text(wxInputStream &is, const wxString &page)
 		if (!page.IsEmpty()) list.Add(name);
 	}
 	return ok;
-	
+
 //	if (!ok) return false;
 //	return in.Read8() == code;
 }
@@ -2095,7 +2107,7 @@ bool VarDatabase::Read_text(wxInputStream &is, const wxString &page)
 
 VarInfo *VarDatabase::Create( const wxString &name, int type,
 	const wxString &label, const wxString &units,
-	const wxString &group, const wxString &indexlabels, 
+	const wxString &group, const wxString &indexlabels,
 	unsigned long flags, const VarValue &defval, const wxString &uiobject )
 {
 	VarInfo *vv = new VarInfo;
@@ -2134,7 +2146,7 @@ bool VarDatabase::Rename( const wxString &old_name, const wxString &new_name )
 
 	VarInfo *vv = it->second;
 	erase( it );
-	
+
 	(*this)[ new_name ] = vv;
 	return true;
 }
@@ -2275,7 +2287,7 @@ bool VarTableScriptInterpreter::special_get( const lk_string &name, lk::vardata_
 	bool ok = false;
 	if ( VarValue *vv = m_vars->Get( name ) )
 		ok = vv->Write( val );
-	
+
 //	wxLogStatus("vtsi->special_get( " + name + " ) " + wxString( ok?"ok":"fail") );
 	return ok;
 }

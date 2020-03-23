@@ -450,7 +450,7 @@ ThousandsSep
 1
 Editable
 2
-0
+1
 ForeColour
 4
 0
@@ -1442,7 +1442,7 @@ ThousandsSep
 1
 Editable
 2
-0
+1
 ForeColour
 4
 0
@@ -1690,7 +1690,7 @@ ThousandsSep
 1
 Editable
 2
-0
+1
 ForeColour
 4
 0
@@ -2475,7 +2475,7 @@ ThousandsSep
 1
 Editable
 2
-0
+1
 ForeColour
 4
 0
@@ -2876,68 +2876,6 @@ X
 282
 Y
 3
-960
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-23
-total_collection_cost51
-X
-3
-282
-Y
-3
 711
 Width
 3
@@ -3000,68 +2938,6 @@ X
 282
 Y
 3
-1014
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-36
-total_collection_cost_per_capacity49
-X
-3
-282
-Y
-3
 765
 Width
 3
@@ -3119,68 +2995,6 @@ Name
 5
 33
 total_collection_cost_per_turbine
-X
-3
-282
-Y
-3
-987
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-35
-total_collection_cost_per_turbine50
 X
 3
 282
@@ -3373,6 +3187,192 @@ X
 Y
 3
 1425
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+19
+total_erection_cost
+X
+3
+282
+Y
+3
+960
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+32
+total_erection_cost_per_capacity
+X
+3
+282
+Y
+3
+1014
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+31
+total_erection_cost_per_turbine
+X
+3
+282
+Y
+3
+987
 Width
 3
 90
@@ -3741,7 +3741,7 @@ Name
 total_gridconnection_cost_per_turbine
 X
 3
-405
+395
 Y
 3
 849
@@ -4171,8 +4171,8 @@ Numeric
 17
 Name
 5
-38
-total_sitepreparation_cost_per_turbine
+39
+total_sitepreparation_cost_per_capacity
 X
 3
 282
@@ -4233,8 +4233,8 @@ Numeric
 17
 Name
 5
-40
-total_sitepreparation_cost_per_turbine58
+38
+total_sitepreparation_cost_per_turbine
 X
 3
 282
@@ -4423,7 +4423,7 @@ Name
 total_substation_cost_per_turbine
 X
 3
-405
+395
 Y
 3
 1116
@@ -4662,7 +4662,7 @@ TabOrder
 3
 4294967295
 
-66
+67
 bonding_usd
 3
 1
@@ -4760,7 +4760,7 @@ Wind LandBOSSE
 1
 1
 1
-Choice
+Numeric
 development_labor_usd
 3
 1
@@ -4810,13 +4810,13 @@ Distance to Interconnect
 miles
 Wind LandBOSSE
 0
-0
+2
 1
 1
 1
 1
 0
-Default
+Numeric
 engineering_usd
 3
 1
@@ -5040,7 +5040,7 @@ Wind LandBOSSE
 1
 1
 0
-Choice
+Numeric
 markup_contingency_usd
 3
 1
@@ -5096,7 +5096,7 @@ Wind LandBOSSE
 1
 1
 0
-Choice
+Numeric
 rotor_diameter
 3
 1
@@ -5125,6 +5125,20 @@ Wind LandBOSSE
 1
 0
 Default
+site_facility_usd
+3
+1
+Site Facility Cost
+$
+Wind LandBOSSE
+0
+2
+1
+1
+1
+1
+0
+Numeric
 sitepreparation_equipment_rental_usd
 3
 1
@@ -5446,18 +5460,21 @@ Wind LandBOSSE
 1
 1
 0
-Default
+Numeric
 total_project_cost_per_capacity
 3
-0
+1
 Project Cost Estimate per kW
 $/kW
 Wind LandBOSSE
 0
 8
 1
+1
+1
+1
 0
-Default
+Numeric
 total_sitepreparation_cost
 3
 1
@@ -5585,9 +5602,9 @@ Wind LandBOSSE
 0
 Numeric
 
-7929
+619
 equations{ 'turbine_rating_MW' } = define() {
-	return ${wind_turbine_kw_rating};
+	return ${wind_turbine_kw_rating}/1000;
 };
 
 equations{ 'wind_shear_exponent' } = define() {
@@ -5614,254 +5631,7 @@ equations{ 'row_spacing_rotor_diameters' } = define() {
 	return ${windfarm.farm.row_spacing};
 };
 
-equations{ '$MIMO$ BOS calculations' } = define() {
-	obj = ssc_create();
-
-	ssc_var(obj, "wind_resource_filename", ${wind_resource_filename});
-	ssc_var(obj, "distance_to_interconnect_mi", ${distance_to_interconnect_mi});
-	ssc_var(obj, "interconnect_voltage_kV", ${interconnect_voltage_kV});
-	ssc_var(obj, "depth", ${depth});
-	ssc_var(obj, "rated_thrust_N", ${rated_thrust_N});
-	ssc_var(obj, "labor_cost_multiplier", ${labor_cost_multiplier});
-	ssc_var(obj, "gust_velocity_m_per_s", ${gust_velocity_m_per_s});
-	ssc_var(obj, "wind_resource_shear", ${wind_resource_shear});
-	ssc_var(obj, "num_turbines", ${num_turbines});
-	ssc_var(obj, "turbine_spacing_rotor_diameters", ${turbine_spacing_rotor_diameters});
-	ssc_var(obj, "row_spacing_rotor_diameters", ${row_spacing_rotor_diameters});
-	ssc_var(obj, "turbine_rating_MW", ${turbine_rating_MW});
-	ssc_var(obj, "wind_turbine_hub_ht", ${wind_turbine_hub_ht});
-	ssc_var(obj, "wind_turbine_rotor_diameter", ${wind_turbine_rotor_diameter});
-
-	result = ssc_exec( obj, 'wind_landbosse' );
-
-	    rv = ssc_var(obj, "bonding_usd");
-    ${bonding_usd} = rv;
-
-    rv = ssc_var(obj, "collection_equipment_rental_usd");
-    ${collection_equipment_rental_usd} = rv;
-
-    rv = ssc_var(obj, "collection_labor_usd");
-    ${collection_labor_usd} = rv;
-
-    rv = ssc_var(obj, "collection_material_usd");
-    ${collection_material_usd} = rv;
-
-    rv = ssc_var(obj, "collection_mobilization_usd");
-    ${collection_mobilization_usd} = rv;
-
-    rv = ssc_var(obj, "construction_permitting_usd");
-    ${construction_permitting_usd} = rv;
-
-    rv = ssc_var(obj, "development_labor_usd");
-    ${development_labor_usd} = rv;
-
-    rv = ssc_var(obj, "development_material_usd");
-    ${development_material_usd} = rv;
-
-    rv = ssc_var(obj, "development_mobilization_usd");
-    ${development_mobilization_usd} = rv;
-
-    rv = ssc_var(obj, "engineering_usd");
-    ${engineering_usd} = rv;
-
-    rv = ssc_var(obj, "erection_equipment_rental_usd");
-    ${erection_equipment_rental_usd} = rv;
-
-    rv = ssc_var(obj, "erection_fuel_usd");
-    ${erection_fuel_usd} = rv;
-
-    rv = ssc_var(obj, "erection_labor_usd");
-    ${erection_labor_usd} = rv;
-
-    rv = ssc_var(obj, "erection_material_usd");
-    ${erection_material_usd} = rv;
-
-    rv = ssc_var(obj, "erection_mobilization_usd");
-    ${erection_mobilization_usd} = rv;
-
-    rv = ssc_var(obj, "erection_other_usd");
-    ${erection_other_usd} = rv;
-
-    rv = ssc_var(obj, "foundation_equipment_rental_usd");
-    ${foundation_equipment_rental_usd} = rv;
-
-    rv = ssc_var(obj, "foundation_labor_usd");
-    ${foundation_labor_usd} = rv;
-
-    rv = ssc_var(obj, "foundation_material_usd");
-    ${foundation_material_usd} = rv;
-
-    rv = ssc_var(obj, "foundation_mobilization_usd");
-    ${foundation_mobilization_usd} = rv;
-
-    rv = ssc_var(obj, "insurance_usd");
-    ${insurance_usd} = rv;
-
-    rv = ssc_var(obj, "markup_contingency_usd");
-    ${markup_contingency_usd} = rv;
-
-    rv = ssc_var(obj, "project_management_usd");
-    ${project_management_usd} = rv;
-
-    rv = ssc_var(obj, "site_facility_usd");
-    ${site_facility_usd} = rv;
-
-    rv = ssc_var(obj, "sitepreparation_equipment_rental_usd");
-    ${sitepreparation_equipment_rental_usd} = rv;
-
-    rv = ssc_var(obj, "sitepreparation_labor_usd");
-    ${sitepreparation_labor_usd} = rv;
-
-    rv = ssc_var(obj, "sitepreparation_material_usd");
-    ${sitepreparation_material_usd} = rv;
-
-    rv = ssc_var(obj, "sitepreparation_mobilization_usd");
-    ${sitepreparation_mobilization_usd} = rv;
-
-    rv = ssc_var(obj, "total_collection_cost");
-    ${total_collection_cost} = rv;
-
-    rv = ssc_var(obj, "total_development_cost");
-    ${total_development_cost} = rv;
-
-    rv = ssc_var(obj, "total_erection_cost");
-    ${total_erection_cost} = rv;
-
-    rv = ssc_var(obj, "total_foundation_cost");
-    ${total_foundation_cost} = rv;
-
-    rv = ssc_var(obj, "total_gridconnection_cost");
-    ${total_gridconnection_cost} = rv;
-
-    rv = ssc_var(obj, "total_management_cost");
-    ${total_management_cost} = rv;
-
-    rv = ssc_var(obj, "total_sitepreparation_cost");
-    ${total_sitepreparation_cost} = rv;
-
-    rv = ssc_var(obj, "total_substation_cost");
-    ${total_substation_cost} = rv;
-
-    rv = ssc_var(obj, "total_project_cost");
-    ${total_project_cost} = rv;
-
-	ssc_free( obj );
-};
-
-equations{ 'bos_total_cost_per_kw' } = define() {
-	return ${bos_total_budgeted_cost}/(${farm_size_MW}*1000);
-};
-
-equations{ 'construction_time' } = define() {
-	if ( ${construction_time_choice} == 0 )
-		return ${construction_time_input};
-	else
-		return floor(0.5+(0.0001*${wind_farm_num_turbines}*${wind_farm_num_turbines} + 0.0963*${wind_farm_num_turbines} + 2.7432));
-};
-
-equations{ 'construction_time_sugg' } = define() {
-	return floor(0.5+(0.0001*${wind_farm_num_turbines}*${wind_farm_num_turbines} + 0.0963*${wind_farm_num_turbines} + 2.7432));
-};
-
-equations{ 'om_building_size' } = define() {
-	// O&M Building Size (ft2)
-	if ( ${om_building_size_choice} == 0 )
-		return ${om_building_size_input};
-	else if (${farm_size_MW} < 200)
-		return 3000;
-	else if (${farm_size_MW} < 500)
-		return 5000;
-	else if (${farm_size_MW} < 800)
-		return 7000;
-	else if (${farm_size_MW}< 1000)
-		return 9000;
-	else
-		return 12000;
-};
-
-equations{ 'om_building_size_sugg' } = define() {
-	// O&M Building Size (ft2)
-	if (${farm_size_MW} < 200)
-		return 3000;
-	else if (${farm_size_MW} < 500)
-		return 5000;
-	else if (${farm_size_MW} < 800)
-		return 7000;
-	else if (${farm_size_MW}< 1000)
-		return 9000;
-	else
-		return 12000;
-};
-
-equations{ 'quantity_test_met_towers' } = define() {
-	if ( ${quantity_test_met_towers_choice} == 0 )
-		return ${quantity_test_met_towers_input};
-	else
-		return floor(0.5+(${farm_size_MW} / 75.0));
-};
-
-equations{ 'quantity_test_met_towers_sugg' } = define() {
-	return floor(0.5+(${farm_size_MW} / 75.0));
-};
-
-equations{ 'quantity_permanent_met_towers' } = define() {
-	if ( ${quantity_permanent_met_towers_choice} == 0 )
-		return ${quantity_permanent_met_towers_input};
-	else if (${farm_size_MW} < 100)
-		return 1;
-	else if (${farm_size_MW}< 200)
-		return 2;
-	else
-		return floor(${farm_size_MW} / 100.0);
-};
-
-equations{ 'quantity_permanent_met_towers_sugg' } = define() {
-	if (${farm_size_MW} < 100)
-		return 1;
-	else if (${farm_size_MW}< 200)
-		return 2;
-	else
-		return floor(${farm_size_MW} / 100.0);
-};
-
-equations{ 'weather_delay_days' } = define() {
-	if ( ${weather_delay_days_choice} == 0 )
-		return ${weather_delay_days_input};
-	else
-		return floor(0.5+(${wind_farm_num_turbines} / 5.0));
-};
-
-equations{ 'weather_delay_days_sugg' } = define() {
-	return floor(0.5+(${wind_farm_num_turbines} / 5.0));
-};
-
-equations{ 'crane_breakdowns' } = define() {
-	if ( ${crane_breakdowns_choice} == 0 )
-		return ${crane_breakdowns_input};
-	else
-		return floor(0.5+(${wind_farm_num_turbines} / 20.0));
-};
-
-equations{ 'crane_breakdowns_sugg' } = define() {
-	return floor(0.5+(${wind_farm_num_turbines} / 20.0));
-};
-
-equations{ 'access_road_entrances' } = define() {
-	if ( ${access_road_entrances_choice} == 0 )
-		return ${access_road_entrances_input};
-	else
-		return max(1, floor(0.5+(${wind_farm_num_turbines} / 20.0)) );
-};
-
-equations{ 'access_road_entrances' } = define() {
-	return max(1, floor(0.5+(${wind_farm_num_turbines} / 20.0)) );
-};
-
-equations{ 'sales_and_use_tax' } = define() {
-	return ${sales_tax_rate};
-};
-
-599
+1106
 on_change{"btn_bos_apply"} = define()
 {
 	install_type = value('install_type');
@@ -5871,10 +5641,46 @@ on_change{"btn_bos_apply"} = define()
 		return;
 	}
 	value('bos_cost_fixed', 0);
-	value('bos_cost_per_kw', value('bos_total_cost_per_kw'));
+	value('bos_cost_per_kw', value('total_project_cost_per_capacity'));
 	value('bos_cost_per_turbine', 0);
 	value('sales_tax_basis', 0);
-	msgbox('The total cost estimate of $' + value('bos_total_cost_per_kw') +
+	msgbox('The total cost estimate of $' + value('total_project_cost_per_capacity') +
 		'/kW was applied to the Balance of System Cost per kW input. ' +
 		'The Balance of System Fixed cost and Cost per turbine inputs were zeroed.');
+};
+
+on_load{"Wind LandBOSSE"} = define()
+{
+	setup_landbosse();
+	run_landbosse();
+};
+
+on_change{"interconnect_voltage_kV"} = define()
+{
+	run_landbosse();
+};
+
+on_change{"distance_to_interconnect_mi"} = define()
+{
+	run_landbosse();
+};
+
+on_change{"depth"} = define()
+{
+	run_landbosse();
+};
+
+on_change{"rated_thrust_N"} = define()
+{
+	run_landbosse();
+};
+
+on_change{"labor_cost_multiplier"} = define()
+{
+	run_landbosse();
+};
+
+on_change{"gust_velocity_m_per_s"} = define()
+{
+	run_landbosse();
 };
