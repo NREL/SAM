@@ -30,6 +30,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "materials.h"
 
+#include "main.h"
 
 DEFINE_EVENT_TYPE( wxEVT_MATPROPCTRL_CHANGE )
 
@@ -94,6 +95,7 @@ BEGIN_EVENT_TABLE( MatPropDialog, wxDialog )
 	EVT_NUMERIC( ID_NUMPOINTS, MatPropDialog::OnNumPointsChange )
 	EVT_GRID_CMD_CELL_CHANGED( ID_GRID, MatPropDialog::OnGridCellChange)
 	EVT_CLOSE( MatPropDialog::OnCloseWindow )
+	EVT_BUTTON( wxID_HELP, MatPropDialog::OnCommand)
 END_EVENT_TABLE()
 
 MatPropDialog::MatPropDialog(wxWindow *parent)
@@ -129,7 +131,7 @@ MatPropDialog::MatPropDialog(wxWindow *parent)
 	wxBoxSizer *bxmain = new wxBoxSizer(wxVERTICAL);
 	bxmain->Add(bxtop,0,wxALL|wxEXPAND, 3);
 	bxmain->Add(m_grid, 1, wxALL|wxEXPAND, 3);
-	bxmain->Add( CreateButtonSizer( wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 6);
+	bxmain->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 6);
 
 	SetSizer( bxmain );
 }
@@ -192,6 +194,7 @@ void MatPropDialog::OnCommand(wxCommandEvent &evt)
 	{
 	case ID_IMPORT: Import(); break;
 	case ID_EXPORT: Export(); break;
+	case wxID_HELP: SamApp::ShowHelp("edit_material_properties"); break;
 	}
 }
 

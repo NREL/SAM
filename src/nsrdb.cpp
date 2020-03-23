@@ -134,7 +134,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 	switch( e.GetId() )
 	{
 		case wxID_HELP:
-			SamApp::ShowHelp("download_weather_file");
+			SamApp::ShowHelp("nsrdb_advanced_download");
 			break;
 		case ID_btnResources:
 			{
