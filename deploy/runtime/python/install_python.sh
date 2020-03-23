@@ -11,7 +11,7 @@ function log_message
 
 function debug
 {
-	if [ $VERBOSE == 1 ]; then
+	if [ $VERBOSE -eq 1 ]; then
 		log_message "DEBUG" $@
 	fi
 }
@@ -81,6 +81,12 @@ if [ -z $VERBOSE ]; then
 	VERBOSE=0
 fi
 
+# Developers can set this to 0 to prevent repeated downloads.
+# Normal operation is download the file every run and delete it afterwards.
+if [ -z $FORCE_DOWNLOAD ]; then
+	FORCE_DOWNLOAD=1
+fi
+
 if [ -z $3 ]; then
 	show_help
 	exit 1
@@ -136,13 +142,19 @@ debug "CONDA_PACKAGE_PATH=$CONDA_PACKAGE_PATH"
 debug "INSTALL_PATH=$INSTALL_PATH"
 debug "PIP=$PIP"
 
+if [ $FORCE_DOWNLOAD -eq 1 ] && [ -f $CONDA_PACKAGE_PATH ]; then
+	run_command "rm -f $CONDA_PACKAGE_PATH"
+fi
+
 if [ ! -f $CONDA_PACKAGE_PATH ]; then
 	run_command "curl $CONDA_URL -o $CONDA_PACKAGE_PATH"
 	debug "Finished downloading $CONDA_PACKAGE_NAME"
 fi
 
 run_command "bash $CONDA_PACKAGE_PATH -b -p $INSTALL_PATH"
-run_command "rm -rf $CONDA_PACKAGE_PATH"
+if [ $FORCE_DOWNLOAD -eq 1 ]; then
+	run_command "rm -rf $CONDA_PACKAGE_PATH"
+fi
 
 update_config_file
 debug "Finished installation of Python $PYTHON_FULL_VERSION"
