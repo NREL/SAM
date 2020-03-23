@@ -349,6 +349,7 @@ public:
 
 	static bool LoadAndRunScriptFile( const wxString &script_file, wxArrayString *errors = 0 );
 
+	static void LoadPythonConfig();
 	static void InstallPython();
     static void InstallPythonPackage(const std::string& pip_name);
 

@@ -2876,68 +2876,6 @@ X
 282
 Y
 3
-960
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-23
-total_collection_cost51
-X
-3
-282
-Y
-3
 711
 Width
 3
@@ -3000,68 +2938,6 @@ X
 282
 Y
 3
-1014
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-36
-total_collection_cost_per_capacity49
-X
-3
-282
-Y
-3
 765
 Width
 3
@@ -3119,68 +2995,6 @@ Name
 5
 33
 total_collection_cost_per_turbine
-X
-3
-282
-Y
-3
-987
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-35
-total_collection_cost_per_turbine50
 X
 3
 282
@@ -3373,6 +3187,192 @@ X
 Y
 3
 1425
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+19
+total_erection_cost
+X
+3
+282
+Y
+3
+960
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+32
+total_erection_cost_per_capacity
+X
+3
+282
+Y
+3
+1014
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+31
+total_erection_cost_per_turbine
+X
+3
+282
+Y
+3
+987
 Width
 3
 90
@@ -3741,7 +3741,7 @@ Name
 total_gridconnection_cost_per_turbine
 X
 3
-405
+395
 Y
 3
 849
@@ -4171,8 +4171,8 @@ Numeric
 17
 Name
 5
-38
-total_sitepreparation_cost_per_turbine
+39
+total_sitepreparation_cost_per_capacity
 X
 3
 282
@@ -4233,8 +4233,8 @@ Numeric
 17
 Name
 5
-40
-total_sitepreparation_cost_per_turbine58
+38
+total_sitepreparation_cost_per_turbine
 X
 3
 282
@@ -4423,7 +4423,7 @@ Name
 total_substation_cost_per_turbine
 X
 3
-405
+395
 Y
 3
 1116
@@ -4662,7 +4662,7 @@ TabOrder
 3
 4294967295
 
-66
+67
 bonding_usd
 3
 1
@@ -4760,7 +4760,7 @@ Wind LandBOSSE
 1
 1
 1
-Choice
+Numeric
 development_labor_usd
 3
 1
@@ -4810,13 +4810,13 @@ Distance to Interconnect
 miles
 Wind LandBOSSE
 0
-0
+2
 1
 1
 1
 1
 0
-Default
+Numeric
 engineering_usd
 3
 1
@@ -5040,7 +5040,7 @@ Wind LandBOSSE
 1
 1
 0
-Choice
+Numeric
 markup_contingency_usd
 3
 1
@@ -5096,7 +5096,7 @@ Wind LandBOSSE
 1
 1
 0
-Choice
+Numeric
 rotor_diameter
 3
 1
@@ -5125,6 +5125,20 @@ Wind LandBOSSE
 1
 0
 Default
+site_facility_usd
+3
+1
+Site Facility Cost
+$
+Wind LandBOSSE
+0
+2
+1
+1
+1
+1
+0
+Numeric
 sitepreparation_equipment_rental_usd
 3
 1
@@ -5446,18 +5460,21 @@ Wind LandBOSSE
 1
 1
 0
-Default
+Numeric
 total_project_cost_per_capacity
 3
-0
+1
 Project Cost Estimate per kW
 $/kW
 Wind LandBOSSE
 0
 8
 1
+1
+1
+1
 0
-Default
+Numeric
 total_sitepreparation_cost
 3
 1
@@ -5585,7 +5602,7 @@ Wind LandBOSSE
 0
 Numeric
 
-1801
+6164
 equations{ 'turbine_rating_MW' } = define() {
 	return ${wind_turbine_kw_rating}/1000;
 };
@@ -5636,13 +5653,149 @@ equations{ '$MIMO$ BOS calculations' } = define() {
 
     result = ssc_exec( obj, 'wind_landbosse' );
 
+	error = ssc_var(obj, "errors");
+	if (error != "0"){
+		msgbox(error);
+		return;
+	}
+
     rv = ssc_var(obj, "bonding_usd");
     ${bonding_usd} = rv;
 
+    rv = ssc_var(obj, "collection_equipment_rental_usd");
+    ${collection_equipment_rental_usd} = rv;
+
+    rv = ssc_var(obj, "collection_labor_usd");
+    ${collection_labor_usd} = rv;
+
+    rv = ssc_var(obj, "collection_material_usd");
+    ${collection_material_usd} = rv;
+
+    rv = ssc_var(obj, "collection_mobilization_usd");
+    ${collection_mobilization_usd} = rv;
+
+    rv = ssc_var(obj, "construction_permitting_usd");
+    ${construction_permitting_usd} = rv;
+
+    rv = ssc_var(obj, "development_labor_usd");
+    ${development_labor_usd} = rv;
+
+    rv = ssc_var(obj, "development_material_usd");
+    ${development_material_usd} = rv;
+
+    rv = ssc_var(obj, "development_mobilization_usd");
+    ${development_mobilization_usd} = rv;
+
+    rv = ssc_var(obj, "engineering_usd");
+    ${engineering_usd} = rv;
+
+    rv = ssc_var(obj, "erection_equipment_rental_usd");
+    ${erection_equipment_rental_usd} = rv;
+
+    rv = ssc_var(obj, "erection_fuel_usd");
+    ${erection_fuel_usd} = rv;
+
+    rv = ssc_var(obj, "erection_labor_usd");
+    ${erection_labor_usd} = rv;
+
+    rv = ssc_var(obj, "erection_material_usd");
+    ${erection_material_usd} = rv;
+
+    rv = ssc_var(obj, "erection_mobilization_usd");
+    ${erection_mobilization_usd} = rv;
+
+    rv = ssc_var(obj, "erection_other_usd");
+    ${erection_other_usd} = rv;
+
+    rv = ssc_var(obj, "foundation_equipment_rental_usd");
+    ${foundation_equipment_rental_usd} = rv;
+
+    rv = ssc_var(obj, "foundation_labor_usd");
+    ${foundation_labor_usd} = rv;
+
+    rv = ssc_var(obj, "foundation_material_usd");
+    ${foundation_material_usd} = rv;
+
+    rv = ssc_var(obj, "foundation_mobilization_usd");
+    ${foundation_mobilization_usd} = rv;
+
+    rv = ssc_var(obj, "insurance_usd");
+    ${insurance_usd} = rv;
+
+    rv = ssc_var(obj, "markup_contingency_usd");
+    ${markup_contingency_usd} = rv;
+
+    rv = ssc_var(obj, "project_management_usd");
+    ${project_management_usd} = rv;
+
+    rv = ssc_var(obj, "site_facility_usd");
+    ${site_facility_usd} = rv;
+
+    rv = ssc_var(obj, "sitepreparation_equipment_rental_usd");
+    ${sitepreparation_equipment_rental_usd} = rv;
+
+    rv = ssc_var(obj, "sitepreparation_labor_usd");
+    ${sitepreparation_labor_usd} = rv;
+
+    rv = ssc_var(obj, "sitepreparation_material_usd");
+    ${sitepreparation_material_usd} = rv;
+
+    rv = ssc_var(obj, "sitepreparation_mobilization_usd");
+    ${sitepreparation_mobilization_usd} = rv;
+
+	// total costs and per kw & turb
+	capacity = ${system_capacity};
+    nturbs = ${wind_farm_num_turbines};
+
+    rv = ssc_var(obj, "total_collection_cost");
+    ${total_collection_cost} = rv;
+    ${total_collection_cost_per_capacity} = rv / capacity;
+    ${total_collection_cost_per_turbine} = rv / nturbs;
+
+    rv = ssc_var(obj, "total_development_cost");
+    ${total_development_cost} = rv;
+	${total_development_cost_per_capacity} = rv / capacity;
+    ${total_development_cost_per_turbine} = rv / nturbs;
+
+    rv = ssc_var(obj, "total_erection_cost");
+    ${total_erection_cost} = rv;
+	${total_erection_cost_per_capacity} = rv / capacity;
+    ${total_erection_cost_per_turbine} = rv / nturbs;
+
+    rv = ssc_var(obj, "total_foundation_cost");
+    ${total_foundation_cost} = rv;
+	${total_foundation_cost_per_capacity} = rv / capacity;
+    ${total_foundation_cost_per_turbine} = rv / nturbs;
+
+    rv = ssc_var(obj, "total_gridconnection_cost");
+    ${total_gridconnection_cost} = rv;
+	${total_gridconnection_cost_per_capacity} = rv / capacity;
+    ${total_gridconnection_cost_per_turbine} = rv / nturbs;
+
+    rv = ssc_var(obj, "total_management_cost");
+    ${total_management_cost} = rv;
+	${total_management_cost_per_capacity} = rv / capacity;
+    ${total_management_cost_per_turbine} = rv / nturbs;
+    
+    rv = ssc_var(obj, "total_sitepreparation_cost");
+    ${total_sitepreparation_cost} = rv;
+	${total_sitepreparation_cost_per_capacity} = rv / capacity;
+    ${total_sitepreparation_cost_per_turbine} = rv / nturbs;
+    
+    rv = ssc_var(obj, "total_substation_cost");
+    ${total_substation_cost} = rv;
+	${total_substation_cost_per_capacity} = rv / capacity;
+    ${total_substation_cost_per_turbine} = rv / nturbs;
+    
+    rv = ssc_var(obj, "total_project_cost");
+    ${total_project_cost} = rv;
+	${total_project_cost_per_capacity} = rv / capacity;
+    
     ssc_free( obj );
+       
 };
 
-599
+600
 on_change{"btn_bos_apply"} = define()
 {
 	install_type = value('install_type');

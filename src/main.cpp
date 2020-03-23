@@ -110,7 +110,7 @@
 #include "uiobjects.h"
 #include "variablegrid.h"
 #include "script.h"
-#include "pythoninstall.h"
+#include "pythonhandler.h"
 
 // application globals
 static SamApp::ver releases[] = {
@@ -203,6 +203,7 @@ static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
 static ScriptDatabase g_globalCallbacks;
+static PythonConfig pythonConfig;
 
 class SamLogWindow : public wxLogWindow
 {
@@ -2088,8 +2089,8 @@ extern void RegisterReportObjectTypes();
 		g_mainWindow->LoadProject( argv[1] );
 
 
-    // setup python path
-
+    // setup python configuration info
+    LoadPythonConfig();
 
 	return true;
 }
@@ -2775,15 +2776,18 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 	}
 }
 
+void SamApp::LoadPythonConfig(){
+    pythonConfig = ReadPythonConfig(GetPythonConfigPath() + "/python_config.json");
+    if (CheckPythonInstalled(pythonConfig)){
+        set_python_path(GetPythonConfigPath().c_str());
+        return;
+    }
+}
+
 void SamApp::InstallPython() {
-
     auto python_path = GetPythonConfigPath();
-    std::string python_config_path = python_path + "/python_config.json";
-
-    auto config = ReadPythonConfig(python_config_path);
-
     // already installed and correctly configured
-    if (CheckPythonInstalled(config)){
+    if (CheckPythonInstalled(pythonConfig)){
         set_python_path(python_path.c_str());
         return;
     }
@@ -2792,16 +2796,23 @@ void SamApp::InstallPython() {
     // windows
     bool errors = InstallPythonWindows(python_path, config);
 #else
-    bool errors = InstallPythonUnix(python_path, config);
+    bool errors = InstallPythonUnix(python_path, pythonConfig);
 #endif
     if (errors)
         throw std::runtime_error("Error installing python.");
 }
 
 void SamApp::InstallPythonPackage(const std::string& pip_name) {
-    auto config = ReadPythonConfig(GetPythonConfigPath() + "/python_config.json");
+    if (CheckPythonPackageInstalled(pip_name, pythonConfig))
+        return;
     auto packageConfig = ReadPythonPackageConfig(pip_name, GetPythonConfigPath() + "/" + pip_name + ".json");
-    InstallFromPip(GetPythonConfigPath() + "/"+ config.pipPath, packageConfig);
+    if (InstallFromPip(GetPythonConfigPath() + "/"+ pythonConfig.pipPath, packageConfig) == 0){
+        pythonConfig.packages.push_back(pip_name);
+        WritePythonConfig(GetPythonConfigPath() + "/python_config.json", pythonConfig);
+    }
+    else {
+        throw std::runtime_error("Error installing " + pip_name);
+    }
 }
 
 enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };

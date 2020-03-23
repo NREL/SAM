@@ -3,5 +3,5 @@
 	"miniconda_version": "4.8.2",
 	"exec_path": "",
 	"pip_path": "",
-	"comments": "different for every platform"
+    "packages": []
 }
