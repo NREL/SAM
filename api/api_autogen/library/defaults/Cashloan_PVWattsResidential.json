@@ -146,13 +146,12 @@
 			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 300
 		},
 		"FuelCell": {
 		},
 		"SystemOutput": {
 			"annual_energy_value": [0],
-			"degradation": [0.500000],
+			"degradation": [0.000000],
 			"gen": [0]
 		},
 		"Lifetime": {

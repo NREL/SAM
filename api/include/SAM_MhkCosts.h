@@ -92,14 +92,6 @@ extern "C"
 	SAM_EXPORT void SAM_MhkCosts_MHKCosts_device_rated_power_nset(SAM_MhkCosts ptr, double number, SAM_error *err);
 
 	/**
-	 * Set device_type: Device Type [0/1/2/3/4]
-	 * options: 0=Generic,1=RM3,2=RM5,3=RM6,4=RM1
-	 * constraints: MIN=0,MAX=4
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_MhkCosts_MHKCosts_device_type_nset(SAM_MhkCosts ptr, double number, SAM_error *err);
-
-	/**
 	 * Set devices_per_row: Number of wave devices per row in array
 	 * options: None
 	 * constraints: INTEGER
@@ -154,6 +146,22 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_MhkCosts_MHKCosts_inter_array_cable_length_nset(SAM_MhkCosts ptr, double number, SAM_error *err);
+
+	/**
+	 * Set lib_wave_device: Wave library name
+	 * options: None
+	 * constraints: None
+	 * required if: marine_energy_tech=0
+	 */
+	SAM_EXPORT void SAM_MhkCosts_MHKCosts_lib_wave_device_sset(SAM_MhkCosts ptr, const char* str, SAM_error *err);
+
+	/**
+	 * Set library_or_input_wec: Wave library or user input
+	 * options: 0=Library,1=User
+	 * constraints: None
+	 * required if: marine_energy_tech=0
+	 */
+	SAM_EXPORT void SAM_MhkCosts_MHKCosts_library_or_input_wec_nset(SAM_MhkCosts ptr, double number, SAM_error *err);
 
 	/**
 	 * Set marine_energy_tech: Marine energy technology [0/1]
@@ -310,8 +318,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_MhkCosts_MHKCosts_device_rated_power_nget(SAM_MhkCosts ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_MhkCosts_MHKCosts_device_type_nget(SAM_MhkCosts ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_MhkCosts_MHKCosts_devices_per_row_nget(SAM_MhkCosts ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkCosts_MHKCosts_eng_and_mgmt_cost_input_nget(SAM_MhkCosts ptr, SAM_error *err);
@@ -325,6 +331,10 @@ extern "C"
 	SAM_EXPORT double SAM_MhkCosts_MHKCosts_export_cable_system_cost_method_nget(SAM_MhkCosts ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkCosts_MHKCosts_inter_array_cable_length_nget(SAM_MhkCosts ptr, SAM_error *err);
+
+	SAM_EXPORT const char* SAM_MhkCosts_MHKCosts_lib_wave_device_sget(SAM_MhkCosts ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkCosts_MHKCosts_library_or_input_wec_nget(SAM_MhkCosts ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkCosts_MHKCosts_marine_energy_tech_nget(SAM_MhkCosts ptr, SAM_error *err);
 

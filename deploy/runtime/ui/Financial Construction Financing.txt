@@ -5,7 +5,7 @@ Financial Construction Financing
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 285
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -32,7 +35,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -49,6 +52,9 @@ Width
 Height
 3
 23
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -77,7 +83,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -94,6 +100,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 26
@@ -122,7 +131,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -139,6 +148,9 @@ Width
 Height
 3
 63
+Tool Tip
+5
+0
 Caption
 5
 25
@@ -167,7 +179,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -184,6 +196,9 @@ Width
 Height
 3
 60
+Tool Tip
+5
+0
 Caption
 5
 24
@@ -212,7 +227,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -229,6 +244,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 13
@@ -257,7 +275,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 11
@@ -274,6 +292,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -302,7 +323,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 12
@@ -319,6 +340,9 @@ Width
 Height
 3
 60
+Tool Tip
+5
+0
 Caption
 5
 37
@@ -347,7 +371,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -364,6 +388,9 @@ Width
 Height
 3
 66
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -392,7 +419,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -409,6 +436,9 @@ Width
 Height
 3
 46
+Tool Tip
+5
+0
 Caption
 5
 238
@@ -437,7 +467,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -454,6 +484,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 7
@@ -482,7 +515,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -499,6 +532,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -541,7 +577,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -558,6 +594,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -600,7 +639,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -617,6 +656,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -659,7 +701,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -676,6 +718,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -718,7 +763,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 19
@@ -735,6 +780,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -777,7 +825,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -794,6 +842,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -836,7 +887,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -853,6 +904,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -895,7 +949,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -912,6 +966,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -954,7 +1011,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -971,6 +1028,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1013,7 +1073,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1030,6 +1090,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1072,7 +1135,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -1089,6 +1152,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1131,7 +1197,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1148,6 +1214,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1190,7 +1259,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1207,6 +1276,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1249,7 +1321,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1266,6 +1338,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1308,7 +1383,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1325,6 +1400,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1367,7 +1445,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -1384,6 +1462,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1426,7 +1507,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 15
@@ -1443,6 +1524,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 6
@@ -1468,7 +1552,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 15
@@ -1485,6 +1569,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 6
@@ -1510,7 +1597,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 15
@@ -1527,6 +1614,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 6
@@ -1552,7 +1642,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 15
@@ -1569,6 +1659,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 6
@@ -1594,7 +1687,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 15
@@ -1611,6 +1704,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 6
@@ -1636,7 +1732,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1653,6 +1749,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1695,7 +1794,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1712,6 +1811,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1754,7 +1856,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1771,6 +1873,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1813,7 +1918,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1830,6 +1935,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1872,7 +1980,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 18
@@ -1889,6 +1997,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1931,7 +2042,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -1948,6 +2059,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1990,7 +2104,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -2007,6 +2121,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2049,7 +2166,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -2066,6 +2183,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2108,7 +2228,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -2125,6 +2245,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2167,7 +2290,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -2184,6 +2307,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2226,7 +2352,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -2243,6 +2369,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2285,7 +2414,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -2302,6 +2431,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2344,7 +2476,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -2361,6 +2493,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2403,7 +2538,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -2420,6 +2555,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2462,7 +2600,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -2479,6 +2617,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2521,7 +2662,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -2538,6 +2679,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2580,7 +2724,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -2597,6 +2741,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2639,7 +2786,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -2656,6 +2803,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2698,7 +2848,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -2715,6 +2865,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2757,7 +2910,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -2774,6 +2927,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2816,7 +2972,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -2833,6 +2989,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2875,7 +3034,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -2892,6 +3051,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2934,7 +3096,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -2951,6 +3113,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -3604,7 +3769,78 @@ Construction Period Debt
 0
 Numeric
 
-3665
+6710
+equations{ '$MIMO$ Financial_Construction_Financing_Equations' } = define() {
+	data.total_installed_cost = ${total_installed_cost};
+	data.const_per_percent1 = ${const_per_percent1};
+	data.const_per_interest_rate1 = ${const_per_interest_rate1};
+	data.const_per_months1 = ${const_per_months1};
+	data.const_per_upfront_rate1 = ${const_per_upfront_rate1};
+	data.const_per_percent2 = ${const_per_percent2};
+	data.const_per_interest_rate2 = ${const_per_interest_rate2};
+	data.const_per_months2 = ${const_per_months2};
+	data.const_per_upfront_rate2 = ${const_per_upfront_rate2};
+	data.const_per_percent3 = ${const_per_percent3};
+	data.const_per_interest_rate3 = ${const_per_interest_rate3};
+	data.const_per_months3 = ${const_per_months3};
+	data.const_per_upfront_rate3 = ${const_per_upfront_rate3};
+	data.const_per_percent4 = ${const_per_percent4};
+	data.const_per_interest_rate4 = ${const_per_interest_rate4};
+	data.const_per_months4 = ${const_per_months4};
+	data.const_per_upfront_rate4 = ${const_per_upfront_rate4};
+	data.const_per_percent5 = ${const_per_percent5};
+	data.const_per_interest_rate5 = ${const_per_interest_rate5};
+	data.const_per_months5 = ${const_per_months5};
+	data.const_per_upfront_rate5 = ${const_per_upfront_rate5};
+	
+	success = ssc_eqn("Financial_Construction_Financing_Equations", data);
+	if (!success) {
+		${const_per_principal1} = -999.;
+		${const_per_interest1} = -999.;
+		${const_per_total1} = -999.;
+		${const_per_principal2} = -999.;
+		${const_per_interest2} = -999.;
+		${const_per_total2} = -999.;
+		${const_per_principal3} = -999.;
+		${const_per_interest3} = -999.;
+		${const_per_total3} = -999.;
+		${const_per_principal4} = -999.;
+		${const_per_interest4} = -999.;
+		${const_per_total4} = -999.;
+		${const_per_principal5} = -999.;
+		${const_per_interest5} = -999.;
+		${const_per_total5} = -999.;
+		${const_per_principal_total} = -999.;
+		${const_per_percent_total} = -999.;
+		${construction_financing_cost} = -999.;
+		${const_per_interest_total} = -999.;
+	}
+	else {
+		${const_per_principal1} = data.const_per_principal1;
+		${const_per_interest1} = data.const_per_interest1;
+		${const_per_total1} = data.const_per_total1;
+		${const_per_principal2} = data.const_per_principal2;
+		${const_per_interest2} = data.const_per_interest2;
+		${const_per_total2} = data.const_per_total2;
+		${const_per_principal3} = data.const_per_principal3;
+		${const_per_interest3} = data.const_per_interest3;
+		${const_per_total3} = data.const_per_total3;
+		${const_per_principal4} = data.const_per_principal4;
+		${const_per_interest4} = data.const_per_interest4;
+		${const_per_total4} = data.const_per_total4;
+		${const_per_principal5} = data.const_per_principal5;
+		${const_per_interest5} = data.const_per_interest5;
+		${const_per_total5} = data.const_per_total5;
+		${const_per_principal_total} = data.const_per_principal_total;
+		${const_per_percent_total} = data.const_per_percent_total;
+		${construction_financing_cost} = data.construction_financing_cost;
+		${const_per_interest_total} = data.const_per_interest_total;
+	}
+	
+	return 0;
+};
+
+/*
 equations{ '$MIMO$ construction_interest' } = define() {
 	// construction interest calculation for each of the five construction period loans
 	C = ${total_installed_cost}; // installed cost
@@ -3699,9 +3935,5 @@ equations{ 'const_per_interest_total' } = define() {
   ${const_per_interest3} +
   ${const_per_interest4} +
   ${const_per_interest5}; };
-  
-
-
-
-
+*/
 0

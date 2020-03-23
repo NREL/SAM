@@ -2,32 +2,32 @@
 	"defaults": {
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"debt_fraction": 100,
+			"debt_fraction": 60,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 0.5,
+			"insurance_rate": 1,
 			"loan_rate": 7.5,
 			"loan_term": 25,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
-			"property_tax_rate": 0,
+			"property_tax_rate": 1,
 			"real_discount_rate": 6.4,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 1.70903
+			"system_capacity": 9707.12
 		},
 		"SystemCosts": {
-			"om_capacity": [25.000000],
+			"om_capacity": [16.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [8.000000],
+			"om_fuel_cost": [10.370000],
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [300.000000],
+			"om_replacement_cost1": [500.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 12651.1
+			"total_installed_cost": 7.18569e+07
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -41,7 +41,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 0,
+			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -150,11 +150,7 @@
 			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 100.205,
-			"batt_replacement_option": 0,
-			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
-			"en_batt": 1
+			"en_batt": 0
 		},
 		"FuelCell": {
 		},
@@ -164,7 +160,7 @@
 			"gen": [0]
 		},
 		"Lifetime": {
-			"system_use_lifetime_output": 0
+			"system_use_lifetime_output": 1
 		},
 		"ThirdPartyOwnership": {
 			"elec_cost_with_system": [0],

@@ -48,7 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 1.4805e+07,
+			"construction_financing_cost": 2.184e+07,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -88,14 +88,14 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [8.000000],
+			"om_fuel_cost": [10.000000],
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost1": [300.000000],
 			"om_replacement_cost_escal": 0,
 			"system_use_recapitalization": 0,
-			"total_installed_cost": 7.4025e+08
+			"total_installed_cost": 1.092e+09
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -256,15 +256,9 @@
 			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 1999.6,
-			"batt_meter_position": 1,
-			"batt_replacement_option": 0,
-			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
-			"en_batt": 1
+			"en_batt": 0
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 0
 		},
 		"SystemOutput": {
 			"degradation": [0.000000],
@@ -274,7 +268,7 @@
 		"UtilityBill": {
 		},
 		"Lifetime": {
-			"system_use_lifetime_output": 0
+			"system_use_lifetime_output": 1
 		},
 		"FuelCell": {
 		},

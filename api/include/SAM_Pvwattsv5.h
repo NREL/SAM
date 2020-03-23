@@ -120,7 +120,7 @@ extern "C"
 	/**
 	 * Set gcr: Ground coverage ratio [0..1]
 	 * options: None
-	 * constraints: MIN=0,MAX=1
+	 * constraints: MIN=0.01,MAX=0.99
 	 * required if: ?=0.4
 	 */
 	SAM_EXPORT void SAM_Pvwattsv5_SystemDesign_gcr_nset(SAM_Pvwattsv5 ptr, double number, SAM_error *err);

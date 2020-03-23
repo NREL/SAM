@@ -2043,6 +2043,14 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nset(SAM_TcsmoltenSalt ptr, double number, SAM_error *err);
+
+	/**
 	 * Set is_wlim_series: Use time-series net electricity generation limits
 	 * options: None
 	 * constraints: None
@@ -2960,6 +2968,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_wlim_series_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_write_ampl_dat_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
@@ -3363,6 +3373,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rh_aget(SAM_TcsmoltenSalt ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_sco2_preprocess_table_out_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_sf_adjust_out_aget(SAM_TcsmoltenSalt ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_solaz_aget(SAM_TcsmoltenSalt ptr, int* length, SAM_error *err);
@@ -3384,12 +3396,6 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_tou_value_aget(SAM_TcsmoltenSalt ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_twet_aget(SAM_TcsmoltenSalt ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_ud_T_amb_ind_od_out_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_ud_T_htf_ind_od_out_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_ud_m_dot_htf_ind_od_out_mget(SAM_TcsmoltenSalt ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_ui_direct_subtotal_nget(SAM_TcsmoltenSalt ptr, SAM_error *err);
 

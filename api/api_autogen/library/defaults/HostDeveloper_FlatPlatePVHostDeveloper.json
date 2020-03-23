@@ -4,7 +4,7 @@
 			"flip_target_percent": 11,
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.100000],
+			"ppa_price_input": [0.190000],
 			"ppa_soln_mode": 0
 		},
 		"FinancialParameters": {
@@ -26,13 +26,13 @@
 			"equip_reserve_depr_sta": 0,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 1,
+			"insurance_rate": 0.5,
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6,
 			"payment_option": 0,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
-			"property_tax_rate": 1,
+			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
@@ -52,7 +52,7 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [500.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 350892
+			"total_installed_cost": 352919
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -192,25 +192,25 @@
 			"pbi_fed_for_ds": 0,
 			"pbi_fed_tax_fed": 1,
 			"pbi_fed_tax_sta": 1,
-			"pbi_fed_term": 0,
+			"pbi_fed_term": 10,
 			"pbi_oth_amount": [0.000000],
 			"pbi_oth_escal": 0,
 			"pbi_oth_for_ds": 0,
 			"pbi_oth_tax_fed": 1,
 			"pbi_oth_tax_sta": 1,
-			"pbi_oth_term": 0,
+			"pbi_oth_term": 10,
 			"pbi_sta_amount": [0.000000],
 			"pbi_sta_escal": 0,
 			"pbi_sta_for_ds": 0,
 			"pbi_sta_tax_fed": 1,
 			"pbi_sta_tax_sta": 1,
-			"pbi_sta_term": 0,
+			"pbi_sta_term": 10,
 			"pbi_uti_amount": [0.000000],
 			"pbi_uti_escal": 0,
 			"pbi_uti_for_ds": 0,
 			"pbi_uti_tax_fed": 1,
 			"pbi_uti_tax_sta": 1,
-			"pbi_uti_term": 0
+			"pbi_uti_term": 10
 		},
 		"Host": {
 			"annual_energy_value": [0],
@@ -219,7 +219,7 @@
 			"host_real_discount_rate": 6.4
 		},
 		"SystemOutput": {
-			"degradation": [0.500000],
+			"degradation": [0.000000],
 			"gen": [0],
 			"system_capacity": 215.864
 		},
@@ -272,16 +272,12 @@
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000]
 			],
 			"ppa_multiplier_model": 0,
-			"system_use_lifetime_output": 0
+			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 7017.83
+			"construction_financing_cost": 7058.38
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 100.205,
-			"batt_replacement_option": 0,
-			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
 			"en_batt": 0
 		}
 	}

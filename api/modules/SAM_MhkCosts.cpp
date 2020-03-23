@@ -74,12 +74,6 @@ SAM_EXPORT void SAM_MhkCosts_MHKCosts_device_rated_power_nset(SAM_MhkCosts ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_MhkCosts_MHKCosts_device_type_nset(SAM_MhkCosts ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "device_type", number);
-	});
-}
-
 SAM_EXPORT void SAM_MhkCosts_MHKCosts_devices_per_row_nset(SAM_MhkCosts ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "devices_per_row", number);
@@ -119,6 +113,18 @@ SAM_EXPORT void SAM_MhkCosts_MHKCosts_export_cable_system_cost_method_nset(SAM_M
 SAM_EXPORT void SAM_MhkCosts_MHKCosts_inter_array_cable_length_nset(SAM_MhkCosts ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inter_array_cable_length", number);
+	});
+}
+
+SAM_EXPORT void SAM_MhkCosts_MHKCosts_lib_wave_device_sset(SAM_MhkCosts ptr, const char* str, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_string(ptr, "lib_wave_device", str);
+	});
+}
+
+SAM_EXPORT void SAM_MhkCosts_MHKCosts_library_or_input_wec_nset(SAM_MhkCosts ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "library_or_input_wec", number);
 	});
 }
 
@@ -301,17 +307,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_device_rated_power_nget(SAM_MhkCosts ptr
 
 
 
-SAM_EXPORT double SAM_MhkCosts_MHKCosts_device_type_nget(SAM_MhkCosts ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "device_type", &result))
-		make_access_error("SAM_MhkCosts", "device_type");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_devices_per_row_nget(SAM_MhkCosts ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -383,6 +378,29 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_inter_array_cable_length_nget(SAM_MhkCos
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inter_array_cable_length", &result))
 		make_access_error("SAM_MhkCosts", "inter_array_cable_length");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT const char* SAM_MhkCosts_MHKCosts_lib_wave_device_sget(SAM_MhkCosts ptr, SAM_error *err){
+	const char* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_string(ptr, "lib_wave_device");
+	if (!result)
+		make_access_error("SAM_MhkCosts", "lib_wave_device");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_MhkCosts_MHKCosts_library_or_input_wec_nget(SAM_MhkCosts ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "library_or_input_wec", &result))
+		make_access_error("SAM_MhkCosts", "library_or_input_wec");
 	});
 	return result;
 }

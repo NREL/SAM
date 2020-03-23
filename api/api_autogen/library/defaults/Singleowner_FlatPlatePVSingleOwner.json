@@ -256,25 +256,19 @@
 			"pbi_uti_term": 10
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 4000.32,
-			"batt_meter_position": 1,
-			"batt_replacement_option": 0,
-			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
 			"en_batt": 0
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 0
 		},
 		"SystemOutput": {
-			"degradation": [0.500000],
+			"degradation": [0.000000],
 			"gen": [0],
 			"system_capacity": 20000.9
 		},
 		"UtilityBill": {
 		},
 		"Lifetime": {
-			"system_use_lifetime_output": 0
+			"system_use_lifetime_output": 1
 		},
 		"FuelCell": {
 		},
