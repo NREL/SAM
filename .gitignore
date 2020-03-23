@@ -367,3 +367,5 @@ src/private - nrel.h
 src/private - os.h
 
 sam\.bin
+
+deploy/libraries/CEC Modules.csv
