@@ -1,6 +1,7 @@
 {
 	"defaults": {
 		"Lifetime": {
+			"system_use_lifetime_output": 0
 		},
 		"GridLimits": {
 			"enable_interconnection_limit": 0,

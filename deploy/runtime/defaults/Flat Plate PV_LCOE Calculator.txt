@@ -371,7 +371,7 @@ capital_cost
 1
 1
 1
-20800900
+20800924
 cec_a_ref
 1
 1
@@ -2287,7 +2287,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
-0
+49
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solar_data_source
 1
 4

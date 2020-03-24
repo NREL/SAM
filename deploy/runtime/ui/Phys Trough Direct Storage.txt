@@ -1,7 +1,7 @@
 Phys Trough Direct Storage
 912
 356
-22
+23
 GroupBox
 
 1
@@ -1116,6 +1116,38 @@ BackColour
 TabOrder
 3
 7
+CheckBox
+
+1
+9
+Name
+5
+17
+tanks_in_parallel
+X
+3
+732
+Y
+3
+291
+Width
+3
+26
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1303,7 +1335,7 @@ TabOrder
 3
 3
 
-23
+24
 Q_tes
 3
 1
@@ -1546,6 +1578,20 @@ tank_pairs
 3
 1
 Parallel tank pairs
+ 
+Thermal Energy Storage
+0
+2
+1
+1
+1
+1
+1
+Default
+tanks_in_parallel
+3
+1
+Field HTF can bypass TES to cycle
  
 Thermal Energy Storage
 0

@@ -1,0 +1,7 @@
+{
+	"defaults": {
+		"WeatherReader": {
+			"use_specific_wf_wave": 0
+		}
+	}
+}

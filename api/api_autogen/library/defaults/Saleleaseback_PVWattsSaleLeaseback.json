@@ -258,7 +258,6 @@
 			"months_working_reserve": 6
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 300
 		}
 	}
 }

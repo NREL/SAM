@@ -52,6 +52,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Weather_file_name_sset(SAM_TroughPhysicalProcessHeat ptr, const char* str, SAM_error *err);
 
 	/**
+	 * Set solar_resource_data: Weather resource data in memory
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Weather_solar_resource_data_tset(SAM_TroughPhysicalProcessHeat ptr, SAM_table tab, SAM_error *err);
+
+	/**
 	 * Set tilt: Tilt angle of surface/axis [none]
 	 * options: None
 	 * constraints: None
@@ -1322,6 +1330,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_is_dispatch_series_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_is_tod_pc_target_also_pc_max_nset(SAM_TroughPhysicalProcessHeat ptr, double number, SAM_error *err);
+
+	/**
 	 * Set is_wlim_series: Use time-series net heat generation limits
 	 * options: None
 	 * constraints: None
@@ -1435,6 +1451,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Weather_azimuth_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_TroughPhysicalProcessHeat_Weather_file_name_sget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err);
+
+	SAM_EXPORT SAM_table SAM_TroughPhysicalProcessHeat_Weather_solar_resource_data_tget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Weather_tilt_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err);
 
@@ -1776,6 +1794,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_is_dispatch_series_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_is_tod_pc_target_also_pc_max_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_is_wlim_series_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_is_write_ampl_dat_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err);
@@ -1869,6 +1889,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_beam_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Outputs_capacity_factor_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_deltaP_field_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_dni_costh_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err);
@@ -1878,6 +1900,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_e_dot_field_int_energy_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_hour_day_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Outputs_kwh_per_kw_nget(SAM_TroughPhysicalProcessHeat ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_balance_aget(SAM_TroughPhysicalProcessHeat ptr, int* length, SAM_error *err);
 

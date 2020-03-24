@@ -32,39 +32,33 @@ SAM_EXPORT void SAM_UiTesCalcs_destruct(SAM_UiTesCalcs system)
 	ssc_data_free(system);
 }
 
-SAM_EXPORT void SAM_UiTesCalcs_Common_TES_HTF_code_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_UiTesCalcs_Common_P_ref_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "TES_HTF_code", number);
+		ssc_data_set_number(ptr, "P_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_UiTesCalcs_Common_TES_HTF_props_mset(SAM_UiTesCalcs ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_UiTesCalcs_Common_T_htf_cold_des_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "TES_HTF_props", mat, nrows, ncols);
+		ssc_data_set_number(ptr, "T_htf_cold_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_UiTesCalcs_Common_T_HTF_cold_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_UiTesCalcs_Common_T_htf_hot_des_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "T_HTF_cold", number);
+		ssc_data_set_number(ptr, "T_htf_hot_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_UiTesCalcs_Common_T_HTF_hot_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_UiTesCalcs_Common_design_eff_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "T_HTF_hot", number);
+		ssc_data_set_number(ptr, "design_eff", number);
 	});
 }
 
-SAM_EXPORT void SAM_UiTesCalcs_Common_W_dot_pb_des_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_UiTesCalcs_Common_field_fl_props_mset(SAM_UiTesCalcs ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "W_dot_pb_des", number);
-	});
-}
-
-SAM_EXPORT void SAM_UiTesCalcs_Common_eta_pb_des_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "eta_pb_des", number);
+		ssc_data_set_matrix(ptr, "field_fl_props", mat, nrows, ncols);
 	});
 }
 
@@ -80,15 +74,21 @@ SAM_EXPORT void SAM_UiTesCalcs_Common_h_tank_min_nset(SAM_UiTesCalcs ptr, double
 	});
 }
 
+SAM_EXPORT void SAM_UiTesCalcs_Common_rec_htf_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_htf", number);
+	});
+}
+
 SAM_EXPORT void SAM_UiTesCalcs_Common_tank_pairs_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tank_pairs", number);
 	});
 }
 
-SAM_EXPORT void SAM_UiTesCalcs_Common_tes_hrs_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_UiTesCalcs_Common_tshours_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "tes_hrs", number);
+		ssc_data_set_number(ptr, "tshours", number);
 	});
 }
 
@@ -98,67 +98,56 @@ SAM_EXPORT void SAM_UiTesCalcs_Common_u_tank_nset(SAM_UiTesCalcs ptr, double num
 	});
 }
 
-SAM_EXPORT double SAM_UiTesCalcs_Common_TES_HTF_code_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiTesCalcs_Common_P_ref_nget(SAM_UiTesCalcs ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "TES_HTF_code", &result))
-		make_access_error("SAM_UiTesCalcs", "TES_HTF_code");
+	if (!ssc_data_get_number(ptr, "P_ref", &result))
+		make_access_error("SAM_UiTesCalcs", "P_ref");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double* SAM_UiTesCalcs_Common_TES_HTF_props_mget(SAM_UiTesCalcs ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_cold_des_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_htf_cold_des", &result))
+		make_access_error("SAM_UiTesCalcs", "T_htf_cold_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_hot_des_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_htf_hot_des", &result))
+		make_access_error("SAM_UiTesCalcs", "T_htf_hot_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_UiTesCalcs_Common_design_eff_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "design_eff", &result))
+		make_access_error("SAM_UiTesCalcs", "design_eff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_UiTesCalcs_Common_field_fl_props_mget(SAM_UiTesCalcs ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "TES_HTF_props", nrows, ncols);
+	result = ssc_data_get_matrix(ptr, "field_fl_props", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_UiTesCalcs", "TES_HTF_props");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_UiTesCalcs_Common_T_HTF_cold_nget(SAM_UiTesCalcs ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "T_HTF_cold", &result))
-		make_access_error("SAM_UiTesCalcs", "T_HTF_cold");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_UiTesCalcs_Common_T_HTF_hot_nget(SAM_UiTesCalcs ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "T_HTF_hot", &result))
-		make_access_error("SAM_UiTesCalcs", "T_HTF_hot");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_UiTesCalcs_Common_W_dot_pb_des_nget(SAM_UiTesCalcs ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "W_dot_pb_des", &result))
-		make_access_error("SAM_UiTesCalcs", "W_dot_pb_des");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_UiTesCalcs_Common_eta_pb_des_nget(SAM_UiTesCalcs ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "eta_pb_des", &result))
-		make_access_error("SAM_UiTesCalcs", "eta_pb_des");
+		make_access_error("SAM_UiTesCalcs", "field_fl_props");
 	});
 	return result;
 }
@@ -187,6 +176,17 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_min_nget(SAM_UiTesCalcs ptr, SAM_
 
 
 
+SAM_EXPORT double SAM_UiTesCalcs_Common_rec_htf_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_htf", &result))
+		make_access_error("SAM_UiTesCalcs", "rec_htf");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_UiTesCalcs_Common_tank_pairs_nget(SAM_UiTesCalcs ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -198,11 +198,11 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_tank_pairs_nget(SAM_UiTesCalcs ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_UiTesCalcs_Common_tes_hrs_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiTesCalcs_Common_tshours_nget(SAM_UiTesCalcs ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "tes_hrs", &result))
-		make_access_error("SAM_UiTesCalcs", "tes_hrs");
+	if (!ssc_data_get_number(ptr, "tshours", &result))
+		make_access_error("SAM_UiTesCalcs", "tshours");
 	});
 	return result;
 }
@@ -220,66 +220,66 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_u_tank_nget(SAM_UiTesCalcs ptr, SAM_erro
 
 
 
-SAM_EXPORT double SAM_UiTesCalcs_Outputs_HTF_dens_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiTesCalcs_Outputs_csp_pt_tes_htf_density_nget(SAM_UiTesCalcs ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "HTF_dens", &result))
-		make_access_error("SAM_UiTesCalcs", "HTF_dens");
+	if (!ssc_data_get_number(ptr, "csp_pt_tes_htf_density", &result))
+		make_access_error("SAM_UiTesCalcs", "csp_pt_tes_htf_density");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_UiTesCalcs_Outputs_d_tank_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiTesCalcs_Outputs_csp_pt_tes_tank_diameter_nget(SAM_UiTesCalcs ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "d_tank", &result))
-		make_access_error("SAM_UiTesCalcs", "d_tank");
+	if (!ssc_data_get_number(ptr, "csp_pt_tes_tank_diameter", &result))
+		make_access_error("SAM_UiTesCalcs", "csp_pt_tes_tank_diameter");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_dot_loss_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_dot_tes_est_nget(SAM_UiTesCalcs ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "q_dot_loss", &result))
-		make_access_error("SAM_UiTesCalcs", "q_dot_loss");
+	if (!ssc_data_get_number(ptr, "q_dot_tes_est", &result))
+		make_access_error("SAM_UiTesCalcs", "q_dot_tes_est");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_tes_des_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_tes_nget(SAM_UiTesCalcs ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "q_tes_des", &result))
-		make_access_error("SAM_UiTesCalcs", "q_tes_des");
+	if (!ssc_data_get_number(ptr, "q_tes", &result))
+		make_access_error("SAM_UiTesCalcs", "q_tes");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_UiTesCalcs_Outputs_vol_one_temp_avail_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiTesCalcs_Outputs_tes_avail_vol_nget(SAM_UiTesCalcs ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "vol_one_temp_avail", &result))
-		make_access_error("SAM_UiTesCalcs", "vol_one_temp_avail");
+	if (!ssc_data_get_number(ptr, "tes_avail_vol", &result))
+		make_access_error("SAM_UiTesCalcs", "tes_avail_vol");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_UiTesCalcs_Outputs_vol_one_temp_total_nget(SAM_UiTesCalcs ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiTesCalcs_Outputs_vol_tank_nget(SAM_UiTesCalcs ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "vol_one_temp_total", &result))
-		make_access_error("SAM_UiTesCalcs", "vol_one_temp_total");
+	if (!ssc_data_get_number(ptr, "vol_tank", &result))
+		make_access_error("SAM_UiTesCalcs", "vol_tank");
 	});
 	return result;
 }

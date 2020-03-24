@@ -898,8 +898,16 @@ bool VarValue::ValueEqual( VarValue &rhs )
 					for (size_t c = 0; c < m_val.ncols(); c++)
 					  {
 						if (equal)
-//							equal = equal && (m_val(r, c) == rhs.m_val(r, c));
-							equal = equal && (RelDif(m_val(r, c),rhs.m_val(r, c)) < TOLERANCE);
+						{
+							double x = m_val(r, c);
+							double y = rhs.m_val(r, c);
+							if ((std::isnan(x)) || (std::isnan(y)))
+								equal = ((std::isnan(x)) && (std::isnan(y)));
+							else if ((std::isinf(x)) || (std::isinf(y)))
+								equal = ((std::isinf(x)) && (std::isinf(y)));
+							else
+								equal = (RelDif(m_val(r, c), rhs.m_val(r, c)) < TOLERANCE);
+						}
 						else
 							break;
 					  }

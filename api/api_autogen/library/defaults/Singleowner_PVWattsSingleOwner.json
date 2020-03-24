@@ -256,7 +256,6 @@
 			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 300
 		},
 		"ElectricityRates": {
 		},

@@ -202,7 +202,7 @@
 			"cost_other_financing": 0,
 			"depr_fedbas_method": 1,
 			"depr_stabas_method": 1,
-			"flip_target_percent": 9,
+			"flip_target_percent": 11,
 			"flip_target_year": 20,
 			"salvage_percentage": 0,
 			"sponsor_operating_margin": 20,
