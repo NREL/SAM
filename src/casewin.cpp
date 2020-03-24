@@ -1726,7 +1726,7 @@ void NumericRangeDialog::OnCommand(wxCommandEvent &evt)
 	switch(evt.GetId())
 	{
 	case wxID_HELP:
-		SamApp::ShowHelp("numeric_ranges");
+		SamApp::ShowHelp("edit_parametric_variables");
 		break;
 
 	case ID_values:

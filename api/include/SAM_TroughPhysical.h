@@ -1528,6 +1528,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_Tou_is_dispatch_series_nset(SAM_TroughPhysical ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Tou_is_tod_pc_target_also_pc_max_nset(SAM_TroughPhysical ptr, double number, SAM_error *err);
+
+	/**
 	 * Set is_wlim_series: Use time-series net electricity generation limits
 	 * options: None
 	 * constraints: None
@@ -2137,6 +2145,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_dispatch_nget(SAM_TroughPhysical ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_dispatch_series_nget(SAM_TroughPhysical ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Tou_is_tod_pc_target_also_pc_max_nget(SAM_TroughPhysical ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_wlim_series_nget(SAM_TroughPhysical ptr, SAM_error *err);
 

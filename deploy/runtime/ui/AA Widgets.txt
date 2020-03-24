@@ -128,7 +128,7 @@ Label
 Value
 UseSchedule
 2
-1
+0
 ScheduleOnly
 2
 0
@@ -359,7 +359,8 @@ Mode
 1
 ColumnLabels
 5
-0
+5
+A,B,C
 Label
 5
 0
@@ -655,7 +656,9 @@ Description
 Table of values
 Fields
 6
-0
+2
+row 1
+row 2
 TabOrder
 3
 4294967295

@@ -4,7 +4,7 @@
 		},
 		"Lifetime": {
 			"analysis_period": 30,
-			"system_use_lifetime_output": 0
+			"system_use_lifetime_output": 1
 		},
 		"Load": {
 		},

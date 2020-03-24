@@ -344,6 +344,7 @@
 		"InverterMermoudLejeuneModel": {
 		},
 		"BatterySystem": {
+			"en_batt": 0
 		},
 		"Load": {
 		},

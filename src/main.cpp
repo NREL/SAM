@@ -117,6 +117,7 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2020, 02, 29 }, //2020.2.29 release
 		{ 2020, 02, 24 }, //2020.2.24 beta
 		{ 2020, 02, 17 }, //VS2019 beta release
 		{ 2020, 02, 14 }, //CSP beta release
@@ -2995,9 +2996,9 @@ void ConfigDialog::PopulateTech()
 
 	// Manually add groups here - eventually move to startup.lk
 	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
+	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Battery Storage");
 	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
 	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
-	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Battery Storage"); // for batt_test
 
 	for( size_t i=0;i<m_tnames.Count();i++)
 	{
@@ -3010,8 +3011,8 @@ void ConfigDialog::PopulateTech()
 			m_pTech->AppendItem(cont_csp, L);
 		else if (TP.Find("ME") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_me, L);
-		else if (TP.Find("BATT") != wxNOT_FOUND) // for batt_test
-			m_pTech->AppendItem(cont_batt, L); // for batt_test
+		else if (TP.Find("BATT") != wxNOT_FOUND) 
+			m_pTech->AppendItem(cont_batt, L); 
 		else
 			m_pTech->AppendItem(wxDataViewItem(0), L);
 	}

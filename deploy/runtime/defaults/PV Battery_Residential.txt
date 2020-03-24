@@ -1220,7 +1220,7 @@ cbi_fed_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_fed_tax_fed
 1
 1
@@ -1256,7 +1256,7 @@ cbi_oth_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_oth_tax_fed
 1
 1
@@ -1292,7 +1292,7 @@ cbi_sta_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_sta_tax_fed
 1
 1
@@ -1328,7 +1328,7 @@ cbi_uti_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_uti_tax_fed
 1
 1
@@ -2166,7 +2166,7 @@ ibi_fed_percent_maxvalue
 1
 1
 1
-0
+1e+38
 ibi_fed_percent_tax_fed
 1
 1
@@ -2232,7 +2232,7 @@ ibi_oth_percent_maxvalue
 1
 1
 1
-0
+1e+38
 ibi_oth_percent_tax_fed
 1
 1
@@ -2298,7 +2298,7 @@ ibi_sta_percent_maxvalue
 1
 1
 1
-0
+1e+38
 ibi_sta_percent_tax_fed
 1
 1
@@ -2364,7 +2364,7 @@ ibi_uti_percent_maxvalue
 1
 1
 1
-0
+1e+38
 ibi_uti_percent_tax_fed
 1
 1
@@ -3163,13 +3163,13 @@ inv_snl_eff_cec
 1
 1
 1
-97.053
+97.0531
 inv_snl_eff_euro
 1
 1
 1
 1
-96.6763
+96.6764
 inv_snl_idcmax
 1
 1
@@ -3340,7 +3340,7 @@ itc_fed_percent
 1
 1
 1
-30
+26
 itc_fed_percent_deprbas_fed
 1
 1
@@ -3358,7 +3358,7 @@ itc_fed_percent_maxvalue
 1
 1
 1
-1
+1e+38
 itc_sta_amount
 1
 1
@@ -3400,7 +3400,7 @@ itc_sta_percent_maxvalue
 1
 1
 1
-1
+1e+38
 land_area_value
 1
 1
@@ -3761,7 +3761,7 @@ om_capacity
 2
 1
 1
-50
+20
 om_capacity_escal
 1
 1

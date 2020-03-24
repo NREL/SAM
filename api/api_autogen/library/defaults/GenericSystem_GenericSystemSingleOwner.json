@@ -7,12 +7,12 @@
 			"heat_rate": 10,
 			"spec_mode": 0,
 			"system_capacity": 100000,
-			"user_capacity_factor": 43.6
+			"user_capacity_factor": 90
 		},
 		"Lifetime": {
 			"analysis_period": 25,
 			"generic_degradation": [0.000000],
-			"system_use_lifetime_output": 0
+			"system_use_lifetime_output": 1
 		},
 		"AdjustmentFactors": {
 			"constant": 0

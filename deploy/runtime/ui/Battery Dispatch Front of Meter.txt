@@ -1287,9 +1287,7 @@ Battery
 0
 Default
 
-706
-/*
-// eventually move to PPA TOD factors page
+657
 equations{'dispatch_tod_factors'} = define()
 {
 	dispatch = [];
@@ -1320,7 +1318,6 @@ equations{'dispatch_tod_factors'} = define()
 	return dispatch;
 };
 
-*/
 4373
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	

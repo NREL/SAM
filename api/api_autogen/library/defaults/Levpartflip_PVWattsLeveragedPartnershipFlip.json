@@ -280,7 +280,6 @@
 			"tax_investor_preflip_tax_percent": 98
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 300
 		}
 	}
 }

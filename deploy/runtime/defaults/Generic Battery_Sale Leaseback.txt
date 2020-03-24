@@ -11,7 +11,7 @@ LeadAcid_q10_computed
 1
 1
 1
-18.8325
+7434.65
 LeadAcid_q20
 1
 1
@@ -23,7 +23,7 @@ LeadAcid_q20_computed
 1
 1
 1
-20.25
+7994.25
 LeadAcid_qn
 1
 1
@@ -35,7 +35,7 @@ LeadAcid_qn_computed
 1
 1
 1
-12.15
+4796.55
 LeadAcid_tn
 1
 1
@@ -87,7 +87,8 @@ analysis_period
 analysis_period_warning
 1
 4
-0
+12
+No messages.
 batt_C_rate
 1
 1
@@ -99,7 +100,7 @@ batt_C_rate_max_charge
 1
 1
 1
-0.5
+0.25
 batt_C_rate_max_charge_input
 1
 1
@@ -111,7 +112,7 @@ batt_C_rate_max_discharge
 1
 1
 1
-0.5
+0.25
 batt_C_rate_max_discharge_input
 1
 1
@@ -147,7 +148,7 @@ batt_Qfull_flow
 1
 1
 1
-20.25
+7994.25
 batt_Qnom
 1
 1
@@ -225,7 +226,7 @@ batt_bank_power
 1
 1
 1
-5
+1000
 batt_bank_power_dc_ac
 1
 1
@@ -237,7 +238,7 @@ batt_bank_size
 1
 1
 1
-10
+4000
 batt_bank_size_dc_ac
 1
 1
@@ -330,7 +331,7 @@ batt_computed_bank_capacity
 1
 1
 1
-10.1331
+4000.32
 batt_computed_series
 1
 1
@@ -348,7 +349,7 @@ batt_computed_strings
 1
 1
 1
-9
+3553
 batt_computed_voltage
 1
 1
@@ -360,19 +361,19 @@ batt_current_charge_max
 1
 1
 1
-10.125
+1998.56
 batt_current_choice
 1
 1
 1
 1
-1
+0
 batt_current_discharge_max
 1
 1
 1
 1
-10.125
+1998.56
 batt_custom_dispatch
 1
 2
@@ -516,13 +517,13 @@ batt_h_to_ambient
 1
 1
 1
-5
+500
 batt_height
 1
 1
 1
 1
-0.272414
+1.99839
 batt_initial_SOC
 1
 1
@@ -540,7 +541,7 @@ batt_length
 1
 1
 1
-0.272414
+1.99839
 batt_lifetime_matrix
 1
 3
@@ -597,7 +598,7 @@ batt_mass
 1
 1
 1
-51.351
+20272.2
 batt_maximum_SOC
 1
 1
@@ -627,31 +628,31 @@ batt_num_cells
 1
 1
 1
-1251
+493867
 batt_power_charge_max_kwac
 1
 1
 1
 1
-5.20833
+1041.67
 batt_power_charge_max_kwdc
 1
 1
 1
 1
-5.06655
+1000.08
 batt_power_discharge_max_kwac
 1
 1
 1
 1
-4.8
+960
 batt_power_discharge_max_kwdc
 1
 1
 1
 1
-5.06655
+1000.08
 batt_pv_clipping_forecast
 1
 2
@@ -744,7 +745,7 @@ batt_time_capacity
 1
 1
 1
-2
+4
 batt_type
 1
 1
@@ -773,19 +774,19 @@ batt_volume
 1
 1
 1
-0.0202157
+7.98069
 batt_width
 1
 1
 1
 1
-0.272414
+1.99839
 battery_energy
 1
 1
 1
 1
-10.1331
+4000.32
 battery_lifetime_shown
 1
 1
@@ -809,13 +810,13 @@ battery_per_kWh
 1
 1
 1
-300
+200
 battery_power
 1
 1
 1
 1
-4.8
+960
 battery_replacements_shown
 1
 1
@@ -833,7 +834,7 @@ battery_total
 1
 1
 1
-5919.93
+1.37606e+06
 battery_voltage_shown
 1
 1
@@ -855,7 +856,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+41.856
 cbi_fed_amount
 1
 1
@@ -879,7 +880,7 @@ cbi_fed_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_fed_tax_fed
 1
 1
@@ -915,7 +916,7 @@ cbi_oth_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_oth_tax_fed
 1
 1
@@ -951,7 +952,7 @@ cbi_sta_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_sta_tax_fed
 1
 1
@@ -987,7 +988,7 @@ cbi_uti_maxvalue
 1
 1
 1
-0
+1e+38
 cbi_uti_tax_fed
 1
 1
@@ -1005,7 +1006,7 @@ const_per_interest1
 1
 1
 1
-0
+1.49748e+06
 const_per_interest2
 1
 1
@@ -1035,7 +1036,7 @@ const_per_interest_rate1
 1
 1
 1
-0
+4
 const_per_interest_rate2
 1
 1
@@ -1065,13 +1066,13 @@ const_per_interest_total
 1
 1
 1
-0
+1.49748e+06
 const_per_months1
 1
 1
 1
 1
-0
+6
 const_per_months2
 1
 1
@@ -1126,7 +1127,7 @@ const_per_percent1
 1
 1
 1
-0
+100
 const_per_percent2
 1
 1
@@ -1156,13 +1157,13 @@ const_per_percent_total
 1
 1
 1
-0
+100
 const_per_principal1
 1
 1
 1
 1
-0
+149747712
 const_per_principal2
 1
 1
@@ -1192,13 +1193,13 @@ const_per_principal_total
 1
 1
 1
-0
+149747712
 const_per_total1
 1
 1
 1
 1
-0
+2.99495e+06
 const_per_total2
 1
 1
@@ -1228,7 +1229,7 @@ const_per_upfront_rate1
 1
 1
 1
-0
+1
 const_per_upfront_rate2
 1
 1
@@ -1258,7 +1259,7 @@ construction_financing_cost
 1
 1
 1
-0
+2.99495e+06
 conv_eff
 1
 1
@@ -1276,13 +1277,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-48.3119
+1.19184e+06
 cost_dev_fee_value
 1
 1
 1
 1
-230.057
+4.49243e+06
 cost_equity_closing
 1
 1
@@ -1312,31 +1313,31 @@ depr_alloc_macrs_15_percent
 1
 1
 1
-0
+1.5
 depr_alloc_macrs_5_percent
 1
 1
 1
 1
-100
+90
 depr_alloc_none
 1
 1
 1
 1
-0
+3
 depr_alloc_sl_15_percent
 1
 1
 1
 1
-0
+2.5
 depr_alloc_sl_20_percent
 1
 1
 1
 1
-0
+3
 depr_alloc_sl_39_percent
 1
 1
@@ -1366,7 +1367,7 @@ depr_bonus_fed_macrs_15
 1
 1
 1
-0
+1
 depr_bonus_fed_macrs_5
 1
 1
@@ -1414,13 +1415,13 @@ depr_bonus_sta_macrs_15
 1
 1
 1
-0
+1
 depr_bonus_sta_macrs_5
 1
 1
 1
 1
-0
+1
 depr_bonus_sta_sl_15
 1
 1
@@ -1474,7 +1475,7 @@ depr_itc_fed_macrs_5
 1
 1
 1
-0
+1
 depr_itc_fed_sl_15
 1
 1
@@ -1516,7 +1517,7 @@ depr_itc_sta_macrs_5
 1
 1
 1
-0
+1
 depr_itc_sta_sl_15
 1
 1
@@ -1568,7 +1569,7 @@ dispatch_factor2
 1
 1
 1
-1
+1.5
 dispatch_factor3
 1
 1
@@ -1623,7 +1624,7 @@ dispatch_manual_charge
 2
 1
 6
-1 1 0 0 0 0 
+1 0 0 0 0 0 
 
 dispatch_manual_discharge
 1
@@ -1637,7 +1638,7 @@ dispatch_manual_gridcharge
 2
 1
 6
-1 0 0 0 0 0 
+0 0 0 0 0 0 
 
 dispatch_manual_percent_discharge
 1
@@ -1650,80 +1651,79 @@ dispatch_manual_percent_gridcharge
 1
 2
 1
-2
-25 0 
-
+1
+0
 dispatch_manual_sched
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
 
 dispatch_manual_sched_weekend
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
 
 dispatch_sched_weekday
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
 
 dispatch_sched_weekend
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
 
 dispatch_tod_factors
 1
@@ -1737,7 +1737,7 @@ dscr_reserve_months
 1
 1
 1
-0
+6
 en_batt
 1
 1
@@ -1761,13 +1761,13 @@ equip1_reserve_cost
 1
 1
 1
-0
+0.25
 equip1_reserve_freq
 1
 1
 1
 1
-0
+12
 equip2_reserve_cost
 1
 1
@@ -1779,7 +1779,7 @@ equip2_reserve_freq
 1
 1
 1
-0
+15
 equip3_reserve_cost
 1
 1
@@ -1791,7 +1791,7 @@ equip3_reserve_freq
 1
 1
 1
-0
+3
 equip_reserve_depr_fed
 1
 1
@@ -1815,13 +1815,13 @@ first_year_output
 1
 1
 1
-7893.03
+73331712
 first_year_output_peak
 1
 1
 1
 1
-4.50516
+19200
 fixed_plant_input
 1
 1
@@ -1839,7 +1839,7 @@ flip_target_year
 1
 1
 1
-9
+20
 generic_degradation
 1
 2
@@ -1851,13 +1851,13 @@ genericsys.cost.contingency
 1
 1
 1
-497.274
+6068803
 genericsys.cost.contingency_percent
 1
 1
 1
 1
-8.4
+5
 genericsys.cost.epc.fixed
 1
 1
@@ -1869,31 +1869,31 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-1026.75
+12744486
 genericsys.cost.epc.percent
 1
 1
 1
 1
-16
+10
 genericsys.cost.epc.total
 1
 1
 1
 1
-1026.75
+12744486
 genericsys.cost.installed_per_capacity
 1
 1
 1
 1
-1.63409
+7.48739
 genericsys.cost.per_watt
 1
 1
 1
 1
-0
+6
 genericsys.cost.plant
 1
 1
@@ -1905,7 +1905,7 @@ genericsys.cost.plant_scaled
 1
 1
 1
-0
+120000000
 genericsys.cost.plm.fixed
 1
 1
@@ -1917,7 +1917,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-224.602
+4460570
 genericsys.cost.plm.percent
 1
 1
@@ -1929,7 +1929,7 @@ genericsys.cost.plm.total
 1
 1
 1
-224.602
+4460570
 genericsys.cost.sales_tax.percent
 1
 1
@@ -1941,13 +1941,13 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-0
+5.09779e+06
 genericsys.cost.sales_tax.value
 1
 1
 1
 1
-0
+5
 grid_curtailment
 1
 2
@@ -2020,7 +2020,7 @@ ibi_fed_percent_maxvalue
 1
 1
 1
-0
+1e+38
 ibi_fed_percent_tax_fed
 1
 1
@@ -2086,7 +2086,7 @@ ibi_oth_percent_maxvalue
 1
 1
 1
-0
+1e+38
 ibi_oth_percent_tax_fed
 1
 1
@@ -2152,7 +2152,7 @@ ibi_sta_percent_maxvalue
 1
 1
 1
-0
+1e+38
 ibi_sta_percent_tax_fed
 1
 1
@@ -2218,7 +2218,7 @@ ibi_uti_percent_maxvalue
 1
 1
 1
-0
+1e+38
 ibi_uti_percent_tax_fed
 1
 1
@@ -2246,7 +2246,7 @@ insurance_rate
 1
 1
 1
-1
+0.5
 itc_fed_amount
 1
 1
@@ -2270,7 +2270,7 @@ itc_fed_percent
 1
 1
 1
-30
+0
 itc_fed_percent_deprbas_fed
 1
 1
@@ -2288,7 +2288,7 @@ itc_fed_percent_maxvalue
 1
 1
 1
-1
+1e+38
 itc_sta_amount
 1
 1
@@ -2330,7 +2330,7 @@ itc_sta_percent_maxvalue
 1
 1
 1
-1
+1e+38
 lib_dispatch_factor1
 1
 1
@@ -2426,7 +2426,7 @@ mera_cost1
 1
 1
 1
-0
+5000000
 mera_cost2
 1
 1
@@ -2471,7 +2471,7 @@ nameplate_capacity
 1
 1
 1
-4.69287
+20000
 nominal_discount_rate
 1
 1
@@ -2483,7 +2483,7 @@ om_capacity
 2
 1
 1
-50
+13
 om_capacity_escal
 1
 1
@@ -2531,7 +2531,7 @@ om_replacement_cost1
 2
 1
 1
-600
+500
 om_replacement_cost_escal
 1
 1
@@ -2573,7 +2573,7 @@ pbi_fed_term
 1
 1
 1
-0
+10
 pbi_oth_amount
 1
 2
@@ -2609,7 +2609,7 @@ pbi_oth_term
 1
 1
 1
-0
+10
 pbi_sta_amount
 1
 2
@@ -2645,7 +2645,7 @@ pbi_sta_term
 1
 1
 1
-0
+10
 pbi_uti_amount
 1
 2
@@ -2681,13 +2681,13 @@ pbi_uti_term
 1
 1
 1
-0
+10
 ppa_escalation
 1
 1
 1
 1
-1
+0.5
 ppa_multiplier_model
 1
 1
@@ -2699,7 +2699,7 @@ ppa_price_input
 2
 1
 1
-0.31
+0.3
 ppa_soln_mode
 1
 1
@@ -2723,13 +2723,13 @@ property_assessed_value
 1
 1
 1
-7668.56
+149747712
 property_tax_rate
 1
 1
 1
 1
-1
+0
 ptc_fed_amount
 1
 2
@@ -2783,13 +2783,13 @@ pv.storage.p1.gridcharge
 1
 1
 1
-1
+0
 pv.storage.p2.charge
 1
 1
 1
 1
-1
+0
 pv.storage.p2.discharge
 1
 1
@@ -2895,7 +2895,7 @@ sales_tax_rate
 1
 1
 1
-0
+5
 salvage_percentage
 1
 1
@@ -2913,13 +2913,13 @@ show_CapitalCostSO
 1
 1
 1
-0
+1
 show_ReserveAccounts
 1
 1
 1
 1
-0
+1
 show_construction_period
 1
 1
@@ -2947,7 +2947,7 @@ sponsor_operating_margin_amount
 1
 1
 1
-93.8574
+400000
 sponsor_operating_margin_escalation
 1
 1
@@ -2959,13 +2959,13 @@ state_tax_rate
 2
 1
 1
-0
+7
 system_capacity
 1
 1
 1
 1
-4.69287
+20000
 system_use_lifetime_output
 1
 1
@@ -2994,22 +2994,22 @@ total_direct_cost
 1
 1
 1
-6417.2
+127444864
 total_indirect_cost
 1
 1
 1
 1
-1251.35
+22302850
 total_installed_cost
 1
 1
 1
 1
-7668.56
+149747712
 user_capacity_factor
 1
 1
 1
 1
-20
+43.6

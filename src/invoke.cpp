@@ -4540,16 +4540,16 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     // check if case exists and is correct configuration
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
-    if (!sam_case || ((sam_case->GetTechnology() != "Flat Plate PV" && sam_case->GetTechnology() != "PVWatts") ||
+    if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
             (sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commercial" &&
              sam_case->GetFinancing() != "Third Party" && sam_case->GetFinancing() != "Host Developer")))
         throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Third Party or Host Developer model.");
-    bool pvsam = sam_case->GetTechnology() == "Flat Plate PV";
+    bool pvsam = sam_case->GetTechnology() == "PV Battery";
 
     Simulation base_case = sam_case->BaseCase();
     base_case.Clear();
     base_case.Prepare();
-    bool success = base_case.Invoke();
+    bool success = base_case.Invoke(true);
     if (!success){
         ssc_data_free(p_data);
         throw lk::error_t(base_case.GetErrors()[0]);
@@ -4624,7 +4624,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> rate_vars = {"ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
                                           "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
-                                          "ur_ec_tou_mat", "load", "crit_load"};
+                                          "ur_ec_tou_mat", "ur_metering_option", "ur_monthly_min_charge", "ur_annual_min_charge",
+                                          "load", "crit_load"};
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
@@ -4684,7 +4685,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...", "ReOpt Lite API",
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result... This may take a few minutes.", "ReOpt Lite API",
             wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();
     wxGetApp().Yield( true );

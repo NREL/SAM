@@ -238,7 +238,7 @@ ME Tidal Converter
 0
 DataMatrix
 
-256
+258
 equations{ 'device_rated_power' } = define () 
 {
 	max_power = 0;
@@ -248,6 +248,8 @@ equations{ 'device_rated_power' } = define ()
 		if (mat[r][1] > max_power) max_power = mat[r][1];
 	return max_power;
 };
+
+
 964
 function plot_device_curve()
 {

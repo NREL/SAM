@@ -182,11 +182,23 @@ else()
     set(PYSAM ${CMAKE_CURRENT_SOURCE_DIR}/library/PySAM )
 endif()
 
-if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-    file(TO_NATIVE_PATH $ENV{SAMNTDIR}/api API_DEST)
-    add_custom_command(
-        TARGET export_config
-        POST_BUILD
-        COMMAND "$<TARGET_FILE:export_config>" --api ${API_DEST} --pysam ${PYSAM}
-    )
+
+file(TO_NATIVE_PATH $ENV{SAMNTDIR}/api API_DEST)
+set(EXPORT_RUN "$<TARGET_FILE:export_config> --api ${API_DEST} --pysam ${PYSAM}")
+
+if (MSVC)
+	add_custom_command(
+		TARGET export_config
+		POST_BUILD
+		COMMAND cmd /C $<$<CONFIG:Release>:${EXPORT_RUN}>
+	)
+else()
+	if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+		add_custom_command(
+			TARGET export_config
+			POST_BUILD
+			VERBATIM
+			COMMAND sh -c ${EXPORT_RUN}
+		)
+	endif()
 endif()

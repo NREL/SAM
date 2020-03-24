@@ -32,13 +32,13 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [8.000000],
+			"om_fuel_cost": [10.000000],
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost1": [300.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 7.4025e+08
+			"total_installed_cost": 1.092e+09
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -65,9 +65,9 @@
 		"Depreciation": {
 			"depr_alloc_custom_percent": 0,
 			"depr_alloc_macrs_15_percent": 1.5,
-			"depr_alloc_macrs_5_percent": 89,
-			"depr_alloc_sl_15_percent": 3,
-			"depr_alloc_sl_20_percent": 3.5,
+			"depr_alloc_macrs_5_percent": 90,
+			"depr_alloc_sl_15_percent": 2.5,
+			"depr_alloc_sl_20_percent": 3,
 			"depr_alloc_sl_39_percent": 0,
 			"depr_alloc_sl_5_percent": 0,
 			"depr_bonus_fed": 0,
@@ -242,10 +242,10 @@
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000]
 			],
 			"ppa_multiplier_model": 0,
-			"system_use_lifetime_output": 0
+			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 1.4805e+07
+			"construction_financing_cost": 2.184e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -256,7 +256,7 @@
 		},
 		"IRRTargets": {
 			"flip_target_percent": 11,
-			"flip_target_year": 9,
+			"flip_target_year": 20,
 			"tax_investor_equity_percent": 98,
 			"tax_investor_postflip_cash_percent": 10,
 			"tax_investor_postflip_tax_percent": 10,
@@ -268,11 +268,7 @@
 			"sponsor_cap_recovery_year": 3
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 1999.6,
-			"batt_replacement_option": 0,
-			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
-			"en_batt": 1
+			"en_batt": 0
 		}
 	}
 }

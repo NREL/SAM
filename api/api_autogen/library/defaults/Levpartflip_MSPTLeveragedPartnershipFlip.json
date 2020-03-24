@@ -4,7 +4,7 @@
 			"flip_target_percent": 11,
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.130000],
+			"ppa_price_input": [0.000000],
 			"ppa_soln_mode": 0
 		},
 		"FinancialParameters": {
@@ -37,7 +37,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 103500,
+			"system_capacity": 100125,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
@@ -52,7 +52,7 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [0.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 6.73466e+08
+			"total_installed_cost": 7.44923e+08
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -215,7 +215,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 103500
+			"system_capacity": 100125
 		},
 		"Moratorium": {
 			"loan_moratorium": 0
@@ -266,7 +266,7 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 3.36733e+07
+			"construction_financing_cost": 3.72462e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,

@@ -2041,7 +2041,7 @@ developer_preflip_cash_percent
 1
 1
 1
-0
+2
 developer_preflip_tax_percent
 1
 1
@@ -2499,7 +2499,7 @@ flip_target_percent
 1
 1
 1
-9
+11
 flip_target_year
 1
 1
@@ -3310,8 +3310,9 @@ pbi_fed_for_ds
 1
 1
 1
-1
-0
+10
+0 80 90 95 96 96 96 96 95 94 
+
 pbi_fed_tax_fed
 1
 1
@@ -3346,8 +3347,9 @@ pbi_oth_for_ds
 1
 1
 1
-1
-0
+10
+0 80 90 95 96 96 96 96 95 94 
+
 pbi_oth_tax_fed
 1
 1
@@ -3382,8 +3384,9 @@ pbi_sta_for_ds
 1
 1
 1
-1
-0
+10
+0 80 90 95 96 96 96 96 95 94 
+
 pbi_sta_tax_fed
 1
 1
@@ -3418,8 +3421,9 @@ pbi_uti_for_ds
 1
 1
 1
-1
-0
+10
+0 80 90 95 96 96 96 96 95 94 
+
 pbi_uti_tax_fed
 1
 1
@@ -3806,13 +3810,13 @@ tax_investor_preflip_cash_percent
 1
 1
 1
-100
+98
 tax_investor_preflip_tax_percent
 1
 1
 1
 1
-99
+98
 tod_library
 1
 4
@@ -3823,7 +3827,7 @@ total_10yr_uncert
 1
 1
 1
-0
+12.0852
 total_20yr_uncert
 1
 1
@@ -4684,4 +4688,4 @@ wspd_uncert
 1
 1
 1
-9.10558
+0

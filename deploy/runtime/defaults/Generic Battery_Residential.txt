@@ -156,8 +156,7 @@ analysis_period
 analysis_period_warning
 1
 4
-12
-No messages.
+0
 annual_crit
 1
 1
@@ -1167,7 +1166,7 @@ debt_fraction
 1
 1
 1
-100
+50
 debt_message
 1
 4
@@ -1189,21 +1188,21 @@ dispatch_manual_charge
 2
 1
 6
-0 1 0 0 0 0 
+1 1 0 0 0 0 
 
 dispatch_manual_discharge
 1
 2
 1
 6
-1 0 1 1 0 0 
+0 1 1 1 0 0 
 
 dispatch_manual_gridcharge
 1
 2
 1
 6
-0 1 0 0 0 0 
+0 0 0 0 0 0 
 
 dispatch_manual_percent_discharge
 1
@@ -1216,9 +1215,8 @@ dispatch_manual_percent_gridcharge
 1
 2
 1
-2
-25 0 
-
+1
+0
 dispatch_manual_sched
 1
 3
@@ -1434,13 +1432,13 @@ first_year_output
 1
 1
 1
-7893.03
+6727.68
 first_year_output_peak
 1
 1
 1
 1
-4.50516
+3.84
 fixed_plant_input
 1
 1
@@ -1464,7 +1462,7 @@ genericsys.cost.contingency
 1
 1
 1
-1703.86
+1496
 genericsys.cost.contingency_percent
 1
 1
@@ -1482,7 +1480,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-3578.1
+3141.59
 genericsys.cost.epc.percent
 1
 1
@@ -1494,13 +1492,13 @@ genericsys.cost.epc.total
 1
 1
 1
-3578.1
+3141.59
 genericsys.cost.installed_per_capacity
 1
 1
 1
 1
-8.95884
+8.91427
 genericsys.cost.per_watt
 1
 1
@@ -1518,7 +1516,7 @@ genericsys.cost.plant_scaled
 1
 1
 1
-28157.2
+24000
 genericsys.cost.plm.fixed
 1
 1
@@ -1530,7 +1528,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-1252.34
+1099.56
 genericsys.cost.plm.percent
 1
 1
@@ -1542,7 +1540,7 @@ genericsys.cost.plm.total
 1
 1
 1
-1252.34
+1099.56
 genericsys.cost.sales_tax.percent
 1
 1
@@ -1554,13 +1552,13 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-1431.24
+0
 genericsys.cost.sales_tax.value
 1
 1
 1
 1
-5
+0
 grid_curtailment
 1
 2
@@ -1859,7 +1857,7 @@ insurance_rate
 1
 1
 1
-1
+0
 itc_fed_amount
 1
 1
@@ -1883,7 +1881,7 @@ itc_fed_percent
 1
 1
 1
-26
+0
 itc_fed_percent_deprbas_fed
 1
 1
@@ -2053,7 +2051,7 @@ loan_amount
 1
 1
 1
-42042.7
+17828.5
 loan_rate
 1
 1
@@ -2083,7 +2081,7 @@ nameplate_capacity
 1
 1
 1
-4.69287
+4
 nominal_discount_rate
 1
 1
@@ -2101,7 +2099,7 @@ om_capacity
 2
 1
 1
-16
+20
 om_capacity_escal
 1
 1
@@ -2149,7 +2147,7 @@ om_replacement_cost1
 2
 1
 1
-500
+300
 om_replacement_cost_escal
 1
 1
@@ -2172,9 +2170,8 @@ pbi_fed_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_fed_tax_fed
 1
 1
@@ -2209,9 +2206,8 @@ pbi_oth_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_oth_tax_fed
 1
 1
@@ -2246,9 +2242,8 @@ pbi_sta_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_sta_tax_fed
 1
 1
@@ -2283,9 +2278,8 @@ pbi_uti_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_uti_tax_fed
 1
 1
@@ -2393,13 +2387,13 @@ property_assessed_value
 1
 1
 1
-42042.7
+35657.1
 property_tax_rate
 1
 1
 1
 1
-1
+0
 ptc_fed_amount
 1
 2
@@ -2441,13 +2435,13 @@ pv.storage.p1.charge
 1
 1
 1
-0
+1
 pv.storage.p1.discharge
 1
 1
 1
 1
-1
+0
 pv.storage.p1.gridcharge
 1
 1
@@ -2465,13 +2459,13 @@ pv.storage.p2.discharge
 1
 1
 1
-0
+1
 pv.storage.p2.gridcharge
 1
 1
 1
 1
-1
+0
 pv.storage.p3.charge
 1
 1
@@ -2561,7 +2555,7 @@ sales_tax_rate
 1
 1
 1
-5
+0
 salvage_percentage
 1
 1
@@ -2609,7 +2603,7 @@ system_capacity
 1
 1
 1
-4.69287
+4
 system_use_lifetime_output
 1
 1
@@ -2627,19 +2621,19 @@ total_direct_cost
 1
 1
 1
-35781
+31415.9
 total_indirect_cost
 1
 1
 1
 1
-6261.68
+4241.15
 total_installed_cost
 1
 1
 1
 1
-42042.7
+35657.1
 ui_annual_load
 1
 1
@@ -2651,13 +2645,13 @@ ui_net_capital_cost
 1
 1
 1
-42042.7
+35657.1
 ui_wacc
 1
 1
 1
 1
-3.6735
+6.36675
 ur_annual_min_charge
 1
 1
@@ -2813,9 +2807,9 @@ ur_ec_tou_mat
 4
 6
 1 1 1e+38 0 0.1 0 
-2 1 1e+38 0 0.05 0 
+2 1 1e+38 0 0.075 0 
 3 1 1e+38 0 0.2 0 
-4 1 1e+38 0 0.25 0 
+4 1 1e+38 0 0.4 0 
 
 ur_en_ts_sell_rate
 1

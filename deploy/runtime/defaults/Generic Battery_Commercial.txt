@@ -11,7 +11,7 @@ LeadAcid_q10_computed
 1
 1
 1
-18.8325
+37.665
 LeadAcid_q20
 1
 1
@@ -23,7 +23,7 @@ LeadAcid_q20_computed
 1
 1
 1
-20.25
+40.5
 LeadAcid_qn
 1
 1
@@ -35,7 +35,7 @@ LeadAcid_qn_computed
 1
 1
 1
-12.15
+24.3
 LeadAcid_tn
 1
 1
@@ -87,8 +87,7 @@ analysis_period
 analysis_period_warning
 1
 4
-12
-No messages.
+0
 annual_crit
 1
 1
@@ -160,7 +159,7 @@ batt_Qfull_flow
 1
 1
 1
-20.25
+40.5
 batt_Qnom
 1
 1
@@ -232,7 +231,7 @@ batt_bank_power
 1
 1
 1
-5
+10
 batt_bank_power_dc_ac
 1
 1
@@ -244,7 +243,7 @@ batt_bank_size
 1
 1
 1
-10
+20
 batt_bank_size_dc_ac
 1
 1
@@ -337,7 +336,7 @@ batt_computed_bank_capacity
 1
 1
 1
-10.1331
+20.2662
 batt_computed_series
 1
 1
@@ -355,7 +354,7 @@ batt_computed_strings
 1
 1
 1
-9
+18
 batt_computed_voltage
 1
 1
@@ -367,7 +366,7 @@ batt_current_charge_max
 1
 1
 1
-10.125
+20.25
 batt_current_choice
 1
 1
@@ -379,7 +378,7 @@ batt_current_discharge_max
 1
 1
 1
-10.125
+20.25
 batt_custom_dispatch
 1
 2
@@ -505,7 +504,7 @@ batt_height
 1
 1
 1
-0.272414
+0.34322
 batt_initial_SOC
 1
 1
@@ -523,7 +522,7 @@ batt_length
 1
 1
 1
-0.272414
+0.34322
 batt_lifetime_matrix
 1
 3
@@ -574,7 +573,7 @@ batt_mass
 1
 1
 1
-51.351
+102.702
 batt_maximum_SOC
 1
 1
@@ -604,31 +603,31 @@ batt_num_cells
 1
 1
 1
-1251
+2502
 batt_power_charge_max_kwac
 1
 1
 1
 1
-5.20833
+10.4167
 batt_power_charge_max_kwdc
 1
 1
 1
 1
-5.06655
+10.1331
 batt_power_discharge_max_kwac
 1
 1
 1
 1
-4.8
+9.6
 batt_power_discharge_max_kwdc
 1
 1
 1
 1
-5.06655
+10.1331
 batt_replacement_capacity
 1
 1
@@ -754,19 +753,19 @@ batt_volume
 1
 1
 1
-0.0202157
+0.0404313
 batt_width
 1
 1
 1
 1
-0.272414
+0.34322
 battery_energy
 1
 1
 1
 1
-10.1331
+20.2662
 battery_lifetime_shown
 1
 1
@@ -796,7 +795,7 @@ battery_power
 1
 1
 1
-4.8
+9.6
 battery_replacements_shown
 1
 1
@@ -814,7 +813,7 @@ battery_total
 1
 1
 1
-5919.93
+11839.9
 battery_voltage_shown
 1
 1
@@ -1098,7 +1097,7 @@ debt_fraction
 1
 1
 1
-100
+60
 debt_message
 1
 4
@@ -1340,13 +1339,13 @@ first_year_output
 1
 1
 1
-7893.03
+361613
 first_year_output_peak
 1
 1
 1
 1
-4.50516
+206.4
 fixed_plant_input
 1
 1
@@ -1364,7 +1363,7 @@ genericsys.cost.contingency
 1
 1
 1
-1703.86
+65092
 genericsys.cost.contingency_percent
 1
 1
@@ -1382,7 +1381,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-3578.1
+136693
 genericsys.cost.epc.percent
 1
 1
@@ -1394,13 +1393,13 @@ genericsys.cost.epc.total
 1
 1
 1
-3578.1
+136693
 genericsys.cost.installed_per_capacity
 1
 1
 1
 1
-8.95884
+7.21613
 genericsys.cost.per_watt
 1
 1
@@ -1418,7 +1417,7 @@ genericsys.cost.plant_scaled
 1
 1
 1
-28157.2
+1290000
 genericsys.cost.plm.fixed
 1
 1
@@ -1430,7 +1429,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-1252.34
+47842.6
 genericsys.cost.plm.percent
 1
 1
@@ -1442,7 +1441,7 @@ genericsys.cost.plm.total
 1
 1
 1
-1252.34
+47842.6
 genericsys.cost.sales_tax.percent
 1
 1
@@ -1454,13 +1453,13 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-1431.24
+0
 genericsys.cost.sales_tax.value
 1
 1
 1
 1
-5
+0
 grid_curtailment
 1
 2
@@ -1759,7 +1758,7 @@ insurance_rate
 1
 1
 1
-1
+0
 itc_fed_amount
 1
 1
@@ -1801,7 +1800,7 @@ itc_fed_percent_maxvalue
 1
 1
 1
-1e+38
+1
 itc_sta_amount
 1
 1
@@ -1843,7 +1842,7 @@ itc_sta_percent_maxvalue
 1
 1
 1
-1e+38
+1
 load
 1
 2
@@ -1893,7 +1892,7 @@ nameplate_capacity
 1
 1
 1
-4.69287
+215
 nominal_discount_rate
 1
 1
@@ -1959,7 +1958,7 @@ om_replacement_cost1
 2
 1
 1
-500
+300
 om_replacement_cost_escal
 1
 1
@@ -1982,9 +1981,8 @@ pbi_fed_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_fed_tax_fed
 1
 1
@@ -2019,9 +2017,8 @@ pbi_oth_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_oth_tax_fed
 1
 1
@@ -2056,9 +2053,8 @@ pbi_sta_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_sta_tax_fed
 1
 1
@@ -2093,9 +2089,8 @@ pbi_uti_for_ds
 1
 1
 1
-10
-0 80 90 95 96 96 96 96 95 94 
-
+1
+0
 pbi_uti_tax_fed
 1
 1
@@ -2203,13 +2198,13 @@ property_assessed_value
 1
 1
 1
-42042.7
+1.55147e+06
 property_tax_rate
 1
 1
 1
 1
-1
+0
 ptc_fed_amount
 1
 2
@@ -2371,7 +2366,7 @@ sales_tax_rate
 1
 1
 1
-5
+0
 salvage_percentage
 1
 1
@@ -2419,7 +2414,7 @@ system_capacity
 1
 1
 1
-4.69287
+215
 system_use_lifetime_output
 1
 1
@@ -2437,19 +2432,19 @@ total_direct_cost
 1
 1
 1
-35781
+1.36693e+06
 total_indirect_cost
 1
 1
 1
 1
-6261.68
+184536
 total_installed_cost
 1
 1
 1
 1
-42042.7
+1.55147e+06
 ui_annual_load
 1
 1
@@ -2461,19 +2456,19 @@ ui_loan_amount
 1
 1
 1
-42042.7
+930881
 ui_net_capital_cost
 1
 1
 1
 1
-42042.7
+1.55147e+06
 ui_wacc
 1
 1
 1
 1
-3.6735
+5.8281
 ur_annual_min_charge
 1
 1
@@ -2551,10 +2546,10 @@ ur_dc_tou_mat
 3
 4
 4
-1 1 100 20 
-1 2 1e+38 15 
-2 1 100 10 
-2 2 1e+38 5 
+1 1 100 25 
+1 2 1e+38 35 
+2 1 100 25 
+2 2 1e+38 15 
 
 ur_demand_history
 1
@@ -2567,13 +2562,13 @@ ur_demand_max
 1
 1
 1
-400
+0
 ur_demand_min
 1
 1
 1
 1
-100
+0
 ur_desc_is_shown
 1
 1
@@ -2696,8 +2691,7 @@ ur_nm_yearend_sell_rate
 ur_phase_wiring
 1
 4
-18
-Single and 3-Phase
+0
 ur_ratedata_filename
 1
 4
@@ -2734,8 +2728,7 @@ ur_uri
 ur_voltage_category
 1
 4
-9
-Secondary
+0
 ur_voltage_max
 1
 1

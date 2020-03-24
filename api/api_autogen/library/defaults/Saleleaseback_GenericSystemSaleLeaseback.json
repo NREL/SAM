@@ -31,7 +31,7 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [8.000000],
+			"om_fuel_cost": [10.000000],
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
@@ -63,9 +63,9 @@
 		"Depreciation": {
 			"depr_alloc_custom_percent": 0,
 			"depr_alloc_macrs_15_percent": 1.5,
-			"depr_alloc_macrs_5_percent": 95,
-			"depr_alloc_sl_15_percent": 1.5,
-			"depr_alloc_sl_20_percent": 2,
+			"depr_alloc_macrs_5_percent": 90,
+			"depr_alloc_sl_15_percent": 2.5,
+			"depr_alloc_sl_20_percent": 3,
 			"depr_alloc_sl_39_percent": 0,
 			"depr_alloc_sl_5_percent": 0,
 			"depr_bonus_fed": 0,
@@ -196,21 +196,21 @@
 			"system_capacity": 100000
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 1.4805e+07,
+			"construction_financing_cost": 2.184e+07,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
 			"depr_fedbas_method": 1,
 			"depr_stabas_method": 1,
-			"flip_target_percent": 9,
+			"flip_target_percent": 11,
 			"flip_target_year": 20,
 			"salvage_percentage": 0,
 			"sponsor_operating_margin": 20,
 			"sponsor_operating_margin_escalation": 2,
-			"system_use_lifetime_output": 0,
+			"system_use_lifetime_output": 1,
 			"system_use_recapitalization": 0,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 7.4025e+08
+			"total_installed_cost": 1.092e+09
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,
@@ -258,11 +258,7 @@
 			"months_working_reserve": 6
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 1999.6,
-			"batt_replacement_option": 0,
-			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
-			"en_batt": 1
+			"en_batt": 0
 		}
 	}
 }

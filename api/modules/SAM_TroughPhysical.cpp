@@ -1136,6 +1136,12 @@ SAM_EXPORT void SAM_TroughPhysical_Tou_is_dispatch_series_nset(SAM_TroughPhysica
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_Tou_is_tod_pc_target_also_pc_max_nset(SAM_TroughPhysical ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_tod_pc_target_also_pc_max", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysical_Tou_is_wlim_series_nset(SAM_TroughPhysical ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_wlim_series", number);
@@ -3383,6 +3389,17 @@ SAM_EXPORT double SAM_TroughPhysical_Tou_is_dispatch_series_nget(SAM_TroughPhysi
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_dispatch_series", &result))
 		make_access_error("SAM_TroughPhysical", "is_dispatch_series");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_Tou_is_tod_pc_target_also_pc_max_nget(SAM_TroughPhysical ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_tod_pc_target_also_pc_max", &result))
+		make_access_error("SAM_TroughPhysical", "is_tod_pc_target_also_pc_max");
 	});
 	return result;
 }

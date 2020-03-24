@@ -1542,21 +1542,21 @@ dispatch_manual_charge
 2
 1
 6
-0 1 0 0 0 0 
+1 1 0 0 0 0 
 
 dispatch_manual_discharge
 1
 2
 1
 6
-1 0 1 1 0 0 
+0 1 1 1 0 0 
 
 dispatch_manual_gridcharge
 1
 2
 1
 6
-0 1 0 0 0 0 
+0 0 0 0 0 0 
 
 dispatch_manual_percent_discharge
 1
@@ -1569,9 +1569,8 @@ dispatch_manual_percent_gridcharge
 1
 2
 1
-2
-25 0 
-
+1
+0
 dispatch_manual_sched
 1
 3
@@ -1625,7 +1624,7 @@ en_batt
 1
 1
 1
-0
+1
 en_belpe
 1
 1
@@ -3022,13 +3021,13 @@ pv.storage.p1.charge
 1
 1
 1
-0
+1
 pv.storage.p1.discharge
 1
 1
 1
 1
-1
+0
 pv.storage.p1.gridcharge
 1
 1
@@ -3046,13 +3045,13 @@ pv.storage.p2.discharge
 1
 1
 1
-0
+1
 pv.storage.p2.gridcharge
 1
 1
 1
 1
-1
+0
 pv.storage.p3.charge
 1
 1
@@ -4990,9 +4989,9 @@ ur_ec_tou_mat
 4
 6
 1 1 1e+38 0 0.1 0 
-2 1 1e+38 0 0.05 0 
+2 1 1e+38 0 0.075 0 
 3 1 1e+38 0 0.2 0 
-4 1 1e+38 0 0.25 0 
+4 1 1e+38 0 0.4 0 
 
 ur_en_ts_sell_rate
 1

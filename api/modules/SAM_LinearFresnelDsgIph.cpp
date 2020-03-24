@@ -38,6 +38,12 @@ SAM_EXPORT void SAM_LinearFresnelDsgIph_Weather_file_name_sset(SAM_LinearFresnel
 	});
 }
 
+SAM_EXPORT void SAM_LinearFresnelDsgIph_Weather_solar_resource_data_tset(SAM_LinearFresnelDsgIph ptr, SAM_table tab, SAM_error *err){
+	SAM_table_set_table(ptr, "solar_resource_data", tab, err);
+}
+
+
+
 SAM_EXPORT void SAM_LinearFresnelDsgIph_Solarfield_A_aperture_mset(SAM_LinearFresnelDsgIph ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "A_aperture", mat, nrows, ncols);
@@ -440,6 +446,18 @@ SAM_EXPORT const char* SAM_LinearFresnelDsgIph_Weather_file_name_sget(SAM_Linear
 	result = ssc_data_get_string(ptr, "file_name");
 	if (!result)
 		make_access_error("SAM_LinearFresnelDsgIph", "file_name");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT SAM_table SAM_LinearFresnelDsgIph_Weather_solar_resource_data_tget(SAM_LinearFresnelDsgIph ptr, SAM_error *err){
+	SAM_table result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_table(ptr, "solar_resource_data");
+	if (!result)
+		make_access_error("SAM_LinearFresnelDsgIph", "solar_resource_data");
 	});
 	return result;
 }
@@ -1377,6 +1395,17 @@ SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_beam_aget(SAM_LinearFresnelDs
 
 
 
+SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_capacity_factor_nget(SAM_LinearFresnelDsgIph ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
+		make_access_error("SAM_LinearFresnelDsgIph", "capacity_factor");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_defocus_aget(SAM_LinearFresnelDsgIph ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1443,6 +1472,17 @@ SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_hour_day_aget(SAM_LinearFresn
 	result = ssc_data_get_array(ptr, "hour_day", length);
 	if (!result)
 		make_access_error("SAM_LinearFresnelDsgIph", "hour_day");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_kwh_per_kw_nget(SAM_LinearFresnelDsgIph ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
+		make_access_error("SAM_LinearFresnelDsgIph", "kwh_per_kw");
 	});
 	return result;
 }

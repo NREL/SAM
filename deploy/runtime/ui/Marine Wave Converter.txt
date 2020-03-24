@@ -635,7 +635,7 @@ ME Wave Energy Converter
 0
 DataMatrix
 
-376
+377
 equations{ 'device_rated_power' } = define () 
 {
 	max_power = 0;
@@ -653,6 +653,7 @@ equations{ 'wave_power_matrix' } = define()
 	else
 		return ${lib_wave_power_matrix};
 };
+
 
 983
 function update_controls()
