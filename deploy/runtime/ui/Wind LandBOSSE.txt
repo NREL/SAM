@@ -5693,7 +5693,7 @@ equations{ 'row_spacing_rotor_diameters' } = define() {
 	return ${windfarm.farm.row_spacing};
 };
 
-1106
+1190
 on_change{"btn_bos_apply"} = define()
 {
 	install_type = value('install_type');
@@ -5715,34 +5715,41 @@ on_load{"Wind LandBOSSE"} = define()
 {
 	setup_landbosse();
 	run_landbosse();
+	refresh();
 };
 
 on_change{"interconnect_voltage_kV"} = define()
 {
 	run_landbosse();
+	refresh();
 };
 
 on_change{"distance_to_interconnect_mi"} = define()
 {
 	run_landbosse();
+	refresh();
 };
 
 on_change{"depth"} = define()
 {
 	run_landbosse();
+	refresh();
 };
 
 on_change{"rated_thrust_N"} = define()
 {
 	run_landbosse();
+	refresh();
 };
 
 on_change{"labor_cost_multiplier"} = define()
 {
 	run_landbosse();
+	refresh();
 };
 
 on_change{"gust_velocity_m_per_s"} = define()
 {
 	run_landbosse();
+	refresh();
 };

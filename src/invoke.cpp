@@ -825,12 +825,24 @@ void fcall_refresh( lk::invoke_t &cxt )
 
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
     Case* cur_case = &cc.GetCase();
-	if ( cxt.arg_count() == 0 )
-		cc.InputPage()->Refresh();
+    ActiveInputPage *ipage = 0;
+	if ( cxt.arg_count() == 0 ){
+	    ipage = cc.InputPage();
+		ipage->Refresh();
+        auto UIObjects = ipage->GetObjects();
+        for (auto &i: UIObjects){
+            VarValue *vv = cur_case->Values().Get( i->GetName() );
+            if ( wxWindow *win = i->GetNative() )
+                win->Refresh();
+            if ( ipage && vv )
+            {
+                ipage->DataExchange( i, *vv, ActiveInputPage::VAR_TO_OBJ );
+            }
+        }
+	}
 	else
 	{
 	    wxString var = cxt.arg(0).as_string();
-        ActiveInputPage *ipage = 0;
         wxUIObject *obj = cc.InputPage()->FindActiveObject( var, &ipage );
         VarValue *vv = cur_case->Values().Get( var );
         if ( obj ){
@@ -4716,11 +4728,11 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
 //    Simulation base_case = sam_case->BaseCase();
 
-    VarTable vartable = sam_case->Values();
+    VarTable* vartable = &sam_case->Values();
 
     ssc_data_t landbosse_data = ssc_data_create();
 
-    auto varValue = vartable.Get("wind_resource_filename");
+    auto varValue = vartable->Get("wind_resource_filename");
     if (!varValue)
         throw std::runtime_error("Run LandBOSSE error: wind_resource_filename was not assigned.");
     ssc_data_set_string(landbosse_data, "wind_resource_filename", varValue->String().c_str());
@@ -4733,7 +4745,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
                                             "wind_turbine_rotor_diameter"};
 
     for (auto & i : input_names){
-        varValue = vartable.Get(i);
+        varValue = vartable->Get(i);
         if (!varValue){
             ssc_data_free(landbosse_data);
             throw std::runtime_error("Run LandBOSSE error: " + i + " was not assigned.");
@@ -4760,10 +4772,24 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
     }
 
     auto outputs = VarTable(landbosse_data);
-    vartable.Merge(outputs, false);
+    vartable->Merge(outputs, true);
 
     ssc_data_free(landbosse_data);
     ssc_module_free(module);
+
+    std::vector<std::string> total_costs = {"total_development_cost", "total_erection_cost",
+            "total_foundation_cost", "total_gridconnection_cost", "total_management_cost",
+            "total_sitepreparation_cost", "total_substation_cost", "total_collection_cost"};
+
+    double capacity = vartable->Get("system_capacity")->Value();
+    double turbine = vartable->Get("num_turbines")->Value();
+    double value = vartable->Get("total_project_cost")->Value() / capacity;
+    vartable->Set("total_project_cost_per_capacity", VarValue(value));
+    for (auto &name : total_costs){
+        value = vartable->Get(name)->Value();
+        vartable->Set(name + "_per_capacity", VarValue(value / capacity));
+        vartable->Set(name + "_per_turbine", VarValue(value / turbine));
+    }
 }
 
 lk::fcall_t* invoke_general_funcs()
