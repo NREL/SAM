@@ -3769,78 +3769,7 @@ Construction Period Debt
 0
 Numeric
 
-6710
-equations{ '$MIMO$ Financial_Construction_Financing_Equations' } = define() {
-	data.total_installed_cost = ${total_installed_cost};
-	data.const_per_percent1 = ${const_per_percent1};
-	data.const_per_interest_rate1 = ${const_per_interest_rate1};
-	data.const_per_months1 = ${const_per_months1};
-	data.const_per_upfront_rate1 = ${const_per_upfront_rate1};
-	data.const_per_percent2 = ${const_per_percent2};
-	data.const_per_interest_rate2 = ${const_per_interest_rate2};
-	data.const_per_months2 = ${const_per_months2};
-	data.const_per_upfront_rate2 = ${const_per_upfront_rate2};
-	data.const_per_percent3 = ${const_per_percent3};
-	data.const_per_interest_rate3 = ${const_per_interest_rate3};
-	data.const_per_months3 = ${const_per_months3};
-	data.const_per_upfront_rate3 = ${const_per_upfront_rate3};
-	data.const_per_percent4 = ${const_per_percent4};
-	data.const_per_interest_rate4 = ${const_per_interest_rate4};
-	data.const_per_months4 = ${const_per_months4};
-	data.const_per_upfront_rate4 = ${const_per_upfront_rate4};
-	data.const_per_percent5 = ${const_per_percent5};
-	data.const_per_interest_rate5 = ${const_per_interest_rate5};
-	data.const_per_months5 = ${const_per_months5};
-	data.const_per_upfront_rate5 = ${const_per_upfront_rate5};
-	
-	success = ssc_eqn("Financial_Construction_Financing_Equations", data);
-	if (!success) {
-		${const_per_principal1} = -999.;
-		${const_per_interest1} = -999.;
-		${const_per_total1} = -999.;
-		${const_per_principal2} = -999.;
-		${const_per_interest2} = -999.;
-		${const_per_total2} = -999.;
-		${const_per_principal3} = -999.;
-		${const_per_interest3} = -999.;
-		${const_per_total3} = -999.;
-		${const_per_principal4} = -999.;
-		${const_per_interest4} = -999.;
-		${const_per_total4} = -999.;
-		${const_per_principal5} = -999.;
-		${const_per_interest5} = -999.;
-		${const_per_total5} = -999.;
-		${const_per_principal_total} = -999.;
-		${const_per_percent_total} = -999.;
-		${construction_financing_cost} = -999.;
-		${const_per_interest_total} = -999.;
-	}
-	else {
-		${const_per_principal1} = data.const_per_principal1;
-		${const_per_interest1} = data.const_per_interest1;
-		${const_per_total1} = data.const_per_total1;
-		${const_per_principal2} = data.const_per_principal2;
-		${const_per_interest2} = data.const_per_interest2;
-		${const_per_total2} = data.const_per_total2;
-		${const_per_principal3} = data.const_per_principal3;
-		${const_per_interest3} = data.const_per_interest3;
-		${const_per_total3} = data.const_per_total3;
-		${const_per_principal4} = data.const_per_principal4;
-		${const_per_interest4} = data.const_per_interest4;
-		${const_per_total4} = data.const_per_total4;
-		${const_per_principal5} = data.const_per_principal5;
-		${const_per_interest5} = data.const_per_interest5;
-		${const_per_total5} = data.const_per_total5;
-		${const_per_principal_total} = data.const_per_principal_total;
-		${const_per_percent_total} = data.const_per_percent_total;
-		${construction_financing_cost} = data.construction_financing_cost;
-		${const_per_interest_total} = data.const_per_interest_total;
-	}
-	
-	return 0;
-};
-
-/*
+3665
 equations{ '$MIMO$ construction_interest' } = define() {
 	// construction interest calculation for each of the five construction period loans
 	C = ${total_installed_cost}; // installed cost
@@ -3935,5 +3864,9 @@ equations{ 'const_per_interest_total' } = define() {
   ${const_per_interest3} +
   ${const_per_interest4} +
   ${const_per_interest5}; };
-*/
+  
+
+
+
+
 0

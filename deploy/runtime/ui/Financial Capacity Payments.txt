@@ -671,26 +671,10 @@ Capacity Payment
 0
 Numeric
 
-684
-equations{ '$MIMO$ Financial_Capacity_Payments_Equations' } = define() {
-	data.system_capacity = ${system_capacity};
-	
-	success = ssc_eqn("Financial_Capacity_Payments_Equations", data);
-	if (!success) {
-		${cp_system_nameplate} = -999.;
-	}
-	else {
-		${cp_system_nameplate} = data.cp_system_nameplate;
-	}
-	
-	return 0;
-};
-
-/*
+357
 equations{ 'cp_system_nameplate' } = define() {
 	return ${system_capacity}/1000;
 };
-*/
 
 equations{ 'cp_battery_nameplate' } = define() {
 	t = technology();

@@ -138,9 +138,8 @@ PV Battery,Commercial,394520.312500,5.827434,NA,; Notice: Computed battery tempe
 PV Battery,Third Party,8620.086914,NA,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 1358 times
 PV Battery,Host Developer,394520.312500,21.017857,10.808136,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 36713 times
 PV Battery,Single Owner,37050972,8.647429,9.839484,; 
-PV Battery,Merchant Plant,OVERWRITE	
-PV Battery,Merchant Plant,fail,fail,fail
-PV Battery,Leveraged Partnership Flip,37050972,8.108556,9.839484,; 
+PV Battery,Merchant Plant,37050972,7.760206,NA,;
+PV Battery,Leveraged Partnership Flip,37050972,8.108556,9.839484,;
 PV Battery,All Equity Partnership Flip,37050972,10.048800,10.932760,; 
 PV Battery,Sale Leaseback,37050972,9.708634,9.839484,; 
 PVWatts Battery,Residential,8024.941895,9.356576,NA,; 
@@ -152,8 +151,7 @@ Generic Battery,Commercial,361522.062500,24.840870,NA,; Notice: Computed battery
 Generic Battery,Third Party,6700.020508,NA,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 11870 times
 Generic Battery,Host Developer,361522.062500,14.474730,10.830667,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 10505 times
 Generic Battery,Single Owner,73147680,20.952120,10.397238,; 
-Generic Battery,Merchant Plant,OVERWRITE	
-Generic Battery,Merchant Plant,fail,fail,fail
-Generic Battery,Leveraged Partnership Flip,73147680,24.980808,28.881216,; 
-Generic Battery,All Equity Partnership Flip,73147680,29.087803,34.657459,; 
-Generic Battery,Sale Leaseback,73147680,29.019329,34.657459,; 
+Generic Battery,Merchant Plant,73147680,19.917864,NA,;
+Generic Battery,Leveraged Partnership Flip,73147680,24.980808,28.881216,;
+Generic Battery,All Equity Partnership Flip,73147680,29.087803,34.657459,;
+Generic Battery,Sale Leaseback,73147680,29.019329,34.657459,;
