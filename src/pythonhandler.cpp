@@ -48,7 +48,7 @@ void WritePythonConfig(const std::string& configPath, const PythonConfig& config
     configObj["python_version"] = config.pythonVersion;
     configObj["miniconda_version"] = config.minicondaVersion;
     configObj["exec_path"] = config.execPath;
-    configObj["pip_path"] = config.execPath;
+    configObj["pip_path"] = config.pipPath;
     configObj["packages"] = Json::arrayValue;
     for (auto &i : config.packages)
         configObj["packages"].append(i);
