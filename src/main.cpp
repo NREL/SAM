@@ -2088,7 +2088,9 @@ extern void RegisterReportObjectTypes();
 	if ( argc > 1 )
 		g_mainWindow->LoadProject( argv[1] );
 
-	return true;
+    LoadPythonConfig();
+
+    return true;
 }
 
 void SamApp::OnFatalException()
