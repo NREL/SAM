@@ -139,5 +139,5 @@ $data = Get-Content -Raw -Path $PYTHON_CONFIG_FILE | ConvertFrom-Json
 $data.python_version = $version
 $data.exec_path = $execPath
 $data.pip_path = $pipPath
-ConvertTo-Json $data  | Out-File $PYTHON_CONFIG_FILE -Encoding UTF8
+ConvertTo-Json $data  | Out-File -Encoding ASCII $PYTHON_CONFIG_FILE
 Set-Location $orig
