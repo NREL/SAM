@@ -2088,10 +2088,6 @@ extern void RegisterReportObjectTypes();
 	if ( argc > 1 )
 		g_mainWindow->LoadProject( argv[1] );
 
-
-    // setup python configuration info
-    LoadPythonConfig();
-
 	return true;
 }
 
@@ -2311,12 +2307,6 @@ wxString SamApp::GetUserLocalDataDir()
 		wxFileName::Mkdir( path, 511, wxPATH_MKDIR_FULL );
 
 	return path;
-}
-
-std::string SamApp::GetPythonConfigPath(){
-    wxFileName path( GetAppPath() + "/../runtime/python" );
-    path.Normalize();
-    return path.GetFullPath().ToStdString();
 }
 
 wxConfig &SamApp::Settings()
@@ -2776,6 +2766,12 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 	}
 }
 
+std::string SamApp::GetPythonConfigPath(){
+    wxFileName path( GetAppPath() + "/../runtime/python" );
+    path.Normalize();
+    return path.GetFullPath().ToStdString();
+}
+
 void SamApp::LoadPythonConfig(){
     pythonConfig = ReadPythonConfig(GetPythonConfigPath() + "/python_config.json");
     if (CheckPythonInstalled(pythonConfig)){
@@ -2785,6 +2781,9 @@ void SamApp::LoadPythonConfig(){
 }
 
 void SamApp::InstallPython() {
+    if (pythonConfig.pythonVersion.empty() && pythonConfig.minicondaVersion.empty())
+        LoadPythonConfig();
+
     auto python_path = GetPythonConfigPath();
     // already installed and correctly configured
     if (CheckPythonInstalled(pythonConfig)){
