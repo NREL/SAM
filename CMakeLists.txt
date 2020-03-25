@@ -288,7 +288,7 @@ else()
 			DESTINATION linux_64)
 		install(FILES Sandia/linux/lhs.bin Sandia/linux/stepwise.bin
 			DESTINATION runtime/bin)
-		install(DIRECTORY build_resources/GtkTheme
+		install(DIRECTORY build_linux/GtkTheme
 			DESTINATION linux_64)
 		install(DIRECTORY deploy/libraries deploy/runtime deploy/solar_resource deploy/wind_resource
 			DESTINATION .)
