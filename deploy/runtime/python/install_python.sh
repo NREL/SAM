@@ -151,7 +151,7 @@ if [ ! -f $CONDA_PACKAGE_PATH ]; then
 	debug "Finished downloading $CONDA_PACKAGE_NAME"
 fi
 
-run_command "bash $CONDA_PACKAGE_PATH -b -p $INSTALL_PATH"
+run_command "bash $CONDA_PACKAGE_PATH -b -p $INSTALL_PATH -u"
 if [ $FORCE_DOWNLOAD -eq 1 ]; then
 	run_command "rm -rf $CONDA_PACKAGE_PATH"
 fi
