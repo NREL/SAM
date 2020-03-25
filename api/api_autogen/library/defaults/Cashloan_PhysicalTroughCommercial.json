@@ -25,7 +25,7 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [4.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [0.000000],
+			"om_replacement_cost1": [500.000000],
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 5.62202e+08
 		},
@@ -41,7 +41,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": 30,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,

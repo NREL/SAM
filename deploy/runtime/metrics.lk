@@ -191,6 +191,7 @@ function physical_trough_iph_metrics()
 	metric( 'annual_energy', {'label'='Annual net energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
 	metric( 'annual_gross_energy', {'label'='Annual gross energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
 	metric( 'annual_thermal_consumption', {'label'='Annual thermal freeze protection (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
+	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
 }
 
@@ -199,6 +200,7 @@ function dsgl_iph_metrics()
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
 	metric( 'annual_field_energy', {'label'='Annual field energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
 	metric( 'annual_thermal_consumption', {'label'='Annual thermal freeze protection (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
+	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
 }
 

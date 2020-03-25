@@ -1,0 +1,24 @@
+{
+	"defaults": {
+		"SolarResource": {
+		},
+		"Lifetime": {
+		},
+		"SystemDesign": {
+			"array_type": 0,
+			"azimuth": 180,
+			"batt_simple_enable": 0,
+			"dc_ac_ratio": 1.2,
+			"en_snowloss": 0,
+			"gcr": 0.4,
+			"inv_eff": 96,
+			"losses": 14.0757,
+			"module_type": 0,
+			"system_capacity": 4,
+			"tilt": 20
+		},
+		"AdjustmentFactors": {
+			"constant": 0
+		}
+	}
+}

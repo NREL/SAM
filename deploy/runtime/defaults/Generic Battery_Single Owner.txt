@@ -1,5 +1,5 @@
 1
-539
+540
 LeadAcid_q10
 1
 1
@@ -834,7 +834,7 @@ battery_total
 1
 1
 1
-1.37606e+06
+1376060
 battery_voltage_shown
 1
 1
@@ -1006,7 +1006,7 @@ const_per_interest1
 1
 1
 1
-1.49748e+06
+1497480
 const_per_interest2
 1
 1
@@ -1066,7 +1066,7 @@ const_per_interest_total
 1
 1
 1
-1.49748e+06
+1497480
 const_per_months1
 1
 1
@@ -1199,7 +1199,7 @@ const_per_total1
 1
 1
 1
-2.99495e+06
+2994950
 const_per_total2
 1
 1
@@ -1259,7 +1259,7 @@ construction_financing_cost
 1
 1
 1
-2.99495e+06
+2994950
 conv_eff
 1
 1
@@ -1993,7 +1993,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-5.09779e+06
+5097790
 genericsys.cost.sales_tax.value
 1
 1
@@ -3109,6 +3109,12 @@ total_installed_cost
 1
 1
 149747712
+ui_batt_is_dc
+1
+1
+1
+1
+0
 ui_wacc
 1
 1

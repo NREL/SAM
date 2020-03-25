@@ -2,7 +2,7 @@
 	"defaults": {
 		"Weather": {
 			"azimuth": 0,
-			"tilt": 33,
+			"tilt": 0,
 			"track_mode": 1
 		},
 		"LinearFresnelr": {
@@ -232,11 +232,11 @@
 			"m_dot_htf_ref": 0,
 			"m_dot_min": 0.05,
 			"m_pb_demand": 0,
-			"nLoops": 107,
+			"nLoops": 102,
 			"nModBoil": 12,
 			"nModSH": 4,
-			"q_max_aux": 516.095,
-			"q_pb_des": 288.41,
+			"q_max_aux": 491.979,
+			"q_pb_des": 273.657,
 			"q_sby_frac": 0.2,
 			"rho_mirror_clean": [
 				[0.935000],
@@ -302,7 +302,7 @@
 			"dp_b": 0,
 			"dp_rh": 0,
 			"dp_sh": 5,
-			"eta_ref": 0.371,
+			"eta_ref": 0.391,
 			"f_recSU": 1,
 			"m_dot_st": 0,
 			"n_pl_inc": 8,
@@ -316,7 +316,7 @@
 			"startup_time": 0.35
 		},
 		"AdjustmentFactors": {
-			"constant": 4
+			"constant": 0
 		}
 	}
 }

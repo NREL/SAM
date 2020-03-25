@@ -146,21 +146,17 @@
 			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 10.1331,
-			"batt_replacement_option": 0,
-			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
 			"en_batt": 0
 		},
 		"FuelCell": {
 		},
 		"SystemOutput": {
 			"annual_energy_value": [0],
-			"degradation": [0.500000],
+			"degradation": [0.000000],
 			"gen": [0]
 		},
 		"Lifetime": {
-			"system_use_lifetime_output": 0
+			"system_use_lifetime_output": 1
 		},
 		"ThirdPartyOwnership": {
 			"elec_cost_with_system": [0],
