@@ -38,6 +38,10 @@ PythonPackageConfig ReadPythonPackageConfig(const std::string& name, const std::
 
 bool CheckPythonPackageInstalled(const std::string& package, const PythonConfig& config);
 
-bool InstallFromPip(const std::string& pip_exec, const PythonPackageConfig& package);
+#ifdef __WXMSW__
+int InstallFromPipWindows(const std::string& pip_exec, const PythonPackageConfig& package);
+#endif
+
+int InstallFromPip(const std::string& pip_exec, const PythonPackageConfig& package);
 
 #endif //SYSTEM_ADVISOR_MODEL_PYTHONHANDLER_H

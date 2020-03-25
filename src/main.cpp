@@ -2810,8 +2810,13 @@ void SamApp::InstallPythonPackage(const std::string& pip_name) {
         return;
     auto packageConfig = ReadPythonPackageConfig(pip_name, GetPythonConfigPath() + "/" + pip_name + ".json");
 
-    std::string pip_exec = "cd " + GetPythonConfigPath() + " && " + pythonConfig.pipPath;
-    if (InstallFromPip(pip_exec, packageConfig) == 0){
+#ifdef __WXMSW__
+	bool retval = InstallFromPipWindows(GetPythonConfigPath() + "\\" + pythonConfig.pipPath, packageConfig);
+#else
+	std::string pip_exec = "cd " + GetPythonConfigPath() + " && " + pythonConfig.pipPath;
+	bool retval = InstallFromPip(pip_exec, packageConfig);
+#endif
+    if (retval == 0){
         pythonConfig.packages.push_back(pip_name);
         WritePythonConfig(GetPythonConfigPath() + "/python_config.json", pythonConfig);
     }

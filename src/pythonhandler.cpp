@@ -2,7 +2,8 @@
 #include <algorithm>
 
 #ifdef __WXMSW__
-#include <windows.h>
+#include "AtlBase.h"
+#include "AtlConv.h"
 #endif
 
 #include "pythonhandler.h"
@@ -48,7 +49,7 @@ void WritePythonConfig(const std::string& configPath, const PythonConfig& config
     configObj["python_version"] = config.pythonVersion;
     configObj["miniconda_version"] = config.minicondaVersion;
     configObj["exec_path"] = config.execPath;
-    configObj["pip_path"] = config.execPath;
+    configObj["pip_path"] = config.pipPath;
     configObj["packages"] = Json::arrayValue;
     for (auto &i : config.packages)
         configObj["packages"].append(i);
@@ -104,8 +105,32 @@ bool CheckPythonPackageInstalled(const std::string& package, const PythonConfig&
     return (it != config.packages.end());
 }
 
-bool InstallFromPip(const std::string& pip_exec, const PythonPackageConfig& package){
+#ifdef __WXMSW__
+int InstallFromPipWindows(const std::string& pip_exec, const PythonPackageConfig& package)
+{
+	std::string args = " install " + package.name + "==" + package.version;
+	PROCESS_INFORMATION p_info;
+	STARTUPINFO s_info;
+	DWORD ReturnValue;
+	CA2T programpath(pip_exec.c_str());
+	CA2T programargs(args.c_str());
+
+	memset(&s_info, 0, sizeof(s_info));
+	memset(&p_info, 0, sizeof(p_info));
+	s_info.cb = sizeof(s_info);
+
+	if (CreateProcess(programpath, programargs, NULL, NULL, 0, CREATE_NO_WINDOW, NULL, NULL, &s_info, &p_info)) {
+		WaitForSingleObject(p_info.hProcess, INFINITE);
+		GetExitCodeProcess(p_info.hProcess, &ReturnValue);
+		CloseHandle(p_info.hProcess);
+		CloseHandle(p_info.hThread);
+	}
+	return ReturnValue;
+}
+#endif
+
+int InstallFromPip(const std::string& pip_exec, const PythonPackageConfig& package){
     std::string cmd = pip_exec + " install " + package.name + "==" + package.version;
     int rvalue = system(cmd.c_str());
-    return (bool)rvalue;
+    return rvalue;
 }
