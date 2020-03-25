@@ -275,11 +275,13 @@ else()
 	if (UNIX)
 		set_target_properties(${SAM_EXE}
 			PROPERTIES OUTPUT_NAME sam.bin)
-		add_custom_command(
+        set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/deploy)
+        add_custom_command(
 			TARGET ${SAM_EXE}
 			POST_BUILD
-			COMMAND rm -rf ${PROJECT_SOURCE_DIR}/sam.deploy)
-		set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/sam.deploy)
+			COMMAND rm -rf ${CMAKE_INSTALL_PREFIX}/linux_64
+            COMMAND mkdir -p ${CMAKE_INSTALL_PREFIX}/linux_64
+        )
 		install(TARGETS ${SAM_EXE}
 			RUNTIME DESTINATION linux_64)
 		install(FILES ${SSC_LIB}
