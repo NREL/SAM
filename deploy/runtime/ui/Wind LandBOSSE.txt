@@ -1,7 +1,7 @@
 Wind LandBOSSE
 875
 1516
-82
+83
 Numeric
 
 1
@@ -74,7 +74,7 @@ Name
 btn_bos_apply
 X
 3
-342
+252
 Y
 3
 282
@@ -91,6 +91,36 @@ Caption
 5
 18
 Apply BOS Estimate
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+11
+btn_bos_run
+X
+3
+252
+Y
+3
+255
+Width
+3
+147
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+13
+Calculate BOS
 TabOrder
 3
 4294967295
@@ -2329,23 +2359,23 @@ Name
 object 73
 X
 3
-492
+402
 Y
 3
-276
+285
 Width
 3
-291
+456
 Height
 3
-42
+33
 Tool Tip
 5
 0
 Caption
 5
-94
-Click to apply the cost estimate to the appropriate inputs in the Capital Costs section above.
+79
+Click to apply to the BOS Cost per kW input in the Capital Costs section above.
 TextColour
 4
 255
@@ -5693,7 +5723,19 @@ equations{ 'row_spacing_rotor_diameters' } = define() {
 	return ${windfarm.farm.row_spacing};
 };
 
-1190
+967
+on_change{"btn_bos_run"} = define()
+{
+	install_type = value('install_type');
+	if (install_type == 1)
+	{
+		msgbox('This Balance of System cost model is only meant to be applied to land-based installations.');
+		return;
+	}
+	run_landbosse();
+	refresh();
+};
+
 on_change{"btn_bos_apply"} = define()
 {
 	install_type = value('install_type');
@@ -5714,42 +5756,6 @@ on_change{"btn_bos_apply"} = define()
 on_load{"Wind LandBOSSE"} = define()
 {
 	setup_landbosse();
-	run_landbosse();
-	refresh();
-};
-
-on_change{"interconnect_voltage_kV"} = define()
-{
-	run_landbosse();
-	refresh();
-};
-
-on_change{"distance_to_interconnect_mi"} = define()
-{
-	run_landbosse();
-	refresh();
-};
-
-on_change{"depth"} = define()
-{
-	run_landbosse();
-	refresh();
-};
-
-on_change{"rated_thrust_N"} = define()
-{
-	run_landbosse();
-	refresh();
-};
-
-on_change{"labor_cost_multiplier"} = define()
-{
-	run_landbosse();
-	refresh();
-};
-
-on_change{"gust_velocity_m_per_s"} = define()
-{
 	run_landbosse();
 	refresh();
 };
