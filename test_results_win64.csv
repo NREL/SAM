@@ -91,7 +91,7 @@ Generic CSP System,Commercial,572565824,7.480502,NA,; Notice: time 0.00 { Generi
 Generic CSP System,Single Owner,573450304,11.703119,12.613471,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Merchant Plant,573450304,10.610463,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Leveraged Partnership Flip,573342592,11.965166,12.902393,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,All Equity Partnership Flip,573342592,15.026999,17.599688,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,All Equity Partnership Flip,573420096,15.025028,17.597370,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Sale Leaseback,573450304,15.225276,17.464741,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,LCOE Calculator,573346496,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,None,573444096,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
@@ -100,7 +100,8 @@ Physical Trough IPH,LCOH Calculator,24480118,NA,NA,; Notice: Piping geometry fil
 DSGL IPH,None,10935303,NA,NA,; 
 DSGL IPH,LCOH Calculator,10935303,NA,NA,; 
 Fuel Cell,Commercial,1937287.625000,8.458051,NA,; 
-Fuel Cell,Single Owner,1911072.125000,55.723217,69.934624,; 
+Fuel Cell,Single Owner,OVERWRITE	
+Fuel Cell,Single Owner,1911072.125000,55.723217,69.934624,Defaults file is likely out of date: Fuel Cell_Single Owner.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 731, config has 732  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
 MEwave,LCOE Calculator,59434320,NA,NA,; 
 MEtidal,LCOE Calculator,216151664,NA,NA,; 
 Geothermal Power,Single Owner,262800000,7.174291,7.712479,; 
