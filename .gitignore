@@ -317,7 +317,7 @@ resource/sam*
 resource/splash*
 
 
-
+build_linux/python
 
 build_linux/sam\.deploy/libraries/
 
@@ -367,5 +367,3 @@ src/private - nrel.h
 src/private - os.h
 
 sam\.bin
-
-deploy/libraries/CEC Modules.csv
