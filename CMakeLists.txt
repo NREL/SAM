@@ -153,6 +153,7 @@ elseif(WIN32)
 	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/SAM.rc)
 endif()
 
+# have to make executables with different names so the .app's have different names
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_executable(SAMd
 			WIN32
@@ -169,26 +170,27 @@ else() # if Release or if MSVC multigenerator
 	set(SAM_EXE SAM)
 endif()
 
-#set_target_properties(${SAM_EXE}
-#    PROPERTIES
-#    DEBUG_POSTFIX "d")
 if (MSVC)
 	set_target_properties(${SAM_EXE}
 		PROPERTIES
 		LINK_FLAGS /SUBSYSTEM:WINDOWS
+        DEBUG_POSTFIX "d"
 		RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>/deploy/x64)
-elseif(APPLE)
+else()
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         set(SAM_NAME SAMd)
     else()
         set(SAM_NAME SAM)
     endif()
-    set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/${SAM_NAME}.app)
-elseif(UNIX)
-    set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/deploy)
-    set_target_properties(${SAM_EXE}
-        PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${SAM_APP}/linux_64)
+    if(APPLE)
+        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/${SAM_NAME}.app)
+    else()
+        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/deploy)
+        set_target_properties(${SAM_EXE}
+                PROPERTIES
+                OUTPUT_NAME ${SAM_NAME}.bin
+                RUNTIME_OUTPUT_DIRECTORY ${SAM_APP}/linux_64)
+    endif()
 endif()
 
 #####################################################################################################################
