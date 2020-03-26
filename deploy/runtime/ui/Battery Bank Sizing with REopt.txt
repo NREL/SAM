@@ -1171,8 +1171,8 @@ Battery
 Numeric
 
 0
-3914
-on_load{'Battery Bank Sizing'} = define()
+3925
+on_load{'Battery Bank Sizing with REopt'} = define()
 {
 	set_chemistry();
 	set_bank_sizing();
