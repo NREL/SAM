@@ -2007,7 +2007,7 @@ extern void RegisterReportObjectTypes();
 		return false;
 	}
 
-	g_config = new wxConfig( "", "" );
+	g_config = new wxConfig( "SystemAdvisorModel", "NREL" );
 
 	wxInitAllImageHandlers();
 
