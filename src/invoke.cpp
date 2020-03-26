@@ -4733,9 +4733,22 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
 
     ssc_data_t landbosse_data = ssc_data_create();
 
-    auto varValue = vartable->Get("wind_resource_filename");
-    if (!varValue)
-        throw std::runtime_error("Run LandBOSSE error: wind_resource_filename was not assigned.");
+    auto varValue = vartable->Get("en_landbosse");
+    if (!varValue || !varValue->Boolean()){
+        MyMessageDialog dlg(GetCurrentTopLevelWindow(), "LandBOSSE not enabled. Change `en_landbosse` to 1.", "Windpower error",
+                            wxCENTER, wxDefaultPosition, wxDefaultSize);
+        dlg.ShowModal();
+        return;
+    }
+    ssc_data_set_number(landbosse_data, "en_landbosse", 1);
+
+    varValue = vartable->Get("wind_resource_filename");
+    if (!varValue){
+        MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Run LandBOSSE error: wind_resource_filename was not assigned.", "Windpower error",
+                            wxCENTER, wxDefaultPosition, wxDefaultSize);
+        dlg.ShowModal();
+        return;
+    }
     ssc_data_set_string(landbosse_data, "wind_resource_filename", varValue->String().c_str());
 
     std::vector<std::string> input_names = {"distance_to_interconnect_mi",
@@ -4749,7 +4762,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
         varValue = vartable->Get(i);
         if (!varValue){
             ssc_data_free(landbosse_data);
-            throw std::runtime_error("Run LandBOSSE error: " + i + " was not assigned.");
+            ("Run LandBOSSE error: " + i + " was not assigned.");
         }
         ssc_data_set_number(landbosse_data, i.c_str(), varValue->Value());
     }
@@ -4759,17 +4772,15 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
     bool success = ssc_module_exec(module, landbosse_data);
 
     if (!success){
+        std::string error = std::string(ssc_data_get_string(landbosse_data, "errors"));
+        if (error.empty())
+            error = std::string(ssc_module_log(module, 0, nullptr, nullptr));
         ssc_data_free(landbosse_data);
         ssc_module_free(module);
-        throw std::runtime_error("Run LandBOSSE error: " + std::string(ssc_module_log(module, 0, nullptr, nullptr)));
-    }
-
-    std::string error = std::string(ssc_data_get_string(landbosse_data, "errors"));
-
-    if (!error.empty() && error != "0"){
-        ssc_data_free(landbosse_data);
-        ssc_module_free(module);
-        throw std::runtime_error("Run LandBOSSE error: " + error);
+        MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Run LandBOSSE error: " + error, "Windpower error",
+                            wxCENTER, wxDefaultPosition, wxDefaultSize);
+        dlg.ShowModal();
+        return;
     }
 
     auto outputs = VarTable(landbosse_data);

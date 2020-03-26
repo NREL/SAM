@@ -65,13 +65,13 @@ bool CheckPythonInstalled(const PythonConfig& config){
 }
 
 bool InstallPythonWindows(const std::string& path, const PythonConfig& config){
-    std::string cmd = "cd " + path + " && powershell.exe -windowstyle hidden -ExecutionPolicy Bypass -File install_python.ps1 -version " + config.pythonVersion + " -config " + path;
+    std::string cmd = "powershell.exe -windowstyle hidden -ExecutionPolicy Bypass -File " + path + "/install_python.ps1 -version " + config.pythonVersion + " -config " + path;
     int rvalue = system(cmd.c_str());
     return (bool)rvalue;
 }
 
 bool InstallPythonUnix(const std::string& path, const PythonConfig& config){
-    std::string cmd = "cd " + path + " && ./install_python.sh " + config.minicondaVersion + " " + config.pythonVersion + " " + path;
+    std::string cmd = path + "/install_python.sh " + config.minicondaVersion + " " + config.pythonVersion + " " + path;
     int rvalue = system(cmd.c_str());
     return (bool)rvalue;
 }

@@ -2007,7 +2007,7 @@ extern void RegisterReportObjectTypes();
 		return false;
 	}
 
-	g_config = new wxConfig( "", "" );
+	g_config = new wxConfig( "SystemAdvisorModel", "NREL" );
 
 	wxInitAllImageHandlers();
 
@@ -2813,7 +2813,7 @@ void SamApp::InstallPythonPackage(const std::string& pip_name) {
 #ifdef __WXMSW__
 	bool retval = InstallFromPipWindows(GetPythonConfigPath() + "\\" + pythonConfig.pipPath, packageConfig);
 #else
-	std::string pip_exec = "cd " + GetPythonConfigPath() + " && " + pythonConfig.pipPath;
+	std::string pip_exec = GetPythonConfigPath() + "/" + pythonConfig.pipPath;
 	bool retval = InstallFromPip(pip_exec, packageConfig);
 #endif
     if (retval == 0){
@@ -3016,8 +3016,8 @@ void ConfigDialog::PopulateTech()
 			m_pTech->AppendItem(cont_csp, L);
 		else if (TP.Find("ME") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_me, L);
-		else if (TP.Find("BATT") != wxNOT_FOUND) 
-			m_pTech->AppendItem(cont_batt, L); 
+		else if (TP.Find("BATT") != wxNOT_FOUND)
+			m_pTech->AppendItem(cont_batt, L);
 		else
 			m_pTech->AppendItem(wxDataViewItem(0), L);
 	}

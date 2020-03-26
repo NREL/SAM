@@ -855,9 +855,9 @@ VarValue::VarValue(ssc_var_t vd) {
         case SSC_DATMAT :
             m_type = VV_DATMAT;
             ssc_var_size(vd, &n, &m);
-            for (size_t i = 0; i < n; i++){
+            for (int i = 0; i < n; i++){
                 std::vector<VarValue> row;
-                for (size_t j = 0; j < m; j++)
+                for (int j = 0; j < m; j++)
                     row.emplace_back(VarValue(ssc_var_get_var_matrix(vd, i, j)));
                 m_datmat.emplace_back(row);
             }
