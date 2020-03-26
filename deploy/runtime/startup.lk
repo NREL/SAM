@@ -874,7 +874,7 @@ setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculat
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Leveraged Partnership Flip' );
-setmodules( ['windpower', 'grid', 'levpartflip']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'levpartflip']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
@@ -885,7 +885,7 @@ setup_leveraged_partnership_flip_pages();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'All Equity Partnership Flip' );
-setmodules( ['windpower', 'grid', 'equpartflip']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'equpartflip']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
@@ -896,7 +896,7 @@ setup_all_equity_partnership_flip_pages();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Sale Leaseback' );
-setmodules( ['windpower', 'grid','saleleaseback']);
+setmodules( ['windpower', 'grid','wind_landbosse', 'saleleaseback']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
@@ -907,7 +907,7 @@ setup_sale_leaseback_pages();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Single Owner' );
-setmodules( ['windpower', 'grid','singleowner']);
+setmodules( ['windpower', 'grid','wind_landbosse', 'singleowner']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
@@ -917,7 +917,7 @@ addpage( [['Wind Farm Costs','O and M Costs',
 setup_single_owner_pages();
 
 setconfig( 'Wind Power', 'Merchant Plant' );
-setmodules( ['windpower', 'grid','merchantplant']);
+setmodules( ['windpower', 'grid','wind_landbosse', 'merchantplant']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
