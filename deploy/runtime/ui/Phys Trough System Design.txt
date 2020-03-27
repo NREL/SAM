@@ -1,7 +1,7 @@
 Phys Trough System Design
 867
 478
-21
+22
 Numeric
 
 1
@@ -380,6 +380,68 @@ Numeric
 17
 Name
 5
+12
+T_PTC_in_des
+X
+3
+219
+Y
+3
+153
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 13
 T_loop_in_des
 X
@@ -449,7 +511,7 @@ X
 219
 Y
 3
-153
+180
 Width
 3
 100
@@ -1095,7 +1157,7 @@ AlignTop
 2
 1
 
-17
+18
 I_bn_des
 3
 1
@@ -1180,10 +1242,10 @@ Phys Trough System Design
 1
 0
 Numeric
-T_loop_in_des
+T_PTC_in_des
 3
 1
-Loop inlet HTF temperature
+PTC inlet HTF temperature
 °C
 Phys Trough System Design
 0
@@ -1192,12 +1254,26 @@ Phys Trough System Design
 1
 1
 1
-290
+90
+Default
+T_loop_in_des
+3
+1
+FPC inlet HTF temperature
+°C
+Phys Trough System Design
+0
+2
+1
+1
+1
+1
+27
 Default
 T_loop_out
 3
 1
-Loop outlet HTF temperature
+PTC outlet HTF temperature
 °C
 Phys Trough System Design
 0
@@ -1206,7 +1282,7 @@ Phys Trough System Design
 1
 1
 1
-393
+150
 Default
 is_model_heat_sink_piping
 3

@@ -156,7 +156,7 @@ Bold
 2
 1
 
-50
+56
 A_aperture
 3
 2
@@ -387,6 +387,90 @@ Physical Trough Collector Library
 4
 1
 0
+Default
+flat_plate_tested_area_coll
+3
+1
+Area of collector used for certification testing
+m2
+Physical Trough Collector Library
+0
+2
+1
+1
+1
+1
+0.0498
+Default
+flat_plate_tested_frta
+3
+1
+FRta from certification testing
+-
+Physical Trough Collector Library
+0
+2
+1
+1
+1
+1
+0.733
+Default
+flat_plate_tested_frul
+3
+1
+FRUL from certification testing
+W/m2-K
+Physical Trough Collector Library
+0
+2
+1
+1
+1
+1
+3.41
+Default
+flat_plate_tested_heat_capacity
+3
+1
+Heat capacity of fluid used for certification testing
+kJ/kg-K
+Physical Trough Collector Library
+0
+2
+1
+1
+1
+1
+4.182
+Default
+flat_plate_tested_iam
+3
+1
+IAM from certification testing
+-
+Physical Trough Collector Library
+0
+2
+1
+1
+1
+1
+-0.06
+Default
+flat_plate_tested_m_dot
+3
+1
+Mass flow used during certification testing
+kg/s
+Physical Trough Collector Library
+0
+2
+1
+1
+1
+1
+0.0498
 Default
 lib_A_aperture
 3
