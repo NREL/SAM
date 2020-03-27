@@ -1,3 +1,4 @@
+#include <unordered_map>
 #include <future>
 #include <algorithm>
 
@@ -32,11 +33,21 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
     for (auto &i : python_config_root["packages"])
         packages.push_back(i.asString());
 
+    std::unordered_map<std::string, std::string> options;
+    if (python_config_root.isMember("options")){
+        Json::Value json_val = python_config_root["options"];
+        Json::Value::Members members = json_val.getMemberNames();
+        for (auto const &name : members) {
+            options.insert({name, json_val[name].asString()});
+        }
+    }
+
     PythonConfig config = {python_config_root["python_version"].asString(),
                            python_config_root["miniconda_version"].asString(),
                            python_config_root["exec_path"].asString(),
                            python_config_root["pip_path"].asString(),
-                           packages};
+                           packages,
+                           options};
 
     return config;
 }
@@ -53,6 +64,8 @@ void WritePythonConfig(const std::string& configPath, const PythonConfig& config
     configObj["packages"] = Json::arrayValue;
     for (auto &i : config.packages)
         configObj["packages"].append(i);
+    for (auto &i : config.options)
+        configObj["options"][i.first] = i.second;
 
     Json::StreamWriterBuilder builder;
     std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
