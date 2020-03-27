@@ -15,6 +15,7 @@ struct PythonConfig {
     std::string execPath;
     std::string pipPath;
     std::vector<std::string> packages;
+    std::unordered_map<std::string, std::string> options;
 };
 
 PythonConfig ReadPythonConfig(const std::string& configPath);
