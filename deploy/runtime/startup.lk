@@ -849,6 +849,8 @@ setup_thirdparty_pages( LOAD_BELPE); //includes building load calculator by defa
 
 // Wind Power //////////////////////////////////////////////////////////////////
 
+landbosse_caption = 'Land-Based Balance of System Cost Model (v2.2.3)';
+
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Residential' );	
 setmodules( ['windpower', 'grid', 'utilityrate5', 'cashloan']);
@@ -878,7 +880,7 @@ setmodules( ['windpower', 'grid', 'wind_landbosse', 'levpartflip']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
-		{'name'='Wind LandBOSSE','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
+		{'name'='Wind LandBOSSE','caption'=landbosse_caption,'collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
 		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
 setup_leveraged_partnership_flip_pages();
@@ -889,7 +891,7 @@ setmodules( ['windpower', 'grid', 'wind_landbosse', 'equpartflip']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
-		{'name'='Wind LandBOSSE','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
+		{'name'='Wind LandBOSSE','caption'=landbosse_caption,'collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
 		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
 setup_all_equity_partnership_flip_pages();
@@ -900,7 +902,7 @@ setmodules( ['windpower', 'grid','wind_landbosse', 'saleleaseback']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
-		{'name'='Wind LandBOSSE','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
+		{'name'='Wind LandBOSSE','caption'=landbosse_caption,'collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
 		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
 setup_sale_leaseback_pages();
@@ -911,7 +913,7 @@ setmodules( ['windpower', 'grid','wind_landbosse', 'singleowner']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
-		{'name'='Wind LandBOSSE','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
+		{'name'='Wind LandBOSSE','caption'=landbosse_caption,'collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
 		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
 setup_single_owner_pages();
@@ -921,7 +923,7 @@ setmodules( ['windpower', 'grid','wind_landbosse', 'merchantplant']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
-		{'name'='Wind LandBOSSE','caption'='Land-Based Balance of System Cost Model','collapsible'=true,'collapsible_var'='wind_bos_shown'},
+		{'name'='Wind LandBOSSE','caption'=landbosse_caption,'collapsible'=true,'collapsible_var'='wind_bos_shown'},
 		{'name'='Wind OBOS','caption'='Offshore Balance of System Cost Model', 'collapsible'=true,'collapsible_var'='wind_obos_shown'}]],
 		{ 'sidebar'='System Costs', 'help'='wind_system_costs' } );
 setup_merchant_plant_pages();

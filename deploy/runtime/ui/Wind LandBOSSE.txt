@@ -137,6 +137,68 @@ X
 624
 Y
 3
+729
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+20
+collection_labor_usd
+X
+3
+624
+Y
+3
 702
 Width
 3
@@ -192,68 +254,6 @@ Numeric
 17
 Name
 5
-20
-collection_labor_usd
-X
-3
-624
-Y
-3
-729
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
 23
 collection_material_usd
 X
@@ -276,7 +276,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -468,7 +468,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -716,7 +716,7 @@ Format
 0
 Decimals
 3
-1
+2
 Prefix
 5
 0
@@ -741,6 +741,39 @@ BackColour
 255
 255
 255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+12
+en_landbosse
+X
+3
+33
+Y
+3
+9
+Width
+3
+372
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+46
+Enable Land-Based Balance of System Cost Model
+State
+2
+0
 TabOrder
 3
 4294967295
@@ -1206,7 +1239,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -1330,7 +1363,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -1460,7 +1493,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -1708,7 +1741,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -2308,54 +2341,6 @@ Label
 Name
 5
 9
-object 71
-X
-3
-6
-Y
-3
-12
-Width
-3
-888
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-123
-NOTE: This Land-based Balance of System Cost Model is valid ONLY for land-based installations. Please see Help for details.
-TextColour
-4
-255
-128
-64
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-9
 object 73
 X
 3
@@ -2735,7 +2720,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -2859,7 +2844,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -3833,7 +3818,7 @@ Name
 total_gridconnection_cost_per_turbine
 X
 3
-395
+396
 Y
 3
 849
@@ -4595,13 +4580,13 @@ Value
 0
 Mode
 3
-0
+1
 Format
 3
 0
 Decimals
 3
-0
+1
 Prefix
 5
 0
@@ -5626,7 +5611,7 @@ Default
 total_substation_cost
 3
 1
-Total T&D Cost
+Total Substation Cost
 $
 Wind LandBOSSE
 0
@@ -5640,7 +5625,7 @@ Default
 total_substation_cost_per_capacity
 3
 1
-T&D Cost per kW
+Substation Cost per kW
 $/kW
 Wind LandBOSSE
 0
@@ -5654,7 +5639,7 @@ Default
 total_substation_cost_per_turbine
 3
 1
-T&D Cost per turbine
+Substation Cost per turbine
 $/turbine
 Wind LandBOSSE
 0
@@ -5669,7 +5654,7 @@ turbine_rating_MW
 3
 1
 Machine rating
-kW
+mW
 Wind LandBOSSE
 0
 8
@@ -5737,7 +5722,7 @@ equations{ 'row_spacing_rotor_diameters' } = define() {
 	return ${windfarm.farm.row_spacing};
 };
 
-967
+3976
 on_change{"btn_bos_run"} = define()
 {
 	install_type = value('install_type');
@@ -5767,9 +5752,90 @@ on_change{"btn_bos_apply"} = define()
 		'The Balance of System Fixed cost and Cost per turbine inputs were zeroed.');
 };
 
+function toggle_landbosse(en) {
+	enable("bonding_usd", en);
+	enable("collection_equipment_rental_usd", en);
+	enable("collection_labor_usd", en);
+	enable("collection_material_usd", en);
+	enable("collection_mobilization_usd", en);
+	enable("construction_permitting_usd", en);
+	enable("depth", en);
+	enable("development_labor_usd", en);
+	enable("development_material_usd", en);
+	enable("development_mobilization_usd", en);
+	enable("distance_to_interconnect_mi", en);
+	enable("engineering_usd", en);
+	enable("erection_equipment_rental_usd", en);
+	enable("erection_fuel_usd", en);
+	enable("erection_labor_usd", en);
+	enable("erection_material_usd", en);
+	enable("erection_mobilization_usd", en);
+	enable("erection_other_usd", en);
+	enable("foundation_equipment_rental_usd", en);
+	enable("foundation_labor_usd", en);
+	enable("foundation_material_usd", en);
+	enable("foundation_mobilization_usd", en);
+	enable("gust_velocity_m_per_s", en);
+	enable("hub_height", en);
+	enable("insurance_usd", en);
+	enable("interconnect_voltage_kV", en);
+	enable("labor_cost_multiplier", en);
+	enable("markup_contingency_usd", en);
+	enable("num_turbines", en);
+	enable("project_management_usd", en);
+	enable("rated_thrust_N", en);
+	enable("rotor_diameter", en);
+	enable("row_spacing_rotor_diameters", en);
+	enable("site_facility_usd", en);
+	enable("sitepreparation_equipment_rental_usd", en);
+	enable("sitepreparation_labor_usd", en);
+	enable("sitepreparation_material_usd", en);
+	enable("sitepreparation_mobilization_usd", en);
+	enable("total_collection_cost", en);
+	enable("total_collection_cost_per_capacity", en);
+	enable("total_collection_cost_per_turbine", en);
+	enable("total_development_cost", en);
+	enable("total_development_cost_per_capacity", en);
+	enable("total_development_cost_per_turbine", en);
+	enable("total_erection_cost", en);
+	enable("total_erection_cost_per_capacity", en);
+	enable("total_erection_cost_per_turbine", en);
+	enable("total_foundation_cost", en);
+	enable("total_foundation_cost_per_capacity", en);
+	enable("total_foundation_cost_per_turbine", en);
+	enable("total_gridconnection_cost", en);
+	enable("total_gridconnection_cost_per_capacity", en);
+	enable("total_gridconnection_cost_per_turbine", en);
+	enable("total_management_cost", en);
+	enable("total_management_cost_per_capacity", en);
+	enable("total_management_cost_per_turbine", en);
+	enable("total_project_cost", en);
+	enable("total_project_cost_per_capacity", en);
+	enable("total_sitepreparation_cost", en);
+	enable("total_sitepreparation_cost_per_capacity", en);
+	enable("total_sitepreparation_cost_per_turbine", en);
+	enable("total_substation_cost", en);
+	enable("total_substation_cost_per_capacity", en);
+	enable("total_substation_cost_per_turbine", en);
+	enable("turbine_rating_MW", en);
+	enable("turbine_spacing_rotor_diameters", en);
+	enable("wind_shear_exponent", en);
+}
+
 on_load{"Wind LandBOSSE"} = define()
 {
-	setup_landbosse();
-	run_landbosse();
-	refresh();
+	en = value("en_landbosse");
+	toggle_landbosse(en);
+};
+
+on_change{"en_landbosse"} = define()
+{
+	en = value("en_landbosse");
+	toggle_landbosse(en);
+	if (en){
+		
+		setup_landbosse();
+		run_landbosse();
+		refresh();
+	}
 };
