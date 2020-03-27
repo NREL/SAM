@@ -5722,7 +5722,7 @@ equations{ 'row_spacing_rotor_diameters' } = define() {
 	return ${windfarm.farm.row_spacing};
 };
 
-3976
+4034
 on_change{"btn_bos_run"} = define()
 {
 	install_type = value('install_type');
@@ -5753,6 +5753,8 @@ on_change{"btn_bos_apply"} = define()
 };
 
 function toggle_landbosse(en) {
+	enable("btn_bos_run", en);
+	enable("btn_bos_apply", en);
 	enable("bonding_usd", en);
 	enable("collection_equipment_rental_usd", en);
 	enable("collection_labor_usd", en);

@@ -16,6 +16,17 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
     if (python_config_doc.fail())
         throw std::runtime_error("Could not open " + configPath );
 
+#ifdef __WXMSW__
+	// check for byte-order mark indicating UTF-8 and skip if it exists since it's not JSON-compatible
+	char a, b, c;
+	a = python_config_doc.get();
+	b = python_config_doc.get();
+	c = python_config_doc.get();
+	if (a != (char)0xEF || b != (char)0xBB || c != (char)0xBF) {
+		python_config_doc.seekg(0);
+	}
+#endif
+
     python_config_doc >> python_config_root;
 
     if (!python_config_root.isMember("miniconda_version"))
