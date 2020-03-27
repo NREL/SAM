@@ -350,6 +350,7 @@ public:
 
 	static std::string GetPythonConfigPath();
 	static void LoadPythonConfig();
+	static bool CheckPythonPackage(const std::string& pip_name);
 	static void InstallPython();
     static void InstallPythonPackage(const std::string& pip_name);
 

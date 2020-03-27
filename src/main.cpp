@@ -2783,6 +2783,14 @@ void SamApp::LoadPythonConfig(){
     }
 }
 
+bool SamApp::CheckPythonPackage(const std::string& pip_name){
+    if (CheckPythonInstalled(pythonConfig)){
+        if (CheckPythonPackageInstalled(pip_name, pythonConfig))
+            return true;
+    }
+    return false;
+}
+
 void SamApp::InstallPython() {
     if (pythonConfig.pythonVersion.empty() && pythonConfig.minicondaVersion.empty())
         LoadPythonConfig();

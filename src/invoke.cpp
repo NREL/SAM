@@ -4716,10 +4716,19 @@ static void fcall_setup_landbosse(lk::invoke_t &cxt)
 {
     LK_DOC("setup_landbosse", "Checks if LandBOSSE model is setup and if not, installs the package.", "( none ): bool");
 
+    if (SamApp::CheckPythonPackage("landbosse"))
+        return;
+
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing LandBOSSE... This may take a few minutes for initial installation.",
+                        "Land-Based Balance of System Cost Model",
+                        wxCENTER, wxDefaultPosition, wxDefaultSize);
+    dlg.Show();
+    wxGetApp().Yield( true );
+
     SamApp::InstallPython();
 
     SamApp::InstallPythonPackage("landbosse");
-
+    dlg.Close();
 }
 
 static void fcall_run_landbosse(lk::invoke_t & cxt)
