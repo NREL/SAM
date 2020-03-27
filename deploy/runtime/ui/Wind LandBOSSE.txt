@@ -5457,7 +5457,7 @@ Default
 total_gridconnection_cost
 3
 1
-Total T&D Cost
+Total Cost
 $
 Wind LandBOSSE
 0
@@ -5471,7 +5471,7 @@ Default
 total_gridconnection_cost_per_capacity
 3
 1
-T&D Cost per kW
+Cost per kW
 $/kW
 Wind LandBOSSE
 0
@@ -5485,7 +5485,7 @@ Default
 total_gridconnection_cost_per_turbine
 3
 1
-T&D Cost per turbine
+Cost per turbine
 $/turbine
 Wind LandBOSSE
 0
@@ -5611,7 +5611,7 @@ Default
 total_substation_cost
 3
 1
-Total Substation Cost
+Total Cost
 $
 Wind LandBOSSE
 0
@@ -5625,7 +5625,7 @@ Default
 total_substation_cost_per_capacity
 3
 1
-Substation Cost per kW
+Cost per kW
 $/kW
 Wind LandBOSSE
 0
@@ -5639,7 +5639,7 @@ Default
 total_substation_cost_per_turbine
 3
 1
-Substation Cost per turbine
+Cost per turbine
 $/turbine
 Wind LandBOSSE
 0
