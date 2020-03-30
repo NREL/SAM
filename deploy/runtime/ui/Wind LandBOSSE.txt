@@ -5548,7 +5548,7 @@ Default
 total_project_cost
 3
 1
-Total Project Cost Estimate
+Total BOS Cost Estimate
 $
 Wind LandBOSSE
 0
@@ -5562,7 +5562,7 @@ Numeric
 total_project_cost_per_capacity
 3
 1
-Project Cost Estimate per kW
+BOS Cost Estimate per kW
 $/kW
 Wind LandBOSSE
 0
