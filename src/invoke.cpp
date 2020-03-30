@@ -4719,7 +4719,9 @@ static void fcall_setup_landbosse(lk::invoke_t &cxt)
     if (SamApp::CheckPythonPackage("landbosse"))
         return;
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing LandBOSSE... This may take a few minutes for initial installation.",
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing the balance-of-system (BOS) cost model… Please note that it may take a few minutes to complete the initial installation. Once installed, you will be able to quickly estimate BOS costs using NREL’s Land-based Balance-of-System Systems Engineering (LandBOSSE).\n"
+                                                    "\n"
+                                                    "While you wait, please refer to Eberle et al. 2019 for more information about the methods that were used to develop LandBOSSE. It is important to note that the SAM user interface only includes a limited set of LandBOSSE inputs. If you would like to access more detailed inputs, please use the LandBOSSE model directly",
                         "Land-Based Balance of System Cost Model",
                         wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();
