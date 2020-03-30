@@ -853,10 +853,10 @@ Name
 batt_voltage_matrix
 X
 3
-354
+351
 Y
 3
-255
+279
 Width
 3
 340

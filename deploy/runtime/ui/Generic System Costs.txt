@@ -1743,13 +1743,13 @@ Name
 object 724
 X
 3
-42
+21
 Y
 3
 207
 Width
 3
-201
+222
 Height
 3
 21

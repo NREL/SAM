@@ -564,7 +564,7 @@ Name
 object 7
 X
 3
-69
+39
 Y
 3
 702
@@ -612,7 +612,7 @@ Name
 object 716
 X
 3
-75
+39
 Y
 3
 444
@@ -660,16 +660,16 @@ Name
 object 717
 X
 3
-75
+39
 Y
 3
 306
 Width
 3
-476
+512
 Height
 3
-52
+61
 Tool Tip
 5
 0
@@ -708,16 +708,16 @@ Name
 object 718
 X
 3
-75
+39
 Y
 3
 171
 Width
 3
-476
+512
 Height
 3
-52
+61
 Tool Tip
 5
 0
@@ -756,7 +756,7 @@ Name
 object 722
 X
 3
-75
+39
 Y
 3
 36
@@ -804,7 +804,7 @@ Name
 wave_add_loss
 X
 3
-75
+39
 Y
 3
 573

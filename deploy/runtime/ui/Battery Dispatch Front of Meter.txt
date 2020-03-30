@@ -1,6 +1,6 @@
 Battery Dispatch Front of Meter
-995
-370
+1057
+400
 28
 GroupBox
 
@@ -12,16 +12,16 @@ Name
 AutoDCBox
 X
 3
-333
+384
 Y
 3
-18
+15
 Width
 3
 655
 Height
 3
-262
+289
 Tool Tip
 5
 0
@@ -45,13 +45,13 @@ X
 33
 Y
 3
-177
+168
 Width
 3
 219
 Height
 3
-51
+60
 Tool Tip
 5
 0
@@ -90,10 +90,10 @@ Name
 InputDispatchBox
 X
 3
-333
+384
 Y
 3
-282
+303
 Width
 3
 655
@@ -126,7 +126,7 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
 364
@@ -150,16 +150,16 @@ Name
 batt_auto_fom_help
 X
 3
-342
+393
 Y
 3
-36
+39
 Width
 3
-636
+633
 Height
 3
-48
+60
 Tool Tip
 5
 0
@@ -207,7 +207,7 @@ Width
 252
 Height
 3
-16
+22
 Tool Tip
 5
 0
@@ -237,10 +237,10 @@ Name
 batt_custom_dispatch
 X
 3
-510
+561
 Y
 3
-327
+348
 Width
 3
 184
@@ -274,10 +274,10 @@ Name
 batt_cycle_cost
 X
 3
-756
+807
 Y
 3
-246
+276
 Width
 3
 90
@@ -336,10 +336,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-756
+807
 Y
 3
-219
+246
 Width
 3
 198
@@ -370,16 +370,16 @@ Name
 batt_cycle_cost_description
 X
 3
-618
+672
 Y
 3
-156
+180
 Width
 3
 360
 Height
 3
-57
+63
 Tool Tip
 5
 0
@@ -418,16 +418,16 @@ Name
 batt_cycle_costs_label
 X
 3
-615
+666
 Y
 3
-141
+162
 Width
 3
 363
 Height
 3
-16
+22
 Tool Tip
 5
 0
@@ -496,7 +496,7 @@ Y
 297
 Width
 3
-288
+333
 Height
 3
 24
@@ -632,10 +632,10 @@ Name
 batt_dispatch_label
 X
 3
-354
+405
 Y
 3
-297
+318
 Width
 3
 627
@@ -680,16 +680,16 @@ Name
 batt_dispatch_options
 X
 3
-342
+393
 Y
 3
-141
+162
 Width
 3
 264
 Height
 3
-16
+22
 Tool Tip
 5
 0
@@ -719,10 +719,10 @@ Name
 batt_dispatch_update_frequency_hours
 X
 3
-513
+579
 Y
 3
-162
+183
 Width
 3
 48
@@ -781,10 +781,10 @@ Name
 batt_look_ahead_hours
 X
 3
-513
+579
 Y
 3
-189
+210
 Width
 3
 48
@@ -843,10 +843,10 @@ Name
 batt_select_weather_file_forecast
 X
 3
-342
+393
 Y
 3
-111
+132
 Width
 3
 90
@@ -873,10 +873,10 @@ Name
 batt_user_specified_weather_file
 X
 3
-438
+489
 Y
 3
-111
+132
 Width
 3
 516
@@ -917,10 +917,10 @@ Name
 batt_weather_label
 X
 3
-342
+393
 Y
 3
-87
+108
 Width
 3
 636

@@ -3226,13 +3226,13 @@ X
 39
 Y
 3
-171
+168
 Width
 3
 870
 Height
 3
-66
+69
 Tool Tip
 5
 0

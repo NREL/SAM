@@ -1,6 +1,6 @@
 Fuel Cell
-963
-1135
+965
+1163
 46
 Divider
 
@@ -54,13 +54,13 @@ X
 468
 Y
 3
-120
+114
 Width
 3
 471
 Height
 3
-16
+25
 Tool Tip
 5
 0
@@ -99,7 +99,7 @@ Width
 432
 Height
 3
-16
+22
 Tool Tip
 5
 0
@@ -159,16 +159,16 @@ Name
 degradation_label
 X
 3
-483
+468
 Y
 3
 135
 Width
 3
-459
+474
 Height
 3
-39
+63
 Tool Tip
 5
 0
@@ -210,13 +210,13 @@ X
 6
 Y
 3
-9
+4294967293
 Width
 3
 950
 Height
 3
-88
+100
 Tool Tip
 5
 0
@@ -276,7 +276,7 @@ Width
 950
 Height
 3
-406
+433
 Tool Tip
 5
 0
@@ -300,7 +300,7 @@ X
 6
 Y
 3
-1002
+1029
 Width
 3
 950
@@ -330,7 +330,7 @@ X
 459
 Y
 3
-1017
+1044
 Width
 3
 486
@@ -375,16 +375,16 @@ Name
 fuelCellTypeLabel
 X
 3
-312
+276
 Y
 3
-21
+12
 Width
 3
-615
+669
 Height
 3
-66
+81
 Tool Tip
 5
 0
@@ -516,7 +516,7 @@ X
 717
 Y
 3
-189
+198
 Width
 3
 54
@@ -578,7 +578,7 @@ X
 717
 Y
 3
-216
+225
 Width
 3
 54
@@ -640,7 +640,7 @@ X
 777
 Y
 3
-189
+198
 Width
 3
 78
@@ -671,7 +671,7 @@ Name
 fuelcell_dynamic_response_down
 X
 3
-231
+276
 Y
 3
 441
@@ -733,7 +733,7 @@ Name
 fuelcell_dynamic_response_down_input
 X
 3
-231
+276
 Y
 3
 387
@@ -795,7 +795,7 @@ Name
 fuelcell_dynamic_response_down_units
 X
 3
-291
+336
 Y
 3
 387
@@ -829,7 +829,7 @@ Name
 fuelcell_dynamic_response_up
 X
 3
-231
+276
 Y
 3
 414
@@ -891,7 +891,7 @@ Name
 fuelcell_dynamic_response_up_input
 X
 3
-231
+276
 Y
 3
 360
@@ -953,7 +953,7 @@ Name
 fuelcell_dynamic_response_up_units
 X
 3
-291
+336
 Y
 3
 360
@@ -990,7 +990,7 @@ X
 9
 Y
 3
-687
+714
 Width
 3
 526
@@ -1114,13 +1114,13 @@ X
 24
 Y
 3
-639
+636
 Width
 3
-861
+930
 Height
 3
-42
+63
 Tool Tip
 5
 0
@@ -1162,7 +1162,7 @@ X
 537
 Y
 3
-687
+714
 Width
 3
 415
@@ -1185,7 +1185,7 @@ X
 231
 Y
 3
-1098
+1125
 Width
 3
 90
@@ -1247,7 +1247,7 @@ X
 324
 Y
 3
-1098
+1125
 Width
 3
 90
@@ -1283,7 +1283,7 @@ X
 231
 Y
 3
-1071
+1098
 Width
 3
 90
@@ -1315,7 +1315,7 @@ X
 231
 Y
 3
-1017
+1044
 Width
 3
 168
@@ -1350,10 +1350,10 @@ X
 45
 Y
 3
-279
+282
 Width
 3
-260
+329
 Height
 3
 24
@@ -1383,7 +1383,7 @@ X
 231
 Y
 3
-1044
+1071
 Width
 3
 90
@@ -1445,7 +1445,7 @@ X
 324
 Y
 3
-1044
+1071
 Width
 3
 75
@@ -1663,13 +1663,13 @@ Name
 fuelcell_replacement_label
 X
 3
-576
+585
 Y
 3
 543
 Width
 3
-374
+365
 Height
 3
 26
@@ -1752,7 +1752,7 @@ Name
 fuelcell_replacement_percent
 X
 3
-516
+525
 Y
 3
 516
@@ -1814,7 +1814,7 @@ Name
 fuelcell_replacement_schedule
 X
 3
-483
+489
 Y
 3
 543
@@ -1851,7 +1851,7 @@ Name
 fuelcell_shutdown_time
 X
 3
-231
+276
 Y
 3
 333
@@ -1913,7 +1913,7 @@ Name
 fuelcell_startup_time
 X
 3
-231
+276
 Y
 3
 306

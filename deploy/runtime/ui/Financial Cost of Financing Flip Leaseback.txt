@@ -1,6 +1,6 @@
 Financial Cost of Financing Flip Leaseback
 859
-113
+141
 7
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 850
 Height
 3
-104
+125
 Tool Tip
 5
 0
@@ -51,7 +51,7 @@ Width
 362
 Height
 3
-83
+104
 Tool Tip
 5
 0
