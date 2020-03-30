@@ -4736,7 +4736,6 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
     LK_DOC("run_landbosse", "Runs the LandBOSSE model on the current case.", "( none ): none");
 
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
-//    Simulation base_case = sam_case->BaseCase();
 
     VarTable* vartable = &sam_case->Values();
 
@@ -4745,7 +4744,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
     auto varValue = vartable->Get("en_landbosse");
     if (!varValue || !varValue->Boolean()){
         MyMessageDialog dlg(GetCurrentTopLevelWindow(), "LandBOSSE not enabled. Change `en_landbosse` to 1.", "Windpower error",
-                            wxCENTER, wxDefaultPosition, wxDefaultSize);
+                            wxCENTER, wxDefaultPosition, wxDefaultSize, true);
         dlg.ShowModal();
         return;
     }
@@ -4754,7 +4753,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
     varValue = vartable->Get("wind_resource_filename");
     if (!varValue){
         MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Run LandBOSSE error: wind_resource_filename was not assigned.", "Windpower error",
-                            wxCENTER, wxDefaultPosition, wxDefaultSize);
+                            wxCENTER, wxDefaultPosition, wxDefaultSize, true);
         dlg.ShowModal();
         return;
     }
@@ -4771,7 +4770,10 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
         varValue = vartable->Get(i);
         if (!varValue){
             ssc_data_free(landbosse_data);
-            ("Run LandBOSSE error: " + i + " was not assigned.");
+            MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Run LandBOSSE error: " + i + " was not assigned.", "Windpower error",
+                                wxCENTER, wxDefaultPosition, wxDefaultSize, true);
+            dlg.ShowModal();
+            return;
         }
         ssc_data_set_number(landbosse_data, i.c_str(), varValue->Value());
     }
@@ -4787,7 +4789,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
         ssc_data_free(landbosse_data);
         ssc_module_free(module);
         MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Run LandBOSSE error: " + error, "Windpower error",
-                            wxCENTER, wxDefaultPosition, wxDefaultSize);
+                            wxCENTER, wxDefaultPosition, wxDefaultSize, true);
         dlg.ShowModal();
         return;
     }
