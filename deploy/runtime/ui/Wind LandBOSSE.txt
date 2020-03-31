@@ -5811,7 +5811,7 @@ equations{ 'row_spacing_rotor_diameters' } = define() {
 	return ${windfarm.farm.row_spacing};
 };
 
-4034
+4018
 on_change{"btn_bos_run"} = define()
 {
 	install_type = value('install_type');
@@ -5833,10 +5833,10 @@ on_change{"btn_bos_apply"} = define()
 		return;
 	}
 	value('bos_cost_fixed', 0);
-	value('bos_cost_per_kw', value('total_project_cost_per_capacity'));
+	value('bos_cost_per_kw', value('total_bos_cost_per_capacity'));
 	value('bos_cost_per_turbine', 0);
 	value('sales_tax_basis', 0);
-	msgbox('The total cost estimate of $' + value('total_project_cost_per_capacity') +
+	msgbox('The total cost estimate of $' + value('total_bos_cost_per_capacity') +
 		'/kW was applied to the Balance of System Cost per kW input. ' +
 		'The Balance of System Fixed cost and Cost per turbine inputs were zeroed.');
 };
@@ -5900,8 +5900,8 @@ function toggle_landbosse(en) {
 	enable("total_management_cost", en);
 	enable("total_management_cost_per_capacity", en);
 	enable("total_management_cost_per_turbine", en);
-	enable("total_project_cost", en);
-	enable("total_project_cost_per_capacity", en);
+	enable("total_bos_cost", en);
+	enable("total_bos_cost_per_capacity", en);
 	enable("total_sitepreparation_cost", en);
 	enable("total_sitepreparation_cost_per_capacity", en);
 	enable("total_sitepreparation_cost_per_turbine", en);
