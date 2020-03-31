@@ -4808,8 +4808,8 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
 
     double capacity = vartable->Get("system_capacity")->Value();
     double turbine = vartable->Get("num_turbines")->Value();
-    double value = vartable->Get("total_project_cost")->Value() / capacity;
-    vartable->Set("total_project_cost_per_capacity", VarValue(value));
+    double value = vartable->Get("total_bos_cost")->Value() / capacity;
+    vartable->Set("total_bos_cost_per_capacity", VarValue(value));
     for (auto &name : total_costs){
         value = vartable->Get(name)->Value();
         vartable->Set(name + "_per_capacity", VarValue(value / capacity));
