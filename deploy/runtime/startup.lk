@@ -849,7 +849,7 @@ setup_thirdparty_pages( LOAD_BELPE); //includes building load calculator by defa
 
 // Wind Power //////////////////////////////////////////////////////////////////
 
-landbosse_caption = 'Land-Based Balance of System Cost Model (v2.2.7.2)';
+landbosse_caption = 'Land-Based Balance of System Cost Model (v2.2.7.3)';
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Residential' );
