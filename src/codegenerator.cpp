@@ -89,7 +89,7 @@ static bool SSCTypeToSSC( int ssc_type, ssc_data_t pdata, const wxString &sscnam
 	{
 		size_t n=2;
 		ssc_number_t p[2] = { 0.0, 0.0 };
-		if ( sizeof(ssc_number_t) == sizeof( float ) )
+		if ( sizeof(ssc_number_t) == sizeof( double ) )
 			ssc_data_set_array( pdata, sscname.c_str(), p, n );
 		else
 		{
@@ -202,7 +202,7 @@ bool CodeGen_Base::PlatformFiles()
 		fprintf(f, "SSCEXPORT int ssc_version();\n");
 		fprintf(f, "SSCEXPORT const char *ssc_build_info();\n");
 		fprintf(f, "typedef void* ssc_data_t;\n");
-		fprintf(f, "typedef float ssc_number_t;\n");
+		fprintf(f, "typedef double ssc_number_t;\n");
 		fprintf(f, "typedef int ssc_bool_t;\n");
 		fprintf(f, "#define SSC_INVALID 0\n");
 		fprintf(f, "#define SSC_STRING 1\n");
@@ -1232,7 +1232,7 @@ bool CodeGen_csharp::Output(ssc_data_t p_data)
 			fprintf(m_fp, "		Console.WriteLine(\"{0} = {1}\"), %s, %s);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
-			fprintf(m_fp, "		float %s = data.GetNumber(\"%s\");\n", name, name);
+			fprintf(m_fp, "		double %s = data.GetNumber(\"%s\");\n", name, name);
 			fprintf(m_fp, "		Console.WriteLine(\"{0} = {1}\", \"%s\", %s);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_ARRAY: // TODO
@@ -1289,7 +1289,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		else
 		{
 			wxString localname = TableElementFileNames(name);
-			fprintf(m_fp, "		float[] p_%s ={", (const char*)localname.c_str());
+			fprintf(m_fp, "		double[] p_%s ={", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -1324,7 +1324,7 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 		else
 		{
 			wxString localname = TableElementFileNames(name);
-			fprintf(m_fp, "		float[,] p_%s ={ {", (const char*)localname.c_str());
+			fprintf(m_fp, "		double[,] p_%s ={ {", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -1502,10 +1502,10 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
 	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_number\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_number32(HandleRef cxtData, string name, float value);\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_number32(HandleRef cxtData, string name, double value);\n");
 	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_number\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_number64(HandleRef cxtData, string name, float value);\n");
-	fprintf(m_fp, "        public static void ssc_data_set_number(HandleRef cxtData, string name, float value)\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_number64(HandleRef cxtData, string name, double value);\n");
+	fprintf(m_fp, "        public static void ssc_data_set_number(HandleRef cxtData, string name, double value)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
 	fprintf(m_fp, "            {\n");
@@ -1518,10 +1518,10 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
 	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_array\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_array32(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]float[] array, int length);\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_array32(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[] array, int length);\n");
 	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_array\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_array64(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]float[] array, int length);\n");
-	fprintf(m_fp, "        public static void ssc_data_set_array(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]float[] array, int length)\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_array64(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[] array, int length);\n");
+	fprintf(m_fp, "        public static void ssc_data_set_array(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[] array, int length)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
 	fprintf(m_fp, "            {\n");
@@ -1534,10 +1534,10 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
 	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_matrix\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_matrix32(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]float[,] matrix, int nRows, int nCols);\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_matrix32(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[,] matrix, int nRows, int nCols);\n");
 	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_matrix\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_matrix64(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]float[,] matrix, int nRows, int nCols);\n");
-	fprintf(m_fp, "        public static void ssc_data_set_matrix(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]float[,] matrix, int nRows, int nCols)\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_matrix64(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[,] matrix, int nRows, int nCols);\n");
+	fprintf(m_fp, "        public static void ssc_data_set_matrix(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[,] matrix, int nRows, int nCols)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
 	fprintf(m_fp, "            {\n");
@@ -1575,10 +1575,10 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
 	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_number\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_data_get_number32(HandleRef cxtData, string name, out float number);\n");
+	fprintf(m_fp, "        public static extern int ssc_data_get_number32(HandleRef cxtData, string name, out double number);\n");
 	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_number\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_data_get_number64(HandleRef cxtData, string name, out float number);\n");
-	fprintf(m_fp, "        public static int ssc_data_get_number(HandleRef cxtData, string name, out float number)\n");
+	fprintf(m_fp, "        public static extern int ssc_data_get_number64(HandleRef cxtData, string name, out double number);\n");
+	fprintf(m_fp, "        public static int ssc_data_get_number(HandleRef cxtData, string name, out double number)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_data_get_number64(cxtData, name, out number) : ssc_data_get_number32(cxtData, name, out number);\n");
 	fprintf(m_fp, "        }\n");
@@ -1819,10 +1819,10 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
 	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_log\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_log32(HandleRef cxtModule, int index, out int messageType, out float time);\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_module_log32(HandleRef cxtModule, int index, out int messageType, out double time);\n");
 	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_log\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_log64(HandleRef cxtModule, int index, out int messageType, out float time);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_module_log(HandleRef cxtModule, int index, out int messageType, out float time)\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_module_log64(HandleRef cxtModule, int index, out int messageType, out double time);\n");
+	fprintf(m_fp, "        public static IntPtr ssc_module_log(HandleRef cxtModule, int index, out int messageType, out double time)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_module_log64(cxtModule, index, out messageType, out time) : ssc_module_log32(cxtModule, index, out messageType, out time);\n");
 	fprintf(m_fp, "        }\n");
@@ -1881,14 +1881,14 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            return sscapi.ssc_data_query(m_data, name);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public void SetNumber(String name, float value)\n");
+	fprintf(m_fp, "        public void SetNumber(String name, double value)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            sscapi.ssc_data_set_number(m_data, name, value);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public float GetNumber(String name)\n");
+	fprintf(m_fp, "        public double GetNumber(String name)\n");
 	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            float val = float.NaN;\n");
+	fprintf(m_fp, "            double val = double.NaN;\n");
 	fprintf(m_fp, "            sscapi.ssc_data_get_number(m_data, name, out val);\n");
 	fprintf(m_fp, "            return val;\n");
 	fprintf(m_fp, "        }\n");
@@ -1904,7 +1904,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            return Marshal.PtrToStringAnsi(p);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public void SetArray(String name, float[] data)\n");
+	fprintf(m_fp, "        public void SetArray(String name, double[] data)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            sscapi.ssc_data_set_array(m_data, name, data, data.Length);\n");
 	fprintf(m_fp, "        }\n");
@@ -1913,30 +1913,30 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            StreamReader sr = new StreamReader(fn);\n");
 	fprintf(m_fp, "            int Row = 0;\n");
-	fprintf(m_fp, "            float[] data = new float[len];\n");
+	fprintf(m_fp, "            double[] data = new double[len];\n");
 	fprintf(m_fp, "            while (!sr.EndOfStream && Row < len)\n");
 	fprintf(m_fp, "            {\n");
 	fprintf(m_fp, "				string[] Line = sr.ReadLine().Split(',');\n");
-	fprintf(m_fp, "				data[Row] = float.Parse(Line[0]);\n");
+	fprintf(m_fp, "				data[Row] = double.Parse(Line[0]);\n");
 	fprintf(m_fp, "				Row++;\n");
 	fprintf(m_fp, "            }\n");
 	fprintf(m_fp, "            sscapi.ssc_data_set_array(m_data, name, data, len);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public float[] GetArray(String name)\n");
+	fprintf(m_fp, "        public double[] GetArray(String name)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            int len;\n");
 	fprintf(m_fp, "            IntPtr res = sscapi.ssc_data_get_array(m_data, name, out len);\n");
-	fprintf(m_fp, "            float[] arr = null;\n");
+	fprintf(m_fp, "            double[] arr = null;\n");
 	fprintf(m_fp, "            if (len > 0)\n");
 	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                arr = new float[len];\n");
+	fprintf(m_fp, "                arr = new double[len];\n");
 	fprintf(m_fp, "                Marshal.Copy(res, arr, 0, len);\n");
 	fprintf(m_fp, "            }\n");
 	fprintf(m_fp, "            return arr;\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public void SetMatrix(String name, float[,] mat)\n");
+	fprintf(m_fp, "        public void SetMatrix(String name, double[,] mat)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            int nRows = mat.GetLength(0);\n");
 	fprintf(m_fp, "            int nCols = mat.GetLength(1);\n");
@@ -1947,26 +1947,26 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            StreamReader sr = new StreamReader(fn);\n");
 	fprintf(m_fp, "            int Row = 0;\n");
-	fprintf(m_fp, "            float[,] mat = new float[nr, nc];\n");
+	fprintf(m_fp, "            double[,] mat = new double[nr, nc];\n");
 	fprintf(m_fp, "            while (!sr.EndOfStream && Row < nr)\n");
 	fprintf(m_fp, "            {\n");
 	fprintf(m_fp, "				string[] Line = sr.ReadLine().Split(',');\n");
 	fprintf(m_fp, "				for (int ic = 0; ic < Line.Length && ic < nc; ic++)\n");
-	fprintf(m_fp, "					mat[Row, ic] = float.Parse(Line[ic]);\n");
+	fprintf(m_fp, "					mat[Row, ic] = double.Parse(Line[ic]);\n");
 	fprintf(m_fp, "				Row++;\n");
 	fprintf(m_fp, "            }\n");
 	fprintf(m_fp, "            sscapi.ssc_data_set_matrix(m_data, name, mat, nr, nc);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public float[,] GetMatrix(String name)\n");
+	fprintf(m_fp, "        public double[,] GetMatrix(String name)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            int nRows, nCols;\n");
 	fprintf(m_fp, "            IntPtr res = sscapi.ssc_data_get_matrix(m_data, name, out nRows, out nCols);\n");
 	fprintf(m_fp, "            if (nRows * nCols > 0)\n");
 	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                float[] sscMat = new float[nRows * nCols];\n");
+	fprintf(m_fp, "                double[] sscMat = new double[nRows * nCols];\n");
 	fprintf(m_fp, "                Marshal.Copy(res, sscMat, 0, nRows * nCols);\n");
-	fprintf(m_fp, "                float[,] mat = new float[nRows, nCols];\n");
+	fprintf(m_fp, "                double[,] mat = new double[nRows, nCols];\n");
 	fprintf(m_fp, "                for (int i = 0; i < nRows; i++)\n");
 	fprintf(m_fp, "                {\n");
 	fprintf(m_fp, "                    for (int j = 0; j < nCols; j++)\n");
@@ -2036,7 +2036,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            return (sscapi.ssc_module_exec(m_mod, data.GetDataHandle()) != 0);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public bool Log(int idx, out String msg, out int type, out float time)\n");
+	fprintf(m_fp, "        public bool Log(int idx, out String msg, out int type, out double time)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            msg = \"\";\n");
 	fprintf(m_fp, "            IntPtr p = sscapi.ssc_module_log(m_mod, idx, out type, out time);\n");
@@ -2754,7 +2754,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "#Created with SAM version %s\n", (const char*)SamApp::VersionStr().c_str());
 	fprintf(f, "import string, sys, struct, os\n");
 	fprintf(f, "from ctypes import *\n");
-	fprintf(f, "c_number = c_float # must be c_double or c_float depending on how defined in sscapi.h\n");
+	fprintf(f, "c_number = c_double # must be c_double or c_double depending on how defined in sscapi.h\n");
 	fprintf(f, "class PySSC:\n");
 	fprintf(f, "	def __init__(self):\n");
 	fprintf(f, "		if sys.platform == 'win32' or sys.platform == 'cygwin':\n");
@@ -2810,7 +2810,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		f = open(fn, 'rb'); \n");
 	fprintf(f, "		data = []; \n");
 	fprintf(f, "		for line in f : \n");
-	fprintf(f, "			data.extend([n for n in map(float, line.split(b','))])\n");
+	fprintf(f, "			data.extend([n for n in map(double, line.split(b','))])\n");
 	fprintf(f, "		f.close(); \n");
 	fprintf(f, "		return self.data_set_array(p_data, name, data); \n");
 	fprintf(f, "	def data_set_matrix(self,p_data,name,mat):\n");
@@ -2828,7 +2828,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		f = open(fn, 'rb'); \n");
 	fprintf(f, "		data = []; \n");
 	fprintf(f, "		for line in f : \n");
-	fprintf(f, "			lst = ([n for n in map(float, line.split(b','))])\n");
+	fprintf(f, "			lst = ([n for n in map(double, line.split(b','))])\n");
 	fprintf(f, "			data.append(lst);\n");
 	fprintf(f, "		f.close(); \n");
 	fprintf(f, "		return self.data_set_matrix(p_data, name, data); \n");
@@ -2857,7 +2857,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		for r in range(nrows.value):\n");
 	fprintf(f, "			row = []\n");
 	fprintf(f, "			for c in range(ncols.value):\n");
-	fprintf(f, "				row.append( float(parr[idx]) )\n");
+	fprintf(f, "				row.append( double(parr[idx]) )\n");
 	fprintf(f, "				idx = idx + 1\n");
 	fprintf(f, "			mat.append(row)\n");
 	fprintf(f, "		return mat\n");
@@ -3317,7 +3317,7 @@ bool CodeGen_java::Output(ssc_data_t p_data)
 			fprintf(m_fp, "		System.out.println(\"%s = \" + %s);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
-			fprintf(m_fp, "		float[] %s = {0.0f};\n", name);
+			fprintf(m_fp, "		double[] %s = {0.0f};\n", name);
 			fprintf(m_fp, "		api.ssc_data_get_number(data, \"%s\", %s);\n", name, name);
 			fprintf(m_fp, "		System.out.println(\"%s = \" + %s[0]);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
@@ -3376,7 +3376,7 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 		else
 		{
 			wxString localname = TableElementFileNames(name);
-			fprintf(m_fp, "		float[] p_%s = {", (const char*)localname.c_str());
+			fprintf(m_fp, "		double[] p_%s = {", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -3411,7 +3411,7 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 		else
 		{
 			wxString localname = TableElementFileNames(name);
-			fprintf(m_fp, "		float[] p_%s ={ ", (const char*)localname.c_str());
+			fprintf(m_fp, "		double[] p_%s ={ ", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -3462,12 +3462,12 @@ bool CodeGen_java::Header()
 	fprintf(m_fp, "	{\n");
 	fprintf(m_fp, "		BufferedReader br = null;\n");
 	fprintf(m_fp, "		String line = \"\";\n");
-	fprintf(m_fp, "		float ary[] = new float[len];\n");
+	fprintf(m_fp, "		double ary[] = new double[len];\n");
 	fprintf(m_fp, "		int i=0;\n");
 	fprintf(m_fp, "		try {\n");
 	fprintf(m_fp, "			br = new BufferedReader(new FileReader(csvFile));\n");
 	fprintf(m_fp, "			while (((line = br.readLine()) != null) && (i<len)) {\n");
-	fprintf(m_fp, "				ary[i]=Float.parseFloat(line);\n");
+	fprintf(m_fp, "				ary[i]=double.parseDouble(line);\n");
 	fprintf(m_fp, "				i++;\n");
 	fprintf(m_fp, "			}\n");
 	fprintf(m_fp, "		} catch (FileNotFoundException e) {\n");
@@ -3497,14 +3497,14 @@ bool CodeGen_java::Header()
 	fprintf(m_fp, "		String values[];\n");
 	fprintf(m_fp, "		String cvsSplitBy = \",\";\n");
 	fprintf(m_fp, "		int len=nr*nc;\n");
-	fprintf(m_fp, "		float ary[] = new float[len];\n");
+	fprintf(m_fp, "		double ary[] = new double[len];\n");
 	fprintf(m_fp, "		int i=0;\n");
 	fprintf(m_fp, "		try {\n");
 	fprintf(m_fp, "			br = new BufferedReader(new FileReader(csvFile));\n");
 	fprintf(m_fp, "			while (((line = br.readLine()) != null) && (i<len)) {\n");
 	fprintf(m_fp, "				values = line.split(cvsSplitBy);\n");
 	fprintf(m_fp, "				for (int ic=0;ic<values.length;ic++){\n");
-	fprintf(m_fp, "					ary[i]=Float.parseFloat(values[ic]);\n");
+	fprintf(m_fp, "					ary[i]=double.parseDouble(values[ic]);\n");
 	fprintf(m_fp, "					i++;\n");
 	fprintf(m_fp, "				}\n");
 	fprintf(m_fp, "			}\n");
@@ -3588,14 +3588,14 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  public final static native String ssc_data_first(long jarg1);\n");
 	fprintf(f, "  public final static native String ssc_data_next(long jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_set_string(long jarg1, String jarg2, String jarg3);\n");
-	fprintf(f, "  public final static native void ssc_data_set_number(long jarg1, String jarg2, float jarg3);\n");
-	fprintf(f, "  public final static native void ssc_data_set_array(long cxt, String name, float[] value, int len);\n");
-	fprintf(f, "  public final static native void ssc_data_set_matrix(long cxt, String name, float[] value, int nrow, int ncol);\n");
+	fprintf(f, "  public final static native void ssc_data_set_number(long jarg1, String jarg2, double jarg3);\n");
+	fprintf(f, "  public final static native void ssc_data_set_array(long cxt, String name, double[] value, int len);\n");
+	fprintf(f, "  public final static native void ssc_data_set_matrix(long cxt, String name, double[] value, int nrow, int ncol);\n");
 	fprintf(f, "  public final static native void ssc_data_set_table(long jarg1, String jarg2, long jarg3);\n");
 	fprintf(f, "  public final static native String ssc_data_get_string(long jarg1, String jarg2);\n");
-	fprintf(f, "  public final static native int ssc_data_get_number(long cxt, String name, float[] value);\n");
-	fprintf(f, "  public final static native float[] ssc_data_get_array(long cxt, String name);\n");
-	fprintf(f, "  public final static native float[] ssc_data_get_matrix(long cxt, String name, int[] len);\n");
+	fprintf(f, "  public final static native int ssc_data_get_number(long cxt, String name, double[] value);\n");
+	fprintf(f, "  public final static native double[] ssc_data_get_array(long cxt, String name);\n");
+	fprintf(f, "  public final static native double[] ssc_data_get_matrix(long cxt, String name, int[] len);\n");
 	fprintf(f, "  public final static native long ssc_data_get_table(long cxt, String name);\n");
 	fprintf(f, "  public final static native long ssc_module_entry(int jarg1);\n");
 	fprintf(f, "  public final static native String ssc_entry_name(long jarg1);\n");
@@ -3932,7 +3932,7 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);\n");
 	fprintf(f, "  if (arg3) (*jenv)->ReleaseStringUTFChars(jenv, jarg3, (const char *)arg3);\n");
 	fprintf(f, "}\n");
-	fprintf(f, "SWIGEXPORT void JNICALL Java_SSCAPIJNI_ssc_1data_1set_1number(JNIEnv *jenv, jclass jcls, jlong cxt, jstring name, jfloat value)\n");
+	fprintf(f, "SWIGEXPORT void JNICALL Java_SSCAPIJNI_ssc_1data_1set_1number(JNIEnv *jenv, jclass jcls, jlong cxt, jstring name, jdouble value)\n");
 	fprintf(f, "{\n");
 	fprintf(f, "  ssc_data_t ssc_cxt = (ssc_data_t) 0 ;\n");
 	fprintf(f, "  char *ssc_name = (char *) 0 ;\n");
@@ -3948,7 +3948,7 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  ssc_data_set_number(ssc_cxt,(char const *)ssc_name,ssc_value);\n");
 	fprintf(f, "  if (ssc_name) (*jenv)->ReleaseStringUTFChars(jenv, name, (const char *)ssc_name);\n");
 	fprintf(f, "}\n");
-	fprintf(f, "SWIGEXPORT void JNICALL Java_SSCAPIJNI_ssc_1data_1set_1array(JNIEnv *jenv, jclass jcls, jlong cxt, jstring name, jfloatArray value, jint len)\n");
+	fprintf(f, "SWIGEXPORT void JNICALL Java_SSCAPIJNI_ssc_1data_1set_1array(JNIEnv *jenv, jclass jcls, jlong cxt, jstring name, jdoubleArray value, jint len)\n");
 	fprintf(f, "{\n");
 	fprintf(f, "	ssc_data_t ssc_cxt = (ssc_data_t) 0 ;\n");
 	fprintf(f, "	char *ssc_name = (char *) 0 ;\n");
@@ -3961,10 +3961,10 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "	  if (!ssc_name) return ;\n");
 	fprintf(f, "	}\n");
 	fprintf(f, "	int i, count;\n");
-	fprintf(f, "    jfloat *j_data_array;\n");
+	fprintf(f, "    jdouble *j_data_array;\n");
 	fprintf(f, "    jint j_count_len;\n");
 	fprintf(f, "    j_count_len = (*jenv)->GetArrayLength(jenv, value);\n");
-	fprintf(f, "    j_data_array = (*jenv)->GetFloatArrayElements(jenv, value, NULL);\n");
+	fprintf(f, "    j_data_array = (*jenv)->GetDoubleArrayElements(jenv, value, NULL);\n");
 	fprintf(f, "    // set data\n");
 	fprintf(f, "    count = j_count_len;\n");
 	fprintf(f, "    ssc_number_t ssc_array[count];\n");
@@ -3972,9 +3972,9 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "        ssc_array[i] = j_data_array[i];\n");
 	fprintf(f, "    ssc_data_set_array( ssc_cxt, ssc_name, ssc_array, count);\n");
 	fprintf(f, "    (*jenv)->ReleaseStringUTFChars(jenv, name, ssc_name);\n");
-	fprintf(f, "    (*jenv)->ReleaseFloatArrayElements(jenv, value, j_data_array, 0);\n");
+	fprintf(f, "    (*jenv)->ReleaseDoubleArrayElements(jenv, value, j_data_array, 0);\n");
 	fprintf(f, "}\n");
-	fprintf(f, "SWIGEXPORT void JNICALL Java_SSCAPIJNI_ssc_1data_1set_1matrix(JNIEnv *jenv, jclass jcls, jlong cxt, jstring name, jfloatArray value, jint nrow, jint ncol)\n");
+	fprintf(f, "SWIGEXPORT void JNICALL Java_SSCAPIJNI_ssc_1data_1set_1matrix(JNIEnv *jenv, jclass jcls, jlong cxt, jstring name, jdoubleArray value, jint nrow, jint ncol)\n");
 	fprintf(f, "{\n");
 	fprintf(f, "	ssc_data_t ssc_cxt = (ssc_data_t) 0 ;\n");
 	fprintf(f, "	char *ssc_name = (char *) 0 ;\n");
@@ -3987,10 +3987,10 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "	  if (!ssc_name) return ;\n");
 	fprintf(f, "	}\n");
 	fprintf(f, "	int i, rows, cols;\n");
-	fprintf(f, "    jfloat *j_data_array;\n");
+	fprintf(f, "    jdouble *j_data_array;\n");
 	fprintf(f, "    jint j_count_len;\n");
 	fprintf(f, "    j_count_len = (*jenv)->GetArrayLength(jenv, value);\n");
-	fprintf(f, "    j_data_array = (*jenv)->GetFloatArrayElements(jenv, value, NULL);\n");
+	fprintf(f, "    j_data_array = (*jenv)->GetDoubleArrayElements(jenv, value, NULL);\n");
 	fprintf(f, "    // set data\n");
 	fprintf(f, "    ssc_number_t ssc_array[j_count_len];\n");
 	fprintf(f, "    for( i=0; i<j_count_len;i++)\n");
@@ -3999,7 +3999,7 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "    cols = ncol;\n");
 	fprintf(f, "    ssc_data_set_matrix( ssc_cxt, ssc_name, ssc_array, rows, cols);\n");
 	fprintf(f, "    (*jenv)->ReleaseStringUTFChars(jenv, name, ssc_name);\n");
-	fprintf(f, "    (*jenv)->ReleaseFloatArrayElements(jenv, value, j_data_array, 0);\n");
+	fprintf(f, "    (*jenv)->ReleaseDoubleArrayElements(jenv, value, j_data_array, 0);\n");
 	fprintf(f, "}\n");
 	fprintf(f, "SWIGEXPORT void JNICALL Java_SSCAPIJNI_ssc_1data_1set_1table(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2, jlong jarg3) {\n");
 	fprintf(f, "  ssc_data_t arg1 = (ssc_data_t) 0 ;\n");
@@ -4035,17 +4035,17 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);\n");
 	fprintf(f, "  return jresult;\n");
 	fprintf(f, "}\n");
-	fprintf(f, "SWIGEXPORT jint JNICALL Java_SSCAPIJNI_ssc_1data_1get_1number(JNIEnv *env, jclass jcls, jlong cxt, jstring name, jfloatArray value)\n");
+	fprintf(f, "SWIGEXPORT jint JNICALL Java_SSCAPIJNI_ssc_1data_1get_1number(JNIEnv *env, jclass jcls, jlong cxt, jstring name, jdoubleArray value)\n");
 	fprintf(f, "{\n");
 	fprintf(f, "  jint jresult = 0 ;\n");
 	fprintf(f, "  ssc_data_t sscCxt = (ssc_data_t) 0 ;\n");
 	fprintf(f, "  char *sscName = (char *) 0 ;\n");
 	fprintf(f, "  ssc_bool_t result;\n");
 	fprintf(f, "  ssc_number_t sscValue;\n");
-	fprintf(f, "  jfloat *output;\n");
+	fprintf(f, "  jdouble *output;\n");
 	fprintf(f, "  jint count;\n");
 	fprintf(f, "  count = (*env)->GetArrayLength(env, value);\n");
-	fprintf(f, "  output = (*env)->GetFloatArrayElements(env, value, NULL);\n");
+	fprintf(f, "  output = (*env)->GetDoubleArrayElements(env, value, NULL);\n");
 	fprintf(f, "  sscCxt = *(ssc_data_t *)&cxt;\n");
 	fprintf(f, "  sscName = 0;\n");
 	fprintf(f, "  if (name)\n");
@@ -4065,7 +4065,7 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  if (result && (count==1))\n");
 	fprintf(f, "  {\n");
 	fprintf(f, "      output[0] = sscValue;\n");
-	fprintf(f, "      (*env)->SetFloatArrayRegion( env, value, 0, count, output );\n");
+	fprintf(f, "      (*env)->SetDoubleArrayRegion( env, value, 0, count, output );\n");
 	fprintf(f, "  }\n");
 	fprintf(f, "  else\n");
 	fprintf(f, "  {\n");
@@ -4073,7 +4073,7 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  }\n");
 	fprintf(f, "  return jresult;\n");
 	fprintf(f, "}\n");
-	fprintf(f, "SWIGEXPORT jfloatArray JNICALL Java_SSCAPIJNI_ssc_1data_1get_1array(JNIEnv *jenv, jclass jcls, jlong cxt, jstring name)\n");
+	fprintf(f, "SWIGEXPORT jdoubleArray JNICALL Java_SSCAPIJNI_ssc_1data_1get_1array(JNIEnv *jenv, jclass jcls, jlong cxt, jstring name)\n");
 	fprintf(f, "{\n");
 	fprintf(f, "	ssc_data_t ssc_cxt = (ssc_data_t) 0 ;\n");
 	fprintf(f, "	char *ssc_name = (char *) 0 ;\n");
@@ -4085,21 +4085,21 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "	  if (!ssc_name) return NULL;\n");
 	fprintf(f, "	}\n");
 	fprintf(f, "	int i, count;\n");
-	fprintf(f, "    jfloatArray output;\n");
+	fprintf(f, "    jdoubleArray output;\n");
 	fprintf(f, "    jint j_data_len;\n");
-	fprintf(f, "    jfloat *j_data_array;\n");
+	fprintf(f, "    jdouble *j_data_array;\n");
 	fprintf(f, "    ssc_number_t *ssc_array = ssc_data_get_array( ssc_cxt, ssc_name, &count);\n");
 	fprintf(f, "    (*jenv)->ReleaseStringUTFChars(jenv, name, ssc_name);\n");
 	fprintf(f, "    j_data_len = count;\n");
-	fprintf(f, "    output = (*jenv)->NewFloatArray( jenv, j_data_len );\n");
+	fprintf(f, "    output = (*jenv)->NewDoubleArray( jenv, j_data_len );\n");
 	fprintf(f, "    if (output == NULL) return NULL;\n");
-	fprintf(f, "    j_data_array = (*jenv)->GetFloatArrayElements(jenv, output, NULL);\n");
+	fprintf(f, "    j_data_array = (*jenv)->GetDoubleArrayElements(jenv, output, NULL);\n");
 	fprintf(f, "    for( i=0; i<count;i++)\n");
 	fprintf(f, "            j_data_array[i] = ssc_array[i];\n");
-	fprintf(f, "    (*jenv)->SetFloatArrayRegion( jenv, output, 0, j_data_len, j_data_array );\n");
+	fprintf(f, "    (*jenv)->SetDoubleArrayRegion( jenv, output, 0, j_data_len, j_data_array );\n");
 	fprintf(f, "    return output;\n");
 	fprintf(f, "}\n");
-	fprintf(f, "SWIGEXPORT jfloatArray JNICALL Java_SSCAPIJNI_ssc_1data_1get_1matrix(JNIEnv *jenv, jclass jcls, jlong cxt, jstring name, jintArray len)\n");
+	fprintf(f, "SWIGEXPORT jdoubleArray JNICALL Java_SSCAPIJNI_ssc_1data_1get_1matrix(JNIEnv *jenv, jclass jcls, jlong cxt, jstring name, jintArray len)\n");
 	fprintf(f, "{\n");
 	fprintf(f, "	ssc_data_t ssc_cxt = (ssc_data_t) 0 ;\n");
 	fprintf(f, "	char *ssc_name = (char *) 0 ;\n");
@@ -4111,10 +4111,10 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "	  if (!ssc_name) return NULL;\n");
 	fprintf(f, "	}\n");
 	fprintf(f, "    int i, row_count, col_count;\n");
-	fprintf(f, "    jfloatArray output;\n");
+	fprintf(f, "    jdoubleArray output;\n");
 	fprintf(f, "    jint j_row_len;\n");
 	fprintf(f, "    jint j_col_len;\n");
-	fprintf(f, "    jfloat *j_data_array;\n");
+	fprintf(f, "    jdouble *j_data_array;\n");
 	fprintf(f, "    jint j_count_len;\n");
 	fprintf(f, "    jsize *j_count_array;\n");
 	fprintf(f, "    jint j_data_len;\n");
@@ -4131,14 +4131,14 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "            j_count_array[1] = j_col_len;\n");
 	fprintf(f, "    }\n");
 	fprintf(f, "    (*jenv)->SetIntArrayRegion( jenv, len, 0, j_count_len, j_count_array );\n");
-	fprintf(f, "    output = (*jenv)->NewFloatArray( jenv, j_data_len );\n");
+	fprintf(f, "    output = (*jenv)->NewDoubleArray( jenv, j_data_len );\n");
 	fprintf(f, "    if (output == NULL) return NULL;\n");
-	fprintf(f, "    j_data_array = (*jenv)->GetFloatArrayElements(jenv, output, NULL);\n");
+	fprintf(f, "    j_data_array = (*jenv)->GetDoubleArrayElements(jenv, output, NULL);\n");
 	fprintf(f, "\n");
 	fprintf(f, "    for( i=0; i<j_data_len;i++)\n");
 	fprintf(f, "            j_data_array[i] = ssc_array[i];\n");
 	fprintf(f, "\n");
-	fprintf(f, "    (*jenv)->SetFloatArrayRegion( jenv, output, 0, j_data_len, j_data_array );\n");
+	fprintf(f, "    (*jenv)->SetDoubleArrayRegion( jenv, output, 0, j_data_len, j_data_array );\n");
 	fprintf(f, "    return output;\n");
 	fprintf(f, "}\n");
 	fprintf(f, "SWIGEXPORT jlong JNICALL Java_SSCAPIJNI_ssc_1data_1get_1table(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2) {\n");
@@ -4826,7 +4826,7 @@ bool CodeGen_php::Header()
 	fprintf(m_fp, "	    while (($data = fgetcsv($handle, 1000, \",\")) !== FALSE) {\n");
 	fprintf(m_fp, "		$num = count($data);\n");
 	fprintf(m_fp, "		for ($c=0; $c < $num; $c++) {\n");
-	fprintf(m_fp, "		    $ary[$row] = floatval($data[$c]);\n");
+	fprintf(m_fp, "		    $ary[$row] = doubleval($data[$c]);\n");
 	fprintf(m_fp, "		}\n");
 	fprintf(m_fp, "		$row++;\n");
 	fprintf(m_fp, "	    }\n");
@@ -4851,7 +4851,7 @@ bool CodeGen_php::Header()
 	fprintf(m_fp, "		}\n");
 	fprintf(m_fp, "		$row_ary = array();\n");
 	fprintf(m_fp, "	        for ($c=0; $c < $col; $c++) {\n");
-	fprintf(m_fp, "            		$row_ary[$i] = floatval($data[$c]);\n");
+	fprintf(m_fp, "            		$row_ary[$i] = doubleval($data[$c]);\n");
 	fprintf(m_fp, "            		$i++;\n");
 	fprintf(m_fp, "        	}\n");
 	fprintf(m_fp, "        	$ary[$row]=$row_ary;\n");
@@ -6767,7 +6767,7 @@ bool CodeGen_ios::Output(ssc_data_t p_data)
 			fprintf(m_fp, "	ret_string += \"\\n%s = \" + %s\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
-			fprintf(m_fp, "	var %s : Float = 0\n", name);
+			fprintf(m_fp, "	var %s : double = 0\n", name);
 			fprintf(m_fp, "	ssc_data_get_number(data, \"%s\", &%s)\n", name, name);
 			fprintf(m_fp, "	ret_string += \"\\n%s = \" + String(%s)\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
@@ -6839,7 +6839,7 @@ bool CodeGen_ios::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		else
 		{
 			wxString localname = TableElementFileNames(name);
-			fprintf(m_fp, "	var p_%s : [Float] = [", (const char*)localname.c_str());
+			fprintf(m_fp, "	var p_%s : [Double] = [", (const char*)localname.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -6874,7 +6874,7 @@ bool CodeGen_ios::Input(ssc_data_t p_data, const char *name, const wxString &fol
 		else
 		{
 			wxString localname = TableElementFileNames(name);
-			fprintf(m_fp, "	var p_%s : [Float] = [", (const char*)localname.c_str());
+			fprintf(m_fp, "	var p_%s : [Double] = [", (const char*)localname.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
@@ -6920,11 +6920,11 @@ bool CodeGen_ios::Header()
     fprintf(m_fp, "    do {\n");
     fprintf(m_fp, "        let csvData = try String(contentsOfFile: csvPath!, encoding: String.Encoding.utf8)\n");
     fprintf(m_fp, "        let csv = csvData.components(separatedBy: .newlines)\n");
-    fprintf(m_fp, "        var ary = [Float](repeating: 0, count:Int(len));\n");
+    fprintf(m_fp, "        var ary = [Double](repeating: 0, count:Int(len));\n");
     fprintf(m_fp, "        var i = 0\n");
     fprintf(m_fp, "        for row in csv {\n");
     fprintf(m_fp, "            if i < len {\n");
-    fprintf(m_fp, "            ary[i] = Float(row)!\n");
+    fprintf(m_fp, "            ary[i] = Double(row)!\n");
     fprintf(m_fp, "            }\n");
     fprintf(m_fp, "            i += 1\n");
     fprintf(m_fp, "        }\n");
@@ -6944,13 +6944,13 @@ bool CodeGen_ios::Header()
     fprintf(m_fp, "        let csvData = try String(contentsOfFile: csvPath!, encoding: String.Encoding.utf8)\n");
     fprintf(m_fp, "        let csv = csvData.components(separatedBy: .newlines)\n");
     fprintf(m_fp, "        let len = nr * nc\n");
-    fprintf(m_fp, "        var ary = [Float](repeating: 0, count:Int(len));\n");
+    fprintf(m_fp, "        var ary = [Double](repeating: 0, count:Int(len));\n");
     fprintf(m_fp, "        var i = 0\n");
     fprintf(m_fp, "        for row in csv {\n");
     fprintf(m_fp, "            let rowVals = row.components(separatedBy: \",\")\n");
     fprintf(m_fp, "            for val in rowVals {\n");
     fprintf(m_fp, "            if i < len {\n");
-    fprintf(m_fp, "            ary[i] = Float(val)!\n");
+    fprintf(m_fp, "            ary[i] = Double(val)!\n");
     fprintf(m_fp, "            }\n");
     fprintf(m_fp, "            i += 1\n");
     fprintf(m_fp, "            }\n");
