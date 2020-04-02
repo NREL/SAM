@@ -45,18 +45,31 @@ function Get-Python {
     $origDir = (Get-Location).Path
     $filename = "python-${fullVersion}-embed-amd64.zip"
     $url = "https://www.python.org/ftp/python/${fullVersion}/${filename}"
-    Invoke-WebRequestExitOnError $url $filename
+    if (($FORCE_DOWNLOAD -eq 1) -and (Test-Path $filename)) {
+        Remove-Item $filename
+    }
+    if (!(Test-Path $filename)) {
+        Invoke-WebRequestExitOnError $url $filename
+    }
 
+    $pythonPath = Join-Path $origDir "python-${fullVersion}"
+    if (Test-Path $pythonPath) {
+        Remove-Item -Recurse $pythonPath
+    }
     $pythonPath = New-Item -Path $origDir -Name "python-${fullVersion}" -ItemType directory
     $filePath = Join-Path $origDir $filename
     $pythonStdLibDir = Join-Path $pythonPath "python-${majorMinor}"
     $pythonStdLibArchive = Join-Path $pythonPath "python${majorMinor}.zip"
 
     Set-Location $pythonPath
+
     Expand-Archive $filePath -DestinationPath .
-    Remove-Item $filePath
     Expand-Archive $pythonStdLibArchive
     Remove-Item $pythonStdLibArchive
+
+    if ($FORCE_DOWNLOAD -eq 1) {
+        Remove-Item $filePath
+    }
     Fix-PythonPath $pythonPath $majorMinor
     Get-Pip $pythonPath
     Set-Location $origDir
@@ -66,9 +79,18 @@ function Get-Python {
 
 function Get-Pip {
     param([String]$path)
-    Invoke-WebRequestExitOnError https://bootstrap.pypa.io/get-pip.py get-pip.py
-    Invoke-CommandExitOnError ".\python.exe get-pip.py --prefix=$path --no-warn-script-location"
-    Remove-Item "get-pip.py"
+
+    $filename = "get-pip.py"
+    if (($FORCE_DOWNLOAD -eq 1) -and (Test-Path $filename)) {
+        Remove-Item $filename
+    }
+    if (!(Test-Path $filename)) {
+        Invoke-WebRequestExitOnError https://bootstrap.pypa.io/${filename} $filename
+    }
+    Invoke-CommandExitOnError ".\python.exe $filename --prefix=$path --no-warn-script-location"
+    if ($FORCE_DOWNLOAD -eq 1) {
+        Remove-Item $filename
+    }
 }
 
 
@@ -103,10 +125,20 @@ function Fix-PythonPath {
 # To enable debug prints run this in the shell:
 # $DebugPreference="Continue"
 #
+# To prevent re-download of the Python package set the environment variable
+# FORCE_DOWNLOAD to 0.
+#
 # If you get the error "running scripts is disabled on this system" then follow
 # the provided link or run the command below to change the security policy for
 # the current shell:
 # Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
+
+if (Test-Path env:FORCE_DOWNLOAD) {
+    $FORCE_DOWNLOAD = $env:FORCE_DOWNLOAD
+} else {
+    $FORCE_DOWNLOAD = 1
+}
+Write-Debug "FORCE_DOWNLOAD=${FORCE_DOWNLOAD}"
 
 $ErrorActionPreference = "Stop"
 
