@@ -3,6 +3,7 @@
 #include <algorithm>
 
 #ifdef __WXMSW__
+#pragma warning(disable: 4191)
 #include "AtlBase.h"
 #include "AtlConv.h"
 #endif
@@ -19,9 +20,9 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
 #ifdef __WXMSW__
 	// check for byte-order mark indicating UTF-8 and skip if it exists since it's not JSON-compatible
 	char a, b, c;
-	a = python_config_doc.get();
-	b = python_config_doc.get();
-	c = python_config_doc.get();
+	a = (char)python_config_doc.get();
+	b = (char)python_config_doc.get();
+	c = (char)python_config_doc.get();
 	if (a != (char)0xEF || b != (char)0xBB || c != (char)0xBF) {
 		python_config_doc.seekg(0);
 	}
@@ -130,8 +131,7 @@ bool CheckPythonPackageInstalled(const std::string& package, const PythonConfig&
 }
 
 #ifdef __WXMSW__
-int InstallFromPipWindows(const std::string& pip_exec, const PythonPackageConfig& package)
-{
+int InstallFromPipWindows(const std::string& pip_exec, const PythonPackageConfig& package){
 	std::string args = " install " + package.name + "==" + package.version;
 	PROCESS_INFORMATION p_info;
 	STARTUPINFO s_info;
