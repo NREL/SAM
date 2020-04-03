@@ -1089,7 +1089,7 @@ Width
 810
 Height
 3
-36
+45
 Tool Tip
 5
 0
@@ -1534,7 +1534,7 @@ Name
 turb_generic_loss
 X
 3
-561
+588
 Y
 3
 561
@@ -1596,7 +1596,7 @@ Name
 turb_hysteresis_loss
 X
 3
-561
+588
 Y
 3
 591

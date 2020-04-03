@@ -1959,10 +1959,10 @@ Name
 meas_atm_uncert
 X
 3
-300
+261
 Y
 3
-798
+795
 Width
 3
 90
@@ -2145,7 +2145,7 @@ Name
 meas_speed_uncert
 X
 3
-300
+258
 Y
 3
 768
@@ -2392,7 +2392,7 @@ Width
 950
 Height
 3
-120
+123
 Tool Tip
 5
 0
@@ -2656,13 +2656,13 @@ X
 27
 Y
 3
-153
+150
 Width
 3
 894
 Height
 3
-213
+216
 Tool Tip
 5
 0
@@ -2749,10 +2749,10 @@ Y
 2322
 Width
 3
-912
+933
 Height
 3
-27
+36
 Tool Tip
 5
 0
@@ -2794,13 +2794,13 @@ X
 39
 Y
 3
-1761
+1758
 Width
 3
 870
 Height
 3
-36
+51
 Tool Tip
 5
 0
@@ -2848,7 +2848,7 @@ Width
 870
 Height
 3
-57
+69
 Tool Tip
 5
 0
@@ -2890,13 +2890,13 @@ X
 39
 Y
 3
-1605
+1599
 Width
 3
 870
 Height
 3
-48
+54
 Tool Tip
 5
 0
@@ -2938,13 +2938,13 @@ X
 42
 Y
 3
-1446
+1443
 Width
 3
 870
 Height
 3
-48
+51
 Tool Tip
 5
 0
@@ -3130,13 +3130,13 @@ X
 39
 Y
 3
-714
+708
 Width
 3
 870
 Height
 3
-48
+54
 Tool Tip
 5
 0
@@ -3178,13 +3178,13 @@ X
 39
 Y
 3
-396
+390
 Width
 3
 870
 Height
 3
-48
+54
 Tool Tip
 5
 0
@@ -3226,13 +3226,13 @@ X
 39
 Y
 3
-174
+168
 Width
 3
 870
 Height
 3
-48
+69
 Tool Tip
 5
 0
@@ -3280,7 +3280,7 @@ Width
 912
 Height
 3
-57
+72
 Tool Tip
 5
 0
@@ -3288,6 +3288,7 @@ Caption
 5
 532
 All uncertainty components and subcomponents are assumed to be random normally-distributed (i.e. have Gaussian error distributions), and subsequently the uncertainties quoted correspond to standard deviations. These are expressed as dimensionless quantities, as a percentage in terms of either mean wind speed or energy.  A speed-to-energy “sensitivity factor”, 𝛿 (%ΔE/%ΔWS), is used to relate uncertainty in mean wind speed (% WS) to uncertainty in energy (%E), simply as a multiplier of the standard deviation in mean wind speed.
+
 TextColour
 4
 0
@@ -3322,13 +3323,13 @@ X
 21
 Y
 3
-90
+93
 Width
 3
 912
 Height
 3
-27
+36
 Tool Tip
 5
 0
@@ -3466,7 +3467,7 @@ X
 300
 Y
 3
-2208
+2217
 Width
 3
 90
@@ -3528,7 +3529,7 @@ X
 657
 Y
 3
-2178
+2187
 Width
 3
 90
@@ -3590,7 +3591,7 @@ X
 300
 Y
 3
-2178
+2187
 Width
 3
 90
@@ -3652,7 +3653,7 @@ X
 657
 Y
 3
-2208
+2217
 Width
 3
 90
@@ -3776,7 +3777,7 @@ X
 300
 Y
 3
-258
+267
 Width
 3
 90
@@ -3838,7 +3839,7 @@ X
 480
 Y
 3
-288
+297
 Width
 3
 90
@@ -3900,7 +3901,7 @@ X
 657
 Y
 3
-258
+267
 Width
 3
 90
@@ -3962,7 +3963,7 @@ X
 300
 Y
 3
-228
+237
 Width
 3
 90
@@ -4024,7 +4025,7 @@ X
 657
 Y
 3
-228
+237
 Width
 3
 90
@@ -4396,7 +4397,7 @@ X
 657
 Y
 3
-1803
+1812
 Width
 3
 90
@@ -4458,7 +4459,7 @@ X
 657
 Y
 3
-1833
+1842
 Width
 3
 90
@@ -4520,7 +4521,7 @@ X
 300
 Y
 3
-1833
+1842
 Width
 3
 90
@@ -4582,7 +4583,7 @@ X
 300
 Y
 3
-1803
+1812
 Width
 3
 90

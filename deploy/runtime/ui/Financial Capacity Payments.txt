@@ -1,6 +1,6 @@
 Financial Capacity Payments
-860
-164
+924
+198
 12
 Numeric
 
@@ -12,10 +12,10 @@ Name
 cp_battery_nameplate
 X
 3
-732
+795
 Y
 3
-129
+153
 Width
 3
 90
@@ -74,10 +74,10 @@ Name
 cp_capacity_credit_percent
 X
 3
-732
+795
 Y
 3
-75
+99
 Width
 3
 90
@@ -116,10 +116,10 @@ Name
 cp_capacity_payment_amount
 X
 3
-351
+381
 Y
 3
-75
+99
 Width
 3
 90
@@ -159,10 +159,10 @@ Name
 cp_capacity_payment_esc
 X
 3
-351
+378
 Y
 3
-102
+126
 Width
 3
 90
@@ -224,7 +224,7 @@ X
 21
 Y
 3
-75
+99
 Width
 3
 167
@@ -264,7 +264,7 @@ X
 195
 Y
 3
-126
+150
 Width
 3
 300
@@ -309,10 +309,10 @@ Name
 cp_payment_units
 X
 3
-441
+471
 Y
 3
-75
+99
 Width
 3
 65
@@ -357,10 +357,10 @@ Name
 cp_payment_units_dollars
 X
 3
-441
+471
 Y
 3
-75
+99
 Width
 3
 65
@@ -405,10 +405,10 @@ Name
 cp_system_nameplate
 X
 3
-732
+795
 Y
 3
-102
+126
 Width
 3
 90
@@ -473,10 +473,10 @@ Y
 3
 Width
 3
-850
+916
 Height
 3
-155
+188
 Tool Tip
 5
 0
@@ -497,13 +497,13 @@ Name
 object 7
 X
 3
-204
+198
 Y
 3
-75
+99
 Width
 3
-147
+180
 Height
 3
 24
@@ -551,10 +551,10 @@ Y
 21
 Width
 3
-825
+894
 Height
 3
-51
+66
 Tool Tip
 5
 0
@@ -671,26 +671,10 @@ Capacity Payment
 0
 Numeric
 
-684
-equations{ '$MIMO$ Financial_Capacity_Payments_Equations' } = define() {
-	data.system_capacity = ${system_capacity};
-	
-	success = ssc_eqn("Financial_Capacity_Payments_Equations", data);
-	if (!success) {
-		${cp_system_nameplate} = -999.;
-	}
-	else {
-		${cp_system_nameplate} = data.cp_system_nameplate;
-	}
-	
-	return 0;
-};
-
-/*
+357
 equations{ 'cp_system_nameplate' } = define() {
 	return ${system_capacity}/1000;
 };
-*/
 
 equations{ 'cp_battery_nameplate' } = define() {
 	t = technology();

@@ -5,7 +5,7 @@ PV Albedo and Radiation
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 62
+Tool Tip
+5
+0
 Caption
 5
 6
@@ -32,7 +35,7 @@ Bold
 MonthlyFactor
 
 1
-7
+8
 Name
 5
 6
@@ -49,6 +52,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Description
 5
 22
@@ -59,7 +65,7 @@ TabOrder
 RadioChoice
 
 1
-10
+11
 Name
 5
 10
@@ -76,6 +82,9 @@ Width
 Height
 3
 118
+Tool Tip
+5
+0
 Selection
 3
 1
@@ -99,7 +108,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -116,6 +125,9 @@ Width
 Height
 3
 138
+Tool Tip
+5
+0
 Caption
 5
 28
@@ -126,7 +138,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -143,6 +155,9 @@ Width
 Height
 3
 138
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -153,7 +168,7 @@ Bold
 RadioChoice
 
 1
-10
+11
 Name
 5
 9
@@ -170,6 +185,9 @@ Width
 Height
 3
 71
+Tool Tip
+5
+0
 Selection
 3
 3
@@ -191,7 +209,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 13
@@ -208,6 +226,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 41

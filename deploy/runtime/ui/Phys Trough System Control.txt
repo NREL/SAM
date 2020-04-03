@@ -1190,7 +1190,7 @@ Name
 disp_max_iter
 X
 3
-693
+702
 Y
 3
 288
@@ -1252,7 +1252,7 @@ Name
 disp_mip_gap
 X
 3
-693
+702
 Y
 3
 315
@@ -1438,7 +1438,7 @@ Name
 disp_time_weighting
 X
 3
-693
+702
 Y
 3
 261
@@ -1500,7 +1500,7 @@ Name
 disp_timeout
 X
 3
-693
+702
 Y
 3
 342
@@ -1562,7 +1562,7 @@ Name
 disp_wlim_max
 X
 3
-693
+702
 Y
 3
 396
@@ -1624,7 +1624,7 @@ Name
 disp_wlim_maxspec
 X
 3
-693
+702
 Y
 3
 369
@@ -2339,7 +2339,7 @@ System Control
 1
 1
 1
-3.1536e+07
+31536000
 Default
 wlim_series
 3

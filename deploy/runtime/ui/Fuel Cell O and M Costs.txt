@@ -42,13 +42,13 @@ Name
 Label1
 X
 3
-702
+687
 Y
 3
 24
 Width
 3
-188
+203
 Height
 3
 21

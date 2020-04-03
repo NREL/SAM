@@ -620,7 +620,7 @@ Width
 165
 Height
 3
-60
+78
 Tool Tip
 5
 0
@@ -880,7 +880,7 @@ Y
 507
 Width
 3
-416
+428
 Height
 3
 24
@@ -928,7 +928,7 @@ Y
 483
 Width
 3
-90
+120
 Height
 3
 24
@@ -1103,7 +1103,7 @@ Width
 165
 Height
 3
-72
+81
 Tool Tip
 5
 0

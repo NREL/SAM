@@ -162,7 +162,7 @@ Name
 fuelcell_dispatch_input
 X
 3
-357
+384
 Y
 3
 108
@@ -199,7 +199,7 @@ Name
 fuelcell_dispatch_input_units
 X
 3
-453
+480
 Y
 3
 108
@@ -233,7 +233,7 @@ Name
 fuelcell_fixed_pct
 X
 3
-360
+375
 Y
 3
 45

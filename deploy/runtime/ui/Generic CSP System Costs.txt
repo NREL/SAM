@@ -150,13 +150,13 @@ Name
 Label112
 X
 3
-15
+12
 Y
 3
 318
 Width
 3
-131
+134
 Height
 3
 21

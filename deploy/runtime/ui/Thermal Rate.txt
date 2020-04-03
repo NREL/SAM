@@ -1,6 +1,6 @@
 Thermal Rate
-492
-482
+518
+504
 15
 GroupBox
 
@@ -18,10 +18,10 @@ Y
 342
 Width
 3
-474
+501
 Height
 3
-135
+153
 Tool Tip
 5
 0
@@ -48,10 +48,10 @@ Y
 396
 Width
 3
-454
+481
 Height
 3
-73
+94
 Tool Tip
 5
 0
@@ -156,10 +156,10 @@ Y
 9
 Width
 3
-474
+501
 Height
 3
-330
+333
 Tool Tip
 5
 0
@@ -180,16 +180,16 @@ Name
 object 7
 X
 3
-24
+18
 Y
 3
 27
 Width
 3
-462
+489
 Height
 3
-45
+48
 Tool Tip
 5
 0
@@ -231,7 +231,7 @@ X
 120
 Y
 3
-192
+201
 Width
 3
 90
@@ -470,7 +470,7 @@ X
 120
 Y
 3
-297
+303
 Width
 3
 90
@@ -578,7 +578,7 @@ Width
 90
 Height
 3
-24
+33
 Tool Tip
 5
 0
@@ -609,13 +609,13 @@ X
 294
 Y
 3
-294
+297
 Width
 3
 90
 Height
 3
-24
+30
 Tool Tip
 5
 0

@@ -5,7 +5,7 @@ Inverter Temp Derate PLC
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 300
+Tool Tip
+5
+0
 Caption
 5
 34
@@ -32,7 +35,7 @@ Bold
 Button
 
 1
-7
+8
 Name
 5
 19
@@ -49,6 +52,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 11
@@ -59,7 +65,7 @@ TabOrder
 DataMatrix
 
 1
-22
+27
 Name
 5
 11
@@ -76,12 +82,18 @@ Width
 Height
 3
 223
+Tool Tip
+5
+0
 PasteAppendRows
 2
 0
 PasteAppendCols
 2
 0
+ShowButtons
+2
+1
 ShowRows
 2
 1
@@ -93,6 +105,12 @@ RowLabels
 0
 ShadeR0C0
 2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
 0
 ShadeC0
 2
@@ -131,10 +149,13 @@ HideColumn
 ShowColumn
 3
 4294967295
+ColorMap
+2
+0
 Plot
 
 1
-5
+6
 Name
 5
 16
@@ -151,6 +172,9 @@ Width
 Height
 3
 262
+Tool Tip
+5
+0
 
 1
 inv_tdc_plc

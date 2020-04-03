@@ -12,13 +12,13 @@ Name
 grid_curtailment_label
 X
 3
-195
+117
 Y
 3
 120
 Width
 3
-300
+378
 Height
 3
 21

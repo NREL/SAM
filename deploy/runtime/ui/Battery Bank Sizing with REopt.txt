@@ -748,10 +748,10 @@ Y
 138
 Width
 3
-333
+390
 Height
 3
-69
+81
 Tool Tip
 5
 0
@@ -799,7 +799,7 @@ Width
 915
 Height
 3
-39
+60
 Tool Tip
 5
 0
@@ -841,7 +841,7 @@ X
 594
 Y
 3
-330
+351
 Width
 3
 162
@@ -901,7 +901,7 @@ X
 48
 Y
 3
-298
+318
 Width
 3
 909
@@ -949,7 +949,7 @@ X
 315
 Y
 3
-330
+351
 Width
 3
 90
@@ -1171,8 +1171,8 @@ Battery
 Numeric
 
 0
-3914
-on_load{'Battery Bank Sizing'} = define()
+3925
+on_load{'Battery Bank Sizing with REopt'} = define()
 {
 	set_chemistry();
 	set_bank_sizing();
