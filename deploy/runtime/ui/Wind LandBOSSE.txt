@@ -5811,7 +5811,7 @@ equations{ 'row_spacing_rotor_diameters' } = define() {
 	return ${windfarm.farm.row_spacing};
 };
 
-4018
+4059
 on_change{"btn_bos_run"} = define()
 {
 	install_type = value('install_type');
@@ -5820,8 +5820,11 @@ on_change{"btn_bos_run"} = define()
 		msgbox('This Balance of System cost model is only meant to be applied to land-based installations.');
 		return;
 	}
-	run_landbosse();
-	refresh();
+	en = value("en_landbosse");
+	if (en){
+		run_landbosse();
+		refresh();
+	}
 };
 
 on_change{"btn_bos_apply"} = define()
@@ -5924,7 +5927,6 @@ on_change{"en_landbosse"} = define()
 	en = value("en_landbosse");
 	toggle_landbosse(en);
 	if (en){
-		
 		setup_landbosse();
 		run_landbosse();
 		refresh();
