@@ -32,8 +32,8 @@ Wind Power,Residential,8448.137695,16.914196,NA,;
 Wind Power,Commercial,327659.500000,9.222221,NA,; 
 Wind Power,Single Owner,201595968,3.711920,3.998423,; 
 Wind Power,Merchant Plant,201595968,3.314157,NA,; 
-Wind Power,Leveraged Partnership Flip,201595968,3.818399,4.114413,; 
-Wind Power,All Equity Partnership Flip,201595968,3.720678,2.692017,; 
+Wind Power,Leveraged Partnership Flip,201595968,3.839725,4.328788,; 
+Wind Power,All Equity Partnership Flip,201595968,3.989317,3.704605,; 
 Wind Power,Sale Leaseback,201595968,4.516601,5.012208,; 
 Wind Power,LCOE Calculator,201541760,NA,NA,; 
 Wind Power,None,201595968,NA,NA,; 
@@ -142,9 +142,9 @@ PV Battery,Merchant Plant,37050972,7.760206,NA,;
 PV Battery,Leveraged Partnership Flip,37050972,8.108557,9.839488,; 
 PV Battery,All Equity Partnership Flip,37050972,10.048801,10.932765,; 
 PV Battery,Sale Leaseback,37050972,9.708636,9.839488,; 
-PVWatts Battery,Residential,8024.944336,9.356574,NA,; 
+PVWatts Battery,Residential,8024.908691,9.356615,NA,; 
 PVWatts Battery,Commercial,377254.156250,5.775879,NA,; 
-PVWatts Battery,Third Party,8024.944336,NA,NA,; 
+PVWatts Battery,Third Party,8024.908691,NA,NA,; 
 PVWatts Battery,Host Developer,377254.156250,20.999414,10.830657,; 
 Generic Battery,Residential,6700.020508,44.867256,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 11870 times
 Generic Battery,Commercial,361522.062500,24.840870,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 10505 times
