@@ -746,10 +746,10 @@ Name
 object 7
 X
 3
-18
+12
 Y
 3
-24
+27
 Width
 3
 831

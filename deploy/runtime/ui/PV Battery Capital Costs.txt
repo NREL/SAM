@@ -1,5 +1,5 @@
 PV Battery Capital Costs
-826
+900
 695
 105
 GroupBox
@@ -18,7 +18,7 @@ Y
 6
 Width
 3
-812
+845
 Height
 3
 299
@@ -48,7 +48,7 @@ Y
 309
 Width
 3
-812
+845
 Height
 3
 284
@@ -78,7 +78,7 @@ Y
 597
 Width
 3
-812
+845
 Height
 3
 92
@@ -102,7 +102,7 @@ Name
 Label1
 X
 3
-306
+333
 Y
 3
 327
@@ -150,7 +150,7 @@ Name
 Label2
 X
 3
-432
+459
 Y
 3
 327
@@ -198,7 +198,7 @@ Name
 Label3
 X
 3
-552
+579
 Y
 3
 327
@@ -246,7 +246,7 @@ Name
 Label612
 X
 3
-432
+459
 Y
 3
 102
@@ -294,7 +294,7 @@ Name
 Label711
 X
 3
-309
+336
 Y
 3
 102
@@ -342,7 +342,7 @@ Name
 Label8
 X
 3
-69
+96
 Y
 3
 123
@@ -390,7 +390,7 @@ Name
 Label81
 X
 3
-69
+96
 Y
 3
 147
@@ -438,7 +438,7 @@ Name
 Label811
 X
 3
-69
+96
 Y
 3
 171
@@ -486,7 +486,7 @@ Name
 Label9
 X
 3
-69
+96
 Y
 3
 351
@@ -534,7 +534,7 @@ Name
 Label91
 X
 3
-69
+96
 Y
 3
 375
@@ -582,7 +582,7 @@ Name
 Label92
 X
 3
-69
+96
 Y
 3
 399
@@ -630,7 +630,7 @@ Name
 battery_cost_units
 X
 3
-453
+480
 Y
 3
 75
@@ -678,7 +678,7 @@ Name
 battery_cost_units_kw
 X
 3
-603
+630
 Y
 3
 75
@@ -726,7 +726,7 @@ Name
 battery_energy
 X
 3
-126
+153
 Y
 3
 75
@@ -788,7 +788,7 @@ Name
 battery_per_kW
 X
 3
-525
+552
 Y
 3
 75
@@ -850,7 +850,7 @@ Name
 battery_per_kWh
 X
 3
-375
+402
 Y
 3
 75
@@ -912,7 +912,7 @@ Name
 battery_power
 X
 3
-234
+261
 Y
 3
 75
@@ -974,7 +974,7 @@ Name
 battery_total
 X
 3
-681
+708
 Y
 3
 75
@@ -1037,7 +1037,7 @@ Name
 bos_equip_fixed
 X
 3
-309
+336
 Y
 3
 123
@@ -1099,7 +1099,7 @@ Name
 bos_equip_perarea
 X
 3
-552
+579
 Y
 3
 123
@@ -1161,7 +1161,7 @@ Name
 bos_equip_perwatt
 X
 3
-432
+459
 Y
 3
 123
@@ -1223,7 +1223,7 @@ Name
 bos_equip_total
 X
 3
-681
+708
 Y
 3
 123
@@ -1286,7 +1286,7 @@ Name
 contingency
 X
 3
-681
+708
 Y
 3
 240
@@ -1349,7 +1349,7 @@ Name
 contingency_percent
 X
 3
-486
+513
 Y
 3
 240
@@ -1411,7 +1411,7 @@ Name
 engr_fixed
 X
 3
-552
+579
 Y
 3
 375
@@ -1473,7 +1473,7 @@ Name
 engr_per_watt
 X
 3
-432
+459
 Y
 3
 375
@@ -1535,7 +1535,7 @@ Name
 engr_percent
 X
 3
-309
+336
 Y
 3
 375
@@ -1597,7 +1597,7 @@ Name
 engr_total
 X
 3
-681
+708
 Y
 3
 375
@@ -1660,7 +1660,7 @@ Name
 grid_fixed
 X
 3
-552
+579
 Y
 3
 399
@@ -1722,7 +1722,7 @@ Name
 grid_per_watt
 X
 3
-432
+459
 Y
 3
 399
@@ -1784,7 +1784,7 @@ Name
 grid_percent
 X
 3
-309
+336
 Y
 3
 399
@@ -1846,7 +1846,7 @@ Name
 grid_total
 X
 3
-681
+708
 Y
 3
 399
@@ -1909,7 +1909,7 @@ Name
 install_labor_fixed
 X
 3
-309
+336
 Y
 3
 147
@@ -1971,7 +1971,7 @@ Name
 install_labor_perarea
 X
 3
-552
+579
 Y
 3
 147
@@ -2033,7 +2033,7 @@ Name
 install_labor_perwatt
 X
 3
-432
+459
 Y
 3
 147
@@ -2095,7 +2095,7 @@ Name
 install_labor_total
 X
 3
-681
+708
 Y
 3
 147
@@ -2158,7 +2158,7 @@ Name
 install_margin_fixed
 X
 3
-309
+336
 Y
 3
 171
@@ -2220,7 +2220,7 @@ Name
 install_margin_perarea
 X
 3
-552
+579
 Y
 3
 171
@@ -2282,7 +2282,7 @@ Name
 install_margin_perwatt
 X
 3
-432
+459
 Y
 3
 171
@@ -2344,7 +2344,7 @@ Name
 install_margin_total
 X
 3
-681
+708
 Y
 3
 171
@@ -2407,7 +2407,7 @@ Name
 installed_per_capacity
 X
 3
-684
+711
 Y
 3
 648
@@ -2471,7 +2471,7 @@ Name
 inverter_costunits
 X
 3
-603
+630
 Y
 3
 51
@@ -2506,7 +2506,7 @@ Name
 inverter_num_units
 X
 3
-126
+153
 Y
 3
 51
@@ -2568,7 +2568,7 @@ Name
 inverter_power
 X
 3
-234
+261
 Y
 3
 51
@@ -2630,7 +2630,7 @@ Name
 inverter_total
 X
 3
-681
+708
 Y
 3
 51
@@ -2693,7 +2693,7 @@ Name
 inverterarray_power
 X
 3
-375
+402
 Y
 3
 51
@@ -2755,7 +2755,7 @@ Name
 land_area_value
 X
 3
-189
+216
 Y
 3
 435
@@ -2817,7 +2817,7 @@ Name
 land_fixed
 X
 3
-552
+579
 Y
 3
 459
@@ -2879,7 +2879,7 @@ Name
 land_per_acre
 X
 3
-189
+216
 Y
 3
 459
@@ -2943,7 +2943,7 @@ Name
 land_per_watt
 X
 3
-432
+459
 Y
 3
 459
@@ -3005,7 +3005,7 @@ Name
 land_percent
 X
 3
-309
+336
 Y
 3
 459
@@ -3067,7 +3067,7 @@ Name
 land_total
 X
 3
-681
+708
 Y
 3
 459
@@ -3130,7 +3130,7 @@ Name
 landprep_fixed
 X
 3
-552
+579
 Y
 3
 483
@@ -3192,7 +3192,7 @@ Name
 landprep_per_acre
 X
 3
-189
+216
 Y
 3
 483
@@ -3256,7 +3256,7 @@ Name
 landprep_per_watt
 X
 3
-432
+459
 Y
 3
 483
@@ -3318,7 +3318,7 @@ Name
 landprep_percent
 X
 3
-309
+336
 Y
 3
 483
@@ -3380,7 +3380,7 @@ Name
 landprep_total
 X
 3
-681
+708
 Y
 3
 483
@@ -3443,13 +3443,13 @@ Name
 lblFinancingCost
 X
 3
-45
+72
 Y
 3
 621
 Width
 3
-350
+395
 Height
 3
 63
@@ -3491,7 +3491,7 @@ Name
 lbl_cost_per_area
 X
 3
-552
+579
 Y
 3
 102
@@ -3539,7 +3539,7 @@ Name
 lbl_cost_per_area_plus
 X
 3
-510
+537
 Y
 3
 72
@@ -3587,7 +3587,7 @@ Name
 lbl_cost_per_area_plus10
 X
 3
-537
+564
 Y
 3
 147
@@ -3635,7 +3635,7 @@ Name
 lbl_land_plus
 X
 3
-294
+321
 Y
 3
 468
@@ -3731,7 +3731,7 @@ Name
 lbl_land_purchase
 X
 3
-63
+90
 Y
 3
 459
@@ -3779,7 +3779,7 @@ Name
 module_costunits
 X
 3
-603
+630
 Y
 3
 27
@@ -3813,7 +3813,7 @@ Name
 module_num_units
 X
 3
-126
+153
 Y
 3
 27
@@ -3875,7 +3875,7 @@ Name
 module_power
 X
 3
-234
+261
 Y
 3
 27
@@ -3937,7 +3937,7 @@ Name
 module_total
 X
 3
-681
+708
 Y
 3
 27
@@ -4000,7 +4000,7 @@ Name
 modulearray_power
 X
 3
-375
+402
 Y
 3
 27
@@ -4062,7 +4062,7 @@ Name
 object 22
 X
 3
-69
+96
 Y
 3
 420
@@ -4101,7 +4101,7 @@ Name
 object 2282
 X
 3
-681
+708
 Y
 3
 546
@@ -4139,7 +4139,7 @@ Name
 object 2283
 X
 3
-681
+708
 Y
 3
 261
@@ -4177,7 +4177,7 @@ Name
 object 2284
 X
 3
-69
+96
 Y
 3
 225
@@ -4186,7 +4186,7 @@ Width
 738
 Height
 3
-16
+19
 Tool Tip
 5
 0
@@ -4216,7 +4216,7 @@ Name
 object 2285
 X
 3
-681
+708
 Y
 3
 192
@@ -4254,7 +4254,7 @@ Name
 object 2291
 X
 3
-72
+99
 Y
 3
 507
@@ -4293,7 +4293,7 @@ Name
 object 7
 X
 3
-471
+498
 Y
 3
 624
@@ -4341,7 +4341,7 @@ Name
 object 752
 X
 3
-468
+495
 Y
 3
 276
@@ -4389,7 +4389,7 @@ Name
 object 753
 X
 3
-417
+444
 Y
 3
 468
@@ -4437,7 +4437,7 @@ Name
 object 763
 X
 3
-660
+687
 Y
 3
 375
@@ -4485,7 +4485,7 @@ Name
 object 764
 X
 3
-537
+564
 Y
 3
 375
@@ -4533,7 +4533,7 @@ Name
 object 765
 X
 3
-417
+444
 Y
 3
 375
@@ -4581,7 +4581,7 @@ Name
 object 766
 X
 3
-657
+684
 Y
 3
 72
@@ -4629,7 +4629,7 @@ Name
 object 7669
 X
 3
-657
+684
 Y
 3
 147
@@ -4677,7 +4677,7 @@ Name
 object 767
 X
 3
-414
+441
 Y
 3
 147
@@ -4725,7 +4725,7 @@ Name
 object 779
 X
 3
-393
+420
 Y
 3
 240
@@ -4773,7 +4773,7 @@ Name
 object 780
 X
 3
-468
+495
 Y
 3
 561
@@ -4821,7 +4821,7 @@ Name
 object 792
 X
 3
-588
+615
 Y
 3
 240
@@ -4869,7 +4869,7 @@ Name
 object 798
 X
 3
-537
+564
 Y
 3
 468
@@ -4917,7 +4917,7 @@ Name
 object 799
 X
 3
-660
+687
 Y
 3
 468
@@ -4965,7 +4965,7 @@ Name
 per_inverter
 X
 3
-525
+552
 Y
 3
 51
@@ -5027,7 +5027,7 @@ Name
 per_module
 X
 3
-525
+552
 Y
 3
 27
@@ -5089,7 +5089,7 @@ Name
 permitting_fixed
 X
 3
-552
+579
 Y
 3
 351
@@ -5151,7 +5151,7 @@ Name
 permitting_per_watt
 X
 3
-432
+459
 Y
 3
 351
@@ -5213,7 +5213,7 @@ Name
 permitting_percent
 X
 3
-309
+336
 Y
 3
 351
@@ -5275,7 +5275,7 @@ Name
 permitting_total
 X
 3
-681
+708
 Y
 3
 351
@@ -5338,7 +5338,7 @@ Name
 sales_tax_percent
 X
 3
-285
+312
 Y
 3
 522
@@ -5400,7 +5400,7 @@ Name
 sales_tax_total
 X
 3
-681
+708
 Y
 3
 522
@@ -5463,7 +5463,7 @@ Name
 sales_tax_value
 X
 3
-492
+519
 Y
 3
 522
@@ -5525,7 +5525,7 @@ Name
 subtotal_direct
 X
 3
-681
+708
 Y
 3
 207
@@ -5588,7 +5588,7 @@ Name
 total_direct_cost
 X
 3
-681
+708
 Y
 3
 276
@@ -5651,7 +5651,7 @@ Name
 total_indirect_cost
 X
 3
-681
+708
 Y
 3
 561
@@ -5714,7 +5714,7 @@ Name
 total_installed_cost
 X
 3
-684
+711
 Y
 3
 624

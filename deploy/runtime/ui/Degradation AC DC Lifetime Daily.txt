@@ -312,7 +312,7 @@ Degradation and Lifetime
 Default
 
 0
-1106
+1186
 function enable_lifetime_losses()
 {
 	enable('dc_lifetime_losses', value('en_dc_lifetime_losses'));
@@ -330,6 +330,11 @@ on_load{'Degradation AC DC Lifetime Daily'} = define() {
 };
 
 on_change{'en_ac_lifetime_losses'} = define() {
+	enable_lifetime_losses();
+};
+
+
+on_change{'en_dc_lifetime_losses'} = define() {
 	enable_lifetime_losses();
 };
 

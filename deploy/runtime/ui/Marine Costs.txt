@@ -3272,13 +3272,13 @@ Name
 object 758
 X
 3
-411
+381
 Y
 3
 1014
 Width
 3
-181
+211
 Height
 3
 21
@@ -3368,13 +3368,13 @@ Name
 object 75871
 X
 3
-416
+399
 Y
 3
 633
 Width
 3
-181
+199
 Height
 3
 21
@@ -3422,7 +3422,7 @@ Y
 222
 Width
 3
-90
+96
 Height
 3
 24
@@ -3518,7 +3518,7 @@ Y
 30
 Width
 3
-90
+96
 Height
 3
 24
@@ -3560,13 +3560,13 @@ Name
 object 77
 X
 3
-549
+543
 Y
 3
 222
 Width
 3
-90
+102
 Height
 3
 24
@@ -3608,13 +3608,13 @@ Name
 object 7723
 X
 3
-549
+546
 Y
 3
 30
 Width
 3
-90
+102
 Height
 3
 24

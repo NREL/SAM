@@ -1,6 +1,6 @@
 Utility Rate - Enable
-935
-123
+941
+195
 3
 Label
 
@@ -15,13 +15,13 @@ X
 24
 Y
 3
-63
+90
 Width
 3
 897
 Height
 3
-54
+90
 Tool Tip
 5
 0
@@ -69,7 +69,7 @@ Width
 920
 Height
 3
-117
+183
 Tool Tip
 5
 0
@@ -99,7 +99,7 @@ Width
 897
 Height
 3
-39
+66
 Tool Tip
 5
 0

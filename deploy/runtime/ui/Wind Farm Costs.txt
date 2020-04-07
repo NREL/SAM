@@ -477,13 +477,13 @@ X
 6
 Y
 3
-12
+6
 Width
 3
 780
 Height
 3
-186
+192
 Tool Tip
 5
 0
@@ -1310,7 +1310,7 @@ Name
 sales_tax_basis
 X
 3
-330
+321
 Y
 3
 360

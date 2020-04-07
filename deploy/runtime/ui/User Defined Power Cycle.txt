@@ -1,6 +1,6 @@
 User Defined Power Cycle
-905
-1075
+1047
+1077
 34
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 6
 Width
 3
-899
+995
 Height
 3
 75
@@ -48,7 +48,7 @@ Y
 264
 Width
 3
-369
+501
 Height
 3
 26
@@ -72,13 +72,13 @@ Name
 object 4
 X
 3
-39
+15
 Y
 3
 246
 Width
 3
-839
+965
 Height
 3
 150
@@ -102,13 +102,13 @@ Name
 object 417
 X
 3
-39
+18
 Y
 3
 111
 Width
 3
-840
+965
 Height
 3
 124
@@ -138,7 +138,7 @@ Y
 90
 Width
 3
-899
+995
 Height
 3
 978
@@ -224,7 +224,7 @@ Name
 ud_T_amb_des
 X
 3
-765
+855
 Y
 3
 318
@@ -286,7 +286,7 @@ Name
 ud_T_amb_des_calc
 X
 3
-765
+855
 Y
 3
 156
@@ -348,7 +348,7 @@ Name
 ud_T_amb_high
 X
 3
-765
+855
 Y
 3
 342
@@ -410,7 +410,7 @@ Name
 ud_T_amb_high_calc
 X
 3
-765
+855
 Y
 3
 180
@@ -472,7 +472,7 @@ Name
 ud_T_amb_levels
 X
 3
-765
+855
 Y
 3
 366
@@ -534,7 +534,7 @@ Name
 ud_T_amb_low
 X
 3
-765
+855
 Y
 3
 294
@@ -596,7 +596,7 @@ Name
 ud_T_amb_low_calc
 X
 3
-765
+855
 Y
 3
 132
@@ -1276,7 +1276,7 @@ Name
 ud_m_dot_des_calc
 X
 3
-450
+489
 Y
 3
 156
@@ -1338,7 +1338,7 @@ Name
 ud_m_dot_design
 X
 3
-450
+489
 Y
 3
 318
@@ -1400,7 +1400,7 @@ Name
 ud_m_dot_high_calc
 X
 3
-450
+489
 Y
 3
 180
@@ -1462,7 +1462,7 @@ Name
 ud_m_dot_htf_high
 X
 3
-450
+489
 Y
 3
 342
@@ -1524,7 +1524,7 @@ Name
 ud_m_dot_htf_levels
 X
 3
-450
+489
 Y
 3
 366
@@ -1586,7 +1586,7 @@ Name
 ud_m_dot_htf_low
 X
 3
-450
+489
 Y
 3
 294
@@ -1648,7 +1648,7 @@ Name
 ud_m_dot_low_calc
 X
 3
-450
+489
 Y
 3
 132
@@ -1772,7 +1772,7 @@ Name
 ud_n_T_amb_calc
 X
 3
-765
+855
 Y
 3
 204
@@ -1896,7 +1896,7 @@ Name
 ud_n_m_dot_calc
 X
 3
-450
+489
 Y
 3
 204

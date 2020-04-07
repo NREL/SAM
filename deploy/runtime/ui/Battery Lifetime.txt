@@ -1,6 +1,6 @@
 Battery Lifetime
-995
-764
+1045
+768
 17
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 3
 Width
 3
-985
+1003
 Height
 3
 759
@@ -269,10 +269,10 @@ Name
 batt_calendar_life_plot
 X
 3
-507
+540
 Y
 3
-345
+342
 Width
 3
 448
@@ -499,13 +499,13 @@ Name
 batt_calendar_model_1
 X
 3
-192
+177
 Y
 3
-474
+477
 Width
 3
-117
+303
 Height
 3
 24
@@ -533,7 +533,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -547,13 +547,13 @@ Name
 batt_calendar_model_2
 X
 3
-192
+177
 Y
 3
-498
+501
 Width
 3
-288
+363
 Height
 3
 30
@@ -834,13 +834,13 @@ Name
 plot_cap_vs_cycle
 X
 3
-507
+540
 Y
 3
-75
+72
 Width
 3
-439
+445
 Height
 3
 246

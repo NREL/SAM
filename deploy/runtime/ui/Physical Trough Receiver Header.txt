@@ -5,7 +5,7 @@ Physical Trough Receiver Header
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -50,7 +53,7 @@ AlignTop
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -67,6 +70,9 @@ Width
 Height
 3
 213
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -77,7 +83,7 @@ Bold
 Library
 
 1
-7
+8
 Name
 5
 16
@@ -94,6 +100,9 @@ Width
 Height
 3
 144
+Tool Tip
+5
+0
 Library
 5
 25
@@ -105,7 +114,7 @@ Name,Absorber tube inner diameter,Absorber tube outer diameter,Glass envelope in
 TextEntry
 
 1
-10
+11
 Name
 5
 18
@@ -122,6 +131,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0

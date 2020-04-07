@@ -882,10 +882,10 @@ Name
 batt_current_charge_max
 X
 3
-510
+537
 Y
 3
-324
+321
 Width
 3
 90
@@ -985,10 +985,10 @@ Name
 batt_current_discharge_max
 X
 3
-510
+537
 Y
 3
-297
+294
 Width
 3
 90
@@ -1109,7 +1109,7 @@ Name
 batt_power_charge_max_kwac
 X
 3
-510
+537
 Y
 3
 240
@@ -1171,7 +1171,7 @@ Name
 batt_power_charge_max_kwdc
 X
 3
-510
+537
 Y
 3
 186
@@ -1233,7 +1233,7 @@ Name
 batt_power_discharge_max_kwac
 X
 3
-510
+537
 Y
 3
 213
@@ -1295,7 +1295,7 @@ Name
 batt_power_discharge_max_kwdc
 X
 3
-510
+537
 Y
 3
 159
@@ -1404,10 +1404,10 @@ Name
 batt_time_capacity
 X
 3
-510
+537
 Y
 3
-270
+267
 Width
 3
 90

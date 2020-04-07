@@ -5,7 +5,7 @@ Financial Tax and Insurance Rates
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 152
+Tool Tip
+5
+0
 Caption
 5
 31
@@ -32,7 +35,7 @@ Bold
 SchedNumeric
 
 1
-11
+12
 Name
 5
 16
@@ -49,6 +52,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5
@@ -71,7 +77,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -88,6 +94,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -130,7 +139,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -147,6 +156,9 @@ Width
 Height
 3
 22
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -166,7 +178,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 25
@@ -183,6 +195,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -225,7 +240,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -242,6 +257,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -284,7 +302,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 23
@@ -301,6 +319,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -343,7 +364,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -360,6 +381,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -402,7 +426,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -419,6 +443,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -461,7 +488,7 @@ TabOrder
 SchedNumeric
 
 1
-11
+12
 Name
 5
 14
@@ -478,6 +505,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5

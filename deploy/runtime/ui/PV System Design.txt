@@ -687,10 +687,10 @@ Y
 879
 Width
 3
-291
+300
 Height
 3
-34
+49
 Tool Tip
 5
 0
@@ -7037,10 +7037,20 @@ equations{ 'batt_max_power' } = define()
 	return max_power;
 };
 
-7327
+8110
 // NOTE: This form is used for both Flat Plate PV
 // and PV Battery configurations
 
+//show warning if azimuth value is out of range
+//to avoid triggering simulation message
+function azimuth_warning(az,n_sub)
+{
+	if ( az < 0 || az > 359.9 ) //max in ssc vartable is 359.9
+	{
+		msgbox('Azimuth value out of range!\nThe azimuth value must be between 0 and 359.9 degrees. Resetting Subarray ' + n_sub + ' Azimuth value to default value of 180.');
+		value('subarray'+n_sub+'_azimuth',180);
+	}
+}
 //show warning about MPPT input number
 function mppt_warning()
 {
@@ -7225,3 +7235,8 @@ on_change{'subarray1_mppt_input'} = define() {  mppt_warning();  };
 on_change{'subarray2_mppt_input'} = define() {  mppt_warning();  };
 on_change{'subarray3_mppt_input'} = define() {  mppt_warning();  };
 on_change{'subarray4_mppt_input'} = define() {  mppt_warning();  };
+
+on_change{'subarray1_azimuth'} = define() { azimuth_warning(value('subarray1_azimuth'),1); };
+on_change{'subarray2_azimuth'} = define() { azimuth_warning(value('subarray2_azimuth'),2); };
+on_change{'subarray3_azimuth'} = define() { azimuth_warning(value('subarray3_azimuth'),3); };
+on_change{'subarray4_azimuth'} = define() { azimuth_warning(value('subarray4_azimuth'),4); };

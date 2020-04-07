@@ -61,18 +61,21 @@ version_upgrade{'2020.2.29'} = define() {
 			if ( cfg.tech == 'Generic System' )
 			{
 				ok = config('Generic Battery', cfg.fin, 'Generic Battery configuration replaces Generic System with battery enabled.');
+				config_update_with_old_values();
 				if ( !ok ) { msgbox('Failed to change configuration!\nGeneric Battery configuration replaces Generic System with battery enabled.'); }
 			}
 			if ( cfg.tech == 'Flat Plate PV' )
 			{
 				ok = config('PV Battery', cfg.fin, 'Battery PV configuration replaces Detailed PV with battery enabled.');
+				config_update_with_old_values();
 				if ( !ok ) { msgbox('Failed to change configuration!\nBattery PV configuration replaces Detailed PV with battery enabled.'); }
 			}
+			/* Since original cfg.tech = 'Flat Plate PV' and new cfg.tech = 'PV Battery' old to new value automatic mapping is disabled */
 			old_replacement_cost = oldvalue('batt_replacement_cost');
 			value('om_replacement_cost1', [old_replacement_cost], 'Battery replacement cost moved from Battery Storage to System Costs input page.');
 			old_escalation = oldvalue('batt_replacement_cost_escal');
-			value('om_replacement_cost_escal', old_escalation, 'Battery replacement cost escalation moved from Battery Storage to System Costs intput page.');
-			value('batt_thermal_choice', 1, 'Set value for new battery environment temperature option to "Enter single fixed    temperature."');
+			value('om_replacement_cost_escal', old_escalation, 'Battery replacement cost escalation moved from Battery Storage to System Costs input page.');
+			value('batt_thermal_choice', 1, 'Set value for new battery environment temperature option to "Enter single fixed temperature."');
 			old_temperature = oldvalue('T_room');
 			value('batt_room_temperature_single', old_temperature, 'Updated battery room temperature internal variable name.');
 		}
@@ -84,6 +87,7 @@ version_upgrade{'2020.2.29'} = define() {
 		if ( value('batt_simple_enable') == 1)
 		{
 			ok = config('PVWatts Battery', cfg.fin, 'Generic Battery configuration replaces Generic System with battery enabled.');
+			config_update_with_old_values();
 			if ( !ok ) { msgbox('Failed to change configuration!\nPVWatts Battery configuration replaces PVWatts with battery enabled.'); }
 		}
 	}
