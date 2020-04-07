@@ -111,8 +111,7 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 function setup_battery_pages_behind_the_meter()
 {
 	addpage([  ['Battery Model',
-				'Battery Bank Sizing',
-				'Battery REopt Optimization',
+				'Battery Bank Sizing with REopt',
 			   'Battery Current and Capacity',
 			   'Battery Configuration',
 			   'Battery Dispatch Common',
