@@ -110,9 +110,9 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 
 function setup_battery_pages_behind_the_meter()
 {
-	addpage([  ['Battery Model',
-				'Battery Bank Sizing',
-				'Battery REopt Optimization',
+	addpage([['Battery Model',
+			  'Battery Bank Sizing',
+			   'Battery REopt Optimization',
 			   'Battery Current and Capacity',
 			   'Battery Configuration',
 			   'Battery Dispatch Common',
@@ -123,7 +123,7 @@ function setup_battery_pages_behind_the_meter()
 			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
-			    ]],
+			  ]],
 			  { 'sidebar'='Battery Storage', 'help'='battery_storage_btm' } );
 }
 

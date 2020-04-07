@@ -1,0 +1,345 @@
+Battery REopt Optimization
+1055
+158
+5
+Label
+
+1
+13
+Name
+5
+16
+batt_size_label3
+X
+3
+12
+Y
+3
+18
+Width
+3
+1029
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+286
+Use from the current case the lat/lon from Location and Resource, System Design parameters, Subarray 1 losses, System Costs, Electricity Rates and Electric Load pages to determine for the current PV system design the optimal battery power, capacity and dispatch from the REopt Lite API.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Button
+
+1
+8
+Name
+5
+10
+call_reopt
+X
+3
+510
+Y
+3
+69
+Width
+3
+162
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+21
+Get size and dispatch
+TabOrder
+3
+4294967295
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+150
+Tool Tip
+5
+0
+Caption
+5
+38
+Optimal Sizing and Dispatch from REopt
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+12
+Y
+3
+108
+Width
+3
+1029
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+137
+Note: REopt downloads its own weather file from the provided lat/lon and does not use the one provided on the Location and Resource page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
+18
+value_of_lost_load
+X
+3
+231
+Y
+3
+69
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4
+
+1
+value_of_lost_load
+3
+1
+Value of lost load during outage
+$/kWh
+ 
+0
+2
+1
+1
+1
+1
+0
+Numeric
+
+0
+2619
+on_change{'call_reopt'} = define()
+{
+	if (!value('batt_dispatch_auto_can_gridcharge')){
+		change = yesno("ReOpt dispatch requires battery can be charged" + 
+		" from grid. Change setting?");
+		if (change){
+			value('batt_dispatch_auto_can_gridcharge', true);
+			refresh();
+		}
+		else
+			exit;
+	}
+	if (!value('batt_dispatch_auto_can_charge')){
+		change = yesno("ReOpt dispatch requires battery can be charged" + 
+		" from PV. Change setting?");
+		if (change){
+			value('batt_dispatch_auto_can_charge', true);
+			refresh();
+		}
+		else
+			exit;
+	}
+
+	// reset size to 0 to remove battery costs from total_installed_cost
+	value("batt_bank_power", 0);
+	value("batt_bank_size", 0); 
+
+	reopt = reopt_size_battery();
+	
+	if (reopt.error){
+		if (strlen(reopt.error) > 0){
+			msgbox(reopt.error);
+		}
+		else{
+			msgbox("ReOpt Lite API timed out. Please try again later.");
+		}
+		exit;
+	}
+	
+	y = reopt.response;
+
+	if (y.outputs == null || y.outputs.Scenario == null){
+		msgbox("Error in ReOpt response. Try again later or another system design.");
+		exit;
+	}
+
+	if (y.outputs.Scenario.status != "optimal"){
+		msgbox(y.outputs.Scenario.status);
+		exit;
+	}
+
+	pv = y.outputs.Scenario.Site.PV;
+	batt = y.outputs.Scenario.Site.Storage;
+	elec = y.outputs.Scenario.Site.ElectricTariff;
+
+	if (batt.size_kw == null && batt.size_kwh == null){
+		apply_str = "Apply results?\nOptimal capacity: " + to_string(0) + 
+			"\nOptimal power: " + to_string(0) + "\nApply results?";
+		apply = yesno(apply_str);
+		if (apply){
+			value('batt_bank_power', 0.0);
+			value('batt_bank_size', 0.0);
+		}
+		exit;
+	}
+
+	apply_str = "Apply results?\nOptimal capacity: " + to_string(batt.size_kwh) + 
+		"\nOptimal power: " + to_string(batt.size_kw) + "\nOverride " +
+		"'Battery capacity', 'Battery power', and 'Custom Dispatch' with results?";
+	apply = yesno(apply_str);
+	if (!apply)
+		exit;
+
+	value('batt_bank_power', batt.size_kw);
+	value('batt_bank_size', batt.size_kwh);
+	value('batt_dispatch_auto_can_charge', 1);
+
+	if (batt.size_kw == 0 && batt.size_kwh == 0)
+		exit;
+
+	batt_to_grid = null;
+	if (batt.year_one_to_grid_series_kw)
+		batt_to_grid = batt.year_one_to_grid_series_kw;
+	batt_to_load = batt.year_one_to_load_series_kw;
+	pv_charge = pv.year_one_to_battery_series_kw;
+	grid_charge = elec.year_one_to_battery_series_kw;
+
+	value('batt_dispatch_choice', 3);
+	
+
+	dispatch = alloc(8760);
+
+	for (i=0; i<8760; i++){
+		if (batt_to_grid){
+			discharge = batt_to_grid[i] + batt_to_load[i];
+		} else{
+			discharge = batt_to_load[i];
+		}
+		charge = -pv_charge[i] - grid_charge[i];
+		dispatch[i] = discharge + charge;
+	}
+
+	value('batt_custom_dispatch', dispatch);
+};
