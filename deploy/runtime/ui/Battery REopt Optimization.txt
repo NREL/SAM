@@ -79,7 +79,7 @@ Caption
 Get size and dispatch
 TabOrder
 3
-4294967295
+2
 GroupBox
 
 1
@@ -219,7 +219,7 @@ BackColour
 255
 TabOrder
 3
-4
+1
 
 1
 value_of_lost_load
@@ -227,7 +227,7 @@ value_of_lost_load
 1
 Value of lost load during outage
 $/kWh
- 
+Battery REopt Optimization
 0
 2
 1
