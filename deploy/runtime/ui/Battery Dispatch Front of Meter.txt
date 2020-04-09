@@ -1,6 +1,6 @@
 Battery Dispatch Front of Meter
-1057
-400
+1054
+401
 28
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 655
 Height
 3
-289
+283
 Tool Tip
 5
 0
@@ -45,20 +45,20 @@ X
 33
 Y
 3
-168
+186
 Width
 3
-219
+318
 Height
 3
-60
+39
 Tool Tip
 5
 0
 Caption
 5
-79
-Different battery charge options are available depending on the dispatch model.
+73
+For manual dispatch, charge options are defined below by dispatch period.
 TextColour
 4
 0
@@ -99,14 +99,14 @@ Width
 655
 Height
 3
-73
+85
 Tool Tip
 5
 0
 Caption
 5
-22
-Input Battery Dispatch
+27
+Custom Time Series Dispatch
 Bold
 2
 1
@@ -129,7 +129,7 @@ Width
 1042
 Height
 3
-386
+391
 Tool Tip
 5
 0
@@ -159,14 +159,14 @@ Width
 633
 Height
 3
-60
+48
 Tool Tip
 5
 0
 Caption
 5
-216
-The automated dispatch models consider the PPA price, electricity rate, costs to cycle, and inverter clipping to decide when to charge and discharge, using one of the time horizon options.  See help for more details.
+227
+The automated dispatch options consider the PPA price, electricity rate, battery cycle cost, and inverter power limiting to decide when to charge and discharge, using one of the time horizon options.  See help for more details.
 TextColour
 4
 0
@@ -198,13 +198,13 @@ Name
 batt_charge_options_label
 X
 3
-30
+18
 Y
 3
-231
+168
 Width
 3
-252
+330
 Height
 3
 22
@@ -222,8 +222,8 @@ Colour
 255
 Caption
 5
-22
-Battery charge options
+14
+Charge Options
 Bold
 2
 1
@@ -237,10 +237,10 @@ Name
 batt_custom_dispatch
 X
 3
-561
+555
 Y
 3
-348
+357
 Width
 3
 184
@@ -255,15 +255,15 @@ Mode
 1
 Label
 5
-29
-Battery custom dispatch input
+21
+Dispatch power (kWdc)
 Description
 5
-156
-Custom battery dispatch allows a user to get the dispatch from another tool and input into SAM directly.  Power < 0 for charging, Power > 0 for discharging.
+73
+Battery dispatch by time step: Negative to charge, positive to discharge.
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -274,10 +274,10 @@ Name
 batt_cycle_cost
 X
 3
-807
+864
 Y
 3
-276
+201
 Width
 3
 90
@@ -325,7 +325,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Choice
 
 1
@@ -336,10 +336,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-807
+555
 Y
 3
-246
+201
 Width
 3
 198
@@ -352,14 +352,14 @@ Tool Tip
 Items
 6
 2
-Model cycle costs
-Input cycle costs
+Calculate automatically
+Enter cost
 Selection
 3
 4294967295
 TabOrder
 3
-4294967295
+4
 Label
 
 1
@@ -370,23 +370,23 @@ Name
 batt_cycle_cost_description
 X
 3
-672
+393
 Y
 3
-180
+168
 Width
 3
-360
+633
 Height
 3
-63
+24
 Tool Tip
 5
 0
 Caption
 5
-139
-When using the automated dispatch control, the model will cycle the battery only if the benefit is greater than the damage to the battery. 
+116
+The automated dispatch options cycle the battery only when the value of the battery is greater than the cycle cost. 
 TextColour
 4
 0
@@ -418,13 +418,13 @@ Name
 batt_cycle_costs_label
 X
 3
-666
+390
 Y
 3
-162
+150
 Width
 3
-363
+633
 Height
 3
 22
@@ -443,7 +443,7 @@ Colour
 Caption
 5
 19
-Battery cycle costs
+Battery Cycle Costs
 Bold
 2
 1
@@ -457,10 +457,10 @@ Name
 batt_dispatch_auto_can_charge
 X
 3
-36
+33
 Y
 3
-273
+255
 Width
 3
 228
@@ -479,7 +479,7 @@ State
 1
 TabOrder
 3
-4294967295
+10
 CheckBox
 
 1
@@ -490,10 +490,10 @@ Name
 batt_dispatch_auto_can_clipcharge
 X
 3
-36
+33
 Y
 3
-297
+282
 Width
 3
 333
@@ -512,7 +512,7 @@ State
 1
 TabOrder
 3
-4294967295
+11
 CheckBox
 
 1
@@ -523,10 +523,10 @@ Name
 batt_dispatch_auto_can_fuelcellcharge
 X
 3
-36
+33
 Y
 3
-321
+309
 Width
 3
 288
@@ -545,7 +545,7 @@ State
 1
 TabOrder
 3
-4294967295
+12
 CheckBox
 
 1
@@ -556,10 +556,10 @@ Name
 batt_dispatch_auto_can_gridcharge
 X
 3
-36
+33
 Y
 3
-249
+228
 Width
 3
 234
@@ -578,7 +578,7 @@ State
 1
 TabOrder
 3
-4294967295
+9
 RadioChoice
 
 1
@@ -608,10 +608,10 @@ Selection
 Items
 6
 5
-Automated dispatch: Perfect look ahead
-Automated dispatch: 1-day look behind
-Automated dispatch: Input forecast
-Input custom dispatch
+Automated dispatch look ahead
+Automated dispatch one day look behind
+Automated dispatch custom weather file
+Dispatch to custom time series
 Manual dispatch
 ShowCaptions
 2
@@ -621,7 +621,7 @@ Horizontal
 0
 TabOrder
 3
-4294967295
+1
 Label
 
 1
@@ -635,20 +635,20 @@ X
 405
 Y
 3
-318
+324
 Width
 3
 627
 Height
 3
-27
+24
 Tool Tip
 5
 0
 Caption
 5
-75
-Input a custom battery power dispatch (<0 for charging, >0 for discharging)
+110
+Import time series data to charge or discharge the battery according to a predetermined schedule by time step.
 TextColour
 4
 0
@@ -683,10 +683,10 @@ X
 393
 Y
 3
-162
+93
 Width
 3
-264
+633
 Height
 3
 22
@@ -704,8 +704,8 @@ Colour
 255
 Caption
 5
-16
-Dispatch options
+40
+Dispatch Frequency and Look-ahead Period
 Bold
 2
 1
@@ -719,10 +719,10 @@ Name
 batt_dispatch_update_frequency_hours
 X
 3
-579
+585
 Y
 3
-183
+111
 Width
 3
 48
@@ -770,7 +770,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -781,10 +781,10 @@ Name
 batt_look_ahead_hours
 X
 3
-579
+861
 Y
 3
-210
+111
 Width
 3
 48
@@ -832,7 +832,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Button
 
 1
@@ -846,7 +846,7 @@ X
 393
 Y
 3
-132
+261
 Width
 3
 90
@@ -862,7 +862,7 @@ Caption
 Browse...
 TabOrder
 3
-4294967295
+6
 TextEntry
 
 1
@@ -876,7 +876,7 @@ X
 489
 Y
 3
-132
+261
 Width
 3
 516
@@ -906,7 +906,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Divider
 
 1
@@ -917,10 +917,10 @@ Name
 batt_weather_label
 X
 3
-393
+390
 Y
 3
-108
+237
 Width
 3
 636
@@ -941,8 +941,8 @@ Colour
 255
 Caption
 5
-28
-Choose Weather forecast file
+32
+Custom Weather File for Forecast
 Bold
 2
 1
@@ -962,7 +962,7 @@ Y
 27
 Width
 3
-258
+330
 Height
 3
 16
@@ -980,8 +980,8 @@ Colour
 255
 Caption
 5
-21
-Choose Dispatch Model
+16
+Dispatch Options
 Bold
 2
 1
@@ -1085,10 +1085,10 @@ Name
 ui_batt_is_dc
 X
 3
-240
+228
 Y
 3
-198
+354
 Width
 3
 90
@@ -1144,7 +1144,7 @@ batt_auto_gridcharge_max_daily
 1
 Maximum percent per day
 %
-Battery
+BatteryDispatch
 0
 2
 1
@@ -1158,7 +1158,7 @@ batt_custom_dispatch
 2
 Input battery dispatch
 kWdc
-Battery
+BatteryDispatch
 0
 2
 1
@@ -1170,9 +1170,9 @@ Default
 batt_cycle_cost
 3
 1
-Battery cycle costs
+Battery cycle cost
 $/cycle-kWh
-Battery
+BatteryDispatch
 0
 2
 1
@@ -1186,8 +1186,9 @@ batt_cycle_cost_choice
 1
 Battery cycle cost choice
  
-Battery
-0
+BatteryDispatch
+34
+Calculate automatically|Enter cost
 0
 1
 1
@@ -1200,7 +1201,7 @@ batt_dispatch_auto_can_charge
 1
 Battery can charge from unclipped PV
  
-Battery
+BatteryDispatch
 0
 3
 1
@@ -1213,8 +1214,8 @@ batt_dispatch_auto_can_clipcharge
 3
 1
 Battery can charge from otherwise clipped PV power
-kW
-Battery
+W
+BatteryDispatch
 0
 3
 1
@@ -1226,9 +1227,9 @@ CheckBox
 batt_dispatch_auto_can_fuelcellcharge
 3
 1
+Battery can charge from fuel cell
  
- 
-Battery
+BatteryDispatch
 0
 3
 1
@@ -1240,11 +1241,11 @@ CheckBox
 batt_dispatch_auto_can_gridcharge
 3
 1
+Battery can charge from grid
  
- 
-Battery
+BatteryDispatch
 0
-0
+1
 1
 1
 1
@@ -1256,9 +1257,9 @@ batt_dispatch_choice
 1
 Battery dispatch choice front-of-meter
  
-Battery
-150
-Automated dispatch: Perfect look ahead|Automated dispatch: 1-day look behind|Automated dispatch: Input forecast|Input battery dispatch|Manual dispatch
+BatteryDispatch
+154
+Automated dispatch look ahead|Automated dispatch one day look behind|Automated dispatch custom weather file|Dispatch to custom time series|Manual dispatch
 3
 1
 1
@@ -1271,7 +1272,7 @@ batt_dispatch_update_frequency_hours
 1
 Frequency to update dispatch
 hours
-Battery
+BatteryDispatch
 0
 2
 1
@@ -1285,7 +1286,7 @@ batt_look_ahead_hours
 1
 Look-ahead period
 hours
-Battery
+BatteryDispatch
 0
 2
 1
@@ -1299,7 +1300,7 @@ batt_pv_clipping_forecast
 2
 PV clipping forecast power
 kW
-Battery
+BatteryDispatch
 0
 3
 1
@@ -1311,9 +1312,9 @@ Default
 batt_pv_dc_forecast
 3
 2
-PV dc forecast power
+PV DC forecast power
 kW
-Battery
+BatteryDispatch
 0
 0
 1
@@ -1327,7 +1328,7 @@ batt_user_specified_weather_file
 4
 Weather forecast file on disk
  
-Battery
+BatteryDispatch
 0
 1
 1
@@ -1339,7 +1340,7 @@ ui_batt_is_dc
 1
 Is DC-connected for show-hide
  
- 
+BatteryDispatch
 0
 8
 1
@@ -1349,7 +1350,10 @@ Is DC-connected for show-hide
 0
 Numeric
 
-68
+199
+// need a UI variable to trigger on_change event when
+// user changes between AC and DC connected on
+// Battery Configuration form
 equations{'ui_batt_is_dc'}=define()
 {
 	return !${batt_ac_or_dc};

@@ -1,7 +1,7 @@
 Battery Dispatch Manual
-998
-553
-49
+1051
+554
+51
 Label
 
 1
@@ -108,7 +108,7 @@ Name
 Battery_weekday
 X
 3
-48
+78
 Y
 3
 249
@@ -156,7 +156,7 @@ Name
 Battery_weekend
 X
 3
-540
+570
 Y
 3
 249
@@ -687,7 +687,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -749,7 +749,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+10
 Numeric
 
 1
@@ -811,7 +811,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+15
 Numeric
 
 1
@@ -873,7 +873,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+20
 Numeric
 
 1
@@ -935,7 +935,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+25
 Numeric
 
 1
@@ -997,7 +997,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+30
 Numeric
 
 1
@@ -1059,7 +1059,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -1121,7 +1121,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -1183,7 +1183,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+13
 Numeric
 
 1
@@ -1245,7 +1245,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+18
 Numeric
 
 1
@@ -1307,7 +1307,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+23
 Numeric
 
 1
@@ -1369,7 +1369,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+28
 Label
 
 1
@@ -1389,14 +1389,14 @@ Width
 474
 Height
 3
-63
+60
 Tool Tip
 5
 0
 Caption
 5
-161
-To activate the manual dispatch model, choose  Manual Dispatch under "Choose Dispatch Model" above. These inputs are inactive for the automated dispatch options.
+190
+To enable manual dispatch, choose the Manual Dispatch option above. For each enabled charge or discharge period the "% capacity" is the percentage of available capacity in a given time step.
 TextColour
 4
 0
@@ -1418,6 +1418,36 @@ AlignRight
 AlignTop
 2
 1
+Button
+
+1
+8
+Name
+5
+17
+btn_copy_schedule
+X
+3
+543
+Y
+3
+213
+Width
+3
+363
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+37
+Copy Schedules from TOU/TOD Schedules
+TabOrder
+3
+33
 DiurnalPeriod
 
 1
@@ -1428,7 +1458,7 @@ Name
 dispatch_manual_sched
 X
 3
-12
+42
 Y
 3
 273
@@ -1443,7 +1473,7 @@ Tool Tip
 0
 TabOrder
 3
-4294967295
+31
 Schedule
 5
 288
@@ -1464,7 +1494,7 @@ Name
 dispatch_manual_sched_weekend
 X
 3
-501
+531
 Y
 3
 273
@@ -1479,7 +1509,7 @@ Tool Tip
 0
 TabOrder
 3
-4294967295
+32
 Schedule
 5
 288
@@ -1506,7 +1536,7 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
 546
@@ -1515,8 +1545,8 @@ Tool Tip
 0
 Caption
 5
-21
-Manual Dispatch Model
+15
+Manual Dispatch
 Bold
 2
 1
@@ -1528,6 +1558,54 @@ Name
 5
 8
 object 7
+X
+3
+501
+Y
+3
+111
+Width
+3
+474
+Height
+3
+72
+Tool Tip
+5
+0
+Caption
+5
+306
+Use the Copy Schedules button to overwrite the weekday and weekend schedules with schedules from either 1) energy charge schedules from the Electricity Rates page for behind-the-meter applications, or 2) TOD PPA price multipliers on the Revenue or Financial Parameters page for front-of-meter applications.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 731
 X
 3
 342
@@ -1647,7 +1725,7 @@ State
 1
 TabOrder
 3
-4294967295
+1
 CheckBox
 
 1
@@ -1679,7 +1757,7 @@ State
 0
 TabOrder
 3
-4294967295
+4
 CheckBox
 
 1
@@ -1711,7 +1789,7 @@ State
 0
 TabOrder
 3
-4294967295
+2
 CheckBox
 
 1
@@ -1743,7 +1821,7 @@ State
 1
 TabOrder
 3
-4294967295
+6
 CheckBox
 
 1
@@ -1775,7 +1853,7 @@ State
 0
 TabOrder
 3
-4294967295
+9
 CheckBox
 
 1
@@ -1807,7 +1885,7 @@ State
 1
 TabOrder
 3
-4294967295
+7
 CheckBox
 
 1
@@ -1839,7 +1917,7 @@ State
 1
 TabOrder
 3
-4294967295
+11
 CheckBox
 
 1
@@ -1871,7 +1949,7 @@ State
 1
 TabOrder
 3
-4294967295
+14
 CheckBox
 
 1
@@ -1903,7 +1981,7 @@ State
 0
 TabOrder
 3
-4294967295
+12
 CheckBox
 
 1
@@ -1935,7 +2013,7 @@ State
 0
 TabOrder
 3
-4294967295
+16
 CheckBox
 
 1
@@ -1967,7 +2045,7 @@ State
 0
 TabOrder
 3
-4294967295
+19
 CheckBox
 
 1
@@ -1999,7 +2077,7 @@ State
 0
 TabOrder
 3
-4294967295
+17
 CheckBox
 
 1
@@ -2031,7 +2109,7 @@ State
 0
 TabOrder
 3
-4294967295
+21
 CheckBox
 
 1
@@ -2063,7 +2141,7 @@ State
 0
 TabOrder
 3
-4294967295
+24
 CheckBox
 
 1
@@ -2095,7 +2173,7 @@ State
 0
 TabOrder
 3
-4294967295
+22
 CheckBox
 
 1
@@ -2127,7 +2205,7 @@ State
 0
 TabOrder
 3
-4294967295
+26
 CheckBox
 
 1
@@ -2159,7 +2237,7 @@ State
 0
 TabOrder
 3
-4294967295
+29
 CheckBox
 
 1
@@ -2191,15 +2269,15 @@ State
 0
 TabOrder
 3
-4294967295
+27
 
 37
 batt_discharge_percent_1
 3
 1
-Battery discharge percent for period 1
+Battery discharge rate Period 1
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2211,9 +2289,9 @@ Default
 batt_discharge_percent_2
 3
 1
-Battery discharge percent for period 2
+Battery discharge rate Period 2
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2221,13 +2299,13 @@ Battery
 1
 1
 25
- 
+Default
 batt_discharge_percent_3
 3
 1
-Battery discharge percent for period 3
+Battery discharge rate Period 3
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2235,13 +2313,13 @@ Battery
 1
 1
 25
- 
+Default
 batt_discharge_percent_4
 3
 1
-Battery discharge percent for period 4
+Battery discharge rate Period 4
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2253,9 +2331,9 @@ Default
 batt_discharge_percent_5
 3
 1
-Battery discharge percent for period 5
+Battery discharge rate Period 5
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2263,13 +2341,13 @@ Battery
 1
 1
 25
- 
+Default
 batt_discharge_percent_6
 3
 1
-Battery discharge percent for period 6
+Battery discharge rate Period 6
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2277,13 +2355,13 @@ Battery
 1
 1
 25
- 
+Default
 batt_gridcharge_percent_1
 3
 1
-Battery grid charge percent for period 1
+Battery charge from grid rate Period 1
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2295,9 +2373,9 @@ Default
 batt_gridcharge_percent_2
 3
 1
-Battery grid charge percent for period 2
+Battery charge from grid rate Period 2
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2305,13 +2383,13 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_3
 3
 1
-Battery grid charge percent for period 3
+Battery charge from grid rate Period 3
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2319,13 +2397,13 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_4
 3
 1
-Battery grid charge percent for period 4
+Battery charge from grid rate Period 4
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2333,13 +2411,13 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_5
 3
 1
-Battery grid charge percent for period 5
+Battery charge from grid rate Period 5
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2347,13 +2425,13 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_6
 3
 1
-Battery grid charge percent for period 6
+Battery charge from grid rate Period 6
 %
-Battery
+Battery Dispatch Manual
 0
 3
 1
@@ -2361,85 +2439,85 @@ Battery
 1
 1
 100
- 
+Default
 dispatch_manual_charge
 3
 2
+Battery manual allow charge from system array
  
- 
-Battery
+Battery Dispatch Manual
 0
-8
+9
 1
 2
 1
 1
 0
- 
+Default
 dispatch_manual_discharge
 3
 2
+Battery manual allow discharge array
  
- 
-Battery
+Battery Dispatch Manual
 0
-8
+9
 1
 2
 1
 1
 0
- 
+Default
 dispatch_manual_gridcharge
 3
 2
+Battery manual charge from grid array
  
- 
-Battery
+Battery Dispatch Manual
 0
-8
+9
 1
 2
 1
 1
 0
- 
+Default
 dispatch_manual_percent_discharge
 3
 2
+Battery manual discharge rates array
  
- 
-Battery
+Battery Dispatch Manual
 0
-8
+9
 1
 2
 1
 1
 0
- 
+Default
 dispatch_manual_percent_gridcharge
 3
 2
+Battery manual grid charge rates array
  
- 
-Battery
+Battery Dispatch Manual
 0
-8
+9
 1
 2
 1
 1
 0
- 
+Default
 dispatch_manual_sched
 3
 3
+Battery dispatch weekday schedule
  
- 
-Battery
+Battery Dispatch Manual
 0
-2
+3
 1
 3
 12
@@ -2461,11 +2539,11 @@ DiurnalPeriod
 dispatch_manual_sched_weekend
 3
 3
+Battery dispatch weekend schedule
  
- 
-Battery
+Battery Dispatch Manual
 0
-2
+3
 1
 3
 12
@@ -2487,11 +2565,11 @@ DiurnalPeriod
 pv.storage.p1.charge
 3
 1
+Battery allow charge from system Period 1
  
- 
-Battery
+Battery Dispatch Manual
 0
-0
+1
 1
 1
 1
@@ -2501,25 +2579,25 @@ Default
 pv.storage.p1.discharge
 3
 1
+Battery allow discharge Period 1
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 pv.storage.p1.gridcharge
 3
 1
+Battery allow charge from grid Period 1
  
- 
-Battery
+Battery Dispatch Manual
 0
-0
+1
 1
 1
 1
@@ -2529,11 +2607,11 @@ Default
 pv.storage.p2.charge
 3
 1
+Battery allow charge from system Period 2
  
- 
-Battery
+Battery Dispatch Manual
 0
-0
+1
 1
 1
 1
@@ -2543,39 +2621,39 @@ Default
 pv.storage.p2.discharge
 3
 1
+Battery allow discharge Period 2
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 pv.storage.p2.gridcharge
 3
 1
+Battery allow charge from grid Period 2
  
- 
-Battery
+Battery Dispatch Manual
 0
-0
 1
 1
 1
 1
 1
- 
+1
+Default
 pv.storage.p3.charge
 3
 1
+Battery allow charge from system Period 3
  
- 
-Battery
+Battery Dispatch Manual
 0
-0
+1
 1
 1
 1
@@ -2585,39 +2663,39 @@ Default
 pv.storage.p3.discharge
 3
 1
+Battery allow discharge Period 3
  
- 
-Battery
+Battery Dispatch Manual
 0
-0
 1
 1
 1
 1
 1
- 
+1
+Default
 pv.storage.p3.gridcharge
 3
 1
+Battery allow charge from grid Period 3
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 pv.storage.p4.charge
 3
 1
+Battery allow charge from system Period 4
  
- 
-Battery
+Battery Dispatch Manual
 0
-0
+1
 1
 1
 1
@@ -2627,115 +2705,115 @@ Default
 pv.storage.p4.discharge
 3
 1
+Battery allow discharge Period 4
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 pv.storage.p4.gridcharge
 3
 1
+Battery allow charge from grid Period 4
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 pv.storage.p5.charge
 3
 1
+Battery allow charge from system Period 5
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 pv.storage.p5.discharge
 3
 1
+Battery allow discharge Period 5
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 pv.storage.p5.gridcharge
 3
 1
+Battery allow charge from grid Period 5
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 pv.storage.p6.charge
 3
 1
+Battery allow charge from system Period 6
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 pv.storage.p6.discharge
 3
 1
+Battery allow discharge Period 6
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 pv.storage.p6.gridcharge
 3
 1
+Battery allow charge from grid Period 6
  
- 
-Battery
-0
+Battery Dispatch Manual
 0
 1
 1
 1
 1
+1
 0
- 
+Default
 
 2263
 equations{ 'dispatch_manual_charge' } = define() {
@@ -2820,7 +2898,7 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-5916
+6284
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	show_label();
@@ -2856,6 +2934,20 @@ on_change{'pv.storage.p4.gridcharge'}=define(){toggle_gridcharge_percent();};
 on_change{'pv.storage.p5.gridcharge'}=define(){toggle_gridcharge_percent();};
 on_change{'pv.storage.p6.gridcharge'}=define(){toggle_gridcharge_percent();};
 
+on_change{'btn_copy_schedule'}=define()
+{
+	if ( behind_the_meter() )
+	{
+		value('dispatch_manual_sched',value('ur_ec_sched_weekday'));
+		value('dispatch_manual_sched_weekend',value('ur_ec_sched_weekend'));	
+	}
+	else
+	{
+		value('dispatch_manual_sched',value('dispatch_sched_weekday'));
+		value('dispatch_manual_sched_weekend',value('dispatch_sched_weekend'));	
+	}
+};
+
 function behind_the_meter()
 {
 	btm = false;
@@ -2875,6 +2967,7 @@ function show_label()
 		
 	show('batt_manual_dispatch_label', btm_label);
 }
+
 function toggle_discharge_percent()
 {
 	enable('batt_discharge_percent_1', (value('pv.storage.p1.discharge')==1));
