@@ -1,0 +1,89 @@
+Degradation Lifetime Variables
+1045
+768
+2
+GroupBox
+
+1
+8
+Name
+5
+23
+lifetime vars group box
+X
+3
+9
+Y
+3
+6
+Width
+3
+780
+Height
+3
+70
+Tool Tip
+5
+0
+Caption
+5
+23
+Lifetime Vs Annual Data
+Bold
+2
+1
+CheckBox
+
+1
+9
+Name
+5
+28
+save_full_lifetime_variables
+X
+3
+18
+Y
+3
+30
+Width
+3
+169
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+27
+Save All Lifetime Variables
+State
+2
+1
+TabOrder
+3
+4294967295
+
+1
+save_full_lifetime_variables
+3
+1
+Save All Lifetime Variables
+ 
+Degradation and Lifetime
+0
+3
+1
+1
+1
+1
+1
+Default
+
+0
+84
+on_change{'save_full_lifetime_variables'} = define() {
+	enable_lifetime_losses();
+};

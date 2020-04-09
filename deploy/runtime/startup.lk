@@ -203,7 +203,7 @@ function setup_lifetime_page( degradation_mode )
     // Flat Plate PV, PV Battery
 	elseif ( degradation_mode == DEGRADATION_PVSAM )
 	{
-		addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily'], ],
+		addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ],
                  { 'sidebar'=sidebar_name,'help'=help_name } );
 	}
      // annual AC degradation over one year, 'degradation' requires 'system_use_lifetime = 0'
