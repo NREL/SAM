@@ -1,7 +1,7 @@
 Degradation Lifetime Variables
 1045
 768
-2
+3
 GroupBox
 
 1
@@ -30,6 +30,54 @@ Caption
 23
 Lifetime Vs Annual Data
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+345
+Y
+3
+18
+Width
+3
+439
+Height
+3
+50
+Tool Tip
+5
+0
+Caption
+5
+232
+In sub-hourly simulations, saving all lifetime outputs can consume a lot of memory. Uncheck this box to reduce memory use by only saving some variables for the first year. (Examples include inverter clipping, shading, and snow loss)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 CheckBox
@@ -83,7 +131,4 @@ Degradation and Lifetime
 Default
 
 0
-84
-on_change{'save_full_lifetime_variables'} = define() {
-	enable_lifetime_losses();
-};
+0
