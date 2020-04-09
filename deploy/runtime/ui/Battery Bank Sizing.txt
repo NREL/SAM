@@ -1,6 +1,6 @@
 Battery Bank Sizing
-993
-245
+1052
+235
 15
 GroupBox
 
@@ -18,10 +18,10 @@ Y
 0
 Width
 3
-985
+1042
 Height
 3
-243
+225
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 843
 Y
 3
-63
+57
 Width
 3
 90
@@ -93,7 +93,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+10
 Numeric
 
 1
@@ -107,7 +107,7 @@ X
 843
 Y
 3
-90
+84
 Width
 3
 90
@@ -155,7 +155,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+11
 Numeric
 
 1
@@ -169,7 +169,7 @@ X
 591
 Y
 3
-63
+57
 Width
 3
 90
@@ -217,7 +217,7 @@ BackColour
 255
 TabOrder
 3
-4
+6
 Numeric
 
 1
@@ -231,7 +231,7 @@ X
 591
 Y
 3
-117
+111
 Width
 3
 90
@@ -279,7 +279,7 @@ BackColour
 255
 TabOrder
 3
-5
+8
 Numeric
 
 1
@@ -293,7 +293,7 @@ X
 591
 Y
 3
-90
+84
 Width
 3
 90
@@ -341,7 +341,7 @@ BackColour
 255
 TabOrder
 3
-5
+7
 Numeric
 
 1
@@ -355,7 +355,7 @@ X
 174
 Y
 3
-96
+84
 Width
 3
 90
@@ -417,7 +417,7 @@ X
 330
 Y
 3
-93
+84
 Width
 3
 54
@@ -437,7 +437,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -451,7 +451,7 @@ X
 174
 Y
 3
-69
+57
 Width
 3
 90
@@ -513,7 +513,7 @@ X
 330
 Y
 3
-69
+57
 Width
 3
 54
@@ -533,7 +533,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -547,7 +547,7 @@ X
 591
 Y
 3
-144
+138
 Width
 3
 90
@@ -595,7 +595,7 @@ BackColour
 255
 TabOrder
 3
-2
+9
 Label
 
 1
@@ -609,7 +609,7 @@ X
 390
 Y
 3
-90
+84
 Width
 3
 198
@@ -654,13 +654,13 @@ Name
 batt_series_label
 X
 3
-396
+390
 Y
 3
-63
+57
 Width
 3
-192
+198
 Height
 3
 24
@@ -711,7 +711,7 @@ Width
 714
 Height
 3
-36
+32
 Tool Tip
 5
 0
@@ -742,23 +742,23 @@ Name
 batt_size_label
 X
 3
-18
+12
 Y
 3
-135
+165
 Width
 3
-333
+1029
 Height
 3
-111
+51
 Tool Tip
 5
 0
 Caption
 5
-217
-Bank capacity and power fields are values measured before conversion and parasitic losses.  If specified in AC, the DC/AC conversion efficiency will be used to scale the battery size.  See help for sizing information.
+184
+Bank capacity and power fields are values measured before conversion and parasitic losses.  If specified in AC, the DC/AC conversion efficiency will be used to scale the battery size. 
 TextColour
 4
 0
@@ -787,7 +787,7 @@ batt_C_rate_max_charge_input
 1
 Max C-rate of charge
 per/hour
-Battery
+Battery Sizing
 0
 2
 1
@@ -801,7 +801,7 @@ batt_C_rate_max_discharge_input
 1
 Max C-rate of discharge
 per/hour
-Battery
+Battery Sizing
 0
 2
 1
@@ -815,7 +815,7 @@ batt_bank_ncells_serial
 1
 Number of cells in series
  
-Battery
+Battery Sizing
 0
 3
 1
@@ -829,7 +829,7 @@ batt_bank_nseries_stacks
 1
 Number of stacks in series
  
-Battery
+Battery Sizing
 0
 2
 1
@@ -843,7 +843,7 @@ batt_bank_nstrings
 1
 Number of strings in parallel
  
-Battery
+Battery Sizing
 0
 3
 1
@@ -857,7 +857,7 @@ batt_bank_power
 1
 Desired bank power
 kW
-Battery
+Battery Sizing
 0
 2
 1
@@ -869,9 +869,9 @@ Default
 batt_bank_power_dc_ac
 3
 1
-Battery power DC or AC input
+Battery desired bank power DC or AC
  
-Battery
+Battery Sizing
 0
 1
 1
@@ -885,7 +885,7 @@ batt_bank_size
 1
 Desired bank capacity
 kWh
-Battery
+Battery Sizing
 0
 2
 1
@@ -897,9 +897,9 @@ Default
 batt_bank_size_dc_ac
 3
 1
-Battery capacity DC or AC input
+Battery desired bank capacity DC or AC
  
-Battery
+Battery Sizing
 0
 1
 1
@@ -911,9 +911,9 @@ Choice
 batt_bank_size_specify
 3
 1
-Bank capacity
+Flow battery bank capacity
 kWhdc
-Battery
+Battery Sizing
 0
 2
 1
@@ -925,9 +925,9 @@ Numeric
 batt_size_choice
 3
 1
-Battery sizing option
+Specify bank size or cells
  
-Battery
+Battery Sizing
 39
 Specify desired bank size|Specify cells
 1
@@ -936,7 +936,7 @@ Specify desired bank size|Specify cells
 1
 1
 0
-Default
+RadioChoice
 
 0
 1294

@@ -1,6 +1,6 @@
 Battery Replacements
-994
-133
+1053
+156
 5
 GroupBox
 
@@ -18,10 +18,10 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
-129
+150
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 batt_replacement_capacity
 X
 3
-582
+585
 Y
 3
-36
+45
 Width
 3
 90
@@ -93,7 +93,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 RadioChoice
 
 1
@@ -107,7 +107,7 @@ X
 39
 Y
 3
-30
+24
 Width
 3
 249
@@ -134,7 +134,7 @@ Horizontal
 0
 TabOrder
 3
-4294967295
+1
 DataArray
 
 1
@@ -145,7 +145,7 @@ Name
 batt_replacement_schedule
 X
 3
-582
+585
 Y
 3
 72
@@ -171,7 +171,7 @@ Description
 Click "Number of values" and enter the analysis period in years. Then, enter a '1' in each row of the table for the year that the battery should be replaced.
 TabOrder
 3
-4294967295
+3
 DataArray
 
 1
@@ -182,7 +182,7 @@ Name
 batt_replacement_schedule_percent
 X
 3
-582
+585
 Y
 3
 99
@@ -208,7 +208,7 @@ Description
 Click "Number of values" and enter the analysis period in years. Then, enter a percentage of total battery capacity that should be replaced in each row that represents a replacement year.
 TabOrder
 3
-4294967295
+4
 
 4
 batt_replacement_capacity
@@ -216,7 +216,7 @@ batt_replacement_capacity
 1
 Battery bank replacement threshold
 % capacity
-Battery
+BatterySystem
 0
 2
 1
@@ -228,11 +228,12 @@ Numeric
 batt_replacement_option
 3
 1
+Battery replacement options
  
- 
-Battery
-0
-2
+BatterySystem
+75
+No replacements|Replace at specified capacity|Replace at specified schedule
+3
 1
 1
 1
@@ -244,7 +245,7 @@ batt_replacement_schedule
 2
 Battery bank replacement schedule
  
-Battery
+BatterySystem
 0
 0
 1
@@ -258,7 +259,7 @@ batt_replacement_schedule_percent
 2
 Battery bank replacement percent
  
-Battery
+BatterySystem
 0
 0
 1
