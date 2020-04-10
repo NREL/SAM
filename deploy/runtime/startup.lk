@@ -110,8 +110,9 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 
 function setup_battery_pages_behind_the_meter()
 {
-	addpage([  ['Battery Model',
-				'Battery Bank Sizing with REopt',
+	addpage([['Battery Model',
+			  'Battery Bank Sizing',
+			   'Battery REopt Optimization',
 			   'Battery Current and Capacity',
 			   'Battery Configuration',
 			   'Battery Dispatch Common',
@@ -122,7 +123,7 @@ function setup_battery_pages_behind_the_meter()
 			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
-			    ]],
+			  ]],
 			  { 'sidebar'='Battery Storage', 'help'='battery_storage_btm' } );
 }
 
@@ -995,31 +996,31 @@ addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_ra
 setconfig( 'Geothermal Power', 'Leveraged Partnership Flip' );
 setmodules( ['geothermal', 'grid', 'levpartflip']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
 setup_leveraged_partnership_flip_pages();
 
 setconfig( 'Geothermal Power', 'All Equity Partnership Flip' );
 setmodules( ['geothermal', 'grid','equpartflip']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
 setup_all_equity_partnership_flip_pages();
 
 setconfig( 'Geothermal Power', 'Sale Leaseback' );
 setmodules( ['geothermal', 'grid','saleleaseback']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
 setup_sale_leaseback_pages();
 
 setconfig( 'Geothermal Power', 'Single Owner' );
 setmodules( ['geothermal', 'grid','singleowner']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
 setup_single_owner_pages();
 
 setconfig( 'Geothermal Power', 'Merchant Plant' );
 setmodules( ['geothermal', 'grid','merchantplant']);
 setup_geothermal_power_pages();
-addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='shw_system_costs' } );
+addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
 setup_merchant_plant_pages();
 
 setconfig( 'Geothermal Power', 'LCOE Calculator' );

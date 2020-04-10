@@ -1,6 +1,6 @@
 Battery Dispatch Common
-997
-122
+1052
+125
 7
 Label
 
@@ -159,7 +159,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -173,7 +173,7 @@ X
 243
 Y
 3
-54
+51
 Width
 3
 90
@@ -221,7 +221,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -283,7 +283,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Numeric
 
 1
@@ -345,7 +345,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 GroupBox
 
 1
@@ -362,7 +362,7 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
 117
@@ -371,8 +371,8 @@ Tool Tip
 0
 Caption
 5
-24
-Charge Limits & Priority
+26
+Charge Limits and Priority
 Bold
 2
 1
@@ -383,7 +383,7 @@ batt_initial_SOC
 1
 Initial state of charge
 %
-Battery
+BatteryCell
 0
 2
 1
@@ -397,7 +397,7 @@ batt_maximum_SOC
 1
 Maximum state of charge
 %
-Battery
+BatteryCell
 0
 2
 1
@@ -411,7 +411,7 @@ batt_minimum_SOC
 1
 Minimum state of charge
 %
-Battery
+BatteryCell
 0
 2
 1
@@ -425,7 +425,7 @@ batt_minimum_modetime
 1
 Minimum time at charge state
 min
-Battery
+BatteryCell
 0
 2
 1
