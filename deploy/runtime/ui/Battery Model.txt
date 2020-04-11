@@ -1,6 +1,6 @@
 Battery Model
-994
-67
+1052
+68
 2
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
 60
@@ -58,31 +58,31 @@ Tool Tip
 Items
 6
 11
-Lead Acid: Flooded
-Lead Acid: VRLA Gel
-Lead Acid: VRLA AGM
-Lead Acid: Custom
-Lithium Ion: Lithium Manganese Oxide (LMO/Graphite)
-Lithium Ion: Lithium Iron Phosphate (LFP/Graphite)
-Lithium Ion: Lithium Cobalt Oxide (LCO/Graphite)
-Lithium Ion: LMO/Lithium Titanate (LMO/LTO)
-Lithium Ion: Nickel Manganese Cobalt Oxide (NMC/Graphite)
-Lithium Ion: Nickel Cobalt Aluminum Oxide (NCA/Graphite)
-Lithium Ion: Custom
+Lead Acid Flooded
+Lead Acid VRLA Gel
+Lead Acid VRLA AGM
+Lead Acid Custom
+Lithium-ion Lithium Manganese Oxide (LMO/Graphite)
+Lithium-ion Lithium Iron Phosphate (LFP/Graphite)
+Lithium-ion Lithium Cobalt Oxide (LCO/Graphite)
+Lithium-ion LMO/Lithium Titanate (LMO/LTO)
+Lithium-ion Nickel Manganese Cobalt Oxide (NMC/Graphite)
+Lithium-ion Nickel Cobalt Aluminum Oxide (NCA/Graphite)
+Lithium-ion Custom
 Selection
 3
 4294967295
 TabOrder
 3
-6
+1
 
 12
 LeadAcid_q10
 3
 1
-10 hour discharge rate
+Discharge rate 10-hour
 %
-Battery
+BatteryCell
 0
 2
 1
@@ -94,9 +94,9 @@ Default
 LeadAcid_q10_computed
 3
 1
- 
+Discharge rate 10-hour calculated
 Ah
-Battery
+BatteryCell
 0
 8
 1
@@ -108,9 +108,9 @@ Numeric
 LeadAcid_q20
 3
 1
-20 hour discharge rate
+Discharge rate 10-hour
 %
-Battery
+BatteryCell
 0
 2
 1
@@ -122,9 +122,9 @@ Default
 LeadAcid_q20_computed
 3
 1
- 
+Discharge rate 10-hour calculated
 Ah
-Battery
+BatteryCell
 0
 8
 1
@@ -138,7 +138,7 @@ LeadAcid_qn
 1
 Capacity at n-hour discharge rate
 %
-Battery
+BatteryCell
 0
 1
 1
@@ -150,9 +150,9 @@ Default
 LeadAcid_qn_computed
 3
 1
- 
+Capacity at n-hour discharge rate calculated
 Ah
-Battery
+BatteryCell
 0
 8
 1
@@ -164,9 +164,9 @@ Numeric
 LeadAcid_tn
 3
 1
-n
+Hours of storage
 hours
-Battery
+BatteryCell
 0
 1
 1
@@ -178,9 +178,9 @@ Default
 batt_Qexp
 3
 1
- 
+Battery capacity exp
 Ah
-Battery
+BatteryCell
 0
 9
 1
@@ -192,9 +192,9 @@ Numeric
 batt_Qnom
 3
 1
- 
+Battery capacity nominal
 Ah
-Battery
+BatteryCell
 0
 9
 1
@@ -206,9 +206,9 @@ Numeric
 batt_chem
 3
 1
-Choose battery chemistry type
+Battery chemistry options
  
-Battery
+BatteryCell
 0
 9
 1
@@ -220,9 +220,9 @@ Default
 batt_meter_position
 3
 1
-Location of battery relative to meter
+Battery meter position
  
-Battery
+BatteryCell
 0
 0
 1
@@ -236,7 +236,7 @@ batt_type
 1
 Battery type
  
-Battery
+BatteryCell
 449
 Lead Acid: Flooded|Lead Acid: VRLA Gel|Lead Acid: VRLA AGM|Lead Acid: Custom|Lithium Ion: Lithium Manganese Oxide (LMO/Graphite)|Lithium Ion: Lithium Iron Phosphate (LFP/Graphite)|Lithium Ion: Lithium Cobalt Oxide (LCO/Graphite)|Lithium Ion: LMO/Lithium Titanate (LMO/LTO)|Lithium Ion: Nickel Manganese Cobalt Oxide (NMC/Graphite)|Lithium Ion: Nickel Cobalt Aluminum Oxide (NCA/Graphite)|Lithium Ion: Custom|Flow Battery: Vanadium|Flow Battery: Iron
 2

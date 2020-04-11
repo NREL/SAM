@@ -1,6 +1,6 @@
 Battery Dispatch Behind the Meter
-998
-307
+1053
+322
 16
 Label
 
@@ -12,10 +12,10 @@ Name
 BatteryChargeOptions
 X
 3
-15
+12
 Y
 3
-183
+189
 Width
 3
 285
@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-74
-For all non-manual dispatch options, select how the battery can be charged
+73
+For manual dispatch, charge options are defined below by dispatch period.
 TextColour
 4
 0
@@ -66,10 +66,10 @@ Y
 6
 Width
 3
-985
+1042
 Height
 3
-298
+310
 Tool Tip
 5
 0
@@ -90,13 +90,13 @@ Name
 GridPowerTargetBox
 X
 3
-312
+324
 Y
 3
 33
 Width
 3
-670
+718
 Height
 3
 106
@@ -105,8 +105,8 @@ Tool Tip
 0
 Caption
 5
-23
-Input grid power target
+58
+Monthly or Time Series Inputs for Grid Power Target Option
 Bold
 2
 1
@@ -120,13 +120,13 @@ Name
 InputDispatchBox
 X
 3
-312
+324
 Y
 3
 153
 Width
 3
-670
+718
 Height
 3
 106
@@ -135,8 +135,8 @@ Tool Tip
 0
 Caption
 5
-22
-Input battery dispatch
+46
+Time Series Inputs for Battery Dispatch Option
 Bold
 2
 1
@@ -150,10 +150,10 @@ Name
 batt_custom_dispatch
 X
 3
-483
+552
 Y
 3
-174
+171
 Width
 3
 90
@@ -176,7 +176,7 @@ Description
 For each simulation time step enter a rate in kW: less than zero to charge the battery, and greater than zero to discharge.
 TabOrder
 3
-4294967295
+5
 CheckBox
 
 1
@@ -187,13 +187,13 @@ Name
 batt_dispatch_auto_can_charge
 X
 3
-54
+33
 Y
 3
-249
+258
 Width
 3
-243
+258
 Height
 3
 24
@@ -209,7 +209,7 @@ State
 1
 TabOrder
 3
-4294967295
+7
 CheckBox
 
 1
@@ -220,10 +220,10 @@ Name
 batt_dispatch_auto_can_fuelcellcharge
 X
 3
-54
+33
 Y
 3
-273
+285
 Width
 3
 258
@@ -242,7 +242,7 @@ State
 1
 TabOrder
 3
-4294967295
+8
 CheckBox
 
 1
@@ -253,13 +253,13 @@ Name
 batt_dispatch_auto_can_gridcharge
 X
 3
-54
+33
 Y
 3
-225
+231
 Width
 3
-234
+258
 Height
 3
 24
@@ -275,7 +275,7 @@ State
 1
 TabOrder
 3
-4294967295
+6
 RadioChoice
 
 1
@@ -305,8 +305,8 @@ Selection
 Items
 6
 5
-Peak shaving: 1-day look ahead
-Peak shaving: 1-day look behind
+Peak shaving one-day look ahead
+Peak shaving one-day look behind
 Input grid power target
 Input battery dispatch
 Manual dispatch
@@ -318,7 +318,7 @@ Horizontal
 0
 TabOrder
 3
-4294967295
+1
 Label
 
 1
@@ -329,13 +329,13 @@ Name
 batt_dispatch_label
 X
 3
-624
+705
 Y
 3
 165
 Width
 3
-345
+330
 Height
 3
 81
@@ -377,13 +377,13 @@ Name
 batt_grid_options
 X
 3
-36
+12
 Y
 3
-162
+168
 Width
 3
-231
+291
 Height
 3
 25
@@ -402,7 +402,7 @@ Colour
 Caption
 5
 14
-Charge options
+Charge Options
 Bold
 2
 1
@@ -416,13 +416,13 @@ Name
 batt_target_choice
 X
 3
-372
+333
 Y
 3
-54
+51
 Width
 3
-201
+354
 Height
 3
 24
@@ -432,14 +432,14 @@ Tool Tip
 Items
 6
 2
-Enter single or monthly powers
-Enter time series powers
+Monthly power targets
+Time series power targets
 Selection
 3
 4294967295
 TabOrder
 3
-4294967295
+2
 Label
 
 1
@@ -450,13 +450,13 @@ Name
 batt_target_label
 X
 3
-621
+702
 Y
 3
 48
 Width
 3
-345
+333
 Height
 3
 81
@@ -498,10 +498,10 @@ Name
 batt_target_power
 X
 3
-456
+525
 Y
 3
-111
+108
 Width
 3
 117
@@ -524,7 +524,7 @@ Description
 The grid target power is the maximum desired power drawn from the grid over each timestep after contributions from PV and battery.
 TabOrder
 3
-4294967295
+4
 MonthlyFactor
 
 1
@@ -535,10 +535,10 @@ Name
 batt_target_power_monthly
 X
 3
-456
+525
 Y
 3
-84
+81
 Width
 3
 117
@@ -550,11 +550,11 @@ Tool Tip
 0
 Description
 5
-17
-Single or monthly
+26
+Monthly grid power targets
 TabOrder
 3
-4294967295
+3
 Divider
 
 1
@@ -565,13 +565,13 @@ Name
 object 21
 X
 3
-21
+12
 Y
 3
 27
 Width
 3
-258
+291
 Height
 3
 16
@@ -589,8 +589,8 @@ Colour
 255
 Caption
 5
-21
-Choose Dispatch Model
+16
+Dispatch Options
 Bold
 2
 1
@@ -599,9 +599,9 @@ Bold
 batt_custom_dispatch
 3
 2
-Input battery dispatch
+Time series battery dispatch
 kWdc
-Battery
+BatteryDispatch
 0
 2
 1
@@ -613,9 +613,9 @@ DataArray
 batt_dispatch_auto_can_charge
 3
 1
-Battery can charge from grid?
+Battery can charge from system
  
-Battery
+BatteryDispatch
 0
 3
 1
@@ -629,7 +629,7 @@ batt_dispatch_auto_can_fuelcellcharge
 1
 Battery can charge from fuel cell
  
-Battery
+BatteryDispatch
 0
 3
 1
@@ -641,9 +641,9 @@ CheckBox
 batt_dispatch_auto_can_gridcharge
 3
 1
-Battery can charge from grid?
+Battery can charge from grid
  
-Battery
+BatteryDispatch
 0
 3
 1
@@ -655,11 +655,11 @@ CheckBox
 batt_dispatch_choice
 3
 1
-Battery dispatch choice
+Battery dispatch options
  
-Battery
-131
-Peak shaving: 1-day look ahead|Peak shaving: 1-day look behind|Automated grid power target| Input battery dispatch| Manual dispatch
+BatteryDispatch
+132
+Peak shaving one-day look ahead|Peak shaving one-day look behind|Automated grid power target| Input battery dispatch|Manual dispatch
 3
 1
 1
@@ -670,10 +670,11 @@ RadioChoice
 batt_target_choice
 3
 1
+Grid power target options
  
- 
-Battery
-0
+BatteryDispatch
+47
+Monthly power targets|Time series power targets
 1
 1
 1
@@ -684,9 +685,9 @@ Choice
 batt_target_power
 3
 2
-Time series
+Time series grid power targets
 kWac
-Battery
+BatteryDispatch
 0
 0
 1
@@ -698,9 +699,9 @@ DataArray
 batt_target_power_monthly
 3
 2
-Single or monthly
+Monthly grid power targets
 kWac
-Battery
+BatteryDispatch
 0
 0
 1

@@ -1,5 +1,5 @@
 Battery Model Simple
-585
+586
 88
 5
 GroupBox
@@ -12,10 +12,10 @@ Name
 Battery Bank
 X
 3
-9
+6
 Y
 3
-0
+3
 Width
 3
 572
@@ -65,7 +65,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+3
 Choice
 
 1
@@ -99,7 +99,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -161,7 +161,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -223,7 +223,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 
 5
 batt_simple_chemistry
