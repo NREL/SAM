@@ -214,7 +214,7 @@ Y
 30
 Width
 3
-650
+764
 Height
 3
 21
@@ -512,7 +512,7 @@ Width
 496
 Height
 3
-53
+68
 Tool Tip
 5
 0
@@ -587,7 +587,7 @@ Y
 921
 Width
 3
-417
+501
 Height
 3
 27

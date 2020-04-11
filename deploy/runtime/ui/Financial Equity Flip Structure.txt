@@ -5,7 +5,7 @@ Financial Equity Flip Structure
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 164
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -32,7 +35,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -49,6 +52,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 8
@@ -77,7 +83,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -94,6 +100,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -122,7 +131,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -139,6 +148,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -167,7 +179,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -184,6 +196,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 8
@@ -212,7 +227,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -229,6 +244,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 12
@@ -257,7 +275,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -274,6 +292,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 9
@@ -302,7 +323,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -319,6 +340,9 @@ Width
 Height
 3
 132
+Tool Tip
+5
+0
 Caption
 5
 301
@@ -347,7 +371,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 24
@@ -364,6 +388,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -407,7 +434,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -424,6 +451,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -467,7 +497,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -484,6 +514,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -527,7 +560,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -544,6 +577,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -587,7 +623,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 29
@@ -604,6 +640,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -647,7 +686,7 @@ TabOrder
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -664,6 +703,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -692,7 +734,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -709,6 +751,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -737,7 +782,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 9
@@ -754,6 +799,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 21
@@ -782,7 +830,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 27
@@ -799,6 +847,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -842,7 +893,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -859,6 +910,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -902,7 +956,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -919,6 +973,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -962,7 +1019,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -979,6 +1036,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1022,7 +1082,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -1039,6 +1099,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0

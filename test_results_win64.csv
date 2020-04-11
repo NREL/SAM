@@ -90,7 +90,7 @@ Dish Stirling,None,207236624,NA,NA,;
 Generic CSP System,Commercial,572565824,7.480502,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Single Owner,573450304,11.703119,12.613471,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Merchant Plant,573450304,10.610463,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,Leveraged Partnership Flip,573342592,11.965166,12.902393,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Leveraged Partnership Flip,574117696,11.949610,12.885570,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,All Equity Partnership Flip,573342592,15.026999,17.599688,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Sale Leaseback,573450304,15.225276,17.464741,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,LCOE Calculator,573346496,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
@@ -134,26 +134,24 @@ Generic System,Sale Leaseback,756864000,32.130512,35.256783,;
 Generic System,LCOE Calculator,756864000,NA,NA,; 
 Generic System,None,756864000,NA,NA,; 
 PV Battery,Residential,8620.086914,10.358734,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 1358 times
-PV Battery,Commercial,394520.312500,5.827434,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 36713 times
+PV Battery,Commercial,394520.312500,5.827434,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 37131 times
 PV Battery,Third Party,8620.086914,NA,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 1358 times
-PV Battery,Host Developer,394520.312500,21.017857,10.808136,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 36713 times
+PV Battery,Host Developer,394520.312500,21.017857,10.808136,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 37131 times
 PV Battery,Single Owner,37050972,8.647429,9.839484,; 
-PV Battery,Merchant Plant,OVERWRITE	
-PV Battery,Merchant Plant,fail,fail,fail
+PV Battery,Merchant Plant,37050972,7.760206,NA,; 
 PV Battery,Leveraged Partnership Flip,37050972,8.108556,9.839484,; 
 PV Battery,All Equity Partnership Flip,37050972,10.048800,10.932760,; 
 PV Battery,Sale Leaseback,37050972,9.708634,9.839484,; 
-PVWatts Battery,Residential,8024.941895,9.356576,NA,; 
+PVWatts Battery,Residential,8024.924805,9.356596,NA,; 
 PVWatts Battery,Commercial,377254.156250,5.775879,NA,; 
-PVWatts Battery,Third Party,8024.941895,NA,NA,; 
+PVWatts Battery,Third Party,8024.924805,NA,NA,; 
 PVWatts Battery,Host Developer,377254.156250,20.999414,10.830657,; 
 Generic Battery,Residential,6700.020508,44.867256,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 11870 times
 Generic Battery,Commercial,361522.062500,24.840870,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 10505 times
 Generic Battery,Third Party,6700.020508,NA,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 11870 times
 Generic Battery,Host Developer,361522.062500,14.474730,10.830667,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 10505 times
 Generic Battery,Single Owner,73147680,20.952120,10.397238,; 
-Generic Battery,Merchant Plant,OVERWRITE	
-Generic Battery,Merchant Plant,fail,fail,fail
+Generic Battery,Merchant Plant,73147680,19.917864,NA,; 
 Generic Battery,Leveraged Partnership Flip,73147680,24.980808,28.881216,; 
 Generic Battery,All Equity Partnership Flip,73147680,29.087803,34.657459,; 
 Generic Battery,Sale Leaseback,73147680,29.019329,34.657459,; 

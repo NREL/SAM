@@ -449,13 +449,13 @@ Name
 batt_temperature_input
 X
 3
-54
+30
 Y
 3
 159
 Width
 3
-252
+276
 Height
 3
 24
@@ -829,7 +829,7 @@ Y
 288
 Width
 3
-306
+312
 Height
 3
 87

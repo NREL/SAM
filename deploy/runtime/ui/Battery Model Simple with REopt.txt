@@ -1,6 +1,6 @@
 Battery Model Simple with REopt
-587
-369
+599
+413
 13
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 572
 Height
 3
-363
+387
 Tool Tip
 5
 0
@@ -85,10 +85,10 @@ Y
 111
 Width
 3
-492
+510
 Height
 3
-27
+24
 Tool Tip
 5
 0
@@ -320,7 +320,7 @@ Name
 batt_size_label
 X
 3
-33
+30
 Y
 3
 210
@@ -329,7 +329,7 @@ Width
 525
 Height
 3
-59
+80
 Tool Tip
 5
 0
@@ -371,7 +371,7 @@ X
 342
 Y
 3
-312
+345
 Width
 3
 162
@@ -446,7 +446,7 @@ Width
 546
 Height
 3
-165
+189
 Tool Tip
 5
 0
@@ -467,16 +467,16 @@ Name
 object 7
 X
 3
-33
+30
 Y
 3
-270
+294
 Width
 3
 525
 Height
 3
-36
+48
 Tool Tip
 5
 0
@@ -518,7 +518,7 @@ X
 147
 Y
 3
-312
+345
 Width
 3
 90

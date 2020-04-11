@@ -72,7 +72,7 @@ Name
 Label121112
 X
 3
-96
+111
 Y
 3
 360
@@ -168,7 +168,7 @@ Name
 Label121113
 X
 3
-12
+27
 Y
 3
 387
@@ -216,7 +216,7 @@ Name
 Label12111326
 X
 3
-12
+27
 Y
 3
 411
@@ -264,7 +264,7 @@ Name
 Label12111327
 X
 3
-12
+27
 Y
 3
 468
@@ -318,7 +318,7 @@ Y
 492
 Width
 3
-284
+299
 Height
 3
 21
@@ -360,7 +360,7 @@ Name
 Label12111373
 X
 3
-96
+111
 Y
 3
 567
@@ -408,7 +408,7 @@ Name
 Label12111374
 X
 3
-96
+111
 Y
 3
 543
@@ -456,7 +456,7 @@ Name
 Label12111375
 X
 3
-96
+111
 Y
 3
 519
@@ -807,7 +807,7 @@ Name
 module_area
 X
 3
-132
+147
 Y
 3
 720
@@ -869,7 +869,7 @@ Name
 module_aspect_ratio
 X
 3
-132
+147
 Y
 3
 639
@@ -931,7 +931,7 @@ Name
 module_length
 X
 3
-132
+147
 Y
 3
 666
@@ -993,7 +993,7 @@ Name
 module_width
 X
 3
-132
+147
 Y
 3
 693
@@ -1372,7 +1372,7 @@ Y
 330
 Width
 3
-816
+966
 Height
 3
 24
@@ -1510,7 +1510,7 @@ Name
 self_shading_diagram
 X
 3
-243
+261
 Y
 3
 636

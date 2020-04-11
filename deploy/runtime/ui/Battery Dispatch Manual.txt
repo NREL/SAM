@@ -1389,7 +1389,7 @@ Width
 474
 Height
 3
-48
+63
 Tool Tip
 5
 0
@@ -2820,7 +2820,7 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-5903
+5916
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	show_label();
@@ -2862,7 +2862,7 @@ function behind_the_meter()
 	if (financing() == 'Residential' || 
 		financing() == 'Commercial' || 
 		financing() == 'Third Party')
-		btm = true;
+		{ btm = true; }
 	return btm;
 }
 
@@ -2911,7 +2911,9 @@ function toggle_dispatch()
 			toggle_gridcharge_percent();
 		}
 		else
+		{
 			enable_manual_inputs(false, false, false, false);
+		}	
 	}
 	else
 	{

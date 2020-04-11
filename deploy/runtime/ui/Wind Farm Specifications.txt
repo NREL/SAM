@@ -194,16 +194,16 @@ Name
 sizing_warning
 X
 3
-621
+618
 Y
 3
-21
+15
 Width
 3
-165
+174
 Height
 3
-72
+93
 Tool Tip
 5
 0
@@ -242,16 +242,16 @@ Name
 specify_label
 X
 3
-621
+618
 Y
 3
-45
+15
 Width
 3
 165
 Height
 3
-60
+84
 Tool Tip
 5
 0

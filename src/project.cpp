@@ -372,6 +372,27 @@ static void fcall_vuc_case_name( lk::invoke_t &cxt )
 		cxt.result().assign( vuc->GetName() );
 }
 
+static void fcall_vuc_config_update_with_old_values(lk::invoke_t& cxt)
+{
+	LK_DOC("config_update_with_old_values", "Update current case with old values", "(none):table");
+	if (VersionUpgrade* vuc = static_cast<VersionUpgrade*>(cxt.user_data()))
+	{
+		VarTable& vt_old = vuc->GetCase()->OldValues();
+		cxt.result().empty_hash();
+		for (VarTable::iterator it = vt_old.begin(); it != vt_old.end(); ++it)
+		{
+			if (VarValue* vv = vuc->GetCase()->Values().Get(it->first))
+			{
+				cxt.result().hash_item(it->first).assign(vv->AsString() + "=" + it->second->AsString() + "\n");
+				vv->Copy(*(it->second));
+			}
+		}
+	}
+
+}
+
+
+
 static void fcall_vuc_config( lk::invoke_t &cxt )
 {
 	LK_DOC( "config", "Set or get the current case's configuration", "(string:tech, string:fin, [string:reason]):boolean or (none):table");
@@ -517,6 +538,7 @@ lk::fcall_t* VersionUpgrade::invoke_functions()
 		fcall_vuc_varinfo,
 		fcall_vuc_case_name,
 		fcall_vuc_config,
+		fcall_vuc_config_update_with_old_values,
 		fcall_vuc_message,
 		0 };
 	return (lk::fcall_t*)vec;

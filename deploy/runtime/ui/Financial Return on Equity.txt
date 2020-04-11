@@ -5,7 +5,7 @@ Financial Return on Equity
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -22,6 +22,9 @@ Width
 Height
 3
 56
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -32,7 +35,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -49,6 +52,9 @@ Width
 Height
 3
 30
+Tool Tip
+5
+0
 Caption
 5
 69
@@ -77,7 +83,7 @@ AlignTop
 SchedNumeric
 
 1
-11
+12
 Name
 5
 9
@@ -94,6 +100,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Label
 5
 5

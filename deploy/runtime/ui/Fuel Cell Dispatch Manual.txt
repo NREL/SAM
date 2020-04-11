@@ -12,13 +12,13 @@ Name
 AllowChargeFromExcessSolarLabel
 X
 3
-78
+57
 Y
 3
 27
 Width
 3
-108
+129
 Height
 3
 48
@@ -348,13 +348,13 @@ Name
 Percent of rated to discharge
 X
 3
-474
+468
 Y
 3
 60
 Width
 3
-84
+90
 Height
 3
 36

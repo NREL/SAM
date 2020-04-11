@@ -15,13 +15,13 @@ X
 9
 Y
 3
-12
+6
 Width
 3
 572
 Height
 3
-170
+176
 Tool Tip
 5
 0
@@ -104,16 +104,16 @@ Name
 adjust
 X
 3
-30
+21
 Y
 3
-813
+825
 Width
 3
 294
 Height
 3
-78
+72
 Tool Tip
 5
 0
@@ -229,13 +229,13 @@ Name
 batt_simple_enable
 X
 3
-417
+378
 Y
 3
-825
+834
 Width
 3
-144
+177
 Height
 3
 24
@@ -333,7 +333,7 @@ Width
 210
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -360,7 +360,7 @@ Y
 720
 Width
 3
-155
+161
 Height
 3
 24
@@ -1293,7 +1293,7 @@ Y
 60
 Width
 3
-174
+141
 Height
 3
 24
@@ -1623,7 +1623,7 @@ Width
 528
 Height
 3
-36
+39
 Tool Tip
 5
 0
@@ -1716,10 +1716,10 @@ Y
 786
 Width
 3
-519
+546
 Height
 3
-24
+42
 Tool Tip
 5
 0
@@ -1758,16 +1758,16 @@ Name
 object 735
 X
 3
-384
+348
 Y
 3
-27
+15
 Width
 3
-189
+231
 Height
 3
-147
+159
 Tool Tip
 5
 0
@@ -1815,7 +1815,7 @@ Width
 135
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -2017,7 +2017,7 @@ Enable simple battery
  
 PVWatts
 0
-12
+13
 1
 1
 1

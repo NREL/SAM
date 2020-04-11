@@ -42,7 +42,7 @@ Name
 object 7
 X
 3
-753
+771
 Y
 3
 462
@@ -90,7 +90,7 @@ Name
 probability_sum
 X
 3
-657
+675
 Y
 3
 462
