@@ -1,6 +1,6 @@
 Battery Current and Capacity
-993
-427
+1051
+429
 27
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 3
 Width
 3
-985
+1042
 Height
 3
 421
@@ -63,7 +63,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -125,7 +125,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -217,7 +217,7 @@ BackColour
 255
 TabOrder
 3
-15
+1
 Numeric
 
 1
@@ -279,7 +279,7 @@ BackColour
 255
 TabOrder
 3
-22
+5
 Numeric
 
 1
@@ -341,7 +341,7 @@ BackColour
 255
 TabOrder
 3
-23
+6
 Numeric
 
 1
@@ -403,7 +403,7 @@ BackColour
 255
 TabOrder
 3
-22
+3
 Numeric
 
 1
@@ -465,7 +465,7 @@ BackColour
 255
 TabOrder
 3
-22
+4
 Numeric
 
 1
@@ -497,7 +497,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -652,10 +652,10 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -685,7 +685,7 @@ BackColour
 255
 TabOrder
 3
-20
+7
 Numeric
 
 1
@@ -714,10 +714,10 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -776,10 +776,10 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -809,7 +809,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -841,7 +841,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -903,7 +903,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -974,7 +974,7 @@ Horizontal
 0
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -1006,7 +1006,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1065,10 +1065,10 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1130,7 +1130,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1192,7 +1192,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1254,7 +1254,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1316,7 +1316,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1357,13 +1357,13 @@ Name
 batt_size_warning
 X
 3
-39
+12
 Y
 3
 387
 Width
 3
-609
+654
 Height
 3
 24
@@ -1425,7 +1425,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1469,20 +1469,20 @@ X
 669
 Y
 3
-144
+165
 Width
 3
-309
+369
 Height
 3
-234
+195
 Tool Tip
 5
 0
 Caption
 5
-470
-The computed properties are the battery bank properties SAM uses for simulations. The nominal bank voltage is the product of the cell nominal voltage and number of cells in series. The nominal voltage is the product of the cell capacity, bank voltage, and number of strings in parallel.  The C-rate is a measure of how much of the battery capacity can be charged or discharged per hour.  The max power is computed from the max C-rate of discharge.  See help for details.
+448
+The computed properties are the battery bank properties SAM uses for simulations. The nominal bank voltage is the product of the cell nominal voltage and number of cells in series. The nominal voltage is the product of the cell capacity, bank voltage, and number of strings in parallel.  The C-rate is a measure of how much of the battery capacity can be charged or discharged per hour.  The max power is computed from the max C-rate of discharge. 
 TextColour
 4
 0
@@ -1520,7 +1520,7 @@ Y
 138
 Width
 3
-597
+1020
 Height
 3
 16
@@ -1550,7 +1550,7 @@ batt_C_rate_max_charge
 1
 Max C-rate of charge
 per/hour
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1564,7 +1564,7 @@ batt_C_rate_max_discharge
 1
 Max C-rate of discharge
 per/hour
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1578,7 +1578,7 @@ batt_Qfull
 1
 Cell capacity
 Ah
-Battery
+Battery Current and Capacity
 0
 2
 1
@@ -1592,7 +1592,7 @@ batt_Qfull_flow
 1
 Cell capacity
 Ah
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1606,7 +1606,7 @@ batt_cell_current_charge_max
 1
 Cell max current charge
 A
-Battery
+Battery Current and Capacity
 0
 2
 1
@@ -1620,7 +1620,7 @@ batt_cell_current_discharge_max
 1
 Cell max current discharge
 A
-Battery
+Battery Current and Capacity
 0
 2
 1
@@ -1634,7 +1634,7 @@ batt_cell_power_charge_max
 1
 Cell max power charge
 Wdc
-Battery
+Battery Current and Capacity
 0
 2
 1
@@ -1648,7 +1648,7 @@ batt_cell_power_discharge_max
 1
 Cell max power discharge
 Wdc
-Battery
+Battery Current and Capacity
 0
 2
 1
@@ -1662,7 +1662,7 @@ batt_computed_bank_capacity
 1
 Nominal bank capacity
 kWh (DC)
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1676,7 +1676,7 @@ batt_computed_series
 1
 Cells in series
  
-Battery
+Battery Current and Capacity
 0
 9
 1
@@ -1690,7 +1690,7 @@ batt_computed_stacks_series
 1
 Stacks in series
  
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1704,7 +1704,7 @@ batt_computed_strings
 1
 Strings in parallel
  
-Battery
+Battery Current and Capacity
 0
 9
 1
@@ -1718,7 +1718,7 @@ batt_computed_voltage
 1
 Nominal bank voltage
 V (DC)
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1732,7 +1732,7 @@ batt_current_charge_max
 1
 Maximum charge current
 A
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1744,11 +1744,12 @@ Default
 batt_current_choice
 3
 1
+Flow battery current or power limited
  
- 
-Battery
-0
-0
+Battery Current and Capacity
+59
+Power limited|Current Limited| Limit both current and power
+1
 1
 1
 1
@@ -1760,7 +1761,7 @@ batt_current_discharge_max
 1
 Maximum discharge current
 A
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1774,7 +1775,7 @@ batt_num_cells
 1
 Total number of cells
  
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1788,7 +1789,7 @@ batt_power_charge_max_kwac
 1
 Maximum charge power (AC)
 kWac
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1802,7 +1803,7 @@ batt_power_charge_max_kwdc
 1
 Maximum charge power (DC)
 kWdc
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1816,7 +1817,7 @@ batt_power_discharge_max_kwac
 1
 Maximum discharge power (AC)
 kWac
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1830,7 +1831,7 @@ batt_power_discharge_max_kwdc
 1
 Maximum discharge power (DC)
 kWdc
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1844,7 +1845,7 @@ batt_time_capacity
 1
 Time at maximum power
 h
-Battery
+Battery Current and Capacity
 0
 8
 1
@@ -1854,9 +1855,9 @@ Battery
 2
 Default
 
-8145
+9008
 equations{ '$MIMO$ batt_bank_computed' } = define() {
-		
+
 	choice = ${batt_size_choice};
 	isflow = ${batt_chem} == 2 || ${batt_chem} == 3;
 	
@@ -1885,7 +1886,7 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 		return;
 	}
 	
-	// Ac-coupled
+	// AC-coupled
 	if (${batt_ac_or_dc} == 1)
 	{
 		// Size for AC discharge capacity
@@ -2040,37 +2041,75 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 		${batt_C_rate_max_charge} = batt_C_rate_max_charge;
 		${batt_C_rate_max_discharge} = batt_C_rate_max_discharge;
 	}
-	// Now update AC power limit
-	// Ac-coupled
+	
+	// Calculate AC charge and discharge power
 	batt_bank_power_discharge_ac = 0;
 	batt_bank_power_charge_ac = 0;
-	if (${batt_ac_or_dc} == 1)
+	if (isflow) // flow batteries
 	{
-		if (${batt_bank_power_dc_ac} == 1){
-			batt_bank_power_discharge_ac = ${batt_bank_power};
-			batt_bank_power_charge_ac = ${batt_bank_power};
+		p_discharge = bank_power_discharge;
+        p_charge = bank_power_charge;
+	}
+	else // chemical batteries
+	{
+		if ( choice == 0 ) // Set bank capacity
+		{
+			p_discharge = ${batt_bank_power};
+			p_charge = p_discharge;
 		}
-		else {
-			batt_bank_power_discharge_ac = ${batt_bank_power} * (${batt_dc_ac_efficiency}*0.01);
-			batt_bank_power_charge_ac =  ${batt_bank_power} / (${batt_dc_ac_efficiency}*0.01);
+		else // specify cells
+		{
+			p_discharge = bank_power;
+			p_charge = bank_power_charge;
+		}	
+	}
+	if ( choice == 0 ) // Set desired bank size
+	{
+		if (${batt_ac_or_dc} == 1) // AC-connected
+		{
+			if ( ${batt_bank_power_dc_ac} == 1 ) // Bank power units in AC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge;
+				batt_bank_power_charge_ac = p_charge;
+			}
+			else // Bank power units in DC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge * (${batt_dc_ac_efficiency}*0.01);
+				batt_bank_power_charge_ac =  p_charge / (${batt_dc_ac_efficiency}*0.01);
+			}
+		}
+		else // DC-connected
+		{
+			if ( ${batt_bank_power_dc_ac} == 1) // Bank power units in AC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge;
+				batt_bank_power_charge_ac = p_charge;
+			}
+			else // Bank power units in DC kW
+			{
+				batt_bank_power_discharge_ac = p_discharge * inv_eff;
+				batt_bank_power_charge_ac =  p_charge / inv_eff;
+			}
 		}
 	}
-	// Dc-coupled
-	else if (${batt_ac_or_dc} == 0)
+	else // Specify cells
 	{
-		if (${batt_bank_power_dc_ac} == 1){
-			batt_bank_power_discharge_ac = ${batt_bank_power};
-			batt_bank_power_charge_ac = ${batt_bank_power};
+		if (${batt_ac_or_dc} == 1) // AC-connected
+		{
+			batt_bank_power_discharge_ac = p_discharge * (${batt_dc_ac_efficiency}*0.01);
+			batt_bank_power_charge_ac =  p_charge * (${batt_dc_ac_efficiency}*0.01);
 		}
-		else {
-			batt_bank_power_discharge_ac = ${batt_bank_power} * inv_eff;
-			batt_bank_power_charge_ac =  ${batt_bank_power} / inv_eff;
+		else // DC-connected
+		{
+			batt_bank_power_discharge_ac = p_discharge * inv_eff;
+			batt_bank_power_charge_ac =  p_charge / inv_eff;
 		}
 	}
 
 	${batt_power_charge_max_kwac} = batt_bank_power_charge_ac;
 	${batt_power_discharge_max_kwac} = batt_bank_power_discharge_ac;
 };
+
 equations{ '$MIMO$ batt_lead_acid_computed' } = define() {
 	${LeadAcid_q10_computed} = ${batt_computed_strings}*${LeadAcid_q10}*${batt_Qfull}/100;
 	${LeadAcid_q20_computed} = ${batt_computed_strings}*${LeadAcid_q20}*${batt_Qfull}/100;

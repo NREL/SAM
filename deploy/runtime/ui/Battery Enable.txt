@@ -42,7 +42,7 @@ en_batt
 1
 Enable battery model
  
-Battery
+Battery Enable
 0
 5
 1

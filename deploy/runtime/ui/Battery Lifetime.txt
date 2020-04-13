@@ -1,6 +1,6 @@
 Battery Lifetime
-1045
-768
+1053
+801
 17
 GroupBox
 
@@ -18,10 +18,10 @@ Y
 3
 Width
 3
-1003
+1042
 Height
 3
-759
+792
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 batt_calendar_a
 X
 3
-66
+243
 Y
 3
-450
+495
 Width
 3
 90
@@ -93,7 +93,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -104,10 +104,10 @@ Name
 batt_calendar_b
 X
 3
-66
+243
 Y
 3
-477
+522
 Width
 3
 90
@@ -155,7 +155,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -166,10 +166,10 @@ Name
 batt_calendar_c
 X
 3
-66
+243
 Y
 3
-504
+549
 Width
 3
 90
@@ -217,7 +217,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 RadioChoice
 
 1
@@ -231,13 +231,13 @@ X
 36
 Y
 3
-348
+375
 Width
 3
-447
+492
 Height
 3
-33
+24
 Tool Tip
 5
 0
@@ -258,7 +258,7 @@ Horizontal
 1
 TabOrder
 3
-4294967295
+1
 Plot
 
 1
@@ -269,16 +269,16 @@ Name
 batt_calendar_life_plot
 X
 3
-540
+537
 Y
 3
-342
+375
 Width
 3
 448
 Height
 3
-297
+399
 Tool Tip
 5
 0
@@ -295,10 +295,10 @@ X
 33
 Y
 3
-324
+357
 Width
 3
-939
+966
 Height
 3
 22
@@ -317,7 +317,7 @@ Colour
 Caption
 5
 20
-Calendar degradation
+Calendar Degradation
 Bold
 2
 1
@@ -331,13 +331,13 @@ Name
 batt_calendar_lifetime_label_2
 X
 3
-42
+33
 Y
 3
-543
+582
 Width
 3
-291
+498
 Height
 3
 16
@@ -356,7 +356,7 @@ Colour
 Caption
 5
 18
-Custom degradation
+Custom Degradation
 Bold
 2
 1
@@ -373,10 +373,10 @@ X
 33
 Y
 3
-402
+417
 Width
 3
-261
+498
 Height
 3
 16
@@ -394,8 +394,8 @@ Colour
 255
 Caption
 5
-30
-Lithium-ion model coefficients
+17
+Lithium-ion Model
 Bold
 2
 1
@@ -412,7 +412,7 @@ X
 39
 Y
 3
-567
+600
 Width
 3
 445
@@ -499,13 +499,13 @@ Name
 batt_calendar_model_1
 X
 3
-177
+54
 Y
 3
-477
+435
 Width
 3
-303
+456
 Height
 3
 24
@@ -530,13 +530,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -547,16 +547,16 @@ Name
 batt_calendar_model_2
 X
 3
-177
+54
 Y
 3
-501
+462
 Width
 3
-363
+456
 Height
 3
-30
+24
 Tool Tip
 5
 0
@@ -581,10 +581,10 @@ WordWrap
 1
 AlignRight
 2
-1
+0
 AlignTop
 2
-0
+1
 Numeric
 
 1
@@ -595,10 +595,10 @@ Name
 batt_calendar_q0
 X
 3
-66
+57
 Y
 3
-423
+495
 Width
 3
 90
@@ -646,7 +646,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Divider
 
 1
@@ -657,13 +657,13 @@ Name
 batt_cycle_lifetime_label
 X
 3
-30
+27
 Y
 3
-48
+78
 Width
 3
-939
+966
 Height
 3
 22
@@ -682,7 +682,7 @@ Colour
 Caption
 5
 17
-Cycle degradation
+Cycle Degradation
 Bold
 2
 1
@@ -696,16 +696,16 @@ Name
 batt_lifetime_matrix
 X
 3
-27
+48
 Y
 3
-75
+99
 Width
 3
 442
 Height
 3
-246
+240
 Tool Tip
 5
 0
@@ -782,27 +782,27 @@ Label
 13
 Name
 5
-21
-batt_lifetime_warning
+8
+object 7
 X
 3
-36
+24
 Y
 3
 24
 Width
 3
-924
+990
 Height
 3
-24
+48
 Tool Tip
 5
 0
 Caption
 5
-131
-On the "Lifetime" tab, please select "Simulation over analysis period" to consider multi-year battery degradations and replacements
+263
+The cycle degradation model determines how battery capacity decreases with the number of charge and discharge cycles. The optional calendar degradation determines how capacity decreases over time regardless of cycling and applies in addition to cycle degradation.
 TextColour
 4
 0
@@ -817,13 +817,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Plot
 
 1
@@ -834,16 +834,16 @@ Name
 plot_cap_vs_cycle
 X
 3
-540
+537
 Y
 3
-72
+99
 Width
 3
 445
 Height
 3
-246
+240
 Tool Tip
 5
 0
@@ -854,7 +854,7 @@ batt_calendar_a
 1
 a
 1/sqrt(day)
-Battery
+BatteryCell
 0
 2
 1
@@ -868,7 +868,7 @@ batt_calendar_b
 1
 b
 K
-Battery
+BatteryCell
 0
 2
 1
@@ -882,7 +882,7 @@ batt_calendar_c
 1
 c
 K
-Battery
+BatteryCell
 0
 2
 1
@@ -894,11 +894,12 @@ Numeric
 batt_calendar_choice
 3
 1
+Calendar degradation options
  
- 
-Battery
-0
-2
+BatteryCell
+35
+None|Lithium-ion model|Enter custom
+3
 1
 1
 1
@@ -910,7 +911,7 @@ batt_calendar_lifetime_matrix
 3
 Calendar lifetime matrix
  
-Battery
+BatteryCell
 0
 3
 1
@@ -927,7 +928,7 @@ batt_calendar_q0
 1
 q0
 fraction
-Battery
+BatteryCell
 0
 0
 1
@@ -941,7 +942,7 @@ batt_lifetime_matrix
 3
 Lifetime matrix
  
-Battery
+BatteryCell
 0
 3
 1
@@ -961,7 +962,7 @@ Battery
 DataMatrix
 
 0
-5331
+5350
 on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
 	on_change{'batt_calendar_choice'}();
@@ -1127,9 +1128,9 @@ function plot_calendar_life()
 	if (is_table || is_model)
 	{
 		if (use_legend)
-			plotopt( {'title'='Capacity fade', 'legend'=use_legend, 'legendpos'=[15,55]});
+			plotopt( {'title'='Caldendar Degradation', 'legend'=use_legend, 'legendpos'=[15,55]});
 		else
-			plotopt( {'title'='Capacity fade', 'legend'=use_legend});
+			plotopt( {'title'='Calendar Degradation', 'legend'=use_legend});
 
 		axis( 'x1', {'label'='Age of battery (days)', 'min'=0, 'max'=max(t)+10});
 		axis( 'y1', {'label'='Effective capacity (%)', 'min'=0, 'max'=100});
@@ -1188,7 +1189,7 @@ on_change{ 'batt_lifetime_matrix' } = define() {
 		plot( n_plot, C_plot, {'thick'=2, 'type'='line', 'color'=color_string_array[i], 'series'=legend_string[i]});
 
 	}
-	plotopt( {'title'='Capacity fade', 'legend'=true, 'legendpos'=[65,60]});
+	plotopt( {'title'='Cycle Degradation', 'legend'=true, 'legendpos'=[65,60]});
 	axis( 'x1', {'label'='Cycle number', 'min'=0, 'max'=max(n)+100});
 	axis( 'y1', {'label'='Effective capacity (%)', 'min'=0, 'max'=100});
 };

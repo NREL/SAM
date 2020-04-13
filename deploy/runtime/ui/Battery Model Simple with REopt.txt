@@ -68,7 +68,7 @@ Description
 For each simulation time step enter a rate in kW, less than zero to charge the battery, and greater than zero to discharge.
 TabOrder
 3
-4294967295
+5
 Label
 
 1
@@ -150,7 +150,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+3
 Choice
 
 1
@@ -185,7 +185,7 @@ Selection
 4294967295
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -247,7 +247,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -309,7 +309,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Label
 
 1
@@ -387,7 +387,7 @@ Caption
 Get size and dispatch
 TabOrder
 3
-4294967295
+7
 Divider
 
 1
@@ -566,7 +566,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+6
 
 7
 batt_custom_dispatch
