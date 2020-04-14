@@ -1,6 +1,6 @@
 Battery Voltage
-1052
-635
+1051
+637
 20
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 1042
 Height
 3
-621
+630
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 batt_C_rate
 X
 3
-234
+228
 Y
 3
-450
+381
 Width
 3
 90
@@ -104,10 +104,10 @@ Name
 batt_Qexp_percent
 X
 3
-234
+228
 Y
 3
-558
+489
 Width
 3
 90
@@ -166,10 +166,10 @@ Name
 batt_Qnom_percent
 X
 3
-234
+228
 Y
 3
-585
+516
 Width
 3
 90
@@ -228,10 +228,10 @@ Name
 batt_Vexp
 X
 3
-234
+228
 Y
 3
-504
+435
 Width
 3
 90
@@ -290,10 +290,10 @@ Name
 batt_Vfull
 X
 3
-234
+228
 Y
 3
-477
+408
 Width
 3
 90
@@ -352,10 +352,10 @@ Name
 batt_Vnom
 X
 3
-234
+228
 Y
 3
-531
+462
 Width
 3
 90
@@ -538,23 +538,23 @@ Name
 batt_chem_message
 X
 3
-18
+357
 Y
 3
-381
+393
 Width
 3
-297
+678
 Height
 3
-48
+30
 Tool Tip
 5
 0
 Caption
 5
 104
-For Vandium redox batteries, only enter the voltage at 50% SOC as the nominal voltage, and resistance.  
+For Vandium redox flow batteries, enter the voltage at 50% SOC as the nominal voltage, and resistance.  
 TextColour
 4
 0
@@ -649,8 +649,8 @@ Colour
 255
 Caption
 5
-13
-Voltage Model
+26
+Electrochemical Properties
 Bold
 2
 1
@@ -745,7 +745,7 @@ Selection
 Items
 6
 2
-Voltage model
+Electrochemical model
 Voltage table
 ShowCaptions
 2
@@ -817,7 +817,7 @@ X
 357
 Y
 3
-411
+426
 Width
 3
 640
@@ -907,20 +907,20 @@ X
 18
 Y
 3
-330
+327
 Width
 3
 297
 Height
 3
-48
+42
 Tool Tip
 5
 0
 Caption
 5
-78
-The voltage model is available for all chemistries except iron flow batteries.
+64
+Electrochemical properties are not available for flow batteries.
 TextColour
 4
 0
@@ -955,13 +955,13 @@ X
 357
 Y
 3
-330
+327
 Width
 3
 678
 Height
 3
-72
+63
 Tool Tip
 5
 0
@@ -1186,15 +1186,15 @@ batt_voltage_choice
 Battery voltage model options
  
 BatteryCell
-27
-Voltage model|Voltage table
+35
+Electrochemical model|Voltage table
 1
 1
 1
 1
 1
 0
-Default
+RadioChoice
 batt_voltage_matrix
 3
 3
@@ -1215,10 +1215,10 @@ Depth of discharge [%]| Cell voltage [V]
 80 0.95 
 100 0.5 
 
-Default
+DataMatrix
 
 0
-4865
+4869
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
@@ -1263,12 +1263,10 @@ function set_voltage_choice(update_defaults)
 						
 	// need to disable inputs for voltage model for iron and vanadium
 	model_inputs_on = !value('batt_voltage_choice');
-	if (is_vanadium)
-		model_inputs_on = false;
+	if (is_vanadium) { model_inputs_on = false; }
 		
 	// never allow iron to use a voltage model (doesn't exist)
-	if (is_iron && model_inputs_on)
-		value('batt_voltage_choice', 1);
+	if (is_iron && model_inputs_on) { value('batt_voltage_choice', 1); }
 
 	//show_voltage_model_inputs(show_model_inputs);	
 	enable_voltage_model_inputs(model_inputs_on);
