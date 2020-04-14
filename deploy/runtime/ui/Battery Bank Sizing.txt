@@ -872,7 +872,8 @@ batt_bank_power_dc_ac
 Battery desired bank power DC or AC
  
 Battery Sizing
-0
+5
+DC|AC
 1
 1
 1
@@ -900,7 +901,8 @@ batt_bank_size_dc_ac
 Battery desired bank capacity DC or AC
  
 Battery Sizing
-0
+5
+DC|AC
 1
 1
 1
