@@ -1,11 +1,5 @@
 1
-647
-Label
-1
-1
-1
-1
-0
+646
 adjust
 1
 5
@@ -2652,7 +2646,7 @@ grid_interconnection_limit_kwac
 1
 1
 1
-100000
+20000
 ibi_fed_amount
 1
 1
@@ -2925,8 +2919,8 @@ Type a location name, street address, or latitude and longitude
 in_location_list
 1
 4
-74
-15458 Denver W Pkwy, Golden CO 804041|phoenix,az|45.5,-120.9|Manaus,Brazil
+3
+|||
 in_location_options
 1
 1
@@ -3556,8 +3550,8 @@ fargo_nd_46.9_-96.8_mts1_60_tmy.csv
 solar_data_file_name_load
 1
 4
-48
-tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+35
+fargo_nd_46.9_-96.8_mts1_60_tmy.csv
 solar_data_source
 1
 4
