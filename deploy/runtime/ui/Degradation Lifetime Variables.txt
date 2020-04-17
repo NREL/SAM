@@ -1,6 +1,6 @@
 Degradation Lifetime Variables
-1045
-768
+796
+137
 3
 GroupBox
 
@@ -21,14 +21,14 @@ Width
 780
 Height
 3
-70
+124
 Tool Tip
 5
 0
 Caption
 5
-23
-Lifetime Vs Annual Data
+47
+Memory Saving Option for Sub-hourly Simulations
 Bold
 2
 1
@@ -42,23 +42,23 @@ Name
 object 7
 X
 3
-345
+21
 Y
 3
-18
+51
 Width
 3
-439
+760
 Height
 3
-50
+65
 Tool Tip
 5
 0
 Caption
 5
-232
-In sub-hourly simulations, saving all lifetime outputs can consume a lot of memory. Uncheck this box to reduce memory use by only saving some variables for the first year. (Examples include inverter clipping, shading, and snow loss)
+343
+If you are running sub-hourly simulations and experiencing display or memory problems on the Results page, clear the checkbox to reduce the number of variables displayed over the analysis period to a selection of key outputs. This will cause some output variables to appear on the Results page under "Hourly" instead of "Lifetime Hourly Data".
 TextColour
 4
 0
@@ -90,13 +90,13 @@ Name
 save_full_lifetime_variables
 X
 3
-18
+21
 Y
 3
-30
+24
 Width
 3
-169
+406
 Height
 3
 24
@@ -105,8 +105,8 @@ Tool Tip
 0
 Caption
 5
-27
-Save All Lifetime Variables
+46
+Save all output variables over analysis period
 State
 2
 1
@@ -118,7 +118,7 @@ TabOrder
 save_full_lifetime_variables
 3
 1
-Save All Lifetime Variables
+Save all outputs as lifetime
  
 Degradation and Lifetime
 0
@@ -128,7 +128,7 @@ Degradation and Lifetime
 1
 1
 1
-Default
+Numeric
 
 0
 0
