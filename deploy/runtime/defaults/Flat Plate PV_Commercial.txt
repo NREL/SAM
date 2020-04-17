@@ -1,5 +1,5 @@
 1
-789
+790
 6par_aisc
 1
 1
@@ -3045,6 +3045,12 @@ salvage_value
 1
 1
 0
+save_full_lifetime_variables
+1
+1
+1
+1
+1
 scale_factor
 1
 1
