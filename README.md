@@ -20,6 +20,11 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 * [Google Test](https://github.com/google/googletest) is a C++ test framework that enables comprehensive unit-testing of software.  Contributions to the project will eventually be required to have associated unit tests written in this framework.
 
+* [jsoncpp](https://github.com/open-source-parsers/jsoncpp) is a C++ library that allows manipulating JSON values, including serialization and deserialization to and from strings.
+
+* [Python](https://www.python.org)/[Miniconda](https://docs.conda.io/) Necessary additional information is included in the install directory.
+
+
 * This repository, **SAM**, provides the user interface to assign values to inputs of the SSC compute modules, run the modules in the correct order, and display simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimensional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
 
 We also include two Sandia libraries, [stepwise](https://dakota.sandia.gov/content/packages/stepwise), and [LHS](https://dakota.sandia.gov/content/packages/lhs), which are distributed as part of the Dakota platform, licensed under [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html).  These libraries may be found [here](https://github.com/NREL/SAM/tree/develop/Sandia).

@@ -18,7 +18,7 @@ endif()
 
 #####################################################################################################################
 #
-# Project Settings 
+# Project Settings
 #
 #####################################################################################################################
 
@@ -75,7 +75,8 @@ set(SAM_SRC
 	src/troughloop.cpp
 	src/shadingfactors.cpp
 	src/materials.cpp
-	src/codegenerator.cpp)
+	src/codegenerator.cpp
+	src/pythonhandler.cpp src/pythonhandler.h)
 
 
 #####################################################################################################################
@@ -101,7 +102,7 @@ else(MSVC)
 		add_compile_options(-arch x86_64 -fno-common)
 		add_definitions(-DWX_PRECOMP)
 	else()
-		add_compile_options(-Wno-deprecated -Wno-misleading-indentation)
+		add_compile_options(-Wno-deprecated)
 	endif()
 	add_compile_options(-Wall -Wno-unknown-pragmas -Wno-overloaded-virtual -std=c++11)
 	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -137,7 +138,7 @@ include(${wxWidgets_USE_FILE})
 
 
 #####################################################################################################################
-# 
+#
 # CMake Targets
 #
 #####################################################################################################################
@@ -152,6 +153,7 @@ elseif(WIN32)
 	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/SAM.rc)
 endif()
 
+# have to make executables with different names so the .app's have different names
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_executable(SAMd
 			WIN32
@@ -168,18 +170,27 @@ else() # if Release or if MSVC multigenerator
 	set(SAM_EXE SAM)
 endif()
 
-set_target_properties(${SAM_EXE}
-    PROPERTIES
-    DEBUG_POSTFIX "d")
 if (MSVC)
 	set_target_properties(${SAM_EXE}
 		PROPERTIES
 		LINK_FLAGS /SUBSYSTEM:WINDOWS
+        DEBUG_POSTFIX "d"
 		RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>/deploy/x64)
-elseif(UNIX AND NOT APPLE)
-	set_target_properties(${SAM_EXE}
-		PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+else()
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(SAM_NAME SAMd)
+    else()
+        set(SAM_NAME SAM)
+    endif()
+    if(APPLE)
+        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/${SAM_NAME}.app)
+    else()
+        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/deploy)
+        set_target_properties(${SAM_EXE}
+                PROPERTIES
+                OUTPUT_NAME ${SAM_NAME}.bin
+                RUNTIME_OUTPUT_DIRECTORY ${SAM_APP}/linux_64)
+    endif()
 endif()
 
 #####################################################################################################################
@@ -243,15 +254,11 @@ endif()
 SET(CMAKE_SKIP_BUILD_RPATH)
 
 if (APPLE)
-	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-		set(SSC_NAME sscd)
-		set(SAM_NAME SAMd)
-		set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/SAMd.app)
-	else()
-		set(SSC_NAME ssc)
-		set(SAM_NAME SAM)
-		set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/SAM.app)
-	endif()
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(SSC_NAME sscd)
+    else()
+        set(SSC_NAME ssc)
+    endif()
 	if(${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
 		set(SSC_DIR ${CMAKE_CURRENT_BINARY_DIR}/../ssc/ssc)
 	else()
@@ -272,36 +279,45 @@ if (APPLE)
 	)
 else()
 	if (UNIX)
-		set_target_properties(${SAM_EXE}
-			PROPERTIES OUTPUT_NAME sam.bin)
-		add_custom_command(
+        add_custom_command(
 			TARGET ${SAM_EXE}
-			POST_BUILD
-			COMMAND rm -rf ${PROJECT_SOURCE_DIR}/sam.deploy)
-		set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/sam.deploy)
-		install(TARGETS ${SAM_EXE}
-			RUNTIME DESTINATION linux_64)
-		install(FILES ${SSC_LIB}
-			DESTINATION linux_64)
-		install(FILES Sandia/linux/lhs.bin Sandia/linux/stepwise.bin
-			DESTINATION runtime/bin)
-		install(DIRECTORY build_resources/GtkTheme
-			DESTINATION linux_64)
-		install(DIRECTORY deploy/libraries deploy/runtime deploy/solar_resource deploy/wind_resource
-			DESTINATION .)
+			PRE_BUILD
+			COMMAND rm -rf ${SAM_APP}/linux_64
+            COMMAND mkdir -p ${SAM_APP}/linux_64
+        )
+        add_custom_command(
+            TARGET ${SAM_EXE}
+            POST_BUILD
+            COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}
+            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/runtime/bin
+            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}//runtime
+            COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/build_linux/GtkTheme ${SAM_APP}/linux_64
+            COMMAND cp $<TARGET_FILE:ssc> ${SAM_APP}/linux_64
+        )
 
-		set(CPACK_GENERATOR "STGZ;TGZ")
-		set(CPACK_PACKAGE_FILE_NAME "sam.deploy")
-		set(CPACK)
-		include(CPack)
-		add_custom_target( installer
-			COMMAND "rm" "-f" "install0"
-			COMMAND "echo" "#!/bin/sh" ">" "install0"
-			COMMAND "echo" "SAMVER=Open.Source" ">>" "install0"
-			COMMAND "cat" "install0" "${CMAKE_SOURCE_DIR}/build_resources/install.sh" "sam.deploy.tar.gz" ">" "sam-linux-$(SAMVER).run"
-			COMMAND "chmod" "a+x" "sam-linux-$(SAMVER).run"
-			COMMAND "./sam-linux-$(SAMVER).run"
-			DEPENDS SAM)
+#		install(TARGETS ${SAM_EXE}
+#			RUNTIME DESTINATION linux_64)
+#		install(FILES ${SSC_LIB}
+#			DESTINATION linux_64)
+#		install(FILES Sandia/linux/lhs.bin Sandia/linux/stepwise.bin
+#			DESTINATION runtime/bin)
+#		install(DIRECTORY build_linux/GtkTheme
+#			DESTINATION linux_64)
+#		install(DIRECTORY deploy/libraries deploy/runtime deploy/solar_resource deploy/wind_resource
+#			DESTINATION .)
+
+#		set(CPACK_GENERATOR "STGZ;TGZ")
+#		set(CPACK_PACKAGE_FILE_NAME "sam.deploy")
+#		set(CPACK)
+#		include(CPack)
+#		add_custom_target( installer
+#			COMMAND "rm" "-f" "install0"
+#			COMMAND "echo" "#!/bin/sh" ">" "install0"
+#			COMMAND "echo" "SAMVER=Open.Source" ">>" "install0"
+#			COMMAND "cat" "install0" "${CMAKE_SOURCE_DIR}/build_linux/install.sh" "sam.deploy.tar.gz" ">" "sam-linux-$(SAMVER).run"
+#			COMMAND "chmod" "a+x" "sam-linux-$(SAMVER).run"
+#			COMMAND "./sam-linux-$(SAMVER).run"
+#			DEPENDS SAM)
 	elseif(MSVC)
 		set( LIBCURL_FILES
 		    dbghelp.dll

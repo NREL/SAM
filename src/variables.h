@@ -1,22 +1,22 @@
 /**
 BSD-3-Clause
 Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
 that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
 and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
 and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
 or promote products derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
@@ -93,8 +93,9 @@ public:
 
 	VarTable &operator=( const VarTable &rhs );
 	void Copy( const VarTable &rhs );
-	
-	bool Delete( const wxString &name );
+    void Merge(const VarTable &rhs, bool overwrite_existing);
+
+    bool Delete( const wxString &name );
 	int Delete( const wxArrayString &names );
 	virtual void clear();
 	wxArrayString ListAll( std::vector<VarValue*> *vals = 0 );
@@ -173,7 +174,7 @@ public:
 	double *Array( size_t *n );
 	std::vector<double> Array();
 	size_t Length();
-	size_t Rows(); 
+	size_t Rows();
 	size_t Columns();
 	std::vector<int> IntegerArray();
 	matrix_t<double> &Matrix();
@@ -236,7 +237,7 @@ public:
 	wxString UIObject; // typename of wxUIObject used for editing
 };
 
-typedef unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> VarInfoHash;	
+typedef unordered_map<wxString, VarInfo*, wxStringHash, wxStringEqual> VarInfoHash;
 
 class VarInfoLookup : public VarInfoHash
 {
@@ -246,7 +247,7 @@ public:
 
 	bool Add( const wxString &name, VarInfo *vv );
 	void Add( VarInfoLookup *vil );
-	
+
 	VarInfo *Lookup( const wxString &name );
 	wxString LookupByLabel(const wxString &label);
 	wxArrayString ListAll();
@@ -270,20 +271,20 @@ public:
 		const wxString &label = wxEmptyString, const wxString &units = wxEmptyString,
 		const wxString &group = wxEmptyString, const wxString &indexlabels = wxEmptyString,
 		unsigned long flags = VF_NONE, const VarValue &defval = VarValue::Invalid, const wxString &uiobject = wxEmptyString);
-			
+
 	bool Delete( const wxString &name );
 	bool Rename( const wxString &old_name, const wxString &new_name );
-	virtual void clear();	
-	
+	virtual void clear();
+
 	bool LoadFile( const wxString &file, const wxString &page = wxEmptyString );
 	void Write( wxOutputStream & );
 	bool Read( wxInputStream &, const wxString &page = wxEmptyString );
-	
+
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &, const wxString &page = wxEmptyString);
 
 private:
-	
+
 	typedef unordered_map<wxString, wxArrayString, wxStringHash, wxStringEqual> StringArrayHash;
 
 };
@@ -294,7 +295,7 @@ private:
 	VarTable *m_vars;
 public:
 	VarTableScriptInterpreter( lk::node_t *tree, lk::env_t *env, VarTable *vt );
-	virtual ~VarTableScriptInterpreter( );	
+	virtual ~VarTableScriptInterpreter( );
 	virtual bool special_set( const lk_string &name, lk::vardata_t &val );
 	virtual bool special_get( const lk_string &name, lk::vardata_t &val );
 };
