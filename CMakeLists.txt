@@ -28,7 +28,7 @@ if (NOT skip_api)
 	add_subdirectory(api)
 endif()
 
-include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
+include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs $ENV{SSCDIR}/jsoncpp/include)
 
 set(SAM_SRC
 	src/ide.cpp
@@ -261,11 +261,6 @@ if (UNIX)
         else()
             set(SSC_NAME ssc)
         endif()
-        if(${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-            set(SSC_DIR ${CMAKE_CURRENT_BINARY_DIR}/../ssc/ssc)
-        else()
-            set(SSC_DIR $ENV{SSCDIR}/build/ssc)
-        endif()
         add_custom_command(
             TARGET ${SAM_EXE}
             POST_BUILD
@@ -275,7 +270,7 @@ if (UNIX)
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
             COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
-            COMMAND cp ${SSC_DIR}/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks
+            COMMAND cp ${SSC_LIB} ${SAM_APP}/Contents/Frameworks
             COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
             COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
         )
