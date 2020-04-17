@@ -1305,7 +1305,7 @@ setup_dish_stirling_pages();
 // Biopower ////////////////////////////////////////////////////////////////////
 function setup_biopower_pages()
 {
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Ambient Conditions', 'help'='biopower_location_ambient_conditions' } );
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Ambient Conditions', 'help'='biopower_location_ambient_conditions' } );
 	addpage( [[ 'Biopower Feedstock' ]], { 'sidebar'='Feedstock', 'help'='biopower_feedstock' } );
 	addpage( [[ 'Biopower Plant Specifications' ]], { 'sidebar'='Plant Specs', 'help'='biopower_plant_specs' } );
 	addpage( [[ 'Biopower Emissions Comparison' ]], { 'sidebar'='Emissions', 'help'='biopower_emissions' } );

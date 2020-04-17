@@ -1,11 +1,5 @@
 1
-332
-Label
-1
-1
-1
-1
-0
+331
 adjust
 1
 5
@@ -47,7 +41,7 @@ annual_albedo
 1
 1
 1
-0
+nan
 annual_beam
 1
 1
@@ -77,7 +71,7 @@ annual_tdry
 1
 1
 1
-5.47657
+5.47658
 annual_wspd
 1
 1
@@ -1037,7 +1031,7 @@ biopwr.feedstock.stover_resource
 1
 1
 1
-1.90315e+06
+1903150
 biopwr.feedstock.stover_usual_moisture
 1
 1
@@ -1951,7 +1945,8 @@ fargo_nd_46.9_-96.8_mts1_60_tmy.csv
 solar_data_file_name_load
 1
 4
-0
+35
+fargo_nd_46.9_-96.8_mts1_60_tmy.csv
 solar_data_source
 1
 4
