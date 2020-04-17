@@ -287,7 +287,7 @@ if (UNIX)
                 COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}
                 COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/runtime/bin
                 COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/runtime
-                COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/build_linux/GtkTheme ${SAM_APP}/linux_64
+#                COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/build_linux/GtkTheme ${SAM_APP}/linux_64
                 COMMAND cp ${SSC_LIB} ${SAM_APP}/linux_64
         )
 
