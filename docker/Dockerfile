@@ -20,3 +20,4 @@ RUN cd /home/travis/builds/travis-github_apps; gem build travis-github_apps.gems
 RUN cd /home/travis/builds/travis-rollout; gem build travis-rollout.gemspec; gem install travis-rollout;
 
 RUN cd /home/travis/build/NREL/SAM; travis compile > /home/travis/build/test.sh
+RUN cd /home/travis/build; export BRANCH="develop"; sed "s/branch\\\=\\\'\\\'/branch\\\=\\\'"$BRANCH"\\\'/g" test.sh > test_branch.sh
