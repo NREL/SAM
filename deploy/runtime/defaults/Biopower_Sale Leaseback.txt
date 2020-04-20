@@ -94,7 +94,7 @@ biopwr.cost.boiler
 1
 1
 1
-7.28034e+06
+7280340
 biopwr.cost.boiler.cost_per_kw
 1
 1
@@ -136,7 +136,7 @@ biopwr.cost.contingency
 1
 1
 1
-6.73053e+06
+6730530
 biopwr.cost.contingency_percent
 1
 1
@@ -262,7 +262,7 @@ biopwr.cost.sales_tax.total
 1
 1
 1
-1.16662e+06
+1166620
 biopwr.cost.sales_tax.value
 1
 1
@@ -286,7 +286,7 @@ biopwr.cost.turbine
 1
 1
 1
-4.95063e+06
+4950630
 biopwr.cost.turbine_capacity
 1
 1
@@ -448,7 +448,7 @@ biopwr.feedstock.bagasse_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.bagasse_resource
 1
 1
@@ -526,7 +526,7 @@ biopwr.feedstock.barley_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.barley_resource
 1
 1
@@ -868,7 +868,7 @@ biopwr.feedstock.forest_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.forest_resource
 1
 1
@@ -1090,7 +1090,7 @@ biopwr.feedstock.mill_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.mill_resource
 1
 1
@@ -1168,7 +1168,7 @@ biopwr.feedstock.rice_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.rice_resource
 1
 1
@@ -1246,7 +1246,7 @@ biopwr.feedstock.stover_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.stover_resource
 1
 1
@@ -1522,7 +1522,7 @@ biopwr.feedstock.urban_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.urban_resource
 1
 1
@@ -1600,7 +1600,7 @@ biopwr.feedstock.wheat_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.wheat_resource
 1
 1
@@ -2734,7 +2734,7 @@ cost_dev_fee_value
 1
 1
 1
-1.12871e+06
+1128710
 cost_equity_closing
 1
 1
@@ -3724,7 +3724,7 @@ mera_cost1
 1
 1
 1
-2.42678e+06
+2426780
 mera_cost2
 1
 1
