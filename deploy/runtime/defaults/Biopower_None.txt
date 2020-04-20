@@ -227,7 +227,7 @@ biopwr.feedstock.bagasse_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.bagasse_resource
 1
 1
@@ -305,7 +305,7 @@ biopwr.feedstock.barley_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.barley_resource
 1
 1
@@ -647,7 +647,7 @@ biopwr.feedstock.forest_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.forest_resource
 1
 1
@@ -869,7 +869,7 @@ biopwr.feedstock.mill_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.mill_resource
 1
 1
@@ -947,7 +947,7 @@ biopwr.feedstock.rice_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.rice_resource
 1
 1
@@ -1025,7 +1025,7 @@ biopwr.feedstock.stover_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.stover_resource
 1
 1
@@ -1301,7 +1301,7 @@ biopwr.feedstock.urban_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.urban_resource
 1
 1
@@ -1379,7 +1379,7 @@ biopwr.feedstock.wheat_obtainable
 1
 1
 1
-2
+10
 biopwr.feedstock.wheat_resource
 1
 1
