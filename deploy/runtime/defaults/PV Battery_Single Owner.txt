@@ -1,5 +1,5 @@
 1
-1060
+1061
 6par_aisc
 1
 1
@@ -4737,6 +4737,12 @@ salvage_value
 1
 1
 0
+save_full_lifetime_variables
+1
+1
+1
+1
+1
 sd11par_AMa0
 1
 1
