@@ -255,6 +255,9 @@ SET(CMAKE_SKIP_BUILD_RPATH)
 
 
 if (UNIX)
+    if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
+        set(SSC_LIB $<TARGET_FILE:ssc>)
+    endif()
     if (APPLE)
         if(CMAKE_BUILD_TYPE STREQUAL "Debug")
             set(SSC_NAME sscd)
