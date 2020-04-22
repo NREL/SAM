@@ -88,10 +88,10 @@ Dish Stirling,Sale Leaseback,207236624,19.760981,20.481043,;
 Dish Stirling,LCOE Calculator,207236624,NA,NA,; 
 Dish Stirling,None,207236624,NA,NA,; 
 Generic CSP System,Commercial,572565824,7.480502,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,Single Owner,573450304,11.703119,12.613471,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Single Owner,574225408,11.687920,12.597040,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Merchant Plant,573450304,10.610463,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Leveraged Partnership Flip,573342592,11.965166,12.902393,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
-Generic CSP System,All Equity Partnership Flip,573420096,15.025028,17.597370,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,All Equity Partnership Flip,573342592,15.026999,17.599688,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Sale Leaseback,573450304,15.225276,17.464741,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,LCOE Calculator,573346496,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,None,573444096,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
@@ -114,14 +114,14 @@ Solar Water Heating,Residential,2252.006104,35.191990,NA,;
 Solar Water Heating,Commercial,2252.080811,23.101711,NA,; 
 Solar Water Heating,LCOE Calculator,2281.620361,NA,NA,; 
 Solar Water Heating,None,2281.620361,NA,NA,; 
-Biopower,Commercial,70450656,9.457481,NA,; 
-Biopower,Single Owner,70450656,13.435673,13.783158,; 
-Biopower,Merchant Plant,70450656,12.264998,NA,; 
-Biopower,Leveraged Partnership Flip,70450656,13.201607,13.717249,; 
-Biopower,All Equity Partnership Flip,70450656,14.242111,15.071810,; 
-Biopower,Sale Leaseback,70450656,13.787952,14.018779,; 
-Biopower,LCOE Calculator,70450656,NA,NA,; 
-Biopower,None,70450656,NA,NA,; 
+Biopower,Commercial,353982848,9.413036,NA,; 
+Biopower,Single Owner,353982848,13.339031,13.681313,; 
+Biopower,Merchant Plant,353982848,12.177007,NA,; 
+Biopower,Leveraged Partnership Flip,353982848,13.083217,13.587696,; 
+Biopower,All Equity Partnership Flip,353982848,14.146337,14.967733,; 
+Biopower,Sale Leaseback,353982848,13.695821,13.923908,; 
+Biopower,LCOE Calculator,353982848,NA,NA,; 
+Biopower,None,353982848,NA,NA,; 
 Generic System,Residential,1513728,20.592197,NA,; 
 Generic System,Commercial,35591988,21.551327,NA,; 
 Generic System,Third Party,30274.560547,NA,NA,; 
