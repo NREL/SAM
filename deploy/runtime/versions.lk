@@ -54,8 +54,7 @@ Some more examples:
 version_upgrade{'2020.2.29'} = define() {
 
     const cfg = config();
-    isConfigChange = false;
-    if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
+     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
         if ( value('en_batt') == 1 )
         {
@@ -63,15 +62,12 @@ version_upgrade{'2020.2.29'} = define() {
 			{
 				ok = config('Generic Battery', cfg.fin, 'Generic Battery configuration replaces Generic System with battery enabled.');
 				config_update_with_old_values();
-				isConfigChange = true;
 				if ( !ok ) { msgbox('Failed to change configuration!\nGeneric Battery configuration replaces Generic System with battery enabled.'); }
 			}
 			if ( cfg.tech == 'Flat Plate PV' )
 			{
 				ok = config('PV Battery', cfg.fin, 'Battery PV configuration replaces Detailed PV with battery enabled.');
-				x = config_update_with_old_values();
-				csvwrite('C:/Projects/SAM/Documentation/GitHub/Issues/SAM_281/json/var_change.csv',x);
-				isConfigChange = true;
+				config_update_with_old_values();
 				if ( !ok ) { msgbox('Failed to change configuration!\nBattery PV configuration replaces Detailed PV with battery enabled.'); }
 			}
 			/* Since original cfg.tech = 'Flat Plate PV' and new cfg.tech = 'PV Battery' old to new value automatic mapping is disabled */
@@ -92,7 +88,6 @@ version_upgrade{'2020.2.29'} = define() {
 		{
 			ok = config('PVWatts Battery', cfg.fin, 'Generic Battery configuration replaces Generic System with battery enabled.');
 			config_update_with_old_values();
-			isConfigChange = true;
 			if ( !ok ) { msgbox('Failed to change configuration!\nPVWatts Battery configuration replaces PVWatts with battery enabled.'); }
 		}
 	}
@@ -146,24 +141,12 @@ version_upgrade{'2020.2.29'} = define() {
     }
        // update ppa_price_input before configuration changes
     fin = cfg.fin;
-    const cfg2 = config();
     is_ppa = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' || fin == 'Host Developer');
-    msgbox('tech before ppa price input old, new ' + cfg2.tech  + ', ' + oldvalue('ppa_price_input') + ', ' + value('ppa_price_input'));
     if ( is_ppa ) 
     {
-		if (isConfigChange) {
-			x=oldvalue('ppa_price_input');
-			y=alloc(1);
-			y[0] = x;
-    msgbox('configchange ppa price input old, new' + cfg2.tech  + ', ' + x + ', ' + y);
-			value( 'ppa_price_input', y, 'Convert single value to array.' );
-    msgbox('configchange ppa price input old, new' + cfg2.tech  + ', ' + oldvalue('ppa_price_input') + ', ' + value('ppa_price_input'));
-			}
-		else
-			value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
+		value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
         message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
     }
-    msgbox('tech after ppa price input old, new' + cfg2.tech  + ', ' + oldvalue('ppa_price_input') + ', ' + value('ppa_price_input'));
 
 };
 
