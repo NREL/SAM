@@ -383,8 +383,11 @@ static void fcall_vuc_config_update_with_old_values(lk::invoke_t& cxt)
 		{
 			if (VarValue* vv = vuc->GetCase()->Values().Get(it->first))
 			{
-				cxt.result().hash_item(it->first).assign(vv->AsString() + "=" + it->second->AsString() + "\n");
-				vv->Copy(*(it->second));
+				if (vv->Type() == (it->second)->Type()) // only update if old variable is of same type
+				{
+					cxt.result().hash_item(it->first).assign(vv->AsString() + "=" + it->second->AsString() + "\n");
+					vv->Copy(*(it->second));
+				}
 			}
 		}
 	}
