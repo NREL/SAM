@@ -54,7 +54,7 @@ Some more examples:
 version_upgrade{'2020.2.29'} = define() {
 
     const cfg = config();
-    if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
+     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
         if ( value('en_batt') == 1 )
         {
@@ -139,13 +139,15 @@ version_upgrade{'2020.2.29'} = define() {
                         value( 'combo_htf_type', old_combo_htf_type + 1 );
         }
     }
+       // update ppa_price_input before configuration changes
     fin = cfg.fin;
     is_ppa = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' || fin == 'Host Developer');
-    if ( is_ppa )
+    if ( is_ppa ) 
     {
-        value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
+		value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
         message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
     }
+
 };
 
 // ** Not sure how this works for patches, so using new version number for testing
