@@ -7565,7 +7565,9 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, 
 			{
 				dbl_value = (double)p[k];
 				if (dbl_value > 1e38) dbl_value = 1e38;
-				if ((k > 0) && (k%nc == 0))
+				if (nc == 1)
+					fprintf(m_fp, " %.17g ], [", dbl_value);
+				else if ((k > 0) && (k%nc == 0))
 					fprintf(m_fp, " [ %.17g,", dbl_value);
 				else if (k%nc == (nc - 1))
 					fprintf(m_fp, " %.17g ],", dbl_value);
