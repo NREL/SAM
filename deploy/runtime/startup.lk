@@ -1056,7 +1056,7 @@ setup_thirdparty_pages( LOAD_SIMPLE );
 setconfig( 'Generic System', 'Commercial' );	
 setmodules( ['generic_system',  'grid', 'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
-setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE); //does not include building load calculator
 
@@ -1064,7 +1064,7 @@ setup_commercial_pages(LOAD_SIMPLE); //does not include building load calculator
 setconfig( 'Generic System', 'Leveraged Partnership Flip' );
 setmodules( ['generic_system', 'grid','levpartflip']);
 setup_generic_system_pages();
-setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_leveraged_partnership_flip_pages();
 
@@ -1072,7 +1072,7 @@ setup_leveraged_partnership_flip_pages();
 setconfig( 'Generic System', 'All Equity Partnership Flip' );
 setmodules( ['generic_system', 'grid','equpartflip']);
 setup_generic_system_pages();
-setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_all_equity_partnership_flip_pages();
 
@@ -1080,7 +1080,7 @@ setup_all_equity_partnership_flip_pages();
 setconfig( 'Generic System', 'Sale Leaseback' );
 setmodules( ['generic_system', 'grid', 'saleleaseback']);
 setup_generic_system_pages();
-setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_sale_leaseback_pages();
 
@@ -1088,21 +1088,21 @@ setup_sale_leaseback_pages();
 setconfig( 'Generic System', 'Single Owner' );
 setmodules( ['generic_system', 'grid', 'singleowner']);
 setup_generic_system_pages();
-setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_single_owner_pages();
 
 setconfig( 'Generic System', 'Merchant Plant' );
 setmodules( ['generic_system', 'grid', 'merchantplant']);
 setup_generic_system_pages();
-setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_merchant_plant_pages();
 
 setconfig( 'Generic System', 'Host Developer' );
 setmodules( ['generic_system', 'grid','utilityrate5', 'host_developer']);
 setup_generic_system_pages();
-setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
