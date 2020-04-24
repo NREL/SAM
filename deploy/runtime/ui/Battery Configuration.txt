@@ -488,40 +488,58 @@ BatterySystem
 Numeric
 
 0
-1517
+1756
 on_load{'Battery Configuration'} = define()
 {
-	tech = technology();
 	msg = '';
-	if (tech == 'Generic Battery' || tech == 'Fuel Cell') // AC-connected only
+	// for ac-only configs, set to AC-connected
+	if ( !is_dc_tech() ) // AC-connected only
 	{
-		value('batt_ac_or_dc',true);
-		enable('batt_ac_or_dc',false);
-		enable('batt_dc_dc_efficiency',false);
-		enable('batt_inverter_efficiency_cutoff',false);
+		value('batt_ac_or_dc',1);
 		msg = 'For the Generic Battery and Fuel Cell configurations, the battery can only be AC-connected.';
 	}
 	else // PV Battery can be DC- or AC-connected
 	{
-		enable('batt_ac_or_dc',1);
 		msg = 'For the PV Battery configuration, the battery can be connected either to the DC or AC side of the PV inverter.';
 	}
 	property('lbl_dc_ac','Caption',msg);	
-	on_change{'batt_ac_or_dc'};
+	enable_inputs();
 };
 
 on_change{'batt_ac_or_dc'} = define()
-{ 
-	isdc = value('batt_ac_or_dc') == 0;
-	enable('batt_dc_dc_efficiency', isdc);
-	enable('batt_inverter_efficiency_cutoff',isdc);
-	enable('batt_ac_dc_efficiency', !isdc);
-	enable('batt_dc_ac_efficiency', !isdc);
-	if (isdc) { msg = 'Nominal PV inverter efficiency is ' + inv_eff() + '%. The DC-connected battery stops charging or discharging when the inverter operating efficiency is less than the inverter efficiency cutoff.'; }
-	else { msg = ''; }
-	property('lbl_dc_connected','Caption',msg);
-	
+{
+	enable_inputs();
 };
+
+function is_dc_tech()
+{
+	tech = technology();
+	return !(tech == 'Generic Battery' || tech == 'Fuel Cell'); // AC-connected only
+}
+
+function enable_inputs()
+{
+	if ( is_dc_tech() ) 
+	{
+		enable('batt_ac_or_dc',true);
+		isdc = ( value('batt_ac_or_dc') == 0 );
+		enable('batt_dc_dc_efficiency', isdc);
+		enable('batt_inverter_efficiency_cutoff',isdc);
+		enable('batt_ac_dc_efficiency', !isdc);
+		enable('batt_dc_ac_efficiency', !isdc);
+		
+		str = sprintf('%.3f',inv_eff());
+		if (isdc) { msg = 'Nominal PV inverter efficiency is ' + str + '%. The DC-connected battery stops charging or discharging when the inverter operating efficiency is less than the inverter efficiency cutoff.'; }
+		else { msg = ''; }
+		property('lbl_dc_connected','Caption',msg);
+	}
+	else
+	{
+		enable('batt_ac_or_dc',false);
+		enable('batt_dc_dc_efficiency',false);
+		enable('batt_inverter_efficiency_cutoff',false);
+	}
+}
 
 function inv_eff() 
 {
