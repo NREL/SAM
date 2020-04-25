@@ -123,14 +123,21 @@ Biopower,Sale Leaseback,353982848,13.695821,13.923908,;
 Biopower,LCOE Calculator,353982848,NA,NA,; 
 Biopower,None,353982848,NA,NA,; 
 Generic System,Residential,1513728,20.592197,NA,; 
-Generic System,Commercial,35591988,21.551327,NA,; 
+Generic System,Commercial,OVERWRITE	
+Generic System,Commercial,35591988,21.551327,NA,Defaults file is likely out of date: Generic System_Commercial.txt  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 269, config has 268  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: generic_degradation; 
 Generic System,Third Party,30274.560547,NA,NA,; 
-Generic System,Host Developer,35591988,1.732925,1.697295,; 
-Generic System,Single Owner,756864000,28.069920,29.307993,; 
-Generic System,Merchant Plant,756864000,25.208942,NA,; 
-Generic System,Leveraged Partnership Flip,756864000,28.471245,29.747263,; 
-Generic System,All Equity Partnership Flip,756864000,32.812180,36.422478,; 
-Generic System,Sale Leaseback,756864000,32.130512,35.256783,; 
+Generic System,Host Developer,OVERWRITE	
+Generic System,Host Developer,35591988,1.732925,1.697295,Defaults file is likely out of date: Generic System_Host Developer.txt  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 410, config has 409  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: generic_degradation; 
+Generic System,Single Owner,OVERWRITE	
+Generic System,Single Owner,756864000,28.069920,29.307993,Defaults file is likely out of date: Generic System_Single Owner.txt  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 344, config has 343  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: generic_degradation; 
+Generic System,Merchant Plant,OVERWRITE	
+Generic System,Merchant Plant,756864000,25.208942,NA,Defaults file is likely out of date: Generic System_Merchant Plant.txt  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 318, config has 317  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: generic_degradation; 
+Generic System,Leveraged Partnership Flip,OVERWRITE	
+Generic System,Leveraged Partnership Flip,756864000,28.471245,29.747263,Defaults file is likely out of date: Generic System_Leveraged Partnership Flip.txt  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 345, config has 344  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: generic_degradation; 
+Generic System,All Equity Partnership Flip,OVERWRITE	
+Generic System,All Equity Partnership Flip,756864000,32.812180,36.422478,Defaults file is likely out of date: Generic System_All Equity Partnership Flip.txt  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 335, config has 334  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: generic_degradation; 
+Generic System,Sale Leaseback,OVERWRITE	
+Generic System,Sale Leaseback,756864000,32.130512,35.256783,Defaults file is likely out of date: Generic System_Sale Leaseback.txt  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 328, config has 327  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: generic_degradation; 
 Generic System,LCOE Calculator,756864000,NA,NA,; 
 Generic System,None,756864000,NA,NA,; 
 PV Battery,Residential,8620.086914,10.358734,NA,; Notice: Computed battery temperature below zero or greater than max allowed, consider reducing C-rate - warning occurred: 1358 times
