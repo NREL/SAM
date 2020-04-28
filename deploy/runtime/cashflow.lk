@@ -1125,7 +1125,7 @@ function set_om(xl) {
 	batt_tech = false; 
 	is_batt_repl = false;
 	 // PVWatts does not model battery replacements
-	batt_tech = ( ( tech == 'PV Battery' || tech == 'Generic Battery' || ( tech == 'Fuel Cell') && value('en_batt') == true ) ); 
+	batt_tech = (  tech == 'PV Battery' || tech == 'Generic Battery' || (( tech == 'Fuel Cell') && value('en_batt') == true ) ); 
 	if ( batt_tech == true )
 	{ 
 		is_batt_repl = ( value('batt_replacement_option') > 0 ); 
@@ -1149,7 +1149,7 @@ function set_om(xl) {
 	
 	// electricity purchase for PV - Single Owner only as of Oct 2018
 	// need to update to work with generic system - Single Owner
-		if ( (tech == 'Flat Plate PV') && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
+		if ( batt_tech && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
 		{
 		// utility bill
 			ub = output('cf_utility_bill'); // array of rate cost  

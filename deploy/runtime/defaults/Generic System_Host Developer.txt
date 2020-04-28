@@ -1,5 +1,5 @@
 1
-410
+409
 adjust
 1
 5
@@ -1046,7 +1046,7 @@ first_year_output
 1
 1
 1
-35591980
+35591988
 first_year_output_peak
 1
 1
@@ -1071,12 +1071,6 @@ flip_target_year
 1
 1
 10
-generic_degradation
-1
-2
-1
-1
-0
 genericsys.cost.contingency
 1
 1
@@ -2236,7 +2230,7 @@ system_use_lifetime_output
 1
 1
 1
-1
+0
 system_use_recapitalization
 1
 1
