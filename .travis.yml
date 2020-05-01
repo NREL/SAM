@@ -28,10 +28,12 @@ script:
   - mkdir $WEXDIR/build && cd $WEXDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target wex
   - mkdir $SSCDIR/build && cd $SSCDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_tests=1 -Dskip_tools=1 && cmake --build . -j 4 --target ssc
   - mkdir $SAMNTDIR/build && cd $SAMNTDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_api=1 && make -j 4
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then travis_wait 30 xvfb-run $SAMNTDIR"/build/deploy/linux_64/SAM.bin" no_sam_file $SAMNTDIR"/build/deploy/test_script_ow.lk"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_linux64.csv $SAMNTDIR/build/deploy/test_results_linux64.csv
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 30 xvfb-run $SAMNTDIR"/build/SAM.app" no_sam_file $SAMNTDIR"/build/deploy/test_script_ow.lk"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_osx64.csv $SAMNTDIR/build/deploy/test_results_osx64.csv
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; export EXPECTED_LINES=$(wc -l $SAMNTDIR/test_results_linux64.csv | cut -d' ' -f1); fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then lines="0"; nohup xvfb-run $SAMNTDIR"/build/deploy/linux_64/SAM.bin" no_sam_file $SAMNTDIR"/build/deploy/test_script_ow.lk" &>/dev/null &; while [ $lines -lt $EXPECTED_LINES ]; do lines=$(wc -l $SAMNTDIR/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; sleep 60; done; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_linux64.csv $SAMNTDIR/build/test_results_linux64.csv
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; export EXPECTED_LINES=$(wc -l $SAMNTDIR/test_results_osx64.csv | cut -d' ' -f1); fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then lines="0"; Xvfb :1337 & export DISPLAY=:1337 & $SAMNTDIR"/build/SAM.app" no_sam_file $SAMNTDIR"/build/deploy/test_script_ow.lk"&>/dev/null &; while [ $lines -lt $EXPECTED_LINES ]; do lines=$(wc -l $SAMNTDIR/build/test_results_osx64.csv | cut -d' ' -f1); echo $lines; sleep 60; done; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_osx64.csv $SAMNTDIR/build/test_results_osx64.csv
 
 install:
   - sudo apt-get install -y libwebkitgtk-dev libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6
