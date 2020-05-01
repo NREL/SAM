@@ -107,7 +107,7 @@ Industrial Process Heat (IPH)
 </ul>
 </li>
 </ul>
- <h1>Version 2020.2.29, SSC Version 237: February 29, 2020</h1>
+<h1>Version 2020.2.29, SSC Version 237: February 29, 2020</h1>
 	 
 <p>This version introduces several new models and features in addition to enhancements to existing models:</p>
 
@@ -298,6 +298,8 @@ Industrial Process Heat (IPH)
 
 <p>This new version introduces new models for third party ownership, bifacial photovoltaic modules, multiple maximum power point trackers for photovoltaic systems, and accesses the latest solar resource data (PSM V3) from the National Solar Radiation Database. It also includes enhancements to the battery storage and CSP parabolic trough models.</p>
 
+<p>This is the most recent version to include the Integrated Solar Combined Cycle (ISCC) model. It has been removed from later versions due to incompatibility with updates to components it shares with other CSP models. If you would like to use the ISCC model, please download and install SAM 2018.11.11.</p>
+
 <h2>General</h2>
 
 <p>Update assumptions for default configurations.</p>
@@ -339,7 +341,6 @@ Industrial Process Heat (IPH)
 
 
 <h2>Third Party Ownership Host / Developer</h2>
-
 
 <p>This new model for third party ownership of a photovoltaic system on a residential or commercial property is from the developer's perspective to determine the power price the developer charges the host to meet the developer's costs and return requirements.</p>
 <p>Rename the Third Party Host model from older versions of SAM. The Host model is from the host's perspective to compare a lease agreement to a power purchase agreement.</p>
