@@ -1,5 +1,5 @@
 1
-344
+343
 adjust
 1
 5
@@ -1012,12 +1012,6 @@ flip_target_year
 1
 1
 20
-generic_degradation
-1
-2
-1
-1
-0
 genericsys.cost.contingency
 1
 1
@@ -2077,7 +2071,7 @@ system_use_lifetime_output
 1
 1
 1
-1
+0
 system_use_recapitalization
 1
 1

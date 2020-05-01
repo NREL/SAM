@@ -4572,7 +4572,7 @@ equations{ 'subarray3_gcr_ref' } = define() {
 equations{ 'subarray4_gcr_ref' } = define() {
 	return ${subarray4_gcr};
 };
-7719
+7665
 //just run this function anytime anything relevant changes
 function input_enabling()
 {
@@ -4600,7 +4600,7 @@ function input_enabling()
 		//is it the correct type of tracking?
 		en2 = false;
 		if (value(prefix + 'track_mode') == 0 || //fixed tilt
-			(value(prefix + 'track_mode') == 1 && value(prefix + 'backtrack') == 0)) //one-axis tracking w/o backtracking
+			value(prefix + 'track_mode') == 1 ) //one-axis tracking
 			en2 = true;
 		//has self-shading been selected?
 		en3 = false;
