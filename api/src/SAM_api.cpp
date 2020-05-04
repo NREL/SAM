@@ -18,6 +18,8 @@ void dll_close(void *handle) { ::FreeLibrary((HMODULE)handle); }
 void *dll_sym(void *handle, const char *name) { return (void*) ::GetProcAddress((HMODULE)handle, name); }
 #else
 #include <dlfcn.h>
+#include <ssc/core.h>
+
 void *dll_open(const char *name) { return dlopen(name, RTLD_LAZY); }
 void dll_close(void *handle) { dlclose(handle); }
 void *dll_sym(void *handle, const char *name) { return dlsym(handle, name); }
@@ -274,7 +276,6 @@ auto *vt = static_cast<var_table*>(t); if (!vt) throw std::runtime_error("SAM_ta
 SAM_EXPORT SAM_table SAM_table_construct(SAM_error *err){
     SAM_table result = nullptr;
     translateExceptions(err, [&]{
-
         result = ssc_data_create();
     });
     return result;
@@ -435,6 +436,12 @@ SAM_EXPORT const char* SAM_table_key(SAM_table t, int pos, int *type, SAM_error 
     return result;
 }
 
+SAM_EXPORT void SAM_module_destruct(SAM_module cm, SAM_error *err) {
+    translateExceptions(err, [&]{
+        auto *c = static_cast<compute_module*>(cm);
+        delete c;
+    });
+}
 
 SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_error *err){
     translateExceptions(err, [&]{
@@ -451,6 +458,22 @@ SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_
             throw std::runtime_error(str);
         }
         ssc_module_free(cm);
+    });
+    return 1;
+}
+
+SAM_EXPORT int SAM_stateful_module_exec(SAM_module cm, SAM_table data, int verbosity, SAM_error *err) {
+    translateExceptions(err, [&]{
+        if (!cm) throw std::runtime_error("Invalid SAM_module.");
+
+        if(verbosity == 0){
+            ssc_module_exec_set_print(0);
+        }
+
+        if (!ssc_module_exec( cm, data )){
+            std::string str = ssc_module_log(cm, 0, nullptr, nullptr);
+            throw std::runtime_error(str);
+        }
     });
     return 1;
 }

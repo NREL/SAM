@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_Battwatts.h"
 
-SAM_EXPORT SAM_Battwatts SAM_Battwatts_construct(const char* def, SAM_error* err){
-	SAM_Battwatts result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_Battwatts_execute(SAM_Battwatts data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_Battwatts_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("battwatts", data, verbosity, err);
@@ -27,96 +19,91 @@ SAM_EXPORT int SAM_Battwatts_execute(SAM_Battwatts data, int verbosity, SAM_erro
 }
 
 
-SAM_EXPORT void SAM_Battwatts_destruct(SAM_Battwatts system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Battwatts_Lifetime_analysis_period_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Lifetime_system_use_lifetime_output_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_ac_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_ac_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ac", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_batt_custom_dispatch_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_batt_custom_dispatch_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_custom_dispatch", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_chemistry_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_chemistry_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_simple_chemistry", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_dispatch_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_dispatch_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_simple_dispatch", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_enable_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_enable_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_simple_enable", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_kw_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_kw_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_simple_kw", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_kwh_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_kwh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_simple_kwh", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_meter_position_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_batt_simple_meter_position_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_simple_meter_position", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_crit_load_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_crit_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "crit_load", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_dc_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_dc_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dc", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_inverter_efficiency_nset(SAM_Battwatts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_inverter_efficiency_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inverter_efficiency", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battwatts_Battery_load_aset(SAM_Battwatts ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battwatts_Battery_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load", arr, length);
 	});
 }
 
-SAM_EXPORT double SAM_Battwatts_Lifetime_analysis_period_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
@@ -127,7 +114,7 @@ SAM_EXPORT double SAM_Battwatts_Lifetime_analysis_period_nget(SAM_Battwatts ptr,
 
 
 
-SAM_EXPORT double SAM_Battwatts_Lifetime_system_use_lifetime_output_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
@@ -138,7 +125,7 @@ SAM_EXPORT double SAM_Battwatts_Lifetime_system_use_lifetime_output_nget(SAM_Bat
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Battery_ac_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Battery_ac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ac", length);
@@ -150,7 +137,7 @@ SAM_EXPORT double* SAM_Battwatts_Battery_ac_aget(SAM_Battwatts ptr, int* length,
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Battery_batt_custom_dispatch_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Battery_batt_custom_dispatch_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_custom_dispatch", length);
@@ -162,7 +149,7 @@ SAM_EXPORT double* SAM_Battwatts_Battery_batt_custom_dispatch_aget(SAM_Battwatts
 
 
 
-SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_chemistry_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_chemistry_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_simple_chemistry", &result))
@@ -173,7 +160,7 @@ SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_chemistry_nget(SAM_Battwatts
 
 
 
-SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_dispatch_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_dispatch_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_simple_dispatch", &result))
@@ -184,7 +171,7 @@ SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_dispatch_nget(SAM_Battwatts 
 
 
 
-SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_enable_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_enable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_simple_enable", &result))
@@ -195,7 +182,7 @@ SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_enable_nget(SAM_Battwatts pt
 
 
 
-SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_kw_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_simple_kw", &result))
@@ -206,7 +193,7 @@ SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_kw_nget(SAM_Battwatts ptr, S
 
 
 
-SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_kwh_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_simple_kwh", &result))
@@ -217,7 +204,7 @@ SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_kwh_nget(SAM_Battwatts ptr, 
 
 
 
-SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_meter_position_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_meter_position_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_simple_meter_position", &result))
@@ -228,7 +215,7 @@ SAM_EXPORT double SAM_Battwatts_Battery_batt_simple_meter_position_nget(SAM_Batt
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Battery_crit_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Battery_crit_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "crit_load", length);
@@ -240,7 +227,7 @@ SAM_EXPORT double* SAM_Battwatts_Battery_crit_load_aget(SAM_Battwatts ptr, int* 
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Battery_dc_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Battery_dc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dc", length);
@@ -252,7 +239,7 @@ SAM_EXPORT double* SAM_Battwatts_Battery_dc_aget(SAM_Battwatts ptr, int* length,
 
 
 
-SAM_EXPORT double SAM_Battwatts_Battery_inverter_efficiency_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Battery_inverter_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inverter_efficiency", &result))
@@ -263,7 +250,7 @@ SAM_EXPORT double SAM_Battwatts_Battery_inverter_efficiency_nget(SAM_Battwatts p
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Battery_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Battery_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "load", length);
@@ -275,7 +262,7 @@ SAM_EXPORT double* SAM_Battwatts_Battery_load_aget(SAM_Battwatts ptr, int* lengt
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_annual_export_to_grid_energy_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_annual_export_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "annual_export_to_grid_energy", length);
@@ -287,7 +274,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_annual_export_to_grid_energy_aget(SAM_B
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_annual_import_to_grid_energy_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_annual_import_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "annual_import_to_grid_energy", length);
@@ -299,7 +286,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_annual_import_to_grid_energy_aget(SAM_B
 
 
 
-SAM_EXPORT double SAM_Battwatts_Outputs_average_battery_conversion_efficiency_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Outputs_average_battery_conversion_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "average_battery_conversion_efficiency", &result))
@@ -310,7 +297,7 @@ SAM_EXPORT double SAM_Battwatts_Outputs_average_battery_conversion_efficiency_ng
 
 
 
-SAM_EXPORT double SAM_Battwatts_Outputs_average_battery_roundtrip_efficiency_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Outputs_average_battery_roundtrip_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "average_battery_roundtrip_efficiency", &result))
@@ -321,7 +308,7 @@ SAM_EXPORT double SAM_Battwatts_Outputs_average_battery_roundtrip_efficiency_nge
 
 
 
-SAM_EXPORT double SAM_Battwatts_Outputs_avg_critical_load_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Outputs_avg_critical_load_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "avg_critical_load", &result))
@@ -332,7 +319,7 @@ SAM_EXPORT double SAM_Battwatts_Outputs_avg_critical_load_nget(SAM_Battwatts ptr
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_DOD", length);
@@ -344,7 +331,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_aget(SAM_Battwatts ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_cycle_average_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_cycle_average_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_DOD_cycle_average", length);
@@ -356,7 +343,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_DOD_cycle_average_aget(SAM_Battwat
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_I_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_I_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_I", length);
@@ -368,7 +355,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_I_aget(SAM_Battwatts ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_SOC_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_SOC_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_SOC", length);
@@ -380,7 +367,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_SOC_aget(SAM_Battwatts ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_charge_energy_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
@@ -392,7 +379,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_charge_energy_aget(SAM_Batt
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_charge_from_grid_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_charge_from_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_from_grid", length);
@@ -404,7 +391,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_charge_from_grid_aget(SAM_B
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_charge_from_pv_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_charge_from_pv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_from_pv", length);
@@ -416,7 +403,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_charge_from_pv_aget(SAM_Bat
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_discharge_energy_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_discharge_energy", length);
@@ -428,7 +415,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_discharge_energy_aget(SAM_B
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_energy_loss_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_energy_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_energy_loss", length);
@@ -440,7 +427,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_energy_loss_aget(SAM_Battwa
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_energy_system_loss_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_energy_system_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_energy_system_loss", length);
@@ -452,7 +439,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_energy_system_loss_aget(SAM
 
 
 
-SAM_EXPORT double SAM_Battwatts_Outputs_batt_bank_installed_capacity_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Outputs_batt_bank_installed_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_bank_installed_capacity", &result))
@@ -463,7 +450,7 @@ SAM_EXPORT double SAM_Battwatts_Outputs_batt_bank_installed_capacity_nget(SAM_Ba
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_bank_replacement_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_bank_replacement_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_bank_replacement", length);
@@ -475,7 +462,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_bank_replacement_aget(SAM_Battwatt
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
@@ -487,7 +474,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_aget(SAM_Battwatt
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_calendar_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_calendar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_percent_calendar", length);
@@ -499,7 +486,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_calendar_aget(SAM
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_cycle_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_percent_cycle", length);
@@ -511,7 +498,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_percent_cycle_aget(SAM_Ba
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_thermal_percent_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_thermal_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_thermal_percent", length);
@@ -523,7 +510,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_capacity_thermal_percent_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_conversion_loss_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_conversion_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_conversion_loss", length);
@@ -535,7 +522,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_conversion_loss_aget(SAM_Battwatts
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_cost_to_cycle_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_cost_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_cost_to_cycle", length);
@@ -547,7 +534,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_cost_to_cycle_aget(SAM_Battwatts p
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_cycles_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_cycles_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_cycles", length);
@@ -559,7 +546,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_cycles_aget(SAM_Battwatts ptr, int
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_dispatch_sched_mget(SAM_Battwatts ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_dispatch_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "batt_dispatch_sched", nrows, ncols);
@@ -571,7 +558,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_dispatch_sched_mget(SAM_Battwatts 
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_power", length);
@@ -583,7 +570,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_aget(SAM_Battwatts ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_target_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_target_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_power_target", length);
@@ -595,7 +582,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_target_aget(SAM_Battwatts pt
 
 
 
-SAM_EXPORT double SAM_Battwatts_Outputs_batt_pv_charge_percent_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Outputs_batt_pv_charge_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_pv_charge_percent", &result))
@@ -606,7 +593,7 @@ SAM_EXPORT double SAM_Battwatts_Outputs_batt_pv_charge_percent_nget(SAM_Battwatt
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_q0_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_q0_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_q0", length);
@@ -618,7 +605,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_q0_aget(SAM_Battwatts ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_q1_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_q1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_q1", length);
@@ -630,7 +617,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_q1_aget(SAM_Battwatts ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_q2_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_q2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_q2", length);
@@ -642,7 +629,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_q2_aget(SAM_Battwatts ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmax_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_qmax", length);
@@ -654,7 +641,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmax_aget(SAM_Battwatts ptr, int* 
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmaxI_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmaxI_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_qmaxI", length);
@@ -666,7 +653,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmaxI_aget(SAM_Battwatts ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmax_thermal_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmax_thermal_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_qmax_thermal", length);
@@ -678,7 +665,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_qmax_thermal_aget(SAM_Battwatts pt
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_charge_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_charge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_revenue_charge", length);
@@ -690,7 +677,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_charge_aget(SAM_Battwatts 
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_clipcharge_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_clipcharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_revenue_clipcharge", length);
@@ -702,7 +689,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_clipcharge_aget(SAM_Battwa
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_discharge_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_discharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_revenue_discharge", length);
@@ -714,7 +701,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_discharge_aget(SAM_Battwat
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_gridcharge_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_gridcharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_revenue_gridcharge", length);
@@ -726,7 +713,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_revenue_gridcharge_aget(SAM_Battwa
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_system_loss_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_system_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_system_loss", length);
@@ -738,7 +725,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_system_loss_aget(SAM_Battwatts ptr
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_temperature_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_temperature_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_temperature", length);
@@ -750,7 +737,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_temperature_aget(SAM_Battwatts ptr
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_grid_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_to_grid", length);
@@ -762,7 +749,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_grid_aget(SAM_Battwatts ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_to_load", length);
@@ -774,7 +761,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_load_aget(SAM_Battwatts ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_voltage", length);
@@ -786,7 +773,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_aget(SAM_Battwatts ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_cell_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_cell_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_voltage_cell", length);
@@ -798,7 +785,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_cell_aget(SAM_Battwatts pt
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_cdf_of_surviving_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_cdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cdf_of_surviving", length);
@@ -810,7 +797,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_cdf_of_surviving_aget(SAM_Battwatts ptr
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_fuelcell_to_batt_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_fuelcell_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "fuelcell_to_batt", length);
@@ -822,7 +809,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_fuelcell_to_batt_aget(SAM_Battwatts ptr
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_gen_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
@@ -834,7 +821,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_gen_aget(SAM_Battwatts ptr, int* length
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_grid_power_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_grid_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_power", length);
@@ -846,7 +833,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_grid_power_aget(SAM_Battwatts ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_grid_power_target_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_grid_power_target_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_power_target", length);
@@ -858,7 +845,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_grid_power_target_aget(SAM_Battwatts pt
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_grid_to_batt_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_to_batt", length);
@@ -870,7 +857,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_grid_to_batt_aget(SAM_Battwatts ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_grid_to_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_to_load", length);
@@ -882,7 +869,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_grid_to_load_aget(SAM_Battwatts ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_market_sell_rate_series_yr1_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_market_sell_rate_series_yr1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "market_sell_rate_series_yr1", length);
@@ -894,7 +881,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_market_sell_rate_series_yr1_aget(SAM_Ba
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_grid_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
@@ -906,7 +893,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_grid_aget(SAM_Battwatts
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_batt_to_load", length);
@@ -918,7 +905,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_load_aget(SAM_Battwatts
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_grid_to_batt_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
@@ -930,7 +917,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_grid_to_batt_aget(SAM_Battwatts
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_grid_to_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
@@ -942,7 +929,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_grid_to_load_aget(SAM_Battwatts
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_pv_to_batt_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_pv_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_pv_to_batt", length);
@@ -954,7 +941,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_pv_to_batt_aget(SAM_Battwatts p
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_pv_to_grid_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_pv_to_grid", length);
@@ -966,7 +953,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_pv_to_grid_aget(SAM_Battwatts p
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_pv_to_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_pv_to_load", length);
@@ -978,7 +965,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_pv_to_load_aget(SAM_Battwatts p
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_outage_durations_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "outage_durations", length);
@@ -990,7 +977,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_outage_durations_aget(SAM_Battwatts ptr
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_pdf_of_surviving_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_pdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pdf_of_surviving", length);
@@ -1002,7 +989,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_pdf_of_surviving_aget(SAM_Battwatts ptr
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_batt_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pv_to_batt", length);
@@ -1014,7 +1001,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_batt_aget(SAM_Battwatts ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_grid_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pv_to_grid", length);
@@ -1026,7 +1013,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_grid_aget(SAM_Battwatts ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_load_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pv_to_load", length);
@@ -1038,7 +1025,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_load_aget(SAM_Battwatts ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_resilience_hrs_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_resilience_hrs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "resilience_hrs", length);
@@ -1050,7 +1037,7 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_resilience_hrs_aget(SAM_Battwatts ptr, 
 
 
 
-SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_avg_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_avg_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "resilience_hrs_avg", &result))
@@ -1061,7 +1048,7 @@ SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_avg_nget(SAM_Battwatts pt
 
 
 
-SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_max_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "resilience_hrs_max", &result))
@@ -1072,7 +1059,7 @@ SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_max_nget(SAM_Battwatts pt
 
 
 
-SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_min_nget(SAM_Battwatts ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "resilience_hrs_min", &result))
@@ -1083,7 +1070,7 @@ SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_min_nget(SAM_Battwatts pt
 
 
 
-SAM_EXPORT double* SAM_Battwatts_Outputs_survival_function_aget(SAM_Battwatts ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battwatts_Outputs_survival_function_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "survival_function", length);

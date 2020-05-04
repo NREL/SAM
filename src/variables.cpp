@@ -1971,7 +1971,7 @@ bool VarInfo::Read_text(wxInputStream &is)
 
 	Type = in.Read32();
 	Label = in.ReadWord();
-	Units = in.ReadWord();
+	Units = in.ReadLine();
 	Group = in.ReadWord();
 	size_t n = in.Read32();
 	if (n > 0)

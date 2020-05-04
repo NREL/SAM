@@ -23,12 +23,8 @@ extern "C"
 
 	SAM_EXPORT typedef void * SAM_Layoutarea;
 
-	SAM_EXPORT SAM_Layoutarea SAM_Layoutarea_construct(const char* def, SAM_error* err);
-
 	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_Layoutarea_execute(SAM_Layoutarea data, int verbosity, SAM_error* err);
-
-	SAM_EXPORT void SAM_Layoutarea_destruct(SAM_Layoutarea system);
+	SAM_EXPORT int SAM_Layoutarea_execute(SAM_table data, int verbosity, SAM_error* err);
 
 
 	//
@@ -41,23 +37,23 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Layoutarea_Common_positions_mset(SAM_Layoutarea ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Layoutarea_Common_positions_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	/**
 	 * Common Getters
 	 */
 
-	SAM_EXPORT double* SAM_Layoutarea_Common_positions_mget(SAM_Layoutarea ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Layoutarea_Common_positions_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double SAM_Layoutarea_Outputs_area_nget(SAM_Layoutarea ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Layoutarea_Outputs_area_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Layoutarea_Outputs_convex_hull_mget(SAM_Layoutarea ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Layoutarea_Outputs_convex_hull_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

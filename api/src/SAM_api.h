@@ -175,12 +175,16 @@ SAM_EXPORT SAM_get_table_t
 SAM_get_table_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err);
 
 //
-// Running single simulations
+// Creating and running single simulations
 //
 
-SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_error *err);
+SAM_EXPORT typedef void* SAM_module;
 
+SAM_EXPORT void SAM_module_destruct(SAM_module cm, SAM_error *err);
 
+SAM_EXPORT int SAM_module_exec(const char* cmod, SAM_table data, int verbosity, SAM_error *err);
+
+SAM_EXPORT int SAM_stateful_module_exec(SAM_module cm, SAM_table data, int verbosity, SAM_error *err);
 
 #ifdef __cplusplus
 } // extern "C"

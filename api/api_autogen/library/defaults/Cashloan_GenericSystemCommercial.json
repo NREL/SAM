@@ -27,7 +27,7 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [500.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 7.18569e+07
+			"total_installed_cost": 7.1857e+07
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -160,7 +160,7 @@
 			"gen": [0]
 		},
 		"Lifetime": {
-			"system_use_lifetime_output": 1
+			"system_use_lifetime_output": 0
 		},
 		"ThirdPartyOwnership": {
 			"elec_cost_with_system": [0],

@@ -49,6 +49,7 @@
 			"dc_lifetime_losses": [0.000000],
 			"en_ac_lifetime_losses": 0,
 			"en_dc_lifetime_losses": 0,
+			"save_full_lifetime_variables": 1,
 			"system_use_lifetime_output": 1
 		},
 		"SystemDesign": {

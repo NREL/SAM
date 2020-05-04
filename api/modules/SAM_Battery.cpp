@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_Battery.h"
 
-SAM_EXPORT SAM_Battery SAM_Battery_construct(const char* def, SAM_error* err){
-	SAM_Battery result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_Battery_execute(SAM_Battery data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_Battery_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("battery", data, verbosity, err);
@@ -27,792 +19,787 @@ SAM_EXPORT int SAM_Battery_execute(SAM_Battery data, int verbosity, SAM_error* e
 }
 
 
-SAM_EXPORT void SAM_Battery_destruct(SAM_Battery system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Battery_Simulation_percent_complete_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Simulation_percent_complete_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "percent_complete", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Lifetime_analysis_period_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Lifetime_system_use_lifetime_output_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_ac_dc_efficiency_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_ac_dc_efficiency_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_ac_dc_efficiency", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_ac_or_dc_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_ac_or_dc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_ac_or_dc", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_computed_bank_capacity_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_computed_bank_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_computed_bank_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_computed_series_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_computed_series_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_computed_series", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_computed_strings_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_computed_strings_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_computed_strings", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_current_charge_max_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_current_charge_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_current_charge_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_current_choice_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_current_choice_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_current_choice", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_current_discharge_max_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_current_discharge_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_current_discharge_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_cycle_cost_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_cycle_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_cycle_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_cycle_cost_choice_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_cycle_cost_choice", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_dc_ac_efficiency_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_dc_ac_efficiency_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dc_ac_efficiency", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_dc_dc_efficiency_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_dc_dc_efficiency_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dc_dc_efficiency", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_height_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_height", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_inverter_efficiency_cutoff_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_inverter_efficiency_cutoff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_inverter_efficiency_cutoff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_length_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_length_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_length", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_loss_choice_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_loss_choice_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_loss_choice", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_losses", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_charging_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_charging_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_losses_charging", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_discharging_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_discharging_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_losses_discharging", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_idle_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_idle_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_losses_idle", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_mass_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_mass_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_mass", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_meter_position_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_meter_position_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_meter_position", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_power_charge_max_kwac_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_power_charge_max_kwac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_power_charge_max_kwac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_power_charge_max_kwdc_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_power_charge_max_kwdc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_power_charge_max_kwdc", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_power_discharge_max_kwac_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_power_discharge_max_kwac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_power_discharge_max_kwac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_power_discharge_max_kwdc_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_power_discharge_max_kwdc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_power_discharge_max_kwdc", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_replacement_capacity_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_replacement_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_replacement_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_replacement_option_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_replacement_option_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_replacement_option", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_replacement_schedule_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_replacement_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_replacement_schedule", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_replacement_schedule_percent_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_replacement_schedule_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_replacement_schedule_percent", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_batt_width_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_batt_width_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_width", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_en_batt_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_en_batt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_batt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatterySystem_om_replacement_cost1_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatterySystem_om_replacement_cost1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_replacement_cost1", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_SystemOutput_annual_energy_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_SystemOutput_annual_energy_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "annual_energy", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_SystemOutput_capacity_factor_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_SystemOutput_capacity_factor_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "capacity_factor", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_SystemOutput_gen_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Load_crit_load_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Load_crit_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "crit_load", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Load_load_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Load_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_LeadAcid_q10_computed_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_LeadAcid_q10_computed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "LeadAcid_q10_computed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_LeadAcid_q20_computed_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_LeadAcid_q20_computed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "LeadAcid_q20_computed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_LeadAcid_qn_computed_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_LeadAcid_qn_computed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "LeadAcid_qn_computed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_LeadAcid_tn_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_LeadAcid_tn_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "LeadAcid_tn", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_C_rate_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_C_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_C_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_Cp_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_Cp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Cp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_Qexp_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_Qexp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Qexp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_Qfull_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_Qfull_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Qfull", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_Qfull_flow_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_Qfull_flow_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Qfull_flow", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_Qnom_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_Qnom_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Qnom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_Vexp_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_Vexp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Vexp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_Vfull_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_Vfull_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Vfull", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_Vnom_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_Vnom_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Vnom", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_Vnom_default_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_Vnom_default_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Vnom_default", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_a_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_a_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_calendar_a", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_b_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_b_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_calendar_b", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_c_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_c_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_calendar_c", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_choice_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_choice_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_calendar_choice", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_lifetime_matrix_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_lifetime_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "batt_calendar_lifetime_matrix", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_q0_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_calendar_q0_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_calendar_q0", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_chem_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_chem_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_chem", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_h_to_ambient_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_h_to_ambient_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_h_to_ambient", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_initial_SOC_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_initial_SOC_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_initial_SOC", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_lifetime_matrix_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_lifetime_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "batt_lifetime_matrix", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_maximum_SOC_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_maximum_SOC_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_maximum_SOC", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_SOC_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_SOC_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_minimum_SOC", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_modetime_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_modetime_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_minimum_modetime", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_resistance_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_resistance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_resistance", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_room_temperature_celsius_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_room_temperature_celsius_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_room_temperature_celsius", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_voltage_choice_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_voltage_choice_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_voltage_choice", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_batt_voltage_matrix_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_voltage_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "batt_voltage_matrix", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryCell_cap_vs_temp_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryCell_cap_vs_temp_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "cap_vs_temp", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Inverter_inv_cec_cg_eff_cec_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Inverter_inv_cec_cg_eff_cec_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_cec_cg_eff_cec", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Inverter_inv_cec_cg_paco_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Inverter_inv_cec_cg_paco_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_cec_cg_paco", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Inverter_inv_ds_eff_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Inverter_inv_ds_eff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_ds_eff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Inverter_inv_ds_paco_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Inverter_inv_ds_paco_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_ds_paco", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Inverter_inv_pd_eff_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Inverter_inv_pd_eff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_pd_eff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Inverter_inv_pd_paco_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Inverter_inv_pd_paco_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_pd_paco", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Inverter_inv_snl_eff_cec_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Inverter_inv_snl_eff_cec_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_snl_eff_cec", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Inverter_inv_snl_paco_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Inverter_inv_snl_paco_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_snl_paco", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Inverter_inverter_count_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Inverter_inverter_count_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inverter_count", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Inverter_inverter_model_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Inverter_inverter_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inverter_model", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_Losses_dcoptimizer_loss_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_Losses_dcoptimizer_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dcoptimizer_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_auto_gridcharge_max_daily_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_auto_gridcharge_max_daily_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_auto_gridcharge_max_daily", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_custom_dispatch_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_custom_dispatch_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_custom_dispatch", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_charge_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_charge_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_auto_can_charge", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_auto_can_clipcharge", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_auto_can_fuelcellcharge", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_gridcharge_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_gridcharge_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_auto_can_gridcharge", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_choice_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_choice_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_choice", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_update_frequency_hours_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_update_frequency_hours_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_update_frequency_hours", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_look_ahead_hours_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_look_ahead_hours_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_look_ahead_hours", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_pv_clipping_forecast_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_pv_clipping_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_pv_clipping_forecast", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_pv_dc_forecast_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_pv_dc_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_pv_dc_forecast", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_target_choice_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_target_choice_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_target_choice", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_target_power_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_target_power_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_target_power", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_target_power_monthly_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_target_power_monthly_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_target_power_monthly", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_charge_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_charge_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_manual_charge", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_discharge_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_discharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_manual_discharge", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_fuelcellcharge_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_fuelcellcharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_manual_fuelcellcharge", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_gridcharge_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_gridcharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_manual_gridcharge", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_percent_discharge_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_percent_discharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_manual_percent_discharge", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_percent_gridcharge_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_percent_gridcharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_manual_percent_gridcharge", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_sched_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_sched_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_manual_sched", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_sched_weekend_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_manual_sched_weekend", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_ElectricityRates_en_electricity_rates_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_electricity_rates", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_sched_weekday_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "ur_ec_sched_weekday", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_sched_weekend_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "ur_ec_sched_weekend", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_tou_mat_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "ur_ec_tou_mat", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_ElectricityRates_ur_en_ts_sell_rate_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_ElectricityRates_ur_en_ts_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_en_ts_sell_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ts_buy_rate_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ts_buy_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ur_ts_buy_rate", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_FuelCell_fuelcell_power_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_FuelCell_fuelcell_power_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "fuelcell_power", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_dispatch_factors_ts_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_factors_ts", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_dispatch_sched_weekday_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekday", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_dispatch_sched_weekend_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekend", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_dispatch_tod_factors_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_tod_factors", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_forecast_price_signal_model_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_forecast_price_signal_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "forecast_price_signal_model", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_mp_ancserv1_revenue_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_mp_ancserv1_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv1_revenue", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_mp_ancserv2_revenue_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_mp_ancserv2_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv2_revenue", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_mp_ancserv3_revenue_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_mp_ancserv3_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv3_revenue", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_mp_ancserv4_revenue_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_mp_ancserv4_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv4_revenue", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_mp_enable_ancserv1_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_mp_enable_ancserv1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mp_enable_ancserv1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_mp_enable_ancserv2_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_mp_enable_ancserv2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mp_enable_ancserv2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_mp_enable_ancserv3_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_mp_enable_ancserv3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mp_enable_ancserv3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_mp_enable_ancserv4_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_mp_enable_ancserv4_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mp_enable_ancserv4", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_mp_enable_energy_market_revenue_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_mp_enable_energy_market_revenue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mp_enable_energy_market_revenue", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_mp_energy_market_revenue_mset(SAM_Battery ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_energy_market_revenue", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_ppa_multiplier_model_nset(SAM_Battery ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_multiplier_model", number);
 	});
 }
 
-SAM_EXPORT void SAM_Battery_PriceSignal_ppa_price_input_aset(SAM_Battery ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Battery_PriceSignal_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ppa_price_input", arr, length);
 	});
 }
 
-SAM_EXPORT double SAM_Battery_Simulation_percent_complete_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Simulation_percent_complete_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "percent_complete", &result))
@@ -823,7 +810,7 @@ SAM_EXPORT double SAM_Battery_Simulation_percent_complete_nget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double SAM_Battery_Lifetime_analysis_period_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
@@ -834,7 +821,7 @@ SAM_EXPORT double SAM_Battery_Lifetime_analysis_period_nget(SAM_Battery ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Battery_Lifetime_system_use_lifetime_output_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
@@ -845,7 +832,7 @@ SAM_EXPORT double SAM_Battery_Lifetime_system_use_lifetime_output_nget(SAM_Batte
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_ac_dc_efficiency_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_ac_dc_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_ac_dc_efficiency", &result))
@@ -856,7 +843,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_ac_dc_efficiency_nget(SAM_Batte
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_ac_or_dc_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_ac_or_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_ac_or_dc", &result))
@@ -867,7 +854,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_ac_or_dc_nget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_computed_bank_capacity_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_computed_bank_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_computed_bank_capacity", &result))
@@ -878,7 +865,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_computed_bank_capacity_nget(SAM
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_computed_series_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_computed_series_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_computed_series", &result))
@@ -889,7 +876,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_computed_series_nget(SAM_Batter
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_computed_strings_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_computed_strings_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_computed_strings", &result))
@@ -900,7 +887,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_computed_strings_nget(SAM_Batte
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_current_charge_max_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_current_charge_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_current_charge_max", &result))
@@ -911,7 +898,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_current_charge_max_nget(SAM_Bat
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_current_choice_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_current_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_current_choice", &result))
@@ -922,7 +909,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_current_choice_nget(SAM_Battery
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_current_discharge_max_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_current_discharge_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_current_discharge_max", &result))
@@ -933,7 +920,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_current_discharge_max_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_cycle_cost_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_cycle_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_cycle_cost", &result))
@@ -944,7 +931,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_cycle_cost_nget(SAM_Battery ptr
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_cycle_cost_choice_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_cycle_cost_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_cycle_cost_choice", &result))
@@ -955,7 +942,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_cycle_cost_choice_nget(SAM_Batt
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_dc_ac_efficiency_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_dc_ac_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dc_ac_efficiency", &result))
@@ -966,7 +953,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_dc_ac_efficiency_nget(SAM_Batte
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_dc_dc_efficiency_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_dc_dc_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dc_dc_efficiency", &result))
@@ -977,7 +964,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_dc_dc_efficiency_nget(SAM_Batte
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_height_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_height", &result))
@@ -988,7 +975,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_height_nget(SAM_Battery ptr, SA
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_inverter_efficiency_cutoff_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_inverter_efficiency_cutoff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_inverter_efficiency_cutoff", &result))
@@ -999,7 +986,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_inverter_efficiency_cutoff_nget
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_length_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_length", &result))
@@ -1010,7 +997,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_length_nget(SAM_Battery ptr, SA
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_loss_choice_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_loss_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_loss_choice", &result))
@@ -1021,7 +1008,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_loss_choice_nget(SAM_Battery pt
 
 
 
-SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_losses", length);
@@ -1033,7 +1020,7 @@ SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_aget(SAM_Battery ptr, i
 
 
 
-SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_charging_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_charging_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_losses_charging", length);
@@ -1045,7 +1032,7 @@ SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_charging_aget(SAM_Batte
 
 
 
-SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_discharging_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_discharging_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_losses_discharging", length);
@@ -1057,7 +1044,7 @@ SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_discharging_aget(SAM_Ba
 
 
 
-SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_idle_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_idle_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_losses_idle", length);
@@ -1069,7 +1056,7 @@ SAM_EXPORT double* SAM_Battery_BatterySystem_batt_losses_idle_aget(SAM_Battery p
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_mass_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_mass_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_mass", &result))
@@ -1080,7 +1067,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_mass_nget(SAM_Battery ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_meter_position_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_meter_position_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_meter_position", &result))
@@ -1091,7 +1078,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_meter_position_nget(SAM_Battery
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_charge_max_kwac_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_charge_max_kwac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_power_charge_max_kwac", &result))
@@ -1102,7 +1089,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_charge_max_kwac_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_charge_max_kwdc_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_charge_max_kwdc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_power_charge_max_kwdc", &result))
@@ -1113,7 +1100,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_charge_max_kwdc_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_discharge_max_kwac_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_discharge_max_kwac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_power_discharge_max_kwac", &result))
@@ -1124,7 +1111,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_discharge_max_kwac_nget(S
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_discharge_max_kwdc_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_discharge_max_kwdc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_power_discharge_max_kwdc", &result))
@@ -1135,7 +1122,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_power_discharge_max_kwdc_nget(S
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_replacement_capacity_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_replacement_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_replacement_capacity", &result))
@@ -1146,7 +1133,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_replacement_capacity_nget(SAM_B
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_replacement_option_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_replacement_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_replacement_option", &result))
@@ -1157,7 +1144,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_replacement_option_nget(SAM_Bat
 
 
 
-SAM_EXPORT double* SAM_Battery_BatterySystem_batt_replacement_schedule_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatterySystem_batt_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_replacement_schedule", length);
@@ -1169,7 +1156,7 @@ SAM_EXPORT double* SAM_Battery_BatterySystem_batt_replacement_schedule_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Battery_BatterySystem_batt_replacement_schedule_percent_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatterySystem_batt_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_replacement_schedule_percent", length);
@@ -1181,7 +1168,7 @@ SAM_EXPORT double* SAM_Battery_BatterySystem_batt_replacement_schedule_percent_a
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_batt_width_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_batt_width_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_width", &result))
@@ -1192,7 +1179,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_batt_width_nget(SAM_Battery ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Battery_BatterySystem_en_batt_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatterySystem_en_batt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_batt", &result))
@@ -1203,7 +1190,7 @@ SAM_EXPORT double SAM_Battery_BatterySystem_en_batt_nget(SAM_Battery ptr, SAM_er
 
 
 
-SAM_EXPORT double* SAM_Battery_BatterySystem_om_replacement_cost1_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatterySystem_om_replacement_cost1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_replacement_cost1", length);
@@ -1215,7 +1202,7 @@ SAM_EXPORT double* SAM_Battery_BatterySystem_om_replacement_cost1_aget(SAM_Batte
 
 
 
-SAM_EXPORT double SAM_Battery_SystemOutput_annual_energy_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_SystemOutput_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
@@ -1226,7 +1213,7 @@ SAM_EXPORT double SAM_Battery_SystemOutput_annual_energy_nget(SAM_Battery ptr, S
 
 
 
-SAM_EXPORT double SAM_Battery_SystemOutput_capacity_factor_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_SystemOutput_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
@@ -1237,7 +1224,7 @@ SAM_EXPORT double SAM_Battery_SystemOutput_capacity_factor_nget(SAM_Battery ptr,
 
 
 
-SAM_EXPORT double* SAM_Battery_SystemOutput_gen_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
@@ -1249,7 +1236,7 @@ SAM_EXPORT double* SAM_Battery_SystemOutput_gen_aget(SAM_Battery ptr, int* lengt
 
 
 
-SAM_EXPORT double* SAM_Battery_Load_crit_load_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Load_crit_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "crit_load", length);
@@ -1261,7 +1248,7 @@ SAM_EXPORT double* SAM_Battery_Load_crit_load_aget(SAM_Battery ptr, int* length,
 
 
 
-SAM_EXPORT double* SAM_Battery_Load_load_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Load_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "load", length);
@@ -1273,7 +1260,7 @@ SAM_EXPORT double* SAM_Battery_Load_load_aget(SAM_Battery ptr, int* length, SAM_
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_q10_computed_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_q10_computed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "LeadAcid_q10_computed", &result))
@@ -1284,7 +1271,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_q10_computed_nget(SAM_Battery
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_q20_computed_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_q20_computed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "LeadAcid_q20_computed", &result))
@@ -1295,7 +1282,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_q20_computed_nget(SAM_Battery
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_qn_computed_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_qn_computed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "LeadAcid_qn_computed", &result))
@@ -1306,7 +1293,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_qn_computed_nget(SAM_Battery 
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_tn_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_tn_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "LeadAcid_tn", &result))
@@ -1317,7 +1304,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_LeadAcid_tn_nget(SAM_Battery ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_C_rate_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_C_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_C_rate", &result))
@@ -1328,7 +1315,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_C_rate_nget(SAM_Battery ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_Cp_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_Cp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_Cp", &result))
@@ -1339,7 +1326,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_Cp_nget(SAM_Battery ptr, SAM_erro
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qexp_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qexp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_Qexp", &result))
@@ -1350,7 +1337,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qexp_nget(SAM_Battery ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qfull_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qfull_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_Qfull", &result))
@@ -1361,7 +1348,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qfull_nget(SAM_Battery ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qfull_flow_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qfull_flow_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_Qfull_flow", &result))
@@ -1372,7 +1359,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qfull_flow_nget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qnom_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qnom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_Qnom", &result))
@@ -1383,7 +1370,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qnom_nget(SAM_Battery ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vexp_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vexp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_Vexp", &result))
@@ -1394,7 +1381,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vexp_nget(SAM_Battery ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vfull_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vfull_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_Vfull", &result))
@@ -1405,7 +1392,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vfull_nget(SAM_Battery ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vnom_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vnom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_Vnom", &result))
@@ -1416,7 +1403,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vnom_nget(SAM_Battery ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vnom_default_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vnom_default_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_Vnom_default", &result))
@@ -1427,7 +1414,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vnom_default_nget(SAM_Battery ptr
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_a_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_a_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_calendar_a", &result))
@@ -1438,7 +1425,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_a_nget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_b_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_b_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_calendar_b", &result))
@@ -1449,7 +1436,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_b_nget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_c_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_c_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_calendar_c", &result))
@@ -1460,7 +1447,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_c_nget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_choice_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_calendar_choice", &result))
@@ -1471,7 +1458,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_choice_nget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryCell_batt_calendar_lifetime_matrix_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryCell_batt_calendar_lifetime_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "batt_calendar_lifetime_matrix", nrows, ncols);
@@ -1483,7 +1470,7 @@ SAM_EXPORT double* SAM_Battery_BatteryCell_batt_calendar_lifetime_matrix_mget(SA
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_q0_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_q0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_calendar_q0", &result))
@@ -1494,7 +1481,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_calendar_q0_nget(SAM_Battery ptr,
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_chem_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_chem_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_chem", &result))
@@ -1505,7 +1492,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_chem_nget(SAM_Battery ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_h_to_ambient_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_h_to_ambient_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_h_to_ambient", &result))
@@ -1516,7 +1503,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_h_to_ambient_nget(SAM_Battery ptr
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_initial_SOC_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_initial_SOC_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_initial_SOC", &result))
@@ -1527,7 +1514,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_initial_SOC_nget(SAM_Battery ptr,
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryCell_batt_lifetime_matrix_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryCell_batt_lifetime_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "batt_lifetime_matrix", nrows, ncols);
@@ -1539,7 +1526,7 @@ SAM_EXPORT double* SAM_Battery_BatteryCell_batt_lifetime_matrix_mget(SAM_Battery
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_maximum_SOC_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_maximum_SOC_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_maximum_SOC", &result))
@@ -1550,7 +1537,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_maximum_SOC_nget(SAM_Battery ptr,
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_minimum_SOC_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_minimum_SOC_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_minimum_SOC", &result))
@@ -1561,7 +1548,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_minimum_SOC_nget(SAM_Battery ptr,
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_minimum_modetime_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_minimum_modetime_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_minimum_modetime", &result))
@@ -1572,7 +1559,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_minimum_modetime_nget(SAM_Battery
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_resistance_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_resistance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_resistance", &result))
@@ -1583,7 +1570,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_resistance_nget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryCell_batt_room_temperature_celsius_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryCell_batt_room_temperature_celsius_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_room_temperature_celsius", length);
@@ -1595,7 +1582,7 @@ SAM_EXPORT double* SAM_Battery_BatteryCell_batt_room_temperature_celsius_aget(SA
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryCell_batt_voltage_choice_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_voltage_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_voltage_choice", &result))
@@ -1606,7 +1593,7 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_voltage_choice_nget(SAM_Battery p
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryCell_batt_voltage_matrix_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryCell_batt_voltage_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "batt_voltage_matrix", nrows, ncols);
@@ -1618,7 +1605,7 @@ SAM_EXPORT double* SAM_Battery_BatteryCell_batt_voltage_matrix_mget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryCell_cap_vs_temp_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryCell_cap_vs_temp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "cap_vs_temp", nrows, ncols);
@@ -1630,7 +1617,7 @@ SAM_EXPORT double* SAM_Battery_BatteryCell_cap_vs_temp_mget(SAM_Battery ptr, int
 
 
 
-SAM_EXPORT double SAM_Battery_Inverter_inv_cec_cg_eff_cec_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Inverter_inv_cec_cg_eff_cec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inv_cec_cg_eff_cec", &result))
@@ -1641,7 +1628,7 @@ SAM_EXPORT double SAM_Battery_Inverter_inv_cec_cg_eff_cec_nget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double SAM_Battery_Inverter_inv_cec_cg_paco_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Inverter_inv_cec_cg_paco_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inv_cec_cg_paco", &result))
@@ -1652,7 +1639,7 @@ SAM_EXPORT double SAM_Battery_Inverter_inv_cec_cg_paco_nget(SAM_Battery ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Battery_Inverter_inv_ds_eff_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Inverter_inv_ds_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inv_ds_eff", &result))
@@ -1663,7 +1650,7 @@ SAM_EXPORT double SAM_Battery_Inverter_inv_ds_eff_nget(SAM_Battery ptr, SAM_erro
 
 
 
-SAM_EXPORT double SAM_Battery_Inverter_inv_ds_paco_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Inverter_inv_ds_paco_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inv_ds_paco", &result))
@@ -1674,7 +1661,7 @@ SAM_EXPORT double SAM_Battery_Inverter_inv_ds_paco_nget(SAM_Battery ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Battery_Inverter_inv_pd_eff_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Inverter_inv_pd_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inv_pd_eff", &result))
@@ -1685,7 +1672,7 @@ SAM_EXPORT double SAM_Battery_Inverter_inv_pd_eff_nget(SAM_Battery ptr, SAM_erro
 
 
 
-SAM_EXPORT double SAM_Battery_Inverter_inv_pd_paco_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Inverter_inv_pd_paco_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inv_pd_paco", &result))
@@ -1696,7 +1683,7 @@ SAM_EXPORT double SAM_Battery_Inverter_inv_pd_paco_nget(SAM_Battery ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Battery_Inverter_inv_snl_eff_cec_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Inverter_inv_snl_eff_cec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inv_snl_eff_cec", &result))
@@ -1707,7 +1694,7 @@ SAM_EXPORT double SAM_Battery_Inverter_inv_snl_eff_cec_nget(SAM_Battery ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Battery_Inverter_inv_snl_paco_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Inverter_inv_snl_paco_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inv_snl_paco", &result))
@@ -1718,7 +1705,7 @@ SAM_EXPORT double SAM_Battery_Inverter_inv_snl_paco_nget(SAM_Battery ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Battery_Inverter_inverter_count_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Inverter_inverter_count_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inverter_count", &result))
@@ -1729,7 +1716,7 @@ SAM_EXPORT double SAM_Battery_Inverter_inverter_count_nget(SAM_Battery ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Battery_Inverter_inverter_model_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Inverter_inverter_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inverter_model", &result))
@@ -1740,7 +1727,7 @@ SAM_EXPORT double SAM_Battery_Inverter_inverter_model_nget(SAM_Battery ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Battery_Losses_dcoptimizer_loss_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Losses_dcoptimizer_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dcoptimizer_loss", &result))
@@ -1751,7 +1738,7 @@ SAM_EXPORT double SAM_Battery_Losses_dcoptimizer_loss_nget(SAM_Battery ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_auto_gridcharge_max_daily_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_auto_gridcharge_max_daily_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_auto_gridcharge_max_daily", &result))
@@ -1762,7 +1749,7 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_auto_gridcharge_max_daily_nge
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_custom_dispatch_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_custom_dispatch_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_custom_dispatch", length);
@@ -1774,7 +1761,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_custom_dispatch_aget(SAM_Bat
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_charge_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dispatch_auto_can_charge", &result))
@@ -1785,7 +1772,7 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_charge_nget
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dispatch_auto_can_clipcharge", &result))
@@ -1796,7 +1783,7 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_clipcharge_
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dispatch_auto_can_fuelcellcharge", &result))
@@ -1807,7 +1794,7 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_fuelcellcha
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_gridcharge_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_gridcharge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dispatch_auto_can_gridcharge", &result))
@@ -1818,7 +1805,7 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_gridcharge_
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_choice_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dispatch_choice", &result))
@@ -1829,7 +1816,7 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_choice_nget(SAM_Batt
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_update_frequency_hours_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_update_frequency_hours_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dispatch_update_frequency_hours", &result))
@@ -1840,7 +1827,7 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_update_frequency_hou
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_look_ahead_hours_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_look_ahead_hours_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_look_ahead_hours", &result))
@@ -1851,7 +1838,7 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_look_ahead_hours_nget(SAM_Bat
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_pv_clipping_forecast_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_pv_clipping_forecast_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_pv_clipping_forecast", length);
@@ -1863,7 +1850,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_pv_clipping_forecast_aget(SA
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_pv_dc_forecast_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_pv_dc_forecast_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_pv_dc_forecast", length);
@@ -1875,7 +1862,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_pv_dc_forecast_aget(SAM_Batt
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_target_choice_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_target_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_target_choice", &result))
@@ -1886,7 +1873,7 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_target_choice_nget(SAM_Batter
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_target_power_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_target_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_target_power", length);
@@ -1898,7 +1885,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_target_power_aget(SAM_Batter
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_target_power_monthly_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_target_power_monthly_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_target_power_monthly", length);
@@ -1910,7 +1897,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_target_power_monthly_aget(SA
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_charge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_charge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_manual_charge", length);
@@ -1922,7 +1909,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_charge_aget(SAM_B
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_discharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_discharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_manual_discharge", length);
@@ -1934,7 +1921,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_discharge_aget(SA
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_fuelcellcharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_fuelcellcharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_manual_fuelcellcharge", length);
@@ -1946,7 +1933,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_fuelcellcharge_ag
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_gridcharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_gridcharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_manual_gridcharge", length);
@@ -1958,7 +1945,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_gridcharge_aget(S
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_percent_discharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_percent_discharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_manual_percent_discharge", length);
@@ -1970,7 +1957,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_percent_discharge
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_percent_gridcharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_percent_gridcharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_manual_percent_gridcharge", length);
@@ -1982,7 +1969,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_percent_gridcharg
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_sched_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dispatch_manual_sched", nrows, ncols);
@@ -1994,7 +1981,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_sched_mget(SAM_Ba
 
 
 
-SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_sched_weekend_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dispatch_manual_sched_weekend", nrows, ncols);
@@ -2006,7 +1993,7 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_sched_weekend_mge
 
 
 
-SAM_EXPORT double SAM_Battery_ElectricityRates_en_electricity_rates_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
@@ -2017,7 +2004,7 @@ SAM_EXPORT double SAM_Battery_ElectricityRates_en_electricity_rates_nget(SAM_Bat
 
 
 
-SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_sched_weekday_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "ur_ec_sched_weekday", nrows, ncols);
@@ -2029,7 +2016,7 @@ SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_sched_weekday_mget(SAM_Bat
 
 
 
-SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_sched_weekend_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "ur_ec_sched_weekend", nrows, ncols);
@@ -2041,7 +2028,7 @@ SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_sched_weekend_mget(SAM_Bat
 
 
 
-SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_tou_mat_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "ur_ec_tou_mat", nrows, ncols);
@@ -2053,7 +2040,7 @@ SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_tou_mat_mget(SAM_Battery p
 
 
 
-SAM_EXPORT double SAM_Battery_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_en_ts_sell_rate", &result))
@@ -2064,7 +2051,7 @@ SAM_EXPORT double SAM_Battery_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_Batte
 
 
 
-SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ts_buy_rate_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ts_buy_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ur_ts_buy_rate", length);
@@ -2076,7 +2063,7 @@ SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ts_buy_rate_aget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_FuelCell_fuelcell_power_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_FuelCell_fuelcell_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "fuelcell_power", length);
@@ -2088,7 +2075,7 @@ SAM_EXPORT double* SAM_Battery_FuelCell_fuelcell_power_aget(SAM_Battery ptr, int
 
 
 
-SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_factors_ts_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_factors_ts", length);
@@ -2100,7 +2087,7 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_factors_ts_aget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_sched_weekday_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekday", nrows, ncols);
@@ -2112,7 +2099,7 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_sched_weekday_mget(SAM_Batte
 
 
 
-SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_sched_weekend_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekend", nrows, ncols);
@@ -2124,7 +2111,7 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_sched_weekend_mget(SAM_Batte
 
 
 
-SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_tod_factors_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dispatch_tod_factors", length);
@@ -2136,7 +2123,7 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_dispatch_tod_factors_aget(SAM_Battery
 
 
 
-SAM_EXPORT double SAM_Battery_PriceSignal_forecast_price_signal_model_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_PriceSignal_forecast_price_signal_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "forecast_price_signal_model", &result))
@@ -2147,7 +2134,7 @@ SAM_EXPORT double SAM_Battery_PriceSignal_forecast_price_signal_model_nget(SAM_B
 
 
 
-SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv1_revenue_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv1_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv1_revenue", nrows, ncols);
@@ -2159,7 +2146,7 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv1_revenue_mget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv2_revenue_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv2_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv2_revenue", nrows, ncols);
@@ -2171,7 +2158,7 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv2_revenue_mget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv3_revenue_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv3_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv3_revenue", nrows, ncols);
@@ -2183,7 +2170,7 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv3_revenue_mget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv4_revenue_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv4_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv4_revenue", nrows, ncols);
@@ -2195,7 +2182,7 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_mp_ancserv4_revenue_mget(SAM_Battery 
 
 
 
-SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv1_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mp_enable_ancserv1", &result))
@@ -2206,7 +2193,7 @@ SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv1_nget(SAM_Battery pt
 
 
 
-SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv2_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mp_enable_ancserv2", &result))
@@ -2217,7 +2204,7 @@ SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv2_nget(SAM_Battery pt
 
 
 
-SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv3_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mp_enable_ancserv3", &result))
@@ -2228,7 +2215,7 @@ SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv3_nget(SAM_Battery pt
 
 
 
-SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv4_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mp_enable_ancserv4", &result))
@@ -2239,7 +2226,7 @@ SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_ancserv4_nget(SAM_Battery pt
 
 
 
-SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_energy_market_revenue_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_energy_market_revenue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mp_enable_energy_market_revenue", &result))
@@ -2250,7 +2237,7 @@ SAM_EXPORT double SAM_Battery_PriceSignal_mp_enable_energy_market_revenue_nget(S
 
 
 
-SAM_EXPORT double* SAM_Battery_PriceSignal_mp_energy_market_revenue_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_PriceSignal_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue", nrows, ncols);
@@ -2262,7 +2249,7 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_mp_energy_market_revenue_mget(SAM_Bat
 
 
 
-SAM_EXPORT double SAM_Battery_PriceSignal_ppa_multiplier_model_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_PriceSignal_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_multiplier_model", &result))
@@ -2273,7 +2260,7 @@ SAM_EXPORT double SAM_Battery_PriceSignal_ppa_multiplier_model_nget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_PriceSignal_ppa_price_input_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_PriceSignal_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ppa_price_input", length);
@@ -2285,7 +2272,7 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_ppa_price_input_aget(SAM_Battery ptr,
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_annual_export_to_grid_energy_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_annual_export_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "annual_export_to_grid_energy", length);
@@ -2297,7 +2284,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_annual_export_to_grid_energy_aget(SAM_Bat
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_annual_import_to_grid_energy_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_annual_import_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "annual_import_to_grid_energy", length);
@@ -2309,7 +2296,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_annual_import_to_grid_energy_aget(SAM_Bat
 
 
 
-SAM_EXPORT double SAM_Battery_Outputs_average_battery_conversion_efficiency_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Outputs_average_battery_conversion_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "average_battery_conversion_efficiency", &result))
@@ -2320,7 +2307,7 @@ SAM_EXPORT double SAM_Battery_Outputs_average_battery_conversion_efficiency_nget
 
 
 
-SAM_EXPORT double SAM_Battery_Outputs_average_battery_roundtrip_efficiency_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Outputs_average_battery_roundtrip_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "average_battery_roundtrip_efficiency", &result))
@@ -2331,7 +2318,7 @@ SAM_EXPORT double SAM_Battery_Outputs_average_battery_roundtrip_efficiency_nget(
 
 
 
-SAM_EXPORT double SAM_Battery_Outputs_avg_critical_load_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Outputs_avg_critical_load_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "avg_critical_load", &result))
@@ -2342,7 +2329,7 @@ SAM_EXPORT double SAM_Battery_Outputs_avg_critical_load_nget(SAM_Battery ptr, SA
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_DOD_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_DOD_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_DOD", length);
@@ -2354,7 +2341,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_DOD_aget(SAM_Battery ptr, int* lengt
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_DOD_cycle_average_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_DOD_cycle_average_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_DOD_cycle_average", length);
@@ -2366,7 +2353,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_DOD_cycle_average_aget(SAM_Battery p
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_I_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_I_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_I", length);
@@ -2378,7 +2365,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_I_aget(SAM_Battery ptr, int* length,
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_SOC_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_SOC_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_SOC", length);
@@ -2390,7 +2377,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_SOC_aget(SAM_Battery ptr, int* lengt
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_energy_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
@@ -2402,7 +2389,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_energy_aget(SAM_Batter
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_from_grid_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_from_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_from_grid", length);
@@ -2414,7 +2401,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_from_grid_aget(SAM_Bat
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_from_pv_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_from_pv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_from_pv", length);
@@ -2426,7 +2413,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_from_pv_aget(SAM_Batte
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_discharge_energy_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_discharge_energy", length);
@@ -2438,7 +2425,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_discharge_energy_aget(SAM_Bat
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_energy_loss_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_energy_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_energy_loss", length);
@@ -2450,7 +2437,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_energy_loss_aget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_energy_system_loss_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_energy_system_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_energy_system_loss", length);
@@ -2462,7 +2449,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_energy_system_loss_aget(SAM_B
 
 
 
-SAM_EXPORT double SAM_Battery_Outputs_batt_bank_installed_capacity_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Outputs_batt_bank_installed_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_bank_installed_capacity", &result))
@@ -2473,7 +2460,7 @@ SAM_EXPORT double SAM_Battery_Outputs_batt_bank_installed_capacity_nget(SAM_Batt
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_bank_replacement_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_bank_replacement_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_bank_replacement", length);
@@ -2485,7 +2472,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_bank_replacement_aget(SAM_Battery pt
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
@@ -2497,7 +2484,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_aget(SAM_Battery pt
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_calendar_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_calendar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_percent_calendar", length);
@@ -2509,7 +2496,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_calendar_aget(SAM_B
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_cycle_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_percent_cycle", length);
@@ -2521,7 +2508,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_percent_cycle_aget(SAM_Batt
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_thermal_percent_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_thermal_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_thermal_percent", length);
@@ -2533,7 +2520,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_capacity_thermal_percent_aget(SAM_Ba
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_conversion_loss_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_conversion_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_conversion_loss", length);
@@ -2545,7 +2532,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_conversion_loss_aget(SAM_Battery ptr
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_cost_to_cycle_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_cost_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_cost_to_cycle", length);
@@ -2557,7 +2544,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_cost_to_cycle_aget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_cycles_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_cycles_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_cycles", length);
@@ -2569,7 +2556,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_cycles_aget(SAM_Battery ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_dispatch_sched_mget(SAM_Battery ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_dispatch_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "batt_dispatch_sched", nrows, ncols);
@@ -2581,7 +2568,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_dispatch_sched_mget(SAM_Battery ptr,
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_power_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_power", length);
@@ -2593,7 +2580,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_power_aget(SAM_Battery ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_power_target_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_power_target_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_power_target", length);
@@ -2605,7 +2592,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_power_target_aget(SAM_Battery ptr, i
 
 
 
-SAM_EXPORT double SAM_Battery_Outputs_batt_pv_charge_percent_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Outputs_batt_pv_charge_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_pv_charge_percent", &result))
@@ -2616,7 +2603,7 @@ SAM_EXPORT double SAM_Battery_Outputs_batt_pv_charge_percent_nget(SAM_Battery pt
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_q0_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_q0_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_q0", length);
@@ -2628,7 +2615,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_q0_aget(SAM_Battery ptr, int* length
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_q1_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_q1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_q1", length);
@@ -2640,7 +2627,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_q1_aget(SAM_Battery ptr, int* length
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_q2_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_q2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_q2", length);
@@ -2652,7 +2639,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_q2_aget(SAM_Battery ptr, int* length
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_qmax_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_qmax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_qmax", length);
@@ -2664,7 +2651,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_qmax_aget(SAM_Battery ptr, int* leng
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_qmaxI_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_qmaxI_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_qmaxI", length);
@@ -2676,7 +2663,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_qmaxI_aget(SAM_Battery ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_qmax_thermal_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_qmax_thermal_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_qmax_thermal", length);
@@ -2688,7 +2675,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_qmax_thermal_aget(SAM_Battery ptr, i
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_charge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_charge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_revenue_charge", length);
@@ -2700,7 +2687,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_charge_aget(SAM_Battery ptr,
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_clipcharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_clipcharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_revenue_clipcharge", length);
@@ -2712,7 +2699,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_clipcharge_aget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_discharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_discharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_revenue_discharge", length);
@@ -2724,7 +2711,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_discharge_aget(SAM_Battery p
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_gridcharge_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_gridcharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_revenue_gridcharge", length);
@@ -2736,7 +2723,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_gridcharge_aget(SAM_Battery 
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_system_loss_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_system_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_system_loss", length);
@@ -2748,7 +2735,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_system_loss_aget(SAM_Battery ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_temperature_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_temperature_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_temperature", length);
@@ -2760,7 +2747,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_temperature_aget(SAM_Battery ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_to_grid_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_to_grid", length);
@@ -2772,7 +2759,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_to_grid_aget(SAM_Battery ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_to_load_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_to_load", length);
@@ -2784,7 +2771,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_to_load_aget(SAM_Battery ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_voltage", length);
@@ -2796,7 +2783,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_aget(SAM_Battery ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_cell_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_cell_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_voltage_cell", length);
@@ -2808,7 +2795,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_cell_aget(SAM_Battery ptr, i
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_cdf_of_surviving_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_cdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cdf_of_surviving", length);
@@ -2820,7 +2807,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_cdf_of_surviving_aget(SAM_Battery ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_fuelcell_to_batt_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_fuelcell_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "fuelcell_to_batt", length);
@@ -2832,7 +2819,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_fuelcell_to_batt_aget(SAM_Battery ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_grid_power_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_grid_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_power", length);
@@ -2844,7 +2831,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_grid_power_aget(SAM_Battery ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_grid_power_target_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_grid_power_target_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_power_target", length);
@@ -2856,7 +2843,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_grid_power_target_aget(SAM_Battery ptr, i
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_grid_to_batt_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_to_batt", length);
@@ -2868,7 +2855,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_grid_to_batt_aget(SAM_Battery ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_grid_to_load_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_to_load", length);
@@ -2880,7 +2867,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_grid_to_load_aget(SAM_Battery ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_market_sell_rate_series_yr1_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_market_sell_rate_series_yr1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "market_sell_rate_series_yr1", length);
@@ -2892,7 +2879,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_market_sell_rate_series_yr1_aget(SAM_Batt
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_grid_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
@@ -2904,7 +2891,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_grid_aget(SAM_Battery ptr
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_load_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_batt_to_load", length);
@@ -2916,7 +2903,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_load_aget(SAM_Battery ptr
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_monthly_grid_to_batt_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
@@ -2928,7 +2915,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_grid_to_batt_aget(SAM_Battery ptr
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_monthly_grid_to_load_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
@@ -2940,7 +2927,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_grid_to_load_aget(SAM_Battery ptr
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_batt_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_pv_to_batt", length);
@@ -2952,7 +2939,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_batt_aget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_grid_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_pv_to_grid", length);
@@ -2964,7 +2951,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_grid_aget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_load_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "monthly_pv_to_load", length);
@@ -2976,7 +2963,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_load_aget(SAM_Battery ptr, 
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_outage_durations_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "outage_durations", length);
@@ -2988,7 +2975,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_outage_durations_aget(SAM_Battery ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_pdf_of_surviving_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_pdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pdf_of_surviving", length);
@@ -3000,7 +2987,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_pdf_of_surviving_aget(SAM_Battery ptr, in
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_pv_to_batt_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_pv_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pv_to_batt", length);
@@ -3012,7 +2999,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_pv_to_batt_aget(SAM_Battery ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_pv_to_grid_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pv_to_grid", length);
@@ -3024,7 +3011,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_pv_to_grid_aget(SAM_Battery ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_pv_to_load_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pv_to_load", length);
@@ -3036,7 +3023,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_pv_to_load_aget(SAM_Battery ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_resilience_hrs_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_resilience_hrs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "resilience_hrs", length);
@@ -3048,7 +3035,7 @@ SAM_EXPORT double* SAM_Battery_Outputs_resilience_hrs_aget(SAM_Battery ptr, int*
 
 
 
-SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_avg_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_avg_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "resilience_hrs_avg", &result))
@@ -3059,7 +3046,7 @@ SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_avg_nget(SAM_Battery ptr, S
 
 
 
-SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_max_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "resilience_hrs_max", &result))
@@ -3070,7 +3057,7 @@ SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_max_nget(SAM_Battery ptr, S
 
 
 
-SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_min_nget(SAM_Battery ptr, SAM_error *err){
+SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "resilience_hrs_min", &result))
@@ -3081,7 +3068,7 @@ SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_min_nget(SAM_Battery ptr, S
 
 
 
-SAM_EXPORT double* SAM_Battery_Outputs_survival_function_aget(SAM_Battery ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Battery_Outputs_survival_function_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "survival_function", length);

@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_Iec61853par.h"
 
-SAM_EXPORT SAM_Iec61853par SAM_Iec61853par_construct(const char* def, SAM_error* err){
-	SAM_Iec61853par result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_Iec61853par_execute(SAM_Iec61853par data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_Iec61853par_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("iec61853par", data, verbosity, err);
@@ -27,36 +19,31 @@ SAM_EXPORT int SAM_Iec61853par_execute(SAM_Iec61853par data, int verbosity, SAM_
 }
 
 
-SAM_EXPORT void SAM_Iec61853par_destruct(SAM_Iec61853par system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Iec61853par_IEC61853_input_mset(SAM_Iec61853par ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Iec61853par_IEC61853_input_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "input", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Iec61853par_IEC61853_nser_nset(SAM_Iec61853par ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Iec61853par_IEC61853_nser_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "nser", number);
 	});
 }
 
-SAM_EXPORT void SAM_Iec61853par_IEC61853_type_nset(SAM_Iec61853par ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Iec61853par_IEC61853_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Iec61853par_IEC61853_verbose_nset(SAM_Iec61853par ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Iec61853par_IEC61853_verbose_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "verbose", number);
 	});
 }
 
-SAM_EXPORT double* SAM_Iec61853par_IEC61853_input_mget(SAM_Iec61853par ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Iec61853par_IEC61853_input_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "input", nrows, ncols);
@@ -68,7 +55,7 @@ SAM_EXPORT double* SAM_Iec61853par_IEC61853_input_mget(SAM_Iec61853par ptr, int*
 
 
 
-SAM_EXPORT double SAM_Iec61853par_IEC61853_nser_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_IEC61853_nser_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nser", &result))
@@ -79,7 +66,7 @@ SAM_EXPORT double SAM_Iec61853par_IEC61853_nser_nget(SAM_Iec61853par ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Iec61853par_IEC61853_type_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_IEC61853_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "type", &result))
@@ -90,7 +77,7 @@ SAM_EXPORT double SAM_Iec61853par_IEC61853_type_nget(SAM_Iec61853par ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Iec61853par_IEC61853_verbose_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_IEC61853_verbose_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "verbose", &result))
@@ -101,7 +88,7 @@ SAM_EXPORT double SAM_Iec61853par_IEC61853_verbose_nget(SAM_Iec61853par ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_C1_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_C1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "C1", &result))
@@ -112,7 +99,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_C1_nget(SAM_Iec61853par ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_C2_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_C2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "C2", &result))
@@ -123,7 +110,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_C2_nget(SAM_Iec61853par ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_C3_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_C3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "C3", &result))
@@ -134,7 +121,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_C3_nget(SAM_Iec61853par ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_D1_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_D1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "D1", &result))
@@ -145,7 +132,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_D1_nget(SAM_Iec61853par ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_D2_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_D2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "D2", &result))
@@ -156,7 +143,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_D2_nget(SAM_Iec61853par ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_D3_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_D3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "D3", &result))
@@ -167,7 +154,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_D3_nget(SAM_Iec61853par ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_Egref_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_Egref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Egref", &result))
@@ -178,7 +165,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_Egref_nget(SAM_Iec61853par ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_Il_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_Il_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Il", &result))
@@ -189,7 +176,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_Il_nget(SAM_Iec61853par ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_Io_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_Io_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Io", &result))
@@ -200,7 +187,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_Io_nget(SAM_Iec61853par ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_alphaIsc_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_alphaIsc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "alphaIsc", &result))
@@ -211,7 +198,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_alphaIsc_nget(SAM_Iec61853par ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_betaVoc_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_betaVoc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "betaVoc", &result))
@@ -222,7 +209,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_betaVoc_nget(SAM_Iec61853par ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_gammaPmp_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_gammaPmp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "gammaPmp", &result))
@@ -233,7 +220,7 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_gammaPmp_nget(SAM_Iec61853par ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Iec61853par_Outputs_n_nget(SAM_Iec61853par ptr, SAM_error *err){
+SAM_EXPORT double SAM_Iec61853par_Outputs_n_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n", &result))
