@@ -254,12 +254,13 @@ SET(CMAKE_SKIP_BUILD_RPATH)
 
 
 if (UNIX)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(SSC_NAME sscd)
+    else()
+        set(SSC_NAME ssc)
+    endif()
     if (APPLE)
-        if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-            set(SSC_NAME sscd)
-        else()
-            set(SSC_NAME ssc)
-        endif()
+        
         add_custom_command(
             TARGET ${SAM_EXE}
             POST_BUILD
@@ -284,10 +285,11 @@ if (UNIX)
                 TARGET ${SAM_EXE}
                 POST_BUILD
                 COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}
-                COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/runtime/bin
-                COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/runtime
+                COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/lhs.bin ${SAM_APP}/runtime/bin
+                COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/stepwise.bin ${SAM_APP}/runtime
 #                COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/build_linux/GtkTheme ${SAM_APP}/linux_64
-                COMMAND cp ${SSC_LIB} ${SAM_APP}/linux_64
+		COMMAND echo ${SSC_LIB}
+                COMMAND cp $ENV{SSCDIR}/build/ssc/${SSC_NAME}.so ${SAM_APP}/linux_64/${SSC_NAME}.so
         )
 
         #		install(TARGETS ${SAM_EXE}
