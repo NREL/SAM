@@ -1,7 +1,7 @@
 FROM travisci/ci-sardonyx:packer-1576238197-60d50014
 
 # Clone SAM
-RUN mkdir /home/travis/build/; cd /home/travis/build/; git clone --depth 1 --branch Command_line_script https://github.com/NREL/SAM NREL/SAM
+RUN mkdir /home/travis/build/; cd /home/travis/build/; git clone --depth 1 https://github.com/NREL/SAM NREL/SAM
 
 # Install Ruby
 RUN apt-get update
