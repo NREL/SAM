@@ -21,11 +21,11 @@ if __name__ == "__main__":
     expected_filename = sys.argv[1]
     actual_filename = sys.argv[2]
     
-    with open(expected_filename, "r", newline='') as datafile:
+    with open(expected_filename, "r") as datafile:
         expected_csv = csv.reader(datafile, delimiter=',', quotechar='\"')
         expected_values = csv_to_dict(expected_csv)
         
-    with open(actual_filename, "r", newline='') as datafile:
+    with open(actual_filename, "r") as datafile:
         actual_csv = csv.reader(datafile, delimiter=',', quotechar='\"')
         actual_values = csv_to_dict(actual_csv)
         
