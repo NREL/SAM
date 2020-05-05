@@ -18,8 +18,19 @@
 //@ name=dcac_max;type=number;label=Maximum DC/AC ratio;value=1.3
 //@ name=show_in_browser;type=combo;label=Show results in default browser?;value=Yes,No;sel=1
 
-// display warning if the macro is run outside of a case
-if ( typeof(macro) == 'unknown' ) {
+// to run as script for troubleshooting, set troubleshoot = false to use sample inputs
+// otherwise, display warning if the macro is run outside of a case
+troubleshoot = false;
+if ( troubleshoot ) // sample inputs
+{
+	macro.dc_degradation = 0.5;
+	macro.t_min = -3;
+	macro.t_max = 46;
+	macro.t_adj = 30;
+	macro.dcac_max = 1.3;
+	macro.show_in_browser = 1;
+}
+elseif ( typeof(macro) == 'unknown' ) {
 	msgbox('This macro must be run from within a case.');
 	exit;
 }
@@ -27,16 +38,13 @@ if ( typeof(macro) == 'unknown' ) {
 //Max number of subarrays allowed in SAM:
 max_subarrays = 4;
 
-
 ////////////////////////////////////////////////////////////////////////////////
 // Functions
 ////////////////////////////////////////////////////////////////////////////////
 
-function deg_f( deg_c )
-	return deg_c * 9/5 + 32;
+function deg_f( deg_c ) { return deg_c * 9/5 + 32; }
 
-function deg_c( deg_f )
-	return ( deg_f - 32 ) * 5/9;
+function deg_c( deg_f ) { return ( deg_f - 32 ) * 5/9; }
 
 // format numbers comma thousands indicator, 2 decimal places
 // note: will display integers with 2 decimals, e.g., display 3 as 3.00
@@ -81,6 +89,24 @@ function num_to_str( x , d )
 	else	
 		{ str = to_string( x ); }
 	return str;
+}
+
+// given an input array, return an output array with input array's last x rows
+function shorten_array( arr_in, x )
+{
+	if ( #arr_in <= x ) { return arr_in; }
+	j = 0;
+	arr_out = [];
+	i_start = #arr_in - x;
+	for (i = 0; i<#arr_in; i++ )
+	{
+		if ( i >= i_start ) 
+		{
+			arr_out[j] = arr_in[i];
+			j++;
+		}
+	}
+	return arr_out;
 }
 
 // generate an html table from an array of data given parameters as table:
@@ -200,6 +226,7 @@ function get_module_parameters( )
 		T.vmp = get('cec_v_mp_ref');
 		T.pmp = get('cec_p_mp_ref');
 		T.gpmp = get('cec_gamma_r');
+		T.manufacturer = get('lib_manufacturer');
 		if ( get('cec_temp_corr_mode') == 0 ) // noct method
 		{
 			mount = get('cec_standoff'); 
@@ -213,10 +240,11 @@ function get_module_parameters( )
 			if ( mount == 0 ) T.mounting = 'ground';
 			elseif ( moutn == 2 ) T.mounting = 'building-integrated';
 			else T.mounting = 'roof';
-		}	
+		}
 		T.lib = csvread( lib_dir + 'CEC Modules.csv', { "delim"=',', "skip"=2, "table"=true });
-		// cec library column labels for module name, voc, vmp, imp
+		// cec library column labels for module name, manufacturer, voc, vmp, imp
 		T.lib_name = '[0]';
+		T.lib_manufacturer = 'lib_manufacturer';
 		T.lib_voc = 'cec_v_oc_ref'; 
 		T.lib_vmp = 'cec_v_mp_ref'; 
 		T.lib_imp = 'cec_i_mp_ref';
@@ -352,8 +380,11 @@ nameplate_dc = get('system_capacity');
 nameplate_ac = get('total_inverter_capacity');
 
 // run simulation and quit if simulation fails
+outln('Running simulation to get operating voltages.');
 sim_msg = '';
+msg_len = 500;
 ok = simulate( sim_msg , true );
+if ( strlen( sim_msg ) > msg_len ) { sim_msg = left(sim_msg, msg_len ) + '...'; }
 if ( !ok )
 {
 	msgbox( 'Simulation Failed!\nThere is a problem with your inputs that caused the simulation to fail with the following message:\n\n' + sim_msg + '\n\nPlease correct the problem and try running the macro again.');
@@ -498,7 +529,6 @@ for (j=0; j<max_subarrays; j++) //loop through subarrays
 	voc_ts = null;
 }
 
-
 // worst case design Voc
 // from Brooks (2010) "Array Voltage Considerations" Solar Pro Magazine Issue 3.6 Oct/Nov 2020
 vmp_min_design = ( module.vmp + ( macro.t_max + macro.t_adj - t_stc ) * module.gpmp/100 * module.vmp ); // single module
@@ -507,7 +537,7 @@ voc_max_design = ( module.voc + ( macro.t_min - t_stc ) * module.bvoc/100 * modu
 ////////////////////////////////////////////////////////////////////////////////
 // design suggestions
 ////////////////////////////////////////////////////////////////////////////////
-outln('Calculating design suggestions.');
+out('Generating design suggestions ');
 // check 1: number of strings based on dc-ac ratio
 dcac_ok = true;
 //n = 0;
@@ -515,7 +545,6 @@ dcac_ok = true;
 
 if ( nameplate_dcac < dcac_min || nameplate_dcac > dcac_max ) 
 	{ dcac_ok = false; }
-
 
 // check 2: modules per string based on temperature-adjusted voc
 modules_per_string_max = floor( inverter.vdcmax / voc_max_design );
@@ -538,25 +567,29 @@ modules_diff = [];
 if ( module.lib != {} ) // module model has library
 {
 	voc_old = to_int( module.voc * 100 ) / 100;
-	pmp_old = module.pmp;
+	pmp_old = to_real( module.pmp );
 	voc = module.lib_voc;
 	vmp = module.lib_vmp;
 	imp = module.lib_imp;
 	name = module.lib_name;
+	manufacturer = module.lib_manufacturer;
 	num_same = 0;
 	num_diff = 0;
-	outln('Searching module library.');
-	for (i = 0; i < #module{'lib'}{voc}; i++) // i=0 is header
+	num_modules_in_library = #module{'lib'}{name};
+	outln(' based on ' + num_modules_in_library + ' modules in library.');
+	for (i = 0; i < num_modules_in_library; i++) // i=0 is header
 	{
 		voc_new = to_int( to_real( module{'lib'}{voc}[i] ) * 100 ) / 100;
 		pmp_new = to_real( module{'lib'}{vmp}[i] ) * to_real( module{'lib'}{imp}[i] );
+		dcac_new = pmp_new / 1000 * num_modules / nameplate_ac;
 		module_ok =
 				( voc_new > vmp_min_design ) && ( voc_new < voc_max_design ) && // new module voc is within design limits
 				voc_new * max_modules_per_string < inverter.vdcmax && // subarray with longest string new voc is less than inverter mppt_max
 				//abs( voc_old - voc_new )  < 2 && // voc of new module is reasonably close to voc of old module
-				pmp_new >= 0.9 * pmp_old && // pmp of new modules is within 90% of old module to assure dc/ac ratio is within acceptable range
-				module.name != module{'lib'}{name}[i]; // new module is not same as old module
-		if ( module_ok && left(module.name,4) == left(module{'lib'}{name}[i],4) )
+				//pmp_new >= 0.9 * pmp_old && // pmp of new modules is within 90% of old module to assure dc/ac ratio is within acceptable range
+				( dcac_new > dcac_min && dcac_new < dcac_max ) &&
+				lower(module.name) != lower(module{'lib'}{name}[i]); // new module is not same as old module, capitalization is not consistent in library
+		if ( module_ok && lower(module.manufacturer) == lower(module{'lib'}{manufacturer}[i]) )
 		{	
 			modules_same[num_same] = [ module{'lib'}{name}[i] , pmp_new , voc_new ];
 			num_same++;
@@ -572,12 +605,15 @@ if ( module.lib != {} ) // module model has library
 // sort module tables by rated string Voc
 stable_sort(modules_same,2);
 stable_sort(modules_diff,2);
+num_modules_same = #modules_same;
+num_modules_diff = #modules_diff;
+modules_same = shorten_array(modules_same, 50);
+modules_diff = shorten_array(modules_diff, 50);
 
 ////////////////////////////////////////////////////////////////////////////////
 // Create graphs as .png files
 ////////////////////////////////////////////////////////////////////////////////
 
-outln('Creating graphs.');
 num_plots = 0;
 for ( j=0; j < max_subarrays; j++ )
 {
@@ -616,7 +652,6 @@ for ( j=0; j < max_subarrays; j++ )
 ////////////////////////////////////////////////////////////////////////////////
 // Arrays of data to be exported to HTML or CSV
 ////////////////////////////////////////////////////////////////////////////////
-outln('Generating tables.');
 tabletitle_params = 'Parameters Used for System Sizing';
 tabledata_params[0][0] = 'Parameter';
 tabledata_params[0][1] = 'Value';
@@ -624,7 +659,7 @@ tabledata_params[1][0] = 'Module Capacity, Pmp (W)';
 tabledata_params[1][1] = module.pmp;
 tabledata_params[2][0] = 'Inverter DC capacity, Pdco (W)';
 tabledata_params[2][1] = inverter.pdco;
-tabledata_params[3][0] = 'Inverter MPPT voltage window, Vmppt_min &ndash; Vmppt_max (VDC)';
+tabledata_params[3][0] = 'Inverter MPPT voltage range, Vmppt_min &ndash; Vmppt_max (VDC)';
 tabledata_params[3][1] = [ inverter.vmppt_min , inverter.vmppt_max ];
 tabledata_params[4][0] = 'Inverter maximum voltage, Vdcmax (VDC)';
 tabledata_params[4][1] = inverter.vdcmax;
@@ -677,11 +712,10 @@ tabledata_powerloss[4][0] = 'Total kWh/year lost as % of inverter AC output';
 tabledata_powerloss[4][1] = [inv_powerlimitloss_percent_ac,clipping_energy_moderate*100,clipping_energy_severe*100];
 tabledata_powerloss[4][2] = [mpptloss_percent_ac,clipping_energy_moderate*100,clipping_energy_severe*100];
 
-tabletitle_modules_same = 'Modules from the same manufacturer that meet the inverter voltage requirements.';
+tabletitle_modules_same = 'Modules from the same manufacturer that meet the inverter voltage requirements. Table displays up to 50 modules that result in the highest rated string Voc.';
 //find index for how many subarrays are enabled:
 
 count = 0;
-
 tabledata_modules_same[0][0] = 'Module';
 tabledata_modules_same[0][1] = 'Array Power (kW)';
 for (i = 2 ; i < (2 + max_subarrays) ; i++) {
@@ -700,16 +734,16 @@ for(column = 2 ; column < (max_subarrays + 2) ; column++){
 		c = c + 1;
 		for (i=0; i<#modules_same; i++ )
 		{
-			tabledata_modules_same[i+1][0]		= modules_same[i][0];
-			tabledata_modules_same[i+1][1]		= modules_same[i][1] * num_modules / 1000; // pmp
-			tabledata_modules_same[i+1][c + 1]	= modules_same[i][2] * modules_per_string[column - 2]; // voc
-			tabledata_modules_same[i+1][count + 2]		= modules_same[i][1] * num_modules / 1000 / nameplate_ac; // dc/ac ratio
+			tabledata_modules_same[i+1][0] = modules_same[i][0];
+			tabledata_modules_same[i+1][1] = modules_same[i][1] * num_modules / 1000; // pmp
+			tabledata_modules_same[i+1][c + 1] = modules_same[i][2] * modules_per_string[column - 2]; // voc
+			tabledata_modules_same[i+1][count + 2]	= modules_same[i][1] * num_modules / 1000 / nameplate_ac; // dc/ac ratio
 		}
 	}
 }
 
 count_diff = 0;
-tabletitle_modules_diff = 'Modules from different manufacturers that meet the inverter voltage requirements.';
+tabletitle_modules_diff = 'Modules from different manufacturers that meet the inverter voltage requirements. Table displays up to 50 modules that result in the highest rated string Voc.';
 tabledata_modules_diff[0][0] = 'Module';
 tabledata_modules_diff[0][1] = 'Array Power (kW)';
 for (i = 2 ; i < (2 + max_subarrays) ; i++) {
@@ -719,15 +753,16 @@ for (i = 2 ; i < (2 + max_subarrays) ; i++) {
 	}
 }
 tabledata_modules_diff[0][count_diff + 2] = 'Nameplate DC/AC Ratio';
+
 c = 0;
 for(column_diff = 2 ; column_diff < (max_subarrays + 2) ; column_diff++){
 	if(get('subarray'+ to_string(column_diff - 1) + '_enable') != 0) {
 		c = c + 1;
 		for (i=0; i<#modules_diff; i++ )
 		{
-			tabledata_modules_diff[i+1][0]				= modules_diff[i][0];
-			tabledata_modules_diff[i+1][1]				= modules_diff[i][1] * num_modules / 1000; // pmp
-			tabledata_modules_diff[i+1][c + 1]			= modules_diff[i][2] * modules_per_string[column_diff - 2]; // voc
+			tabledata_modules_diff[i+1][0] = modules_diff[i][0];
+			tabledata_modules_diff[i+1][1] = modules_diff[i][1] * num_modules / 1000; // pmp
+			tabledata_modules_diff[i+1][c + 1] = modules_diff[i][2] * modules_per_string[column_diff - 2]; // voc
 			tabledata_modules_diff[i+1][count_diff + 2] = modules_diff[i][1] * num_modules / 1000 / nameplate_ac; // dc/ac ratio
 		}
 	}
@@ -741,7 +776,6 @@ for(column_diff = 2 ; column_diff < (max_subarrays + 2) ; column_diff++){
 ////////////////////////////////////////////////////////////////////////////////
 // Create HTML report
 ////////////////////////////////////////////////////////////////////////////////
-outln('Creating HMTL report.');
 num_table = 0;
 str = '<html><body><h1>System Sizing Information</h1><p>This information is based';
 str += ' on the inputs and simulation results for the "' + active_case() + '" case.</p>';
@@ -749,11 +783,10 @@ str += ' on the inputs and simulation results for the "' + active_case() + '" ca
 str += '<h2>Parameters Used for System Sizing</h2>';
 num_table++;
 str += html_table ( { 'arr' = tabledata_params , 'row_headers' = false , 'title' = 'Table ' + num_table + ': ' + tabletitle_params });
-str += '<p>The parameters for the system sizing algorithm are either inputs you provide';
-str += ' on the Module, Inverter, or System Design input pages, inputs to the System Sizing';
-str += ' Information macro, or values from the weather file.</p>';
+str += '<p>The parameters for the system sizing algorithm are from the ';
+str += ' Module, Inverter, and System Design input pages, macro inputs, and weather file.</p>';
 str += '<p>The mounting type is based on the temperature correction inputs on the Module page,';
-str += ' and is shown in the table to help you ensure that the design Tadj value you choose';
+str += ' and is shown in the table to help you ensure that the design temperature adjustment value you choose';
 str += ' for the design temperature calculations is consistent with your model inputs.</p>';
 
 if ( sim_msg != '' )
@@ -764,14 +797,14 @@ if ( sim_msg != '' )
 str += '<h2>Power Losses from Inverter Power Limiting and Voltage Clipping</h2>';
 str += '<p>Power limiting losses occur when the array power output exceeds the inverter DC';
 str += ' power rating. Voltage clipping losses occur when the array operating voltage falls';
-str += ' outside of the inverter maximum power (MPP) range. Depending on your design goals,';
+str += ' outside of the inverter MPPT voltage range. Depending on your design goals,';
 str += ' some power limiting or voltage clipping losses may be acceptable.</p>';
 
 num_table++;
 str += html_table( {'arr' = tabledata_powerloss, 'row_headers' = false, 'title' = 'Table ' + num_table + ': ' + tabletitle_powerloss } );
 str += '<p>Table ' + num_table + ' shows the amount of power limiting and voltage';
 str += ' clipping from the simulation results, which give you an estimate of what to expect from the real system.';
-str += ' Cells for the number of time steps and percentage estimates are color coded as follows:</p>';
+str += ' Colors indicate:</p>';
 str += '<ul><li>Red: More than 10% of time steps of the year, or more than 50% of annual power output.</li>';
 str += '<li>Orange: More than 5% of time steps or 20% of output.</li>';
 str += '<li>Clear: Values are within acceptable range, less than 5% of time steps or 20% of annual power output.</li></ul>';
@@ -779,8 +812,11 @@ str += '<p>The figure(s) below show the inverter rated MPPT voltage range with w
 str += ' design maximum open-circuit voltage and minimum maximum-power voltage, along with';
 str += ' the operating open circuit, minimum, and maximum voltages from the';
 str += ' simulation results for each subarray in the system.</p>';
+
 for (i=0; i<#voperating_graphs; i++)
+{
 	str += '<p align="center"><img src="' + voperating_graphs[i] + '" /></p>';
+}	
 num_fig = i;	
 str += '<p>The equations for the design string voltages use parameters from Table 1:</p>';
 str += '<p align="center"><font face="verdana">V<sub>dc , min_design</sub>';
@@ -832,18 +868,18 @@ else //if (get('dcac_ratio') > dcac_min)
 /*str += '<p>The maximum design open-circuit voltage of the subarrays in your system is:</p> ';
 str += '<ul>';
 str += '<li>Subarray 1: ' + num_to_str( voc_max_design * modules_per_string[0], 0) + ' V<sub>DC</sub>';*/
-str += '<p>The Figure(s) above indicate that the subarray voltages ';
+str += '<p>The Figure(s) above indicate that the subarray design or operating voltages ';
 if ( voc_ok[0] && voc_ok[1] && voc_ok[2] && voc_ok[3] )
 {
 	str += ' are within the inverter MPPT limits.';
 }
 else
 {
-	str += ' fall outside the inverter MPPT limits for one or more subarray. It may be acceptable for the design voltage to fall outside of the limits if the operating voltages are within them.';
+	str += ' fall outside the inverter MPPT limits for one or more subarray. This may be acceptable if <em>operating</em> voltages are within the limits but <em>design</em> voltages are outside the limits.';
 }
 str +='</p>';
 
-str += '<p>Your system uses the ' + module.name + ' module and ' + replace(inverter.name,':','') + ' inverter with a maximum MPPT voltage of ' + inverter.vmppt_max + ' VDC.' + ? ( #modules_same > 1 && #modules_diff > 1) [ '', 'The tables below list other modules that may be suitable for the system given the longest string in the array. ' ] + '</p>';
+str += '<p>Your system uses the <em>' + module.name + '</em> module and <em>' + replace(inverter.name,':','') + '</em> inverter with a MPPT voltage range of ' + inverter.vmppt_min + ' VDC to ' + inverter.vmppt_max + ' VDC. There are ' +  num_modules_same  + ' modules from the same manufacturer and ' + num_modules_diff + ' modules in the library from different manufacturers that would result in a rated open circuit voltage within that range for the longest string in the array, which has ' + modules_per_string_max + ' modules per string. </p>';
 
 if ( #modules_same > 1 )
 {
@@ -857,7 +893,7 @@ if ( #modules_diff > 1 )
 	num_table++;
 	str += html_table ( { 'arr' = tabledata_modules_diff , 'row_headers' = false , 'title' = 'Table ' + num_table + ': ' + tabletitle_modules_diff });
 }
-else { str+='<p>There are no modules from a different manufacturer that meet the voltage and power requirements for this inverter.</p>'; }
+else { str+='<p>There are no modules in the library from a different manufacturer that meet the voltage and power requirements for this inverter.</p>'; }
 
 str += '</body></html>';
 newplot( true );
