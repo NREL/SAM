@@ -1,5 +1,5 @@
 1
-959
+960
 6par_aisc
 1
 1
@@ -3388,6 +3388,10 @@ lib_is_bifacial
 1
 1
 1
+0
+lib_manufacturer
+1
+4
 0
 library_folder_list
 1

@@ -1,36 +1,38 @@
 /*@
-This macro allows you to add the energy output of two different cases together prior to running them through a single financial model.
-This may be helpful for modeling a variety of scenarios, including:
+<p>This macro adds the hourly power generation profiles of two or more cases and uses the resulting profile as input to a Generic System case that represents the combined project. You can use it to model a project's cash flow when the generation profile is from different sources.</p>
+<p>To learn about cases, see the "Manage Cases" topic in Help under Reference in the table of contents.</p>
+<p>Some examples of analysis scenarios this macro can model include:</p>
 <ul>
-<li>Systems that include two different types of renewable technologies (wind and PV, etc.)
-<li>Systems containing multiple equipment models (different inverters, different wind turbines, etc.)
-<li>Systems that exceed the maximum number of subarrays allowed in PV systems
+<li>A project that combines two or more types of renewable energy systems (wind/PV, PV/CSP, PV/Wind/Biopower, etc.).</li>
+<li>A system that uses different types or sizes of equipment, such as a PV system with different module or inverter types, or a wind farm with different sizes of turbines.</li>
+<li>A PV system with more than four subarrays.</li>
 </ul>
-<br><br>
-<img src="$MACROPATH/combine_cases.jpg">
-<br><br>
-<b>Instructions:</b>
+<p>The following diagram shows an example of how the macro works to combine two cases. It works the same way for more than two cases:</p>
+<p><center><img src="$MACROPATH/combine_cases.jpg"></center></p>
+<h5>Instructions:</h5>
 <ol>
-<li>Create the cases that you wish to combine. These cases may be any technology option, paired with any financial model; however, the financial model will not be used in these cases.
-<li>Complete the system design/specification and system costs pages for all the cases that you wish to combine. If you complete other financial pages, only the information on the system costs page will be used.
-<li>Create a Generic System case with the financial model that you wish to use for the combined system. Note that this can be the "No financial model" option.
-<li> Fill in all of the financial pages for the Generic system that you wish to use as the combined model, EXCEPT the system costs page. Costs will be combined and applied from the individual cases being combined, as applicable.
-<li>Select the cases that you wish to combine (including the Generic System case that will be used for the combined model) using the inputs at the right.
+<li>Create a case for each system to combine.
 <ul>
-<li>You may choose all of the cases in the current project to be combined, OR
-<li>You may choose which cases to combine by typing their names into the input box, separated by ONLY a comma (no space). Be sure to include the name of the Generic System that you wish to use as the combined model.
+<li>If you want to specify costs for each system, include a financial model for each case.</li>
+<li>The macro calculates a total project installation cost and operating cost by adding the costs of the individual cases and using those as the costs for the combined project case.</li>
+<li>It uses the financial parameters, incentives, and other financial model inputs from the combined project case and ignores those inputs for the system cases.</li>
 </ul>
-<li>Click 'Run macro' at the top of the screen.
-<li>When prompted, confirm the cases that will be combined.
-<li>When the macro is complete, view combined system results in the Generic System case that you designated to be used as the combined model.
-</ol>
-<br><br>Notes:
+</li>
+<li>For each case, design the system and assign costs as appropriate. You may want to run a simulation for each case to make sure the results are as you expect.</li>
+<li>Create a special Generic System case with the financial model for the combined project.</li>
+<li>Specify inputs for the Generic System case's Financial Parameters, Incentives and other finanical model input pages.
 <ul>
-<li>This macro requires that all cases contain the same degradation rate, including the Generic System to be used as the combined model.
-<li>If one of the systems that you wish to combine is a geothermal system, ONLY first-year energy is used in the combined system model; the first-year energy is repeated for the lifetime of the system.
-<li>The energy predictions of the individual systems may not add up to exactly the energy prediction of the combined system due to differences in rounding at an hourly level.
-<li>Running the subsystems independently and then adding financial results may not yield the same financial results as running the combined system, due to different financial inputs.
-<li>Sub-hourly simulations and lifetime PV simulations are not currently enabled for this macro.
+<li>The macro automatically populates inputs on the Generic System case's Power Plant and System Costs input pages, so you do can ignore the inputs on those pages.</li>
+</ul>
+<li>Use the "Choose an option" list to the right to choose the cases to include in the combined project.</li>
+<ul>
+<li><b>Combine all cases</b> to combine all of the cases except the Generic System case you created for the combined project.<li><b>Combine only the cases listed below</b> to choose the cases to combine by typing a comma-separated list of case names, including the Generic System for the combined project. (Separate each case name by a comma with no spaces.)
+</ul>
+<li>Click <b>Run macro</b> above and follow the prompts.</li>
+</ol>
+<p>When the macro finishes, it displays the case for the combined project. Review the information in the page notes for the Power Plant and System Costs page, and then click <b>Simulate</b> to generate results for the combined project.</p>
+<p>If you make changes to the combined project financial model inputs, you can run a simulation to generate new results. You only need to rerun this macro if you change the system design for any of the system cases.</p>
+<p>This macro only uses power generation data for Year 1. It prompts you for a degradation rate to apply to the combined system output.</p>
 </ul>
 @*/
 //Macro user interface widgets
@@ -41,6 +43,52 @@ This may be helpful for modeling a variety of scenarios, including:
 if ( typeof(macro) == 'unknown' ) {
 	msgbox('This macro must be run from within a case.');
 	exit;
+	/*macro = {};
+	macro.mode = '1) Combine all cases';
+	macro.cases = '';*/
+}
+
+function num_to_str( x , d )
+{
+	// only format x if it is a number
+	if ( typeof(x) == 'number' )
+	{
+		// The sprintf() function in this step converts a number (for d = 0) like 409.857 to 41 instead of 410.
+		// This if-else condition is a workaround that bug.
+		if( ( d == 0) && (mod( round(x) , 10) <= 0) )	
+			{
+				x = round(x);
+				str = sprintf('%,',x);
+			}
+		else 
+			{ str = sprintf('%.'+to_string(d)+',',x); }
+
+		arr = split(str,'.');
+		if ( #arr > 1 )
+			{ num_decs = strlen(to_string(arr[1])); }
+		else
+			{ num_decs = 0; }
+		// if number has one or more decimal places less than the desired number	
+		if ( #arr > 1 && num_decs < d)
+		{
+			for (i=0; i<d-num_decs; i++)
+				{ str += '0'; }
+		}
+		// if number has no decimal places
+		elseif ( #arr == 1 && d > 0 )
+		{
+			str += '.';
+			for (i=0; i<d; i++)
+				{ str += '0'; }
+		}
+	}
+	// if x is a string, return it
+	elseif ( typeof(x) == 'string' )
+		{ str = x; }
+	// if x is not a number or string, convert it to a string with no formatting	
+	else	
+		{ str = to_string( x ); }
+	return str;
 }
 
 //Determine available cases
@@ -91,11 +139,11 @@ for (i=0; i<num_cases; i++)
 {
 	active_case(cases[i]);
 	config = configuration();
-	if (config[1] == 'Third Party')
+	/*if (config[1] == 'Third Party')
 	{
 		msgbox('This macro cannot combine a Third Party Ownership model.');
 		exit;
-	}
+	}*/
 	if (config[0] == 'Generic System')
 	{
 		generic[count] = cases[i];
@@ -110,24 +158,31 @@ if (count <=0) //no generic cases
 	exit;
 }
 if (#generic > 1) //more than one generic case
+{
 	financial = choose_from_list(generic, 'Choose which generic system to use as the financial configuration for the combined system.', 'Select financial case', 0);
+}
 else //exactly one generic case
+{
 	financial = generic[0];
-outln('Case to use for financial configuration is: ' + financial);
+}
+outln('Case for combined project: ' + financial);
 
 //Verify the configuration before running it
-msg = 'This macro will combine the performance and costs of cases:';
+msg = 'Review Configuration\nThis macro will combine these cases:\n';
 for (i=0; i<num_cases; i++)
 {
 	if (cases[i] == financial)
 		continue;
 	msg += '\n' + cases[i];
 }
-msg += '\nand run the combined performance results through the financial model specified in:\n' + financial + '\nDo you wish to continue?';
+msg += '\n\nThe combined project is:\n\n' + financial + '\n\nContinue?';
 verify = yesno(msg);
-if (!verify)
-	exit;
+if (!verify) { exit; }
 
+//Due to complexity of AC and DC degradation and lifetime and single year simulations, require user to provide an AC degradation rate
+//for the combined project and ignore degradation rate inputs of individual system cases.
+constant = false;
+/*
 //All degradation rates must be the same- different degradation of individual sub-systems is not yet possible for the out-years
 constant = true;
 degradation_last = null;
@@ -136,7 +191,9 @@ for(i=0; i<num_cases; i++)
 	active_case(cases[i]);
 	config = configuration();
 	if (config[1] == 'None' || config[1] == 'LCOE Calculator')
+	{
 		continue;
+	}
 	degradation_this = get('degradation');
 	if (degradation_last != null)
 	{
@@ -153,13 +210,16 @@ for(i=0; i<num_cases; i++)
 			}
 	}
 	degradation_last = degradation_this; //save to compare to the one before
-}
+}*/
+
 if (!constant)
 {
 	//offer to fix it for the user- suggest setting all degradation rates to 0 or 0.5
-	msg = 'This macro requires that the degradation rates be the same for all systems, including the generic system used to model the combined system.';
-	msg += '\nEnter the degradation rate you wish to use for all systems. Use commas to separate an array of degradation rates.';
-	degrad = in(msg, '0', 'Select a degradation rate');
+	msg = 'This macro uses the Year 1 hourly generation profile for each system. Please';
+	msg += '\nprovide an annual AC degradation rate to use for the combined project,';
+	msg += '\nor enter a zero to ignore degradation.';
+	msg += '\n\nEnter a single value (%/year) or \na comma-separated list of values for each year in the analysis period:';
+	degrad = in(msg, '0', 'Enter annual AC degradation rate (%/yr)');
 	degrad = split(degrad, ',');
 	if (#degrad <= 0)
 	{
@@ -177,64 +237,78 @@ if (!constant)
 		set('degradation', degrad);
 	}
 }	
+outln('Degradation rate for combined project: ' + degrad);
 
-//What is the analysis period and inflation rate of the financial model
-analysis_period = 0;
-inflation = 0;
+//Get analysis period and inflation rate from financial case
 active_case(financial);
 config = configuration();
+analysis_period = 0;
+inflation = 0;
 if (config[1] == 'LCOE Calculator')
 {
 	analysis_period = get('c_lifetime');
 	inflation = get('c_inflation');
 }
-else if (config[1] != 'None' )
+elseif (config[1] != 'None' )
 {
 	analysis_period = get('analysis_period');
 	inflation = get('inflation_rate');
 }
-outln('Analysis period: ' + analysis_period + ' years');
 
-//Allocate and initialize variables to run through the combined model
+outln('Combined project analysis period (years) = ' + analysis_period );
+outln('Combined project inflation rate (%/year) = ' + inflation );
+
+//Allocate and initialize variables to run through the cases to combine
 nameplate = 0;
 hourly_energy = alloc(8760);
 for (i=0; i<8760; i++)
+{
 	hourly_energy[i] = 0;
+}
 annual_energy = 0;
 total_installed_cost = 0;
 if (config[1] != 'None')
 {
 	om_fixed = alloc(analysis_period);
 	for (i=0; i<analysis_period; i++)
+	{
 		om_fixed[i] = 0;
+	}	
 }
+
+note_fin = 'The Combine Cases macro calculated an hourly generation profile by running a simulation for each case listed below and adding the electrical output of the systems on an hour-by-hour basis. Click Edit Array to see the calculated hourly profile values.\n';
+note_fin += '\nThe nameplate capacity is the sum of the system capacities of each case.\n'; 
+note_fin += '\nThe macro also calculated the total installed cost and O&M cost. See the System Costs page for detalis.\n';
+note_fin += '\nThe macro ignores inputs from the financial model input pages in each case except the System Costs page.\n';
+note_fin += '\nThe degradation rate on the Lifetime and Degradation page is the value you entered from the macro.\n';
+note_fin += '\nTo model the combined system, set up the inputs on the Financial Parameters, Incentives, and other financial model input pages and run a simulation.\n';
+
+note_cost = 'The plant cost is the sum of the total installed costs for each case. The fixed annual O&M cost is the sum of all O&M, fuel, battery, and fuel cell replacement costs as applicable. Click Edit to see the O&M cost by year.\n';
 
 //Run each simulation
 for (i=0; i < num_cases; i++)
 {
 	//Do not simulate the financial case
 	if (cases[i] == financial) { continue; }
-		
+	
 	//Simulate the current case
 	active_case(cases[i]);
 	config = configuration();
-	outln('Simulating: ' + cases[i]);
-	
-	//cannot simulate lifetime pv
-	if (config[0] == 'Flat Plate PV')
-	{
-		if (get('pv_lifetime_simulation') == 1)
-		{
-			msgbox('The combine cases macro cannot be used with lifetime PV simulations. Change your selection to PV simulation over one year and try again.');
-			exit;
-		}
-	}
+	out('\nSimulating: ' + cases[i] + '...');
 	
 	//Deal with inflation
 	if (config[1] != 'None')
 	{
-		inflation_old = get('inflation_rate'); //save the old inflation rate so that the input can be reset, avoiding confusion
-		set('inflation_rate', inflation); //use the inflation rate from the generic system where it should have been defined- it will affect the out-years O&M costs
+		if ( config[1] == 'LCOE Calculator' )
+		{
+			inflation_old = get('c_inflation');
+			set( 'c_inflation', inflation );
+		}
+		else	
+		{
+			inflation_old = get('inflation_rate'); //save the old inflation rate so that the input can be reset, avoiding confusion
+			set('inflation_rate', inflation); //use the inflation rate from the generic system where it should have been defined- it will affect the out-years O&M costs
+		}
 	}
 	
 	messages = null;
@@ -245,42 +319,112 @@ for (i=0; i < num_cases; i++)
 		msgbox(cases[i] + ' exited with errors. Check your inputs.\n' + messages);
 		exit;
 	}
+	else { 	outln('done.'); }
+	outln(config);
+	
 	//optionally display messages returned from the simulation
 	if (messages != '') 
 	{
+		outln('messages');
 		see_msg = yesno('There were messages about ' + cases[i] + '. Would you like to see them?');
-		if (see_msg)
-			msgbox(messages);
+		if (see_msg) { msgbox(messages); }
 	}
+
+	//Add case to note for Financial Paraneters page
+	note_fin += '\n\n'+ cases[i] + ' (' + config[0] + ')';
+	note_fin += '\n-----------------------------------------------\n';
+	
+	note_cost += '\n\n'+ cases[i] + ' (' + config[0] +', ' + config[1] + ')';
+	note_cost += '\n-----------------------------------------------\n';
+	
 	
 	//Add the performance parameters of this case
 	nameplate += get('system_capacity');
 	hourly_energy_this = get('gen');
-	//Check for sub-hourly
-	if (#hourly_energy_this != 8760)
+	outln('System capacity (kW) = ' + get('system_capacity') );
+	outln('Cumulative combined system capacity (kW) = ' + nameplate );
+	note_fin += '\nSystem Capacity = ' + num_to_str(get('system_capacity'),3) + ' kW';
+
+	// need annual energy to calculate variable O&M cost for LCOE calculator
+	// and to for constant generation profile for Marine Energy
+	// Note that Wind with Weibull distribution as input reports gen calculated as annual_energy / 8760
+	if ( config[0] == 'Geothermal Power' ) { annual_energy_this = get('first_year_output');	}
+	else { annual_energy_this = get('annual_energy'); }
+	annual_energy += annual_energy_this;
+	outln('Annual energy (kWh/year) = ' + annual_energy_this );
+	outln('Cumulative combined annual energy (kWh/year) = ' + annual_energy );
+	note_fin += '\nAnnual Energy = ' + num_to_str(annual_energy_this,3) + ' kWh/yr';
+	
+	// for lifetime simulation, truncate results to first 8760 values
+	// also check for subhourly simulation and quit 
+	if (config[1] == 'LCOE Calculator')
 	{
-		msgbox('This macro is not currently enabled to combine sub-hourly cases. Change to an hourly case or modify the code to run sub-hourly.');
-		exit;
+		analysis_period_this = get('c_lifetime');
+	}
+	elseif (config[1] != 'None' )
+	{
+		analysis_period_this = get('analysis_period');
 	}
 	
+	// determine hourly generation profile of current case
+	constant_generation = false;
+	lifetime = false;
+	if ( hourly_energy_this == null )
+	{
+		outln('The ' + config[0] + ' model does not generate hourly generation data. Calculating constant generation profile from annual energy.');
+		constant_generation = true;
+	}	
+	elseif ( #hourly_energy_this == 8760 * analysis_period_this ) // check current case to see if it runs lifetime simulations
+	{
+		// truncate to first 8760 time steps
+		outln('The ' + config[0] + ' model runs the simulation over the analysis period. Only Year 1 data will be combined with other cases.');
+		lifetime = true;
+	}	
+	elseif (#hourly_energy_this > 8760 * analysis_period_this)
+	{
+		outln('The ' + config[0] + ' model runs sub-hourly simulations, which this script does not support. Exiting script.');
+		msgbox('This macro is not currently enabled to work with sub-hourly simulations. Change the ' + cases[i] + ' case to hourly simulations modify the macro code to run sub-hourly.');
+		exit;
+	}
+
 	for (j=0; j<8760; j++)
-		hourly_energy[j] += hourly_energy_this[j];
-	annual_energy_this = ? (config[0] == 'Geothermal Power') [get('annual_energy'), get('first_year_output')];
-	annual_energy += annual_energy_this;
+	{
+		if ( constant_generation )
+		{
+			hourly_energy[j] += annual_energy_this / 8760;
+		}
+		else
+		{
+			hourly_energy[j] += hourly_energy_this[j];
+		}	
+	}
 	
 	//Add the financial parameters of this case, if applicable
 	if (config[1] == 'LCOE Calculator') //o&m is different for this one
 	{
+		total_installed_cost_this = get('capital_cost'); // to display on System Costs page note
 		total_installed_cost += get('capital_cost');
 		om_fixed_this = get('fixed_operating_cost');
-		om_variable = get('variable_operating_cost') * get('annual_energy');
+		om_variable = get('variable_operating_cost') * annual_energy;
 		for(j=0; j<analysis_period; j++)
+		{
+			om_total_this[j] = om_fixed_this + om_variable; // for display on System Costs page note
 			om_fixed[j] += om_fixed_this + om_variable;
+		}	
 	}
-	else if(config[1] != 'None' && analysis_period != 0) //check both the current case and the financial case
+	elseif (config[1] == 'None' || config[1] == 'Third Party' ) // no financial or third party host: set total installed cost to zero and skip setting O&M costs
 	{
+		total_installed_cost_this = 0;
+		for (j=0; j<analysis_period; j++)
+		{
+			om_total_this[j] = 0; // set costs to display on System Costs page note to zero
+		}
+		outln('For ' + config[1] + ' financial model, set installed and O&M cost to zero.');	
+	}
+	elseif(config[1] != 'None' && analysis_period != 0) //check both the current case and the financial case
+	{
+		total_installed_cost_this = get('total_installed_cost'); // to display on System Costs page note
 		total_installed_cost += get('total_installed_cost');
-		
 		// O&M costs are taken from the cash flows of each system. All types of O&M costs
 		// are entered in as fixed O&M costs in the financial case. This accounts for several things:
 		// (a) the escalation of O&M costs
@@ -292,16 +436,37 @@ for (i=0; i < num_cases; i++)
 		cf_om_fuel = get('cf_om_fuel_expense');
 		cf_opt_fuel_1 = get('cf_om_opt_fuel_1_expense');
 		cf_opt_fuel_2 = get('cf_om_opt_fuel_2_expense');
+		cf_batt_repl = get('cf_battery_replacement_cost');
+		cf_fuelcell_repl = get('cf_fuelcell_replacement_cost');
 		//in cash flows, the first entry in the array is "Year 0", so must call j+1 in loop		
 		for (j=0; j<analysis_period; j++)
-			om_fixed[j] += om_fixed_this[j+1] + om_capacity[j+1] + om_production[j+1] + cf_om_fuel[j+1] + cf_opt_fuel_1[j+1] + cf_opt_fuel_2[j+1];
+		{
+			// for display in System Costs page note
+			om_total_this[j] = om_fixed_this[j+1] + om_capacity[j+1] + om_production[j+1] 
+						+ cf_om_fuel[j+1] + cf_opt_fuel_1[j+1] + cf_opt_fuel_2[j+1]
+						+ cf_batt_repl[j+1] + cf_fuelcell_repl[j+1];
+
+			om_fixed[j] += om_fixed_this[j+1] + om_capacity[j+1] + om_production[j+1] 
+						+ cf_om_fuel[j+1] + cf_opt_fuel_1[j+1] + cf_opt_fuel_2[j+1]
+						+ cf_batt_repl[j+1] + cf_fuelcell_repl[j+1];
+		}	
 	}
 	
+	outln('Total installed cost ($) =' + total_installed_cost_this );
+	outln('Total O&M cost ($/year) = ' + om_total_this );
+	note_cost += '\nTotal Installed Cost = $' + num_to_str(total_installed_cost_this,0);
+	note_cost += '\nFixed O&M Cost in Year 1 = $' + num_to_str(om_total_this[0],0) + '/yr';
+	note_cost += '\nFixed O&M Cost by year: ' + om_total_this + '\n';
+	
+	if ( constant_generation ) { note_fin += '\n*Annual energy converted to constant hourly generation: For each hour, hourly_energy (kW) = annual_energy (kWh/yr) / 8760 (h/yr).'; }
+	if ( lifetime ) { note_fin += '\n**This configuration runs simulations over the analysis period. Only Year 1 output data was used to calculate the combined generation profile.'; }
+	
 	//put inflation rate back to input in case user wants to run subsystem separately with his originally specified financial parameters
-	if (config[1] != 'None')
-		set('inflation_rate', inflation_old);
+	if (config[1] != 'None') { set('inflation_rate', inflation_old); }
 }
 
+outln('\nFinished running system cases.');
+outln('Setting up combined project case.');
 //Set up the financial case
 active_case(financial);
 config = configuration();
@@ -312,13 +477,17 @@ if (financial_type != 'None')
 {
 	constant1 = true;
 	for (j=1; j<analysis_period; j++) //don't start at zero because comparing j-1
+	{
 		if (om_fixed[j] != om_fixed[j-1])
+		{
 			constant1 = false;
+		}	
+	}		
 	if(constant1)
+	{
 		om_fixed = [om_fixed[0]];
+	}	
 }
-
-
 
 //Set the generic system performance parameters
 set('system_capacity', nameplate);
@@ -336,7 +505,9 @@ if (financial_type == 'LCOE Calculator')
 		exit;
 	}
 	else
+	{
 		set('fixed_operating_cost', om_fixed);
+	}	
 }
 if (financial_type != 'None')
 {
@@ -355,25 +526,38 @@ if (financial_type != 'None')
 	set('om_capacity', [0]);
 	set('om_production', [0]);
 	set('om_fuel_cost', [0]);
+	set('om_replacement_cost1', [0]);
 	//O&M escalation rates are also zeroed because they are accounted for in the fixed O&M costs
 	set('om_fixed_escal', 0);
 	set('om_capacity_escal', 0);
 	set('om_fuel_cost_escal', 0);
 	set('om_production_escal', 0);
+	set('om_replacement_cost_escal',0);
 }
 
 //Simulate the financial case
-outln('Simulating combined case: ' + financial);
-success = simulate('', true);
+outln('Simulating combined project: ' + financial);
+msg = '';
+success = simulate(msg, false);
 if (!success)
 {
-	msgbox('Combined case did not run successfully.');
-	outln('Combined case did not run successfully.');
+	msgbox( 'Combined project case ' + financial + ' simulation failed!\nWe ran a test of the combined case, and it generated the following error message:\n\n' + msg );
+	outln('Simulation failed: ' + msg);
 }
 else
 {
-	message = 'Simulation complete.\nTotal annual energy = ' + sprintf('%,', get('annual_energy')) + ' kWh.\nSee the ' + financial + ' case for complete results.';
+	message = 'Macro finished.\nThe annual energy of the combined system is ' + sprintf('%,', get('annual_energy')) + ' kWh.\n\nSee the Power Plant and System Costs page on the ' + financial + ' case for complete results.';
 	outln(message);
-	show_page('Results');
-	msgbox(message);
+	//show_page('Results');
+	//msgbox(message);
 }
+
+outln('Macro finished.');
+
+show_page('System Costs');
+pagenote('');
+pagenote( note_cost );
+
+show_page('Power Plant');
+pagenote('');
+pagenote( note_fin );
