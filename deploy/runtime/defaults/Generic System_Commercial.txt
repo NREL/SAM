@@ -1,5 +1,5 @@
 1
-269
+268
 adjust
 1
 5
@@ -399,18 +399,12 @@ fixed_plant_input
 1
 1
 0
-generic_degradation
-1
-2
-1
-1
-0
 genericsys.cost.contingency
 1
 1
 1
 1
-2.91214e+06
+2912140
 genericsys.cost.contingency_percent
 1
 1
@@ -428,7 +422,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-6.11548e+06
+6115480
 genericsys.cost.epc.percent
 1
 1
@@ -440,7 +434,7 @@ genericsys.cost.epc.total
 1
 1
 1
-6.11548e+06
+6115480
 genericsys.cost.installed_per_capacity
 1
 1
@@ -476,7 +470,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-2.14042e+06
+2140420
 genericsys.cost.plm.percent
 1
 1
@@ -488,7 +482,7 @@ genericsys.cost.plm.total
 1
 1
 1
-2.14042e+06
+2140420
 genericsys.cost.sales_tax.percent
 1
 1
@@ -500,7 +494,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-2.44619e+06
+2446190
 genericsys.cost.sales_tax.value
 1
 1

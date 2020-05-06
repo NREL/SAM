@@ -1,5 +1,5 @@
 1
-410
+409
 adjust
 1
 5
@@ -1071,12 +1071,6 @@ flip_target_year
 1
 1
 10
-generic_degradation
-1
-2
-1
-1
-0
 genericsys.cost.contingency
 1
 1
