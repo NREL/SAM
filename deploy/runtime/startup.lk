@@ -208,7 +208,7 @@ function setup_lifetime_page( degradation_mode )
                  { 'sidebar'=sidebar_name,'help'=help_name } );
 	}
      // annual AC degradation over one year, 'degradation' requires 'system_use_lifetime = 0'
-     // everything else
+     // everything else. 
      else // DEGRADATION_AC_SINGLE_YEAR
      {
      	addpage( [ [ 'Degradation AC Single Year'] ], { 'sidebar'=sidebar_name,'help'=help_name } );
@@ -1041,7 +1041,7 @@ function setup_generic_system_pages()
 setconfig( 'Generic System', 'Residential' );	
 setmodules( ['generic_system', 'grid', 'utilityrate5', 'cashloan']);
 setup_generic_system_pages();
-setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_residential_pages( LOAD_SIMPLE ); //does not include building load calculator
 
@@ -1049,7 +1049,7 @@ setup_residential_pages( LOAD_SIMPLE ); //does not include building load calcula
 setconfig( 'Generic System', 'Third Party' );
 setmodules( ['generic_system', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_generic_system_pages();
-setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 setup_thirdparty_pages( LOAD_SIMPLE );
 
 //-----------------------------------------------------
