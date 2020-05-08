@@ -295,7 +295,7 @@ Degradation and Lifetime
 1
 1
 0
-Default
+CheckBox
 en_dc_lifetime_losses
 3
 1
@@ -309,10 +309,10 @@ Degradation and Lifetime
 1
 1
 0
-Default
+CheckBox
 
 0
-1186
+1106
 function enable_lifetime_losses()
 {
 	enable('dc_lifetime_losses', value('en_dc_lifetime_losses'));
@@ -333,12 +333,7 @@ on_change{'en_ac_lifetime_losses'} = define() {
 	enable_lifetime_losses();
 };
 
-
 on_change{'en_dc_lifetime_losses'} = define() {
 	enable_lifetime_losses();
 };
 
-
-on_change{'en_dc_lifetime_losses'} = define() {
-	enable_lifetime_losses();
-};
