@@ -1448,7 +1448,7 @@ dc_degradation
 2
 1
 1
-0
+0.5
 debt_message
 1
 4

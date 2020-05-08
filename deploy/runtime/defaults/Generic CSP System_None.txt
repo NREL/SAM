@@ -133,7 +133,7 @@ Wpar_prodT_coefs
 2
 1
 4
-0 0.007499 6.21297e-05 0 
+0 0.007499 6.2e-05 0 
 
 adjust
 1
@@ -348,7 +348,7 @@ csp.gss.pwrb.temp_par_design
 1
 1
 1
-0.00756113
+0.007561
 csp.gss.pwrb.temp_par_f0
 1
 1
@@ -366,7 +366,7 @@ csp.gss.pwrb.temp_par_f2
 1
 1
 1
-6.21297e-05
+6.2e-05
 csp.gss.pwrb.temp_par_f3
 1
 1
