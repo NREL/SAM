@@ -133,7 +133,7 @@ Wpar_prodT_coefs
 2
 1
 4
-0 0.00749943 6.21297e-05 0 
+0 0.007499 6.2e-05 0 
 
 adjust
 1
@@ -176,43 +176,43 @@ annual_albedo
 1
 1
 1
-0
+0.225395
 annual_beam
 1
 1
 1
 1
-8.00463
+7.66733
 annual_diffuse
 1
 1
 1
 1
-1.19728
+1.24816
 annual_global
 1
 1
 1
 1
-5.90535
+5.83339
 annual_snow
 1
 1
 1
 1
-inf
+nan
 annual_tdry
 1
 1
 1
 1
-18.5396
+16.9747
 annual_wspd
 1
 1
 1
 1
-2.7379
+2.26213
 azimuth
 1
 1
@@ -398,7 +398,7 @@ csp.gss.pwrb.temp_eff_f2
 1
 1
 1
--0.000126335
+-0.000126
 csp.gss.pwrb.temp_eff_f3
 1
 1
@@ -416,7 +416,7 @@ csp.gss.pwrb.temp_par_design
 1
 1
 1
-0.00756156
+0.007561
 csp.gss.pwrb.temp_par_f0
 1
 1
@@ -428,13 +428,13 @@ csp.gss.pwrb.temp_par_f1
 1
 1
 1
-0.00749943
+0.007499
 csp.gss.pwrb.temp_par_f2
 1
 1
 1
 1
-6.21297e-05
+6.2e-05
 csp.gss.pwrb.temp_par_f3
 1
 1
@@ -452,13 +452,13 @@ csp.gss.sf.ambt_loss_f1
 1
 1
 1
-0.00158139
+0.001581
 csp.gss.sf.ambt_loss_f2
 1
 1
 1
 1
--0.000190275
+-0.00019
 csp.gss.sf.ambt_loss_f3
 1
 1
@@ -530,13 +530,13 @@ csp.gss.sf.wspd_loss_f1
 1
 1
 1
-0.0147195
+0.01472
 csp.gss.sf.wspd_loss_f2
 1
 1
 1
 1
-0.0025261
+0.002526
 csp.gss.sf.wspd_loss_f3
 1
 1
@@ -688,7 +688,7 @@ etaT_coefs
 2
 1
 5
-0 -0.005705 -0.000126335 0 0 
+0 -0.005705 -0.000126 0 0 
 
 eta_des
 1
@@ -775,7 +775,7 @@ f_par_tot_des
 1
 1
 1
-0.851288
+0.851287
 f_sfhl_ref
 1
 1
@@ -793,7 +793,7 @@ f_t_amb_loss_des
 1
 1
 1
-0.00139112
+0.001391
 f_teshl_ref
 1
 1
@@ -805,7 +805,7 @@ f_v_wind_loss_des
 1
 1
 1
-0.0172456
+0.017246
 f_wmax
 1
 1
@@ -1051,14 +1051,14 @@ sfhlT_coefs
 2
 1
 4
-0 0.00158139 -0.000190275 0 
+0 0.001581 -0.00019 0 
 
 sfhlV_coefs
 1
 2
 1
 4
-0 0.0147195 0.0025261 0 
+0 0.01472 0.002526 0 
 
 solar_data_file_name
 1
@@ -1068,7 +1068,8 @@ daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
-0
+49
+daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 solar_data_source
 1
 4
