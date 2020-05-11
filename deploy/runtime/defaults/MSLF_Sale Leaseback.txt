@@ -584,7 +584,7 @@ V_tank_hot_ini
 1
 1
 1
-1290.56
+1254.62
 V_tes_des
 1
 1
@@ -693,25 +693,25 @@ annual_albedo
 1
 1
 1
-0
+0.217164
 annual_beam
 1
 1
 1
 1
-7.74313
+7.36408
 annual_diffuse
 1
 1
 1
 1
-1.27753
+1.33978
 annual_global
 1
 1
 1
 1
-5.93098
+5.83819
 annual_snow
 1
 1
@@ -723,13 +723,13 @@ annual_tdry
 1
 1
 1
-19.9461
+18.1261
 annual_wspd
 1
 1
 1
 1
-2.0984
+2.35368
 aux_array
 1
 2
@@ -2146,7 +2146,7 @@ csp.mslf.tes.estimated_heat_loss
 1
 1
 1
-0.248358
+0.24418
 csp.mslf.tes.htf_max_opt_temp
 1
 1
@@ -2205,7 +2205,7 @@ d_tank
 1
 1
 1
-20.2682
+19.9839
 defocus
 1
 1
@@ -2241,13 +2241,13 @@ depr_alloc_macrs_5_percent
 1
 1
 1
-95
+90
 depr_alloc_none
 1
 1
 1
 1
-0
+4
 depr_alloc_sl_15_percent
 1
 1
@@ -2259,7 +2259,7 @@ depr_alloc_sl_20_percent
 1
 1
 1
-2
+3
 depr_alloc_sl_39_percent
 1
 1
@@ -2583,7 +2583,7 @@ dispatch_tod_factors
 2
 1
 9
-1 1 1 1 1 1 1 1 1 
+2.064 1.2 1 1.1 0.8 0.7 1 1 1 
 
 diswos
 1
@@ -2922,7 +2922,7 @@ hx_derate
 1
 1
 1
-0.972145
+1
 hybrid_tou1
 1
 1
@@ -3316,7 +3316,7 @@ itc_fed_percent
 1
 1
 1
-26
+30
 itc_fed_percent_deprbas_fed
 1
 1
@@ -3611,7 +3611,7 @@ mslf_is_hx
 1
 1
 1
-1
+0
 nLoops
 1
 1
@@ -4189,7 +4189,8 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solar_data_source
 1
 4
@@ -5053,13 +5054,13 @@ vol_min
 1
 1
 1
-322.641
+313.654
 vol_tank
 1
 1
 1
 1
-6452.82
+6273.08
 washes_per_year
 1
 1

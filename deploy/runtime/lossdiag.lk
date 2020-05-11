@@ -10,7 +10,7 @@ loss_diagram{'Flat Plate PV'} = define() {
 	
 	new_baseline( 'annual_dc_nominal', 'Nominal DC energy (kWh)' );
 	add_loss_term( 'annual_dc_snow_loss_percent', 'Snow' );
-	add_loss_term( 'annual_dc_module_loss_percent', 'Module' );
+	add_loss_term( 'annual_dc_module_loss_percent', 'Module deviation from STC' );
 	add_loss_term( 'annual_dc_mppt_clip_loss_percent', 'Inverter MPPT clipping');
 	add_loss_term( 'annual_dc_mismatch_loss_percent', 'Module mismatch' );
 	add_loss_term( 'annual_dc_diodes_loss_percent', 'Diodes and connections' );
