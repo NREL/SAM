@@ -1,5 +1,5 @@
 1
-732
+733
 LeadAcid_q10
 1
 1
@@ -1448,7 +1448,7 @@ dc_degradation
 2
 1
 1
-0
+0.5
 debt_message
 1
 4
@@ -4230,7 +4230,7 @@ total_direct_cost
 1
 1
 1
-3.08633e+06
+3086330
 total_indirect_cost
 1
 1
@@ -4242,7 +4242,7 @@ total_installed_cost
 1
 1
 1
-3.08633e+06
+3086330
 tz
 1
 1
@@ -4255,6 +4255,12 @@ ui_batt_is_dc
 1
 1
 0
+ui_pv_capacity
+1
+1
+1
+1
+3.33505e-317
 ui_wacc
 1
 1

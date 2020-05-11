@@ -269,25 +269,25 @@ annual_albedo
 1
 1
 1
-0.226695
+0.225395
 annual_beam
 1
 1
 1
 1
-7.65284
+7.66733
 annual_diffuse
 1
 1
 1
 1
-1.26862
+1.24816
 annual_global
 1
 1
 1
 1
-nan
+5.83339
 annual_snow
 1
 1
@@ -299,13 +299,13 @@ annual_tdry
 1
 1
 1
-17.2962
+16.9747
 annual_wspd
 1
 1
 1
 1
-2.37171
+2.26213
 aux_par
 1
 1
@@ -574,7 +574,7 @@ const_per_interest1
 1
 1
 1
-17784100
+17784080
 const_per_interest2
 1
 1
@@ -634,7 +634,7 @@ const_per_interest_total
 1
 1
 1
-17784100
+17784080
 const_per_months1
 1
 1
@@ -731,7 +731,7 @@ const_per_principal1
 1
 1
 1
-444602000
+444601984
 const_per_principal2
 1
 1
@@ -761,7 +761,7 @@ const_per_principal_total
 1
 1
 1
-444602000
+444601984
 const_per_total1
 1
 1
@@ -1168,7 +1168,7 @@ csp.pt.cost.contingency
 1
 1
 1
-24203200
+24203204
 csp.pt.cost.contingency_percent
 1
 1
@@ -1204,7 +1204,7 @@ csp.pt.cost.epc.total
 1
 1
 1
-48095200
+48095224
 csp.pt.cost.fixed_sf
 1
 1
@@ -1228,7 +1228,7 @@ csp.pt.cost.heliostats
 1
 1
 1
-110178000
+110178192
 csp.pt.cost.heliostats_m2
 1
 1
@@ -1282,7 +1282,7 @@ csp.pt.cost.plm.total
 1
 1
 1
-11745000
+11744988
 csp.pt.cost.power_block
 1
 1
@@ -1312,7 +1312,7 @@ csp.pt.cost.receiver
 1
 1
 1
-58843700
+58843672
 csp.pt.cost.receiver.area
 1
 1
@@ -1348,7 +1348,7 @@ csp.pt.cost.sales_tax.total
 1
 1
 1
-14798500
+14798530
 csp.pt.cost.sales_tax.value
 1
 1
@@ -1360,7 +1360,7 @@ csp.pt.cost.site_improvements
 1
 1
 1
-12591800
+12591793
 csp.pt.cost.site_improvements_m2
 1
 1
@@ -1402,7 +1402,7 @@ csp.pt.cost.tower
 1
 1
 1
-16183900
+16183894
 csp.pt.cost.tower.fixed
 1
 1
@@ -1897,7 +1897,7 @@ dispatch_tod_factors
 2
 1
 9
-1 1 1 1 1 1 1 1 1 
+2.064 1.2 1 1.1 0.8 0.7 1 1 1 
 
 dni_des
 1
@@ -8044,7 +8044,7 @@ itc_fed_percent
 1
 1
 1
-26
+30
 itc_fed_percent_deprbas_fed
 1
 1
@@ -8759,7 +8759,7 @@ property_assessed_value
 1
 1
 1
-444602000
+444601984
 property_tax_rate
 1
 1
@@ -9065,7 +9065,7 @@ show_ReturnonEquity
 1
 1
 1
-0
+1
 show_construction_period
 1
 1
@@ -9086,7 +9086,8 @@ daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
-0
+49
+daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 solar_data_source
 1
 4
@@ -9216,19 +9217,19 @@ total_direct_cost
 1
 1
 1
-369963000
+369963264
 total_indirect_cost
 1
 1
 1
 1
-74638800
+74638744
 total_installed_cost
 1
 1
 1
 1
-444602000
+444601984
 tower_exp
 1
 1
@@ -9258,7 +9259,7 @@ ui_direct_subtotal
 1
 1
 1
-345760000
+345760032
 ui_heliostat_height
 1
 1

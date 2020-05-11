@@ -40,7 +40,7 @@ access_roads_cost
 1
 1
 1
-2.54274e+06
+2542740
 adjust
 1
 5
@@ -767,7 +767,7 @@ degradation
 2
 1
 1
-0.5
+0
 delivery_assist_required
 1
 1
@@ -2369,7 +2369,7 @@ electrical_materials_cost
 1
 1
 1
-3.91765e+06
+3917650
 enable_interconnection_limit
 1
 1
@@ -3147,7 +3147,7 @@ markup_cost
 1
 1
 1
-5.5149e+06
+5514900
 meas_atm_uncert
 1
 1
@@ -3626,7 +3626,7 @@ project_mgmt_cost
 1
 1
 1
-1.52648e+06
+1526480
 project_total_budgeted_cost
 1
 1
@@ -3953,7 +3953,7 @@ substation_cost
 1
 1
 1
-3.72902e+06
+3729020
 substructCont
 1
 1

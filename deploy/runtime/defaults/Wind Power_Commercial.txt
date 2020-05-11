@@ -3264,7 +3264,7 @@ substation_cost
 1
 1
 1
-3.1295e+06
+3129500
 substructCont
 1
 1

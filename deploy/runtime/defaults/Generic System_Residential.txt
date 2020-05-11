@@ -1,5 +1,5 @@
 1
-265
+264
 adjust
 1
 5
@@ -360,12 +360,6 @@ first_year_output_peak
 fixed_plant_input
 1
 1
-1
-1
-0
-generic_degradation
-1
-2
 1
 1
 0

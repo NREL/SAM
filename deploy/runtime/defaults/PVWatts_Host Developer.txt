@@ -613,7 +613,7 @@ degradation
 2
 1
 1
-0
+0.5
 depr_alloc_custom_percent
 1
 1
