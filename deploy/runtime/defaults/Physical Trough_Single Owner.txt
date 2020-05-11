@@ -2086,7 +2086,7 @@ csp_dtr_hce_optical_eff_1
 1
 1
 1
-0.850118
+0.850117
 csp_dtr_hce_optical_eff_2
 1
 1
@@ -4191,7 +4191,7 @@ dispatch_tod_factors
 2
 1
 9
-1 1 1 1 1 1 1 1 1 
+2.064 1.2 1 1.1 0.8 0.7 1 1 1 
 
 dscr
 1

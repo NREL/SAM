@@ -1446,7 +1446,7 @@ csp_dtr_hce_optical_eff_1
 1
 1
 1
-0.850118
+0.850117
 csp_dtr_hce_optical_eff_2
 1
 1
@@ -3440,7 +3440,7 @@ fixed_operating_cost
 1
 1
 1
-6.5934e+06
+6593400
 fluid_dens_inlet_temp
 1
 1
