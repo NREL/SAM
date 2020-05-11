@@ -20,6 +20,7 @@ def csv_to_dict(csvfile):
 if __name__ == "__main__":
     expected_filename = sys.argv[1]
     actual_filename = sys.argv[2]
+    fail_on_output = sys.argv[3] == "true"
     
     with open(expected_filename, "r") as datafile:
         expected_csv = csv.reader(datafile, delimiter=',', quotechar='\"')
@@ -54,6 +55,6 @@ if __name__ == "__main__":
     
     if success:
         print("Success!")
-    else:
+    elif fail_on_output:
         sys.exit(1)   
         
