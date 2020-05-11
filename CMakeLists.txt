@@ -137,7 +137,7 @@ include(${wxWidgets_USE_FILE})
 
 
 #####################################################################################################################
-# 
+#
 # CMake Targets
 #
 #####################################################################################################################
@@ -252,15 +252,18 @@ endif()
 
 SET(CMAKE_SKIP_BUILD_RPATH)
 
-
 if (UNIX)
-    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-        set(SSC_NAME sscd)
+    if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
+        set(SSC_SO $<TARGET_FILE:ssc>)
     else()
-        set(SSC_NAME ssc)
+        set(SSC_SO $<IF:$<CONFIG:Debug>,${SSCD_LIB},${SSC_LIB}>)
     endif()
     if (APPLE)
-        
+        if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+            set(SSC_NAME sscd)
+        else()
+            set(SSC_NAME ssc)
+        endif()
         add_custom_command(
             TARGET ${SAM_EXE}
             POST_BUILD
@@ -270,7 +273,7 @@ if (UNIX)
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
             COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
-            COMMAND cp ${SSC_LIB} ${SAM_APP}/Contents/Frameworks
+            COMMAND cp ${SSC_SO} ${SAM_APP}/Contents/Frameworks
             COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
             COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
         )
@@ -288,8 +291,7 @@ if (UNIX)
                 COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/lhs.bin ${SAM_APP}/runtime/bin
                 COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/stepwise.bin ${SAM_APP}/runtime
 #                COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/build_linux/GtkTheme ${SAM_APP}/linux_64
-		COMMAND echo ${SSC_LIB}
-                COMMAND cp $ENV{SSCDIR}/build/ssc/${SSC_NAME}.so ${SAM_APP}/linux_64/${SSC_NAME}.so
+                COMMAND cp ${SSC_SO} ${SAM_APP}/linux_64
         )
 
         #		install(TARGETS ${SAM_EXE}
@@ -340,11 +342,11 @@ else()
     endforeach( file_i )
 
     if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-        set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
         set(SSC_DLL $<TARGET_FILE:ssc>)
+        set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
     else()
-        set(SSC_LIB $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.lib)
-        set(SSC_DLL $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.dll)
+        set(SSC_DLL $<IF:$<CONFIG:Debug>,${SSCD_LIB},${SSC_LIB}>)
+        string(REPLACE ".dylib" ".lib" SSC_LIB ${SSC_DLL})
     endif()
     add_custom_command(
         TARGET ${SAM_EXE}
