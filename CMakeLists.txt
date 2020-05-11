@@ -346,7 +346,7 @@ else()
         set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
     else()
         set(SSC_DLL $<IF:$<CONFIG:Debug>,${SSCD_LIB},${SSC_LIB}>)
-        string(REPLACE ".dylib" ".lib" SSC_LIB ${SSC_DLL})
+        string(REPLACE ".dll" ".lib" SSC_LIB ${SSC_DLL})
     endif()
     add_custom_command(
         TARGET ${SAM_EXE}
