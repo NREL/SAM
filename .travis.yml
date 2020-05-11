@@ -36,7 +36,7 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export EXPECTED_LINES=$(wc -l $SAMNTDIR/test_results_osx64.csv | cut -d' ' -f1); fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then lines="0"; Xvfb :1337 & export DISPLAY=:1337 & $SAMNTDIR"/build/SAM.app" no_sam_file $SAMNTDIR"/build/deploy/test_script_ow.lk"&>/dev/null & while [ $lines -lt $EXPECTED_LINES ]; do sleep 60; lines=$(wc -l $SAMNTDIR/build/test_results_osx64.csv | cut -d' ' -f1); echo $lines; done; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_osx64.csv $SAMNTDIR/build/test_results_osx64.csv false; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_win64.csv $SAMNTDIR/build/test_results_osx64.csv true; fi  
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_win64.csv $SAMNTDIR/build/test_results_osx64.csv true; fi  
 
 install:
   - sudo apt-get install -y libwebkitgtk-dev libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6
