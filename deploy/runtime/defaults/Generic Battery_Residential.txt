@@ -741,7 +741,7 @@ batt_room_temperature_single
 1
 1
 1
-20
+25
 batt_room_temperature_vector
 1
 2
