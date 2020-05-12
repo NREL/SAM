@@ -380,8 +380,14 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	else if (type == "DataLifetimeMatrix")
 	{
 	obj->CreateNative(grid);
+	AFDataLifetimeMatrixButton* da = obj->GetNative<AFDataLifetimeMatrixButton>();
+	// TODO - update to analysis period
+	da->SetAnalysisPeriod(25);
 	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-	AFDataLifetimeMatrixButton *da = obj->GetNative<AFDataLifetimeMatrixButton>();
+	//	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+//	AFDataLifetimeMatrixButton *da = obj->GetNative<AFDataLifetimeMatrixButton>();
+	// TODO - update to analysis period
+//	da->SetAnalysisPeriod(25);
 	wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 	da->OnPressed(evt);
 	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
