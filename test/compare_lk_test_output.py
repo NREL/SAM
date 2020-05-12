@@ -53,6 +53,10 @@ if __name__ == "__main__":
             success = False
             print("Key " + key + " missing in test results " + actual_filename)
     
+    if len(expected_values) != len(actual_values):
+        success = False
+        print("Expected " + str(len(expected_values)) + " results. Found " + str(len(actual_values)) + " please update the test results csv")
+    
     if success:
         print("Success!")
     elif fail_on_output:
