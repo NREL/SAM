@@ -1858,7 +1858,7 @@ extern "C"
 
 	/**
 	 * Set mp_ancserv1_revenue: Ancillary services 1 revenue input
-	 * options: None
+	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
 	 * required if: *
 	 */
@@ -1866,7 +1866,7 @@ extern "C"
 
 	/**
 	 * Set mp_ancserv2_revenue: Ancillary services 2 revenue input
-	 * options: None
+	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
 	 * required if: *
 	 */
@@ -1874,14 +1874,22 @@ extern "C"
 
 	/**
 	 * Set mp_ancserv3_revenue: Ancillary services 3 revenue input
-	 * options: None
+	 * options: Lifetime x 2 [Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set mp_enable_ancserv1: Enable ancillary services 1 revenue [0/1]
+	 * Set mp_ancserv4_revenue: Ancillary services 4 revenue input
+	 * options: Lifetime x 2 [Cleared Capacity(MW),Price($/MWh)]
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_enable_ancserv1: Enable ancillary services 1 Revenue [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
@@ -1889,7 +1897,7 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv1_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set mp_enable_ancserv2: Enable ancillary services 2 revenue [0/1]
+	 * Set mp_enable_ancserv2: Enable ancillary services 2 Revenue [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
@@ -1897,7 +1905,7 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv2_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set mp_enable_ancserv3: Enable ancillary services 3 revenue [0/1]
+	 * Set mp_enable_ancserv3: Enable ancillary services 3 Revenue [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
@@ -1905,7 +1913,7 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv3_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set mp_enable_ancserv4: Enable ancillary services 4 revenue [0/1]
+	 * Set mp_enable_ancserv4: Enable ancillary services 4 Revenue [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
@@ -1919,6 +1927,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mp_energy_market_revenue: Energy market revenue input
+	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	//
@@ -2059,27 +2075,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// Market parameters
-	//
-
-	/**
-	 * Set mp_ancserv4_revenue: Ancillary services 4 revenue input
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Merchantplant_Market_mp_ancserv4_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set mp_energy_market_revenue: Energy market revenue input
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Merchantplant_Market_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	//
@@ -2694,6 +2689,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv4_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv1_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv2_nget(SAM_table ptr, SAM_error *err);
@@ -2703,6 +2700,8 @@ extern "C"
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv4_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**
@@ -2753,15 +2752,6 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_Merchantplant_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * Market Getters
-	 */
-
-	SAM_EXPORT double* SAM_Merchantplant_Market_mp_ancserv4_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Merchantplant_Market_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**

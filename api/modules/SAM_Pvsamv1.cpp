@@ -2575,21 +2575,9 @@ SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_dc_dc_efficiency_nset(SAM_table p
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_height_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_height", number);
-	});
-}
-
 SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_inverter_efficiency_cutoff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_inverter_efficiency_cutoff", number);
-	});
-}
-
-SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_length_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_length", number);
 	});
 }
 
@@ -2683,9 +2671,9 @@ SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_replacement_schedule_percent_aset
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_width_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_surface_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_width", number);
+		ssc_data_set_number(ptr, "batt_surface_area", number);
 	});
 }
 
@@ -7909,33 +7897,11 @@ SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_dc_dc_efficiency_nget(SAM_table
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_height_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_height", &result))
-		make_access_error("SAM_Pvsamv1", "batt_height");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_inverter_efficiency_cutoff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_inverter_efficiency_cutoff", &result))
 		make_access_error("SAM_Pvsamv1", "batt_inverter_efficiency_cutoff");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_length_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_length", &result))
-		make_access_error("SAM_Pvsamv1", "batt_length");
 	});
 	return result;
 }
@@ -8113,11 +8079,11 @@ SAM_EXPORT double* SAM_Pvsamv1_BatterySystem_batt_replacement_schedule_percent_a
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_width_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_surface_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_width", &result))
-		make_access_error("SAM_Pvsamv1", "batt_width");
+	if (!ssc_data_get_number(ptr, "batt_surface_area", &result))
+		make_access_error("SAM_Pvsamv1", "batt_surface_area");
 	});
 	return result;
 }

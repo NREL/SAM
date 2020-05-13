@@ -162,28 +162,12 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_dc_dc_efficiency_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_height: Battery height [m]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Battery_BatterySystem_batt_height_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set batt_inverter_efficiency_cutoff: Inverter efficiency at which to cut battery charge or discharge off [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_inverter_efficiency_cutoff_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set batt_length: Battery length [m]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Battery_BatterySystem_batt_length_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_loss_choice: Loss power input option [0/1]
@@ -306,12 +290,12 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_replacement_schedule_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_width: Battery width [m]
+	 * Set batt_surface_area: Battery surface area [m^2]
 	 * options: None
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Battery_BatterySystem_batt_width_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Battery_BatterySystem_batt_surface_area_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set en_batt: Enable battery storage model [0/1]
@@ -1171,11 +1155,7 @@ extern "C"
 
 	SAM_EXPORT double SAM_Battery_BatterySystem_batt_dc_dc_efficiency_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Battery_BatterySystem_batt_height_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Battery_BatterySystem_batt_inverter_efficiency_cutoff_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Battery_BatterySystem_batt_length_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_BatterySystem_batt_loss_choice_nget(SAM_table ptr, SAM_error *err);
 
@@ -1207,7 +1187,7 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_BatterySystem_batt_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Battery_BatterySystem_batt_width_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Battery_BatterySystem_batt_surface_area_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_BatterySystem_en_batt_nget(SAM_table ptr, SAM_error *err);
 
