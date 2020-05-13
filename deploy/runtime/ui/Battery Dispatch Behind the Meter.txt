@@ -168,8 +168,8 @@ Mode
 1
 Label
 5
-16
-Battery Dispatch
+23
+Battery Dispatch (kWdc)
 Description
 5
 123
@@ -516,8 +516,8 @@ Mode
 1
 Label
 5
-17
-Grid Target Power
+24
+Grid Target Power (kWac)
 Description
 5
 130
@@ -602,8 +602,8 @@ batt_custom_dispatch
 Time series battery dispatch
 kWdc
 BatteryDispatch
-18
-Battery Dispatch|1
+25
+Battery Dispatch (kWdc)|1
 2
 1
 2
@@ -689,7 +689,8 @@ batt_target_power
 Time series grid power targets
 kWac
 BatteryDispatch
-0
+26
+Grid Target Power (kWac)|1
 0
 1
 2
