@@ -932,8 +932,8 @@ batt_room_temperature_vector
 Time series environment temperature
 C
 BatteryCell
-23
-Environment temperature
+17
+Temperature (C)|1
 0
 1
 2
