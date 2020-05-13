@@ -10,7 +10,7 @@ def csv_to_dict(csvfile):
     for row in csvfile:
         data = {}
         key = str(row[0]) + " " + str(row[1])
-        if key != "TECHNOLOGY FINANCING": # Skip first row
+        if key != "TECHNOLOGY FINANCING" or key != "final_configuration_eof": # Skip first and last rows
             data[annual_energy] = row[2]
             data[lcoe] = row[3]
             data[lppa] = row[4]
