@@ -826,7 +826,7 @@ AlignTop
 2
 1
 
-14
+12
 batt_Cp
 3
 1
@@ -854,34 +854,6 @@ BatteryCell
 1
 1
 5
-Numeric
-batt_height
-3
-1
-Battery height
-m
-BatteryCell
-0
-10
-1
-1
-1
-1
-0.425
-Numeric
-batt_length
-3
-1
-Battery length
-m
-BatteryCell
-0
-10
-1
-1
-1
-1
-0.25
 Numeric
 batt_mass
 3
@@ -969,6 +941,20 @@ BatteryCell
 1
 300
 Numeric
+batt_surface_area
+3
+1
+Battery surface area
+m
+BatteryCell
+0
+10
+1
+1
+1
+1
+0.181
+Numeric
 batt_thermal_choice
 3
 1
@@ -998,20 +984,6 @@ BatteryCell
 1
 0.001
 Numeric
-batt_width
-3
-1
-Battery width
-m
-BatteryCell
-0
-10
-1
-1
-1
-1
-0.181
-Numeric
 cap_vs_temp
 3
 3
@@ -1031,7 +1003,7 @@ BatteryCell
 
 DataArray
 
-1657
+1476
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1041,20 +1013,10 @@ equations{'batt_volume'} = define()
 	// m3
 	return ${batt_computed_bank_capacity}/${batt_specific_energy_per_volume};
 };
-equations{'batt_length'} = define()
+equations{'batt_surface_area'} = define()
 {
 	// assume cube
-	return pow(${batt_volume},0.3333333);
-};
-equations{'batt_width'} = define()
-{
-	// assume cube
-	return pow(${batt_volume},0.3333333);
-};
-equations{'batt_height'} = define()
-{
-	// assume cube
-	return pow(${batt_volume},0.3333333);
+	return pow(${batt_volume},2.3333333) * 6;
 };
 equations{'batt_room_temperature_celsius'} = define()
 {

@@ -277,8 +277,8 @@ if ( !ok )
 	exit;
 }
 
-if ( get('en_batt') == 1 ) batt = true;
-else batt = false;
+if ( get('en_batt') == 1 ) { batt = true; }
+else { batt = false; }
 
 // Financial parameters that apply to all scenarios
 analysis_period = get('analysis_period');
@@ -469,7 +469,7 @@ str_csv =  'Total Electricity Bill in Year 1' + '\n' +
 'Monthly minimum,' + none_min_mon + ',' + pv_min_mon + ',' + ? batt [ '' , batt_min_mon ] + '\n' +        
 'Annual minimum,' + none_min_ann + ',' + pv_min_ann + ',' + ? batt [ '' , batt_min_ann ] + '\n' +
 'Year end net metering credit,' + 0 + ',' + pv_yrend_nm_credit + ',' + ? batt [ '' , batt_yrend_nm_credit ] + '\n' +
-'Total bill,' + none_total_bill + ',' + pv_total_bill + ? batt [ '' , batt_total_bill ] + '\n' +
+'Total bill,' + none_total_bill + ',' + pv_total_bill + ',' + ? batt [ '' , batt_total_bill ] + '\n' +
 'Savings compared to no system,' + 0 + ',' + pv_bill_savings + ',' + ? batt [ '' , batt_bill_savings ] + '\n' +
 '' + '\n' +
 'Present Value of Annual Costs and Net Present Value' + '\n' +
@@ -478,7 +478,7 @@ str_csv =  'Total Electricity Bill in Year 1' + '\n' +
 ? is_commercial [ '' , 'Income tax increase due to bill savings,' + 0 + ',' + pv_npv_tax + ',' + ? batt [ '' , batt_npv_tax ]  + '\n' ]  +
 'System costs after tax,' + 0 + ',' + pv_npc + ',' + ? batt [ '' , batt_npc ] + '\n' +
 'Battery replacement cost,' + 0 + ',' + 0 + ',' + ? batt [ '' , batt_npc_replacement ] + '\n' +
-'Total cost,' + 0 + ',' + pv_npc_w_bill + ? batt [ '' , batt_npc_w_bill ] + '\n' +
+'Total cost,' + 0 + ',' + pv_npc_w_bill + ',' + ? batt [ '' , batt_npc_w_bill ] + '\n' +
 'NPV of project with bill savings,' + 0 + ',' + pv_npv + ',' + ? batt [ '' , batt_npv ];
 
 f_csv = homedir()+'/'+case_name()+'_value_of_re_report.csv';
