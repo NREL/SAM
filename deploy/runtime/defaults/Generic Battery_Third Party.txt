@@ -712,7 +712,7 @@ batt_resistance
 1
 1
 1
-0.2
+0.002
 batt_room_temperature_celsius
 1
 2
@@ -725,7 +725,7 @@ batt_room_temperature_single
 1
 1
 1
-20
+25
 batt_room_temperature_vector
 1
 2

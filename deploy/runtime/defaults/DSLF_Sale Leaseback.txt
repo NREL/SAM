@@ -489,43 +489,43 @@ annual_albedo
 1
 1
 1
-0
+0.217164
 annual_beam
 1
 1
 1
 1
-7.74313
+7.36408
 annual_diffuse
 1
 1
 1
 1
-1.27753
+1.33978
 annual_global
 1
 1
 1
 1
-5.93098
+5.83819
 annual_snow
 1
 1
 1
 1
-inf
+nan
 annual_tdry
 1
 1
 1
 1
-19.9461
+18.1261
 annual_wspd
 1
 1
 1
 1
-2.0984
+2.35368
 aux_array
 1
 2
@@ -755,7 +755,7 @@ const_per_interest1
 1
 1
 1
-14981100
+14981076
 const_per_interest2
 1
 1
@@ -815,7 +815,7 @@ const_per_interest_total
 1
 1
 1
-14981100
+14981076
 const_per_months1
 1
 1
@@ -912,7 +912,7 @@ const_per_principal1
 1
 1
 1
-374527000
+374526912
 const_per_principal2
 1
 1
@@ -942,13 +942,13 @@ const_per_principal_total
 1
 1
 1
-374527000
+374526912
 const_per_total1
 1
 1
 1
 1
-18726300
+18726346
 const_per_total2
 1
 1
@@ -1008,7 +1008,7 @@ construction_financing_cost
 1
 1
 1
-18726300
+18726346
 cost_dev_fee_percent
 1
 1
@@ -1020,13 +1020,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-2980860
+2.98086e+06
 cost_dev_fee_value
 1
 1
 1
 1
-11235800
+11235807
 cost_equity_closing
 1
 1
@@ -1067,7 +1067,7 @@ csp.lf.cost.contingency
 1
 1
 1
-21108100
+21108114
 csp.lf.cost.contingency_percent
 1
 1
@@ -1109,7 +1109,7 @@ csp.lf.cost.epc.total
 1
 1
 1
-35491800
+35491788
 csp.lf.cost.fossil_backup
 1
 1
@@ -1133,7 +1133,7 @@ csp.lf.cost.htf_system
 1
 1
 1
-29016300
+29016346
 csp.lf.cost.htf_system.area
 1
 1
@@ -1187,7 +1187,7 @@ csp.lf.cost.plm.total
 1
 1
 1
-3476410
+3.47641e+06
 csp.lf.cost.power_plant
 1
 1
@@ -1217,7 +1217,7 @@ csp.lf.cost.sales_tax.total
 1
 1
 1
-12906100
+12906104
 csp.lf.cost.sales_tax.value
 1
 1
@@ -1229,7 +1229,7 @@ csp.lf.cost.site_improvements
 1
 1
 1
-17585700
+17585664
 csp.lf.cost.site_improvements.area
 1
 1
@@ -1247,7 +1247,7 @@ csp.lf.cost.solar_field
 1
 1
 1
-131892000
+131892480
 csp.lf.cost.solar_field.area
 1
 1
@@ -1265,7 +1265,7 @@ csp.lf.cost.total_direct
 1
 1
 1
-322653000
+322652608
 csp.lf.cost.total_indirect
 1
 1
@@ -1277,7 +1277,7 @@ csp.lf.cost.total_installed
 1
 1
 1
-374527000
+374526912
 csp.lf.cost.total_land_area
 1
 1
@@ -3169,7 +3169,7 @@ dispatch_tod_factors
 2
 1
 9
-1 1 1 1 1 1 1 1 1 
+2.064 1.2 1 1.1 0.8 0.7 1 1 1 
 
 dnifc
 1
@@ -3723,7 +3723,7 @@ itc_fed_percent
 1
 1
 1
-26
+30
 itc_fed_percent_deprbas_fed
 1
 1
@@ -4264,7 +4264,7 @@ property_assessed_value
 1
 1
 1
-374527000
+374526912
 property_tax_rate
 1
 1
@@ -4459,7 +4459,8 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solar_data_file_name_load
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solar_data_source
 1
 4
@@ -4613,7 +4614,7 @@ total_installed_cost
 1
 1
 1
-374527000
+374526912
 track_mode
 1
 1

@@ -149,8 +149,8 @@ function cf_om_expenses()
     if ( batt_replacement_tech )
 	{
 		cfline( 'cf_battery_replacement_cost', 0);
-		// electricity purchase for PV single owner only as of October 2018
-		if ( fin == 'Single Owner' && value('en_electricity_rates') == 1 )
+		// electricity purchases to charge battery not available for all financial models as of 2020.2.29
+		if ( varinfo( 'cf_utility_bill' ) != null )
 		{
 			cfline( 'cf_utility_bill', 0);
 		}
@@ -169,8 +169,7 @@ function cf_om_expenses()
                  tech != 'Biopower' &&
                  tech != 'PV Battery' &&
                  tech != 'PVWatts Battery' &&
-                 tech != 'Generic Battery' &&
-                 tech != 'Fuel Cell' ); 
+                 tech != 'Generic Battery' ); 
 	if ( fuel_tech == true ) { cfline('cf_om_fuel_expense', 2); }
 	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_1_expense', 0); }
 	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_2_expense', 0); }
@@ -901,9 +900,11 @@ function is_ppa_price_uniform()
 
 function set_fuel(xl) 
 { 
+	// TO DO test with fuel cost input as annual table -- this approach only works for single fuel price with escalation rate
 	tech = technology(); 
 	if ( varinfo('system_heat_rate') != null ) xl_set( xl, output('system_heat_rate'),'system_heat_rate' ); 
-	if ( varinfo('annual_fuel_usage') != null && tech != 'Biopower' ) //biopower annual_fuel_usage is total energy in thermal kWh 
+	//biopower annual_fuel_usage is total energy in thermal kWh, for fuel cell read cash flow output
+	if ( varinfo('annual_fuel_usage') != null && tech != 'Biopower' && tech != 'Fuel Cell' ) 
 	{ 
 		xl_set( xl, output('annual_fuel_usage'), 'annual_fuel_usage'); 
 		xl_set( xl, value('om_fuel_cost'),'om_fuel_cost'); 
@@ -1098,8 +1099,8 @@ function set_om(xl) {
 	 
 	if ( #omc == 1 )  
 	{  
-		send_excel(       xl, 'om_capacity'); 
-		send_excel(       xl, 'om_capacity_escal'); 
+		send_excel( xl, 'om_capacity'); 
+		send_excel( xl, 'om_capacity_escal'); 
 	} 
 	else  
 	{ 
@@ -1109,8 +1110,8 @@ function set_om(xl) {
 	}	 
 	 
 	if ( #omp == 1 ) {	 
-		send_excel(       xl, 'om_production'); 
-		send_excel(       xl, 'om_production_escal'); 
+		send_excel( xl, 'om_production'); 
+		send_excel( xl, 'om_production_escal'); 
 	} 
 	else  
 	{ 
@@ -1123,43 +1124,28 @@ function set_om(xl) {
 	tech = technology(); 
 	fin = financing(); 
 	batt_tech = false; 
-	is_batt_repl = false;
 	 // PVWatts does not model battery replacements
 	batt_tech = (  tech == 'PV Battery' || tech == 'Generic Battery' || (( tech == 'Fuel Cell') && value('en_batt') == true ) ); 
-	if ( batt_tech == true )
-	{ 
-		is_batt_repl = ( value('batt_replacement_option') > 0 ); 
+	if ( batt_tech == true ) { xl_set( xl, output('cf_battery_replacement_cost'), 'cf_battery_replacement_cost' ); }
+	
+	if ( tech == 'Fuel Cell' && ( /*fin == 'Commercial' ||*/ fin == 'Single Owner' ) ) // fuel cell only available for commercial and single owner as of SAM 2020.2.29
+	{
+		xl_set( xl, 'Yes', 'IsFuelCell' );
+		xl_set( xl, output('cf_om_fixed1_expense'), 'cf_om_fixed1_expense' );
+		xl_set( xl, output('cf_om_fixed2_expense'), 'cf_om_fixed2_expense' ) ;
+		xl_set( xl, output('cf_om_capacity1_expense'), 'cf_om_capacity1_expense' );
+		xl_set( xl, output('cf_om_capacity2_expense'), 'cf_om_capacity2_expense' ) ;
+		xl_set( xl, output('cf_fuelcell_replacement_cost'), 'cf_fuelcell_replacement_cost' ); 
+		xl_set( xl, output('cf_om_fuel_expense'), 'cf_om_fuel_expense' ); 
 	}
-	if  ( is_batt_repl == true ) 
-	{ 
-		send_excel( xl, 'batt_computed_bank_capacity' ); 
-		send_excel( xl, 'batt_replacement_option' ); 
-		send_excel( xl, 'batt_replacement_cost' ); 
-		send_excel( xl, 'batt_replacement_cost_escal' ); 
-		// batt_bank_replacement is not available in this context, so have to determine year of replacement cost 
-		repl = output('cf_battery_replacement_cost'); // array of annual replacement cost  
-		sched = alloc(#repl); 
-		for ( i=0; i<#repl; i++ ) 
-		{ 
-			if ( repl[i] == 0 ) sched[i]=0; 
-			else sched[i]=1; 
-		} 
-		xl_set( xl, sched, 'BatteryReplSched'); 
-	} 
+	else { xl_set( xl, 'Fuel cell O&M costs not yet implemented. Cash flow send-to-Excel for Commercial does not acount for fuel cell-specific operating costs.', 'om_fixed1' ); } // in case we add other financial models for fuel cell
 	
 	// electricity purchase for PV - Single Owner only as of Oct 2018
 	// need to update to work with generic system - Single Owner
-		if ( batt_tech && fin == 'Single Owner' && value('en_electricity_rates') == 1 )
-		{
-		// utility bill
-			ub = output('cf_utility_bill'); // array of rate cost  
-			sched = alloc(#ub); 
-			for ( i=0; i<#ub; i++ ) 
-			{ 
-				sched[i]=ub[i]; 
-			} 
-			xl_set( xl, sched, 'cf_utility_bill'); 
-		}
+	if ( batt_tech && varinfo( 'cf_utility_bill' ) != null )
+	{
+		xl_set( xl, output('cf_utility_bill'), 'cf_utility_bill' ); 
+	}
 } 
  
 function set_rescom(xl) 
@@ -1168,16 +1154,16 @@ function set_rescom(xl)
 	N = value('analysis_period'); 
 	if ( N>100 ) msgbox('The Excel workbook only shows cash flow values for a 100-year analysis period or less. Your analysis is for ' + N + ' years.'); 
  
-	send_excel(       xl, 'system_capacity'); 
-	send_excel(       xl, 'total_installed_cost'); 
-	send_excel(       xl, 'debt_fraction'); 
-	send_excel(       xl, 'loan_term'); 
-	send_excel(       xl, 'loan_rate'); 
-	send_excel(       xl, 'analysis_period'); 
-	send_excel(       xl, 'inflation_rate'); 
-	send_excel(       xl, 'real_discount_rate'); 
+	send_excel( xl, 'system_capacity'); 
+	send_excel( xl, 'total_installed_cost'); 
+	send_excel( xl, 'debt_fraction'); 
+	send_excel( xl, 'loan_term'); 
+	send_excel( xl, 'loan_rate'); 
+	send_excel( xl, 'analysis_period'); 
+	send_excel( xl, 'inflation_rate'); 
+	send_excel( xl, 'real_discount_rate'); 
 	set_taxes_insurance(xl); 
-	send_excel(       xl, 'salvage_percentage'); 
+	send_excel( xl, 'salvage_percentage'); 
 	set_om(xl);	 
 	 
 	set_incentives(xl); 

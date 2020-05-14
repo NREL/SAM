@@ -1779,7 +1779,7 @@ csp_dtr_hce_optical_eff_1
 1
 1
 1
-0.850118
+0.850117
 csp_dtr_hce_optical_eff_2
 1
 1
@@ -3952,7 +3952,7 @@ grid_interconnection_limit_kwac
 1
 1
 1
-100000
+20000
 gross_net_conversion_factor
 1
 1
