@@ -438,8 +438,7 @@ SAM_EXPORT const char* SAM_table_key(SAM_table t, int pos, int *type, SAM_error 
 
 SAM_EXPORT void SAM_module_destruct(SAM_module cm, SAM_error *err) {
     translateExceptions(err, [&]{
-        auto *c = static_cast<compute_module*>(cm);
-        delete c;
+		ssc_module_free(cm);
     });
 }
 
