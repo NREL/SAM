@@ -133,7 +133,7 @@ bool callback_extractor::invoke_function(lk::node_t *root, std::string f_name) {
         }
         return true;
 
-    } catch(std::exception &e ){
+    } catch(std::exception & ){
         std::cout << "callback_extractor::invoke_function error: could not invoke "<< f_name << " for " << config_name << "\n";
         return false;
     }

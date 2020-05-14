@@ -1,0 +1,10 @@
+{
+	"python_version": "3.7.6",
+	"miniconda_version": "4.8.2",
+	"exec_path": "",
+	"pip_path": "",
+    "packages": [],
+    "options": {
+        "FORCE_DOWNLOAD" : "Developers can set this environment variable to 0 to prevent repeated downloads."
+    }
+}
