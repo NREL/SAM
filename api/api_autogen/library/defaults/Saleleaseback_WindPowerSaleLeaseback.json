@@ -191,7 +191,7 @@
 			"pbi_uti_term": 0
 		},
 		"SystemOutput": {
-			"degradation": [0.500000],
+			"degradation": [0.000000],
 			"gen": [0],
 			"system_capacity": 48000
 		},

@@ -28,16 +28,24 @@ extern "C"
 
 
 	//
-	// Weather parameters
+	// SolarResource parameters
 	//
+
+	/**
+	 * Set solar_resource_data: Weather data
+	 * options: dn,df,tdry,wspd,lat,lon,tz
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Swh_SolarResource_solar_resource_data_tset(SAM_table ptr, SAM_table tab, SAM_error *err);
 
 	/**
 	 * Set solar_resource_file: local weather file path
 	 * options: None
 	 * constraints: LOCAL_FILE
-	 * required if: *
+	 * required if: ?
 	 */
-	SAM_EXPORT void SAM_Swh_Weather_solar_resource_file_sset(SAM_table ptr, const char* str, SAM_error *err);
+	SAM_EXPORT void SAM_Swh_SolarResource_solar_resource_file_sset(SAM_table ptr, const char* str, SAM_error *err);
 
 
 	//
@@ -350,10 +358,12 @@ extern "C"
 
 
 	/**
-	 * Weather Getters
+	 * SolarResource Getters
 	 */
 
-	SAM_EXPORT const char* SAM_Swh_Weather_solar_resource_file_sget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT SAM_table SAM_Swh_SolarResource_solar_resource_data_tget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT const char* SAM_Swh_SolarResource_solar_resource_file_sget(SAM_table ptr, SAM_error *err);
 
 
 	/**

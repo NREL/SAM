@@ -19,7 +19,13 @@ SAM_EXPORT int SAM_Swh_execute(SAM_table data, int verbosity, SAM_error* err){
 }
 
 
-SAM_EXPORT void SAM_Swh_Weather_solar_resource_file_sset(SAM_table ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_Swh_SolarResource_solar_resource_data_tset(SAM_table ptr, SAM_table tab, SAM_error *err){
+	SAM_table_set_table(ptr, "solar_resource_data", tab, err);
+}
+
+
+
+SAM_EXPORT void SAM_Swh_SolarResource_solar_resource_file_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "solar_resource_file", str);
 	});
@@ -253,7 +259,19 @@ SAM_EXPORT void SAM_Swh_SWH_use_custom_set_nset(SAM_table ptr, double number, SA
 	});
 }
 
-SAM_EXPORT const char* SAM_Swh_Weather_solar_resource_file_sget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT SAM_table SAM_Swh_SolarResource_solar_resource_data_tget(SAM_table ptr, SAM_error *err){
+	SAM_table result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_table(ptr, "solar_resource_data");
+	if (!result)
+		make_access_error("SAM_Swh", "solar_resource_data");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT const char* SAM_Swh_SolarResource_solar_resource_file_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "solar_resource_file");

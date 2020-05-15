@@ -121,8 +121,8 @@
 			"irr_des": 950,
 			"istableunsorted": 1,
 			"itoth": 0,
-			"latitude": 32.13,
-			"longitude": -110.94,
+			"latitude": 34.85,
+			"longitude": -116.78,
 			"ntod": 9,
 			"qdisp": [1.050000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
 			"qsf_des": 665.06,
@@ -143,7 +143,7 @@
 			"w_des": 115
 		},
 		"AdjustmentFactors": {
-			"constant": 0,
+			"constant": 4,
 			"sf_constant": 0
 		}
 	}
