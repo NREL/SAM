@@ -135,8 +135,8 @@ Tool Tip
 0
 Caption
 5
-46
-Time Series Inputs for Battery Dispatch Option
+50
+Time Series Inputs for Battery Power Target Option
 Bold
 2
 1
@@ -168,8 +168,8 @@ Mode
 1
 Label
 5
-23
-Battery Dispatch (kWdc)
+20
+Battery Power (kWdc)
 Description
 5
 123
@@ -307,8 +307,8 @@ Items
 5
 Peak shaving one-day look ahead
 Peak shaving one-day look behind
-Input grid power target
-Input battery dispatch
+Input grid power targets
+Input battery power targets
 Manual dispatch
 ShowCaptions
 2
@@ -599,11 +599,11 @@ Bold
 batt_custom_dispatch
 3
 2
-Time series battery dispatch
+Time series battery power targets
 kWdc
 BatteryDispatch
-25
-Battery Dispatch (kWdc)|1
+21
+Battery Power(kWdc)|1
 2
 1
 2
@@ -659,8 +659,8 @@ batt_dispatch_choice
 Battery dispatch options
  
 BatteryDispatch
-132
-Peak shaving one-day look ahead|Peak shaving one-day look behind|Automated grid power target| Input battery dispatch|Manual dispatch
+133
+Peak shaving one-day look ahead|Peak shaving one-day look behind|Input grid power targets|Input battery power targets|Manual dispatch
 3
 1
 1
