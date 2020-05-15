@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_WaveFileReader.h"
 
-SAM_EXPORT SAM_WaveFileReader SAM_WaveFileReader_construct(const char* def, SAM_error* err){
-	SAM_WaveFileReader result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_WaveFileReader_execute(SAM_WaveFileReader data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_WaveFileReader_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("wave_file_reader", data, verbosity, err);
@@ -27,24 +19,19 @@ SAM_EXPORT int SAM_WaveFileReader_execute(SAM_WaveFileReader data, int verbosity
 }
 
 
-SAM_EXPORT void SAM_WaveFileReader_destruct(SAM_WaveFileReader system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nset(SAM_WaveFileReader ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "use_specific_wf_wave", number);
 	});
 }
 
-SAM_EXPORT void SAM_WaveFileReader_WeatherReader_wave_resource_filename_sset(SAM_WaveFileReader ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_WaveFileReader_WeatherReader_wave_resource_filename_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "wave_resource_filename", str);
 	});
 }
 
-SAM_EXPORT double SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "use_specific_wf_wave", &result))
@@ -55,7 +42,7 @@ SAM_EXPORT double SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nget(SAM
 
 
 
-SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_sget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "wave_resource_filename");
@@ -67,7 +54,7 @@ SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_s
 
 
 
-SAM_EXPORT double SAM_WaveFileReader_Outputs_average_power_flux_nget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WaveFileReader_Outputs_average_power_flux_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "average_power_flux", &result))
@@ -78,7 +65,7 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_average_power_flux_nget(SAM_WaveFil
 
 
 
-SAM_EXPORT const char* SAM_WaveFileReader_Outputs_bathymetry_sget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WaveFileReader_Outputs_bathymetry_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "bathymetry");
@@ -90,7 +77,7 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_bathymetry_sget(SAM_WaveFileRe
 
 
 
-SAM_EXPORT const char* SAM_WaveFileReader_Outputs_city_sget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WaveFileReader_Outputs_city_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "city");
@@ -102,7 +89,7 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_city_sget(SAM_WaveFileReader p
 
 
 
-SAM_EXPORT const char* SAM_WaveFileReader_Outputs_country_sget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WaveFileReader_Outputs_country_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "country");
@@ -114,7 +101,7 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_country_sget(SAM_WaveFileReade
 
 
 
-SAM_EXPORT const char* SAM_WaveFileReader_Outputs_data_source_sget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WaveFileReader_Outputs_data_source_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "data_source");
@@ -126,7 +113,7 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_data_source_sget(SAM_WaveFileR
 
 
 
-SAM_EXPORT double SAM_WaveFileReader_Outputs_lat_nget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WaveFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lat", &result))
@@ -137,7 +124,7 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_lat_nget(SAM_WaveFileReader ptr, SA
 
 
 
-SAM_EXPORT double SAM_WaveFileReader_Outputs_lon_nget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WaveFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lon", &result))
@@ -148,7 +135,7 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_lon_nget(SAM_WaveFileReader ptr, SA
 
 
 
-SAM_EXPORT const char* SAM_WaveFileReader_Outputs_name_sget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WaveFileReader_Outputs_name_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "name");
@@ -160,7 +147,7 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_name_sget(SAM_WaveFileReader p
 
 
 
-SAM_EXPORT const char* SAM_WaveFileReader_Outputs_nearby_buoy_number_sget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WaveFileReader_Outputs_nearby_buoy_number_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "nearby_buoy_number");
@@ -172,7 +159,7 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_nearby_buoy_number_sget(SAM_Wa
 
 
 
-SAM_EXPORT const char* SAM_WaveFileReader_Outputs_notes_sget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WaveFileReader_Outputs_notes_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "notes");
@@ -184,7 +171,7 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_notes_sget(SAM_WaveFileReader 
 
 
 
-SAM_EXPORT const char* SAM_WaveFileReader_Outputs_sea_bed_sget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WaveFileReader_Outputs_sea_bed_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "sea_bed");
@@ -196,7 +183,7 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_sea_bed_sget(SAM_WaveFileReade
 
 
 
-SAM_EXPORT const char* SAM_WaveFileReader_Outputs_state_sget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_WaveFileReader_Outputs_state_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "state");
@@ -208,7 +195,7 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_state_sget(SAM_WaveFileReader 
 
 
 
-SAM_EXPORT double SAM_WaveFileReader_Outputs_tz_nget(SAM_WaveFileReader ptr, SAM_error *err){
+SAM_EXPORT double SAM_WaveFileReader_Outputs_tz_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tz", &result))
@@ -219,7 +206,7 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_tz_nget(SAM_WaveFileReader ptr, SAM
 
 
 
-SAM_EXPORT double* SAM_WaveFileReader_Outputs_wave_resource_matrix_mget(SAM_WaveFileReader ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_WaveFileReader_Outputs_wave_resource_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "wave_resource_matrix", nrows, ncols);

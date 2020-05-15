@@ -146,12 +146,16 @@ void export_files(std::string active_config, std::set<std::string>& processed_cm
 
     // modules and modules_order will need to be reset per cmod
     for (size_t i = 0; i < primary_cmods.size(); i++){
+        processed_cmods.insert(util::lower_case(primary_cmods[i]));
+
+        if (primary_cmods[i] == "wind_landbosse")
+            continue;
+
         std::cout << "Exporting for " << active_config << ": "<< primary_cmods[i] << "... ";
         // get all the expressions
         builder_generator b_gen(&ce);
         b_gen.create_all(primary_cmods[i], defaults_path, api_path, pysam_path);
         //b_gen.print_subgraphs(graph_path);
-        processed_cmods.insert(util::lower_case(primary_cmods[i]));
     }
     SAM_config_to_variable_graph.erase(active_config);
 }

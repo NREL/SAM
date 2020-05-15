@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_UiUdpcChecks.h"
 
-SAM_EXPORT SAM_UiUdpcChecks SAM_UiUdpcChecks_construct(const char* def, SAM_error* err){
-	SAM_UiUdpcChecks result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_UiUdpcChecks_execute(SAM_UiUdpcChecks data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_UiUdpcChecks_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("ui_udpc_checks", data, verbosity, err);
@@ -27,18 +19,13 @@ SAM_EXPORT int SAM_UiUdpcChecks_execute(SAM_UiUdpcChecks data, int verbosity, SA
 }
 
 
-SAM_EXPORT void SAM_UiUdpcChecks_destruct(SAM_UiUdpcChecks system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_UiUdpcChecks_UserDefinedPowerCycle_ud_ind_od_mset(SAM_UiUdpcChecks ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_UiUdpcChecks_UserDefinedPowerCycle_ud_ind_od_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "ud_ind_od", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT double* SAM_UiUdpcChecks_UserDefinedPowerCycle_ud_ind_od_mget(SAM_UiUdpcChecks ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_UiUdpcChecks_UserDefinedPowerCycle_ud_ind_od_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "ud_ind_od", nrows, ncols);
@@ -50,7 +37,7 @@ SAM_EXPORT double* SAM_UiUdpcChecks_UserDefinedPowerCycle_ud_ind_od_mget(SAM_UiU
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_des_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_amb_des", &result))
@@ -61,7 +48,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_des_nget(SAM_UiUdpcChecks ptr, 
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_high_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_high_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_amb_high", &result))
@@ -72,7 +59,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_high_nget(SAM_UiUdpcChecks ptr,
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_low_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_low_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_amb_low", &result))
@@ -83,7 +70,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_low_nget(SAM_UiUdpcChecks ptr, 
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_des_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_htf_des", &result))
@@ -94,7 +81,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_des_nget(SAM_UiUdpcChecks ptr, 
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_high_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_high_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_htf_high", &result))
@@ -105,7 +92,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_high_nget(SAM_UiUdpcChecks ptr,
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_low_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_low_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_htf_low", &result))
@@ -116,7 +103,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_low_nget(SAM_UiUdpcChecks ptr, 
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_des_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "m_dot_des", &result))
@@ -127,7 +114,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_des_nget(SAM_UiUdpcChecks ptr, 
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_high_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_high_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "m_dot_high", &result))
@@ -138,7 +125,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_high_nget(SAM_UiUdpcChecks ptr,
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_low_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_low_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "m_dot_low", &result))
@@ -149,7 +136,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_low_nget(SAM_UiUdpcChecks ptr, 
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_amb_pars_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_amb_pars_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_T_amb_pars", &result))
@@ -160,7 +147,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_amb_pars_nget(SAM_UiUdpcChecks pt
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_htf_pars_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_htf_pars_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_T_htf_pars", &result))
@@ -171,7 +158,7 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_htf_pars_nget(SAM_UiUdpcChecks pt
 
 
 
-SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_m_dot_pars_nget(SAM_UiUdpcChecks ptr, SAM_error *err){
+SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_m_dot_pars_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_m_dot_pars", &result))

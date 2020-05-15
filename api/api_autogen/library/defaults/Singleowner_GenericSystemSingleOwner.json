@@ -268,7 +268,7 @@
 		"UtilityBill": {
 		},
 		"Lifetime": {
-			"system_use_lifetime_output": 1
+			"system_use_lifetime_output": 0
 		},
 		"FuelCell": {
 		},

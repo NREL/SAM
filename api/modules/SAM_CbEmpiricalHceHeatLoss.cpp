@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_CbEmpiricalHceHeatLoss.h"
 
-SAM_EXPORT SAM_CbEmpiricalHceHeatLoss SAM_CbEmpiricalHceHeatLoss_construct(const char* def, SAM_error* err){
-	SAM_CbEmpiricalHceHeatLoss result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_CbEmpiricalHceHeatLoss_execute(SAM_CbEmpiricalHceHeatLoss data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_CbEmpiricalHceHeatLoss_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("cb_empirical_hce_heat_loss", data, verbosity, err);
@@ -27,102 +19,97 @@ SAM_EXPORT int SAM_CbEmpiricalHceHeatLoss_execute(SAM_CbEmpiricalHceHeatLoss dat
 }
 
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_destruct(SAM_CbEmpiricalHceHeatLoss system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCEFrac_aset(SAM_CbEmpiricalHceHeatLoss ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCEFrac_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "HCEFrac", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A0_aset(SAM_CbEmpiricalHceHeatLoss ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A0_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "HCE_A0", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A1_aset(SAM_CbEmpiricalHceHeatLoss ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "HCE_A1", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A2_aset(SAM_CbEmpiricalHceHeatLoss ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A2_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "HCE_A2", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A3_aset(SAM_CbEmpiricalHceHeatLoss ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A3_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "HCE_A3", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A4_aset(SAM_CbEmpiricalHceHeatLoss ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A4_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "HCE_A4", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A5_aset(SAM_CbEmpiricalHceHeatLoss ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A5_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "HCE_A5", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A6_aset(SAM_CbEmpiricalHceHeatLoss ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A6_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "HCE_A6", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_PerfFac_aset(SAM_CbEmpiricalHceHeatLoss ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_PerfFac_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "PerfFac", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_RefMirrAper_aset(SAM_CbEmpiricalHceHeatLoss ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_RefMirrAper_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "RefMirrAper", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_SfInTempD_nset(SAM_CbEmpiricalHceHeatLoss ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_SfInTempD_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "SfInTempD", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_SfOutTempD_nset(SAM_CbEmpiricalHceHeatLoss ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_SfOutTempD_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "SfOutTempD", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_ambient_temperature_nset(SAM_CbEmpiricalHceHeatLoss ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_ambient_temperature_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ui_reference_ambient_temperature", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_direct_normal_irradiance_nset(SAM_CbEmpiricalHceHeatLoss ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_direct_normal_irradiance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ui_reference_direct_normal_irradiance", number);
 	});
 }
 
-SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_wind_speed_nset(SAM_CbEmpiricalHceHeatLoss ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_wind_speed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ui_reference_wind_speed", number);
 	});
 }
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCEFrac_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCEFrac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "HCEFrac", length);
@@ -134,7 +121,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCEFrac_aget(SAM_CbEmpiricalHc
 
 
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A0_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A0_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "HCE_A0", length);
@@ -146,7 +133,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A0_aget(SAM_CbEmpiricalHce
 
 
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A1_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "HCE_A1", length);
@@ -158,7 +145,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A1_aget(SAM_CbEmpiricalHce
 
 
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A2_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "HCE_A2", length);
@@ -170,7 +157,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A2_aget(SAM_CbEmpiricalHce
 
 
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A3_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "HCE_A3", length);
@@ -182,7 +169,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A3_aget(SAM_CbEmpiricalHce
 
 
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A4_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "HCE_A4", length);
@@ -194,7 +181,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A4_aget(SAM_CbEmpiricalHce
 
 
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A5_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "HCE_A5", length);
@@ -206,7 +193,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A5_aget(SAM_CbEmpiricalHce
 
 
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A6_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "HCE_A6", length);
@@ -218,7 +205,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_HCE_A6_aget(SAM_CbEmpiricalHce
 
 
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_PerfFac_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_PerfFac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "PerfFac", length);
@@ -230,7 +217,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_PerfFac_aget(SAM_CbEmpiricalHc
 
 
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_RefMirrAper_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_RefMirrAper_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "RefMirrAper", length);
@@ -242,7 +229,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Hce_RefMirrAper_aget(SAM_CbEmpiric
 
 
 
-SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_SfInTempD_nget(SAM_CbEmpiricalHceHeatLoss ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_SfInTempD_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "SfInTempD", &result))
@@ -253,7 +240,7 @@ SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_SfInTempD_nget(SAM_CbEmpiricalH
 
 
 
-SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_SfOutTempD_nget(SAM_CbEmpiricalHceHeatLoss ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_SfOutTempD_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "SfOutTempD", &result))
@@ -264,7 +251,7 @@ SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_SfOutTempD_nget(SAM_CbEmpirical
 
 
 
-SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_ambient_temperature_nget(SAM_CbEmpiricalHceHeatLoss ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_ambient_temperature_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ui_reference_ambient_temperature", &result))
@@ -275,7 +262,7 @@ SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_ambient_temperatur
 
 
 
-SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_direct_normal_irradiance_nget(SAM_CbEmpiricalHceHeatLoss ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_direct_normal_irradiance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ui_reference_direct_normal_irradiance", &result))
@@ -286,7 +273,7 @@ SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_direct_normal_irra
 
 
 
-SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_wind_speed_nget(SAM_CbEmpiricalHceHeatLoss ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_wind_speed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ui_reference_wind_speed", &result))
@@ -297,7 +284,7 @@ SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Hce_ui_reference_wind_speed_nget(SA
 
 
 
-SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Outputs_HL_aget(SAM_CbEmpiricalHceHeatLoss ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Outputs_HL_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "HL", length);
@@ -309,7 +296,7 @@ SAM_EXPORT double* SAM_CbEmpiricalHceHeatLoss_Outputs_HL_aget(SAM_CbEmpiricalHce
 
 
 
-SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Outputs_HL_weighted_nget(SAM_CbEmpiricalHceHeatLoss ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Outputs_HL_weighted_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "HL_weighted", &result))
@@ -320,7 +307,7 @@ SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Outputs_HL_weighted_nget(SAM_CbEmpi
 
 
 
-SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Outputs_HL_weighted_m2_nget(SAM_CbEmpiricalHceHeatLoss ptr, SAM_error *err){
+SAM_EXPORT double SAM_CbEmpiricalHceHeatLoss_Outputs_HL_weighted_m2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "HL_weighted_m2", &result))

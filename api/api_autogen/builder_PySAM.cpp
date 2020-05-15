@@ -111,7 +111,7 @@ std::string get_params_str(const std::string &doc){
     return params;
 }
 
-void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::string &file_dir) {
+void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::string &file_dir, bool stateful) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
     std::string tech_symbol = cmod_symbol;
@@ -150,6 +150,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         if (group_symbol == "Outputs"){
             output = true;
+            if (vardefs.empty())
+                continue;
         }
 
 
@@ -454,6 +456,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     }
 
     // define the technology
+    std::string cmod_type = stateful ? "CmodStateful" : "Cmod";
+    std::string object_type = cmod_type + "Object";
 
     fx_file <<  "/*\n"
                 " * " << tech_symbol << "\n"
@@ -461,13 +465,13 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                 "\n"
                 "static PyTypeObject " << tech_symbol << "_Type;\n\n";
 
-    fx_file << "static CmodObject *\n"
+    fx_file << "static " << object_type << " *\n"
                "new" << tech_symbol << "Object(void* data_ptr)\n"
                "{\n"
-               "\tCmodObject *self;\n"
-               "\tself = PyObject_New(CmodObject, &" << tech_symbol << "_Type);\n"
-               "\n"
-               "\tPySAM_TECH_ATTR(\"" << tech_symbol << "\", SAM_" << cmod_symbol << "_construct)\n\n";
+               "\t" << object_type << " *self;\n"
+               "\tself = PyObject_New(" << object_type << ", &" << tech_symbol << "_Type);\n"
+               "\n";
+    fx_file << "\tPySAM_TECH_ATTR()\n\n";
 
     // add the group types
     for (auto& i : root->vardefs_order) {
@@ -485,12 +489,15 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                        "\tPy_XDECREF(AdjustmentFactorsModule);\n"
                        "\n"
                        "\tif (!Adjust_obj){\n"
-                       "\t\tPyErr_SetString(PySAM_ErrorObject, \"Couldn't create AdjustmentFactorsObject\\n\");\n"
+                       "\t\tPyErr_SetString(PyExc_Exception, \"Couldn't create AdjustmentFactorsObject\\n\");\n"
                        "\t\treturn NULL;\n"
                        "\t}\n"
                        "\n"
                        "\tPyDict_SetItemString(attr_dict, \"AdjustmentFactors\", Adjust_obj);\n"
                        "\tPy_DECREF(Adjust_obj);\n\n";
+        }
+        else if (vardefs.empty()) {
+            continue;
         }
         else{
             fx_file << "\tPyObject* " << module_symbol << "_obj = " << module_symbol << "_new(self->data_ptr);\n"
@@ -498,44 +505,68 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                        "\tPy_DECREF(" << module_symbol << "_obj);\n\n";
         }
     }
-    
+
     //  and close
 
-    fx_file << "\n\treturn self;\n"
+    fx_file << "\treturn self;\n"
                "}\n\n";
-    
+
     // add methods
     fx_file << "/* " << tech_symbol << " methods */\n"
                "\n"
                "static void\n"
-               "" << tech_symbol << "_dealloc(CmodObject *self)\n"
+               "" << tech_symbol << "_dealloc(" << object_type << " *self)\n"
                "{\n"
-               "\tPy_XDECREF(self->x_attr);\n"
-               "\tif (!self->data_owner_ptr)\n"
-               "\t\tSAM_" << cmod_symbol << "_destruct(self->data_ptr);\n"
-               "\tPyObject_Del(self);\n"
-               "}\n"
-               "\n"
-               "\n"
-               "static PyObject *\n"
-               "" << tech_symbol << "_execute(CmodObject *self, PyObject *args)\n"
-               "{\n"
-               "\tint verbosity = 0;\n"
-               "\n"
-               "\tif (!PyArg_ParseTuple(args, \"|i\", &verbosity))\n"
-               "\t\treturn NULL;\n"
-               "\n"
-               "\tSAM_error error = new_error();\n"
-               "\tSAM_" << cmod_symbol << "_execute(self->data_ptr, verbosity, &error);\n"
-               "\tif (PySAM_has_error(error )) return NULL;\n"
-               "\n"
-               "\tPy_INCREF(Py_None);\n"
-               "\treturn Py_None;\n"
-               "}\n"
-               "\n"
-               "\n"
-               "static PyObject *\n"
-               "" << tech_symbol << "_assign(CmodObject *self, PyObject *args)\n"
+               "\tPy_XDECREF(self->x_attr);\n\n"
+               "\tif (!self->data_owner_ptr) {\n"
+               "\t\tSAM_error error = new_error();\n"
+               "\t\tSAM_table_destruct(self->data_ptr, &error);\n"
+               "\t\tPySAM_has_error(error);\n\t}\n";
+
+    if (stateful) {
+        fx_file << "\tif (!self->cmod_ptr) {\n"
+                   "\tSAM_error error = new_error();\n"
+                   "\tSAM_module_destruct(self->cmod_ptr, &error);\n"
+                   "\tPySAM_has_error(error);\n\t}\n";
+    }
+
+    fx_file << "\tPyObject_Del(self);\n"
+               "}\n\n\n";
+
+    if (stateful) {
+        fx_file << "static PyObject *\n"
+                   "" << tech_symbol << "_setup(" << object_type << " *self, PyObject *args)\n"
+                   "{\n\tSAM_error error = new_error();\n"
+                   "\tself->cmod_ptr = SAM_" << cmod_symbol << "_setup(self->data_ptr, &error);\n"
+                   "\tif (PySAM_has_error(error )) return NULL;\n"
+                   "\tPy_INCREF(Py_None);\n"
+                   "\treturn Py_None;\n}\n\n\n";
+        fx_file << "static PyObject *\n"
+                   "" << tech_symbol << "_execute(" << object_type << " *self, PyObject *args)\n"
+                   "{\n\tint verbosity = 0;\n\n"
+                   "\tif (!PyArg_ParseTuple(args, \"|i\", &verbosity))\n"
+                   "\t\treturn NULL;\n\n"
+                   "\tSAM_error error = new_error();\n"
+                   "\tSAM_stateful_module_exec(self->cmod_ptr, self->data_ptr, verbosity, &error);\n"
+                   "\tif (PySAM_has_error(error )) return NULL;\n"
+                   "\tPy_INCREF(Py_None);\n"
+                   "\treturn Py_None;\n}\n\n\n";
+    }
+    else {
+        fx_file << "static PyObject *\n"
+                   "" << tech_symbol << "_execute(" << object_type << " *self, PyObject *args)\n"
+                   "{\n\tint verbosity = 0;\n\n"
+                   "\tif (!PyArg_ParseTuple(args, \"|i\", &verbosity))\n"
+                   "\t\treturn NULL;\n\n"
+                   "\tSAM_error error = new_error();\n"
+                   "\tSAM_" << cmod_symbol << "_execute(self->data_ptr, verbosity, &error);\n"
+                   "\tif (PySAM_has_error(error )) return NULL;\n"
+                   "\tPy_INCREF(Py_None);\n"
+                   "\treturn Py_None;\n}\n\n\n";
+    }
+
+    fx_file << "static PyObject *\n"
+               "" << tech_symbol << "_assign(" << object_type << " *self, PyObject *args)\n"
                "{\n"
                "\tPyObject* dict;\n"
                "\tif (!PyArg_ParseTuple(args, \"O:assign\", &dict)){\n"
@@ -551,7 +582,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\n"
                "\n"
                "static PyObject *\n"
-               "" << tech_symbol << "_export(CmodObject *self, PyObject *args)\n"
+               "" << tech_symbol << "_export(" << object_type << " *self, PyObject *args)\n"
                "{\n"
                "\treturn PySAM_export_to_nested_dict((PyObject *) self, self->x_attr);\n"
                "}\n"
@@ -559,13 +590,19 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     // define fx to set or get a ssc variable by name
     fx_file << "static PyObject *\n"
-            << tech_symbol << "_value(CmodObject *self, PyObject *args)\n"
+            << tech_symbol << "_value(" << object_type << " *self, PyObject *args)\n"
                               "{\n"
-                              "\treturn CmodObject_value(self, args);\n"
+                              "\treturn " << cmod_type << "_value(self, args);\n"
                               "}\n\n";
 
-    fx_file << "static PyMethodDef " << tech_symbol << "_methods[] = {\n"
-               "\t\t{\"execute\",            (PyCFunction)" << tech_symbol << "_execute,  METH_VARARGS,\n"
+    fx_file << "static PyMethodDef " << tech_symbol << "_methods[] = {\n";
+
+    if (stateful) {
+        fx_file << "\t\t{\"setup\",            (PyCFunction)" << tech_symbol << "_setup,  METH_VARARGS,\n"
+                   "\t\t\t\tPyDoc_STR(\"setup() -> None\\n Setup parameters in simulation\")},\n";
+    }
+
+    fx_file << "\t\t{\"execute\",            (PyCFunction)" << tech_symbol << "_execute,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"execute(int verbosity) -> None\\n Execute simulation with verbosity level 0 (default) or 1\")},\n"
                "\t\t{\"assign\",            (PyCFunction)" << tech_symbol << "_assign,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from nested dictionary, except for Outputs\\n\\n"
@@ -591,17 +628,17 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "};\n"
                "\n"
                "static PyObject *\n"
-               "" << tech_symbol << "_getattro(CmodObject *self, PyObject *name)\n"
+               "" << tech_symbol << "_getattro(" << object_type << " *self, PyObject *name)\n"
                "{\n"
                "\treturn PySAM_get_attr((PyObject*) self, (PyObject*) self->x_attr, name);\n"
                "}\n"
                "\n"
                "static int\n"
-               "" << tech_symbol << "_setattr(CmodObject *self, const char *name, PyObject *v)\n"
+               "" << tech_symbol << "_setattr(" << object_type << " *self, const char *name, PyObject *v)\n"
                "{\n"
                "\treturn PySAM_set_attr((PyObject*)self, (PyObject*)self->x_attr, name, v);\n"
                "}\n\n";
-    
+
     // define technology type
 
     fx_file << "static PyTypeObject " << tech_symbol << "_Type = {\n"
@@ -609,7 +646,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t * to be portable to Windows without using C++. */\n"
                "\t\tPyVarObject_HEAD_INIT(NULL, 0)\n"
                "\t\t\"" << tech_symbol << "\",            /*tp_name*/\n"
-               "\t\tsizeof(CmodObject),/*tp_basicsize*/\n"
+               "\t\tsizeof(" << object_type << "),/*tp_basicsize*/\n"
                "\t\t0,                          /*tp_itemsize*/\n"
                "\t\t/* methods */\n"
                "\t\t(destructor)" << tech_symbol << "_dealloc,    /*tp_dealloc*/\n"
@@ -653,7 +690,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "};\n\n";
 
     // define module's new function
-    
+
     fx_file << "/* --------------------------------------------------------------------- */\n"
                "\n"
                "\n"
@@ -662,12 +699,15 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "static PyObject *\n"
                "" << tech_symbol << "_new(PyObject *self, PyObject *args)\n"
                "{\n"
-               "\tCmodObject *rv;\n"
+               "\t" << object_type << " *rv;\n"
                "\trv = new" << tech_symbol << "Object(0);\n"
                "\tif (rv == NULL)\n"
                "\t\treturn NULL;\n\n"
-               "\trv->data_owner_ptr = NULL;\n"
-               "\treturn (PyObject *)rv;\n"
+               "\trv->data_owner_ptr = NULL;\n";
+
+    if (stateful)
+        fx_file << "\trv->cmod_ptr = NULL;\n";
+    fx_file << "\treturn (PyObject *)rv;\n"
                "}\n\n";
 
     // wrapping fx
@@ -675,7 +715,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file << "static PyObject *\n"
                "" << tech_symbol << "_wrap(PyObject *self, PyObject *args)\n"
                "{\n"
-               "\tCmodObject *rv;\n"
+               "\t" << object_type << " *rv;\n"
                "\tlong long int ptr = 0;  // 64 bit arch\n"
                "\tif (!PyArg_ParseTuple(args, \"L:wrap\", &ptr)){\n"
                "\t\tPyErr_BadArgument();\n"
@@ -693,7 +733,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file << "static PyObject *\n"
                "" << tech_symbol << "_default(PyObject *self, PyObject *args)\n"
                "{\n"
-               "\tCmodObject *rv;\n"
+               "\t" << object_type << " *rv;\n"
                "\tchar* def = 0;\n"
                "\tif (!PyArg_ParseTuple(args, \"s:default\", &def)){\n"
                "\t\tPyErr_BadArgument();\n"
@@ -713,14 +753,14 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file << "static PyObject *\n"
                << tech_symbol << "_from_existing(PyObject *self, PyObject *args)\n"
                "{\n"
-               "\tCmodObject *rv;\n"
+               "\t" << object_type << " *rv;\n"
                "\tPyObject * module = 0;\n"
                "\tchar* def = 0;\n"
                "\tif (!PyArg_ParseTuple(args, \"O|s:from_existing\", &module, &def)){\n"
                "\t\tPyErr_BadArgument();\n"
                "\t\treturn NULL;\n"
                "\t}\n"
-               "\tCmodObject *module_obj = (CmodObject *)module;\n"
+               "\t" << object_type << " *module_obj = (" << object_type << " *)module;\n"
                "\tSAM_table ptr = module_obj->data_ptr;\n"
                "\n"
                "\t// do a rough validity check on the data by checking its size\n"
@@ -775,7 +815,6 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t * object; doing it here is required for portability, too. */\n"
                "\n"
                "\tif (PySAM_load_lib(m) < 0) goto fail;\n"
-               "\tif (PySAM_init_error(m) < 0) goto fail;\n"
                "\n"
                "\t" << tech_symbol << "_Type.tp_dict = PyDict_New();\n"
                "\tif (!" << tech_symbol << "_Type.tp_dict) { goto fail; }\n"
@@ -810,7 +849,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         std::string module_symbol = format_as_symbol(mm->first);
 
-        if (module_symbol == "AdjustmentFactors")
+        if (module_symbol == "AdjustmentFactors" || vardefs.empty())
             continue;
 
         fx_file << "\t/// Add the " << module_symbol << " type object to " << tech_symbol << "_Type\n"

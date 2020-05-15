@@ -49,6 +49,7 @@
 			"dc_lifetime_losses": [0.000000],
 			"en_ac_lifetime_losses": 0,
 			"en_dc_lifetime_losses": 0,
+			"save_full_lifetime_variables": 1,
 			"system_use_lifetime_output": 1
 		},
 		"SystemDesign": {
@@ -363,9 +364,7 @@
 			"batt_cycle_cost_choice": 0,
 			"batt_dc_ac_efficiency": 96,
 			"batt_dc_dc_efficiency": 98,
-			"batt_height": 1.99839,
 			"batt_inverter_efficiency_cutoff": 90,
-			"batt_length": 1.99839,
 			"batt_loss_choice": 0,
 			"batt_losses": [0.000000],
 			"batt_losses_charging": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
@@ -381,7 +380,7 @@
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"batt_width": 1.99839,
+			"batt_surface_area": 23.76,
 			"en_batt": 1,
 			"om_replacement_cost1": [500.000000]
 		},

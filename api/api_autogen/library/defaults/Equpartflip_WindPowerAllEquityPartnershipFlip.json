@@ -256,7 +256,7 @@
 		},
 		"IRRTargets": {
 			"flip_target_percent": 11,
-			"flip_target_year": 20,
+			"flip_target_year": 9,
 			"tax_investor_equity_percent": 60,
 			"tax_investor_postflip_cash_percent": 10,
 			"tax_investor_postflip_tax_percent": 10,
