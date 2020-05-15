@@ -54,7 +54,7 @@ Some more examples:
 version_upgrade{'2020.2.29'} = define() {
 
     const cfg = config();
-     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
+    if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
         if ( value('en_batt') == 1 )
         {
@@ -79,6 +79,20 @@ version_upgrade{'2020.2.29'} = define() {
 			old_temperature = oldvalue('T_room');
 			value('batt_room_temperature_single', old_temperature, 'Updated battery room temperature internal variable name.');
 		}
+	}
+	if ( varinfo('batt_room_temperature_single') )
+	{	
+		x = value('batt_room_temperatuer_single');
+		if ( x <= 20 )
+		{
+			value('batt_room_temperature_single',25,'Battery room temperature changed from ' + x + ' degrees C to 25. Battery thermal model issue will be fixed in SAM Fall 2020 version.');
+		}
+	}
+	if ( varinfo('batt_resistance') )
+	{
+		x = value('batt_resistance');
+		if ( x >=0.002 )
+		value('batt_resistance',0.002,'Battery resistance changed from ' + x + ' ohms to a more realistic .002. Battery thermal model issue will be fixed in SAM Fall 2020 version.');
 	}
     if ( cfg.tech == 'PVWatts')
     {
