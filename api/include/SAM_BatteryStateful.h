@@ -34,7 +34,7 @@ extern "C"
 	//
 
 	/**
-	 * Set control_mode: Control using current (0) or power (1) [hr]
+	 * Set control_mode: Control using current (0) or power (1) [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: *

@@ -1,6 +1,6 @@
 {
 	"defaults": {
-		"Weather": {
+		"SolarResource": {
 		},
 		"SWH": {
 			"FRUL": 3.85,

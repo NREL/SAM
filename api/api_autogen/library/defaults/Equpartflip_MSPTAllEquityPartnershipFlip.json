@@ -2,7 +2,7 @@
 	"defaults": {
 		"Revenue": {
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.000000],
+			"ppa_price_input": [0.130000],
 			"ppa_soln_mode": 0
 		},
 		"FinancialParameters": {
@@ -25,7 +25,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 100125
+			"system_capacity": 103500
 		},
 		"SystemCosts": {
 			"om_capacity": [66.000000],
@@ -38,13 +38,13 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [0.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 7.44924e+08
+			"total_installed_cost": 6.73465e+08
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": 30,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -197,7 +197,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 100125
+			"system_capacity": 103500
 		},
 		"Recapitalization": {
 			"system_use_recapitalization": 0
@@ -245,7 +245,7 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 3.72462e+07
+			"construction_financing_cost": 3.36733e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
