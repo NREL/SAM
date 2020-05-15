@@ -85,7 +85,7 @@ X
 483
 Y
 3
-123
+126
 Width
 3
 90
@@ -100,8 +100,8 @@ Mode
 1
 Label
 5
-21
-Battery system losses
+26
+Battery System Losses (kW)
 Description
 5
 63
@@ -318,7 +318,8 @@ batt_losses
 Time series losses
 kW
 BatterySystem
-0
+28
+Battery System Losses (kW)|1
 0
 1
 2

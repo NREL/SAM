@@ -246,7 +246,8 @@ batt_replacement_schedule
 Battery bank replacement schedule
  
 BatterySystem
-0
+23
+Replace in Year (0/1)|2
 0
 1
 2
@@ -260,7 +261,8 @@ batt_replacement_schedule_percent
 Battery bank replacement percent
  
 BatterySystem
-0
+21
+Replace in Year (%)|2
 0
 1
 2

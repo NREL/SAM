@@ -3034,7 +3034,8 @@ thermal_load_user_data
 Heat usage
 kW-t
 Thermal Load
-0
+21
+Thermal load (kW-t)|1
 0
 1
 2

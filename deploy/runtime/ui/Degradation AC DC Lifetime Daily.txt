@@ -273,8 +273,8 @@ dc_lifetime_losses
 Lifetime daily DC losses
 %/day
 Degradation and Lifetime
-7
-DC Loss
+17
+DC Loss (%/day)|2
 3
 1
 2
