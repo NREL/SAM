@@ -124,7 +124,8 @@ grid_curtailment
 Curtailment
 MW
 Financial Grid
-0
+4
+MW|1
 2
 1
 2

@@ -346,8 +346,23 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	else if (type == "DataArray")
 	{
 		obj->CreateNative(grid);
-		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
+//		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		AFDataArrayButton *da = obj->GetNative<AFDataArrayButton>();
+		wxArrayString il = vi->IndexLabels;
+		int mode = 2; // variable size
+		if (il.Count() > 0) da->SetDataLabel(il[0]); // first Index label element is column label
+		if (il.Count() < 2)	{
+			size_t s = vv->Length();
+			if (s == 8760)
+				mode = 0;
+			else if (s == (s / 8760) * 8760)
+				mode = 1;
+		}
+		else {
+			mode = wxAtoi(il[1]);
+		}
+		da->SetMode(mode); // resetting to 8760 for multiples (overwriting values)
+		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
 		wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 		da->OnPressed(evt);
 		ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
@@ -380,8 +395,9 @@ bool GridCellVarValueEditor::DisplayEditor(wxUIObject *obj, wxString &name, wxGr
 	else if (type == "DataLifetimeMatrix")
 	{
 	obj->CreateNative(grid);
+	AFDataLifetimeMatrixButton* da = obj->GetNative<AFDataLifetimeMatrixButton>();
 	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::VAR_TO_OBJ);
-	AFDataLifetimeMatrixButton *da = obj->GetNative<AFDataLifetimeMatrixButton>();
+	da->SetColumnLabels(vi->Units); // column headers for inputs browser display
 	wxCommandEvent evt = wxCommandEvent(wxEVT_BUTTON);
 	da->OnPressed(evt);
 	ActiveInputPage::DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR);
