@@ -82,7 +82,7 @@ version_upgrade{'2020.2.29'} = define() {
 	}
 	if ( varinfo('batt_room_temperature_single') )
 	{	
-		x = value('batt_room_temperatuer_single');
+		x = value('batt_room_temperature_single');
 		if ( x <= 20 )
 		{
 			value('batt_room_temperature_single',25,'Battery room temperature changed from ' + x + ' degrees C to 25. Battery thermal model issue will be fixed in SAM Fall 2020 version.');
