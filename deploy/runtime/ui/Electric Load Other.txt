@@ -2929,14 +2929,15 @@ load
 Electric load power
 kW
 Electric Load
-0
+17
+Load power (kW)|1
 8
 1
 2
 1
 1
 0
-Default
+DataArray
 load_annual_total
 3
 1
@@ -2957,7 +2958,8 @@ load_user_data
 Energy usage
 kW
 Electric Load
-0
+17
+Load power (kW)|1
 0
 1
 2
