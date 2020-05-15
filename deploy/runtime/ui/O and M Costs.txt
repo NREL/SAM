@@ -850,10 +850,11 @@ Operation and Maintenance Costs
 Numeric
 
 0
-621
+650
 on_load{'O and M Costs'}=define(){
 	tech=technology();
 	fuel_tech = ( (tech=='Generic System') 
+	||(tech=='Generic Battery')
 	||(tech=='Generic CSP System') 
 	||(tech=='Empirical Trough') 
 	||(tech=='MSPT') 

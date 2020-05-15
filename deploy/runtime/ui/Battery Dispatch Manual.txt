@@ -28,7 +28,7 @@ Tool Tip
 Caption
 5
 18
-Charge from System
+Charge from system
 TextColour
 4
 0

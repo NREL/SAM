@@ -28,7 +28,7 @@ Tool Tip
 Caption
 5
 26
-Automated dispatch options
+Automated Dispatch Options
 Bold
 2
 1
@@ -255,8 +255,8 @@ Mode
 1
 Label
 5
-21
-Dispatch power (kWdc)
+20
+Battery power (kWdc)
 Description
 5
 73
@@ -1156,11 +1156,11 @@ Numeric
 batt_custom_dispatch
 3
 2
-Input battery dispatch
+Time series battery power targets
 kWdc
 BatteryDispatch
-23
-Dispatch Power (kWdc)|1
+22
+Battery Power (kWdc)|1
 2
 1
 2
