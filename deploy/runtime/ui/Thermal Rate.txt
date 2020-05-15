@@ -770,8 +770,7 @@ thermal_timestep_buy_rate
 timestep buy rate 
 $/kW-t
 Thermal Rate
-8
-$/kW-t|1
+0
 3
 1
 2
@@ -785,8 +784,7 @@ thermal_timestep_sell_rate
 Timestep sell rate
 $/kW-t
 Thermal Rate
-8
-$/kW-t|1
+0
 1
 1
 2

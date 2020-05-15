@@ -1648,27 +1648,7 @@ test_numeric
 Default
 
 0
-1390
-/*
-This form is for testing widgets.
-
-Uncomment line in Startup scriptsetup_flat_plate_pv_pages()
-to test.
-
-<--- Widget properties are at left,
-Variable properties are at right. ----->
-
-Notes for DataArray:
-* Wiget Label property determines table column label
-* Variable Index Labels property should be same as 
-  widget label followed by comma and number indicating
-  mode to work properly in inputs browser. For example:
-  Label = Power (kW)
-  Mode = Fixed 8760 Values
-  Index Labels = Power (kW),1
-
-*/
-
+884
 on_load{'AA Widgets'} = define()
 {
 	msgbox( 'on_load' );

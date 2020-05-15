@@ -362,8 +362,7 @@ fuelcell_dispatch_input
 Input dispatch time series
  
 Fuel Cell
-20
-Fuel Cell Dispatch|1
+0
 0
 1
 2

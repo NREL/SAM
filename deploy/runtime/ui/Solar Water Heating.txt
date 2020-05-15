@@ -1087,11 +1087,10 @@ Tool Tip
 0
 Mode
 3
-1
+0
 Label
 5
-22
-Hot Water Draw (kg/hr)
+0
 Description
 5
 0
@@ -3061,8 +3060,7 @@ draw
 Hourly hot water draw profile
 kg/hr
 Solar Water Heating
-24
-Hot Water Draw (kg/hr)|1
+0
 0
 1
 2

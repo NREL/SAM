@@ -1159,8 +1159,7 @@ batt_custom_dispatch
 Input battery dispatch
 kWdc
 BatteryDispatch
-23
-Dispatch Power (kWdc)|1
+0
 2
 1
 2

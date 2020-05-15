@@ -575,8 +575,7 @@ batt_custom_dispatch
 Battery dispatch
 kW
 Simple Battery with REopt
-23
-Battery Dispatch (kW)|1
+0
 0
 1
 2

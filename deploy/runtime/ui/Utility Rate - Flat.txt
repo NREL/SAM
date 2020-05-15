@@ -1006,8 +1006,7 @@ ur_ts_buy_rate
 Hourly (subhourly) buy rates
 $/kWh
 Electricity Rates - General
-18
-Buy Rate ($/kWh)|1
+0
 0
 1
 2
@@ -1021,8 +1020,7 @@ ur_ts_sell_rate
 Hourly (subhourly) sell rates
 $/kWh
 Electricity Rates - General
-19
-Sell Rate ($/kWh)|1
+0
 0
 1
 2
