@@ -682,7 +682,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2147
+2242
 on_change{"batt_simple_dispatch"} = define(){
 	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
 };
@@ -748,8 +748,10 @@ on_change{'call_reopt'} = define(){
 
 	value('batt_simple_dispatch', 2);
 
-	dispatch = alloc(8760);
-
+	load = ${load};
+	ts_load = #load / #grid_charge;
+	
+	dispatch = alloc(#load);
 	for (i=0; i<8760; i++){
 		if (batt_to_grid){
 			discharge = batt_to_grid[i] + batt_to_load[i];
@@ -757,7 +759,8 @@ on_change{'call_reopt'} = define(){
 			discharge = batt_to_load[i];
 		}
 		charge = -pv_charge[i] - grid_charge[i];
-		dispatch[i] = discharge + charge;
+		for (j=0; j<ts_load; j++)
+			dispatch[i * ts_load + j] = discharge + charge;
 	}
 
 	value('batt_custom_dispatch', dispatch);
