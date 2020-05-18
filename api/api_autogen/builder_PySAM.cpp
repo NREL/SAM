@@ -62,6 +62,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Pvsamv1", "Detailed photovoltaic system model with separate components for module and inverter"},
             {"Pvwattsv5", "PVWatts photovoltaic system model with simple inputs"},
             {"Pvwattsv5Lifetime", "PVWatts photovoltaic system model for multi-year lifetime analysis"},
+			{"Pvwattsv7", "Photovoltaic system using basic NREL PVWatts V7 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1."},
             {"Saleleaseback", "PPA sale leaseback partnership financial model"},
             {"Sco2AirCooler", "Supercritical CO2 Power Cycle Air Cooler"},
             {"Sco2CspSystem", "Supercritical CO2 Power Cycle Design and Off-Design Simulation"},
