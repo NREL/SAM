@@ -1,6 +1,6 @@
 Financial Capacity Payments
-924
-198
+926
+220
 12
 Numeric
 
@@ -12,10 +12,10 @@ Name
 cp_battery_nameplate
 X
 3
-795
+648
 Y
 3
-153
+186
 Width
 3
 90
@@ -74,10 +74,10 @@ Name
 cp_capacity_credit_percent
 X
 3
-795
+648
 Y
 3
-99
+132
 Width
 3
 90
@@ -116,10 +116,10 @@ Name
 cp_capacity_payment_amount
 X
 3
-381
+198
 Y
 3
-99
+135
 Width
 3
 90
@@ -159,10 +159,10 @@ Name
 cp_capacity_payment_esc
 X
 3
-378
+195
 Y
 3
-126
+162
 Width
 3
 90
@@ -221,13 +221,13 @@ Name
 cp_capacity_payment_type
 X
 3
-21
+15
 Y
 3
-99
+87
 Width
 3
-167
+227
 Height
 3
 48
@@ -261,13 +261,13 @@ Name
 cp_payment_esc_label
 X
 3
-195
+12
 Y
 3
-150
+186
 Width
 3
-300
+342
 Height
 3
 24
@@ -309,10 +309,10 @@ Name
 cp_payment_units
 X
 3
-471
+288
 Y
 3
-99
+135
 Width
 3
 65
@@ -357,10 +357,10 @@ Name
 cp_payment_units_dollars
 X
 3
-471
+288
 Y
 3
-99
+135
 Width
 3
 65
@@ -405,10 +405,10 @@ Name
 cp_system_nameplate
 X
 3
-795
+648
 Y
 3
-126
+159
 Width
 3
 90
@@ -473,10 +473,10 @@ Y
 3
 Width
 3
-916
+850
 Height
 3
-188
+212
 Tool Tip
 5
 0
@@ -497,10 +497,10 @@ Name
 object 7
 X
 3
-198
+15
 Y
 3
-99
+138
 Width
 3
 180
@@ -531,7 +531,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -551,10 +551,10 @@ Y
 21
 Width
 3
-894
+834
 Height
 3
-66
+63
 Tool Tip
 5
 0

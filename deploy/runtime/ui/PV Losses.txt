@@ -961,13 +961,13 @@ Name
 btn_dc_opt
 X
 3
-546
+651
 Y
 3
 519
 Width
 3
-111
+160
 Height
 3
 24
@@ -991,13 +991,13 @@ Name
 btn_microinverter
 X
 3
-426
+480
 Y
 3
 519
 Width
 3
-111
+160
 Height
 3
 24
@@ -1027,7 +1027,7 @@ Y
 519
 Width
 3
-111
+160
 Height
 3
 24
@@ -1286,13 +1286,13 @@ Name
 object 7
 X
 3
-6
+30
 Y
 3
 579
 Width
 3
-840
+798
 Height
 3
 24
@@ -1334,13 +1334,13 @@ Name
 object 715
 X
 3
-9
+21
 Y
 3
 240
 Width
 3
-840
+804
 Height
 3
 24
@@ -1382,13 +1382,13 @@ Name
 object 718
 X
 3
-129
+75
 Y
 3
 519
 Width
 3
-168
+222
 Height
 3
 24
@@ -1416,7 +1416,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1574,7 +1574,7 @@ Name
 object 762
 X
 3
-30
+21
 Y
 3
 663
@@ -1622,16 +1622,16 @@ Name
 object 767
 X
 3
-12
+21
 Y
 3
 870
 Width
 3
-288
+258
 Height
 3
-105
+93
 Tool Tip
 5
 0

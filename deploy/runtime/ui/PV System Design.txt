@@ -777,10 +777,10 @@ Name
 Label214
 X
 3
-291
+330
 Y
 3
-954
+945
 Width
 3
 533
@@ -1186,7 +1186,7 @@ Name
 calculated_dcac_ratio
 X
 3
-150
+189
 Y
 3
 60
@@ -1248,7 +1248,7 @@ Name
 desired_dcac_ratio
 X
 3
-150
+189
 Y
 3
 108
@@ -1310,7 +1310,7 @@ Name
 desired_size
 X
 3
-150
+189
 Y
 3
 84
@@ -1372,10 +1372,10 @@ Name
 enable_auto_size
 X
 3
-24
+15
 Y
 3
-129
+138
 Width
 3
 268
@@ -1501,7 +1501,7 @@ Name
 inverter_count
 X
 3
-150
+189
 Y
 3
 36
@@ -1841,16 +1841,16 @@ Name
 sizing_instructions
 X
 3
-21
+15
 Y
 3
-90
+84
 Width
 3
-274
+280
 Height
 3
-37
+52
 Tool Tip
 5
 0
@@ -5268,10 +5268,10 @@ Name
 total_land_area
 X
 3
-135
+144
 Y
 3
-984
+981
 Width
 3
 100
@@ -5330,7 +5330,7 @@ Name
 total_module_area
 X
 3
-135
+144
 Y
 3
 957

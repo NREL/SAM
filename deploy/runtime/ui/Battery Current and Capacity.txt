@@ -42,7 +42,7 @@ Name
 batt_C_rate_max_charge
 X
 3
-168
+186
 Y
 3
 348
@@ -104,7 +104,7 @@ Name
 batt_C_rate_max_discharge
 X
 3
-168
+186
 Y
 3
 321
@@ -476,7 +476,7 @@ Name
 batt_computed_bank_capacity
 X
 3
-168
+186
 Y
 3
 159
@@ -538,7 +538,7 @@ Name
 batt_computed_cells_series_label
 X
 3
-12
+30
 Y
 3
 240
@@ -586,7 +586,7 @@ Name
 batt_computed_parallel_label
 X
 3
-12
+30
 Y
 3
 267
@@ -634,7 +634,7 @@ Name
 batt_computed_series
 X
 3
-168
+186
 Y
 3
 240
@@ -696,7 +696,7 @@ Name
 batt_computed_stacks_series
 X
 3
-168
+186
 Y
 3
 294
@@ -758,7 +758,7 @@ Name
 batt_computed_strings
 X
 3
-168
+186
 Y
 3
 267
@@ -820,7 +820,7 @@ Name
 batt_computed_voltage
 X
 3
-168
+186
 Y
 3
 186
@@ -882,7 +882,7 @@ Name
 batt_current_charge_max
 X
 3
-537
+573
 Y
 3
 321
@@ -985,7 +985,7 @@ Name
 batt_current_discharge_max
 X
 3
-537
+573
 Y
 3
 294
@@ -1047,7 +1047,7 @@ Name
 batt_num_cells
 X
 3
-168
+186
 Y
 3
 213
@@ -1109,7 +1109,7 @@ Name
 batt_power_charge_max_kwac
 X
 3
-537
+573
 Y
 3
 240
@@ -1171,7 +1171,7 @@ Name
 batt_power_charge_max_kwdc
 X
 3
-537
+573
 Y
 3
 186
@@ -1233,7 +1233,7 @@ Name
 batt_power_discharge_max_kwac
 X
 3
-537
+573
 Y
 3
 213
@@ -1295,7 +1295,7 @@ Name
 batt_power_discharge_max_kwdc
 X
 3
-537
+573
 Y
 3
 159
@@ -1363,7 +1363,7 @@ Y
 387
 Width
 3
-654
+714
 Height
 3
 24
@@ -1404,7 +1404,7 @@ Name
 batt_time_capacity
 X
 3
-537
+573
 Y
 3
 267
@@ -1466,13 +1466,13 @@ Name
 computed_properties_label
 X
 3
-669
+720
 Y
 3
 165
 Width
 3
-369
+318
 Height
 3
 195

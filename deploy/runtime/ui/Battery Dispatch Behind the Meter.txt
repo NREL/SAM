@@ -1,6 +1,6 @@
 Battery Dispatch Behind the Meter
-1053
-322
+1051
+343
 16
 Label
 
@@ -12,23 +12,23 @@ Name
 BatteryChargeOptions
 X
 3
-12
+9
 Y
 3
-189
+204
 Width
 3
-285
+309
 Height
 3
-39
+57
 Tool Tip
 5
 0
 Caption
 5
-73
-For manual dispatch, charge options are defined below by dispatch period.
+122
+For manual dispatch use the dispatch periods and schedules below to define charging schedules instead of these checkboxes.
 TextColour
 4
 0
@@ -69,7 +69,7 @@ Width
 1042
 Height
 3
-310
+331
 Tool Tip
 5
 0
@@ -90,16 +90,16 @@ Name
 GridPowerTargetBox
 X
 3
-324
+330
 Y
 3
 33
 Width
 3
-718
+712
 Height
 3
-106
+118
 Tool Tip
 5
 0
@@ -120,13 +120,13 @@ Name
 InputDispatchBox
 X
 3
-324
+330
 Y
 3
-153
+156
 Width
 3
-718
+712
 Height
 3
 106
@@ -150,13 +150,13 @@ Name
 batt_custom_dispatch
 X
 3
-552
+549
 Y
 3
-171
+174
 Width
 3
-90
+117
 Height
 3
 24
@@ -190,13 +190,13 @@ X
 33
 Y
 3
-258
+288
 Width
 3
 258
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -223,13 +223,13 @@ X
 33
 Y
 3
-285
+312
 Width
 3
 258
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -256,13 +256,13 @@ X
 33
 Y
 3
-231
+264
 Width
 3
 258
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -295,7 +295,7 @@ Width
 246
 Height
 3
-111
+129
 Tool Tip
 5
 0
@@ -329,13 +329,13 @@ Name
 batt_dispatch_label
 X
 3
-705
+735
 Y
 3
-165
+168
 Width
 3
-330
+300
 Height
 3
 81
@@ -377,13 +377,13 @@ Name
 batt_grid_options
 X
 3
-12
+9
 Y
 3
-168
+183
 Width
 3
-291
+309
 Height
 3
 25
@@ -401,8 +401,8 @@ Colour
 255
 Caption
 5
-14
-Charge Options
+37
+Charge Options for Automatic Dispatch
 Bold
 2
 1
@@ -419,7 +419,7 @@ X
 333
 Y
 3
-51
+57
 Width
 3
 354
@@ -450,16 +450,16 @@ Name
 batt_target_label
 X
 3
-702
+735
 Y
 3
 48
 Width
 3
-333
+300
 Height
 3
-81
+99
 Tool Tip
 5
 0
@@ -498,10 +498,10 @@ Name
 batt_target_power
 X
 3
-525
+549
 Y
 3
-108
+117
 Width
 3
 117
@@ -535,10 +535,10 @@ Name
 batt_target_power_monthly
 X
 3
-525
+549
 Y
 3
-81
+90
 Width
 3
 117
@@ -571,7 +571,7 @@ Y
 27
 Width
 3
-291
+309
 Height
 3
 16
