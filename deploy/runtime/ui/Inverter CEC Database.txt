@@ -206,7 +206,7 @@ Name
 inv_snl_c0
 X
 3
-846
+843
 Y
 3
 438
@@ -268,7 +268,7 @@ Name
 inv_snl_c1
 X
 3
-846
+843
 Y
 3
 462
@@ -330,7 +330,7 @@ Name
 inv_snl_c2
 X
 3
-846
+843
 Y
 3
 486
@@ -392,7 +392,7 @@ Name
 inv_snl_c3
 X
 3
-846
+843
 Y
 3
 510
@@ -454,13 +454,13 @@ Name
 inv_snl_eff_cec
 X
 3
-855
+876
 Y
 3
 216
 Width
 3
-100
+80
 Height
 3
 21
@@ -516,13 +516,13 @@ Name
 inv_snl_eff_euro
 X
 3
-855
+876
 Y
 3
 240
 Width
 3
-100
+80
 Height
 3
 21
@@ -795,13 +795,13 @@ Name
 inv_snl_num_mppt
 X
 3
-594
+603
 Y
 3
 216
 Width
 3
-100
+60
 Height
 3
 21
@@ -1229,7 +1229,7 @@ Name
 msg_mppt
 X
 3
-426
+432
 Y
 3
 240
@@ -1385,7 +1385,7 @@ Name
 object 216
 X
 3
-819
+816
 Y
 3
 417
@@ -1443,8 +1443,8 @@ Caption
 Note: If you are modeling a system with microinverters or DC power optimizers, see the Losses page to adjust the system losses accordingly.
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -1723,7 +1723,7 @@ Numeric
 inv_snl_pnt
 3
 1
-Power consumption at night
+Power use at night
 Wac
 PV Inverter (CEC Database)
 0
@@ -1737,7 +1737,7 @@ Numeric
 inv_snl_pso
 3
 1
-Power consumption during operation
+Power use during operation
 Wdc
 PV Inverter (CEC Database)
 0

@@ -123,7 +123,7 @@ Name
 grid_interconnection_limit_kwac
 X
 3
-186
+189
 Y
 3
 57

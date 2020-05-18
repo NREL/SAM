@@ -249,7 +249,7 @@ Items
 3
 None
 Lithium-ion model
-Custom degradation
+Custom
 ShowCaptions
 2
 1
@@ -897,8 +897,8 @@ batt_calendar_choice
 Calendar degradation options
  
 BatteryCell
-41
-None|Lithium-ion model|Custom degradation
+29
+None|Lithium-ion model|Custom
 3
 1
 1
