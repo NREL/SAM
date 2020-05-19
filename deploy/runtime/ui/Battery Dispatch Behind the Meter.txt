@@ -1,6 +1,6 @@
 Battery Dispatch Behind the Meter
-1051
-343
+1053
+337
 16
 Label
 
@@ -12,23 +12,23 @@ Name
 BatteryChargeOptions
 X
 3
-9
+33
 Y
 3
-204
+201
 Width
 3
-309
+285
 Height
 3
-57
+42
 Tool Tip
 5
 0
 Caption
 5
-122
-For manual dispatch use the dispatch periods and schedules below to define charging schedules instead of these checkboxes.
+73
+For manual dispatch, charge options are defined below by dispatch period.
 TextColour
 4
 0
@@ -69,7 +69,7 @@ Width
 1042
 Height
 3
-331
+325
 Tool Tip
 5
 0
@@ -90,16 +90,16 @@ Name
 GridPowerTargetBox
 X
 3
-330
+345
 Y
 3
-33
+54
 Width
 3
-712
+697
 Height
 3
-118
+124
 Tool Tip
 5
 0
@@ -120,16 +120,16 @@ Name
 InputDispatchBox
 X
 3
-330
+345
 Y
 3
-156
+183
 Width
 3
-712
+697
 Height
 3
-106
+142
 Tool Tip
 5
 0
@@ -150,10 +150,10 @@ Name
 batt_custom_dispatch
 X
 3
-549
+588
 Y
 3
-174
+207
 Width
 3
 117
@@ -190,7 +190,7 @@ X
 33
 Y
 3
-288
+273
 Width
 3
 258
@@ -223,7 +223,7 @@ X
 33
 Y
 3
-312
+297
 Width
 3
 258
@@ -256,7 +256,7 @@ X
 33
 Y
 3
-264
+249
 Width
 3
 258
@@ -292,7 +292,7 @@ Y
 48
 Width
 3
-246
+288
 Height
 3
 129
@@ -329,23 +329,23 @@ Name
 batt_dispatch_label
 X
 3
-735
+753
 Y
 3
-168
+207
 Width
 3
-300
+282
 Height
 3
-81
+105
 Tool Tip
 5
 0
 Caption
 5
-161
-Input a custom battery power dispatch (<0 for charging, >0 for discharging).  SAM will follow the dispatch within the operational limits of the system specified.
+214
+Battery targets are maximum power values. Use negative target values to charge the battery and positive to discharge. SAM will attempt to meet the power target within constraints of the system's operational limits.
 TextColour
 4
 0
@@ -377,13 +377,13 @@ Name
 batt_grid_options
 X
 3
-9
+15
 Y
 3
 183
 Width
 3
-309
+303
 Height
 3
 25
@@ -401,8 +401,8 @@ Colour
 255
 Caption
 5
-37
-Charge Options for Automatic Dispatch
+14
+Charge Options
 Bold
 2
 1
@@ -416,10 +416,10 @@ Name
 batt_target_choice
 X
 3
-333
+351
 Y
 3
-57
+84
 Width
 3
 354
@@ -450,23 +450,23 @@ Name
 batt_target_label
 X
 3
-735
+750
 Y
 3
-48
+69
 Width
 3
-300
+285
 Height
 3
-99
+105
 Tool Tip
 5
 0
 Caption
 5
-178
-Input the maximum grid power desired.  SAM will charge the battery if the electric load is less than the target, and discharge the battery if the load is greater than the target.
+199
+Grid targets are maximum power values. SAM charges the battery when the electric load is less than the target in a given time step and discharges the battery when the load is greater than the target.
 TextColour
 4
 0
@@ -498,10 +498,10 @@ Name
 batt_target_power
 X
 3
-549
+588
 Y
 3
-117
+138
 Width
 3
 117
@@ -535,10 +535,10 @@ Name
 batt_target_power_monthly
 X
 3
-549
+588
 Y
 3
-90
+111
 Width
 3
 117
@@ -565,13 +565,13 @@ Name
 object 21
 X
 3
-12
+15
 Y
 3
 27
 Width
 3
-309
+1029
 Height
 3
 16

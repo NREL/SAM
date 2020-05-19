@@ -75,7 +75,7 @@ Name
 bos_cost_per_kw
 X
 3
-171
+177
 Y
 3
 279
@@ -552,13 +552,13 @@ Name
 object 721
 X
 3
-12
+9
 Y
 3
 279
 Width
 3
-156
+165
 Height
 3
 24
@@ -696,7 +696,7 @@ Name
 object 727
 X
 3
-78
+84
 Y
 3
 252
@@ -1142,7 +1142,7 @@ Name
 reference_number_turbines
 X
 3
-390
+429
 Y
 3
 306
@@ -1310,7 +1310,7 @@ Name
 sales_tax_basis
 X
 3
-321
+312
 Y
 3
 360
@@ -1625,7 +1625,7 @@ Name
 turbine_cost_per_kw
 X
 3
-171
+177
 Y
 3
 252

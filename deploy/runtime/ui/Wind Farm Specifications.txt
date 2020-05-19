@@ -102,7 +102,7 @@ Name
 btnOpenTurbineLocationFile
 X
 3
-372
+423
 Y
 3
 267
@@ -353,7 +353,7 @@ Name
 wake_loss
 X
 3
-159
+186
 Y
 3
 195
@@ -518,7 +518,7 @@ Name
 wind_farm_wake_model
 X
 3
-159
+186
 Y
 3
 141
@@ -554,7 +554,7 @@ Name
 wind_resource_turbulence_coeff
 X
 3
-159
+186
 Y
 3
 168
@@ -1123,10 +1123,10 @@ X
 12
 Y
 3
-267
+258
 Width
 3
-344
+404
 Height
 3
 50

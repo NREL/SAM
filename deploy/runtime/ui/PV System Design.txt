@@ -732,13 +732,13 @@ X
 12
 Y
 3
-192
+186
 Width
 3
-824
+860
 Height
 3
-50
+56
 Tool Tip
 5
 0
@@ -757,7 +757,7 @@ Bold
 0
 FontSize
 3
-4294967295
+0
 WordWrap
 2
 1
@@ -1094,7 +1094,7 @@ Name
 batt_max_power
 X
 3
-480
+492
 Y
 3
 108
@@ -1186,7 +1186,7 @@ Name
 calculated_dcac_ratio
 X
 3
-189
+177
 Y
 3
 60
@@ -1248,7 +1248,7 @@ Name
 desired_dcac_ratio
 X
 3
-189
+177
 Y
 3
 108
@@ -1310,7 +1310,7 @@ Name
 desired_size
 X
 3
-189
+177
 Y
 3
 84
@@ -1501,7 +1501,7 @@ Name
 inverter_count
 X
 3
-189
+177
 Y
 3
 36
@@ -1847,7 +1847,7 @@ Y
 84
 Width
 3
-280
+283
 Height
 3
 52
@@ -5020,7 +5020,7 @@ Name
 system_capacity
 X
 3
-480
+492
 Y
 3
 36
@@ -5144,7 +5144,7 @@ Name
 total_dc_inverter_capacity
 X
 3
-480
+492
 Y
 3
 84
@@ -5206,7 +5206,7 @@ Name
 total_inverter_capacity
 X
 3
-480
+492
 Y
 3
 60
@@ -5678,7 +5678,7 @@ Default
 num_strings_total
 3
 1
-Total number of strings
+Number of strings
  
 PV System Design
 32
@@ -6630,7 +6630,7 @@ Numeric
 total_modules
 3
 1
-Total number of modules
+Number of modules
  
 PV System Design
 0

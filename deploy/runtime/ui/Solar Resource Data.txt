@@ -138,7 +138,7 @@ Name
 annual_beam
 X
 3
-150
+198
 Y
 3
 849
@@ -200,7 +200,7 @@ Name
 annual_diffuse
 X
 3
-150
+198
 Y
 3
 876
@@ -262,7 +262,7 @@ Name
 annual_global
 X
 3
-150
+198
 Y
 3
 822
@@ -386,7 +386,7 @@ Name
 annual_tdry
 X
 3
-150
+198
 Y
 3
 903
@@ -448,7 +448,7 @@ Name
 annual_wspd
 X
 3
-150
+198
 Y
 3
 930
@@ -1793,13 +1793,13 @@ Name
 solar_resource_file
 X
 3
-93
+105
 Y
 3
 609
 Width
 3
-616
+604
 Height
 3
 24

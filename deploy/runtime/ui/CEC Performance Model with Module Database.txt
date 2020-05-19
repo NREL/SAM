@@ -178,10 +178,10 @@ Tool Tip
 Caption
 5
 31
-Heat transfer method parameters
+Heat Transfer Method Parameters
 Bold
 2
-0
+1
 GroupBox
 
 1
@@ -208,10 +208,10 @@ Tool Tip
 Caption
 5
 22
-NOCT method parameters
+NOCT Method Parameters
 Bold
 2
-0
+1
 Hyperlink
 
 1

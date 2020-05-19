@@ -12,7 +12,7 @@ Name
 cp_battery_nameplate
 X
 3
-648
+723
 Y
 3
 186
@@ -74,7 +74,7 @@ Name
 cp_capacity_credit_percent
 X
 3
-648
+723
 Y
 3
 132
@@ -116,7 +116,7 @@ Name
 cp_capacity_payment_amount
 X
 3
-198
+249
 Y
 3
 135
@@ -159,7 +159,7 @@ Name
 cp_capacity_payment_esc
 X
 3
-195
+249
 Y
 3
 162
@@ -221,7 +221,7 @@ Name
 cp_capacity_payment_type
 X
 3
-15
+39
 Y
 3
 87
@@ -261,7 +261,7 @@ Name
 cp_payment_esc_label
 X
 3
-12
+63
 Y
 3
 186
@@ -309,7 +309,7 @@ Name
 cp_payment_units
 X
 3
-288
+339
 Y
 3
 135
@@ -357,7 +357,7 @@ Name
 cp_payment_units_dollars
 X
 3
-288
+339
 Y
 3
 135
@@ -405,7 +405,7 @@ Name
 cp_system_nameplate
 X
 3
-648
+723
 Y
 3
 159
@@ -497,13 +497,13 @@ Name
 object 7
 X
 3
-15
+45
 Y
 3
 138
 Width
 3
-180
+201
 Height
 3
 24
