@@ -42,7 +42,7 @@ Name
 batt_C_rate
 X
 3
-255
+270
 Y
 3
 381
@@ -104,7 +104,7 @@ Name
 batt_Qexp_percent
 X
 3
-255
+270
 Y
 3
 489
@@ -166,7 +166,7 @@ Name
 batt_Qnom_percent
 X
 3
-255
+270
 Y
 3
 516
@@ -228,7 +228,7 @@ Name
 batt_Vexp
 X
 3
-255
+270
 Y
 3
 435
@@ -290,7 +290,7 @@ Name
 batt_Vfull
 X
 3
-255
+270
 Y
 3
 408
@@ -352,7 +352,7 @@ Name
 batt_Vnom
 X
 3
-255
+270
 Y
 3
 462
@@ -414,7 +414,7 @@ Name
 batt_Vnom_default
 X
 3
-255
+270
 Y
 3
 120
@@ -476,7 +476,7 @@ Name
 batt_bank_voltage
 X
 3
-255
+270
 Y
 3
 93
@@ -538,16 +538,16 @@ Name
 batt_chem_message
 X
 3
-369
+402
 Y
 3
-408
+402
 Width
 3
-666
+633
 Height
 3
-42
+39
 Tool Tip
 5
 0
@@ -586,13 +586,13 @@ Name
 batt_modeled_voltage
 X
 3
-363
+396
 Y
 3
 309
 Width
 3
-675
+642
 Height
 3
 22
@@ -664,7 +664,7 @@ Name
 batt_resistance
 X
 3
-255
+270
 Y
 3
 147
@@ -817,13 +817,13 @@ X
 438
 Y
 3
-453
+444
 Width
 3
 556
 Height
 3
-213
+222
 Tool Tip
 5
 0
@@ -952,16 +952,16 @@ Name
 batt_voltage_message14
 X
 3
-369
+402
 Y
 3
 327
 Width
 3
-666
+633
 Height
 3
-78
+72
 Tool Tip
 5
 0

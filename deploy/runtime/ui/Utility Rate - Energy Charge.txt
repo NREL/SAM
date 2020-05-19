@@ -1,6 +1,6 @@
 Utility Rate - Energy Charge
-1185
-668
+1418
+657
 6
 GroupBox
 
@@ -15,10 +15,10 @@ X
 9
 Y
 3
-9
+3
 Width
 3
-1166
+1403
 Height
 3
 647
@@ -42,7 +42,7 @@ Name
 Label6
 X
 3
-645
+789
 Y
 3
 30
@@ -90,7 +90,7 @@ Name
 Label61
 X
 3
-645
+789
 Y
 3
 348
@@ -138,7 +138,7 @@ Name
 ur_ec_sched_weekday
 X
 3
-645
+789
 Y
 3
 51
@@ -174,7 +174,7 @@ Name
 ur_ec_sched_weekend
 X
 3
-645
+789
 Y
 3
 369
@@ -216,7 +216,7 @@ Y
 30
 Width
 3
-598
+730
 Height
 3
 615

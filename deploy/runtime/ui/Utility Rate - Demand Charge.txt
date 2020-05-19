@@ -1,6 +1,6 @@
 Utility Rate - Demand Charge
-1353
-711
+1413
+691
 10
 GroupBox
 
@@ -12,16 +12,16 @@ Name
 GroupBox31
 X
 3
-6
+9
 Y
 3
-6
+3
 Width
 3
-1340
+1403
 Height
 3
-695
+680
 Tool Tip
 5
 0
@@ -42,16 +42,16 @@ Name
 GroupBox4
 X
 3
-423
+444
 Y
 3
 51
 Width
 3
-917
+962
 Height
 3
-638
+629
 Tool Tip
 5
 0
@@ -72,16 +72,16 @@ Name
 GroupBox6
 X
 3
-18
+12
 Y
 3
 51
 Width
 3
-398
+428
 Height
 3
-638
+629
 Tool Tip
 5
 0
@@ -102,13 +102,13 @@ Name
 Label612
 X
 3
-819
+882
 Y
 3
 378
 Width
 3
-66
+90
 Height
 3
 21
@@ -150,13 +150,13 @@ Name
 Label62
 X
 3
-819
+882
 Y
 3
 72
 Width
 3
-66
+90
 Height
 3
 21
@@ -231,13 +231,13 @@ Name
 ur_dc_flat_mat
 X
 3
-24
+18
 Y
 3
 72
 Width
 3
-388
+418
 Height
 3
 600
@@ -321,10 +321,10 @@ Name
 ur_dc_sched_weekday
 X
 3
-819
+888
 Y
 3
-93
+96
 Width
 3
 514
@@ -357,7 +357,7 @@ Name
 ur_dc_sched_weekend
 X
 3
-819
+891
 Y
 3
 399
@@ -393,13 +393,13 @@ Name
 ur_dc_tou_mat
 X
 3
-426
+447
 Y
 3
 72
 Width
 3
-391
+433
 Height
 3
 600
