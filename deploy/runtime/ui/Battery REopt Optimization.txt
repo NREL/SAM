@@ -15,7 +15,7 @@ X
 12
 Y
 3
-18
+21
 Width
 3
 1029
@@ -66,7 +66,7 @@ Y
 69
 Width
 3
-162
+198
 Height
 3
 24
@@ -168,7 +168,7 @@ Name
 value_of_lost_load
 X
 3
-231
+243
 Y
 3
 69

@@ -42,7 +42,7 @@ Name
 batt_C_rate_max_charge_input
 X
 3
-843
+867
 Y
 3
 57
@@ -104,7 +104,7 @@ Name
 batt_C_rate_max_discharge_input
 X
 3
-843
+867
 Y
 3
 84
