@@ -582,7 +582,7 @@ batt_h_to_ambient
 1
 1
 1
-5
+500
 batt_height
 1
 1
