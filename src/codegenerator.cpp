@@ -175,7 +175,7 @@ bool CodeGen_Base::PlatformFiles()
 	wxCopyFile(f1, f2);
 	// sscapi.h - switch to copy version for syching issues 5/30/17
 	// assumes in runtime folder for all builds.
-	f1 = SamApp::GetRuntimePath() + "/sscapi.h";
+	f1 = SamApp::GetAppPath() + "/sscapi.h";
 	if (wxFileExists(f1))
 	{
 		f2 = m_folder + "/sscapi.h";
@@ -2521,10 +2521,10 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "    elseif strcmp(action,'data_set_string')\n");
 	fprintf(m_fp, "        result = calllib(ssclib, 'ssc_data_set_string', arg0, arg1, arg2 );\n");
 	fprintf(m_fp, "    elseif strcmp(action,'data_set_number')\n");
-	fprintf(m_fp, "        result = calllib(ssclib, 'ssc_data_set_number', arg0, arg1, single(arg2) );\n");
+	fprintf(m_fp, "        result = calllib(ssclib, 'ssc_data_set_number', arg0, arg1, arg2 );\n");
 	fprintf(m_fp, "    elseif strcmp(action,'data_set_array')\n");
 	fprintf(m_fp, "        len = length(arg2);\n");
-	fprintf(m_fp, "        arr = libpointer( 'singlePtr', arg2 );\n");
+	fprintf(m_fp, "        arr = libpointer( 'doublePtr', arg2 );\n");
 	fprintf(m_fp, "        result = calllib(ssclib,'ssc_data_set_array',arg0,arg1,arr,len);\n");
 	fprintf(m_fp, "    elseif strcmp(action,'data_set_matrix')\n");
 	fprintf(m_fp, "        [nr nc] = size(arg2);\n");
@@ -2536,14 +2536,14 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "                ii=ii+1;\n");
 	fprintf(m_fp, "            end\n");
 	fprintf(m_fp, "        end\n");
-	fprintf(m_fp, "        arr = libpointer( 'singlePtr', mat );\n");
+	fprintf(m_fp, "        arr = libpointer( 'doublePtr', mat );\n");
 	fprintf(m_fp, "        result = calllib(ssclib,'ssc_data_set_matrix',arg0,arg1,arr,nr,nc);\n");
 	fprintf(m_fp, "    elseif strcmp(action,'data_set_table')\n");
 	fprintf(m_fp, "        result = calllib(ssclib,'ssc_data_set_table',arg0,arg1,arg2);\n");
 	fprintf(m_fp, "    elseif strcmp(action,'data_get_string')\n");
 	fprintf(m_fp, "        result = calllib(ssclib,'ssc_data_get_string',arg0,arg1);\n");
 	fprintf(m_fp, "    elseif strcmp(action,'data_get_number')\n");
-	fprintf(m_fp, "         p = libpointer('singlePtr',0);\n");
+	fprintf(m_fp, "         p = libpointer('doublePtr',0);\n");
 	fprintf(m_fp, "         calllib(ssclib,'ssc_data_get_number', arg0,arg1,p);\n");
 	fprintf(m_fp, "         result = get(p,'Value');\n");
 	fprintf(m_fp, "    elseif strcmp(action,'data_get_array')\n");
@@ -2554,7 +2554,7 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "        result = zeros( len, 1 );\n");
 	fprintf(m_fp, "        for i=1:len,\n");
 	fprintf(m_fp, "            pidx = xobj+(i-1);\n");
-	fprintf(m_fp, "            setdatatype(pidx,'singlePtr',1,1);\n");
+	fprintf(m_fp, "            setdatatype(pidx,'doublePtr',1,1);\n");
 	fprintf(m_fp, "            result(i) = pidx.Value;\n");
 	fprintf(m_fp, "        end\n");
 	fprintf(m_fp, "    elseif strcmp(action,'data_get_matrix')\n");
@@ -2570,7 +2570,7 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "            for r=1:nrows,\n");
 	fprintf(m_fp, "                for c=1:ncols,\n");
 	fprintf(m_fp, "                    pidx = xobj+(ii-1);\n");
-	fprintf(m_fp, "                    setdatatype(pidx,'singlePtr',1,1);\n");
+	fprintf(m_fp, "                    setdatatype(pidx,'doublePtr',1,1);\n");
 	fprintf(m_fp, "                    result(r,c) = pidx.Value;\n");
 	fprintf(m_fp, "                    ii=ii+1;\n");
 	fprintf(m_fp, "                end\n");
