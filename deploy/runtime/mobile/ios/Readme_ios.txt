@@ -1,1 +1,0 @@
-iOS instructions to use with XCode and possible download instructions for tarball.
