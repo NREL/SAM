@@ -761,7 +761,7 @@ batt_resistance
 1
 1
 1
-0.2
+0.002
 batt_room_temperature_celsius
 1
 2
