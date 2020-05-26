@@ -62,9 +62,74 @@
 
 -->
 
+<h1>Version 2020.2.29 Revision 2, SSC Version xxx: May xx, 2020</h1>
+
+<p>This is an update to SAM 2020.2.29 Revision 1 that fixes the issues listed beow. For detailed descriptions, see <a href="https://github.com/NREL/SAM/issues?q=is%3Aissue+milestone%3A%222020+Patch+2%22">GitHub Issues for SAM 2020.2.29 Patch 2</a>.</p>
+
+<ul>
+<li>General
+<ul>
+<li>Code generator fixes for PVWatts, MATLAB, and JSON.</li>
+<li>Fix LK contour() plotting function.</li>
+<li>Fix Value of RE macro numbers in CSV file output.</li>
+<li>Fix rendering of user interface elements in inputs browser.</li>
+<li>Update Combine Cases macro to work properly with models like Detailed PV that run multi-year simulations.</li>
+<li>Version upgrade script fixes to handle converting variables when opening files created in older versions of SAM.</li>
+<li>Fix user interface layout issues for Linux and Mac.</li>
+<li>Fix stochastic simulations for Mac.</li>
+</ul>
+</li>
+<li>Financial Models
+<ul>
+<li>Fix issues with reporting of curtailed energy in cash flow.</li>
+<li>Fix Single Owner Send-to-Excel with Equations workbook.</li>
+</ul>
+</li>
+<li>Concentrating Solar Power (CSP)
+<ul>
+<li>Revert default inputs to SAM 2018.11.11 values.</li>
+</ul>
+</li>
+<li>Battery Storage
+<ul>
+<li>Fix issue with changing configuration from PV Battery to Detailed PV using <b>Change model</b> command on Case menu.</li>
+<li>Fix battery degradation issues.</li>
+<li>Fix issue where battery state of charge appears to drop suddenly for subhourly simulations.</li>
+<li>Fix battery sizing inputs for behind-the-meter applications.</li>
+<li>Clean up user interface variables and labels.</li>
+<li>Fix bank capacity labels in SSC to help differentiate between user sizing and actual size variable names.</li>
+</ul>
+</li>
+<li>PVWatts
+<ul>
+<li>Fix issue with monthly energy calculations for subhourly simulations.</li>
+<li>Fix bifacial model (pvwattsv7 via API only).
+</ul>
+<li>Fuel Cell
+<ul>
+<li>Fix configuration issue with Fuel Cell / Single Owner.</li>
+<li>Fix PVWatts issue with monthly energy calculations for subhourly simulations.</li>
+</ul>
+</li>
+<li>Detailed Photovoltaic
+<ul>
+<li>Enable self-shading for one-axis tracking with backtracking.</li>
+<li>Fix issues with daily lifetime loss inputs.</li>
+<li>Fix issues with losses outputs.</li>
+</ul>
+</li>
+<li>Biopower
+<ul>
+<li>Remove Biopower / Commercial configuration. Model is designed for power generation projects, not distributed power applications.</li>
+<li>Remove feedstock download buttons and links that no longer work.</li>
+</ul>
+</li>
+
+</ul>
+
 <h1>Version 2020.2.29 Revision 1, SSC Version 238: March 30, 2020</h1>
 	 
-<p>This is an update that fixes the following issues:</p>
+<p>This is an update to SAM 2020.2.29 that fixes the following issues:</p>
 
 <ul>
 <li>
@@ -98,6 +163,12 @@ Battery Storage
 Marine Energy
 <ul>
 <li>Remove obsolete "Marine Hydrokinetic" macro from Generic System configurations.</li>
+</ul>
+</li>
+<li>
+Concentrating Solar Power (CSP)
+<ul>
+<li>Empirical trough model: Remove custom HTF from user interface per https://github.com/NREL/SAM/issues/316.</li>
 </ul>
 </li>
 <li>
