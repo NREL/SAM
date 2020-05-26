@@ -280,5 +280,42 @@ private:
 	int m_num_metrics;
 };
 
+class CodeGen_pySAM
+{
+public:
+	CodeGen_pySAM(Case* cc, const wxString& folder);
+	bool SupportingFiles();
+	bool Header();
+//	bool CreateSSCModule(wxString& name);
+//	bool RunSSCModule(wxString& name);
+//	bool FreeSSCModule();
+	bool Input(ssc_data_t p_data, const char* name, const wxString& folder, const int& array_matrix_threshold);
+//	bool Output(ssc_data_t p_data);
+	bool Footer();
+// override
+	bool GenerateCode(const int& array_matrix_threshold);
+	bool Prepare();
+	bool PlatformFiles();
+	wxString GetErrors();
+	bool Ok();
+
+private:
+//	int m_num_cm;
+//	int m_num_metrics;
+
+protected:
+	Case* m_case;
+	FILE* m_fp;
+	wxString m_fullpath;
+	wxString m_folder;
+	wxString m_name;
+	wxString m_ext;
+	wxArrayString m_errors;
+	VarTable m_inputs;
+	int m_num_inputs;
+	std::vector<CodeGenData> m_data;
+
+};
+
 
 #endif

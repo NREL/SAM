@@ -21,6 +21,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include <algorithm>
+#include <memory>
 
 #include <wx/datstrm.h>
 #include <wx/gauge.h>
@@ -558,6 +559,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("PHP 5");						// 8 (11)
 	code_languages.Add("PHP 7");						// 9 (12)
 //#endif
+	code_languages.Add("PySAM JSON");					// 10 (13)
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -616,58 +618,58 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		return false;
 	}
 
-	CodeGen_Base *cg;
+	std::shared_ptr<CodeGen_Base> cg;
 	wxString err_msg = "";
 	if (lang == 0) // JSON
 	{
 		fn += ".json";
-		cg = new CodeGen_json(c, fn);
+		cg = std::make_shared<CodeGen_json>(c, fn);
 	}
 	else if (lang == 1) // lk
 	{
 		fn += ".lk";
-		cg = new CodeGen_lk(c, fn);
+		cg = std::make_shared<CodeGen_lk>(c, fn);
 	}
 	else if (lang == 2) // c
 	{
 		fn += ".c";
-		cg = new CodeGen_c(c, fn);
+		cg = std::make_shared < CodeGen_c>(c, fn);
 	}
 	else if (lang == 3) // matlab
 	{
 		fn += ".m";
-		cg = new CodeGen_matlab(c, fn);
+		cg = std::make_shared < CodeGen_matlab>(c, fn);
 	}
 	else if (lang == 4) // python2
 	{
 		fn += ".py";
-		cg = new CodeGen_python2(c, fn);
+		cg = std::make_shared < CodeGen_python2>(c, fn);
 	}
 	else if (lang == 5) // python3
 	{
 		fn += ".py";
-		cg = new CodeGen_python3(c, fn);
+		cg = std::make_shared < CodeGen_python3>(c, fn);
 	}
 	else if (lang == 6) // java
 	{
 		fn += ".java";
-		cg = new CodeGen_java(c, fn);
+		cg = std::make_shared < CodeGen_java>(c, fn);
 	}
     else if (lang == 7) // Android Studio Android
     {
         fn += ".cpp"; // ndk jni file
-        cg = new CodeGen_android(c, fn);
+        cg = std::make_shared < CodeGen_android>(c, fn);
     }
 //#ifdef __WXMSW__
 	else if (lang == 8) // c#
 	{
 		fn += ".cs";
-		cg = new CodeGen_csharp(c, fn);
+		cg = std::make_shared < CodeGen_csharp>(c, fn);
 	}
 	else if (lang == 9) // vba
 	{
 		fn += ".bas";
-		cg = new CodeGen_vba(c, fn);
+		cg = std::make_shared < CodeGen_vba>(c, fn);
 	}
 //#endif
 //#ifdef __WXMAC__
@@ -675,7 +677,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	else if (lang == 10) // Swift iOS
 	{
         fn += ".swift";
-        cg = new CodeGen_ios(c, fn);
+        cg = std::make_shared < CodeGen_ios>(c, fn);
     }
 //#endif
 //#ifdef __WXGTK__
@@ -683,15 +685,32 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	else if (lang == 11) // php
 	{
 		fn += ".php";
-		cg = new CodeGen_php5(c, fn);
+		cg = std::make_shared < CodeGen_php5>(c, fn);
 	}
 //	else if (lang == 9) // php
 	else if (lang == 12) // php
 	{
 		fn += ".php";
-		cg = new CodeGen_php7(c, fn);
+		cg = std::make_shared < CodeGen_php7>(c, fn);
 	}
-//#endif
+	else if (lang == 13) // PySAM JSON
+	{
+		fn += ".json";
+		std::shared_ptr<CodeGen_pySAM> pySAM = std::make_shared < CodeGen_pySAM>(c, fn);
+		pySAM->GenerateCode(threshold);
+		if (pySAM) {
+			if (!pySAM->Ok())
+				wxMessageBox(pySAM->GetErrors(), "Code Generator Errors", wxICON_ERROR);
+			else
+			{
+				wxLaunchDefaultApplication(foldername);
+			}
+			return pySAM->Ok();
+		}
+		else
+			return false;
+		}
+	//#endif
 	else
 		return false;
 
@@ -7500,19 +7519,19 @@ bool CodeGen_android::Footer()
 
 
 // JSON
-CodeGen_json::CodeGen_json(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
+CodeGen_json::CodeGen_json(Case* cc, const wxString& folder) : CodeGen_Base(cc, folder)
 {
 	m_num_cm = 0;
 	m_num_metrics = 0;
 }
 
 
-bool CodeGen_json::Output(ssc_data_t )
+bool CodeGen_json::Output(ssc_data_t)
 {
 	wxString str_value;
 	for (size_t ii = 0; ii < m_data.size(); ii++)
 	{
-		const char *name = (const char*)m_data[ii].var.c_str();
+		const char* name = (const char*)m_data[ii].var.c_str();
 		fprintf(m_fp, "	\"metric_%d\" : \"%s\",\n", m_num_metrics, name);
 		fprintf(m_fp, "	\"metric_%d_label\" : \"%s\",\n", m_num_metrics, (const char*)m_data[ii].label.c_str());
 		m_num_metrics++;
@@ -7520,10 +7539,10 @@ bool CodeGen_json::Output(ssc_data_t )
 	return true;
 }
 
-bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, const int &)
+bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, const int&)
 {
 	ssc_number_t value;
-	ssc_number_t *p;
+	ssc_number_t* p;
 	int len, nr, nc;
 	wxString str_value;
 	double dbl_value;
@@ -7545,7 +7564,7 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, 
 		p = ::ssc_data_get_array(p_data, name, &len);
 		{
 			fprintf(m_fp, "	\"%s\" : [", name);
-			for (int i = 0; i < (len-1); i++)
+			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
@@ -7558,7 +7577,7 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, 
 		break;
 	case SSC_MATRIX:
 		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
-		len = nr*nc;
+		len = nr * nc;
 		{
 			fprintf(m_fp, "	\"%s\" : [ [", name);
 			for (int k = 0; k < (len - 1); k++)
@@ -7567,9 +7586,9 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, 
 				if (dbl_value > 1e38) dbl_value = 1e38;
 				if (nc == 1)
 					fprintf(m_fp, " %.17g ], [", dbl_value);
-				else if ((k > 0) && (k%nc == 0))
+				else if ((k > 0) && (k % nc == 0))
 					fprintf(m_fp, " [ %.17g,", dbl_value);
-				else if (k%nc == (nc - 1))
+				else if (k % nc == (nc - 1))
 					fprintf(m_fp, " %.17g ],", dbl_value);
 				else
 					fprintf(m_fp, " %.17g, ", dbl_value);
@@ -7584,7 +7603,7 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char *name, const wxString &, 
 }
 
 
-bool CodeGen_json::RunSSCModule(wxString &)
+bool CodeGen_json::RunSSCModule(wxString&)
 {
 	return true;
 }
@@ -7596,9 +7615,9 @@ bool CodeGen_json::Header()
 	return true;
 }
 
-bool CodeGen_json::CreateSSCModule(wxString &name)
+bool CodeGen_json::CreateSSCModule(wxString& name)
 {
-	fprintf(m_fp, "	\"compute_module_%d\" : \"%s\",\n", m_num_cm, (const char *)name.c_str());
+	fprintf(m_fp, "	\"compute_module_%d\" : \"%s\",\n", m_num_cm, (const char*)name.c_str());
 	m_num_cm++;
 	return true;
 }
@@ -7618,6 +7637,535 @@ bool CodeGen_json::Footer()
 {
 	fprintf(m_fp, "	\"number_compute_modules\" : %d,\n", m_num_cm);
 	fprintf(m_fp, "	\"number_metrics\" : %d\n", m_num_metrics);
+	fprintf(m_fp, "}\n");
+	return true;
+}
+
+
+
+// PySAM JSON
+CodeGen_pySAM::CodeGen_pySAM(Case* cc, const wxString& folder) : m_case(cc), m_fullpath(folder)
+{
+//	m_num_cm = 0;
+//	m_num_metrics = 0;
+	wxFileName::SplitPath(m_fullpath, &m_folder, &m_name, &m_ext);
+}
+
+
+bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
+{
+	ConfigInfo* cfg = m_case->GetConfiguration();
+
+	if (!cfg)
+	{
+		m_errors.Add("no valid configuration for this case");
+		return false;
+	}
+	if (!Prepare())
+	{
+		m_errors.Add("preparation failed for this case");
+		return false;
+	}
+
+	// get list of compute modules from case configuration
+	wxArrayString simlist = cfg->Simulations;
+
+	if (simlist.size() == 0)
+	{
+		m_errors.Add("No simulation compute modules defined for this configuration.");
+		return false;
+	}
+
+	// go through and translate all SAM UI variables to SSC variables
+	ssc_data_t p_data = ssc_data_create();
+
+	// go through and get outputs for determining types
+//	ssc_data_t p_data_output = ssc_data_create();
+
+	std::vector<std::vector<const char*> > input_order;
+
+
+	// each compute module - new file and reset metric count
+
+	for (size_t kk = 0; kk < simlist.size(); kk++)
+	{
+		ssc_module_t p_mod = ssc_module_create(simlist[kk].c_str());
+		if (!p_mod)
+		{
+			m_errors.Add("could not create ssc module: " + simlist[kk]);
+			continue;
+		}
+
+	
+
+		// store all variable names that are used to run compute module in vector of variable names
+		std::vector<const char*> cm_names;
+
+		int pidx = 0;
+		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+		{
+			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+			const char* var_name = ssc_info_name(p_inf);
+			wxString name(var_name); // assumed to be non-null
+			wxString reqd(ssc_info_required(p_inf));
+
+			if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+			{
+				// handle ssc variable names
+				// that are explicit field accesses"shading:mxh"
+				wxString field;
+				int pos = name.Find(':');
+				if (pos != wxNOT_FOUND)
+				{
+					field = name.Mid(pos + 1);
+					name = name.Left(pos);
+				}
+
+				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+				if (existing_type != ssc_data_type)
+				{
+					if (VarValue* vv = m_case->Values().Get(name))
+					{
+						if (!field.IsEmpty())
+						{
+							if (vv->Type() != VV_TABLE)
+								m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
+
+							bool do_copy_var = false;
+							if (reqd.Left(1) == "?")
+							{
+								// if the SSC variable is optional, check for the 'en_<field>' element in the table
+								if (VarValue* en_flag = vv->Table().Get("en_" + field))
+									if (en_flag->Boolean())
+										do_copy_var = true;
+							}
+							else do_copy_var = true;
+
+							if (do_copy_var)
+							{
+								if (VarValue* vv_field = vv->Table().Get(field))
+								{
+									if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
+										m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+									else
+										cm_names.push_back(var_name);
+								}
+							}
+
+						}
+						else // no table value
+						{
+							if (!VarValueToSSC(vv, p_data, name))
+								m_errors.Add("Error translating data from SAM UI to SSC for " + name);
+							else
+								cm_names.push_back(var_name);
+						}
+					}
+					//					else if (reqd == "*")
+					//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
+				}
+			}
+			/*
+			else if (var_type == SSC_OUTPUT)
+			{
+				wxString field;
+				int pos = name.Find(':');
+				if (pos != wxNOT_FOUND)
+				{
+					field = name.Mid(pos + 1);
+					name = name.Left(pos);
+				}
+
+				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+				if (existing_type != ssc_data_type)
+				{
+					if (!SSCTypeToSSC(ssc_data_type, p_data_output, name))
+						m_errors.Add("Error for output " + name);
+				}
+			}
+			*/
+		} // end of compute module variables
+		if (cm_names.size() > 0)
+			input_order.push_back(cm_names);
+	}
+
+
+
+	// Platform specific files
+	if (!PlatformFiles())
+		m_errors.Add("PlatformFiles failed");
+
+	// language specific additional files
+	if (!SupportingFiles())
+		m_errors.Add("SupportingFiles failed");
+
+	/* old single unordered grouping of inputs
+	const char *name = ssc_data_first(p_data);
+	while (name)
+	{
+		if (!Input(p_data, name, m_folder, array_matrix_threshold))
+			m_errors.Add(wxString::Format("Input %s write failed",name));
+		name = ssc_data_next(p_data);
+	}
+	*/
+
+	// check that input order has same count as number of compute modules
+	if (simlist.size() != input_order.size())
+		m_errors.Add("input ordering failed");
+	// can do inputs with compute module calls below
+	/*
+	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
+	{
+		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
+		fprintf(m_fp, "\\ Compute module '%s' inputs;\n", simlist[k].c_str()); // TODO - if desired add comment for each language implementation
+		for (size_t jj = 0; jj < input_order[k].size(); jj++)
+		{
+			const char* name = input_order[k][jj];
+			if (!Input(p_data, name, m_folder, array_matrix_threshold))
+				m_errors.Add(wxString::Format("Input %s write failed", name));
+		}
+		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
+	}
+	*/
+
+	// run compute modules in sequence (INOUT variables will be updated)
+//	for (size_t kk = 0; kk < simlist.size(); kk++)
+	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
+	{
+
+		// create file with [case name]_[compute module].json 
+		wxString fullpath = m_folder + "/" + m_name + "_" + simlist[kk] + "." + m_ext;
+		m_fp = fopen(fullpath.c_str(), "w");
+
+
+		// write language specific header
+		if (!Header())
+			m_errors.Add("Header failed");
+
+
+		for (size_t jj = 0; jj < input_order[kk].size(); jj++)
+		{
+			const char* name = input_order[kk][jj];
+			if (!Input(p_data, name, m_folder, array_matrix_threshold))
+				m_errors.Add(wxString::Format("Input %s write failed", name));
+		}
+//		CreateSSCModule(simlist[kk]);
+//		RunSSCModule(simlist[kk]);
+//		FreeSSCModule();
+		m_num_inputs = (int)input_order[kk].size();
+		if (!Footer())
+			m_errors.Add("Footer failed");
+
+		if (m_fp) fclose(m_fp);
+
+	}
+/*
+	// outputs - metrics for case
+	m_data.clear();
+	CodeGenCallbackContext cc(this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing);
+
+	// first try to invoke a T/F specific callback if one exists
+	if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Technology + "|" + cfg->Financing))
+		cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+
+	// if no metrics were defined, run it T & F one at a time
+	if (m_data.size() == 0)
+	{
+		if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Technology))
+			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+
+		if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Financing))
+			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+	}
+
+	if (!Output(p_data_output))
+		m_errors.Add("Output failed");
+*/
+	return (m_errors.Count() == 0);
+}
+
+/*
+bool CodeGen_pySAM::Output(ssc_data_t)
+{
+	wxString str_value;
+	for (size_t ii = 0; ii < m_data.size(); ii++)
+	{
+		const char* name = (const char*)m_data[ii].var.c_str();
+		fprintf(m_fp, "	\"metric_%d\" : \"%s\",\n", m_num_metrics, name);
+		fprintf(m_fp, "	\"metric_%d_label\" : \"%s\",\n", m_num_metrics, (const char*)m_data[ii].label.c_str());
+		m_num_metrics++;
+	}
+	return true;
+}
+*/
+
+bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, const int&)
+{
+	ssc_number_t value;
+	ssc_number_t* p;
+	int len, nr, nc;
+	wxString str_value;
+	double dbl_value;
+	int type = ::ssc_data_query(p_data, name);
+	switch (type)
+	{
+	case SSC_STRING:
+		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
+		str_value.Replace("\\", "/");
+		fprintf(m_fp, "	\"%s\" : \"%s\",\n", name, (const char*)str_value.c_str());
+		break;
+	case SSC_NUMBER:
+		::ssc_data_get_number(p_data, name, &value);
+		dbl_value = (double)value;
+		if (dbl_value > 1e38) dbl_value = 1e38;
+		fprintf(m_fp, "	\"%s\" : %.17g,\n", name, dbl_value);
+		break;
+	case SSC_ARRAY:
+		p = ::ssc_data_get_array(p_data, name, &len);
+		{
+			fprintf(m_fp, "	\"%s\" : [", name);
+			for (int i = 0; i < (len - 1); i++)
+			{
+				dbl_value = (double)p[i];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				fprintf(m_fp, " %.17g,", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(m_fp, " %.17g ],\n", dbl_value);
+		}
+		break;
+	case SSC_MATRIX:
+		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
+		len = nr * nc;
+		{
+			fprintf(m_fp, "	\"%s\" : [ [", name);
+			for (int k = 0; k < (len - 1); k++)
+			{
+				dbl_value = (double)p[k];
+				if (dbl_value > 1e38) dbl_value = 1e38;
+				if (nc == 1)
+					fprintf(m_fp, " %.17g ], [", dbl_value);
+				else if ((k > 0) && (k % nc == 0))
+					fprintf(m_fp, " [ %.17g,", dbl_value);
+				else if (k % nc == (nc - 1))
+					fprintf(m_fp, " %.17g ],", dbl_value);
+				else
+					fprintf(m_fp, " %.17g, ", dbl_value);
+			}
+			dbl_value = (double)p[len - 1];
+			if (dbl_value > 1e38) dbl_value = 1e38;
+			fprintf(m_fp, " %.17g ] ],\n", dbl_value);
+		}
+		// TODO tables in future
+	}
+	return true;
+}
+
+
+bool CodeGen_pySAM::Prepare()
+{
+	m_inputs.clear();
+	m_inputs = m_case->Values();
+	/* may be used in the future
+	// transfer all the values except for ones that have been 'overriden'
+	for (VarTableBase::const_iterator it = m_case->Values().begin();
+		it != m_case->Values().end();
+		++it)
+		if (0 == m_inputs.Get(it->first))
+			m_inputs.Set(it->first, *(it->second));
+*/
+// recalculate all the equations
+	CaseEvaluator eval(m_case, m_inputs, m_case->Equations());
+	int n = eval.CalculateAll();
+
+	if (n < 0)
+	{
+		wxArrayString& errs = eval.GetErrors();
+		for (size_t i = 0; i < errs.size(); i++)
+			m_errors.Add(errs[i]);
+
+		return false;
+	}
+	return true;
+}
+
+
+/*
+bool CodeGen_pySAM::RunSSCModule(wxString&)
+{
+	return true;
+}
+*/
+
+bool CodeGen_pySAM::Header()
+{
+	fprintf(m_fp, "{\n");
+	return true;
+}
+
+/*
+bool CodeGen_pySAM::CreateSSCModule(wxString& name)
+{
+	return true;
+}
+
+bool CodeGen_pySAM::FreeSSCModule()
+{
+	return true;
+}
+*/
+
+
+bool CodeGen_pySAM::PlatformFiles()
+{
+	// copy appropriate dll
+#if defined(__WXMSW__) && defined (__64BIT__)
+	wxString f1 = SamApp::GetAppPath() + "/ssc.dll";
+	wxString f2 = m_folder + "/ssc.dll";
+#elif defined(__WXMSW__) && defined(__32BIT__)
+	wxString f1 = SamApp::GetAppPath() + "/sscx32.dll";
+	wxString f2 = m_folder + "/ssc.dll";
+#elif defined(__WXOSX__)
+	wxString f1 = SamApp::GetAppPath() + "/../Frameworks/ssc.dylib";
+	wxString f2 = m_folder + "/ssc.dylib";
+#elif defined(__WXGTK__)
+	wxString f1 = SamApp::GetAppPath() + "/ssc.so";
+	wxString f2 = m_folder + "/ssc.so";
+#else
+	return false;
+#endif
+	wxCopyFile(f1, f2);
+	// sscapi.h - switch to copy version for syching issues 5/30/17
+	// assumes in runtime folder for all builds.
+	f1 = SamApp::GetAppPath() + "/sscapi.h";
+	if (wxFileExists(f1))
+	{
+		f2 = m_folder + "/sscapi.h";
+		wxCopyFile(f1, f2);
+	}
+	else
+	{
+		// fallback to sscapi.h generation
+		wxString fn = m_folder + "/sscapi.h";
+		FILE* f = fopen(fn.c_str(), "w");
+		if (!f) return false;
+		fprintf(f, "#ifndef __ssc_api_h\n");
+		fprintf(f, "#define __ssc_api_h\n");
+		fprintf(f, "#if defined(__WINDOWS__)&&defined(__DLL__)\n");
+		fprintf(f, "#define SSCEXPORT __declspec(dllexport)\n");
+		fprintf(f, "#else\n");
+		fprintf(f, "#define SSCEXPORT\n");
+		fprintf(f, "#endif\n");
+		fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
+		fprintf(f, "#ifdef __cplusplus\n");
+		fprintf(f, "extern \"C\" {\n");
+		fprintf(f, "#endif\n");
+		fprintf(f, "#endif\n");
+		fprintf(f, "SSCEXPORT int ssc_version();\n");
+		fprintf(f, "SSCEXPORT const char *ssc_build_info();\n");
+		fprintf(f, "typedef void* ssc_data_t;\n");
+		fprintf(f, "typedef double ssc_number_t;\n");
+		fprintf(f, "typedef int ssc_bool_t;\n");
+		fprintf(f, "#define SSC_INVALID 0\n");
+		fprintf(f, "#define SSC_STRING 1\n");
+		fprintf(f, "#define SSC_NUMBER 2\n");
+		fprintf(f, "#define SSC_ARRAY 3\n");
+		fprintf(f, "#define SSC_MATRIX 4\n");
+		fprintf(f, "#define SSC_TABLE 5\n");
+		fprintf(f, "SSCEXPORT ssc_data_t ssc_data_create();\n");
+		fprintf(f, "SSCEXPORT void ssc_data_free( ssc_data_t p_data );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_clear( ssc_data_t p_data );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_unassign( ssc_data_t p_data, const char *name );\n");
+		fprintf(f, "SSCEXPORT int ssc_data_query( ssc_data_t p_data, const char *name );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_data_first( ssc_data_t p_data );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_data_next( ssc_data_t p_data );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_set_string( ssc_data_t p_data, const char *name, const char *value );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_set_number( ssc_data_t p_data, const char *name, ssc_number_t value );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_set_array( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int length );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_set_matrix( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int nrows, int ncols );\n");
+		fprintf(f, "SSCEXPORT void ssc_data_set_table( ssc_data_t p_data, const char *name, ssc_data_t table );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_data_get_string( ssc_data_t p_data, const char *name );\n");
+		fprintf(f, "SSCEXPORT ssc_bool_t ssc_data_get_number( ssc_data_t p_data, const char *name, ssc_number_t *value );\n");
+		fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_array( ssc_data_t p_data, const char *name, int *length );\n");
+		fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_matrix( ssc_data_t p_data, const char *name, int *nrows, int *ncols );\n");
+		fprintf(f, "SSCEXPORT ssc_data_t ssc_data_get_table( ssc_data_t p_data, const char *name );\n");
+		fprintf(f, "typedef void* ssc_entry_t;\n");
+		fprintf(f, "SSCEXPORT ssc_entry_t ssc_module_entry( int index );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_entry_name( ssc_entry_t p_entry );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_entry_description( ssc_entry_t p_entry );\n");
+		fprintf(f, "SSCEXPORT int ssc_entry_version( ssc_entry_t p_entry );\n");
+		fprintf(f, "typedef void* ssc_module_t;\n");
+		fprintf(f, "typedef void* ssc_info_t;\n");
+		fprintf(f, "SSCEXPORT ssc_module_t ssc_module_create( const char *name );\n");
+		fprintf(f, "SSCEXPORT void ssc_module_free( ssc_module_t p_mod );\n");
+		fprintf(f, "#define SSC_INPUT 1\n");
+		fprintf(f, "#define SSC_OUTPUT 2\n");
+		fprintf(f, "#define SSC_INOUT 3\n");
+		fprintf(f, "SSCEXPORT const ssc_info_t ssc_module_var_info( ssc_module_t p_mod, int index );\n");
+		fprintf(f, "SSCEXPORT int ssc_info_var_type( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT int ssc_info_data_type( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_name( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_label( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_units( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_meta( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_group( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_required( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_constraints( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_info_uihint( ssc_info_t p_inf );\n");
+		fprintf(f, "SSCEXPORT void ssc_module_exec_set_print( int print );\n");
+		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_simple( const char *name, ssc_data_t p_data );\n");
+		fprintf(f, "SSCEXPORT const char *ssc_module_exec_simple_nothread( const char *name, ssc_data_t p_data );\n");
+		fprintf(f, "#define SSC_LOG 0\n");
+		fprintf(f, "#define SSC_UPDATE 1\n");
+		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec( ssc_module_t p_mod, ssc_data_t p_data );\n");
+		fprintf(f, "typedef void* ssc_handler_t;\n");
+		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_with_handler(\n");
+		fprintf(f, "	ssc_module_t p_mod,\n");
+		fprintf(f, "	ssc_data_t p_data,\n");
+		fprintf(f, "	ssc_bool_t (*pf_handler)( ssc_module_t, ssc_handler_t, int action, float f0, float f1, const char *s0, const char *s1, void *user_data ),\n");
+		fprintf(f, "	void *pf_user_data );\n");
+		fprintf(f, "#define SSC_NOTICE 1\n");
+		fprintf(f, "#define SSC_WARNING 2\n");
+		fprintf(f, "#define SSC_ERROR 3\n");
+		fprintf(f, "SSCEXPORT const char *ssc_module_log( ssc_module_t p_mod, int index, int *item_type, float *time );\n");
+		fprintf(f, "SSCEXPORT void __ssc_segfault();\n");
+		fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
+		fprintf(f, "#ifdef __cplusplus\n");
+		fprintf(f, "}\n");
+		fprintf(f, "#endif\n");
+		fprintf(f, "\n");
+		fprintf(f, "#endif // __SSCLINKAGECPP__\n");
+		fprintf(f, "\n");
+		fprintf(f, "#endif\n");
+		fclose(f);
+	}
+	return true;
+}
+
+bool CodeGen_pySAM::Ok()
+{
+	return m_errors.size() == 0;
+}
+
+wxString CodeGen_pySAM::GetErrors()
+{
+	wxString ret = "";
+	for (size_t i = 0; i < m_errors.Count(); i++)
+		ret += m_errors[i] + "\n";
+	return ret;
+}
+
+bool CodeGen_pySAM::SupportingFiles()
+{
+
+	return true;
+}
+
+bool CodeGen_pySAM::Footer()
+{
+	fprintf(m_fp, "	\"number_inputs\" : %d\n", m_num_inputs);
 	fprintf(m_fp, "}\n");
 	return true;
 }
