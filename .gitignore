@@ -1,0 +1,9 @@
+
+deploy/x64/libcurl.dll
+deploy/x64/libeay32.dll
+deploy/x64/libssh2.dll
+deploy/x64/msvcp140.dll
+deploy/x64/SAM.exe
+deploy/x64/ssc.dll
+deploy/x64/ssleay32.dll
+deploy/x64/vcruntime140.dll
