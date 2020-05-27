@@ -59,7 +59,7 @@ version_upgrade{'2020.2.29'} = define() {
     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
 		msgbox("en_batt = " + value("en_batt") + ", " + oldvalue("en_batt") + "\ncfg.tech = " + cfg.tech + "\ncfg.fin = " + cfg.fin);
-        if ( value('en_batt') == 1 )
+        if ( oldvalue('en_batt') == 1 )
         {
 			if ( cfg.tech == 'Generic System' )
 			{
