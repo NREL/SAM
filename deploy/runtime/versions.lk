@@ -56,7 +56,7 @@ version_upgrade{'2020.2.29'} = define() {
     const cfg = config();
     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
-        if ( value('en_batt') == 1 )
+        if ( oldvalue('en_batt') == 1 )
         {
 			if ( cfg.tech == 'Generic System' )
 			{
