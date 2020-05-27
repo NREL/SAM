@@ -53,12 +53,9 @@ Some more examples:
 
 version_upgrade{'2020.2.29'} = define() {
 
-	msgbox("en_batt = " + value("en_batt") + ", " + oldvalue("en_batt"));
-
     const cfg = config();
     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
-		msgbox("en_batt = " + value("en_batt") + ", " + oldvalue("en_batt") + "\ncfg.tech = " + cfg.tech + "\ncfg.fin = " + cfg.fin);
         if ( oldvalue('en_batt') == 1 )
         {
 			if ( cfg.tech == 'Generic System' )
