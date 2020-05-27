@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_Pvwattsv1Poa.h"
 
-SAM_EXPORT SAM_Pvwattsv1Poa SAM_Pvwattsv1Poa_construct(const char* def, SAM_error* err){
-	SAM_Pvwattsv1Poa result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_Pvwattsv1Poa_execute(SAM_Pvwattsv1Poa data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_Pvwattsv1Poa_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("pvwattsv1_poa", data, verbosity, err);
@@ -27,96 +19,91 @@ SAM_EXPORT int SAM_Pvwattsv1Poa_execute(SAM_Pvwattsv1Poa data, int verbosity, SA
 }
 
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_destruct(SAM_Pvwattsv1Poa system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_beam_aset(SAM_Pvwattsv1Poa ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_beam_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "beam", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_incidence_aset(SAM_Pvwattsv1Poa ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_incidence_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "incidence", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_poa_beam_aset(SAM_Pvwattsv1Poa ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_poa_beam_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "poa_beam", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_poa_gnddiff_aset(SAM_Pvwattsv1Poa ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_poa_gnddiff_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "poa_gnddiff", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_poa_skydiff_aset(SAM_Pvwattsv1Poa ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_poa_skydiff_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "poa_skydiff", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_tdry_aset(SAM_Pvwattsv1Poa ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_tdry_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "tdry", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_wspd_aset(SAM_Pvwattsv1Poa ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_wspd_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "wspd", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_derate_nset(SAM_Pvwattsv1Poa ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_derate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "derate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_gamma_nset(SAM_Pvwattsv1Poa ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_gamma_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "gamma", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_inoct_nset(SAM_Pvwattsv1Poa ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_inoct_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inoct", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_inv_eff_nset(SAM_Pvwattsv1Poa ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_inv_eff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_eff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_step_nset(SAM_Pvwattsv1Poa ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_step_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "step", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_system_size_nset(SAM_Pvwattsv1Poa ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_system_size_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_size", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_t_ref_nset(SAM_Pvwattsv1Poa ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvwattsv1Poa_PVWatts_t_ref_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "t_ref", number);
 	});
 }
 
-SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_beam_aget(SAM_Pvwattsv1Poa ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "beam", length);
@@ -128,7 +115,7 @@ SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_beam_aget(SAM_Pvwattsv1Poa ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_incidence_aget(SAM_Pvwattsv1Poa ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_incidence_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "incidence", length);
@@ -140,7 +127,7 @@ SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_incidence_aget(SAM_Pvwattsv1Poa ptr,
 
 
 
-SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_poa_beam_aget(SAM_Pvwattsv1Poa ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_poa_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa_beam", length);
@@ -152,7 +139,7 @@ SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_poa_beam_aget(SAM_Pvwattsv1Poa ptr, 
 
 
 
-SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_poa_gnddiff_aget(SAM_Pvwattsv1Poa ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_poa_gnddiff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa_gnddiff", length);
@@ -164,7 +151,7 @@ SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_poa_gnddiff_aget(SAM_Pvwattsv1Poa pt
 
 
 
-SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_poa_skydiff_aget(SAM_Pvwattsv1Poa ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_poa_skydiff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa_skydiff", length);
@@ -176,7 +163,7 @@ SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_poa_skydiff_aget(SAM_Pvwattsv1Poa pt
 
 
 
-SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_tdry_aget(SAM_Pvwattsv1Poa ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tdry", length);
@@ -188,7 +175,7 @@ SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_tdry_aget(SAM_Pvwattsv1Poa ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_wspd_aget(SAM_Pvwattsv1Poa ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wspd", length);
@@ -200,7 +187,7 @@ SAM_EXPORT double* SAM_Pvwattsv1Poa_Weather_wspd_aget(SAM_Pvwattsv1Poa ptr, int*
 
 
 
-SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_derate_nget(SAM_Pvwattsv1Poa ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_derate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "derate", &result))
@@ -211,7 +198,7 @@ SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_derate_nget(SAM_Pvwattsv1Poa ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_gamma_nget(SAM_Pvwattsv1Poa ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_gamma_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "gamma", &result))
@@ -222,7 +209,7 @@ SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_gamma_nget(SAM_Pvwattsv1Poa ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_inoct_nget(SAM_Pvwattsv1Poa ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_inoct_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inoct", &result))
@@ -233,7 +220,7 @@ SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_inoct_nget(SAM_Pvwattsv1Poa ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_inv_eff_nget(SAM_Pvwattsv1Poa ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_inv_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inv_eff", &result))
@@ -244,7 +231,7 @@ SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_inv_eff_nget(SAM_Pvwattsv1Poa ptr, SA
 
 
 
-SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_step_nget(SAM_Pvwattsv1Poa ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_step_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "step", &result))
@@ -255,7 +242,7 @@ SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_step_nget(SAM_Pvwattsv1Poa ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_system_size_nget(SAM_Pvwattsv1Poa ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_system_size_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_size", &result))
@@ -266,7 +253,7 @@ SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_system_size_nget(SAM_Pvwattsv1Poa ptr
 
 
 
-SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_t_ref_nget(SAM_Pvwattsv1Poa ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_t_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "t_ref", &result))
@@ -277,7 +264,7 @@ SAM_EXPORT double SAM_Pvwattsv1Poa_PVWatts_t_ref_nget(SAM_Pvwattsv1Poa ptr, SAM_
 
 
 
-SAM_EXPORT double* SAM_Pvwattsv1Poa_Outputs_ac_aget(SAM_Pvwattsv1Poa ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvwattsv1Poa_Outputs_ac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ac", length);
@@ -289,7 +276,7 @@ SAM_EXPORT double* SAM_Pvwattsv1Poa_Outputs_ac_aget(SAM_Pvwattsv1Poa ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Pvwattsv1Poa_Outputs_dc_aget(SAM_Pvwattsv1Poa ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvwattsv1Poa_Outputs_dc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dc", length);
@@ -301,7 +288,7 @@ SAM_EXPORT double* SAM_Pvwattsv1Poa_Outputs_dc_aget(SAM_Pvwattsv1Poa ptr, int* l
 
 
 
-SAM_EXPORT double* SAM_Pvwattsv1Poa_Outputs_tcell_aget(SAM_Pvwattsv1Poa ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvwattsv1Poa_Outputs_tcell_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tcell", length);

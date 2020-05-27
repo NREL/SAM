@@ -23,12 +23,8 @@ extern "C"
 
 	SAM_EXPORT typedef void * SAM_Thirdpartyownership;
 
-	SAM_EXPORT SAM_Thirdpartyownership SAM_Thirdpartyownership_construct(const char* def, SAM_error* err);
-
 	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_Thirdpartyownership_execute(SAM_Thirdpartyownership data, int verbosity, SAM_error* err);
-
-	SAM_EXPORT void SAM_Thirdpartyownership_destruct(SAM_Thirdpartyownership system);
+	SAM_EXPORT int SAM_Thirdpartyownership_execute(SAM_table data, int verbosity, SAM_error* err);
 
 
 	//
@@ -41,7 +37,7 @@ extern "C"
 	 * constraints: None
 	 * required if: depr_fed_type=3
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set depr_fed_sl_years: Federal depreciation straight-line Years [years]
@@ -49,7 +45,7 @@ extern "C"
 	 * constraints: INTEGER,POSITIVE
 	 * required if: depr_fed_type=2
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_fed_type: Federal depreciation type
@@ -57,7 +53,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=3
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_type_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_sta_custom: State custom depreciation [%/year]
@@ -65,7 +61,7 @@ extern "C"
 	 * constraints: None
 	 * required if: depr_sta_type=3
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set depr_sta_sl_years: State depreciation straight-line years [years]
@@ -73,7 +69,7 @@ extern "C"
 	 * constraints: INTEGER,POSITIVE
 	 * required if: depr_sta_type=2
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_sta_type: State depreciation type
@@ -81,7 +77,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=3
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_type_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_sta_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -94,7 +90,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=50
 	 * required if: ?=30
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Financials_analysis_period_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Financials_analysis_period_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set inflation_rate: Inflation rate [%]
@@ -102,7 +98,7 @@ extern "C"
 	 * constraints: MIN=-99
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Financials_inflation_rate_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Financials_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set real_discount_rate: Real discount rate [%]
@@ -110,7 +106,7 @@ extern "C"
 	 * constraints: MIN=-99
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Financials_real_discount_rate_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Financials_real_discount_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -123,7 +119,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_ppa_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_ppa_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -136,7 +132,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Common_annual_energy_value_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Common_annual_energy_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set gen: Power generated by renewable resource [kW]
@@ -144,7 +140,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_Common_gen_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_Common_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -157,7 +153,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_AnnualOutput_degradation_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_AnnualOutput_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
@@ -165,7 +161,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_output_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -178,7 +174,7 @@ extern "C"
 	 * constraints: None
 	 * required if: lease_or_ppa=0
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_lease_escalation_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_lease_escalation_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set lease_price: Monthly lease price [$/month]
@@ -186,7 +182,7 @@ extern "C"
 	 * constraints: None
 	 * required if: lease_or_ppa=0
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_lease_price_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_lease_price_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ppa_escalation: Monthly lease escalation [%/year]
@@ -194,7 +190,7 @@ extern "C"
 	 * constraints: None
 	 * required if: lease_or_ppa=1
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_ppa_escalation_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_ppa_escalation_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ppa_price: Monthly lease price [$/month]
@@ -202,7 +198,7 @@ extern "C"
 	 * constraints: None
 	 * required if: lease_or_ppa=1
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_ppa_price_nset(SAM_Thirdpartyownership ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_CashFlow_ppa_price_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -215,7 +211,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set elec_cost_without_system: Energy value [$]
@@ -223,111 +219,111 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_system_aset(SAM_Thirdpartyownership ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	/**
 	 * Depreciation Getters
 	 */
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_fed_type_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_fed_type_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_sta_type_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_sta_type_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * Financials Getters
 	 */
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Financials_analysis_period_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Financials_analysis_period_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Financials_inflation_rate_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Financials_inflation_rate_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Financials_real_discount_rate_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Financials_real_discount_rate_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * FinancialThirdPartyOwnership Getters
 	 */
 
-	SAM_EXPORT double SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_ppa_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_ppa_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * Common Getters
 	 */
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Common_annual_energy_value_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Common_annual_energy_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Common_gen_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Common_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
 	 * AnnualOutput Getters
 	 */
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_AnnualOutput_degradation_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_AnnualOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_output_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * CashFlow Getters
 	 */
 
-	SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_lease_escalation_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_lease_escalation_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_lease_price_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_lease_price_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_ppa_escalation_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_ppa_escalation_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_ppa_price_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_ppa_price_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * ElectricityCost Getters
 	 */
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_system_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_after_tax_cash_flow_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_after_tax_cash_flow_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_after_tax_net_equity_cost_flow_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_after_tax_net_equity_cost_flow_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_agreement_cost_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_agreement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_cumulative_payback_with_expenses_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_cumulative_payback_with_expenses_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_net_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_cf_length_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_nte_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_nte_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_payback_with_expenses_aget(SAM_Thirdpartyownership ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_payback_with_expenses_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_lnte_nom_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_lnte_nom_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_lnte_real_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_lnte_real_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_npv_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_npv_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_year1_nte_nget(SAM_Thirdpartyownership ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Thirdpartyownership_Outputs_year1_nte_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

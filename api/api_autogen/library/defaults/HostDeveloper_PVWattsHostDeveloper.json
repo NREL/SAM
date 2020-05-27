@@ -219,7 +219,7 @@
 			"host_real_discount_rate": 6.4
 		},
 		"SystemOutput": {
-			"degradation": [0.000000],
+			"degradation": [0.500000],
 			"gen": [0],
 			"system_capacity": 215
 		},

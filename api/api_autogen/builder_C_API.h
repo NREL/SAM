@@ -18,9 +18,9 @@ public:
         config_symbol = root->config_symbol;
     }
 
-    void create_SAM_headers(const std::string &cmod, const std::string &file_dir);
+    void create_SAM_headers(const std::string &cmod, const std::string &file_dir, bool stateful=false);
 
-    void create_SAM_definitions(const std::string &cmod, const std::string &file_dir);
+    void create_SAM_definitions(const std::string &cmod, const std::string &file_dir, bool stateful=false);
 
 };
 

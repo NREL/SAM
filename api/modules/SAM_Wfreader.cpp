@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_Wfreader.h"
 
-SAM_EXPORT SAM_Wfreader SAM_Wfreader_construct(const char* def, SAM_error* err){
-	SAM_Wfreader result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_Wfreader_execute(SAM_Wfreader data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_Wfreader_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("wfreader", data, verbosity, err);
@@ -27,24 +19,19 @@ SAM_EXPORT int SAM_Wfreader_execute(SAM_Wfreader data, int verbosity, SAM_error*
 }
 
 
-SAM_EXPORT void SAM_Wfreader_destruct(SAM_Wfreader system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Wfreader_WeatherReader_file_name_sset(SAM_Wfreader ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_Wfreader_WeatherReader_file_name_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "file_name", str);
 	});
 }
 
-SAM_EXPORT void SAM_Wfreader_WeatherReader_header_only_nset(SAM_Wfreader ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Wfreader_WeatherReader_header_only_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "header_only", number);
 	});
 }
 
-SAM_EXPORT const char* SAM_Wfreader_WeatherReader_file_name_sget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Wfreader_WeatherReader_file_name_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "file_name");
@@ -56,7 +43,7 @@ SAM_EXPORT const char* SAM_Wfreader_WeatherReader_file_name_sget(SAM_Wfreader pt
 
 
 
-SAM_EXPORT double SAM_Wfreader_WeatherReader_header_only_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_WeatherReader_header_only_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "header_only", &result))
@@ -67,7 +54,7 @@ SAM_EXPORT double SAM_Wfreader_WeatherReader_header_only_nget(SAM_Wfreader ptr, 
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_albedo_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_albedo_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "albedo", length);
@@ -79,7 +66,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_albedo_aget(SAM_Wfreader ptr, int* lengt
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_albedo_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_albedo_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_albedo", &result))
@@ -90,7 +77,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_albedo_nget(SAM_Wfreader ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_beam_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_beam_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_beam", &result))
@@ -101,7 +88,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_beam_nget(SAM_Wfreader ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_diffuse_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_diffuse_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_diffuse", &result))
@@ -112,7 +99,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_diffuse_nget(SAM_Wfreader ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_global_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_global_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_global", &result))
@@ -123,7 +110,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_global_nget(SAM_Wfreader ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_snow_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_snow_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_snow", &result))
@@ -134,7 +121,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_snow_nget(SAM_Wfreader ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_tdry_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_tdry_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_tdry", &result))
@@ -145,7 +132,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_tdry_nget(SAM_Wfreader ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_wspd_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_wspd_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_wspd", &result))
@@ -156,7 +143,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_wspd_nget(SAM_Wfreader ptr, SAM_er
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_beam_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "beam", length);
@@ -168,7 +155,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_beam_aget(SAM_Wfreader ptr, int* length,
 
 
 
-SAM_EXPORT const char* SAM_Wfreader_Outputs_city_sget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Wfreader_Outputs_city_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "city");
@@ -180,7 +167,7 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_city_sget(SAM_Wfreader ptr, SAM_erro
 
 
 
-SAM_EXPORT const char* SAM_Wfreader_Outputs_country_sget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Wfreader_Outputs_country_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "country");
@@ -192,7 +179,7 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_country_sget(SAM_Wfreader ptr, SAM_e
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_day_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_day_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "day", length);
@@ -204,7 +191,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_day_aget(SAM_Wfreader ptr, int* length, 
 
 
 
-SAM_EXPORT const char* SAM_Wfreader_Outputs_description_sget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Wfreader_Outputs_description_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "description");
@@ -216,7 +203,7 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_description_sget(SAM_Wfreader ptr, S
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_diffuse_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_diffuse_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "diffuse", length);
@@ -228,7 +215,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_diffuse_aget(SAM_Wfreader ptr, int* leng
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_elev_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_elev_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "elev", &result))
@@ -239,7 +226,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_elev_nget(SAM_Wfreader ptr, SAM_error *er
 
 
 
-SAM_EXPORT const char* SAM_Wfreader_Outputs_format_sget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Wfreader_Outputs_format_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "format");
@@ -251,7 +238,7 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_format_sget(SAM_Wfreader ptr, SAM_er
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_global_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_global_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "global", length);
@@ -263,7 +250,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_global_aget(SAM_Wfreader ptr, int* lengt
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_hour_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hour", length);
@@ -275,7 +262,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_hour_aget(SAM_Wfreader ptr, int* length,
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_lat_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lat", &result))
@@ -286,7 +273,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_lat_nget(SAM_Wfreader ptr, SAM_error *err
 
 
 
-SAM_EXPORT const char* SAM_Wfreader_Outputs_location_sget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Wfreader_Outputs_location_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "location");
@@ -298,7 +285,7 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_location_sget(SAM_Wfreader ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_lon_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_lon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lon", &result))
@@ -309,7 +296,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_lon_nget(SAM_Wfreader ptr, SAM_error *err
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_minute_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_minute_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "minute", length);
@@ -321,7 +308,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_minute_aget(SAM_Wfreader ptr, int* lengt
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_month_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "month", length);
@@ -333,7 +320,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_month_aget(SAM_Wfreader ptr, int* length
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_nrecords_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_nrecords_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nrecords", &result))
@@ -344,7 +331,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_nrecords_nget(SAM_Wfreader ptr, SAM_error
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_poa_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_poa_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa", length);
@@ -356,7 +343,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_poa_aget(SAM_Wfreader ptr, int* length, 
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_pres_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pres", length);
@@ -368,7 +355,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_pres_aget(SAM_Wfreader ptr, int* length,
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_rhum_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_rhum_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "rhum", length);
@@ -380,7 +367,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_rhum_aget(SAM_Wfreader ptr, int* length,
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_snow_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_snow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "snow", length);
@@ -392,7 +379,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_snow_aget(SAM_Wfreader ptr, int* length,
 
 
 
-SAM_EXPORT const char* SAM_Wfreader_Outputs_source_sget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Wfreader_Outputs_source_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "source");
@@ -404,7 +391,7 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_source_sget(SAM_Wfreader ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_start_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_start_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "start", &result))
@@ -415,7 +402,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_start_nget(SAM_Wfreader ptr, SAM_error *e
 
 
 
-SAM_EXPORT const char* SAM_Wfreader_Outputs_state_sget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Wfreader_Outputs_state_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "state");
@@ -427,7 +414,7 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_state_sget(SAM_Wfreader ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_step_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_step_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "step", &result))
@@ -438,7 +425,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_step_nget(SAM_Wfreader ptr, SAM_error *er
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_tdew_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_tdew_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tdew", length);
@@ -450,7 +437,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_tdew_aget(SAM_Wfreader ptr, int* length,
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_tdry_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tdry", length);
@@ -462,7 +449,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_tdry_aget(SAM_Wfreader ptr, int* length,
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_twet_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "twet", length);
@@ -474,7 +461,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_twet_aget(SAM_Wfreader ptr, int* length,
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_tz_nget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_tz_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tz", &result))
@@ -485,7 +472,7 @@ SAM_EXPORT double SAM_Wfreader_Outputs_tz_nget(SAM_Wfreader ptr, SAM_error *err)
 
 
 
-SAM_EXPORT const char* SAM_Wfreader_Outputs_url_sget(SAM_Wfreader ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Wfreader_Outputs_url_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "url");
@@ -497,7 +484,7 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_url_sget(SAM_Wfreader ptr, SAM_error
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_wdir_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_wdir_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wdir", length);
@@ -509,7 +496,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_wdir_aget(SAM_Wfreader ptr, int* length,
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_wspd_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wspd", length);
@@ -521,7 +508,7 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_wspd_aget(SAM_Wfreader ptr, int* length,
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_year_aget(SAM_Wfreader ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_year_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year", length);

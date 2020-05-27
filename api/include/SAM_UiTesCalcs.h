@@ -23,12 +23,8 @@ extern "C"
 
 	SAM_EXPORT typedef void * SAM_UiTesCalcs;
 
-	SAM_EXPORT SAM_UiTesCalcs SAM_UiTesCalcs_construct(const char* def, SAM_error* err);
-
 	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_UiTesCalcs_execute(SAM_UiTesCalcs data, int verbosity, SAM_error* err);
-
-	SAM_EXPORT void SAM_UiTesCalcs_destruct(SAM_UiTesCalcs system);
+	SAM_EXPORT int SAM_UiTesCalcs_execute(SAM_table data, int verbosity, SAM_error* err);
 
 
 	//
@@ -41,7 +37,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_P_ref_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_P_ref_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set T_htf_cold_des: Cold HTF temp (out of TES HX, if applicable) [C]
@@ -49,7 +45,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_T_htf_cold_des_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_T_htf_cold_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set T_htf_hot_des: Hot HTF temp (into TES HX, if applicable) [C]
@@ -57,7 +53,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_T_htf_hot_des_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_T_htf_hot_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set design_eff: Power cycle thermal efficiency
@@ -65,7 +61,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_design_eff_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_design_eff_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set field_fl_props: User defined tes storage fluid prop data
@@ -73,7 +69,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_field_fl_props_mset(SAM_UiTesCalcs ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_field_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set h_tank: Total height of tank (HTF when tank is full [m]
@@ -81,7 +77,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_h_tank_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_h_tank_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set h_tank_min: Min. allowable HTF height in storage tank [m]
@@ -89,7 +85,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_h_tank_min_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_h_tank_min_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set rec_htf: TES storage fluid code
@@ -97,7 +93,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_rec_htf_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_rec_htf_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tank_pairs: Number of equivalent tank pairs
@@ -105,7 +101,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_tank_pairs_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_tank_pairs_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tshours: Hours of TES relative to q_dot_pb_des [hr]
@@ -113,7 +109,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_tshours_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_tshours_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set u_tank: Loss coefficient from the tank [W/m2-K]
@@ -121,51 +117,51 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_UiTesCalcs_Common_u_tank_nset(SAM_UiTesCalcs ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_UiTesCalcs_Common_u_tank_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
 	 * Common Getters
 	 */
 
-	SAM_EXPORT double SAM_UiTesCalcs_Common_P_ref_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Common_P_ref_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_cold_des_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_cold_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_hot_des_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_hot_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Common_design_eff_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Common_design_eff_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_UiTesCalcs_Common_field_fl_props_mget(SAM_UiTesCalcs ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_UiTesCalcs_Common_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_min_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_min_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Common_rec_htf_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Common_rec_htf_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Common_tank_pairs_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Common_tank_pairs_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Common_tshours_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Common_tshours_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Common_u_tank_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Common_u_tank_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double SAM_UiTesCalcs_Outputs_csp_pt_tes_htf_density_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Outputs_csp_pt_tes_htf_density_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Outputs_csp_pt_tes_tank_diameter_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Outputs_csp_pt_tes_tank_diameter_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_dot_tes_est_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_dot_tes_est_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_tes_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_tes_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Outputs_tes_avail_vol_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Outputs_tes_avail_vol_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_UiTesCalcs_Outputs_vol_tank_nget(SAM_UiTesCalcs ptr, SAM_error *err);
+	SAM_EXPORT double SAM_UiTesCalcs_Outputs_vol_tank_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

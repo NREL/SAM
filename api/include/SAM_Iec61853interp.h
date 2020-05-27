@@ -23,12 +23,8 @@ extern "C"
 
 	SAM_EXPORT typedef void * SAM_Iec61853interp;
 
-	SAM_EXPORT SAM_Iec61853interp SAM_Iec61853interp_construct(const char* def, SAM_error* err);
-
 	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_Iec61853interp_execute(SAM_Iec61853interp data, int verbosity, SAM_error* err);
-
-	SAM_EXPORT void SAM_Iec61853interp_destruct(SAM_Iec61853interp system);
+	SAM_EXPORT int SAM_Iec61853interp_execute(SAM_table data, int verbosity, SAM_error* err);
 
 
 	//
@@ -41,7 +37,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Iec61853interp_IEC61853_input_mset(SAM_Iec61853interp ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Iec61853interp_IEC61853_input_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set param: Parameter solution matrix
@@ -49,7 +45,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Iec61853interp_IEC61853_param_mset(SAM_Iec61853interp ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Iec61853interp_IEC61853_param_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	//
@@ -62,7 +58,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Iec61853interp_SingleDiodeModel_I_nset(SAM_Iec61853interp ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Iec61853interp_SingleDiodeModel_I_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set T: Temperature [C]
@@ -70,40 +66,40 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Iec61853interp_SingleDiodeModel_T_nset(SAM_Iec61853interp ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Iec61853interp_SingleDiodeModel_T_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
 	 * IEC61853 Getters
 	 */
 
-	SAM_EXPORT double* SAM_Iec61853interp_IEC61853_input_mget(SAM_Iec61853interp ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Iec61853interp_IEC61853_input_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Iec61853interp_IEC61853_param_mget(SAM_Iec61853interp ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Iec61853interp_IEC61853_param_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**
 	 * SingleDiodeModel Getters
 	 */
 
-	SAM_EXPORT double SAM_Iec61853interp_SingleDiodeModel_I_nget(SAM_Iec61853interp ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Iec61853interp_SingleDiodeModel_I_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Iec61853interp_SingleDiodeModel_T_nget(SAM_Iec61853interp ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Iec61853interp_SingleDiodeModel_T_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double SAM_Iec61853interp_Outputs_Il_nget(SAM_Iec61853interp ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Iec61853interp_Outputs_Il_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Iec61853interp_Outputs_Io_nget(SAM_Iec61853interp ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Iec61853interp_Outputs_Io_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Iec61853interp_Outputs_Rs_nget(SAM_Iec61853interp ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Iec61853interp_Outputs_Rs_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Iec61853interp_Outputs_Rsh_nget(SAM_Iec61853interp ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Iec61853interp_Outputs_Rsh_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Iec61853interp_Outputs_a_nget(SAM_Iec61853interp ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Iec61853interp_Outputs_a_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */
