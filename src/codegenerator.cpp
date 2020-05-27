@@ -7908,23 +7908,31 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 	wxString str_value;
 	double dbl_value;
 	int type = ::ssc_data_query(p_data, name);
+	// pySAM - remove all ":" prefixes
+	wxString pySAM_name = name;
+	int pos = pySAM_name.Find(':');
+	if (pos != wxNOT_FOUND)	{
+		pySAM_name = pySAM_name.Mid(pos + 1);
+	}
+
+
 	switch (type)
 	{
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "	\"%s\" : \"%s\",\n", name, (const char*)str_value.c_str());
+		fprintf(m_fp, "	\"%s\" : \"%s\",\n", (const char*)pySAM_name.c_str(), (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	\"%s\" : %.17g,\n", name, dbl_value);
+		fprintf(m_fp, "	\"%s\" : %.17g,\n", (const char*)pySAM_name.c_str(), dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
 		{
-			fprintf(m_fp, "	\"%s\" : [", name);
+			fprintf(m_fp, "	\"%s\" : [", (const char*)pySAM_name.c_str());
 			for (int i = 0; i < (len - 1); i++)
 			{
 				dbl_value = (double)p[i];
@@ -7940,7 +7948,7 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 		p = ::ssc_data_get_matrix(p_data, name, &nr, &nc);
 		len = nr * nc;
 		{
-			fprintf(m_fp, "	\"%s\" : [ [", name);
+			fprintf(m_fp, "	\"%s\" : [ [", (const char*)pySAM_name.c_str());
 			for (int k = 0; k < (len - 1); k++)
 			{
 				dbl_value = (double)p[k];
