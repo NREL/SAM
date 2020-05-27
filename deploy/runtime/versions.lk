@@ -52,7 +52,6 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 version_upgrade{'2020.2.29'} = define() {
-
     const cfg = config();
     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
@@ -77,22 +76,17 @@ version_upgrade{'2020.2.29'} = define() {
 			value('om_replacement_cost_escal', old_escalation, 'Battery replacement cost escalation moved from Battery Storage to System Costs input page.');
 			value('batt_thermal_choice', 1, 'Set value for new battery environment temperature option to "Enter single fixed temperature."');
 			old_temperature = oldvalue('T_room');
-			value('batt_room_temperature_single', old_temperature, 'Updated battery room temperature internal variable name.');
+			value('batt_room_temperature_single', old_temperature, 'Updated battery room temperature internal variable name from T_room to batt_room_temperature_single.');
+			if ( value('batt_room_temperature_single') < 25 )
+			{
+				value('batt_room_temperature_single', 25, 'Changed battery room temperature from ' + old_temperature + ' degrees C to 25 to address battery thermal model issue that will be fixed in SAM Fall 2020 version.');
+			}
+			old_resistance = oldvalue('batt_resistance');
+			if ( old_resistance >= 0.002 )
+			{
+				value('batt_resistance',0.002,'Changed battery resistance from ' + old_resistance + ' ohms to a more realistic .002 to address battery thermal model issue that will be fixed in SAM Fall 2020 version.');
+			}
 		}
-	}
-	if ( varinfo('batt_room_temperature_single') )
-	{	
-		x = value('batt_room_temperature_single');
-		if ( x <= 20 )
-		{
-			value('batt_room_temperature_single',25,'Battery room temperature changed from ' + x + ' degrees C to 25. Battery thermal model issue will be fixed in SAM Fall 2020 version.');
-		}
-	}
-	if ( varinfo('batt_resistance') )
-	{
-		x = value('batt_resistance');
-		if ( x >=0.002 )
-		value('batt_resistance',0.002,'Battery resistance changed from ' + x + ' ohms to a more realistic .002. Battery thermal model issue will be fixed in SAM Fall 2020 version.');
 	}
     if ( cfg.tech == 'PVWatts')
     {
