@@ -53,7 +53,6 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Storage Fluid Type</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The storage fluid, used to determine the heat-exchanger duty.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">When the storage fluid and solar field heat transfer fluid (HTF) are different, the system is an indirect system. When the storage fluid and solar field HTF are the same, the system is a direct system that uses the solar field HTF as the storage medium.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To model a direct system with a custom field HTF, choose </span><span class="f_CHInterfaceElement">User-defined</span><span class="f_Note"> for the storage fluid to ensure the heat exchanger duty is zero.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Turbine TES Adj Efficiency</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">SAM applies the TES efficiency adjustment factor to the turbine efficiency for trough systems with storage to account for the lower steam temperature that results from imperfect heat exchange in the storage system. Used to calculate maximum TES discharge rate. Also used to calculate a TES correction factor.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Turbine TES Adj Gross Output</span></p>
@@ -64,74 +63,74 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Storage tank thermal losses. SAM subtracts value from the total energy in storage at the end of each simulation hour. See the table below for suggested values.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">An increase in the hours of thermal storage requires a both an increase in the solar field size to minimize the <a href="mtf_lcoe.htm" class="topiclink">levelized cost of energy (LCOE)</a> for the system, and an increase in the tank heat losses to account for the larger tank.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The following table shows suggested tank heat loss values for three sample systems over a range of thermal storage capacities. The relationship between tank heat losses and hours of thermal storage is linear, so you can extrapolate to estimate values for storage capacity values not on the table.</span></p>
-<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table id="tbl_TESTankHeatLossesValues" style="border:none; border-spacing:0;">
-<tr>
-<td rowspan="2"  style="vertical-align:bottom; width:181px; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table id="tbl_TESTankHeatLossesValues" class="DefaultShadedRows" >
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" rowspan="2"  style="vertical-align:bottom;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">&nbsp;</span></p>
 <p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">System Description</span></p>
 </td>
-<td colspan="6"  style="vertical-align:top; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Hours of Thermal Storage</span></p>
+<td class="DefaultShadedRows" colspan="6"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Hours of Thermal Storage</span></p>
 </td>
 </tr>
-<tr>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">0</span></p>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">0</span></p>
 </td>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">3</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">3</span></p>
 </td>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">6</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">6</span></p>
 </td>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">9</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">9</span></p>
 </td>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">12</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">12</span></p>
 </td>
-<td style="vertical-align:top; background-color:#99CCFF; padding:0; border:none"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">15</span></p>
-</td>
-</tr>
-<tr>
-<td style="vertical-align:middle; width:181px; padding:0; border:none"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">100 MW Two Tank Indirect VP-1/Nitrate Salt</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.62</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.96</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.23</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.56</span></p>
-</td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.87</span></p>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">15</span></p>
 </td>
 </tr>
-<tr>
-<td style="vertical-align:middle; width:181px; padding:0; border:none"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">200 MW Two Tank Indirect VP-1/Nitrate Salt</span></p>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">100 MW Two Tank Indirect VP-1/Nitrate Salt</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.0</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.62</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.61</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.96</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2.21</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.23</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2.81</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.56</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3.56</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.87</span></p>
 </td>
 </tr>
-<tr>
-<td style="vertical-align:middle; width:181px; padding:0; border:none"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">200 MW Two Tank Direct Hitec Salt</span></p>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">200 MW Two Tank Indirect VP-1/Nitrate Salt</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.34</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.0</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.64</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.61</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.93</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2.21</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.24</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">2.81</span></p>
 </td>
-<td style="vertical-align:middle; padding:0; border:none"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.52</span></p>
+<td class="DefaultShadedRows" style="vertical-align:middle; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">3.56</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">200 MW Two Tank Direct Hitec Salt</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.34</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.64</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">0.93</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.24</span></p>
+</td>
+<td class="DefaultShadedRows" style="vertical-align:middle;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1.52</span></p>
 </td>
 </tr>
 </table>
