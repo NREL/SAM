@@ -202,7 +202,7 @@ int main(int argc, char *argv[]){
     create_directory(defaults_path, true);
 
     create_empty_subdirectories(pysam_path, std::vector<std::string>({"modules"}));
-    create_subdirectories(pysam_path, std::vector<std::string>({"stubs"}));
+    create_empty_subdirectories(pysam_path + "/stubs", std::vector<std::string>({"stubs"}));
     create_empty_subdirectories(pysam_path + "/docs", std::vector<std::string>({"modules"}));
 
     std::cout << "Exporting C API files to " << api_path << "\n";

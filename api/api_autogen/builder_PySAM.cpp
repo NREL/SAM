@@ -945,7 +945,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     // export .pyi stub files for static typing
 
-    fx_file.open(file_dir + "/stubs/" + tech_symbol + ".pyi");
+    fx_file.open(file_dir + "/stubs/stubs/" + tech_symbol + ".pyi");
     assert(fx_file.is_open());
 
     for (const auto& i : root->vardefs_order) {
