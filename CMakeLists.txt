@@ -18,7 +18,7 @@ endif()
 
 #####################################################################################################################
 #
-# Project Settings 
+# Project Settings
 #
 #####################################################################################################################
 
@@ -101,7 +101,7 @@ else(MSVC)
 		add_compile_options(-arch x86_64 -fno-common)
 		add_definitions(-DWX_PRECOMP)
 	else()
-		add_compile_options(-Wno-deprecated -Wno-misleading-indentation)
+		add_compile_options(-Wno-deprecated)
 	endif()
 	add_compile_options(-Wall -Wno-unknown-pragmas -Wno-overloaded-virtual -std=c++11)
 	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -137,7 +137,7 @@ include(${wxWidgets_USE_FILE})
 
 
 #####################################################################################################################
-# 
+#
 # CMake Targets
 #
 #####################################################################################################################
@@ -152,6 +152,7 @@ elseif(WIN32)
 	set(SAM_ICON ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/SAM.rc)
 endif()
 
+# have to make executables with different names so the .app's have different names
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_executable(SAMd
 			WIN32
@@ -168,18 +169,27 @@ else() # if Release or if MSVC multigenerator
 	set(SAM_EXE SAM)
 endif()
 
-set_target_properties(${SAM_EXE}
-    PROPERTIES
-    DEBUG_POSTFIX "d")
 if (MSVC)
 	set_target_properties(${SAM_EXE}
 		PROPERTIES
 		LINK_FLAGS /SUBSYSTEM:WINDOWS
+        DEBUG_POSTFIX "d"
 		RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}>/deploy/x64)
-elseif(UNIX AND NOT APPLE)
-	set_target_properties(${SAM_EXE}
-		PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+else()
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(SAM_NAME SAMd)
+    else()
+        set(SAM_NAME SAM)
+    endif()
+    if(APPLE)
+        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/${SAM_NAME}.app)
+    else()
+        set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/deploy)
+        set_target_properties(${SAM_EXE}
+                PROPERTIES
+                OUTPUT_NAME ${SAM_NAME}.bin
+                RUNTIME_OUTPUT_DIRECTORY ${SAM_APP}/linux_64)
+    endif()
 endif()
 
 #####################################################################################################################
@@ -242,102 +252,107 @@ endif()
 
 SET(CMAKE_SKIP_BUILD_RPATH)
 
-if (APPLE)
-	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-		set(SSC_NAME sscd)
-		set(SAM_NAME SAMd)
-		set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/SAMd.app)
-	else()
-		set(SSC_NAME ssc)
-		set(SAM_NAME SAM)
-		set(SAM_APP ${CMAKE_CURRENT_BINARY_DIR}/SAM.app)
-	endif()
-	if(${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-		set(SSC_DIR ${CMAKE_CURRENT_BINARY_DIR}/../ssc/ssc)
-	else()
-		set(SSC_DIR $ENV{SSCDIR}/build/ssc)
-	endif()
-	add_custom_command(
-		TARGET ${SAM_EXE}
-		POST_BUILD
-		COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
-		COMMAND mkdir -p ${SAM_APP}/Contents/runtime
-		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime
-		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
-		COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
-		COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
-		COMMAND cp ${SSC_DIR}/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks
-		COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
-		COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
-	)
+if (UNIX)
+    if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
+        set(SSC_SO $<TARGET_FILE:ssc>)
+    else()
+        set(SSC_SO $<IF:$<CONFIG:Debug>,${SSCD_LIB},${SSC_LIB}>)
+    endif()
+    if (APPLE)
+        if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+            set(SSC_NAME sscd)
+        else()
+            set(SSC_NAME ssc)
+        endif()
+        add_custom_command(
+            TARGET ${SAM_EXE}
+            POST_BUILD
+            COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
+            COMMAND mkdir -p ${SAM_APP}/Contents/runtime
+            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime
+            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
+            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
+            COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
+            COMMAND cp ${SSC_SO} ${SAM_APP}/Contents/Frameworks
+            COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
+            COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
+        )
+    else()
+        add_custom_command(
+                TARGET ${SAM_EXE}
+                PRE_BUILD
+                COMMAND rm -rf ${SAM_APP}/linux_64
+                COMMAND mkdir -p ${SAM_APP}/linux_64
+        )
+        add_custom_command(
+                TARGET ${SAM_EXE}
+                POST_BUILD
+                COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}
+                COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/lhs.bin ${SAM_APP}/runtime/bin
+                COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/stepwise.bin ${SAM_APP}/runtime
+#                COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/build_linux/GtkTheme ${SAM_APP}/linux_64
+                COMMAND cp ${SSC_SO} ${SAM_APP}/linux_64
+        )
+
+        #		install(TARGETS ${SAM_EXE}
+        #			RUNTIME DESTINATION linux_64)
+        #		install(FILES ${SSC_LIB}
+        #			DESTINATION linux_64)
+        #		install(FILES Sandia/linux/lhs.bin Sandia/linux/stepwise.bin
+        #			DESTINATION runtime/bin)
+        #		install(DIRECTORY build_linux/GtkTheme
+        #			DESTINATION linux_64)
+        #		install(DIRECTORY deploy/libraries deploy/runtime deploy/solar_resource deploy/wind_resource
+        #			DESTINATION .)
+
+        #		set(CPACK_GENERATOR "STGZ;TGZ")
+        #		set(CPACK_PACKAGE_FILE_NAME "sam.deploy")
+        #		set(CPACK)
+        #		include(CPack)
+        #		add_custom_target( installer
+        #			COMMAND "rm" "-f" "install0"
+        #			COMMAND "echo" "#!/bin/sh" ">" "install0"
+        #			COMMAND "echo" "SAMVER=Open.Source" ">>" "install0"
+        #			COMMAND "cat" "install0" "${CMAKE_SOURCE_DIR}/build_linux/install.sh" "sam.deploy.tar.gz" ">" "sam-linux-$(SAMVER).run"
+        #			COMMAND "chmod" "a+x" "sam-linux-$(SAMVER).run"
+        #			COMMAND "./sam-linux-$(SAMVER).run"
+        #			DEPENDS SAM)
+    endif()
 else()
-	if (UNIX)
-		set_target_properties(${SAM_EXE}
-			PROPERTIES OUTPUT_NAME sam.bin)
-		add_custom_command(
-			TARGET ${SAM_EXE}
-			POST_BUILD
-			COMMAND rm -rf ${PROJECT_SOURCE_DIR}/sam.deploy)
-		set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/sam.deploy)
-		install(TARGETS ${SAM_EXE}
-			RUNTIME DESTINATION linux_64)
-		install(FILES ${SSC_LIB}
-			DESTINATION linux_64)
-		install(FILES Sandia/linux/lhs.bin Sandia/linux/stepwise.bin
-			DESTINATION runtime/bin)
-		install(DIRECTORY build_resources/GtkTheme
-			DESTINATION linux_64)
-		install(DIRECTORY deploy/libraries deploy/runtime deploy/solar_resource deploy/wind_resource
-			DESTINATION .)
+    set( LIBCURL_FILES
+        dbghelp.dll
+        libcurl.dll
+        libeay32.dll
+        libssh2.dll
+        msvcp140.dll
+        openssl.exe
+        ssleay32.dll
+        vcruntime140.dll
+    )
 
-		set(CPACK_GENERATOR "STGZ;TGZ")
-		set(CPACK_PACKAGE_FILE_NAME "sam.deploy")
-		set(CPACK)
-		include(CPack)
-		add_custom_target( installer
-			COMMAND "rm" "-f" "install0"
-			COMMAND "echo" "#!/bin/sh" ">" "install0"
-			COMMAND "echo" "SAMVER=Open.Source" ">>" "install0"
-			COMMAND "cat" "install0" "${CMAKE_SOURCE_DIR}/build_resources/install.sh" "sam.deploy.tar.gz" ">" "sam-linux-$(SAMVER).run"
-			COMMAND "chmod" "a+x" "sam-linux-$(SAMVER).run"
-			COMMAND "./sam-linux-$(SAMVER).run"
-			DEPENDS SAM)
-	elseif(MSVC)
-		set( LIBCURL_FILES
-		    dbghelp.dll
-		    libcurl.dll
-		    libeay32.dll
-		    libssh2.dll
-		    msvcp140.dll
-		    openssl.exe
-		    ssleay32.dll
-		    vcruntime140.dll
-		)
+    set(SAMEXE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64)
 
-		set(SAMEXE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/deploy/x64)
+    foreach( file_i ${LIBCURL_FILES})
+        add_custom_command(
+        TARGET ${SAM_EXE}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND}
+        ARGS -E copy $ENV{WEXDIR}/build_resources/libcurl_ssl_x64/bin/${file_i} ${SAMEXE_DIR}
+    )
+    endforeach( file_i )
 
-		foreach( file_i ${LIBCURL_FILES})
-			add_custom_command(
-			TARGET ${SAM_EXE}
-			POST_BUILD
-			COMMAND ${CMAKE_COMMAND}
-			ARGS -E copy $ENV{WEXDIR}/build_resources/libcurl_ssl_x64/bin/${file_i} ${SAMEXE_DIR}
-		)
-		endforeach( file_i )
-
-		if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
-			set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
-			set(SSC_DLL $<TARGET_FILE:ssc>)
-		else()
-			set(SSC_LIB $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.lib)
-			set(SSC_DLL $ENV{SSCDIR}/build/ssc/$<$<CONFIG:Debug>:Debug>$<$<CONFIG:Release>:Release>/ssc$<$<CONFIG:Debug>:d>.dll)
-		endif()
-		add_custom_command(
-		    TARGET ${SAM_EXE}
-		    POST_BUILD
-		    COMMAND ${CMAKE_COMMAND}
-		    ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${SAMEXE_DIR}
-		)
-	endif()
+    if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
+        set(SSC_DLL $<TARGET_FILE:ssc>)
+        set(SSC_LIB $<TARGET_FILE_DIR:ssc>/$<TARGET_FILE_BASE_NAME:ssc>.lib)
+    else()
+        set(SSC_DLL $<IF:$<CONFIG:Debug>,${SSCD_LIB},${SSC_LIB}>)
+        string(REPLACE ".dll" ".lib" SSC_LIB ${SSC_DLL})
+    endif()
+    add_custom_command(
+        TARGET ${SAM_EXE}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND}
+        ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${SAMEXE_DIR}
+    )
 endif()
 

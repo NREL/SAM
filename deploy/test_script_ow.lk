@@ -95,3 +95,5 @@ for (t=0; t<#technologies; t++)
 }
 
 outln( 'Total Number of Configurations: ' + configs);
+// Write line out for Travis CI scripts
+write_line(file_num, "final_configuration_eof" + "," + "none" + "," + "NA" + ',' + "NA" + ',' + "NA" + ',');
