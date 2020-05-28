@@ -62,7 +62,7 @@
 
 -->
 
-<h1>Version 2020.2.29 Revision 2, SSC Version 240: May 28, 2020</h1>
+<h1 id="2020-2-29-r2">Version 2020.2.29 Revision 2, SSC Version 240: May 28, 2020</h1>
 
 <p>This is an update to SAM 2020.2.29 Revision 1 that fixes the issues listed beow. For detailed descriptions of issues fixed for this update, see <a href="https://github.com/NREL/SAM/issues?q=is%3Aissue+milestone%3A%222020+Patch+2%22">GitHub Issues for SAM 2020.2.29 Patch 2</a>.</p>
 
@@ -89,6 +89,7 @@
 <li>Concentrating Solar Power (CSP)
 <ul>
 <li>Revert default inputs to SAM 2018.11.11 values.</li>
+<li>Empirical trough model: Remove custom HTF from user interface per <a href="https://github.com/NREL/SAM/issues/316">Issue 316</a>.</li>
 </ul>
 </li>
 <li>Battery Storage
@@ -130,9 +131,9 @@
 
 </ul>
 
-<h1>Version 2020.2.29 Revision 1, SSC Version 238: March 30, 2020</h1>
+<h1 id="2020-2-29-r1">Version 2020.2.29 Revision 1, SSC Version 238: March 30, 2020</h1>
 	 
-<p>This is an update to SAM 2020.2.29 that fixes the following issues:</p>
+<p>This is an update to SAM 2020.2.29 that fixes the issues listed below. For detailed descriptions of issues fixed for this update, see <a href="https://github.com/NREL/SAM/issues?q=is%3Aissue+milestone%3A%222020+Patch+1%22">GitHub Issues for SAM 2020.2.29 Patch 1</a>.</p>
 
 <ul>
 <li>
@@ -149,6 +150,7 @@ Detailed PV
 <ul>
 <li>Add user interface check for out-of-range azimuth values.</li>
 <li>Fix issue with inverter power limiting calculations.</li>
+</ul>
 </li>
 <li>
 Battery Storage
@@ -169,19 +171,14 @@ Marine Energy
 </ul>
 </li>
 <li>
-Concentrating Solar Power (CSP)
-<ul>
-<li>Empirical trough model: Remove custom HTF from user interface per https://github.com/NREL/SAM/issues/316.</li>
-</ul>
-</li>
-<li>
 Industrial Process Heat (IPH)
 <ul>
 <li>Add capacity factor metric for industrial process heat (IPH) models to Results page Metrics table on Summary tab.</li>
 </ul>
 </li>
 </ul>
-<h1>Version 2020.2.29, SSC Version 237: February 29, 2020</h1>
+
+<h1 id="2020-2-29">Version 2020.2.29, SSC Version 237: February 29, 2020</h1>
 	 
 <p>This version introduces several new models and features in addition to enhancements to existing models:</p>
 
@@ -194,6 +191,8 @@ Industrial Process Heat (IPH)
 <li>New battery sizing and dispatch optimization option based on NREL's <a href="https://reopt.nrel.gov/tool">ReOpt Lite</a>.</li>
 <li>New models for grid interconnection limits and curtailment.</li>
 </ul>
+
+<p>For details about work done for this release, see <a href="https://github.com/NREL/SAM/issues?q=is%3Aissue+milestone%3A%222020+Release%22">GitHub Issues for SAM 2020.2.29 release</a>.
 
 <h2>General</h2>
 
