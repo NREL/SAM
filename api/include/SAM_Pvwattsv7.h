@@ -41,7 +41,7 @@ extern "C"
 
 	/**
 	 * Set solar_resource_data: Weather data
-	 * options: dn,df,tdry,wspd,lat,lon,tz
+	 * options: dn,df,tdry,wspd,lat,lon,tz,elev
 	 * constraints: None
 	 * required if: ?
 	 */
