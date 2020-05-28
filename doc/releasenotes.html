@@ -62,9 +62,9 @@
 
 -->
 
-<h1>Version 2020.2.29 Revision 2, SSC Version xxx: May xx, 2020</h1>
+<h1>Version 2020.2.29 Revision 2, SSC Version 240: May 28, 2020</h1>
 
-<p>This is an update to SAM 2020.2.29 Revision 1 that fixes the issues listed beow. For detailed descriptions, see <a href="https://github.com/NREL/SAM/issues?q=is%3Aissue+milestone%3A%222020+Patch+2%22">GitHub Issues for SAM 2020.2.29 Patch 2</a>.</p>
+<p>This is an update to SAM 2020.2.29 Revision 1 that fixes the issues listed beow. For detailed descriptions of issues fixed for this update, see <a href="https://github.com/NREL/SAM/issues?q=is%3Aissue+milestone%3A%222020+Patch+2%22">GitHub Issues for SAM 2020.2.29 Patch 2</a>.</p>
 
 <ul>
 <li>General
@@ -77,6 +77,7 @@
 <li>Version upgrade script fixes to handle converting variables when opening files created in older versions of SAM.</li>
 <li>Fix user interface layout issues for Linux and Mac.</li>
 <li>Fix stochastic simulations for Mac.</li>
+<li>Fix issue with automatic updates in Windows (update code looks for win32 folder).</li>
 </ul>
 </li>
 <li>Financial Models
@@ -98,6 +99,7 @@
 <li>Fix battery sizing inputs for behind-the-meter applications.</li>
 <li>Clean up user interface variables and labels.</li>
 <li>Fix bank capacity labels in SSC to help differentiate between user sizing and actual size variable names.</li>
+<li>Change Generic Battery output variable labels to refer to "system" instead of "PV".</li>
 </ul>
 </li>
 <li>PVWatts
@@ -116,6 +118,7 @@
 <li>Enable self-shading for one-axis tracking with backtracking.</li>
 <li>Fix issues with daily lifetime loss inputs.</li>
 <li>Fix issues with losses outputs.</li>
+<li>Fix issue with "Tilt = Latitude" for negative latitudes (Southern Hemisphere).</li>
 </ul>
 </li>
 <li>Biopower
