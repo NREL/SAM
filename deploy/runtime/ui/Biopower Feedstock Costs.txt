@@ -5,7 +5,7 @@ Biopower Feedstock Costs
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 233
+Tool Tip
+5
+0
 Caption
 5
 20
@@ -32,7 +35,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -49,6 +52,9 @@ Width
 Height
 3
 695
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -59,7 +65,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -76,6 +82,9 @@ Width
 Height
 3
 431
+Tool Tip
+5
+0
 Caption
 5
 25
@@ -86,7 +95,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 10
@@ -103,6 +112,9 @@ Width
 Height
 3
 116
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -113,7 +125,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -130,6 +142,9 @@ Width
 Height
 3
 74
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -140,7 +155,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 6
@@ -157,6 +172,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -185,7 +203,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -202,6 +220,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -230,7 +251,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 7
@@ -247,6 +268,9 @@ Width
 Height
 3
 48
+Tool Tip
+5
+0
 Caption
 5
 29
@@ -275,7 +299,7 @@ AlignTop
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -292,6 +316,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -335,7 +362,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 37
@@ -352,6 +379,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -394,7 +424,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -411,6 +441,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -454,7 +487,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
@@ -471,6 +504,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -513,7 +549,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -530,6 +566,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -573,7 +612,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 38
@@ -590,6 +629,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -633,7 +675,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 42
@@ -650,6 +692,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -693,7 +738,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 38
@@ -710,6 +755,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -752,7 +800,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -769,6 +817,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -812,7 +863,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -829,6 +880,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -871,7 +925,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
@@ -888,6 +942,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -931,7 +988,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 39
@@ -948,6 +1005,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -991,7 +1051,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
@@ -1008,6 +1068,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1050,7 +1113,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
@@ -1067,6 +1130,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1110,7 +1176,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 37
@@ -1127,6 +1193,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1170,7 +1239,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 40
@@ -1187,6 +1256,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1229,7 +1301,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 37
@@ -1246,6 +1318,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1289,7 +1364,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 40
@@ -1306,6 +1381,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1348,14 +1426,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 40
 biopwr.feedstockcost.fixed_delivery_cost
 X
 3
-237
+261
 Y
 3
 51
@@ -1365,6 +1443,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1408,7 +1489,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -1425,6 +1506,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1468,7 +1552,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
@@ -1485,6 +1569,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1527,7 +1614,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 39
@@ -1544,6 +1631,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1587,7 +1677,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -1604,6 +1694,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1647,7 +1740,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -1664,6 +1757,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1706,7 +1802,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 30
@@ -1723,6 +1819,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1766,7 +1865,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -1783,6 +1882,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1825,7 +1927,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -1842,6 +1944,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1885,7 +1990,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -1902,6 +2007,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1944,7 +2052,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 31
@@ -1961,6 +2069,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2004,7 +2115,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 34
@@ -2021,6 +2132,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2063,7 +2177,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -2080,6 +2194,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2123,7 +2240,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
@@ -2140,6 +2257,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2182,7 +2302,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -2199,6 +2319,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2242,7 +2365,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 36
@@ -2259,6 +2382,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2301,7 +2427,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -2318,6 +2444,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2361,7 +2490,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
@@ -2378,6 +2507,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2420,14 +2552,14 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 38
 biopwr.feedstockcost.var_delivery_cost
 X
 3
-237
+261
 Y
 3
 75
@@ -2437,6 +2569,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2480,7 +2615,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -2497,6 +2632,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2540,7 +2678,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
@@ -2557,6 +2695,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2599,7 +2740,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 32
@@ -2616,6 +2757,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -2659,7 +2803,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 35
@@ -2676,6 +2820,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0

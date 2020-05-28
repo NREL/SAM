@@ -1,6 +1,6 @@
 Marine Array
 801
-553
+562
 27
 GroupBox
 
@@ -51,7 +51,7 @@ Width
 788
 Height
 3
-425
+434
 Tool Tip
 5
 0
@@ -113,7 +113,7 @@ Name
 cable_system_overbuild
 X
 3
-228
+258
 Y
 3
 342
@@ -237,7 +237,7 @@ Name
 device_spacing_in_row
 X
 3
-228
+258
 Y
 3
 207
@@ -299,7 +299,7 @@ Name
 devices_per_row
 X
 3
-228
+258
 Y
 3
 183
@@ -361,7 +361,7 @@ Name
 distance_to_shore
 X
 3
-228
+258
 Y
 3
 276
@@ -423,7 +423,7 @@ Name
 export_cable_length
 X
 3
-228
+258
 Y
 3
 477
@@ -485,7 +485,7 @@ Name
 export_cable_redundancy
 X
 3
-228
+258
 Y
 3
 393
@@ -517,7 +517,7 @@ Name
 floating_array
 X
 3
-228
+258
 Y
 3
 366
@@ -549,7 +549,7 @@ Name
 inter_array_cable_length
 X
 3
-228
+258
 Y
 3
 453
@@ -744,7 +744,7 @@ Name
 number_rows
 X
 3
-228
+258
 Y
 3
 159
@@ -874,16 +874,16 @@ Name
 object 7
 X
 3
-366
+405
 Y
 3
 507
 Width
 3
-428
+386
 Height
 3
-24
+39
 Tool Tip
 5
 0
@@ -905,13 +905,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -925,7 +925,7 @@ X
 597
 Y
 3
-483
+474
 Width
 3
 120
@@ -970,7 +970,7 @@ Name
 riser_cable_length
 X
 3
-228
+258
 Y
 3
 501
@@ -1032,7 +1032,7 @@ Name
 row_spacing
 X
 3
-228
+258
 Y
 3
 231
@@ -1204,7 +1204,7 @@ Name
 user_input_devices_per_row
 X
 3
-228
+258
 Y
 3
 183
@@ -1266,7 +1266,7 @@ Name
 user_input_number_rows
 X
 3
-228
+258
 Y
 3
 159
@@ -1328,7 +1328,7 @@ Name
 water_depth
 X
 3
-228
+258
 Y
 3
 300

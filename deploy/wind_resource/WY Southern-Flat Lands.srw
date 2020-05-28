@@ -1,5 +1,5 @@
-loc_id,city??,WY,USA,year??,lat??,lon??,2088,-7,8760,,,,,,
-Southern WY - flat lands (NREL AWS Truepower representative file),,,,,,,,,,,,,,,
+loc_id,city??,WY,USA,year??,lat??,lon??,2088,-7,8760
+Southern WY - flat lands (NREL AWS Truepower representative file)
 Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed
 C,atm,degrees,m/s,C,atm,degrees,m/s,C,atm,degrees,m/s,C,atm,degrees,m/s
 50,50,50,50,80,80,80,80,110,110,110,110,140,140,140,140

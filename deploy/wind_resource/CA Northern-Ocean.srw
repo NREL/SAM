@@ -1,5 +1,5 @@
-loc_id,city??,CA,USA,year??,lat??,lon??,0,-8,8760,,,,,,
-Northern CA - offshore (NREL AWS Truepower representative file),,,,,,,,,,,,,,,
+loc_id,city??,CA,USA,year??,lat??,lon??,0,-8,8760
+Northern CA - offshore (NREL AWS Truepower representative file)
 Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed,Temperature,Pressure,Direction,Speed
 C,atm,degrees,m/s,C,atm,degrees,m/s,C,atm,degrees,m/s,C,atm,degrees,m/s
 50,50,50,50,80,80,80,80,110,110,110,110,140,140,140,140

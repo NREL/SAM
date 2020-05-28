@@ -178,10 +178,10 @@ Tool Tip
 Caption
 5
 31
-Heat transfer method parameters
+Heat Transfer Method Parameters
 Bold
 2
-0
+1
 GroupBox
 
 1
@@ -208,10 +208,10 @@ Tool Tip
 Caption
 5
 22
-NOCT method parameters
+NOCT Method Parameters
 Bold
 2
-0
+1
 Hyperlink
 
 1
@@ -634,7 +634,7 @@ Name
 cec_alpha_sc
 X
 3
-849
+861
 Y
 3
 417
@@ -758,7 +758,7 @@ Name
 cec_array_cols
 X
 3
-774
+852
 Y
 3
 729
@@ -820,7 +820,7 @@ Name
 cec_array_rows
 X
 3
-774
+852
 Y
 3
 705
@@ -882,7 +882,7 @@ Name
 cec_backside_temp
 X
 3
-774
+852
 Y
 3
 753
@@ -944,7 +944,7 @@ Name
 cec_beta_oc
 X
 3
-849
+861
 Y
 3
 393
@@ -1316,7 +1316,7 @@ Name
 cec_gap_spacing
 X
 3
-774
+852
 Y
 3
 777
@@ -1378,13 +1378,13 @@ Name
 cec_heat_transfer
 X
 3
-237
+249
 Y
 3
 729
 Width
 3
-300
+342
 Height
 3
 21
@@ -1769,10 +1769,10 @@ Name
 cec_module_length
 X
 3
-237
+249
 Y
 3
-804
+801
 Width
 3
 100
@@ -1831,7 +1831,7 @@ Name
 cec_module_width
 X
 3
-237
+249
 Y
 3
 777
@@ -1893,13 +1893,13 @@ Name
 cec_mounting_config
 X
 3
-237
+249
 Y
 3
 705
 Width
 3
-300
+342
 Height
 3
 21
@@ -1929,13 +1929,13 @@ Name
 cec_mounting_orientation
 X
 3
-237
+249
 Y
 3
 753
 Width
 3
-300
+342
 Height
 3
 21
@@ -2509,7 +2509,7 @@ Name
 gamma_r_calc
 X
 3
-849
+861
 Y
 3
 321

@@ -12,7 +12,7 @@ Name
 ac_lifetime_losses
 X
 3
-246
+258
 Y
 3
 69
@@ -64,7 +64,7 @@ Name
 dc_lifetime_losses
 X
 3
-246
+258
 Y
 3
 39
@@ -122,7 +122,7 @@ Y
 69
 Width
 3
-219
+231
 Height
 3
 24
@@ -155,7 +155,7 @@ Y
 39
 Width
 3
-219
+231
 Height
 3
 24
@@ -212,13 +212,13 @@ Name
 object 71
 X
 3
-441
+450
 Y
 3
 27
 Width
 3
-342
+333
 Height
 3
 84

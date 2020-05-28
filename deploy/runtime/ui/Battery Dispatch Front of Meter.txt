@@ -1,6 +1,6 @@
 Battery Dispatch Front of Meter
-1054
-401
+1058
+491
 28
 GroupBox
 
@@ -21,14 +21,14 @@ Width
 655
 Height
 3
-283
+343
 Tool Tip
 5
 0
 Caption
 5
 26
-Automated dispatch options
+Automated Dispatch Options
 Bold
 2
 1
@@ -42,13 +42,13 @@ Name
 BatteryChargeOptions
 X
 3
-33
+30
 Y
 3
-186
+204
 Width
 3
-318
+348
 Height
 3
 39
@@ -93,13 +93,13 @@ X
 384
 Y
 3
-303
+360
 Width
 3
 655
 Height
 3
-85
+115
 Tool Tip
 5
 0
@@ -129,7 +129,7 @@ Width
 1042
 Height
 3
-391
+478
 Tool Tip
 5
 0
@@ -153,20 +153,20 @@ X
 393
 Y
 3
-39
+36
 Width
 3
 633
 Height
 3
-48
+54
 Tool Tip
 5
 0
 Caption
 5
-227
-The automated dispatch options consider the PPA price, electricity rate, battery cycle cost, and inverter power limiting to decide when to charge and discharge, using one of the time horizon options.  See help for more details.
+199
+The automated dispatch options consider the PPA price, electricity rate, battery cycle cost, and inverter power limiting to decide when to charge and discharge, using one of the time horizon options.
 TextColour
 4
 0
@@ -198,13 +198,13 @@ Name
 batt_charge_options_label
 X
 3
-18
+15
 Y
 3
-168
+180
 Width
 3
-330
+363
 Height
 3
 22
@@ -237,10 +237,10 @@ Name
 batt_custom_dispatch
 X
 3
-555
+672
 Y
 3
-357
+435
 Width
 3
 184
@@ -255,8 +255,8 @@ Mode
 1
 Label
 5
-21
-Dispatch power (kWdc)
+20
+Battery power (kWdc)
 Description
 5
 73
@@ -274,10 +274,10 @@ Name
 batt_cycle_cost
 X
 3
-864
+678
 Y
 3
-201
+273
 Width
 3
 90
@@ -336,10 +336,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-555
+678
 Y
 3
-201
+246
 Width
 3
 198
@@ -373,13 +373,13 @@ X
 393
 Y
 3
-168
+204
 Width
 3
 633
 Height
 3
-24
+36
 Tool Tip
 5
 0
@@ -418,10 +418,10 @@ Name
 batt_cycle_costs_label
 X
 3
-390
+393
 Y
 3
-150
+183
 Width
 3
 633
@@ -457,13 +457,13 @@ Name
 batt_dispatch_auto_can_charge
 X
 3
-33
+30
 Y
 3
-255
+273
 Width
 3
-228
+348
 Height
 3
 24
@@ -490,13 +490,13 @@ Name
 batt_dispatch_auto_can_clipcharge
 X
 3
-33
+30
 Y
 3
-282
+300
 Width
 3
-333
+348
 Height
 3
 24
@@ -523,13 +523,13 @@ Name
 batt_dispatch_auto_can_fuelcellcharge
 X
 3
-33
+30
 Y
 3
-309
+327
 Width
 3
-288
+348
 Height
 3
 24
@@ -556,13 +556,13 @@ Name
 batt_dispatch_auto_can_gridcharge
 X
 3
-33
+30
 Y
 3
-228
+246
 Width
 3
-234
+348
 Height
 3
 24
@@ -589,16 +589,16 @@ Name
 batt_dispatch_choice
 X
 3
-33
+30
 Y
 3
 51
 Width
 3
-294
+345
 Height
 3
-111
+129
 Tool Tip
 5
 0
@@ -632,16 +632,16 @@ Name
 batt_dispatch_label
 X
 3
-405
+393
 Y
 3
-324
+381
 Width
 3
 627
 Height
 3
-24
+39
 Tool Tip
 5
 0
@@ -683,7 +683,7 @@ X
 393
 Y
 3
-93
+105
 Width
 3
 633
@@ -719,10 +719,10 @@ Name
 batt_dispatch_update_frequency_hours
 X
 3
-585
+678
 Y
 3
-111
+126
 Width
 3
 48
@@ -781,10 +781,10 @@ Name
 batt_look_ahead_hours
 X
 3
-861
+678
 Y
 3
-111
+153
 Width
 3
 48
@@ -843,10 +843,10 @@ Name
 batt_select_weather_file_forecast
 X
 3
-393
+396
 Y
 3
-261
+327
 Width
 3
 90
@@ -873,13 +873,13 @@ Name
 batt_user_specified_weather_file
 X
 3
-489
+492
 Y
 3
-261
+327
 Width
 3
-516
+537
 Height
 3
 24
@@ -917,10 +917,10 @@ Name
 batt_weather_label
 X
 3
-390
+393
 Y
 3
-237
+303
 Width
 3
 636
@@ -956,13 +956,13 @@ Name
 object 21
 X
 3
-21
+18
 Y
 3
 27
 Width
 3
-330
+354
 Height
 3
 16
@@ -1085,10 +1085,10 @@ Name
 ui_batt_is_dc
 X
 3
-228
+273
 Y
 3
-354
+453
 Width
 3
 90
@@ -1156,11 +1156,11 @@ Numeric
 batt_custom_dispatch
 3
 2
-Input battery dispatch
+Time series battery power targets
 kWdc
 BatteryDispatch
-23
-Dispatch Power (kWdc)|1
+22
+Battery Power (kWdc)|1
 2
 1
 2

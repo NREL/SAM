@@ -1,6 +1,6 @@
 Solar Resource Data
-881
-914
+884
+975
 46
 GroupBox
 
@@ -76,7 +76,7 @@ Name
 annual_albedo
 X
 3
-753
+666
 Y
 3
 864
@@ -138,7 +138,7 @@ Name
 annual_beam
 X
 3
-150
+198
 Y
 3
 849
@@ -200,7 +200,7 @@ Name
 annual_diffuse
 X
 3
-150
+198
 Y
 3
 876
@@ -262,7 +262,7 @@ Name
 annual_global
 X
 3
-150
+198
 Y
 3
 822
@@ -324,7 +324,7 @@ Name
 annual_snow
 X
 3
-753
+666
 Y
 3
 837
@@ -386,10 +386,10 @@ Name
 annual_tdry
 X
 3
-477
+198
 Y
 3
-822
+903
 Width
 3
 103
@@ -448,10 +448,10 @@ Name
 annual_wspd
 X
 3
-477
+198
 Y
 3
-849
+930
 Width
 3
 103
@@ -708,16 +708,16 @@ Name
 caption_techs
 X
 3
-711
+456
 Y
 3
 663
 Width
 3
-160
+406
 Height
 3
-69
+63
 Tool Tip
 5
 0
@@ -803,10 +803,10 @@ Name
 elev
 X
 3
-123
+108
 Y
 3
-717
+750
 Width
 3
 103
@@ -913,13 +913,13 @@ Name
 group_optional
 X
 3
-603
+465
 Y
 3
 816
 Width
 3
-267
+363
 Height
 3
 19
@@ -1178,10 +1178,10 @@ Name
 lat
 X
 3
-315
+108
 Y
 3
-663
+669
 Width
 3
 103
@@ -1333,10 +1333,10 @@ Name
 lon
 X
 3
-315
+108
 Y
 3
-690
+696
 Width
 3
 103
@@ -1395,7 +1395,7 @@ Name
 object 22
 X
 3
-27
+18
 Y
 3
 801
@@ -1512,7 +1512,7 @@ Width
 870
 Height
 3
-375
+432
 Tool Tip
 5
 0
@@ -1533,16 +1533,16 @@ Name
 object 7
 X
 3
-444
+246
 Y
 3
-663
+732
 Width
 3
-267
+615
 Height
 3
-144
+60
 Tool Tip
 5
 0
@@ -1581,10 +1581,10 @@ Name
 object 735
 X
 3
-366
+393
 Y
 3
-876
+930
 Width
 3
 222
@@ -1717,10 +1717,10 @@ Name
 solar_data_source
 X
 3
-123
+345
 Y
 3
-690
+693
 Width
 3
 103
@@ -1793,13 +1793,13 @@ Name
 solar_resource_file
 X
 3
-93
+105
 Y
 3
 609
 Width
 3
-616
+604
 Height
 3
 24
@@ -1837,10 +1837,10 @@ Name
 station_id
 X
 3
-123
+345
 Y
 3
-663
+666
 Width
 3
 103
@@ -1929,10 +1929,10 @@ Name
 tz
 X
 3
-315
+108
 Y
 3
-717
+723
 Width
 3
 103
@@ -2529,7 +2529,7 @@ equations{'file_name'} = define() {
 	// for compatibility with most SSC APIs
 	return ${solar_resource_file};
 };
-29081
+29070
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	// show/hide widgets
@@ -2889,7 +2889,7 @@ function display_tech_message()
 		str += str_and + 'relative humidity data. See Help for details.';
 		}	
 	}
-	property( 'caption_techs' , 'Caption', str );		
+	property( '  ' , 'Caption', str );		
 	property( 'caption_techs' , 'TextColour', 'red' );
 }
 

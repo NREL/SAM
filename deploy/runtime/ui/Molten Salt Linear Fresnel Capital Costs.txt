@@ -3171,16 +3171,16 @@ Name
 lblFinancingCost
 X
 3
-9
+12
 Y
 3
-501
+495
 Width
 3
-221
+437
 Height
 3
-63
+42
 Tool Tip
 5
 0

@@ -1,6 +1,6 @@
 Utility Rate - Description
-932
-536
+1413
+491
 20
 GroupBox
 
@@ -12,13 +12,13 @@ Name
 GroupBox1
 X
 3
-6
+9
 Y
 3
-57
+54
 Width
 3
-920
+1403
 Height
 3
 313
@@ -42,16 +42,16 @@ Name
 object 4
 X
 3
-6
+9
 Y
 3
-378
+372
 Width
 3
-920
+1403
 Height
 3
-132
+114
 Tool Tip
 5
 0
@@ -72,16 +72,16 @@ Name
 object 7
 X
 3
-6
+9
 Y
 3
 6
 Width
 3
-920
+1400
 Height
 3
-57
+45
 Tool Tip
 5
 0
@@ -100,7 +100,7 @@ Bold
 0
 FontSize
 3
-4294967295
+0
 WordWrap
 2
 1
@@ -120,7 +120,7 @@ Name
 ur_demand_history
 X
 3
-147
+177
 Y
 3
 453
@@ -182,7 +182,7 @@ Name
 ur_demand_max
 X
 3
-147
+177
 Y
 3
 426
@@ -244,7 +244,7 @@ Name
 ur_demand_min
 X
 3
-147
+177
 Y
 3
 399
@@ -394,7 +394,7 @@ Name
 ur_energy_history
 X
 3
-420
+528
 Y
 3
 453
@@ -456,7 +456,7 @@ Name
 ur_energy_max
 X
 3
-420
+528
 Y
 3
 426
@@ -518,7 +518,7 @@ Name
 ur_energy_min
 X
 3
-420
+528
 Y
 3
 399
@@ -624,10 +624,10 @@ Name
 ur_phase_wiring
 X
 3
-753
+1113
 Y
 3
-477
+396
 Width
 3
 130
@@ -844,7 +844,7 @@ Name
 ur_voltage_category
 X
 3
-753
+864
 Y
 3
 450
@@ -888,7 +888,7 @@ Name
 ur_voltage_max
 X
 3
-753
+864
 Y
 3
 423
@@ -950,7 +950,7 @@ Name
 ur_voltage_min
 X
 3
-753
+864
 Y
 3
 396

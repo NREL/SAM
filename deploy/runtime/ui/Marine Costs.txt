@@ -2408,13 +2408,13 @@ Name
 object 7185357
 X
 3
-36
+21
 Y
 3
 543
 Width
 3
-243
+258
 Height
 3
 24
@@ -2696,13 +2696,13 @@ Name
 object 71952
 X
 3
-36
+24
 Y
 3
 276
 Width
 3
-243
+255
 Height
 3
 24
@@ -3128,13 +3128,13 @@ Name
 object 72067
 X
 3
-36
+6
 Y
 3
 111
 Width
 3
-243
+273
 Height
 3
 24
@@ -3143,8 +3143,8 @@ Tool Tip
 0
 Caption
 5
-42
-Mooring, foundation, and substructure cost
+37
+Mooring, foundation, and substructure
 TextColour
 4
 0
