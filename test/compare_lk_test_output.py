@@ -32,27 +32,32 @@ if __name__ == "__main__":
         
     success = True
     error = 0.001
-    for key in expected_values:
-        ex_data = expected_values[key]
-        act_data = actual_values[key]
-        if act_data:
-            for k in ex_data:
-                if act_data[k] == "fail":
-                    success = False
-                    print("Key " + key + " failed")
-                elif act_data[k] == ex_data[k]:
-                    continue
-                else:
-                    act = float(act_data[k])
-                    ex = float(ex_data[k])
-                    if abs((ex - act) / ex) > error:
-                        success = False
-                        print("Large change in " + k + " for " + key + ". Expected " + ex_data[k] + " / Actual: " + act_data[k])
-                           
-        else:
-            success = False
-            print("Key " + key + " missing in test results " + actual_filename)
     
+    for key in expected_values:
+        try:
+            ex_data = expected_values[key]
+            act_data = actual_values[key]
+            if act_data:
+                for k in ex_data:
+                    if act_data[k] == "fail":
+                        success = False
+                        print("Key " + key + " failed")
+                    elif act_data[k] == ex_data[k]:
+                        continue
+                    else:
+                        act = float(act_data[k])
+                        ex = float(ex_data[k])
+                        if abs((ex - act) / ex) > error:
+                            success = False
+                            print("Large change in " + k + " for " + key + ". Expected " + ex_data[k] + " / Actual: " + act_data[k])
+                               
+            else:
+                success = False
+                print("Key " + key + " missing in test results " + actual_filename)
+        except KeyError:
+            success = False
+            print("Key " + key + " missing in test results " + actual_filename)  
+        
     if len(expected_values) != len(actual_values):
         success = False
         print("Expected " + str(len(expected_values)) + " results. Found " + str(len(actual_values)) + " please update the test results csv")
