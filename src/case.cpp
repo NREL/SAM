@@ -527,8 +527,10 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 	{
 		if( VarValue *vv = m_vals.Get( it->first ) )
 		{
-			if ( vv->Type() == it->second->Type() )
-				vv->Copy( *(it->second) );
+			if (vv->Type() == it->second->Type()) {
+				vv->Copy(*(it->second));
+				if (oldvals) oldvals->Set(it->first, *(it->second));
+			}
 			else
 			{
 				if ( di ) di->wrong_type.Add( it->first + wxString::Format(": expected:%d got:%d", vv->Type(), it->second->Type()) );

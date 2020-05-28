@@ -1,6 +1,6 @@
 Battery Dispatch Behind the Meter
 1053
-322
+337
 16
 Label
 
@@ -12,16 +12,16 @@ Name
 BatteryChargeOptions
 X
 3
-12
+33
 Y
 3
-189
+201
 Width
 3
 285
 Height
 3
-39
+42
 Tool Tip
 5
 0
@@ -69,7 +69,7 @@ Width
 1042
 Height
 3
-310
+325
 Tool Tip
 5
 0
@@ -90,16 +90,16 @@ Name
 GridPowerTargetBox
 X
 3
-324
+345
 Y
 3
-33
+54
 Width
 3
-718
+697
 Height
 3
-106
+124
 Tool Tip
 5
 0
@@ -120,23 +120,23 @@ Name
 InputDispatchBox
 X
 3
-324
+345
 Y
 3
-153
+183
 Width
 3
-718
+697
 Height
 3
-106
+142
 Tool Tip
 5
 0
 Caption
 5
-46
-Time Series Inputs for Battery Dispatch Option
+50
+Time Series Inputs for Battery Power Target Option
 Bold
 2
 1
@@ -150,13 +150,13 @@ Name
 batt_custom_dispatch
 X
 3
-552
+588
 Y
 3
-171
+207
 Width
 3
-90
+117
 Height
 3
 24
@@ -168,8 +168,8 @@ Mode
 1
 Label
 5
-23
-Battery Dispatch (kWdc)
+20
+Battery Power (kWdc)
 Description
 5
 123
@@ -190,13 +190,13 @@ X
 33
 Y
 3
-258
+273
 Width
 3
 258
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -223,13 +223,13 @@ X
 33
 Y
 3
-285
+297
 Width
 3
 258
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -256,13 +256,13 @@ X
 33
 Y
 3
-231
+249
 Width
 3
 258
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -292,10 +292,10 @@ Y
 48
 Width
 3
-246
+288
 Height
 3
-111
+129
 Tool Tip
 5
 0
@@ -307,8 +307,8 @@ Items
 5
 Peak shaving one-day look ahead
 Peak shaving one-day look behind
-Input grid power target
-Input battery dispatch
+Input grid power targets
+Input battery power targets
 Manual dispatch
 ShowCaptions
 2
@@ -329,23 +329,23 @@ Name
 batt_dispatch_label
 X
 3
-705
+753
 Y
 3
-165
+207
 Width
 3
-330
+282
 Height
 3
-81
+105
 Tool Tip
 5
 0
 Caption
 5
-161
-Input a custom battery power dispatch (<0 for charging, >0 for discharging).  SAM will follow the dispatch within the operational limits of the system specified.
+214
+Battery targets are maximum power values. Use negative target values to charge the battery and positive to discharge. SAM will attempt to meet the power target within constraints of the system's operational limits.
 TextColour
 4
 0
@@ -377,13 +377,13 @@ Name
 batt_grid_options
 X
 3
-12
+15
 Y
 3
-168
+183
 Width
 3
-291
+303
 Height
 3
 25
@@ -416,10 +416,10 @@ Name
 batt_target_choice
 X
 3
-333
+351
 Y
 3
-51
+84
 Width
 3
 354
@@ -450,23 +450,23 @@ Name
 batt_target_label
 X
 3
-702
+750
 Y
 3
-48
+69
 Width
 3
-333
+285
 Height
 3
-81
+105
 Tool Tip
 5
 0
 Caption
 5
-178
-Input the maximum grid power desired.  SAM will charge the battery if the electric load is less than the target, and discharge the battery if the load is greater than the target.
+199
+Grid targets are maximum power values. SAM charges the battery when the electric load is less than the target in a given time step and discharges the battery when the load is greater than the target.
 TextColour
 4
 0
@@ -498,10 +498,10 @@ Name
 batt_target_power
 X
 3
-525
+588
 Y
 3
-108
+138
 Width
 3
 117
@@ -535,10 +535,10 @@ Name
 batt_target_power_monthly
 X
 3
-525
+588
 Y
 3
-81
+111
 Width
 3
 117
@@ -565,13 +565,13 @@ Name
 object 21
 X
 3
-12
+15
 Y
 3
 27
 Width
 3
-291
+1029
 Height
 3
 16
@@ -599,11 +599,11 @@ Bold
 batt_custom_dispatch
 3
 2
-Time series battery dispatch
+Time series battery power targets
 kWdc
 BatteryDispatch
-25
-Battery Dispatch (kWdc)|1
+21
+Battery Power(kWdc)|1
 2
 1
 2
@@ -659,8 +659,8 @@ batt_dispatch_choice
 Battery dispatch options
  
 BatteryDispatch
-132
-Peak shaving one-day look ahead|Peak shaving one-day look behind|Automated grid power target| Input battery dispatch|Manual dispatch
+133
+Peak shaving one-day look ahead|Peak shaving one-day look behind|Input grid power targets|Input battery power targets|Manual dispatch
 3
 1
 1

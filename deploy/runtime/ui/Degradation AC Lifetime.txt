@@ -42,7 +42,7 @@ Name
 generic_degradation
 X
 3
-204
+207
 Y
 3
 33

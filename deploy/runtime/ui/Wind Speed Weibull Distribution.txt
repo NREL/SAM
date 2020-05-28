@@ -1,6 +1,6 @@
 Wind Speed Weibull Distribution
-786
-603
+775
+496
 5
 GroupBox
 

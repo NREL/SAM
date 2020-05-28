@@ -1003,7 +1003,7 @@ BatteryCell
 
 DataArray
 
-1476
+1470
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1016,7 +1016,7 @@ equations{'batt_volume'} = define()
 equations{'batt_surface_area'} = define()
 {
 	// assume cube
-	return pow(${batt_volume},2.3333333) * 6;
+	return pow(${batt_volume},2/3) * 6;
 };
 equations{'batt_room_temperature_celsius'} = define()
 {

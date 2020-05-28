@@ -1,6 +1,6 @@
 Utility Rate - Flat
-985
-523
+1422
+522
 22
 GroupBox
 
@@ -15,10 +15,10 @@ X
 9
 Y
 3
-12
+3
 Width
 3
-970
+1403
 Height
 3
 129
@@ -48,7 +48,7 @@ Y
 438
 Width
 3
-283
+565
 Height
 3
 75
@@ -78,7 +78,7 @@ Y
 144
 Width
 3
-970
+1403
 Height
 3
 66
@@ -108,7 +108,7 @@ Y
 387
 Width
 3
-283
+565
 Height
 3
 51
@@ -138,7 +138,7 @@ Y
 213
 Width
 3
-970
+1403
 Height
 3
 170
@@ -162,13 +162,13 @@ Name
 GroupBox9
 X
 3
-300
+582
 Y
 3
 387
 Width
 3
-680
+830
 Height
 3
 126
@@ -192,13 +192,13 @@ Name
 Label4
 X
 3
-309
+615
 Y
 3
-441
+444
 Width
 3
-656
+791
 Height
 3
 61
@@ -246,7 +246,7 @@ Y
 33
 Width
 3
-936
+1380
 Height
 3
 49
@@ -318,16 +318,16 @@ Name
 btnQueryOpenEI
 X
 3
-24
+108
 Y
 3
-84
+87
 Width
 3
-182
+227
 Height
 3
-24
+39
 Tool Tip
 5
 0
@@ -378,10 +378,10 @@ Name
 rate_escalation
 X
 3
-537
+876
 Y
 3
-408
+411
 Width
 3
 75
@@ -421,10 +421,10 @@ Name
 ur_annual_min_charge
 X
 3
-192
+261
 Y
 3
-483
+486
 Width
 3
 75
@@ -559,10 +559,10 @@ Name
 ur_monthly_fixed_charge
 X
 3
-192
+261
 Y
 3
-402
+405
 Width
 3
 75
@@ -621,10 +621,10 @@ Name
 ur_monthly_min_charge
 X
 3
-192
+261
 Y
 3
-456
+459
 Width
 3
 75
@@ -745,10 +745,10 @@ Name
 ur_rate_url
 X
 3
-21
+432
 Y
 3
-114
+105
 Width
 3
 404
@@ -760,8 +760,8 @@ Tool Tip
 0
 Caption
 5
-43
-Go to Open EI Utility Rate Database website
+46
+Go to Open EI Utility Rate Database website...
 URL
 5
 47

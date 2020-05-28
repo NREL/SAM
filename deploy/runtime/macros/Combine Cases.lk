@@ -107,7 +107,7 @@ if (macro.mode == '2) Combine only the cases listed below')
 				match = true; //flag that this input case was found in the list of available cases
 		if (!match) //a match was never found
 		{
-			msgbox('Input case ' + input_cases[i] + ' was not found among the cases in this project. Check the name and try again.');
+			msgbox('Case not found!\nInput case ' + input_cases[i] + ' was not found among the cases in this project. Check the name and try again.');
 			exit;
 		}
 	}
@@ -119,19 +119,19 @@ if (macro.mode == '2) Combine only the cases listed below')
 //Make sure there are sufficient cases
 if (num_cases <= 0)
 {
-	msgbox('No cases detected. Check your inputs and try again.');
+	msgbox('No cases detected!\nCheck your inputs and try again.');
 	exit;
 }
 
 if (num_cases == 1 || num_cases == 2)
 {
-	msgbox('Only ' + num_cases + ' cases detected.\n\nThis macro requires at least 3 cases: 2 cases to be combined, plus 1 generic case to model the combined system. ' + 
+	msgbox('Only ' + num_cases + ' cases detected.\nThis macro requires at least 3 cases: 2 cases to be combined, plus 1 generic case to model the combined system. ' + 
 		'Check your inputs and try again.');
 	exit;
 }
 
 outln('Cases: ' + cases);
-outln('Number of cases: ' + num_cases);
+//outln('Number of cases: ' + num_cases);
 
 //How many generic cases are there? //also check that third party is not run, it doesn't work
 count = 0;
@@ -154,7 +154,7 @@ for (i=0; i<num_cases; i++)
 //Which generic case to use for the financial model
 if (count <=0) //no generic cases
 {
-	msgbox('This macro requires a generic system set up with the financial configuration that you wish to use to model the combined system. Include a generic system and try again.');
+	msgbox('No Generic System case!\nThis macro requires a generic system set up with the financial configuration that you wish to use to model the combined system. Include a generic system and try again.');
 	exit;
 }
 if (#generic > 1) //more than one generic case
@@ -175,7 +175,9 @@ for (i=0; i<num_cases; i++)
 		continue;
 	msg += '\n' + cases[i];
 }
-msg += '\n\nThe combined project is:\n\n' + financial + '\n\nContinue?';
+msg += '\n\nThe combined project is:\n\n' + financial;
+msg += '\n\nSAM will switch to each case in the project and run a simulation.\nDepending on the configuration, SAM may appear to be unresponsive during the simulations.\nThe macro will display a message when it finishes.';
+msg += '\n\nContinue?';
 verify = yesno(msg);
 if (!verify) { exit; }
 
@@ -223,7 +225,7 @@ if (!constant)
 	degrad = split(degrad, ',');
 	if (#degrad <= 0)
 	{
-		msgbox('There was an error with the degradation rate inputs. Fix the degradation rates manually and try again.');
+		msgbox('Degradation Rate Error!\nThere was an error with the degradation rate inputs. Fix the degradation rates manually and try again.');
 		exit;
 	}
 	for (i=0; i<#degrad; i++)
@@ -237,7 +239,7 @@ if (!constant)
 		set('degradation', degrad);
 	}
 }	
-outln('Degradation rate for combined project: ' + degrad);
+//outln('Degradation rate for combined project: ' + degrad);
 
 //Get analysis period and inflation rate from financial case
 active_case(financial);
@@ -255,8 +257,8 @@ elseif (config[1] != 'None' )
 	inflation = get('inflation_rate');
 }
 
-outln('Combined project analysis period (years) = ' + analysis_period );
-outln('Combined project inflation rate (%/year) = ' + inflation );
+//outln('Combined project analysis period (years) = ' + analysis_period );
+//outln('Combined project inflation rate (%/year) = ' + inflation );
 
 //Allocate and initialize variables to run through the cases to combine
 nameplate = 0;
@@ -294,7 +296,7 @@ for (i=0; i < num_cases; i++)
 	//Simulate the current case
 	active_case(cases[i]);
 	config = configuration();
-	out('\nSimulating: ' + cases[i] + '...');
+	out('Simulating Case ' + to_string(i+1) + ' of ' + to_string(num_cases-1) + ': ' + cases[i] );
 	
 	//Deal with inflation
 	if (config[1] != 'None')
@@ -311,23 +313,22 @@ for (i=0; i < num_cases; i++)
 		}
 	}
 	
+	out( ' ' + config + '...');
 	messages = null;
 	successful = simulate(messages, false); //don't update the UI results because it could cause user confusion RE: inflation rate in the cash flow.
 	//check that the case ran
 	if (!successful) 
 	{
-		msgbox(cases[i] + ' exited with errors. Check your inputs.\n' + messages);
+		msgbox('Simulation errors!\n' + cases[i] + ' exited with errors. Check your inputs.\n' + messages);
 		exit;
 	}
 	else { 	outln('done.'); }
-	outln(config);
 	
 	//optionally display messages returned from the simulation
 	if (messages != '') 
 	{
-		outln('messages');
 		see_msg = yesno('There were messages about ' + cases[i] + '. Would you like to see them?');
-		if (see_msg) { msgbox(messages); }
+		if (see_msg) { msgbox( 'Simulation messages!\n' + messages ); }
 	}
 
 	//Add case to note for Financial Paraneters page
@@ -336,13 +337,12 @@ for (i=0; i < num_cases; i++)
 	
 	note_cost += '\n\n'+ cases[i] + ' (' + config[0] +', ' + config[1] + ')';
 	note_cost += '\n-----------------------------------------------\n';
-	
-	
+		
 	//Add the performance parameters of this case
 	nameplate += get('system_capacity');
 	hourly_energy_this = get('gen');
-	outln('System capacity (kW) = ' + get('system_capacity') );
-	outln('Cumulative combined system capacity (kW) = ' + nameplate );
+	//outln('System capacity (kW) = ' + get('system_capacity') );
+	//outln('Cumulative combined system capacity (kW) = ' + nameplate );
 	note_fin += '\nSystem Capacity = ' + num_to_str(get('system_capacity'),3) + ' kW';
 
 	// need annual energy to calculate variable O&M cost for LCOE calculator
@@ -351,8 +351,8 @@ for (i=0; i < num_cases; i++)
 	if ( config[0] == 'Geothermal Power' ) { annual_energy_this = get('first_year_output');	}
 	else { annual_energy_this = get('annual_energy'); }
 	annual_energy += annual_energy_this;
-	outln('Annual energy (kWh/year) = ' + annual_energy_this );
-	outln('Cumulative combined annual energy (kWh/year) = ' + annual_energy );
+	//outln('Annual energy (kWh/year) = ' + annual_energy_this );
+	//outln('Cumulative combined annual energy (kWh/year) = ' + annual_energy );
 	note_fin += '\nAnnual Energy = ' + num_to_str(annual_energy_this,3) + ' kWh/yr';
 	
 	// for lifetime simulation, truncate results to first 8760 values
@@ -383,7 +383,7 @@ for (i=0; i < num_cases; i++)
 	elseif (#hourly_energy_this > 8760 * analysis_period_this)
 	{
 		outln('The ' + config[0] + ' model runs sub-hourly simulations, which this script does not support. Exiting script.');
-		msgbox('This macro is not currently enabled to work with sub-hourly simulations. Change the ' + cases[i] + ' case to hourly simulations modify the macro code to run sub-hourly.');
+		msgbox('Subhourly simulations not supported!\nThis macro is not currently enabled to work with sub-hourly simulations. Change the ' + cases[i] + ' case to hourly simulations modify the macro code to run sub-hourly.');
 		exit;
 	}
 
@@ -452,8 +452,8 @@ for (i=0; i < num_cases; i++)
 		}	
 	}
 	
-	outln('Total installed cost ($) =' + total_installed_cost_this );
-	outln('Total O&M cost ($/year) = ' + om_total_this );
+	//outln('Total installed cost ($) =' + total_installed_cost_this );
+	//outln('Total O&M cost ($/year) = ' + om_total_this );
 	note_cost += '\nTotal Installed Cost = $' + num_to_str(total_installed_cost_this,0);
 	note_cost += '\nFixed O&M Cost in Year 1 = $' + num_to_str(om_total_this[0],0) + '/yr';
 	note_cost += '\nFixed O&M Cost by year: ' + om_total_this + '\n';
@@ -465,10 +465,10 @@ for (i=0; i < num_cases; i++)
 	if (config[1] != 'None') { set('inflation_rate', inflation_old); }
 }
 
-outln('\nFinished running system cases.');
-outln('Setting up combined project case.');
 //Set up the financial case
 active_case(financial);
+outln('Finished running system cases.');
+outln('Setting up combined project case.');
 config = configuration();
 financial_type = config[1];
 
@@ -501,7 +501,7 @@ if (financial_type == 'LCOE Calculator')
 {
 	if (!constant1)
 	{
-		msgbox('The LCOE calculator requires a single annualized fixed operating cost. Check the O&M inputs of your other cases and try again.');
+		msgbox('LCOE Calculator error!\nThis macro requires that the LCOE calculator use a single annualized fixed operating cost. Check the O&M inputs of your other cases and try again.');
 		exit;
 	}
 	else
@@ -536,28 +536,29 @@ if (financial_type != 'None')
 }
 
 //Simulate the financial case
-outln('Simulating combined project: ' + financial);
+out('Simulating combined project case: ' + financial + '...');
 msg = '';
 success = simulate(msg, false);
+
 if (!success)
 {
-	msgbox( 'Combined project case ' + financial + ' simulation failed!\nWe ran a test of the combined case, and it generated the following error message:\n\n' + msg );
+	msgbox( 'Simulation failed!\nCombined project case ' + financial + ' simulation failed.\nWe ran a test of the combined case, and it generated the following error message:\n\n' + msg );
 	outln('Simulation failed: ' + msg);
 }
 else
 {
-	message = 'Macro finished.\nThe annual energy of the combined system is ' + sprintf('%,', get('annual_energy')) + ' kWh.\n\nSee the Power Plant and System Costs page on the ' + financial + ' case for complete results.';
+	outln('done.');
+	message = 'Macro finished!\nThe annual energy of the combined system is ' + sprintf('%,', get('annual_energy')) + ' kWh.\n\nSee the Power Plant and System Costs page on the ' + financial + ' case for complete results.';
 	outln(message);
-	//show_page('Results');
-	//msgbox(message);
 }
 
-outln('Macro finished.');
-
-show_page('System Costs');
+//show_page('System Costs');
 pagenote('');
 pagenote( note_cost );
 
-show_page('Power Plant');
 pagenote('');
 pagenote( note_fin );
+
+show_page('Macros');
+msgbox(message);
+show_page('Power Plant');

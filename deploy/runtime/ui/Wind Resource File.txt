@@ -608,13 +608,13 @@ Name
 wind_resource.file
 X
 3
-243
+267
 Y
 3
 444
 Width
 3
-499
+475
 Height
 3
 24

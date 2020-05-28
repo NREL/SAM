@@ -72,13 +72,13 @@ Name
 Label121112
 X
 3
-111
+105
 Y
 3
 360
 Width
 3
-200
+227
 Height
 3
 21
@@ -120,7 +120,7 @@ Name
 Label12111245
 X
 3
-48
+111
 Y
 3
 267
@@ -174,7 +174,7 @@ Y
 387
 Width
 3
-284
+311
 Height
 3
 21
@@ -222,7 +222,7 @@ Y
 411
 Width
 3
-284
+311
 Height
 3
 21
@@ -270,7 +270,7 @@ Y
 468
 Width
 3
-284
+311
 Height
 3
 21
@@ -318,7 +318,7 @@ Y
 492
 Width
 3
-299
+326
 Height
 3
 21
@@ -363,10 +363,10 @@ X
 111
 Y
 3
-567
+564
 Width
 3
-200
+227
 Height
 3
 21
@@ -411,10 +411,10 @@ X
 111
 Y
 3
-543
+540
 Width
 3
-200
+227
 Height
 3
 21
@@ -459,10 +459,10 @@ X
 111
 Y
 3
-519
+516
 Width
 3
-200
+227
 Height
 3
 21
@@ -618,7 +618,7 @@ X
 321
 Y
 3
-144
+153
 Width
 3
 100
@@ -666,7 +666,7 @@ X
 450
 Y
 3
-144
+153
 Width
 3
 100
@@ -714,7 +714,7 @@ X
 588
 Y
 3
-144
+153
 Width
 3
 100
@@ -759,10 +759,10 @@ Name
 lbl_subarray4
 X
 3
-723
+732
 Y
 3
-144
+153
 Width
 3
 100
@@ -807,7 +807,7 @@ Name
 module_area
 X
 3
-147
+153
 Y
 3
 720
@@ -869,7 +869,7 @@ Name
 module_aspect_ratio
 X
 3
-147
+153
 Y
 3
 639
@@ -931,7 +931,7 @@ Name
 module_length
 X
 3
-147
+153
 Y
 3
 666
@@ -993,7 +993,7 @@ Name
 module_width
 X
 3
-147
+153
 Y
 3
 693
@@ -1103,7 +1103,7 @@ Name
 object 12
 X
 3
-678
+690
 Y
 3
 636
@@ -1112,7 +1112,7 @@ Width
 334
 Height
 3
-108
+117
 Tool Tip
 5
 0
@@ -1327,7 +1327,7 @@ Width
 282
 Height
 3
-48
+54
 Tool Tip
 5
 0
@@ -1471,7 +1471,7 @@ Width
 519
 Height
 3
-48
+57
 Tool Tip
 5
 0
@@ -1510,7 +1510,7 @@ Name
 self_shading_diagram
 X
 3
-261
+276
 Y
 3
 636
@@ -1519,7 +1519,7 @@ Width
 412
 Height
 3
-112
+118
 Tool Tip
 5
 0
@@ -1539,10 +1539,10 @@ Name
 subarray1_gcr_ref
 X
 3
-324
+340
 Y
 3
-543
+540
 Width
 3
 100
@@ -1601,13 +1601,13 @@ Name
 subarray1_mod_orient
 X
 3
-324
+335
 Y
 3
 360
 Width
 3
-98
+104
 Height
 3
 21
@@ -1633,7 +1633,7 @@ Name
 subarray1_nmodx
 X
 3
-324
+340
 Y
 3
 411
@@ -1695,7 +1695,7 @@ Name
 subarray1_nmody
 X
 3
-324
+339
 Y
 3
 387
@@ -1757,7 +1757,7 @@ Name
 subarray1_ref_nmodules
 X
 3
-324
+340
 Y
 3
 492
@@ -1854,7 +1854,7 @@ X
 321
 Y
 3
-168
+177
 Width
 3
 102
@@ -1884,10 +1884,10 @@ Name
 subarray2_gcr_ref
 X
 3
-465
+450
 Y
 3
-543
+540
 Width
 3
 100
@@ -1946,7 +1946,7 @@ Name
 subarray2_mod_orient
 X
 3
-465
+450
 Y
 3
 360
@@ -1978,7 +1978,7 @@ Name
 subarray2_nmodx
 X
 3
-465
+450
 Y
 3
 411
@@ -2040,7 +2040,7 @@ Name
 subarray2_nmody
 X
 3
-465
+450
 Y
 3
 387
@@ -2102,7 +2102,7 @@ Name
 subarray2_ref_nmodules
 X
 3
-465
+450
 Y
 3
 492
@@ -2164,7 +2164,7 @@ Name
 subarray2_shade_mode
 X
 3
-462
+450
 Y
 3
 267
@@ -2199,7 +2199,7 @@ X
 450
 Y
 3
-168
+177
 Width
 3
 102
@@ -2229,10 +2229,10 @@ Name
 subarray3_gcr_ref
 X
 3
-609
+588
 Y
 3
-543
+540
 Width
 3
 100
@@ -2291,7 +2291,7 @@ Name
 subarray3_mod_orient
 X
 3
-609
+588
 Y
 3
 360
@@ -2323,7 +2323,7 @@ Name
 subarray3_nmodx
 X
 3
-609
+588
 Y
 3
 411
@@ -2385,7 +2385,7 @@ Name
 subarray3_nmody
 X
 3
-609
+588
 Y
 3
 387
@@ -2447,7 +2447,7 @@ Name
 subarray3_ref_nmodules
 X
 3
-609
+588
 Y
 3
 492
@@ -2509,7 +2509,7 @@ Name
 subarray3_shade_mode
 X
 3
-603
+588
 Y
 3
 267
@@ -2544,7 +2544,7 @@ X
 588
 Y
 3
-168
+177
 Width
 3
 102
@@ -2574,10 +2574,10 @@ Name
 subarray4_gcr_ref
 X
 3
-756
+732
 Y
 3
-543
+540
 Width
 3
 100
@@ -2636,7 +2636,7 @@ Name
 subarray4_mod_orient
 X
 3
-756
+732
 Y
 3
 360
@@ -2668,7 +2668,7 @@ Name
 subarray4_nmodx
 X
 3
-756
+732
 Y
 3
 411
@@ -2730,7 +2730,7 @@ Name
 subarray4_nmody
 X
 3
-756
+732
 Y
 3
 387
@@ -2792,7 +2792,7 @@ Name
 subarray4_ref_nmodules
 X
 3
-756
+732
 Y
 3
 492
@@ -2854,7 +2854,7 @@ Name
 subarray4_shade_mode
 X
 3
-753
+732
 Y
 3
 267
@@ -2886,10 +2886,10 @@ Name
 subarray4_shading
 X
 3
-723
+732
 Y
 3
-168
+177
 Width
 3
 102
@@ -3052,10 +3052,10 @@ Name
 ui_subarray1_length_side
 X
 3
-324
+340
 Y
 3
-519
+516
 Width
 3
 100
@@ -3114,7 +3114,7 @@ Name
 ui_subarray1_nrows
 X
 3
-324
+340
 Y
 3
 468
@@ -3176,10 +3176,10 @@ Name
 ui_subarray1_row_spacing
 X
 3
-324
+340
 Y
 3
-567
+564
 Width
 3
 100
@@ -3238,10 +3238,10 @@ Name
 ui_subarray2_length_side
 X
 3
-465
+450
 Y
 3
-519
+516
 Width
 3
 100
@@ -3300,7 +3300,7 @@ Name
 ui_subarray2_nrows
 X
 3
-465
+450
 Y
 3
 468
@@ -3362,10 +3362,10 @@ Name
 ui_subarray2_row_spacing
 X
 3
-465
+450
 Y
 3
-567
+564
 Width
 3
 100
@@ -3424,10 +3424,10 @@ Name
 ui_subarray3_length_side
 X
 3
-609
+588
 Y
 3
-519
+516
 Width
 3
 100
@@ -3486,7 +3486,7 @@ Name
 ui_subarray3_nrows
 X
 3
-609
+588
 Y
 3
 468
@@ -3548,10 +3548,10 @@ Name
 ui_subarray3_row_spacing
 X
 3
-609
+588
 Y
 3
-567
+564
 Width
 3
 100
@@ -3610,10 +3610,10 @@ Name
 ui_subarray4_length_side
 X
 3
-756
+732
 Y
 3
-519
+516
 Width
 3
 100
@@ -3672,7 +3672,7 @@ Name
 ui_subarray4_nrows
 X
 3
-756
+732
 Y
 3
 468
@@ -3734,10 +3734,10 @@ Name
 ui_subarray4_row_spacing
 X
 3
-756
+732
 Y
 3
-567
+564
 Width
 3
 100

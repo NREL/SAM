@@ -1,6 +1,6 @@
 Financial Debt DSCR or Debt Fraction
-866
-346
+862
+377
 17
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 850
 Height
 3
-332
+350
 Tool Tip
 5
 0
@@ -42,23 +42,23 @@ Name
 Label1
 X
 3
-306
+372
 Y
 3
-72
+87
 Width
 3
-545
+479
 Height
 3
-65
+41
 Tool Tip
 5
 0
 Caption
 5
-183
-Choose "Debt percent" to size the debt manually as a percentage of total installed cost. Choose "DSCR" to size the debt based on cash available for debt service. See Help for details.
+121
+Choose "Debt percent" to size the debt manually. Choose "DSCR" to size the debt based on cash available for debt service.
 TextColour
 4
 0
@@ -90,10 +90,10 @@ Name
 cost_debt_closing
 X
 3
-138
+156
 Y
 3
-144
+174
 Width
 3
 100
@@ -152,10 +152,10 @@ Name
 cost_debt_fee
 X
 3
-138
+156
 Y
 3
-171
+201
 Width
 3
 100
@@ -217,7 +217,7 @@ X
 18
 Y
 3
-297
+312
 Width
 3
 833
@@ -425,10 +425,10 @@ Name
 loan_moratorium
 X
 3
-708
+156
 Y
 3
-33
+147
 Width
 3
 100
@@ -487,16 +487,16 @@ Name
 object 7
 X
 3
-345
+372
 Y
 3
-156
+165
 Width
 3
-509
+479
 Height
 3
-92
+89
 Tool Tip
 5
 0
@@ -541,7 +541,7 @@ Y
 27
 Width
 3
-126
+210
 Height
 3
 24
@@ -550,8 +550,8 @@ Tool Tip
 0
 Caption
 5
-20
-% of total cap. cost
+25
+% of total installed cost
 TextColour
 4
 0
@@ -583,16 +583,16 @@ Name
 object 72
 X
 3
-306
+372
 Y
 3
-135
+129
 Width
 3
-545
+479
 Height
 3
-22
+34
 Tool Tip
 5
 0
@@ -631,13 +631,13 @@ Name
 payment_option
 X
 3
-348
+501
 Y
 3
 24
 Width
 3
-278
+350
 Height
 3
 48
@@ -671,10 +671,10 @@ Name
 term_int_rate
 X
 3
-138
+156
 Y
 3
-117
+120
 Width
 3
 100
@@ -733,10 +733,10 @@ Name
 term_tenor
 X
 3
-138
+156
 Y
 3
-90
+93
 Width
 3
 100
@@ -795,10 +795,10 @@ Name
 ui_wacc
 X
 3
-138
+156
 Y
 3
-222
+267
 Width
 3
 100
@@ -857,13 +857,13 @@ Name
 wacc_message
 X
 3
-345
+372
 Y
 3
-249
+255
 Width
 3
-500
+479
 Height
 3
 42

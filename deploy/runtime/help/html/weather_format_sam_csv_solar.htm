@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>SAM CSV Format for Solar</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "weather_format_sam_csv_solar.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">SAM CSV Format for Solar</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The SAM CSV format is a comma-separated text format for SAM's solar performance models. It uses a standard CSV format that you can edit in any spreadsheet program, text editor, or other appropriate software.</span></p>
+<p class="p_Text" style="text-align: center;"><img alt="SS_SolarResource-samcsv-file" width="772" height="407" style="margin:0 auto 0 auto;width:772px;height:407px;border:none" src="ss_solarresource-samcsv-file.png"/></p>
+<p class="p_Text"><span class="f_Text">For examples of files in the SAM CSV format, see files in the </span><span class="f_Emphasis">solar_resource</span><span class="f_Text"> folder of your <a href="installation.htm#installationfolder" class="topiclink">SAM installation folder</a>.</span></p>
+<p class="p_Text"><span class="f_Text">The SAM CSV format supports hourly and sub-hourly data with up to a one-minute resolution. SAM recognizes the weather file's time resolution based on the number of data rows in the weather file. For example, SAM recognizes a file with 8,670 data rows as an hourly data file, and a file with 35,040 rows as 15-minute data. A minute column is optional for hourly data, and required for sub-hourly data. By default, for hourly data SAM calculates sun position angles at the mid-point of the hour. However, if you specify the optional minute column for the hourly data, SAM calculates the sun position at the minute indicated in that column. For sub-hourly data, sun angles are calculated for the minute indicated in the Minute column. See <a href="weather_time_convention.htm" class="topiclink">Time Convention and Sun Position</a> for additional details.</span></p>
+<p class="p_Text"><span class="f_Text">SAM requires a valid value for all time steps for each data element. It does not fill data gaps. It does perform some checks on the weather data before running a simulation, and displays messages about problems with the data in the simulation <a href="notices.htm" class="topiclink">notices</a>. You can also run the </span><span class="f_CHInterfaceElement">Solar Resource File Checker</span><span class="f_Text"> <a href="macros.htm" class="topiclink">macro</a> to perform the checks without running a simulation.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Header</span></h4>
+<p class="p_Text"><span class="f_Text">The header rows provide location information and metadata, and identify the data columns.</span></p>
+<p class="p_Term" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Term">Row 1</span></p>
+<p class="p_Definition"><span class="f_Definition">Row 1 contains labels for the location data and metadata, and must include at least the following, which may be in any order and with any capitalization:</span></p>
+<p class="p_Definition" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Emphasis" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Emphasis">Latitude</span></p><p class="p_Definition" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Emphasis" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Emphasis">Longitude</span></p><p class="p_Definition" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Emphasis" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Emphasis">Time zone</span></p><p class="p_Definition" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Emphasis" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Emphasis">Elevation</span></p><p class="p_Definition"><span class="f_Definition">The optional </span><span class="f_CHInterfaceElement">Units flag</span><span class="f_Definition"> indicates that your weather file includes an extra header row for measurement units. By default, the SAM CSV format does not include a row for measurement units in the header. To include a units row in the header, add </span><span class="f_Emphasis">hasunits</span><span class="f_Definition"> to Row 1, and set its value in Row 2 to </span><span class="f_Emphasis">yes</span><span class="f_Definition">. Then add a row after the data column heading row (described as Row 3 below) with units for each column. If </span><span class="f_Emphasis">hasunits</span><span class="f_Definition"> is </span><span class="f_Emphasis">no</span><span class="f_Definition">, or is omitted from Row 1, SAM assumes that the header does not include a row for units. SAM ignores the information in the units row, but it can be useful to help you keep track of units.</span></p>
+<p class="p_Definition"><span class="f_Definition">For example, a valid Row 1 might look like this:</span></p>
+<p class="p_Definition"><span class="f_Emphasis">Source,Location ID,City,State,Region,Country,Latitude,Longitude,Time Zone,Elevation</span></p>
+<p class="p_Definition"><span class="f_Definition">See the table below for a complete list of Row 1 header fields, accepted labels, and and units. </span></p>
+<p class="p_Term" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Term">Row 2</span></p>
+<p class="p_Definition"><span class="f_Definition">Row 2 contains values for the location data and metadata identified by the labels in Row 1. The required latitude, longitude, time zone, and elevation are numbers that SAM uses in sun position calculations during simulations:</span></p>
+<p class="p_Definition" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Definition" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Definition">Latitude is a value between -90.0 and 90.0 decimal degrees north of the equator, e.g., 39.75 for Denver, and -33.95 for Sydney, Australia.</span></p><p class="p_Definition" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Definition" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Definition">Longitude is a value between -180.0 and 180.0 decimal degrees East of the prime meridian, e.g., -104.95 for Denver, and 116.28 for Beijing, China.</span></p><p class="p_Definition" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Definition" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Definition">Time zone is for standard time in hours ahead of GMT, e.g., -7 for Denver, and 5.5 for India.</span></p><p class="p_Definition" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_Definition" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_Definition">Elevation is in meters above sea level, e.g., 1615 for Denver.</span></p><p class="p_Definition"><span class="f_Definition"> For example, given the Row 1 example above, Row 2 for Phoenix, Arizona might look like this:</span></p>
+<p class="p_Definition"><span class="f_Emphasis">TMY2,23183,Phoenix,AZ,USA,33.433333,-112.016667,-7,339</span></p>
+<p class="p_Definition"><span class="f_Definition">The remaining header fields, such as source, location ID, city, state, and others listed in the table below are text values (strings) that provide information about the data, but that SAM does not use in calculations. These values are not required for SAM simulations, and can be omitted from the weather file.</span><span class="f_Note"> </span></p>
+<div style="text-align: center; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="DefaultShadedRows" >
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Header Field</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Units</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Accepted Labels for Row 1</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Latitude</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">degrees</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">latitude, lat</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Longitude</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">degrees</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">longitude, lon, long ,lng</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Time zone</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">hours offset from GMT</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">tz, timezone, time zone</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Site elevation</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">meters above sea level</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">el, elev, elevation, site elevation</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Year</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">n/a</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">year</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Location ID</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">n/a</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">id ,location, location id, station,station id, wban, wban#</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">City</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">n/a</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">city</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">State</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">n/a</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">state, province, region</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Country</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">n/a</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">country</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Source</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">n/a</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">source, src</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Description</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">n/a</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">description, desc</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">URL</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">n/a</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">url</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Units flag</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">yes or no</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">hasunits, units</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">&nbsp;</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Solar Resource Data</span></h4>
+<p class="p_Term" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Term">Row 3</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Labels identifying the data columns. SAM uses the labels to identify the columns, so they can be in any order. SAM requires a complete column of data for each data element. The Minute column is optional for hourly data. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For example, a valid Row 3 might look like this:</span></p>
+<p class="p_VariableDescription"><span class="f_Emphasis">Year,Month,Day,Hour,Minute,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Snow Depth</span></p>
+<p class="p_Definition"><span class="f_Definition">See the table below for a complete list of valid Row 3 header values and units. See the description of the </span><span class="f_CHInterfaceElement">Units flag</span><span class="f_Definition"> above if you want to include an additional row for units in your file.</span></p>
+<p class="p_Term" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Term">Row 4-8,760 (for hourly data, more rows for sub-hourly data)</span></p>
+<p class="p_Definition"><span class="f_Definition">Data identified in Row 3. For example:</span></p>
+<p class="p_Definition"><span class="f_Emphasis">1988,1,1,0,0,0,0,5.6,-3.3,53,983,2.1,200,0</span></p>
+<p class="p_Text"><span class="f_Text">SAM assumes that the weather data uses the following units:</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The format does not require leading zeros in one-digit numbers.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Year is a four-digit number (1988)</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Month is a one- or two-digit number (Month = 1 is January)</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Day is a one- or two-digit number indicating the day of month (Day = 1 is the first day of the month).</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Hour is a one- or two-digit number indicating the hour of day (Hour = 0 is the first hour of the day, or the hour ending at 1 am).</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Minute is a one-or two-digit number indicating the minute (Minute = 0 is the first minute of the hour). This value is required for sub-hourly data, and optional for hourly data. For hourly data, the minute column indicates the time you want SAM to use for sun position calculations. If you omit the value for hourly data, SAM uses the midpoint of the hour for the calculations. See <a href="weather_time_convention.htm" class="topiclink">Time Convention and Sun Position</a> for details.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Solar irradiance in W/m</span><span class="f_List" style="font-size: 7pt; vertical-align: super;">2</span><span class="f_List">. SAM's photovoltaic models assume instantaneous irradiance. The CSP models assume average irradiance over the time step.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Temperature in °C.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Relative humidity in %.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Atmospheric pressure in millibar.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Wind speed at 10 meters above the ground in m/s.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Wind direction at 10 meters above the ground in degrees east of North, with zero degrees indicating wind from the north.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Snow depth in centimeters.</span></p><div style="text-align: center; text-indent: 0; page-break-inside: avoid; padding: 0 0 0 0; margin: 0 0 0 0;"><table class="DefaultShadedRows" >
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Data Field</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Units</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Accepted Labels for Row 3</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Year</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">1950-2050</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">year, yr</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Month</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">1-12</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">month, mo</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Day</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">1-31</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">day</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Hour</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">0-23</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">hour, hr</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Minute</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">0-59</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">min, minute</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Global horizontal irradiance</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">W/m²</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">gh, ghi, global, global horizontal, global horizontal irradiance</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Beam normal irradiance</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">W/m²</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">dn, dni, beam, direct normal, direct normal irradiance</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Diffuse horizontal irradiance</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">W/m²</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">df, dhi, diffuse, diffuse horizontal, diffuse horizontal irradiance</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Plane-of-array irradiance</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">W/m²</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">poa, pa, plane,plane of array,plane of array irradiance</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Ambient dry bulb temperature</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">°C</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">tdry, dry bulb, dry bulb temp, temperature, ambient, ambient temp</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Wet bulb temperature</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">°C</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">twet, wet bulb, wet bulb temperature</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Dew point temperature</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">°C</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">Tdew ,dew point, dew point temperature</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Wind speed</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">m/s</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">wspd, wind speed</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Wind direction</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">degrees</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">wdir, wind direction</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Relative humidity</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">%</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">rh, rhum, relative humidity, humidity</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Atmospheric pressure</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Millibar</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">pres, pressure</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Snow depth</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">cm</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">snow, snow cover, snow depth</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Ground reflectance (albedo)</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">0..1</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_Emphasis"><span class="f_Emphasis">albedo, alb, surface albedo</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Aerosol optical depth</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">0..1</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_Emphasis"><span class="f_Emphasis">aod, aerosol, aerosol optical depth</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

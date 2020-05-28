@@ -15,7 +15,7 @@ X
 12
 Y
 3
-18
+21
 Width
 3
 1029
@@ -66,7 +66,7 @@ Y
 69
 Width
 3
-162
+198
 Height
 3
 24
@@ -168,7 +168,7 @@ Name
 value_of_lost_load
 X
 3
-231
+243
 Y
 3
 69
@@ -238,7 +238,7 @@ Battery REopt Optimization
 Numeric
 
 0
-2619
+2712
 on_change{'call_reopt'} = define()
 {
 	if (!value('batt_dispatch_auto_can_gridcharge')){
@@ -327,10 +327,11 @@ on_change{'call_reopt'} = define()
 	grid_charge = elec.year_one_to_battery_series_kw;
 
 	value('batt_dispatch_choice', 3);
+
+	load = ${load};
+	ts_load = #load / #grid_charge;
 	
-
-	dispatch = alloc(8760);
-
+	dispatch = alloc(#load);
 	for (i=0; i<8760; i++){
 		if (batt_to_grid){
 			discharge = batt_to_grid[i] + batt_to_load[i];
@@ -338,7 +339,8 @@ on_change{'call_reopt'} = define()
 			discharge = batt_to_load[i];
 		}
 		charge = -pv_charge[i] - grid_charge[i];
-		dispatch[i] = discharge + charge;
+		for (j=0; j<ts_load; j++)
+			dispatch[i * ts_load + j] = discharge + charge;
 	}
 
 	value('batt_custom_dispatch', dispatch);

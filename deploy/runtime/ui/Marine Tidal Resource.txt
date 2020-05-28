@@ -42,13 +42,13 @@ Name
 object 7
 X
 3
-771
+435
 Y
 3
-462
+501
 Width
 3
-198
+537
 Height
 3
 63
@@ -90,10 +90,10 @@ Name
 probability_sum
 X
 3
-675
+786
 Y
 3
-462
+459
 Width
 3
 90

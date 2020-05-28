@@ -30,7 +30,7 @@ addconfig( 'MEwave', ['LCOE Calculator']);
 addconfig( 'MEtidal', ['LCOE Calculator']);
 addconfig( 'Geothermal Power', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
-addconfig( 'Biopower', ['Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Biopower', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'PV Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
 addconfig( 'PVWatts Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer'] );
@@ -39,7 +39,7 @@ addconfig( 'Generic Battery', ['Residential', 'Commercial', 'Third Party', 'Host
 // tree_parent for performance models defined in PopulateTech() in main.cpp
 if ( en_pvsamv3 ) {	configopt( 'Photovoltaic', {'tree_parent'='PV', 'long_name'='Photovoltaic (super detailed)', 'short_name'='Photovoltaic', 'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } ); }
 configopt( 'Flat Plate PV',               { 'tree_parent'='PV', 'long_name'='Detailed PV Model',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
-configopt( 'PVWatts',                     { 'tree_parent'='PV','long_name'='PVWatts',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V5 algorithm' } );
+configopt( 'PVWatts',                     { 'tree_parent'='PV','long_name'='PVWatts',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V7 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1.' } );
 configopt( 'High-X Concentrating PV',     { 'tree_parent'='PV', 'long_name'='High Concentration PV',                  'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
 configopt( 'PV Battery',               { 'tree_parent'='BATT', 'long_name'='Detailed PV-Battery',       'short_name'='PV-Battery',     'description'='Detailed photovoltaic model with battery storage' } );
 configopt( 'PVWatts Battery',          { 'tree_parent'='BATT', 'long_name'='PVWatts-Battery',     'short_name'='PVWatts-Battery',     'description'='PVWatts system model with battery storage' } );
@@ -208,7 +208,7 @@ function setup_lifetime_page( degradation_mode )
                  { 'sidebar'=sidebar_name,'help'=help_name } );
 	}
      // annual AC degradation over one year, 'degradation' requires 'system_use_lifetime = 0'
-     // everything else. 
+     // everything else.
      else // DEGRADATION_AC_SINGLE_YEAR
      {
      	addpage( [ [ 'Degradation AC Single Year'] ], { 'sidebar'=sidebar_name,'help'=help_name } );
@@ -786,49 +786,49 @@ setconfig( 'PVWatts', 'None' );
 setmodules( ['pvwattsv7','grid']);
 setup_pvwatts_pages();
 
-setconfig( 'PVWatts', 'Residential' );	
+setconfig( 'PVWatts', 'Residential' );
 setmodules( ['pvwattsv7', 'belpe', 'grid','utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
-setconfig( 'PVWatts', 'Commercial' );	
+setconfig( 'PVWatts', 'Commercial' );
 setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
-setconfig( 'PVWatts', 'Leveraged Partnership Flip' );	
+setconfig( 'PVWatts', 'Leveraged Partnership Flip' );
 setmodules( ['pvwattsv7', 'grid', 'levpartflip']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_leveraged_partnership_flip_pages();
 
-setconfig( 'PVWatts', 'All Equity Partnership Flip' );	
+setconfig( 'PVWatts', 'All Equity Partnership Flip' );
 setmodules( ['pvwattsv7', 'grid', 'equpartflip']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_all_equity_partnership_flip_pages();
 
-setconfig( 'PVWatts', 'Sale Leaseback' );	
+setconfig( 'PVWatts', 'Sale Leaseback' );
 setmodules( ['pvwattsv7', 'grid','saleleaseback']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_sale_leaseback_pages();
 
-setconfig( 'PVWatts', 'Single Owner' );	
+setconfig( 'PVWatts', 'Single Owner' );
 setmodules( ['pvwattsv7', 'grid','singleowner']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages();
 
-setconfig( 'PVWatts', 'Merchant Plant' );	
+setconfig( 'PVWatts', 'Merchant Plant' );
 setmodules( ['pvwattsv7', 'grid','merchantplant']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
@@ -842,7 +842,7 @@ setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
-setconfig( 'PVWatts', 'Third Party' );	
+setconfig( 'PVWatts', 'Third Party' );
 setmodules( ['pvwattsv7', 'belpe', 'grid','utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
@@ -1314,14 +1314,6 @@ function setup_biopower_pages()
 	setup_grid_page();
 }
 
-//-----------------------------------------------------
-setconfig( 'Biopower', 'Commercial' );
-setmodules( ['biomass', 'grid', 'utilityrate5', 'cashloan']);
-setup_biopower_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Biopower System Cost','O and M Costs']],{ 'sidebar'='System Costs', 'help'='biopower_system_costs' } );
-addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
-setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Leveraged Partnership Flip' );
 setmodules( ['biomass', 'grid', 'levpartflip']);

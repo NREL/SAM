@@ -498,7 +498,7 @@ batt_h_to_ambient
 1
 1
 1
-5
+50
 batt_initial_SOC
 1
 1
@@ -2186,7 +2186,7 @@ property_assessed_value
 1
 1
 1
-1.55147e+06
+1551470
 property_tax_rate
 1
 1
@@ -2420,7 +2420,7 @@ total_direct_cost
 1
 1
 1
-1.36693e+06
+1366930
 total_indirect_cost
 1
 1
@@ -2432,7 +2432,7 @@ total_installed_cost
 1
 1
 1
-1.55147e+06
+1551470
 ui_annual_load
 1
 1
@@ -2450,7 +2450,7 @@ ui_net_capital_cost
 1
 1
 1
-1.55147e+06
+1551470
 ui_wacc
 1
 1

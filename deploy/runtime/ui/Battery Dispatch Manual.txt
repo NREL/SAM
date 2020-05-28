@@ -18,7 +18,7 @@ Y
 36
 Width
 3
-84
+111
 Height
 3
 42
@@ -28,7 +28,7 @@ Tool Tip
 Caption
 5
 18
-Charge from System
+Charge from system
 TextColour
 4
 0
@@ -60,7 +60,7 @@ Name
 AllowDischargingLabel
 X
 3
-342
+363
 Y
 3
 36
@@ -204,7 +204,7 @@ Name
 ForceChargingLabel
 X
 3
-189
+219
 Y
 3
 36
@@ -252,7 +252,7 @@ Name
 Percent of rated to discharge
 X
 3
-390
+411
 Y
 3
 57
@@ -300,7 +300,7 @@ Name
 Percent of rated to discharge37
 X
 3
-237
+267
 Y
 3
 57
@@ -636,7 +636,7 @@ Name
 batt_discharge_percent_1
 X
 3
-390
+411
 Y
 3
 81
@@ -698,7 +698,7 @@ Name
 batt_discharge_percent_2
 X
 3
-390
+411
 Y
 3
 108
@@ -760,7 +760,7 @@ Name
 batt_discharge_percent_3
 X
 3
-390
+411
 Y
 3
 135
@@ -822,7 +822,7 @@ Name
 batt_discharge_percent_4
 X
 3
-390
+411
 Y
 3
 162
@@ -884,7 +884,7 @@ Name
 batt_discharge_percent_5
 X
 3
-390
+411
 Y
 3
 189
@@ -946,7 +946,7 @@ Name
 batt_discharge_percent_6
 X
 3
-390
+411
 Y
 3
 216
@@ -1008,7 +1008,7 @@ Name
 batt_gridcharge_percent_1
 X
 3
-237
+267
 Y
 3
 81
@@ -1070,7 +1070,7 @@ Name
 batt_gridcharge_percent_2
 X
 3
-237
+267
 Y
 3
 108
@@ -1132,7 +1132,7 @@ Name
 batt_gridcharge_percent_3
 X
 3
-237
+267
 Y
 3
 135
@@ -1194,7 +1194,7 @@ Name
 batt_gridcharge_percent_4
 X
 3
-237
+267
 Y
 3
 162
@@ -1256,7 +1256,7 @@ Name
 batt_gridcharge_percent_5
 X
 3
-237
+267
 Y
 3
 189
@@ -1318,7 +1318,7 @@ Name
 batt_gridcharge_percent_6
 X
 3
-237
+267
 Y
 3
 216
@@ -1380,13 +1380,13 @@ Name
 batt_manual_dispatch_label
 X
 3
-501
+522
 Y
 3
 42
 Width
 3
-474
+519
 Height
 3
 60
@@ -1431,7 +1431,7 @@ X
 543
 Y
 3
-213
+216
 Width
 3
 363
@@ -1560,16 +1560,16 @@ Name
 object 7
 X
 3
-501
+522
 Y
 3
 111
 Width
 3
-474
+519
 Height
 3
-72
+90
 Tool Tip
 5
 0
@@ -1608,7 +1608,7 @@ Name
 object 731
 X
 3
-342
+363
 Y
 3
 57
@@ -1656,7 +1656,7 @@ Name
 object 738
 X
 3
-189
+219
 Y
 3
 57
@@ -1736,7 +1736,7 @@ Name
 pv.storage.p1.discharge
 X
 3
-342
+363
 Y
 3
 81
@@ -1768,7 +1768,7 @@ Name
 pv.storage.p1.gridcharge
 X
 3
-189
+219
 Y
 3
 81
@@ -1832,7 +1832,7 @@ Name
 pv.storage.p2.discharge
 X
 3
-342
+363
 Y
 3
 108
@@ -1864,7 +1864,7 @@ Name
 pv.storage.p2.gridcharge
 X
 3
-189
+219
 Y
 3
 108
@@ -1928,7 +1928,7 @@ Name
 pv.storage.p3.discharge
 X
 3
-342
+363
 Y
 3
 135
@@ -1960,7 +1960,7 @@ Name
 pv.storage.p3.gridcharge
 X
 3
-189
+219
 Y
 3
 135
@@ -2024,7 +2024,7 @@ Name
 pv.storage.p4.discharge
 X
 3
-342
+363
 Y
 3
 162
@@ -2056,7 +2056,7 @@ Name
 pv.storage.p4.gridcharge
 X
 3
-189
+219
 Y
 3
 162
@@ -2120,7 +2120,7 @@ Name
 pv.storage.p5.discharge
 X
 3
-342
+363
 Y
 3
 189
@@ -2152,7 +2152,7 @@ Name
 pv.storage.p5.gridcharge
 X
 3
-189
+219
 Y
 3
 189
@@ -2216,7 +2216,7 @@ Name
 pv.storage.p6.discharge
 X
 3
-342
+363
 Y
 3
 216
@@ -2248,7 +2248,7 @@ Name
 pv.storage.p6.gridcharge
 X
 3
-189
+219
 Y
 3
 216
