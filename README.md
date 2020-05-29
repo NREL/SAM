@@ -73,3 +73,7 @@ If you would like to submit code to fix an issue or add a feature, you can use G
 SAM's open source code is copyrighted by the Alliance for Sustainable Energy and licensed with BSD-3-Clause terms, found [here](https://github.com/NREL/SAM/blob/develop/LICENSE).
 
 SAM also includes two [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html) licensed libraries from Sandia National Laboratory.  These Fortran libraries have been pre-compiled and included as binaries [here](https://github.com/NREL/SAM/tree/develop/Sandia).  To swap in a new version of these libraries, you may compile them as binary/executables and copy them into the respective folder.
+
+# Citing this package
+
+System Advisor Model Version 2020.2.29 (2020.2.29). SAM source code. National Renewable Energy Laboratory. Golden, CO. Accessed May 27, 2020. https://github.com/NREL/ssc
