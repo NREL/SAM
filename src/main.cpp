@@ -2086,9 +2086,15 @@ extern void RegisterReportObjectTypes();
 		}
 	}
 
-	if ( argc > 1 )
+	if ( argc == 2 )
 		g_mainWindow->LoadProject( argv[1] );
-
+	else if (argc == 3)	{
+		wxLKScriptWindow* lksw = SamScriptWindow::CreateNewWindow(true);
+		if (lksw != NULL) {
+			if (lksw->Load(argv[2])) lksw->RunScript();
+		}
+	}
+	
     LoadPythonConfig();
 
     return true;
