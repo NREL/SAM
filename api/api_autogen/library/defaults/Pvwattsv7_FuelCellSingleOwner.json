@@ -4,7 +4,7 @@
 		},
 		"Lifetime": {
 			"analysis_period": 30,
-			"dc_degradation": [0.000000],
+			"dc_degradation": [0.500000],
 			"system_use_lifetime_output": 1
 		},
 		"SystemDesign": {

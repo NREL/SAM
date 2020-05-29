@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_GeothermalCosts.h"
 
-SAM_EXPORT SAM_GeothermalCosts SAM_GeothermalCosts_construct(const char* def, SAM_error* err){
-	SAM_GeothermalCosts result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_GeothermalCosts_execute(SAM_GeothermalCosts data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_GeothermalCosts_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("geothermal_costs", data, verbosity, err);
@@ -27,180 +19,175 @@ SAM_EXPORT int SAM_GeothermalCosts_execute(SAM_GeothermalCosts data, int verbosi
 }
 
 
-SAM_EXPORT void SAM_GeothermalCosts_destruct(SAM_GeothermalCosts system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_GF_flowrate_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_GF_flowrate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "GF_flowrate", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_condensate_pump_power_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_condensate_pump_power_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "condensate_pump_power", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_conversion_type_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_conversion_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "conversion_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cw_pump_head_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cw_pump_head_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cw_pump_head", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cw_pump_work_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cw_pump_work_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cw_pump_work", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cwflow_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_cwflow_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cwflow", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_design_temp_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_design_temp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "design_temp", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eff_secondlaw", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_flash_count_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_flash_count_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flash_count", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_gross_output_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_gross_output_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "gross_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_hp_flash_pressure_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_hp_flash_pressure_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "hp_flash_pressure", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_lp_flash_pressure_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_lp_flash_pressure_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "lp_flash_pressure", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ncg_condensate_pump", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_1_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pressure_ratio_1", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_2_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pressure_ratio_2", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_3_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_pressure_ratio_3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pressure_ratio_3", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qCondenser_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qCondenser_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "qCondenser", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_1_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "qRejectByStage_1", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_2_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "qRejectByStage_2", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_3_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectByStage_3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "qRejectByStage_3", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectTotal_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectTotal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "qRejectTotal", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_spec_vol_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_spec_vol_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "spec_vol", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_spec_vol_lp_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_spec_vol_lp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "spec_vol_lp", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_1_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "v_stage_1", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_2_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "v_stage_2", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_3_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_v_stage_3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "v_stage_3", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_x_hp_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_x_hp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "x_hp", number);
 	});
 }
 
-SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_x_lp_nset(SAM_GeothermalCosts ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_x_lp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "x_lp", number);
 	});
 }
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_GF_flowrate_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_GF_flowrate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "GF_flowrate", &result))
@@ -211,7 +198,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_GF_flowrate_nget(SAM_GeothermalC
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_condensate_pump_power_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_condensate_pump_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "condensate_pump_power", &result))
@@ -222,7 +209,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_condensate_pump_power_nget(SAM_G
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_conversion_type_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_conversion_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "conversion_type", &result))
@@ -233,7 +220,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_conversion_type_nget(SAM_Geother
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cw_pump_head_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cw_pump_head_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cw_pump_head", &result))
@@ -244,7 +231,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cw_pump_head_nget(SAM_Geothermal
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cw_pump_work_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cw_pump_work_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cw_pump_work", &result))
@@ -255,7 +242,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cw_pump_work_nget(SAM_Geothermal
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cwflow_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cwflow_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cwflow", &result))
@@ -266,7 +253,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_cwflow_nget(SAM_GeothermalCosts 
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_design_temp_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_design_temp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "design_temp", &result))
@@ -277,7 +264,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_design_temp_nget(SAM_GeothermalC
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eff_secondlaw", &result))
@@ -288,7 +275,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nget(SAM_Geotherma
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_flash_count_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_flash_count_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flash_count", &result))
@@ -299,7 +286,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_flash_count_nget(SAM_GeothermalC
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_gross_output_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_gross_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "gross_output", &result))
@@ -310,7 +297,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_gross_output_nget(SAM_Geothermal
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_hp_flash_pressure_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_hp_flash_pressure_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "hp_flash_pressure", &result))
@@ -321,7 +308,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_hp_flash_pressure_nget(SAM_Geoth
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_lp_flash_pressure_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_lp_flash_pressure_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lp_flash_pressure", &result))
@@ -332,7 +319,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_lp_flash_pressure_nget(SAM_Geoth
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ncg_condensate_pump", &result))
@@ -343,7 +330,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_ncg_condensate_pump_nget(SAM_Geo
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_1_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pressure_ratio_1", &result))
@@ -354,7 +341,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_1_nget(SAM_Geothe
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_2_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pressure_ratio_2", &result))
@@ -365,7 +352,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_2_nget(SAM_Geothe
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_3_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pressure_ratio_3", &result))
@@ -376,7 +363,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_pressure_ratio_3_nget(SAM_Geothe
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qCondenser_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qCondenser_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "qCondenser", &result))
@@ -387,7 +374,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qCondenser_nget(SAM_GeothermalCo
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_1_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "qRejectByStage_1", &result))
@@ -398,7 +385,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_1_nget(SAM_Geothe
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_2_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "qRejectByStage_2", &result))
@@ -409,7 +396,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_2_nget(SAM_Geothe
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_3_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "qRejectByStage_3", &result))
@@ -420,7 +407,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectByStage_3_nget(SAM_Geothe
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectTotal_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectTotal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "qRejectTotal", &result))
@@ -431,7 +418,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectTotal_nget(SAM_Geothermal
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "spec_vol", &result))
@@ -442,7 +429,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_nget(SAM_GeothermalCost
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_lp_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_lp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "spec_vol_lp", &result))
@@ -453,7 +440,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_lp_nget(SAM_GeothermalC
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_1_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "v_stage_1", &result))
@@ -464,7 +451,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_1_nget(SAM_GeothermalCos
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_2_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "v_stage_2", &result))
@@ -475,7 +462,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_2_nget(SAM_GeothermalCos
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_3_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "v_stage_3", &result))
@@ -486,7 +473,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_v_stage_3_nget(SAM_GeothermalCos
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_x_hp_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_x_hp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "x_hp", &result))
@@ -497,7 +484,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_x_hp_nget(SAM_GeothermalCosts pt
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_x_lp_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_x_lp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "x_lp", &result))
@@ -508,7 +495,7 @@ SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_x_lp_nget(SAM_GeothermalCosts pt
 
 
 
-SAM_EXPORT double SAM_GeothermalCosts_Outputs_baseline_cost_nget(SAM_GeothermalCosts ptr, SAM_error *err){
+SAM_EXPORT double SAM_GeothermalCosts_Outputs_baseline_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "baseline_cost", &result))

@@ -23,12 +23,8 @@ extern "C"
 
 	SAM_EXPORT typedef void * SAM_Snowmodel;
 
-	SAM_EXPORT SAM_Snowmodel SAM_Snowmodel_construct(const char* def, SAM_error* err);
-
 	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_Snowmodel_execute(SAM_Snowmodel data, int verbosity, SAM_error* err);
-
-	SAM_EXPORT void SAM_Snowmodel_destruct(SAM_Snowmodel system);
+	SAM_EXPORT int SAM_Snowmodel_execute(SAM_table data, int verbosity, SAM_error* err);
 
 
 	//
@@ -41,7 +37,7 @@ extern "C"
 	 * constraints: LENGTH=8760
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_snowdepth_aset(SAM_Snowmodel ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_snowdepth_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set subarray1_nmody: Number of Modules in a Row
@@ -49,7 +45,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_subarray1_nmody_nset(SAM_Snowmodel ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_subarray1_nmody_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set subarray1_poa_shaded: Plane of Array Incidence [W/m^2]
@@ -57,7 +53,7 @@ extern "C"
 	 * constraints: LENGTH=8760
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_subarray1_poa_shaded_aset(SAM_Snowmodel ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_subarray1_poa_shaded_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set subarray1_surf_tilt: Surface Tilt [Degrees]
@@ -65,7 +61,7 @@ extern "C"
 	 * constraints: LENGTH=8760
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_subarray1_surf_tilt_aset(SAM_Snowmodel ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_subarray1_surf_tilt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set subarray1_tilt: Base tilt [Degrees]
@@ -73,7 +69,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_subarray1_tilt_nset(SAM_Snowmodel ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_subarray1_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set subarray1_track_mode: Tracking Mode
@@ -81,7 +77,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_subarray1_track_mode_nset(SAM_Snowmodel ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_subarray1_track_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tdry: Ambient Temperature [Degrees Celsius]
@@ -89,7 +85,7 @@ extern "C"
 	 * constraints: LENGTH=8760
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_tdry_aset(SAM_Snowmodel ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_tdry_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set wspd: Wind Speed [m/s]
@@ -97,7 +93,7 @@ extern "C"
 	 * constraints: LENGTH=8760
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_wspd_aset(SAM_Snowmodel ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_wspd_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -110,7 +106,7 @@ extern "C"
 	 * constraints: LENGTH=8760
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Snowmodel_TimeSeries_hourly_gen_aset(SAM_Snowmodel ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Snowmodel_TimeSeries_hourly_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set sunup: Sun up over horizon [0/1]
@@ -118,54 +114,54 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Snowmodel_TimeSeries_sunup_aset(SAM_Snowmodel ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Snowmodel_TimeSeries_sunup_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	/**
 	 * PVSnowModel Getters
 	 */
 
-	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_snowdepth_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_snowdepth_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_nmody_nget(SAM_Snowmodel ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_nmody_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_subarray1_poa_shaded_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_subarray1_poa_shaded_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_subarray1_surf_tilt_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_subarray1_surf_tilt_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_tilt_nget(SAM_Snowmodel ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_tilt_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_track_mode_nget(SAM_Snowmodel ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_track_mode_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_tdry_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_tdry_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_wspd_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_wspd_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
 	 * TimeSeries Getters
 	 */
 
-	SAM_EXPORT double* SAM_Snowmodel_TimeSeries_hourly_gen_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_TimeSeries_hourly_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Snowmodel_TimeSeries_sunup_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_TimeSeries_sunup_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double SAM_Snowmodel_Outputs_annual_energy_nget(SAM_Snowmodel ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Snowmodel_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Snowmodel_Outputs_annual_energy_before_snow_nget(SAM_Snowmodel ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Snowmodel_Outputs_annual_energy_before_snow_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Snowmodel_Outputs_hourly_energy_before_snow_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_Outputs_hourly_energy_before_snow_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Snowmodel_Outputs_hourly_gen_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_Outputs_hourly_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Snowmodel_Outputs_monthly_energy_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Snowmodel_Outputs_monthly_energy_before_snow_aget(SAM_Snowmodel ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Snowmodel_Outputs_monthly_energy_before_snow_aget(SAM_table ptr, int* length, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

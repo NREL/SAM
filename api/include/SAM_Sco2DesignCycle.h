@@ -23,12 +23,8 @@ extern "C"
 
 	SAM_EXPORT typedef void * SAM_Sco2DesignCycle;
 
-	SAM_EXPORT SAM_Sco2DesignCycle SAM_Sco2DesignCycle_construct(const char* def, SAM_error* err);
-
 	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_Sco2DesignCycle_execute(SAM_Sco2DesignCycle data, int verbosity, SAM_error* err);
-
-	SAM_EXPORT void SAM_Sco2DesignCycle_destruct(SAM_Sco2DesignCycle system);
+	SAM_EXPORT int SAM_Sco2DesignCycle_execute(SAM_table data, int verbosity, SAM_error* err);
 
 
 	//
@@ -41,7 +37,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_N_t_des_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_N_t_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set I_P_high_limit: High pressure limit in cycle [MPa]
@@ -49,7 +45,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_P_high_limit_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_P_high_limit_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set I_T_mc_in_des: Main compressor inlet temp at design [C]
@@ -57,7 +53,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_mc_in_des_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_mc_in_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set I_T_t_in_des: Turbine inlet temp at design [C]
@@ -65,7 +61,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_t_in_des_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_t_in_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set I_UA_total_des: Total UA allocatable to recuperators [kW/K]
@@ -73,7 +69,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_UA_total_des_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_UA_total_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set I_W_dot_net_des: Design cycle power output [MW]
@@ -81,7 +77,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_W_dot_net_des_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_W_dot_net_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set I_eta_mc: Design main compressor isentropic efficiency [-]
@@ -89,7 +85,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_mc_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_mc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set I_eta_rc: Design re-compressor isentropic efficiency [-]
@@ -97,7 +93,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_rc_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_rc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set I_eta_t: Design turbine isentropic efficiency [-]
@@ -105,7 +101,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_t_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_t_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set I_opt_tol: Convergence tolerance - optimization calcs [-]
@@ -113,7 +109,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_opt_tol_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_opt_tol_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set I_tol: Convergence tolerance for performance calcs [-]
@@ -121,55 +117,55 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_tol_nset(SAM_Sco2DesignCycle ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_tol_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
 	 * SCO2PowerCycle Getters
 	 */
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_N_t_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_N_t_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_P_high_limit_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_P_high_limit_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_mc_in_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_mc_in_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_t_in_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_t_in_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_UA_total_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_UA_total_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_W_dot_net_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_W_dot_net_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_mc_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_mc_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_rc_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_rc_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_t_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_t_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_opt_tol_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_opt_tol_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_tol_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_tol_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_LT_frac_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_LT_frac_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_N_mc_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_N_mc_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_PR_mc_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_PR_mc_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_P_mc_out_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_P_mc_out_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Sco2DesignCycle_Outputs_O_T_array_des_aget(SAM_Sco2DesignCycle ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Sco2DesignCycle_Outputs_O_T_array_des_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_eta_thermal_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_eta_thermal_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_m_dot_PHX_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_m_dot_PHX_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_recomp_frac_des_nget(SAM_Sco2DesignCycle ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_recomp_frac_des_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

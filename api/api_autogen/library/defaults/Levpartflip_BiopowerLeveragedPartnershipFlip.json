@@ -37,7 +37,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 48535.6,
+			"system_capacity": 9707.12,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
@@ -50,7 +50,7 @@
 			"om_fuel_cost_escal": 0,
 			"om_opt_fuel_1_cost": [54.028200],
 			"om_opt_fuel_1_cost_escal": 0,
-			"om_opt_fuel_1_usage": 320113,
+			"om_opt_fuel_1_usage": 64022.5,
 			"om_opt_fuel_2_cost": [0.000000],
 			"om_opt_fuel_2_cost_escal": 0,
 			"om_opt_fuel_2_usage": 0,
@@ -58,7 +58,7 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [0.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.88118e+08
+			"total_installed_cost": 3.76236e+07
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -221,7 +221,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 48535.6
+			"system_capacity": 9707.12
 		},
 		"Moratorium": {
 			"loan_moratorium": 0
@@ -272,7 +272,7 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 3.76236e+06
+			"construction_financing_cost": 752473
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,

@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_IsccDesignPoint.h"
 
-SAM_EXPORT SAM_IsccDesignPoint SAM_IsccDesignPoint_construct(const char* def, SAM_error* err){
-	SAM_IsccDesignPoint result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_IsccDesignPoint_execute(SAM_IsccDesignPoint data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_IsccDesignPoint_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("iscc_design_point", data, verbosity, err);
@@ -27,54 +19,49 @@ SAM_EXPORT int SAM_IsccDesignPoint_execute(SAM_IsccDesignPoint data, int verbosi
 }
 
 
-SAM_EXPORT void SAM_IsccDesignPoint_destruct(SAM_IsccDesignPoint system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_IsccDesignPoint_Common_HTF_code_nset(SAM_IsccDesignPoint ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_IsccDesignPoint_Common_HTF_code_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "HTF_code", number);
 	});
 }
 
-SAM_EXPORT void SAM_IsccDesignPoint_Common_elev_nset(SAM_IsccDesignPoint ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_IsccDesignPoint_Common_elev_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "elev", number);
 	});
 }
 
-SAM_EXPORT void SAM_IsccDesignPoint_Common_field_fl_props_mset(SAM_IsccDesignPoint ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_IsccDesignPoint_Common_field_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "field_fl_props", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_IsccDesignPoint_Common_ngcc_model_nset(SAM_IsccDesignPoint ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_IsccDesignPoint_Common_ngcc_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ngcc_model", number);
 	});
 }
 
-SAM_EXPORT void SAM_IsccDesignPoint_Common_pinch_point_cold_nset(SAM_IsccDesignPoint ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_IsccDesignPoint_Common_pinch_point_cold_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pinch_point_cold", number);
 	});
 }
 
-SAM_EXPORT void SAM_IsccDesignPoint_Common_pinch_point_hot_nset(SAM_IsccDesignPoint ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_IsccDesignPoint_Common_pinch_point_hot_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pinch_point_hot", number);
 	});
 }
 
-SAM_EXPORT void SAM_IsccDesignPoint_Common_q_pb_design_nset(SAM_IsccDesignPoint ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_IsccDesignPoint_Common_q_pb_design_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_pb_design", number);
 	});
 }
 
-SAM_EXPORT double SAM_IsccDesignPoint_Common_HTF_code_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Common_HTF_code_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "HTF_code", &result))
@@ -85,7 +72,7 @@ SAM_EXPORT double SAM_IsccDesignPoint_Common_HTF_code_nget(SAM_IsccDesignPoint p
 
 
 
-SAM_EXPORT double SAM_IsccDesignPoint_Common_elev_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Common_elev_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "elev", &result))
@@ -96,7 +83,7 @@ SAM_EXPORT double SAM_IsccDesignPoint_Common_elev_nget(SAM_IsccDesignPoint ptr, 
 
 
 
-SAM_EXPORT double* SAM_IsccDesignPoint_Common_field_fl_props_mget(SAM_IsccDesignPoint ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_IsccDesignPoint_Common_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "field_fl_props", nrows, ncols);
@@ -108,7 +95,7 @@ SAM_EXPORT double* SAM_IsccDesignPoint_Common_field_fl_props_mget(SAM_IsccDesign
 
 
 
-SAM_EXPORT double SAM_IsccDesignPoint_Common_ngcc_model_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Common_ngcc_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ngcc_model", &result))
@@ -119,7 +106,7 @@ SAM_EXPORT double SAM_IsccDesignPoint_Common_ngcc_model_nget(SAM_IsccDesignPoint
 
 
 
-SAM_EXPORT double SAM_IsccDesignPoint_Common_pinch_point_cold_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Common_pinch_point_cold_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pinch_point_cold", &result))
@@ -130,7 +117,7 @@ SAM_EXPORT double SAM_IsccDesignPoint_Common_pinch_point_cold_nget(SAM_IsccDesig
 
 
 
-SAM_EXPORT double SAM_IsccDesignPoint_Common_pinch_point_hot_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Common_pinch_point_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pinch_point_hot", &result))
@@ -141,7 +128,7 @@ SAM_EXPORT double SAM_IsccDesignPoint_Common_pinch_point_hot_nget(SAM_IsccDesign
 
 
 
-SAM_EXPORT double SAM_IsccDesignPoint_Common_q_pb_design_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Common_q_pb_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_pb_design", &result))
@@ -152,7 +139,7 @@ SAM_EXPORT double SAM_IsccDesignPoint_Common_q_pb_design_nget(SAM_IsccDesignPoin
 
 
 
-SAM_EXPORT double SAM_IsccDesignPoint_Outputs_T_htf_cold_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Outputs_T_htf_cold_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_htf_cold", &result))
@@ -163,7 +150,7 @@ SAM_EXPORT double SAM_IsccDesignPoint_Outputs_T_htf_cold_nget(SAM_IsccDesignPoin
 
 
 
-SAM_EXPORT double SAM_IsccDesignPoint_Outputs_T_st_inject_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Outputs_T_st_inject_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_st_inject", &result))
@@ -174,7 +161,7 @@ SAM_EXPORT double SAM_IsccDesignPoint_Outputs_T_st_inject_nget(SAM_IsccDesignPoi
 
 
 
-SAM_EXPORT double SAM_IsccDesignPoint_Outputs_W_dot_fossil_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Outputs_W_dot_fossil_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "W_dot_fossil", &result))
@@ -185,7 +172,7 @@ SAM_EXPORT double SAM_IsccDesignPoint_Outputs_W_dot_fossil_nget(SAM_IsccDesignPo
 
 
 
-SAM_EXPORT double SAM_IsccDesignPoint_Outputs_W_dot_solar_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Outputs_W_dot_solar_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "W_dot_solar", &result))
@@ -196,7 +183,7 @@ SAM_EXPORT double SAM_IsccDesignPoint_Outputs_W_dot_solar_nget(SAM_IsccDesignPoi
 
 
 
-SAM_EXPORT double SAM_IsccDesignPoint_Outputs_q_solar_max_nget(SAM_IsccDesignPoint ptr, SAM_error *err){
+SAM_EXPORT double SAM_IsccDesignPoint_Outputs_q_solar_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_solar_max", &result))

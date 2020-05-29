@@ -830,7 +830,6 @@ void builder_generator::create_all(std::string cmod, const std::string &defaults
     // epand the subgraph to include ui variables which may affect downstream ssc variables
 //    graph->subgraph_ssc_to_ui(*subgraph);
 
-
     gather_variables_ssc(cmod);
     gather_equations(cmod);
 
@@ -843,21 +842,22 @@ void builder_generator::create_all(std::string cmod, const std::string &defaults
         std::cout << "Done\n";
         return;
     }
-//
+
+    bool stateful = cmod.find("stateful") != std::string::npos;
 
     // create C API
     if (print_capi){
         std::cout << "C API files... ";
         builder_C_API c_API(this);
 
-        c_API.create_SAM_headers(cmod, api_path + "/include");
-        c_API.create_SAM_definitions(cmod, api_path + "/modules");
+        c_API.create_SAM_headers(cmod, api_path + "/include", stateful);
+        c_API.create_SAM_definitions(cmod, api_path + "/modules", stateful);
     }
 
     if (print_pysam){
         std::cout << "PySAM files... ";
         builder_PySAM pySAM(this);
-        pySAM.create_PySAM_files(cmod, pysam_path);
+        pySAM.create_PySAM_files(cmod, pysam_path, stateful);
     }
 
     SAM_completed_cmods.insert({cmod, 1});

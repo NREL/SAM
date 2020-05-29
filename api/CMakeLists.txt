@@ -21,7 +21,7 @@ endif()
 
 #####################################################################################################################
 #
-# Project Settings 
+# Project Settings
 #
 #####################################################################################################################
 
@@ -38,8 +38,8 @@ set(SAM_API_SRC
         src/SAM_AdjustmentFactors.cpp
         src/SAM_eqns.cpp
         )
-file(GLOB SAM_API_MODULES ${PROJECT_SOURCE_DIR}/modules/*.cpp)
-		
+file(GLOB SAM_API_MODULES ${PROJECT_SOURCE_DIR}/modules/*.cpp ${PROJECT_SOURCE_DIR}/include/*.h)
+
 
 #####################################################################################################################
 #
@@ -51,7 +51,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
-    add_compile_options(/MP /W3 /wd4996)
+    add_compile_options(/MP /W3 /wd4996 /bigobj)
     add_compile_definitions( __DLL__ __64BIT__ __WINDOWS__ _WINDOWS _CRT_NON_CONFORMING_SWPRINTFS=1
         _SCL_SECURE_NO_WARNINGS=1 _UNICODE NOPCH)
     foreach (flag_var CMAKE_C_FLAGS_DEBUG CMAKE_CXX_FLAGS_DEBUG)
@@ -69,7 +69,7 @@ endif()
 
 
 #####################################################################################################################
-# 
+#
 # CMake Targets
 #
 #####################################################################################################################
@@ -90,7 +90,7 @@ endif()
 # required functions not exported in ssc.dll
 if(MSVC)
     target_sources(SAM_api PRIVATE $ENV{SSCDIR}/ssc/vartab.cpp $ENV{SSCDIR}/shared/lib_util.cpp)
-endif() 
+endif()
 
 # libSAM_api for PySAM
 if(APPLE)

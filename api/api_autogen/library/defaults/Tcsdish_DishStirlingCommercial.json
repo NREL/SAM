@@ -91,7 +91,7 @@
 			"tower_pipe_material": 1
 		},
 		"AdjustmentFactors": {
-			"constant": 0
+			"constant": 4
 		}
 	}
 }

@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_Poacalib.h"
 
-SAM_EXPORT SAM_Poacalib SAM_Poacalib_construct(const char* def, SAM_error* err){
-	SAM_Poacalib result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_Poacalib_execute(SAM_Poacalib data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_Poacalib_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("poacalib", data, verbosity, err);
@@ -27,72 +19,67 @@ SAM_EXPORT int SAM_Poacalib_execute(SAM_Poacalib data, int verbosity, SAM_error*
 }
 
 
-SAM_EXPORT void SAM_Poacalib_destruct(SAM_Poacalib system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Poacalib_POACalibrate_albedo_nset(SAM_Poacalib ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Poacalib_POACalibrate_albedo_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "albedo", number);
 	});
 }
 
-SAM_EXPORT void SAM_Poacalib_POACalibrate_array_az_nset(SAM_Poacalib ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Poacalib_POACalibrate_array_az_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "array_az", number);
 	});
 }
 
-SAM_EXPORT void SAM_Poacalib_POACalibrate_array_tilt_nset(SAM_Poacalib ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Poacalib_POACalibrate_array_tilt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "array_tilt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Poacalib_POACalibrate_beam_aset(SAM_Poacalib ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Poacalib_POACalibrate_beam_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "beam", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Poacalib_POACalibrate_diffuse_aset(SAM_Poacalib ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Poacalib_POACalibrate_diffuse_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "diffuse", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Poacalib_POACalibrate_latitude_nset(SAM_Poacalib ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Poacalib_POACalibrate_latitude_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "latitude", number);
 	});
 }
 
-SAM_EXPORT void SAM_Poacalib_POACalibrate_longitude_nset(SAM_Poacalib ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Poacalib_POACalibrate_longitude_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "longitude", number);
 	});
 }
 
-SAM_EXPORT void SAM_Poacalib_POACalibrate_poa_aset(SAM_Poacalib ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Poacalib_POACalibrate_poa_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "poa", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Poacalib_POACalibrate_time_zone_nset(SAM_Poacalib ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Poacalib_POACalibrate_time_zone_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "time_zone", number);
 	});
 }
 
-SAM_EXPORT void SAM_Poacalib_POACalibrate_year_nset(SAM_Poacalib ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Poacalib_POACalibrate_year_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "year", number);
 	});
 }
 
-SAM_EXPORT double SAM_Poacalib_POACalibrate_albedo_nget(SAM_Poacalib ptr, SAM_error *err){
+SAM_EXPORT double SAM_Poacalib_POACalibrate_albedo_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "albedo", &result))
@@ -103,7 +90,7 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_albedo_nget(SAM_Poacalib ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Poacalib_POACalibrate_array_az_nget(SAM_Poacalib ptr, SAM_error *err){
+SAM_EXPORT double SAM_Poacalib_POACalibrate_array_az_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "array_az", &result))
@@ -114,7 +101,7 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_array_az_nget(SAM_Poacalib ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Poacalib_POACalibrate_array_tilt_nget(SAM_Poacalib ptr, SAM_error *err){
+SAM_EXPORT double SAM_Poacalib_POACalibrate_array_tilt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "array_tilt", &result))
@@ -125,7 +112,7 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_array_tilt_nget(SAM_Poacalib ptr, SA
 
 
 
-SAM_EXPORT double* SAM_Poacalib_POACalibrate_beam_aget(SAM_Poacalib ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Poacalib_POACalibrate_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "beam", length);
@@ -137,7 +124,7 @@ SAM_EXPORT double* SAM_Poacalib_POACalibrate_beam_aget(SAM_Poacalib ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Poacalib_POACalibrate_diffuse_aget(SAM_Poacalib ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Poacalib_POACalibrate_diffuse_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "diffuse", length);
@@ -149,7 +136,7 @@ SAM_EXPORT double* SAM_Poacalib_POACalibrate_diffuse_aget(SAM_Poacalib ptr, int*
 
 
 
-SAM_EXPORT double SAM_Poacalib_POACalibrate_latitude_nget(SAM_Poacalib ptr, SAM_error *err){
+SAM_EXPORT double SAM_Poacalib_POACalibrate_latitude_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "latitude", &result))
@@ -160,7 +147,7 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_latitude_nget(SAM_Poacalib ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Poacalib_POACalibrate_longitude_nget(SAM_Poacalib ptr, SAM_error *err){
+SAM_EXPORT double SAM_Poacalib_POACalibrate_longitude_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "longitude", &result))
@@ -171,7 +158,7 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_longitude_nget(SAM_Poacalib ptr, SAM
 
 
 
-SAM_EXPORT double* SAM_Poacalib_POACalibrate_poa_aget(SAM_Poacalib ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Poacalib_POACalibrate_poa_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "poa", length);
@@ -183,7 +170,7 @@ SAM_EXPORT double* SAM_Poacalib_POACalibrate_poa_aget(SAM_Poacalib ptr, int* len
 
 
 
-SAM_EXPORT double SAM_Poacalib_POACalibrate_time_zone_nget(SAM_Poacalib ptr, SAM_error *err){
+SAM_EXPORT double SAM_Poacalib_POACalibrate_time_zone_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "time_zone", &result))
@@ -194,7 +181,7 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_time_zone_nget(SAM_Poacalib ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Poacalib_POACalibrate_year_nget(SAM_Poacalib ptr, SAM_error *err){
+SAM_EXPORT double SAM_Poacalib_POACalibrate_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "year", &result))
@@ -205,7 +192,7 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_year_nget(SAM_Poacalib ptr, SAM_erro
 
 
 
-SAM_EXPORT double* SAM_Poacalib_Outputs_pcalc_aget(SAM_Poacalib ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Poacalib_Outputs_pcalc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pcalc", length);
