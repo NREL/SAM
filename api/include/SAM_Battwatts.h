@@ -40,7 +40,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battwatts_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set system_use_lifetime_output: PV lifetime simulation [0/1]
+	 * Set system_use_lifetime_output: Enable lifetime simulation [0/1]
 	 * options: 0=SingleYearRepeated,1=RunEveryYear
 	 * constraints: BOOLEAN
 	 * required if: ?=0
