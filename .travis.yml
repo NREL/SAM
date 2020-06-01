@@ -32,9 +32,9 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then results="1"; nohup xvfb-run $SAMNTDIR"/build/deploy/linux_64/SAM.bin" no_sam_file $SAMNTDIR"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l $SAMNTDIR/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof $SAMNTDIR/build/test_results_linux64.csv; results=$?; done; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_linux64.csv $SAMNTDIR/build/test_results_linux64.csv false; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_win64.csv $SAMNTDIR/build/test_results_linux64.csv true; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then results="1"; Xvfb :1337 & export DISPLAY=:1337 & $SAMNTDIR"/build/SAM.app" no_sam_file $SAMNTDIR"/build/deploy/test_script_ow.lk"&>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l $SAMNTDIR/build/test_results_osx64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof $SAMNTDIR/build/test_results_osx64.csv; results=$?; done; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_osx64.csv $SAMNTDIR/build/test_results_osx64.csv false; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_win64.csv $SAMNTDIR/build/test_results_osx64.csv true; fi  
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then results="1"; Xvfb :1337 & export DISPLAY=:1337 & $SAMNTDIR"/build/SAM.app/Contents/MacOS/SAM" no_sam_file $SAMNTDIR"/build/SAM.app/Contents/test_script_ow.lk"&>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l $SAMNTDIR/build/SAM.app/test_results_osx64.csv | cut -f1 -d "/"); echo $lines; grep -i final_configuration_eof $SAMNTDIR/build/SAM.app/test_results_osx64.csv; results=$?; done; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_osx64.csv $SAMNTDIR/build/SAM.app/test_results_osx64.csv false; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python $SAMNTDIR/test/compare_lk_test_output.py $SAMNTDIR/test_results_win64.csv $SAMNTDIR/build/SAM.app/test_results_osx64.csv true; fi
 
 install:
   - sudo apt-get install -y libwebkitgtk-dev libgtk2.0-dev libgl1-mesa-dev mesa-common-dev freeglut3-dev libcurl4-openssl-dev libc6
