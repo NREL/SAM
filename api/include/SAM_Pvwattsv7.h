@@ -41,7 +41,7 @@ extern "C"
 
 	/**
 	 * Set solar_resource_data: Weather data
-	 * options: dn,df,tdry,wspd,lat,lon,tz
+	 * options: dn,df,tdry,wspd,lat,lon,tz,elev
 	 * constraints: None
 	 * required if: ?
 	 */
@@ -398,6 +398,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvwattsv7_Outputs_elev_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv7_Outputs_estimated_rows_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_gh_aget(SAM_table ptr, int* length, SAM_error *err);
 

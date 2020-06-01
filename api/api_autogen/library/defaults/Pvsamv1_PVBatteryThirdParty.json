@@ -411,7 +411,7 @@
 			],
 			"batt_calendar_q0": 1.02,
 			"batt_chem": 1,
-			"batt_h_to_ambient": 5,
+			"batt_h_to_ambient": 50,
 			"batt_initial_SOC": 50,
 			"batt_lifetime_matrix": [
 				[20.000000, 0.000000, 100.000000],
