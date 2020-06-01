@@ -275,6 +275,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvwattsv5_Outputs_elev_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvwattsv5_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvwattsv5_Outputs_gh_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv5_Outputs_inverter_count_nget(SAM_table ptr, SAM_error *err);

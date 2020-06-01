@@ -3527,7 +3527,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_dc_ac_efficiency_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dc_dc_efficiency: PV DC to battery DC efficiency
+	 * Set batt_dc_dc_efficiency: System DC to battery DC efficiency
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3990,7 +3990,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_custom_dispatch_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_charge: PV charging allowed for automated dispatch? [kW]
+	 * Set batt_dispatch_auto_can_charge: System charging allowed for automated dispatch? [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3998,7 +3998,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_clipcharge: Battery can charge from clipped PV for automated dispatch? [kW]
+	 * Set batt_dispatch_auto_can_clipcharge: Battery can charge from clipped power for automated dispatch? [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4046,7 +4046,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_look_ahead_hours_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_pv_clipping_forecast: PV clipping forecast [kW]
+	 * Set batt_pv_clipping_forecast: Power clipping forecast [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
@@ -4054,7 +4054,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_pv_clipping_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_pv_dc_forecast: PV dc power forecast [kW]
+	 * Set batt_pv_dc_forecast: DC power forecast [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
