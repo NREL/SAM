@@ -1,5 +1,5 @@
 1
-742
+744
 A_aperture
 1
 1
@@ -1203,7 +1203,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4.4626e+06
+4462600
 csp.mslf.cost.power_plant
 1
 1
@@ -4641,6 +4641,18 @@ ur_name
 4
 25
 Arizona Public Service Co
+ur_nm_credit_month
+1
+1
+1
+1
+11
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
 ur_nm_yearend_sell_rate
 1
 1

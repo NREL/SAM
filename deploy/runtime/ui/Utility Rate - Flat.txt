@@ -1,7 +1,7 @@
 Utility Rate - Flat
 1422
 522
-22
+24
 GroupBox
 
 1
@@ -141,7 +141,7 @@ Width
 1403
 Height
 3
-170
+177
 Tool Tip
 5
 0
@@ -486,7 +486,7 @@ X
 522
 Y
 3
-273
+300
 Width
 3
 422
@@ -673,6 +673,83 @@ BackColour
 TabOrder
 3
 10
+Choice
+
+1
+9
+Name
+5
+18
+ur_nm_credit_month
+X
+3
+684
+Y
+3
+267
+Width
+3
+99
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+12
+Jan
+Feb
+Mar
+Apr
+May
+Jun
+Jul
+Aug
+Sep
+Oct
+Nov
+Dec
+Selection
+3
+11
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+21
+ur_nm_credit_rollover
+X
+3
+831
+Y
+3
+267
+Width
+3
+225
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+29
+Rollover credits year to year
+State
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -683,7 +760,7 @@ Name
 ur_nm_yearend_sell_rate
 X
 3
-826
+831
 Y
 3
 234
@@ -826,7 +903,7 @@ X
 717
 Y
 3
-333
+360
 Width
 3
 184
@@ -863,7 +940,7 @@ X
 717
 Y
 3
-303
+330
 Width
 3
 184
@@ -888,7 +965,7 @@ TabOrder
 3
 3
 
-10
+12
 rate_escalation
 3
 2
@@ -974,10 +1051,38 @@ Electricity Rates - General
 1
 0
 Numeric
+ur_nm_credit_month
+3
+1
+Month for credit rollover:
+ 
+ 
+0
+2
+1
+1
+1
+1
+0
+Default
+ur_nm_credit_rollover
+3
+1
+ 
+ 
+ 
+0
+2
+1
+1
+1
+1
+0
+Default
 ur_nm_yearend_sell_rate
 3
 1
-Sell rate for kWh credits remaining at end of year
+Sell rate for kWh credits remaining at end of specified month
 $/kWh
 Electricity Rates - General
 0

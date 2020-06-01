@@ -1,5 +1,5 @@
 1
-491
+493
 ac_nameplate
 1
 1
@@ -2962,6 +2962,18 @@ ur_name
 4
 18
 Generic Commercial
+ur_nm_credit_month
+1
+1
+1
+1
+11
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
 ur_nm_yearend_sell_rate
 1
 1
