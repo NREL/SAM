@@ -4,7 +4,7 @@ These files are LK scripts that you can run from the SAM user interface.
 
 For LK samples demonstrating Excel objects and functions, see the [Excel Exchange folder](../Excel%20Exchange).
 
-For LK samples demonstrating DView, see the[DView Functions folder](/DView%20Functions).
+For LK samples demonstrating DView, see the [DView Functions folder](DView%20Functions).
 
 ### To download and run sample script:
 
