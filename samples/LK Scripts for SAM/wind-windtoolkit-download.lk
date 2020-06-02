@@ -1,0 +1,55 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+	This script downloads a wind data file in the SAM SRW format from the NREL
+	WIND Toolkit dataset given a latitude and longitude. It replicates the
+	function of the Download button on the Wind Resource input page in SAM.
+
+	It requires an API key from the NREL Developer Network at:
+	https://developer.nrel.gov
+
+	Tested in SAM 2020.2.29
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+year = '2008'; // available years 2007 - 2012
+lat = '40';
+lon = '-116';
+key = 'abc123'; // replace with key from NREL Developer Network
+
+// set the .srw file name to store the downloaded data
+path = choose_dir( cwd(), 'Choose Folder to Store SRW File' );
+fname = 'wind_toolkit_' + to_string( year ) + '_' + to_string( lat ) + '_' + to_string ( lon ) + '.srw';
+f = path +'/' + fname;
+
+// special NREL Developer API endpoint for SAM
+url = 'http://developer.nrel.gov/api/wind/srw_aggregate_extract?api_key=<APIKEY>&year=<YEAR>&lat=<LAT>&lon=<LON>';
+url = replace(url, '<APIKEY>', key);
+url = replace(url, '<YEAR>', year);
+url = replace(url, '<LAT>', lat);
+url = replace(url, '<LON>', lon);
+
+// download file
+msg = '';
+ok = curl( url, { 'file' = f , 'message' = msg } );
+
+// check downloaded file
+if ( ok ) // curl() function returned a file
+{
+	x = json_file( f );
+	if ( typeof( x ) == 'number' ) // assume file contains wind data file
+	{
+		outln( 'Wind data file downloaded to ' + f );
+		browse( path_only( f ) );
+	}
+	else // x is a json table with error message, api key could be invalid
+	{
+		outln(x);
+	}	
+}
+else // curl() function failed to return a file, url could be malformed
+{
+	outln( 'Download failed: ' + url );
+	outln( msg );
+}

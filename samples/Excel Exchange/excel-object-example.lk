@@ -1,0 +1,116 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+	This script demonstrates how to use an LK Excel object. It replicates the 
+	functionality of SAM's Excel Exchange feature, and uses the same sample file 
+	as the Excel Exchange example so you can compare the two approaches.
+	
+	Note that both Excel Exchange and the LK script "xl_" functions work with 
+	an Excel object that is a copy of an Excel file, so values are not saved
+	to the Excel file.
+	
+	The best way to save data to an Excel file is to save it to a CSV file using
+	the LK csvread(), csvwrite(), and csvconv() functions, and then set up your 
+	Excel file to read data from the CSV File.
+
+	The script is designed to be run from the lk-excel-object-example.sam
+	file with the sam-exel-exchange-example.xlsx in the same folder.
+
+	Script originally written in SAM 2014.11.24
+	Updated and tested in SAM 2020.2.29 r2
+	
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+//check operating system and exit if not Windows
+os = ostype();
+if ( os != 'win32' && os != 'win64' )
+{
+	msgbox('Excel automation only works in Windows!\nExiting script.');
+	exit;
+}
+
+//set the current SAM case
+if ( case_name() != 'Residential PV System' )
+{
+	msgbox('Script designed to work with excel-object-example.sam file.\nCurrent case not "Residential PV System".\nExiting script.' );
+	exit;
+}
+
+//create an Excel object and open the Excel file
+outln( 'Creating Excel object and exchanging data.' );
+xl = xl_create();
+path = path_only( project_file() );
+f_name = path + '/excel-exchange-example.xlsx';
+if ( file_exists( f_name ) )
+{
+	xl_open(xl, f_name );
+}
+else
+{
+	msgbox( 'Could not find Excel file!\n' + f_name );
+	exit;
+}
+
+//Step 1: read input values from SAM and write them to Excel.
+//Do this first because the costs in Step 2 are calculated
+//using Excel formulas based on the number of modules and inverters.
+n_modules = get('total_modules');
+n_inverters = get('inverter_count');
+
+// xl_set( <oject>, <value>, <named range or cell reference>)
+xl_set(xl,n_modules,'number_of_modules');
+xl_set(xl,n_inverters,'number_of_inverters');
+
+//Step 2: read values from Excel
+//These values will be calculated using the values from Step 1.
+//values are read from the XL object as strings, so need to be 
+//converted to numbers xl_get() can read either cell references (D33)
+// or cell names (module_cost) from Excel.
+// xl_get( <object>, <named range or cell reference> )
+module = to_real( xl_get(xl,'module_cost') ); // named range example
+inverter = to_real( xl_get(xl,'D33') ); // cell reference example
+bos = to_real( xl_get(xl,'bos_cost') );
+labor = to_real( xl_get(xl,'labor_cost') );
+overhead = to_real( xl_get(xl, 'margin_cost') );
+
+//close the Excel file and free the Excel object
+xl_close(xl);
+xl_free(xl);
+
+//Step 3: Set values of SAM inputs
+set('module_costunits',0); //set module cost units to $/Wdc
+set('per_module',module);
+set('inverter_costunits',1); //set inverter cost units to $/Wdc
+set('per_inverter',inverter);
+set('bos_equip_perwatt',bos);
+set('install_labor_perwatt',labor);
+set('install_margin_perwatt',overhead);
+
+//Step 4: Run simulation and display results
+outln('Running simulation.');
+msg="";
+ok = simulate(msg,1);
+if (ok==true) 
+{
+	outln("Simulation complete with values from Excel. See results in the " + active_case() + " case.");
+	outln('\nSent to Excel:');
+	outln('Number of modules = ' + get('total_modules') );
+	outln('Number of inverters = ' + get('inverter_count') );
+	outln('\nCaptured from Excel:');
+	outln('Module cost ($/WDC) = ' + get('per_module') );
+	outln('Inverter cost ($/WDC) = ' + get('per_inverter') );
+	outln('Balance of system equipment, capacity ($/WDC) = ' + get('bos_equip_perwatt') );
+	outln('Installation labor, capacity ($/WDC) = ' + get('install_labor_perwatt') );
+	outln('Installer margin and overhead, capacity ($/WDC) = ' + get('install_margin_perwatt') );
+	outln('\nResult:');
+	outln('NPV = $' + get('npv') );
+}	
+else 
+{
+	outln("Simulation failed with the following messages:\n",msg);
+}	
+
+
+
+

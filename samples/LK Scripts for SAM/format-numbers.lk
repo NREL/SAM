@@ -1,0 +1,70 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+	This script defines a function to format numbers as strings using the sprintf()
+	function. The function makes it possible to use comma thousands separators
+	and set the number of decimal places.
+
+	Last tested in SAM 2020.2.29 r2
+	
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+function num_to_str( x , d )
+{
+	// only format x if it is a number
+	if ( typeof(x) == 'number' )
+	{
+		// The sprintf() function in this step converts a number (for d = 0) like 409.857 to 41 instead of 410.
+		// This if-else condition is a workaround that bug.
+		if( ( d == 0) && (mod( round(x) , 10) <= 0) )	
+			{
+				x = round(x);
+				str = sprintf('%,',x);
+			}
+		else 
+			{ str = sprintf('%.'+to_string(d)+',',x); }
+
+		arr = split(str,'.');
+		if ( #arr > 1 )
+			{ num_decs = strlen(to_string(arr[1])); }
+		else
+			{ num_decs = 0; }
+		// if number has one or more decimal places less than the desired number	
+		if ( #arr > 1 && num_decs < d)
+		{
+			for (i=0; i<d-num_decs; i++)
+				{ str += '0'; }
+		}
+		// if number has no decimal places
+		elseif ( #arr == 1 && d > 0 )
+		{
+			str += '.';
+			for (i=0; i<d; i++)
+				{ str += '0'; }
+		}
+	}
+	// if x is a string, return it
+	elseif ( typeof(x) == 'string' )
+		{ str = x; }
+	// if x is not a number or string, convert it to a string with no formatting	
+	else	
+		{ str = to_string( x ); }
+	return str;
+}
+
+
+x = 6490000000;
+outln ( 'x = ' + x );
+outln( 'round(x) = ' + round(x) );
+outln( "sprintf('%,',x) = " + sprintf('%,',x) );
+outln( 'num_to_str(x,0) = ' + num_to_str(x,0) );
+outln( "sprintf('%.2f',x) = " + sprintf('%.2f',x) );
+
+outln();
+
+x = 123456789.12345789;
+outln ( 'x = ' + x );
+outln( 'round(x) = ' + round(x) );
+outln( "sprintf('%,',x) = " + sprintf('%,',x) );
+outln( "sprintf('%.2f',x) = " + sprintf('%.2f',x) );
+outln( 'num_to_str(x,2) = ' + num_to_str(x,2) );

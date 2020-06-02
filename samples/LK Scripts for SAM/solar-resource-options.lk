@@ -1,0 +1,132 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+This script demonstrates options for setting the weather file for SAM's 
+solar performance models.
+
+It does the following three things:
+
+1. Show the current weather file, and display values of library metadata that
+   appears on the Location and Resource page.
+   
+2. Set the weather file to one from SAM's solar resource library.
+
+3. Set the weather file to a file stored on disk that is not in the solar
+   resource library.
+
+The variable solar_resource is the current selection in the solar resource
+library. When use_specific_weather_file = 0, SAM uses this weather file for the 
+simulation.
+   
+The variable use_specific_weather_file determines whether SAM uses a weather
+file from the library or one that you assign to user_specified weather file in 
+an LK script:
+
+	When use_specific_weather_file = 1, SAM uses the file specified by  
+	user_specified_weather file as the weather file and ignores the current 
+	library selection.
+
+	user_specified_weather is a string for the full path of the weather file, 
+	for example: user_specified_weather_file = "c:/My Weather Data/weather file.csv"
+
+This script also demonstrates the use of the choose_file() function.
+
+Tested in SAM 2020.2.29 r2
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+outln("Running script for Case: " + case_name() + "\n");
+
+outln("============================");
+outln("1. Show current weather file");
+outln("============================\n");
+
+file= get('solar_resource_file');
+outln("The current solar resource file is:");
+outln(file);
+
+source=get('solar_data_source');
+name=get('solar_data_file_name');
+location=get('solar_resource');
+outln("\nMetadata for the selected location in the solar resource library (may not match current weather data):");
+outln("Data source="+source);
+outln("Data file="+name);
+outln("Name for library list="+location);
+
+outln("\n============================");
+outln("2: Choose file from solar resource library");
+outln("============================\n");
+
+set('use_specific_weather_file',0);
+library_choices = library("SolarResourceData");
+library_selection = choose_from_list(library_choices,"Choose a location from the library:","Choose from Library",0);
+outln("The library selection is now:");
+outln(library_selection);
+set("solar_resource",library_selection);
+
+file= get('solar_resource_file');
+outln("The solar resource file is now (from library):");
+outln(file);
+
+source=get('solar_data_source');
+name=get('solar_data_file_name');
+location=get('solar_resource');
+outln("\nMetadata for the selected location in the solar resource library (should match current file):");
+outln("Data source="+source);
+outln("Data file="+name);
+outln("Name for library list="+location);
+
+outln("\n============================");
+outln("2: Choose a file stored on disk");
+outln("============================\n");
+
+set('use_specific_weather_file',1);
+
+new_file = choose_file( homedir(),"Choose a New Weather File:","Solar Resource Files (*.csv, *.epw, *.tm2)|*.csv; *.epw; *.tm2",0,0 );
+set('user_specified_weather_file', new_file);
+
+file= get('solar_resource_file');
+outln("The solar resource file is now set by this script:");
+outln(file);
+
+source=get('solar_data_source');
+name=get('solar_data_file_name');
+location=get('solar_resource');
+outln("\nMetadata for the selected location in the solar resource library (may not match current file):");
+outln("Data source="+source);
+outln("Data file="+name);
+outln("Name for library list="+location);
+
+outln("\n============================");
+outln("List of weather file variables");
+outln("============================\n");
+
+// Weather file name from solar resource library CSV file stored in local AppData folder.
+// The library list on the Location and Resource page automatically reads this value from
+// the CSV file. You can use this variable to choose a file from the solar resource 
+// library as shown above in Example 2. Setting the value of this variable is the same
+// as choosing a weather file from the library on the Location and Resource page.
+outln('File name for current solar resource library selection:\nsolar_data_file_name = '+get('solar_data_file_name'));
+
+// Value of solar_data_file_name when the Location and Resource page loads. This variable
+// is used internally by the Location and Resource input page's user interface callback 
+// script to display messages. It has no effect on simulations, so you should not use
+// it to set the weather file.
+outln('\nFile name for library selection when Locaiton and Resource page was last loaded:\nsolar_data_file_name_load = '+get('solar_data_file_name_load'));
+
+// Weather file name used for simulation. You can use this variable to set the weather file
+// as long as use_specific_weather_file is set to zero. This will also update the weather
+// file on the Location and Resource page.
+outln('\nCurrent weather file for simulation:\nsolar_resource_file = '+get('solar_resource_file'));
+
+// The following two variables are legacy variables to provide backward compatibility
+// for older LK scripts.
+
+// Weather file name specified by LK script. You can use this variable to set the weather
+// file when use_specific_weather_file is set to one. 
+outln('\nWeather file from script:\nuser_specified_weather_file = '+get('user_specified_weather_file'));
+
+// Overrides solar_resource_file so that user_specified_weather_file is used
+// for simulation.
+outln('\nBoolean indicating whether to use weather file specified by LK script or current weather file:\nuse_specific_weather_file = '+get('use_specific_weather_file'));
