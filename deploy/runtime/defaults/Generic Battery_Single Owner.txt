@@ -1,5 +1,5 @@
 1
-538
+540
 LeadAcid_q10
 1
 1
@@ -3316,6 +3316,18 @@ ur_monthly_min_charge
 ur_name
 1
 4
+0
+ur_nm_credit_month
+1
+1
+1
+1
+11
+ur_nm_credit_rollover
+1
+1
+1
+1
 0
 ur_nm_yearend_sell_rate
 1
