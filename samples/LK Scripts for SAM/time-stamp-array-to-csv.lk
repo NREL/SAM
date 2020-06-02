@@ -1,0 +1,55 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+	This script creates an array of time stamp data for a given time step and
+	writes it to a CSV file.
+	
+	For example, given ts_min = 15, it creates an array of 
+	rows = 4 time steps per hour * 8760 hours per year = 35040 time steps per year
+	
+
+	Tested in SAM 2020.2.29 r2
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+// change this value to set the time step
+ts_min = 15; // time steps in minutes
+
+
+ts_per_h = 60 / ts_min; // time steps per hour
+ts_per_year = ts_per_h * 8760;
+
+outln( ts_per_h );
+outln( ts_per_year );
+
+months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+days = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+array = alloc( ts_per_year + 1 ); // number of time steps plus header row
+array[0] = ['Time Step','Hour of Year', 'Month', 'Day', 'Hour of Day', 'Minute of Hour' ];
+
+outln('Running...');
+n=0;
+hr_of_year = 0;
+for ( m=0; m<#months; m++ )
+{
+	for ( d=0; d<days[m]; d++ )
+	{
+		for ( h=0; h<24; h ++ )
+		{
+			minute = 0;
+			for ( ts=0; ts<ts_per_h; ts++ )
+			{
+				array[n+1] = [ to_string( n ), to_string( hr_of_year ), months[m] , to_string(d+1) , to_string(h) , to_string( minute )  ];
+				minute += ts_min;
+				n++;
+			}	
+			hr_of_year++;
+		}
+	}	
+}
+
+outln(array);
+
+csvwrite( cwd() + '/results.csv' , array );
+
+browse ( cwd() + '/results.csv');			

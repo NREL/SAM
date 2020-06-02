@@ -1,0 +1,56 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+This script demonstrates the use of the webapi() function to access the APIs
+SAM uses to download data from online databases and for other functions.
+
+The webapi() function returns a list of URLS stored in the webapis.conf text
+file in the SAM runtime folder.
+
+Written in SAM 2018.11.11, January 2019
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+outln( 'SAM runtime folder: ' + runtimedir() );
+outln();
+
+outln( 'List of APIs defined in webapis.conf file:');
+api_list_string = webapi();
+api_list_array = split( api_list_string, ',' );
+for ( i=0; i<#api_list_array; i++ ) { outln( api_list_array[i] ); }
+outln();
+
+outln( 'URL for each API in the list:' );
+for ( i = 0; i<#api_list_array; i++ )
+{
+	api_url_list[i] = webapi( api_list_array[i] );
+}
+for( i=0; i<#api_list_array; i++ )
+{
+	outln( api_list_array[i], ' = ', api_url_list[i] );
+}
+
+// nsrdb_query example
+//replace placeholders in url with valid values 
+outln( 'URL for NSRDB query with placeholders replace by valid values: ' );
+url = webapi('nsrdb_query');
+lat = 39.7;
+lon = -105.2;
+url = replace( url, '<LAT>', lat );
+url = replace( url, '<LON>', lon );
+
+// curl() replaces <SAMAPIKEY> with SAM's built-in API key
+// you can also get your own key at https://developer.nrel.gov and use replace()
+// to replace <SAMAPIKEY> with your own key.
+json_str = curl( url );
+outln( url );
+outln();
+
+outln( '\nJSON string returned by NSRDB query:' );
+outln( json_str );
+
+// json_read() converts a JSON string into a table
+outln( '\nJSON string converted to a variable by json_read() function' );
+var = json_read( json_str );
+outln( var );

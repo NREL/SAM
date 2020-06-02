@@ -1,0 +1,105 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+ This LK script demonstrates two techniques for running simulations
+ for two or more weather files.
+
+ Instructions:
+ 
+ 1. Prepare a folder with two or more valid weather files in the SAM CSV format.
+ 
+ 2. Create a SAM file (.sam) with a solar (PV, CSP, or SWH) case.
+
+ 3. Run the script and follow the prompts.
+ 
+ Last tested with SAM 2020.2.29.
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+// override solar resource library
+set('use_specific_weather_file',1);
+
+// get folder containing multiple weather files
+dir = choose_dir( cwd() );
+
+// get list of weather files
+files = dir_list(dir,'*');
+for (i=0;i<#files;i++)
+{
+	files[i] = dir + '/' + files[i];
+}
+outln("There are " + #files + " files in " + dir);
+outln();
+
+// Option 1: Run a  simulation for each weather file ///////////////////////////
+outln("Running sequential simulations with the simulate() function...");
+errors='';
+for (i=0;i<#files;i++)
+{
+	set('user_specified_weather_file',files[i]);
+	ok=simulate(errors,0);
+	arr=split(errors,'\n'); //only show first error for legibility
+	if (!ok) { outln(file_only(files[i]) + ": " + arr[0]); }
+	else { outln(file_only(files[i]) + ": " + "Annual Energy (kWh) = " + get('annual_energy')); }
+}
+outln("Done with individual simulations.");
+outln();
+
+// Option 2: Run parallel simulations //////////////////////////////////////////
+// This option may be faster than Option 1 if there are a very large number of
+// weather files in the folder.
+
+// set up a vector of runs for parallel simulations
+outln("Setting up input vector for parsim() function.");
+nruns = #files;
+runs = alloc(nruns);
+for (i=0;i<nruns;i++) 
+{
+	outln( 'Run ' + i + ': ' + files[i] );
+	// each element of the runs vectors
+	// is a table with 'variable name'=value pairs
+	// that specifies the values that are different
+	// from the base case for that specific run
+	runs[i] = { 'user_specified_weather_file'=files[i]};            
+}
+outln("Table for parsim() function: " + runs);
+outln("Done setting up input vector.");
+outln();
+
+// run parallel simulations
+// you can optionally change the number of CPUs used:
+//   e.g.   nok = parsim( runs, {'nthreads'=2} );
+//   by default, all CPU cores are used.
+//   the number of successful runs is returned.
+outln("Running parallel simulations with parsim() function...");
+nok = parsim( runs );
+if ( nok == nruns )
+{
+	// if all runs succeeded, extract the outputs you want from each run
+	for( i=0;i<nruns;i++ )
+	{
+		annkwh = parout(i, 'annual_energy');
+		outln( 'run ' + i + ': annual_energy=' + annkwh );
+	}
+}
+else
+{
+	// if any of them failed, you can get more information
+	// by not passing a variable name to the parout() function
+	// which will then return a table with these fields:
+	//     ok (true/false),
+	//     time (msec), 
+	//     errors (string), 
+	//     warnings (string),
+	//     notices (string)
+	outln("One or more simulation runs failed:");
+	for( i=0;i<nruns;i++ )
+	{
+		outln( 'run ' + i + ':' + parout(i) + '\n');
+	}	
+}
+outln("Done runing parallel simulations.");
+
+// enable solar resource library
+set('use_specific_weather_file',0);

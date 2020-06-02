@@ -1,0 +1,87 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+   This script creates contour plots of matrix data for the marine energy wave
+   model.
+   
+   To use the script:
+   
+   1. Create or open a Marine Wave case.
+   
+   2. Run a simulation.
+   
+   3. Run the script.
+   
+   Tested in SAM 2020.2.29
+   
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+function matrix_to_table ( m )
+{
+	n=0;
+	T = {};
+	for ( i=1; i<#m; i++ )
+	{
+		for ( j=1; j<#m[0]; j++ )
+		{
+			T.y[n] = m[i][0];
+			T.x[n] = m[0][j];
+			T.z[n] = m[i][j];
+			n++;
+		}
+	}
+	T.nx = #m[0]-1;
+	T.xmin = min(T.x);
+	T.xmax = max(T.x);
+	T.ny = #m-1;
+	T.ymin = min(T.y);
+	T.ymax = max(T.y);
+	return T;
+}
+
+function get_wave_resource_summary ()
+{
+	T.probability_of_dominant_wave = get('max_frequency');
+	T.dominant_wave_height = get('max_frequency_Hs');
+	T.dominat_wave_period = get('max_frequency_Te');
+	T.frequency_sum = get('frequency_sum');
+	return T;
+}
+
+n = 20;
+
+outln('Plotting wave resource matrix.');
+W = matrix_to_table( get('wave_resource_matrix') );
+G = meshgrid( W.xmin, W.xmax, W.nx, W.ymin, W.ymax, W.ny );
+Z = griddata( W.x, W.y, W.z, G.xq, G.yq );
+newplot(true);
+contour( G.xq, G.yq, Z ,{'filled'=true, 'levels'=n, 'reverseyaxis'=true, 'max' = 3});
+plotopt( {'title'='Frequency of Occurrence of Sea States (%)'});
+axis( 'x1', {'label'='Wave Energy Period, Te (s)'});
+axis( 'y1', {'label'='Significant Wave Height, Hs (m)'});
+/*X = get_wave_resource_summary();
+str = 'probability of dominant wave = ' + X.probability_of_dominant_wave + 'm';
+annotate( str , [0,0] , {'align'='center','colour'='white'}  );*/
+
+outln('Plotting wave power matrix.');
+W = matrix_to_table( get('wave_power_matrix') );
+G = meshgrid( W.xmin, W.xmax, W.nx, W.ymin, W.ymax, W.ny );
+Z = griddata( W.x, W.y, W.z, G.xq, G.yq );
+newplot(false);
+contour( G.xq, G.yq, Z ,{'filled'=true, 'levels'=n, 'reverseyaxis'=true, 'max' = 3});
+plotopt( {'title'='WEC Power Matrix (kW)'});
+axis( 'x1', {'label'='Wave Energy Period, Te (s)'});
+axis( 'y1', {'label'='Significant Wave Height, Hs (m)'});
+
+outln('Plotting energy distribution matrix.');
+
+results = get('annual_energy_distribution');
+if ( results == null ) { simulate(false); }
+W = matrix_to_table( get('annual_energy_distribution') );
+G = meshgrid( W.xmin, W.xmax, W.nx, W.ymin, W.ymax, W.ny );
+Z = griddata( W.x, W.y, W.z, G.xq, G.yq );
+newplot(false);
+contour( G.xq, G.yq, Z ,{'filled'=true, 'levels'=n, 'reverseyaxis'=true, 'max' = 3});
+plotopt( {'title'='Annual Electricity Production (kWh)'});
+axis( 'x1', {'label'='Wave Energy Period, Te (s)'});
+axis( 'y1', {'label'='Significant Wave Height, Hs (m)'});
