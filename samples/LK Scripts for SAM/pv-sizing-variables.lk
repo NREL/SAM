@@ -1,0 +1,241 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+This script demonstrates how to access the variables involved in sizing a PV
+system for the Detailed Photovoltaic model. 
+
+It also includes a function replicating the "Estimate Subarray 1 configuration"
+option on the System Design page.
+
+Tested in SAM 2020.2.29 r2
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+cfg = configuration();
+ok = ( cfg[0] == 'Flat Plate PV' );
+if ( ok ) { ok = yesno('Warning!\nThis script will modify the inputs of ' + active_case() + '.\nProceed?'); }
+else { outln( 'This script only works with the Detailed PV model.\n ' + active_case() + ' is ' + cfg[0] ); }
+if ( !ok ) { outln('Exiting script'); exit; }
+
+// 1. Choose module and inverter from library
+
+// set the module model option: 
+//   0 = simple efficiency, 1=cec database (library), 2=cec user, 3=sandia, 4=iec 61853
+set('module_model',1);
+set('module_name', 'SunPower T5-SPR-310'); // choose module from library
+
+// each module model option uses a different variable for the module Pmp
+module_model_option = get('module_model');
+module_pmp = ? module_model_option[get('spe_power'),get('cec_p_mp_ref'),get('6par_pmp'),get('snl_ref_pmp'),get('sd11par_Pmp0')];
+outln('Single module Pmp = ',module_pmp,' W');
+
+// set inverter model option and choose inverter from library
+//   0 = cec database (library), 1=datasheet, 2=part load cuve
+set('inverter_model',0); 
+set('inv_snl_inverter_name','SMA America: ST42 [240V]');
+
+// each inverter model option uses a different variable for the inverter reference Pac
+inverter_model_option = get('inverter_model');
+inverter_pacmax = ? inverter_model_option[get('inv_snl_paco'),get('inv_ds_paco'),get('inv_pd_paco')];
+outln('Single inverter max Pac = ',inverter_pacmax,' W\n');
+
+// 2. Size the system using the "Esimate Subarray 1 configuration" mode
+
+set('num_enabled',1); // autosizing only works for one subarray
+
+set('enable_auto_size',1); 
+
+set('desired_size',2000); // desired array DC kW
+set('desired_dcac_ratio',1.2); // desired DC/AC ratio
+
+outln('Estimate Subarray 1 Configuration Results');
+outln('===========================');
+outln('Modules per string = ',get('subarray1_modules_per_string'));
+outln('Strings in parallel = ',get('subarray1_nstrings'));
+outln('Number of inverters = ',get('inverter_count'));
+outln('Total inverter AC capacity (kW) = ', sprintf( '%,', get('total_inverter_capacity')) );
+outln('Actual array DC capacity (kW) = ', sprintf( '%,', get('system_capacity')) );
+outln('Actual DC/AC ratio = ',get('calculated_dcac_ratio'));
+
+// confirm calculations
+dc_capacity = get('subarray1_modules_per_string') * get('subarray1_nstrings') * module_pmp;
+inverter_pac = get('inverter_count')*inverter_pacmax;
+outln('\nConfirm Calculations:');
+outln('---------------------------');
+outln('Calculate array DC capacity (kW) = ', sprintf( '%,', dc_capacity) );
+outln('Calculate DC/AC ratio = ', sprintf( '%,', dc_capacity / inverter_pac) );
+
+
+// 3. Size the system by hand for a system with two subarrays.
+
+set('enable_auto_size',0); // specify modules and inverters
+
+n_subarrays = 2;
+n_mod_per_str = [12,10];
+n_str_par = [2500,2750];
+n_inv = 22;
+
+set('user_inverter_count',n_inv);
+set('num_enabled',n_subarrays);
+
+// disable any enabled subarrays
+for( i=0; i<4; i++ )
+{
+	if ( i>0 ) { set('subarray' + to_string(i+1) + '_enable', 0 ); }
+}
+
+// enable subarrays and assign numbers of modules per string, strings in parallel
+for ( i=0; i<n_subarrays; i++ )
+{
+	if ( i>0 ) { set('subarray' + to_string(i+1) + '_enable', 1 ); }
+	 set( 'subarray' + to_string(i+1) + '_modules_per_string', n_mod_per_str[i] );
+	 set( 'subarray' + to_string(i+1) + '_nstrings', n_str_par[i]);
+}
+
+outln('\nSpecify Modules and Inverters Results');
+outln('===========================');
+outln('Array DC capacity (kW) = ', sprintf( '%,', get('system_capacity')) );
+outln('Total inverter AC capacity (kW) = ', sprintf( '%,', get('total_inverter_capacity') ));
+outln('DC/AC ratio = ',get('calculated_dcac_ratio'));
+
+// confirm calculations
+dc_capacity = 0;
+for ( i=0; i<n_subarrays; i++ )
+{
+	dc_capacity += get( 'subarray' + to_string(i+1) + '_modules_per_string' ) * get( 'subarray' + to_string(i+1) + '_nstrings' ) * module_pmp;
+}
+inverter_pac = get('inverter_count') * inverter_pacmax;
+outln('\nConfirm Calculations:');
+outln('---------------------------');
+outln('Calculate array DC capacity (kW) = ', sprintf( '%,', dc_capacity ) );
+outln('Calculate DC/AC ratio = ', dc_capacity / inverter_pac );
+
+
+// 4. PV autosize function from SAM user interface
+
+// Given a desired array size in DC kW and a desired DC / AC ratio, this function
+// retirns a table of number of inverters, number of modules per string, and
+// number of strings in parallel based on the module and inverter specified
+// on the Module and Inverter input pages
+function pv_auto_size( desired_array_size, desired_dc_ac_ratio )
+{
+
+	T.msg = 'ok';
+
+	//disable subarrays 2-4, autisize only works for a single subarray
+	set('subarray2_enable', 0);
+	set('subarray3_enable',0);
+	set('subarray4_enable',0);
+
+	/* Sizing rules
+	1. Voc < Vdcmax
+	2. Vmp > Vmin
+	3. Vmp < Vmax
+	4. num series * num_parallel is about desired array size (num_parallel = desired / (num series * mod_power)
+	5. num inverters is about desired array size (num_inv = num_series * num_parallel * mod_power) / inv_power
+	*/
+
+	// module parameters
+	module_model_option = get('module_model');	
+	mod_vmp= ?module_model_option[ get('spe_vmp'),get('cec_v_mp_ref'),get('6par_vmp'),get('snl_ref_vmp'),get('sd11par_Vmp0')];
+	mod_voc= ?module_model_option[ get('spe_voc'),get('cec_v_oc_ref'),get('6par_voc'),get('snl_ref_voc'),get('sd11par_Voc0')];
+	mod_power= ?module_model_option[ get('spe_power'), get('cec_p_mp_ref'), get('6par_pmp'), get('snl_ref_pmp'),get('sd11par_Pmp0')];
+	T.module_dc_capacity = mod_power; // DC W
+	
+	// inverter parameters
+	inverter_model_option = get('inverter_model');
+	inv_vmin= ?inverter_model_option[get('inv_snl_mppt_low'), get('inv_ds_mppt_low'), get('inv_pd_mppt_low'),get('inv_cec_cg_mppt_low')];
+	inv_vdcmax= ?inverter_model_option[get('inv_snl_vdcmax'), get('inv_ds_vdcmax'), get('inv_pd_vdcmax'),get('inv_cec_cg_vdcmax')];
+	inv_vmax= ?inverter_model_option[get('inv_snl_mppt_hi'), get('inv_ds_mppt_hi'), get('inv_pd_mppt_hi'),get('inv_cec_cg_mppt_hi')];
+	inv_power= ?inverter_model_option[get('inv_snl_paco'), get('inv_ds_paco'), get('inv_pd_paco'),get('inv_cec_cg_paco')];
+	T.inverter_ac_capacity = inv_power; // AC W
+	
+	/*
+	// optional, could size inverter for array capacity + battery maximum discharge power
+	// requires updating number of inverters equations below
+	batt_max_power_dc = 0; 
+	if ( technology() == 'PV Battery' )
+	{
+		if (get('batt_ac_or_dc') == 0) 
+		{
+			batt_max_power_dc = get('batt_max_power');
+		}
+	}
+	*/
+		
+	// calculations
+	if( mod_vmp > 0 )
+	{
+		T.num_series= 0.5 * (inv_vmin + inv_vmax) / mod_vmp;
+	}
+	
+	if ( inv_vdcmax > 0 )
+	{
+		while ( (T.num_series > 0) && ((T.num_series*mod_voc) > inv_vdcmax) )
+		{
+			T.num_series = T.num_series -1;
+		}
+	}
+	
+	if (T.num_series < 1) { T.num_series= 1; }
+	
+	T.num_series = round( T.num_series );
+	T.num_parallel= desired_array_size * 1000 / ( T.num_series * mod_power );
+	
+	if (T.num_parallel < 1) { T.num_parallel= 1; }
+	
+	T.num_parallel= round( T.num_parallel );
+	
+	if ( desired_dc_ac_ratio > 0 )
+	{
+	 	inverters = ( ( T.num_series * T.num_parallel * mod_power ) /* + batt_max_power_dc */) / ( desired_dc_ac_ratio * inv_power );
+		//round inverters for best DC-AC ratio
+		if ( ( inverters - floor(inverters) ) < 0.5 ) { T.num_inverters = floor(inverters); }
+		else {	T.num_inverters = ceil( inverters ); }
+	}				
+	else
+	{
+		T.num_inverters = ceil( ( ( T.num_series * T.num_parallel * mod_power ) /* + batt_max_power_dc */ ) / inv_power );
+	}
+	
+	if ( T.num_inverters < 1 ) { T.num_inverters = 1; }
+	
+	//check that the sizing was close to the desired sizes, otherwise, error out if more than 10% away
+	proposed_size = T.num_series * T.num_parallel * mod_power / 1000 ; //convert W to kW
+	proposed_ratio = proposed_size / ( T.num_inverters * inv_power / 1000 ); //convert inverter W to kW
+	if ( abs( proposed_size - desired_array_size ) / desired_array_size > 0.2 ) //
+	{
+		T.num_series = 0;
+		T.num_parallel = 0;
+		inverter_count = 0;
+		T.msg = 'Could not automatically size the system.';
+	}	
+	
+	return T;
+	
+}
+
+dc_capacity = 1000; // desired array capacity in kW
+dc_ac_ratio = 1.1; // desried DC/AC ratio
+
+R = pv_auto_size( 1000, 1.1 );
+
+outln('\nAutosize Results');
+outln('===========================');
+outln('Desired array capacitiy (DC kW) = ', sprintf( '%,', dc_capacity ) );
+outln('Desired DC/AC ratio = ',dc_ac_ratio);
+outln( R );
+outln('\nConfirm Calculations:');
+outln('---------------------------');
+outln('Autosize array DC capacity (kW) = ', sprintf( '%,', R.num_series * R.num_parallel * ( R.module_dc_capacity / 1000 ) ) );
+outln('Autosize DC/AC ratio = ', R.num_series * R.num_parallel * ( R.module_dc_capacity / 1000 ) / ( R.inverter_ac_capacity / 1000 * R.num_inverters ) );
+
+ok = yesno( 'Change array and inverter size variables to autosize values?');
+if ( ok ) 
+{
+	set('subarray1_modules_per_string', R.num_series);
+	set('subarray1_nstrings', R.num_parallel);
+	set('inverter_count', R.num_inverters);
+}
+	
