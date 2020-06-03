@@ -1,0 +1,29 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+	This script demonstrates how to use the progressbar() function.
+
+	Tested in SAM 2020.2.29 r2
+	
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+n = 10;
+
+// create the progress bar
+pb = progressbar( { 'title' = 'Progress Bar' , 
+                    'message' = 'Counting to ' + n + '.' , 
+                    'cancelbutton' = false , 
+                    'closebutton' = true , 
+                    'time' = false , 
+                    'max' = n } );
+
+// do something and increment progress
+for( i=0; i<n; i++ )
+{
+	progressbar( pb, { 'message' = 'Current count is = ' + to_string(i) , 'value' = i });
+    millisleep( 1000 ); // sleep for one second
+}
+
+// close the progress bar
+progressbar( pb );
