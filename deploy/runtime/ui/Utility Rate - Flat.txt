@@ -1137,7 +1137,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-4830
+4891
 on_load{"Utility Rate - Flat"} = define(){
 	check_configuration();
 	ur_flat_sell_rates(); // refresh when switching pages
@@ -1164,6 +1164,7 @@ function ur_flat_sell_rates()
 	eme = value("ur_metering_option");
 	enable( "ur_nm_yearend_sell_rate", eme==0 );
 	enable( "ur_nm_credit_rollover", eme==0 );
+	enable( "ur_nm_credit_month", eme==0 || eme==1 || eme==3 );
 	if ( eme==1 || eme==2 || eme==3|| eme==4)
 	{
 		enable( "ur_ts_sell_rate", true );
