@@ -110,12 +110,12 @@ else()
     unset(SSC_LIB CACHE)
     find_library( SSC_LIB
             NAMES ssc.dylib ssc.lib ssc.so
-            PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
+            PATHS $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
     if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
         unset(SSCD_LIB CACHE)
         find_library( SSCD_LIB
                 NAMES sscd.dylib sscd.lib sscd.so
-                PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
+                PATHS $ENV{SSCD_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
         target_link_libraries(SAM_api debug ${SSCD_LIB})
     endif()
 
@@ -123,7 +123,7 @@ else()
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so
-                PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/../build_linux_ssc/ssc )
+                PATHS $ENV{SSCE_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/../build_linux_ssc/ssc )
         target_link_libraries(SAM_api ${SSCE_LIB})
     else()
         target_link_libraries(SAM_api optimized ${SSC_LIB})
