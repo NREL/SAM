@@ -44,7 +44,7 @@ These are the general quick steps you need to follow to set up your computer for
 
     * Windows: Visual Studio 2017 Community or other editions available at https://www.visualstudio.com/.
     * Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
-    * Linux: g++ compiler available at http://www.cprogramming.com/g++.html or as part of the Linux distribution.
+    * Linux: g++ compiler available at [https://gcc.gnu.org](https://gcc.gnu.org/) or installed via your Linux distribution.
 
 2. Download the wxWidgets 3.1.1 source code for your operating system from https://www.wxwidgets.org/downloads/.
 
