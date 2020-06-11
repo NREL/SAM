@@ -1,6 +1,6 @@
 Marine Costs - Device Costs
-920
-376
+908
+300
 4
 Numeric
 
@@ -12,7 +12,7 @@ Name
 device_costs_total
 X
 3
-219
+168
 Y
 3
 213
@@ -36,7 +36,7 @@ Format
 0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -74,16 +74,16 @@ Name
 object 4
 X
 3
-18
+57
 Y
 3
 30
 Width
 3
-882
+800
 Height
 3
-333
+228
 Tool Tip
 5
 0
@@ -104,7 +104,7 @@ Name
 object 7
 X
 3
-150
+96
 Y
 3
 75
@@ -152,7 +152,7 @@ Name
 object 71
 X
 3
-150
+96
 Y
 3
 171
@@ -167,8 +167,8 @@ Tool Tip
 0
 Caption
 5
-67
-Device Costs = Sructural Assembly Costs + PTO Costs + Mooring Costs
+68
+Device Costs = Structural Assembly costs + PTO costs + Mooring costs
 TextColour
 4
 0
@@ -207,9 +207,16 @@ $
 0
 Default
 
-147
+237
 equations {'device_costs_total'} = define() {
 	return ${structural_assembly_cost}+ ${mooring_found_substruc_cost}+${power_takeoff_system_cost};
 };
+
+/*equations {'total_installed_cost'} = define() {
+	return ${device_costs_total};
+};*/
+
+
+
 
 0

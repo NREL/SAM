@@ -1,6 +1,6 @@
 Marine Costs - Mooring
-799
-803
+903
+1011
 74
 Label
 
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-198
+204
 Y
 3
-156
+159
 Width
 3
-108
+93
 Height
 3
 24
@@ -59,13 +59,13 @@ Name
 Ladders
 X
 3
-246
+216
 Y
 3
-435
+519
 Width
 3
-57
+48
 Height
 3
 24
@@ -107,23 +107,23 @@ Name
 PTO costs
 X
 3
-3
+57
 Y
 3
 57
 Width
 3
-777
+800
 Height
 3
-733
+925
 Tool Tip
 5
 0
 Caption
 5
-13
-Mooring Costs
+43
+Mooring, Foundation, and Substructure Costs
 Bold
 2
 1
@@ -137,10 +137,10 @@ Name
 Personnel Access System
 X
 3
-246
+216
 Y
 3
-585
+720
 Width
 3
 135
@@ -185,10 +185,10 @@ Name
 anchors_and_piles_cost
 X
 3
-471
+438
 Y
 3
-186
+201
 Width
 3
 90
@@ -247,10 +247,10 @@ Name
 ancillary_marine_systems_cost
 X
 3
-471
+438
 Y
 3
-522
+639
 Width
 3
 90
@@ -309,10 +309,10 @@ Name
 ballast_system_mooring_cost
 X
 3
-471
+438
 Y
 3
-612
+759
 Width
 3
 90
@@ -371,10 +371,10 @@ Name
 cathodic_protection_system_cost
 X
 3
-471
+438
 Y
 3
-555
+681
 Width
 3
 90
@@ -433,10 +433,10 @@ Name
 condition_monitoring_cost
 X
 3
-471
+438
 Y
 3
-642
+801
 Width
 3
 90
@@ -495,10 +495,10 @@ Name
 connecting_hardware_cost
 X
 3
-471
+438
 Y
 3
-216
+240
 Width
 3
 90
@@ -557,10 +557,10 @@ Name
 integration_assembly_testing_checkout_cost
 X
 3
-471
+438
 Y
 3
-672
+840
 Width
 3
 90
@@ -666,10 +666,10 @@ Name
 ladders_cost
 X
 3
-471
+438
 Y
 3
-432
+519
 Width
 3
 90
@@ -728,10 +728,10 @@ Name
 marine_coatings_cost
 X
 3
-471
+438
 Y
 3
-492
+600
 Width
 3
 90
@@ -790,10 +790,10 @@ Name
 messenger_lines_and_buoys_cost
 X
 3
-471
+438
 Y
 3
-276
+321
 Width
 3
 90
@@ -852,7 +852,7 @@ Name
 mooring_cost_total
 X
 3
-471
+438
 Y
 3
 114
@@ -915,7 +915,7 @@ Name
 mooring_found_substruc_cost
 X
 3
-672
+639
 Y
 3
 114
@@ -978,7 +978,7 @@ Name
 mooring_found_substruc_cost_input
 X
 3
-372
+339
 Y
 3
 114
@@ -1040,7 +1040,7 @@ Name
 mooring_found_substruc_cost_method
 X
 3
-225
+192
 Y
 3
 114
@@ -1059,7 +1059,7 @@ Items
 Enter in $/kW
 Enter in $
 Use Modeled Value
-Entered in Itemized Costs
+Enter in Itemized Costs
 Selection
 3
 0
@@ -1076,7 +1076,7 @@ Name
 mooring_found_substruc_cost_modeled
 X
 3
-567
+540
 Y
 3
 114
@@ -1139,10 +1139,10 @@ Name
 mooring_lines_cost
 X
 3
-471
+438
 Y
 3
-156
+159
 Width
 3
 90
@@ -1201,7 +1201,7 @@ Name
 object 7
 X
 3
-582
+549
 Y
 3
 186
@@ -1216,8 +1216,8 @@ Tool Tip
 0
 Caption
 5
-512
-To input mooring costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled structural costs from the Refernece Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values if reflected in the Level Totals display.  
+539
+To input mooring costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled mooring, foundation, and substructure costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
 TextColour
 4
 0
@@ -1249,10 +1249,10 @@ Name
 object 713
 X
 3
-198
+204
 Y
 3
-216
+240
 Width
 3
 123
@@ -1297,7 +1297,7 @@ Name
 object 719
 X
 3
-483
+450
 Y
 3
 87
@@ -1345,7 +1345,7 @@ Name
 object 721
 X
 3
-576
+543
 Y
 3
 87
@@ -1393,13 +1393,13 @@ Name
 object 72441
 X
 3
-246
+216
 Y
 3
-492
+600
 Width
 3
-33
+93
 Height
 3
 24
@@ -1441,13 +1441,13 @@ Name
 object 7244132
 X
 3
-246
+216
 Y
 3
-642
+801
 Width
 3
-33
+126
 Height
 3
 24
@@ -1489,10 +1489,10 @@ Name
 object 7244134
 X
 3
-246
+216
 Y
 3
-612
+759
 Width
 3
 84
@@ -1537,10 +1537,10 @@ Name
 object 7244143
 X
 3
-246
+216
 Y
 3
-462
+561
 Width
 3
 45
@@ -1585,10 +1585,10 @@ Name
 object 726
 X
 3
-246
+216
 Y
 3
-552
+681
 Width
 3
 150
@@ -1633,10 +1633,10 @@ Name
 object 72647
 X
 3
-246
+216
 Y
 3
-402
+480
 Width
 3
 150
@@ -1681,13 +1681,13 @@ Name
 object 727
 X
 3
-198
+204
 Y
 3
-729
+921
 Width
 3
-105
+36
 Height
 3
 24
@@ -1729,13 +1729,13 @@ Name
 object 72728
 X
 3
-198
+204
 Y
 3
-699
+879
 Width
 3
-105
+84
 Height
 3
 24
@@ -1777,16 +1777,16 @@ Name
 object 72730
 X
 3
-198
+204
 Y
 3
-672
+840
 Width
 3
 243
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -1808,13 +1808,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -1825,10 +1825,10 @@ Name
 object 72740
 X
 3
-201
+204
 Y
 3
-519
+639
 Width
 3
 141
@@ -1873,13 +1873,13 @@ Name
 object 72751
 X
 3
-198
+204
 Y
 3
-333
+399
 Width
 3
-105
+186
 Height
 3
 24
@@ -1921,10 +1921,10 @@ Name
 object 728
 X
 3
-198
+204
 Y
 3
-303
+360
 Width
 3
 99
@@ -1969,10 +1969,10 @@ Name
 object 729
 X
 3
-198
+204
 Y
 3
-276
+321
 Width
 3
 141
@@ -2017,10 +2017,10 @@ Name
 object 73
 X
 3
-198
+204
 Y
 3
-186
+201
 Width
 3
 102
@@ -2065,10 +2065,10 @@ Name
 object 730
 X
 3
-198
+204
 Y
 3
-246
+279
 Width
 3
 150
@@ -2113,10 +2113,10 @@ Name
 object 731
 X
 3
-243
+216
 Y
 3
-366
+441
 Width
 3
 81
@@ -2161,7 +2161,7 @@ Name
 object 7322
 X
 3
-675
+642
 Y
 3
 87
@@ -2209,7 +2209,7 @@ Name
 object 74
 X
 3
-387
+354
 Y
 3
 87
@@ -2263,7 +2263,7 @@ Y
 114
 Width
 3
-84
+54
 Height
 3
 24
@@ -2305,10 +2305,10 @@ Name
 other_mooring_cost
 X
 3
-471
+438
 Y
 3
-732
+921
 Width
 3
 90
@@ -2367,10 +2367,10 @@ Name
 outfitting_structure_cost
 X
 3
-471
+438
 Y
 3
-336
+399
 Width
 3
 90
@@ -2429,10 +2429,10 @@ Name
 personnel_access_system_mooring_cost
 X
 3
-471
+438
 Y
 3
-582
+720
 Width
 3
 90
@@ -2491,10 +2491,10 @@ Name
 railings_cost
 X
 3
-471
+438
 Y
 3
-462
+561
 Width
 3
 90
@@ -2553,10 +2553,10 @@ Name
 scour_protection_cost
 X
 3
-471
+438
 Y
 3
-306
+360
 Width
 3
 90
@@ -2615,10 +2615,10 @@ Name
 service_platforms_and_decks_cost
 X
 3
-471
+438
 Y
 3
-402
+480
 Width
 3
 90
@@ -2677,10 +2677,10 @@ Name
 subfoundation_or_bedding_cost
 X
 3
-471
+438
 Y
 3
-246
+279
 Width
 3
 90
@@ -2739,10 +2739,10 @@ Name
 transportation_cost
 X
 3
-471
+438
 Y
 3
-702
+879
 Width
 3
 90
@@ -2804,7 +2804,7 @@ X
 303
 Y
 3
-186
+201
 Width
 3
 24
@@ -2813,10 +2813,12 @@ Height
 24
 Tool Tip
 5
-0
+156
+Anchors and Piles installed on the seabed to either maintain station keeping or to react against the seabed. This can include gravity based anchor systems. 
 Tips
 5
-0
+156
+Anchors and Piles installed on the seabed to either maintain station keeping or to react against the seabed. This can include gravity based anchor systems. 
 ToolTipCtrl
 
 1
@@ -2830,7 +2832,7 @@ X
 342
 Y
 3
-519
+639
 Width
 3
 24
@@ -2839,12 +2841,12 @@ Height
 24
 Tool Tip
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+49
+Ancillary systems required for marine operations.
 Tips
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+49
+Ancillary systems required for marine operations.
 ToolTipCtrl
 
 1
@@ -2855,10 +2857,10 @@ Name
 tt_ballast_system_cost
 X
 3
-336
+297
 Y
 3
-612
+759
 Width
 3
 24
@@ -2867,12 +2869,12 @@ Height
 24
 Tool Tip
 5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
+109
+Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
 Tips
 5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
+109
+Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
 ToolTipCtrl
 
 1
@@ -2883,10 +2885,10 @@ Name
 tt_cathodic_protection_system_cost
 X
 3
-399
+369
 Y
 3
-552
+681
 Width
 3
 24
@@ -2895,12 +2897,12 @@ Height
 24
 Tool Tip
 5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
+75
+Active (impressed current) or passive (anodes) cathodic protection system. 
 Tips
 5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
+75
+Active (impressed current) or passive (anodes) cathodic protection system. 
 ToolTipCtrl
 
 1
@@ -2911,10 +2913,10 @@ Name
 tt_condition_monitoring_cost
 X
 3
-285
+339
 Y
 3
-642
+801
 Width
 3
 24
@@ -2923,12 +2925,12 @@ Height
 24
 Tool Tip
 5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
+77
+Systems to monitor and control substructure systems (e.g., variable ballast).
 Tips
 5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
+77
+Systems to monitor and control substructure systems (e.g., variable ballast).
 ToolTipCtrl
 
 1
@@ -2942,7 +2944,7 @@ X
 324
 Y
 3
-216
+240
 Width
 3
 24
@@ -2951,11 +2953,12 @@ Height
 24
 Tool Tip
 5
-0
+87
+Connectors required to attach the mooring lines to anchors and marine energy converter.
 Tips
 5
-55
-Type a tip here or define in runtime/help/tooltips.json
+87
+Connectors required to attach the mooring lines to anchors and marine energy converter.
 ToolTipCtrl
 
 1
@@ -2966,10 +2969,10 @@ Name
 tt_integration_assembly_testing_checkout_cost
 X
 3
-441
+396
 Y
 3
-672
+840
 Width
 3
 24
@@ -2978,12 +2981,12 @@ Height
 24
 Tool Tip
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+190
+Activities performed by manufacturer to integrate, assemble, test, and checkout for the mooring and foundation system before  delivery to customer. Does not include commissioning activities.
 Tips
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+190
+Activities performed by manufacturer to integrate, assemble, test, and checkout for the mooring and foundation system before  delivery to customer. Does not include commissioning activities.
 ToolTipCtrl
 
 1
@@ -2994,10 +2997,10 @@ Name
 tt_ladders_cost
 X
 3
-309
+264
 Y
 3
-435
+519
 Width
 3
 24
@@ -3006,12 +3009,12 @@ Height
 24
 Tool Tip
 5
-57
-Coatings to protect from corrosion in marine environment.
+52
+Provides access from the vessel landing to the deck.
 Tips
 5
-57
-Coatings to protect from corrosion in marine environment.
+52
+Provides access from the vessel landing to the deck.
 ToolTipCtrl
 
 1
@@ -3022,10 +3025,10 @@ Name
 tt_marine_coatings_cost
 X
 3
-285
+309
 Y
 3
-492
+600
 Width
 3
 24
@@ -3034,12 +3037,12 @@ Height
 24
 Tool Tip
 5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
+72
+Anti-corrosion marine coatings applied to any outfitting steel elements.
 Tips
 5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
+72
+Anti-corrosion marine coatings applied to any outfitting steel elements.
 ToolTipCtrl
 
 1
@@ -3050,10 +3053,10 @@ Name
 tt_messenger_lines_and_buoys_cost
 X
 3
-339
+345
 Y
 3
-276
+321
 Width
 3
 24
@@ -3062,12 +3065,12 @@ Height
 24
 Tool Tip
 5
-87
-Any additional supporting structural components not included in the Structure category.
+71
+Ancillary equipment used during the installation of the mooring system.
 Tips
 5
-87
-Any additional supporting structural components not included in the Structure category.
+71
+Ancillary equipment used during the installation of the mooring system.
 ToolTipCtrl
 
 1
@@ -3078,10 +3081,10 @@ Name
 tt_mooring_lines_cost
 X
 3
-312
+285
 Y
 3
-156
+159
 Width
 3
 24
@@ -3090,12 +3093,12 @@ Height
 24
 Tool Tip
 5
-63
-Primary energy capture (e.g. float paddle, turbine, flap, etc.)
+100
+Chain, wire, or synthetic fiber ropes to connect marine energy converter with anchors on the seabed.
 Tips
 5
-63
-Primary energy capture (e.g. float paddle, turbine, flap, etc.)
+100
+Chain, wire, or synthetic fiber ropes to connect marine energy converter with anchors on the seabed.
 ToolTipCtrl
 
 1
@@ -3106,10 +3109,10 @@ Name
 tt_other_mooring_cost
 X
 3
-309
+246
 Y
 3
-729
+921
 Width
 3
 24
@@ -3118,12 +3121,12 @@ Height
 24
 Tool Tip
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+135
+Costs not included within the mooring, foundation, and sub-structure categories. Please provide a  description of the other cost input.
 Tips
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+135
+Costs not included within the mooring, foundation, and sub-structure categories. Please provide a  description of the other cost input.
 ToolTipCtrl
 
 1
@@ -3134,10 +3137,10 @@ Name
 tt_outfitting_structure_cost
 X
 3
-309
+393
 Y
 3
-333
+399
 Width
 3
 24
@@ -3146,12 +3149,12 @@ Height
 24
 Tool Tip
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+69
+Additional non-structural elements attached to substructure elements.
 Tips
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+69
+Additional non-structural elements attached to substructure elements.
 ToolTipCtrl
 
 1
@@ -3162,10 +3165,10 @@ Name
 tt_personnel_access_system_mooring_cost
 X
 3
-384
+354
 Y
 3
-585
+720
 Width
 3
 24
@@ -3174,12 +3177,12 @@ Height
 24
 Tool Tip
 5
-57
-Coatings to protect from corrosion in marine environment.
+120
+Equipment installed on vessel landing, ladders, and deck to facilitate safe access to the marine energy converter (MEC).
 Tips
 5
-57
-Coatings to protect from corrosion in marine environment.
+120
+Equipment installed on vessel landing, ladders, and deck to facilitate safe access to the marine energy converter (MEC).
 ToolTipCtrl
 
 1
@@ -3190,10 +3193,10 @@ Name
 tt_railings_cost
 X
 3
-297
+264
 Y
 3
-462
+561
 Width
 3
 24
@@ -3202,12 +3205,12 @@ Height
 24
 Tool Tip
 5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
+70
+Encloses the deck to provide a safe working environment for personnel.
 Tips
 5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
+70
+Encloses the deck to provide a safe working environment for personnel.
 ToolTipCtrl
 
 1
@@ -3218,10 +3221,10 @@ Name
 tt_scour_protection_cost
 X
 3
-294
+303
 Y
 3
-303
+360
 Width
 3
 24
@@ -3230,12 +3233,12 @@ Height
 24
 Tool Tip
 5
-62
-Ancillary systems on the marine energy converter (MEC) device.
+102
+Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
 Tips
 5
-62
-Ancillary systems on the marine energy converter (MEC) device.
+102
+Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
 ToolTipCtrl
 
 1
@@ -3246,10 +3249,10 @@ Name
 tt_service_platforms_and_decks_cost
 X
 3
-399
+369
 Y
 3
-402
+480
 Width
 3
 24
@@ -3258,12 +3261,12 @@ Height
 24
 Tool Tip
 5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
+50
+Provides work platform for maintenance activities.
 Tips
 5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
+50
+Provides work platform for maintenance activities.
 ToolTipCtrl
 
 1
@@ -3274,7 +3277,7 @@ Name
 tt_structural_assembly_cost
 X
 3
-186
+153
 Y
 3
 114
@@ -3301,10 +3304,10 @@ Name
 tt_subfoundation_or_bedding_cost
 X
 3
-351
+357
 Y
 3
-246
+279
 Width
 3
 24
@@ -3313,11 +3316,12 @@ Height
 24
 Tool Tip
 5
-0
+91
+Layers of gravel and stone to provide a stable and level surface on which to place anchors.
 Tips
 5
-55
-Type a tip here or define in runtime/help/tooltips.json
+91
+Layers of gravel and stone to provide a stable and level surface on which to place anchors.
 ToolTipCtrl
 
 1
@@ -3328,10 +3332,10 @@ Name
 tt_transportation_cost
 X
 3
-309
+288
 Y
 3
-699
+879
 Width
 3
 24
@@ -3340,12 +3344,12 @@ Height
 24
 Tool Tip
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+104
+Costs of transporting the mooring system components from the manufacturing facility to the staging area.
 Tips
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+104
+Costs of transporting the mooring system components from the manufacturing facility to the staging area.
 ToolTipCtrl
 
 1
@@ -3356,10 +3360,10 @@ Name
 tt_vessel_landing_cost
 X
 3
-330
+300
 Y
 3
-366
+441
 Width
 3
 24
@@ -3368,12 +3372,12 @@ Height
 24
 Tool Tip
 5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
+96
+Provides interface between maintenance vessels and substructure to enable safe personnel access.
 Tips
 5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
+96
+Provides interface between maintenance vessels and substructure to enable safe personnel access.
 Numeric
 
 1
@@ -3384,10 +3388,10 @@ Name
 vessel_landing_cost
 X
 3
-471
+438
 Y
 3
-372
+441
 Width
 3
 90

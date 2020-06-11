@@ -1665,15 +1665,15 @@ function setup_mewave_pages()
 		{'name'='Marine Costs - PTO','caption'= 'PTO','collapsible'=true,'collapsible_var'='pto_shown'}, 
 		{'name'='Marine Costs - Mooring','caption'='Mooring','collapsible'=true,'collapsible_var'='mooring_shown'}]],
 		{ 'sidebar'='Device Costs', 'help'='mhk_wave_system_costs'} );
-	/*addpage( [[ {'name'='Marine Costs - Development','caption' = 'Development','collapsible'=true,'collapsible_var'='development_shown'},
-		{'name'='Marine Costs - E&M','caption' = 'E&M','collapsible'=true,'collapsible_var'='e&m_shown'},
+	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development','collapsible'=true,'collapsible_var'='development_shown'},
+		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management','collapsible'=true,'collapsible_var'='e&m_shown'},
 		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
 		{'name'='Marine Costs - Plant Commissioning','caption' = 'Plant Commissioning','collapsible'=true,'collapsible_var'='plant_commissioning_shown'},
-		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port & Staging','collapsible'=true,'collapsible_var'='site_access_shown'},
+		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging','collapsible'=true,'collapsible_var'='site_access_shown'},
 		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly & Installation','collapsible'=true,'collapsible_var'='assem_install_shown'},
 		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure','collapsible'=true,'collapsible_var'='assem_install_shown'} ]],
-		{ 'sidebar'='Balance of System','help'='mhk_wave_system_costs'} );*/
-	/*addpage( [[ {'name'='Marine Costs - Project Contingency Budget','caption'='Project Contingency Budget','collapsible'=true,'collapsible_var'='project_conting_shown'},
+		{ 'sidebar'='BOS Costs','help'='mhk_wave_system_costs'} );
+	/*addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Project Contingency Budget','caption'='Project Contingency Budget','collapsible'=true,'collapsible_var'='project_conting_shown'},
 		{'name'='Marine Costs - Insurance During Construction','caption'='Insurance During Construction','collapsible'=true,'collapsible_var'='ins_during_const_shown'},
 		{'name'='Marine Costs - Construction Financing Costs','caption'='Construction Financing Costs','collapsible'=true,'collapsible_var'='const_finance_costs_shown'},
 		{'name'='Marine Costs - Reserve Costs','caption'='Reserve Costs','collapsible'=true,'collapsible_var'='reserve_costs_shown'},

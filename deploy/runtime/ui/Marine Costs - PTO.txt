@@ -1,6 +1,6 @@
 Marine Costs - PTO
-850
-1912
+913
+1920
 125
 Label
 
@@ -395,13 +395,13 @@ Name
 PTO costs
 X
 3
-3
+57
 Y
 3
 51
 Width
 3
-777
+800
 Height
 3
 1845
@@ -1890,10 +1890,10 @@ Name
 object 7
 X
 3
-582
+636
 Y
 3
-186
+189
 Width
 3
 180
@@ -1905,8 +1905,8 @@ Tool Tip
 0
 Caption
 5
-525
-To input power takeoff system costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled structural costs from the Refernece Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values if reflected in the Level Totals display.  
+535
+To input power takeoff system costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled power takeoff system costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
 TextColour
 4
 0
@@ -2136,7 +2136,7 @@ Y
 840
 Width
 3
-33
+141
 Height
 3
 24
@@ -2178,7 +2178,7 @@ Name
 object 72441
 X
 3
-250
+249
 Y
 3
 561
@@ -2226,7 +2226,7 @@ Name
 object 726
 X
 3
-246
+249
 Y
 3
 480
@@ -2664,7 +2664,7 @@ Y
 921
 Width
 3
-48
+84
 Height
 3
 24
@@ -2712,7 +2712,7 @@ Y
 879
 Width
 3
-48
+81
 Height
 3
 24
@@ -3000,7 +3000,7 @@ Y
 1239
 Width
 3
-48
+147
 Height
 3
 24
@@ -3093,7 +3093,7 @@ X
 246
 Y
 3
-1160
+1161
 Width
 3
 48
@@ -3768,7 +3768,7 @@ X
 225
 Y
 3
-111
+114
 Width
 3
 126
@@ -4621,7 +4621,8 @@ Height
 24
 Tool Tip
 5
-0
+140
+Gas or Spring charged hydraulic accumulators used in the hydraulic system for either power smoothing or for minimized water hammer effects. 
 Tips
 5
 55
@@ -4676,12 +4677,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+47
+Planet bearing, carrier bearing, shaft bearing.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+47
+Planet bearing, carrier bearing, shaft bearing.
 ToolTipCtrl
 
 1
@@ -4692,10 +4693,10 @@ Name
 tt_blades_rotor_assembly_cost
 X
 3
-285
+387
 Y
 3
-822
+840
 Width
 3
 24
@@ -4788,12 +4789,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+22
+Pump, radiator, hoses.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+22
+Pump, radiator, hoses.
 ToolTipCtrl
 
 1
@@ -4816,12 +4817,12 @@ Height
 24
 Tool Tip
 5
-57
-Coatings to protect from corrosion in marine environment.
+125
+Any turbine that is used to convert kinetic energy in the air, due to wave oscillations, into shaft work (e.g. Wells Turbine)
 Tips
 5
-57
-Coatings to protect from corrosion in marine environment.
+125
+Any turbine that is used to convert kinetic energy in the air, due to wave oscillations, into shaft work (e.g. Wells Turbine)
 ToolTipCtrl
 
 1
@@ -4844,12 +4845,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+156
+Converts variable frequency from asynchronous generator to grid-compliant power of the right ‘quality' and with a stable frequency of either 50 Hz or 60 Hz.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+156
+Converts variable frequency from asynchronous generator to grid-compliant power of the right ‘quality' and with a stable frequency of either 50 Hz or 60 Hz.
 ToolTipCtrl
 
 1
@@ -4872,12 +4873,12 @@ Height
 24
 Tool Tip
 5
-57
-Coatings to protect from corrosion in marine environment.
+146
+Mechanical system used to increase or decrease the speed of the shaft work going into the generator. This may include mechanical motion rectifiers
 Tips
 5
-57
-Coatings to protect from corrosion in marine environment.
+146
+Mechanical system used to increase or decrease the speed of the shaft work going into the generator. This may include mechanical motion rectifiers
 ToolTipCtrl
 
 1
@@ -4900,12 +4901,12 @@ Height
 24
 Tool Tip
 5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
+74
+Planet carrier, planet gear, ring gear, sun gear, spur gear, hollow shaft.
 Tips
 5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
+74
+Planet carrier, planet gear, ring gear, sun gear, spur gear, hollow shaft.
 ToolTipCtrl
 
 1
@@ -4928,12 +4929,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+43
+Bushing, case, mounting, torque arm system.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+43
+Bushing, case, mounting, torque arm system.
 ToolTipCtrl
 
 1
@@ -4944,10 +4945,10 @@ Name
 tt_hub_assembly_cost
 X
 3
-303
+330
 Y
 3
-861
+879
 Width
 3
 24
@@ -4972,7 +4973,7 @@ Name
 tt_hydraulic_drivetrain_cost
 X
 3
-351
+348
 Y
 3
 159
@@ -4984,12 +4985,12 @@ Height
 24
 Tool Tip
 5
-63
-Primary energy capture (e.g. float paddle, turbine, flap, etc.)
+97
+Hydraulic system to transfer mechanical energy from marine energy converter to electrical energy.
 Tips
 5
-63
-Primary energy capture (e.g. float paddle, turbine, flap, etc.)
+97
+Hydraulic system to transfer mechanical energy from marine energy converter to electrical energy.
 ToolTipCtrl
 
 1
@@ -5012,12 +5013,12 @@ Height
 24
 Tool Tip
 5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
+43
+Working fluid used in the hydraulic system.
 Tips
 5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
+43
+Working fluid used in the hydraulic system.
 ToolTipCtrl
 
 1
@@ -5040,12 +5041,12 @@ Height
 24
 Tool Tip
 5
-87
-Any additional supporting structural components not included in the Structure category.
+89
+The hydraulic motor used to convert hydraulic flow into shaft work for power generation. 
 Tips
 5
-87
-Any additional supporting structural components not included in the Structure category.
+89
+The hydraulic motor used to convert hydraulic flow into shaft work for power generation. 
 ToolTipCtrl
 
 1
@@ -5068,12 +5069,12 @@ Height
 24
 Tool Tip
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+71
+Reservoir used to contain additional hydraulic fluid within the system.
 Tips
 5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
+71
+Reservoir used to contain additional hydraulic fluid within the system.
 ToolTipCtrl
 
 1
@@ -5096,12 +5097,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+97
+Primary filter, secondary filter, primary motor, primary pump, hose/fitting, seal, and reservoir.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+97
+Primary filter, secondary filter, primary motor, primary pump, hose/fitting, seal, and reservoir.
 ToolTipCtrl
 
 1
@@ -5124,12 +5125,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+28
+Pump, pump motor, reservoir.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+28
+Pump, pump motor, reservoir.
 ToolTipCtrl
 
 1
@@ -5152,12 +5153,12 @@ Height
 24
 Tool Tip
 5
-57
-Coatings to protect from corrosion in marine environment.
+100
+Costs not included within the PTO categories. Please provide a  description of the other cost input.
 Tips
 5
-57
-Coatings to protect from corrosion in marine environment.
+100
+Costs not included within the PTO categories. Please provide a  description of the other cost input.
 ToolTipCtrl
 
 1
@@ -5180,12 +5181,12 @@ Height
 24
 Tool Tip
 5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
+69
+Any plumbing or fittings needed to connect the hydraulic components. 
 Tips
 5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
+69
+Any plumbing or fittings needed to connect the hydraulic components. 
 ToolTipCtrl
 
 1
@@ -5208,12 +5209,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+81
+System to convert generator voltage to array cable system voltage for collection.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+81
+System to convert generator voltage to array cable system voltage for collection.
 ToolTipCtrl
 
 1
@@ -5236,12 +5237,12 @@ Height
 24
 Tool Tip
 5
-57
-Coatings to protect from corrosion in marine environment.
+116
+Electrical system used to transfer power, convert voltages or frequencies, as well as any active power controllers. 
 Tips
 5
-57
-Coatings to protect from corrosion in marine environment.
+116
+Electrical system used to transfer power, convert voltages or frequencies, as well as any active power controllers. 
 ToolTipCtrl
 
 1
@@ -5264,12 +5265,12 @@ Height
 24
 Tool Tip
 5
-57
-Coatings to protect from corrosion in marine environment.
+79
+Any enclosure used to house or isolate the Power Take-Off system (e.g. Nacelle)
 Tips
 5
-57
-Coatings to protect from corrosion in marine environment.
+79
+Any enclosure used to house or isolate the Power Take-Off system (e.g. Nacelle)
 ToolTipCtrl
 
 1
@@ -5292,10 +5293,12 @@ Height
 24
 Tool Tip
 5
-0
+118
+The pump used to convert mechanical energy from the WEC into hydraulic flow (e.g. Linear cylinders, rotary pump, etc.)
 Tips
 5
-0
+118
+The pump used to convert mechanical energy from the WEC into hydraulic flow (e.g. Linear cylinders, rotary pump, etc.)
 ToolTipCtrl
 
 1
@@ -5318,7 +5321,8 @@ Height
 24
 Tool Tip
 5
-0
+103
+The circuit, or series of valves, that is used to rectify the direction of flow in the hydraulic system
 Tips
 5
 55
@@ -5345,12 +5349,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+110
+Commentator, exciter, resistance controller, rotor lamination, rotor winding, slip ring, rotor magnets, brush.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+110
+Commentator, exciter, resistance controller, rotor lamination, rotor winding, slip ring, rotor magnets, brush.
 ToolTipCtrl
 
 1
@@ -5373,12 +5377,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+210
+Connects the marine energy converter (MEC) device with an onshore operations center, provides water project operator with information about the status of MEC systems and allows remote control of some functions.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+210
+Connects the marine energy converter (MEC) device with an onshore operations center, provides water project operator with information about the status of MEC systems and allows remote control of some functions.
 ToolTipCtrl
 
 1
@@ -5401,12 +5405,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+91
+Debris sensors, oil level sensors, pressure 1 & pressure 2 sensors, and temperature sensor.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+91
+Debris sensors, oil level sensors, pressure 1 & pressure 2 sensors, and temperature sensor.
 ToolTipCtrl
 
 1
@@ -5417,10 +5421,10 @@ Name
 tt_shaft_assembly_cost
 X
 3
-303
+333
 Y
 3
-894
+921
 Width
 3
 24
@@ -5457,12 +5461,12 @@ Height
 24
 Tool Tip
 5
-57
-Coatings to protect from corrosion in marine environment.
+116
+Temporary storage of electrical energy (e.g. onboard batteries or ultra-capacitors for wave to wave power smoothing)
 Tips
 5
-57
-Coatings to protect from corrosion in marine environment.
+116
+Temporary storage of electrical energy (e.g. onboard batteries or ultra-capacitors for wave to wave power smoothing)
 ToolTipCtrl
 
 1
@@ -5485,12 +5489,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+51
+Stator magnets, stator lamination, stator windings.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+51
+Stator magnets, stator lamination, stator windings.
 ToolTipCtrl
 
 1
@@ -5501,7 +5505,7 @@ Name
 tt_struct_and_mechanical_cost
 X
 3
-297
+393
 Y
 3
 1239
@@ -5513,12 +5517,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+62
+Front bearing, rear bearing, silent block, housing, and shaft.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+62
+Front bearing, rear bearing, silent block, housing, and shaft.
 ToolTipCtrl
 
 1
@@ -5568,12 +5572,12 @@ Height
 24
 Tool Tip
 5
-57
-Coatings to protect from corrosion in marine environment.
+148
+Costs of transporting the marine energy converter (MEC) power conversion chain (PCC) components from the manufacturing facility to the staging area.
 Tips
 5
-57
-Coatings to protect from corrosion in marine environment.
+148
+Costs of transporting the marine energy converter (MEC) power conversion chain (PCC) components from the manufacturing facility to the staging area.
 ToolTipCtrl
 
 1
@@ -5624,12 +5628,12 @@ Height
 24
 Tool Tip
 5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+91
+Debris sensors, oil level sensors, pressure 1 & pressure 2 sensors, and temperature sensor.
 Tips
 5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+91
+Debris sensors, oil level sensors, pressure 1 & pressure 2 sensors, and temperature sensor.
 ToolTipCtrl
 
 1
@@ -5652,12 +5656,12 @@ Height
 24
 Tool Tip
 5
-62
-Ancillary systems on the marine energy converter (MEC) device.
+98
+Any valves used in the hydraulic system (e.g. pressure relief, control valves, bypass valve, etc.)
 Tips
 5
-62
-Ancillary systems on the marine energy converter (MEC) device.
+98
+Any valves used in the hydraulic system (e.g. pressure relief, control valves, bypass valve, etc.)
 Numeric
 
 1
@@ -6527,11 +6531,11 @@ valves_cost
 0
 Default
 
-2175
+2190
 equations {'hydraulic_drivetrain_total'} = define() {
 	return ${hydraulic_drivetrain_cost}+${primary_hydraulic_pump_cost}+${rectifying_circuit_cost}+
 		${accumulators_cost}+${hydraulic_reservoir_cost}+${hydraulic_fluid_cost}+
-		${plumbing_fittings_cost};
+		${plumbing_fittings_cost}+${valves_cost};
 };
 
 equations {'gearbox_total'} = define() {

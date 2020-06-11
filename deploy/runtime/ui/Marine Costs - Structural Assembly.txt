@@ -1,7 +1,7 @@
 Marine Costs - Structural Assembly
-813
-739
-53
+922
+802
+77
 Label
 
 1
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-237
+291
 Y
 3
-156
+195
 Width
 3
 72
@@ -49,6 +49,102 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+16
+Itemized Inputs 
+X
+3
+624
+Y
+3
+168
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+12
+Level Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+17
+Itemized Inputs 3
+X
+3
+525
+Y
+3
+168
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+16
+Itemized Inputs 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -59,10 +155,10 @@ Name
 active_structure_cost
 X
 3
-471
+525
 Y
 3
-315
+354
 Width
 3
 90
@@ -121,10 +217,10 @@ Name
 additional_structural_components_cost
 X
 3
-471
+525
 Y
 3
-357
+396
 Width
 3
 90
@@ -179,14 +275,77 @@ Numeric
 17
 Name
 5
+43
+additional_structural_components_cost_total
+X
+3
+621
+Y
+3
+396
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 19
 ballast_system_cost
 X
 3
-471
+525
 Y
 3
-477
+516
 Width
 3
 90
@@ -245,10 +404,10 @@ Name
 buoyancy_chamber_cost
 X
 3
-471
+525
 Y
 3
-237
+276
 Width
 3
 90
@@ -307,10 +466,10 @@ Name
 coatings
 X
 3
-237
+291
 Y
 3
-555
+594
 Width
 3
 57
@@ -355,10 +514,10 @@ Name
 coatings_cost
 X
 3
-471
+525
 Y
 3
-555
+594
 Width
 3
 90
@@ -413,14 +572,77 @@ Numeric
 17
 Name
 5
+19
+coatings_cost_total
+X
+3
+621
+Y
+3
+594
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 30
 external_ballast_chambers_cost
 X
 3
-471
+525
 Y
 3
-276
+315
 Width
 3
 90
@@ -526,10 +748,10 @@ Name
 marine_systems_cost
 X
 3
-471
+525
 Y
 3
-396
+435
 Width
 3
 90
@@ -584,14 +806,77 @@ Numeric
 17
 Name
 5
+25
+marine_systems_cost_total
+X
+3
+621
+Y
+3
+435
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 24
 navigation_lighting_cost
 X
 3
-471
+525
 Y
 3
-516
+555
 Width
 3
 90
@@ -640,6 +925,44 @@ BackColour
 TabOrder
 3
 4294967295
+Divider
+
+1
+10
+Name
+5
+11
+object 2163
+X
+3
+549
+Y
+3
+156
+Width
+3
+138
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
 GroupBox
 
 1
@@ -650,13 +973,13 @@ Name
 object 4
 X
 3
-9
+57
 Y
 3
 51
 Width
 3
-777
+800
 Height
 3
 666
@@ -680,10 +1003,10 @@ Name
 object 7
 X
 3
-582
+81
 Y
 3
-186
+201
 Width
 3
 180
@@ -695,8 +1018,8 @@ Tool Tip
 0
 Caption
 5
-524
-To input structural assembly costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled structural costs from the Refernece Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values if reflected in the Level Totals display.  
+540
+To input structural assembly costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled structural assembly costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural assembly costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the User Input display.  
 TextColour
 4
 0
@@ -728,10 +1051,10 @@ Name
 object 713
 X
 3
-249
+303
 Y
 3
-237
+276
 Width
 3
 114
@@ -773,16 +1096,16 @@ Label
 Name
 5
 10
-object 719
+object 716
 X
 3
-483
+291
 Y
 3
-87
+516
 Width
 3
-66
+12
 Height
 3
 24
@@ -791,8 +1114,8 @@ Tool Tip
 0
 Caption
 5
-12
-Level Totals
+2
+5.
 TextColour
 4
 0
@@ -810,7 +1133,247 @@ WordWrap
 0
 AlignRight
 2
+0
+AlignTop
+2
+0
+Label
+
 1
+13
+Name
+5
+10
+object 717
+X
+3
+291
+Y
+3
+555
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+5.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 718
+X
+3
+291
+Y
+3
+474
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+5.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 719
+X
+3
+291
+Y
+3
+354
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+5.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 71944
+X
+3
+552
+Y
+3
+141
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+24
+Itemized Input Structure
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 720
+X
+3
+291
+Y
+3
+315
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+5.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
 AlignTop
 2
 0
@@ -824,7 +1387,55 @@ Name
 object 721
 X
 3
-576
+291
+Y
+3
+276
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+5.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72145
+X
+3
+525
 Y
 3
 87
@@ -869,13 +1480,157 @@ Label
 Name
 5
 10
+object 722
+X
+3
+291
+Y
+3
+234
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+5.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 723
+X
+3
+279
+Y
+3
+675
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+4.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
 object 724
 X
 3
-237
+279
 Y
 3
-597
+636
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+4.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72446
+X
+3
+291
+Y
+3
+636
 Width
 3
 150
@@ -917,13 +1672,109 @@ Label
 Name
 5
 10
+object 725
+X
+3
+279
+Y
+3
+594
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+4.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
 object 726
 X
 3
-249
+279
 Y
 3
-516
+435
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+4.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72647
+X
+3
+303
+Y
+3
+555
 Width
 3
 114
@@ -968,10 +1819,58 @@ Name
 object 727
 X
 3
-249
+279
 Y
 3
-435
+396
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+4.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72748
+X
+3
+303
+Y
+3
+474
 Width
 3
 138
@@ -1016,10 +1915,10 @@ Name
 object 728
 X
 3
-237
+291
 Y
 3
-396
+435
 Width
 3
 93
@@ -1064,10 +1963,10 @@ Name
 object 729
 X
 3
-237
+291
 Y
 3
-357
+396
 Width
 3
 189
@@ -1112,10 +2011,10 @@ Name
 object 73
 X
 3
-249
+303
 Y
 3
-195
+234
 Width
 3
 156
@@ -1160,10 +2059,10 @@ Name
 object 730
 X
 3
-249
+303
 Y
 3
-315
+354
 Width
 3
 90
@@ -1208,10 +2107,10 @@ Name
 object 731
 X
 3
-249
+303
 Y
 3
-477
+516
 Width
 3
 81
@@ -1256,13 +2155,13 @@ Name
 object 7322
 X
 3
-675
+729
 Y
 3
 87
 Width
 3
-81
+78
 Height
 3
 24
@@ -1304,10 +2203,10 @@ Name
 object 733
 X
 3
-237
+291
 Y
 3
-636
+675
 Width
 3
 36
@@ -1352,10 +2251,10 @@ Name
 object 734
 X
 3
-246
+303
 Y
 3
-276
+315
 Width
 3
 141
@@ -1397,16 +2296,16 @@ Label
 Name
 5
 9
-object 74
+object 75
 X
 3
-387
+222
 Y
 3
-87
+114
 Width
 3
-60
+12
 Height
 3
 24
@@ -1415,8 +2314,8 @@ Tool Tip
 0
 Caption
 5
-10
-User Input
+2
+3.
 TextColour
 4
 0
@@ -1434,7 +2333,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -1444,17 +2343,17 @@ Label
 13
 Name
 5
-9
-object 75
+10
+object 757
 X
 3
-42
+234
 Y
 3
 114
 Width
 3
-132
+111
 Height
 3
 24
@@ -1486,6 +2385,117 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+9
+object 76
+X
+3
+279
+Y
+3
+195
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+4.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+16
+other_cost_total
+X
+3
+621
+Y
+3
+675
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1496,10 +2506,10 @@ Name
 other_costs
 X
 3
-471
+525
 Y
 3
-636
+675
 Width
 3
 90
@@ -1558,10 +2568,10 @@ Name
 personnel_access_system_cost
 X
 3
-471
+525
 Y
 3
-435
+474
 Width
 3
 90
@@ -1620,10 +2630,10 @@ Name
 primary_struct_assem_cost
 X
 3
-471
+525
 Y
 3
-195
+234
 Width
 3
 90
@@ -1682,10 +2692,10 @@ Name
 prime_mover_cost
 X
 3
-471
+525
 Y
 3
-156
+195
 Width
 3
 90
@@ -1740,11 +2750,170 @@ Numeric
 17
 Name
 5
+22
+prime_mover_cost_total
+X
+3
+624
+Y
+3
+195
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+24
+struct_level_total_label
+X
+3
+627
+Y
+3
+90
+Width
+3
+84
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+15
+Itemized Inputs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+23
+struct_user_input_label
+X
+3
+636
+Y
+3
+90
+Width
+3
+60
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+10
+User Input
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
 24
 structural_assembly_cost
 X
 3
-669
+723
 Y
 3
 114
@@ -1807,7 +2976,7 @@ Name
 structural_assembly_cost_input
 X
 3
-372
+624
 Y
 3
 114
@@ -1869,7 +3038,7 @@ Name
 structural_assembly_cost_method
 X
 3
-225
+393
 Y
 3
 114
@@ -1905,7 +3074,7 @@ Name
 structural_assembly_cost_modeled
 X
 3
-570
+525
 Y
 3
 114
@@ -1968,7 +3137,7 @@ Name
 structural_assembly_cost_total
 X
 3
-471
+624
 Y
 3
 114
@@ -2031,10 +3200,10 @@ Name
 transport_structure_cost
 X
 3
-471
+525
 Y
 3
-597
+636
 Width
 3
 90
@@ -2083,6 +3252,69 @@ BackColour
 TabOrder
 3
 4294967295
+Numeric
+
+1
+17
+Name
+5
+30
+transport_structure_cost_total
+X
+3
+621
+Y
+3
+636
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 ToolTipCtrl
 
 1
@@ -2093,10 +3325,10 @@ Name
 tt_active_structure_cost
 X
 3
-348
+402
 Y
 3
-315
+354
 Width
 3
 24
@@ -2120,10 +3352,10 @@ Name
 tt_additional_structural_components_cost
 X
 3
-432
+486
 Y
 3
-357
+396
 Width
 3
 24
@@ -2148,10 +3380,10 @@ Name
 tt_ballast_system_cost
 X
 3
-336
+390
 Y
 3
-477
+516
 Width
 3
 24
@@ -2176,10 +3408,10 @@ Name
 tt_buoyancy_chambers_cost
 X
 3
-369
+423
 Y
 3
-237
+276
 Width
 3
 24
@@ -2203,10 +3435,10 @@ Name
 tt_coatings_cost
 X
 3
-300
+354
 Y
 3
-555
+594
 Width
 3
 24
@@ -2231,10 +3463,10 @@ Name
 tt_external_ballast_chambers_cost
 X
 3
-393
+447
 Y
 3
-276
+315
 Width
 3
 24
@@ -2258,10 +3490,10 @@ Name
 tt_marine_systems_cost
 X
 3
-339
+393
 Y
 3
-396
+435
 Width
 3
 24
@@ -2286,10 +3518,10 @@ Name
 tt_navigation_lighting_cost
 X
 3
-369
+423
 Y
 3
-516
+555
 Width
 3
 24
@@ -2314,10 +3546,10 @@ Name
 tt_other_structural_cost
 X
 3
-279
+333
 Y
 3
-636
+675
 Width
 3
 24
@@ -2342,10 +3574,10 @@ Name
 tt_personnel_access_system_cost
 X
 3
-393
+447
 Y
 3
-432
+471
 Width
 3
 24
@@ -2370,10 +3602,10 @@ Name
 tt_primary_structural_assembly_cost
 X
 3
-411
+465
 Y
 3
-192
+231
 Width
 3
 24
@@ -2396,10 +3628,10 @@ Name
 tt_prime_mover_cost
 X
 3
-315
+369
 Y
 3
-156
+195
 Width
 3
 24
@@ -2424,7 +3656,7 @@ Name
 tt_structural_assembly_cost
 X
 3
-186
+354
 Y
 3
 114
@@ -2451,10 +3683,10 @@ Name
 tt_transport_structure_cost
 X
 3
-393
+447
 Y
 3
-597
+636
 Width
 3
 24
@@ -2470,7 +3702,7 @@ Tips
 130
 Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
 
-69
+71
 active_structure_cost
 3
 1
@@ -2499,7 +3731,7 @@ $
 1
 0
 Default
-additional_structural_components_total
+additional_structural_components_cost_total
 3
 1
  
@@ -2639,7 +3871,7 @@ $
 1
 0
 Default
-coatings_total
+coatings_cost_total
 3
 1
  
@@ -2864,7 +4096,7 @@ $
 1
 0
 Default
-marine_systems_total
+marine_systems_cost_total
 3
 1
  
@@ -2918,7 +4150,7 @@ mooring_found_substruc_cost_method
 1
 1
 1
-0
+2
 Default
 mooring_found_substruc_cost_modeled
 3
@@ -3046,6 +4278,20 @@ operations_cost_modeled
 1
 0
 Default
+other_cost_total
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
 other_costs
 3
 1
@@ -3144,20 +4390,6 @@ other_infrastructure_cost_modeled
 1
 0
 Default
-other_total
-3
-1
- 
-$
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 personnel_access_system_cost
 3
 1
@@ -3212,7 +4444,7 @@ power_takeoff_system_cost_method
 1
 1
 1
-0
+2
 Default
 power_takeoff_system_cost_modeled
 3
@@ -3256,7 +4488,7 @@ $
 1
 0
 Numeric
-prime_mover_total
+prime_mover_cost_total
 3
 1
  
@@ -3312,6 +4544,34 @@ site_access_port_staging_cost_modeled
 1
 0
 Default
+struct_level_total_label
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Numeric
+struct_user_input_label
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Numeric
 structural_assembly_cost
 3
 1
@@ -3344,7 +4604,7 @@ structural_assembly_cost_method
 3
 1
  
-$ 
+ 
  
 0
 0
@@ -3352,7 +4612,7 @@ $
 1
 1
 1
-0
+2
 Choice
 structural_assembly_cost_modeled
 3
@@ -3424,7 +4684,7 @@ $
 1
 0
 Default
-transport_structure_total
+transport_structure_cost_total
 3
 1
  
@@ -3439,7 +4699,7 @@ transport_structure_total
 0
 Default
 
-6658
+6702
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -3451,33 +4711,33 @@ equations{'marine_energy_tech'} = define() {
 	else return 1; //tidal
 };
 
-equations {'prime_mover_total'} = define() {
+equations {'prime_mover_cost_total'} = define() {
 	return ${prime_mover_cost}+${primary_struct_assem_cost}+${buoyancy_chamber_cost}+${external_ballast_chambers_cost}+${active_structure_cost};
 };
 
-equations {'additional_structural_components_total'} = define() {
+equations {'additional_structural_components_cost_total'} = define() {
 	return ${additional_structural_components_cost};
 };
 
-equations {'marine_systems_total'} = define() {
+equations {'marine_systems_cost_total'} = define() {
 	return ${marine_systems_cost}+${personnel_access_system_cost}+${ballast_system_cost}+${navigation_lighting_cost};
 };
 
-equations {'coatings_total'} = define() {
+equations {'coatings_cost_total'} = define() {
 	return ${coatings_cost};
 };
 
-equations {'transport_structure_total'} = define() {
+equations {'transport_structure_cost_total'} = define() {
 	return ${transport_structure_cost};
 };
 
-equations {'other_total'} = define() {
+equations {'other_cost_total'} = define() {
 	return ${other_costs};
 };
 
 equations {'structural_assembly_cost_total'} = define() {
-	return ${prime_mover_total}+${additional_structural_components_total}+${marine_systems_total}+
-		${coatings_total}+${transport_structure_total}+${other_total};
+	return ${prime_mover_cost_total}+${additional_structural_components_cost_total}+${marine_systems_cost_total}+
+		${coatings_cost_total}+${transport_structure_cost_total}+${other_cost_total};
 };
 
 
@@ -3541,7 +4801,7 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	
 
 	success = ssc_exec(obj, 'mhk_costs');
-	msgbox(success);
+	
 	
 	${structural_assembly_cost_modeled} = ssc_var( obj, 'structural_assembly_cost_modeled' );
 	${power_takeoff_system_cost_modeled} = ssc_var( obj, 'power_takeoff_system_cost_modeled' );
@@ -3575,7 +4835,7 @@ equations {'itemized_check_structural'} = define() {
 			[
 				0,
 				0,
-				0,
+				2,
 				1
 			];
 };
@@ -3608,7 +4868,7 @@ equations {'method_check'} = define() {
 
 
 			
-1013
+1702
 on_load{'Marine Costs - Structural Assembly'} = define() {
 	on_change{'itemized_check_structural'};
 	enable_itemized_structural();
@@ -3635,6 +4895,21 @@ function enable_itemized_structural()
 	enable('coatings_cost',itemized_value==1);
 	enable('transport_structure_cost',itemized_value==1);
 	enable('other_costs',itemized_value==1);
+	enable('prime_mover_cost_total',itemized_value==1);
+	enable('additional_structural_components_cost_total',itemized_value==1);
+	enable('marine_systems_cost_total',itemized_value==1);
+	enable('coatings_cost_total',itemized_value==1);
+	enable('transport_structure_cost_total',itemized_value==1);
+	enable('other_cost_total',itemized_value==1);
+	enable('structural_assembly_cost_input',itemized_value!=2);
+	show('structural_assembly_cost_total',itemized_value==1);
+	show('struct_level_total_label',itemized_value==1);
+	show('structural_assembly_cost_input',(itemized_value==0 || itemized_value==2));
+	show('struct_user_input_label',(itemized_value==0 || itemized_value==2));
+	
+	refresh();
+	
+	
 }
 
 	
