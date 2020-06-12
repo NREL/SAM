@@ -1,7 +1,7 @@
 Marine Costs - E&M
 910
 958
-72
+71
 Label
 
 1
@@ -1156,13 +1156,13 @@ Name
 level_label
 X
 3
-696
+681
 Y
 3
 300
 Width
 3
-66
+78
 Height
 3
 24
@@ -1181,7 +1181,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1194,44 +1194,6 @@ AlignRight
 AlignTop
 2
 0
-Divider
-
-1
-10
-Name
-5
-11
-object 2163
-X
-3
-684
-Y
-3
-315
-Width
-3
-96
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-0
-Bold
-2
-1
 Divider
 
 1
@@ -3870,7 +3832,7 @@ equations {'other_eng_cost_total_display'} = define() {
 
 
 
-2474
+2587
 on_load{'Marine Costs - E&M'} = define() {
 	on_change{'itemized_check_eng'};
 	on_change{'level_eng'};
@@ -3880,6 +3842,7 @@ on_load{'Marine Costs - E&M'} = define() {
 
 on_change{'itemized_check_eng'} = define() {
 	enable_itemized_eng();
+	
 };
 	
 on_change{'level_eng'} = define() {
@@ -3908,7 +3871,11 @@ function enable_itemized_eng()
 	show('eng_and_mgmt_cost_input',(itemized_value==0 || itemized_value==2));
 	show('user_input_label_eng',(itemized_value==0 || itemized_value==2));
 	show('level_label',itemized_value==1);
-	
+	show('level_line',itemized_value==1);
+	if (value('itemized_check_eng')==1)
+	{
+		enable_itemized_level_eng();
+	}
 	refresh();
 }
 
