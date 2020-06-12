@@ -784,7 +784,7 @@ void fcall_is_assigned( lk::invoke_t &cxt )
 
     CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
     wxString name = cxt.arg(0).as_string();
-    if ( VarValue *vv = cc.GetCase().BaseCase().GetValue( name ) )
+    if ( cc.GetCase().BaseCase().GetValue( name ) )
         cxt.result().assign(1);
     else
         cxt.result().assign((double)0);
