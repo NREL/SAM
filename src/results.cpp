@@ -2416,7 +2416,7 @@ void TabularBrowser::UpdateNotebook(ArraySizeKey grid_size, wxString var_name)
 		wxString group = group_by_name[var_name];
 		if (grid_size.n_cols == 1)
 		{
-			m_notebook->AddPage(m_gridMap[grid_size], group, (bool)wxID_ANY);
+			m_notebook->AddPage(m_gridMap[grid_size], group, true);
 			m_tabLabelsMap[grid_size] = group;
 		}
 		else
@@ -2425,7 +2425,7 @@ void TabularBrowser::UpdateNotebook(ArraySizeKey grid_size, wxString var_name)
 			wxString units = m_sim->GetUnits(var_name);
 			if (!units.IsEmpty())
 				label = label + " (" + units + ")";
-			m_notebook->AddPage(m_gridMap[grid_size], label , (bool)wxID_ANY);
+			m_notebook->AddPage(m_gridMap[grid_size], label, true);
 			m_tabLabelsMap[grid_size] = label;
 		}
 		m_numberOfTabs++;
