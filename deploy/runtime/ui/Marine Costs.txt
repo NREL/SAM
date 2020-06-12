@@ -1,7 +1,7 @@
 Marine Costs
 791
 1061
-145
+149
 GroupBox
 
 1
@@ -596,6 +596,53 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+21
+cost_percentage_array
+X
+3
+279
+Y
+3
+1020
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -6151,6 +6198,53 @@ BackColour
 TabOrder
 3
 0
+Label
+
+1
+13
+Name
+5
+21
+total_bos_cost_per_kw
+X
+3
+12
+Y
+3
+1020
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -6278,6 +6372,53 @@ BackColour
 TabOrder
 3
 0
+Label
+
+1
+13
+Name
+5
+24
+total_device_cost_per_kw
+X
+3
+12
+Y
+3
+1020
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -6402,6 +6543,53 @@ BackColour
 255
 TabOrder
 3
+0
+Label
+
+1
+13
+Name
+5
+27
+total_financial_cost_per_kw
+X
+3
+12
+Y
+3
+1020
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
 0
 Numeric
 
@@ -7091,7 +7279,7 @@ Tips
 55
 Type a tip here or define in runtime/help/tooltips.json
 
-85
+90
 array_cable_system_cost
 3
 1
@@ -7200,6 +7388,20 @@ ME Costs
 9
 1
 1
+1
+1
+0
+Default
+cost_percentage_array
+3
+2
+ 
+ 
+ 
+0
+8
+1
+2
 1
 1
 0
@@ -8186,6 +8388,20 @@ ME Costs
 1
 0
 Default
+total_bos_cost_per_kw
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_cost_per_kw
 3
 1
@@ -8208,6 +8424,20 @@ $
 ME Costs
 0
 9
+1
+1
+1
+1
+0
+Default
+total_device_cost_per_kw
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -8242,6 +8472,20 @@ ME Costs
 1
 0
 Numeric
+total_financial_cost_per_kw
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_installed_cost
 3
 1
@@ -8270,6 +8514,20 @@ ME Costs
 1
 0
 Numeric
+total_operating_cost_per_kw
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_rated_capacity
 3
 1
@@ -8285,7 +8543,7 @@ ME Costs
 0
 Default
 
-10460
+11267
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -8594,5 +8852,35 @@ equations{ 'total_installed_cost' } = define() {
 equations{ 'total_cost_per_kw' } = define() {
 	return ${total_installed_cost} / ${system_capacity} ;
 };
+
+equations{ 'total_bos_cost_per_kw' } = define() {
+	return ${total_bos_cost}/${system_capacity};
+};
+
+equations{ 'total_device_cost_per_kw' } = define() {
+	return ${total_device_cost}/${system_capacity};
+};
+
+equations{ 'total_financial_cost_per_kw' } = define() {
+	return ${total_financial_cost}/${system_capacity};
+};
+
+equations{ 'total_operating_cost_per_kw' } = define() {
+	return ${total_operating_cost}/${system_capacity};
+};
+
+equations{ 'cost_percentage_array' } = define() {
+	return
+		[
+			${total_device_cost}/(${total_installed_cost}+${total_operating_cost}),
+			${total_bos_cost}/(${total_installed_cost}+${total_operating_cost}),
+			${total_financial_cost}/(${total_installed_cost}+${total_operating_cost}),
+			${total_operating_cost}/(${total_installed_cost}+${total_operating_cost})
+		];
+};
+
+
+
+
 1
 

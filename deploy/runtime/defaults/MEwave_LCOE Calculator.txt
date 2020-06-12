@@ -1,5 +1,5 @@
 1
-174
+179
 array_cable_system_cost
 1
 1
@@ -144,6 +144,13 @@ city
 4
 6
 Eureka
+cost_percentage_array
+1
+2
+1
+4
+0.715507 0.191818 0.0795124 0.0131625 
+
 country
 1
 4
@@ -250,7 +257,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5655880
+5.65588e+06
 eng_and_mgmt_cost_input
 1
 1
@@ -268,7 +275,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-5655880
+5.65588e+06
 export_cable_length
 1
 1
@@ -286,7 +293,7 @@ export_cable_system_cost
 1
 1
 1
-1603450
+1.60345e+06
 export_cable_system_cost_input
 1
 1
@@ -304,7 +311,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-1603450
+1.60345e+06
 file_name
 1
 4
@@ -339,7 +346,7 @@ insurance_during_construction_cost
 1
 1
 1
-3645510
+3.64551e+06
 insurance_during_construction_input
 1
 1
@@ -357,7 +364,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3645510
+3.64551e+06
 inter_array_cable_length
 1
 1
@@ -460,7 +467,7 @@ maintenance_cost_cost
 1
 1
 1
-3658280
+3.65828e+06
 maintenance_cost_input
 1
 1
@@ -478,7 +485,7 @@ maintenance_cost_modeled
 1
 1
 1
-3658280
+3.65828e+06
 marine_energy_tech
 1
 1
@@ -630,7 +637,7 @@ other_elec_infra_cost
 1
 1
 1
-2037670
+2.03767e+06
 other_elec_infra_cost_input
 1
 1
@@ -648,7 +655,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-2037670
+2.03767e+06
 other_infrastructure_cost
 1
 1
@@ -791,7 +798,7 @@ site_access_port_staging_cost
 1
 1
 1
-4010060
+4.01006e+06
 site_access_port_staging_cost_input
 1
 1
@@ -809,7 +816,7 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4010060
+4.01006e+06
 state
 1
 4
@@ -851,6 +858,12 @@ total_bos_cost
 1
 1
 79150688
+total_bos_cost_per_kw
+1
+1
+1
+1
+2767.51
 total_cost_per_kw
 1
 1
@@ -863,6 +876,12 @@ total_device_cost
 1
 1
 295243520
+total_device_cost_per_kw
+1
+1
+1
+1
+10323.2
 total_elec_infra_cost
 1
 1
@@ -875,6 +894,12 @@ total_financial_cost
 1
 1
 32809620
+total_financial_cost_per_kw
+1
+1
+1
+1
+1147.19
 total_installed_cost
 1
 1
@@ -887,6 +912,12 @@ total_operating_cost
 1
 1
 5431317
+total_operating_cost_per_kw
+1
+1
+1
+1
+189.906
 total_rated_capacity
 1
 1
