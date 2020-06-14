@@ -48,7 +48,7 @@
 *******************************************************************************************************/
 
 #include <set>
-//#include <chrono>
+#include <fstream>
 
 #include <wx/wx.h>
 #include <wx/frame.h>
@@ -2629,12 +2629,14 @@ int SamApp::RevisionNumber()
 #else
 	wxString path = SamApp::GetRuntimePath() + "/patches/patch_lnx.txt";
 #endif
-	if ( FILE *fp = fopen( (const char*)path.c_str(), "r" ) )
+	std::ifstream fp;
+	fp.open(path);
+	if (!fp.fail())
 	{
-		char buf[32];
-		fgets( buf, 31, fp );
-		fclose(fp);
-		patch = atoi( buf );
+	  	std::string buf;
+		std::getline(fp, buf);
+		fp.close();
+		patch = atoi(buf.c_str());
 	}
 	return patch;
 }
@@ -2697,12 +2699,14 @@ wxString SamApp::ReadProxyFile()
 	wxString proxy_file = SamApp::GetAppPath() + "/proxy.txt";
 	if ( wxFileExists( proxy_file ) )
 	{
-		if ( FILE *f = fopen(proxy_file.c_str(), "r") )
+	  	std::ifstream f;
+	  	f.open(proxy_file);
+		if (!f.fail())
 		{
-			char buf[512];
-			fgets(buf,511,f);
-			fclose(f);
-			return wxString::FromAscii(buf).Trim().Trim(false);
+		  	std::string buf;
+			std::getline(f, buf);
+			f.close();
+			return wxString::FromAscii(buf.c_str()).Trim().Trim(false);
 		}
 	}
 
