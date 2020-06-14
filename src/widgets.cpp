@@ -20,6 +20,8 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#include <fstream>
+
 #include <wx/dcbuffer.h>
 #include <wx/clipbrd.h>
 #include <wx/tokenzr.h>
@@ -1691,8 +1693,9 @@ public:
 		{
 			wxFileDialog dlg(this, "Select data file to import");
 			if (dlg.ShowModal() != wxID_OK) return;
-			FILE *fp = fopen(dlg.GetPath().c_str(), "r");
-			if (!fp)
+			std::ifstream fp;
+			fp.open(dlg.GetPath());
+			if (fp.fail())
 			{
 				wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath());
 				return;
@@ -1701,25 +1704,24 @@ public:
 			std::vector<double> arr;
 			arr.reserve( mData.size() );
 
-			char buf[128];
-			fgets(buf,127,fp); // skip header line
+			std::string buf;
+			std::getline(fp, buf); // skip header line
 
 			bool error = false;
 			for (int i=0;i<(int)mData.size();i++)
 			{
-				if (fgets(buf, 127, fp) == NULL)
+			  if (!std::getline(fp, buf))
 				{
 					wxMessageBox(wxString::Format("Data file does not contain %d data value lines, only %d found.\n\nNote that the first line in the file is considered a header label and is ignored.", mData.size(), i));
 					error = true;
 					break;
 				}
 
-				arr.push_back( (double) atof(buf) );
+			  	arr.push_back( (double) atof(buf.c_str()) );
 			}
 
 			if (!error) SetData(arr);
-
-			fclose(fp);
+			fp.close();
 		}
 		else if (evt.GetId() == IDDD_EXPORT)
 		{
@@ -2310,8 +2312,9 @@ public:
 		{
 			wxFileDialog dlg(this, "Select data file to import");
 			if (dlg.ShowModal() != wxID_OK) return;
-			FILE *fp = fopen(dlg.GetPath().c_str(), "r");
-			if (!fp)
+			std::ifstream fp;
+			fp.open(dlg.GetPath());
+			if (fp.fail())
 			{
 				wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath());
 				return;
@@ -2320,25 +2323,24 @@ public:
 			std::vector<double> arr;
 			arr.reserve(mData.size());
 
-			char buf[128];
-			fgets(buf, 127, fp); // skip header line
+			std::string buf;
+			std::getline(fp, buf); // skip header line
 
 			bool error = false;
 			for (int i = 0; i < (int)mData.size(); i++)
 			{
-				if (fgets(buf, 127, fp) == NULL)
+			  	if (!std::getline(fp, buf))
 				{
 					wxMessageBox(wxString::Format("Data file does not contain %d data value lines, only %d found.\n\nNote that the first line in the file is considered a header label and is ignored.", mData.size(), i));
 					error = true;
 					break;
 				}
 
-				arr.push_back((double)atof(buf));
+				arr.push_back((double)atof(buf.c_str()));
 			}
 
 			if (!error) SetData(arr);
-
-			fclose(fp);
+			fp.close();
 		}
 		else if (evt.GetId() == ILDD_EXPORT)
 		{
@@ -3276,21 +3278,24 @@ public:
 		{
 			wxFileDialog dlg(this, "Select data file to import");
 			if (dlg.ShowModal() != wxID_OK) return;
-			FILE *fp = fopen(dlg.GetPath().c_str(), "r");
-			if (!fp)
+			std::ifstream fp;
+			fp.open(dlg.GetPath());
+			if (fp.fail())
 			{
 				wxMessageBox("Could not open file for reading:\n\n" + dlg.GetPath());
 				return;
 			}
 			wxArrayString *arr = GetData();
 			arr->Clear();
-			char buf[128];
-			while (fgets(buf, 127, fp) != NULL)
+			std::string buf;
+			while (std::getline(fp, buf))
 			{
-				buf[strcspn(buf, "\r\n")] = 0;
+			  	// trim off \r and/or \n
+			  	size_t idx = strcspn(buf.c_str(), "\r\n");
+				buf.resize(idx);
 				arr->push_back(buf);
 			}
-			fclose(fp);
+			fp.close();
 			SetData(arr);
 		}
 		else if (evt.GetId() == IDSD_EXPORT)
