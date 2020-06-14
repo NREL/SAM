@@ -21,6 +21,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include <algorithm>
+#include <fstream>
 #include <memory>
 
 // threading
@@ -3447,8 +3448,9 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 	cxt.result().empty_hash();
 
 	lk_string fn = cxt.arg(0).as_string();
-	FILE *fp = fopen(fn.c_str(), "r");
-	if (!fp)
+	std::ifstream fp;
+	fp.open(fn);
+	if (fp.fail())
 	{
 		err_str += "No valid input file " + fn + "specified\n";
 		cxt.result().hash_item("error", err_str);
@@ -3456,10 +3458,10 @@ static void fcall_sam_async( lk::invoke_t &cxt )
 	}
 
 	lk_string file_contents;
-	char buf[1024];
-	while (fgets(buf, 1023, fp) != 0)
+	std::string buf;
+	while (std::getline(fp, buf))
 		file_contents += buf;
-	fclose(fp);
+	fp.close();
 
 //
 //	auto end = std::chrono::system_clock::now();
@@ -3625,8 +3627,9 @@ static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 	cxt.result().empty_hash();
 
 	lk_string fn = cxt.arg(0).as_string();
-	FILE *fp = fopen(fn.c_str(), "r");
-	if (!fp)
+	std::ifstream fp;
+	fp.open(fn);
+	if (fp.fail())
 	{
 		err_str += "No valid input file " + fn + "specified\n";
 		cxt.result().hash_item("error", err_str);
@@ -3634,10 +3637,10 @@ static void fcall_sam_packaged_task(lk::invoke_t &cxt)
 	}
 
 	lk_string file_contents;
-	char buf[1024];
-	while (fgets(buf, 1023, fp) != 0)
-		file_contents += buf;
-	fclose(fp);
+	std::string buf;
+	while (std::getline(fp, buf))
+	  file_contents += buf;
+	fp.close();
 
 	//
 	//	auto end = std::chrono::system_clock::now();
@@ -4007,18 +4010,19 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 	if (wxFileExists(workdir + "/LHS.ERR"))
 	{
 		err_msg = "LHS error.  There could be a problem with the input setup.";
-		FILE *ferr = fopen(wxString(workdir + "/LHS.ERR").c_str(), "r");
-		if (ferr)
+		std::ifstream ferr;
+		ferr.open(workdir + "/LHS.ERR");
+		if (ferr.good())
 		{
-			char buf[256];
+		  	std::string buf;
 			err_msg += "\n\n";
 			wxString line;
-			while (!feof(ferr))
+			while (!ferr.eof())
 			{
-				fgets(buf, 255, ferr);
+			  	std::getline(ferr, buf);
 				err_msg += wxString(buf) + "\n";
 			}
-			fclose(ferr);
+			ferr.close();
 		}
 		cxt.error(err_msg);
 		return;
@@ -4032,8 +4036,9 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 
 	// read the lsp output file
 	wxString outputfile = workdir + "/SAMLHS.LSP";
-	fp = fopen(outputfile.c_str(), "r");
-	if (!fp)
+	std::ifstream f;
+	f.open(outputfile);
+	if (f.fail())
 	{
 		cxt.error("Could not read output file " + outputfile);
 		return;
@@ -4043,12 +4048,12 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 	cxt.result().empty_vector();
 
 	int nline = 0;
-	char cbuf[1024];
+	std::string cbuf;
 	int n_runs = 0;
 	bool found_data = false;
-	while (!feof(fp))
+	while (!f.eof())
 	{
-		fgets(cbuf, 1023, fp);
+	  	std::getline(f, cbuf);
 		wxString buf(cbuf);
 		nline++;
 
@@ -4068,28 +4073,28 @@ void lhs_threaded(lk::invoke_t &cxt, wxString &workdir, int &sv, int &num_sample
 			if (n != n_runs)
 			{
 				cxt.error(wxString::Format("output file formatting error (run count %d!=%d) at line %d: ", n, n_runs, nline) + buf);
-				fclose(fp);
+				f.close();
 				return;
 			}
 
-			fgets(cbuf, 1023, fp);
+			std::getline(f, cbuf);
 			wxString buf(cbuf);
 			nline++;
 			n = atoi(buf.c_str());
 			if (n != 1)
 			{
 				cxt.error("output file formatting error (ndist count) at line " + wxString::Format("%d", nline));
-				fclose(fp);
+				f.close();
 				return;
 			}
 
-			fgets(cbuf, 1023, fp);
+			std::getline(f, cbuf);
 			wxString val(cbuf);
 			nline++;
 			cxt.result().vec_append(wxAtof(val));
 		}
 	}
-	fclose(fp);
+	f.close();
 }
 
 
