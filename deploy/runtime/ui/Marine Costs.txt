@@ -8543,7 +8543,7 @@ ME Costs
 0
 Default
 
-11267
+11350
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -8872,10 +8872,10 @@ equations{ 'total_operating_cost_per_kw' } = define() {
 equations{ 'cost_percentage_array' } = define() {
 	return
 		[
-			${total_device_cost}/(${total_installed_cost}+${total_operating_cost}),
-			${total_bos_cost}/(${total_installed_cost}+${total_operating_cost}),
-			${total_financial_cost}/(${total_installed_cost}+${total_operating_cost}),
-			${total_operating_cost}/(${total_installed_cost}+${total_operating_cost})
+			[${total_device_cost}/(${total_installed_cost}+${total_operating_cost}), 'Device cost'],
+			[${total_bos_cost}/(${total_installed_cost}+${total_operating_cost}),'balance of system cost'],
+			[${total_financial_cost}/(${total_installed_cost}+${total_operating_cost}),'Financial cost'],
+			[${total_operating_cost}/(${total_installed_cost}+${total_operating_cost}),'Operations cost']
 		];
 };
 
