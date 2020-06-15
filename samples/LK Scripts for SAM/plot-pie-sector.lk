@@ -1,0 +1,89 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+	Pie graph (sector plot) example.
+	
+	Run this script with the default Detailed PV / Single Owner case to plot
+	data from cost input variables, or uncomment the code as described below 
+	to assign values to plot by hand.
+	
+	Tested in SAM 2020.2.29 r2
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+
+// these cost variables are inputs for the Detailed PV and PVWatts performance models
+// vars = [ [ '<input variable name>', '<label to display in graph>'], ... ]
+vars = [ [ 'module_total', 'Module' ], 
+         [ 'inverter_total', 'Inverter' ], 
+         [ 'bos_equip_total', 'BOS' ],
+         [ 'install_labor_total', 'Labor' ],
+         [ 'install_margin_total', 'Overhead' ],
+         [ 'permitting_total', 'Permitting' ],
+         [ 'engr_total', 'Engineering' ],
+         [ 'grid_total', 'Interconnection' ],
+         [ 'land_total', 'Land' ],
+         [ 'landprep_total', 'Transmission' ],
+         [ 'sales_tax_total', 'Sales Tax' ],
+		];
+
+total_cost = get('total_installed_cost');
+
+// alternatively, uncomment to assign cost values to plot by hand instead of 
+// reading input variables and modify plot_data assignment below
+/*
+vars = [ [ 7600000, 'Module' ], 
+           [ 1200000, 'Inverter' ], 
+           [ 4000000, 'BOS' ], 
+           [ 2600000, 'Labor' ], 
+           [ 1200000, 'Overhead' ], 
+           [ 200000, 'Permitting' ], 
+           [ 1600000, 'Engineering' ], 
+           [ 600000, 'Interconnection' ], 
+           [ 600000, 'Land' ], 
+           [ 400000, 'Transmission' ], 
+           [ 850000, 'Sales Tax' ] ];
+           
+total_cost = 0;
+for( i=0; i<#vars; i++) { total_cost += vars[i][0]; }
+*/
+
+outln( vars );
+
+// create array of values and labels 
+plot_data = alloc( #vars,2 );
+
+for(i=0; i<#vars; i++)
+{
+	// values as percent of total
+	// if you assign variables by hand, replace get(vars[i][0] with vars[i][0]
+	plot_data[i][0] = round( get(vars[i][0]) / total_cost * 1000 ) / 10;
+	//plot_data[i][0] = vars[i][0] / total_cost * 100;
+
+	// label
+	plot_data[i][1] = vars[i][1] + ' (' + sprintf( '%.1f', plot_data[i][0] ) + '%)';
+}
+
+outln( plot_data );
+
+// create the plot
+newplot();
+sector( plot_data, { border = 0, 
+                     holesize = 0.50, // percent of diameter, 0 for no hole
+                     showvalues = false } );
+                     
+plotopt( { title = 'Percent of Total Installed Cost $' + sprintf('%,',total_cost), 
+           showaxes = false, 
+           border = 0, 
+           pdffontface = 'ComputerModernSerif' } );
+
+// offer to save plot to .png image file
+save = yesno( 'Save plot to file?' );
+if ( save )
+{
+	path = choose_dir( cwd(), 'Choose Folder to Save Plot' );
+	f = path + '/sector-plot.png'; 
+	ok = plotout( f );
+	if ( ok ) { browse( path ); }
+}
