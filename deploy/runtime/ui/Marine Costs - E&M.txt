@@ -1,7 +1,7 @@
 Marine Costs - E&M
 910
 958
-71
+79
 Label
 
 1
@@ -93,7 +93,55 @@ X
 255
 Y
 3
-714
+792
+Width
+3
+147
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+29
+Other Health and Safety Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+25
+Environmental Monitoring9
+X
+3
+255
+Y
+3
+753
 Width
 3
 147
@@ -774,7 +822,7 @@ X
 474
 Y
 3
-714
+753
 Width
 3
 90
@@ -836,7 +884,7 @@ X
 474
 Y
 3
-675
+714
 Width
 3
 90
@@ -898,7 +946,7 @@ X
 474
 Y
 3
-636
+675
 Width
 3
 90
@@ -960,7 +1008,7 @@ X
 576
 Y
 3
-636
+675
 Width
 3
 90
@@ -1389,7 +1437,7 @@ X
 231
 Y
 3
-756
+837
 Width
 3
 12
@@ -1437,7 +1485,7 @@ X
 231
 Y
 3
-633
+672
 Width
 3
 12
@@ -1581,7 +1629,7 @@ X
 243
 Y
 3
-756
+837
 Width
 3
 33
@@ -1629,7 +1677,7 @@ X
 255
 Y
 3
-675
+714
 Width
 3
 165
@@ -1677,7 +1725,7 @@ X
 243
 Y
 3
-594
+633
 Width
 3
 111
@@ -1725,10 +1773,10 @@ X
 255
 Y
 3
-555
+591
 Width
 3
-36
+186
 Height
 3
 24
@@ -1737,8 +1785,8 @@ Tool Tip
 0
 Caption
 5
-6
-Profit
+35
+Other Construction Management Costs
 TextColour
 4
 0
@@ -1787,6 +1835,54 @@ Caption
 5
 34
 Sales, General, and Administrative
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72839
+X
+3
+255
+Y
+3
+555
+Width
+3
+36
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+6
+Profit
 TextColour
 4
 0
@@ -1917,7 +2013,7 @@ X
 243
 Y
 3
-636
+675
 Width
 3
 177
@@ -1965,7 +2061,7 @@ X
 243
 Y
 3
-714
+753
 Width
 3
 12
@@ -2054,6 +2150,54 @@ Label
 13
 Name
 5
+12
+object 73277
+X
+3
+243
+Y
+3
+792
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+5.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 10
 object 733
 X
@@ -2061,7 +2205,7 @@ X
 231
 Y
 3
-594
+633
 Width
 3
 12
@@ -2110,6 +2254,54 @@ X
 Y
 3
 555
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+5.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 73476
+X
+3
+243
+Y
+3
+591
 Width
 3
 12
@@ -2397,7 +2589,7 @@ X
 243
 Y
 3
-675
+714
 Width
 3
 12
@@ -2486,6 +2678,68 @@ Numeric
 17
 Name
 5
+34
+other_construction_management_cost
+X
+3
+474
+Y
+3
+591
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 14
 other_eng_cost
 X
@@ -2493,7 +2747,7 @@ X
 474
 Y
 3
-756
+837
 Width
 3
 90
@@ -2555,7 +2809,7 @@ X
 573
 Y
 3
-756
+837
 Width
 3
 90
@@ -2581,6 +2835,68 @@ Prefix
 5
 1
 $
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+28
+other_health_and_safety_cost
+X
+3
+474
+Y
+3
+792
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
 Suffix
 5
 0
@@ -2805,7 +3121,7 @@ X
 474
 Y
 3
-594
+633
 Width
 3
 90
@@ -2867,7 +3183,7 @@ X
 576
 Y
 3
-594
+633
 Width
 3
 90
@@ -3110,7 +3426,35 @@ X
 402
 Y
 3
-714
+753
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+146
+Engineering studies to specify the design of the project (e.g., technology, layout) and understand economics and risks associated with the design.
+Tips
+5
+146
+Engineering studies to specify the design of the project (e.g., technology, layout) and understand economics and risks associated with the design.
+ToolTipCtrl
+
+1
+7
+Name
+5
+34
+tt_environmental_monitoring_cost78
+X
+3
+402
+Y
+3
+792
 Width
 3
 24
@@ -3138,7 +3482,7 @@ X
 420
 Y
 3
-675
+714
 Width
 3
 24
@@ -3166,7 +3510,7 @@ X
 423
 Y
 3
-636
+675
 Width
 3
 24
@@ -3194,7 +3538,7 @@ X
 279
 Y
 3
-756
+837
 Width
 3
 24
@@ -3247,6 +3591,34 @@ Name
 tt_profit_eng_cost
 X
 3
+444
+Y
+3
+591
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+65
+Any margin earned by an independent construction management firm.
+Tips
+5
+65
+Any margin earned by an independent construction management firm.
+ToolTipCtrl
+
+1
+7
+Name
+5
+20
+tt_profit_eng_cost70
+X
+3
 291
 Y
 3
@@ -3278,7 +3650,7 @@ X
 354
 Y
 3
-594
+633
 Width
 3
 24
@@ -3426,7 +3798,7 @@ AlignTop
 2
 0
 
-23
+25
 construction_management_cost
 3
 1
@@ -3623,6 +3995,20 @@ level_eng
 1
 0
 RadioChoice
+other_construction_management_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 other_eng_cost
 3
 1
@@ -3645,6 +4031,20 @@ other_eng_cost_total_display
  
 0
 8
+1
+1
+1
+1
+0
+Default
+other_health_and_safety_cost
+3
+1
+ 
+ 
+ 
+0
+0
 1
 1
 1
@@ -3750,15 +4150,16 @@ sales_general_and_administrative_eng_cost
 0
 Default
 
-2153
+2226
 equations {'construction_management_cost_total'} = define() {
 	return ${construction_management_cost}+${salaries_eng_cost}+
-		${sales_general_and_administrative_eng_cost}+${profit_eng_cost};
+		${sales_general_and_administrative_eng_cost}+${profit_eng_cost}+
+		${other_construction_management_cost};
 };
 
 equations {'health_safety_and_environmental_monitoring_cost_total'} = define() {
 	return ${health_safety_and_environmental_monitoring_cost}+${health_and_safety_monitoring_cost}+
-		${environmental_monitoring_cost};
+		${environmental_monitoring_cost}+${other_health_and_safety_cost};
 };
 
 equations {'eng_and_mgmt_cost_total'} = define() {
@@ -3832,7 +4233,7 @@ equations {'other_eng_cost_total_display'} = define() {
 
 
 
-2587
+2719
 on_load{'Marine Costs - E&M'} = define() {
 	on_change{'itemized_check_eng'};
 	on_change{'level_eng'};
@@ -3863,6 +4264,8 @@ function enable_itemized_eng()
 	enable('health_and_safety_monitoring_cost',itemized_value==1);
 	enable('environmental_monitoring_cost',itemized_value==1);
 	enable('other_eng_cost',itemized_value==1);
+	enable('other_construction_management_cost',itemized_value==1);
+	enable('other_health_and_safety_cost',itemized_value==1);
 	show('level_eng',itemized_value==1);
 	show('level_label',itemized_value==1);
 	enable('eng_and_mgmt_cost_input',itemized_value==0);
@@ -3872,14 +4275,14 @@ function enable_itemized_eng()
 	show('user_input_label_eng',(itemized_value==0 || itemized_value==2));
 	show('level_label',itemized_value==1);
 	show('level_line',itemized_value==1);
-	if (value('itemized_check_eng')==1)
+	/*if (value('itemized_check_eng')==1)
 	{
 		enable_itemized_level_eng();
-	}
+	}*/
 	refresh();
 }
 
-function enable_itemized_level_eng()
+/*function enable_itemized_level_eng()
 {
 	level_check = value('level_eng');
 	enable('detailed_design_and_construction_eng_cost',(level_check==0 || level_check==1 || level_check==2));
@@ -3893,5 +4296,5 @@ function enable_itemized_level_eng()
 	enable('health_and_safety_monitoring_cost',(level_check==0 || level_check==2));
 	enable('environmental_monitoring_cost',(level_check==0 || level_check==2));
 	enable('other_eng_cost',(level_check==0 || level_check==1 || level_check==2));
-}
+}*/
 	

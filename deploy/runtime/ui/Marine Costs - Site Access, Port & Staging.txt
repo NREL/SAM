@@ -1,7 +1,7 @@
 Marine Costs - Site Access, Port & Staging
 882
 1049
-53
+61
 GroupBox
 
 1
@@ -92,7 +92,55 @@ X
 243
 Y
 3
-606
+684
+Width
+3
+147
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Other Port Fees
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+20
+Entrance/Exit Fees14
+X
+3
+243
+Y
+3
+648
 Width
 3
 147
@@ -133,14 +181,14 @@ Label
 13
 Name
 5
-20
-Entrance/Exit Fees14
+22
+Entrance/Exit Fees1415
 X
 3
 243
 Y
 3
-525
+567
 Width
 3
 147
@@ -250,7 +298,7 @@ X
 462
 Y
 3
-405
+447
 Width
 3
 90
@@ -312,7 +360,7 @@ X
 462
 Y
 3
-525
+567
 Width
 3
 90
@@ -587,58 +635,10 @@ Label
 Name
 5
 10
-object 719
-X
-3
-477
-Y
-3
-93
-Width
-3
-66
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-12
-Level Totals
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
 object 721
 X
 3
-570
+468
 Y
 3
 93
@@ -689,7 +689,7 @@ X
 231
 Y
 3
-648
+723
 Width
 3
 33
@@ -737,7 +737,7 @@ X
 243
 Y
 3
-567
+609
 Width
 3
 129
@@ -785,7 +785,7 @@ X
 231
 Y
 3
-486
+528
 Width
 3
 165
@@ -833,7 +833,7 @@ X
 231
 Y
 3
-405
+447
 Width
 3
 156
@@ -881,7 +881,7 @@ X
 249
 Y
 3
-366
+402
 Width
 3
 117
@@ -893,8 +893,8 @@ Tool Tip
 0
 Caption
 5
-22
-Fabrication Facilities
+24
+Other Staging Port Costs
 TextColour
 4
 0
@@ -943,6 +943,54 @@ Caption
 5
 20
 Personnel Facilities
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72828
+X
+3
+249
+Y
+3
+366
+Width
+3
+117
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+22
+Fabrication Facilities
 TextColour
 4
 0
@@ -1073,7 +1121,7 @@ X
 231
 Y
 3
-450
+492
 Width
 3
 150
@@ -1163,54 +1211,6 @@ Label
 Name
 5
 9
-object 74
-X
-3
-381
-Y
-3
-93
-Width
-3
-60
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-10
-User Input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-9
 object 75
 X
 3
@@ -1262,10 +1262,10 @@ Name
 object 777
 X
 3
-576
+42
 Y
 3
-192
+252
 Width
 3
 180
@@ -1306,6 +1306,68 @@ Numeric
 17
 Name
 5
+20
+other_port_fees_cost
+X
+3
+462
+Y
+3
+684
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 22
 other_site_access_cost
 X
@@ -1313,7 +1375,69 @@ X
 462
 Y
 3
-648
+723
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+other_staging_port_cost
+X
+3
+462
+Y
+3
+402
 Width
 3
 90
@@ -1437,7 +1561,69 @@ X
 462
 Y
 3
-486
+528
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+20
+port_fees_cost_total
+X
+3
+564
+Y
+3
+528
 Width
 3
 90
@@ -1499,7 +1685,7 @@ X
 462
 Y
 3
-447
+489
 Width
 3
 90
@@ -1623,7 +1809,7 @@ X
 462
 Y
 3
-567
+609
 Width
 3
 90
@@ -1745,7 +1931,7 @@ Name
 site_access_port_staging_cost_input
 X
 3
-360
+567
 Y
 3
 120
@@ -1797,6 +1983,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+41
+site_access_port_staging_cost_input_label
+X
+3
+588
+Y
+3
+93
+Width
+3
+60
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+10
+User Input
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Choice
 
 1
@@ -1843,7 +2077,7 @@ Name
 site_access_port_staging_cost_modeled
 X
 3
-564
+462
 Y
 3
 120
@@ -1906,7 +2140,7 @@ Name
 site_access_port_staging_cost_total
 X
 3
-462
+567
 Y
 3
 120
@@ -1959,6 +2193,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+41
+site_access_port_staging_cost_total_label
+X
+3
+582
+Y
+3
+93
+Width
+3
+66
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+12
+Level Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -1970,6 +2252,68 @@ staging_port_cost
 X
 3
 462
+Y
+3
+162
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+staging_port_cost_total
+X
+3
+564
 Y
 3
 162
@@ -2062,7 +2406,7 @@ X
 399
 Y
 3
-405
+447
 Width
 3
 24
@@ -2090,7 +2434,7 @@ X
 396
 Y
 3
-525
+567
 Width
 3
 24
@@ -2119,6 +2463,34 @@ X
 Y
 3
 366
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+73
+Workshops to support fabrication, construction or assembly of components.
+Tips
+5
+73
+Workshops to support fabrication, construction or assembly of components.
+ToolTipCtrl
+
+1
+7
+Name
+5
+32
+tt_fabrication_facilities_cost59
+X
+3
+363
+Y
+3
+402
 Width
 3
 24
@@ -2174,7 +2546,7 @@ X
 282
 Y
 3
-648
+723
 Width
 3
 24
@@ -2230,7 +2602,7 @@ X
 408
 Y
 3
-483
+525
 Width
 3
 24
@@ -2258,7 +2630,7 @@ X
 396
 Y
 3
-447
+489
 Width
 3
 24
@@ -2314,7 +2686,7 @@ X
 372
 Y
 3
-567
+609
 Width
 3
 24
@@ -2398,7 +2770,35 @@ X
 396
 Y
 3
-606
+648
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+144
+Charges for loading or unloading cargo from vessels, generally calculated by tonnage and equipment requirements for loading/unloading the cargo.
+Tips
+5
+144
+Charges for loading or unloading cargo from vessels, generally calculated by tonnage and equipment requirements for loading/unloading the cargo.
+ToolTipCtrl
+
+1
+7
+Name
+5
+23
+tt_wharfage_fees_cost60
+X
+3
+396
+Y
+3
+684
 Width
 3
 24
@@ -2426,7 +2826,7 @@ X
 462
 Y
 3
-606
+648
 Width
 3
 90
@@ -2476,7 +2876,7 @@ TabOrder
 3
 4294967295
 
-20
+23
 assembly_areas_cost
 3
 1
@@ -2561,7 +2961,32 @@ laydown_area_cost
 1
 0
 Default
+other_port_fees_cost
+3
+0
+ 
+ 
+ 
+0
+0
+1
+0
+ 
 other_site_access_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_staging_port_cost
 3
 1
  
@@ -2597,6 +3022,20 @@ port_fees_cost
  
 0
 0
+1
+1
+1
+1
+0
+Default
+port_fees_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -2731,15 +3170,18 @@ staging_port_cost
 Default
 staging_port_cost_total
 3
-0
+1
  
  
  
 0
-0
+8
+1
+1
+1
 1
 0
- 
+Default
 wharfage_fees_cost
 3
 1
@@ -2755,14 +3197,14 @@ wharfage_fees_cost
 0
 Default
 
-1051
+1056
 equations {'staging_port_cost_total'} = define() {
 	return ${staging_port_cost}+${quay_cost}+${laydown_area_cost}+
 		${assembly_areas_cost}+${personnel_facilities_cost}+
 		${fabrication_facilities_cost};
 };
 
-equations {'port_fees_total'} = define() {
+equations {'port_fees_cost_total'} = define() {
 	return ${port_fees_cost} + ${entrance_exit_fees_cost}+${quayside_docking_fees_cost}+
 		${wharfage_fees_cost}+${other_site_access_cost};
 };
@@ -2787,10 +3229,52 @@ equations {'itemized_check_site_access'} = define() {
 			[
 				0,
 				0,
-				0,
+				2,
 				1
 			];
 };
 
 
-0
+1675
+on_load{'Marine Costs - Site Access, Port & Staging'} = define() {
+	on_change{'itemized_check_site_access'};
+	enable_itemized_site_access();
+	//enable_itemized_level();
+};
+
+on_change{'itemized_check_site'} = define() {
+	enable_itemized_site_access();
+	
+};
+
+function enable_itemized_site_access()
+{
+	itemized_value = value('itemized_check_site_access');
+	enable('staging_port_cost',itemized_value==1);
+	enable('staging_port_cost_total',itemized_value==1);
+	enable('quay_cost',itemized_value==1);
+	enable('laydown_area_cost',itemized_value==1);
+	enable('assembly_areas_cost',itemized_value==1);
+	enable('personnel_facilities_cost',itemized_value==1);
+	enable('fabrication_facilities_cost',itemized_value==1);
+	enable('other_staging_port_cost',itemized_value==1);
+	enable('cranage_cost',itemized_value==1);
+	enable('port_improvement_cost',itemized_value==1);
+	enable('port_fees_cost',itemized_value==1);
+	enable('port_fees_cost_total',itemized_value==1);
+	enable('entrance_exit_fees_cost',itemized_value==1);
+	enable('quayside_docking_fees_cost',itemized_value==1);
+	enable('wharfage_fees_cost',itemized_value==1);
+	enable('other_port_fees_cost',itemized_value==1);
+	enable('other_site_access_cost',itemized_value==1);
+	enable('eng_and_mgmt_cost_input',itemized_value!=1);
+	show('site_access_port_staging_cost_total',itemized_value==1);
+	show('site_access_port_staging_cost_total_label',itemized_value==1);
+	show('site_access_port_staging_cost_input',(itemized_value==0 || itemized_value==2));
+	show('site_access_port_staging_cost_input_label',(itemized_value==0 || itemized_value==2));
+	/*if (value('itemized_check_eng')==1)
+	{
+		enable_itemized_level_eng();
+	}*/
+	refresh();
+}

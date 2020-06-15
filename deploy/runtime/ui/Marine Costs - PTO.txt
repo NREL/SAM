@@ -1,7 +1,7 @@
 Marine Costs - PTO
-913
-1920
-125
+922
+1999
+155
 Label
 
 1
@@ -11,7 +11,7 @@ Name
 0
 X
 3
-237
+339
 Y
 3
 159
@@ -59,10 +59,10 @@ Name
 Air Turbine
 X
 3
-237
+339
 Y
 3
-801
+879
 Width
 3
 63
@@ -107,10 +107,10 @@ Name
 Coatings
 X
 3
-237
+336
 Y
 3
-1520
+1779
 Width
 3
 57
@@ -155,10 +155,10 @@ Name
 Control & Communication System
 X
 3
-243
+345
 Y
 3
-1440
+1626
 Width
 3
 192
@@ -203,10 +203,10 @@ Name
 Electrical Generator
 X
 3
-237
+339
 Y
 3
-1041
+1116
 Width
 3
 111
@@ -251,10 +251,10 @@ Name
 Frequency Converter
 X
 3
-246
+345
 Y
 3
-1359
+1542
 Width
 3
 120
@@ -299,10 +299,10 @@ Name
 Gearbox
 X
 3
-240
+342
 Y
 3
-519
+558
 Width
 3
 48
@@ -347,10 +347,10 @@ Name
 Other
 X
 3
-237
+336
 Y
 3
-1600
+1857
 Width
 3
 36
@@ -364,6 +364,54 @@ Caption
 5
 5
 Other
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+37
+Other Short-Term Energy Storage Costs
+X
+3
+348
+Y
+3
+1671
+Width
+3
+129
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+28
+Other Power Electronics Cost
 TextColour
 4
 0
@@ -401,10 +449,10 @@ Y
 51
 Width
 3
-800
+833
 Height
 3
-1845
+1932
 Tool Tip
 5
 0
@@ -425,10 +473,10 @@ Name
 Power Electrical System
 X
 3
-246
+345
 Y
 3
-1401
+1587
 Width
 3
 129
@@ -473,10 +521,10 @@ Name
 Power Electronics
 X
 3
-237
+336
 Y
 3
-1320
+1503
 Width
 3
 102
@@ -521,10 +569,10 @@ Name
 Power Take-Off Enclosure
 X
 3
-237
+336
 Y
 3
-1479
+1746
 Width
 3
 147
@@ -569,10 +617,10 @@ Name
 Short-Term Energy Storage
 X
 3
-237
+336
 Y
 3
-1281
+1464
 Width
 3
 144
@@ -617,10 +665,10 @@ Name
 Transportation of Power Conversion Chain
 X
 3
-237
+336
 Y
 3
-1560
+1818
 Width
 3
 204
@@ -665,7 +713,7 @@ Name
 accumulators_cost
 X
 3
-468
+570
 Y
 3
 276
@@ -727,10 +775,10 @@ Name
 air_turbine_cost
 X
 3
-468
+570
 Y
 3
-801
+879
 Width
 3
 90
@@ -779,6 +827,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+19
+air_turbine_warning
+X
+3
+768
+Y
+3
+879
+Width
+3
+111
+Height
+3
+174
+Tool Tip
+5
+0
+Caption
+5
+187
+Warning! Cost input at both level 4 and level 5 detail. Please enter cost only at 1 detail level. If two level costs are input the higher cost input will be used to calculate total cost. 
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -789,10 +885,10 @@ Name
 bearings_cost
 X
 3
-468
+570
 Y
 3
-600
+639
 Width
 3
 90
@@ -851,10 +947,10 @@ Name
 blades_rotor_assembly_cost
 X
 3
-468
+570
 Y
 3
-840
+918
 Width
 3
 90
@@ -913,10 +1009,10 @@ Name
 coatings_pto_cost
 X
 3
-468
+570
 Y
 3
-1520
+1779
 Width
 3
 90
@@ -975,10 +1071,10 @@ Name
 cooling_system_cost
 X
 3
-468
+570
 Y
 3
-999
+1155
 Width
 3
 90
@@ -1037,10 +1133,10 @@ Name
 cooling_system_gearbox_cost
 X
 3
-468
+570
 Y
 3
-759
+798
 Width
 3
 90
@@ -1099,10 +1195,10 @@ Name
 electrical_generator_cost
 X
 3
-468
+570
 Y
 3
-1038
+1116
 Width
 3
 90
@@ -1157,14 +1253,124 @@ Numeric
 17
 Name
 5
+31
+electrical_generator_cost_total
+X
+3
+666
+Y
+3
+1116
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+28
+electrical_generator_warning
+X
+3
+768
+Y
+3
+1116
+Width
+3
+111
+Height
+3
+174
+Tool Tip
+5
+0
+Caption
+5
+187
+Warning! Cost input at both level 4 and level 5 detail. Please enter cost only at 1 detail level. If two level costs are input the higher cost input will be used to calculate total cost. 
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
 24
 frequency_converter_cost
 X
 3
-468
+567
 Y
 3
-1359
+1542
 Width
 3
 90
@@ -1223,10 +1429,10 @@ Name
 gearbox_cost
 X
 3
-468
+570
 Y
 3
-519
+558
 Width
 3
 90
@@ -1281,14 +1487,124 @@ Numeric
 17
 Name
 5
+18
+gearbox_cost_total
+X
+3
+669
+Y
+3
+558
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+15
+gearbox_warning
+X
+3
+771
+Y
+3
+558
+Width
+3
+111
+Height
+3
+174
+Tool Tip
+5
+0
+Caption
+5
+187
+Warning! Cost input at both level 4 and level 5 detail. Please enter cost only at 1 detail level. If two level costs are input the higher cost input will be used to calculate total cost. 
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
 10
 gears_cost
 X
 3
-468
+570
 Y
 3
-561
+600
 Width
 3
 90
@@ -1347,10 +1663,10 @@ Name
 housing_cost
 X
 3
-468
+570
 Y
 3
-639
+678
 Width
 3
 90
@@ -1409,10 +1725,10 @@ Name
 hub_assembly_cost
 X
 3
-468
+570
 Y
 3
-879
+957
 Width
 3
 90
@@ -1471,7 +1787,7 @@ Name
 hydraulic_drivetrain_cost
 X
 3
-468
+570
 Y
 3
 156
@@ -1529,11 +1845,121 @@ Numeric
 17
 Name
 5
+31
+hydraulic_drivetrain_cost_total
+X
+3
+672
+Y
+3
+156
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+28
+hydraulic_drivetrain_warning
+X
+3
+768
+Y
+3
+156
+Width
+3
+111
+Height
+3
+174
+Tool Tip
+5
+0
+Caption
+5
+187
+Warning! Cost input at both level 4 and level 5 detail. Please enter cost only at 1 detail level. If two level costs are input the higher cost input will be used to calculate total cost. 
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
 20
 hydraulic_fluid_cost
 X
 3
-468
+570
 Y
 3
 441
@@ -1595,7 +2021,7 @@ Name
 hydraulic_motor_cost
 X
 3
-468
+570
 Y
 3
 321
@@ -1657,7 +2083,7 @@ Name
 hydraulic_reservoir_cost
 X
 3
-468
+570
 Y
 3
 399
@@ -1766,10 +2192,10 @@ Name
 lube_system_cost
 X
 3
-468
+570
 Y
 3
-720
+759
 Width
 3
 90
@@ -1828,10 +2254,72 @@ Name
 lubrication_system_cost
 X
 3
-468
+570
 Y
 3
-1080
+1197
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+9
+object 11
+X
+3
+669
+Y
+3
+879
 Width
 3
 90
@@ -1890,10 +2378,10 @@ Name
 object 7
 X
 3
-636
+63
 Y
 3
-189
+219
 Width
 3
 180
@@ -1938,7 +2426,7 @@ Name
 object 713
 X
 3
-249
+351
 Y
 3
 240
@@ -1983,58 +2471,10 @@ Label
 Name
 5
 10
-object 719
-X
-3
-483
-Y
-3
-87
-Width
-3
-66
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-12
-Level Totals
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
 object 721
 X
 3
-576
+474
 Y
 3
 87
@@ -2082,10 +2522,10 @@ Name
 object 724
 X
 3
-246
+348
 Y
 3
-999
+1155
 Width
 3
 87
@@ -2130,10 +2570,10 @@ Name
 object 72418
 X
 3
-246
+348
 Y
 3
-840
+918
 Width
 3
 141
@@ -2178,10 +2618,10 @@ Name
 object 72441
 X
 3
-249
+351
 Y
 3
-561
+600
 Width
 3
 33
@@ -2226,7 +2666,55 @@ Name
 object 726
 X
 3
-249
+351
+Y
+3
+516
+Width
+3
+174
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+32
+Other Hydraulic Drivetrain Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72675
+X
+3
+351
 Y
 3
 480
@@ -2274,10 +2762,10 @@ Name
 object 727
 X
 3
-249
+351
 Y
 3
-400
+399
 Width
 3
 105
@@ -2322,7 +2810,7 @@ Name
 object 728
 X
 3
-249
+351
 Y
 3
 357
@@ -2370,7 +2858,7 @@ Name
 object 729
 X
 3
-249
+351
 Y
 3
 321
@@ -2418,7 +2906,7 @@ Name
 object 73
 X
 3
-249
+351
 Y
 3
 201
@@ -2466,10 +2954,10 @@ Name
 object 730
 X
 3
-249
+351
 Y
 3
-280
+279
 Width
 3
 81
@@ -2514,7 +3002,7 @@ Name
 object 731
 X
 3
-249
+351
 Y
 3
 441
@@ -2610,13 +3098,13 @@ Name
 object 733
 X
 3
-246
+348
 Y
 3
-960
+1074
 Width
 3
-48
+126
 Height
 3
 24
@@ -2625,8 +3113,8 @@ Tool Tip
 0
 Caption
 5
-8
-Bearings
+23
+Other Air Turbine Costs
 TextColour
 4
 0
@@ -2658,10 +3146,10 @@ Name
 object 73311
 X
 3
-246
+348
 Y
 3
-921
+999
 Width
 3
 84
@@ -2706,10 +3194,10 @@ Name
 object 73315
 X
 3
-246
+348
 Y
 3
-879
+957
 Width
 3
 81
@@ -2754,10 +3242,58 @@ Name
 object 73325
 X
 3
-249
+351
 Y
 3
-759
+837
+Width
+3
+123
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Other Gearbox Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7332586
+X
+3
+351
+Y
+3
+798
 Width
 3
 93
@@ -2802,10 +3338,10 @@ Name
 object 73327
 X
 3
-249
+351
 Y
 3
-720
+759
 Width
 3
 75
@@ -2850,10 +3386,10 @@ Name
 object 73333
 X
 3
-249
+351
 Y
 3
-680
+720
 Width
 3
 48
@@ -2898,10 +3434,10 @@ Name
 object 73336
 X
 3
-249
+351
 Y
 3
-640
+678
 Width
 3
 48
@@ -2946,10 +3482,58 @@ Name
 object 73337
 X
 3
-249
+351
 Y
 3
-600
+639
+Width
+3
+48
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+8
+Bearings
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 73383
+X
+3
+348
+Y
+3
+1038
 Width
 3
 48
@@ -2994,13 +3578,13 @@ Name
 object 73388
 X
 3
-246
+348
 Y
 3
-1239
+1404
 Width
 3
-147
+174
 Height
 3
 24
@@ -3009,8 +3593,8 @@ Tool Tip
 0
 Caption
 5
-25
-Structural and Mechanical
+32
+Other Electrical Generator Costs
 TextColour
 4
 0
@@ -3042,10 +3626,10 @@ Name
 object 7338834
 X
 3
-246
+348
 Y
 3
-1200
+1323
 Width
 3
 48
@@ -3090,10 +3674,10 @@ Name
 object 7338838
 X
 3
-246
+348
 Y
 3
-1161
+1284
 Width
 3
 48
@@ -3134,14 +3718,62 @@ Label
 13
 Name
 5
+14
+object 7338891
+X
+3
+348
+Y
+3
+1362
+Width
+3
+147
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+25
+Structural and Mechanical
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 12
 object 73391
 X
 3
-246
+348
 Y
 3
-1119
+1239
 Width
 3
 36
@@ -3186,10 +3818,10 @@ Name
 object 73394
 X
 3
-246
+348
 Y
 3
-1080
+1197
 Width
 3
 108
@@ -3231,58 +3863,10 @@ Label
 Name
 5
 9
-object 74
-X
-3
-387
-Y
-3
-87
-Width
-3
-60
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-10
-User Input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-9
 object 75
 X
 3
-96
+201
 Y
 3
 114
@@ -3326,14 +3910,324 @@ Numeric
 17
 Name
 5
+22
+other_air_turbine_cost
+X
+3
+570
+Y
+3
+1077
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+31
+other_electrical_generator_cost
+X
+3
+570
+Y
+3
+1404
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+18
+other_gearbox_cost
+X
+3
+570
+Y
+3
+837
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+31
+other_hydraulic_drivetrain_cost
+X
+3
+567
+Y
+3
+516
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+28
+other_power_electronics_cost
+X
+3
+570
+Y
+3
+1671
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 14
 other_pto_cost
 X
 3
-468
+570
 Y
 3
-1600
+1857
 Width
 3
 90
@@ -3392,7 +4286,7 @@ Name
 plumbing_fittings_cost
 X
 3
-468
+570
 Y
 3
 480
@@ -3454,10 +4348,10 @@ Name
 power_electrical_system_cost
 X
 3
-468
+570
 Y
 3
-1400
+1629
 Width
 3
 90
@@ -3516,10 +4410,10 @@ Name
 power_electronics_cost
 X
 3
-468
+567
 Y
 3
-1320
+1503
 Width
 3
 90
@@ -3575,13 +4469,123 @@ Numeric
 Name
 5
 28
+power_electronics_cost_total
+X
+3
+669
+Y
+3
+1503
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+25
+power_electronics_warning
+X
+3
+768
+Y
+3
+1503
+Width
+3
+111
+Height
+3
+174
+Tool Tip
+5
+0
+Caption
+5
+187
+Warning! Cost input at both level 4 and level 5 detail. Please enter cost only at 1 detail level. If two level costs are input the higher cost input will be used to calculate total cost. 
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
+28
 power_takeoff_enclosure_cost
 X
 3
-468
+570
 Y
 3
-1479
+1746
 Width
 3
 90
@@ -3703,7 +4707,7 @@ Name
 power_takeoff_system_cost_input
 X
 3
-369
+570
 Y
 3
 114
@@ -3755,6 +4759,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+37
+power_takeoff_system_cost_input_label
+X
+3
+588
+Y
+3
+87
+Width
+3
+60
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+10
+User Input
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Choice
 
 1
@@ -3765,7 +4817,7 @@ Name
 power_takeoff_system_cost_method
 X
 3
-225
+330
 Y
 3
 114
@@ -3801,7 +4853,7 @@ Name
 power_takeoff_system_cost_modeled
 X
 3
-570
+468
 Y
 3
 114
@@ -3864,7 +4916,7 @@ Name
 power_takeoff_system_cost_total
 X
 3
-468
+570
 Y
 3
 114
@@ -3917,6 +4969,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+32
+power_takeoff_system_total_label
+X
+3
+585
+Y
+3
+87
+Width
+3
+66
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+12
+Level Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -3927,7 +5027,7 @@ Name
 primary_hydraulic_pump_cost
 X
 3
-468
+570
 Y
 3
 195
@@ -3989,7 +5089,7 @@ Name
 rectifying_circuit_cost
 X
 3
-468
+570
 Y
 3
 237
@@ -4051,10 +5151,10 @@ Name
 rotors_cost
 X
 3
-468
+570
 Y
 3
-1119
+1242
 Width
 3
 90
@@ -4113,10 +5213,10 @@ Name
 scada_cost
 X
 3
-468
+567
 Y
 3
-1440
+1587
 Width
 3
 90
@@ -4175,10 +5275,10 @@ Name
 sensor_elec_gen_cost
 X
 3
-468
+570
 Y
 3
-1161
+1284
 Width
 3
 90
@@ -4237,10 +5337,10 @@ Name
 sensors_cost
 X
 3
-468
+570
 Y
 3
-681
+720
 Width
 3
 90
@@ -4299,10 +5399,10 @@ Name
 shaft_assembly_cost
 X
 3
-468
+570
 Y
 3
-921
+999
 Width
 3
 90
@@ -4361,10 +5461,10 @@ Name
 shortterm_energy_storage_cost
 X
 3
-468
+567
 Y
 3
-1281
+1464
 Width
 3
 90
@@ -4423,10 +5523,10 @@ Name
 stator_cost
 X
 3
-468
+570
 Y
 3
-1206
+1323
 Width
 3
 90
@@ -4485,10 +5585,10 @@ Name
 struct_and_mechanical_cost
 X
 3
-468
+570
 Y
 3
-1242
+1362
 Width
 3
 90
@@ -4547,10 +5647,10 @@ Name
 transport_power_conversion_chain_cost
 X
 3
-468
+570
 Y
 3
-1560
+1818
 Width
 3
 90
@@ -4609,7 +5709,7 @@ Name
 tt_accumulators_cost
 X
 3
-336
+438
 Y
 3
 276
@@ -4637,10 +5737,10 @@ Name
 tt_air_turbine_cost
 X
 3
-303
+405
 Y
 3
-801
+879
 Width
 3
 24
@@ -4665,10 +5765,10 @@ Name
 tt_bearings_cost
 X
 3
-306
+408
 Y
 3
-600
+639
 Width
 3
 24
@@ -4693,10 +5793,10 @@ Name
 tt_blades_rotor_assembly_cost
 X
 3
-387
+489
 Y
 3
-840
+918
 Width
 3
 24
@@ -4721,10 +5821,10 @@ Name
 tt_coatings_pto_cost
 X
 3
-297
+396
 Y
 3
-1521
+1779
 Width
 3
 24
@@ -4749,10 +5849,10 @@ Name
 tt_cooling_system_cost
 X
 3
-339
+441
 Y
 3
-999
+1155
 Width
 3
 24
@@ -4777,10 +5877,38 @@ Name
 tt_cooling_system_cost69
 X
 3
-345
+480
 Y
 3
-759
+837
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+22
+Pump, radiator, hoses.
+Tips
+5
+22
+Pump, radiator, hoses.
+ToolTipCtrl
+
+1
+7
+Name
+5
+27
+tt_cooling_system_cost69116
+X
+3
+447
+Y
+3
+798
 Width
 3
 24
@@ -4805,10 +5933,10 @@ Name
 tt_electrical_generator_cost
 X
 3
-354
+456
 Y
 3
-1041
+1116
 Width
 3
 24
@@ -4833,10 +5961,10 @@ Name
 tt_frequency_converter_cost
 X
 3
-363
+462
 Y
 3
-1359
+1542
 Width
 3
 24
@@ -4861,10 +5989,10 @@ Name
 tt_gearbox_cost
 X
 3
-291
+393
 Y
 3
-519
+558
 Width
 3
 24
@@ -4889,10 +6017,10 @@ Name
 tt_gears_cost
 X
 3
-288
+390
 Y
 3
-561
+600
 Width
 3
 24
@@ -4917,10 +6045,10 @@ Name
 tt_housing_cost
 X
 3
-300
+402
 Y
 3
-639
+678
 Width
 3
 24
@@ -4945,10 +6073,10 @@ Name
 tt_hub_assembly_cost
 X
 3
-330
+432
 Y
 3
-879
+957
 Width
 3
 24
@@ -4973,7 +6101,7 @@ Name
 tt_hydraulic_drivetrain_cost
 X
 3
-348
+450
 Y
 3
 159
@@ -5001,7 +6129,7 @@ Name
 tt_hydraulic_fluid_cost
 X
 3
-336
+438
 Y
 3
 441
@@ -5029,7 +6157,7 @@ Name
 tt_hydraulic_motor_cost
 X
 3
-345
+447
 Y
 3
 321
@@ -5057,7 +6185,7 @@ Name
 tt_hydraulic_reservoir_cost
 X
 3
-360
+462
 Y
 3
 399
@@ -5085,10 +6213,10 @@ Name
 tt_lube_system_cost28
 X
 3
-327
+429
 Y
 3
-720
+759
 Width
 3
 24
@@ -5113,10 +6241,10 @@ Name
 tt_lubrication_system_cost
 X
 3
-354
+456
 Y
 3
-1080
+1197
 Width
 3
 24
@@ -5141,10 +6269,10 @@ Name
 tt_other_pto_cost
 X
 3
-279
+378
 Y
 3
-1599
+1857
 Width
 3
 24
@@ -5169,7 +6297,35 @@ Name
 tt_plumbing_fittings_cost
 X
 3
-378
+531
+Y
+3
+516
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+69
+Any plumbing or fittings needed to connect the hydraulic components. 
+Tips
+5
+69
+Any plumbing or fittings needed to connect the hydraulic components. 
+ToolTipCtrl
+
+1
+7
+Name
+5
+28
+tt_plumbing_fittings_cost128
+X
+3
+480
 Y
 3
 480
@@ -5197,10 +6353,38 @@ Name
 tt_power_electrical_system
 X
 3
-378
+480
 Y
 3
-1401
+1671
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+81
+System to convert generator voltage to array cable system voltage for collection.
+Tips
+5
+81
+System to convert generator voltage to array cable system voltage for collection.
+ToolTipCtrl
+
+1
+7
+Name
+5
+28
+tt_power_electrical_system14
+X
+3
+477
+Y
+3
+1584
 Width
 3
 24
@@ -5225,10 +6409,10 @@ Name
 tt_power_electronics_cost
 X
 3
-336
+435
 Y
 3
-1320
+1503
 Width
 3
 24
@@ -5253,10 +6437,10 @@ Name
 tt_power_takeoff_enclosure_cost
 X
 3
-396
+489
 Y
 3
-1479
+1746
 Width
 3
 24
@@ -5281,7 +6465,7 @@ Name
 tt_primary_hyrdaulic_pump_cost
 X
 3
-390
+492
 Y
 3
 201
@@ -5309,7 +6493,7 @@ Name
 tt_rectifying_circuit_cost
 X
 3
-351
+453
 Y
 3
 240
@@ -5337,10 +6521,10 @@ Name
 tt_rotor_cost
 X
 3
-285
+387
 Y
 3
-1119
+1242
 Width
 3
 24
@@ -5365,10 +6549,10 @@ Name
 tt_scada_cost
 X
 3
-435
+537
 Y
 3
-1440
+1626
 Width
 3
 24
@@ -5393,10 +6577,10 @@ Name
 tt_sensors_cost
 X
 3
-300
+402
 Y
 3
-681
+720
 Width
 3
 24
@@ -5421,10 +6605,10 @@ Name
 tt_shaft_assembly_cost
 X
 3
-333
+435
 Y
 3
-921
+999
 Width
 3
 24
@@ -5449,10 +6633,10 @@ Name
 tt_shortterm_energy_storage_cost
 X
 3
-384
+483
 Y
 3
-1281
+1464
 Width
 3
 24
@@ -5477,10 +6661,10 @@ Name
 tt_stator_cost
 X
 3
-297
+399
 Y
 3
-1200
+1323
 Width
 3
 24
@@ -5505,10 +6689,38 @@ Name
 tt_struct_and_mechanical_cost
 X
 3
-393
+522
 Y
 3
-1239
+1404
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+62
+Front bearing, rear bearing, silent block, housing, and shaft.
+Tips
+5
+62
+Front bearing, rear bearing, silent block, housing, and shaft.
+ToolTipCtrl
+
+1
+7
+Name
+5
+32
+tt_struct_and_mechanical_cost137
+X
+3
+495
+Y
+3
+1362
 Width
 3
 24
@@ -5533,7 +6745,7 @@ Name
 tt_structural_assembly_cost
 X
 3
-186
+291
 Y
 3
 114
@@ -5560,10 +6772,10 @@ Name
 tt_transport_power_conversion_cost
 X
 3
-432
+531
 Y
 3
-1560
+1818
 Width
 3
 24
@@ -5588,10 +6800,38 @@ Name
 tt_turbine_bearings_cost
 X
 3
-300
+486
 Y
 3
-960
+1074
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+115
+osts not included within the structural assembly categories. Please provide a description of the other cost input. 
+Tips
+5
+116
+Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
+ToolTipCtrl
+
+1
+7
+Name
+5
+27
+tt_turbine_bearings_cost140
+X
+3
+402
+Y
+3
+1038
 Width
 3
 24
@@ -5616,10 +6856,10 @@ Name
 tt_turbine_bearings_cost87
 X
 3
-300
+402
 Y
 3
-1158
+1281
 Width
 3
 24
@@ -5644,7 +6884,7 @@ Name
 tt_valves_cost
 X
 3
-291
+393
 Y
 3
 357
@@ -5672,10 +6912,10 @@ Name
 turbine_bearings_cost
 X
 3
-468
+570
 Y
 3
-963
+1041
 Width
 3
 90
@@ -5734,7 +6974,7 @@ Name
 valves_cost
 X
 3
-468
+570
 Y
 3
 357
@@ -5786,8 +7026,243 @@ BackColour
 TabOrder
 3
 4294967295
+Label
 
-53
+1
+13
+Name
+5
+20
+variable_air_turbine
+X
+3
+120
+Y
+3
+774
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+29
+variable_electrical_generator
+X
+3
+150
+Y
+3
+1113
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+16
+variable_gearbox
+X
+3
+105
+Y
+3
+189
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+29
+variable_hydraulic_drivetrain
+X
+3
+96
+Y
+3
+156
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+26
+variable_power_electronics
+X
+3
+189
+Y
+3
+1509
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+
+69
 accumulators_cost
 3
 1
@@ -5816,7 +7291,21 @@ air_turbine_cost
 1
 0
 Default
-air_turbine_total
+air_turbine_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+air_turbine_cost_total_check
 3
 1
  
@@ -5872,7 +7361,7 @@ coatings_pto_cost
 1
 0
 Default
-coatings_pto_total
+coatings_pto_cost_total
 3
 1
  
@@ -5928,7 +7417,21 @@ electrical_generator_cost
 1
 0
 Default
-electrical_generator_total
+electrical_generator_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+electrical_generator_cost_total_check
 3
 1
  
@@ -5970,7 +7473,21 @@ gearbox_cost
 1
 0
 Default
-gearbox_total
+gearbox_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+gearbox_cost_total_check
 3
 1
  
@@ -6040,7 +7557,21 @@ hydraulic_drivetrain_cost
 1
 0
 Numeric
-hydraulic_drivetrain_total
+hydraulic_drivetrain_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+hydraulic_drivetrain_cost_total_check
 3
 1
  
@@ -6166,6 +7697,76 @@ lubrication_system_cost
 1
 0
 Default
+other_air_turbine_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_electrical_generator_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_gearbox_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_hydraulic_drivetrain_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_power_electronics_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 other_pto_cost
 3
 1
@@ -6188,6 +7789,20 @@ other_pto_total
  
 0
 8
+1
+1
+1
+1
+0
+Default
+other_shortterm_energy_storage_cost
+3
+1
+ 
+ 
+ 
+0
+0
 1
 1
 1
@@ -6236,7 +7851,21 @@ power_electronics_cost
 1
 0
 Default
-power_electronics_total
+power_electronics_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+power_electronics_cost_total_check
 3
 1
  
@@ -6264,7 +7893,7 @@ power_takeoff_enclosure_cost
 1
 0
 Default
-power_takeoff_enclosure_total
+power_takeoff_enclosure_cost_total
 3
 1
  
@@ -6418,7 +8047,7 @@ shortterm_energy_storage_cost
 1
 0
 Default
-shortterm_energy_storage_total
+shortterm_energy_storage_cost_total
 3
 1
  
@@ -6488,7 +8117,7 @@ transport_power_conversion_chain_cost
 1
 0
 Default
-transport_power_conversion_chain_total
+transport_power_conversion_chain_cost_total
 3
 1
  
@@ -6530,66 +8159,352 @@ valves_cost
 1
 0
 Default
+variable_air_turbine
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+variable_electrical_generator
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+variable_gearbox
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+variable_hydraulic_drivetrain
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+variable_power_electronics
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-2190
-equations {'hydraulic_drivetrain_total'} = define() {
-	return ${hydraulic_drivetrain_cost}+${primary_hydraulic_pump_cost}+${rectifying_circuit_cost}+
+6539
+equations {'hydraulic_drivetrain_cost_total'} = define() {
+	return ${primary_hydraulic_pump_cost}+${rectifying_circuit_cost}+
 		${accumulators_cost}+${hydraulic_reservoir_cost}+${hydraulic_fluid_cost}+
-		${plumbing_fittings_cost}+${valves_cost};
+		${plumbing_fittings_cost}+${valves_cost}+${other_hydraulic_drivetrain_cost};
 };
 
-equations {'gearbox_total'} = define() {
-	return ${gearbox_cost}+${gears_cost}+${bearings_cost}+${housing_cost}+${sensors_cost}+
-		${lube_system_cost}+${cooling_system_gearbox_cost};
+equations {'gearbox_cost_total'} = define() {
+	return ${gears_cost}+${bearings_cost}+${housing_cost}+${sensors_cost}+
+		${lube_system_cost}+${cooling_system_gearbox_cost}+${other_gearbox_cost};
 };
 
-equations {'air_turbine_total'} = define() {
-	return ${air_turbine_cost}+${blades_rotor_assembly_cost}+${shaft_assembly_cost}+
-		${bearings_cost};
+equations {'air_turbine_cost_total'} = define() {
+	return ${blades_rotor_assembly_cost}+${shaft_assembly_cost}+
+		${bearings_cost}+${other_air_turbine_cost};
 };
 
-equations {'electrical_generator_total'} = define() {
-	return ${electrical_generator_cost}+${cooling_system_cost}+${lubrication_system_cost}+${rotors_cost}+
-		${sensor_elec_gen_cost}+${stator_cost}+${struct_and_mechanical_cost};
+equations {'electrical_generator_cost_total'} = define() {
+	return ${cooling_system_cost}+${lubrication_system_cost}+${rotors_cost}+
+		${sensor_elec_gen_cost}+${stator_cost}+${struct_and_mechanical_cost}+
+		${other_electrical_generator_cost};
 };
 
-equations {'shortterm_energy_storage_total'} = define() {
+equations {'shortterm_energy_storage_cost_total'} = define() {
 	return ${shortterm_energy_storage_cost};
 };
 
-equations {'power_electronics_total'} = define() {
-	return ${power_electronics_cost}+${frequency_converter_cost}+
-		${power_electrical_system_cost}+${scada_cost};
+equations {'power_electronics_cost_total'} = define() {
+	return ${frequency_converter_cost}+
+		${power_electrical_system_cost}+${scada_cost}+${other_power_electronics_cost};
 };
 
-equations {'power_takeoff_enclosure_total'} = define() {
+equations {'power_takeoff_enclosure_cost_total'} = define() {
 	return ${power_takeoff_enclosure_cost};
 };
 
-equations {'coatings_pto_total'} = define() {
+equations {'coatings_pto_cost_total'} = define() {
 	return ${coatings_pto_cost};
 };
 
-equations {'transport_power_conversion_chain_total'} = define() {
+equations {'transport_power_conversion_chain_cost_total'} = define() {
 	return ${transport_power_conversion_chain_cost};
 };
 
-equations {'power_takeoff_system_cost_total'} = define() {
-	return ${hydraulic_drivetrain_total}+${gearbox_total}+
-		${air_turbine_total}+${electrical_generator_total}+
-		${shortterm_energy_storage_total}+${power_electronics_total}+
-		${power_takeoff_enclosure_total}+${coatings_pto_total}+
-		${transport_power_conversion_chain_total};
-};
 
 equations {'itemized_check_pto'} = define() {
 	return ?${power_takeoff_system_cost_method}
 			[
 				0,
 				0,
-				0,
+				2,
 				1
 			];
+};
+
+equations {'variable_hydraulic_drivetrain'} = define() {
+	if (${hydraulic_drivetrain_cost}!=0 && ${primary_hydraulic_pump_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${hydraulic_drivetrain_cost}!=0 && ${rectifying_circuit_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${hydraulic_drivetrain_cost}!=0 && ${accumulators_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${hydraulic_drivetrain_cost}!=0 && ${hydraulic_motor_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${hydraulic_drivetrain_cost}!=0 && ${valves_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${hydraulic_drivetrain_cost}!=0 && ${hydraulic_reservoir_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${hydraulic_drivetrain_cost}!=0 && ${plumbing_fittings_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${hydraulic_drivetrain_cost}!=0 && ${other_hydraulic_drivetrain_cost}!=0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+};
+
+equations {'hydraulic_drivetrain_cost_total_check'} = define() {
+	if (${hydraulic_drivetrain_cost_total} < ${hydraulic_drivetrain_cost})
+		{
+			return ${hydraulic_drivetrain_cost};
+		}
+		else
+		{
+			return ${hydraulic_drivetrain_cost_total};
+		}
+};
+	
+equations {'variable_gearbox'} = define() {
+	if (${gearbox_cost}!=0 && ${gears_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${gearbox_cost}!=0 && ${bearings_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${gearbox_cost}!=0 && ${housing_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${gearbox_cost}!=0 && ${sensors_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${gearbox_cost}!=0 && ${lube_system_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${gearbox_cost}!=0 && ${cooling_system_gearbox_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${gearbox_cost}!=0 && ${other_gearbox_cost}!=0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+};
+
+equations {'gearbox_cost_total_check'} = define() {
+	if (${gearbox_cost_total} < ${gearbox_cost})
+		{
+			return ${gearbox_cost};
+		}
+		else
+		{
+			return ${gearbox_cost_total};
+		}
+};
+
+equations {'variable_air_turbine'} = define() {
+	if (${air_turbine_cost}!=0 && ${blades_rotor_assembly_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${air_turbine_cost}!=0 && ${hub_assembly_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${air_turbine_cost}!=0 && ${shaft_assembly_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${air_turbine_cost}!=0 && ${turbine_bearings_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${air_turbine_cost}!=0 && ${other_air_turbine_cost}!=0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+};
+
+equations {'air_turbine_cost_total_check'} = define() {
+	if (${air_turbine_cost_total} < ${air_turbine_cost})
+		{
+			return ${air_turbine_cost};
+		}
+		else
+		{
+			return ${air_turbine_cost_total};
+		}
+};
+
+equations {'variable_electrical_generator'} = define() {
+	if (${electrical_generator_cost}!=0 && ${cooling_system_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${electrical_generator_cost}!=0 && ${lubrication_system_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${electrical_generator_cost}!=0 && ${rotors_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${electrical_generator_cost}!=0 && ${sensors_elec_gen_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${electrical_generator_cost}!=0 && ${stator_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${electrical_generator_cost}!=0 && ${struct_and_mechanical_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${electrical_generator_cost}!=0 && ${other_electrical_generator_cost}!=0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+};
+
+equations {'electrical_generator_cost_total_check'} = define() {
+	if (${electrical_generator_cost_total} < ${electrical_generator_cost})
+		{
+			return ${electrical_generator_cost};
+		}
+		else
+		{
+			return ${electrical_generator_cost_total};
+		}
+};
+
+equations {'variable_power_electronics'} = define() {
+	if (${power_electronics_cost}!=0 && ${frequency_converter_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${power_electronics_cost}!=0 && ${power_electrical_system_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${power_electronics_cost}!=0 && ${scada_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${power_electronics_cost}!=0 && ${other_power_electronics_cost}!=0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+};
+
+equations {'power_electronics_cost_total_check'} = define() {
+	if (${power_electronics_cost_total} < ${power_electronics_cost})
+		{
+			return ${hydraulic_drivetrain_cost};
+		}
+		else
+		{
+			return ${hydraulic_drivetrain_cost_total};
+		}
+};
+
+equations {'power_takeoff_system_cost_total'} = define() {
+	return ${hydraulic_drivetrain_cost_total_check}+${gearbox_cost_total_check}+
+		${air_turbine_cost_total_check}+${electrical_generator_cost_total_check}+
+		${shortterm_energy_storage_cost_total}+${power_electronics_cost_total_check}+
+		${power_takeoff_enclosure_cost_total}+${coatings_pto_cost_total}+
+		${transport_power_conversion_chain_cost_total}+${other_pto_cost};
 };
 
 equations {'power_takeoff_system_cost'} = define() {
@@ -6606,13 +8521,20 @@ equations {'power_takeoff_system_cost'} = define() {
 
 
 
-
-
-
-2183
+3957
 on_load{'Marine Costs - PTO'} = define() {
 	on_change{'itemized_check_pto'};
 	enable_itemized_pto();
+	on_change{'variable_hydraulic_drivetrain'};
+	show_hydraulic_drivetrain_warning();
+	on_change{'variable_gearbox'};
+	show_gearbox_warning();
+	on_change{'variable_air_turbine'};
+	show_air_turbine_warning();
+	on_change{'variable_electrical_generator'};
+	show_electrical_generator_warning();
+	on_change{'variable_power_electronics'};
+	show_power_electronics_warning();
 };
 
 on_change{'itemized_check_pto'} = define() {
@@ -6661,5 +8583,68 @@ function enable_itemized_pto()
 	enable('transport_power_conversion_chain_cost',itemized_value==1);
 	enable('other_pto_cost',itemized_value==1);
 	enable('test_num',itemized_value==1);
+	enable('power_takeoff_system_cost_input',itemized_value!=2);
+	show('power_takeoff_system_cost_input',itemized_value!=1);
+	show('power_takeoff_system_cost_input_label',itemized_value!=1);
+	show('power_takeoff_system_cost_total',itemized_value==1);
+	show('power_takeoff_system_total_label',itemized_value==1);
+	
+	refresh();
 }
+
+on_change{'variable_hydraulic_drivetrain'} = define() {
+	show_hydraulic_drivetrain_warning();
+};
+
+function show_hydraulic_drivetrain_warning()
+{
+	show('hydraulic_drivetrain_warning',value('variable_hydraulic_drivetrain')==1);
+	refresh();
+}
+
+on_change{'variable_gearbox'} = define() {
+	show_gearbox_warning();
+};
+
+function show_gearbox_warning()
+{
+	show('gearbox_warning',value('variable_gearbox')==1);
+	refresh();
+}
+
+on_change{'variable_air_turbine'} = define() {
+	show_air_turbine_warning();
+};
+
+function show_air_turbine_warning()
+{
+	show('air_turbine_warning',value('variable_air_turbine')==1);
+	refresh();
+}
+
+on_change{'variable_electrical_generator'} = define() {
+	show_electrical_generator_warning();
+};
+
+function show_electrical_generator_warning()
+{
+	show('electrical_generator_warning',value('variable_electrical_generator')==1);
+	refresh();
+}
+
+on_change{'variable_power_electronics'} = define() {
+	show_power_electronics_warning();
+};
+
+function show_power_electronics_warning()
+{
+	show('power_electronics_warning',value('variable_power_electronics')==1);
+	refresh();
+}
+
+
+
+
+
+
 	
