@@ -19,7 +19,9 @@
 
 #include "test.h"
 
-#if defined(_WIN32)
+#if !defined(_WIN32)
+#include <ftw.h>
+#else
 #include <windows.h>
 #include <conio.h>
 
@@ -61,13 +63,21 @@ bool DeleteDirectory(LPCTSTR lpszDir, bool noRecycleBin = true)
 std::unordered_map<std::string, std::vector<std::string>> SAM_cmod_to_inputs;
 std::string active_config;
 
+#if !defined(_WIN32)
+int unlink_cb(const char *fpath, const struct stat *sb, int typeflag,
+	      struct FTW *ftwbuf)
+{
+    return remove(fpath);
+}
+#endif // !_WIN32
+
 void remove_directory(std::string sPath){
 #if defined(_WIN32)
     std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 			std::wstring wide = converter.from_bytes(sPath);
             DeleteDirectory(wide.c_str());
 #else
-    system(std::string("rm -rf " + sPath).c_str());
+	    return (void) nftw(sPath.c_str(), unlink_cb, 64, FTW_DEPTH | FTW_PHYS);
 #endif
 }
 
