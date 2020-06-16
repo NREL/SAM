@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <ftw.h>
 #include <set>
 
 #include <ssc/sscapi.h>
@@ -20,7 +19,9 @@
 
 #include "test.h"
 
-#if defined(_WIN32)
+#if !defined(_WIN32)
+#include <ftw.h>
+#else
 #include <windows.h>
 #include <conio.h>
 
