@@ -165,6 +165,11 @@ int main(int argc, char *argv[]){
     // set default input & output file paths
     char* pPath;
     pPath = getenv ("SAMNTDIR");
+    if (pPath == NULL) {
+	std::cerr << "SAMNTDIR environment variable is unset" << std::endl;
+	exit(1);
+    }
+
     std::string sam_path = std::string(pPath);
 
     std::string startup_file = sam_path + "/deploy/runtime/startup.lk";
