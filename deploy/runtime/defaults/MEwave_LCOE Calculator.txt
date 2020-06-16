@@ -1,5 +1,5 @@
 1
-439
+441
 accumulators_cost
 1
 1
@@ -424,6 +424,18 @@ desired_array_size
 1
 1
 500
+detailed_cost_choice_marine_systems
+1
+1
+1
+1
+0
+detailed_cost_choice_struct_assem
+1
+1
+1
+1
+0
 detailed_design_and_construction_eng_cost
 1
 1

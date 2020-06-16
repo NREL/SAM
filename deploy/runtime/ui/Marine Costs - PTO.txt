@@ -1,7 +1,7 @@
 Marine Costs - PTO
 922
 1999
-155
+118
 Label
 
 1
@@ -14,10 +14,10 @@ X
 339
 Y
 3
-159
+156
 Width
 3
-108
+117
 Height
 3
 24
@@ -36,7 +36,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -45,7 +45,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -59,13 +59,13 @@ Name
 Air Turbine
 X
 3
-339
+402
 Y
 3
 879
 Width
 3
-63
+69
 Height
 3
 24
@@ -84,7 +84,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -107,7 +107,7 @@ Name
 Coatings
 X
 3
-336
+414
 Y
 3
 1779
@@ -132,7 +132,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -155,10 +155,10 @@ Name
 Control & Communication System
 X
 3
-345
+378
 Y
 3
-1626
+1671
 Width
 3
 192
@@ -203,13 +203,13 @@ Name
 Electrical Generator
 X
 3
-339
+354
 Y
 3
 1116
 Width
 3
-111
+120
 Height
 3
 24
@@ -228,7 +228,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -251,10 +251,10 @@ Name
 Frequency Converter
 X
 3
-345
+450
 Y
 3
-1542
+1584
 Width
 3
 120
@@ -299,13 +299,13 @@ Name
 Gearbox
 X
 3
-342
+405
 Y
 3
 558
 Width
 3
-48
+54
 Height
 3
 24
@@ -324,7 +324,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -347,13 +347,13 @@ Name
 Other
 X
 3
-336
+378
 Y
 3
 1857
 Width
 3
-36
+96
 Height
 3
 24
@@ -362,8 +362,8 @@ Tool Tip
 0
 Caption
 5
-5
-Other
+15
+Other PTO Costs
 TextColour
 4
 0
@@ -372,7 +372,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -395,10 +395,10 @@ Name
 Other Short-Term Energy Storage Costs
 X
 3
-348
+441
 Y
 3
-1671
+1713
 Width
 3
 129
@@ -473,10 +473,10 @@ Name
 Power Electrical System
 X
 3
-345
+438
 Y
 3
-1587
+1629
 Width
 3
 129
@@ -521,13 +521,13 @@ Name
 Power Electronics
 X
 3
-336
+363
 Y
 3
 1503
 Width
 3
-102
+108
 Height
 3
 24
@@ -546,7 +546,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -569,7 +569,7 @@ Name
 Power Take-Off Enclosure
 X
 3
-336
+324
 Y
 3
 1746
@@ -594,7 +594,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -617,13 +617,13 @@ Name
 Short-Term Energy Storage
 X
 3
-336
+309
 Y
 3
 1464
 Width
 3
-144
+162
 Height
 3
 24
@@ -642,7 +642,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -665,13 +665,13 @@ Name
 Transportation of Power Conversion Chain
 X
 3
-336
+231
 Y
 3
 1818
 Width
 3
-204
+240
 Height
 3
 39
@@ -690,7 +690,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -716,7 +716,7 @@ X
 570
 Y
 3
-276
+291
 Width
 3
 90
@@ -775,7 +775,7 @@ Name
 air_turbine_cost
 X
 3
-570
+471
 Y
 3
 879
@@ -888,7 +888,7 @@ X
 570
 Y
 3
-639
+651
 Width
 3
 90
@@ -950,7 +950,7 @@ X
 570
 Y
 3
-918
+930
 Width
 3
 90
@@ -1009,7 +1009,7 @@ Name
 coatings_pto_cost
 X
 3
-570
+474
 Y
 3
 1779
@@ -1074,7 +1074,7 @@ X
 570
 Y
 3
-1155
+1185
 Width
 3
 90
@@ -1136,7 +1136,7 @@ X
 570
 Y
 3
-798
+810
 Width
 3
 90
@@ -1185,6 +1185,171 @@ BackColour
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+32
+detailed_cost_choice_air_turbine
+X
+3
+486
+Y
+3
+906
+Width
+3
+135
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+41
+detailed_cost_choice_electrical_generator
+X
+3
+492
+Y
+3
+1149
+Width
+3
+135
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+28
+detailed_cost_choice_gearbox
+X
+3
+513
+Y
+3
+585
+Width
+3
+135
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+41
+detailed_cost_choice_hydraulic_drivetrain
+X
+3
+504
+Y
+3
+183
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+38
+detailed_cost_choice_power_electronics
+X
+3
+486
+Y
+3
+1542
+Width
+3
+135
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1195,7 +1360,7 @@ Name
 electrical_generator_cost
 X
 3
-570
+474
 Y
 3
 1116
@@ -1257,7 +1422,7 @@ Name
 electrical_generator_cost_total
 X
 3
-666
+483
 Y
 3
 1116
@@ -1367,10 +1532,10 @@ Name
 frequency_converter_cost
 X
 3
-567
+570
 Y
 3
-1542
+1584
 Width
 3
 90
@@ -1429,7 +1594,7 @@ Name
 gearbox_cost
 X
 3
-570
+456
 Y
 3
 558
@@ -1491,7 +1656,7 @@ Name
 gearbox_cost_total
 X
 3
-669
+477
 Y
 3
 558
@@ -1604,7 +1769,7 @@ X
 570
 Y
 3
-600
+612
 Width
 3
 90
@@ -1666,7 +1831,7 @@ X
 570
 Y
 3
-678
+690
 Width
 3
 90
@@ -1728,7 +1893,7 @@ X
 570
 Y
 3
-957
+969
 Width
 3
 90
@@ -1787,7 +1952,7 @@ Name
 hydraulic_drivetrain_cost
 X
 3
-570
+468
 Y
 3
 156
@@ -1849,7 +2014,7 @@ Name
 hydraulic_drivetrain_cost_total
 X
 3
-672
+456
 Y
 3
 156
@@ -1962,7 +2127,7 @@ X
 570
 Y
 3
-441
+456
 Width
 3
 90
@@ -2024,7 +2189,7 @@ X
 570
 Y
 3
-321
+336
 Width
 3
 90
@@ -2086,7 +2251,7 @@ X
 570
 Y
 3
-399
+414
 Width
 3
 90
@@ -2195,7 +2360,7 @@ X
 570
 Y
 3
-759
+771
 Width
 3
 90
@@ -2257,7 +2422,7 @@ X
 570
 Y
 3
-1197
+1227
 Width
 3
 90
@@ -2316,7 +2481,7 @@ Name
 object 11
 X
 3
-669
+474
 Y
 3
 879
@@ -2378,7 +2543,7 @@ Name
 object 7
 X
 3
-63
+66
 Y
 3
 219
@@ -2426,10 +2591,10 @@ Name
 object 713
 X
 3
-351
+474
 Y
 3
-240
+252
 Width
 3
 96
@@ -2460,7 +2625,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2522,10 +2687,10 @@ Name
 object 724
 X
 3
-348
+462
 Y
 3
-1155
+1185
 Width
 3
 87
@@ -2570,10 +2735,10 @@ Name
 object 72418
 X
 3
-348
+429
 Y
 3
-918
+930
 Width
 3
 141
@@ -2618,10 +2783,10 @@ Name
 object 72441
 X
 3
-351
+537
 Y
 3
-600
+612
 Width
 3
 33
@@ -2666,10 +2831,10 @@ Name
 object 726
 X
 3
-351
+396
 Y
 3
-516
+531
 Width
 3
 174
@@ -2700,7 +2865,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2714,13 +2879,13 @@ Name
 object 72675
 X
 3
-351
+441
 Y
 3
-480
+495
 Width
 3
-129
+126
 Height
 3
 24
@@ -2748,7 +2913,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2762,10 +2927,10 @@ Name
 object 727
 X
 3
-351
+465
 Y
 3
-399
+414
 Width
 3
 105
@@ -2796,7 +2961,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2810,10 +2975,10 @@ Name
 object 728
 X
 3
-351
+531
 Y
 3
-357
+372
 Width
 3
 39
@@ -2844,7 +3009,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2858,10 +3023,10 @@ Name
 object 729
 X
 3
-351
+477
 Y
 3
-321
+336
 Width
 3
 93
@@ -2874,7 +3039,7 @@ Tool Tip
 Caption
 5
 15
-Hyrdaulic Motor
+Hydraulic Motor
 TextColour
 4
 0
@@ -2892,7 +3057,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2906,10 +3071,10 @@ Name
 object 73
 X
 3
-351
+432
 Y
 3
-201
+210
 Width
 3
 138
@@ -2940,7 +3105,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2954,10 +3119,10 @@ Name
 object 730
 X
 3
-351
+489
 Y
 3
-279
+291
 Width
 3
 81
@@ -2988,7 +3153,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3002,13 +3167,13 @@ Name
 object 731
 X
 3
-351
+483
 Y
 3
-441
+456
 Width
 3
-81
+87
 Height
 3
 24
@@ -3036,7 +3201,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3098,10 +3263,10 @@ Name
 object 733
 X
 3
-348
+444
 Y
 3
-1074
+1089
 Width
 3
 126
@@ -3146,10 +3311,10 @@ Name
 object 73311
 X
 3
-348
+486
 Y
 3
-999
+1011
 Width
 3
 84
@@ -3194,10 +3359,10 @@ Name
 object 73315
 X
 3
-348
+486
 Y
 3
-957
+969
 Width
 3
 81
@@ -3242,10 +3407,10 @@ Name
 object 73325
 X
 3
-351
+447
 Y
 3
-837
+849
 Width
 3
 123
@@ -3290,10 +3455,10 @@ Name
 object 7332586
 X
 3
-351
+477
 Y
 3
-798
+810
 Width
 3
 93
@@ -3338,10 +3503,10 @@ Name
 object 73327
 X
 3
-351
+495
 Y
 3
-759
+771
 Width
 3
 75
@@ -3386,10 +3551,10 @@ Name
 object 73333
 X
 3
-351
+522
 Y
 3
-720
+732
 Width
 3
 48
@@ -3434,10 +3599,10 @@ Name
 object 73336
 X
 3
-351
+522
 Y
 3
-678
+690
 Width
 3
 48
@@ -3482,10 +3647,10 @@ Name
 object 73337
 X
 3
-351
+522
 Y
 3
-639
+651
 Width
 3
 48
@@ -3530,10 +3695,10 @@ Name
 object 73383
 X
 3
-348
+522
 Y
 3
-1038
+1053
 Width
 3
 48
@@ -3578,10 +3743,10 @@ Name
 object 73388
 X
 3
-348
+396
 Y
 3
-1404
+1434
 Width
 3
 174
@@ -3626,10 +3791,10 @@ Name
 object 7338834
 X
 3
-348
+522
 Y
 3
-1323
+1353
 Width
 3
 48
@@ -3674,10 +3839,10 @@ Name
 object 7338838
 X
 3
-348
+522
 Y
 3
-1284
+1314
 Width
 3
 48
@@ -3722,10 +3887,10 @@ Name
 object 7338891
 X
 3
-348
+423
 Y
 3
-1362
+1392
 Width
 3
 147
@@ -3770,10 +3935,10 @@ Name
 object 73391
 X
 3
-348
+522
 Y
 3
-1239
+1269
 Width
 3
 36
@@ -3818,10 +3983,10 @@ Name
 object 73394
 X
 3
-348
+462
 Y
 3
-1197
+1227
 Width
 3
 108
@@ -3917,7 +4082,7 @@ X
 570
 Y
 3
-1077
+1089
 Width
 3
 90
@@ -3979,7 +4144,7 @@ X
 570
 Y
 3
-1404
+1434
 Width
 3
 90
@@ -4041,7 +4206,7 @@ X
 570
 Y
 3
-837
+849
 Width
 3
 90
@@ -4100,10 +4265,10 @@ Name
 other_hydraulic_drivetrain_cost
 X
 3
-567
+570
 Y
 3
-516
+531
 Width
 3
 90
@@ -4165,7 +4330,7 @@ X
 570
 Y
 3
-1671
+1713
 Width
 3
 90
@@ -4224,7 +4389,7 @@ Name
 other_pto_cost
 X
 3
-570
+474
 Y
 3
 1857
@@ -4289,7 +4454,7 @@ X
 570
 Y
 3
-480
+495
 Width
 3
 90
@@ -4351,7 +4516,7 @@ X
 570
 Y
 3
-1629
+1671
 Width
 3
 90
@@ -4410,7 +4575,7 @@ Name
 power_electronics_cost
 X
 3
-567
+474
 Y
 3
 1503
@@ -4472,7 +4637,7 @@ Name
 power_electronics_cost_total
 X
 3
-669
+483
 Y
 3
 1503
@@ -4582,7 +4747,7 @@ Name
 power_takeoff_enclosure_cost
 X
 3
-570
+474
 Y
 3
 1746
@@ -5030,7 +5195,7 @@ X
 570
 Y
 3
-195
+210
 Width
 3
 90
@@ -5092,7 +5257,7 @@ X
 570
 Y
 3
-237
+252
 Width
 3
 90
@@ -5154,7 +5319,7 @@ X
 570
 Y
 3
-1242
+1272
 Width
 3
 90
@@ -5213,10 +5378,10 @@ Name
 scada_cost
 X
 3
-567
+570
 Y
 3
-1587
+1629
 Width
 3
 90
@@ -5278,7 +5443,7 @@ X
 570
 Y
 3
-1284
+1314
 Width
 3
 90
@@ -5340,7 +5505,7 @@ X
 570
 Y
 3
-720
+732
 Width
 3
 90
@@ -5402,7 +5567,7 @@ X
 570
 Y
 3
-999
+1011
 Width
 3
 90
@@ -5461,7 +5626,7 @@ Name
 shortterm_energy_storage_cost
 X
 3
-567
+474
 Y
 3
 1464
@@ -5526,7 +5691,7 @@ X
 570
 Y
 3
-1323
+1353
 Width
 3
 90
@@ -5588,7 +5753,7 @@ X
 570
 Y
 3
-1362
+1392
 Width
 3
 90
@@ -5647,7 +5812,7 @@ Name
 transport_power_conversion_chain_cost
 X
 3
-570
+474
 Y
 3
 1818
@@ -5705,1042 +5870,6 @@ ToolTipCtrl
 7
 Name
 5
-20
-tt_accumulators_cost
-X
-3
-438
-Y
-3
-276
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-140
-Gas or Spring charged hydraulic accumulators used in the hydraulic system for either power smoothing or for minimized water hammer effects. 
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-19
-tt_air_turbine_cost
-X
-3
-405
-Y
-3
-879
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-57
-Coatings to protect from corrosion in marine environment.
-Tips
-5
-57
-Coatings to protect from corrosion in marine environment.
-ToolTipCtrl
-
-1
-7
-Name
-5
-16
-tt_bearings_cost
-X
-3
-408
-Y
-3
-639
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-47
-Planet bearing, carrier bearing, shaft bearing.
-Tips
-5
-47
-Planet bearing, carrier bearing, shaft bearing.
-ToolTipCtrl
-
-1
-7
-Name
-5
-29
-tt_blades_rotor_assembly_cost
-X
-3
-489
-Y
-3
-918
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
-Tips
-5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-20
-tt_coatings_pto_cost
-X
-3
-396
-Y
-3
-1779
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-57
-Coatings to protect from corrosion in marine environment.
-Tips
-5
-57
-Coatings to protect from corrosion in marine environment.
-ToolTipCtrl
-
-1
-7
-Name
-5
-22
-tt_cooling_system_cost
-X
-3
-441
-Y
-3
-1155
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
-Tips
-5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-24
-tt_cooling_system_cost69
-X
-3
-480
-Y
-3
-837
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-22
-Pump, radiator, hoses.
-Tips
-5
-22
-Pump, radiator, hoses.
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_cooling_system_cost69116
-X
-3
-447
-Y
-3
-798
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-22
-Pump, radiator, hoses.
-Tips
-5
-22
-Pump, radiator, hoses.
-ToolTipCtrl
-
-1
-7
-Name
-5
-28
-tt_electrical_generator_cost
-X
-3
-456
-Y
-3
-1116
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-125
-Any turbine that is used to convert kinetic energy in the air, due to wave oscillations, into shaft work (e.g. Wells Turbine)
-Tips
-5
-125
-Any turbine that is used to convert kinetic energy in the air, due to wave oscillations, into shaft work (e.g. Wells Turbine)
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_frequency_converter_cost
-X
-3
-462
-Y
-3
-1542
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-156
-Converts variable frequency from asynchronous generator to grid-compliant power of the right ‘quality' and with a stable frequency of either 50 Hz or 60 Hz.
-Tips
-5
-156
-Converts variable frequency from asynchronous generator to grid-compliant power of the right ‘quality' and with a stable frequency of either 50 Hz or 60 Hz.
-ToolTipCtrl
-
-1
-7
-Name
-5
-15
-tt_gearbox_cost
-X
-3
-393
-Y
-3
-558
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-146
-Mechanical system used to increase or decrease the speed of the shaft work going into the generator. This may include mechanical motion rectifiers
-Tips
-5
-146
-Mechanical system used to increase or decrease the speed of the shaft work going into the generator. This may include mechanical motion rectifiers
-ToolTipCtrl
-
-1
-7
-Name
-5
-13
-tt_gears_cost
-X
-3
-390
-Y
-3
-600
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-74
-Planet carrier, planet gear, ring gear, sun gear, spur gear, hollow shaft.
-Tips
-5
-74
-Planet carrier, planet gear, ring gear, sun gear, spur gear, hollow shaft.
-ToolTipCtrl
-
-1
-7
-Name
-5
-15
-tt_housing_cost
-X
-3
-402
-Y
-3
-678
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-43
-Bushing, case, mounting, torque arm system.
-Tips
-5
-43
-Bushing, case, mounting, torque arm system.
-ToolTipCtrl
-
-1
-7
-Name
-5
-20
-tt_hub_assembly_cost
-X
-3
-432
-Y
-3
-957
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
-Tips
-5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-28
-tt_hydraulic_drivetrain_cost
-X
-3
-450
-Y
-3
-159
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-97
-Hydraulic system to transfer mechanical energy from marine energy converter to electrical energy.
-Tips
-5
-97
-Hydraulic system to transfer mechanical energy from marine energy converter to electrical energy.
-ToolTipCtrl
-
-1
-7
-Name
-5
-23
-tt_hydraulic_fluid_cost
-X
-3
-438
-Y
-3
-441
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-43
-Working fluid used in the hydraulic system.
-Tips
-5
-43
-Working fluid used in the hydraulic system.
-ToolTipCtrl
-
-1
-7
-Name
-5
-23
-tt_hydraulic_motor_cost
-X
-3
-447
-Y
-3
-321
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-89
-The hydraulic motor used to convert hydraulic flow into shaft work for power generation. 
-Tips
-5
-89
-The hydraulic motor used to convert hydraulic flow into shaft work for power generation. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_hydraulic_reservoir_cost
-X
-3
-462
-Y
-3
-399
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-71
-Reservoir used to contain additional hydraulic fluid within the system.
-Tips
-5
-71
-Reservoir used to contain additional hydraulic fluid within the system.
-ToolTipCtrl
-
-1
-7
-Name
-5
-21
-tt_lube_system_cost28
-X
-3
-429
-Y
-3
-759
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-97
-Primary filter, secondary filter, primary motor, primary pump, hose/fitting, seal, and reservoir.
-Tips
-5
-97
-Primary filter, secondary filter, primary motor, primary pump, hose/fitting, seal, and reservoir.
-ToolTipCtrl
-
-1
-7
-Name
-5
-26
-tt_lubrication_system_cost
-X
-3
-456
-Y
-3
-1197
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-28
-Pump, pump motor, reservoir.
-Tips
-5
-28
-Pump, pump motor, reservoir.
-ToolTipCtrl
-
-1
-7
-Name
-5
-17
-tt_other_pto_cost
-X
-3
-378
-Y
-3
-1857
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-100
-Costs not included within the PTO categories. Please provide a  description of the other cost input.
-Tips
-5
-100
-Costs not included within the PTO categories. Please provide a  description of the other cost input.
-ToolTipCtrl
-
-1
-7
-Name
-5
-25
-tt_plumbing_fittings_cost
-X
-3
-531
-Y
-3
-516
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-69
-Any plumbing or fittings needed to connect the hydraulic components. 
-Tips
-5
-69
-Any plumbing or fittings needed to connect the hydraulic components. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-28
-tt_plumbing_fittings_cost128
-X
-3
-480
-Y
-3
-480
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-69
-Any plumbing or fittings needed to connect the hydraulic components. 
-Tips
-5
-69
-Any plumbing or fittings needed to connect the hydraulic components. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-26
-tt_power_electrical_system
-X
-3
-480
-Y
-3
-1671
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-81
-System to convert generator voltage to array cable system voltage for collection.
-Tips
-5
-81
-System to convert generator voltage to array cable system voltage for collection.
-ToolTipCtrl
-
-1
-7
-Name
-5
-28
-tt_power_electrical_system14
-X
-3
-477
-Y
-3
-1584
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-81
-System to convert generator voltage to array cable system voltage for collection.
-Tips
-5
-81
-System to convert generator voltage to array cable system voltage for collection.
-ToolTipCtrl
-
-1
-7
-Name
-5
-25
-tt_power_electronics_cost
-X
-3
-435
-Y
-3
-1503
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-116
-Electrical system used to transfer power, convert voltages or frequencies, as well as any active power controllers. 
-Tips
-5
-116
-Electrical system used to transfer power, convert voltages or frequencies, as well as any active power controllers. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-31
-tt_power_takeoff_enclosure_cost
-X
-3
-489
-Y
-3
-1746
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-79
-Any enclosure used to house or isolate the Power Take-Off system (e.g. Nacelle)
-Tips
-5
-79
-Any enclosure used to house or isolate the Power Take-Off system (e.g. Nacelle)
-ToolTipCtrl
-
-1
-7
-Name
-5
-30
-tt_primary_hyrdaulic_pump_cost
-X
-3
-492
-Y
-3
-201
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-118
-The pump used to convert mechanical energy from the WEC into hydraulic flow (e.g. Linear cylinders, rotary pump, etc.)
-Tips
-5
-118
-The pump used to convert mechanical energy from the WEC into hydraulic flow (e.g. Linear cylinders, rotary pump, etc.)
-ToolTipCtrl
-
-1
-7
-Name
-5
-26
-tt_rectifying_circuit_cost
-X
-3
-453
-Y
-3
-240
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-103
-The circuit, or series of valves, that is used to rectify the direction of flow in the hydraulic system
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-13
-tt_rotor_cost
-X
-3
-387
-Y
-3
-1242
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-110
-Commentator, exciter, resistance controller, rotor lamination, rotor winding, slip ring, rotor magnets, brush.
-Tips
-5
-110
-Commentator, exciter, resistance controller, rotor lamination, rotor winding, slip ring, rotor magnets, brush.
-ToolTipCtrl
-
-1
-7
-Name
-5
-13
-tt_scada_cost
-X
-3
-537
-Y
-3
-1626
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-210
-Connects the marine energy converter (MEC) device with an onshore operations center, provides water project operator with information about the status of MEC systems and allows remote control of some functions.
-Tips
-5
-210
-Connects the marine energy converter (MEC) device with an onshore operations center, provides water project operator with information about the status of MEC systems and allows remote control of some functions.
-ToolTipCtrl
-
-1
-7
-Name
-5
-15
-tt_sensors_cost
-X
-3
-402
-Y
-3
-720
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-91
-Debris sensors, oil level sensors, pressure 1 & pressure 2 sensors, and temperature sensor.
-Tips
-5
-91
-Debris sensors, oil level sensors, pressure 1 & pressure 2 sensors, and temperature sensor.
-ToolTipCtrl
-
-1
-7
-Name
-5
-22
-tt_shaft_assembly_cost
-X
-3
-435
-Y
-3
-999
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
-Tips
-5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-32
-tt_shortterm_energy_storage_cost
-X
-3
-483
-Y
-3
-1464
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-116
-Temporary storage of electrical energy (e.g. onboard batteries or ultra-capacitors for wave to wave power smoothing)
-Tips
-5
-116
-Temporary storage of electrical energy (e.g. onboard batteries or ultra-capacitors for wave to wave power smoothing)
-ToolTipCtrl
-
-1
-7
-Name
-5
-14
-tt_stator_cost
-X
-3
-399
-Y
-3
-1323
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-51
-Stator magnets, stator lamination, stator windings.
-Tips
-5
-51
-Stator magnets, stator lamination, stator windings.
-ToolTipCtrl
-
-1
-7
-Name
-5
-29
-tt_struct_and_mechanical_cost
-X
-3
-522
-Y
-3
-1404
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-62
-Front bearing, rear bearing, silent block, housing, and shaft.
-Tips
-5
-62
-Front bearing, rear bearing, silent block, housing, and shaft.
-ToolTipCtrl
-
-1
-7
-Name
-5
-32
-tt_struct_and_mechanical_cost137
-X
-3
-495
-Y
-3
-1362
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-62
-Front bearing, rear bearing, silent block, housing, and shaft.
-Tips
-5
-62
-Front bearing, rear bearing, silent block, housing, and shaft.
-ToolTipCtrl
-
-1
-7
-Name
-5
 27
 tt_structural_assembly_cost
 X
@@ -6762,146 +5891,6 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-34
-tt_transport_power_conversion_cost
-X
-3
-531
-Y
-3
-1818
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-148
-Costs of transporting the marine energy converter (MEC) power conversion chain (PCC) components from the manufacturing facility to the staging area.
-Tips
-5
-148
-Costs of transporting the marine energy converter (MEC) power conversion chain (PCC) components from the manufacturing facility to the staging area.
-ToolTipCtrl
-
-1
-7
-Name
-5
-24
-tt_turbine_bearings_cost
-X
-3
-486
-Y
-3
-1074
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
-Tips
-5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_turbine_bearings_cost140
-X
-3
-402
-Y
-3
-1038
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
-Tips
-5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-26
-tt_turbine_bearings_cost87
-X
-3
-402
-Y
-3
-1281
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-91
-Debris sensors, oil level sensors, pressure 1 & pressure 2 sensors, and temperature sensor.
-Tips
-5
-91
-Debris sensors, oil level sensors, pressure 1 & pressure 2 sensors, and temperature sensor.
-ToolTipCtrl
-
-1
-7
-Name
-5
-14
-tt_valves_cost
-X
-3
-393
-Y
-3
-357
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-98
-Any valves used in the hydraulic system (e.g. pressure relief, control valves, bypass valve, etc.)
-Tips
-5
-98
-Any valves used in the hydraulic system (e.g. pressure relief, control valves, bypass valve, etc.)
 Numeric
 
 1
@@ -6915,7 +5904,7 @@ X
 570
 Y
 3
-1041
+1053
 Width
 3
 90
@@ -6977,7 +5966,7 @@ X
 570
 Y
 3
-357
+372
 Width
 3
 90
@@ -7262,7 +6251,7 @@ AlignTop
 2
 0
 
-69
+74
 accumulators_cost
 3
 1
@@ -7390,6 +6379,76 @@ cooling_system_cost
 0
 Default
 cooling_system_gearbox_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_air_turbine
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_electrical_generator
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_gearbox
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_hydraulic_drivetrain
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_power_electronics
 3
 1
  
@@ -8230,7 +7289,7 @@ variable_power_electronics
 0
 Default
 
-6539
+6465
 equations {'hydraulic_drivetrain_cost_total'} = define() {
 	return ${primary_hydraulic_pump_cost}+${rectifying_circuit_cost}+
 		${accumulators_cost}+${hydraulic_reservoir_cost}+${hydraulic_fluid_cost}+
@@ -8325,7 +7384,7 @@ equations {'variable_hydraulic_drivetrain'} = define() {
 };
 
 equations {'hydraulic_drivetrain_cost_total_check'} = define() {
-	if (${hydraulic_drivetrain_cost_total} < ${hydraulic_drivetrain_cost})
+	if (${detailed_cost_choice_hydraulic_drivetrain}==0)
 		{
 			return ${hydraulic_drivetrain_cost};
 		}
@@ -8371,11 +7430,11 @@ equations {'variable_gearbox'} = define() {
 };
 
 equations {'gearbox_cost_total_check'} = define() {
-	if (${gearbox_cost_total} < ${gearbox_cost})
+	if (${detailed_cost_choice_gearbox}==0) 
 		{
 			return ${gearbox_cost};
 		}
-		else
+	else
 		{
 			return ${gearbox_cost_total};
 		}
@@ -8409,7 +7468,7 @@ equations {'variable_air_turbine'} = define() {
 };
 
 equations {'air_turbine_cost_total_check'} = define() {
-	if (${air_turbine_cost_total} < ${air_turbine_cost})
+	if (${detailed_cost_choice_air_turbine})
 		{
 			return ${air_turbine_cost};
 		}
@@ -8455,7 +7514,7 @@ equations {'variable_electrical_generator'} = define() {
 };
 
 equations {'electrical_generator_cost_total_check'} = define() {
-	if (${electrical_generator_cost_total} < ${electrical_generator_cost})
+	if (${detailed_cost_choice_electrical_generator})
 		{
 			return ${electrical_generator_cost};
 		}
@@ -8489,7 +7548,7 @@ equations {'variable_power_electronics'} = define() {
 };
 
 equations {'power_electronics_cost_total_check'} = define() {
-	if (${power_electronics_cost_total} < ${power_electronics_cost})
+	if (${detailed_cost_choice_power_electronics})
 		{
 			return ${hydraulic_drivetrain_cost};
 		}
@@ -8521,11 +7580,11 @@ equations {'power_takeoff_system_cost'} = define() {
 
 
 
-3957
+8380
 on_load{'Marine Costs - PTO'} = define() {
 	on_change{'itemized_check_pto'};
 	enable_itemized_pto();
-	on_change{'variable_hydraulic_drivetrain'};
+	/*on_change{'variable_hydraulic_drivetrain'};
 	show_hydraulic_drivetrain_warning();
 	on_change{'variable_gearbox'};
 	show_gearbox_warning();
@@ -8534,8 +7593,141 @@ on_load{'Marine Costs - PTO'} = define() {
 	on_change{'variable_electrical_generator'};
 	show_electrical_generator_warning();
 	on_change{'variable_power_electronics'};
-	show_power_electronics_warning();
+	show_power_electronics_warning();*/
+	on_change{'detailed_cost_choice_hydraulic_drivetrain'};
+	on_change{'detailed_cost_choice_gearbox'};
+	on_change{'detailed_cost_choice_air_turbine'};
+	on_change{'detailed_cost_choice_electrical_generator'};
+	on_change{'detailed_cost_choice_power_electronics'};
+	detailed_cost_hyrdaulic_drivetrain();
+	detailed_cost_gearbox();
+	detailed_cost_air_turbine();
+	detailed_cost_electrical_generator();
+	detailed_cost_power_electronics();
 };
+
+on_change{'detailed_cost_choice_hydraulic_drivetrain'} = define() {
+	detailed_cost_hydraulic_drivetrain();
+};
+
+function detailed_cost_hydraulic_drivetrain()
+{
+	if (value('itemized_check_pto')==1)
+	{
+		detailed_value = value('detailed_cost_choice_hydraulic_drivetrain');
+		enable('hydraulic_drivetrain_cost',detailed_value==0);
+		show('hydraulic_drivetrain_cost',detailed_value==0);
+		enable('hydraulic_drivetrain_cost_total',detailed_value);
+		show('hydraulic_drivetrain_cost_total',detailed_value);
+		enable('primary_hydraulic_pump_cost',detailed_value);
+		enable('rectifying_circuit_cost',detailed_value);
+		enable('accumulators_cost',detailed_value);
+		enable('hydraulic_motor_cost',detailed_value);
+		enable('valves_cost',detailed_value);
+		enable('hydraulic_reservoir_cost',detailed_value);
+		enable('hydraulic_fluid_cost',detailed_value);
+		enable('plumbing_fittings_cost',detailed_value);
+		enable('other_hydraulic_drivetrain_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_gearbox'} = define() {
+	detailed_cost_choice_gearbox();
+};
+
+function detailed_cost_choice_gearbox()
+{
+	if (value('itemized_check_pto')==1)
+	{
+		detailed_value = value('detailed_cost_choice_gearbox');
+		enable('gearbox_cost',detailed_value==0);
+		show('gearbox_cost',detailed_value==0);
+		enable('gearbox_cost_total',detailed_value);
+		show('gearbox_cost_total',detailed_value);
+		enable('gears_cost',detailed_value);
+		enable('bearings_cost',detailed_value);
+		enable('housing_cost',detailed_value);
+		enable('sensors_cost',detailed_value);
+		enable('lube_system_cost',detailed_value);
+		enable('cooling_system_gearbox_cost',detailed_value);
+		enable('other_gearbox_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_air_turbine'} = define() {
+	detailed_cost_air_turbine();
+};
+
+function detailed_cost_air_turbine()
+{
+	if (value('itemized_check_pto')==1)
+	{
+		detailed_value = value('detailed_cost_choice_air_turbine');
+		enable('air_turbine_cost',detailed_value==0);
+		show('air_turbine_cost',detailed_value==0);
+		enable('air_turbine_cost_total',detailed_value);
+		show('air_turbine_cost_total',detailed_value);
+		enable('blades_rotor_assembly_cost',detailed_value);
+		enable('hub_assembly_cost',detailed_value);
+		enable('shaft_assembly_cost',detailed_value);
+		enable('bearings_cost',detailed_value);
+		enable('other_air_turbine_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_electrical_generator'} = define() {
+	detailed_cost_electrical_generator();
+};
+
+function detailed_cost_electrical_generator()
+{
+	if (value('itemized_check_pto')==1)
+	{
+		detailed_value = value('detailed_cost_choice_electrical_generator');
+		enable('electrical_generator_cost',detailed_value==0);
+		show('electrical_generator_cost',detailed_value==0);
+		enable('electrical_generator_cost_total',detailed_value);
+		show('electrical_generator_cost_total',detailed_value);
+		enable('cooling_system_cost',detailed_value);
+		enable('lubrication_system_cost',detailed_value);
+		enable('rotor_cost',detailed_value);
+		enable('sensors_elec_gen_cost',detailed_value);
+		enable('stator_cost',detailed_value);
+		enable('struct_and_mechanical_cost',detailed_value);
+		enable('other_electrical_generator_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_power_electronics'} = define() {
+	detailed_cost_power_electronics();
+};
+
+function detailed_cost_power_electronics()
+{
+	if (value('itemized_check_pto')==1)
+	{
+		detailed_value = value('detailed_cost_choice_power_electronics');
+		enable('power_electronics_cost',detailed_value==0);
+		show('power_electronics_cost',detailed_value==0);
+		enable('power_electronics_cost_total',detailed_value);
+		show('power_electronics_cost_total',detailed_value);
+		enable('frequency_converter_cost',detailed_value);
+		enable('power_electrical_system_cost',detailed_value);
+		enable('scada_cost',detailed_value);
+		enable('other_power_electronics_cost',detailed_value);
+		
+		refresh();
+	}
+	
+}
 
 on_change{'itemized_check_pto'} = define() {
 	enable_itemized_pto();
@@ -8592,7 +7784,7 @@ function enable_itemized_pto()
 	refresh();
 }
 
-on_change{'variable_hydraulic_drivetrain'} = define() {
+/*on_change{'variable_hydraulic_drivetrain'} = define() {
 	show_hydraulic_drivetrain_warning();
 };
 
@@ -8640,7 +7832,7 @@ function show_power_electronics_warning()
 {
 	show('power_electronics_warning',value('variable_power_electronics')==1);
 	refresh();
-}
+}*/
 
 
 

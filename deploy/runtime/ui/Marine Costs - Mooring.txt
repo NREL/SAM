@@ -1,7 +1,7 @@
 Marine Costs - Mooring
-931
-1096
-82
+928
+1348
+62
 Label
 
 1
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-306
+357
 Y
 3
 159
 Width
 3
-93
+81
 Height
 3
 24
@@ -36,7 +36,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -45,7 +45,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -59,10 +59,10 @@ Name
 Ladders
 X
 3
-318
+492
 Y
 3
-519
+558
 Width
 3
 48
@@ -116,7 +116,7 @@ Width
 800
 Height
 3
-1033
+1204
 Tool Tip
 5
 0
@@ -137,10 +137,10 @@ Name
 Personnel Access System
 X
 3
-318
+408
 Y
 3
-762
+843
 Width
 3
 135
@@ -185,7 +185,7 @@ Name
 anchors_and_piles_cost
 X
 3
-540
+438
 Y
 3
 201
@@ -247,10 +247,10 @@ Name
 ancillary_marine_systems_cost
 X
 3
-540
+447
 Y
 3
-681
+720
 Width
 3
 90
@@ -309,10 +309,10 @@ Name
 ancillary_marine_systems_cost_total
 X
 3
-642
+456
 Y
 3
-681
+720
 Width
 3
 90
@@ -371,10 +371,10 @@ Name
 ballast_system_mooring_cost
 X
 3
-540
+543
 Y
 3
-801
+882
 Width
 3
 90
@@ -433,10 +433,10 @@ Name
 cathodic_protection_system_cost
 X
 3
-540
+543
 Y
 3
-723
+804
 Width
 3
 90
@@ -495,10 +495,10 @@ Name
 condition_monitoring_cost
 X
 3
-540
+543
 Y
 3
-843
+924
 Width
 3
 90
@@ -557,7 +557,7 @@ Name
 connecting_hardware_cost
 X
 3
-540
+438
 Y
 3
 240
@@ -609,6 +609,72 @@ BackColour
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+46
+detailed_cost_choice_ancillary_marine_systems
+X
+3
+408
+Y
+3
+759
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+42
+detailed_cost_choice_outfitting_structure
+X
+3
+405
+Y
+3
+438
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -619,10 +685,10 @@ Name
 integration_assembly_testing_checkout_cost
 X
 3
-540
+450
 Y
 3
-918
+999
 Width
 3
 90
@@ -731,7 +797,7 @@ X
 540
 Y
 3
-519
+558
 Width
 3
 90
@@ -793,7 +859,7 @@ X
 540
 Y
 3
-600
+639
 Width
 3
 90
@@ -852,7 +918,7 @@ Name
 messenger_lines_and_buoys_cost
 X
 3
-540
+438
 Y
 3
 321
@@ -1297,7 +1363,7 @@ Name
 mooring_lines_cost
 X
 3
-540
+438
 Y
 3
 159
@@ -1359,10 +1425,10 @@ Name
 object 7
 X
 3
-102
+15
 Y
 3
-225
+231
 Width
 3
 165
@@ -1407,13 +1473,13 @@ Name
 object 713
 X
 3
-306
+312
 Y
 3
 240
 Width
 3
-123
+126
 Height
 3
 24
@@ -1432,7 +1498,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1441,7 +1507,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1503,10 +1569,10 @@ Name
 object 72441
 X
 3
-318
+375
 Y
 3
-639
+678
 Width
 3
 165
@@ -1551,10 +1617,10 @@ Name
 object 7244132
 X
 3
-318
+354
 Y
 3
-879
+960
 Width
 3
 189
@@ -1599,10 +1665,10 @@ Name
 object 724413236
 X
 3
-318
+417
 Y
 3
-843
+924
 Width
 3
 126
@@ -1647,10 +1713,10 @@ Name
 object 7244134
 X
 3
-318
+459
 Y
 3
-801
+882
 Width
 3
 84
@@ -1695,10 +1761,10 @@ Name
 object 7244135
 X
 3
-318
+447
 Y
 3
-600
+639
 Width
 3
 93
@@ -1743,10 +1809,10 @@ Name
 object 7244143
 X
 3
-318
+495
 Y
 3
-561
+600
 Width
 3
 45
@@ -1791,10 +1857,10 @@ Name
 object 726
 X
 3
-318
+393
 Y
 3
-723
+804
 Width
 3
 150
@@ -1839,10 +1905,10 @@ Name
 object 72647
 X
 3
-318
+390
 Y
 3
-480
+519
 Width
 3
 150
@@ -1887,13 +1953,13 @@ Name
 object 727
 X
 3
-306
+228
 Y
 3
-999
+1080
 Width
 3
-36
+222
 Height
 3
 24
@@ -1902,8 +1968,8 @@ Tool Tip
 0
 Caption
 5
-5
-Other
+36
+Other Mooring and Substructure Costs
 TextColour
 4
 0
@@ -1912,7 +1978,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1921,7 +1987,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1935,13 +2001,13 @@ Name
 object 72728
 X
 3
-306
+360
 Y
 3
-957
+1038
 Width
 3
-84
+90
 Height
 3
 24
@@ -1960,7 +2026,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1969,7 +2035,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1983,16 +2049,16 @@ Name
 object 72730
 X
 3
-306
+189
 Y
 3
-918
+999
 Width
 3
-243
+261
 Height
 3
-30
+24
 Tool Tip
 5
 0
@@ -2008,7 +2074,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2017,10 +2083,10 @@ WordWrap
 1
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Label
 
 1
@@ -2034,7 +2100,7 @@ X
 306
 Y
 3
-681
+720
 Width
 3
 141
@@ -2056,7 +2122,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2065,7 +2131,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2079,13 +2145,13 @@ Name
 object 72751
 X
 3
-306
+231
 Y
 3
 399
 Width
 3
-186
+207
 Height
 3
 24
@@ -2104,7 +2170,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2113,7 +2179,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2127,7 +2193,7 @@ Name
 object 728
 X
 3
-306
+339
 Y
 3
 360
@@ -2152,7 +2218,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2161,7 +2227,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2175,13 +2241,13 @@ Name
 object 729
 X
 3
-306
+291
 Y
 3
 321
 Width
 3
-141
+147
 Height
 3
 24
@@ -2200,7 +2266,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2209,7 +2275,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2223,7 +2289,7 @@ Name
 object 73
 X
 3
-306
+336
 Y
 3
 201
@@ -2248,7 +2314,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2257,7 +2323,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2271,13 +2337,13 @@ Name
 object 730
 X
 3
-306
+279
 Y
 3
 279
 Width
 3
-150
+159
 Height
 3
 24
@@ -2296,7 +2362,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2305,7 +2371,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2319,10 +2385,10 @@ Name
 object 731
 X
 3
-318
+459
 Y
 3
-441
+480
 Width
 3
 81
@@ -2463,10 +2529,10 @@ Name
 other_ancillary_marine_system_cost
 X
 3
-540
+543
 Y
 3
-879
+960
 Width
 3
 90
@@ -2525,10 +2591,10 @@ Name
 other_mooring_cost
 X
 3
-540
+450
 Y
 3
-999
+1080
 Width
 3
 90
@@ -2590,7 +2656,7 @@ X
 540
 Y
 3
-639
+678
 Width
 3
 90
@@ -2649,7 +2715,7 @@ Name
 outfitting_structure_cost
 X
 3
-540
+438
 Y
 3
 399
@@ -2711,7 +2777,7 @@ Name
 outfitting_structure_cost_total
 X
 3
-642
+447
 Y
 3
 399
@@ -2773,10 +2839,10 @@ Name
 personnel_access_system_mooring_cost
 X
 3
-540
+543
 Y
 3
-762
+843
 Width
 3
 90
@@ -2838,7 +2904,7 @@ X
 540
 Y
 3
-561
+600
 Width
 3
 90
@@ -2897,7 +2963,7 @@ Name
 scour_protection_cost
 X
 3
-540
+438
 Y
 3
 360
@@ -2962,7 +3028,7 @@ X
 540
 Y
 3
-480
+519
 Width
 3
 90
@@ -3021,7 +3087,7 @@ Name
 subfoundation_or_bedding_cost
 X
 3
-540
+438
 Y
 3
 279
@@ -3083,10 +3149,10 @@ Name
 transportation_cost
 X
 3
-540
+450
 Y
 3
-957
+1038
 Width
 3
 90
@@ -3135,538 +3201,6 @@ BackColour
 TabOrder
 3
 4294967295
-ToolTipCtrl
-
-1
-7
-Name
-5
-25
-tt_anchors_and_piles_cost
-X
-3
-405
-Y
-3
-201
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-156
-Anchors and Piles installed on the seabed to either maintain station keeping or to react against the seabed. This can include gravity based anchor systems. 
-Tips
-5
-156
-Anchors and Piles installed on the seabed to either maintain station keeping or to react against the seabed. This can include gravity based anchor systems. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-32
-tt_ancillary_marine_systems_cost
-X
-3
-444
-Y
-3
-681
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-49
-Ancillary systems required for marine operations.
-Tips
-5
-49
-Ancillary systems required for marine operations.
-ToolTipCtrl
-
-1
-7
-Name
-5
-22
-tt_ballast_system_cost
-X
-3
-399
-Y
-3
-801
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
-Tips
-5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
-ToolTipCtrl
-
-1
-7
-Name
-5
-34
-tt_cathodic_protection_system_cost
-X
-3
-471
-Y
-3
-723
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-75
-Active (impressed current) or passive (anodes) cathodic protection system. 
-Tips
-5
-75
-Active (impressed current) or passive (anodes) cathodic protection system. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-28
-tt_condition_monitoring_cost
-X
-3
-513
-Y
-3
-879
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-77
-Systems to monitor and control substructure systems (e.g., variable ballast).
-Tips
-5
-77
-Systems to monitor and control substructure systems (e.g., variable ballast).
-ToolTipCtrl
-
-1
-7
-Name
-5
-30
-tt_condition_monitoring_cost64
-X
-3
-441
-Y
-3
-843
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-77
-Systems to monitor and control substructure systems (e.g., variable ballast).
-Tips
-5
-77
-Systems to monitor and control substructure systems (e.g., variable ballast).
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_connecting_hardware_cost
-X
-3
-426
-Y
-3
-240
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-87
-Connectors required to attach the mooring lines to anchors and marine energy converter.
-Tips
-5
-87
-Connectors required to attach the mooring lines to anchors and marine energy converter.
-ToolTipCtrl
-
-1
-7
-Name
-5
-45
-tt_integration_assembly_testing_checkout_cost
-X
-3
-498
-Y
-3
-918
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-190
-Activities performed by manufacturer to integrate, assemble, test, and checkout for the mooring and foundation system before  delivery to customer. Does not include commissioning activities.
-Tips
-5
-190
-Activities performed by manufacturer to integrate, assemble, test, and checkout for the mooring and foundation system before  delivery to customer. Does not include commissioning activities.
-ToolTipCtrl
-
-1
-7
-Name
-5
-15
-tt_ladders_cost
-X
-3
-366
-Y
-3
-519
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-52
-Provides access from the vessel landing to the deck.
-Tips
-5
-52
-Provides access from the vessel landing to the deck.
-ToolTipCtrl
-
-1
-7
-Name
-5
-23
-tt_marine_coatings_cost
-X
-3
-489
-Y
-3
-639
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-72
-Anti-corrosion marine coatings applied to any outfitting steel elements.
-Tips
-5
-72
-Anti-corrosion marine coatings applied to any outfitting steel elements.
-ToolTipCtrl
-
-1
-7
-Name
-5
-25
-tt_marine_coatings_cost68
-X
-3
-411
-Y
-3
-600
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-72
-Anti-corrosion marine coatings applied to any outfitting steel elements.
-Tips
-5
-72
-Anti-corrosion marine coatings applied to any outfitting steel elements.
-ToolTipCtrl
-
-1
-7
-Name
-5
-33
-tt_messenger_lines_and_buoys_cost
-X
-3
-447
-Y
-3
-321
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-Tips
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-ToolTipCtrl
-
-1
-7
-Name
-5
-21
-tt_mooring_lines_cost
-X
-3
-387
-Y
-3
-159
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-100
-Chain, wire, or synthetic fiber ropes to connect marine energy converter with anchors on the seabed.
-Tips
-5
-100
-Chain, wire, or synthetic fiber ropes to connect marine energy converter with anchors on the seabed.
-ToolTipCtrl
-
-1
-7
-Name
-5
-21
-tt_other_mooring_cost
-X
-3
-348
-Y
-3
-999
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-135
-Costs not included within the mooring, foundation, and sub-structure categories. Please provide a  description of the other cost input.
-Tips
-5
-135
-Costs not included within the mooring, foundation, and sub-structure categories. Please provide a  description of the other cost input.
-ToolTipCtrl
-
-1
-7
-Name
-5
-28
-tt_outfitting_structure_cost
-X
-3
-495
-Y
-3
-399
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-69
-Additional non-structural elements attached to substructure elements.
-Tips
-5
-69
-Additional non-structural elements attached to substructure elements.
-ToolTipCtrl
-
-1
-7
-Name
-5
-39
-tt_personnel_access_system_mooring_cost
-X
-3
-456
-Y
-3
-762
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-120
-Equipment installed on vessel landing, ladders, and deck to facilitate safe access to the marine energy converter (MEC).
-Tips
-5
-120
-Equipment installed on vessel landing, ladders, and deck to facilitate safe access to the marine energy converter (MEC).
-ToolTipCtrl
-
-1
-7
-Name
-5
-16
-tt_railings_cost
-X
-3
-366
-Y
-3
-561
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-70
-Encloses the deck to provide a safe working environment for personnel.
-Tips
-5
-70
-Encloses the deck to provide a safe working environment for personnel.
-ToolTipCtrl
-
-1
-7
-Name
-5
-24
-tt_scour_protection_cost
-X
-3
-405
-Y
-3
-360
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-Tips
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-ToolTipCtrl
-
-1
-7
-Name
-5
-35
-tt_service_platforms_and_decks_cost
-X
-3
-471
-Y
-3
-480
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-50
-Provides work platform for maintenance activities.
-Tips
-5
-50
-Provides work platform for maintenance activities.
 ToolTipCtrl
 
 1
@@ -3694,90 +3228,6 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-32
-tt_subfoundation_or_bedding_cost
-X
-3
-459
-Y
-3
-279
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-91
-Layers of gravel and stone to provide a stable and level surface on which to place anchors.
-Tips
-5
-91
-Layers of gravel and stone to provide a stable and level surface on which to place anchors.
-ToolTipCtrl
-
-1
-7
-Name
-5
-22
-tt_transportation_cost
-X
-3
-390
-Y
-3
-957
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-104
-Costs of transporting the mooring system components from the manufacturing facility to the staging area.
-Tips
-5
-104
-Costs of transporting the mooring system components from the manufacturing facility to the staging area.
-ToolTipCtrl
-
-1
-7
-Name
-5
-22
-tt_vessel_landing_cost
-X
-3
-402
-Y
-3
-441
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-96
-Provides interface between maintenance vessels and substructure to enable safe personnel access.
-Tips
-5
-96
-Provides interface between maintenance vessels and substructure to enable safe personnel access.
 Numeric
 
 1
@@ -3791,7 +3241,7 @@ X
 540
 Y
 3
-441
+480
 Width
 3
 90
@@ -3841,7 +3291,7 @@ TabOrder
 3
 4294967295
 
-27
+31
 anchors_and_piles_cost
 3
 1
@@ -3871,6 +3321,20 @@ ancillary_marine_systems_cost
 0
 Default
 ancillary_marine_systems_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+ancillary_marine_systems_cost_total_check
 3
 1
  
@@ -3927,6 +3391,34 @@ condition_monitoring_cost
 0
 Default
 connecting_hardware_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_ancillary_marine_systems
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_outfitting_structure
 3
 1
  
@@ -4122,6 +3614,17 @@ outfitting_structure_cost_total
 1
 0
 Default
+outfitting_structure_cost_total_check
+3
+0
+ 
+ 
+ 
+0
+0
+1
+0
+Default
 personnel_access_system_mooring_cost
 3
 1
@@ -4221,12 +3724,24 @@ vessel_landing_cost
 0
 Default
 
-1393
+1882
 equations {'outfitting_structure_cost_total'} = define() {
 	return ${outfitting_structure_cost}+${vessel_landing_cost}+
 		${service_platforms_and_decks_cost}+${ladders_cost}+${railings_cost}+
 		${marine_coatings_cost}+${other_outfitting_structure_cost};
 };
+
+equations {'outfitting_structure_cost_total_check'} = define() {
+	if (${detailed_cost_choice_outfitting_structure}==0)
+	{
+		return ${outfitting_structure_cost};
+	}
+	else
+	{
+		return ${outfitting_structure_cost_total};
+	}
+};
+
 
 equations {'ancillary_marine_systems_cost_total'} = define() {
 	return ${ancillary_marine_systems_cost}+${cathodic_protection_system_cost}+
@@ -4234,11 +3749,22 @@ equations {'ancillary_marine_systems_cost_total'} = define() {
 		${condition_monitoring_cost}+${other_ancillary_marine_system_cost};
 };
 
+equations {'ancillary_marine_systems_cost_total_check'} = define() {
+	if (${detailed_cost_choice_ancillary_marine_systems}==0)
+	{
+		return ${ancillary_marine_systems_cost};
+	}
+	else
+	{
+		return ${ancillary_marine_systems_cost_total};
+	}
+};
+
 equations {'mooring_found_substruc_cost_total'} = define() {
 	return ${mooring_lines_cost}+${anchors_and_piles_cost}+${connecting_hardware_cost}+
 		${subfoundation_or_bedding_cost}+${messenger_lines_and_buoys_cost}+
-		${scour_protection_cost}+${outfitting_structure_total}+
-		${ancillary_marine_systems_total}+${integration_assembly_testing_checkout_cost}+
+		${scour_protection_cost}+${outfitting_structure_cost_total_check}+
+		${ancillary_marine_systems_cost_total_check}+${integration_assembly_testing_checkout_cost}+
 		${transportation_cost}+${other_mooring_cost};
 };
 
@@ -4265,11 +3791,62 @@ equations {'mooring_found_substruc_cost'} = define() {
 
 
 
-1731
+3610
 on_load{'Marine Costs - Mooring'} = define() {
 	on_change{'itemized_check_mooring'};
 	enable_itemized_mooring();
+	on_change{'detailed_cost_choice_outfitting_structure'};
+	on_change{'detailed_cost_choice_ancillary_marine_systems'};
+	detailed_cost_outfitting_structure();
+	detailed_cost_ancillary_marine_systems();
 };
+
+on_change{'detailed_cost_choice_outfitting_structure'} = define() {
+	detailed_cost_outfitting_structure();
+};
+
+function detailed_cost_outfitting_structure()
+{
+	if (value('itemized_check_mooring')==1)
+	{
+		detailed_value = value('detailed_cost_choice_outfitting_structure');
+		enable('outfitting_structure_cost',detailed_value==0);
+		show('outfitting_structure_cost',detailed_value==0);
+		enable('outfitting_structure_cost_total',detailed_value);
+		show('outfitting_structure_cost_total',detailed_value);
+		enable('vessel_landing_cost',detailed_value);
+		enable('service_platforms_and_decks_cost',detailed_value);
+		enable('ladders_cost',detailed_value);
+		enable('railings_cost',detailed_value);
+		enable('marine_coatings_cost',detailed_value);
+		enable('other_outfitting_structure_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_ancillary_marine_systems'} = define() {
+	detailed_cost_ancillary_marine_systems();
+};
+
+function detailed_cost_ancillary_marine_systems()
+{
+	if (value('itemized_check_eng')==1)
+	{
+		detailed_value = value('detailed_cost_choice_ancillary_marine_systems');
+		enable('ancillary_marine_systems_cost',detailed_value==0);
+		show('ancillary_marine_systems_cost',detailed_value==0);
+		enable('ancillary_marine_systems_cost_total',detailed_value);
+		show('ancillary_marine_systems_cost_total',detailed_value);
+		enable('cathodic_protection_system_cost',detailed_value);
+		enable('personnel_access_system_mooring_cost',detailed_value);
+		enable('ballast_system_mooring_cost',detailed_value);
+		enable('condition_monitoring_cost',detailed_value);
+		enable('other_ancillary_marine_system_cost',detailed_value);
+		
+		refresh();
+	}
+}
 
 on_change{'itemized_check_mooring'} = define() {
 	enable_itemized_mooring();

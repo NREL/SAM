@@ -1,7 +1,7 @@
 Marine Costs - Structural Assembly
-919
-830
-89
+908
+927
+72
 Label
 
 1
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-447
+390
 Y
 3
 195
 Width
 3
-78
+135
 Height
 3
 24
@@ -49,102 +49,6 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-13
-Name
-5
-16
-Itemized Inputs 
-X
-3
-624
-Y
-3
-168
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-14
-Level 5 Totals
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-17
-Itemized Inputs 3
-X
-3
-525
-Y
-3
-168
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-16
-Itemized Inputs 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 Numeric
 
 1
@@ -158,7 +62,7 @@ X
 624
 Y
 3
-354
+345
 Width
 3
 90
@@ -182,7 +86,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -220,69 +125,7 @@ X
 525
 Y
 3
-435
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-43
-additional_structural_components_cost_total
-X
-3
-624
-Y
-3
-435
+405
 Width
 3
 90
@@ -345,241 +188,7 @@ X
 624
 Y
 3
-555
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-21
-buoyancy_chamber_cost
-X
-3
-624
-Y
-3
-276
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Label
-
-1
-13
-Name
-5
-8
-coatings
-X
-3
-474
-Y
-3
-675
-Width
-3
-51
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-8
-Coatings
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Numeric
-
-1
-17
-Name
-5
-13
-coatings_cost
-X
-3
 525
-Y
-3
-675
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-19
-coatings_cost_total
-X
-3
-624
-Y
-3
-675
 Width
 3
 90
@@ -635,6 +244,246 @@ Numeric
 17
 Name
 5
+21
+buoyancy_chamber_cost
+X
+3
+624
+Y
+3
+285
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+8
+coatings
+X
+3
+330
+Y
+3
+615
+Width
+3
+195
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+8
+Coatings
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+13
+coatings_cost
+X
+3
+525
+Y
+3
+615
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+35
+detailed_cost_choice_marine_systems
+X
+3
+552
+Y
+3
+465
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+33
+detailed_cost_choice_struct_assem
+X
+3
+558
+Y
+3
+225
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 30
 external_ballast_chambers_cost
 X
@@ -666,7 +515,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -738,6 +588,102 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+19
+level_5_total_prime
+X
+3
+525
+Y
+3
+168
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+14
+Level 4 Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+21
+level_5_total_prime50
+X
+3
+624
+Y
+3
+168
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+14
+Level 5 Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -751,7 +697,7 @@ X
 525
 Y
 3
-474
+435
 Width
 3
 90
@@ -775,7 +721,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -810,10 +757,10 @@ Name
 marine_systems_cost_total
 X
 3
-624
+525
 Y
 3
-474
+435
 Width
 3
 90
@@ -876,7 +823,7 @@ X
 624
 Y
 3
-594
+555
 Width
 3
 90
@@ -900,7 +847,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -935,13 +883,13 @@ Name
 object 
 X
 3
-486
+468
 Y
 3
-393
+375
 Width
 3
-138
+156
 Height
 3
 24
@@ -969,7 +917,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -1017,8 +965,8 @@ GroupBox
 8
 Name
 5
-8
-object 4
+9
+object 41
 X
 3
 57
@@ -1030,7 +978,7 @@ Width
 800
 Height
 3
-777
+800
 Tool Tip
 5
 0
@@ -1051,13 +999,13 @@ Name
 object 713
 X
 3
-510
+468
 Y
 3
-276
+285
 Width
 3
-114
+156
 Height
 3
 24
@@ -1085,7 +1033,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -1099,10 +1047,10 @@ Name
 object 716
 X
 3
-534
+456
 Y
 3
-555
+525
 Width
 3
 12
@@ -1147,10 +1095,10 @@ Name
 object 717
 X
 3
-504
+456
 Y
 3
-594
+555
 Width
 3
 12
@@ -1195,10 +1143,10 @@ Name
 object 71788
 X
 3
-465
+456
 Y
 3
-633
+585
 Width
 3
 12
@@ -1243,10 +1191,10 @@ Name
 object 718
 X
 3
-474
+456
 Y
 3
-513
+495
 Width
 3
 12
@@ -1291,10 +1239,10 @@ Name
 object 719
 X
 3
-522
+456
 Y
 3
-354
+345
 Width
 3
 12
@@ -1387,10 +1335,10 @@ Name
 object 71987
 X
 3
-474
+456
 Y
 3
-393
+375
 Width
 3
 12
@@ -1435,7 +1383,7 @@ Name
 object 720
 X
 3
-471
+456
 Y
 3
 315
@@ -1483,23 +1431,23 @@ Name
 object 721
 X
 3
-81
+111
 Y
 3
-201
+222
 Width
 3
 180
 Height
 3
-300
+303
 Tool Tip
 5
 0
 Caption
 5
-540
-To input structural assembly costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled structural assembly costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural assembly costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the User Input display.  
+592
+To input structural assembly costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled structural assembly costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural assembly costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is found from the sum of the bolded entries and is reflected in the Itemized Inputs display. 
 TextColour
 4
 0
@@ -1531,10 +1479,10 @@ Name
 object 72129
 X
 3
-498
+456
 Y
 3
-276
+285
 Width
 3
 12
@@ -1630,7 +1578,7 @@ X
 456
 Y
 3
-234
+255
 Width
 3
 12
@@ -1675,151 +1623,7 @@ Name
 object 723
 X
 3
-477
-Y
-3
-756
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-4.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 724
-X
-3
-354
-Y
-3
-717
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-4.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 72446
-X
-3
-366
-Y
-3
-717
-Width
-3
-159
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-27
-Transportation of Structure
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 725
-X
-3
-462
+318
 Y
 3
 675
@@ -1864,13 +1668,157 @@ Label
 Name
 5
 10
+object 724
+X
+3
+318
+Y
+3
+645
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+4.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72446
+X
+3
+330
+Y
+3
+645
+Width
+3
+195
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+27
+Transportation of Structure
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 725
+X
+3
+318
+Y
+3
+615
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+2
+4.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
 object 726
 X
 3
-420
+378
 Y
 3
-474
+435
 Width
 3
 12
@@ -1915,13 +1863,13 @@ Name
 object 72647
 X
 3
-477
+468
 Y
 3
-633
+585
 Width
 3
-147
+156
 Height
 3
 24
@@ -1949,7 +1897,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -1963,13 +1911,13 @@ Name
 object 7264745
 X
 3
-516
+468
 Y
 3
-594
+555
 Width
 3
-108
+156
 Height
 3
 24
@@ -1997,7 +1945,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -2011,10 +1959,10 @@ Name
 object 727
 X
 3
-321
+378
 Y
 3
-435
+405
 Width
 3
 12
@@ -2059,13 +2007,13 @@ Name
 object 72748
 X
 3
-486
+468
 Y
 3
-513
+495
 Width
 3
-138
+156
 Height
 3
 24
@@ -2093,7 +2041,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -2107,13 +2055,13 @@ Name
 object 728
 X
 3
-432
+390
 Y
 3
-474
+435
 Width
 3
-93
+135
 Height
 3
 24
@@ -2141,7 +2089,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -2155,13 +2103,13 @@ Name
 object 729
 X
 3
-330
+390
 Y
 3
-435
+405
 Width
 3
-195
+135
 Height
 3
 24
@@ -2170,8 +2118,8 @@ Tool Tip
 0
 Caption
 5
-32
-Additional Structural Components
+22
+ Structural Components
 TextColour
 4
 0
@@ -2206,7 +2154,7 @@ X
 468
 Y
 3
-234
+255
 Width
 3
 156
@@ -2237,7 +2185,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -2251,13 +2199,13 @@ Name
 object 730
 X
 3
-534
+468
 Y
 3
-354
+345
 Width
 3
-90
+156
 Height
 3
 24
@@ -2285,7 +2233,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -2299,13 +2247,13 @@ Name
 object 731
 X
 3
-546
+468
 Y
 3
-555
+525
 Width
 3
-78
+156
 Height
 3
 24
@@ -2333,7 +2281,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -2395,13 +2343,13 @@ Name
 object 733
 X
 3
-489
+330
 Y
 3
-756
+675
 Width
 3
-36
+195
 Height
 3
 24
@@ -2410,8 +2358,8 @@ Tool Tip
 0
 Caption
 5
-5
-Other
+31
+Other Structural Assembly Costs
 TextColour
 4
 0
@@ -2429,7 +2377,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -2443,13 +2391,13 @@ Name
 object 734
 X
 3
-483
+468
 Y
 3
 315
 Width
 3
-141
+156
 Height
 3
 24
@@ -2477,7 +2425,7 @@ WordWrap
 0
 AlignRight
 2
-1
+0
 AlignTop
 2
 0
@@ -2587,7 +2535,7 @@ Name
 object 76
 X
 3
-435
+378
 Y
 3
 195
@@ -2631,14 +2579,14 @@ Numeric
 17
 Name
 5
-16
-other_cost_total
+11
+other_costs
 X
 3
-624
+525
 Y
 3
-756
+675
 Width
 3
 90
@@ -2694,68 +2642,6 @@ Numeric
 17
 Name
 5
-11
-other_costs
-X
-3
-525
-Y
-3
-756
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
 24
 other_marine_system_cost
 X
@@ -2763,7 +2649,7 @@ X
 624
 Y
 3
-633
+585
 Width
 3
 90
@@ -2787,7 +2673,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2825,7 +2712,7 @@ X
 624
 Y
 3
-393
+375
 Width
 3
 90
@@ -2849,7 +2736,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2887,7 +2775,7 @@ X
 624
 Y
 3
-513
+495
 Width
 3
 90
@@ -2911,7 +2799,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2949,7 +2838,7 @@ X
 624
 Y
 3
-234
+255
 Width
 3
 90
@@ -2973,7 +2862,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3035,7 +2925,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3070,7 +2961,7 @@ Name
 prime_mover_cost_total
 X
 3
-624
+525
 Y
 3
 195
@@ -3519,69 +3410,7 @@ X
 525
 Y
 3
-717
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-30
-transport_structure_cost_total
-X
-3
-624
-Y
-3
-717
+645
 Width
 3
 90
@@ -3637,392 +3466,6 @@ ToolTipCtrl
 7
 Name
 5
-24
-tt_active_structure_cost
-X
-3
-441
-Y
-3
-393
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-26
-tt_active_structure_cost73
-X
-3
-483
-Y
-3
-354
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-40
-tt_additional_structural_components_cost
-X
-3
-288
-Y
-3
-435
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-87
-Any additional supporting structural components not included in the Structure category.
-Tips
-5
-87
-Any additional supporting structural components not included in the Structure category.
-ToolTipCtrl
-
-1
-7
-Name
-5
-22
-tt_ballast_system_cost
-X
-3
-498
-Y
-3
-555
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
-Tips
-5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
-ToolTipCtrl
-
-1
-7
-Name
-5
-25
-tt_buoyancy_chambers_cost
-X
-3
-465
-Y
-3
-276
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-16
-tt_coatings_cost
-X
-3
-429
-Y
-3
-675
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-57
-Coatings to protect from corrosion in marine environment.
-Tips
-5
-57
-Coatings to protect from corrosion in marine environment.
-ToolTipCtrl
-
-1
-7
-Name
-5
-33
-tt_external_ballast_chambers_cost
-X
-3
-438
-Y
-3
-315
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-22
-tt_marine_systems_cost
-X
-3
-387
-Y
-3
-474
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-62
-Ancillary systems on the marine energy converter (MEC) device.
-Tips
-5
-62
-Ancillary systems on the marine energy converter (MEC) device.
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_navigation_lighting_cost
-X
-3
-426
-Y
-3
-633
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
-Tips
-5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
-ToolTipCtrl
-
-1
-7
-Name
-5
-29
-tt_navigation_lighting_cost80
-X
-3
-471
-Y
-3
-594
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
-Tips
-5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
-ToolTipCtrl
-
-1
-7
-Name
-5
-24
-tt_other_structural_cost
-X
-3
-450
-Y
-3
-756
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
-Tips
-5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-31
-tt_personnel_access_system_cost
-X
-3
-435
-Y
-3
-513
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
-Tips
-5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-35
-tt_primary_structural_assembly_cost
-X
-3
-423
-Y
-3
-234
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-0
-ToolTipCtrl
-
-1
-7
-Name
-5
-19
-tt_prime_mover_cost
-X
-3
-402
-Y
-3
-195
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-63
-Primary energy capture (e.g. float paddle, turbine, flap, etc.)
-Tips
-5
-63
-Primary energy capture (e.g. float paddle, turbine, flap, etc.)
-ToolTipCtrl
-
-1
-7
-Name
-5
 27
 tt_structural_assembly_cost
 X
@@ -4044,34 +3487,6 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_transport_structure_cost
-X
-3
-327
-Y
-3
-717
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
-Tips
-5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
 Label
 
 1
@@ -4179,7 +3594,7 @@ X
 717
 Y
 3
-474
+435
 Width
 3
 111
@@ -4227,7 +3642,7 @@ X
 723
 Y
 3
-195
+171
 Width
 3
 111
@@ -4263,7 +3678,7 @@ AlignTop
 2
 1
 
-77
+79
 active_structure_cost
 3
 1
@@ -4440,6 +3855,34 @@ coatings_cost_total
  
 0
 8
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_marine_systems
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_struct_assem
+3
+1
+ 
+ 
+ 
+0
+0
 1
 1
 1
@@ -5344,7 +4787,7 @@ variable_prime_mover
 0
 Default
 
-8067
+8047
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -5383,7 +4826,7 @@ equations {'other_cost_total'} = define() {
 };
 
 equations {'prime_mover_cost_total_check'} = define() {
-	if (${prime_mover_cost_total} < ${prime_mover_cost})
+	if (${detailed_cost_choice_struct_assem}==0)
 	{
 		return ${prime_mover_cost};
 	}
@@ -5394,7 +4837,7 @@ equations {'prime_mover_cost_total_check'} = define() {
 };
 
 equations {'marine_system_cost_total_check'} = define() {
-	if (${marine_systems_cost_total} < ${marine_systems_cost})
+	if (${detailed_cost_choice_marine_systems}==0)
 	{
 		return ${marine_systems_cost};
 	}
@@ -5586,21 +5029,25 @@ equations {'variable_prime_mover'} = define() {
 
 
 			
-2618
+4802
 on_load{'Marine Costs - Structural Assembly'} = define() {
 	on_change{'itemized_check_structural'};
-	on_change{'variable_marine_systems'};
-	on_change{'variable_prime_mover'};
+	//on_change{'variable_marine_systems'};
+	//on_change{'variable_prime_mover'};
 	enable_itemized_structural();
-	show_marine_system_warning();
-	show_prime_mover_warning();
+	//show_marine_system_warning();
+	//show_prime_mover_warning();
+	on_change{'detailed_cost_choice_struct_assem'};
+	detailed_cost_structural();
+	on_change{'detailec_cost_choice_marine_systems'};
+	detailed_cost_marine_systems();
 };
 
 on_change{'itemized_check_structural'} = define() {
 	enable_itemized_structural();
 };
 
-on_change{'variable_marine_systems'} = define() {
+/*on_change{'variable_marine_systems'} = define() {
 	show_marine_system_warning();
 };
 
@@ -5618,12 +5065,64 @@ function show_marine_system_warning()
 {
 	show('warning_marine_systems',value('variable_marine_systems')==1);
 	refresh();
-}
+}*/
+
+on_change{'detailed_cost_choice_struct_assem'} = define() {
+	detailed_cost_structural();
+};
+
+function detailed_cost_structural()
+{
+	if (value('itemized_check_structural')==1)
+	{
+		detailed_value = value('detailed_cost_choice_struct_assem');
+		enable('prime_mover_cost',detailed_value==0);
+		show('prime_mover_cost',detailed_value==0);
+		//show('level_4_total_prime',detailed_value==0);
+		enable('prime_mover_cost_total',detailed_value);
+		show('prime_mover_cost_total',detailed_value);
+		//show('level_5_total_prime',detailed_value);
+		enable('primary_struct_assem_cost',detailed_value);
+		enable('buoyancy_chamber_cost',detailed_value);
+		enable('external_ballast_chambers_cost',detailed_value);
+		enable('active_structure_cost',detailed_value);
+		enable('other_prime_mover_cost',detailed_value);
+		enable('prime_mover_cost_total',detailed_value);
+		
+		
 	
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_marine_systems'} = define() {
+	detailed_cost_marine_systems();
+};
+
+function detailed_cost_marine_systems()
+{
+	if (value('itemized_check_structural')==1)
+	{
+		detailed_value_marine = value('detailed_cost_choice_marine_systems');
+		enable('marine_systems_cost',detailed_value_marine==0);
+		show('marine_systems_cost',detailed_value_marine==0);
+		show('marine_systems_cost_total',detailed_value_marine);
+		enable('marine_systems_cost_total',detailed_value_marine);
+		enable('personnel_access_system_cost',detailed_value_marine);
+		enable('ballast_system_cost',detailed_value_marine);
+		enable('navigation_lighting_cost',detailed_value_marine);
+		enable('other_marine_system_cost',detailed_value_marine);
+		show('warning_marine_systems',detailed_value_marine==2);
+		
+		refresh();
+	}
+}
+
 function enable_itemized_structural()
 {
 	itemized_value = value('itemized_check_structural');
 	enable('prime_mover_cost',itemized_value==1);
+	enable('detailed_cost_choice_struct_assem',itemized_value==1);
 	enable('primary_struct_assem_cost',itemized_value==1);
 	enable('buoyancy_chamber_cost',itemized_value==1);
 	enable('external_ballast_chambers_cost',itemized_value==1);
@@ -5631,6 +5130,7 @@ function enable_itemized_structural()
 	enable('other_prime_mover_cost',itemized_value==1);
 	enable('additional_structural_components_cost',itemized_value==1);
 	enable('marine_systems_cost',itemized_value==1);
+	enable('detailed_cost_choice_marine_systems',itemized_value==1);
 	enable('personnel_access_system_cost',itemized_value==1);
 	enable('ballast_system_cost',itemized_value==1);
 	enable('navigation_lighting_cost',itemized_value==1);
@@ -5649,7 +5149,13 @@ function enable_itemized_structural()
 	show('struct_level_total_label',itemized_value==1);
 	show('structural_assembly_cost_input',(itemized_value==0 || itemized_value==2));
 	show('struct_user_input_label',(itemized_value==0 || itemized_value==2));
-	
+	show('warning_prime_mover',itemized_value==4);
+	show('warning_marine_systems',itemized_value==4);
+	if (itemized_value==1)
+	{
+		detailed_cost_structural();
+		detailed_cost_marine_systems();
+	}
 	//placeholder for non-itemized totals
 	/*show('additional_structural_components_cost_total',itemized_value==3);
 	show('coatings_cost_total',itemized_value==3);

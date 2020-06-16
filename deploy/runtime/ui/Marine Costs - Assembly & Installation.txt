@@ -1,7 +1,7 @@
 Marine Costs - Assembly & Installation
-1165
-1030
-98
+1172
+1128
+82
 Label
 
 1
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-291
+357
 Y
 3
 195
 Width
 3
-72
+168
 Height
 3
 24
@@ -36,7 +36,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -45,7 +45,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -155,10 +155,10 @@ Name
 array_cables_assem_install_cost
 X
 3
-525
+624
 Y
 3
-708
+747
 Width
 3
 90
@@ -504,13 +504,13 @@ Name
 coatings
 X
 3
-303
+492
 Y
 3
-747
+786
 Width
 3
-57
+132
 Height
 3
 24
@@ -538,10 +538,109 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
+CheckBox
+
+1
+9
+Name
+5
+31
+detailed_cost_choice_mec_device
+X
+3
+483
+Y
+3
+513
+Width
+3
+156
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+44
+detailed_cost_choice_offshore_infrastructure
+X
+3
+477
+Y
+3
+705
+Width
+3
+177
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+34
+detailed_cost_choice_substructures
+X
+3
+489
+Y
+3
+234
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -552,10 +651,10 @@ Name
 foundation_assem_install_cost
 X
 3
-525
+624
 Y
 3
-234
+276
 Width
 3
 90
@@ -723,7 +822,7 @@ Name
 marine_energy_converter_device_cost_total
 X
 3
-624
+531
 Y
 3
 474
@@ -786,10 +885,10 @@ Name
 noise_mitigation_cost
 X
 3
-525
+624
 Y
 3
-354
+396
 Width
 3
 90
@@ -886,7 +985,7 @@ Name
 object 4
 X
 3
-60
+57
 Y
 3
 51
@@ -895,7 +994,7 @@ Width
 800
 Height
 3
-966
+1056
 Tool Tip
 5
 0
@@ -964,13 +1063,13 @@ Name
 object 713
 X
 3
-303
+549
 Y
 3
-276
+318
 Width
 3
-114
+75
 Height
 3
 24
@@ -998,7 +1097,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1012,7 +1111,7 @@ Name
 object 716
 X
 3
-279
+321
 Y
 3
 669
@@ -1037,7 +1136,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1060,10 +1159,10 @@ Name
 object 71686
 X
 3
-279
+321
 Y
 3
-942
+981
 Width
 3
 12
@@ -1085,7 +1184,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1108,10 +1207,10 @@ Name
 object 71687
 X
 3
-279
+297
 Y
 3
-975
+1014
 Width
 3
 12
@@ -1133,7 +1232,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1156,10 +1255,10 @@ Name
 object 717
 X
 3
-291
+498
 Y
 3
-708
+747
 Width
 3
 12
@@ -1204,10 +1303,10 @@ Name
 object 718
 X
 3
-294
+450
 Y
 3
-552
+591
 Width
 3
 12
@@ -1252,10 +1351,10 @@ Name
 object 71894
 X
 3
-294
+483
 Y
 3
-591
+630
 Width
 3
 12
@@ -1300,10 +1399,10 @@ Name
 object 719
 X
 3
-291
+516
 Y
 3
-354
+396
 Width
 3
 12
@@ -1396,10 +1495,10 @@ Name
 object 71992
 X
 3
-291
+477
 Y
 3
-396
+438
 Width
 3
 12
@@ -1444,10 +1543,10 @@ Name
 object 720
 X
 3
-291
+516
 Y
 3
-315
+357
 Width
 3
 12
@@ -1492,10 +1591,10 @@ Name
 object 721
 X
 3
-291
+537
 Y
 3
-276
+318
 Width
 3
 12
@@ -1588,10 +1687,10 @@ Name
 object 722
 X
 3
-291
+543
 Y
 3
-234
+276
 Width
 3
 12
@@ -1636,10 +1735,10 @@ Name
 object 723
 X
 3
-291
+402
 Y
 3
-828
+867
 Width
 3
 12
@@ -1684,10 +1783,10 @@ Name
 object 72385
 X
 3
-291
+435
 Y
 3
-861
+900
 Width
 3
 12
@@ -1732,10 +1831,10 @@ Name
 object 7238596
 X
 3
-291
+390
 Y
 3
-897
+936
 Width
 3
 12
@@ -1780,10 +1879,10 @@ Name
 object 724
 X
 3
-291
+462
 Y
 3
-789
+828
 Width
 3
 12
@@ -1828,10 +1927,10 @@ Name
 object 72446
 X
 3
-303
+474
 Y
 3
-789
+828
 Width
 3
 150
@@ -1862,7 +1961,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1876,10 +1975,10 @@ Name
 object 725
 X
 3
-291
+480
 Y
 3
-747
+786
 Width
 3
 12
@@ -1924,10 +2023,10 @@ Name
 object 726
 X
 3
-294
+501
 Y
 3
-513
+552
 Width
 3
 12
@@ -1972,10 +2071,10 @@ Name
 object 72647
 X
 3
-303
+510
 Y
 3
-708
+747
 Width
 3
 114
@@ -2006,7 +2105,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2020,7 +2119,7 @@ Name
 object 727
 X
 3
-282
+324
 Y
 3
 474
@@ -2045,7 +2144,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2068,13 +2167,13 @@ Name
 object 72748
 X
 3
-306
+495
 Y
 3
-591
+630
 Width
 3
-138
+129
 Height
 3
 24
@@ -2102,7 +2201,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2116,13 +2215,13 @@ Name
 object 7274814
 X
 3
-306
+462
 Y
 3
-552
+591
 Width
 3
-138
+162
 Height
 3
 24
@@ -2150,7 +2249,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2164,13 +2263,13 @@ Name
 object 728
 X
 3
-306
+513
 Y
 3
-513
+552
 Width
 3
-93
+111
 Height
 3
 24
@@ -2198,7 +2297,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2212,7 +2311,7 @@ Name
 object 729
 X
 3
-294
+336
 Y
 3
 474
@@ -2237,7 +2336,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2246,7 +2345,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2260,13 +2359,13 @@ Name
 object 73
 X
 3
-303
+555
 Y
 3
-234
+276
 Width
 3
-156
+69
 Height
 3
 24
@@ -2294,7 +2393,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2308,13 +2407,13 @@ Name
 object 730
 X
 3
-303
+489
 Y
 3
-396
+438
 Width
 3
-90
+135
 Height
 3
 24
@@ -2342,7 +2441,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2356,13 +2455,13 @@ Name
 object 73057
 X
 3
-303
+528
 Y
 3
-354
+396
 Width
 3
-90
+96
 Height
 3
 24
@@ -2390,7 +2489,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2404,13 +2503,13 @@ Name
 object 731
 X
 3
-291
+309
 Y
 3
-975
+1014
 Width
 3
-81
+216
 Height
 3
 24
@@ -2419,8 +2518,8 @@ Tool Tip
 0
 Caption
 5
-5
-Other
+37
+Other Assembly and Installation Costs
 TextColour
 4
 0
@@ -2429,7 +2528,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2438,7 +2537,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2452,13 +2551,13 @@ Name
 object 73118
 X
 3
-291
+333
 Y
 3
-942
+981
 Width
 3
-81
+192
 Height
 3
 24
@@ -2477,7 +2576,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2486,7 +2585,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2500,13 +2599,13 @@ Name
 object 73131
 X
 3
-291
+333
 Y
 3
 669
 Width
 3
-81
+192
 Height
 3
 24
@@ -2525,7 +2624,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2534,7 +2633,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2596,13 +2695,13 @@ Name
 object 733
 X
 3
-303
+402
 Y
 3
-897
+936
 Width
 3
-114
+222
 Height
 3
 24
@@ -2630,7 +2729,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2644,13 +2743,13 @@ Name
 object 73315
 X
 3
-303
+447
 Y
 3
-861
+900
 Width
 3
-114
+177
 Height
 3
 24
@@ -2678,7 +2777,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2692,13 +2791,13 @@ Name
 object 73323
 X
 3
-303
+414
 Y
 3
-828
+867
 Width
 3
-114
+210
 Height
 3
 24
@@ -2726,7 +2825,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2740,13 +2839,13 @@ Name
 object 734
 X
 3
-303
+528
 Y
 3
-315
+357
 Width
 3
-141
+96
 Height
 3
 24
@@ -2774,7 +2873,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2884,7 +2983,7 @@ Name
 object 76
 X
 3
-279
+345
 Y
 3
 195
@@ -2909,7 +3008,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2932,10 +3031,10 @@ Name
 offshore_accommodations_platform_cost
 X
 3
-525
+624
 Y
 3
-828
+867
 Width
 3
 90
@@ -3056,7 +3155,7 @@ Name
 offshore_electrical_infrastructure_cost_total
 X
 3
-624
+531
 Y
 3
 669
@@ -3119,10 +3218,10 @@ Name
 offshore_export_cables_assem_install_cost
 X
 3
-525
+624
 Y
 3
-747
+786
 Width
 3
 90
@@ -3184,7 +3283,7 @@ X
 525
 Y
 3
-942
+981
 Width
 3
 90
@@ -3243,10 +3342,10 @@ Name
 offshore_substation_assem_install_cost
 X
 3
-525
+624
 Y
 3
-789
+828
 Width
 3
 90
@@ -3305,10 +3404,10 @@ Name
 onshore_electric_infrastructure_assem_install_cost
 X
 3
-525
+624
 Y
 3
-861
+900
 Width
 3
 90
@@ -3370,7 +3469,7 @@ X
 525
 Y
 3
-975
+1014
 Width
 3
 90
@@ -3429,10 +3528,10 @@ Name
 other_marine_energy_converter_device_cost
 X
 3
-528
+624
 Y
 3
-591
+630
 Width
 3
 90
@@ -3491,10 +3590,10 @@ Name
 other_offshore_electrical_infrastructure_cost
 X
 3
-525
+624
 Y
 3
-897
+936
 Width
 3
 90
@@ -3553,10 +3652,10 @@ Name
 other_substructure_cost
 X
 3
-525
+624
 Y
 3
-396
+438
 Width
 3
 90
@@ -3615,10 +3714,10 @@ Name
 power_takeoff_system_assem_install_cost
 X
 3
-528
+624
 Y
 3
-552
+591
 Width
 3
 90
@@ -3677,10 +3776,10 @@ Name
 scour_protection_assem_install_cost
 X
 3
-525
+624
 Y
 3
-315
+357
 Width
 3
 90
@@ -3835,10 +3934,10 @@ Name
 structural_assembly_assem_install_cost
 X
 3
-528
+624
 Y
 3
-513
+552
 Width
 3
 90
@@ -3897,10 +3996,10 @@ Name
 substructure_assem_install_cost
 X
 3
-525
+624
 Y
 3
-276
+318
 Width
 3
 90
@@ -3959,10 +4058,10 @@ Name
 substructure_assem_install_cost_total
 X
 3
-624
+537
 Y
 3
-195
+192
 Width
 3
 90
@@ -4080,504 +4179,6 @@ ToolTipCtrl
 7
 Name
 5
-22
-tt_ballast_system_cost
-X
-3
-390
-Y
-3
-669
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
-Tips
-5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
-ToolTipCtrl
-
-1
-7
-Name
-5
-25
-tt_buoyancy_chambers_cost
-X
-3
-423
-Y
-3
-276
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-16
-tt_coatings_cost
-X
-3
-354
-Y
-3
-747
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-57
-Coatings to protect from corrosion in marine environment.
-Tips
-5
-57
-Coatings to protect from corrosion in marine environment.
-ToolTipCtrl
-
-1
-7
-Name
-5
-33
-tt_external_ballast_chambers_cost
-X
-3
-447
-Y
-3
-315
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-38
-tt_marine_energy_converter_device_cost
-X
-3
-489
-Y
-3
-474
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-87
-Any additional supporting structural components not included in the Structure category.
-Tips
-5
-87
-Any additional supporting structural components not included in the Structure category.
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_navigation_lighting_cost
-X
-3
-423
-Y
-3
-708
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
-Tips
-5
-82
-Navigation lighting placed on the structure of the marine energy converter (MEC). 
-ToolTipCtrl
-
-1
-7
-Name
-5
-24
-tt_noise_mitigation_cost
-X
-3
-402
-Y
-3
-354
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-26
-tt_noise_mitigation_cost93
-X
-3
-402
-Y
-3
-396
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-56
-tt_offshore_logistical_infrastructure_assem_install_cost
-X
-3
-390
-Y
-3
-942
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
-Tips
-5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
-ToolTipCtrl
-
-1
-7
-Name
-5
-41
-tt_onshore_electrical_infrastructure_cost
-X
-3
-423
-Y
-3
-861
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
-Tips
-5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-43
-tt_onshore_electrical_infrastructure_cost97
-X
-3
-423
-Y
-3
-897
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
-Tips
-5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_other_assem_install_cost
-X
-3
-390
-Y
-3
-975
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
-Tips
-5
-109
-Ballast to control draft/stability of floating systems, ballast can be fixed or variable (active or passive).
-ToolTipCtrl
-
-1
-7
-Name
-5
-24
-tt_other_structural_cost
-X
-3
-423
-Y
-3
-828
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-115
-osts not included within the structural assembly categories. Please provide a description of the other cost input. 
-Tips
-5
-116
-Costs not included within the structural assembly categories. Please provide a description of the other cost input. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-42
-tt_power_takeoff_system_assem_install_cost
-X
-3
-450
-Y
-3
-549
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
-Tips
-5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-44
-tt_power_takeoff_system_assem_install_cost95
-X
-3
-450
-Y
-3
-588
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
-Tips
-5
-91
-Additional components on marine energy converter (MEC) device to support personnel access. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-35
-tt_primary_structural_assembly_cost
-X
-3
-465
-Y
-3
-231
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-0
-ToolTipCtrl
-
-1
-7
-Name
-5
-19
-tt_prime_mover_cost
-X
-3
-369
-Y
-3
-195
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-63
-Primary energy capture (e.g. float paddle, turbine, flap, etc.)
-Tips
-5
-63
-Primary energy capture (e.g. float paddle, turbine, flap, etc.)
-ToolTipCtrl
-
-1
-7
-Name
-5
-41
-tt_structural_assembly_assem_install_cost
-X
-3
-396
-Y
-3
-513
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-62
-Ancillary systems on the marine energy converter (MEC) device.
-Tips
-5
-62
-Ancillary systems on the marine energy converter (MEC) device.
-ToolTipCtrl
-
-1
-7
-Name
-5
 27
 tt_structural_assembly_cost
 X
@@ -4599,36 +4200,8 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
 
-1
-7
-Name
-5
-27
-tt_transport_structure_cost
-X
-3
-447
-Y
-3
-789
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
-Tips
-5
-130
-Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area. 
-
-25
+31
 array_cables_assem_install_cost
 3
 1
@@ -4668,6 +4241,45 @@ assembly_and_install_cost_total
 1
 0
  
+detailed_cost_choice_mec_device
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_offshore_infrastructure
+3
+0
+ 
+ 
+ 
+0
+0
+1
+0
+ 
+detailed_cost_choice_substructures
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 foundation_assem_install_cost
 3
 1
@@ -4710,7 +4322,7 @@ marine_energy_converter_device_cost
 1
 0
 Default
-marine_energy_converter_device_cost_tota
+marine_energy_converter_device_cost_total
 3
 1
  
@@ -4718,6 +4330,20 @@ marine_energy_converter_device_cost_tota
  
 0
 0
+1
+1
+1
+1
+0
+Default
+marine_energy_converter_device_total_check
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -4780,6 +4406,17 @@ offshore_electrical_infrastructure_cost_total
 1
 0
 Default
+offshore_electrical_infrastructure_cost_total_check
+3
+0
+ 
+ 
+ 
+0
+0
+1
+0
+ 
 offshore_export_cables_assem_install_cost
 3
 1
@@ -4874,7 +4511,7 @@ other_offshore_electrical_infrastructure_cost
 0
 1
 0
- 
+Default
 other_substructure_cost
 3
 1
@@ -4959,6 +4596,20 @@ substructure_assem_install_cost_total
 1
 0
 Default
+substructure_assem_install_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 substructures_and_foundations_cost
 3
 1
@@ -4974,16 +4625,40 @@ substructures_and_foundations_cost
 0
 Default
 
-1583
+2318
 equations {'substructure_assem_install_cost_total'} = define() {
-	return ${substructures_and_foundations_cost}+${foundation_assem_install_cost}+
+	return ${foundation_assem_install_cost}+
 		${substructure_assem_install_cost}+${scour_protection_assem_install}+
 		${noise_mitigation_cost}+${other_substructure_cost};
 };
 
+equations {'substructure_assem_install_cost_total_check'} = define() {
+	if (${detailed_cost_choice_substructures}==0)
+	{
+		return ${substructures_and_foundations_cost};
+	}
+	else
+	{
+		return ${substructure_assem_install_cost_total};
+	}
+};
+
+
+
 equations {'marine_energy_converter_device_cost_total'} = define() {
 	return ${structural_assembly_assem_install_cost}+${power_takeoff_system_assem_install_cost}+
 		${other_marine_energy_converter_device_cost};
+};
+
+equations {'marine_energy_converter_device_cost_total_check'} = define() {
+	if (${detailed_cost_choice_mec_device}==0)
+	{
+		return ${marine_energy_converter_device_cost};
+	}
+	else
+	{
+		return ${marine_energy_convert_device_cost_total};
+	}
 };
 
 equations {'offshore_electrical_infrastructure_cost_total'} = define() {
@@ -4992,9 +4667,21 @@ equations {'offshore_electrical_infrastructure_cost_total'} = define() {
 		${onshore_electric_infrastructure_assem_install_cost}+${other_offshore_electrical_infrastructure_cost};
 };
 
+equations {'offshore_electrical_infrastructure_cost_total_check'} = define() {
+	if (${detailed_cost_choice_offshore_infrastructure}==0)
+	{
+		return ${offshore_electrical_infrastructure_cost};
+	}
+	else
+	{
+		return ${offshore_electrical_infrastructure_cost_total};
+	}
+};
+
+
 equations {'assembly_and_install_cost_total'} = define() {
-	return ${substructure_assem_install_cost_total}+${marine_energy_converter_device_total}+
-		${offshore_electrical_infrastructure_cost_total}+${offshore_logistical_infrastructure_assem_install_cost}+
+	return ${substructure_assem_install_cost_total_check}+${marine_energy_converter_device_total_check}+
+		${offshore_electrical_infrastructure_cost_total_check}+${offshore_logistical_infrastructure_assem_install_cost}+
 		${other_assem_install_cost};
 };
 
@@ -5024,12 +4711,86 @@ equations {'assembly_and_install_cost'} = define() {
 
 
 
-2400
+5226
 on_load{'Marine Costs - Assembly & Installation'} = define() {
 	on_change{'itemized_check_assem_install'};
 	enable_itemized_eng();
 	//enable_itemized_level();
+	on_change{'detailed_cost_choice_substructures'};
+	on_change{'detailed_cost_choice_mec_device'};
+	on_change{'detailed_cost_choice_offshore_infrastructure'};
+	detailed_cost_substructures();
+	detailed_cost_mec_device();
+	detailed_cost_offshore_infrastructure();
 };
+
+on_change{'detailed_cost_choice_substructures'} = define() {
+	detailed_cost_substructures();
+};
+
+function detailed_cost_substructures()
+{
+	if (value('itemized_check_assem_install')==1)
+	{
+		detailed_value = value('detailed_cost_choice_substructures');
+		enable('substructure_assem_install_cost',detailed_value==0);
+		show('substructure_assem_install_cost',detailed_value==0);
+		enable('substructure_assem_install_cost_total',detailed_value);
+		show('substructure_assem_install_cost_total',detailed_value);
+		enable('foundation_assem_install_cost',detailed_value);
+		enable('substructure_assem_install_cost',detailed_value);
+		enable('scour_protection_assem_install_cost',detailed_value);
+		enable('noise_mitigation_cost',detailed_value);
+		enable('other_substructure_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_mec_device'} = define() {
+	detailed_cost_mec_device();
+};
+
+function detailed_cost_mec_device() 
+{
+	if (value('itemized_check_assem_install')==1)
+	{
+		detailed_value = value('detailed_cost_choice_mec_device');
+		enable('marine_energy_converter_device_cost',detailed_value==0);
+		show('marine_energy_converter_device_cost',detailed_value==0);
+		enable('marine_energy_converter_device_cost_total',detailed_value);
+		show('marine_energy_converter_device_cost_total',detailed_value);
+		enable('structural_assembly_assem_install_cost',detailed_value);
+		enable('power_takeoff_system_assem_install_cost',detailed_value);
+		enable('other_marine_energy_converter_device_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_offshore_infrastructure'} = define() {
+	detailed_cost_offshore_infrastructure();
+};
+
+function detailed_cost_offshore_infrastructure()
+{
+	if (value('itemized_check_assem_install')==1)
+	{
+		detailed_value = value('detailed_cost_choice_offshore_infrastructure');
+		enable('offshore_electrical_infrastructure_cost',detailed_value==0);
+		show('offshore_electrical_infrastructure_cost',detailed_value==0);
+		enable('offshore_electrical_infrastructure_cost_total',detailed_value);
+		show('offshore_electrical_infrastructure_cost_total',detailed_value);
+		enable('array_cables_assem_install_cost',detailed_value);
+		enable('offshore_export_cables_assem_install_cost',detailed_value);
+		enable('offshore_substation_assem_install_cost',detailed_value);
+		enable('offshore_accommodations_platform_cost',detailed_value);
+		enable('onshore_electric_infrastructure_assem_install_cost',detailed_value);
+		enable('other_offshore_electrical_infrastructure_cost',detailed_value);
+		
+		refresh();
+	}
+}
 
 on_change{'itemized_check_assem_install'} = define() {
 	enable_itemized_assem_install();

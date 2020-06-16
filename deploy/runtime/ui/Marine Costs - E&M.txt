@@ -1,7 +1,7 @@
 Marine Costs - E&M
-910
-958
-79
+913
+1093
+66
 Label
 
 1
@@ -12,16 +12,16 @@ Name
 92
 X
 3
-243
+216
 Y
 3
-354
+351
 Width
 3
-189
+258
 Height
 3
-33
+24
 Tool Tip
 5
 0
@@ -37,7 +37,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -46,10 +46,10 @@ WordWrap
 1
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 GroupBox
 
 1
@@ -69,7 +69,7 @@ Width
 800
 Height
 3
-874
+1027
 Tool Tip
 5
 0
@@ -90,13 +90,13 @@ Name
 Environmental Monitoring
 X
 3
-255
+414
 Y
 3
-792
+867
 Width
 3
-147
+162
 Height
 3
 24
@@ -124,7 +124,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -138,10 +138,10 @@ Name
 Environmental Monitoring9
 X
 3
-255
+429
 Y
 3
-753
+828
 Width
 3
 147
@@ -172,7 +172,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -340,8 +340,8 @@ Numeric
 17
 Name
 5
-42
-construction_management_cost_total_display
+34
+construction_management_cost_total
 X
 3
 576
@@ -397,6 +397,72 @@ BackColour
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+44
+detailed_cost_choice_construction_management
+X
+3
+492
+Y
+3
+468
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+34
+detailed_cost_choice_health_safety
+X
+3
+471
+Y
+3
+750
+Width
+3
+129
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -435,69 +501,6 @@ Decimals
 Prefix
 5
 0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-55
-detailed_design_and_construction_eng_cost_total_display
-X
-3
-576
-Y
-3
-351
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
 Suffix
 5
 0
@@ -819,10 +822,10 @@ Name
 environmental_monitoring_cost
 X
 3
-474
+576
 Y
 3
-753
+828
 Width
 3
 90
@@ -881,10 +884,10 @@ Name
 health_and_safety_monitoring_cost
 X
 3
-474
+576
 Y
 3
-714
+789
 Width
 3
 90
@@ -946,7 +949,7 @@ X
 474
 Y
 3
-675
+711
 Width
 3
 90
@@ -1001,14 +1004,14 @@ Numeric
 17
 Name
 5
-61
-health_safety_and_environmental_monitoring_cost_total_display
+53
+health_safety_and_environmental_monitoring_cost_total
 X
 3
 576
 Y
 3
-675
+711
 Width
 3
 90
@@ -1338,13 +1341,13 @@ Name
 object 713
 X
 3
-243
+321
 Y
 3
-435
+432
 Width
 3
-156
+153
 Height
 3
 24
@@ -1363,7 +1366,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1372,7 +1375,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1386,7 +1389,7 @@ Name
 object 718
 X
 3
-231
+204
 Y
 3
 351
@@ -1411,7 +1414,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1434,10 +1437,10 @@ Name
 object 719
 X
 3
-231
+222
 Y
 3
-837
+903
 Width
 3
 12
@@ -1459,7 +1462,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1482,10 +1485,10 @@ Name
 object 7193
 X
 3
-231
+213
 Y
 3
-672
+711
 Width
 3
 12
@@ -1507,7 +1510,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1626,13 +1629,13 @@ Name
 object 72441
 X
 3
-243
+234
 Y
 3
-837
+903
 Width
 3
-33
+240
 Height
 3
 24
@@ -1641,8 +1644,8 @@ Tool Tip
 0
 Caption
 5
-5
-Other
+38
+Other Engineering and Management Costs
 TextColour
 4
 0
@@ -1651,7 +1654,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1660,7 +1663,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1674,13 +1677,13 @@ Name
 object 726
 X
 3
-255
+405
 Y
 3
-714
+789
 Width
 3
-165
+171
 Height
 3
 24
@@ -1708,7 +1711,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1722,13 +1725,13 @@ Name
 object 727
 X
 3
-243
+357
 Y
 3
-633
+669
 Width
 3
-111
+117
 Height
 3
 24
@@ -1747,7 +1750,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1756,7 +1759,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1770,13 +1773,13 @@ Name
 object 728
 X
 3
-255
+363
 Y
 3
-591
+627
 Width
 3
-186
+213
 Height
 3
 24
@@ -1804,7 +1807,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1818,10 +1821,10 @@ Name
 object 72821
 X
 3
-255
+393
 Y
 3
-516
+552
 Width
 3
 183
@@ -1852,7 +1855,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1866,10 +1869,10 @@ Name
 object 72839
 X
 3
-255
+540
 Y
 3
-555
+591
 Width
 3
 36
@@ -1900,7 +1903,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1914,13 +1917,13 @@ Name
 object 73
 X
 3
-243
+318
 Y
 3
 390
 Width
 3
-150
+156
 Height
 3
 24
@@ -1939,7 +1942,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1948,7 +1951,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1962,10 +1965,10 @@ Name
 object 730
 X
 3
-255
+531
 Y
 3
-474
+507
 Width
 3
 45
@@ -1996,7 +1999,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2010,16 +2013,16 @@ Name
 object 73136
 X
 3
-243
+225
 Y
 3
-675
+711
 Width
 3
-177
+249
 Height
 3
-33
+24
 Tool Tip
 5
 0
@@ -2035,19 +2038,19 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Label
 
 1
@@ -2058,10 +2061,10 @@ Name
 object 732
 X
 3
-243
+417
 Y
 3
-753
+828
 Width
 3
 12
@@ -2154,10 +2157,10 @@ Name
 object 73277
 X
 3
-243
+402
 Y
 3
-792
+867
 Width
 3
 12
@@ -2202,10 +2205,10 @@ Name
 object 733
 X
 3
-231
+345
 Y
 3
-633
+669
 Width
 3
 12
@@ -2227,7 +2230,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2250,10 +2253,10 @@ Name
 object 734
 X
 3
-243
+528
 Y
 3
-555
+591
 Width
 3
 12
@@ -2298,10 +2301,10 @@ Name
 object 73476
 X
 3
-243
+351
 Y
 3
-591
+627
 Width
 3
 12
@@ -2346,10 +2349,10 @@ Name
 object 735
 X
 3
-243
+381
 Y
 3
-516
+552
 Width
 3
 12
@@ -2394,10 +2397,10 @@ Name
 object 736
 X
 3
-243
+519
 Y
 3
-474
+507
 Width
 3
 12
@@ -2442,7 +2445,7 @@ Name
 object 737
 X
 3
-231
+306
 Y
 3
 390
@@ -2467,7 +2470,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2490,10 +2493,10 @@ Name
 object 74
 X
 3
-231
+309
 Y
 3
-435
+432
 Width
 3
 12
@@ -2515,7 +2518,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2586,10 +2589,10 @@ Name
 object 77
 X
 3
-243
+393
 Y
 3
-714
+789
 Width
 3
 12
@@ -2682,10 +2685,10 @@ Name
 other_construction_management_cost
 X
 3
-474
+576
 Y
 3
-591
+627
 Width
 3
 90
@@ -2747,7 +2750,7 @@ X
 474
 Y
 3
-837
+903
 Width
 3
 90
@@ -2806,10 +2809,10 @@ Name
 other_eng_cost_total_display
 X
 3
-573
+576
 Y
 3
-837
+903
 Width
 3
 90
@@ -2869,10 +2872,10 @@ Name
 other_health_and_safety_cost
 X
 3
-474
+576
 Y
 3
-792
+867
 Width
 3
 90
@@ -2989,77 +2992,14 @@ Numeric
 17
 Name
 5
-41
-procurement_management_cost_total_display
+15
+profit_eng_cost
 X
 3
 576
 Y
 3
-390
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-15
-profit_eng_cost
-X
-3
-474
-Y
-3
-555
+591
 Width
 3
 90
@@ -3121,7 +3061,7 @@ X
 474
 Y
 3
-633
+669
 Width
 3
 90
@@ -3183,7 +3123,7 @@ X
 576
 Y
 3
-633
+669
 Width
 3
 90
@@ -3243,10 +3183,10 @@ Name
 salaries_eng_cost
 X
 3
-474
+576
 Y
 3
-471
+507
 Width
 3
 90
@@ -3305,10 +3245,10 @@ Name
 sales_general_and_administrative_eng_cost
 X
 3
-474
+576
 Y
 3
-516
+552
 Width
 3
 90
@@ -3357,370 +3297,6 @@ BackColour
 TabOrder
 3
 4294967295
-ToolTipCtrl
-
-1
-7
-Name
-5
-31
-tt_construction_management_cost
-X
-3
-396
-Y
-3
-435
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-79
-Initial studies to consider the potential environmental impact of the project. 
-Tips
-5
-79
-Initial studies to consider the potential environmental impact of the project. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-44
-tt_detailed_design_and_construction_eng_cost
-X
-3
-426
-Y
-3
-354
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-51
-Detailed design and construction engineering costs.
-Tips
-5
-51
-Detailed design and construction engineering costs.
-ToolTipCtrl
-
-1
-7
-Name
-5
-32
-tt_environmental_monitoring_cost
-X
-3
-402
-Y
-3
-753
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-146
-Engineering studies to specify the design of the project (e.g., technology, layout) and understand economics and risks associated with the design.
-Tips
-5
-146
-Engineering studies to specify the design of the project (e.g., technology, layout) and understand economics and risks associated with the design.
-ToolTipCtrl
-
-1
-7
-Name
-5
-34
-tt_environmental_monitoring_cost78
-X
-3
-402
-Y
-3
-792
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-146
-Engineering studies to specify the design of the project (e.g., technology, layout) and understand economics and risks associated with the design.
-Tips
-5
-146
-Engineering studies to specify the design of the project (e.g., technology, layout) and understand economics and risks associated with the design.
-ToolTipCtrl
-
-1
-7
-Name
-5
-36
-tt_health_and_safety_monitoring_cost
-X
-3
-420
-Y
-3
-714
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-105
-Coordination and monitoring to ensure compliance with health and safety requirements during construction.
-Tips
-5
-105
-Coordination and monitoring to ensure compliance with health and safety requirements during construction.
-ToolTipCtrl
-
-1
-7
-Name
-5
-50
-tt_health_safety_and_environmental_monitoring_cost
-X
-3
-423
-Y
-3
-675
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-132
-Coordination and monitoring to ensure compliance with health, safety, and environmental monitoring requirements during construction.
-Tips
-5
-132
-Coordination and monitoring to ensure compliance with health, safety, and environmental monitoring requirements during construction.
-ToolTipCtrl
-
-1
-7
-Name
-5
-17
-tt_other_eng_cost
-X
-3
-279
-Y
-3
-837
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-123
-Costs not included within the engineering and management categories. Please provide a  description of the other cost input.
-Tips
-5
-123
-Costs not included within the engineering and management categories. Please provide a  description of the other cost input.
-ToolTipCtrl
-
-1
-7
-Name
-5
-30
-tt_procurement_management_cost
-X
-3
-393
-Y
-3
-390
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-62
-Bid management, purchasing, negotiations, contract management.
-Tips
-5
-62
-Bid management, purchasing, negotiations, contract management.
-ToolTipCtrl
-
-1
-7
-Name
-5
-18
-tt_profit_eng_cost
-X
-3
-444
-Y
-3
-591
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-65
-Any margin earned by an independent construction management firm.
-Tips
-5
-65
-Any margin earned by an independent construction management firm.
-ToolTipCtrl
-
-1
-7
-Name
-5
-20
-tt_profit_eng_cost70
-X
-3
-291
-Y
-3
-555
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-65
-Any margin earned by an independent construction management firm.
-Tips
-5
-65
-Any margin earned by an independent construction management firm.
-ToolTipCtrl
-
-1
-7
-Name
-5
-29
-tt_project_certification_cost
-X
-3
-354
-Y
-3
-633
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-202
-Review by a 3rd party independent verification agent to assure that project is in compliance with design basis as well as technical standards and regulatory requirements. Results in project certificate.
-Tips
-5
-202
-Review by a 3rd party independent verification agent to assure that project is in compliance with design basis as well as technical standards and regulatory requirements. Results in project certificate.
-ToolTipCtrl
-
-1
-7
-Name
-5
-20
-tt_salaries_eng_cost
-X
-3
-300
-Y
-3
-474
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-98
-Salaries for management and support staff on payroll of project owner and/or construction manager.
-Tips
-5
-98
-Salaries for management and support staff on payroll of project owner and/or construction manager.
-ToolTipCtrl
-
-1
-7
-Name
-5
-44
-tt_sales_general_and_administrative_eng_cost
-X
-3
-438
-Y
-3
-516
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-156
-Overhead for the project company  and/or construction manager including administrative salaries and benefits, rent, utilities, depreciation, insurance, etc.
-Tips
-5
-156
-Overhead for the project company  and/or construction manager including administrative salaries and benefits, rent, utilities, depreciation, insurance, etc.
 ToolTipCtrl
 
 1
@@ -3798,7 +3374,7 @@ AlignTop
 2
 0
 
-25
+27
 construction_management_cost
 3
 1
@@ -3827,7 +3403,7 @@ construction_management_cost_total
 1
 0
 Default
-construction_management_cost_total_display
+construction_management_cost_total_check
 3
 1
  
@@ -3835,6 +3411,34 @@ construction_management_cost_total_display
  
 0
 8
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_construction_management
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_health_safety
+3
+1
+ 
+ 
+ 
+0
+0
 1
 1
 1
@@ -3855,7 +3459,7 @@ detailed_design_and_construction_eng_cost
 1
 0
 Default
-detailed_design_and_construction_eng_cost_total_display
+detailed_design_and_construction_eng_cost_total
 3
 1
  
@@ -3953,7 +3557,7 @@ health_safety_and_environmental_monitoring_cost_total
 1
 0
 Default
-health_safety_and_environmental_monitoring_cost_total_display
+health_safety_and_environmental_monitoring_cost_total_check
 3
 1
  
@@ -4150,22 +3754,44 @@ sales_general_and_administrative_eng_cost
 0
 Default
 
-2226
+1596
 equations {'construction_management_cost_total'} = define() {
-	return ${construction_management_cost}+${salaries_eng_cost}+
+	return ${salaries_eng_cost}+
 		${sales_general_and_administrative_eng_cost}+${profit_eng_cost}+
 		${other_construction_management_cost};
 };
 
+equations {'construction_management_cost_total_check'} = define() {
+	if (${detailed_cost_choice_construction_management}==0)
+	{
+		return ${construction_management_cost};
+	}
+	else
+	{
+		return ${construction_management_cost_total};
+	}
+};
+
 equations {'health_safety_and_environmental_monitoring_cost_total'} = define() {
-	return ${health_safety_and_environmental_monitoring_cost}+${health_and_safety_monitoring_cost}+
+	return ${health_and_safety_monitoring_cost}+
 		${environmental_monitoring_cost}+${other_health_and_safety_cost};
+};
+
+equations {'health_safety_and_environmental_monitoring_cost_total_check'} = define() {
+	if (${detailed_cost_choice_health_safety}==0)
+	{
+		return ${health_safety_and_environmental_monitoring_cost};
+	}
+	else
+	{
+		return ${health_safety_and_environmental_monitoring_cost_total};
+	}
 };
 
 equations {'eng_and_mgmt_cost_total'} = define() {
 	return ${detailed_design_and_construction_eng_cost}+${procurement_management_cost}+
-		${construction_management_cost_total}+${project_certification_cost}+
-		${health_safety_and_environmental_monitoring_cost_total}+${other_eng_cost};
+		${construction_management_cost_total_check}+${project_certification_cost}+
+		${health_safety_and_environmental_monitoring_cost_total_check}+${other_eng_cost};
 };
 
 equations {'eng_and_mgmt_cost'} = define() {
@@ -4188,67 +3814,71 @@ equations {'itemized_check_eng'} = define() {
 			];
 };
 
-equations {'construction_management_cost_total_display'} = define() {
-	return ?${level_eng}
-			[
-				${construction_management_cost_total},
-				${construction_management_cost},
-				${construction_management_cost_total}-${construction_management_cost}
-			];
-};
-
-equations {'detailed_design_and_construction_eng_cost_total_display'} = define() {
-	return ${detailed_design_and_construction_eng_cost};
-};
-
-equations {'procurement_management_cost_total_display'} = define() {
-	return ${procurement_management_cost};
-};
-
-equations {'project_certification_cost_total_display'} = define() {
-	return ${project_certification_cost};
-};
-
-equations {'health_safety_and_environmental_monitoring_cost_total_display'} = define() {
-	return ?${level_eng}
-			[
-				${health_safety_and_environmental_monitoring_cost_total},
-				${health_safety_and_environmental_monitoring_cost},
-				${health_safety_and_environmental_monitoring_cost_total}-${health_safety_and_environmental_monitoring_cost}
-			];
-};
-
-equations {'other_eng_cost_total_display'} = define() {
-	return ${other_eng_cost};
-};
 
 
-
-
-
-
-	
-	
-
-
-
-
-2719
+4437
 on_load{'Marine Costs - E&M'} = define() {
 	on_change{'itemized_check_eng'};
-	on_change{'level_eng'};
+	//on_change{'level_eng'};
 	enable_itemized_eng();
 	//enable_itemized_level();
+	on_change{'detailed_cost_choice_construction_management'};
+	on_change{'detailed_cost_choice_health_safety'};
+	detailed_cost_construction_management();
+	detailed_cost_health_safety();
 };
+
+on_change{'detailed_cost_choice_construction_management'} = define() {
+	detailed_cost_construction_management();
+};
+
+function detailed_cost_construction_management()
+{
+	if (value('itemized_check_eng')==1)
+	{
+		detailed_value = value('detailed_cost_choice_construction_management');
+		enable('construction_management_cost',detailed_value==0);
+		show('construction_management_cost',detailed_value==0);
+		enable('construction_management_cost_total',detailed_value);
+		show('construction_management_cost_total',detailed_value);
+		enable('salaries_eng_cost',detailed_value);
+		enable('sales_general_and_administrative_eng_cost',detailed_value);
+		enable('profit_eng_cost',detailed_value);
+		enable('other_construction_management_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_health_safety'} = define() {
+	detailed_cost_health_safety();
+};
+
+function detailed_cost_health_safety()
+{
+	if (value('itemized_check_eng')==1)
+	{
+		detailed_value = value('detailed_cost_choice_health_safety');
+		enable('health_safety_and_environmental_monitoring_cost',detailed_value==0);
+		show('health_safety_and_environmental_monitoring_cost',detailed_value==0);
+		enable('health_safety_and_environmental_monitoring_cost_total',detailed_value);
+		show('health_safety_and_environmental_monitoring_cost_total',detailed_value);
+		enable('health_and_safety_monitoring_cost',detailed_value);
+		enable('environmental_monitoring_cost',detailed_value);
+		enable('other_health_and_safety_cost',detailed_value);
+		
+		refresh();
+	}
+}
 
 on_change{'itemized_check_eng'} = define() {
 	enable_itemized_eng();
 	
 };
 	
-on_change{'level_eng'} = define() {
+/*on_change{'level_eng'} = define() {
 	enable_itemized_level_eng();
-};
+};*/
 
 function enable_itemized_eng()
 {
