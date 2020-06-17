@@ -1,7 +1,7 @@
 Marine Costs - Mooring
 928
 1348
-62
+66
 Label
 
 1
@@ -14,7 +14,7 @@ X
 357
 Y
 3
-159
+237
 Width
 3
 81
@@ -62,7 +62,7 @@ X
 492
 Y
 3
-558
+636
 Width
 3
 48
@@ -140,7 +140,7 @@ X
 408
 Y
 3
-843
+921
 Width
 3
 135
@@ -188,7 +188,7 @@ X
 438
 Y
 3
-201
+279
 Width
 3
 90
@@ -247,10 +247,10 @@ Name
 ancillary_marine_systems_cost
 X
 3
-447
+450
 Y
 3
-720
+798
 Width
 3
 90
@@ -309,10 +309,10 @@ Name
 ancillary_marine_systems_cost_total
 X
 3
-456
+450
 Y
 3
-720
+798
 Width
 3
 90
@@ -374,7 +374,7 @@ X
 543
 Y
 3
-882
+960
 Width
 3
 90
@@ -436,7 +436,7 @@ X
 543
 Y
 3
-804
+882
 Width
 3
 90
@@ -498,7 +498,7 @@ X
 543
 Y
 3
-924
+1002
 Width
 3
 90
@@ -560,7 +560,7 @@ X
 438
 Y
 3
-240
+318
 Width
 3
 90
@@ -615,14 +615,14 @@ CheckBox
 9
 Name
 5
-46
-detailed_cost_choice_ancillary_marine_systems
+45
+detailed_cost_choice_ancillary_marine_systems
 X
 3
-408
+489
 Y
 3
-759
+837
 Width
 3
 90
@@ -638,7 +638,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -648,17 +648,17 @@ CheckBox
 9
 Name
 5
-42
-detailed_cost_choice_outfitting_structure
+41
+detailed_cost_choice_outfitting_structure
 X
 3
-405
+486
 Y
 3
-438
+516
 Width
 3
-90
+135
 Height
 3
 24
@@ -671,7 +671,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -688,7 +688,7 @@ X
 450
 Y
 3
-999
+1077
 Width
 3
 90
@@ -797,7 +797,7 @@ X
 540
 Y
 3
-558
+636
 Width
 3
 90
@@ -846,6 +846,102 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+19
+level_5_total_prime
+X
+3
+438
+Y
+3
+204
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+21
+level_5_total_prime50
+X
+3
+537
+Y
+3
+204
+Width
+3
+117
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Sub-Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -859,7 +955,7 @@ X
 540
 Y
 3
-639
+717
 Width
 3
 90
@@ -921,7 +1017,7 @@ X
 438
 Y
 3
-321
+399
 Width
 3
 90
@@ -1018,69 +1114,6 @@ AlignRight
 AlignTop
 2
 0
-Numeric
-
-1
-17
-Name
-5
-18
-mooring_cost_total
-X
-3
-540
-Y
-3
-114
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -1305,6 +1338,69 @@ BackColour
 TabOrder
 3
 4294967295
+Numeric
+
+1
+17
+Name
+5
+33
+mooring_found_substruc_cost_total
+X
+3
+540
+Y
+3
+114
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -1366,7 +1462,7 @@ X
 438
 Y
 3
-159
+237
 Width
 3
 90
@@ -1415,6 +1511,44 @@ BackColour
 TabOrder
 3
 4294967295
+Divider
+
+1
+10
+Name
+5
+11
+object 2163
+X
+3
+462
+Y
+3
+192
+Width
+3
+138
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
 Label
 
 1
@@ -1425,10 +1559,10 @@ Name
 object 7
 X
 3
-15
+72
 Y
 3
-231
+165
 Width
 3
 165
@@ -1476,7 +1610,7 @@ X
 312
 Y
 3
-240
+318
 Width
 3
 126
@@ -1508,6 +1642,54 @@ WordWrap
 AlignRight
 2
 1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 71944
+X
+3
+465
+Y
+3
+177
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+24
+Itemized Input Structure
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
 AlignTop
 2
 0
@@ -1572,7 +1754,7 @@ X
 375
 Y
 3
-678
+756
 Width
 3
 165
@@ -1620,7 +1802,7 @@ X
 354
 Y
 3
-960
+1038
 Width
 3
 189
@@ -1668,7 +1850,7 @@ X
 417
 Y
 3
-924
+1002
 Width
 3
 126
@@ -1716,7 +1898,7 @@ X
 459
 Y
 3
-882
+960
 Width
 3
 84
@@ -1764,7 +1946,7 @@ X
 447
 Y
 3
-639
+717
 Width
 3
 93
@@ -1812,7 +1994,7 @@ X
 495
 Y
 3
-600
+678
 Width
 3
 45
@@ -1860,7 +2042,7 @@ X
 393
 Y
 3
-804
+882
 Width
 3
 150
@@ -1908,7 +2090,7 @@ X
 390
 Y
 3
-519
+597
 Width
 3
 150
@@ -1956,7 +2138,7 @@ X
 228
 Y
 3
-1080
+1158
 Width
 3
 222
@@ -2004,7 +2186,7 @@ X
 360
 Y
 3
-1038
+1116
 Width
 3
 90
@@ -2052,7 +2234,7 @@ X
 189
 Y
 3
-999
+1077
 Width
 3
 261
@@ -2100,10 +2282,10 @@ X
 306
 Y
 3
-720
+798
 Width
 3
-141
+144
 Height
 3
 24
@@ -2148,7 +2330,7 @@ X
 231
 Y
 3
-399
+477
 Width
 3
 207
@@ -2196,7 +2378,7 @@ X
 339
 Y
 3
-360
+438
 Width
 3
 99
@@ -2244,7 +2426,7 @@ X
 291
 Y
 3
-321
+399
 Width
 3
 147
@@ -2292,7 +2474,7 @@ X
 336
 Y
 3
-201
+279
 Width
 3
 102
@@ -2340,7 +2522,7 @@ X
 279
 Y
 3
-279
+357
 Width
 3
 159
@@ -2388,7 +2570,7 @@ X
 459
 Y
 3
-480
+558
 Width
 3
 81
@@ -2532,7 +2714,7 @@ X
 543
 Y
 3
-960
+1038
 Width
 3
 90
@@ -2594,7 +2776,7 @@ X
 450
 Y
 3
-1080
+1158
 Width
 3
 90
@@ -2656,7 +2838,7 @@ X
 540
 Y
 3
-678
+756
 Width
 3
 90
@@ -2718,7 +2900,7 @@ X
 438
 Y
 3
-399
+477
 Width
 3
 90
@@ -2777,10 +2959,10 @@ Name
 outfitting_structure_cost_total
 X
 3
-447
+438
 Y
 3
-399
+477
 Width
 3
 90
@@ -2842,7 +3024,7 @@ X
 543
 Y
 3
-843
+921
 Width
 3
 90
@@ -2904,7 +3086,7 @@ X
 540
 Y
 3
-600
+678
 Width
 3
 90
@@ -2966,7 +3148,7 @@ X
 438
 Y
 3
-360
+438
 Width
 3
 90
@@ -3028,7 +3210,7 @@ X
 540
 Y
 3
-519
+597
 Width
 3
 90
@@ -3090,7 +3272,7 @@ X
 438
 Y
 3
-279
+357
 Width
 3
 90
@@ -3152,7 +3334,7 @@ X
 450
 Y
 3
-1038
+1116
 Width
 3
 90
@@ -3241,7 +3423,7 @@ X
 540
 Y
 3
-480
+558
 Width
 3
 90
@@ -3417,7 +3599,7 @@ detailed_cost_choice_ancillary_marine_systems
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_outfitting_structure
 3
 1
@@ -3431,7 +3613,7 @@ detailed_cost_choice_outfitting_structure
 1
 1
 0
-Default
+CheckBox
 integration_assembly_testing_checkout_cost
 3
 1
@@ -3557,7 +3739,7 @@ other_ancillary_marine_system_cost
 1
 1
 0
-Default
+CheckBox
 other_mooring_cost
 3
 1
@@ -3616,12 +3798,15 @@ outfitting_structure_cost_total
 Default
 outfitting_structure_cost_total_check
 3
-0
+1
  
  
  
 0
-0
+8
+1
+1
+1
 1
 0
 Default
@@ -3724,9 +3909,9 @@ vessel_landing_cost
 0
 Default
 
-1882
+1828
 equations {'outfitting_structure_cost_total'} = define() {
-	return ${outfitting_structure_cost}+${vessel_landing_cost}+
+	return ${vessel_landing_cost}+
 		${service_platforms_and_decks_cost}+${ladders_cost}+${railings_cost}+
 		${marine_coatings_cost}+${other_outfitting_structure_cost};
 };
@@ -3744,8 +3929,8 @@ equations {'outfitting_structure_cost_total_check'} = define() {
 
 
 equations {'ancillary_marine_systems_cost_total'} = define() {
-	return ${ancillary_marine_systems_cost}+${cathodic_protection_system_cost}+
-		${personnel_access_system_mooring_cost}+${ballast_system_cost}+
+	return ${cathodic_protection_system_cost}+
+		${personnel_access_system_mooring_cost}+${ballast_system_mooring_cost}+
 		${condition_monitoring_cost}+${other_ancillary_marine_system_cost};
 };
 
@@ -3791,7 +3976,7 @@ equations {'mooring_found_substruc_cost'} = define() {
 
 
 
-3610
+4148
 on_load{'Marine Costs - Mooring'} = define() {
 	on_change{'itemized_check_mooring'};
 	enable_itemized_mooring();
@@ -3831,7 +4016,7 @@ on_change{'detailed_cost_choice_ancillary_marine_systems'} = define() {
 
 function detailed_cost_ancillary_marine_systems()
 {
-	if (value('itemized_check_eng')==1)
+	if (value('itemized_check_mooring')==1)
 	{
 		detailed_value = value('detailed_cost_choice_ancillary_marine_systems');
 		enable('ancillary_marine_systems_cost',detailed_value==0);
@@ -3856,6 +4041,8 @@ on_change{'itemized_check_mooring'} = define() {
 function enable_itemized_mooring()
 {
 	itemized_value = value('itemized_check_mooring');
+	enable('detailed_cost_choice_outfitting_structure',itemized_value==1);
+	enable('detailed_cost_choice_ancillary_marine_systems',itemized_value==1);
 	enable('mooring_lines_cost',itemized_value==1);
 	enable('anchors_and_piles_cost',itemized_value==1);
 	enable('connecting_hardware_cost',itemized_value==1);
@@ -3863,24 +4050,34 @@ function enable_itemized_mooring()
 	enable('messenger_lines_and_buoys_cost',itemized_value==1);
 	enable('scour_protection_cost',itemized_value==1);
 	enable('outfitting_structure_cost',itemized_value==1);
+	enable('outfitting_structure_cost_total',itemized_value==1);
 	enable('vessel_landing_cost',itemized_value==1);
 	enable('service_platforms_and_decks_cost',itemized_value==1);
 	enable('ladders_cost',itemized_value==1);
 	enable('railings_cost',itemized_value==1);
 	enable('marine_coatings_cost',itemized_value==1);
+	enable('other_outfitting_structure_cost',itemized_value==1);
 	enable('ancillary_marine_systems_cost',itemized_value==1);
+	enable('ancillary_marine_systems_cost_total',itemized_value==1);
 	enable('cathodic_protection_system_cost',itemized_value==1);
 	enable('personnel_access_system_mooring_cost',itemized_value==1);
 	enable('ballast_system_mooring_cost',itemized_value==1);
 	enable('condition_monitoring_cost',itemized_value==1);
+	enable('other_ancillary_marine_system_cost',itemized_value==1);
 	enable('integration_assembly_testing_checkout_cost',itemized_value==1);
 	enable('transportation_cost',itemized_value==1);
 	enable('other_mooring_cost',itemized_value==1);
 	enable('mooring_found_substruc_cost_input',itemized_value!=2);
-	show('mooring_cost_total',itemized_value==1);
+	show('mooring_found_substruc_cost_total',itemized_value==1);
 	show('mooring_cost_label',itemized_value==1);
 	show('mooring_found_substruc_cost_input',(itemized_value==0 || itemized_value==2));
 	show('mooring_input_label',(itemized_value==0 || itemized_value==2));
+	
+	if (itemized_value==1)
+	{
+		detailed_cost_outfitting_structure();
+		detailed_cost_ancillary_marine_systems();
+	}
 	
 	refresh();
 }

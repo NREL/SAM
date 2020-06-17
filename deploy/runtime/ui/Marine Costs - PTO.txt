@@ -1,7 +1,7 @@
 Marine Costs - PTO
 922
 1999
-118
+117
 Label
 
 1
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-339
+351
 Y
 3
-156
+192
 Width
 3
 117
@@ -59,10 +59,10 @@ Name
 Air Turbine
 X
 3
-402
+399
 Y
 3
-879
+915
 Width
 3
 69
@@ -93,7 +93,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -107,10 +107,10 @@ Name
 Coatings
 X
 3
-414
+417
 Y
 3
-1779
+1818
 Width
 3
 57
@@ -141,7 +141,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -155,16 +155,16 @@ Name
 Control & Communication System
 X
 3
-378
+333
 Y
 3
-1671
+1710
 Width
 3
-192
+237
 Height
 3
-33
+24
 Tool Tip
 5
 0
@@ -189,10 +189,10 @@ WordWrap
 1
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Label
 
 1
@@ -203,10 +203,10 @@ Name
 Electrical Generator
 X
 3
-354
+348
 Y
 3
-1116
+1152
 Width
 3
 120
@@ -237,7 +237,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -254,7 +254,7 @@ X
 450
 Y
 3
-1584
+1623
 Width
 3
 120
@@ -285,7 +285,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -299,10 +299,10 @@ Name
 Gearbox
 X
 3
-405
+414
 Y
 3
-558
+594
 Width
 3
 54
@@ -333,7 +333,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -350,7 +350,7 @@ X
 378
 Y
 3
-1857
+1896
 Width
 3
 96
@@ -381,7 +381,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -395,13 +395,13 @@ Name
 Other Short-Term Energy Storage Costs
 X
 3
-441
+408
 Y
 3
-1713
+1752
 Width
 3
-129
+162
 Height
 3
 24
@@ -429,7 +429,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -473,10 +473,10 @@ Name
 Power Electrical System
 X
 3
-438
+441
 Y
 3
-1629
+1668
 Width
 3
 129
@@ -507,7 +507,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -521,10 +521,10 @@ Name
 Power Electronics
 X
 3
-363
+360
 Y
 3
-1503
+1542
 Width
 3
 108
@@ -555,7 +555,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -569,13 +569,13 @@ Name
 Power Take-Off Enclosure
 X
 3
-324
+318
 Y
 3
-1746
+1785
 Width
 3
-147
+156
 Height
 3
 24
@@ -603,7 +603,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -617,10 +617,10 @@ Name
 Short-Term Energy Storage
 X
 3
-309
+306
 Y
 3
-1464
+1503
 Width
 3
 162
@@ -651,7 +651,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -665,16 +665,16 @@ Name
 Transportation of Power Conversion Chain
 X
 3
-231
+234
 Y
 3
-1818
+1857
 Width
 3
 240
 Height
 3
-39
+24
 Tool Tip
 5
 0
@@ -699,10 +699,10 @@ WordWrap
 1
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Numeric
 
 1
@@ -716,7 +716,7 @@ X
 570
 Y
 3
-291
+327
 Width
 3
 90
@@ -775,10 +775,10 @@ Name
 air_turbine_cost
 X
 3
-471
+480
 Y
 3
-879
+915
 Width
 3
 90
@@ -827,54 +827,68 @@ BackColour
 TabOrder
 3
 4294967295
-Label
+Numeric
 
 1
-13
+17
 Name
 5
-19
-air_turbine_warning
+22
+air_turbine_cost_total
 X
 3
-768
+468
 Y
 3
-879
+915
 Width
 3
-111
+90
 Height
 3
-174
+24
 Tool Tip
 5
 0
-Caption
-5
-187
-Warning! Cost input at both level 4 and level 5 detail. Please enter cost only at 1 detail level. If two level costs are input the higher cost input will be used to calculate total cost. 
-TextColour
-4
-255
+Value
+1
 0
-0
-255
-Bold
-2
-0
-FontSize
+Mode
+3
+1
+Format
 3
 0
-WordWrap
-2
-1
-AlignRight
-2
+Decimals
+3
 0
-AlignTop
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
 2
 1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -888,7 +902,7 @@ X
 570
 Y
 3
-651
+687
 Width
 3
 90
@@ -950,7 +964,7 @@ X
 570
 Y
 3
-930
+966
 Width
 3
 90
@@ -1012,7 +1026,7 @@ X
 474
 Y
 3
-1779
+1818
 Width
 3
 90
@@ -1074,7 +1088,7 @@ X
 570
 Y
 3
-1185
+1224
 Width
 3
 90
@@ -1136,7 +1150,7 @@ X
 570
 Y
 3
-810
+846
 Width
 3
 90
@@ -1195,10 +1209,10 @@ Name
 detailed_cost_choice_air_turbine
 X
 3
-486
+489
 Y
 3
-906
+942
 Width
 3
 135
@@ -1231,7 +1245,7 @@ X
 492
 Y
 3
-1149
+1188
 Width
 3
 135
@@ -1264,7 +1278,7 @@ X
 513
 Y
 3
-585
+621
 Width
 3
 135
@@ -1297,7 +1311,7 @@ X
 504
 Y
 3
-183
+219
 Width
 3
 132
@@ -1330,7 +1344,7 @@ X
 486
 Y
 3
-1542
+1581
 Width
 3
 135
@@ -1360,10 +1374,10 @@ Name
 electrical_generator_cost
 X
 3
-474
+468
 Y
 3
-1116
+1152
 Width
 3
 90
@@ -1422,10 +1436,10 @@ Name
 electrical_generator_cost_total
 X
 3
-483
+468
 Y
 3
-1116
+1152
 Width
 3
 90
@@ -1474,54 +1488,6 @@ BackColour
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-28
-electrical_generator_warning
-X
-3
-768
-Y
-3
-1116
-Width
-3
-111
-Height
-3
-174
-Tool Tip
-5
-0
-Caption
-5
-187
-Warning! Cost input at both level 4 and level 5 detail. Please enter cost only at 1 detail level. If two level costs are input the higher cost input will be used to calculate total cost. 
-TextColour
-4
-255
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1
@@ -1535,7 +1501,7 @@ X
 570
 Y
 3
-1584
+1623
 Width
 3
 90
@@ -1594,10 +1560,10 @@ Name
 gearbox_cost
 X
 3
-456
+468
 Y
 3
-558
+594
 Width
 3
 90
@@ -1656,10 +1622,10 @@ Name
 gearbox_cost_total
 X
 3
-477
+468
 Y
 3
-558
+594
 Width
 3
 90
@@ -1708,54 +1674,6 @@ BackColour
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-15
-gearbox_warning
-X
-3
-771
-Y
-3
-558
-Width
-3
-111
-Height
-3
-174
-Tool Tip
-5
-0
-Caption
-5
-187
-Warning! Cost input at both level 4 and level 5 detail. Please enter cost only at 1 detail level. If two level costs are input the higher cost input will be used to calculate total cost. 
-TextColour
-4
-255
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1
@@ -1769,7 +1687,7 @@ X
 570
 Y
 3
-612
+648
 Width
 3
 90
@@ -1831,7 +1749,7 @@ X
 570
 Y
 3
-690
+726
 Width
 3
 90
@@ -1893,7 +1811,7 @@ X
 570
 Y
 3
-969
+1005
 Width
 3
 90
@@ -1955,7 +1873,7 @@ X
 468
 Y
 3
-156
+192
 Width
 3
 90
@@ -2014,10 +1932,10 @@ Name
 hydraulic_drivetrain_cost_total
 X
 3
-456
+468
 Y
 3
-156
+192
 Width
 3
 90
@@ -2066,54 +1984,6 @@ BackColour
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-28
-hydraulic_drivetrain_warning
-X
-3
-768
-Y
-3
-156
-Width
-3
-111
-Height
-3
-174
-Tool Tip
-5
-0
-Caption
-5
-187
-Warning! Cost input at both level 4 and level 5 detail. Please enter cost only at 1 detail level. If two level costs are input the higher cost input will be used to calculate total cost. 
-TextColour
-4
-255
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1
@@ -2127,7 +1997,7 @@ X
 570
 Y
 3
-456
+492
 Width
 3
 90
@@ -2189,7 +2059,7 @@ X
 570
 Y
 3
-336
+372
 Width
 3
 90
@@ -2251,7 +2121,7 @@ X
 570
 Y
 3
-414
+450
 Width
 3
 90
@@ -2347,6 +2217,102 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+19
+level_5_total_prime
+X
+3
+468
+Y
+3
+159
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+21
+level_5_total_prime50
+X
+3
+567
+Y
+3
+159
+Width
+3
+117
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Sub-Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -2360,7 +2326,7 @@ X
 570
 Y
 3
-771
+807
 Width
 3
 90
@@ -2422,7 +2388,7 @@ X
 570
 Y
 3
-1227
+1266
 Width
 3
 90
@@ -2471,68 +2437,44 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
+Divider
 
 1
-17
+10
 Name
 5
-9
-object 11
+11
+object 2163
 X
 3
-474
+492
 Y
 3
-879
+147
 Width
 3
-90
+138
 Height
 3
-24
+16
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
+Orientation
 3
 0
-Decimals
-3
-0
-Prefix
+Colour
+4
+120
+120
+120
+255
+Caption
 5
 0
-Suffix
-5
-0
-ThousandsSep
+Bold
 2
 1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -2594,7 +2536,7 @@ X
 474
 Y
 3
-252
+288
 Width
 3
 96
@@ -2635,6 +2577,54 @@ Label
 13
 Name
 5
+12
+object 71944
+X
+3
+495
+Y
+3
+132
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+24
+Itemized Input Structure
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 10
 object 721
 X
@@ -2642,7 +2632,7 @@ X
 474
 Y
 3
-87
+72
 Width
 3
 84
@@ -2687,10 +2677,10 @@ Name
 object 724
 X
 3
-462
+483
 Y
 3
-1185
+1224
 Width
 3
 87
@@ -2738,7 +2728,7 @@ X
 429
 Y
 3
-930
+966
 Width
 3
 141
@@ -2786,7 +2776,7 @@ X
 537
 Y
 3
-612
+648
 Width
 3
 33
@@ -2834,7 +2824,7 @@ X
 396
 Y
 3
-531
+567
 Width
 3
 174
@@ -2879,10 +2869,10 @@ Name
 object 72675
 X
 3
-441
+444
 Y
 3
-495
+531
 Width
 3
 126
@@ -2894,8 +2884,8 @@ Tool Tip
 0
 Caption
 5
-25
-Plumbing, Fittings, ect. 
+24
+Plumbing, Fittings, etc.
 TextColour
 4
 0
@@ -2930,7 +2920,7 @@ X
 465
 Y
 3
-414
+450
 Width
 3
 105
@@ -2978,7 +2968,7 @@ X
 531
 Y
 3
-372
+408
 Width
 3
 39
@@ -3026,7 +3016,7 @@ X
 477
 Y
 3
-336
+372
 Width
 3
 93
@@ -3074,7 +3064,7 @@ X
 432
 Y
 3
-210
+246
 Width
 3
 138
@@ -3122,7 +3112,7 @@ X
 489
 Y
 3
-291
+327
 Width
 3
 81
@@ -3170,7 +3160,7 @@ X
 483
 Y
 3
-456
+492
 Width
 3
 87
@@ -3218,7 +3208,7 @@ X
 675
 Y
 3
-87
+72
 Width
 3
 81
@@ -3266,7 +3256,7 @@ X
 444
 Y
 3
-1089
+1125
 Width
 3
 126
@@ -3314,7 +3304,7 @@ X
 486
 Y
 3
-1011
+1047
 Width
 3
 84
@@ -3362,7 +3352,7 @@ X
 486
 Y
 3
-969
+1005
 Width
 3
 81
@@ -3410,7 +3400,7 @@ X
 447
 Y
 3
-849
+885
 Width
 3
 123
@@ -3458,7 +3448,7 @@ X
 477
 Y
 3
-810
+846
 Width
 3
 93
@@ -3506,7 +3496,7 @@ X
 495
 Y
 3
-771
+807
 Width
 3
 75
@@ -3554,7 +3544,7 @@ X
 522
 Y
 3
-732
+768
 Width
 3
 48
@@ -3602,7 +3592,7 @@ X
 522
 Y
 3
-690
+726
 Width
 3
 48
@@ -3650,7 +3640,7 @@ X
 522
 Y
 3
-651
+687
 Width
 3
 48
@@ -3698,7 +3688,7 @@ X
 522
 Y
 3
-1053
+1089
 Width
 3
 48
@@ -3746,7 +3736,7 @@ X
 396
 Y
 3
-1434
+1473
 Width
 3
 174
@@ -3777,7 +3767,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3794,7 +3784,7 @@ X
 522
 Y
 3
-1353
+1392
 Width
 3
 48
@@ -3825,7 +3815,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3842,7 +3832,7 @@ X
 522
 Y
 3
-1314
+1353
 Width
 3
 48
@@ -3873,7 +3863,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3890,7 +3880,7 @@ X
 423
 Y
 3
-1392
+1431
 Width
 3
 147
@@ -3921,7 +3911,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3935,10 +3925,10 @@ Name
 object 73391
 X
 3
-522
+534
 Y
 3
-1269
+1311
 Width
 3
 36
@@ -3969,7 +3959,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3986,7 +3976,7 @@ X
 462
 Y
 3
-1227
+1266
 Width
 3
 108
@@ -4017,7 +4007,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -4034,7 +4024,7 @@ X
 201
 Y
 3
-114
+99
 Width
 3
 84
@@ -4082,7 +4072,7 @@ X
 570
 Y
 3
-1089
+1125
 Width
 3
 90
@@ -4144,7 +4134,7 @@ X
 570
 Y
 3
-1434
+1473
 Width
 3
 90
@@ -4206,7 +4196,7 @@ X
 570
 Y
 3
-849
+885
 Width
 3
 90
@@ -4268,7 +4258,7 @@ X
 570
 Y
 3
-531
+567
 Width
 3
 90
@@ -4330,7 +4320,7 @@ X
 570
 Y
 3
-1713
+1752
 Width
 3
 90
@@ -4392,7 +4382,7 @@ X
 474
 Y
 3
-1857
+1896
 Width
 3
 90
@@ -4454,7 +4444,7 @@ X
 570
 Y
 3
-495
+531
 Width
 3
 90
@@ -4516,7 +4506,7 @@ X
 570
 Y
 3
-1671
+1710
 Width
 3
 90
@@ -4575,10 +4565,10 @@ Name
 power_electronics_cost
 X
 3
-474
+468
 Y
 3
-1503
+1542
 Width
 3
 90
@@ -4637,10 +4627,10 @@ Name
 power_electronics_cost_total
 X
 3
-483
+468
 Y
 3
-1503
+1542
 Width
 3
 90
@@ -4689,54 +4679,6 @@ BackColour
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-25
-power_electronics_warning
-X
-3
-768
-Y
-3
-1503
-Width
-3
-111
-Height
-3
-174
-Tool Tip
-5
-0
-Caption
-5
-187
-Warning! Cost input at both level 4 and level 5 detail. Please enter cost only at 1 detail level. If two level costs are input the higher cost input will be used to calculate total cost. 
-TextColour
-4
-255
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1
@@ -4750,7 +4692,7 @@ X
 474
 Y
 3
-1746
+1785
 Width
 3
 90
@@ -4812,7 +4754,7 @@ X
 672
 Y
 3
-114
+99
 Width
 3
 90
@@ -4875,7 +4817,7 @@ X
 570
 Y
 3
-114
+99
 Width
 3
 90
@@ -4937,7 +4879,7 @@ X
 588
 Y
 3
-87
+72
 Width
 3
 60
@@ -4985,7 +4927,7 @@ X
 330
 Y
 3
-114
+99
 Width
 3
 126
@@ -5021,7 +4963,7 @@ X
 468
 Y
 3
-114
+99
 Width
 3
 90
@@ -5084,7 +5026,7 @@ X
 570
 Y
 3
-114
+99
 Width
 3
 90
@@ -5147,7 +5089,7 @@ X
 585
 Y
 3
-87
+72
 Width
 3
 66
@@ -5195,7 +5137,7 @@ X
 570
 Y
 3
-210
+246
 Width
 3
 90
@@ -5257,7 +5199,7 @@ X
 570
 Y
 3
-252
+288
 Width
 3
 90
@@ -5319,7 +5261,7 @@ X
 570
 Y
 3
-1272
+1311
 Width
 3
 90
@@ -5381,7 +5323,7 @@ X
 570
 Y
 3
-1629
+1668
 Width
 3
 90
@@ -5443,7 +5385,7 @@ X
 570
 Y
 3
-1314
+1353
 Width
 3
 90
@@ -5505,7 +5447,7 @@ X
 570
 Y
 3
-732
+768
 Width
 3
 90
@@ -5567,7 +5509,7 @@ X
 570
 Y
 3
-1011
+1047
 Width
 3
 90
@@ -5626,10 +5568,10 @@ Name
 shortterm_energy_storage_cost
 X
 3
-474
+468
 Y
 3
-1464
+1503
 Width
 3
 90
@@ -5691,7 +5633,7 @@ X
 570
 Y
 3
-1353
+1392
 Width
 3
 90
@@ -5753,7 +5695,7 @@ X
 570
 Y
 3
-1392
+1431
 Width
 3
 90
@@ -5815,7 +5757,7 @@ X
 474
 Y
 3
-1818
+1857
 Width
 3
 90
@@ -5877,7 +5819,7 @@ X
 291
 Y
 3
-114
+99
 Width
 3
 24
@@ -5904,7 +5846,7 @@ X
 570
 Y
 3
-1053
+1089
 Width
 3
 90
@@ -5966,7 +5908,7 @@ X
 570
 Y
 3
-372
+408
 Width
 3
 90
@@ -7289,10 +7231,10 @@ variable_power_electronics
 0
 Default
 
-6465
+6521
 equations {'hydraulic_drivetrain_cost_total'} = define() {
 	return ${primary_hydraulic_pump_cost}+${rectifying_circuit_cost}+
-		${accumulators_cost}+${hydraulic_reservoir_cost}+${hydraulic_fluid_cost}+
+		${accumulators_cost}+${hydraulic_motor_cost}+${hydraulic_reservoir_cost}+${hydraulic_fluid_cost}+
 		${plumbing_fittings_cost}+${valves_cost}+${other_hydraulic_drivetrain_cost};
 };
 
@@ -7302,8 +7244,8 @@ equations {'gearbox_cost_total'} = define() {
 };
 
 equations {'air_turbine_cost_total'} = define() {
-	return ${blades_rotor_assembly_cost}+${shaft_assembly_cost}+
-		${bearings_cost}+${other_air_turbine_cost};
+	return ${blades_rotor_assembly_cost}+${hub_assembly_cost}+${shaft_assembly_cost}+
+		${turbine_bearings_cost}+${other_air_turbine_cost};
 };
 
 equations {'electrical_generator_cost_total'} = define() {
@@ -7468,7 +7410,7 @@ equations {'variable_air_turbine'} = define() {
 };
 
 equations {'air_turbine_cost_total_check'} = define() {
-	if (${detailed_cost_choice_air_turbine})
+	if (${detailed_cost_choice_air_turbine}==0)
 		{
 			return ${air_turbine_cost};
 		}
@@ -7514,7 +7456,7 @@ equations {'variable_electrical_generator'} = define() {
 };
 
 equations {'electrical_generator_cost_total_check'} = define() {
-	if (${detailed_cost_choice_electrical_generator})
+	if (${detailed_cost_choice_electrical_generator}==0)
 		{
 			return ${electrical_generator_cost};
 		}
@@ -7548,13 +7490,13 @@ equations {'variable_power_electronics'} = define() {
 };
 
 equations {'power_electronics_cost_total_check'} = define() {
-	if (${detailed_cost_choice_power_electronics})
+	if (${detailed_cost_choice_power_electronics}==0)
 		{
-			return ${hydraulic_drivetrain_cost};
+			return ${power_electronics_cost};
 		}
 		else
 		{
-			return ${hydraulic_drivetrain_cost_total};
+			return ${power_electronics_cost_total};
 		}
 };
 
@@ -7580,7 +7522,7 @@ equations {'power_takeoff_system_cost'} = define() {
 
 
 
-8380
+9478
 on_load{'Marine Costs - PTO'} = define() {
 	on_change{'itemized_check_pto'};
 	enable_itemized_pto();
@@ -7599,7 +7541,7 @@ on_load{'Marine Costs - PTO'} = define() {
 	on_change{'detailed_cost_choice_air_turbine'};
 	on_change{'detailed_cost_choice_electrical_generator'};
 	on_change{'detailed_cost_choice_power_electronics'};
-	detailed_cost_hyrdaulic_drivetrain();
+	detailed_cost_hydraulic_drivetrain();
 	detailed_cost_gearbox();
 	detailed_cost_air_turbine();
 	detailed_cost_electrical_generator();
@@ -7634,10 +7576,10 @@ function detailed_cost_hydraulic_drivetrain()
 }
 
 on_change{'detailed_cost_choice_gearbox'} = define() {
-	detailed_cost_choice_gearbox();
+	detailed_cost_gearbox();
 };
 
-function detailed_cost_choice_gearbox()
+function detailed_cost_gearbox()
 {
 	if (value('itemized_check_pto')==1)
 	{
@@ -7696,8 +7638,8 @@ function detailed_cost_electrical_generator()
 		show('electrical_generator_cost_total',detailed_value);
 		enable('cooling_system_cost',detailed_value);
 		enable('lubrication_system_cost',detailed_value);
-		enable('rotor_cost',detailed_value);
-		enable('sensors_elec_gen_cost',detailed_value);
+		enable('rotors_cost',detailed_value);
+		enable('sensor_elec_gen_cost',detailed_value);
 		enable('stator_cost',detailed_value);
 		enable('struct_and_mechanical_cost',detailed_value);
 		enable('other_electrical_generator_cost',detailed_value);
@@ -7737,7 +7679,13 @@ on_change{'itemized_check_pto'} = define() {
 function enable_itemized_pto()
 {
 	itemized_value = value('itemized_check_pto');
+	enable('detailed_cost_choice_electrical_generator',itemized_value==1);
+	enable('detailed_cost_choice_power_electronics',itemized_value==1);
+	enable('detailed_cost_choice_air_turbine',itemized_value==1);
+	enable('detailed_cost_choice_gearbox',itemized_value==1);
+	enable('detailed_cost_choice_hydraulic_drivetrain',itemized_value==1);
 	enable('hydraulic_drivetrain_cost',itemized_value==1);
+	enable('hydraulic_drivetrain_cost_total',itemized_value==1);
 	enable('primary_hydraulic_pump_cost',itemized_value==1);
 	enable('rectifying_circuit_cost',itemized_value==1);
 	enable('accumulators_cost',itemized_value==1);
@@ -7746,30 +7694,39 @@ function enable_itemized_pto()
 	enable('hydraulic_reservoir_cost',itemized_value==1);
 	enable('hydraulic_fluid_cost',itemized_value==1);
 	enable('plumbing_fittings_cost',itemized_value==1);
+	enable('other_hydraulic_drivetrain_cost',itemized_value==1);
 	enable('gearbox_cost',itemized_value==1);
+	enable('gearbox_cost_total',itemized_value==1);
 	enable('gears_cost',itemized_value==1);
 	enable('bearings_cost',itemized_value==1);
 	enable('housing_cost',itemized_value==1);
 	enable('sensors_cost',itemized_value==1);
 	enable('lube_system_cost',itemized_value==1);
 	enable('cooling_system_gearbox_cost',itemized_value==1);
+	enable('other_gearbox_cost',itemized_value==1);
 	enable('air_turbine_cost',itemized_value==1);
+	enable('air_turbine_cost_total',itemized_value==1);
 	enable('blades_rotor_assembly_cost',itemized_value==1);
 	enable('hub_assembly_cost',itemized_value==1);
 	enable('shaft_assembly_cost',itemized_value==1);
 	enable('turbine_bearings_cost',itemized_value==1);
+	enable('other_air_turbine_cost',itemized_value==1);
 	enable('electrical_generator_cost',itemized_value==1);
+	enable('electrical_generator_cost_total',itemized_value==1);
 	enable('cooling_system_cost',itemized_value==1);
 	enable('lubrication_system_cost',itemized_value==1);
 	enable('rotors_cost',itemized_value==1);
 	enable('sensor_elec_gen_cost',itemized_value==1);
 	enable('stator_cost',itemized_value==1);
 	enable('struct_and_mechanical_cost',itemized_value==1);
+	enable('other_electrical_generator_cost',itemized_value==1);
 	enable('shortterm_energy_storage_cost',itemized_value==1);
 	enable('power_electronics_cost',itemized_value==1);
+	enable('power_electronics_cost_total',itemized_value==1);
 	enable('frequency_converter_cost',itemized_value==1);
 	enable('power_electrical_system_cost',itemized_value==1);
 	enable('scada_cost',itemized_value==1);
+	enable('other_power_electronics_cost',itemized_value==1);
 	enable('power_takeoff_enclosure_cost',itemized_value==1);
 	enable('coatings_pto_cost',itemized_value==1);
 	enable('transport_power_conversion_chain_cost',itemized_value==1);
@@ -7780,6 +7737,15 @@ function enable_itemized_pto()
 	show('power_takeoff_system_cost_input_label',itemized_value!=1);
 	show('power_takeoff_system_cost_total',itemized_value==1);
 	show('power_takeoff_system_total_label',itemized_value==1);
+	
+	if (itemized_value==1)
+	{
+		detailed_cost_hydraulic_drivetrain();
+		detailed_cost_gearbox();
+		detailed_cost_air_turbine();
+		detailed_cost_electrical_generator();
+		detailed_cost_power_electronics();
+	}
 	
 	refresh();
 }

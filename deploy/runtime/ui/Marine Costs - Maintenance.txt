@@ -3310,6 +3310,8 @@ equations {'balance_of_system_scheduled_maintenance_cost_total'} = define() {
 equations {'unscheduled_maintenance_cost_total'} = define() {
 	return ${unscheduled_maintenance_cost}+${marine_energy_converter_unscheduled_maintenance_cost}+
 		${structural_assembly_unscheduled_maintenance_cost}+${power_takeoff_unscheduled_maintenance_cost}+
-		${substructure_and_foundation_inspections_unscheduled_cost}+${balance_of_system_unscheduled_maintenance_cost}+
-		${
+		${substructure_and_foundation_inspections_unscheduled_cost}+${balance_of_system_unscheduled_maintenance_cost};
+};
+
+
 0
