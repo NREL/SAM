@@ -1,7 +1,7 @@
 Marine Costs - Development
-949
-1775
-90
+963
+1854
+109
 Label
 
 1
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-252
+495
 Y
 3
-1476
+1626
 Width
 3
 81
@@ -45,7 +45,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -59,13 +59,13 @@ Name
 92
 X
 3
-243
+279
 Y
 3
-153
+225
 Width
 3
-183
+195
 Height
 3
 24
@@ -84,7 +84,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -93,7 +93,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -116,7 +116,7 @@ Width
 800
 Height
 3
-1716
+1794
 Tool Tip
 5
 0
@@ -137,13 +137,13 @@ Name
 Gearbox
 X
 3
-246
+363
 Y
 3
-474
+663
 Width
 3
-102
+111
 Height
 3
 24
@@ -162,7 +162,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -171,7 +171,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -185,13 +185,13 @@ Name
 Interconnection & Power Marketing
 X
 3
-246
+252
 Y
 3
 1044
 Width
 3
-192
+222
 Height
 3
 24
@@ -210,7 +210,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -219,7 +219,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -233,10 +233,10 @@ Name
 Project Management during Development
 X
 3
-243
+336
 Y
 3
-1437
+1557
 Width
 3
 141
@@ -258,7 +258,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -267,7 +267,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -281,16 +281,16 @@ Name
 Project Management during Development1
 X
 3
-243
+234
 Y
 3
-1200
+1263
 Width
 3
-168
+243
 Height
 3
-33
+24
 Tool Tip
 5
 0
@@ -306,19 +306,19 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Numeric
 
 1
@@ -329,10 +329,10 @@ Name
 closing_costs_cost
 X
 3
-477
+576
 Y
 3
-1557
+1707
 Width
 3
 90
@@ -378,6 +378,237 @@ BackColour
 255
 255
 255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+40
+detailed_cost_choice_financing_incentive
+X
+3
+507
+Y
+3
+1593
+Width
+3
+129
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+40
+detailed_cost_choice_initial_engineering
+X
+3
+510
+Y
+3
+696
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+36
+detailed_cost_choice_interconnection
+X
+3
+486
+Y
+3
+1077
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+39
+detailed_cost_choice_permitting_leasing
+X
+3
+516
+Y
+3
+489
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+39
+detailed_cost_choice_project_management
+X
+3
+480
+Y
+3
+1293
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+42
+detailed_cost_choice_site_characterization
+X
+3
+501
+Y
+3
+861
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+35
+detailed_cost_choice_site_selection
+X
+3
+495
+Y
+3
+267
+Width
+3
+150
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
 TabOrder
 3
 4294967295
@@ -774,10 +1005,10 @@ Name
 due_diligence_cost
 X
 3
-477
+576
 Y
 3
-1476
+1626
 Width
 3
 90
@@ -836,10 +1067,10 @@ Name
 engineering_certification_cost
 X
 3
-477
+576
 Y
 3
-549
+768
 Width
 3
 90
@@ -901,7 +1132,7 @@ X
 576
 Y
 3
-231
+348
 Width
 3
 90
@@ -960,10 +1191,10 @@ Name
 environmental_surveys_cost
 X
 3
-477
+576
 Y
 3
-630
+897
 Width
 3
 90
@@ -1022,10 +1253,10 @@ Name
 feed_cost
 X
 3
-477
+576
 Y
 3
-510
+729
 Width
 3
 90
@@ -1087,7 +1318,69 @@ X
 477
 Y
 3
-1437
+1557
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+35
+financing_and_incentives_cost_total
+X
+3
+477
+Y
+3
+1557
 Width
 3
 90
@@ -1146,10 +1439,10 @@ Name
 geological_and_bathymetry_cost
 X
 3
-477
+576
 Y
 3
-708
+975
 Width
 3
 90
@@ -1208,10 +1501,10 @@ Name
 incentives_cost
 X
 3
-477
+576
 Y
 3
-1515
+1665
 Width
 3
 90
@@ -1270,10 +1563,10 @@ Name
 initial_engineering_cost
 X
 3
-477
+474
 Y
 3
-474
+663
 Width
 3
 90
@@ -1332,10 +1625,10 @@ Name
 initial_engineering_cost_total
 X
 3
-576
+474
 Y
 3
-474
+663
 Width
 3
 90
@@ -1394,7 +1687,7 @@ Name
 interconnection_and_power_marketing_cost
 X
 3
-477
+474
 Y
 3
 1044
@@ -1456,7 +1749,7 @@ Name
 interconnection_and_power_marketing_cost_total
 X
 3
-576
+474
 Y
 3
 1044
@@ -1518,10 +1811,10 @@ Name
 interconnection_studies_and_fees_cost
 X
 3
-477
+576
 Y
 3
-1083
+1116
 Width
 3
 90
@@ -1627,10 +1920,10 @@ Name
 lease_acquisition_activities_cost
 X
 3
-477
+576
 Y
 3
-396
+552
 Width
 3
 90
@@ -1689,10 +1982,10 @@ Name
 legal_support_cost
 X
 3
-477
+576
 Y
 3
-1599
+1743
 Width
 3
 90
@@ -1747,6 +2040,102 @@ Label
 13
 Name
 5
+19
+level_5_total_prime
+X
+3
+474
+Y
+3
+195
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+21
+level_5_total_prime50
+X
+3
+573
+Y
+3
+195
+Width
+3
+117
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Sub-Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 11
 level_value
 X
@@ -1788,6 +2177,44 @@ AlignRight
 AlignTop
 2
 0
+Divider
+
+1
+10
+Name
+5
+11
+object 2163
+X
+3
+498
+Y
+3
+183
+Width
+3
+138
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
 Label
 
 1
@@ -1798,10 +2225,10 @@ Name
 object 713
 X
 3
-357
+447
 Y
 3
-234
+348
 Width
 3
 129
@@ -1815,6 +2242,54 @@ Caption
 5
 21
 Environmental Scoping
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 71944
+X
+3
+501
+Y
+3
+168
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+24
+Itemized Input Structure
 TextColour
 4
 0
@@ -1894,10 +2369,10 @@ Name
 object 72418
 X
 3
-252
+498
 Y
 3
-1239
+1326
 Width
 3
 78
@@ -1928,7 +2403,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1942,10 +2417,10 @@ Name
 object 7241863
 X
 3
-255
+396
 Y
 3
-1083
+1116
 Width
 3
 180
@@ -1976,7 +2451,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1990,10 +2465,10 @@ Name
 object 72441
 X
 3
-258
+543
 Y
 3
-510
+729
 Width
 3
 33
@@ -2024,7 +2499,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2038,13 +2513,13 @@ Name
 object 726
 X
 3
-246
+294
 Y
 3
-435
+624
 Width
 3
-165
+180
 Height
 3
 24
@@ -2063,7 +2538,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2072,7 +2547,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2086,10 +2561,10 @@ Name
 object 727
 X
 3
-258
+420
 Y
 3
-354
+519
 Width
 3
 156
@@ -2120,7 +2595,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2134,13 +2609,13 @@ Name
 object 728
 X
 3
-246
+342
 Y
 3
-312
+459
 Width
 3
-117
+132
 Height
 3
 24
@@ -2159,7 +2634,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2168,7 +2643,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2182,10 +2657,10 @@ Name
 object 73
 X
 3
-357
+438
 Y
 3
-195
+306
 Width
 3
 138
@@ -2216,7 +2691,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2230,10 +2705,58 @@ Name
 object 730
 X
 3
-357
+423
 Y
 3
-273
+423
+Width
+3
+153
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+26
+Other Site Selection Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 73044
+X
+3
+522
+Y
+3
+387
 Width
 3
 54
@@ -2264,7 +2787,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2278,10 +2801,58 @@ Name
 object 731
 X
 3
-258
+363
 Y
 3
-396
+585
+Width
+3
+213
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+32
+Other Permitting & Leasing Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 73173
+X
+3
+426
+Y
+3
+552
 Width
 3
 150
@@ -2312,7 +2883,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2374,13 +2945,13 @@ Name
 object 73311
 X
 3
-243
+327
 Y
 3
-1638
+1809
 Width
 3
-39
+150
 Height
 3
 24
@@ -2389,8 +2960,8 @@ Tool Tip
 0
 Caption
 5
-5
-Other
+23
+Other Development Costs
 TextColour
 4
 0
@@ -2399,7 +2970,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2408,7 +2979,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2422,10 +2993,10 @@ Name
 object 7331140
 X
 3
-252
+498
 Y
 3
-1557
+1707
 Width
 3
 78
@@ -2456,7 +3027,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2470,10 +3041,58 @@ Name
 object 7331149
 X
 3
-252
+390
 Y
 3
-1401
+1524
+Width
+3
+186
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+30
+Other Project Management Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+16
+object 733114926
+X
+3
+543
+Y
+3
+1491
 Width
 3
 33
@@ -2504,7 +3123,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2518,10 +3137,10 @@ Name
 object 7331152
 X
 3
-252
+393
 Y
 3
-1320
+1407
 Width
 3
 183
@@ -2552,7 +3171,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2566,10 +3185,58 @@ Name
 object 7331159
 X
 3
-255
+417
 Y
 3
-1164
+1230
+Width
+3
+159
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+27
+Other Interconnection Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+16
+object 733115937
+X
+3
+477
+Y
+3
+1197
 Width
 3
 99
@@ -2600,7 +3267,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2614,10 +3281,58 @@ Name
 object 73315
 X
 3
-252
+450
 Y
 3
-1596
+1779
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+21
+Other Financing Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7331513
+X
+3
+495
+Y
+3
+1743
 Width
 3
 81
@@ -2648,7 +3363,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2662,10 +3377,10 @@ Name
 object 7331541
 X
 3
-252
+516
 Y
 3
-1515
+1665
 Width
 3
 60
@@ -2696,7 +3411,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2710,10 +3425,10 @@ Name
 object 7331551
 X
 3
-252
+453
 Y
 3
-1359
+1449
 Width
 3
 123
@@ -2744,7 +3459,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2758,10 +3473,10 @@ Name
 object 7331555
 X
 3
-252
+531
 Y
 3
-1278
+1365
 Width
 3
 45
@@ -2792,7 +3507,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2806,23 +3521,23 @@ Name
 object 7331562
 X
 3
-255
+396
 Y
 3
-1122
+1155
 Width
 3
 180
 Height
 3
-33
+24
 Tool Tip
 5
 0
 Caption
 5
-59
-Onshore Interconnection Rights (Transmission Rights of way)
+31
+Onshore Interconnection Rights 
 TextColour
 4
 0
@@ -2837,13 +3552,13 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Label
 
 1
@@ -2854,10 +3569,58 @@ Name
 object 73325
 X
 3
-258
+390
 Y
 3
-708
+1008
+Width
+3
+186
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+33
+Other Site Characterization Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7332550
+X
+3
+390
+Y
+3
+975
 Width
 3
 186
@@ -2888,7 +3651,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2902,16 +3665,16 @@ Name
 object 73327
 X
 3
-258
+345
 Y
 3
-669
+936
 Width
 3
-135
+231
 Height
 3
-33
+24
 Tool Tip
 5
 0
@@ -2933,13 +3696,13 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Label
 
 1
@@ -2950,10 +3713,10 @@ Name
 object 73333
 X
 3
-258
+450
 Y
 3
-630
+897
 Width
 3
 126
@@ -2984,7 +3747,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2998,13 +3761,13 @@ Name
 object 73336
 X
 3
-246
+345
 Y
 3
-588
+831
 Width
 3
-114
+129
 Height
 3
 24
@@ -3023,7 +3786,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -3032,7 +3795,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3046,10 +3809,58 @@ Name
 object 73337
 X
 3
-258
+372
 Y
 3
-549
+801
+Width
+3
+204
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+31
+Other Initial Engineering Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7333761
+X
+3
+438
+Y
+3
+768
 Width
 3
 138
@@ -3080,7 +3891,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3190,10 +4001,10 @@ Name
 onshore_interconnection_rights_cost
 X
 3
-477
+576
 Y
 3
-1122
+1155
 Width
 3
 90
@@ -3255,7 +4066,441 @@ X
 477
 Y
 3
-1638
+1809
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+20
+other_financing_cost
+X
+3
+576
+Y
+3
+1779
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+30
+other_initial_engineering_cost
+X
+3
+576
+Y
+3
+801
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+26
+other_interconnection_cost
+X
+3
+576
+Y
+3
+1230
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+33
+other_permitting_and_leasing_cost
+X
+3
+576
+Y
+3
+585
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+29
+other_project_management_cost
+X
+3
+576
+Y
+3
+1524
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+32
+other_site_characterization_cost
+X
+3
+576
+Y
+3
+1008
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+25
+other_site_selection_cost
+X
+3
+576
+Y
+3
+423
 Width
 3
 90
@@ -3314,10 +4559,10 @@ Name
 permit_acquisition_activities_cost
 X
 3
-477
+576
 Y
 3
-354
+519
 Width
 3
 90
@@ -3376,10 +4621,10 @@ Name
 permitting_and_leasing_cost
 X
 3
-477
+474
 Y
 3
-312
+459
 Width
 3
 90
@@ -3438,10 +4683,10 @@ Name
 permitting_and_leasing_cost_total
 X
 3
-576
+474
 Y
 3
-312
+459
 Width
 3
 90
@@ -3500,10 +4745,10 @@ Name
 power_marketing_cost
 X
 3
-477
+576
 Y
 3
-1164
+1197
 Width
 3
 90
@@ -3565,7 +4810,7 @@ X
 576
 Y
 3
-270
+387
 Width
 3
 90
@@ -3624,10 +4869,10 @@ Name
 procurement_cost
 X
 3
-477
+576
 Y
 3
-1236
+1326
 Width
 3
 90
@@ -3686,10 +4931,10 @@ Name
 professional_advisory_services_cost
 X
 3
-477
+474
 Y
 3
-435
+624
 Width
 3
 90
@@ -3748,10 +4993,10 @@ Name
 profit_cost
 X
 3
-474
+576
 Y
 3
-1401
+1491
 Width
 3
 90
@@ -3813,7 +5058,69 @@ X
 477
 Y
 3
-1200
+1263
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+48
+project_management_during_development_cost_total
+X
+3
+477
+Y
+3
+1263
 Width
 3
 90
@@ -3872,10 +5179,10 @@ Name
 resource_and_metocean_assessment_cost
 X
 3
-477
+576
 Y
 3
-669
+936
 Width
 3
 90
@@ -3937,7 +5244,7 @@ X
 576
 Y
 3
-189
+306
 Width
 3
 90
@@ -3996,10 +5303,10 @@ Name
 salaries_cost
 X
 3
-477
+576
 Y
 3
-1275
+1365
 Width
 3
 90
@@ -4058,10 +5365,10 @@ Name
 sales_general_and_administrative_cost
 X
 3
-477
+576
 Y
 3
-1317
+1407
 Width
 3
 90
@@ -4120,10 +5427,10 @@ Name
 site_characterization_cost
 X
 3
-477
+474
 Y
 3
-588
+831
 Width
 3
 90
@@ -4182,10 +5489,10 @@ Name
 site_characterization_cost_total
 X
 3
-576
+474
 Y
 3
-588
+831
 Width
 3
 90
@@ -4247,7 +5554,7 @@ X
 474
 Y
 3
-150
+225
 Width
 3
 90
@@ -4306,10 +5613,10 @@ Name
 site_selection_cost_total
 X
 3
-477
+474
 Y
 3
-150
+225
 Width
 3
 90
@@ -4368,10 +5675,10 @@ Name
 stakeholder_outreach_cost
 X
 3
-477
+576
 Y
 3
-1359
+1449
 Width
 3
 90
@@ -4426,230 +5733,6 @@ ToolTipCtrl
 7
 Name
 5
-21
-tt_closing_costs_cost
-X
-3
-330
-Y
-3
-1557
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-101
-Administrative costs incurred by investors (debt and equity) during the evaluation of the investment.
-Tips
-5
-101
-Administrative costs incurred by investors (debt and equity) during the evaluation of the investment.
-ToolTipCtrl
-
-1
-7
-Name
-5
-21
-tt_due_diligence_cost
-X
-3
-333
-Y
-3
-1476
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-245
-Activities performed by potential investors to investigate technical and economic aspects of the project and estimate value prior to executing a financial commitment. Typically conducted by 3rd party technical consultant(s) hired by investor(s).
-Tips
-5
-245
-Activities performed by potential investors to investigate technical and economic aspects of the project and estimate value prior to executing a financial commitment. Typically conducted by 3rd party technical consultant(s) hired by investor(s).
-ToolTipCtrl
-
-1
-7
-Name
-5
-32
-tt_financing_and_incentives_cost
-X
-3
-390
-Y
-3
-1437
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-126
-Fees, closing costs, and staff and consultant efforts to arrange and secure equity, debt financing, and government incentives.
-Tips
-5
-126
-Fees, closing costs, and staff and consultant efforts to arrange and secure equity, debt financing, and government incentives.
-ToolTipCtrl
-
-1
-7
-Name
-5
-18
-tt_incentives_cost
-X
-3
-315
-Y
-3
-1515
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-117
-Efforts performed by the developer to secure and demonstrate qualification for  local, state, and federal incentives.
-Tips
-5
-117
-Efforts performed by the developer to secure and demonstrate qualification for  local, state, and federal incentives.
-ToolTipCtrl
-
-1
-7
-Name
-5
-21
-tt_legal_support_cost
-X
-3
-336
-Y
-3
-1596
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-70
-Developer's legal support to during negotiations to arrange financing.
-Tips
-5
-113
-Activities to identify, engage, and maintain positive relationships with appropriate external stakeholder groups.
-ToolTipCtrl
-
-1
-7
-Name
-5
-25
-tt_other_development_cost
-X
-3
-282
-Y
-3
-1638
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-108
-Costs not included within the development categories. Please provide a  description of the other cost input.
-Tips
-5
-108
-Costs not included within the development categories. Please provide a  description of the other cost input.
-ToolTipCtrl
-
-1
-7
-Name
-5
-14
-tt_profit_cost
-X
-3
-288
-Y
-3
-1401
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-180
-Any margin earned by the developer upon sale of the project at financial close, does not include the cost to a new owner of any stake that a developer might retain in the  project.
-Tips
-5
-180
-Any margin earned by the developer upon sale of the project at financial close, does not include the cost to a new owner of any stake that a developer might retain in the  project.
-ToolTipCtrl
-
-1
-7
-Name
-5
-28
-tt_stakeholder_outreach_cost
-X
-3
-375
-Y
-3
-1359
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-113
-Activities to identify, engage, and maintain positive relationships with appropriate external stakeholder groups.
-Tips
-5
-113
-Activities to identify, engage, and maintain positive relationships with appropriate external stakeholder groups.
-ToolTipCtrl
-
-1
-7
-Name
-5
 27
 tt_structural_assembly_cost
 X
@@ -4673,8 +5756,106 @@ Tips
 55
 Type a tip here or define in runtime/help/tooltips.json
 
-43
+64
 closing_costs_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_financing_incentive
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_initial_engineering
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_interconnection
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_permitting_leasing
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_project_management
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_site_characterization
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_site_selection
 3
 1
  
@@ -4814,6 +5995,20 @@ financing_and_incentives_cost_total
 1
 0
 Default
+financing_and_incentives_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 geological_and_bathymetry_cost
 3
 1
@@ -4870,6 +6065,20 @@ initial_engineering_cost_total
 1
 0
 Default
+initial_engineering_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 interconnection_and_power_marketing_cost
 3
 1
@@ -4891,7 +6100,21 @@ interconnection_and_power_marketing_cost_total
  
  
 0
+8
+1
+1
+1
+1
 0
+Default
+interconnection_and_power_marketing_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -5010,6 +6233,104 @@ other_development_cost
 1
 0
 Default
+other_financing_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_initial_engineering_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_interconnection_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_permitting_and_leasing_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_project_management_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_site_characterization_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_site_selection_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 permit_acquisition_activities_cost
 3
 1
@@ -5045,7 +6366,21 @@ permitting_and_leasing_cost_total
  
  
 0
+8
+1
+1
+1
+1
 0
+Default
+permitting_and_leasing_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -5143,7 +6478,21 @@ project_management_during_development_cost_total
  
  
 0
+8
+1
+1
+1
+1
 0
+Default
+project_management_during_development_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -5227,7 +6576,21 @@ site_characterization_cost_total
  
  
 0
+8
+1
+1
+1
+1
 0
+Default
+site_characterization_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -5255,7 +6618,21 @@ site_selection_cost_total
  
  
 0
+8
+1
+1
+1
+1
 0
+Default
+site_selection_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -5277,48 +6654,126 @@ stakeholder_outreach_cost
 0
 Default
 
-2295
+3981
 equations {'site_selection_cost_total'} = define() {
-	return ${site_selection_cost}+${resource_assessment_cost}+${environmental_scoping_cost}+
-		${pre_feed_cost};
+	return ${resource_assessment_cost}+${environmental_scoping_cost}+
+		${pre_feed_cost}+${other_site_selection_cost};
+};
+
+equations {'site_selection_cost_total_check'} = define() {
+	if (${detailed_cost_choice_site_selection}==0)
+	{
+		return ${site_selection_cost};
+	}
+	else
+	{
+		return ${site_selection_cost_total};
+	}
 };
 
 equations {'permitting_and_leasing_cost_total'} = define() {
-	return ${permitting_and_leasing_cost}+${permit_acquisition_activities_cost}+
-		${lease_acquisition_activities_cost};
+	return ${permit_acquisition_activities_cost}+
+		${lease_acquisition_activities_cost}+${other_permitting_and_leasing_cost};
 };
 
+equations {'permitting_and_leasing_cost_total_check'} = define() {
+	if (${detailed_cost_choice_permitting_leasing}==0)
+	{
+		return ${permitting_and_leasing_cost};
+	}
+	else
+	{
+		return ${permitting_and_leasing_cost_total};
+	}
+};
+
+
 equations {'initial_engineering_cost_total'} = define() {
-	return ${initial_engineering_cost}+${feed_cost}+${engineering_certification_cost};
+	return ${feed_cost}+${engineering_certification_cost}+${other_initial_engineering_cost};
+};
+
+equations {'initial_engineering_cost_total_check'} = define() {
+	if (${detailed_cost_choice_initial_engineering}==0)
+	{
+		return ${initial_engineering_cost};
+	}
+	else
+	{
+		return ${initial_engineering_cost_total};
+	}
 };
 
 equations {'site_characterization_cost_total'} = define() {
-	return ${site_characterization_cost}+${environmental_surveys_cost}+
-		${resource_and_metocean_assessment_cost}+${geological_and_bathymetry_cost};
+	return ${environmental_surveys_cost}+${resource_and_metocean_assessment_cost}+
+		${geological_and_bathymetry_cost}+${other_site_characterization_cost};
+};
+
+equations {'site_characterization_cost_total_check'} = define() {
+	if (${detailed_cost_choice_site_characterization}==0)
+	{
+		return ${site_characterization_cost};
+	}
+	else
+	{
+		return ${site_characterization_cost_total};
+	}
 };
 
 equations {'interconnection_and_power_marketing_cost_total'} = define() {
-	return ${interconnection_and_power_marketing_cost}+${interconnection_studies_and_fees_cost}+
-		${onshore_interconnection_rights_cost}+${power_marketing_cost};
+	return ${interconnection_studies_and_fees_cost}+${onshore_interconnection_rights_cost}+
+		${power_marketing_cost}+${other_interconnection_cost};
+};
+
+equations {'interconnection_and_power_marketing_cost_total_check'} = define() {
+	if (${detailed_cost_choice_interconnection}==0)
+	{
+		return ${interconnection_and_power_marketing_cost};
+	}
+	else
+	{
+		return ${interconnection_and_power_marketing_cost_total};
+	}
 };
 
 equations {'project_management_during_development_cost_total'} = define() {
-	return ${project_management_during_development_cost}+${procurement_cost}+
-		${salaries_cost}+${sales_general_and_administrative_cost}+${stakeholder_outreach_cost}+
-		${profit_cost};
+	return ${procurement_cost}+${salaries_cost}+
+		${sales_general_and_administrative_cost}+${stakeholder_outreach_cost}+
+		${profit_cost}+${other_project_management_cost};
+};
+
+equations {'project_management_during_development_cost_total_check'} = define() {
+	if (${detailed_cost_choice_project_management}==0)
+	{
+		return ${project_management_during_development_cost};
+	}
+	else
+	{
+		return ${project_management_during_development_cost_total};
+	}
 };
 
 equations {'financing_and_incentives_cost_total'} = define() {
-	return ${financing_and_incentives_cost}+${due_diligence_cost}+
-		${incentives_cost}+${closing_costs_cost}+${legal_support_cost};
+	return ${due_diligence_cost}+${incentives_cost}+${closing_costs_cost}+
+		${legal_support_cost}+${other_financing_cost};
+};
+
+equations {'financing_and_incentives_cost_total_check'} = define() {
+	if (${detailed_cost_choice_financing_incentive}==0)
+	{
+		return ${financing_and_incentives_cost};
+	}
+	else
+	{
+		return ${financing_and_incentives_cost_total};
+	}
 };
 
 equations {'development_cost_total'} = define() {
-	return ${site_selection_cost_total}+${permitting_and_leasing_cost_total}+
-		${initial_engineering_cost_total}+${site_characterization_cost_total}+
-		${interconnection_and_power_marketing_cost_total}+
-		${project_management_during_development_cost_total}+
-		${financing_and_incentives_cost_total}+${professional_advisory_services_cost}+
+	return ${site_selection_cost_total_check}+${permitting_and_leasing_cost_total_check}+
+		${initial_engineering_cost_total_check}+${site_characterization_cost_total_check}+
+		${interconnection_and_power_marketing_cost_total_check}+
+		${project_management_during_development_cost_total_check}+
+		${financing_and_incentives_cost_total_check}+${professional_advisory_services_cost}+
 		${other_development_cost};
 };
 
@@ -5353,13 +6808,182 @@ equations {'level_value'} = define() {
 
 
 
-5496
+13130
 on_load{'Marine Costs - Development'} = define() {
 	on_change{'itemized_check_development'};
 	on_change{'level_value'};
 	enable_itemized_development();
+	on_change{'detailed_cost_choice_site_selection'};
+	detailed_cost_site_selection();
+	on_change{'detailed_cost_choice_permitting_leasing'};
+	detailed_cost_permitting_leasing();
+	on_change{'detailed_cost_choice_initial_engineering'};
+	detailed_cost_initial_engineering();
+	on_change{'detailed_cost_choice_site_characterization'};
+	detailed_cost_site_characterization();
+	on_change{'detailed_cost_choice_interconnection'};
+	detailed_cost_interconnection();
+	on_change{'detailed_cost_choice_project_management'};
+	detailed_cost_project_management();
+	on_change{'detailed_cost_choice_financing_incentive'};
+	detailed_cost_financing_incentive();
 	//enable_itemized_level();
 };
+
+on_change{'detailed_cost_choice_financing_incentive'} = define() {
+	detailed_cost_financing_incentive();
+};
+
+function detailed_cost_financing_incentive()
+{
+	if (value('itemized_check_development')==1)
+	{
+		detailed_value = value('detailed_cost_choice_financing_incentive');
+		enable('financing_and_incentives_cost',detailed_value==0);
+		show('financing_and_incentives_cost',detailed_value==0);
+		enable('financing_and_incentives_cost_total',detailed_value);
+		show('financing_and_incentives_cost_total',detailed_value);
+		enable('due_diligence_cost',detailed_value);
+		enable('incentives_cost',detailed_value);
+		enable('closing_costs_cost',detailed_value);
+		enable('legal_support_cost',detailed_value);
+		enable('other_financing_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_project_management'} = define() {
+	detailed_cost_project_management();
+};
+
+function detailed_cost_project_management()
+{
+	if (value('itemized_check_development')==1)
+	{
+		detailed_value = value('detailed_cost_choice_project_management');
+		enable('project_management_during_development_cost',detailed_value==0);
+		show('project_management_during_development_cost',detailed_value==0);
+		enable('project_management_during_development_cost_total',detailed_value);
+		show('project_management_during_development_cost_total',detailed_value);
+		enable('procurement_cost',detailed_value);
+		enable('salaries_cost',detailed_value);
+		enable('sales_general_and_administrative_cost',detailed_value);
+		enable('stakeholder_outreach_cost',detailed_value);
+		enable('profit_cost',detailed_value);
+		enable('other_project_management_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_interconnection'} = define() {
+	detailed_cost_interconnection();
+};
+
+function detailed_cost_interconnection()
+{
+	if (value('itemized_check_development')==1)
+	{
+		detailed_value = value('detailed_cost_choice_interconnection');
+		enable('interconnection_and_power_marketing_cost',detailed_value==0);
+		show('interconnection_and_power_marketing_cost',detailed_value==0);
+		enable('interconnection_and_power_marketing_cost_total',detailed_value);
+		show('interconnection_and_power_marketing_cost_total',detailed_value);
+		enable('interconnection_studies_and_fees_cost',detailed_value);
+		enable('onshore_interconnection_rights_cost',detailed_value);
+		enable('power_marketing_cost',detailed_value);
+		enable('other_interconnection_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_site_characterization'} = define() {
+	detailed_cost_site_characterization();
+};
+
+function detailed_cost_site_characterization()
+{
+	if (value('itemized_check_development')==1)
+	{
+		detailed_value = value('detailed_cost_choice_site_characterization');
+		enable('site_characterization_cost',detailed_value==0);
+		show('site_characterization_cost',detailed_value==0);
+		enable('site_characterization_cost_total',detailed_value);
+		show('site_characterization_cost_total',detailed_value);
+		enable('environmental_surveys_cost',detailed_value);
+		enable('resource_and_metocean_assessment_cost',detailed_value);
+		enable('geological_and_bathymetry_cost',detailed_value);
+		enable('other_site_characterization_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_initial_engineering'} = define() {
+	detailed_cost_initial_engineering();
+};
+
+function detailed_cost_initial_engineering()
+{
+	if (value('itemized_check_development')==1)
+	{
+		detailed_value = value('detailed_cost_choice_initial_engineering');
+		enable('initial_engineering_cost',detailed_value==0);
+		show('initial_engineering_cost',detailed_value==0);
+		enable('initial_engineering_cost_total',detailed_value);
+		show('initial_engineering_cost_total',detailed_value);
+		enable('feed_cost',detailed_value);
+		enable('engineering_certification_cost',detailed_value);
+		enable('other_initial_engineering_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_permitting_leasing'} = define() {
+	detailed_cost_permitting_leasing();
+};
+
+function detailed_cost_permitting_leasing()
+{
+	if (value('itemized_check_development')==1)
+	{
+		detailed_value = value('detailed_cost_choice_permitting_leasing');
+		enable('permitting_and_leasing_cost',detailed_value==0);
+		show('permitting_and_leasing_cost',detailed_value==0);
+		enable('permitting_and_leasing_cost_total',detailed_value);
+		show('permitting_and_leasing_cost_total',detailed_value);
+		enable('permit_acquisition_activities_cost',detailed_value);
+		enable('lease_acquisition_activities_cost',detailed_value);
+		enable('other_permitting_and_leasing_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_site_selection'} = define() {
+	detailed_cost_site_selection();
+};
+
+function detailed_cost_site_selection()
+{
+	if (value('itemized_check_development')==1)
+	{
+		detailed_value = value('detailed_cost_choice_site_selection');
+		enable('site_selection_cost',detailed_value==0);
+		show('site_selection_cost',detailed_value==0);
+		enable('site_selection_cost_total',detailed_value);
+		show('site_selection_cost_total',detailed_value);
+		enable('resource_assessment_cost',detailed_value);
+		enable('environmental_scoping_cost',detailed_value);
+		enable('pre_feed_cost',detailed_value);
+		enable('other_site_selection_cost',detailed_value);
+		
+		refresh();
+	}
+}
 
 on_change{'itemized_check_development'} = define() {
 	enable_itemized_development();
@@ -5373,35 +6997,56 @@ function enable_itemized_development()
 {
 	itemized_value = value('itemized_check_development');
 	enable('site_selection_cost',itemized_value==1);
+	enable('site_selection_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_site_selection',itemized_value==1);
 	enable('resource_assessment_cost',itemized_value==1);
 	enable('environmental_scoping_cost',itemized_value==1);
 	enable('pre_feed_cost',itemized_value==1);
+	enable('other_site_selection_cost',itemized_value==1);
 	enable('permitting_and_leasing_cost',itemized_value==1);
+	enable('permitting_and_leasing_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_permitting_leasing',itemized_value==1);
 	enable('permit_acquisition_activities_cost',itemized_value==1);
 	enable('lease_acquisition_activities_cost',itemized_value==1);
+	enable('other_permitting_and_leasing_cost',itemized_value==1);
 	enable('professional_advisory_services_cost',itemized_value==1);
 	enable('initial_engineering_cost',itemized_value==1);
+	enable('initial_engineering_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_initial_engineering',itemized_value==1);
 	enable('feed_cost',itemized_value==1);
 	enable('engineering_certification_cost',itemized_value==1);
+	enable('other_initial_engineering_cost',itemized_value==1);
 	enable('site_characterization_cost',itemized_value==1);
+	enable('site_characterization_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_site_characterization',itemized_value==1);
 	enable('environmental_surveys_cost',itemized_value==1);
-	enable('resource__and_metocean_assessment_cost',itemized_value==1);
+	enable('resource_and_metocean_assessment_cost',itemized_value==1);
 	enable('geological_and_bathymetry_cost',itemized_value==1);
+	enable('other_site_characterization_cost',itemized_value==1);
 	enable('interconnection_and_power_marketing_cost',itemized_value==1);
+	enable('interconnection_and_power_marketing_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_interconnection',itemized_value==1);
 	enable('interconnection_studies_and_fees_cost',itemized_value==1);
 	enable('onshore_interconnection_rights_cost',itemized_value==1);
 	enable('power_marketing_cost',itemized_value==1);
+	enable('other_interconnection_cost',itemized_value==1);
 	enable('project_management_during_development_cost',itemized_value==1);
+	enable('project_management_during_development_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_project_management',itemized_value==1);
 	enable('procurement_cost',itemized_value==1);
 	enable('salaries_cost',itemized_value==1);
 	enable('sales_general_and_administrative_cost',itemized_value==1);
 	enable('stakeholder_outreach_cost',itemized_value==1);
 	enable('profit_cost',itemized_value==1);
+	enable('other_project_management_cost',itemized_value==1);
 	enable('financing_and_incentives_cost',itemized_value==1);
+	enable('financing_and_incentives_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_financing_incentive',itemized_value==1);
 	enable('due_diligence_cost',itemized_value==1);
 	enable('incentives_cost',itemized_value==1);
 	enable('closing_costs_cost',itemized_value==1);
 	enable('legal_support_cost',itemized_value==1);
+	enable('other_financing_cost',itemized_value==1);
 	enable('other_development_cost',itemized_value==1);
 	enable('level_check',itemized_value==1);
 	enable('development_cost_input',itemized_value!=2);
@@ -5409,6 +7054,16 @@ function enable_itemized_development()
 	show('development_cost_input_label',itemized_value!=1);
 	show('development_cost_total',itemized_value==1);
 	show('development_cost_total_label',itemized_value==1);
+	if (itemized_value==1)
+	{
+		detailed_cost_site_selection();
+		detailed_cost_permitting_leasing();
+		detailed_cost_initial_engineering();
+		detailed_cost_site_characterization();
+		detailed_cost_interconnection();
+		detailed_cost_project_management();
+		detailed_cost_financing_incentive();
+	}
 	
 	refresh();
 }
