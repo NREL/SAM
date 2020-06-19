@@ -304,12 +304,13 @@ Selection
 0
 Items
 6
-5
+6
 Peak shaving one-day look ahead
 Peak shaving one-day look behind
 Input grid power targets
 Input battery power targets
 Manual dispatch
+Price Signal Forecast
 ShowCaptions
 2
 1
@@ -659,8 +660,8 @@ batt_dispatch_choice
 Battery dispatch options
  
 BatteryDispatch
-133
-Peak shaving one-day look ahead|Peak shaving one-day look behind|Input grid power targets|Input battery power targets|Manual dispatch
+155
+Peak shaving one-day look ahead|Peak shaving one-day look behind|Input grid power targets|Input battery power targets|Manual dispatch|Price Signal Forecast
 3
 1
 1
