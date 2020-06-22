@@ -1,5 +1,5 @@
 1
-412
+414
 Monthly_util
 1
 2
@@ -190,6 +190,18 @@ azimuth
 batt_custom_dispatch
 1
 2
+1
+1
+0
+batt_cycle_cost
+1
+1
+1
+1
+0.1
+batt_cycle_cost_choice
+1
+1
 1
 1
 0
