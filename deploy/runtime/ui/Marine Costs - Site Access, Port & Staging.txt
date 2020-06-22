@@ -396,7 +396,7 @@ Y
 201
 Width
 3
-90
+174
 Height
 3
 24
@@ -1328,10 +1328,10 @@ Name
 object 777
 X
 3
-42
+78
 Y
 3
-252
+249
 Width
 3
 180
@@ -1686,7 +1686,7 @@ Name
 port_fees_cost_total
 X
 3
-468
+462
 Y
 3
 567
@@ -1744,8 +1744,8 @@ Numeric
 17
 Name
 5
-22
-port_improvements_cost
+21
+port_improvement_cost
 X
 3
 462
@@ -2379,7 +2379,7 @@ Name
 staging_port_cost_total
 X
 3
-468
+462
 Y
 3
 162
@@ -2637,15 +2637,18 @@ laydown_area_cost
 Default
 other_port_fees_cost
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
- 
+Default
 other_site_access_cost
 3
 1
@@ -2718,15 +2721,18 @@ port_fees_cost_total
 Default
 port_fees_cost_total_check
 3
-0
+1
  
  
  
 0
-0
+8
+1
+1
+1
 1
 0
- 
+Default
 port_fees_total
 3
 1
@@ -2790,7 +2796,7 @@ site_access_port_staging_cost
  
  
 0
-0
+8
 1
 1
 1
@@ -2823,7 +2829,7 @@ site_access_port_staging_cost_method
 1
 1
 1
-0
+2
 Choice
 site_access_port_staging_cost_total
 3
@@ -2896,11 +2902,11 @@ wharfage_fees_cost
 0
 Default
 
-1442
+1426
 equations {'staging_port_cost_total'} = define() {
-	return ${staging_port_cost}+${quay_cost}+${laydown_area_cost}+
+	return ${quay_cost}+${laydown_area_cost}+
 		${assembly_areas_cost}+${personnel_facilities_cost}+
-		${fabrication_facilities_cost};
+		${fabrication_facilities_cost}+${other_staging_port_cost};
 };
 
 equations {'staging_port_cost_total_check'} = define() {
@@ -2915,8 +2921,8 @@ equations {'staging_port_cost_total_check'} = define() {
 };
 
 equations {'port_fees_cost_total'} = define() {
-	return ${port_fees_cost} + ${entrance_exit_fees_cost}+${quayside_docking_fees_cost}+
-		${wharfage_fees_cost}+${other_site_access_cost};
+	return ${entrance_exit_fees_cost}+${quayside_docking_fees_cost}+
+		${wharfage_fees_cost}+${other_port_fees_cost};
 };
 
 equations {'port_fees_cost_total_check'} = define() {
@@ -2956,7 +2962,7 @@ equations {'itemized_check_site_access'} = define() {
 };
 
 
-3220
+3469
 on_load{'Marine Costs - Site Access, Port & Staging'} = define() {
 	on_change{'itemized_check_site_access'};
 	enable_itemized_site_access();
@@ -2973,7 +2979,7 @@ on_change{'detailed_cost_choice_staging_port'} = define() {
 
 function detailed_cost_staging_port()
 {
-	if (value('itemized_check_site')==1)
+	if (value('itemized_check_site_access')==1)
 	{
 		detailed_value = value('detailed_cost_choice_staging_port');
 		enable('staging_port_cost',detailed_value==0);
@@ -2997,7 +3003,7 @@ on_change{'detailed_cost_choice_port_fees'} = define() {
 
 function detailed_cost_port_fees()
 {
-	if (value('itemized_check_site')==1)
+	if (value('itemized_check_site_access')==1)
 	{
 		detailed_value = value('detailed_cost_choice_port_fees');
 		enable('port_fees_cost',detailed_value==0);
@@ -3013,7 +3019,7 @@ function detailed_cost_port_fees()
 	}
 }
 
-on_change{'itemized_check_site'} = define() {
+on_change{'itemized_check_site_access'} = define() {
 	enable_itemized_site_access();
 	
 };
@@ -3023,6 +3029,7 @@ function enable_itemized_site_access()
 	itemized_value = value('itemized_check_site_access');
 	enable('staging_port_cost',itemized_value==1);
 	enable('staging_port_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_staging_port',itemized_value==1);
 	enable('quay_cost',itemized_value==1);
 	enable('laydown_area_cost',itemized_value==1);
 	enable('assembly_areas_cost',itemized_value==1);
@@ -3033,16 +3040,22 @@ function enable_itemized_site_access()
 	enable('port_improvement_cost',itemized_value==1);
 	enable('port_fees_cost',itemized_value==1);
 	enable('port_fees_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_port_fees',itemized_value==1);
 	enable('entrance_exit_fees_cost',itemized_value==1);
 	enable('quayside_docking_fees_cost',itemized_value==1);
 	enable('wharfage_fees_cost',itemized_value==1);
 	enable('other_port_fees_cost',itemized_value==1);
 	enable('other_site_access_cost',itemized_value==1);
-	enable('eng_and_mgmt_cost_input',itemized_value!=1);
+	enable('site_access_port_staging_cost_input',itemized_value!=2);
 	show('site_access_port_staging_cost_total',itemized_value==1);
 	show('site_access_port_staging_cost_total_label',itemized_value==1);
 	show('site_access_port_staging_cost_input',(itemized_value==0 || itemized_value==2));
 	show('site_access_port_staging_cost_input_label',(itemized_value==0 || itemized_value==2));
+	if (itemized_value==1)
+	{
+		detailed_cost_port_fees();
+		detailed_cost_staging_port();
+	}
 	/*if (value('itemized_check_eng')==1)
 	{
 		enable_itemized_level_eng();

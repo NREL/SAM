@@ -2973,8 +2973,8 @@ assembly_and_install_cost_method
 1
 1
 1
-0
-Default
+2
+Choice
 assembly_and_install_cost_modeled
 3
 1
@@ -3099,8 +3099,8 @@ development_cost_method
 1
 1
 1
-0
-Default
+2
+Choice
 development_cost_modeled
 3
 1
@@ -3141,8 +3141,8 @@ eng_and_mgmt_cost_method
 1
 1
 1
-0
-Default
+2
+Choice
 eng_and_mgmt_cost_modeled
 3
 1
@@ -3353,7 +3353,7 @@ mooring_found_substruc_cost_method
 1
 1
 2
-Default
+Choice
 mooring_found_substruc_cost_modeled
 3
 1
@@ -3473,7 +3473,7 @@ operations_cost_modeled
  
  
 0
-0
+8
 1
 1
 1
@@ -3576,8 +3576,8 @@ other_infrastructure_cost_method
 1
 1
 1
-0
-Default
+2
+Choice
 other_infrastructure_cost_modeled
 3
 1
@@ -3675,7 +3675,7 @@ power_takeoff_system_cost_method
 1
 1
 2
-Default
+Choice
 power_takeoff_system_cost_modeled
 3
 1
@@ -4223,7 +4223,7 @@ on_load{'Marine Costs - Structural Assembly'} = define() {
 	//show_prime_mover_warning();
 	on_change{'detailed_cost_choice_struct_assem'};
 	detailed_cost_structural();
-	on_change{'detailec_cost_choice_marine_systems'};
+	on_change{'detailed_cost_choice_marine_systems'};
 	detailed_cost_marine_systems();
 };
 

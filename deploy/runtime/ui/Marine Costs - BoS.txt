@@ -207,9 +207,11 @@ $
 0
 Default
 
-157
+269
 equations {'balance_of_system_cost_total'} = define() {
-	return ${development_cost}+${eng_and_mgmt_cost}+${site_access_port_staging_cost}; //+elec_infrac
+	return ${development_cost}+${eng_and_mgmt_cost}+${elec_infras_cost}
+		+${site_access_port_staging_cost}+${plant_commissioning_cost}+
+		${assembly_and_install_cost}+${other_infrastructure_cost}; //+elec_infrac
 };
 
 0

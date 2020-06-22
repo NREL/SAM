@@ -795,7 +795,7 @@ Name
 development_cost_method
 X
 3
-225
+342
 Y
 3
 114
@@ -3905,7 +3905,7 @@ Name
 object 75
 X
 3
-96
+213
 Y
 3
 114
@@ -3920,8 +3920,8 @@ Tool Tip
 0
 Caption
 5
-14
-Power Take-off
+11
+Development
 TextColour
 4
 0
@@ -3939,7 +3939,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -5737,7 +5737,7 @@ Name
 tt_structural_assembly_cost
 X
 3
-186
+303
 Y
 3
 114
@@ -5876,7 +5876,7 @@ development_cost
  
  
 0
-0
+8
 1
 1
 1

@@ -1,7 +1,7 @@
 Marine Costs - Maintenance
-917
-1260
-66
+921
+687
+38
 Label
 
 1
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-204
+225
 Y
 3
 159
 Width
 3
-165
+213
 Height
 3
 24
@@ -36,7 +36,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -45,7 +45,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -59,10 +59,10 @@ Name
 balance_of_system_scheduled_maintenance_cost
 X
 3
-438
+531
 Y
 3
-399
+291
 Width
 3
 90
@@ -121,10 +121,10 @@ Name
 balance_of_system_unscheduled_maintenance_cost
 X
 3
-438
+531
 Y
 3
-798
+483
 Width
 3
 90
@@ -173,144 +173,86 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
+CheckBox
 
 1
-17
+9
 Name
 5
-40
-direct_current_convertor_inspection_cost
+42
+detailed_cost_choice_scheduled_maintenance
 X
 3
-438
+459
 Y
 3
-519
+231
 Width
 3
-90
+132
 Height
 3
 24
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
+Caption
 5
-0
-Suffix
-5
-0
-ThousandsSep
+20
+Enter detailed costs
+State
 2
-1
-Editable
-2
-1
-ForeColour
-4
 0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
 TabOrder
 3
 4294967295
-Numeric
+CheckBox
 
 1
-17
+9
 Name
 5
-52
-direct_current_convertor_inspection_unscheduled_cost
+44
+detailed_cost_choice_unscheduled_maintenance
 X
 3
-438
+456
 Y
 3
-879
+408
 Width
 3
-90
+126
 Height
 3
 24
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
+Caption
 5
-0
-Suffix
-5
-0
-ThousandsSep
+20
+Enter detailed costs
+State
 2
-1
-Editable
-2
-1
-ForeColour
-4
 0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
 TabOrder
 3
 4294967295
-Numeric
+Label
 
 1
-17
+13
 Name
 5
-47
-electric_transforming_equipment_inspection_cost
+26
+itemized_check_maintenance
 X
 3
-438
+78
 Y
 3
-477
+120
 Width
 3
 90
@@ -320,107 +262,30 @@ Height
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
+Caption
 5
 0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
+TextColour
 4
 0
 0
 0
 255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-61
-electrical_transforming_equipment_inspection_unscheduled_cost
-X
-3
-438
-Y
-3
-837
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
+Bold
 2
-1
-Editable
-2
-1
-ForeColour
-4
 0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
+FontSize
 3
-4294967295
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -489,14 +354,397 @@ Numeric
 17
 Name
 5
+16
+maintenance_cost
+X
+3
+633
+Y
+3
+120
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+1
+Numeric
+
+1
+17
+Name
+5
+22
+maintenance_cost_input
+X
+3
+534
+Y
+3
+120
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+23
+maintenance_cost_method
+X
+3
+282
+Y
+3
+120
+Width
+3
+144
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+4
+Enter in $/kW
+Enter in $
+Use Modeled Value
+Enter in Itemized Costs
+Selection
+3
+0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+24
+maintenance_cost_modeled
+X
+3
+435
+Y
+3
+120
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+22
+maintenance_cost_total
+X
+3
+534
+Y
+3
+120
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+29
+maintenance_level_total_label
+X
+3
+534
+Y
+3
+93
+Width
+3
+87
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Itemized Inputs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+28
+maintenance_user_input_label
+X
+3
+549
+Y
+3
+93
+Width
+3
+60
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+10
+User Input
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
 50
 marine_energy_converter_scheduled_maintenance_cost
 X
 3
-438
+531
 Y
 3
-240
+258
 Width
 3
 90
@@ -555,10 +803,10 @@ Name
 marine_energy_converter_unscheduled_maintenance_cost
 X
 3
-438
+531
 Y
 3
-636
+444
 Width
 3
 90
@@ -607,23 +855,53 @@ BackColour
 TabOrder
 3
 4294967295
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+51
+Y
+3
+51
+Width
+3
+825
+Height
+3
+612
+Tool Tip
+5
+0
+Caption
+5
+11
+Maintenance
+Bold
+2
+1
 Label
 
 1
 13
 Name
 5
-10
-object 713
+8
+object 7
 X
 3
-231
+183
 Y
 3
-438
+120
 Width
 3
-123
+99
 Height
 3
 24
@@ -632,8 +910,8 @@ Tool Tip
 0
 Caption
 5
-21
-Regular Cable Surveys
+16
+Operations Costs
 TextColour
 4
 0
@@ -665,13 +943,13 @@ Name
 object 71339
 X
 3
-216
+369
 Y
 3
-240
+258
 Width
 3
-123
+162
 Height
 3
 24
@@ -680,8 +958,8 @@ Tool Tip
 0
 Caption
 5
-45
-Marine Energy Converter Scheduled Maintenance
+25
+MEC Scheduled Maintenance
 TextColour
 4
 0
@@ -699,7 +977,55 @@ WordWrap
 0
 AlignRight
 2
+1
+AlignTop
+2
 0
+Label
+
+1
+13
+Name
+5
+10
+object 721
+X
+3
+438
+Y
+3
+93
+Width
+3
+84
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+13
+Modeled Value
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
 AlignTop
 2
 0
@@ -713,10 +1039,10 @@ Name
 object 7275125
 X
 3
-213
+345
 Y
 3
-798
+483
 Width
 3
 186
@@ -728,8 +1054,8 @@ Tool Tip
 0
 Caption
 5
-47
-Balance of System (BOS) Unscheduled Maintenance
+27
+BoS Unscheduled Maintenance
 TextColour
 4
 0
@@ -747,55 +1073,7 @@ WordWrap
 0
 AlignRight
 2
-0
-AlignTop
-2
-0
-Label
-
 1
-13
-Name
-5
-14
-object 7275126
-X
-3
-225
-Y
-3
-756
-Width
-3
-186
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-37
-Substructure & Foundation Inspections
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
 AlignTop
 2
 0
@@ -809,10 +1087,10 @@ Name
 object 7275130
 X
 3
-204
+255
 Y
 3
-597
+366
 Width
 3
 186
@@ -834,7 +1112,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -843,7 +1121,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -857,13 +1135,13 @@ Name
 object 7275135
 X
 3
-219
+321
 Y
 3
-399
+321
 Width
 3
-186
+210
 Height
 3
 24
@@ -872,8 +1150,8 @@ Tool Tip
 0
 Caption
 5
-45
-Balance of System (BOS) Scheduled Maintenance
+33
+Other Scheduled Maintenance Costs
 TextColour
 4
 0
@@ -891,7 +1169,55 @@ WordWrap
 0
 AlignRight
 2
+1
+AlignTop
+2
 0
+Label
+
+1
+13
+Name
+5
+16
+object 727513513
+X
+3
+372
+Y
+3
+291
+Width
+3
+159
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+25
+BoS Scheduled Maintenance
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
 AlignTop
 2
 0
@@ -905,13 +1231,13 @@ Name
 object 728
 X
 3
-201
+279
 Y
 3
-993
+597
 Width
 3
-99
+162
 Height
 3
 24
@@ -920,8 +1246,8 @@ Tool Tip
 0
 Caption
 5
-5
-Other
+23
+Other Maintenance Costs
 TextColour
 4
 0
@@ -930,55 +1256,7 @@ TextColour
 255
 Bold
 2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
 1
-13
-Name
-5
-12
-object 72824
-X
-3
-222
-Y
-3
-918
-Width
-3
-99
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-31
-Onshore Electric Infrastructure
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
 FontSize
 3
 0
@@ -987,151 +1265,7 @@ WordWrap
 0
 AlignRight
 2
-0
-AlignTop
-2
-0
-Label
-
 1
-13
-Name
-5
-12
-object 72827
-X
-3
-225
-Y
-3
-717
-Width
-3
-99
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-44
-Power Take-off (PTO) Unscheduled Maintenance
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 72831
-X
-3
-228
-Y
-3
-558
-Width
-3
-99
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-31
-Onshore Electric Infrastructure
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 72836
-X
-3
-231
-Y
-3
-360
-Width
-3
-99
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-42
-Power Take-off (PTO) Scheduled Maintenance
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
 AlignTop
 2
 0
@@ -1145,13 +1279,61 @@ Name
 object 729
 X
 3
-213
+312
 Y
 3
-954
+552
 Width
 3
-141
+219
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+35
+Other Unscheduled Maintenance Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72937
+X
+3
+312
+Y
+3
+519
+Width
+3
+219
 Height
 3
 24
@@ -1179,199 +1361,7 @@ WordWrap
 0
 AlignRight
 2
-0
-AlignTop
-2
-0
-Label
-
 1
-13
-Name
-5
-12
-object 72925
-X
-3
-222
-Y
-3
-879
-Width
-3
-141
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-40
-Direct Current (DC) Convertor Inspection
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 72928
-X
-3
-225
-Y
-3
-678
-Width
-3
-141
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-43
-Structural Assembly Unscheduled Maintenance
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 72932
-X
-3
-228
-Y
-3
-519
-Width
-3
-141
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-40
-Direct Current (DC) Convertor Inspection
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 72937
-X
-3
-231
-Y
-3
-321
-Width
-3
-141
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-37
-Substructure & Foundation Inspections
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
 AlignTop
 2
 0
@@ -1385,13 +1375,13 @@ Name
 object 73
 X
 3
-204
+288
 Y
 3
 201
 Width
 3
-102
+150
 Height
 3
 24
@@ -1410,55 +1400,7 @@ TextColour
 255
 Bold
 2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
 1
-13
-Name
-5
-10
-object 730
-X
-3
-222
-Y
-3
-837
-Width
-3
-150
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-44
-Electrical Transforming Equipment Inspection
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
 FontSize
 3
 0
@@ -1467,7 +1409,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1481,13 +1423,13 @@ Name
 object 73029
 X
 3
-213
+354
 Y
 3
-636
+444
 Width
 3
-150
+177
 Height
 3
 24
@@ -1496,8 +1438,8 @@ Tool Tip
 0
 Caption
 5
-47
-Marine Energy Converter Unscheduled Maintenance
+27
+MEC Unscheduled Maintenance
 TextColour
 4
 0
@@ -1515,7 +1457,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1525,17 +1467,17 @@ Label
 13
 Name
 5
-12
-object 73033
+11
+object 7322
 X
 3
-228
+639
 Y
 3
-477
+93
 Width
 3
-150
+81
 Height
 3
 24
@@ -1544,56 +1486,8 @@ Tool Tip
 0
 Caption
 5
-44
-Electrical Transforming Equipment Inspection
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
 13
-Name
-5
-12
-object 73038
-X
-3
-231
-Y
-3
-279
-Width
-3
-150
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-41
-Structural Assembly Scheduled Maintenance
+Category Cost
 TextColour
 4
 0
@@ -1611,134 +1505,10 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
-Numeric
-
-1
-17
-Name
-5
-48
-onshore_electric_infrastructure_maintenance_cost
-X
-3
-438
-Y
-3
-558
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-48
-onshore_electric_infrastructure_unscheduled_cost
-X
-3
-438
-Y
-3
-918
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -1749,10 +1519,10 @@ Name
 other_maintenance_cost
 X
 3
-438
+441
 Y
 3
-993
+597
 Width
 3
 90
@@ -1807,14 +1577,14 @@ Numeric
 17
 Name
 5
-40
-power_takeoff_scheduled_maintenance_cost
+32
+other_scheduled_maintenance_cost
 X
 3
-438
+531
 Y
 3
-360
+321
 Width
 3
 90
@@ -1869,76 +1639,14 @@ Numeric
 17
 Name
 5
-42
-power_takeoff_unscheduled_maintenance_cost
+34
+other_unscheduled_maintenance_cost
 X
 3
-438
+531
 Y
 3
-717
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-26
-regular_cable_surveys_cost
-X
-3
-438
-Y
-3
-438
+552
 Width
 3
 90
@@ -2055,864 +1763,62 @@ Numeric
 17
 Name
 5
-46
-structural_assembly_scheduled_maintenance_cost
+32
+scheduled_maintenance_cost_total
 X
 3
 438
-Y
-3
-279
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-48
-structural_assembly_unscheduled_maintenance_cost
-X
-3
-438
-Y
-3
-678
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-44
-substructure_and_foundation_inspections_cost
-X
-3
-438
-Y
-3
-321
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-57
-substructure_and_foundation_inspections_unscheduled_costs
-X
-3
-438
-Y
-3
-756
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-ToolTipCtrl
-
-1
-7
-Name
-5
-25
-tt_anchors_and_piles_cost
-X
-3
-303
 Y
 3
 201
 Width
 3
-24
+90
 Height
 3
 24
 Tool Tip
 5
-156
-Anchors and Piles installed on the seabed to either maintain station keeping or to react against the seabed. This can include gravity based anchor systems. 
-Tips
-5
-156
-Anchors and Piles installed on the seabed to either maintain station keeping or to react against the seabed. This can include gravity based anchor systems. 
-ToolTipCtrl
-
+0
+Value
 1
-7
-Name
-5
-27
-tt_connecting_hardware_cost
-X
+0
+Mode
 3
-336
-Y
-3
-240
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-87
-Connectors required to attach the mooring lines to anchors and marine energy converter.
-Tips
-5
-87
-Connectors required to attach the mooring lines to anchors and marine energy converter.
-ToolTipCtrl
-
 1
-7
-Name
+Format
+3
+0
+Decimals
+3
+0
+Prefix
 5
-29
-tt_connecting_hardware_cost49
-X
-3
-351
-Y
-3
-438
-Width
-3
-24
-Height
-3
-24
-Tool Tip
+0
+Suffix
 5
-87
-Connectors required to attach the mooring lines to anchors and marine energy converter.
-Tips
-5
-87
-Connectors required to attach the mooring lines to anchors and marine energy converter.
-ToolTipCtrl
-
+0
+ThousandsSep
+2
 1
-7
-Name
-5
-33
-tt_messenger_lines_and_buoys_cost
-X
-3
-372
-Y
-3
-321
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-Tips
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-ToolTipCtrl
-
+Editable
+2
 1
-7
-Name
-5
-35
-tt_messenger_lines_and_buoys_cost50
-X
-3
-369
-Y
-3
-519
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-Tips
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-ToolTipCtrl
-
-1
-7
-Name
-5
-35
-tt_messenger_lines_and_buoys_cost54
-X
-3
-366
-Y
-3
-678
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-Tips
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-ToolTipCtrl
-
-1
-7
-Name
-5
-35
-tt_messenger_lines_and_buoys_cost59
-X
-3
-363
-Y
-3
-879
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-Tips
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-ToolTipCtrl
-
-1
-7
-Name
-5
-37
-tt_messenger_lines_and_buoys_cost5964
-X
-3
-354
-Y
-3
-954
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-Tips
-5
-71
-Ancillary equipment used during the installation of the mooring system.
-ToolTipCtrl
-
-1
-7
-Name
-5
-21
-tt_mooring_lines_cost
-X
-3
-369
-Y
-3
-159
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-100
-Chain, wire, or synthetic fiber ropes to connect marine energy converter with anchors on the seabed.
-Tips
-5
-100
-Chain, wire, or synthetic fiber ropes to connect marine energy converter with anchors on the seabed.
-ToolTipCtrl
-
-1
-7
-Name
-5
-28
-tt_outfitting_structure_cost
-X
-3
-408
-Y
-3
-399
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-69
-Additional non-structural elements attached to substructure elements.
-Tips
-5
-69
-Additional non-structural elements attached to substructure elements.
-ToolTipCtrl
-
-1
-7
-Name
-5
-30
-tt_outfitting_structure_cost51
-X
-3
-393
-Y
-3
-597
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-69
-Additional non-structural elements attached to substructure elements.
-Tips
-5
-69
-Additional non-structural elements attached to substructure elements.
-ToolTipCtrl
-
-1
-7
-Name
-5
-30
-tt_outfitting_structure_cost55
-X
-3
-414
-Y
-3
-756
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-69
-Additional non-structural elements attached to substructure elements.
-Tips
-5
-69
-Additional non-structural elements attached to substructure elements.
-ToolTipCtrl
-
-1
-7
-Name
-5
-30
-tt_outfitting_structure_cost58
-X
-3
-402
-Y
-3
-798
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-69
-Additional non-structural elements attached to substructure elements.
-Tips
-5
-69
-Additional non-structural elements attached to substructure elements.
-ToolTipCtrl
-
-1
-7
-Name
-5
-24
-tt_scour_protection_cost
-X
-3
-330
-Y
-3
-360
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-Tips
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-ToolTipCtrl
-
-1
-7
-Name
-5
-26
-tt_scour_protection_cost52
-X
-3
-327
-Y
-3
-558
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-Tips
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-ToolTipCtrl
-
-1
-7
-Name
-5
-26
-tt_scour_protection_cost56
-X
-3
-324
-Y
-3
-717
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-Tips
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-ToolTipCtrl
-
-1
-7
-Name
-5
-26
-tt_scour_protection_cost61
-X
-3
-321
-Y
-3
-918
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-Tips
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-ToolTipCtrl
-
-1
-7
-Name
-5
-28
-tt_scour_protection_cost6165
-X
-3
-300
-Y
-3
-993
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-Tips
-5
-102
-Rock fill or concrete mattresses to protect substructures from scouring (caused by currents or waves).
-ToolTipCtrl
-
-1
-7
-Name
-5
-32
-tt_subfoundation_or_bedding_cost
-X
-3
-393
-Y
-3
-279
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-91
-Layers of gravel and stone to provide a stable and level surface on which to place anchors.
-Tips
-5
-91
-Layers of gravel and stone to provide a stable and level surface on which to place anchors.
-ToolTipCtrl
-
-1
-7
-Name
-5
-34
-tt_subfoundation_or_bedding_cost53
-X
-3
-381
-Y
-3
-477
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-91
-Layers of gravel and stone to provide a stable and level surface on which to place anchors.
-Tips
-5
-91
-Layers of gravel and stone to provide a stable and level surface on which to place anchors.
-ToolTipCtrl
-
-1
-7
-Name
-5
-34
-tt_subfoundation_or_bedding_cost57
-X
-3
-366
-Y
-3
-636
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-91
-Layers of gravel and stone to provide a stable and level surface on which to place anchors.
-Tips
-5
-91
-Layers of gravel and stone to provide a stable and level surface on which to place anchors.
-ToolTipCtrl
-
-1
-7
-Name
-5
-34
-tt_subfoundation_or_bedding_cost62
-X
-3
-375
-Y
-3
-837
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-91
-Layers of gravel and stone to provide a stable and level surface on which to place anchors.
-Tips
-5
-91
-Layers of gravel and stone to provide a stable and level surface on which to place anchors.
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -2923,10 +1829,10 @@ Name
 unscheduled_maintenance_contingency_cost
 X
 3
-438
+531
 Y
 3
-954
+519
 Width
 3
 90
@@ -2985,10 +1891,72 @@ Name
 unscheduled_maintenance_cost
 X
 3
-438
+441
 Y
 3
-597
+366
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+34
+unscheduled_maintenance_cost_total
+X
+3
+441
+Y
+3
+366
 Width
 3
 90
@@ -3038,29 +2006,63 @@ TabOrder
 3
 4294967295
 
-22
+35
 balance_of_system_scheduled_maintenance_cost
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
- 
+Default
 balance_of_system_unscheduled_maintenance_cost
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
+Default
+detailed_cost_choice_scheduled_maintenance
+3
+1
  
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+CheckBox
+detailed_cost_choice_unscheduled_maintenance
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+CheckBox
 direct_current_convertor_inspection_cost
 3
 0
@@ -3105,28 +2107,104 @@ electrical_transforming_equipment_inspection_unscheduled_cost
 1
 0
  
+itemized_check_maintenance
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 long_term_service_agreement_cost
 3
-0
+1
  
  
  
 0
 0
+1
+1
+1
+1
+0
+Default
+maintenance_cost
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+maintenance_cost_input
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+maintenance_cost_method
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+2
+Choice
+maintenance_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
 1
 0
 Default
 marine_energy_converter_scheduled_maintenance_cost
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
- 
+Default
 marine_energy_converter_unscheduled_maintenance_cost
 3
 1
@@ -3180,6 +2258,34 @@ other_maintenance_cost
 1
 0
 Default
+other_scheduled_maintenance_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_unscheduled_maintenance_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 power_takeoff_scheduled_maintenance_cost
 3
 0
@@ -3212,18 +2318,49 @@ regular_cable_surveys_cost
 0
 1
 0
- 
+Default
 scheduled_maintenance_cost
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
+Default
+scheduled_maintenance_cost_total
+3
+1
  
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+scheduled_maintenance_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 structural_assembly_scheduled_maintenance_cost
 3
 0
@@ -3270,48 +2407,207 @@ substructure_and_foundation_inspections_unscheduled_costs
  
 unscheduled_maintenance_contingency_cost
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
- 
+Default
 unscheduled_maintenance_cost
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
+Default
+unscheduled_maintenance_cost_total
+3
+1
  
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+unscheduled_maintenance_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-1071
-equations {'long_term_service_agreement_cost_total_display'} = define() {
-	return ${long_term_service_agreement_cost};
-};
-
+1540
 equations {'scheduled_maintenance_cost_total'} = define() {
-	return ${scheduled_maintenance_cost}+${structural_assembly_scheduled_maintenance_cost}+
-		${substructure_and_foundation_inspections_cost}+${power_takeoff_schedule_maintenance_cost};
+	return ${marine_energy_converter_scheduled_maintenance_cost}+
+		${balance_of_system_scheduled_maintenance_cost}+
+		${other_scheduled_maintenance_cost};
 };
 
-equations {'balance_of_system_scheduled_maintenance_cost_total'} = define() {
-	return ${balance_of_system_scheduled_maintenance_cost}+${regular_cable_surveys_cost}+
-		${electrical_transforming_equipment_inspection_cost}+${direct_current_converter_inspection_cost}+
-		${onshore_electric_infrastructure_maintenance_cost};
+equations {'scheduled_maintenance_cost_total_check'} = define() {
+	if (${detailed_cost_choice_scheduled_maintenance}==0)
+	{
+		return ${scheduled_maintenance_cost};
+	}
+	else
+	{
+		return ${scheduled_maintenance_cost_total};
+	}
 };
 
 equations {'unscheduled_maintenance_cost_total'} = define() {
-	return ${unscheduled_maintenance_cost}+${marine_energy_converter_unscheduled_maintenance_cost}+
-		${structural_assembly_unscheduled_maintenance_cost}+${power_takeoff_unscheduled_maintenance_cost}+
-		${substructure_and_foundation_inspections_unscheduled_cost}+${balance_of_system_unscheduled_maintenance_cost};
+	return ${marine_energy_converter_unscheduled_maintenance_cost}+
+		${balance_of_system_unscheduled_maintenance_cost}+
+		${unscheduled_maintenance_contingency_cost}+
+		${other_unscheduled_maintenance_cost};
+};
+
+equations {'unscheduled_maintenance_cost_total_check'} = define() {
+	if (${detailed_cost_choice_unscheduled_maintenance}==0)
+	{
+		return ${unscheduled_maintenance_cost};
+	}
+	else
+	{
+		return ${unscheduled_maintenance_cost_total};
+	}
+};
+
+equations {'maintenance_cost_total'} = define() {
+	return ${long_term_service_agreement_cost}+${scheduled_maintenance_cost_total_check}+
+		${unscheduled_maintenance_cost_total_check}+${other_maintenance_cost};
+};
+
+equations {'itemized_check_maintenance'} = define() {
+	return ?${maintenance_cost_method}
+			[
+				0,
+				0,
+				2,
+				1
+			];
+};
+
+equations {'maintenance_cost'} = define() {
+	return ?${maintenance_cost_method}
+			[
+				${maintenance_cost_input}*${system_capacity},
+				${maintenance_cost_input},
+				${maintenance_cost_modeled},
+				${maintenance_cost_total}
+			];
 };
 
 
-0
+3573
+on_load{'Marine Costs - Maintenance'} = define() {
+	on_change{'detailed_cost_choice_scheduled_maintenance'};
+	detailed_cost_scheduled_maintenance();
+	on_change{'detailed_cost_choice_unscheduled_maintenance'};
+	detailed_cost_unscheduled_maintenance();
+	on_change{'itemized_check_maintenance'};
+	enable_itemized_maintenance();
+};
+
+on_change{'detailed_cost_choice_scheduled_maintenance'} = define() {
+	detailed_cost_scheduled_maintenance();
+};
+
+function detailed_cost_scheduled_maintenance()
+{
+	if (value('itemized_check_maintenance')==1)
+	{
+		detailed_value = value('detailed_cost_choice_scheduled_maintenance');
+		enable('scheduled_maintenance_cost',detailed_value==0);
+		show('scheduled_maintenance_cost',detailed_value==0);
+		enable('scheduled_maintenance_cost_total',detailed_value);
+		show('scheduled_maintenance_cost_total',detailed_value);
+		enable('marine_energy_converter_scheduled_maintenance_cost',detailed_value);
+		enable('balance_of_system_scheduled_maintenance_cost',detailed_value);
+		enable('other_scheduled_maintenance_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_unscheduled_maintenance'} = define() {
+	detailed_cost_unscheduled_maintenance();
+};
+
+function detailed_cost_unscheduled_maintenance()
+{
+	if (value('itemized_check_maintenance')==1)
+	{
+		detailed_value = value('detailed_cost_choice_unscheduled_maintenance');
+		enable('unscheduled_maintenance_cost',detailed_value==0);
+		show('unscheduled_maintenance_cost',detailed_value==0);
+		enable('unscheduled_maintenance_cost_total',detailed_value);
+		show('unscheduled_maintenance_cost_total',detailed_value);
+		enable('marine_energy_converter_unscheduled_maintenance_cost',detailed_value);
+		enable('balance_of_system_unscheduled_maintenance_cost',detailed_value);
+		enable('unscheduled_maintenance_contingency_cost',detailed_value);
+		enable('other_unscheduled_maintenance_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'itemized_check_maintenance'} = define() {
+	enable_itemized_maintenance();
+};
+
+function enable_itemized_maintenance()
+{
+	itemized_value = value('itemized_check_maintenance');
+	enable('long_term_service_agreement_cost',itemized_value==1);
+	enable('scheduled_maintenance_cost',itemized_value==1);
+	enable('scheduled_maintenance_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_scheduled_maintenance',itemized_value==1);
+	enable('marine_energy_converter_scheduled_maintenance_cost',itemized_value==1);
+	enable('balance_of_system_scheduled_maintenance_cost',itemized_value==1);
+	enable('other_scheduled_maintenance_cost',itemized_value==1);
+	enable('unscheduled_maintenance_cost',itemized_value==1);
+	enable('unscheduled_maintenance_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_unscheduled_maintenance',itemized_value==1);
+	enable('marine_energy_converter_unscheduled_maintenance_cost',itemized_value==1);
+	enable('balance_of_system_unscheduled_maintenance_cost',itemized_value==1);
+	enable('unscheduled_maintenance_contingency_cost',itemized_value==1);
+	enable('other_unscheduled_maintenance_cost',itemized_value==1);
+	enable('other_maintenance_cost',itemized_value==1);
+	enable('maintenance_cost_input',itemized_value!=2);
+	show('maintenance_cost_total',itemized_value==1);
+	show('maintenance_level_total_label',itemized_value==1);
+	show('maintenance_cost_input',(itemized_value==0 || itemized_value==2));
+	show('maintenance_user_input_label',(itemized_value==0 || itemized_value==2));
+	if (itemized_value==1)
+	{
+		detailed_cost_scheduled_maintenance();
+		detailed_cost_unscheduled_maintenance();
+	}
+	refresh();
+}

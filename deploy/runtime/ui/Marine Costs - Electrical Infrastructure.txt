@@ -1,7 +1,7 @@
 Marine Costs - Electrical Infrastructure
-937
-1553
-119
+993
+1633
+92
 Label
 
 1
@@ -12,13 +12,13 @@ Name
 92
 X
 3
-66
+327
 Y
 3
 159
 Width
 3
-183
+111
 Height
 3
 24
@@ -37,7 +37,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -46,7 +46,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -60,13 +60,13 @@ Name
 Cable Protection
 X
 3
-66
+318
 Y
 3
-519
+609
 Width
 3
-93
+120
 Height
 3
 24
@@ -85,7 +85,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -94,7 +94,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -108,13 +108,13 @@ Name
 Cable Protection75
 X
 3
-123
+210
 Y
 3
-993
+1143
 Width
 3
-93
+228
 Height
 3
 24
@@ -133,7 +133,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -142,7 +142,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -156,13 +156,13 @@ Name
 Cable Protection7543
 X
 3
-81
+285
 Y
 3
-795
+906
 Width
 3
-93
+153
 Height
 3
 24
@@ -181,7 +181,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -190,7 +190,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -204,16 +204,16 @@ Name
 Electrical Infrastructure Costs
 X
 3
-57
+33
 Y
 3
-51
+57
 Width
 3
 800
 Height
 3
-1339
+1462
 Tool Tip
 5
 0
@@ -237,7 +237,7 @@ X
 543
 Y
 3
-237
+255
 Width
 3
 90
@@ -299,7 +299,7 @@ X
 543
 Y
 3
-276
+291
 Width
 3
 90
@@ -358,166 +358,6 @@ Name
 array_cable_system_cost
 X
 3
-747
-Y
-3
-159
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-29
-array_cable_system_cost_input
-X
-3
-543
-Y
-3
-159
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Choice
-
-1
-9
-Name
-5
-30
-array_cable_system_cost_method
-X
-3
-300
-Y
-3
-159
-Width
-3
-126
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-4
-Enter in $/kW
-Enter in $
-Use Modeled Value
-Enter in Itemized Costs
-Selection
-3
-0
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-31
-array_cable_system_cost_modeled
-X
-3
 438
 Y
 3
@@ -545,8 +385,7 @@ Decimals
 0
 Prefix
 5
-1
-$
+0
 Suffix
 5
 0
@@ -581,7 +420,7 @@ Name
 array_cable_system_cost_total
 X
 3
-645
+438
 Y
 3
 159
@@ -709,7 +548,7 @@ X
 543
 Y
 3
-195
+222
 Width
 3
 90
@@ -764,14 +603,14 @@ Numeric
 17
 Name
 5
-22
-bend_restrictors_cost8
+21
+bend_restrictors_cost
 X
 3
 543
 Y
 3
-678
+768
 Width
 3
 90
@@ -833,7 +672,7 @@ X
 543
 Y
 3
-711
+801
 Width
 3
 90
@@ -895,7 +734,7 @@ X
 543
 Y
 3
-600
+705
 Width
 3
 90
@@ -954,10 +793,10 @@ Name
 cable_protection_cost
 X
 3
-543
+438
 Y
 3
-519
+609
 Width
 3
 90
@@ -1012,14 +851,14 @@ Numeric
 17
 Name
 5
-19
-ducting_system_cost
+27
+cable_protection_cost_total
 X
 3
-543
+438
 Y
 3
-639
+609
 Width
 3
 90
@@ -1068,6 +907,296 @@ BackColour
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+33
+detailed_cost_choice_array_cables
+X
+3
+540
+Y
+3
+192
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+37
+detailed_cost_choice_cable_protection
+X
+3
+543
+Y
+3
+636
+Width
+3
+129
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+34
+detailed_cost_choice_export_cables
+X
+3
+540
+Y
+3
+420
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+40
+detailed_cost_choice_offshore_substation
+X
+3
+543
+Y
+3
+930
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+41
+detailed_cost_choice_onshore_transmission
+X
+3
+540
+Y
+3
+1167
+Width
+3
+135
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+19
+ducting_system_cost
+X
+3
+543
+Y
+3
+738
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+16
+elec_infras_cost
+X
+3
+639
+Y
+3
+114
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+1
 Numeric
 
 1
@@ -1127,6 +1256,42 @@ BackColour
 255
 255
 255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+23
+elec_infras_cost_method
+X
+3
+300
+Y
+3
+114
+Width
+3
+126
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+4
+Enter in $/kW
+Enter in $
+Use Modeled Value
+Enter in Itemized Costs
+Selection
+3
+0
 TabOrder
 3
 4294967295
@@ -1203,7 +1368,7 @@ Name
 elec_infras_cost_total
 X
 3
-645
+543
 Y
 3
 114
@@ -1269,7 +1434,7 @@ X
 543
 Y
 3
-909
+1038
 Width
 3
 90
@@ -1294,168 +1459,6 @@ Decimals
 Prefix
 5
 0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-17
-eng_and_mgmt_cost
-X
-3
-747
-Y
-3
-114
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-1
-Choice
-
-1
-9
-Name
-5
-24
-eng_and_mgmt_cost_method
-X
-3
-300
-Y
-3
-114
-Width
-3
-126
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-4
-Enter in $/kW
-Enter in $
-Use Modeled Value
-Enter in Itemized Costs
-Selection
-3
-0
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-32
-eonshore_substation_cost_modeled
-X
-3
-438
-Y
-3
-987
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
 Suffix
 5
 0
@@ -1493,7 +1496,7 @@ X
 543
 Y
 3
-441
+483
 Width
 3
 90
@@ -1555,7 +1558,7 @@ X
 543
 Y
 3
-480
+516
 Width
 3
 90
@@ -1614,10 +1617,10 @@ Name
 export_cable_system_cost
 X
 3
-747
+438
 Y
 3
-360
+393
 Width
 3
 90
@@ -1673,13 +1676,76 @@ Numeric
 Name
 5
 30
-export_cable_system_cost_input
+export_cable_system_cost_total
+X
+3
+438
+Y
+3
+393
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+39
+export_cable_system_transportation_cost
 X
 3
 543
 Y
 3
-360
+546
 Width
 3
 90
@@ -1704,168 +1770,6 @@ Decimals
 Prefix
 5
 0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Choice
-
-1
-9
-Name
-5
-33
-export_cable_system_cost_method30
-X
-3
-303
-Y
-3
-360
-Width
-3
-126
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-4
-Enter in $/kW
-Enter in $
-Use Modeled Value
-Enter in Itemized Costs
-Selection
-3
-0
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-32
-export_cable_system_cost_modeled
-X
-3
-441
-Y
-3
-360
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-32
-export_cable_system_cost_total35
-X
-3
-645
-Y
-3
-360
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
 Suffix
 5
 0
@@ -1903,7 +1807,7 @@ X
 543
 Y
 3
-399
+450
 Width
 3
 90
@@ -1965,7 +1869,7 @@ X
 543
 Y
 3
-948
+1077
 Width
 3
 90
@@ -2014,6 +1918,53 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+26
+itemized_check_elec_infras
+X
+3
+51
+Y
+3
+114
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -2027,7 +1978,7 @@ X
 543
 Y
 3
-747
+837
 Width
 3
 90
@@ -2089,7 +2040,7 @@ X
 543
 Y
 3
-1029
+1200
 Width
 3
 90
@@ -2144,17 +2095,17 @@ Label
 13
 Name
 5
-10
-object 713
+22
+level_input_label_elec
 X
 3
-78
+558
 Y
 3
-240
+87
 Width
 3
-129
+66
 Height
 3
 24
@@ -2163,8 +2114,8 @@ Tool Tip
 0
 Caption
 5
-30
-Cable Accessories and Jointing
+12
+Level Totals
 TextColour
 4
 0
@@ -2182,7 +2133,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2193,16 +2144,16 @@ Label
 Name
 5
 10
-object 719
+object 713
 X
 3
-657
+375
 Y
 3
-87
+255
 Width
 3
-66
+168
 Height
 3
 24
@@ -2211,8 +2162,8 @@ Tool Tip
 0
 Caption
 5
-12
-Level Totals
+30
+Cable Accessories and Jointing
 TextColour
 4
 0
@@ -2292,13 +2243,13 @@ Name
 object 72441
 X
 3
-93
+381
 Y
 3
-753
+870
 Width
 3
-93
+162
 Height
 3
 24
@@ -2307,8 +2258,8 @@ Tool Tip
 0
 Caption
 5
-12
-J-tube Seals
+28
+Other Cable Protection Costs
 TextColour
 4
 0
@@ -2326,7 +2277,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2340,10 +2291,10 @@ Name
 object 7244110
 X
 3
-78
+450
 Y
 3
-678
+768
 Width
 3
 93
@@ -2374,7 +2325,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2388,10 +2339,10 @@ Name
 object 7244113
 X
 3
-78
+450
 Y
 3
-639
+738
 Width
 3
 93
@@ -2422,7 +2373,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2436,13 +2387,13 @@ Name
 object 7244116
 X
 3
-78
+444
 Y
 3
-600
+705
 Width
 3
-93
+99
 Height
 3
 24
@@ -2470,7 +2421,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2484,10 +2435,10 @@ Name
 object 7244117
 X
 3
-78
+450
 Y
 3
-561
+666
 Width
 3
 93
@@ -2518,7 +2469,55 @@ WordWrap
 0
 AlignRight
 2
+1
+AlignTop
+2
 0
+Label
+
+1
+13
+Name
+5
+14
+object 7244135
+X
+3
+450
+Y
+3
+837
+Width
+3
+93
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+12
+J-tube Seals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
 AlignTop
 2
 0
@@ -2532,10 +2531,10 @@ Name
 object 724416
 X
 3
-93
+450
 Y
 3
-714
+801
 Width
 3
 93
@@ -2566,7 +2565,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2580,13 +2579,13 @@ Name
 object 7244165
 X
 3
-135
+312
 Y
 3
-1230
+1428
 Width
 3
-93
+231
 Height
 3
 24
@@ -2595,8 +2594,8 @@ Tool Tip
 0
 Caption
 5
-50
-Onshore Transmission Infrastructure Transportation
+41
+Other Onshore Transmission Infrastructure
 TextColour
 4
 0
@@ -2614,7 +2613,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2628,10 +2627,10 @@ Name
 object 724416513
 X
 3
-135
+450
 Y
 3
-1152
+1317
 Width
 3
 93
@@ -2662,7 +2661,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2676,13 +2675,61 @@ Name
 object 724416531
 X
 3
-135
+363
 Y
 3
-954
+1110
 Width
 3
-93
+180
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+31
+Other Offshore Substation Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+18
+object 72441653125
+X
+3
+363
+Y
+3
+1077
+Width
+3
+180
 Height
 3
 24
@@ -2710,7 +2757,55 @@ WordWrap
 0
 AlignRight
 2
+1
+AlignTop
+2
 0
+Label
+
+1
+13
+Name
+5
+15
+object 72441658
+X
+3
+246
+Y
+3
+1395
+Width
+3
+297
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+50
+Onshore Transmission Infrastructure Transportation
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
 AlignTop
 2
 0
@@ -2724,13 +2819,13 @@ Name
 object 7244168
 X
 3
-135
+423
 Y
 3
-1191
+1356
 Width
 3
-93
+120
 Height
 3
 24
@@ -2758,7 +2853,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2772,13 +2867,13 @@ Name
 object 724416818
 X
 3
-135
+318
 Y
 3
-1113
+1278
 Width
 3
-93
+225
 Height
 3
 24
@@ -2806,7 +2901,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2820,13 +2915,13 @@ Name
 object 724416833
 X
 3
-135
+369
 Y
 3
-915
+1038
 Width
 3
-93
+174
 Height
 3
 24
@@ -2854,7 +2949,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2868,13 +2963,13 @@ Name
 object 7244171
 X
 3
-135
+384
 Y
 3
-1074
+1239
 Width
 3
-93
+159
 Height
 3
 24
@@ -2902,7 +2997,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2916,13 +3011,13 @@ Name
 object 724417137
 X
 3
-135
+387
 Y
 3
-876
+999
 Width
 3
-93
+156
 Height
 3
 24
@@ -2950,7 +3045,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2964,10 +3059,10 @@ Name
 object 7244172
 X
 3
-135
+450
 Y
 3
-1035
+1200
 Width
 3
 93
@@ -2998,7 +3093,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3012,13 +3107,13 @@ Name
 object 724417240
 X
 3
-135
+495
 Y
 3
-837
+960
 Width
 3
-93
+48
 Height
 3
 24
@@ -3046,7 +3141,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3060,10 +3155,106 @@ Name
 object 726
 X
 3
-78
+348
 Y
 3
-480
+546
+Width
+3
+195
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+34
+Export Cable System Transportation
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72652
+X
+3
+363
+Y
+3
+576
+Width
+3
+180
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+31
+Other Export Cable System Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72653
+X
+3
+378
+Y
+3
+516
 Width
 3
 165
@@ -3094,7 +3285,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3108,13 +3299,13 @@ Name
 object 727
 X
 3
-78
+462
 Y
 3
-399
+450
 Width
 3
-156
+81
 Height
 3
 24
@@ -3142,7 +3333,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3156,13 +3347,13 @@ Name
 object 728
 X
 3
-66
+312
 Y
 3
-360
+393
 Width
 3
-117
+126
 Height
 3
 24
@@ -3181,7 +3372,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -3190,7 +3381,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3204,13 +3395,61 @@ Name
 object 72821
 X
 3
-78
+351
+Y
+3
+351
+Width
+3
+192
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+30
+Other Array Cable System Costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7282178
+X
+3
+351
 Y
 3
 321
 Width
 3
-117
+192
 Height
 3
 24
@@ -3238,7 +3477,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3252,13 +3491,13 @@ Name
 object 73
 X
 3
-78
+468
 Y
 3
-201
+222
 Width
 3
-138
+75
 Height
 3
 24
@@ -3286,7 +3525,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3300,13 +3539,13 @@ Name
 object 730
 X
 3
-78
+345
 Y
 3
-279
+291
 Width
 3
-54
+198
 Height
 3
 24
@@ -3334,7 +3573,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3348,13 +3587,13 @@ Name
 object 731
 X
 3
-78
+387
 Y
 3
-441
+483
 Width
 3
-150
+156
 Height
 3
 24
@@ -3382,7 +3621,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3396,7 +3635,7 @@ Name
 object 7322
 X
 3
-750
+642
 Y
 3
 87
@@ -3441,67 +3680,19 @@ Label
 Name
 5
 9
-object 74
-X
-3
-561
-Y
-3
-87
-Width
-3
-60
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-10
-User Input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-9
 object 75
 X
 3
-84
+153
 Y
 3
 114
 Width
 3
-96
+138
 Height
 3
-39
+24
 Tool Tip
 5
 0
@@ -3517,7 +3708,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -3529,7 +3720,7 @@ AlignRight
 0
 AlignTop
 2
-1
+0
 Label
 
 1
@@ -3540,13 +3731,13 @@ Name
 object45
 X
 3
-123
+231
 Y
 3
-1266
+1470
 Width
 3
-93
+207
 Height
 3
 24
@@ -3555,8 +3746,8 @@ Tool Tip
 0
 Caption
 5
-5
-Other
+37
+Other Electrical Infrastructure Costs
 TextColour
 4
 0
@@ -3565,7 +3756,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -3574,7 +3765,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3588,10 +3779,10 @@ Name
 offshore_substation_cost
 X
 3
-744
+438
 Y
 3
-789
+906
 Width
 3
 90
@@ -3647,174 +3838,13 @@ Numeric
 Name
 5
 30
-offshore_substation_cost_input
-X
-3
-543
-Y
-3
-789
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Choice
-
-1
-9
-Name
-5
-31
-offshore_substation_cost_method
-X
-3
-300
-Y
-3
-789
-Width
-3
-126
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-4
-Enter in $/kW
-Enter in $
-Use Modeled Value
-Enter in Itemized Costs
-Selection
-3
-0
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-32
-offshore_substation_cost_modeled
+offshore_substation_cost_total
 X
 3
 438
 Y
 3
-789
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-38
-offshore_substation_cost_total_display
-X
-3
-645
-Y
-3
-789
+906
 Width
 3
 90
@@ -3871,111 +3901,13 @@ Numeric
 Name
 5
 29
-onshore_substation_cost_input
+onshore_substation_cost_total
 X
 3
-543
+438
 Y
 3
-987
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Choice
-
-1
-9
-Name
-5
-30
-onshore_substation_cost_method
-X
-3
-300
-Y
-3
-987
-Width
-3
-126
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-4
-Enter in $/kW
-Enter in $
-Use Modeled Value
-Enter in Itemized Costs
-Selection
-3
-0
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-37
-onshore_substation_cost_total_display
-X
-3
-645
-Y
-3
-987
+1143
 Width
 3
 90
@@ -4038,7 +3970,7 @@ X
 543
 Y
 3
-1185
+1356
 Width
 3
 90
@@ -4097,10 +4029,10 @@ Name
 onshore_transmission_infrastructure_cost
 X
 3
-744
+438
 Y
 3
-987
+1143
 Width
 3
 90
@@ -4162,7 +4094,131 @@ X
 543
 Y
 3
-1224
+1395
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+29
+other_array_cable_system_cost
+X
+3
+543
+Y
+3
+351
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+27
+other_cable_protection_cost
+X
+3
+543
+Y
+3
+870
 Width
 3
 90
@@ -4221,10 +4277,10 @@ Name
 other_elec_infra_cost
 X
 3
-744
+438
 Y
 3
-1260
+1470
 Width
 3
 90
@@ -4279,14 +4335,14 @@ Numeric
 17
 Name
 5
-27
-other_elec_infra_cost_input
+30
+other_export_cable_system_cost
 X
 3
 543
 Y
 3
-1260
+576
 Width
 3
 90
@@ -4335,56 +4391,20 @@ BackColour
 TabOrder
 3
 4294967295
-Choice
-
-1
-9
-Name
-5
-28
-other_elec_infra_cost_method
-X
-3
-294
-Y
-3
-1260
-Width
-3
-126
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-4
-Enter in $/kW
-Enter in $
-Use Modeled Value
-Enter in Itemized Costs
-Selection
-3
-0
-TabOrder
-3
-4294967295
 Numeric
 
 1
 17
 Name
 5
-29
-other_elec_infra_cost_modeled
+30
+other_offshore_substation_cost
 X
 3
-432
+543
 Y
 3
-1260
+1110
 Width
 3
 90
@@ -4408,8 +4428,7 @@ Decimals
 0
 Prefix
 5
-1
-$
+0
 Suffix
 5
 0
@@ -4440,14 +4459,14 @@ Numeric
 17
 Name
 5
-35
-other_elec_infra_cost_total_display
+46
+other_onshore_transmission_infrastructure_cost
 X
 3
-645
+543
 Y
 3
-1260
+1428
 Width
 3
 90
@@ -4471,8 +4490,7 @@ Decimals
 0
 Prefix
 5
-1
-$
+0
 Suffix
 5
 0
@@ -4510,7 +4528,7 @@ X
 543
 Y
 3
-1146
+1317
 Width
 3
 90
@@ -4572,7 +4590,7 @@ X
 543
 Y
 3
-561
+666
 Width
 3
 90
@@ -4634,7 +4652,7 @@ X
 543
 Y
 3
-1107
+1278
 Width
 3
 90
@@ -4696,7 +4714,7 @@ X
 543
 Y
 3
-870
+999
 Width
 3
 90
@@ -4758,7 +4776,7 @@ X
 543
 Y
 3
-831
+960
 Width
 3
 90
@@ -4807,846 +4825,6 @@ BackColour
 TabOrder
 3
 4294967295
-ToolTipCtrl
-
-1
-7
-Name
-5
-40
-tt_array_cable_system_commissioning_cost
-X
-3
-132
-Y
-3
-279
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-129
- Process of assuring that all array cable systems and components are operational through a predefined series of tests and checks.
-Tips
-5
-129
- Process of assuring that all array cable systems and components are operational through a predefined series of tests and checks.
-ToolTipCtrl
-
-1
-7
-Name
-5
-26
-tt_array_cable_system_cost
-X
-3
-252
-Y
-3
-159
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-104
-Collects power generated by the marine energy converter(s) and transports to the offshore substation(s).
-Tips
-5
-104
-Collects power generated by the marine energy converter(s) and transports to the offshore substation(s).
-ToolTipCtrl
-
-1
-7
-Name
-5
-41
-tt_array_cable_system_transportation_cost
-X
-3
-198
-Y
-3
-321
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-100
-Costs of transporting the array cable components from the manufacturing facility to the staging area
-Tips
-5
-100
-Costs of transporting the array cable components from the manufacturing facility to the staging area
-ToolTipCtrl
-
-1
-7
-Name
-5
-20
-tt_array_cables_cost
-X
-3
-219
-Y
-3
-201
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-116
-High- or medium-voltage cable to connect the marine energy converters (MECs) with offshore substation or export MEC.
-Tips
-5
-116
-High- or medium-voltage cable to connect the marine energy converters (MECs) with offshore substation or export MEC.
-ToolTipCtrl
-
-1
-7
-Name
-5
-24
-tt_bend_restrictors_cost
-X
-3
-174
-Y
-3
-678
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-78
-Prevents the over-bending of static cables during installation and operations.
-Tips
-5
-78
-Prevents the over-bending of static cables during installation and operations.
-ToolTipCtrl
-
-1
-7
-Name
-5
-23
-tt_bend_stiffeners_cost
-X
-3
-189
-Y
-3
-714
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-109
-Limit bending stresses and maintain acceptable curvature for dynamic cables at hang off point and touch down.
-Tips
-5
-109
-Limit bending stresses and maintain acceptable curvature for dynamic cables at hang off point and touch down.
-ToolTipCtrl
-
-1
-7
-Name
-5
-33
-tt_cable_accessories_and_jointing
-X
-3
-231
-Y
-3
-441
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-72
-Other elements providing necessary functions to the export cable system.
-Tips
-5
-72
-Other elements providing necessary functions to the export cable system.
-ToolTipCtrl
-
-1
-7
-Name
-5
-38
-tt_cable_accessories_and_jointing_cost
-X
-3
-207
-Y
-3
-240
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-71
-Other elements providing necessary functions to the array cable system.
-Tips
-5
-71
-Other elements providing necessary functions to the array cable system.
-ToolTipCtrl
-
-1
-7
-Name
-5
-24
-tt_cable_mattresses_cost
-X
-3
-174
-Y
-3
-600
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-104
-Concrete, sand bags, polyurethane mats to route cables over existing electric/telecommunications cables.
-Tips
-5
-104
-Concrete, sand bags, polyurethane mats to route cables over existing electric/telecommunications cables.
-ToolTipCtrl
-
-1
-7
-Name
-5
-24
-tt_cable_protection_cost
-X
-3
-159
-Y
-3
-519
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-87
-Equipment and materials used to protect cable from damage (strikes, over-bending, etc.)
-Tips
-5
-87
-Equipment and materials used to protect cable from damage (strikes, over-bending, etc.)
-ToolTipCtrl
-
-1
-7
-Name
-5
-22
-tt_ducting_system_cost
-X
-3
-174
-Y
-3
-639
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-81
-Protective sheath that can be fitted around cables where burial is not an option.
-Tips
-5
-81
-Protective sheath that can be fitted around cables where burial is not an option.
-ToolTipCtrl
-
-1
-7
-Name
-5
-39
-tt_electrical_conversion_equipment_cost
-X
-3
-231
-Y
-3
-915
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-104
-Equipment to step up power from array cable voltage to the export voltage and/or to convert power to DC 
-Tips
-5
-104
-Equipment to step up power from array cable voltage to the export voltage and/or to convert power to DC 
-ToolTipCtrl
-
-1
-7
-Name
-5
-34
-tt_export_cable_commissioning_cost
-X
-3
-243
-Y
-3
-480
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-102
-Costs of transporting the export cable components from the manufacturing facility to the staging area.
-Tips
-5
-102
-Costs of transporting the export cable components from the manufacturing facility to the staging area.
-ToolTipCtrl
-
-1
-7
-Name
-5
-28
-tt_export_cable_systems_cost
-X
-3
-198
-Y
-3
-360
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-65
-Any margin earned by an independent construction management firm.
-Tips
-5
-65
-Any margin earned by an independent construction management firm.
-ToolTipCtrl
-
-1
-7
-Name
-5
-21
-tt_export_cables_cost
-X
-3
-234
-Y
-3
-399
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-170
-High- or medium-voltage cable to connect marine energy converter (MEC) or offshore substations with onshore electric infrastructure or offshore convertor station (if DC).
-Tips
-5
-170
-High- or medium-voltage cable to connect marine energy converter (MEC) or offshore substations with onshore electric infrastructure or offshore convertor station (if DC).
-ToolTipCtrl
-
-1
-7
-Name
-5
-40
-tt_facilities_and_ancillary_systems_cost
-X
-3
-231
-Y
-3
-954
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-85
-Other elements providing necessary functions to offshore substation during operations
-Tips
-5
-85
-Other elements providing necessary functions to offshore substation during operations
-ToolTipCtrl
-
-1
-7
-Name
-5
-19
-tt_jtube_seals_cost
-X
-3
-189
-Y
-3
-753
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-117
-Routes cable from the outside to the inside of the foundation and provides protection to the cable from wave action. 
-Tips
-5
-117
-Routes cable from the outside to the inside of the foundation and provides protection to the cable from wave action. 
-ToolTipCtrl
-
-1
-7
-Name
-5
-19
-tt_land_leases_cost
-X
-3
-231
-Y
-3
-1035
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-101
-Land Lease or Right of Way payments for transmission corridor prior to commercial date of operations.
-Tips
-5
-101
-Land Lease or Right of Way payments for transmission corridor prior to commercial date of operations.
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_offshore_substation_cost
-X
-3
-174
-Y
-3
-795
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-208
-Electric conversion equipment required to step-up or convert power for export to the onshore grid and support structure,  also onboard work platforms, accommodation, equipment storage, helicopter access, etc.
-Tips
-5
-208
-Electric conversion equipment required to step-up or convert power for export to the onshore grid and support structure,  also onboard work platforms, accommodation, equipment storage, helicopter access, etc.
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_onshore_substations_cost
-X
-3
-231
-Y
-3
-1191
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-130
-Facility to house electric conversion equipment to transform or convert power from the export voltage to the onshore grid voltage.
-Tips
-5
-130
-Facility to house electric conversion equipment to transform or convert power from the export voltage to the onshore grid voltage.
-ToolTipCtrl
-
-1
-7
-Name
-5
-43
-tt_onshore_transmission_infrastructure_cost
-X
-3
-216
-Y
-3
-993
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-93
-Any onshore transmission or conversion equipment required to connect project to onshore grid.
-Tips
-5
-93
-Any onshore transmission or conversion equipment required to connect project to onshore grid.
-ToolTipCtrl
-
-1
-7
-Name
-5
-58
-tt_onshore_transmission_infrastructure_transportation_cost
-X
-3
-231
-Y
-3
-1230
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-125
-Costs of transporting the onshore transmission infrastructure components from the manufacturing facility to the staging area.
-Tips
-5
-125
-Costs of transporting the onshore transmission infrastructure components from the manufacturing facility to the staging area.
-ToolTipCtrl
-
-1
-7
-Name
-5
-25
-tt_other_elec_infras_cost
-X
-3
-216
-Y
-3
-1266
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-122
-Costs not included within the electrical Infrastructure categories. Please provide a  description of the other cost input.
-Tips
-5
-122
-Costs not included within the electrical Infrastructure categories. Please provide a  description of the other cost input.
-ToolTipCtrl
-
-1
-7
-Name
-5
-22
-tt_overhead_lines_cost
-X
-3
-231
-Y
-3
-1152
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-93
-Lines that transmit power and enable communications with the marine energy converter project.
-Tips
-5
-93
-Lines that transmit power and enable communications with the marine energy converter project.
-ToolTipCtrl
-
-1
-7
-Name
-5
-36
-tt_scour_protection_elec_infras_cost
-X
-3
-174
-Y
-3
-561
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-105
-Rock fill, sand bags, or concrete mattresses to protect from scouring, used where burial is not possible.
-Tips
-5
-105
-Rock fill, sand bags, or concrete mattresses to protect from scouring, used where burial is not possible.
-ToolTipCtrl
-
-1
-7
-Name
-5
-46
-tt_self_supporting_towers_with_insulators_cost
-X
-3
-231
-Y
-3
-1113
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-112
-Structures to support any overhead lines required for the connection of export cables to the onshore substation.
-Tips
-5
-112
-Structures to support any overhead lines required for the connection of export cables to the onshore substation.
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_structural_assembly_cost
-X
-3
-186
-Y
-3
-114
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-194
-All activities from project inception to financial close, where financial close is the date when project and financing agreements have been signed and all the required conditions  have been met.
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
-ToolTipCtrl
-
-1
-7
-Name
-5
-35
-tt_substructure_and_foundation_cost
-X
-3
-231
-Y
-3
-876
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-87
-All elements of the offshore substation below the point of connection with the topside.
-Tips
-5
-87
-All elements of the offshore substation below the point of connection with the topside.
-ToolTipCtrl
-
-1
-7
-Name
-5
-15
-tt_topside_cost
-X
-3
-231
-Y
-3
-837
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-190
-Structure that provides support and climate controlled housing for electrical conversion equipment, also can provide work platforms, accommodation, equipment storage, helicopter access, etc.
-Tips
-5
-190
-Structure that provides support and climate controlled housing for electrical conversion equipment, also can provide work platforms, accommodation, equipment storage, helicopter access, etc.
-ToolTipCtrl
-
-1
-7
-Name
-5
-32
-tt_underground_cable_system_cost
-X
-3
-231
-Y
-3
-1074
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-94
-Any underground cables required for the connection of export cables to the onshore substation.
-Tips
-5
-94
-Any underground cables required for the connection of export cables to the onshore substation.
 Numeric
 
 1
@@ -5660,7 +4838,7 @@ X
 543
 Y
 3
-1068
+1239
 Width
 3
 90
@@ -5709,8 +4887,56 @@ BackColour
 TabOrder
 3
 4294967295
+Label
 
-41
+1
+13
+Name
+5
+21
+user_input_label_elec
+X
+3
+561
+Y
+3
+87
+Width
+3
+60
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+10
+User Input
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+
+60
 array_cable_accessories_and_jointing_cost
 3
 1
@@ -5754,6 +4980,20 @@ array_cable_system_cost
 0
 Default
 array_cable_system_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+array_cable_system_cost_total_check
 3
 1
  
@@ -5865,6 +5105,104 @@ cable_protection_cost
 1
 0
 Default
+cable_protection_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+cable_protection_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_array_cables
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+CheckBox
+detailed_cost_choice_cable_protection
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_export_cables
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_offshore_substation
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_onshore_transmission
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 ducting_system_cost
 3
 1
@@ -5879,17 +5217,48 @@ ducting_system_cost
 1
 0
 Default
+elec_infras_cost
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 elec_infras_cost_input
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
 Default
+elec_infras_cost_method
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+2
+Choice
 elec_infras_cost_modeled
 3
 1
@@ -5906,12 +5275,15 @@ elec_infras_cost_modeled
 Default
 elec_infras_cost_total
 3
-0
+1
  
  
  
 0
-0
+8
+1
+1
+1
 1
 0
 Default
@@ -5945,15 +5317,18 @@ export_cable_accessories_and_jointing_cost
 Default
 export_cable_commissioning_cost
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
- 
+Default
 export_cable_system_cost
 3
 1
@@ -5969,6 +5344,20 @@ export_cable_system_cost
 0
 Default
 export_cable_system_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+export_cable_system_cost_total_check
 3
 1
  
@@ -6024,6 +5413,20 @@ facilities_and_ancillary_systems_cost
 1
 0
 Default
+itemized_check_elec_infras
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 jtube_seals_cost
 3
 1
@@ -6068,23 +5471,43 @@ offshore_substation_cost
 Default
 offshore_substation_cost_total
 3
-0
+1
  
  
  
 0
+8
+1
+1
+1
+1
 0
+Default
+offshore_substation_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
 1
 0
 Default
 offshore_substation_cost_total_display
 3
-0
+1
  
  
  
 0
-0
+8
+1
+1
+1
 1
 0
 Default
@@ -6102,14 +5525,28 @@ onshore_substation_cost
 1
 0
 Default
-onshore_substation_cost_total_display
+onshore_substation_cost_total
 3
 1
  
  
  
 0
+8
+1
+1
+1
+1
 0
+Default
+onshore_substation_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -6158,6 +5595,34 @@ onshore_transmission_infrastructure_transportation_cost
 1
 0
 Default
+other_array_cable_system_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_cable_protection_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 other_elec_infra_cost
 3
 1
@@ -6173,6 +5638,48 @@ other_elec_infra_cost
 0
 Default
 other_elec_infra_cost_total_display
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_export_cable_system_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_offshore_substation_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_onshore_transmission_infrastructure_cost
 3
 1
  
@@ -6230,26 +5737,32 @@ self_supporting_towers_with_insulators_cost
 Default
 substructure_and_foundation_cost
 3
-0
+1
  
  
  
 0
 0
+1
+1
+1
 1
 0
 Default
 topside_cost
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
- 
+Default
 underground_cable_system_cost
 3
 1
@@ -6265,43 +5778,340 @@ underground_cable_system_cost
 0
 Default
 
-1578
+3453
 equations {'elec_infras_cost_modeled'} = define() {
 	return ${array_cable_system_cost_modeled}+${export_cable_system_cost_modeled}+
 		${offshore_substation_cost_modeled}+${onshore_substation_cost_modeled}+
 		${other_elec_infra_cost_modeled};
 };
 
-equations {'array_cable_system_total'} = define() {
+equations {'array_cable_system_cost_total'} = define() {
 	return ${array_cables_cost}+${array_cable_accessories_and_jointing_cost}+
-		${array_cable_system_commissioning_cost}+${array_cable_system_transportation_cost};
+		${array_cable_system_commissioning_cost}+${array_cable_system_transportation_cost}+
+		${other_array_cable_system_cost};
 };
 
+equations {'array_cable_system_cost_total_check'} = define() {
+	if (${detailed_cost_choice_array_cables}==0)
+	{
+		return ${array_cable_system_cost};
+	}
+	else
+	{
+		return ${array_cable_system_cost_total};
+	}
+};
+
+
+
 equations {'export_cable_system_cost_total'} = define() {
-	return ${export_cable_system_cost}+${export_cables_cost}+
-		${export_cable_accessories_and_jointing_cost}+${export_cable_commisioning_cost};
+	return ${export_cables_cost}+${export_cable_accessories_and_jointing_cost}+
+		${export_cable_commissioning_cost}+${export_cable_system_transportation_cost}+
+		${other_export_cable_system_cost};
+};
+
+equations {'export_cable_system_cost_total_check'} = define() {
+	if (${detailed_cost_choice_export_cables}==0)
+	{
+		return ${export_cable_system_cost};
+	}
+	else
+	{
+		return ${export_cable_system_cost_total};
+	}
 };
 
 equations {'cable_protection_cost_total'} = define() {
-	return ${cable_protection_cost}+${scour_protection_elec_infras_cost}+
+	return ${scour_protection_elec_infras_cost}+
 		${cable_mattresses_cost}+${ducting_system_cost}+${bend_restrictors_cost}+
-		${bend_stiffeners_cost}+${jtube_seals_cost};
+		${bend_stiffeners_cost}+${jtube_seals_cost}+${other_cable_protection_cost};
+};
+
+equations {'cable_protection_cost_total_check'} = define() {
+	if (${detailed_cost_choice_cable_protection}==0)
+	{
+		return ${cable_protection_cost};
+	}
+	else
+	{
+		return ${cable_protection_cost_total};
+	}
 };
 
 equations {'offshore_substation_cost_total'} = define() {
-	return ${offshore_substation_cost}+${topside_cost}+${substructure_and_foundation_cost}+
-		${electrical_conversion_equipment_cost}+${facilities_and_ancillary_systems_cost};
+	return ${topside_cost}+${substructure_and_foundation_cost}+
+		${electrical_conversion_equipment_cost}+${facilities_and_ancillary_systems_cost}+
+		${other_offshore_substation_cost};
+};
+
+equations {'offshore_substation_cost_total_check'} = define() {
+	if (${detailed_cost_choice_offshore_substation}==0)
+	{
+		return ${offshore_substation_cost};
+	}
+	else
+	{
+		return ${offshore_substation_cost_total};
+	}
 };
 
 equations {'onshore_substation_cost_total'} = define() {
-	return ${onshore_transmission_infrastructure_cost}+${land_leases_cost}+
-		${underground_cable_system_cost}+${self_supporting_towers_with_insulators_cost}+
-		${overhead_lines_cost}+${onshore_substations_cost}+${onshore_transmission_infrastructure_transportation_cost};
+	return ${land_leases_cost}+${underground_cable_system_cost}+
+		${self_supporting_towers_with_insulators_cost}+${overhead_lines_cost}+
+		${onshore_substations_cost}+${onshore_transmission_infrastructure_transportation_cost}+
+		${other_onshore_transmission_infrastructure_cost};
+};
+
+equations {'onshore_substation_cost_total_check'} = define() {
+	if (${detailed_cost_choice_onshore_transmission}==0)
+	{
+		return ${onshore_transmission_infrastructure_cost};
+	}
+	else
+	{
+		return ${onshore_substation_cost_total};
+	}
 };
 
 equations {'other_elec_infra_cost_total'} = define() {
 	return ${other_elec_infra_cost};
 };
 
+equations {'elec_infras_cost_total'} = define() {
+	return ${array_cable_system_cost_total_check}+${export_cable_system_cost_total_check}+
+		${cable_protection_cost_total_check}+${offshore_substation_cost_total_check}+
+		${onshore_substation_cost_total_check}+${other_elec_infra_cost};
+};
 
-0
+equations {'elec_infras_cost'} = define() {
+	return ?${elec_infras_cost_method}
+			[
+				${elec_infras_cost_input}*${system_capacity},
+				${elec_infras_cost_input},
+				${elec_infras_cost_modeled},
+				${elec_infras_cost_total}
+			];
+};
+
+equations {'itemized_check_elec_infras'} = define() {
+	return ?${elec_infras_cost_method}
+			[
+				0,
+				0,
+				2,
+				1
+			];
+};
+
+
+
+
+
+8414
+on_load{'Marine Costs - Electrical Infrastructure'} = define() {
+	on_change{'itemized_check_elec_infras'};
+	//on_change{'level_eng'};
+	enable_itemized_elec_infras();
+	//enable_itemized_level();
+	on_change{'detailed_cost_choice_array_cables'};
+	on_change{'detailed_cost_choice_export_cables'};
+	on_change{'detailed_cost_choice_cable_protection'};
+	on_change{'detailed_cost_choice_offshore_substation'};
+	on_change{'detailed_cost_choice_onshore_substation'};
+	detailed_cost_array_cables();
+	detailed_cost_export_cables();
+	detailed_cost_cable_protection();
+	detailed_cost_offshore_substation();
+	detailed_cost_onshore_substation();
+};
+
+on_change{'detailed_cost_choice_array_cables'} = define() {
+	detailed_cost_array_cables();
+};
+
+function detailed_cost_array_cables()
+{
+	if (value('itemized_check_elec_infras')==1)
+	{
+		detailed_value = value('detailed_cost_choice_array_cables');
+		enable('array_cable_system_cost',detailed_value==0);
+		show('array_cable_system_cost',detailed_value==0);
+		enable('array_cable_system_cost_total',detailed_value);
+		show('array_cable_system_cost_total',detailed_value);
+		enable('array_cables_cost',detailed_value);
+		enable('array_cable_accessories_and_jointing_cost',detailed_value);
+		enable('array_cable_system_commissioning_cost',detailed_value);
+		enable('array_cable_system_transportation_cost',detailed_value);
+		enable('other_array_cable_system_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_export_cables'} = define() {
+	detailed_cost_export_cables();
+};
+
+function detailed_cost_export_cables()
+{
+	if (value('itemized_check_elec_infras')==1)
+	{
+		detailed_value = value('detailed_cost_choice_export_cables');
+		enable('export_cable_system_cost',detailed_value==0);
+		show('export_cable_system_cost',detailed_value==0);
+		enable('export_cable_system_cost_total',detailed_value);
+		show('export_cable_system_cost_total',detailed_value);
+		enable('export_cables_cost',detailed_value);
+		enable('export_cable_accessories_and_jointing_cost',detailed_value);
+		enable('export_cable_commissioning_cost',detailed_value);
+		enable('export_cable_system_transportation_cost',detailed_value);
+		enable('other_export_cable_system_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_cable_protection'} = define() {
+	detailed_cost_cable_protection();
+};
+
+function detailed_cost_cable_protection()
+{
+	if (value('itemized_check_elec_infras')==1)
+	{
+		detailed_value = value('detailed_cost_choice_cable_protection');
+		enable('cable_protection_cost',detailed_value==0);
+		show('cable_protection_cost',detailed_value==0);
+		enable('cable_protection_cost_total',detailed_value);
+		show('cable_protection_cost_total',detailed_value);
+		enable('scour_protection_elec_infras_cost',detailed_value);
+		enable('cable_mattresses_cost',detailed_value);
+		enable('ducting_system_cost',detailed_value);
+		enable('bend_restrictors_cost',detailed_value);
+		enable('bend_stiffeners_cost',detailed_value);
+		enable('jtube_seals_cost',detailed_value);
+		enable('other_cable_protection_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_offshore_substation'} = define() {
+	detailed_cost_offshore_substation();
+};
+
+function detailed_cost_offshore_substation()
+{
+	if (value('itemized_check_elec_infras')==1)
+	{
+		detailed_value = value('detailed_cost_choice_offshore_substation');
+		enable('offshore_substation_cost',detailed_value==0);
+		show('offshore_substation_cost',detailed_value==0);
+		enable('offshore_substation_cost_total',detailed_value);
+		show('offshore_substation_cost_total',detailed_value);
+		enable('topside_cost',detailed_value);
+		enable('substructure_and_foundation_cost',detailed_value);
+		enable('electrical_conversion_equipment_cost',detailed_value);
+		enable('facilities_and_ancillary_systems_cost',detailed_value);
+		enable('other_offshore_substation_cost',detailed_value);
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_onshore_transmission'} = define() {
+	detailed_cost_onshore_substation();
+};
+
+function detailed_cost_onshore_substation()
+{
+	if (value('itemized_check_elec_infras')==1)
+	{
+		detailed_value = value('detailed_cost_choice_onshore_transmission');
+		enable('onshore_transmission_infrastructure_cost',detailed_value==0);
+		show('onshore_transmission_infrastructure_cost',detailed_value==0);
+		enable('onshore_substation_cost_total',detailed_value);
+		show('onshore_substation_cost_total',detailed_value);
+		enable('land_leases_cost',detailed_value);
+		enable('underground_cable_system_cost',detailed_value);
+		enable('self_supporting_towers_with_insulators_cost',detailed_value);
+		enable('overhead_lines_cost',detailed_value);
+		enable('onshore_substations_cost',detailed_value);
+		enable('onshore_transmission_infrastructure_transportation_cost',detailed_value);
+		enable('other_onshore_transmission_infrastructure_cost',detailed_value);
+		
+		refresh();
+	}
+}
+
+on_change{'itemized_check_elec_infras'} = define() {
+	enable_itemized_elec_infras();
+};
+
+function enable_itemized_elec_infras()
+{
+	itemized_value = value('itemized_check_elec_infras');
+	enable('array_cable_system_cost',itemized_value==1);
+	enable('array_cable_system_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_array_cables',itemized_value==1);
+	enable('array_cables_cost',itemized_value==1);
+	enable('array_cable_accessories_and_jointing_cost',itemized_value==1);
+	enable('array_cable_system_commissioning_cost',itemized_value==1);
+	enable('array_cable_system_transportation_cost',itemized_value==1);
+	enable('other_array_cable_system_cost',itemized_value==1);
+	enable('export_cable_system_cost',itemized_value==1);
+	enable('export_cable_system_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_export_cables',itemized_value==1);
+	enable('export_cables_cost',itemized_value==1);
+	enable('export_cable_accessories_and_jointing_cost',itemized_value==1);
+	enable('export_cable_commissioning_cost',itemized_value==1);
+	enable('export_cable_system_transportation_cost',itemized_value==1);
+	enable('other_export_cable_system_cost',itemized_value==1);
+	enable('cable_protection_cost',itemized_value==1);
+	enable('cable_protection_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_cable_protection',itemized_value==1);
+	enable('scour_protection_elec_infras_cost',itemized_value==1);
+	enable('cable_mattresses_cost',itemized_value==1);
+	enable('ducting_system_cost',itemized_value==1);
+	enable('bend_restrictors_cost',itemized_value==1);
+	enable('bend_stiffeners_cost',itemized_value==1);
+	enable('jtube_seals_cost',itemized_value==1);
+	enable('other_cable_protection_cost',itemized_value==1);
+	enable('offshore_substation_cost',itemized_value==1);
+	enable('offshore_substation_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_offshore_substation',itemized_value==1);
+	enable('topside_cost',itemized_value==1);
+	enable('substructure_and_foundation_cost',itemized_value==1);
+	enable('electrical_conversion_equipment_cost',itemized_value==1);
+	enable('facilities_and_ancillary_systems_cost',itemized_value==1);
+	enable('other_offshore_substation_cost',itemized_value==1);
+	enable('onshore_transmission_infrastructure_cost',itemized_value==1);
+	enable('onshore_substation_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_onshore_transmission',itemized_value==1);
+	enable('land_leases_cost',itemized_value==1);
+	enable('underground_cable_system_cost',itemized_value==1);
+	enable('self_supporting_towers_with_insulators_cost',itemized_value==1);
+	enable('overhead_lines_cost',itemized_value==1);
+	enable('onshore_substations_cost',itemized_value==1);
+	enable('onshore_transmission_infrastructure_transportation_cost',itemized_value==1);
+	enable('other_onshore_transmission_infrastructure_cost',itemized_value==1);
+	enable('other_elec_infra_cost',itemized_value==1);
+	enable('elec_infras_cost_input',itemized_value!=2);
+	show('elec_infras_cost_total',itemized_value==1);
+	show('level_input_label_elec',itemized_value==1);
+	show('elec_infras_cost_input',(itemized_value==0 || itemized_value==2));
+	show('user_input_label_elec',(itemized_value==0 || itemized_value==2));
+	
+	if (itemized_value==1)
+	{
+		detailed_cost_array_cables();
+		detailed_cost_export_cables();
+		detailed_cost_cable_protection();
+		detailed_cost_offshore_substation();
+		detailed_cost_onshore_substation();
+	}
+	/*if (value('itemized_check_eng')==1)
+	{
+		enable_itemized_level_eng();
+	}*/
+	refresh();
+}

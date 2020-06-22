@@ -1,7 +1,7 @@
 Marine Costs - Assembly & Installation
 1172
 1128
-82
+63
 Label
 
 1
@@ -207,6 +207,102 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+23
+assem_level_total_label
+X
+3
+627
+Y
+3
+90
+Width
+3
+84
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+15
+Itemized Inputs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+22
+assem_user_input_label
+X
+3
+636
+Y
+3
+90
+Width
+3
+60
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+10
+User Input
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -624,7 +720,7 @@ Y
 234
 Width
 3
-90
+162
 Height
 3
 24
@@ -822,7 +918,7 @@ Name
 marine_energy_converter_device_cost_total
 X
 3
-531
+525
 Y
 3
 474
@@ -1107,342 +1203,6 @@ Label
 13
 Name
 5
-10
-object 716
-X
-3
-321
-Y
-3
-669
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-4.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 71686
-X
-3
-321
-Y
-3
-981
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-4.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 71687
-X
-3
-297
-Y
-3
-1014
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-4.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 717
-X
-3
-498
-Y
-3
-747
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 718
-X
-3
-450
-Y
-3
-591
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 71894
-X
-3
-483
-Y
-3
-630
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 719
-X
-3
-516
-Y
-3
-396
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 12
 object 71944
 X
@@ -1464,150 +1224,6 @@ Caption
 5
 24
 Itemized Input Structure
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 71992
-X
-3
-477
-Y
-3
-438
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 720
-X
-3
-516
-Y
-3
-357
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 721
-X
-3
-537
-Y
-3
-318
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
 TextColour
 4
 0
@@ -1683,246 +1299,6 @@ Label
 13
 Name
 5
-10
-object 722
-X
-3
-543
-Y
-3
-276
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 723
-X
-3
-402
-Y
-3
-867
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 72385
-X
-3
-435
-Y
-3
-900
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-14
-object 7238596
-X
-3
-390
-Y
-3
-936
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 724
-X
-3
-462
-Y
-3
-828
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 12
 object 72446
 X
@@ -1971,102 +1347,6 @@ Label
 13
 Name
 5
-10
-object 725
-X
-3
-480
-Y
-3
-786
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 726
-X
-3
-501
-Y
-3
-552
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-5.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 12
 object 72647
 X
@@ -2106,54 +1386,6 @@ WordWrap
 AlignRight
 2
 1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 727
-X
-3
-324
-Y
-3
-474
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-4.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
 AlignTop
 2
 0
@@ -2973,54 +2205,6 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-13
-Name
-5
-9
-object 76
-X
-3
-345
-Y
-3
-195
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-4.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 Numeric
 
 1
@@ -3155,7 +2339,7 @@ Name
 offshore_electrical_infrastructure_cost_total
 X
 3
-531
+525
 Y
 3
 669
@@ -3828,102 +3012,6 @@ BackColour
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-24
-struct_level_total_label
-X
-3
-627
-Y
-3
-90
-Width
-3
-84
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-15
-Itemized Inputs
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-23
-struct_user_input_label
-X
-3
-636
-Y
-3
-90
-Width
-3
-60
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-10
-User Input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
 Numeric
 
 1
@@ -4058,10 +3146,10 @@ Name
 substructure_assem_install_cost_total
 X
 3
-537
+525
 Y
 3
-192
+195
 Width
 3
 90
@@ -4232,15 +3320,18 @@ assembly_and_install_cost
 Default
 assembly_and_install_cost_total
 3
-0
+1
  
  
  
 0
-0
+8
+1
+1
+1
 1
 0
- 
+Default
 detailed_cost_choice_mec_device
 3
 1
@@ -4254,18 +3345,21 @@ detailed_cost_choice_mec_device
 1
 1
 0
-Default
+CheckBox
 detailed_cost_choice_offshore_infrastructure
 3
-0
+1
  
  
  
 0
 0
 1
+1
+1
+1
 0
- 
+CheckBox
 detailed_cost_choice_substructures
 3
 1
@@ -4279,7 +3373,7 @@ detailed_cost_choice_substructures
 1
 1
 0
-Default
+CheckBox
 foundation_assem_install_cost
 3
 1
@@ -4329,14 +3423,14 @@ marine_energy_converter_device_cost_total
  
  
 0
-0
+8
 1
 1
 1
 1
 0
 Default
-marine_energy_converter_device_total_check
+marine_energy_converter_device_cost_total_check
 3
 1
  
@@ -4408,15 +3502,18 @@ offshore_electrical_infrastructure_cost_total
 Default
 offshore_electrical_infrastructure_cost_total_check
 3
-0
+1
  
  
  
 0
-0
+8
+1
+1
+1
 1
 0
- 
+Default
 offshore_export_cables_assem_install_cost
 3
 1
@@ -4503,12 +3600,15 @@ other_marine_energy_converter_device_cost
 Default
 other_offshore_electrical_infrastructure_cost
 3
-0
+1
  
  
  
 0
 0
+1
+1
+1
 1
 0
 Default
@@ -4625,10 +3725,10 @@ substructures_and_foundations_cost
 0
 Default
 
-2318
+2330
 equations {'substructure_assem_install_cost_total'} = define() {
 	return ${foundation_assem_install_cost}+
-		${substructure_assem_install_cost}+${scour_protection_assem_install}+
+		${substructure_assem_install_cost}+${scour_protection_assem_install_cost}+
 		${noise_mitigation_cost}+${other_substructure_cost};
 };
 
@@ -4657,7 +3757,7 @@ equations {'marine_energy_converter_device_cost_total_check'} = define() {
 	}
 	else
 	{
-		return ${marine_energy_convert_device_cost_total};
+		return ${marine_energy_converter_device_cost_total};
 	}
 };
 
@@ -4680,7 +3780,7 @@ equations {'offshore_electrical_infrastructure_cost_total_check'} = define() {
 
 
 equations {'assembly_and_install_cost_total'} = define() {
-	return ${substructure_assem_install_cost_total_check}+${marine_energy_converter_device_total_check}+
+	return ${substructure_assem_install_cost_total_check}+${marine_energy_converter_device_cost_total_check}+
 		${offshore_electrical_infrastructure_cost_total_check}+${offshore_logistical_infrastructure_assem_install_cost}+
 		${other_assem_install_cost};
 };
@@ -4711,10 +3811,10 @@ equations {'assembly_and_install_cost'} = define() {
 
 
 
-5226
+5608
 on_load{'Marine Costs - Assembly & Installation'} = define() {
 	on_change{'itemized_check_assem_install'};
-	enable_itemized_eng();
+	enable_itemized_assem_install();
 	//enable_itemized_level();
 	on_change{'detailed_cost_choice_substructures'};
 	on_change{'detailed_cost_choice_mec_device'};
@@ -4733,8 +3833,8 @@ function detailed_cost_substructures()
 	if (value('itemized_check_assem_install')==1)
 	{
 		detailed_value = value('detailed_cost_choice_substructures');
-		enable('substructure_assem_install_cost',detailed_value==0);
-		show('substructure_assem_install_cost',detailed_value==0);
+		enable('substructures_and_foundations_cost',detailed_value==0);
+		show('substructures_and_foundations_cost',detailed_value==0);
 		enable('substructure_assem_install_cost_total',detailed_value);
 		show('substructure_assem_install_cost_total',detailed_value);
 		enable('foundation_assem_install_cost',detailed_value);
@@ -4802,6 +3902,7 @@ function enable_itemized_assem_install()
 	itemized_value = value('itemized_check_assem_install');
 	enable('substructures_and_foundations_cost',itemized_value==1);
 	enable('substructures_assem_install_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_substructures',itemized_value==1);
 	enable('foundation_assem_install_cost',itemized_value==1);
 	enable('substructure_assem_install_cost',itemized_value==1);
 	enable('scour_protection_assem_install_cost',itemized_value==1);
@@ -4809,11 +3910,13 @@ function enable_itemized_assem_install()
 	enable('other_substructure_cost',itemized_value==1);
 	enable('marine_energy_converter_device_cost',itemized_value==1);
 	enable('marine_energy_converter_device_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_mec_device',itemized_value==1);
 	enable('structural_assembly_assem_install_cost',itemized_value==1);
 	enable('power_takeoff_system_assem_install_cost',itemized_value==1);
 	enable('other_marine_energy_converter_device_cost',itemized_value==1);
 	enable('offshore_electrical_infrastructure_cost',itemized_value==1);
 	enable('offshore_electrical_infrastructure_cost_total',itemized_value==1);
+	enable('detailed_cost_choice_offshore_infrastructure',itemized_value==1);
 	enable('array_cables_assem_install_cost',itemized_value==1);
 	enable('offshore_export_cables_assem_install_cost',itemized_value==1);
 	enable('offshore_substation_assem_install_cost',itemized_value==1);
@@ -4822,15 +3925,21 @@ function enable_itemized_assem_install()
 	enable('other_offshore_electrical_infrastructure_cost',itemized_value==1);
 	enable('offshore_logistical_infrastructure_assem_install_cost',itemized_value==1);
 	enable('other_assem_install_cost',itemized_value==1);
-	show('level_eng',itemized_value==1);
-	show('level_label',itemized_value==1);
+	//show('level_eng',itemized_value==1);
+	//show('level_label',itemized_value==1);
 	enable('eng_and_mgmt_cost_input',itemized_value==0);
-	show('eng_and_mgmt_cost_total',itemized_value==1);
-	show('level_input_label_eng',itemized_value==1);
-	show('eng_and_mgmt_cost_input',(itemized_value==0 || itemized_value==2));
-	show('user_input_label_eng',(itemized_value==0 || itemized_value==2));
-	show('level_label',itemized_value==1);
-	show('level_line',itemized_value==1);
+	show('assembly_and_install_cost_total',itemized_value==1);
+	show('assem_level_total_label',itemized_value==1);
+	show('assembly_and_install_cost_input',(itemized_value==0 || itemized_value==2));
+	show('assem_user_input_label',(itemized_value==0 || itemized_value==2));
+	//show('level_label',itemized_value==1);
+	//show('level_line',itemized_value==1);
+	if (itemized_value==1)
+	{
+		detailed_cost_mec_device();
+		detailed_cost_substructures();
+		detailed_cost_offshore_infrastructure();
+	}
 	/*if (value('itemized_check_eng')==1)
 	{
 		enable_itemized_level_eng();
