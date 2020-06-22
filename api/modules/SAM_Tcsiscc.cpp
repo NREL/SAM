@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_Tcsiscc.h"
 
-SAM_EXPORT SAM_Tcsiscc SAM_Tcsiscc_construct(const char* def, SAM_error* err){
-	SAM_Tcsiscc result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_Tcsiscc_execute(SAM_Tcsiscc data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_Tcsiscc_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("tcsiscc", data, verbosity, err);
@@ -27,750 +19,745 @@ SAM_EXPORT int SAM_Tcsiscc_execute(SAM_Tcsiscc data, int verbosity, SAM_error* e
 }
 
 
-SAM_EXPORT void SAM_Tcsiscc_destruct(SAM_Tcsiscc system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Tcsiscc_Weather_solar_resource_file_sset(SAM_Tcsiscc ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Weather_solar_resource_file_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "solar_resource_file", str);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_MoltenSaltTower_system_capacity_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_MoltenSaltTower_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_N_hel_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_N_hel_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "N_hel", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_bop_spec_cost_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_bop_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_0_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_0_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_0", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_1_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_2_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_3_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_c_atm_3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_3", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_calc_fluxmaps_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_calc_fluxmaps_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "calc_fluxmaps", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_cant_type_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_cant_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cant_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_check_max_flux_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_check_max_flux_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "check_max_flux", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_contingency_rate_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_contingency_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "contingency_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_cost_sf_fixed_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_cost_sf_fixed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_sf_fixed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_fixed_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_fixed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.fixed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_acre_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_acre_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.per_acre", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_watt_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_watt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.per_watt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_percent_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_fixed_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_fixed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.fixed", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_acre_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_acre_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.per_acre", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_watt_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_watt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.per_watt", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_percent_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_sf_fixed_land_area_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_sf_fixed_land_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.sf.fixed_land_area", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_sf_land_overhead_factor_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_csp_pt_sf_land_overhead_factor_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.sf.land_overhead_factor", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_delta_flux_hrs_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_delta_flux_hrs_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "delta_flux_hrs", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_dens_mirror_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_dens_mirror_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dens_mirror", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_dni_des_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_dni_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dni_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_eta_map_mset(SAM_Tcsiscc ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_eta_map_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "eta_map", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_flux_maps_mset(SAM_Tcsiscc ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_flux_maps_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "flux_maps", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_flux_max_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_flux_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flux_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_flux_positions_mset(SAM_Tcsiscc ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_flux_positions_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "flux_positions", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_focus_type_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_focus_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "focus_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_fossil_spec_cost_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_fossil_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fossil_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_h_tower_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_h_tower_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_tower", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_hel_stow_deploy_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_hel_stow_deploy_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "hel_stow_deploy", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_active_fraction_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_active_fraction_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_active_fraction", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_aim_points_mset(SAM_Tcsiscc ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_aim_points_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "helio_aim_points", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_height_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_height", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_optical_error_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_optical_error_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_optical_error", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_positions_mset(SAM_Tcsiscc ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_positions_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "helio_positions", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_reflectance_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_reflectance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_reflectance", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_width_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_helio_width_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_width", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_heliostat_spec_cost_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_heliostat_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "heliostat_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_interp_beta_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_interp_beta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "interp_beta", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_interp_nug_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_interp_nug_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "interp_nug", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_is_optimize_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_is_optimize_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_optimize", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_bound_list_aset(SAM_Tcsiscc ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_bound_list_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "land_bound_list", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_bound_table_mset(SAM_Tcsiscc ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_bound_table_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "land_bound_table", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_bound_type_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_bound_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_bound_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_max_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_min_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_min_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_min", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_spec_cost_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_land_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_facet_x_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_facet_x_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_facet_x", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_facet_y_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_facet_y_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_facet_y", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_flux_days_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_flux_days_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_flux_days", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_flux_x_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_flux_x_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_flux_x", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_flux_y_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_n_flux_y_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_flux_y", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_algorithm_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_algorithm_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_algorithm", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_conv_tol_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_conv_tol_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_conv_tol", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_flux_penalty_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_flux_penalty_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_flux_penalty", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_init_step_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_init_step_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_init_step", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_max_iter_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_opt_max_iter_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_max_iter", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_p_start_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_p_start_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "p_start", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_p_track_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_p_track_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "p_track", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_plant_spec_cost_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_plant_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "plant_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_q_design_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_q_design_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_design", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_absorptance_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_absorptance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_absorptance", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_aspect_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_aspect_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_aspect", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_cost_exp_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_cost_exp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_cost_exp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_height_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_height", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_hl_perm2_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_hl_perm2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_hl_perm2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_ref_area_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_ref_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_ref_area", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_ref_cost_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_rec_ref_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_ref_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_run_type_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_run_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "run_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_sales_tax_frac_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_sales_tax_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sales_tax_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_sales_tax_rate_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_sales_tax_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sales_tax_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_site_spec_cost_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_site_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "site_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_tes_spec_cost_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_tes_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tes_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_total_installed_cost_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_installed_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_tower_exp_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_tower_exp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_exp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_tower_fixed_cost_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_tower_fixed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_fixed_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Heliostat_v_wind_max_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Heliostat_v_wind_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "v_wind_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_A_sf_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_A_sf_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "A_sf", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_D_rec_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_D_rec_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "D_rec", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_Flow_type_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_Flow_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Flow_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_H_rec_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_H_rec_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "H_rec", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_N_panels_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_N_panels_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "N_panels", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_Q_rec_des_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_Q_rec_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Q_rec_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_THT_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_THT_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "THT", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_T_htf_cold_des_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_T_htf_cold_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_htf_cold_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_T_htf_hot_des_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_T_htf_hot_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_htf_hot_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_crossover_shift_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_crossover_shift_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "crossover_shift", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_d_tube_out_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_d_tube_out_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "d_tube_out", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_epsilon_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_epsilon_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "epsilon", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_eta_pump_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_eta_pump_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eta_pump", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_f_rec_min_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_f_rec_min_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "f_rec_min", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_field_fl_props_mset(SAM_Tcsiscc ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_field_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "field_fl_props", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_hl_ffact_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_hl_ffact_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "hl_ffact", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_m_dot_htf_max_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_m_dot_htf_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "m_dot_htf_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_mat_tube_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_mat_tube_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mat_tube", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_rec_htf_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_rec_htf_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_htf", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_rec_qf_delay_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_qf_delay", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_rec_su_delay_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_su_delay", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_receiver_type_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_receiver_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "receiver_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Receiver_th_tube_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Receiver_th_tube_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "th_tube", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Powerblock_elev_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Powerblock_elev_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "elev", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Powerblock_ngcc_model_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Powerblock_ngcc_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ngcc_model", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Powerblock_pinch_point_coldside_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Powerblock_pinch_point_coldside_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pinch_point_coldside", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Powerblock_pinch_point_hotside_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Powerblock_pinch_point_hotside_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pinch_point_hotside", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Powerblock_q_pb_design_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Powerblock_q_pb_design_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_pb_design", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_Q_rec_des_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_Q_rec_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Q_rec_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_W_dot_solar_des_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_W_dot_solar_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "W_dot_solar_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_bop_par_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_bop_par_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_bop_par_0_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_bop_par_0_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par_0", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_bop_par_1_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_bop_par_1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par_1", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_bop_par_2_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_bop_par_2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par_2", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_bop_par_f_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_bop_par_f_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par_f", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_fossil_output_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_fossil_output_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fossil_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_pb_fixed_par_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pb_fixed_par", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_pb_pump_coef_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_pb_pump_coef_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pb_pump_coef", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_piping_length_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_piping_length_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "piping_length", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_piping_length_const_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_piping_length_const_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "piping_length_const", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_piping_length_mult_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_piping_length_mult_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "piping_length_mult", number);
 	});
 }
 
-SAM_EXPORT void SAM_Tcsiscc_Parasitics_piping_loss_nset(SAM_Tcsiscc ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Tcsiscc_Parasitics_piping_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "piping_loss", number);
 	});
 }
 
-SAM_EXPORT const char* SAM_Tcsiscc_Weather_solar_resource_file_sget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_Tcsiscc_Weather_solar_resource_file_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "solar_resource_file");
@@ -782,7 +769,7 @@ SAM_EXPORT const char* SAM_Tcsiscc_Weather_solar_resource_file_sget(SAM_Tcsiscc 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_MoltenSaltTower_system_capacity_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_MoltenSaltTower_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
@@ -793,7 +780,7 @@ SAM_EXPORT double SAM_Tcsiscc_MoltenSaltTower_system_capacity_nget(SAM_Tcsiscc p
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_N_hel_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_N_hel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "N_hel", &result))
@@ -804,7 +791,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_N_hel_nget(SAM_Tcsiscc ptr, SAM_error *e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_bop_spec_cost_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_bop_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_spec_cost", &result))
@@ -815,7 +802,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_bop_spec_cost_nget(SAM_Tcsiscc ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_0_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_0", &result))
@@ -826,7 +813,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_0_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_1_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_1", &result))
@@ -837,7 +824,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_1_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_2_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_2", &result))
@@ -848,7 +835,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_2_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_3_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_3", &result))
@@ -859,7 +846,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_c_atm_3_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_calc_fluxmaps_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_calc_fluxmaps_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "calc_fluxmaps", &result))
@@ -870,7 +857,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_calc_fluxmaps_nget(SAM_Tcsiscc ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_cant_type_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_cant_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cant_type", &result))
@@ -881,7 +868,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_cant_type_nget(SAM_Tcsiscc ptr, SAM_erro
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_check_max_flux_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_check_max_flux_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "check_max_flux", &result))
@@ -892,7 +879,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_check_max_flux_nget(SAM_Tcsiscc ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_contingency_rate_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_contingency_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "contingency_rate", &result))
@@ -903,7 +890,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_contingency_rate_nget(SAM_Tcsiscc ptr, S
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_cost_sf_fixed_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_cost_sf_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_sf_fixed", &result))
@@ -914,7 +901,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_cost_sf_fixed_nget(SAM_Tcsiscc ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_fixed_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.fixed", &result))
@@ -925,7 +912,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_fixed_nget(SAM_Tcsiscc p
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_acre_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_acre_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.per_acre", &result))
@@ -936,7 +923,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_acre_nget(SAM_Tcsisc
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_watt_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_watt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.per_watt", &result))
@@ -947,7 +934,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_per_watt_nget(SAM_Tcsisc
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_percent_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.percent", &result))
@@ -958,7 +945,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_epc_percent_nget(SAM_Tcsiscc
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_fixed_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.fixed", &result))
@@ -969,7 +956,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_fixed_nget(SAM_Tcsiscc p
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_acre_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_acre_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.per_acre", &result))
@@ -980,7 +967,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_acre_nget(SAM_Tcsisc
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_watt_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_watt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.per_watt", &result))
@@ -991,7 +978,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_per_watt_nget(SAM_Tcsisc
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_percent_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.percent", &result))
@@ -1002,7 +989,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_cost_plm_percent_nget(SAM_Tcsiscc
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_sf_fixed_land_area_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_sf_fixed_land_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.sf.fixed_land_area", &result))
@@ -1013,7 +1000,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_sf_fixed_land_area_nget(SAM_Tcsis
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_sf_land_overhead_factor_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_sf_land_overhead_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.sf.land_overhead_factor", &result))
@@ -1024,7 +1011,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_csp_pt_sf_land_overhead_factor_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_delta_flux_hrs_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_delta_flux_hrs_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "delta_flux_hrs", &result))
@@ -1035,7 +1022,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_delta_flux_hrs_nget(SAM_Tcsiscc ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_dens_mirror_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_dens_mirror_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dens_mirror", &result))
@@ -1046,7 +1033,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_dens_mirror_nget(SAM_Tcsiscc ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_dni_des_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_dni_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dni_des", &result))
@@ -1057,7 +1044,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_dni_des_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Heliostat_eta_map_mget(SAM_Tcsiscc ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Heliostat_eta_map_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "eta_map", nrows, ncols);
@@ -1069,7 +1056,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Heliostat_eta_map_mget(SAM_Tcsiscc ptr, int* nrow
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Heliostat_flux_maps_mget(SAM_Tcsiscc ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Heliostat_flux_maps_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "flux_maps", nrows, ncols);
@@ -1081,7 +1068,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Heliostat_flux_maps_mget(SAM_Tcsiscc ptr, int* nr
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_flux_max_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_flux_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flux_max", &result))
@@ -1092,7 +1079,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_flux_max_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Heliostat_flux_positions_mget(SAM_Tcsiscc ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Heliostat_flux_positions_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "flux_positions", nrows, ncols);
@@ -1104,7 +1091,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Heliostat_flux_positions_mget(SAM_Tcsiscc ptr, in
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_focus_type_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_focus_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "focus_type", &result))
@@ -1115,7 +1102,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_focus_type_nget(SAM_Tcsiscc ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_fossil_spec_cost_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_fossil_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fossil_spec_cost", &result))
@@ -1126,7 +1113,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_fossil_spec_cost_nget(SAM_Tcsiscc ptr, S
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_h_tower_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_h_tower_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "h_tower", &result))
@@ -1137,7 +1124,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_h_tower_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_hel_stow_deploy_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_hel_stow_deploy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "hel_stow_deploy", &result))
@@ -1148,7 +1135,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_hel_stow_deploy_nget(SAM_Tcsiscc ptr, SA
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_active_fraction_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_active_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_active_fraction", &result))
@@ -1159,7 +1146,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_active_fraction_nget(SAM_Tcsiscc p
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Heliostat_helio_aim_points_mget(SAM_Tcsiscc ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Heliostat_helio_aim_points_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "helio_aim_points", nrows, ncols);
@@ -1171,7 +1158,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Heliostat_helio_aim_points_mget(SAM_Tcsiscc ptr, 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_height_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_height", &result))
@@ -1182,7 +1169,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_height_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_optical_error_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_optical_error_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_optical_error", &result))
@@ -1193,7 +1180,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_optical_error_nget(SAM_Tcsiscc ptr
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Heliostat_helio_positions_mget(SAM_Tcsiscc ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Heliostat_helio_positions_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "helio_positions", nrows, ncols);
@@ -1205,7 +1192,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Heliostat_helio_positions_mget(SAM_Tcsiscc ptr, i
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_reflectance_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_reflectance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_reflectance", &result))
@@ -1216,7 +1203,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_reflectance_nget(SAM_Tcsiscc ptr, 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_width_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_width_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_width", &result))
@@ -1227,7 +1214,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_helio_width_nget(SAM_Tcsiscc ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_heliostat_spec_cost_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_heliostat_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "heliostat_spec_cost", &result))
@@ -1238,7 +1225,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_heliostat_spec_cost_nget(SAM_Tcsiscc ptr
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_interp_beta_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_interp_beta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "interp_beta", &result))
@@ -1249,7 +1236,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_interp_beta_nget(SAM_Tcsiscc ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_interp_nug_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_interp_nug_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "interp_nug", &result))
@@ -1260,7 +1247,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_interp_nug_nget(SAM_Tcsiscc ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_is_optimize_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_is_optimize_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_optimize", &result))
@@ -1271,7 +1258,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_is_optimize_nget(SAM_Tcsiscc ptr, SAM_er
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Heliostat_land_bound_list_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Heliostat_land_bound_list_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "land_bound_list", length);
@@ -1283,7 +1270,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Heliostat_land_bound_list_aget(SAM_Tcsiscc ptr, i
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Heliostat_land_bound_table_mget(SAM_Tcsiscc ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Heliostat_land_bound_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "land_bound_table", nrows, ncols);
@@ -1295,7 +1282,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Heliostat_land_bound_table_mget(SAM_Tcsiscc ptr, 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_bound_type_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_bound_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_bound_type", &result))
@@ -1306,7 +1293,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_bound_type_nget(SAM_Tcsiscc ptr, SA
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_max_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_max", &result))
@@ -1317,7 +1304,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_max_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_min_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_min", &result))
@@ -1328,7 +1315,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_min_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_spec_cost_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_spec_cost", &result))
@@ -1339,7 +1326,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_land_spec_cost_nget(SAM_Tcsiscc ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_facet_x_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_facet_x_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_facet_x", &result))
@@ -1350,7 +1337,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_facet_x_nget(SAM_Tcsiscc ptr, SAM_erro
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_facet_y_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_facet_y_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_facet_y", &result))
@@ -1361,7 +1348,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_facet_y_nget(SAM_Tcsiscc ptr, SAM_erro
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_flux_days_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_flux_days_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_flux_days", &result))
@@ -1372,7 +1359,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_flux_days_nget(SAM_Tcsiscc ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_flux_x_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_flux_x_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_flux_x", &result))
@@ -1383,7 +1370,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_flux_x_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_flux_y_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_flux_y_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_flux_y", &result))
@@ -1394,7 +1381,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_n_flux_y_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_algorithm_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_algorithm_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_algorithm", &result))
@@ -1405,7 +1392,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_algorithm_nget(SAM_Tcsiscc ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_conv_tol_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_conv_tol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_conv_tol", &result))
@@ -1416,7 +1403,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_conv_tol_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_flux_penalty_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_flux_penalty_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_flux_penalty", &result))
@@ -1427,7 +1414,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_flux_penalty_nget(SAM_Tcsiscc ptr, S
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_init_step_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_init_step_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_init_step", &result))
@@ -1438,7 +1425,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_init_step_nget(SAM_Tcsiscc ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_max_iter_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_max_iter_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_max_iter", &result))
@@ -1449,7 +1436,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_opt_max_iter_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_p_start_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_p_start_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "p_start", &result))
@@ -1460,7 +1447,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_p_start_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_p_track_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_p_track_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "p_track", &result))
@@ -1471,7 +1458,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_p_track_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_plant_spec_cost_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_plant_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "plant_spec_cost", &result))
@@ -1482,7 +1469,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_plant_spec_cost_nget(SAM_Tcsiscc ptr, SA
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_q_design_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_q_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_design", &result))
@@ -1493,7 +1480,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_q_design_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_absorptance_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_absorptance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_absorptance", &result))
@@ -1504,7 +1491,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_absorptance_nget(SAM_Tcsiscc ptr, SA
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_aspect_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_aspect_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_aspect", &result))
@@ -1515,7 +1502,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_aspect_nget(SAM_Tcsiscc ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_cost_exp_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_cost_exp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_cost_exp", &result))
@@ -1526,7 +1513,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_cost_exp_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_height_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_height", &result))
@@ -1537,7 +1524,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_height_nget(SAM_Tcsiscc ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_hl_perm2_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_hl_perm2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_hl_perm2", &result))
@@ -1548,7 +1535,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_hl_perm2_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_ref_area_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_ref_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_ref_area", &result))
@@ -1559,7 +1546,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_ref_area_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_ref_cost_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_ref_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_ref_cost", &result))
@@ -1570,7 +1557,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_rec_ref_cost_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_run_type_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_run_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "run_type", &result))
@@ -1581,7 +1568,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_run_type_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_sales_tax_frac_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_sales_tax_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sales_tax_frac", &result))
@@ -1592,7 +1579,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_sales_tax_frac_nget(SAM_Tcsiscc ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_sales_tax_rate_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_sales_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sales_tax_rate", &result))
@@ -1603,7 +1590,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_sales_tax_rate_nget(SAM_Tcsiscc ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_site_spec_cost_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_site_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "site_spec_cost", &result))
@@ -1614,7 +1601,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_site_spec_cost_nget(SAM_Tcsiscc ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_tes_spec_cost_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_tes_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tes_spec_cost", &result))
@@ -1625,7 +1612,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_tes_spec_cost_nget(SAM_Tcsiscc ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_total_installed_cost_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
@@ -1636,7 +1623,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_total_installed_cost_nget(SAM_Tcsiscc pt
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_tower_exp_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_tower_exp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_exp", &result))
@@ -1647,7 +1634,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_tower_exp_nget(SAM_Tcsiscc ptr, SAM_erro
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_tower_fixed_cost_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_tower_fixed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_fixed_cost", &result))
@@ -1658,7 +1645,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_tower_fixed_cost_nget(SAM_Tcsiscc ptr, S
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Heliostat_v_wind_max_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Heliostat_v_wind_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "v_wind_max", &result))
@@ -1669,7 +1656,7 @@ SAM_EXPORT double SAM_Tcsiscc_Heliostat_v_wind_max_nget(SAM_Tcsiscc ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_A_sf_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_A_sf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "A_sf", &result))
@@ -1680,7 +1667,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_A_sf_nget(SAM_Tcsiscc ptr, SAM_error *err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_D_rec_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_D_rec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "D_rec", &result))
@@ -1691,7 +1678,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_D_rec_nget(SAM_Tcsiscc ptr, SAM_error *er
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_Flow_type_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_Flow_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Flow_type", &result))
@@ -1702,7 +1689,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_Flow_type_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_H_rec_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_H_rec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "H_rec", &result))
@@ -1713,7 +1700,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_H_rec_nget(SAM_Tcsiscc ptr, SAM_error *er
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_N_panels_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_N_panels_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "N_panels", &result))
@@ -1724,7 +1711,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_N_panels_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_Q_rec_des_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_Q_rec_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Q_rec_des", &result))
@@ -1735,7 +1722,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_Q_rec_des_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_THT_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_THT_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "THT", &result))
@@ -1746,7 +1733,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_THT_nget(SAM_Tcsiscc ptr, SAM_error *err)
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_T_htf_cold_des_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_T_htf_cold_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_htf_cold_des", &result))
@@ -1757,7 +1744,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_T_htf_cold_des_nget(SAM_Tcsiscc ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_T_htf_hot_des_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_T_htf_hot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_htf_hot_des", &result))
@@ -1768,7 +1755,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_T_htf_hot_des_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_crossover_shift_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_crossover_shift_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "crossover_shift", &result))
@@ -1779,7 +1766,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_crossover_shift_nget(SAM_Tcsiscc ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_d_tube_out_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_d_tube_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "d_tube_out", &result))
@@ -1790,7 +1777,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_d_tube_out_nget(SAM_Tcsiscc ptr, SAM_erro
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_epsilon_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_epsilon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "epsilon", &result))
@@ -1801,7 +1788,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_epsilon_nget(SAM_Tcsiscc ptr, SAM_error *
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_eta_pump_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_eta_pump_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eta_pump", &result))
@@ -1812,7 +1799,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_eta_pump_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_f_rec_min_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_f_rec_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "f_rec_min", &result))
@@ -1823,7 +1810,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_f_rec_min_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Receiver_field_fl_props_mget(SAM_Tcsiscc ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Receiver_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "field_fl_props", nrows, ncols);
@@ -1835,7 +1822,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Receiver_field_fl_props_mget(SAM_Tcsiscc ptr, int
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_hl_ffact_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_hl_ffact_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "hl_ffact", &result))
@@ -1846,7 +1833,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_hl_ffact_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_m_dot_htf_max_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_m_dot_htf_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "m_dot_htf_max", &result))
@@ -1857,7 +1844,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_m_dot_htf_max_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_mat_tube_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_mat_tube_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mat_tube", &result))
@@ -1868,7 +1855,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_mat_tube_nget(SAM_Tcsiscc ptr, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_rec_htf_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_rec_htf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_htf", &result))
@@ -1879,7 +1866,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_rec_htf_nget(SAM_Tcsiscc ptr, SAM_error *
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_rec_qf_delay_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_rec_qf_delay_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_qf_delay", &result))
@@ -1890,7 +1877,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_rec_qf_delay_nget(SAM_Tcsiscc ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_rec_su_delay_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_rec_su_delay_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_su_delay", &result))
@@ -1901,7 +1888,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_rec_su_delay_nget(SAM_Tcsiscc ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_receiver_type_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_receiver_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "receiver_type", &result))
@@ -1912,7 +1899,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_receiver_type_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Receiver_th_tube_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Receiver_th_tube_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "th_tube", &result))
@@ -1923,7 +1910,7 @@ SAM_EXPORT double SAM_Tcsiscc_Receiver_th_tube_nget(SAM_Tcsiscc ptr, SAM_error *
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Powerblock_elev_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Powerblock_elev_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "elev", &result))
@@ -1934,7 +1921,7 @@ SAM_EXPORT double SAM_Tcsiscc_Powerblock_elev_nget(SAM_Tcsiscc ptr, SAM_error *e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Powerblock_ngcc_model_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Powerblock_ngcc_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ngcc_model", &result))
@@ -1945,7 +1932,7 @@ SAM_EXPORT double SAM_Tcsiscc_Powerblock_ngcc_model_nget(SAM_Tcsiscc ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Powerblock_pinch_point_coldside_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Powerblock_pinch_point_coldside_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pinch_point_coldside", &result))
@@ -1956,7 +1943,7 @@ SAM_EXPORT double SAM_Tcsiscc_Powerblock_pinch_point_coldside_nget(SAM_Tcsiscc p
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Powerblock_pinch_point_hotside_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Powerblock_pinch_point_hotside_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pinch_point_hotside", &result))
@@ -1967,7 +1954,7 @@ SAM_EXPORT double SAM_Tcsiscc_Powerblock_pinch_point_hotside_nget(SAM_Tcsiscc pt
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Powerblock_q_pb_design_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Powerblock_q_pb_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_pb_design", &result))
@@ -1978,7 +1965,7 @@ SAM_EXPORT double SAM_Tcsiscc_Powerblock_q_pb_design_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_Q_rec_des_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_Q_rec_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Q_rec_des", &result))
@@ -1989,7 +1976,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_Q_rec_des_nget(SAM_Tcsiscc ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_W_dot_solar_des_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_W_dot_solar_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "W_dot_solar_des", &result))
@@ -2000,7 +1987,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_W_dot_solar_des_nget(SAM_Tcsiscc ptr, S
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_par", &result))
@@ -2011,7 +1998,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_0_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_par_0", &result))
@@ -2022,7 +2009,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_0_nget(SAM_Tcsiscc ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_1_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_par_1", &result))
@@ -2033,7 +2020,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_1_nget(SAM_Tcsiscc ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_2_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_par_2", &result))
@@ -2044,7 +2031,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_2_nget(SAM_Tcsiscc ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_f_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_f_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_par_f", &result))
@@ -2055,7 +2042,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_bop_par_f_nget(SAM_Tcsiscc ptr, SAM_err
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_fossil_output_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_fossil_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fossil_output", &result))
@@ -2066,7 +2053,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_fossil_output_nget(SAM_Tcsiscc ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_pb_fixed_par_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_pb_fixed_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pb_fixed_par", &result))
@@ -2077,7 +2064,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_pb_fixed_par_nget(SAM_Tcsiscc ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_pb_pump_coef_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_pb_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pb_pump_coef", &result))
@@ -2088,7 +2075,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_pb_pump_coef_nget(SAM_Tcsiscc ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_length_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "piping_length", &result))
@@ -2099,7 +2086,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_length_nget(SAM_Tcsiscc ptr, SAM
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_length_const_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_length_const_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "piping_length_const", &result))
@@ -2110,7 +2097,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_length_const_nget(SAM_Tcsiscc pt
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_length_mult_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_length_mult_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "piping_length_mult", &result))
@@ -2121,7 +2108,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_length_mult_nget(SAM_Tcsiscc ptr
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_loss_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "piping_loss", &result))
@@ -2132,7 +2119,7 @@ SAM_EXPORT double SAM_Tcsiscc_Parasitics_piping_loss_nget(SAM_Tcsiscc ptr, SAM_e
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_P_fixed_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_P_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_fixed", length);
@@ -2144,7 +2131,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_P_fixed_aget(SAM_Tcsiscc ptr, int* length
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_P_plant_balance_tot_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_P_plant_balance_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_plant_balance_tot", length);
@@ -2156,7 +2143,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_P_plant_balance_tot_aget(SAM_Tcsiscc ptr,
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_Q_dot_max_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_Q_dot_max_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "Q_dot_max", length);
@@ -2168,7 +2155,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_Q_dot_max_aget(SAM_Tcsiscc ptr, int* leng
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_Q_solar_total_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_Q_solar_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "Q_solar_total", length);
@@ -2180,7 +2167,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_Q_solar_total_aget(SAM_Tcsiscc ptr, int* 
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_Q_thermal_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_Q_thermal_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "Q_thermal", length);
@@ -2192,7 +2179,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_Q_thermal_aget(SAM_Tcsiscc ptr, int* leng
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_htf_cold_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_htf_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_htf_cold", length);
@@ -2204,7 +2191,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_htf_cold_aget(SAM_Tcsiscc ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_salt_hot_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_salt_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_salt_hot", length);
@@ -2216,7 +2203,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_salt_hot_aget(SAM_Tcsiscc ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_st_cold_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_st_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_st_cold", length);
@@ -2228,7 +2215,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_st_cold_aget(SAM_Tcsiscc ptr, int* leng
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_st_hot_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_st_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_st_hot", length);
@@ -2240,7 +2227,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_T_st_hot_aget(SAM_Tcsiscc ptr, int* lengt
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_pc_fossil_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_pc_fossil_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_pc_fossil", length);
@@ -2252,7 +2239,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_pc_fossil_aget(SAM_Tcsiscc ptr, int
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_pc_hybrid_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_pc_hybrid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_pc_hybrid", length);
@@ -2264,7 +2251,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_pc_hybrid_aget(SAM_Tcsiscc ptr, int
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_plant_fossil_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_plant_fossil_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_plant_fossil", length);
@@ -2276,7 +2263,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_plant_fossil_aget(SAM_Tcsiscc ptr, 
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_plant_hybrid_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_plant_hybrid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_plant_hybrid", length);
@@ -2288,7 +2275,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_plant_hybrid_aget(SAM_Tcsiscc ptr, 
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_plant_solar_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_plant_solar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_plant_solar", length);
@@ -2300,7 +2287,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_plant_solar_aget(SAM_Tcsiscc ptr, i
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_pump_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_pump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_pump", length);
@@ -2312,7 +2299,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_W_dot_pump_aget(SAM_Tcsiscc ptr, int* len
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Outputs_annual_energy_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
@@ -2323,7 +2310,7 @@ SAM_EXPORT double SAM_Tcsiscc_Outputs_annual_energy_nget(SAM_Tcsiscc ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Outputs_annual_fuel_usage_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
@@ -2334,7 +2321,7 @@ SAM_EXPORT double SAM_Tcsiscc_Outputs_annual_fuel_usage_nget(SAM_Tcsiscc ptr, SA
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_beam_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "beam", length);
@@ -2346,7 +2333,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_beam_aget(SAM_Tcsiscc ptr, int* length, S
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Outputs_capacity_factor_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
@@ -2357,7 +2344,7 @@ SAM_EXPORT double SAM_Tcsiscc_Outputs_capacity_factor_nget(SAM_Tcsiscc ptr, SAM_
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_field_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_field_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_field", length);
@@ -2369,7 +2356,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_field_aget(SAM_Tcsiscc ptr, int* leng
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_fuel_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_fuel_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_fuel", length);
@@ -2381,7 +2368,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_fuel_aget(SAM_Tcsiscc ptr, int* lengt
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_solar_use_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_solar_use_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_solar_use", length);
@@ -2393,7 +2380,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_solar_use_aget(SAM_Tcsiscc ptr, int* 
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_therm_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_therm_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_therm", length);
@@ -2405,7 +2392,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_eta_therm_aget(SAM_Tcsiscc ptr, int* leng
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_f_timestep_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_f_timestep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "f_timestep", length);
@@ -2417,7 +2404,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_f_timestep_aget(SAM_Tcsiscc ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_field_eff_adj_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_field_eff_adj_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "field_eff_adj", length);
@@ -2429,7 +2416,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_field_eff_adj_aget(SAM_Tcsiscc ptr, int* 
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_fuel_use_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_fuel_use_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "fuel_use", length);
@@ -2441,7 +2428,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_fuel_use_aget(SAM_Tcsiscc ptr, int* lengt
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_gen_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
@@ -2453,7 +2440,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_gen_aget(SAM_Tcsiscc ptr, int* length, SA
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_hour_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hour", length);
@@ -2465,7 +2452,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_hour_aget(SAM_Tcsiscc ptr, int* length, S
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Outputs_kwh_per_kw_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
@@ -2476,7 +2463,7 @@ SAM_EXPORT double SAM_Tcsiscc_Outputs_kwh_per_kw_nget(SAM_Tcsiscc ptr, SAM_error
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_m_dot_salt_tot_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_m_dot_salt_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_salt_tot", length);
@@ -2488,7 +2475,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_m_dot_salt_tot_aget(SAM_Tcsiscc ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_m_dot_ss_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_m_dot_ss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_ss", length);
@@ -2500,7 +2487,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_m_dot_ss_aget(SAM_Tcsiscc ptr, int* lengt
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_m_dot_steam_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_m_dot_steam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_steam", length);
@@ -2512,7 +2499,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_m_dot_steam_aget(SAM_Tcsiscc ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_month_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "month", length);
@@ -2524,7 +2511,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_month_aget(SAM_Tcsiscc ptr, int* length, 
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_pparasi_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_pparasi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pparasi", length);
@@ -2536,7 +2523,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_pparasi_aget(SAM_Tcsiscc ptr, int* length
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_pres_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pres", length);
@@ -2548,7 +2535,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_pres_aget(SAM_Tcsiscc ptr, int* length, S
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_q_conv_sum_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_q_conv_sum_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_conv_sum", length);
@@ -2560,7 +2547,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_q_conv_sum_aget(SAM_Tcsiscc ptr, int* len
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_q_rad_sum_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_q_rad_sum_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_rad_sum", length);
@@ -2572,7 +2559,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_q_rad_sum_aget(SAM_Tcsiscc ptr, int* leng
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_q_startup_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_q_startup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_startup", length);
@@ -2584,7 +2571,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_q_startup_aget(SAM_Tcsiscc ptr, int* leng
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_solar_fraction_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_solar_fraction_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "solar_fraction", length);
@@ -2596,7 +2583,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_solar_fraction_aget(SAM_Tcsiscc ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_solazi_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "solazi", length);
@@ -2608,7 +2595,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_solazi_aget(SAM_Tcsiscc ptr, int* length,
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_solzen_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_solzen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "solzen", length);
@@ -2620,7 +2607,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_solzen_aget(SAM_Tcsiscc ptr, int* length,
 
 
 
-SAM_EXPORT double SAM_Tcsiscc_Outputs_system_heat_rate_nget(SAM_Tcsiscc ptr, SAM_error *err){
+SAM_EXPORT double SAM_Tcsiscc_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_heat_rate", &result))
@@ -2631,7 +2618,7 @@ SAM_EXPORT double SAM_Tcsiscc_Outputs_system_heat_rate_nget(SAM_Tcsiscc ptr, SAM
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_tdry_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tdry", length);
@@ -2643,7 +2630,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_tdry_aget(SAM_Tcsiscc ptr, int* length, S
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_twet_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "twet", length);
@@ -2655,7 +2642,7 @@ SAM_EXPORT double* SAM_Tcsiscc_Outputs_twet_aget(SAM_Tcsiscc ptr, int* length, S
 
 
 
-SAM_EXPORT double* SAM_Tcsiscc_Outputs_wspd_aget(SAM_Tcsiscc ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Tcsiscc_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wspd", length);

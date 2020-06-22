@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_Grid.h"
 
-SAM_EXPORT SAM_Grid SAM_Grid_construct(const char* def, SAM_error* err){
-	SAM_Grid result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_Grid_execute(SAM_Grid data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_Grid_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("grid", data, verbosity, err);
@@ -27,60 +19,55 @@ SAM_EXPORT int SAM_Grid_execute(SAM_Grid data, int verbosity, SAM_error* err){
 }
 
 
-SAM_EXPORT void SAM_Grid_destruct(SAM_Grid system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_Grid_Lifetime_analysis_period_nset(SAM_Grid ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Grid_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
 	});
 }
 
-SAM_EXPORT void SAM_Grid_Lifetime_system_use_lifetime_output_nset(SAM_Grid ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Grid_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
-SAM_EXPORT void SAM_Grid_GridLimits_enable_interconnection_limit_nset(SAM_Grid ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Grid_GridLimits_enable_interconnection_limit_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "enable_interconnection_limit", number);
 	});
 }
 
-SAM_EXPORT void SAM_Grid_GridLimits_grid_curtailment_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Grid_GridLimits_grid_curtailment_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "grid_curtailment", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nset(SAM_Grid ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "grid_interconnection_limit_kwac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Grid_SystemOutput_annual_energy_nset(SAM_Grid ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Grid_SystemOutput_annual_energy_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "annual_energy", number);
 	});
 }
 
-SAM_EXPORT void SAM_Grid_SystemOutput_gen_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Grid_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Grid_Load_load_aset(SAM_Grid ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Grid_Load_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load", arr, length);
 	});
 }
 
-SAM_EXPORT double SAM_Grid_Lifetime_analysis_period_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
@@ -91,7 +78,7 @@ SAM_EXPORT double SAM_Grid_Lifetime_analysis_period_nget(SAM_Grid ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Grid_Lifetime_system_use_lifetime_output_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
@@ -102,7 +89,7 @@ SAM_EXPORT double SAM_Grid_Lifetime_system_use_lifetime_output_nget(SAM_Grid ptr
 
 
 
-SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "enable_interconnection_limit", &result))
@@ -113,7 +100,7 @@ SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_Grid
 
 
 
-SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_Grid ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "grid_curtailment", length);
@@ -125,7 +112,7 @@ SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_Grid ptr, int* 
 
 
 
-SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "grid_interconnection_limit_kwac", &result))
@@ -136,7 +123,7 @@ SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_G
 
 
 
-SAM_EXPORT double SAM_Grid_SystemOutput_annual_energy_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_SystemOutput_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
@@ -147,7 +134,7 @@ SAM_EXPORT double SAM_Grid_SystemOutput_annual_energy_nget(SAM_Grid ptr, SAM_err
 
 
 
-SAM_EXPORT double* SAM_Grid_SystemOutput_gen_aget(SAM_Grid ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Grid_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
@@ -159,7 +146,7 @@ SAM_EXPORT double* SAM_Grid_SystemOutput_gen_aget(SAM_Grid ptr, int* length, SAM
 
 
 
-SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_Grid ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "load", length);
@@ -171,7 +158,7 @@ SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_Grid ptr, int* length, SAM_error 
 
 
 
-SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_kwh_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_ac_curtailment_loss_kwh", &result))
@@ -182,7 +169,7 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_kwh_nget(SAM_Grid 
 
 
 
-SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_percent_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_ac_curtailment_loss_percent", &result))
@@ -193,7 +180,7 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_percent_nget(SAM_G
 
 
 
-SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_kwh_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_ac_interconnect_loss_kwh", &result))
@@ -204,7 +191,7 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_kwh_nget(SAM_Grid
 
 
 
-SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_percent_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_ac_interconnect_loss_percent", &result))
@@ -215,7 +202,7 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_percent_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_curtailment_ac_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_curtailment_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy_pre_curtailment_ac", &result))
@@ -226,7 +213,7 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_curtailment_ac_nget(SAM_Gri
 
 
 
-SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_interconnect_ac_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_interconnect_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy_pre_interconnect_ac", &result))
@@ -237,7 +224,7 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_interconnect_ac_nget(SAM_Gr
 
 
 
-SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_curtailment_ac_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_curtailment_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor_curtailment_ac", &result))
@@ -248,7 +235,7 @@ SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_curtailment_ac_nget(SAM_Grid 
 
 
 
-SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_interconnect_ac_nget(SAM_Grid ptr, SAM_error *err){
+SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_interconnect_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor_interconnect_ac", &result))
@@ -259,7 +246,7 @@ SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_interconnect_ac_nget(SAM_Grid
 
 
 
-SAM_EXPORT double* SAM_Grid_Outputs_gen_aget(SAM_Grid ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Grid_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
@@ -271,7 +258,7 @@ SAM_EXPORT double* SAM_Grid_Outputs_gen_aget(SAM_Grid ptr, int* length, SAM_erro
 
 
 
-SAM_EXPORT double* SAM_Grid_Outputs_system_pre_curtailment_kwac_aget(SAM_Grid ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Grid_Outputs_system_pre_curtailment_kwac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "system_pre_curtailment_kwac", length);
@@ -283,7 +270,7 @@ SAM_EXPORT double* SAM_Grid_Outputs_system_pre_curtailment_kwac_aget(SAM_Grid pt
 
 
 
-SAM_EXPORT double* SAM_Grid_Outputs_system_pre_interconnect_kwac_aget(SAM_Grid ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Grid_Outputs_system_pre_interconnect_kwac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "system_pre_interconnect_kwac", length);

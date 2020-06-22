@@ -10,15 +10,7 @@
 #include "ErrorHandler.h"
 #include "SAM_TcsdirectSteam.h"
 
-SAM_EXPORT SAM_TcsdirectSteam SAM_TcsdirectSteam_construct(const char* def, SAM_error* err){
-	SAM_TcsdirectSteam result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_data_create();
-	});
-	return result;
-}
-
-SAM_EXPORT int SAM_TcsdirectSteam_execute(SAM_TcsdirectSteam data, int verbosity, SAM_error* err){
+SAM_EXPORT int SAM_TcsdirectSteam_execute(SAM_table data, int verbosity, SAM_error* err){
 	int n_err = 0;
 	translateExceptions(err, [&]{
 		n_err += SAM_module_exec("tcsdirect_steam", data, verbosity, err);
@@ -27,1062 +19,1057 @@ SAM_EXPORT int SAM_TcsdirectSteam_execute(SAM_TcsdirectSteam data, int verbosity
 }
 
 
-SAM_EXPORT void SAM_TcsdirectSteam_destruct(SAM_TcsdirectSteam system)
-{
-	ssc_data_free(system);
-}
-
-SAM_EXPORT void SAM_TcsdirectSteam_Weather_solar_resource_file_sset(SAM_TcsdirectSteam ptr, const char* str, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Weather_solar_resource_file_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "solar_resource_file", str);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DirectSteamTower_system_capacity_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DirectSteamTower_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_TouTranslator_weekday_schedule_mset(SAM_TcsdirectSteam ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_TouTranslator_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "weekday_schedule", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_TouTranslator_weekend_schedule_mset(SAM_TcsdirectSteam ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_TouTranslator_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "weekend_schedule", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_N_hel_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_N_hel_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "N_hel", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_bop_spec_cost_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_bop_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_0_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_0_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_0", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_1_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_1", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_2_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_2", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_3_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_c_atm_3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "c_atm_3", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_calc_fluxmaps_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_calc_fluxmaps_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "calc_fluxmaps", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_cant_type_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_cant_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cant_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_check_max_flux_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_check_max_flux_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "check_max_flux", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_contingency_rate_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_contingency_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "contingency_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_cost_sf_fixed_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_cost_sf_fixed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cost_sf_fixed", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_fixed_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_fixed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.fixed", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_acre_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_acre_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.per_acre", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_watt_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_watt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.per_watt", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_percent_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.epc.percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_fixed_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_fixed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.fixed", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_acre_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_acre_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.per_acre", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_watt_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_watt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.per_watt", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_percent_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.cost.plm.percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_sf_fixed_land_area_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_sf_fixed_land_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.sf.fixed_land_area", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_sf_land_overhead_factor_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_csp_pt_sf_land_overhead_factor_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp.pt.sf.land_overhead_factor", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_delta_flux_hrs_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_delta_flux_hrs_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "delta_flux_hrs", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_dens_mirror_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_dens_mirror_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dens_mirror", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_dni_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_dni_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dni_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_eta_map_mset(SAM_TcsdirectSteam ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_eta_map_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "eta_map", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_flux_maps_mset(SAM_TcsdirectSteam ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_flux_maps_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "flux_maps", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_flux_max_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_flux_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flux_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_flux_positions_mset(SAM_TcsdirectSteam ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_flux_positions_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "flux_positions", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_focus_type_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_focus_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "focus_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_fossil_spec_cost_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_fossil_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fossil_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_hel_stow_deploy_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_hel_stow_deploy_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "hel_stow_deploy", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_active_fraction_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_active_fraction_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_active_fraction", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_aim_points_mset(SAM_TcsdirectSteam ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_aim_points_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "helio_aim_points", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_height_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_height", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_optical_error_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_optical_error_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_optical_error", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_positions_mset(SAM_TcsdirectSteam ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_positions_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "helio_positions", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_reflectance_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_reflectance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_reflectance", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_width_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_helio_width_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "helio_width", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_heliostat_spec_cost_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_heliostat_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "heliostat_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_interp_beta_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_interp_beta_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "interp_beta", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_interp_nug_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_interp_nug_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "interp_nug", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_is_optimize_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_is_optimize_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_optimize", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_bound_list_aset(SAM_TcsdirectSteam ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_bound_list_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "land_bound_list", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_bound_table_mset(SAM_TcsdirectSteam ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_bound_table_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "land_bound_table", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_bound_type_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_bound_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_bound_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_max_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_min_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_min_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_min", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_spec_cost_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_land_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "land_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_facet_x_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_facet_x_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_facet_x", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_facet_y_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_facet_y_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_facet_y", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_flux_days_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_flux_days_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_flux_days", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_flux_x_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_flux_x_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_flux_x", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_flux_y_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_n_flux_y_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_flux_y", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_algorithm_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_algorithm_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_algorithm", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_conv_tol_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_conv_tol_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_conv_tol", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_flux_penalty_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_flux_penalty_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_flux_penalty", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_init_step_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_init_step_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_init_step", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_max_iter_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_opt_max_iter_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "opt_max_iter", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_p_start_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_p_start_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "p_start", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_p_track_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_p_track_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "p_track", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_plant_spec_cost_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_plant_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "plant_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_q_design_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_q_design_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_design", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_absorptance_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_absorptance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_absorptance", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_aspect_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_aspect_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_aspect", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_cost_exp_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_cost_exp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_cost_exp", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_height_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_height", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_hl_perm2_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_hl_perm2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_hl_perm2", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_ref_area_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_ref_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_ref_area", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_ref_cost_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_rec_ref_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_ref_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_run_type_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_run_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "run_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_sales_tax_frac_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_sales_tax_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sales_tax_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_sales_tax_rate_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_sales_tax_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sales_tax_rate", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_site_spec_cost_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_site_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "site_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_tes_spec_cost_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_tes_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tes_spec_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_total_installed_cost_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_installed_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_tower_exp_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_tower_exp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_exp", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_tower_fixed_cost_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_tower_fixed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tower_fixed_cost", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_v_wind_max_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_v_wind_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "v_wind_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_washing_frequency_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_washing_frequency_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "washing_frequency", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_water_usage_per_wash_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Heliostat_water_usage_per_wash_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "water_usage_per_wash", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Receiver_H_rec_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Receiver_H_rec_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "H_rec", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Receiver_THT_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Receiver_THT_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "THT", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_A_sf_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_A_sf_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "A_sf", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_P_b_in_init_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_P_b_in_init_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_b_in_init", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_P_cond_init_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_P_cond_init_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_cond_init", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_P_hp_in_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_P_hp_in_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_hp_in_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_P_hp_out_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_P_hp_out_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_hp_out", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_P_hp_out_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_P_hp_out_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_hp_out_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_ITD_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_ITD_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_ITD_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_amb_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_amb_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_amb_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_approach_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_approach_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_approach", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_fw_init_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_fw_init_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_fw_init", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_hp_out_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_hp_out_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_hp_out", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_rh_out_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_rh_out_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_rh_out_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_rh_target_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_rh_target_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_rh_target", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_sh_out_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_T_sh_out_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_sh_out_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_ct_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_ct_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ct", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_cycle_max_frac_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_cycle_max_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cycle_max_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_dT_cw_ref_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_dT_cw_ref_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dT_cw_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_d_rec_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_d_rec_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "d_rec", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_d_rh_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_d_rh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "d_rh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_d_sh_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_d_sh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "d_sh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_d_t_boiler_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_d_t_boiler_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "d_t_boiler", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_eta_rec_pump_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_eta_rec_pump_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eta_rec_pump", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_f_mdot_rh_init_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_f_mdot_rh_init_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "f_mdot_rh_init", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_f_mdotrh_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_f_mdotrh_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "f_mdotrh_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_f_pb_cutoff_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_f_pb_cutoff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "f_pb_cutoff", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_f_pb_sb_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_f_pb_sb_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "f_pb_sb", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_f_rec_min_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_f_rec_min_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "f_rec_min", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_ffrac_aset(SAM_TcsdirectSteam ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_ffrac_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ffrac", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_flowtype_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_flowtype_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "flowtype", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_fossil_mode_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_fossil_mode_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "fossil_mode", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_h_boiler_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_h_boiler_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_boiler", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_h_rh_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_h_rh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_rh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_h_sh_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_h_sh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_sh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_h_tower_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_h_tower_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_tower", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_hl_ffact_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_hl_ffact_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "hl_ffact", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_lhv_eff_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_lhv_eff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "lhv_eff", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_mat_boiler_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_mat_boiler_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mat_boiler", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_mat_rh_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_mat_rh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mat_rh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_mat_sh_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_mat_sh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mat_sh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_n_panels_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_n_panels_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_panels", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_p_cycle_design_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_p_cycle_design_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "p_cycle_design", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_q_aux_max_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_q_aux_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_aux_max", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_q_pb_design_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_q_pb_design_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_pb_design", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_q_rec_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_q_rec_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_rec_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_rec_absorptance_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_rec_absorptance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_absorptance", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_rec_emis_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_rec_emis_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_emis", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_rec_qf_delay_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_qf_delay", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_rec_su_delay_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rec_su_delay", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_t_standby_ini_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_t_standby_ini_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "t_standby_ini", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_th_rh_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_th_rh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "th_rh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_th_sh_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_th_sh_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "th_sh", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_th_t_boiler_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_th_t_boiler_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "th_t_boiler", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_DsgController_x_b_target_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_DsgController_x_b_target_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "x_b_target", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_F_wc_aset(SAM_TcsdirectSteam ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_F_wc_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "F_wc", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_P_boil_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_P_boil_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_boil_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_P_cond_min_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_P_cond_min_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_cond_min", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_P_cond_ratio_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_P_cond_ratio_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_cond_ratio", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_P_ref_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_P_ref_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_P_rh_ref_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_P_rh_ref_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_rh_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_T_ITD_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_T_ITD_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_ITD_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_T_amb_des_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_T_amb_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_amb_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_T_cold_ref_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_T_cold_ref_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_cold_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_T_hot_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_T_hot_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_hot", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_T_hot_ref_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_T_hot_ref_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "T_hot_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_dT_cw_ref_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_dT_cw_ref_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dT_cw_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_eta_ref_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_eta_ref_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eta_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_n_pl_inc_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_n_pl_inc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_pl_inc", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_pb_bd_frac_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_pb_bd_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pb_bd_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_q_sby_frac_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_q_sby_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_sby_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_rh_frac_ref_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_rh_frac_ref_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rh_frac_ref", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_startup_frac_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_startup_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "startup_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_startup_time_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Powerblock_startup_time_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "startup_time", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_Design_power_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_Design_power_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Design_power", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_Piping_length_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_Piping_length_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Piping_length", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_Piping_loss_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_Piping_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Piping_loss", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_aux_par_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_aux_par_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "aux_par", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_aux_par_0_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_aux_par_0_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "aux_par_0", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_aux_par_1_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_aux_par_1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "aux_par_1", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_aux_par_2_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_aux_par_2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "aux_par_2", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_aux_par_f_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_aux_par_f_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "aux_par_f", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_bop_par_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_bop_par_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_bop_par_0_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_bop_par_0_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par_0", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_bop_par_1_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_bop_par_1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par_1", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_bop_par_2_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_bop_par_2_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par_2", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_bop_par_f_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_bop_par_f_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par_f", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_design_eff_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_design_eff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "design_eff", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_pb_fixed_par_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pb_fixed_par", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_piping_length_add_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_piping_length_add_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "piping_length_add", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_piping_length_mult_nset(SAM_TcsdirectSteam ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsdirectSteam_Parasitics_piping_length_mult_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "piping_length_mult", number);
 	});
 }
 
-SAM_EXPORT const char* SAM_TcsdirectSteam_Weather_solar_resource_file_sget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT const char* SAM_TcsdirectSteam_Weather_solar_resource_file_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "solar_resource_file");
@@ -1094,7 +1081,7 @@ SAM_EXPORT const char* SAM_TcsdirectSteam_Weather_solar_resource_file_sget(SAM_T
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DirectSteamTower_system_capacity_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DirectSteamTower_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
@@ -1105,7 +1092,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DirectSteamTower_system_capacity_nget(SAM_T
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_TouTranslator_weekday_schedule_mget(SAM_TcsdirectSteam ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_TouTranslator_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "weekday_schedule", nrows, ncols);
@@ -1117,7 +1104,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_TouTranslator_weekday_schedule_mget(SAM_Tc
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_TouTranslator_weekend_schedule_mget(SAM_TcsdirectSteam ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_TouTranslator_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "weekend_schedule", nrows, ncols);
@@ -1129,7 +1116,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_TouTranslator_weekend_schedule_mget(SAM_Tc
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_N_hel_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_N_hel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "N_hel", &result))
@@ -1140,7 +1127,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_N_hel_nget(SAM_TcsdirectSteam ptr
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_bop_spec_cost_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_bop_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_spec_cost", &result))
@@ -1151,7 +1138,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_bop_spec_cost_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_0_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_0", &result))
@@ -1162,7 +1149,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_0_nget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_1_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_1", &result))
@@ -1173,7 +1160,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_1_nget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_2_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_2", &result))
@@ -1184,7 +1171,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_2_nget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_3_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "c_atm_3", &result))
@@ -1195,7 +1182,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_c_atm_3_nget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_calc_fluxmaps_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_calc_fluxmaps_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "calc_fluxmaps", &result))
@@ -1206,7 +1193,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_calc_fluxmaps_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_cant_type_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_cant_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cant_type", &result))
@@ -1217,7 +1204,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_cant_type_nget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_check_max_flux_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_check_max_flux_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "check_max_flux", &result))
@@ -1228,7 +1215,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_check_max_flux_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_contingency_rate_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_contingency_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "contingency_rate", &result))
@@ -1239,7 +1226,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_contingency_rate_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_cost_sf_fixed_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_cost_sf_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cost_sf_fixed", &result))
@@ -1250,7 +1237,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_cost_sf_fixed_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_fixed_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.fixed", &result))
@@ -1261,7 +1248,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_fixed_nget(SAM_Tc
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_acre_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_acre_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.per_acre", &result))
@@ -1272,7 +1259,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_acre_nget(SAM
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_watt_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_watt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.per_watt", &result))
@@ -1283,7 +1270,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_per_watt_nget(SAM
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_percent_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.epc.percent", &result))
@@ -1294,7 +1281,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_epc_percent_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_fixed_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.fixed", &result))
@@ -1305,7 +1292,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_fixed_nget(SAM_Tc
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_acre_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_acre_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.per_acre", &result))
@@ -1316,7 +1303,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_acre_nget(SAM
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_watt_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_watt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.per_watt", &result))
@@ -1327,7 +1314,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_per_watt_nget(SAM
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_percent_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.cost.plm.percent", &result))
@@ -1338,7 +1325,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_cost_plm_percent_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_sf_fixed_land_area_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_sf_fixed_land_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.sf.fixed_land_area", &result))
@@ -1349,7 +1336,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_sf_fixed_land_area_nget(SA
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_sf_land_overhead_factor_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_sf_land_overhead_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp.pt.sf.land_overhead_factor", &result))
@@ -1360,7 +1347,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_csp_pt_sf_land_overhead_factor_ng
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_delta_flux_hrs_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_delta_flux_hrs_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "delta_flux_hrs", &result))
@@ -1371,7 +1358,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_delta_flux_hrs_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_dens_mirror_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_dens_mirror_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dens_mirror", &result))
@@ -1382,7 +1369,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_dens_mirror_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_dni_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_dni_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dni_des", &result))
@@ -1393,7 +1380,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_dni_des_nget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_eta_map_mget(SAM_TcsdirectSteam ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_eta_map_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "eta_map", nrows, ncols);
@@ -1405,7 +1392,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_eta_map_mget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_flux_maps_mget(SAM_TcsdirectSteam ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_flux_maps_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "flux_maps", nrows, ncols);
@@ -1417,7 +1404,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_flux_maps_mget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_flux_max_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_flux_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flux_max", &result))
@@ -1428,7 +1415,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_flux_max_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_flux_positions_mget(SAM_TcsdirectSteam ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_flux_positions_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "flux_positions", nrows, ncols);
@@ -1440,7 +1427,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_flux_positions_mget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_focus_type_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_focus_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "focus_type", &result))
@@ -1451,7 +1438,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_focus_type_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_fossil_spec_cost_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_fossil_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fossil_spec_cost", &result))
@@ -1462,7 +1449,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_fossil_spec_cost_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_hel_stow_deploy_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_hel_stow_deploy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "hel_stow_deploy", &result))
@@ -1473,7 +1460,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_hel_stow_deploy_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_active_fraction_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_active_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_active_fraction", &result))
@@ -1484,7 +1471,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_active_fraction_nget(SAM_Tc
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_helio_aim_points_mget(SAM_TcsdirectSteam ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_helio_aim_points_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "helio_aim_points", nrows, ncols);
@@ -1496,7 +1483,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_helio_aim_points_mget(SAM_Tcsdir
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_height_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_height", &result))
@@ -1507,7 +1494,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_height_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_optical_error_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_optical_error_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_optical_error", &result))
@@ -1518,7 +1505,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_optical_error_nget(SAM_Tcsd
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_helio_positions_mget(SAM_TcsdirectSteam ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_helio_positions_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "helio_positions", nrows, ncols);
@@ -1530,7 +1517,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_helio_positions_mget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_reflectance_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_reflectance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_reflectance", &result))
@@ -1541,7 +1528,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_reflectance_nget(SAM_Tcsdir
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_width_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_width_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "helio_width", &result))
@@ -1552,7 +1539,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_helio_width_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_heliostat_spec_cost_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_heliostat_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "heliostat_spec_cost", &result))
@@ -1563,7 +1550,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_heliostat_spec_cost_nget(SAM_Tcsd
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_interp_beta_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_interp_beta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "interp_beta", &result))
@@ -1574,7 +1561,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_interp_beta_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_interp_nug_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_interp_nug_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "interp_nug", &result))
@@ -1585,7 +1572,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_interp_nug_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_is_optimize_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_is_optimize_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_optimize", &result))
@@ -1596,7 +1583,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_is_optimize_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_land_bound_list_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_land_bound_list_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "land_bound_list", length);
@@ -1608,7 +1595,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_land_bound_list_aget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_land_bound_table_mget(SAM_TcsdirectSteam ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_land_bound_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "land_bound_table", nrows, ncols);
@@ -1620,7 +1607,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Heliostat_land_bound_table_mget(SAM_Tcsdir
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_bound_type_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_bound_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_bound_type", &result))
@@ -1631,7 +1618,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_bound_type_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_max_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_max", &result))
@@ -1642,7 +1629,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_max_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_min_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_min", &result))
@@ -1653,7 +1640,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_min_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_spec_cost_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "land_spec_cost", &result))
@@ -1664,7 +1651,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_land_spec_cost_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_facet_x_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_facet_x_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_facet_x", &result))
@@ -1675,7 +1662,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_facet_x_nget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_facet_y_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_facet_y_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_facet_y", &result))
@@ -1686,7 +1673,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_facet_y_nget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_flux_days_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_flux_days_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_flux_days", &result))
@@ -1697,7 +1684,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_flux_days_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_flux_x_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_flux_x_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_flux_x", &result))
@@ -1708,7 +1695,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_flux_x_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_flux_y_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_flux_y_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_flux_y", &result))
@@ -1719,7 +1706,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_n_flux_y_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_algorithm_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_algorithm_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_algorithm", &result))
@@ -1730,7 +1717,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_algorithm_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_conv_tol_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_conv_tol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_conv_tol", &result))
@@ -1741,7 +1728,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_conv_tol_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_flux_penalty_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_flux_penalty_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_flux_penalty", &result))
@@ -1752,7 +1739,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_flux_penalty_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_init_step_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_init_step_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_init_step", &result))
@@ -1763,7 +1750,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_init_step_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_max_iter_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_max_iter_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "opt_max_iter", &result))
@@ -1774,7 +1761,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_opt_max_iter_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_p_start_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_p_start_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "p_start", &result))
@@ -1785,7 +1772,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_p_start_nget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_p_track_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_p_track_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "p_track", &result))
@@ -1796,7 +1783,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_p_track_nget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_plant_spec_cost_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_plant_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "plant_spec_cost", &result))
@@ -1807,7 +1794,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_plant_spec_cost_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_q_design_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_q_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_design", &result))
@@ -1818,7 +1805,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_q_design_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_absorptance_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_absorptance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_absorptance", &result))
@@ -1829,7 +1816,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_absorptance_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_aspect_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_aspect_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_aspect", &result))
@@ -1840,7 +1827,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_aspect_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_cost_exp_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_cost_exp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_cost_exp", &result))
@@ -1851,7 +1838,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_cost_exp_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_height_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_height", &result))
@@ -1862,7 +1849,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_height_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_hl_perm2_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_hl_perm2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_hl_perm2", &result))
@@ -1873,7 +1860,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_hl_perm2_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_ref_area_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_ref_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_ref_area", &result))
@@ -1884,7 +1871,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_ref_area_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_ref_cost_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_ref_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_ref_cost", &result))
@@ -1895,7 +1882,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_rec_ref_cost_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_run_type_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_run_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "run_type", &result))
@@ -1906,7 +1893,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_run_type_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_sales_tax_frac_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_sales_tax_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sales_tax_frac", &result))
@@ -1917,7 +1904,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_sales_tax_frac_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_sales_tax_rate_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_sales_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sales_tax_rate", &result))
@@ -1928,7 +1915,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_sales_tax_rate_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_site_spec_cost_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_site_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "site_spec_cost", &result))
@@ -1939,7 +1926,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_site_spec_cost_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_tes_spec_cost_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_tes_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tes_spec_cost", &result))
@@ -1950,7 +1937,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_tes_spec_cost_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_total_installed_cost_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
@@ -1961,7 +1948,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_total_installed_cost_nget(SAM_Tcs
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_tower_exp_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_tower_exp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_exp", &result))
@@ -1972,7 +1959,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_tower_exp_nget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_tower_fixed_cost_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_tower_fixed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tower_fixed_cost", &result))
@@ -1983,7 +1970,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_tower_fixed_cost_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_v_wind_max_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_v_wind_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "v_wind_max", &result))
@@ -1994,7 +1981,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_v_wind_max_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_washing_frequency_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_washing_frequency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "washing_frequency", &result))
@@ -2005,7 +1992,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_washing_frequency_nget(SAM_Tcsdir
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_water_usage_per_wash_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_water_usage_per_wash_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "water_usage_per_wash", &result))
@@ -2016,7 +2003,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Heliostat_water_usage_per_wash_nget(SAM_Tcs
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Receiver_H_rec_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Receiver_H_rec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "H_rec", &result))
@@ -2027,7 +2014,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Receiver_H_rec_nget(SAM_TcsdirectSteam ptr,
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Receiver_THT_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Receiver_THT_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "THT", &result))
@@ -2038,7 +2025,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Receiver_THT_nget(SAM_TcsdirectSteam ptr, S
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_A_sf_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_A_sf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "A_sf", &result))
@@ -2049,7 +2036,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_A_sf_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_b_in_init_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_b_in_init_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_b_in_init", &result))
@@ -2060,7 +2047,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_b_in_init_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_cond_init_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_cond_init_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_cond_init", &result))
@@ -2071,7 +2058,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_cond_init_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_hp_in_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_hp_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_hp_in_des", &result))
@@ -2082,7 +2069,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_hp_in_des_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_hp_out_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_hp_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_hp_out", &result))
@@ -2093,7 +2080,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_hp_out_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_hp_out_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_hp_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_hp_out_des", &result))
@@ -2104,7 +2091,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_P_hp_out_des_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_ITD_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_ITD_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_ITD_des", &result))
@@ -2115,7 +2102,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_ITD_des_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_amb_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_amb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_amb_des", &result))
@@ -2126,7 +2113,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_amb_des_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_approach_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_approach_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_approach", &result))
@@ -2137,7 +2124,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_approach_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_fw_init_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_fw_init_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_fw_init", &result))
@@ -2148,7 +2135,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_fw_init_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_hp_out_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_hp_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_hp_out", &result))
@@ -2159,7 +2146,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_hp_out_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_rh_out_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_rh_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_rh_out_des", &result))
@@ -2170,7 +2157,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_rh_out_des_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_rh_target_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_rh_target_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_rh_target", &result))
@@ -2181,7 +2168,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_rh_target_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_sh_out_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_sh_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_sh_out_des", &result))
@@ -2192,7 +2179,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_T_sh_out_des_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_ct_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_ct_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ct", &result))
@@ -2203,7 +2190,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_ct_nget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_cycle_max_frac_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_cycle_max_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cycle_max_frac", &result))
@@ -2214,7 +2201,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_cycle_max_frac_nget(SAM_Tcsdi
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_dT_cw_ref_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_dT_cw_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dT_cw_ref", &result))
@@ -2225,7 +2212,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_dT_cw_ref_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_rec_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_rec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "d_rec", &result))
@@ -2236,7 +2223,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_rec_nget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_rh_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_rh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "d_rh", &result))
@@ -2247,7 +2234,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_rh_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_sh_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_sh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "d_sh", &result))
@@ -2258,7 +2245,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_sh_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_t_boiler_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_t_boiler_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "d_t_boiler", &result))
@@ -2269,7 +2256,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_d_t_boiler_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_eta_rec_pump_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_eta_rec_pump_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eta_rec_pump", &result))
@@ -2280,7 +2267,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_eta_rec_pump_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_mdot_rh_init_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_mdot_rh_init_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "f_mdot_rh_init", &result))
@@ -2291,7 +2278,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_mdot_rh_init_nget(SAM_Tcsdi
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_mdotrh_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_mdotrh_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "f_mdotrh_des", &result))
@@ -2302,7 +2289,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_mdotrh_des_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_pb_cutoff_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_pb_cutoff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "f_pb_cutoff", &result))
@@ -2313,7 +2300,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_pb_cutoff_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_pb_sb_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_pb_sb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "f_pb_sb", &result))
@@ -2324,7 +2311,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_pb_sb_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_rec_min_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_rec_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "f_rec_min", &result))
@@ -2335,7 +2322,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_f_rec_min_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_DsgController_ffrac_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_DsgController_ffrac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "ffrac", length);
@@ -2347,7 +2334,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_DsgController_ffrac_aget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_flowtype_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_flowtype_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "flowtype", &result))
@@ -2358,7 +2345,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_flowtype_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_fossil_mode_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_fossil_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "fossil_mode", &result))
@@ -2369,7 +2356,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_fossil_mode_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_boiler_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_boiler_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "h_boiler", &result))
@@ -2380,7 +2367,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_boiler_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_rh_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_rh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "h_rh", &result))
@@ -2391,7 +2378,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_rh_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_sh_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_sh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "h_sh", &result))
@@ -2402,7 +2389,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_sh_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_tower_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_tower_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "h_tower", &result))
@@ -2413,7 +2400,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_h_tower_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_hl_ffact_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_hl_ffact_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "hl_ffact", &result))
@@ -2424,7 +2411,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_hl_ffact_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_lhv_eff_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_lhv_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lhv_eff", &result))
@@ -2435,7 +2422,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_lhv_eff_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_mat_boiler_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_mat_boiler_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mat_boiler", &result))
@@ -2446,7 +2433,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_mat_boiler_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_mat_rh_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_mat_rh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mat_rh", &result))
@@ -2457,7 +2444,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_mat_rh_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_mat_sh_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_mat_sh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mat_sh", &result))
@@ -2468,7 +2455,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_mat_sh_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_n_panels_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_n_panels_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_panels", &result))
@@ -2479,7 +2466,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_n_panels_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_p_cycle_design_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_p_cycle_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "p_cycle_design", &result))
@@ -2490,7 +2477,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_p_cycle_design_nget(SAM_Tcsdi
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_q_aux_max_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_q_aux_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_aux_max", &result))
@@ -2501,7 +2488,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_q_aux_max_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_q_pb_design_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_q_pb_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_pb_design", &result))
@@ -2512,7 +2499,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_q_pb_design_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_q_rec_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_q_rec_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_rec_des", &result))
@@ -2523,7 +2510,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_q_rec_des_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_absorptance_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_absorptance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_absorptance", &result))
@@ -2534,7 +2521,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_absorptance_nget(SAM_Tcsd
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_emis_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_emis_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_emis", &result))
@@ -2545,7 +2532,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_emis_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_qf_delay_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_qf_delay_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_qf_delay", &result))
@@ -2556,7 +2543,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_qf_delay_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_su_delay_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_su_delay_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_su_delay", &result))
@@ -2567,7 +2554,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_rec_su_delay_nget(SAM_Tcsdire
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_t_standby_ini_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_t_standby_ini_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "t_standby_ini", &result))
@@ -2578,7 +2565,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_t_standby_ini_nget(SAM_Tcsdir
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_th_rh_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_th_rh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "th_rh", &result))
@@ -2589,7 +2576,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_th_rh_nget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_th_sh_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_th_sh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "th_sh", &result))
@@ -2600,7 +2587,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_th_sh_nget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_th_t_boiler_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_th_t_boiler_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "th_t_boiler", &result))
@@ -2611,7 +2598,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_th_t_boiler_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_DsgController_x_b_target_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_DsgController_x_b_target_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "x_b_target", &result))
@@ -2622,7 +2609,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_DsgController_x_b_target_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Powerblock_F_wc_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Powerblock_F_wc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "F_wc", length);
@@ -2634,7 +2621,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Powerblock_F_wc_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_boil_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_boil_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_boil_des", &result))
@@ -2645,7 +2632,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_boil_des_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_cond_min_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_cond_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_cond_min", &result))
@@ -2656,7 +2643,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_cond_min_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_cond_ratio_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_cond_ratio_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_cond_ratio", &result))
@@ -2667,7 +2654,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_cond_ratio_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_ref_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_ref", &result))
@@ -2678,7 +2665,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_ref_nget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_rh_ref_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_rh_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_rh_ref", &result))
@@ -2689,7 +2676,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_P_rh_ref_nget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_ITD_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_ITD_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_ITD_des", &result))
@@ -2700,7 +2687,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_ITD_des_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_amb_des_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_amb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_amb_des", &result))
@@ -2711,7 +2698,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_amb_des_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_cold_ref_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_cold_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_cold_ref", &result))
@@ -2722,7 +2709,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_cold_ref_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_hot_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_hot", &result))
@@ -2733,7 +2720,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_hot_nget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_hot_ref_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_hot_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_hot_ref", &result))
@@ -2744,7 +2731,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_T_hot_ref_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_dT_cw_ref_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_dT_cw_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dT_cw_ref", &result))
@@ -2755,7 +2742,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_dT_cw_ref_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_eta_ref_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_eta_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eta_ref", &result))
@@ -2766,7 +2753,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_eta_ref_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_n_pl_inc_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_n_pl_inc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_pl_inc", &result))
@@ -2777,7 +2764,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_n_pl_inc_nget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_pb_bd_frac_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_pb_bd_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pb_bd_frac", &result))
@@ -2788,7 +2775,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_pb_bd_frac_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_q_sby_frac_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_q_sby_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_sby_frac", &result))
@@ -2799,7 +2786,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_q_sby_frac_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_rh_frac_ref_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_rh_frac_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rh_frac_ref", &result))
@@ -2810,7 +2797,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_rh_frac_ref_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_startup_frac_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_startup_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "startup_frac", &result))
@@ -2821,7 +2808,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_startup_frac_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_startup_time_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_startup_time_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "startup_time", &result))
@@ -2832,7 +2819,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Powerblock_startup_time_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_Design_power_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_Design_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Design_power", &result))
@@ -2843,7 +2830,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_Design_power_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_Piping_length_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_Piping_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Piping_length", &result))
@@ -2854,7 +2841,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_Piping_length_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_Piping_loss_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_Piping_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "Piping_loss", &result))
@@ -2865,7 +2852,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_Piping_loss_nget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "aux_par", &result))
@@ -2876,7 +2863,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_0_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "aux_par_0", &result))
@@ -2887,7 +2874,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_0_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_1_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "aux_par_1", &result))
@@ -2898,7 +2885,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_1_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_2_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "aux_par_2", &result))
@@ -2909,7 +2896,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_2_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_f_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_f_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "aux_par_f", &result))
@@ -2920,7 +2907,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_aux_par_f_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_par", &result))
@@ -2931,7 +2918,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_0_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_par_0", &result))
@@ -2942,7 +2929,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_0_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_1_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_par_1", &result))
@@ -2953,7 +2940,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_1_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_2_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_par_2", &result))
@@ -2964,7 +2951,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_2_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_f_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_f_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "bop_par_f", &result))
@@ -2975,7 +2962,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_bop_par_f_nget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_design_eff_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_design_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "design_eff", &result))
@@ -2986,7 +2973,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_design_eff_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_pb_fixed_par_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_pb_fixed_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pb_fixed_par", &result))
@@ -2997,7 +2984,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_pb_fixed_par_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_piping_length_add_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_piping_length_add_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "piping_length_add", &result))
@@ -3008,7 +2995,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_piping_length_add_nget(SAM_Tcsdi
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_piping_length_mult_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_piping_length_mult_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "piping_length_mult", &result))
@@ -3019,7 +3006,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Parasitics_piping_length_mult_nget(SAM_Tcsd
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_b_in_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_b_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_b_in", length);
@@ -3031,7 +3018,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_b_in_aget(SAM_TcsdirectSteam ptr
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_b_out_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_b_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_b_out", length);
@@ -3043,7 +3030,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_b_out_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_cond_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_cond_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_cond", length);
@@ -3055,7 +3042,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_cond_aget(SAM_TcsdirectSteam ptr
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_cooling_tower_tot_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_cooling_tower_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_cooling_tower_tot", length);
@@ -3067,7 +3054,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_cooling_tower_tot_aget(SAM_Tcsdi
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_cycle_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_cycle", length);
@@ -3079,7 +3066,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_cycle_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_drop_b_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_drop_b_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_drop_b", length);
@@ -3091,7 +3078,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_drop_b_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_fixed_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_fixed", length);
@@ -3103,7 +3090,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_fixed_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_out_net_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_out_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_out_net", length);
@@ -3115,7 +3102,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_out_net_aget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_parasitics_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_parasitics_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_parasitics", length);
@@ -3127,7 +3114,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_parasitics_aget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_piping_tot_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_piping_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_piping_tot", length);
@@ -3139,7 +3126,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_piping_tot_aget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_plant_balance_tot_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_plant_balance_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_plant_balance_tot", length);
@@ -3151,7 +3138,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_plant_balance_tot_aget(SAM_Tcsdi
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_rh_in_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_rh_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_rh_in", length);
@@ -3163,7 +3150,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_rh_in_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_rh_out_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_rh_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_rh_out", length);
@@ -3175,7 +3162,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_rh_out_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_sh_out_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_sh_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "P_sh_out", length);
@@ -3187,7 +3174,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_P_sh_out_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_b_in_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_b_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_b_in", length);
@@ -3199,7 +3186,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_b_in_aget(SAM_TcsdirectSteam ptr
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_boiling_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_boiling_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_boiling", length);
@@ -3211,7 +3198,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_boiling_aget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_fw_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_fw_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_fw", length);
@@ -3223,7 +3210,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_fw_aget(SAM_TcsdirectSteam ptr, 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_max_b_surf_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_max_b_surf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_max_b_surf", length);
@@ -3235,7 +3222,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_max_b_surf_aget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_max_rh_surf_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_max_rh_surf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_max_rh_surf", length);
@@ -3247,7 +3234,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_max_rh_surf_aget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_max_sh_surf_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_max_sh_surf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_max_sh_surf", length);
@@ -3259,7 +3246,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_max_sh_surf_aget(SAM_TcsdirectSt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_rh_in_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_rh_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_rh_in", length);
@@ -3271,7 +3258,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_rh_in_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_rh_out_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_rh_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "T_rh_out", length);
@@ -3283,7 +3270,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_T_rh_out_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_W_dot_boost_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_W_dot_boost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_boost", length);
@@ -3295,7 +3282,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_W_dot_boost_aget(SAM_TcsdirectStea
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_W_cycle_gross_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_W_cycle_gross_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_W_cycle_gross", &result))
@@ -3306,7 +3293,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_W_cycle_gross_nget(SAM_Tcsdi
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_energy_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
@@ -3317,7 +3304,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_energy_nget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_fuel_usage_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
@@ -3328,7 +3315,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_fuel_usage_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_total_water_use_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_total_water_use_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_total_water_use", &result))
@@ -3339,7 +3326,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Outputs_annual_total_water_use_nget(SAM_Tcs
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_beam_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "beam", length);
@@ -3351,7 +3338,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_beam_aget(SAM_TcsdirectSteam ptr, 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Outputs_capacity_factor_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
@@ -3362,7 +3349,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Outputs_capacity_factor_nget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Outputs_conversion_factor_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Outputs_conversion_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "conversion_factor", &result))
@@ -3373,7 +3360,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Outputs_conversion_factor_nget(SAM_Tcsdirec
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_dP_rh_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_dP_rh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dP_rh", length);
@@ -3385,7 +3372,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_dP_rh_aget(SAM_TcsdirectSteam ptr,
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_dP_sh_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_dP_sh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "dP_sh", length);
@@ -3397,7 +3384,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_dP_sh_aget(SAM_TcsdirectSteam ptr,
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_defocus_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "defocus", length);
@@ -3409,7 +3396,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_defocus_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_b_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_b_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_b", length);
@@ -3421,7 +3408,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_b_aget(SAM_TcsdirectSteam ptr,
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_field_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_field_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_field", length);
@@ -3433,7 +3420,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_field_aget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_rec_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_rec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_rec", length);
@@ -3445,7 +3432,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_rec_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_rh_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_rh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_rh", length);
@@ -3457,7 +3444,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_rh_aget(SAM_TcsdirectSteam ptr
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_sh_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_sh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "eta_sh", length);
@@ -3469,7 +3456,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_eta_sh_aget(SAM_TcsdirectSteam ptr
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_f_bays_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_f_bays_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "f_bays", length);
@@ -3481,7 +3468,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_f_bays_aget(SAM_TcsdirectSteam ptr
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_f_mdot_rh_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_f_mdot_rh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "f_mdot_rh", length);
@@ -3493,7 +3480,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_f_mdot_rh_aget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_gen_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
@@ -3505,7 +3492,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_gen_aget(SAM_TcsdirectSteam ptr, i
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_hour_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "hour", length);
@@ -3517,7 +3504,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_hour_aget(SAM_TcsdirectSteam ptr, 
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Outputs_kwh_per_kw_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "kwh_per_kw", &result))
@@ -3528,7 +3515,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Outputs_kwh_per_kw_nget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_m_dot_aux_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_m_dot_aux_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_aux", length);
@@ -3540,7 +3527,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_m_dot_aux_aget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_m_dot_makeup_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_m_dot_makeup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_makeup", length);
@@ -3552,7 +3539,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_m_dot_makeup_aget(SAM_TcsdirectSte
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_m_dot_sh_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_m_dot_sh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "m_dot_sh", length);
@@ -3564,7 +3551,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_m_dot_sh_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_month_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "month", length);
@@ -3576,7 +3563,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_month_aget(SAM_TcsdirectSteam ptr,
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_pparasi_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_pparasi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pparasi", length);
@@ -3588,7 +3575,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_pparasi_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_pres_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "pres", length);
@@ -3600,7 +3587,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_pres_aget(SAM_TcsdirectSteam ptr, 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_abs_rec_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_abs_rec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_abs_rec", length);
@@ -3612,7 +3599,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_abs_rec_aget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_aux_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_aux_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_aux", length);
@@ -3624,7 +3611,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_aux_aget(SAM_TcsdirectSteam ptr,
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_aux_fuel_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_aux_fuel_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_aux_fuel", length);
@@ -3636,7 +3623,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_aux_fuel_aget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_b_abs_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_b_abs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_b_abs", length);
@@ -3648,7 +3635,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_b_abs_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_b_conv_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_b_conv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_b_conv", length);
@@ -3660,7 +3647,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_b_conv_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_b_rad_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_b_rad_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_b_rad", length);
@@ -3672,7 +3659,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_b_rad_aget(SAM_TcsdirectSteam pt
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_conv_rec_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_conv_rec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_conv_rec", length);
@@ -3684,7 +3671,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_conv_rec_aget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_inc_full_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_inc_full_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_inc_full", length);
@@ -3696,7 +3683,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_inc_full_aget(SAM_TcsdirectSteam
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rad_rec_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rad_rec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_rad_rec", length);
@@ -3708,7 +3695,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rad_rec_aget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rh_abs_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rh_abs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_rh_abs", length);
@@ -3720,7 +3707,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rh_abs_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rh_conv_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rh_conv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_rh_conv", length);
@@ -3732,7 +3719,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rh_conv_aget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rh_rad_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rh_rad_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_rh_rad", length);
@@ -3744,7 +3731,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_rh_rad_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_sh_abs_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_sh_abs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_sh_abs", length);
@@ -3756,7 +3743,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_sh_abs_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_sh_conv_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_sh_conv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_sh_conv", length);
@@ -3768,7 +3755,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_sh_conv_aget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_sh_rad_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_sh_rad_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_sh_rad", length);
@@ -3780,7 +3767,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_sh_rad_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_therm_in_rec_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_therm_in_rec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "q_therm_in_rec", length);
@@ -3792,7 +3779,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_q_therm_in_rec_aget(SAM_TcsdirectS
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_solazi_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "solazi", length);
@@ -3804,7 +3791,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_solazi_aget(SAM_TcsdirectSteam ptr
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_solzen_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_solzen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "solzen", length);
@@ -3816,7 +3803,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_solzen_aget(SAM_TcsdirectSteam ptr
 
 
 
-SAM_EXPORT double SAM_TcsdirectSteam_Outputs_system_heat_rate_nget(SAM_TcsdirectSteam ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsdirectSteam_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_heat_rate", &result))
@@ -3827,7 +3814,7 @@ SAM_EXPORT double SAM_TcsdirectSteam_Outputs_system_heat_rate_nget(SAM_Tcsdirect
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_tdry_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tdry", length);
@@ -3839,7 +3826,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_tdry_aget(SAM_TcsdirectSteam ptr, 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_tou_value_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_tou_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "tou_value", length);
@@ -3851,7 +3838,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_tou_value_aget(SAM_TcsdirectSteam 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_twet_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "twet", length);
@@ -3863,7 +3850,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_twet_aget(SAM_TcsdirectSteam ptr, 
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_v_rh_max_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_v_rh_max_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "v_rh_max", length);
@@ -3875,7 +3862,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_v_rh_max_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_v_sh_max_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_v_sh_max_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "v_sh_max", length);
@@ -3887,7 +3874,7 @@ SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_v_sh_max_aget(SAM_TcsdirectSteam p
 
 
 
-SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_wspd_aget(SAM_TcsdirectSteam ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsdirectSteam_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "wspd", length);

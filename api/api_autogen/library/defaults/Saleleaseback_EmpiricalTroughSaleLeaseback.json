@@ -42,7 +42,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": 30,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -196,7 +196,7 @@
 			"system_capacity": 99900
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 2.67044e+07,
+			"construction_financing_cost": 2.64224e+07,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -210,7 +210,7 @@
 			"system_use_lifetime_output": 0,
 			"system_use_recapitalization": 0,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 5.34088e+08
+			"total_installed_cost": 5.28448e+08
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 2.064,

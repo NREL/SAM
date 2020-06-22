@@ -23,12 +23,8 @@ extern "C"
 
 	SAM_EXPORT typedef void * SAM_IphToLcoefcr;
 
-	SAM_EXPORT SAM_IphToLcoefcr SAM_IphToLcoefcr_construct(const char* def, SAM_error* err);
-
 	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_IphToLcoefcr_execute(SAM_IphToLcoefcr data, int verbosity, SAM_error* err);
-
-	SAM_EXPORT void SAM_IphToLcoefcr_destruct(SAM_IphToLcoefcr system);
+	SAM_EXPORT int SAM_IphToLcoefcr_execute(SAM_table data, int verbosity, SAM_error* err);
 
 
 	//
@@ -41,7 +37,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_IphToLcoefcr_IPHLCOH_annual_electricity_consumption_nset(SAM_IphToLcoefcr ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_IphToLcoefcr_IPHLCOH_annual_electricity_consumption_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set electricity_rate: Cost of electricity used to operate pumps/trackers [$/kWe]
@@ -49,7 +45,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_IphToLcoefcr_IPHLCOH_electricity_rate_nset(SAM_IphToLcoefcr ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_IphToLcoefcr_IPHLCOH_electricity_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -62,23 +58,23 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_IphToLcoefcr_SimpleLCOE_fixed_operating_cost_nset(SAM_IphToLcoefcr ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_IphToLcoefcr_SimpleLCOE_fixed_operating_cost_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
 	 * IPHLCOH Getters
 	 */
 
-	SAM_EXPORT double SAM_IphToLcoefcr_IPHLCOH_annual_electricity_consumption_nget(SAM_IphToLcoefcr ptr, SAM_error *err);
+	SAM_EXPORT double SAM_IphToLcoefcr_IPHLCOH_annual_electricity_consumption_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_IphToLcoefcr_IPHLCOH_electricity_rate_nget(SAM_IphToLcoefcr ptr, SAM_error *err);
+	SAM_EXPORT double SAM_IphToLcoefcr_IPHLCOH_electricity_rate_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * SimpleLCOE Getters
 	 */
 
-	SAM_EXPORT double SAM_IphToLcoefcr_SimpleLCOE_fixed_operating_cost_nget(SAM_IphToLcoefcr ptr, SAM_error *err);
+	SAM_EXPORT double SAM_IphToLcoefcr_SimpleLCOE_fixed_operating_cost_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

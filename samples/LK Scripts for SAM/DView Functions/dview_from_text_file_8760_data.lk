@@ -1,3 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+This script demonstrates how to use the dview() function to display a single
+column of data from a text file.
+
+Use it with the data.txt file that accompanies this script.
+
+Tested in SAM 2020.2.29 r2
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
 // read 8760 rows and one column data from text file and plot in data viewer
 // example file data.txt (hourly output from PVWatts Single Owner default).
 fn=choose_file('','open data file', 'Text Files(*.txt)|*.txt');
@@ -6,16 +19,19 @@ if (file_exists(fn))
 	txt_data = read_text_file(fn);
 	data = real_array(txt_data);
 	outln(#data);
-// set up dview plot
+	
+	// set up dview plot
 	datasets = 1; // number of datasets
 	timestep = 8760/#data; // hours
 	window_title = 'dview() function with single dataset'; // window title
-// dataset 1 -  
+	
+	// dataset 1 -  
 	dataset1_name = 'data1'; 
 	dataset1_units = 'units';
 	dataset1_multiplier = 1.0;
 	dataset1_data = data;
-// create dview window 
+
+	// create dview window 
 	dview(datasets, timestep, window_title,
 		dataset1_name, dataset1_units, dataset1_multiplier, dataset1_data);
 }

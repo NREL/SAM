@@ -1,13 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////
-//
-// This script switches the first day of the year's load data with last day
-// of the year for load data that starts on Sunday instead of Monday.
-//
-// The script reads load data from the Electric Load page and then replaces it
-// with the shifted data. Be sure to save a copy of your load data as a backup.
-//
-// Written and tested in SAM 2017.9.5 r4 July 2018
-//
+/*
+	This script switches the first day of the year's load data with last day
+	of the year for load data that starts on Sunday instead of Monday.
+
+	The script reads load data from the Electric Load page and then replaces it
+	with the shifted data. Be sure to save a copy of your load data as a backup.
+	
+	The script only works for cases with a financial model that requires load
+	data as input.
+
+	Tested in SAM 2020.2.29 r2
+*/
 ////////////////////////////////////////////////////////////////////////////////
 
 // get load data from Electric Load input page
@@ -19,7 +22,9 @@ time_steps_per_day = time_steps_per_hour * 24;
 
 // get first day of load data
 for ( i=0; i < time_steps_per_day; i++ )
+{
 	data_to_move_to_end[i] = old_data[i];
+}
 
 // shift first day of data to last day
 new_data = old_data;
@@ -27,7 +32,9 @@ j=0;
 for ( i=0; i < #old_data; i++ )
 {
 	if ( i < #old_data - time_steps_per_day )
+	{
 		new_data[i] = old_data[ i + time_steps_per_day];
+	}
 	else
 	{	
 		new_data[i] = data_to_move_to_end[j];
