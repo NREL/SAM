@@ -1,6 +1,6 @@
 Marine Costs - Plant Commissioning
-811
-197
+816
+109
 10
 Label
 
@@ -12,10 +12,10 @@ Name
 itemized_check_commissioning
 X
 3
-21
+48
 Y
 3
-114
+33
 Width
 3
 90
@@ -59,13 +59,13 @@ Name
 object 4
 X
 3
-15
+9
 Y
 3
-75
+15
 Width
 3
-759
+800
 Height
 3
 87
@@ -89,10 +89,10 @@ Name
 object 721
 X
 3
-654
+555
 Y
 3
-90
+30
 Width
 3
 78
@@ -137,10 +137,10 @@ Name
 object 7211
 X
 3
-450
+351
 Y
 3
-90
+30
 Width
 3
 84
@@ -185,10 +185,10 @@ Name
 object 7213
 X
 3
-564
+465
 Y
 3
-90
+30
 Width
 3
 57
@@ -233,13 +233,13 @@ Name
 object 75
 X
 3
-117
+75
 Y
 3
-117
+57
 Width
 3
-177
+120
 Height
 3
 24
@@ -248,8 +248,8 @@ Tool Tip
 0
 Caption
 5
-25
-Plant Commissioning Costs
+19
+Plant Commissioning
 TextColour
 4
 0
@@ -258,7 +258,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -281,10 +281,10 @@ Name
 plant_commissioning_cost
 X
 3
-648
+549
 Y
 3
-117
+57
 Width
 3
 90
@@ -344,10 +344,10 @@ Name
 plant_commissioning_cost_input
 X
 3
-549
+450
 Y
 3
-117
+57
 Width
 3
 90
@@ -406,10 +406,10 @@ Name
 plant_commissioning_cost_method
 X
 3
-303
+204
 Y
 3
-117
+57
 Width
 3
 126
@@ -441,10 +441,10 @@ Name
 plant_commissioning_cost_modeled
 X
 3
-447
+348
 Y
 3
-117
+57
 Width
 3
 90

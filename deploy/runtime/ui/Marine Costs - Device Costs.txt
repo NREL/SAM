@@ -1,6 +1,6 @@
 Marine Costs - Device Costs
-908
-300
+825
+251
 4
 Numeric
 
@@ -12,10 +12,10 @@ Name
 device_costs_total
 X
 3
-168
+123
 Y
 3
-213
+195
 Width
 3
 90
@@ -74,10 +74,10 @@ Name
 object 4
 X
 3
-57
+12
 Y
 3
-30
+12
 Width
 3
 800
@@ -104,10 +104,10 @@ Name
 object 7
 X
 3
-96
+51
 Y
 3
-75
+57
 Width
 3
 591
@@ -152,10 +152,10 @@ Name
 object 71
 X
 3
-96
+51
 Y
 3
-171
+153
 Width
 3
 528

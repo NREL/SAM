@@ -1,7 +1,7 @@
 Marine Costs - Electrical Infrastructure
-993
-1633
-92
+820
+1388
+96
 Label
 
 1
@@ -12,10 +12,10 @@ Name
 92
 X
 3
-327
+204
 Y
 3
-159
+170
 Width
 3
 111
@@ -60,10 +60,10 @@ Name
 Cable Protection
 X
 3
-318
+195
 Y
 3
-609
+590
 Width
 3
 120
@@ -108,10 +108,10 @@ Name
 Cable Protection75
 X
 3
-210
+87
 Y
 3
-1143
+1070
 Width
 3
 228
@@ -156,10 +156,10 @@ Name
 Cable Protection7543
 X
 3
-285
+162
 Y
 3
-906
+860
 Width
 3
 153
@@ -204,16 +204,16 @@ Name
 Electrical Infrastructure Costs
 X
 3
-33
+9
 Y
 3
-57
+18
 Width
 3
 800
 Height
 3
-1462
+1366
 Tool Tip
 5
 0
@@ -224,6 +224,102 @@ Electrical Infrastructure Costs
 Bold
 2
 1
+Label
+
+1
+13
+Name
+5
+16
+Itemized Inputs 
+X
+3
+417
+Y
+3
+144
+Width
+3
+114
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Sub-Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+17
+Itemized Inputs 3
+X
+3
+315
+Y
+3
+144
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -234,10 +330,10 @@ Name
 array_cable_accessories_and_jointing_cost
 X
 3
-543
+420
 Y
 3
-255
+260
 Width
 3
 90
@@ -261,7 +357,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -296,10 +393,10 @@ Name
 array_cable_system_commissioning_cost
 X
 3
-543
+420
 Y
 3
-291
+290
 Width
 3
 90
@@ -323,7 +420,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -358,10 +456,10 @@ Name
 array_cable_system_cost
 X
 3
-438
+315
 Y
 3
-159
+170
 Width
 3
 90
@@ -385,7 +483,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -420,10 +519,10 @@ Name
 array_cable_system_cost_total
 X
 3
-438
+315
 Y
 3
-159
+170
 Width
 3
 90
@@ -483,10 +582,10 @@ Name
 array_cable_system_transportation_cost
 X
 3
-543
+420
 Y
 3
-321
+320
 Width
 3
 90
@@ -510,7 +609,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -545,10 +645,10 @@ Name
 array_cables_cost
 X
 3
-543
+420
 Y
 3
-222
+230
 Width
 3
 90
@@ -572,7 +672,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -607,10 +708,10 @@ Name
 bend_restrictors_cost
 X
 3
-543
+420
 Y
 3
-768
+740
 Width
 3
 90
@@ -634,7 +735,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -669,10 +771,10 @@ Name
 bend_stiffeners_cost
 X
 3
-543
+420
 Y
 3
-801
+770
 Width
 3
 90
@@ -696,7 +798,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -731,10 +834,10 @@ Name
 cable_mattresses_cost
 X
 3
-543
+420
 Y
 3
-705
+680
 Width
 3
 90
@@ -758,7 +861,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -793,10 +897,10 @@ Name
 cable_protection_cost
 X
 3
-438
+315
 Y
 3
-609
+590
 Width
 3
 90
@@ -820,7 +924,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -855,10 +960,10 @@ Name
 cable_protection_cost_total
 X
 3
-438
+315
 Y
 3
-609
+590
 Width
 3
 90
@@ -917,10 +1022,10 @@ Name
 detailed_cost_choice_array_cables
 X
 3
-540
+345
 Y
 3
-192
+200
 Width
 3
 132
@@ -950,10 +1055,10 @@ Name
 detailed_cost_choice_cable_protection
 X
 3
-543
+345
 Y
 3
-636
+620
 Width
 3
 129
@@ -983,10 +1088,10 @@ Name
 detailed_cost_choice_export_cables
 X
 3
-540
+345
 Y
 3
-420
+410
 Width
 3
 132
@@ -1016,10 +1121,10 @@ Name
 detailed_cost_choice_offshore_substation
 X
 3
-543
+345
 Y
 3
-930
+890
 Width
 3
 132
@@ -1049,10 +1154,10 @@ Name
 detailed_cost_choice_onshore_transmission
 X
 3
-540
+345
 Y
 3
-1167
+1100
 Width
 3
 135
@@ -1082,10 +1187,10 @@ Name
 ducting_system_cost
 X
 3
-543
+420
 Y
 3
-738
+710
 Width
 3
 90
@@ -1109,7 +1214,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1144,10 +1250,10 @@ Name
 elec_infras_cost
 X
 3
-639
+525
 Y
 3
-114
+78
 Width
 3
 90
@@ -1207,10 +1313,10 @@ Name
 elec_infras_cost_input
 X
 3
-543
+420
 Y
 3
-114
+78
 Width
 3
 90
@@ -1269,10 +1375,10 @@ Name
 elec_infras_cost_method
 X
 3
-300
+177
 Y
 3
-114
+78
 Width
 3
 126
@@ -1305,10 +1411,10 @@ Name
 elec_infras_cost_modeled
 X
 3
-438
+315
 Y
 3
-114
+78
 Width
 3
 90
@@ -1368,10 +1474,10 @@ Name
 elec_infras_cost_total
 X
 3
-543
+420
 Y
 3
-114
+78
 Width
 3
 90
@@ -1431,10 +1537,10 @@ Name
 electrical_conversion_equipment_cost
 X
 3
-543
+420
 Y
 3
-1038
+980
 Width
 3
 90
@@ -1458,7 +1564,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1493,10 +1600,10 @@ Name
 export_cable_accessories_and_jointing_cost
 X
 3
-543
+420
 Y
 3
-483
+470
 Width
 3
 90
@@ -1520,7 +1627,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1555,10 +1663,10 @@ Name
 export_cable_commissioning_cost
 X
 3
-543
+420
 Y
 3
-516
+500
 Width
 3
 90
@@ -1582,7 +1690,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1617,10 +1726,10 @@ Name
 export_cable_system_cost
 X
 3
-438
+315
 Y
 3
-393
+380
 Width
 3
 90
@@ -1644,7 +1753,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1679,10 +1789,10 @@ Name
 export_cable_system_cost_total
 X
 3
-438
+315
 Y
 3
-393
+380
 Width
 3
 90
@@ -1742,10 +1852,10 @@ Name
 export_cable_system_transportation_cost
 X
 3
-543
+420
 Y
 3
-546
+530
 Width
 3
 90
@@ -1769,7 +1879,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1804,10 +1915,10 @@ Name
 export_cables_cost
 X
 3
-543
+420
 Y
 3
-450
+440
 Width
 3
 90
@@ -1831,7 +1942,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1866,10 +1978,10 @@ Name
 facilities_and_ancillary_systems_cost
 X
 3
-543
+420
 Y
 3
-1077
+1010
 Width
 3
 90
@@ -1893,7 +2005,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1928,10 +2041,10 @@ Name
 itemized_check_elec_infras
 X
 3
-51
+27
 Y
 3
-114
+45
 Width
 3
 90
@@ -1975,10 +2088,10 @@ Name
 jtube_seals_cost
 X
 3
-543
+420
 Y
 3
-837
+800
 Width
 3
 90
@@ -2002,7 +2115,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2037,10 +2151,10 @@ Name
 land_leases_cost
 X
 3
-543
+420
 Y
 3
-1200
+1130
 Width
 3
 90
@@ -2064,7 +2178,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2099,13 +2214,13 @@ Name
 level_input_label_elec
 X
 3
-558
+420
 Y
 3
-87
+51
 Width
 3
-66
+87
 Height
 3
 24
@@ -2114,8 +2229,8 @@ Tool Tip
 0
 Caption
 5
-12
-Level Totals
+15
+Itemized Inputs
 TextColour
 4
 0
@@ -2137,6 +2252,44 @@ AlignRight
 AlignTop
 2
 0
+Divider
+
+1
+10
+Name
+5
+13
+object 216311
+X
+3
+342
+Y
+3
+132
+Width
+3
+138
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
 Label
 
 1
@@ -2147,10 +2300,10 @@ Name
 object 713
 X
 3
-375
+252
 Y
 3
-255
+260
 Width
 3
 168
@@ -2191,14 +2344,62 @@ Label
 13
 Name
 5
+12
+object 71944
+X
+3
+345
+Y
+3
+117
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+24
+Itemized Input Structure
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 10
 object 721
 X
 3
-444
+321
 Y
 3
-87
+51
 Width
 3
 84
@@ -2243,10 +2444,10 @@ Name
 object 72441
 X
 3
-381
+258
 Y
 3
-870
+830
 Width
 3
 162
@@ -2291,10 +2492,10 @@ Name
 object 7244110
 X
 3
-450
+327
 Y
 3
-768
+740
 Width
 3
 93
@@ -2339,10 +2540,10 @@ Name
 object 7244113
 X
 3
-450
+327
 Y
 3
-738
+710
 Width
 3
 93
@@ -2387,10 +2588,10 @@ Name
 object 7244116
 X
 3
-444
+321
 Y
 3
-705
+680
 Width
 3
 99
@@ -2435,10 +2636,10 @@ Name
 object 7244117
 X
 3
-450
+327
 Y
 3
-666
+650
 Width
 3
 93
@@ -2483,10 +2684,10 @@ Name
 object 7244135
 X
 3
-450
+327
 Y
 3
-837
+800
 Width
 3
 93
@@ -2531,10 +2732,10 @@ Name
 object 724416
 X
 3
-450
+327
 Y
 3
-801
+770
 Width
 3
 93
@@ -2579,10 +2780,10 @@ Name
 object 7244165
 X
 3
-312
+189
 Y
 3
-1428
+1310
 Width
 3
 231
@@ -2627,10 +2828,10 @@ Name
 object 724416513
 X
 3
-450
+327
 Y
 3
-1317
+1220
 Width
 3
 93
@@ -2675,10 +2876,10 @@ Name
 object 724416531
 X
 3
-363
+240
 Y
 3
-1110
+1040
 Width
 3
 180
@@ -2723,10 +2924,10 @@ Name
 object 72441653125
 X
 3
-363
+240
 Y
 3
-1077
+1010
 Width
 3
 180
@@ -2771,10 +2972,10 @@ Name
 object 72441658
 X
 3
-246
+123
 Y
 3
-1395
+1280
 Width
 3
 297
@@ -2819,10 +3020,10 @@ Name
 object 7244168
 X
 3
-423
+300
 Y
 3
-1356
+1250
 Width
 3
 120
@@ -2867,10 +3068,10 @@ Name
 object 724416818
 X
 3
-318
+195
 Y
 3
-1278
+1190
 Width
 3
 225
@@ -2915,10 +3116,10 @@ Name
 object 724416833
 X
 3
-369
+246
 Y
 3
-1038
+980
 Width
 3
 174
@@ -2963,10 +3164,10 @@ Name
 object 7244171
 X
 3
-384
+261
 Y
 3
-1239
+1160
 Width
 3
 159
@@ -3011,10 +3212,10 @@ Name
 object 724417137
 X
 3
-387
+264
 Y
 3
-999
+950
 Width
 3
 156
@@ -3059,10 +3260,10 @@ Name
 object 7244172
 X
 3
-450
+327
 Y
 3
-1200
+1130
 Width
 3
 93
@@ -3107,10 +3308,10 @@ Name
 object 724417240
 X
 3
-495
+372
 Y
 3
-960
+920
 Width
 3
 48
@@ -3155,10 +3356,10 @@ Name
 object 726
 X
 3
-348
+225
 Y
 3
-546
+530
 Width
 3
 195
@@ -3203,10 +3404,10 @@ Name
 object 72652
 X
 3
-363
+240
 Y
 3
-576
+560
 Width
 3
 180
@@ -3251,10 +3452,10 @@ Name
 object 72653
 X
 3
-378
+255
 Y
 3
-516
+500
 Width
 3
 165
@@ -3299,10 +3500,10 @@ Name
 object 727
 X
 3
-462
+339
 Y
 3
-450
+440
 Width
 3
 81
@@ -3347,10 +3548,10 @@ Name
 object 728
 X
 3
-312
+189
 Y
 3
-393
+380
 Width
 3
 126
@@ -3395,10 +3596,10 @@ Name
 object 72821
 X
 3
-351
+228
 Y
 3
-351
+350
 Width
 3
 192
@@ -3443,10 +3644,10 @@ Name
 object 7282178
 X
 3
-351
+228
 Y
 3
-321
+320
 Width
 3
 192
@@ -3491,10 +3692,10 @@ Name
 object 73
 X
 3
-468
+345
 Y
 3
-222
+230
 Width
 3
 75
@@ -3539,10 +3740,10 @@ Name
 object 730
 X
 3
-345
+222
 Y
 3
-291
+290
 Width
 3
 198
@@ -3587,10 +3788,10 @@ Name
 object 731
 X
 3
-387
+264
 Y
 3
-483
+470
 Width
 3
 156
@@ -3635,10 +3836,10 @@ Name
 object 7322
 X
 3
-642
+531
 Y
 3
-87
+51
 Width
 3
 81
@@ -3683,10 +3884,10 @@ Name
 object 75
 X
 3
-153
+30
 Y
 3
-114
+78
 Width
 3
 138
@@ -3731,10 +3932,10 @@ Name
 object45
 X
 3
-231
+108
 Y
 3
-1470
+1340
 Width
 3
 207
@@ -3779,10 +3980,10 @@ Name
 offshore_substation_cost
 X
 3
-438
+315
 Y
 3
-906
+860
 Width
 3
 90
@@ -3806,7 +4007,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3841,10 +4043,10 @@ Name
 offshore_substation_cost_total
 X
 3
-438
+315
 Y
 3
-906
+860
 Width
 3
 90
@@ -3904,10 +4106,10 @@ Name
 onshore_substation_cost_total
 X
 3
-438
+315
 Y
 3
-1143
+1070
 Width
 3
 90
@@ -3967,10 +4169,10 @@ Name
 onshore_substations_cost
 X
 3
-543
+420
 Y
 3
-1356
+1250
 Width
 3
 90
@@ -3994,7 +4196,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4029,10 +4232,10 @@ Name
 onshore_transmission_infrastructure_cost
 X
 3
-438
+315
 Y
 3
-1143
+1070
 Width
 3
 90
@@ -4091,10 +4294,10 @@ Name
 onshore_transmission_infrastructure_transportation_cost
 X
 3
-543
+420
 Y
 3
-1395
+1280
 Width
 3
 90
@@ -4118,7 +4321,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4153,10 +4357,10 @@ Name
 other_array_cable_system_cost
 X
 3
-543
+420
 Y
 3
-351
+350
 Width
 3
 90
@@ -4180,7 +4384,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4215,10 +4420,10 @@ Name
 other_cable_protection_cost
 X
 3
-543
+420
 Y
 3
-870
+830
 Width
 3
 90
@@ -4242,7 +4447,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4277,10 +4483,10 @@ Name
 other_elec_infra_cost
 X
 3
-438
+315
 Y
 3
-1470
+1340
 Width
 3
 90
@@ -4304,7 +4510,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4339,10 +4546,10 @@ Name
 other_export_cable_system_cost
 X
 3
-543
+420
 Y
 3
-576
+560
 Width
 3
 90
@@ -4366,7 +4573,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4401,10 +4609,10 @@ Name
 other_offshore_substation_cost
 X
 3
-543
+420
 Y
 3
-1110
+1040
 Width
 3
 90
@@ -4428,7 +4636,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4463,10 +4672,10 @@ Name
 other_onshore_transmission_infrastructure_cost
 X
 3
-543
+420
 Y
 3
-1428
+1310
 Width
 3
 90
@@ -4490,7 +4699,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4525,10 +4735,10 @@ Name
 overhead_lines_cost
 X
 3
-543
+420
 Y
 3
-1317
+1220
 Width
 3
 90
@@ -4552,7 +4762,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4587,10 +4798,10 @@ Name
 scour_protection_elec_infras_cost
 X
 3
-543
+420
 Y
 3
-666
+650
 Width
 3
 90
@@ -4614,7 +4825,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4649,10 +4861,10 @@ Name
 self_supporting_towers_with_insulators_cost
 X
 3
-543
+420
 Y
 3
-1278
+1190
 Width
 3
 90
@@ -4676,7 +4888,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4711,10 +4924,10 @@ Name
 substructure_and_foundation_cost
 X
 3
-543
+420
 Y
 3
-999
+950
 Width
 3
 90
@@ -4738,7 +4951,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4773,10 +4987,10 @@ Name
 topside_cost
 X
 3
-543
+420
 Y
 3
-960
+920
 Width
 3
 90
@@ -4800,7 +5014,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4835,10 +5050,10 @@ Name
 underground_cable_system_cost
 X
 3
-543
+420
 Y
 3
-1239
+1160
 Width
 3
 90
@@ -4862,7 +5077,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4897,10 +5113,10 @@ Name
 user_input_label_elec
 X
 3
-561
+438
 Y
 3
-87
+51
 Width
 3
 60

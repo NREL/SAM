@@ -1,7 +1,7 @@
 Marine Costs - Operations
-799
-1256
-66
+798
+979
+70
 Label
 
 1
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-183
+84
 Y
 3
-159
+150
 Width
 3
 255
@@ -49,6 +49,102 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+16
+Itemized Inputs 
+X
+3
+441
+Y
+3
+123
+Width
+3
+114
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Sub-Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+17
+Itemized Inputs 3
+X
+3
+339
+Y
+3
+123
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -59,10 +155,10 @@ Name
 annual_leases_fees_cost
 X
 3
-438
+339
 Y
 3
-357
+300
 Width
 3
 90
@@ -86,7 +182,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -121,10 +218,10 @@ Name
 annual_leases_fees_cost_total
 X
 3
-438
+339
 Y
 3
-357
+300
 Width
 3
 90
@@ -183,10 +280,10 @@ Name
 condition_monitoring_operations_cost
 X
 3
-537
+438
 Y
 3
-1029
+810
 Width
 3
 90
@@ -210,7 +307,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -245,10 +343,10 @@ Name
 detailed_cost_choice_annual_leases
 X
 3
-396
+345
 Y
 3
-402
+330
 Width
 3
 153
@@ -278,10 +376,10 @@ Name
 detailed_cost_choice_env_health_safety
 X
 3
-396
+345
 Y
 3
-198
+180
 Width
 3
 153
@@ -311,10 +409,10 @@ Name
 detailed_cost_choice_gen_admin
 X
 3
-369
+345
 Y
 3
-717
+570
 Width
 3
 183
@@ -344,10 +442,10 @@ Name
 environmental_health_and_safety_monitoring_cost
 X
 3
-438
+339
 Y
 3
-159
+150
 Width
 3
 90
@@ -371,7 +469,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -406,10 +505,10 @@ Name
 environmental_health_and_safety_monitoring_cost_total
 X
 3
-438
+339
 Y
 3
-159
+150
 Width
 3
 90
@@ -468,10 +567,10 @@ Name
 environmental_monitoring_operations_cost
 X
 3
-537
+438
 Y
 3
-279
+240
 Width
 3
 90
@@ -495,7 +594,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -530,10 +630,10 @@ Name
 federal_energy_regulatory_commission_fees_cost
 X
 3
-537
+438
 Y
 3
-552
+450
 Width
 3
 90
@@ -557,7 +657,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -592,10 +693,10 @@ Name
 generation_planning_and_integration_cost
 X
 3
-537
+438
 Y
 3
-750
+600
 Width
 3
 90
@@ -619,7 +720,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -654,10 +756,10 @@ Name
 health_safety_monitoring_cost
 X
 3
-537
+438
 Y
 3
-240
+210
 Width
 3
 90
@@ -681,7 +783,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -716,10 +819,10 @@ Name
 insurance_operations_cost
 X
 3
-438
+339
 Y
 3
-636
+510
 Width
 3
 90
@@ -743,7 +846,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -778,10 +882,10 @@ Name
 itemized_check_operations
 X
 3
-45
+87
 Y
 3
-108
+36
 Width
 3
 90
@@ -825,10 +929,10 @@ Name
 marine_energy_converter_power_consumption_cost
 X
 3
-537
+438
 Y
 3
-909
+720
 Width
 3
 90
@@ -852,7 +956,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -887,10 +992,10 @@ Name
 marine_management_cost
 X
 3
-537
+438
 Y
 3
-990
+780
 Width
 3
 90
@@ -914,7 +1019,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -939,6 +1045,44 @@ BackColour
 TabOrder
 3
 4294967295
+Divider
+
+1
+10
+Name
+5
+13
+object 216311
+X
+3
+366
+Y
+3
+111
+Width
+3
+138
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
 GroupBox
 
 1
@@ -949,16 +1093,16 @@ Name
 object 4
 X
 3
-27
+9
 Y
 3
-42
+15
 Width
 3
-738
+780
 Height
 3
-1191
+954
 Tool Tip
 5
 0
@@ -979,10 +1123,10 @@ Name
 object 7
 X
 3
-183
+84
 Y
 3
-120
+66
 Width
 3
 99
@@ -994,8 +1138,8 @@ Tool Tip
 0
 Caption
 5
-16
-Operations Costs
+11
+Operations 
 TextColour
 4
 0
@@ -1004,7 +1148,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1013,7 +1157,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1027,13 +1171,13 @@ Name
 object 713
 X
 3
-252
+321
 Y
 3
-588
+480
 Width
 3
-285
+117
 Height
 3
 24
@@ -1075,10 +1219,10 @@ Name
 object 71325
 X
 3
-252
+153
 Y
 3
-552
+450
 Width
 3
 285
@@ -1123,10 +1267,10 @@ Name
 object 71339
 X
 3
-393
+294
 Y
 3
-312
+270
 Width
 3
 144
@@ -1171,10 +1315,10 @@ Name
 object 7133937
 X
 3
-393
+294
 Y
 3
-279
+240
 Width
 3
 144
@@ -1215,14 +1359,62 @@ Label
 13
 Name
 5
+12
+object 71944
+X
+3
+369
+Y
+3
+96
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+24
+Itemized Input Structure
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 10
 object 721
 X
 3
-438
+339
 Y
 3
-93
+39
 Width
 3
 84
@@ -1267,10 +1459,10 @@ Name
 object 72751
 X
 3
-252
+153
 Y
 3
-1182
+930
 Width
 3
 186
@@ -1315,10 +1507,10 @@ Name
 object 7275125
 X
 3
-351
+252
 Y
 3
-990
+780
 Width
 3
 186
@@ -1363,10 +1555,10 @@ Name
 object 7275126
 X
 3
-351
+252
 Y
 3
-948
+750
 Width
 3
 186
@@ -1411,10 +1603,10 @@ Name
 object 7275130
 X
 3
-351
+252
 Y
 3
-789
+630
 Width
 3
 186
@@ -1459,10 +1651,10 @@ Name
 object 7275135
 X
 3
-378
+279
 Y
 3
-513
+420
 Width
 3
 159
@@ -1507,10 +1699,10 @@ Name
 object 728
 X
 3
-330
+231
 Y
 3
-1143
+900
 Width
 3
 207
@@ -1555,10 +1747,10 @@ Name
 object 72827
 X
 3
-366
+267
 Y
 3
-909
+720
 Width
 3
 171
@@ -1603,10 +1795,10 @@ Name
 object 72831
 X
 3
-303
+204
 Y
 3
-750
+600
 Width
 3
 234
@@ -1651,10 +1843,10 @@ Name
 object 72836
 X
 3
-420
+321
 Y
 3
-474
+390
 Width
 3
 117
@@ -1699,10 +1891,10 @@ Name
 object 72846
 X
 3
-372
+273
 Y
 3
-1110
+870
 Width
 3
 165
@@ -1747,10 +1939,10 @@ Name
 object 729
 X
 3
-396
+297
 Y
 3
-1071
+840
 Width
 3
 141
@@ -1795,10 +1987,10 @@ Name
 object 72928
 X
 3
-357
+258
 Y
 3
-870
+690
 Width
 3
 180
@@ -1843,13 +2035,13 @@ Name
 object 72932
 X
 3
-132
+78
 Y
 3
-678
+540
 Width
 3
-306
+261
 Height
 3
 24
@@ -1858,8 +2050,8 @@ Tool Tip
 0
 Caption
 5
-50
-Operations, Management, and General Administration
+42
+Operations, Management, and General Admin.
 TextColour
 4
 0
@@ -1891,10 +2083,10 @@ Name
 object 72937
 X
 3
-396
+297
 Y
 3
-435
+360
 Width
 3
 141
@@ -1939,10 +2131,10 @@ Name
 object 73
 X
 3
-396
+297
 Y
 3
-240
+210
 Width
 3
 141
@@ -1987,10 +2179,10 @@ Name
 object 730
 X
 3
-387
+288
 Y
 3
-1029
+810
 Width
 3
 150
@@ -2035,10 +2227,10 @@ Name
 object 73029
 X
 3
-387
+288
 Y
 3
-828
+660
 Width
 3
 150
@@ -2083,10 +2275,10 @@ Name
 object 73033
 X
 3
-372
+273
 Y
 3
-636
+510
 Width
 3
 66
@@ -2131,10 +2323,10 @@ Name
 object 73038
 X
 3
-180
+81
 Y
 3
-357
+300
 Width
 3
 258
@@ -2179,10 +2371,10 @@ Name
 object 7322
 X
 3
-639
+540
 Y
 3
-93
+39
 Width
 3
 81
@@ -2227,10 +2419,10 @@ Name
 onshore_land_lease_cost
 X
 3
-537
+438
 Y
 3
-474
+390
 Width
 3
 90
@@ -2254,7 +2446,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2289,10 +2482,10 @@ Name
 operating_equipment_cost
 X
 3
-537
+438
 Y
 3
-828
+660
 Width
 3
 90
@@ -2316,7 +2509,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2351,10 +2545,10 @@ Name
 operating_facilities_cost
 X
 3
-537
+438
 Y
 3
-789
+630
 Width
 3
 90
@@ -2378,7 +2572,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2413,10 +2608,10 @@ Name
 operating_margin_cost
 X
 3
-537
+438
 Y
 3
-1071
+840
 Width
 3
 90
@@ -2440,7 +2635,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2475,10 +2671,10 @@ Name
 operations_cost
 X
 3
-633
+534
 Y
 3
-120
+66
 Width
 3
 90
@@ -2538,10 +2734,10 @@ Name
 operations_cost_input
 X
 3
-534
+435
 Y
 3
-120
+66
 Width
 3
 90
@@ -2600,10 +2796,10 @@ Name
 operations_cost_method
 X
 3
-282
+183
 Y
 3
-120
+66
 Width
 3
 144
@@ -2636,10 +2832,10 @@ Name
 operations_cost_modeled
 X
 3
-435
+336
 Y
 3
-120
+66
 Width
 3
 90
@@ -2699,10 +2895,10 @@ Name
 operations_cost_total
 X
 3
-534
+435
 Y
 3
-120
+66
 Width
 3
 90
@@ -2762,10 +2958,10 @@ Name
 operations_level_total_label
 X
 3
-534
+435
 Y
 3
-93
+39
 Width
 3
 87
@@ -2810,10 +3006,10 @@ Name
 operations_management_general_administration_cost
 X
 3
-438
+339
 Y
 3
-678
+540
 Width
 3
 90
@@ -2837,7 +3033,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2872,10 +3069,10 @@ Name
 operations_management_general_administration_cost_total
 X
 3
-438
+339
 Y
 3
-678
+540
 Width
 3
 90
@@ -2934,10 +3131,10 @@ Name
 operations_user_input_label
 X
 3
-549
+450
 Y
 3
-93
+39
 Width
 3
 60
@@ -2982,10 +3179,10 @@ Name
 other_business_cost
 X
 3
-537
+438
 Y
 3
-588
+480
 Width
 3
 90
@@ -3009,7 +3206,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3044,10 +3242,10 @@ Name
 other_gen_admin_cost
 X
 3
-537
+438
 Y
 3
-1143
+900
 Width
 3
 90
@@ -3071,7 +3269,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3106,10 +3305,10 @@ Name
 other_monitoring_cost
 X
 3
-537
+438
 Y
 3
-312
+270
 Width
 3
 90
@@ -3133,7 +3332,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3168,10 +3368,10 @@ Name
 other_operations_cost
 X
 3
-438
+339
 Y
 3
-1182
+930
 Width
 3
 90
@@ -3195,7 +3395,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3230,10 +3431,10 @@ Name
 professional_advisory_services_operations_cost
 X
 3
-537
+438
 Y
 3
-1110
+870
 Width
 3
 90
@@ -3257,7 +3458,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3292,10 +3494,10 @@ Name
 sales_general_and_administrative_operations_cost
 X
 3
-537
+438
 Y
 3
-870
+690
 Width
 3
 90
@@ -3319,7 +3521,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3354,10 +3557,10 @@ Name
 submerged_land_lease_cost
 X
 3
-537
+438
 Y
 3
-435
+360
 Width
 3
 90
@@ -3381,7 +3584,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3416,10 +3620,10 @@ Name
 transmission_charges_rights_cost
 X
 3
-537
+438
 Y
 3
-513
+420
 Width
 3
 90
@@ -3443,7 +3647,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3478,10 +3683,10 @@ Name
 weather_forecasting_cost
 X
 3
-537
+438
 Y
 3
-948
+750
 Width
 3
 90
@@ -3505,7 +3710,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0

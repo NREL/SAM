@@ -1,7 +1,7 @@
 Marine Costs - Development
-963
-1854
-109
+816
+1540
+108
 Label
 
 1
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-495
+345
 Y
 3
-1626
+1350
 Width
 3
 81
@@ -59,10 +59,10 @@ Name
 92
 X
 3
-279
+129
 Y
 3
-225
+180
 Width
 3
 195
@@ -107,16 +107,16 @@ Name
 Development Costs
 X
 3
-57
+9
 Y
 3
-51
+18
 Width
 3
 800
 Height
 3
-1794
+1518
 Tool Tip
 5
 0
@@ -137,10 +137,10 @@ Name
 Gearbox
 X
 3
-363
+213
 Y
 3
-663
+540
 Width
 3
 111
@@ -185,10 +185,10 @@ Name
 Interconnection & Power Marketing
 X
 3
-252
+102
 Y
 3
-1044
+870
 Width
 3
 222
@@ -233,10 +233,10 @@ Name
 Project Management during Development
 X
 3
-336
+186
 Y
 3
-1557
+1290
 Width
 3
 141
@@ -281,10 +281,10 @@ Name
 Project Management during Development1
 X
 3
-234
+84
 Y
 3
-1263
+1050
 Width
 3
 243
@@ -329,10 +329,10 @@ Name
 closing_costs_cost
 X
 3
-576
+426
 Y
 3
-1707
+1410
 Width
 3
 90
@@ -356,7 +356,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -391,10 +392,10 @@ Name
 detailed_cost_choice_financing_incentive
 X
 3
-507
+345
 Y
 3
-1593
+1320
 Width
 3
 129
@@ -424,10 +425,10 @@ Name
 detailed_cost_choice_initial_engineering
 X
 3
-510
+345
 Y
 3
-696
+570
 Width
 3
 126
@@ -457,10 +458,10 @@ Name
 detailed_cost_choice_interconnection
 X
 3
-486
+345
 Y
 3
-1077
+900
 Width
 3
 126
@@ -490,10 +491,10 @@ Name
 detailed_cost_choice_permitting_leasing
 X
 3
-516
+345
 Y
 3
-489
+390
 Width
 3
 126
@@ -523,10 +524,10 @@ Name
 detailed_cost_choice_project_management
 X
 3
-480
+345
 Y
 3
-1293
+1080
 Width
 3
 126
@@ -556,10 +557,10 @@ Name
 detailed_cost_choice_site_characterization
 X
 3
-501
+345
 Y
 3
-861
+720
 Width
 3
 126
@@ -589,10 +590,10 @@ Name
 detailed_cost_choice_site_selection
 X
 3
-495
+345
 Y
 3
-267
+210
 Width
 3
 150
@@ -622,10 +623,10 @@ Name
 development_cost
 X
 3
-672
+522
 Y
 3
-114
+69
 Width
 3
 90
@@ -685,10 +686,10 @@ Name
 development_cost_input
 X
 3
-576
+426
 Y
 3
-114
+69
 Width
 3
 90
@@ -747,10 +748,10 @@ Name
 development_cost_input_label
 X
 3
-594
+444
 Y
 3
-87
+42
 Width
 3
 60
@@ -795,10 +796,10 @@ Name
 development_cost_method
 X
 3
-342
+192
 Y
 3
-114
+69
 Width
 3
 126
@@ -831,10 +832,10 @@ Name
 development_cost_modeled
 X
 3
-474
+324
 Y
 3
-114
+69
 Width
 3
 90
@@ -894,10 +895,10 @@ Name
 development_cost_total
 X
 3
-576
+426
 Y
 3
-114
+69
 Width
 3
 90
@@ -957,13 +958,13 @@ Name
 development_cost_total_label
 X
 3
-591
+426
 Y
 3
-87
+42
 Width
 3
-66
+87
 Height
 3
 24
@@ -972,8 +973,8 @@ Tool Tip
 0
 Caption
 5
-12
-Level Totals
+15
+Itemized Inputs
 TextColour
 4
 0
@@ -1005,10 +1006,10 @@ Name
 due_diligence_cost
 X
 3
-576
+426
 Y
 3
-1626
+1350
 Width
 3
 90
@@ -1032,7 +1033,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1067,10 +1069,10 @@ Name
 engineering_certification_cost
 X
 3
-576
+426
 Y
 3
-768
+630
 Width
 3
 90
@@ -1094,7 +1096,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1129,10 +1132,10 @@ Name
 environmental_scoping_cost
 X
 3
-576
+426
 Y
 3
-348
+270
 Width
 3
 90
@@ -1156,7 +1159,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1191,10 +1195,10 @@ Name
 environmental_surveys_cost
 X
 3
-576
+426
 Y
 3
-897
+750
 Width
 3
 90
@@ -1218,7 +1222,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1253,10 +1258,10 @@ Name
 feed_cost
 X
 3
-576
+426
 Y
 3
-729
+600
 Width
 3
 90
@@ -1280,7 +1285,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1315,10 +1321,10 @@ Name
 financing_and_incentives_cost
 X
 3
-477
+327
 Y
 3
-1557
+1290
 Width
 3
 90
@@ -1342,7 +1348,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1377,10 +1384,10 @@ Name
 financing_and_incentives_cost_total
 X
 3
-477
+327
 Y
 3
-1557
+1290
 Width
 3
 90
@@ -1404,7 +1411,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1439,10 +1447,10 @@ Name
 geological_and_bathymetry_cost
 X
 3
-576
+426
 Y
 3
-975
+810
 Width
 3
 90
@@ -1466,7 +1474,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1501,10 +1510,10 @@ Name
 incentives_cost
 X
 3
-576
+426
 Y
 3
-1665
+1380
 Width
 3
 90
@@ -1528,7 +1537,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1563,10 +1573,10 @@ Name
 initial_engineering_cost
 X
 3
-474
+324
 Y
 3
-663
+540
 Width
 3
 90
@@ -1590,7 +1600,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1625,10 +1636,10 @@ Name
 initial_engineering_cost_total
 X
 3
-474
+324
 Y
 3
-663
+540
 Width
 3
 90
@@ -1652,7 +1663,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1687,10 +1699,10 @@ Name
 interconnection_and_power_marketing_cost
 X
 3
-474
+324
 Y
 3
-1044
+870
 Width
 3
 90
@@ -1714,7 +1726,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1749,10 +1762,10 @@ Name
 interconnection_and_power_marketing_cost_total
 X
 3
-474
+324
 Y
 3
-1044
+870
 Width
 3
 90
@@ -1776,7 +1789,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1811,10 +1825,10 @@ Name
 interconnection_studies_and_fees_cost
 X
 3
-576
+426
 Y
 3
-1116
+930
 Width
 3
 90
@@ -1838,7 +1852,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1873,10 +1888,10 @@ Name
 itemized_check_development
 X
 3
-18
+15
 Y
 3
-69
+36
 Width
 3
 90
@@ -1920,10 +1935,10 @@ Name
 lease_acquisition_activities_cost
 X
 3
-576
+426
 Y
 3
-552
+450
 Width
 3
 90
@@ -1947,7 +1962,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1982,10 +1998,10 @@ Name
 legal_support_cost
 X
 3
-576
+426
 Y
 3
-1743
+1440
 Width
 3
 90
@@ -2009,7 +2025,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2044,10 +2061,10 @@ Name
 level_5_total_prime
 X
 3
-474
+324
 Y
 3
-195
+150
 Width
 3
 90
@@ -2092,10 +2109,10 @@ Name
 level_5_total_prime50
 X
 3
-573
+423
 Y
 3
-195
+150
 Width
 3
 117
@@ -2140,10 +2157,10 @@ Name
 level_value
 X
 3
-171
+117
 Y
 3
-18
+36
 Width
 3
 90
@@ -2187,10 +2204,10 @@ Name
 object 2163
 X
 3
-498
+348
 Y
 3
-183
+138
 Width
 3
 138
@@ -2225,10 +2242,10 @@ Name
 object 713
 X
 3
-447
+297
 Y
 3
-348
+270
 Width
 3
 129
@@ -2273,10 +2290,10 @@ Name
 object 71944
 X
 3
-501
+351
 Y
 3
-168
+123
 Width
 3
 132
@@ -2321,10 +2338,10 @@ Name
 object 721
 X
 3
-480
+330
 Y
 3
-87
+42
 Width
 3
 84
@@ -2369,10 +2386,10 @@ Name
 object 72418
 X
 3
-498
+348
 Y
 3
-1326
+1110
 Width
 3
 78
@@ -2417,10 +2434,10 @@ Name
 object 7241863
 X
 3
-396
+246
 Y
 3
-1116
+930
 Width
 3
 180
@@ -2465,10 +2482,10 @@ Name
 object 72441
 X
 3
-543
+393
 Y
 3
-729
+600
 Width
 3
 33
@@ -2513,10 +2530,10 @@ Name
 object 726
 X
 3
-294
+144
 Y
 3
-624
+510
 Width
 3
 180
@@ -2561,10 +2578,10 @@ Name
 object 727
 X
 3
-420
+270
 Y
 3
-519
+420
 Width
 3
 156
@@ -2609,10 +2626,10 @@ Name
 object 728
 X
 3
-342
+192
 Y
 3
-459
+360
 Width
 3
 132
@@ -2657,10 +2674,10 @@ Name
 object 73
 X
 3
-438
+288
 Y
 3
-306
+240
 Width
 3
 138
@@ -2705,10 +2722,10 @@ Name
 object 730
 X
 3
-423
+273
 Y
 3
-423
+330
 Width
 3
 153
@@ -2753,10 +2770,10 @@ Name
 object 73044
 X
 3
-522
+372
 Y
 3
-387
+300
 Width
 3
 54
@@ -2801,10 +2818,10 @@ Name
 object 731
 X
 3
-363
+213
 Y
 3
-585
+480
 Width
 3
 213
@@ -2849,10 +2866,10 @@ Name
 object 73173
 X
 3
-426
+276
 Y
 3
-552
+450
 Width
 3
 150
@@ -2897,10 +2914,10 @@ Name
 object 7322
 X
 3
-675
+525
 Y
 3
-87
+42
 Width
 3
 81
@@ -2945,10 +2962,10 @@ Name
 object 73311
 X
 3
-327
+177
 Y
 3
-1809
+1500
 Width
 3
 150
@@ -2993,10 +3010,10 @@ Name
 object 7331140
 X
 3
-498
+348
 Y
 3
-1707
+1410
 Width
 3
 78
@@ -3041,10 +3058,10 @@ Name
 object 7331149
 X
 3
-390
+240
 Y
 3
-1524
+1260
 Width
 3
 186
@@ -3089,10 +3106,10 @@ Name
 object 733114926
 X
 3
-543
+393
 Y
 3
-1491
+1230
 Width
 3
 33
@@ -3137,10 +3154,10 @@ Name
 object 7331152
 X
 3
-393
+243
 Y
 3
-1407
+1170
 Width
 3
 183
@@ -3185,10 +3202,10 @@ Name
 object 7331159
 X
 3
-417
+267
 Y
 3
-1230
+1020
 Width
 3
 159
@@ -3233,10 +3250,10 @@ Name
 object 733115937
 X
 3
-477
+327
 Y
 3
-1197
+990
 Width
 3
 99
@@ -3281,10 +3298,10 @@ Name
 object 73315
 X
 3
-450
+300
 Y
 3
-1779
+1470
 Width
 3
 126
@@ -3329,10 +3346,10 @@ Name
 object 7331513
 X
 3
-495
+345
 Y
 3
-1743
+1440
 Width
 3
 81
@@ -3377,10 +3394,10 @@ Name
 object 7331541
 X
 3
-516
+366
 Y
 3
-1665
+1380
 Width
 3
 60
@@ -3425,10 +3442,10 @@ Name
 object 7331551
 X
 3
-453
+303
 Y
 3
-1449
+1200
 Width
 3
 123
@@ -3473,10 +3490,10 @@ Name
 object 7331555
 X
 3
-531
+381
 Y
 3
-1365
+1140
 Width
 3
 45
@@ -3521,10 +3538,10 @@ Name
 object 7331562
 X
 3
-396
+246
 Y
 3
-1155
+960
 Width
 3
 180
@@ -3569,10 +3586,10 @@ Name
 object 73325
 X
 3
-390
+240
 Y
 3
-1008
+840
 Width
 3
 186
@@ -3617,10 +3634,10 @@ Name
 object 7332550
 X
 3
-390
+240
 Y
 3
-975
+810
 Width
 3
 186
@@ -3665,10 +3682,10 @@ Name
 object 73327
 X
 3
-345
+195
 Y
 3
-936
+780
 Width
 3
 231
@@ -3713,10 +3730,10 @@ Name
 object 73333
 X
 3
-450
+300
 Y
 3
-897
+750
 Width
 3
 126
@@ -3761,10 +3778,10 @@ Name
 object 73336
 X
 3
-345
+195
 Y
 3
-831
+690
 Width
 3
 129
@@ -3809,10 +3826,10 @@ Name
 object 73337
 X
 3
-372
+222
 Y
 3
-801
+660
 Width
 3
 204
@@ -3857,10 +3874,10 @@ Name
 object 7333761
 X
 3
-438
+288
 Y
 3
-768
+630
 Width
 3
 138
@@ -3905,10 +3922,10 @@ Name
 object 75
 X
 3
-213
+99
 Y
 3
-114
+69
 Width
 3
 84
@@ -3930,7 +3947,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -3953,10 +3970,10 @@ Name
 object 777
 X
 3
-48
+561
 Y
 3
-273
+324
 Width
 3
 180
@@ -4001,10 +4018,10 @@ Name
 onshore_interconnection_rights_cost
 X
 3
-576
+426
 Y
 3
-1155
+960
 Width
 3
 90
@@ -4028,7 +4045,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4063,10 +4081,10 @@ Name
 other_development_cost
 X
 3
-477
+327
 Y
 3
-1809
+1500
 Width
 3
 90
@@ -4090,7 +4108,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4125,10 +4144,10 @@ Name
 other_financing_cost
 X
 3
-576
+426
 Y
 3
-1779
+1470
 Width
 3
 90
@@ -4152,7 +4171,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4187,10 +4207,10 @@ Name
 other_initial_engineering_cost
 X
 3
-576
+426
 Y
 3
-801
+660
 Width
 3
 90
@@ -4214,7 +4234,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4249,10 +4270,10 @@ Name
 other_interconnection_cost
 X
 3
-576
+426
 Y
 3
-1230
+1020
 Width
 3
 90
@@ -4276,7 +4297,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4311,10 +4333,10 @@ Name
 other_permitting_and_leasing_cost
 X
 3
-576
+426
 Y
 3
-585
+480
 Width
 3
 90
@@ -4338,7 +4360,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4373,10 +4396,10 @@ Name
 other_project_management_cost
 X
 3
-576
+426
 Y
 3
-1524
+1260
 Width
 3
 90
@@ -4400,7 +4423,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4435,10 +4459,10 @@ Name
 other_site_characterization_cost
 X
 3
-576
+426
 Y
 3
-1008
+840
 Width
 3
 90
@@ -4462,7 +4486,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4497,10 +4522,10 @@ Name
 other_site_selection_cost
 X
 3
-576
+426
 Y
 3
-423
+330
 Width
 3
 90
@@ -4524,7 +4549,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4559,10 +4585,10 @@ Name
 permit_acquisition_activities_cost
 X
 3
-576
+426
 Y
 3
-519
+420
 Width
 3
 90
@@ -4586,7 +4612,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4621,10 +4648,10 @@ Name
 permitting_and_leasing_cost
 X
 3
-474
+324
 Y
 3
-459
+360
 Width
 3
 90
@@ -4648,7 +4675,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4683,10 +4711,10 @@ Name
 permitting_and_leasing_cost_total
 X
 3
-474
+324
 Y
 3
-459
+360
 Width
 3
 90
@@ -4710,7 +4738,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4745,10 +4774,10 @@ Name
 power_marketing_cost
 X
 3
-576
+426
 Y
 3
-1197
+990
 Width
 3
 90
@@ -4772,7 +4801,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4807,10 +4837,10 @@ Name
 pre_feed_cost
 X
 3
-576
+426
 Y
 3
-387
+300
 Width
 3
 90
@@ -4834,7 +4864,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4869,10 +4900,10 @@ Name
 procurement_cost
 X
 3
-576
+426
 Y
 3
-1326
+1110
 Width
 3
 90
@@ -4896,7 +4927,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4931,10 +4963,10 @@ Name
 professional_advisory_services_cost
 X
 3
-474
+324
 Y
 3
-624
+510
 Width
 3
 90
@@ -4958,7 +4990,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -4993,10 +5026,10 @@ Name
 profit_cost
 X
 3
-576
+426
 Y
 3
-1491
+1230
 Width
 3
 90
@@ -5020,7 +5053,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5055,10 +5089,10 @@ Name
 project_management_during_development_cost
 X
 3
-477
+327
 Y
 3
-1263
+1050
 Width
 3
 90
@@ -5082,7 +5116,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5117,10 +5152,10 @@ Name
 project_management_during_development_cost_total
 X
 3
-477
+327
 Y
 3
-1263
+1050
 Width
 3
 90
@@ -5144,7 +5179,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5179,10 +5215,10 @@ Name
 resource_and_metocean_assessment_cost
 X
 3
-576
+426
 Y
 3
-936
+780
 Width
 3
 90
@@ -5206,7 +5242,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5241,10 +5278,10 @@ Name
 resource_assessment_cost
 X
 3
-576
+426
 Y
 3
-306
+240
 Width
 3
 90
@@ -5268,7 +5305,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5303,10 +5341,10 @@ Name
 salaries_cost
 X
 3
-576
+426
 Y
 3
-1365
+1140
 Width
 3
 90
@@ -5330,7 +5368,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5365,10 +5404,10 @@ Name
 sales_general_and_administrative_cost
 X
 3
-576
+426
 Y
 3
-1407
+1170
 Width
 3
 90
@@ -5392,7 +5431,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5427,10 +5467,10 @@ Name
 site_characterization_cost
 X
 3
-474
+324
 Y
 3
-831
+690
 Width
 3
 90
@@ -5454,7 +5494,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5489,10 +5530,10 @@ Name
 site_characterization_cost_total
 X
 3
-474
+324
 Y
 3
-831
+690
 Width
 3
 90
@@ -5516,7 +5557,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5551,10 +5593,10 @@ Name
 site_selection_cost
 X
 3
-474
+324
 Y
 3
-225
+180
 Width
 3
 90
@@ -5578,7 +5620,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5613,10 +5656,10 @@ Name
 site_selection_cost_total
 X
 3
-474
+324
 Y
 3
-225
+180
 Width
 3
 90
@@ -5640,7 +5683,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5675,10 +5719,10 @@ Name
 stakeholder_outreach_cost
 X
 3
-576
+426
 Y
 3
-1449
+1200
 Width
 3
 90
@@ -5702,7 +5746,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -5727,34 +5772,6 @@ BackColour
 TabOrder
 3
 4294967295
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_structural_assembly_cost
-X
-3
-303
-Y
-3
-114
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-194
-All activities from project inception to financial close, where financial close is the date when project and financing agreements have been signed and all the required conditions  have been met.
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
 
 64
 closing_costs_cost

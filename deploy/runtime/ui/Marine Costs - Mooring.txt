@@ -1,6 +1,6 @@
 Marine Costs - Mooring
-928
-1348
+799
+903
 66
 Label
 
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-357
+219
 Y
 3
-237
+162
 Width
 3
 81
@@ -59,10 +59,10 @@ Name
 Ladders
 X
 3
-492
+354
 Y
 3
-636
+462
 Width
 3
 48
@@ -107,16 +107,16 @@ Name
 PTO costs
 X
 3
-66
+9
 Y
 3
-51
+24
 Width
 3
-800
+780
 Height
 3
-1204
+871
 Tool Tip
 5
 0
@@ -137,10 +137,10 @@ Name
 Personnel Access System
 X
 3
-408
+270
 Y
 3
-921
+672
 Width
 3
 135
@@ -185,10 +185,10 @@ Name
 anchors_and_piles_cost
 X
 3
-438
+300
 Y
 3
-279
+192
 Width
 3
 90
@@ -212,7 +212,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -247,10 +248,10 @@ Name
 ancillary_marine_systems_cost
 X
 3
-450
+312
 Y
 3
-798
+582
 Width
 3
 90
@@ -274,7 +275,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -309,10 +311,10 @@ Name
 ancillary_marine_systems_cost_total
 X
 3
-450
+312
 Y
 3
-798
+582
 Width
 3
 90
@@ -371,10 +373,10 @@ Name
 ballast_system_mooring_cost
 X
 3
-543
+405
 Y
 3
-960
+702
 Width
 3
 90
@@ -398,7 +400,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -433,10 +436,73 @@ Name
 cathodic_protection_system_cost
 X
 3
-543
+405
 Y
 3
-882
+642
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+33
+cathodic_protection_system_cost17
+X
+3
+354
+Y
+3
+6670
 Width
 3
 90
@@ -495,10 +561,10 @@ Name
 condition_monitoring_cost
 X
 3
-543
+405
 Y
 3
-1002
+732
 Width
 3
 90
@@ -522,7 +588,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -557,10 +624,10 @@ Name
 connecting_hardware_cost
 X
 3
-438
+300
 Y
 3
-318
+222
 Width
 3
 90
@@ -584,7 +651,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -619,13 +687,13 @@ Name
 detailed_cost_choice_ancillary_marine_systems
 X
 3
-489
+348
 Y
 3
-837
+612
 Width
 3
-90
+129
 Height
 3
 24
@@ -652,10 +720,10 @@ Name
 detailed_cost_choice_outfitting_structure
 X
 3
-486
+348
 Y
 3
-516
+372
 Width
 3
 135
@@ -685,10 +753,10 @@ Name
 integration_assembly_testing_checkout_cost
 X
 3
-450
+312
 Y
 3
-1077
+792
 Width
 3
 90
@@ -712,7 +780,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -747,10 +816,10 @@ Name
 itemized_check_mooring
 X
 3
-18
+66
 Y
 3
-69
+42
 Width
 3
 90
@@ -794,10 +863,10 @@ Name
 ladders_cost
 X
 3
-540
+402
 Y
 3
-636
+462
 Width
 3
 90
@@ -821,7 +890,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -856,10 +926,10 @@ Name
 level_5_total_prime
 X
 3
-438
+300
 Y
 3
-204
+138
 Width
 3
 90
@@ -904,10 +974,10 @@ Name
 level_5_total_prime50
 X
 3
-537
+399
 Y
 3
-204
+138
 Width
 3
 117
@@ -952,10 +1022,10 @@ Name
 marine_coatings_cost
 X
 3
-540
+402
 Y
 3
-717
+522
 Width
 3
 90
@@ -979,7 +1049,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1014,10 +1085,10 @@ Name
 messenger_lines_and_buoys_cost
 X
 3
-438
+300
 Y
 3
-399
+282
 Width
 3
 90
@@ -1041,7 +1112,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1076,13 +1148,13 @@ Name
 mooring_cost_label
 X
 3
-552
+402
 Y
 3
-87
+48
 Width
 3
-66
+90
 Height
 3
 24
@@ -1091,8 +1163,8 @@ Tool Tip
 0
 Caption
 5
-12
-Level Totals
+15
+Itemized Inputs
 TextColour
 4
 0
@@ -1124,10 +1196,10 @@ Name
 mooring_found_substruc_cost
 X
 3
-639
+501
 Y
 3
-114
+75
 Width
 3
 90
@@ -1187,10 +1259,10 @@ Name
 mooring_found_substruc_cost_input
 X
 3
-540
+402
 Y
 3
-114
+75
 Width
 3
 90
@@ -1249,10 +1321,10 @@ Name
 mooring_found_substruc_cost_method
 X
 3
-303
+165
 Y
 3
-114
+75
 Width
 3
 126
@@ -1285,10 +1357,10 @@ Name
 mooring_found_substruc_cost_modeled
 X
 3
-438
+300
 Y
 3
-114
+75
 Width
 3
 90
@@ -1348,10 +1420,10 @@ Name
 mooring_found_substruc_cost_total
 X
 3
-540
+402
 Y
 3
-114
+75
 Width
 3
 90
@@ -1411,10 +1483,10 @@ Name
 mooring_input_label
 X
 3
-555
+417
 Y
 3
-87
+48
 Width
 3
 60
@@ -1459,10 +1531,10 @@ Name
 mooring_lines_cost
 X
 3
-438
+300
 Y
 3
-237
+162
 Width
 3
 90
@@ -1486,7 +1558,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1521,10 +1594,10 @@ Name
 object 2163
 X
 3
-462
+324
 Y
 3
-192
+126
 Width
 3
 138
@@ -1559,10 +1632,10 @@ Name
 object 7
 X
 3
-72
+519
 Y
 3
-165
+312
 Width
 3
 165
@@ -1607,10 +1680,10 @@ Name
 object 713
 X
 3
-312
+174
 Y
 3
-318
+222
 Width
 3
 126
@@ -1655,10 +1728,10 @@ Name
 object 71944
 X
 3
-465
+327
 Y
 3
-177
+111
 Width
 3
 132
@@ -1703,10 +1776,10 @@ Name
 object 721
 X
 3
-441
+303
 Y
 3
-87
+48
 Width
 3
 84
@@ -1751,10 +1824,10 @@ Name
 object 72441
 X
 3
-375
+237
 Y
 3
-756
+552
 Width
 3
 165
@@ -1799,10 +1872,10 @@ Name
 object 7244132
 X
 3
-354
+216
 Y
 3
-1038
+762
 Width
 3
 189
@@ -1847,10 +1920,10 @@ Name
 object 724413236
 X
 3
-417
+279
 Y
 3
-1002
+732
 Width
 3
 126
@@ -1895,10 +1968,10 @@ Name
 object 7244134
 X
 3
-459
+321
 Y
 3
-960
+702
 Width
 3
 84
@@ -1943,10 +2016,10 @@ Name
 object 7244135
 X
 3
-447
+309
 Y
 3
-717
+522
 Width
 3
 93
@@ -1991,10 +2064,10 @@ Name
 object 7244143
 X
 3
-495
+357
 Y
 3
-678
+492
 Width
 3
 45
@@ -2039,10 +2112,10 @@ Name
 object 726
 X
 3
-393
+255
 Y
 3
-882
+642
 Width
 3
 150
@@ -2087,10 +2160,10 @@ Name
 object 72647
 X
 3
-390
+252
 Y
 3
-597
+432
 Width
 3
 150
@@ -2135,10 +2208,10 @@ Name
 object 727
 X
 3
-228
+90
 Y
 3
-1158
+852
 Width
 3
 222
@@ -2183,10 +2256,10 @@ Name
 object 72728
 X
 3
-360
+222
 Y
 3
-1116
+822
 Width
 3
 90
@@ -2231,13 +2304,13 @@ Name
 object 72730
 X
 3
-189
+63
 Y
 3
-1077
+792
 Width
 3
-261
+249
 Height
 3
 24
@@ -2246,8 +2319,8 @@ Tool Tip
 0
 Caption
 5
-44
-Integration, Assembly, Testing, and Checkout
+40
+Integration, Assembly, Testing, Checkout
 TextColour
 4
 0
@@ -2279,10 +2352,10 @@ Name
 object 72740
 X
 3
-306
+168
 Y
 3
-798
+582
 Width
 3
 144
@@ -2327,10 +2400,10 @@ Name
 object 72751
 X
 3
-231
+93
 Y
 3
-477
+342
 Width
 3
 207
@@ -2375,10 +2448,10 @@ Name
 object 728
 X
 3
-339
+201
 Y
 3
-438
+312
 Width
 3
 99
@@ -2423,10 +2496,10 @@ Name
 object 729
 X
 3
-291
+153
 Y
 3
-399
+282
 Width
 3
 147
@@ -2471,10 +2544,10 @@ Name
 object 73
 X
 3
-336
+198
 Y
 3
-279
+192
 Width
 3
 102
@@ -2519,10 +2592,10 @@ Name
 object 730
 X
 3
-279
+141
 Y
 3
-357
+252
 Width
 3
 159
@@ -2567,10 +2640,10 @@ Name
 object 731
 X
 3
-459
+321
 Y
 3
-558
+402
 Width
 3
 81
@@ -2615,10 +2688,10 @@ Name
 object 7322
 X
 3
-642
+504
 Y
 3
-87
+48
 Width
 3
 81
@@ -2663,10 +2736,10 @@ Name
 object 75
 X
 3
-207
+105
 Y
 3
-114
+75
 Width
 3
 54
@@ -2688,7 +2761,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2697,7 +2770,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2711,10 +2784,10 @@ Name
 other_ancillary_marine_system_cost
 X
 3
-543
+405
 Y
 3
-1038
+762
 Width
 3
 90
@@ -2738,7 +2811,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2773,10 +2847,10 @@ Name
 other_mooring_cost
 X
 3
-450
+312
 Y
 3
-1158
+852
 Width
 3
 90
@@ -2800,7 +2874,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2835,10 +2910,10 @@ Name
 other_outfitting_structure_cost
 X
 3
-540
+402
 Y
 3
-756
+552
 Width
 3
 90
@@ -2862,7 +2937,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2897,10 +2973,10 @@ Name
 outfitting_structure_cost
 X
 3
-438
+300
 Y
 3
-477
+342
 Width
 3
 90
@@ -2924,7 +3000,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2959,10 +3036,10 @@ Name
 outfitting_structure_cost_total
 X
 3
-438
+300
 Y
 3
-477
+342
 Width
 3
 90
@@ -3021,10 +3098,10 @@ Name
 personnel_access_system_mooring_cost
 X
 3
-543
+405
 Y
 3
-921
+672
 Width
 3
 90
@@ -3048,7 +3125,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3083,10 +3161,10 @@ Name
 railings_cost
 X
 3
-540
+402
 Y
 3
-678
+492
 Width
 3
 90
@@ -3110,7 +3188,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3145,10 +3224,10 @@ Name
 scour_protection_cost
 X
 3
-438
+300
 Y
 3
-438
+312
 Width
 3
 90
@@ -3172,7 +3251,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3207,10 +3287,10 @@ Name
 service_platforms_and_decks_cost
 X
 3
-540
+402
 Y
 3
-597
+432
 Width
 3
 90
@@ -3234,7 +3314,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3269,10 +3350,10 @@ Name
 subfoundation_or_bedding_cost
 X
 3
-438
+300
 Y
 3
-357
+252
 Width
 3
 90
@@ -3296,7 +3377,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3331,10 +3413,10 @@ Name
 transportation_cost
 X
 3
-450
+312
 Y
 3
-1116
+822
 Width
 3
 90
@@ -3358,7 +3440,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3383,33 +3466,6 @@ BackColour
 TabOrder
 3
 4294967295
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_structural_assembly_cost
-X
-3
-264
-Y
-3
-114
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
 Numeric
 
 1
@@ -3420,10 +3476,10 @@ Name
 vessel_landing_cost
 X
 3
-540
+402
 Y
 3
-558
+402
 Width
 3
 90
@@ -3447,7 +3503,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0

@@ -1,6 +1,6 @@
 Marine Costs - BoS
-897
-303
+821
+222
 4
 Numeric
 
@@ -12,10 +12,10 @@ Name
 balance_of_system_cost_total
 X
 3
-210
+165
 Y
 3
-219
+165
 Width
 3
 90
@@ -74,16 +74,16 @@ Name
 object 4
 X
 3
-39
+9
 Y
 3
-36
+12
 Width
 3
 800
 Height
 3
-228
+195
 Tool Tip
 5
 0
@@ -104,10 +104,10 @@ Name
 object 7
 X
 3
-78
+33
 Y
 3
-81
+42
 Width
 3
 591
@@ -152,10 +152,10 @@ Name
 object 71
 X
 3
-78
+33
 Y
 3
-165
+114
 Width
 3
 741

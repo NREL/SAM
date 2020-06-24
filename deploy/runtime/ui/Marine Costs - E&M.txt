@@ -1,7 +1,7 @@
 Marine Costs - E&M
-913
-1093
-48
+818
+619
+47
 Label
 
 1
@@ -12,10 +12,10 @@ Name
 92
 X
 3
-216
+123
 Y
 3
-351
+160
 Width
 3
 258
@@ -60,16 +60,16 @@ Name
 Engineering and Management Costs
 X
 3
-57
+9
 Y
 3
-51
+12
 Width
 3
 800
 Height
 3
-1027
+601
 Tool Tip
 5
 0
@@ -90,10 +90,10 @@ Name
 Environmental Monitoring
 X
 3
-414
+321
 Y
 3
-867
+550
 Width
 3
 162
@@ -138,10 +138,10 @@ Name
 Environmental Monitoring9
 X
 3
-429
+336
 Y
 3
-828
+520
 Width
 3
 147
@@ -186,10 +186,10 @@ Name
 Itemized Inputs 
 X
 3
-576
+483
 Y
 3
-327
+132
 Width
 3
 114
@@ -234,10 +234,10 @@ Name
 Itemized Inputs 3
 X
 3
-474
+381
 Y
 3
-327
+132
 Width
 3
 90
@@ -282,10 +282,10 @@ Name
 construction_management_cost
 X
 3
-474
+381
 Y
 3
-432
+220
 Width
 3
 90
@@ -309,7 +309,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -344,10 +345,10 @@ Name
 construction_management_cost_total
 X
 3
-474
+381
 Y
 3
-432
+220
 Width
 3
 90
@@ -407,10 +408,10 @@ Name
 detailed_cost_choice_construction_management
 X
 3
-492
+400
 Y
 3
-468
+250
 Width
 3
 126
@@ -440,10 +441,10 @@ Name
 detailed_cost_choice_health_safety
 X
 3
-471
+400
 Y
 3
-750
+460
 Width
 3
 129
@@ -473,10 +474,10 @@ Name
 detailed_design_and_construction_eng_cost
 X
 3
-474
+381
 Y
 3
-351
+160
 Width
 3
 90
@@ -500,7 +501,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -535,10 +537,10 @@ Name
 eng_and_mgmt_cost
 X
 3
-675
+582
 Y
 3
-255
+60
 Width
 3
 90
@@ -598,10 +600,10 @@ Name
 eng_and_mgmt_cost_input
 X
 3
-576
+483
 Y
 3
-255
+60
 Width
 3
 90
@@ -660,10 +662,10 @@ Name
 eng_and_mgmt_cost_method
 X
 3
-324
+231
 Y
 3
-255
+60
 Width
 3
 144
@@ -696,10 +698,10 @@ Name
 eng_and_mgmt_cost_modeled
 X
 3
-477
+384
 Y
 3
-255
+60
 Width
 3
 90
@@ -759,10 +761,10 @@ Name
 eng_and_mgmt_cost_total
 X
 3
-576
+483
 Y
 3
-255
+60
 Width
 3
 90
@@ -822,10 +824,10 @@ Name
 environmental_monitoring_cost
 X
 3
-576
+483
 Y
 3
-828
+520
 Width
 3
 90
@@ -849,7 +851,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -884,10 +887,10 @@ Name
 health_and_safety_monitoring_cost
 X
 3
-576
+483
 Y
 3
-789
+490
 Width
 3
 90
@@ -911,7 +914,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -946,10 +950,10 @@ Name
 health_safety_and_environmental_monitoring_cost
 X
 3
-474
+381
 Y
 3
-711
+430
 Width
 3
 90
@@ -973,7 +977,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1008,10 +1013,10 @@ Name
 health_safety_and_environmental_monitoring_cost_total
 X
 3
-474
+381
 Y
 3
-711
+430
 Width
 3
 90
@@ -1071,10 +1076,10 @@ Name
 itemized_check_eng
 X
 3
-708
+84
 Y
 3
-12
+30
 Width
 3
 90
@@ -1118,10 +1123,10 @@ Name
 level_input_label_eng
 X
 3
-576
+483
 Y
 3
-228
+33
 Width
 3
 87
@@ -1166,10 +1171,10 @@ Name
 object 216311
 X
 3
-501
+408
 Y
 3
-315
+120
 Width
 3
 138
@@ -1204,10 +1209,10 @@ Name
 object 713
 X
 3
-321
+228
 Y
 3
-432
+220
 Width
 3
 153
@@ -1252,10 +1257,10 @@ Name
 object 71944
 X
 3
-504
+411
 Y
 3
-300
+105
 Width
 3
 132
@@ -1300,10 +1305,10 @@ Name
 object 721
 X
 3
-480
+387
 Y
 3
-228
+33
 Width
 3
 84
@@ -1348,10 +1353,10 @@ Name
 object 72441
 X
 3
-234
+141
 Y
 3
-903
+580
 Width
 3
 240
@@ -1396,10 +1401,10 @@ Name
 object 726
 X
 3
-405
+312
 Y
 3
-789
+490
 Width
 3
 171
@@ -1444,10 +1449,10 @@ Name
 object 727
 X
 3
-357
+264
 Y
 3
-669
+400
 Width
 3
 117
@@ -1492,10 +1497,10 @@ Name
 object 728
 X
 3
-363
+270
 Y
 3
-627
+370
 Width
 3
 213
@@ -1540,10 +1545,10 @@ Name
 object 72821
 X
 3
-393
+300
 Y
 3
-552
+310
 Width
 3
 183
@@ -1588,10 +1593,10 @@ Name
 object 72839
 X
 3
-540
+447
 Y
 3
-591
+340
 Width
 3
 36
@@ -1636,10 +1641,10 @@ Name
 object 73
 X
 3
-318
+225
 Y
 3
-390
+190
 Width
 3
 156
@@ -1684,10 +1689,10 @@ Name
 object 730
 X
 3
-531
+438
 Y
 3
-507
+280
 Width
 3
 45
@@ -1732,10 +1737,10 @@ Name
 object 73136
 X
 3
-225
+132
 Y
 3
-711
+430
 Width
 3
 249
@@ -1780,10 +1785,10 @@ Name
 object 7322
 X
 3
-681
+588
 Y
 3
-228
+33
 Width
 3
 81
@@ -1828,10 +1833,10 @@ Name
 object 75
 X
 3
-117
+54
 Y
 3
-255
+60
 Width
 3
 171
@@ -1853,7 +1858,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -1876,16 +1881,16 @@ Name
 object 777
 X
 3
-108
+591
 Y
 3
-84
+180
 Width
 3
-660
+177
 Height
 3
-120
+345
 Tool Tip
 5
 0
@@ -1924,10 +1929,10 @@ Name
 other_construction_management_cost
 X
 3
-576
+483
 Y
 3
-627
+370
 Width
 3
 90
@@ -1951,7 +1956,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1986,10 +1992,10 @@ Name
 other_eng_cost
 X
 3
-474
+381
 Y
 3
-903
+580
 Width
 3
 90
@@ -2013,7 +2019,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2048,10 +2055,10 @@ Name
 other_health_and_safety_cost
 X
 3
-576
+483
 Y
 3
-867
+550
 Width
 3
 90
@@ -2075,7 +2082,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2110,10 +2118,10 @@ Name
 procurement_management_cost
 X
 3
-474
+381
 Y
 3
-390
+190
 Width
 3
 90
@@ -2137,7 +2145,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2172,10 +2181,10 @@ Name
 profit_eng_cost
 X
 3
-576
+483
 Y
 3
-591
+340
 Width
 3
 90
@@ -2199,7 +2208,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2234,10 +2244,10 @@ Name
 project_certification_cost
 X
 3
-474
+381
 Y
 3
-669
+400
 Width
 3
 90
@@ -2261,7 +2271,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2296,10 +2307,10 @@ Name
 salaries_eng_cost
 X
 3
-576
+483
 Y
 3
-507
+280
 Width
 3
 90
@@ -2323,7 +2334,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2358,10 +2370,10 @@ Name
 sales_general_and_administrative_eng_cost
 X
 3
-576
+483
 Y
 3
-552
+310
 Width
 3
 90
@@ -2385,7 +2397,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2410,34 +2423,6 @@ BackColour
 TabOrder
 3
 4294967295
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_structural_assembly_cost
-X
-3
-294
-Y
-3
-255
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-194
-All activities from project inception to financial close, where financial close is the date when project and financing agreements have been signed and all the required conditions  have been met.
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
 Label
 
 1
@@ -2448,10 +2433,10 @@ Name
 user_input_label_eng
 X
 3
-591
+498
 Y
 3
-228
+33
 Width
 3
 60

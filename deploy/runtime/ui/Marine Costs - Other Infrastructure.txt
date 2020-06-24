@@ -1,6 +1,6 @@
 Marine Costs - Other Infrastructure
-1016
-1045
+818
+446
 30
 Label
 
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-381
+204
 Y
 3
-195
+147
 Width
 3
 144
@@ -59,10 +59,10 @@ Name
 Itemized Inputs 3
 X
 3
-525
+348
 Y
 3
-168
+120
 Width
 3
 90
@@ -74,8 +74,8 @@ Tool Tip
 0
 Caption
 5
-16
-Itemized Inputs 
+15
+Category Totals
 TextColour
 4
 0
@@ -107,10 +107,10 @@ Name
 dedicated_om_vessel_cost
 X
 3
-525
+348
 Y
 3
-234
+177
 Width
 3
 90
@@ -134,7 +134,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -159,6 +160,53 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+27
+itemized_check_other_infras
+X
+3
+105
+Y
+3
+36
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Divider
 
 1
@@ -169,10 +217,10 @@ Name
 object 2163
 X
 3
-543
+327
 Y
 3
-153
+108
 Width
 3
 138
@@ -207,16 +255,16 @@ Name
 object 4
 X
 3
-57
+9
 Y
 3
-51
+9
 Width
 3
 800
 Height
 3
-666
+432
 Tool Tip
 5
 0
@@ -237,10 +285,10 @@ Name
 object 7
 X
 3
-81
+531
 Y
 3
-201
+123
 Width
 3
 180
@@ -285,10 +333,10 @@ Name
 object 713
 X
 3
-387
+210
 Y
 3
-276
+207
 Width
 3
 138
@@ -333,10 +381,10 @@ Name
 object 71944
 X
 3
-552
+330
 Y
 3
-141
+93
 Width
 3
 132
@@ -381,10 +429,10 @@ Name
 object 72145
 X
 3
-525
+348
 Y
 3
-87
+39
 Width
 3
 84
@@ -429,10 +477,10 @@ Name
 object 728
 X
 3
-483
+306
 Y
 3
-435
+327
 Width
 3
 42
@@ -477,10 +525,10 @@ Name
 object 729
 X
 3
-321
+144
 Y
 3
-396
+297
 Width
 3
 204
@@ -525,10 +573,10 @@ Name
 object 73
 X
 3
-369
+192
 Y
 3
-234
+177
 Width
 3
 156
@@ -573,10 +621,10 @@ Name
 object 730
 X
 3
-336
+159
 Y
 3
-354
+267
 Width
 3
 189
@@ -621,10 +669,10 @@ Name
 object 7322
 X
 3
-729
+552
 Y
 3
-87
+39
 Width
 3
 78
@@ -669,10 +717,10 @@ Name
 object 734
 X
 3
-372
+195
 Y
 3
-315
+237
 Width
 3
 153
@@ -713,65 +761,17 @@ Label
 13
 Name
 5
-9
-object 75
-X
-3
-222
-Y
-3
-114
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-2
-3.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 10
 object 757
 X
 3
-234
+93
 Y
 3
-114
+66
 Width
 3
-111
+120
 Height
 3
 24
@@ -780,8 +780,8 @@ Tool Tip
 0
 Caption
 5
-21
-Other  Infrastructure
+20
+Other Infrastructure
 TextColour
 4
 0
@@ -790,7 +790,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -799,7 +799,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -813,10 +813,10 @@ Name
 offshore_accomodations_other_infras_cost
 X
 3
-525
+348
 Y
 3
-195
+147
 Width
 3
 90
@@ -840,7 +840,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -875,10 +876,10 @@ Name
 offshore_logistical_infrastructure_other_infras_cost
 X
 3
-525
+348
 Y
 3
-354
+267
 Width
 3
 90
@@ -902,7 +903,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -937,10 +939,10 @@ Name
 om_equipment_purchases_cost
 X
 3
-525
+348
 Y
 3
-315
+237
 Width
 3
 90
@@ -964,7 +966,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -999,10 +1002,10 @@ Name
 onshore_om_facilities_cost
 X
 3
-525
+348
 Y
 3
-276
+207
 Width
 3
 90
@@ -1026,7 +1029,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1061,10 +1065,10 @@ Name
 other_infrastructure_cost
 X
 3
-723
+546
 Y
 3
-114
+66
 Width
 3
 90
@@ -1124,10 +1128,10 @@ Name
 other_infrastructure_cost_input
 X
 3
-624
+447
 Y
 3
-114
+66
 Width
 3
 90
@@ -1186,10 +1190,10 @@ Name
 other_infrastructure_cost_method
 X
 3
-393
+216
 Y
 3
-114
+66
 Width
 3
 126
@@ -1222,10 +1226,10 @@ Name
 other_infrastructure_cost_modeled
 X
 3
-525
+348
 Y
 3
-114
+66
 Width
 3
 90
@@ -1285,10 +1289,10 @@ Name
 other_infrastructure_cost_total
 X
 3
-624
+447
 Y
 3
-114
+66
 Width
 3
 90
@@ -1348,10 +1352,10 @@ Name
 other_infrastructure_transportation_other_infras_cost
 X
 3
-525
+348
 Y
 3
-396
+297
 Width
 3
 90
@@ -1375,7 +1379,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1406,20 +1411,20 @@ Label
 13
 Name
 5
-23
-other_level_total_label
+17
+other_level_label
 X
 3
-624
+447
 Y
 3
-72
+39
 Width
 3
 84
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -1444,7 +1449,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1458,10 +1463,10 @@ Name
 other_other_infras_cost
 X
 3
-525
+348
 Y
 3
-435
+327
 Width
 3
 90
@@ -1485,7 +1490,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1520,10 +1526,10 @@ Name
 other_user_input_label
 X
 3
-636
+459
 Y
 3
-90
+42
 Width
 3
 60
@@ -1731,7 +1737,7 @@ equations {'other_infrastructure_cost'} = define() {
 
 
 
-1298
+1292
 on_load{'Marine Costs - Other Infrastructure'} = define() {
 	on_change{'itemized_check_other_infras'};
 	enable_itemized_other_infras();
@@ -1751,9 +1757,9 @@ function enable_itemized_other_infras()
 	enable('offshore_logistical_infrastructure_other_infras_cost',itemized_value==1);
 	enable('other_infrastructure_transportation_other_infras_cost',itemized_value==1);
 	enable('other_other_infras_cost',itemized_value==1);
-	enable('other_infrastructure_cost_input',itemized_value==0);
+	enable('other_infrastructure_cost_input',itemized_value!=2);
 	show('other_infrastructure_cost_total',itemized_value==1);
-	show('other_level_total_label',itemized_value==1);
+	show('other_level_label',itemized_value==1);
 	show('other_infrastructure_cost_input',(itemized_value==0 || itemized_value==2));
 	show('other_user_input_label',(itemized_value==0 || itemized_value==2));
 	//show('level_label',itemized_value==1);

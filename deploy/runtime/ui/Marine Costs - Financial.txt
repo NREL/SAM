@@ -1,7 +1,7 @@
 Marine Costs - Financial
-942
-1308
-55
+824
+898
+58
 Numeric
 
 1
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-423
+378
 Y
 3
-891
+849
 Width
 3
 90
@@ -74,10 +74,10 @@ Name
 12
 X
 3
-96
+51
 Y
 3
-336
+345
 Width
 3
 171
@@ -122,10 +122,10 @@ Name
 7
 X
 3
-93
+48
 Y
 3
-891
+849
 Width
 3
 171
@@ -170,10 +170,10 @@ Name
 78
 X
 3
-93
+48
 Y
 3
-450
+459
 Width
 3
 171
@@ -218,13 +218,13 @@ Name
 9
 X
 3
-93
+111
 Y
 3
-588
+567
 Width
 3
-171
+108
 Height
 3
 24
@@ -266,10 +266,10 @@ Name
 debt_service_reserve_account_cost
 X
 3
-423
+477
 Y
 3
-702
+690
 Width
 3
 90
@@ -328,10 +328,10 @@ Name
 decommissioning_reserve_account_cost
 X
 3
-423
+477
 Y
 3
-741
+720
 Width
 3
 90
@@ -390,10 +390,10 @@ Name
 financial_cost_total
 X
 3
-180
+135
 Y
 3
-213
+222
 Width
 3
 90
@@ -452,10 +452,10 @@ Name
 insurance_during_construction_cost
 X
 3
-624
+579
 Y
 3
-450
+459
 Width
 3
 90
@@ -479,7 +479,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -514,10 +515,10 @@ Name
 insurance_during_construction_cost50
 X
 3
-624
+579
 Y
 3
-891
+849
 Width
 3
 90
@@ -541,7 +542,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -576,10 +578,10 @@ Name
 insurance_during_construction_cost_input
 X
 3
-522
+477
 Y
 3
-450
+459
 Width
 3
 90
@@ -638,10 +640,10 @@ Name
 insurance_during_construction_cost_input51
 X
 3
-522
+477
 Y
 3
-891
+849
 Width
 3
 90
@@ -700,10 +702,10 @@ Name
 insurance_during_construction_method
 X
 3
-270
+225
 Y
 3
-450
+459
 Width
 3
 144
@@ -735,10 +737,10 @@ Name
 insurance_during_construction_modeled
 X
 3
-423
+378
 Y
 3
-450
+459
 Width
 3
 90
@@ -798,10 +800,10 @@ Name
 itemized_check_construction_insurance
 X
 3
-738
+48
 Y
 3
-447
+432
 Width
 3
 90
@@ -845,10 +847,10 @@ Name
 itemized_check_construction_insurance652
 X
 3
-738
+48
 Y
 3
-888
+819
 Width
 3
 90
@@ -892,10 +894,10 @@ Name
 itemized_check_contingency
 X
 3
-738
+54
 Y
 3
-336
+315
 Width
 3
 90
@@ -939,10 +941,10 @@ Name
 itemized_check_reserve_accounts
 X
 3
-738
+129
 Y
 3
-585
+534
 Width
 3
 90
@@ -986,10 +988,10 @@ Name
 maintenance_reserve_account_cost
 X
 3
-423
+477
 Y
 3
-663
+660
 Width
 3
 90
@@ -1038,6 +1040,44 @@ BackColour
 TabOrder
 3
 4294967295
+Divider
+
+1
+10
+Name
+5
+13
+object 216311
+X
+3
+453
+Y
+3
+615
+Width
+3
+138
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
 GroupBox
 
 1
@@ -1048,16 +1088,16 @@ Name
 object 4
 X
 3
-57
+12
 Y
 3
-537
+522
 Width
 3
-801
+800
 Height
 3
-285
+264
 Tool Tip
 5
 0
@@ -1078,10 +1118,10 @@ Name
 object 414
 X
 3
-57
+12
 Y
 3
-30
+39
 Width
 3
 800
@@ -1108,16 +1148,16 @@ Name
 object 419
 X
 3
-57
+12
 Y
 3
-840
+798
 Width
 3
-801
+800
 Height
 3
-123
+93
 Tool Tip
 5
 0
@@ -1138,16 +1178,16 @@ Name
 object 41923
 X
 3
-57
+12
 Y
 3
-399
+408
 Width
 3
-801
+800
 Height
 3
-123
+102
 Tool Tip
 5
 0
@@ -1168,13 +1208,13 @@ Name
 object 49
 X
 3
-57
+12
 Y
 3
-270
+279
 Width
 3
-801
+800
 Height
 3
 123
@@ -1198,23 +1238,23 @@ Name
 object 7
 X
 3
-96
+477
 Y
 3
-75
+627
 Width
 3
-591
+87
 Height
 3
-69
+24
 Tool Tip
 5
 0
 Caption
 5
-370
-Capital costs for Wave Energy systems consist of Device Costs, Balance of System Costs, and Financial Costs. This section allows for the cost inputs of the different sublevels of device costs through lump sum $ inputs, inputs as a function of system capacity in $/kW, modeled values from previous analyses, or itemized costs through the various levels of each category. 
+15
+Category Totals
 TextColour
 4
 0
@@ -1229,13 +1269,13 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
 0
 AlignTop
 2
-1
+0
 Label
 
 1
@@ -1246,13 +1286,13 @@ Name
 object 71
 X
 3
-96
+51
 Y
 3
-162
+171
 Width
 3
-717
+591
 Height
 3
 33
@@ -1290,14 +1330,62 @@ Label
 13
 Name
 5
+12
+object 71944
+X
+3
+456
+Y
+3
+600
+Width
+3
+132
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+24
+Itemized Input Structure
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 10
 object 721
 X
 3
-423
+378
 Y
 3
-423
+432
 Width
 3
 84
@@ -1342,10 +1430,10 @@ Name
 object 72124
 X
 3
-429
+384
 Y
 3
-309
+318
 Width
 3
 84
@@ -1390,10 +1478,10 @@ Name
 object 72144
 X
 3
-423
+378
 Y
 3
-561
+540
 Width
 3
 84
@@ -1438,10 +1526,10 @@ Name
 object 72153
 X
 3
-423
+378
 Y
 3
-864
+822
 Width
 3
 84
@@ -1486,13 +1574,13 @@ Name
 object 72751
 X
 3
-189
+273
 Y
 3
-741
+720
 Width
 3
-234
+204
 Height
 3
 24
@@ -1534,10 +1622,10 @@ Name
 object 728
 X
 3
-237
+291
 Y
 3
-702
+690
 Width
 3
 186
@@ -1582,10 +1670,58 @@ Name
 object 729
 X
 3
-246
+54
 Y
 3
-663
+84
+Width
+3
+591
+Height
+3
+63
+Tool Tip
+5
+0
+Caption
+5
+370
+Capital costs for Wave Energy systems consist of Device Costs, Balance of System Costs, and Financial Costs. This section allows for the cost inputs of the different sublevels of device costs through lump sum $ inputs, inputs as a function of system capacity in $/kW, modeled values from previous analyses, or itemized costs through the various levels of each category. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+12
+object 72937
+X
+3
+300
+Y
+3
+660
 Width
 3
 177
@@ -1630,10 +1766,10 @@ Name
 object 731
 X
 3
-276
+330
 Y
 3
-783
+750
 Width
 3
 147
@@ -1678,10 +1814,10 @@ Name
 object 7322
 X
 3
-630
+585
 Y
 3
-423
+432
 Width
 3
 81
@@ -1726,10 +1862,10 @@ Name
 object 732231
 X
 3
-630
+585
 Y
 3
-309
+318
 Width
 3
 81
@@ -1774,10 +1910,10 @@ Name
 object 732245
 X
 3
-630
+585
 Y
 3
-561
+540
 Width
 3
 81
@@ -1822,10 +1958,10 @@ Name
 object 732254
 X
 3
-630
+585
 Y
 3
-864
+822
 Width
 3
 81
@@ -1870,10 +2006,10 @@ Name
 other_financial_cost_method
 X
 3
-270
+225
 Y
 3
-891
+849
 Width
 3
 144
@@ -1905,10 +2041,10 @@ Name
 other_reserve_account_cost
 X
 3
-423
+477
 Y
 3
-783
+750
 Width
 3
 90
@@ -1967,10 +2103,10 @@ Name
 project_contingency_budget_cost
 X
 3
-627
+582
 Y
 3
-336
+345
 Width
 3
 90
@@ -1994,7 +2130,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2029,10 +2166,10 @@ Name
 project_contingency_cost_input
 X
 3
-525
+480
 Y
 3
-336
+345
 Width
 3
 90
@@ -2091,10 +2228,10 @@ Name
 project_contingency_cost_input33
 X
 3
-525
+480
 Y
 3
-336
+345
 Width
 3
 90
@@ -2153,10 +2290,10 @@ Name
 project_contingency_cost_method
 X
 3
-273
+228
 Y
 3
-336
+345
 Width
 3
 144
@@ -2188,10 +2325,10 @@ Name
 project_contingency_modeled
 X
 3
-426
+381
 Y
 3
-336
+345
 Width
 3
 90
@@ -2251,10 +2388,10 @@ Name
 reserve_accounts_cost
 X
 3
-624
+579
 Y
 3
-588
+567
 Width
 3
 90
@@ -2278,7 +2415,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2313,10 +2451,10 @@ Name
 reserve_accounts_cost_input
 X
 3
-522
+477
 Y
 3
-588
+567
 Width
 3
 90
@@ -2375,10 +2513,10 @@ Name
 reserve_accounts_cost_method
 X
 3
-270
+225
 Y
 3
-588
+567
 Width
 3
 144
@@ -2411,10 +2549,10 @@ Name
 reserve_accounts_cost_total
 X
 3
-522
+477
 Y
 3
-588
+567
 Width
 3
 90
@@ -2473,10 +2611,10 @@ Name
 reserve_accounts_modeled
 X
 3
-423
+378
 Y
 3
-588
+567
 Width
 3
 90
@@ -2536,10 +2674,10 @@ Name
 reserve_input_label
 X
 3
-537
+492
 Y
 3
-561
+540
 Width
 3
 60
@@ -2584,10 +2722,10 @@ Name
 reserve_total_label
 X
 3
-525
+480
 Y
 3
-561
+540
 Width
 3
 87
@@ -2632,10 +2770,10 @@ Name
 user_input_label_eng
 X
 3
-537
+492
 Y
 3
-423
+432
 Width
 3
 60
@@ -2680,10 +2818,10 @@ Name
 user_input_label_eng37
 X
 3
-540
+495
 Y
 3
-309
+318
 Width
 3
 60
@@ -2728,10 +2866,10 @@ Name
 user_input_label_eng55
 X
 3
-537
+492
 Y
 3
-864
+822
 Width
 3
 60

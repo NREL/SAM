@@ -1,7 +1,7 @@
 Marine Costs - Assembly & Installation
-1172
-1128
-63
+813
+857
+62
 Label
 
 1
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-357
+153
 Y
 3
-195
+177
 Width
 3
 168
@@ -59,13 +59,13 @@ Name
 Itemized Inputs 
 X
 3
-624
+420
 Y
 3
-168
+150
 Width
 3
-90
+114
 Height
 3
 24
@@ -74,8 +74,8 @@ Tool Tip
 0
 Caption
 5
-12
-Level Totals
+19
+Sub-Category Totals
 TextColour
 4
 0
@@ -107,10 +107,10 @@ Name
 Itemized Inputs 3
 X
 3
-525
+321
 Y
 3
-168
+150
 Width
 3
 90
@@ -122,8 +122,8 @@ Tool Tip
 0
 Caption
 5
-16
-Itemized Inputs 
+15
+Category Totals
 TextColour
 4
 0
@@ -155,10 +155,10 @@ Name
 array_cables_assem_install_cost
 X
 3
-624
+420
 Y
 3
-747
+597
 Width
 3
 90
@@ -182,7 +182,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -217,10 +218,10 @@ Name
 assem_level_total_label
 X
 3
-627
+423
 Y
 3
-90
+72
 Width
 3
 84
@@ -265,10 +266,10 @@ Name
 assem_user_input_label
 X
 3
-636
+432
 Y
 3
-90
+72
 Width
 3
 60
@@ -313,10 +314,10 @@ Name
 assembly_and_install_cost
 X
 3
-723
+519
 Y
 3
-114
+96
 Width
 3
 90
@@ -376,10 +377,10 @@ Name
 assembly_and_install_cost_input
 X
 3
-624
+420
 Y
 3
-114
+96
 Width
 3
 90
@@ -438,10 +439,10 @@ Name
 assembly_and_install_cost_method
 X
 3
-393
+180
 Y
 3
-114
+96
 Width
 3
 126
@@ -474,10 +475,10 @@ Name
 assembly_and_install_cost_modeled
 X
 3
-525
+321
 Y
 3
-114
+96
 Width
 3
 90
@@ -537,10 +538,10 @@ Name
 assembly_and_install_cost_total
 X
 3
-624
+420
 Y
 3
-114
+96
 Width
 3
 90
@@ -600,10 +601,10 @@ Name
 coatings
 X
 3
-492
+288
 Y
 3
-786
+627
 Width
 3
 132
@@ -648,10 +649,10 @@ Name
 detailed_cost_choice_mec_device
 X
 3
-483
+285
 Y
 3
-513
+417
 Width
 3
 156
@@ -681,10 +682,10 @@ Name
 detailed_cost_choice_offshore_infrastructure
 X
 3
-477
+285
 Y
 3
-705
+567
 Width
 3
 177
@@ -714,10 +715,10 @@ Name
 detailed_cost_choice_substructures
 X
 3
-489
+285
 Y
 3
-234
+207
 Width
 3
 162
@@ -747,10 +748,10 @@ Name
 foundation_assem_install_cost
 X
 3
-624
+420
 Y
 3
-276
+237
 Width
 3
 90
@@ -774,7 +775,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -809,10 +811,10 @@ Name
 itemized_check_assem_install
 X
 3
-120
+117
 Y
 3
-81
+57
 Width
 3
 90
@@ -856,10 +858,10 @@ Name
 marine_energy_converter_device_cost
 X
 3
-525
+321
 Y
 3
-474
+387
 Width
 3
 90
@@ -883,7 +885,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -918,10 +921,10 @@ Name
 marine_energy_converter_device_cost_total
 X
 3
-525
+321
 Y
 3
-474
+387
 Width
 3
 90
@@ -981,10 +984,10 @@ Name
 noise_mitigation_cost
 X
 3
-624
+420
 Y
 3
-396
+327
 Width
 3
 90
@@ -1008,7 +1011,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1043,10 +1047,10 @@ Name
 object 2163
 X
 3
-549
+345
 Y
 3
-156
+138
 Width
 3
 138
@@ -1081,16 +1085,16 @@ Name
 object 4
 X
 3
-57
+3
 Y
 3
-51
+15
 Width
 3
 800
 Height
 3
-1056
+834
 Tool Tip
 5
 0
@@ -1111,10 +1115,10 @@ Name
 object 7
 X
 3
-81
+567
 Y
 3
-201
+228
 Width
 3
 180
@@ -1159,10 +1163,10 @@ Name
 object 713
 X
 3
-549
+345
 Y
 3
-318
+267
 Width
 3
 75
@@ -1207,10 +1211,10 @@ Name
 object 71944
 X
 3
-552
+345
 Y
 3
-141
+123
 Width
 3
 132
@@ -1255,10 +1259,10 @@ Name
 object 72145
 X
 3
-525
+321
 Y
 3
-87
+69
 Width
 3
 84
@@ -1303,10 +1307,10 @@ Name
 object 72446
 X
 3
-474
+270
 Y
 3
-828
+657
 Width
 3
 150
@@ -1351,10 +1355,10 @@ Name
 object 72647
 X
 3
-510
+306
 Y
 3
-747
+597
 Width
 3
 114
@@ -1399,10 +1403,10 @@ Name
 object 72748
 X
 3
-495
+291
 Y
 3
-630
+507
 Width
 3
 129
@@ -1447,10 +1451,10 @@ Name
 object 7274814
 X
 3
-462
+258
 Y
 3
-591
+477
 Width
 3
 162
@@ -1495,10 +1499,10 @@ Name
 object 728
 X
 3
-513
+309
 Y
 3
-552
+447
 Width
 3
 111
@@ -1543,10 +1547,10 @@ Name
 object 729
 X
 3
-336
+132
 Y
 3
-474
+387
 Width
 3
 189
@@ -1591,10 +1595,10 @@ Name
 object 73
 X
 3
-555
+351
 Y
 3
-276
+237
 Width
 3
 69
@@ -1639,10 +1643,10 @@ Name
 object 730
 X
 3
-489
+285
 Y
 3
-438
+357
 Width
 3
 135
@@ -1687,10 +1691,10 @@ Name
 object 73057
 X
 3
-528
+324
 Y
 3
-396
+327
 Width
 3
 96
@@ -1735,10 +1739,10 @@ Name
 object 731
 X
 3
-309
+105
 Y
 3
-1014
+807
 Width
 3
 216
@@ -1783,10 +1787,10 @@ Name
 object 73118
 X
 3
-333
+129
 Y
 3
-981
+777
 Width
 3
 192
@@ -1831,10 +1835,10 @@ Name
 object 73131
 X
 3
-333
+129
 Y
 3
-669
+537
 Width
 3
 192
@@ -1879,10 +1883,10 @@ Name
 object 7322
 X
 3
-729
+525
 Y
 3
-87
+69
 Width
 3
 78
@@ -1927,10 +1931,10 @@ Name
 object 733
 X
 3
-402
+198
 Y
 3
-936
+747
 Width
 3
 222
@@ -1975,10 +1979,10 @@ Name
 object 73315
 X
 3
-447
+243
 Y
 3
-900
+717
 Width
 3
 177
@@ -2023,10 +2027,10 @@ Name
 object 73323
 X
 3
-414
+210
 Y
 3
-867
+687
 Width
 3
 210
@@ -2071,10 +2075,10 @@ Name
 object 734
 X
 3
-528
+324
 Y
 3
-357
+297
 Width
 3
 96
@@ -2119,10 +2123,10 @@ Name
 object 75
 X
 3
-222
+4294967275
 Y
 3
-114
+120
 Width
 3
 12
@@ -2167,13 +2171,13 @@ Name
 object 757
 X
 3
-234
+27
 Y
 3
-114
+96
 Width
 3
-111
+147
 Height
 3
 24
@@ -2192,7 +2196,7 @@ TextColour
 255
 Bold
 2
-0
+1
 FontSize
 3
 0
@@ -2201,7 +2205,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2215,10 +2219,10 @@ Name
 offshore_accommodations_platform_cost
 X
 3
-624
+420
 Y
 3
-867
+687
 Width
 3
 90
@@ -2242,7 +2246,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2277,10 +2282,10 @@ Name
 offshore_electrical_infrastructure_cost
 X
 3
-525
+321
 Y
 3
-669
+537
 Width
 3
 90
@@ -2304,7 +2309,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2339,10 +2345,10 @@ Name
 offshore_electrical_infrastructure_cost_total
 X
 3
-525
+321
 Y
 3
-669
+537
 Width
 3
 90
@@ -2402,10 +2408,10 @@ Name
 offshore_export_cables_assem_install_cost
 X
 3
-624
+420
 Y
 3
-786
+627
 Width
 3
 90
@@ -2429,7 +2435,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2464,10 +2471,10 @@ Name
 offshore_logistical_infrastructure_assem_install_cost
 X
 3
-525
+321
 Y
 3
-981
+777
 Width
 3
 90
@@ -2491,7 +2498,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2526,10 +2534,10 @@ Name
 offshore_substation_assem_install_cost
 X
 3
-624
+420
 Y
 3
-828
+657
 Width
 3
 90
@@ -2553,7 +2561,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2588,10 +2597,10 @@ Name
 onshore_electric_infrastructure_assem_install_cost
 X
 3
-624
+420
 Y
 3
-900
+717
 Width
 3
 90
@@ -2615,7 +2624,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2650,10 +2660,10 @@ Name
 other_assem_install_cost
 X
 3
-525
+321
 Y
 3
-1014
+807
 Width
 3
 90
@@ -2677,7 +2687,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2712,10 +2723,10 @@ Name
 other_marine_energy_converter_device_cost
 X
 3
-624
+420
 Y
 3
-630
+507
 Width
 3
 90
@@ -2739,7 +2750,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2774,10 +2786,10 @@ Name
 other_offshore_electrical_infrastructure_cost
 X
 3
-624
+420
 Y
 3
-936
+747
 Width
 3
 90
@@ -2801,7 +2813,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2836,10 +2849,10 @@ Name
 other_substructure_cost
 X
 3
-624
+420
 Y
 3
-438
+357
 Width
 3
 90
@@ -2863,7 +2876,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2898,10 +2912,10 @@ Name
 power_takeoff_system_assem_install_cost
 X
 3
-624
+420
 Y
 3
-591
+477
 Width
 3
 90
@@ -2925,7 +2939,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2960,10 +2975,10 @@ Name
 scour_protection_assem_install_cost
 X
 3
-624
+420
 Y
 3
-357
+297
 Width
 3
 90
@@ -2987,7 +3002,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3022,10 +3038,10 @@ Name
 structural_assembly_assem_install_cost
 X
 3
-624
+420
 Y
 3
-552
+447
 Width
 3
 90
@@ -3049,7 +3065,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3084,10 +3101,10 @@ Name
 substructure_assem_install_cost
 X
 3
-624
+420
 Y
 3
-318
+267
 Width
 3
 90
@@ -3111,7 +3128,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3146,10 +3164,10 @@ Name
 substructure_assem_install_cost_total
 X
 3
-525
+321
 Y
 3
-195
+177
 Width
 3
 90
@@ -3209,10 +3227,10 @@ Name
 substructures_and_foundations_cost
 X
 3
-525
+321
 Y
 3
-195
+177
 Width
 3
 90
@@ -3236,7 +3254,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3261,33 +3280,6 @@ BackColour
 TabOrder
 3
 4294967295
-ToolTipCtrl
-
-1
-7
-Name
-5
-27
-tt_structural_assembly_cost
-X
-3
-354
-Y
-3
-114
-Width
-3
-24
-Height
-3
-24
-Tool Tip
-5
-0
-Tips
-5
-55
-Type a tip here or define in runtime/help/tooltips.json
 
 31
 array_cables_assem_install_cost
@@ -3811,7 +3803,7 @@ equations {'assembly_and_install_cost'} = define() {
 
 
 
-5608
+5615
 on_load{'Marine Costs - Assembly & Installation'} = define() {
 	on_change{'itemized_check_assem_install'};
 	enable_itemized_assem_install();
@@ -3901,7 +3893,7 @@ function enable_itemized_assem_install()
 {
 	itemized_value = value('itemized_check_assem_install');
 	enable('substructures_and_foundations_cost',itemized_value==1);
-	enable('substructures_assem_install_cost_total',itemized_value==1);
+	enable('substructure_assem_install_cost_total',itemized_value==1);
 	enable('detailed_cost_choice_substructures',itemized_value==1);
 	enable('foundation_assem_install_cost',itemized_value==1);
 	enable('substructure_assem_install_cost',itemized_value==1);
@@ -3927,7 +3919,7 @@ function enable_itemized_assem_install()
 	enable('other_assem_install_cost',itemized_value==1);
 	//show('level_eng',itemized_value==1);
 	//show('level_label',itemized_value==1);
-	enable('eng_and_mgmt_cost_input',itemized_value==0);
+	enable('assembly_and_install_cost_input',itemized_value!=2);
 	show('assembly_and_install_cost_total',itemized_value==1);
 	show('assem_level_total_label',itemized_value==1);
 	show('assembly_and_install_cost_input',(itemized_value==0 || itemized_value==2));
