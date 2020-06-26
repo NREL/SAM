@@ -371,7 +371,11 @@ function MEwave_metrics()
 	metric( 'total_bos_cost_per_kw', {'label'='Total balance of system cost','mode'='f','deci'='0','thousep'='true','post'='$/kW' } );
 	metric( 'total_financial_cost_per_kw', {'label'='Total financial cost','mode'='f','deci'='0','thousep'='true','post'='$/kW' } );
 	metric( 'total_operating_cost', {'label'='Total operating cost (annual)','mode'='f','deci'='0','thousep'='true','post'='$/kW' } );
-	metric( 'total_device_cost_per_kwh', {'label'='Total device cost (annual)','mode'='f','deci'='0','thousep'='true','post'='$/kW' } );
+	metric( 'total_capital_cost_per_kwh', {'label'='Total capital cost (annual)','mode'='f','deci'='2','thousep'='true','post'='$/kWh' } );
+	metric( 'total_device_cost_per_kwh', {'label'='Total device cost (annual)','mode'='f','deci'='2','thousep'='true','post'='$/kWh' } );
+	metric( 'total_bos_cost_per_kwh', {'label'='Total balance of system cost (annual)','mode'='f','deci'='2','thousep'='true','post'='$/kWh' });
+	metric( 'total_financial_cost_per_kwh', {'label'='Total financial cost (annual)','mode'='f','deci'='2','thousep'='true','post'='$/kWh' } );
+	metric( 'total_operations_cost_per_kwh', {'label'='Total operations cost (annual)','mode'='f','deci'='2','thousep'='true','post'='$/kWh' } );
 }
 
 function MEtidal_metrics() 
