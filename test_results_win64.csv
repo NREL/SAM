@@ -87,7 +87,7 @@ Dish Stirling,All Equity Partnership Flip,207236624,18.860062,20.753241,;
 Dish Stirling,Sale Leaseback,207236624,19.091169,19.771194,; 
 Dish Stirling,LCOE Calculator,207236624,NA,NA,; 
 Dish Stirling,None,207236624,NA,NA,; 
-Generic CSP System,Commercial,574225408,3.711204,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
+Generic CSP System,Commercial,573450304,3.715794,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Single Owner,573450304,11.254256,12.133404,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Merchant Plant,573527808,10.609083,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 Generic CSP System,Leveraged Partnership Flip,573450304,11.501258,12.406209,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
