@@ -83,7 +83,8 @@ outln("============================\n");
 
 set('use_specific_weather_file',1);
 
-new_file = choose_file( homedir(),"Choose a New Weather File:","Solar Resource Files (*.csv, *.epw, *.tm2)|*.csv; *.epw; *.tm2",0,0 );
+//new_file = choose_file( homedir(),"Choose a New Weather File:","Solar Resource Files (*.csv, *.epw, *.tm2)|*.csv; *.epw; *.tm2",0,0 );
+new_file = choose_file( homedir(),"Choose a New Weather File:","All Files (*.*)|*.*",0,0 );
 set('user_specified_weather_file', new_file);
 
 file= get('solar_resource_file');
