@@ -764,9 +764,9 @@ void fcall_value( lk::invoke_t &cxt )
 			    bool trigger = true;
 			    if (cxt.arg_count() == 3 ) {
 			        trigger = cxt.arg(2).as_boolean();
-				if (trigger){
-				    cc.GetCase().VariableChanged( name );
-				}
+			    }
+			    if (trigger) {
+			      cc.GetCase().VariableChanged( name );
 			    }
 			}
 			else
