@@ -1,0 +1,3 @@
+old_turbine_data = csvread('Wind Turbines.csv');
+new_turbine_data = xl_read('Wind Turbines-021720-PNNLedits.xlsx');
+outln(new_turbine_data[0][0]);
