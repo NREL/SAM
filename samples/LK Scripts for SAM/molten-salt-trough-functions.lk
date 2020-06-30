@@ -123,7 +123,7 @@ check_for_open_files = define(files)
 };
 
 
-write_output_files = define(csv_Runners, csv_Headers, csv_Loop, csv_SGS)
+write_output_files = define(csv_Runners, csv_Headers, csv_Loop, csv_TES)
 {
 	// Output CSV file for runners
 	rnr_diams = get('pipe_runner_diams');
@@ -166,18 +166,18 @@ write_output_files = define(csv_Runners, csv_Headers, csv_Loop, csv_SGS)
 	ok = csvwrite( csv_Loop, loop,
 		{ 'cols'=['index', 'Temp_C', 'P_gauge_bar'] } );
 	
-	// Output CSV file for SGS
-	sgs_diams = get('pipe_sgs_diams');
-	for ( i=0; i<#sgs_diams; i++ ) { sgs_index[i] = i; }
-	sgs.index = sgs_index;
-	sgs.Diameter_m = get('pipe_sgs_diams');
-	sgs.WallThk_m = get('pipe_sgs_wallthk');
-	sgs.Length_m = get('sgs_lengths');
-	sgs.MassFlow_kg_s = get('pipe_sgs_mdot_dsn');
-	sgs.Velocity_m_s = get('pipe_sgs_vel_dsn');
-	sgs.Temp_C = get('pipe_sgs_T_dsn');
-	sgs.P_gauge_bar = get('pipe_sgs_P_dsn');
-	ok = csvwrite( csv_SGS, sgs,
+	// Output CSV file for TES
+	tes_diams = get('pipe_tes_diams');
+	for ( i=0; i<#tes_diams; i++ ) { tes_index[i] = i; }
+	tes.index = tes_index;
+	tes.Diameter_m = get('pipe_tes_diams');
+	tes.WallThk_m = get('pipe_tes_wallthk');
+	tes.Length_m = get('pipe_tes_lengths');
+	tes.MassFlow_kg_s = get('pipe_tes_mdot_dsn');
+	tes.Velocity_m_s = get('pipe_tes_vel_dsn');
+	tes.Temp_C = get('pipe_tes_T_dsn');
+	tes.P_gauge_bar = get('pipe_tes_P_dsn');
+	ok = csvwrite( csv_TES, tes,
 		{ 'cols'=['index', 'Diameter_m', 'WallThk_m', 'Length_m',
 			'MassFlow_kg_s', 'Velocity_m_s', 'Temp_C', 'P_gauge_bar'] } );
 
@@ -185,7 +185,7 @@ write_output_files = define(csv_Runners, csv_Headers, csv_Loop, csv_SGS)
 };  // write_output_files()
 
 
-import_pipe_sizes = define(csv_Runners, csv_Headers, csv_SGS)
+import_pipe_sizes = define(csv_Runners, csv_Headers, csv_TES)
 {
 	// Input CSV file for runners
 	if ( !file_exists(csv_Runners) ) {
@@ -219,20 +219,20 @@ import_pipe_sizes = define(csv_Runners, csv_Headers, csv_SGS)
 		set( 'sf_hdr_lengths', hdr_lengths);
 	}
 	
-	// Input CSV file for SGS
-	if ( !file_exists(csv_SGS) ) {
-		msgbox("Could not locate \"" + file_only(csv_SGS) + "\" " +
-			   "in the directory: " + path_only(csv_SGS)) + " . " +
+	// Input CSV file for TES
+	if ( !file_exists(csv_TES) ) {
+		msgbox("Could not locate \"" + file_only(csv_TES) + "\" " +
+			   "in the directory: " + path_only(csv_TES)) + " . " +
 			   "Default values being used instead.";
 	}
 	else {
-		tbl_sgs = csvread( csv_SGS, {'numeric'=true, 'table'=true});
-		sgs_diams = tbl_sgs{"Diameter_m"};
-		sgs_wallthks = tbl_sgs{"WallThk_m"};
-		//sgs_lengths = tbl_sgs{"Length_m"};  // parameter array used instead
-		set( 'sgs_diams', sgs_diams);
-		set( 'sgs_wallthicks', sgs_wallthks);
-		//set( 'sgs_lengths', sgs_lengths);
+		tbl_tes = csvread( csv_TES, {'numeric'=true, 'table'=true});
+		tes_diams = tbl_tes{"Diameter_m"};
+		tes_wallthks = tbl_tes{"WallThk_m"};
+		//tes_lengths = tbl_tes{"Length_m"};  // parameter array used instead
+		set( 'tes_diams', tes_diams);
+		set( 'tes_wallthicks', tes_wallthks);
+		//set( 'tes_lengths', tes_lengths);
 	}
 	
 	outln("Finished importing pipe sizes");
