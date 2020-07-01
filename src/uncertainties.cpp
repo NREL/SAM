@@ -578,8 +578,8 @@ int UncertaintiesCtrl::IntersectionLines(const double &x_min, const double &x_ma
 
 int UncertaintiesCtrl::Display( Simulation *sim, Uncertainties &gi )
 {
-static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-										"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+  // static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+  // "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 
 //	std::vector<wxColour> &s_colours = Uncertainties::Colours();
 
