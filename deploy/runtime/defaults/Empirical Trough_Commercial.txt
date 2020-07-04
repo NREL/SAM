@@ -1,5 +1,5 @@
 1
-709
+710
 AntiFrPar
 1
 1
@@ -89,7 +89,7 @@ CtPar
 1
 1
 1
-1.892
+1.89199
 CtParF0
 1
 1
@@ -1330,7 +1330,7 @@ csp.tr.cost.contingency
 1
 1
 1
-29555552
+29555554
 csp.tr.cost.contingency_percent
 1
 1
@@ -1390,7 +1390,7 @@ csp.tr.cost.htf_system
 1
 1
 1
-51526064
+51526068
 csp.tr.cost.htf_system.area
 1
 1
@@ -1444,7 +1444,7 @@ csp.tr.cost.plm.total
 1
 1
 1
-8903239
+8903240
 csp.tr.cost.power_plant
 1
 1
@@ -1486,7 +1486,7 @@ csp.tr.cost.site_improvements
 1
 1
 1
-21469194
+21469196
 csp.tr.cost.site_improvements.area
 1
 1
@@ -1504,7 +1504,7 @@ csp.tr.cost.solar_field
 1
 1
 1
-128815160
+128815168
 csp.tr.cost.solar_field.area
 1
 1
@@ -3015,7 +3015,7 @@ property_assessed_value
 1
 1
 1
-528447616
+528447680
 property_tax_rate
 1
 1
@@ -3187,7 +3187,7 @@ total_direct_cost
 1
 1
 1
-451777728
+451777760
 total_indirect_cost
 1
 1
@@ -3199,7 +3199,7 @@ total_installed_cost
 1
 1
 1
-528447616
+528447680
 track_mode
 1
 1
@@ -3338,7 +3338,7 @@ ui_design_exact_area_sm_1
 1
 1
 1
-428939
+428940
 ui_design_exact_num_scas_sm_1
 1
 1
@@ -3772,7 +3772,7 @@ ui_hce_thermloss_weighted_m2
 1
 1
 1
-36.1005
+36.1006
 ui_hce_weighted_optical_efficiency
 1
 1
@@ -3784,7 +3784,7 @@ ui_hce_weighted_thermal_losses
 1
 1
 1
-36.1005
+36.1006
 ui_land_multiplier
 1
 1
@@ -3820,7 +3820,7 @@ ui_loan_amount
 1
 1
 1
-528447616
+528447680
 ui_max_therm_input
 1
 1
@@ -3844,7 +3844,7 @@ ui_net_capital_cost
 1
 1
 1
-528447616
+528447680
 ui_par_antifreeze_const
 1
 1
@@ -4172,6 +4172,12 @@ ur_ec_tou_mat
 3 1 1e+38 0 0.064842 0.064842 
 4 1 1e+38 0 0.052882 0.052882 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1
