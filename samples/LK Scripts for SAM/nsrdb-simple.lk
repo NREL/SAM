@@ -1,0 +1,51 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+	Basic script demonstrating use of webapi(), geocode(), and curl() functions
+	to access the NREL National Solar Radiation Database (NSRDB).
+	
+	Note this requires an NREL version of SAM, or a version of SAM with valid
+	API keys in private.h.
+	
+	Tested in SAM 2020.2.29 r2
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+
+g = geocode('billings, mt' );
+
+outln( webapi() );
+w = webapi('nsrdb_query');
+w = replace( w, '<LAT>', g.lat );
+w = replace( w, '<LON>', g.lon );
+
+j = curl( w );
+v = json_read( j );
+
+url = v.outputs[0].links[0].link; // url for first available weather file for billings, mt location
+url = replace( url, 'yourapikey' , '<SAMAPIKEY>' );
+j1 = curl( url );
+v1 = json_read( j1 );
+
+url1 = v.outputs[0].links[0].link;
+url1 = replace( url1, 'yourapikey' , '<SAMAPIKEY>' );
+
+ok = curl( url1, { 'file' = cwd() + '/test-nsrdb.csv' } );
+if ( ok ) { browse( cwd() + '/test-nsrdb.csv' ); }
+
+outln( 'g = ', g );
+outln( 'w = ', w );
+outln( 'j = ', j );
+outln( 'v = ', v );
+outln( '@v = ', @v );
+outln( 'v.inputs = ' , v.inputs );
+outln();
+outln('=============================');
+outln( 'v.outputs = ', v.outputs );
+outln();
+outln('=============================');
+outln( 'v.outputs[0] = ', v.outputs[0] );
+outln();
+outln('=============================');
+outln( 'v.outputs[0].links[0].link = ', v.outputs[0].links[0].link );
