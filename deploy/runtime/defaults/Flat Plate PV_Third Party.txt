@@ -1,5 +1,5 @@
 1
-625
+626
 6par_aisc
 1
 1
@@ -505,7 +505,7 @@ cec_i_o_ref
 1
 1
 1
-3.98831e-12
+3.99e-12
 cec_i_sc_ref
 1
 1
@@ -1615,7 +1615,7 @@ inv_snl_c0
 1
 1
 1
--3.08138e-06
+-3.08e-06
 inv_snl_c1
 1
 1
@@ -1639,13 +1639,13 @@ inv_snl_eff_cec
 1
 1
 1
-97.0531
+97.0529
 inv_snl_eff_euro
 1
 1
 1
 1
-96.6764
+96.6762
 inv_snl_idcmax
 1
 1
@@ -1805,7 +1805,8 @@ lib_is_bifacial
 lib_manufacturer
 1
 4
-0
+8
+SunPower
 library_folder_list
 1
 4
@@ -3973,6 +3974,12 @@ ur_ec_tou_mat
 3 1 1e+38 0 0.2 0 
 4 1 1e+38 0 0.25 0 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1

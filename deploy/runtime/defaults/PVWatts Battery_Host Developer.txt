@@ -1,11 +1,11 @@
 1
-523
+524
 ac_nameplate
 1
 1
 1
 1
-179.886
+179.887
 adjust
 1
 5
@@ -213,7 +213,7 @@ bos_equip_total
 1
 1
 1
-53965.9
+53966
 cbi_fed_amount
 1
 1
@@ -561,7 +561,7 @@ const_per_total1
 1
 1
 1
-6682.26
+6682.27
 const_per_total2
 1
 1
@@ -621,7 +621,7 @@ construction_financing_cost
 1
 1
 1
-6682.26
+6682.27
 contingency
 1
 1
@@ -1742,7 +1742,7 @@ install_labor_total
 1
 1
 1
-25903.6
+25903.7
 install_margin_fixed
 1
 1
@@ -1766,7 +1766,7 @@ install_margin_total
 1
 1
 1
-140311
+140312
 installed_per_capacity
 1
 1
@@ -1802,7 +1802,7 @@ inverter_power
 1
 1
 1
-179.886
+179.887
 inverter_total
 1
 1
@@ -1814,7 +1814,7 @@ inverterarray_power
 1
 1
 1
-179.886
+179.887
 is_advanced
 1
 1
@@ -2197,7 +2197,7 @@ mera_cost1
 1
 1
 1
-53965.9
+53966
 mera_cost2
 1
 1
@@ -2248,7 +2248,7 @@ module_total
 1
 1
 1
-69076.4
+69076.5
 module_type
 1
 1
@@ -3088,6 +3088,12 @@ ur_ec_tou_mat
 3 1 1e+38 0 0.06 0 
 4 1 1e+38 0 0.05 0 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1
