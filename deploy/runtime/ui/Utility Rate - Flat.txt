@@ -1,7 +1,7 @@
 Utility Rate - Flat
 1422
 522
-22
+23
 GroupBox
 
 1
@@ -479,14 +479,14 @@ CheckBox
 9
 Name
 5
-18
-ur_en_ts_sell_rate
+17
+ur_en_ts_buy_rate
 X
 3
-522
+519
 Y
 3
-273
+324
 Width
 3
 422
@@ -498,8 +498,41 @@ Tool Tip
 0
 Caption
 5
-58
-Use hourly (subhourly) buy/sell rates instead of TOU rates
+53
+Use hourly (subhourly) buy rates instead of TOU rates
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+18
+ur_en_ts_sell_rate
+X
+3
+519
+Y
+3
+264
+Width
+3
+422
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+54
+Use hourly (subhourly) sell rates instead of TOU rates
 State
 2
 0
@@ -826,7 +859,7 @@ X
 717
 Y
 3
-333
+351
 Width
 3
 184
@@ -863,7 +896,7 @@ X
 717
 Y
 3
-303
+291
 Width
 3
 184
@@ -888,7 +921,7 @@ TabOrder
 3
 3
 
-10
+11
 rate_escalation
 3
 2
@@ -917,6 +950,20 @@ Electricity Rates - General
 1
 0
 Numeric
+ur_en_ts_buy_rate
+3
+1
+Enable time step buy rates
+ 
+Electricity Rates - General
+0
+1
+1
+1
+1
+1
+0
+CheckBox
 ur_en_ts_sell_rate
 3
 1
@@ -1032,10 +1079,10 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-4786
+5035
 on_load{"Utility Rate - Flat"} = define(){
 	check_configuration();
-	ur_flat_sell_rates(); // refresh when switching pages
+	ur_flat_buysell_rates(); // refresh when switching pages
 };	
 
 function check_configuration()
@@ -1054,7 +1101,7 @@ function check_configuration()
 	}
 }	
 
-function ur_flat_sell_rates()
+function ur_flat_buysell_rates()
 {	
 	eme = value("ur_metering_option");
 	enable( "ur_nm_yearend_sell_rate", eme==0 );
@@ -1063,13 +1110,19 @@ function ur_flat_sell_rates()
 		enable( "ur_ts_sell_rate", true );
 		enable( "ur_ts_buy_rate", true );
 		enable( "ur_en_ts_sell_rate", true );
-		en = value("ur_en_ts_sell_rate");
-		if (en==1){
+		enable( "ur_en_ts_buy_rate", true );
+		en_sell = value("ur_en_ts_sell_rate");
+		if (en_sell==1){
 			property("ur_ec_tou_mat","HideColumn",5);
-			property("ur_ec_tou_mat","HideColumn",4);
 		}
 		else {
 			property("ur_ec_tou_mat","ShowColumn",5);
+		}
+		en_buy = value("ur_en_ts_buy_rate");
+		if (en_buy==1){
+			property("ur_ec_tou_mat","HideColumn",4);
+		}
+		else {
 			property("ur_ec_tou_mat","ShowColumn",4);
 		}
 	}
@@ -1078,19 +1131,25 @@ function ur_flat_sell_rates()
 		enable( "ur_ts_sell_rate", false );
 		enable( "ur_ts_buy_rate", false );
 		enable( "ur_en_ts_sell_rate", false );
+		enable( "ur_en_ts_buy_rate", false );
 		property("ur_ec_tou_mat","HideColumn",5);
 	}
 }
 
 on_change{'ur_en_ts_sell_rate'} = define()
 {
-	ur_flat_sell_rates();
+	ur_flat_buysell_rates();
+};
+
+on_change{'ur_en_ts_buy_rate'} = define()
+{
+	ur_flat_buysell_rates();
 };
 
 on_change{'ur_metering_option'} = define()
 {
 	check_configuration();
-	ur_flat_sell_rates();
+	ur_flat_buysell_rates();
 };
 
 on_change{'btnSaveRateData'} = define() {
