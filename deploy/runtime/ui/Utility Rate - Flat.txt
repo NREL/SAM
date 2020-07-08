@@ -42,10 +42,10 @@ Name
 GroupBox2
 X
 3
-12
+9
 Y
 3
-438
+465
 Width
 3
 565
@@ -102,10 +102,10 @@ Name
 GroupBox7
 X
 3
-12
+9
 Y
 3
-387
+414
 Width
 3
 565
@@ -141,7 +141,7 @@ Width
 1403
 Height
 3
-177
+198
 Tool Tip
 5
 0
@@ -162,10 +162,10 @@ Name
 GroupBox9
 X
 3
-582
+579
 Y
 3
-387
+414
 Width
 3
 830
@@ -192,10 +192,10 @@ Name
 Label4
 X
 3
-615
+612
 Y
 3
-444
+471
 Width
 3
 791
@@ -378,10 +378,10 @@ Name
 rate_escalation
 X
 3
-876
+873
 Y
 3
-411
+438
 Width
 3
 75
@@ -421,10 +421,10 @@ Name
 ur_annual_min_charge
 X
 3
-261
+258
 Y
 3
-486
+513
 Width
 3
 75
@@ -592,10 +592,10 @@ Name
 ur_monthly_fixed_charge
 X
 3
-261
+258
 Y
 3
-405
+432
 Width
 3
 75
@@ -654,10 +654,10 @@ Name
 ur_monthly_min_charge
 X
 3
-261
+258
 Y
 3
-459
+486
 Width
 3
 75
@@ -933,10 +933,10 @@ Name
 ur_ts_buy_rate
 X
 3
-717
+714
 Y
 3
-360
+381
 Width
 3
 184
@@ -970,10 +970,10 @@ Name
 ur_ts_sell_rate
 X
 3
-717
+714
 Y
 3
-330
+351
 Width
 3
 184
@@ -1184,7 +1184,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-5035
+5136
 on_load{"Utility Rate - Flat"} = define(){
 	check_configuration();
 	ur_flat_buysell_rates(); // refresh when switching pages
@@ -1375,6 +1375,3 @@ on_change{'btnQueryOpenEI'} = define() {
 
 	msgbox("OpenEI rate applied! \n");
 };
-
-
-
