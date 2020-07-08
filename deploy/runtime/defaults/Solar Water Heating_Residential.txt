@@ -1,5 +1,5 @@
 1
-381
+382
 FRUL
 1
 1
@@ -2151,6 +2151,12 @@ ur_ec_tou_mat
 3 1 1e+38 0 0.2 0 
 4 1 1e+38 0 0.25 0 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1
