@@ -97,7 +97,7 @@ protected:
 	
 struct MetricData {
 	MetricData() :
-		scale( 1.0 ), mode( 'g' ), thousep( false ), deci( 2 )
+		scale(1.0), mode('g'), thousep(false), deci(2), tableName("")
 	{}
 	wxString var;
 	wxString label;
@@ -106,6 +106,7 @@ struct MetricData {
 	bool thousep;
 	int deci;
 	wxString pre, post;
+	wxString tableName; // subject to review
 };
 	
 struct CashFlowLine {
