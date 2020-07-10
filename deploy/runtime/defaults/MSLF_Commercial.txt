@@ -1,5 +1,5 @@
 1
-742
+743
 A_aperture
 1
 1
@@ -4589,6 +4589,12 @@ ur_ec_tou_mat
 3 1 1e+38 0 0.064842 0.064842 
 4 1 1e+38 0 0.052882 0.052882 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1
@@ -4654,8 +4660,8 @@ ur_phase_wiring
 ur_ratedata_filename
 1
 4
-94
-C:/Projects/SAM/Documentation/UtilityRates/Flat_rate_updates_2016.3.6/CSP_com_UR_2015.6.30.csv
+24
+CSP_com_UR_2015.6.30.csv
 ur_schedule_name
 1
 4
