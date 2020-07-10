@@ -1,5 +1,5 @@
 1
-480
+481
 FossilFill
 1
 2
@@ -413,7 +413,7 @@ csp.gss.cost.contingency
 1
 1
 1
-38528928
+38528924
 csp.gss.cost.contingency_percent
 1
 1
@@ -449,7 +449,7 @@ csp.gss.cost.epc.total
 1
 1
 1
-76562488
+76562480
 csp.gss.cost.fossil_backup
 1
 1
@@ -509,7 +509,7 @@ csp.gss.cost.plm.total
 1
 1
 1
-18434466
+18434462
 csp.gss.cost.power_plant
 1
 1
@@ -539,7 +539,7 @@ csp.gss.cost.sales_tax.total
 1
 1
 1
-23557688
+23557686
 csp.gss.cost.sales_tax.value
 1
 1
@@ -551,7 +551,7 @@ csp.gss.cost.site_improvements
 1
 1
 1
-19894202
+19894200
 csp.gss.cost.site_improvements.area
 1
 1
@@ -569,7 +569,7 @@ csp.gss.cost.solar_field
 1
 1
 1
-298413024
+298412992
 csp.gss.cost.solar_field.area
 1
 1
@@ -587,7 +587,7 @@ csp.gss.cost.storage
 1
 1
 1
-66506028
+66506020
 csp.gss.cost.storage.cost_per_kwht
 1
 1
@@ -2137,7 +2137,7 @@ property_assessed_value
 1
 1
 1
-707496832
+707496768
 property_tax_rate
 1
 1
@@ -2425,19 +2425,19 @@ total_direct_cost
 1
 1
 1
-588942208
+588942144
 total_indirect_cost
 1
 1
 1
 1
-118554640
+118554624
 total_installed_cost
 1
 1
 1
 1
-707496832
+707496768
 track_mode
 1
 1
@@ -2701,13 +2701,13 @@ ui_loan_amount
 1
 1
 1
-707496832
+707496768
 ui_net_capital_cost
 1
 1
 1
 1
-707496832
+707496768
 ui_wacc
 1
 1
@@ -2881,6 +2881,12 @@ ur_ec_tou_mat
 3 1 1e+38 0 0.064842 0.064842 
 4 1 1e+38 0 0.052882 0.052882 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1

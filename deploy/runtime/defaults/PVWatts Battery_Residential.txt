@@ -1,5 +1,5 @@
 1
-412
+413
 Monthly_util
 1
 2
@@ -74,7 +74,7 @@ ac_nameplate
 1
 1
 1
-3.91072
+3.91073
 adjust
 1
 5
@@ -1216,7 +1216,7 @@ inverter_power
 1
 1
 1
-3.91072
+3.91073
 inverter_total
 1
 1
@@ -1228,7 +1228,7 @@ inverterarray_power
 1
 1
 1
-3.91072
+3.91073
 is_advanced
 1
 1
@@ -2385,6 +2385,12 @@ ur_ec_tou_mat
 3 1 1e+38 0 0.2 0 
 4 1 1e+38 0 0.4 0 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1
