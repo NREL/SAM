@@ -1,7 +1,37 @@
 Battery Dispatch Behind the Meter
-1053
-337
-16
+1068
+467
+20
+GroupBox
+
+1
+8
+Name
+5
+9
+AutoDCBox
+X
+3
+345
+Y
+3
+327
+Width
+3
+697
+Height
+3
+130
+Tool Tip
+5
+0
+Caption
+5
+26
+Automated Dispatch Options
+Bold
+2
+1
 Label
 
 1
@@ -69,7 +99,7 @@ Width
 1042
 Height
 3
-325
+456
 Tool Tip
 5
 0
@@ -177,6 +207,141 @@ For each simulation time step enter a rate in kW: less than zero to charge the b
 TabOrder
 3
 5
+Numeric
+
+1
+17
+Name
+5
+15
+batt_cycle_cost
+X
+3
+525
+Y
+3
+402
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+5
+Choice
+
+1
+9
+Name
+5
+22
+batt_cycle_cost_choice
+X
+3
+525
+Y
+3
+369
+Width
+3
+198
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+Calculate automatically
+Enter cost
+Selection
+3
+4294967295
+TabOrder
+3
+4
+Divider
+
+1
+10
+Name
+5
+22
+batt_cycle_costs_label
+X
+3
+354
+Y
+3
+345
+Width
+3
+633
+Height
+3
+22
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+19
+Battery Cycle Costs
+Bold
+2
+1
 CheckBox
 
 1
@@ -330,10 +495,10 @@ Name
 batt_dispatch_label
 X
 3
-753
+747
 Y
 3
-207
+201
 Width
 3
 282
@@ -615,11 +780,11 @@ DataArray
 batt_cycle_cost
 3
 1
- 
- 
- 
+Battery cycle cost
+$/cycle-kWh
+BatteryDispatch
 0
-0
+2
 1
 1
 1
@@ -629,10 +794,11 @@ Default
 batt_cycle_cost_choice
 3
 1
+Battery cycle cost choice
  
  
- 
-0
+34
+Calculate automatically|Enter cost
 0
 1
 1
@@ -743,7 +909,7 @@ BatteryDispatch
 MonthlyFactor
 
 0
-1172
+1408
 on_load{'Battery Dispatch Behind the Meter'}=define()
 {	
 	toggle_dispatch();
@@ -757,6 +923,11 @@ on_load{'Battery Dispatch Behind the Meter'}=define()
 
 on_change{'batt_dispatch_choice'}=define(){toggle_dispatch();};
 on_change{'batt_target_choice'} = define(){toggle_dispatch_target();};
+
+on_change{'batt_cycle_cost_choice'}=define()
+{
+	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
+};
 
 function toggle_dispatch_target()
 {
@@ -775,6 +946,13 @@ function toggle_custom_dispatch()
 	else
 		enable('batt_custom_dispatch', true);
 }
+
+function enable_auto_inputs_btm(on_off)
+{
+	enable('batt_cycle_cost_choice', on_off);
+	enable('batt_cycle_cost', on_off);
+}
+
 function enable_target_inputs(on_off)
 {
 	if (!on_off)
