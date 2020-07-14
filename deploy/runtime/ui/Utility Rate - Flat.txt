@@ -1,6 +1,6 @@
 Utility Rate - Flat
-1422
-522
+1418
+576
 25
 GroupBox
 
@@ -51,7 +51,7 @@ Width
 565
 Height
 3
-75
+100
 Tool Tip
 5
 0
