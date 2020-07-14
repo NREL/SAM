@@ -1520,44 +1520,14 @@ Max
 Min
 3
 1
-GroupBox
-
-1
-8
-Name
-5
-8
-object 4
-X
-3
-6
-Y
-3
-3
-Width
-3
-1042
-Height
-3
-546
-Tool Tip
-5
-0
-Caption
-5
-15
-Manual Dispatch
-Bold
-2
-1
 Label
 
 1
 13
 Name
 5
-8
-object 7
+17
+lbl_copy_schedule
 X
 3
 522
@@ -1596,6 +1566,36 @@ AlignRight
 2
 0
 AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+546
+Tool Tip
+5
+0
+Caption
+5
+15
+Manual Dispatch
+Bold
 2
 1
 Label
@@ -2898,7 +2898,7 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-6284
+6298
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	show_label();
@@ -2960,12 +2960,10 @@ function behind_the_meter()
 
 function show_label()
 {
-	// behind the meter
-	btm_label = false;
-	if (behind_the_meter())
-		btm_label = true;
-		
-	show('batt_manual_dispatch_label', btm_label);
+	is_merchant = ( financing() == 'Merchant Plant' ); 
+	show('lbl_copy_schedule', !is_merchant );
+	show('btn_copy_schedule', !is_merchant );
+	refresh();
 }
 
 function toggle_discharge_percent()
