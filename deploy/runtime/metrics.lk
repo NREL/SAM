@@ -11,11 +11,6 @@ function rescom_metrics()
 	metric( 'adjusted_installed_cost', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'first_cost', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'loan_amount', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	
-	// testing
-	metric( 'lnte_real', {'label'='real leavelize not to exceed (NTE)', 'mode'='f', 'deci'='2', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2', 'tableName'='Table2' } );
-	metric( 'lnte_nom', {'label'='nominal leavelize not to exceed (NTE)', 'mode'='f', 'deci'='2', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2', 'tableName'='Table2' } );
-
 }
 
 function third_party_metrics()
@@ -371,6 +366,8 @@ function MEwave_metrics()
 {
 	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	// second metric table example - under development
+	metric( 'device_average_power', {'label'='Average power per device', 'mode'='f', 'deci'='0', 'thousep'='true','post'='kW', 'tableName'='Table2' } );
 }
 
 function MEtidal_metrics() 
