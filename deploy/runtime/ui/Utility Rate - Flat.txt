@@ -1,7 +1,7 @@
 Utility Rate - Flat
-1422
-522
-22
+1418
+576
+25
 GroupBox
 
 1
@@ -42,16 +42,16 @@ Name
 GroupBox2
 X
 3
-12
+9
 Y
 3
-438
+465
 Width
 3
 565
 Height
 3
-75
+100
 Tool Tip
 5
 0
@@ -102,10 +102,10 @@ Name
 GroupBox7
 X
 3
-12
+9
 Y
 3
-387
+414
 Width
 3
 565
@@ -141,7 +141,7 @@ Width
 1403
 Height
 3
-170
+198
 Tool Tip
 5
 0
@@ -162,10 +162,10 @@ Name
 GroupBox9
 X
 3
-582
+579
 Y
 3
-387
+414
 Width
 3
 830
@@ -192,10 +192,10 @@ Name
 Label4
 X
 3
-615
+612
 Y
 3
-444
+471
 Width
 3
 791
@@ -378,10 +378,10 @@ Name
 rate_escalation
 X
 3
-876
+873
 Y
 3
-411
+438
 Width
 3
 75
@@ -421,10 +421,10 @@ Name
 ur_annual_min_charge
 X
 3
-261
+258
 Y
 3
-486
+513
 Width
 3
 75
@@ -479,14 +479,14 @@ CheckBox
 9
 Name
 5
-18
-ur_en_ts_sell_rate
+17
+ur_en_ts_buy_rate
 X
 3
-522
+519
 Y
 3
-273
+324
 Width
 3
 422
@@ -498,8 +498,41 @@ Tool Tip
 0
 Caption
 5
-58
-Use hourly (subhourly) buy/sell rates instead of TOU rates
+53
+Use hourly (subhourly) buy rates instead of TOU rates
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+18
+ur_en_ts_sell_rate
+X
+3
+519
+Y
+3
+300
+Width
+3
+422
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+54
+Use hourly (subhourly) sell rates instead of TOU rates
 State
 2
 0
@@ -559,10 +592,10 @@ Name
 ur_monthly_fixed_charge
 X
 3
-261
+258
 Y
 3
-405
+432
 Width
 3
 75
@@ -621,10 +654,10 @@ Name
 ur_monthly_min_charge
 X
 3
-261
+258
 Y
 3
-459
+486
 Width
 3
 75
@@ -673,6 +706,83 @@ BackColour
 TabOrder
 3
 10
+Choice
+
+1
+9
+Name
+5
+18
+ur_nm_credit_month
+X
+3
+684
+Y
+3
+267
+Width
+3
+99
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+12
+Jan
+Feb
+Mar
+Apr
+May
+Jun
+Jul
+Aug
+Sep
+Oct
+Nov
+Dec
+Selection
+3
+11
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+21
+ur_nm_credit_rollover
+X
+3
+951
+Y
+3
+234
+Width
+3
+225
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+29
+Apply credits to future bills
+State
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -683,7 +793,7 @@ Name
 ur_nm_yearend_sell_rate
 X
 3
-826
+831
 Y
 3
 234
@@ -823,10 +933,10 @@ Name
 ur_ts_buy_rate
 X
 3
-717
+714
 Y
 3
-333
+381
 Width
 3
 184
@@ -860,10 +970,10 @@ Name
 ur_ts_sell_rate
 X
 3
-717
+714
 Y
 3
-303
+351
 Width
 3
 184
@@ -888,7 +998,7 @@ TabOrder
 3
 3
 
-10
+13
 rate_escalation
 3
 2
@@ -917,6 +1027,20 @@ Electricity Rates - General
 1
 0
 Numeric
+ur_en_ts_buy_rate
+3
+1
+Enable time step buy rates
+ 
+Electricity Rates - General
+0
+1
+1
+1
+1
+1
+0
+CheckBox
 ur_en_ts_sell_rate
 3
 1
@@ -974,10 +1098,38 @@ Electricity Rates - General
 1
 0
 Numeric
+ur_nm_credit_month
+3
+1
+Month for credit rollover:
+ 
+ 
+0
+2
+1
+1
+1
+1
+0
+Default
+ur_nm_credit_rollover
+3
+1
+ 
+ 
+ 
+0
+2
+1
+1
+1
+1
+0
+Default
 ur_nm_yearend_sell_rate
 3
 1
-Sell rate for kWh credits remaining at end of year
+Sell rate for kWh credits remaining at end of specified month
 $/kWh
 Electricity Rates - General
 0
@@ -1032,10 +1184,10 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-4786
+5136
 on_load{"Utility Rate - Flat"} = define(){
 	check_configuration();
-	ur_flat_sell_rates(); // refresh when switching pages
+	ur_flat_buysell_rates(); // refresh when switching pages
 };	
 
 function check_configuration()
@@ -1054,22 +1206,30 @@ function check_configuration()
 	}
 }	
 
-function ur_flat_sell_rates()
+function ur_flat_buysell_rates()
 {	
 	eme = value("ur_metering_option");
 	enable( "ur_nm_yearend_sell_rate", eme==0 );
+	enable( "ur_nm_credit_rollover", eme==0 );
+	enable( "ur_nm_credit_month", eme==0 || eme==1 || eme==3 );
 	if ( eme==1 || eme==2 || eme==3|| eme==4)
 	{
 		enable( "ur_ts_sell_rate", true );
 		enable( "ur_ts_buy_rate", true );
 		enable( "ur_en_ts_sell_rate", true );
-		en = value("ur_en_ts_sell_rate");
-		if (en==1){
+		enable( "ur_en_ts_buy_rate", true );
+		en_sell = value("ur_en_ts_sell_rate");
+		if (en_sell==1){
 			property("ur_ec_tou_mat","HideColumn",5);
-			property("ur_ec_tou_mat","HideColumn",4);
 		}
 		else {
 			property("ur_ec_tou_mat","ShowColumn",5);
+		}
+		en_buy = value("ur_en_ts_buy_rate");
+		if (en_buy==1){
+			property("ur_ec_tou_mat","HideColumn",4);
+		}
+		else {
 			property("ur_ec_tou_mat","ShowColumn",4);
 		}
 	}
@@ -1078,19 +1238,25 @@ function ur_flat_sell_rates()
 		enable( "ur_ts_sell_rate", false );
 		enable( "ur_ts_buy_rate", false );
 		enable( "ur_en_ts_sell_rate", false );
+		enable( "ur_en_ts_buy_rate", false );
 		property("ur_ec_tou_mat","HideColumn",5);
 	}
 }
 
 on_change{'ur_en_ts_sell_rate'} = define()
 {
-	ur_flat_sell_rates();
+	ur_flat_buysell_rates();
+};
+
+on_change{'ur_en_ts_buy_rate'} = define()
+{
+	ur_flat_buysell_rates();
 };
 
 on_change{'ur_metering_option'} = define()
 {
 	check_configuration();
-	ur_flat_sell_rates();
+	ur_flat_buysell_rates();
 };
 
 on_change{'btnSaveRateData'} = define() {
@@ -1209,6 +1375,3 @@ on_change{'btnQueryOpenEI'} = define() {
 
 	msgbox("OpenEI rate applied! \n");
 };
-
-
-

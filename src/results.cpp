@@ -665,7 +665,9 @@ void ResultsViewer::Setup( Simulation *sim )
 
 	m_metrics.clear();
 	ResultsCallbackContext cc( this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing );
-		
+	
+	// Callback context uses the invoke "metric" function to add to the m_metrics collection
+
 	// first try to invoke a T/F specific callback if one exists
 	if ( lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup( "metrics", cfg->Technology + "|" + cfg->Financing ))
 		cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
@@ -680,46 +682,79 @@ void ResultsViewer::Setup( Simulation *sim )
 			cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
 	}
 	
-	if ( m_metrics.size() > 0 && m_sim->Outputs().size() > 0 )
+	if (m_metrics.size() > 0 && m_sim->Outputs().size() > 0)
 	{
-		matrix_t<wxString> metrics;
-		metrics.resize( m_metrics.size()+1, 2 );
-		metrics(0,0) = "Metric";
-		metrics(0,1) = "Value";
-
-		for( size_t i=0;i<m_metrics.size();i++ )
+		// find all tables - backwards compatible is tableName=""
+		size_t sizeTable1 = 0, sizeTable2 = 0; // need more flexible struct to set data and headers
+		for (size_t i = 0; i < m_metrics.size(); i++)
 		{
-			MetricData &md = m_metrics[i];
-			wxString slab( md.var );
-			wxString sval( "<inval>" );
+			if (m_metrics[i].tableName == "") sizeTable1++;
+			else sizeTable2++;
+		}
+		// testing separate data
+		matrix_t<wxString> metrics, metrics2;
+		metrics.resize(sizeTable1 + 1, 2);
+		metrics(0, 0) = "Metric";
+		metrics(0, 1) = "Value";
+		// this will get set by the 		ci->GetResultsViewer()->AddMetric( md );
 
-			double value = 0.0;
-			if ( VarValue *vv = m_sim->GetValue( md.var ) )
-			{
-				value = md.scale*(double)vv->Value();
-
-				int deci = md.deci;
-				if ( md.mode == 'g' ) deci = wxNUMERIC_GENERIC;
-				else if ( md.mode == 'e' ) deci = wxNUMERIC_EXPONENTIAL;
-				else if ( md.mode == 'h' ) deci = wxNUMERIC_HEXADECIMAL;
-			
-				slab = md.label;
-				if ( slab.IsEmpty() )
-					slab = m_sim->GetLabel( md.var );
-				
-				wxString post = md.post;
-				if ( post.IsEmpty() )
-					post = " " + m_sim->GetUnits( md.var );
-				
-				sval = wxNumericFormat( value, wxNUMERIC_REAL, 
-					deci, md.thousep, md.pre, post );
-			}
-
-			metrics(i+1, 0) = slab;
-			metrics(i+1, 1) = sval;
+		if (sizeTable2 > 0) {
+			metrics2.resize(sizeTable2 + 1, 2);
+			metrics2(0, 0) = "header1"; // set these from separate invoke metricstable function
+			metrics2(0, 1) = "header2";
 		}
 
-		m_metricsTable->SetData( metrics );
+		size_t iTable1 = 0, iTable2 = 0;
+		for (size_t i = 0; i < m_metrics.size(); i++)
+		{
+			MetricData& md = m_metrics[i];
+			wxString slab(md.var);
+			wxString sval("<inval>");
+
+			double value = 0.0;
+			if (VarValue* vv = m_sim->GetValue(md.var))
+			{
+				value = md.scale * (double)vv->Value();
+
+				int deci = md.deci;
+				if (md.mode == 'g') deci = wxNUMERIC_GENERIC;
+				else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
+				else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
+
+				slab = md.label;
+				if (slab.IsEmpty())
+					slab = m_sim->GetLabel(md.var);
+
+				wxString post = md.post;
+				if (post.IsEmpty())
+					post = " " + m_sim->GetUnits(md.var);
+
+				sval = wxNumericFormat(value, wxNUMERIC_REAL,
+					deci, md.thousep, md.pre, post);
+			}
+			if (md.tableName == "") {
+				metrics(iTable1 + 1, 0) = slab;
+				metrics(iTable1 + 1, 1) = sval;
+				iTable1++;
+
+			}
+			else {
+				metrics2(iTable2 + 1, 0) = slab;
+				metrics2(iTable2 + 1, 1) = sval;
+				iTable2++;
+			}
+		}
+
+		m_metricsTable->SetData(metrics);
+
+		if (sizeTable2 > 0) {
+			// testing until struct setup for separate tables
+			MetricsTable* metricsTable2 = new MetricsTable(m_summaryLayout);
+			metricsTable2->SetData(metrics2);
+			m_summaryLayout->Add(metricsTable2);
+		}
+
+
 	}
 	else if ( m_sim->Outputs().size() > 0 )
 	{
@@ -2416,7 +2451,7 @@ void TabularBrowser::UpdateNotebook(ArraySizeKey grid_size, wxString var_name)
 		wxString group = group_by_name[var_name];
 		if (grid_size.n_cols == 1)
 		{
-			m_notebook->AddPage(m_gridMap[grid_size], group, (bool)wxID_ANY);
+			m_notebook->AddPage(m_gridMap[grid_size], group, true);
 			m_tabLabelsMap[grid_size] = group;
 		}
 		else
@@ -2425,7 +2460,7 @@ void TabularBrowser::UpdateNotebook(ArraySizeKey grid_size, wxString var_name)
 			wxString units = m_sim->GetUnits(var_name);
 			if (!units.IsEmpty())
 				label = label + " (" + units + ")";
-			m_notebook->AddPage(m_gridMap[grid_size], label , (bool)wxID_ANY);
+			m_notebook->AddPage(m_gridMap[grid_size], label, true);
 			m_tabLabelsMap[grid_size] = label;
 		}
 		m_numberOfTabs++;

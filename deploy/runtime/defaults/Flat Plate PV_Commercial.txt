@@ -1,5 +1,5 @@
 1
-791
+794
 6par_aisc
 1
 1
@@ -609,7 +609,7 @@ cec_i_o_ref
 1
 1
 1
-8.36044e-11
+8.36e-11
 cec_i_sc_ref
 1
 1
@@ -2089,7 +2089,7 @@ inv_snl_c0
 1
 1
 1
--2.44558e-08
+-2.45e-08
 inv_snl_c1
 1
 1
@@ -2113,13 +2113,13 @@ inv_snl_eff_cec
 1
 1
 1
-97.5869
+97.5882
 inv_snl_eff_euro
 1
 1
 1
 1
-97.377
+97.3788
 inv_snl_idcmax
 1
 1
@@ -2441,7 +2441,8 @@ lib_is_bifacial
 lib_manufacturer
 1
 4
-0
+8
+SunPower
 library_folder_list
 1
 4
@@ -4978,6 +4979,12 @@ ur_ec_tou_mat
 3 1 1e+38 0 0.06 0 
 4 1 1e+38 0 0.05 0 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1
@@ -5029,6 +5036,18 @@ ur_name
 4
 18
 Generic Commercial
+ur_nm_credit_month
+1
+1
+1
+1
+11
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
 ur_nm_yearend_sell_rate
 1
 1

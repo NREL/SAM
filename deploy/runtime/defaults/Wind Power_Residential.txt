@@ -1,5 +1,5 @@
 1
-529
+532
 a_error_test_number
 1
 1
@@ -3246,7 +3246,7 @@ substation_cost
 1
 1
 1
-3124540
+3.12454e+06
 substructCont
 1
 1
@@ -3631,6 +3631,12 @@ ur_ec_tou_mat
 6
 1 1 1e+38 0 0.15 0 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1
@@ -3682,6 +3688,18 @@ ur_name
 4
 19
 Generic Residential
+ur_nm_credit_month
+1
+1
+1
+1
+11
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
 ur_nm_yearend_sell_rate
 1
 1
