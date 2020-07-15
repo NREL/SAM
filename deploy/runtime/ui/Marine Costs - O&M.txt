@@ -144,7 +144,63 @@ TabOrder
 3
 4294967295
 
+6
+total_bos_cost_per_kw
+3
 1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+total_capital_cost_per_kw
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+total_device_cost_per_kw
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+total_financial_cost_per_kw
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_operating_cost
 3
 1
@@ -159,11 +215,49 @@ total_operating_cost
 1
 0
 Default
+total_operations_cost_per_kw
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-100
+655
 equations {'total_operating_cost'} = define() {
 	return ${operations_cost}+${maintenance_cost};
 };
+
+equations {'total_capital_cost_per_kw'} = define() {
+	return ${total_installed_cost}/${system_capacity};
+};
+
+equations {'total_device_cost_per_kw'} = define() {
+	return ${device_costs_total}/${system_capacity};
+};
+
+equations {'total_bos_cost_per_kw'} = define() {
+	return ${balance_of_system_cost_total}/${system_capacity};
+};
+
+equations {'total_financial_cost_per_kw'} = define() {
+	return ${financial_cost_total}/${system_capacity};
+};
+
+equations {'total_operations_cost_per_kw'} = define() {
+	return ${total_operating_cost}/${system_capacity};
+};
+
+
+
+
 
 
 0

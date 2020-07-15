@@ -4107,7 +4107,7 @@ variable_prime_mover
 0
 Default
 
-8483
+8484
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -4352,6 +4352,7 @@ equations {'variable_prime_mover'} = define() {
 		return 0;
 	}
 };
+
 
 
 
