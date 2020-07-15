@@ -381,6 +381,11 @@ function MEwave_metrics()
 	metric( 'total_financial_cost_per_kw', {'label'='Total financial cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='$/kW', 'tableName'='Table3' });
 	metric( 'total_operations_cost_per_kwh', {'label'='Total operating cost (annual)', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='$/kWh', 'tableName'='Table3' });
 	metric( 'total_operations_cost_per_kw', {'label'='Total operating cost (annual)', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='$/kW', 'tableName'='Table3' });
+	metric( 'total_installed_cost_lcoe', {'label'='Total installed cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table3' });
+	metric( 'total_device_cost_lcoe', {'label'='Total device cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table3' });
+	metric( 'total_bos_cost_lcoe', {'label'='Total balance of system cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table3' });
+	metric( 'total_financial_cost_lcoe', {'label'='Total financial cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table3' });
+	metric( 'total_operations_cost_lcoe', {'label'='Total operating cost (annual)', 'mode'= 'f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table3' });
 }
 
 function MEtidal_metrics() 
