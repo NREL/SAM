@@ -373,12 +373,6 @@ cable_system_overbuild
 1
 1
 10
-capacity_factor
-1
-1
-1
-1
-23.7229
 capital_cost
 1
 1

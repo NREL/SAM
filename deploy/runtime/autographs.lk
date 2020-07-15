@@ -109,8 +109,6 @@ autographs{ 'Wind Power' } = define() { base_technology_graphs(); wind_pruf_grap
 autographs{ 'MEwave' } = define()
 {
 	agraph( 'annual_energy_distribution', 'Annual Energy Production (kWh)', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4); 
-	//sector( 'cost_percentage_array', {border = 0, holesize= 0.50, showvalues= false } );
-	//plotopt( { title = 'LCOE Contribution', showaxes = false, border = 0, pdffontface = 'ComputerModernSerif' } );
 };
 
 autographs{ 'MEtidal' } = define()
