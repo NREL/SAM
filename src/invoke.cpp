@@ -544,6 +544,9 @@ static void fcall_metric( lk::invoke_t &cxt )
 
 			if ( lk::vardata_t *x = opts.lookup("scale") )
 				md.scale = x->as_number();
+
+			if (lk::vardata_t* x = opts.lookup("tableName"))
+				md.tableName = x->as_string();
 		}
 
 		ci->GetResultsViewer()->AddMetric( md );
