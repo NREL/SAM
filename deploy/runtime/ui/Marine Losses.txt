@@ -843,7 +843,63 @@ AlignTop
 2
 1
 
-6
+10
+annual_energy
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+annual_energy_distribution
+3
+3
+ 
+ 
+ 
+0
+8
+1
+3
+1
+1
+0
+Default
+capacity_factor
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+device_average_power
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 loss_additional
 3
 1
@@ -929,13 +985,45 @@ ME Wave Losses
 5
 Numeric
 
-180
+1259
 equations{"loss_total"} = define() {
 	return ${loss_array_spacing} 
 		+ ${loss_resource_overprediction} 
 		+ ${loss_transmission} 
 		+ ${loss_downtime} 
 		+ ${loss_additional};
+};
+
+equations{ '$MIMO$ mhk modeled performance calculations' } = define() {
+	
+
+	obj = ssc_create();
+	
+	ssc_var(obj,'wave_resource_matrix', ${wave_resource_matrix});
+	ssc_var(obj,'wave_power_matrix', ${wave_power_matrix});
+	ssc_var(obj,'number_devices', ${number_devices});
+	ssc_var(obj,'system_capacity', ${system_capacity});
+	//ssc_var(obj,'devices_per_row', ${devices_per_row});
+	ssc_var(obj,'device_rated_power', ${device_rated_power});
+	
+	
+	
+	ssc_var(obj,'loss_array_spacing', ${loss_array_spacing});
+	ssc_var(obj,'loss_resource_overprediction', ${loss_resource_overprediction});
+	ssc_var(obj,'loss_transmission', ${loss_transmission});
+	ssc_var(obj,'loss_downtime', ${loss_downtime});
+	ssc_var(obj,'loss_additional', ${loss_additional});
+	
+
+	success = ssc_exec(obj, 'mhk_wave');
+	//msgbox(success);
+	
+	${device_average_power} = ssc_var( obj, 'device_average_power' );
+	${annual_energy} = ssc_var( obj, 'annual_energy' );
+	${capacity_factor} = ssc_var( obj, 'capacity_factor' );
+	${annual_energy_distribution} = ssc_var( obj, 'annual_energy_distribution' );
+
+	ssc_free(obj);
 };
 
 2255
