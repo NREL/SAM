@@ -2498,6 +2498,9 @@ erection_cost
 2174151
 est_bos_cost
 1
+1
+1
+1
 0
 est_turbine_cost
 1

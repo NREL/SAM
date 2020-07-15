@@ -4114,12 +4114,7 @@ ur_desc_is_shown
 ur_description
 1
 4
-168
-APPLICATION
-This rate schedule is applicable to all Standard Offer and Direct Access customers whose Average Monthly Maximum Demand is greater than 400 kW per month.
-
-
-
+0
 ur_ec_is_shown
 1
 1

@@ -1843,6 +1843,9 @@ escal_other
 0
 est_bos_cost
 1
+1
+1
+1
 0
 est_turbine_cost
 1
@@ -3246,7 +3249,7 @@ substation_cost
 1
 1
 1
-3.12454e+06
+3124540
 substructCont
 1
 1

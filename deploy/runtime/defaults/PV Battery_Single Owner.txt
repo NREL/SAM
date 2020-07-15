@@ -1121,7 +1121,7 @@ bos_equip_total
 1
 1
 1
-4.00018e+06
+4000180
 calculated_dcac_ratio
 1
 1
@@ -2911,7 +2911,7 @@ install_labor_total
 1
 1
 1
-2.60012e+06
+2600120
 install_margin_fixed
 1
 1
@@ -2935,7 +2935,7 @@ install_margin_total
 1
 1
 1
-1.20005e+06
+1200050
 installed_per_capacity
 1
 1
@@ -3741,7 +3741,7 @@ inverter_total
 1
 1
 1
-1.20005e+06
+1200050
 inverterarray_power
 1
 1
@@ -4138,7 +4138,7 @@ module_total
 1
 1
 1
-7.60034e+06
+7600340
 module_width
 1
 1
@@ -6373,7 +6373,7 @@ total_indirect_cost
 1
 1
 1
-4.32719e+06
+4327190
 total_installed_cost
 1
 1
@@ -6625,8 +6625,7 @@ ur_desc_is_shown
 ur_description
 1
 4
-5
-empty
+0
 ur_ec_is_shown
 1
 1
