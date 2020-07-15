@@ -30,7 +30,7 @@
 		a. Runners.csv
 		b. Headers.csv
 		c. Loop.csv
-		d. SGS.csv
+		d. TES.csv
 
 	NOTE: The interconnects need to be in ascending order in their file.
 	
@@ -49,13 +49,13 @@ intc_def_file = input_dir + '/' + 'molten-salt-trough-interconnect-definitions.c
 runner_file = output_dir + '/' + 'Runners.csv';
 header_file = output_dir + '/' + 'Headers.csv';
 loop_file = output_dir + '/' + 'Loop.csv';
-sgs_file = output_dir + '/' + 'SGS.csv';
+tes_file = output_dir + '/' + 'TES.csv';
 
 molten_salt_trough = true;
 custom_tes_losses = true;
 custom_pipe_sizes = false;
 
-check_for_open_files([runner_file, header_file, loop_file, sgs_file]);
+check_for_open_files([runner_file, header_file, loop_file, tes_file]);
 
 load_defaults();
 
@@ -63,26 +63,28 @@ import_and_set_interconnects(intc_cpnt_file, intc_def_file);
 
 if (molten_salt_trough) {
 	set( 'T_loop_out', 430 );
-	set( 'combo_htf_type', 0 );  //field fluid: Hitec Solar Salt
-	set( 'Fluid', 18 );   // I don't this actually does anything, need the above
+	set( 'combo_htf_type', 3 );  //field fluid: 0 = Hitec Solar Salt, 3 = Therminol VP-1
+	set( 'Fluid', 21 );   // I don't this actually does anything, need the above
+	set( 'combo_tes_htf_type', 3 );  //tes fluid: 0 = Hitec Solar Salt, 3 = Therminol VP-1
+	set( 'store_fluid', 21);	// 18 = Hitec Solar Salt , 21 = Therminol VP-1 -> probably doesn't do anything
 	set( 'is_hx', 0 );
 	set( 'V_tank_hot_ini', 1221.9 );
 	set( 'vol_tank', 24438 );
 	set( 'tanks_in_parallel', 0 );
 	set( 'has_hot_tank_bypass', 1 );
 	set( 'T_tank_hot_inlet_min', 400 );
-	set( 'sgs_lengths', [30, 90, 100, 120, 30, 30, 90, 80, 80, 120, 80] );
+	set( 'tes_lengths', [30, 90, 100, 120, 30, 30, 90, 80, 80, 120, 80] );
 }
 
 if (custom_tes_losses) {
-	set( 'custom_tes_p_loss', 1 );   // TES/SGS pipe losses from lengths and k's
+	set( 'custom_tes_p_loss', 1 );   // TES pipe losses from lengths and k's
 	set( 'k_tes_loss_coeffs', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] );
 }
 
 if (custom_pipe_sizes) {
 	set( 'custom_sf_pipe_sizes', 1 );    // read from Runner.csv and Header.csv
-	set( 'custom_sgs_pipe_sizes', 1 );   // read from SGS.csv
-	import_pipe_sizes(runner_file, header_file, sgs_file);
+	set( 'custom_tes_pipe_sizes', 1 );   // read from TES.csv
+	import_pipe_sizes(runner_file, header_file, tes_file);
 }
 
 errors='';
@@ -91,4 +93,4 @@ ok = simulate(errors,1);  // simulate and update UI with results
 if ( !ok ) { outln ( errors ); }
 outln("Finished simulation");
 
-write_output_files(runner_file, header_file, loop_file, sgs_file);
+write_output_files(runner_file, header_file, loop_file, tes_file);

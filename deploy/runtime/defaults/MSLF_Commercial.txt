@@ -1,5 +1,5 @@
 1
-742
+745
 A_aperture
 1
 1
@@ -1203,7 +1203,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4.4626e+06
+4462600
 csp.mslf.cost.power_plant
 1
 1
@@ -4589,6 +4589,12 @@ ur_ec_tou_mat
 3 1 1e+38 0 0.064842 0.064842 
 4 1 1e+38 0 0.052882 0.052882 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1
@@ -4641,6 +4647,18 @@ ur_name
 4
 25
 Arizona Public Service Co
+ur_nm_credit_month
+1
+1
+1
+1
+11
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
 ur_nm_yearend_sell_rate
 1
 1
@@ -4654,8 +4672,8 @@ ur_phase_wiring
 ur_ratedata_filename
 1
 4
-94
-C:/Projects/SAM/Documentation/UtilityRates/Flat_rate_updates_2016.3.6/CSP_com_UR_2015.6.30.csv
+24
+CSP_com_UR_2015.6.30.csv
 ur_schedule_name
 1
 4

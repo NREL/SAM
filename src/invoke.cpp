@@ -762,11 +762,12 @@ void fcall_value( lk::invoke_t &cxt )
 		{
 			if ( vv->Read( cxt.arg(1), false ) ){
 			    bool trigger = true;
-			    if (cxt.arg_count() == 3 )
+			    if (cxt.arg_count() == 3 ) {
 			        trigger = cxt.arg(2).as_boolean();
-				if (trigger){
-				    cc.GetCase().VariableChanged( name );
-				}
+			    }
+			    if (trigger) {
+			      cc.GetCase().VariableChanged( name );
+			    }
 			}
 			else
 				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
@@ -784,7 +785,7 @@ void fcall_is_assigned( lk::invoke_t &cxt )
 
     CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
     wxString name = cxt.arg(0).as_string();
-    if ( VarValue *vv = cc.GetCase().BaseCase().GetValue( name ) )
+    if ( cc.GetCase().BaseCase().GetValue( name ) )
         cxt.result().assign(1);
     else
         cxt.result().assign((double)0);
@@ -3362,11 +3363,11 @@ lk::vardata_t sam_async_thread( lk::invoke_t cxt, lk::bytecode lkbc, lk_string l
 		return ret_hash;
 	}
 	else
-		bc.constants[ndx_c] = input_value;
+	  bc.constants[ndx_c] = input_value;
 
-		myvm.load(&bc);
-		myvm.initialize(&myenv);
-//
+	myvm.load(&bc);
+	myvm.initialize(&myenv);
+
 	end = std::chrono::system_clock::now();
 	diff = std::chrono::duration_cast < std::chrono::milliseconds > (end - start).count();
 	vminit_time = " vm init time: " + std::to_string(diff) + "ms ";
@@ -4673,8 +4674,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     if (!lk::json_read(curl.GetDataAsString(), results, &err))
         cxt.result().assign("<ReOpt-error> " + err);
 
-	if (auto err_vd = results.lookup("messages"))
-		throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
+    if (auto err_vd = results.lookup("messages"))
+        throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
     if (auto err_vd = results.lookup("error"))
         throw lk::error_t(err_vd->as_string() );
 

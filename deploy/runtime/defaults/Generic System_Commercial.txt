@@ -1,5 +1,5 @@
 1
-268
+271
 adjust
 1
 5
@@ -386,7 +386,7 @@ first_year_output
 1
 1
 1
-35591980
+35591988
 first_year_output_peak
 1
 1
@@ -404,7 +404,7 @@ genericsys.cost.contingency
 1
 1
 1
-2912140
+2912136
 genericsys.cost.contingency_percent
 1
 1
@@ -422,7 +422,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-6115480
+6.11549e+06
 genericsys.cost.epc.percent
 1
 1
@@ -434,7 +434,7 @@ genericsys.cost.epc.total
 1
 1
 1
-6115480
+6.11549e+06
 genericsys.cost.installed_per_capacity
 1
 1
@@ -458,7 +458,7 @@ genericsys.cost.plant_scaled
 1
 1
 1
-58242708
+58242720
 genericsys.cost.plm.fixed
 1
 1
@@ -494,7 +494,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-2446190
+2.44619e+06
 genericsys.cost.sales_tax.value
 1
 1
@@ -1243,7 +1243,7 @@ property_assessed_value
 1
 1
 1
-71856944
+71856960
 property_tax_rate
 1
 1
@@ -1357,7 +1357,7 @@ system_use_lifetime_output
 1
 1
 1
-1
+0
 system_use_recapitalization
 1
 1
@@ -1369,19 +1369,19 @@ total_direct_cost
 1
 1
 1
-61154844
+61154856
 total_indirect_cost
 1
 1
 1
 1
-10702098
+10702100
 total_installed_cost
 1
 1
 1
 1
-71856944
+71856960
 ui_annual_load
 1
 1
@@ -1393,13 +1393,13 @@ ui_loan_amount
 1
 1
 1
-43114168
+43114176
 ui_net_capital_cost
 1
 1
 1
 1
-71856944
+71856960
 ui_wacc
 1
 1
@@ -1568,6 +1568,12 @@ ur_ec_tou_mat
 3 1 1e+38 0 0.06 0 
 4 1 1e+38 0 0.05 0 
 
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
 ur_en_ts_sell_rate
 1
 1
@@ -1619,6 +1625,18 @@ ur_name
 4
 18
 Generic Commercial
+ur_nm_credit_month
+1
+1
+1
+1
+11
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
 ur_nm_yearend_sell_rate
 1
 1
