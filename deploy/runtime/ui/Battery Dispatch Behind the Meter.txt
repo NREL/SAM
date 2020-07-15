@@ -1,7 +1,7 @@
 Battery Dispatch Behind the Meter
 1068
 467
-20
+21
 GroupBox
 
 1
@@ -303,6 +303,54 @@ Selection
 TabOrder
 3
 4
+Label
+
+1
+13
+Name
+5
+27
+batt_cycle_cost_description
+X
+3
+741
+Y
+3
+357
+Width
+3
+290
+Height
+3
+76
+Tool Tip
+5
+0
+Caption
+5
+119
+The price signal forecast option cycles the battery only when the value of the cycling is greater than the cycle cost. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Divider
 
 1
@@ -475,7 +523,7 @@ Peak shaving one-day look behind
 Input grid power targets
 Input battery power targets
 Manual dispatch
-Price Signal Forecast
+Price signal forecast
 ShowCaptions
 2
 1
@@ -909,7 +957,7 @@ BatteryDispatch
 MonthlyFactor
 
 0
-1408
+1432
 on_load{'Battery Dispatch Behind the Meter'}=define()
 {	
 	toggle_dispatch();
@@ -950,7 +998,7 @@ function toggle_custom_dispatch()
 function enable_auto_inputs_btm(on_off)
 {
 	enable('batt_cycle_cost_choice', on_off);
-	enable('batt_cycle_cost', on_off);
+	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
 }
 
 function enable_target_inputs(on_off)
