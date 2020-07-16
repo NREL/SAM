@@ -2991,7 +2991,7 @@ function enable_itemized_eng()
 	enable('profit_eng_cost',itemized_value==1);
 	enable('project_certification_cost',itemized_value==1);
 	enable('health_safety_and_environmental_monitoring_cost',itemized_value==1);
-	enable('heatlh_safety_and_environmental_monitoring_cost_total',itemized_value==1);
+	enable('health_safety_and_environmental_monitoring_cost_total',itemized_value==1);
 	enable('detailed_cost_choice_health_safety',itemized_value==1);
 	enable('health_and_safety_monitoring_cost',itemized_value==1);
 	enable('environmental_monitoring_cost',itemized_value==1);

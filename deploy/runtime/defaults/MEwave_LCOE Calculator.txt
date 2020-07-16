@@ -1,5 +1,5 @@
 1
-635
+639
 accumulators_cost
 1
 1
@@ -991,7 +991,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5.65588e+06
+5655880
 eng_and_mgmt_cost_input
 1
 1
@@ -1009,7 +1009,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-5.65588e+06
+5655880
 eng_and_mgmt_cost_total
 1
 1
@@ -1117,7 +1117,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-1.60345e+06
+1603450
 export_cable_system_cost_total
 1
 1
@@ -1248,7 +1248,7 @@ gearbox_cost_total
 1
 1
 1
-1
+0
 gearbox_cost_total_check
 1
 1
@@ -1260,7 +1260,7 @@ gears_cost
 1
 1
 1
-1
+0
 generation_planning_and_integration_cost
 1
 1
@@ -1326,7 +1326,7 @@ hydraulic_drivetrain_cost_total
 1
 1
 1
-1
+0
 hydraulic_drivetrain_cost_total_check
 1
 1
@@ -1350,7 +1350,7 @@ hydraulic_reservoir_cost
 1
 1
 1
-1
+0
 incentives_cost
 1
 1
@@ -1380,7 +1380,7 @@ insurance_during_construction_cost
 1
 1
 1
-3.43091e+06
+3430910
 insurance_during_construction_cost_input
 1
 1
@@ -1398,7 +1398,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3.43091e+06
+3430910
 insurance_operations_cost
 1
 1
@@ -1501,6 +1501,12 @@ itemized_check_operations
 1
 1
 2
+itemized_check_other_financial
+1
+1
+1
+1
+1
 itemized_check_other_infras
 1
 1
@@ -1711,7 +1717,7 @@ maintenance_cost
 1
 1
 1
-3.65828e+06
+3658280
 maintenance_cost_input
 1
 1
@@ -1729,7 +1735,7 @@ maintenance_cost_modeled
 1
 1
 1
-3.65828e+06
+3658280
 maintenance_cost_total
 1
 1
@@ -2274,7 +2280,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-2.03767e+06
+2037670
 other_elec_infra_cost_total_display
 1
 1
@@ -2305,12 +2311,30 @@ other_export_cable_system_cost
 1
 1
 0
+other_financial_cost
+1
+1
+1
+1
+0
+other_financial_cost_input
+1
+1
+1
+1
+0
 other_financial_cost_method
 1
 1
 1
 1
 2
+other_financial_cost_modeled
+1
+1
+1
+1
+0
 other_financing_cost
 1
 1
@@ -3128,7 +3152,7 @@ site_access_port_staging_cost
 1
 1
 1
-3.77401e+06
+3774010
 site_access_port_staging_cost_input
 1
 1
@@ -3146,7 +3170,7 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-3.77401e+06
+3774010
 site_access_port_staging_cost_total
 1
 1

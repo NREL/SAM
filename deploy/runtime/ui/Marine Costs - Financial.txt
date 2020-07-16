@@ -1,69 +1,7 @@
 Marine Costs - Financial
 824
 898
-58
-Numeric
-
-1
-17
-Name
-5
-0
-X
-3
-378
-Y
-3
-849
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
+57
 Label
 
 1
@@ -511,69 +449,6 @@ Numeric
 17
 Name
 5
-36
-insurance_during_construction_cost50
-X
-3
-579
-Y
-3
-849
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
 40
 insurance_during_construction_cost_input
 X
@@ -582,68 +457,6 @@ X
 Y
 3
 459
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-42
-insurance_during_construction_cost_input51
-X
-3
-477
-Y
-3
-849
 Width
 3
 90
@@ -843,14 +656,14 @@ Label
 13
 Name
 5
-40
-itemized_check_construction_insurance652
+26
+itemized_check_contingency
 X
 3
-48
+54
 Y
 3
-819
+315
 Width
 3
 90
@@ -890,14 +703,14 @@ Label
 13
 Name
 5
-26
-itemized_check_contingency
+30
+itemized_check_other_financial
 X
 3
-54
+48
 Y
 3
-315
+819
 Width
 3
 90
@@ -1996,6 +1809,131 @@ AlignRight
 AlignTop
 2
 0
+Numeric
+
+1
+17
+Name
+5
+20
+other_financial_cost
+X
+3
+579
+Y
+3
+849
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+26
+other_financial_cost_input
+X
+3
+477
+Y
+3
+849
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Choice
 
 1
@@ -2028,6 +1966,69 @@ Use Modeled Value
 Selection
 3
 0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+28
+other_financial_cost_modeled
+X
+3
+378
+Y
+3
+849
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
 TabOrder
 3
 4294967295
@@ -2164,68 +2165,6 @@ Name
 5
 30
 project_contingency_cost_input
-X
-3
-480
-Y
-3
-345
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-32
-project_contingency_cost_input33
 X
 3
 480
@@ -2905,7 +2844,7 @@ AlignTop
 2
 0
 
-22
+26
 carrying_cost_during_construction_cost
 3
 1
@@ -3046,6 +2985,20 @@ itemized_check_contingency
 1
 0
 Default
+itemized_check_other_financial
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 itemized_check_reserve_accounts
 3
 1
@@ -3074,6 +3027,34 @@ maintenance_reserve_account_cost
 1
 0
 Default
+other_financial_cost
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+other_financial_cost_input
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 other_financial_cost_method
 3
 1
@@ -3087,6 +3068,20 @@ other_financial_cost_method
 1
 1
 2
+Default
+other_financial_cost_modeled
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
 Default
 other_reserve_account_cost
 3
@@ -3215,7 +3210,7 @@ total_installed_cost
 0
 Default
 
-2097
+2554
 equations {'total_installed_cost'} = define() {
 	return ${financial_cost_total} + ${device_costs_total}+${balance_of_system_cost_total};
 };
@@ -3288,7 +3283,7 @@ equations {'itemized_check_reserve_accounts'} = define() {
 
 equations {'financial_cost_total'} = define() {
 	return ${project_contingency_budget_cost}+${insurance_during_construction_cost}+
-		${reserve_accounts_cost};
+		${reserve_accounts_cost}+${other_financial_cost};
 };
 
 equations {'total_installed_cost'} = define() {
@@ -3296,6 +3291,27 @@ equations {'total_installed_cost'} = define() {
 		${financial_cost_total};
 };
 
+equations {'itemized_check_other_financial'} = define() {
+	return ?${other_financial_cost_method}
+			[
+				0,
+				0,
+				1
+			];
+};
+
+equations {'other_financial_cost_modeled'} = define() {
+	return 0;
+};
+
+equations {'other_financial_cost'} = define() {
+	return ?${other_financial_cost_method}
+			[
+				${other_financial_cost_input}*${system_capacity},
+				${other_financial_cost_input},
+				${other_financial_cost_modeled}
+			];
+};
 
 
 
@@ -3303,7 +3319,9 @@ equations {'total_installed_cost'} = define() {
 
 
 
-1778
+
+
+2120
 on_load{'Marine Costs - Financial'} = define() {
 	on_change{'itemized_check_contingency'};
 	enable_contingency();
@@ -3311,6 +3329,8 @@ on_load{'Marine Costs - Financial'} = define() {
 	enable_construction_insurance();
 	on_change{'itemized_check_reserve_accounts'};
 	enable_reserve_accounts();
+	on_change{'itemized_check_other_financial'};
+	enable_other_financial();
 };
 
 on_change{'itemized_check_contingency'} = define() {
@@ -3337,8 +3357,6 @@ function enable_construction_insurance()
 	refresh();
 }
 
-
-
 on_change{'itemized_check_reserve_accounts'} = define() {
 	enable_reserve_accounts();
 };
@@ -3357,6 +3375,18 @@ function enable_reserve_accounts()
 	show('reserve_accounts_cost_input',(itemized_value_reserve==0 || itemized_value_reserve==2));
 	show('reserve_input_label',(itemized_value_reserve==0 || itemized_value_reserve==2));
 	
+	
+	refresh();
+}
+
+on_change{'itemized_check_other_financial'} = define() {
+	enable_other_financial();
+};
+
+function enable_other_financial() 
+{
+	itemized_value_other = value('itemized_check_other_financial');
+	enable('other_financial_cost_input',itemized_value_other!=1);
 	
 	refresh();
 }

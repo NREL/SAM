@@ -1513,7 +1513,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
