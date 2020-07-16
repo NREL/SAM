@@ -664,6 +664,8 @@ void ResultsViewer::Setup( Simulation *sim )
 	m_metricsTable->Clear();
 
 	m_metrics.clear();
+	m_metricRows.clear();
+	m_metricTables.clear();
 	ResultsCallbackContext cc( this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing );
 	
 	// Callback context uses the invoke "metric" function to add to the m_metrics collection
@@ -684,27 +686,10 @@ void ResultsViewer::Setup( Simulation *sim )
 	
 	if (m_metrics.size() > 0 && m_sim->Outputs().size() > 0)
 	{
-		// find all tables - backwards compatible is tableName=""
-		size_t sizeTable1 = 0, sizeTable2 = 0; // need more flexible struct to set data and headers
-		for (size_t i = 0; i < m_metrics.size(); i++)
-		{
-			if (m_metrics[i].tableName == "") sizeTable1++;
-			else sizeTable2++;
-		}
-		// testing separate data
-		matrix_t<wxString> metrics, metrics2;
-		metrics.resize(sizeTable1 + 1, 2);
+		matrix_t<wxString> metrics;
+		metrics.resize(m_metrics.size() + 1, 2);
 		metrics(0, 0) = "Metric";
 		metrics(0, 1) = "Value";
-		// this will get set by the 		ci->GetResultsViewer()->AddMetric( md );
-
-		if (sizeTable2 > 0) {
-			metrics2.resize(sizeTable2 + 1, 2);
-			metrics2(0, 0) = "header1"; // set these from separate invoke metricstable function
-			metrics2(0, 1) = "header2";
-		}
-
-		size_t iTable1 = 0, iTable2 = 0;
 		for (size_t i = 0; i < m_metrics.size(); i++)
 		{
 			MetricData& md = m_metrics[i];
@@ -732,28 +717,77 @@ void ResultsViewer::Setup( Simulation *sim )
 				sval = wxNumericFormat(value, wxNUMERIC_REAL,
 					deci, md.thousep, md.pre, post);
 			}
-			if (md.tableName == "") {
-				metrics(iTable1 + 1, 0) = slab;
-				metrics(iTable1 + 1, 1) = sval;
-				iTable1++;
-
-			}
-			else {
-				metrics2(iTable2 + 1, 0) = slab;
-				metrics2(iTable2 + 1, 1) = sval;
-				iTable2++;
-			}
+			metrics(i + 1, 0) = slab;
+			metrics(i + 1, 1) = sval;
 		}
 
 		m_metricsTable->SetData(metrics);
 
-		if (sizeTable2 > 0) {
-			// testing until struct setup for separate tables
-			MetricsTable* metricsTable2 = new MetricsTable(m_summaryLayout);
-			metricsTable2->SetData(metrics2);
-			m_summaryLayout->Add(metricsTable2);
-		}
 
+		// process any additional tables and associated rows
+		if (m_metricTables.size() > 0 && m_metricRows.size() > 0) {
+			// rewrite as lambda
+			std::vector<int> numTableRows(m_metricTables.size());
+			for (size_t iRow = 0; iRow < m_metricRows.size(); iRow++) {
+				for (size_t iTable = 0; iTable < m_metricTables.size(); iTable++) {
+					if (m_metricRows[iRow].tableName == m_metricTables[iTable].tableName)
+						numTableRows[iTable]++;
+				}
+			}
+
+
+			for (size_t iTable = 0; iTable < m_metricTables.size(); iTable++) {
+				if (numTableRows[iTable] > 0 && m_metricTables[iTable].headers.size() > 0) {
+
+					size_t ncols = m_metricTables[iTable].headers.size();
+					matrix_t<wxString> metrics;
+					metrics.resize(numTableRows[iTable] + (size_t)1, ncols);
+					for (size_t icol=0; icol < ncols; icol++) 
+						metrics(0, icol) = m_metricTables[iTable].headers[icol];
+
+					size_t iMetrics = 0;
+					for (size_t iRow = 0; iRow < m_metricRows.size(); iRow++)
+					{
+						if (m_metricTables[iTable].tableName == m_metricRows[iRow].tableName) {
+							MetricRow& mr = m_metricRows[iRow];
+							wxString slab(mr.label);
+							metrics(iMetrics + 1, 0) = slab;
+
+							for (size_t icol = 0; icol < mr.metrics.size(); icol++) {
+
+								wxString sval("<inval>");
+
+								double value = 0.0;
+								if (VarValue* vv = m_sim->GetValue(mr.metrics[icol].var))
+								{
+									value = mr.metrics[icol].scale * vv->Value();
+
+									int deci = mr.metrics[icol].deci;
+									if (mr.metrics[icol].mode == 'g') deci = wxNUMERIC_GENERIC;
+									else if (mr.metrics[icol].mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
+									else if (mr.metrics[icol].mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
+
+									wxString post = mr.metrics[icol].post;
+									if (post.IsEmpty())
+										post = " " + m_sim->GetUnits(mr.metrics[icol].var);
+
+									sval = wxNumericFormat(value, wxNUMERIC_REAL,
+										deci, mr.metrics[icol].thousep, mr.metrics[icol].pre, post);
+								}
+								metrics(iMetrics + 1, icol+1) = sval;
+							}
+							iMetrics++;
+						}
+					}
+
+					if (iMetrics > 0) {
+						MetricsTable* metricsTable = new MetricsTable(m_summaryLayout);
+						metricsTable->SetData(metrics);
+						m_summaryLayout->Add(metricsTable);
+					}
+				}
+			}
+		}
 
 	}
 	else if ( m_sim->Outputs().size() > 0 )
