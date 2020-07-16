@@ -1,5 +1,11 @@
 1
-145
+153
+annual_cumulative_energy_distribution
+1
+2
+1
+1
+4.94066e-323
 annual_energy
 1
 1
@@ -33,6 +39,12 @@ annual_energy_distribution
 9.25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 9.75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 
+annual_energy_distribution_tidal
+1
+2
+1
+1
+0
 array_cable_system_cost
 1
 1
@@ -202,6 +214,12 @@ device_average_power
 1
 1
 72.9542
+device_rated_capacity
+1
+1
+1
+1
+0
 device_rated_power
 1
 1
@@ -267,7 +285,7 @@ export_cable_system_cost
 1
 1
 1
-3629690
+3.62969e+06
 export_cable_system_cost_input
 1
 1
@@ -285,7 +303,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-3629690
+3.62969e+06
 fixed_charge_rate
 1
 1
@@ -309,7 +327,7 @@ insurance_during_construction_cost
 1
 1
 1
-4028060
+4.02806e+06
 insurance_during_construction_input
 1
 1
@@ -327,7 +345,7 @@ insurance_during_construction_modeled
 1
 1
 1
-4028060
+4.02806e+06
 inter_array_cable_length
 1
 1
@@ -675,7 +693,7 @@ site_access_port_staging_cost
 1
 1
 1
-4430870
+4.43087e+06
 site_access_port_staging_cost_input
 1
 1
@@ -693,7 +711,7 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4430870
+4.43087e+06
 structural_assembly_cost
 1
 1
@@ -810,6 +828,18 @@ total_bos_cost
 1
 1
 161266448
+total_bos_cost_per_kwh
+1
+1
+1
+1
+2.71336
+total_capital_cost_per_kwh
+1
+1
+1
+1
+6.77733
 total_cost_per_kw
 1
 1
@@ -822,6 +852,12 @@ total_device_cost
 1
 1
 252415552
+total_device_cost_per_kwh
+1
+1
+1
+1
+4.24697
 total_elec_infra_cost
 1
 1
@@ -834,6 +870,12 @@ total_financial_cost
 1
 1
 36252560
+total_financial_cost_per_kwh
+1
+1
+1
+1
+0.60996
 total_installed_cost
 1
 1
@@ -846,6 +888,12 @@ total_operating_cost
 1
 1
 17704912
+total_operations_cost_per_kwh
+1
+1
+1
+1
+0.29789
 total_rated_capacity
 1
 1

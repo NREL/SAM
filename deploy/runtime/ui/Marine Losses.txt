@@ -1,7 +1,7 @@
 Marine Losses
 604
 827
-27
+18
 GroupBox
 
 1
@@ -152,241 +152,6 @@ Additional Losses
 Bold
 2
 1
-Label
-
-1
-13
-Name
-5
-13
-annual_energy
-X
-3
-54
-Y
-3
-771
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-26
-annual_energy_distribution
-X
-3
-222
-Y
-3
-798
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-15
-capacity_factor
-X
-3
-156
-Y
-3
-786
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-20
-device_average_power
-X
-3
-135
-Y
-3
-765
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-18
-device_rated_power
-X
-3
-492
-Y
-3
-777
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 GroupBox
 
 1
@@ -795,55 +560,8 @@ Label
 13
 Name
 5
-14
-number_devices
-X
-3
-528
-Y
-3
-777
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-8
-object 7
+9
+object 71
 X
 3
 39
@@ -1082,53 +800,6 @@ Label
 13
 Name
 5
-15
-system_capacity
-X
-3
-462
-Y
-3
-795
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 13
 wave_add_loss
 X
@@ -1171,102 +842,22 @@ AlignRight
 AlignTop
 2
 1
-Label
 
-1
 13
-Name
-5
-17
-wave_power_matrix
-X
+annual_cumulative_energy_distribution
 3
-468
-Y
-3
-771
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
 2
+ 
+ 
+ 
 0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
+8
 1
-13
-Name
-5
-20
-wave_resource_matrix
-X
-3
-393
-Y
-3
-780
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
 2
+1
+1
 0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-
-10
+Default
 annual_energy
 3
 1
@@ -1295,6 +886,20 @@ annual_energy_distribution
 1
 0
 Default
+annual_energy_distribution_tidal
+3
+2
+ 
+ 
+ 
+0
+8
+1
+2
+1
+1
+0
+Default
 capacity_factor
 3
 1
@@ -1310,6 +915,20 @@ capacity_factor
 0
 Default
 device_average_power
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+device_rated_capacity
 3
 1
  
@@ -1408,7 +1027,7 @@ ME Wave Losses
 5
 Numeric
 
-1258
+2490
 equations{"loss_total"} = define() {
 	return ${loss_array_spacing} 
 		+ ${loss_resource_overprediction} 
@@ -1417,37 +1036,73 @@ equations{"loss_total"} = define() {
 		+ ${loss_additional};
 };
 
-equations{ '$MIMO$ mhk modeled performance calculations' } = define() {
+equations{ '$MIMO$ mhk modeled wave performance calculations' } = define() {
+
+	tech = technology();
+	if (tech == 'MEwave') 
+	{
+		obj = ssc_create();
+		
+		ssc_var(obj,'wave_resource_matrix', ${wave_resource_matrix});
+		ssc_var(obj,'wave_power_matrix', ${wave_power_matrix});
+		ssc_var(obj,'number_devices', ${number_devices});
+		ssc_var(obj,'system_capacity', ${system_capacity});
+		//ssc_var(obj,'devices_per_row', ${devices_per_row});
+		ssc_var(obj,'device_rated_power', ${device_rated_power});
+	
+	
+	
+		ssc_var(obj,'loss_array_spacing', ${loss_array_spacing});
+		ssc_var(obj,'loss_resource_overprediction', ${loss_resource_overprediction});
+		ssc_var(obj,'loss_transmission', ${loss_transmission});
+		ssc_var(obj,'loss_downtime', ${loss_downtime});
+		ssc_var(obj,'loss_additional', ${loss_additional});
 	
 
-	obj = ssc_create();
+		success = ssc_exec(obj, 'mhk_wave');
+		//msgbox(success);
 	
-	ssc_var(obj,'wave_resource_matrix', ${wave_resource_matrix});
-	ssc_var(obj,'wave_power_matrix', ${wave_power_matrix});
-	ssc_var(obj,'number_devices', ${number_devices});
-	ssc_var(obj,'system_capacity', ${system_capacity});
-	//ssc_var(obj,'devices_per_row', ${devices_per_row});
-	ssc_var(obj,'device_rated_power', ${device_rated_power});
-	
-	
-	
-	ssc_var(obj,'loss_array_spacing', ${loss_array_spacing});
-	ssc_var(obj,'loss_resource_overprediction', ${loss_resource_overprediction});
-	ssc_var(obj,'loss_transmission', ${loss_transmission});
-	ssc_var(obj,'loss_downtime', ${loss_downtime});
-	ssc_var(obj,'loss_additional', ${loss_additional});
-	
+		${device_average_power} = ssc_var( obj, 'device_average_power' );
+		${annual_energy} = ssc_var( obj, 'annual_energy' );
+		${capacity_factor} = ssc_var( obj, 'capacity_factor' );
+		${annual_energy_distribution} = ssc_var( obj, 'annual_energy_distribution' );
 
-	success = ssc_exec(obj, 'mhk_wave');
-	//msgbox(success);
+		ssc_free(obj);
+	}
 	
-	${device_average_power} = ssc_var( obj, 'device_average_power' );
-	${annual_energy} = ssc_var( obj, 'annual_energy' );
-	${capacity_factor} = ssc_var( obj, 'capacity_factor' );
-	${annual_energy_distribution} = ssc_var( obj, 'annual_energy_distribution' );
-
-	ssc_free(obj);
 };
+
+/*equations {'$MIMO$ mhk modeled tidal performance calculations'} = define() {
+	
+	obj = ssc_create();
+	tech = technology();
+	if (tech == "MEtidal") 
+	{
+		ssc_var(obj,'tidal_resource', ${tidal_resource});
+		ssc_var(obj,'tidal_power_curve', ${tidal_power_curve});
+		ssc_var(obj,'number_devices', ${number_devices});
+		
+	
+		ssc_var(obj,'loss_array_spacing', ${loss_array_spacing});
+		ssc_var(obj,'loss_resource_overprediction', ${loss_resource_overprediction});
+		ssc_var(obj,'loss_transmission', ${loss_transmission});
+		ssc_var(obj,'loss_downtime', ${loss_downtime});
+		ssc_var(obj,'loss_additional', ${loss_additional});
+		
+		success = ssc_exec(obj, 'mhk_tidal');
+		//msgbox(success);
+		
+		${deviced_rated_capacity} = ssc_var(obj, 'device_rated_capacity');
+		${device_average_power} = ssc_var( obj, 'device_average_power' );
+		${annual_energy} = ssc_var( obj, 'annual_energy' );
+		${capacity_factor} = ssc_var( obj, 'capacity_factor' );
+		${annual_energy_distribution_tidal} = ssc_var( obj, 'annual_energy_distribution' );
+		${annual_cumulative_energy_distribution} = ssc_var( obj, 'annual_cumulative_energy_distribution' );
+		
+		ssc_free(obj);
+	}
+};*/
+
 2255
 function check_mhk_losses(widget_name)
 {
