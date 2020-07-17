@@ -1,5 +1,5 @@
 1
-747
+746
 A_sf_UI
 1
 1
@@ -12865,12 +12865,6 @@ t_dis_out_min
 1
 500
 tank_pairs
-1
-1
-1
-1
-1
-tanks_in_parallel
 1
 1
 1
