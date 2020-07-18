@@ -333,8 +333,6 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 
 	ShowLegend(false);
 	SetBorderWidth(0.5);
-//	Invalidate();
-//	Refresh();
 	return 0;
 }
 
@@ -435,12 +433,7 @@ int UncertaintiesCtrl::Figure5(Simulation *sim)
     if (!freq.empty())
         max_freq = *(std::max_element(freq.begin(), freq.end()));
 
- //crashing
-//	std::vector<wxRealPoint> PowerLine;
-//	PowerLine.push_back(wxRealPoint(max_speed, turb_max_power));
-//	PowerLine.push_back(wxRealPoint(0.5*max_speed, turb_max_power));
-//	AddAnnotation(new wxPLLineAnnotation(PowerLine, 2, *wxBLUE, wxPLOutputDevice::DASH), wxPLAnnotation::AXIS, wxPLPlot::X_BOTTOM, wxPLPlot::Y_RIGHT);
-
+ 
 
 	AddPlot(new wxPLBarPlot(freq_vs_speed, 0.0, "Wind speed frequency", wxColour("Blue")));
 	SetYAxis1(new wxPLLinearAxis(0, 1.1 * max_freq, "Wind Speed Frequency"));
@@ -578,10 +571,6 @@ int UncertaintiesCtrl::IntersectionLines(const double &x_min, const double &x_ma
 
 int UncertaintiesCtrl::Display( Simulation *sim, Uncertainties &gi )
 {
-  // static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-  // "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-
-//	std::vector<wxColour> &s_colours = Uncertainties::Colours();
 
 	m_s = sim;
 	m_g.Copy( &gi );
@@ -601,245 +590,6 @@ int UncertaintiesCtrl::Display( Simulation *sim, Uncertainties &gi )
 		Figure5(m_s);
 	else if (m_g.Title.Lower() == "figure10")
 		Figure10(m_s);
-	/*
-	// setup visual properties of Uncertainties
-	wxFont font( *wxNORMAL_FONT );
-	switch( m_g.FontFace )
-	{
-	case 1: font = wxMetroTheme::Font( wxMT_LIGHT ); break;
-	case 2: font = *wxSWISS_FONT; break;
-	case 3: font = wxFont( 12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL ); break;
-	case 4: font = wxFont( 12, wxFONTFAMILY_MODERN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL ); break;
-	}
-	
-	if ( m_g.FontScale != 0.0 )
-	{
-		int points = (int)(((double)font.GetPointSize())*m_g.FontScale);
-		if ( points < 4 ) points = 4;
-		if ( points > 32 ) points = 32;
-		font.SetPointSize( points );		
-	}
-	
-	SetFont( font );
-
-	ShowGrid( m_g.CoarseGrid, m_g.FineGrid );
-	SetTitle( m_g.Title );
-	ShowLegend( m_g.ShowLegend );	
-	SetLegendLocation( (wxPLPlotCtrl::LegendPos)m_g.LegendPos );
-	
-	// setup data
-	std::vector<VarValue*> yvars;
-	wxArrayString ynames;
-	int ndata = -1;
-
-	if (m_g.Type == Uncertainties::CONTOUR)
-	{
-		if (m_g.Y.size()== 1)
-			ndata = 0;
-	}
-	else
-	{
-		for (size_t i = 0; i < m_g.Y.size(); i++)
-		{
-			if (VarValue *vv = m_s->GetValue(m_g.Y[i]))
-			{
-				int count = 0;
-				if (vv->Type() == VV_NUMBER)
-					count = 1;
-				else if (vv->Type() == VV_ARRAY)
-					count = vv->Length();
-
-				if (i == 0) ndata = count;
-				else if (ndata != count) ndata = -1;
-
-				if (count > 0)
-				{
-					yvars.push_back(vv);
-					ynames.push_back(m_g.Y[i]);
-				}
-			}
-		}
-	}
-	if ( ndata < 0 )
-	{
-		SetTitle( "All variables must have the same number of data values." );
-		Refresh();
-		return -1;
-	}
-
-	std::vector< std::vector<wxRealPoint> > plotdata( yvars.size() );
-
-	int cidx = 0; // colour index
-	wxPLBarPlot *last_bar = 0;
-	std::vector<wxPLBarPlot*> bar_group;
-
-	for (size_t i = 0; i < yvars.size(); i++)
-	{
-		if (yvars[i]->Type() == VV_ARRAY)
-		{
-			size_t n = 0;
-			double *p = yvars[i]->Array(&n);
-
-			plotdata[i].reserve(ndata);
-			for (size_t k = 0; k < n; k++)
-			{
-				if (std::isnan(p[k]))
-					plotdata[i].push_back(wxRealPoint(k, 0));
-				else
-					plotdata[i].push_back(wxRealPoint(k, p[k]));
-			}
-		}
-		else
-		{
-			if (std::isnan(yvars[i]->Value()))
-				plotdata[i].push_back(wxRealPoint(i, 0));
-			else
-				plotdata[i].push_back(wxRealPoint(i, yvars[i]->Value()));
-		}
-
-		wxPLPlottable *plot = 0;
-		if (m_g.Type == Uncertainties::LINE)
-			plot = new wxPLLinePlot(plotdata[i], m_s->GetLabel(ynames[i]), s_colours[cidx],
-				wxPLLinePlot::SOLID, m_g.Size + 2);
-		else if (m_g.Type == Uncertainties::BAR || m_g.Type == Uncertainties::STACKED)
-		{
-			wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], 0.0, m_s->GetLabel(ynames[i]), s_colours[cidx]);
-			if (m_g.Size != 0)
-				bar->SetThickness(m_g.Size);
-
-			if (m_g.Type == Uncertainties::STACKED)
-				bar->SetStackedOn(last_bar);
-			else
-				bar_group.push_back(bar);
-
-			last_bar = bar;
-			plot = bar;
-		}
-		else if (m_g.Type == Uncertainties::SCATTER)
-		{
-			plot = new wxPLScatterPlot(plotdata[i], m_s->GetLabel(ynames[i]), s_colours[cidx], m_g.Size + 2);
-			if (plotdata[i].size() < 100)
-				plot->SetAntiAliasing(true);
-		}
-
-
-		if ( ++cidx >= (int)s_colours.size() ) cidx = 0; // incr and wrap around colour index
-		
-		if ( plot != 0 )
-			AddPlot( plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false );
-	}
-
-	
-	// group the bars together if they're not stacked and not single values
-	if ( ndata > 1 && m_g.Type == Uncertainties::BAR )
-		for( size_t i=0;i<bar_group.size();i++ )
-			bar_group[i]->SetGroup( bar_group );
-
-	// create the axes
-	if (ndata == 0) // contour
-	{
-		if (m_g.Type == Uncertainties::CONTOUR)
-		{
-			// y size checked for 1 above
-			double zmin = 1e99, zmax = -1e99;
-			wxMatrix<double> XX, YY, ZZ;
-			if (VarValue *vv = m_s->GetValue(m_g.Y[0]))
-			{
-				if (vv->Type() == VV_MATRIX)
-				{
-					// Assume col[0] contains x values in order
-					// assume row[0] contains y values in order
-					size_t nx, ny;
-					double *data = vv->Matrix(&nx, &ny);
-					XX.Resize(nx - 1, ny - 1);
-					YY.Resize(nx - 1, ny - 1);
-					ZZ.Resize(nx - 1, ny - 1);
-					for (size_t i = 1; i < nx; i++)
-					{
-						for (size_t j = 1; j < ny; j++)
-						{
-							XX.At(i-1, j-1) = data[j];
-							YY.At(i-1, j -1) = data[i*ny];
-							ZZ.At(i-1, j-1) = data[i*ny + j];
-							if (ZZ.At(i-1, j - 1) < zmin) zmin = ZZ.At(i-1, j - 1);
-							if (ZZ.At(i-1, j - 1) > zmax) zmax = ZZ.At(i-1, j - 1);
-						}
-					}
-					wxPLContourPlot *plot = 0;
-					wxPLColourMap *jet = new wxPLJetColourMap(zmin, zmax);
-					plot = new wxPLContourPlot(XX, YY, ZZ, true, wxEmptyString, 24, jet);
-					if (plot != 0)
-					{
-						AddPlot(plot, wxPLPlotCtrl::X_TOP, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
-						SetSideWidget(jet);
-					}
-				}
-			}
-		}
-	}
-	else
-	{
-		// x-axis
-		if (ndata == 1)
-		{
-			// single value axis
-			wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
-			if (m_g.ShowXValues)
-			{
-				for (size_t i = 0; i < ynames.size(); i++)
-					x1->Add(i, m_s->GetLabel(ynames[i]));
-			}
-			SetXAxis1(x1);
-		}
-		else if (ndata == 12)
-		{
-			// month axis
-			wxPLLabelAxis *x1 = new wxPLLabelAxis(-1, 12, m_g.XLabel);
-			for (size_t i = 0; i < 12; i++)
-				x1->Add(i, s_monthNames[i]);
-			SetXAxis1(x1);
-		}
-		else
-		{
-			// linear axis
-			SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
-		}
-		// setup y axis
-
-		if (GetPlotCount() > 0)
-		{
-			double ymin, ymax;
-			GetPlot(0)->GetMinMax(0, 0, &ymin, &ymax);
-			for (size_t i = 1; i < GetPlotCount(); i++)
-				GetPlot(i)->ExtendMinMax(0, 0, &ymin, &ymax);
-
-			if (m_g.Type == Uncertainties::STACKED || m_g.Type == Uncertainties::BAR)
-			{ // forcibly include the zero line for bar plots
-				if (ymin > 0) ymin = 0;
-				if (ymax < 0) ymax = 0;
-			}
-
-			double yadj = (ymax - ymin)*0.05;
-
-			if (ymin != 0) ymin -= yadj;
-			if (ymax != 0) ymax += yadj;
-
-			if (ymin == ymax) {
-				// no variation in y values, so pick some reasonable Uncertainties bounds
-				if (ymax == 0)
-					ymax = 1;
-				else
-					ymax += (ymax * 0.05);
-				if (ymin == 0)
-					ymin = -1;
-				else
-					ymin -= (ymin * 0.05);
-			}
-
-			SetYAxis1(new wxPLLinearAxis(ymin, ymax, m_g.YLabel));
-		}
-	}
-	*/
 
 	Invalidate();
 	Refresh();
@@ -1315,14 +1065,8 @@ void UncertaintiesProperties::OnSlider( wxScrollEvent & )
 }
 
 
-//enum { ID_CREATE_Uncertainties = wxID_HIGHEST+466, ID_DELETE_Uncertainties,
-//	ID_Uncertainties_PROPS };
 
 BEGIN_EVENT_TABLE(UncertaintiesViewer, wxPanel)
-//	EVT_BUTTON( ID_CREATE_Uncertainties, UncertaintiesViewer::OnCommand )
-//	EVT_BUTTON( ID_DELETE_Uncertainties, UncertaintiesViewer::OnCommand )
-//	EVT_Uncertainties_PROPERTY_CHANGE( ID_Uncertainties_PROPS, UncertaintiesViewer::OnCommand )
-//	EVT_Uncertainties_SELECT( wxID_ANY, UncertaintiesViewer::OnUncertaintiesSelect )
 END_EVENT_TABLE()
 
 void UncertaintiesViewer::DisplayStdDevs() {
@@ -1406,105 +1150,24 @@ UncertaintiesViewer::UncertaintiesViewer(wxWindow *parent) : wxPanel(parent, wxI
 	m_current = 0;
 
 	wxBoxSizer *main_sizer = new wxBoxSizer(wxHORIZONTAL);
-/*	wxSplitterWindow *splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_LIVE_UPDATE | wxSP_NOBORDER | wxSP_3DSASH );
-	main_sizer->Add(splitter, 1, wxBOTTOM | wxLEFT | wxEXPAND, 0);
-
-	m_lpanel = new wxPanel(splitter);
-	wxBoxSizer *sizer_tools = new wxBoxSizer( wxHORIZONTAL );
-	sizer_tools->Add( new wxMetroButton( m_lpanel, ID_CREATE_Uncertainties, "Create Uncertainties" ), 1, wxALL|wxEXPAND, 0 );
-	sizer_tools->Add( m_delButton = new wxMetroButton( m_lpanel, ID_DELETE_Uncertainties, "Delete" ), 0, wxALL|wxEXPAND, 0 );
-		
-	m_props = new UncertaintiesProperties( m_lpanel, ID_Uncertainties_PROPS );
-
-	wxBoxSizer *sizer_left = new wxBoxSizer( wxVERTICAL );
-	sizer_left->Add( sizer_tools, 0, wxALL|wxEXPAND, 0 );
-	sizer_left->Add( m_props, 1, wxALL|wxEXPAND, 0 );
-
-
-	m_lpanel->SetSizer( sizer_left );
-*/
 	m_layout = new wxSnapLayout(this, wxID_ANY);
 	m_layout->SetShowSizing( true );
-//	splitter->SetMinimumPaneSize( 50 );
-//	splitter->SplitVertically( m_lpanel, m_layout, (int)(260*wxGetScreenHDScale()) );
-
-/*
-// add single year probability of exceedances as a metrics table
-    m_exceedanceTable = new MetricsTable(m_layout );
-    matrix_t<wxString> data( 1, 2 );
-    data.at(0,0) = "Metric"; data.at(0,1) = "Value";
-    m_exceedanceTable->SetData(data );
-    m_layout->Add(m_exceedanceTable );
-    DisplayProbOfExceedances();
-
-    // add std dev values as a metrics table
-    m_stddevTable = new MetricsTable(m_layout );
-    m_stddevTable->SetData(data );
-    m_layout->Add(m_stddevTable );
-    DisplayStdDevs();
-*/
 	main_sizer->Add(m_layout, 1, wxBOTTOM | wxLEFT | wxEXPAND, 0);
 	SetSizer(main_sizer);
 	main_sizer->SetSizeHints(this);
 	
-//	UpdateProperties();
-}
-/*
-UncertaintiesCtrl *UncertaintiesViewer::CreateNewUncertainties()
-{
-	UncertaintiesCtrl *gc = new UncertaintiesCtrl( m_layout, wxID_ANY );
-	m_Uncertainties.push_back( gc );
-	m_layout->Add( gc );
-	return gc;
 }
 
-void UncertaintiesViewer::DeleteUncertainties( UncertaintiesCtrl *gc )
-{
-	std::vector<UncertaintiesCtrl*>::iterator it = std::find( m_Uncertainties.begin(), m_Uncertainties.end(), gc );
-	if ( it != m_Uncertainties.end() )
-	{
-		if ( m_current == *it )
-			m_current = 0;
-
-		m_layout->Delete( *it );
-		m_Uncertainties.erase( it );
-	}
-}
-
-void UncertaintiesViewer::DeleteAll()
-{
-		for (std::vector<UncertaintiesCtrl*>::iterator it = m_Uncertainties.begin();
-			it != m_Uncertainties.end();
-			++it)
-		{
-			m_layout->Delete(*it);
-			m_Uncertainties.erase(it);
-		}
-	m_current = 0;
-}
-*/
 void UncertaintiesViewer::SetUncertainties( std::vector<Uncertainties> &gl )
 {
 	m_Uncertainties.clear();
 	m_Uncertainties = gl;
-	/*
-	DeleteAll();
-	
-	for( size_t i=0;i<gl.size();i++ )
-	{
-		UncertaintiesCtrl *gc = CreateNewUncertainties();
-		gc->SetUncertainties(gl[i]);
-	}
-	*/
 }
 
 void UncertaintiesViewer::GetUncertainties( std::vector<Uncertainties> &gl )
 {
 	gl.clear();
 	gl = m_Uncertainties;
-//	gl.reserve( m_Uncertainties.size() );
-//	for( size_t i=0;i<m_Uncertainties.size();i++ )
-//		gl.push_back( m_Uncertainties[i]->GetUncertainties() );
 }
 
 	
@@ -1513,22 +1176,9 @@ void UncertaintiesViewer::Setup( Simulation *sim )
 	m_sim = sim;
 
 	if ( !m_sim || (m_sim->ListOutputs().GetCount() < 1 ) ) return;
-	/*
-	for (std::vector<UncertaintiesCtrl*>::iterator it = m_Uncertainties.begin();
-		it != m_Uncertainties.end();
-		++it)
-	{
-		Uncertainties g = (*it)->GetUncertainties();
-		if (g.Title == "Figure2")
-			(*it)->Figure2(m_sim);
-		else if (g.Title == "Figure5")
-			(*it)->Figure5(m_sim);
-	}
-	*/
 
 	// clear old controls and results
 	m_layout->DeleteAll();
-	//m_Uncertainties.clear();
 
 	// add single year probability of exceedances as a metrics table
 	m_exceedanceTable = new MetricsTable(m_layout);
@@ -1560,26 +1210,6 @@ void UncertaintiesViewer::Setup( Simulation *sim )
 			m_layout->Add(uc);
 	}
 
-/*
-	std::vector<UncertaintiesCtrl*> remove_list;
-
-	for( std::vector<UncertaintiesCtrl*>::iterator it = m_Uncertainties.begin();
-		it != m_Uncertainties.end();
-		++it )
-	{
-		Uncertainties g = (*it)->GetUncertainties();
-		if ((*it)->Display( m_sim, g ) < 0) remove_list.push_back(*it);
-	}
-
-
-	while (remove_list.size() > 0)
-	{
-		DeleteUncertainties(remove_list.back());
-		remove_list.pop_back();
-	}
-*/
-
-
 	DisplayProbOfExceedances();
 	DisplayStdDevs();
 
@@ -1587,58 +1217,3 @@ void UncertaintiesViewer::Setup( Simulation *sim )
 
 
 }
-
-/*
-UncertaintiesCtrl *UncertaintiesViewer::Current()
-{
-	return m_current;
-}
-
-void UncertaintiesViewer::UpdateUncertainties()
-{
-	if( !m_current || !m_sim) return;
-	Uncertainties g = m_current->GetUncertainties();
-//	m_props->Get( g );
-	m_current->Display( m_sim, g );
-}
-
-void UncertaintiesViewer::OnCommand( wxCommandEvent &evt )
-{
-	if ( evt.GetId() == ID_CREATE_Uncertainties )
-	{
-		SetCurrent( CreateNewUncertainties() );
-	}
-	else if ( evt.GetId() == ID_DELETE_Uncertainties )
-	{
-		if ( m_current != 0 )
-		{
-			DeleteUncertainties( m_current );
-			m_current = 0;
-			SetCurrent( 0 );
-		}
-	}
-	else if ( evt.GetId() == ID_Uncertainties_PROPS )
-		UpdateUncertainties();
-}
-
-void UncertaintiesViewer::OnUncertaintiesSelect( wxCommandEvent &evt )
-{
-	if ( UncertaintiesCtrl *gc = dynamic_cast<UncertaintiesCtrl*>( evt.GetEventObject() ) )
-		SetCurrent( gc );
-}
-
-void UncertaintiesViewer::SetCurrent(UncertaintiesCtrl *gc)
-{
-	if (m_current)
-	{
-		m_layout->ClearHighlights();
-		m_current = 0;
-	}
-
-	m_current = gc;
-
-	if (m_current)
-		m_layout->Highlight(m_current);
-
-}
-*/
