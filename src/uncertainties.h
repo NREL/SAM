@@ -202,20 +202,20 @@ public:
 	
 	void Setup( Simulation *sim );
 	
-	UncertaintiesCtrl *CreateNewUncertainties();
-	void DeleteUncertainties( UncertaintiesCtrl * );
-	void DeleteAll();
+//	UncertaintiesCtrl *CreateNewUncertainties();
+//	void DeleteUncertainties( UncertaintiesCtrl * );
+//	void DeleteAll();
 
 	void SetUncertainties( std::vector<Uncertainties> &gl );
 	void GetUncertainties( std::vector<Uncertainties> &gl );
 
-	UncertaintiesCtrl *Current();
+//	UncertaintiesCtrl *Current();
 private:
-	void UpdateUncertainties();
+//	void UpdateUncertainties();
 //	void UpdateProperties();
-	void OnCommand( wxCommandEvent & );
-	void OnUncertaintiesSelect( wxCommandEvent & );
-	void SetCurrent( UncertaintiesCtrl *gc );
+//	void OnCommand( wxCommandEvent & );
+//	void OnUncertaintiesSelect( wxCommandEvent & );
+//	void SetCurrent( UncertaintiesCtrl *gc );
 
     // display table of standard deviations
     void DisplayStdDevs();
@@ -228,7 +228,8 @@ private:
     MetricsTable *m_exceedanceTable;
 //	UncertaintiesProperties *m_props;
 	wxSnapLayout *m_layout;
-	std::vector<UncertaintiesCtrl*> m_Uncertainties;
+//	std::vector<UncertaintiesCtrl*> m_Uncertainties;
+	std::vector<Uncertainties> m_Uncertainties;
 
 	Simulation *m_sim;
 

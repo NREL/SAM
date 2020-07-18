@@ -666,6 +666,23 @@ void ResultsViewer::Setup( Simulation *sim )
 	m_metrics.clear();
 	m_metricRows.clear();
 	m_metricTables.clear();
+
+
+	// clear all the current metric tables
+	size_t i = 0;
+	while (i < m_summaryLayout->Count())
+	{
+		if (MetricsTable* mt = dynamic_cast<MetricsTable*>(m_summaryLayout->Get(i)))
+			m_summaryLayout->Delete(mt);
+		else
+			i++;
+	}
+	// recreate base metric table to report if no results available
+	m_metricsTable = new MetricsTable(m_summaryLayout);
+	m_summaryLayout->Add(m_metricsTable);
+
+
+
 	ResultsCallbackContext cc( this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing );
 	
 	// Callback context uses the invoke "metric" function to add to the m_metrics collection
@@ -829,7 +846,7 @@ void ResultsViewer::Setup( Simulation *sim )
 
 
 	// update excel exchange outputs
-	size_t i=0;
+	i=0;
 	while( i < m_summaryLayout->Count() )
 	{
 		if ( ExcelExchSummary *exsum = dynamic_cast<ExcelExchSummary*>( m_summaryLayout->Get(i) ) )

@@ -109,24 +109,12 @@ struct MetricData {
 };
 
 struct MetricRow {
-//	MetricRow() :
-//		scale(1.0), mode('g'), thousep(false), deci(2), tableName("")
-//	{}
-//	wxArrayString vars;
 	wxString label;
-//	std::vector<double> scales;
-//	std::vector<char> modes;
-//	std::vector<bool> thouseps;
-//	std::vector<int> decis;
-//	wxArrayString pres, posts;
 	wxString tableName; 
 	std::vector<MetricData> metrics;
 };
 
 struct MetricTable {
-//	MetricTable() :
-//		tableName("")
-//	{}
 	wxArrayString headers;
 	wxString tableName;
 };

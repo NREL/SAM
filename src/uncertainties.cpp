@@ -1315,14 +1315,14 @@ void UncertaintiesProperties::OnSlider( wxScrollEvent & )
 }
 
 
-enum { ID_CREATE_Uncertainties = wxID_HIGHEST+466, ID_DELETE_Uncertainties,
-	ID_Uncertainties_PROPS };
+//enum { ID_CREATE_Uncertainties = wxID_HIGHEST+466, ID_DELETE_Uncertainties,
+//	ID_Uncertainties_PROPS };
 
 BEGIN_EVENT_TABLE(UncertaintiesViewer, wxPanel)
-	EVT_BUTTON( ID_CREATE_Uncertainties, UncertaintiesViewer::OnCommand )
-	EVT_BUTTON( ID_DELETE_Uncertainties, UncertaintiesViewer::OnCommand )
-	EVT_Uncertainties_PROPERTY_CHANGE( ID_Uncertainties_PROPS, UncertaintiesViewer::OnCommand )
-	EVT_Uncertainties_SELECT( wxID_ANY, UncertaintiesViewer::OnUncertaintiesSelect )
+//	EVT_BUTTON( ID_CREATE_Uncertainties, UncertaintiesViewer::OnCommand )
+//	EVT_BUTTON( ID_DELETE_Uncertainties, UncertaintiesViewer::OnCommand )
+//	EVT_Uncertainties_PROPERTY_CHANGE( ID_Uncertainties_PROPS, UncertaintiesViewer::OnCommand )
+//	EVT_Uncertainties_SELECT( wxID_ANY, UncertaintiesViewer::OnUncertaintiesSelect )
 END_EVENT_TABLE()
 
 void UncertaintiesViewer::DisplayStdDevs() {
@@ -1428,7 +1428,8 @@ UncertaintiesViewer::UncertaintiesViewer(wxWindow *parent) : wxPanel(parent, wxI
 //	splitter->SetMinimumPaneSize( 50 );
 //	splitter->SplitVertically( m_lpanel, m_layout, (int)(260*wxGetScreenHDScale()) );
 
-    // add single year probability of exceedances as a metrics table
+/*
+// add single year probability of exceedances as a metrics table
     m_exceedanceTable = new MetricsTable(m_layout );
     matrix_t<wxString> data( 1, 2 );
     data.at(0,0) = "Metric"; data.at(0,1) = "Value";
@@ -1441,14 +1442,14 @@ UncertaintiesViewer::UncertaintiesViewer(wxWindow *parent) : wxPanel(parent, wxI
     m_stddevTable->SetData(data );
     m_layout->Add(m_stddevTable );
     DisplayStdDevs();
-
+*/
 	main_sizer->Add(m_layout, 1, wxBOTTOM | wxLEFT | wxEXPAND, 0);
 	SetSizer(main_sizer);
 	main_sizer->SetSizeHints(this);
 	
 //	UpdateProperties();
 }
-
+/*
 UncertaintiesCtrl *UncertaintiesViewer::CreateNewUncertainties()
 {
 	UncertaintiesCtrl *gc = new UncertaintiesCtrl( m_layout, wxID_ANY );
@@ -1481,9 +1482,12 @@ void UncertaintiesViewer::DeleteAll()
 		}
 	m_current = 0;
 }
-
+*/
 void UncertaintiesViewer::SetUncertainties( std::vector<Uncertainties> &gl )
 {
+	m_Uncertainties.clear();
+	m_Uncertainties = gl;
+	/*
 	DeleteAll();
 	
 	for( size_t i=0;i<gl.size();i++ )
@@ -1491,14 +1495,16 @@ void UncertaintiesViewer::SetUncertainties( std::vector<Uncertainties> &gl )
 		UncertaintiesCtrl *gc = CreateNewUncertainties();
 		gc->SetUncertainties(gl[i]);
 	}
+	*/
 }
 
 void UncertaintiesViewer::GetUncertainties( std::vector<Uncertainties> &gl )
 {
 	gl.clear();
-	gl.reserve( m_Uncertainties.size() );
-	for( size_t i=0;i<m_Uncertainties.size();i++ )
-		gl.push_back( m_Uncertainties[i]->GetUncertainties() );
+	gl = m_Uncertainties;
+//	gl.reserve( m_Uncertainties.size() );
+//	for( size_t i=0;i<m_Uncertainties.size();i++ )
+//		gl.push_back( m_Uncertainties[i]->GetUncertainties() );
 }
 
 	
@@ -1506,7 +1512,7 @@ void UncertaintiesViewer::Setup( Simulation *sim )
 {
 	m_sim = sim;
 
-	if ( !m_sim ) return;
+	if ( !m_sim || (m_sim->ListOutputs().GetCount() < 1 ) ) return;
 	/*
 	for (std::vector<UncertaintiesCtrl*>::iterator it = m_Uncertainties.begin();
 		it != m_Uncertainties.end();
@@ -1520,11 +1526,41 @@ void UncertaintiesViewer::Setup( Simulation *sim )
 	}
 	*/
 
+	// clear old controls and results
+	m_layout->DeleteAll();
+	//m_Uncertainties.clear();
+
+	// add single year probability of exceedances as a metrics table
+	m_exceedanceTable = new MetricsTable(m_layout);
+	matrix_t<wxString> data(1, 2);
+	data.at(0, 0) = "Metric"; data.at(0, 1) = "Value";
+	m_exceedanceTable->SetData(data);
+	m_layout->Add(m_exceedanceTable);
+	DisplayProbOfExceedances();
+
+	// add std dev values as a metrics table
+	m_stddevTable = new MetricsTable(m_layout);
+	m_stddevTable->SetData(data);
+	m_layout->Add(m_stddevTable);
+	DisplayStdDevs();
+
+	
 	// after simulation display p50p90 table
     if (sim->GetTotalElapsedTime() > 0){
 
     }
-	
+
+	for (auto& uncertain : m_Uncertainties)
+	{
+		UncertaintiesCtrl* uc = new UncertaintiesCtrl(m_layout, wxID_ANY);
+		uc->SetUncertainties(uncertain);
+		if (uc->Display(m_sim, uncertain) < 0)
+			delete uc;
+		else
+			m_layout->Add(uc);
+	}
+
+/*
 	std::vector<UncertaintiesCtrl*> remove_list;
 
 	for( std::vector<UncertaintiesCtrl*>::iterator it = m_Uncertainties.begin();
@@ -1541,13 +1577,18 @@ void UncertaintiesViewer::Setup( Simulation *sim )
 		DeleteUncertainties(remove_list.back());
 		remove_list.pop_back();
 	}
+*/
+
 
 	DisplayProbOfExceedances();
 	DisplayStdDevs();
 
+	m_layout->AutoLayout();
+
+
 }
 
-
+/*
 UncertaintiesCtrl *UncertaintiesViewer::Current()
 {
 	return m_current;
@@ -1600,3 +1641,4 @@ void UncertaintiesViewer::SetCurrent(UncertaintiesCtrl *gc)
 		m_layout->Highlight(m_current);
 
 }
+*/
