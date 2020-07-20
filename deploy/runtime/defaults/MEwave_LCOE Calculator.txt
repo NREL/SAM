@@ -991,7 +991,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5655880
+5.65588e+06
 eng_and_mgmt_cost_input
 1
 1
@@ -1009,7 +1009,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-5655880
+5.65588e+06
 eng_and_mgmt_cost_total
 1
 1
@@ -1117,7 +1117,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-1603450
+1.60345e+06
 export_cable_system_cost_total
 1
 1
@@ -1380,7 +1380,7 @@ insurance_during_construction_cost
 1
 1
 1
-3430910
+3.43091e+06
 insurance_during_construction_cost_input
 1
 1
@@ -1398,7 +1398,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3430910
+3.43091e+06
 insurance_operations_cost
 1
 1
@@ -1717,7 +1717,7 @@ maintenance_cost
 1
 1
 1
-3658280
+3.65828e+06
 maintenance_cost_input
 1
 1
@@ -1735,7 +1735,7 @@ maintenance_cost_modeled
 1
 1
 1
-3658280
+3.65828e+06
 maintenance_cost_total
 1
 1
@@ -2280,7 +2280,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-2037670
+2.03767e+06
 other_elec_infra_cost_total_display
 1
 1
@@ -3152,7 +3152,7 @@ site_access_port_staging_cost
 1
 1
 1
-3774010
+3.77401e+06
 site_access_port_staging_cost_input
 1
 1
@@ -3170,7 +3170,7 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-3774010
+3.77401e+06
 site_access_port_staging_cost_total
 1
 1

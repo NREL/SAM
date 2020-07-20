@@ -1682,7 +1682,7 @@ function setup_mewave_pages()
 	addpage( [[ 'Marine Costs - Financial']],{'sidebar'='Financial Costs','help'='mhk_wave_system_costs'});
 	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations','collapsible'=true,'collapsible_var'='opex_we_shown'},
 		{'name'='Marine Costs - Maintenance','caption'='Maintenance','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
-		{'sidebar'='Operations and Maintenance Costs','help'='mhk_wave_system_costs'} );
+		{'sidebar'='O&M Costs','help'='mhk_wave_system_costs'} );
 	
 }
 setconfig( 'MEwave', 'LCOE Calculator' );
@@ -1696,7 +1696,23 @@ function setup_metidal_pages()
 	addpage( [[ 'Marine Tidal Converter' ]], { 'sidebar'='Tidal Energy Converter', 'help'='mhk_tidal_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='mhk_tidal_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='mhk_tidal_losses' } );
-	addpage( [[ 'Marine Costs']],{ 'sidebar'='System Costs', 'help'='mhk_tidal_system_costs' } );
+	//addpage( [[ 'Marine Costs']],{ 'sidebar'='System Costs', 'help'='mhk_tidal_system_costs' } );
+	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
+		{'name'='Marine Costs - PTO','caption'= 'PTO','collapsible'=true,'collapsible_var'='pto_shown'}, 
+		{'name'='Marine Costs - Mooring','caption'='Mooring','collapsible'=true,'collapsible_var'='mooring_shown'}]],
+		{ 'sidebar'='Device Costs', 'help'='mhk_wave_system_costs'} );
+	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development','collapsible'=true,'collapsible_var'='development_shown'},
+		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management','collapsible'=true,'collapsible_var'='e&m_shown'},
+		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
+		{'name'='Marine Costs - Plant Commissioning','caption' = 'Plant Commissioning','collapsible'=true,'collapsible_var'='plant_commissioning_shown'},
+		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging','collapsible'=true,'collapsible_var'='site_access_shown'},
+		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation','collapsible'=true,'collapsible_var'='assem_install_shown'},
+		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
+		{ 'sidebar'='BOS Costs','help'='mhk_wave_system_costs'} );
+	addpage( [[ 'Marine Costs - Financial']],{'sidebar'='Financial Costs','help'='mhk_wave_system_costs'});
+	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations','collapsible'=true,'collapsible_var'='opex_we_shown'},
+		{'name'='Marine Costs - Maintenance','caption'='Maintenance','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
+		{'sidebar'='O&M Costs','help'='mhk_wave_system_costs'} );
 }
 setconfig( 'MEtidal', 'LCOE Calculator' );
 setmodules( ['mhk_tidal', 'lcoefcr']);

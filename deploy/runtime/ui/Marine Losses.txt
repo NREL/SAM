@@ -1027,7 +1027,7 @@ ME Wave Losses
 5
 Numeric
 
-2490
+2481
 equations{"loss_total"} = define() {
 	return ${loss_array_spacing} 
 		+ ${loss_resource_overprediction} 
@@ -1039,9 +1039,11 @@ equations{"loss_total"} = define() {
 equations{ '$MIMO$ mhk modeled wave performance calculations' } = define() {
 
 	tech = technology();
+	obj = ssc_create();
+	
 	if (tech == 'MEwave') 
 	{
-		obj = ssc_create();
+		
 		
 		ssc_var(obj,'wave_resource_matrix', ${wave_resource_matrix});
 		ssc_var(obj,'wave_power_matrix', ${wave_power_matrix});
@@ -1072,11 +1074,11 @@ equations{ '$MIMO$ mhk modeled wave performance calculations' } = define() {
 	
 };
 
-/*equations {'$MIMO$ mhk modeled tidal performance calculations'} = define() {
+equations {'$MIMO$ mhk tidal performance calculations'} = define() {
 	
 	obj = ssc_create();
 	tech = technology();
-	if (tech == "MEtidal") 
+	if (tech != "MEwave") 
 	{
 		ssc_var(obj,'tidal_resource', ${tidal_resource});
 		ssc_var(obj,'tidal_power_curve', ${tidal_power_curve});
@@ -1101,7 +1103,7 @@ equations{ '$MIMO$ mhk modeled wave performance calculations' } = define() {
 		
 		ssc_free(obj);
 	}
-};*/
+};
 
 2255
 function check_mhk_losses(widget_name)
