@@ -105,9 +105,9 @@ extern "C"
 
 	/**
 	 * Set poa: Plane of array irradiance [W/m2]
-	 * options: None
+	 * options: Output from last time step may be used as input
 	 * constraints: None
-	 * required if: *
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_poa_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -121,9 +121,9 @@ extern "C"
 
 	/**
 	 * Set tcell: Module temperature [C]
-	 * options: None
+	 * options: Output from last time step may be used as input
 	 * constraints: None
-	 * required if: *
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_tcell_nset(SAM_table ptr, double number, SAM_error *err);
 
