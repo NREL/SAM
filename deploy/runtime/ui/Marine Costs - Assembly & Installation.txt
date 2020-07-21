@@ -3401,7 +3401,7 @@ marine_energy_converter_device_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3471,7 +3471,7 @@ offshore_electrical_infrastructure_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3527,7 +3527,7 @@ offshore_logistical_infrastructure_assem_install_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3569,7 +3569,7 @@ other_assem_install_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3709,7 +3709,7 @@ substructures_and_foundations_cost
  
  
 0
-0
+2
 1
 1
 1

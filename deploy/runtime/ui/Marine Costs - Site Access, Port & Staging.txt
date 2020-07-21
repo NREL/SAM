@@ -2713,7 +2713,7 @@ cranage_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2825,7 +2825,7 @@ other_site_access_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2867,7 +2867,7 @@ port_fees_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2923,7 +2923,7 @@ port_improvement_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3021,7 +3021,7 @@ staging_port_cost
  
  
 0
-0
+2
 1
 1
 1

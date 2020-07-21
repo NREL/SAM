@@ -3538,7 +3538,7 @@ anchors_and_piles_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3552,7 +3552,7 @@ ancillary_marine_systems_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3636,7 +3636,7 @@ connecting_hardware_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3678,7 +3678,7 @@ integration_assembly_testing_checkout_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3734,7 +3734,7 @@ messenger_lines_and_buoys_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3776,7 +3776,7 @@ mooring_lines_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3804,7 +3804,7 @@ other_mooring_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3832,7 +3832,7 @@ outfitting_structure_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3902,7 +3902,7 @@ scour_protection_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3930,7 +3930,7 @@ subfoundation_or_bedding_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3944,7 +3944,7 @@ transportation_cost
  
  
 0
-0
+2
 1
 1
 1

@@ -2321,7 +2321,7 @@ long_term_service_agreement_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2444,7 +2444,7 @@ other_maintenance_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2519,7 +2519,7 @@ scheduled_maintenance_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2619,7 +2619,7 @@ unscheduled_maintenance_cost
  
  
 0
-0
+2
 1
 1
 1

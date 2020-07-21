@@ -5188,7 +5188,7 @@ array_cable_system_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -5314,7 +5314,7 @@ cable_protection_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -5552,7 +5552,7 @@ export_cable_system_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -5678,7 +5678,7 @@ offshore_substation_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -5790,7 +5790,7 @@ onshore_transmission_infrastructure_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -5846,7 +5846,7 @@ other_elec_infra_cost
  
  
 0
-0
+2
 1
 1
 1

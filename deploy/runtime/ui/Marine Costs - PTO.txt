@@ -5994,7 +5994,7 @@ air_turbine_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6064,7 +6064,7 @@ coatings_pto_cost
  
  
 0
-0
+8
 1
 1
 1
@@ -6190,7 +6190,7 @@ electrical_generator_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6246,7 +6246,7 @@ gearbox_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6330,7 +6330,7 @@ hydraulic_drivetrain_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6554,7 +6554,7 @@ other_pto_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6624,7 +6624,7 @@ power_electronics_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6666,7 +6666,7 @@ power_takeoff_enclosure_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6848,7 +6848,7 @@ shortterm_energy_storage_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6918,7 +6918,7 @@ transport_power_conversion_chain_cost
  
  
 0
-0
+2
 1
 1
 1

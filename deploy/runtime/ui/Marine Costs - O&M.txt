@@ -316,8 +316,8 @@ Default
 total_operating_cost
 3
 1
- Total Operating Cost
- 
+ Total Opex
+ /yr
  
 0
 8

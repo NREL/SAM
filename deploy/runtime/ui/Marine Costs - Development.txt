@@ -5991,7 +5991,7 @@ financing_and_incentives_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6061,7 +6061,7 @@ initial_engineering_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6103,7 +6103,7 @@ interconnection_and_power_marketing_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6243,7 +6243,7 @@ other_development_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6369,7 +6369,7 @@ permitting_and_leasing_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6453,7 +6453,7 @@ professional_advisory_services_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6481,7 +6481,7 @@ project_management_during_development_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6579,7 +6579,7 @@ site_characterization_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -6621,7 +6621,7 @@ site_selection_cost
  
  
 0
-0
+2
 1
 1
 1

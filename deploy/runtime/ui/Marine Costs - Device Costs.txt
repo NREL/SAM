@@ -1,7 +1,102 @@
 Marine Costs - Device Costs
 825
 251
+6
+Numeric
+
+1
+17
+Name
+5
+17
+device_cost_input
+X
+3
+123
+Y
+3
+156
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
 4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+20
+device_cost_override
+X
+3
+51
+Y
+3
+186
+Width
+3
+180
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+23
+Override Cost Structure
+State
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -15,7 +110,7 @@ X
 123
 Y
 3
-195
+156
 Width
 3
 90
@@ -107,7 +202,7 @@ X
 51
 Y
 3
-57
+39
 Width
 3
 591
@@ -155,7 +250,7 @@ X
 51
 Y
 3
-153
+120
 Width
 3
 528
@@ -191,7 +286,35 @@ AlignTop
 2
 0
 
+4
+device_cost_input
+3
 1
+Device Costs
+$
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+device_cost_override
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+CheckBox
 device_costs_total
 3
 1
@@ -206,10 +329,31 @@ $
 1
 0
 Default
+device_costs_total_display
+3
+1
+ 
+ 
+ 
+0
+1
+1
+1
+1
+1
+0
+Default
 
-237
+320
 equations {'device_costs_total'} = define() {
-	return ${structural_assembly_cost}+ ${mooring_found_substruc_cost}+${power_takeoff_system_cost};
+	if (${device_cost_override}!=1)
+	{
+		return ${structural_assembly_cost}+ ${mooring_found_substruc_cost}+${power_takeoff_system_cost};
+	}
+	else
+	{
+		return ${device_cost_input};
+	}
 };
 
 /*equations {'total_installed_cost'} = define() {
@@ -219,4 +363,23 @@ equations {'device_costs_total'} = define() {
 
 
 
-0
+483
+on_load{'Marine Costs - Device Costs'} = define() {
+	on_change{'device_cost_override'};
+	override_device_cost();
+};
+
+on_change{'device_cost_override'} = define() {
+	override_device_cost();
+};
+
+function override_device_cost()
+{
+	override_value = value('device_cost_override');
+	enable('device_costs_total',override_value!=1);
+	enable('device_cost_input',override_value==1);
+	show('device_cost_input',override_value==1);
+	show('device_costs_total',override_value!=1);
+	
+	refresh();
+}	

@@ -2480,7 +2480,7 @@ construction_management_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2550,7 +2550,7 @@ detailed_design_and_construction_eng_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2634,7 +2634,7 @@ health_safety_and_environmental_monitoring_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2718,7 +2718,7 @@ other_eng_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2760,7 +2760,7 @@ procurement_management_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -2802,7 +2802,7 @@ project_certification_cost
  
  
 0
-0
+2
 1
 1
 1

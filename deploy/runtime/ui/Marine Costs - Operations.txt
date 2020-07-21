@@ -3745,7 +3745,7 @@ annual_leases_fees_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3843,7 +3843,7 @@ environmental_health_and_safety_monitoring_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -3941,7 +3941,7 @@ insurance_operations_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -4109,7 +4109,7 @@ operations_management_general_administration_cost
  
  
 0
-0
+2
 1
 1
 1
@@ -4193,7 +4193,7 @@ other_operations_cost
  
  
 0
-0
+2
 1
 1
 1
