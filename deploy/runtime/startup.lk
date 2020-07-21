@@ -1679,7 +1679,7 @@ function setup_mewave_pages()
 		{'name'='Marine Costs - Reserve Costs','caption'='Reserve Costs','collapsible'=true,'collapsible_var'='reserve_costs_shown'},
 		{'name'='Marine Costs - Other Financial Costs','caption'='Other Financial Costs','collapsible'=true,'collapsible_var'='other_finance_costs_shown'} ]],
 		{'sidebar'='Financial Costs','help'='mhk_wave_system_costs'} );*/
-	addpage( [[ 'Marine Costs - Financial']],{'sidebar'='Financial Costs','help'='mhk_wave_system_costs'});
+	addpage( [[ 'Marine Costs - Financial']],{'sidebar'='Project Costs','help'='mhk_wave_system_costs'});
 	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations','collapsible'=true,'collapsible_var'='opex_we_shown'},
 		{'name'='Marine Costs - Maintenance','caption'='Maintenance','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
 		{'sidebar'='O&M Costs','help'='mhk_wave_system_costs'} );
@@ -1709,7 +1709,7 @@ function setup_metidal_pages()
 		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation','collapsible'=true,'collapsible_var'='assem_install_shown'},
 		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
 		{ 'sidebar'='BOS Costs','help'='mhk_wave_system_costs'} );
-	addpage( [[ 'Marine Costs - Financial']],{'sidebar'='Financial Costs','help'='mhk_wave_system_costs'});
+	addpage( [[ 'Marine Costs - Financial']],{'sidebar'='Project Costs','help'='mhk_wave_system_costs'});
 	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations','collapsible'=true,'collapsible_var'='opex_we_shown'},
 		{'name'='Marine Costs - Maintenance','caption'='Maintenance','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
 		{'sidebar'='O&M Costs','help'='mhk_wave_system_costs'} );
