@@ -1,5 +1,5 @@
 1
-708
+709
 A_aperture
 1
 2
@@ -3870,6 +3870,12 @@ system_capacity
 1
 12969.8
 tank_pairs
+1
+1
+1
+1
+1
+tanks_in_parallel
 1
 1
 1

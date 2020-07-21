@@ -1211,7 +1211,7 @@ csp.lf.cost.plm.total
 1
 1
 1
-3476410
+3.47641e+06
 csp.lf.cost.power_plant
 1
 1

@@ -1,5 +1,5 @@
 1
-710
+712
 AntiFrPar
 1
 1
@@ -4225,6 +4225,18 @@ ur_name
 4
 25
 Arizona Public Service Co
+ur_nm_credit_month
+1
+1
+1
+1
+11
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
 ur_nm_yearend_sell_rate
 1
 1
