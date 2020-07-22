@@ -1,5 +1,5 @@
 1
-646
+648
 accumulators_cost
 1
 1
@@ -2069,6 +2069,18 @@ offshore_substation_cost_total_check
 1
 0
 offshore_substation_cost_total_display
+1
+1
+1
+1
+0
+om_cost_input
+1
+1
+1
+1
+0
+om_cost_override
 1
 1
 1

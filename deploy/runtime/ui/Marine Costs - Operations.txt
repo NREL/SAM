@@ -27,7 +27,7 @@ Tool Tip
 Caption
 5
 43
-Environmental, Health and Safety Monitoring
+Environmental, health and safety monitoring
 TextColour
 4
 0
@@ -75,7 +75,7 @@ Tool Tip
 Caption
 5
 19
-Sub-Category Totals
+Sub-category totals
 TextColour
 4
 0
@@ -123,7 +123,7 @@ Tool Tip
 Caption
 5
 15
-Category Totals
+Category totals
 TextColour
 4
 0
@@ -1187,7 +1187,7 @@ Tool Tip
 Caption
 5
 20
-Other Business Costs
+Other business costs
 TextColour
 4
 0
@@ -1235,7 +1235,7 @@ Tool Tip
 Caption
 5
 48
-Federal Energy Regulatory Commission (FERC) Fees
+Federal Energy Regulatory Commission (FERC) fees
 TextColour
 4
 0
@@ -1283,7 +1283,7 @@ Tool Tip
 Caption
 5
 22
-Other Monitoring Costs
+Other monitoring costs
 TextColour
 4
 0
@@ -1331,7 +1331,7 @@ Tool Tip
 Caption
 5
 24
-Environmental Monitoring
+Environmental monitoring
 TextColour
 4
 0
@@ -1379,7 +1379,7 @@ Tool Tip
 Caption
 5
 24
-Itemized Input Structure
+Itemized input structure
 TextColour
 4
 0
@@ -1427,7 +1427,7 @@ Tool Tip
 Caption
 5
 13
-Modeled Value
+Modeled value
 TextColour
 4
 0
@@ -1475,7 +1475,7 @@ Tool Tip
 Caption
 5
 22
-Other Operations Costs
+Other operations costs
 TextColour
 4
 0
@@ -1523,7 +1523,7 @@ Tool Tip
 Caption
 5
 17
-Marine Management
+Marine management
 TextColour
 4
 0
@@ -1571,7 +1571,7 @@ Tool Tip
 Caption
 5
 19
-Weather Forecasting
+Weather forecasting
 TextColour
 4
 0
@@ -1619,7 +1619,7 @@ Tool Tip
 Caption
 5
 20
-Operating Facilities
+Operating facilities
 TextColour
 4
 0
@@ -1667,7 +1667,7 @@ Tool Tip
 Caption
 5
 27
-Transmission Charges/Rights
+Transmission charges/rights
 TextColour
 4
 0
@@ -1715,7 +1715,7 @@ Tool Tip
 Caption
 5
 34
-Other General Administration Costs
+Other general administration costs
 TextColour
 4
 0
@@ -1747,13 +1747,13 @@ Name
 object 72827
 X
 3
-267
+189
 Y
 3
 720
 Width
 3
-171
+249
 Height
 3
 24
@@ -1763,7 +1763,7 @@ Tool Tip
 Caption
 5
 41
-Marine Energy Converter Power Consumption
+Marine energy converter power consumption
 TextColour
 4
 0
@@ -1811,7 +1811,7 @@ Tool Tip
 Caption
 5
 35
-Generation Planning and Integration
+Generation planning and integration
 TextColour
 4
 0
@@ -1907,7 +1907,7 @@ Tool Tip
 Caption
 5
 30
-Professional Advisory Services
+Professional advisory services
 TextColour
 4
 0
@@ -1955,7 +1955,7 @@ Tool Tip
 Caption
 5
 16
-Operating Margin
+Operating margin
 TextColour
 4
 0
@@ -2003,7 +2003,7 @@ Tool Tip
 Caption
 5
 32
-Sales, General, & Administrative
+Sales, general, & administrative
 TextColour
 4
 0
@@ -2051,7 +2051,7 @@ Tool Tip
 Caption
 5
 42
-Operations, Management, and General Admin.
+Operations, management, and general admin.
 TextColour
 4
 0
@@ -2147,7 +2147,7 @@ Tool Tip
 Caption
 5
 25
-Health, Safety Monitoring
+Health, safety monitoring
 TextColour
 4
 0
@@ -2195,7 +2195,7 @@ Tool Tip
 Caption
 5
 20
-Condition Monitoring
+Condition monitoring
 TextColour
 4
 0
@@ -2243,7 +2243,7 @@ Tool Tip
 Caption
 5
 19
-Operating Equipment
+Operating equipment
 TextColour
 4
 0
@@ -2339,7 +2339,7 @@ Tool Tip
 Caption
 5
 42
-Annual Leases/Fees/Costs of Doing Business
+Annual leases/fees/costs of doing business
 TextColour
 4
 0
@@ -2387,7 +2387,7 @@ Tool Tip
 Caption
 5
 13
-Category Cost
+Category cost
 TextColour
 4
 0
@@ -2974,7 +2974,7 @@ Tool Tip
 Caption
 5
 15
-Itemized Inputs
+Itemized inputs
 TextColour
 4
 0
@@ -3147,7 +3147,7 @@ Tool Tip
 Caption
 5
 10
-User Input
+User input
 TextColour
 4
 0
@@ -3801,7 +3801,7 @@ detailed_cost_choice_annual_leases
  
  
 0
-0
+2
 1
 1
 1
@@ -3815,7 +3815,7 @@ detailed_cost_choice_env_health_safety
  
  
 0
-0
+2
 1
 1
 1
@@ -3829,7 +3829,7 @@ detailed_cost_choice_gen_admin
  
  
 0
-0
+2
 1
 1
 1
@@ -4067,7 +4067,7 @@ operations_cost_input
  
  
 0
-0
+2
 1
 1
 1
@@ -4081,7 +4081,7 @@ operations_cost_method
  
  
 0
-0
+2
 1
 1
 1

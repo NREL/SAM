@@ -27,7 +27,7 @@ Tool Tip
 Caption
 5
 13
-Due Diligence
+Due diligence
 TextColour
 4
 0
@@ -75,7 +75,7 @@ Tool Tip
 Caption
 5
 35
-Site Selection (Siting and scoping)
+Site selection (siting and scoping)
 TextColour
 4
 0
@@ -153,7 +153,7 @@ Tool Tip
 Caption
 5
 19
-Initial Engineering
+Initial engineering
 TextColour
 4
 0
@@ -201,7 +201,7 @@ Tool Tip
 Caption
 5
 33
-Interconnection & Power Marketing
+Interconnection & power marketing
 TextColour
 4
 0
@@ -249,7 +249,7 @@ Tool Tip
 Caption
 5
 24
-Financing and Incentives
+Financing and incentives
 TextColour
 4
 0
@@ -297,7 +297,7 @@ Tool Tip
 Caption
 5
 37
-Project Management during Development
+Project management during development
 TextColour
 4
 0
@@ -764,7 +764,7 @@ Tool Tip
 Caption
 5
 10
-User Input
+User input
 TextColour
 4
 0
@@ -958,7 +958,7 @@ Name
 development_cost_total_label
 X
 3
-426
+429
 Y
 3
 42
@@ -974,7 +974,7 @@ Tool Tip
 Caption
 5
 15
-Itemized Inputs
+Itemized inputs
 TextColour
 4
 0
@@ -2077,7 +2077,7 @@ Tool Tip
 Caption
 5
 15
-Category Totals
+Category totals
 TextColour
 4
 0
@@ -2125,7 +2125,7 @@ Tool Tip
 Caption
 5
 19
-Sub-Category Totals
+Sub-category totals
 TextColour
 4
 0
@@ -2258,7 +2258,7 @@ Tool Tip
 Caption
 5
 21
-Environmental Scoping
+Environmental scoping
 TextColour
 4
 0
@@ -2306,7 +2306,7 @@ Tool Tip
 Caption
 5
 24
-Itemized Input Structure
+Itemized input structure
 TextColour
 4
 0
@@ -2354,7 +2354,7 @@ Tool Tip
 Caption
 5
 13
-Modeled Value
+Modeled value
 TextColour
 4
 0
@@ -2450,7 +2450,7 @@ Tool Tip
 Caption
 5
 32
-Interconnection Studies and Fees
+Interconnection studies and fees
 TextColour
 4
 0
@@ -2546,7 +2546,7 @@ Tool Tip
 Caption
 5
 30
-Professional Advisory Services
+Professional advisory services
 TextColour
 4
 0
@@ -2594,7 +2594,7 @@ Tool Tip
 Caption
 5
 29
-Permit Acquisition Activities
+Permit acquisition activities
 TextColour
 4
 0
@@ -2642,7 +2642,7 @@ Tool Tip
 Caption
 5
 20
-Permitting & Leasing
+Permitting & leasing
 TextColour
 4
 0
@@ -2690,7 +2690,7 @@ Tool Tip
 Caption
 5
 19
-Resource Assessment
+Resource assessment
 TextColour
 4
 0
@@ -2738,7 +2738,7 @@ Tool Tip
 Caption
 5
 26
-Other Site Selection Costs
+Other site selection costs
 TextColour
 4
 0
@@ -2834,7 +2834,7 @@ Tool Tip
 Caption
 5
 32
-Other Permitting & Leasing Costs
+Other permitting & leasing costs
 TextColour
 4
 0
@@ -2882,7 +2882,7 @@ Tool Tip
 Caption
 5
 28
-Lease Acquisition Activities
+Lease acquisition activities
 TextColour
 4
 0
@@ -2930,7 +2930,7 @@ Tool Tip
 Caption
 5
 13
-Category Cost
+Category cost
 TextColour
 4
 0
@@ -2978,7 +2978,7 @@ Tool Tip
 Caption
 5
 23
-Other Development Costs
+Other development costs
 TextColour
 4
 0
@@ -3026,7 +3026,7 @@ Tool Tip
 Caption
 5
 13
-Closing Costs
+Closing costs
 TextColour
 4
 0
@@ -3074,7 +3074,7 @@ Tool Tip
 Caption
 5
 30
-Other Project Management Costs
+Other project management costs
 TextColour
 4
 0
@@ -3170,7 +3170,7 @@ Tool Tip
 Caption
 5
 34
-Sales, General, and Administrative
+Sales, general, and administrative
 TextColour
 4
 0
@@ -3218,7 +3218,7 @@ Tool Tip
 Caption
 5
 27
-Other Interconnection Costs
+Other interconnection costs
 TextColour
 4
 0
@@ -3266,7 +3266,7 @@ Tool Tip
 Caption
 5
 15
-Power Marketing
+Power marketing
 TextColour
 4
 0
@@ -3314,7 +3314,7 @@ Tool Tip
 Caption
 5
 21
-Other Financing Costs
+Other financing costs
 TextColour
 4
 0
@@ -3362,7 +3362,7 @@ Tool Tip
 Caption
 5
 13
-Legal Support
+Legal support
 TextColour
 4
 0
@@ -3458,7 +3458,7 @@ Tool Tip
 Caption
 5
 20
-Stakeholder Outreach
+Stakeholder outreach
 TextColour
 4
 0
@@ -3554,7 +3554,7 @@ Tool Tip
 Caption
 5
 31
-Onshore Interconnection Rights 
+Onshore interconnection rights 
 TextColour
 4
 0
@@ -3602,7 +3602,7 @@ Tool Tip
 Caption
 5
 33
-Other Site Characterization Costs
+Other site characterization costs
 TextColour
 4
 0
@@ -3650,7 +3650,7 @@ Tool Tip
 Caption
 5
 32
-Geological and Bathymetry Survey
+Geological and bathymetry survey
 TextColour
 4
 0
@@ -3698,7 +3698,7 @@ Tool Tip
 Caption
 5
 32
-Resource and Metocean Assessment
+Resource and metocean assessment
 TextColour
 4
 0
@@ -3746,7 +3746,7 @@ Tool Tip
 Caption
 5
 21
-Environmental Surveys
+Environmental surveys
 TextColour
 4
 0
@@ -3794,7 +3794,7 @@ Tool Tip
 Caption
 5
 21
-Site Characterization
+Site characterization
 TextColour
 4
 0
@@ -3842,7 +3842,7 @@ Tool Tip
 Caption
 5
 31
-Other Initial Engineering Costs
+Other initial engineering costs
 TextColour
 4
 0
@@ -3890,7 +3890,7 @@ Tool Tip
 Caption
 5
 25
-Engineering Certification
+Engineering certification
 TextColour
 4
 0
@@ -5795,7 +5795,7 @@ detailed_cost_choice_financing_incentive
  
  
 0
-0
+2
 1
 1
 1
@@ -5809,7 +5809,7 @@ detailed_cost_choice_initial_engineering
  
  
 0
-0
+2
 1
 1
 1
@@ -5823,7 +5823,7 @@ detailed_cost_choice_interconnection
  
  
 0
-0
+2
 1
 1
 1
@@ -5837,7 +5837,7 @@ detailed_cost_choice_permitting_leasing
  
  
 0
-0
+2
 1
 1
 1
@@ -5851,7 +5851,7 @@ detailed_cost_choice_project_management
  
  
 0
-0
+2
 1
 1
 1
@@ -5865,7 +5865,7 @@ detailed_cost_choice_site_characterization
  
  
 0
-0
+2
 1
 1
 1
@@ -5879,7 +5879,7 @@ detailed_cost_choice_site_selection
  
  
 0
-0
+2
 1
 1
 1

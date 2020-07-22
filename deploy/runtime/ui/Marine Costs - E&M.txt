@@ -28,7 +28,7 @@ Tool Tip
 Caption
 5
 44
-Detailed Design and Construction Engineering
+Detailed design and construction engineering
 TextColour
 4
 0
@@ -106,7 +106,7 @@ Tool Tip
 Caption
 5
 29
-Other Health and Safety Costs
+Other health and safety costs
 TextColour
 4
 0
@@ -154,7 +154,7 @@ Tool Tip
 Caption
 5
 24
-Environmental Monitoring
+Environmental monitoring
 TextColour
 4
 0
@@ -202,7 +202,7 @@ Tool Tip
 Caption
 5
 19
-Sub-Category Totals
+Sub-category totals
 TextColour
 4
 0
@@ -250,7 +250,7 @@ Tool Tip
 Caption
 5
 15
-Category Totals
+Category totals
 TextColour
 4
 0
@@ -1123,7 +1123,7 @@ Name
 level_input_label_eng
 X
 3
-483
+486
 Y
 3
 33
@@ -1139,7 +1139,7 @@ Tool Tip
 Caption
 5
 15
-Itemized Inputs
+Itemized inputs
 TextColour
 4
 0
@@ -1225,7 +1225,7 @@ Tool Tip
 Caption
 5
 23
-Construction Management
+Construction management
 TextColour
 4
 0
@@ -1273,7 +1273,7 @@ Tool Tip
 Caption
 5
 24
-Itemized Input Structure
+Itemized input structure
 TextColour
 4
 0
@@ -1321,7 +1321,7 @@ Tool Tip
 Caption
 5
 13
-Modeled Value
+Modeled value
 TextColour
 4
 0
@@ -1369,7 +1369,7 @@ Tool Tip
 Caption
 5
 38
-Other Engineering and Management Costs
+Other engineering and management costs
 TextColour
 4
 0
@@ -1417,7 +1417,7 @@ Tool Tip
 Caption
 5
 28
-Health and Safety Monitoring
+Health and safety monitoring
 TextColour
 4
 0
@@ -1465,7 +1465,7 @@ Tool Tip
 Caption
 5
 21
-Project Certification
+Project certification
 TextColour
 4
 0
@@ -1513,7 +1513,7 @@ Tool Tip
 Caption
 5
 35
-Other Construction Management Costs
+Other construction management costs
 TextColour
 4
 0
@@ -1561,7 +1561,7 @@ Tool Tip
 Caption
 5
 34
-Sales, General, and Administrative
+Sales, general, and administrative
 TextColour
 4
 0
@@ -1657,7 +1657,7 @@ Tool Tip
 Caption
 5
 22
-Procurement Management
+Procurement management
 TextColour
 4
 0
@@ -1753,7 +1753,7 @@ Tool Tip
 Caption
 5
 42
-Health, Safety, & Environmental Monitoring
+Health, safety, & environmental monitoring
 TextColour
 4
 0
@@ -1801,7 +1801,7 @@ Tool Tip
 Caption
 5
 13
-Category Cost
+Category cost
 TextColour
 4
 0
@@ -1849,7 +1849,7 @@ Tool Tip
 Caption
 5
 26
-Engineering and Management
+Engineering and management
 TextColour
 4
 0
@@ -2449,7 +2449,7 @@ Tool Tip
 Caption
 5
 10
-User Input
+User input
 TextColour
 4
 0
@@ -2522,7 +2522,7 @@ detailed_cost_choice_construction_management
  
  
 0
-0
+2
 1
 1
 1
@@ -2536,7 +2536,7 @@ detailed_cost_choice_health_safety
  
  
 0
-0
+2
 1
 1
 1

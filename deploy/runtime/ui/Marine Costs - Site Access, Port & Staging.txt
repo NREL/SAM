@@ -57,7 +57,7 @@ Tool Tip
 Caption
 5
 12
-Staging Port
+Staging port
 TextColour
 4
 0
@@ -105,7 +105,7 @@ Tool Tip
 Caption
 5
 15
-Other Port Fees
+Other port fees
 TextColour
 4
 0
@@ -153,7 +153,7 @@ Tool Tip
 Caption
 5
 13
-Wharfage Fees
+Wharfage fees
 TextColour
 4
 0
@@ -201,7 +201,7 @@ Tool Tip
 Caption
 5
 18
-Entrance/Exit Fees
+Entrance/exit fees
 TextColour
 4
 0
@@ -249,7 +249,7 @@ Tool Tip
 Caption
 5
 19
-Sub-Category Totals
+Sub-category totals
 TextColour
 4
 0
@@ -297,7 +297,7 @@ Tool Tip
 Caption
 5
 15
-Category Totals
+Category totals
 TextColour
 4
 0
@@ -811,7 +811,7 @@ Tool Tip
 Caption
 5
 12
-Laydown Area
+Laydown area
 TextColour
 4
 0
@@ -859,7 +859,7 @@ Tool Tip
 Caption
 5
 24
-Itemized Input Structure
+Itemized input structure
 TextColour
 4
 0
@@ -907,7 +907,7 @@ Tool Tip
 Caption
 5
 13
-Modeled Value
+Modeled value
 TextColour
 4
 0
@@ -955,7 +955,7 @@ Tool Tip
 Caption
 5
 23
-Other Site Access Costs
+Other site access costs
 TextColour
 4
 0
@@ -1003,7 +1003,7 @@ Tool Tip
 Caption
 5
 21
-Quayside Docking Fees
+Quayside docking fees
 TextColour
 4
 0
@@ -1051,7 +1051,7 @@ Tool Tip
 Caption
 5
 9
-Port Fees
+Port fees
 TextColour
 4
 0
@@ -1147,7 +1147,7 @@ Tool Tip
 Caption
 5
 24
-Other Staging Port Costs
+Other staging port costs
 TextColour
 4
 0
@@ -1195,7 +1195,7 @@ Tool Tip
 Caption
 5
 20
-Personnel Facilities
+Personnel facilities
 TextColour
 4
 0
@@ -1243,7 +1243,7 @@ Tool Tip
 Caption
 5
 22
-Fabrication Facilities
+Fabrication facilities
 TextColour
 4
 0
@@ -1339,7 +1339,7 @@ Tool Tip
 Caption
 5
 14
-Assembly Areas
+Assembly areas
 TextColour
 4
 0
@@ -1387,7 +1387,7 @@ Tool Tip
 Caption
 5
 17
-Port Improvements
+Port improvements
 TextColour
 4
 0
@@ -1435,7 +1435,7 @@ Tool Tip
 Caption
 5
 13
-Category Cost
+Category cost
 TextColour
 4
 0
@@ -1483,7 +1483,7 @@ Tool Tip
 Caption
 5
 29
-Site Access, Port and Staging
+Site access, port and staging
 TextColour
 4
 0
@@ -2270,7 +2270,7 @@ Tool Tip
 Caption
 5
 10
-User Input
+User input
 TextColour
 4
 0
@@ -2320,8 +2320,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use Modeled Value
-Enter in Itemized Costs
+Use modeled value
+Enter in itemized costs
 Selection
 3
 0
@@ -2480,7 +2480,7 @@ Tool Tip
 Caption
 5
 15
-Itemized Inputs
+Itemized inputs
 TextColour
 4
 0
@@ -2727,7 +2727,7 @@ detailed_cost_choice_port_fees
  
  
 0
-0
+2
 1
 1
 1
@@ -2741,7 +2741,7 @@ detailed_cost_choice_staging_port
  
  
 0
-0
+2
 1
 1
 1
@@ -2979,7 +2979,7 @@ site_access_port_staging_cost_input
  
  
 0
-0
+2
 1
 1
 1
@@ -2993,7 +2993,7 @@ site_access_port_staging_cost_method
  
  
 0
-0
+2
 1
 1
 1

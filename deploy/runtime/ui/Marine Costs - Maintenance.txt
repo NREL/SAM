@@ -27,7 +27,7 @@ Tool Tip
 Caption
 5
 27
-Long Term Service Agreement
+Long term service agreement
 TextColour
 4
 0
@@ -600,8 +600,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use Modeled Value
-Enter in Itemized Costs
+Use modeled value
+Enter in itemized costs
 Selection
 3
 0
@@ -760,7 +760,7 @@ Tool Tip
 Caption
 5
 15
-Itemized Inputs
+Itemized inputs
 TextColour
 4
 0
@@ -808,7 +808,7 @@ Tool Tip
 Caption
 5
 10
-User Input
+User input
 TextColour
 4
 0
@@ -1098,7 +1098,7 @@ Tool Tip
 Caption
 5
 25
-MEC Scheduled Maintenance
+MEC scheduled maintenance
 TextColour
 4
 0
@@ -1194,7 +1194,7 @@ Tool Tip
 Caption
 5
 13
-Modeled Value
+Modeled value
 TextColour
 4
 0
@@ -1242,7 +1242,7 @@ Tool Tip
 Caption
 5
 27
-BoS Unscheduled Maintenance
+BoS unscheduled maintenance
 TextColour
 4
 0
@@ -1290,7 +1290,7 @@ Tool Tip
 Caption
 5
 23
-Unscheduled Maintenance
+Unscheduled maintenance
 TextColour
 4
 0
@@ -1338,7 +1338,7 @@ Tool Tip
 Caption
 5
 33
-Other Scheduled Maintenance Costs
+Other scheduled maintenance costs
 TextColour
 4
 0
@@ -1386,7 +1386,7 @@ Tool Tip
 Caption
 5
 25
-BoS Scheduled Maintenance
+BoS scheduled maintenance
 TextColour
 4
 0
@@ -1434,7 +1434,7 @@ Tool Tip
 Caption
 5
 23
-Other Maintenance Costs
+Other maintenance costs
 TextColour
 4
 0
@@ -1482,7 +1482,7 @@ Tool Tip
 Caption
 5
 35
-Other Unscheduled Maintenance Costs
+Other unscheduled maintenance costs
 TextColour
 4
 0
@@ -1530,7 +1530,7 @@ Tool Tip
 Caption
 5
 35
-Unscheduled Maintenance Contingency
+Unscheduled maintenance contingency
 TextColour
 4
 0
@@ -1578,7 +1578,7 @@ Tool Tip
 Caption
 5
 21
-Scheduled Maintenance
+Scheduled maintenance
 TextColour
 4
 0
@@ -1626,7 +1626,7 @@ Tool Tip
 Caption
 5
 27
-MEC Unscheduled Maintenance
+MEC unscheduled maintenance
 TextColour
 4
 0
@@ -1674,7 +1674,7 @@ Tool Tip
 Caption
 5
 13
-Category Cost
+Category cost
 TextColour
 4
 0
@@ -2235,7 +2235,7 @@ detailed_cost_choice_scheduled_maintenance
  
  
 0
-0
+2
 1
 1
 1
@@ -2249,7 +2249,7 @@ detailed_cost_choice_unscheduled_maintenance
  
  
 0
-0
+2
 1
 1
 1
@@ -2349,7 +2349,7 @@ maintenance_cost_input
  
  
 0
-0
+2
 1
 1
 1
@@ -2363,7 +2363,7 @@ maintenance_cost_method
  
  
 0
-0
+2
 1
 1
 1

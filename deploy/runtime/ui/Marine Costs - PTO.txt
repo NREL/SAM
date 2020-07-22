@@ -27,7 +27,7 @@ Tool Tip
 Caption
 5
 20
-Hydraulic Drivetrain
+Hydraulic drivetrain
 TextColour
 4
 0
@@ -75,7 +75,7 @@ Tool Tip
 Caption
 5
 11
-Air Turbine
+Air turbine
 TextColour
 4
 0
@@ -171,7 +171,7 @@ Tool Tip
 Caption
 5
 38
-Control & Communication System (SCADA)
+Control & communication system (SCADA)
 TextColour
 4
 0
@@ -219,7 +219,7 @@ Tool Tip
 Caption
 5
 20
-Electrical Generator
+Electrical generator
 TextColour
 4
 0
@@ -267,7 +267,7 @@ Tool Tip
 Caption
 5
 19
-Frequency Converter
+Frequency converter
 TextColour
 4
 0
@@ -363,7 +363,7 @@ Tool Tip
 Caption
 5
 15
-Other PTO Costs
+Other PTO costs
 TextColour
 4
 0
@@ -411,7 +411,7 @@ Tool Tip
 Caption
 5
 28
-Other Power Electronics Cost
+Other power electronics cost
 TextColour
 4
 0
@@ -489,7 +489,7 @@ Tool Tip
 Caption
 5
 23
-Power Electrical System
+Power electrical system
 TextColour
 4
 0
@@ -537,7 +537,7 @@ Tool Tip
 Caption
 5
 17
-Power Electronics
+Power electronics
 TextColour
 4
 0
@@ -585,7 +585,7 @@ Tool Tip
 Caption
 5
 24
-Power Take-Off Enclosure
+Power take-off enclosure
 TextColour
 4
 0
@@ -633,7 +633,7 @@ Tool Tip
 Caption
 5
 25
-Short-Term Energy Storage
+Short-term energy storage
 TextColour
 4
 0
@@ -681,7 +681,7 @@ Tool Tip
 Caption
 5
 40
-Transportation of Power Conversion Chain
+Transportation of power conversion chain
 TextColour
 4
 0
@@ -2259,7 +2259,7 @@ Tool Tip
 Caption
 5
 15
-Category Totals
+Category totals
 TextColour
 4
 0
@@ -2307,7 +2307,7 @@ Tool Tip
 Caption
 5
 19
-Sub-Category Totals
+Sub-category totals
 TextColour
 4
 0
@@ -2567,7 +2567,7 @@ Tool Tip
 Caption
 5
 18
-Rectifying Circuit
+Rectifying circuit
 TextColour
 4
 0
@@ -2615,7 +2615,7 @@ Tool Tip
 Caption
 5
 24
-Itemized Input Structure
+Itemized input structure
 TextColour
 4
 0
@@ -2663,7 +2663,7 @@ Tool Tip
 Caption
 5
 13
-Modeled Value
+Modeled value
 TextColour
 4
 0
@@ -2711,7 +2711,7 @@ Tool Tip
 Caption
 5
 14
-Cooling System
+Cooling system
 TextColour
 4
 0
@@ -2729,7 +2729,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2759,7 +2759,7 @@ Tool Tip
 Caption
 5
 24
-Blades or Rotor Assembly
+Blades or rotor assembly
 TextColour
 4
 0
@@ -2777,7 +2777,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2825,7 +2825,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -2855,7 +2855,7 @@ Tool Tip
 Caption
 5
 32
-Other Hydraulic Drivetrain Costs
+Other hydraulic drivetrain costs
 TextColour
 4
 0
@@ -2903,7 +2903,7 @@ Tool Tip
 Caption
 5
 24
-Plumbing, Fittings, etc.
+Plumbing, fittings, etc.
 TextColour
 4
 0
@@ -2950,8 +2950,8 @@ Tool Tip
 0
 Caption
 5
-19
-Hydraulic Reservoir
+18
+Hydraulicreservoir
 TextColour
 4
 0
@@ -3047,7 +3047,7 @@ Tool Tip
 Caption
 5
 15
-Hydraulic Motor
+Hydraulic motor
 TextColour
 4
 0
@@ -3095,7 +3095,7 @@ Tool Tip
 Caption
 5
 22
-Primary Hydraulic Pump
+Primary hydraulic pump
 TextColour
 4
 0
@@ -3191,7 +3191,7 @@ Tool Tip
 Caption
 5
 15
-Hydraulic Fluid
+Hydraulic fluid
 TextColour
 4
 0
@@ -3239,7 +3239,7 @@ Tool Tip
 Caption
 5
 13
-Category Cost
+Category cost
 TextColour
 4
 0
@@ -3287,7 +3287,7 @@ Tool Tip
 Caption
 5
 23
-Other Air Turbine Costs
+Other air turbine costs
 TextColour
 4
 0
@@ -3305,7 +3305,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3335,7 +3335,7 @@ Tool Tip
 Caption
 5
 14
-Shaft Assembly
+Shaft assembly
 TextColour
 4
 0
@@ -3353,7 +3353,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3383,7 +3383,7 @@ Tool Tip
 Caption
 5
 12
-Hub Assembly
+Hub assembly
 TextColour
 4
 0
@@ -3401,7 +3401,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3431,7 +3431,7 @@ Tool Tip
 Caption
 5
 19
-Other Gearbox Costs
+Other gearbox costs
 TextColour
 4
 0
@@ -3449,7 +3449,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3479,7 +3479,7 @@ Tool Tip
 Caption
 5
 14
-Cooling System
+Cooling system
 TextColour
 4
 0
@@ -3497,7 +3497,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3527,7 +3527,7 @@ Tool Tip
 Caption
 5
 11
-Lube System
+Lube system
 TextColour
 4
 0
@@ -3545,7 +3545,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3593,7 +3593,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3641,7 +3641,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3689,7 +3689,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3754,7 +3754,7 @@ X
 222
 Y
 3
-1205
+1206
 Width
 3
 174
@@ -3767,7 +3767,7 @@ Tool Tip
 Caption
 5
 32
-Other Electrical Generator Costs
+Other electrical generator costs
 TextColour
 4
 0
@@ -3911,7 +3911,7 @@ Tool Tip
 Caption
 5
 25
-Structural and Mechanical
+Structural and mechanical
 TextColour
 4
 0
@@ -4007,7 +4007,7 @@ Tool Tip
 Caption
 5
 18
-Lubrication System
+Lubrication system
 TextColour
 4
 0
@@ -4055,7 +4055,7 @@ Tool Tip
 Caption
 5
 14
-Power Take-Off
+Power take-off
 TextColour
 4
 0
@@ -4920,7 +4920,7 @@ Tool Tip
 Caption
 5
 10
-User Input
+User input
 TextColour
 4
 0
@@ -4970,8 +4970,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use Modeled Value
-Enter in Itemized Costs
+Use modeled value
+Enter in itemized costs
 Selection
 3
 0
@@ -5130,7 +5130,7 @@ Tool Tip
 Caption
 5
 15
-Itemized Totals
+Itemized totals
 TextColour
 4
 0
@@ -6120,7 +6120,7 @@ detailed_cost_choice_air_turbine
  
  
 0
-0
+2
 1
 1
 1
@@ -6134,7 +6134,7 @@ detailed_cost_choice_electrical_generator
  
  
 0
-0
+2
 1
 1
 1
@@ -6148,7 +6148,7 @@ detailed_cost_choice_gearbox
  
  
 0
-0
+2
 1
 1
 1
@@ -6162,7 +6162,7 @@ detailed_cost_choice_hydraulic_drivetrain
  
  
 0
-0
+2
 1
 1
 1
@@ -6176,7 +6176,7 @@ detailed_cost_choice_power_electronics
  
  
 0
-0
+2
 1
 1
 1

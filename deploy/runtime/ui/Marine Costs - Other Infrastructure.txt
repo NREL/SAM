@@ -27,7 +27,7 @@ Tool Tip
 Caption
 5
 22
-Offshore Accomodations
+Offshore accomodations
 TextColour
 4
 0
@@ -75,7 +75,7 @@ Tool Tip
 Caption
 5
 15
-Category Totals
+Category totals
 TextColour
 4
 0
@@ -349,7 +349,7 @@ Tool Tip
 Caption
 5
 22
-Onshore O&M Facilities
+Onshore O&M facilities
 TextColour
 4
 0
@@ -397,7 +397,7 @@ Tool Tip
 Caption
 5
 24
-Itemized Input Structure
+Itemized input structure
 TextColour
 4
 0
@@ -445,7 +445,7 @@ Tool Tip
 Caption
 5
 13
-Modeled Value
+Modeled value
 TextColour
 4
 0
@@ -541,7 +541,7 @@ Tool Tip
 Caption
 5
 35
-Other Infrastructure Transportation
+Other infrastructure transportation
 TextColour
 4
 0
@@ -589,7 +589,7 @@ Tool Tip
 Caption
 5
 23
-Dedicated O&M Vessel(s)
+Dedicated O&M vessel(s)
 TextColour
 4
 0
@@ -637,7 +637,7 @@ Tool Tip
 Caption
 5
 34
-Offshore Logistical Infrastructure
+Offshore logistical infrastructure
 TextColour
 4
 0
@@ -685,7 +685,7 @@ Tool Tip
 Caption
 5
 13
-Category Cost
+Category cost
 TextColour
 4
 0
@@ -717,13 +717,13 @@ Name
 object 734
 X
 3
-195
+192
 Y
 3
 237
 Width
 3
-153
+156
 Height
 3
 24
@@ -733,7 +733,7 @@ Tool Tip
 Caption
 5
 23
-O&M Equipment Purchases
+O&M equipment purchases
 TextColour
 4
 0
@@ -781,7 +781,7 @@ Tool Tip
 Caption
 5
 20
-Other Infrastructure
+Other infrastructure
 TextColour
 4
 0
@@ -1208,8 +1208,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use Modeled Value
-Enter in Itemized Costs ($)
+Use modeled value
+Enter in itemized costs ($)
 Selection
 3
 0
@@ -1431,7 +1431,7 @@ Tool Tip
 Caption
 5
 15
-Itemized Inputs
+Itemized inputs
 TextColour
 4
 0
@@ -1542,7 +1542,7 @@ Tool Tip
 Caption
 5
 10
-User Input
+User input
 TextColour
 4
 0

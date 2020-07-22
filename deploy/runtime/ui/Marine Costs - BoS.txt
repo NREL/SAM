@@ -290,11 +290,11 @@ AlignTop
 balance_of_system_cost_input
 3
 1
-Balance of System Costs
+Balance of system costs
 $
  
 0
-0
+2
 1
 1
 1
@@ -308,7 +308,7 @@ balance_of_system_cost_override
  
  
 0
-0
+2
 1
 1
 1
@@ -318,7 +318,7 @@ CheckBox
 balance_of_system_cost_total
 3
 1
-Balance of System Costs
+Balance of system costs
 $
  
 0

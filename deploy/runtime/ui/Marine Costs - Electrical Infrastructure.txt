@@ -28,7 +28,7 @@ Tool Tip
 Caption
 5
 18
-Array Cable System
+Array cable system
 TextColour
 4
 0
@@ -76,7 +76,7 @@ Tool Tip
 Caption
 5
 16
-Cable Protection
+Cable protection
 TextColour
 4
 0
@@ -124,7 +124,7 @@ Tool Tip
 Caption
 5
 35
-Onshore Transmission Infrastructure
+Onshore transmission infrastructure
 TextColour
 4
 0
@@ -172,7 +172,7 @@ Tool Tip
 Caption
 5
 22
-Offshore Substation(s)
+Offshore substation(s)
 TextColour
 4
 0
@@ -250,7 +250,7 @@ Tool Tip
 Caption
 5
 19
-Sub-Category Totals
+Sub-category totals
 TextColour
 4
 0
@@ -298,7 +298,7 @@ Tool Tip
 Caption
 5
 15
-Category Totals
+Category totals
 TextColour
 4
 0
@@ -1393,8 +1393,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use Modeled Value
-Enter in Itemized Costs
+Use modeled value
+Enter in itemized costs
 Selection
 3
 0
@@ -2214,7 +2214,7 @@ Name
 level_input_label_elec
 X
 3
-420
+423
 Y
 3
 51
@@ -2230,7 +2230,7 @@ Tool Tip
 Caption
 5
 15
-Itemized Inputs
+Itemized inputs
 TextColour
 4
 0
@@ -2316,7 +2316,7 @@ Tool Tip
 Caption
 5
 30
-Cable Accessories and Jointing
+Cable accessories and jointing
 TextColour
 4
 0
@@ -2364,7 +2364,7 @@ Tool Tip
 Caption
 5
 24
-Itemized Input Structure
+Itemized input structure
 TextColour
 4
 0
@@ -2412,7 +2412,7 @@ Tool Tip
 Caption
 5
 13
-Modeled Value
+Modeled value
 TextColour
 4
 0
@@ -2460,7 +2460,7 @@ Tool Tip
 Caption
 5
 28
-Other Cable Protection Costs
+Other cable protection costs
 TextColour
 4
 0
@@ -2508,7 +2508,7 @@ Tool Tip
 Caption
 5
 16
-Bend Restrictors
+Bend restrictors
 TextColour
 4
 0
@@ -2556,7 +2556,7 @@ Tool Tip
 Caption
 5
 14
-Ducting System
+Ducting system
 TextColour
 4
 0
@@ -2604,7 +2604,7 @@ Tool Tip
 Caption
 5
 16
-Cable Mattresses
+Cable mattresses
 TextColour
 4
 0
@@ -2652,7 +2652,7 @@ Tool Tip
 Caption
 5
 16
-Scour Protection
+Scour protection
 TextColour
 4
 0
@@ -2700,7 +2700,7 @@ Tool Tip
 Caption
 5
 12
-J-tube Seals
+J-tube seals
 TextColour
 4
 0
@@ -2748,7 +2748,7 @@ Tool Tip
 Caption
 5
 15
-Bend Stiffeners
+Bend stiffeners
 TextColour
 4
 0
@@ -2796,7 +2796,7 @@ Tool Tip
 Caption
 5
 41
-Other Onshore Transmission Infrastructure
+Other onshore transmission infrastructure
 TextColour
 4
 0
@@ -2844,7 +2844,7 @@ Tool Tip
 Caption
 5
 14
-Overhead Lines
+Overhead lines
 TextColour
 4
 0
@@ -2892,7 +2892,7 @@ Tool Tip
 Caption
 5
 31
-Other Offshore Substation Costs
+Other offshore substation costs
 TextColour
 4
 0
@@ -2940,7 +2940,7 @@ Tool Tip
 Caption
 5
 32
-Facilities and Ancillary Systems
+Facilities and ancillary systems
 TextColour
 4
 0
@@ -2988,7 +2988,7 @@ Tool Tip
 Caption
 5
 50
-Onshore Transmission Infrastructure Transportation
+Onshore transmission infrastructure transportation
 TextColour
 4
 0
@@ -3036,7 +3036,7 @@ Tool Tip
 Caption
 5
 19
-Onshore Substations
+Onshore substations
 TextColour
 4
 0
@@ -3084,7 +3084,7 @@ Tool Tip
 Caption
 5
 38
-Self-Supporting Towers with Insulators
+Self-supporting towers with insulators
 TextColour
 4
 0
@@ -3132,7 +3132,7 @@ Tool Tip
 Caption
 5
 31
-Electrical Conversion Equipment
+Electrical conversion equipment
 TextColour
 4
 0
@@ -3180,7 +3180,7 @@ Tool Tip
 Caption
 5
 24
-Underground Cable System
+Underground cable system
 TextColour
 4
 0
@@ -3228,7 +3228,7 @@ Tool Tip
 Caption
 5
 25
-Substructure & Foundation
+Substructure & foundation
 TextColour
 4
 0
@@ -3276,7 +3276,7 @@ Tool Tip
 Caption
 5
 11
-Land Leases
+Land leases
 TextColour
 4
 0
@@ -3372,7 +3372,7 @@ Tool Tip
 Caption
 5
 34
-Export Cable System Transportation
+Export cable system transportation
 TextColour
 4
 0
@@ -3420,7 +3420,7 @@ Tool Tip
 Caption
 5
 31
-Other Export Cable System Costs
+Other export cable system costs
 TextColour
 4
 0
@@ -3468,7 +3468,7 @@ Tool Tip
 Caption
 5
 26
-Export Cable Commissioning
+Export cable commissioning
 TextColour
 4
 0
@@ -3516,7 +3516,7 @@ Tool Tip
 Caption
 5
 13
-Export Cables
+Export cables
 TextColour
 4
 0
@@ -3564,7 +3564,7 @@ Tool Tip
 Caption
 5
 20
-Export Cable Systems
+Export cable systems
 TextColour
 4
 0
@@ -3612,7 +3612,7 @@ Tool Tip
 Caption
 5
 30
-Other Array Cable System Costs
+Other array cable system costs
 TextColour
 4
 0
@@ -3660,7 +3660,7 @@ Tool Tip
 Caption
 5
 33
-Array Cable System Transportation
+Array cable system transportation
 TextColour
 4
 0
@@ -3708,7 +3708,7 @@ Tool Tip
 Caption
 5
 12
-Array Cables
+Array cables
 TextColour
 4
 0
@@ -3756,7 +3756,7 @@ Tool Tip
 Caption
 5
 32
-Array Cable System Commissioning
+Array cable system commissioning
 TextColour
 4
 0
@@ -3804,7 +3804,7 @@ Tool Tip
 Caption
 5
 28
-Cable Accessories & Jointing
+Cable accessories & jointing
 TextColour
 4
 0
@@ -3852,7 +3852,7 @@ Tool Tip
 Caption
 5
 13
-Category Cost
+Category cost
 TextColour
 4
 0
@@ -3900,7 +3900,7 @@ Tool Tip
 Caption
 5
 25
-Electrical Infrastructure
+Electrical infrastructure
 TextColour
 4
 0
@@ -3948,7 +3948,7 @@ Tool Tip
 Caption
 5
 37
-Other Electrical Infrastructure Costs
+Other electrical infrastructure costs
 TextColour
 4
 0
@@ -5129,7 +5129,7 @@ Tool Tip
 Caption
 5
 10
-User Input
+User input
 TextColour
 4
 0
@@ -5356,7 +5356,7 @@ detailed_cost_choice_array_cables
  
  
 0
-0
+2
 1
 1
 1
@@ -5370,7 +5370,7 @@ detailed_cost_choice_cable_protection
  
  
 0
-0
+2
 1
 1
 1
@@ -5384,7 +5384,7 @@ detailed_cost_choice_export_cables
  
  
 0
-0
+2
 1
 1
 1
@@ -5398,7 +5398,7 @@ detailed_cost_choice_offshore_substation
  
  
 0
-0
+2
 1
 1
 1
@@ -5412,7 +5412,7 @@ detailed_cost_choice_onshore_transmission
  
  
 0
-0
+2
 1
 1
 1
