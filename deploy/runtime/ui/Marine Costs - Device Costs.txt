@@ -12,10 +12,10 @@ Name
 device_cost_input
 X
 3
-123
+120
 Y
 3
-156
+168
 Width
 3
 90
@@ -74,10 +74,10 @@ Name
 device_cost_override
 X
 3
-51
+234
 Y
 3
-186
+168
 Width
 3
 180
@@ -107,10 +107,10 @@ Name
 device_costs_total
 X
 3
-123
+120
 Y
 3
-156
+168
 Width
 3
 90
@@ -208,14 +208,14 @@ Width
 591
 Height
 3
-69
+84
 Tool Tip
 5
 0
 Caption
 5
-370
-Capital costs for Wave Energy systems consist of Device Costs, Balance of System Costs, and Financial Costs. This section allows for the cost inputs of the different sublevels of device costs through lump sum $ inputs, $ inputs as a function of system capacity in kW, modeled values from previous analyses, or itemized costs through the various levels of each category. 
+498
+Capital costs for Wave Energy systems consist of Device Costs, Balance of System Costs, and Financial Costs. This section allows for the cost inputs of the different sublevels of device costs through lump sum $ inputs, $ inputs as a function of system capacity in kW, modeled values from previous analyses, or itemized costs through the various levels of each category. To forego these cost categories and input the total device costs as a flat dollar amount, check the Override cost structure box.
 TextColour
 4
 0
@@ -250,7 +250,7 @@ X
 51
 Y
 3
-120
+129
 Width
 3
 528

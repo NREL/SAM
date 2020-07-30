@@ -51,14 +51,14 @@ Width
 591
 Height
 3
-57
+72
 Tool Tip
 5
 0
 Caption
 5
-243
-The Operational Expenditures (OPEX) of the MEC are the expenditures required to operate the project and maintain availability. These expenditures are generally annualized. The OPEX is seperated into the Operations costs and Maintenance costs. 
+365
+The Operational Expenditures (OPEX) of the MEC are the expenditures required to operate the project and maintain availability. These expenditures are generally annualized. The OPEX is seperated into the Operations costs and Maintenance costs.  To forego these cost categories and enter the OPEX costs as a flat dollar amount, check the Override cost structure box. 
 TextColour
 4
 0
@@ -90,7 +90,7 @@ Name
 om_cost_input
 X
 3
-147
+90
 Y
 3
 111
@@ -152,7 +152,7 @@ Name
 om_cost_override
 X
 3
-306
+249
 Y
 3
 111
@@ -185,7 +185,7 @@ Name
 total_operating_cost
 X
 3
-147
+90
 Y
 3
 111

@@ -1,6 +1,6 @@
 Marine Costs - BoS
-839
-345
+818
+219
 6
 Numeric
 
@@ -12,10 +12,10 @@ Name
 balance_of_system_cost_input
 X
 3
-165
+162
 Y
 3
-165
+174
 Width
 3
 90
@@ -74,13 +74,13 @@ Name
 balance_of_system_cost_override
 X
 3
-33
+270
 Y
 3
-198
+174
 Width
 3
-429
+168
 Height
 3
 24
@@ -107,10 +107,10 @@ Name
 balance_of_system_cost_total
 X
 3
-165
+162
 Y
 3
-165
+174
 Width
 3
 90
@@ -178,7 +178,7 @@ Width
 800
 Height
 3
-282
+198
 Tool Tip
 5
 0
@@ -208,14 +208,14 @@ Width
 591
 Height
 3
-69
+81
 Tool Tip
 5
 0
 Caption
 5
-370
-Capital costs for Wave Energy systems consist of Device Costs, Balance of System Costs, and Financial Costs. This section allows for the cost inputs of the different sublevels of device costs through lump sum $ inputs, $ inputs as a function of system capacity in kW, modeled values from previous analyses, or itemized costs through the various levels of each category. 
+490
+Capital costs for Wave Energy systems consist of Device Costs, Balance of System Costs, and Financial Costs. This section allows for the cost inputs of the different sublevels of device costs through lump sum $ inputs, $ inputs as a function of system capacity in kW, modeled values from previous analyses, or itemized costs through the various levels of each category. To forego these cost categories and input the BOS costs as a flat dollar amount, check the Override cost structure box. 
 TextColour
 4
 0
@@ -250,7 +250,7 @@ X
 33
 Y
 3
-114
+123
 Width
 3
 741

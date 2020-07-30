@@ -141,7 +141,7 @@
 			"tip": "Coatings to protect from corrosion in marine environment."
 		},
 		{
-			"name": "tt_transportation_of_structure",
+			"name": "tt_transportation_of_structure_cost",
 			"title": "Transportation of Structure",
 			"tip": "Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area."
 		},
@@ -371,7 +371,7 @@
 			"tip": "Cranage fees to use and operate crawler cranes, tower cranes, harbor cranes, self-propelled modular transporters (SPMTs) used for land-based assembly of components and load out onto installation vessels."
 		},
 		{
-			"name": "tt_port_improvements_cost",
+			"name": "tt_port_improvement_cost",
 			"title": "Port Improvements",
 			"tip": "Any improvement to existing port infrastructure paid for by project owner (e.g., quayside reinforcement)."
 		},
