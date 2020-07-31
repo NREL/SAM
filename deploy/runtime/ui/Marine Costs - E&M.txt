@@ -1881,13 +1881,13 @@ Name
 object 777
 X
 3
-591
+600
 Y
 3
 180
 Width
 3
-177
+186
 Height
 3
 345
@@ -1896,8 +1896,8 @@ Tool Tip
 0
 Caption
 5
-533
-To input power takeoff system costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled power takeoff system costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the User Input display.  
+544
+To input engineering and management costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled power takeoff system costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Itemized inputs display.  
 TextColour
 4
 0
