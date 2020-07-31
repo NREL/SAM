@@ -62,6 +62,30 @@
 
 -->
 
+<h1 id="2020-2-29-r3">Version 2020.2.29 Revision 3, SSC Version 242: July 31, 2020</h1>
+
+<p>This is an update to SAM 2020.2.29 Revision 2 that fixes the issues listed beow. For detailed descriptions of issues fixed for this update, see <a href="https://github.com/NREL/SAM/milestone/12">GitHub Issues for SAM 2020.2.29 Patch 3</a> and for <a href="https://github.com/NREL/ssc/issues/435">SSC 2020 Patch 3</a>.</p>
+
+<ul>
+<li>Update wind turbine library.</li>
+<li>New marine energy report templates.</li>
+<li>Run LK script from the command line: [path to SAM executable] [sam filename] [path to LK script file], for example <code>c:/sam/2020.2.29/x64/sam.exe no_sam_file c:/my-script.lk</code>.</li>
+<li>Fix weather file downloads from NSRDB and WIND Toolkit.</li>
+<li>Fix Residential / Commercial cash flow "Send to Excel with Equations" Excel workbook, federal and state income tax rates start in wrong year. This issue only affected workbook calculations, not SAM's cash flow calculations.</li>
+<li>Fix electricity bill issue with application of net metering credits for subhourly simulations.</li>
+<li>Fix electricity bill time series buy rates so that annual escalation is applied.</li>
+<li>Disable electricity bill time series buy and sell rates for net metering with $ credits.</li>
+<li>Fix issue with default values of array inputs such as time series electricity buy and sell rates that are disabled by default that caused simulation error or crash when input was enabled.</li>
+<li>Remove battery dispatch "copy schedule" button for Merchant Plant financial model because time-of-delivery factors do not apply in this context.</li>
+<li>Fix battery dispatch period numbers greater than 6 with error handling in SSC.</li>
+<li>Fix battery voltage table option issue that resulted in 100% battery roundtrip efficiency regardless of battery use.</li>
+<li>Fix Vanadium Flow battery voltage model issue that allowed it to discharge more than it was charged.</li>
+<li>Fix Detailed Photovoltaic model DC system availability losses being applied when Enable check box is not checked.</li>
+<li>Correct Detailed Photovoltaic model units reported for transformer no load loss, change from kWh to kW.</li>
+<li>Speed up PVWatts V7 self-shading calculations refactoring code.</li>
+<li>Fix PVWatts V5 single time step model.</li>
+</ul>
+	 
 <h1 id="2020-2-29-r2">Version 2020.2.29 Revision 2, SSC Version 240: May 28, 2020</h1>
 
 <p>This is an update to SAM 2020.2.29 Revision 1 that fixes the issues listed beow. For detailed descriptions of issues fixed for this update, see <a href="https://github.com/NREL/SAM/issues?q=is%3Aissue+milestone%3A%222020+Patch+2%22">GitHub Issues for SAM 2020.2.29 Patch 2</a>.</p>
