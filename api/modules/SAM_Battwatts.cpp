@@ -103,6 +103,12 @@ SAM_EXPORT void SAM_Battwatts_Battery_load_aset(SAM_table ptr, double* arr, int 
 	});
 }
 
+SAM_EXPORT void SAM_Battwatts_Load_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "load_escalation", arr, length);
+	});
+}
+
 SAM_EXPORT double SAM_Battwatts_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -256,6 +262,18 @@ SAM_EXPORT double* SAM_Battwatts_Battery_load_aget(SAM_table ptr, int* length, S
 	result = ssc_data_get_array(ptr, "load", length);
 	if (!result)
 		make_access_error("SAM_Battwatts", "load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Load_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "load_escalation", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "load_escalation");
 	});
 	return result;
 }

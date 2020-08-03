@@ -156,7 +156,7 @@
 			"gen": [0]
 		},
 		"Lifetime": {
-			"system_use_lifetime_output": 1
+			"system_use_lifetime_output": 0
 		},
 		"ThirdPartyOwnership": {
 			"elec_cost_with_system": [0],
