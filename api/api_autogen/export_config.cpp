@@ -228,7 +228,7 @@ int main(int argc, char *argv[]){
     std::cout << "Reading startup script...\n";
     std::ifstream ifs(startup_file.c_str());
     if(!ifs.is_open()){
-        std::cout << "Cannot open startup file at " << startup_file << "\n";
+        std::cerr << "Cannot open startup file at " << startup_file << std::endl;
         return 1;
     }
 

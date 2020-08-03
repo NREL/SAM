@@ -5,7 +5,7 @@ A_sf_UI
 1
 1
 1
-1269050
+1.26905e+06
 CT
 1
 1
@@ -748,7 +748,7 @@ const_per_interest1
 1
 1
 1
-26938618
+26938622
 const_per_interest2
 1
 1
@@ -808,7 +808,7 @@ const_per_interest_total
 1
 1
 1
-26938618
+26938622
 const_per_months1
 1
 1
@@ -905,7 +905,7 @@ const_per_principal1
 1
 1
 1
-673465472
+673465536
 const_per_principal2
 1
 1
@@ -935,13 +935,13 @@ const_per_principal_total
 1
 1
 1
-673465472
+673465536
 const_per_total1
 1
 1
 1
 1
-33673272
+33673276
 const_per_total2
 1
 1
@@ -1001,7 +1001,7 @@ construction_financing_cost
 1
 1
 1
-33673272
+33673276
 contingency_rate
 1
 1
@@ -1019,13 +1019,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-5360110
+5360112
 cost_dev_fee_value
 1
 1
 1
 1
-20203964
+20203966
 cost_equity_closing
 1
 1
@@ -1108,7 +1108,7 @@ csp.pt.cost.heliostats_m2
 1
 1
 1
-1269050
+1.26905e+06
 csp.pt.cost.installed_per_capacity
 1
 1
@@ -1144,7 +1144,7 @@ csp.pt.cost.plm.total
 1
 1
 1
-18920378
+18920400
 csp.pt.cost.power_block
 1
 1
@@ -1198,7 +1198,7 @@ csp.pt.cost.site_improvements_m2
 1
 1
 1
-1269050
+1.26905e+06
 csp.pt.cost.storage
 1
 1
@@ -2208,7 +2208,7 @@ helio_area_tot
 1
 1
 1
-1269050
+1.26905e+06
 helio_height
 1
 1
@@ -12259,7 +12259,7 @@ property_assessed_value
 1
 1
 1
-673465472
+673465536
 property_tax_rate
 1
 1
@@ -12880,13 +12880,13 @@ total_indirect_cost
 1
 1
 1
-114025224
+114025248
 total_installed_cost
 1
 1
 1
 1
-673465472
+673465536
 tower_exp
 1
 1

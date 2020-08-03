@@ -339,7 +339,7 @@ bos_equip_total
 1
 1
 1
-4000180
+4.00018e+06
 calculated_dcac_ratio
 1
 1
@@ -603,7 +603,7 @@ cec_i_o_ref
 1
 1
 1
-8.36044e-11
+8.36e-11
 cec_i_sc_ref
 1
 1
@@ -2043,7 +2043,7 @@ install_labor_total
 1
 1
 1
-2600120
+2.60012e+06
 install_margin_fixed
 1
 1
@@ -2067,7 +2067,7 @@ install_margin_total
 1
 1
 1
-1200050
+1.20005e+06
 installed_per_capacity
 1
 1
@@ -2714,7 +2714,7 @@ inv_snl_c0
 1
 1
 1
--2.44558e-08
+-2.45e-08
 inv_snl_c1
 1
 1
@@ -2738,13 +2738,13 @@ inv_snl_eff_cec
 1
 1
 1
-97.5869
+97.5882
 inv_snl_eff_euro
 1
 1
 1
 1
-97.377
+97.3788
 inv_snl_idcmax
 1
 1
@@ -2873,7 +2873,7 @@ inverter_total
 1
 1
 1
-1200050
+1.20005e+06
 inverterarray_power
 1
 1
@@ -3156,7 +3156,8 @@ lib_is_bifacial
 lib_manufacturer
 1
 4
-0
+8
+SunPower
 library_folder_list
 1
 4
@@ -3269,7 +3270,7 @@ module_total
 1
 1
 1
-7600340
+7.60034e+06
 module_width
 1
 1

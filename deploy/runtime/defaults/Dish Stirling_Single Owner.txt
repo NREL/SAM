@@ -873,7 +873,7 @@ csp.ds.cost.plm.total
 1
 1
 1
-2.22395e+06
+2223950
 csp.ds.cost.receiver
 1
 1

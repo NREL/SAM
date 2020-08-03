@@ -2927,7 +2927,7 @@ void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 
 		wxDataViewItemArray dvia;
 
-		size_t cnt = m_pTech->GetModel()->GetChildren(wxDataViewItem(0), dvia);
+		m_pTech->GetModel()->GetChildren(wxDataViewItem(0), dvia);
 		bool foundTech = false;
 		for (size_t i = 0; (i < dvia.Count()) && !foundTech; i++)
 		{
@@ -2935,7 +2935,7 @@ void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 			m_pTech->SetCurrentItem(dvi);
 			if (m_pTech->IsContainer(dvi))
 			{
-				cnt = m_pTech->GetModel()->GetChildren(dvi, dvia);
+				m_pTech->GetModel()->GetChildren(dvi, dvia);
 				for (size_t ic = 0; (ic < dvia.Count()) && !foundTech; ic++)
 				{
 					const wxDataViewItem dvic = dvia[ic];
@@ -2964,14 +2964,14 @@ void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 			L = (SamApp::Config().Options(m_fnames[selfin]).LongName);
 			bool foundFin = false;
 
-			cnt = m_pFin->GetModel()->GetChildren(wxDataViewItem(0), dvia);
+			m_pFin->GetModel()->GetChildren(wxDataViewItem(0), dvia);
 
 			for (size_t i = 0; (i < dvia.Count()) && !foundFin; i++)
 			{
 				wxDataViewItem dvi = dvia[i];
 				if (m_pFin->IsContainer(dvi))
 				{
-					cnt = m_pFin->GetModel()->GetChildren(dvi, dvia);
+					m_pFin->GetModel()->GetChildren(dvi, dvia);
 					for (size_t ic = 0; (ic < dvia.Count()) && !foundFin; ic++)
 					{
 						wxDataViewItem dvic = dvia[i];
@@ -3118,7 +3118,7 @@ void ConfigDialog::OnTechTree(wxDataViewEvent &)
 	if (title.empty())
 		title = "None";
 	m_techname = title;
-	for (int i = 0; i < m_tnames.Count(); i++)
+	for (size_t i = 0; i < m_tnames.Count(); i++)
 	{
 		if (SamApp::Config().Options(m_tnames[i]).LongName == m_techname)
 		{
@@ -3142,7 +3142,7 @@ void ConfigDialog::OnFinTree(wxDataViewEvent &)
 	if (title.empty() || m_pFin->IsContainer(m_pFin->GetCurrentItem()))
 		title = "None";
 	m_finname = title;
-	for (int i = 0; i < m_fnames.Count(); i++)
+	for (size_t i = 0; i < m_fnames.Count(); i++)
 	{
 		if (SamApp::Config().Options(m_fnames[i]).LongName == m_finname)
 		{
