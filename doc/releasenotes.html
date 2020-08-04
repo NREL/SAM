@@ -244,7 +244,7 @@ Industrial Process Heat (IPH)
 <p>Fix problems with inverter input voltage calculations and MPPT limit ratings.</p>
 <p>Support simulations with custom time periods, available in pvsamv1 via API only.</p>
 
-<h2 id="pvwatts">PVWatts</h2>
+<h2 id="2020-2-29-pvwatts">PVWatts</h2>
 
 <p>Update from PVWatts V5 to PVWatts V7:</p>
 <ul>
@@ -317,7 +317,7 @@ Industrial Process Heat (IPH)
 
 <p>Fix issues with numeric solver "monotonic equation solver" used by CSP models.</p>
 	
-<h2 id="2020-2-29-r2-mspt">CSP Molten Salt Power Tower</h2>
+<h2 id="2020-2-29-mspt">CSP Molten Salt Power Tower</h2>
 	
 <p>A <a href="https://doi.org/10.1016/j.enconman.2020.113025" target="_blank">new Rankine cycle air-cooled condenser model</a> that calculates turbine back pressure as a function of ambient temperature and cycle heat rejection load. The model uses a normalized polynomial function scaled to ambient temperature at design and minimum condenser pressure. This new model may result in lower total annual output compared to SAM 2018.11.11 and older versions of SAM because at full load heat rejection when the ambient dry-bulb temperature is greater than 10&deg;C, the new model calculates a higher condenser pressure. For the default Molten Salt Power Tower case in SAM, this happens for 60% of the year, resulting in reduction in total annual electricity output of about 2%.</p>
 <p>New inputs that don't appear in UI like <code>startup_ramp_time</code> and <code>startup_target_Tdiff</code>.</p>
