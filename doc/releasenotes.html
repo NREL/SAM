@@ -318,9 +318,9 @@ Industrial Process Heat (IPH)
 <p>Fix issues with numeric solver "monotonic equation solver" used by CSP models.</p>
 	
 <h2>CSP Molten Salt Power Tower</h2>
-
+	
+<p>A new Rankine cycle air-cooled condenser model that calculates turbine back pressure as a function of ambient temperature and cycle heat rejection load. This <a href="https://doi.org/10.1016/j.enconman.2020.113025">model</a> uses a normalized polynomial function which is scaled according to ambient temperature at design and minimum condenser pressure. This new model may result in lower total annual output compared to older versions of SAM because at full load heat rejection when the ambient dry-bulb temperature is greater than 10&deg;C, the new model calculates a higher condenser pressure. For the default Molten Salt Power Tower case in SAM, this happens for 60% of the year, resulting in reduction in total annual electricity output of about 2%.</p>
 <p>New inputs that don't appear in UI like <code>startup_ramp_time</code> and <code>startup_target_Tdiff</code>.</p>
-<p>New radiative cooling model for Rankine cycle power cycle model.</p>
 <p>Fix bug with display of "Turbine inlet pressure control" list in user interface.</p> 
 <p>Fix bug with power cycle evaporative cooling option.</p>
 <p>Fix bug for power cycle sizes greater than 150 MW when all other inputs are left at their default values.</p>
