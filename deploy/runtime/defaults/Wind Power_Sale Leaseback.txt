@@ -925,7 +925,7 @@ depth
 1
 1
 1
-2.36
+1
 desired_farm_size
 1
 1
@@ -2179,7 +2179,7 @@ distance_to_interconnect_mi
 1
 1
 1
-10
+0
 dscr_reserve_months
 1
 1
@@ -2392,6 +2392,9 @@ erection_other_usd
 0
 est_bos_cost
 1
+1
+1
+1
 0
 est_turbine_cost
 1
@@ -2531,7 +2534,7 @@ gust_velocity_m_per_s
 1
 1
 1
-50
+0
 hextrap_approp_uncert
 1
 1
@@ -2957,7 +2960,7 @@ labor_cost_multiplier
 1
 1
 1
-1
+0
 lib_dispatch_factor1
 1
 1
@@ -3520,7 +3523,7 @@ rated_thrust_N
 1
 1
 1
-589000
+0
 real_discount_rate
 1
 1
@@ -3802,7 +3805,7 @@ total_20yr_uncert
 1
 1
 1
-0
+12.0852
 total_bos_cost
 1
 1
@@ -4377,8 +4380,8 @@ USA
 wind_resource.description
 1
 4
-80
-Southern WY - flat lands (NREL AWS Truepower representative file),,,,,,,,,,,,,,,
+65
+Southern WY - flat lands (NREL AWS Truepower representative file)
 wind_resource.elev
 1
 1

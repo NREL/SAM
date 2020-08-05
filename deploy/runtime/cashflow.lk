@@ -42,6 +42,22 @@ function cf_formatting_examples()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// Helper functions
+////////////////////////////////////////////////////////////////////////////////
+
+function is_batt_tech()
+{
+	// may need to update to include PVWatts Battery, but as of 2020.2.29:
+	// no battery replacements for PVWatts Battery
+	// no retail purchases for PVWatts Battery because it is only behind-the-meter
+	x = ( tech == 'PV Battery' || 
+	      tech == 'Generic Battery' || 
+	      ( tech == 'Fuel Cell' && value('en_batt') == true ) 
+	    );
+	return x;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // Functions for Results page cash flow tab
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -143,10 +159,8 @@ function cf_om_expenses()
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0); 
     tech = technology();
     fin = financing(); 
-    // PVWatts does not have battery replacements as of 2020.2.19 
-    batt_replacement_tech = (tech == 'PV Battery' || tech == 'Generic Battery' || ( tech == 'Fuel Cell' && value('en_batt') == true ) );
     ppa_merchant_fin = (fin == 'Host Developer' || fin == 'Single Owner' || fin == 'Merchant Plant' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' );
-    if ( batt_replacement_tech )
+    if ( is_batt_tech() )
 	{
 		cfline( 'cf_battery_replacement_cost', 0);
 		// electricity purchases to charge battery not available for all financial models as of 2020.2.29
@@ -1120,13 +1134,19 @@ function set_om(xl) {
 		xl_set( xl, 'n/a', 'om_production_escal'); 
 	} 
 	 
-	// battery replacment costs 
+	// battery replacment costs and retail electricity purchases
 	tech = technology(); 
 	fin = financing(); 
-	batt_tech = false; 
-	 // PVWatts does not model battery replacements
-	batt_tech = (  tech == 'PV Battery' || tech == 'Generic Battery' || (( tech == 'Fuel Cell') && value('en_batt') == true ) ); 
-	if ( batt_tech == true ) { xl_set( xl, output('cf_battery_replacement_cost'), 'cf_battery_replacement_cost' ); }
+	if ( is_batt_tech() ) 
+	{
+		send_excel( xl, 'batt_replacement_option' );
+		xl_set( xl, output('cf_battery_replacement_cost'), 'cf_battery_replacement_cost' ); 
+		// for single owner, retail purchases to charge battery
+		if ( varinfo( 'cf_utility_bill' ) != null )
+		{
+			xl_set( xl, output('cf_utility_bill'), 'cf_utility_bill' ); 
+		}
+	}
 	
 	if ( tech == 'Fuel Cell' && ( /*fin == 'Commercial' ||*/ fin == 'Single Owner' ) ) // fuel cell only available for commercial and single owner as of SAM 2020.2.29
 	{
@@ -1140,12 +1160,6 @@ function set_om(xl) {
 	}
 	else { xl_set( xl, 'Fuel cell O&M costs not yet implemented. Cash flow send-to-Excel for Commercial does not acount for fuel cell-specific operating costs.', 'om_fixed1' ); } // in case we add other financial models for fuel cell
 	
-	// electricity purchase for PV - Single Owner only as of Oct 2018
-	// need to update to work with generic system - Single Owner
-	if ( batt_tech && varinfo( 'cf_utility_bill' ) != null )
-	{
-		xl_set( xl, output('cf_utility_bill'), 'cf_utility_bill' ); 
-	}
 } 
  
 function set_rescom(xl) 

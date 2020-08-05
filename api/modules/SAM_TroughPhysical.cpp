@@ -4939,6 +4939,18 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_pipe_tes_diams_aget(SAM_table ptr,
 
 
 
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_pipe_tes_lengths_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pipe_tes_lengths", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "pipe_tes_lengths");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TroughPhysical_Outputs_pipe_tes_mdot_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5293,6 +5305,17 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_rh_aget(SAM_table ptr, int* length
 	result = ssc_data_get_array(ptr, "rh", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "rh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_Outputs_sim_duration_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sim_duration", &result))
+		make_access_error("SAM_TroughPhysical", "sim_duration");
 	});
 	return result;
 }

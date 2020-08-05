@@ -189,6 +189,14 @@ extern "C"
 	SAM_EXPORT void SAM_Swh_SWH_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set load_escalation: Annual load escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Swh_SWH_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set mdot: Total system mass flow rate [kg/s]
 	 * options: None
 	 * constraints: POSITIVE
@@ -403,6 +411,8 @@ extern "C"
 	SAM_EXPORT double SAM_Swh_SWH_irrad_mode_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Swh_SWH_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Swh_SWH_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Swh_SWH_mdot_nget(SAM_table ptr, SAM_error *err);
 

@@ -110,6 +110,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_Grid_Load_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
+	/**
+	 * Set load_escalation: Annual load escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Grid_Load_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
 
 	/**
 	 * Lifetime Getters
@@ -145,6 +153,8 @@ extern "C"
 	 */
 
 	SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Grid_Load_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
