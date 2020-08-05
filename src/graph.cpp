@@ -33,6 +33,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/plot/plscatterplot.h>
 #include <wex/plot/plcontourplot.h>
 #include <wex/plot/plcolourmap.h>
+#include <wex/plot/plsectorplot.h>
 
 #include <wex/dview/dvselectionlist.h>
 
@@ -249,7 +250,7 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 	wxArrayString ynames;
 	int ndata = -1;
 
-	if (m_g.Type == Graph::CONTOUR)
+	if (m_g.Type == Graph::CONTOUR) 
 	{
 		if (m_g.Y.size()== 1)
 			ndata = 0;
@@ -323,7 +324,7 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 				wxPLLinePlot::SOLID, m_g.Size + 2);
 		else if (m_g.Type == Graph::BAR)
 		{
-			wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], 0.0, m_s->GetLabel(ynames[i]), s_colours[cidx]);
+			wxPLBarPlot* bar = new wxPLBarPlot(plotdata[i], 0.0, m_s->GetLabel(ynames[i]), s_colours[cidx]);
 			if (m_g.Size != 0)
 				bar->SetThickness(m_g.Size);
 			bar_group.push_back(bar);
@@ -331,7 +332,7 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 		}
 		else if (m_g.Type == Graph::STACKED)
 		{
-			wxPLBarPlot *bar = new wxPLBarPlot(plotdata[i], 0.0, m_s->GetLabel(ynames[i]), s_colours[cidx]);
+			wxPLBarPlot* bar = new wxPLBarPlot(plotdata[i], 0.0, m_s->GetLabel(ynames[i]), s_colours[cidx]);
 			if (m_g.Size != 0)
 				bar->SetThickness(m_g.Size);
 			bar->SetStackedOn(last_bar);
@@ -344,6 +345,8 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 			if (plotdata[i].size() < 100)
 				plot->SetAntiAliasing(true);
 		}
+		else if (m_g.Type == Graph::SECTOR)
+			ndata = 0;
 
 
 		if ( ++cidx >= (int)s_colours.size() ) cidx = 0; // incr and wrap around colour index
@@ -364,7 +367,7 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 			bar_group[i]->SetGroup( bar_group );
 
 	// create the axes
-	if (ndata == 0) // contour
+	if (ndata == 0) // contour or sector
 	{
 		if (m_g.Type == Graph::CONTOUR)
 		{
@@ -406,6 +409,32 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 					GetXAxis2()->SetLabel(m_g.XLabel);
 				}
 			}
+		}
+		else if (m_g.Type == Graph::SECTOR) {
+			wxPLSectorPlot* sec = new wxPLSectorPlot();
+//    sec->AddSector(64.89, "Total device cost");
+//    sec->AddSector(17.27, "Total balance of system cost");
+//    sec->AddSector(6.79, "Total financial cost");
+//    sec->AddSector(11.05, "Total operating cost (annual)");
+			for (size_t i = 0; i < yvars.size() && i < ynames.size(); i++) {
+				sec->AddSector(yvars[i]->Value(), m_s->GetLabel(ynames[i]));
+			}
+			sec->SetCenterHoleSize(0.0);
+		    sec->SetAntiAliasing(true);
+			/* custom color
+			std::vector<wxColour> clr;
+			clr.push_back(wxColour(51,88,153));
+			clr.push_back(wxColour(363,160,183));
+			clr.push_back(wxColour(121,145,206));
+			clr.push_back(wxColour(84,130,53));
+			sec->SetColours(clr);
+			*/
+
+			sec->SetFormat(wxNUMERIC_REAL, wxNUMERIC_GENERIC, false, wxEmptyString, " %");
+			AddPlot(sec);
+			ShowAxes(false);
+			SetBorderWidth(0);
+
 		}
 	}
 	else
