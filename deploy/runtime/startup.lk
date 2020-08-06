@@ -1679,7 +1679,8 @@ function setup_mewave_pages()
 		{'name'='Marine Costs - Reserve Costs','caption'='Reserve Costs','collapsible'=true,'collapsible_var'='reserve_costs_shown'},
 		{'name'='Marine Costs - Other Financial Costs','caption'='Other Financial Costs','collapsible'=true,'collapsible_var'='other_finance_costs_shown'} ]],
 		{'sidebar'='Financial Costs','help'='mhk_wave_system_costs'} );*/
-	addpage( [[ 'Marine Costs - Financial']],{'sidebar'='Capital Costs: Financial','help'='mhk_wave_system_costs'});
+	addpage( [[ 'Marine Costs - Financial', {'name'='Marine Costs - Financial Itemized','caption'='Itemized Costs','collapsible'=true,'collapsible_var'='financial_itemized_shown'}]],
+		{'sidebar'='Capital Costs: Financial','help'='mhk_wave_system_costs'});
 	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations','collapsible'=true,'collapsible_var'='opex_we_shown'},
 		{'name'='Marine Costs - Maintenance','caption'='Maintenance','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
 		{'sidebar'='O&M Costs','help'='mhk_wave_system_costs'} );

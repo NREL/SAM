@@ -250,7 +250,7 @@ X
 33
 Y
 3
-123
+126
 Width
 3
 741
@@ -292,7 +292,7 @@ balance_of_system_cost_input
 1
 Balance of system costs
 $
- 
+ME Costs
 0
 2
 1
@@ -306,7 +306,7 @@ balance_of_system_cost_override
 1
  
  
- 
+ME Cost Choice
 0
 2
 1

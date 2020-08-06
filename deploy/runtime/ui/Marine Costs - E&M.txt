@@ -408,7 +408,7 @@ Name
 detailed_cost_choice_construction_management
 X
 3
-400
+399
 Y
 3
 250
@@ -441,7 +441,7 @@ Name
 detailed_cost_choice_health_safety
 X
 3
-400
+399
 Y
 3
 460
@@ -1896,8 +1896,8 @@ Tool Tip
 0
 Caption
 5
-544
-To input engineering and management costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled power takeoff system costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Itemized inputs display.  
+566
+To input engineering and management costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled engineering and management costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized engineering and management costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Itemized inputs display.  
 TextColour
 4
 0
@@ -2685,10 +2685,10 @@ construction_management_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -2728,7 +2728,7 @@ detailed_cost_choice_construction_management
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -2742,7 +2742,7 @@ detailed_cost_choice_health_safety
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -2755,10 +2755,10 @@ detailed_design_and_construction_eng_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -2839,8 +2839,8 @@ health_safety_and_environmental_monitoring_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
 2
 1
@@ -2923,10 +2923,10 @@ other_eng_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -2965,10 +2965,10 @@ procurement_management_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -3007,10 +3007,10 @@ project_certification_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1

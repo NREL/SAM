@@ -1,7 +1,7 @@
 Marine Costs - Electrical Infrastructure
 820
 1388
-102
+103
 Label
 
 1
@@ -1025,7 +1025,7 @@ X
 345
 Y
 3
-200
+201
 Width
 3
 132
@@ -1058,7 +1058,7 @@ X
 345
 Y
 3
-620
+621
 Width
 3
 129
@@ -1091,7 +1091,7 @@ X
 345
 Y
 3
-410
+411
 Width
 3
 132
@@ -2288,6 +2288,54 @@ Caption
 5
 0
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+567
+Y
+3
+228
+Width
+3
+180
+Height
+3
+300
+Tool Tip
+5
+0
+Caption
+5
+558
+To input electrical infrastructure costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled electrical infrastructure costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized electrical infrastructure costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the User input display.  
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 Label
@@ -4486,7 +4534,7 @@ X
 315
 Y
 3
-1340
+1341
 Width
 3
 90
@@ -5341,10 +5389,10 @@ array_cable_system_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -5467,10 +5515,10 @@ cable_protection_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -5510,7 +5558,7 @@ detailed_cost_choice_array_cables
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -5524,7 +5572,7 @@ detailed_cost_choice_cable_protection
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -5537,8 +5585,8 @@ detailed_cost_choice_export_cables
 3
 1
  
- 
- 
+$
+ME Cost Choice
 0
 2
 1
@@ -5552,7 +5600,7 @@ detailed_cost_choice_offshore_substation
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -5566,7 +5614,7 @@ detailed_cost_choice_onshore_transmission
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -5607,10 +5655,10 @@ elec_infras_cost_input
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-0
+3
 1
 1
 1
@@ -5622,9 +5670,9 @@ elec_infras_cost_method
 1
  
  
- 
+ME Cost Choice 
 0
-0
+2
 1
 1
 1
@@ -5705,10 +5753,10 @@ export_cable_system_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -5831,10 +5879,10 @@ offshore_substation_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -5943,10 +5991,10 @@ onshore_transmission_infrastructure_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -5999,10 +6047,10 @@ other_elec_infra_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1

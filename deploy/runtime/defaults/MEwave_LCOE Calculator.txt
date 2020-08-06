@@ -1021,7 +1021,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5655880
+5.65588e+06
 eng_and_mgmt_cost_input
 1
 1
@@ -1225,6 +1225,12 @@ financial_cost_total
 1
 1
 30878226
+financial_itemized_shown
+1
+1
+1
+1
+0
 financing_and_incentives_cost
 1
 1
@@ -1422,7 +1428,7 @@ insurance_during_construction_cost
 1
 1
 1
-3430910
+3.43091e+06
 insurance_during_construction_cost_input
 1
 1
@@ -1580,12 +1586,6 @@ itemized_check_structural
 1
 2
 itemized_num
-1
-1
-1
-1
-0
-itemized_option
 1
 1
 1
@@ -1759,7 +1759,7 @@ maintenance_cost
 1
 1
 1
-3658280
+3.65828e+06
 maintenance_cost_input
 1
 1
@@ -3206,7 +3206,7 @@ site_access_port_staging_cost
 1
 1
 1
-3774010
+3.77401e+06
 site_access_port_staging_cost_input
 1
 1

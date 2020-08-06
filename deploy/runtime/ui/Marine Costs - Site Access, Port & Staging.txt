@@ -1530,8 +1530,8 @@ Tool Tip
 0
 Caption
 5
-554
-To input site access and port and staging system costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled power takeoff system costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
+546
+To input site access and port and staging system costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled site access costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized site access costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
 TextColour
 4
 0
@@ -2840,10 +2840,10 @@ cranage_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -2855,7 +2855,7 @@ detailed_cost_choice_port_fees
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -2869,7 +2869,7 @@ detailed_cost_choice_staging_port
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -2952,10 +2952,10 @@ other_site_access_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -2994,10 +2994,10 @@ port_fees_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -3050,8 +3050,8 @@ port_improvement_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
 2
 1
@@ -3106,8 +3106,8 @@ site_access_port_staging_cost_input
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
 2
 1
@@ -3121,7 +3121,7 @@ site_access_port_staging_cost_method
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -3148,10 +3148,10 @@ staging_port_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1

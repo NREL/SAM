@@ -244,7 +244,7 @@ om_cost_input
 1
 Total Opex
 $/year
- 
+ME Costs 
 0
 2
 1
@@ -258,7 +258,7 @@ om_cost_override
 1
  
  
- 
+ME Cost Choice
 0
 2
 1

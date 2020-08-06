@@ -1632,10 +1632,10 @@ Name
 object 7
 X
 3
-519
+558
 Y
 3
-312
+270
 Width
 3
 165
@@ -1647,8 +1647,8 @@ Tool Tip
 0
 Caption
 5
-539
-To input mooring costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled mooring, foundation, and substructure costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
+536
+To input mooring costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled mooring, foundation, and substructure costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized mooring costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
 TextColour
 4
 0
@@ -3821,10 +3821,10 @@ anchors_and_piles_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -3835,10 +3835,10 @@ ancillary_marine_systems_cost
 3
 1
  
- 
- 
+$ 
+ME Costs  
 0
-2
+3
 1
 1
 1
@@ -3919,10 +3919,10 @@ connecting_hardware_cost
 3
 1
  
- 
- 
+$
+ME Costs  
 0
-2
+3
 1
 1
 1
@@ -3933,10 +3933,10 @@ detailed_cost_choice_ancillary_marine_systems
 3
 1
  
- 
- 
+$ 
+ME Costs  
 0
-2
+3
 1
 1
 1
@@ -3948,7 +3948,7 @@ detailed_cost_choice_outfitting_structure
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -3961,10 +3961,10 @@ integration_assembly_testing_checkout_cost
 3
 1
  
- 
- 
+$ 
+ME Costs  
 0
-2
+3
 1
 1
 1
@@ -4017,10 +4017,10 @@ messenger_lines_and_buoys_cost
 3
 1
  
- 
- 
+$ 
+ME Costs  
 0
-2
+3
 1
 1
 1
@@ -4059,10 +4059,10 @@ mooring_lines_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -4087,10 +4087,10 @@ other_mooring_cost
 3
 1
  
- 
- 
+$ 
+ME Costs  
 0
-2
+3
 1
 1
 1
@@ -4115,10 +4115,10 @@ outfitting_structure_cost
 3
 1
  
- 
- 
+$ 
+ME Costs  
 0
-2
+3
 1
 1
 1
@@ -4185,10 +4185,10 @@ scour_protection_cost
 3
 1
  
- 
- 
+$ 
+ME Costs  
 0
-2
+3
 1
 1
 1
@@ -4213,10 +4213,10 @@ subfoundation_or_bedding_cost
 3
 1
  
- 
- 
+$ 
+ME Costs  
 0
-2
+3
 1
 1
 1
@@ -4227,10 +4227,10 @@ transportation_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1

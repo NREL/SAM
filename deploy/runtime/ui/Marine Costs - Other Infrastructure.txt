@@ -300,8 +300,8 @@ Tool Tip
 0
 Caption
 5
-540
-To input structural assembly costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled structural assembly costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural assembly costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the User Input display.  
+545
+To input other miscellaneous infrastructure costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled infrastructure costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized infrastructure costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the User Input display.  
 TextColour
 4
 0
@@ -1785,10 +1785,10 @@ dedicated_om_vessel_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -1813,10 +1813,10 @@ offshore_accomodations_other_infras_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -1827,10 +1827,10 @@ offshore_logistical_infrastructure_other_infras_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -1841,10 +1841,10 @@ om_equipment_purchases_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -1855,10 +1855,10 @@ onshore_om_facilities_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -1897,10 +1897,10 @@ other_infrastructure_transportation_other_infras_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -1911,10 +1911,10 @@ other_other_infras_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1

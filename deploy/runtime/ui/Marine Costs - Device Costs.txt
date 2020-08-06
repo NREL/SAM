@@ -1,6 +1,6 @@
 Marine Costs - Device Costs
-825
-251
+818
+208
 6
 Numeric
 
@@ -178,7 +178,7 @@ Width
 800
 Height
 3
-228
+189
 Tool Tip
 5
 0
@@ -292,9 +292,9 @@ device_cost_input
 1
 Device costs
 $
- 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -306,7 +306,7 @@ device_cost_override
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1

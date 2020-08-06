@@ -2337,7 +2337,7 @@ detailed_cost_choice_scheduled_maintenance
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -2351,7 +2351,7 @@ detailed_cost_choice_unscheduled_maintenance
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -2422,10 +2422,10 @@ long_term_service_agreement_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -2450,10 +2450,10 @@ maintenance_cost_input
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -2465,7 +2465,7 @@ maintenance_cost_method
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -2545,8 +2545,8 @@ other_maintenance_cost
 3
 1
  
- 
- 
+$ 
+ME Costs 
 0
 2
 1
@@ -2620,10 +2620,10 @@ scheduled_maintenance_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -2720,8 +2720,8 @@ unscheduled_maintenance_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
 2
 1

@@ -3872,10 +3872,10 @@ annual_leases_fees_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -3929,7 +3929,7 @@ detailed_cost_choice_annual_leases
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -3943,7 +3943,7 @@ detailed_cost_choice_env_health_safety
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -3957,7 +3957,7 @@ detailed_cost_choice_gen_admin
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -3970,10 +3970,10 @@ environmental_health_and_safety_monitoring_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -4068,10 +4068,10 @@ insurance_operations_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -4194,10 +4194,10 @@ operations_cost_input
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -4209,7 +4209,7 @@ operations_cost_method
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -4236,10 +4236,10 @@ operations_management_general_administration_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -4320,10 +4320,10 @@ other_operations_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1

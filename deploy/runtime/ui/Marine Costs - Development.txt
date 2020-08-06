@@ -3985,8 +3985,8 @@ Tool Tip
 0
 Caption
 5
-535
-To input power takeoff system costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled power takeoff system costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
+518
+To input development costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled development costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized development costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
 TextColour
 4
 0
@@ -6027,7 +6027,7 @@ detailed_cost_choice_financing_incentive
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -6041,7 +6041,7 @@ detailed_cost_choice_initial_engineering
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -6055,7 +6055,7 @@ detailed_cost_choice_interconnection
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -6069,7 +6069,7 @@ detailed_cost_choice_permitting_leasing
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -6082,7 +6082,7 @@ detailed_cost_choice_project_management
 3
 1
  
- 
+ME Cost Choice 
  
 0
 2
@@ -6097,7 +6097,7 @@ detailed_cost_choice_site_characterization
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -6111,7 +6111,7 @@ detailed_cost_choice_site_selection
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -6222,10 +6222,10 @@ financing_and_incentives_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -6292,10 +6292,10 @@ initial_engineering_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -6334,10 +6334,10 @@ interconnection_and_power_marketing_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -6474,10 +6474,10 @@ other_development_cost
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -6600,10 +6600,10 @@ permitting_and_leasing_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -6684,10 +6684,10 @@ professional_advisory_services_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -6712,10 +6712,10 @@ project_management_during_development_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -6810,10 +6810,10 @@ site_characterization_cost
 3
 1
  
- 
- 
+$ 
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -6852,10 +6852,10 @@ site_selection_cost
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1

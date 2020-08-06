@@ -2639,10 +2639,10 @@ Name
 total_bos_cost_per_kwh
 X
 3
-597
+678
 Y
 3
-612
+648
 Width
 3
 90
@@ -2686,10 +2686,10 @@ Name
 total_capital_cost_per_kwh
 X
 3
-552
+678
 Y
 3
-609
+648
 Width
 3
 90
@@ -2733,10 +2733,10 @@ Name
 total_device_cost_per_kwh
 X
 3
-672
+678
 Y
 3
-621
+648
 Width
 3
 90
@@ -2780,10 +2780,10 @@ Name
 total_financial_cost_per_kwh
 X
 3
-727
+678
 Y
 3
-607
+648
 Width
 3
 90
@@ -2827,10 +2827,10 @@ Name
 total_operations_cost_per_kwh
 X
 3
-687
+678
 Y
 3
-597
+648
 Width
 3
 90
@@ -3104,7 +3104,7 @@ additional_structural_components_cost
 1
  
 $
- 
+ME Costs 
 0
 3
 1
@@ -3173,10 +3173,10 @@ assembly_and_install_cost_input
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -3187,8 +3187,8 @@ assembly_and_install_cost_method
 3
 1
  
- $
- 
+$
+ME Cost Choice 
 0
 3
 1
@@ -3244,7 +3244,7 @@ coatings_cost
 1
  
 $
- 
+ME Costs
 0
 3
 1
@@ -3272,7 +3272,7 @@ detailed_cost_choice_marine_systems
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -3286,7 +3286,7 @@ detailed_cost_choice_struct_assem
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -3299,10 +3299,10 @@ development_cost_input
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -3313,8 +3313,8 @@ development_cost_method
 3
 1
  
- $
  
+ME Cost Choice 
 0
 3
 1
@@ -3341,10 +3341,10 @@ eng_and_mgmt_cost_input
 3
 1
  
- 
- 
+$
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -3356,7 +3356,7 @@ eng_and_mgmt_cost_method
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -3511,7 +3511,7 @@ marine_systems_cost
 1
  
 $
- 
+ME Costs 
 0
 3
 1
@@ -3552,10 +3552,10 @@ mooring_found_substruc_cost_input
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-2
+3
 1
 1
 1
@@ -3566,8 +3566,8 @@ mooring_found_substruc_cost_method
 3
 1
  
- $
  
+ME Cost Choice 
 0
 3
 1
@@ -3720,10 +3720,10 @@ other_costs
 3
 1
  
- 
- 
+$ 
+ME Costs  
 0
-2
+3
 1
 1
 1
@@ -3776,10 +3776,10 @@ other_infrastructure_cost_input
 3
 1
  
- 
- 
+$ 
+ME Costs
 0
-0
+3
 1
 1
 1
@@ -3790,8 +3790,8 @@ other_infrastructure_cost_method
 3
 1
  
- $
- 
+$
+ME Cost Choice 
 0
 3
 1
@@ -3874,10 +3874,10 @@ power_takeoff_system_cost_input
 3
 1
  
- 
- 
+$ 
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -3889,7 +3889,7 @@ power_takeoff_system_cost_method
 1
  
  $
- 
+ME Cost Choice 
 0
 3
 1
@@ -3931,7 +3931,7 @@ prime_mover_cost
 1
  
 $
- 
+ME Costs
 0
 3
 1
@@ -4057,7 +4057,7 @@ structural_assembly_cost_input
 1
  
 $
- 
+ME Costs
 0
 3
 1
@@ -4071,7 +4071,7 @@ structural_assembly_cost_method
 1
  
  
- 
+ME Cost Choice 
 0
 2
 1
@@ -4211,7 +4211,7 @@ transport_structure_cost
 1
  
 $
- 
+ME Costs 
 0
 3
 1

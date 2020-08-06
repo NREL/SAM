@@ -1351,7 +1351,7 @@ X
 345
 Y
 3
-1295
+1296
 Width
 3
 135
@@ -1596,7 +1596,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2518,8 +2519,8 @@ Tool Tip
 0
 Caption
 5
-535
-To input power takeoff system costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled power takeoff system costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized structural costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
+545
+To input power takeoff system costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled power takeoff system costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized power takeoff system costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
 TextColour
 4
 0
@@ -6232,7 +6233,7 @@ TabOrder
 3
 4294967295
 
-76
+75
 accumulators_cost
 3
 1
@@ -6251,10 +6252,10 @@ air_turbine_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -6321,10 +6322,10 @@ coatings_pto_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-8
+3
 1
 1
 1
@@ -6378,7 +6379,7 @@ detailed_cost_choice_air_turbine
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -6392,7 +6393,7 @@ detailed_cost_choice_electrical_generator
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -6406,7 +6407,7 @@ detailed_cost_choice_gearbox
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -6420,7 +6421,7 @@ detailed_cost_choice_hydraulic_drivetrain
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -6434,7 +6435,7 @@ detailed_cost_choice_power_electronics
 1
  
  
- 
+ME Cost Choice
 0
 2
 1
@@ -6447,10 +6448,10 @@ electrical_generator_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -6503,10 +6504,10 @@ gearbox_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -6588,7 +6589,7 @@ hydraulic_drivetrain_cost
 1
  
  
- 
+ME Costs 
 0
 2
 1
@@ -6695,20 +6696,6 @@ itemized_num
 1
 0
 Numeric
-itemized_option
-3
-1
- 
- 
- 
-0
-3
-1
-1
-1
-1
-0
-CheckBox
 lube_system_cost
 3
 1
@@ -6811,10 +6798,10 @@ other_pto_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -6881,10 +6868,10 @@ power_electronics_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -6923,10 +6910,10 @@ power_takeoff_enclosure_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -7105,10 +7092,10 @@ shortterm_energy_storage_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -7175,10 +7162,10 @@ transport_power_conversion_chain_cost
 3
 1
  
- 
- 
+$
+ME Costs 
 0
-2
+3
 1
 1
 1
