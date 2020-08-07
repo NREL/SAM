@@ -3707,6 +3707,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Load_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
+	/**
+	 * Set load_escalation: Annual load escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Load_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
 
 	//
 	// BatteryCell parameters
@@ -4046,20 +4054,20 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_look_ahead_hours_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_pv_clipping_forecast: Power clipping forecast [kW]
+	 * Set batt_pv_ac_forecast: PV ac power forecast [kW]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
+	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_pv_clipping_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_pv_ac_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_pv_dc_forecast: DC power forecast [kW]
+	 * Set batt_pv_clipping_forecast: PV clipping forecast [kW]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
+	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_pv_dc_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_pv_clipping_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_target_choice: Target power input option [0/1]
@@ -5355,6 +5363,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Load_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Load_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
+
 
 	/**
 	 * BatteryCell Getters
@@ -5447,9 +5457,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_look_ahead_hours_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_pv_clipping_forecast_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_pv_ac_forecast_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_pv_dc_forecast_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_pv_clipping_forecast_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_target_choice_nget(SAM_table ptr, SAM_error *err);
 

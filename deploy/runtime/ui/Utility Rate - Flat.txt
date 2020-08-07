@@ -486,7 +486,7 @@ X
 519
 Y
 3
-324
+351
 Width
 3
 422
@@ -973,7 +973,7 @@ X
 714
 Y
 3
-351
+327
 Width
 3
 184
@@ -1184,7 +1184,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-5136
+5532
 on_load{"Utility Rate - Flat"} = define(){
 	check_configuration();
 	ur_flat_buysell_rates(); // refresh when switching pages
@@ -1212,7 +1212,7 @@ function ur_flat_buysell_rates()
 	enable( "ur_nm_yearend_sell_rate", eme==0 );
 	enable( "ur_nm_credit_rollover", eme==0 );
 	enable( "ur_nm_credit_month", eme==0 || eme==1 || eme==3 );
-	if ( eme==1 || eme==2 || eme==3|| eme==4)
+	if (eme==2 || eme==3|| eme==4)
 	{
 		enable( "ur_ts_sell_rate", true );
 		enable( "ur_ts_buy_rate", true );
@@ -1235,11 +1235,18 @@ function ur_flat_buysell_rates()
 	}
 	else
 	{
+		property("ur_ec_tou_mat","ShowColumn",4);
 		enable( "ur_ts_sell_rate", false );
 		enable( "ur_ts_buy_rate", false );
 		enable( "ur_en_ts_sell_rate", false );
 		enable( "ur_en_ts_buy_rate", false );
-		property("ur_ec_tou_mat","HideColumn",5);
+		if (eme == 0) {
+			property("ur_ec_tou_mat","HideColumn",5);
+		}
+		elseif (eme == 1) {
+			property("ur_ec_tou_mat","ShowColumn",5);
+		}
+		
 	}
 }
 
@@ -1257,6 +1264,14 @@ on_change{'ur_metering_option'} = define()
 {
 	check_configuration();
 	ur_flat_buysell_rates();
+
+	eme = value("ur_metering_option");
+	if (eme == 0 || eme == 1) {
+		// Disable these so we don't get an exception
+		// Can't do this in ur_flat_buy_sell_rates without creating an infinte loop
+		value( 'ur_en_ts_buy_rate', 0 );
+		value( 'ur_en_ts_sell_rate', 0 );
+	}
 };
 
 on_change{'btnSaveRateData'} = define() {

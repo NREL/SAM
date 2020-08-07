@@ -16,7 +16,7 @@
 		},
 		"AnnualOutput": {
 			"degradation": [0.000000],
-			"system_use_lifetime_output": 1
+			"system_use_lifetime_output": 0
 		},
 		"CashFlow": {
 			"lease_escalation": 1,
