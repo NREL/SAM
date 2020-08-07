@@ -277,7 +277,7 @@ X
 678
 Y
 3
-276
+279
 Width
 3
 104
@@ -319,7 +319,7 @@ X
 678
 Y
 3
-246
+252
 Width
 3
 198
@@ -353,20 +353,20 @@ X
 393
 Y
 3
-204
+198
 Width
 3
 633
 Height
 3
-36
+51
 Tool Tip
 5
 0
 Caption
 5
-116
-The automated dispatch options cycle the battery only when the value of the battery is greater than the cycle cost. 
+305
+The dispatch options will cycle the battery if anticipated revenue exceeds the cycle degradation penalty. A higher penalty will decrease cycling, a lower penalty will increase cycling and may lead to additional battery replacements. See the "Battery Storage - Battery Lifetime" page for degradation modes.
 TextColour
 4
 0
@@ -422,8 +422,8 @@ Colour
 255
 Caption
 5
-19
-Battery Cycle Costs
+25
+Cycle Degradation Penalty
 Bold
 2
 1
@@ -1151,7 +1151,7 @@ DataArray
 batt_cycle_cost
 3
 2
-Battery cycle cost
+Cycle degradation penalty
 $/cycle-kWh
 BatteryDispatch
 0
@@ -1165,7 +1165,7 @@ SchedNumeric
 batt_cycle_cost_choice
 3
 1
-Battery cycle cost choice
+Cycle degradation penalty choice
  
 BatteryDispatch
 34

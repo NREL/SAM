@@ -1,6 +1,6 @@
 Battery Dispatch Behind the Meter
-1068
-467
+1056
+499
 21
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 697
 Height
 3
-130
+157
 Tool Tip
 5
 0
@@ -99,7 +99,7 @@ Width
 1042
 Height
 3
-456
+484
 Tool Tip
 5
 0
@@ -217,10 +217,10 @@ Name
 batt_cycle_cost
 X
 3
-525
+591
 Y
 3
-402
+450
 Width
 3
 114
@@ -259,10 +259,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-525
+591
 Y
 3
-369
+423
 Width
 3
 198
@@ -293,23 +293,23 @@ Name
 batt_cycle_cost_description
 X
 3
-741
+354
 Y
 3
-357
+363
 Width
 3
-290
+678
 Height
 3
-76
+69
 Tool Tip
 5
 0
 Caption
 5
-119
-The price signal forecast option cycles the battery only when the value of the cycling is greater than the cycle cost. 
+305
+The dispatch options will cycle the battery if anticipated revenue exceeds the cycle degradation penalty. A higher penalty will decrease cycling, a lower penalty will increase cycling and may lead to additional battery replacements. See the "Battery Storage - Battery Lifetime" page for degradation modes.
 TextColour
 4
 0
@@ -365,8 +365,8 @@ Colour
 255
 Caption
 5
-19
-Battery Cycle Costs
+25
+Cycle Degradation Penalty
 Bold
 2
 1
@@ -808,7 +808,7 @@ DataArray
 batt_cycle_cost
 3
 2
-Battery cycle cost
+Cycle degradation penalty
 $/cycle-kWh
 BatteryDispatch
 0
@@ -822,7 +822,7 @@ SchedNumeric
 batt_cycle_cost_choice
 3
 1
-Battery cycle cost choice
+Cycle degradation penalty choice
  
  
 34
