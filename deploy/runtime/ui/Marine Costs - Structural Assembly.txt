@@ -4079,7 +4079,7 @@ ME Cost Choice
 1
 1
 2
-Choice
+Default
 structural_assembly_cost_modeled
 3
 1
