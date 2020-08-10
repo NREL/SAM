@@ -1,7 +1,7 @@
 Marine Costs - Mooring
 799
 903
-77
+76
 Label
 
 1
@@ -1590,17 +1590,17 @@ Divider
 10
 Name
 5
-11
-object 2163
+9
+object 21
 X
 3
-324
+81
 Y
 3
-126
+114
 Width
 3
-138
+563
 Height
 3
 16
@@ -1618,7 +1618,8 @@ Colour
 255
 Caption
 5
-0
+24
+Itemized Input Structure
 Bold
 2
 1
@@ -1715,54 +1716,6 @@ WordWrap
 AlignRight
 2
 1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 71944
-X
-3
-327
-Y
-3
-111
-Width
-3
-132
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-24
-Itemized input structure
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
 AlignTop
 2
 0
