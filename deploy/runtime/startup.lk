@@ -1240,6 +1240,7 @@ setmodules( ['hcpv', 'grid']);
 setup_hcpv_pages();
 
 // Dish Stirling ///////////////////////////////////////////////////////////////
+ //Dish Stirling has become outdated and does not have funding support to be updated and will thus be hidden beginning with the next major release
 function setup_dish_stirling_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='dish_location_and_resource' } );
@@ -1527,6 +1528,7 @@ setup_merchant_plant_pages();
 //-----------------------------------------------------
 
 // Direct Steam Power Tower ////////////////////////////////////////////////////////////////////
+ //Direct Steam technologies have become outdated and do not have currently have funding support to be updated and thus will be hidden with the next major release
 function setup_DSPT_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );

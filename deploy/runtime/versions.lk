@@ -155,6 +155,20 @@ version_upgrade{'2020.2.29'} = define() {
 		value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
         message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
     }
+    
+    //To be included in next full release (version_upgrade{'2020.10.?'})
+    if (cfg.tech == 'Dish Stirling' || cfg.tech == 'DSPT')
+    {
+		//close(cfg);
+		ok = config('Generic CSP System', cfg.fin, 'Oudated technology');
+		config_update_with_old_values();
+		if (!ok) {msgbox('Failed!');}
+		//msgbox('This version of SAM retires the Dish Stirling and Direct Steam Power Tower technologies as they are outdated and do not have the financial support for needed updates. The cases in this file with these technologies will be updated to Generic CSP systems');
+		message('This version of SAM retires the Dish Stirling and Direct Steam Power Tower technologies as they are outdated and do not have the financial support for needed updates. The cases in this file with these technologies will be updated to Generic CSP systems','notice');
+		//ok = config('Generic CSP System',cfg.fin, 'Generic CSP System replaces Dish Stirling and Direct Steam Power Tower');
+		//config_update_with_old_values();
+		//if (!ok) {msgbox('Failed to change configuration');}
+    }
 
 };
 

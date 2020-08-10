@@ -3026,8 +3026,10 @@ void ConfigDialog::PopulateTech()
 		if ( L.IsEmpty() ) L = m_tnames[i];
 		if (TP.Find("PV") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_pv, L);
-		else if (TP.Find("CSP") != wxNOT_FOUND)
+		else if (TP.Find("CSP") != wxNOT_FOUND && m_tnames[i] != "Dish Stirling" && m_tnames[i] != "DSPT") //retiring the technologies but leaving the model in the code for one more version to see if anyone objects
 			m_pTech->AppendItem(cont_csp, L);
+		else if (TP.Find("CSP") != wxNOT_FOUND && m_tnames[i] == "Dish Stirling"); //Remove dish stirling from the list of selectable technologies
+		else if (TP.Find("CSP") != wxNOT_FOUND && m_tnames[i] == "DSPT"); //Remove direct steam power tower from list of selectable technologies
 		else if (TP.Find("ME") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_me, L);
 		else if (TP.Find("BATT") != wxNOT_FOUND)
