@@ -72,7 +72,7 @@
 <li>Run LK script from the command line: [path to SAM executable] [sam filename] [path to LK script file], for example <code>c:/sam/2020.2.29/x64/sam.exe no_sam_file c:/my-script.lk</code>.</li>
 <li>Fix weather file downloads from NSRDB and WIND Toolkit.</li>
 <li>Fix Residential / Commercial cash flow "Send to Excel with Equations" Excel workbook, federal and state income tax rates start in wrong year. This issue only affected workbook calculations, not SAM's cash flow calculations.</li>
-<li>Fix electricity bill issue with application of net metering credits for subhourly simulations.</li>
+<li>Fix electricity bill issue with net metering end-of-year credit for subhourly simulations &em; was being applied in 8760th time step regardless of simulation time step.</li>
 <li>Fix electricity bill time series buy rates so that annual escalation is applied.</li>
 <li>Disable electricity bill time series buy and sell rates for net metering with $ credits.</li>
 <li>Fix issue with default values of array inputs such as time series electricity buy and sell rates that are disabled by default that caused simulation error or crash when input was enabled.</li>
