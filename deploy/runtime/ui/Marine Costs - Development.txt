@@ -814,8 +814,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use Modeled Value
-Enter in Itemized Costs
+Use Modeled Value ($)
+Enter as Itemized Costs ($)
 Selection
 3
 0
@@ -6858,7 +6858,7 @@ stakeholder_outreach_cost
 0
 Default
 
-3981
+4062
 equations {'site_selection_cost_total'} = define() {
 	return ${resource_assessment_cost}+${environmental_scoping_cost}+
 		${pre_feed_cost}+${other_site_selection_cost};
@@ -6982,13 +6982,20 @@ equations {'development_cost_total'} = define() {
 };
 
 equations {'itemized_check_development'} = define() {
-	return ?${development_cost_method}
-			[
-				0,
-				0,
-				2,
-				1
-			];
+	if (${balance_of_system_cost_override}!=1)
+	{
+		return ?${development_cost_method}
+				[
+					0,
+					0,
+					2,
+					1
+				];
+	}
+	else
+	{
+		return 2;
+	}
 };
 
 equations {'development_cost'} = define() {
@@ -7012,7 +7019,7 @@ equations {'level_value'} = define() {
 
 
 
-13130
+13357
 on_load{'Marine Costs - Development'} = define() {
 	on_change{'itemized_check_development'};
 	on_change{'level_value'};
@@ -7032,7 +7039,15 @@ on_load{'Marine Costs - Development'} = define() {
 	on_change{'detailed_cost_choice_financing_incentive'};
 	detailed_cost_financing_incentive();
 	//enable_itemized_level();
+	check_override_development();
 };
+
+function check_override_development()
+{
+	check_value = value('balance_of_system_cost_override');
+	enable('development_cost_method',check_value!=1);
+	enable('development_cost',check_value!=1);
+}	
 
 on_change{'detailed_cost_choice_financing_incentive'} = define() {
 	detailed_cost_financing_incentive();

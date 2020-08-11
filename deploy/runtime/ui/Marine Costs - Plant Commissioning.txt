@@ -424,7 +424,7 @@ Items
 3
 Enter in $/kW
 Enter in $
-Use modeled value
+Use Modeled Value ($)
 Selection
 3
 0
@@ -678,13 +678,22 @@ equations {'itemized_check_commissioning'} = define() {
 };
 
 
-453
+701
 on_load{'Marine Costs - Plant Commissioning'} = define() {
 	on_change{'itemized_check_commissioning'};
 	//on_change{'level_eng'};
 	enable_itemized_commissioning();
 	//enable_itemized_level();
+	check_override_commissioning();
 };
+
+function check_override_commissioning()
+{
+	check_value = value('balance_of_system_cost_override');
+	enable('plant_commissioning_cost_method',check_value!=1);
+	enable('plant_commissioning_cost',check_value!=1);
+	
+}
 
 on_change{'itemized_check_commissioning'} = define() {
 	enable_itemized_commissioning();

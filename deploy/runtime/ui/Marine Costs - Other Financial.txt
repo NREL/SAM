@@ -376,7 +376,7 @@ Items
 3
 Enter in $/kW
 Enter in $
-Use modeled value
+Use Modeled Value ($)
 Selection
 3
 0

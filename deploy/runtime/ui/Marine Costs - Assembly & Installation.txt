@@ -457,8 +457,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use modeled value
-Enter in itemized costs ($)
+Use Modeled Value ($)
+Enter as Itemized Costs ($)
 Selection
 3
 0
@@ -3800,7 +3800,7 @@ substructures_and_foundations_cost
 0
 Default
 
-2330
+2411
 equations {'substructure_assem_install_cost_total'} = define() {
 	return ${foundation_assem_install_cost}+
 		${substructure_assem_install_cost}+${scour_protection_assem_install_cost}+
@@ -3861,13 +3861,20 @@ equations {'assembly_and_install_cost_total'} = define() {
 };
 
 equations {'itemized_check_assem_install'} = define() {
-	return ?${assembly_and_install_cost_method}
-			[
-				0,
-				0,
-				2,
-				1
-			];
+	if (${balance_of_system_cost_override}!=1)
+	{
+		return ?${assembly_and_install_cost_method}
+				[
+					0,
+					0,
+					2,
+					1
+				];
+	}
+	else
+	{
+		return 2;
+	}
 };
 
 
@@ -3886,7 +3893,7 @@ equations {'assembly_and_install_cost'} = define() {
 
 
 
-5615
+5854
 on_load{'Marine Costs - Assembly & Installation'} = define() {
 	on_change{'itemized_check_assem_install'};
 	enable_itemized_assem_install();
@@ -3897,7 +3904,15 @@ on_load{'Marine Costs - Assembly & Installation'} = define() {
 	detailed_cost_substructures();
 	detailed_cost_mec_device();
 	detailed_cost_offshore_infrastructure();
+	check_override_assembly();
 };
+
+function check_override_assembly()
+{
+	check_value = value('balance_of_system_cost_override');
+	enable('assembly_and_install_cost_method',check_value!=1);
+	enable('assembly_and_install_cost',check_value!=1);	
+}
 
 on_change{'detailed_cost_choice_substructures'} = define() {
 	detailed_cost_substructures();

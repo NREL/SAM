@@ -1393,8 +1393,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use modeled value
-Enter in itemized costs
+Use Modeled Value ($)
+Enter as Itemized Costs ($)
 Selection
 3
 0
@@ -6151,7 +6151,7 @@ underground_cable_system_cost
 0
 Default
 
-3453
+3534
 equations {'elec_infras_cost_modeled'} = define() {
 	return ${array_cable_system_cost_modeled}+${export_cable_system_cost_modeled}+
 		${offshore_substation_cost_modeled}+${onshore_substation_cost_modeled}+
@@ -6267,20 +6267,27 @@ equations {'elec_infras_cost'} = define() {
 };
 
 equations {'itemized_check_elec_infras'} = define() {
-	return ?${elec_infras_cost_method}
-			[
-				0,
-				0,
-				2,
-				1
-			];
+	if (${balance_of_system_cost_override}!=1)
+	{
+		return ?${elec_infras_cost_method}
+				[
+					0,
+					0,
+					2,
+					1
+				];
+	}
+	else
+	{
+		return 2;
+	}
 };
 
 
 
 
 
-8414
+8642
 on_load{'Marine Costs - Electrical Infrastructure'} = define() {
 	on_change{'itemized_check_elec_infras'};
 	//on_change{'level_eng'};
@@ -6296,7 +6303,16 @@ on_load{'Marine Costs - Electrical Infrastructure'} = define() {
 	detailed_cost_cable_protection();
 	detailed_cost_offshore_substation();
 	detailed_cost_onshore_substation();
+	check_override_elec_infras();
 };
+
+function check_override_elec_infras()
+{
+	check_value = value('balance_of_system_cost_override');
+	enable('elec_infras_cost_method',check_value!=1);
+	enable('elec_infras_cost',check_value!=1);
+	
+}
 
 on_change{'detailed_cost_choice_array_cables'} = define() {
 	detailed_cost_array_cables();

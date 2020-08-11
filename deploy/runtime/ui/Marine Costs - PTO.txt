@@ -4924,8 +4924,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use modeled value
-Enter in itemized costs
+Use Modeled Value ($)
+Enter as Itemized Costs ($)
 Selection
 3
 0
@@ -7238,7 +7238,7 @@ variable_power_electronics
 0
 Default
 
-6521
+6591
 equations {'hydraulic_drivetrain_cost_total'} = define() {
 	return ${primary_hydraulic_pump_cost}+${rectifying_circuit_cost}+
 		${accumulators_cost}+${hydraulic_motor_cost}+${hydraulic_reservoir_cost}+${hydraulic_fluid_cost}+
@@ -7284,13 +7284,20 @@ equations {'transport_power_conversion_chain_cost_total'} = define() {
 
 
 equations {'itemized_check_pto'} = define() {
-	return ?${power_takeoff_system_cost_method}
-			[
-				0,
-				0,
-				2,
-				1
-			];
+	if (${device_cost_override}==0)
+	{
+		return ?${power_takeoff_system_cost_method}
+				[
+					0,
+					0,
+					2,
+					1
+				];
+	}
+	else
+	{
+		return 2;
+	}
 };
 
 equations {'variable_hydraulic_drivetrain'} = define() {
@@ -7529,8 +7536,9 @@ equations {'power_takeoff_system_cost'} = define() {
 
 
 
-9569
+9983
 on_load{'Marine Costs - PTO'} = define() {
+	check_override_pto();
 	on_change{'itemized_check_pto'};
 	enable_itemized_pto();
 	/*on_change{'variable_hydraulic_drivetrain'};
@@ -7538,7 +7546,7 @@ on_load{'Marine Costs - PTO'} = define() {
 	on_change{'variable_gearbox'};
 	show_gearbox_warning();
 	on_change{'variable_air_turbine'};
-	show_air_turbine_warning();
+	;show_air_turbine_warning();
 	on_change{'variable_electrical_generator'};
 	show_electrical_generator_warning();
 	on_change{'variable_power_electronics'};
@@ -7554,7 +7562,19 @@ on_load{'Marine Costs - PTO'} = define() {
 	detailed_cost_electrical_generator();
 	detailed_cost_power_electronics();
 	show('power_takeoff_system_total_label',0);
+	
 };
+
+function check_override_pto()
+{
+	check_value = value('device_cost_override');
+	//enable('power_takeoff_system_cost_input',check_value!=1);
+	//enable('power_takeoff_system_cost_total',check_value!=1);
+	enable('power_takeoff_system_cost_method',check_value!=1);
+	//enable('power_takeoff_system_cost_modeled',check_value!=1);
+	enable('power_takeoff_system_cost',check_value!=1);
+}
+
 
 on_change{'detailed_cost_choice_hydraulic_drivetrain'} = define() {
 	detailed_cost_hydraulic_drivetrain();
@@ -7624,7 +7644,7 @@ function detailed_cost_air_turbine()
 		enable('blades_rotor_assembly_cost',detailed_value);
 		enable('hub_assembly_cost',detailed_value);
 		enable('shaft_assembly_cost',detailed_value);
-		enable('bearings_cost',detailed_value);
+		enable('turbine_bearings_cost',detailed_value);
 		enable('other_air_turbine_cost',detailed_value);
 		
 		refresh();

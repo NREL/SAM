@@ -1,7 +1,7 @@
 Marine Costs - Structural Assembly
 819
 676
-61
+62
 Label
 
 1
@@ -1947,6 +1947,53 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+27
+override_check_structural39
+X
+3
+699
+Y
+3
+33
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -2448,8 +2495,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use Modeled Value
-Enter in Itemized Costs ($)
+Use Modeled Value ($)
+Enter as Itemized Costs ($)
 Selection
 3
 0
@@ -3037,7 +3084,7 @@ Tips
 5
 0
 
-84
+85
 active_structure_cost
 3
 1
@@ -3795,6 +3842,20 @@ other_prime_mover_cost
 1
 0
 Default
+override_check_structural
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 personnel_access_system_cost
 3
 1
@@ -4216,7 +4277,7 @@ variable_prime_mover
 0
 Default
 
-8484
+8687
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -4379,13 +4440,20 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 };
 
 equations {'itemized_check_structural'} = define() {
-	return ?${structural_assembly_cost_method}
-			[
-				0,
-				0,
-				2,
-				1
-			];
+	if (${device_cost_override}==0)
+	{
+		return ?${structural_assembly_cost_method}
+				[
+					0,
+					0,
+					2,
+					1
+				];
+	}
+	else
+	{
+		return 2;
+	}
 };
 
 equations {'structural_assembly_cost'} = define() {
@@ -4462,12 +4530,25 @@ equations {'variable_prime_mover'} = define() {
 	}
 };
 
+equations {'override_check_structural'} = define() {
+	if (${device_cost_override}==0)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+};
+
+
 
 
 
 			
-4802
+5219
 on_load{'Marine Costs - Structural Assembly'} = define() {
+	check_override_structural();
 	on_change{'itemized_check_structural'};
 	//on_change{'variable_marine_systems'};
 	//on_change{'variable_prime_mover'};
@@ -4478,7 +4559,21 @@ on_load{'Marine Costs - Structural Assembly'} = define() {
 	detailed_cost_structural();
 	on_change{'detailed_cost_choice_marine_systems'};
 	detailed_cost_marine_systems();
+	
+	
 };
+
+
+
+function check_override_structural()
+{
+	check_value = value('device_cost_override');
+	//enable('structural_assembly_cost_input',check_value!=1);
+	//enable('structural_assembly_cost_total',check_value!=1);
+	enable('structural_assembly_cost_method',check_value!=1);
+	//enable('structural_assembly_cost_modeled',check_value!=1);
+	enable('structural_assembly_cost',check_value!=1);
+}
 
 on_change{'itemized_check_structural'} = define() {
 	enable_itemized_structural();

@@ -344,7 +344,7 @@ equations {'balance_of_system_cost_total'} = define() {
 	}
 };
 
-582
+2800
 on_load{'Marine Costs - BoS'} = define() {
 	on_change{'balance_of_system_cost_override'};
 	override_balance_of_system_cost();
@@ -361,6 +361,54 @@ function override_balance_of_system_cost()
 	enable('balance_of_system_cost_input',override_value==1);
 	show('balance_of_system_cost_input',override_value==1);
 	show('balance_of_system_cost_total',override_value!=1);
+	
+	//Development Inputs
+	enable('development_cost_method',override_value==0);
+	//enable('development_cost_input',override_value==0);
+	//enable('development_cost_modeled',override_value==0);
+	//enable('development_cost_total',override_value==0);
+	enable('development_cost',override_value==0);
+	
+	//E&M Inputs
+	enable('eng_and_mgmt_cost_method',override_value==0);
+	//enable('eng_and_mgmt_cost_input',override_value==0);
+	//enable('eng_and_mgmt_cost_modeled',override_value==0);
+	//enable('eng_and_mgmt_cost_total',override_value==0);
+	enable('eng_and_mgmt_cost',override_value==0);
+	
+	//Electrical Infrastructure Inputs
+	enable('elec_infras_cost_method',override_value==0);
+	//enable('elec_infras_cost_input',override_value==0);
+	//enable('elec_infras_cost_modeled',override_value==0);
+	//enable('elec_infras_cost_total',override_value==0);
+	enable('elec_infras_cost',override_value==0);
+	
+	//Plant Commissioning Inputs
+	enable('plant_commissioning_cost_method',override_value==0);
+	//enable('plant_commissioning_cost_input',override_value==0);
+	//enable('plant_commissioning_cost_modeled',override_value==0);
+	enable('plant_commissioning_cost',override_value==0);
+	
+	//Site Access Inputs
+	enable('site_access_port_staging_cost_method',override_value==0);
+	//enable('site_access_port_staging_cost_input',override_value==0);
+	//enable('site_access_port_staging_cost_modeled',override_value==0);
+	//enable('site_access_port_staging_cost_total',override_value==0);
+	enable('site_access_port_staging_cost',override_value==0);
+	
+	//Assembly and Installation Inputs
+	enable('assembly_and_install_cost_method',override_value==0);
+	//enable('assembly_and_install_cost_input',override_value==0);
+	//enable('assembly_and_install_cost_modeled',override_value==0);
+	//enable('assembly_and_install_cost_total',override_value==0);
+	enable('assembly_and_install_cost',override_value==0);
+	
+	//Other Infrastructure Inputs
+	enable('other_infrastructure_cost_method',override_value==0);
+	//enable('other_infrastructure_cost_input',override_value==0);
+	//enable('other_infrastructure_cost_modeled',override_value==0);
+	//enable('other_infrastructure_cost_total',override_value==0);
+	enable('other_infrastructure_cost',override_value==0);
 	
 	refresh();
 }	

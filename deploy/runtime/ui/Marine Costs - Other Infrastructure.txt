@@ -1161,8 +1161,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use modeled value
-Enter in itemized costs ($)
+Use Modeled Value ($)
+Enter as Itemized Costs ($)
 Selection
 3
 0
@@ -1875,7 +1875,7 @@ ME Costs
 0
 Default
 
-790
+871
 equations {'other_infrastructure_cost_total'} = define() {
 	return ${offshore_accomodations_other_infras_cost}+${dedicated_om_vessel_cost}+
 		${onshore_om_facilities_cost}+${om_equipment_purchases_cost}+
@@ -1884,13 +1884,20 @@ equations {'other_infrastructure_cost_total'} = define() {
 };
 
 equations {'itemized_check_other_infras'} = define() {
-	return ?${other_infrastructure_cost_method}
-			[
-				0,
-				0,
-				2,
-				1
-			];
+	if (${balance_of_system_cost_override}!=1)
+	{
+		return ?${other_infrastructure_cost_method}
+				[
+					0,
+					0,
+					2,
+					1
+				];
+	}
+	else
+	{
+		return 2;
+	}
 };
 
 equations {'other_infrastructure_cost'} = define() {
@@ -1905,11 +1912,19 @@ equations {'other_infrastructure_cost'} = define() {
 
 
 
-1292
+1539
 on_load{'Marine Costs - Other Infrastructure'} = define() {
 	on_change{'itemized_check_other_infras'};
 	enable_itemized_other_infras();
+	check_override_other_infras();
 };
+
+function check_override_other_infras()
+{
+	check_value = value('balance_of_system_cost_override');
+	enable('other_infrastructure_cost_method',check_value!=1);
+	enable('other_infrastructure_cost',check_value!=1);
+}	
 
 on_change{'itemized_check_other_infras'} = define() {
 	enable_itemized_other_infras();

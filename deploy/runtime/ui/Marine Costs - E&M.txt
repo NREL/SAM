@@ -680,8 +680,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use Modeled Value
-Enter in Itemized Costs
+Use Modeled Value ($)
+Enter as Itemized Costs ($)
 Selection
 3
 0
@@ -3013,7 +3013,7 @@ sales_general_and_administrative_eng_cost
 0
 Default
 
-1596
+1677
 equations {'construction_management_cost_total'} = define() {
 	return ${salaries_eng_cost}+
 		${sales_general_and_administrative_eng_cost}+${profit_eng_cost}+
@@ -3064,18 +3064,25 @@ equations {'eng_and_mgmt_cost'} = define() {
 };
 
 equations {'itemized_check_eng'} = define() {
-	return ?${eng_and_mgmt_cost_method}
-			[
-				0,
-				0,
-				2,
-				1
-			];
+	if (${balance_of_system_cost_override}!=1)
+	{
+		return ?${eng_and_mgmt_cost_method}
+				[
+					0,
+					0,
+					2,
+					1
+				];
+	}
+	else
+	{
+		return 2;
+	}
 };
 
 
 
-4832
+5054
 on_load{'Marine Costs - E&M'} = define() {
 	on_change{'itemized_check_eng'};
 	//on_change{'level_eng'};
@@ -3085,7 +3092,15 @@ on_load{'Marine Costs - E&M'} = define() {
 	on_change{'detailed_cost_choice_health_safety'};
 	detailed_cost_construction_management();
 	detailed_cost_health_safety();
+	check_override_eng_mgmt();
 };
+
+function check_override_eng_mgmt()
+{
+	check_value = value('balance_of_system_cost_override');
+	enable('eng_and_mgmt_cost_method',check_value!=1);
+	enable('eng_and_mgmt_cost',check_value!=1);
+}
 
 on_change{'detailed_cost_choice_construction_management'} = define() {
 	detailed_cost_construction_management();

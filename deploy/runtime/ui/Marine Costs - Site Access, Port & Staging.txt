@@ -2207,7 +2207,7 @@ Name
 site_access_port_staging_cost_input_label
 X
 3
-462
+456
 Y
 3
 42
@@ -2273,8 +2273,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use modeled value
-Enter in itemized costs
+Use Modeled Value ($)
+Enter as Itemized Costs ($)
 Selection
 3
 0
@@ -3062,7 +3062,7 @@ site_access_port_staging_cost_input
 $ 
 ME Costs
 0
-2
+3
 1
 1
 1
@@ -3154,7 +3154,7 @@ wharfage_fees_cost
 0
 Default
 
-1426
+1507
 equations {'staging_port_cost_total'} = define() {
 	return ${quay_cost}+${laydown_area_cost}+
 		${assembly_areas_cost}+${personnel_facilities_cost}+
@@ -3204,17 +3204,24 @@ equations {'site_access_port_staging_cost'} = define() {
 };
 
 equations {'itemized_check_site_access'} = define() {
-	return ?${site_access_port_staging_cost_method}
-			[
-				0,
-				0,
-				2,
-				1
-			];
+	if (${balance_of_system_cost_override}!=1)
+	{
+		return ?${site_access_port_staging_cost_method}
+				[
+					0,
+					0,
+					2,
+					1
+				];
+	}
+	else
+	{
+		return 2;
+	}
 };
 
 
-3469
+3722
 on_load{'Marine Costs - Site Access, Port & Staging'} = define() {
 	on_change{'itemized_check_site_access'};
 	enable_itemized_site_access();
@@ -3223,7 +3230,15 @@ on_load{'Marine Costs - Site Access, Port & Staging'} = define() {
 	on_change{'detailed_cost_choice_staging_port'};
 	detailed_cost_staging_port();
 	//enable_itemized_level();
+	check_override_site_access();
 };
+
+function check_override_site_access()
+{
+	check_value = value('balance_of_system_cost_override');
+	enable('site_access_port_staging_cost_method',check_value!=1);
+	enable('site_access_port_staging_cost',check_value!=1);
+}	
 
 on_change{'detailed_cost_choice_staging_port'} = define() {
 	detailed_cost_staging_port();

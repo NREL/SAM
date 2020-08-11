@@ -2767,8 +2767,8 @@ Items
 4
 Enter in $/kW
 Enter in $
-Use Modeled Value
-Enter in Itemized Costs
+Use Modeled Value ($)
+Enter as Itemized Costs ($)
 Selection
 3
 0
