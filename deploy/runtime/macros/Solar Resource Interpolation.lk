@@ -1,7 +1,7 @@
 /*@
 
-<p>SAM CSV formatted solar resource file is linearly interpolated from hourly data 
-to sub-hourly data.
+<p>SAM CSV formatted solar resource file is linearly interpolated from hourly,
+30 minute, or 5 minute data to sub-hourly data.
 <br><br>
 If the file is TMY2, TMY3, EPW, or SolarAnywhere format, it can be converted 
 using the Solar Resource File Converter macro.
@@ -13,6 +13,7 @@ and Resource page. Or, solar resource file is requested from user. </ul>
 <br><br>
 Input:<br><ul>
 <li>SAM CSV format with 4 required columns: Year, Month, Day and Hour.
+<li>Optional column: Minute for 30 or 5 minute data
 <li>Irradiance Measurement: Averaged hourly data or instantaneous data measured at hour or
 half-hour intervals.
 <li>For previously interpolated files, macro will look for original in SAM's downloaded weather
@@ -83,6 +84,9 @@ function linear_interpolate(values, timesteps, option){
 		}
 	}
 	else if (option == 'minute'){
+		if (v1 == 0) {
+			v1 = 60;
+		}
 		ts = abs(v1 - v0);
 		if (ts==0) ts = 60/(timesteps+1);
 		else ts = ts/(timesteps+1);
@@ -192,7 +196,7 @@ function find_col(arr, value){
 }
 
 // var1, what kind of data: 0 if instantaneous, 1 if averaged data
-// var2, when data is recorded: 0 if top of hour, 1 if bottom of hour, 2 if every 30 min
+// var2, when data is recorded: 0 if top of hour, 1 if bottom of hour, 2 if every 30 min, 3 if every 5 min
 function identify_case(input_data, lat, long, tz){
 	case = [-1, -1];
 	ok = false;
@@ -241,7 +245,10 @@ function identify_case(input_data, lat, long, tz){
 			}
 			else if (line == 4){
 				minstamps[1] = to_real(input_data[line][cols[4]]);
-				if (minstamps[1] - minstamps[0] == 30){
+				if (minstamps[1] - minstamps[0] == 5) {
+					case[1] = 3;
+				}
+				else if (minstamps[1] - minstamps[0] == 30){
 					case[1] = 2;
 				}
 				else if (minstamps[1] == 30 && minstamps[0] == 30){
@@ -249,6 +256,10 @@ function identify_case(input_data, lat, long, tz){
 				}
 				else if (minstamps[1] == 0 && minstamps[1] == 0){
 					case[1] = 0;
+				}
+				else {
+					outln('Supported input timesteps are 60, 30, and 5 minutes. Other timestep found, exiting');
+					exit;
 				}
 			}
 		}
@@ -263,7 +274,7 @@ function identify_case(input_data, lat, long, tz){
 function iterpolate_time(prev, curr, hour, timesteps, case) {
 	for (i=0; i<timesteps; i++) {
 		if (hour == 0) {
-			if (case[1] == 0 || case[1] == 2) {
+			if (case[1] != 1) {
 				result[i] = prev;
 			}
 			elseif (case[1] == 1 && i < (timesteps / 2) - 1) {
@@ -316,8 +327,6 @@ function intrp_data(input_data, ts, case){
 			if (prev==[0]) prev = arr;
 			else{
 				for (i=0; i<#cols; i++){
-						//outln(prev);
-						//outln(arr);
 						if (i<1) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'noslope'); // year
 						else if (i==1) result = iterpolate_time(prev[cols[i]], arr[cols[i]], arr[cols[i+2]], ts, case); // month
 						else if (i==2) result = iterpolate_time(prev[cols[i]], arr[cols[i]], arr[cols[i+1]], ts, case); // day
@@ -640,8 +649,12 @@ function solar_resource_interpolate(input_data, intervals_per_hour, case){
 		ts_to_add = intervals_per_hour - 1;
 	}
 	// original data is half-hourly
-	else{
+	elseif (case[1] == 2) {
 		ts_to_add = intervals_per_hour/2 - 1;
+	}
+	// original data is 5 min
+	else {
+		ts_to_add = intervals_per_hour/12 - 1;
 	}
 	
 	output = intrp_data(input_data, ts_to_add, case);
