@@ -1240,7 +1240,7 @@ setmodules( ['hcpv', 'grid']);
 setup_hcpv_pages();
 
 // Dish Stirling ///////////////////////////////////////////////////////////////
- //Dish Stirling has become outdated and does not have funding support to be updated and will thus be hidden beginning with the next major release
+/* //Dish Stirling has become outdated and does not have funding support to be updated and will thus be hidden beginning with the next major release
 function setup_dish_stirling_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='dish_location_and_resource' } );
@@ -1303,7 +1303,7 @@ setup_lcoefcr_pages();
 //-----------------------------------------------------
 setconfig( 'Dish Stirling', 'None' );
 setmodules( ['tcsdish', 'grid']);
-setup_dish_stirling_pages();
+setup_dish_stirling_pages();*/
 
 // Biopower ////////////////////////////////////////////////////////////////////
 function setup_biopower_pages()

@@ -157,18 +157,27 @@ version_upgrade{'2020.2.29'} = define() {
     }
     
     //To be included in next full release (version_upgrade{'2020.10.?'})
-    if (cfg.tech == 'Dish Stirling' || cfg.tech == 'DSPT')
+    if (cfg.tech == 'Dish Stirling')
     {
 		//close(cfg);
-		ok = config('Generic CSP System', cfg.fin, 'Oudated technology');
-		config_update_with_old_values();
-		if (!ok) {msgbox('Failed!');}
+		//ok = config('Generic CSP System', cfg.fin, 'Oudated technology');
+		//config_update_with_old_values();
+		//if (!ok) {msgbox('Failed!');}
 		//msgbox('This version of SAM retires the Dish Stirling and Direct Steam Power Tower technologies as they are outdated and do not have the financial support for needed updates. The cases in this file with these technologies will be updated to Generic CSP systems');
-		message('This version of SAM retires the Dish Stirling and Direct Steam Power Tower technologies as they are outdated and do not have the financial support for needed updates. The cases in this file with these technologies will be updated to Generic CSP systems','notice');
+		message('The Dish Stirling model is not available in SAM xxxx.x.x. The most recent version with the model is SAM 2020.2.29, which you can download from the <a href="http://sam.nrel.gov/download/">SAM download page</a>.');
+		curl('http://sam.nrel.gov/download');
+		close(cfg);
+		//close_project();
 		//ok = config('Generic CSP System',cfg.fin, 'Generic CSP System replaces Dish Stirling and Direct Steam Power Tower');
 		//config_update_with_old_values();
 		//if (!ok) {msgbox('Failed to change configuration');}
     }
+    if (cfg.tech == 'DSPT')
+    {
+		message ('The Direct Steam Power Tower model is not available in SAM xxxx.x.x. The most recent version with the model is SAM 2020.2.29, which you can download from the <a href="http://sam.nrel.gov/download/">SAM download page</a>.');
+		close (cfg);
+	}
+    
 
 };
 
