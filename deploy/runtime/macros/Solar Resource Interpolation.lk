@@ -260,6 +260,26 @@ function identify_case(input_data, lat, long, tz){
 	return case;
 }
 
+function iterpolate_time(prev, curr, hour, timesteps, case) {
+	for (i=0; i<timesteps; i++) {
+		if (hour == 0) {
+			if (case[1] == 0) {
+				result[i] = prev;
+			}
+			elseif (case[1] == 1 && i < (timesteps / 2) - 1) {
+				result[i] = prev;
+			}
+			else {
+				result[i] = curr;
+			}
+		}
+		else {
+			result[i] = curr;
+		}
+	}
+	return result;
+}
+
 function interpolate_month(month, day, hour, timesteps){
 	for (i=0; i<timesteps; i++){
 		if (hour == 0 && day == 1 && i < (timesteps / 2) - 1) {
@@ -291,8 +311,7 @@ function interpolate_day(month, day, hour, timesteps){
 }
 
 // ts: # of timesteps to add between existing points
-// TODO: add case for top of hour files
-function intrp_data(input_data, ts){
+function intrp_data(input_data, ts, case){
 	cols = [];
 	lat = 0;
 	long = 0;
@@ -327,10 +346,9 @@ function intrp_data(input_data, ts){
 			if (prev==[0]) prev = arr;
 			else{
 				for (i=0; i<#cols; i++){
-					
-						if (i<1) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'noslope'); // year and 
-						else if (i==1) result = interpolate_month(arr[cols[i]], arr[cols[i+1]], arr[cols[i+2]], ts); // month
-						else if (i==2) result = interpolate_day(arr[cols[i-1]], arr[cols[i]], arr[cols[i+1]], ts);
+						if (i<1) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'noslope'); // year
+						else if (i==1) result = iterpolate_time(prev[cols[i]], arr[cols[i]], arr[cols[i+2]], ts, case); // month
+						else if (i==2) result = iterpolate_time(prev[cols[i]], arr[cols[i]], arr[cols[i+1]], ts, case); // day
 						else if (i==3) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'noslope'); // hour
 						else if (i==4) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'minute');
 						else if (i==5){
@@ -654,7 +672,7 @@ function solar_resource_interpolate(input_data, intervals_per_hour, case){
 		ts_to_add = intervals_per_hour/2 - 1;
 	}
 	
-	output = intrp_data(input_data, ts_to_add);
+	output = intrp_data(input_data, ts_to_add, case);
 	// instantaneous data, measured at bottom of hour needs to be shifted forward
 	// since data currently starts with the 30 min point 
 	if (case == [0, 1]){
