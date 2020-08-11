@@ -260,7 +260,38 @@ function identify_case(input_data, lat, long, tz){
 	return case;
 }
 
+function interpolate_month(month, day, hour, timesteps){
+	for (i=0; i<timesteps; i++){
+		if (hour == 0 && day == 1 && i < (timesteps / 2) - 1) {
+			result[i] = month - 1;
+		}
+		else {
+			result[i] = month;
+		}
+	}
+	return result;
+}
+
+function interpolate_day(month, day, hour, timesteps){
+	nday = [31,28,31,30,31,30,31,31,30,31,30,31];
+	for (i=0; i<timesteps; i++){
+		if (hour == 0 && i < (timesteps / 2) - 1) {
+			temp_day = day - 1;
+			
+			if (temp_day == 0){
+				temp_day = nday[month - 2]; // -1 because month has already kicked over, -1 for array length
+			}
+			result[i] = temp_day;
+		}
+		else {
+			result[i] = day;
+		}
+	}
+	return result;
+}
+
 // ts: # of timesteps to add between existing points
+// TODO: add case for top of hour files
 function intrp_data(input_data, ts){
 	cols = [];
 	lat = 0;
@@ -297,7 +328,10 @@ function intrp_data(input_data, ts){
 			else{
 				for (i=0; i<#cols; i++){
 					
-						if (i<4) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'noslope');
+						if (i<1) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'noslope'); // year and 
+						else if (i==1) result = interpolate_month(arr[cols[i]], arr[cols[i+1]], arr[cols[i+2]], ts); // month
+						else if (i==2) result = interpolate_day(arr[cols[i-1]], arr[cols[i]], arr[cols[i+1]], ts);
+						else if (i==3) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'noslope'); // hour
 						else if (i==4) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'minute');
 						else if (i==5){
 							if (cols[i] != -1) result = linear_interpolate([prev[cols[i]],arr[cols[i]]], ts, 'wind');
