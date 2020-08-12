@@ -128,6 +128,14 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_ec_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set ur_en_ts_buy_rate: Enable time step buy rates [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_en_ts_buy_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set ur_en_ts_sell_rate: Enable time step sell rates [0/1]
 	 * options: None
 	 * constraints: BOOLEAN
@@ -160,7 +168,23 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_yearend_sell_rate: Year end sell rate [$/kWh]
+	 * Set ur_nm_credit_month: Month of rollover credits [$/kWh]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=11
+	 * required if: ?=11
+	 */
+	SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_credit_rollover: Roll over credits to next year [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_nm_credit_rollover_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_yearend_sell_rate: Net metering credit sell rate [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -291,6 +315,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ec_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_en_ts_buy_rate_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_metering_option_nget(SAM_table ptr, SAM_error *err);
@@ -298,6 +324,10 @@ extern "C"
 	SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_monthly_fixed_charge_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_monthly_min_charge_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_credit_rollover_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_yearend_sell_rate_nget(SAM_table ptr, SAM_error *err);
 

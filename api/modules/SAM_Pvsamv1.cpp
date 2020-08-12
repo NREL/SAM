@@ -2701,6 +2701,12 @@ SAM_EXPORT void SAM_Pvsamv1_Load_load_aset(SAM_table ptr, double* arr, int lengt
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Load_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "load_escalation", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_BatteryCell_LeadAcid_q10_computed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "LeadAcid_q10_computed", number);
@@ -2947,15 +2953,15 @@ SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_look_ahead_hours_nset(SAM_table
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_pv_clipping_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_pv_ac_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "batt_pv_clipping_forecast", arr, length);
+		ssc_data_set_array(ptr, "batt_pv_ac_forecast", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_pv_dc_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_pv_clipping_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "batt_pv_dc_forecast", arr, length);
+		ssc_data_set_array(ptr, "batt_pv_clipping_forecast", arr, length);
 	});
 }
 
@@ -8137,6 +8143,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Load_load_aget(SAM_table ptr, int* length, SAM_er
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Load_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "load_escalation", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "load_escalation");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_BatteryCell_LeadAcid_q10_computed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8594,24 +8612,24 @@ SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_look_ahead_hours_nget(SAM_tab
 
 
 
-SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_pv_clipping_forecast_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_pv_ac_forecast_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "batt_pv_clipping_forecast", length);
+	result = ssc_data_get_array(ptr, "batt_pv_ac_forecast", length);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "batt_pv_clipping_forecast");
+		make_access_error("SAM_Pvsamv1", "batt_pv_ac_forecast");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_pv_dc_forecast_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_pv_clipping_forecast_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "batt_pv_dc_forecast", length);
+	result = ssc_data_get_array(ptr, "batt_pv_clipping_forecast", length);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "batt_pv_dc_forecast");
+		make_access_error("SAM_Pvsamv1", "batt_pv_clipping_forecast");
 	});
 	return result;
 }

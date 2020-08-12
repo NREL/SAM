@@ -19,6 +19,18 @@ SAM_EXPORT int SAM_Fuelcell_execute(SAM_table data, int verbosity, SAM_error* er
 }
 
 
+SAM_EXPORT void SAM_Fuelcell_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "analysis_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
+	});
+}
+
 SAM_EXPORT void SAM_Fuelcell_Common_annual_energy_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "annual_energy", number);
@@ -34,24 +46,6 @@ SAM_EXPORT void SAM_Fuelcell_Common_capacity_factor_nset(SAM_table ptr, double n
 SAM_EXPORT void SAM_Fuelcell_Common_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Fuelcell_Common_percent_complete_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "percent_complete", number);
-	});
-}
-
-SAM_EXPORT void SAM_Fuelcell_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "analysis_period", number);
-	});
-}
-
-SAM_EXPORT void SAM_Fuelcell_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
 	});
 }
 
@@ -259,6 +253,28 @@ SAM_EXPORT void SAM_Fuelcell_FuelCell_fuelcell_unit_min_power_nset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT double SAM_Fuelcell_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "analysis_period", &result))
+		make_access_error("SAM_Fuelcell", "analysis_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Fuelcell_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
+		make_access_error("SAM_Fuelcell", "system_use_lifetime_output");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Fuelcell_Common_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -287,39 +303,6 @@ SAM_EXPORT double* SAM_Fuelcell_Common_gen_aget(SAM_table ptr, int* length, SAM_
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
 		make_access_error("SAM_Fuelcell", "gen");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Fuelcell_Common_percent_complete_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "percent_complete", &result))
-		make_access_error("SAM_Fuelcell", "percent_complete");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Fuelcell_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "analysis_period", &result))
-		make_access_error("SAM_Fuelcell", "analysis_period");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Fuelcell_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
-		make_access_error("SAM_Fuelcell", "system_use_lifetime_output");
 	});
 	return result;
 }

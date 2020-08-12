@@ -3454,7 +3454,6 @@ void wxHorizontalLabel::OnPaint(wxPaintEvent& )
 {
 	wxAutoBufferedPaintDC dc(this);
 	dc.Clear();
-	wxSize size = GetMinSize();
 	dc.DrawText(m_Label, 0, 0);
 }
 

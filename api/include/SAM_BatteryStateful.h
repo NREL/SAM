@@ -65,14 +65,6 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_Controls_input_power_nset(SAM_table ptr, double number, SAM_error *err);
 
-	/**
-	 * Set run_sequentially: True turns off reading state from data at start of step [0/1]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_BatteryStateful_Controls_run_sequentially_nset(SAM_table ptr, double number, SAM_error *err);
-
 
 	//
 	// ParamsCell parameters
@@ -396,7 +388,7 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_capacity_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set replacement_option: Replacements: none (1), by capacity (1), or schedule (2) [0=none,1=capacity limit,2=yearly schedule]
+	 * Set replacement_option: Replacements: none (0), by capacity (1), or schedule (2) [0=none,1=capacity limit,2=yearly schedule]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
@@ -537,7 +529,7 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StatePack_V_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set heat_dissipated: Heat dissipated due to flux [W]
+	 * Set heat_dissipated: Heat dissipated due to flux [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -817,8 +809,6 @@ extern "C"
 	SAM_EXPORT double SAM_BatteryStateful_Controls_input_current_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_Controls_input_power_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_BatteryStateful_Controls_run_sequentially_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

@@ -2529,10 +2529,11 @@ equations{'file_name'} = define() {
 	// for compatibility with most SSC APIs
 	return ${solar_resource_file};
 };
-31450
+32393
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
-	// show/hide widgets
+	//hide legacy data for 2020.2.29 Patch 3
+	show('is_advanced',false);
 	on_change{'in_location_options'}();
 	on_change{'in_nsrdb_options'}();
 	on_change{'is_advanced'}();
@@ -2989,18 +2990,20 @@ function clean_name( location )
 	return lower(name);
 }
 
-// return url for current dataset for a location. uses NSRDB lat, lon as input instead of wkt because always downloading single file
+// return url for current dataset for a location
 function nsrdb( location )
 {
 	name = '';
+	tmy_name = '';
 	url = '';
+	tmy_url = '';
 	years = [];
+	tmy_years = [];
 	msg = '';
 	g = {'lat'=null,'lon'=null, tz=null, 'ok'=false};
 	geocode_ok = false;
 	json_ok = false;
 	location_ok = false;
-
 	if ( strpos(lower(location),'type a location name') > -1 )
 	{
 		msg += 'Invalid location name: \n\n' + location + '\n\n';
@@ -3019,7 +3022,6 @@ function nsrdb( location )
 			if ( g.ok ) { geocode_ok = true; }
 		}
 	}
-
 	if ( geocode_ok )
 	{
 		url = webapi( 'nsrdb_query' );
@@ -3061,28 +3063,39 @@ function nsrdb( location )
 		if ( json_ok )
 		{
 			arr = var.outputs;
-			best_dataset = -1;
+			single_year_dataset = -1;
+			tmy_dataset = -1;
 			for ( i=0; i<#arr; i++ )
 			{
 				name = arr[i].name;
-				if ( name == 'suny-international' || name == 'psmv3' )
+				if ( name == 'suny-india' || name == 'psm3' )
 				{
-					best_dataset = i; 
+					single_year_dataset = i; 
+				}
+				elseif ( name == 'psm3-tmy' || name == 'suny-india-tmy' )
+				{
+					tmy_dataset = i;
 				}
 			}
-			if (best_dataset > -1 )
+			if ( single_year_dataset > -1 )
 			{
-				// PSM V3 is var.outputs[1]
-				// SUNY International is var.outputs[0]
-				name = var.outputs[best_dataset].name;
-				url = split(var.outputs[best_dataset].links[0].link,'?')[0];
-				years = var.outputs[best_dataset].availableYears;
+				name = var.outputs[single_year_dataset].name;
+				//url = split(var.outputs[single_year_dataset].links[0].link,'?')[0];
+				url = var.outputs[single_year_dataset].apiUrl+'.csv';
+				years = var.outputs[single_year_dataset].availableYears;
 				dataset_ok = true;
 			}
-			else
+			if ( tmy_dataset > -1 )
+			{
+				tmy_name = var.outputs[tmy_dataset].name;
+				tmy_url = var.outputs[tmy_dataset].apiUrl+'.csv';
+				tmy_years = var.outputs[tmy_dataset].availableYears;
+				dataset_ok = true;
+			}
+			if ( tmy_dataset < 0 && single_year_dataset < 0 )
 			{
 				msg += 'No NSRDB PSM V3 data available for \"' + location + '\". ';
-				msg += 'Try using the Legacy data option to find data from a different dataset.\n';
+				msg += 'See https://sam.nrel.gov/weather for other sources of data.';
 				dataset_ok = false;
 			}
 		}
@@ -3093,7 +3106,7 @@ function nsrdb( location )
 		msg += 'Geocoding failed: Could not connect to service or failed to recognize \"' + location + '\" \n';
 	}
 	ok_test = ( ( geocode_ok == true ) && ( json_ok == true ) && ( dataset_ok == true ) && ( location_ok == true ) );
-	return { 'name' = name , 'msg' = msg , 'url' = url , 'years' = years , 'ok' = ok_test , 'lat' = g.lat, 'lon' = g.lon };
+	return { 'name' = name , 'tmy_name' = tmy_name, 'msg' = msg , 'url' = url, 'tmy_url'=tmy_url, 'years' = years , 'tmy_years' = tmy_years, 'ok' = ok_test , 'lat' = g.lat, 'lon' = g.lon };
 }
 
 function wf_check( wf )
@@ -3160,9 +3173,11 @@ function nsrdb_get()
 			continue;
 		}	
 		x = value('in_nsrdb_options');
-		if ( x == TMY ) // type is a string
-		{	type = 'tmy'; }
-		elseif ( x == SINGLE_YEAR ) // type is a number
+		if ( x == TMY )
+		{	
+			type = ['tmy']; // for now just download current tmy
+		}
+		elseif ( x == SINGLE_YEAR ) 
 		{
 			y = choose_from_list( dataset[n].years, 'Choose a year', 'Available Years for \"' + location[n] +'\"', 0 ); 
 			if (y == '')
@@ -3172,25 +3187,28 @@ function nsrdb_get()
 				continue;
 			}
 			else	
-			{	type = to_int( y ); }
+			{	type = [to_int( y )]; }
 		}
-		else // x == ALL_YEARS, type is an array of numbers
+		else
 		{	type = dataset[n].years; }
 		write_line( flog, 'Requested year(s): ' + type );
+		/*
 		// verify that type parameter is a valid value and convert to array if needed
 		d = typeof( type );
 		bad = [];
 		if ( d == 'string' && type == 'tmy' ) // download tmy only
 		{	type = ['tmy']; }
 		elseif ( d == 'string' ) // invalid parameter
+		if ( d == 'string' ) // invalid parameter 
 		{	bad[0] = type; }
 		elseif ( d == 'number' ) // single year
 		{
 			type = [type];
 			if ( ( dataset[n].years ?@ type[0] ) == -1 )
-				bad[0] = type[0];
+			{	bad[0] = type[0]; }
 		}	
 		elseif ( n == 0 ) // multiple years, keep good years and remove bad years, only need to do once
+		if ( n == 0 ) // multiple years, keep good years and remove bad years, only need to do once
 		{	
 			j=0;
 			for ( i=0; i<#type; i++ )
@@ -3209,16 +3227,25 @@ function nsrdb_get()
 				}		
 			}			
 		}
-		if ( bad == [] ) {	bad = 'None'; }
+		//if ( bad == [] ) {	bad = 'None'; }
 		else {	download_ok = false; }
 		write_line( flog, 'Invalid requested years: ' + bad);
+		*/
 		if ( dataset[n].ok )
 		{ 
 			// portion of url that is the same for all download scenarios
-			base_url = dataset[n].url;
+			if ( type[0] == 'tmy' )
+			{
+				base_url = dataset[n].tmy_url;
+			}
+			else
+			{
+				base_url = dataset[n].url;
+			}	
 			base_url += '?api_key=<SAMAPIKEY>';
 			base_url += '&full_name=sam_user';
-			base_url += '&email=<USEREMAIL>';
+			//base_url += '&email=<USEREMAIL>'; **CHANGE BACK**
+			base_url += '&email=sam.support@nrel.gov';
 			base_url += '&affiliation=unknown'; 
 			base_url += '&mailing_list=false';
 			base_url += '&reason=SAM';
@@ -3241,38 +3268,51 @@ function nsrdb_get()
 					if ( !mkdir( path, false ) )
 					{	path = default_download_path; }
 				}
-				if ( path != default_download_path && i == 0)
+				if ( path != default_download_path /*&& i == 0*/)
 				{	update_library_folders( path ); }
 			}
 			
 			pb_years = progressbar( { 'title' = 'Download Progress for ' + location[n] , 'message' = 'Downloading, please wait...', 'cancelbutton' = false , 'closebutton' = false , 'time' = false , 'max' = #type } );
 				
 			// for each year
+			base = base_url;
 			for( i=0; i<#type; i++ )
 			{
+				base_url = base;
 				progressbar( pb_years, { 'message' = 'Preparing file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
 				file_skipped = false;
 				no_current_data = false;
-				if ( dataset[n].name == 'psmv3' )
+				// single-year 
+				if ( dataset[n].name == 'psm3' && type[i] != 'tmy' )
 				{
-					if ( type[i] == 'tmy' ) // relative_humidity not available for psmv3 tmy data
-						{ base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo'; }
-					else // single year
-						{ base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo'; }
+					base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed';
 				}
-				elseif ( dataset[n].name == 'suny-international' )
+				elseif ( dataset[n].name == 'suny-india' && type[i] != 'tmy' )
 				{
-					if ( type[i] == 'tmy' ) // relative_humidity not available for tmy data
-						{ base_url += '&attributes=dni,dhi,ghi,dew_point,surface_temperature,surface_pressure,wdir,wspd'; }
-					else
-						{ base_url += '&attributes=dni,dhi,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,wdir,wspd,snow_depth'; }
+					base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,snow_depth';
 				}
-				else
+				elseif ( type[i] != 'tmy' )
 				{
 					no_current_data = true;
 					dataset_name = dataset[n].name;
-					msg += 'No NSRDB PSM V3 or SUNY International data available for ' + dataset[n].location + '.\n';
-					msg += 'Try using the Legacy data option to download a file from the ' + dataset_name +' dataset.';
+					msg += 'No NSRDB PSM V3 or SUNY India data available for ' + dataset[n].location + '.\n';
+					msg += 'See https://sam.nrel.gov/weather for other sources of data.';
+				}
+				// tmy
+				if ( dataset[n].tmy_name == 'psm3-tmy' && type[i] == 'tmy' )
+				{
+					base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed';
+				}
+				elseif ( dataset[n].tmy_name == 'suny-india-tmy' && type[i] == 'tmy' )
+				{
+					base_url += '&attributes=dni,dhi,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed';
+				}
+				elseif ( type[i] == 'tmy' )
+				{
+					no_current_data = true;
+					dataset_name = dataset[n].tmy_name;
+					msg += 'No NSRDB PSM V3 TMY or SUNY India TMY data available for ' + dataset[n].location + '.\n';
+					msg += 'See https://sam.nrel.gov/weather for other sources of data.';
 				}
 					
 				write_line( flog, '\nFile ' + to_string(i+1) + ' of ' + #type + ': ' + type[i]);
@@ -3281,7 +3321,7 @@ function nsrdb_get()
 				url += '&wkt=POINT(' + dataset[n].lon + '%20' + dataset[n].lat + ')';
 				write_line( flog, url + '\n');
 
-				fname = path + '/' + clean_name( location[n] ) + '_' + dataset[n].lat + '_' + dataset[n].lon + '_psmv3_' + time_step + '_' + type[i] + '.csv';
+				fname = path + '/' + clean_name( location[n] ) + '_' + dataset[n].lat + '_' + dataset[n].lon + '_psm3_' + time_step + '_' + type[i] + '.csv';
 
 				if ( type[i] == 'tmy' ) 
 				{
@@ -3326,9 +3366,7 @@ function nsrdb_get()
 					elseif ( i == #type - 1 ) 
 					{
 						rescanlibrary('solar');
-						// for multiple file download set library to tmy file
-						if ( #type > 1 ) { fn = fname_tmy;  }
-						else { fn = fname; }
+						fn = fname;
 						value( 'solar_resource', file_to_key( fn ) );
 						write_line( flog, 'Weather file test passed: ' + fname + '.\n');
 					}	

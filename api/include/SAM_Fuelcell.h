@@ -28,6 +28,27 @@ extern "C"
 
 
 	//
+	// Lifetime parameters
+	//
+
+	/**
+	 * Set analysis_period: Lifetime analysis period [years]
+	 * options: The number of years in the simulation
+	 * constraints: None
+	 * required if: system_use_lifetime_output=1
+	 */
+	SAM_EXPORT void SAM_Fuelcell_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set system_use_lifetime_output: Lifetime simulation [0/1]
+	 * options: 0=SingleYearRepeated,1=RunEveryYear
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Fuelcell_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// Common parameters
 	//
 
@@ -54,35 +75,6 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Fuelcell_Common_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set percent_complete: Estimated simulation status [%]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Fuelcell_Common_percent_complete_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// Lifetime parameters
-	//
-
-	/**
-	 * Set analysis_period: Lifetime analysis period [years]
-	 * options: The number of years in the simulation
-	 * constraints: None
-	 * required if: system_use_lifetime_output=1
-	 */
-	SAM_EXPORT void SAM_Fuelcell_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set system_use_lifetime_output: Lifetime simulation [0/1]
-	 * options: 0=SingleYearRepeated,1=RunEveryYear
-	 * constraints: BOOLEAN
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Fuelcell_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -368,6 +360,15 @@ extern "C"
 
 
 	/**
+	 * Lifetime Getters
+	 */
+
+	SAM_EXPORT double SAM_Fuelcell_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Fuelcell_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Common Getters
 	 */
 
@@ -376,17 +377,6 @@ extern "C"
 	SAM_EXPORT double SAM_Fuelcell_Common_capacity_factor_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Fuelcell_Common_gen_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Fuelcell_Common_percent_complete_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * Lifetime Getters
-	 */
-
-	SAM_EXPORT double SAM_Fuelcell_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Fuelcell_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
