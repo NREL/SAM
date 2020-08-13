@@ -1003,7 +1003,7 @@ BatteryCell
 
 DataArray
 
-1470
+1504
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1031,11 +1031,12 @@ equations{'batt_room_temperature_celsius'} = define()
 			ssc_var(wfread, "header_only", 0);
 			
 			T = [];
-			if (!ssc_exec(wfread, "wfreader")){
+			result = ssc_exec(wfread, "wfreader");
+			if (0 == result){
 				T = ssc_var(wfread, "tdry");
 			}
 			else {
-				msgbox('failed');
+				msgbox('failed ' + result);
 				return 0;
 			}
 		}
