@@ -1,7 +1,7 @@
 Rankine Cycle
 927
 812
-48
+49
 Numeric
 
 1
@@ -870,6 +870,29 @@ BackColour
 TabOrder
 3
 4294967295
+Plot
+
+1
+6
+Name
+5
+17
+acc_pressure_plot
+X
+3
+543
+Y
+3
+17
+Width
+3
+346
+Height
+3
+288
+Tool Tip
+5
+0
 Divider
 
 1
@@ -1928,16 +1951,16 @@ Name
 label_hybrid_cooling
 X
 3
-528
+519
 Y
 3
-120
+105
 Width
 3
-345
+379
 Height
 3
-48
+38
 Tool Tip
 5
 0
@@ -3461,15 +3484,19 @@ equations{ 'ctes_cost' } = define() {
 equations{ 'radiator_fluidcost' } = define() {
 	return ${radiator_fluidcost_per_m3} / 1000;
 };
-2785
+4635
 on_load{"Rankine Cycle"} = define() {
 	on_change{"csp.pt.pwrb.condenser_type"}();
+	on_change{"T_amb_des"};
+	on_change{"P_cond_min"};
 };
 
 on_change{"csp.pt.pwrb.condenser_type"} = define() {
 	mode = value("csp.pt.pwrb.condenser_type");
 	
 	show("label_hybrid_cooling", mode==2);
+	show("acc_pressure_plot", mode==1);
+	update_acc_press_plot();
 	
 	// 0 = evap, 1 = air, 2 = hybrid, 3=radiative
 	enable("T_approach", mode==0||mode==2||mode==3);
@@ -3552,7 +3579,70 @@ on_change{"csp.pt.pwrb.condenser_type"} = define() {
 	
 	refresh();
 };
+on_change{"T_amb_des"} = define(){update_acc_press_plot();};
+on_change{"P_cond_min"} = define(){update_acc_press_plot();};
 
+function update_acc_press_plot()
+{
+	table = acc_press_vs_load_temp();
+	desPcond = table{'desPcond'};
+	p_cond = table{'p_cond'};
+	Tamb = table{'Tamb'};
+	
+	
+	clearplot( 'acc_pressure_plot');
+	plot( Tamb, p_cond, {'thick'=3, 'type' = 'line', 'color' = 'blue'});//, 'series' = 'Tamb: ' + ${T_amb_des} + ' [C]'
+	plotopt( {'title' = 'Air-cooled Condenser Model (full-load)', 'legend' = true});//, 'legendpos'=[15,12]
+	axis( 'x1', {'label' = 'Ambient Temperature [C]', 'min' = 0, 'max' = ${T_amb_des}*1.1});
+	axis( 'y1', {'label' = 'Condenser Pressure [inHg]', 'min'= 0, 'max' = desPcond*1.1});
+}
+
+function acc_press_vs_load_temp()
+{
+	P_cond_min = ${P_cond_min};
+	T_amb_des = ${T_amb_des};
+	
+	// Fitted regression model coefficients
+	A = [[147.96619, 71.23482281, 27.55395547],
+		 [-329.021562, -159.2675368, -62.24857193],
+		 [183.4601872, 89.50235831, 35.57127305]];
+	
+	Nsteps = 10;
+	
+	// Normalized factors 
+	p_norm = 0.;
+	T_norm = 1.0;	// normalized ambient temperature
+	q_norm = 1.; 	// Approximately Full load
+	t_step = (T_norm - 0.85)/Nsteps;
+	for (t = 0; t <= Nsteps + 1; t++){
+		if (T_norm > 0.8925){
+			for (i = 0; i < #A; i++){
+				for (j = 0; j < #A[i]; j++){
+					p_norm += A[i][j]*pow(T_norm, i)*pow(q_norm,j);
+				}
+			}
+		}
+		else
+			p_norm = 1;
+	
+		T_vec[t] = T_norm*(T_amb_des+273.15) - 273.15;
+		if (T_norm == 1.0)
+			desPcond = p_norm*P_cond_min;
+			
+		if (p_norm > 1)
+			p_vec[t] = p_norm*P_cond_min;
+		else
+			p_vec[t] = P_cond_min;
+		// step down
+		T_norm -= t_step;
+		p_norm = 0.0; // Reset p
+	}
+	
+	table{'desPcond'} = desPcond;
+	table{'Tamb'} = T_vec;
+	table{'p_cond'} = p_vec;
+	return table;
+}
 
 
 
