@@ -1851,6 +1851,7 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 				errors += lk_string(msg);
 			}
 
+			cxt.error(errors);
 			cxt.result().assign( errors );
 		}
 
@@ -3379,7 +3380,7 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		reloaded = Library::Load(wave_resource_db);
 	}
 
-	if ( &cc != NULL && reloaded != 0 )
+	if ( reloaded != 0 )
 	{
 		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
 		for( size_t i=0;i<objs.size();i++ )
@@ -3395,19 +3396,16 @@ void fcall_librarygetcurrentselection(lk::invoke_t &cxt)
 	lk_string ret_val = "";
 
 	wxString name(cxt.arg(0).as_string().Lower());
-	if (&cc != NULL)
-	{
-		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
-		for (size_t i = 0; i < objs.size(); i++)
-			if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+	std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+	for (size_t i = 0; i < objs.size(); i++)
+		if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+		{
+			if (objs[i]->GetName().Lower() == name)
 			{
-				if (objs[i]->GetName().Lower() == name)
-				{
-					ret_val = lc->GetEntrySelection();
-					break;
-				}
+				ret_val = lc->GetEntrySelection();
+				break;
 			}
-	}
+		}
 	cxt.result().assign(ret_val);
 }
 
@@ -3418,19 +3416,16 @@ void fcall_librarygetfiltertext(lk::invoke_t &cxt)
 	lk_string ret_val = "";
 
 	wxString name(cxt.arg(0).as_string().Lower());
-	if (&cc != NULL)
-	{
-		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
-		for (size_t i = 0; i < objs.size(); i++)
-			if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+	std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+	for (size_t i = 0; i < objs.size(); i++)
+		if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+		{
+			if (objs[i]->GetName().Lower() == name)
 			{
-				if (objs[i]->GetName().Lower() == name)
-				{
-					ret_val = lc->GetFilterText();
-					break;
-				}
+				ret_val = lc->GetFilterText();
+				break;
 			}
-	}
+		}
 	cxt.result().assign(ret_val);
 }
 
@@ -3442,19 +3437,16 @@ void fcall_librarygetnumbermatches(lk::invoke_t &cxt)
 	double ret_val = 0;
 
 	wxString name(cxt.arg(0).as_string().Lower());
-	if (&cc != NULL)
-	{
-		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
-		for (size_t i = 0; i < objs.size(); i++)
-			if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+	std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+	for (size_t i = 0; i < objs.size(); i++)
+		if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+		{
+			if (objs[i]->GetName().Lower() == name)
 			{
-				if (objs[i]->GetName().Lower() == name)
-				{
-					ret_val = (double)lc->GetNumberMatches();
-					break;
-				}
+				ret_val = (double)lc->GetNumberMatches();
+				break;
 			}
-	}
+		}
 	cxt.result().assign(ret_val);
 }
 
@@ -3466,24 +3458,21 @@ void fcall_librarynotifytext(lk::invoke_t &cxt)
 	wxString ret_val = "";
 
 	wxString name(cxt.arg(0).as_string().Lower());
-	if (&cc != NULL)
-	{
-		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
-		for (size_t i = 0; i < objs.size(); i++)
-			if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+	std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+	for (size_t i = 0; i < objs.size(); i++)
+		if (LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>())
+		{
+			if (objs[i]->GetName().Lower() == name)
 			{
-				if (objs[i]->GetName().Lower() == name)
+				if (cxt.arg_count() == 2)
 				{
-					if (cxt.arg_count() == 2)
-					{
-						wxString str = cxt.arg(1).as_string();
-						lc->SetNotifyText(str);
-					}
-					ret_val = lc->GetNotifyText();
-					break;
+					wxString str = cxt.arg(1).as_string();
+					lc->SetNotifyText(str);
 				}
+				ret_val = lc->GetNotifyText();
+				break;
 			}
-	}
+		}
 	cxt.result().assign(ret_val);
 }
 
