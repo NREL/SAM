@@ -796,13 +796,13 @@ Name
 development_cost_method
 X
 3
-192
+171
 Y
 3
 69
 Width
 3
-126
+150
 Height
 3
 24
@@ -2204,13 +2204,13 @@ Name
 object 21
 X
 3
-102
+75
 Y
 3
-123
+111
 Width
 3
-521
+600
 Height
 3
 16
@@ -3875,7 +3875,7 @@ Name
 object 75
 X
 3
-99
+84
 Y
 3
 69

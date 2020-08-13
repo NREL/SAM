@@ -931,13 +931,13 @@ Name
 object 21
 X
 3
-45
+54
 Y
 3
 90
 Width
 3
-608
+600
 Height
 3
 16
@@ -1720,7 +1720,7 @@ Name
 object 757
 X
 3
-45
+57
 Y
 3
 57
@@ -2477,13 +2477,13 @@ Name
 structural_assembly_cost_method
 X
 3
-168
+180
 Y
 3
 57
 Width
 3
-168
+150
 Height
 3
 24

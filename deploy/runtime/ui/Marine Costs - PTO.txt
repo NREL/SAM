@@ -2472,7 +2472,7 @@ Y
 111
 Width
 3
-557
+600
 Height
 3
 16
@@ -3993,7 +3993,7 @@ Name
 object 75
 X
 3
-45
+39
 Y
 3
 69
@@ -4906,13 +4906,13 @@ Name
 power_takeoff_system_cost_method
 X
 3
-156
+138
 Y
 3
 69
 Width
 3
-126
+150
 Height
 3
 24

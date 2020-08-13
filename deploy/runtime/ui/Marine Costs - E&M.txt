@@ -668,7 +668,7 @@ Y
 60
 Width
 3
-144
+150
 Height
 3
 24
@@ -1171,13 +1171,13 @@ Name
 object 21
 X
 3
-51
+54
 Y
 3
 111
 Width
 3
-623
+600
 Height
 3
 16

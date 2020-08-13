@@ -582,13 +582,13 @@ Name
 maintenance_cost_method
 X
 3
-180
+177
 Y
 3
 72
 Width
 3
-144
+150
 Height
 3
 24
@@ -966,13 +966,13 @@ Name
 object 21
 X
 3
-87
+81
 Y
 3
 108
 Width
 3
-536
+600
 Height
 3
 16
@@ -1035,7 +1035,7 @@ Name
 object 7
 X
 3
-81
+72
 Y
 3
 72
@@ -2501,7 +2501,7 @@ other_maintenance_cost
 $ 
 ME Costs 
 0
-2
+3
 1
 1
 1
@@ -2676,7 +2676,7 @@ unscheduled_maintenance_cost
 $ 
 ME Costs
 0
-2
+3
 1
 1
 1

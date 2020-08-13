@@ -205,7 +205,7 @@ Y
 129
 Width
 3
-591
+663
 Height
 3
 33
@@ -214,8 +214,8 @@ Tool Tip
 0
 Caption
 5
-157
-Financial Costs = Project contingency budget costs + Insurance during construction costs + carrying costs during construction + reserve accounts +other costs
+120
+Financial Costs = Project contingency budget costs + Insurance during construction costs + reserve accounts +other costs
 TextColour
 4
 0

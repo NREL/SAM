@@ -204,10 +204,10 @@ Name
 Electrical Infrastructure Costs
 X
 3
-9
+6
 Y
 3
-18
+12
 Width
 3
 800
@@ -1375,13 +1375,13 @@ Name
 elec_infras_cost_method
 X
 3
-177
+156
 Y
 3
 78
 Width
 3
-126
+150
 Height
 3
 24
@@ -2262,13 +2262,13 @@ Name
 object 21
 X
 3
-33
+24
 Y
 3
 123
 Width
 3
-584
+600
 Height
 3
 16
@@ -3885,7 +3885,7 @@ Name
 object 75
 X
 3
-36
+21
 Y
 3
 78
