@@ -2529,7 +2529,7 @@ equations{'file_name'} = define() {
 	// for compatibility with most SSC APIs
 	return ${solar_resource_file};
 };
-32443
+32465
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2837,7 +2837,7 @@ function update_info( ctxt )
 		}
 		else
 		{
-			msgbox('failed ' + result);
+			msgbox('Weather file reader failed!\n' + result);
 			value( 'annual_global', nan() );
 			value( 'annual_beam', nan() );
 			value( 'annual_diffuse', nan() );
