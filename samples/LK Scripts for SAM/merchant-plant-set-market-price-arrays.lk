@@ -1,0 +1,69 @@
+/*
+
+This script sets the Merchant Plant financial model inputs for energy market
+revenue given a daily 24-hour price schedule that repeats over the entire
+analysis period.
+
+These inputs are array of length analysis period * time step. For example, for
+hourly simulations and an analysis period of 25 years, the array lengths are:
+
+  25 years * 8760 hours/year = 219,000
+
+The script can be modified to work with different schedules, or to assign values
+to ancillary service.
+
+The variable name of the energy market revenue input is:
+
+mp_energy_market_revenue
+
+And for the ancillary service reveneu inputs:
+
+mp_ancserv1_revenue
+mp_ancserv2_revenue
+mp_ancserv3_revenue
+mp_ancserv4_revenue
+
+Written and tested in SAM 2020.2.29 r3
+
+*/
+
+// show the length of the current energy market revenue input:
+x = get('mp_energy_market_revenue');
+outln(#x);
+outln(#x[0]);
+
+// get the analysis period from the Fiancial Parameters page.
+analysis_period = get('analysis_period');
+
+// number of time steps per day determined by the simulation time step:
+// 24 for hourly, 96 for 15-minute, etc.
+ts_per_day = 24;
+
+// define the 24-hour schedule
+// you should modify these arrays with your data, and if needed, for different schedules
+daily_price_schedule = [ 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40 ]; // $/MW
+daily_cleared_capacity_schedule = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ]; // MW
+
+// build an array from the 24-hour schedule
+i=0;
+for ( y=0; y<analysis_period; y++ )
+{
+	for ( d=0; d<365; d++ )
+	{
+
+		for ( ts=0; ts<ts_per_day; ts++ )
+		{
+			arr[i][0] = daily_cleared_capacity_schedule[ts];
+			arr[i][1] = daily_price_schedule[ts];
+			i++;
+		}
+	}	 
+}
+
+// assign the array ot the energy market revenue input
+set('mp_energy_market_revenue',arr);
+
+// verify the length of the new energy market revenue input:
+x = get('mp_energy_market_revenue');
+outln(#x);
+outln(#x[0]);
