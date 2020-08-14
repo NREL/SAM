@@ -1679,7 +1679,6 @@ void fcall_ssc_exec( lk::invoke_t &cxt )
 				errors += lk_string(msg);
 			}
 
-			cxt.error(errors);
 			cxt.result().assign( errors );
 		}
 
