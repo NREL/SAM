@@ -1,6 +1,6 @@
 Marine Costs - Maintenance
-820
-560
+623
+554
 45
 Label
 
@@ -11,7 +11,7 @@ Name
 0
 X
 3
-123
+81
 Y
 3
 156
@@ -59,7 +59,7 @@ Name
 Itemized Inputs 
 X
 3
-438
+396
 Y
 3
 129
@@ -107,7 +107,7 @@ Name
 Itemized Inputs 3
 X
 3
-336
+294
 Y
 3
 129
@@ -155,7 +155,7 @@ Name
 balance_of_system_scheduled_maintenance_cost
 X
 3
-429
+387
 Y
 3
 276
@@ -218,7 +218,7 @@ Name
 balance_of_system_unscheduled_maintenance_cost
 X
 3
-429
+387
 Y
 3
 426
@@ -281,7 +281,7 @@ Name
 detailed_cost_choice_scheduled_maintenance
 X
 3
-357
+315
 Y
 3
 216
@@ -314,7 +314,7 @@ Name
 detailed_cost_choice_unscheduled_maintenance
 X
 3
-357
+315
 Y
 3
 366
@@ -347,7 +347,7 @@ Name
 itemized_check_maintenance
 X
 3
-81
+39
 Y
 3
 45
@@ -394,7 +394,7 @@ Name
 long_term_service_agreement_cost
 X
 3
-336
+294
 Y
 3
 156
@@ -457,7 +457,7 @@ Name
 maintenance_cost
 X
 3
-531
+489
 Y
 3
 72
@@ -520,7 +520,7 @@ Name
 maintenance_cost_input
 X
 3
-432
+390
 Y
 3
 72
@@ -582,7 +582,7 @@ Name
 maintenance_cost_method
 X
 3
-177
+135
 Y
 3
 72
@@ -618,7 +618,7 @@ Name
 maintenance_cost_modeled
 X
 3
-333
+291
 Y
 3
 72
@@ -681,7 +681,7 @@ Name
 maintenance_cost_total
 X
 3
-432
+390
 Y
 3
 72
@@ -744,7 +744,7 @@ Name
 maintenance_level_total_label
 X
 3
-432
+390
 Y
 3
 45
@@ -792,7 +792,7 @@ Name
 maintenance_user_input_label
 X
 3
-447
+405
 Y
 3
 45
@@ -840,7 +840,7 @@ Name
 marine_energy_converter_scheduled_maintenance_cost
 X
 3
-429
+387
 Y
 3
 246
@@ -903,7 +903,7 @@ Name
 marine_energy_converter_unscheduled_maintenance_cost
 X
 3
-429
+387
 Y
 3
 396
@@ -966,13 +966,13 @@ Name
 object 21
 X
 3
-81
+48
 Y
 3
 108
 Width
 3
-600
+534
 Height
 3
 16
@@ -1011,7 +1011,7 @@ Y
 15
 Width
 3
-800
+600
 Height
 3
 531
@@ -1035,7 +1035,7 @@ Name
 object 7
 X
 3
-72
+30
 Y
 3
 72
@@ -1083,7 +1083,7 @@ Name
 object 71339
 X
 3
-267
+225
 Y
 3
 246
@@ -1131,7 +1131,7 @@ Name
 object 721
 X
 3
-336
+294
 Y
 3
 45
@@ -1179,7 +1179,7 @@ Name
 object 7275125
 X
 3
-243
+201
 Y
 3
 426
@@ -1227,7 +1227,7 @@ Name
 object 7275130
 X
 3
-153
+111
 Y
 3
 336
@@ -1275,7 +1275,7 @@ Name
 object 7275135
 X
 3
-219
+177
 Y
 3
 306
@@ -1323,7 +1323,7 @@ Name
 object 727513513
 X
 3
-270
+228
 Y
 3
 276
@@ -1371,7 +1371,7 @@ Name
 object 728
 X
 3
-177
+135
 Y
 3
 516
@@ -1419,7 +1419,7 @@ Name
 object 729
 X
 3
-210
+168
 Y
 3
 486
@@ -1467,7 +1467,7 @@ Name
 object 72937
 X
 3
-210
+168
 Y
 3
 456
@@ -1515,7 +1515,7 @@ Name
 object 73
 X
 3
-186
+144
 Y
 3
 186
@@ -1563,7 +1563,7 @@ Name
 object 73029
 X
 3
-252
+210
 Y
 3
 396
@@ -1611,7 +1611,7 @@ Name
 object 7322
 X
 3
-537
+495
 Y
 3
 45
@@ -1659,7 +1659,7 @@ Name
 other_maintenance_cost
 X
 3
-339
+297
 Y
 3
 516
@@ -1722,7 +1722,7 @@ Name
 other_scheduled_maintenance_cost
 X
 3
-429
+387
 Y
 3
 306
@@ -1785,7 +1785,7 @@ Name
 other_unscheduled_maintenance_cost
 X
 3
-429
+387
 Y
 3
 486
@@ -1848,7 +1848,7 @@ Name
 scheduled_maintenance_cost
 X
 3
-336
+294
 Y
 3
 186
@@ -1911,7 +1911,7 @@ Name
 scheduled_maintenance_cost_total
 X
 3
-336
+294
 Y
 3
 186
@@ -1973,7 +1973,7 @@ Name
 tt_long_term_service_agreement_cost
 X
 3
-438
+396
 Y
 3
 156
@@ -1999,7 +1999,7 @@ Name
 tt_other_maintenance_cost
 X
 3
-438
+396
 Y
 3
 516
@@ -2025,7 +2025,7 @@ Name
 tt_scheduled_maintenance_cost
 X
 3
-438
+396
 Y
 3
 186
@@ -2051,7 +2051,7 @@ Name
 tt_unscheduled_maintenance_cost
 X
 3
-438
+396
 Y
 3
 336
@@ -2077,7 +2077,7 @@ Name
 unscheduled_maintenance_contingency_cost
 X
 3
-429
+387
 Y
 3
 456
@@ -2140,7 +2140,7 @@ Name
 unscheduled_maintenance_cost
 X
 3
-339
+297
 Y
 3
 336
@@ -2203,7 +2203,7 @@ Name
 unscheduled_maintenance_cost_total
 X
 3
-339
+297
 Y
 3
 336

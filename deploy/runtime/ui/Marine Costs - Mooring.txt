@@ -1,6 +1,6 @@
 Marine Costs - Mooring
-799
-903
+709
+902
 76
 Label
 
@@ -113,7 +113,7 @@ Y
 24
 Width
 3
-780
+693
 Height
 3
 871
@@ -1594,13 +1594,13 @@ Name
 object 21
 X
 3
-48
+51
 Y
 3
 117
 Width
 3
-600
+507
 Height
 3
 16

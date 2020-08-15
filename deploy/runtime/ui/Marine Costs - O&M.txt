@@ -1,6 +1,6 @@
 Marine Costs - O&M
-799
-152
+621
+149
 5
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 9
 Width
 3
-780
+600
 Height
 3
 135
@@ -48,7 +48,7 @@ Y
 33
 Width
 3
-591
+549
 Height
 3
 72

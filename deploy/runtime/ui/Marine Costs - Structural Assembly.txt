@@ -1,6 +1,6 @@
 Marine Costs - Structural Assembly
-819
-676
+800
+672
 62
 Label
 
@@ -11,7 +11,7 @@ Name
 0
 X
 3
-264
+237
 Y
 3
 138
@@ -59,7 +59,7 @@ Name
 active_structure_cost
 X
 3
-441
+414
 Y
 3
 288
@@ -122,7 +122,7 @@ Name
 additional_structural_components_cost
 X
 3
-342
+315
 Y
 3
 348
@@ -185,7 +185,7 @@ Name
 ballast_system_cost
 X
 3
-441
+414
 Y
 3
 468
@@ -248,7 +248,7 @@ Name
 buoyancy_chamber_cost
 X
 3
-441
+414
 Y
 3
 228
@@ -311,7 +311,7 @@ Name
 coatings
 X
 3
-147
+120
 Y
 3
 558
@@ -359,7 +359,7 @@ Name
 coatings_cost
 X
 3
-342
+315
 Y
 3
 558
@@ -422,7 +422,7 @@ Name
 detailed_cost_choice_marine_systems
 X
 3
-369
+342
 Y
 3
 408
@@ -455,7 +455,7 @@ Name
 detailed_cost_choice_struct_assem
 X
 3
-375
+348
 Y
 3
 168
@@ -488,7 +488,7 @@ Name
 external_ballast_chambers_cost
 X
 3
-441
+414
 Y
 3
 258
@@ -551,10 +551,10 @@ Name
 itemized_check_structural
 X
 3
-180
+21
 Y
 3
-30
+141
 Width
 3
 90
@@ -598,7 +598,7 @@ Name
 level_5_total_prime
 X
 3
-342
+315
 Y
 3
 111
@@ -646,7 +646,7 @@ Name
 level_5_total_prime50
 X
 3
-441
+414
 Y
 3
 111
@@ -694,7 +694,7 @@ Name
 marine_systems_cost
 X
 3
-342
+315
 Y
 3
 378
@@ -757,7 +757,7 @@ Name
 marine_systems_cost_total
 X
 3
-342
+315
 Y
 3
 378
@@ -820,7 +820,7 @@ Name
 navigation_lighting_cost
 X
 3
-441
+414
 Y
 3
 498
@@ -883,7 +883,7 @@ Name
 object 
 X
 3
-285
+258
 Y
 3
 318
@@ -931,13 +931,13 @@ Name
 object 21
 X
 3
-54
+33
 Y
 3
 90
 Width
 3
-600
+576
 Height
 3
 16
@@ -973,10 +973,10 @@ X
 9
 Y
 3
-12
+9
 Width
 3
-800
+780
 Height
 3
 653
@@ -1000,7 +1000,7 @@ Name
 object 713
 X
 3
-285
+258
 Y
 3
 228
@@ -1048,7 +1048,7 @@ Name
 object 721
 X
 3
-582
+549
 Y
 3
 261
@@ -1096,7 +1096,7 @@ Name
 object 72145
 X
 3
-342
+315
 Y
 3
 30
@@ -1144,7 +1144,7 @@ Name
 object 72446
 X
 3
-147
+120
 Y
 3
 588
@@ -1192,7 +1192,7 @@ Name
 object 72647
 X
 3
-285
+258
 Y
 3
 528
@@ -1240,7 +1240,7 @@ Name
 object 7264745
 X
 3
-285
+258
 Y
 3
 498
@@ -1288,7 +1288,7 @@ Name
 object 72748
 X
 3
-285
+258
 Y
 3
 438
@@ -1336,7 +1336,7 @@ Name
 object 728
 X
 3
-207
+180
 Y
 3
 378
@@ -1384,7 +1384,7 @@ Name
 object 729
 X
 3
-207
+180
 Y
 3
 348
@@ -1432,7 +1432,7 @@ Name
 object 73
 X
 3
-285
+258
 Y
 3
 198
@@ -1480,7 +1480,7 @@ Name
 object 730
 X
 3
-285
+258
 Y
 3
 288
@@ -1528,7 +1528,7 @@ Name
 object 731
 X
 3
-285
+258
 Y
 3
 468
@@ -1576,7 +1576,7 @@ Name
 object 7322
 X
 3
-546
+519
 Y
 3
 30
@@ -1624,7 +1624,7 @@ Name
 object 733
 X
 3
-147
+120
 Y
 3
 618
@@ -1672,7 +1672,7 @@ Name
 object 734
 X
 3
-285
+258
 Y
 3
 258
@@ -1720,7 +1720,7 @@ Name
 object 757
 X
 3
-57
+30
 Y
 3
 57
@@ -1768,7 +1768,7 @@ Name
 other_costs
 X
 3
-342
+315
 Y
 3
 618
@@ -1831,7 +1831,7 @@ Name
 other_marine_system_cost
 X
 3
-441
+414
 Y
 3
 528
@@ -1894,7 +1894,7 @@ Name
 other_prime_mover_cost
 X
 3
-441
+414
 Y
 3
 318
@@ -1957,10 +1957,10 @@ Name
 override_check_structural39
 X
 3
-699
+21
 Y
 3
-33
+114
 Width
 3
 90
@@ -2004,7 +2004,7 @@ Name
 personnel_access_system_cost
 X
 3
-441
+414
 Y
 3
 438
@@ -2067,7 +2067,7 @@ Name
 primary_struct_assem_cost
 X
 3
-441
+414
 Y
 3
 198
@@ -2130,7 +2130,7 @@ Name
 prime_mover_cost
 X
 3
-342
+315
 Y
 3
 138
@@ -2193,7 +2193,7 @@ Name
 prime_mover_cost_total
 X
 3
-342
+315
 Y
 3
 138
@@ -2256,7 +2256,7 @@ Name
 struct_level_total_label
 X
 3
-444
+417
 Y
 3
 33
@@ -2304,7 +2304,7 @@ Name
 struct_user_input_label
 X
 3
-453
+426
 Y
 3
 33
@@ -2352,7 +2352,7 @@ Name
 structural_assembly_cost
 X
 3
-540
+513
 Y
 3
 57
@@ -2370,7 +2370,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -2415,7 +2415,7 @@ Name
 structural_assembly_cost_input
 X
 3
-441
+414
 Y
 3
 57
@@ -2477,7 +2477,7 @@ Name
 structural_assembly_cost_method
 X
 3
-180
+153
 Y
 3
 57
@@ -2513,7 +2513,7 @@ Name
 structural_assembly_cost_modeled
 X
 3
-342
+315
 Y
 3
 57
@@ -2531,7 +2531,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -2576,7 +2576,7 @@ Name
 structural_assembly_cost_total
 X
 3
-441
+414
 Y
 3
 57
@@ -2639,10 +2639,10 @@ Name
 total_bos_cost_per_kwh
 X
 3
-678
+21
 Y
 3
-648
+171
 Width
 3
 90
@@ -2686,7 +2686,7 @@ Name
 total_capital_cost_per_kwh
 X
 3
-678
+651
 Y
 3
 648
@@ -2733,7 +2733,7 @@ Name
 total_device_cost_per_kwh
 X
 3
-678
+651
 Y
 3
 648
@@ -2780,7 +2780,7 @@ Name
 total_financial_cost_per_kwh
 X
 3
-678
+651
 Y
 3
 648
@@ -2827,7 +2827,7 @@ Name
 total_operations_cost_per_kwh
 X
 3
-678
+651
 Y
 3
 648
@@ -2874,7 +2874,7 @@ Name
 transport_structure_cost
 X
 3
-342
+315
 Y
 3
 588
@@ -2937,7 +2937,7 @@ Name
 tt_coatings_cost
 X
 3
-438
+411
 Y
 3
 558
@@ -2963,7 +2963,7 @@ Name
 tt_marine_systems_cost
 X
 3
-438
+411
 Y
 3
 378
@@ -2989,7 +2989,7 @@ Name
 tt_other_structural_assembly_cost
 X
 3
-438
+411
 Y
 3
 618
@@ -3015,7 +3015,7 @@ Name
 tt_prime_mover_cost
 X
 3
-441
+414
 Y
 3
 138
@@ -3041,7 +3041,7 @@ Name
 tt_structural_component_cost
 X
 3
-438
+411
 Y
 3
 348
@@ -3067,7 +3067,7 @@ Name
 tt_transportation_of_structure_cost
 X
 3
-438
+411
 Y
 3
 588
@@ -4277,7 +4277,7 @@ variable_prime_mover
 0
 Default
 
-8687
+8601
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -4344,9 +4344,6 @@ equations {'structural_assembly_cost_total'} = define() {
 
 
 
-/*equations {'structural_assembly_cost_modeled'} = define() {
-	return 198679680;
-};*/
 
 equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	

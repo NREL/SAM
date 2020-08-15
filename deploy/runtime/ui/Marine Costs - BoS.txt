@@ -93,7 +93,7 @@ Caption
 Override cost structure
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -125,7 +125,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
