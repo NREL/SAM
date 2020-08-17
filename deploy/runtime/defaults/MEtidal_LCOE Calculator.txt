@@ -1,5 +1,5 @@
 1
-618
+620
 accumulators_cost
 1
 1
@@ -1347,7 +1347,7 @@ insurance_during_construction_cost
 1
 1
 1
-4.02806e+06
+4028060
 insurance_during_construction_cost_input
 1
 1
@@ -1511,12 +1511,6 @@ itemized_check_structural
 1
 2
 itemized_num
-1
-1
-1
-1
-0
-itemized_option
 1
 1
 1
@@ -2497,6 +2491,12 @@ overhead_lines_cost
 1
 1
 0
+override_check_structural
+1
+1
+1
+1
+0
 permit_acquisition_activities_cost
 1
 1
@@ -3208,6 +3208,12 @@ structural_assembly_cost_modeled
 1
 1
 32478454
+structural_assembly_cost_modeled_formatted
+1
+1
+1
+1
+32478454
 structural_assembly_cost_total
 1
 1
@@ -3516,6 +3522,12 @@ total_rated_capacity
 1
 1
 111500
+total_test
+1
+1
+1
+1
+449934560
 transmission_charges_rights_cost
 1
 1

@@ -407,6 +407,13 @@ function MEwave_metrics()
 	metric_row( 'total_bos_cost_lcoe', {'label'='-  Total balance of system cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table4' });
 	metric_row( 'total_financial_cost_lcoe', {'label'='-  Total financial cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table4' });
 	metric_row( 'total_operations_cost_lcoe', {'label'='Total operating cost (annual)', 'mode'= 'f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table4' });
+	
+	metric_table('Table5', {'headers'='Metric,Wave Height, Wave Period'});
+	metric_row( 'wave_resource_start_height,wave_resource_start_period', {'label'='Wave Resource Start Position', 'mode'='f,f', 'deci'='2,1', 'thousep'='true,true', 'post'= 'm,s', 'tableName' = 'Table5' });
+	metric_row( 'wave_power_start_height,wave_power_start_period', {'label'='Wave Power Start Position', 'mode'='f,f', 'deci'='2,1', 'thousep'='true,true', 'post'= 'm,s', 'tableName' = 'Table5' });
+	metric_row( 'wave_resource_end_height,wave_resource_end_period', {'label'='Wave Resource End Position', 'mode'='f,f', 'deci'='2,1', 'thousep'='true,true', 'post'= 'm,s', 'tableName' = 'Table5' });
+	metric_row( 'wave_power_end_height,wave_power_end_period', {'label'='Wave Power End Position', 'mode'='f,f', 'deci'='2,1', 'thousep'='true,true', 'post'= 'm,s', 'tableName' = 'Table5' });
+	
 
 }
 
