@@ -1,7 +1,7 @@
 Marine Costs - Structural Assembly
 800
 672
-62
+63
 Label
 
 1
@@ -2370,7 +2370,7 @@ Value
 0
 Mode
 3
-0
+1
 Format
 3
 0
@@ -2531,7 +2531,7 @@ Value
 0
 Mode
 3
-0
+1
 Format
 3
 0
@@ -2542,6 +2542,68 @@ Prefix
 5
 1
 $
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+42
+structural_assembly_cost_modeled_formatted
+X
+3
+621
+Y
+3
+189
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
 Suffix
 5
 0
@@ -3084,7 +3146,7 @@ Tips
 5
 0
 
-85
+86
 active_structure_cost
 3
 1
@@ -4107,6 +4169,20 @@ $
 1
 1
 0
+Numeric
+structural_assembly_cost_modeled_formatted
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
 Default
 structural_assembly_cost_total
 3
@@ -4277,7 +4353,7 @@ variable_prime_mover
 0
 Default
 
-8601
+8762
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -4436,8 +4512,14 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_free(obj);
 };
 
+equations {'structural_assembly_cost_modeled_formatted'} = define() {
+	string = sprintf('%F',${structural_assembly_cost_modeled});
+	return to_real(string);
+};
+
+
 equations {'itemized_check_structural'} = define() {
-	if (${device_cost_override}==0)
+	if (${device_cost_override}!=1)
 	{
 		return ?${structural_assembly_cost_method}
 				[
