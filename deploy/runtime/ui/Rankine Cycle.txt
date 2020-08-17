@@ -883,13 +883,13 @@ X
 543
 Y
 3
-17
+21
 Width
 3
 346
 Height
 3
-288
+276
 Tool Tip
 5
 0
