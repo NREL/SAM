@@ -962,7 +962,7 @@ BatteryCell
 DataMatrix
 
 0
-5350
+5379
 on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
 	on_change{'batt_calendar_choice'}();
@@ -1190,6 +1190,7 @@ on_change{ 'batt_lifetime_matrix' } = define() {
 
 	}
 	plotopt( {'title'='Cycle Degradation', 'legend'=true, 'legendpos'=[65,60]});
+	max_y = max(max(C), 100);
 	axis( 'x1', {'label'='Cycle number', 'min'=0, 'max'=max(n)+100});
-	axis( 'y1', {'label'='Effective capacity (%)', 'min'=0, 'max'=100});
+	axis( 'y1', {'label'='Effective capacity (%)', 'min'=0, 'max'=max_y});
 };
