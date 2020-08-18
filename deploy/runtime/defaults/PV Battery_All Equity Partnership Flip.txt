@@ -774,7 +774,7 @@ batt_h_to_ambient
 1
 1
 1
-500
+15
 batt_initial_SOC
 1
 1
