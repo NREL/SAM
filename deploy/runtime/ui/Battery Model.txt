@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-14249
+14516
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -600,16 +600,16 @@ function LMO()
 function LFP()
 {
 	// voltage curve
-	value('batt_C_rate',0.43);
-	value('batt_Vfull',3.6);
-	value('batt_Vexp',3.4);
-	value('batt_Vnom',3.3);
-	value('batt_Qfull',2.3);
-	value('batt_Qexp_percent',2.17);
-	value('batt_Qnom',87);
-	value('batt_Vnom_default',3.3);
-	value('batt_specific_energy_per_mass',93.07);
-	value('batt_specific_energy_per_volume',210.02);
+	value('batt_C_rate',0.2);
+	value('batt_Vfull',3.415);
+	value('batt_Vexp',3.3);
+	value('batt_Vnom',3.14);
+	value('batt_Qfull',3.03);
+	value('batt_Qexp_percent',7.92);
+	value('batt_Qnom_percent',89.1);
+	value('batt_Vnom_default',3.2);
+	value('batt_specific_energy_per_mass',70);
+	value('batt_specific_energy_per_volume',82);
 		
 	// Lifetime
 	lifetime = [ [20,0,100],
@@ -619,6 +619,15 @@ function LFP()
 				 [80,500,98],
 				 [80,1000,95] ];
 	value('batt_lifetime_matrix',lifetime);
+	
+	cap_vs_temp = [[-20, 72.33333333],
+					[-10, 81.8],
+					[0, 88.8],
+					[10, 93],
+					[23, 96.66666667],
+					[45, 101],
+					[60, 101]];
+	value('cap_vs_temp', cap_vs_temp);
 }
 // Lithium cobalt Oxide
 function LCO()
@@ -735,7 +744,13 @@ function lithium_ion_defaults()
 
 	// Thermal
 	value('batt_resistance', 0.001); // various manufactures
-	cap_vs_temp = [ [-10, 60], [0, 80], [25, 100], [40, 100] ];
+	cap_vs_temp = [[-20, 72.33333333],
+					[-10, 81.8],
+					[0, 88.8],
+					[10, 93],
+					[23, 96.66666667],
+					[45, 101],
+					[60, 101]];
 	value('cap_vs_temp', cap_vs_temp);
 
 	// Maleki 1999 Thermal Properties of Lithium-Ion Battery & Components
