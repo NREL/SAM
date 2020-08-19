@@ -1,7 +1,7 @@
 Marine Costs - Structural Assembly
 800
 672
-63
+62
 Label
 
 1
@@ -2509,11 +2509,11 @@ Numeric
 17
 Name
 5
-32
-structural_assembly_cost_modeled
+42
+structural_assembly_cost_modeled_formatted
 X
 3
-315
+312
 Y
 3
 57
@@ -2531,10 +2531,10 @@ Value
 0
 Mode
 3
-0
+1
 Format
 3
-1
+0
 Decimals
 3
 0
@@ -2542,68 +2542,6 @@ Prefix
 5
 1
 $
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-42
-structural_assembly_cost_modeled_formatted
-X
-3
-621
-Y
-3
-189
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
 Suffix
 5
 0
@@ -4353,7 +4291,7 @@ variable_prime_mover
 0
 Default
 
-8762
+8809
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -4513,8 +4451,10 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 };
 
 equations {'structural_assembly_cost_modeled_formatted'} = define() {
-	string = sprintf('%F',${structural_assembly_cost_modeled});
-	return to_real(string);
+	value = ${structural_assembly_cost_modeled}*2;
+	string = sprintf('%Lf',value);
+	result = to_real(string);
+	return result;
 };
 
 
@@ -4540,7 +4480,7 @@ equations {'structural_assembly_cost'} = define() {
 			[
 				${structural_assembly_cost_input}*${system_capacity},
 				${structural_assembly_cost_input},
-				${structural_assembly_cost_modeled},
+				${structural_assembly_cost_modeled_formatted},
 				${structural_assembly_cost_total}
 			];
 };

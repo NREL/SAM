@@ -1083,7 +1083,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-3.62969e+06
+3629690
 export_cable_system_cost_total
 1
 1
@@ -1365,7 +1365,7 @@ insurance_during_construction_modeled
 1
 1
 1
-4.02806e+06
+4028060
 insurance_operations_cost
 1
 1
@@ -3063,7 +3063,7 @@ site_access_port_staging_cost
 1
 1
 1
-4.43087e+06
+4430870
 site_access_port_staging_cost_input
 1
 1
@@ -3081,7 +3081,7 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4.43087e+06
+4430870
 site_access_port_staging_cost_total
 1
 1

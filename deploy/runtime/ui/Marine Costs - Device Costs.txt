@@ -125,7 +125,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -344,11 +344,13 @@ device_costs_total_display
 0
 Default
 
-320
+380
 equations {'device_costs_total'} = define() {
 	if (${device_cost_override}!=1)
 	{
-		return ${structural_assembly_cost}+ ${mooring_found_substruc_cost}+${power_takeoff_system_cost};
+		string = sprintf('%Lf',${structural_assembly_cost}+ ${mooring_found_substruc_cost}+${power_takeoff_system_cost});
+		value = to_real(string);
+		return value;
 	}
 	else
 	{

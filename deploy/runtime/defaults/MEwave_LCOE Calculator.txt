@@ -158,7 +158,7 @@ array_cable_system_cost_method
 1
 1
 1
-0
+2
 array_cable_system_cost_modeled
 1
 1
@@ -1141,7 +1141,7 @@ export_cable_system_cost_method
 1
 1
 1
-0
+2
 export_cable_system_cost_modeled
 1
 1
@@ -2049,7 +2049,7 @@ offshore_substation_cost_method
 1
 1
 1
-0
+2
 offshore_substation_cost_modeled
 1
 1
@@ -2142,7 +2142,7 @@ onshore_substation_cost_method
 1
 1
 1
-0
+2
 onshore_substation_cost_modeled
 1
 1
@@ -2328,7 +2328,7 @@ other_elec_infra_cost_method
 1
 1
 1
-0
+2
 other_elec_infra_cost_modeled
 1
 1
@@ -3361,7 +3361,7 @@ structural_assembly_cost_modeled
 1
 1
 1
-198679680
+0
 structural_assembly_cost_modeled_formatted
 1
 1
