@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-19166
+19152
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -665,8 +665,8 @@ function LTO()
 	value('batt_Qexp_percent',2.1);
 	value('batt_Qnom_percent',91.7);
 	value('batt_Vnom_default',2.3);
-	value('batt_specific_energy_per_mass',69.12);
-	value('batt_specific_energy_per_volume',118.43);
+	value('batt_specific_energy_per_mass',22);
+	value('batt_specific_energy_per_volume',14);
 		
 	// Lifetime
 	lifetime = [ [20,0,100],
@@ -691,8 +691,8 @@ function NMC()
 	value('batt_Qexp_percent',1.78);
 	value('batt_Qnom_percent',88.9);
 	value('batt_Vnom_default',3.6);
-	value('batt_specific_energy_per_mass',197.33);
-	value('batt_specific_energy_per_volume',501.25);
+	value('batt_specific_energy_per_mass',101);
+	value('batt_specific_energy_per_volume',70);
 		
 	// Lifetime
 	lifetime = [ [ 20,  0,  100 ], 
