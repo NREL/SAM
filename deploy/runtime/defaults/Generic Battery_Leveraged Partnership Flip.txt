@@ -715,13 +715,13 @@ batt_specific_energy_per_mass
 1
 1
 1
-197.33
+101
 batt_specific_energy_per_volume
 1
 1
 1
 1
-501.25
+70
 batt_surface_area
 1
 1
