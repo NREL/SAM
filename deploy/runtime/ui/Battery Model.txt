@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-19152
+19148
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -400,6 +400,7 @@ function set_lithium_ion(update_default)
 	
 	if (update_default)
 	{
+		lithium_ion_defaults();
 		if (lithium_type == 0)
 			LMO();
 		else if (lithium_type == 1)
@@ -412,8 +413,6 @@ function set_lithium_ion(update_default)
 			NMC();
 		else if (lithium_type == 5)
 			NCA();
-			
-		lithium_ion_defaults();
 	}
 }
 function set_vanadium(update_default)
@@ -764,7 +763,7 @@ function lithium_ion_defaults()
 	value('cap_vs_temp', cap_vs_temp);
 
 	// Maleki 1999 Thermal Properties of Lithium-Ion Battery & Components
-	value('batt_Cp',1004);
+	value('batt_Cp',1500);
 	
 	// turn on calendar lifetime model
 	value('batt_calendar_choice', 1);
