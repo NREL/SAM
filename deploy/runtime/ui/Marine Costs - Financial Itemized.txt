@@ -12,7 +12,7 @@ Name
 12
 X
 3
-30
+27
 Y
 3
 78
@@ -598,7 +598,7 @@ Name
 itemized_check_contingency
 X
 3
-33
+30
 Y
 3
 48
@@ -846,7 +846,7 @@ Y
 255
 Width
 3
-716
+719
 Height
 3
 264
@@ -1008,7 +1008,7 @@ Name
 object 721
 X
 3
-357
+360
 Y
 3
 165
@@ -1056,7 +1056,7 @@ Name
 object 72124
 X
 3
-363
+360
 Y
 3
 51
@@ -1104,7 +1104,7 @@ Name
 object 72144
 X
 3
-357
+360
 Y
 3
 273
@@ -1440,7 +1440,7 @@ Name
 object 732231
 X
 3
-564
+561
 Y
 3
 51
@@ -1869,7 +1869,7 @@ Name
 project_contingency_budget_cost
 X
 3
-561
+558
 Y
 3
 78
@@ -1932,7 +1932,7 @@ Name
 project_contingency_cost_input
 X
 3
-459
+456
 Y
 3
 78
@@ -1994,7 +1994,7 @@ Name
 project_contingency_cost_method
 X
 3
-207
+204
 Y
 3
 78
@@ -2029,7 +2029,7 @@ Name
 project_contingency_modeled
 X
 3
-360
+357
 Y
 3
 78
@@ -2630,7 +2630,7 @@ Name
 tt_project_contingency_budget_cost
 X
 3
-672
+669
 Y
 3
 78
@@ -2704,7 +2704,7 @@ Name
 user_input_label_eng37
 X
 3
-474
+471
 Y
 3
 51

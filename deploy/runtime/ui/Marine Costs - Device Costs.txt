@@ -1,6 +1,6 @@
 Marine Costs - Device Costs
-818
-208
+798
+204
 6
 Numeric
 
@@ -125,7 +125,7 @@ Value
 0
 Mode
 3
-0
+1
 Format
 3
 0
@@ -169,13 +169,13 @@ Name
 object 4
 X
 3
-12
+9
 Y
 3
 12
 Width
 3
-800
+780
 Height
 3
 189

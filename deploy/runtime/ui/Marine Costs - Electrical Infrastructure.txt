@@ -204,13 +204,13 @@ Name
 Electrical Infrastructure Costs
 X
 3
-6
+9
 Y
 3
 12
 Width
 3
-761
+800
 Height
 3
 1366
@@ -2262,7 +2262,7 @@ Name
 object 21
 X
 3
-15
+21
 Y
 3
 123

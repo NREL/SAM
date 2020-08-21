@@ -931,7 +931,7 @@ Name
 object 21
 X
 3
-33
+39
 Y
 3
 90
@@ -1096,7 +1096,7 @@ Name
 object 72145
 X
 3
-315
+318
 Y
 3
 30
@@ -1576,7 +1576,7 @@ Name
 object 7322
 X
 3
-519
+525
 Y
 3
 30
@@ -1720,7 +1720,7 @@ Name
 object 757
 X
 3
-30
+36
 Y
 3
 57
@@ -2256,7 +2256,7 @@ Name
 struct_level_total_label
 X
 3
-417
+423
 Y
 3
 33
@@ -2304,7 +2304,7 @@ Name
 struct_user_input_label
 X
 3
-426
+432
 Y
 3
 33
@@ -2352,7 +2352,7 @@ Name
 structural_assembly_cost
 X
 3
-513
+519
 Y
 3
 57
@@ -2415,7 +2415,7 @@ Name
 structural_assembly_cost_input
 X
 3
-414
+420
 Y
 3
 57
@@ -2477,7 +2477,7 @@ Name
 structural_assembly_cost_method
 X
 3
-153
+159
 Y
 3
 57
@@ -2513,7 +2513,7 @@ Name
 structural_assembly_cost_modeled_formatted
 X
 3
-312
+315
 Y
 3
 57
@@ -2576,7 +2576,7 @@ Name
 structural_assembly_cost_total
 X
 3
-414
+420
 Y
 3
 57
@@ -4291,7 +4291,7 @@ variable_prime_mover
 0
 Default
 
-8809
+8828
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -4451,9 +4451,10 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 };
 
 equations {'structural_assembly_cost_modeled_formatted'} = define() {
-	value = ${structural_assembly_cost_modeled}*2;
-	string = sprintf('%Lf',value);
+	value = ${structural_assembly_cost_modeled};
+	string = sprintf('%M',value);
 	result = to_real(string);
+	//return result/100;
 	return result;
 };
 

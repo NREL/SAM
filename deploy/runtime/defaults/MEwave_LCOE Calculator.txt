@@ -272,7 +272,7 @@ balance_of_system_cost_total
 1
 1
 1
-78571272
+79150688
 balance_of_system_scheduled_maintenance_cost
 1
 1
@@ -1021,7 +1021,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5655880
+5.65588e+06
 eng_and_mgmt_cost_input
 1
 1
@@ -1039,7 +1039,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-5655880
+5.65588e+06
 eng_and_mgmt_cost_total
 1
 1
@@ -1147,7 +1147,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-1603450
+1.60345e+06
 export_cable_system_cost_total
 1
 1
@@ -1224,7 +1224,7 @@ financial_cost_total
 1
 1
 1
-30878226
+32809620
 financial_itemized_shown
 1
 1
@@ -1428,7 +1428,7 @@ insurance_during_construction_cost
 1
 1
 1
-3430910
+3.64551e+06
 insurance_during_construction_cost_input
 1
 1
@@ -1446,7 +1446,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3430910
+3.64551e+06
 insurance_operations_cost
 1
 1
@@ -1759,7 +1759,7 @@ maintenance_cost
 1
 1
 1
-3658280
+3.65828e+06
 maintenance_cost_input
 1
 1
@@ -1777,7 +1777,7 @@ maintenance_cost_modeled
 1
 1
 1
-3658280
+3.65828e+06
 maintenance_cost_total
 1
 1
@@ -2334,7 +2334,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-2037670
+2.03767e+06
 other_elec_infra_cost_total_display
 1
 1
@@ -2706,7 +2706,7 @@ plant_commissioning_cost
 1
 1
 1
-5489462
+5832821
 plant_commissioning_cost_input
 1
 1
@@ -2724,7 +2724,7 @@ plant_commissioning_cost_modeled
 1
 1
 1
-5489462
+5832821
 plant_commissioning_shown
 1
 1
@@ -2958,7 +2958,7 @@ project_contingency_budget_cost
 1
 1
 1
-17154570
+18227566
 project_contingency_cost_input
 1
 1
@@ -2976,7 +2976,7 @@ project_contingency_modeled
 1
 1
 1
-17154570
+18227566
 project_management_during_development_cost
 1
 1
@@ -3033,7 +3033,7 @@ reserve_accounts_cost
 1
 1
 1
-10292742
+10936540
 reserve_accounts_cost_input
 1
 1
@@ -3057,7 +3057,7 @@ reserve_accounts_modeled
 1
 1
 1
-10292742
+10936540
 resource_and_metocean_assessment_cost
 1
 1
@@ -3212,7 +3212,7 @@ site_access_port_staging_cost
 1
 1
 1
-3774010
+4.01006e+06
 site_access_port_staging_cost_input
 1
 1
@@ -3230,7 +3230,7 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-3774010
+4.01006e+06
 site_access_port_staging_cost_total
 1
 1
@@ -3361,7 +3361,7 @@ structural_assembly_cost_modeled
 1
 1
 1
-0
+198679680
 structural_assembly_cost_modeled_formatted
 1
 1
@@ -3463,13 +3463,13 @@ total_bos_cost_per_kw
 1
 1
 1
-2747.25
+2767.51
 total_bos_cost_per_kwh
 1
 1
 1
 1
-0.960915
+1.33173
 total_bos_cost_percent
 1
 1
@@ -3487,7 +3487,7 @@ total_capital_cost_per_kwh
 1
 1
 1
-6.44801
+6.85132
 total_device_cost_lcoe
 1
 1
@@ -3523,13 +3523,13 @@ total_financial_cost_per_kw
 1
 1
 1
-1079.66
+1147.19
 total_financial_cost_per_kwh
 1
 1
 1
 1
-0.519535
+0.552032
 total_financial_cost_percent
 1
 1
