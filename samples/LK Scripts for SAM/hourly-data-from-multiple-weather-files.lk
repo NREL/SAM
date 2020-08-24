@@ -1,0 +1,86 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+ This LK script demonstrates how to extract hourly results from a series of 
+ simulations for different weather files. It can be used in association with
+ SAM's P50/P90 simulations: Use SAM to download weather files and calculate 
+ probability of exceedance metrics, and use this macro to get hourly outputs 
+ for the same set of weather files.
+ 
+ Instructions:
+ 
+ 1. Prepare a folder with two or more valid weather files in the SAM CSV format.
+ 
+ 2. Create a SAM file (.sam) with a solar (PV, CSP, or SWH) case.
+
+ 3. Run the script and follow the prompts.
+ 
+ Last tested with SAM 2020.2.29.
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+// function to extract year from name of a weather file downloaded from
+// the NREL NSRDB using SAM. Assumes file names with dates at end of name like 
+// .../path/little_rock_ar_34.746481_-92.289595_psmv3_60_1998.csv
+function get_year_from_filename( fname )
+{
+	if ( !file_exists( fname ) )
+	{
+		outln( fname + ' does not exist.');
+		return null;
+	}
+	str = file_only( fname );
+	arr = split( str, '_' );
+	date_ext = arr[#arr-1];
+	arr = split( date_ext, '.' );
+	return arr[0];
+}
+
+// override solar resource library
+set('use_specific_weather_file',1);
+
+// get folder containing multiple weather files
+dir = choose_dir( cwd() );
+
+// get list of weather files
+files = dir_list(dir,'*');
+for (i=0;i<#files;i++)
+{
+	files[i] = dir + '/' + files[i];
+}
+outln('There are ' + #files + ' files in ' + dir);
+
+// Run a simulation for each weather file and get annual output result
+outln('Running simulations.');
+errors='';
+for (i=0;i<#files;i++)
+{
+	set('user_specified_weather_file',files[i]);
+	ok=simulate(errors,0);
+	arr=split(errors,'\n'); //only show first error for legibility
+
+	yr = get_year_from_filename( files[i] );
+	if ( yr == null ) {	yr = 'run_' + i; }
+	T{yr} = null;
+	if (!ok)
+	{
+		outln('Run ' + i + ': ' + file_only(files[i]) + ': ' + arr[0]); 
+	}
+	else 
+	{
+		outln('Run ' + i + ': ' + file_only(files[i]) +' Annual Energy (kWh) = ' + get('annual_energy')); }
+		T{yr} = get('gen');
+	}
+
+outln('Done with simulations.');
+outln('Writing to results file.');
+
+fname = cwd() + '/results.csv';
+csvwrite(fname, T);
+browse( fname );
+
+// enable solar resource library
+set('use_specific_weather_file',0);
+
+outln('Done.');
