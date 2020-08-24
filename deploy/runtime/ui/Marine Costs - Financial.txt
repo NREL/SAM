@@ -742,7 +742,7 @@ equations {'financial_cost_total'} = define() {
 
 
 
-1709
+1762
 on_load{'Marine Costs - Financial'} = define() {
 	on_change{'financial_cost_override'};
 	override_financial_cost();
@@ -759,6 +759,7 @@ function override_financial_cost()
 	enable('financial_cost_input',override_value==1);
 	show('financial_cost_input',override_value==1);
 	show('financial_cost_total',override_value!=1);
+	show('financial_override_label',override_value==1);
 	
 	//Project Contingency Budget Inputs
 	enable('project_contingency_budget_cost',override_value==0);

@@ -1,7 +1,7 @@
 Marine Costs - E&M
 818
 619
-54
+55
 Label
 
 1
@@ -662,7 +662,7 @@ Name
 eng_and_mgmt_cost_method
 X
 3
-231
+228
 Y
 3
 60
@@ -814,6 +814,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+23
+eng_mgmt_override_label
+X
+3
+603
+Y
+3
+171
+Width
+3
+195
+Height
+3
+93
+Tool Tip
+5
+0
+Caption
+5
+138
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -1837,7 +1885,7 @@ X
 603
 Y
 3
-180
+273
 Width
 3
 186
@@ -3082,7 +3130,7 @@ equations {'itemized_check_eng'} = define() {
 
 
 
-5054
+5117
 on_load{'Marine Costs - E&M'} = define() {
 	on_change{'itemized_check_eng'};
 	//on_change{'level_eng'};
@@ -3100,6 +3148,9 @@ function check_override_eng_mgmt()
 	check_value = value('balance_of_system_cost_override');
 	enable('eng_and_mgmt_cost_method',check_value!=1);
 	enable('eng_and_mgmt_cost',check_value!=1);
+	show('eng_mgmt_override_label',check_value==1);
+	
+	refresh();
 }
 
 on_change{'detailed_cost_choice_construction_management'} = define() {

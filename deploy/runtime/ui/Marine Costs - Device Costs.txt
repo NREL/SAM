@@ -365,7 +365,7 @@ equations {'device_costs_total'} = define() {
 
 
 
-1494
+1644
 on_load{'Marine Costs - Device Costs'} = define() {
 	on_change{'device_cost_override'};
 	override_device_cost();
@@ -383,12 +383,14 @@ function override_device_cost()
 	show('device_cost_input',override_value==1);
 	show('device_costs_total',override_value!=1);
 	
+	
 	//Structural Assembly Inputs
 	enable('structural_assembly_cost_method',override_value!=1);
 	//enable('structural_assembly_cost_input',override_value==0);
 	//enable('structural_assembly_cost_modeled',override_value==0);
 	//enable('structural_assembly_cost_total',override_value==0);
 	enable('structural_assembly_cost',override_value!=1);
+	show('struct_override_label',override_value==1);
 	
 	//PTO Inputs
 	enable('power_takeoff_system_cost_method',override_value!=1);
@@ -396,6 +398,7 @@ function override_device_cost()
 	//enable('power_takeoff_system_cost_modeled',override_value==0);
 	//enable('power_takeoff_system_cost_total',override_value==0);
 	enable('power_takeoff_system_cost',override_value!=1);
+	show('pto_override_label',override_value==1);
 	
 	//Mooring Inputs
 	enable('mooring_found_substruc_cost_method',override_value!=1);
@@ -403,6 +406,7 @@ function override_device_cost()
 	//enable('mooring_found_substruc_cost_modeled',override_value!=1);
 	//enable('mooring_found_substruc_cost_total',override_value!=1);
 	enable('mooring_found_substruc_cost',override_value!=1);
+	show('mooring_override_label',override_value==1);
 
 	refresh();
 }	

@@ -253,10 +253,10 @@ Y
 126
 Width
 3
-741
+597
 Height
 3
-39
+48
 Tool Tip
 5
 0
@@ -344,7 +344,7 @@ equations {'balance_of_system_cost_total'} = define() {
 	}
 };
 
-2800
+3175
 on_load{'Marine Costs - BoS'} = define() {
 	on_change{'balance_of_system_cost_override'};
 	override_balance_of_system_cost();
@@ -368,6 +368,7 @@ function override_balance_of_system_cost()
 	//enable('development_cost_modeled',override_value==0);
 	//enable('development_cost_total',override_value==0);
 	enable('development_cost',override_value!=1);
+	show('development_override_label',override_value==1);
 	
 	//E&M Inputs
 	enable('eng_and_mgmt_cost_method',override_value==0);
@@ -375,6 +376,7 @@ function override_balance_of_system_cost()
 	//enable('eng_and_mgmt_cost_modeled',override_value==0);
 	//enable('eng_and_mgmt_cost_total',override_value==0);
 	enable('eng_and_mgmt_cost',override_value==0);
+	show('eng_mgmt_override_label',override_value==1);
 	
 	//Electrical Infrastructure Inputs
 	enable('elec_infras_cost_method',override_value==0);
@@ -382,33 +384,38 @@ function override_balance_of_system_cost()
 	//enable('elec_infras_cost_modeled',override_value==0);
 	//enable('elec_infras_cost_total',override_value==0);
 	enable('elec_infras_cost',override_value==0);
+	show('elec_infras_override_label',override_value==1);
 	
 	//Plant Commissioning Inputs
-	enable('plant_commissioning_cost_method',override_value==0);
+	enable('plant_commissioning_cost_method',override_value!=1);
 	//enable('plant_commissioning_cost_input',override_value==0);
 	//enable('plant_commissioning_cost_modeled',override_value==0);
-	enable('plant_commissioning_cost',override_value==0);
+	enable('plant_commissioning_cost',override_value!=1);
+	show('commissioning_override_label',override_value==1);
 	
 	//Site Access Inputs
-	enable('site_access_port_staging_cost_method',override_value==0);
+	enable('site_access_port_staging_cost_method',override_value!=1);
 	//enable('site_access_port_staging_cost_input',override_value==0);
 	//enable('site_access_port_staging_cost_modeled',override_value==0);
 	//enable('site_access_port_staging_cost_total',override_value==0);
-	enable('site_access_port_staging_cost',override_value==0);
+	enable('site_access_port_staging_cost',override_value!=1);
+	show('site_override_label',override_value==1);
 	
 	//Assembly and Installation Inputs
-	enable('assembly_and_install_cost_method',override_value==0);
+	enable('assembly_and_install_cost_method',override_value!=1);
 	//enable('assembly_and_install_cost_input',override_value==0);
 	//enable('assembly_and_install_cost_modeled',override_value==0);
 	//enable('assembly_and_install_cost_total',override_value==0);
-	enable('assembly_and_install_cost',override_value==0);
+	enable('assembly_and_install_cost',override_value!=1);
+	show('assembly_override_label',override_value==1);
 	
 	//Other Infrastructure Inputs
-	enable('other_infrastructure_cost_method',override_value==0);
+	enable('other_infrastructure_cost_method',override_value!=1);
 	//enable('other_infrastructure_cost_input',override_value==0);
 	//enable('other_infrastructure_cost_modeled',override_value==0);
 	//enable('other_infrastructure_cost_total',override_value==0);
-	enable('other_infrastructure_cost',override_value==0);
+	enable('other_infrastructure_cost',override_value!=1);
+	show('other_infras_override_label',override_value==1);
 	
 	refresh();
 }	

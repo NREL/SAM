@@ -1,7 +1,7 @@
 Marine Costs - Site Access, Port & Staging
 821
 681
-55
+56
 GroupBox
 
 1
@@ -1471,7 +1471,7 @@ X
 600
 Y
 3
-189
+255
 Width
 3
 180
@@ -2455,6 +2455,54 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+19
+site_override_label
+X
+3
+600
+Y
+3
+156
+Width
+3
+195
+Height
+3
+84
+Tool Tip
+5
+0
+Caption
+5
+138
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -3221,7 +3269,7 @@ equations {'itemized_check_site_access'} = define() {
 };
 
 
-3722
+3781
 on_load{'Marine Costs - Site Access, Port & Staging'} = define() {
 	on_change{'itemized_check_site_access'};
 	enable_itemized_site_access();
@@ -3238,6 +3286,9 @@ function check_override_site_access()
 	check_value = value('balance_of_system_cost_override');
 	enable('site_access_port_staging_cost_method',check_value!=1);
 	enable('site_access_port_staging_cost',check_value!=1);
+	show('site_override_label',check_value==1);
+	
+	refresh();
 }	
 
 on_change{'detailed_cost_choice_staging_port'} = define() {

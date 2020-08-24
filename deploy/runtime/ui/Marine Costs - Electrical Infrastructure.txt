@@ -1,7 +1,7 @@
 Marine Costs - Electrical Infrastructure
 820
 1388
-102
+103
 Label
 
 1
@@ -12,10 +12,10 @@ Name
 92
 X
 3
-204
+279
 Y
 3
-170
+168
 Width
 3
 111
@@ -60,10 +60,10 @@ Name
 Cable Protection
 X
 3
-195
+270
 Y
 3
-590
+588
 Width
 3
 120
@@ -108,10 +108,10 @@ Name
 Cable Protection75
 X
 3
-87
+162
 Y
 3
-1070
+1071
 Width
 3
 228
@@ -156,10 +156,10 @@ Name
 Cable Protection7543
 X
 3
-162
+237
 Y
 3
-860
+858
 Width
 3
 153
@@ -207,7 +207,7 @@ X
 9
 Y
 3
-12
+15
 Width
 3
 800
@@ -234,10 +234,10 @@ Name
 Itemized Inputs 
 X
 3
-417
+492
 Y
 3
-144
+141
 Width
 3
 114
@@ -282,10 +282,10 @@ Name
 Itemized Inputs 3
 X
 3
-315
+390
 Y
 3
-144
+141
 Width
 3
 90
@@ -330,10 +330,10 @@ Name
 array_cable_accessories_and_jointing_cost
 X
 3
-420
+495
 Y
 3
-260
+258
 Width
 3
 90
@@ -393,10 +393,10 @@ Name
 array_cable_system_commissioning_cost
 X
 3
-420
+495
 Y
 3
-290
+288
 Width
 3
 90
@@ -456,10 +456,10 @@ Name
 array_cable_system_cost
 X
 3
-315
+390
 Y
 3
-170
+168
 Width
 3
 90
@@ -519,10 +519,10 @@ Name
 array_cable_system_cost_total
 X
 3
-315
+390
 Y
 3
-170
+168
 Width
 3
 90
@@ -582,10 +582,10 @@ Name
 array_cable_system_transportation_cost
 X
 3
-420
+495
 Y
 3
-320
+318
 Width
 3
 90
@@ -645,10 +645,10 @@ Name
 array_cables_cost
 X
 3
-420
+495
 Y
 3
-230
+228
 Width
 3
 90
@@ -708,10 +708,10 @@ Name
 bend_restrictors_cost
 X
 3
-420
+495
 Y
 3
-740
+738
 Width
 3
 90
@@ -771,10 +771,10 @@ Name
 bend_stiffeners_cost
 X
 3
-420
+495
 Y
 3
-770
+768
 Width
 3
 90
@@ -834,10 +834,10 @@ Name
 cable_mattresses_cost
 X
 3
-420
+495
 Y
 3
-680
+678
 Width
 3
 90
@@ -897,10 +897,10 @@ Name
 cable_protection_cost
 X
 3
-315
+390
 Y
 3
-590
+588
 Width
 3
 90
@@ -960,10 +960,10 @@ Name
 cable_protection_cost_total
 X
 3
-315
+390
 Y
 3
-590
+588
 Width
 3
 90
@@ -1022,10 +1022,10 @@ Name
 detailed_cost_choice_array_cables
 X
 3
-345
+420
 Y
 3
-201
+198
 Width
 3
 132
@@ -1055,10 +1055,10 @@ Name
 detailed_cost_choice_cable_protection
 X
 3
-345
+420
 Y
 3
-621
+618
 Width
 3
 129
@@ -1088,10 +1088,10 @@ Name
 detailed_cost_choice_export_cables
 X
 3
-345
+420
 Y
 3
-411
+408
 Width
 3
 132
@@ -1121,10 +1121,10 @@ Name
 detailed_cost_choice_offshore_substation
 X
 3
-345
+420
 Y
 3
-890
+888
 Width
 3
 132
@@ -1154,10 +1154,10 @@ Name
 detailed_cost_choice_onshore_transmission
 X
 3
-345
+420
 Y
 3
-1100
+1101
 Width
 3
 135
@@ -1187,10 +1187,10 @@ Name
 ducting_system_cost
 X
 3
-420
+495
 Y
 3
-710
+708
 Width
 3
 90
@@ -1250,7 +1250,7 @@ Name
 elec_infras_cost
 X
 3
-525
+597
 Y
 3
 78
@@ -1313,7 +1313,7 @@ Name
 elec_infras_cost_input
 X
 3
-420
+492
 Y
 3
 78
@@ -1375,7 +1375,7 @@ Name
 elec_infras_cost_method
 X
 3
-156
+228
 Y
 3
 78
@@ -1411,7 +1411,7 @@ Name
 elec_infras_cost_modeled
 X
 3
-315
+387
 Y
 3
 78
@@ -1474,7 +1474,7 @@ Name
 elec_infras_cost_total
 X
 3
-420
+492
 Y
 3
 78
@@ -1527,6 +1527,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+26
+elec_infras_override_label
+X
+3
+609
+Y
+3
+144
+Width
+3
+195
+Height
+3
+93
+Tool Tip
+5
+0
+Caption
+5
+138
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -1537,10 +1585,10 @@ Name
 electrical_conversion_equipment_cost
 X
 3
-420
+495
 Y
 3
-980
+981
 Width
 3
 90
@@ -1600,10 +1648,10 @@ Name
 export_cable_accessories_and_jointing_cost
 X
 3
-420
+495
 Y
 3
-470
+468
 Width
 3
 90
@@ -1663,10 +1711,10 @@ Name
 export_cable_commissioning_cost
 X
 3
-420
+495
 Y
 3
-500
+498
 Width
 3
 90
@@ -1726,10 +1774,10 @@ Name
 export_cable_system_cost
 X
 3
-315
+390
 Y
 3
-380
+378
 Width
 3
 90
@@ -1789,10 +1837,10 @@ Name
 export_cable_system_cost_total
 X
 3
-315
+390
 Y
 3
-380
+378
 Width
 3
 90
@@ -1852,10 +1900,10 @@ Name
 export_cable_system_transportation_cost
 X
 3
-420
+495
 Y
 3
-530
+528
 Width
 3
 90
@@ -1915,10 +1963,10 @@ Name
 export_cables_cost
 X
 3
-420
+495
 Y
 3
-440
+438
 Width
 3
 90
@@ -1978,10 +2026,10 @@ Name
 facilities_and_ancillary_systems_cost
 X
 3
-420
+495
 Y
 3
-1010
+1011
 Width
 3
 90
@@ -2088,10 +2136,10 @@ Name
 jtube_seals_cost
 X
 3
-420
+495
 Y
 3
-800
+798
 Width
 3
 90
@@ -2151,10 +2199,10 @@ Name
 land_leases_cost
 X
 3
-420
+495
 Y
 3
-1130
+1131
 Width
 3
 90
@@ -2214,7 +2262,7 @@ Name
 level_input_label_elec
 X
 3
-423
+495
 Y
 3
 51
@@ -2262,7 +2310,7 @@ Name
 object 21
 X
 3
-21
+87
 Y
 3
 123
@@ -2301,10 +2349,10 @@ Name
 object 7
 X
 3
-567
+39
 Y
 3
-228
+240
 Width
 3
 180
@@ -2349,10 +2397,10 @@ Name
 object 713
 X
 3
-252
+327
 Y
 3
-260
+258
 Width
 3
 168
@@ -2397,7 +2445,7 @@ Name
 object 721
 X
 3
-321
+393
 Y
 3
 51
@@ -2445,10 +2493,10 @@ Name
 object 72441
 X
 3
-258
+333
 Y
 3
-830
+828
 Width
 3
 162
@@ -2493,10 +2541,10 @@ Name
 object 7244110
 X
 3
-327
+402
 Y
 3
-740
+738
 Width
 3
 93
@@ -2541,10 +2589,10 @@ Name
 object 7244113
 X
 3
-327
+402
 Y
 3
-710
+708
 Width
 3
 93
@@ -2589,10 +2637,10 @@ Name
 object 7244116
 X
 3
-321
+396
 Y
 3
-680
+678
 Width
 3
 99
@@ -2637,10 +2685,10 @@ Name
 object 7244117
 X
 3
-327
+402
 Y
 3
-650
+648
 Width
 3
 93
@@ -2685,10 +2733,10 @@ Name
 object 7244135
 X
 3
-327
+402
 Y
 3
-800
+798
 Width
 3
 93
@@ -2733,10 +2781,10 @@ Name
 object 724416
 X
 3
-327
+402
 Y
 3
-770
+768
 Width
 3
 93
@@ -2781,10 +2829,10 @@ Name
 object 7244165
 X
 3
-189
+264
 Y
 3
-1310
+1311
 Width
 3
 231
@@ -2829,10 +2877,10 @@ Name
 object 724416513
 X
 3
-327
+402
 Y
 3
-1220
+1221
 Width
 3
 93
@@ -2877,10 +2925,10 @@ Name
 object 724416531
 X
 3
-240
+315
 Y
 3
-1040
+1041
 Width
 3
 180
@@ -2925,10 +2973,10 @@ Name
 object 72441653125
 X
 3
-240
+315
 Y
 3
-1010
+1011
 Width
 3
 180
@@ -2973,10 +3021,10 @@ Name
 object 72441658
 X
 3
-123
+198
 Y
 3
-1280
+1281
 Width
 3
 297
@@ -3021,10 +3069,10 @@ Name
 object 7244168
 X
 3
-300
+375
 Y
 3
-1250
+1251
 Width
 3
 120
@@ -3069,10 +3117,10 @@ Name
 object 724416818
 X
 3
-195
+270
 Y
 3
-1190
+1191
 Width
 3
 225
@@ -3117,10 +3165,10 @@ Name
 object 724416833
 X
 3
-246
+321
 Y
 3
-980
+981
 Width
 3
 174
@@ -3165,10 +3213,10 @@ Name
 object 7244171
 X
 3
-261
+336
 Y
 3
-1160
+1161
 Width
 3
 159
@@ -3213,10 +3261,10 @@ Name
 object 724417137
 X
 3
-264
+339
 Y
 3
-950
+948
 Width
 3
 156
@@ -3261,10 +3309,10 @@ Name
 object 7244172
 X
 3
-327
+402
 Y
 3
-1130
+1131
 Width
 3
 93
@@ -3309,10 +3357,10 @@ Name
 object 724417240
 X
 3
-372
+447
 Y
 3
-920
+918
 Width
 3
 48
@@ -3357,10 +3405,10 @@ Name
 object 726
 X
 3
-225
+300
 Y
 3
-530
+528
 Width
 3
 195
@@ -3405,10 +3453,10 @@ Name
 object 72652
 X
 3
-240
+315
 Y
 3
-560
+558
 Width
 3
 180
@@ -3453,10 +3501,10 @@ Name
 object 72653
 X
 3
-255
+330
 Y
 3
-500
+498
 Width
 3
 165
@@ -3501,10 +3549,10 @@ Name
 object 727
 X
 3
-339
+414
 Y
 3
-440
+438
 Width
 3
 81
@@ -3549,10 +3597,10 @@ Name
 object 728
 X
 3
-189
+264
 Y
 3
-380
+378
 Width
 3
 126
@@ -3597,10 +3645,10 @@ Name
 object 72821
 X
 3
-228
+303
 Y
 3
-350
+348
 Width
 3
 192
@@ -3645,10 +3693,10 @@ Name
 object 7282178
 X
 3
-228
+303
 Y
 3
-320
+318
 Width
 3
 192
@@ -3693,10 +3741,10 @@ Name
 object 73
 X
 3
-345
+420
 Y
 3
-230
+228
 Width
 3
 75
@@ -3741,10 +3789,10 @@ Name
 object 730
 X
 3
-222
+297
 Y
 3
-290
+288
 Width
 3
 198
@@ -3789,10 +3837,10 @@ Name
 object 731
 X
 3
-264
+339
 Y
 3
-470
+468
 Width
 3
 156
@@ -3837,7 +3885,7 @@ Name
 object 7322
 X
 3
-531
+603
 Y
 3
 51
@@ -3885,7 +3933,7 @@ Name
 object 75
 X
 3
-21
+87
 Y
 3
 78
@@ -3933,10 +3981,10 @@ Name
 object45
 X
 3
-108
+183
 Y
 3
-1340
+1341
 Width
 3
 207
@@ -3981,10 +4029,10 @@ Name
 offshore_substation_cost
 X
 3
-315
+390
 Y
 3
-860
+858
 Width
 3
 90
@@ -4044,10 +4092,10 @@ Name
 offshore_substation_cost_total
 X
 3
-315
+390
 Y
 3
-860
+858
 Width
 3
 90
@@ -4107,10 +4155,10 @@ Name
 onshore_substation_cost_total
 X
 3
-315
+390
 Y
 3
-1070
+1071
 Width
 3
 90
@@ -4170,10 +4218,10 @@ Name
 onshore_substations_cost
 X
 3
-420
+495
 Y
 3
-1250
+1251
 Width
 3
 90
@@ -4233,10 +4281,10 @@ Name
 onshore_transmission_infrastructure_cost
 X
 3
-315
+390
 Y
 3
-1070
+1071
 Width
 3
 90
@@ -4295,10 +4343,10 @@ Name
 onshore_transmission_infrastructure_transportation_cost
 X
 3
-420
+495
 Y
 3
-1280
+1281
 Width
 3
 90
@@ -4358,10 +4406,10 @@ Name
 other_array_cable_system_cost
 X
 3
-420
+495
 Y
 3
-350
+348
 Width
 3
 90
@@ -4421,10 +4469,10 @@ Name
 other_cable_protection_cost
 X
 3
-420
+495
 Y
 3
-830
+828
 Width
 3
 90
@@ -4484,7 +4532,7 @@ Name
 other_elec_infra_cost
 X
 3
-315
+390
 Y
 3
 1341
@@ -4547,10 +4595,10 @@ Name
 other_export_cable_system_cost
 X
 3
-420
+495
 Y
 3
-560
+558
 Width
 3
 90
@@ -4610,10 +4658,10 @@ Name
 other_offshore_substation_cost
 X
 3
-420
+495
 Y
 3
-1040
+1041
 Width
 3
 90
@@ -4673,10 +4721,10 @@ Name
 other_onshore_transmission_infrastructure_cost
 X
 3
-420
+495
 Y
 3
-1310
+1311
 Width
 3
 90
@@ -4736,10 +4784,10 @@ Name
 overhead_lines_cost
 X
 3
-420
+495
 Y
 3
-1220
+1221
 Width
 3
 90
@@ -4799,10 +4847,10 @@ Name
 scour_protection_elec_infras_cost
 X
 3
-420
+495
 Y
 3
-650
+648
 Width
 3
 90
@@ -4862,10 +4910,10 @@ Name
 self_supporting_towers_with_insulators_cost
 X
 3
-420
+495
 Y
 3
-1190
+1191
 Width
 3
 90
@@ -4925,10 +4973,10 @@ Name
 substructure_and_foundation_cost
 X
 3
-420
+495
 Y
 3
-950
+948
 Width
 3
 90
@@ -4988,10 +5036,10 @@ Name
 topside_cost
 X
 3
-420
+495
 Y
 3
-920
+918
 Width
 3
 90
@@ -5051,10 +5099,10 @@ Name
 tt_array_cable_system_cost
 X
 3
-417
+492
 Y
 3
-171
+168
 Width
 3
 24
@@ -5077,10 +5125,10 @@ Name
 tt_cable_protection_cost
 X
 3
-417
+492
 Y
 3
-591
+588
 Width
 3
 24
@@ -5103,10 +5151,10 @@ Name
 tt_export_cable_systems_cost
 X
 3
-417
+492
 Y
 3
-381
+378
 Width
 3
 24
@@ -5129,10 +5177,10 @@ Name
 tt_offshore_substation_cost
 X
 3
-417
+492
 Y
 3
-861
+858
 Width
 3
 24
@@ -5155,7 +5203,7 @@ Name
 tt_onshore_transmission_infrastructure_cost
 X
 3
-417
+492
 Y
 3
 1071
@@ -5181,7 +5229,7 @@ Name
 tt_other_electrical_infrastructure_cost
 X
 3
-417
+492
 Y
 3
 1341
@@ -5207,10 +5255,10 @@ Name
 underground_cable_system_cost
 X
 3
-420
+495
 Y
 3
-1160
+1161
 Width
 3
 90
@@ -5270,7 +5318,7 @@ Name
 user_input_label_elec
 X
 3
-438
+510
 Y
 3
 51
@@ -6287,7 +6335,7 @@ equations {'itemized_check_elec_infras'} = define() {
 
 
 
-8642
+8708
 on_load{'Marine Costs - Electrical Infrastructure'} = define() {
 	on_change{'itemized_check_elec_infras'};
 	//on_change{'level_eng'};
@@ -6311,6 +6359,9 @@ function check_override_elec_infras()
 	check_value = value('balance_of_system_cost_override');
 	enable('elec_infras_cost_method',check_value!=1);
 	enable('elec_infras_cost',check_value!=1);
+	show('elec_infras_override_label',check_value==1);
+	
+	refresh();
 	
 }
 

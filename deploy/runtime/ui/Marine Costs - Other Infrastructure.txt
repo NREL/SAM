@@ -1,7 +1,7 @@
 Marine Costs - Other Infrastructure
 818
 446
-37
+38
 Label
 
 1
@@ -289,7 +289,7 @@ X
 555
 Y
 3
-120
+273
 Width
 3
 180
@@ -1008,6 +1008,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+27
+other_infras_override_label
+X
+3
+555
+Y
+3
+150
+Width
+3
+195
+Height
+3
+84
+Tool Tip
+5
+0
+Caption
+5
+138
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -1912,7 +1960,7 @@ equations {'other_infrastructure_cost'} = define() {
 
 
 
-1539
+1606
 on_load{'Marine Costs - Other Infrastructure'} = define() {
 	on_change{'itemized_check_other_infras'};
 	enable_itemized_other_infras();
@@ -1924,6 +1972,9 @@ function check_override_other_infras()
 	check_value = value('balance_of_system_cost_override');
 	enable('other_infrastructure_cost_method',check_value!=1);
 	enable('other_infrastructure_cost',check_value!=1);
+	show('other_infras_override_label',check_value==1);
+	
+	refresh();
 }	
 
 on_change{'itemized_check_other_infras'} = define() {

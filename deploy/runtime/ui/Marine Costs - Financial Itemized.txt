@@ -1,7 +1,7 @@
 Marine Costs - Financial Itemized
 817
 630
-59
+60
 Label
 
 1
@@ -318,6 +318,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+24
+financial_override_label
+X
+3
+600
+Y
+3
+363
+Width
+3
+120
+Height
+3
+129
+Tool Tip
+5
+0
+Caption
+5
+138
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -2883,7 +2931,7 @@ equations {'other_financial_cost'} = define() {
 				${other_financial_cost_modeled}
 			];
 };
-2798
+2848
 on_load{'Marine Costs - Financial Itemized'} = define() {
 	on_change{'itemized_check_contingency'};
 	enable_contingency();
@@ -2907,6 +2955,7 @@ function check_override_financial()
 	enable('reserve_accounts_cost',check_value!=1);
 	enable('other_financial_cost_method',check_value!=1);
 	enable('other_financial_cost',check_value!=1);
+	show('financial_override_label',check_value==1);
 }
 
 on_change{'itemized_check_contingency'} = define() {

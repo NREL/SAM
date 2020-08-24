@@ -1,7 +1,7 @@
 Marine Costs - PTO
 817
 1588
-120
+121
 Label
 
 1
@@ -2472,7 +2472,7 @@ Y
 111
 Width
 3
-600
+549
 Height
 3
 16
@@ -2505,13 +2505,13 @@ Name
 object 7
 X
 3
-549
+567
 Y
 3
-324
+243
 Width
 3
-180
+183
 Height
 3
 300
@@ -3993,7 +3993,7 @@ Name
 object 75
 X
 3
-39
+36
 Y
 3
 69
@@ -4906,7 +4906,7 @@ Name
 power_takeoff_system_cost_method
 X
 3
-138
+135
 Y
 3
 69
@@ -5169,6 +5169,54 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+18
+pto_override_label
+X
+3
+567
+Y
+3
+141
+Width
+3
+195
+Height
+3
+87
+Tool Tip
+5
+0
+Caption
+5
+138
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -7536,7 +7584,7 @@ equations {'power_takeoff_system_cost'} = define() {
 
 
 
-9983
+10041
 on_load{'Marine Costs - PTO'} = define() {
 	check_override_pto();
 	on_change{'itemized_check_pto'};
@@ -7573,6 +7621,9 @@ function check_override_pto()
 	enable('power_takeoff_system_cost_method',check_value!=1);
 	//enable('power_takeoff_system_cost_modeled',check_value!=1);
 	enable('power_takeoff_system_cost',check_value!=1);
+	show('pto_override_label',check_value==1);
+	
+	refresh();
 }
 
 

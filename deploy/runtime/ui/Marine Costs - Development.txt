@@ -11,7 +11,7 @@ Name
 0
 X
 3
-315
+342
 Y
 3
 1350
@@ -59,7 +59,7 @@ Name
 92
 X
 3
-99
+129
 Y
 3
 180
@@ -137,7 +137,7 @@ Name
 Gearbox
 X
 3
-183
+213
 Y
 3
 540
@@ -185,7 +185,7 @@ Name
 Interconnection & Power Marketing
 X
 3
-72
+102
 Y
 3
 870
@@ -233,7 +233,7 @@ Name
 Project Management during Development
 X
 3
-156
+183
 Y
 3
 1290
@@ -281,7 +281,7 @@ Name
 Project Management during Development1
 X
 3
-54
+81
 Y
 3
 1050
@@ -329,7 +329,7 @@ Name
 closing_costs_cost
 X
 3
-396
+423
 Y
 3
 1410
@@ -392,7 +392,7 @@ Name
 detailed_cost_choice_financing_incentive
 X
 3
-315
+342
 Y
 3
 1320
@@ -411,7 +411,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -425,7 +425,7 @@ Name
 detailed_cost_choice_initial_engineering
 X
 3
-315
+345
 Y
 3
 570
@@ -444,7 +444,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -458,7 +458,7 @@ Name
 detailed_cost_choice_interconnection
 X
 3
-315
+345
 Y
 3
 900
@@ -477,7 +477,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -491,7 +491,7 @@ Name
 detailed_cost_choice_permitting_leasing
 X
 3
-315
+345
 Y
 3
 390
@@ -510,7 +510,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -524,7 +524,7 @@ Name
 detailed_cost_choice_project_management
 X
 3
-315
+342
 Y
 3
 1080
@@ -543,7 +543,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -557,7 +557,7 @@ Name
 detailed_cost_choice_site_characterization
 X
 3
-315
+345
 Y
 3
 720
@@ -576,7 +576,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -590,7 +590,7 @@ Name
 detailed_cost_choice_site_selection
 X
 3
-315
+345
 Y
 3
 210
@@ -609,7 +609,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -623,7 +623,7 @@ Name
 development_cost
 X
 3
-492
+531
 Y
 3
 69
@@ -686,7 +686,7 @@ Name
 development_cost_input
 X
 3
-396
+426
 Y
 3
 69
@@ -748,7 +748,7 @@ Name
 development_cost_input_label
 X
 3
-414
+444
 Y
 3
 42
@@ -796,7 +796,7 @@ Name
 development_cost_method
 X
 3
-141
+162
 Y
 3
 69
@@ -832,7 +832,7 @@ Name
 development_cost_modeled
 X
 3
-294
+324
 Y
 3
 69
@@ -895,7 +895,7 @@ Name
 development_cost_total
 X
 3
-396
+426
 Y
 3
 69
@@ -958,7 +958,7 @@ Name
 development_cost_total_label
 X
 3
-399
+429
 Y
 3
 42
@@ -996,6 +996,54 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+26
+development_override_label
+X
+3
+609
+Y
+3
+159
+Width
+3
+195
+Height
+3
+177
+Tool Tip
+5
+0
+Caption
+5
+138
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -1006,7 +1054,7 @@ Name
 due_diligence_cost
 X
 3
-396
+423
 Y
 3
 1350
@@ -1069,7 +1117,7 @@ Name
 engineering_certification_cost
 X
 3
-396
+426
 Y
 3
 630
@@ -1132,7 +1180,7 @@ Name
 environmental_scoping_cost
 X
 3
-396
+426
 Y
 3
 270
@@ -1195,7 +1243,7 @@ Name
 environmental_surveys_cost
 X
 3
-396
+426
 Y
 3
 750
@@ -1258,7 +1306,7 @@ Name
 feed_cost
 X
 3
-396
+426
 Y
 3
 600
@@ -1321,7 +1369,7 @@ Name
 financing_and_incentives_cost
 X
 3
-297
+324
 Y
 3
 1290
@@ -1384,7 +1432,7 @@ Name
 financing_and_incentives_cost_total
 X
 3
-297
+324
 Y
 3
 1290
@@ -1447,7 +1495,7 @@ Name
 geological_and_bathymetry_cost
 X
 3
-396
+426
 Y
 3
 810
@@ -1510,7 +1558,7 @@ Name
 incentives_cost
 X
 3
-396
+423
 Y
 3
 1380
@@ -1573,7 +1621,7 @@ Name
 initial_engineering_cost
 X
 3
-294
+324
 Y
 3
 540
@@ -1636,7 +1684,7 @@ Name
 initial_engineering_cost_total
 X
 3
-294
+324
 Y
 3
 540
@@ -1699,7 +1747,7 @@ Name
 interconnection_and_power_marketing_cost
 X
 3
-294
+324
 Y
 3
 870
@@ -1762,7 +1810,7 @@ Name
 interconnection_and_power_marketing_cost_total
 X
 3
-294
+324
 Y
 3
 870
@@ -1825,7 +1873,7 @@ Name
 interconnection_studies_and_fees_cost
 X
 3
-396
+423
 Y
 3
 930
@@ -1935,7 +1983,7 @@ Name
 lease_acquisition_activities_cost
 X
 3
-396
+426
 Y
 3
 450
@@ -1998,7 +2046,7 @@ Name
 legal_support_cost
 X
 3
-396
+423
 Y
 3
 1440
@@ -2061,7 +2109,7 @@ Name
 level_5_total_prime
 X
 3
-294
+324
 Y
 3
 150
@@ -2109,7 +2157,7 @@ Name
 level_5_total_prime50
 X
 3
-393
+423
 Y
 3
 150
@@ -2157,7 +2205,7 @@ Name
 level_value
 X
 3
-87
+21
 Y
 3
 36
@@ -2204,13 +2252,13 @@ Name
 object 21
 X
 3
-54
+75
 Y
 3
-111
+108
 Width
 3
-531
+546
 Height
 3
 16
@@ -2243,7 +2291,7 @@ Name
 object 713
 X
 3
-267
+297
 Y
 3
 270
@@ -2291,7 +2339,7 @@ Name
 object 721
 X
 3
-300
+330
 Y
 3
 42
@@ -2339,7 +2387,7 @@ Name
 object 72418
 X
 3
-318
+345
 Y
 3
 1110
@@ -2387,7 +2435,7 @@ Name
 object 7241863
 X
 3
-216
+243
 Y
 3
 930
@@ -2435,7 +2483,7 @@ Name
 object 72441
 X
 3
-363
+393
 Y
 3
 600
@@ -2483,7 +2531,7 @@ Name
 object 726
 X
 3
-114
+144
 Y
 3
 510
@@ -2531,7 +2579,7 @@ Name
 object 727
 X
 3
-240
+270
 Y
 3
 420
@@ -2579,7 +2627,7 @@ Name
 object 728
 X
 3
-162
+192
 Y
 3
 360
@@ -2627,7 +2675,7 @@ Name
 object 73
 X
 3
-258
+288
 Y
 3
 240
@@ -2675,7 +2723,7 @@ Name
 object 730
 X
 3
-243
+273
 Y
 3
 330
@@ -2723,7 +2771,7 @@ Name
 object 73044
 X
 3
-342
+372
 Y
 3
 300
@@ -2771,7 +2819,7 @@ Name
 object 731
 X
 3
-183
+213
 Y
 3
 480
@@ -2819,7 +2867,7 @@ Name
 object 73173
 X
 3
-246
+276
 Y
 3
 450
@@ -2867,7 +2915,7 @@ Name
 object 7322
 X
 3
-495
+534
 Y
 3
 42
@@ -2915,7 +2963,7 @@ Name
 object 73311
 X
 3
-147
+174
 Y
 3
 1500
@@ -2963,7 +3011,7 @@ Name
 object 7331140
 X
 3
-318
+345
 Y
 3
 1410
@@ -3011,7 +3059,7 @@ Name
 object 7331149
 X
 3
-210
+237
 Y
 3
 1260
@@ -3059,7 +3107,7 @@ Name
 object 733114926
 X
 3
-363
+390
 Y
 3
 1230
@@ -3107,7 +3155,7 @@ Name
 object 7331152
 X
 3
-213
+240
 Y
 3
 1170
@@ -3155,7 +3203,7 @@ Name
 object 7331159
 X
 3
-237
+264
 Y
 3
 1020
@@ -3203,7 +3251,7 @@ Name
 object 733115937
 X
 3
-297
+324
 Y
 3
 990
@@ -3251,7 +3299,7 @@ Name
 object 73315
 X
 3
-270
+297
 Y
 3
 1470
@@ -3299,7 +3347,7 @@ Name
 object 7331513
 X
 3
-315
+342
 Y
 3
 1440
@@ -3347,7 +3395,7 @@ Name
 object 7331541
 X
 3
-336
+363
 Y
 3
 1380
@@ -3395,7 +3443,7 @@ Name
 object 7331551
 X
 3
-273
+300
 Y
 3
 1200
@@ -3443,7 +3491,7 @@ Name
 object 7331555
 X
 3
-351
+378
 Y
 3
 1140
@@ -3491,7 +3539,7 @@ Name
 object 7331562
 X
 3
-216
+243
 Y
 3
 960
@@ -3539,7 +3587,7 @@ Name
 object 73325
 X
 3
-210
+240
 Y
 3
 840
@@ -3587,7 +3635,7 @@ Name
 object 7332550
 X
 3
-210
+240
 Y
 3
 810
@@ -3635,7 +3683,7 @@ Name
 object 73327
 X
 3
-165
+195
 Y
 3
 780
@@ -3683,7 +3731,7 @@ Name
 object 73333
 X
 3
-270
+300
 Y
 3
 750
@@ -3731,7 +3779,7 @@ Name
 object 73336
 X
 3
-165
+195
 Y
 3
 690
@@ -3779,7 +3827,7 @@ Name
 object 73337
 X
 3
-192
+222
 Y
 3
 660
@@ -3827,7 +3875,7 @@ Name
 object 7333761
 X
 3
-258
+288
 Y
 3
 630
@@ -3875,7 +3923,7 @@ Name
 object 75
 X
 3
-54
+72
 Y
 3
 69
@@ -3913,54 +3961,6 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-13
-Name
-5
-10
-object 777
-X
-3
-531
-Y
-3
-324
-Width
-3
-180
-Height
-3
-300
-Tool Tip
-5
-0
-Caption
-5
-518
-To input development costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled development costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized development costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Level Totals display.  
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1
@@ -3971,7 +3971,7 @@ Name
 onshore_interconnection_rights_cost
 X
 3
-396
+423
 Y
 3
 960
@@ -4034,7 +4034,7 @@ Name
 other_development_cost
 X
 3
-297
+324
 Y
 3
 1500
@@ -4097,7 +4097,7 @@ Name
 other_financing_cost
 X
 3
-396
+423
 Y
 3
 1470
@@ -4160,7 +4160,7 @@ Name
 other_initial_engineering_cost
 X
 3
-396
+426
 Y
 3
 660
@@ -4223,7 +4223,7 @@ Name
 other_interconnection_cost
 X
 3
-396
+423
 Y
 3
 1020
@@ -4286,7 +4286,7 @@ Name
 other_permitting_and_leasing_cost
 X
 3
-396
+426
 Y
 3
 480
@@ -4349,7 +4349,7 @@ Name
 other_project_management_cost
 X
 3
-396
+423
 Y
 3
 1260
@@ -4412,7 +4412,7 @@ Name
 other_site_characterization_cost
 X
 3
-396
+426
 Y
 3
 840
@@ -4475,7 +4475,7 @@ Name
 other_site_selection_cost
 X
 3
-396
+426
 Y
 3
 330
@@ -4538,7 +4538,7 @@ Name
 permit_acquisition_activities_cost
 X
 3
-396
+426
 Y
 3
 420
@@ -4601,7 +4601,7 @@ Name
 permitting_and_leasing_cost
 X
 3
-294
+324
 Y
 3
 360
@@ -4664,7 +4664,7 @@ Name
 permitting_and_leasing_cost_total
 X
 3
-294
+324
 Y
 3
 360
@@ -4727,7 +4727,7 @@ Name
 power_marketing_cost
 X
 3
-396
+423
 Y
 3
 990
@@ -4790,7 +4790,7 @@ Name
 pre_feed_cost
 X
 3
-396
+426
 Y
 3
 300
@@ -4853,7 +4853,7 @@ Name
 procurement_cost
 X
 3
-396
+423
 Y
 3
 1110
@@ -4916,7 +4916,7 @@ Name
 professional_advisory_services_cost
 X
 3
-294
+324
 Y
 3
 510
@@ -4979,7 +4979,7 @@ Name
 profit_cost
 X
 3
-396
+423
 Y
 3
 1230
@@ -5042,7 +5042,7 @@ Name
 project_management_during_development_cost
 X
 3
-297
+324
 Y
 3
 1050
@@ -5105,7 +5105,7 @@ Name
 project_management_during_development_cost_total
 X
 3
-297
+324
 Y
 3
 1050
@@ -5168,7 +5168,7 @@ Name
 resource_and_metocean_assessment_cost
 X
 3
-396
+426
 Y
 3
 780
@@ -5231,7 +5231,7 @@ Name
 resource_assessment_cost
 X
 3
-396
+426
 Y
 3
 240
@@ -5294,7 +5294,7 @@ Name
 salaries_cost
 X
 3
-396
+423
 Y
 3
 1140
@@ -5357,7 +5357,7 @@ Name
 sales_general_and_administrative_cost
 X
 3
-396
+423
 Y
 3
 1170
@@ -5420,7 +5420,7 @@ Name
 site_characterization_cost
 X
 3
-294
+324
 Y
 3
 690
@@ -5483,7 +5483,7 @@ Name
 site_characterization_cost_total
 X
 3
-294
+324
 Y
 3
 690
@@ -5546,7 +5546,7 @@ Name
 site_selection_cost
 X
 3
-294
+324
 Y
 3
 180
@@ -5609,7 +5609,7 @@ Name
 site_selection_cost_total
 X
 3
-294
+324
 Y
 3
 180
@@ -5672,7 +5672,7 @@ Name
 stakeholder_outreach_cost
 X
 3
-396
+423
 Y
 3
 1200
@@ -5735,7 +5735,7 @@ Name
 tt_financing_and_incentives_cost
 X
 3
-396
+423
 Y
 3
 1290
@@ -5761,7 +5761,7 @@ Name
 tt_initial_engineering_cost
 X
 3
-393
+423
 Y
 3
 540
@@ -5787,7 +5787,7 @@ Name
 tt_interconnection_and_power_marketing_cost
 X
 3
-393
+423
 Y
 3
 870
@@ -5813,7 +5813,7 @@ Name
 tt_other_development_cost
 X
 3
-396
+423
 Y
 3
 1500
@@ -5839,7 +5839,7 @@ Name
 tt_permitting_and_leasing_cost
 X
 3
-396
+426
 Y
 3
 360
@@ -5865,7 +5865,7 @@ Name
 tt_professional_advisory_services_cost
 X
 3
-393
+423
 Y
 3
 510
@@ -5891,7 +5891,7 @@ Name
 tt_project_management_during_development_cost
 X
 3
-396
+423
 Y
 3
 1050
@@ -5917,7 +5917,7 @@ Name
 tt_site_characterization_cost
 X
 3
-393
+423
 Y
 3
 690
@@ -5943,7 +5943,7 @@ Name
 tt_site_selection_cost
 X
 3
-393
+423
 Y
 3
 180
@@ -6035,7 +6035,7 @@ detailed_cost_choice_project_management
 3
 1
  
-ME Cost Choice 
+ 
  
 0
 2
@@ -7019,7 +7019,7 @@ equations {'level_value'} = define() {
 
 
 
-13357
+13423
 on_load{'Marine Costs - Development'} = define() {
 	on_change{'itemized_check_development'};
 	on_change{'level_value'};
@@ -7047,6 +7047,9 @@ function check_override_development()
 	check_value = value('balance_of_system_cost_override');
 	enable('development_cost_method',check_value!=1);
 	enable('development_cost',check_value!=1);
+	show('development_override_label',check_value==1);
+	
+	refresh();
 }	
 
 on_change{'detailed_cost_choice_financing_incentive'} = define() {

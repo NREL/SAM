@@ -1,7 +1,7 @@
 Marine Costs - Structural Assembly
 800
 672
-62
+63
 Label
 
 1
@@ -1048,10 +1048,10 @@ Name
 object 721
 X
 3
-549
+567
 Y
 3
-261
+201
 Width
 3
 180
@@ -1096,7 +1096,7 @@ Name
 object 72145
 X
 3
-318
+321
 Y
 3
 30
@@ -2300,6 +2300,54 @@ Label
 13
 Name
 5
+21
+struct_override_label
+X
+3
+567
+Y
+3
+108
+Width
+3
+195
+Height
+3
+84
+Tool Tip
+5
+0
+Caption
+5
+138
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
 23
 struct_user_input_label
 X
@@ -2477,7 +2525,7 @@ Name
 structural_assembly_cost_method
 X
 3
-159
+162
 Y
 3
 57
@@ -2513,7 +2561,7 @@ Name
 structural_assembly_cost_modeled_formatted
 X
 3
-315
+321
 Y
 3
 57
@@ -4566,7 +4614,7 @@ equations {'override_check_structural'} = define() {
 
 
 			
-5219
+5277
 on_load{'Marine Costs - Structural Assembly'} = define() {
 	check_override_structural();
 	on_change{'itemized_check_structural'};
@@ -4580,9 +4628,7 @@ on_load{'Marine Costs - Structural Assembly'} = define() {
 	on_change{'detailed_cost_choice_marine_systems'};
 	detailed_cost_marine_systems();
 	
-	
 };
-
 
 
 function check_override_structural()
@@ -4593,6 +4639,9 @@ function check_override_structural()
 	enable('structural_assembly_cost_method',check_value!=1);
 	//enable('structural_assembly_cost_modeled',check_value!=1);
 	enable('structural_assembly_cost',check_value!=1);
+	show('struct_override_label',check_value==1);
+	
+	refresh();
 }
 
 on_change{'itemized_check_structural'} = define() {
