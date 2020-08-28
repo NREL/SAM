@@ -2931,7 +2931,7 @@ equations {'other_financial_cost'} = define() {
 				${other_financial_cost_modeled}
 			];
 };
-2848
+2843
 on_load{'Marine Costs - Financial Itemized'} = define() {
 	on_change{'itemized_check_contingency'};
 	enable_contingency();
@@ -2949,7 +2949,7 @@ function check_override_financial()
 	check_value = value('balance_of_system_cost_override');
 	enable('project_contingency_cost_method',check_value!=1);
 	enable('project_contingency_budget_cost',check_value!=1);
-	enable('insurance_during_construction_cost_method',check_value!=1);
+	enable('insurance_during_construction_method',check_value!=1);
 	enable('insurance_during_construction_cost',check_value!=1);
 	enable('reserve_accounts_cost_method',check_value!=1);
 	enable('reserve_accounts_cost',check_value!=1);

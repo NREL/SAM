@@ -41,7 +41,7 @@ Name
 92
 X
 3
-171
+132
 Y
 3
 150
@@ -89,7 +89,7 @@ Name
 Entrance/Exit Fees
 X
 3
-312
+273
 Y
 3
 600
@@ -137,7 +137,7 @@ Name
 Entrance/Exit Fees14
 X
 3
-312
+273
 Y
 3
 570
@@ -185,7 +185,7 @@ Name
 Entrance/Exit Fees1415
 X
 3
-312
+273
 Y
 3
 510
@@ -233,7 +233,7 @@ Name
 Itemized Inputs 
 X
 3
-456
+417
 Y
 3
 126
@@ -281,7 +281,7 @@ Name
 Itemized Inputs 3
 X
 3
-354
+315
 Y
 3
 126
@@ -329,7 +329,7 @@ Name
 assembly_areas_cost
 X
 3
-459
+420
 Y
 3
 270
@@ -392,7 +392,7 @@ Name
 cranage_cost
 X
 3
-354
+315
 Y
 3
 390
@@ -455,7 +455,7 @@ Name
 detailed_cost_choice_port_fees
 X
 3
-363
+324
 Y
 3
 480
@@ -488,7 +488,7 @@ Name
 detailed_cost_choice_staging_port
 X
 3
-363
+324
 Y
 3
 180
@@ -521,7 +521,7 @@ Name
 entrance_exit_fees_cost
 X
 3
-459
+420
 Y
 3
 510
@@ -584,7 +584,7 @@ Name
 fabrication_facilities_cost
 X
 3
-459
+420
 Y
 3
 330
@@ -647,7 +647,7 @@ Name
 itemized_check_site_access
 X
 3
-69
+42
 Y
 3
 39
@@ -694,7 +694,7 @@ Name
 laydown_area_cost
 X
 3
-459
+420
 Y
 3
 240
@@ -757,13 +757,13 @@ Name
 object 21
 X
 3
-36
+40
 Y
 3
 105
 Width
 3
-624
+580
 Height
 3
 16
@@ -796,7 +796,7 @@ Name
 object 713
 X
 3
-330
+291
 Y
 3
 240
@@ -844,7 +844,7 @@ Name
 object 721
 X
 3
-360
+318
 Y
 3
 42
@@ -892,7 +892,7 @@ Name
 object 72441
 X
 3
-219
+180
 Y
 3
 630
@@ -940,7 +940,7 @@ Name
 object 7244110
 X
 3
-330
+291
 Y
 3
 540
@@ -988,7 +988,7 @@ Name
 object 726
 X
 3
-189
+150
 Y
 3
 450
@@ -1036,7 +1036,7 @@ Name
 object 727
 X
 3
-198
+159
 Y
 3
 390
@@ -1084,7 +1084,7 @@ Name
 object 728
 X
 3
-297
+258
 Y
 3
 360
@@ -1132,7 +1132,7 @@ Name
 object 72821
 X
 3
-342
+303
 Y
 3
 300
@@ -1180,7 +1180,7 @@ Name
 object 72828
 X
 3
-342
+303
 Y
 3
 330
@@ -1228,7 +1228,7 @@ Name
 object 73
 X
 3
-321
+282
 Y
 3
 210
@@ -1276,7 +1276,7 @@ Name
 object 730
 X
 3
-357
+318
 Y
 3
 270
@@ -1324,7 +1324,7 @@ Name
 object 731
 X
 3
-204
+165
 Y
 3
 420
@@ -1372,7 +1372,7 @@ Name
 object 7322
 X
 3
-567
+528
 Y
 3
 42
@@ -1420,13 +1420,13 @@ Name
 object 75
 X
 3
-30
+93
 Y
 3
 69
 Width
 3
-168
+66
 Height
 3
 24
@@ -1435,8 +1435,8 @@ Tool Tip
 0
 Caption
 5
-29
-Site access, port and staging
+11
+Site access
 TextColour
 4
 0
@@ -1516,7 +1516,7 @@ Name
 other_port_fees_cost
 X
 3
-459
+420
 Y
 3
 600
@@ -1579,7 +1579,7 @@ Name
 other_site_access_cost
 X
 3
-354
+315
 Y
 3
 630
@@ -1642,7 +1642,7 @@ Name
 other_staging_port_cost
 X
 3
-459
+420
 Y
 3
 360
@@ -1705,7 +1705,7 @@ Name
 personnel_facilities_cost
 X
 3
-459
+420
 Y
 3
 300
@@ -1768,7 +1768,7 @@ Name
 port_fees_cost
 X
 3
-354
+315
 Y
 3
 450
@@ -1831,7 +1831,7 @@ Name
 port_fees_cost_total
 X
 3
-354
+315
 Y
 3
 450
@@ -1893,7 +1893,7 @@ Name
 port_improvement_cost
 X
 3
-354
+315
 Y
 3
 420
@@ -1956,7 +1956,7 @@ Name
 quay_cost
 X
 3
-459
+420
 Y
 3
 210
@@ -2019,7 +2019,7 @@ Name
 quayside_docking_fees_cost
 X
 3
-459
+420
 Y
 3
 540
@@ -2082,7 +2082,7 @@ Name
 site_access_port_staging_cost
 X
 3
-561
+522
 Y
 3
 69
@@ -2145,7 +2145,7 @@ Name
 site_access_port_staging_cost_input
 X
 3
-459
+420
 Y
 3
 69
@@ -2207,7 +2207,7 @@ Name
 site_access_port_staging_cost_input_label
 X
 3
-474
+435
 Y
 3
 42
@@ -2255,7 +2255,7 @@ Name
 site_access_port_staging_cost_method
 X
 3
-201
+162
 Y
 3
 69
@@ -2291,7 +2291,7 @@ Name
 site_access_port_staging_cost_modeled
 X
 3
-354
+315
 Y
 3
 69
@@ -2354,7 +2354,7 @@ Name
 site_access_port_staging_cost_total
 X
 3
-459
+420
 Y
 3
 69
@@ -2417,7 +2417,7 @@ Name
 site_access_port_staging_cost_total_label
 X
 3
-462
+423
 Y
 3
 42
@@ -2513,7 +2513,7 @@ Name
 staging_port_cost
 X
 3
-354
+315
 Y
 3
 150
@@ -2576,7 +2576,7 @@ Name
 staging_port_cost_total
 X
 3
-354
+315
 Y
 3
 150
@@ -2638,7 +2638,7 @@ Name
 tt_cranage_cost
 X
 3
-456
+417
 Y
 3
 390
@@ -2664,7 +2664,7 @@ Name
 tt_other_site_access_cost
 X
 3
-456
+417
 Y
 3
 630
@@ -2690,7 +2690,7 @@ Name
 tt_port_fees_cost
 X
 3
-456
+417
 Y
 3
 450
@@ -2716,7 +2716,7 @@ Name
 tt_port_improvement_cost
 X
 3
-456
+417
 Y
 3
 420
@@ -2742,7 +2742,7 @@ Name
 tt_staging_port_cost
 X
 3
-456
+417
 Y
 3
 150
@@ -2768,7 +2768,7 @@ Name
 wharfage_fees_cost
 X
 3
-459
+420
 Y
 3
 570

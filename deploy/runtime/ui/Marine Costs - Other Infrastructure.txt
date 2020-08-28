@@ -11,7 +11,7 @@ Name
 0
 X
 3
-171
+174
 Y
 3
 147
@@ -59,7 +59,7 @@ Name
 Itemized Inputs 3
 X
 3
-315
+318
 Y
 3
 120
@@ -107,7 +107,7 @@ Name
 dedicated_om_vessel_cost
 X
 3
-315
+318
 Y
 3
 177
@@ -170,7 +170,7 @@ Name
 itemized_check_other_infras
 X
 3
-72
+75
 Y
 3
 36
@@ -217,13 +217,13 @@ Name
 object 21
 X
 3
-36
+40
 Y
 3
 102
 Width
 3
-570
+580
 Height
 3
 16
@@ -286,13 +286,13 @@ Name
 object 7
 X
 3
-555
+552
 Y
 3
-273
+210
 Width
 3
-180
+216
 Height
 3
 300
@@ -334,7 +334,7 @@ Name
 object 713
 X
 3
-177
+180
 Y
 3
 207
@@ -382,7 +382,7 @@ Name
 object 72145
 X
 3
-315
+318
 Y
 3
 39
@@ -430,7 +430,7 @@ Name
 object 728
 X
 3
-273
+276
 Y
 3
 327
@@ -478,7 +478,7 @@ Name
 object 729
 X
 3
-111
+114
 Y
 3
 297
@@ -526,7 +526,7 @@ Name
 object 73
 X
 3
-159
+162
 Y
 3
 177
@@ -574,7 +574,7 @@ Name
 object 730
 X
 3
-126
+129
 Y
 3
 267
@@ -622,7 +622,7 @@ Name
 object 7322
 X
 3
-519
+522
 Y
 3
 39
@@ -670,7 +670,7 @@ Name
 object 734
 X
 3
-159
+162
 Y
 3
 237
@@ -718,7 +718,7 @@ Name
 object 757
 X
 3
-36
+39
 Y
 3
 66
@@ -766,7 +766,7 @@ Name
 offshore_accomodations_other_infras_cost
 X
 3
-315
+318
 Y
 3
 147
@@ -829,7 +829,7 @@ Name
 offshore_logistical_infrastructure_other_infras_cost
 X
 3
-315
+318
 Y
 3
 267
@@ -892,7 +892,7 @@ Name
 om_equipment_purchases_cost
 X
 3
-315
+318
 Y
 3
 237
@@ -955,7 +955,7 @@ Name
 onshore_om_facilities_cost
 X
 3
-315
+318
 Y
 3
 207
@@ -1018,10 +1018,10 @@ Name
 other_infras_override_label
 X
 3
-555
+552
 Y
 3
-150
+123
 Width
 3
 195
@@ -1066,7 +1066,7 @@ Name
 other_infrastructure_cost
 X
 3
-513
+516
 Y
 3
 66
@@ -1129,7 +1129,7 @@ Name
 other_infrastructure_cost_input
 X
 3
-414
+417
 Y
 3
 66
@@ -1191,7 +1191,7 @@ Name
 other_infrastructure_cost_method
 X
 3
-159
+162
 Y
 3
 66
@@ -1227,7 +1227,7 @@ Name
 other_infrastructure_cost_modeled
 X
 3
-315
+318
 Y
 3
 66
@@ -1290,7 +1290,7 @@ Name
 other_infrastructure_cost_total
 X
 3
-414
+417
 Y
 3
 66
@@ -1353,7 +1353,7 @@ Name
 other_infrastructure_transportation_other_infras_cost
 X
 3
-315
+318
 Y
 3
 297
@@ -1416,7 +1416,7 @@ Name
 other_level_label
 X
 3
-414
+417
 Y
 3
 39
@@ -1464,7 +1464,7 @@ Name
 other_other_infras_cost
 X
 3
-315
+318
 Y
 3
 327
@@ -1527,7 +1527,7 @@ Name
 other_user_input_label
 X
 3
-426
+429
 Y
 3
 39
@@ -1575,7 +1575,7 @@ Name
 tt_dedicated_om_vessel_cost
 X
 3
-414
+417
 Y
 3
 177
@@ -1602,7 +1602,7 @@ Name
 tt_offshore_accomodations_cost
 X
 3
-414
+417
 Y
 3
 147
@@ -1629,7 +1629,7 @@ Name
 tt_offshore_logistical_infrastructure_cost
 X
 3
-414
+417
 Y
 3
 267
@@ -1656,7 +1656,7 @@ Name
 tt_om_equipment_purchases_cost
 X
 3
-414
+417
 Y
 3
 237
@@ -1683,7 +1683,7 @@ Name
 tt_onshore_om_facilities_cost
 X
 3
-414
+417
 Y
 3
 207
@@ -1736,7 +1736,7 @@ Name
 tt_other_infrastructure_transportation_cost
 X
 3
-414
+417
 Y
 3
 297
@@ -1763,7 +1763,7 @@ Name
 tt_other_other_infrastructure_cost
 X
 3
-414
+417
 Y
 3
 327

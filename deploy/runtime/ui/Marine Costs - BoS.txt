@@ -344,7 +344,7 @@ equations {'balance_of_system_cost_total'} = define() {
 	}
 };
 
-3175
+3238
 on_load{'Marine Costs - BoS'} = define() {
 	on_change{'balance_of_system_cost_override'};
 	override_balance_of_system_cost();
@@ -387,11 +387,13 @@ function override_balance_of_system_cost()
 	show('elec_infras_override_label',override_value==1);
 	
 	//Plant Commissioning Inputs
-	enable('plant_commissioning_cost_method',override_value!=1);
+	/*plant_value = value('override_plant');
+	enable('plant_commissioning_cost_method',plant_value!=1);
 	//enable('plant_commissioning_cost_input',override_value==0);
 	//enable('plant_commissioning_cost_modeled',override_value==0);
-	enable('plant_commissioning_cost',override_value!=1);
-	show('commissioning_override_label',override_value==1);
+	enable('plant_commissioning_cost',plant_value!=1);
+	show('test_label',plant_value!=0);
+	show('plant_override_label',plant_value!=0);*/
 	
 	//Site Access Inputs
 	enable('site_access_port_staging_cost_method',override_value!=1);
