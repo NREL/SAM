@@ -412,25 +412,27 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 		}
 		else if (m_g.Type == Graph::SECTOR) {
 			wxPLSectorPlot* sec = new wxPLSectorPlot();
-//    sec->AddSector(64.89, "Total device cost");
-//    sec->AddSector(17.27, "Total balance of system cost");
-//    sec->AddSector(6.79, "Total financial cost");
-//    sec->AddSector(11.05, "Total operating cost (annual)");
+			//sec->AddSector(64.89, "Total device cost");
+			//sec->AddSector(17.27, "Total balance of system cost");
+			//sec->AddSector(6.79, "Total financial cost");
+			//sec->AddSector(11.05, "Total operating cost (annual)");
+			
 			for (size_t i = 0; i < yvars.size() && i < ynames.size(); i++) {
 				sec->AddSector(yvars[i]->Value(), m_s->GetLabel(ynames[i]));
 			}
 			sec->SetCenterHoleSize(0.0);
 		    sec->SetAntiAliasing(true);
-			/* custom color
+			//sec->SetCalloutSize(12);
+			// custom color
 			std::vector<wxColour> clr;
 			clr.push_back(wxColour(51,88,153));
 			clr.push_back(wxColour(363,160,183));
 			clr.push_back(wxColour(121,145,206));
 			clr.push_back(wxColour(84,130,53));
 			sec->SetColours(clr);
-			*/
-
-			sec->SetFormat(wxNUMERIC_REAL, wxNUMERIC_GENERIC, false, wxEmptyString, " %");
+			
+			int deci = 1;
+			sec->SetFormat(wxNUMERIC_REAL, deci, false, wxEmptyString, " %");
 			AddPlot(sec);
 			ShowAxes(false);
 			SetBorderWidth(0);

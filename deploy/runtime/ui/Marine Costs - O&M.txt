@@ -270,11 +270,11 @@ CheckBox
 total_bos_cost_lcoe
 3
 1
- 
+ Total balance of system cost
  
  
 0
-8
+9
 1
 1
 1
@@ -326,11 +326,11 @@ Default
 total_device_cost_lcoe
 3
 1
- 
+ Total device cost
  
  
 0
-8
+9
 1
 1
 1
@@ -368,11 +368,11 @@ Default
 total_financial_cost_lcoe
 3
 1
- 
+Total financial cost
  
  
 0
-8
+9
 1
 1
 1
@@ -452,11 +452,11 @@ Default
 total_operations_cost_lcoe
 3
 1
- 
+ Total operating cost (annual)
  
  
 0
-8
+9
 1
 1
 1
