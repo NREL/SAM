@@ -143,7 +143,7 @@
 		{
 			"name": "tt_transportation_of_structure_cost",
 			"title": "Transportation of Structure",
-			"tip": "Costs of transporting the marine energy converter (MEC) structure components from the manufacturing facility to the staging area."
+			"tip": "Costs of transporting the marine energy converter (MEC) structure\ncomponents from the manufacturing facility to the staging area."
 		},
 		{
 			"name": "tt_other_structural_assembly_cost",
@@ -163,7 +163,7 @@
 		{
 			"name": "tt_air_turbine_cost",
 			"title": "Air Turbine",
-			"tip": "Any turbine that is used to convert kinetic energy in the air, due to wave oscillations, into shaft work (e.g. Wells Turbine)"
+			"tip": "Any turbine that is used to convert kinetic energy in the air,\ndue to wave oscillations, into shaft work (e.g. Wells Turbine)"
 		},
 		{
 			"name": "tt_electrical_generator_cost",
@@ -358,7 +358,7 @@
 		{
 			"name": "tt_other_electrical_infrastructure_cost",
 			"title": "Other Electrical Infrastructure",
-			"tip": "Costs not included within the electrical Infrastructure categories."
+			"tip": "Costs not included within the electrical infrastructure categories."
 		},
 		{
 			"name": "tt_staging_port_cost",
@@ -428,7 +428,7 @@
 		{
 			"name": "tt_om_equipment_purchases_cost",
 			"title": "O&M Equipment Purchases",
-			"tip": "Other purchases necessary for the operation of the marine energy converter project after commercial operation date (COD).\nExamples include: safety equipment (e.g., harnesses, floatation devices), equipment to store replacement parts\n(e.g., climate control for spare electric cables), vehicles to support operations (e.g., fork trucks)."
+			"tip": "Other purchases necessary for the operation of the marine energy converter project\nafter commercial operation date (COD).Examples include: safety equipment\n(e.g., harnesses, floatation devices), equipment to store replacement parts (e.g., climate\ncontrol for spare electric cables), vehicles to support operations (e.g., fork trucks)."
 		},
 		{
 			"name": "tt_offshore_logistical_infrastructure_cost",

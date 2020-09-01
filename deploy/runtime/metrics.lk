@@ -440,6 +440,10 @@ function MEtidal_metrics()
 	metric_row( 'total_bos_cost_lcoe', {'label'='-  Total balance of system cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table4' });
 	metric_row( 'total_financial_cost_lcoe', {'label'='-  Total financial cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table4' });
 	metric_row( 'total_operations_cost_lcoe', {'label'='Total operating cost (annual)', 'mode'= 'f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table4' });
+	
+	metric_table('Table5', {'headers'='Metric,Start Velocity, End Velocity'});
+	metric_row('tidal_resource_start_velocity,tidal_resource_end_velocity', {'label'='Tidal Resource Velocity Range', 'mode'='f,f', 'deci'='1,1','thousep'='true,true', 'post'='m/s,m/s', 'tableName'='Table5' });
+	metric_row('tidal_power_start_velocity,tidal_power_end_velocity', {'label'='Tidal Power Velocity Range', 'mode'='f,f', 'deci'='1,1', 'thousep'='true,true', 'post'='m/s,m/s', 'tableName'='Table5' });
 }
 
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };

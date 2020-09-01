@@ -12,7 +12,7 @@ Name
 92
 X
 3
-66
+60
 Y
 3
 159
@@ -90,7 +90,7 @@ Name
 Environmental Monitoring
 X
 3
-264
+255
 Y
 3
 549
@@ -138,7 +138,7 @@ Name
 Environmental Monitoring9
 X
 3
-279
+270
 Y
 3
 519
@@ -186,7 +186,7 @@ Name
 Itemized Inputs 
 X
 3
-426
+417
 Y
 3
 132
@@ -234,7 +234,7 @@ Name
 Itemized Inputs 3
 X
 3
-324
+318
 Y
 3
 132
@@ -282,7 +282,7 @@ Name
 construction_management_cost
 X
 3
-324
+318
 Y
 3
 219
@@ -345,7 +345,7 @@ Name
 construction_management_cost_total
 X
 3
-324
+318
 Y
 3
 219
@@ -408,7 +408,7 @@ Name
 detailed_cost_choice_construction_management
 X
 3
-342
+336
 Y
 3
 249
@@ -441,7 +441,7 @@ Name
 detailed_cost_choice_health_safety
 X
 3
-342
+336
 Y
 3
 459
@@ -474,7 +474,7 @@ Name
 detailed_design_and_construction_eng_cost
 X
 3
-324
+318
 Y
 3
 159
@@ -872,7 +872,7 @@ Name
 environmental_monitoring_cost
 X
 3
-426
+417
 Y
 3
 519
@@ -935,7 +935,7 @@ Name
 health_and_safety_monitoring_cost
 X
 3
-426
+417
 Y
 3
 489
@@ -998,7 +998,7 @@ Name
 health_safety_and_environmental_monitoring_cost
 X
 3
-324
+318
 Y
 3
 429
@@ -1061,7 +1061,7 @@ Name
 health_safety_and_environmental_monitoring_cost_total
 X
 3
-324
+318
 Y
 3
 429
@@ -1219,7 +1219,7 @@ Name
 object 21
 X
 3
-40
+39
 Y
 3
 99
@@ -1258,7 +1258,7 @@ Name
 object 713
 X
 3
-171
+165
 Y
 3
 219
@@ -1354,7 +1354,7 @@ Name
 object 72441
 X
 3
-84
+78
 Y
 3
 579
@@ -1402,7 +1402,7 @@ Name
 object 726
 X
 3
-255
+246
 Y
 3
 489
@@ -1450,7 +1450,7 @@ Name
 object 727
 X
 3
-207
+201
 Y
 3
 399
@@ -1498,7 +1498,7 @@ Name
 object 728
 X
 3
-213
+204
 Y
 3
 369
@@ -1546,7 +1546,7 @@ Name
 object 72821
 X
 3
-243
+234
 Y
 3
 309
@@ -1594,7 +1594,7 @@ Name
 object 72839
 X
 3
-390
+381
 Y
 3
 339
@@ -1642,7 +1642,7 @@ Name
 object 73
 X
 3
-168
+162
 Y
 3
 189
@@ -1690,7 +1690,7 @@ Name
 object 730
 X
 3
-381
+372
 Y
 3
 279
@@ -1738,7 +1738,7 @@ Name
 object 73136
 X
 3
-75
+69
 Y
 3
 429
@@ -1930,7 +1930,7 @@ Name
 other_construction_management_cost
 X
 3
-426
+417
 Y
 3
 369
@@ -1993,7 +1993,7 @@ Name
 other_eng_cost
 X
 3
-324
+318
 Y
 3
 579
@@ -2056,7 +2056,7 @@ Name
 other_health_and_safety_cost
 X
 3
-426
+417
 Y
 3
 549
@@ -2119,7 +2119,7 @@ Name
 procurement_management_cost
 X
 3
-324
+318
 Y
 3
 189
@@ -2182,7 +2182,7 @@ Name
 profit_eng_cost
 X
 3
-426
+417
 Y
 3
 339
@@ -2245,7 +2245,7 @@ Name
 project_certification_cost
 X
 3
-324
+318
 Y
 3
 399
@@ -2308,7 +2308,7 @@ Name
 salaries_eng_cost
 X
 3
-426
+417
 Y
 3
 279
@@ -2371,7 +2371,7 @@ Name
 sales_general_and_administrative_eng_cost
 X
 3
-426
+417
 Y
 3
 309
@@ -2434,7 +2434,7 @@ Name
 tt_construction_management_cost
 X
 3
-426
+417
 Y
 3
 222
@@ -2460,7 +2460,7 @@ Name
 tt_detailed_design_and_construction_engineering_cost
 X
 3
-426
+417
 Y
 3
 162
@@ -2486,10 +2486,10 @@ Name
 tt_health_safety_and_environmental_monitoring_cost
 X
 3
-423
+417
 Y
 3
-432
+429
 Width
 3
 24
@@ -2512,7 +2512,7 @@ Name
 tt_other_engineering_and_management_cost
 X
 3
-423
+417
 Y
 3
 579
@@ -2538,7 +2538,7 @@ Name
 tt_procurement_management_cost
 X
 3
-426
+417
 Y
 3
 192
@@ -2564,7 +2564,7 @@ Name
 tt_project_certification_cost
 X
 3
-423
+417
 Y
 3
 399
@@ -2843,7 +2843,7 @@ health_safety_and_environmental_monitoring_cost
 $
 ME Costs
 0
-2
+3
 1
 1
 1

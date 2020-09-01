@@ -270,7 +270,7 @@ CheckBox
 total_bos_cost_lcoe
 3
 1
- Total balance of system cost
+BOS cost
  
  
 0
@@ -326,7 +326,7 @@ Default
 total_device_cost_lcoe
 3
 1
- Total device cost
+Device cost
  
  
 0
@@ -368,7 +368,7 @@ Default
 total_financial_cost_lcoe
 3
 1
-Total financial cost
+Financial cost
  
  
 0
@@ -452,7 +452,7 @@ Default
 total_operations_cost_lcoe
 3
 1
- Total operating cost (annual)
+Operating cost (annual)
  
  
 0
@@ -579,7 +579,7 @@ equations {'total_operations_cost_lcoe'} = define(){
 
 
 
-446
+792
 on_load{'Marine Costs - O&M'} = define() {
 	on_change{'om_cost_override'};
 	override_om_cost();
@@ -587,6 +587,7 @@ on_load{'Marine Costs - O&M'} = define() {
 
 on_change{'om_cost_override'} = define() {
 	override_om_cost();
+	
 };
 
 function override_om_cost() {
@@ -595,6 +596,17 @@ function override_om_cost() {
 	enable('om_cost_input',override_value==1);
 	show('om_cost_input',override_value==1);
 	show('total_operating_cost',override_value!=1);
+	
+	//Operations
+	enable('operations_cost_method',override_value!=1);
+	enable('operations_cost',override_value!=1);
+	show('operations_override_label',override_value==1);
+	
+	//Maintenance
+	enable('maintenance_cost_method',override_value!=1);
+	enable('maintenance_cost',override_value!=1);
+	show('maintenance_override_label',override_value==1);
+	
 	
 	refresh();
 }

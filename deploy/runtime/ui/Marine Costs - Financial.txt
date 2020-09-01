@@ -262,8 +262,8 @@ Tool Tip
 0
 Caption
 5
-518
-Capital costs for Wave Energy systems consist of Device costs, Balance of System costs, and Financial costs. This section allows for the cost inputs of the different sublevels of contingency and reserve costs through lump sum $ inputs, inputs as a function of system capacity in $/kW, modeled values from previous analyses, or itemized costs through the various levels of each category. To forego these cost categories and input the other project costs as a flat dollar amount, check the Override cost structure box.  
+520
+Capital costs for Marine Energy systems consist of Device costs, Balance of System costs, and Financial costs. This section allows for the cost inputs of the different sublevels of contingency and reserve costs through lump sum $ inputs, inputs as a function of system capacity in $/kW, modeled values from previous analyses, or itemized costs through the various levels of each category. To forego these cost categories and input the other project costs as a flat dollar amount, check the Override cost structure box.  
 TextColour
 4
 0

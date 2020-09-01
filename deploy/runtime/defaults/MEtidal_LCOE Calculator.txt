@@ -1,5 +1,5 @@
 1
-620
+623
 accumulators_cost
 1
 1
@@ -1083,7 +1083,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-3629690
+3.62969e+06
 export_cable_system_cost_total
 1
 1
@@ -1365,7 +1365,7 @@ insurance_during_construction_modeled
 1
 1
 1
-4028060
+4.02806e+06
 insurance_operations_cost
 1
 1
@@ -1649,6 +1649,12 @@ maintenance_cost_modeled
 1
 13341254
 maintenance_cost_total
+1
+1
+1
+1
+0
+maintenance_override_check
 1
 1
 1
@@ -2083,6 +2089,12 @@ operations_management_general_administration_cost_total_check
 1
 1
 0
+operations_override_check
+1
+1
+1
+1
+0
 opex_we_shown
 1
 1
@@ -2492,6 +2504,12 @@ overhead_lines_cost
 1
 0
 override_check_structural
+1
+1
+1
+1
+0
+override_plant
 1
 1
 1
@@ -3063,7 +3081,7 @@ site_access_port_staging_cost
 1
 1
 1
-4430870
+4.43087e+06
 site_access_port_staging_cost_input
 1
 1
@@ -3081,7 +3099,7 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4430870
+4.43087e+06
 site_access_port_staging_cost_total
 1
 1

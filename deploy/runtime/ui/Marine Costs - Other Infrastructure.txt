@@ -286,13 +286,13 @@ Name
 object 7
 X
 3
-552
+492
 Y
 3
 210
 Width
 3
-216
+285
 Height
 3
 300
@@ -1018,10 +1018,10 @@ Name
 other_infras_override_label
 X
 3
-552
+492
 Y
 3
-123
+117
 Width
 3
 195

@@ -1,5 +1,5 @@
 1
-652
+655
 accumulators_cost
 1
 1
@@ -1231,6 +1231,12 @@ financial_itemized_shown
 1
 1
 0
+financial_override_check
+1
+1
+1
+1
+0
 financing_and_incentives_cost
 1
 1
@@ -1784,6 +1790,12 @@ maintenance_cost_total
 1
 1
 0
+maintenance_override_check
+1
+1
+1
+1
+0
 maintenance_reserve_account_cost
 1
 1
@@ -2240,6 +2252,12 @@ operations_management_general_administration_cost_total
 1
 0
 operations_management_general_administration_cost_total_check
+1
+1
+1
+1
+0
+operations_override_check
 1
 1
 1

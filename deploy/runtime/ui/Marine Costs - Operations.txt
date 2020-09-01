@@ -1,7 +1,7 @@
 Marine Costs - Operations
 618
 977
-74
+77
 Label
 
 1
@@ -245,7 +245,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -532,7 +533,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1412,7 +1414,7 @@ Name
 object 72751
 X
 3
-153
+111
 Y
 3
 930
@@ -2362,6 +2364,53 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+16
+om_cost_override
+X
+3
+147
+Y
+3
+30
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -3049,7 +3098,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -3074,6 +3124,101 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+25
+operations_override_check
+X
+3
+504
+Y
+3
+339
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+25
+operations_override_label
+X
+3
+495
+Y
+3
+168
+Width
+3
+105
+Height
+3
+159
+Tool Tip
+5
+0
+Caption
+5
+138
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Label
 
 1
@@ -3321,7 +3466,7 @@ Name
 other_operations_cost
 X
 3
-339
+297
 Y
 3
 930
@@ -3740,7 +3885,7 @@ Name
 tt_other_operations_cost
 X
 3
-438
+396
 Y
 3
 930
@@ -3820,7 +3965,7 @@ TabOrder
 3
 4294967295
 
-38
+39
 annual_leases_fees_cost
 3
 1
@@ -4227,6 +4372,20 @@ operations_management_general_administration_cost_total_check
 1
 0
 Default
+operations_override_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 other_business_cost
 3
 1
@@ -4354,7 +4513,7 @@ weather_forecasting_cost
 0
 Default
 
-2383
+2512
 equations {'environmental_health_and_safety_monitoring_cost_total'} = define() {
 	return ${health_safety_monitoring_cost}+${environmental_monitoring_operations_cost}+
 		${other_monitoring_cost};
@@ -4433,9 +4592,21 @@ equations {'operations_cost'} = define() {
 			];
 };
 
+equations {'operations_override_check'} = define() {
+	if (${om_cost_override}==1)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+};
 
 
-5753
+
+
+6161
 on_load{'Marine Costs - Operations'} = define() {
 	on_change{'itemized_check_operations'};
 	enable_itemized_operations();
@@ -4445,7 +4616,23 @@ on_load{'Marine Costs - Operations'} = define() {
 	detailed_cost_env_health_safety();
 	on_change{'detailed_cost_choice_gen_admin'};
 	detailed_cost_gen_admin();
+	on_change{'operations_override_check'};
+	check_override_operations();
 };
+
+on_change{'operations_override_check'} = define() {
+	check_override_operations();
+};
+
+function check_override_operations()
+{
+	check_value = value('operations_override_check');
+	enable('operations_cost_method',check_value!=1);
+	enable('operations_cost',check_value!=1);
+	show('operations_override_label',check_value==1);
+	
+	refresh();
+}
 
 on_change{'detailed_cost_choice_env_health_safety'} = define() {
 	detailed_cost_env_health_safety();

@@ -1,7 +1,7 @@
 Marine Costs - Development
 816
 1540
-116
+117
 Label
 
 1
@@ -623,7 +623,7 @@ Name
 development_cost
 X
 3
-531
+528
 Y
 3
 69
@@ -1006,7 +1006,7 @@ Name
 development_override_label
 X
 3
-609
+582
 Y
 3
 159
@@ -1015,7 +1015,7 @@ Width
 195
 Height
 3
-177
+81
 Tool Tip
 5
 0
@@ -2252,13 +2252,13 @@ Name
 object 21
 X
 3
-75
+39
 Y
 3
-108
+114
 Width
 3
-546
+580
 Height
 3
 16
@@ -2339,7 +2339,7 @@ Name
 object 721
 X
 3
-330
+327
 Y
 3
 42
@@ -2377,6 +2377,54 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+11
+object 7214
+X
+3
+585
+Y
+3
+294
+Width
+3
+180
+Height
+3
+303
+Tool Tip
+5
+0
+Caption
+5
+568
+To input development costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled development costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized development costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is found from the sum of the bolded entries and is reflected in the Itemized Inputs display. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Label
 
 1

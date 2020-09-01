@@ -422,7 +422,7 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 			}
 			sec->SetCenterHoleSize(0.0);
 		    sec->SetAntiAliasing(true);
-			//sec->SetCalloutSize(12);
+			sec->SetCalloutSize(10);
 			// custom color
 			std::vector<wxColour> clr;
 			clr.push_back(wxColour(51,88,153));

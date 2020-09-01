@@ -1,7 +1,7 @@
 Marine Costs - Financial Itemized
 817
 630
-60
+61
 Label
 
 1
@@ -325,13 +325,60 @@ Label
 Name
 5
 24
+financial_override_check
+X
+3
+33
+Y
+3
+477
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+24
 financial_override_label
 X
 3
-600
+597
 Y
 3
-363
+360
 Width
 3
 120
@@ -849,13 +896,13 @@ Name
 object 21
 X
 3
-93
+72
 Y
 3
 336
 Width
 3
-557
+580
 Height
 3
 16
@@ -1775,7 +1822,7 @@ Items
 3
 Enter in $/kW
 Enter in $
-Use modeled value
+Use Modeled Value ($)
 Selection
 3
 0
@@ -2839,9 +2886,23 @@ AlignTop
 2
 0
 
+1
+financial_override_check
+3
+1
+ 
+ 
+ 
 0
+8
+1
+1
+1
+1
+0
+Default
 
-1943
+2078
 equations {'project_contingency_budget_cost'} = define() {
 	return ?${project_contingency_cost_method}
 			[
@@ -2931,7 +2992,19 @@ equations {'other_financial_cost'} = define() {
 				${other_financial_cost_modeled}
 			];
 };
-2843
+
+equations {'financial_override_check'} = define() {
+	if (${financial_cost_override}==1)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+};
+
+2960
 on_load{'Marine Costs - Financial Itemized'} = define() {
 	on_change{'itemized_check_contingency'};
 	enable_contingency();
@@ -2941,12 +3014,17 @@ on_load{'Marine Costs - Financial Itemized'} = define() {
 	enable_reserve_accounts();
 	on_change{'itemized_check_other_financial'};
 	enable_other_financial();
+	on_change{'financial_override_check'};
+	check_override_financial();
+};
+
+on_change{'financial_override_check'} = define() {
 	check_override_financial();
 };
 
 function check_override_financial()
 {	
-	check_value = value('balance_of_system_cost_override');
+	check_value = value('financial_override_check');
 	enable('project_contingency_cost_method',check_value!=1);
 	enable('project_contingency_budget_cost',check_value!=1);
 	enable('insurance_during_construction_method',check_value!=1);
