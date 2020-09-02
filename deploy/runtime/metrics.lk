@@ -399,7 +399,7 @@ function MEwave_metrics()
 	metric_row( 'total_device_cost_per_kwh,total_device_cost_per_kw', {'label'='-  Total device cost', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
 	metric_row( 'total_bos_cost_per_kwh,total_bos_cost_per_kw', {'label'='-  Total balance of system cost', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
 	metric_row( 'total_financial_cost_per_kwh,total_financial_cost_per_kw', {'label'='-  Total financial cost', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
-	metric_row( 'total_operations_cost_per_kwh,total_operations_cost_per_kw', {'label'='Total operating cost', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
+	metric_row( 'total_operations_cost_per_kwh,total_operations_cost_per_kw', {'label'='Total operating cost (annual)', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
 
 	metric_table('Table4', {'headers'='LCOE breakdown,Percentage'});
 	metric_row( 'total_installed_cost_lcoe', {'label'='Total installed cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table4' });
@@ -432,7 +432,7 @@ function MEtidal_metrics()
 	metric_row( 'total_device_cost_per_kwh,total_device_cost_per_kw', {'label'='-  Total device cost', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
 	metric_row( 'total_bos_cost_per_kwh,total_bos_cost_per_kw', {'label'='-  Total balance of system cost', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
 	metric_row( 'total_financial_cost_per_kwh,total_financial_cost_per_kw', {'label'='-  Total financial cost', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
-	metric_row( 'total_operations_cost_per_kwh,total_operations_cost_per_kw', {'label'='Total operating cost', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
+	metric_row( 'total_operations_cost_per_kwh,total_operations_cost_per_kw', {'label'='Total operating cost (annual)', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
 
 	metric_table('Table4', {'headers'='LCOE breakdown,Percentage'});
 	metric_row( 'total_installed_cost_lcoe', {'label'='Total installed cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table4' });

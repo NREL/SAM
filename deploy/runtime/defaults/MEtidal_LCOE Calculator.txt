@@ -1,5 +1,5 @@
 1
-635
+636
 accumulators_cost
 1
 1
@@ -3402,6 +3402,12 @@ tidal_resource
 3.2 0 
 3.3 0 
 
+tidal_resource_calc
+1
+1
+1
+1
+0
 tidal_resource_end_velocity
 1
 1

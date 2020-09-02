@@ -1,7 +1,7 @@
 Marine Losses
 604
 827
-18
+19
 GroupBox
 
 1
@@ -800,6 +800,53 @@ Label
 13
 Name
 5
+14
+tidal_resource
+X
+3
+474
+Y
+3
+774
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 13
 wave_add_loss
 X
@@ -1195,7 +1242,7 @@ wave_resource_start_period
 0
 Default
 
-3396
+3397
 equations{"loss_total"} = define() {
 	return ${loss_array_spacing} 
 		+ ${loss_resource_overprediction} 
@@ -1254,7 +1301,7 @@ equations {'$MIMO$ mhk tidal performance calculations'} = define() {
 	
 	obj = ssc_create();
 	tech = technology();
-	if (tech != "MEwave") 
+	if (tech == "MEtidal") 
 	{
 		ssc_var(obj,'tidal_resource', ${tidal_resource});
 		ssc_var(obj,'tidal_power_curve', ${tidal_power_curve});
