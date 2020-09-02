@@ -843,7 +843,7 @@ AlignTop
 2
 1
 
-13
+25
 annual_cumulative_energy_distribution
 3
 2
@@ -1026,8 +1026,176 @@ ME Wave Losses
 1
 5
 Numeric
+tidal_power_end_velocity
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+tidal_power_start_velocity
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+tidal_resource_end_velocity
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+tidal_resource_start_velocity
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+wave_power_end_height
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+wave_power_end_period
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+wave_power_start_height
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+wave_power_start_period
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+wave_resource_end_height
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+wave_resource_end_period
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+wave_resource_start_height
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+wave_resource_start_period
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-2481
+3396
 equations{"loss_total"} = define() {
 	return ${loss_array_spacing} 
 		+ ${loss_resource_overprediction} 
@@ -1068,7 +1236,15 @@ equations{ '$MIMO$ mhk modeled wave performance calculations' } = define() {
 		${annual_energy} = ssc_var( obj, 'annual_energy' );
 		${capacity_factor} = ssc_var( obj, 'capacity_factor' );
 		${annual_energy_distribution} = ssc_var( obj, 'annual_energy_distribution' );
-
+		${wave_resource_start_height} = ssc_var( obj, 'wave_resource_start_height');
+		${wave_resource_start_period} = ssc_var( obj, 'wave_resource_start_period');
+		${wave_resource_end_height} = ssc_var( obj, 'wave_resource_end_height');
+		${wave_resource_end_period} = ssc_var( obj, 'wave_resource_end_period');
+		${wave_power_start_height} = ssc_var( obj, 'wave_power_start_height');
+		${wave_power_start_period} = ssc_var( obj, 'wave_power_start_period');
+		${wave_power_end_height} = ssc_var( obj, 'wave_power_end_height');
+		${wave_power_end_period} = ssc_var( obj, 'wave_power_end_period');
+		
 		ssc_free(obj);
 	}
 	
@@ -1100,6 +1276,11 @@ equations {'$MIMO$ mhk tidal performance calculations'} = define() {
 		${capacity_factor} = ssc_var( obj, 'capacity_factor' );
 		${annual_energy_distribution_tidal} = ssc_var( obj, 'annual_energy_distribution' );
 		${annual_cumulative_energy_distribution} = ssc_var( obj, 'annual_cumulative_energy_distribution' );
+		${tidal_resource_start_velocity} = ssc_var(obj, 'tidal_resource_start_velocity');
+		${tidal_resource_end_velocity} = ssc_var( obj, 'tidal_resource_end_velocity');
+		${tidal_power_start_velocity} = ssc_var( obj, 'tidal_power_start_velocity');
+		${tidal_power_end_velocity} = ssc_var(obj, 'tidal_power_end_velocity');
+		
 		
 		ssc_free(obj);
 	}

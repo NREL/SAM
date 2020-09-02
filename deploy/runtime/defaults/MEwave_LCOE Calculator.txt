@@ -1,5 +1,5 @@
 1
-655
+667
 accumulators_cost
 1
 1
@@ -3470,6 +3470,30 @@ test_num
 1
 1
 0
+tidal_power_end_velocity
+1
+1
+1
+1
+0
+tidal_power_start_velocity
+1
+1
+1
+1
+0
+tidal_resource_end_velocity
+1
+1
+1
+1
+0
+tidal_resource_start_velocity
+1
+1
+1
+1
+0
 topside_cost
 1
 1
@@ -3907,6 +3931,18 @@ wave_device_name
 4
 3
 RM3
+wave_power_end_height
+1
+1
+1
+1
+9.75
+wave_power_end_period
+1
+1
+1
+1
+19.5
 wave_power_matrix
 1
 3
@@ -3934,6 +3970,30 @@ wave_power_matrix
 9.25 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 286 242.1 204.1 0 
 9.75 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 286 267.4 225.6 0 
 
+wave_power_start_height
+1
+1
+1
+1
+0.25
+wave_power_start_period
+1
+1
+1
+1
+4.5
+wave_resource_end_height
+1
+1
+1
+1
+6.75
+wave_resource_end_period
+1
+1
+1
+1
+14.5
 wave_resource_filename
 1
 4
@@ -3966,6 +4026,18 @@ wave_resource_matrix
 9.25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 9.75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 
+wave_resource_start_height
+1
+1
+1
+1
+0.25
+wave_resource_start_period
+1
+1
+1
+1
+7.5
 weather_forecasting_cost
 1
 1
