@@ -4339,7 +4339,7 @@ variable_prime_mover
 0
 Default
 
-8829
+8833
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -4489,12 +4489,12 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	${operations_cost_modeled} = ssc_var( obj, 'operations_cost' );
 	${maintenance_cost_modeled} = ssc_var( obj, 'maintenance_cost' );
 	
-	${total_capital_cost_per_kwh} = ssc_var(obj, 'total_capital_cost_per_kwh');
+	/*${total_capital_cost_per_kwh} = ssc_var(obj, 'total_capital_cost_per_kwh');
 	${total_device_cost_per_kwh} = ssc_var(obj, 'total_device_cost_per_kwh');
 	${total_bos_cost_per_kwh} = ssc_var(obj, 'total_bos_cost_per_kwh');
 	${total_financial_cost_per_kwh} = ssc_var(obj, 'total_financial_cost_per_kwh');
 	${total_operations_cost_per_kwh} = ssc_var(obj, 'total_operations_cost_per_kwh');
-	
+	*/
 	ssc_free(obj);
 };
 

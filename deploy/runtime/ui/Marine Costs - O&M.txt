@@ -492,7 +492,7 @@ total_operations_cost_percent
 0
 Default
 
-2554
+2558
 equations {'total_operating_cost'} = define() {
 	if (${om_cost_override}!=1)
 	{
@@ -544,7 +544,7 @@ equations {'total_operations_cost_percent'} = define() {
 	return ${total_operating_cost}/(${total_installed_cost}+${total_operating_cost});
 };
 
-equations {'total_installed_cost_lcoe'} = define() {
+/*equations {'total_installed_cost_lcoe'} = define() {
 	return (${fixed_charge_rate}*${total_installed_cost}/${annual_energy})/
 	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
 };
@@ -567,7 +567,7 @@ equations {'total_financial_cost_lcoe'} = define() {
 equations {'total_operations_cost_lcoe'} = define(){
 	return (${total_operating_cost}/${annual_energy})/
 	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};
+};*/
 
 
 

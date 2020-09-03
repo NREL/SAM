@@ -1,7 +1,7 @@
 Marine Losses
 604
 827
-19
+20
 GroupBox
 
 1
@@ -800,8 +800,55 @@ Label
 13
 Name
 5
-14
-tidal_resource
+17
+tidal_power_curve
+X
+3
+387
+Y
+3
+774
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+19
+tidal_resource_calc
 X
 3
 474
@@ -890,7 +937,7 @@ AlignTop
 2
 1
 
-25
+26
 annual_cumulative_energy_distribution
 3
 2
@@ -1101,6 +1148,20 @@ tidal_power_start_velocity
 1
 0
 Default
+tidal_resource_calc
+3
+3
+ 
+ 
+ 
+0
+8
+1
+3
+1
+1
+0
+DataMatrix
 tidal_resource_end_velocity
 3
 1
@@ -1242,7 +1303,7 @@ wave_resource_start_period
 0
 Default
 
-3397
+3416
 equations{"loss_total"} = define() {
 	return ${loss_array_spacing} 
 		+ ${loss_resource_overprediction} 
@@ -1251,7 +1312,7 @@ equations{"loss_total"} = define() {
 		+ ${loss_additional};
 };
 
-equations{ '$MIMO$ mhk modeled wave performance calculations' } = define() {
+/*equations{ '$MIMO$ mhk modeled wave performance calculations' } = define() {
 
 	tech = technology();
 	obj = ssc_create();
@@ -1295,16 +1356,18 @@ equations{ '$MIMO$ mhk modeled wave performance calculations' } = define() {
 		ssc_free(obj);
 	}
 	
-};
+};*/
 
-equations {'$MIMO$ mhk tidal performance calculations'} = define() {
+/*equations {'$MIMO$ mhk tidal performance calculations'} = define() {
 	
 	obj = ssc_create();
 	tech = technology();
+	
 	if (tech == "MEtidal") 
 	{
-		ssc_var(obj,'tidal_resource', ${tidal_resource});
 		ssc_var(obj,'tidal_power_curve', ${tidal_power_curve});
+		ssc_var(obj,'tidal_resource', ${tidal_resource_calc});
+		
 		ssc_var(obj,'number_devices', ${number_devices});
 		
 	
@@ -1331,7 +1394,8 @@ equations {'$MIMO$ mhk tidal performance calculations'} = define() {
 		
 		ssc_free(obj);
 	}
-};
+};*/
+
 
 2255
 function check_mhk_losses(widget_name)

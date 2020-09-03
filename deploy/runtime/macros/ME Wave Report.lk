@@ -500,7 +500,7 @@ else
 
 //get project contingency cost type
 
-if (get('project_contingency_method') != 2)
+if (get('project_contingency_cost_method') != 2)
 
 {
     costTypeProjCont = 'user defined';
@@ -530,7 +530,7 @@ else
 
 //get reserve account cost type
 
-if (get('reserve_accounts_method') != 2)
+if (get('reserve_accounts_cost_method') != 2)
 
 {
     costTypeResAcct = 'user defined';

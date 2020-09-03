@@ -256,7 +256,7 @@ Tool Tip
 5
 0
 
-3
+2
 probability_sum
 3
 1
@@ -319,20 +319,6 @@ ME Tidal Resource
 3.3 0 
 
 DataMatrix
-tidal_resource_calc
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 
 184
 equations {'probability_sum'} = define() {
