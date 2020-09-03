@@ -3174,7 +3174,7 @@ itc_fed_percent_maxvalue
 1
 1
 1
-inf
+1e+38
 itc_sta_amount
 1
 1
@@ -3216,7 +3216,7 @@ itc_sta_percent_maxvalue
 1
 1
 1
-inf
+1e+38
 lat
 1
 1

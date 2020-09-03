@@ -3023,7 +3023,7 @@ itc_fed_percent_maxvalue
 1
 1
 1
-1
+1e+38
 itc_sta_amount
 1
 1
@@ -3065,7 +3065,7 @@ itc_sta_percent_maxvalue
 1
 1
 1
-1
+1e+38
 land_area_value
 1
 1
