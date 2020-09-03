@@ -53,6 +53,14 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set inflation_rate: Inflation rate [%]
+	 * options: None
+	 * constraints: MIN=-99
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set system_use_lifetime_output: Lifetime simulation [0/1]
 	 * options: 0=SingleYearRepeated,1=RunEveryYear
 	 * constraints: BOOLEAN
@@ -135,7 +143,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Battery_BatterySystem_batt_cycle_cost_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Battery_BatterySystem_batt_cycle_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_cycle_cost_choice: Use SAM model for cycle costs or input custom [0/1]
@@ -784,8 +792,8 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_gridcharge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4]
-	 * options: If behind the meter: 0=PeakShavingLookAhead,1=PeakShavingLookBehind,2=InputGridTarget,3=InputBatteryPower,4=ManualDispatch, if front of meter: 0=AutomatedLookAhead,1=AutomatedLookBehind,2=AutomatedInputForecast,3=InputBatteryPower,4=ManualDispatch
+	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4/5]
+	 * options: If behind the meter: 0=PeakShavingLookAhead,1=PeakShavingLookBehind,2=InputGridTarget,3=InputBatteryPower,4=ManualDispatch,5=PriceSignalForecast if front of meter: 0=AutomatedLookAhead,1=AutomatedLookBehind,2=AutomatedInputForecast,3=InputBatteryPower,4=ManualDispatch
 	 * constraints: None
 	 * required if: en_batt=1
 	 */
@@ -925,18 +933,66 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_ec_sched_weekday: Energy charge weekday schedule
-	 * options: 12 x 24 matrix
+	 * Set rate_escalation: Annual electricity rate escalation [%/year]
+	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ur_dc_enable: Enable demand charge [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_dc_enable_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_dc_flat_mat: Demand rates (flat) table
+	 * options: None
+	 * constraints: None
+	 * required if: ur_dc_enable=1
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_dc_flat_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_sched_weekday: Demand charge weekday schedule
+	 * options: 12x24
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_dc_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_sched_weekend: Demand charge weekend schedule
+	 * options: 12x24
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_dc_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_tou_mat: Demand rates (TOU) table
+	 * options: None
+	 * constraints: None
+	 * required if: ur_dc_enable=1
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_dc_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_ec_sched_weekday: Energy charge weekday schedule
+	 * options: 12x24
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=0&batt_dispatch_choice=5
 	 */
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set ur_ec_sched_weekend: Energy charge weekend schedule
-	 * options: 12 x 24 matrix
+	 * options: 12x24
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
+	 * required if: en_batt=1&batt_meter_position=0&batt_dispatch_choice=5
 	 */
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -944,25 +1000,81 @@ extern "C"
 	 * Set ur_ec_tou_mat: Energy rates table
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
+	 * required if: en_batt=1&batt_meter_position=0&batt_dispatch_choice=5
 	 */
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ec_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_en_ts_buy_rate: Enable time step buy rates [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_en_ts_buy_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ur_en_ts_sell_rate: Enable time step sell rates [0/1]
 	 * options: None
 	 * constraints: BOOLEAN
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_en_ts_sell_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_metering_option: Metering options [0=net energy metering,1=net energy metering with $ credits,2=net billing,3=net billing with carryover to next month,4=buy all - sell all]
+	 * options: Net metering monthly excess
+	 * constraints: INTEGER,MIN=0,MAX=4
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_metering_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_credit_month: Month of rollover credits [$/kWh]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=11
+	 * required if: ?=11
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_credit_rollover: Roll over credits to next year [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_nm_credit_rollover_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_yearend_sell_rate: Net metering credit sell rate [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_nm_yearend_sell_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_sell_eq_buy: Set sell rate equal to buy rate [0/1]
+	 * options: Optional override
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_sell_eq_buy_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ur_ts_buy_rate: Time step buy rates [0/1]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=2
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ts_buy_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ur_ts_sell_rate: Time step sell rates [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_ts_sell_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -1132,6 +1244,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Battery_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Battery_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
 
 
@@ -1155,7 +1269,7 @@ extern "C"
 
 	SAM_EXPORT double SAM_Battery_BatterySystem_batt_current_discharge_max_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Battery_BatterySystem_batt_cycle_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Battery_BatterySystem_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_BatterySystem_batt_cycle_cost_choice_nget(SAM_table ptr, SAM_error *err);
 
@@ -1380,15 +1494,41 @@ extern "C"
 
 	SAM_EXPORT double SAM_Battery_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battery_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_dc_enable_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_dc_flat_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_dc_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_dc_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_dc_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ec_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_en_ts_buy_rate_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_metering_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_nm_credit_rollover_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_nm_yearend_sell_rate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_sell_eq_buy_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ts_buy_rate_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_ElectricityRates_ur_ts_sell_rate_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

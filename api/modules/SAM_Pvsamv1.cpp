@@ -295,6 +295,12 @@ SAM_EXPORT void SAM_Pvsamv1_Lifetime_en_dc_lifetime_losses_nset(SAM_table ptr, d
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "inflation_rate", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_Lifetime_save_full_lifetime_variables_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "save_full_lifetime_variables", number);
@@ -2551,9 +2557,9 @@ SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_current_discharge_max_nset(SAM_ta
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_cycle_cost_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_cycle_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_cycle_cost", number);
+		ssc_data_set_array(ptr, "batt_cycle_cost", arr, length);
 	});
 }
 
@@ -3037,6 +3043,42 @@ SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_en_electricity_rates_nset(SAM_table
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "rate_escalation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_enable_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_dc_enable", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_flat_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "ur_dc_flat_mat", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "ur_dc_sched_weekday", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "ur_dc_sched_weekend", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "ur_dc_tou_mat", mat, nrows, ncols);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "ur_ec_sched_weekday", mat, nrows, ncols);
@@ -3055,15 +3097,57 @@ SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_tou_mat_mset(SAM_table ptr, d
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_en_ts_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_en_ts_buy_rate", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_en_ts_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_en_ts_sell_rate", number);
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_metering_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_metering_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nm_credit_month", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_nm_credit_rollover_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nm_credit_rollover", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_nm_yearend_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nm_yearend_sell_rate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_sell_eq_buy_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_sell_eq_buy", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ts_buy_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ur_ts_buy_rate", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ts_sell_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ur_ts_sell_rate", arr, length);
 	});
 }
 
@@ -3685,6 +3769,17 @@ SAM_EXPORT double SAM_Pvsamv1_Lifetime_en_dc_lifetime_losses_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_dc_lifetime_losses", &result))
 		make_access_error("SAM_Pvsamv1", "en_dc_lifetime_losses");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
+		make_access_error("SAM_Pvsamv1", "inflation_rate");
 	});
 	return result;
 }
@@ -7859,10 +7954,11 @@ SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_current_discharge_max_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_cycle_cost_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Pvsamv1_BatterySystem_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_cycle_cost", &result))
+	result = ssc_data_get_array(ptr, "batt_cycle_cost", length);
+	if (!result)
 		make_access_error("SAM_Pvsamv1", "batt_cycle_cost");
 	});
 	return result;
@@ -8778,6 +8874,77 @@ SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_en_electricity_rates_nget(SAM_tab
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rate_escalation", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "rate_escalation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_dc_enable_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_dc_enable", &result))
+		make_access_error("SAM_Pvsamv1", "ur_dc_enable");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_dc_flat_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "ur_dc_flat_mat", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ur_dc_flat_mat");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_dc_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "ur_dc_sched_weekday", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ur_dc_sched_weekday");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_dc_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "ur_dc_sched_weekend", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ur_dc_sched_weekend");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_dc_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "ur_dc_tou_mat", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ur_dc_tou_mat");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -8814,11 +8981,77 @@ SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ec_tou_mat_mget(SAM_table ptr
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_en_ts_buy_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_en_ts_buy_rate", &result))
+		make_access_error("SAM_Pvsamv1", "ur_en_ts_buy_rate");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_en_ts_sell_rate", &result))
 		make_access_error("SAM_Pvsamv1", "ur_en_ts_sell_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_metering_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_metering_option", &result))
+		make_access_error("SAM_Pvsamv1", "ur_metering_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nm_credit_month", &result))
+		make_access_error("SAM_Pvsamv1", "ur_nm_credit_month");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_nm_credit_rollover_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nm_credit_rollover", &result))
+		make_access_error("SAM_Pvsamv1", "ur_nm_credit_rollover");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_nm_yearend_sell_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nm_yearend_sell_rate", &result))
+		make_access_error("SAM_Pvsamv1", "ur_nm_yearend_sell_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_sell_eq_buy_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_sell_eq_buy", &result))
+		make_access_error("SAM_Pvsamv1", "ur_sell_eq_buy");
 	});
 	return result;
 }
@@ -8831,6 +9064,18 @@ SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ts_buy_rate_aget(SAM_table pt
 	result = ssc_data_get_array(ptr, "ur_ts_buy_rate", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "ur_ts_buy_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ts_sell_rate_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ur_ts_sell_rate", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ur_ts_sell_rate");
 	});
 	return result;
 }
