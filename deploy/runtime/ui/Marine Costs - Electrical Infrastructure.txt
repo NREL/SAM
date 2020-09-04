@@ -2366,7 +2366,7 @@ Tool Tip
 Caption
 5
 558
-To input electrical infrastructure costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled electrical infrastructure costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized electrical infrastructure costs based on the level structure shown below, select "Enter in Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the User input display.  
+To input electrical infrastructure costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled electrical infrastructure costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized electrical infrastructure costs based on the level structure shown below, select "Enter as Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the User input display.  
 TextColour
 4
 0
