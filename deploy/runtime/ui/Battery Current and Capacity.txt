@@ -1855,7 +1855,7 @@ Battery Current and Capacity
 2
 Default
 
-9008
+9914
 equations{ '$MIMO$ batt_bank_computed' } = define() {
 
 	choice = ${batt_size_choice};
@@ -2071,12 +2071,21 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 			{
 				batt_bank_power_discharge_ac = p_discharge;
 				batt_bank_power_charge_ac = p_charge;
+				batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (${batt_ac_dc_efficiency}*0.01);
+				batt_bank_power_charge_dc = batt_bank_power_charge_ac * (${batt_dc_ac_efficiency}*0.01);
+				${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;
+				${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;
 			}
 			else // Bank power units in DC kW
 			{
 				batt_bank_power_discharge_ac = p_discharge * (${batt_dc_ac_efficiency}*0.01);
 				batt_bank_power_charge_ac =  p_charge / (${batt_dc_ac_efficiency}*0.01);
+				//batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (inv_eff*0.01);
+				//batt_bank_power_charge_dc = batt_bank_power_charge_ac * (inv_eff*0.01);
+				//${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;
+				//${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;
 			}
+			
 		}
 		else // DC-connected
 		{
@@ -2084,6 +2093,10 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 			{
 				batt_bank_power_discharge_ac = p_discharge;
 				batt_bank_power_charge_ac = p_charge;
+				batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (inv_eff);
+				batt_bank_power_charge_dc = batt_bank_power_charge_ac * (inv_eff);
+				${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;
+				${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;
 			}
 			else // Bank power units in DC kW
 			{
