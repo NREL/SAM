@@ -11,13 +11,13 @@ Name
 0
 X
 3
-204
+177
 Y
 3
 156
 Width
 3
-117
+144
 Height
 3
 24
@@ -299,13 +299,13 @@ Name
 Gearbox
 X
 3
-267
+255
 Y
 3
 486
 Width
 3
-54
+66
 Height
 3
 24
@@ -866,7 +866,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1471,7 +1472,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1659,7 +1661,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1973,7 +1976,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -2553,13 +2557,13 @@ Name
 object 713
 X
 3
-327
+252
 Y
 3
 246
 Width
 3
-96
+171
 Height
 3
 24
@@ -2985,13 +2989,13 @@ Name
 object 729
 X
 3
-330
+285
 Y
 3
 306
 Width
 3
-93
+138
 Height
 3
 24
@@ -3033,13 +3037,13 @@ Name
 object 73
 X
 3
-285
+198
 Y
 3
 216
 Width
 3
-138
+225
 Height
 3
 24
@@ -3081,13 +3085,13 @@ Name
 object 730
 X
 3
-342
+276
 Y
 3
 276
 Width
 3
-81
+147
 Height
 3
 24
@@ -3993,13 +3997,13 @@ Name
 object 75
 X
 3
-63
+42
 Y
 3
 69
 Width
 3
-96
+117
 Height
 3
 24
@@ -4635,7 +4639,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0

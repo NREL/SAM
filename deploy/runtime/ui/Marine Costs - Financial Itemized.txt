@@ -231,7 +231,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -293,7 +294,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -861,7 +863,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -1929,7 +1932,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
