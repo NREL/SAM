@@ -1,5 +1,5 @@
 1
-174
+184
 array_cable_system_cost
 1
 1
@@ -250,7 +250,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5655880
+5.65588e+06
 eng_and_mgmt_cost_input
 1
 1
@@ -268,7 +268,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-5655880
+5.65588e+06
 export_cable_length
 1
 1
@@ -286,7 +286,7 @@ export_cable_system_cost
 1
 1
 1
-1603450
+1.60345e+06
 export_cable_system_cost_input
 1
 1
@@ -304,7 +304,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-1603450
+1.60345e+06
 file_name
 1
 4
@@ -334,12 +334,18 @@ frequency_sum
 1
 1
 99.89
+in_location
+1
+0
+in_time_frame
+1
+0
 insurance_during_construction_cost
 1
 1
 1
 1
-3645510
+3.64551e+06
 insurance_during_construction_input
 1
 1
@@ -357,7 +363,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3645510
+3.64551e+06
 inter_array_cable_length
 1
 1
@@ -402,6 +408,10 @@ lib_wave_power_matrix
 9.25 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 286 242.1 204.1 0 
 9.75 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 286 267.4 225.6 0 
 
+library_folder_list
+1
+4
+0
 library_or_input_wec
 1
 1
@@ -460,7 +470,7 @@ maintenance_cost_cost
 1
 1
 1
-3658280
+3.65828e+06
 maintenance_cost_input
 1
 1
@@ -478,7 +488,7 @@ maintenance_cost_modeled
 1
 1
 1
-3658280
+3.65828e+06
 marine_energy_tech
 1
 1
@@ -630,7 +640,7 @@ other_elec_infra_cost
 1
 1
 1
-2037670
+2.03767e+06
 other_elec_infra_cost_input
 1
 1
@@ -648,7 +658,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-2037670
+2.03767e+06
 other_infrastructure_cost
 1
 1
@@ -791,7 +801,7 @@ site_access_port_staging_cost
 1
 1
 1
-4010060
+4.01006e+06
 site_access_port_staging_cost_input
 1
 1
@@ -809,7 +819,7 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4010060
+4.01006e+06
 state
 1
 4
@@ -981,6 +991,9 @@ ui_wacc
 1
 1
 0.054439
+use_specific_wave_file
+1
+0
 use_specific_wf_wave
 1
 1
@@ -999,6 +1012,9 @@ user_input_number_rows
 1
 1
 10
+user_specified_wave_file
+1
+0
 user_specified_wf_wave
 1
 4
@@ -1043,11 +1059,27 @@ water_depth
 1
 1
 50
+wave_data_file_name
+1
+4
+9
+<invalid>
+wave_data_file_name_load
+1
+4
+9
+<invalid>
 wave_device_name
 1
 4
 3
 RM3
+wave_download
+1
+0
+wave_library_folder_list
+1
+0
 wave_power_matrix
 1
 3
@@ -1075,6 +1107,9 @@ wave_power_matrix
 9.25 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 286 242.1 204.1 0 
 9.75 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 286 267.4 225.6 0 
 
+wave_resource_file
+1
+0
 wave_resource_filename
 1
 4
