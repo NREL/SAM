@@ -3823,7 +3823,7 @@ TabOrder
 anchors_and_piles_cost
 3
 1
- 
+Anchors and piles costs
 $
 ME Costs 
 0
@@ -3837,7 +3837,7 @@ Default
 ancillary_marine_systems_cost
 3
 1
- 
+ Ancillary marine systems costs
 $ 
 ME Costs  
 0
@@ -3921,7 +3921,7 @@ Default
 connecting_hardware_cost
 3
 1
- 
+Connecting hardware costs 
 $
 ME Costs  
 0
@@ -3935,7 +3935,7 @@ Default
 detailed_cost_choice_ancillary_marine_systems
 3
 1
- 
+Ancillary marine systems detailed cost choice 
 $ 
 ME Costs  
 0
@@ -3949,11 +3949,11 @@ CheckBox
 detailed_cost_choice_outfitting_structure
 3
 1
- 
+Outfitting structure detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -3963,7 +3963,7 @@ CheckBox
 integration_assembly_testing_checkout_cost
 3
 1
- 
+Integration costs 
 $ 
 ME Costs  
 0
@@ -4019,7 +4019,7 @@ Default
 messenger_lines_and_buoys_cost
 3
 1
- 
+Messenger lines and buoys costs 
 $ 
 ME Costs  
 0
@@ -4061,7 +4061,7 @@ Default
 mooring_lines_cost
 3
 1
- 
+Mooring lines costs
 $
 ME Costs 
 0
@@ -4089,7 +4089,7 @@ CheckBox
 other_mooring_cost
 3
 1
- 
+Other mooring costs 
 $ 
 ME Costs  
 0
@@ -4117,7 +4117,7 @@ Default
 outfitting_structure_cost
 3
 1
- 
+Outfitting structure costs 
 $ 
 ME Costs  
 0
@@ -4187,7 +4187,7 @@ Default
 scour_protection_cost
 3
 1
- 
+Scour protection costs 
 $ 
 ME Costs  
 0
@@ -4215,7 +4215,7 @@ Default
 subfoundation_or_bedding_cost
 3
 1
- 
+Sub-foundation costs 
 $ 
 ME Costs  
 0
@@ -4229,7 +4229,7 @@ Default
 transportation_cost
 3
 1
- 
+Transportation (mooring) costs 
 $
 ME Costs 
 0

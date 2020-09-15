@@ -6026,7 +6026,7 @@ Default
 detailed_cost_choice_financing_incentive
 3
 1
- 
+Financing and incentives detailed cost choice 
  
 ME Cost Choice
 0
@@ -6040,11 +6040,11 @@ Default
 detailed_cost_choice_initial_engineering
 3
 1
- 
+Initial engineering detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -6054,11 +6054,11 @@ Default
 detailed_cost_choice_interconnection
 3
 1
- 
+Interconnection and power marketing detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -6068,11 +6068,11 @@ Default
 detailed_cost_choice_permitting_leasing
 3
 1
- 
+Permitting and leasing detailed cost choice 
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -6082,11 +6082,11 @@ Default
 detailed_cost_choice_project_management
 3
 1
- 
+Project managmeent during development detailed cost choice 
  
  
 0
-2
+3
 1
 1
 1
@@ -6096,11 +6096,11 @@ Default
 detailed_cost_choice_site_characterization
 3
 1
- 
+Site characterization detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -6110,11 +6110,11 @@ Default
 detailed_cost_choice_site_selection
 3
 1
- 
+Site selection detailed cost choice
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -6222,7 +6222,7 @@ Default
 financing_and_incentives_cost
 3
 1
- 
+Financing and incentives costs 
 $
 ME Costs
 0
@@ -6292,7 +6292,7 @@ Default
 initial_engineering_cost
 3
 1
- 
+Initial engineering costs 
 $ 
 ME Costs
 0
@@ -6334,7 +6334,7 @@ Default
 interconnection_and_power_marketing_cost
 3
 1
- 
+Interconnection costs
 $ 
 ME Costs
 0
@@ -6474,7 +6474,7 @@ Default
 other_development_cost
 3
 1
- 
+Other development costs 
 $ 
 ME Costs
 0
@@ -6600,7 +6600,7 @@ Default
 permitting_and_leasing_cost
 3
 1
- 
+Permitting costs 
 $
 ME Costs
 0
@@ -6684,7 +6684,7 @@ Default
 professional_advisory_services_cost
 3
 1
- 
+Professional adivsory services costs 
 $
 ME Costs
 0
@@ -6712,7 +6712,7 @@ Default
 project_management_during_development_cost
 3
 1
- 
+Project management costs 
 $
 ME Costs
 0
@@ -6810,7 +6810,7 @@ Default
 site_characterization_cost
 3
 1
- 
+Site characterization costs
 $ 
 ME Costs 
 0
@@ -6852,7 +6852,7 @@ Default
 site_selection_cost
 3
 1
- 
+Site selection costs 
 $
 ME Costs
 0

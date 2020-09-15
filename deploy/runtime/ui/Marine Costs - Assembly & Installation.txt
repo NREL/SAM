@@ -716,7 +716,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -749,7 +749,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -782,7 +782,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -1740,7 +1740,7 @@ Name
 object 731
 X
 3
-111
+108
 Y
 3
 777
@@ -3458,11 +3458,11 @@ Default
 detailed_cost_choice_mec_device
 3
 1
- 
+Marine energy converter device detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -3472,11 +3472,11 @@ CheckBox
 detailed_cost_choice_offshore_infrastructure
 3
 1
- 
+Offshore electrical infrastructure detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -3486,11 +3486,11 @@ CheckBox
 detailed_cost_choice_substructures
 3
 1
- 
+Substructures and foundations detailed cost choice 
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -3528,7 +3528,7 @@ Default
 marine_energy_converter_device_cost
 3
 1
- 
+Marine energy converter device costs 
 $
 ME Costs
 0
@@ -3598,7 +3598,7 @@ Default
 offshore_electrical_infrastructure_cost
 3
 1
- 
+Offshore electrical infrastructure costs 
 $ 
 ME Costs
 0
@@ -3654,7 +3654,7 @@ Default
 offshore_logistical_infrastructure_assem_install_cost
 3
 1
- 
+Offshore logistical infrastructure costs 
 $ 
 ME Costs
 0
@@ -3696,7 +3696,7 @@ Default
 other_assem_install_cost
 3
 1
- 
+Other assembly and install costs 
 $ 
 ME Costs
 0
@@ -3836,11 +3836,11 @@ Default
 substructures_and_foundations_cost
 3
 1
- 
- 
+Substructures and foundations costs 
+$ 
  
 0
-2
+3
 1
 1
 1

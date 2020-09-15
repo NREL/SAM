@@ -1785,7 +1785,7 @@ Type a tip here or define in runtime/help/tooltips.json
 dedicated_om_vessel_cost
 3
 1
- 
+Dedicated O&M vessel costs 
 $ 
 ME Costs
 0
@@ -1813,7 +1813,7 @@ Default
 offshore_accomodations_other_infras_cost
 3
 1
- 
+Offshore accomodations costs 
 $ 
 ME Costs
 0
@@ -1827,7 +1827,7 @@ Default
 offshore_logistical_infrastructure_other_infras_cost
 3
 1
- 
+Offshore logistrical infrastructure costs 
 $
 ME Costs
 0
@@ -1841,7 +1841,7 @@ Default
 om_equipment_purchases_cost
 3
 1
- 
+O&M equipment purchases costs 
 $ 
 ME Costs
 0
@@ -1855,7 +1855,7 @@ Default
 onshore_om_facilities_cost
 3
 1
- 
+Onshore O&M facilities costs 
 $ 
 ME Costs
 0
@@ -1897,7 +1897,7 @@ Default
 other_infrastructure_transportation_other_infras_cost
 3
 1
- 
+Other infrastructure transportation costs 
 $ 
 ME Costs
 0
@@ -1911,7 +1911,7 @@ Default
 other_other_infras_cost
 3
 1
- 
+Other (other infrastructure) costs 
 $
 ME Costs
 0

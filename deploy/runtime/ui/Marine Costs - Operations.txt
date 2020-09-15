@@ -3969,7 +3969,7 @@ TabOrder
 annual_leases_fees_cost
 3
 1
- 
+Annual leases and business costs 
 $ 
 ME Costs
 0
@@ -4025,11 +4025,11 @@ Default
 detailed_cost_choice_annual_leases
 3
 1
- 
+Annual leases and fees detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -4039,11 +4039,11 @@ CheckBox
 detailed_cost_choice_env_health_safety
 3
 1
- 
+Environmental, health, and safety monitoring detailed cost choice 
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -4053,11 +4053,11 @@ Choice
 detailed_cost_choice_gen_admin
 3
 1
- 
+Operations, management, and general admin. detailed cost choice
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -4067,7 +4067,7 @@ CheckBox
 environmental_health_and_safety_monitoring_cost
 3
 1
- 
+Health and safety monitoring costs
 $
 ME Costs
 0
@@ -4165,7 +4165,7 @@ Default
 insurance_operations_cost
 3
 1
- 
+Insurance (operations) cost 
 $ 
 ME Costs
 0
@@ -4291,8 +4291,8 @@ Default
 operations_cost_input
 3
 1
- 
-$ 
+Operations cost input 
+$, $/kW 
 ME Costs
 0
 3
@@ -4305,11 +4305,11 @@ Default
 operations_cost_method
 3
 1
- 
+Operations cost method 
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -4333,7 +4333,7 @@ Default
 operations_management_general_administration_cost
 3
 1
- 
+Operations, management, and general admin costs 
 $ 
 ME Costs
 0
@@ -4431,7 +4431,7 @@ Default
 other_operations_cost
 3
 1
- 
+Other operations costs 
 $
 ME Costs
 0

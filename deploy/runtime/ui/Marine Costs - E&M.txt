@@ -427,7 +427,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -460,7 +460,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -2685,7 +2685,7 @@ AlignTop
 construction_management_cost
 3
 1
- 
+Construction management costs
 $ 
 ME Costs
 0
@@ -2727,11 +2727,11 @@ Default
 detailed_cost_choice_construction_management
 3
 1
- 
+Construction management detailed cost choice
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -2741,11 +2741,11 @@ CheckBox
 detailed_cost_choice_health_safety
 3
 1
- 
+Health, safety, and environmental monitoring detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -2755,7 +2755,7 @@ CheckBox
 detailed_design_and_construction_eng_cost
 3
 1
- 
+Detailed design costs 
 $
 ME Costs
 0
@@ -2839,7 +2839,7 @@ Default
 health_safety_and_environmental_monitoring_cost
 3
 1
- 
+Health and safety costs 
 $
 ME Costs
 0
@@ -2923,7 +2923,7 @@ Default
 other_eng_cost
 3
 1
- 
+Other E&M costs 
 $ 
 ME Costs
 0
@@ -2965,7 +2965,7 @@ Default
 procurement_management_cost
 3
 1
- 
+Procurement management costs 
 $ 
 ME Costs
 0
@@ -3007,7 +3007,7 @@ Default
 project_certification_cost
 3
 1
- 
+Project certification costs
 $
 ME Costs
 0

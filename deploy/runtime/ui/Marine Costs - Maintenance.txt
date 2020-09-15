@@ -2432,11 +2432,11 @@ Default
 detailed_cost_choice_scheduled_maintenance
 3
 1
- 
+Scheduled maintenance detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -2446,11 +2446,11 @@ CheckBox
 detailed_cost_choice_unscheduled_maintenance
 3
 1
- 
+Unscheduled maintenance detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -2518,7 +2518,7 @@ Default
 long_term_service_agreement_cost
 3
 1
- 
+Long-term service agreement costs 
 $
 ME Costs
 0
@@ -2546,8 +2546,8 @@ Default
 maintenance_cost_input
 3
 1
- 
-$
+Maintenance cost input
+$, $/kW
 ME Costs
 0
 3
@@ -2560,11 +2560,11 @@ Default
 maintenance_cost_method
 3
 1
- 
+Maintenance cost method 
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -2655,7 +2655,7 @@ onshore_electric_infrastructure_unscheduled_cost
 other_maintenance_cost
 3
 1
- 
+Other maintenance costs
 $ 
 ME Costs 
 0
@@ -2730,7 +2730,7 @@ Default
 scheduled_maintenance_cost
 3
 1
- 
+Scheduled maintenance costs 
 $ 
 ME Costs
 0
@@ -2830,7 +2830,7 @@ Default
 unscheduled_maintenance_cost
 3
 1
- 
+Unshceduled maintenance costs 
 $ 
 ME Costs
 0

@@ -304,7 +304,7 @@ Default
 debt_service_reserve_account_cost
 3
 1
- 
+Debt service reserve account costs
 $ 
 ME Costs
 0
@@ -318,7 +318,7 @@ Default
 decommissioning_reserve_account_cost
 3
 1
- 
+Decommissioning reserve account costs 
 $
 ME Costs
 0
@@ -402,11 +402,11 @@ Default
 insurance_during_construction_cost_input
 3
 1
- 
- 
- 
+Insurance during construction cost input 
+$, $/kW 
+ME Costs 
 0
-2
+3
 1
 1
 1
@@ -416,7 +416,7 @@ Default
 insurance_during_construction_method
 3
 1
- 
+Insurance during construction cost method 
  
 ME Cost Choice
 0
@@ -486,7 +486,7 @@ Default
 maintenance_reserve_account_cost
 3
 1
- 
+Maintenance reserve account costs 
 $ 
 ME Costs
 0
@@ -514,8 +514,8 @@ Default
 other_financial_cost_input
 3
 1
- 
-$ 
+Other financial cost input 
+$, $/kW 
 ME Costs
 0
 3
@@ -528,7 +528,7 @@ Default
 other_financial_cost_method
 3
 1
- 
+Other financial cost method 
  
 ME Cost Choice 
 0
@@ -556,7 +556,7 @@ Default
 other_reserve_account_cost
 3
 1
- 
+Other reserve account costs 
  
  
 0
@@ -584,8 +584,8 @@ Default
 project_contingency_cost_input
 3
 1
- 
-$ 
+Project contingency cost input 
+$, $/kW 
 ME Costs
 0
 3
@@ -598,7 +598,7 @@ Default
 project_contingency_cost_method
 3
 1
- 
+Project contingency cost method 
  
 ME Cost Choice 
 0
@@ -626,8 +626,8 @@ Default
 reserve_accounts_cost_input
 3
 1
- 
-$ 
+Reserve accounts cost input 
+$, $/kW 
 ME Costs
 0
 3
@@ -640,11 +640,11 @@ Default
 reserve_accounts_cost_method
 3
 1
+Reserve accounts cost method 
  
- 
- 
+ME Cost Choice 
 0
-2
+3
 1
 1
 1

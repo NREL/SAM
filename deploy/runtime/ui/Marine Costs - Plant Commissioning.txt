@@ -663,8 +663,8 @@ Default
 plant_commissioning_cost_input
 3
 1
- 
-$
+Plant commissioning cost input 
+$, $/kW
 ME Costs
 0
 3
@@ -677,11 +677,11 @@ Default
 plant_commissioning_cost_method
 3
 1
- 
+Plant commissioning cost method 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1

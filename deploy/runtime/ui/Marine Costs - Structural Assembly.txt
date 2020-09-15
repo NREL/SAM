@@ -441,7 +441,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -474,7 +474,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -3150,7 +3150,7 @@ Numeric
 additional_structural_components_cost
 3
 1
- 
+Structural components cost 
 $
 ME Costs 
 0
@@ -3220,8 +3220,8 @@ Default
 assembly_and_install_cost_input
 3
 1
- 
-$ 
+Assembly and install cost input 
+$, $/kW 
 ME Costs
 0
 3
@@ -3290,7 +3290,7 @@ Numeric
 coatings_cost
 3
 1
- 
+ Coatings (structural assembly) costs
 $
 ME Costs
 0
@@ -3318,11 +3318,11 @@ Default
 detailed_cost_choice_marine_systems
 3
 1
- 
+Marine sytems detailed cost choice
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -3332,11 +3332,11 @@ Default
 detailed_cost_choice_struct_assem
 3
 1
- 
+Prime mover detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -3346,8 +3346,8 @@ Default
 development_cost_input
 3
 1
- 
-$ 
+Development cost input
+$, $/kW
 ME Costs
 0
 3
@@ -3388,8 +3388,8 @@ Default
 eng_and_mgmt_cost_input
 3
 1
- 
-$
+E&M cost input
+$, $/kW
 ME Costs
 0
 3
@@ -3557,7 +3557,7 @@ Default
 marine_systems_cost
 3
 1
- 
+ Marine systems costs
 $
 ME Costs 
 0
@@ -3599,8 +3599,8 @@ Default
 mooring_found_substruc_cost_input
 3
 1
- 
-$ 
+Mooring cost input 
+$, $/kW 
 ME Costs
 0
 3
@@ -3767,7 +3767,7 @@ Default
 other_costs
 3
 1
- 
+Other structural assembly costs 
 $ 
 ME Costs  
 0
@@ -3823,8 +3823,8 @@ Default
 other_infrastructure_cost_input
 3
 1
- 
-$ 
+Other infrastructure cost input 
+$, $/kW
 ME Costs
 0
 3
@@ -3935,8 +3935,8 @@ Default
 power_takeoff_system_cost_input
 3
 1
- 
-$ 
+PTO cost input 
+$, $/kW
 ME Costs 
 0
 3
@@ -3991,7 +3991,7 @@ Numeric
 prime_mover_cost
 3
 1
- 
+ Prime mover costs
 $
 ME Costs
 0
@@ -4117,8 +4117,8 @@ Default
 structural_assembly_cost_input
 3
 1
- 
-$
+ Structural assembly cost input
+$, $/kW
 ME Costs
 0
 3
@@ -4131,11 +4131,11 @@ Default
 structural_assembly_cost_method
 3
 1
- 
+Structural assembly cost method 
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -4285,7 +4285,7 @@ Default
 transport_structure_cost
 3
 1
- 
+Structure transportation costs 
 $
 ME Costs 
 0

@@ -474,7 +474,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -507,7 +507,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -2842,7 +2842,7 @@ Default
 cranage_cost
 3
 1
- 
+Cranage costs 
 $ 
 ME Costs
 0
@@ -2856,11 +2856,11 @@ Default
 detailed_cost_choice_port_fees
 3
 1
- 
+Port fees detailed cost choice 
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -2870,11 +2870,11 @@ Default
 detailed_cost_choice_staging_port
 3
 1
- 
+Staging port detailed cost choice 
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -2954,7 +2954,7 @@ Default
 other_site_access_cost
 3
 1
- 
+Other site access costs 
 $
 ME Costs
 0
@@ -2996,7 +2996,7 @@ Default
 port_fees_cost
 3
 1
- 
+Port fees costs 
 $ 
 ME Costs
 0
@@ -3052,7 +3052,7 @@ Default
 port_improvement_cost
 3
 1
- 
+Port improvement costs 
 $ 
 ME Costs
 0
@@ -3108,8 +3108,8 @@ Default
 site_access_port_staging_cost_input
 3
 1
- 
-$ 
+Site access cost input 
+$, $/kW
 ME Costs
 0
 3
@@ -3122,11 +3122,11 @@ Default
 site_access_port_staging_cost_method
 3
 1
- 
+Site access cost method 
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -3150,7 +3150,7 @@ Default
 staging_port_cost
 3
 1
- 
+Staging port costs 
 $
 ME Costs
 0

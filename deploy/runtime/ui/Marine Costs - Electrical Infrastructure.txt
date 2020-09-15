@@ -1042,7 +1042,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -1075,7 +1075,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -1108,7 +1108,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -1141,7 +1141,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -5391,7 +5391,7 @@ Default
 array_cable_system_cost
 3
 1
- 
+Array cable system costs
 $
 ME Costs
 0
@@ -5517,7 +5517,7 @@ Default
 cable_protection_cost
 3
 1
- 
+Cable protection costs 
 $ 
 ME Costs
 0
@@ -5559,11 +5559,11 @@ Default
 detailed_cost_choice_array_cables
 3
 1
- 
+Array cable system detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -5573,11 +5573,11 @@ CheckBox
 detailed_cost_choice_cable_protection
 3
 1
- 
+Cable protection detailed cost choice
  
 ME Cost Choice 
 0
-2
+3
 1
 1
 1
@@ -5587,11 +5587,11 @@ Default
 detailed_cost_choice_export_cables
 3
 1
- 
+Export cable systems detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -5601,11 +5601,11 @@ Default
 detailed_cost_choice_offshore_substation
 3
 1
- 
+Offshore substation detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -5615,11 +5615,11 @@ Default
 detailed_cost_choice_onshore_transmission
 3
 1
- 
+Onshore transmission infrastructure detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -5657,7 +5657,7 @@ Default
 elec_infras_cost_input
 3
 1
- 
+Electrical infrastructure cost input
 $ 
 ME Costs
 0
@@ -5755,7 +5755,7 @@ Default
 export_cable_system_cost
 3
 1
- 
+Export cable system costs
 $ 
 ME Costs
 0
@@ -5881,7 +5881,7 @@ Default
 offshore_substation_cost
 3
 1
- 
+Offshore substation costs 
 $ 
 ME Costs
 0
@@ -5993,7 +5993,7 @@ Default
 onshore_transmission_infrastructure_cost
 3
 1
- 
+Onshore transmission infrastructure costs 
 $
 ME Costs
 0
@@ -6049,7 +6049,7 @@ Default
 other_elec_infra_cost
 3
 1
- 
+Other electrical infrastructure costs
 $ 
 ME Costs
 0

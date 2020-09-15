@@ -1236,7 +1236,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -1269,7 +1269,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -1302,7 +1302,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -1335,7 +1335,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -1368,7 +1368,7 @@ Caption
 Enter detailed costs
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -6257,7 +6257,7 @@ Default
 air_turbine_cost
 3
 1
- 
+Air turbine costs 
 $
 ME Costs 
 0
@@ -6327,7 +6327,7 @@ Default
 coatings_pto_cost
 3
 1
- 
+Coatings (PTO) costs 
 $
 ME Costs 
 0
@@ -6383,11 +6383,11 @@ Default
 detailed_cost_choice_air_turbine
 3
 1
- 
+Air turbine detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -6397,11 +6397,11 @@ Default
 detailed_cost_choice_electrical_generator
 3
 1
- 
+Electrical generator detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -6411,11 +6411,11 @@ Default
 detailed_cost_choice_gearbox
 3
 1
- 
+Gearbox detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -6425,11 +6425,11 @@ Default
 detailed_cost_choice_hydraulic_drivetrain
 3
 1
- 
+Hydraulic drivetrain detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -6439,11 +6439,11 @@ Default
 detailed_cost_choice_power_electronics
 3
 1
- 
+Power electronics detailed cost choice 
  
 ME Cost Choice
 0
-2
+3
 1
 1
 1
@@ -6453,7 +6453,7 @@ Default
 electrical_generator_cost
 3
 1
- 
+Electrical generator costs 
 $
 ME Costs 
 0
@@ -6509,7 +6509,7 @@ Default
 gearbox_cost
 3
 1
- 
+Gearbox (PTO) costs 
 $
 ME Costs 
 0
@@ -6593,11 +6593,11 @@ Default
 hydraulic_drivetrain_cost
 3
 1
- 
- 
+ Hydraulic drivetrain costs
+$
 ME Costs 
 0
-2
+3
 1
 1
 1
@@ -6803,7 +6803,7 @@ Default
 other_pto_cost
 3
 1
- 
+Other PTO costs 
 $
 ME Costs 
 0
@@ -6873,7 +6873,7 @@ Default
 power_electronics_cost
 3
 1
- 
+Power electronics costs 
 $
 ME Costs 
 0
@@ -6915,7 +6915,7 @@ Default
 power_takeoff_enclosure_cost
 3
 1
- 
+ PTO enclosure costs
 $
 ME Costs 
 0
@@ -7097,7 +7097,7 @@ Default
 shortterm_energy_storage_cost
 3
 1
- 
+Short-term energy storage costs 
 $
 ME Costs 
 0
@@ -7167,7 +7167,7 @@ Default
 transport_power_conversion_chain_cost
 3
 1
- 
+Power conversion chain transport costs 
 $
 ME Costs 
 0
