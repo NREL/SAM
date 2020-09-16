@@ -344,7 +344,7 @@ device_costs_total_display
 0
 Default
 
-380
+382
 equations {'device_costs_total'} = define() {
 	if (${device_cost_override}!=1)
 	{
@@ -361,6 +361,8 @@ equations {'device_costs_total'} = define() {
 /*equations {'total_installed_cost'} = define() {
 	return ${device_costs_total};
 };*/
+
+
 
 
 

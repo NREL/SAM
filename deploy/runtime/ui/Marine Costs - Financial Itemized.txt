@@ -540,49 +540,14 @@ BackColour
 TabOrder
 3
 4294967295
-Choice
-
-1
-9
-Name
-5
-36
-insurance_during_construction_method
-X
-3
-204
-Y
-3
-192
-Width
-3
-144
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-3
-Enter in $/kW
-Enter in $
-Use Modeled Value ($)
-Selection
-3
-0
-TabOrder
-3
-4294967295
 Numeric
 
 1
 17
 Name
 5
-37
-insurance_during_construction_modeled
+45
+insurance_during_construction_cost_modeled_ui
 X
 3
 357
@@ -635,6 +600,41 @@ BackColour
 255
 255
 255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+36
+insurance_during_construction_method
+X
+3
+204
+Y
+3
+192
+Width
+3
+144
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+3
+Enter in $/kW
+Enter in $
+Use Modeled Value ($)
+Selection
+3
+0
 TabOrder
 3
 4294967295
@@ -2124,8 +2124,8 @@ Numeric
 17
 Name
 5
-27
-project_contingency_modeled
+35
+project_contingency_cost_modeled_ui
 X
 3
 357
@@ -2348,6 +2348,69 @@ Numeric
 17
 Name
 5
+32
+reserve_accounts_cost_modeled_ui
+X
+3
+357
+Y
+3
+300
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 27
 reserve_accounts_cost_total
 X
@@ -2380,69 +2443,6 @@ Decimals
 Prefix
 5
 0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-24
-reserve_accounts_modeled
-X
-3
-357
-Y
-3
-300
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
 Suffix
 5
 0
@@ -2890,7 +2890,7 @@ AlignTop
 2
 0
 
-1
+4
 financial_override_check
 3
 1
@@ -2905,14 +2905,56 @@ financial_override_check
 1
 0
 Default
+insurance_during_construction_cost_modeled_ui
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+project_contingency_cost_modeled_ui
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+reserve_accounts_cost_modeled_ui
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-2078
+2397
 equations {'project_contingency_budget_cost'} = define() {
 	return ?${project_contingency_cost_method}
 			[
 				${project_contingency_cost_input}*${system_capacity},
 				${project_contingency_cost_input},
-				${project_contingency_modeled}
+				${project_contingency_cost_modeled_ui}
 			];
 };
 
@@ -2930,7 +2972,7 @@ equations {'insurance_during_construction_cost'} = define() {
 			[
 				${insurance_during_construction_cost_input}*${system_capacity},
 				${insurance_during_construction_cost_input},
-				${insurance_during_construction_modeled}
+				${insurance_during_construction_cost_modeled_ui}
 			];
 };
 
@@ -2953,7 +2995,7 @@ equations {'reserve_accounts_cost'} = define() {
 			[
 				${reserve_accounts_cost_input}*${system_capacity},
 				${reserve_accounts_cost_input},
-				${reserve_accounts_modeled},
+				${reserve_accounts_cost_modeled_ui},
 				${reserve_accounts_cost_total}
 			];
 };
@@ -3006,6 +3048,18 @@ equations {'financial_override_check'} = define() {
 	{
 		return 0;
 	}
+};
+
+equations {'project_contingency_cost_modeled_ui'} = define() {
+	return 0.05*${capex_check};
+};
+
+equations {'insurance_during_construction_cost_modeled_ui'} = define() {
+	return 0.01*${capex_check};
+};
+
+equations {'reserve_accounts_cost_modeled_ui'} = define() {
+	return 0.03*${capex_check};
 };
 
 2960

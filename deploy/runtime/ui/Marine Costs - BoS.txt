@@ -286,7 +286,7 @@ AlignTop
 2
 1
 
-3
+4
 balance_of_system_cost_input
 3
 1
@@ -329,8 +329,22 @@ $
 1
 0
 Default
+capex_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-374
+574
 equations {'balance_of_system_cost_total'} = define() {
 	if (${balance_of_system_cost_override}!=1)
 	{
@@ -343,6 +357,14 @@ equations {'balance_of_system_cost_total'} = define() {
 		return ${balance_of_system_cost_input};
 	}
 };
+
+equations {'capex_check'} = define() {
+	return ${device_costs_total}+${development_cost}+${eng_and_mgmt_cost}+
+		${elec_infras_cost}+${assembly_and_install_cost}+${other_infrastructure_cost};
+};
+
+
+	
 
 3238
 on_load{'Marine Costs - BoS'} = define() {

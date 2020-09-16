@@ -2288,8 +2288,8 @@ Numeric
 17
 Name
 5
-37
-site_access_port_staging_cost_modeled
+40
+site_access_port_staging_cost_modeled_ui
 X
 3
 318
@@ -2824,7 +2824,7 @@ TabOrder
 3
 4294967295
 
-27
+28
 assembly_areas_cost
 3
 1
@@ -3133,6 +3133,20 @@ ME Cost Choice
 1
 2
 Choice
+site_access_port_staging_cost_modeled_ui
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 site_access_port_staging_cost_total
 3
 1
@@ -3204,7 +3218,7 @@ wharfage_fees_cost
 0
 Default
 
-1507
+1614
 equations {'staging_port_cost_total'} = define() {
 	return ${quay_cost}+${laydown_area_cost}+
 		${assembly_areas_cost}+${personnel_facilities_cost}+
@@ -3248,7 +3262,7 @@ equations {'site_access_port_staging_cost'} = define() {
 			[
 				${site_access_port_staging_cost_input}*${system_capacity},
 				${site_access_port_staging_cost_input},
-				${site_access_port_staging_cost_modeled},
+				${site_access_port_staging_cost_modeled_ui},
 				${site_access_port_staging_cost_total}
 			];
 };
@@ -3269,6 +3283,12 @@ equations {'itemized_check_site_access'} = define() {
 		return 2;
 	}
 };
+
+equations {'site_access_port_staging_cost_modeled_ui'} = define() {
+	return 0.011*${capex_check};
+};
+
+
 
 
 3781
