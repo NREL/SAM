@@ -6070,7 +6070,7 @@ detailed_cost_choice_permitting_leasing
 1
 Permitting and leasing detailed cost choice 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -6084,7 +6084,7 @@ detailed_cost_choice_project_management
 1
 Project managmeent during development detailed cost choice 
  
- 
+ME Cost Choice
 0
 3
 1
@@ -6224,7 +6224,7 @@ financing_and_incentives_cost
 1
 Financing and incentives costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -6294,7 +6294,7 @@ initial_engineering_cost
 1
 Initial engineering costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -6336,7 +6336,7 @@ interconnection_and_power_marketing_cost
 1
 Interconnection costs
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -6476,7 +6476,7 @@ other_development_cost
 1
 Other development costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -6602,7 +6602,7 @@ permitting_and_leasing_cost
 1
 Permitting costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -6686,7 +6686,7 @@ professional_advisory_services_cost
 1
 Professional adivsory services costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -6714,7 +6714,7 @@ project_management_during_development_cost
 1
 Project management costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -6812,7 +6812,7 @@ site_characterization_cost
 1
 Site characterization costs
 $ 
-ME Costs 
+ME BoS Costs
 0
 3
 1
@@ -6854,7 +6854,7 @@ site_selection_cost
 1
 Site selection costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1

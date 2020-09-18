@@ -3152,7 +3152,7 @@ additional_structural_components_cost
 1
 Structural components cost 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -3207,7 +3207,7 @@ array_cable_system_cost_modeled
 3
 1
  
- $
+$
  
 0
 9
@@ -3222,7 +3222,7 @@ assembly_and_install_cost_input
 1
 Assembly and install cost input 
 $, $/kW 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3234,9 +3234,9 @@ Default
 assembly_and_install_cost_method
 3
 1
- 
+Assembly and install cost method
 $
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -3249,7 +3249,7 @@ assembly_and_install_cost_modeled
 3
 1
  
- $
+$
  
 0
 9
@@ -3290,9 +3290,9 @@ Numeric
 coatings_cost
 3
 1
- Coatings (structural assembly) costs
+Coatings (structural assembly) costs
 $
-ME Costs
+ME Device Costs
 0
 3
 1
@@ -3320,7 +3320,7 @@ detailed_cost_choice_marine_systems
 1
 Marine sytems detailed cost choice
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -3348,7 +3348,7 @@ development_cost_input
 1
 Development cost input
 $, $/kW
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3360,9 +3360,9 @@ Default
 development_cost_method
 3
 1
+Development cost method
  
- 
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -3375,7 +3375,7 @@ development_cost_modeled
 3
 1
  
- $ 
+$ 
  
 0
 9
@@ -3390,7 +3390,7 @@ eng_and_mgmt_cost_input
 1
 E&M cost input
 $, $/kW
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3402,9 +3402,9 @@ Default
 eng_and_mgmt_cost_method
 3
 1
+E&M cost method
  
- 
-ME Cost Choice 
+ME Cost Choice
 0
 2
 1
@@ -3417,7 +3417,7 @@ eng_and_mgmt_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3459,7 +3459,7 @@ export_cable_system_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3487,7 +3487,7 @@ insurance_during_construction_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3515,7 +3515,7 @@ maintenance_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3530,7 +3530,7 @@ marine_energy_tech
 1
  
  
- ME Costs
+ 
 15
 0=Wave| 1=Tidal
 8
@@ -3557,9 +3557,9 @@ Default
 marine_systems_cost
 3
 1
- Marine systems costs
+Marine systems costs
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -3601,7 +3601,7 @@ mooring_found_substruc_cost_input
 1
 Mooring cost input 
 $, $/kW 
-ME Costs
+ME Device Costs
 0
 3
 1
@@ -3613,9 +3613,9 @@ Default
 mooring_found_substruc_cost_method
 3
 1
+Mooring cost method
  
- 
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -3628,7 +3628,7 @@ mooring_found_substruc_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3670,7 +3670,7 @@ offshore_substation_cost_method
 3
 1
  
- $
+$
  
 0
 1
@@ -3684,7 +3684,7 @@ offshore_substation_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3712,7 +3712,7 @@ onshore_substation_cost_method
 3
 1
  
- $
+$
  
 0
 1
@@ -3726,7 +3726,7 @@ onshore_substation_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3769,7 +3769,7 @@ other_costs
 1
 Other structural assembly costs 
 $ 
-ME Costs  
+ME Device Costs
 0
 3
 1
@@ -3796,7 +3796,7 @@ other_elec_infra_cost_method
 3
 1
  
- $
+$
  
 0
 3
@@ -3810,7 +3810,7 @@ other_elec_infra_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3825,7 +3825,7 @@ other_infrastructure_cost_input
 1
 Other infrastructure cost input 
 $, $/kW
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3837,9 +3837,9 @@ Default
 other_infrastructure_cost_method
 3
 1
- 
+Other infrastructure cost method
 $
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -3852,7 +3852,7 @@ other_infrastructure_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3922,7 +3922,7 @@ plant_commissioning_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3937,7 +3937,7 @@ power_takeoff_system_cost_input
 1
 PTO cost input 
 $, $/kW
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -3949,9 +3949,9 @@ Default
 power_takeoff_system_cost_method
 3
 1
- 
- $
-ME Cost Choice 
+PTO cost method
+$
+ME Cost Choice
 0
 3
 1
@@ -3964,7 +3964,7 @@ power_takeoff_system_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -3991,9 +3991,9 @@ Numeric
 prime_mover_cost
 3
 1
- Prime mover costs
+Prime mover costs
 $
-ME Costs
+ME Device Costs
 0
 3
 1
@@ -4034,7 +4034,7 @@ project_contingency_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -4062,7 +4062,7 @@ site_access_port_staging_cost_modeled
 3
 1
  
-  $
+$
  
 0
 9
@@ -4117,9 +4117,9 @@ Default
 structural_assembly_cost_input
 3
 1
- Structural assembly cost input
+Structural assembly cost input
 $, $/kW
-ME Costs
+ME Device Costs
 0
 3
 1
@@ -4133,7 +4133,7 @@ structural_assembly_cost_method
 1
 Structural assembly cost method 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -4174,7 +4174,7 @@ structural_assembly_cost_total
 3
 1
  
- $
+$
  
 0
 9
@@ -4287,7 +4287,7 @@ transport_structure_cost
 1
 Structure transportation costs 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1

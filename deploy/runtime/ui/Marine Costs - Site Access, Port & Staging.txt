@@ -2844,7 +2844,7 @@ cranage_cost
 1
 Cranage costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -2858,7 +2858,7 @@ detailed_cost_choice_port_fees
 1
 Port fees detailed cost choice 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -2872,7 +2872,7 @@ detailed_cost_choice_staging_port
 1
 Staging port detailed cost choice 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -2956,7 +2956,7 @@ other_site_access_cost
 1
 Other site access costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -2998,7 +2998,7 @@ port_fees_cost
 1
 Port fees costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3054,7 +3054,7 @@ port_improvement_cost
 1
 Port improvement costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3110,7 +3110,7 @@ site_access_port_staging_cost_input
 1
 Site access cost input 
 $, $/kW
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3124,7 +3124,7 @@ site_access_port_staging_cost_method
 1
 Site access cost method 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -3166,7 +3166,7 @@ staging_port_cost
 1
 Staging port costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1

@@ -15,7 +15,7 @@ X
 120
 Y
 3
-168
+159
 Width
 3
 90
@@ -77,7 +77,7 @@ X
 234
 Y
 3
-168
+162
 Width
 3
 180
@@ -110,7 +110,7 @@ X
 120
 Y
 3
-168
+159
 Width
 3
 90
@@ -292,7 +292,7 @@ device_cost_input
 1
 Device costs
 $
-ME Costs
+ME O&M Costs
 0
 2
 1
@@ -304,11 +304,11 @@ Default
 device_cost_override
 3
 1
+Device cost override option
  
- 
-ME Cost Choice 
+ME Cost Choice
 0
-2
+3
 1
 1
 1

@@ -3488,7 +3488,7 @@ detailed_cost_choice_substructures
 1
 Substructures and foundations detailed cost choice 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -3530,7 +3530,7 @@ marine_energy_converter_device_cost
 1
 Marine energy converter device costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3600,7 +3600,7 @@ offshore_electrical_infrastructure_cost
 1
 Offshore electrical infrastructure costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3656,7 +3656,7 @@ offshore_logistical_infrastructure_assem_install_cost
 1
 Offshore logistical infrastructure costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3698,7 +3698,7 @@ other_assem_install_cost
 1
 Other assembly and install costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3810,7 +3810,7 @@ substructure_assem_install_cost_total
 1
  
 $ 
-ME Costs
+ 
 0
 11
 1
@@ -3838,7 +3838,7 @@ substructures_and_foundations_cost
 1
 Substructures and foundations costs 
 $ 
- 
+ME BoS Costs
 0
 3
 1

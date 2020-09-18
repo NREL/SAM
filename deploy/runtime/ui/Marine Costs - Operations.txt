@@ -3971,7 +3971,7 @@ annual_leases_fees_cost
 1
 Annual leases and business costs 
 $ 
-ME Costs
+ME O&M Costs
 0
 3
 1
@@ -4041,7 +4041,7 @@ detailed_cost_choice_env_health_safety
 1
 Environmental, health, and safety monitoring detailed cost choice 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -4069,7 +4069,7 @@ environmental_health_and_safety_monitoring_cost
 1
 Health and safety monitoring costs
 $
-ME Costs
+ME O&M Costs
 0
 3
 1
@@ -4167,7 +4167,7 @@ insurance_operations_cost
 1
 Insurance (operations) cost 
 $ 
-ME Costs
+ME O&M Costs
 0
 3
 1
@@ -4293,7 +4293,7 @@ operations_cost_input
 1
 Operations cost input 
 $, $/kW 
-ME Costs
+ME O&M Costs
 0
 3
 1
@@ -4307,7 +4307,7 @@ operations_cost_method
 1
 Operations cost method 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -4335,7 +4335,7 @@ operations_management_general_administration_cost
 1
 Operations, management, and general admin costs 
 $ 
-ME Costs
+ME O&M Costs
 0
 3
 1
@@ -4433,7 +4433,7 @@ other_operations_cost
 1
 Other operations costs 
 $
-ME Costs
+ME O&M Costs
 0
 3
 1

@@ -2687,7 +2687,7 @@ construction_management_cost
 1
 Construction management costs
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -2757,7 +2757,7 @@ detailed_design_and_construction_eng_cost
 1
 Detailed design costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -2841,7 +2841,7 @@ health_safety_and_environmental_monitoring_cost
 1
 Health and safety costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -2925,7 +2925,7 @@ other_eng_cost
 1
 Other E&M costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -2967,7 +2967,7 @@ procurement_management_cost
 1
 Procurement management costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -3009,7 +3009,7 @@ project_certification_cost
 1
 Project certification costs
 $
-ME Costs
+ME BoS Costs
 0
 3
 1

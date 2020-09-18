@@ -5393,7 +5393,7 @@ array_cable_system_cost
 1
 Array cable system costs
 $
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -5519,7 +5519,7 @@ cable_protection_cost
 1
 Cable protection costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -5575,7 +5575,7 @@ detailed_cost_choice_cable_protection
 1
 Cable protection detailed cost choice
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -5659,7 +5659,7 @@ elec_infras_cost_input
 1
 Electrical infrastructure cost input
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -5671,9 +5671,9 @@ Default
 elec_infras_cost_method
 3
 1
+Electrical infrastructure cost method
  
- 
-ME Cost Choice 
+ME Cost Choice
 0
 2
 1
@@ -5757,7 +5757,7 @@ export_cable_system_cost
 1
 Export cable system costs
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -5883,7 +5883,7 @@ offshore_substation_cost
 1
 Offshore substation costs 
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -5995,7 +5995,7 @@ onshore_transmission_infrastructure_cost
 1
 Onshore transmission infrastructure costs 
 $
-ME Costs
+ME BoS Costs
 0
 3
 1
@@ -6051,7 +6051,7 @@ other_elec_infra_cost
 1
 Other electrical infrastructure costs
 $ 
-ME Costs
+ME BoS Costs
 0
 3
 1

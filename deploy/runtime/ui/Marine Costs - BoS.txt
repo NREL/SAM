@@ -292,7 +292,7 @@ balance_of_system_cost_input
 1
 Balance of system costs
 $
-ME Costs
+ME BoS Costs
 0
 2
 1
@@ -304,7 +304,7 @@ Default
 balance_of_system_cost_override
 3
 1
- 
+Balance of system cost override choice
  
 ME Cost Choice
 0

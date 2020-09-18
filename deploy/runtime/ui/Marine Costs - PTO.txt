@@ -6259,7 +6259,7 @@ air_turbine_cost
 1
 Air turbine costs 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -6329,7 +6329,7 @@ coatings_pto_cost
 1
 Coatings (PTO) costs 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -6455,7 +6455,7 @@ electrical_generator_cost
 1
 Electrical generator costs 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -6511,7 +6511,7 @@ gearbox_cost
 1
 Gearbox (PTO) costs 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -6555,7 +6555,7 @@ gears_cost
  
  
 0
-0
+1
 1
 1
 1
@@ -6565,11 +6565,11 @@ Default
 housing_cost
 3
 1
- 
- 
- 
+Housing costs
+$
+ME Device Costs
 0
-0
+3
 1
 1
 1
@@ -6579,11 +6579,11 @@ Default
 hub_assembly_cost
 3
 1
- 
- 
- 
+Hub assembly costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6595,7 +6595,7 @@ hydraulic_drivetrain_cost
 1
  Hydraulic drivetrain costs
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -6635,11 +6635,11 @@ Default
 hydraulic_fluid_cost
 3
 1
- 
- 
- 
+Hydraulic fluid costs
+$
+ME Device Costs
 0
-0
+3
 1
 1
 1
@@ -6649,11 +6649,11 @@ Default
 hydraulic_motor_cost
 3
 1
- 
- 
- 
+Hydraulic motor costs
+$
+ME Device Costs
 0
-0
+3
 1
 1
 1
@@ -6663,11 +6663,11 @@ Default
 hydraulic_reservoir_cost
 3
 1
- 
- 
- 
+Hydraulic reservoir costs
+$
+ME Device Costs
 0
-0
+3
 1
 1
 1
@@ -6705,11 +6705,11 @@ Numeric
 lube_system_cost
 3
 1
- 
- 
- 
+Lube system costs
+$
+ME Device Costs
 0
-0
+3
 1
 1
 1
@@ -6805,7 +6805,7 @@ other_pto_cost
 1
 Other PTO costs 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -6875,7 +6875,7 @@ power_electronics_cost
 1
 Power electronics costs 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -6917,7 +6917,7 @@ power_takeoff_enclosure_cost
 1
  PTO enclosure costs
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -7099,7 +7099,7 @@ shortterm_energy_storage_cost
 1
 Short-term energy storage costs 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -7169,7 +7169,7 @@ transport_power_conversion_chain_cost
 1
 Power conversion chain transport costs 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -7195,11 +7195,11 @@ Default
 turbine_bearings_cost
 3
 1
- 
- 
+Turbine bearings cost 
+$ 
  
 0
-0
+3
 1
 1
 1

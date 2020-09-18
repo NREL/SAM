@@ -2520,7 +2520,7 @@ long_term_service_agreement_cost
 1
 Long-term service agreement costs 
 $
-ME Costs
+ME O&M Costs
 0
 3
 1
@@ -2548,7 +2548,7 @@ maintenance_cost_input
 1
 Maintenance cost input
 $, $/kW
-ME Costs
+ME O&M Costs
 0
 3
 1
@@ -2562,7 +2562,7 @@ maintenance_cost_method
 1
 Maintenance cost method 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -2657,7 +2657,7 @@ other_maintenance_cost
 1
 Other maintenance costs
 $ 
-ME Costs 
+ME O&M Costs
 0
 3
 1
@@ -2732,7 +2732,7 @@ scheduled_maintenance_cost
 1
 Scheduled maintenance costs 
 $ 
-ME Costs
+ME O&M Costs
 0
 3
 1
@@ -2832,7 +2832,7 @@ unscheduled_maintenance_cost
 1
 Unshceduled maintenance costs 
 $ 
-ME Costs
+ME O&M Costs
 0
 3
 1

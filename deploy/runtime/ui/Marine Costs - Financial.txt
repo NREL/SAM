@@ -306,7 +306,7 @@ debt_service_reserve_account_cost
 1
 Debt service reserve account costs
 $ 
-ME Costs
+ME Financial Costs
 0
 3
 1
@@ -320,7 +320,7 @@ decommissioning_reserve_account_cost
 1
 Decommissioning reserve account costs 
 $
-ME Costs
+ME Financial Costs
 0
 3
 1
@@ -332,7 +332,7 @@ Default
 detailed_cost_choice_reserve_accounts
 3
 1
- 
+Reserve accounts detailed cost choice
  
 ME Cost Choice
 0
@@ -346,9 +346,9 @@ CheckBox
 financial_cost_input
 3
 1
- Financial costs
+Financial costs
 $
-ME Costs 
+ME Financial Costs
 0
 2
 1
@@ -360,7 +360,7 @@ Default
 financial_cost_override
 3
 1
- 
+Financial cost override option
  
 ME Cost Choice
 0
@@ -404,7 +404,7 @@ insurance_during_construction_cost_input
 1
 Insurance during construction cost input 
 $, $/kW 
-ME Costs 
+ME Financial Costs
 0
 3
 1
@@ -488,7 +488,7 @@ maintenance_reserve_account_cost
 1
 Maintenance reserve account costs 
 $ 
-ME Costs
+ME Financial Costs
 0
 3
 1
@@ -516,7 +516,7 @@ other_financial_cost_input
 1
 Other financial cost input 
 $, $/kW 
-ME Costs
+ME Financial Costs
 0
 3
 1
@@ -530,7 +530,7 @@ other_financial_cost_method
 1
 Other financial cost method 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -586,7 +586,7 @@ project_contingency_cost_input
 1
 Project contingency cost input 
 $, $/kW 
-ME Costs
+ME Financial Costs
 0
 3
 1
@@ -600,7 +600,7 @@ project_contingency_cost_method
 1
 Project contingency cost method 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1
@@ -628,7 +628,7 @@ reserve_accounts_cost_input
 1
 Reserve accounts cost input 
 $, $/kW 
-ME Costs
+ME Financial Costs
 0
 3
 1
@@ -642,7 +642,7 @@ reserve_accounts_cost_method
 1
 Reserve accounts cost method 
  
-ME Cost Choice 
+ME Cost Choice
 0
 3
 1

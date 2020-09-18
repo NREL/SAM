@@ -3825,7 +3825,7 @@ anchors_and_piles_cost
 1
 Anchors and piles costs
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -3839,7 +3839,7 @@ ancillary_marine_systems_cost
 1
  Ancillary marine systems costs
 $ 
-ME Costs  
+ME Device Costs
 0
 3
 1
@@ -3923,7 +3923,7 @@ connecting_hardware_cost
 1
 Connecting hardware costs 
 $
-ME Costs  
+ME Device Costs
 0
 3
 1
@@ -3937,7 +3937,7 @@ detailed_cost_choice_ancillary_marine_systems
 1
 Ancillary marine systems detailed cost choice 
 $ 
-ME Costs  
+ME Device Costs
 0
 3
 1
@@ -3965,7 +3965,7 @@ integration_assembly_testing_checkout_cost
 1
 Integration costs 
 $ 
-ME Costs  
+ME Device Costs
 0
 3
 1
@@ -4021,7 +4021,7 @@ messenger_lines_and_buoys_cost
 1
 Messenger lines and buoys costs 
 $ 
-ME Costs  
+ME Device Costs
 0
 3
 1
@@ -4063,7 +4063,7 @@ mooring_lines_cost
 1
 Mooring lines costs
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
@@ -4091,7 +4091,7 @@ other_mooring_cost
 1
 Other mooring costs 
 $ 
-ME Costs  
+ME Device Costs
 0
 3
 1
@@ -4119,7 +4119,7 @@ outfitting_structure_cost
 1
 Outfitting structure costs 
 $ 
-ME Costs  
+ME Device Costs
 0
 3
 1
@@ -4189,7 +4189,7 @@ scour_protection_cost
 1
 Scour protection costs 
 $ 
-ME Costs  
+ME Device Costs
 0
 3
 1
@@ -4217,7 +4217,7 @@ subfoundation_or_bedding_cost
 1
 Sub-foundation costs 
 $ 
-ME Costs  
+ME Device Costs
 0
 3
 1
@@ -4231,7 +4231,7 @@ transportation_cost
 1
 Transportation (mooring) costs 
 $
-ME Costs 
+ME Device Costs
 0
 3
 1
