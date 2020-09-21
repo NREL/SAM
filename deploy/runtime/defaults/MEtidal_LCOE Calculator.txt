@@ -1,5 +1,5 @@
 1
-636
+639
 accumulators_cost
 1
 1
@@ -424,6 +424,12 @@ capacity_factor
 1
 1
 23.7229
+capex_check
+1
+1
+1
+1
+402806240
 capital_cost
 1
 1
@@ -2581,6 +2587,12 @@ plant_commissioning_cost_modeled
 1
 1
 6444900
+plant_commissioning_cost_modeled_ui
+1
+1
+1
+1
+6444900
 plant_commissioning_shown
 1
 1
@@ -3081,7 +3093,7 @@ site_access_port_staging_cost
 1
 1
 1
-4430870
+4.43087e+06
 site_access_port_staging_cost_input
 1
 1
@@ -3095,6 +3107,12 @@ site_access_port_staging_cost_method
 1
 2
 site_access_port_staging_cost_modeled
+1
+1
+1
+1
+4.43087e+06
+site_access_port_staging_cost_modeled_ui
 1
 1
 1

@@ -116,7 +116,7 @@ autographs{ 'MEtidal' } = define()
 {
 	min_vel = output('tidal_min_velocity');
 	max_vel = output('tidal_max_velocity');
-	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'Velocity  (1e-1 m/s)', 'Annual Energy (kWh)', -1, true, false, 'bottom', 0, min_vel, max_vel );
+	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'Velocity  (1e-1 m/s)', 'Annual Energy (kWh)', -1, true, false, 'bottom', 0, [0], [3.3] );
 	agraph( 'annual_cumulative_energy_distribution', 'Annual Cumulative Energy Production', 'Velocity 1e-1 (m/s)', 'Annual Energy (kWh)', -1, true, true,'bottom',0, min_vel, max_vel);
 	//agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_operations_cost_lcoe','LCOE Contribution','','',-1,true, false, 'bottom', 5);
 	agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_om_cost_lcoe','LCOE Contribution','','',-1,true, false, 'bottom', 5);
