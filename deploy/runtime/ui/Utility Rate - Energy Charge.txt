@@ -38,8 +38,8 @@ Label
 13
 Name
 5
-6
-Label6
+9
+lbl_wkday
 X
 3
 789
@@ -86,8 +86,8 @@ Label
 13
 Name
 5
-7
-Label61
+9
+lbl_wkend
 X
 3
 789
@@ -376,27 +376,61 @@ Electricity Rates - Energy Charge Rates
 DataMatrix
 
 0
-416
-on_load{"Utility Rate - Energy Charge"} = define(){
-	ur_ec_sell_rates(); // refresh when switching pages
-};	
-function ur_ec_sell_rates()
+1198
+on_load{'Utility Rate - Energy Charge'} = define(){
+ set_ec_schedule_inputs_copy();
+};
+
+// copy of function from Utility Rate - Enable form
+function set_ec_schedule_inputs_copy()
 {	
-	eme = value("ur_metering_option");
-	if ( eme==0)
+	eme = value('ur_metering_option');
+	en_ts_buy = value('ur_en_ts_buy_rate');
+	en_ts_sell = value('ur_en_ts_sell_rate');
+	if (eme==0)
 	{
-		property("ur_ec_tou_mat","HideColumn",5);
+		property('ur_ec_tou_mat','ShowColumn',4);
+		property('ur_ec_tou_mat','HideColumn',5);
+	}
+	elseif (eme==1)
+	{
+		property('ur_ec_tou_mat','ShowColumn',4);
+		property('ur_ec_tou_mat','ShowColumn',5);
 	}
 	else
 	{
-		en = value("ur_en_ts_sell_rate");
-		if (en==1)
+		if (en_ts_buy)
 		{
-			property("ur_ec_tou_mat","HideColumn",5);
+			property('ur_ec_tou_mat','HideColumn',4);
 		}
 		else
 		{
-			property("ur_ec_tou_mat","ShowColumn",5);
+			property('ur_ec_tou_mat','ShowColumn',4);
+		}
+		if (en_ts_sell)
+		{
+			property('ur_ec_tou_mat','HideColumn',5);
+		}
+		else
+		{
+			property('ur_ec_tou_mat','ShowColumn',5);
 		}
 	}
+	if (en_ts_sell && en_ts_buy)
+	{
+		enable( 'ur_ec_tou_mat', false);
+		enable( 'ur_ec_sched_weekday', false);
+		enable( 'ur_ec_sched_weekend', false);
+		enable( 'lbl_wkday', false);
+		enable( 'lbl_wkend', false);
+	}
+	else
+	{
+		enable( 'ur_ec_tou_mat', true);
+		enable( 'ur_ec_sched_weekday', true);
+		enable( 'ur_ec_sched_weekend', true);
+		enable( 'lbl_wkday', true);
+		enable( 'lbl_wkend', true);
+	}	
 }
+	
