@@ -2473,7 +2473,7 @@ itc_fed_percent_maxvalue
 1
 1
 1
-1
+1e+38
 itc_sta_amount
 1
 1
@@ -2515,7 +2515,7 @@ itc_sta_percent_maxvalue
 1
 1
 1
-1
+1e+38
 lib_dispatch_factor1
 1
 1

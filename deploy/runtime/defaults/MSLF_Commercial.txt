@@ -2767,7 +2767,7 @@ itc_fed_percent_maxvalue
 1
 1
 1
-1
+1e+38
 itc_sta_amount
 1
 1
@@ -2809,7 +2809,7 @@ itc_sta_percent_maxvalue
 1
 1
 1
-1
+1e+38
 k_tes_loss_coeffs
 1
 2
