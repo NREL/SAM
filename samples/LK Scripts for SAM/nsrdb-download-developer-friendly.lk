@@ -1,9 +1,10 @@
-/*////////////////////////////////////////////////////////////////////////////////
+/*//////////////////////////////////////////////////////////////////////////////
 
-Given a latitude and longitude for a location in the NREL National Solar 
-Radiation Database (NSRDB), this script generates a CSV file with download URLs
-for all files in all available datasets, and downloads files from the datasets
-you specify.
+Given a latitude and longitude for a location, this script generates a CSV file 
+with a list of all weather files available from the NREL National Solar Radiation 
+Database (NSRDB) API, and downloads the weather files that you request.
+
+See https://developer.nrel.gov/docs/solar/nsrdb/ for API documentation. 
 
 Instructions:
  
@@ -15,11 +16,11 @@ Instructions:
     address to lat/lon pair.)
  
  3. Assign values to year, interval, and version according to the notes in the 
-    comments below. For example, to download all 
-    years from the PSM V3 dataset with 30-minute timesteps
+    comments below. For example, to download all years from the PSM v3 dataset 
+    with 30-minute timesteps:
     year = 'all'
     interval = 30
-    version = 'psmv3'
+    version = 'psm3'
 
 Note: The NSRDB may return a file with an error message instead of weather data
 if you exceed the the download rate limit or if there is a problem with the URL.
@@ -29,16 +30,37 @@ Location and Resource page, and clicking 'Add/remove weather file folders' to
 add the folder containing the file to SAM's list of weather file folders. You
 should then be able to choose the file from the solar resource library.
 
+///////////////
+
+Note About Attributes: To choose data to include in file, add &attributes= 
+to the URL with a list of data. For example the list of available attributes for
+the PSM v3 dataset is listed at 
+https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/.
+
+For SAM photovoltaic and concentrating solar power models, the minimum required 
+attributes are:
+    air_temperature, dew_point, dhi, dni, relative_humidity, surface_albedo, 
+    surface_pressure, wind_speed 
+
+When you do not specify an attribute parameter, the NSRDB returns a default set
+of attributes including SAM's minimum required attributes. 
+
+Available attributes and their names may be different for different datasets,
+so be sure to check documentation.
+
+//////////////
+
 Written in SAM 2018.11.11, December 2018
 Updated December 2019 to use https and add Puerto Rico location for testing
-Tested in SAM 2020.2.29 r2
+Updated September 2020 for new NSRDB datasets
+Tested in SAM 2020.2.29 r3
 
 //////////////////////////////////////////////////////////////////////////////*/
 
 // NREL Developer Network credentials.
-// Get your own key at https://developer.nrel.gov/ or use SAM's built-in key.
-email = ''; 
-key = '<SAMAPIKEY>'; // or replace with your own key
+// Get a key at https://developer.nrel.gov/
+email = 'sam.support@nrel.gov'; 
+key = '<SAMAPIKEY>'; 
 
 // folder to store weather files (script creates subfolder for each location).
 path = homedir() + '/nsrdb_download/';
@@ -57,19 +79,14 @@ pr_lon = -66.1;
 lat = us_lat;
 lon = us_lon;
 
-// nsrdb query to determine what data is available for location
-// https://developer.nrel.gov/docs/solar/nsrdb/nsrdb_data_query/
-// var.outputs: array of tables for each dataset available for the location [{psm dataset},{psmv3 dataset},{mts1 dataset}...]
-// var.outputs[x].availableYears: array ["tmy",2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014]
-// var.outputs[x].availableIntervals: array [30,60]
-// var.outputs[x].links: array of tables [{year,interval,link},{year,interval,link},...]
-// var.outputs[x].name: string version name 'suny-international','psmv3','mts1','mts2'
-
-base_url = 'https://developer.nrel.gov/api/solar/';
-query_url = 'nsrdb_data_query.json?api_key=' + key + '&wkt=POINT(' + to_string(lon) + '+' + to_string(lat) + ')';
+// NSRDB Data Query returns a list of all available datasets for a location
+base_url ='https://developer.nrel.gov/api/nsrdb/v2/solar/';
+query_url = 'nsrdb-data-query?api_key=' + key + '&wkt=POINT(' + to_string(lon) + '+' + to_string(lat) + ')';
 url = base_url + query_url;
 
+// write result to file
 json_str = curl( url );
+write_text_file( path + '/nsrdb_data_query_result_'+to_string(lat)+'_'+to_string(lon)+'.json', json_str );
 var = json_read( json_str );
 
 if ( var.error != null )
@@ -83,7 +100,7 @@ elseif( var.outputs == [] )
 	exit;
 }
 
-// get list of available versions 
+// parse result to create list of available versions 
 if ( #var.outputs > 0 )
 {
 	for( i=0; i<#var.outputs; i++ )
@@ -94,8 +111,7 @@ if ( #var.outputs > 0 )
 
 outln( 'Available versions = ' + availableVersions );
 
-// get download urls for all available versions, intervals, and years, create
-// file names for downloads
+// parse result for list of download urls for all available files
 n = 0;
 for( x=0; x<#availableVersions; x++ )
 {
@@ -120,55 +136,79 @@ outln( 'Number of available files = ' + #wf.url );
 
 // write list of URLs for all available files to CSV
 mkdir( path , { 'make_full' = true });
-fname = path + 'nsrdb_urls_' + lat + '_' + lon + '.csv';
+fname = path + 'nsrdb_available_files_' + lat + '_' + lon + '.csv';
 ok = csvwrite( fname, wf );
 if ( !ok ) { outln( 'Failed to write file list to CSV.' ); }
 else { outln( 'List of URLs written to ' + fname + '.\n'); }
 
-year = '2014'; // 'tmy' or year '2009', '2017', etc. as string. 'all' to download all years
-interval = 60; // 30 or 60 minutes as number (only 60-minute data available for tmy)
-version = 'psmv3'; // string as listed below
-
-/*///////////////
-   'psmv3' (PSM V3)
-   'mts1' (1961-1990 update aka TMY2)
-   'mts2' (1991-2005 update aka TMY3 )
-   'mts3' (1991-2010 update aka TMY3 )
-   'psm' (PSM V2 discontinued Dec 31 2018)
-   'suny-international' (SUNY data for India, Bangladesh, Bhutan, Nepal, Sri Lanka, and parts of Pakistan and Afghanistan)
-   see https://developer.nrel.gov/docs/solar/nsrdb/ for a list of datasets with links to API documentation
-   see https://nsrdb.nrel.gov/current-version for description of U.S. data
-   and https://nsrdb.nrel.gov/international-datasets for a description of international data
-
-Note: to choose data to include in file, add &attributes= to the URL with a 
-list of data. For example the list of available attributes for the PSM 3 
-database is listed at https://developer.nrel.gov/docs/solar/nsrdb/psm3_data_download/
-as: air_temperature, clearsky_dhi, clearsky_dni, clearsky_ghi, cloud_type, 
-    dew_point, dhi, dni, fill_flag, ghi, relative_humidity, solar_zenith_angle, 
-    surface_albedo, surface_pressure, total_precipitable_water, wind_direction, 
-    wind_speed 
-
-When you do not specify an attribute parameter, the NSRDB returns a default set
-of attributes. 
-
-Available attributes and their names are different for the different datasets,
-so mts1 has a different attribute list than psme, for example.
-*///////////////
-
-// download test file to get server error message from test file
+// download test file to get any server error messages and then delete it
 ok = curl( wf.url[0], {'file' = wf.fname[0] } );
 if ( !ok ) { outln( 'Test download failed.' ); }
 else
 {
-	arr = csvread( wf.fname[0] );
-	if ( #arr < 10 )
+	txt = read_text_file( wf.fname[0] );
+	if ( strpos( txt, '{\"' ) > -1 ) 
 	{
-		msgbox( 'Download Error!\n' + 'Message from NSRDB server: \n\n' +  arr + '\n\nExiting script.' ); 
+		json = json_read( txt );
+		outln(json);
+		msgbox('Download Error!\n' + 'Message from NSRDB server: \n\n' + json.errors[0] + '\n\nExiting script.' );
+		exit; 
+	}
+	elseif ( #txt < 500 )
+	{
+		msgbox( 'Download Error!\n' + 'Test file does has less than 500 characters, so does not appear to contain valid weather data.\n\nExiting script.\n\n' ); 
 		remove_file( wf.fname[0] );
 		exit;
 	}
-	else { remove_file( wf.fname[0] ); }
+	remove_file( wf.fname[0] );
 }
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+
+Weather File Download Examples
+
+See csv file written above for list of version, year, interval parameters.
+
+Uncomment parameter assignments below to try downloading different types of files.
+
+*///////////////////////////////////////////////////////////////////////////////
+
+// hourly single year example for PSM v3
+// https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/
+version = 'psm3';
+year = '2014';
+interval = 60;
+
+// 5-minute single year example for PSM v3 - Five Minute Temporal Resolution
+// https://developer.nrel.gov/docs/solar/nsrdb/psm3-5min-download/
+//version = 'psm3-5min';
+//year = '2019';
+//interval = 5;
+
+// tmy example for PSM v3 TMY, most recent TMY
+// https://developer.nrel.gov/docs/solar/nsrdb/psm3-tmy-download/
+//version = 'psm3-tmy';
+//year = 'tmy';
+//interval = 60;
+
+// tmy example for PSM v3 TMY, 1998 - 2016 TMY
+// https://developer.nrel.gov/docs/solar/nsrdb/psm3-tmy-download/
+//version = 'psm3-tmy';
+//year = 'tmy-2016';
+//interval = 60;
+
+// tgy example for PSM v3 TMY, 1998 - 2018 TGY
+// https://developer.nrel.gov/docs/solar/nsrdb/psm3-tmy-download/
+version = 'psm3-tmy';
+year = 'all';
+interval = 60;
+
+// all years example for PSM v3
+// https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/
+//year = 'all';
+//interval = 30;
+//version = 'psm3';
 
 // download requested files
 n=0;
@@ -188,7 +228,7 @@ for( i=0; i<#wf.url; i++ )
 	}
 }
 if ( n == 0 )
-{ outln( 'No files donwloaded. Check that year, interval, and version values are valid.' ); }
+{ outln( 'No files downloaded. Check that year, interval, and version parameter values are valid.' ); }
 else { outln( 'Downloaded ' + n + ' file(s).' ); }
 outln( 'Done.' );
 browse( path );
