@@ -163,10 +163,10 @@ function cf_om_expenses()
     if ( is_batt_tech() )
 	{
 		cfline( 'cf_battery_replacement_cost', 0);
-		// electricity purchases to charge battery not available for all financial models as of 2020.2.29
-		if ( varinfo( 'cf_utility_bill' ) != null )
+		// electricity purchases to charge battery only available for Single Owner as of 2020.2.29
+		if ( fin == 'Single Owner' ) 
 		{
-			cfline( 'cf_utility_bill', 0);
+			cfline('cf_utility_bill', 0 ); 
 		}
 	}
 	if (tech == 'Fuel Cell')
@@ -1141,8 +1141,8 @@ function set_om(xl) {
 	{
 		send_excel( xl, 'batt_replacement_option' );
 		xl_set( xl, output('cf_battery_replacement_cost'), 'cf_battery_replacement_cost' ); 
-		// for single owner, retail purchases to charge battery
-		if ( varinfo( 'cf_utility_bill' ) != null )
+		// retail purchases to charge battery, only for single owner as of 2020.2.29
+		if ( fin == 'Single Owner' )
 		{
 			xl_set( xl, output('cf_utility_bill'), 'cf_utility_bill' ); 
 		}

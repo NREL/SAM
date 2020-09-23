@@ -149,12 +149,12 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 // update from Jay 8/18/15 for aliases interantional and national
 // "title" changed back to "label" and "query"->"categorymembers" changed to "items"
-//	wxString url = "http://dev-api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
+//	wxString url = "https://dev-api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
 
 // Pushed to production update from Jay 10/2/15
-	wxString url = "http://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
-// URDB v5 update from Jay 4/7/17 - remove scope=international 3823 companies US Only above is correct according to documentation at http://dev.openei.org/services/doc/rest/util_cos/?version=3 but only returns 11 companies
-//	wxString url = "http://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key);
+	wxString url = "https://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
+// URDB v5 update from Jay 4/7/17 - remove scope=international 3823 companies US Only above is correct according to documentation at https://dev.openei.org/services/doc/rest/util_cos/?version=3 but only returns 11 companies
+//	wxString url = "https://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key);
 // 4/8/17 - updated and working in 2017.1.17 release and in trunk. International and US rates 3920 utilities
 
 
@@ -198,8 +198,8 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 {
 
 	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
-//	wxString url = "http://developer.nrel.gov/api/utility_rates/v3.json?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn&address=" + zipcode;
-	wxString url = "http://developer.nrel.gov/api/utility_rates/v3.json?api_key=" + wxString(sam_api_key) + "&address=" + zipcode;
+//	wxString url = "https://developer.nrel.gov/api/utility_rates/v3.json?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn&address=" + zipcode;
+	wxString url = "https://developer.nrel.gov/api/utility_rates/v3.json?api_key=" + wxString(sam_api_key) + "&address=" + zipcode;
 
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
@@ -227,7 +227,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	}
 
 	company_id.Replace("|", "%7C%7C"); // urlencode
-	url = "http://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AUtility+Companies%5D%5D%5B%5BEiaUtilityId%3A%3A" + company_id + "%5D%5D&po=%3FEiaUtilityId%0D%0A&eq=yes&p%5Bformat%5D=json";
+	url = "https://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AUtility+Companies%5D%5D%5B%5BEiaUtilityId%3A%3A" + company_id + "%5D%5D&po=%3FEiaUtilityId%0D%0A&eq=yes&p%5Bformat%5D=json";
 
 	json_data = MyGet(url);
 	if (json_data.IsEmpty())
@@ -280,9 +280,9 @@ bool OpenEI::ResolveUtilityName(const wxString &name, wxString *urdb_name, wxStr
 
 	wxString utlnm = name;
 	utlnm.Replace("&", "%26");
-	// production http://dev.openei.org/services/doc/rest/util_rates?version=3
+	// production https://dev.openei.org/services/doc/rest/util_rates?version=3
 
-	wxString url = "http://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AUtility+Companies%5D%5D%5B%5BEiaUtilityId%3A%3A%2B%5D%5D%5B%5B" + utlnm + "%5D%5D&po=%3FEiaUtilityId%0D%0A%0D%0A&p%5Bformat%5D=json";
+	wxString url = "https://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AUtility+Companies%5D%5D%5B%5BEiaUtilityId%3A%3A%2B%5D%5D%5B%5B" + utlnm + "%5D%5D&po=%3FEiaUtilityId%0D%0A%0D%0A&p%5Bformat%5D=json";
 
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
@@ -326,10 +326,10 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	utlnm.Replace("&", "%26");
 
 	// dev server for international rates per Jay email 8/12/13
-//	wxString url = "http://dev-api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
+//	wxString url = "https://dev-api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
 
 	// pushed to production update from Jay 10/2/15
-	wxString url = "http://api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
+	wxString url = "https://api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
 //	wxLogStatus("urdb url=" + url);
 	
 	wxString json_data = MyGet(url);
@@ -380,9 +380,9 @@ int OpenEI::UtilityCompanyRateCount(const wxString &name)
 {
 	// production
 	// rest service going away - update to api.openei.org per
-	// http://en.openei.org/services/doc/rest/util_rates?version=3
-	//	wxString url = "http://en.openei.org/services/rest/utility_rates?version=3&limit=500&detail=minimal&format=json_plain&ratesforutility=" + name;
-	wxString url = "http://api.openei.org/utility_rates?version=3&limit=500&detail=minimal&format=json_plain&ratesforutility=" + name + "&api_key=" + wxString(sam_api_key);
+	// https://en.openei.org/services/doc/rest/util_rates?version=3
+	//	wxString url = "https://en.openei.org/services/rest/utility_rates?version=3&limit=500&detail=minimal&format=json_plain&ratesforutility=" + name;
+	wxString url = "https://api.openei.org/utility_rates?version=3&limit=500&detail=minimal&format=json_plain&ratesforutility=" + name + "&api_key=" + wxString(sam_api_key);
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
 		return 0;
@@ -398,10 +398,10 @@ int OpenEI::UtilityCompanyRateCount(const wxString &name)
 bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url, wxString *err)
 {
 	// international rates
-	//wxString url = "http://dev-api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
+	//wxString url = "https://dev-api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
 
 	// pushed to production update from Jay 10/2/15
-	wxString url = "http://api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
+	wxString url = "https://api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
 
 	if (json_url) *json_url = url;
 
@@ -441,8 +441,8 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Header.DemandComments = json_string(val.Item("demandcomments"));
 	rate.Header.BasicInformationComments = json_string(val.Item("demandcomments"));
 	rate.Header.JSONURL = url;
-//	rate.Header.RateURL = "http://en.openei.org/apps/USURDB/rate/view/" + guid;
-	rate.Header.RateURL = "http://en.openei.org/apps/IURDB/rate/view/" + guid;
+//	rate.Header.RateURL = "https://en.openei.org/apps/USURDB/rate/view/" + guid;
+	rate.Header.RateURL = "https://en.openei.org/apps/IURDB/rate/view/" + guid;
 
 	rate.Header.StartDate = GetDate(json_integer(val.Item("startdate")));
 	rate.Header.EndDate = GetDate(json_integer(val.Item("enddate")));
@@ -800,8 +800,8 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 
 	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY );
 	
-	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "http://en.openei.org/wiki/Utility_Rate_Database" );
-	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "http://en.openei.org/wiki/Utility_Rate_Database");
+	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "https://en.openei.org/wiki/Utility_Rate_Database" );
+	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "https://en.openei.org/wiki/Utility_Rate_Database");
 
 	lblStatus = new wxStaticText(this, ID_lblStatus, "");
 	
@@ -1026,8 +1026,8 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 		txtRateStartDate->SetValue(wxEmptyString);
 		txtRateEndDate->SetValue(wxEmptyString);
 		txtRateGUID->SetValue(wxEmptyString);
-		//		hypOpenEILink->SetURL("http://en.openei.org/wiki/Gateway:Utilities");
-		hypOpenEILink->SetURL("http://en.openei.org/wiki/Utility_Rate_Database");
+		//		hypOpenEILink->SetURL("https://en.openei.org/wiki/Gateway:Utilities");
+		hypOpenEILink->SetURL("https://en.openei.org/wiki/Utility_Rate_Database");
 	}
 	else
 	{
@@ -1074,8 +1074,8 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			*/
 			txtRateDescription->SetValue( desc );
 			
-//			wxString rate_url = "http://en.openei.org/apps/USURDB/rate/view/" + guid;
-			wxString rate_url = "http://en.openei.org/apps/IURDB/rate/view/" + guid;
+//			wxString rate_url = "https://en.openei.org/apps/USURDB/rate/view/" + guid;
+			wxString rate_url = "https://en.openei.org/apps/IURDB/rate/view/" + guid;
 
 			hypOpenEILink->SetURL(rate_url);
 			hypJSONLink->SetURL(json_url);
