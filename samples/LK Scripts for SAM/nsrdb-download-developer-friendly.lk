@@ -157,7 +157,6 @@ else
 	elseif ( #txt < 500 )
 	{
 		msgbox( 'Download Error!\n' + 'Test file does has less than 500 characters, so does not appear to contain valid weather data.\n\nExiting script.\n\n' ); 
-		remove_file( wf.fname[0] );
 		exit;
 	}
 	remove_file( wf.fname[0] );
