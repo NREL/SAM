@@ -8,7 +8,7 @@ function cf_formatting_examples()
 //   type = VARIABLE
 //   digit = 2
 //   scale = 1.0f
-//   coloff = 0
+//   coloff = 0c
 
 	// digit = -1 sets type to HEADER
 	cfline( 'header with shading', -1); // header with shading 
@@ -107,13 +107,13 @@ function cf_revenue()
 	cfline( 'REVENUE', -1);
 	if ( fin == 'Merchant Plant' )
 	{
-		cfline( 'cf_curtailment_value', 0); 
-		cfline( 'cf_capacity_payment', 0); 
 		cfline( 'cf_energy_market_revenue', 0); 
 		cfline( 'cf_ancillary_services_1_revenue', 0); 
 		cfline( 'cf_ancillary_services_2_revenue', 0); 
 		cfline( 'cf_ancillary_services_3_revenue', 0); 
 		cfline( 'cf_ancillary_services_4_revenue', 0); 
+		cfline( 'cf_curtailment_value', 0); 
+		cfline( 'cf_capacity_payment', 0); 
 	}
 	elseif ( fin == "Single Owner" )
 	{
@@ -1311,31 +1311,6 @@ function set_debt_parameters( xl )
 		 
 function set_annual_values( xl )
 {
-
-/*
-	if ( fin == 'Merchant Plant' )
-	{
-		cfline( 'cf_curtailment_value', 0); 
-		cfline( 'cf_capacity_payment', 0); 
-		cfline( 'cf_energy_market_revenue', 0); 
-		cfline( 'cf_ancillary_services_1_revenue', 0); 
-		cfline( 'cf_ancillary_services_2_revenue', 0); 
-		cfline( 'cf_ancillary_services_3_revenue', 0); 
-		cfline( 'cf_ancillary_services_4_revenue', 0); 
-	}
-	elseif ( fin == "Single Owner" )
-	{
-		cfline( 'cf_ppa_price' , -2 );
-		cfline( 'cf_energy_value', 0); 
-		cfline( 'cf_curtailment_value', 0); 
-		cfline( 'cf_capacity_payment', 0); 
-	}
-	else
-	{
-		cfline( 'cf_ppa_price' , -2 );
-		cfline( 'cf_energy_value', 0); 
-	}
-*/
 	//export annual values to minimize rounding discrepancies between SAM and workbook 
 	fin = financing();
 	if ( fin == 'Single Owner' )
@@ -1352,6 +1327,18 @@ function set_annual_values( xl )
 		xl_set( xl, output('cf_energy_net'), 'AnnualEnergy'); 
 		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
 		xl_set( xl, output('cf_energy_value'), 'AnnualPPARevenue'); 
+	}
+	elseif( fin == 'Merchant Plant' )
+	{
+		xl_set( xl, output('cf_energy_net'), 'AnnualEnergy'); 
+		xl_set( xl, output('cf_energy_curtailed'), 'CurtailedEnergy');
+		xl_set( xl, output('cf_energy_market_revenue'), 'AnnualEnergyMarketRevenue');
+		xl_set( xl, output('cf_ancillary_services_1_revenue'), 'AnnualAncillaryService1Revenue'); 
+		xl_set( xl, output('cf_ancillary_services_2_revenue'), 'AnnualAncillaryService2Revenue'); 
+		xl_set( xl, output('cf_ancillary_services_3_revenue'), 'AnnualAncillaryService3Revenue'); 
+		xl_set( xl, output('cf_ancillary_services_4_revenue'), 'AnnualAncillaryService4Revenue'); 
+		xl_set( xl, output('cf_curtailment_value'), 'AnnualCurtailmentRevenue'); 
+		xl_set( xl, output('cf_capacity_payment'), 'AnnualCapacityRevenue');
 	}
 	else
 	{
@@ -1381,6 +1368,33 @@ function set_solution_mode( xl )
 	// indicate whether TOD PPA price multipliers apply
 	if ( is_ppa_price_uniform() ) { xl_set( xl, 'No', 'TODMultipliersApply' );}
 	else { xl_set( xl, 'Yes', 'TODMultipliersApply' );}	 
+}
+
+// as of SAM 2020.2.29 only Single Owner and Merchant Plant have multiple revenue sources
+function set_revenue_sources( xl )
+{
+	fin = financing();
+
+	arr = value('cp_capacity_payment_amount');
+	arr1 = value('cp_capacity_credit_percent');
+	
+	xl_set( xl, ( sum(arr)!=0 && sum(arr1)!=0 ), 'CapacityPayment');
+	
+	if ( fin == 'Single Owner' ) // TO DO add to single_owner.xlsx
+	{
+		arr = value('grid_curtailment_price');
+		xl_set( xl, sum(arr)!=0, 'CurtailmentPayment');
+	}
+	
+	if ( fin == 'Merchant Plant' )
+	{
+		xl_set( xl, value('mp_enable_energy_market_revenue'), 'EnergyMarket' );
+		xl_set( xl, value('mp_enable_ancserv1'), 'AncillaryService1' );
+		xl_set( xl, value('mp_enable_ancserv2'), 'AncillaryService2' );
+		xl_set( xl, value('mp_enable_ancserv3'), 'AncillaryService3' );		
+		xl_set( xl, value('mp_enable_ancserv4'), 'AncillaryService4' );
+	}
+	
 }
 
 function set_equity_flip_structure( xl )
@@ -1448,8 +1462,8 @@ function set_cost_of_financing( xl )
 {
 	fin = financing();
 	send_excel( xl, 'cost_other_financing'); 
-	if ( fin == 'Single Owner' || fin == 'Host Developer') { partner_costs = false; }
-	else { partner_costs = true; }
+	if ( fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' ) { partner_costs = true; }
+	else { partner_costs = false; }
 	if ( partner_costs )
 	{
 		send_excel( xl, 'cost_equity_closing');
@@ -1717,7 +1731,21 @@ cashflow_to_excel{ 'Commercial' } = define()
 
 cashflow_to_excel{ 'Merchant Plant'} = define()
 {
-	msgbox('Send to Excel with equations not yet implemented for Merchant Plant financial model.');
+	xl = create_workbook( 'merchant_plant.xlsx' );
+ 	set_analysis_period();
+	set_debt_parameters( xl );
+	set_annual_values( xl );
+	set_revenue_sources( xl );
+	set_construction_financing( xl );
+	set_incentives(xl);
+	set_om( xl ); 
+	set_fuel( xl ); 
+	set_analysis_parameters( xl );
+	set_cost_of_financing( xl );
+	set_depreciation_detailed ( xl );
+	set_reserves( xl );
+	set_taxes_insurance(xl); 
+	set_system_cost_salvage( xl );
 }; 
 
 cashflow_to_excel{ 'Single Owner' } = define()  
