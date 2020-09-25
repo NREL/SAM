@@ -516,6 +516,23 @@ static void fcall_vuc_message( lk::invoke_t &cxt )
 	}
 }
 
+static void fcall_vuc_retire_tech(lk::invoke_t& cxt)
+{
+	LK_DOC("retire_tech", "Retire technologies", "(string:technology):boolean");
+	if (VersionUpgrade* vuc = static_cast<VersionUpgrade*>(cxt.user_data()))
+	{
+		wxString tech1(cxt.arg(0).as_string());
+		Case* retired_case(vuc->GetCase());
+		vuc->GetName();
+		if (tech1 == "DSPT" || tech1 == "Dish Stirling");
+		{
+			DeleteObject(retired_case);
+		}
+		
+		
+	}
+}
+
 
 VersionUpgrade::VersionUpgrade() 
 	: m_case( 0 )
@@ -543,6 +560,7 @@ lk::fcall_t* VersionUpgrade::invoke_functions()
 		fcall_vuc_config,
 		fcall_vuc_config_update_with_old_values,
 		fcall_vuc_message,
+		fcall_vuc_retire_tech,
 		0 };
 	return (lk::fcall_t*)vec;
 }

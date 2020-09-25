@@ -159,11 +159,13 @@ version_upgrade{'2020.2.29'} = define() {
     //To be included in next full release (version_upgrade{'2020.10.?'})
     if (cfg.tech == 'Dish Stirling')
     {
+		retire_tech(cfg.tech);
 		//The version upgrade script is set up to delete cases with this technology made from a previous release from the project file. This is done in project.cpp
 		message('The Dish Stirling model is not available in SAM xxxx.x.x. The most recent version with the model is SAM 2020.2.29, which you can download from the http://sam.nrel.gov/download/','warning');
     }
     if (cfg.tech == 'DSPT')
     {
+		retire_tech(cfg.tech);
 		//The version upgrade script is set up to delete cases with this technology made from a previous release from the project file. This is done in project.cpp
 		message ('The Direct Steam Power Tower model is not available in SAM xxxx.x.x. The most recent version with the model is SAM 2020.2.29, which you can download from the http://sam.nrel.gov/download/','warning');
 	}
