@@ -625,6 +625,12 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 			for( size_t i=0;i<cases.size();i++ )
 			{
 				Invoke( cases[i], pf.GetCaseName( cases[i] ), cb );
+
+				wxString tech(cases[i]->GetTechnology());
+				if (tech == "DSPT" || tech == "Dish Stirling")
+				{
+					pf.DeleteCase(pf.GetCaseName(cases[i]));
+				}
 				
 				// recalculate equations in each case for each consecutive upgrade
 				// to make sure all variables are in sync

@@ -1528,7 +1528,7 @@ setup_merchant_plant_pages();
 //-----------------------------------------------------
 
 // Direct Steam Power Tower ////////////////////////////////////////////////////////////////////
- //Direct Steam technologies have become outdated and do not have currently have funding support to be updated and thus will be hidden with the next major release
+/* //Direct Steam technologies have become outdated and do not have currently have funding support to be updated and thus will be hidden with the next major release
 function setup_DSPT_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
@@ -1573,7 +1573,7 @@ setmodules( ['tcsdirect_steam', 'grid', 'merchantplant']);
 setup_DSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower Capital Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='pt_system_costs' } );
-setup_merchant_plant_pages();
+setup_merchant_plant_pages();*/
 
 // Molten Salt Linear Fresnel ////////////////////////////////////////////////////////////////////
 function setup_MSLF_pages()
