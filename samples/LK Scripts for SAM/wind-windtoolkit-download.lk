@@ -1,34 +1,42 @@
 ////////////////////////////////////////////////////////////////////////////////
 /*
 
-	This script downloads a wind data file in the SAM SRW format from the NREL
-	WIND Toolkit dataset given a latitude and longitude. It replicates the
-	function of the Download button on the Wind Resource input page in SAM.
+This script downloads a wind data file in the SAM SRW format from the NREL
+WIND Toolkit dataset for a givn latitude and longitude.
+	
+See API documentation atL
+https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-srw-download/
 
-	It requires an API key from the NREL Developer Network at:
-	https://developer.nrel.gov
+It requires an API key from the NREL Developer Network at:
+https://developer.nrel.gov
 
-	Tested in SAM 2020.2.29
+Tested in SAM 2020.2.29 r3
 
 */
 ////////////////////////////////////////////////////////////////////////////////
 
+// Get your API key from https://developer.nrel.gov
+api_key = '';
+api_email = '';
+
 year = '2008'; // available years 2007 - 2012
 lat = '40';
 lon = '-116';
-key = 'abc123'; // replace with key from NREL Developer Network
+height = 120; // available heights 10, 40, 60, 80, 100, 120, 140, 160, 200
 
 // set the .srw file name to store the downloaded data
 path = choose_dir( cwd(), 'Choose Folder to Store SRW File' );
-fname = 'wind_toolkit_' + to_string( year ) + '_' + to_string( lat ) + '_' + to_string ( lon ) + '.srw';
+fname = 'wind_toolkit_' + to_string( year ) + '_' + to_string( lat ) + '_' + to_string ( lon ) + '_' + to_string( height ) + 'm.srw';
 f = path +'/' + fname;
 
 // special NREL Developer API endpoint for SAM
-url = 'http://developer.nrel.gov/api/wind/srw_aggregate_extract?api_key=<APIKEY>&year=<YEAR>&lat=<LAT>&lon=<LON>';
-url = replace(url, '<APIKEY>', key);
+url = 'https://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-srw-download?year=<YEAR>&lat=<LAT>&lon=<LON>&hubheight=<HUBHEIGHT>&api_key=<YOURAPIKEY>&email=<YOUREMAIL>';
 url = replace(url, '<YEAR>', year);
 url = replace(url, '<LAT>', lat);
 url = replace(url, '<LON>', lon);
+url = replace(url, '<HUBHEIGHT>', height); 
+url = replace(url, '<YOURAPIKEY>', api_key);
+url = replace(url, '<YOUREMAIL>', api_key);
 
 // download file
 msg = '';
@@ -43,7 +51,7 @@ if ( ok ) // curl() function returned a file
 		outln( 'Wind data file downloaded to ' + f );
 		browse( path_only( f ) );
 	}
-	else // x is a json table with error message, api key could be invalid
+	else // x is a json table
 	{
 		outln(x);
 	}	

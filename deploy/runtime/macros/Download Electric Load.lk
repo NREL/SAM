@@ -1,10 +1,10 @@
 /*@
   <p>This macro downloads an hourly load file from the
-  <a href="http://en.openei.org/datasets/dataset/commercial-and-residential-hourly-load-profiles-for-all-tmy3-locations-in-the-united-states">
+  <a href="https://en.openei.org/datasets/dataset/commercial-and-residential-hourly-load-profiles-for-all-tmy3-locations-in-the-united-states">
   NREL OpenEI building load database</a> and imports 
   it to the Electric Load input page. The OpenEI load files are a collection of 
   8,760 hourly load profiles for a range of building types for each of the 1,020 
-  U.S. locations in the legacy <a href="http://rredc.nrel.gov/solar/old_data/nsrdb/1991-2005/tmy3/">
+  U.S. locations in the legacy <a href="https://rredc.nrel.gov/solar/old_data/nsrdb/1991-2005/tmy3/">
   NSRDB TMY3 data set</a>. The script identifies the TMY3 location nearest the
   latitude and longitude in your weather file, and downloads the load file for your building
   type for that TMY3 location. If the script cannot identify the latitude and
@@ -24,7 +24,7 @@
   </p>
   
   <p>If you have questions about this script, please post it on the 
-    <a href='https://sam.nrel.gov/support'> SAM support
+    <a href='https://sam.nrel.gov/forum'> SAM support
   forum</a></p>
 @*/
 
@@ -84,7 +84,7 @@ sector_type = choose_from_list( sectors, 'Are you modeling a residential or comm
 //USE NREL DEVELOPER TO TRANSLATE LAT AND LON TO TMY3 ID
 // delete after test
 key = '<SAMAPIKEY>';
-url = 'http://developer.nrel.gov/api/solar/data_query/v1.json?api_key=' + key + '&lat=' + lat + '&lon=' + lon;
+url = 'https://developer.nrel.gov/api/solar/data_query/v1.json?api_key=' + key + '&lat=' + lat + '&lon=' + lon;
 
 json = curl(url);
 write_text_file( 'C:/Users/gaobo/Desktop/Temp/load.json', json );
@@ -140,12 +140,12 @@ outln('Weather file used to generate load data:\n  ' +tmy3_names[gg]);
 if ( sector_type == 'RESIDENTIAL_LOAD_DATA' ) 
 {
 	build_type = choose_from_list( build_type_res, 'Choose a building type:' , 'Choose Building Type', 0);
-	load_url = 'http://en.openei.org/datasets/files/961/pub/' + sector_type + '_E_PLUS_OUTPUT/' + build_type + '/' + tmy3_names[gg] + '_' + build_type + '.csv';
+	load_url = 'https://en.openei.org/datasets/files/961/pub/' + sector_type + '_E_PLUS_OUTPUT/' + build_type + '/' + tmy3_names[gg] + '_' + build_type + '.csv';
 }
 if ( sector_type == 'COMMERCIAL_LOAD_DATA' ) 
 {
 	build_type = choose_from_list( build_type_comm, 'Choose a building type:' , 'Choose Building Type', 0);
-	load_url = 'http://en.openei.org/datasets/files/961/pub/' + sector_type + '_E_PLUS_OUTPUT/' + tmy3_names[gg] +  '/RefBldg' + build_type + ashrae_names[gg] + '.csv';
+	load_url = 'https://en.openei.org/datasets/files/961/pub/' + sector_type + '_E_PLUS_OUTPUT/' + tmy3_names[gg] +  '/RefBldg' + build_type + ashrae_names[gg] + '.csv';
 }
 outln( 'Data source:\n  ' + load_url );
 
