@@ -516,7 +516,7 @@ static void fcall_vuc_message( lk::invoke_t &cxt )
 	}
 }
 
-static void fcall_vuc_retire_tech(lk::invoke_t& cxt)
+static void fcall_vuc_retire_tech(lk::invoke_t &cxt)
 {
 	LK_DOC("retire_tech", "Retire technologies", "(string:technology):boolean");
 	if (VersionUpgrade* vuc = static_cast<VersionUpgrade*>(cxt.user_data()))
@@ -526,7 +526,8 @@ static void fcall_vuc_retire_tech(lk::invoke_t& cxt)
 		vuc->GetName();
 		if (tech1 == "DSPT" || tech1 == "Dish Stirling");
 		{
-			DeleteObject(retired_case);
+			//Do something to delete the case from the file
+			DeleteObject(retired_case); //This doesn't do anything right now
 		}
 		
 		
