@@ -354,7 +354,7 @@ Selection
 Items
 6
 3
-Whole year
+Entire year
 Specified range
 Entire dataset
 ShowCaptions
@@ -656,8 +656,8 @@ Tool Tip
 0
 Caption
 5
-22
-Download Weather Files
+37
+Download Marine Energy Resource Files
 Bold
 2
 1
