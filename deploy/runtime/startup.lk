@@ -1710,10 +1710,7 @@ function setup_metidal_pages()
 		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation','collapsible'=true,'collapsible_var'='assem_install_shown'},
 		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
 		{ 'sidebar'='Capital Costs: BOS','help'='me_tidal_capital_costs'} );
-	addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Project Contingency','caption' = 'Project Contingency', 'collapsible' = true,'collapsible_var'='proj_contingency_shown'},
-		{'name'='Marine Costs - Insurance','caption'= 'Insurance','collapsible'= true, 'collapsible_var'='insurance_shown'},
-		{'name'='Marine Costs - Reserve Accounts','caption' = 'Reserve Accounts', 'collapsible' = true, 'collapsible_var'='reserve_account_shown'},
-		{'name'='Marine Costs - Other Financial', 'caption' = 'Other', 'collapsible' = true, 'collapsible_var' = 'reserve_account_shown'}]],
+	addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Financial Itemized','caption' = 'Itemized Costs', 'collapsible' = true,'collapsible_var'='financial_itemized_shown'}]],
 		{'sidebar'='Capital Costs: Financial','help'='me_tidal_capital_costs'});
 	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations','collapsible'=true,'collapsible_var'='opex_we_shown'},
 		{'name'='Marine Costs - Maintenance','caption'='Maintenance','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
