@@ -32,9 +32,13 @@ Click Run above to start the script.
 Note: The NSRDB may return a file with an error message instead of weather data
 if you exceed the the download rate limit or if there is a problem with the URL.
 
-Tested in SAM 2020.2.29 r2
+Tested in SAM 2020.2.29 r3
 
 //////////////////////////////////////////////////////////////////////////////*/
+
+// Get your own API key at https://developer.nrel.gov
+api_key = '<SAMAPIKEY>';
+api_email = 'sam.support@nrel.gov';
 
 // folder to store weather files (script creates subfolder for each location).
 
@@ -54,7 +58,6 @@ if ( location_option == '' )
 	outln( 'You must choose a location option. Exiting script.' );
 	exit;
 }
-
 
 site = {};
 site.lat = []; 
@@ -136,14 +139,8 @@ else
 }
 
 outln( site );
-// nsrdb query to determine what data is available for location
-// https://developer.nrel.gov/docs/solar/nsrdb/nsrdb_data_query/
-// var.outputs: array of tables for each dataset available for the location [{psm dataset},{psmv3 dataset},{mts1 dataset}...]
-// var.outputs[x].availableYears: array ["tmy",2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014]
-// var.outputs[x].availableIntervals: array [30,60]
-// var.outputs[x].links: array of tables [{year,interval,link},{year,interval,link},...]
-// var.outputs[x].name: string version name 'suny-international','psmv3','mts1','mts2'
 
+// nsrdb query to determine what data is available for location
 wf = {};
 n = 0;
 for ( s=0 ; s<#site.lat; s++ )
@@ -151,8 +148,8 @@ for ( s=0 ; s<#site.lat; s++ )
 	// on first pass, get list of available versions and urls
 	if ( s == 0 )
 	{
-		base_url = 'http://developer.nrel.gov/api/solar/';
-		query_url = 'nsrdb_data_query.json?api_key=<SAMAPIKEY>&wkt=POINT(' + to_string(site.lon[s]) + '+' + to_string(site.lat[s]) + ')';
+		base_url = 'https://developer.nrel.gov/api/nsrdb/v2/solar/';
+		query_url = 'nsrdb-data-query.json?api_key='+api_key+'&wkt=POINT(' + to_string(site.lon[s]) + '+' + to_string(site.lat[s]) + ')';
 		url = base_url + query_url;
 		json_str = curl( url );
 		var = json_read( json_str );
@@ -170,7 +167,7 @@ for ( s=0 ; s<#site.lat; s++ )
 		{
 			available_versions[i] = var.outputs[i].name;
 		}
-		version = choose_from_list( available_versions, 'Choose an NSRDB version (Current version for Americas is psmv3:','Choose NSRDB Version' );
+		version = choose_from_list( available_versions, 'Choose an NSRDB dataset:','Choose NSRDB Dataset' );
 		for( i=0; i<#var.outputs; i++ )
 		{
 			if ( var.outputs[i].name == version )
@@ -180,25 +177,15 @@ for ( s=0 ; s<#site.lat; s++ )
 				available_intervals = var.outputs[i].availableIntervals;
 			}
 		}
-		years = available_years; // contains mix of numbers 2001, 2002, etc. and strings tmy, all
-		if ( #years > 1 )
-		{
-			years_new = alloc( #years+1 );
-			years_new[0] = 'all';
-			for ( i=1; i<#years_new; i++ )
-			{
-				years_new[i] = years[i-1];
-			}
-			years = years_new;
-		}
+		available_years[#available_years] = 'all'; // add option to download files for all available years
 		year = '';	
-		year = choose_from_list( years, 'Choose a year (Choose "all" to download all years for P50/P90 simulations):  ','Choose Year' );
+		year = choose_from_list( available_years, 'Choose a year ("all" for all years):  ','Choose Year' );
 		if ( year == '' )
 		{
 			outln( 'You must choose a year. Exiting script.' );
 			exit;
 		}
-		if ( ( year != 'all' ) && ( strpos( year, 'tmy' ) < 0 ) ) // mts1 versions uses 'tmy2' instead of 'tmy'
+		if ( to_int( year ) != 0 ) // mts1 versions uses 'tmy2' instead of 'tmy'
 		{
 			year = to_int( year );
 		}
@@ -218,19 +205,19 @@ for ( s=0 ; s<#site.lat; s++ )
 	{
 		if ( year == 'all' )
 		{
-			for ( j=0; j<#years; j++ )
+			for ( j=0; j<#available_years; j++ )
 			{
-				if ( years[j] != 'all' )
+				if ( available_years[j] != 'all' )
 				{
-					if ( (links[i].year == years[j]) && (links[i].interval == interval) )
+					if ( (links[i].year == available_years[j]) && (links[i].interval == interval) )
 					{
-						if ( years[j] == 'tmy' ) { intvl = 60; }
+						if ( strpos(available_years[j], 't') > -1 ) { intvl = 60; } // tmy, tgy, or tdy
 						else { intvl = interval; }
 						url = links[i].link;
-						url = replace( url, 'yourapikey', '<SAMAPIKEY>' );
-						url = replace( url, 'youremail', '' );
+						url = replace( url, 'yourapikey', api_key );
+						url = replace( url, 'youremail', api_email );
 						wf.url[n] = url;
-						wf.fname[n] = path + '/nsrdb_' + site.name[s] + '_' + site.lat[s] + '_' + site.lon[s] + '_' + intvl + 'min_' + years[j] + '.csv';
+						wf.fname[n] = path + '/nsrdb_' + site.name[s] + '_' + site.lat[s] + '_' + site.lon[s] + '_' + intvl + 'min_' + available_years[j] + '.csv';
 						n++;
 					}
 				}	
@@ -239,8 +226,8 @@ for ( s=0 ; s<#site.lat; s++ )
 		elseif ( (links[i].year == year) && (links[i].interval == interval) )
 		{
 			url = links[i].link;
-			url = replace( url, 'yourapikey', '<SAMAPIKEY>' );
-			url = replace( url, 'youremail', '' );
+			url = replace( url, 'yourapikey', api_key );
+			url = replace( url, 'youremail', api_email );
 			wf.url[n] = url;
 			wf.fname[n] = path + '/nsrdb_' + site.name[s] + '_' + site.lat[s] + '_' + site.lon[s] + '_' + interval + 'min_' + year + '.csv';
 			n++;
@@ -254,17 +241,22 @@ ok = curl( wf.url[0], {'file' = wf.fname[0] } );
 if ( !ok ) { outln( 'test failed. NSRDB server could be down.' ); }
 else
 {
-	arr = csvread( wf.fname[0] );
-	if ( #arr < 10 )
+	txt = read_text_file( wf.fname[0] );
+	remove_file( wf.fname[0] );
+	if ( strpos(txt, '{\"') > -1 )
 	{
-		outln( '\nDownload Error!\n' + 'Message from NSRDB server: \n\t' +  arr + '\nExiting script.' ); 
-		remove_file( wf.fname[0] );
+		json = json_read( txt );
+		outln( '\nDownload Error!\n' + 'Message from NSRDB server: \n\t' +  json.errors[0] + '\nExiting script.' ); 
+		exit;
+	}
+	elseif ( #txt < 500 )
+	{
+		msgbox( 'Download Error!\n' + 'Test file does has less than 500 characters, so does not appear to contain valid weather data.\n\nExiting script.\n\n' ); 
 		exit;
 	}
 	else 
 	{
 		outln( 'test OK.');
-		remove_file( wf.fname[0] ); 
 	}
 }
 
