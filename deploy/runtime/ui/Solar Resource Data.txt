@@ -2089,7 +2089,7 @@ TabOrder
 3
 4294967295
 
-32
+33
 annual_albedo
 3
 1
@@ -2462,6 +2462,20 @@ Location and Resource
 4
 0
 TextEntry
+step
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 tz
 3
 1
@@ -2529,7 +2543,7 @@ equations{'file_name'} = define() {
 	// for compatibility with most SSC APIs
 	return ${solar_resource_file};
 };
-32465
+32507
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2829,6 +2843,7 @@ function update_info( ctxt )
 			value( 'annual_wspd', ssc_var(obj, 'annual_wspd') );
 			value( 'annual_snow', ssc_var(obj, 'annual_snow') );
 			value( 'annual_albedo', ssc_var(obj, 'annual_albedo') );
+			value( 'step', ssc_var(obj, 'step') );
 			rhum = ssc_var(obj, 'rhum');
 			rhum_ok = true;
 			if ( isnan( rhum[0] ) ) { rhum_ok = false; }

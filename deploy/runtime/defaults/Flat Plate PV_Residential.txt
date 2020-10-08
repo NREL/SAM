@@ -1,5 +1,5 @@
 1
-824
+827
 6par_aisc
 1
 1
@@ -3850,6 +3850,12 @@ snl_specified_dT
 1
 1
 0
+snl_transient_thermal_model_unit_mass
+1
+1
+1
+1
+0
 snl_vmpo
 1
 1
@@ -4064,6 +4070,12 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+0
 subarray1_azimuth
 1
 1
@@ -4897,6 +4909,12 @@ transformer_no_load_loss
 1
 0
 transformer_rating
+1
+1
+1
+1
+0
+transient_thermal_model_unit_mass
 1
 1
 1

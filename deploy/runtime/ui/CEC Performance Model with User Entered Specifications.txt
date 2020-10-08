@@ -1,11 +1,11 @@
 CEC Performance Model with User Entered Specifications
-1167
-831
-49
+1174
+885
+51
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -22,6 +22,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -81,6 +84,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +129,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 15
@@ -140,6 +146,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 2
@@ -154,7 +163,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -171,6 +180,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -213,7 +225,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 37
@@ -230,6 +242,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -272,7 +287,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 33
@@ -289,6 +304,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -331,7 +349,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -348,6 +366,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -390,7 +411,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -407,6 +428,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -449,7 +473,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 17
@@ -466,6 +490,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -508,7 +535,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 15
@@ -525,6 +552,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 2
@@ -539,7 +569,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 13
@@ -556,6 +586,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 6
@@ -574,7 +607,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 18
@@ -591,6 +624,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Text
 5
 0
@@ -615,7 +651,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -632,6 +668,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -674,7 +713,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -691,6 +730,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -733,7 +775,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 16
@@ -750,6 +792,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -763,7 +808,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -780,6 +825,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -822,7 +870,7 @@ TabOrder
 TextEntry
 
 1
-10
+11
 Name
 5
 16
@@ -839,6 +887,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Text
 5
 30
@@ -864,7 +915,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 13
@@ -881,6 +932,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -893,7 +947,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -910,6 +964,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -952,7 +1009,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 9
@@ -969,6 +1026,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1011,7 +1071,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1028,6 +1088,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1070,7 +1133,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1087,6 +1150,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1129,7 +1195,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1146,6 +1212,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1188,7 +1257,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1205,6 +1274,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1247,7 +1319,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -1264,6 +1336,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1306,7 +1381,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 15
@@ -1323,6 +1398,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1365,7 +1443,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 13
@@ -1382,6 +1460,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1424,7 +1505,7 @@ TabOrder
 Choice
 
 1
-8
+9
 Name
 5
 13
@@ -1441,6 +1522,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Items
 6
 0
@@ -1453,7 +1537,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -1470,6 +1554,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1512,7 +1599,69 @@ TabOrder
 Numeric
 
 1
-16
+17
+Name
+5
+38
+6par_transient_thermal_model_unit_mass
+X
+3
+654
+Y
+3
+723
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
 Name
 5
 8
@@ -1529,6 +1678,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1571,7 +1723,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -1588,6 +1740,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -1630,7 +1785,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -1647,6 +1802,9 @@ Width
 Height
 3
 122
+Tool Tip
+5
+0
 Caption
 5
 19
@@ -1657,7 +1815,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -1674,6 +1832,9 @@ Width
 Height
 3
 302
+Tool Tip
+5
+0
 Caption
 5
 25
@@ -1684,7 +1845,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 11
@@ -1701,6 +1862,9 @@ Width
 Height
 3
 66
+Tool Tip
+5
+0
 Caption
 5
 16
@@ -1711,7 +1875,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -1728,6 +1892,9 @@ Width
 Height
 3
 71
+Tool Tip
+5
+0
 Caption
 5
 22
@@ -1738,7 +1905,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -1755,6 +1922,9 @@ Width
 Height
 3
 80
+Tool Tip
+5
+0
 Caption
 5
 42
@@ -1765,7 +1935,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -1782,6 +1952,9 @@ Width
 Height
 3
 620
+Tool Tip
+5
+0
 Caption
 5
 34
@@ -1792,7 +1965,7 @@ Bold
 Button
 
 1
-7
+8
 Name
 5
 14
@@ -1809,6 +1982,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 18
@@ -1819,7 +1995,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 15
@@ -1836,6 +2012,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 17
@@ -1846,7 +2025,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 15
@@ -1863,6 +2042,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 15
@@ -1873,7 +2055,7 @@ TabOrder
 Button
 
 1
-7
+8
 Name
 5
 16
@@ -1890,6 +2072,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 61
@@ -1900,7 +2085,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 5
@@ -1917,6 +2102,9 @@ Width
 Height
 3
 114
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -1927,7 +2115,7 @@ Bold
 Plot
 
 1
-5
+6
 Name
 5
 6
@@ -1944,10 +2132,13 @@ Width
 Height
 3
 351
+Tool Tip
+5
+0
 Hyperlink
 
 1
-8
+9
 Name
 5
 9
@@ -1964,6 +2155,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Caption
 5
 51
@@ -1978,7 +2172,7 @@ TabOrder
 Divider
 
 1
-9
+10
 Name
 5
 9
@@ -1995,6 +2189,9 @@ Width
 Height
 3
 16
+Tool Tip
+5
+0
 Orientation
 3
 0
@@ -2014,7 +2211,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -2031,6 +2228,9 @@ Width
 Height
 3
 111
+Tool Tip
+5
+0
 Caption
 5
 23
@@ -2041,7 +2241,7 @@ Bold
 Label
 
 1
-12
+13
 Name
 5
 8
@@ -2058,6 +2258,9 @@ Width
 Height
 3
 36
+Tool Tip
+5
+0
 Caption
 5
 124
@@ -2086,7 +2289,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 10
@@ -2103,6 +2306,9 @@ Width
 Height
 3
 60
+Tool Tip
+5
+0
 Caption
 5
 181
@@ -2131,7 +2337,7 @@ AlignTop
 Label
 
 1
-12
+13
 Name
 5
 12
@@ -2148,6 +2354,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 124
@@ -2173,8 +2382,56 @@ AlignRight
 AlignTop
 2
 1
+Label
 
+1
+13
+Name
+5
 31
+transient_thermal_model_message
+X
+3
+567
+Y
+3
+744
+Width
+3
+582
+Height
+3
+33
+Tool Tip
+5
+0
+Caption
+5
+218
+The moving-average transient thermal model automatically applies for weather file time steps of 20 minutes or less. Input your module's unit mass in units of kg/m^2. If nothing is entered a default value will be used. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+32
 6par_aisc
 3
 1
@@ -2583,6 +2840,20 @@ PV Module (CEC User Specified)
 1
 46
 Numeric
+6par_transient_thermal_model_unit_mass
+3
+1
+Module unit mass
+kg/m^2
+PV Module (CEC User Specified)
+0
+2
+1
+1
+1
+1
+0
+Default
 6par_vmp
 3
 1
@@ -2626,10 +2897,18 @@ equations{ '6par_bvoc' } = define() {
 equations{ '6par_aisc' } = define() {
 	return ?${6par_aisc_units} [${6par_aisc_display}, 
 	0.01 * ${6par_aisc_display} * ${6par_isc} ]; };
-7770
+8001
 on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 
 	enable_bifacial();
+	on_change{'step'}();
+};
+
+on_change{'step'} = define() {
+	time_step = value('step');
+	enable('cec_user_transient_thermal_model_unit_mass',time_step <= 1200);
+	show('transient_thermal_model_message', time_step <= 1200);
+	refresh();
 };
 
 on_change{'6par_is_bifacial'} = define(){
