@@ -381,7 +381,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+35
 CheckBox
 
 1
@@ -1106,7 +1106,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+33
 Numeric
 
 1
@@ -1169,7 +1169,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+13
 Numeric
 
 1
@@ -1232,7 +1232,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -1295,7 +1295,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+16
 Numeric
 
 1
@@ -1358,7 +1358,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+12
 Numeric
 
 1
@@ -1421,7 +1421,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+32
 Numeric
 
 1
@@ -1547,7 +1547,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+18
 Numeric
 
 1
@@ -1610,7 +1610,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+34
 Numeric
 
 1
@@ -1673,7 +1673,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+11
 Numeric
 
 1
@@ -1799,7 +1799,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+20
 Numeric
 
 1
@@ -1925,7 +1925,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+21
 Label
 
 1
@@ -2035,7 +2035,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -2098,7 +2098,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+36
 Label
 
 1
@@ -4071,7 +4071,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+22
 Numeric
 
 1
@@ -4134,7 +4134,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+38
 Numeric
 
 1
@@ -4197,7 +4197,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+37
 Numeric
 
 1
@@ -4260,7 +4260,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+14
 Numeric
 
 1
@@ -4323,7 +4323,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+24
 Numeric
 
 1
@@ -4386,7 +4386,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+9
 Numeric
 
 1
@@ -4449,7 +4449,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+31
 Numeric
 
 1
@@ -4512,7 +4512,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+19
 Numeric
 
 1
@@ -4575,7 +4575,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -4638,7 +4638,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Numeric
 
 1
@@ -4701,7 +4701,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+6
 Numeric
 
 1
@@ -4827,7 +4827,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+23
 Numeric
 
 1
@@ -4890,7 +4890,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -4953,7 +4953,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+26
 Numeric
 
 1
@@ -5016,7 +5016,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+10
 Numeric
 
 1
@@ -5079,7 +5079,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+30
 Numeric
 
 1
@@ -5142,7 +5142,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+25
 Numeric
 
 1
@@ -5268,7 +5268,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+17
 Numeric
 
 1
@@ -5331,7 +5331,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -5394,7 +5394,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+27
 Numeric
 
 1
@@ -5457,7 +5457,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+28
 Numeric
 
 1
@@ -5520,7 +5520,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+15
 Numeric
 
 1
@@ -5646,7 +5646,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Numeric
 
 1
@@ -5772,7 +5772,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+29
 ToolTipCtrl
 
 1
