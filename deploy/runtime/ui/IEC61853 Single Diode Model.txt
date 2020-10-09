@@ -1,7 +1,7 @@
 IEC61853 Single Diode Model
 1031
 902
-48
+50
 Button
 
 1
@@ -2438,6 +2438,68 @@ BackColour
 TabOrder
 3
 4294967295
+Numeric
+
+1
+17
+Name
+5
+41
+sd11par_transient_thermal_model_unit_mass
+X
+3
+558
+Y
+3
+861
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Choice
 
 1
@@ -2470,8 +2532,56 @@ Selection
 TabOrder
 3
 4294967295
+Label
 
-32
+1
+13
+Name
+5
+31
+transient_thermal_model_message
+X
+3
+711
+Y
+3
+852
+Width
+3
+285
+Height
+3
+39
+Tool Tip
+5
+0
+Caption
+5
+70
+Transient thermal model is applied for time steps less than 20 minutes
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+34
 iec61853_test_data
 3
 3
@@ -2937,6 +3047,20 @@ IEC-68153 PV Module Model
 1
 44.9
 Numeric
+sd11par_transient_thermal_model_unit_mass
+3
+1
+Module unit mass
+kg/m^2
+IEC-68153 PV Module Model
+0
+2
+1
+1
+1
+1
+0
+Default
 sd11par_type
 3
 1
@@ -2952,8 +3076,22 @@ monoSi|multiSi|CdTe|CIS|CIGS|Amorphous
 1
 2
 Choice
+step_sd11par
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-607
+667
 equations{ 'sd11par_eff' } = define() {
 	return 0.1*${sd11par_Pmp0}/${sd11par_area};
 };
@@ -2992,7 +3130,11 @@ equations{'$MIMO$ stc_parametesr'} = define() {
 	${sd11par_Imp0} = pmp/vmp;
 
 };
-3066
+
+equations{'sd11par_step'} = define() {
+	return ${step};
+};
+3319
 
 function iec61853_ivcurve( Irr, TcC,
 		aisc, n, Io, Il, C, D, Egref, Imp0, nser,
@@ -3075,6 +3217,14 @@ function iec61853_update_plot()
 
 on_load{ 'IEC61853 Single Diode Model' } = define() {	
 	iec61853_update_plot();
+	on_change{'step_sd11par'}();
+};
+
+on_change{'step_sd11par'} = define() {
+	time_step = value('step_sd11par');
+	enable('sd11par_transient_thermal_model_unit_mass',time_step <= 1200);
+	show('transient_thermal_model_message',time_step <= 1200);
+	refresh();
 };
 
 on_change{'btn_update_plot'} = define() {	

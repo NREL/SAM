@@ -2431,7 +2431,7 @@ AlignTop
 2
 1
 
-32
+33
 6par_aisc
 3
 1
@@ -2826,6 +2826,20 @@ Building integrated|Greater than 3.5 in|2.5-3.5 in|1.5-2.5 in|0.5-1.5 in|Less th
 1
 6
 Choice
+6par_step
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 6par_tnoct
 3
 1
@@ -2883,7 +2897,7 @@ PV Module (CEC User Specified)
 37
 Numeric
 
-456
+513
 equations{ '6par_mpeff' } = define() {
 	return 100.0*${6par_vmp}*${6par_imp}/${6par_area}/1000.0; };
 
@@ -2897,15 +2911,18 @@ equations{ '6par_bvoc' } = define() {
 equations{ '6par_aisc' } = define() {
 	return ?${6par_aisc_units} [${6par_aisc_display}, 
 	0.01 * ${6par_aisc_display} * ${6par_isc} ]; };
-8001
+	
+equations{'6par_step'} = define() {
+	return ${step};};
+8016
 on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 
 	enable_bifacial();
-	on_change{'step'}();
+	on_change{'6par_step'}();
 };
 
-on_change{'step'} = define() {
-	time_step = value('step');
+on_change{'6par_step'} = define() {
+	time_step = value('6par_step');
 	enable('cec_user_transient_thermal_model_unit_mass',time_step <= 1200);
 	show('transient_thermal_model_message', time_step <= 1200);
 	refresh();
