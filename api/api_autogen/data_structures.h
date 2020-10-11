@@ -3,6 +3,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <map>
 #include <set>
 #include <iostream>
 
@@ -37,7 +38,7 @@ extern std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_inp
  * Maps each technology-financial configuration to the primary compute_modules required
  * e.g. 'Biopower-LCOE Calculator': ('biomass', 'lcoefcr')
  */
-extern std::unordered_map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
+extern std::map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
 
 /**
  * Maps each compute_module variable to its index in the info table for each config
