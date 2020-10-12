@@ -2335,8 +2335,7 @@ Colour
 255
 Caption
 5
-24
-Itemized Input Structure
+0
 Bold
 2
 1

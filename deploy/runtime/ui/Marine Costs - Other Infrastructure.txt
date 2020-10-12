@@ -217,7 +217,7 @@ Name
 object 21
 X
 3
-40
+39
 Y
 3
 102
@@ -241,8 +241,7 @@ Colour
 255
 Caption
 5
-24
-Itemized Input Structure
+0
 Bold
 2
 1
