@@ -18,6 +18,7 @@
 
 std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages;
 std::map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
+std::map<std::string, std::pair<std::string, std::string>> SAM_option_to_description;
 
 // print into dictionary format
 void startup_extractor::print_config_to_input_pages(){
