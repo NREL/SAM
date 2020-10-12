@@ -1,5 +1,5 @@
 1
-805
+806
 6par_aisc
 1
 1
@@ -182,7 +182,7 @@ Generic polycrystalline silicon module
 1
 1
 1
-0
+11.0919
 6par_vmp
 1
 1
@@ -711,6 +711,12 @@ cec_temp_corr_mode
 1
 1
 0
+cec_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 cec_v_mp_ref
 1
 1
@@ -3267,7 +3273,7 @@ sd11par_transient_thermal_model_unit_mass
 1
 1
 1
-0
+11.0919
 sd11par_type
 1
 1
@@ -3692,7 +3698,7 @@ snl_transient_thermal_model_unit_mass
 1
 1
 1
-0
+11.0919
 snl_vmpo
 1
 1

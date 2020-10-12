@@ -15,13 +15,13 @@ X
 606
 Y
 3
-537
+570
 Width
 3
 406
 Height
 3
-182
+149
 Tool Tip
 5
 0
@@ -51,7 +51,7 @@ Width
 406
 Height
 3
-164
+200
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 627
 Y
 3
-651
+681
 Width
 3
 377
@@ -191,7 +191,7 @@ X
 627
 Y
 3
-561
+591
 Width
 3
 368
@@ -332,10 +332,10 @@ Name
 Label32
 X
 3
-36
+33
 Y
 3
-639
+663
 Width
 3
 545
@@ -506,7 +506,7 @@ Name
 snl_area
 X
 3
-888
+873
 Y
 3
 393
@@ -745,7 +745,7 @@ Name
 snl_n_cells
 X
 3
-888
+873
 Y
 3
 420
@@ -807,10 +807,10 @@ Name
 snl_parallel_cells
 X
 3
-888
+873
 Y
 3
-489
+537
 Width
 3
 100
@@ -2058,10 +2058,10 @@ Name
 snl_series_cells
 X
 3
-888
+873
 Y
 3
-462
+510
 Width
 3
 100
@@ -2306,16 +2306,16 @@ Name
 snl_transient_thermal_model_unit_mass
 X
 3
-135
+873
 Y
 3
-687
+450
 Width
 3
-90
+99
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -2430,23 +2430,23 @@ Name
 transient_thermal_model_message
 X
 3
-288
+636
 Y
 3
-678
+474
 Width
 3
-285
+357
 Height
 3
-39
+36
 Tool Tip
 5
 0
 Caption
 5
-70
-Transient thermal model is applied for time steps less than 20 minutes
+129
+The module unit mass is only applied for weather file time steps less than or equal to 20 minutes. The default value is 11 kg/m².
 TextColour
 4
 0
@@ -3504,7 +3504,7 @@ snl_transient_thermal_model_unit_mass
 3
 1
 Module unit mass
-kg/m^2
+kg/m²
 PV Module (Sandia Database)
 0
 0
@@ -3712,7 +3712,7 @@ equations{ 'snl_n_cells' } = define() {
 equations{'snl_step'} = define() {
 	return ${step};};
 
-600
+602
 on_load{'Sandia PV Array Performance Model with Module Database'} = define(){
 	on_change{'snl_module_structure'} ();
 	on_change{'snl_step'} ();
@@ -3729,7 +3729,7 @@ on_change{'snl_module_structure'} = define() {
 on_change{'snl_step'} = define() {
 	time_step = value('snl_step');
 	enable('snl_transient_thermal_model_unit_mass',time_step <= 1200);
-	show('transient_thermal_model_message',time_step <= 1200);
+	//show('transient_thermal_model_message',time_step <= 1200);
 	
 	refresh();
 };
