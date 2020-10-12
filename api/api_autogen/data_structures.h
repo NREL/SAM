@@ -67,8 +67,12 @@ extern std::unordered_map<std::string, std::unordered_map<std::string, VarValue>
 /**
  * Maps each configuration to its specific defaults found in defaults text files
  */
- extern std::unordered_map<std::string, VarTable> SAM_config_to_defaults;
+extern std::unordered_map<std::string, VarTable> SAM_config_to_defaults;
 
+/**
+ * Maps each financial or technology option to its long name and description
+ */
+extern std::map<std::string, std::pair<std::string, std::string>> SAM_option_to_description;
 
 /**
  * Manages mapping and memory for ui_form_extractors
@@ -200,7 +204,11 @@ VarValue* find_default_from_ui(std::string name, std::string config);
 /// Determine if a variable is a primary ssc input by returning cmod name
 std::string which_cmod_as_input(std::string name, std::string config);
 
-// utils
+// SAM config utils
+
+void get_tech_fin_of_config(const std::string& config, std::string& tech, std::string& fin);
+
+// LK parsing utils
 
 std::vector<std::string> split_identity_string(std::string str, size_t n);
 

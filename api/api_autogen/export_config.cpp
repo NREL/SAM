@@ -289,14 +289,23 @@ int main(int argc, char *argv[]){
         std::string config = it->first;
         std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[config];
 
+        std::string tech, fin;
+        get_tech_fin_of_config(config, tech, fin);
+        auto tech_desc = SAM_option_to_description[tech];
+        auto fin_desc = SAM_option_to_description[fin];
+        std::string config_name = tech_desc.first + " - " + fin_desc.first;
+        std::string config_desc = tech_desc.second + ". " + fin_desc.second;
+
         std::string cmods;
-        for (auto &c : primary_cmods)
-            cmods += c + ", ";
+        for (auto &c : primary_cmods){
+            cmods += ":doc:`modules/" + format_as_symbol(c) + "`, ";
+        }
         cmods.pop_back();
         cmods.pop_back();
 
-        printf("\t* - %s\n"
-               "\t  - %s\n", config.c_str(), cmods.c_str());
+        printf("    * - %s\n"
+               "      - %s\n"
+               "      - %s\n", config_name.c_str(), config_desc.c_str(), cmods.c_str());
     }
 
     // pysam/docs/Models.rst

@@ -910,14 +910,14 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << ".. _" << tech_symbol << ":\n\n";
 
-    fx_file << cmod_symbol << "\n**************************\n\n";
+    fx_file << cmod_symbol << "\n***********************************\n\n";
 
     std::string cmod_doc = "Wrapper for SAM Simulation Core model: `cmod_" + cmod;
     cmod_doc += ".cpp <https://github.com/NREL/ssc/blob/develop/ssc/cmod_" + util::lower_case(cmod) + ".cpp>`_\n\n";
 
     fx_file << cmod_doc;
 
-    fx_file << "Creating an Instance\n=========================\n\n"
+    fx_file << "Creating an Instance\n===================================\n\n"
                "There are three methods to create a new instance of a PySAM module. Using ``default`` populates the new"
                "class' attributes with default values specific to a ``config``. Each technology-financial"
                "configuration corresponds to a SAM GUI configuration. Using ``new`` creates an instance with empty "
@@ -927,7 +927,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file << ".. automodule:: PySAM." << tech_symbol << "\n";
     fx_file << "\t:members:\n\n";
 
-    fx_file << "Functions\n=========================\n\n"
+    fx_file << "Functions\n===================================\n\n"
                ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "\n\t:members:\n\n";
 
     for (const auto& i : root->vardefs_order) {
@@ -936,7 +936,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         std::string module_symbol = format_as_symbol(mm->first);
 
-        fx_file << module_symbol << " Group\n==============\n\n";
+        fx_file << module_symbol << " Group\n===================================\n\n";
         fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
         fx_file << "\t:members:\n\n";
     }
