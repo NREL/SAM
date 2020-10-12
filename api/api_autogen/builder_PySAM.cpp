@@ -41,6 +41,7 @@ std::string all_options_of_cmod(const std::string &cmod_symbol, const std::strin
 // maps cmod to string description
 std::string module_doc(const std::string& tech_symbol){
     static std::unordered_map<std::string, std::string> desc = {
+            {"Battery", "Detailed battery storage model"},
             {"Battwatts", "Simplified battery storage model"},
             {"Belpe", "Electric load calculator for residential buildings"},
             {"Biomass", "Biomass combustion for electricity generation"},
@@ -71,7 +72,6 @@ std::string module_doc(const std::string& tech_symbol){
             {"Sco2DesignCycle", "Supercritical CO2 Power Cycle Design"},
             {"Sco2Offdesign", "Supercritical CO2 Power Cycle Off Design"},
             {"Singleowner", "PPA single owner financial model"},
-            {"StandAloneBattery", "Detailed battery storage model"},
             {"Swh", "Solar water heating model for residential and commercial building applications"},
             {"TcsdirectSteam", "CSP direct steam power tower model for power generation"},
             {"Tcsdish", "CSP dish-Stirling model with parameters for SES and WGA-ADDS systems for power generation"},
@@ -116,9 +116,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     std::string cmod_symbol = format_as_symbol(cmod);
 
     std::string tech_symbol = cmod_symbol;
-    if(cmod_symbol == "Battery")
-        tech_symbol = "StandAloneBattery";
-    else if (cmod_symbol == "6parsolve")
+    if (cmod_symbol == "6parsolve")
         tech_symbol = "SixParsolve";
     else if (root->m_vardefs.find(cmod_symbol) != root->m_vardefs.end())
         tech_symbol += "Model";
