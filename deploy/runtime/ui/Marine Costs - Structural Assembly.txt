@@ -1,7 +1,7 @@
 Marine Costs - Structural Assembly
 800
 672
-63
+53
 Label
 
 1
@@ -547,53 +547,6 @@ Label
 13
 Name
 5
-25
-itemized_check_structural
-X
-3
-21
-Y
-3
-141
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 19
 level_5_total_prime
 X
@@ -931,10 +884,10 @@ Name
 object 21
 X
 3
-39
+60
 Y
 3
-90
+102
 Width
 3
 580
@@ -1047,16 +1000,16 @@ Name
 object 721
 X
 3
-567
+18
 Y
 3
-201
+27
 Width
 3
-180
+762
 Height
 3
-303
+78
 Tool Tip
 5
 0
@@ -1085,54 +1038,6 @@ AlignRight
 AlignTop
 2
 1
-Label
-
-1
-13
-Name
-5
-12
-object 72145
-X
-3
-321
-Y
-3
-30
-Width
-3
-84
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-13
-Modeled value
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
 Label
 
 1
@@ -1571,54 +1476,6 @@ Label
 13
 Name
 5
-11
-object 7322
-X
-3
-525
-Y
-3
-30
-Width
-3
-78
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-13
-Category cost
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 10
 object 733
 X
@@ -1697,54 +1554,6 @@ TextColour
 Bold
 2
 0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 757
-X
-3
-42
-Y
-3
-57
-Width
-3
-117
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-19
-Structural assembly
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
 FontSize
 3
 0
@@ -2251,27 +2060,26 @@ Label
 13
 Name
 5
-24
-struct_level_total_label
+15
+struct_override
 X
 3
-423
+24
 Y
 3
-33
+228
 Width
 3
-84
+90
 Height
 3
-21
+24
 Tool Tip
 5
 0
 Caption
 5
-15
-Itemized inputs
+0
 TextColour
 4
 0
@@ -2341,341 +2149,6 @@ AlignRight
 AlignTop
 2
 1
-Label
-
-1
-13
-Name
-5
-23
-struct_user_input_label
-X
-3
-432
-Y
-3
-33
-Width
-3
-60
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-10
-User input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Numeric
-
-1
-17
-Name
-5
-24
-structural_assembly_cost
-X
-3
-519
-Y
-3
-57
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-30
-structural_assembly_cost_input
-X
-3
-420
-Y
-3
-57
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-13
-Choice
-
-1
-9
-Name
-5
-31
-structural_assembly_cost_method
-X
-3
-162
-Y
-3
-57
-Width
-3
-150
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-4
-Enter in $/kW
-Enter in $
-Use Modeled Value ($)
-Enter as Itemized Costs ($)
-Selection
-3
-0
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-42
-structural_assembly_cost_modeled_formatted
-X
-3
-321
-Y
-3
-57
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-30
-structural_assembly_cost_total
-X
-3
-420
-Y
-3
-57
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -3131,7 +2604,7 @@ Tips
 5
 0
 
-86
+87
 active_structure_cost
 3
 1
@@ -4085,6 +3558,20 @@ struct_level_total_label
 1
 0
 Numeric
+struct_override
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 struct_user_input_label
 3
 1
@@ -4338,7 +3825,7 @@ variable_prime_mover
 0
 Default
 
-8833
+8912
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -4608,14 +4095,18 @@ equations {'override_check_structural'} = define() {
 	}
 };
 
+equations {'struct_override'} = define() {
+	return ${device_cost_override};};
+
 
 
 
 
 			
-5277
+5383
 on_load{'Marine Costs - Structural Assembly'} = define() {
 	check_override_structural();
+	on_change{'struct_override'};
 	on_change{'itemized_check_structural'};
 	//on_change{'variable_marine_systems'};
 	//on_change{'variable_prime_mover'};
@@ -4629,15 +4120,19 @@ on_load{'Marine Costs - Structural Assembly'} = define() {
 	
 };
 
+on_change{'struct_override'} = define() {
+	check_override_structural();
+};
+
 
 function check_override_structural()
 {
-	check_value = value('device_cost_override');
+	check_value = value('struct_override');
 	//enable('structural_assembly_cost_input',check_value!=1);
 	//enable('structural_assembly_cost_total',check_value!=1);
-	enable('structural_assembly_cost_method',check_value!=1);
+	//enable('structural_assembly_cost_method',check_value!=1);
 	//enable('structural_assembly_cost_modeled',check_value!=1);
-	enable('structural_assembly_cost',check_value!=1);
+	//enable('structural_assembly_cost',check_value!=1);
 	show('struct_override_label',check_value==1);
 	
 	refresh();

@@ -1,5 +1,5 @@
 1
-644
+647
 accumulators_cost
 1
 1
@@ -1816,6 +1816,12 @@ mooring_lines_cost
 1
 1
 0
+mooring_override
+1
+1
+1
+1
+0
 mooring_shown
 1
 1
@@ -2899,6 +2905,12 @@ project_management_during_development_cost_total_check
 1
 1
 0
+pto_override
+1
+1
+1
+1
+0
 pto_shown
 1
 1
@@ -3233,6 +3245,12 @@ struct_and_mechanical_cost
 1
 0
 struct_level_total_label
+1
+1
+1
+1
+0
+struct_override
 1
 1
 1

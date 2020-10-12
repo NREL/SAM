@@ -1661,9 +1661,9 @@ function setup_mewave_pages()
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	//addpage( [[ 'Marine Costs']],{ 'sidebar'='System Costs', 'help'='me_wave_capital_costs' } );
-	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
-		{'name'='Marine Costs - PTO','caption'= 'PTO','collapsible'=true,'collapsible_var'='pto_shown'}, 
-		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure','collapsible'=true,'collapsible_var'='mooring_shown'}]],
+	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
+		{'name'='Marine Costs - PTO','caption'= 'Power Take-off Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'}, 
+		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
 		{ 'sidebar'='Capital Costs: Device', 'help'='me_wave_capital_costs'} );
 	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development','collapsible'=true,'collapsible_var'='development_shown'},
 		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management','collapsible'=true,'collapsible_var'='e&m_shown'},
@@ -1698,9 +1698,9 @@ function setup_metidal_pages()
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_tidal_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_tidal_losses' } );
 	//addpage( [[ 'Marine Costs']],{ 'sidebar'='System Costs', 'help'='me_tidal_capital_costs' } );
-	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
-		{'name'='Marine Costs - PTO','caption'= 'PTO','collapsible'=true,'collapsible_var'='pto_shown'}, 
-		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure','collapsible'=true,'collapsible_var'='mooring_shown'}]],
+	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
+		{'name'='Marine Costs - PTO','caption'= 'Power Take-off Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'}, 
+		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
 		{ 'sidebar'='Capital Costs: Device', 'help'='me_tidal_capital_costs'} );
 	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development','collapsible'=true,'collapsible_var'='development_shown'},
 		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management','collapsible'=true,'collapsible_var'='e&m_shown'},
