@@ -11,13 +11,13 @@ Name
 0
 X
 3
-243
+150
 Y
 3
 138
 Width
 3
-78
+171
 Height
 3
 24
@@ -311,13 +311,13 @@ Name
 coatings
 X
 3
-126
+153
 Y
 3
 558
 Width
 3
-195
+168
 Height
 3
 24
@@ -428,7 +428,7 @@ Y
 408
 Width
 3
-132
+159
 Height
 3
 24
@@ -444,7 +444,7 @@ State
 0
 TabOrder
 3
-14
+4294967295
 CheckBox
 
 1
@@ -461,7 +461,7 @@ Y
 168
 Width
 3
-132
+153
 Height
 3
 24
@@ -557,7 +557,7 @@ Y
 111
 Width
 3
-90
+99
 Height
 3
 24
@@ -605,7 +605,7 @@ Y
 111
 Width
 3
-117
+144
 Height
 3
 24
@@ -836,13 +836,13 @@ Name
 object 
 X
 3
-264
+243
 Y
 3
 318
 Width
 3
-156
+177
 Height
 3
 24
@@ -952,13 +952,13 @@ Name
 object 713
 X
 3
-264
+243
 Y
 3
 228
 Width
 3
-156
+177
 Height
 3
 24
@@ -1048,13 +1048,13 @@ Name
 object 72446
 X
 3
-126
+105
 Y
 3
 588
 Width
 3
-195
+216
 Height
 3
 24
@@ -1096,13 +1096,13 @@ Name
 object 72647
 X
 3
-264
+243
 Y
 3
 528
 Width
 3
-156
+177
 Height
 3
 24
@@ -1144,13 +1144,13 @@ Name
 object 7264745
 X
 3
-264
+243
 Y
 3
 498
 Width
 3
-156
+177
 Height
 3
 24
@@ -1192,13 +1192,13 @@ Name
 object 72748
 X
 3
-264
+243
 Y
 3
 438
 Width
 3
-156
+177
 Height
 3
 24
@@ -1240,13 +1240,13 @@ Name
 object 728
 X
 3
-186
+156
 Y
 3
 378
 Width
 3
-135
+165
 Height
 3
 24
@@ -1288,13 +1288,13 @@ Name
 object 729
 X
 3
-186
+156
 Y
 3
 348
 Width
 3
-135
+165
 Height
 3
 24
@@ -1336,13 +1336,13 @@ Name
 object 73
 X
 3
-264
+243
 Y
 3
 198
 Width
 3
-156
+177
 Height
 3
 24
@@ -1384,13 +1384,13 @@ Name
 object 730
 X
 3
-264
+243
 Y
 3
 288
 Width
 3
-156
+177
 Height
 3
 24
@@ -1432,13 +1432,13 @@ Name
 object 731
 X
 3
-264
+243
 Y
 3
 468
 Width
 3
-156
+177
 Height
 3
 24
@@ -1480,13 +1480,13 @@ Name
 object 733
 X
 3
-126
+105
 Y
 3
 618
 Width
 3
-195
+216
 Height
 3
 24
@@ -1528,13 +1528,13 @@ Name
 object 734
 X
 3
-264
+243
 Y
 3
 258
 Width
 3
-156
+177
 Height
 3
 24
@@ -2053,7 +2053,7 @@ BackColour
 255
 TabOrder
 3
-3
+4294967295
 Label
 
 1
@@ -2114,7 +2114,7 @@ X
 567
 Y
 3
-108
+162
 Width
 3
 195
@@ -4103,7 +4103,7 @@ equations {'struct_override'} = define() {
 
 
 			
-5383
+5387
 on_load{'Marine Costs - Structural Assembly'} = define() {
 	check_override_structural();
 	on_change{'struct_override'};
@@ -4241,9 +4241,9 @@ function enable_itemized_structural()
 	enable('other_cost_total',itemized_value==1);
 	enable('structural_assembly_cost_input',itemized_value!=2);
 	show('structural_assembly_cost_total',itemized_value==1);
-	show('struct_level_total_label',itemized_value==1);
+	//show('struct_level_total_label',itemized_value==1);
 	show('structural_assembly_cost_input',(itemized_value==0 || itemized_value==2));
-	show('struct_user_input_label',(itemized_value==0 || itemized_value==2));
+	//show('struct_user_input_label',(itemized_value==0 || itemized_value==2));
 	show('warning_prime_mover',itemized_value==4);
 	show('warning_marine_systems',itemized_value==4);
 	if (itemized_value==1)

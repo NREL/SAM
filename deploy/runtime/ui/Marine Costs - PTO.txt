@@ -59,13 +59,13 @@ Name
 Air Turbine
 X
 3
-252
+234
 Y
 3
 756
 Width
 3
-69
+87
 Height
 3
 24
@@ -107,13 +107,13 @@ Name
 Coatings
 X
 3
-270
+207
 Y
 3
 1476
 Width
 3
-57
+120
 Height
 3
 24
@@ -155,13 +155,13 @@ Name
 Control & Communication System
 X
 3
-186
+138
 Y
 3
 1386
 Width
 3
-237
+285
 Height
 3
 24
@@ -203,13 +203,13 @@ Name
 Electrical Generator
 X
 3
-201
+147
 Y
 3
 966
 Width
 3
-120
+174
 Height
 3
 24
@@ -251,13 +251,13 @@ Name
 Frequency Converter
 X
 3
-303
+264
 Y
 3
 1326
 Width
 3
-120
+159
 Height
 3
 24
@@ -347,13 +347,13 @@ Name
 Other
 X
 3
-231
+153
 Y
 3
 1536
 Width
 3
-96
+174
 Height
 3
 24
@@ -395,13 +395,13 @@ Name
 Other Short-Term Energy Storage Costs
 X
 3
-261
+198
 Y
 3
 1416
 Width
 3
-162
+225
 Height
 3
 24
@@ -473,13 +473,13 @@ Name
 Power Electrical System
 X
 3
-294
+270
 Y
 3
 1356
 Width
 3
-129
+153
 Height
 3
 24
@@ -521,13 +521,13 @@ Name
 Power Electronics
 X
 3
-213
+177
 Y
 3
 1266
 Width
 3
-108
+144
 Height
 3
 24
@@ -569,13 +569,13 @@ Name
 Power Take-Off Enclosure
 X
 3
-171
+135
 Y
 3
 1446
 Width
 3
-156
+192
 Height
 3
 24
@@ -617,13 +617,13 @@ Name
 Short-Term Energy Storage
 X
 3
-159
+126
 Y
 3
 1236
 Width
 3
-162
+192
 Height
 3
 24
@@ -665,13 +665,13 @@ Name
 Transportation of Power Conversion Chain
 X
 3
-87
+42
 Y
 3
 1506
 Width
 3
-240
+285
 Height
 3
 24
@@ -2207,7 +2207,7 @@ Y
 129
 Width
 3
-90
+99
 Height
 3
 24
@@ -2255,7 +2255,7 @@ Y
 129
 Width
 3
-117
+138
 Height
 3
 24
@@ -2557,13 +2557,13 @@ Name
 object 724
 X
 3
-336
+276
 Y
 3
 1026
 Width
 3
-87
+147
 Height
 3
 24
@@ -2605,13 +2605,13 @@ Name
 object 72418
 X
 3
-282
+252
 Y
 3
 816
 Width
 3
-141
+171
 Height
 3
 24
@@ -2653,13 +2653,13 @@ Name
 object 72441
 X
 3
-390
+363
 Y
 3
 546
 Width
 3
-33
+60
 Height
 3
 24
@@ -2701,13 +2701,13 @@ Name
 object 726
 X
 3
-249
+231
 Y
 3
 456
 Width
 3
-174
+192
 Height
 3
 24
@@ -2749,13 +2749,13 @@ Name
 object 72675
 X
 3
-297
+285
 Y
 3
 426
 Width
 3
-126
+138
 Height
 3
 24
@@ -2797,13 +2797,13 @@ Name
 object 727
 X
 3
-318
+285
 Y
 3
 366
 Width
 3
-105
+138
 Height
 3
 24
@@ -2845,13 +2845,13 @@ Name
 object 728
 X
 3
-384
+285
 Y
 3
 336
 Width
 3
-39
+138
 Height
 3
 24
@@ -3037,13 +3037,13 @@ Name
 object 731
 X
 3
-336
+285
 Y
 3
 396
 Width
 3
-87
+138
 Height
 3
 24
@@ -3085,13 +3085,13 @@ Name
 object 733
 X
 3
-297
+258
 Y
 3
 936
 Width
 3
-126
+165
 Height
 3
 24
@@ -3133,13 +3133,13 @@ Name
 object 73311
 X
 3
-339
+309
 Y
 3
 876
 Width
 3
-84
+114
 Height
 3
 24
@@ -3181,13 +3181,13 @@ Name
 object 73315
 X
 3
-342
+282
 Y
 3
 846
 Width
 3
-81
+141
 Height
 3
 24
@@ -3277,13 +3277,13 @@ Name
 object 7332586
 X
 3
-330
+318
 Y
 3
 696
 Width
 3
-93
+105
 Height
 3
 24
@@ -3325,13 +3325,13 @@ Name
 object 73327
 X
 3
-348
+330
 Y
 3
 666
 Width
 3
-75
+93
 Height
 3
 24
@@ -3373,13 +3373,13 @@ Name
 object 73333
 X
 3
-375
+363
 Y
 3
 636
 Width
 3
-48
+60
 Height
 3
 24
@@ -3421,13 +3421,13 @@ Name
 object 73336
 X
 3
-375
+363
 Y
 3
 606
 Width
 3
-48
+60
 Height
 3
 24
@@ -3469,13 +3469,13 @@ Name
 object 73337
 X
 3
-375
+363
 Y
 3
 576
 Width
 3
-48
+60
 Height
 3
 24
@@ -3517,13 +3517,13 @@ Name
 object 73383
 X
 3
-375
+327
 Y
 3
 906
 Width
 3
-48
+96
 Height
 3
 24
@@ -3551,7 +3551,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -3565,13 +3565,13 @@ Name
 object 73388
 X
 3
-249
+210
 Y
 3
 1206
 Width
 3
-174
+213
 Height
 3
 24
@@ -3613,13 +3613,13 @@ Name
 object 7338834
 X
 3
-375
+276
 Y
 3
 1146
 Width
 3
-48
+147
 Height
 3
 24
@@ -3661,13 +3661,13 @@ Name
 object 7338838
 X
 3
-375
+279
 Y
 3
 1116
 Width
 3
-48
+144
 Height
 3
 24
@@ -3709,13 +3709,13 @@ Name
 object 7338891
 X
 3
-276
+222
 Y
 3
 1176
 Width
 3
-147
+201
 Height
 3
 24
@@ -3757,13 +3757,13 @@ Name
 object 73391
 X
 3
-387
+279
 Y
 3
 1086
 Width
 3
-36
+144
 Height
 3
 24
@@ -3805,13 +3805,13 @@ Name
 object 73394
 X
 3
-315
+276
 Y
 3
 1056
 Width
 3
-108
+147
 Height
 3
 24
@@ -7078,7 +7078,7 @@ equations {'pto_override'} = define() {
 
 
 
-10131
+10135
 on_load{'Marine Costs - PTO'} = define() {
 	check_override_pto();
 	on_change{'pto_override'};
@@ -7312,9 +7312,9 @@ function enable_itemized_pto()
 	enable('test_num',itemized_value==1);
 	enable('power_takeoff_system_cost_input',itemized_value!=2);
 	show('power_takeoff_system_cost_input',(itemized_value==0 || itemized_value==2));
-	show('power_takeoff_system_cost_input_label',(itemized_value==0 || itemized_value==2));
+	//show('power_takeoff_system_cost_input_label',(itemized_value==0 || itemized_value==2));
 	show('power_takeoff_system_cost_total',itemized_value==1);
-	show('power_takeoff_system_total_label',itemized_value==1);
+	//show('power_takeoff_system_total_label',itemized_value==1);
 	
 	if (itemized_value==1)
 	{

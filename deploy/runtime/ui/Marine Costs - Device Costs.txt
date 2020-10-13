@@ -1,7 +1,7 @@
 Marine Costs - Device Costs
 799
 424
-41
+34
 Numeric
 
 1
@@ -15,7 +15,7 @@ X
 495
 Y
 3
-369
+327
 Width
 3
 90
@@ -77,7 +77,7 @@ X
 609
 Y
 3
-369
+327
 Width
 3
 159
@@ -110,7 +110,7 @@ X
 495
 Y
 3
-369
+327
 Width
 3
 90
@@ -172,7 +172,7 @@ X
 603
 Y
 3
-324
+273
 Width
 3
 90
@@ -219,7 +219,7 @@ X
 603
 Y
 3
-258
+231
 Width
 3
 90
@@ -300,54 +300,6 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-13
-Name
-5
-18
-mooring_cost_label
-X
-3
-396
-Y
-3
-294
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-15
-Itemized inputs
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
 Numeric
 
 1
@@ -361,7 +313,7 @@ X
 495
 Y
 3
-321
+270
 Width
 3
 90
@@ -424,7 +376,7 @@ X
 396
 Y
 3
-321
+270
 Width
 3
 90
@@ -486,7 +438,7 @@ X
 138
 Y
 3
-321
+270
 Width
 3
 150
@@ -522,7 +474,7 @@ X
 297
 Y
 3
-321
+270
 Width
 3
 90
@@ -585,7 +537,7 @@ X
 396
 Y
 3
-321
+270
 Width
 3
 90
@@ -635,54 +587,6 @@ BackColour
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-19
-mooring_input_label
-X
-3
-411
-Y
-3
-294
-Width
-3
-60
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-10
-User input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
 Divider
 
 1
@@ -696,7 +600,7 @@ X
 456
 Y
 3
-351
+309
 Width
 3
 171
@@ -731,10 +635,10 @@ Name
 object 4
 X
 3
-9
+6
 Y
 3
-9
+6
 Width
 3
 780
@@ -761,13 +665,13 @@ Name
 object 7
 X
 3
-387
+198
 Y
 3
-369
+168
 Width
 3
-105
+90
 Height
 3
 24
@@ -776,8 +680,8 @@ Tool Tip
 0
 Caption
 5
-18
-Total device costs
+12
+Input option
 TextColour
 4
 0
@@ -786,7 +690,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -901,113 +805,17 @@ Label
 13
 Name
 5
-10
-object 721
-X
-3
-297
-Y
-3
-294
-Width
-3
-84
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-13
-Modeled value
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 12
 object 72145
 X
 3
-297
+294
 Y
 3
 168
 Width
 3
-84
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-13
-Modeled value
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-11
-object 7219
-X
-3
-297
-Y
-3
-231
-Width
-3
-84
+93
 Height
 3
 24
@@ -1049,109 +857,13 @@ Name
 object 7322
 X
 3
-501
+495
 Y
 3
 168
 Width
 3
-78
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-13
-Category cost
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-13
-object 732218
-X
-3
-498
-Y
-3
-231
-Width
-3
-81
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-13
-Category cost
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-13
-object 732234
-X
-3
-498
-Y
-3
-294
-Width
-3
-81
+90
 Height
 3
 24
@@ -1196,7 +908,7 @@ X
 18
 Y
 3
-258
+231
 Width
 3
 117
@@ -1241,13 +953,13 @@ Name
 object 7535
 X
 3
-78
+54
 Y
 3
-321
+270
 Width
 3
-54
+78
 Height
 3
 24
@@ -1289,13 +1001,13 @@ Name
 object 757
 X
 3
-18
+6
 Y
 3
 195
 Width
 3
-117
+129
 Height
 3
 24
@@ -1306,6 +1018,54 @@ Caption
 5
 19
 Structural assembly
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 77
+X
+3
+345
+Y
+3
+327
+Width
+3
+147
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+18
+Total device costs
 TextColour
 4
 0
@@ -1340,7 +1100,7 @@ X
 495
 Y
 3
-258
+231
 Width
 3
 90
@@ -1403,7 +1163,7 @@ X
 396
 Y
 3
-258
+231
 Width
 3
 90
@@ -1452,54 +1212,6 @@ BackColour
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-37
-power_takeoff_system_cost_input_label
-X
-3
-414
-Y
-3
-231
-Width
-3
-60
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-10
-User input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
 Choice
 
 1
@@ -1513,7 +1225,7 @@ X
 138
 Y
 3
-258
+231
 Width
 3
 150
@@ -1549,7 +1261,7 @@ X
 297
 Y
 3
-258
+231
 Width
 3
 90
@@ -1612,7 +1324,7 @@ X
 396
 Y
 3
-258
+231
 Width
 3
 90
@@ -1668,75 +1380,27 @@ Label
 13
 Name
 5
-32
-power_takeoff_system_total_label
-X
-3
-399
-Y
-3
-231
-Width
-3
-84
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-15
-Itemized totals
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 24
 struct_level_total_label
 X
 3
-399
+396
 Y
 3
-171
+168
 Width
 3
-84
+90
 Height
 3
-21
+24
 Tool Tip
 5
 0
 Caption
 5
-15
-Itemized inputs
+10
+User input
 TextColour
 4
 0
@@ -1754,7 +1418,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1768,16 +1432,16 @@ Name
 struct_user_input_label
 X
 3
-408
+690
 Y
 3
-171
+102
 Width
 3
 60
 Height
 3
-21
+24
 Tool Tip
 5
 0
@@ -2175,25 +1839,25 @@ equations {'device_costs_total'} = define() {
 
 
 
-2216
+2222
 on_load{'Marine Costs - Device Costs'} = define() {
 	on_change{'device_cost_override'};
 	override_device_cost();
 	
 	//Structural assembly
-	show('struct_level_total_label',0);
+	//show('struct_level_total_label',0);
 	show('structural_assembly_cost_total',0);
 	enable('structural_assembly_cost_input',0);
 	show('struct_user_input_label',1);
 	
 	//PTO
-	show('power_takeoff_system_total_label',0);
+	//show('power_takeoff_system_total_label',0);
 	show('power_takeoff_system_cost_total',0);
 	enable('power_takeoff_system_cost_input',0);
 	show('power_takeoff_system_cost_input_label',1);
 	
 	//Mooring
-	show('mooring_cost_label',0);
+	//show('mooring_cost_label',0);
 	show('mooring_found_substruc_cost_total',0);
 	enable('mooring_found_substruc_cost_input',0);
 	show('mooring_input_label',1);

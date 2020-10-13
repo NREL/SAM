@@ -207,7 +207,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -270,7 +270,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 CheckBox
 
 1
@@ -446,7 +446,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Numeric
 
 1
@@ -987,7 +987,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -1050,7 +1050,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Divider
 
 1
@@ -1852,7 +1852,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+11
 Numeric
 
 1
@@ -1915,7 +1915,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -1978,7 +1978,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+10
 Numeric
 
 1
@@ -2041,7 +2041,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -2271,7 +2271,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+9
 Numeric
 
 1
@@ -2334,7 +2334,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+6
 Numeric
 
 1

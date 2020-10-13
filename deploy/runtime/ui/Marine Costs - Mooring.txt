@@ -11,13 +11,13 @@ Name
 0
 X
 3
-237
+210
 Y
 3
 147
 Width
 3
-81
+108
 Height
 3
 24
@@ -59,13 +59,13 @@ Name
 Ladders
 X
 3
-372
+300
 Y
 3
 447
 Width
 3
-48
+120
 Height
 3
 24
@@ -137,13 +137,13 @@ Name
 Personnel Access System
 X
 3
-276
+216
 Y
 3
 657
 Width
 3
-135
+195
 Height
 3
 24
@@ -694,7 +694,7 @@ Y
 597
 Width
 3
-129
+162
 Height
 3
 24
@@ -727,7 +727,7 @@ Y
 357
 Width
 3
-135
+150
 Height
 3
 24
@@ -886,7 +886,7 @@ Y
 123
 Width
 3
-90
+99
 Height
 3
 24
@@ -934,7 +934,7 @@ Y
 123
 Width
 3
-117
+126
 Height
 3
 24
@@ -1346,13 +1346,13 @@ Name
 object 713
 X
 3
-192
+171
 Y
 3
 207
 Width
 3
-126
+147
 Height
 3
 24
@@ -1394,13 +1394,13 @@ Name
 object 72441
 X
 3
-255
+210
 Y
 3
 537
 Width
 3
-165
+210
 Height
 3
 24
@@ -1428,7 +1428,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1442,13 +1442,13 @@ Name
 object 7244132
 X
 3
-222
+141
 Y
 3
 747
 Width
 3
-189
+270
 Height
 3
 24
@@ -1476,7 +1476,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -1490,13 +1490,13 @@ Name
 object 724413236
 X
 3
-285
+234
 Y
 3
 717
 Width
 3
-126
+177
 Height
 3
 24
@@ -1538,13 +1538,13 @@ Name
 object 7244134
 X
 3
-327
+237
 Y
 3
 687
 Width
 3
-84
+174
 Height
 3
 24
@@ -1586,13 +1586,13 @@ Name
 object 7244135
 X
 3
-327
+294
 Y
 3
 507
 Width
 3
-93
+126
 Height
 3
 24
@@ -1634,13 +1634,13 @@ Name
 object 7244143
 X
 3
-375
+297
 Y
 3
 477
 Width
 3
-45
+123
 Height
 3
 24
@@ -1682,13 +1682,13 @@ Name
 object 726
 X
 3
-261
+216
 Y
 3
 627
 Width
 3
-150
+195
 Height
 3
 24
@@ -1730,13 +1730,13 @@ Name
 object 72647
 X
 3
-270
+228
 Y
 3
 417
 Width
 3
-150
+192
 Height
 3
 24
@@ -1778,13 +1778,13 @@ Name
 object 727
 X
 3
-96
+51
 Y
 3
 837
 Width
 3
-222
+267
 Height
 3
 24
@@ -1826,13 +1826,13 @@ Name
 object 72728
 X
 3
-228
+186
 Y
 3
 807
 Width
 3
-90
+132
 Height
 3
 24
@@ -1874,13 +1874,13 @@ Name
 object 72730
 X
 3
-69
+45
 Y
 3
 777
 Width
 3
-249
+270
 Height
 3
 24
@@ -1922,13 +1922,13 @@ Name
 object 72740
 X
 3
-174
+132
 Y
 3
 567
 Width
 3
-144
+186
 Height
 3
 24
@@ -1970,13 +1970,13 @@ Name
 object 72751
 X
 3
-111
+75
 Y
 3
 327
 Width
 3
-207
+243
 Height
 3
 24
@@ -2018,13 +2018,13 @@ Name
 object 728
 X
 3
-219
+186
 Y
 3
 297
 Width
 3
-99
+132
 Height
 3
 24
@@ -2066,13 +2066,13 @@ Name
 object 729
 X
 3
-171
+150
 Y
 3
 267
 Width
 3
-147
+168
 Height
 3
 24
@@ -2114,13 +2114,13 @@ Name
 object 73
 X
 3
-216
+201
 Y
 3
 177
 Width
 3
-102
+117
 Height
 3
 24
@@ -2162,13 +2162,13 @@ Name
 object 730
 X
 3
-159
+141
 Y
 3
 237
 Width
 3
-159
+177
 Height
 3
 24
@@ -2210,13 +2210,13 @@ Name
 object 731
 X
 3
-339
+294
 Y
 3
 387
 Width
 3
-81
+126
 Height
 3
 24
@@ -3818,7 +3818,7 @@ equations {'mooring_override'} = define() {
 
 
 
-4734
+4738
 on_load{'Marine Costs - Mooring'} = define() {
 	check_override_mooring();
 	on_change{'mooring_override'};
@@ -3929,9 +3929,9 @@ function enable_itemized_mooring()
 	enable('other_mooring_cost',itemized_value==1);
 	enable('mooring_found_substruc_cost_input',itemized_value!=2);
 	show('mooring_found_substruc_cost_total',itemized_value==1);
-	show('mooring_cost_label',itemized_value==1);
+	//show('mooring_cost_label',itemized_value==1);
 	show('mooring_found_substruc_cost_input',(itemized_value==0 || itemized_value==2));
-	show('mooring_input_label',(itemized_value==0 || itemized_value==2));
+	//show('mooring_input_label',(itemized_value==0 || itemized_value==2));
 	
 	if (itemized_value==1)
 	{
