@@ -3,6 +3,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <map>
 #include <set>
 #include <iostream>
 
@@ -37,7 +38,7 @@ extern std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_inp
  * Maps each technology-financial configuration to the primary compute_modules required
  * e.g. 'Biopower-LCOE Calculator': ('biomass', 'lcoefcr')
  */
-extern std::unordered_map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
+extern std::map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
 
 /**
  * Maps each compute_module variable to its index in the info table for each config
@@ -66,8 +67,12 @@ extern std::unordered_map<std::string, std::unordered_map<std::string, VarValue>
 /**
  * Maps each configuration to its specific defaults found in defaults text files
  */
- extern std::unordered_map<std::string, VarTable> SAM_config_to_defaults;
+extern std::unordered_map<std::string, VarTable> SAM_config_to_defaults;
 
+/**
+ * Maps each financial or technology option to its long name and description
+ */
+extern std::map<std::string, std::pair<std::string, std::string>> SAM_option_to_description;
 
 /**
  * Manages mapping and memory for ui_form_extractors
@@ -132,7 +137,7 @@ extern std::unordered_map<std::string, std::vector<std::string>> SAM_ui_obj_to_e
 static std::unordered_map<std::string, std::string> config_to_cmod_name = {
         {"6parsolve", "SixParsolve"},
         {"AllEquityPartnershipFlip", "Equpartflip"},
-        {"Battery", "StandAloneBattery"},
+        {"Battery", "Battery"},
         {"Belpe", "Belpe"},
         {"Biopower", "Biomass"},
         {"Commercial", "Commercial"},
@@ -199,7 +204,11 @@ VarValue* find_default_from_ui(std::string name, std::string config);
 /// Determine if a variable is a primary ssc input by returning cmod name
 std::string which_cmod_as_input(std::string name, std::string config);
 
-// utils
+// SAM config utils
+
+void get_tech_fin_of_config(const std::string& config, std::string& tech, std::string& fin);
+
+// LK parsing utils
 
 std::vector<std::string> split_identity_string(std::string str, size_t n);
 
