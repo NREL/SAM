@@ -1,6 +1,6 @@
 CEC Performance Model with User Entered Specifications
-1174
-885
+1170
+875
 51
 Numeric
 
@@ -1609,7 +1609,7 @@ X
 354
 Y
 3
-132
+126
 Width
 3
 99
@@ -2914,7 +2914,7 @@ equations{ '6par_aisc' } = define() {
 	
 equations{'6par_step'} = define() {
 	return ${step};};
-8017
+8014
 on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 
 	enable_bifacial();
@@ -2923,8 +2923,8 @@ on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 
 on_change{'6par_step'} = define() {
 	time_step = value('6par_step');
-	enable('6par_user_transient_thermal_model_unit_mass',time_step <= 1200);
-	show('transient_thermal_model_message', time_step <= 1200);
+	enable('6par_transient_thermal_model_unit_mass',time_step <= 1200);
+	//show('transient_thermal_model_message', time_step <= 1200);
 	refresh();
 };
 
