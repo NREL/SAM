@@ -918,7 +918,7 @@ extern "C"
 
 	/**
 	 * Set en_electricity_rates: Enable Electricity Rates [0/1]
-	 * options: 0=EnableElectricityRates,1=NoRates
+	 * options: 0=NoRates,1=EnableElectricityRates
 	 * constraints: None
 	 * required if: None
 	 */
@@ -1565,8 +1565,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_Outputs_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Battery_Outputs_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Battery_Outputs_resilience_hrs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_avg_nget(SAM_table ptr, SAM_error *err);
@@ -1576,6 +1574,8 @@ extern "C"
 	SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_min_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_survival_function_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Outputs_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

@@ -337,8 +337,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Battwatts_Outputs_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Battwatts_Outputs_resilience_hrs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_avg_nget(SAM_table ptr, SAM_error *err);
@@ -348,6 +346,8 @@ extern "C"
 	SAM_EXPORT double SAM_Battwatts_Outputs_resilience_hrs_min_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_survival_function_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

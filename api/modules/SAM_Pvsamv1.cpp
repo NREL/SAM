@@ -10205,9 +10205,9 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_annual_charge_from_grid_aget(SAM_tab
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_annual_charge_from_pv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "batt_annual_charge_from_pv", length);
+	result = ssc_data_get_array(ptr, "batt_annual_charge_from_system", length);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "batt_annual_charge_from_pv");
+		make_access_error("SAM_Pvsamv1", "batt_annual_charge_from_system");
 	});
 	return result;
 }
@@ -10396,8 +10396,8 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_target_aget(SAM_table ptr, int
 SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_pv_charge_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_pv_charge_percent", &result))
-		make_access_error("SAM_Pvsamv1", "batt_pv_charge_percent");
+	if (!ssc_data_get_number(ptr, "batt_system_charge_percent", &result))
+		make_access_error("SAM_Pvsamv1", "batt_system_charge_percent");
 	});
 	return result;
 }
@@ -11112,9 +11112,9 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_poa_rear_aget(SAM_table ptr, int*
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_pv_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_pv_to_batt", length);
+	result = ssc_data_get_array(ptr, "monthly_system_to_batt", length);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "monthly_pv_to_batt");
+		make_access_error("SAM_Pvsamv1", "monthly_system_to_batt");
 	});
 	return result;
 }
@@ -11124,9 +11124,9 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_pv_to_batt_aget(SAM_table ptr, in
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_pv_to_grid", length);
+	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "monthly_pv_to_grid");
+		make_access_error("SAM_Pvsamv1", "monthly_system_to_grid");
 	});
 	return result;
 }
@@ -11136,9 +11136,9 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_pv_to_grid_aget(SAM_table ptr, in
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_pv_to_load", length);
+	result = ssc_data_get_array(ptr, "monthly_system_to_load", length);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "monthly_pv_to_load");
+		make_access_error("SAM_Pvsamv1", "monthly_system_to_load");
 	});
 	return result;
 }
@@ -11302,9 +11302,9 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_shaded_soiled_aget(SAM_table ptr, int
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_pv_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "pv_to_batt", length);
+	result = ssc_data_get_array(ptr, "system_to_batt", length);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "pv_to_batt");
+		make_access_error("SAM_Pvsamv1", "system_to_batt");
 	});
 	return result;
 }
@@ -11314,21 +11314,9 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_pv_to_batt_aget(SAM_table ptr, int* lengt
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "pv_to_grid", length);
+	result = ssc_data_get_array(ptr, "system_to_grid", length);
 	if (!result)
-		make_access_error("SAM_Pvsamv1", "pv_to_grid");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Pvsamv1_Outputs_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "pv_to_load", length);
-	if (!result)
-		make_access_error("SAM_Pvsamv1", "pv_to_load");
+		make_access_error("SAM_Pvsamv1", "system_to_grid");
 	});
 	return result;
 }
@@ -12942,6 +12930,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_survival_function_aget(SAM_table ptr, int
 	result = ssc_data_get_array(ptr, "survival_function", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "survival_function");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "system_to_load", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "system_to_load");
 	});
 	return result;
 }
