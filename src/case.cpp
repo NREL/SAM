@@ -693,6 +693,15 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 		// find the default value for this variable.  first priority is externally saved default,
 		// then as a fallback use the internal default value
+
+		// debugging 
+		wxString vn = it->first;
+		if (vn == "en_batt") {
+			// do somesthing to break here
+			vn = "stop here";
+		}
+			
+
 		VarValue *val_default = vt_defaults.Get( it->first );
 		if ( val_default == 0 )
 		{
@@ -718,6 +727,11 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 			// if the variable exists but is of a different data type
 			vv->SetType( it->second->Type );
 			vv->Copy( *val_default );
+		}
+		//else if (it->second->Flags & VF_CALCULATED && it->second->Flags & VF_INDICATOR) 
+		else if (it->second->Flags & VF_CHANGE_MODEL)
+		{ // assumption that any configuration dependent values that should be overwritten are both calculated and indicators - e.g. "en_batt" - SAM Github issue 395
+			vv->Copy(*val_default);
 		}
 	}
 			
