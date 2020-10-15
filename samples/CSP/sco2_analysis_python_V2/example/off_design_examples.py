@@ -328,89 +328,10 @@ def run_example_2():
 "Example #1"
 "Simulate off-design performance w/ optimized control and fixed shaft speeds"
 ######################################
-#run_example_1()
+run_example_1()
 
 ######################################
 "Example #2"
 "Simulate off-design performance w/ user specified control parameters"
 ######################################
-#run_example_2()
-
-if(False):
-
-    "Generate data for SAM's User Defined Power Cycle Model"
-    # Instantiate sco2 cycle simulation class
-    c_sco2 = sco2_solve.C_sco2_sim(1)           # Initialize as same cycle config as specified above
-
-    # Get default design parameters. These are different than the "baseline" default parameters in "sco2_cycle_ssc.py"
-    sco2_des_par_default = get_sco2_design_parameters()
-    c_sco2.overwrite_default_design_parameters(sco2_des_par_default)
-
-    # Setup string for naming files
-    des_sim_label_str = "T_amb_des" + '{:.1f}'.format(sco2_des_par_default["T_amb_des"])
-
-    mod_base_dict = {"od_generate_udpc": [1.0]}
-    mod_base_dict["od_rel_tol"] = 2
-
-    c_sco2.overwrite_des_par_base(mod_base_dict)  # Overwrite baseline design parameters
-    c_sco2.solve_sco2_case()  # Run design simulation
-
-    print(c_sco2.m_solve_dict["eta_thermal_calc"])
-    print("\nDid the simulation code with "
-          "modified design parameters solve successfully = ", c_sco2.m_solve_success)
-
-    c_sco2.m_also_save_csv = True
-    c_sco2.save_m_solve_dict("" + des_sim_label_str + "_UDPC")  # Save design
-
-    solved_dict = c_sco2.m_solve_dict
-    udpc_data = solved_dict["udpc_table"]
-
-    HTF_cold_str = "HTF cold design = " + str(solved_dict["T_htf_cold_des"]) + " C"
-    T_co2_in_str = "CO2 PHX in Temp design = " + str(solved_dict["T_co2_PHX_in"]) + " C"
-    P_co2_in_str = "CO2 PHX in Pressure design = " + str(solved_dict["P_co2_PHX_in"]) + " MPa"
-    T_turb_str = "CO2 Turbine in Temp design = " + str(solved_dict["T_turb_in"]) + " C"
-    P_turb_str = "CO2 Turbine in Pressure design = " + str(solved_dict["t_P_in_des"]) + " MPa"
-    eta_str = "Cycle Thermal Efficiency (Design page) = " + str(solved_dict["eta_thermal_calc"]) + " -"
-    T_amb_str = "Ambient Temperature (Power Cycle page) = " + str(solved_dict["T_amb_des"]) + " C"
-    W_dot_cool_str = "Cooling Parasitic (Power Cycle page) = " + str(solved_dict["fan_power_frac"]) + " -"
-
-    #SSC_OUTPUT, SSC_MATRIX,  "udpc_table",  "Columns (7): HTF Temp [C], HTF ND mass flow [-], Ambient Temp [C], ND Power, ND Heat In, ND Fan Power, ND Water. Rows = runs"
-    with open("udpc_outputs" + '.csv', 'w', newline='') as f:
-        w = csv.writer(f)
-        w.writerows(solved_dict["udpc_table"])
-    f.close()
-
-    n_T_htf = int(solved_dict["udpc_n_T_htf"])
-    n_T_amb = int(solved_dict["udpc_n_T_amb"])
-    n_m_dot_htf = int(solved_dict["udpc_n_m_dot_htf"])
-
-    s_cycle_des = HTF_cold_str + "\n" + T_co2_in_str + "\n"\
-                  + P_co2_in_str+ "\n" + T_turb_str + "\n" + P_turb_str + "\n"\
-                  + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str
-
-    cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, "updc_data", s_cycle_des)
-
-
-if(True):
-
-    udpc_dict = json.load(open("T_amb_des40.0_UDPC.json"))
-
-    print("HTF cold design = " + str(udpc_dict["T_htf_cold_des"]) + " C")
-
-    T_hot_str = "HTF Hot Temperature (Design page) = " + str(udpc_dict["T_htf_hot_des"]) + " C"
-    T_cold_str = "HTF Cold Temperature (Design page) = " + str(udpc_dict["T_htf_cold_des"]) + " C"
-    eta_str = "Cycle Thermal Efficiency (Design page) = " + str(udpc_dict["eta_thermal_calc"]) + " -"
-    T_amb_str = "Ambient Temperature (Power Cycle page) = " + str(udpc_dict["T_amb_des"]) + " C"
-    W_dot_cool_str = "Cooling Parasitic (Power Cycle page) = " + str(udpc_dict["fan_power_frac"]) + " -"
-
-    od_T_t_in_mode = udpc_dict["od_T_t_in_mode"]
-
-    n_T_htf = int(udpc_dict["udpc_n_T_htf"])
-    n_T_amb = int(udpc_dict["udpc_n_T_amb"])
-    n_m_dot_htf = int(udpc_dict["udpc_n_m_dot_htf"])
-
-    udpc_data = udpc_dict["udpc_table"]
-
-    s_cycle_des = T_hot_str + "\n" + T_cold_str + "\n" + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str + "\n"
-
-    cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, "updc_data_read", s_cycle_des, od_T_t_in_mode)
+run_example_2()
