@@ -5759,7 +5759,7 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_annual_charge_from_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_annual_charge_from_pv_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -5791,8 +5791,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_target_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_pv_charge_percent_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_q0_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_q1_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -5812,6 +5810,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_revenue_discharge_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_revenue_gridcharge_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_system_charge_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_system_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -5911,13 +5911,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_poa_rear_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_pv_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_snow_loss_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_system_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_nameplate_dc_rating_nget(SAM_table ptr, SAM_error *err);
 
@@ -5942,10 +5942,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_shaded_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_poa_shaded_soiled_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Pvsamv1_Outputs_pv_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Pvsamv1_Outputs_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_resilience_hrs_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -6216,6 +6212,10 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_sunup_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_survival_function_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
