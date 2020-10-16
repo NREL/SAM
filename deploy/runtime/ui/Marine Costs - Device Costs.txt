@@ -1,7 +1,7 @@
 Marine Costs - Device Costs
 799
 424
-34
+33
 Numeric
 
 1
@@ -39,7 +39,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -134,7 +135,8 @@ Decimals
 0
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -172,7 +174,7 @@ X
 603
 Y
 3
-273
+270
 Width
 3
 90
@@ -313,7 +315,7 @@ X
 495
 Y
 3
-270
+267
 Width
 3
 90
@@ -376,7 +378,7 @@ X
 396
 Y
 3
-270
+267
 Width
 3
 90
@@ -438,7 +440,7 @@ X
 138
 Y
 3
-270
+267
 Width
 3
 150
@@ -474,7 +476,7 @@ X
 297
 Y
 3
-270
+267
 Width
 3
 90
@@ -537,7 +539,7 @@ X
 396
 Y
 3
-270
+267
 Width
 3
 90
@@ -713,7 +715,7 @@ Name
 object 71
 X
 3
-51
+24
 Y
 3
 129
@@ -761,13 +763,13 @@ Name
 object 716
 X
 3
-51
+24
 Y
 3
 39
 Width
 3
-591
+687
 Height
 3
 84
@@ -905,7 +907,7 @@ Name
 object 75
 X
 3
-18
+21
 Y
 3
 231
@@ -953,10 +955,10 @@ Name
 object 7535
 X
 3
-54
+60
 Y
 3
-270
+267
 Width
 3
 78
@@ -1001,7 +1003,7 @@ Name
 object 757
 X
 3
-6
+9
 Y
 3
 195
@@ -1049,7 +1051,7 @@ Name
 object 77
 X
 3
-345
+348
 Y
 3
 327
@@ -1391,54 +1393,6 @@ Y
 Width
 3
 90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-10
-User input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-23
-struct_user_input_label
-X
-3
-690
-Y
-3
-102
-Width
-3
-60
 Height
 3
 24
@@ -1816,7 +1770,7 @@ device_costs_total_display
 0
 Default
 
-382
+890
 equations {'device_costs_total'} = define() {
 	if (${device_cost_override}!=1)
 	{
@@ -1833,6 +1787,46 @@ equations {'device_costs_total'} = define() {
 /*equations {'total_installed_cost'} = define() {
 	return ${device_costs_total};
 };*/
+
+equations {'stuctural_assem_shown'} = define() {
+	if (${structural_assembly_cost_method}==3)
+	{
+		//return 0;
+		return true;
+	}
+	else
+	{
+		//return 1;
+		return false;
+	}
+};
+
+equations {'pto_shown'} = define() {
+	if (${power_takeoff_system_cost_method}==3)
+	{
+		//return 0;
+		return true;
+	}
+	else
+	{
+		//return 1;
+		return false;
+	}
+};
+
+equations {'mooring_shown'} = define() {
+	if (${mooring_found_substruc_cost_method}==3)
+	{
+		//return 0;
+		return true;
+	}
+	else
+	{
+		//return 1;
+		return false;
+	}
+};
+	
 
 
 

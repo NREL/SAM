@@ -1,7 +1,7 @@
 Marine Costs - Reserve Accounts
 817
 278
-27
+26
 Label
 
 1
@@ -378,54 +378,6 @@ Caption
 5
 15
 Category totals
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 71944
-X
-3
-453
-Y
-3
-87
-Width
-3
-132
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-24
-Itemized input structure
 TextColour
 4
 0

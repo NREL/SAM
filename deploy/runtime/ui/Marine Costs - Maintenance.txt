@@ -1,7 +1,7 @@
 Marine Costs - Maintenance
-623
-554
-48
+869
+575
+38
 Label
 
 1
@@ -11,7 +11,7 @@ Name
 0
 X
 3
-84
+123
 Y
 3
 156
@@ -59,7 +59,7 @@ Name
 Itemized Inputs 
 X
 3
-399
+438
 Y
 3
 129
@@ -107,13 +107,13 @@ Name
 Itemized Inputs 3
 X
 3
-297
+336
 Y
 3
 129
 Width
 3
-90
+99
 Height
 3
 24
@@ -155,7 +155,7 @@ Name
 balance_of_system_scheduled_maintenance_cost
 X
 3
-390
+429
 Y
 3
 276
@@ -218,7 +218,7 @@ Name
 balance_of_system_unscheduled_maintenance_cost
 X
 3
-390
+429
 Y
 3
 426
@@ -281,7 +281,7 @@ Name
 detailed_cost_choice_scheduled_maintenance
 X
 3
-318
+357
 Y
 3
 216
@@ -314,7 +314,7 @@ Name
 detailed_cost_choice_unscheduled_maintenance
 X
 3
-318
+357
 Y
 3
 366
@@ -337,53 +337,6 @@ State
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-26
-itemized_check_maintenance
-X
-3
-42
-Y
-3
-45
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 Numeric
 
 1
@@ -394,7 +347,7 @@ Name
 long_term_service_agreement_cost
 X
 3
-297
+336
 Y
 3
 156
@@ -447,341 +400,6 @@ BackColour
 TabOrder
 3
 1
-Numeric
-
-1
-17
-Name
-5
-16
-maintenance_cost
-X
-3
-492
-Y
-3
-72
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-1
-Numeric
-
-1
-17
-Name
-5
-22
-maintenance_cost_input
-X
-3
-393
-Y
-3
-72
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Choice
-
-1
-9
-Name
-5
-23
-maintenance_cost_method
-X
-3
-138
-Y
-3
-72
-Width
-3
-150
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-4
-Enter in $/kW
-Enter in $
-Use Modeled Value ($)
-Enter as Itemized Costs ($)
-Selection
-3
-0
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-24
-maintenance_cost_modeled
-X
-3
-294
-Y
-3
-72
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-22
-maintenance_cost_total
-X
-3
-393
-Y
-3
-72
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Label
-
-1
-13
-Name
-5
-29
-maintenance_level_total_label
-X
-3
-393
-Y
-3
-45
-Width
-3
-87
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-15
-Itemized inputs
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 Label
 
 1
@@ -792,7 +410,7 @@ Name
 maintenance_override_check
 X
 3
-504
+543
 Y
 3
 342
@@ -839,13 +457,13 @@ Name
 maintenance_override_label
 X
 3
-495
+534
 Y
 3
 171
 Width
 3
-105
+150
 Height
 3
 159
@@ -877,54 +495,6 @@ AlignRight
 AlignTop
 2
 1
-Label
-
-1
-13
-Name
-5
-28
-maintenance_user_input_label
-X
-3
-408
-Y
-3
-45
-Width
-3
-60
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-10
-User input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
 Numeric
 
 1
@@ -935,7 +505,7 @@ Name
 marine_energy_converter_scheduled_maintenance_cost
 X
 3
-390
+429
 Y
 3
 246
@@ -998,7 +568,7 @@ Name
 marine_energy_converter_unscheduled_maintenance_cost
 X
 3
-390
+429
 Y
 3
 396
@@ -1067,7 +637,7 @@ Y
 108
 Width
 3
-534
+732
 Height
 3
 16
@@ -1105,7 +675,7 @@ Y
 15
 Width
 3
-600
+800
 Height
 3
 534
@@ -1125,65 +695,17 @@ Label
 13
 Name
 5
-8
-object 7
-X
-3
-33
-Y
-3
-72
-Width
-3
-99
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-11
-Maintenance
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 12
 object 71339
 X
 3
-228
+243
 Y
 3
 246
 Width
 3
-162
+186
 Height
 3
 24
@@ -1221,27 +743,27 @@ Label
 13
 Name
 5
-10
-object 721
+11
+object 7214
 X
 3
-297
+18
 Y
 3
-45
+33
 Width
 3
-84
+774
 Height
 3
-24
+75
 Tool Tip
 5
 0
 Caption
 5
-13
-Modeled value
+559
+To input maintenance costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled maintenance costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized maintenance costs based on the level structure shown below, select "Enter as Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is found from the sum of the bolded entries and is reflected in the User input box. 
 TextColour
 4
 0
@@ -1256,13 +778,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
-1
+0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -1273,7 +795,7 @@ Name
 object 7275125
 X
 3
-204
+243
 Y
 3
 426
@@ -1321,7 +843,7 @@ Name
 object 7275130
 X
 3
-114
+153
 Y
 3
 336
@@ -1369,7 +891,7 @@ Name
 object 7275135
 X
 3
-180
+219
 Y
 3
 306
@@ -1417,13 +939,13 @@ Name
 object 727513513
 X
 3
-231
+243
 Y
 3
 276
 Width
 3
-159
+186
 Height
 3
 24
@@ -1465,7 +987,7 @@ Name
 object 728
 X
 3
-138
+177
 Y
 3
 516
@@ -1513,13 +1035,13 @@ Name
 object 729
 X
 3
-171
+174
 Y
 3
 486
 Width
 3
-219
+255
 Height
 3
 24
@@ -1561,13 +1083,13 @@ Name
 object 72937
 X
 3
-171
+174
 Y
 3
 456
 Width
 3
-219
+255
 Height
 3
 24
@@ -1609,7 +1131,7 @@ Name
 object 73
 X
 3
-147
+186
 Y
 3
 186
@@ -1657,13 +1179,13 @@ Name
 object 73029
 X
 3
-213
+228
 Y
 3
 396
 Width
 3
-177
+201
 Height
 3
 24
@@ -1701,62 +1223,14 @@ Label
 13
 Name
 5
-11
-object 7322
-X
-3
-498
-Y
-3
-45
-Width
-3
-81
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-13
-Category cost
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 16
 om_cost_override
 X
 3
-174
+33
 Y
 3
-27
+219
 Width
 3
 90
@@ -1800,7 +1274,7 @@ Name
 other_maintenance_cost
 X
 3
-300
+339
 Y
 3
 516
@@ -1863,7 +1337,7 @@ Name
 other_scheduled_maintenance_cost
 X
 3
-390
+429
 Y
 3
 306
@@ -1926,7 +1400,7 @@ Name
 other_unscheduled_maintenance_cost
 X
 3
-390
+429
 Y
 3
 486
@@ -1989,7 +1463,7 @@ Name
 scheduled_maintenance_cost
 X
 3
-297
+336
 Y
 3
 186
@@ -2052,7 +1526,7 @@ Name
 scheduled_maintenance_cost_total
 X
 3
-297
+336
 Y
 3
 186
@@ -2115,7 +1589,7 @@ Name
 tt_long_term_service_agreement_cost
 X
 3
-399
+438
 Y
 3
 156
@@ -2141,7 +1615,7 @@ Name
 tt_other_maintenance_cost
 X
 3
-399
+438
 Y
 3
 516
@@ -2167,7 +1641,7 @@ Name
 tt_scheduled_maintenance_cost
 X
 3
-399
+438
 Y
 3
 186
@@ -2193,7 +1667,7 @@ Name
 tt_unscheduled_maintenance_cost
 X
 3
-399
+438
 Y
 3
 336
@@ -2219,7 +1693,7 @@ Name
 unscheduled_maintenance_contingency_cost
 X
 3
-390
+429
 Y
 3
 456
@@ -2282,7 +1756,7 @@ Name
 unscheduled_maintenance_cost
 X
 3
-300
+339
 Y
 3
 336
@@ -2345,7 +1819,7 @@ Name
 unscheduled_maintenance_cost_total
 X
 3
-300
+339
 Y
 3
 336
@@ -2869,7 +2343,7 @@ unscheduled_maintenance_cost_total_check
 0
 Default
 
-1671
+1628
 equations {'scheduled_maintenance_cost_total'} = define() {
 	return ${marine_energy_converter_scheduled_maintenance_cost}+
 		${balance_of_system_scheduled_maintenance_cost}+
@@ -2931,15 +2405,7 @@ equations {'maintenance_cost'} = define() {
 };
 
 equations {'maintenance_override_check'} = define() {
-	if (${om_cost_override}==1)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-};
+	return ${om_cost_override};};
 
 
 

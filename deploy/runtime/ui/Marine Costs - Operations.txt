@@ -1,7 +1,7 @@
 Marine Costs - Operations
-618
-977
-77
+1007
+988
+67
 Label
 
 1
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-42
+60
 Y
 3
 150
 Width
 3
-255
+285
 Height
 3
 24
@@ -59,7 +59,7 @@ Name
 Itemized Inputs 
 X
 3
-399
+447
 Y
 3
 123
@@ -107,7 +107,7 @@ Name
 Itemized Inputs 3
 X
 3
-297
+345
 Y
 3
 123
@@ -155,7 +155,7 @@ Name
 annual_leases_fees_cost
 X
 3
-297
+345
 Y
 3
 300
@@ -218,7 +218,7 @@ Name
 annual_leases_fees_cost_total
 X
 3
-297
+345
 Y
 3
 300
@@ -281,7 +281,7 @@ Name
 condition_monitoring_operations_cost
 X
 3
-396
+444
 Y
 3
 810
@@ -344,7 +344,7 @@ Name
 detailed_cost_choice_annual_leases
 X
 3
-303
+351
 Y
 3
 330
@@ -377,7 +377,7 @@ Name
 detailed_cost_choice_env_health_safety
 X
 3
-303
+351
 Y
 3
 180
@@ -410,7 +410,7 @@ Name
 detailed_cost_choice_gen_admin
 X
 3
-303
+351
 Y
 3
 570
@@ -443,7 +443,7 @@ Name
 environmental_health_and_safety_monitoring_cost
 X
 3
-297
+345
 Y
 3
 150
@@ -506,7 +506,7 @@ Name
 environmental_health_and_safety_monitoring_cost_total
 X
 3
-297
+345
 Y
 3
 150
@@ -569,7 +569,7 @@ Name
 environmental_monitoring_operations_cost
 X
 3
-396
+444
 Y
 3
 240
@@ -632,7 +632,7 @@ Name
 federal_energy_regulatory_commission_fees_cost
 X
 3
-396
+444
 Y
 3
 450
@@ -695,7 +695,7 @@ Name
 generation_planning_and_integration_cost
 X
 3
-396
+444
 Y
 3
 600
@@ -758,7 +758,7 @@ Name
 health_safety_monitoring_cost
 X
 3
-396
+444
 Y
 3
 210
@@ -821,7 +821,7 @@ Name
 insurance_operations_cost
 X
 3
-297
+345
 Y
 3
 510
@@ -884,10 +884,10 @@ Name
 itemized_check_operations
 X
 3
-45
+69
 Y
 3
-36
+210
 Width
 3
 90
@@ -931,7 +931,7 @@ Name
 marine_energy_converter_power_consumption_cost
 X
 3
-396
+444
 Y
 3
 720
@@ -994,7 +994,7 @@ Name
 marine_management_cost
 X
 3
-396
+444
 Y
 3
 780
@@ -1057,13 +1057,13 @@ Name
 object 21
 X
 3
-63
+24
 Y
 3
 105
 Width
 3
-522
+747
 Height
 3
 16
@@ -1098,10 +1098,10 @@ X
 9
 Y
 3
-15
+18
 Width
 3
-600
+800
 Height
 3
 960
@@ -1121,65 +1121,17 @@ Label
 13
 Name
 5
-8
-object 7
-X
-3
-36
-Y
-3
-66
-Width
-3
-99
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-11
-Operations 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 10
 object 713
 X
 3
-279
+303
 Y
 3
 480
 Width
 3
-117
+141
 Height
 3
 24
@@ -1221,13 +1173,13 @@ Name
 object 71325
 X
 3
-111
+141
 Y
 3
 450
 Width
 3
-285
+303
 Height
 3
 24
@@ -1269,7 +1221,7 @@ Name
 object 71339
 X
 3
-252
+300
 Y
 3
 270
@@ -1317,7 +1269,7 @@ Name
 object 7133937
 X
 3
-252
+300
 Y
 3
 240
@@ -1361,27 +1313,27 @@ Label
 13
 Name
 5
-10
-object 721
+11
+object 7214
 X
 3
-297
+18
 Y
 3
-39
+33
 Width
 3
-84
+774
 Height
 3
-24
+75
 Tool Tip
 5
 0
 Caption
 5
-13
-Modeled value
+556
+To input operations costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled operations costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized operations costs based on the level structure shown below, select "Enter as Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is found from the sum of the bolded entries and is reflected in the User input box. 
 TextColour
 4
 0
@@ -1396,13 +1348,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
-1
+0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -1413,7 +1365,7 @@ Name
 object 72751
 X
 3
-111
+159
 Y
 3
 930
@@ -1461,7 +1413,7 @@ Name
 object 7275125
 X
 3
-210
+258
 Y
 3
 780
@@ -1509,7 +1461,7 @@ Name
 object 7275126
 X
 3
-210
+258
 Y
 3
 750
@@ -1557,7 +1509,7 @@ Name
 object 7275130
 X
 3
-210
+258
 Y
 3
 630
@@ -1605,13 +1557,13 @@ Name
 object 7275135
 X
 3
-237
+246
 Y
 3
 420
 Width
 3
-159
+198
 Height
 3
 24
@@ -1653,7 +1605,7 @@ Name
 object 728
 X
 3
-189
+237
 Y
 3
 900
@@ -1701,7 +1653,7 @@ Name
 object 72827
 X
 3
-147
+195
 Y
 3
 720
@@ -1749,7 +1701,7 @@ Name
 object 72831
 X
 3
-162
+210
 Y
 3
 600
@@ -1797,7 +1749,7 @@ Name
 object 72836
 X
 3
-279
+327
 Y
 3
 390
@@ -1845,7 +1797,7 @@ Name
 object 72846
 X
 3
-231
+279
 Y
 3
 870
@@ -1893,7 +1845,7 @@ Name
 object 729
 X
 3
-255
+303
 Y
 3
 840
@@ -1941,7 +1893,7 @@ Name
 object 72928
 X
 3
-216
+264
 Y
 3
 690
@@ -1989,7 +1941,7 @@ Name
 object 72932
 X
 3
-36
+84
 Y
 3
 540
@@ -2037,7 +1989,7 @@ Name
 object 72937
 X
 3
-255
+303
 Y
 3
 360
@@ -2085,7 +2037,7 @@ Name
 object 73
 X
 3
-255
+303
 Y
 3
 210
@@ -2133,7 +2085,7 @@ Name
 object 730
 X
 3
-246
+294
 Y
 3
 810
@@ -2181,7 +2133,7 @@ Name
 object 73029
 X
 3
-246
+294
 Y
 3
 660
@@ -2229,7 +2181,7 @@ Name
 object 73033
 X
 3
-231
+279
 Y
 3
 510
@@ -2277,13 +2229,13 @@ Name
 object 73038
 X
 3
-39
+63
 Y
 3
 300
 Width
 3
-258
+282
 Height
 3
 24
@@ -2315,101 +2267,6 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-13
-Name
-5
-11
-object 7322
-X
-3
-498
-Y
-3
-39
-Width
-3
-81
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-13
-Category cost
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-16
-om_cost_override
-X
-3
-147
-Y
-3
-30
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 Numeric
 
 1
@@ -2420,7 +2277,7 @@ Name
 onshore_land_lease_cost
 X
 3
-396
+444
 Y
 3
 390
@@ -2483,7 +2340,7 @@ Name
 operating_equipment_cost
 X
 3
-396
+444
 Y
 3
 660
@@ -2546,7 +2403,7 @@ Name
 operating_facilities_cost
 X
 3
-396
+444
 Y
 3
 630
@@ -2609,7 +2466,7 @@ Name
 operating_margin_cost
 X
 3
-396
+444
 Y
 3
 840
@@ -2668,346 +2525,11 @@ Numeric
 17
 Name
 5
-15
-operations_cost
-X
-3
-492
-Y
-3
-66
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-1
-Numeric
-
-1
-17
-Name
-5
-21
-operations_cost_input
-X
-3
-393
-Y
-3
-66
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Choice
-
-1
-9
-Name
-5
-22
-operations_cost_method
-X
-3
-138
-Y
-3
-66
-Width
-3
-150
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-4
-Enter in $/kW
-Enter in $
-Use Modeled Value ($)
-Enter as Itemized Costs ($)
-Selection
-3
-0
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-23
-operations_cost_modeled
-X
-3
-294
-Y
-3
-66
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-21
-operations_cost_total
-X
-3
-393
-Y
-3
-66
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Label
-
-1
-13
-Name
-5
-28
-operations_level_total_label
-X
-3
-393
-Y
-3
-39
-Width
-3
-87
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-15
-Itemized inputs
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Numeric
-
-1
-17
-Name
-5
 49
 operations_management_general_administration_cost
 X
 3
-297
+345
 Y
 3
 540
@@ -3070,7 +2592,7 @@ Name
 operations_management_general_administration_cost_total
 X
 3
-297
+345
 Y
 3
 540
@@ -3133,10 +2655,10 @@ Name
 operations_override_check
 X
 3
-504
+69
 Y
 3
-339
+240
 Width
 3
 90
@@ -3180,13 +2702,13 @@ Name
 operations_override_label
 X
 3
-495
+570
 Y
 3
-168
+171
 Width
 3
-105
+180
 Height
 3
 159
@@ -3218,54 +2740,6 @@ AlignRight
 AlignTop
 2
 1
-Label
-
-1
-13
-Name
-5
-27
-operations_user_input_label
-X
-3
-408
-Y
-3
-39
-Width
-3
-60
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-10
-User input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
 Numeric
 
 1
@@ -3276,7 +2750,7 @@ Name
 other_business_cost
 X
 3
-396
+444
 Y
 3
 480
@@ -3339,7 +2813,7 @@ Name
 other_gen_admin_cost
 X
 3
-396
+444
 Y
 3
 900
@@ -3402,7 +2876,7 @@ Name
 other_monitoring_cost
 X
 3
-396
+444
 Y
 3
 270
@@ -3465,7 +2939,7 @@ Name
 other_operations_cost
 X
 3
-297
+345
 Y
 3
 930
@@ -3528,7 +3002,7 @@ Name
 professional_advisory_services_operations_cost
 X
 3
-396
+444
 Y
 3
 870
@@ -3591,7 +3065,7 @@ Name
 sales_general_and_administrative_operations_cost
 X
 3
-396
+444
 Y
 3
 690
@@ -3654,7 +3128,7 @@ Name
 submerged_land_lease_cost
 X
 3
-396
+444
 Y
 3
 360
@@ -3717,7 +3191,7 @@ Name
 transmission_charges_rights_cost
 X
 3
-396
+444
 Y
 3
 420
@@ -3780,7 +3254,7 @@ Name
 tt_annual_leases_fees_cost
 X
 3
-396
+444
 Y
 3
 300
@@ -3806,7 +3280,7 @@ Name
 tt_environmental_health_and_safety_monitoring_operations_cost
 X
 3
-399
+447
 Y
 3
 150
@@ -3832,7 +3306,7 @@ Name
 tt_insurance_operations_cost
 X
 3
-396
+444
 Y
 3
 510
@@ -3858,7 +3332,7 @@ Name
 tt_operations_management_and_general_admin_cost
 X
 3
-396
+444
 Y
 3
 540
@@ -3884,7 +3358,7 @@ Name
 tt_other_operations_cost
 X
 3
-396
+444
 Y
 3
 930
@@ -3910,7 +3384,7 @@ Name
 weather_forecasting_cost
 X
 3
-396
+444
 Y
 3
 750
@@ -4512,7 +3986,7 @@ weather_forecasting_cost
 0
 Default
 
-2512
+2469
 equations {'environmental_health_and_safety_monitoring_cost_total'} = define() {
 	return ${health_safety_monitoring_cost}+${environmental_monitoring_operations_cost}+
 		${other_monitoring_cost};
@@ -4592,20 +4066,12 @@ equations {'operations_cost'} = define() {
 };
 
 equations {'operations_override_check'} = define() {
-	if (${om_cost_override}==1)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-};
+	return ${om_cost_override};};
 
 
 
 
-6161
+6165
 on_load{'Marine Costs - Operations'} = define() {
 	on_change{'itemized_check_operations'};
 	enable_itemized_operations();
@@ -4626,8 +4092,8 @@ on_change{'operations_override_check'} = define() {
 function check_override_operations()
 {
 	check_value = value('operations_override_check');
-	enable('operations_cost_method',check_value!=1);
-	enable('operations_cost',check_value!=1);
+	//enable('operations_cost_method',check_value!=1);
+	//enable('operations_cost',check_value!=1);
 	show('operations_override_label',check_value==1);
 	
 	refresh();

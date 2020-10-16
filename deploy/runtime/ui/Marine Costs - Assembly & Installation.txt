@@ -1,7 +1,7 @@
 Marine Costs - Assembly & Installation
 813
 857
-67
+57
 Label
 
 1
@@ -214,27 +214,26 @@ Label
 13
 Name
 5
-23
-assem_level_total_label
+29
+assembly_and_install_override
 X
 3
-426
+72
 Y
 3
-39
+210
 Width
 3
-84
+90
 Height
 3
-21
+24
 Tool Tip
 5
 0
 Caption
 5
-15
-Itemized inputs
+0
 TextColour
 4
 0
@@ -256,341 +255,6 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-13
-Name
-5
-22
-assem_user_input_label
-X
-3
-435
-Y
-3
-39
-Width
-3
-60
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-10
-User input
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Numeric
-
-1
-17
-Name
-5
-25
-assembly_and_install_cost
-X
-3
-522
-Y
-3
-63
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-1
-Numeric
-
-1
-17
-Name
-5
-31
-assembly_and_install_cost_input
-X
-3
-423
-Y
-3
-63
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Choice
-
-1
-9
-Name
-5
-32
-assembly_and_install_cost_method
-X
-3
-162
-Y
-3
-63
-Width
-3
-150
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-4
-Enter in $/kW
-Enter in $
-Use Modeled Value ($)
-Enter as Itemized Costs ($)
-Selection
-3
-0
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-33
-assembly_and_install_cost_modeled
-X
-3
-324
-Y
-3
-63
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-31
-assembly_and_install_cost_total
-X
-3
-423
-Y
-3
-63
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-1
-$
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -849,53 +513,6 @@ BackColour
 TabOrder
 3
 2
-Label
-
-1
-13
-Name
-5
-28
-itemized_check_assem_install
-X
-3
-699
-Y
-3
-27
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 Numeric
 
 1
@@ -1095,13 +712,13 @@ Name
 object 21
 X
 3
-39
+27
 Y
 3
 99
 Width
 3
-580
+748
 Height
 3
 16
@@ -1119,8 +736,7 @@ Colour
 255
 Caption
 5
-24
-Itemized Input Structure
+0
 Bold
 2
 1
@@ -1164,16 +780,16 @@ Name
 object 7
 X
 3
-582
+27
 Y
 3
-249
+30
 Width
 3
-180
+753
 Height
 3
-300
+75
 Tool Tip
 5
 0
@@ -1229,54 +845,6 @@ Caption
 5
 12
 Substructure
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-12
-object 72145
-X
-3
-324
-Y
-3
-36
-Width
-3
-84
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-13
-Modeled value
 TextColour
 4
 0
@@ -1880,54 +1448,6 @@ Label
 13
 Name
 5
-11
-object 7322
-X
-3
-528
-Y
-3
-36
-Width
-3
-78
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-13
-Category cost
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 10
 object 733
 X
@@ -2159,54 +1679,6 @@ WordWrap
 AlignRight
 2
 0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 757
-X
-3
-39
-Y
-3
-63
-Width
-3
-117
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-18
-Assembly & install
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
 AlignTop
 2
 0
@@ -3412,7 +2884,7 @@ Tips
 5
 0
 
-31
+32
 array_cables_assem_install_cost
 3
 1
@@ -3442,6 +2914,20 @@ assembly_and_install_cost
 0
 Default
 assembly_and_install_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+assembly_and_install_override
 3
 1
  
@@ -3848,7 +3334,7 @@ ME BoS Costs
 0
 Default
 
-2411
+2514
 equations {'substructure_assem_install_cost_total'} = define() {
 	return ${foundation_assem_install_cost}+
 		${substructure_assem_install_cost}+${scour_protection_assem_install_cost}+
@@ -3936,12 +3422,15 @@ equations {'assembly_and_install_cost'} = define() {
 			];
 };
 
+equations{'assembly_and_install_override'} = define() {
+	return ${balance_of_system_cost_override};};
 
 
 
 
 
-5917
+
+6052
 on_load{'Marine Costs - Assembly & Installation'} = define() {
 	on_change{'itemized_check_assem_install'};
 	enable_itemized_assem_install();
@@ -3953,13 +3442,18 @@ on_load{'Marine Costs - Assembly & Installation'} = define() {
 	detailed_cost_mec_device();
 	detailed_cost_offshore_infrastructure();
 	check_override_assembly();
+	on_change{'assembly_and_install_override'};
+};
+
+on_change{'assembly_and_install_override'} = define() {
+	check_override_assembly();
 };
 
 function check_override_assembly()
 {
-	check_value = value('balance_of_system_cost_override');
-	enable('assembly_and_install_cost_method',check_value!=1);
-	enable('assembly_and_install_cost',check_value!=1);	
+	check_value = value('assembly_and_install_override');
+	//enable('assembly_and_install_cost_method',check_value!=1);
+	//enable('assembly_and_install_cost',check_value!=1);	
 	show('assembly_override_label',check_value==1);
 	
 	refresh();
