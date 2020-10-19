@@ -77,11 +77,10 @@ public:
 		RateInfo Header;
 		ApplicabilityInfo Applicability;
 
-		bool NetMetering;
+		wxString DgRules;
 		double MinAnnualCharge;
 		double MinMonthlyCharge;
 		double FixedMonthlyCharge;
-
 
 		bool HasDemandCharge;
 		wxString DemandRateUnit; // kW, kVA or hp
@@ -147,6 +146,7 @@ private:
 
 	wxButton *btnApply;
 	wxStaticText *lblStatus;
+	wxStaticText *lblRateStatus;
 	wxStaticText *lblUtilityCount;
 	wxHyperlinkCtrl *hypOpenEILink;
 	wxHyperlinkCtrl *hypJSONLink;

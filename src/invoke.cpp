@@ -2498,10 +2498,14 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			wxString var_name;
 			wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 			bool overwrite = true;
-			ndx = upgrade_list.Index("ur_enable_net_metering");
+			/*ndx = upgrade_list.Index("ur_enable_net_metering");
 			int nm = 1; // default to net metering
 			if (ndx > -1 && ndx < (int)upgrade_value.Count())
-				nm = (int)atof(upgrade_value[ndx].c_str());
+				nm = (int)atof(upgrade_value[ndx].c_str());*/
+			int metering_option = 0;
+			ndx = upgrade_list.Index("ur_metering_option");
+			if (ndx > -1 && ndx < (int)upgrade_value.Count())
+				metering_option = (int)atof(upgrade_value[ndx].c_str());
 			double flat_buy_rate = 0;
 			double flat_sell_rate = 0;
 			ndx = upgrade_list.Index("ur_flat_buy_rate");
@@ -2510,7 +2514,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			ndx = upgrade_list.Index("ur_flat_sell_rate");
 			if (ndx > -1 && ndx < (int)upgrade_value.Count())
 				flat_sell_rate = atof(upgrade_value[ndx].c_str());
-			if (nm > 0) flat_sell_rate = flat_buy_rate;
+			//if (nm > 0) flat_sell_rate = flat_buy_rate;
 			// energy charge matrix inputs
 			for (int per=1;per<13 && overwrite;per++)
 			{
@@ -2531,7 +2535,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 						sr = atof(upgrade_value[ndx].c_str());
 					else
 						overwrite = false;
-					if (nm > 0) sr = br;
+					//if (nm > 0) sr = br;
 					ndx = upgrade_list.Index(per_tier + "ub");
 					if (ndx > -1 && ndx < (int)upgrade_value.Count())
 						ub = atof(upgrade_value[ndx].c_str());
@@ -2660,9 +2664,6 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 	return true;
 }
 
-
-
-
 void fcall_urdb_get(lk::invoke_t &cxt)
 {
 	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(string:guid):boolean");
@@ -2703,11 +2704,26 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
 		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);
 
+		/*
 		// net metering
 		if (rate.NetMetering)
 			cxt.result().hash_item("enable_net_metering").assign(1.0);
 		else
 			cxt.result().hash_item("enable_net_metering").assign(0.0);
+		*/
+		
+		// metering option
+		// "Net Metering", "Net Billing Instantaneous", "Net Billing Hourly", or "Buy All Sell All"
+		int test = (rate.DgRules == "Net Metering");
+		if (rate.DgRules != "")
+		{
+			if (rate.DgRules == "Net Metering")
+			{
+				cxt.result().hash_item("metering_option").assign(0.0);
+			}
+			else if (rate.DgRules == "Buy All Sell All")
+				cxt.result().hash_item("metering_option").assign(4.0);
+		}
 
 		// fixed charges
 		cxt.result().hash_item("monthly_fixed_charge").assign(rate.FixedMonthlyCharge);

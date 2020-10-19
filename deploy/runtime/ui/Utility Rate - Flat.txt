@@ -249,7 +249,7 @@ Width
 1380
 Height
 3
-49
+37
 Tool Tip
 5
 0
@@ -321,7 +321,7 @@ X
 108
 Y
 3
-87
+78
 Width
 3
 227
@@ -1232,7 +1232,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-6539
+6375
 on_load{'Utility Rate - Flat'} = define(){
 	set_battery_fom_inputs();
 	set_metering_billing_inputs();
@@ -1446,19 +1446,14 @@ on_change{'btnQueryOpenEI'} = define() {
 	value ('ur_monthly_min_charge', hash{'monthly_min_charge'});
 	value ('ur_annual_min_charge', hash{'annual_min_charge'});
 	
-	// checkboxes
-	nm_enable = hash{'enable_net_metering'};
-	if (nm_enable==1)
-		value( 'ur_metering_option', 0);
-	else
-		value( 'ur_metering_option', 2);
-	enable( 'ur_nm_yearend_sell_rate', nm_enable==1 );
-		
-	//logmsg(' calling on_change{ur_ec_enable}() from btnQueryOpenEI' );
-		
+	// some rates do not have a dgrules value
+	if ( hash{'ur_metering_option'} != null )
+	{
+		value('ur_metering_option',hash{'metering_option'});	
+	}
+	
 	value( 'ur_dc_enable', hash{'dc_enable'});
 	on_change{'ur_dc_enable'}(); // invoke callback for ur_ec_enable to set up enable/disable of widgets
-	// no year end sell rate in URDB
 	
 	// schedules
 	value ('ur_ec_sched_weekday', hash{'ec_sched_weekday'});
