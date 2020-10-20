@@ -308,8 +308,8 @@ Tool Tip
 0
 Caption
 5
-305
-The dispatch options will cycle the battery if anticipated revenue exceeds the cycle degradation penalty. A higher penalty will decrease cycling, a lower penalty will increase cycling and may lead to additional battery replacements. See the "Battery Storage - Battery Lifetime" page for degradation modes.
+313
+The dispatch options will cycle the battery if anticipated revenue exceeds the cycle degradation penalty. A higher penalty will decrease cycling, a lower penalty will increase cycling and may lead to additional battery replacements. See the "Battery Cell and System - Battery Lifetime" page for degradation modes.
 TextColour
 4
 0
