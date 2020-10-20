@@ -5,6 +5,7 @@ import csv
 import sys
 import os
 import numpy as np
+import json
 
 absFilePath = os.path.abspath(__file__)
 fileDir = os.path.dirname(os.path.abspath(__file__))
@@ -96,6 +97,9 @@ def get_sco2_design_parameters():
     des_par[
         "deltaP_counterHX_frac"] = -1  # [-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
 
+    # Off Design
+    des_par["od_rel_tol"] = 3          # [-] Baseline off-design relative convergence tolerance exponent (10^-od_rel_tol)
+
     return des_par
 
 ######################################
@@ -144,7 +148,7 @@ def run_example_1():
     c_sco2.overwrite_default_design_parameters(sco2_des_par_default)
 
     # Setup string for naming files
-    des_sim_label_str = "T_amb_des" + '{:.1f}'.format(sco2_des_par_default["T_amb_des"]) + "C__UA_recup" + '{:.1f}'.format(sco2_des_par_default["UA_recup_tot_des"]/1000)
+    des_sim_label_str = "T_amb_des" + '{:.1f}'.format(sco2_des_par_default["T_amb_des"])
 
     # Get design values of off-design inputs for reference
     T_htf_hot_des = sco2_des_par_default["T_htf_hot_des"]   # C
@@ -234,14 +238,14 @@ def run_example_2():
     c_sco2.overwrite_default_design_parameters(sco2_des_par_default)
 
     # Setup string for naming files
-    des_sim_label_str = "T_amb_des" + '{:.1f}'.format(sco2_des_par_default["T_amb_des"]) + "C__UA_recup" + '{:.1f}'.format(sco2_des_par_default["UA_recup_tot_des"]/1000)
+    des_sim_label_str = "T_amb_des" + '{:.1f}'.format(sco2_des_par_default["T_amb_des"])
 
     # Get design values of off-design inputs for reference
     T_htf_hot_des = sco2_des_par_default["T_htf_hot_des"]   # C
     part_load_des = 1.0   # - (normalized)
     T_amb_des = sco2_des_par_default["T_amb_des"]   # C
-    P_mc_in_des = 9.878 # MPa (design inlet pressure when using parameters from 'get_sco2_design_parameters'
-    T_mc_in_des = 46    # C (design inlet temperature when using parameters from 'get_sco2_design_parameters'
+    P_mc_in_des = 9.878 # MPa (design inlet pressure when using parameters from 'get_sco2_design_parameters')
+    T_mc_in_des = 46    # C (design inlet temperature when using parameters from 'get_sco2_design_parameters')
     T_pc_in_des = -999  # C (default case is a recompression cycle, so no precompressor inlet)
     f_N_rc = 1.0    # Use design point shaft speed
     f_N_mc = 1.0    # Use design point shaft speed
