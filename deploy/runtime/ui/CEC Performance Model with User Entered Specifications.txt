@@ -1,7 +1,7 @@
 CEC Performance Model with User Entered Specifications
 1170
 875
-51
+52
 Numeric
 
 1
@@ -170,7 +170,7 @@ Name
 6par_area
 X
 3
-354
+402
 Y
 3
 78
@@ -576,7 +576,7 @@ Name
 6par_celltech
 X
 3
-354
+402
 Y
 3
 54
@@ -1544,7 +1544,7 @@ Name
 6par_tnoct
 X
 3
-354
+402
 Y
 3
 102
@@ -1606,10 +1606,10 @@ Name
 6par_transient_thermal_model_unit_mass
 X
 3
-354
+660
 Y
 3
-126
+747
 Width
 3
 99
@@ -1801,7 +1801,7 @@ Width
 533
 Height
 3
-164
+143
 Tool Tip
 5
 0
@@ -1825,13 +1825,13 @@ X
 9
 Y
 3
-177
+159
 Width
 3
 533
 Height
 3
-302
+320
 Tool Tip
 5
 0
@@ -2218,6 +2218,36 @@ Name
 object 4
 X
 3
+549
+Y
+3
+723
+Width
+3
+609
+Height
+3
+75
+Tool Tip
+5
+0
+Caption
+5
+34
+Transient Thermal Model Correction
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+object 448
+X
+3
 9
 Y
 3
@@ -2392,23 +2422,23 @@ Name
 transient_thermal_model_message
 X
 3
-15
+807
 Y
 3
-120
+738
 Width
 3
-237
+348
 Height
 3
-51
+48
 Tool Tip
 5
 0
 Caption
 5
-129
-The module unit mass is only applied for weather file time steps less than or equal to 20 minutes. The default value is 11 kg/m².
+176
+The module unit mass is used for the transient thermal model, which is only applied for weather file time steps less than or equal to 20 minutes. The default value is 11 kg/m².
 TextColour
 4
 0
@@ -2914,7 +2944,7 @@ equations{ '6par_aisc' } = define() {
 	
 equations{'6par_step'} = define() {
 	return ${step};};
-8014
+8013
 on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 
 	enable_bifacial();
@@ -2924,7 +2954,7 @@ on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 on_change{'6par_step'} = define() {
 	time_step = value('6par_step');
 	enable('6par_transient_thermal_model_unit_mass',time_step <= 1200);
-	//show('transient_thermal_model_message', time_step <= 1200);
+	//show('transient_thermal_model_message', time_step > 1200);
 	refresh();
 };
 

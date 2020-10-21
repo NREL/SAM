@@ -1,7 +1,7 @@
 Sandia PV Array Performance Model with Module Database
-1016
-727
-48
+1019
+844
+49
 GroupBox
 
 1
@@ -15,7 +15,7 @@ X
 606
 Y
 3
-570
+609
 Width
 3
 406
@@ -51,7 +51,7 @@ Width
 406
 Height
 3
-200
+137
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 627
 Y
 3
-681
+720
 Width
 3
 377
@@ -191,7 +191,7 @@ X
 627
 Y
 3
-591
+630
 Width
 3
 368
@@ -332,10 +332,10 @@ Name
 Label32
 X
 3
-33
+30
 Y
 3
-663
+672
 Width
 3
 545
@@ -485,7 +485,7 @@ Width
 583
 Height
 3
-353
+392
 Tool Tip
 5
 0
@@ -493,6 +493,36 @@ Caption
 5
 46
 Module Characteristics at Reference Conditions
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+606
+Y
+3
+507
+Width
+3
+405
+Height
+3
+99
+Tool Tip
+5
+0
+Caption
+5
+34
+Transient Thermal Model Correction
 Bold
 2
 1
@@ -810,7 +840,7 @@ X
 873
 Y
 3
-537
+474
 Width
 3
 100
@@ -2061,7 +2091,7 @@ X
 873
 Y
 3
-510
+447
 Width
 3
 100
@@ -2306,10 +2336,10 @@ Name
 snl_transient_thermal_model_unit_mass
 X
 3
-873
+717
 Y
 3
-450
+534
 Width
 3
 99
@@ -2330,7 +2360,7 @@ Format
 0
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -2430,23 +2460,23 @@ Name
 transient_thermal_model_message
 X
 3
-636
+615
 Y
 3
-474
+555
 Width
 3
-357
+390
 Height
 3
-36
+48
 Tool Tip
 5
 0
 Caption
 5
-129
-The module unit mass is only applied for weather file time steps less than or equal to 20 minutes. The default value is 11 kg/m².
+176
+The module unit mass is used for the transient thermal model, which is only applied for weather file time steps less than or equal to 20 minutes. The default value is 11 kg/m².
 TextColour
 4
 0
