@@ -2539,12 +2539,15 @@ PV Module (Simple Efficiency)
 Numeric
 spe_transient_thermal_model_unit_mass
 3
-0
+1
 Module unit mass
 kg/m^2
 PV Module (Simple Efficiency)
 0
 2
+1
+1
+1
 1
 0
 Default

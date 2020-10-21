@@ -1,5 +1,5 @@
 1
-806
+805
 6par_aisc
 1
 1
@@ -3887,7 +3887,10 @@ spe_temp_coeff
 -0.5
 spe_transient_thermal_model_unit_mass
 1
-0
+1
+1
+1
+4.47594e-91
 spe_vmp
 1
 1
@@ -4767,12 +4770,6 @@ transformer_no_load_loss
 1
 0
 transformer_rating
-1
-1
-1
-1
-0
-transient_thermal_model_unit_mass
 1
 1
 1
