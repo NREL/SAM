@@ -2898,7 +2898,7 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-6298
+6360
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	show_label();
@@ -3020,6 +3020,7 @@ function toggle_dispatch()
 		}
 		toggle_dispatch_target();
 		toggle_custom_dispatch();
+		enable_auto_inputs_btm(mode == 5); // Price signal dispatch
 	}
 }
 function toggle_dispatch_target()

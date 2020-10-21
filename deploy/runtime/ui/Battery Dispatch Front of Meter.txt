@@ -264,10 +264,10 @@ Battery dispatch by time step: Negative to charge, positive to discharge.
 TabOrder
 3
 8
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 15
@@ -277,55 +277,35 @@ X
 678
 Y
 3
-273
+279
 Width
 3
-90
+104
 Height
 3
 24
 Tool Tip
 5
 0
+Label
+5
+5
 Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
+UseSchedule
 2
 1
-Editable
+ScheduleOnly
 2
-1
-ForeColour
-4
 0
+FixedLength
+3
+4294967295
+Description
+5
 0
-0
-255
-BackColour
-4
-255
-255
-255
-255
 TabOrder
 3
-5
+4294967295
 Choice
 
 1
@@ -339,7 +319,7 @@ X
 678
 Y
 3
-246
+252
 Width
 3
 198
@@ -373,20 +353,20 @@ X
 393
 Y
 3
-204
+198
 Width
 3
 633
 Height
 3
-36
+51
 Tool Tip
 5
 0
 Caption
 5
-116
-The automated dispatch options cycle the battery only when the value of the battery is greater than the cycle cost. 
+305
+The dispatch options will cycle the battery if anticipated revenue exceeds the cycle degradation penalty. A higher penalty will decrease cycling, a lower penalty will increase cycling and may lead to additional battery replacements. See the "Battery Storage - Battery Lifetime" page for degradation modes.
 TextColour
 4
 0
@@ -442,8 +422,8 @@ Colour
 255
 Caption
 5
-19
-Battery Cycle Costs
+25
+Cycle Degradation Penalty
 Bold
 2
 1
@@ -1170,22 +1150,22 @@ Battery Power (kWdc)|1
 DataArray
 batt_cycle_cost
 3
-1
-Battery cycle cost
+2
+Cycle degradation penalty
 $/cycle-kWh
 BatteryDispatch
 0
 2
 1
-1
+2
 1
 1
 0.1
-Numeric
+SchedNumeric
 batt_cycle_cost_choice
 3
 1
-Battery cycle cost choice
+Cycle degradation penalty choice
  
 BatteryDispatch
 34
