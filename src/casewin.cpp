@@ -1048,6 +1048,20 @@ void CaseWindow::LayoutPage()
 	
 	m_inputPageScrollWin->SetScrollbars(1, 1, x, y);// , vsx, vsy);
 	m_inputPageScrollWin->SetScrollRate(15,15);
+	/*
+	* 
+	* To set initial position will need to step through SetScrollbars in wxScrollHelperBase
+	* 
+	The following does not change position even if on same page:
+	if (vsx>x || vsy>y)
+	m_inputPageScrollWin->Scroll(vsx, vsy);
+	/*
+	// following does not change position even if on same page
+	if (vsx > x)
+		m_inputPageScrollWin->SetScrollPos(0, vsx);
+	if (vsy > y)
+		m_inputPageScrollWin->SetScrollPos(1,vsy);
+		*/
 }
 
 void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg )
