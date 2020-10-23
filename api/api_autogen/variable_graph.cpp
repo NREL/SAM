@@ -1,8 +1,6 @@
-//
-// Created by Guittet, Darice on 2019-03-04.
-//
 #include <iostream>
 #include <fstream>
+#include <utility>
 
 #include "variable_graph.h"
 #include "data_structures.h"
@@ -12,14 +10,14 @@ vertex* digraph::add_vertex(std::string n, bool is_ssc, std::string ui_source){
         return v;
     if (n.find('.') != std::string::npos)
         is_ssc = false;
-    vertex* v = new vertex(n, is_ssc);
+    auto* v = new vertex(n, is_ssc);
     auto it = vertices.find(n);
     if (it == vertices.end()){
         std::vector<vertex*> vs(2, nullptr);
         vertices.insert({n, vs});
     }
     vertices.find(n)->second.at((size_t)is_ssc) = v;
-    v->ui_form = ui_source;
+    v->ui_form = std::move(ui_source);
     return v;
 }
 
@@ -39,11 +37,11 @@ vertex* digraph::find_vertex(vertex* v){
 
 void digraph::delete_vertex(vertex* v){
     assert(v);
-    for (size_t i = 0; i < v->edges_in.size(); i++){
-        delete_edge(v->edges_in[i]);
+    for (auto & i : v->edges_in){
+        delete_edge(i);
     }
-    for (size_t i = 0; i < v->edges_out.size(); i++){
-        delete_edge(v->edges_out[i]);
+    for (auto & i : v->edges_out){
+        delete_edge(i);
     }
     auto it = vertices.find(v->name)->second;
     if (it.at(0) == v){
@@ -54,8 +52,8 @@ void digraph::delete_vertex(vertex* v){
 }
 
 edge* digraph::find_edge(std::string src_name, bool src_is_ssc, std::string dest_name, bool dest_is_ssc, int type){
-    vertex* src = find_vertex(src_name, src_is_ssc);
-    vertex* dest = find_vertex(dest_name, dest_is_ssc);
+    vertex* src = find_vertex(std::move(src_name), src_is_ssc);
+    vertex* dest = find_vertex(std::move(dest_name), dest_is_ssc);
     if (!src || !dest)
         return nullptr;
 
@@ -71,22 +69,20 @@ edge* digraph::find_edge(edge* edge){
 }
 
 edge * digraph::add_edge(vertex *src, vertex *dest, const int &type, const std::string &obj, const std::string &expression,
-                         const std::string ui_form = "", lk::node_t *root = 0) {
+                         const std::string& ui_form = "", lk::node_t *root = 0) {
     if (!src || !dest){
         std::cout << "/* digraph::add_edge error: vertices null */ \n";
         return nullptr;
     }
-    edge* e = new edge(src, dest, type, obj, expression);
-    e->ui_form = ui_form;
-    e->root = root;
+    edge* e = new edge(src, dest, type, obj, expression, ui_form, root);
     src->edges_out.push_back(e);
     dest->edges_in.push_back(e);
     return e;
 }
 
 
-edge * digraph::add_edge(std::string src, bool src_is_ssc, std::string dest, bool dest_is_ssc, int type, std::string obj,
-                         std::string expression, std::string ui_form, lk::node_t *root) {
+edge * digraph::add_edge(const std::string& src, bool src_is_ssc, const std::string& dest, bool dest_is_ssc, int type,
+                         const std::string& obj, const std::string& expression, const std::string& ui_form, lk::node_t *root) {
     assert(type >= 0);
 
     if (edge* e = find_edge(src, src_is_ssc, dest, dest_is_ssc, type))
@@ -134,7 +130,7 @@ void digraph::delete_edge(edge* e){
 }
 
 // rename vertices map key and vertex itself
-void digraph::rename_vertex(std::string old, bool is_ssc, std::string n){
+void digraph::rename_vertex(const std::string& old, bool is_ssc, std::string n){
     auto old_it = vertices.find(old);
     if (old_it == vertices.end()){
         std::cout << "digraph::rename_vertex error: could not find \'" << old << "\' vertex\n";
@@ -151,15 +147,13 @@ void digraph::rename_vertex(std::string old, bool is_ssc, std::string n){
     assert(v);
     v->name = n;
     v->cmod = n;
-    for (size_t i = 0; i < v->edges_in.size(); i++){
-        edge* e = v->edges_in[i];
+    for (auto e : v->edges_in){
         if (e->obj_name.find("tbd") != std::string::npos){
             size_t pos = e->obj_name.find("tbd");
             e->obj_name.replace(pos, 3, n);
         }
     }
-    for (size_t i = 0; i < v->edges_out.size(); i++){
-        edge* e = v->edges_out[i];
+    for (auto e : v->edges_out){
         if (e->obj_name.find("tbd") != std::string::npos){
             size_t pos = e->obj_name.find("tbd");
             e->obj_name.replace(pos, 3, n);
@@ -173,28 +167,26 @@ void digraph::rename_vertex(std::string old, bool is_ssc, std::string n){
 }
 
 // vertices inserted as tbd:var will be rename to cmod:var, with duplication check
-void digraph::rename_cmod_vertices(std::string cmod_name){
+void digraph::rename_cmod_vertices(const std::string& cmod_name){
     bool not_ssc_var = false; // secondary cmod variables are not primary
-    for (auto it = vertices.begin(); it != vertices.end(); ++it){
-        if (it->first.find("tbd:") != std::string::npos){
-
-            std::string new_name = it->first;
+    for (auto & vert : vertices) {
+        if (vert.first.find("tbd:") != std::string::npos){
+            std::string new_name = vert.first;
             size_t pos = new_name.find("tbd:");
             new_name.replace(pos, 4, (cmod_name + ":"));
 
-            rename_vertex(it->first, not_ssc_var, new_name);
+            rename_vertex(vert.first, not_ssc_var, new_name);
         }
     }
 }
 
 void digraph::get_unique_edge_expressions(std::unordered_map<std::string, edge*>& unique_edge_obj_names) {
-    for (auto it = vertices.begin(); it != vertices.end(); ++it){
+    for (auto & vert : vertices){
         for (size_t is_ssc = 0; is_ssc < 2; is_ssc++){
-            vertex* v = it->second.at(is_ssc);
+            vertex* v = vert.second.at(is_ssc);
             if (!v)
                 continue;
-            for (size_t i = 0; i < v->edges_out.size(); i++){
-                edge* e = v->edges_out[i];
+            for (auto e : v->edges_out){
                 if (unique_edge_obj_names.find(e->obj_name) == unique_edge_obj_names.end()){
                     unique_edge_obj_names.insert({e->obj_name, e});
                 }
@@ -203,7 +195,7 @@ void digraph::get_unique_edge_expressions(std::unordered_map<std::string, edge*>
     }
 };
 
-std::set<std::string> digraph::downstream_vertices(vertex *vert, std::string cmod){
+std::set<std::string> digraph::downstream_vertices(vertex *vert, const std::string& cmod){
     std::set<std::string> names;
     for (auto e : vert->edges_out){
         if ((cmod.length() > 0 && e->dest->cmod == cmod) | cmod.empty())
@@ -215,7 +207,7 @@ std::set<std::string> digraph::downstream_vertices(vertex *vert, std::string cmo
     return names;
 }
 
-std::set<std::string> digraph::upstream_vertices(vertex *vert, std::string cmod){
+std::set<std::string> digraph::upstream_vertices(vertex *vert, const std::string& cmod){
     std::set<std::string> names;
     for (auto e : vert->edges_in){
         if ((cmod.length() > 0 && e->src->cmod == cmod) | cmod.empty())
@@ -234,7 +226,7 @@ bool digraph::copy_vertex_descendants(vertex *v){
         return true;
     bool add = false;
 
-    if (v->edges_out.size() == 0 ){
+    if (v->edges_out.empty() ){
         // if it's a terminal node and not an ssc var, don't copy
         if(!v->is_ssc_var)
             return false;
@@ -268,13 +260,13 @@ bool digraph::copy_vertex_descendants(vertex *v){
 }
 
 void digraph::subgraph_ssc_only(digraph& new_graph){
-    for (auto it = vertices.begin(); it != vertices.end(); ++it){
-        if (vertex* src = it->second.at(1)){
-            if (src->edges_out.size() > 0){
+    for (auto & vert : vertices){
+        if (vertex* src = vert.second.at(1)){
+            if (!src->edges_out.empty()){
                 new_graph.copy_vertex_descendants(src);
             }
         }
-        if (vertex* src = it->second.at(0)){
+        if (vertex* src = vert.second.at(0)){
             if (SAM_cmod_to_outputs.find(src->name) != SAM_cmod_to_outputs.end()){
 
                 new_graph.copy_vertex_descendants(src);
@@ -287,9 +279,9 @@ void digraph::subgraph_ssc_only(digraph& new_graph){
 void digraph::subgraph_ssc_to_ui(digraph &subgraph) {
 //    subgraph_ssc_only(subgraph);
     auto vertices_new = subgraph.get_vertices();
-    for (auto it = vertices_new.begin(); it != vertices_new.end(); ++it){
+    for (auto & it : vertices_new){
         for (size_t i = 0; i < 2; i++){
-            vertex* new_v = it->second.at(i);
+            vertex* new_v = it.second.at(i);
             if (!new_v)
                 continue;
             // get original vertex
@@ -309,9 +301,7 @@ void digraph::subgraph_ssc_to_ui(digraph &subgraph) {
 //            }
 
             if (new_v->is_ssc_var ){
-                for (size_t e = 0; e < og_v->edges_in.size(); e++){
-                    edge* e_in = og_v->edges_in[e];
-
+                for (auto e_in : og_v->edges_in){
                     if (!subgraph.find_edge(e_in)){
                         vertex* v = subgraph.add_vertex(e_in->src->name, e_in->src->is_ssc_var, e_in->ui_form);
                         bool added = subgraph.add_edge(v, new_v, e_in->type, e_in->obj_name, e_in->expression,
@@ -330,16 +320,16 @@ std::string format_vertex_name(vertex* v){
     size_t sz = 0;
 
     try {
-        (int)std::stod(v->name, &sz);
+        std::stod(v->name, &sz);
     }
-    catch(std::invalid_argument ){}
+    catch(std::invalid_argument & ){}
 
     // if the name is just a numeric value, don't print it
     if (sz == v->name.length()){
         return "";
     }
 
-    size_t pos = v->name.find("[");
+    size_t pos = v->name.find('[');
     if (pos != std::string::npos)
         s += v->name.substr(sz, pos);
     else
@@ -359,12 +349,12 @@ void digraph::print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std
                             "sienna2", "sienna3", "sienna4", "skyblue", "skyblue1", "skyblue2", "skyblue3", "skyblue4", "slateblue"};
     size_t cnt = eqn_keys->size() + obj_keys->size();
 
-    for (size_t i = 0; i < v->edges_out.size(); i++){
-        std::string src_str = format_vertex_name(v->edges_out[i]->src);
-        std::string dest_str = format_vertex_name(v->edges_out[i]->dest);
+    for (auto & i : v->edges_out){
+        std::string src_str = format_vertex_name(i->src);
+        std::string dest_str = format_vertex_name(i->dest);
         if (src_str.length() > 0 && dest_str.length() > 0){
             ofs << "\t" << src_str << " -> " << dest_str;
-            edge* e = v->edges_out[i];
+            edge* e = i;
             std::string edge_label = std::to_string(cnt);
             if (e->type == 0){
                 if (eqn_keys->find(e->obj_name) == eqn_keys->end()){
@@ -395,7 +385,7 @@ void digraph::print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std
     }
 }
 
-void digraph::print_dot(std::string filepath, std::string ext) {
+void digraph::print_dot(const std::string& filepath, const std::string& ext) {
 
     std::string str = name;
     std::string::iterator end_pos = std::remove(str.begin(), str.end(), ' ');
@@ -431,23 +421,23 @@ void digraph::print_dot(std::string filepath, std::string ext) {
     graph_file << "\t" << "label =\"" << name <<"\";\n\tlabelloc=top;\n";
     graph_file << "\trankdir=LR;\n\tranksep=\"1\";\n";
 
-    for (auto it = vertices.begin(); it != vertices.end(); ++it){
-        if (vertex* v = it->second.at(0)){
+    for (auto & vert : vertices){
+        if (vertex* v = vert.second.at(0)){
             // make secondary cmods a different shape and color
             if (SAM_cmod_to_outputs.find(v->name) != SAM_cmod_to_outputs.end()){
                 graph_file << "\t" << format_vertex_name(v) << " [shape=polygon, style=filled, fillcolor=darkslategray3]\n";
             }
         }
         // make nodes for ssc_variables colored
-        if (vertex* v = it->second.at(1)){
+        if (vertex* v = vert.second.at(1)){
             if (v->edges_out.size() + v->edges_in.size() > 0)
                 graph_file << "\t" << format_vertex_name(v) << " [style=filled, fillcolor=grey]\n";
         }
     }
     graph_file << "\n";
-    for (auto it = vertices.begin(); it != vertices.end(); ++it){
+    for (auto & vert : vertices){
         for (size_t i = 0; i < 2; i++){
-            if (vertex* v = it->second.at(i)){
+            if (vertex* v = vert.second.at(i)){
                 print_vertex(v, graph_file, &obj_keys, &eqn_keys);
             }
         }
@@ -480,15 +470,15 @@ void digraph::print_dot(std::string filepath, std::string ext) {
     legend_file << "\t</table>>]\n";
 
     size_t i = 0;
-    for (auto it = eqn_keys.begin(); it != eqn_keys.end(); ++it){
-        legend_file << "\tkey:e" << i << ":e -> key2:e" << i << ":w [style=dashed, label=\"" << it->second;
-        legend_file << ": " << it->first << "\"]\n";
+    for (auto & eqn_key : eqn_keys){
+        legend_file << "\tkey:e" << i << ":e -> key2:e" << i << ":w [style=dashed, label=\"" << eqn_key.second;
+        legend_file << ": " << eqn_key.first << "\"]\n";
         i++;
     }
     i=0;
-    for (auto it = obj_keys.begin(); it != obj_keys.end(); ++it){
-        legend_file << "\tkey:o" << i << ":e -> key2:o" << i << ":w [label=\"" << it->second;
-        legend_file << ": " << it->first << "\"]\n";
+    for (auto & obj_key : obj_keys){
+        legend_file << "\tkey:o" << i << ":e -> key2:o" << i << ":w [label=\"" << obj_key.second;
+        legend_file << ": " << obj_key.first << "\"]\n";
         i++;
     }
     legend_file << "}";

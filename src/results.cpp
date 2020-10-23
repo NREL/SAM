@@ -1110,8 +1110,12 @@ void ResultsViewer::Setup( Simulation *sim )
 		m_depreciationTable->Thaw();
 	}
 
-	if ( m_cashflow.size() > 0 ) ShowPage( PAGE_CASH_FLOW );
-	else HidePage( PAGE_CASH_FLOW );
+	if (m_cashflow.size() > 0) {
+		ShowPage(PAGE_CASH_FLOW);
+		m_cashFlowTable->GetParent()->Layout();
+	}
+	else 
+		HidePage( PAGE_CASH_FLOW );
 
 
 	CreateAutoGraphs();
