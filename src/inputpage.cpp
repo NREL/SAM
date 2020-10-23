@@ -138,9 +138,6 @@ ActiveInputPage::~ActiveInputPage()
 
 wxRect ActiveInputPage::ScaleRect( const wxRect &r )
 {
-	// testing
-//	return wxRect((int)(r.x * m_scaleX), (int)(r.y ),
-//		(int)(r.width * m_scaleX), (int)(r.height * m_scaleY));
 	return wxRect((int)(r.x * m_scaleX), (int)(r.y * m_scaleY),
 		(int)(r.width * m_scaleX), (int)(r.height * m_scaleY));
 }
@@ -321,8 +318,6 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 			if (!objs[i]->IsVisible())
 			{
 				rct = ScaleRect(objs[i]->GetGeometry());
-				// testing
-				//if (i == 0) rct.y = 0;
 				wxString blk = "";
 				if (vv->Label.Len() > 0)
 				{
