@@ -1,7 +1,7 @@
 Solar Resource Data
 884
 975
-46
+47
 GroupBox
 
 1
@@ -79,7 +79,7 @@ X
 666
 Y
 3
-864
+870
 Width
 3
 103
@@ -141,7 +141,7 @@ X
 198
 Y
 3
-849
+855
 Width
 3
 103
@@ -203,7 +203,7 @@ X
 198
 Y
 3
-876
+882
 Width
 3
 103
@@ -265,7 +265,7 @@ X
 198
 Y
 3
-822
+828
 Width
 3
 103
@@ -327,7 +327,7 @@ X
 666
 Y
 3
-837
+843
 Width
 3
 103
@@ -389,7 +389,7 @@ X
 198
 Y
 3
-903
+909
 Width
 3
 103
@@ -451,7 +451,7 @@ X
 198
 Y
 3
-930
+936
 Width
 3
 103
@@ -818,7 +818,7 @@ Tool Tip
 0
 Value
 1
-317
+0
 Mode
 3
 1
@@ -916,7 +916,7 @@ X
 465
 Y
 3
-816
+822
 Width
 3
 363
@@ -1193,7 +1193,7 @@ Tool Tip
 0
 Value
 1
-1.1
+0
 Mode
 3
 1
@@ -1348,7 +1348,7 @@ Tool Tip
 0
 Value
 1
-1.2
+0
 Mode
 3
 1
@@ -1398,7 +1398,7 @@ X
 18
 Y
 3
-801
+807
 Width
 3
 849
@@ -1533,13 +1533,13 @@ Name
 object 7
 X
 3
-246
+279
 Y
 3
 732
 Width
 3
-615
+582
 Height
 3
 60
@@ -1584,7 +1584,7 @@ X
 393
 Y
 3
-930
+936
 Width
 3
 222
@@ -1944,7 +1944,7 @@ Tool Tip
 0
 Value
 1
--7.5
+0
 Mode
 3
 1
@@ -1982,6 +1982,68 @@ BackColour
 TabOrder
 3
 8
+Numeric
+
+1
+17
+Name
+5
+15
+ui_step_minutes
+X
+3
+108
+Y
+3
+777
+Width
+3
+103
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -2089,7 +2151,7 @@ TabOrder
 3
 4294967295
 
-33
+34
 annual_albedo
 3
 1
@@ -2465,9 +2527,9 @@ TextEntry
 step
 3
 1
- 
- 
- 
+Time step
+seconds
+Location and Resource
 0
 8
 1
@@ -2475,13 +2537,27 @@ step
 1
 1
 0
-Default
+Numeric
 tz
 3
 1
 Time zone
  
 Location and Resource
+0
+8
+1
+1
+1
+1
+0
+Numeric
+ui_step_minutes
+3
+1
+Time Step
+minutes
+ 
 0
 8
 1
@@ -2531,7 +2607,7 @@ Location and Resource
 8760
 Default
 
-338
+405
 equations{'solar_resource_file'} = define() {
 	if ( ${use_specific_weather_file} ) 
 		{ return ${user_specified_weather_file}; }
@@ -2542,6 +2618,10 @@ equations{'solar_resource_file'} = define() {
 equations{'file_name'} = define() {
 	// for compatibility with most SSC APIs
 	return ${solar_resource_file};
+};
+
+equations{'ui_step_minutes'} = define() {
+	return(${step}/60);
 };
 32507
 on_load{'Solar Resource Data'} = define() {
