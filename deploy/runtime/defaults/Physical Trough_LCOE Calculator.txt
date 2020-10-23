@@ -1,5 +1,5 @@
 1
-867
+868
 A_aperture
 1
 2
@@ -4468,6 +4468,12 @@ station_id
 4
 5
 67345
+step
+1
+1
+1
+1
+3600
 store_fl_props
 1
 3

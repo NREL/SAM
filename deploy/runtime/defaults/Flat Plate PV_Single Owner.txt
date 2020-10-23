@@ -1,5 +1,5 @@
 1
-875
+877
 6par_aisc
 1
 1
@@ -351,7 +351,7 @@ bos_equip_total
 1
 1
 1
-4000180
+4.00018e+06
 calculated_dcac_ratio
 1
 1
@@ -2067,7 +2067,7 @@ install_labor_total
 1
 1
 1
-2600120
+2.60012e+06
 install_margin_fixed
 1
 1
@@ -2091,7 +2091,7 @@ install_margin_total
 1
 1
 1
-1200050
+1.20005e+06
 installed_per_capacity
 1
 1
@@ -2897,7 +2897,7 @@ inverter_total
 1
 1
 1
-1200050
+1.20005e+06
 inverterarray_power
 1
 1
@@ -3294,7 +3294,7 @@ module_total
 1
 1
 1
-7600340
+7.60034e+06
 module_width
 1
 1
@@ -4634,6 +4634,18 @@ station_id
 5
 78208
 step
+1
+1
+1
+1
+0
+step_sd11par
+1
+1
+1
+1
+0
+step_spe
 1
 1
 1

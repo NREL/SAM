@@ -1,5 +1,5 @@
 1
-808
+809
 A_aperture
 1
 1
@@ -1187,7 +1187,7 @@ cost_dev_fee_tax_liability
 1
 1
 1
-4352090
+4.35209e+06
 cost_dev_fee_value
 1
 1
@@ -1486,7 +1486,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4462600
+4.4626e+06
 csp.mslf.cost.power_plant
 1
 1
@@ -4294,6 +4294,12 @@ station_id
 4
 5
 67345
+step
+1
+1
+1
+1
+3600
 store_fl_props
 1
 3

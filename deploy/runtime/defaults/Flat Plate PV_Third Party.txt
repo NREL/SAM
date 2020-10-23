@@ -1,5 +1,5 @@
 1
-635
+637
 6par_aisc
 1
 1
@@ -2966,6 +2966,18 @@ station_id
 5
 78208
 step
+1
+1
+1
+1
+0
+step_sd11par
+1
+1
+1
+1
+0
+step_spe
 1
 1
 1

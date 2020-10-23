@@ -1,5 +1,5 @@
 1
-437
+438
 AntiFrPar
 1
 1
@@ -89,7 +89,7 @@ CtPar
 1
 1
 1
-1.892
+1.89199
 CtParF0
 1
 1
@@ -1805,6 +1805,12 @@ station_id
 4
 5
 67345
+step
+1
+1
+1
+1
+3600
 system_capacity
 1
 1
@@ -1949,7 +1955,7 @@ ui_design_exact_area_sm_1
 1
 1
 1
-428939
+428940
 ui_design_exact_num_scas_sm_1
 1
 1
@@ -2383,7 +2389,7 @@ ui_hce_thermloss_weighted_m2
 1
 1
 1
-36.1005
+36.1006
 ui_hce_weighted_optical_efficiency
 1
 1
@@ -2395,7 +2401,7 @@ ui_hce_weighted_thermal_losses
 1
 1
 1
-36.1005
+36.1006
 ui_land_multiplier
 1
 1
