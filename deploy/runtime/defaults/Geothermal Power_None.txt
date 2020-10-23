@@ -1,5 +1,5 @@
 1
-143
+144
 CT
 1
 1
@@ -787,6 +787,12 @@ station_id
 4
 6
 258971
+step
+1
+1
+1
+1
+3600
 subsurface_water_loss
 1
 1

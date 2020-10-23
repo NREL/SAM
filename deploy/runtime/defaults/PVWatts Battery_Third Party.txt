@@ -1,5 +1,5 @@
 1
-210
+211
 Monthly_util
 1
 2
@@ -982,6 +982,12 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 system_capacity
 1
 1

@@ -1,5 +1,5 @@
 1
-458
+459
 A_absorber
 1
 1
@@ -873,7 +873,7 @@ csp.ds.cost.plm.total
 1
 1
 1
-2223950
+2.22395e+06
 csp.ds.cost.receiver
 1
 1
@@ -2602,6 +2602,12 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 system_availability
 1
 1

@@ -1,5 +1,5 @@
 1
-149
+150
 A_absorber
 1
 1
@@ -673,6 +673,12 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 system_availability
 1
 1

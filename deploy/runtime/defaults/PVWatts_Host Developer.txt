@@ -1,5 +1,5 @@
 1
-494
+495
 ac_nameplate
 1
 1
@@ -2666,6 +2666,12 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 subtotal_direct
 1
 1

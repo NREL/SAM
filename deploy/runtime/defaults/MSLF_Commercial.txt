@@ -1,5 +1,5 @@
 1
-745
+746
 A_aperture
 1
 1
@@ -1203,7 +1203,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4462600
+4.4626e+06
 csp.mslf.cost.power_plant
 1
 1
@@ -3644,6 +3644,12 @@ station_id
 4
 5
 67345
+step
+1
+1
+1
+1
+3600
 store_fl_props
 1
 3

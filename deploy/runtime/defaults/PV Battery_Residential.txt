@@ -1,5 +1,5 @@
 1
-993
+1004
 6par_aisc
 1
 1
@@ -5175,6 +5175,18 @@ step
 1
 1
 0
+step_sd11par
+1
+1
+1
+1
+0
+step_spe
+1
+1
+1
+1
+0
 subarray1_azimuth
 1
 1
@@ -6431,7 +6443,7 @@ value_of_lost_load
 1
 1
 1
-100
+0
 vdcmax_inverter
 1
 1
