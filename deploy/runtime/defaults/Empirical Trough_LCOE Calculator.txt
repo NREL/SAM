@@ -1,5 +1,5 @@
 1
-467
+468
 AntiFrPar
 1
 1
@@ -2730,6 +2730,12 @@ ui_solar_multiple
 1
 1
 2
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_system_capacity
 1
 1

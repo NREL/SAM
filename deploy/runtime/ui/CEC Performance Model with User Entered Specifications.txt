@@ -2944,18 +2944,11 @@ equations{ '6par_aisc' } = define() {
 	
 equations{'6par_step'} = define() {
 	return ${step};};
-8013
+7843
 on_load{'CEC Performance Model with User Entered Specifications'} = define() {
 
 	enable_bifacial();
-	on_change{'6par_step'}();
-};
-
-on_change{'6par_step'} = define() {
-	time_step = value('6par_step');
-	enable('6par_transient_thermal_model_unit_mass',time_step <= 1200);
-	//show('transient_thermal_model_message', time_step > 1200);
-	refresh();
+	enable('6par_transient_thermal_model_unit_mass',value('step') <= 1200);
 };
 
 on_change{'6par_is_bifacial'} = define(){

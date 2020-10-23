@@ -1,5 +1,5 @@
 1
-1016
+1017
 6par_aisc
 1
 1
@@ -6399,6 +6399,12 @@ tz
 1
 -7
 ui_batt_is_dc
+1
+1
+1
+1
+0
+ui_step_minutes
 1
 1
 1

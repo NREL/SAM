@@ -1,5 +1,5 @@
 1
-746
+747
 A_aperture
 1
 1
@@ -4422,6 +4422,12 @@ ui_net_capital_cost
 1
 1
 546813184
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

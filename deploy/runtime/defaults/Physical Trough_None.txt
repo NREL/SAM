@@ -1,5 +1,5 @@
 1
-839
+840
 A_aperture
 1
 2
@@ -5369,6 +5369,12 @@ ui_receiver_description
 4
 12
 Schott PTR80
+ui_step_minutes
+1
+1
+1
+1
+60
 use_specific_weather_file
 1
 1

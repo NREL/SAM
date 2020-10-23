@@ -1,5 +1,5 @@
 1
-94
+95
 FRUL
 1
 1
@@ -503,6 +503,12 @@ tz
 1
 1
 -7
+ui_step_minutes
+1
+1
+1
+1
+60
 use_custom_mains
 1
 1

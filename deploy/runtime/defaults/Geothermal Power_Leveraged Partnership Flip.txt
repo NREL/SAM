@@ -1,5 +1,5 @@
 1
-539
+540
 CT
 1
 1
@@ -3233,6 +3233,12 @@ ui_calculations_only
 1
 1
 0
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

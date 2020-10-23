@@ -1,5 +1,5 @@
 1
-383
+384
 FRUL
 1
 1
@@ -1992,6 +1992,12 @@ ui_net_capital_cost
 1
 1
 8059.8
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

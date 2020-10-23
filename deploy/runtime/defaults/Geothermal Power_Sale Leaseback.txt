@@ -1,5 +1,5 @@
 1
-522
+523
 CT
 1
 1
@@ -3137,6 +3137,12 @@ ui_calculations_only
 1
 1
 0
+ui_step_minutes
+1
+1
+1
+1
+60
 use_specific_weather_file
 1
 1

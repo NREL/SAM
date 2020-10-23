@@ -1,5 +1,5 @@
 1
-706
+707
 adjust
 1
 5
@@ -4268,6 +4268,12 @@ tz
 1
 1
 -6
+ui_step_minutes
+1
+1
+1
+1
+60
 use_specific_weather_file
 1
 1

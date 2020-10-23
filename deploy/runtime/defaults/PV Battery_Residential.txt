@@ -1,5 +1,5 @@
 1
-1004
+1005
 6par_aisc
 1
 1
@@ -6049,6 +6049,12 @@ ui_net_capital_cost
 1
 1
 17577.4
+ui_step_minutes
+1
+1
+1
+1
+0
 ui_subarray1_length_side
 1
 1

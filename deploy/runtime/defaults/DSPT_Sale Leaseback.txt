@@ -1,5 +1,5 @@
 1
-619
+620
 A_sf
 1
 1
@@ -9188,6 +9188,12 @@ ui_receiver_height
 1
 1
 23.8084
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_tower_height
 1
 1

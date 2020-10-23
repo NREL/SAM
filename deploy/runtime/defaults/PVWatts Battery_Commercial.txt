@@ -1,5 +1,5 @@
 1
-384
+385
 ac_nameplate
 1
 1
@@ -2043,6 +2043,12 @@ ui_net_capital_cost
 1
 1
 334113
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

@@ -1,5 +1,5 @@
 1
-482
+483
 FossilFill
 1
 2
@@ -2714,6 +2714,12 @@ ui_net_capital_cost
 1
 1
 707496768
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

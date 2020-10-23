@@ -1,5 +1,5 @@
 1
-469
+470
 A_aperture
 1
 1
@@ -3013,6 +3013,12 @@ ui_disp_9_turbout
 1
 1
 1
+ui_step_minutes
+1
+1
+1
+1
+60
 use_specific_weather_file
 1
 1

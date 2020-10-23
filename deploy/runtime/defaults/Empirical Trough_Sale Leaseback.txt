@@ -1,5 +1,5 @@
 1
-769
+770
 AntiFrPar
 1
 1
@@ -4604,6 +4604,12 @@ ui_solar_multiple
 1
 1
 2
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_tes_htf_type
 1
 1

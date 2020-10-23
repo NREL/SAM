@@ -1,5 +1,5 @@
 1
-387
+388
 A_absorber
 1
 1
@@ -2060,6 +2060,12 @@ ui_net_capital_cost
 1
 1
 292400448
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

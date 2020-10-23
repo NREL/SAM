@@ -3680,10 +3680,10 @@ equations{ 'snl_n_cells' } = define() {
 equations{'snl_step'} = define() {
 	return ${step};};
 
-602
+433
 on_load{'Sandia PV Array Performance Model with Module Database'} = define(){
 	on_change{'snl_module_structure'} ();
-	on_change{'snl_step'} ();
+	enable('snl_transient_thermal_model_unit_mass',value('step') <= 1200);
 };
 
 on_change{'snl_module_structure'} = define() {
@@ -3692,12 +3692,4 @@ on_change{'snl_module_structure'} = define() {
 	enable('snl_specified_a', editable);
 	enable('snl_specified_b', editable);
 	enable('snl_specified_dT', editable);
-};
-
-on_change{'snl_step'} = define() {
-	time_step = value('snl_step');
-	enable('snl_transient_thermal_model_unit_mass',time_step <= 1200);
-	//show('transient_thermal_model_message',time_step <= 1200);
-	
-	refresh();
 };

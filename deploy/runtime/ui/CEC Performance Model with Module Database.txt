@@ -3554,7 +3554,7 @@ equations{ 'gamma_r_calc' } = define() {
 equations{'cec_step'} = define() {
 	return ${step};
 };
-2997
+3074
 function cec_module_update_ui()
 {
 	state = value('cec_temp_corr_mode');
@@ -3633,7 +3633,8 @@ on_load{"CEC Performance Model with Module Database"} = define()
 {
 	cec_module_update_ui();
 	cec_module_plot();
-	on_change{'cec_step'}();
+	//on_change{'cec_step'}();
+	enable('cec_transient_thermal_model_unit_mass',value('step') <=1200);
 };
 	
 on_change{'cec_temp_corr_mode'} = cec_module_update_ui;
@@ -3646,9 +3647,9 @@ on_change{'module_name'} = define()
 	cec_module_plot();
 };
 
-on_change{'cec_step'} = define() {
+/*on_change{'cec_step'} = define() {
 	time_step = value('cec_step');
 	enable('cec_transient_thermal_model_unit_mass',time_step <=1200);
 	//show('transient_thermal_model_message',time_step <=1200);
 	refresh();
-};
+};*/

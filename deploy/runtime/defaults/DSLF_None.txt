@@ -1,5 +1,5 @@
 1
-416
+417
 A_aperture
 1
 3
@@ -2607,6 +2607,12 @@ tz
 1
 1
 -7
+ui_step_minutes
+1
+1
+1
+1
+60
 use_specific_weather_file
 1
 1
