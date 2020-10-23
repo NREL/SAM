@@ -101,10 +101,8 @@ DSGL IPH,None,10846581,NA,NA,;
 DSGL IPH,LCOH Calculator,10846581,NA,NA,; 
 Fuel Cell,Commercial,1937287.625000,8.458051,NA,; 
 Fuel Cell,Single Owner,1911072.125000,57.167927,70.315842,; 
-MEwave,LCOE Calculator,OVERWRITE	
-MEwave,LCOE Calculator,59434320,NA,NA,Defaults file is likely out of date: MEwave_LCOE Calculator.txt  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 682, config has 680  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: override_plant,itemized_check_commissioning,plant_commissioning_shown; 
-MEtidal,LCOE Calculator,OVERWRITE	
-MEtidal,LCOE Calculator,216151664,NA,NA,Defaults file is likely out of date: MEtidal_LCOE Calculator.txt  Variables: 6 loaded but not in configuration, 0 wrong type, defaults file has 653, config has 647  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: override_plant,itemized_check_commissioning,reserve_account_shown,proj_contingency_shown,insurance_shown,plant_commissioning_shown; 
+MEwave,LCOE Calculator,59434320,NA,NA,; 
+MEtidal,LCOE Calculator,216151664,NA,NA,; 
 Geothermal Power,Single Owner,262800000,7.174291,7.712479,; 
 Geothermal Power,Merchant Plant,262800000,6.519230,NA,; 
 Geothermal Power,Leveraged Partnership Flip,262800000,7.269229,7.824011,; 
