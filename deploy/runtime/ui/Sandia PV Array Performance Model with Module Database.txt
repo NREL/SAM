@@ -2547,7 +2547,7 @@ AlignTop
 2
 1
 
-70
+69
 snl_a
 3
 1
@@ -3454,20 +3454,6 @@ PV Module (Sandia Database)
 1
 0
 Numeric
-snl_step
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 snl_transient_thermal_model_unit_mass
 3
 1

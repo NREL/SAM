@@ -2897,7 +2897,7 @@ AlignTop
 2
 1
 
-45
+44
 alpha_sc_calc
 3
 1
@@ -3364,20 +3364,6 @@ Building integrated|Greater than 3.5 in|2.5-3.5 in|1.5-2.5 in|0.5-1.5 in|Less th
 1
 6
 Choice
-cec_step
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 cec_t_noct
 3
 1

@@ -2461,7 +2461,7 @@ AlignTop
 2
 1
 
-33
+32
 6par_aisc
 3
 1
@@ -2856,20 +2856,6 @@ Building integrated|Greater than 3.5 in|2.5-3.5 in|1.5-2.5 in|0.5-1.5 in|Less th
 1
 6
 Choice
-6par_step
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 6par_tnoct
 3
 1
