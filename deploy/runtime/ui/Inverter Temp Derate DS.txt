@@ -194,7 +194,7 @@ Inverter Temperature
 DataMatrix
 
 0
-1836
+1845
 function inv_tdc_ds_update_plot()
 {
 	Vdc = [];
@@ -266,7 +266,7 @@ function inv_tdc_ds_update_plot()
 	//Make the plot
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
 	axis('x1', {'label'='Ambient Temp (C)', 'min'=0, 'max'=60});
-	axis('y1', {'label'='Efficiency (%)', 'min'=0, 'max'= (1.1)});
+	axis('y1', {'label'='Max Power / Rated Power', 'min'=0, 'max'= (1.1)});
 
 }
 
