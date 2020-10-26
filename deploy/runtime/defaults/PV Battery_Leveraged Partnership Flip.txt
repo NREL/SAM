@@ -1,5 +1,5 @@
 1
-1021
+1030
 6par_aisc
 1
 1
@@ -165,12 +165,6 @@ Generic polycrystalline silicon module
 1
 1
 6
-6par_step
-1
-1
-1
-1
-0
 6par_tnoct
 1
 1
@@ -1472,12 +1466,6 @@ cec_standoff
 1
 1
 6
-cec_step
-1
-1
-1
-1
-0
 cec_t_noct
 1
 1
@@ -5331,12 +5319,6 @@ snl_specified_b
 1
 0
 snl_specified_dT
-1
-1
-1
-1
-0
-snl_step
 1
 1
 1
