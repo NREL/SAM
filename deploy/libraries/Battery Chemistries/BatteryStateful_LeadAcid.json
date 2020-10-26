@@ -1,12 +1,7 @@
 {
     "defaults": {
-        "Controls": {
-            "control_mode": 1.0,
-            "dt_hr": 1,
-            "input_power": 0.0
-        },
         "ParamsCell": {
-            "C_rate": 0.2,
+            "C_rate": 0.05,
             "Qexp": 24.675,
             "Qfull": 30,
             "Qnom": 20.96,
@@ -14,6 +9,10 @@
             "Vfull": 2.035,
             "Vnom": 2,
             "Vnom_default": 2,
+            "leadacid_q20": 100,
+            "leadacid_q10": 43, 
+            "leadacid_qn": 40,
+            "leadacid_tn": 1,
             "calendar_choice": 0,
             "chem": 0,
             "cycling_matrix": [
@@ -288,9 +287,6 @@
                     61.90605633
                 ]
             ],
-            "initial_SOC": 50.0,
-            "maximum_SOC": 90.0,
-            "minimum_SOC": 10.0,
             "resistance": 0.25,
             "voltage_choice": 0.0
         },
@@ -368,30 +364,9 @@
                 ]
             ],
             "h": 7.5,
-            "loss_choice": 0.0,
             "mass": 288,
-            "monthly_charge_loss": [
-                0.0
-            ],
-            "monthly_discharge_loss": [
-                0.0
-            ],
-            "monthly_idle_loss": [
-                0.0
-            ],
             "nominal_energy": 10.0,
-            "nominal_voltage": 500.0,
-            "replacement_capacity": 0.0,
-            "replacement_option": 0.0,
-            "replacement_schedule": [
-                0.0
-            ],
-            "replacement_schedule_percent": [
-                0.0
-            ],
-            "schedule_loss": [
-                0.0
-            ],
+            "nominal_voltage": 12,
             "surface_area": 1.5078
         }
     }

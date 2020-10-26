@@ -1,10 +1,5 @@
 {
 	"defaults": {
-		"Controls": {
-			"control_mode": 1.0,
-			"dt_hr": 1,
-			"input_power": 0.0
-		},
 		"ParamsCell": {
 			"C_rate": 0.2,
 			"Qexp": 61.014,
@@ -97,9 +92,6 @@
                     69.4
                 ]
             ],
-			"initial_SOC": 50.0,
-			"maximum_SOC": 90.0,
-			"minimum_SOC": 10.0,
 			"resistance": 0.001155,
 			"voltage_choice": 0.0
 		},
@@ -108,30 +100,9 @@
 			"T_room_init": 20,
 			"cap_vs_temp": [ [ 0,  80.200000000000003 ], [ 23, 100 ], [ 30, 103.09999999999999 ], [ 45, 105.40000000000001 ] ],
 			"h": 7.5,
-			"loss_choice": 0.0,
 			"mass": 99.0,
-			"monthly_charge_loss": [
-				0.0
-			],
-			"monthly_discharge_loss": [
-				0.0
-			],
-			"monthly_idle_loss": [
-				0.0
-			],
 			"nominal_energy": 10.0,
 			"nominal_voltage": 500.0,
-			"replacement_capacity": 0.0,
-			"replacement_option": 0.0,
-			"replacement_schedule": [
-				0.0
-			],
-			"replacement_schedule_percent": [
-				0.0
-			],
-			"schedule_loss": [
-				0.0
-			],
 			"surface_area": 2.071
 		}
 	}

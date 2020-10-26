@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-19148
+11977
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -414,6 +414,10 @@ function set_lithium_ion(update_default)
 		else if (lithium_type == 5)
 			NCA();
 	}
+	if (financing() == 'Residential')
+		value('batt_bank_voltage', 50);
+	else
+		value('batt_bank_voltage', 500);
 }
 function set_vanadium(update_default)
 {
@@ -454,123 +458,73 @@ function GEL()
 	value('batt_specific_energy_per_volume',75);
 }
 
-
-// Valve Regulated Lead Acid defaults
-function lead_acid_defaults()
+function get_batt_data_from_file(filename)
 {
+	defaults_dir = replace(appdir(), '\\', '/' ) + '/../libraries/Battery Chemistries/';
+	defaults_dir += filename;
+	x = read_json(defaults_dir);
+	defs = x.defaults;
+	set_batt_defaults_from_data(defs);
+}
 
-	ConversionEfficiencies();
-	value('LeadAcid_q20',100);
-	value('LeadAcid_q10',43);
-	value('LeadAcid_qn',40);
-	value('LeadAcid_tn',1);
-	// desired bank voltage
-	value('batt_resistance', 0.25); // from UBGC2, and DC400-6
-	value('batt_bank_voltage', 12);
-	value('batt_voltage_choice', 0);
-
+function set_batt_defaults_from_data(defs)
+{
+	cell_params = defs.paramscell;
+	pack_params = defs.paramspack;
+	
+	if (value('batt_chem') == 0) {
+		value('LeadAcid_q20',cell_params.leadacid_q20);
+		value('LeadAcid_q10',cell_params.leadacid_q10);
+		value('LeadAcid_qn',cell_params.leadacid_qn);
+		value('LeadAcid_tn',cell_params.leadacid_tn);
+	}
+	
 	// voltage curve
-	value('batt_C_rate',0.05);
-	value('batt_Vfull',2.035);
-	value('batt_Vexp',2.035);
-	value('batt_Vnom',2);
-	value('batt_Qfull',30);
-	value('batt_Qexp_percent',82.25);
-	value('batt_Qnom_percent',69.867);
-	value('batt_Vnom_default',2);
+	value('batt_C_rate',cell_params.c_rate);
+	value('batt_Vfull',cell_params.vfull);
+	value('batt_Vexp',cell_params.vexp);
+	value('batt_Vnom',cell_params.vnom);
+	value('batt_Qfull',cell_params.qfull);
+	value('batt_Qexp',cell_params.qexp);
+	value('batt_Qnom',cell_params.qnom);
+	value('batt_Vnom',cell_params.vnom);
+	
+	${batt_Qexp_percent} = ${batt_Qexp}/${batt_Qfull}/0.01;
+	${batt_Qnom_percent} = ${batt_Qnom}/${batt_Qfull}/0.01;
+	
 	voltage_matrix = [[0,0]];
   	value('batt_voltage_matrix', voltage_matrix);
   	
-		// Lifetime
-	lifetime = [[100, 0, 107.0336711],
-				[100, 78, 106.2367595],
-				[100, 155, 99.31591834],
-				[100, 225, 88.4519364],
-				[100, 283, 76.90447695],
-				[100, 331, 65.70010163],
-				[60, 0, 99.66594258],
-				[60, 82, 103.067629],
-				[60, 157, 105.9231793],
-				[60, 230, 108.0512886],
-				[60, 305, 109.1644466],
-				[60, 379, 109.01082],
-				[60, 455, 107.1583692],
-				[60, 531, 102.6818697],
-				[60, 608, 95.91097842],
-				[60, 682, 86.06425502],
-				[60, 744, 74.42387647],
-				[60, 783, 64.27151711],
-				[50, 0, 99.6659426],
-				[50, 82, 103.101846],
-				[50, 155, 105.956063],
-				[50, 230, 108.051289],
-				[50, 305, 109.164447],
-				[50, 379, 108.988919],
-				[50, 455, 107.612098],
-				[50, 530, 105.571679],
-				[50, 606, 102.15444],
-				[50, 682, 97.3285329],
-				[50, 759, 90.9095439],
-				[50, 835, 82.5464166],
-				[50, 911, 72.1192173],
-				[50, 962, 63.3411373],
-				[30, 0, 99.66816445],
-				[30, 82, 102.9787542],
-				[30, 157, 105.8934062],
-				[30, 230, 108.0512886],
-				[30, 305, 109.2577652],
-				[30, 379, 110.2242797],
-				[30, 454, 110.8352945],
-				[30, 528, 110.9241694],
-				[30, 603, 110.5353418],
-				[30, 679, 109.6465929],
-				[30, 753, 108.2712539],
-				[30, 829, 106.4115468],
-				[30, 904, 104.0674716],
-				[30, 981, 101.2390282],
-				[30, 1056, 97.92399471],
-				[30, 1131, 94.10015251],
-				[30, 1208, 89.78083279],
-				[30, 1283, 84.92604185],
-				[30, 1360, 79.5268922],
-				[30, 1437, 73.49006521],
-				[30, 1513, 66.73557347],
-				[30, 1565, 61.90605633]];
-	value('batt_lifetime_matrix',lifetime);
+  	// desired bank voltage
+	value('batt_resistance', cell_params.resistance); // from UBGC2, and DC400-6
+	value('batt_voltage_choice', cell_params.voltage_choice);
+
+  	value('batt_bank_voltage', pack_params.nominal_voltage);
+  	
+	// Lifetime
+	value('batt_lifetime_matrix',cell_params.cycling_matrix);
 	
 	// turn calendar life model off
-	value('batt_calendar_choice', 0);
+	value('batt_calendar_choice', cell_params.calendar_choice);
 	
 	// Thermal
-	cap_vs_temp = [[-27.69480083, 37.43024553],
-				[-22.98152183, 44.52058055],
-				[-18.26824283, 50.93737703],
-				[-13.50829769, 56.73025835],
-				[-8.748352565, 62.03789267],
-				[-3.988407434, 67.12710044],
-				[0.771537696, 72.128676],
-				[5.531482826, 77.1616422],
-				[10.29142796, 82.26916118],
-				[15.05137309, 87.45384882],
-				[19.81131822, 92.66469533],
-				[24.57126335, 97.79183346],
-				[29.33120848, 102.6926974],
-				[34.09115361, 107.1436288],
-				[38.85109874, 110.8921946],
-				[43.61104387, 113.6205645],
-				[48.0443261, 114.9503862]];
-	value('cap_vs_temp', cap_vs_temp);
-	
-	// From Pesaran 2001: Thermal Characteristics of Selected EV and HEV batteries
-	value('batt_Cp',660);
+	value('cap_vs_temp', pack_params.cap_vs_temp);
+	value('batt_Cp',pack_params.cp);
 	
 	// ancilliary system losses
 	zero_array = fill_by_month(0);
 	value('batt_losses_charging', zero_array);
 	value('batt_losses_discharging', zero_array);
 	value('batt_losses_idle', zero_array);
-
 }
+
+// Valve Regulated Lead Acid defaults
+function lead_acid_defaults()
+{
+	ConversionEfficiencies();
+	get_batt_data_from_file('BatteryStateful_LeadAcid.json');
+}
+
 // Lithium Manganese Oxide
 function LMO()
 {
@@ -598,35 +552,10 @@ function LMO()
 // Lithium iron phospate
 function LFP()
 {
-	// voltage curve
-	value('batt_C_rate',0.2);
-	value('batt_Vfull',3.415);
-	value('batt_Vexp',3.3);
-	value('batt_Vnom',3.14);
-	value('batt_Qfull',3.03);
-	value('batt_Qexp_percent',7.92);
-	value('batt_Qnom_percent',89.1);
-	value('batt_Vnom_default',3.2);
+	get_batt_data_from_file('BatteryStateful_LFP-C.json');
+	
 	value('batt_specific_energy_per_mass',70);
 	value('batt_specific_energy_per_volume',82);
-		
-	// Lifetime
-	lifetime = [[100, 0, 100], [100, 128, 98.7906648], [100, 202, 97.9632249], [100, 277, 97.3903819], [100, 371, 96.6265912], [100, 523, 95.9264498], [100, 666, 95.2263083], [100, 1012, 93.9533239], [100, 1354, 92.9349364], [100, 1733, 91.9483734], [100, 2052, 91.0572843], [100, 2384, 90.2298444], [100, 2744, 89.3705799], [100, 3103, 88.54314], [100, 3465, 87.7157001], [100, 3830, 86.9200849], [100, 4188, 86.1881188], [100, 4560, 85.2970297], [100, 5000, 84.4377652], [100, 5374, 83.7376238], [100, 5757, 82.9738331], [100, 6132, 82.3055163], [100, 6527, 81.4780764], [100, 6926, 80.7461103], [100, 7300, 79.9823197], [100, 7701, 79.218529], [100, 8111, 78.6138614], [100, 8495, 77.6591231], [100, 8778, 77.3408769], [100, 9192, 76.4497878], [100, 9987, 74.8903819], [100, 10829, 73.4264498], [100, 11474, 72.1534653], [100, 12162, 70.9123055], [100, 12921, 69.5756719], [80, 0, 100], [80, 161, 98.4087694], [80, 301, 97.135785], [80, 448, 96.0219236], [80, 645, 95.0671853], [80, 831, 94.3033946], [80, 1276, 92.6803395], [80, 1696, 91.5664781], [80, 2191, 90.4844413], [80, 2596, 89.6570014], [80, 3023, 89.0205092], [80, 3466, 88.3521924], [80, 3912, 87.7157001], [80, 4375, 87.0473833], [80, 4828, 86.3472419], [80, 5292, 85.7425743], [80, 5759, 85.0424328], [80, 6297, 84.3422914], [80, 7242, 83.1011315], [80, 7724, 82.4328147], [80, 8196, 81.8281471], [80, 8678, 81.0643564], [80, 9186, 80.4915134], [80, 9690, 79.950495], [80, 10169, 79.3140028], [80, 10623, 78.8048091], [80, 11000, 78.2637907], [80, 11534, 77.6272984], [80, 12479, 76.6725601], [80, 13496, 75.5905233], [80, 14299, 74.7949081], [80, 15119, 73.903819], [80, 16019, 72.8854314], [40, 0, 100], [40, 489, 95.7355021], [40, 948, 92.6803395], [40, 1323, 89.8161245], [40, 1733, 87.7793494], [40, 2690, 83.7694484], [40, 3623, 82.3055163], [40, 4676, 82.1145686], [40, 5591, 82.1145686], [40, 6507, 82.1782178], [40, 7506, 81.9236209], [40, 8468, 81.6053748], [40, 9438, 82.7510608], [40, 10407, 81.7963225], [40, 11358, 81.1598303], [40, 12345, 80.4915134], [40, 13463, 80.4915134], [40, 14484, 80.0777935], [40, 15468, 79.7595474], [40, 16470, 79.4094767], [40, 17477, 78.9321075], [40, 18475, 78.6138614], [40, 19492, 78.1364922], [40, 20530, 77.8182461], [40, 21542, 77.4363508], [40, 22456, 77.1181047], [40, 23209, 77.2454031], [40, 24274, 76.7362093], [40, 26229, 75.9724187], [40, 28263, 75.2404526], [40, 29842, 74.7630835], [40, 31478, 74.2538897], [40, 33293, 73.8719943], [20, 0, 100], [20, 322, 97.8359264], [20, 744, 96.562942], [20, 1030, 94.9717115], [20, 1861, 91.3437058], [20, 2726, 87.8429986], [20, 2726, 87.8429986], [20, 3518, 84.7878359], [20, 5462, 79.2503536], [20, 7476, 76.927157], [20, 9813, 77.0862801], [20, 11702, 77.2772277], [20, 13699, 77.9137199], [20, 15707, 78.6775106], [20, 17758, 79.0594059], [20, 19770, 79.4413013], [20, 21691, 79.5049505], [20, 23725, 79.5685997], [20, 25701, 79.5685997], [20, 27985, 79.9823197], [20, 30010, 79.8231966], [20, 31981, 79.6958982], [20, 33984, 79.5367751], [20, 35993, 79.2503536], [20, 37950, 79.0594059], [20, 40000, 78.8048091], [20, 42027, 78.5502122], [20, 44002, 78.2956153], [20, 45809, 78.0410184], [20, 47324, 78.4547383], [20, 49421, 77.9773692], [20, 53266, 77.2772277], [20, 57263, 76.6089109], [20, 60363, 76.2906648], [20, 63598, 75.8132956], [20, 67147, 75.6859972], [10, 0, 100], [10, 827, 98.281471], [10, 1341, 97.0084866], [10, 2050, 95.6718529], [10, 3697, 92.4257426], [10, 5352, 89.3387553], [10, 6801, 86.7609618], [10, 10801, 81.8281471], [10, 14594, 79.1867044], [10, 19282, 78.2637907], [10, 22891, 78.2956153], [10, 26837, 78.7411598], [10, 30819, 79.1867044], [10, 34952, 79.5685997], [10, 38953, 79.8868458], [10, 42829, 80.0141443], [10, 46812, 80.1414427], [10, 50791, 80.2050919], [10, 55205, 80.8415842], [10, 59150, 80.8415842], [10, 63094, 80.9052334], [10, 67040, 80.7779349], [10, 71103, 80.7142857], [10, 74943, 80.6824611], [10, 78957, 80.523338], [10, 82865, 80.3960396], [10, 86722, 80.2687412], [10, 90414, 80.1732673], [10, 93306, 80.523338], [10, 97274, 80.2687412], [10, 104629, 79.5685997], [10, 112503, 78.9957567], [10, 118575, 78.6138614], [10, 124792, 78.2319661], [10, 131609, 78.1683168]];
-	value('batt_lifetime_matrix',lifetime);
-	
-	cap_vs_temp = [[-20, 72.33333333],
-				[-10, 81.8],
-				[0, 88.8],
-				[10, 93],
-				[23, 96.66666667],
-				[45, 101],
-				[60, 101]];
-	value('cap_vs_temp', cap_vs_temp);
-	
-	value('batt_calendar_a', 0.0033143);
-	value('batt_calendar_b', -3191);
-	value('batt_calendar_c', 389.7);
-	value('batt_calendar_q0', 0.999);
 }
 // Lithium cobalt Oxide
 function LCO()
@@ -681,38 +610,10 @@ function LTO()
 // Lithium nickel cobalt
 function NMC()
 {
-	// voltage curve
-	value('batt_C_rate',0.2);
-	value('batt_Vfull',4.1);
-	value('batt_Vexp',4.05);
-	value('batt_Vnom',3.4);
-	value('batt_Qfull',2.25);
-	value('batt_Qexp_percent',1.78);
-	value('batt_Qnom_percent',88.9);
-	value('batt_Vnom_default',3.6);
+	get_batt_data_from_file('BatteryStateful_NMC-C.json');
+	
 	value('batt_specific_energy_per_mass',101);
 	value('batt_specific_energy_per_volume',70);
-		
-	// Lifetime
-	lifetime = [ [ 20,  0,  100 ], 
-		[ 20, 5000,  99.980000000000004 ], 
-		[ 20, 15000,  99.939999999999998 ], 
-		[ 80, 0,  100 ], 
-		[ 80, 1000,  98.099999999999994 ], 
-		[ 80, 2000,  96.200000000000003 ], 
-		[ 80, 3000,  94.200000000000003 ], 
-		[ 80, 4000,  92.200000000000003 ], 
-		[ 80, 5000,  90.099999999999994 ], 
-		[ 100, 0,  100 ], 
-		[ 100, 1000,  94.700000000000003 ], 
-		[ 100, 2000,  89 ], [ 100, 3000,  83 ], 
-		[ 100, 4000,  76.5 ], 
-		[ 100, 5000,  69.400000000000006 ] ];
-	value('batt_lifetime_matrix',lifetime);
-	value('batt_calendar_a', 0.00136);
-	value('batt_calendar_b', -9931);
-	value('batt_calendar_c', 1659);
-	value('batt_calendar_q0', 1.0313);
 }
 // NMC
 function NCA()
@@ -743,16 +644,7 @@ function lithium_ion_defaults()
 
 	ConversionEfficiencies();
 
-	if (financing() == 'Residential')
-		value('batt_bank_voltage', 50);
-	else
-		value('batt_bank_voltage', 500);
-		
-	value('batt_voltage_choice', 0);
-	voltage_matrix = [[0,0]];
-  	value('batt_voltage_matrix', voltage_matrix);
-
-	// Thermal
+	// Can be overwritten by chemistry-specific fx
 	cap_vs_temp = [[-20, 72.33333333],
 					[-10, 81.8],
 					[0, 88.8],
@@ -767,17 +659,10 @@ function lithium_ion_defaults()
 	
 	// turn on calendar lifetime model
 	value('batt_calendar_choice', 1);
-	
-	// ancilliary system losses
-	zero_array = fill_by_month(0);
-	value('batt_losses_charging', zero_array);
-	value('batt_losses_discharging', zero_array);
-	value('batt_losses_idle', zero_array);
 }
 // Vanadium Redox Flow Battery
 function VRFB()
 {
-
 	FlowDefaults();
 
 	// voltage curve
@@ -810,7 +695,6 @@ function VRFB()
 // Iron flow battery
 function IronFlow()
 {
-
 	FlowDefaults();
 
 	voltage_matrix = [[0, 1.18],
@@ -839,7 +723,6 @@ function IronFlow()
 
 function FlowDefaults()
 {
-
 	ConversionEfficiencies();
 	
 	value('batt_resistance', 0.001);
