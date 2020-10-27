@@ -101,7 +101,8 @@ add_executable(export_config
         lk_eval.cpp lk_eval.h
         builder_generator_helper.h builder_generator_helper.cpp
 		builder_C_API.cpp builder_C_API.h
-		builder_PySAM.cpp builder_PySAM.h)
+		builder_PySAM.cpp builder_PySAM.h
+        library_extractor.cpp library_extractor.h)
 
 target_include_directories(export_config SYSTEM PRIVATE ../../src $ENV{SSCDIR} $ENV{SSCDIR}/tcs $ENV{WEXDIR}/include $ENV{LKDIR}/include )
 
