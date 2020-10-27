@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-11977
+11989
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -552,7 +552,7 @@ function LMO()
 // Lithium iron phospate
 function LFP()
 {
-	get_batt_data_from_file('BatteryStateful_LFP-C.json');
+	get_batt_data_from_file('BatteryStateful_LFPGraphite.json');
 	
 	value('batt_specific_energy_per_mass',70);
 	value('batt_specific_energy_per_volume',82);
@@ -610,7 +610,7 @@ function LTO()
 // Lithium nickel cobalt
 function NMC()
 {
-	get_batt_data_from_file('BatteryStateful_NMC-C.json');
+	get_batt_data_from_file('BatteryStateful_NMCGraphite.json');
 	
 	value('batt_specific_energy_per_mass',101);
 	value('batt_specific_energy_per_volume',70);
