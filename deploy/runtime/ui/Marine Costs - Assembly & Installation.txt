@@ -280,8 +280,8 @@ Tool Tip
 0
 Caption
 5
-138
-The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+147
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The values in the category cost columns will not be applied.
 TextColour
 4
 255

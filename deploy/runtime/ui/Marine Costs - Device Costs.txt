@@ -721,7 +721,7 @@ Y
 129
 Width
 3
-528
+660
 Height
 3
 24
@@ -730,8 +730,8 @@ Tool Tip
 0
 Caption
 5
-68
-Device Costs = Structural Assembly costs + PTO costs + Mooring costs
+115
+Device costs = Structural assembly costs + Power takeoff system costs + Mooring, foundation, and substructure costs
 TextColour
 4
 0

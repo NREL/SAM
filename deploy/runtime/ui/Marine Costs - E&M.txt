@@ -599,8 +599,8 @@ Tool Tip
 0
 Caption
 5
-138
-The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+147
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The values in the category cost columns will not be applied.
 TextColour
 4
 255
@@ -1405,20 +1405,20 @@ X
 33
 Y
 3
-30
+57
 Width
 3
 750
 Height
 3
-93
+66
 Tool Tip
 5
 0
 Caption
 5
-566
-To input engineering and management costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled engineering and management costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized engineering and management costs based on the level structure shown below, select "Enter as Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the Itemized inputs display.  
+385
+This page consists of two levels of subcosts for the engineering and management cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
 TextColour
 4
 0

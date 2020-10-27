@@ -241,20 +241,20 @@ X
 27
 Y
 3
-27
+33
 Width
 3
 759
 Height
 3
-72
+66
 Tool Tip
 5
 0
 Caption
 5
-545
-To input other miscellaneous infrastructure costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled infrastructure costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized infrastructure costs based on the level structure shown below, select "Enter as Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the User Input display.  
+378
+This page consists of two levels of subcosts for the structural assembly cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
 TextColour
 4
 0
@@ -876,7 +876,7 @@ X
 492
 Y
 3
-117
+138
 Width
 3
 195
@@ -888,8 +888,8 @@ Tool Tip
 0
 Caption
 5
-138
-The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+147
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The values in the category cost columns will not be applied.
 TextColour
 4
 255

@@ -631,13 +631,13 @@ Name
 object 21
 X
 3
-51
+21
 Y
 3
 108
 Width
 3
-732
+762
 Height
 3
 16
@@ -747,23 +747,23 @@ Name
 object 7214
 X
 3
-18
+21
 Y
 3
-33
+39
 Width
 3
 774
 Height
 3
-75
+66
 Tool Tip
 5
 0
 Caption
 5
-559
-To input maintenance costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled maintenance costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized maintenance costs based on the level structure shown below, select "Enter as Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is found from the sum of the bolded entries and is reflected in the User input box. 
+378
+This page consists of two levels of subcosts for the structural assembly cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
 TextColour
 4
 0
