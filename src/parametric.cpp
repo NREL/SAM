@@ -173,8 +173,15 @@ bool ParametricData::Read( wxInputStream &_I )
 	for( size_t i=0;i<n;i++ )
 	{
 		Simulation *sim = new Simulation( m_case, wxString::Format("Parametric #%d",(int)(i+1)) );
-		sim->Read( _I );
-		Runs.push_back( sim );
+//		sim->Read(_I);
+//		Runs.push_back(sim);
+		if (sim->Read(_I))
+			Runs.push_back(sim);
+		else
+		{
+			Runs.push_back(new Simulation(m_case, wxString::Format("Parametric #%d", (int)(i + 1))));
+			return true;
+		}
 	}
 
 	if (ver > 1)
@@ -191,8 +198,15 @@ bool ParametricData::Read( wxInputStream &_I )
 		}
 	}
 	
+	size_t tmpQS;
+	wxUint8 tmpCode;
 	if (ver > 2)
-		QuickSetupMode = in.Read32();
+	{
+		if (QuickSetup.size() > 0)
+			QuickSetupMode = in.Read32();
+		else
+			tmpCode = in.Read8(); // 43 or 0x2b
+	}
 	else
 		QuickSetupMode = 0;
 	

@@ -391,6 +391,21 @@ bool Case::Read( wxInputStream &_i )
 		  {
 		    wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ',') );
 		  }
+		if (m_vals.size() > m_oldVals.size())
+		{
+			for (auto newVal : m_vals) {
+				if (!m_oldVals.Get(newVal.first))
+					wxLogStatus("%s, %s configuration variable %s missing from project file", tech.c_str(), fin.c_str(), newVal.first.c_str());
+			}
+		}
+		if (m_vals.size() < m_oldVals.size())
+		{
+			for (auto oldVal : m_oldVals) {
+				if (!m_vals.Get(oldVal.first))
+					wxLogStatus("%s, %s project file variable %s missing from configuration", tech.c_str(), fin.c_str(), oldVal.first.c_str());
+			}
+		}
+
 	}
 	
 	if ( ver <= 1 )
@@ -460,8 +475,9 @@ bool Case::Read( wxInputStream &_i )
 		    wxLogStatus("error reading stochastic simulation information in Case::Read");
 		  }
 	}
-
-	return (in.Read8() == code);
+	wxUint8 retCode = in.Read8();
+//	return (in.Read8() == code);
+	return (retCode == code || retCode == '\0');
 }
 
 

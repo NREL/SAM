@@ -987,8 +987,10 @@ bool MainWindow::LoadProject( const wxString &file )
 		return false;
 
 	ProjectFile pf;
-	if ( !pf.ReadArchive( file ) )
-		return false;
+	pf.ReadArchive(file);
+	// TODO - reinstate after parametrics read is fixed
+	//if (!pf.ReadArchive(file))
+	//		return false;
 
 	int major, minor, micro;
 	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );
