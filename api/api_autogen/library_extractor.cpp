@@ -8,6 +8,21 @@
 #include "library_extractor.h"
 #include "lk_eval.h"
 
+#if defined(_WIN32)
+std::wstring string_to_wstring(const std::string& s)
+{
+	int len;
+	int slength = (int)s.length() + 1;
+	len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
+	wchar_t* buf = new wchar_t[len];
+	MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, buf, len);
+	std::wstring r(buf);
+	delete[] buf;
+	return r;
+}
+#endif
+
+
 std::vector<std::string> get_files_in_directory(const std::string& library_dir) {
     std::vector<std::string> names;
 
@@ -22,14 +37,16 @@ std::vector<std::string> get_files_in_directory(const std::string& library_dir) 
     closedir(dir);
 #else
     std::string search_path = library_dir + "/*.*";
+	std::wstring stemp = string_to_wstring(search_path);
     WIN32_FIND_DATA fd;
-    HANDLE hFind = ::FindFirstFile(search_path.c_str(), &fd);
+    HANDLE hFind = ::FindFirstFile(stemp.c_str(), &fd);
     if (hFind != INVALID_HANDLE_VALUE) {
         do {
             // read all (real) files in current folder
             // , delete '!' read other 2 default folder . and ..
             if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-                names.push_back(fd.cFileName);
+				std::wstring ws = std::wstring(fd.cFileName);
+				names.emplace_back(std::string(ws.begin(), ws.end()));
             }
         } while (::FindNextFile(hFind, &fd));
         ::FindClose(hFind);

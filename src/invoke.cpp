@@ -4532,7 +4532,7 @@ static void fcall_read_json(lk::invoke_t &cxt)
         return;
     }
 
-    std::ifstream ifs(file.c_str(), std::ios::in | std::ios::binary | std::ios::ate);
+    std::ifstream ifs(file.ToStdString().c_str(), std::ios::in | std::ios::binary | std::ios::ate);
 
     std::ifstream::pos_type fileSize = ifs.tellg();
     ifs.seekg(0, std::ios::beg);
