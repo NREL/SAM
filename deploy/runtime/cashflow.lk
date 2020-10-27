@@ -66,6 +66,8 @@ function cf_production()
 	fin = financing();
 	cfline( 'ENERGY', -1); 
 	cfline( 'cf_energy_net', 0);
+	cfline( 'cf_energy_sales', 0);
+	cfline( 'cf_energy_purchases', 0);
 	if ( fin == "Single Owner" || fin == "Merchant Plant" ) 
 	{
 		cfline( 'cf_energy_curtailed', 0);
