@@ -92,7 +92,7 @@ void builder_PySAM::set_config_options(const std::set<std::string>& configs) {
 std::string builder_PySAM::get_config_options() {
     if (config_options.empty())
         return "None";
-    std::string config_str = "config options:\\n\\n";
+    std::string config_str = "`config` options:\\n\\n";
     for (auto it = config_options.begin(); it != config_options.end(); ++it){
         if (it != config_options.begin())
             config_str += "\\n";
@@ -808,7 +808,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t{\"new\",             " << tech_symbol << "_new,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"new() -> " << tech_symbol << "\")},\n"
                "\t\t{\"default\",             " << tech_symbol << "_default,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nUse financial config-specific default attributes\\n\"\n"
+               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nUse default attributes\\n\"\n"
                                                                                   "\t\t\t\t\"" << get_config_options() << "\")},\n"
                "\t\t{\"wrap\",             " << tech_symbol << "_wrap,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> " << tech_symbol << "\\n\\nUse existing PySSC data\\n\\n.. warning::\\n\\n"
