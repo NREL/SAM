@@ -124,7 +124,7 @@ ShowColLabels
 ColLabels
 5
 90
-Vdc(V),Tstart(C),Slope(%/C),Tstart(C),Slope(%/C),Tstart(C),Slope(%/C),Tstart(C),Slope(%/C)
+Vdc(V),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C)
 NumRowsLabel
 5
 5
