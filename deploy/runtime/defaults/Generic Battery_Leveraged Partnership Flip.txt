@@ -1,5 +1,5 @@
 1
-499
+500
 LeadAcid_q10
 1
 1
@@ -665,6 +665,13 @@ batt_replacement_option
 1
 1
 1
+batt_replacement_schedule
+1
+2
+1
+25
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
 batt_replacement_schedule_percent
 1
 2

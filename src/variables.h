@@ -212,7 +212,6 @@ private:
 #define VF_LIBRARY             0x10
 #define VF_EXCLUSIVE_PAGES     0x20
 #define VF_COLLAPSIBLE_PANE    0x40
-#define VF_CHANGE_MODEL        0x80
 
 #define VUIOBJ_NONE		"Default"
 
