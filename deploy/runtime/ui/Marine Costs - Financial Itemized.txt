@@ -1,7 +1,7 @@
 Marine Costs - Financial Itemized
-819
-317
-20
+818
+214
+18
 Label
 
 1
@@ -62,7 +62,7 @@ X
 378
 Y
 3
-186
+105
 Width
 3
 90
@@ -125,7 +125,7 @@ X
 378
 Y
 3
-216
+135
 Width
 3
 90
@@ -235,7 +235,7 @@ X
 540
 Y
 3
-159
+78
 Width
 3
 168
@@ -330,7 +330,7 @@ X
 378
 Y
 3
-156
+75
 Width
 3
 90
@@ -380,44 +380,6 @@ BackColour
 TabOrder
 3
 4294967295
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-15
-Y
-3
-108
-Width
-3
-784
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-0
-Bold
-2
-1
 GroupBox
 
 1
@@ -437,7 +399,7 @@ Width
 800
 Height
 3
-291
+186
 Tool Tip
 5
 0
@@ -461,7 +423,7 @@ X
 345
 Y
 3
-123
+42
 Width
 3
 123
@@ -502,54 +464,6 @@ Label
 13
 Name
 5
-11
-object 7214
-X
-3
-15
-Y
-3
-45
-Width
-3
-786
-Height
-3
-63
-Tool Tip
-5
-0
-Caption
-5
-375
-This page consists of two levels of subcosts for the reserve accounts cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 12
 object 72751
 X
@@ -557,7 +471,7 @@ X
 117
 Y
 3
-216
+135
 Width
 3
 261
@@ -605,7 +519,7 @@ X
 147
 Y
 3
-186
+105
 Width
 3
 231
@@ -653,7 +567,7 @@ X
 147
 Y
 3
-156
+75
 Width
 3
 231
@@ -701,7 +615,7 @@ X
 150
 Y
 3
-246
+165
 Width
 3
 228
@@ -749,7 +663,7 @@ X
 378
 Y
 3
-246
+165
 Width
 3
 90
@@ -812,7 +726,7 @@ X
 480
 Y
 3
-186
+105
 Width
 3
 24
@@ -838,7 +752,7 @@ X
 480
 Y
 3
-216
+135
 Width
 3
 24
@@ -864,7 +778,7 @@ X
 480
 Y
 3
-156
+75
 Width
 3
 24
@@ -890,7 +804,7 @@ X
 480
 Y
 3
-246
+165
 Width
 3
 24

@@ -1,7 +1,7 @@
 Marine Costs - Development
-816
-1540
-107
+815
+1430
+105
 Label
 
 1
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-285
+288
 Y
 3
-1350
+1233
 Width
 3
 138
@@ -62,7 +62,7 @@ X
 90
 Y
 3
-180
+63
 Width
 3
 234
@@ -116,7 +116,7 @@ Width
 800
 Height
 3
-1527
+1416
 Tool Tip
 5
 0
@@ -140,7 +140,7 @@ X
 171
 Y
 3
-540
+423
 Width
 3
 153
@@ -185,10 +185,10 @@ Name
 Interconnection & Power Marketing
 X
 3
-102
+105
 Y
 3
-870
+753
 Width
 3
 222
@@ -233,10 +233,10 @@ Name
 Project Management during Development
 X
 3
-135
+138
 Y
 3
-1290
+1173
 Width
 3
 189
@@ -281,10 +281,10 @@ Name
 Project Management during Development1
 X
 3
-42
+45
 Y
 3
-1050
+933
 Width
 3
 282
@@ -329,10 +329,10 @@ Name
 closing_costs_cost
 X
 3
-423
+426
 Y
 3
-1410
+1293
 Width
 3
 90
@@ -392,10 +392,10 @@ Name
 detailed_cost_choice_financing_incentive
 X
 3
-342
+345
 Y
 3
-1320
+1203
 Width
 3
 186
@@ -428,7 +428,7 @@ X
 345
 Y
 3
-570
+453
 Width
 3
 183
@@ -458,10 +458,10 @@ Name
 detailed_cost_choice_interconnection
 X
 3
-345
+348
 Y
 3
-900
+783
 Width
 3
 183
@@ -494,7 +494,7 @@ X
 345
 Y
 3
-390
+273
 Width
 3
 183
@@ -524,10 +524,10 @@ Name
 detailed_cost_choice_project_management
 X
 3
-342
+345
 Y
 3
-1080
+963
 Width
 3
 189
@@ -560,7 +560,7 @@ X
 345
 Y
 3
-720
+603
 Width
 3
 183
@@ -593,7 +593,7 @@ X
 345
 Y
 3
-210
+93
 Width
 3
 150
@@ -673,7 +673,7 @@ X
 582
 Y
 3
-159
+42
 Width
 3
 195
@@ -718,10 +718,10 @@ Name
 due_diligence_cost
 X
 3
-423
+426
 Y
 3
-1350
+1233
 Width
 3
 90
@@ -784,7 +784,7 @@ X
 426
 Y
 3
-630
+513
 Width
 3
 90
@@ -847,7 +847,7 @@ X
 426
 Y
 3
-270
+153
 Width
 3
 90
@@ -910,7 +910,7 @@ X
 426
 Y
 3
-750
+633
 Width
 3
 90
@@ -973,7 +973,7 @@ X
 426
 Y
 3
-600
+483
 Width
 3
 90
@@ -1033,10 +1033,10 @@ Name
 financing_and_incentives_cost
 X
 3
-324
+327
 Y
 3
-1290
+1173
 Width
 3
 90
@@ -1096,10 +1096,10 @@ Name
 financing_and_incentives_cost_total
 X
 3
-324
+327
 Y
 3
-1290
+1173
 Width
 3
 90
@@ -1162,7 +1162,7 @@ X
 426
 Y
 3
-810
+693
 Width
 3
 90
@@ -1222,10 +1222,10 @@ Name
 incentives_cost
 X
 3
-423
+426
 Y
 3
-1380
+1263
 Width
 3
 90
@@ -1288,7 +1288,7 @@ X
 324
 Y
 3
-540
+423
 Width
 3
 90
@@ -1351,7 +1351,7 @@ X
 324
 Y
 3
-540
+423
 Width
 3
 90
@@ -1411,10 +1411,10 @@ Name
 interconnection_and_power_marketing_cost
 X
 3
-324
+327
 Y
 3
-870
+753
 Width
 3
 90
@@ -1474,10 +1474,10 @@ Name
 interconnection_and_power_marketing_cost_total
 X
 3
-324
+327
 Y
 3
-870
+753
 Width
 3
 90
@@ -1537,10 +1537,10 @@ Name
 interconnection_studies_and_fees_cost
 X
 3
-423
+426
 Y
 3
-930
+813
 Width
 3
 90
@@ -1603,7 +1603,7 @@ X
 426
 Y
 3
-450
+333
 Width
 3
 90
@@ -1663,10 +1663,10 @@ Name
 legal_support_cost
 X
 3
-423
+426
 Y
 3
-1440
+1323
 Width
 3
 90
@@ -1729,7 +1729,7 @@ X
 324
 Y
 3
-150
+33
 Width
 3
 90
@@ -1777,7 +1777,7 @@ X
 423
 Y
 3
-150
+33
 Width
 3
 117
@@ -1859,44 +1859,6 @@ AlignRight
 AlignTop
 2
 0
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-24
-Y
-3
-108
-Width
-3
-751
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-0
-Bold
-2
-1
 Label
 
 1
@@ -1910,7 +1872,7 @@ X
 252
 Y
 3
-270
+153
 Width
 3
 174
@@ -1951,62 +1913,14 @@ Label
 13
 Name
 5
-11
-object 7214
-X
-3
-24
-Y
-3
-42
-Width
-3
-753
-Height
-3
-54
-Tool Tip
-5
-0
-Caption
-5
-370
-This page consists of two levels of subcosts for the development cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 12
 object 72418
 X
 3
-309
+312
 Y
 3
-1110
+993
 Width
 3
 114
@@ -2051,10 +1965,10 @@ Name
 object 7241863
 X
 3
-213
+216
 Y
 3
-930
+813
 Width
 3
 210
@@ -2102,7 +2016,7 @@ X
 393
 Y
 3
-600
+483
 Width
 3
 33
@@ -2150,7 +2064,7 @@ X
 144
 Y
 3
-510
+393
 Width
 3
 180
@@ -2198,7 +2112,7 @@ X
 240
 Y
 3
-420
+303
 Width
 3
 186
@@ -2246,7 +2160,7 @@ X
 192
 Y
 3
-360
+243
 Width
 3
 132
@@ -2294,7 +2208,7 @@ X
 288
 Y
 3
-240
+123
 Width
 3
 138
@@ -2342,7 +2256,7 @@ X
 273
 Y
 3
-330
+213
 Width
 3
 153
@@ -2390,7 +2304,7 @@ X
 312
 Y
 3
-300
+183
 Width
 3
 114
@@ -2438,7 +2352,7 @@ X
 213
 Y
 3
-480
+363
 Width
 3
 213
@@ -2486,7 +2400,7 @@ X
 249
 Y
 3
-450
+333
 Width
 3
 177
@@ -2531,10 +2445,10 @@ Name
 object 73311
 X
 3
-120
+123
 Y
 3
-1500
+1383
 Width
 3
 204
@@ -2579,10 +2493,10 @@ Name
 object 7331140
 X
 3
-285
+288
 Y
 3
-1410
+1293
 Width
 3
 138
@@ -2627,10 +2541,10 @@ Name
 object 7331149
 X
 3
-201
+204
 Y
 3
-1260
+1143
 Width
 3
 222
@@ -2675,10 +2589,10 @@ Name
 object 733114926
 X
 3
-285
+288
 Y
 3
-1230
+1113
 Width
 3
 138
@@ -2723,10 +2637,10 @@ Name
 object 7331152
 X
 3
-195
+198
 Y
 3
-1170
+1053
 Width
 3
 228
@@ -2771,10 +2685,10 @@ Name
 object 7331159
 X
 3
-213
+216
 Y
 3
-1020
+903
 Width
 3
 210
@@ -2819,10 +2733,10 @@ Name
 object 733115937
 X
 3
-210
+213
 Y
 3
-990
+873
 Width
 3
 213
@@ -2867,10 +2781,10 @@ Name
 object 73315
 X
 3
-246
+249
 Y
 3
-1470
+1353
 Width
 3
 177
@@ -2915,10 +2829,10 @@ Name
 object 7331513
 X
 3
-288
+291
 Y
 3
-1440
+1323
 Width
 3
 135
@@ -2963,10 +2877,10 @@ Name
 object 7331541
 X
 3
-288
+291
 Y
 3
-1380
+1263
 Width
 3
 135
@@ -3011,10 +2925,10 @@ Name
 object 7331551
 X
 3
-228
+231
 Y
 3
-1200
+1083
 Width
 3
 195
@@ -3059,10 +2973,10 @@ Name
 object 7331555
 X
 3
-312
+315
 Y
 3
-1140
+1023
 Width
 3
 111
@@ -3107,10 +3021,10 @@ Name
 object 7331562
 X
 3
-213
+216
 Y
 3
-960
+843
 Width
 3
 210
@@ -3158,7 +3072,7 @@ X
 240
 Y
 3
-840
+723
 Width
 3
 186
@@ -3206,7 +3120,7 @@ X
 204
 Y
 3
-810
+693
 Width
 3
 222
@@ -3254,7 +3168,7 @@ X
 195
 Y
 3
-780
+663
 Width
 3
 231
@@ -3302,7 +3216,7 @@ X
 258
 Y
 3
-750
+633
 Width
 3
 168
@@ -3350,7 +3264,7 @@ X
 159
 Y
 3
-690
+573
 Width
 3
 165
@@ -3398,7 +3312,7 @@ X
 222
 Y
 3
-660
+543
 Width
 3
 204
@@ -3446,7 +3360,7 @@ X
 231
 Y
 3
-633
+516
 Width
 3
 192
@@ -3491,10 +3405,10 @@ Name
 onshore_interconnection_rights_cost
 X
 3
-423
+426
 Y
 3
-960
+843
 Width
 3
 90
@@ -3554,10 +3468,10 @@ Name
 other_development_cost
 X
 3
-324
+327
 Y
 3
-1500
+1383
 Width
 3
 90
@@ -3617,10 +3531,10 @@ Name
 other_financing_cost
 X
 3
-423
+426
 Y
 3
-1470
+1353
 Width
 3
 90
@@ -3683,7 +3597,7 @@ X
 426
 Y
 3
-660
+543
 Width
 3
 90
@@ -3743,10 +3657,10 @@ Name
 other_interconnection_cost
 X
 3
-423
+426
 Y
 3
-1020
+903
 Width
 3
 90
@@ -3809,7 +3723,7 @@ X
 426
 Y
 3
-480
+363
 Width
 3
 90
@@ -3869,10 +3783,10 @@ Name
 other_project_management_cost
 X
 3
-423
+426
 Y
 3
-1260
+1143
 Width
 3
 90
@@ -3935,7 +3849,7 @@ X
 426
 Y
 3
-840
+723
 Width
 3
 90
@@ -3998,7 +3912,7 @@ X
 426
 Y
 3
-330
+213
 Width
 3
 90
@@ -4061,7 +3975,7 @@ X
 426
 Y
 3
-420
+303
 Width
 3
 90
@@ -4124,7 +4038,7 @@ X
 324
 Y
 3
-360
+243
 Width
 3
 90
@@ -4187,7 +4101,7 @@ X
 324
 Y
 3
-360
+243
 Width
 3
 90
@@ -4247,10 +4161,10 @@ Name
 power_marketing_cost
 X
 3
-423
+426
 Y
 3
-990
+873
 Width
 3
 90
@@ -4313,7 +4227,7 @@ X
 426
 Y
 3
-300
+183
 Width
 3
 90
@@ -4373,10 +4287,10 @@ Name
 procurement_cost
 X
 3
-423
+426
 Y
 3
-1110
+993
 Width
 3
 90
@@ -4439,7 +4353,7 @@ X
 324
 Y
 3
-510
+393
 Width
 3
 90
@@ -4499,10 +4413,10 @@ Name
 profit_cost
 X
 3
-423
+426
 Y
 3
-1230
+1113
 Width
 3
 90
@@ -4562,10 +4476,10 @@ Name
 project_management_during_development_cost
 X
 3
-324
+327
 Y
 3
-1050
+933
 Width
 3
 90
@@ -4625,10 +4539,10 @@ Name
 project_management_during_development_cost_total
 X
 3
-324
+327
 Y
 3
-1050
+933
 Width
 3
 90
@@ -4691,7 +4605,7 @@ X
 426
 Y
 3
-780
+663
 Width
 3
 90
@@ -4754,7 +4668,7 @@ X
 426
 Y
 3
-240
+123
 Width
 3
 90
@@ -4814,10 +4728,10 @@ Name
 salaries_cost
 X
 3
-423
+426
 Y
 3
-1140
+1023
 Width
 3
 90
@@ -4877,10 +4791,10 @@ Name
 sales_general_and_administrative_cost
 X
 3
-423
+426
 Y
 3
-1170
+1053
 Width
 3
 90
@@ -4943,7 +4857,7 @@ X
 324
 Y
 3
-690
+573
 Width
 3
 90
@@ -5006,7 +4920,7 @@ X
 324
 Y
 3
-690
+573
 Width
 3
 90
@@ -5069,7 +4983,7 @@ X
 324
 Y
 3
-180
+63
 Width
 3
 90
@@ -5132,7 +5046,7 @@ X
 324
 Y
 3
-180
+63
 Width
 3
 90
@@ -5192,10 +5106,10 @@ Name
 stakeholder_outreach_cost
 X
 3
-423
+426
 Y
 3
-1200
+1083
 Width
 3
 90
@@ -5255,10 +5169,10 @@ Name
 tt_financing_and_incentives_cost
 X
 3
-423
+426
 Y
 3
-1290
+1173
 Width
 3
 24
@@ -5284,7 +5198,7 @@ X
 423
 Y
 3
-540
+423
 Width
 3
 24
@@ -5307,10 +5221,10 @@ Name
 tt_interconnection_and_power_marketing_cost
 X
 3
-423
+426
 Y
 3
-870
+753
 Width
 3
 24
@@ -5333,10 +5247,10 @@ Name
 tt_other_development_cost
 X
 3
-423
+426
 Y
 3
-1500
+1383
 Width
 3
 24
@@ -5362,7 +5276,7 @@ X
 426
 Y
 3
-360
+243
 Width
 3
 24
@@ -5388,7 +5302,7 @@ X
 423
 Y
 3
-510
+393
 Width
 3
 24
@@ -5411,10 +5325,10 @@ Name
 tt_project_management_during_development_cost
 X
 3
-423
+426
 Y
 3
-1050
+933
 Width
 3
 24
@@ -5440,7 +5354,7 @@ X
 423
 Y
 3
-690
+573
 Width
 3
 24
@@ -5466,7 +5380,7 @@ X
 423
 Y
 3
-180
+63
 Width
 3
 24

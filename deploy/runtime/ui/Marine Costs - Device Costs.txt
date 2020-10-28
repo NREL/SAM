@@ -778,8 +778,8 @@ Tool Tip
 0
 Caption
 5
-500
-Capital costs for Marine Energy systems consist of device costs, balance of system costs, and financial costs. This section allows for the cost inputs of the different sublevels of device costs through lump sum $ inputs, $ inputs as a function of system capacity in kW, modeled values from previous analyses, or itemized costs through the various levels of each category. To forego these cost categories and input the total device costs as a flat dollar amount, check the override cost structure box.
+396
+The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized capital costs for the device in $ or $/kW, check Override Cost Structure to enter the total device capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the device cost. See Help for details.
 TextColour
 4
 0
@@ -1833,28 +1833,31 @@ equations {'mooring_shown'} = define() {
 
 
 
-2222
+2631
 on_load{'Marine Costs - Device Costs'} = define() {
 	on_change{'device_cost_override'};
 	override_device_cost();
 	
 	//Structural assembly
 	//show('struct_level_total_label',0);
-	show('structural_assembly_cost_total',0);
-	enable('structural_assembly_cost_input',0);
-	show('struct_user_input_label',1);
+	show('structural_assembly_cost_total',value('structural_assembly_cost_method')==3);
+	show('structural_assembly_cost_input',value('structural_assembly_cost_method')!=3);
+	enable('structural_assembly_cost_input',value('structural_assembly_cost_method')!=2);
+
 	
 	//PTO
 	//show('power_takeoff_system_total_label',0);
-	show('power_takeoff_system_cost_total',0);
-	enable('power_takeoff_system_cost_input',0);
-	show('power_takeoff_system_cost_input_label',1);
+	show('power_takeoff_system_cost_total',value('power_takeoff_system_cost_method')==3);
+	show('power_takeoff_system_cost_input',value('power_takeoff_system_cost_method')!=3);
+	enable('power_takeoff_system_cost_input',value('power_takeoff_system_cost_method')!=2);
+	
 	
 	//Mooring
 	//show('mooring_cost_label',0);
-	show('mooring_found_substruc_cost_total',0);
-	enable('mooring_found_substruc_cost_input',0);
-	show('mooring_input_label',1);
+	show('mooring_found_substruc_cost_total',value('mooring_found_substruc_cost_method')==3);
+	show('mooring_found_substruc_cost_input',value('mooring_found_substruc_cost_method')!=3);
+	enable('mooring_found_substruc_cost_input',value('mooring_found_substruc_cost_method')!=2);
+
 	
 	refresh();
 };

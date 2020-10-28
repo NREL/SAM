@@ -1,7 +1,7 @@
 Marine Costs - Other Infrastructure
-818
-446
-28
+817
+300
+26
 Label
 
 1
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-78
+99
 Y
 3
-147
+69
 Width
 3
 240
@@ -59,10 +59,10 @@ Name
 Itemized Inputs 3
 X
 3
-318
+339
 Y
 3
-120
+42
 Width
 3
 90
@@ -107,10 +107,10 @@ Name
 dedicated_om_vessel_cost
 X
 3
-318
+339
 Y
 3
-177
+99
 Width
 3
 90
@@ -160,44 +160,6 @@ BackColour
 TabOrder
 3
 2
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-27
-Y
-3
-102
-Width
-3
-757
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-0
-Bold
-2
-1
 GroupBox
 
 1
@@ -217,7 +179,7 @@ Width
 800
 Height
 3
-432
+285
 Tool Tip
 5
 0
@@ -234,62 +196,14 @@ Label
 13
 Name
 5
-8
-object 7
-X
-3
-27
-Y
-3
-33
-Width
-3
-759
-Height
-3
-66
-Tool Tip
-5
-0
-Caption
-5
-377
-This page consists of two levels of subcosts for other infrastructure cost categories. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 10
 object 713
 X
 3
-78
+99
 Y
 3
-207
+129
 Width
 3
 240
@@ -334,10 +248,10 @@ Name
 object 728
 X
 3
-195
+216
 Y
 3
-327
+249
 Width
 3
 123
@@ -382,10 +296,10 @@ Name
 object 729
 X
 3
-57
+78
 Y
 3
-297
+219
 Width
 3
 261
@@ -430,10 +344,10 @@ Name
 object 73
 X
 3
-78
+99
 Y
 3
-177
+99
 Width
 3
 240
@@ -478,10 +392,10 @@ Name
 object 730
 X
 3
-78
+99
 Y
 3
-267
+189
 Width
 3
 240
@@ -526,10 +440,10 @@ Name
 object 734
 X
 3
-78
+99
 Y
 3
-237
+159
 Width
 3
 240
@@ -574,10 +488,10 @@ Name
 offshore_accomodations_other_infras_cost
 X
 3
-318
+339
 Y
 3
-147
+69
 Width
 3
 90
@@ -637,10 +551,10 @@ Name
 offshore_logistical_infrastructure_other_infras_cost
 X
 3
-318
+339
 Y
 3
-267
+189
 Width
 3
 90
@@ -700,10 +614,10 @@ Name
 om_equipment_purchases_cost
 X
 3
-318
+339
 Y
 3
-237
+159
 Width
 3
 90
@@ -763,10 +677,10 @@ Name
 onshore_om_facilities_cost
 X
 3
-318
+339
 Y
 3
-207
+129
 Width
 3
 90
@@ -826,10 +740,10 @@ Name
 other_infras_override
 X
 3
-570
+591
 Y
 3
-237
+159
 Width
 3
 90
@@ -873,10 +787,10 @@ Name
 other_infras_override_label
 X
 3
-492
+513
 Y
 3
-138
+60
 Width
 3
 195
@@ -921,10 +835,10 @@ Name
 other_infrastructure_transportation_other_infras_cost
 X
 3
-318
+339
 Y
 3
-297
+219
 Width
 3
 90
@@ -984,10 +898,10 @@ Name
 other_other_infras_cost
 X
 3
-318
+339
 Y
 3
-327
+249
 Width
 3
 90
@@ -1047,10 +961,10 @@ Name
 tt_dedicated_om_vessel_cost
 X
 3
-417
+438
 Y
 3
-177
+99
 Width
 3
 27
@@ -1074,10 +988,10 @@ Name
 tt_offshore_accomodations_cost
 X
 3
-417
+438
 Y
 3
-147
+69
 Width
 3
 27
@@ -1101,10 +1015,10 @@ Name
 tt_offshore_logistical_infrastructure_cost
 X
 3
-417
+438
 Y
 3
-267
+189
 Width
 3
 27
@@ -1128,10 +1042,10 @@ Name
 tt_om_equipment_purchases_cost
 X
 3
-417
+438
 Y
 3
-237
+159
 Width
 3
 27
@@ -1155,10 +1069,10 @@ Name
 tt_onshore_om_facilities_cost
 X
 3
-417
+438
 Y
 3
-207
+129
 Width
 3
 27
@@ -1208,10 +1122,10 @@ Name
 tt_other_infrastructure_transportation_cost
 X
 3
-417
+438
 Y
 3
-297
+219
 Width
 3
 27
@@ -1235,10 +1149,10 @@ Name
 tt_other_other_infrastructure_cost
 X
 3
-417
+438
 Y
 3
-327
+249
 Width
 3
 27

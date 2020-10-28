@@ -1,7 +1,7 @@
 Marine Costs - Structural Assembly
-800
-672
-53
+796
+602
+51
 Label
 
 1
@@ -14,7 +14,7 @@ X
 150
 Y
 3
-138
+69
 Width
 3
 171
@@ -62,7 +62,7 @@ X
 420
 Y
 3
-288
+219
 Width
 3
 90
@@ -125,7 +125,7 @@ X
 321
 Y
 3
-348
+279
 Width
 3
 90
@@ -188,7 +188,7 @@ X
 420
 Y
 3
-468
+399
 Width
 3
 90
@@ -251,7 +251,7 @@ X
 420
 Y
 3
-228
+159
 Width
 3
 90
@@ -314,7 +314,7 @@ X
 153
 Y
 3
-558
+489
 Width
 3
 168
@@ -362,7 +362,7 @@ X
 321
 Y
 3
-558
+489
 Width
 3
 90
@@ -425,7 +425,7 @@ X
 348
 Y
 3
-408
+339
 Width
 3
 159
@@ -458,7 +458,7 @@ X
 354
 Y
 3
-168
+99
 Width
 3
 153
@@ -491,7 +491,7 @@ X
 420
 Y
 3
-258
+189
 Width
 3
 90
@@ -554,7 +554,7 @@ X
 321
 Y
 3
-111
+42
 Width
 3
 99
@@ -602,7 +602,7 @@ X
 420
 Y
 3
-111
+42
 Width
 3
 144
@@ -650,7 +650,7 @@ X
 321
 Y
 3
-378
+309
 Width
 3
 90
@@ -713,7 +713,7 @@ X
 321
 Y
 3
-378
+309
 Width
 3
 90
@@ -776,7 +776,7 @@ X
 420
 Y
 3
-498
+429
 Width
 3
 90
@@ -839,7 +839,7 @@ X
 219
 Y
 3
-318
+249
 Width
 3
 201
@@ -874,44 +874,6 @@ AlignRight
 AlignTop
 2
 0
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-18
-Y
-3
-99
-Width
-3
-754
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-0
-Bold
-2
-1
 GroupBox
 
 1
@@ -931,7 +893,7 @@ Width
 780
 Height
 3
-653
+587
 Tool Tip
 5
 0
@@ -955,7 +917,7 @@ X
 216
 Y
 3
-228
+159
 Width
 3
 204
@@ -996,54 +958,6 @@ Label
 13
 Name
 5
-10
-object 721
-X
-3
-21
-Y
-3
-42
-Width
-3
-756
-Height
-3
-60
-Tool Tip
-5
-0
-Caption
-5
-378
-This page consists of two levels of subcosts for the structural assembly cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 12
 object 72446
 X
@@ -1051,7 +965,7 @@ X
 105
 Y
 3
-588
+519
 Width
 3
 216
@@ -1099,7 +1013,7 @@ X
 243
 Y
 3
-528
+459
 Width
 3
 177
@@ -1147,7 +1061,7 @@ X
 243
 Y
 3
-498
+429
 Width
 3
 177
@@ -1195,7 +1109,7 @@ X
 243
 Y
 3
-438
+369
 Width
 3
 177
@@ -1243,7 +1157,7 @@ X
 156
 Y
 3
-378
+309
 Width
 3
 165
@@ -1291,7 +1205,7 @@ X
 156
 Y
 3
-348
+279
 Width
 3
 165
@@ -1339,7 +1253,7 @@ X
 216
 Y
 3
-198
+129
 Width
 3
 204
@@ -1387,7 +1301,7 @@ X
 243
 Y
 3
-288
+219
 Width
 3
 177
@@ -1435,7 +1349,7 @@ X
 243
 Y
 3
-468
+399
 Width
 3
 177
@@ -1483,7 +1397,7 @@ X
 84
 Y
 3
-618
+549
 Width
 3
 237
@@ -1531,7 +1445,7 @@ X
 219
 Y
 3
-258
+189
 Width
 3
 201
@@ -1579,7 +1493,7 @@ X
 321
 Y
 3
-618
+549
 Width
 3
 90
@@ -1642,7 +1556,7 @@ X
 420
 Y
 3
-528
+459
 Width
 3
 90
@@ -1705,7 +1619,7 @@ X
 420
 Y
 3
-318
+249
 Width
 3
 90
@@ -1815,7 +1729,7 @@ X
 420
 Y
 3
-438
+369
 Width
 3
 90
@@ -1878,7 +1792,7 @@ X
 420
 Y
 3
-198
+129
 Width
 3
 90
@@ -1941,7 +1855,7 @@ X
 321
 Y
 3
-138
+69
 Width
 3
 90
@@ -2004,7 +1918,7 @@ X
 321
 Y
 3
-138
+69
 Width
 3
 90
@@ -2114,7 +2028,7 @@ X
 567
 Y
 3
-162
+93
 Width
 3
 195
@@ -2397,7 +2311,7 @@ X
 321
 Y
 3
-588
+519
 Width
 3
 90
@@ -2460,7 +2374,7 @@ X
 417
 Y
 3
-558
+489
 Width
 3
 24
@@ -2486,7 +2400,7 @@ X
 417
 Y
 3
-378
+309
 Width
 3
 24
@@ -2512,7 +2426,7 @@ X
 417
 Y
 3
-618
+549
 Width
 3
 24
@@ -2538,7 +2452,7 @@ X
 420
 Y
 3
-138
+69
 Width
 3
 24
@@ -2564,7 +2478,7 @@ X
 417
 Y
 3
-348
+279
 Width
 3
 24
@@ -2590,7 +2504,7 @@ X
 417
 Y
 3
-588
+519
 Width
 3
 24

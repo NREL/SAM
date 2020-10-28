@@ -620,8 +620,8 @@ Tool Tip
 0
 Caption
 5
-365
-The Operational Expenditures (Opex) of the MEC are the expenditures required to operate the project and maintain availability. These expenditures are generally annualized. The OPEX is seperated into the Operations costs and Maintenance costs.  To forego these cost categories and enter the OPEX costs as a flat dollar amount, check the Override cost structure box. 
+380
+The Fixed operating cost (annual) on the Financial Parameters page is the sum of the Operations and Maintenance costs on this page. On this page, enter itemized capital costs for the device in $ or $/kW, check Override Cost Structure to enter the total O&M cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the O&M cost. See Help for details.
 TextColour
 4
 0
@@ -1645,18 +1645,20 @@ equations {'maintenance_we_shown'} = define() {
 
 
 
-987
+1257
 on_load{'Marine Costs - O&M'} = define() {
 	on_change{'om_cost_override'};
 	override_om_cost();
 	
 	//Operations
-	show('operations_cost_total',0);
-	enable('operations_cost_input',0);
+	show('operations_cost_total',value('operations_cost_method')==3);
+	show('operations_cost_input',value('operations_cost_method')!=3);
+	enable('operations_cost_input',value('operations_cost_method')!=2);
 	
 	//Maintenance
-	show('maintenance_cost_total',0);
-	enable('maintenance_cost_input',0);
+	show('maintenance_cost_total',value('maintenance_cost_method')==3);
+	show('maintenance_cost_input',value('maintenance_cost_method')!=3);
+	enable('maintenance_cost_input',value('maintenance_cost_method')!=2);
 	
 	refresh();
 	

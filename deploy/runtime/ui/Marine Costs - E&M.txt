@@ -1,7 +1,7 @@
 Marine Costs - E&M
-818
-619
-45
+815
+530
+43
 Label
 
 1
@@ -15,7 +15,7 @@ X
 9
 Y
 3
-159
+66
 Width
 3
 309
@@ -69,7 +69,7 @@ Width
 800
 Height
 3
-601
+511
 Tool Tip
 5
 0
@@ -93,7 +93,7 @@ X
 201
 Y
 3
-549
+456
 Width
 3
 216
@@ -141,7 +141,7 @@ X
 201
 Y
 3
-519
+426
 Width
 3
 216
@@ -189,7 +189,7 @@ X
 417
 Y
 3
-132
+39
 Width
 3
 114
@@ -237,7 +237,7 @@ X
 318
 Y
 3
-132
+39
 Width
 3
 90
@@ -285,7 +285,7 @@ X
 318
 Y
 3
-219
+126
 Width
 3
 90
@@ -348,7 +348,7 @@ X
 318
 Y
 3
-219
+126
 Width
 3
 90
@@ -411,7 +411,7 @@ X
 336
 Y
 3
-249
+156
 Width
 3
 126
@@ -444,7 +444,7 @@ X
 336
 Y
 3
-459
+366
 Width
 3
 129
@@ -477,7 +477,7 @@ X
 318
 Y
 3
-159
+66
 Width
 3
 90
@@ -540,7 +540,7 @@ X
 42
 Y
 3
-267
+174
 Width
 3
 90
@@ -587,7 +587,7 @@ X
 558
 Y
 3
-135
+42
 Width
 3
 195
@@ -635,7 +635,7 @@ X
 417
 Y
 3
-519
+426
 Width
 3
 90
@@ -698,7 +698,7 @@ X
 417
 Y
 3
-489
+396
 Width
 3
 90
@@ -761,7 +761,7 @@ X
 318
 Y
 3
-429
+336
 Width
 3
 90
@@ -824,7 +824,7 @@ X
 318
 Y
 3
-429
+336
 Width
 3
 90
@@ -874,44 +874,6 @@ BackColour
 TabOrder
 3
 4294967295
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-33
-Y
-3
-114
-Width
-3
-748
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-0
-Bold
-2
-1
 Label
 
 1
@@ -925,7 +887,7 @@ X
 81
 Y
 3
-219
+126
 Width
 3
 237
@@ -973,7 +935,7 @@ X
 9
 Y
 3
-579
+486
 Width
 3
 309
@@ -1021,7 +983,7 @@ X
 198
 Y
 3
-489
+396
 Width
 3
 219
@@ -1069,7 +1031,7 @@ X
 153
 Y
 3
-399
+306
 Width
 3
 165
@@ -1117,7 +1079,7 @@ X
 171
 Y
 3
-369
+276
 Width
 3
 246
@@ -1165,7 +1127,7 @@ X
 171
 Y
 3
-309
+216
 Width
 3
 246
@@ -1213,7 +1175,7 @@ X
 330
 Y
 3
-339
+246
 Width
 3
 87
@@ -1261,7 +1223,7 @@ X
 84
 Y
 3
-189
+96
 Width
 3
 234
@@ -1309,7 +1271,7 @@ X
 327
 Y
 3
-279
+186
 Width
 3
 90
@@ -1357,7 +1319,7 @@ X
 9
 Y
 3
-429
+336
 Width
 3
 309
@@ -1392,54 +1354,6 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-13
-Name
-5
-10
-object 777
-X
-3
-33
-Y
-3
-57
-Width
-3
-750
-Height
-3
-66
-Tool Tip
-5
-0
-Caption
-5
-385
-This page consists of two levels of subcosts for the engineering and management cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1
@@ -1453,7 +1367,7 @@ X
 417
 Y
 3
-369
+276
 Width
 3
 90
@@ -1516,7 +1430,7 @@ X
 318
 Y
 3
-579
+486
 Width
 3
 90
@@ -1579,7 +1493,7 @@ X
 417
 Y
 3
-549
+456
 Width
 3
 90
@@ -1642,7 +1556,7 @@ X
 318
 Y
 3
-189
+96
 Width
 3
 90
@@ -1705,7 +1619,7 @@ X
 417
 Y
 3
-339
+246
 Width
 3
 90
@@ -1768,7 +1682,7 @@ X
 318
 Y
 3
-399
+306
 Width
 3
 90
@@ -1831,7 +1745,7 @@ X
 417
 Y
 3
-279
+186
 Width
 3
 90
@@ -1894,7 +1808,7 @@ X
 417
 Y
 3
-309
+216
 Width
 3
 90
@@ -1957,7 +1871,7 @@ X
 417
 Y
 3
-222
+129
 Width
 3
 24
@@ -1983,7 +1897,7 @@ X
 417
 Y
 3
-162
+69
 Width
 3
 24
@@ -2009,7 +1923,7 @@ X
 417
 Y
 3
-429
+336
 Width
 3
 24
@@ -2035,7 +1949,7 @@ X
 417
 Y
 3
-579
+486
 Width
 3
 24
@@ -2061,7 +1975,7 @@ X
 417
 Y
 3
-192
+99
 Width
 3
 24
@@ -2087,7 +2001,7 @@ X
 417
 Y
 3
-399
+306
 Width
 3
 24

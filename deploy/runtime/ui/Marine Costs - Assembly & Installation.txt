@@ -1,7 +1,7 @@
 Marine Costs - Assembly & Installation
-813
-857
-57
+816
+751
+55
 Label
 
 1
@@ -14,7 +14,7 @@ X
 108
 Y
 3
-147
+72
 Width
 3
 216
@@ -62,7 +62,7 @@ X
 423
 Y
 3
-120
+45
 Width
 3
 114
@@ -110,7 +110,7 @@ X
 324
 Y
 3
-120
+45
 Width
 3
 90
@@ -158,7 +158,7 @@ X
 423
 Y
 3
-567
+492
 Width
 3
 90
@@ -221,7 +221,7 @@ X
 72
 Y
 3
-210
+135
 Width
 3
 90
@@ -268,7 +268,7 @@ X
 579
 Y
 3
-132
+57
 Width
 3
 195
@@ -316,7 +316,7 @@ X
 291
 Y
 3
-597
+522
 Width
 3
 132
@@ -364,7 +364,7 @@ X
 339
 Y
 3
-387
+312
 Width
 3
 156
@@ -397,7 +397,7 @@ X
 339
 Y
 3
-537
+462
 Width
 3
 177
@@ -430,7 +430,7 @@ X
 339
 Y
 3
-177
+102
 Width
 3
 162
@@ -463,7 +463,7 @@ X
 423
 Y
 3
-207
+132
 Width
 3
 90
@@ -526,7 +526,7 @@ X
 324
 Y
 3
-357
+282
 Width
 3
 90
@@ -589,7 +589,7 @@ X
 324
 Y
 3
-357
+282
 Width
 3
 90
@@ -652,7 +652,7 @@ X
 423
 Y
 3
-297
+222
 Width
 3
 90
@@ -702,44 +702,6 @@ BackColour
 TabOrder
 3
 5
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-27
-Y
-3
-102
-Width
-3
-748
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-0
-Bold
-2
-1
 GroupBox
 
 1
@@ -759,7 +721,7 @@ Width
 800
 Height
 3
-834
+729
 Tool Tip
 5
 0
@@ -776,54 +738,6 @@ Label
 13
 Name
 5
-8
-object 7
-X
-3
-27
-Y
-3
-36
-Width
-3
-753
-Height
-3
-69
-Tool Tip
-5
-0
-Caption
-5
-558
-To input assembly and installation costs as a single dollar amount, select "Enter in $". To enter cost values as a function of system capacity, select "Enter in $/kW". To use the modeled assembly and installation costs from the Reference Model Project documentation, select "Use Modeled Value". To enter itemized assembly and installation costs based on the level structure shown below, select "Enter as Itemized Costs" to be able to input cost values for each of the items listed below. The sum of these cost values is reflected in the User input display.  
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 10
 object 713
 X
@@ -831,7 +745,7 @@ X
 333
 Y
 3
-237
+162
 Width
 3
 90
@@ -879,7 +793,7 @@ X
 273
 Y
 3
-627
+552
 Width
 3
 150
@@ -927,7 +841,7 @@ X
 309
 Y
 3
-567
+492
 Width
 3
 114
@@ -975,7 +889,7 @@ X
 216
 Y
 3
-477
+402
 Width
 3
 207
@@ -1023,7 +937,7 @@ X
 204
 Y
 3
-447
+372
 Width
 3
 219
@@ -1071,7 +985,7 @@ X
 273
 Y
 3
-417
+342
 Width
 3
 150
@@ -1119,7 +1033,7 @@ X
 105
 Y
 3
-357
+282
 Width
 3
 219
@@ -1167,7 +1081,7 @@ X
 333
 Y
 3
-207
+132
 Width
 3
 90
@@ -1215,7 +1129,7 @@ X
 264
 Y
 3
-327
+252
 Width
 3
 159
@@ -1263,7 +1177,7 @@ X
 294
 Y
 3
-297
+222
 Width
 3
 129
@@ -1311,7 +1225,7 @@ X
 75
 Y
 3
-777
+702
 Width
 3
 249
@@ -1359,7 +1273,7 @@ X
 96
 Y
 3
-747
+672
 Width
 3
 228
@@ -1407,7 +1321,7 @@ X
 132
 Y
 3
-507
+432
 Width
 3
 192
@@ -1455,7 +1369,7 @@ X
 153
 Y
 3
-717
+642
 Width
 3
 270
@@ -1503,7 +1417,7 @@ X
 180
 Y
 3
-687
+612
 Width
 3
 243
@@ -1551,7 +1465,7 @@ X
 159
 Y
 3
-657
+582
 Width
 3
 264
@@ -1599,7 +1513,7 @@ X
 297
 Y
 3
-267
+192
 Width
 3
 126
@@ -1695,7 +1609,7 @@ X
 423
 Y
 3
-657
+582
 Width
 3
 90
@@ -1758,7 +1672,7 @@ X
 324
 Y
 3
-507
+432
 Width
 3
 90
@@ -1821,7 +1735,7 @@ X
 324
 Y
 3
-507
+432
 Width
 3
 90
@@ -1884,7 +1798,7 @@ X
 423
 Y
 3
-597
+522
 Width
 3
 90
@@ -1947,7 +1861,7 @@ X
 324
 Y
 3
-747
+672
 Width
 3
 90
@@ -2010,7 +1924,7 @@ X
 423
 Y
 3
-627
+552
 Width
 3
 90
@@ -2073,7 +1987,7 @@ X
 423
 Y
 3
-687
+612
 Width
 3
 90
@@ -2136,7 +2050,7 @@ X
 324
 Y
 3
-777
+702
 Width
 3
 90
@@ -2199,7 +2113,7 @@ X
 423
 Y
 3
-477
+402
 Width
 3
 90
@@ -2262,7 +2176,7 @@ X
 423
 Y
 3
-717
+642
 Width
 3
 90
@@ -2325,7 +2239,7 @@ X
 423
 Y
 3
-327
+252
 Width
 3
 90
@@ -2388,7 +2302,7 @@ X
 423
 Y
 3
-447
+372
 Width
 3
 90
@@ -2451,7 +2365,7 @@ X
 423
 Y
 3
-267
+192
 Width
 3
 90
@@ -2514,7 +2428,7 @@ X
 423
 Y
 3
-417
+342
 Width
 3
 90
@@ -2577,7 +2491,7 @@ X
 423
 Y
 3
-237
+162
 Width
 3
 90
@@ -2640,7 +2554,7 @@ X
 324
 Y
 3
-147
+72
 Width
 3
 90
@@ -2703,7 +2617,7 @@ X
 324
 Y
 3
-147
+72
 Width
 3
 90
@@ -2766,7 +2680,7 @@ X
 423
 Y
 3
-357
+282
 Width
 3
 24
@@ -2792,7 +2706,7 @@ X
 423
 Y
 3
-507
+432
 Width
 3
 24
@@ -2818,7 +2732,7 @@ X
 423
 Y
 3
-747
+672
 Width
 3
 24
@@ -2844,7 +2758,7 @@ X
 423
 Y
 3
-777
+702
 Width
 3
 24
@@ -2870,7 +2784,7 @@ X
 423
 Y
 3
-147
+72
 Width
 3
 24

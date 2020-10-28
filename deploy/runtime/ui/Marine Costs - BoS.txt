@@ -2066,8 +2066,8 @@ Tool Tip
 0
 Caption
 5
-503
-Capital costs for Marine Energy systems consist of Device Costs, Balance of System Costs, and Financial Costs. This section allows for the cost inputs of the different sublevels of balance of system costs through lump sum $ inputs, $ inputs as a function of system capacity in kW, modeled values from previous analyses, or itemized costs through the various levels of each category. To forego these cost categories and input the BOS costs as a flat dollar amount, check the Override cost structure box. 
+418
+The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized capital costs for the device in $ or $/kW, check Override Cost Structure to enter the total balance of system capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the balance of system cost. See Help for details.
 TextColour
 4
 0
@@ -3452,38 +3452,45 @@ equations {'assem_other_infras_shown'} = define() {
 
 	
 
-3987
+5106
 on_load{'Marine Costs - BoS'} = define() {
 	on_change{'balance_of_system_cost_override'};
 	override_balance_of_system_cost();
 	
 	//Development
-	show('development_cost_total',0);
-	enable('development_cost_input',0);
+	show('development_cost_total',value('development_cost_method')==3);
+	show('development_cost_input',value('development_cost_method')!=3);
+	enable('development_cost_input',value('development_cost_method')!=2);
 	
 	//E&M
-	show('eng_and_mgmt_cost_total',0);
-	enable('eng_and_mgmt_cost_input',0);
+	show('eng_and_mgmt_cost_total',value('eng_and_mgmt_cost_method')==3);
+	show('eng_and_mgmt_cost_input',value('eng_and_mgmt_cost_method')!=3);
+	enable('eng_and_mgmt_cost_input',value('eng_and_mgmt_cost_method')!=2);
 	
 	//Electrical Infrastructure
-	show('elec_infras_cost_total',0);
-	enable('elec_infras_cost_input',0);
+	show('elec_infras_cost_total',value('elec_infras_cost_method')==3);
+	show('elec_infras_cost_input',value('elec_infras_cost_method')!=3);
+	enable('elec_infras_cost_input',value('elec_infras_cost_method')!=2);
 	
 	//Plant Commissioning
-	show('plant_commissioning_cost_total',0);
-	enable('plant_commissioning_cost_input',0);
+	show('plant_commissioning_cost_total',value('plant_commissioning_cost_method')==3);
+	show('plant_commissioning_cost_input',value('plant_commissioning_cost_method')!=3);
+	enable('plant_commissioning_cost_input',value('plant_commissioning_cost_method')!=2);
 	
 	//Site access, Port and Staging
-	show('site_access_port_staging_cost_total',0);
-	enable('site_access_port_staging_cost_input',0);
+	show('site_access_port_staging_cost_total',value('site_access_port_staging_cost_method')==3);
+	show('site_access_port_staging_cost_input',value('site_access_port_staging_cost_method')!=3);
+	enable('site_access_port_staging_cost_input',value('site_access_port_staging_cost_method')!=2);
 	
 	//Assembly and Install
-	show('assembly_and_install_cost_total',0);
-	enable('assembly_and_install_cost_input',0);
+	show('assembly_and_install_cost_total',value('assembly_and_install_cost_method')==3);
+	show('assembly_and_install_cost_input',value('assembly_and_install_cost_method')!=3);
+	enable('assembly_and_install_cost_input',value('assembly_and_install_cost_method')!=2);
 	
 	//Other Infrastructure
-	show('other_infrastructure_cost_total',0);
-	enable('other_infrastructure_cost_input',0);
+	show('other_infrastructure_cost_total',value('other_infrastructure_cost_method')==3);
+	show('other_infrastructure_cost_input',value('other_infrastructure_cost_method')!=3);
+	enable('other_infrastructure_cost_input',value('other_infrastructure_cost_method')!=2);
 	
 	refresh();
 };
