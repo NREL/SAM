@@ -186,11 +186,21 @@ bool ObjectCollection::Read( wxInputStream &input )
 		wxString name = in.ReadString();
 		wxString type = in.ReadString();
 
-		Object *obj = ObjectTypes::Create( type );
-		if ( obj != 0 
-			&& obj->Read( input ) )
+
+		try
 		{
-			Add( name, obj );
+			Object* obj = ObjectTypes::Create(type);
+			if (obj != 0
+				&& obj->Read(input))
+			{
+				Add(name, obj);
+			}
+
+		}
+		catch (const std::exception& e)
+		{
+			int i = 1;
+			
 		}
 	}
 

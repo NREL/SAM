@@ -462,10 +462,19 @@ bool Case::Read( wxInputStream &_i )
 
 	if ( ver >= 5 )
 	{
-		if ( !m_parametric.Read( _i ) )
-		  {
-		    wxLogStatus("error reading parametric simulation information in Case::Read");
-		  }
+		try
+		{
+			if (!m_parametric.Read(_i))
+			{
+				wxLogStatus("error reading parametric simulation information in Case::Read");
+			}
+
+		}
+		catch (...)
+		{
+			wxMessageBox("system error?");
+		}
+
 	}
 
 	if ( ver >= 6 )

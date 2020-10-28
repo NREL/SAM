@@ -285,7 +285,12 @@ bool ProjectFile::Read( wxInputStream &input )
 		m_verPatch = (int)in.Read16();
 
 	if ( !m_properties.Read( input ) ) m_lastError = "could not read project properties";
-	if ( !m_cases.Read( input ) ) m_lastError = "could not read case data" ;
+	if (!m_cases.Read(input)) {
+
+		m_lastError = "could not read case data";
+		input.Reset();
+		return false;
+	}
 	if ( !m_objects.Read( input ) ) m_lastError = "could not read objects" ;
 
 	m_modified = false;
@@ -324,6 +329,7 @@ bool ProjectFile::ReadArchive( const wxString &file )
 	wxFFileInputStream in( file );
 	if ( !in.IsOk() ) return false;
 	
+	bool ret = false;
 	wxUint8 code1, code2, comp;
 	in.Read( &code1, 1 );
 	in.Read( &code2, 1 );
@@ -334,7 +340,8 @@ bool ProjectFile::ReadArchive( const wxString &file )
 		in.Ungetch( code2 );
 		in.Ungetch( code1 );
 		
-		return Read( in );
+		ret = Read(in);
+//		return Read(in);
 	}
 	else
 	{
@@ -344,8 +351,19 @@ bool ProjectFile::ReadArchive( const wxString &file )
 			return false;
 
 		wxZlibInputStream zin( in );
-		return Read( zin );
+		try
+		{
+			ret = Read(zin);
+		}
+		catch (...)
+		{
+			// do something
+			int retVal = zin.GetLastError();
+			wxMessageBox(wxString::Format("read error %d", retVal));
+		}
+//		return Read(zin);
 	}
+	return ret;
 }
 
 void ProjectFile::SetVersionInfo( int maj, int min, int mic, int patch )

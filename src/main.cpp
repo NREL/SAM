@@ -987,7 +987,13 @@ bool MainWindow::LoadProject( const wxString &file )
 		return false;
 
 	ProjectFile pf;
-	pf.ReadArchive(file);
+	try {
+		pf.ReadArchive(file);
+	}
+	catch (...)
+	{
+		wxMessageBox("file read error");
+	}
 	// TODO - reinstate after parametrics read is fixed
 	//if (!pf.ReadArchive(file))
 	//		return false;
