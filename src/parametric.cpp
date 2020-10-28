@@ -107,7 +107,8 @@ void ParametricData::Write( wxOutputStream &_O )
 {
 	wxDataOutputStream out( _O );
 
-	out.Write8( 0x2b );
+//	out.Write8(0x2b);
+	out.Write8(0x8b);
 	out.Write8( 4 ); // version
 
 	out.Write32( Setup.size() );
@@ -137,7 +138,8 @@ void ParametricData::Write( wxOutputStream &_O )
 	}
 	out.Write32(QuickSetupMode);
 
-	out.Write8( 0x2b );
+//	out.Write8(0x2b);
+	out.Write8(0x8b);
 }
 
 bool ParametricData::Read( wxInputStream &_I )
