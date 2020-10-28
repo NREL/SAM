@@ -2,9 +2,9 @@
 	"defaults": {
 		"ParamsCell": {
 			"C_rate": 0.2,
-			"Qexp": 61.014,
-			"Qfull": 75.55,
-			"Qnom": 73.81,
+			"Qexp": 2.584,
+			"Qfull": 3.2,
+			"Qnom": 3.126,
 			"Vexp": 3.53,
 			"Vfull": 4.2,
 			"Vnom": 3.342,
