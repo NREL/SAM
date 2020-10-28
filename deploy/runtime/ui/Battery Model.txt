@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-11989
+11985
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -460,7 +460,7 @@ function GEL()
 
 function get_batt_data_from_file(filename)
 {
-	defaults_dir = replace(appdir(), '\\', '/' ) + '/../libraries/Battery Chemistries/';
+	defaults_dir = replace(appdir(), '\\', '/' ) + '/../libraries/BatteryStateful/';
 	defaults_dir += filename;
 	x = read_json(defaults_dir);
 	defs = x.defaults;
