@@ -11,13 +11,13 @@ Name
 0
 X
 3
-156
+108
 Y
 3
 147
 Width
 3
-168
+216
 Height
 3
 24
@@ -715,7 +715,7 @@ X
 27
 Y
 3
-99
+102
 Width
 3
 748
@@ -783,13 +783,13 @@ X
 27
 Y
 3
-30
+36
 Width
 3
 753
 Height
 3
-75
+69
 Tool Tip
 5
 0
@@ -828,13 +828,13 @@ Name
 object 713
 X
 3
-348
+333
 Y
 3
 237
 Width
 3
-75
+90
 Height
 3
 24
@@ -972,13 +972,13 @@ Name
 object 72748
 X
 3
-294
+216
 Y
 3
 477
 Width
 3
-129
+207
 Height
 3
 24
@@ -1020,13 +1020,13 @@ Name
 object 7274814
 X
 3
-261
+204
 Y
 3
 447
 Width
 3
-162
+219
 Height
 3
 24
@@ -1068,13 +1068,13 @@ Name
 object 728
 X
 3
-312
+273
 Y
 3
 417
 Width
 3
-111
+150
 Height
 3
 24
@@ -1116,13 +1116,13 @@ Name
 object 729
 X
 3
-135
+105
 Y
 3
 357
 Width
 3
-189
+219
 Height
 3
 24
@@ -1164,13 +1164,13 @@ Name
 object 73
 X
 3
-354
+333
 Y
 3
 207
 Width
 3
-69
+90
 Height
 3
 24
@@ -1212,13 +1212,13 @@ Name
 object 730
 X
 3
-288
+264
 Y
 3
 327
 Width
 3
-135
+159
 Height
 3
 24
@@ -1260,13 +1260,13 @@ Name
 object 73057
 X
 3
-327
+294
 Y
 3
 297
 Width
 3
-96
+129
 Height
 3
 24
@@ -1308,13 +1308,13 @@ Name
 object 731
 X
 3
-108
+75
 Y
 3
 777
 Width
 3
-216
+249
 Height
 3
 24
@@ -1356,13 +1356,13 @@ Name
 object 73118
 X
 3
-132
+96
 Y
 3
 747
 Width
 3
-192
+228
 Height
 3
 24
@@ -1452,13 +1452,13 @@ Name
 object 733
 X
 3
-201
+153
 Y
 3
 717
 Width
 3
-222
+270
 Height
 3
 24
@@ -1500,13 +1500,13 @@ Name
 object 73315
 X
 3
-246
+180
 Y
 3
 687
 Width
 3
-177
+243
 Height
 3
 24
@@ -1548,13 +1548,13 @@ Name
 object 73323
 X
 3
-213
+159
 Y
 3
 657
 Width
 3
-210
+264
 Height
 3
 24
@@ -1596,13 +1596,13 @@ Name
 object 734
 X
 3
-327
+297
 Y
 3
 267
 Width
 3
-96
+126
 Height
 3
 24

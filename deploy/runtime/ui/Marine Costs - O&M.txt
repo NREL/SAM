@@ -393,13 +393,13 @@ Name
 maintenance_user_input_label
 X
 3
-432
+399
 Y
 3
 132
 Width
 3
-60
+93
 Height
 3
 24
@@ -509,13 +509,13 @@ Name
 object 7
 X
 3
-207
+201
 Y
 3
 132
 Width
 3
-90
+96
 Height
 3
 24
@@ -557,13 +557,13 @@ Name
 object 711
 X
 3
-267
+234
 Y
 3
 240
 Width
 3
-234
+264
 Height
 3
 24
@@ -614,7 +614,7 @@ Width
 714
 Height
 3
-72
+63
 Tool Tip
 5
 0
@@ -653,13 +653,13 @@ Name
 object 71415
 X
 3
-48
+27
 Y
 3
 198
 Width
 3
-99
+120
 Height
 3
 24
@@ -701,13 +701,13 @@ Name
 object 721
 X
 3
-309
+300
 Y
 3
 132
 Width
 3
-84
+93
 Height
 3
 24
@@ -749,13 +749,13 @@ Name
 object 7322
 X
 3
-510
+498
 Y
 3
 132
 Width
 3
-81
+93
 Height
 3
 24
@@ -797,13 +797,13 @@ Name
 object 75
 X
 3
-60
+30
 Y
 3
 162
 Width
 3
-87
+117
 Height
 3
 24
@@ -914,7 +914,7 @@ Y
 240
 Width
 3
-159
+192
 Height
 3
 24

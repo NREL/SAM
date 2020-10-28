@@ -11,13 +11,13 @@ Name
 0
 X
 3
-174
+78
 Y
 3
 147
 Width
 3
-144
+240
 Height
 3
 24
@@ -170,13 +170,13 @@ Name
 object 21
 X
 3
-39
+27
 Y
 3
 102
 Width
 3
-745
+757
 Height
 3
 16
@@ -253,8 +253,8 @@ Tool Tip
 0
 Caption
 5
-378
-This page consists of two levels of subcosts for the structural assembly cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
+377
+This page consists of two levels of subcosts for other infrastructure cost categories. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
 TextColour
 4
 0
@@ -286,13 +286,13 @@ Name
 object 713
 X
 3
-180
+78
 Y
 3
 207
 Width
 3
-138
+240
 Height
 3
 24
@@ -334,13 +334,13 @@ Name
 object 728
 X
 3
-276
+195
 Y
 3
 327
 Width
 3
-42
+123
 Height
 3
 24
@@ -382,13 +382,13 @@ Name
 object 729
 X
 3
-114
+57
 Y
 3
 297
 Width
 3
-204
+261
 Height
 3
 24
@@ -430,13 +430,13 @@ Name
 object 73
 X
 3
-162
+78
 Y
 3
 177
 Width
 3
-156
+240
 Height
 3
 24
@@ -478,13 +478,13 @@ Name
 object 730
 X
 3
-129
+78
 Y
 3
 267
 Width
 3
-189
+240
 Height
 3
 24
@@ -526,13 +526,13 @@ Name
 object 734
 X
 3
-162
+78
 Y
 3
 237
 Width
 3
-156
+240
 Height
 3
 24
@@ -826,10 +826,10 @@ Name
 other_infras_override
 X
 3
-42
+570
 Y
 3
-186
+237
 Width
 3
 90

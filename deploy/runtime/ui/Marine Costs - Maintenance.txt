@@ -463,17 +463,17 @@ Y
 171
 Width
 3
-150
+159
 Height
 3
-159
+108
 Tool Tip
 5
 0
 Caption
 5
-138
-The category cost breakdown cannot be used when 'Override cost structure' is selected. The value in the category cost will not be applied.
+147
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The values in the category cost columns will not be applied.
 TextColour
 4
 255
@@ -634,7 +634,7 @@ X
 21
 Y
 3
-108
+105
 Width
 3
 762
@@ -699,13 +699,13 @@ Name
 object 71339
 X
 3
-243
+192
 Y
 3
 246
 Width
 3
-186
+237
 Height
 3
 24
@@ -762,8 +762,8 @@ Tool Tip
 0
 Caption
 5
-378
-This page consists of two levels of subcosts for the structural assembly cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
+370
+This page consists of two levels of subcosts for the maintenance cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
 TextColour
 4
 0
@@ -795,13 +795,13 @@ Name
 object 7275125
 X
 3
-243
+198
 Y
 3
 426
 Width
 3
-186
+231
 Height
 3
 24
@@ -843,13 +843,13 @@ Name
 object 7275130
 X
 3
-153
+123
 Y
 3
 336
 Width
 3
-186
+216
 Height
 3
 24
@@ -891,13 +891,13 @@ Name
 object 7275135
 X
 3
-219
+171
 Y
 3
 306
 Width
 3
-210
+258
 Height
 3
 24
@@ -939,13 +939,13 @@ Name
 object 727513513
 X
 3
-243
+192
 Y
 3
 276
 Width
 3
-186
+237
 Height
 3
 24
@@ -987,13 +987,13 @@ Name
 object 728
 X
 3
-177
+129
 Y
 3
 516
 Width
 3
-162
+210
 Height
 3
 24
@@ -1035,13 +1035,13 @@ Name
 object 729
 X
 3
-174
+165
 Y
 3
 486
 Width
 3
-255
+264
 Height
 3
 24
@@ -1083,13 +1083,13 @@ Name
 object 72937
 X
 3
-174
+162
 Y
 3
 456
 Width
 3
-255
+267
 Height
 3
 24
@@ -1131,13 +1131,13 @@ Name
 object 73
 X
 3
-186
+123
 Y
 3
 186
 Width
 3
-150
+213
 Height
 3
 24
@@ -1179,13 +1179,13 @@ Name
 object 73029
 X
 3
-228
+195
 Y
 3
 396
 Width
 3
-201
+234
 Height
 3
 24

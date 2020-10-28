@@ -59,13 +59,13 @@ Name
 Air Turbine
 X
 3
-234
+207
 Y
 3
 756
 Width
 3
-87
+114
 Height
 3
 24
@@ -251,13 +251,13 @@ Name
 Frequency Converter
 X
 3
-264
+249
 Y
 3
 1326
 Width
 3
-159
+174
 Height
 3
 24
@@ -299,13 +299,13 @@ Name
 Gearbox
 X
 3
-255
+210
 Y
 3
 486
 Width
 3
-66
+111
 Height
 3
 24
@@ -347,13 +347,13 @@ Name
 Other
 X
 3
-153
+120
 Y
 3
 1536
 Width
 3
-174
+207
 Height
 3
 24
@@ -473,13 +473,13 @@ Name
 Power Electrical System
 X
 3
-270
+249
 Y
 3
 1356
 Width
 3
-153
+174
 Height
 3
 24
@@ -521,13 +521,13 @@ Name
 Power Electronics
 X
 3
-177
+159
 Y
 3
 1266
 Width
 3
-144
+162
 Height
 3
 24
@@ -569,13 +569,13 @@ Name
 Power Take-Off Enclosure
 X
 3
-135
+126
 Y
 3
 1446
 Width
 3
-192
+201
 Height
 3
 24
@@ -617,13 +617,13 @@ Name
 Short-Term Energy Storage
 X
 3
-126
+114
 Y
 3
 1236
 Width
 3
-192
+204
 Height
 3
 24
@@ -665,13 +665,13 @@ Name
 Transportation of Power Conversion Chain
 X
 3
-42
+33
 Y
 3
 1506
 Width
 3
-285
+294
 Height
 3
 24
@@ -2605,13 +2605,13 @@ Name
 object 72418
 X
 3
-252
+198
 Y
 3
 816
 Width
 3
-171
+225
 Height
 3
 24
@@ -2653,13 +2653,13 @@ Name
 object 72441
 X
 3
-363
+348
 Y
 3
 546
 Width
 3
-60
+75
 Height
 3
 24
@@ -2701,13 +2701,13 @@ Name
 object 726
 X
 3
-231
+204
 Y
 3
 456
 Width
 3
-192
+219
 Height
 3
 24
@@ -2749,13 +2749,13 @@ Name
 object 72675
 X
 3
-285
+210
 Y
 3
 426
 Width
 3
-138
+213
 Height
 3
 24
@@ -3085,13 +3085,13 @@ Name
 object 733
 X
 3
-258
+237
 Y
 3
 936
 Width
 3
-165
+186
 Height
 3
 24
@@ -3133,13 +3133,13 @@ Name
 object 73311
 X
 3
-309
+279
 Y
 3
 876
 Width
 3
-114
+144
 Height
 3
 24
@@ -3181,13 +3181,13 @@ Name
 object 73315
 X
 3
-282
+276
 Y
 3
 846
 Width
 3
-141
+147
 Height
 3
 24
@@ -3229,13 +3229,13 @@ Name
 object 73325
 X
 3
-300
+258
 Y
 3
 726
 Width
 3
-123
+165
 Height
 3
 24
@@ -3277,13 +3277,13 @@ Name
 object 7332586
 X
 3
-318
+276
 Y
 3
 696
 Width
 3
-105
+147
 Height
 3
 24
@@ -3325,13 +3325,13 @@ Name
 object 73327
 X
 3
-330
+300
 Y
 3
 666
 Width
 3
-93
+123
 Height
 3
 24
@@ -3373,13 +3373,13 @@ Name
 object 73333
 X
 3
-363
+309
 Y
 3
 636
 Width
 3
-60
+114
 Height
 3
 24
@@ -3421,13 +3421,13 @@ Name
 object 73336
 X
 3
-363
+318
 Y
 3
 606
 Width
 3
-60
+105
 Height
 3
 24
@@ -3469,13 +3469,13 @@ Name
 object 73337
 X
 3
-363
+318
 Y
 3
 576
 Width
 3
-60
+105
 Height
 3
 24
@@ -3517,13 +3517,13 @@ Name
 object 73383
 X
 3
-327
+279
 Y
 3
 906
 Width
 3
-96
+144
 Height
 3
 24
@@ -3565,13 +3565,13 @@ Name
 object 73388
 X
 3
-210
+186
 Y
 3
 1206
 Width
 3
-213
+237
 Height
 3
 24
@@ -3709,13 +3709,13 @@ Name
 object 7338891
 X
 3
-222
+210
 Y
 3
 1176
 Width
 3
-201
+213
 Height
 3
 24
@@ -3805,13 +3805,13 @@ Name
 object 73394
 X
 3
-276
+228
 Y
 3
 1056
 Width
 3
-147
+195
 Height
 3
 24

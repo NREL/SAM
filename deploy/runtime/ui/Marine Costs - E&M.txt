@@ -12,13 +12,13 @@ Name
 92
 X
 3
-60
+9
 Y
 3
 159
 Width
 3
-258
+309
 Height
 3
 24
@@ -90,13 +90,13 @@ Name
 Environmental Monitoring
 X
 3
-255
+201
 Y
 3
 549
 Width
 3
-162
+216
 Height
 3
 24
@@ -138,13 +138,13 @@ Name
 Environmental Monitoring9
 X
 3
-270
+201
 Y
 3
 519
 Width
 3
-147
+216
 Height
 3
 24
@@ -922,13 +922,13 @@ Name
 object 713
 X
 3
-165
+81
 Y
 3
 219
 Width
 3
-153
+237
 Height
 3
 24
@@ -970,13 +970,13 @@ Name
 object 72441
 X
 3
-78
+9
 Y
 3
 579
 Width
 3
-240
+309
 Height
 3
 24
@@ -1018,13 +1018,13 @@ Name
 object 726
 X
 3
-246
+198
 Y
 3
 489
 Width
 3
-171
+219
 Height
 3
 24
@@ -1066,13 +1066,13 @@ Name
 object 727
 X
 3
-201
+153
 Y
 3
 399
 Width
 3
-117
+165
 Height
 3
 24
@@ -1114,13 +1114,13 @@ Name
 object 728
 X
 3
-204
+171
 Y
 3
 369
 Width
 3
-213
+246
 Height
 3
 24
@@ -1162,13 +1162,13 @@ Name
 object 72821
 X
 3
-234
+171
 Y
 3
 309
 Width
 3
-183
+246
 Height
 3
 24
@@ -1210,13 +1210,13 @@ Name
 object 72839
 X
 3
-381
+330
 Y
 3
 339
 Width
 3
-36
+87
 Height
 3
 24
@@ -1258,13 +1258,13 @@ Name
 object 73
 X
 3
-162
+84
 Y
 3
 189
 Width
 3
-156
+234
 Height
 3
 24
@@ -1306,13 +1306,13 @@ Name
 object 730
 X
 3
-372
+327
 Y
 3
 279
 Width
 3
-45
+90
 Height
 3
 24
@@ -1354,13 +1354,13 @@ Name
 object 73136
 X
 3
-69
+9
 Y
 3
 429
 Width
 3
-249
+309
 Height
 3
 24

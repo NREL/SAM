@@ -89,13 +89,13 @@ Name
 Entrance/Exit Fees
 X
 3
-276
+240
 Y
 3
 600
 Width
 3
-147
+183
 Height
 3
 24
@@ -137,13 +137,13 @@ Name
 Entrance/Exit Fees14
 X
 3
-276
+246
 Y
 3
 570
 Width
 3
-147
+177
 Height
 3
 24
@@ -185,13 +185,13 @@ Name
 Entrance/Exit Fees1415
 X
 3
-276
+258
 Y
 3
 510
 Width
 3
-147
+165
 Height
 3
 24
@@ -710,13 +710,13 @@ Name
 object 21
 X
 3
-42
+27
 Y
 3
 105
 Width
 3
-712
+739
 Height
 3
 16
@@ -796,13 +796,13 @@ Name
 object 72441
 X
 3
-183
+132
 Y
 3
 630
 Width
 3
-135
+186
 Height
 3
 24
@@ -844,13 +844,13 @@ Name
 object 7244110
 X
 3
-294
+255
 Y
 3
 540
 Width
 3
-129
+168
 Height
 3
 24
@@ -988,13 +988,13 @@ Name
 object 728
 X
 3
-261
+246
 Y
 3
 360
 Width
 3
-162
+177
 Height
 3
 24
@@ -1036,13 +1036,13 @@ Name
 object 72821
 X
 3
-306
+291
 Y
 3
 300
 Width
 3
-117
+132
 Height
 3
 24
@@ -1084,13 +1084,13 @@ Name
 object 72828
 X
 3
-306
+276
 Y
 3
 330
 Width
 3
-117
+147
 Height
 3
 24
@@ -1180,13 +1180,13 @@ Name
 object 730
 X
 3
-321
+294
 Y
 3
 270
 Width
 3
-102
+129
 Height
 3
 24
@@ -1228,13 +1228,13 @@ Name
 object 731
 X
 3
-168
+162
 Y
 3
 420
 Width
 3
-150
+156
 Height
 3
 24
@@ -1279,20 +1279,20 @@ X
 30
 Y
 3
-51
+48
 Width
 3
 732
 Height
 3
-57
+60
 Tool Tip
 5
 0
 Caption
 5
-378
-This page consists of two levels of subcosts for the structural assembly cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
+391
+This page consists of two levels of subcosts for the site access, port, and staging cost categories. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
 TextColour
 4
 0

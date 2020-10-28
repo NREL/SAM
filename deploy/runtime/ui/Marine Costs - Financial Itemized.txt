@@ -15,7 +15,7 @@ X
 33
 Y
 3
-231
+207
 Width
 3
 90
@@ -62,7 +62,7 @@ X
 378
 Y
 3
-210
+186
 Width
 3
 90
@@ -125,7 +125,7 @@ X
 378
 Y
 3
-240
+216
 Width
 3
 90
@@ -188,7 +188,7 @@ X
 33
 Y
 3
-264
+240
 Width
 3
 90
@@ -235,7 +235,7 @@ X
 540
 Y
 3
-183
+159
 Width
 3
 168
@@ -283,7 +283,7 @@ X
 45
 Y
 3
-198
+174
 Width
 3
 90
@@ -330,7 +330,7 @@ X
 378
 Y
 3
-180
+156
 Width
 3
 90
@@ -393,7 +393,7 @@ X
 15
 Y
 3
-117
+108
 Width
 3
 784
@@ -461,7 +461,7 @@ X
 345
 Y
 3
-147
+123
 Width
 3
 123
@@ -509,20 +509,20 @@ X
 15
 Y
 3
-36
+45
 Width
 3
 786
 Height
 3
-81
+63
 Tool Tip
 5
 0
 Caption
 5
-378
-This page consists of two levels of subcosts for the structural assembly cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
+375
+This page consists of two levels of subcosts for the reserve accounts cost category. To input costs for the bolded items, simply input a dollar amount under the category totals column. To input costs at the sub-level, check the enter detailed cost under the corresponding bolded category. The sum of the sub-levels in a category is taken as the value for the category total. 
 TextColour
 4
 0
@@ -554,13 +554,13 @@ Name
 object 72751
 X
 3
-147
+117
 Y
 3
-240
+216
 Width
 3
-231
+261
 Height
 3
 24
@@ -605,7 +605,7 @@ X
 147
 Y
 3
-210
+186
 Width
 3
 231
@@ -653,7 +653,7 @@ X
 147
 Y
 3
-180
+156
 Width
 3
 231
@@ -701,7 +701,7 @@ X
 150
 Y
 3
-270
+246
 Width
 3
 228
@@ -749,7 +749,7 @@ X
 378
 Y
 3
-270
+246
 Width
 3
 90
@@ -812,7 +812,7 @@ X
 480
 Y
 3
-210
+186
 Width
 3
 24
@@ -838,7 +838,7 @@ X
 480
 Y
 3
-240
+216
 Width
 3
 24
@@ -864,7 +864,7 @@ X
 480
 Y
 3
-180
+156
 Width
 3
 24
@@ -890,7 +890,7 @@ X
 480
 Y
 3
-270
+246
 Width
 3
 24

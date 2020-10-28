@@ -12,7 +12,7 @@ Name
 assembly_and_install_cost
 X
 3
-513
+522
 Y
 3
 378
@@ -75,7 +75,7 @@ Name
 assembly_and_install_cost_input
 X
 3
-411
+420
 Y
 3
 378
@@ -137,7 +137,7 @@ Name
 assembly_and_install_cost_method
 X
 3
-150
+159
 Y
 3
 378
@@ -173,7 +173,7 @@ Name
 assembly_and_install_cost_modeled
 X
 3
-309
+318
 Y
 3
 378
@@ -236,7 +236,7 @@ Name
 assembly_and_install_cost_total
 X
 3
-411
+420
 Y
 3
 378
@@ -299,7 +299,7 @@ Name
 balance_of_system_cost_input
 X
 3
-513
+522
 Y
 3
 462
@@ -362,7 +362,7 @@ Name
 balance_of_system_cost_override
 X
 3
-630
+639
 Y
 3
 462
@@ -395,7 +395,7 @@ Name
 balance_of_system_cost_total
 X
 3
-513
+522
 Y
 3
 462
@@ -458,7 +458,7 @@ Name
 capex_check
 X
 3
-33
+42
 Y
 3
 459
@@ -505,7 +505,7 @@ Name
 development_cost
 X
 3
-513
+522
 Y
 3
 213
@@ -568,7 +568,7 @@ Name
 development_cost_input
 X
 3
-411
+420
 Y
 3
 213
@@ -630,7 +630,7 @@ Name
 development_cost_input_label
 X
 3
-441
+450
 Y
 3
 186
@@ -678,7 +678,7 @@ Name
 development_cost_method
 X
 3
-150
+159
 Y
 3
 213
@@ -714,7 +714,7 @@ Name
 development_cost_modeled
 X
 3
-309
+318
 Y
 3
 213
@@ -777,7 +777,7 @@ Name
 development_cost_total
 X
 3
-411
+420
 Y
 3
 213
@@ -840,7 +840,7 @@ Name
 elec_infras_cost
 X
 3
-513
+522
 Y
 3
 279
@@ -903,7 +903,7 @@ Name
 elec_infras_cost_input
 X
 3
-411
+420
 Y
 3
 279
@@ -965,7 +965,7 @@ Name
 elec_infras_cost_method
 X
 3
-150
+159
 Y
 3
 279
@@ -1001,7 +1001,7 @@ Name
 elec_infras_cost_modeled
 X
 3
-309
+318
 Y
 3
 279
@@ -1064,7 +1064,7 @@ Name
 elec_infras_cost_total
 X
 3
-411
+420
 Y
 3
 279
@@ -1127,7 +1127,7 @@ Name
 eng_and_mgmt_cost
 X
 3
-513
+522
 Y
 3
 246
@@ -1190,7 +1190,7 @@ Name
 eng_and_mgmt_cost_input
 X
 3
-411
+420
 Y
 3
 246
@@ -1252,7 +1252,7 @@ Name
 eng_and_mgmt_cost_method
 X
 3
-150
+159
 Y
 3
 246
@@ -1288,7 +1288,7 @@ Name
 eng_and_mgmt_cost_modeled
 X
 3
-309
+318
 Y
 3
 246
@@ -1351,7 +1351,7 @@ Name
 eng_and_mgmt_cost_total
 X
 3
-411
+420
 Y
 3
 246
@@ -1414,7 +1414,7 @@ Name
 itemized_check_assem_install
 X
 3
-612
+621
 Y
 3
 378
@@ -1461,7 +1461,7 @@ Name
 itemized_check_commissioning
 X
 3
-612
+621
 Y
 3
 312
@@ -1508,7 +1508,7 @@ Name
 itemized_check_development
 X
 3
-612
+621
 Y
 3
 213
@@ -1555,7 +1555,7 @@ Name
 itemized_check_elec_infras
 X
 3
-612
+621
 Y
 3
 279
@@ -1602,7 +1602,7 @@ Name
 itemized_check_eng
 X
 3
-612
+621
 Y
 3
 246
@@ -1649,7 +1649,7 @@ Name
 itemized_check_other_infras
 X
 3
-612
+621
 Y
 3
 411
@@ -1696,7 +1696,7 @@ Name
 itemized_check_site_access
 X
 3
-612
+621
 Y
 3
 345
@@ -1743,7 +1743,7 @@ Name
 object 21
 X
 3
-477
+486
 Y
 3
 444
@@ -1781,7 +1781,7 @@ Name
 object 4
 X
 3
-3
+9
 Y
 3
 6
@@ -1811,7 +1811,7 @@ Name
 object 7
 X
 3
-210
+219
 Y
 3
 186
@@ -1907,7 +1907,7 @@ Name
 object 721
 X
 3
-315
+324
 Y
 3
 186
@@ -1955,7 +1955,7 @@ Name
 object 7322
 X
 3
-522
+531
 Y
 3
 186
@@ -2003,7 +2003,7 @@ Name
 object 734
 X
 3
-306
+315
 Y
 3
 462
@@ -2066,8 +2066,8 @@ Tool Tip
 0
 Caption
 5
-492
-Capital costs for Marine Energy systems consist of Device Costs, Balance of System Costs, and Financial Costs. This section allows for the cost inputs of the different sublevels of device costs through lump sum $ inputs, $ inputs as a function of system capacity in kW, modeled values from previous analyses, or itemized costs through the various levels of each category. To forego these cost categories and input the BOS costs as a flat dollar amount, check the Override cost structure box. 
+503
+Capital costs for Marine Energy systems consist of Device Costs, Balance of System Costs, and Financial Costs. This section allows for the cost inputs of the different sublevels of balance of system costs through lump sum $ inputs, $ inputs as a function of system capacity in kW, modeled values from previous analyses, or itemized costs through the various levels of each category. To forego these cost categories and input the BOS costs as a flat dollar amount, check the Override cost structure box. 
 TextColour
 4
 0
@@ -2099,7 +2099,7 @@ Name
 object 75
 X
 3
-57
+66
 Y
 3
 345
@@ -2147,7 +2147,7 @@ Name
 object 7521
 X
 3
-30
+39
 Y
 3
 213
@@ -2195,7 +2195,7 @@ Name
 object 752122
 X
 3
-81
+90
 Y
 3
 246
@@ -2243,13 +2243,13 @@ Name
 object 7526
 X
 3
-12
+9
 Y
 3
 279
 Width
 3
-138
+150
 Height
 3
 24
@@ -2297,7 +2297,7 @@ Y
 312
 Width
 3
-138
+147
 Height
 3
 24
@@ -2339,13 +2339,13 @@ Name
 object 757
 X
 3
-15
+9
 Y
 3
 411
 Width
 3
-135
+150
 Height
 3
 24
@@ -2387,13 +2387,13 @@ Name
 object 75735
 X
 3
-24
+9
 Y
 3
 378
 Width
 3
-126
+150
 Height
 3
 24
@@ -2435,7 +2435,7 @@ Name
 other_infrastructure_cost
 X
 3
-513
+522
 Y
 3
 411
@@ -2498,7 +2498,7 @@ Name
 other_infrastructure_cost_input
 X
 3
-411
+420
 Y
 3
 411
@@ -2560,7 +2560,7 @@ Name
 other_infrastructure_cost_method
 X
 3
-150
+159
 Y
 3
 411
@@ -2596,7 +2596,7 @@ Name
 other_infrastructure_cost_modeled
 X
 3
-309
+318
 Y
 3
 411
@@ -2659,7 +2659,7 @@ Name
 other_infrastructure_cost_total
 X
 3
-411
+420
 Y
 3
 411
@@ -2722,7 +2722,7 @@ Name
 plant_commissioning_cost
 X
 3
-513
+522
 Y
 3
 312
@@ -2785,7 +2785,7 @@ Name
 plant_commissioning_cost_input
 X
 3
-411
+420
 Y
 3
 312
@@ -2847,7 +2847,7 @@ Name
 plant_commissioning_cost_method
 X
 3
-150
+159
 Y
 3
 312
@@ -2882,7 +2882,7 @@ Name
 plant_commissioning_cost_modeled_ui
 X
 3
-309
+318
 Y
 3
 312
@@ -2945,7 +2945,7 @@ Name
 site_access_port_staging_cost
 X
 3
-513
+522
 Y
 3
 345
@@ -3008,7 +3008,7 @@ Name
 site_access_port_staging_cost_input
 X
 3
-411
+420
 Y
 3
 345
@@ -3070,7 +3070,7 @@ Name
 site_access_port_staging_cost_method
 X
 3
-150
+159
 Y
 3
 345
@@ -3106,7 +3106,7 @@ Name
 site_access_port_staging_cost_modeled_ui
 X
 3
-309
+318
 Y
 3
 345
@@ -3169,7 +3169,7 @@ Name
 site_access_port_staging_cost_total
 X
 3
-411
+420
 Y
 3
 345

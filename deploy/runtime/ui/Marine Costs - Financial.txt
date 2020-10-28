@@ -1,6 +1,6 @@
 Marine Costs - Financial
-817
-420
+815
+419
 40
 Label
 
@@ -18,7 +18,7 @@ Y
 225
 Width
 3
-180
+186
 Height
 3
 24
@@ -60,13 +60,13 @@ Name
 7
 X
 3
-45
+24
 Y
 3
 324
 Width
 3
-144
+171
 Height
 3
 24
@@ -108,13 +108,13 @@ Name
 78
 X
 3
-6
+0
 Y
 3
 258
 Width
 3
-183
+195
 Height
 3
 24
@@ -156,13 +156,13 @@ Name
 9
 X
 3
-69
+21
 Y
 3
 291
 Width
 3
-120
+174
 Height
 3
 24
@@ -204,7 +204,7 @@ Name
 financial_cost_input
 X
 3
-543
+549
 Y
 3
 366
@@ -267,7 +267,7 @@ Name
 financial_cost_override
 X
 3
-645
+651
 Y
 3
 366
@@ -300,7 +300,7 @@ Name
 financial_cost_total
 X
 3
-543
+549
 Y
 3
 366
@@ -363,7 +363,7 @@ Name
 insurance_during_construction_cost
 X
 3
-543
+549
 Y
 3
 258
@@ -426,7 +426,7 @@ Name
 insurance_during_construction_cost_input
 X
 3
-441
+447
 Y
 3
 258
@@ -488,7 +488,7 @@ Name
 insurance_during_construction_cost_modeled_ui
 X
 3
-342
+348
 Y
 3
 258
@@ -551,7 +551,7 @@ Name
 insurance_during_construction_method
 X
 3
-189
+195
 Y
 3
 258
@@ -586,7 +586,7 @@ Name
 itemized_check_construction_insurance
 X
 3
-717
+723
 Y
 3
 258
@@ -633,7 +633,7 @@ Name
 itemized_check_contingency
 X
 3
-717
+723
 Y
 3
 225
@@ -680,7 +680,7 @@ Name
 itemized_check_other_financial
 X
 3
-717
+723
 Y
 3
 324
@@ -727,7 +727,7 @@ Name
 itemized_check_reserve_accounts
 X
 3
-717
+723
 Y
 3
 291
@@ -774,7 +774,7 @@ Name
 object 21
 X
 3
-507
+513
 Y
 3
 351
@@ -842,7 +842,7 @@ Name
 object 7
 X
 3
-243
+249
 Y
 3
 198
@@ -938,13 +938,13 @@ Name
 object 718
 X
 3
-441
+417
 Y
 3
 366
 Width
 3
-102
+129
 Height
 3
 24
@@ -986,7 +986,7 @@ Name
 object 72124
 X
 3
-339
+345
 Y
 3
 198
@@ -1050,7 +1050,7 @@ Tool Tip
 Caption
 5
 520
-Capital costs for Marine Energy systems consist of Device costs, Balance of System costs, and Financial costs. This section allows for the cost inputs of the different sublevels of contingency and reserve costs through lump sum $ inputs, inputs as a function of system capacity in $/kW, modeled values from previous analyses, or itemized costs through the various levels of each category. To forego these cost categories and input the other project costs as a flat dollar amount, check the Override cost structure box.  
+Capital costs for Marine Energy systems consist of device costs, balance of system costs, and financial costs. This section allows for the cost inputs of the different sublevels of contingency and reserve costs through lump sum $ inputs, inputs as a function of system capacity in $/kW, modeled values from previous analyses, or itemized costs through the various levels of each category. To forego these cost categories and input the other project costs as a flat dollar amount, check the override cost structure box.  
 TextColour
 4
 0
@@ -1082,7 +1082,7 @@ Name
 object 732231
 X
 3
-552
+558
 Y
 3
 198
@@ -1130,7 +1130,7 @@ Name
 other_financial_cost
 X
 3
-543
+549
 Y
 3
 324
@@ -1193,7 +1193,7 @@ Name
 other_financial_cost_input
 X
 3
-441
+447
 Y
 3
 324
@@ -1255,7 +1255,7 @@ Name
 other_financial_cost_method
 X
 3
-189
+195
 Y
 3
 324
@@ -1290,7 +1290,7 @@ Name
 other_financial_cost_modeled
 X
 3
-342
+348
 Y
 3
 324
@@ -1353,7 +1353,7 @@ Name
 project_contingency_budget_cost
 X
 3
-543
+549
 Y
 3
 225
@@ -1416,7 +1416,7 @@ Name
 project_contingency_cost_input
 X
 3
-441
+447
 Y
 3
 225
@@ -1478,7 +1478,7 @@ Name
 project_contingency_cost_method
 X
 3
-189
+195
 Y
 3
 225
@@ -1513,7 +1513,7 @@ Name
 project_contingency_cost_modeled_ui
 X
 3
-342
+348
 Y
 3
 225
@@ -1576,7 +1576,7 @@ Name
 reserve_accounts_cost
 X
 3
-543
+549
 Y
 3
 291
@@ -1639,7 +1639,7 @@ Name
 reserve_accounts_cost_input
 X
 3
-441
+447
 Y
 3
 291
@@ -1701,7 +1701,7 @@ Name
 reserve_accounts_cost_method
 X
 3
-189
+195
 Y
 3
 291
@@ -1737,7 +1737,7 @@ Name
 reserve_accounts_cost_modeled_ui
 X
 3
-342
+348
 Y
 3
 291
@@ -1800,7 +1800,7 @@ Name
 reserve_accounts_cost_total
 X
 3
-441
+447
 Y
 3
 291
@@ -1862,7 +1862,7 @@ Name
 tt_insurance_during_construction_cost
 X
 3
-645
+651
 Y
 3
 258
@@ -1888,7 +1888,7 @@ Name
 tt_other_financial_costs_cost
 X
 3
-645
+651
 Y
 3
 324
@@ -1914,7 +1914,7 @@ Name
 tt_project_contingency_budget_cost
 X
 3
-645
+651
 Y
 3
 225
@@ -1940,7 +1940,7 @@ Name
 user_input_label_eng37
 X
 3
-450
+456
 Y
 3
 198

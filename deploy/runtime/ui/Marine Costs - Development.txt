@@ -11,13 +11,13 @@ Name
 0
 X
 3
-342
+285
 Y
 3
 1350
 Width
 3
-81
+138
 Height
 3
 24
@@ -59,13 +59,13 @@ Name
 92
 X
 3
-129
+90
 Y
 3
 180
 Width
 3
-195
+234
 Height
 3
 24
@@ -137,13 +137,13 @@ Name
 Gearbox
 X
 3
-213
+171
 Y
 3
 540
 Width
 3
-111
+153
 Height
 3
 24
@@ -233,13 +233,13 @@ Name
 Project Management during Development
 X
 3
-183
+135
 Y
 3
 1290
 Width
 3
-141
+189
 Height
 3
 24
@@ -281,13 +281,13 @@ Name
 Project Management during Development1
 X
 3
-81
+42
 Y
 3
 1050
 Width
 3
-243
+282
 Height
 3
 24
@@ -1872,7 +1872,7 @@ X
 24
 Y
 3
-123
+108
 Width
 3
 751
@@ -1907,13 +1907,13 @@ Name
 object 713
 X
 3
-297
+252
 Y
 3
 270
 Width
 3
-129
+174
 Height
 3
 24
@@ -1958,7 +1958,7 @@ X
 24
 Y
 3
-54
+42
 Width
 3
 753
@@ -2003,13 +2003,13 @@ Name
 object 72418
 X
 3
-345
+309
 Y
 3
 1110
 Width
 3
-78
+114
 Height
 3
 24
@@ -2051,13 +2051,13 @@ Name
 object 7241863
 X
 3
-243
+213
 Y
 3
 930
 Width
 3
-180
+210
 Height
 3
 24
@@ -2195,13 +2195,13 @@ Name
 object 727
 X
 3
-270
+240
 Y
 3
 420
 Width
 3
-156
+186
 Height
 3
 24
@@ -2387,13 +2387,13 @@ Name
 object 73044
 X
 3
-372
+312
 Y
 3
 300
 Width
 3
-54
+114
 Height
 3
 24
@@ -2483,13 +2483,13 @@ Name
 object 73173
 X
 3
-276
+249
 Y
 3
 450
 Width
 3
-150
+177
 Height
 3
 24
@@ -2531,13 +2531,13 @@ Name
 object 73311
 X
 3
-174
+120
 Y
 3
 1500
 Width
 3
-150
+204
 Height
 3
 24
@@ -2579,13 +2579,13 @@ Name
 object 7331140
 X
 3
-345
+285
 Y
 3
 1410
 Width
 3
-78
+138
 Height
 3
 24
@@ -2627,13 +2627,13 @@ Name
 object 7331149
 X
 3
-237
+201
 Y
 3
 1260
 Width
 3
-186
+222
 Height
 3
 24
@@ -2675,13 +2675,13 @@ Name
 object 733114926
 X
 3
-390
+285
 Y
 3
 1230
 Width
 3
-33
+138
 Height
 3
 24
@@ -2723,13 +2723,13 @@ Name
 object 7331152
 X
 3
-240
+195
 Y
 3
 1170
 Width
 3
-183
+228
 Height
 3
 24
@@ -2771,13 +2771,13 @@ Name
 object 7331159
 X
 3
-264
+213
 Y
 3
 1020
 Width
 3
-159
+210
 Height
 3
 24
@@ -2819,13 +2819,13 @@ Name
 object 733115937
 X
 3
-324
+210
 Y
 3
 990
 Width
 3
-99
+213
 Height
 3
 24
@@ -2867,13 +2867,13 @@ Name
 object 73315
 X
 3
-297
+246
 Y
 3
 1470
 Width
 3
-126
+177
 Height
 3
 24
@@ -2915,13 +2915,13 @@ Name
 object 7331513
 X
 3
-342
+288
 Y
 3
 1440
 Width
 3
-81
+135
 Height
 3
 24
@@ -2963,13 +2963,13 @@ Name
 object 7331541
 X
 3
-363
+288
 Y
 3
 1380
 Width
 3
-60
+135
 Height
 3
 24
@@ -3011,13 +3011,13 @@ Name
 object 7331551
 X
 3
-300
+228
 Y
 3
 1200
 Width
 3
-123
+195
 Height
 3
 24
@@ -3059,13 +3059,13 @@ Name
 object 7331555
 X
 3
-378
+312
 Y
 3
 1140
 Width
 3
-45
+111
 Height
 3
 24
@@ -3107,13 +3107,13 @@ Name
 object 7331562
 X
 3
-243
+213
 Y
 3
 960
 Width
 3
-180
+210
 Height
 3
 24
@@ -3203,13 +3203,13 @@ Name
 object 7332550
 X
 3
-240
+204
 Y
 3
 810
 Width
 3
-186
+222
 Height
 3
 24
@@ -3299,13 +3299,13 @@ Name
 object 73333
 X
 3
-300
+258
 Y
 3
 750
 Width
 3
-126
+168
 Height
 3
 24
@@ -3347,13 +3347,13 @@ Name
 object 73336
 X
 3
-195
+159
 Y
 3
 690
 Width
 3
-129
+165
 Height
 3
 24
@@ -3443,13 +3443,13 @@ Name
 object 7333761
 X
 3
-288
+231
 Y
 3
-630
+633
 Width
 3
-138
+192
 Height
 3
 24
