@@ -987,16 +987,9 @@ bool MainWindow::LoadProject( const wxString &file )
 		return false;
 
 	ProjectFile pf;
-	try {
-		pf.ReadArchive(file);
-	}
-	catch (...)
-	{
-		wxMessageBox("file read error");
-	}
-	// TODO - reinstate after parametrics read is fixed
-	//if (!pf.ReadArchive(file))
-	//		return false;
+	// tell user to save and check file if issue 
+	if (!pf.ReadArchive(file))
+		wxMessageBox(wxString::Format("Issue reading file : \n%s\n%sPlease review the loaded file and save as a new file.", file, pf.GetLastError()));
 
 	int major, minor, micro;
 	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );

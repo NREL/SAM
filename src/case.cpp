@@ -361,6 +361,8 @@ bool Case::Read( wxInputStream &_i )
 {
 	wxDataInputStream in(_i);
 
+	m_lastError = wxEmptyString;
+
 	wxUint8 code = in.Read8();
 	wxUint8 ver = in.Read8(); // version
 
@@ -415,29 +417,39 @@ bool Case::Read( wxInputStream &_i )
 		if ( !dum.Read( _i ) )
 		  {
 		    wxLogStatus("error reading dummy var table in Case::Read");
+			m_lastError += "Error reading dummy var table in Case::Read \n";
+			dum.clear();
 		  }
 	}
 	else
 		if ( !m_baseCase.Read( _i ) )
 		  {
 		    wxLogStatus("error reading m_baseCase in Case::Read");
-		  }
+			m_lastError += "Error reading m_baseCase in Case::Read \n";
+			m_baseCase.Clear();
+		}
 
 	if ( !m_properties.Read( _i ) )
 	  {
 	    wxLogStatus("error reading m_properties in Case::Read");
+		m_lastError += "Error reading m_properties in Case::Read \n";
+		m_properties.clear();
 	  }
 	if ( !m_notes.Read( _i ) )
 	  {
 	    wxLogStatus("error reading m_notes in Case::Read");
-	  }
+		m_lastError += "Error reading m_notes in Case::Read \n";
+		m_notes.clear();
+	}
 
 	if ( ver >= 3 )
 	{
 		if (!m_excelExch.Read( _i ))
 		  {
 			wxLogStatus("error reading excel exchange data in Case::Read");
-		  }
+			m_lastError += "Error reading excel exchange data in Case::Read \n";
+			//m_excelExch.clear();
+		}
 	}
 
 	if ( ver >= 4 )
@@ -450,31 +462,29 @@ bool Case::Read( wxInputStream &_i )
 			if ( !g.Read( _i ) )
 			  {
 			    wxLogStatus("error reading Graph %d of %d in Case::Read", (int)i, (int)n);
-			  }
-			m_graphs.push_back( g );
+				m_lastError += wxString::Format("Error reading Graph %d of %d in Case::Read", (int)i, (int)n);
+			}
+			else
+				m_graphs.push_back( g );
 		}
 
 		if ( !m_perspective.Read( _i ) )
 		  {
 		    wxLogStatus("error reading perspective of results viewer in Case::Read");
-		  }
+			m_lastError += "Error reading perspective of results viewer in Case::Read \n";
+			m_perspective.clear();
+		}
 	}
 
 	if ( ver >= 5 )
 	{
-		try
+		if (!m_parametric.Read(_i))
 		{
-			if (!m_parametric.Read(_i))
-			{
-				wxLogStatus("error reading parametric simulation information in Case::Read");
-			}
-
+			wxLogStatus("error reading parametric simulation information in Case::Read");
+			m_lastError += "Error reading parametric simulation information in Case::Read \n";
+			m_parametric.ClearRuns();
+//			m_parametric.clear();
 		}
-		catch (...)
-		{
-			wxMessageBox("system error?");
-		}
-
 	}
 
 	if ( ver >= 6 )
@@ -482,11 +492,11 @@ bool Case::Read( wxInputStream &_i )
 		if ( !m_stochastic.Read( _i ) )
 		  {
 		    wxLogStatus("error reading stochastic simulation information in Case::Read");
-		  }
+			m_lastError += "Error reading stochastic simulation information in Case::Read \n";
+//			m_stochastic.clear();
+		}
 	}
-	wxUint8 retCode = in.Read8();
-//	return (in.Read8() == code);
-	return (retCode == code || retCode == '\0');
+	return (in.Read8() == code);
 }
 
 

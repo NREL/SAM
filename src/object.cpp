@@ -176,6 +176,7 @@ void ObjectCollection::Write( wxOutputStream &output )
 bool ObjectCollection::Read( wxInputStream &input )
 {
 	wxDataInputStream in( input );
+	m_lastError = wxEmptyString;
 
 	wxUint16 code = in.Read16();
 	in.Read16();
@@ -187,21 +188,19 @@ bool ObjectCollection::Read( wxInputStream &input )
 		wxString type = in.ReadString();
 
 
-		try
+		Object* obj = ObjectTypes::Create(type);
+/*		if (obj != 0
+			&& obj->Read(input))
 		{
-			Object* obj = ObjectTypes::Create(type);
-			if (obj != 0
-				&& obj->Read(input))
-			{
-				Add(name, obj);
-			}
+			Add(name, obj);
+		}
+		*/
+		if (obj != 0)
+		{
+			if (!obj->Read(input)) m_lastError += "Issue reading " + type + " : " + name + "\n" + obj->GetLastError();
+			Add(name, obj);
+		}
 
-		}
-		catch (const std::exception& e)
-		{
-			int i = 1;
-			
-		}
 	}
 
 	return ( in.Read16() == code );
