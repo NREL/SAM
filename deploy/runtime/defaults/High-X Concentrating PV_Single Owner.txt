@@ -1,5 +1,5 @@
 1
-487
+489
 adjust
 1
 5
@@ -2903,6 +2903,12 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 system_capacity
 1
 1
@@ -2962,6 +2968,12 @@ tz
 1
 1
 -7
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1
