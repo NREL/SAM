@@ -115,16 +115,19 @@ function setup_battery_pages_behind_the_meter()
 			   'Battery REopt Optimization',
 			   'Battery Current and Capacity',
 			   'Battery Configuration',
-			   'Battery Dispatch Common',
-			   'Battery Dispatch Behind the Meter',
-			   'Battery Dispatch Manual',
                {'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
 			   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 			  ]],
-			  { 'sidebar'='Battery Storage', 'help'='battery_storage_btm' } );
+			  { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm' } );
+			  
+	addpage([['Battery Dispatch Common',
+			   'Battery Dispatch Behind the Meter',
+			   'Battery Dispatch Manual',
+			  ]],
+			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm' } );
 }
 
 function setup_battery_pages_front_of_meter()
@@ -133,16 +136,19 @@ function setup_battery_pages_front_of_meter()
 				'Battery Bank Sizing',
 			   'Battery Current and Capacity',
 			   'Battery Configuration',
-			   'Battery Dispatch Common',
-			   'Battery Dispatch Front of Meter',
-			   'Battery Dispatch Manual',
 			   {'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
 			   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 			   ] ],
-			  { 'sidebar'='Battery Storage', 'help'='Battery_Storage_fom' } );
+			  { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom' } );
+			  
+	addpage([ ['Battery Dispatch Common',
+			   'Battery Dispatch Front of Meter',
+			   'Battery Dispatch Manual',
+			   ] ],
+			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom' } );		  
 }
 
 function setup_pvwatts_battery_pages_behind_the_meter()
