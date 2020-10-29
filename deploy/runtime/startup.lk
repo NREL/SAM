@@ -1667,16 +1667,16 @@ function setup_mewave_pages()
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	//addpage( [[ 'Marine Costs']],{ 'sidebar'='System Costs', 'help'='me_wave_capital_costs' } );
-	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Itemized Costs','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
-		{'name'='Marine Costs - PTO','caption'= 'Power Take-off Itemized Costs','collapsible'=true,'collapsible_var'='pto_shown'}, 
-		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Itemized Costs','collapsible'=true,'collapsible_var'='mooring_shown'}]],
+	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
+		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'}, 
+		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
 		{ 'sidebar'='Capital Costs: Device', 'help'='me_wave_capital_costs'} );
-	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Itemized Costs','collapsible'=true,'collapsible_var'='development_shown'},
-		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Itemized Costs','collapsible'=true,'collapsible_var'='e&m_shown'},
-		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Itemized Costs','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
-		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Itemized Costs','collapsible'=true,'collapsible_var'='site_access_shown'},
-		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Itemized Costs','collapsible'=true,'collapsible_var'='assem_install_shown'},
-		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Itemized Costs','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
+	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
+		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
+		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
+		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Cost Breakdown','collapsible'=true,'collapsible_var'='site_access_shown'},
+		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Cost Breakdown','collapsible'=true,'collapsible_var'='assem_install_shown'},
+		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
 		{ 'sidebar'='Capital Costs: BOS','help'='me_wave_capital_costs'} );
 	/*addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Project Contingency Budget','caption'='Project Contingency Budget','collapsible'=true,'collapsible_var'='project_conting_shown'},
 		{'name'='Marine Costs - Insurance During Construction','caption'='Insurance During Construction','collapsible'=true,'collapsible_var'='ins_during_const_shown'},
@@ -1684,10 +1684,10 @@ function setup_mewave_pages()
 		{'name'='Marine Costs - Reserve Costs','caption'='Reserve Costs','collapsible'=true,'collapsible_var'='reserve_costs_shown'},
 		{'name'='Marine Costs - Other Financial Costs','caption'='Other Financial Costs','collapsible'=true,'collapsible_var'='other_finance_costs_shown'} ]],
 		{'sidebar'='Financial Costs','help'='me_wave_capital_costs'} );*/
-	addpage( [[ 'Marine Costs - Financial', {'name'='Marine Costs - Financial Itemized','caption'='Reserve Accounts Itemized Costs','collapsible'=true,'collapsible_var'='financial_itemized_shown'}]],
+	addpage( [[ 'Marine Costs - Financial', {'name'='Marine Costs - Financial Itemized','caption'='Reserve Accounts Cost Breakdown','collapsible'=true,'collapsible_var'='financial_itemized_shown'}]],
 		{'sidebar'='Capital Costs: Financial','help'='me_wave_capital_costs'});
-	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Itemized Costs','collapsible'=true,'collapsible_var'='opex_we_shown'},
-		{'name'='Marine Costs - Maintenance','caption'='Maintenance Itemized Costs','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
+	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Cost Breakdown','collapsible'=true,'collapsible_var'='opex_we_shown'},
+		{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
 		{'sidebar'='O&M Costs','help'='me_wave_capital_costs'} );
 	
 }
@@ -1703,21 +1703,21 @@ function setup_metidal_pages()
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_tidal_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_tidal_losses' } );
 	//addpage( [[ 'Marine Costs']],{ 'sidebar'='System Costs', 'help'='me_tidal_capital_costs' } );
-	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Itemized Costs','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
-		{'name'='Marine Costs - PTO','caption'= 'Power Take-off Itemized Costs','collapsible'=true,'collapsible_var'='pto_shown'}, 
-		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Itemized Costs','collapsible'=true,'collapsible_var'='mooring_shown'}]],
+	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
+		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'}, 
+		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
 		{ 'sidebar'='Capital Costs: Device', 'help'='me_tidal_capital_costs'} );
-	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Itemized Costs','collapsible'=true,'collapsible_var'='development_shown'},
-		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Itemized Costs','collapsible'=true,'collapsible_var'='e&m_shown'},
-		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Itemized Costs','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
-		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Itemized Costs','collapsible'=true,'collapsible_var'='site_access_shown'},
-		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Itemized Costs','collapsible'=true,'collapsible_var'='assem_install_shown'},
-		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Itemized Costs','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
+	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
+		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
+		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
+		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Cost Breakdown','collapsible'=true,'collapsible_var'='site_access_shown'},
+		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Cost Breakdown','collapsible'=true,'collapsible_var'='assem_install_shown'},
+		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
 		{ 'sidebar'='Capital Costs: BOS','help'='me_tidal_capital_costs'} );
-	addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Financial Itemized','caption' = 'Reserve Accounts Itemized Costs', 'collapsible' = true,'collapsible_var'='financial_itemized_shown'}]],
+	addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Financial Itemized','caption' = 'Reserve Accounts Cost Breakdown', 'collapsible' = true,'collapsible_var'='financial_itemized_shown'}]],
 		{'sidebar'='Capital Costs: Financial','help'='me_tidal_capital_costs'});
-	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Itemized Costs','collapsible'=true,'collapsible_var'='opex_we_shown'},
-		{'name'='Marine Costs - Maintenance','caption'='Maintenance Itemized Costs','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
+	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Cost Breakdown','collapsible'=true,'collapsible_var'='opex_we_shown'},
+		{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
 		{'sidebar'='O&M Costs','help'='me_tidal_capital_costs'} );
 }
 setconfig( 'MEtidal', 'LCOE Calculator' );

@@ -456,7 +456,7 @@ Items
 Enter in $/kW
 Enter in $
 Use Modeled Value ($)
-Enter as Itemized Costs ($)
+Use Cost Breakdown ($)
 Selection
 3
 0
@@ -1243,7 +1243,7 @@ Items
 Enter in $/kW
 Enter in $
 Use Modeled Value ($)
-Enter as Itemized Costs ($)
+Use Cost Breakdown ($)
 Selection
 3
 0
@@ -1578,7 +1578,7 @@ Items
 Enter in $/kW
 Enter in $
 Use Modeled Value ($)
-Enter as Itemized Costs ($)
+Use Cost Breakdown ($)
 Selection
 3
 0
