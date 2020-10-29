@@ -25,8 +25,8 @@ technologies = 	list_technologies();
 for (t=0; t<#technologies; t++)
 {
 	//if ((technologies[t] != "DSPT") && (technologies[t] != "ISCC"))
-	if ((technologies[t] != "DSPT") && (technologies[t] != "Dish Stirling"))
-	{
+	//if ((technologies[t] != "DSPT") && (technologies[t] != "Dish Stirling"))
+	//{
 	//Loop through all financing options for that technology
 		financing = list_financing(technologies[t]);
 		for(f=0; f<#financing; f++)
@@ -92,7 +92,7 @@ for (t=0; t<#technologies; t++)
 			outln( annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real + '\t' + str);
 			write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lppa_nom + ',' + str);
 			}
-	} // skip DSPT
+	//} // skip DSPT
 }
 
 outln( 'Total Number of Configurations: ' + configs);
