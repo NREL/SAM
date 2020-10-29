@@ -25,74 +25,73 @@ technologies = 	list_technologies();
 for (t=0; t<#technologies; t++)
 {
 	//if ((technologies[t] != "DSPT") && (technologies[t] != "ISCC"))
-	//if ((technologies[t] != "DSPT") && (technologies[t] != "Dish Stirling"))
-	//{
+	{
 	//Loop through all financing options for that technology
-		financing = list_financing(technologies[t]);
-		for(f=0; f<#financing; f++)
-		{	
+	financing = list_financing(technologies[t]);
+	for(f=0; f<#financing; f++)
+	{	
 
-			//Write the technology and financing configuration to the file
-			out( technologies[t] + '\t' + financing[f] + '\t' );
-			configs++;
+		//Write the technology and financing configuration to the file
+		out( technologies[t] + '\t' + financing[f] + '\t' );
+		configs++;
 		
-			//Check that the case and defaults load ok
-			active_case( 'test_case' );
-			configuration( technologies[t], financing[f]) ;
-			message = '';
+		//Check that the case and defaults load ok
+		active_case( 'test_case' );
+		configuration( technologies[t], financing[f]) ;
+		message = '';
 		
 		
-			if( !load_defaults(message) )
+		if( !load_defaults(message) )
+		{
+			msg = 'LOADERR';
+			if ( query )//&& yesno( 'Error with defaults for: ' + technologies[t] + '/' + financing[f] + '\n\n' + message + '\n\nOverwrite?'))
 			{
-				msg = 'LOADERR';
-				if ( query )//&& yesno( 'Error with defaults for: ' + technologies[t] + '/' + financing[f] + '\n\n' + message + '\n\nOverwrite?'))
+				if(!overwrite_defaults())
 				{
-					if(!overwrite_defaults())
-					{
-						outln('Defaults could not be overwritten...');
-						write_line(file_num,technologies[t] + "," + financing[f] + ", Defaults could not be overwritten...");
-						continue;
-						msg = 'OVRERR';
-					}
-					else
-						msg = 'OVERWRITE';
+					outln('Defaults could not be overwritten...');
+					write_line(file_num,technologies[t] + "," + financing[f] + ", Defaults could not be overwritten...");
+					continue;
+					msg = 'OVRERR';
 				}
+				else
+					msg = 'OVERWRITE';
+			}
 			
-				out( msg + '\t');
-				write_line(file_num, technologies[t] + "," + financing[f] + "," + msg + '\t');
-			}
-			else out('OK\t');
+			out( msg + '\t');
+			write_line(file_num, technologies[t] + "," + financing[f] + "," + msg + '\t');
+		}
+		else out('OK\t');
 		
 		
-			//Check that the case simulates ok
-			message2 = '';
-			if(!simulate(message2))
-			{
-				outln( 'fail\tfail\tfail' );
-				write_line(file_num, technologies[t] + "," + financing[f] + ",fail,fail,fail" );
-				continue;
-			}
+		//Check that the case simulates ok
+		message2 = '';
+		if(!simulate(message2))
+		{
+			outln( 'fail\tfail\tfail' );
+			write_line(file_num, technologies[t] + "," + financing[f] + ",fail,fail,fail" );
+			continue;
+		}
 				
-			//Record the outputs of the case
-			annual_energy = 'NA';
-			lcoe_nom = 'NA';
-			lcoe_real = 'NA';
-			lppa_nom = 'NA'; // for comparison to SAMwx 2014.1.14
-			if( null != varinfo('annual_energy') ) annual_energy = get('annual_energy');
-			if(financing[f] != 'None')
-			{
-				if( null != varinfo('lcoe_nom') ) lcoe_nom = get('lcoe_nom');
-				if( null != varinfo('lppa_nom') ) lppa_nom = get('lppa_nom');
-				if( null != varinfo('lcoe_real') ) lcoe_real = get('lcoe_real');
-			}
+		//Record the outputs of the case
+		annual_energy = 'NA';
+		lcoe_nom = 'NA';
+		lcoe_real = 'NA';
+		lppa_nom = 'NA'; // for comparison to SAMwx 2014.1.14
+		if( null != varinfo('annual_energy') ) annual_energy = get('annual_energy');
+		if(financing[f] != 'None')
+		{
+			if( null != varinfo('lcoe_nom') ) lcoe_nom = get('lcoe_nom');
+			if( null != varinfo('lppa_nom') ) lppa_nom = get('lppa_nom');
+			if( null != varinfo('lcoe_real') ) lcoe_real = get('lcoe_real');
+		}
 		
-			str = replace( message + '; ' + message2, '\n', ' ' );
-			str = replace( str, '\r', '' );
-			str = replace( str, '\t', ' ' );
-			outln( annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real + '\t' + str);
-			write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lppa_nom + ',' + str);
-			}
-	//} // skip DSPT
+		str = replace( message + '; ' + message2, '\n', ' ' );
+		str = replace( str, '\r', '' );
+		str = replace( str, '\t', ' ' );
+		outln( annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real + '\t' + str);
+		write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lppa_nom + ',' + str);
+	}
+	} // skip DSPT
 }
 
 outln( 'Total Number of Configurations: ' + configs);
