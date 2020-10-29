@@ -1513,9 +1513,9 @@ SAM_EXPORT void SAM_Singleowner_BatterySystem_batt_replacement_option_nset(SAM_t
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_BatterySystem_batt_replacement_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_BatterySystem_batt_replacement_schedule_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "batt_replacement_schedule", arr, length);
+		ssc_data_set_array(ptr, "batt_replacement_schedule_percent", arr, length);
 	});
 }
 
@@ -1528,12 +1528,6 @@ SAM_EXPORT void SAM_Singleowner_BatterySystem_battery_per_kWh_nset(SAM_table ptr
 SAM_EXPORT void SAM_Singleowner_BatterySystem_en_batt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_batt", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_BatterySystem_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
 	});
 }
 
@@ -1558,6 +1552,12 @@ SAM_EXPORT void SAM_Singleowner_SystemOutput_degradation_aset(SAM_table ptr, dou
 SAM_EXPORT void SAM_Singleowner_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_SystemOutput_gen_without_battery_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen_without_battery", arr, length);
 	});
 }
 
@@ -4441,12 +4441,12 @@ SAM_EXPORT double SAM_Singleowner_BatterySystem_batt_replacement_option_nget(SAM
 
 
 
-SAM_EXPORT double* SAM_Singleowner_BatterySystem_batt_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Singleowner_BatterySystem_batt_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "batt_replacement_schedule", length);
+	result = ssc_data_get_array(ptr, "batt_replacement_schedule_percent", length);
 	if (!result)
-		make_access_error("SAM_Singleowner", "batt_replacement_schedule");
+		make_access_error("SAM_Singleowner", "batt_replacement_schedule_percent");
 	});
 	return result;
 }
@@ -4469,18 +4469,6 @@ SAM_EXPORT double SAM_Singleowner_BatterySystem_en_batt_nget(SAM_table ptr, SAM_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_batt", &result))
 		make_access_error("SAM_Singleowner", "en_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_BatterySystem_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "grid_to_batt", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "grid_to_batt");
 	});
 	return result;
 }
@@ -4527,6 +4515,18 @@ SAM_EXPORT double* SAM_Singleowner_SystemOutput_gen_aget(SAM_table ptr, int* len
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_SystemOutput_gen_without_battery_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_without_battery", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "gen_without_battery");
 	});
 	return result;
 }
@@ -5460,12 +5460,72 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_net_sep_aget(SAM_table ptr,
 
 
 
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_purchases", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_energy_purchases");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_purchases_value_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_purchases_value", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_energy_purchases_value");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_energy_sales");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_sales_value_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_value", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_energy_sales_value");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "cf_energy_value", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "cf_energy_value");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_without_battery_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_without_battery", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_energy_without_battery");
 	});
 	return result;
 }
@@ -9803,6 +9863,18 @@ SAM_EXPORT double SAM_Singleowner_Outputs_flip_target_year_nget(SAM_table ptr, S
 
 
 
+SAM_EXPORT double* SAM_Singleowner_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_purchases", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "gen_purchases");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Singleowner_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10826,18 +10898,6 @@ SAM_EXPORT double SAM_Singleowner_Outputs_ppa_escalation_nget(SAM_table ptr, SAM
 
 
 
-SAM_EXPORT double* SAM_Singleowner_Outputs_ppa_gen_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "ppa_gen", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "ppa_gen");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Singleowner_Outputs_ppa_multipliers_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10954,6 +11014,18 @@ SAM_EXPORT double SAM_Singleowner_Outputs_pv_cafds_nget(SAM_table ptr, SAM_error
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pv_cafds", &result))
 		make_access_error("SAM_Singleowner", "pv_cafds");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_revenue_gen_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "revenue_gen", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "revenue_gen");
 	});
 	return result;
 }
