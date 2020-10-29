@@ -149,9 +149,9 @@ Generic Battery,Residential,6687.142090,44.953156,NA,;
 Generic Battery,Commercial,361552.843750,15.570940,NA,; 
 Generic Battery,Third Party,6687.142090,NA,NA,; 
 Generic Battery,Host Developer,361552.843750,11.873112,10.830664,; 
-Generic Battery,Single Owner,73197192,20.940500,10.399027,; 
-Generic Battery,Merchant Plant,73197192,19.906038,NA,; 
+Generic Battery,Single Owner,73197192,20.952717,10.399027,; 
+Generic Battery,Merchant Plant,73197192,19.918255,NA,; 
 Generic Battery,Leveraged Partnership Flip,73197192,24.969900,28.886187,; 
-Generic Battery,All Equity Partnership Flip,73197192,29.077574,34.663425,; 
+Generic Battery,All Equity Partnership Flip,73197192,29.094563,34.663425,; 
 Generic Battery,Sale Leaseback,73197192,29.009142,34.663425,; 
 final_configuration_eof,none,NA,NA,NA,

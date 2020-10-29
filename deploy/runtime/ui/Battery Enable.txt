@@ -44,7 +44,7 @@ Enable battery model
  
 Battery Enable
 0
-13
+141
 1
 1
 1

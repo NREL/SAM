@@ -189,12 +189,7 @@ bool ObjectCollection::Read( wxInputStream &input )
 
 
 		Object* obj = ObjectTypes::Create(type);
-/*		if (obj != 0
-			&& obj->Read(input))
-		{
-			Add(name, obj);
-		}
-		*/
+
 		if (obj != 0)
 		{
 			if (!obj->Read(input)) m_lastError += "Could not read " + type + " : " + name + "\n" + obj->GetLastError();
