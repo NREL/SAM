@@ -1,5 +1,5 @@
 1
-172
+174
 CT
 1
 1
@@ -867,6 +867,12 @@ station_id
 4
 6
 258971
+step
+1
+1
+1
+1
+3600
 subsurface_water_loss
 1
 1
@@ -979,6 +985,12 @@ ui_pfin
 1
 1
 1.12684
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_system_capacity
 1
 1
