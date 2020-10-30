@@ -3642,7 +3642,7 @@ BackColour
 255
 TabOrder
 3
-27
+4294967295
 Numeric
 
 1
@@ -3768,7 +3768,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+27
 Numeric
 
 1

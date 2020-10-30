@@ -12,7 +12,7 @@ Name
 device_cost_input
 X
 3
-495
+525
 Y
 3
 327
@@ -64,7 +64,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 CheckBox
 
 1
@@ -75,13 +75,13 @@ Name
 device_cost_override
 X
 3
-609
+633
 Y
 3
 327
 Width
 3
-159
+168
 Height
 3
 24
@@ -108,7 +108,7 @@ Name
 device_costs_total
 X
 3
-495
+525
 Y
 3
 327
@@ -171,7 +171,7 @@ Name
 itemized_check_mooring
 X
 3
-603
+633
 Y
 3
 270
@@ -218,7 +218,7 @@ Name
 itemized_check_pto
 X
 3
-603
+633
 Y
 3
 231
@@ -265,7 +265,7 @@ Name
 itemized_check_structural
 X
 3
-600
+630
 Y
 3
 192
@@ -312,7 +312,7 @@ Name
 mooring_found_substruc_cost
 X
 3
-495
+525
 Y
 3
 267
@@ -375,7 +375,7 @@ Name
 mooring_found_substruc_cost_input
 X
 3
-396
+426
 Y
 3
 267
@@ -426,7 +426,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Choice
 
 1
@@ -437,7 +437,7 @@ Name
 mooring_found_substruc_cost_method
 X
 3
-138
+168
 Y
 3
 267
@@ -473,7 +473,7 @@ Name
 mooring_found_substruc_cost_modeled
 X
 3
-297
+327
 Y
 3
 267
@@ -536,7 +536,7 @@ Name
 mooring_found_substruc_cost_total
 X
 3
-396
+426
 Y
 3
 267
@@ -599,7 +599,7 @@ Name
 object 21
 X
 3
-456
+486
 Y
 3
 309
@@ -667,7 +667,7 @@ Name
 object 7
 X
 3
-198
+228
 Y
 3
 168
@@ -721,7 +721,7 @@ Y
 129
 Width
 3
-660
+705
 Height
 3
 24
@@ -811,7 +811,7 @@ Name
 object 72145
 X
 3
-294
+324
 Y
 3
 168
@@ -859,7 +859,7 @@ Name
 object 7322
 X
 3
-495
+525
 Y
 3
 168
@@ -907,13 +907,13 @@ Name
 object 75
 X
 3
-21
+39
 Y
 3
 231
 Width
 3
-117
+129
 Height
 3
 24
@@ -961,7 +961,7 @@ Y
 267
 Width
 3
-78
+108
 Height
 3
 24
@@ -1003,13 +1003,13 @@ Name
 object 757
 X
 3
-9
+27
 Y
 3
 195
 Width
 3
-129
+141
 Height
 3
 24
@@ -1051,7 +1051,7 @@ Name
 object 77
 X
 3
-348
+378
 Y
 3
 327
@@ -1099,7 +1099,7 @@ Name
 power_takeoff_system_cost
 X
 3
-495
+525
 Y
 3
 231
@@ -1162,7 +1162,7 @@ Name
 power_takeoff_system_cost_input
 X
 3
-396
+426
 Y
 3
 231
@@ -1213,7 +1213,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Choice
 
 1
@@ -1224,7 +1224,7 @@ Name
 power_takeoff_system_cost_method
 X
 3
-138
+168
 Y
 3
 231
@@ -1260,7 +1260,7 @@ Name
 power_takeoff_system_cost_modeled
 X
 3
-297
+327
 Y
 3
 231
@@ -1323,7 +1323,7 @@ Name
 power_takeoff_system_cost_total
 X
 3
-396
+426
 Y
 3
 231
@@ -1386,7 +1386,7 @@ Name
 struct_level_total_label
 X
 3
-396
+426
 Y
 3
 168
@@ -1434,7 +1434,7 @@ Name
 structural_assembly_cost
 X
 3
-495
+525
 Y
 3
 195
@@ -1497,7 +1497,7 @@ Name
 structural_assembly_cost_input
 X
 3
-396
+426
 Y
 3
 195
@@ -1548,7 +1548,7 @@ BackColour
 255
 TabOrder
 3
-13
+1
 Choice
 
 1
@@ -1559,7 +1559,7 @@ Name
 structural_assembly_cost_method
 X
 3
-138
+168
 Y
 3
 195
@@ -1595,7 +1595,7 @@ Name
 structural_assembly_cost_modeled_formatted
 X
 3
-297
+327
 Y
 3
 195
@@ -1658,7 +1658,7 @@ Name
 structural_assembly_cost_total
 X
 3
-396
+426
 Y
 3
 195

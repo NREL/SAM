@@ -126,7 +126,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+6
 Choice
 
 1
@@ -299,7 +299,7 @@ Name
 balance_of_system_cost_input
 X
 3
-522
+525
 Y
 3
 462
@@ -351,7 +351,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 CheckBox
 
 1
@@ -395,7 +395,7 @@ Name
 balance_of_system_cost_total
 X
 3
-522
+525
 Y
 3
 462
@@ -619,7 +619,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Label
 
 1
@@ -954,7 +954,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Choice
 
 1
@@ -1241,7 +1241,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Choice
 
 1
@@ -2402,8 +2402,8 @@ Tool Tip
 0
 Caption
 5
-18
-Assembly & install
+23
+Assembly & installation
 TextColour
 4
 0
@@ -2549,7 +2549,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Choice
 
 1
@@ -2836,7 +2836,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Choice
 
 1
@@ -3059,7 +3059,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Choice
 
 1
@@ -3297,9 +3297,9 @@ Default
 plant_commissioning_cost_input
 3
 1
- Plant commissioning cost input
+Plant commissioning cost input
 $, $/kW
- 
+ME BoS Costs
 0
 3
 1
@@ -3452,10 +3452,11 @@ equations {'assem_other_infras_shown'} = define() {
 
 	
 
-5106
+5320
 on_load{'Marine Costs - BoS'} = define() {
 	on_change{'balance_of_system_cost_override'};
 	override_balance_of_system_cost();
+	on_change{'plant_commissioning_cost_override'};
 	
 	//Development
 	show('development_cost_total',value('development_cost_method')==3);
@@ -3473,8 +3474,8 @@ on_load{'Marine Costs - BoS'} = define() {
 	enable('elec_infras_cost_input',value('elec_infras_cost_method')!=2);
 	
 	//Plant Commissioning
-	show('plant_commissioning_cost_total',value('plant_commissioning_cost_method')==3);
-	show('plant_commissioning_cost_input',value('plant_commissioning_cost_method')!=3);
+	//show('plant_commissioning_cost_total',value('plant_commissioning_cost_method')==3);
+	//show('plant_commissioning_cost_input',value('plant_commissioning_cost_method')!=2);
 	enable('plant_commissioning_cost_input',value('plant_commissioning_cost_method')!=2);
 	
 	//Site access, Port and Staging
@@ -3492,6 +3493,11 @@ on_load{'Marine Costs - BoS'} = define() {
 	show('other_infrastructure_cost_input',value('other_infrastructure_cost_method')!=3);
 	enable('other_infrastructure_cost_input',value('other_infrastructure_cost_method')!=2);
 	
+	refresh();
+};
+
+on_change{'plant_commissioning_cost_method'} = define() {
+	enable('plant_commissioning_cost_input',value('plant_commissioning_cost_method')!=2);
 	refresh();
 };
 

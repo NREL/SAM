@@ -220,7 +220,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Choice
 
 1
@@ -897,7 +897,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 CheckBox
 
 1
@@ -1055,7 +1055,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Choice
 
 1
