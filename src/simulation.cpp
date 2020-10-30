@@ -99,18 +99,7 @@ bool Simulation::Read( wxInputStream &is )
 	read_array_string( in, m_overrides );
 
 	m_inputs.Read( is );
-
-	try
-	{
-		m_outputs.Read(is);
-
-
-	}
-	catch (const std::exception&)
-	{
-		wxMessageBox("error");
-	}
-
+	m_outputs.Read(is);
 
 	read_array_string( in, m_errors );
 	read_array_string( in, m_warnings );
