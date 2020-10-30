@@ -1,5 +1,5 @@
 1
-1004
+1013
 6par_aisc
 1
 1
@@ -171,6 +171,12 @@ Generic polycrystalline silicon module
 1
 1
 46
+6par_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 6par_vmp
 1
 1
@@ -992,7 +998,7 @@ batt_surface_area
 1
 1
 1
-89.0141
+23.9614
 batt_thermal_choice
 1
 1
@@ -1123,7 +1129,7 @@ bos_equip_total
 1
 1
 1
-4000180
+4.00018e+06
 calculated_dcac_ratio
 1
 1
@@ -1397,7 +1403,7 @@ cec_i_o_ref
 1
 1
 1
-8.36044e-11
+8.36e-11
 cec_i_sc_ref
 1
 1
@@ -1481,6 +1487,12 @@ cec_temp_corr_mode
 1
 1
 0
+cec_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 cec_v_mp_ref
 1
 1
@@ -2300,7 +2312,7 @@ dispatch_tod_factors
 2
 1
 9
-1 1 1 1 1 1 1 1 1 
+1 1.5 1 1 1 1 1 1 1 
 
 dscr_reserve_months
 1
@@ -2849,7 +2861,7 @@ install_labor_total
 1
 1
 1
-2600120
+2.60012e+06
 install_margin_fixed
 1
 1
@@ -2873,7 +2885,7 @@ install_margin_total
 1
 1
 1
-1200050
+1.20005e+06
 installed_per_capacity
 1
 1
@@ -3520,7 +3532,7 @@ inv_snl_c0
 1
 1
 1
--2.44558e-08
+-2.45e-08
 inv_snl_c1
 1
 1
@@ -3544,13 +3556,13 @@ inv_snl_eff_cec
 1
 1
 1
-97.5869
+97.5882
 inv_snl_eff_euro
 1
 1
 1
 1
-97.377
+97.3788
 inv_snl_idcmax
 1
 1
@@ -3679,7 +3691,7 @@ inverter_total
 1
 1
 1
-1200050
+1.20005e+06
 inverterarray_power
 1
 1
@@ -3962,7 +3974,8 @@ lib_is_bifacial
 lib_manufacturer
 1
 4
-0
+8
+SunPower
 library_folder_list
 1
 4
@@ -4069,7 +4082,7 @@ module_total
 1
 1
 1
-7600340
+7.60034e+06
 module_width
 1
 1
@@ -4817,6 +4830,12 @@ sd11par_tnoct
 1
 1
 44.9
+sd11par_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 sd11par_type
 1
 1
@@ -5236,6 +5255,12 @@ snl_specified_dT
 1
 1
 0
+snl_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 snl_vmpo
 1
 1
@@ -5426,6 +5451,12 @@ spe_temp_coeff
 1
 1
 -0.5
+spe_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 spe_vmp
 1
 1
@@ -5472,6 +5503,24 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+0
+step_sd11par
+1
+1
+1
+1
+0
+step_spe
+1
+1
+1
+1
+0
 subarray1_azimuth
 1
 1
@@ -6272,7 +6321,7 @@ total_indirect_cost
 1
 1
 1
-4327190
+4.32719e+06
 total_installed_cost
 1
 1
@@ -6334,6 +6383,12 @@ tz
 1
 -7
 ui_batt_is_dc
+1
+1
+1
+1
+0
+ui_step_minutes
 1
 1
 1

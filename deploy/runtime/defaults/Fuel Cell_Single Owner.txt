@@ -1,5 +1,5 @@
 1
-733
+735
 LeadAcid_q10
 1
 1
@@ -3778,7 +3778,7 @@ property_assessed_value
 1
 1
 1
-3086330
+3.08633e+06
 property_tax_rate
 1
 1
@@ -4091,12 +4091,18 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 subtotal_direct
 1
 1
 1
 1
-3086330
+3.08633e+06
 system_capacity
 1
 1
@@ -4213,7 +4219,7 @@ total_direct_cost
 1
 1
 1
-3086330
+3.08633e+06
 total_indirect_cost
 1
 1
@@ -4225,7 +4231,7 @@ total_installed_cost
 1
 1
 1
-3086330
+3.08633e+06
 tz
 1
 1
@@ -4244,6 +4250,12 @@ ui_pv_capacity
 1
 1
 200
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1
