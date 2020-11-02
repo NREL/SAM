@@ -505,6 +505,175 @@ static void fcall_codegen_metric(lk::invoke_t &cxt)
 	}
 }
 
+static void fcall_metric_table(lk::invoke_t& cxt)
+{
+	LK_DOC("metric_table", "Add an output metric table to the current configuration. Options include headers", "(string:tableName, [table:options]):none");
+
+	if (ResultsCallbackContext* ci = static_cast<ResultsCallbackContext*>(cxt.user_data()))
+	{
+		MetricTable mt;
+		mt.tableName = cxt.arg(0).as_string().MakeLower();
+
+		if (cxt.arg_count() > 1)
+		{
+			lk::vardata_t& opts = cxt.arg(1).deref();
+			if (lk::vardata_t* x = opts.lookup("headers"))
+			{
+				wxString ch = x->as_string();
+				mt.headers = wxSplit(ch, ',');
+			}
+		}
+		ci->GetResultsViewer()->AddMetricTable(mt);
+	}
+}
+
+static void fcall_metric_row(lk::invoke_t& cxt)
+{
+	LK_DOC("metric_row", "Add an output metric row to the current configuration. Options include mode(s),deci(s),thousep(s),pre(s),post(s),label,scale(s)", "(string:variable(s)), [table:options]):none");
+
+	if (ResultsCallbackContext* ci = static_cast<ResultsCallbackContext*>(cxt.user_data()))
+	{
+		MetricRow mr;
+		wxArrayString vars = wxSplit(cxt.arg(0).as_string(), ',');
+		wxArrayString modes, decis, thouseps, pres, posts, scales;
+
+		if (cxt.arg_count() > 1)
+		{
+			lk::vardata_t& opts = cxt.arg(1).deref();
+			if (lk::vardata_t* x = opts.lookup("mode")) {
+				modes = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("deci")) {
+				decis = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("thousep")) {
+				thouseps = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("pre"))
+				pres = wxSplit(x->as_string(), ',');
+
+			if (lk::vardata_t* x = opts.lookup("post"))
+				posts = wxSplit(x->as_string(), ',');
+
+			if (lk::vardata_t* x = opts.lookup("scale")) {
+				scales = wxSplit(x->as_string(), ',');
+			}
+
+
+			if (lk::vardata_t* x = opts.lookup("label"))
+				mr.label = x->as_string();
+
+			if (lk::vardata_t* x = opts.lookup("tableName"))
+				mr.tableName = x->as_string().MakeLower();
+		}
+
+
+		for (size_t i = 0; i < vars.GetCount(); i++) {
+			MetricData md;
+			md.var = vars[i];
+
+			if (i < modes.GetCount())
+			{
+				wxString mm = modes[i];
+				mm.MakeLower();
+				if (mm == "f") md.mode ='f';
+				else if (mm == "e")md.mode = 'e';
+				else if (mm == "h") md.mode = 'h';
+			}
+
+			if (i <decis.GetCount()) {
+				int deci = wxAtoi(decis[i]);
+				md.deci = deci;
+			}
+					
+			if ( i < thouseps.GetCount()) {
+				wxString mm = thouseps[i];
+				mm.MakeLower();
+				if (mm == "f") md.thousep = false;
+				else md.thousep = true;
+			}
+
+			if (i < pres.GetCount()) {
+				md.pre = pres[i];
+			}
+
+			if (i < posts.GetCount()) {
+				md.post = posts[i];
+			}
+
+			if (i < scales.GetCount())	{
+				double scale = wxAtof(scales[i]);
+				md.scale = scale;
+			}
+
+			mr.metrics.push_back(md);
+		}
+
+/*		MetricRow mr;
+		mr.vars = wxSplit(cxt.arg(0).as_string(),',');
+
+		if (cxt.arg_count() > 1)
+		{
+			lk::vardata_t& opts = cxt.arg(1).deref();
+
+			if (lk::vardata_t* x = opts.lookup("mode"))	{
+				wxArrayString modes = wxSplit(x->as_string(), ',');
+				for (size_t i = 0; i < modes.GetCount(); i++) {
+					wxString mm = modes[i];
+					mm.MakeLower();
+					if (mm == "f") mr.modes.push_back('f');
+					else if (mm == "e")mr.modes.push_back('e');
+					else if (mm == "h") mr.modes.push_back('h');
+					else mr.modes.push_back('g');
+				}
+			}
+
+			if (lk::vardata_t* x = opts.lookup("deci")) {
+				wxArrayString decis = wxSplit(x->as_string(), ',');
+				for (size_t i = 0; i < decis.GetCount(); i++) {
+					int deci = wxAtoi(decis[i]);
+					mr.decis.push_back(deci);
+				}
+			}
+
+			if (lk::vardata_t* x = opts.lookup("thousep")) {
+				wxArrayString thouseps = wxSplit(x->as_string(), ',');
+				for (size_t i = 0; i < thouseps.GetCount(); i++) {
+					wxString mm = thouseps[i];
+					mm.MakeLower();
+					if (mm == "f") mr.thouseps.push_back(false);
+					else mr.thouseps.push_back(true);
+				}
+			}
+
+			if (lk::vardata_t* x = opts.lookup("pre"))
+				mr.pres = wxSplit(x->as_string(),',');
+
+			if (lk::vardata_t* x = opts.lookup("post"))
+				mr.posts = wxSplit(x->as_string(), ',');
+
+			if (lk::vardata_t* x = opts.lookup("label"))
+				mr.label = x->as_string();
+
+			if (lk::vardata_t* x = opts.lookup("scale")) {
+				wxArrayString scales = wxSplit(x->as_string(), ',');
+				for (size_t i = 0; i < scales.GetCount(); i++) {
+					double scale = wxAtof(scales[i]);
+					mr.scales.push_back(scale);
+				}
+			}
+
+			if (lk::vardata_t* x = opts.lookup("tableName"))
+				mr.tableName = x->as_string().MakeLower();
+		}
+*/
+		ci->GetResultsViewer()->AddMetricRow(mr);
+	}
+}
+
 
 static void fcall_metric( lk::invoke_t &cxt )
 {
@@ -544,6 +713,9 @@ static void fcall_metric( lk::invoke_t &cxt )
 
 			if ( lk::vardata_t *x = opts.lookup("scale") )
 				md.scale = x->as_number();
+
+//			if (lk::vardata_t* x = opts.lookup("tableName"))
+//				md.tableName = x->as_string().MakeLower();
 		}
 
 		ci->GetResultsViewer()->AddMetric( md );
@@ -601,7 +773,7 @@ static void fcall_add_gain_term(lk::invoke_t &cxt)
 
 static void fcall_agraph( lk::invoke_t &cxt )
 {
-	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR), [number:Xmin value], [number:Xmax value]]:none" );
+	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR, SECTOR), [number:Xmin value], [number:Xmax value]]:none" );
 
 	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
@@ -4941,6 +5113,8 @@ lk::fcall_t* invoke_resultscallback_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_metric,
+		fcall_metric_row,
+		fcall_metric_table,
 		fcall_cfline,
 		fcall_cfrow,
 		fcall_agraph,

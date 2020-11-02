@@ -371,3 +371,5 @@ src/private - nrel.h
 src/private - os.h
 
 sam\.bin
+
+deploy/~script
