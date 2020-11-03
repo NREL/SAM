@@ -527,7 +527,7 @@ static void fcall_vuc_retire_tech(lk::invoke_t &cxt)
 		if (tech1 == "DSPT" || tech1 == "Dish Stirling");
 		{
 			//Do something to delete the case from the file
-			DeleteObject(retired_case); //This doesn't do anything right now
+			//DeleteObject(retired_case); //This doesn't do anything right now
 		}
 		
 		
