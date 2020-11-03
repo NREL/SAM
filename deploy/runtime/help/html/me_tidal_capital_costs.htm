@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Capital and O&amp;M Costs</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "me_tidal_capital_costs.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Capital and O&amp;M Costs</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">SAM's marine energy models for wave and tidal power use a fixed-charge-rate (FCR) method to calculate the levelized cost of energy (LCOE) from inputs on the <a href="fin_lcoefcr.htm" class="topiclink">Financial Parameters</a> page. The FCR method requires a total installed cost and annual operating cost value as input, along with a fixed charge rate representing the financial assumptions for the project.</span></p>
+<p class="p_Text"><span class="f_Text">For the marine energy models, each Capital Costs page and the O&amp;M (operation and maintenance) Cost page provide a detailed cost structure that SAM uses to calculate the total capital cost and fixed annual operating cost for the LCOE calculation:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">The total capital cost is the sum of the total device cost, total balance of system (BOS) cost, and total financial cost.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">The fixed operating cost is the sum of the O&amp;M costs.</span></p><p class="p_Text"><span class="f_Text">The cost structure has several levels, so you can specify each cost as a single value, or break it down into more detailed categories and subcategories.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Override cost structure</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">This is the highest level in the cost structure. Use this option to enter a total cost at the Device, BOS, Financial, or O&amp;M Cost level. When you check </span><span class="f_CHInterfaceElement">Override cost structure</span><span class="f_VariableDescription">, SAM uses the value you type and ignores the detailed cost values.</span></p>
+<p class="p_Text"><span class="f_Text">If you choose to enter costs using more detailed categories, for each cost, click the Expand button </span><img alt="SS_Panel-expand" width="36" height="36" style="margin:0;width:36px;height:36px;border:none" src="ss_panel-expand.png"/> to show details, and choose an option for entering cost values:</p>
+<p class="p_Text" style="text-align: center;"><img alt="ss-me-cost-options" width="154" height="90" style="margin:0 auto 0 auto;width:154px;height:90px;border:none" src="ss-me-cost-options.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enter in in $/kW</span></p>
+<p class="p_VariableDescription">Type a cost per unit of rated capacity. The rated capacity is from the Array page. SAM calculates the category cost by multiplying the &quot;user input&quot; cost you enter in $/kW by the array capacity in kW from the Array page. SAM ignores the modeled value, but shows it for your reference.</p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="ss-me-cost-per-kw" width="732" height="137" style="margin:0 auto 0 auto;width:732px;height:137px;border:none" src="ss-me-cost-per-kw.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enter in $</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Type a dollar value for the cost. SAM ignores the modeled value, but shows it for your reference.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="ss-me-cost-fixed" width="579" height="44" style="margin:0 auto 0 auto;width:579px;height:44px;border:none" src="ss-me-cost-fixed.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Use Modeled Value ($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option for SAM to automatically calculate the cost. The category cost is equal to the modeled value, and SAM ignores the &quot;user input&quot; value.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="ss-me-cost-modeled" width="579" height="44" style="margin:0 auto 0 auto;width:579px;height:44px;border:none" src="ss-me-cost-modeled.png"/></p>
+<p class="p_Note"><span class="f_CHNote">Note about modeled values.</span><span class="f_Note"> For the wave energy model, if you choose a WEC from the library on the Wave Energy Converter page, the default device costs are based on the associated costs for each design based on reference model projects. Balance of system costs and financial costs are based on costs curves developed from existing reference model data, a database with wave and tidal cost data from DOE-funded projects, and a literature review of wave, tidal, and offshore wind energy costs. </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">If you use your own WEC parameters instead of choosing a WEC from the library, device costs are from cost curves based on array rated power or percentage of costs. These costs curves were developed from existing reference model data, a database with wave and tidal cost data from DOE-funded projects, and a literature review of wave, tidal, and offshore wind energy costs. </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">For the tidal energy model, default device costs are based on the associated costs the Reference Model 1 tidal converter. Balance of system capital costs and financial costs are based on costs curves developed from existing reference model data, a database with wave and tidal cost data from DOE-funded projects, and a literature review of wave, tidal, and offshore wind energy costs.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Use Cost Breakdown ($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to enter costs at the most detailed level. When you choose the option for a cost category, SAM automatically expands the Cost Breakdown section for that category.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">You can either enter a total cost for the category, </span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="ss-me-cost-itemized" width="282" height="68" style="margin:0 auto 0 auto;width:282px;height:68px;border:none" src="ss-me-cost-itemized.png"/></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">or check </span><span class="f_CHInterfaceElement">Enter detailed costs</span><span class="f_VariableDescription"> to enter itemized costs for each subcategory. SAM automatically calculates the total based on the costs you enter.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="ss-me-cost-itemized-detailed" width="264" height="204" style="margin:0 auto 0 auto;width:264px;height:204px;border:none" src="ss-me-cost-itemized-detailed.png"/></p>
+<p class="p_Text"><span class="f_Text">For information about a cost item, click the Information button next to the item's label.</span></p>
+<p class="p_Text" style="text-align: center;"><img alt="SS_MHKCosts-information" width="407" height="114" style="margin:0 auto 0 auto;width:407px;height:114px;border:none" src="ss_mhkcosts-information.png"/></p>
+
+</td></tr></table>
+
+</body>
+</html>
