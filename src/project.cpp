@@ -518,16 +518,18 @@ static void fcall_vuc_message( lk::invoke_t &cxt )
 
 static void fcall_vuc_retire_tech(lk::invoke_t &cxt)
 {
-	LK_DOC("retire_tech", "Retire technologies", "(string:technology):boolean");
-	if (VersionUpgrade* vuc = static_cast<VersionUpgrade*>(cxt.user_data()))
+	LK_DOC("retire_tech", "Retire technologies", "(none):none");
+	if (VersionUpgrade *vuc = static_cast<VersionUpgrade*>(cxt.user_data()))
 	{
-		wxString tech1(cxt.arg(0).as_string());
-		Case* retired_case(vuc->GetCase());
-		vuc->GetName();
-		if (tech1 == "DSPT" || tech1 == "Dish Stirling");
+        wxString tech(vuc->GetCase()->GetTechnology());
+        wxString fin(vuc->GetCase()->GetFinancing());
+        Case* retired_case = vuc->GetCase();
+        wxString TP(SamApp::Config().Options(tech).TreeParent);
+		//if (tech == "DSPT" || tech == "Dish Stirling");
+        if (TP == "Retired")
 		{
 			//Do something to delete the case from the file
-			//DeleteObject(retired_case); //This doesn't do anything right now
+            cxt.result().assign(vuc->GetCase()->SetConfiguration("Retired", "None"));
 		}
 		
 		
@@ -634,6 +636,8 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 	}
 	
 	m_env.set_parent( sd.GetEnv() );
+
+    size_t check_retired_cases = cases.size();
 	
 	for (nr = nr - 2; nr >= 0; nr--)
 	{
@@ -646,9 +650,11 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 				Invoke( cases[i], pf.GetCaseName( cases[i] ), cb );
 
 				wxString tech(cases[i]->GetTechnology());
-				if (tech == "DSPT" || tech == "Dish Stirling")
+				if (tech == "Retired")
 				{
-					pf.DeleteCase(pf.GetCaseName(cases[i]));
+                    check_retired_cases--;
+                    pf.DeleteCase(pf.GetCaseName(cases[i]));
+                    
 				}
 				
 				// recalculate equations in each case for each consecutive upgrade
@@ -656,6 +662,10 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 				if ( cases[i]->RecalculateAll( true ) < 0 )
 					GetLog().push_back( log( WARNING, "Error updating calculated values in '" + pf.GetCaseName(cases[i]) + "' during upgrade process.  Please resolve any errors, save the project file, and reopen it." ) );
 			}
+        if (check_retired_cases == 0)
+        {
+            pf.Clear();
+        }
 	}
 
 	// don't retain a pointer to the script database environment

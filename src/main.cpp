@@ -478,7 +478,7 @@ void MainWindow::ImportCases()
 			if ( !upgd.Run( prj ) )
 				wxMessageBox("Error upgrading older project file:\n\n", file );
 		}
-
+        
 		upgd.ShowReportDialog( file, true );
 	}
 
@@ -1024,6 +1024,10 @@ bool MainWindow::LoadProject( const wxString &file )
 		VersionUpgrade upgd;
 		upgd.Run( pf );
 		upgd.ShowReportDialog( file );
+        std::vector<Case*> cases = m_project.GetCases();
+        if (cases.size() == 0) {
+            
+        }
 	}
 
 	// copy over project file data,
@@ -3027,10 +3031,9 @@ void ConfigDialog::PopulateTech()
 		if ( L.IsEmpty() ) L = m_tnames[i];
 		if (TP.Find("PV") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_pv, L);
-		else if (TP.Find("CSP") != wxNOT_FOUND && m_tnames[i] != "Dish Stirling" && m_tnames[i] != "DSPT") //retiring the technologies but leaving the model in the code for one more version to see if anyone objects
+		else if (TP.Find("CSP") != wxNOT_FOUND )
 			m_pTech->AppendItem(cont_csp, L);
-		else if (TP.Find("CSP") != wxNOT_FOUND && m_tnames[i] == "Dish Stirling"); //Remove dish stirling from the list of selectable technologies
-		else if (TP.Find("CSP") != wxNOT_FOUND && m_tnames[i] == "DSPT"); //Remove direct steam power tower from list of selectable technologies
+		else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
 		else if (TP.Find("ME") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_me, L);
 		else if (TP.Find("BATT") != wxNOT_FOUND)
