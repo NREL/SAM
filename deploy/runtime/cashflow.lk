@@ -65,7 +65,6 @@ function cf_production()
 { 
 	fin = financing();
 	cfline( 'ENERGY', -1); 
-	cfline( 'cf_energy_net', 0);
 	if ( fin == "Single Owner" )
 	{
 		cfline( 'cf_energy_sales', 0);
@@ -75,6 +74,7 @@ function cf_production()
 	{
 		cfline( 'cf_energy_curtailed', 0);
 	}	
+	cfline( 'cf_energy_net', 0);
 	cfline( '' );
 }
 
@@ -123,9 +123,9 @@ function cf_revenue()
 	elseif ( fin == "Single Owner" )
 	{
 		cfline( 'cf_ppa_price' , -2 );
-		cfline( 'cf_energy_value', 0); 
 		cfline( 'cf_energy_sales_value', 0); 
 		cfline( 'cf_energy_purchases_value', 0); 
+		cfline( 'cf_energy_value', 0); 
 		cfline( 'cf_curtailment_value', 0); 
 		cfline( 'cf_capacity_payment', 0); 
 	}
