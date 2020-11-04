@@ -104,6 +104,7 @@ public:
 	Case *GetCurrentCase();
 	CaseWindow *GetCurrentCaseWindow();
 	void CaseVarGrid(std::vector<Case*> &cases);
+	wxSimplebook* m_topBook;
 
 protected:
 	void OnClose( wxCloseEvent & );
@@ -114,7 +115,7 @@ protected:
 	void OnInternalCommand( wxCommandEvent & );
 
 private:
-	wxSimplebook *m_topBook;
+//	wxSimplebook *m_topBook;
 	WelcomeScreen *m_welcomeScreen;
 	wxPanel *m_caseTabPanel;
 	wxMetroButton *m_mainMenuButton;

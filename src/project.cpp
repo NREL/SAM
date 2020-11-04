@@ -23,6 +23,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <cmath>
 #include <numeric>
 
+#include <wx/simplebook.h>
 #include <wx/datstrm.h>
 #include <wx/wfstream.h>
 #include <wx/zstream.h>
@@ -656,15 +657,20 @@ bool VersionUpgrade::Run( ProjectFile &pf )
                     pf.DeleteCase(pf.GetCaseName(cases[i]));
                     
 				}
-				
-				// recalculate equations in each case for each consecutive upgrade
-				// to make sure all variables are in sync
-				if ( cases[i]->RecalculateAll( true ) < 0 )
-					GetLog().push_back( log( WARNING, "Error updating calculated values in '" + pf.GetCaseName(cases[i]) + "' during upgrade process.  Please resolve any errors, save the project file, and reopen it." ) );
+				else {
+					// recalculate equations in each case for each consecutive upgrade
+					// to make sure all variables are in sync
+					if (cases[i]->RecalculateAll(true) < 0)
+						GetLog().push_back(log(WARNING, "Error updating calculated values in '" + pf.GetCaseName(cases[i]) + "' during upgrade process.  Please resolve any errors, save the project file, and reopen it."));
+				}
 			}
         if (check_retired_cases == 0)
         {
-            pf.Clear();
+            //pf.Clear();
+			// close without saving and return to welcome screen
+			//MainWindow* mw = static_cast<MainWindow*>(wxGetApp().GetTopWindow());
+			((MainWindow* )(wxGetApp().GetTopWindow()))->CloseProject();
+			((MainWindow* )(wxGetApp().GetTopWindow()))->m_topBook->SetSelection(0);
         }
 	}
 
