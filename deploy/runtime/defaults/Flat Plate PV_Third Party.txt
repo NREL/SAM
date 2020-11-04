@@ -1756,7 +1756,7 @@ inverter_count
 1
 1
 1
-1
+8
 inverter_model
 1
 1
@@ -3067,7 +3067,7 @@ subarray1_nstrings
 1
 1
 1
-2
+8
 subarray1_rear_irradiance_loss
 1
 1
