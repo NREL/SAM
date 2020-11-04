@@ -666,6 +666,8 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 			}
         if (check_retired_cases == 0)
         {
+			// Not yet working - need to fire event up to main window
+			// Note - same issue as when last case in project file is deleted
             //pf.Clear();
 			// close without saving and return to welcome screen
 			//MainWindow* mw = static_cast<MainWindow*>(wxGetApp().GetTopWindow());
