@@ -962,7 +962,7 @@ BatteryCell
 DataMatrix
 
 0
-5350
+5349
 on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
 	on_change{'batt_calendar_choice'}();
@@ -1128,7 +1128,7 @@ function plot_calendar_life()
 	if (is_table || is_model)
 	{
 		if (use_legend)
-			plotopt( {'title'='Caldendar Degradation', 'legend'=use_legend, 'legendpos'=[15,55]});
+			plotopt( {'title'='Calendar Degradation', 'legend'=use_legend, 'legendpos'=[15,55]});
 		else
 			plotopt( {'title'='Calendar Degradation', 'legend'=use_legend});
 
