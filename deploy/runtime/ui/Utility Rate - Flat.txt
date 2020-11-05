@@ -1,7 +1,7 @@
 Utility Rate - Flat
-1418
-576
-26
+1413
+569
+27
 GroupBox
 
 1
@@ -45,7 +45,7 @@ X
 9
 Y
 3
-465
+464
 Width
 3
 565
@@ -398,6 +398,54 @@ Only the Buy All / Sell All metering option is available for front-of-meter batt
 TextColour
 4
 0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+16
+msg_unused_items
+X
+3
+396
+Y
+3
+99
+Width
+3
+837
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+120
+This rate from the URDB contains items that SAM's electricity bill calculator does not consider. See Unused Items below.
+TextColour
+4
+255
 0
 0
 255
@@ -903,10 +951,10 @@ Name
 ur_rate_url
 X
 3
-432
+396
 Y
 3
-105
+75
 Width
 3
 404
@@ -1046,7 +1094,7 @@ TabOrder
 3
 3
 
-13
+14
 rate_escalation
 3
 2
@@ -1103,6 +1151,20 @@ Electricity Rates - General
 1
 0
 CheckBox
+ur_has_unused_items
+3
+1
+URDB unused items
+ 
+ 
+0
+4
+1
+1
+1
+1
+0
+Default
 ur_metering_option
 3
 1
@@ -1232,10 +1294,11 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-6375
+7171
 on_load{'Utility Rate - Flat'} = define(){
 	set_battery_fom_inputs();
 	set_metering_billing_inputs();
+	show('msg_unused_items', value('ur_has_unused_items'));
 };	
 
 // set inputs on Utility Rate - Energy Charge form
@@ -1443,15 +1506,13 @@ on_change{'btnQueryOpenEI'} = define() {
 
 	// fixed charges
 	value ('ur_monthly_fixed_charge', hash{'monthly_fixed_charge'});
+	
+	// minimum charges
 	value ('ur_monthly_min_charge', hash{'monthly_min_charge'});
 	value ('ur_annual_min_charge', hash{'annual_min_charge'});
 	
-	// some rates do not have a dgrules value
-	if ( hash{'ur_metering_option'} != null )
-	{
-		value('ur_metering_option',hash{'metering_option'});	
-	}
-	
+	// metering option
+	value('ur_metering_option',hash{'metering_option'});	
 	value( 'ur_dc_enable', hash{'dc_enable'});
 	on_change{'ur_dc_enable'}(); // invoke callback for ur_ec_enable to set up enable/disable of widgets
 	
@@ -1465,6 +1526,31 @@ on_change{'btnQueryOpenEI'} = define() {
 	value('ur_ec_tou_mat', hash{'ec_tou_mat'});
 	value('ur_dc_tou_mat', hash{'dc_tou_mat'});
 	value('ur_dc_flat_mat', hash{'dc_flat_mat'});
+
+	// unused items
+	value('ur_has_unused_items',hash{'hasunuseditems'});
+	value('ur_is_default',hash{'isdefault'});
+	value('ur_service_type',hash{'servicetype'});
+	value('ur_demand_window',hash{'demandwindow'});
+	arr = [];
+	for ( i=0; i<12; i++ )
+	{
+		arr[i] = hash{'fueladjustmentsmonthly'+to_string(i)};
+	}
+	value('ur_fuel_adjustments_monthly', arr);
+	arr = [];
+	for ( i=0; i<12; i++ )
+	{
+		arr[i] = hash{'demandratchetpercentage'+to_string(i)};
+	}
+	value('ur_demand_ratchet_percentage', arr);
+	value('ur_cr_sched', hash{'cr_sched'});
+	value('ur_cr_tou_mat', hash{'cr_tou_mat'});
+	value('ur_energy_attrs', hash{'energyattrs'});
+	value('ur_demand_attrs', hash{'demandattrs'});
+	value('ur_fixed_attrs', hash{'fixedattrs'});
+	show('msg_unused_items', value('ur_has_unused_items'));
+	refresh();
 
 	msgbox('OpenEI rate applied! \n');
 };

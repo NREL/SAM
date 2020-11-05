@@ -84,9 +84,23 @@ void OpenEI::RateData::Reset()
 	Applicability.phasewiring.Empty();
 
 	DgRules="";
-	MinMonthlyCharge=0.0;
-	MinAnnualCharge=0.0;
-	FixedMonthlyCharge=0.0;
+	MinCharge = 0.0;
+	MinChargeUnits = "";
+
+	FixedChargeFirstMeter = 0.0;
+	FixedChargeAddlMeter = 0.0;
+	FixedChargeUnits = "";
+
+	DemandFlatStructure.resize_fill(12, 4, 0);
+
+	for (i = 0; i < 12; i++)
+	{
+		FlatDemandMonth[i] = 0;
+		DemandFlatStructure.at(i, 0) = i;
+		DemandFlatStructure.at(i, 1) = 1;
+		DemandFlatStructure.at(i, 2) = 1e+38;
+		DemandFlatStructure.at(i, 3) = 0;
+	}
 
 	HasEnergyCharge=false;	
 
@@ -107,8 +121,6 @@ void OpenEI::RateData::Reset()
 			EnergyWeekendSchedule[i][k] = 1;
 		}
 	}
-	
-	// TODO - coincident demand charges
 
 	HasDemandCharge = false;
 	DemandRateUnit = "kW"; // TODO update to handle different values
@@ -139,14 +151,45 @@ void OpenEI::RateData::Reset()
 			DemandWeekendSchedule[i][k] = 1;
 		}
 	}
+
+	// unused items
+
+	Unused.IsDefault = false;
+
+	for (i = 0; i < 12; i++)
+	{
+		Unused.FuelAdjustmentsMonthly[i] = 0.0;
+		Unused.DemandRatchetPercentage[i] = 0.0;
+	}
+
+	Unused.ServiceType = "";
+	Unused.DemandWindow = 0;
+
+	Unused.CoincidentRateStructure.resize_fill(1, 4, 0);
+	Unused.CoincidentRateStructure.at(0, 0) = 1;
+	Unused.CoincidentRateStructure.at(0, 1) = 1;
+	Unused.CoincidentRateStructure.at(0, 2) = 1e+38;
+	Unused.CoincidentRateStructure.at(0, 3) = 0;
+
+	for (i = 0; i < 12; i++)
+	{
+		for (int k = 0; k < 24; k++)
+		{
+			Unused.CoincidentSchedule[i][k] = 1;
+		}
+	}
+
+	Unused.CoincidentRateUnit.Empty();
 	
+	Unused.DemandReactivePowerCharge = 0;
+
 }
 
 bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 {
 
 	// OpenEI service returns list of utility companies and their aliases https://openei.org/services/doc/rest/util_cos/?version=3
-	wxString url = SamApp::WebApi("urdb_get_companies_all");
+	wxString url = SamApp::WebApi("urdb_companies_all");
 	url.Replace("<SCOPE>", "international");
 
 	wxString json_data = MyGet(url);
@@ -182,13 +225,11 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 }
 
-
-
 bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayString &names, wxString *err)
 {
 
 	// NREL Developer API to list utility companies by zip code https://developer.nrel.gov/docs/electricity/utility-rates-v3/
-	wxString url = SamApp::WebApi("urdb_developer_companies_by_zip");
+	wxString url = SamApp::WebApi("urdb_companies_by_zip");
 	url.Replace("<ADDRESS>", zipcode);
 
 	wxString json_data = MyGet(url);
@@ -218,7 +259,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 
 	// OpenEI ask query to return company name given EIAID https://openei.org/services/doc/ask/
 	company_id.Replace("|", "%7C%7C"); // urlencode
-	url = SamApp::WebApi("urdb_ask_name_from_eiaid");
+	url = SamApp::WebApi("urdb_name");
 	url.Replace("<EIAID>", company_id);
 
 	json_data = MyGet(url);
@@ -317,7 +358,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	// initial query to get first 500 rates
 	// OpenEI International Utility Rate Database https://openei.org/services/doc/rest/util_rates/?version=7
 	offset = 0;
-	url = SamApp::WebApi("urdb_get_rates");
+	url = SamApp::WebApi("urdb_rates");
 	url.Replace("<LIMIT>", wxString::Format("%d", max_limit));
 	url.Replace("<DETAIL>", "minimal"); // don't need rate details for this call
 	url.Replace("&offset=<OFFSET>", wxString::Format("&offset=%d", offset));
@@ -362,7 +403,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 		offset += max_limit;
 	}
 
-	count = item_list.Size(); // TO DO final count, use to show number of rates
+	count = item_list.Size();
 	for (int i=0;i<count;i++)
 	{
 		RateInfo x;
@@ -415,7 +456,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	// pushed to production update from Jay 10/2/15
 	//wxString url = "https://api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
 
-	wxString url = SamApp::WebApi("urdb_get_rates");
+	wxString url = SamApp::WebApi("urdb_rates");
 	url.Replace("<LIMIT>", "1");
 	url.Replace("<DETAIL>", "full"); // don't need rate details for this call
 	url.Replace("<OFFSET>", "");
@@ -467,9 +508,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Header.EndDate = GetDate(json_integer(val.Item("enddate")));
 
 	// Metering Option
-	// not all rates have a dgrules value
-	if ( val.Item("dgrules").GetType() == wxJSONTYPE_STRING)
-		rate.DgRules = json_string(val.Item("dgrules"));
+	rate.DgRules = json_string(val.Item("dgrules"));
 
 	// Applicability
 	rate.Applicability.peakkwcapacityhistory = json_double(val.Item("peakkwcapacityhistory"));
@@ -483,11 +522,135 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Applicability.voltagecategory = json_string(val.Item("voltagecategory"));
 	rate.Applicability.phasewiring = json_string(val.Item("phasewiring"));
 
-	wxJSONValue v;
-	
-	rate.MinAnnualCharge = json_double(val.Item("annualmincharge"));
-	rate.MinMonthlyCharge = json_double(val.Item("minmonthlycharge"));
-	rate.FixedMonthlyCharge = json_double(val.Item("fixedmonthlycharge"));
+	// Unused Items
+
+	rate.Unused.HasUnusedItems = false;
+
+	wxJSONValue isd = val.Item("is_default");
+	if (isd.Size() > 0)
+		rate.Unused.IsDefault = isd.AsBool();
+
+	wxJSONValue st = val.Item("servicetype");
+	if (st.Size() > 0)
+		rate.Unused.ServiceType = st.AsString();
+
+	wxJSONValue fam = val.Item("fueladjustmentsmonthly");
+	if (fam.Size() > 0)
+	{
+		rate.Unused.HasUnusedItems = true;
+		for (int i = 0; i < 12; i++)
+			rate.Unused.FuelAdjustmentsMonthly[i] = fam[i].AsDouble();
+	}
+
+	wxJSONValue dw = val.Item("demandwindow");
+	if (dw.Size() > 0)
+	{
+		rate.Unused.HasUnusedItems = true;
+		rate.Unused.DemandWindow = dw.AsDouble();
+	}
+
+	wxJSONValue dmp = val.Item("demandratchetpercentage");
+	if (dmp.Size() > 0)
+	{
+		rate.Unused.HasUnusedItems = true;
+		for (int i = 0; i < 12; i++)
+			rate.Unused.DemandRatchetPercentage[i] = dmp[i].AsDouble();
+	}
+
+	// energy, fixed, and demand attributes
+
+	wxArrayString key;
+
+	wxJSONValue ea = val.Item("energyattrs");
+	wxString ea_str = "";
+	if (ea.IsArray())
+	{
+		rate.Unused.HasUnusedItems = true;
+		for (int i = 0; i < ea.Size(); i++)
+		{
+			key = ea[i].GetMemberNames();
+			ea_str.Append(wxString::Format("%s, %s\n",key[0],ea[i].Item(key[0]).AsString()));
+		}
+		rate.Unused.EnergyAttrs = ea_str;
+	}
+
+	wxJSONValue fa = val.Item("fixedattrs");
+	wxString fa_str = "";
+	if (fa.IsArray())
+	{
+		rate.Unused.HasUnusedItems = true;
+		for (int i = 0; i < fa.Size(); i++)
+		{
+			key = fa[i].GetMemberNames();
+			ea_str.Append(wxString::Format("%s, %s\n", key[0], fa[i].Item(key[0]).AsString()));
+		}
+		rate.Unused.FixedAttrs = fa_str;
+	}
+
+	wxJSONValue da = val.Item("demandattrs");
+	wxString da_str = "";
+	if (da.IsArray())
+	{
+		rate.Unused.HasUnusedItems = true;
+		for (int i = 0; i < da.Size(); i++)
+		{
+			key = da[i].GetMemberNames();
+			da_str.Append(wxString::Format("%s, %s\n", key[0], da[i].Item(key[0]).AsString()));
+		}
+		rate.Unused.DemandAttrs = da_str;
+	}
+
+	rate.Unused.CoincidentRateUnit = json_string(val.Item("coincidentrateunit"));
+
+	int num_cr_rows = 0;
+	wxJSONValue cr_periods = val.Item("coincidentratestructure");
+	if (cr_periods.IsArray())
+	{
+		for (int period = 0; period < cr_periods.Size(); period++)
+		{
+			wxJSONValue cr_tier = cr_periods[period];
+			if (cr_tier.IsArray())
+			{
+				for (int tier = 0; tier < cr_tier.Size(); tier++)
+				{
+					num_cr_rows++;
+				}
+			}
+		}
+	}
+	if (num_cr_rows > 0)
+	{
+		rate.Unused.HasCoincidentRate = true;
+		rate.Unused.HasUnusedItems = true;
+		rate.Unused.CoincidentRateStructure.resize_fill(num_cr_rows, 4, 0.0);
+		int cr_row = 0;
+		for (int period = 0; period < cr_periods.Size(); period++)
+		{
+			wxJSONValue cr_tier = cr_periods[period];
+			for (int tier = 0; tier < cr_tier.Size(); tier++)
+			{
+				double max = json_double(cr_tier[tier].Item("max"), 1e38, &rate.Unused.HasCoincidentRate);
+				double charge = json_double(cr_tier[tier].Item("rate"), 0.0, &rate.Unused.HasCoincidentRate);
+				double adj = json_double(cr_tier[tier].Item("adj"), 0.0, &rate.Unused.HasCoincidentRate);
+				rate.Unused.CoincidentRateStructure.at(cr_row, 0) = period + 1;
+				rate.Unused.CoincidentRateStructure.at(cr_row, 1) = tier + 1;
+				rate.Unused.CoincidentRateStructure.at(cr_row, 2) = max;
+				rate.Unused.CoincidentRateStructure.at(cr_row, 3) = charge + adj;
+				cr_row++;
+			}
+		}
+	}
+
+	if (!RetrieveDiurnalData(val.Item("coincidentschedule"), rate.Unused.CoincidentSchedule)) return false;
+
+	// Minimum Charge
+	rate.MinCharge = json_double(val.Item("mincharge"));
+	rate.MinChargeUnits = json_string(val.Item("minchargeunits"));
+
+	// Fixed Charge
+	rate.FixedChargeFirstMeter = json_double(val.Item("fixedchargefirstmeter"));
+	rate.FixedChargeAddlMeter =json_double(val.Item("fixedchargeeaaddl"));
+	rate.FixedChargeUnits = json_string(val.Item("fixedchargeunits"));
 
 	// Energy Charge
 	rate.HasEnergyCharge = true;
@@ -522,7 +685,6 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			for (int tier = 0; tier < ers_tier.Size(); tier++)
 			{
 				double max = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
-
 				double buy = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
 				double sell = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
 				double adj = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
@@ -543,15 +705,6 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 				rate.EnergyStructure.at(es_row, 4) = buy+adj;
 				rate.EnergyStructure.at(es_row, 5) = sell;
 				es_row++;
-				/*
-				// SAMnt limited to float max = 3.4e38
-				rate.EnergyMax[period][tier] = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
-
-				rate.EnergyBuy[period][tier] = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
-				rate.EnergySell[period][tier] = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
-				rate.EnergyAdj[period][tier] = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
-				rate.EnergyMaxUnit[period][tier] = json_string(ers_tier[tier].Item("unit"));
-				*/
 			}
 		}
 	}
@@ -617,13 +770,6 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 						rate.DemandFlatStructure.at(fd_row, 2) = max;
 						rate.DemandFlatStructure.at(fd_row, 3) = charge + adj;
 						fd_row++;
-
-						/*
-						// SAMnt limited to float max = 3.4e38
-						rate.FlatDemandMax[period][tier] = json_double(fds_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
-						rate.FlatDemandCharge[period][tier] = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
-						rate.FlatDemandAdj[period][tier] = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
-						*/
 					}
 				}
 			}
@@ -670,22 +816,12 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 				rate.DemandTOUStructure.at(ds_row, 2) = max;
 				rate.DemandTOUStructure.at(ds_row, 3) = charge + adj;
 				ds_row++;
-
-
-				/*
-
-				// SAMnt limited to float max = 3.4e38
-				rate.DemandMax[period][tier] = json_double(drs_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
-				rate.DemandCharge[period][tier] = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
-				rate.DemandAdj[period][tier] = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
-				*/
 			}
 		}
 	}
 	
 	if (!RetrieveDiurnalData(val.Item("demandweekdayschedule"), rate.DemandWeekdaySchedule)) return false;
 	if (!RetrieveDiurnalData(val.Item("demandweekendschedule"), rate.DemandWeekendSchedule)) return false;
-
 
 	return true;
 }
@@ -720,11 +856,10 @@ bool OpenEI::RetrieveDiurnalData(wxJSONValue &month_ary, double sched[12][24])
 #include <wex/metro.h>
 #include <wex/exttext.h>
 
-
-
 enum {
   ID_btnApply,
   ID_lblStatus,
+  ID_lblActiveRateCount,
   ID_lblRateStatus,
   ID_hypOpenEILink,
   ID_txtRateDescription,
@@ -758,6 +893,7 @@ END_EVENT_TABLE()
 OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxString &title, const wxString &market)
 	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 {
+
 	cboResCom = new wxChoice(this, ID_cboResCom);
 	cboResCom->Append("All");
 	cboResCom->Append("Residential");
@@ -776,7 +912,7 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	cboResCom->SetSelection(cbo_ndx);
 
 	chkActiveOnly = new wxCheckBox(this, ID_chkActiveOnly, "Show active");
-	chkActiveOnly->SetValue(false);
+	chkActiveOnly->SetValue(true);
 
 	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "Show all");
 	lblUtilityCount = new wxStaticText(this, ID_lblStatus, "");
@@ -814,7 +950,7 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	lblStatus = new wxStaticText(this, ID_lblStatus, "");
 	
 	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate");
-	btnClose = new wxButton(this, ID_btnClose, "Close");
+	btnClose = new wxButton(this, ID_btnClose, "Cancel");
 
 	txtZipCode = new wxExtTextCtrl(this);
 	btnQueryZipCode = new wxButton(this, ID_btnQueryZipCode, "Search by zip code");
@@ -834,9 +970,6 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_left->Add( lstUtilities, 1, wxALL|wxEXPAND, 0 );
 	sz_left->Add( sz_utilitites);
 
-	//wxBoxSizer *sz_right_top = new wxBoxSizer( wxHORIZONTAL );
-	//sz_right_top->Add( lblRateStatus, 1, wxALL | wxALIGN_CENTER_VERTICAL, 3);
-
 	wxFlexGridSizer *sz_right_grid = new wxFlexGridSizer(2);
 	sz_right_grid->AddGrowableCol(1);
 	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Name"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
@@ -851,9 +984,8 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_right_grid->Add(txtRateGUID, 1, wxALL | wxEXPAND, 2);
 
 	wxBoxSizer *sz_select_rates = new wxBoxSizer(wxHORIZONTAL);
-	sz_select_rates->Add(cboResCom, 0, wxALL | wxEXPAND, 3);
-	sz_select_rates->AddSpacer(10);
-	sz_select_rates->Add(chkActiveOnly, 0, wxALL | wxEXPAND);
+	sz_select_rates->Add(cboResCom, 0, wxRIGHT, 10 );
+	sz_select_rates->Add(chkActiveOnly, 2, wxEXPAND, 0);
 
 	wxBoxSizer *sz_right = new wxBoxSizer(wxVERTICAL);
 	sz_right->Add(lblRateStatus, 0, wxALL | wxEXPAND);
@@ -868,9 +1000,9 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_main->Add( sz_right, 3, wxALL|wxEXPAND, 4 );
 	
 	wxBoxSizer *sz_bottom = new wxBoxSizer(wxHORIZONTAL);
-	sz_bottom->Add( lblStatus, 1, wxALL|wxEXPAND, 0 );
-	sz_bottom->Add( btnApply, 0, wxALL|wxEXPAND, 4 );
-	sz_bottom->Add( btnClose, 0, wxALL|wxEXPAND, 4 );
+	sz_bottom->Add( lblStatus, 3, wxEXPAND, 0 );
+	sz_bottom->Add( btnApply, 0, wxALL, 4 );
+	sz_bottom->Add( btnClose, 0, wxALL, 4 );
 
 	wxBoxSizer *sz_top = new wxBoxSizer(wxVERTICAL);
 	sz_top->Add( sz_main, 1, wxALL|wxEXPAND, 4 );
@@ -949,21 +1081,17 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 	lblStatus->SetLabel(wxString::Format("Loading rates for %s...", utility_name));
 	wxString err;
 
-	/* skip for international rates */
 	wxString urdb_utility_name = "";
 	// first resolve aliases
 	if (!api.ResolveUtilityName(utility_name, &urdb_utility_name, &err))
 	{
-		// international rates - no resolving
-//		wxMessageBox("Error:\n\n" + err);
-//		return;
 		urdb_utility_name = utility_name;
 	}
+
 	if (urdb_utility_name == "")
 		urdb_utility_name = utility_name;
 
 	// get any rates
-	//if (!api.QueryUtilityRates(utility_name, mUtilityRates, &err))
 	if (!api.QueryUtilityRates(urdb_utility_name, mUtilityRates, &err))
 	{
 		busy.~wxBusyInfo();
@@ -1004,8 +1132,12 @@ void OpenEIUtilityRateDialog::UpdateRateList()
 		wxString rate = mUtilityRates[i].Name + "  (" + mUtilityRates[i].GUID + ")";
 		lstRates->Append(rate);
 		mGUIDList.Add(mUtilityRates[i].GUID);
-		//		wxLogStatus("urdb GUID, Rate " + mGUIDList[mGUIDList.Count() - 1] + "," + lstRates->GetItem(lstRates->Count() - 1));
 	}
+
+	if ( chkActiveOnly->GetValue() )
+		chkActiveOnly->SetLabel(wxString::Format("Show active (%d active rates)", (int)lstRates->Count()));
+	else
+		chkActiveOnly->SetLabel(wxString::Format("Show active"));
 
 	lstRates->Thaw();
 	UpdateRateData();
@@ -1045,39 +1177,12 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 		if (api.RetrieveUtilityRateData(guid, mRateData, &json_url))
 		{
 			
-			//txtRateName->SetValue( mRateData.Header.Utility + ": " + mRateData.Header.Name );
 			txtRateName->SetValue(mRateData.Header.Name);
 			txtRateStartDate->SetValue( mRateData.Header.StartDate );
 			txtRateEndDate->SetValue(mRateData.Header.EndDate);
 			txtRateGUID->SetValue(mRateData.Header.GUID);
 
 			wxString desc = mRateData.Header.Description;
-
-			/*
-			wxString desc = mRateData.Header.Description + "\n\n";
-
-			desc += wxString::Format("Has Energy Charges? %s\n", mRateData.HasEnergyCharge?"yes":"no");
-			desc += wxString::Format("Has Demand Charges? %s\n", mRateData.HasDemandCharge?"yes":"no");
-			desc += wxString::Format("\nGUID: '%s'\n", mRateData.Header.GUID.c_str() );
-			desc += wxString::Format("\nEnergy comments: '%s'\n", mRateData.Header.EnergyComments.c_str());
-			desc += wxString::Format("\nDemand comments: '%s'\n", mRateData.Header.DemandComments.c_str());
-			
-			wxString desc = "";
-			desc += "Deamnd\n";
-			desc += wxString::Format("\tMinimum %lg kW\n", mRateData.Applicability.peakkwcapacitymin);
-			desc += wxString::Format("\tMaximum %lg kW\n", mRateData.Applicability.peakkwcapacitymax);
-			desc += wxString::Format("\tHistory %lg months\n", mRateData.Applicability.peakkwcapacityhistory);
-			desc += "Energy\n";
-			desc += wxString::Format("\tMinimum %lg kWh\n", mRateData.Applicability.peakkwhusagemin);
-			desc += wxString::Format("\tMaximum %lg kWh\n", mRateData.Applicability.peakkwhusagemax);
-			desc += wxString::Format("\tHistory %lg months\n", mRateData.Applicability.peakkwhusagehistory);
-			desc += "Service Voltage\n";
-			desc += wxString::Format("\tMinimum %lg V\n", mRateData.Applicability.voltageminimum);
-			desc += wxString::Format("\tMaximum %lg V\n", mRateData.Applicability.voltagemaximum);
-			desc += "Character of Service\n";
-			desc += wxString::Format("\tVoltage Category %s\n", mRateData.Applicability.voltagecategory.c_str());
-			desc += wxString::Format("\tPhase Wiring %s\n", mRateData.Applicability.phasewiring.c_str());
-			*/
 			
 			txtRateDescription->SetValue( desc );
 			wxString rate_url = SamApp::WebApi("urdb_view_rate") + "/rate/view/" + guid;

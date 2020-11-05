@@ -1,5 +1,5 @@
 Utility Rate - Description
-1413
+1416
 491
 20
 GroupBox
@@ -87,8 +87,8 @@ Tool Tip
 0
 Caption
 5
-334
-The description and applicability information is for your reference. SAM does not use it in calculations. The information is from the U.S. Utility Rate Database, but may not correspond to the actual energy charge and demand charge data from the database. The description fields are editable, so you can change them to suit your needs.
+329
+The description and applicability information is for your reference. SAM does not use it in calculations. The information is from the Utility Rate Database, but may not correspond to the actual energy charge and demand charge data from the database. The description fields are editable, so you can change them to suit your needs.
 TextColour
 4
 0

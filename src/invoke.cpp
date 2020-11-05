@@ -2493,11 +2493,16 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			int dc_tou_row=0;
 			int dc_flat_row=0;
 			int ndx;
-			double br, sr, ub,dc;
+			double br, sr, ub, dc;
 			wxString per_tier;
 			wxString var_name;
 			wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 			bool overwrite = true;
+			// "cr" is for unused coincident rate
+			double cr;
+			matrix_t<float> cr_tou_mat(72, 4); // will resize
+			int cr_tou_row = 0;
+			int cr_row = 0;
 			/*ndx = upgrade_list.Index("ur_enable_net_metering");
 			int nm = 1; // default to net metering
 			if (ndx > -1 && ndx < (int)upgrade_value.Count())
@@ -2581,7 +2586,30 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 						dc_tou_mat.at(dc_tou_row,3)=dc;
 						dc_tou_row++;
 					}
-			// flat demand
+			// unused coincident rate tou
+					dc = -1;
+					ub = -1;
+					per_tier = wxString::Format("ur_cr_p%d_t%d_", per, tier);
+					ndx = upgrade_list.Index(per_tier + "dc");
+					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+						dc = atof(upgrade_value[ndx].c_str());
+					else
+						overwrite = false;
+					ndx = upgrade_list.Index(per_tier + "ub");
+					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+						ub = atof(upgrade_value[ndx].c_str());
+					else
+						overwrite = false;
+					if (!overwrite) continue;
+					if (dc > 0 || cr_tou_row == 0) // must have one row
+					{
+						cr_tou_mat.at(cr_tou_row, 0) = per;
+						cr_tou_mat.at(cr_tou_row, 1) = tier;
+						cr_tou_mat.at(cr_tou_row, 2) = ub;
+						cr_tou_mat.at(cr_tou_row, 3) = dc;
+						cr_tou_row++;
+					}
+					// flat demand
 					dc = -1;
 					ub = -1;
 					per_tier = wxString::Format("ur_dc_%s_t%d_", months[per - 1], tier);
@@ -2624,6 +2652,12 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 					vv->Set(dc_tou_mat);
 					list.Add(var_name);
 				}
+				var_name = "ur_cr_tou_mat";
+				if (VarValue* vv = c->Values().Get(var_name))
+				{
+					vv->Set(cr_tou_mat);
+					list.Add(var_name);
+				}
 				var_name = "ur_dc_flat_mat";
 				if (VarValue *vv = c->Values().Get(var_name))
 				{
@@ -2633,15 +2667,12 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			}
 		}
 
-
 		// this causes the UI and other variables to be updated
 		c->VariablesChanged( list );
 	}
 
 	cxt.result().assign( ret_val ? 1.0 : 0.0 );
 }
-
-
 
 static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &mat)
 {
@@ -2700,35 +2731,58 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("voltagecategory").assign(rate.Applicability.voltagecategory);
 		cxt.result().hash_item("phasewiring").assign(rate.Applicability.phasewiring);
 
+		// unused items
+		cxt.result().hash_item("hasunuseditems").assign(rate.Unused.HasUnusedItems);
+		cxt.result().hash_item("isdefault").assign(rate.Unused.IsDefault);
+		cxt.result().hash_item("servicetype").assign(rate.Unused.ServiceType);
+		cxt.result().hash_item("demandwindow").assign(rate.Unused.DemandWindow);
+		for (int i = 0; i < 12; i++)
+		{
+			cxt.result().hash_item(wxString::Format("fueladjustmentsmonthly%d", i)).assign(rate.Unused.FuelAdjustmentsMonthly[i]);
+			cxt.result().hash_item(wxString::Format("demandratchetpercentage%d", i)).assign(rate.Unused.DemandRatchetPercentage[i]);
+		}
+		if (!applydiurnalschedule(cxt, "cr_sched", rate.Unused.CoincidentSchedule)) return;
+		if (!copy_mat(cxt, "cr_tou_mat", rate.Unused.CoincidentRateStructure)) return;
+
+		cxt.result().hash_item("energyattrs").assign(rate.Unused.EnergyAttrs);
+		cxt.result().hash_item("demandattrs").assign(rate.Unused.DemandAttrs);
+		cxt.result().hash_item("fixedattrs").assign(rate.Unused.FixedAttrs);
+
 		// URLs
 		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
 		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);
-
-		/*
-		// net metering
-		if (rate.NetMetering)
-			cxt.result().hash_item("enable_net_metering").assign(1.0);
-		else
-			cxt.result().hash_item("enable_net_metering").assign(0.0);
-		*/
 		
 		// metering option
 		// "Net Metering", "Net Billing Instantaneous", "Net Billing Hourly", or "Buy All Sell All"
-		int test = (rate.DgRules == "Net Metering");
-		if (rate.DgRules != "")
-		{
-			if (rate.DgRules == "Net Metering")
-			{
-				cxt.result().hash_item("metering_option").assign(0.0);
-			}
-			else if (rate.DgRules == "Buy All Sell All")
-				cxt.result().hash_item("metering_option").assign(4.0);
-		}
-
+		if (rate.DgRules == "Net Metering")
+			cxt.result().hash_item("metering_option").assign(0.0);
+		else if (rate.DgRules == "Net Billing Instantaneous")
+			cxt.result().hash_item("metering_option").assign(2.0);
+		else if (rate.DgRules == "Net Billing Hourly")
+			cxt.result().hash_item("metering_option").assign(2.0);
+		else if (rate.DgRules == "Buy All Sell All")
+			cxt.result().hash_item("metering_option").assign(4.0);
+		else // set to default Net Energy Metering
+			cxt.result().hash_item("metering_option").assign(0.0);
+		
 		// fixed charges
-		cxt.result().hash_item("monthly_fixed_charge").assign(rate.FixedMonthlyCharge);
-		cxt.result().hash_item("monthly_min_charge").assign(rate.MinMonthlyCharge);
-		cxt.result().hash_item("annual_min_charge").assign(rate.MinAnnualCharge);
+		//  "$/day", "$/month" or "$/year"
+		if ((rate.FixedChargeUnits) == "$/month")
+			cxt.result().hash_item("monthly_fixed_charge").assign(rate.FixedChargeFirstMeter + rate.FixedChargeAddlMeter);
+		else // TO DO handle $/day and $/year
+			cxt.result().hash_item("monthly_fixed_charge").assign(0.0);
+
+		// minimum charges
+		// "$/day", "$/month" or "$/year"
+		if (rate.MinChargeUnits == "$/month")
+			cxt.result().hash_item("monthly_min_charge").assign(rate.MinCharge);
+		else if ( rate.MinChargeUnits == "$/year")
+			cxt.result().hash_item("annual_min_charge").assign(rate.MinCharge);
+		else // TO DO handle $/day and $/year
+		{
+			cxt.result().hash_item("monthly_min_charge").assign(0.0);
+			cxt.result().hash_item("annual_min_charge").assign(0.0);
+		}
 
 		// schedules
 		if (!applydiurnalschedule(cxt, "ec_sched_weekday", rate.EnergyWeekdaySchedule)) return;
@@ -2736,7 +2790,6 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 
 		if (!applydiurnalschedule(cxt, "dc_sched_weekday", rate.DemandWeekdaySchedule)) return;
 		if (!applydiurnalschedule(cxt, "dc_sched_weekend", rate.DemandWeekendSchedule)) return;
-
 
 		cxt.result().hash_item("ec_enable").assign(1.0);
 		if (!copy_mat(cxt, "ec_tou_mat", rate.EnergyStructure)) return;
