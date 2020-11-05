@@ -1236,8 +1236,10 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		{
 			DeleteCaseWindow( c );
 			m_project.DeleteCase( case_name );
-			if (m_project.GetCases().size() == 0)
-				m_topBook->SetSelection(0);
+			if (m_project.GetCases().size() == 0) {
+				//if (CloseProject()) // prompt for closing now instead of when closing SAM or opening a new project file - optional
+					m_topBook->SetSelection(0);
+			}
 		}
 		break;
 	case ID_CASE_DUPLICATE:

@@ -345,7 +345,15 @@ bool ProjectFile::ReadArchive( const wxString &file )
 			return false;
 
 		wxZlibInputStream zin( in );
-		return Read( zin );
+		bool bReadin = Read(zin);
+		//		return Read( zin );
+		// skips reading in prject files with no cases
+		//return bReadin && (m_cases.size() > 0);
+		// prompt user to read in project files with no cases
+		bool bReadProjectFile = (m_cases.size() > 0);
+		if (!bReadProjectFile)
+			bReadProjectFile = (wxMessageBox("Load project file with no cases?", "Query", wxYES_NO | wxICON_EXCLAMATION) == wxYES);
+		return bReadin && bReadProjectFile;
 	}
 }
 
@@ -532,8 +540,6 @@ static void fcall_vuc_retire_tech(lk::invoke_t &cxt)
 			//Do something to delete the case from the file
             cxt.result().assign(vuc->GetCase()->SetConfiguration("Retired", "None"));
 		}
-		
-		
 	}
 }
 
