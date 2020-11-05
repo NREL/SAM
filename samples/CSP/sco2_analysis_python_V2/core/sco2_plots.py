@@ -2042,9 +2042,10 @@ def plot_eta_vs_UA__deltaT_levels__two_config(list_des_results):
         
     plt.close()
 
-def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "", cycle_des_str = "", is_T_t_in_set = False):
+def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "", cycle_des_str = "", is_T_t_in_set = False, is_six_plots = False):
 
     n_levels = 3
+    ls = ["k-", "b-", "r-"]
 
     w_pad = 3
 
@@ -2062,28 +2063,31 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
 
     f_udpc_pars.write("Number of ambient temperature levels = " + str(n_T_amb) + "\n")
 
-    len_row = len(udpc_data[0])
-
     # Add normalized efficiency column
     for row in udpc_data:
         row.append(row[4] / row[1])
         row.append(row[3] / row[4])
         
-    
+    # Choose variables to plot
     mi = [[0, 0, 3, "Normalized Power"]]
     mi.append([1, 0, len(udpc_data[0])-1, "Normalized Efficiency"])
     #mi.append([0, 1, 5, "Normalized Cooling Power"])
     mi.append([0, 1, 4, "Normalized Heat Input"])
-    mi.append([1, 1, len(udpc_data[0])-2, "Normalized deltaT"])
+    if(is_T_t_in_set):
+        mi.append([1, 1, 7, "Normalized deltaT"])
+    else:
+        mi.append([1, 1, 7, "Normalized PHX HTF deltaT"])
     nrows = 2
     ncols = 2
-    if(len_row > 7):
-        mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
+    
+    if(is_six_plots):
+        #mi.append(([1, 1, 7, "Normalized PHX deltaT"]))
         mi.append([2, 0, 8, "Normalized PHX Inlet Pressure"])
         mi.append([2, 1, 9, "Normalized PHX CO2 Mass Flow"])
         nrows = 3
 
-    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, 10))
+    f_h = 10/3.*nrows
+    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
 
     # T_htf parametric values, 3 m_dot levels, design ambient temperature
     for j in range(0, len(mi)):
@@ -2093,7 +2097,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
             row_end = i * n_T_htf + n_T_htf
             if( j == 0 ):
                 j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
-                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i],
                         label = m_dot_str + str(udpc_data[row_start][1]))
                 if(i == 0):
                     f_udpc_pars.write("Mass flow rate Low Level = " + str(udpc_data[row_start][1]) + "\n")
@@ -2103,7 +2107,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
                     f_udpc_pars.write("Mass flow rate High Level = " + str(udpc_data[row_start][1]) + "\n")
             else:
                 j_ax.plot([k[0] for k in udpc_data[row_start:row_end]],
-                          [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
+                          [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i])
         if (is_T_t_in_set):
             j_ax.set_xlabel("Turbine Inlet Temperature [C]")
         else:
@@ -2116,7 +2120,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
     plt.savefig(plot_pre_str + "udpc_T_HTF.png")
     plt.close()
 
-    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, 10))
+    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
 
     # T_amb parametric values, 3 T_HTF_levels, design m_dot
     for j in range(0, len(mi)):
@@ -2126,7 +2130,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
             row_end = row_start + n_T_amb
             if( j == 0 ):
                 j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
-                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i],
                           label = "T_HTF = " + str(udpc_data[row_start][0]))
                 if (i == 0):
                     f_udpc_pars.write("HTF temperature Low Level = " + str(udpc_data[row_start][0]) + "\n")
@@ -2136,7 +2140,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
                     f_udpc_pars.write("HTF temperature High Level = " + str(udpc_data[row_start][0]) + "\n")
             else:
                 j_ax.plot([k[2] for k in udpc_data[row_start:row_end]],
-                          [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
+                          [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i])
         j_ax.set_xlabel("Ambient Temperature [C]")
         j_ax.set_ylabel(mi[j][3])
         j_ax.grid(which='both', color='gray', alpha=1)
@@ -2146,7 +2150,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
     plt.savefig(plot_pre_str + "udpc_T_amb.png")
     plt.close()
 
-    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, 10))
+    fig1, a_ax = plt.subplots(nrows=nrows, ncols=ncols, num=1, figsize=(7, f_h))
 
     # m_dot parametric values, 3 T_amb levels, design T_htf_hot
     for j in range(0, len(mi)):
@@ -2156,7 +2160,7 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
             row_end = row_start + n_m_dot_htf
             if( j == 0 ):
                 j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
-                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i],
                       label = "T_amb = " + str(udpc_data[row_start][2]))
                 if (i == 0):
                     f_udpc_pars.write("Ambient temperature Low Level = " + str(udpc_data[row_start][2]) + "\n")
@@ -2166,11 +2170,11 @@ def plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, plot_pre_str = "
                     f_udpc_pars.write("Ambient temperature High Level = " + str(udpc_data[row_start][2]) + "\n")
             else:
                 j_ax.plot([k[1] for k in udpc_data[row_start:row_end]],
-                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]])
+                      [k[mi[j][2]] for k in udpc_data[row_start:row_end]],ls[i])
         if (is_T_t_in_set):
             j_ax.set_xlabel("Normalized Target Power Output")
         else:
-            j_ax.set_xlabel("Normalized Mass Flow")
+            j_ax.set_xlabel("Normalized HTF Mass Flow")
         j_ax.set_ylabel(mi[j][3])
         j_ax.grid(which='both', color='gray', alpha=1)
 

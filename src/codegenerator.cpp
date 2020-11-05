@@ -2568,7 +2568,7 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "    elseif strcmp(action,'data_get_array')\n");
 	fprintf(m_fp, "        p_count = libpointer('int32Ptr',0);   \n");
 	fprintf(m_fp, "        [xobj] = calllib(ssclib,'ssc_data_get_array',arg0,arg1,p_count);\n");
-	fprintf(m_fp, "        setdatatype(xobj,'int32Ptr',p_count.Value,1);\n");
+	fprintf(m_fp, "        setdatatype(xobj,'int64Ptr',p_count.Value,1);\n");
 	fprintf(m_fp, "        len = p_count.Value;\n");
 	fprintf(m_fp, "        result = zeros( len, 1 );\n");
 	fprintf(m_fp, "        for i=1:len,\n");
@@ -2580,7 +2580,7 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "        p_rows = libpointer('int32Ptr',0);\n");
 	fprintf(m_fp, "        p_cols = libpointer('int32Ptr',0);\n");
 	fprintf(m_fp, "        [xobj] = calllib(ssclib,'ssc_data_get_matrix',arg0,arg1,p_rows,p_cols);\n");
-	fprintf(m_fp, "        setdatatype(xobj,'int32Ptr',p_rows.Value*p_cols.Value,1);\n");
+	fprintf(m_fp, "        setdatatype(xobj,'int64Ptr',p_rows.Value*p_cols.Value,1);\n");
 	fprintf(m_fp, "        nrows = p_rows.Value;\n");
 	fprintf(m_fp, "        ncols = p_cols.Value;\n");
 	fprintf(m_fp, "        if ( nrows*ncols > 0 )\n");
