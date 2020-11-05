@@ -2,6 +2,7 @@
     "defaults": {
         "ParamsCell": {
             "Vnom_default": 2,
+            "Qfull": 30,
             "leadacid_q20": 100,
             "leadacid_q10": 43, 
             "leadacid_qn": 40,
