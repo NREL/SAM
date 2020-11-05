@@ -395,7 +395,7 @@
 			"LeadAcid_qn_computed": 4796.55,
 			"LeadAcid_tn": 1,
 			"batt_C_rate": 0.2,
-			"batt_Cp": 1004,
+			"batt_Cp": 1500,
 			"batt_Qexp": 0.04005,
 			"batt_Qfull": 2.25,
 			"batt_Qfull_flow": 7994.25,
@@ -415,7 +415,7 @@
 			],
 			"batt_calendar_q0": 1.02,
 			"batt_chem": 1,
-			"batt_h_to_ambient": 500,
+			"batt_h_to_ambient": 15,
 			"batt_initial_SOC": 50,
 			"batt_lifetime_matrix": [
 				[20.000000, 0.000000, 100.000000],
