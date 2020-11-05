@@ -670,16 +670,6 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 						GetLog().push_back(log(WARNING, "Error updating calculated values in '" + pf.GetCaseName(cases[i]) + "' during upgrade process.  Please resolve any errors, save the project file, and reopen it."));
 				}
 			}
-        if (check_retired_cases == 0)
-        {
-			// Not yet working - need to fire event up to main window
-			// Note - same issue as when last case in project file is deleted
-            //pf.Clear();
-			// close without saving and return to welcome screen
-			//MainWindow* mw = static_cast<MainWindow*>(wxGetApp().GetTopWindow());
-			((MainWindow* )(wxGetApp().GetTopWindow()))->CloseProject();
-			((MainWindow* )(wxGetApp().GetTopWindow()))->m_topBook->SetSelection(0);
-        }
 	}
 
 	// don't retain a pointer to the script database environment

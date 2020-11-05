@@ -1026,9 +1026,12 @@ bool MainWindow::LoadProject( const wxString &file )
 		upgd.Run( pf );
 		upgd.ShowReportDialog( file );
         std::vector<Case*> cases = m_project.GetCases();
-        if (cases.size() == 0) {
-            
-        }
+		if (m_project.GetCases().size() == 0) {
+			if (wxMessageBox("Load project file with no cases?", "Query", wxYES_NO | wxICON_EXCLAMATION) == wxNO) {
+				pf.Clear();
+				return false;
+			}
+		}
 	}
 
 	// copy over project file data,
