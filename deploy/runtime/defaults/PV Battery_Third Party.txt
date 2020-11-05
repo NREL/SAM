@@ -1562,7 +1562,7 @@ desired_size
 1
 1
 1
-4
+18
 dispatch_manual_charge
 1
 2
@@ -2692,7 +2692,7 @@ inverter_count
 1
 1
 1
-8
+4
 inverter_model
 1
 1

@@ -1,24 +1,24 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
-Flat Plate PV,Residential,8742.514648,7.615563,NA,; 
-Flat Plate PV,Commercial,364618.968750,3.130533,NA,; Warning: Inverter oversized: The maximum inverter output was 8.11% of the rated value 2310 kWac.
-Flat Plate PV,Third Party,8742.514648,NA,NA,; 
-Flat Plate PV,Host Developer,364618.968750,19.983696,21.556198,; Warning: Inverter oversized: The maximum inverter output was 8.11% of the rated value 2310 kWac.
-Flat Plate PV,Single Owner,37227300,7.421500,7.859455,; 
-Flat Plate PV,Merchant Plant,37227300,6.728681,NA,; 
-Flat Plate PV,Leveraged Partnership Flip,37227300,7.603456,8.059154,; 
-Flat Plate PV,All Equity Partnership Flip,37227300,8.986971,10.208312,; 
-Flat Plate PV,Sale Leaseback,37227300,9.594419,10.639198,; 
+Flat Plate PV,Residential,8742.514648,8.124947,NA,; 
+Flat Plate PV,Commercial,912000.687500,2.705697,NA,; 
+Flat Plate PV,Third Party,34970.058594,NA,NA,; 
+Flat Plate PV,Host Developer,912000.687500,13.541656,14.556133,; 
+Flat Plate PV,Single Owner,92996208,7.935398,8.404799,; 
+Flat Plate PV,Merchant Plant,92996208,7.194654,NA,; 
+Flat Plate PV,Leveraged Partnership Flip,92996208,8.093983,8.578852,; 
+Flat Plate PV,All Equity Partnership Flip,92996208,9.649043,10.967726,; 
+Flat Plate PV,Sale Leaseback,92996208,10.245250,11.374052,; 
 Flat Plate PV,LCOE Calculator,37227300,NA,NA,; 
 Flat Plate PV,None,8742.514648,NA,NA,; 
-PVWatts,Residential,6996.724121,8.118003,NA,; 
-PVWatts,Commercial,375759.875000,3.013917,NA,; 
+PVWatts,Residential,6996.724121,8.660995,NA,; 
+PVWatts,Commercial,943704.187500,2.832594,NA,; 
 PVWatts,Third Party,6996.724121,NA,NA,; 
-PVWatts,Host Developer,375759.875000,19.271158,20.798285,; 
-PVWatts,Single Owner,35186964,7.856668,8.319995,; 
-PVWatts,Merchant Plant,35186964,7.123037,NA,; 
-PVWatts,Leveraged Partnership Flip,35186964,8.073196,8.802448,; 
-PVWatts,All Equity Partnership Flip,35186964,9.817724,11.952640,; 
-PVWatts,Sale Leaseback,35186964,9.876557,10.206680,; 
+PVWatts,Host Developer,943704.187500,13.892611,14.926500,; 
+PVWatts,Single Owner,87966056,8.397834,8.894091,; 
+PVWatts,Merchant Plant,87966056,7.613582,NA,; 
+PVWatts,Leveraged Partnership Flip,87966056,8.590926,9.364794,; 
+PVWatts,All Equity Partnership Flip,87966056,10.523382,12.784257,; 
+PVWatts,Sale Leaseback,87966056,10.538609,10.893486,; 
 PVWatts,LCOE Calculator,35186964,NA,NA,; 
 PVWatts,None,6996.724121,NA,NA,; 
 High-X Concentrating PV,Single Owner,2414368,24.015554,25.953600,; 
@@ -58,11 +58,11 @@ MSPT,Merchant Plant,571782144,9.845299,NA,; Notice: At time = 878 power cycle ma
 MSPT,Leveraged Partnership Flip,571782144,11.072968,11.936542,; Notice: At time = 878 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00185908. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 1624 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0415093. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 1624 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0343086. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2513 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0477253. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2513 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00639675. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2513 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0435201. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3015 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0128125. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3015 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00543651. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3828 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0109353. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5199 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00435143. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6039 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0158342. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6039 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00590033. Check that results at this timestep are not unreasonably biasing total simulation results
 MSPT,All Equity Partnership Flip,571782144,13.882097,16.249203,; Notice: At time = 878 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00185908. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 1624 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0415093. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 1624 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0343086. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2513 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0477253. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2513 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00639675. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2513 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0435201. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3015 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0128125. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3015 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00543651. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3828 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0109353. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5199 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00435143. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6039 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0158342. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6039 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00590033. Check that results at this timestep are not unreasonably biasing total simulation results
 MSPT,Sale Leaseback,571782144,14.095232,16.144436,; Notice: At time = 878 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00185908. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 1624 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0415093. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 1624 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0343086. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2513 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0477253. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2513 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00639675. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 2513 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0435201. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3015 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0128125. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3015 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00543651. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 3828 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0109353. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 5199 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00435143. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6039 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.0158342. Check that results at this timestep are not unreasonably biasing total simulation results Notice: At time = 6039 power cycle mass flow for startup iteration to find a defocus resulting in the maximum power cycle mass flow rate only reached a convergence = 0.00590033. Check that results at this timestep are not unreasonably biasing total simulation results
-DSPT,Single Owner,263809680,15.796850,16.996370,; 
-DSPT,Merchant Plant,263809680,14.881628,NA,; 
-DSPT,Leveraged Partnership Flip,263809680,16.137035,17.372093,; 
-DSPT,All Equity Partnership Flip,263809680,20.153734,23.540558,; 
-DSPT,Sale Leaseback,263809744,20.729889,23.656019,; 
+DSPT,Single Owner,263809744,15.796846,16.996367,; 
+DSPT,Merchant Plant,263809744,14.881625,NA,; 
+DSPT,Leveraged Partnership Flip,263809744,16.137033,17.372091,; 
+DSPT,All Equity Partnership Flip,263809744,20.153730,23.540552,; 
+DSPT,Sale Leaseback,263809776,20.729887,23.656017,; 
 MSLF,Commercial,337249088,9.154688,NA,; Warning: time 25981200.00 { type 224 powerblock 4 }:\ The input boiler pressure could not be achieved with the resource temperature entered. Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13114800.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 18900000.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23133600.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000
 MSLF,Single Owner,337249088,15.238064,16.391041,; Warning: time 25981200.00 { type 224 powerblock 4 }:\ The input boiler pressure could not be achieved with the resource temperature entered. Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13114800.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 18900000.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23133600.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000
 MSLF,Merchant Plant,337249088,14.329154,NA,; Warning: time 25981200.00 { type 224 powerblock 4 }:\ The input boiler pressure could not be achieved with the resource temperature entered. Notice: kernel exceeded maximum iterations of 100, at time 9396000.000000 Notice: kernel exceeded maximum iterations of 100, at time 12855600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13028400.000000 Notice: kernel exceeded maximum iterations of 100, at time 13114800.000000 Notice: kernel exceeded maximum iterations of 100, at time 13201200.000000 Notice: kernel exceeded maximum iterations of 100, at time 13287600.000000 Notice: kernel exceeded maximum iterations of 100, at time 13374000.000000 Notice: kernel exceeded maximum iterations of 100, at time 13719600.000000 Notice: kernel exceeded maximum iterations of 100, at time 16830000.000000 Notice: kernel exceeded maximum iterations of 100, at time 18900000.000000 Notice: kernel exceeded maximum iterations of 100, at time 23047200.000000 Notice: kernel exceeded maximum iterations of 100, at time 23133600.000000 Notice: kernel exceeded maximum iterations of 100, at time 23220000.000000
@@ -132,26 +132,26 @@ Generic System,All Equity Partnership Flip,756864000,32.812180,36.422478,;
 Generic System,Sale Leaseback,756864000,32.130512,35.256783,; 
 Generic System,LCOE Calculator,756864000,NA,NA,; 
 Generic System,None,756864000,NA,NA,; 
-PV Battery,Residential,8588.440430,8.976907,NA,; 
-PV Battery,Commercial,394531.187500,3.886724,NA,; 
-PV Battery,Third Party,8588.440430,NA,NA,; 
-PV Battery,Host Developer,394531.187500,16.826468,10.808133,; 
-PV Battery,Single Owner,37083848,8.050873,9.845119,; 
-PV Battery,Merchant Plant,37083848,7.165788,NA,; 
-PV Battery,Leveraged Partnership Flip,37083848,8.106262,9.845119,; 
-PV Battery,All Equity Partnership Flip,37083848,9.619516,10.939021,; 
-PV Battery,Sale Leaseback,37083848,9.705948,9.845119,; 
-PVWatts Battery,Residential,8022.540527,9.359377,NA,; 
-PVWatts Battery,Commercial,377229.187500,3.863276,NA,; 
+PV Battery,Residential,8588.440430,10.571138,NA,; 
+PV Battery,Commercial,911878,3.713053,NA,; 
+PV Battery,Third Party,34804.273438,NA,NA,; 
+PV Battery,Host Developer,911878,12.413692,10.808079,; 
+PV Battery,Single Owner,92853008,8.231091,9.770097,; 
+PV Battery,Merchant Plant,92853008,7.353782,NA,; 
+PV Battery,Leveraged Partnership Flip,92853008,8.350235,9.770097,; 
+PV Battery,All Equity Partnership Flip,92853008,9.779098,10.855663,; 
+PV Battery,Sale Leaseback,92853008,9.952327,9.770097,; 
+PVWatts Battery,Residential,8022.540527,11.052687,NA,; 
+PVWatts Battery,Commercial,943666.062500,3.719148,NA,; 
 PVWatts Battery,Third Party,8022.540527,NA,NA,; 
-PVWatts Battery,Host Developer,377229.187500,16.827778,10.830657,; 
-Generic Battery,Residential,6692.029785,44.690529,NA,; 
-Generic Battery,Commercial,361540.093750,15.567793,NA,; 
+PVWatts Battery,Host Developer,943666.062500,12.195782,10.830657,; 
+Generic Battery,Residential,6692.029785,58.607651,NA,; 
+Generic Battery,Commercial,361540.093750,15.569787,NA,; 
 Generic Battery,Third Party,6692.029785,NA,NA,; 
-Generic Battery,Host Developer,361540.093750,11.866185,10.830667,; 
-Generic Battery,Single Owner,73188808,20.658663,10.399786,; 
-Generic Battery,Merchant Plant,73188808,19.623444,NA,; 
-Generic Battery,Leveraged Partnership Flip,73188808,24.975096,28.888296,; 
-Generic Battery,All Equity Partnership Flip,73188808,28.873867,34.665955,; 
-Generic Battery,Sale Leaseback,73188808,29.013596,34.665955,; 
+Generic Battery,Host Developer,361540.093750,11.870226,10.830667,; 
+Generic Battery,Single Owner,73188808,20.642857,10.399786,; 
+Generic Battery,Merchant Plant,73188808,19.607639,NA,; 
+Generic Battery,Leveraged Partnership Flip,73188808,24.983101,28.888296,; 
+Generic Battery,All Equity Partnership Flip,73188808,28.858185,34.665955,; 
+Generic Battery,Sale Leaseback,73188808,29.021532,34.665955,; 
 final_configuration_eof,none,NA,NA,NA,

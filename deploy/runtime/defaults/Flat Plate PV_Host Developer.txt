@@ -1351,7 +1351,7 @@ desired_size
 1
 1
 1
-20000
+500
 dispatch_data_filename
 1
 4
@@ -2921,7 +2921,7 @@ inverter_count
 1
 1
 1
-8
+7
 inverter_model
 1
 1
@@ -4899,7 +4899,7 @@ subarray1_nstrings
 1
 1
 1
-8
+134
 subarray1_rear_irradiance_loss
 1
 1
