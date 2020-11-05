@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-11951
+12065
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -479,21 +479,23 @@ function set_batt_defaults_from_data(defs)
 		value('LeadAcid_tn',cell_params.leadacid_tn);
 	}
 	
-	// voltage curve
-	value('batt_C_rate',cell_params.c_rate);
-	value('batt_Vfull',cell_params.vfull);
-	value('batt_Vexp',cell_params.vexp);
-	value('batt_Vnom',cell_params.vnom);
-	value('batt_Qfull',cell_params.qfull);
-	value('batt_Qexp',cell_params.qexp);
-	value('batt_Vnom',cell_params.vnom);
+	if (cell_params.voltage_choice == 0) {
+		// voltage curve
+		value('batt_C_rate',cell_params.c_rate);
+		value('batt_Vfull',cell_params.vfull);
+		value('batt_Vexp',cell_params.vexp);
+		value('batt_Vnom',cell_params.vnom);
+		value('batt_Qfull',cell_params.qfull);
+		value('batt_Qexp',cell_params.qexp);
+		value('batt_Vnom',cell_params.vnom);
+		
+		${batt_Qexp_percent} = ${batt_Qexp}/${batt_Qfull}/0.01;
+		${batt_Qnom_percent} = cell_params.qnom/${batt_Qfull}/0.01;
+	}
+	else {
+		value('batt_voltage_matrix', cell_params.voltage_matrix);
+	}
 	
-	${batt_Qexp_percent} = ${batt_Qexp}/${batt_Qfull}/0.01;
-	${batt_Qnom_percent} = cell_params.qnom/${batt_Qfull}/0.01;
-	
-	voltage_matrix = [[0,0]];
-  	value('batt_voltage_matrix', voltage_matrix);
-  	
   	// desired bank voltage
 	value('batt_resistance', cell_params.resistance); // from UBGC2, and DC400-6
 	value('batt_voltage_choice', cell_params.voltage_choice);
@@ -658,6 +660,9 @@ function lithium_ion_defaults()
 	
 	// turn on calendar lifetime model
 	value('batt_calendar_choice', 1);
+	
+	// use voltage model not matrix
+	value('batt_voltage_choice', 0);
 }
 // Vanadium Redox Flow Battery
 function VRFB()
