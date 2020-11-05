@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12040
+12095
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -473,6 +473,7 @@ function set_batt_defaults_from_data(defs)
 	pack_params = defs.paramspack;
 	
 	value('batt_Qfull',cell_params.qfull);
+	value('batt_Vnom_default', cell_params.vnom_default);
 		
 	if (value('batt_chem') == 0) {
 		value('LeadAcid_q20',cell_params.leadacid_q20);
