@@ -1,0 +1,48 @@
+extraction:
+  cpp:
+    prepare:
+      packages:
+        - g++
+        - libgtk2.0-dev
+        - libgl1-mesa-dev
+        - mesa-common-dev
+        - freeglut3-dev
+        - libcurl4-openssl-dev
+        - libc6
+
+    after_prepare:
+      - wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.1/wxWidgets-3.1.1.tar.bz2 -O $LGTM_WORKSPACE/wxWidgets-3.1.1.tar.bz2
+      - cd $LGTM_WORKSPACE
+      - tar jxf wxWidgets-3.1.1.tar.bz2
+      - cd wxWidgets-3.1.1
+      - ./configure --prefix=$HOME/wx-3.1.1 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
+      - make -j2 all install
+      - sudo ln -s $HOME/wx-3.1.1/bin/wx-config /usr/local/bin/wx-config-3
+      - (cd ../ && pwd)
+      - git clone --depth=1 https://github.com/google/googletest $LGTM_WORKSPACE/build/googletest
+      - export GTEST=$LGTM_WORKSPACE/build/googletest
+      - export LKDIR=$LGTM_WORKSPACE/build/lk
+      - export WEXDIR=$LGTM_WORKSPACE/build/wex
+      - export SSCDIR=$LGTM_WORKSPACE/build/ssc
+      - export SAMNTDIR=$LGTM_SRC
+      - git clone --depth=1 https://github.com/NREL/lk $LKDIR; 
+      - git clone --depth=1 https://github.com/NREL/wex $WEXDIR
+      - git clone --depth=1 https://github.com/NREL/ssc $SSCDIR
+      - export PATH=$PATH:$HOME/wx-3.1.1/bin
+  
+    configure:
+      command:
+        - mkdir ${GTEST}/build; cd ${GTEST}/build; cmake -DCMAKE_CXX_FLAGS=-std=c++11 ..;
+        - mkdir $LKDIR/build && cd $LKDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release;
+        - mkdir $WEXDIR/build && cd $WEXDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release
+        - mkdir ${SSCDIR}/build; cd ${SSCDIR}/build; cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_tests=1 -Dskip_tools=1
+        - mkdir $SAMNTDIR/build && cd $SAMNTDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_api=1 
+    before_index:
+      - cd ${GTEST}; make;
+      - cd $LKDIR/build && cmake --build . -j 4 --target lk
+      - cd $WEXDIR/build && cmake --build . -j 4 --target wex
+      - cd ${SSCDIR}/build; cmake --build . -j 4 --target ssc
+    index:    
+      build_command:
+        cd $SAMNTDIR/build && make -j 4
+        
