@@ -1236,6 +1236,8 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		{
 			DeleteCaseWindow( c );
 			m_project.DeleteCase( case_name );
+			if (m_project.GetCases().size() == 0)
+				m_topBook->SetSelection(0);
 		}
 		break;
 	case ID_CASE_DUPLICATE:
