@@ -4,38 +4,10 @@
 #include <shared/lib_util.h>
 #include <ssc/ssc_equations.h>
 
+#include "library_extractor.h"
 #include "builder_PySAM.h"
 #include "builder_generator_helper.h"
 
-std::string all_options_of_cmod(const std::string &cmod_symbol, const std::string& config_name) {
-    size_t pos = config_name.find_last_of('-');
-    // if not a tech-fin config, it's a single cmod so it won't have any default configuration options
-    if (pos == std::string::npos)
-        return "";
-    std::string tech = config_to_cmod_name[format_as_symbol(config_name.substr(0, pos))];
-    std::string fin = config_to_cmod_name[format_as_symbol(config_name.substr(pos+1))];
-    assert(tech.length() + fin.length());
-
-    std::set<std::string> config_set;
-    for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
-        std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[it->first];
-        for (const auto& i : primary_cmods) {
-            if (format_as_symbol(i) == cmod_symbol){
-                config_set.insert(it->first);
-                break;
-            }
-        }
-    }
-
-    std::string str = "config options:\\n\\n";
-    for (auto it = config_set.begin(); it != config_set.end(); ++it){
-        if (it != config_set.begin())
-            str += "\\n";
-        str += "- \\\"" + format_as_symbol(*it) + "\\\"";
-    }
-    assert(str.length());
-    return str;
-}
 
 // in the future, pull this directly from startup.lk but for now just keep this
 // maps cmod to string description
@@ -110,6 +82,49 @@ std::string get_params_str(const std::string &doc){
         startpos = doc.find("'", doc.find("\\n", word_end));
     }
     return params;
+}
+
+void builder_PySAM::set_config_options(const std::set<std::string>& configs) {
+    for (const auto& i : configs)
+        config_options.insert(i);
+}
+
+std::string builder_PySAM::get_config_options() {
+    if (config_options.empty())
+        return "None";
+    std::string config_str = "`config` options:\\n\\n";
+    for (auto it = config_options.begin(); it != config_options.end(); ++it){
+        if (it != config_options.begin())
+            config_str += "\\n";
+        config_str += "- \\\"" + format_as_symbol(*it) + "\\\"";
+    }
+    assert(config_str.length());
+    return config_str;
+}
+
+
+void builder_PySAM::all_options_of_cmod(const std::string &cmod) {
+    std::string cmod_symbol = format_as_symbol(cmod);
+    size_t pos = config_name.find_last_of('-');
+    // if not a tech-fin config, it's a single cmod so it won't have any default configuration options
+    if (pos == std::string::npos)
+        return;
+    std::string tech = config_to_cmod_name[format_as_symbol(config_name.substr(0, pos))];
+    std::string fin = config_to_cmod_name[format_as_symbol(config_name.substr(pos+1))];
+    assert(tech.length() + fin.length());
+
+    std::set<std::string> config_set;
+    for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
+        std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[it->first];
+        for (const auto& i : primary_cmods) {
+            if (format_as_symbol(i) == cmod_symbol){
+                config_set.insert(it->first);
+                break;
+            }
+        }
+    }
+
+    set_config_options(config_set);
 }
 
 void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::string &file_dir, bool stateful) {
@@ -793,8 +808,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t{\"new\",             " << tech_symbol << "_new,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"new() -> " << tech_symbol << "\")},\n"
                "\t\t{\"default\",             " << tech_symbol << "_default,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nUse financial config-specific default attributes\\n\"\n"
-                                                                                  "\t\t\t\t\"" << all_options_of_cmod(cmod_symbol, config_name) << "\")},\n"
+               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nUse default attributes\\n\"\n"
+                                                                                  "\t\t\t\t\"" << get_config_options() << "\")},\n"
                "\t\t{\"wrap\",             " << tech_symbol << "_wrap,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> " << tech_symbol << "\\n\\nUse existing PySSC data\\n\\n.. warning::\\n\\n"
                                                                                 "\tDo not call PySSC.data_free on the ssc_data_t provided to ``wrap``\")},\n"

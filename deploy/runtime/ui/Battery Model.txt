@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12520
+12095
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -400,6 +400,7 @@ function set_lithium_ion(update_default)
 	
 	if (update_default)
 	{
+		lithium_ion_defaults();
 		if (lithium_type == 0)
 			LMO();
 		else if (lithium_type == 1)
@@ -412,9 +413,11 @@ function set_lithium_ion(update_default)
 			NMC();
 		else if (lithium_type == 5)
 			NCA();
-			
-		lithium_ion_defaults();
 	}
+	if (financing() == 'Residential')
+		value('batt_bank_voltage', 50);
+	else
+		value('batt_bank_voltage', 500);
 }
 function set_vanadium(update_default)
 {
@@ -438,84 +441,92 @@ function set_iron(update_default)
 // Flooded Lead Acid defaults
 function flooded_lead_acid()
 {
-	value('LeadAcid_q20',100);
-	value('LeadAcid_q10',87);
-	value('LeadAcid_qn',47);
-	value('LeadAcid_tn',1);
+	value('batt_specific_energy_per_mass',50); 
+	value('batt_specific_energy_per_volume',98);
 }
 
 // AGM defaults
 function AGM()
 {
-	value('LeadAcid_q20',100);
-	value('LeadAcid_q10',93.2);
-	value('LeadAcid_qn',58.12);
-	value('LeadAcid_tn',1);
+	value('batt_specific_energy_per_mass',35); 
+	value('batt_specific_energy_per_volume',80);
 }
 // GEL defaults
 function GEL()
 {
-	value('LeadAcid_q20',100);
-	value('LeadAcid_q10',84.94);
-	value('LeadAcid_qn',63.1);
-	value('LeadAcid_tn',1);
+	value('batt_specific_energy_per_mass',35); 
+	value('batt_specific_energy_per_volume',75);
 }
 
-
-// Valve Regulated Lead Acid defaults
-function lead_acid_defaults()
+function get_batt_data_from_file(filename)
 {
+	defaults_dir = replace(appdir(), '\\', '/' ) + '/../libraries/BatteryStateful/';
+	defaults_dir += filename;
+	x = read_json(defaults_dir);
+	defs = x.defaults;
+	set_batt_defaults_from_data(defs);
+}
 
-	ConversionEfficiencies();
+function set_batt_defaults_from_data(defs)
+{
+	cell_params = defs.paramscell;
+	pack_params = defs.paramspack;
+	
+	value('batt_Qfull',cell_params.qfull);
+	value('batt_Vnom_default', cell_params.vnom_default);
+		
+	if (value('batt_chem') == 0) {
+		value('LeadAcid_q20',cell_params.leadacid_q20);
+		value('LeadAcid_q10',cell_params.leadacid_q10);
+		value('LeadAcid_qn',cell_params.leadacid_qn);
+		value('LeadAcid_tn',cell_params.leadacid_tn);
+	}
+	
+	if (cell_params.voltage_choice == 0) {
+		// voltage curve
+		value('batt_C_rate',cell_params.c_rate);
+		value('batt_Vfull',cell_params.vfull);
+		value('batt_Vexp',cell_params.vexp);
+		value('batt_Vnom',cell_params.vnom);
+		value('batt_Qexp',cell_params.qexp);
+		value('batt_Vnom',cell_params.vnom);
+		
+		${batt_Qexp_percent} = ${batt_Qexp}/${batt_Qfull}/0.01;
+		${batt_Qnom_percent} = cell_params.qnom/${batt_Qfull}/0.01;
+	}
+	else {
+		value('batt_voltage_matrix', cell_params.voltage_matrix);
+	}
+	
+	value('batt_resistance', cell_params.resistance); // from UBGC2, and DC400-6
+	value('batt_voltage_choice', cell_params.voltage_choice);
 
-	// desired bank voltage
-	value('batt_resistance', 0.001); // from UBGC2, and DC400-6
-	value('batt_bank_voltage', 48);
-	value('batt_voltage_choice', 0);
-
-	// voltage curve
-	value('batt_C_rate',0.05);
-	value('batt_Vfull',2.2);
-	value('batt_Vexp',2.06);
-	value('batt_Vnom',2.03);
-	value('batt_Qfull',20);
-	value('batt_Qexp_percent',0.25);
-	value('batt_Qnom_percent',90);
-	value('batt_Vnom_default',2);
-	value('batt_specific_energy_per_mass',30.0); // pg 17.10 Linden's Handbook of batteries model D
-	value('batt_specific_energy_per_volume',30); // model D as well
-	voltage_matrix = [[0,0]];
-  	value('batt_voltage_matrix', voltage_matrix);
+  	value('batt_bank_voltage', pack_params.nominal_voltage);
   	
-		// Lifetime
-	lifetime = [ [30,0,100],
-				[30,1100,90],
-				[30,1200,50],
-				[50,0,100],
-				[50,400,90],
-				[50,500,50],
-				[100,0,100],
-				[100,100,90],
-				[100,150,50] ];
-	value('batt_lifetime_matrix',lifetime);
+	// Lifetime
+	value('batt_lifetime_matrix',cell_params.cycling_matrix);
 	
 	// turn calendar life model off
-	value('batt_calendar_choice', 0);
+	value('batt_calendar_choice', cell_params.calendar_choice);
 	
-		// Thermal
-	cap_vs_temp = [ [-15, 65], [0, 85], [25,100], [40,102] ];
-	value('cap_vs_temp', cap_vs_temp);
-	
-	// From Pesaran 2001: Thermal Characteristics of Selected EV and HEV batteries
-	value('batt_Cp',660);
+	// Thermal
+	value('cap_vs_temp', pack_params.cap_vs_temp);
+	value('batt_Cp',pack_params.cp);
 	
 	// ancilliary system losses
 	zero_array = fill_by_month(0);
 	value('batt_losses_charging', zero_array);
 	value('batt_losses_discharging', zero_array);
 	value('batt_losses_idle', zero_array);
-
 }
+
+// Valve Regulated Lead Acid defaults
+function lead_acid_defaults()
+{
+	ConversionEfficiencies();
+	get_batt_data_from_file('BatteryStateful_LeadAcid.json');
+}
+
 // Lithium Manganese Oxide
 function LMO()
 {
@@ -543,26 +554,10 @@ function LMO()
 // Lithium iron phospate
 function LFP()
 {
-	// voltage curve
-	value('batt_C_rate',0.43);
-	value('batt_Vfull',3.6);
-	value('batt_Vexp',3.4);
-	value('batt_Vnom',3.3);
-	value('batt_Qfull',2.3);
-	value('batt_Qexp_percent',2.17);
-	value('batt_Qnom',87);
-	value('batt_Vnom_default',3.3);
-	value('batt_specific_energy_per_mass',93.07);
-	value('batt_specific_energy_per_volume',210.02);
-		
-	// Lifetime
-	lifetime = [ [20,0,100],
-				 [20,2500,98],
-				 [20,5000,95],
-				 [80,0,100],
-				 [80,500,98],
-				 [80,1000,95] ];
-	value('batt_lifetime_matrix',lifetime);
+	get_batt_data_from_file('BatteryStateful_LFPGraphite.json');
+	
+	value('batt_specific_energy_per_mass',70);
+	value('batt_specific_energy_per_volume',82);
 }
 // Lithium cobalt Oxide
 function LCO()
@@ -600,8 +595,8 @@ function LTO()
 	value('batt_Qexp_percent',2.1);
 	value('batt_Qnom_percent',91.7);
 	value('batt_Vnom_default',2.3);
-	value('batt_specific_energy_per_mass',69.12);
-	value('batt_specific_energy_per_volume',118.43);
+	value('batt_specific_energy_per_mass',22);
+	value('batt_specific_energy_per_volume',14);
 		
 	// Lifetime
 	lifetime = [ [20,0,100],
@@ -617,27 +612,10 @@ function LTO()
 // Lithium nickel cobalt
 function NMC()
 {
-	// voltage curve
-	value('batt_C_rate',0.2);
-	value('batt_Vfull',4.1);
-	value('batt_Vexp',4.05);
-	value('batt_Vnom',3.4);
-	value('batt_Qfull',2.25);
-	value('batt_Qexp_percent',1.78);
-	value('batt_Qnom_percent',88.9);
-	value('batt_Vnom_default',3.6);
-	value('batt_specific_energy_per_mass',197.33);
-	value('batt_specific_energy_per_volume',501.25);
-		
-	// Lifetime
-	lifetime = [ [20,0,100],
-				 [20,5000,80],
-				 [20,10000,60],
-				 [80,0,100],
-				 [80,1000,80],
-				 [80,2000,60]];
-				
-	value('batt_lifetime_matrix',lifetime);
+	get_batt_data_from_file('BatteryStateful_NMCGraphite.json');
+	
+	value('batt_specific_energy_per_mass',101);
+	value('batt_specific_energy_per_volume',70);
 }
 // NMC
 function NCA()
@@ -668,36 +646,28 @@ function lithium_ion_defaults()
 
 	ConversionEfficiencies();
 
-	if (financing() == 'Residential')
-		value('batt_bank_voltage', 50);
-	else
-		value('batt_bank_voltage', 500);
-		
-	value('batt_voltage_choice', 0);
-	voltage_matrix = [[0,0]];
-  	value('batt_voltage_matrix', voltage_matrix);
-
-	// Thermal
-	value('batt_resistance', 0.001); // various manufactures
-	cap_vs_temp = [ [-10, 60], [0, 80], [25, 100], [40, 100] ];
+	// Can be overwritten by chemistry-specific fx
+	cap_vs_temp = [[-20, 72.33333333],
+					[-10, 81.8],
+					[0, 88.8],
+					[10, 93],
+					[23, 96.66666667],
+					[45, 101],
+					[60, 101]];
 	value('cap_vs_temp', cap_vs_temp);
 
 	// Maleki 1999 Thermal Properties of Lithium-Ion Battery & Components
-	value('batt_Cp',1004);
+	value('batt_Cp',1500);
 	
 	// turn on calendar lifetime model
 	value('batt_calendar_choice', 1);
 	
-	// ancilliary system losses
-	zero_array = fill_by_month(0);
-	value('batt_losses_charging', zero_array);
-	value('batt_losses_discharging', zero_array);
-	value('batt_losses_idle', zero_array);
+	// use voltage model not matrix
+	value('batt_voltage_choice', 0);
 }
 // Vanadium Redox Flow Battery
 function VRFB()
 {
-
 	FlowDefaults();
 
 	// voltage curve
@@ -730,7 +700,6 @@ function VRFB()
 // Iron flow battery
 function IronFlow()
 {
-
 	FlowDefaults();
 
 	voltage_matrix = [[0, 1.18],
@@ -759,7 +728,6 @@ function IronFlow()
 
 function FlowDefaults()
 {
-
 	ConversionEfficiencies();
 	
 	value('batt_resistance', 0.001);
