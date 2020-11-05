@@ -72,6 +72,22 @@ extern "C"
 	SAM_EXPORT void SAM_Poacalib_POACalibrate_diffuse_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set dry_temperature: Dry Temperature [°C]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Poacalib_POACalibrate_dry_temperature_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set elevation: Elevation [m]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Poacalib_POACalibrate_elevation_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set latitude: Latitude [decimal degrees]
 	 * options: N= positive
 	 * constraints: None
@@ -94,6 +110,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Poacalib_POACalibrate_poa_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set pressure: Pressure [millibars]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Poacalib_POACalibrate_pressure_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set time_zone: Time Zone
@@ -126,11 +150,17 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Poacalib_POACalibrate_diffuse_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Poacalib_POACalibrate_dry_temperature_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Poacalib_POACalibrate_elevation_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Poacalib_POACalibrate_latitude_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Poacalib_POACalibrate_longitude_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Poacalib_POACalibrate_poa_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Poacalib_POACalibrate_pressure_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Poacalib_POACalibrate_time_zone_nget(SAM_table ptr, SAM_error *err);
 
