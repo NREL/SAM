@@ -633,7 +633,7 @@ contingency_percent
 1
 1
 1
-0
+4
 cost_debt_closing
 1
 1
@@ -1264,7 +1264,7 @@ engr_per_watt
 1
 1
 1
-0
+0.44
 engr_percent
 1
 1
@@ -1736,7 +1736,7 @@ install_labor_perwatt
 1
 1
 1
-0.13
+0.15
 install_labor_total
 1
 1
@@ -1760,7 +1760,7 @@ install_margin_perwatt
 1
 1
 1
-0.58
+0.16
 install_margin_total
 1
 1
@@ -2296,7 +2296,7 @@ om_capacity
 2
 1
 1
-12
+19
 om_capacity_escal
 1
 1
@@ -2596,7 +2596,7 @@ permitting_per_watt
 1
 1
 1
-0.09
+0.11
 permitting_percent
 1
 1
@@ -2722,7 +2722,7 @@ sales_tax_percent
 1
 1
 1
-60
+82
 sales_tax_rate
 1
 1

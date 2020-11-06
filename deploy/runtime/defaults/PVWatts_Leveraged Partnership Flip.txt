@@ -130,7 +130,7 @@ bos_equip_perwatt
 1
 1
 1
-0.18
+0.2
 bos_equip_total
 1
 1
@@ -1529,7 +1529,7 @@ install_margin_perwatt
 1
 1
 1
-0.18
+0.06
 install_margin_total
 1
 1
@@ -1697,7 +1697,7 @@ land_per_watt
 1
 1
 1
-0.03
+0
 land_percent
 1
 1
@@ -2028,7 +2028,7 @@ om_capacity
 2
 1
 1
-15
+17
 om_capacity_escal
 1
 1
