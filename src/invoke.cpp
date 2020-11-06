@@ -22,6 +22,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <algorithm>
 #include <memory>
+#include <fstream>
 
 // threading
 #include <thread>
@@ -4693,6 +4694,34 @@ static void fcall_parametric_export(lk::invoke_t &cxt)
 	else cxt.result().assign(0.0);
 }
 
+static void fcall_read_json(lk::invoke_t &cxt)
+{
+    LK_DOC("read_json", "Returns contents of JSON file as a hash table", "( string:file ): table")
+
+    wxString file(cxt.arg(0).as_string());
+    if (!wxFileExists(file)) {
+        cxt.error("file does not exist");
+        return;
+    }
+
+    std::ifstream ifs(file.ToStdString().c_str(), std::ios::in | std::ios::binary | std::ios::ate);
+
+    std::ifstream::pos_type fileSize = ifs.tellg();
+    ifs.seekg(0, std::ios::beg);
+
+    std::vector<char> bytes(fileSize);
+    ifs.read(bytes.data(), fileSize);
+
+    std::string input_string = std::string(bytes.data(), fileSize);
+
+    lk_string err;
+    lk::vardata_t results;
+    auto data = json_to_ssc_data(input_string.c_str());
+    if (ssc_data_lookup(data, "error"))
+        cxt.result().assign("read_json error: " + std::string(ssc_data_get_string(data, "error")));
+    sscdata_to_lkhash(data, cxt.result());
+}
+
 static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 {
     LK_DOC("reopt_size_battery", "From a detailed or simple photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "( none ): table");
@@ -4995,6 +5024,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_pdfreport,
             fcall_pagenote,
             fcall_macrocall,
+            fcall_read_json,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,

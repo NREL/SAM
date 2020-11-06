@@ -989,8 +989,9 @@ bool MainWindow::LoadProject( const wxString &file )
 		return false;
 
 	ProjectFile pf;
-	if ( !pf.ReadArchive( file ) )
-		return false;
+	// tell user to save and check file if issue 
+	if (!pf.ReadArchive(file))
+		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
 
 	int major, minor, micro;
 	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );
