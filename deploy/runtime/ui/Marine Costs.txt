@@ -7091,7 +7091,7 @@ Tips
 55
 Type a tip here or define in runtime/help/tooltips.json
 
-85
+90
 array_cable_system_cost
 3
 1
@@ -8186,6 +8186,34 @@ ME Costs
 1
 0
 Default
+total_bos_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+total_capital_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_cost_per_kw
 3
 1
@@ -8208,6 +8236,20 @@ $
 ME Costs
 0
 9
+1
+1
+1
+1
+0
+Default
+total_device_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -8242,6 +8284,20 @@ ME Costs
 1
 0
 Numeric
+total_financial_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_installed_cost
 3
 1
@@ -8270,6 +8326,20 @@ ME Costs
 1
 0
 Numeric
+total_operations_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_rated_capacity
 3
 1
@@ -8285,7 +8355,7 @@ ME Costs
 0
 Default
 
-10460
+10898
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -8305,6 +8375,8 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_var(obj,'device_rated_power', ${device_rated_power});
 	ssc_var(obj,'system_capacity', ${system_capacity});
 	ssc_var(obj,'devices_per_row', ${devices_per_row});
+	
+	ssc_var(obj,'annual_energy', ${annual_energy});
 	
 	
 	ssc_var(obj,'structural_assembly_cost_method', ${structural_assembly_cost_method});
@@ -8373,6 +8445,12 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 
 	${operations_cost_modeled} = ssc_var( obj, 'operations_cost' );
 	${maintenance_cost_modeled} = ssc_var( obj, 'maintenance_cost' );
+	
+	${total_capital_cost_per_kwh} = ssc_var(obj, 'total_capital_cost_per_kwh');
+	${total_device_cost_per_kwh} = ssc_var(obj, 'total_device_cost_per_kwh');
+	${total_bos_cost_per_kwh} = ssc_var(obj, 'total_bos_cost_per_kwh');
+	${total_financial_cost_per_kwh} = ssc_var(obj, 'total_financial_cost_per_kwh');
+	${total_operations_cost_per_kwh} = ssc_var(obj, 'total_operations_cost_per_kwh');
 
 	ssc_free(obj);
 };
