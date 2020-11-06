@@ -72,14 +72,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv11ts_PVWatts_diffuse_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dry_temperature: Dry Temperature [°C]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Pvwattsv11ts_PVWatts_dry_temperature_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set elevation: Elevation [m]
 	 * options: None
 	 * constraints: None
@@ -224,7 +216,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv11ts_PVWatts_t_ref_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set tamb: Ambient temperature [C]
+	 * Set tamb: Ambient temperature (dry bulb temperature) [C]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -309,8 +301,6 @@ extern "C"
 	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_derate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_diffuse_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_dry_temperature_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_elevation_nget(SAM_table ptr, SAM_error *err);
 

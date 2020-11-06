@@ -186,7 +186,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_loss_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_losses: Battery system losses at each timestep [kW]
+	 * Set batt_losses: Battery system losses at each timestep (kW DC for DC connected, AC for AC connected) [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -194,7 +194,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_losses_charging: Battery system losses when charging [kW]
+	 * Set batt_losses_charging: Battery system losses when charging (kW DC for DC connected, AC for AC connected) [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -202,7 +202,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_charging_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_losses_discharging: Battery system losses when discharging [kW]
+	 * Set batt_losses_discharging: Battery system losses when discharging (kW DC for DC connected, AC for AC connected) [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -210,7 +210,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_discharging_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_losses_idle: Battery system losses when idle [kW]
+	 * Set batt_losses_idle: Battery system losses when idle (kW DC for DC connected, AC for AC connected) [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -602,7 +602,7 @@ extern "C"
 
 	/**
 	 * Set batt_room_temperature_celsius: Temperature of storage room [C]
-	 * options: None
+	 * options: length=1 for fixed, # of weatherfile records otherwise
 	 * constraints: None
 	 * required if: None
 	 */

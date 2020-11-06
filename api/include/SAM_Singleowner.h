@@ -2120,7 +2120,7 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set gen_without_battery: Electricity to/from the renewable system, without the battery [kW]
+	 * Set gen_without_battery: Electricity to or from the renewable system, without the battery [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None
