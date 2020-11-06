@@ -1,6 +1,6 @@
 Marine Costs - BoS
-814
-512
+815
+535
 61
 Numeric
 
@@ -362,10 +362,10 @@ Name
 balance_of_system_cost_override
 X
 3
-639
+525
 Y
 3
-462
+495
 Width
 3
 168
@@ -1790,7 +1790,7 @@ Width
 800
 Height
 3
-495
+525
 Tool Tip
 5
 0
@@ -3223,7 +3223,7 @@ TabOrder
 3
 4294967295
 
-8
+9
 balance_of_system_cost_input
 3
 1
@@ -3260,6 +3260,20 @@ $
  
 0
 9
+1
+1
+1
+1
+0
+Default
+balance_of_system_cost_total_mill
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -3337,7 +3351,7 @@ plant_commissioning_cost_modeled_ui
 0
 Default
 
-1909
+2023
 equations {'balance_of_system_cost_total'} = define() {
 	if (${balance_of_system_cost_override}!=1)
 	{
@@ -3349,6 +3363,10 @@ equations {'balance_of_system_cost_total'} = define() {
 	{
 		return ${balance_of_system_cost_input};
 	}
+};
+
+equations {'balance_of_system_cost_total_mill'} = define() {
+	return ${balance_of_system_cost_total}/1000000;
 };
 
 equations {'capex_check'} = define() {

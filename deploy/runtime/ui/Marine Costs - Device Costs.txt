@@ -15,7 +15,7 @@ X
 525
 Y
 3
-327
+315
 Width
 3
 90
@@ -75,13 +75,13 @@ Name
 device_cost_override
 X
 3
-633
+525
 Y
 3
-327
+348
 Width
 3
-168
+147
 Height
 3
 24
@@ -111,7 +111,7 @@ X
 525
 Y
 3
-327
+315
 Width
 3
 90
@@ -602,7 +602,7 @@ X
 486
 Y
 3
-309
+297
 Width
 3
 171
@@ -1054,7 +1054,7 @@ X
 378
 Y
 3
-327
+315
 Width
 3
 147
@@ -1712,7 +1712,7 @@ TabOrder
 3
 4294967295
 
-4
+5
 device_cost_input
 3
 1
@@ -1769,8 +1769,22 @@ device_costs_total_display
 1
 0
 Default
+device_costs_total_mill
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-890
+984
 equations {'device_costs_total'} = define() {
 	if (${device_cost_override}!=1)
 	{
@@ -1782,6 +1796,10 @@ equations {'device_costs_total'} = define() {
 	{
 		return ${device_cost_input};
 	}
+};
+
+equations {'device_costs_total_mill'} = define() {
+	return ${device_costs_total}/1000000;
 };
 
 /*equations {'total_installed_cost'} = define() {

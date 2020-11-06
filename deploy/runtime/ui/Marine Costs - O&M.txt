@@ -1,7 +1,54 @@
 Marine Costs - O&M
 818
 308
-25
+26
+Label
+
+1
+13
+Name
+5
+17
+fixed_charge_rate
+X
+3
+687
+Y
+3
+261
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Label
 
 1
@@ -444,7 +491,7 @@ X
 462
 Y
 3
-222
+225
 Width
 3
 171
@@ -908,13 +955,13 @@ Name
 om_cost_override
 X
 3
-615
+501
 Y
 3
-240
+267
 Width
 3
-192
+159
 Height
 3
 24
@@ -1282,7 +1329,7 @@ TabOrder
 3
 4294967295
 
-18
+19
 om_cost_input
 3
 1
@@ -1493,6 +1540,20 @@ $/year
 1
 0
 Default
+total_operating_cost_mill
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_operations_cost_lcoe
 3
 1
@@ -1536,7 +1597,7 @@ total_operations_cost_percent
 0
 Default
 
-2825
+2923
 equations {'total_operating_cost'} = define() {
 	if (${om_cost_override}!=1)
 	{
@@ -1546,6 +1607,10 @@ equations {'total_operating_cost'} = define() {
 	{
 		return ${om_cost_input};
 	}
+};
+
+equations {'total_operating_cost_mill'} = define() {
+	return ${total_operating_cost}/1000000;
 };
 
 equations {'total_capital_cost_per_kw'} = define() {

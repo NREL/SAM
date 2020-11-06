@@ -1,6 +1,6 @@
 Marine Costs - Financial
-815
-419
+819
+435
 40
 Label
 
@@ -267,13 +267,13 @@ Name
 financial_cost_override
 X
 3
-651
+549
 Y
 3
-366
+396
 Width
 3
-207
+171
 Height
 3
 24
@@ -286,7 +286,7 @@ Caption
 Override cost structure
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -586,7 +586,7 @@ Name
 itemized_check_construction_insurance
 X
 3
-723
+711
 Y
 3
 258
@@ -633,7 +633,7 @@ Name
 itemized_check_contingency
 X
 3
-723
+711
 Y
 3
 225
@@ -680,7 +680,7 @@ Name
 itemized_check_other_financial
 X
 3
-723
+711
 Y
 3
 324
@@ -727,7 +727,7 @@ Name
 itemized_check_reserve_accounts
 X
 3
-723
+711
 Y
 3
 291
@@ -821,7 +821,7 @@ Width
 800
 Height
 3
-405
+420
 Tool Tip
 5
 0
@@ -1979,7 +1979,7 @@ AlignTop
 2
 0
 
-29
+31
 carrying_cost_during_construction_cost
 3
 1
@@ -2072,6 +2072,20 @@ $
  
 0
 9
+1
+1
+1
+1
+0
+Default
+financial_cost_total_mill
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -2372,6 +2386,20 @@ total_installed_cost
 1
 0
 Default
+total_installed_cost_mill
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_test
 3
 1
@@ -2387,7 +2415,7 @@ total_test
 0
 Default
 
-1603
+1800
 equations {'total_installed_cost'} = define() {
 	//fin_cost = round(${financial_cost_total});
 	//bos_cost = round(${balance_of_system_cost_total});
@@ -2401,6 +2429,11 @@ equations {'total_installed_cost'} = define() {
 equations {'total_test'} = define() {
 	return ${financial_cost_total} + ${device_costs_total} + ${balance_of_system_cost_total};
 };
+
+equations {'total_installed_cost_mill'} = define() {
+	return ${total_installed_cost}/1000000;
+};
+
 
 /*equations {'financial_cost_total'} = define() {
 	return ${project_contingency_budget_cost}+${insurance_during_construction_cost}+
@@ -2418,6 +2451,10 @@ equations {'financial_cost_total'} = define() {
 	{
 		return ${financial_cost_input};
 	}
+};
+
+equations {'financial_cost_total_mill'} = define() {
+	return ${financial_cost_total}/1000000;
 };
 
 /*equations {'total_installed_cost'} = define() {
