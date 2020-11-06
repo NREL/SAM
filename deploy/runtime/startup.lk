@@ -64,6 +64,7 @@ configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Pa
 configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MEwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
 configopt( 'MEtidal',                    { 'tree_parent'='ME', 'long_name'='Tidal',          'short_name'='Marine Tidal',         'description'='Marine energy tidal system' });
+configopt( 'Retired',                    { 'tree_parent'='Retired', 'long_name'= 'Retired technology', 'short_name' = 'Retired', 'description'= 'Retired technologies' });
 
 // tree_parent for financial models defined in UpdateFinTree() in main.cpp
 configopt( 'LCOE Calculator',             { 'long_name'='LCOE Calculator (FCR Method)',           'short_name'='LCOE Calculator',  'description'='Calculate LCOE using fixed charge rate method' } );
