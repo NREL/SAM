@@ -17,7 +17,7 @@ extraction:
       - cd wxWidgets-3.1.1
       - ./configure --prefix=$LGTM_WORKSPACE/wx-3.1.1 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
       - make -j2 all install
-      - export WXMSW3=$LGTM_WORKSPACE/wx-3.1.1/bin/wx-config
+      - export WXMSW3=$LGTM_WORKSPACE/wx-3.1.1
       - (cd ../ && pwd)
       - git clone --depth=1 https://github.com/google/googletest $LGTM_WORKSPACE/build/googletest
       - export GTEST=$LGTM_WORKSPACE/build/googletest
@@ -32,16 +32,11 @@ extraction:
   
     configure:
       command:
-        - mkdir ${GTEST}/build; cd ${GTEST}/build; cmake -DCMAKE_CXX_FLAGS=-std=c++11 ..;
-        - mkdir $LKDIR/build && cd $LKDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release;
-        - mkdir $WEXDIR/build && cd $WEXDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release
-        - mkdir ${SSCDIR}/build; cd ${SSCDIR}/build; cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_tests=1 -Dskip_tools=1
+        - mkdir ${GTEST}/build; cd ${GTEST}/build; cmake -DCMAKE_CXX_FLAGS=-std=c++11 ..; make;
+        - mkdir $LKDIR/build && cd $LKDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target lk
+        - mkdir $WEXDIR/build && cd $WEXDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target wex
+        - mkdir ${SSCDIR}/build; cd ${SSCDIR}/build; cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_tests=1 -Dskip_tools=1; cmake --build . -j 4 --target ssc
         - mkdir $SAMNTDIR/build && cd $SAMNTDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_api=1 
-    before_index:
-      - cd ${GTEST}; make;
-      - cd $LKDIR/build && cmake --build . -j 4 --target lk
-      - cd $WEXDIR/build && cmake --build . -j 4 --target wex
-      - cd ${SSCDIR}/build; cmake --build . -j 4 --target ssc
     index:    
       build_command:
         cd $SAMNTDIR/build && make -j 4
