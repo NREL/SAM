@@ -39,7 +39,7 @@ static wxString MyGet(const wxString &url)
 	wxEasyCurl curl;
 	curl.AddHttpHeader( "Content-type: text/plain" );
 	curl.AddHttpHeader( "Cache-Control: no-cache" );
-	curl.Get( url );
+    curl.Get(url);
 	return curl.GetDataAsString();
 }
 
@@ -193,7 +193,7 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 	url.Replace("<SCOPE>", "international");
 
 	wxString json_data = MyGet(url);
-	if (json_data.IsEmpty())
+	if (json_data.IsEmpty() )
 	{
 		if (err) *err = "Could not retrieve JSON data for utility rate companies.";
 		return false;
@@ -209,13 +209,10 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 	names.Clear();
 	wxJSONValue item_list = root.Item("items");
-//	wxJSONValue query = root.Item("query");
-//	wxJSONValue item_list = query.Item("categorymembers");
 	int count = item_list.Size();
 	for (int i=0;i<count;i++)
 	{
 		wxString buf = item_list[i].Item("label").AsString();
-//		wxString buf = item_list[i].Item("title").AsString();
 		buf.Replace("&amp;", "&");
 			names.Add( buf );
 	}
@@ -407,7 +404,6 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	for (int i=0;i<count;i++)
 	{
 		RateInfo x;
-//		x.GUID = json_string(item_list[i].Item("label")).Mid(5);
 		x.GUID = json_string(item_list[i].Item("label"));
 		x.Name = json_string(item_list[i].Item("name"));
 		x.Utility = json_string(item_list[i].Item("utility"));
@@ -418,8 +414,6 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 		x.uri = json_string(item_list[i].Item("uri"));
 		x.StartDate = GetDate(json_integer(item_list[i].Item("startdate")));
 		x.EndDate = GetDate(json_integer(item_list[i].Item("enddate")));
-//		wxLogStatus("urdb startdate=" + x.StartDate);
-//		wxLogStatus("urdb enddate=" + x.EndDate);
 		rates.push_back(x);
 	}
 
@@ -427,26 +421,6 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 
 	return true;
 }
-/*
-int OpenEI::UtilityCompanyRateCount(const wxString &name)
-{
-	// production
-	// rest service going away - update to api.openei.org per
-	// https://en.openei.org/services/doc/rest/util_rates?version=3
-	//	wxString url = "https://en.openei.org/services/rest/utility_rates?version=3&limit=500&detail=minimal&format=json_plain&ratesforutility=" + name;
-	wxString url = "https://api.openei.org/utility_rates?version=3&limit=500&detail=minimal&format=json_plain&ratesforutility=" + name + "&api_key=" + wxString(sam_api_key);
-	wxString json_data = MyGet(url);
-	if (json_data.IsEmpty())
-		return 0;
-
-	wxJSONReader reader;
-	wxJSONValue root;
-	if (reader.Parse( json_data, &root )!=0)
-		return 0;
-	
-	return root.Item("items").Size();
-}
-*/
 
 bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url, wxString *err)
 {
@@ -527,12 +501,10 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Unused.HasUnusedItems = false;
 
 	wxJSONValue isd = val.Item("is_default");
-	if (isd.Size() > 0)
-		rate.Unused.IsDefault = isd.AsBool();
+	rate.Unused.IsDefault = isd.AsBool();
 
 	wxJSONValue st = val.Item("servicetype");
-	if (st.Size() > 0)
-		rate.Unused.ServiceType = st.AsString();
+	rate.Unused.ServiceType = st.AsString();
 
 	wxJSONValue fam = val.Item("fueladjustmentsmonthly");
 	if (fam.Size() > 0)
@@ -649,7 +621,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	// Fixed Charge
 	rate.FixedChargeFirstMeter = json_double(val.Item("fixedchargefirstmeter"));
-	rate.FixedChargeAddlMeter =json_double(val.Item("fixedchargeeaaddl"));
+	rate.FixedChargeAddlMeter = json_double(val.Item("fixedchargeeaaddl"));
 	rate.FixedChargeUnits = json_string(val.Item("fixedchargeunits"));
 
 	// Energy Charge
@@ -1009,7 +981,9 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_top->Add( sz_bottom, 0, wxALL|wxEXPAND, 4 );
 
 	SetSizer( sz_top );
-	
+
+    this->Layout();
+
 	//lblStatus->Hide();
 	mTimer.SetOwner( this );
 	mBusy = false;
@@ -1018,14 +992,13 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 void OpenEIUtilityRateDialog::StartHttp()
 {
 	lblStatus->SetLabel("Connecting to OpenEI...");
-	//lblStatus->Show();
 	mTimer.Start( 300, true );
 }
 
 void OpenEIUtilityRateDialog::QueryUtilities()
 {
 	lblStatus->SetLabel("Loading utility companies...");
-	wxString err;
+    wxString err;
 	wxBusyInfo busy("Getting list of utility companies...", this);
 	if (!api.QueryUtilityCompanies(mUtilityCompanies, &err))
 	{
@@ -1043,13 +1016,14 @@ void OpenEIUtilityRateDialog::QueryUtilities()
 	lblStatus->SetLabel("Ready.");
 	lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
 	lstUtilities->SetFocus();
+
 }
 
 void OpenEIUtilityRateDialog::QueryUtilitiesByZipCode()
 {
-	lblStatus->SetLabel("Loading utility companies...");
+	lblStatus->SetLabel("Loading companies...");
 	wxString err;
-	wxBusyInfo busy("Getting list of utility companies...", this);
+	wxBusyInfo busy("Getting list of companies...", this);
 	wxString zip_code = txtZipCode->GetValue();
 	if (!api.QueryUtilityCompaniesbyZipcode(zip_code, mUtilityCompanies, &err))
 	{
@@ -1065,7 +1039,7 @@ void OpenEIUtilityRateDialog::QueryUtilitiesByZipCode()
 	lstUtilities->Thaw();
 
 	lblStatus->SetLabel("Ready.");
-	lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
+	lblUtilityCount->SetLabel(wxString::Format("%d companies", (int)lstUtilities->Count()));
 	lstUtilities->SetFocus();
 }
 
@@ -1078,7 +1052,8 @@ int OpenEIUtilityRateDialog::ShowModal()
 void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 {
 	wxBusyInfo busy("Getting available rates...", this);
-	lblStatus->SetLabel(wxString::Format("Loading rates for %s...", utility_name));
+	lblStatus->SetLabel("Loading rates...");
+
 	wxString err;
 
 	wxString urdb_utility_name = "";
@@ -1102,7 +1077,7 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 	lblRateStatus->SetLabel(wxString::Format("%d rates available for %s", (int)mUtilityRates.size(), urdb_utility_name));
 
 	if (mUtilityRates.size() == 0)
-		lblStatus->SetLabel("No rates for " + utility_name);
+		lblStatus->SetLabel(wxString::Format("No rates for %s.", utility_name));
 	else
 		lblStatus->SetLabel("Ready.");
 
@@ -1171,7 +1146,7 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 	{
 		mRateData.Reset();
 	
-		lblStatus->SetLabel("Retrieving rate data for " + ssel + "...");
+		lblStatus->SetLabel("Retrieving rate data...");
 		wxString json_url;
 		wxBusyInfo busy("Getting rate data...", this);
 		if (api.RetrieveUtilityRateData(guid, mRateData, &json_url))
@@ -1193,7 +1168,7 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 			lblStatus->SetLabel("Ready.");
 		}
 		else
-			lblStatus->SetLabel("Could not get rate data for " + ssel );
+			lblStatus->SetLabel(wxString::Format("Could not get rate data for %s.",ssel));
 
 	}
 }

@@ -2877,20 +2877,22 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 	OpenEI::RateData rate;
 	OpenEI api;
 
+    wxString rate_notes;
+
 	if (api.RetrieveUtilityRateData(guid, rate))
 	{
 		cxt.result().empty_hash();
 
-		// meta data
-		cxt.result().hash_item("name").assign(rate.Header.Utility);
-		cxt.result().hash_item("schedule_name").assign(rate.Header.Name);
-		cxt.result().hash_item("source").assign(rate.Header.Source);
-		cxt.result().hash_item("description").assign(rate.Header.Description);
-		cxt.result().hash_item("start_date").assign(rate.Header.StartDate);
-		cxt.result().hash_item("end_date").assign(rate.Header.EndDate);
-		cxt.result().hash_item("basicinformationcomments").assign(rate.Header.BasicInformationComments);
-		cxt.result().hash_item("energycomments").assign(rate.Header.EnergyComments);
-		cxt.result().hash_item("demandcomments").assign(rate.Header.DemandComments);
+        // meta data
+        cxt.result().hash_item("name").assign(rate.Header.Utility);
+        cxt.result().hash_item("schedule_name").assign(rate.Header.Name);
+        cxt.result().hash_item("source").assign(rate.Header.Source);
+        cxt.result().hash_item("description").assign(rate.Header.Description);
+        cxt.result().hash_item("start_date").assign(rate.Header.StartDate);
+        cxt.result().hash_item("end_date").assign(rate.Header.EndDate);
+        cxt.result().hash_item("basicinformationcomments").assign(rate.Header.BasicInformationComments);
+        cxt.result().hash_item("energycomments").assign(rate.Header.EnergyComments);
+        cxt.result().hash_item("demandcomments").assign(rate.Header.DemandComments);
 
 		// applicability
 		cxt.result().hash_item("peakkwcapacityhistory").assign(rate.Applicability.peakkwcapacityhistory);
@@ -2935,27 +2937,31 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 			cxt.result().hash_item("metering_option").assign(2.0);
 		else if (rate.DgRules == "Buy All Sell All")
 			cxt.result().hash_item("metering_option").assign(4.0);
-		else // set to default Net Energy Metering
-			cxt.result().hash_item("metering_option").assign(0.0);
+        else // set to default Net Energy Metering
+        {
+            cxt.result().hash_item("metering_option").assign(0.0);
+            rate_notes.append(wxString::Format("Metering option not provided with rate data.\n"));
+        }
 		
 		// fixed charges
-		//  "$/day", "$/month" or "$/year"
-		if ((rate.FixedChargeUnits) == "$/month")
-			cxt.result().hash_item("monthly_fixed_charge").assign(rate.FixedChargeFirstMeter + rate.FixedChargeAddlMeter);
-		else // TO DO handle $/day and $/year
-			cxt.result().hash_item("monthly_fixed_charge").assign(0.0);
+		//  "$/day", "$/month" or "$/year" TO DO handle $/day and $/year
+        double fixed_charges = rate.FixedChargeFirstMeter + rate.FixedChargeAddlMeter;
+        cxt.result().hash_item("monthly_fixed_charge").assign(0.0);
+        if ((rate.FixedChargeUnits) == "$/month")
+            cxt.result().hash_item("monthly_fixed_charge").assign(fixed_charges);
+        else if ( fixed_charges > 0 )
+            rate_notes.append(wxString::Format("SAM does not model fixed charge rate of %f with %s units.\n", fixed_charges, rate.FixedChargeUnits));
 
 		// minimum charges
-		// "$/day", "$/month" or "$/year"
-		if (rate.MinChargeUnits == "$/month")
+		// "$/day", "$/month" or "$/year" TO DO handle $/day
+        cxt.result().hash_item("monthly_min_charge").assign(0.0);
+        cxt.result().hash_item("annual_min_charge").assign(0.0);
+        if (rate.MinChargeUnits == "$/month")
 			cxt.result().hash_item("monthly_min_charge").assign(rate.MinCharge);
 		else if ( rate.MinChargeUnits == "$/year")
 			cxt.result().hash_item("annual_min_charge").assign(rate.MinCharge);
-		else // TO DO handle $/day and $/year
-		{
-			cxt.result().hash_item("monthly_min_charge").assign(0.0);
-			cxt.result().hash_item("annual_min_charge").assign(0.0);
-		}
+        else if (rate.MinCharge > 0 )
+            rate_notes.append(wxString::Format("SAM does not model minimum charge rate of %f with %s units.\n", rate.MinCharge, rate.MinChargeUnits));
 
 		// schedules
 		if (!applydiurnalschedule(cxt, "ec_sched_weekday", rate.EnergyWeekdaySchedule)) return;
@@ -2971,70 +2977,8 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		if (!copy_mat(cxt, "dc_flat_mat", rate.DemandFlatStructure)) return;
 		if (!copy_mat(cxt, "dc_tou_mat", rate.DemandTOUStructure)) return;
 
-		/*
-		// energy rate structure, e.g. "ur_ec_p1_t1_ub"
-		bool ec_enable = false;
-		for (int period = 0; period < 12; period++)
-		{
-			for (int tier = 0; tier < 6; tier++)
-			{
-				wxString period_tier = wxString::Format("ur_ec_p%d_t%d_",period+1,tier+1);
-				cxt.result().hash_item(period_tier + "ub").assign(rate.EnergyMax[period][tier]);
-				double buy_rate = rate.EnergyBuy[period][tier] + rate.EnergyAdj[period][tier];
-				if (!ec_enable && (buy_rate != 0)) ec_enable = true;
-				cxt.result().hash_item(period_tier + "br").assign(buy_rate);
-				cxt.result().hash_item(period_tier + "sr").assign(rate.EnergySell[period][tier]);
-				// todo - handle different energy upper bound units
-			}
-		}
-		if (ec_enable)
-			cxt.result().hash_item("ec_enable").assign(1.0);
-		else
-			cxt.result().hash_item("ec_enable").assign(0.0);
-		*/
+        cxt.result().hash_item("ratenotes").assign(rate_notes);
 
-
-		/*
-
-
-		wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
-
-		lk::vardata_t vd;
-		bool dc_enable = false;
-		for (int month = 0; month < 12; month++)
-		{
-			for (int tier = 0; tier < 6; tier++)
-			{
-				wxString period_tier = wxString::Format("ur_dc_%s_t%d_", months[month], tier + 1);
-				vd = cxt.result().hash_item(period_tier + "ub");
-//				if (vd.)
-				cxt.result().hash_item(period_tier + "ub").assign(rate.FlatDemandMax[rate.FlatDemandMonth[month]][tier]);
-				double charge = rate.FlatDemandCharge[rate.FlatDemandMonth[month]][tier] + rate.FlatDemandAdj[rate.FlatDemandMonth[month]][tier];
-				if (!dc_enable && (charge != 0)) dc_enable = true;
-				cxt.result().hash_item(period_tier + "dc").assign(charge);
-			}
-		}
-		*/
-
-
-		/*
-		// demand rate structure, e.g. ur_dc_p1_t1_ub
-		for (int period = 0; period < 12; period++)
-		{
-			for (int tier = 0; tier < 6; tier++)
-			{
-				wxString period_tier = wxString::Format("ur_dc_p%d_t%d_", period + 1, tier + 1);
-				cxt.result().hash_item(period_tier + "ub").assign(rate.DemandMax[period][tier]);
-				double charge = rate.DemandCharge[period][tier] + rate.DemandAdj[period][tier];
-				if (!dc_enable && (charge != 0)) dc_enable = true;
-				cxt.result().hash_item(period_tier + "dc").assign(charge);
-			}
-		}
-		if (dc_enable)
-			cxt.result().hash_item("dc_enable").assign(1.0);
-		else
-			cxt.result().hash_item("dc_enable").assign(0.0);
-		*/
 	}
 }
 

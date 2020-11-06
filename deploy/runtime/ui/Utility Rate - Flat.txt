@@ -1294,7 +1294,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-7171
+7291
 on_load{'Utility Rate - Flat'} = define(){
 	set_battery_fom_inputs();
 	set_metering_billing_inputs();
@@ -1483,6 +1483,8 @@ on_change{'btnQueryOpenEI'} = define() {
 	value ('ur_end_date', hash{'end_date'});
 	value ('ur_uri', hash{'rateurl'});
 	
+	value( 'ur_rate_notes',hash{'ratenotes'});
+	
 	// applicability
 	value('ur_demand_min',hash{'peakkwcapacitymin'});
 	value('ur_demand_max',hash{'peakkwcapacitymax'});
@@ -1515,6 +1517,7 @@ on_change{'btnQueryOpenEI'} = define() {
 	value('ur_metering_option',hash{'metering_option'});	
 	value( 'ur_dc_enable', hash{'dc_enable'});
 	on_change{'ur_dc_enable'}(); // invoke callback for ur_ec_enable to set up enable/disable of widgets
+	set_battery_fom_inputs(); // reset to buy all / sell all for battery FOM
 	
 	// schedules
 	value ('ur_ec_sched_weekday', hash{'ec_sched_weekday'});

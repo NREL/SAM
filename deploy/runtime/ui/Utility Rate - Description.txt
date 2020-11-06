@@ -1,7 +1,7 @@
 Utility Rate - Description
-1416
-491
-20
+1419
+552
+21
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 1403
 Height
 3
-313
+376
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 9
 Y
 3
-372
+429
 Width
 3
 1403
@@ -123,7 +123,7 @@ X
 177
 Y
 3
-453
+510
 Width
 3
 90
@@ -185,7 +185,7 @@ X
 177
 Y
 3
-426
+483
 Width
 3
 90
@@ -247,7 +247,7 @@ X
 177
 Y
 3
-399
+456
 Width
 3
 90
@@ -397,7 +397,7 @@ X
 528
 Y
 3
-453
+510
 Width
 3
 90
@@ -459,7 +459,7 @@ X
 528
 Y
 3
-426
+483
 Width
 3
 90
@@ -521,7 +521,7 @@ X
 528
 Y
 3
-399
+456
 Width
 3
 90
@@ -627,13 +627,57 @@ X
 1113
 Y
 3
-396
+453
 Width
 3
 130
 Height
 3
 24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+MultilineText
+
+1
+11
+Name
+5
+13
+ur_rate_notes
+X
+3
+99
+Y
+3
+366
+Width
+3
+816
+Height
+3
+57
 Tool Tip
 5
 0
@@ -847,7 +891,7 @@ X
 864
 Y
 3
-450
+507
 Width
 3
 130
@@ -891,7 +935,7 @@ X
 864
 Y
 3
-423
+480
 Width
 3
 90
@@ -953,7 +997,7 @@ X
 864
 Y
 3
-396
+453
 Width
 3
 90
@@ -1003,7 +1047,7 @@ TabOrder
 3
 4294967295
 
-17
+18
 ur_demand_history
 3
 1
@@ -1056,13 +1100,12 @@ Electricity Rates - Description Metadata
 0
 1
 4
-5
-empty
+0
 MultilineText
 ur_end_date
 3
 4
- 
+End date
  
 Electricity Rates - Description Metadata
 0
@@ -1139,6 +1182,18 @@ Electricity Rates - Description Metadata
 4
 0
 TextEntry
+ur_rate_notes
+3
+4
+Rate notes
+ 
+ 
+0
+0
+1
+4
+0
+MultilineText
 ur_schedule_name
 3
 4
