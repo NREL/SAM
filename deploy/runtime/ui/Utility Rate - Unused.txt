@@ -706,7 +706,7 @@ Electricity Rates - Unused Items
 1
 1
 0
-Default
+MonthlyFactor
 ur_demand_window
 3
 1
