@@ -843,13 +843,13 @@ battery_per_kW
 1
 1
 1
-600
+629.47
 battery_per_kWh
 1
 1
 1
 1
-300
+206.67
 battery_power
 1
 1
@@ -2792,7 +2792,7 @@ om_replacement_cost1
 2
 1
 1
-500
+206.67
 om_replacement_cost2
 1
 2
@@ -3086,7 +3086,7 @@ property_assessed_value
 1
 1
 1
-2.45151e+06
+2451510
 property_tax_rate
 1
 1
@@ -3511,7 +3511,7 @@ thermal_load_annual_total
 1
 1
 1
-7.6463e+06
+7646300
 thermal_load_escalation
 1
 2
@@ -3653,7 +3653,7 @@ total_direct_cost
 1
 1
 1
-2.31224e+06
+2312240
 total_indirect_cost
 1
 1
@@ -3665,7 +3665,7 @@ total_installed_cost
 1
 1
 1
-2.45151e+06
+2451510
 tz
 1
 1
@@ -3683,13 +3683,13 @@ ui_loan_amount
 1
 1
 1
-2.45151e+06
+2451510
 ui_net_capital_cost
 1
 1
 1
 1
-2.45151e+06
+2451510
 ui_pv_capacity
 1
 1
