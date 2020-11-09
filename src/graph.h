@@ -60,7 +60,7 @@ public:
 	bool Read( wxInputStream &is );
 	bool Write( wxOutputStream &os );
 
-	enum { BAR, STACKED, LINE, SCATTER, CONTOUR };
+	enum { BAR, STACKED, LINE, SCATTER, CONTOUR, SECTOR };
 	int Type;
 
 	wxArrayString Y;
