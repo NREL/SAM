@@ -39,7 +39,7 @@ static wxString MyGet(const wxString &url)
 	wxEasyCurl curl;
 	curl.AddHttpHeader( "Content-type: text/plain" );
 	curl.AddHttpHeader( "Cache-Control: no-cache" );
-	curl.Get( url );
+    curl.Get(url);
 	return curl.GetDataAsString();
 }
 
@@ -83,11 +83,24 @@ void OpenEI::RateData::Reset()
 	Applicability.voltagecategory.Empty();
 	Applicability.phasewiring.Empty();
 
-	NetMetering=false;
-	MinMonthlyCharge=0.0;
-	MinAnnualCharge=0.0;
-	FixedMonthlyCharge=0.0;
+	DgRules="";
+	MinCharge = 0.0;
+	MinChargeUnits = "";
 
+	FixedChargeFirstMeter = 0.0;
+	FixedChargeAddlMeter = 0.0;
+	FixedChargeUnits = "";
+
+	DemandFlatStructure.resize_fill(12, 4, 0);
+
+	for (i = 0; i < 12; i++)
+	{
+		FlatDemandMonth[i] = 0;
+		DemandFlatStructure.at(i, 0) = i;
+		DemandFlatStructure.at(i, 1) = 1;
+		DemandFlatStructure.at(i, 2) = 1e+38;
+		DemandFlatStructure.at(i, 3) = 0;
+	}
 
 	HasEnergyCharge=false;	
 
@@ -99,7 +112,6 @@ void OpenEI::RateData::Reset()
 	EnergyStructure.at(0, 3) = 0;
 	EnergyStructure.at(0, 4) = 0;
 	EnergyStructure.at(0, 5) = 0;
-
 	
 	for (i = 0; i < 12; i++)
 	{
@@ -109,8 +121,6 @@ void OpenEI::RateData::Reset()
 			EnergyWeekendSchedule[i][k] = 1;
 		}
 	}
-	
-	// TODO - coincident demand charges
 
 	HasDemandCharge = false;
 	DemandRateUnit = "kW"; // TODO update to handle different values
@@ -141,26 +151,49 @@ void OpenEI::RateData::Reset()
 			DemandWeekendSchedule[i][k] = 1;
 		}
 	}
+
+	// unused items
+
+	Unused.IsDefault = false;
+
+	for (i = 0; i < 12; i++)
+	{
+		Unused.FuelAdjustmentsMonthly[i] = 0.0;
+		Unused.DemandRatchetPercentage[i] = 0.0;
+	}
+
+	Unused.ServiceType = "";
+	Unused.DemandWindow = 0;
+
+	Unused.CoincidentRateStructure.resize_fill(1, 4, 0);
+	Unused.CoincidentRateStructure.at(0, 0) = 1;
+	Unused.CoincidentRateStructure.at(0, 1) = 1;
+	Unused.CoincidentRateStructure.at(0, 2) = 1e+38;
+	Unused.CoincidentRateStructure.at(0, 3) = 0;
+
+	for (i = 0; i < 12; i++)
+	{
+		for (int k = 0; k < 24; k++)
+		{
+			Unused.CoincidentSchedule[i][k] = 1;
+		}
+	}
+
+	Unused.CoincidentRateUnit.Empty();
 	
+	Unused.DemandReactivePowerCharge = 0;
+
 }
 
 bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 {
 
-// update from Jay 8/18/15 for aliases interantional and national
-// "title" changed back to "label" and "query"->"categorymembers" changed to "items"
-//	wxString url = "https://dev-api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
+	// OpenEI service returns list of utility companies and their aliases https://openei.org/services/doc/rest/util_cos/?version=3
+	wxString url = SamApp::WebApi("urdb_companies_all");
+	url.Replace("<SCOPE>", "international");
 
-// Pushed to production update from Jay 10/2/15
-	wxString url = "https://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key) + "&scope=international";
-// URDB v5 update from Jay 4/7/17 - remove scope=international 3823 companies US Only above is correct according to documentation at https://dev.openei.org/services/doc/rest/util_cos/?version=3 but only returns 11 companies
-//	wxString url = "https://api.openei.org/utility_companies?version=3&format=json&api_key=" + wxString(sam_api_key);
-// 4/8/17 - updated and working in 2017.1.17 release and in trunk. International and US rates 3920 utilities
-
-
-//	wxString json_data = wxWebHttpGet(url);
 	wxString json_data = MyGet(url);
-	if (json_data.IsEmpty())
+	if (json_data.IsEmpty() )
 	{
 		if (err) *err = "Could not retrieve JSON data for utility rate companies.";
 		return false;
@@ -176,13 +209,10 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 	names.Clear();
 	wxJSONValue item_list = root.Item("items");
-//	wxJSONValue query = root.Item("query");
-//	wxJSONValue item_list = query.Item("categorymembers");
 	int count = item_list.Size();
 	for (int i=0;i<count;i++)
 	{
 		wxString buf = item_list[i].Item("label").AsString();
-//		wxString buf = item_list[i].Item("title").AsString();
 		buf.Replace("&amp;", "&");
 			names.Add( buf );
 	}
@@ -192,14 +222,12 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 }
 
-
-
 bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayString &names, wxString *err)
 {
 
-	//  based on email from Jay Huggins 7/8/14 - use latest format - still at version 2
-//	wxString url = "https://developer.nrel.gov/api/utility_rates/v3.json?api_key=rJzFOTOJhNHcLOnPmW2TNCLV8I4HHLgKddAycGpn&address=" + zipcode;
-	wxString url = "https://developer.nrel.gov/api/utility_rates/v3.json?api_key=" + wxString(sam_api_key) + "&address=" + zipcode;
+	// NREL Developer API to list utility companies by zip code https://developer.nrel.gov/docs/electricity/utility-rates-v3/
+	wxString url = SamApp::WebApi("urdb_companies_by_zip");
+	url.Replace("<ADDRESS>", zipcode);
 
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
@@ -226,8 +254,10 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 		return false;
 	}
 
+	// OpenEI ask query to return company name given EIAID https://openei.org/services/doc/ask/
 	company_id.Replace("|", "%7C%7C"); // urlencode
-	url = "https://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AUtility+Companies%5D%5D%5B%5BEiaUtilityId%3A%3A" + company_id + "%5D%5D&po=%3FEiaUtilityId%0D%0A&eq=yes&p%5Bformat%5D=json";
+	url = SamApp::WebApi("urdb_name");
+	url.Replace("<EIAID>", company_id);
 
 	json_data = MyGet(url);
 	if (json_data.IsEmpty())
@@ -243,17 +273,6 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	}
 
 	names.Clear();
-	// fails in 2017.1.17 and previous versions
-	/*
-	item_list = root.Item("items");
-	int count = item_list.Size();
-	for (int i = 0; i<count; i++)
-	{
-		wxString buf = item_list[i].Item("label").AsString();
-		buf.Replace("&amp;", "&");
-		names.Add(buf);
-	}
-	*/
 	item_list = root["results"];
 	wxArrayString list_name = item_list.GetMemberNames();
 	// list_name[0] should be resolved name
@@ -272,17 +291,14 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 
 }
 
-
-
-
 bool OpenEI::ResolveUtilityName(const wxString &name, wxString *urdb_name, wxString *err)
 {
 
 	wxString utlnm = name;
 	utlnm.Replace("&", "%26");
-	// production https://dev.openei.org/services/doc/rest/util_rates?version=3
 
-	wxString url = "https://en.openei.org/w/index.php?title=Special%3AAsk&q=%5B%5BCategory%3AUtility+Companies%5D%5D%5B%5BEiaUtilityId%3A%3A%2B%5D%5D%5B%5B" + utlnm + "%5D%5D&po=%3FEiaUtilityId%0D%0A%0D%0A&p%5Bformat%5D=json";
+	wxString url = SamApp::WebApi("urdb_name_from_eiaid");
+	url.Replace("<EIAID>", utlnm);
 
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
@@ -324,38 +340,70 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 {
 	wxString utlnm = name;
 	utlnm.Replace("&", "%26");
-
-	// dev server for international rates per Jay email 8/12/13
-//	wxString url = "https://dev-api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
-
-	// pushed to production update from Jay 10/2/15
-	wxString url = "https://api.openei.org/utility_rates?version=4&detail=minimal&format=json&ratesforutility=" + utlnm + "&api_key=" + wxString(sam_api_key);
-//	wxLogStatus("urdb url=" + url);
 	
-	wxString json_data = MyGet(url);
+	int max_limit = 500;
+	int offset;
+	int old_offset;
+	int count;
+	wxString url;
+	wxString json_data;
+	wxJSONReader reader;
+	wxJSONValue root;
+	wxJSONValue item_list;
+	wxJSONValue items;
+
+	// initial query to get first 500 rates
+	// OpenEI International Utility Rate Database https://openei.org/services/doc/rest/util_rates/?version=7
+	offset = 0;
+	url = SamApp::WebApi("urdb_rates");
+	url.Replace("<LIMIT>", wxString::Format("%d", max_limit));
+	url.Replace("<DETAIL>", "minimal"); // don't need rate details for this call
+	url.Replace("&offset=<OFFSET>", wxString::Format("&offset=%d", offset));
+	url.Replace("<UTILITYNAME>", utlnm);
+	url.Replace("<GUID>", "");
+	url.Replace("<APIKEY>", wxString(sam_api_key));
+
+	json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
 		if (err) *err = "Could not retrieve rate information for " + name + " " + url;
 		return false;
 	}
 
-	wxJSONReader reader;
 //	reader.SetSkipStringDoubleQuotes(true);
-	wxJSONValue root;
+
 	if (reader.Parse( json_data, &root )!=0)
 	{
 		if (err) *err = "Could not process returned JSON data for utility rates for " + name;
 		return false;
 	}
 
+	item_list = root.Item("items");
+
 	rates.clear();
-	wxJSONValue item_list = root.Item("items");
-	int count = item_list.Size();
+	// download additional rates, up to 500 at a time
+	old_offset = offset;
+	offset = max_limit + 1;
+	count = item_list.Size();
+	while (count != 0)
+	{
+		url.Replace(wxString::Format("&offset=%d",old_offset), wxString::Format("&offset=%d", offset));
+		json_data = MyGet(url);
+		reader.Parse(json_data, &root);
+		items = root.Item("items");
+		count = items.Size();
+		for (int i = 0; i < count; i++)
+		{
+			item_list[i+offset ] = items[i];
+		}
+		old_offset = offset;
+		offset += max_limit;
+	}
+
+	count = item_list.Size();
 	for (int i=0;i<count;i++)
 	{
-
 		RateInfo x;
-//		x.GUID = json_string(item_list[i].Item("label")).Mid(5);
 		x.GUID = json_string(item_list[i].Item("label"));
 		x.Name = json_string(item_list[i].Item("name"));
 		x.Utility = json_string(item_list[i].Item("utility"));
@@ -366,8 +414,6 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 		x.uri = json_string(item_list[i].Item("uri"));
 		x.StartDate = GetDate(json_integer(item_list[i].Item("startdate")));
 		x.EndDate = GetDate(json_integer(item_list[i].Item("enddate")));
-//		wxLogStatus("urdb startdate=" + x.StartDate);
-//		wxLogStatus("urdb enddate=" + x.EndDate);
 		rates.push_back(x);
 	}
 
@@ -376,32 +422,21 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	return true;
 }
 
-int OpenEI::UtilityCompanyRateCount(const wxString &name)
-{
-	// production
-	// rest service going away - update to api.openei.org per
-	// https://en.openei.org/services/doc/rest/util_rates?version=3
-	//	wxString url = "https://en.openei.org/services/rest/utility_rates?version=3&limit=500&detail=minimal&format=json_plain&ratesforutility=" + name;
-	wxString url = "https://api.openei.org/utility_rates?version=3&limit=500&detail=minimal&format=json_plain&ratesforutility=" + name + "&api_key=" + wxString(sam_api_key);
-	wxString json_data = MyGet(url);
-	if (json_data.IsEmpty())
-		return 0;
-
-	wxJSONReader reader;
-	wxJSONValue root;
-	if (reader.Parse( json_data, &root )!=0)
-		return 0;
-	
-	return root.Item("items").Size();
-}
-
 bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url, wxString *err)
 {
 	// international rates
 	//wxString url = "https://dev-api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
 
 	// pushed to production update from Jay 10/2/15
-	wxString url = "https://api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
+	//wxString url = "https://api.openei.org/utility_rates?version=4&format=json&detail=full&getpage=" + guid + "&api_key=" + wxString(sam_api_key);
+
+	wxString url = SamApp::WebApi("urdb_rates");
+	url.Replace("<LIMIT>", "1");
+	url.Replace("<DETAIL>", "full"); // don't need rate details for this call
+	url.Replace("<OFFSET>", "");
+	url.Replace("<UTILITYNAME>", "");
+	url.Replace("<GUID>", guid);
+	url.Replace("<APIKEY>", wxString(sam_api_key));
 
 	if (json_url) *json_url = url;
 
@@ -441,17 +476,13 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Header.DemandComments = json_string(val.Item("demandcomments"));
 	rate.Header.BasicInformationComments = json_string(val.Item("demandcomments"));
 	rate.Header.JSONURL = url;
-//	rate.Header.RateURL = "https://en.openei.org/apps/USURDB/rate/view/" + guid;
-	rate.Header.RateURL = "https://en.openei.org/apps/IURDB/rate/view/" + guid;
+	rate.Header.RateURL = SamApp::WebApi("urdb_view_rate") + "/rate/view/" + guid;
 
 	rate.Header.StartDate = GetDate(json_integer(val.Item("startdate")));
 	rate.Header.EndDate = GetDate(json_integer(val.Item("enddate")));
 
-	// update to handle null return values (debug assert error)
-	bool net_metering = true;
-	if (val.Item("usenetmetering").GetType() == wxJSONTYPE_BOOL)
-		net_metering = val.Item("usenetmetering").AsBool();
-	rate.NetMetering = net_metering;
+	// Metering Option
+	rate.DgRules = json_string(val.Item("dgrules"));
 
 	// Applicability
 	rate.Applicability.peakkwcapacityhistory = json_double(val.Item("peakkwcapacityhistory"));
@@ -465,15 +496,139 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Applicability.voltagecategory = json_string(val.Item("voltagecategory"));
 	rate.Applicability.phasewiring = json_string(val.Item("phasewiring"));
 
+	// Unused Items
 
-	wxJSONValue v;
-	
-	rate.MinAnnualCharge = json_double(val.Item("annualmincharge"));
-	rate.MinMonthlyCharge = json_double(val.Item("minmonthlycharge"));
-	rate.FixedMonthlyCharge = json_double(val.Item("fixedmonthlycharge"));
+	rate.Unused.HasUnusedItems = false;
 
-	/// Energy Charge
+	wxJSONValue isd = val.Item("is_default");
+	rate.Unused.IsDefault = isd.AsBool();
 
+	wxJSONValue st = val.Item("servicetype");
+	rate.Unused.ServiceType = st.AsString();
+
+	wxJSONValue fam = val.Item("fueladjustmentsmonthly");
+	if (fam.Size() > 0)
+	{
+		rate.Unused.HasUnusedItems = true;
+		for (int i = 0; i < 12; i++)
+			rate.Unused.FuelAdjustmentsMonthly[i] = fam[i].AsDouble();
+	}
+
+	wxJSONValue dw = val.Item("demandwindow");
+	if (dw.Size() > 0)
+	{
+		rate.Unused.HasUnusedItems = true;
+		rate.Unused.DemandWindow = dw.AsDouble();
+	}
+
+	wxJSONValue dmp = val.Item("demandratchetpercentage");
+	if (dmp.Size() > 0)
+	{
+		rate.Unused.HasUnusedItems = true;
+		for (int i = 0; i < 12; i++)
+			rate.Unused.DemandRatchetPercentage[i] = dmp[i].AsDouble();
+	}
+
+	// energy, fixed, and demand attributes
+
+	wxArrayString key;
+
+	wxJSONValue ea = val.Item("energyattrs");
+	wxString ea_str = "";
+	if (ea.IsArray())
+	{
+		rate.Unused.HasUnusedItems = true;
+		for (int i = 0; i < ea.Size(); i++)
+		{
+			key = ea[i].GetMemberNames();
+			ea_str.Append(wxString::Format("%s, %s\n",key[0],ea[i].Item(key[0]).AsString()));
+		}
+		rate.Unused.EnergyAttrs = ea_str;
+	}
+
+	wxJSONValue fa = val.Item("fixedattrs");
+	wxString fa_str = "";
+	if (fa.IsArray())
+	{
+		rate.Unused.HasUnusedItems = true;
+		for (int i = 0; i < fa.Size(); i++)
+		{
+			key = fa[i].GetMemberNames();
+			ea_str.Append(wxString::Format("%s, %s\n", key[0], fa[i].Item(key[0]).AsString()));
+		}
+		rate.Unused.FixedAttrs = fa_str;
+	}
+
+	wxJSONValue da = val.Item("demandattrs");
+	wxString da_str = "";
+	if (da.IsArray())
+	{
+		rate.Unused.HasUnusedItems = true;
+		for (int i = 0; i < da.Size(); i++)
+		{
+			key = da[i].GetMemberNames();
+			da_str.Append(wxString::Format("%s, %s\n", key[0], da[i].Item(key[0]).AsString()));
+		}
+		rate.Unused.DemandAttrs = da_str;
+	}
+
+	rate.Unused.CoincidentRateUnit = json_string(val.Item("coincidentrateunit"));
+
+	int num_cr_rows = 0;
+	wxJSONValue cr_periods = val.Item("coincidentratestructure");
+	if (cr_periods.IsArray())
+	{
+		for (int period = 0; period < cr_periods.Size(); period++)
+		{
+			wxJSONValue cr_tier = cr_periods[period];
+			if (cr_tier.IsArray())
+			{
+				for (int tier = 0; tier < cr_tier.Size(); tier++)
+				{
+					num_cr_rows++;
+				}
+			}
+		}
+	}
+	if (num_cr_rows > 0)
+	{
+		rate.Unused.HasCoincidentRate = true;
+		rate.Unused.HasUnusedItems = true;
+		rate.Unused.CoincidentRateStructure.resize_fill(num_cr_rows, 4, 0.0);
+		int cr_row = 0;
+		for (int period = 0; period < cr_periods.Size(); period++)
+		{
+			wxJSONValue cr_tier = cr_periods[period];
+			for (int tier = 0; tier < cr_tier.Size(); tier++)
+			{
+				double max = json_double(cr_tier[tier].Item("max"), 1e38, &rate.Unused.HasCoincidentRate);
+				double charge = json_double(cr_tier[tier].Item("rate"), 0.0, &rate.Unused.HasCoincidentRate);
+				double adj = json_double(cr_tier[tier].Item("adj"), 0.0, &rate.Unused.HasCoincidentRate);
+				rate.Unused.CoincidentRateStructure.at(cr_row, 0) = period + 1;
+				rate.Unused.CoincidentRateStructure.at(cr_row, 1) = tier + 1;
+				rate.Unused.CoincidentRateStructure.at(cr_row, 2) = max;
+				rate.Unused.CoincidentRateStructure.at(cr_row, 3) = charge + adj;
+				cr_row++;
+			}
+		}
+	}
+
+	if (!RetrieveDiurnalData(val.Item("coincidentschedule"), rate.Unused.CoincidentSchedule)) return false;
+
+	// Minimum Charge
+	rate.MinCharge = json_double(val.Item("mincharge"));
+	rate.MinChargeUnits = json_string(val.Item("minchargeunits"));
+    if (rate.MinChargeUnits == "$/day")
+        rate.Unused.HasUnusedItems = true;
+
+	// Fixed Charge
+	rate.FixedChargeFirstMeter = json_double(val.Item("fixedchargefirstmeter"));
+	rate.FixedChargeAddlMeter = json_double(val.Item("fixedchargeeaaddl"));
+	rate.FixedChargeUnits = json_string(val.Item("fixedchargeunits"));
+    if (rate.FixedChargeUnits != "$/month")
+        rate.Unused.HasUnusedItems = true;
+
+	// Energy Charge
 	rate.HasEnergyCharge = true;
 
 	// first check for energy rate structure and resize matrix if present
@@ -506,7 +661,6 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			for (int tier = 0; tier < ers_tier.Size(); tier++)
 			{
 				double max = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
-
 				double buy = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
 				double sell = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
 				double adj = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
@@ -527,32 +681,16 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 				rate.EnergyStructure.at(es_row, 4) = buy+adj;
 				rate.EnergyStructure.at(es_row, 5) = sell;
 				es_row++;
-				/*
-				// SAMnt limited to float max = 3.4e38
-				rate.EnergyMax[period][tier] = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
-
-				rate.EnergyBuy[period][tier] = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
-				rate.EnergySell[period][tier] = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
-				rate.EnergyAdj[period][tier] = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
-				rate.EnergyMaxUnit[period][tier] = json_string(ers_tier[tier].Item("unit"));
-				*/
 			}
 		}
 	}
 
 	if (!RetrieveDiurnalData(val.Item("energyweekdayschedule"), rate.EnergyWeekdaySchedule)) return false;
 	if (!RetrieveDiurnalData(val.Item("energyweekendschedule"), rate.EnergyWeekendSchedule)) return false;
-
 	
-	
-	
-	
-	
-	/// DEMAND CHARGES
+	// Demand Charge
 	rate.HasDemandCharge = true;
-
 	rate.DemandRateUnit = json_string( val.Item("demandrateunit") );
-
 	rate.DemandReactivePower = json_double( val.Item("demandreactivepowercharge") );
 
 	int num_months = 0;
@@ -608,13 +746,6 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 						rate.DemandFlatStructure.at(fd_row, 2) = max;
 						rate.DemandFlatStructure.at(fd_row, 3) = charge + adj;
 						fd_row++;
-
-						/*
-						// SAMnt limited to float max = 3.4e38
-						rate.FlatDemandMax[period][tier] = json_double(fds_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
-						rate.FlatDemandCharge[period][tier] = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
-						rate.FlatDemandAdj[period][tier] = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
-						*/
 					}
 				}
 			}
@@ -661,22 +792,12 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 				rate.DemandTOUStructure.at(ds_row, 2) = max;
 				rate.DemandTOUStructure.at(ds_row, 3) = charge + adj;
 				ds_row++;
-
-
-				/*
-
-				// SAMnt limited to float max = 3.4e38
-				rate.DemandMax[period][tier] = json_double(drs_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
-				rate.DemandCharge[period][tier] = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
-				rate.DemandAdj[period][tier] = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
-				*/
 			}
 		}
 	}
 	
 	if (!RetrieveDiurnalData(val.Item("demandweekdayschedule"), rate.DemandWeekdaySchedule)) return false;
 	if (!RetrieveDiurnalData(val.Item("demandweekendschedule"), rate.DemandWeekendSchedule)) return false;
-
 
 	return true;
 }
@@ -711,11 +832,11 @@ bool OpenEI::RetrieveDiurnalData(wxJSONValue &month_ary, double sched[12][24])
 #include <wex/metro.h>
 #include <wex/exttext.h>
 
-
-
 enum {
   ID_btnApply,
   ID_lblStatus,
+  ID_lblActiveRateCount,
+  ID_lblRateStatus,
   ID_hypOpenEILink,
   ID_txtRateDescription,
   ID_txtRateEndDate,
@@ -748,11 +869,12 @@ END_EVENT_TABLE()
 OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxString &title, const wxString &market)
 	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 {
+
 	cboResCom = new wxChoice(this, ID_cboResCom);
-	cboResCom->Append("All Schedules");
-	cboResCom->Append("Residential Only");
-	cboResCom->Append("Commercial Only");
-	cboResCom->Append("Lighting Only");
+	cboResCom->Append("All");
+	cboResCom->Append("Residential");
+	cboResCom->Append("Commercial");
+	cboResCom->Append("Lighting");
 
 	int cbo_ndx=0;
 	for (int i=0; i<(int)cboResCom->GetCount(); i++)
@@ -765,8 +887,8 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	}
 	cboResCom->SetSelection(cbo_ndx);
 
-	chkActiveOnly = new wxCheckBox(this, ID_chkActiveOnly, "Show Active Only");
-	chkActiveOnly->SetValue(false);
+	chkActiveOnly = new wxCheckBox(this, ID_chkActiveOnly, "Show active");
+	chkActiveOnly->SetValue(true);
 
 	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "Show all");
 	lblUtilityCount = new wxStaticText(this, ID_lblStatus, "");
@@ -774,18 +896,17 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	lstUtilities = new AFSearchListBox(this, ID_lstUtilities);
 
 	lstRates = new AFSearchListBox(this, ID_lstRates);
+	lblRateStatus = new wxStaticText(this, ID_lblRateStatus, "Select a utility to show available rates.");
 
 	txtRateName = new wxExtTextCtrl(this, ID_txtRateName);
 	txtRateName->SetEditable( false );
 	txtRateName->SetForegroundColour( wxColour(0, 0, 0) );
 	txtRateName->SetBackgroundColour( wxColour(255, 255, 255) );
 
-
 	txtRateStartDate = new wxExtTextCtrl(this, ID_txtRateStartDate);
 	txtRateStartDate->SetEditable(false);
 	txtRateStartDate->SetForegroundColour(wxColour(0, 0, 0));
 	txtRateStartDate->SetBackgroundColour(wxColour(255, 255, 255));
-
 
 	txtRateEndDate = new wxExtTextCtrl(this, ID_txtRateEndDate);
 	txtRateEndDate->SetEditable(false);
@@ -797,17 +918,15 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	txtRateGUID->SetForegroundColour(wxColour(0, 0, 0));
 	txtRateGUID->SetBackgroundColour(wxColour(255, 255, 255));
 
-
 	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY );
-	
-	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Go to rate page on OpenEI.org...", "https://en.openei.org/wiki/Utility_Rate_Database" );
-	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Rate JSON data page...", "https://en.openei.org/wiki/Utility_Rate_Database");
+
+	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "View rate on OpenEI website...", "https://en.openei.org/wiki/Utility_Rate_Database");
+	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Get rate as JSON...", "https://en.openei.org/wiki/Utility_Rate_Database");
 
 	lblStatus = new wxStaticText(this, ID_lblStatus, "");
 	
 	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate");
-	btnClose = new wxButton(this, ID_btnClose, "Close");
-
+	btnClose = new wxButton(this, ID_btnClose, "Cancel");
 
 	txtZipCode = new wxExtTextCtrl(this);
 	btnQueryZipCode = new wxButton(this, ID_btnQueryZipCode, "Search by zip code");
@@ -827,17 +946,11 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_left->Add( lstUtilities, 1, wxALL|wxEXPAND, 0 );
 	sz_left->Add( sz_utilitites);
 
-
-	wxBoxSizer *sz_right_top = new wxBoxSizer( wxHORIZONTAL );
-	sz_right_top->Add( new wxStaticText(this, wxID_ANY, "Available rate schedules"), 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-	sz_right_top->Add( cboResCom, 0, wxALL|wxEXPAND, 3 );
-
 	wxFlexGridSizer *sz_right_grid = new wxFlexGridSizer(2);
 	sz_right_grid->AddGrowableCol(1);
 	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Name"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	sz_right_grid->Add( txtRateName, 1, wxALL|wxEXPAND, 2 );	
 	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Description"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
-//	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Applicability"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 	sz_right_grid->Add(txtRateDescription, 1, wxALL | wxEXPAND, 2);
 	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Start"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	sz_right_grid->Add( txtRateStartDate, 1, wxALL|wxEXPAND, 2 );	
@@ -846,30 +959,35 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "GUID"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 	sz_right_grid->Add(txtRateGUID, 1, wxALL | wxEXPAND, 2);
 
+	wxBoxSizer *sz_select_rates = new wxBoxSizer(wxHORIZONTAL);
+	sz_select_rates->Add(cboResCom, 0, wxRIGHT, 10 );
+	sz_select_rates->Add(chkActiveOnly, 2, wxEXPAND, 0);
+
 	wxBoxSizer *sz_right = new wxBoxSizer(wxVERTICAL);
-	sz_right->Add(sz_right_top, 0, wxALL | wxEXPAND);
-	sz_right->Add(chkActiveOnly, 0, wxALL | wxEXPAND);
-	sz_right->Add(lstRates, 1, wxALL | wxEXPAND);
-	sz_right->Add( sz_right_grid, 2, wxALL|wxEXPAND );
+	sz_right->Add(lblRateStatus, 0, wxALL | wxEXPAND);
+	sz_right->Add(sz_select_rates, 0, wxALL|wxEXPAND, 3);
+	sz_right->Add(lstRates, wxEXPAND, wxALL | wxEXPAND);
+	sz_right->Add(sz_right_grid, 2, wxALL|wxEXPAND, 3 );
 	sz_right->Add(hypOpenEILink, 0, wxALL | wxEXPAND);
 	sz_right->Add(hypJSONLink, 0, wxALL | wxEXPAND);
-
 
 	wxBoxSizer *sz_main = new wxBoxSizer(wxHORIZONTAL ); 
 	sz_main->Add( sz_left, 2, wxALL|wxEXPAND, 4 );
 	sz_main->Add( sz_right, 3, wxALL|wxEXPAND, 4 );
 	
-	wxBoxSizer *sz_bottom = new wxBoxSizer(wxHORIZONTAL );
-	sz_bottom->Add( lblStatus, 1, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
-	sz_bottom->Add( btnApply, 0, wxALL|wxEXPAND, 4 );
-	sz_bottom->Add( btnClose, 0, wxALL|wxEXPAND, 4 );
+	wxBoxSizer *sz_bottom = new wxBoxSizer(wxHORIZONTAL);
+	sz_bottom->Add( lblStatus, 3, wxEXPAND, 0 );
+	sz_bottom->Add( btnApply, 0, wxALL, 4 );
+	sz_bottom->Add( btnClose, 0, wxALL, 4 );
 
 	wxBoxSizer *sz_top = new wxBoxSizer(wxVERTICAL);
 	sz_top->Add( sz_main, 1, wxALL|wxEXPAND, 4 );
 	sz_top->Add( sz_bottom, 0, wxALL|wxEXPAND, 4 );
 
 	SetSizer( sz_top );
-	
+
+    this->Layout();
+
 	//lblStatus->Hide();
 	mTimer.SetOwner( this );
 	mBusy = false;
@@ -878,15 +996,14 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 void OpenEIUtilityRateDialog::StartHttp()
 {
 	lblStatus->SetLabel("Connecting to OpenEI...");
-	lblStatus->Show();
 	mTimer.Start( 300, true );
 }
 
 void OpenEIUtilityRateDialog::QueryUtilities()
 {
 	lblStatus->SetLabel("Loading utility companies...");
-	wxString err;
-	wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
+    wxString err;
+	wxBusyInfo busy("Getting list of utility companies...", this);
 	if (!api.QueryUtilityCompanies(mUtilityCompanies, &err))
 	{
 		busy.~wxBusyInfo();
@@ -903,13 +1020,14 @@ void OpenEIUtilityRateDialog::QueryUtilities()
 	lblStatus->SetLabel("Ready.");
 	lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
 	lstUtilities->SetFocus();
+
 }
 
 void OpenEIUtilityRateDialog::QueryUtilitiesByZipCode()
 {
-	lblStatus->SetLabel("Loading utility companies...");
+	lblStatus->SetLabel("Loading companies...");
 	wxString err;
-	wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
+	wxBusyInfo busy("Getting list of companies...", this);
 	wxString zip_code = txtZipCode->GetValue();
 	if (!api.QueryUtilityCompaniesbyZipcode(zip_code, mUtilityCompanies, &err))
 	{
@@ -925,7 +1043,7 @@ void OpenEIUtilityRateDialog::QueryUtilitiesByZipCode()
 	lstUtilities->Thaw();
 
 	lblStatus->SetLabel("Ready.");
-	lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
+	lblUtilityCount->SetLabel(wxString::Format("%d companies", (int)lstUtilities->Count()));
 	lstUtilities->SetFocus();
 }
 
@@ -937,36 +1055,33 @@ int OpenEIUtilityRateDialog::ShowModal()
 
 void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 {
-	lblStatus->SetLabel("Loading rates for " + utility_name + "...");
+	wxBusyInfo busy("Getting available rates...", this);
+	lblStatus->SetLabel("Loading rates...");
+
 	wxString err;
-	//wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
 
-	//wxString urdb_utility_name = utility_name;
-
-	/* skip for international rates */
 	wxString urdb_utility_name = "";
 	// first resolve aliases
 	if (!api.ResolveUtilityName(utility_name, &urdb_utility_name, &err))
 	{
-		// international rates - no resolving
-//		wxMessageBox("Error:\n\n" + err);
-//		return;
 		urdb_utility_name = utility_name;
 	}
+
 	if (urdb_utility_name == "")
 		urdb_utility_name = utility_name;
 
-
 	// get any rates
-	//if (!api.QueryUtilityRates(utility_name, mUtilityRates, &err))
 	if (!api.QueryUtilityRates(urdb_utility_name, mUtilityRates, &err))
 	{
+		busy.~wxBusyInfo();
 		wxMessageBox("Error:\n\n" + err);
 		return;
 	}
 
+	lblRateStatus->SetLabel(wxString::Format("%d rates available for %s", (int)mUtilityRates.size(), urdb_utility_name));
+
 	if (mUtilityRates.size() == 0)
-		lblStatus->SetLabel("No rates for " + utility_name);
+		lblStatus->SetLabel(wxString::Format("No rates for %s.", utility_name));
 	else
 		lblStatus->SetLabel("Ready.");
 
@@ -993,12 +1108,15 @@ void OpenEIUtilityRateDialog::UpdateRateList()
 		if (cboResCom->GetSelection() == 3 && mUtilityRates[i].Sector.Lower() != "lighting")
 			continue;
 
-		//		wxString rate = mUtilityRates[i].Sector + "-" + mUtilityRates[i].Name;
 		wxString rate = mUtilityRates[i].Name + "  (" + mUtilityRates[i].GUID + ")";
 		lstRates->Append(rate);
 		mGUIDList.Add(mUtilityRates[i].GUID);
-		//		wxLogStatus("urdb GUID, Rate " + mGUIDList[mGUIDList.Count() - 1] + "," + lstRates->GetItem(lstRates->Count() - 1));
 	}
+
+	if ( chkActiveOnly->GetValue() )
+		chkActiveOnly->SetLabel(wxString::Format("Show active (%d active rates)", (int)lstRates->Count()));
+	else
+		chkActiveOnly->SetLabel(wxString::Format("Show active"));
 
 	lstRates->Thaw();
 	UpdateRateData();
@@ -1026,65 +1144,35 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 		txtRateStartDate->SetValue(wxEmptyString);
 		txtRateEndDate->SetValue(wxEmptyString);
 		txtRateGUID->SetValue(wxEmptyString);
-		//		hypOpenEILink->SetURL("https://en.openei.org/wiki/Gateway:Utilities");
-		hypOpenEILink->SetURL("https://en.openei.org/wiki/Utility_Rate_Database");
+		hypOpenEILink->SetURL(SamApp::WebApi("urdb_view_rate"));
 	}
 	else
 	{
 		mRateData.Reset();
 	
-		lblStatus->SetLabel("Retrieving rate data for " + ssel + "...");
+		lblStatus->SetLabel("Retrieving rate data...");
 		wxString json_url;
-		wxBusyInfo busy("Communicating with OpenEI.org... please wait", this);
+		wxBusyInfo busy("Getting rate data...", this);
 		if (api.RetrieveUtilityRateData(guid, mRateData, &json_url))
 		{
 			
-			txtRateName->SetValue( mRateData.Header.Utility + ": " + mRateData.Header.Name );
-
+			txtRateName->SetValue(mRateData.Header.Name);
 			txtRateStartDate->SetValue( mRateData.Header.StartDate );
 			txtRateEndDate->SetValue(mRateData.Header.EndDate);
 			txtRateGUID->SetValue(mRateData.Header.GUID);
 
 			wxString desc = mRateData.Header.Description;
-
-			/*
-			wxString desc = mRateData.Header.Description + "\n\n";
-
-			desc += wxString::Format("Has Energy Charges? %s\n", mRateData.HasEnergyCharge?"yes":"no");
-			desc += wxString::Format("Has Demand Charges? %s\n", mRateData.HasDemandCharge?"yes":"no");
-			desc += wxString::Format("\nGUID: '%s'\n", mRateData.Header.GUID.c_str() );
-			desc += wxString::Format("\nEnergy comments: '%s'\n", mRateData.Header.EnergyComments.c_str());
-			desc += wxString::Format("\nDemand comments: '%s'\n", mRateData.Header.DemandComments.c_str());
 			
-			wxString desc = "";
-			desc += "Deamnd\n";
-			desc += wxString::Format("\tMinimum %lg kW\n", mRateData.Applicability.peakkwcapacitymin);
-			desc += wxString::Format("\tMaximum %lg kW\n", mRateData.Applicability.peakkwcapacitymax);
-			desc += wxString::Format("\tHistory %lg months\n", mRateData.Applicability.peakkwcapacityhistory);
-			desc += "Energy\n";
-			desc += wxString::Format("\tMinimum %lg kWh\n", mRateData.Applicability.peakkwhusagemin);
-			desc += wxString::Format("\tMaximum %lg kWh\n", mRateData.Applicability.peakkwhusagemax);
-			desc += wxString::Format("\tHistory %lg months\n", mRateData.Applicability.peakkwhusagehistory);
-			desc += "Service Voltage\n";
-			desc += wxString::Format("\tMinimum %lg V\n", mRateData.Applicability.voltageminimum);
-			desc += wxString::Format("\tMaximum %lg V\n", mRateData.Applicability.voltagemaximum);
-			desc += "Character of Service\n";
-			desc += wxString::Format("\tVoltage Category %s\n", mRateData.Applicability.voltagecategory.c_str());
-			desc += wxString::Format("\tPhase Wiring %s\n", mRateData.Applicability.phasewiring.c_str());
-			*/
 			txtRateDescription->SetValue( desc );
-			
-//			wxString rate_url = "https://en.openei.org/apps/USURDB/rate/view/" + guid;
-			wxString rate_url = "https://en.openei.org/apps/IURDB/rate/view/" + guid;
+			wxString rate_url = SamApp::WebApi("urdb_view_rate") + "/rate/view/" + guid;
 
 			hypOpenEILink->SetURL(rate_url);
 			hypJSONLink->SetURL(json_url);
 
-
 			lblStatus->SetLabel("Ready.");
 		}
 		else
-			lblStatus->SetLabel("Could not get rate data for " + ssel );
+			lblStatus->SetLabel(wxString::Format("Could not get rate data for %s.",ssel));
 
 	}
 }
