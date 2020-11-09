@@ -863,13 +863,13 @@ battery_per_kW
 1
 1
 1
-600
+263.12
 battery_per_kWh
 1
 1
 1
 1
-300
+293.84
 battery_power
 1
 1
@@ -929,7 +929,7 @@ bos_equip_perwatt
 1
 1
 1
-0
+0.24
 bos_equip_total
 1
 1
@@ -1980,7 +1980,7 @@ engr_per_watt
 1
 1
 1
-0
+0.44
 engr_percent
 1
 1
@@ -2885,7 +2885,7 @@ install_labor_perwatt
 1
 1
 1
-0
+0.15
 install_labor_total
 1
 1
@@ -2921,7 +2921,7 @@ install_margin_perwatt
 1
 1
 1
-0
+0.16
 install_margin_total
 1
 1
@@ -3533,7 +3533,7 @@ om_replacement_cost1
 2
 1
 1
-300
+293.84
 om_replacement_cost2
 1
 2
@@ -3701,13 +3701,13 @@ per_inverter
 1
 1
 1
-0.71
+0.12
 per_module
 1
 1
 1
 1
-4.84
+0.41
 permitting_fixed
 1
 1
@@ -3731,7 +3731,7 @@ permitting_per_watt
 1
 1
 1
-0
+0.11
 permitting_percent
 1
 1

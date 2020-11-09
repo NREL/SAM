@@ -1549,7 +1549,7 @@ engr_per_watt
 1
 1
 1
-0.08
+0.07
 engr_percent
 1
 1
@@ -2037,7 +2037,7 @@ install_labor_perwatt
 1
 1
 1
-0.13
+0.11
 install_labor_total
 1
 1
@@ -2849,7 +2849,7 @@ inverter_count
 1
 1
 1
-22
+54
 inverter_model
 1
 1
@@ -2999,7 +2999,7 @@ land_per_watt
 1
 1
 1
-0.03
+0
 land_percent
 1
 1
@@ -3342,7 +3342,7 @@ om_capacity
 2
 1
 1
-13
+17
 om_capacity_escal
 1
 1
@@ -3552,13 +3552,13 @@ per_inverter
 1
 1
 1
-0.06
+0.05
 per_module
 1
 1
 1
 1
-0.38
+0.41
 permitting_fixed
 1
 1
@@ -4687,7 +4687,7 @@ subarray1_nstrings
 1
 1
 1
-5374
+13435
 subarray1_rear_irradiance_loss
 1
 1

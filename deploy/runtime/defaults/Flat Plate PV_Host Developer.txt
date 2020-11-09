@@ -339,7 +339,7 @@ bos_equip_perwatt
 1
 1
 1
-0.25
+0.24
 bos_equip_total
 1
 1
@@ -980,7 +980,7 @@ contingency_percent
 1
 1
 1
-3
+4
 cost_debt_closing
 1
 1
@@ -1339,7 +1339,7 @@ desired_size
 1
 1
 1
-20000
+500
 dispatch_data_filename
 1
 4
@@ -1591,7 +1591,7 @@ engr_per_watt
 1
 1
 1
-0
+0.44
 engr_percent
 1
 1
@@ -2097,7 +2097,7 @@ install_labor_perwatt
 1
 1
 1
-0.12
+0.15
 install_labor_total
 1
 1
@@ -2121,7 +2121,7 @@ install_margin_perwatt
 1
 1
 1
-0.65
+0.16
 install_margin_total
 1
 1
@@ -2814,8 +2814,8 @@ inv_snl_idcmax
 inv_snl_inverter_name
 1
 4
-59
-SMA America: SC750CP-US (with ABB EcoDry Ultra transformer)
+32
+SMA America: STP 60-US-10 [400V]
 inv_snl_mppt_hi
 1
 1
@@ -2909,7 +2909,7 @@ inverter_count
 1
 1
 1
-3
+7
 inverter_model
 1
 1
@@ -3440,7 +3440,7 @@ om_capacity
 2
 1
 1
-16
+19
 om_capacity_escal
 1
 1
@@ -3722,13 +3722,13 @@ per_inverter
 1
 1
 1
-0.07
+0.12
 per_module
 1
 1
 1
 1
-0.32
+0.41
 permitting_fixed
 1
 1
@@ -3877,7 +3877,7 @@ sales_tax_percent
 1
 1
 1
-100
+82
 sales_tax_rate
 1
 1
@@ -4851,7 +4851,7 @@ subarray1_nstrings
 1
 1
 1
-58
+134
 subarray1_rear_irradiance_loss
 1
 1
