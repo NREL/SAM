@@ -618,11 +618,15 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	// Minimum Charge
 	rate.MinCharge = json_double(val.Item("mincharge"));
 	rate.MinChargeUnits = json_string(val.Item("minchargeunits"));
+    if (rate.MinChargeUnits == "$/day")
+        rate.Unused.HasUnusedItems = true;
 
 	// Fixed Charge
 	rate.FixedChargeFirstMeter = json_double(val.Item("fixedchargefirstmeter"));
 	rate.FixedChargeAddlMeter = json_double(val.Item("fixedchargeeaaddl"));
 	rate.FixedChargeUnits = json_string(val.Item("fixedchargeunits"));
+    if (rate.FixedChargeUnits != "$/month")
+        rate.Unused.HasUnusedItems = true;
 
 	// Energy Charge
 	rate.HasEnergyCharge = true;

@@ -1,6 +1,6 @@
 Utility Rate - Flat
-1413
-569
+1412
+538
 27
 GroupBox
 
@@ -45,13 +45,13 @@ X
 9
 Y
 3
-464
+465
 Width
 3
 565
 Height
 3
-100
+70
 Tool Tip
 5
 0
@@ -171,7 +171,7 @@ Width
 833
 Height
 3
-150
+120
 Tool Tip
 5
 0
@@ -195,7 +195,7 @@ X
 612
 Y
 3
-471
+465
 Width
 3
 791
@@ -517,10 +517,10 @@ Name
 ur_annual_min_charge
 X
 3
-258
+231
 Y
 3
-513
+504
 Width
 3
 75
@@ -688,10 +688,10 @@ Name
 ur_monthly_fixed_charge
 X
 3
-258
+231
 Y
 3
-432
+429
 Width
 3
 75
@@ -750,10 +750,10 @@ Name
 ur_monthly_min_charge
 X
 3
-258
+231
 Y
 3
-486
+477
 Width
 3
 75
@@ -1156,7 +1156,7 @@ ur_has_unused_items
 1
 URDB unused items
  
- 
+Electricity Rates - General
 0
 4
 1
@@ -1214,28 +1214,29 @@ ur_nm_credit_month
 Month for credit rollover:
  
 Electricity Rates - General
-0
+47
+Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
 2
 1
 1
 1
 1
 0
-Default
+Choice
 ur_nm_credit_rollover
 3
 1
- 
+Apply credits to future bills
  
 Electricity Rates - General
 0
-2
+3
 1
 1
 1
 1
 0
-Default
+CheckBox
 ur_nm_yearend_sell_rate
 3
 1
@@ -1294,7 +1295,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-7291
+7270
 on_load{'Utility Rate - Flat'} = define(){
 	set_battery_fom_inputs();
 	set_metering_billing_inputs();
@@ -1475,9 +1476,9 @@ on_change{'btnQueryOpenEI'} = define() {
 	value ('ur_source', hash{'source'});
 	
 	value ('ur_description', hash{'description'}
-	 +	'\n' + hash{'basicinformationcomments'}
-	 +	'\n' + hash{'energycomments'}
-	 +	'\n' + hash{'demandcomments'});
+	 +	hash{'basicinformationcomments'}
+	 +	hash{'energycomments'}
+	 +	hash{'demandcomments'});
 	
 	value ('ur_start_date', hash{'start_date'});
 	value ('ur_end_date', hash{'end_date'});

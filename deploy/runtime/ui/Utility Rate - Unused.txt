@@ -1,7 +1,7 @@
 Utility Rate - Unused
-1418
-448
-14
+1411
+529
+15
 Divider
 
 1
@@ -51,7 +51,7 @@ Name
 object 4
 X
 3
-9
+6
 Y
 3
 3
@@ -60,7 +60,7 @@ Width
 1403
 Height
 3
-441
+522
 Tool Tip
 5
 0
@@ -607,6 +607,50 @@ BackColour
 TabOrder
 3
 4294967295
+MultilineText
+
+1
+11
+Name
+5
+13
+ur_rate_notes
+X
+3
+186
+Y
+3
+438
+Width
+3
+276
+Height
+3
+75
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 TextEntry
 
 1
@@ -652,7 +696,7 @@ TabOrder
 3
 4294967295
 
-10
+11
 ur_cr_sched
 3
 3
@@ -684,7 +728,7 @@ DataMatrix
 ur_demand_attrs
 3
 4
-Demand Attributes
+Demand attributes
  
 Electricity Rates - Unused Items
 0
@@ -773,6 +817,18 @@ Electricity Rates - Unused Items
 1
 0
 Numeric
+ur_rate_notes
+3
+4
+Rate notes
+ 
+ 
+0
+4
+1
+4
+0
+MultilineText
 ur_service_type
 3
 4
