@@ -52,19 +52,18 @@ public:
 	{
 		wxString name; // dataset - e.g. psm
 		wxString displayName;
-		wxString type;  // e.g. satellite
 		wxString year; // number or "tmy"
 		wxString URL;
 		wxString interval; // 30 or 60 
 		wxString location; // lat and lon
 		wxString display;
-		wxString attributes; // limit coumn and file size to SAM specific per NSRDB
+		wxString attributes; // limit column and file size to SAM specific per NSRDB
 		bool is_selected;
 		bool is_visible;
-		LinkInfo(wxString &_n, wxString &_dn, wxString &_t, wxString &_y, wxString &_u, wxString &_i, wxString &_l, wxString &_a)
-			: name(_n), displayName(_dn), type(_t), year(_y), URL(_u), interval(_i), location(_l), attributes(_a)
+		LinkInfo(wxString &_n, wxString &_dn, wxString &_y, wxString &_u, wxString &_i, wxString &_l, wxString &_a)
+			: name(_n), displayName(_dn), year(_y), URL(_u), interval(_i), location(_l), attributes(_a)
 		{
-			display = location + "_" + name + "_" + type + "_" + interval + "_" + year;
+			display = location + "_" + name + "_" + interval + "_" + year;
 			is_visible = true;
 			is_selected = false;
 		}
@@ -118,7 +117,8 @@ private:
 	void OnEvt(wxCommandEvent &);
 
 	void GetResources();
-	void RefreshList();
+	void RefreshList(size_t );
+	size_t SelectItems( wxString, wxCheckBox * );
 
 	std::vector<LinkInfo> m_links;
 	wxString m_weatherFile;
@@ -126,7 +126,8 @@ private:
 	wxString m_addFolder;
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;
-	wxButton *m_btnChkAll, *m_btnChkNone,*m_btnUnselectFiltered, *m_btnSelectFiltered, *m_btnResources, *m_btnFolder, *m_btnChkPsm30, *m_btnChkPsm60; 
+	wxCheckBox *m_chk60, *m_chk30, *m_chk5, *m_chkTmy, *m_chkTgy, *m_chkTdy;
+	wxButton *m_btnSelectAll, *m_btnClearAll, *m_btnSelectFiltered, *m_btnShowSelected, *m_btnShowAll, *m_btnResources, *m_btnFolder;
 	wxTextCtrl *m_txtFolder;
 	wxTextCtrl *m_txtAddress;
 	wxSearchCtrl *m_search;

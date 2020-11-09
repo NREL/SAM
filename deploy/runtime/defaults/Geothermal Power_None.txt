@@ -1,5 +1,5 @@
 1
-145
+143
 CT
 1
 1
@@ -787,12 +787,6 @@ station_id
 4
 6
 258971
-step
-1
-1
-1
-1
-3600
 subsurface_water_loss
 1
 1
@@ -835,12 +829,6 @@ ui_calculations_only
 1
 1
 0
-ui_step_minutes
-1
-1
-1
-1
-60
 use_specific_weather_file
 1
 1

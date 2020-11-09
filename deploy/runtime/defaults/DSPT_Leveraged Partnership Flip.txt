@@ -1,5 +1,5 @@
 1
-637
+635
 A_sf
 1
 1
@@ -731,7 +731,7 @@ const_per_principal1
 1
 1
 1
-444602016
+444601984
 const_per_principal2
 1
 1
@@ -761,7 +761,7 @@ const_per_principal_total
 1
 1
 1
-444602016
+444601984
 const_per_total1
 1
 1
@@ -857,7 +857,7 @@ cost_dev_fee_tax_liability
 1
 1
 1
-3.53859e+06
+3538590
 cost_dev_fee_value
 1
 1
@@ -1270,7 +1270,7 @@ csp.pt.cost.plm.total
 1
 1
 1
-11745000
+11744988
 csp.pt.cost.power_block
 1
 1
@@ -1300,7 +1300,7 @@ csp.pt.cost.receiver
 1
 1
 1
-58843676
+58843672
 csp.pt.cost.receiver.area
 1
 1
@@ -1390,7 +1390,7 @@ csp.pt.cost.tower
 1
 1
 1
-16183893
+16183894
 csp.pt.cost.tower.fixed
 1
 1
@@ -8765,7 +8765,7 @@ property_assessed_value
 1
 1
 1
-444602016
+444601984
 property_tax_rate
 1
 1
@@ -9117,12 +9117,6 @@ station_id
 4
 5
 91486
-step
-1
-1
-1
-1
-3600
 system_capacity
 1
 1
@@ -9235,13 +9229,13 @@ total_indirect_cost
 1
 1
 1
-74638752
+74638744
 total_installed_cost
 1
 1
 1
 1
-444602016
+444601984
 tower_exp
 1
 1
@@ -9271,7 +9265,7 @@ ui_direct_subtotal
 1
 1
 1
-345760064
+345760032
 ui_heliostat_height
 1
 1
@@ -9284,12 +9278,6 @@ ui_receiver_height
 1
 1
 23.8084
-ui_step_minutes
-1
-1
-1
-1
-60
 ui_tower_height
 1
 1

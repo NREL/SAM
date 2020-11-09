@@ -812,7 +812,6 @@ VarValue::VarValue( const wxMemoryBuffer &mb )
 }
 
 typedef double ssc_number_t;
-typedef long double ssc_number_long_t;
 
 VarValue::VarValue(ssc_var_t vd) {
     int n, m;

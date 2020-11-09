@@ -208,13 +208,6 @@ std::string which_cmod_as_input(std::string name, std::string config){
     return "";
 }
 
-void get_tech_fin_of_config(const std::string& config, std::string& tech, std::string& fin){
-    size_t pos = config.find_last_of('-');
-    if (pos == std::string::npos)
-        return;
-    tech = config.substr(0, pos);
-    fin = config.substr(pos + 1);
-}
 
 std::vector<std::string> split_identity_string(std::string str, size_t n){
     size_t pos = str.find("args:");

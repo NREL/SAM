@@ -1,5 +1,5 @@
 1
-95
+93
 FRUL
 1
 1
@@ -455,12 +455,6 @@ station_id
 4
 5
 78208
-step
-1
-1
-1
-1
-3600
 system_capacity
 1
 1
@@ -503,12 +497,6 @@ tz
 1
 1
 -7
-ui_step_minutes
-1
-1
-1
-1
-60
 use_custom_mains
 1
 1

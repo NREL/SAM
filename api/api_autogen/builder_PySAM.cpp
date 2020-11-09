@@ -4,16 +4,43 @@
 #include <shared/lib_util.h>
 #include <ssc/ssc_equations.h>
 
-#include "library_extractor.h"
 #include "builder_PySAM.h"
 #include "builder_generator_helper.h"
 
+std::string all_options_of_cmod(const std::string &cmod_symbol, const std::string& config_name) {
+    size_t pos = config_name.find_last_of('-');
+    // if not a tech-fin config, it's a single cmod so it won't have any default configuration options
+    if (pos == std::string::npos)
+        return "";
+    std::string tech = config_to_cmod_name[format_as_symbol(config_name.substr(0, pos))];
+    std::string fin = config_to_cmod_name[format_as_symbol(config_name.substr(pos+1))];
+    assert(tech.length() + fin.length());
+
+    std::set<std::string> config_set;
+    for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
+        std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[it->first];
+        for (const auto& i : primary_cmods) {
+            if (format_as_symbol(i) == cmod_symbol){
+                config_set.insert(it->first);
+                break;
+            }
+        }
+    }
+
+    std::string str = "config options:\\n\\n";
+    for (auto it = config_set.begin(); it != config_set.end(); ++it){
+        if (it != config_set.begin())
+            str += "\\n";
+        str += "- \\\"" + format_as_symbol(*it) + "\\\"";
+    }
+    assert(str.length());
+    return str;
+}
 
 // in the future, pull this directly from startup.lk but for now just keep this
 // maps cmod to string description
 std::string module_doc(const std::string& tech_symbol){
     static std::unordered_map<std::string, std::string> desc = {
-            {"Battery", "Detailed battery storage model"},
             {"Battwatts", "Simplified battery storage model"},
             {"Belpe", "Electric load calculator for residential buildings"},
             {"Biomass", "Biomass combustion for electricity generation"},
@@ -44,6 +71,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Sco2DesignCycle", "Supercritical CO2 Power Cycle Design"},
             {"Sco2Offdesign", "Supercritical CO2 Power Cycle Off Design"},
             {"Singleowner", "PPA single owner financial model"},
+            {"StandAloneBattery", "Detailed battery storage model"},
             {"Swh", "Solar water heating model for residential and commercial building applications"},
             {"TcsdirectSteam", "CSP direct steam power tower model for power generation"},
             {"Tcsdish", "CSP dish-Stirling model with parameters for SES and WGA-ADDS systems for power generation"},
@@ -84,54 +112,13 @@ std::string get_params_str(const std::string &doc){
     return params;
 }
 
-void builder_PySAM::set_config_options(const std::set<std::string>& configs) {
-    for (const auto& i : configs)
-        config_options.insert(i);
-}
-
-std::string builder_PySAM::get_config_options() {
-    if (config_options.empty())
-        return "None";
-    std::string config_str = "`config` options:\\n\\n";
-    for (auto it = config_options.begin(); it != config_options.end(); ++it){
-        if (it != config_options.begin())
-            config_str += "\\n";
-        config_str += "- \\\"" + format_as_symbol(*it) + "\\\"";
-    }
-    assert(config_str.length());
-    return config_str;
-}
-
-
-void builder_PySAM::all_options_of_cmod(const std::string &cmod) {
-    std::string cmod_symbol = format_as_symbol(cmod);
-    size_t pos = config_name.find_last_of('-');
-    // if not a tech-fin config, it's a single cmod so it won't have any default configuration options
-    if (pos == std::string::npos)
-        return;
-    std::string tech = config_to_cmod_name[format_as_symbol(config_name.substr(0, pos))];
-    std::string fin = config_to_cmod_name[format_as_symbol(config_name.substr(pos+1))];
-    assert(tech.length() + fin.length());
-
-    std::set<std::string> config_set;
-    for (auto it = SAM_config_to_primary_modules.begin(); it != SAM_config_to_primary_modules.end(); ++it){
-        std::vector<std::string> primary_cmods = SAM_config_to_primary_modules[it->first];
-        for (const auto& i : primary_cmods) {
-            if (format_as_symbol(i) == cmod_symbol){
-                config_set.insert(it->first);
-                break;
-            }
-        }
-    }
-
-    set_config_options(config_set);
-}
-
 void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::string &file_dir, bool stateful) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
     std::string tech_symbol = cmod_symbol;
-    if (cmod_symbol == "6parsolve")
+    if(cmod_symbol == "Battery")
+        tech_symbol = "StandAloneBattery";
+    else if (cmod_symbol == "6parsolve")
         tech_symbol = "SixParsolve";
     else if (root->m_vardefs.find(cmod_symbol) != root->m_vardefs.end())
         tech_symbol += "Model";
@@ -808,8 +795,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t{\"new\",             " << tech_symbol << "_new,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"new() -> " << tech_symbol << "\")},\n"
                "\t\t{\"default\",             " << tech_symbol << "_default,         METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nUse default attributes\\n\"\n"
-                                                                                  "\t\t\t\t\"" << get_config_options() << "\")},\n"
+               "\t\t\t\tPyDoc_STR(\"default(config) -> " << tech_symbol << "\\n\\nUse financial config-specific default attributes\\n\"\n"
+                                                                                  "\t\t\t\t\"" << all_options_of_cmod(cmod_symbol, config_name) << "\")},\n"
                "\t\t{\"wrap\",             " << tech_symbol << "_wrap,         METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"wrap(ssc_data_t) -> " << tech_symbol << "\\n\\nUse existing PySSC data\\n\\n.. warning::\\n\\n"
                                                                                 "\tDo not call PySSC.data_free on the ssc_data_t provided to ``wrap``\")},\n"
@@ -923,14 +910,14 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << ".. _" << tech_symbol << ":\n\n";
 
-    fx_file << cmod_symbol << "\n***********************************\n\n";
+    fx_file << cmod_symbol << "\n**************************\n\n";
 
     std::string cmod_doc = "Wrapper for SAM Simulation Core model: `cmod_" + cmod;
     cmod_doc += ".cpp <https://github.com/NREL/ssc/blob/develop/ssc/cmod_" + util::lower_case(cmod) + ".cpp>`_\n\n";
 
     fx_file << cmod_doc;
 
-    fx_file << "Creating an Instance\n===================================\n\n"
+    fx_file << "Creating an Instance\n=========================\n\n"
                "There are three methods to create a new instance of a PySAM module. Using ``default`` populates the new"
                "class' attributes with default values specific to a ``config``. Each technology-financial"
                "configuration corresponds to a SAM GUI configuration. Using ``new`` creates an instance with empty "
@@ -940,7 +927,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file << ".. automodule:: PySAM." << tech_symbol << "\n";
     fx_file << "\t:members:\n\n";
 
-    fx_file << "Functions\n===================================\n\n"
+    fx_file << "Functions\n=========================\n\n"
                ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "\n\t:members:\n\n";
 
     for (const auto& i : root->vardefs_order) {
@@ -949,7 +936,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         std::string module_symbol = format_as_symbol(mm->first);
 
-        fx_file << module_symbol << " Group\n===================================\n\n";
+        fx_file << module_symbol << " Group\n==============\n\n";
         fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
         fx_file << "\t:members:\n\n";
     }

@@ -282,6 +282,12 @@ SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_option_nset(SAM_table
 	});
 }
 
+SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "replacement_schedule", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_schedule_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "replacement_schedule_percent", arr, length);
@@ -1055,6 +1061,18 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_replacement_option_nget(SAM_tab
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "replacement_option", &result))
 		make_access_error("SAM_BatteryStateful", "replacement_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "replacement_schedule", length);
+	if (!result)
+		make_access_error("SAM_BatteryStateful", "replacement_schedule");
 	});
 	return result;
 }

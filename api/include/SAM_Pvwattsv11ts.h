@@ -72,22 +72,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv11ts_PVWatts_diffuse_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dry_temperature: Dry Temperature [°C]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Pvwattsv11ts_PVWatts_dry_temperature_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set elevation: Elevation [m]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Pvwattsv11ts_PVWatts_elevation_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set fd: Diffuse fraction [0..1]
 	 * options: None
 	 * constraints: MIN=0,MAX=1
@@ -174,14 +158,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvwattsv11ts_PVWatts_poa_cutin_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set pressure: Pressure [millibars]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Pvwattsv11ts_PVWatts_pressure_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set rotlim: Tracker rotation limit (+/- 1 axis) [deg]
@@ -310,10 +286,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_diffuse_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_dry_temperature_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_elevation_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_fd_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_gamma_nget(SAM_table ptr, SAM_error *err);
@@ -335,8 +307,6 @@ extern "C"
 	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_poa_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_poa_cutin_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_pressure_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv11ts_PVWatts_rotlim_nget(SAM_table ptr, SAM_error *err);
 

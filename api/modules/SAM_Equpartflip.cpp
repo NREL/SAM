@@ -1495,9 +1495,9 @@ SAM_EXPORT void SAM_Equpartflip_BatterySystem_batt_replacement_option_nset(SAM_t
 	});
 }
 
-SAM_EXPORT void SAM_Equpartflip_BatterySystem_batt_replacement_schedule_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Equpartflip_BatterySystem_batt_replacement_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "batt_replacement_schedule_percent", arr, length);
+		ssc_data_set_array(ptr, "batt_replacement_schedule", arr, length);
 	});
 }
 
@@ -4253,12 +4253,12 @@ SAM_EXPORT double SAM_Equpartflip_BatterySystem_batt_replacement_option_nget(SAM
 
 
 
-SAM_EXPORT double* SAM_Equpartflip_BatterySystem_batt_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Equpartflip_BatterySystem_batt_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "batt_replacement_schedule_percent", length);
+	result = ssc_data_get_array(ptr, "batt_replacement_schedule", length);
 	if (!result)
-		make_access_error("SAM_Equpartflip", "batt_replacement_schedule_percent");
+		make_access_error("SAM_Equpartflip", "batt_replacement_schedule");
 	});
 	return result;
 }

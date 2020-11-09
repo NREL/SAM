@@ -68,13 +68,8 @@ add_compile_definitions( LK_USE_WXWIDGETS )
 #####################################################################################################################
 
 if (UNIX)
-    if (EXISTS /usr/local/bin/wx-config-3)
-        set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
-        find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base)
-    else ()
-        set(wxWidgets_CONFIG_EXECUTABLE $ENV{WXMSW3}/bin/wx-config)
-        find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base)
-    endif ()
+    set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
+    find_package(wxWidgets COMPONENTS xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base REQUIRED)
 else()
     set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
     find_package(wxWidgets COMPONENTS qa webview aui richtext html propgrid adv net stc core base scintilla REQUIRED)
@@ -106,8 +101,7 @@ add_executable(export_config
         lk_eval.cpp lk_eval.h
         builder_generator_helper.h builder_generator_helper.cpp
 		builder_C_API.cpp builder_C_API.h
-		builder_PySAM.cpp builder_PySAM.h
-        library_extractor.cpp library_extractor.h)
+		builder_PySAM.cpp builder_PySAM.h)
 
 target_include_directories(export_config SYSTEM PRIVATE ../../src $ENV{SSCDIR} $ENV{SSCDIR}/tcs $ENV{WEXDIR}/include $ENV{LKDIR}/include )
 

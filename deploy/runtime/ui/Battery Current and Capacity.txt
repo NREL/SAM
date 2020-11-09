@@ -1855,7 +1855,7 @@ Battery Current and Capacity
 2
 Default
 
-10783
+9008
 equations{ '$MIMO$ batt_bank_computed' } = define() {
 
 	choice = ${batt_size_choice};
@@ -2071,28 +2071,12 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 			{
 				batt_bank_power_discharge_ac = p_discharge;
 				batt_bank_power_charge_ac = p_charge;
-				batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (${batt_dc_ac_efficiency}*0.01);
-				batt_bank_power_charge_dc = batt_bank_power_charge_ac * (${batt_ac_dc_efficiency}*0.01);
-				${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;
-				${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;
-				${batt_current_charge_max} = batt_bank_power_charge_dc*1000/batt_computed_voltage;
-				${batt_current_discharge_max} = batt_bank_power_discharge_dc*1000/batt_computed_voltage;
-				${batt_C_rate_max_discharge} = batt_bank_power_discharge_dc/bank_capacity;
-				${batt_C_rate_max_charge} = batt_bank_power_charge_dc/bank_capacity;
-				
 			}
 			else // Bank power units in DC kW
 			{
 				batt_bank_power_discharge_ac = p_discharge * (${batt_dc_ac_efficiency}*0.01);
-				batt_bank_power_charge_ac =  p_charge / (${batt_ac_dc_efficiency}*0.01);
-				
-				
-				//batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (inv_eff*0.01);
-				//batt_bank_power_charge_dc = batt_bank_power_charge_ac * (inv_eff*0.01);
-				//${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;
-				//${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;
+				batt_bank_power_charge_ac =  p_charge / (${batt_dc_ac_efficiency}*0.01);
 			}
-			
 		}
 		else // DC-connected
 		{
@@ -2100,15 +2084,6 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 			{
 				batt_bank_power_discharge_ac = p_discharge;
 				batt_bank_power_charge_ac = p_charge;
-				batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (inv_eff);
-				batt_bank_power_charge_dc = batt_bank_power_charge_ac * (inv_eff);
-				${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;
-				${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;
-				${batt_current_charge_max} = batt_bank_power_charge_dc*1000/batt_computed_voltage;
-				${batt_current_discharge_max} = batt_bank_power_discharge_dc*1000/batt_computed_voltage;
-				${batt_C_rate_max_discharge} = batt_bank_power_discharge_dc/bank_capacity;
-				${batt_C_rate_max_charge} = batt_bank_power_charge_dc/bank_capacity;
-				
 			}
 			else // Bank power units in DC kW
 			{
@@ -2128,14 +2103,11 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 		{
 			batt_bank_power_discharge_ac = p_discharge * inv_eff;
 			batt_bank_power_charge_ac =  p_charge / inv_eff;
-
 		}
 	}
 
 	${batt_power_charge_max_kwac} = batt_bank_power_charge_ac;
 	${batt_power_discharge_max_kwac} = batt_bank_power_discharge_ac;
-	//${batt_current_discharge_max} = batt_bank_power_discharge_dc/${batt_computed_voltage}*1000;
-	//${batt_current_charge_max} = batt_bank_power_charge_dc/${batt_computed_voltage}*1000;
 };
 
 equations{ '$MIMO$ batt_lead_acid_computed' } = define() {

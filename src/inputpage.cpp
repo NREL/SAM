@@ -138,8 +138,8 @@ ActiveInputPage::~ActiveInputPage()
 
 wxRect ActiveInputPage::ScaleRect( const wxRect &r )
 {
-	return wxRect((int)(r.x * m_scaleX), (int)(r.y * m_scaleY),
-		(int)(r.width * m_scaleX), (int)(r.height * m_scaleY));
+	return wxRect( (int)(r.x*m_scaleX), (int)(r.y*m_scaleY),
+		(int)(r.width*m_scaleX), (int)(r.height*m_scaleY));
 }
 
 wxSize ActiveInputPage::ScaleSize( const wxSize &s )
