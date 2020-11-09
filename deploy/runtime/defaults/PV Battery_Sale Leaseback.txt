@@ -1073,13 +1073,13 @@ battery_per_kW
 1
 1
 1
-600
+263.12
 battery_per_kWh
 1
 1
 1
 1
-200
+293.84
 battery_power
 1
 1
@@ -1139,7 +1139,7 @@ bos_equip_total
 1
 1
 1
-4.00018e+06
+4000180
 calculated_dcac_ratio
 1
 1
@@ -2389,7 +2389,7 @@ engr_per_watt
 1
 1
 1
-0.08
+0.07
 engr_percent
 1
 1
@@ -2865,13 +2865,13 @@ install_labor_perwatt
 1
 1
 1
-0.13
+0.11
 install_labor_total
 1
 1
 1
 1
-2.60012e+06
+2600120
 install_margin_fixed
 1
 1
@@ -2895,7 +2895,7 @@ install_margin_total
 1
 1
 1
-1.20005e+06
+1200050
 installed_per_capacity
 1
 1
@@ -3685,7 +3685,7 @@ inverter_count
 1
 1
 1
-22
+54
 inverter_model
 1
 1
@@ -3709,7 +3709,7 @@ inverter_total
 1
 1
 1
-1.20005e+06
+1200050
 inverterarray_power
 1
 1
@@ -3835,7 +3835,7 @@ land_per_watt
 1
 1
 1
-0.03
+0
 land_percent
 1
 1
@@ -4100,7 +4100,7 @@ module_total
 1
 1
 1
-7.60034e+06
+7600340
 module_width
 1
 1
@@ -4172,7 +4172,7 @@ om_capacity
 2
 1
 1
-13
+17
 om_capacity_escal
 1
 1
@@ -4220,7 +4220,7 @@ om_replacement_cost1
 2
 1
 1
-500
+293.84
 om_replacement_cost_escal
 1
 1
@@ -4376,13 +4376,13 @@ per_inverter
 1
 1
 1
-0.06
+0.05
 per_module
 1
 1
 1
 1
-0.38
+0.41
 permitting_fixed
 1
 1
@@ -5641,7 +5641,7 @@ subarray1_nstrings
 1
 1
 1
-5374
+13435
 subarray1_rear_irradiance_loss
 1
 1
@@ -6339,7 +6339,7 @@ total_indirect_cost
 1
 1
 1
-4.32719e+06
+4327190
 total_installed_cost
 1
 1
