@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-#include <utility>
 #include <vector>
 #include <unordered_map>
 
@@ -33,20 +32,17 @@ public:
     vertex* src;
     vertex* dest;
     std::string expression;
-    lk::node_t* root{};
+    lk::node_t* root;
     std::string ui_form;
 
     edge(){}
 
-    edge(vertex *v_src, vertex *v_dest, int t, std::string obj = "", std::string expr = "", std::string ui_form_name = "",
-         lk::node_t *node_root = nullptr) {
+    edge(vertex* v_src, vertex* v_dest, int t, std::string obj = "", std::string expr = "") {
         src = v_src;
         dest = v_dest;
         type = t;
-        obj_name = std::move(obj);
-        expression = std::move(expr);
-        ui_form = std::move(ui_form_name);
-        root = node_root;
+        obj_name = obj;
+        expression = expr;
     }
 
     edge( const edge &obj){
@@ -84,7 +80,7 @@ public:
     vertex(){}
 
     vertex(std::string n, bool is_ssc){
-        name = std::move(n);
+        name = n;
         is_ssc_var = is_ssc;
     }
 
@@ -98,9 +94,9 @@ public:
     }
 
     edge* get_edge_out_to(vertex* dest){
-        for (auto & i : edges_out){
-            if (i->dest == dest)
-                return i;
+        for (size_t i = 0; i < edges_out.size(); i++){
+            if (edges_out[i]->dest == dest)
+                return edges_out[i];
         }
         return nullptr;
     }
@@ -114,8 +110,8 @@ public:
     }
 
     ~vertex(){
-        for (auto & e : edges_out){
-            delete e;
+        for (size_t e = 0; e < edges_out.size(); e++){
+            delete edges_out[e];
         }
     }
 };
@@ -134,11 +130,11 @@ public:
     digraph(std::string n){name = n;}
 
     ~digraph(){
-        for (auto & vert : vertices){
-            if (vert.second[0])
-                delete vert.second[0];
-            if (vert.second[1])
-                delete vert.second[1];
+        for (auto it = vertices.begin(); it != vertices.end(); ++it){
+            if (it->second[0])
+                delete it->second[0];
+            if (it->second[1])
+                delete it->second[1];
         }
     }
 
@@ -157,23 +153,23 @@ public:
 
     edge* find_edge(edge* edge);
 
-    static edge *add_edge(vertex *src, vertex *dest, const int &type, const std::string &obj, const std::string &expression,
-                       const std::string& ui_form, lk::node_t *root);
+    edge *add_edge(vertex *src, vertex *dest, const int &type, const std::string &obj, const std::string &expression,
+                       const std::string ui_form, lk::node_t *root);
 
-    edge *add_edge(const std::string& src, bool src_is_ssc, const std::string& dest, bool dest_is_ssc, int type,
-                   const std::string& obj, const std::string& expression, const std::string& ui_form, lk::node_t *root);
+    edge *add_edge(std::string src, bool src_is_ssc, std::string dest, bool dest_is_ssc, int type, std::string obj,
+                       std::string expression, std::string ui_form, lk::node_t *root);
 
-    static void delete_edge(edge* e);
+    void delete_edge(edge* e);
 
     /// rename vertices map key and vertex itself
-    void rename_vertex(const std::string& old, bool is_ssc, std::string n);
+    void rename_vertex(std::string old, bool is_ssc, std::string n);
 
     /// vertices inserted as tbd:var will be rename to cmod:var, with duplication check
-    void rename_cmod_vertices(const std::string& cmod_name);
+    void rename_cmod_vertices(std::string cmod_name);
 
-    static std::set<std::string> downstream_vertices(vertex *vert, const std::string& cmod = "");
+    static std::set<std::string> downstream_vertices(vertex *vert, std::string cmod = "");
 
-    static std::set<std::string> upstream_vertices(vertex *vert, const std::string& cmod = "");
+    static std::set<std::string> upstream_vertices(vertex *vert, std::string cmod = "");
 
     bool copy_vertex_descendants(vertex *v);
 
@@ -183,10 +179,10 @@ public:
 
     void get_unique_edge_expressions(std::unordered_map<std::string, edge*>& unique_edge_obj_names);
 
-    static void print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std::string, std::string> *obj_keys = nullptr,
+    void print_vertex(vertex *v, std::ofstream &ofs, std::unordered_map<std::string, std::string> *obj_keys = nullptr,
                           std::unordered_map<std::string, std::string> *eqn_keys = nullptr);
 
-    void print_dot(const std::string& filepath, const std::string& ext = ".gv");
+    void print_dot(std::string filepath, std::string ext = ".gv");
 };
 
 enum{
@@ -199,9 +195,9 @@ enum{
 static int get_vertex_type(vertex *v){
     if (v->edges_out.size() + v->edges_in.size() == 0)
         return ISOLATED;
-    else if (v->edges_out.empty())
+    else if (v->edges_out.size() == 0)
         return SINK;
-    else if (v->edges_in.empty())
+    else if (v->edges_in.size() == 0)
         return SOURCE;
     else
         return CONNECTED;

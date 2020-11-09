@@ -267,10 +267,6 @@ bool ProjectFile::Read( wxInputStream &input )
 	m_lastError.Clear();
 	Clear();
 
-	// suppress wxLogging and system errors from wxLogError in wxWidgets and handle project file reading issues here - see https://github.com/NREL/SAM/issues/393
-	// regular logging restored when wxLogNull object goes out of scope.
-	wxLogNull logNo; 
-
 	wxDataInputStream in(input);
 
 	wxUint16 code = in.Read16();
@@ -288,9 +284,9 @@ bool ProjectFile::Read( wxInputStream &input )
 	if ( ver > 2 )
 		m_verPatch = (int)in.Read16();
 
-	if ( !m_properties.Read( input ) ) m_lastError += "Project properties error.\n";
-	if (!m_cases.Read(input)) m_lastError += "Case data error: " + m_cases.GetLastError() + "\n";
-	if ( !m_objects.Read( input ) ) m_lastError += "Objects data error: " + m_objects.GetLastError() + "\n";
+	if ( !m_properties.Read( input ) ) m_lastError = "could not read project properties";
+	if ( !m_cases.Read( input ) ) m_lastError = "could not read case data" ;
+	if ( !m_objects.Read( input ) ) m_lastError = "could not read objects" ;
 
 	m_modified = false;
 
@@ -328,7 +324,6 @@ bool ProjectFile::ReadArchive( const wxString &file )
 	wxFFileInputStream in( file );
 	if ( !in.IsOk() ) return false;
 	
-	bool ret = false;
 	wxUint8 code1, code2, comp;
 	in.Read( &code1, 1 );
 	in.Read( &code2, 1 );
@@ -339,7 +334,7 @@ bool ProjectFile::ReadArchive( const wxString &file )
 		in.Ungetch( code2 );
 		in.Ungetch( code1 );
 		
-		ret = Read(in);
+		return Read( in );
 	}
 	else
 	{
@@ -349,9 +344,8 @@ bool ProjectFile::ReadArchive( const wxString &file )
 			return false;
 
 		wxZlibInputStream zin( in );
-		ret = Read(zin);
+		return Read( zin );
 	}
-	return ret;
 }
 
 void ProjectFile::SetVersionInfo( int maj, int min, int mic, int patch )

@@ -97,7 +97,7 @@ protected:
 	
 struct MetricData {
 	MetricData() :
-		scale(1.0), mode('g'), thousep(false), deci(2)
+		scale( 1.0 ), mode( 'g' ), thousep( false ), deci( 2 )
 	{}
 	wxString var;
 	wxString label;
@@ -107,18 +107,7 @@ struct MetricData {
 	int deci;
 	wxString pre, post;
 };
-
-struct MetricRow {
-	wxString label;
-	wxString tableName; 
-	std::vector<MetricData> metrics;
-};
-
-struct MetricTable {
-	wxArrayString headers;
-	wxString tableName;
-};
-
+	
 struct CashFlowLine {
 	enum { SPACER, HEADER, VARIABLE, CELLHEADER, CELLVARIABLE, CELLCOLHEADER };
 	CashFlowLine() : type(VARIABLE), digits(2), scale(1.0f), coloff(0) {  }
@@ -157,9 +146,7 @@ public:
 
 	Simulation *GetSimulation() { return m_sim; }
 	
-	void AddMetric(MetricData& md) { m_metrics.push_back(md); }
-	void AddMetricTable(MetricTable& mt) { m_metricTables.push_back(mt); }
-	void AddMetricRow(MetricRow& mr) { m_metricRows.push_back(mr); }
+	void AddMetric( MetricData &md ) { m_metrics.push_back(md); }
 	void AddCashFlowLine( CashFlowLine &cl ) { m_cashflow.push_back(cl); }
 	void AddAutoGraph( AutoGraph &ag ) { m_autographs.push_back(ag); }
 
@@ -173,8 +160,6 @@ private:
 	Simulation *m_sim;
 
 	std::vector<MetricData> m_metrics;
-	std::vector<MetricTable> m_metricTables;
-	std::vector<MetricRow> m_metricRows;
 	std::vector<CashFlowLine> m_cashflow;
 	std::vector<AutoGraph> m_autographs;
 

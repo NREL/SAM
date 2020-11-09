@@ -44,8 +44,6 @@ public:
     virtual wxString GetTypeName() = 0;
     virtual void Write( wxOutputStream & ) = 0;
     virtual bool Read( wxInputStream & ) = 0;
-    virtual wxString GetLastError() = 0;
-
 };
 
 class ObjectTypes
@@ -83,12 +81,6 @@ public:
 
     void Write( wxOutputStream &out );
     bool Read( wxInputStream &in ); // does NOT clear first
-
-    wxString GetLastError() {
-        return m_lastError;
-    };
-private:
-    wxString m_lastError;
 };
 
 typedef unordered_map<wxString, wxString, wxStringHash, wxStringEqual> StringHashBase;
@@ -107,10 +99,6 @@ public:
     void Split(const wxString &input, char sep, char eq);
     bool ReadKeyValueFile( const wxString &file, bool clear = true );
 
-    wxString GetLastError() { return m_lastError; };
-
-private:
-    wxString m_lastError;
 };
 
 

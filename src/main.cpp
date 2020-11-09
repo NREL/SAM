@@ -117,8 +117,6 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
-		{ 2020, 11, 5 }, // 2020.11.5 ssc 245 beta for Ty - expires 11/5/2021
-		{ 2020, 11, 3 }, // 2020.11.3 ssc 244 beta for the 2021 release - expires 11/3/2021
 		{ 2020, 2, 29 }, //2020.2.29 release
 		{ 2020, 02, 24 }, //2020.2.24 beta
 		{ 2020, 02, 17 }, //VS2019 beta release
@@ -989,9 +987,8 @@ bool MainWindow::LoadProject( const wxString &file )
 		return false;
 
 	ProjectFile pf;
-	// tell user to save and check file if issue 
-	if (!pf.ReadArchive(file))
-		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
+	if ( !pf.ReadArchive( file ) )
+		return false;
 
 	int major, minor, micro;
 	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );

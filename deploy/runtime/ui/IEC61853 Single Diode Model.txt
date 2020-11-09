@@ -2471,7 +2471,7 @@ TabOrder
 3
 4294967295
 
-34
+32
 iec61853_test_data
 3
 3
@@ -2937,20 +2937,6 @@ IEC-68153 PV Module Model
 1
 44.9
 Numeric
-sd11par_transient_thermal_model_unit_mass
-3
-1
-Module unit mass
-kg/m^2
-IEC-68153 PV Module Model
-0
-2
-1
-1
-1
-1
-0
-Default
 sd11par_type
 3
 1
@@ -2966,22 +2952,8 @@ monoSi|multiSi|CdTe|CIS|CIGS|Amorphous
 1
 2
 Choice
-step_sd11par
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 
-667
+607
 equations{ 'sd11par_eff' } = define() {
 	return 0.1*${sd11par_Pmp0}/${sd11par_area};
 };
@@ -3020,11 +2992,7 @@ equations{'$MIMO$ stc_parametesr'} = define() {
 	${sd11par_Imp0} = pmp/vmp;
 
 };
-
-equations{'sd11par_step'} = define() {
-	return ${step};
-};
-3325
+3066
 
 function iec61853_ivcurve( Irr, TcC,
 		aisc, n, Io, Il, C, D, Egref, Imp0, nser,
@@ -3107,15 +3075,7 @@ function iec61853_update_plot()
 
 on_load{ 'IEC61853 Single Diode Model' } = define() {	
 	iec61853_update_plot();
-	//on_change{'step_sd11par'}();
 };
-
-/*on_change{'step_sd11par'} = define() {
-	time_step = value('step_sd11par');
-	enable('sd11par_transient_thermal_model_unit_mass',time_step <= 1200);
-	show('transient_thermal_model_message',time_step <= 1200);
-	refresh();
-};*/
 
 on_change{'btn_update_plot'} = define() {	
 	iec61853_update_plot();

@@ -1,5 +1,5 @@
 1
-355
+353
 ac_nameplate
 1
 1
@@ -1788,12 +1788,6 @@ station_id
 4
 5
 78208
-step
-1
-1
-1
-1
-3600
 subtotal_direct
 1
 1
@@ -1866,12 +1860,6 @@ ui_net_capital_cost
 1
 1
 351507
-ui_step_minutes
-1
-1
-1
-1
-60
 ui_wacc
 1
 1

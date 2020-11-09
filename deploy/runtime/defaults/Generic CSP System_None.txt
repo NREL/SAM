@@ -1,5 +1,5 @@
 1
-211
+209
 FossilFill
 1
 2
@@ -1021,12 +1021,6 @@ station_id
 4
 5
 91486
-step
-1
-1
-1
-1
-3600
 storage_config
 1
 1
@@ -1335,12 +1329,6 @@ ui_disp_9_turbout
 1
 1
 1
-ui_step_minutes
-1
-1
-1
-1
-60
 use_specific_weather_file
 1
 1

@@ -1,5 +1,5 @@
 1
-777
+775
 AntiFrPar
 1
 1
@@ -89,7 +89,7 @@ CtPar
 1
 1
 1
-1.89199
+1.892
 CtParF0
 1
 1
@@ -1295,7 +1295,7 @@ const_per_interest1
 1
 1
 1
-21137908
+21137904
 const_per_interest2
 1
 1
@@ -1355,7 +1355,7 @@ const_per_interest_total
 1
 1
 1
-21137908
+21137904
 const_per_months1
 1
 1
@@ -1452,7 +1452,7 @@ const_per_principal1
 1
 1
 1
-528447680
+528447616
 const_per_principal2
 1
 1
@@ -1482,13 +1482,13 @@ const_per_principal_total
 1
 1
 1
-528447680
+528447616
 const_per_total1
 1
 1
 1
 1
-26422384
+26422380
 const_per_total2
 1
 1
@@ -1548,7 +1548,7 @@ construction_financing_cost
 1
 1
 1
-26422384
+26422380
 cooling_tower_operation_mode
 1
 1
@@ -1566,13 +1566,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-4205915
+4205910
 cost_dev_fee_value
 1
 1
 1
 1
-15853430
+15853428
 cost_equity_closing
 1
 1
@@ -1613,7 +1613,7 @@ csp.tr.cost.contingency
 1
 1
 1
-29555554
+29555552
 csp.tr.cost.contingency_percent
 1
 1
@@ -1673,7 +1673,7 @@ csp.tr.cost.htf_system
 1
 1
 1
-51526068
+51526064
 csp.tr.cost.htf_system.area
 1
 1
@@ -1727,7 +1727,7 @@ csp.tr.cost.plm.total
 1
 1
 1
-8903240
+8903239
 csp.tr.cost.power_plant
 1
 1
@@ -1769,7 +1769,7 @@ csp.tr.cost.site_improvements
 1
 1
 1
-21469196
+21469194
 csp.tr.cost.site_improvements.area
 1
 1
@@ -1787,7 +1787,7 @@ csp.tr.cost.solar_field
 1
 1
 1
-128815168
+128815160
 csp.tr.cost.solar_field.area
 1
 1
@@ -3649,7 +3649,7 @@ property_assessed_value
 1
 1
 1
-528447680
+528447616
 property_tax_rate
 1
 1
@@ -3808,12 +3808,6 @@ station_id
 4
 5
 67345
-step
-1
-1
-1
-1
-3600
 system_capacity
 1
 1
@@ -3878,7 +3872,7 @@ total_direct_cost
 1
 1
 1
-451777760
+451777728
 total_indirect_cost
 1
 1
@@ -3890,7 +3884,7 @@ total_installed_cost
 1
 1
 1
-528447680
+528447616
 track_mode
 1
 1
@@ -4023,7 +4017,7 @@ ui_design_exact_area_sm_1
 1
 1
 1
-428940
+428939
 ui_design_exact_num_scas_sm_1
 1
 1
@@ -4457,7 +4451,7 @@ ui_hce_thermloss_weighted_m2
 1
 1
 1
-36.1006
+36.1005
 ui_hce_weighted_optical_efficiency
 1
 1
@@ -4469,7 +4463,7 @@ ui_hce_weighted_thermal_losses
 1
 1
 1
-36.1006
+36.1005
 ui_land_multiplier
 1
 1
@@ -4648,12 +4642,6 @@ ui_solar_multiple
 1
 1
 2
-ui_step_minutes
-1
-1
-1
-1
-60
 ui_tes_htf_type
 1
 1

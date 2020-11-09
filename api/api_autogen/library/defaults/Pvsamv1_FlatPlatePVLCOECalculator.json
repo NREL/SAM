@@ -352,11 +352,11 @@
 		},
 		"BatteryDispatch": {
 		},
+		"ElectricityRates": {
+		},
 		"FuelCell": {
 		},
 		"PriceSignal": {
-		},
-		"ElectricityRates": {
 		},
 		"AdjustmentFactors": {
 			"constant": 0,

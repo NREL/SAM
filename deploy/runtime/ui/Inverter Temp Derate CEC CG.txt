@@ -1,7 +1,7 @@
 Inverter Temp Derate CEC CG
 1264
 310
-5
+4
 GroupBox
 
 1
@@ -62,54 +62,6 @@ Update plot
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-16
-inv_derate_label
-X
-3
-327
-Y
-3
-270
-Width
-3
-186
-Height
-3
-39
-Tool Tip
-5
-0
-Caption
-5
-60
-Table supports up to four temperature - slope pairs per row.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 DataMatrix
 
 1
@@ -172,7 +124,7 @@ ShowColLabels
 ColLabels
 5
 90
-Vdc(V),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C),Tstart(C),Slope(1/C)
+Vdc(V),Tstart(C),Slope(%/C),Tstart(C),Slope(%/C),Tstart(C),Slope(%/C),Tstart(C),Slope(%/C)
 NumRowsLabel
 5
 5
@@ -242,7 +194,7 @@ Inverter Temperature
 DataMatrix
 
 0
-1873
+1864
 function inv_tdc_cec_cg_update_plot()
 {
 	Vdc = [];
@@ -314,7 +266,7 @@ function inv_tdc_cec_cg_update_plot()
 	//Make the plot
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
 	axis('x1', {'label'='Ambient Temp (C)', 'min'=0, 'max'=60});
-	axis('y1', {'label'='Max power / Rated power', 'min'=0, 'max'= (1.1)});
+	axis('y1', {'label'='Efficiency (%)', 'min'=0, 'max'= (1.1)});
 
 }
 

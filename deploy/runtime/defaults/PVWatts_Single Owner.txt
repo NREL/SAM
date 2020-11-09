@@ -1,5 +1,5 @@
 1
-427
+425
 ac_nameplate
 1
 1
@@ -2578,12 +2578,6 @@ station_id
 4
 5
 78208
-step
-1
-1
-1
-1
-0
 subtotal_direct
 1
 1
@@ -2655,12 +2649,6 @@ tz
 1
 1
 -7
-ui_step_minutes
-1
-1
-1
-1
-0
 ui_wacc
 1
 1

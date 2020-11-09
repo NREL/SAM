@@ -14,7 +14,6 @@
 #include "data_structures.h"
 #include "variable_graph.h"
 #include "ui_form_extractor.h"
-#include "library_extractor.h"
 
 #include "builder_generator.h"
 #include "builder_generator_helper.h"
@@ -858,8 +857,6 @@ void builder_generator::create_all(std::string cmod, const std::string &defaults
     if (print_pysam){
         std::cout << "PySAM files... ";
         builder_PySAM pySAM(this);
-        pySAM.all_options_of_cmod(cmod);
-        pySAM.set_config_options(get_options_from_library(cmod, defaults_path));
         pySAM.create_PySAM_files(cmod, pysam_path, stateful);
     }
 

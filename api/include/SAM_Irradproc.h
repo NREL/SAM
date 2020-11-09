@@ -88,22 +88,6 @@ extern "C"
 	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diffuse_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dry_temperature: Dry Temperature [°C]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_dry_temperature_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set elevation: Elevation [m]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_elevation_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set gcr: Ground coverage ratio [0..1]
 	 * options: None
 	 * constraints: MIN=0,MAX=1
@@ -166,14 +150,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_month_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set pressure: Pressure [mbars]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_pressure_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set rotlim: Rotational limit on tracker [deg]
@@ -242,10 +218,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diffuse_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_dry_temperature_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_elevation_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_gcr_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_global_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -261,8 +233,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_minute_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_month_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_pressure_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_rotlim_nget(SAM_table ptr, SAM_error *err);
 

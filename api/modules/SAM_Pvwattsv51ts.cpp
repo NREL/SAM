@@ -43,18 +43,6 @@ SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_diffuse_nset(SAM_table ptr, double numb
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_dry_temperature_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dry_temperature", number);
-	});
-}
-
-SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_elevation_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "elevation", number);
-	});
-}
-
 SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_hour_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "hour", number);
@@ -88,12 +76,6 @@ SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_month_nset(SAM_table ptr, double number
 SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_poa_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "poa", number);
-	});
-}
-
-SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_pressure_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "pressure", number);
 	});
 }
 
@@ -231,28 +213,6 @@ SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_diffuse_nget(SAM_table ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_dry_temperature_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dry_temperature", &result))
-		make_access_error("SAM_Pvwattsv51ts", "dry_temperature");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_elevation_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "elevation", &result))
-		make_access_error("SAM_Pvwattsv51ts", "elevation");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_hour_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -313,17 +273,6 @@ SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_poa_nget(SAM_table ptr, SAM_error *er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "poa", &result))
 		make_access_error("SAM_Pvwattsv51ts", "poa");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_pressure_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "pressure", &result))
-		make_access_error("SAM_Pvwattsv51ts", "pressure");
 	});
 	return result;
 }

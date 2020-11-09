@@ -39,14 +39,12 @@ static void fcall_configopt( lk::invoke_t &cxt )
 {
     LK_DOC("configopt", "Sets configuration options, such as long_name, short_name, description, etc.", "(string:config name, table:options):none");
     lk::vardata_t &tab = cxt.arg(1).deref();
-    std::string config = cxt.arg(0).as_string();
-    std::string long_name, desc;
-    if (lk::vardata_t *vv = tab.lookup("long_name"))
-        long_name = vv->as_string();
-    if (lk::vardata_t *vv = tab.lookup("description"))
-        desc = vv->as_string();
-
-    SAM_option_to_description.insert({config, {long_name, desc}});
+    std::string s;
+    s += cxt.arg(0).as_string() + " | ";
+    if( lk::vardata_t *vv = tab.lookup( "long_name" ) )
+        s += vv->as_string() + " | ";
+    if( lk::vardata_t *vv = tab.lookup( "description" ) )
+        s += vv->as_string();
 }
 
 static void fcall_setting( lk::invoke_t &cxt )
@@ -61,8 +59,8 @@ static void fcall_setmodules( lk::invoke_t &cxt )
 
     std::vector<std::string> list;
     lk::vardata_t &m = cxt.arg(0);
-    for (size_t i = 0; i < m.length(); i++)
-        list.push_back(m.index(i)->as_string().ToStdString());
+    for( size_t i=0;i<m.length();i++ )
+        list.push_back( m.index(i)->as_string().ToStdString() );
 
     SAM_config_to_primary_modules[active_config] = list;
 }

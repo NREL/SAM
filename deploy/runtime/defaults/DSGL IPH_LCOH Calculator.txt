@@ -1,5 +1,5 @@
 1
-249
+247
 A_aperture
 1
 3
@@ -1457,12 +1457,6 @@ station_id
 4
 5
 67345
-step
-1
-1
-1
-1
-3600
 system_capacity
 1
 1
@@ -1563,12 +1557,6 @@ ui_pfin
 1
 1
 1.05235
-ui_step_minutes
-1
-1
-1
-1
-60
 ui_system_capacity
 1
 1

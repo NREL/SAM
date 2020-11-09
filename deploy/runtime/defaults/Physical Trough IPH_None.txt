@@ -1,5 +1,5 @@
 1
-711
+709
 A_aperture
 1
 2
@@ -3863,12 +3863,6 @@ station_id
 4
 5
 67345
-step
-1
-1
-1
-1
-3600
 system_capacity
 1
 1
@@ -4405,12 +4399,6 @@ ui_receiver_description
 4
 12
 Schott PTR80
-ui_step_minutes
-1
-1
-1
-1
-60
 use_specific_weather_file
 1
 1

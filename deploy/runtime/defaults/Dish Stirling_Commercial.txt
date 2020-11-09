@@ -1,5 +1,5 @@
 1
-388
+386
 A_absorber
 1
 1
@@ -566,7 +566,7 @@ csp.ds.cost.plm.total
 1
 1
 1
-2.22395e+06
+2223950
 csp.ds.cost.receiver
 1
 1
@@ -1892,12 +1892,6 @@ station_id
 4
 5
 78208
-step
-1
-1
-1
-1
-3600
 system_availability
 1
 1
@@ -2060,12 +2054,6 @@ ui_net_capital_cost
 1
 1
 292400448
-ui_step_minutes
-1
-1
-1
-1
-60
 ui_wacc
 1
 1

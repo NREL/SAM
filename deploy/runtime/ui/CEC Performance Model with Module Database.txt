@@ -1,7 +1,7 @@
 CEC Performance Model with Module Database
-1017
-1184
-58
+1014
+1114
+55
 GroupBox
 
 1
@@ -15,7 +15,7 @@ X
 9
 Y
 3
-912
+840
 Width
 3
 1000
@@ -51,7 +51,7 @@ Width
 1000
 Height
 3
-326
+260
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 9
 Y
 3
-1080
+1008
 Width
 3
 1000
@@ -105,7 +105,7 @@ X
 9
 Y
 3
-972
+900
 Width
 3
 1000
@@ -165,7 +165,7 @@ X
 21
 Y
 3
-738
+687
 Width
 3
 974
@@ -225,7 +225,7 @@ X
 18
 Y
 3
-1143
+1071
 Width
 3
 917
@@ -307,7 +307,7 @@ X
 18
 Y
 3
-1101
+1029
 Width
 3
 923
@@ -575,7 +575,7 @@ X
 132
 Y
 3
-1020
+948
 Width
 3
 100
@@ -699,7 +699,7 @@ X
 438
 Y
 3
-939
+867
 Width
 3
 100
@@ -761,7 +761,7 @@ X
 852
 Y
 3
-780
+729
 Width
 3
 100
@@ -823,7 +823,7 @@ X
 852
 Y
 3
-756
+705
 Width
 3
 100
@@ -885,7 +885,7 @@ X
 852
 Y
 3
-804
+753
 Width
 3
 100
@@ -1319,7 +1319,7 @@ X
 852
 Y
 3
-828
+777
 Width
 3
 100
@@ -1381,7 +1381,7 @@ X
 249
 Y
 3
-780
+729
 Width
 3
 342
@@ -1447,7 +1447,7 @@ X
 438
 Y
 3
-996
+924
 Width
 3
 100
@@ -1571,7 +1571,7 @@ X
 438
 Y
 3
-1020
+948
 Width
 3
 100
@@ -1728,7 +1728,7 @@ X
 132
 Y
 3
-939
+867
 Width
 3
 100
@@ -1769,10 +1769,10 @@ Name
 cec_module_length
 X
 3
-162
+249
 Y
 3
-852
+801
 Width
 3
 100
@@ -1831,10 +1831,10 @@ Name
 cec_module_width
 X
 3
-162
+249
 Y
 3
-828
+777
 Width
 3
 100
@@ -1896,7 +1896,7 @@ X
 249
 Y
 3
-756
+705
 Width
 3
 342
@@ -1932,7 +1932,7 @@ X
 249
 Y
 3
-804
+753
 Width
 3
 342
@@ -1967,7 +1967,7 @@ X
 780
 Y
 3
-939
+867
 Width
 3
 100
@@ -2091,7 +2091,7 @@ X
 780
 Y
 3
-996
+924
 Width
 3
 100
@@ -2153,7 +2153,7 @@ X
 780
 Y
 3
-1020
+948
 Width
 3
 100
@@ -2247,7 +2247,7 @@ X
 132
 Y
 3
-996
+924
 Width
 3
 100
@@ -2336,68 +2336,6 @@ Horizontal
 TabOrder
 3
 5
-Numeric
-
-1
-17
-Name
-5
-37
-cec_transient_thermal_model_unit_mass
-X
-3
-150
-Y
-3
-699
-Width
-3
-90
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -2702,50 +2640,20 @@ Fields
 5
 194
 Name,Manufacturer,Technology,Bifacial,STC,PTC,A_c,Length,Width,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,T_NOCT,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_r,BIPV,Version,Date
-GroupBox
-
-1
-8
-Name
-5
-8
-object 4
-X
-3
-21
-Y
-3
-678
-Width
-3
-975
-Height
-3
-54
-Tool Tip
-5
-0
-Caption
-5
-34
-Transient Thermal Model Correction
-Bold
-2
-1
 Label
 
 1
 13
 Name
 5
-10
-object 755
+8
+object 7
 X
 3
 15
 Y
 3
-1050
+978
 Width
 3
 924
@@ -2848,56 +2756,8 @@ BackColour
 TabOrder
 3
 5
-Label
 
-1
-13
-Name
-5
-31
-transient_thermal_model_message
-X
-3
-306
-Y
-3
-693
-Width
-3
-582
-Height
-3
-33
-Tool Tip
-5
-0
-Caption
-5
-177
-The module unit mass is used for the transient thermal model, which  is only applied for weather file time steps less than or equal to 20 minutes. The default value is 11 kg/m².
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-
-44
+43
 alpha_sc_calc
 3
 1
@@ -3393,20 +3253,6 @@ Nominal operating cell temperature (NOCT) method|Heat transfer method
 1
 0
 RadioChoice
-cec_transient_thermal_model_unit_mass
-3
-1
-Module unit mass 
-kg/m²
-PV Module (CEC Database)
-0
-2
-1
-1
-1
-1
-0
-Default
 cec_v_mp_ref
 3
 1
@@ -3515,7 +3361,7 @@ PV Module (CEC Database)
 Total Irradiance = 1000 W/m2, Cell temp = 25 C
 TextEntry
 
-685
+628
 equations{ 'cec_p_mp_ref' } = define() {
 	return ${cec_i_mp_ref}*${cec_v_mp_ref}; };
 
@@ -3536,11 +3382,7 @@ equations{ 'beta_oc_calc' } = define() {
 
 equations{ 'gamma_r_calc' } = define() {
 	return ${cec_gamma_r} * ${cec_p_mp_ref} / 100.0; };
-	
-equations{'cec_step'} = define() {
-	return ${step};
-};
-3074
+2760
 function cec_module_update_ui()
 {
 	state = value('cec_temp_corr_mode');
@@ -3619,8 +3461,6 @@ on_load{"CEC Performance Model with Module Database"} = define()
 {
 	cec_module_update_ui();
 	cec_module_plot();
-	//on_change{'cec_step'}();
-	enable('cec_transient_thermal_model_unit_mass',value('step') <=1200);
 };
 	
 on_change{'cec_temp_corr_mode'} = cec_module_update_ui;
@@ -3632,10 +3472,3 @@ on_change{'module_name'} = define()
 	cec_module_update_ui();
 	cec_module_plot();
 };
-
-/*on_change{'cec_step'} = define() {
-	time_step = value('cec_step');
-	enable('cec_transient_thermal_model_unit_mass',time_step <=1200);
-	//show('transient_thermal_model_message',time_step <=1200);
-	refresh();
-};*/

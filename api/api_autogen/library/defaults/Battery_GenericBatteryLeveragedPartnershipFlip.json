@@ -4,7 +4,6 @@
 		},
 		"Lifetime": {
 			"analysis_period": 25,
-			"inflation_rate": 2.5,
 			"system_use_lifetime_output": 1
 		},
 		"BatterySystem": {
@@ -16,7 +15,7 @@
 			"batt_current_charge_max": 1998.56,
 			"batt_current_choice": 0,
 			"batt_current_discharge_max": 1998.56,
-			"batt_cycle_cost": [0.100000],
+			"batt_cycle_cost": 0.1,
 			"batt_cycle_cost_choice": 0,
 			"batt_dc_ac_efficiency": 96,
 			"batt_dc_dc_efficiency": 98,
@@ -34,6 +33,7 @@
 			"batt_power_discharge_max_kwdc": 1000.08,
 			"batt_replacement_capacity": 50,
 			"batt_replacement_option": 1,
+			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_surface_area": 23.76,
 			"en_batt": 1,
@@ -49,7 +49,7 @@
 			"LeadAcid_qn_computed": 4796.55,
 			"LeadAcid_tn": 1,
 			"batt_C_rate": 0.2,
-			"batt_Cp": 1500,
+			"batt_Cp": 1004,
 			"batt_Qexp": 0.04005,
 			"batt_Qfull": 2.25,
 			"batt_Qfull_flow": 7994.25,
@@ -69,7 +69,7 @@
 			],
 			"batt_calendar_q0": 1.02,
 			"batt_chem": 1,
-			"batt_h_to_ambient": 15,
+			"batt_h_to_ambient": 500,
 			"batt_initial_SOC": 50,
 			"batt_lifetime_matrix": [
 				[20.000000, 0.000000, 100.000000],
@@ -144,6 +144,8 @@
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 2.000000, 2.000000, 2.000000, 2.000000, 2.000000, 2.000000, 2.000000, 2.000000]
 			]
 		},
+		"ElectricityRates": {
+		},
 		"FuelCell": {
 		},
 		"PriceSignal": {
@@ -179,8 +181,6 @@
 			"dispatch_tod_factors": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
 			"ppa_multiplier_model": 0,
 			"ppa_price_input": [0.250000]
-		},
-		"ElectricityRates": {
 		}
 	}
 }

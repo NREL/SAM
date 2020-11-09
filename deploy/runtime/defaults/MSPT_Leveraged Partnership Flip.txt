@@ -1,5 +1,5 @@
 1
-750
+748
 A_sf_UI
 1
 1
@@ -12810,12 +12810,6 @@ station_id
 4
 5
 91486
-step
-1
-1
-1
-1
-3600
 system_capacity
 1
 1
@@ -13473,12 +13467,6 @@ ui_receiver_height
 1
 1
 21.6029
-ui_step_minutes
-1
-1
-1
-1
-60
 ui_tower_height
 1
 1

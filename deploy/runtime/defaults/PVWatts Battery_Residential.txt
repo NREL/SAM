@@ -1,5 +1,5 @@
 1
-415
+413
 Monthly_util
 1
 2
@@ -2154,12 +2154,6 @@ station_id
 4
 5
 78208
-step
-1
-1
-1
-1
-3600
 subtotal_direct
 1
 1
@@ -2226,12 +2220,6 @@ ui_net_capital_cost
 1
 1
 17497.5
-ui_step_minutes
-1
-1
-1
-1
-60
 ui_wacc
 1
 1
