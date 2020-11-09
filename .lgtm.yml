@@ -25,19 +25,18 @@ extraction:
       - export WEXDIR=$LGTM_WORKSPACE/build/wex
       - export SSCDIR=$LGTM_WORKSPACE/build/ssc
       - export SAMNTDIR=$LGTM_SRC
-      - git clone --depth=1 https://github.com/NREL/lk $LKDIR; 
+      - git clone --depth=1 https://github.com/NREL/lk $LKDIR;
       - git clone --depth=1 https://github.com/NREL/wex $WEXDIR
       - git clone --depth=1 https://github.com/NREL/ssc $SSCDIR
       - export PATH=$PATH:$HOME/wx-3.1.1/bin
-  
+
     configure:
       command:
         - mkdir ${GTEST}/build; cd ${GTEST}/build; cmake -DCMAKE_CXX_FLAGS=-std=c++11 ..; make;
         - mkdir $LKDIR/build && cd $LKDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target lk
         - mkdir $WEXDIR/build && cd $WEXDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release && cmake --build . -j 4 --target wex
-        - mkdir ${SSCDIR}/build; cd ${SSCDIR}/build; cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_tests=1 -Dskip_tools=1; cmake --build . -j 4 --target ssc
-        - mkdir $SAMNTDIR/build && cd $SAMNTDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -Dskip_api=1 
-    index:    
+        - mkdir ${SSCDIR}/build; cd ${SSCDIR}/build; cmake .. -DCMAKE_BUILD_TYPE=Release -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1; cmake --build . -j 4 --target ssc
+        - mkdir $SAMNTDIR/build && cd $SAMNTDIR/build && cmake .. -DCMAKE_BUILD_TYPE=Release -DSAMAPI_EXPORT=0
+    index:
       build_command:
         cd $SAMNTDIR/build && make -j 4
-        
