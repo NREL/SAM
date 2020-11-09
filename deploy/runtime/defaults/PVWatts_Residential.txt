@@ -205,7 +205,7 @@ bos_equip_perwatt
 1
 1
 1
-0.36
+0.31
 bos_equip_total
 1
 1
@@ -561,7 +561,7 @@ engr_per_watt
 1
 1
 1
-0
+0.98
 engr_percent
 1
 1
@@ -973,7 +973,7 @@ install_labor_perwatt
 1
 1
 1
-0.4
+0.19
 install_labor_total
 1
 1
@@ -997,7 +997,7 @@ install_margin_perwatt
 1
 1
 1
-1
+0.27
 install_margin_total
 1
 1
@@ -1494,7 +1494,7 @@ om_capacity
 2
 1
 1
-20
+29
 om_capacity_escal
 1
 1
@@ -1774,13 +1774,13 @@ per_inverter
 1
 1
 1
-0.14
+0.25
 per_module
 1
 1
 1
 1
-0.45
+0.41
 permitting_fixed
 1
 1
@@ -1792,7 +1792,7 @@ permitting_per_watt
 1
 1
 1
-0.1
+0.24
 permitting_percent
 1
 1
@@ -1882,7 +1882,7 @@ sales_tax_percent
 1
 1
 1
-52
+100
 sales_tax_rate
 1
 1
