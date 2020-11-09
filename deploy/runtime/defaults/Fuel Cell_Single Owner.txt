@@ -1,5 +1,5 @@
 1
-734
+735
 LeadAcid_q10
 1
 1
@@ -447,7 +447,7 @@ batt_custom_dispatch
 0
 batt_cycle_cost
 1
-1
+2
 1
 1
 0.1
@@ -730,13 +730,6 @@ batt_replacement_option
 1
 1
 0
-batt_replacement_schedule
-1
-2
-1
-25
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-
 batt_replacement_schedule_percent
 1
 2
@@ -3785,7 +3778,7 @@ property_assessed_value
 1
 1
 1
-3086330
+3.08633e+06
 property_tax_rate
 1
 1
@@ -4098,12 +4091,18 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 subtotal_direct
 1
 1
 1
 1
-3086330
+3.08633e+06
 system_capacity
 1
 1
@@ -4220,7 +4219,7 @@ total_direct_cost
 1
 1
 1
-3086330
+3.08633e+06
 total_indirect_cost
 1
 1
@@ -4232,7 +4231,7 @@ total_installed_cost
 1
 1
 1
-3086330
+3.08633e+06
 tz
 1
 1
@@ -4251,6 +4250,12 @@ ui_pv_capacity
 1
 1
 200
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

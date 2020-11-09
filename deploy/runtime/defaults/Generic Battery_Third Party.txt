@@ -1,5 +1,5 @@
 1
-302
+303
 LeadAcid_q10
 1
 1
@@ -200,25 +200,25 @@ batt_Cp
 1
 1
 1
-1004
+1500
 batt_Qexp
 1
 1
 1
 1
-0.04005
+2.584
 batt_Qexp_percent
 1
 1
 1
 1
-1.78
+80.75
 batt_Qfull
 1
 1
 1
 1
-2.25
+3.2
 batt_Qfull_flow
 1
 1
@@ -230,31 +230,31 @@ batt_Qnom
 1
 1
 1
-2.00025
+3.126
 batt_Qnom_percent
 1
 1
 1
 1
-88.9
+97.6875
 batt_Vexp
 1
 1
 1
 1
-4.05
+3.53
 batt_Vfull
 1
 1
 1
 1
-4.1
+4.2
 batt_Vnom
 1
 1
 1
 1
-3.4
+3.342
 batt_Vnom_default
 1
 1
@@ -350,7 +350,7 @@ batt_calendar_choice
 1
 1
 1
-0
+1
 batt_calendar_lifetime_matrix
 1
 3
@@ -401,7 +401,7 @@ batt_computed_bank_capacity
 1
 1
 1
-10.1331
+4000
 batt_computed_series
 1
 1
@@ -419,7 +419,7 @@ batt_computed_strings
 1
 1
 1
-9
+2498
 batt_computed_voltage
 1
 1
@@ -431,7 +431,7 @@ batt_current_charge_max
 1
 1
 1
-10.125
+1998.4
 batt_current_choice
 1
 1
@@ -443,10 +443,22 @@ batt_current_discharge_max
 1
 1
 1
-10.125
+1998.4
 batt_custom_dispatch
 1
 2
+1
+1
+0
+batt_cycle_cost
+1
+2
+1
+1
+0.1
+batt_cycle_cost_choice
+1
+1
 1
 1
 0
@@ -461,7 +473,7 @@ batt_dc_dc_efficiency
 1
 1
 1
-98
+99
 batt_discharge_percent_1
 1
 1
@@ -563,7 +575,7 @@ batt_h_to_ambient
 1
 1
 1
-50
+7.5
 batt_initial_SOC
 1
 1
@@ -579,14 +591,33 @@ batt_inverter_efficiency_cutoff
 batt_lifetime_matrix
 1
 3
-6
+25
 3
-20 0 100 
-20 5000 80 
-20 10000 60 
-80 0 100 
-80 1000 80 
-80 2000 60 
+10 0 100.853 
+10 1250 94.884 
+10 2500 88.9147 
+10 3750 82.9454 
+10 5000 76.9761 
+20 0 100.853 
+20 1250 94.8798 
+20 2500 88.9063 
+20 3750 82.9328 
+20 5000 76.9593 
+40 0 100.853 
+40 1250 94.7822 
+40 2500 88.711 
+40 3750 82.6397 
+40 5000 76.5682 
+80 0 100.853 
+80 1250 92.4838 
+80 2500 84.0543 
+80 3750 75.56 
+80 5000 66.9956 
+100 0 100.853 
+100 1250 88.1256 
+100 2500 74.8732 
+100 3750 60.9511 
+100 5000 46.1312 
 
 batt_loss_choice
 1
@@ -626,7 +657,7 @@ batt_mass
 1
 1
 1
-51.351
+39603.9
 batt_maximum_SOC
 1
 1
@@ -656,7 +687,7 @@ batt_num_cells
 1
 1
 1
-1251
+347222
 batt_power_charge_max_kwac
 1
 1
@@ -668,13 +699,13 @@ batt_power_charge_max_kwdc
 1
 1
 1
-5.06655
+999.999
 batt_power_discharge_max_kwac
 1
 1
 1
 1
-4.8
+999.999
 batt_power_discharge_max_kwdc
 1
 1
@@ -693,13 +724,6 @@ batt_replacement_option
 1
 1
 1
-batt_replacement_schedule
-1
-2
-1
-25
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-
 batt_replacement_schedule_percent
 1
 2
@@ -712,7 +736,7 @@ batt_resistance
 1
 1
 1
-0.002
+0.001155
 batt_room_temperature_celsius
 1
 2
@@ -743,19 +767,19 @@ batt_specific_energy_per_mass
 1
 1
 1
-197.33
+101
 batt_specific_energy_per_volume
 1
 1
 1
 1
-501.25
+70
 batt_surface_area
 1
 1
 1
 1
-0.445256
+89.0141
 batt_target_choice
 1
 1
@@ -812,7 +836,7 @@ batt_volume
 1
 1
 1
-0.0202157
+57.1428
 battery_lifetime_shown
 1
 1
@@ -848,10 +872,10 @@ cap_vs_temp
 3
 4
 2
--10 60 
-0 80 
-25 100 
-40 100 
+0 80.2 
+23 100 
+30 103.1 
+45 105.4 
 
 capacity_factor_calc
 1

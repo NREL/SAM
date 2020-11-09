@@ -1,5 +1,5 @@
 1
-526
+535
 6par_aisc
 1
 1
@@ -171,6 +171,12 @@ Generic polycrystalline silicon module
 1
 1
 46
+6par_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 6par_vmp
 1
 1
@@ -485,7 +491,7 @@ cec_i_o_ref
 1
 1
 1
-8.36044e-11
+8.36e-11
 cec_i_sc_ref
 1
 1
@@ -569,6 +575,12 @@ cec_temp_corr_mode
 1
 1
 0
+cec_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 cec_v_mp_ref
 1
 1
@@ -1414,7 +1426,7 @@ inv_snl_c0
 1
 1
 1
--2.44558e-08
+-2.45e-08
 inv_snl_c1
 1
 1
@@ -1438,13 +1450,13 @@ inv_snl_eff_cec
 1
 1
 1
-97.5869
+97.5882
 inv_snl_eff_euro
 1
 1
 1
 1
-97.377
+97.3788
 inv_snl_idcmax
 1
 1
@@ -1513,30 +1525,38 @@ inv_snl_vdco
 inv_tdc_cec_cg
 1
 3
-1
 3
-1 52.8 -0.021 
+5
+800 28 -0.02 56 0 
+600 52 -0.0375 60 0 
+390 38 -0.0125 50 -0.025 
 
 inv_tdc_cec_db
 1
 3
-1
 3
-1 52.8 -0.021 
+5
+800 28 -0.02 56 0 
+600 52 -0.0375 60 0 
+390 38 -0.0125 50 -0.025 
 
 inv_tdc_ds
 1
 3
-1
 3
-1 52.8 -0.021 
+5
+800 28 -0.02 56 0 
+600 52 -0.0375 60 0 
+390 38 -0.0125 50 -0.025 
 
 inv_tdc_plc
 1
 3
-1
 3
-1 52.8 -0.021 
+5
+800 28 -0.02 56 0 
+600 52 -0.0375 60 0 
+390 38 -0.0125 50 -0.025 
 
 inverter_count
 1
@@ -1586,7 +1606,8 @@ lib_is_bifacial
 lib_manufacturer
 1
 4
-0
+8
+SunPower
 library_folder_list
 1
 4
@@ -1864,6 +1885,12 @@ sd11par_tnoct
 1
 1
 44.9
+sd11par_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 sd11par_type
 1
 1
@@ -2265,6 +2292,12 @@ snl_specified_dT
 1
 1
 0
+snl_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 snl_vmpo
 1
 1
@@ -2451,6 +2484,12 @@ spe_temp_coeff
 1
 1
 -0.5
+spe_transient_thermal_model_unit_mass
+1
+1
+1
+1
+11.0919
 spe_vmp
 1
 1
@@ -2473,6 +2512,24 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+0
+step_sd11par
+1
+1
+1
+1
+0
+step_spe
+1
+1
+1
+1
+0
 subarray1_azimuth
 1
 1
@@ -3357,6 +3414,12 @@ ui_pfin
 1
 1
 1.12684
+ui_step_minutes
+1
+1
+1
+1
+0
 ui_subarray1_length_side
 1
 1
