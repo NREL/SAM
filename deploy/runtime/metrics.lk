@@ -346,7 +346,6 @@ metrics{ 'Flat Plate PV' } = define() {
 
 metrics{ 'PVWatts' } = define() {	
 	pvwatts_metrics(); 
-	metric( 'annual_energy', {'label'='some other title for annual energy', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'=' kWh', 'tableName'='Table2' } );
 
 	if ( is_assigned('resilience_hrs_avg'))
 		resiliency_metrics();
