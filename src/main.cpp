@@ -479,7 +479,7 @@ void MainWindow::ImportCases()
 			if ( !upgd.Run( prj ) )
 				wxMessageBox("Error upgrading older project file:\n\n", file );
 		}
-
+        
 		upgd.ShowReportDialog( file, true );
 	}
 
@@ -1026,6 +1026,11 @@ bool MainWindow::LoadProject( const wxString &file )
 		VersionUpgrade upgd;
 		upgd.Run( pf );
 		upgd.ShowReportDialog( file );
+		if (pf.GetCases().size() == 0) {
+			wxMessageBox("Cannot open a file that contains only retired cases.", "Information", wxOK);
+			pf.Clear();
+			return false;
+		}
 	}
 
 	// copy over project file data,
@@ -1229,10 +1234,17 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		}
 		break;
 	case ID_CASE_DELETE:
-		if ( wxYES == wxMessageBox("Really delete case " + case_name + "?  This action cannot be reversed.", "Query", wxYES_NO, this ) )
-		{
-			DeleteCaseWindow( c );
-			m_project.DeleteCase( case_name );
+		if (m_project.GetCases().size() > 1) {
+			if (wxYES == wxMessageBox("Really delete case " + case_name + "?  This action cannot be reversed.", "Query", wxYES_NO, this)) {
+				DeleteCaseWindow(c);
+				m_project.DeleteCase(case_name);
+				if (m_project.GetCases().size() == 0) {
+					m_topBook->SetSelection(0);
+				}
+			}
+		}
+		else {
+			wxMessageBox("Cannot delete case when there is only one case in the file.", "Information", wxOK);
 		}
 		break;
 	case ID_CASE_DUPLICATE:
@@ -3029,8 +3041,9 @@ void ConfigDialog::PopulateTech()
 		if ( L.IsEmpty() ) L = m_tnames[i];
 		if (TP.Find("PV") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_pv, L);
-		else if (TP.Find("CSP") != wxNOT_FOUND)
+		else if (TP.Find("CSP") != wxNOT_FOUND )
 			m_pTech->AppendItem(cont_csp, L);
+		else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
 		else if (TP.Find("ME") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_me, L);
 		else if (TP.Find("BATT") != wxNOT_FOUND)

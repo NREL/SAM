@@ -51,7 +51,7 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-version_upgrade{'2020.2.29'} = define() {
+version_upgrade{'2020.11.3'} = define() {
     const cfg = config();
     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
@@ -155,6 +155,21 @@ version_upgrade{'2020.2.29'} = define() {
 		value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
         message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
     }
+    
+    //To be included in next full release (version_upgrade{'2020.10.?'})
+    if (cfg.tech == 'Dish Stirling' )
+    {
+		retire_tech();
+		//The version upgrade script is set up to delete cases with this technology made from a previous release from the project file. This is done in project.cpp
+		message('The Dish Stirling model is not available in SAM ' + samver() +'. Removing Case \"' + case_name() + '\" from the file. The most recent version with the model is SAM 2020.2.29, which you can download from https://sam.nrel.gov/download/','warning');
+    }
+    if (cfg.tech == 'DSPT')
+    {
+		retire_tech();
+		//The version upgrade script is set up to delete cases with this technology made from a previous release from the project file. This is done in project.cpp
+		message ('The Direct Steam Power Tower model is not available in SAM ' + samver() +'. Removing Case \"' + case_name() + '\" from the file. The most recent version with the model is SAM 2020.2.29, which you can download from https://sam.nrel.gov/download/','warning');
+	}
+    
 
 };
 
