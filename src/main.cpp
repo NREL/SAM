@@ -1235,14 +1235,17 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		}
 		break;
 	case ID_CASE_DELETE:
-		if ( wxYES == wxMessageBox("Really delete case " + case_name + "?  This action cannot be reversed.", "Query", wxYES_NO, this ) )
-		{
-			DeleteCaseWindow( c );
-			m_project.DeleteCase( case_name );
-			if (m_project.GetCases().size() == 0) {
-				//if (CloseProject()) // prompt for closing now instead of when closing SAM or opening a new project file - optional
+		if (m_project.GetCases().size() > 1) {
+			if (wxYES == wxMessageBox("Really delete case " + case_name + "?  This action cannot be reversed.", "Query", wxYES_NO, this)) {
+				DeleteCaseWindow(c);
+				m_project.DeleteCase(case_name);
+				if (m_project.GetCases().size() == 0) {
 					m_topBook->SetSelection(0);
+				}
 			}
+		}
+		else {
+			wxMessageBox("Cannot delete case when there is only one case in the file.", "Information", wxOK);
 		}
 		break;
 	case ID_CASE_DUPLICATE:
