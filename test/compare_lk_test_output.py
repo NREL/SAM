@@ -9,12 +9,16 @@ def csv_to_dict(csvfile):
     values = {}
     for row in csvfile:
         data = {}
-        key = str(row[0]) + " " + str(row[1])
-        if key != "TECHNOLOGY FINANCING" and key != "final_configuration_eof none": # Skip first and last rows
-            data[annual_energy] = row[2]
-            data[lcoe] = row[3]
-            data[lppa] = row[4]
-            values[key] = data
+        try:
+            key = str(row[0]) + " " + str(row[1])
+            if key != "TECHNOLOGY FINANCING" and key != "final_configuration_eof none": # Skip first and last rows
+                data[annual_energy] = row[2]
+                data[lcoe] = row[3]
+                data[lppa] = row[4]
+                values[key] = data
+        except IndexError as e:
+            print("Error while parsing CSV: " + row)
+            raise e
     return values
 
 if __name__ == "__main__":
