@@ -693,7 +693,7 @@ Numeric
 depr_fed_type
 3
 1
-Federal depreciation (0=None, 1=5-yr MACRS, 2=Straight line, 3=Custom)
+Federal depreciation 0=None 1=5-yr MACRS 2=Straight line 3=Custom
  
 Depreciation
 47
@@ -736,7 +736,7 @@ Numeric
 depr_sta_type
 3
 1
-State depreciation (0=None, 1=5-yr MACRS, 2=Straight line, 3=Custom)
+State depreciation 0=None 1=5-yr MACRS 2=Straight line 3=Custom
  
 Depreciation
 47
