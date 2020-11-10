@@ -83,7 +83,7 @@ set_target_properties(SAM_api
     DEBUG_POSTFIX "d"
     )
 
-if (NOT skip_api)
+if (SAMAPI_EXPORT)
     add_dependencies(SAM_api export_config)
 endif()
 
