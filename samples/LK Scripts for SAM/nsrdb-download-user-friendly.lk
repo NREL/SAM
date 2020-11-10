@@ -36,20 +36,19 @@ Tested in SAM 2020.2.29 r3
 
 //////////////////////////////////////////////////////////////////////////////*/
 
-// get your own API key at https://developer.nrel.gov
+// Get your own API key at https://developer.nrel.gov
 api_key = '<SAMAPIKEY>';
-api_email = '<USEREMAIL>';
+api_email = 'sam.support@nrel.gov';
 
 // folder to store weather files (script creates subfolder for each location).
-path = 'C:/Users/gaobo/Desktop/Temp/wftest';
-/*
+
+path = '';
 path = choose_dir(wfdownloaddir(), 'Choose a Folder to Store Downloaded Files');
 if ( path == '' ) 
 {
 	outln( 'You must choose a folder to store downloaded files. Exiting script.' );
 	exit;
 }
-*/
 
 location_option = '';
 options = ['Download file for single location','Import list of locations from CSV file'];
@@ -71,7 +70,7 @@ if ( location_option == options[0] )
 	lat_lon = geocode( location );
 	if ( lat_lon.ok == false )
 	{
-		outln( 'Geocode Error!\n\tFailed to determine latitude, longitude for \"' + location + '\".\n\tGeocode service may be down, or there may be a problem with your internet connection.\n\tExiting script.');
+		outln( 'Failed to convert location to latitude and longitude!\n\t' + location + '\n\tExiting script.');
 		exit;
 	}
 	else
@@ -99,19 +98,26 @@ else
 	locations = csvread(location_file,{'table'=true});
 	keys = @locations;
 	n_records = 0;
-	if ( keys ?@ 'address' ) { n_records = #locations.address; }
-	elseif (keys ?@ 'lat' && keys?@ 'lon') { n_records = #locations.lat; }
+	if ( ( keys ?@ 'address' ) > -1 )
+	{
+		n_records = #locations.address;
+		is_address = true;
+	} 
+	elseif ( ( keys ?@ 'lat' ) > -1 )
+	{
+		n_records = #locations.lat;
+		is_address = false;
+	}
 	else
 	{
 		outln( 'CSV file must have first row "address" or "lat,lon"!\n\t' + keys + '\n\tExiting script.' );
 		exit;
 	}
-
-	// for each site in lookup file
+	//For each site in lookup file
 	for ( j=0; j<n_records; j++ )
 	{
-		// geocode gets latitude, longitude, time zone for location
-		if ( locations.address[j] != '' )
+		// Geocode
+		if ( is_address )
 		{
 			latlon = geocode(locations.address[j]);
 			site.lat[j] = latlon.lat;
@@ -123,7 +129,7 @@ else
 			addr = replace(addr,'--','-');
 			site.name[j] = addr;
 		}
-		elseif (locations.lat[j] != '' && locations.lon[j] != '') 
+		else 
 		{
 			site.lat[j] = locations.lat[j];
 			site.lon[j] = locations.lon[j];
@@ -134,93 +140,90 @@ else
 
 outln( site );
 
+// nsrdb query to determine what data is available for location
 wf = {};
 n = 0;
 for ( s=0 ; s<#site.lat; s++ )
 {
-	// nsrdb query to determine what data is available for location
-	base_url = 'https://developer.nrel.gov/api/nsrdb/v2/solar/';
-	query_url = 'nsrdb-data-query.json?api_key='+api_key+'&wkt=POINT(' + to_string(site.lon[s]) + '+' + to_string(site.lat[s]) + ')';
-	url = base_url + query_url;
-	json_str = curl( url );
-	var = json_read( json_str );
-	// check for errors from query and skip location if any found
-	error = false;
-	if ( var ?@ 'error' )
+	// on first pass, get list of available versions and urls
+	if ( s == 0 )
 	{
-		outln( 'NSRDB Error!\n\t' + var.error.code + '\n\t' + var.error.message + '\n\tFor location name \"' + site.name[s] + '\".' );
-		error = true;
-	}
-	elseif (#var.outputs == 0)
-	{
-		outln( 'No NSRDB data found for location name ' + site.name[s] + '.\n\tNSRDB grid cell coordinates: Latitude = ' + site.lat[s] + ', Longitude = ' + site.lon[s] + '.' );
-		error = true;
-	}
-	elseif (#var.errors != 0)
-	{
-		outln( 'NSRDB Error(s)!\n\t');
-		for (i=0; i<#var.errors; i++)
-		{ 
-			outln( var.errors[i] );
-		}
-		error = true;
-	}
-	if ( error ) 
-	{
-		outln( '\tSkipping \"' + site.name[s] + '\".' );
-		continue; 
-	}
-	// first loop through outputs to get list of version names	
-	for( i=0; i<#var.outputs; i++ )
-	{
-		available_versions[i] = var.outputs[i].name;
-	}	
-	version = choose_from_list( available_versions, 'Choose an NSRDB dataset for ' + site.name[s] + '.', 'Choose NSRDB Dataset' );
-	// next loop through outputs to get list of urls, years, intervals
-	for( i=0; i<#var.outputs; i++ )
-	{
-		if ( var.outputs[i].name == version )
+		base_url = 'https://developer.nrel.gov/api/nsrdb/v2/solar/';
+		query_url = 'nsrdb-data-query.json?api_key='+api_key+'&wkt=POINT(' + to_string(site.lon[s]) + '+' + to_string(site.lat[s]) + ')';
+		url = base_url + query_url;
+		json_str = curl( url );
+		var = json_read( json_str );
+		if ( #var.errors > 0 )
 		{
-			links = var.outputs[i].links;
-			available_years = var.outputs[i].availableYears;
-			available_intervals = var.outputs[i].availableIntervals;
+			outln( 'NSRDB Error!\n\t' + var.errors[0] + '\n\tFor location name ' + site.name[s] + '.\n\tExiting script.' );
+			exit;
 		}
+		if (#var.outputs == 0)
+		{
+			outln( 'No NSRDB data found for location name ' + site.name[s] + '.\n\tNSRDB grid cell coordinates: Latitude = ' + site.lat[s] + ', Longitude = ' + site.lon[s] + '.\n\tExiting script.' );
+			exit;
+		}
+		for( i=0; i<#var.outputs; i++ )
+		{
+			available_versions[i] = var.outputs[i].name;
+		}
+		version = choose_from_list( available_versions, 'Choose an NSRDB dataset:','Choose NSRDB Dataset' );
+		for( i=0; i<#var.outputs; i++ )
+		{
+			if ( var.outputs[i].name == version )
+			{
+				links = var.outputs[i].links;
+				available_years = var.outputs[i].availableYears;
+				available_intervals = var.outputs[i].availableIntervals;
+			}
+		}
+		available_years[#available_years] = 'all'; // add option to download files for all available years
+		year = '';	
+		year = choose_from_list( available_years, 'Choose a year ("all" for all years):  ','Choose Year' );
+		if ( year == '' )
+		{
+			outln( 'You must choose a year. Exiting script.' );
+			exit;
+		}
+		if ( to_int( year ) != 0 ) // mts1 versions uses 'tmy2' instead of 'tmy'
+		{
+			year = to_int( year );
+		}
+		if ( strpos( year, 'tmy' ) > -1 ) // only hourly data available for tmy
+		{
+			interval = 60;
+		}
+		else
+		{
+			interval = choose_from_list( available_intervals, 'Choose a the interval (time step) in minutes:  ','Choose Interval' );
+			interval = to_int( interval );
+		}	
 	}
-	available_years[#available_years] = 'all'; // add option to download files for all available years
-	year = '';
-	year = choose_from_list( available_years, 'Choose a year ("all" for all years):  ','Choose Year' );
-	// tmy datasets have only 60-minute data
-	if ( #available_intervals > 1 )
-	{
-		interval = choose_from_list( available_intervals, 'Choose an interval (time step) in minutes:  ','Choose Interval' );
-	}
-	else
-	{
-		interval = available_intervals[0];
-	}	
-
-	// get download urls for selected versions, intervals, and years and create file names for downloads
+	// get download urls for all available versions, intervals, and years, create
+	// file names for downloads
 	for( i=0; i<#links; i++ )
 	{
 		if ( year == 'all' )
 		{
 			for ( j=0; j<#available_years; j++ )
 			{
-				if ( available_years[j] != 'all' ) // skip optoin
+				if ( available_years[j] != 'all' )
 				{
-					if ( (to_string(links[i].year) == to_string(available_years[j])) && (to_string(links[i].interval) == to_string(interval)) )
+					if ( (links[i].year == available_years[j]) && (links[i].interval == interval) )
 					{
+						if ( strpos(available_years[j], 't') > -1 ) { intvl = 60; } // tmy, tgy, or tdy
+						else { intvl = interval; }
 						url = links[i].link;
 						url = replace( url, 'yourapikey', api_key );
 						url = replace( url, 'youremail', api_email );
 						wf.url[n] = url;
-						wf.fname[n] = path + '/nsrdb_' + site.name[s] + '_' + site.lat[s] + '_' + site.lon[s] + '_' + interval + 'min_' + available_years[j] + '.csv';
+						wf.fname[n] = path + '/nsrdb_' + site.name[s] + '_' + site.lat[s] + '_' + site.lon[s] + '_' + intvl + 'min_' + available_years[j] + '.csv';
 						n++;
 					}
 				}	
 			}	
 		}
-		elseif ( (to_string(links[i].year) == to_string(year)) && (to_string(links[i].interval) == to_string(interval)) )
+		elseif ( (links[i].year == year) && (links[i].interval == interval) )
 		{
 			url = links[i].link;
 			url = replace( url, 'yourapikey', api_key );
@@ -232,34 +235,50 @@ for ( s=0 ; s<#site.lat; s++ )
 	}
 }
 
+// download test file to get server error message from test file
+out( 'Testing NSRDB connection...');
+ok = curl( wf.url[0], {'file' = wf.fname[0] } );
+if ( !ok ) { outln( 'test failed. NSRDB server could be down.' ); }
+else
+{
+	txt = read_text_file( wf.fname[0] );
+	remove_file( wf.fname[0] );
+	if ( strpos(txt, '{\"') > -1 )
+	{
+		json = json_read( txt );
+		outln( '\nDownload Error!\n' + 'Message from NSRDB server: \n\t' +  json.errors[0] + '\nExiting script.' ); 
+		exit;
+	}
+	elseif ( #txt < 500 )
+	{
+		msgbox( 'Download Error!\n' + 'Test file does has less than 500 characters, so does not appear to contain valid weather data.\n\nExiting script.\n\n' ); 
+		exit;
+	}
+	else 
+	{
+		outln( 'test OK.');
+	}
+}
+
 // download requested files
-outln( 'Downloading ' + #wf.url + ' files...' );
+n=0;
+outln( '\nDownloading ' + #wf.url + ' files...' );
 outln();
 for( i=0; i<#wf.url; i++ )
 {
-	outln( 'File ' + to_string(i+1) +  ' of ' + #wf.url + ': ' + wf.fname[i] );
-	outln( '\tURL: ' + wf.url[i] );
-	ok = curl( wf.url[i], {'file' = wf.fname[i] } );
-	if ( !ok ) { outln( '\tFailed to connect to NSRDB server. It could be down, or there could be a problem with your internet connection.' ); }
-	else
-	{
-		txt = read_text_file( wf.fname[i] );
-		if ( strpos(txt, '{\"') > -1 )
+		outln( 'File ' + to_string(i+1) +  ' of ' + #wf.url + ':\n\t' + wf.fname[i] );
+		outln( 'URL:\n\t' + wf.url[i] );
+		ok = curl( wf.url[i], {'file' = wf.fname[i] } );
+		if ( !ok ) 
 		{
-			json = json_read( txt );
-			outln( '\tMessage from NSRDB Server: ' +  json.errors[0] ); 
-			remove_file( wf.fname[i] );
-		}
-		elseif ( #txt < 500 )
-		{
-			outln( '\tFile does has less than 500 characters, so does not appear to contain valid weather data.' ); 
-			remove_file( wf.fname[i] );
+			outln( '\tDownload failed.' ); 
 		}
 		else 
 		{
-			outln( '\tDownload succeeded!' );
+			outln( '\tDownload succeeded.' );
+			n++; 
 		}
-	}
+		outln();
 }
 
 outln( 'Done.' );

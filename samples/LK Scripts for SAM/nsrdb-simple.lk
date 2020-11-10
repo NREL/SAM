@@ -12,45 +12,40 @@
 */
 ////////////////////////////////////////////////////////////////////////////////
 
-// email address you used to register SAM
-email = '';
 
-// get latitude, longitude, and time zone given a location name or street address
 g = geocode('billings, mt' );
 
-// get list of URLS for all available weather files from NSRDB and convert list from JSON to variable of type table
-outln( 'List of valid parameters for webapi() function: ' + webapi() + '\n');
+outln( webapi() );
 w = webapi('nsrdb_query');
 w = replace( w, '<LAT>', g.lat );
 w = replace( w, '<LON>', g.lon );
+
 j = curl( w );
 v = json_read( j );
 
-// get URL for first weather file in list and convert json to variable of type table
-url = v.outputs[0].links[0].link;
+url = v.outputs[0].links[0].link; // url for first available weather file for billings, mt location
 url = replace( url, 'yourapikey' , '<SAMAPIKEY>' );
-url = replace( url, 'youremail' , email );
 j1 = curl( url );
 v1 = json_read( j1 );
 
-// download weather file and open it
-ok = curl( url, { 'file' = cwd() + '/test-nsrdb.csv' } );
+url1 = v.outputs[0].links[0].link;
+url1 = replace( url1, 'yourapikey' , '<SAMAPIKEY>' );
+
+ok = curl( url1, { 'file' = cwd() + '/test-nsrdb.csv' } );
 if ( ok ) { browse( cwd() + '/test-nsrdb.csv' ); }
 
-// show variables
 outln( 'g = ', g );
 outln( 'w = ', w );
 outln( 'j = ', j );
 outln( 'v = ', v );
 outln( '@v = ', @v );
-outln();
-outln( 'v.inputs =\n' , v.inputs );
-outln();
-outln('=============================');
-outln( 'v.outputs =\n', v.outputs );
+outln( 'v.inputs = ' , v.inputs );
 outln();
 outln('=============================');
-outln( 'v.outputs[0] =\n', v.outputs[0] );
+outln( 'v.outputs = ', v.outputs );
 outln();
 outln('=============================');
-outln( 'v.outputs[0].links[0].link =\n', v.outputs[0].links[0].link );
+outln( 'v.outputs[0] = ', v.outputs[0] );
+outln();
+outln('=============================');
+outln( 'v.outputs[0].links[0].link = ', v.outputs[0].links[0].link );

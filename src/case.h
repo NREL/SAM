@@ -173,7 +173,10 @@ public:
 	void GetUncertainties(std::vector<Uncertainties> &ul) { ul = m_uncertainties; }
 	StringHash &Perspective() { return m_perspective; }
 
+	wxString GetLastError() { return m_lastError; };
+
 private:
+	wxString m_lastError;
 	std::vector<CaseEventListener*> m_listeners;
 
 	ConfigInfo *m_config;
