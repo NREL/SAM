@@ -1027,10 +1027,9 @@ bool MainWindow::LoadProject( const wxString &file )
 		upgd.Run( pf );
 		upgd.ShowReportDialog( file );
 		if (pf.GetCases().size() == 0) {
-			if (wxMessageBox("Load project file with no cases?", "Query", wxYES_NO | wxICON_EXCLAMATION) == wxNO) {
-				pf.Clear();
-				return false;
-			}
+			wxMessageBox("Cannot open a file that contains only retired cases.", "Information", wxOK);
+			pf.Clear();
+			return false;
 		}
 	}
 
