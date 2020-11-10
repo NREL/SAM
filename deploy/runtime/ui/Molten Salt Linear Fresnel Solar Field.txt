@@ -4268,10 +4268,11 @@ equations{ 'fthr_ok' } = define() {
 	return ${fthrok}; };
 
 
-426
+636
 on_load{'Molten Salt Linear Fresnel Solar Field'} = define()
 {
 	on_change{'csp.mslf.sf.Fluid'}();
+	on_change{'csp.mslf.sf.sm_or_area'}();
 };
 
 on_change{'csp.mslf.sf.Fluid'} = define()
@@ -4286,5 +4287,10 @@ on_change{'csp.mslf.sf.Fluid'} = define()
 
 on_change{'field_fl_props'} = define(){
 	mslf_hx_derate_update();
+};
 
+on_change{'csp.mslf.sf.sm_or_area'} = define(){
+  state = value('csp.mslf.sf.sm_or_area');
+  enable ('solar_mult_spec', state == 0);
+  enable ('a_field', state == 1);
 };
