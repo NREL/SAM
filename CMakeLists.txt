@@ -126,7 +126,7 @@ if (UNIX)
     if (EXISTS /usr/local/bin/wx-config-3)
         set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
     else ()
-        set(wxWidgets_CONFIG_EXECUTABLE $ENV{WXMSW3})
+        set(wxWidgets_CONFIG_EXECUTABLE $ENV{WXMSW3}/bin/wx-config)
     endif ()
 
     if (APPLE)

@@ -69,6 +69,26 @@ public:
 		wxString phasewiring;
 	};
 
+	// unused items to add later from https://openei.org/services/doc/rest/util_rates/?version=7
+	// read these items to give feedback to user
+	struct UnusedItems
+	{
+		bool HasUnusedItems;
+		double FuelAdjustmentsMonthly[12]; // array: Array of 12 decimal numbers, one per month, each is $/kWh
+		wxString ServiceType; // enumeration:  "Bundled", "Energy", "Delivery", or "Delivery with Standard Offer"
+		double DemandWindow; // decimal: Demand Window (minutes)
+		bool HasCoincidentRate;
+		matrix_t<double> CoincidentRateStructure; // array: [[{"max":(Decimal),"rate":(Decimal),"adj":(Decimal),"sell":(Decimal)},...],...] 
+		double CoincidentSchedule[12][24]; // array: Value is an array of arrays. The 12 top-level arrays correspond to a month of the year. Each month array contains one integer per hour of the day from 12am to 11pm, and the integer corresponds to the index of a period in coincidentratestructure.
+		wxString CoincidentRateUnit; // enumeration: kW, hp, kVA, kW daily, hp daily,kVA daily
+		double DemandRatchetPercentage[12]; // array: Array of 12 decimal numbers, one Demand Ratchet Percentage per month
+		double DemandReactivePowerCharge; // decimal: Demand Reactive Power Charge ($/kVAR)
+		wxString EnergyAttrs; // array (as string for information): Other Energy Attributes in a key/value format
+		wxString DemandAttrs; // array (as string for information): Other Demand Attributes in a key/value format
+		wxString FixedAttrs; // array (as string for information): Other Demand Attributes in a key/value format
+		bool IsDefault;
+	};
+
 	struct RateData
 	{
 		RateData();
@@ -76,12 +96,15 @@ public:
 
 		RateInfo Header;
 		ApplicabilityInfo Applicability;
+		UnusedItems Unused;
 
-		bool NetMetering;
-		double MinAnnualCharge;
-		double MinMonthlyCharge;
-		double FixedMonthlyCharge;
+		wxString DgRules;
+		double MinCharge;
+		wxString MinChargeUnits;
 
+		double FixedChargeFirstMeter;
+		double FixedChargeAddlMeter;
+		wxString FixedChargeUnits;
 
 		bool HasDemandCharge;
 		wxString DemandRateUnit; // kW, kVA or hp
@@ -100,8 +123,6 @@ public:
 		matrix_t<double> EnergyStructure;
 		double EnergyWeekdaySchedule[12][24];
 		double EnergyWeekendSchedule[12][24];
-
-	
 	};
 
 	bool QueryUtilityCompanies(wxArrayString &names, wxString *err=NULL);
@@ -110,7 +131,6 @@ public:
 	// resolve aliases in database per email from Jay Huggins 1/9/15
 	bool ResolveUtilityName(const wxString &name, wxString *urdb_name, wxString *err=NULL);
 	bool QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rates, wxString *err=NULL);
-	int UtilityCompanyRateCount(const wxString &name);
 	bool RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url=NULL, wxString *err=NULL);
 	bool RetrieveDiurnalData(wxJSONValue &month_ary, double sched[12][24]);
 };
@@ -147,6 +167,7 @@ private:
 
 	wxButton *btnApply;
 	wxStaticText *lblStatus;
+	wxStaticText *lblRateStatus;
 	wxStaticText *lblUtilityCount;
 	wxHyperlinkCtrl *hypOpenEILink;
 	wxHyperlinkCtrl *hypJSONLink;
