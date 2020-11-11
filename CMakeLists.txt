@@ -217,7 +217,7 @@ else()
 			NAMES lk.a lk.lib
 			PATHS $ENV{LK_LIB} $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
 	find_library( SSC_LIB
-			NAMES ssc.dylib ssc.lib libssc.so
+			NAMES ssc.dylib ssc.lib ssc.so
 			PATHS $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
 	target_link_libraries(${SAM_EXE} optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 
