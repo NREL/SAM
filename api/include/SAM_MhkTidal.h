@@ -32,6 +32,38 @@ extern "C"
 	//
 
 	/**
+	 * Set balance_of_system_cost_total: BOS costs [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_balance_of_system_cost_total_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set device_costs_total: Device costs [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_device_costs_total_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set financial_cost_total: Financial costs [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_financial_cost_total_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set fixed_charge_rate: FCR from LCOE Cost page
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_fixed_charge_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set loss_additional: Additional losses [%]
 	 * options: None
 	 * constraints: None
@@ -95,10 +127,26 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_MhkTidal_MHKTidal_tidal_resource_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
+	/**
+	 * Set total_operating_cost: O&M costs [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_total_operating_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	/**
 	 * MHKTidal Getters
 	 */
+
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_balance_of_system_cost_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_device_costs_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_financial_cost_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_fixed_charge_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkTidal_MHKTidal_loss_additional_nget(SAM_table ptr, SAM_error *err);
 
@@ -116,6 +164,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_MhkTidal_MHKTidal_tidal_resource_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_total_operating_cost_nget(SAM_table ptr, SAM_error *err);
+
 
 	/**
 	 * Outputs Getters
@@ -132,6 +182,34 @@ extern "C"
 	SAM_EXPORT double SAM_MhkTidal_Outputs_device_average_power_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkTidal_Outputs_device_rated_capacity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_tidal_power_end_velocity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_tidal_power_start_velocity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_tidal_resource_end_velocity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_tidal_resource_start_velocity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_bos_cost_kwh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_bos_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_capital_cost_kwh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_capital_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_device_cost_kwh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_device_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_financial_cost_kwh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_financial_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_om_cost_kwh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_om_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

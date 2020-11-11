@@ -61,12 +61,6 @@ SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diffuse_aset(SAM_table ptr, do
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_dry_temperature_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dry_temperature", number);
-	});
-}
-
 SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_elevation_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "elevation", number);
@@ -136,6 +130,12 @@ SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_rotlim_nset(SAM_table ptr, dou
 SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_sky_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sky_model", number);
+	});
+}
+
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_tamb_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tamb", number);
 	});
 }
 
@@ -238,17 +238,6 @@ SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diffuse_aget(SAM_table ptr,
 	result = ssc_data_get_array(ptr, "diffuse", length);
 	if (!result)
 		make_access_error("SAM_Irradproc", "diffuse");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_dry_temperature_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dry_temperature", &result))
-		make_access_error("SAM_Irradproc", "dry_temperature");
 	});
 	return result;
 }
@@ -385,6 +374,17 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_sky_model_nget(SAM_table ptr
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sky_model", &result))
 		make_access_error("SAM_Irradproc", "sky_model");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tamb_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tamb", &result))
+		make_access_error("SAM_Irradproc", "tamb");
 	});
 	return result;
 }

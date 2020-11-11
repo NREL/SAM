@@ -165,6 +165,22 @@ extern "C"
 	SAM_EXPORT void SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_min_dT_des_in_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set HTR_n_sub_hx: HTR number of model subsections [-]
+	 * options: High temperature recuperator
+	 * constraints: None
+	 * required if: ?=10
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_n_sub_hx_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set HTR_od_model: 0: mass flow scale, 1: conductance ratio model [-]
+	 * options: High temperature recuperator
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_od_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set HT_recup_eff_max: Maximum allowable effectiveness in HTR [-]
 	 * options: High temperature recuperator
 	 * constraints: None
@@ -219,6 +235,22 @@ extern "C"
 	 * required if: design_method=3
 	 */
 	SAM_EXPORT void SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_min_dT_des_in_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set LTR_n_sub_hx: LTR number of model subsections [-]
+	 * options: Low temperature recuperator
+	 * constraints: None
+	 * required if: ?=10
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_n_sub_hx_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set LTR_od_model: 0: mass flow scale, 1: conductance ratio model [-]
+	 * options: Low temperature recuperator
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_od_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set LT_recup_eff_max: Maximum allowable effectiveness in LTR [-]
@@ -302,7 +334,7 @@ extern "C"
 
 
 	//
-	// CycleDesign parameters
+	// Common parameters
 	//
 
 	/**
@@ -311,7 +343,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_CycleDesign_PHX_co2_deltaP_des_in_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_PHX_co2_deltaP_des_in_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set P_high_limit: High pressure limit in cycle [MPa]
@@ -319,94 +351,7 @@ extern "C"
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_CycleDesign_P_high_limit_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set deltaP_counterHX_frac: Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_CycleDesign_deltaP_counterHX_frac_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set eta_isen_mc: Design main compressor isentropic efficiency [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_CycleDesign_eta_isen_mc_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set eta_isen_pc: Design precompressor isentropic efficiency [-]
-	 * options: None
-	 * constraints: None
-	 * required if: cycle_config=2
-	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_CycleDesign_eta_isen_pc_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set eta_isen_rc: Design re-compressor isentropic efficiency [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_CycleDesign_eta_isen_rc_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set eta_isen_t: Design turbine isentropic efficiency [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_CycleDesign_eta_isen_t_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// PHXDesign parameters
-	//
-
-	/**
-	 * Set dT_PHX_cold_approach: Temp diff btw cold HTF and cold CO2 [C]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_PHXDesign_dT_PHX_cold_approach_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// AirCoolerDesign parameters
-	//
-
-	/**
-	 * Set deltaP_cooler_frac: Fraction of CO2 inlet pressure that is design point cooler CO2 pressure drop
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_AirCoolerDesign_deltaP_cooler_frac_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set fan_power_frac: Fraction of net cycle power consumed by air cooler fan
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_AirCoolerDesign_fan_power_frac_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_design_air_cooler: Defaults to True. False will skip air cooler calcs
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1.0
-	 */
-	SAM_EXPORT void SAM_Sco2CspUdPcTables_AirCoolerDesign_is_design_air_cooler_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// Common parameters
-	//
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_P_high_limit_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set T_amb_high: Upper level of ambient temperature [C]
@@ -441,6 +386,46 @@ extern "C"
 	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_T_htf_hot_low_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set deltaP_counterHX_frac: Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_deltaP_counterHX_frac_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set eta_isen_mc: Design main compressor isentropic efficiency [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_eta_isen_mc_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set eta_isen_pc: Design precompressor isentropic efficiency [-]
+	 * options: None
+	 * constraints: None
+	 * required if: cycle_config=2
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_eta_isen_pc_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set eta_isen_rc: Design re-compressor isentropic efficiency [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_eta_isen_rc_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set eta_isen_t: Design turbine isentropic efficiency [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_eta_isen_t_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set is_apply_default_htf_mins: 1 = yes (0.5 rc, 0.7 simple), 0 = no, only use 'm_dot_htf_ND_low'
 	 * options: None
 	 * constraints: None
@@ -473,6 +458,14 @@ extern "C"
 	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_m_dot_htf_ND_low_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set mc_comp_type: Main compressor compressor type 1: SNL 2: CompA [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_mc_comp_type_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set n_T_amb: Number of ambient temperature parametric runs
 	 * options: None
 	 * constraints: None
@@ -495,6 +488,80 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Sco2CspUdPcTables_Common_n_m_dot_htf_ND_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// PHXDesign parameters
+	//
+
+	/**
+	 * Set PHX_n_sub_hx: Number of subsections in PHX model [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=10
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_PHXDesign_PHX_n_sub_hx_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set PHX_od_model: 0: mass flow scale, 1: conductance ratio model [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_PHXDesign_PHX_od_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dT_PHX_cold_approach: Temp diff btw cold HTF and cold CO2 [C]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_PHXDesign_dT_PHX_cold_approach_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// AirCoolerDesign parameters
+	//
+
+	/**
+	 * Set N_nodes_air_cooler_pass: Number of nodes in single air cooler pass
+	 * options: None
+	 * constraints: None
+	 * required if: ?=10
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_AirCoolerDesign_N_nodes_air_cooler_pass_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set deltaP_cooler_frac: Fraction of CO2 inlet pressure that is design point cooler CO2 pressure drop
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_AirCoolerDesign_deltaP_cooler_frac_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set eta_air_cooler_fan: Air cooler fan isentropic efficiency
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.5
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_AirCoolerDesign_eta_air_cooler_fan_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set fan_power_frac: Fraction of net cycle power consumed by air cooler fan
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_AirCoolerDesign_fan_power_frac_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_design_air_cooler: Defaults to True. False will skip air cooler calcs
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1.0
+	 */
+	SAM_EXPORT void SAM_Sco2CspUdPcTables_AirCoolerDesign_is_design_air_cooler_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
@@ -538,6 +605,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_min_dT_des_in_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_n_sub_hx_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_od_model_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HT_recup_eff_max_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_HP_deltaP_des_in_nget(SAM_table ptr, SAM_error *err);
@@ -551,6 +622,10 @@ extern "C"
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_eff_des_in_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_min_dT_des_in_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_n_sub_hx_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_od_model_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LT_recup_eff_max_nget(SAM_table ptr, SAM_error *err);
 
@@ -574,45 +649,12 @@ extern "C"
 
 
 	/**
-	 * CycleDesign Getters
-	 */
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_CycleDesign_PHX_co2_deltaP_des_in_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_CycleDesign_P_high_limit_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_CycleDesign_deltaP_counterHX_frac_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_CycleDesign_eta_isen_mc_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_CycleDesign_eta_isen_pc_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_CycleDesign_eta_isen_rc_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_CycleDesign_eta_isen_t_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * PHXDesign Getters
-	 */
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_PHXDesign_dT_PHX_cold_approach_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * AirCoolerDesign Getters
-	 */
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_deltaP_cooler_frac_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_fan_power_frac_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_is_design_air_cooler_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
 	 * Common Getters
 	 */
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_PHX_co2_deltaP_des_in_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_P_high_limit_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_T_amb_high_nget(SAM_table ptr, SAM_error *err);
 
@@ -622,6 +664,16 @@ extern "C"
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_T_htf_hot_low_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_deltaP_counterHX_frac_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_mc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_pc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_rc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_t_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_is_apply_default_htf_mins_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_is_generate_udpc_nget(SAM_table ptr, SAM_error *err);
@@ -630,11 +682,39 @@ extern "C"
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_m_dot_htf_ND_low_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_mc_comp_type_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_n_T_amb_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_n_T_htf_hot_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_n_m_dot_htf_ND_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * PHXDesign Getters
+	 */
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_PHXDesign_PHX_n_sub_hx_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_PHXDesign_PHX_od_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_PHXDesign_dT_PHX_cold_approach_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * AirCoolerDesign Getters
+	 */
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_N_nodes_air_cooler_pass_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_deltaP_cooler_frac_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_eta_air_cooler_fan_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_fan_power_frac_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_is_design_air_cooler_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -656,40 +736,6 @@ extern "C"
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_cost_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_min_dT_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_IP_cooler_P_in_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_IP_cooler_T_in_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_IP_cooler_UA_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_IP_cooler_W_dot_fan_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_IP_cooler_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_IP_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_IP_cooler_q_dot_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LP_cooler_P_in_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LP_cooler_T_in_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LP_cooler_UA_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LP_cooler_W_dot_fan_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LP_cooler_co2_deltaP_des_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LP_cooler_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LP_cooler_in_isen_deltah_to_P_mc_out_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LP_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LP_cooler_q_dot_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LP_cooler_rho_in_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_HP_T_out_des_nget(SAM_table ptr, SAM_error *err);
 
@@ -761,6 +807,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_UA_PHX_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_W_dot_net_less_cooling_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_c_tot_W_dot_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_c_tot_cost_nget(SAM_table ptr, SAM_error *err);
@@ -787,6 +835,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eta_thermal_calc_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eta_thermal_net_less_cooling_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_mc_data_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_pc_data_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -810,6 +860,26 @@ extern "C"
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_T_out_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_W_dot_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_P_in_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_T_in_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_UA_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_W_dot_fan_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_co2_deltaP_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_in_isen_deltah_to_P_mc_out_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_q_dot_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_rho_in_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cost_nget(SAM_table ptr, SAM_error *err);
 
@@ -842,6 +912,20 @@ extern "C"
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_T_in_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_W_dot_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_P_in_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_T_in_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_UA_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_W_dot_fan_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_q_dot_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cost_nget(SAM_table ptr, SAM_error *err);
 
@@ -939,9 +1023,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_cost_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_delta_h_isen_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_m_dot_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_nu_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_rho_in_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_tip_ratio_des_nget(SAM_table ptr, SAM_error *err);
 

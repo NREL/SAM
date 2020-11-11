@@ -115,6 +115,18 @@ SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_HTR_min_dT_des_in_nset(SAM
 	});
 }
 
+SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_HTR_n_sub_hx_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "HTR_n_sub_hx", number);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_HTR_od_model_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "HTR_od_model", number);
+	});
+}
+
 SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_HT_recup_eff_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "HT_recup_eff_max", number);
@@ -154,6 +166,18 @@ SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_LTR_eff_des_in_nset(SAM_ta
 SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_LTR_min_dT_des_in_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "LTR_min_dT_des_in", number);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_LTR_n_sub_hx_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "LTR_n_sub_hx", number);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_LTR_od_model_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "LTR_od_model", number);
 	});
 }
 
@@ -211,75 +235,57 @@ SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_min_phx_deltaT_nset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_od_rel_tol_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "od_rel_tol", number);
+	});
+}
+
 SAM_EXPORT void SAM_Sco2CspSystem_HeatExchangerDesign_rel_tol_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "rel_tol", number);
 	});
 }
 
-SAM_EXPORT void SAM_Sco2CspSystem_CycleDesign_PHX_co2_deltaP_des_in_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Sco2CspSystem_Common_PHX_co2_deltaP_des_in_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "PHX_co2_deltaP_des_in", number);
 	});
 }
 
-SAM_EXPORT void SAM_Sco2CspSystem_CycleDesign_P_high_limit_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Sco2CspSystem_Common_P_high_limit_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "P_high_limit", number);
 	});
 }
 
-SAM_EXPORT void SAM_Sco2CspSystem_CycleDesign_deltaP_counterHX_frac_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Sco2CspSystem_Common_deltaP_counterHX_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "deltaP_counterHX_frac", number);
 	});
 }
 
-SAM_EXPORT void SAM_Sco2CspSystem_CycleDesign_eta_isen_mc_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Sco2CspSystem_Common_eta_isen_mc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eta_isen_mc", number);
 	});
 }
 
-SAM_EXPORT void SAM_Sco2CspSystem_CycleDesign_eta_isen_pc_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Sco2CspSystem_Common_eta_isen_pc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eta_isen_pc", number);
 	});
 }
 
-SAM_EXPORT void SAM_Sco2CspSystem_CycleDesign_eta_isen_rc_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Sco2CspSystem_Common_eta_isen_rc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eta_isen_rc", number);
 	});
 }
 
-SAM_EXPORT void SAM_Sco2CspSystem_CycleDesign_eta_isen_t_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Sco2CspSystem_Common_eta_isen_t_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "eta_isen_t", number);
-	});
-}
-
-SAM_EXPORT void SAM_Sco2CspSystem_PHXDesign_dT_PHX_cold_approach_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dT_PHX_cold_approach", number);
-	});
-}
-
-SAM_EXPORT void SAM_Sco2CspSystem_AirCoolerDesign_deltaP_cooler_frac_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "deltaP_cooler_frac", number);
-	});
-}
-
-SAM_EXPORT void SAM_Sco2CspSystem_AirCoolerDesign_fan_power_frac_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "fan_power_frac", number);
-	});
-}
-
-SAM_EXPORT void SAM_Sco2CspSystem_AirCoolerDesign_is_design_air_cooler_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_design_air_cooler", number);
 	});
 }
 
@@ -289,9 +295,21 @@ SAM_EXPORT void SAM_Sco2CspSystem_Common_is_gen_od_polynomials_nset(SAM_table pt
 	});
 }
 
+SAM_EXPORT void SAM_Sco2CspSystem_Common_mc_comp_type_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mc_comp_type", number);
+	});
+}
+
 SAM_EXPORT void SAM_Sco2CspSystem_Common_od_P_mc_in_sweep_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "od_P_mc_in_sweep", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_Common_od_T_mc_in_sweep_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "od_T_mc_in_sweep", arr, length);
 	});
 }
 
@@ -313,9 +331,69 @@ SAM_EXPORT void SAM_Sco2CspSystem_Common_od_generate_udpc_aset(SAM_table ptr, do
 	});
 }
 
+SAM_EXPORT void SAM_Sco2CspSystem_Common_od_max_htf_m_dot_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "od_max_htf_m_dot", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_Common_od_opt_objective_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "od_opt_objective", number);
+	});
+}
+
 SAM_EXPORT void SAM_Sco2CspSystem_Common_od_set_control_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "od_set_control", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_PHXDesign_PHX_n_sub_hx_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "PHX_n_sub_hx", number);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_PHXDesign_PHX_od_model_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "PHX_od_model", number);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_PHXDesign_dT_PHX_cold_approach_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dT_PHX_cold_approach", number);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_AirCoolerDesign_N_nodes_air_cooler_pass_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "N_nodes_air_cooler_pass", number);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_AirCoolerDesign_deltaP_cooler_frac_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "deltaP_cooler_frac", number);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_AirCoolerDesign_eta_air_cooler_fan_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "eta_air_cooler_fan", number);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_AirCoolerDesign_fan_power_frac_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "fan_power_frac", number);
+	});
+}
+
+SAM_EXPORT void SAM_Sco2CspSystem_AirCoolerDesign_is_design_air_cooler_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_design_air_cooler", number);
 	});
 }
 
@@ -496,6 +574,28 @@ SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_HTR_min_dT_des_in_nget(S
 
 
 
+SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_HTR_n_sub_hx_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "HTR_n_sub_hx", &result))
+		make_access_error("SAM_Sco2CspSystem", "HTR_n_sub_hx");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_HTR_od_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "HTR_od_model", &result))
+		make_access_error("SAM_Sco2CspSystem", "HTR_od_model");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_HT_recup_eff_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -567,6 +667,28 @@ SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_LTR_min_dT_des_in_nget(S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "LTR_min_dT_des_in", &result))
 		make_access_error("SAM_Sco2CspSystem", "LTR_min_dT_des_in");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_LTR_n_sub_hx_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "LTR_n_sub_hx", &result))
+		make_access_error("SAM_Sco2CspSystem", "LTR_n_sub_hx");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_LTR_od_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "LTR_od_model", &result))
+		make_access_error("SAM_Sco2CspSystem", "LTR_od_model");
 	});
 	return result;
 }
@@ -672,6 +794,17 @@ SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_min_phx_deltaT_nget(SAM_
 
 
 
+SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_od_rel_tol_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "od_rel_tol", &result))
+		make_access_error("SAM_Sco2CspSystem", "od_rel_tol");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_rel_tol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -683,7 +816,7 @@ SAM_EXPORT double SAM_Sco2CspSystem_HeatExchangerDesign_rel_tol_nget(SAM_table p
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_PHX_co2_deltaP_des_in_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Common_PHX_co2_deltaP_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "PHX_co2_deltaP_des_in", &result))
@@ -694,7 +827,7 @@ SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_PHX_co2_deltaP_des_in_nget(SAM_t
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_P_high_limit_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Common_P_high_limit_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "P_high_limit", &result))
@@ -705,7 +838,7 @@ SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_P_high_limit_nget(SAM_table ptr,
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_deltaP_counterHX_frac_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Common_deltaP_counterHX_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "deltaP_counterHX_frac", &result))
@@ -716,7 +849,7 @@ SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_deltaP_counterHX_frac_nget(SAM_t
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_eta_isen_mc_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Common_eta_isen_mc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eta_isen_mc", &result))
@@ -727,7 +860,7 @@ SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_eta_isen_mc_nget(SAM_table ptr, 
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_eta_isen_pc_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Common_eta_isen_pc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eta_isen_pc", &result))
@@ -738,7 +871,7 @@ SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_eta_isen_pc_nget(SAM_table ptr, 
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_eta_isen_rc_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Common_eta_isen_rc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eta_isen_rc", &result))
@@ -749,55 +882,11 @@ SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_eta_isen_rc_nget(SAM_table ptr, 
 
 
 
-SAM_EXPORT double SAM_Sco2CspSystem_CycleDesign_eta_isen_t_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Sco2CspSystem_Common_eta_isen_t_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eta_isen_t", &result))
 		make_access_error("SAM_Sco2CspSystem", "eta_isen_t");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_PHXDesign_dT_PHX_cold_approach_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dT_PHX_cold_approach", &result))
-		make_access_error("SAM_Sco2CspSystem", "dT_PHX_cold_approach");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_AirCoolerDesign_deltaP_cooler_frac_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "deltaP_cooler_frac", &result))
-		make_access_error("SAM_Sco2CspSystem", "deltaP_cooler_frac");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_AirCoolerDesign_fan_power_frac_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "fan_power_frac", &result))
-		make_access_error("SAM_Sco2CspSystem", "fan_power_frac");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_AirCoolerDesign_is_design_air_cooler_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_design_air_cooler", &result))
-		make_access_error("SAM_Sco2CspSystem", "is_design_air_cooler");
 	});
 	return result;
 }
@@ -815,12 +904,35 @@ SAM_EXPORT double SAM_Sco2CspSystem_Common_is_gen_od_polynomials_nget(SAM_table 
 
 
 
+SAM_EXPORT double SAM_Sco2CspSystem_Common_mc_comp_type_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_comp_type", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_comp_type");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Sco2CspSystem_Common_od_P_mc_in_sweep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "od_P_mc_in_sweep", length);
 	if (!result)
 		make_access_error("SAM_Sco2CspSystem", "od_P_mc_in_sweep");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Common_od_T_mc_in_sweep_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "od_T_mc_in_sweep", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "od_T_mc_in_sweep");
 	});
 	return result;
 }
@@ -862,12 +974,123 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Common_od_generate_udpc_aget(SAM_table ptr,
 
 
 
+SAM_EXPORT double* SAM_Sco2CspSystem_Common_od_max_htf_m_dot_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "od_max_htf_m_dot", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "od_max_htf_m_dot");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Common_od_opt_objective_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "od_opt_objective", &result))
+		make_access_error("SAM_Sco2CspSystem", "od_opt_objective");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Sco2CspSystem_Common_od_set_control_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "od_set_control", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Sco2CspSystem", "od_set_control");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_PHXDesign_PHX_n_sub_hx_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "PHX_n_sub_hx", &result))
+		make_access_error("SAM_Sco2CspSystem", "PHX_n_sub_hx");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_PHXDesign_PHX_od_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "PHX_od_model", &result))
+		make_access_error("SAM_Sco2CspSystem", "PHX_od_model");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_PHXDesign_dT_PHX_cold_approach_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dT_PHX_cold_approach", &result))
+		make_access_error("SAM_Sco2CspSystem", "dT_PHX_cold_approach");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_AirCoolerDesign_N_nodes_air_cooler_pass_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "N_nodes_air_cooler_pass", &result))
+		make_access_error("SAM_Sco2CspSystem", "N_nodes_air_cooler_pass");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_AirCoolerDesign_deltaP_cooler_frac_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "deltaP_cooler_frac", &result))
+		make_access_error("SAM_Sco2CspSystem", "deltaP_cooler_frac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_AirCoolerDesign_eta_air_cooler_fan_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "eta_air_cooler_fan", &result))
+		make_access_error("SAM_Sco2CspSystem", "eta_air_cooler_fan");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_AirCoolerDesign_fan_power_frac_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "fan_power_frac", &result))
+		make_access_error("SAM_Sco2CspSystem", "fan_power_frac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_AirCoolerDesign_is_design_air_cooler_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_design_air_cooler", &result))
+		make_access_error("SAM_Sco2CspSystem", "is_design_air_cooler");
 	});
 	return result;
 }
@@ -1016,265 +1239,6 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_HTR_min_dT_od_aget(SAM_table ptr, i
 	result = ssc_data_get_array(ptr, "HTR_min_dT_od", length);
 	if (!result)
 		make_access_error("SAM_Sco2CspSystem", "HTR_min_dT_od");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_IP_cooler_P_in_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "IP_cooler_P_in", &result))
-		make_access_error("SAM_Sco2CspSystem", "IP_cooler_P_in");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_IP_cooler_T_in_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "IP_cooler_T_in", &result))
-		make_access_error("SAM_Sco2CspSystem", "IP_cooler_T_in");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_IP_cooler_UA_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "IP_cooler_UA", &result))
-		make_access_error("SAM_Sco2CspSystem", "IP_cooler_UA");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_IP_cooler_W_dot_fan_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "IP_cooler_W_dot_fan", &result))
-		make_access_error("SAM_Sco2CspSystem", "IP_cooler_W_dot_fan");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_IP_cooler_W_dot_fan_od_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "IP_cooler_W_dot_fan_od", length);
-	if (!result)
-		make_access_error("SAM_Sco2CspSystem", "IP_cooler_W_dot_fan_od");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_IP_cooler_cost_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "IP_cooler_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "IP_cooler_cost");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_IP_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "IP_cooler_m_dot_co2", &result))
-		make_access_error("SAM_Sco2CspSystem", "IP_cooler_m_dot_co2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_IP_cooler_q_dot_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "IP_cooler_q_dot", &result))
-		make_access_error("SAM_Sco2CspSystem", "IP_cooler_q_dot");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LP_cooler_P_in_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LP_cooler_P_in", &result))
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_P_in");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LP_cooler_T_in_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LP_cooler_T_in", &result))
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_T_in");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_LP_cooler_T_in_od_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "LP_cooler_T_in_od", length);
-	if (!result)
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_T_in_od");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LP_cooler_UA_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LP_cooler_UA", &result))
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_UA");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LP_cooler_W_dot_fan_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LP_cooler_W_dot_fan", &result))
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_W_dot_fan");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_LP_cooler_W_dot_fan_od_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "LP_cooler_W_dot_fan_od", length);
-	if (!result)
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_W_dot_fan_od");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LP_cooler_co2_deltaP_des_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LP_cooler_co2_deltaP_des", &result))
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_co2_deltaP_des");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_LP_cooler_co2_deltaP_od_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "LP_cooler_co2_deltaP_od", length);
-	if (!result)
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_co2_deltaP_od");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LP_cooler_cost_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LP_cooler_cost", &result))
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_cost");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LP_cooler_in_isen_deltah_to_P_mc_out_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LP_cooler_in_isen_deltah_to_P_mc_out", &result))
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_in_isen_deltah_to_P_mc_out");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_LP_cooler_in_isen_deltah_to_P_mc_out_od_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "LP_cooler_in_isen_deltah_to_P_mc_out_od", length);
-	if (!result)
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_in_isen_deltah_to_P_mc_out_od");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LP_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LP_cooler_m_dot_co2", &result))
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_m_dot_co2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LP_cooler_q_dot_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LP_cooler_q_dot", &result))
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_q_dot");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Sco2CspSystem_Outputs_LP_cooler_rho_in_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "LP_cooler_rho_in", &result))
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_rho_in");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_LP_cooler_rho_in_od_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "LP_cooler_rho_in_od", length);
-	if (!result)
-		make_access_error("SAM_Sco2CspSystem", "LP_cooler_rho_in_od");
 	});
 	return result;
 }
@@ -1825,6 +1789,29 @@ SAM_EXPORT double SAM_Sco2CspSystem_Outputs_UA_PHX_nget(SAM_table ptr, SAM_error
 
 
 
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_W_dot_net_less_cooling_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "W_dot_net_less_cooling", &result))
+		make_access_error("SAM_Sco2CspSystem", "W_dot_net_less_cooling");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_W_dot_net_less_cooling_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "W_dot_net_less_cooling_od", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "W_dot_net_less_cooling_od");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_W_dot_net_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2088,6 +2075,29 @@ SAM_EXPORT double SAM_Sco2CspSystem_Outputs_eta_thermal_calc_nget(SAM_table ptr,
 
 
 
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_eta_thermal_net_less_cooling_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "eta_thermal_net_less_cooling_des", &result))
+		make_access_error("SAM_Sco2CspSystem", "eta_thermal_net_less_cooling_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_eta_thermal_net_less_cooling_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "eta_thermal_net_less_cooling_od", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "eta_thermal_net_less_cooling_od");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_eta_thermal_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2241,6 +2251,18 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_N_od_aget(SAM_table ptr, int* le
 
 
 
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_N_od_perc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "mc_N_od_perc", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "mc_N_od_perc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_T_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2281,6 +2303,176 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_W_dot_od_aget(SAM_table ptr, int
 	result = ssc_data_get_array(ptr, "mc_W_dot_od", length);
 	if (!result)
 		make_access_error("SAM_Sco2CspSystem", "mc_W_dot_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_P_in_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_P_in", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_P_in");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_T_in_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_T_in", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_T_in");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_cooler_T_in_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "mc_cooler_T_in_od", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_T_in_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_UA_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_UA", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_UA");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_W_dot_fan_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_W_dot_fan", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_W_dot_fan");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_cooler_W_dot_fan_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "mc_cooler_W_dot_fan_od", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_W_dot_fan_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_co2_deltaP_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_co2_deltaP_des", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_co2_deltaP_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_cooler_co2_deltaP_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "mc_cooler_co2_deltaP_od", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_co2_deltaP_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_cost", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_in_isen_deltah_to_P_mc_out_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_in_isen_deltah_to_P_mc_out", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_in_isen_deltah_to_P_mc_out");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_cooler_in_isen_deltah_to_P_mc_out_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "mc_cooler_in_isen_deltah_to_P_mc_out_od", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_in_isen_deltah_to_P_mc_out_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_m_dot_co2", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_m_dot_co2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_q_dot_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_q_dot", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_q_dot");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_mc_cooler_rho_in_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mc_cooler_rho_in", &result))
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_rho_in");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_mc_cooler_rho_in_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "mc_cooler_rho_in_od", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "mc_cooler_rho_in_od");
 	});
 	return result;
 }
@@ -2530,30 +2722,6 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_od_code_aget(SAM_table ptr, int* le
 
 
 
-SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_od_opt_conv_tol_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "od_opt_conv_tol", length);
-	if (!result)
-		make_access_error("SAM_Sco2CspSystem", "od_opt_conv_tol");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_od_opt_obj_code_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "od_opt_obj_code", length);
-	if (!result)
-		make_access_error("SAM_Sco2CspSystem", "od_opt_obj_code");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_pc_D_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2652,6 +2820,95 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_pc_W_dot_od_aget(SAM_table ptr, int
 	result = ssc_data_get_array(ptr, "pc_W_dot_od", length);
 	if (!result)
 		make_access_error("SAM_Sco2CspSystem", "pc_W_dot_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_P_in_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_cooler_P_in", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cooler_P_in");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_T_in_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_cooler_T_in", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cooler_T_in");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_UA_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_cooler_UA", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cooler_UA");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_W_dot_fan_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_cooler_W_dot_fan", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cooler_W_dot_fan");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_pc_cooler_W_dot_fan_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pc_cooler_W_dot_fan_od", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "pc_cooler_W_dot_fan_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_cooler_cost", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cooler_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_cooler_m_dot_co2", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cooler_m_dot_co2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_pc_cooler_q_dot_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_cooler_q_dot", &result))
+		make_access_error("SAM_Sco2CspSystem", "pc_cooler_q_dot");
 	});
 	return result;
 }
@@ -2965,6 +3222,18 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_rc_N_od_aget(SAM_table ptr, int* le
 	result = ssc_data_get_array(ptr, "rc_N_od", length);
 	if (!result)
 		make_access_error("SAM_Sco2CspSystem", "rc_N_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_rc_N_od_perc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rc_N_od_perc", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "rc_N_od_perc");
 	});
 	return result;
 }
@@ -3571,6 +3840,29 @@ SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_cost_nget(SAM_table ptr, SAM_error
 
 
 
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_delta_h_isen_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "t_delta_h_isen_des", &result))
+		make_access_error("SAM_Sco2CspSystem", "t_delta_h_isen_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_t_delta_h_isen_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "t_delta_h_isen_od", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "t_delta_h_isen_od");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_t_eta_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3623,6 +3915,29 @@ SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_t_nu_od_aget(SAM_table ptr, int* le
 	result = ssc_data_get_array(ptr, "t_nu_od", length);
 	if (!result)
 		make_access_error("SAM_Sco2CspSystem", "t_nu_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Sco2CspSystem_Outputs_t_rho_in_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "t_rho_in_des", &result))
+		make_access_error("SAM_Sco2CspSystem", "t_rho_in_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Sco2CspSystem_Outputs_t_rho_in_od_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "t_rho_in_od", length);
+	if (!result)
+		make_access_error("SAM_Sco2CspSystem", "t_rho_in_od");
 	});
 	return result;
 }
