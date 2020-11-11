@@ -24,7 +24,7 @@ endif()
 
 Project(sam)
 
-if (NOT skip_api)
+if (SAMAPI_EXPORT)
 	add_subdirectory(api)
 endif()
 
