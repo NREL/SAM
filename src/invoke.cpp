@@ -2182,7 +2182,6 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		url.Replace("<HUBHEIGHT>", hh[i].Left(hh[i].Len() - 1));
 		url.Replace("<LAT>", wxString::Format("%lg", lat));
 		url.Replace("<LON>", wxString::Format("%lg", lon));
-		url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 		wxEasyCurl *curl = new wxEasyCurl;
 		curls.push_back(curl);
 		urls.push_back(url);

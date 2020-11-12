@@ -188,7 +188,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				size_t first_item = 0;
 				if (m_search->GetValue() == "")
 				{
-					wxMessageBox("Type a keyword in the Search box before clicking Check Filtered.");
+					wxMessageBox("Type a keyword in the Search box before clicking Check Filtered.", "NSRDB Download Message", wxOK, this);
 					break;
 				}
 				for (size_t i = 0; i < m_links.size(); i++)
@@ -328,7 +328,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 					m_weatherFolder = m_txtFolder->GetValue();
 					if (!wxDirExists(m_weatherFolder))
 					{
-						wxMessageBox("Choose a valid folder for weather file downloads.");
+						wxMessageBox("Choose a valid folder for weather file downloads.", "NSRDB Download Message", wxOK, this);
 						// reset to download folder
 						m_txtFolder->SetValue(default_dnload_path);
 						stopped = true;
@@ -343,7 +343,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 					}
 					if (l==NULL)
 					{
-						wxMessageBox("Library " + solar_resource_db + " not found.");
+						wxMessageBox("Library " + solar_resource_db + " not found.", "NSRDB Download Message", wxOK, this);
 						stopped = true;
 					}
 					if (!stopped)
@@ -358,7 +358,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 						{
 							if (l->FindEntry(m_links[arychecked[i]].display) > -1)
 							{
-								wxMessageBox("Skipping download.\n\n" + m_links[arychecked[i]].display + "\n\nFile is already in your solar resource library.");
+								wxMessageBox("Skipping download.\n\n" + m_links[arychecked[i]].display + "\n\nFile is already in your solar resource library.", "NSRDB Download Message", wxOK, this);
 								continue;
 							}
 
@@ -377,9 +377,9 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 							if (ok && (curl.GetDataAsString().Length() < 1000)) 
 								ok = curl.Get(url);
 							if (!ok)
-								wxMessageBox("Download failed.\n\n" + curstr +"\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.");
+								wxMessageBox("Download failed.\n\n" + curstr +"\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.", "NSRDB Download Message", wxOK, this);
 							else if (curl.GetDataAsString().Length() < 1000)
-								wxMessageBox("Weather file not available.\n\n" + curstr + "\n\n" + curl.GetDataAsString() );
+								wxMessageBox("Weather file not available.\n\n" + curstr + "\n\n" + curl.GetDataAsString(), "NSRDB Download Message", wxOK, this);
 							else
 							{
 								wxString fn = curstr + ".csv";
@@ -387,7 +387,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 								file_list += fn + "\n";
 								if (!curl.WriteDataToFile(fn))
 								{
-									wxMessageBox("Failed to write file.\n\n" + fn);
+									wxMessageBox("Failed to write file.\n\n" + fn, "NSRDB Download Message", wxOK, this);
 									//break;
 								}
 								num_downloaded++;
@@ -409,12 +409,12 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 									SamApp::Settings().Write("solar_data_paths", wxJoin(paths, ';'));
 								}
 							}
-							if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list);
+							if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NSRDB Download Message",wxOK,this);
 							EndModal(wxID_OK);
 						}
 					}
 				}
-				else wxMessageBox("Nothing to download.\n\nChoose a file to download, or type a location and click Find to generate a list of available files.");
+				else wxMessageBox("Nothing to download.\n\nChoose a file to download, or type a location and click Find to generate a list of available files.", "NSRDB Download Message", wxOK, this);
 			}
 			break;
 	}
@@ -424,7 +424,7 @@ size_t NSRDBDialog::SelectItems( wxString str_filter, wxCheckBox *check_box )
 {
 	size_t count = 0;
 	size_t item_first = 0;
-	if (m_chlResources->IsEmpty()) wxMessageBox("No files to choose. Type a location and click Find to find files.");
+	if (m_chlResources->IsEmpty()) wxMessageBox("No files to choose. Type a location and click Find to find files.", "NSRDB Download Message", wxOK, this);
 	else
 	{
 		for (size_t i = 0; i < m_links.size(); i++)
@@ -467,7 +467,7 @@ void NSRDBDialog::GetResources()
 	wxString location = m_txtAddress->GetValue();
 	if (location == "")
 	{
-		wxMessageBox("Type a latitude-longitude pair (lat, lon), street address, or location name and click Find.");
+		wxMessageBox("Type a latitude-longitude pair (lat, lon), street address, or location name and click Find.", "NSRDB Download Message", wxOK, this);
 		return;
 	}
 
@@ -485,7 +485,7 @@ void NSRDBDialog::GetResources()
 	{
 		if (!wxEasyCurl::GeoCodeDeveloper(location, &lat, &lon))
 		{
-			wxMessageBox("Failed to geocode address.\n\n" + location);
+			wxMessageBox("Failed to geocode address.\n\n" + location, "NSRDB Download Message", wxOK, this);
 			return;
 		}
 		else
@@ -496,7 +496,7 @@ void NSRDBDialog::GetResources()
 		wxArrayString parts = wxSplit(location, ',');
 		if (parts.Count() < 2)
 		{
-			wxMessageBox("Type a valid latitude-longitude (lat, lon), street address, or location name.");
+			wxMessageBox("Type a valid latitude-longitude (lat, lon), street address, or location name.", "NSRDB Download Message", wxOK, this);
 			return ;
 		}
 		else
@@ -510,7 +510,6 @@ void NSRDBDialog::GetResources()
 	//Create URL for weather file download
 	wxString url;
 	url = SamApp::WebApi("nsrdb_query");
-	url.Replace("yourapikey", "<SAMAPIKEY>");
 	url.Replace("<LAT>", wxString::Format("%lg", lat), 1);
 	url.Replace("<LON>", wxString::Format("%lg", lon), 1);
 
@@ -520,7 +519,7 @@ void NSRDBDialog::GetResources()
 
 	if (!ok)
 	{
-		wxMessageBox("NSRDB Data Query failed.\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.");
+		wxMessageBox("NSRDB Data Query failed.\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.", "NSRDB Download Message", wxOK, this);
 		return;
 	}
 #ifdef __DEBUG__
@@ -529,7 +528,7 @@ void NSRDBDialog::GetResources()
 	wxString json_data = curl.GetDataAsString();
 	if (json_data.IsEmpty())
 	{
-		wxMessageBox("NSRDB Data Query failed.\n\nJSON data empty.\nPlease try again and contact SAM Support if you continue to have trouble.");
+		wxMessageBox("NSRDB Data Query failed.\n\nJSON data empty.\nPlease try again and contact SAM Support if you continue to have trouble.", "NSRDB Download Message", wxOK, this);
 		return;
 	}
 
@@ -538,7 +537,7 @@ void NSRDBDialog::GetResources()
 	wxJSONValue root;
 	if (reader.Parse(json_data, &root) != 0)
 	{
-		wxMessageBox("NSRDB Data Query failed.\n\nCould not process JSON from NSRDB Data Query response for\n" + location + "\n\nPlease try again and contact SAM Support if you continue to have trouble.");
+		wxMessageBox("NSRDB Data Query failed.\n\nCould not process JSON from NSRDB Data Query response for\n" + location + "\n\nPlease try again and contact SAM Support if you continue to have trouble.", "NSRDB Download Message", wxOK, this);
 		return;
 	}
 
@@ -547,7 +546,7 @@ void NSRDBDialog::GetResources()
 
 	if (result_set["count"].AsInt() == 0)
 	{
-		wxMessageBox("No Weather Files Found.\n\nNSRDB Data Query did not return any files for\n" + location);
+		wxMessageBox("No Weather Files Found.\n\nNSRDB Data Query did not return any files for\n" + location, "NSRDB Download Message", wxOK, this);
 		return;
 	}
 
