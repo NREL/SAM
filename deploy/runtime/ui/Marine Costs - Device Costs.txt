@@ -1,6 +1,6 @@
 Marine Costs - Device Costs
-799
-424
+992
+434
 33
 Numeric
 
@@ -12,13 +12,13 @@ Name
 device_cost_input
 X
 3
-525
+663
 Y
 3
-315
+318
 Width
 3
-90
+100
 Height
 3
 24
@@ -75,16 +75,16 @@ Name
 device_cost_override
 X
 3
-525
+564
 Y
 3
-348
+360
 Width
 3
-147
+216
 Height
 3
-24
+27
 Tool Tip
 5
 0
@@ -108,13 +108,13 @@ Name
 device_costs_total
 X
 3
-525
+663
 Y
 3
-315
+318
 Width
 3
-90
+100
 Height
 3
 24
@@ -171,10 +171,10 @@ Name
 itemized_check_mooring
 X
 3
-633
+51
 Y
 3
-270
+369
 Width
 3
 90
@@ -218,10 +218,10 @@ Name
 itemized_check_pto
 X
 3
-633
+57
 Y
 3
-231
+351
 Width
 3
 90
@@ -265,10 +265,10 @@ Name
 itemized_check_structural
 X
 3
-630
+75
 Y
 3
-192
+363
 Width
 3
 90
@@ -312,13 +312,13 @@ Name
 mooring_found_substruc_cost
 X
 3
-525
+663
 Y
 3
 267
 Width
 3
-90
+100
 Height
 3
 24
@@ -375,13 +375,13 @@ Name
 mooring_found_substruc_cost_input
 X
 3
-426
+540
 Y
 3
 267
 Width
 3
-90
+100
 Height
 3
 24
@@ -437,7 +437,7 @@ Name
 mooring_found_substruc_cost_method
 X
 3
-168
+240
 Y
 3
 267
@@ -473,13 +473,13 @@ Name
 mooring_found_substruc_cost_modeled
 X
 3
-327
+417
 Y
 3
 267
 Width
 3
-90
+100
 Height
 3
 24
@@ -536,13 +536,13 @@ Name
 mooring_found_substruc_cost_total
 X
 3
-426
+540
 Y
 3
 267
 Width
 3
-90
+100
 Height
 3
 24
@@ -599,7 +599,7 @@ Name
 object 21
 X
 3
-486
+627
 Y
 3
 297
@@ -643,7 +643,7 @@ Y
 6
 Width
 3
-780
+900
 Height
 3
 408
@@ -667,13 +667,13 @@ Name
 object 7
 X
 3
-228
+291
 Y
 3
 168
 Width
 3
-90
+99
 Height
 3
 24
@@ -721,17 +721,17 @@ Y
 129
 Width
 3
-705
+810
 Height
 3
-24
+36
 Tool Tip
 5
 0
 Caption
 5
-115
-Device costs = Structural assembly costs + Power takeoff system costs + Mooring, foundation, and substructure costs
+116
+Device costs = Structural assembly costs + Power take-off system costs + Mooring, foundation, and substructure costs
 TextColour
 4
 0
@@ -752,7 +752,7 @@ AlignRight
 0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -769,7 +769,7 @@ Y
 39
 Width
 3
-687
+846
 Height
 3
 84
@@ -811,13 +811,13 @@ Name
 object 72145
 X
 3
-324
+405
 Y
 3
 168
 Width
 3
-93
+111
 Height
 3
 24
@@ -859,13 +859,13 @@ Name
 object 7322
 X
 3
-525
+663
 Y
 3
 168
 Width
 3
-90
+99
 Height
 3
 24
@@ -907,13 +907,13 @@ Name
 object 75
 X
 3
-39
+60
 Y
 3
 231
 Width
 3
-129
+180
 Height
 3
 24
@@ -922,8 +922,8 @@ Tool Tip
 0
 Caption
 5
-14
-Power take-off
+21
+Power take-off system
 TextColour
 4
 0
@@ -955,13 +955,13 @@ Name
 object 7535
 X
 3
-60
+18
 Y
 3
 267
 Width
 3
-108
+222
 Height
 3
 24
@@ -970,8 +970,8 @@ Tool Tip
 0
 Caption
 5
-7
-Mooring
+30
+Mooring, Found., and Substruc.
 TextColour
 4
 0
@@ -1003,13 +1003,13 @@ Name
 object 757
 X
 3
-27
+69
 Y
 3
 195
 Width
 3
-141
+171
 Height
 3
 24
@@ -1051,10 +1051,10 @@ Name
 object 77
 X
 3
-378
+516
 Y
 3
-315
+318
 Width
 3
 147
@@ -1099,13 +1099,13 @@ Name
 power_takeoff_system_cost
 X
 3
-525
+663
 Y
 3
 231
 Width
 3
-90
+100
 Height
 3
 24
@@ -1162,13 +1162,13 @@ Name
 power_takeoff_system_cost_input
 X
 3
-426
+540
 Y
 3
 231
 Width
 3
-90
+100
 Height
 3
 24
@@ -1224,7 +1224,7 @@ Name
 power_takeoff_system_cost_method
 X
 3
-168
+240
 Y
 3
 231
@@ -1260,13 +1260,13 @@ Name
 power_takeoff_system_cost_modeled
 X
 3
-327
+417
 Y
 3
 231
 Width
 3
-90
+100
 Height
 3
 24
@@ -1323,13 +1323,13 @@ Name
 power_takeoff_system_cost_total
 X
 3
-426
+540
 Y
 3
 231
 Width
 3
-90
+100
 Height
 3
 24
@@ -1386,13 +1386,13 @@ Name
 struct_level_total_label
 X
 3
-426
+540
 Y
 3
 168
 Width
 3
-90
+99
 Height
 3
 24
@@ -1434,13 +1434,13 @@ Name
 structural_assembly_cost
 X
 3
-525
+663
 Y
 3
 195
 Width
 3
-90
+100
 Height
 3
 24
@@ -1497,13 +1497,13 @@ Name
 structural_assembly_cost_input
 X
 3
-426
+540
 Y
 3
 195
 Width
 3
-90
+100
 Height
 3
 24
@@ -1559,7 +1559,7 @@ Name
 structural_assembly_cost_method
 X
 3
-168
+240
 Y
 3
 195
@@ -1595,13 +1595,13 @@ Name
 structural_assembly_cost_modeled_formatted
 X
 3
-327
+417
 Y
 3
 195
 Width
 3
-90
+100
 Height
 3
 24
@@ -1658,13 +1658,13 @@ Name
 structural_assembly_cost_total
 X
 3
-426
+540
 Y
 3
 195
 Width
 3
-90
+100
 Height
 3
 24
