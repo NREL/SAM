@@ -24,8 +24,8 @@ endif()
 
 Project(sam)
 
-if (SAM_EXPORT)
-	add_subdirectory()
+if (SAMAPI_EXPORT)
+	add_subdirectory(api)
 endif()
 
 include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs $ENV{SSCDIR}/jsoncpp/include)
