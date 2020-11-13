@@ -99,6 +99,18 @@ version_upgrade{'2020.11.3'} = define() {
 			if ( !ok ) { msgbox('Failed to change configuration!\nPVWatts Battery configuration replaces PVWatts with battery enabled.'); }
 		}
 	}
+	if( cfg.tech == 'MSPT' )
+	{
+		pc_config = oldvalue("pc_config");
+		if(pc_config == 2)
+		{
+			value("pc_config", 0);
+			message('The Supercritical Carbon Dioxide (sCO2) power cycle model is not available as a drop-down cycle model for the molten salt power tower in SAM ' + samver() + '. '
+						'Instead, the (sCO2) performance model is available via a Python scripting tool that you can use to generate '
+						'performance data, which you can then import into the User Defined Power Cycle model with a marco in molten salt power tower model. '
+						'The power cycle drop-down has changed to the default Rankine cycle model.');
+		}
+	}
     if ( cfg.tech == 'Physical Trough' )
     {
         old_custom_sgs_pipe_sizes = oldvalue('custom_sgs_pipe_sizes');                              // array
