@@ -682,7 +682,11 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2242
+2372
+on_load{'Battery Model Simple with REopt'} = define(){
+	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
+};
+
 on_change{"batt_simple_dispatch"} = define(){
 	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
 };
