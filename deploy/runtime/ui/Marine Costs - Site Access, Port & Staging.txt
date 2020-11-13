@@ -1,6 +1,6 @@
 Marine Costs - Site Access, Port & Staging
-816
-605
+916
+609
 44
 GroupBox
 
@@ -17,7 +17,7 @@ Y
 15
 Width
 3
-800
+900
 Height
 3
 586
@@ -41,7 +41,7 @@ Name
 92
 X
 3
-135
+156
 Y
 3
 72
@@ -89,7 +89,7 @@ Name
 Entrance/Exit Fees
 X
 3
-240
+285
 Y
 3
 522
@@ -137,7 +137,7 @@ Name
 Entrance/Exit Fees14
 X
 3
-246
+291
 Y
 3
 492
@@ -185,13 +185,13 @@ Name
 Entrance/Exit Fees1415
 X
 3
-258
+240
 Y
 3
 432
 Width
 3
-165
+228
 Height
 3
 24
@@ -233,13 +233,13 @@ Name
 Itemized Inputs 
 X
 3
-420
+468
 Y
 3
-48
+45
 Width
 3
-114
+183
 Height
 3
 24
@@ -281,13 +281,13 @@ Name
 Itemized Inputs 3
 X
 3
-318
+339
 Y
 3
-48
+45
 Width
 3
-90
+129
 Height
 3
 24
@@ -329,13 +329,13 @@ Name
 assembly_areas_cost
 X
 3
-423
+468
 Y
 3
 192
 Width
 3
-90
+100
 Height
 3
 24
@@ -392,13 +392,13 @@ Name
 cranage_cost
 X
 3
-318
+339
 Y
 3
 312
 Width
 3
-90
+100
 Height
 3
 24
@@ -455,7 +455,7 @@ Name
 detailed_cost_choice_port_fees
 X
 3
-327
+345
 Y
 3
 402
@@ -488,13 +488,13 @@ Name
 detailed_cost_choice_staging_port
 X
 3
-327
+348
 Y
 3
 102
 Width
 3
-174
+237
 Height
 3
 24
@@ -521,13 +521,13 @@ Name
 entrance_exit_fees_cost
 X
 3
-423
+468
 Y
 3
 432
 Width
 3
-90
+100
 Height
 3
 24
@@ -584,13 +584,13 @@ Name
 fabrication_facilities_cost
 X
 3
-423
+468
 Y
 3
 252
 Width
 3
-90
+100
 Height
 3
 24
@@ -647,13 +647,13 @@ Name
 laydown_area_cost
 X
 3
-423
+468
 Y
 3
 162
 Width
 3
-90
+100
 Height
 3
 24
@@ -710,13 +710,13 @@ Name
 object 713
 X
 3
-294
+306
 Y
 3
 162
 Width
 3
-129
+162
 Height
 3
 24
@@ -758,13 +758,13 @@ Name
 object 72441
 X
 3
-132
+99
 Y
 3
 552
 Width
 3
-186
+240
 Height
 3
 24
@@ -806,13 +806,13 @@ Name
 object 7244110
 X
 3
-255
+225
 Y
 3
 462
 Width
 3
-168
+243
 Height
 3
 24
@@ -854,13 +854,13 @@ Name
 object 726
 X
 3
-153
+123
 Y
 3
 372
 Width
 3
-165
+216
 Height
 3
 24
@@ -902,13 +902,13 @@ Name
 object 727
 X
 3
-162
+129
 Y
 3
 312
 Width
 3
-156
+210
 Height
 3
 24
@@ -950,13 +950,13 @@ Name
 object 728
 X
 3
-246
+228
 Y
 3
 282
 Width
 3
-177
+240
 Height
 3
 24
@@ -998,13 +998,13 @@ Name
 object 72821
 X
 3
-291
+279
 Y
 3
 222
 Width
 3
-132
+189
 Height
 3
 24
@@ -1046,13 +1046,13 @@ Name
 object 72828
 X
 3
-276
+279
 Y
 3
 252
 Width
 3
-147
+189
 Height
 3
 24
@@ -1094,7 +1094,7 @@ Name
 object 73
 X
 3
-285
+330
 Y
 3
 132
@@ -1142,13 +1142,13 @@ Name
 object 730
 X
 3
-294
+303
 Y
 3
 192
 Width
 3
-129
+165
 Height
 3
 24
@@ -1190,13 +1190,13 @@ Name
 object 731
 X
 3
-162
+126
 Y
 3
 342
 Width
 3
-156
+213
 Height
 3
 24
@@ -1238,13 +1238,13 @@ Name
 other_port_fees_cost
 X
 3
-423
+468
 Y
 3
 522
 Width
 3
-90
+100
 Height
 3
 24
@@ -1301,13 +1301,13 @@ Name
 other_site_access_cost
 X
 3
-318
+339
 Y
 3
 552
 Width
 3
-90
+100
 Height
 3
 24
@@ -1364,13 +1364,13 @@ Name
 other_staging_port_cost
 X
 3
-423
+468
 Y
 3
 282
 Width
 3
-90
+100
 Height
 3
 24
@@ -1427,13 +1427,13 @@ Name
 personnel_facilities_cost
 X
 3
-423
+468
 Y
 3
 222
 Width
 3
-90
+100
 Height
 3
 24
@@ -1490,13 +1490,13 @@ Name
 port_fees_cost
 X
 3
-318
+339
 Y
 3
 372
 Width
 3
-90
+100
 Height
 3
 24
@@ -1553,7 +1553,7 @@ Name
 port_fees_cost_total
 X
 3
-318
+339
 Y
 3
 372
@@ -1616,13 +1616,13 @@ Name
 port_improvement_cost
 X
 3
-318
+339
 Y
 3
 342
 Width
 3
-90
+100
 Height
 3
 24
@@ -1679,13 +1679,13 @@ Name
 quay_cost
 X
 3
-423
+468
 Y
 3
 132
 Width
 3
-90
+100
 Height
 3
 24
@@ -1742,13 +1742,13 @@ Name
 quayside_docking_fees_cost
 X
 3
-423
+468
 Y
 3
 462
 Width
 3
-90
+100
 Height
 3
 24
@@ -1852,7 +1852,7 @@ Name
 site_override_label
 X
 3
-600
+666
 Y
 3
 78
@@ -1900,13 +1900,13 @@ Name
 staging_port_cost
 X
 3
-318
+339
 Y
 3
 72
 Width
 3
-90
+100
 Height
 3
 24
@@ -1963,13 +1963,13 @@ Name
 staging_port_cost_total
 X
 3
-318
+339
 Y
 3
 72
 Width
 3
-90
+100
 Height
 3
 24
@@ -2026,7 +2026,7 @@ Name
 tt_cranage_cost
 X
 3
-420
+447
 Y
 3
 312
@@ -2052,7 +2052,7 @@ Name
 tt_other_site_access_cost
 X
 3
-420
+447
 Y
 3
 552
@@ -2078,7 +2078,7 @@ Name
 tt_port_fees_cost
 X
 3
-420
+447
 Y
 3
 372
@@ -2104,7 +2104,7 @@ Name
 tt_port_improvement_cost
 X
 3
-420
+447
 Y
 3
 342
@@ -2130,7 +2130,7 @@ Name
 tt_staging_port_cost
 X
 3
-420
+447
 Y
 3
 72
@@ -2156,13 +2156,13 @@ Name
 wharfage_fees_cost
 X
 3
-423
+468
 Y
 3
 492
 Width
 3
-90
+100
 Height
 3
 24

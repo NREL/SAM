@@ -1,6 +1,6 @@
 Marine Costs - Development
-815
-1430
+917
+1428
 105
 Label
 
@@ -11,7 +11,7 @@ Name
 0
 X
 3
-288
+330
 Y
 3
 1233
@@ -59,13 +59,13 @@ Name
 92
 X
 3
-90
+45
 Y
 3
 63
 Width
 3
-234
+294
 Height
 3
 24
@@ -110,10 +110,10 @@ X
 9
 Y
 3
-9
+12
 Width
 3
-800
+900
 Height
 3
 1416
@@ -122,8 +122,8 @@ Tool Tip
 0
 Caption
 5
-17
-Development Costs
+11
+Development
 Bold
 2
 1
@@ -137,13 +137,13 @@ Name
 Gearbox
 X
 3
-171
+138
 Y
 3
 423
 Width
 3
-153
+201
 Height
 3
 24
@@ -185,13 +185,13 @@ Name
 Interconnection & Power Marketing
 X
 3
-105
+21
 Y
 3
 753
 Width
 3
-222
+318
 Height
 3
 24
@@ -233,13 +233,13 @@ Name
 Project Management during Development
 X
 3
-138
+102
 Y
 3
 1173
 Width
 3
-189
+237
 Height
 3
 24
@@ -281,13 +281,13 @@ Name
 Project Management during Development1
 X
 3
-45
+15
 Y
 3
 933
 Width
 3
-282
+324
 Height
 3
 24
@@ -329,13 +329,13 @@ Name
 closing_costs_cost
 X
 3
-426
+468
 Y
 3
 1293
 Width
 3
-90
+100
 Height
 3
 24
@@ -392,7 +392,7 @@ Name
 detailed_cost_choice_financing_incentive
 X
 3
-345
+357
 Y
 3
 1203
@@ -425,7 +425,7 @@ Name
 detailed_cost_choice_initial_engineering
 X
 3
-345
+360
 Y
 3
 453
@@ -491,7 +491,7 @@ Name
 detailed_cost_choice_permitting_leasing
 X
 3
-345
+360
 Y
 3
 273
@@ -524,7 +524,7 @@ Name
 detailed_cost_choice_project_management
 X
 3
-345
+357
 Y
 3
 963
@@ -557,7 +557,7 @@ Name
 detailed_cost_choice_site_characterization
 X
 3
-345
+360
 Y
 3
 603
@@ -590,7 +590,7 @@ Name
 detailed_cost_choice_site_selection
 X
 3
-345
+360
 Y
 3
 93
@@ -623,10 +623,10 @@ Name
 development_override
 X
 3
-45
+21
 Y
 3
-255
+312
 Width
 3
 90
@@ -670,10 +670,10 @@ Name
 development_override_label
 X
 3
-582
+669
 Y
 3
-42
+69
 Width
 3
 195
@@ -718,13 +718,13 @@ Name
 due_diligence_cost
 X
 3
-426
+468
 Y
 3
 1233
 Width
 3
-90
+100
 Height
 3
 24
@@ -781,13 +781,13 @@ Name
 engineering_certification_cost
 X
 3
-426
+468
 Y
 3
 513
 Width
 3
-90
+100
 Height
 3
 24
@@ -844,13 +844,13 @@ Name
 environmental_scoping_cost
 X
 3
-426
+468
 Y
 3
 153
 Width
 3
-90
+100
 Height
 3
 24
@@ -907,13 +907,13 @@ Name
 environmental_surveys_cost
 X
 3
-426
+468
 Y
 3
 633
 Width
 3
-90
+100
 Height
 3
 24
@@ -970,13 +970,13 @@ Name
 feed_cost
 X
 3
-426
+468
 Y
 3
 483
 Width
 3
-90
+100
 Height
 3
 24
@@ -1033,13 +1033,13 @@ Name
 financing_and_incentives_cost
 X
 3
-327
+339
 Y
 3
 1173
 Width
 3
-90
+100
 Height
 3
 24
@@ -1096,13 +1096,13 @@ Name
 financing_and_incentives_cost_total
 X
 3
-327
+339
 Y
 3
 1173
 Width
 3
-90
+100
 Height
 3
 24
@@ -1159,13 +1159,13 @@ Name
 geological_and_bathymetry_cost
 X
 3
-426
+468
 Y
 3
 693
 Width
 3
-90
+100
 Height
 3
 24
@@ -1222,13 +1222,13 @@ Name
 incentives_cost
 X
 3
-426
+468
 Y
 3
 1263
 Width
 3
-90
+100
 Height
 3
 24
@@ -1285,13 +1285,13 @@ Name
 initial_engineering_cost
 X
 3
-324
+339
 Y
 3
 423
 Width
 3
-90
+100
 Height
 3
 24
@@ -1348,13 +1348,13 @@ Name
 initial_engineering_cost_total
 X
 3
-324
+339
 Y
 3
 423
 Width
 3
-90
+100
 Height
 3
 24
@@ -1411,13 +1411,13 @@ Name
 interconnection_and_power_marketing_cost
 X
 3
-327
+339
 Y
 3
 753
 Width
 3
-90
+100
 Height
 3
 24
@@ -1474,13 +1474,13 @@ Name
 interconnection_and_power_marketing_cost_total
 X
 3
-327
+339
 Y
 3
 753
 Width
 3
-90
+100
 Height
 3
 24
@@ -1537,13 +1537,13 @@ Name
 interconnection_studies_and_fees_cost
 X
 3
-426
+468
 Y
 3
 813
 Width
 3
-90
+100
 Height
 3
 24
@@ -1600,13 +1600,13 @@ Name
 lease_acquisition_activities_cost
 X
 3
-426
+468
 Y
 3
 333
 Width
 3
-90
+100
 Height
 3
 24
@@ -1663,13 +1663,13 @@ Name
 legal_support_cost
 X
 3
-426
+468
 Y
 3
 1323
 Width
 3
-90
+100
 Height
 3
 24
@@ -1726,13 +1726,13 @@ Name
 level_5_total_prime
 X
 3
-324
+339
 Y
 3
 33
 Width
 3
-90
+120
 Height
 3
 24
@@ -1774,13 +1774,13 @@ Name
 level_5_total_prime50
 X
 3
-423
+468
 Y
 3
 33
 Width
 3
-117
+174
 Height
 3
 24
@@ -1869,13 +1869,13 @@ Name
 object 713
 X
 3
-252
+240
 Y
 3
 153
 Width
 3
-174
+228
 Height
 3
 24
@@ -1917,13 +1917,13 @@ Name
 object 72418
 X
 3
-312
+306
 Y
 3
 993
 Width
 3
-114
+162
 Height
 3
 24
@@ -1965,13 +1965,13 @@ Name
 object 7241863
 X
 3
-216
+177
 Y
 3
 813
 Width
 3
-210
+291
 Height
 3
 24
@@ -2013,13 +2013,13 @@ Name
 object 72441
 X
 3
-393
+330
 Y
 3
 483
 Width
 3
-33
+138
 Height
 3
 24
@@ -2061,13 +2061,13 @@ Name
 object 726
 X
 3
-144
+45
 Y
 3
 393
 Width
 3
-180
+294
 Height
 3
 24
@@ -2109,13 +2109,13 @@ Name
 object 727
 X
 3
-240
+204
 Y
 3
 303
 Width
 3
-186
+264
 Height
 3
 24
@@ -2157,13 +2157,13 @@ Name
 object 728
 X
 3
-192
+117
 Y
 3
 243
 Width
 3
-132
+222
 Height
 3
 24
@@ -2205,13 +2205,13 @@ Name
 object 73
 X
 3
-288
+237
 Y
 3
 123
 Width
 3
-138
+231
 Height
 3
 24
@@ -2253,13 +2253,13 @@ Name
 object 730
 X
 3
-273
+225
 Y
 3
 213
 Width
 3
-153
+243
 Height
 3
 24
@@ -2301,7 +2301,7 @@ Name
 object 73044
 X
 3
-312
+354
 Y
 3
 183
@@ -2349,13 +2349,13 @@ Name
 object 731
 X
 3
-213
+201
 Y
 3
 363
 Width
 3
-213
+267
 Height
 3
 24
@@ -2397,13 +2397,13 @@ Name
 object 73173
 X
 3
-249
+225
 Y
 3
 333
 Width
 3
-177
+243
 Height
 3
 24
@@ -2445,13 +2445,13 @@ Name
 object 73311
 X
 3
-123
+90
 Y
 3
 1383
 Width
 3
-204
+249
 Height
 3
 24
@@ -2493,7 +2493,7 @@ Name
 object 7331140
 X
 3
-288
+330
 Y
 3
 1293
@@ -2541,13 +2541,13 @@ Name
 object 7331149
 X
 3
-204
+54
 Y
 3
 1143
 Width
 3
-222
+414
 Height
 3
 24
@@ -2556,8 +2556,8 @@ Tool Tip
 0
 Caption
 5
-30
-Other project management costs
+49
+Other project management costs during development
 TextColour
 4
 0
@@ -2589,7 +2589,7 @@ Name
 object 733114926
 X
 3
-288
+330
 Y
 3
 1113
@@ -2637,13 +2637,13 @@ Name
 object 7331152
 X
 3
-198
+141
 Y
 3
 1053
 Width
 3
-228
+327
 Height
 3
 24
@@ -2685,13 +2685,13 @@ Name
 object 7331159
 X
 3
-216
+21
 Y
 3
 903
 Width
 3
-210
+447
 Height
 3
 24
@@ -2700,8 +2700,8 @@ Tool Tip
 0
 Caption
 5
-27
-Other interconnection costs
+47
+Other interconnection and power marketing costs
 TextColour
 4
 0
@@ -2733,7 +2733,7 @@ Name
 object 733115937
 X
 3
-213
+255
 Y
 3
 873
@@ -2781,13 +2781,13 @@ Name
 object 73315
 X
 3
-249
+105
 Y
 3
 1353
 Width
 3
-177
+363
 Height
 3
 24
@@ -2796,8 +2796,8 @@ Tool Tip
 0
 Caption
 5
-21
-Other financing costs
+36
+Other financing and incentives costs
 TextColour
 4
 0
@@ -2829,7 +2829,7 @@ Name
 object 7331513
 X
 3
-291
+333
 Y
 3
 1323
@@ -2877,7 +2877,7 @@ Name
 object 7331541
 X
 3
-291
+333
 Y
 3
 1263
@@ -2925,7 +2925,7 @@ Name
 object 7331551
 X
 3
-231
+273
 Y
 3
 1083
@@ -2973,7 +2973,7 @@ Name
 object 7331555
 X
 3
-315
+357
 Y
 3
 1023
@@ -3021,13 +3021,13 @@ Name
 object 7331562
 X
 3
-216
+219
 Y
 3
 843
 Width
 3
-210
+249
 Height
 3
 24
@@ -3069,13 +3069,13 @@ Name
 object 73325
 X
 3
-240
+213
 Y
 3
 723
 Width
 3
-186
+255
 Height
 3
 24
@@ -3117,13 +3117,13 @@ Name
 object 7332550
 X
 3
-204
+216
 Y
 3
 693
 Width
 3
-222
+252
 Height
 3
 24
@@ -3165,13 +3165,13 @@ Name
 object 73327
 X
 3
-195
+213
 Y
 3
 663
 Width
 3
-231
+255
 Height
 3
 24
@@ -3213,13 +3213,13 @@ Name
 object 73333
 X
 3
-258
+216
 Y
 3
 633
 Width
 3
-168
+252
 Height
 3
 24
@@ -3261,13 +3261,13 @@ Name
 object 73336
 X
 3
-159
+117
 Y
 3
 573
 Width
 3
-165
+222
 Height
 3
 24
@@ -3309,13 +3309,13 @@ Name
 object 73337
 X
 3
-222
+210
 Y
 3
 543
 Width
 3
-204
+258
 Height
 3
 24
@@ -3357,13 +3357,13 @@ Name
 object 7333761
 X
 3
-231
+198
 Y
 3
-516
+513
 Width
 3
-192
+270
 Height
 3
 24
@@ -3405,13 +3405,13 @@ Name
 onshore_interconnection_rights_cost
 X
 3
-426
+468
 Y
 3
 843
 Width
 3
-90
+100
 Height
 3
 24
@@ -3468,13 +3468,13 @@ Name
 other_development_cost
 X
 3
-327
+339
 Y
 3
 1383
 Width
 3
-90
+100
 Height
 3
 24
@@ -3531,13 +3531,13 @@ Name
 other_financing_cost
 X
 3
-426
+468
 Y
 3
 1353
 Width
 3
-90
+100
 Height
 3
 24
@@ -3594,13 +3594,13 @@ Name
 other_initial_engineering_cost
 X
 3
-426
+468
 Y
 3
 543
 Width
 3
-90
+100
 Height
 3
 24
@@ -3657,13 +3657,13 @@ Name
 other_interconnection_cost
 X
 3
-426
+468
 Y
 3
 903
 Width
 3
-90
+100
 Height
 3
 24
@@ -3720,13 +3720,13 @@ Name
 other_permitting_and_leasing_cost
 X
 3
-426
+468
 Y
 3
 363
 Width
 3
-90
+100
 Height
 3
 24
@@ -3783,13 +3783,13 @@ Name
 other_project_management_cost
 X
 3
-426
+468
 Y
 3
 1143
 Width
 3
-90
+100
 Height
 3
 24
@@ -3846,13 +3846,13 @@ Name
 other_site_characterization_cost
 X
 3
-426
+468
 Y
 3
 723
 Width
 3
-90
+100
 Height
 3
 24
@@ -3909,13 +3909,13 @@ Name
 other_site_selection_cost
 X
 3
-426
+468
 Y
 3
 213
 Width
 3
-90
+100
 Height
 3
 24
@@ -3972,13 +3972,13 @@ Name
 permit_acquisition_activities_cost
 X
 3
-426
+468
 Y
 3
 303
 Width
 3
-90
+100
 Height
 3
 24
@@ -4035,13 +4035,13 @@ Name
 permitting_and_leasing_cost
 X
 3
-324
+339
 Y
 3
 243
 Width
 3
-90
+100
 Height
 3
 24
@@ -4098,13 +4098,13 @@ Name
 permitting_and_leasing_cost_total
 X
 3
-324
+339
 Y
 3
 243
 Width
 3
-90
+100
 Height
 3
 24
@@ -4161,13 +4161,13 @@ Name
 power_marketing_cost
 X
 3
-426
+468
 Y
 3
 873
 Width
 3
-90
+100
 Height
 3
 24
@@ -4224,13 +4224,13 @@ Name
 pre_feed_cost
 X
 3
-426
+468
 Y
 3
 183
 Width
 3
-90
+100
 Height
 3
 24
@@ -4287,13 +4287,13 @@ Name
 procurement_cost
 X
 3
-426
+468
 Y
 3
 993
 Width
 3
-90
+100
 Height
 3
 24
@@ -4350,13 +4350,13 @@ Name
 professional_advisory_services_cost
 X
 3
-324
+339
 Y
 3
 393
 Width
 3
-90
+100
 Height
 3
 24
@@ -4413,13 +4413,13 @@ Name
 profit_cost
 X
 3
-426
+468
 Y
 3
 1113
 Width
 3
-90
+100
 Height
 3
 24
@@ -4476,13 +4476,13 @@ Name
 project_management_during_development_cost
 X
 3
-327
+339
 Y
 3
 933
 Width
 3
-90
+100
 Height
 3
 24
@@ -4539,13 +4539,13 @@ Name
 project_management_during_development_cost_total
 X
 3
-327
+339
 Y
 3
 933
 Width
 3
-90
+100
 Height
 3
 24
@@ -4602,13 +4602,13 @@ Name
 resource_and_metocean_assessment_cost
 X
 3
-426
+468
 Y
 3
 663
 Width
 3
-90
+100
 Height
 3
 24
@@ -4665,13 +4665,13 @@ Name
 resource_assessment_cost
 X
 3
-426
+468
 Y
 3
 123
 Width
 3
-90
+100
 Height
 3
 24
@@ -4728,13 +4728,13 @@ Name
 salaries_cost
 X
 3
-426
+468
 Y
 3
 1023
 Width
 3
-90
+100
 Height
 3
 24
@@ -4791,13 +4791,13 @@ Name
 sales_general_and_administrative_cost
 X
 3
-426
+468
 Y
 3
 1053
 Width
 3
-90
+100
 Height
 3
 24
@@ -4854,13 +4854,13 @@ Name
 site_characterization_cost
 X
 3
-324
+339
 Y
 3
 573
 Width
 3
-90
+100
 Height
 3
 24
@@ -4917,13 +4917,13 @@ Name
 site_characterization_cost_total
 X
 3
-324
+339
 Y
 3
 573
 Width
 3
-90
+100
 Height
 3
 24
@@ -4980,13 +4980,13 @@ Name
 site_selection_cost
 X
 3
-324
+339
 Y
 3
 63
 Width
 3
-90
+100
 Height
 3
 24
@@ -5043,13 +5043,13 @@ Name
 site_selection_cost_total
 X
 3
-324
+339
 Y
 3
 63
 Width
 3
-90
+100
 Height
 3
 24
@@ -5106,13 +5106,13 @@ Name
 stakeholder_outreach_cost
 X
 3
-426
+468
 Y
 3
 1083
 Width
 3
-90
+100
 Height
 3
 24
@@ -5169,7 +5169,7 @@ Name
 tt_financing_and_incentives_cost
 X
 3
-426
+447
 Y
 3
 1173
@@ -5195,7 +5195,7 @@ Name
 tt_initial_engineering_cost
 X
 3
-423
+447
 Y
 3
 423
@@ -5221,7 +5221,7 @@ Name
 tt_interconnection_and_power_marketing_cost
 X
 3
-426
+447
 Y
 3
 753
@@ -5247,7 +5247,7 @@ Name
 tt_other_development_cost
 X
 3
-426
+447
 Y
 3
 1383
@@ -5273,7 +5273,7 @@ Name
 tt_permitting_and_leasing_cost
 X
 3
-426
+447
 Y
 3
 243
@@ -5299,7 +5299,7 @@ Name
 tt_professional_advisory_services_cost
 X
 3
-423
+447
 Y
 3
 393
@@ -5325,7 +5325,7 @@ Name
 tt_project_management_during_development_cost
 X
 3
-426
+447
 Y
 3
 933
@@ -5351,7 +5351,7 @@ Name
 tt_site_characterization_cost
 X
 3
-423
+447
 Y
 3
 573
@@ -5377,7 +5377,7 @@ Name
 tt_site_selection_cost
 X
 3
-423
+447
 Y
 3
 63
@@ -6469,7 +6469,7 @@ equations {'development_override'} = define() {
 	return ${balance_of_system_cost_override};};
 
 
-13534
+13538
 on_load{'Marine Costs - Development'} = define() {
 	on_change{'itemized_check_development'};
 	on_change{'level_value'};
@@ -6728,9 +6728,9 @@ function enable_itemized_development()
 	enable('level_check',itemized_value==1);
 	enable('development_cost_input',itemized_value!=2);
 	show('development_cost_input',itemized_value!=1);
-	show('development_cost_input_label',itemized_value!=1);
+	//show('development_cost_input_label',itemized_value!=1);
 	show('development_cost_total',itemized_value==1);
-	show('development_cost_total_label',itemized_value==1);
+	//show('development_cost_total_label',itemized_value==1);
 	if (itemized_value==1)
 	{
 		detailed_cost_site_selection();

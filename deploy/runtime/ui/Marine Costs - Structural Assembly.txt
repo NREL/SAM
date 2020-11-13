@@ -557,7 +557,7 @@ Y
 42
 Width
 3
-123
+129
 Height
 3
 24
@@ -899,8 +899,8 @@ Tool Tip
 0
 Caption
 5
-25
-Structural Assembly Costs
+19
+Structural Assembly
 Bold
 2
 1
@@ -1106,7 +1106,7 @@ Name
 object 72748
 X
 3
-315
+291
 Y
 3
 369

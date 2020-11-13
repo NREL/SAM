@@ -1,5 +1,5 @@
 Marine Costs - Other Infrastructure
-817
+918
 300
 26
 Label
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-99
+54
 Y
 3
 69
 Width
 3
-240
+285
 Height
 3
 24
@@ -113,7 +113,7 @@ Y
 99
 Width
 3
-90
+100
 Height
 3
 24
@@ -176,7 +176,7 @@ Y
 9
 Width
 3
-800
+900
 Height
 3
 285
@@ -200,13 +200,13 @@ Name
 object 713
 X
 3
-99
+48
 Y
 3
 129
 Width
 3
-240
+291
 Height
 3
 24
@@ -296,13 +296,13 @@ Name
 object 729
 X
 3
-78
+36
 Y
 3
 219
 Width
 3
-261
+303
 Height
 3
 24
@@ -344,13 +344,13 @@ Name
 object 73
 X
 3
-99
+51
 Y
 3
 99
 Width
 3
-240
+288
 Height
 3
 24
@@ -392,13 +392,13 @@ Name
 object 730
 X
 3
-99
+48
 Y
 3
 189
 Width
 3
-240
+291
 Height
 3
 24
@@ -440,13 +440,13 @@ Name
 object 734
 X
 3
-99
+48
 Y
 3
 159
 Width
 3
-240
+291
 Height
 3
 24
@@ -494,7 +494,7 @@ Y
 69
 Width
 3
-90
+100
 Height
 3
 24
@@ -557,7 +557,7 @@ Y
 189
 Width
 3
-90
+100
 Height
 3
 24
@@ -620,7 +620,7 @@ Y
 159
 Width
 3
-90
+100
 Height
 3
 24
@@ -683,7 +683,7 @@ Y
 129
 Width
 3
-90
+100
 Height
 3
 24
@@ -841,7 +841,7 @@ Y
 219
 Width
 3
-90
+100
 Height
 3
 24
@@ -904,7 +904,7 @@ Y
 249
 Width
 3
-90
+100
 Height
 3
 24
@@ -961,7 +961,7 @@ Name
 tt_dedicated_om_vessel_cost
 X
 3
-438
+447
 Y
 3
 99
@@ -988,7 +988,7 @@ Name
 tt_offshore_accomodations_cost
 X
 3
-438
+447
 Y
 3
 69
@@ -1015,7 +1015,7 @@ Name
 tt_offshore_logistical_infrastructure_cost
 X
 3
-438
+447
 Y
 3
 189
@@ -1042,7 +1042,7 @@ Name
 tt_om_equipment_purchases_cost
 X
 3
-438
+447
 Y
 3
 159
@@ -1069,7 +1069,7 @@ Name
 tt_onshore_om_facilities_cost
 X
 3
-438
+447
 Y
 3
 129
@@ -1122,7 +1122,7 @@ Name
 tt_other_infrastructure_transportation_cost
 X
 3
-438
+447
 Y
 3
 219
@@ -1149,7 +1149,7 @@ Name
 tt_other_other_infrastructure_cost
 X
 3
-438
+447
 Y
 3
 249

@@ -1,6 +1,6 @@
 Marine Costs - Financial Itemized
-818
-214
+918
+218
 18
 Label
 
@@ -59,10 +59,10 @@ Name
 debt_service_reserve_account_cost
 X
 3
-378
+339
 Y
 3
-105
+102
 Width
 3
 90
@@ -122,10 +122,10 @@ Name
 decommissioning_reserve_account_cost
 X
 3
-378
+339
 Y
 3
-135
+132
 Width
 3
 90
@@ -232,10 +232,10 @@ Name
 financial_override_label
 X
 3
-540
+537
 Y
 3
-78
+63
 Width
 3
 168
@@ -280,10 +280,10 @@ Name
 itemized_check_reserve_accounts
 X
 3
-45
+42
 Y
 3
-174
+204
 Width
 3
 90
@@ -327,10 +327,10 @@ Name
 maintenance_reserve_account_cost
 X
 3
-378
+339
 Y
 3
-75
+72
 Width
 3
 90
@@ -393,10 +393,10 @@ X
 9
 Y
 3
-18
+15
 Width
 3
-800
+900
 Height
 3
 186
@@ -420,13 +420,13 @@ Name
 object 7
 X
 3
-345
+207
 Y
 3
-42
+39
 Width
 3
-123
+222
 Height
 3
 24
@@ -468,13 +468,13 @@ Name
 object 72751
 X
 3
-117
+21
 Y
 3
-135
+132
 Width
 3
-261
+318
 Height
 3
 24
@@ -516,13 +516,13 @@ Name
 object 728
 X
 3
-147
+21
 Y
 3
-105
+102
 Width
 3
-231
+318
 Height
 3
 24
@@ -564,13 +564,13 @@ Name
 object 72937
 X
 3
-147
+18
 Y
 3
-75
+72
 Width
 3
-231
+321
 Height
 3
 24
@@ -612,13 +612,13 @@ Name
 object 731
 X
 3
-150
+24
 Y
 3
-165
+162
 Width
 3
-228
+315
 Height
 3
 24
@@ -660,10 +660,10 @@ Name
 other_reserve_account_cost
 X
 3
-378
+339
 Y
 3
-165
+162
 Width
 3
 90
@@ -723,10 +723,10 @@ Name
 tt_debt_service_reserve_account_cost
 X
 3
-480
+441
 Y
 3
-105
+102
 Width
 3
 24
@@ -749,10 +749,10 @@ Name
 tt_decommissioning_reserve_account_cost
 X
 3
-480
+441
 Y
 3
-135
+132
 Width
 3
 24
@@ -775,10 +775,10 @@ Name
 tt_maintenance_reserve_account_cost
 X
 3
-480
+441
 Y
 3
-75
+72
 Width
 3
 24
@@ -801,10 +801,10 @@ Name
 tt_other_reserve_accounts_cost
 X
 3
-480
+441
 Y
 3
-165
+162
 Width
 3
 24

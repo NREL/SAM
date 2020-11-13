@@ -12,7 +12,7 @@ Name
 device_cost_input
 X
 3
-663
+684
 Y
 3
 318
@@ -75,10 +75,10 @@ Name
 device_cost_override
 X
 3
-564
+585
 Y
 3
-360
+357
 Width
 3
 216
@@ -108,7 +108,7 @@ Name
 device_costs_total
 X
 3
-663
+684
 Y
 3
 318
@@ -312,7 +312,7 @@ Name
 mooring_found_substruc_cost
 X
 3
-663
+684
 Y
 3
 267
@@ -375,7 +375,7 @@ Name
 mooring_found_substruc_cost_input
 X
 3
-540
+561
 Y
 3
 267
@@ -473,7 +473,7 @@ Name
 mooring_found_substruc_cost_modeled
 X
 3
-417
+438
 Y
 3
 267
@@ -536,7 +536,7 @@ Name
 mooring_found_substruc_cost_total
 X
 3
-540
+561
 Y
 3
 267
@@ -599,7 +599,7 @@ Name
 object 21
 X
 3
-627
+648
 Y
 3
 297
@@ -667,7 +667,7 @@ Name
 object 7
 X
 3
-291
+315
 Y
 3
 168
@@ -715,7 +715,7 @@ Name
 object 71
 X
 3
-24
+33
 Y
 3
 129
@@ -763,7 +763,7 @@ Name
 object 716
 X
 3
-24
+33
 Y
 3
 39
@@ -811,7 +811,7 @@ Name
 object 72145
 X
 3
-405
+426
 Y
 3
 168
@@ -859,13 +859,13 @@ Name
 object 7322
 X
 3
-663
+675
 Y
 3
 168
 Width
 3
-99
+108
 Height
 3
 24
@@ -907,13 +907,13 @@ Name
 object 75
 X
 3
-60
+12
 Y
 3
 231
 Width
 3
-180
+228
 Height
 3
 24
@@ -955,13 +955,13 @@ Name
 object 7535
 X
 3
-18
+12
 Y
 3
 267
 Width
 3
-222
+228
 Height
 3
 24
@@ -1003,13 +1003,13 @@ Name
 object 757
 X
 3
-69
+57
 Y
 3
 195
 Width
 3
-171
+183
 Height
 3
 24
@@ -1051,13 +1051,13 @@ Name
 object 77
 X
 3
-516
+471
 Y
 3
 318
 Width
 3
-147
+213
 Height
 3
 24
@@ -1099,7 +1099,7 @@ Name
 power_takeoff_system_cost
 X
 3
-663
+684
 Y
 3
 231
@@ -1162,7 +1162,7 @@ Name
 power_takeoff_system_cost_input
 X
 3
-540
+561
 Y
 3
 231
@@ -1260,7 +1260,7 @@ Name
 power_takeoff_system_cost_modeled
 X
 3
-417
+438
 Y
 3
 231
@@ -1323,7 +1323,7 @@ Name
 power_takeoff_system_cost_total
 X
 3
-540
+561
 Y
 3
 231
@@ -1386,13 +1386,13 @@ Name
 struct_level_total_label
 X
 3
-540
+555
 Y
 3
 168
 Width
 3
-99
+105
 Height
 3
 24
@@ -1434,7 +1434,7 @@ Name
 structural_assembly_cost
 X
 3
-663
+684
 Y
 3
 195
@@ -1497,7 +1497,7 @@ Name
 structural_assembly_cost_input
 X
 3
-540
+561
 Y
 3
 195
@@ -1595,7 +1595,7 @@ Name
 structural_assembly_cost_modeled_formatted
 X
 3
-417
+438
 Y
 3
 195
@@ -1658,7 +1658,7 @@ Name
 structural_assembly_cost_total
 X
 3
-540
+561
 Y
 3
 195
