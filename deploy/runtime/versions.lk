@@ -105,10 +105,9 @@ version_upgrade{'2020.11.3'} = define() {
 		if(pc_config == 2)
 		{
 			value("pc_config", 0);
-			message('The Supercritical Carbon Dioxide (sCO2) power cycle model is not available as a drop-down cycle model for the molten salt power tower in SAM ' + samver() + '. '
-						'Instead, the sCO2 performance model is available via a Python scripting tool that you can use to generate '
-						'performance data, which you can then import into the User Defined Power Cycle model with a marco in molten salt power tower model. '
-						'The power cycle drop-down has changed to the default Rankine cycle model.');
+			message('The Supercritical Carbon Dioxide (sCO2) Power Cycle option has been removed from the Power Cycle page.'
+						'To model an sCO2 cycle, use the sCO2 Cycle Integration macro with the NREL sCO2 Power Cycle Python model. See the macro instructions for details.'
+						' Setting power cycle option to the default Rankine Cycle.','warning');
 		}
 	}
     if ( cfg.tech == 'Physical Trough' )
