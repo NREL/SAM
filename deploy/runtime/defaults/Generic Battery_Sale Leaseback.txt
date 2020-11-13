@@ -804,13 +804,13 @@ battery_per_kW
 1
 1
 1
-600
+263.12
 battery_per_kWh
 1
 1
 1
 1
-200
+293.84
 battery_power
 1
 1
@@ -2531,7 +2531,7 @@ om_replacement_cost1
 2
 1
 1
-500
+293.84
 om_replacement_cost_escal
 1
 1

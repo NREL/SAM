@@ -26,7 +26,7 @@
 			"module_temp_coeff": -0.15
 		},
 		"InverterCECDatabase": {
-			"inv_snl_c0": -5.94331e-08,
+			"inv_snl_c0": -5.94e-08,
 			"inv_snl_c1": 4.3e-05,
 			"inv_snl_c2": 0.001046,
 			"inv_snl_c3": 0.000357,

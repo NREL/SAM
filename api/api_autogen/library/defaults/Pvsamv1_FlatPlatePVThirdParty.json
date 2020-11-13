@@ -186,6 +186,7 @@
 			"cec_standoff": 6,
 			"cec_t_noct": 46.4,
 			"cec_temp_corr_mode": 0,
+			"cec_transient_thermal_model_unit_mass": 11.0919,
 			"cec_v_mp_ref": 57.3,
 			"cec_v_oc_ref": 67.9
 		},
@@ -205,6 +206,7 @@
 			"6par_nser": 60,
 			"6par_standoff": 6,
 			"6par_tnoct": 46,
+			"6par_transient_thermal_model_unit_mass": 11.0919,
 			"6par_vmp": 30,
 			"6par_voc": 37
 		},
@@ -249,6 +251,7 @@
 			"snl_ref_b": -0.075,
 			"snl_ref_dT": 3,
 			"snl_series_cells": 72,
+			"snl_transient_thermal_model_unit_mass": 11.0919,
 			"snl_vmpo": 40,
 			"snl_voco": 47.7
 		},

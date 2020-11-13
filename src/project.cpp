@@ -23,6 +23,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <cmath>
 #include <numeric>
 
+#include <wx/simplebook.h>
 #include <wx/datstrm.h>
 #include <wx/wfstream.h>
 #include <wx/zstream.h>
@@ -349,7 +350,15 @@ bool ProjectFile::ReadArchive( const wxString &file )
 			return false;
 
 		wxZlibInputStream zin( in );
-		ret = Read(zin);
+		bool bReadin = Read(zin);
+		//		return Read( zin );
+		// skips reading in prject files with no cases
+		//return bReadin && (m_cases.size() > 0);
+		// prompt user to read in project files with no cases
+		bool bReadProjectFile = (m_cases.size() > 0);
+		if (!bReadProjectFile)
+			bReadProjectFile = (wxMessageBox("Load project file with no cases?", "Query", wxYES_NO | wxICON_EXCLAMATION) == wxYES);
+		return bReadin && bReadProjectFile;
 	}
 	return ret;
 }
@@ -522,6 +531,24 @@ static void fcall_vuc_message( lk::invoke_t &cxt )
 	}
 }
 
+static void fcall_vuc_retire_tech(lk::invoke_t &cxt)
+{
+	LK_DOC("retire_tech", "Retire technologies", "(none):none");
+	if (VersionUpgrade *vuc = static_cast<VersionUpgrade*>(cxt.user_data()))
+	{
+        wxString tech(vuc->GetCase()->GetTechnology());
+        wxString fin(vuc->GetCase()->GetFinancing());
+        Case* retired_case = vuc->GetCase();
+        wxString TP(SamApp::Config().Options(tech).TreeParent);
+		//if (tech == "DSPT" || tech == "Dish Stirling");
+        if (TP == "Retired")
+		{
+			//Do something to delete the case from the file
+            cxt.result().assign(vuc->GetCase()->SetConfiguration("Retired", "None"));
+		}
+	}
+}
+
 
 VersionUpgrade::VersionUpgrade() 
 	: m_case( 0 )
@@ -549,6 +576,7 @@ lk::fcall_t* VersionUpgrade::invoke_functions()
 		fcall_vuc_config,
 		fcall_vuc_config_update_with_old_values,
 		fcall_vuc_message,
+		fcall_vuc_retire_tech,
 		0 };
 	return (lk::fcall_t*)vec;
 }
@@ -621,6 +649,8 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 	}
 	
 	m_env.set_parent( sd.GetEnv() );
+
+    size_t check_retired_cases = cases.size();
 	
 	for (nr = nr - 2; nr >= 0; nr--)
 	{
@@ -631,11 +661,20 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 			for( size_t i=0;i<cases.size();i++ )
 			{
 				Invoke( cases[i], pf.GetCaseName( cases[i] ), cb );
-				
-				// recalculate equations in each case for each consecutive upgrade
-				// to make sure all variables are in sync
-				if ( cases[i]->RecalculateAll( true ) < 0 )
-					GetLog().push_back( log( WARNING, "Error updating calculated values in '" + pf.GetCaseName(cases[i]) + "' during upgrade process.  Please resolve any errors, save the project file, and reopen it." ) );
+
+				wxString tech(cases[i]->GetTechnology());
+				if (tech == "Retired")
+				{
+                    check_retired_cases--;
+                    pf.DeleteCase(pf.GetCaseName(cases[i]));
+                    
+				}
+				else {
+					// recalculate equations in each case for each consecutive upgrade
+					// to make sure all variables are in sync
+					if (cases[i]->RecalculateAll(true) < 0)
+						GetLog().push_back(log(WARNING, "Error updating calculated values in '" + pf.GetCaseName(cases[i]) + "' during upgrade process.  Please resolve any errors, save the project file, and reopen it."));
+				}
 			}
 	}
 

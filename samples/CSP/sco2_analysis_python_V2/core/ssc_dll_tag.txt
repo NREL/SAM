@@ -1,1 +1,1 @@
-https://github.com/NREL/ssc/commit/f1652c73eee5d08891a48e42fa081efae60630af
+https://github.com/NREL/ssc/commit/6014c3d08e0612a35066f1601fc0df002842dd7e

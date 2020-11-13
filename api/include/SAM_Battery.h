@@ -186,7 +186,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_loss_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_losses: Battery system losses at each timestep [kW]
+	 * Set batt_losses: Battery system losses at each timestep (kW DC for DC connected, AC for AC connected) [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -194,7 +194,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_losses_charging: Battery system losses when charging [kW]
+	 * Set batt_losses_charging: Battery system losses when charging (kW DC for DC connected, AC for AC connected) [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -202,7 +202,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_charging_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_losses_discharging: Battery system losses when discharging [kW]
+	 * Set batt_losses_discharging: Battery system losses when discharging (kW DC for DC connected, AC for AC connected) [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -210,7 +210,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatterySystem_batt_losses_discharging_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_losses_idle: Battery system losses when idle [kW]
+	 * Set batt_losses_idle: Battery system losses when idle (kW DC for DC connected, AC for AC connected) [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -602,7 +602,7 @@ extern "C"
 
 	/**
 	 * Set batt_room_temperature_celsius: Temperature of storage room [C]
-	 * options: None
+	 * options: length=1 for fixed, # of weatherfile records otherwise
 	 * constraints: None
 	 * required if: None
 	 */
@@ -1613,7 +1613,7 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_from_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_from_pv_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1645,8 +1645,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_power_target_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Battery_Outputs_batt_pv_charge_percent_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_q0_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_q1_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -1667,6 +1665,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_revenue_gridcharge_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_Outputs_batt_system_charge_percent_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_system_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_temperature_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -1682,6 +1682,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Battery_Outputs_cdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_fuelcell_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Outputs_gen_without_battery_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_grid_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1701,21 +1703,15 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_Outputs_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Battery_Outputs_monthly_system_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Battery_Outputs_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Battery_Outputs_monthly_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Battery_Outputs_monthly_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_pdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Battery_Outputs_pv_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Battery_Outputs_pv_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Battery_Outputs_pv_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_resilience_hrs_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1726,6 +1722,12 @@ extern "C"
 	SAM_EXPORT double SAM_Battery_Outputs_resilience_hrs_min_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_survival_function_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Outputs_system_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Outputs_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Outputs_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

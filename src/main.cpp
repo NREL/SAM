@@ -117,6 +117,7 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2020, 11, 12 }, // 2020.11.12 ssc 246 beta  - expires 11/12/2021
 		{ 2020, 11, 5 }, // 2020.11.5 ssc 245 beta for Ty - expires 11/5/2021
 		{ 2020, 11, 3 }, // 2020.11.3 ssc 244 beta for the 2021 release - expires 11/3/2021
 		{ 2020, 2, 29 }, //2020.2.29 release
@@ -479,7 +480,7 @@ void MainWindow::ImportCases()
 			if ( !upgd.Run( prj ) )
 				wxMessageBox("Error upgrading older project file:\n\n", file );
 		}
-
+        
 		upgd.ShowReportDialog( file, true );
 	}
 
@@ -1026,6 +1027,11 @@ bool MainWindow::LoadProject( const wxString &file )
 		VersionUpgrade upgd;
 		upgd.Run( pf );
 		upgd.ShowReportDialog( file );
+		if (pf.GetCases().size() == 0) {
+			wxMessageBox("Cannot open a file that contains only retired cases.", "Information", wxOK);
+			pf.Clear();
+			return false;
+		}
 	}
 
 	// copy over project file data,
@@ -1229,10 +1235,17 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		}
 		break;
 	case ID_CASE_DELETE:
-		if ( wxYES == wxMessageBox("Really delete case " + case_name + "?  This action cannot be reversed.", "Query", wxYES_NO, this ) )
-		{
-			DeleteCaseWindow( c );
-			m_project.DeleteCase( case_name );
+		if (m_project.GetCases().size() > 1) {
+			if (wxYES == wxMessageBox("Really delete case " + case_name + "?  This action cannot be reversed.", "Query", wxYES_NO, this)) {
+				DeleteCaseWindow(c);
+				m_project.DeleteCase(case_name);
+				if (m_project.GetCases().size() == 0) {
+					m_topBook->SetSelection(0);
+				}
+			}
+		}
+		else {
+			wxMessageBox("Cannot delete case when there is only one case in the file.", "Information", wxOK);
 		}
 		break;
 	case ID_CASE_DUPLICATE:
@@ -1355,8 +1368,8 @@ public:
 		//dc.SetBackground(wxBrush(wxColour(62, 121, 123))); // blue green 2017.9.5
 		//dc.SetBackground(wxBrush(wxColour(83, 76, 173))); // dark lavender 2018.10.10
 		// dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
-		dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
-
+		//dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
+		dc.SetBackground(wxBrush(wxColour(255, 117, 24))); // Testing Autumn (Pumpkin) color
 		dc.Clear();
 
 		double scaleX, scaleY;
@@ -3029,8 +3042,9 @@ void ConfigDialog::PopulateTech()
 		if ( L.IsEmpty() ) L = m_tnames[i];
 		if (TP.Find("PV") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_pv, L);
-		else if (TP.Find("CSP") != wxNOT_FOUND)
+		else if (TP.Find("CSP") != wxNOT_FOUND )
 			m_pTech->AppendItem(cont_csp, L);
+		else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
 		else if (TP.Find("ME") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_me, L);
 		else if (TP.Find("BATT") != wxNOT_FOUND)
