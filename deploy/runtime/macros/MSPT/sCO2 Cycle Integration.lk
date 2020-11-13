@@ -10,7 +10,7 @@ parameters consistent with the cycle design point.</p>
 <a href="https://www.python.org/">Python</a> installed on your computer to use 
 it.</p> 
 
-<p>The macro:</p>
+<p>This macro:</p>
 
 <ul>
 <li>Reads data from a JSON file created by the Python model.</li>
@@ -187,7 +187,7 @@ if(update_ui_vars)
 		// It probably has something to do with the '\n's later in the string
 		txt = "Update Heliostat Layout and Tower Dimensions.\nThe cycle efficiency from the UDPC data results in Cycle Thermal Power = " + to_string(q_dot_cycle_new) + 
 				" MWt, which is different from the value of " + to_string(q_dot_cycle_ui) + " MWt on the Power Cycle page.\n\n" +
-				"This may mean that the field layout and tower dimensions are not be appropriate for the "
+				"This may mean that the field layout and tower dimensions are not appropriate for the "
 				"new receiver design power. You may want to:\n\n" +
 				"1. Click Calculate for 'Optimize heliostat layout and tower dimensions' on the Heliostat Field page, or\n"
 				"2. Adjust the Design Turbine Gross Output Power value on the System Design page.";
