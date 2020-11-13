@@ -12,7 +12,11 @@ Name
 device_cost_input
 X
 3
+<<<<<<< Updated upstream
 525
+=======
+681
+>>>>>>> Stashed changes
 Y
 3
 327
@@ -75,7 +79,11 @@ Name
 device_cost_override
 X
 3
+<<<<<<< Updated upstream
 633
+=======
+579
+>>>>>>> Stashed changes
 Y
 3
 327
@@ -108,7 +116,11 @@ Name
 device_costs_total
 X
 3
+<<<<<<< Updated upstream
 525
+=======
+681
+>>>>>>> Stashed changes
 Y
 3
 327
@@ -312,7 +324,11 @@ Name
 mooring_found_substruc_cost
 X
 3
+<<<<<<< Updated upstream
 525
+=======
+681
+>>>>>>> Stashed changes
 Y
 3
 267
@@ -375,7 +391,11 @@ Name
 mooring_found_substruc_cost_input
 X
 3
+<<<<<<< Updated upstream
 426
+=======
+558
+>>>>>>> Stashed changes
 Y
 3
 267
@@ -443,7 +463,7 @@ Y
 267
 Width
 3
-150
+175
 Height
 3
 24
@@ -473,7 +493,11 @@ Name
 mooring_found_substruc_cost_modeled
 X
 3
+<<<<<<< Updated upstream
 327
+=======
+435
+>>>>>>> Stashed changes
 Y
 3
 267
@@ -536,7 +560,11 @@ Name
 mooring_found_substruc_cost_total
 X
 3
+<<<<<<< Updated upstream
 426
+=======
+558
+>>>>>>> Stashed changes
 Y
 3
 267
@@ -599,7 +627,11 @@ Name
 object 21
 X
 3
+<<<<<<< Updated upstream
 486
+=======
+645
+>>>>>>> Stashed changes
 Y
 3
 309
@@ -667,13 +699,21 @@ Name
 object 7
 X
 3
+<<<<<<< Updated upstream
 228
+=======
+306
+>>>>>>> Stashed changes
 Y
 3
 168
 Width
 3
+<<<<<<< Updated upstream
 90
+=======
+108
+>>>>>>> Stashed changes
 Height
 3
 24
@@ -811,13 +851,21 @@ Name
 object 72145
 X
 3
+<<<<<<< Updated upstream
 324
+=======
+417
+>>>>>>> Stashed changes
 Y
 3
 168
 Width
 3
+<<<<<<< Updated upstream
 93
+=======
+117
+>>>>>>> Stashed changes
 Height
 3
 24
@@ -859,13 +907,21 @@ Name
 object 7322
 X
 3
+<<<<<<< Updated upstream
 525
+=======
+675
+>>>>>>> Stashed changes
 Y
 3
 168
 Width
 3
+<<<<<<< Updated upstream
 90
+=======
+105
+>>>>>>> Stashed changes
 Height
 3
 24
@@ -1051,7 +1107,11 @@ Name
 object 77
 X
 3
+<<<<<<< Updated upstream
 378
+=======
+534
+>>>>>>> Stashed changes
 Y
 3
 327
@@ -1099,7 +1159,11 @@ Name
 power_takeoff_system_cost
 X
 3
+<<<<<<< Updated upstream
 525
+=======
+681
+>>>>>>> Stashed changes
 Y
 3
 231
@@ -1162,7 +1226,11 @@ Name
 power_takeoff_system_cost_input
 X
 3
+<<<<<<< Updated upstream
 426
+=======
+558
+>>>>>>> Stashed changes
 Y
 3
 231
@@ -1230,7 +1298,7 @@ Y
 231
 Width
 3
-150
+175
 Height
 3
 24
@@ -1260,7 +1328,11 @@ Name
 power_takeoff_system_cost_modeled
 X
 3
+<<<<<<< Updated upstream
 327
+=======
+435
+>>>>>>> Stashed changes
 Y
 3
 231
@@ -1323,7 +1395,11 @@ Name
 power_takeoff_system_cost_total
 X
 3
+<<<<<<< Updated upstream
 426
+=======
+558
+>>>>>>> Stashed changes
 Y
 3
 231
@@ -1386,7 +1462,11 @@ Name
 struct_level_total_label
 X
 3
+<<<<<<< Updated upstream
 426
+=======
+558
+>>>>>>> Stashed changes
 Y
 3
 168
@@ -1434,7 +1514,11 @@ Name
 structural_assembly_cost
 X
 3
+<<<<<<< Updated upstream
 525
+=======
+681
+>>>>>>> Stashed changes
 Y
 3
 195
@@ -1497,7 +1581,11 @@ Name
 structural_assembly_cost_input
 X
 3
+<<<<<<< Updated upstream
 426
+=======
+558
+>>>>>>> Stashed changes
 Y
 3
 195
@@ -1565,7 +1653,7 @@ Y
 195
 Width
 3
-150
+175
 Height
 3
 24
@@ -1595,7 +1683,11 @@ Name
 structural_assembly_cost_modeled_formatted
 X
 3
+<<<<<<< Updated upstream
 327
+=======
+435
+>>>>>>> Stashed changes
 Y
 3
 195
@@ -1658,7 +1750,11 @@ Name
 structural_assembly_cost_total
 X
 3
+<<<<<<< Updated upstream
 426
+=======
+558
+>>>>>>> Stashed changes
 Y
 3
 195
