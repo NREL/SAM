@@ -557,11 +557,7 @@ Y
 42
 Width
 3
-<<<<<<< Updated upstream
 99
-=======
-129
->>>>>>> Stashed changes
 Height
 3
 24
@@ -1110,17 +1106,13 @@ Name
 object 72748
 X
 3
-<<<<<<< Updated upstream
 243
-=======
-291
->>>>>>> Stashed changes
 Y
 3
 369
 Width
 3
-201
+177
 Height
 3
 24
