@@ -99,6 +99,17 @@ version_upgrade{'2020.11.3'} = define() {
 			if ( !ok ) { msgbox('Failed to change configuration!\nPVWatts Battery configuration replaces PVWatts with battery enabled.'); }
 		}
 	}
+	if( cfg.tech == 'MSPT' )
+	{
+		pc_config = oldvalue("pc_config");
+		if(pc_config == 2)
+		{
+			value("pc_config", 0);
+			message('The Supercritical Carbon Dioxide (sCO2) Power Cycle option has been removed from the Power Cycle page.'
+						'To model an sCO2 cycle, use the sCO2 Cycle Integration macro with the NREL sCO2 Power Cycle Python model. See the macro instructions for details.'
+						' Setting power cycle option to the default Rankine Cycle.','warning');
+		}
+	}
     if ( cfg.tech == 'Physical Trough' )
     {
         old_custom_sgs_pipe_sizes = oldvalue('custom_sgs_pipe_sizes');                              // array
