@@ -1,6 +1,6 @@
 Marine Costs - O&M
-818
-308
+919
+323
 25
 Label
 
@@ -12,7 +12,7 @@ Name
 itemized_check_maintenance
 X
 3
-603
+789
 Y
 3
 198
@@ -59,7 +59,7 @@ Name
 itemized_check_operations
 X
 3
-603
+789
 Y
 3
 162
@@ -106,13 +106,13 @@ Name
 maintenance_cost
 X
 3
-501
+684
 Y
 3
 198
 Width
 3
-90
+100
 Height
 3
 24
@@ -169,13 +169,13 @@ Name
 maintenance_cost_input
 X
 3
-402
+561
 Y
 3
 198
 Width
 3
-90
+100
 Height
 3
 24
@@ -231,13 +231,13 @@ Name
 maintenance_cost_method
 X
 3
-147
+240
 Y
 3
 198
 Width
 3
-150
+175
 Height
 3
 24
@@ -267,13 +267,13 @@ Name
 maintenance_cost_modeled
 X
 3
-303
+438
 Y
 3
 198
 Width
 3
-90
+100
 Height
 3
 24
@@ -330,13 +330,13 @@ Name
 maintenance_cost_total
 X
 3
-402
+561
 Y
 3
 198
 Width
 3
-90
+100
 Height
 3
 24
@@ -393,13 +393,13 @@ Name
 maintenance_user_input_label
 X
 3
-399
+540
 Y
 3
 132
 Width
 3
-93
+120
 Height
 3
 24
@@ -441,10 +441,10 @@ Name
 object 21
 X
 3
-462
+645
 Y
 3
-222
+228
 Width
 3
 171
@@ -485,10 +485,10 @@ Y
 9
 Width
 3
-800
+900
 Height
 3
-291
+306
 Tool Tip
 5
 0
@@ -509,13 +509,13 @@ Name
 object 7
 X
 3
-201
+216
 Y
 3
 132
 Width
 3
-96
+198
 Height
 3
 24
@@ -557,13 +557,13 @@ Name
 object 711
 X
 3
-234
+288
 Y
 3
-240
+243
 Width
 3
-264
+396
 Height
 3
 24
@@ -572,8 +572,8 @@ Tool Tip
 0
 Caption
 5
-32
-Operations and Maintenance Costs
+37
+Total operation and maintenance costs
 TextColour
 4
 0
@@ -608,20 +608,20 @@ X
 39
 Y
 3
-42
+36
 Width
 3
-714
+822
 Height
 3
-63
+87
 Tool Tip
 5
 0
 Caption
 5
-380
-The Fixed operating cost (annual) on the Financial Parameters page is the sum of the Operations and Maintenance costs on this page. On this page, enter itemized capital costs for the device in $ or $/kW, check Override Cost Structure to enter the total O&M cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the O&M cost. See Help for details.
+549
+The fixed annual operation and maintenance (O&M) cost on the Financial Parameters page is the sum of the Operations and Maintenance costs on this page. On this page, enter itemized operations and maintenance costs in $ or $/kW, check Override Cost Structure to enter the total O&M cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the O&M cost. The value in the 'Total operations and mainetance cost' box is used as the 'Fixed operating cost (annual) value in the Financial parameters tab. See Help for details.
 TextColour
 4
 0
@@ -653,13 +653,13 @@ Name
 object 71415
 X
 3
-27
+66
 Y
 3
 198
 Width
 3
-120
+174
 Height
 3
 24
@@ -701,13 +701,13 @@ Name
 object 721
 X
 3
-300
+420
 Y
 3
 132
 Width
 3
-93
+117
 Height
 3
 24
@@ -749,13 +749,13 @@ Name
 object 7322
 X
 3
-498
+666
 Y
 3
 132
 Width
 3
-93
+117
 Height
 3
 24
@@ -797,13 +797,13 @@ Name
 object 75
 X
 3
-30
+66
 Y
 3
 162
 Width
 3
-117
+174
 Height
 3
 24
@@ -845,13 +845,13 @@ Name
 om_cost_input
 X
 3
-501
+684
 Y
 3
-240
+243
 Width
 3
-90
+100
 Height
 3
 24
@@ -908,13 +908,13 @@ Name
 om_cost_override
 X
 3
-615
+465
 Y
 3
-240
+279
 Width
 3
-192
+252
 Height
 3
 24
@@ -927,7 +927,7 @@ Caption
 Override cost structure
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -941,13 +941,13 @@ Name
 operations_cost
 X
 3
-501
+684
 Y
 3
 162
 Width
 3
-90
+100
 Height
 3
 24
@@ -1004,13 +1004,13 @@ Name
 operations_cost_input
 X
 3
-402
+561
 Y
 3
 162
 Width
 3
-90
+100
 Height
 3
 24
@@ -1066,13 +1066,13 @@ Name
 operations_cost_method
 X
 3
-147
+240
 Y
 3
 162
 Width
 3
-150
+175
 Height
 3
 24
@@ -1102,13 +1102,13 @@ Name
 operations_cost_modeled
 X
 3
-303
+438
 Y
 3
 162
 Width
 3
-90
+100
 Height
 3
 24
@@ -1165,13 +1165,13 @@ Name
 operations_cost_total
 X
 3
-402
+561
 Y
 3
 162
 Width
 3
-90
+100
 Height
 3
 24
@@ -1228,13 +1228,13 @@ Name
 total_operating_cost
 X
 3
-501
+684
 Y
 3
-240
+243
 Width
 3
-90
+100
 Height
 3
 24
@@ -1282,7 +1282,7 @@ TabOrder
 3
 4294967295
 
-18
+19
 om_cost_input
 3
 1
@@ -1493,6 +1493,20 @@ $/year
 1
 0
 Default
+total_operating_cost_mill
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_operations_cost_lcoe
 3
 1
@@ -1536,7 +1550,7 @@ total_operations_cost_percent
 0
 Default
 
-2825
+2923
 equations {'total_operating_cost'} = define() {
 	if (${om_cost_override}!=1)
 	{
@@ -1546,6 +1560,10 @@ equations {'total_operating_cost'} = define() {
 	{
 		return ${om_cost_input};
 	}
+};
+
+equations {'total_operating_cost_mill'} = define() {
+	return ${total_operating_cost}/1000000;
 };
 
 equations {'total_capital_cost_per_kw'} = define() {

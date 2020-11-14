@@ -1,6 +1,6 @@
 Marine Costs - PTO
-798
-1498
+923
+1497
 109
 Label
 
@@ -11,7 +11,7 @@ Name
 0
 X
 3
-177
+195
 Y
 3
 66
@@ -59,7 +59,7 @@ Name
 Air Turbine
 X
 3
-207
+225
 Y
 3
 666
@@ -107,7 +107,7 @@ Name
 Coatings
 X
 3
-207
+219
 Y
 3
 1386
@@ -155,13 +155,13 @@ Name
 Control & Communication System
 X
 3
-138
+144
 Y
 3
 1296
 Width
 3
-285
+321
 Height
 3
 24
@@ -203,7 +203,7 @@ Name
 Electrical Generator
 X
 3
-147
+165
 Y
 3
 876
@@ -251,13 +251,13 @@ Name
 Frequency Converter
 X
 3
-249
+264
 Y
 3
 1236
 Width
 3
-174
+201
 Height
 3
 24
@@ -299,7 +299,7 @@ Name
 Gearbox
 X
 3
-210
+228
 Y
 3
 396
@@ -347,13 +347,13 @@ Name
 Other
 X
 3
-120
+90
 Y
 3
 1446
 Width
 3
-207
+249
 Height
 3
 24
@@ -362,8 +362,8 @@ Tool Tip
 0
 Caption
 5
-15
-Other PTO costs
+22
+Other PTO system costs
 TextColour
 4
 0
@@ -395,13 +395,13 @@ Name
 Other Short-Term Energy Storage Costs
 X
 3
-198
+204
 Y
 3
 1326
 Width
 3
-225
+261
 Height
 3
 24
@@ -446,10 +446,10 @@ X
 9
 Y
 3
-12
+9
 Width
 3
-780
+900
 Height
 3
 1479
@@ -458,8 +458,8 @@ Tool Tip
 0
 Caption
 5
-20
-Power Take-off Costs
+21
+Power Take-off System
 Bold
 2
 1
@@ -473,13 +473,13 @@ Name
 Power Electrical System
 X
 3
-249
+258
 Y
 3
 1266
 Width
 3
-174
+207
 Height
 3
 24
@@ -521,7 +521,7 @@ Name
 Power Electronics
 X
 3
-159
+177
 Y
 3
 1176
@@ -569,7 +569,7 @@ Name
 Power Take-Off Enclosure
 X
 3
-126
+138
 Y
 3
 1356
@@ -617,13 +617,13 @@ Name
 Short-Term Energy Storage
 X
 3
-114
+102
 Y
 3
 1146
 Width
 3
-204
+237
 Height
 3
 24
@@ -665,13 +665,13 @@ Name
 Transportation of Power Conversion Chain
 X
 3
-33
+21
 Y
 3
 1416
 Width
 3
-294
+318
 Height
 3
 24
@@ -713,13 +713,13 @@ Name
 accumulators_cost
 X
 3
-423
+468
 Y
 3
 186
 Width
 3
-90
+100
 Height
 3
 24
@@ -776,13 +776,13 @@ Name
 air_turbine_cost
 X
 3
-321
+339
 Y
 3
 666
 Width
 3
-90
+100
 Height
 3
 24
@@ -839,13 +839,13 @@ Name
 air_turbine_cost_total
 X
 3
-321
+339
 Y
 3
 666
 Width
 3
-90
+100
 Height
 3
 24
@@ -902,13 +902,13 @@ Name
 bearings_cost
 X
 3
-423
+468
 Y
 3
 486
 Width
 3
-90
+100
 Height
 3
 24
@@ -965,13 +965,13 @@ Name
 blades_rotor_assembly_cost
 X
 3
-423
+468
 Y
 3
 726
 Width
 3
-90
+100
 Height
 3
 24
@@ -1028,13 +1028,13 @@ Name
 coatings_pto_cost
 X
 3
-327
+339
 Y
 3
 1386
 Width
 3
-90
+100
 Height
 3
 24
@@ -1091,13 +1091,13 @@ Name
 cooling_system_cost
 X
 3
-423
+468
 Y
 3
 936
 Width
 3
-90
+100
 Height
 3
 24
@@ -1154,13 +1154,13 @@ Name
 cooling_system_gearbox_cost
 X
 3
-423
+468
 Y
 3
 606
 Width
 3
-90
+100
 Height
 3
 24
@@ -1217,13 +1217,13 @@ Name
 detailed_cost_choice_air_turbine
 X
 3
-372
+390
 Y
 3
 696
 Width
 3
-135
+201
 Height
 3
 24
@@ -1250,13 +1250,13 @@ Name
 detailed_cost_choice_electrical_generator
 X
 3
-372
+390
 Y
 3
 906
 Width
 3
-135
+177
 Height
 3
 24
@@ -1283,13 +1283,13 @@ Name
 detailed_cost_choice_gearbox
 X
 3
-372
+390
 Y
 3
 426
 Width
 3
-135
+174
 Height
 3
 24
@@ -1316,7 +1316,7 @@ Name
 detailed_cost_choice_hydraulic_drivetrain
 X
 3
-372
+390
 Y
 3
 96
@@ -1349,13 +1349,13 @@ Name
 detailed_cost_choice_power_electronics
 X
 3
-372
+390
 Y
 3
 1206
 Width
 3
-135
+180
 Height
 3
 24
@@ -1382,13 +1382,13 @@ Name
 electrical_generator_cost
 X
 3
-321
+339
 Y
 3
 876
 Width
 3
-90
+100
 Height
 3
 24
@@ -1445,13 +1445,13 @@ Name
 electrical_generator_cost_total
 X
 3
-321
+339
 Y
 3
 876
 Width
 3
-90
+100
 Height
 3
 24
@@ -1508,13 +1508,13 @@ Name
 frequency_converter_cost
 X
 3
-423
+465
 Y
 3
 1236
 Width
 3
-90
+100
 Height
 3
 24
@@ -1571,13 +1571,13 @@ Name
 gearbox_cost
 X
 3
-321
+339
 Y
 3
 396
 Width
 3
-90
+100
 Height
 3
 24
@@ -1634,13 +1634,13 @@ Name
 gearbox_cost_total
 X
 3
-321
+339
 Y
 3
 396
 Width
 3
-90
+100
 Height
 3
 24
@@ -1697,13 +1697,13 @@ Name
 gears_cost
 X
 3
-423
+468
 Y
 3
 456
 Width
 3
-90
+100
 Height
 3
 24
@@ -1760,13 +1760,13 @@ Name
 housing_cost
 X
 3
-423
+468
 Y
 3
 516
 Width
 3
-90
+100
 Height
 3
 24
@@ -1823,13 +1823,13 @@ Name
 hub_assembly_cost
 X
 3
-423
+468
 Y
 3
 756
 Width
 3
-90
+100
 Height
 3
 24
@@ -1886,13 +1886,13 @@ Name
 hydraulic_drivetrain_cost
 X
 3
-321
+339
 Y
 3
 66
 Width
 3
-90
+100
 Height
 3
 24
@@ -1949,13 +1949,13 @@ Name
 hydraulic_drivetrain_cost_total
 X
 3
-321
+339
 Y
 3
 66
 Width
 3
-90
+100
 Height
 3
 24
@@ -2012,13 +2012,13 @@ Name
 hydraulic_fluid_cost
 X
 3
-423
+468
 Y
 3
 306
 Width
 3
-90
+100
 Height
 3
 24
@@ -2075,13 +2075,13 @@ Name
 hydraulic_motor_cost
 X
 3
-423
+468
 Y
 3
 216
 Width
 3
-90
+100
 Height
 3
 24
@@ -2138,13 +2138,13 @@ Name
 hydraulic_reservoir_cost
 X
 3
-423
+468
 Y
 3
 276
 Width
 3
-90
+100
 Height
 3
 24
@@ -2201,13 +2201,13 @@ Name
 level_5_total_prime
 X
 3
-321
+339
 Y
 3
 39
 Width
 3
-99
+123
 Height
 3
 24
@@ -2249,13 +2249,13 @@ Name
 level_5_total_prime50
 X
 3
-420
+468
 Y
 3
 39
 Width
 3
-138
+162
 Height
 3
 24
@@ -2297,13 +2297,13 @@ Name
 lube_system_cost
 X
 3
-423
+468
 Y
 3
 576
 Width
 3
-90
+100
 Height
 3
 24
@@ -2360,13 +2360,13 @@ Name
 lubrication_system_cost
 X
 3
-423
+468
 Y
 3
 966
 Width
 3
-90
+100
 Height
 3
 24
@@ -2423,7 +2423,7 @@ Name
 object 713
 X
 3
-252
+297
 Y
 3
 156
@@ -2471,7 +2471,7 @@ Name
 object 724
 X
 3
-276
+321
 Y
 3
 936
@@ -2519,7 +2519,7 @@ Name
 object 72418
 X
 3
-198
+243
 Y
 3
 726
@@ -2567,7 +2567,7 @@ Name
 object 72441
 X
 3
-348
+393
 Y
 3
 456
@@ -2615,7 +2615,7 @@ Name
 object 726
 X
 3
-204
+249
 Y
 3
 366
@@ -2663,7 +2663,7 @@ Name
 object 72675
 X
 3
-210
+255
 Y
 3
 336
@@ -2711,13 +2711,13 @@ Name
 object 727
 X
 3
-285
+300
 Y
 3
 276
 Width
 3
-138
+168
 Height
 3
 24
@@ -2726,8 +2726,8 @@ Tool Tip
 0
 Caption
 5
-18
-Hydraulicreservoir
+19
+Hydraulic reservoir
 TextColour
 4
 0
@@ -2759,7 +2759,7 @@ Name
 object 728
 X
 3
-285
+330
 Y
 3
 246
@@ -2807,7 +2807,7 @@ Name
 object 729
 X
 3
-285
+330
 Y
 3
 216
@@ -2855,7 +2855,7 @@ Name
 object 73
 X
 3
-198
+243
 Y
 3
 126
@@ -2903,7 +2903,7 @@ Name
 object 730
 X
 3
-276
+321
 Y
 3
 186
@@ -2951,13 +2951,13 @@ Name
 object 731
 X
 3
-285
+300
 Y
 3
 306
 Width
 3
-138
+168
 Height
 3
 24
@@ -2999,7 +2999,7 @@ Name
 object 733
 X
 3
-237
+282
 Y
 3
 846
@@ -3047,7 +3047,7 @@ Name
 object 73311
 X
 3
-279
+324
 Y
 3
 786
@@ -3095,7 +3095,7 @@ Name
 object 73315
 X
 3
-276
+321
 Y
 3
 756
@@ -3143,13 +3143,13 @@ Name
 object 73325
 X
 3
-258
+276
 Y
 3
 636
 Width
 3
-165
+192
 Height
 3
 24
@@ -3191,7 +3191,7 @@ Name
 object 7332586
 X
 3
-276
+321
 Y
 3
 606
@@ -3239,7 +3239,7 @@ Name
 object 73327
 X
 3
-300
+345
 Y
 3
 576
@@ -3287,7 +3287,7 @@ Name
 object 73333
 X
 3
-309
+354
 Y
 3
 546
@@ -3335,7 +3335,7 @@ Name
 object 73336
 X
 3
-318
+363
 Y
 3
 516
@@ -3383,7 +3383,7 @@ Name
 object 73337
 X
 3
-318
+363
 Y
 3
 486
@@ -3431,7 +3431,7 @@ Name
 object 73383
 X
 3
-279
+324
 Y
 3
 816
@@ -3479,7 +3479,7 @@ Name
 object 73388
 X
 3
-186
+231
 Y
 3
 1116
@@ -3527,7 +3527,7 @@ Name
 object 7338834
 X
 3
-276
+321
 Y
 3
 1056
@@ -3575,7 +3575,7 @@ Name
 object 7338838
 X
 3
-279
+324
 Y
 3
 1026
@@ -3623,7 +3623,7 @@ Name
 object 7338891
 X
 3
-210
+255
 Y
 3
 1086
@@ -3671,7 +3671,7 @@ Name
 object 73391
 X
 3
-279
+324
 Y
 3
 996
@@ -3719,7 +3719,7 @@ Name
 object 73394
 X
 3
-228
+273
 Y
 3
 966
@@ -3767,13 +3767,13 @@ Name
 other_air_turbine_cost
 X
 3
-423
+468
 Y
 3
 846
 Width
 3
-90
+100
 Height
 3
 24
@@ -3830,13 +3830,13 @@ Name
 other_electrical_generator_cost
 X
 3
-423
+468
 Y
 3
 1116
 Width
 3
-90
+100
 Height
 3
 24
@@ -3893,13 +3893,13 @@ Name
 other_gearbox_cost
 X
 3
-423
+468
 Y
 3
 636
 Width
 3
-90
+100
 Height
 3
 24
@@ -3956,13 +3956,13 @@ Name
 other_hydraulic_drivetrain_cost
 X
 3
-423
+468
 Y
 3
 366
 Width
 3
-90
+100
 Height
 3
 24
@@ -4019,13 +4019,13 @@ Name
 other_power_electronics_cost
 X
 3
-423
+465
 Y
 3
 1326
 Width
 3
-90
+100
 Height
 3
 24
@@ -4082,13 +4082,13 @@ Name
 other_pto_cost
 X
 3
-327
+339
 Y
 3
 1446
 Width
 3
-90
+100
 Height
 3
 24
@@ -4145,13 +4145,13 @@ Name
 plumbing_fittings_cost
 X
 3
-423
+468
 Y
 3
 336
 Width
 3
-90
+100
 Height
 3
 24
@@ -4208,13 +4208,13 @@ Name
 power_electrical_system_cost
 X
 3
-423
+465
 Y
 3
 1296
 Width
 3
-90
+100
 Height
 3
 24
@@ -4271,13 +4271,13 @@ Name
 power_electronics_cost
 X
 3
-321
+339
 Y
 3
 1176
 Width
 3
-90
+100
 Height
 3
 24
@@ -4334,13 +4334,13 @@ Name
 power_electronics_cost_total
 X
 3
-321
+339
 Y
 3
 1176
 Width
 3
-90
+100
 Height
 3
 24
@@ -4397,13 +4397,13 @@ Name
 power_takeoff_enclosure_cost
 X
 3
-327
+339
 Y
 3
 1356
 Width
 3
-90
+100
 Height
 3
 24
@@ -4460,13 +4460,13 @@ Name
 primary_hydraulic_pump_cost
 X
 3
-423
+468
 Y
 3
 126
 Width
 3
-90
+100
 Height
 3
 24
@@ -4570,10 +4570,10 @@ Name
 pto_override_label
 X
 3
-567
+705
 Y
 3
-141
+39
 Width
 3
 195
@@ -4618,13 +4618,13 @@ Name
 rectifying_circuit_cost
 X
 3
-423
+468
 Y
 3
 156
 Width
 3
-90
+100
 Height
 3
 24
@@ -4681,13 +4681,13 @@ Name
 rotors_cost
 X
 3
-423
+468
 Y
 3
 996
 Width
 3
-90
+100
 Height
 3
 24
@@ -4744,13 +4744,13 @@ Name
 scada_cost
 X
 3
-423
+465
 Y
 3
 1266
 Width
 3
-90
+100
 Height
 3
 24
@@ -4807,13 +4807,13 @@ Name
 sensor_elec_gen_cost
 X
 3
-423
+468
 Y
 3
 1026
 Width
 3
-90
+100
 Height
 3
 24
@@ -4870,13 +4870,13 @@ Name
 sensors_cost
 X
 3
-423
+468
 Y
 3
 546
 Width
 3
-90
+100
 Height
 3
 24
@@ -4933,13 +4933,13 @@ Name
 shaft_assembly_cost
 X
 3
-423
+468
 Y
 3
 786
 Width
 3
-90
+100
 Height
 3
 24
@@ -4996,13 +4996,13 @@ Name
 shortterm_energy_storage_cost
 X
 3
-321
+339
 Y
 3
 1146
 Width
 3
-90
+100
 Height
 3
 24
@@ -5059,13 +5059,13 @@ Name
 stator_cost
 X
 3
-423
+468
 Y
 3
 1056
 Width
 3
-90
+100
 Height
 3
 24
@@ -5122,13 +5122,13 @@ Name
 struct_and_mechanical_cost
 X
 3
-423
+468
 Y
 3
 1086
 Width
 3
-90
+100
 Height
 3
 24
@@ -5185,13 +5185,13 @@ Name
 transport_power_conversion_chain_cost
 X
 3
-327
+339
 Y
 3
 1416
 Width
 3
-90
+100
 Height
 3
 24
@@ -5248,7 +5248,7 @@ Name
 tt_air_turbine_cost
 X
 3
-420
+447
 Y
 3
 666
@@ -5274,7 +5274,7 @@ Name
 tt_coatings_pto_cost
 X
 3
-423
+447
 Y
 3
 1386
@@ -5300,7 +5300,7 @@ Name
 tt_electrical_generator_cost
 X
 3
-420
+447
 Y
 3
 876
@@ -5326,7 +5326,7 @@ Name
 tt_gearbox_cost
 X
 3
-420
+447
 Y
 3
 396
@@ -5352,7 +5352,7 @@ Name
 tt_hydraulic_drivetrain_cost
 X
 3
-420
+447
 Y
 3
 66
@@ -5378,7 +5378,7 @@ Name
 tt_other_pto_cost
 X
 3
-423
+447
 Y
 3
 1446
@@ -5404,7 +5404,7 @@ Name
 tt_power_electronics_cost
 X
 3
-420
+447
 Y
 3
 1176
@@ -5430,7 +5430,7 @@ Name
 tt_power_takeoff_enclosure_cost
 X
 3
-423
+447
 Y
 3
 1356
@@ -5456,7 +5456,7 @@ Name
 tt_short_term_energy_storage_cost
 X
 3
-420
+447
 Y
 3
 1146
@@ -5482,7 +5482,7 @@ Name
 tt_transportation_of_power_conversion_chain_cost
 X
 3
-423
+447
 Y
 3
 1416
@@ -5508,13 +5508,13 @@ Name
 turbine_bearings_cost
 X
 3
-423
+468
 Y
 3
 816
 Width
 3
-90
+100
 Height
 3
 24
@@ -5571,13 +5571,13 @@ Name
 valves_cost
 X
 3
-423
+468
 Y
 3
 246
 Width
 3
-90
+100
 Height
 3
 24

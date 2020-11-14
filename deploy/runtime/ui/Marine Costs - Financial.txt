@@ -1,6 +1,6 @@
 Marine Costs - Financial
-815
-419
+924
+448
 40
 Label
 
@@ -12,13 +12,13 @@ Name
 12
 X
 3
-9
+12
 Y
 3
 225
 Width
 3
-186
+228
 Height
 3
 24
@@ -60,13 +60,13 @@ Name
 7
 X
 3
-24
+21
 Y
 3
 324
 Width
 3
-171
+219
 Height
 3
 24
@@ -108,13 +108,13 @@ Name
 78
 X
 3
-0
+12
 Y
 3
 258
 Width
 3
-195
+228
 Height
 3
 24
@@ -162,7 +162,7 @@ Y
 291
 Width
 3
-174
+219
 Height
 3
 24
@@ -204,13 +204,13 @@ Name
 financial_cost_input
 X
 3
-549
+684
 Y
 3
 366
 Width
 3
-90
+100
 Height
 3
 24
@@ -267,13 +267,13 @@ Name
 financial_cost_override
 X
 3
-651
+576
 Y
 3
-366
+399
 Width
 3
-207
+270
 Height
 3
 24
@@ -286,7 +286,7 @@ Caption
 Override cost structure
 State
 2
-1
+0
 TabOrder
 3
 4294967295
@@ -300,13 +300,13 @@ Name
 financial_cost_total
 X
 3
-549
+684
 Y
 3
 366
 Width
 3
-90
+100
 Height
 3
 24
@@ -363,13 +363,13 @@ Name
 insurance_during_construction_cost
 X
 3
-549
+684
 Y
 3
 258
 Width
 3
-90
+100
 Height
 3
 24
@@ -426,13 +426,13 @@ Name
 insurance_during_construction_cost_input
 X
 3
-447
+561
 Y
 3
 258
 Width
 3
-90
+100
 Height
 3
 24
@@ -488,13 +488,13 @@ Name
 insurance_during_construction_cost_modeled_ui
 X
 3
-348
+438
 Y
 3
 258
 Width
 3
-90
+100
 Height
 3
 24
@@ -551,13 +551,13 @@ Name
 insurance_during_construction_method
 X
 3
-195
+240
 Y
 3
 258
 Width
 3
-144
+175
 Height
 3
 24
@@ -586,10 +586,10 @@ Name
 itemized_check_construction_insurance
 X
 3
-723
+969
 Y
 3
-258
+273
 Width
 3
 90
@@ -633,10 +633,10 @@ Name
 itemized_check_contingency
 X
 3
-723
+969
 Y
 3
-225
+240
 Width
 3
 90
@@ -680,10 +680,10 @@ Name
 itemized_check_other_financial
 X
 3
-723
+969
 Y
 3
-324
+339
 Width
 3
 90
@@ -727,10 +727,10 @@ Name
 itemized_check_reserve_accounts
 X
 3
-723
+969
 Y
 3
-291
+306
 Width
 3
 90
@@ -774,7 +774,7 @@ Name
 object 21
 X
 3
-513
+648
 Y
 3
 351
@@ -818,10 +818,10 @@ Y
 9
 Width
 3
-800
+900
 Height
 3
-405
+429
 Tool Tip
 5
 0
@@ -842,13 +842,13 @@ Name
 object 7
 X
 3
-249
+273
 Y
 3
 198
 Width
 3
-90
+141
 Height
 3
 24
@@ -896,10 +896,10 @@ Y
 138
 Width
 3
-663
+804
 Height
 3
-36
+39
 Tool Tip
 5
 0
@@ -938,13 +938,13 @@ Name
 object 718
 X
 3
-417
+438
 Y
 3
 366
 Width
 3
-129
+246
 Height
 3
 24
@@ -953,8 +953,8 @@ Tool Tip
 0
 Caption
 5
-15
-Financial Costs
+21
+Total financial costs
 TextColour
 4
 0
@@ -986,13 +986,13 @@ Name
 object 72124
 X
 3
-345
+417
 Y
 3
 198
 Width
 3
-93
+120
 Height
 3
 24
@@ -1040,7 +1040,7 @@ Y
 42
 Width
 3
-666
+807
 Height
 3
 78
@@ -1049,8 +1049,8 @@ Tool Tip
 0
 Caption
 5
-402
-The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized capital costs for the device in $ or $/kW, check Override Cost Structure to enter the total financial capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the financial cost. See Help for details.
+405
+The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized financial related capital costs in $ or $/kW, check Override Cost Structure to enter the total financial capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the financial cost. See Help for details.
 TextColour
 4
 0
@@ -1082,13 +1082,13 @@ Name
 object 732231
 X
 3
-558
+672
 Y
 3
 198
 Width
 3
-81
+114
 Height
 3
 24
@@ -1130,13 +1130,13 @@ Name
 other_financial_cost
 X
 3
-549
+684
 Y
 3
 324
 Width
 3
-90
+100
 Height
 3
 24
@@ -1193,13 +1193,13 @@ Name
 other_financial_cost_input
 X
 3
-447
+561
 Y
 3
 324
 Width
 3
-90
+100
 Height
 3
 24
@@ -1255,13 +1255,13 @@ Name
 other_financial_cost_method
 X
 3
-195
+240
 Y
 3
 324
 Width
 3
-144
+175
 Height
 3
 24
@@ -1290,13 +1290,13 @@ Name
 other_financial_cost_modeled
 X
 3
-348
+438
 Y
 3
 324
 Width
 3
-90
+100
 Height
 3
 24
@@ -1353,13 +1353,13 @@ Name
 project_contingency_budget_cost
 X
 3
-549
+684
 Y
 3
 225
 Width
 3
-90
+100
 Height
 3
 24
@@ -1416,13 +1416,13 @@ Name
 project_contingency_cost_input
 X
 3
-447
+561
 Y
 3
 225
 Width
 3
-90
+100
 Height
 3
 24
@@ -1478,13 +1478,13 @@ Name
 project_contingency_cost_method
 X
 3
-195
+240
 Y
 3
 225
 Width
 3
-144
+175
 Height
 3
 24
@@ -1513,13 +1513,13 @@ Name
 project_contingency_cost_modeled_ui
 X
 3
-348
+438
 Y
 3
 225
 Width
 3
-90
+100
 Height
 3
 24
@@ -1576,13 +1576,13 @@ Name
 reserve_accounts_cost
 X
 3
-549
+684
 Y
 3
 291
 Width
 3
-90
+100
 Height
 3
 24
@@ -1639,13 +1639,13 @@ Name
 reserve_accounts_cost_input
 X
 3
-447
+561
 Y
 3
 291
 Width
 3
-90
+100
 Height
 3
 24
@@ -1701,13 +1701,13 @@ Name
 reserve_accounts_cost_method
 X
 3
-195
+240
 Y
 3
 291
 Width
 3
-144
+175
 Height
 3
 24
@@ -1737,13 +1737,13 @@ Name
 reserve_accounts_cost_modeled_ui
 X
 3
-348
+438
 Y
 3
 291
 Width
 3
-90
+100
 Height
 3
 24
@@ -1800,13 +1800,13 @@ Name
 reserve_accounts_cost_total
 X
 3
-447
+561
 Y
 3
 291
 Width
 3
-90
+100
 Height
 3
 24
@@ -1862,7 +1862,7 @@ Name
 tt_insurance_during_construction_cost
 X
 3
-651
+786
 Y
 3
 258
@@ -1888,7 +1888,7 @@ Name
 tt_other_financial_costs_cost
 X
 3
-651
+786
 Y
 3
 324
@@ -1914,7 +1914,7 @@ Name
 tt_project_contingency_budget_cost
 X
 3
-651
+786
 Y
 3
 225
@@ -1940,13 +1940,13 @@ Name
 user_input_label_eng37
 X
 3
-456
+549
 Y
 3
 198
 Width
 3
-81
+111
 Height
 3
 24
@@ -1979,7 +1979,7 @@ AlignTop
 2
 0
 
-29
+31
 carrying_cost_during_construction_cost
 3
 1
@@ -2072,6 +2072,20 @@ $
  
 0
 9
+1
+1
+1
+1
+0
+Default
+financial_cost_total_mill
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -2372,6 +2386,20 @@ total_installed_cost
 1
 0
 Default
+total_installed_cost_mill
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_test
 3
 1
@@ -2387,7 +2415,7 @@ total_test
 0
 Default
 
-1603
+1800
 equations {'total_installed_cost'} = define() {
 	//fin_cost = round(${financial_cost_total});
 	//bos_cost = round(${balance_of_system_cost_total});
@@ -2401,6 +2429,11 @@ equations {'total_installed_cost'} = define() {
 equations {'total_test'} = define() {
 	return ${financial_cost_total} + ${device_costs_total} + ${balance_of_system_cost_total};
 };
+
+equations {'total_installed_cost_mill'} = define() {
+	return ${total_installed_cost}/1000000;
+};
+
 
 /*equations {'financial_cost_total'} = define() {
 	return ${project_contingency_budget_cost}+${insurance_during_construction_cost}+
@@ -2418,6 +2451,10 @@ equations {'financial_cost_total'} = define() {
 	{
 		return ${financial_cost_input};
 	}
+};
+
+equations {'financial_cost_total_mill'} = define() {
+	return ${financial_cost_total}/1000000;
 };
 
 /*equations {'total_installed_cost'} = define() {

@@ -1,5 +1,5 @@
 Marine Costs - E&M
-815
+920
 530
 43
 Label
@@ -12,13 +12,13 @@ Name
 92
 X
 3
-9
+12
 Y
 3
 66
 Width
 3
-309
+324
 Height
 3
 24
@@ -66,7 +66,7 @@ Y
 12
 Width
 3
-800
+900
 Height
 3
 511
@@ -75,8 +75,8 @@ Tool Tip
 0
 Caption
 5
-32
-Engineering and Management Costs
+26
+Engineering and Management
 Bold
 2
 1
@@ -90,13 +90,13 @@ Name
 Environmental Monitoring
 X
 3
-201
+27
 Y
 3
 456
 Width
 3
-216
+441
 Height
 3
 24
@@ -105,8 +105,8 @@ Tool Tip
 0
 Caption
 5
-29
-Other health and safety costs
+56
+Other health, safety, and environmental monitoring costs
 TextColour
 4
 0
@@ -138,7 +138,7 @@ Name
 Environmental Monitoring9
 X
 3
-201
+252
 Y
 3
 426
@@ -186,13 +186,13 @@ Name
 Itemized Inputs 
 X
 3
-417
+468
 Y
 3
 39
 Width
 3
-114
+198
 Height
 3
 24
@@ -240,7 +240,7 @@ Y
 39
 Width
 3
-90
+141
 Height
 3
 24
@@ -282,13 +282,13 @@ Name
 construction_management_cost
 X
 3
-318
+336
 Y
 3
 126
 Width
 3
-90
+100
 Height
 3
 24
@@ -345,13 +345,13 @@ Name
 construction_management_cost_total
 X
 3
-318
+336
 Y
 3
 126
 Width
 3
-90
+100
 Height
 3
 24
@@ -414,7 +414,7 @@ Y
 156
 Width
 3
-126
+183
 Height
 3
 24
@@ -447,7 +447,7 @@ Y
 366
 Width
 3
-129
+192
 Height
 3
 24
@@ -474,13 +474,13 @@ Name
 detailed_design_and_construction_eng_cost
 X
 3
-318
+336
 Y
 3
 66
 Width
 3
-90
+100
 Height
 3
 24
@@ -584,7 +584,7 @@ Name
 eng_mgmt_override_label
 X
 3
-558
+708
 Y
 3
 42
@@ -632,13 +632,13 @@ Name
 environmental_monitoring_cost
 X
 3
-417
+468
 Y
 3
 426
 Width
 3
-90
+100
 Height
 3
 24
@@ -695,13 +695,13 @@ Name
 health_and_safety_monitoring_cost
 X
 3
-417
+468
 Y
 3
 396
 Width
 3
-90
+100
 Height
 3
 24
@@ -758,13 +758,13 @@ Name
 health_safety_and_environmental_monitoring_cost
 X
 3
-318
+336
 Y
 3
 336
 Width
 3
-90
+100
 Height
 3
 24
@@ -821,13 +821,13 @@ Name
 health_safety_and_environmental_monitoring_cost_total
 X
 3
-318
+336
 Y
 3
 336
 Width
 3
-90
+100
 Height
 3
 24
@@ -884,7 +884,7 @@ Name
 object 713
 X
 3
-81
+99
 Y
 3
 126
@@ -932,13 +932,13 @@ Name
 object 72441
 X
 3
-9
+33
 Y
 3
 486
 Width
 3
-309
+306
 Height
 3
 24
@@ -980,7 +980,7 @@ Name
 object 726
 X
 3
-198
+249
 Y
 3
 396
@@ -1028,7 +1028,7 @@ Name
 object 727
 X
 3
-153
+171
 Y
 3
 306
@@ -1076,7 +1076,7 @@ Name
 object 728
 X
 3
-171
+222
 Y
 3
 276
@@ -1124,7 +1124,7 @@ Name
 object 72821
 X
 3
-171
+222
 Y
 3
 216
@@ -1172,7 +1172,7 @@ Name
 object 72839
 X
 3
-330
+381
 Y
 3
 246
@@ -1220,7 +1220,7 @@ Name
 object 73
 X
 3
-84
+102
 Y
 3
 96
@@ -1268,7 +1268,7 @@ Name
 object 730
 X
 3
-327
+378
 Y
 3
 186
@@ -1316,13 +1316,13 @@ Name
 object 73136
 X
 3
-9
+18
 Y
 3
 336
 Width
 3
-309
+318
 Height
 3
 24
@@ -1364,13 +1364,13 @@ Name
 other_construction_management_cost
 X
 3
-417
+468
 Y
 3
 276
 Width
 3
-90
+100
 Height
 3
 24
@@ -1427,13 +1427,13 @@ Name
 other_eng_cost
 X
 3
-318
+339
 Y
 3
 486
 Width
 3
-90
+100
 Height
 3
 24
@@ -1490,13 +1490,13 @@ Name
 other_health_and_safety_cost
 X
 3
-417
+468
 Y
 3
 456
 Width
 3
-90
+100
 Height
 3
 24
@@ -1553,13 +1553,13 @@ Name
 procurement_management_cost
 X
 3
-318
+336
 Y
 3
 96
 Width
 3
-90
+100
 Height
 3
 24
@@ -1616,13 +1616,13 @@ Name
 profit_eng_cost
 X
 3
-417
+468
 Y
 3
 246
 Width
 3
-90
+100
 Height
 3
 24
@@ -1679,13 +1679,13 @@ Name
 project_certification_cost
 X
 3
-318
+336
 Y
 3
 306
 Width
 3
-90
+100
 Height
 3
 24
@@ -1742,13 +1742,13 @@ Name
 salaries_eng_cost
 X
 3
-417
+468
 Y
 3
 186
 Width
 3
-90
+100
 Height
 3
 24
@@ -1805,13 +1805,13 @@ Name
 sales_general_and_administrative_eng_cost
 X
 3
-417
+468
 Y
 3
 216
 Width
 3
-90
+100
 Height
 3
 24
@@ -1868,10 +1868,10 @@ Name
 tt_construction_management_cost
 X
 3
-417
+447
 Y
 3
-129
+126
 Width
 3
 24
@@ -1894,10 +1894,10 @@ Name
 tt_detailed_design_and_construction_engineering_cost
 X
 3
-417
+447
 Y
 3
-69
+66
 Width
 3
 24
@@ -1920,7 +1920,7 @@ Name
 tt_health_safety_and_environmental_monitoring_cost
 X
 3
-417
+447
 Y
 3
 336
@@ -1946,7 +1946,7 @@ Name
 tt_other_engineering_and_management_cost
 X
 3
-417
+447
 Y
 3
 486
@@ -1972,10 +1972,10 @@ Name
 tt_procurement_management_cost
 X
 3
-417
+447
 Y
 3
-99
+96
 Width
 3
 24
@@ -1998,7 +1998,7 @@ Name
 tt_project_certification_cost
 X
 3
-417
+447
 Y
 3
 306

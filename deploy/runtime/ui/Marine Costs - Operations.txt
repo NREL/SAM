@@ -1,6 +1,6 @@
 Marine Costs - Operations
-821
-908
+919
+910
 65
 Label
 
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-60
+15
 Y
 3
 78
 Width
 3
-285
+324
 Height
 3
 24
@@ -59,13 +59,13 @@ Name
 Itemized Inputs 
 X
 3
-447
+468
 Y
 3
 51
 Width
 3
-114
+213
 Height
 3
 24
@@ -107,13 +107,13 @@ Name
 Itemized Inputs 3
 X
 3
-345
+339
 Y
 3
 51
 Width
 3
-90
+123
 Height
 3
 24
@@ -155,13 +155,13 @@ Name
 annual_leases_fees_cost
 X
 3
-345
+339
 Y
 3
 228
 Width
 3
-90
+100
 Height
 3
 24
@@ -218,13 +218,13 @@ Name
 annual_leases_fees_cost_total
 X
 3
-345
+339
 Y
 3
 228
 Width
 3
-90
+100
 Height
 3
 24
@@ -281,13 +281,13 @@ Name
 condition_monitoring_operations_cost
 X
 3
-444
+468
 Y
 3
 738
 Width
 3
-90
+100
 Height
 3
 24
@@ -344,13 +344,13 @@ Name
 detailed_cost_choice_annual_leases
 X
 3
-351
+345
 Y
 3
 258
 Width
 3
-153
+210
 Height
 3
 24
@@ -377,13 +377,13 @@ Name
 detailed_cost_choice_env_health_safety
 X
 3
-351
+345
 Y
 3
 108
 Width
 3
-153
+207
 Height
 3
 24
@@ -410,7 +410,7 @@ Name
 detailed_cost_choice_gen_admin
 X
 3
-351
+345
 Y
 3
 498
@@ -443,13 +443,13 @@ Name
 environmental_health_and_safety_monitoring_cost
 X
 3
-345
+339
 Y
 3
 78
 Width
 3
-90
+100
 Height
 3
 24
@@ -506,13 +506,13 @@ Name
 environmental_health_and_safety_monitoring_cost_total
 X
 3
-345
+339
 Y
 3
 78
 Width
 3
-90
+100
 Height
 3
 24
@@ -569,13 +569,13 @@ Name
 environmental_monitoring_operations_cost
 X
 3
-444
+468
 Y
 3
 168
 Width
 3
-90
+100
 Height
 3
 24
@@ -632,13 +632,13 @@ Name
 federal_energy_regulatory_commission_fees_cost
 X
 3
-444
+468
 Y
 3
 378
 Width
 3
-90
+100
 Height
 3
 24
@@ -695,13 +695,13 @@ Name
 generation_planning_and_integration_cost
 X
 3
-444
+468
 Y
 3
 528
 Width
 3
-90
+100
 Height
 3
 24
@@ -758,13 +758,13 @@ Name
 health_safety_monitoring_cost
 X
 3
-444
+468
 Y
 3
 138
 Width
 3
-90
+100
 Height
 3
 24
@@ -821,13 +821,13 @@ Name
 insurance_operations_cost
 X
 3
-345
+339
 Y
 3
 438
 Width
 3
-90
+100
 Height
 3
 24
@@ -884,7 +884,7 @@ Name
 itemized_check_operations
 X
 3
-69
+63
 Y
 3
 138
@@ -931,13 +931,13 @@ Name
 marine_energy_converter_power_consumption_cost
 X
 3
-444
+468
 Y
 3
 648
 Width
 3
-90
+100
 Height
 3
 24
@@ -994,13 +994,13 @@ Name
 marine_management_cost
 X
 3
-444
+468
 Y
 3
 708
 Width
 3
-90
+100
 Height
 3
 24
@@ -1060,10 +1060,10 @@ X
 9
 Y
 3
-18
+15
 Width
 3
-800
+900
 Height
 3
 885
@@ -1072,8 +1072,8 @@ Tool Tip
 0
 Caption
 5
-15
-Operations Cost
+10
+Operations
 Bold
 2
 1
@@ -1087,7 +1087,7 @@ Name
 object 713
 X
 3
-264
+288
 Y
 3
 408
@@ -1135,13 +1135,13 @@ Name
 object 71325
 X
 3
-141
+84
 Y
 3
 378
 Width
 3
-303
+384
 Height
 3
 24
@@ -1183,7 +1183,7 @@ Name
 object 71339
 X
 3
-243
+267
 Y
 3
 198
@@ -1231,7 +1231,7 @@ Name
 object 7133937
 X
 3
-240
+264
 Y
 3
 168
@@ -1279,7 +1279,7 @@ Name
 object 72751
 X
 3
-159
+153
 Y
 3
 858
@@ -1327,7 +1327,7 @@ Name
 object 7275125
 X
 3
-258
+282
 Y
 3
 708
@@ -1375,7 +1375,7 @@ Name
 object 7275126
 X
 3
-258
+282
 Y
 3
 678
@@ -1423,7 +1423,7 @@ Name
 object 7275130
 X
 3
-258
+282
 Y
 3
 558
@@ -1471,7 +1471,7 @@ Name
 object 7275135
 X
 3
-234
+258
 Y
 3
 348
@@ -1519,13 +1519,13 @@ Name
 object 728
 X
 3
-192
+174
 Y
 3
 828
 Width
 3
-252
+294
 Height
 3
 24
@@ -1567,13 +1567,13 @@ Name
 object 72827
 X
 3
-123
+138
 Y
 3
 648
 Width
 3
-321
+330
 Height
 3
 24
@@ -1615,7 +1615,7 @@ Name
 object 72831
 X
 3
-210
+234
 Y
 3
 528
@@ -1663,7 +1663,7 @@ Name
 object 72836
 X
 3
-258
+282
 Y
 3
 318
@@ -1711,7 +1711,7 @@ Name
 object 72846
 X
 3
-219
+243
 Y
 3
 798
@@ -1759,7 +1759,7 @@ Name
 object 729
 X
 3
-303
+327
 Y
 3
 768
@@ -1807,7 +1807,7 @@ Name
 object 72928
 X
 3
-210
+234
 Y
 3
 618
@@ -1855,13 +1855,13 @@ Name
 object 72932
 X
 3
-36
+12
 Y
 3
 468
 Width
 3
-309
+327
 Height
 3
 24
@@ -1903,7 +1903,7 @@ Name
 object 72937
 X
 3
-258
+282
 Y
 3
 288
@@ -1951,13 +1951,13 @@ Name
 object 73
 X
 3
-243
+222
 Y
 3
 138
 Width
 3
-201
+246
 Height
 3
 24
@@ -1999,7 +1999,7 @@ Name
 object 730
 X
 3
-294
+318
 Y
 3
 738
@@ -2047,7 +2047,7 @@ Name
 object 73029
 X
 3
-258
+282
 Y
 3
 588
@@ -2095,7 +2095,7 @@ Name
 object 73033
 X
 3
-222
+216
 Y
 3
 438
@@ -2143,13 +2143,13 @@ Name
 object 73038
 X
 3
-63
+12
 Y
 3
 228
 Width
 3
-282
+327
 Height
 3
 24
@@ -2191,13 +2191,13 @@ Name
 onshore_land_lease_cost
 X
 3
-444
+468
 Y
 3
 318
 Width
 3
-90
+100
 Height
 3
 24
@@ -2254,13 +2254,13 @@ Name
 operating_equipment_cost
 X
 3
-444
+468
 Y
 3
 588
 Width
 3
-90
+100
 Height
 3
 24
@@ -2317,13 +2317,13 @@ Name
 operating_facilities_cost
 X
 3
-444
+468
 Y
 3
 558
 Width
 3
-90
+100
 Height
 3
 24
@@ -2380,13 +2380,13 @@ Name
 operating_margin_cost
 X
 3
-444
+468
 Y
 3
 768
 Width
 3
-90
+100
 Height
 3
 24
@@ -2443,13 +2443,13 @@ Name
 operations_management_general_administration_cost
 X
 3
-345
+339
 Y
 3
 468
 Width
 3
-90
+100
 Height
 3
 24
@@ -2506,13 +2506,13 @@ Name
 operations_management_general_administration_cost_total
 X
 3
-345
+339
 Y
 3
 468
 Width
 3
-90
+100
 Height
 3
 24
@@ -2569,7 +2569,7 @@ Name
 operations_override_check
 X
 3
-69
+63
 Y
 3
 168
@@ -2616,10 +2616,10 @@ Name
 operations_override_label
 X
 3
-570
+714
 Y
 3
-99
+96
 Width
 3
 180
@@ -2664,13 +2664,13 @@ Name
 other_business_cost
 X
 3
-444
+468
 Y
 3
 408
 Width
 3
-90
+100
 Height
 3
 24
@@ -2727,13 +2727,13 @@ Name
 other_gen_admin_cost
 X
 3
-444
+468
 Y
 3
 828
 Width
 3
-90
+100
 Height
 3
 24
@@ -2790,13 +2790,13 @@ Name
 other_monitoring_cost
 X
 3
-444
+468
 Y
 3
 198
 Width
 3
-90
+100
 Height
 3
 24
@@ -2853,13 +2853,13 @@ Name
 other_operations_cost
 X
 3
-345
+339
 Y
 3
 858
 Width
 3
-90
+100
 Height
 3
 24
@@ -2916,13 +2916,13 @@ Name
 professional_advisory_services_operations_cost
 X
 3
-444
+468
 Y
 3
 798
 Width
 3
-90
+100
 Height
 3
 24
@@ -2979,13 +2979,13 @@ Name
 sales_general_and_administrative_operations_cost
 X
 3
-444
+468
 Y
 3
 618
 Width
 3
-90
+100
 Height
 3
 24
@@ -3042,13 +3042,13 @@ Name
 submerged_land_lease_cost
 X
 3
-444
+468
 Y
 3
 288
 Width
 3
-90
+100
 Height
 3
 24
@@ -3105,13 +3105,13 @@ Name
 transmission_charges_rights_cost
 X
 3
-444
+468
 Y
 3
 348
 Width
 3
-90
+100
 Height
 3
 24
@@ -3168,7 +3168,7 @@ Name
 tt_annual_leases_fees_cost
 X
 3
-444
+447
 Y
 3
 228
@@ -3220,7 +3220,7 @@ Name
 tt_insurance_operations_cost
 X
 3
-444
+447
 Y
 3
 438
@@ -3246,7 +3246,7 @@ Name
 tt_operations_management_and_general_admin_cost
 X
 3
-444
+447
 Y
 3
 468
@@ -3272,7 +3272,7 @@ Name
 tt_other_operations_cost
 X
 3
-444
+447
 Y
 3
 858
@@ -3298,13 +3298,13 @@ Name
 weather_forecasting_cost
 X
 3
-444
+468
 Y
 3
 678
 Width
 3
-90
+100
 Height
 3
 24
