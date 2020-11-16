@@ -79,7 +79,8 @@ version_upgrade{'2020.11.12'} = define() {
 		message ('The Direct Steam Power Tower model is not available in SAM ' + samver() +'. Removing Case \"' + case_name() + '\" from the file. The most recent version with the model is SAM 2020.2.29, which you can download from https://sam.nrel.gov/download/','warning');
 	}
     
-    if (cfg.tech == 'Generic Battery' || cfg.tech == 'PV Battery') {
+    // Use en_batt instead of cfg.tech to capture fuel cell configurations
+    if (oldvalue('en_batt') == 1) {
         old_replacement_option = oldvalue('batt_replacement_schedule');
         max_replacements = max(old_replacement_option);
         if (max_replacements > 1) {
