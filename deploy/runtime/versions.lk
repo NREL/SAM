@@ -79,7 +79,28 @@ version_upgrade{'2020.11.12'} = define() {
 		message ('The Direct Steam Power Tower model is not available in SAM ' + samver() +'. Removing Case \"' + case_name() + '\" from the file. The most recent version with the model is SAM 2020.2.29, which you can download from https://sam.nrel.gov/download/','warning');
 	}
     
-
+    if (cfg.tech == 'Generic Battery' || cfg.tech == 'PV Battery') {
+        old_replacement_option = oldvalue('batt_replacement_schedule');
+        max_replacements = max(old_replacement_option);
+        if (max_replacements > 1) {
+            message(max_replacements + ' replacements of the battery per year are no longer supported in ' + samver() + '.' +
+                    ' Using the "Replace at specified capacity" option may serve your needs, otherwise contact us at sam.support@nrel.gov for support.', 'warning');
+        }
+        else if (max_replacements > 0) {
+            message('Replace at specified schedule no longer uses the "Battery bank replacement schedule" option.' +
+                     ' All replacement information should be specified in "Battery bank replacement %"');
+        }
+        
+        fin = cfg.fin;
+        is_fom = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' || fin == 'Merchant Plant');
+        if (is_fom) {
+            old_cycle_cost = oldvalue('batt_cycle_cost');
+            value('batt_cycle_cost', [old_cycle_cost], 'Convert single value to array.');
+            message('You can now specify a different battery cycle cost for each year of the analysis period on the Battery Dispatch page.'
+                     + ' This input is now labelled "Cycle Degradation Penalty"', 'notice');
+        }
+    
+    }
 };
 
 version_upgrade{'2020.2.29'} = define() {
