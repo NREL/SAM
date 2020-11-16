@@ -51,7 +51,38 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-version_upgrade{'2020.11.3'} = define() {
+version_upgrade{'2020.11.12'} = define() {
+    const cfg = config();
+	if( cfg.tech == 'MSPT' )
+	{
+		pc_config = oldvalue("pc_config");
+		if(pc_config == 2)
+		{
+			value("pc_config", 0);
+			message('The Supercritical Carbon Dioxide (sCO2) Power Cycle option has been removed from the Power Cycle page.'
+						'To model an sCO2 cycle, use the sCO2 Cycle Integration macro with the NREL sCO2 Power Cycle Python model. See the macro instructions for details.'
+						' Setting power cycle option to the default Rankine Cycle.','warning');
+		}
+	}
+    
+    //To be included in next full release (version_upgrade{'2020.10.?'})
+    if (cfg.tech == 'Dish Stirling' )
+    {
+		retire_tech();
+		//The version upgrade script is set up to delete cases with this technology made from a previous release from the project file. This is done in project.cpp
+		message('The Dish Stirling model is not available in SAM ' + samver() +'. Removing Case \"' + case_name() + '\" from the file. The most recent version with the model is SAM 2020.2.29, which you can download from https://sam.nrel.gov/download/','warning');
+    }
+    if (cfg.tech == 'DSPT')
+    {
+		retire_tech();
+		//The version upgrade script is set up to delete cases with this technology made from a previous release from the project file. This is done in project.cpp
+		message ('The Direct Steam Power Tower model is not available in SAM ' + samver() +'. Removing Case \"' + case_name() + '\" from the file. The most recent version with the model is SAM 2020.2.29, which you can download from https://sam.nrel.gov/download/','warning');
+	}
+    
+
+};
+
+version_upgrade{'2020.2.29'} = define() {
     const cfg = config();
     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
     {
@@ -97,17 +128,6 @@ version_upgrade{'2020.11.3'} = define() {
 			ok = config('PVWatts Battery', cfg.fin, 'Generic Battery configuration replaces Generic System with battery enabled.');
 			config_update_with_old_values();
 			if ( !ok ) { msgbox('Failed to change configuration!\nPVWatts Battery configuration replaces PVWatts with battery enabled.'); }
-		}
-	}
-	if( cfg.tech == 'MSPT' )
-	{
-		pc_config = oldvalue("pc_config");
-		if(pc_config == 2)
-		{
-			value("pc_config", 0);
-			message('The Supercritical Carbon Dioxide (sCO2) Power Cycle option has been removed from the Power Cycle page.'
-						'To model an sCO2 cycle, use the sCO2 Cycle Integration macro with the NREL sCO2 Power Cycle Python model. See the macro instructions for details.'
-						' Setting power cycle option to the default Rankine Cycle.','warning');
 		}
 	}
     if ( cfg.tech == 'Physical Trough' )
@@ -158,7 +178,7 @@ version_upgrade{'2020.11.3'} = define() {
                         value( 'combo_htf_type', old_combo_htf_type + 1 );
         }
     }
-       // update ppa_price_input before configuration changes
+    // update ppa_price_input before configuration changes
     fin = cfg.fin;
     is_ppa = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' || fin == 'Host Developer');
     if ( is_ppa ) 
@@ -166,22 +186,6 @@ version_upgrade{'2020.11.3'} = define() {
 		value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
         message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
     }
-    
-    //To be included in next full release (version_upgrade{'2020.10.?'})
-    if (cfg.tech == 'Dish Stirling' )
-    {
-		retire_tech();
-		//The version upgrade script is set up to delete cases with this technology made from a previous release from the project file. This is done in project.cpp
-		message('The Dish Stirling model is not available in SAM ' + samver() +'. Removing Case \"' + case_name() + '\" from the file. The most recent version with the model is SAM 2020.2.29, which you can download from https://sam.nrel.gov/download/','warning');
-    }
-    if (cfg.tech == 'DSPT')
-    {
-		retire_tech();
-		//The version upgrade script is set up to delete cases with this technology made from a previous release from the project file. This is done in project.cpp
-		message ('The Direct Steam Power Tower model is not available in SAM ' + samver() +'. Removing Case \"' + case_name() + '\" from the file. The most recent version with the model is SAM 2020.2.29, which you can download from https://sam.nrel.gov/download/','warning');
-	}
-    
-
 };
 
 // ** Not sure how this works for patches, so using new version number for testing
