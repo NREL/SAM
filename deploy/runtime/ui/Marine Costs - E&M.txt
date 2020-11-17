@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-44
-Detailed design and construction engineering
+37
+Detailed design and construction eng.
 TextColour
 4
 0
@@ -234,13 +234,13 @@ Name
 Itemized Inputs 3
 X
 3
-318
+336
 Y
 3
 39
 Width
 3
-141
+129
 Height
 3
 24
@@ -414,7 +414,7 @@ Y
 156
 Width
 3
-183
+192
 Height
 3
 24
