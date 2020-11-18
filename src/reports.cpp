@@ -52,7 +52,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <wex/icons/stock_dnd_32.cpng>
 
-#include <wex/plot/plaxis.h>
+//#include <wex/plot/plaxis.h>
 
 SamReportTemplate::SamReportTemplate()
 {
@@ -2053,7 +2053,7 @@ public:
 			wxLK_STDLIB_BASIC|wxLK_STDLIB_SYSIO|wxLK_STDLIB_STRING|wxLK_STDLIB_MATH|wxLK_STDLIB_WXUI);
 		
 		m_editor->RegisterLibrary(report_script_funcs);
-		m_editor->RegisterLibrary(wxLKPlotFunctions());
+//		m_editor->RegisterLibrary(wxLKPlotFunctions());
 
 		m_toolSizer = new wxBoxSizer( wxHORIZONTAL );
 		m_toolSizer->Add( new wxButton( this, IDT_INSERTVAR, "Variables", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT ), 0, wxRIGHT|wxALIGN_CENTER, 4 );
