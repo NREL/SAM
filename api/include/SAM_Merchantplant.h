@@ -3737,8 +3737,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_npv_uti_pbi_income_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Outputs_ppa_gen_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_insandproptax_nget(SAM_table ptr, SAM_error *err);
@@ -3756,6 +3754,8 @@ extern "C"
 	SAM_EXPORT double SAM_Merchantplant_Outputs_purchase_of_property_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_pv_cafds_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_revenue_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_salvage_value_nget(SAM_table ptr, SAM_error *err);
 

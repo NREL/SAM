@@ -1,6 +1,6 @@
 Marine Costs - Structural Assembly
-796
-602
+919
+603
 51
 Label
 
@@ -11,7 +11,7 @@ Name
 0
 X
 3
-150
+192
 Y
 3
 69
@@ -59,13 +59,13 @@ Name
 active_structure_cost
 X
 3
-420
+492
 Y
 3
 219
 Width
 3
-90
+100
 Height
 3
 24
@@ -122,13 +122,13 @@ Name
 additional_structural_components_cost
 X
 3
-321
+363
 Y
 3
 279
 Width
 3
-90
+100
 Height
 3
 24
@@ -185,13 +185,13 @@ Name
 ballast_system_cost
 X
 3
-420
+492
 Y
 3
 399
 Width
 3
-90
+100
 Height
 3
 24
@@ -248,13 +248,13 @@ Name
 buoyancy_chamber_cost
 X
 3
-420
+492
 Y
 3
 159
 Width
 3
-90
+100
 Height
 3
 24
@@ -311,7 +311,7 @@ Name
 coatings
 X
 3
-153
+195
 Y
 3
 489
@@ -359,13 +359,13 @@ Name
 coatings_cost
 X
 3
-321
+363
 Y
 3
 489
 Width
 3
-90
+100
 Height
 3
 24
@@ -422,13 +422,13 @@ Name
 detailed_cost_choice_marine_systems
 X
 3
-348
+363
 Y
 3
 339
 Width
 3
-159
+174
 Height
 3
 24
@@ -455,13 +455,13 @@ Name
 detailed_cost_choice_struct_assem
 X
 3
-354
+366
 Y
 3
 99
 Width
 3
-153
+171
 Height
 3
 24
@@ -488,13 +488,13 @@ Name
 external_ballast_chambers_cost
 X
 3
-420
+492
 Y
 3
 189
 Width
 3
-90
+100
 Height
 3
 24
@@ -551,13 +551,13 @@ Name
 level_5_total_prime
 X
 3
-321
+363
 Y
 3
 42
 Width
 3
-99
+129
 Height
 3
 24
@@ -599,13 +599,13 @@ Name
 level_5_total_prime50
 X
 3
-420
+492
 Y
 3
 42
 Width
 3
-144
+195
 Height
 3
 24
@@ -647,13 +647,13 @@ Name
 marine_systems_cost
 X
 3
-321
+363
 Y
 3
 309
 Width
 3
-90
+100
 Height
 3
 24
@@ -710,13 +710,13 @@ Name
 marine_systems_cost_total
 X
 3
-321
+363
 Y
 3
 309
 Width
 3
-90
+100
 Height
 3
 24
@@ -773,13 +773,13 @@ Name
 navigation_lighting_cost
 X
 3
-420
+492
 Y
 3
 429
 Width
 3
-90
+100
 Height
 3
 24
@@ -836,7 +836,7 @@ Name
 object 
 X
 3
-219
+291
 Y
 3
 249
@@ -890,7 +890,7 @@ Y
 9
 Width
 3
-780
+900
 Height
 3
 587
@@ -899,8 +899,8 @@ Tool Tip
 0
 Caption
 5
-25
-Structural Assembly Costs
+19
+Structural Assembly
 Bold
 2
 1
@@ -914,7 +914,7 @@ Name
 object 713
 X
 3
-216
+288
 Y
 3
 159
@@ -962,13 +962,13 @@ Name
 object 72446
 X
 3
-105
+120
 Y
 3
 519
 Width
 3
-216
+243
 Height
 3
 24
@@ -1010,13 +1010,13 @@ Name
 object 72647
 X
 3
-243
+276
 Y
 3
 459
 Width
 3
-177
+216
 Height
 3
 24
@@ -1058,7 +1058,7 @@ Name
 object 7264745
 X
 3
-243
+315
 Y
 3
 429
@@ -1106,7 +1106,7 @@ Name
 object 72748
 X
 3
-243
+291
 Y
 3
 369
@@ -1154,7 +1154,7 @@ Name
 object 728
 X
 3
-156
+198
 Y
 3
 309
@@ -1202,13 +1202,13 @@ Name
 object 729
 X
 3
-156
+102
 Y
 3
 279
 Width
 3
-165
+261
 Height
 3
 24
@@ -1217,8 +1217,8 @@ Tool Tip
 0
 Caption
 5
-22
- Structural components
+32
+Additional structural components
 TextColour
 4
 0
@@ -1250,7 +1250,7 @@ Name
 object 73
 X
 3
-216
+288
 Y
 3
 129
@@ -1298,7 +1298,7 @@ Name
 object 730
 X
 3
-243
+315
 Y
 3
 219
@@ -1346,7 +1346,7 @@ Name
 object 731
 X
 3
-243
+315
 Y
 3
 399
@@ -1394,13 +1394,13 @@ Name
 object 733
 X
 3
-84
+96
 Y
 3
 549
 Width
 3
-237
+267
 Height
 3
 24
@@ -1442,7 +1442,7 @@ Name
 object 734
 X
 3
-219
+291
 Y
 3
 189
@@ -1490,13 +1490,13 @@ Name
 other_costs
 X
 3
-321
+363
 Y
 3
 549
 Width
 3
-90
+100
 Height
 3
 24
@@ -1553,13 +1553,13 @@ Name
 other_marine_system_cost
 X
 3
-420
+492
 Y
 3
 459
 Width
 3
-90
+100
 Height
 3
 24
@@ -1616,13 +1616,13 @@ Name
 other_prime_mover_cost
 X
 3
-420
+492
 Y
 3
 249
 Width
 3
-90
+100
 Height
 3
 24
@@ -1726,13 +1726,13 @@ Name
 personnel_access_system_cost
 X
 3
-420
+492
 Y
 3
 369
 Width
 3
-90
+100
 Height
 3
 24
@@ -1789,13 +1789,13 @@ Name
 primary_struct_assem_cost
 X
 3
-420
+492
 Y
 3
 129
 Width
 3
-90
+100
 Height
 3
 24
@@ -1852,13 +1852,13 @@ Name
 prime_mover_cost
 X
 3
-321
+363
 Y
 3
 69
 Width
 3
-90
+100
 Height
 3
 24
@@ -1915,13 +1915,13 @@ Name
 prime_mover_cost_total
 X
 3
-321
+363
 Y
 3
 69
 Width
 3
-90
+100
 Height
 3
 24
@@ -2025,10 +2025,10 @@ Name
 struct_override_label
 X
 3
-567
+705
 Y
 3
-93
+48
 Width
 3
 195
@@ -2308,13 +2308,13 @@ Name
 transport_structure_cost
 X
 3
-321
+363
 Y
 3
 519
 Width
 3
-90
+100
 Height
 3
 24
@@ -2371,7 +2371,7 @@ Name
 tt_coatings_cost
 X
 3
-417
+471
 Y
 3
 489
@@ -2397,7 +2397,7 @@ Name
 tt_marine_systems_cost
 X
 3
-417
+471
 Y
 3
 309
@@ -2423,7 +2423,7 @@ Name
 tt_other_structural_assembly_cost
 X
 3
-417
+471
 Y
 3
 549
@@ -2449,7 +2449,7 @@ Name
 tt_prime_mover_cost
 X
 3
-420
+471
 Y
 3
 69
@@ -2475,7 +2475,7 @@ Name
 tt_structural_component_cost
 X
 3
-417
+471
 Y
 3
 279
@@ -2501,7 +2501,7 @@ Name
 tt_transportation_of_structure_cost
 X
 3
-417
+471
 Y
 3
 519

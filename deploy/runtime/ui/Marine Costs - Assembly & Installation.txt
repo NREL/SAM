@@ -1,6 +1,6 @@
 Marine Costs - Assembly & Installation
-816
-751
+917
+749
 55
 Label
 
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-108
+87
 Y
 3
 72
 Width
 3
-216
+252
 Height
 3
 24
@@ -59,13 +59,13 @@ Name
 Itemized Inputs 
 X
 3
-423
+468
 Y
 3
 45
 Width
 3
-114
+186
 Height
 3
 24
@@ -107,13 +107,13 @@ Name
 Itemized Inputs 3
 X
 3
-324
+339
 Y
 3
 45
 Width
 3
-90
+123
 Height
 3
 24
@@ -155,13 +155,13 @@ Name
 array_cables_assem_install_cost
 X
 3
-423
+468
 Y
 3
 492
 Width
 3
-90
+100
 Height
 3
 24
@@ -218,7 +218,7 @@ Name
 assembly_and_install_override
 X
 3
-72
+87
 Y
 3
 135
@@ -265,10 +265,10 @@ Name
 assembly_override_label
 X
 3
-579
+705
 Y
 3
-57
+90
 Width
 3
 195
@@ -313,13 +313,13 @@ Name
 coatings
 X
 3
-291
+240
 Y
 3
 522
 Width
 3
-132
+228
 Height
 3
 24
@@ -361,13 +361,13 @@ Name
 detailed_cost_choice_mec_device
 X
 3
-339
+354
 Y
 3
 312
 Width
 3
-156
+183
 Height
 3
 24
@@ -394,7 +394,7 @@ Name
 detailed_cost_choice_offshore_infrastructure
 X
 3
-339
+354
 Y
 3
 462
@@ -427,13 +427,13 @@ Name
 detailed_cost_choice_substructures
 X
 3
-339
+354
 Y
 3
 102
 Width
 3
-162
+189
 Height
 3
 24
@@ -460,13 +460,13 @@ Name
 foundation_assem_install_cost
 X
 3
-423
+468
 Y
 3
 132
 Width
 3
-90
+100
 Height
 3
 24
@@ -523,13 +523,13 @@ Name
 marine_energy_converter_device_cost
 X
 3
-324
+339
 Y
 3
 282
 Width
 3
-90
+100
 Height
 3
 24
@@ -586,13 +586,13 @@ Name
 marine_energy_converter_device_cost_total
 X
 3
-324
+339
 Y
 3
 282
 Width
 3
-90
+100
 Height
 3
 24
@@ -649,13 +649,13 @@ Name
 noise_mitigation_cost
 X
 3
-423
+468
 Y
 3
 222
 Width
 3
-90
+100
 Height
 3
 24
@@ -718,7 +718,7 @@ Y
 15
 Width
 3
-800
+900
 Height
 3
 729
@@ -727,8 +727,8 @@ Tool Tip
 0
 Caption
 5
-31
-Assembly and Installation Costs
+25
+Assembly and Installation
 Bold
 2
 1
@@ -742,13 +742,13 @@ Name
 object 713
 X
 3
-333
+324
 Y
 3
 162
 Width
 3
-90
+144
 Height
 3
 24
@@ -790,13 +790,13 @@ Name
 object 72446
 X
 3
-273
+231
 Y
 3
 552
 Width
 3
-150
+237
 Height
 3
 24
@@ -838,13 +838,13 @@ Name
 object 72647
 X
 3
-309
+267
 Y
 3
 492
 Width
 3
-114
+201
 Height
 3
 24
@@ -886,13 +886,13 @@ Name
 object 72748
 X
 3
-216
+36
 Y
 3
 402
 Width
 3
-207
+432
 Height
 3
 24
@@ -901,8 +901,8 @@ Tool Tip
 0
 Caption
 5
-22
-Other MEC device costs
+42
+Other marine energy converter device costs
 TextColour
 4
 0
@@ -934,7 +934,7 @@ Name
 object 7274814
 X
 3
-204
+249
 Y
 3
 372
@@ -982,7 +982,7 @@ Name
 object 728
 X
 3
-273
+318
 Y
 3
 342
@@ -1030,13 +1030,13 @@ Name
 object 729
 X
 3
-105
+54
 Y
 3
 282
 Width
 3
-219
+285
 Height
 3
 24
@@ -1078,13 +1078,13 @@ Name
 object 73
 X
 3
-333
+324
 Y
 3
 132
 Width
 3
-90
+144
 Height
 3
 24
@@ -1126,13 +1126,13 @@ Name
 object 730
 X
 3
-264
+90
 Y
 3
 252
 Width
 3
-159
+378
 Height
 3
 24
@@ -1141,8 +1141,8 @@ Tool Tip
 0
 Caption
 5
-24
-Other substructure costs
+39
+Other substructure and foundation costs
 TextColour
 4
 0
@@ -1174,13 +1174,13 @@ Name
 object 73057
 X
 3
-294
+258
 Y
 3
 222
 Width
 3
-129
+210
 Height
 3
 24
@@ -1222,13 +1222,13 @@ Name
 object 731
 X
 3
-75
+12
 Y
 3
 702
 Width
 3
-249
+327
 Height
 3
 24
@@ -1270,13 +1270,13 @@ Name
 object 73118
 X
 3
-96
+12
 Y
 3
 672
 Width
 3
-228
+327
 Height
 3
 24
@@ -1318,13 +1318,13 @@ Name
 object 73131
 X
 3
-132
+42
 Y
 3
 432
 Width
 3
-192
+297
 Height
 3
 24
@@ -1366,13 +1366,13 @@ Name
 object 733
 X
 3
-153
+75
 Y
 3
 642
 Width
 3
-270
+393
 Height
 3
 24
@@ -1381,8 +1381,8 @@ Tool Tip
 0
 Caption
 5
-43
-Other offshore electric infrastructure cost
+44
+Other offshore electric infrastructure costs
 TextColour
 4
 0
@@ -1414,7 +1414,7 @@ Name
 object 73315
 X
 3
-180
+225
 Y
 3
 612
@@ -1462,13 +1462,13 @@ Name
 object 73323
 X
 3
-159
+144
 Y
 3
 582
 Width
 3
-264
+324
 Height
 3
 24
@@ -1510,13 +1510,13 @@ Name
 object 734
 X
 3
-297
+276
 Y
 3
 192
 Width
 3
-126
+192
 Height
 3
 24
@@ -1606,13 +1606,13 @@ Name
 offshore_accommodations_platform_cost
 X
 3
-423
+468
 Y
 3
 582
 Width
 3
-90
+100
 Height
 3
 24
@@ -1669,13 +1669,13 @@ Name
 offshore_electrical_infrastructure_cost
 X
 3
-324
+339
 Y
 3
 432
 Width
 3
-90
+100
 Height
 3
 24
@@ -1732,13 +1732,13 @@ Name
 offshore_electrical_infrastructure_cost_total
 X
 3
-324
+339
 Y
 3
 432
 Width
 3
-90
+100
 Height
 3
 24
@@ -1795,13 +1795,13 @@ Name
 offshore_export_cables_assem_install_cost
 X
 3
-423
+468
 Y
 3
 522
 Width
 3
-90
+100
 Height
 3
 24
@@ -1858,13 +1858,13 @@ Name
 offshore_logistical_infrastructure_assem_install_cost
 X
 3
-324
+339
 Y
 3
 672
 Width
 3
-90
+100
 Height
 3
 24
@@ -1921,13 +1921,13 @@ Name
 offshore_substation_assem_install_cost
 X
 3
-423
+468
 Y
 3
 552
 Width
 3
-90
+100
 Height
 3
 24
@@ -1984,13 +1984,13 @@ Name
 onshore_electric_infrastructure_assem_install_cost
 X
 3
-423
+468
 Y
 3
 612
 Width
 3
-90
+100
 Height
 3
 24
@@ -2047,13 +2047,13 @@ Name
 other_assem_install_cost
 X
 3
-324
+339
 Y
 3
 702
 Width
 3
-90
+100
 Height
 3
 24
@@ -2110,13 +2110,13 @@ Name
 other_marine_energy_converter_device_cost
 X
 3
-423
+468
 Y
 3
 402
 Width
 3
-90
+100
 Height
 3
 24
@@ -2173,13 +2173,13 @@ Name
 other_offshore_electrical_infrastructure_cost
 X
 3
-423
+468
 Y
 3
 642
 Width
 3
-90
+100
 Height
 3
 24
@@ -2236,13 +2236,13 @@ Name
 other_substructure_cost
 X
 3
-423
+468
 Y
 3
 252
 Width
 3
-90
+100
 Height
 3
 24
@@ -2299,13 +2299,13 @@ Name
 power_takeoff_system_assem_install_cost
 X
 3
-423
+468
 Y
 3
 372
 Width
 3
-90
+100
 Height
 3
 24
@@ -2362,13 +2362,13 @@ Name
 scour_protection_assem_install_cost
 X
 3
-423
+468
 Y
 3
 192
 Width
 3
-90
+100
 Height
 3
 24
@@ -2425,13 +2425,13 @@ Name
 structural_assembly_assem_install_cost
 X
 3
-423
+468
 Y
 3
 342
 Width
 3
-90
+100
 Height
 3
 24
@@ -2488,13 +2488,13 @@ Name
 substructure_assem_install_cost
 X
 3
-423
+468
 Y
 3
 162
 Width
 3
-90
+100
 Height
 3
 24
@@ -2551,13 +2551,13 @@ Name
 substructure_assem_install_cost_total
 X
 3
-324
+339
 Y
 3
 72
 Width
 3
-90
+100
 Height
 3
 24
@@ -2614,13 +2614,13 @@ Name
 substructures_and_foundations_cost
 X
 3
-324
+339
 Y
 3
 72
 Width
 3
-90
+100
 Height
 3
 24
@@ -2677,7 +2677,7 @@ Name
 tt_marine_energy_converter_device_cost
 X
 3
-423
+447
 Y
 3
 282
@@ -2703,7 +2703,7 @@ Name
 tt_offshore_electrical_infrastructure_cost
 X
 3
-423
+447
 Y
 3
 432
@@ -2729,7 +2729,7 @@ Name
 tt_offshore_logistical_infrastructure_assembly_cost
 X
 3
-423
+447
 Y
 3
 672
@@ -2755,7 +2755,7 @@ Name
 tt_other_assembly_and_installation_cost
 X
 3
-423
+447
 Y
 3
 702
@@ -2781,7 +2781,7 @@ Name
 tt_substructures_and_foundations_cost
 X
 3
-423
+447
 Y
 3
 72

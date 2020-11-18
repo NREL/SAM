@@ -390,9 +390,9 @@ SAM_EXPORT void SAM_BatteryStateful_StatePack_last_idx_nset(SAM_table ptr, doubl
 	});
 }
 
-SAM_EXPORT void SAM_BatteryStateful_StatePack_loss_percent_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_BatteryStateful_StatePack_loss_kw_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "loss_percent", number);
+		ssc_data_set_number(ptr, "loss_kw", number);
 	});
 }
 
@@ -1262,11 +1262,11 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_last_idx_nget(SAM_table ptr, SAM
 
 
 
-SAM_EXPORT double SAM_BatteryStateful_StatePack_loss_percent_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_BatteryStateful_StatePack_loss_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "loss_percent", &result))
-		make_access_error("SAM_BatteryStateful", "loss_percent");
+	if (!ssc_data_get_number(ptr, "loss_kw", &result))
+		make_access_error("SAM_BatteryStateful", "loss_kw");
 	});
 	return result;
 }

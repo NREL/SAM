@@ -88,14 +88,6 @@ extern "C"
 	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diffuse_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dry_temperature: Dry Temperature [°C]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_dry_temperature_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set elevation: Elevation [m]
 	 * options: None
 	 * constraints: None
@@ -192,6 +184,14 @@ extern "C"
 	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_sky_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set tamb: Ambient Temperature (dry bulb temperature) [°C]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_tamb_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set tilt: Tilt angle [deg]
 	 * options: H=0,V=90
 	 * constraints: MIN=0,MAX=90
@@ -242,8 +242,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diffuse_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_dry_temperature_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_elevation_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_gcr_nget(SAM_table ptr, SAM_error *err);
@@ -267,6 +265,8 @@ extern "C"
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_rotlim_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_sky_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tamb_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tilt_nget(SAM_table ptr, SAM_error *err);
 

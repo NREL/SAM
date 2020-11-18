@@ -1047,6 +1047,7 @@ void CaseWindow::LayoutPage()
 	}
 	
 	m_inputPageScrollWin->SetScrollbars(1, 1, x, y);
+	m_inputPageScrollWin->Scroll(vsx, vsy);
 	m_inputPageScrollWin->SetScrollRate(15,15);
 
 }

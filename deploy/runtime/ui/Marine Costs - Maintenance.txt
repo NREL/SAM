@@ -1,6 +1,6 @@
 Marine Costs - Maintenance
-815
-474
+922
+475
 36
 Label
 
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-123
+78
 Y
 3
 72
 Width
 3
-213
+261
 Height
 3
 24
@@ -59,13 +59,13 @@ Name
 Itemized Inputs 
 X
 3
-438
+468
 Y
 3
 45
 Width
 3
-114
+192
 Height
 3
 24
@@ -107,13 +107,13 @@ Name
 Itemized Inputs 3
 X
 3
-336
+339
 Y
 3
 45
 Width
 3
-99
+126
 Height
 3
 24
@@ -155,13 +155,13 @@ Name
 balance_of_system_scheduled_maintenance_cost
 X
 3
-429
+468
 Y
 3
 192
 Width
 3
-90
+100
 Height
 3
 24
@@ -218,13 +218,13 @@ Name
 balance_of_system_unscheduled_maintenance_cost
 X
 3
-429
+468
 Y
 3
 342
 Width
 3
-90
+100
 Height
 3
 24
@@ -281,13 +281,13 @@ Name
 detailed_cost_choice_scheduled_maintenance
 X
 3
-357
+360
 Y
 3
 132
 Width
 3
-132
+213
 Height
 3
 24
@@ -314,13 +314,13 @@ Name
 detailed_cost_choice_unscheduled_maintenance
 X
 3
-357
+360
 Y
 3
 282
 Width
 3
-126
+249
 Height
 3
 24
@@ -347,13 +347,13 @@ Name
 long_term_service_agreement_cost
 X
 3
-336
+339
 Y
 3
 72
 Width
 3
-90
+100
 Height
 3
 24
@@ -410,10 +410,10 @@ Name
 maintenance_override_check
 X
 3
-543
+33
 Y
 3
-258
+330
 Width
 3
 90
@@ -457,10 +457,10 @@ Name
 maintenance_override_label
 X
 3
-534
+717
 Y
 3
-87
+81
 Width
 3
 159
@@ -505,13 +505,13 @@ Name
 marine_energy_converter_scheduled_maintenance_cost
 X
 3
-429
+468
 Y
 3
 162
 Width
 3
-90
+100
 Height
 3
 24
@@ -568,13 +568,13 @@ Name
 marine_energy_converter_unscheduled_maintenance_cost
 X
 3
-429
+468
 Y
 3
 312
 Width
 3
-90
+100
 Height
 3
 24
@@ -637,7 +637,7 @@ Y
 15
 Width
 3
-800
+900
 Height
 3
 453
@@ -661,7 +661,7 @@ Name
 object 71339
 X
 3
-192
+231
 Y
 3
 162
@@ -709,13 +709,13 @@ Name
 object 7275125
 X
 3
-198
+174
 Y
 3
 342
 Width
 3
-231
+294
 Height
 3
 24
@@ -757,13 +757,13 @@ Name
 object 7275130
 X
 3
-123
+81
 Y
 3
 252
 Width
 3
-216
+261
 Height
 3
 24
@@ -805,13 +805,13 @@ Name
 object 7275135
 X
 3
-171
+189
 Y
 3
 222
 Width
 3
-258
+279
 Height
 3
 24
@@ -853,7 +853,7 @@ Name
 object 727513513
 X
 3
-192
+231
 Y
 3
 192
@@ -869,7 +869,7 @@ Tool Tip
 Caption
 5
 25
-BoS scheduled maintenance
+BOS scheduled maintenance
 TextColour
 4
 0
@@ -901,13 +901,13 @@ Name
 object 728
 X
 3
-129
+108
 Y
 3
 432
 Width
 3
-210
+234
 Height
 3
 24
@@ -949,13 +949,13 @@ Name
 object 729
 X
 3
-165
+57
 Y
 3
 402
 Width
 3
-264
+411
 Height
 3
 24
@@ -997,13 +997,13 @@ Name
 object 72937
 X
 3
-162
+105
 Y
 3
 372
 Width
 3
-267
+363
 Height
 3
 24
@@ -1045,13 +1045,13 @@ Name
 object 73
 X
 3
-123
+54
 Y
 3
 102
 Width
 3
-213
+285
 Height
 3
 24
@@ -1093,13 +1093,13 @@ Name
 object 73029
 X
 3
-195
+165
 Y
 3
 312
 Width
 3
-234
+303
 Height
 3
 24
@@ -1188,13 +1188,13 @@ Name
 other_maintenance_cost
 X
 3
-339
+342
 Y
 3
 432
 Width
 3
-90
+100
 Height
 3
 24
@@ -1251,13 +1251,13 @@ Name
 other_scheduled_maintenance_cost
 X
 3
-429
+468
 Y
 3
 222
 Width
 3
-90
+100
 Height
 3
 24
@@ -1314,13 +1314,13 @@ Name
 other_unscheduled_maintenance_cost
 X
 3
-429
+468
 Y
 3
 402
 Width
 3
-90
+100
 Height
 3
 24
@@ -1377,13 +1377,13 @@ Name
 scheduled_maintenance_cost
 X
 3
-336
+339
 Y
 3
 102
 Width
 3
-90
+100
 Height
 3
 24
@@ -1440,13 +1440,13 @@ Name
 scheduled_maintenance_cost_total
 X
 3
-336
+339
 Y
 3
 102
 Width
 3
-90
+100
 Height
 3
 24
@@ -1503,7 +1503,7 @@ Name
 tt_long_term_service_agreement_cost
 X
 3
-438
+447
 Y
 3
 72
@@ -1529,7 +1529,7 @@ Name
 tt_other_maintenance_cost
 X
 3
-438
+447
 Y
 3
 432
@@ -1555,7 +1555,7 @@ Name
 tt_scheduled_maintenance_cost
 X
 3
-438
+447
 Y
 3
 102
@@ -1581,7 +1581,7 @@ Name
 tt_unscheduled_maintenance_cost
 X
 3
-438
+447
 Y
 3
 252
@@ -1607,13 +1607,13 @@ Name
 unscheduled_maintenance_contingency_cost
 X
 3
-429
+468
 Y
 3
 372
 Width
 3
-90
+100
 Height
 3
 24
@@ -1670,13 +1670,13 @@ Name
 unscheduled_maintenance_cost
 X
 3
-339
+342
 Y
 3
 252
 Width
 3
-90
+100
 Height
 3
 24
@@ -1733,13 +1733,13 @@ Name
 unscheduled_maintenance_cost_total
 X
 3
-339
+342
 Y
 3
 252
 Width
 3
-90
+100
 Height
 3
 24

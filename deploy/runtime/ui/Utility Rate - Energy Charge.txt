@@ -376,9 +376,13 @@ Electricity Rates - Energy Charge Rates
 DataMatrix
 
 0
-1198
+1273
 on_load{'Utility Rate - Energy Charge'} = define(){
- set_ec_schedule_inputs_copy();
+	set_ec_schedule_inputs_copy();
+};
+
+on_change{'ur_ec_tou_mat'} = define(){
+	set_ec_schedule_inputs_copy();
 };
 
 // copy of function from Utility Rate - Enable form

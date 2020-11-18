@@ -1,7 +1,7 @@
 User Defined Power Cycle
-1047
-1077
-34
+1009
+1072
+35
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 995
 Height
 3
-75
+126
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 318
 Y
 3
-264
+312
 Width
 3
 501
@@ -75,7 +75,7 @@ X
 15
 Y
 3
-246
+294
 Width
 3
 965
@@ -102,10 +102,10 @@ Name
 object 417
 X
 3
-18
+15
 Y
 3
-111
+159
 Width
 3
 965
@@ -135,13 +135,13 @@ X
 3
 Y
 3
-90
+138
 Width
 3
 995
 Height
 3
-978
+930
 Tool Tip
 5
 0
@@ -150,6 +150,54 @@ Caption
 86
 Performance as Function of HTF Temperature, HTF Mass Flow Rate and Ambient Temperature
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+24
+Y
+3
+27
+Width
+3
+954
+Height
+3
+45
+Tool Tip
+5
+0
+Caption
+5
+247
+To model a supercritical Carbon dioxide (sCO2) cycle, use the sCO2 Cycle Integration macro with the NREL sCO2 Power Cycle Python model. Click Macro under the Simulate button to show a list of macros. See Help or the macro instructions for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 Numeric
@@ -165,7 +213,7 @@ X
 180
 Y
 3
-318
+366
 Width
 3
 90
@@ -227,7 +275,7 @@ X
 855
 Y
 3
-318
+366
 Width
 3
 90
@@ -289,7 +337,7 @@ X
 855
 Y
 3
-156
+204
 Width
 3
 90
@@ -351,7 +399,7 @@ X
 855
 Y
 3
-342
+390
 Width
 3
 90
@@ -413,7 +461,7 @@ X
 855
 Y
 3
-180
+228
 Width
 3
 90
@@ -475,7 +523,7 @@ X
 855
 Y
 3
-366
+414
 Width
 3
 90
@@ -537,7 +585,7 @@ X
 855
 Y
 3
-294
+342
 Width
 3
 90
@@ -599,7 +647,7 @@ X
 855
 Y
 3
-132
+180
 Width
 3
 90
@@ -661,7 +709,7 @@ X
 186
 Y
 3
-156
+204
 Width
 3
 90
@@ -723,7 +771,7 @@ X
 180
 Y
 3
-342
+390
 Width
 3
 90
@@ -785,7 +833,7 @@ X
 186
 Y
 3
-180
+228
 Width
 3
 90
@@ -847,7 +895,7 @@ X
 180
 Y
 3
-366
+414
 Width
 3
 90
@@ -909,7 +957,7 @@ X
 180
 Y
 3
-294
+342
 Width
 3
 90
@@ -971,7 +1019,7 @@ X
 186
 Y
 3
-132
+180
 Width
 3
 90
@@ -1030,10 +1078,10 @@ Name
 ud_W_dot_cool_calc
 X
 3
-648
+645
 Y
 3
-51
+102
 Width
 3
 100
@@ -1095,7 +1143,7 @@ X
 243
 Y
 3
-264
+312
 Width
 3
 26
@@ -1124,10 +1172,10 @@ Name
 ud_f_W_dot_cool_des
 X
 3
-648
+645
 Y
 3
-27
+78
 Width
 3
 100
@@ -1186,10 +1234,10 @@ Name
 ud_ind_od
 X
 3
-180
+183
 Y
 3
-411
+453
 Width
 3
 480
@@ -1279,7 +1327,7 @@ X
 489
 Y
 3
-156
+204
 Width
 3
 90
@@ -1341,7 +1389,7 @@ X
 489
 Y
 3
-318
+366
 Width
 3
 90
@@ -1403,7 +1451,7 @@ X
 489
 Y
 3
-180
+228
 Width
 3
 90
@@ -1465,7 +1513,7 @@ X
 489
 Y
 3
-342
+390
 Width
 3
 90
@@ -1527,7 +1575,7 @@ X
 489
 Y
 3
-366
+414
 Width
 3
 90
@@ -1589,7 +1637,7 @@ X
 489
 Y
 3
-294
+342
 Width
 3
 90
@@ -1651,7 +1699,7 @@ X
 489
 Y
 3
-132
+180
 Width
 3
 90
@@ -1710,10 +1758,10 @@ Name
 ud_m_dot_water_cool_des
 X
 3
-234
+231
 Y
 3
-27
+78
 Width
 3
 100
@@ -1775,7 +1823,7 @@ X
 855
 Y
 3
-204
+252
 Width
 3
 90
@@ -1837,7 +1885,7 @@ X
 186
 Y
 3
-204
+252
 Width
 3
 90
@@ -1899,7 +1947,7 @@ X
 489
 Y
 3
-204
+252
 Width
 3
 90

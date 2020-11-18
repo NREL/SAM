@@ -1,6 +1,6 @@
 Marine Costs - Mooring
-797
-804
+918
+802
 65
 Label
 
@@ -11,13 +11,13 @@ Name
 0
 X
 3
-195
+132
 Y
 3
 63
 Width
 3
-123
+207
 Height
 3
 24
@@ -59,7 +59,7 @@ Name
 Ladders
 X
 3
-300
+348
 Y
 3
 363
@@ -113,7 +113,7 @@ Y
 9
 Width
 3
-780
+900
 Height
 3
 787
@@ -122,8 +122,8 @@ Tool Tip
 0
 Caption
 5
-43
-Mooring, Foundation, and Substructure Costs
+37
+Mooring, Foundation, and Substructure
 Bold
 2
 1
@@ -137,13 +137,13 @@ Name
 Personnel Access System
 X
 3
-216
+204
 Y
 3
 573
 Width
 3
-195
+264
 Height
 3
 24
@@ -185,13 +185,13 @@ Name
 anchors_and_piles_cost
 X
 3
-318
+339
 Y
 3
 93
 Width
 3
-90
+100
 Height
 3
 24
@@ -248,13 +248,13 @@ Name
 ancillary_marine_systems_cost
 X
 3
-318
+339
 Y
 3
 483
 Width
 3
-90
+100
 Height
 3
 24
@@ -311,13 +311,13 @@ Name
 ancillary_marine_systems_cost_total
 X
 3
-318
+339
 Y
 3
 483
 Width
 3
-90
+100
 Height
 3
 24
@@ -374,13 +374,13 @@ Name
 ballast_system_mooring_cost
 X
 3
-411
+468
 Y
 3
 603
 Width
 3
-90
+100
 Height
 3
 24
@@ -437,13 +437,13 @@ Name
 cathodic_protection_system_cost
 X
 3
-411
+468
 Y
 3
 543
 Width
 3
-90
+100
 Height
 3
 24
@@ -562,13 +562,13 @@ Name
 condition_monitoring_cost
 X
 3
-411
+468
 Y
 3
 633
 Width
 3
-90
+100
 Height
 3
 24
@@ -625,13 +625,13 @@ Name
 connecting_hardware_cost
 X
 3
-318
+339
 Y
 3
 123
 Width
 3
-90
+100
 Height
 3
 24
@@ -688,13 +688,13 @@ Name
 detailed_cost_choice_ancillary_marine_systems
 X
 3
-354
+375
 Y
 3
 513
 Width
 3
-162
+198
 Height
 3
 24
@@ -721,13 +721,13 @@ Name
 detailed_cost_choice_outfitting_structure
 X
 3
-366
+387
 Y
 3
 273
 Width
 3
-150
+192
 Height
 3
 24
@@ -754,13 +754,13 @@ Name
 integration_assembly_testing_checkout_cost
 X
 3
-318
+339
 Y
 3
 693
 Width
 3
-90
+100
 Height
 3
 24
@@ -817,13 +817,13 @@ Name
 ladders_cost
 X
 3
-420
+468
 Y
 3
 363
 Width
 3
-90
+100
 Height
 3
 24
@@ -880,13 +880,13 @@ Name
 level_5_total_prime
 X
 3
-318
+339
 Y
 3
-39
+36
 Width
 3
-99
+123
 Height
 3
 24
@@ -928,13 +928,13 @@ Name
 level_5_total_prime50
 X
 3
-417
+468
 Y
 3
-39
+36
 Width
 3
-126
+183
 Height
 3
 24
@@ -976,13 +976,13 @@ Name
 marine_coatings_cost
 X
 3
-420
+468
 Y
 3
 423
 Width
 3
-90
+100
 Height
 3
 24
@@ -1039,13 +1039,13 @@ Name
 messenger_lines_and_buoys_cost
 X
 3
-318
+339
 Y
 3
 183
 Width
 3
-90
+100
 Height
 3
 24
@@ -1102,13 +1102,13 @@ Name
 mooring_lines_cost
 X
 3
-318
+339
 Y
 3
 63
 Width
 3
-90
+100
 Height
 3
 24
@@ -1168,7 +1168,7 @@ X
 33
 Y
 3
-159
+42
 Width
 3
 90
@@ -1212,10 +1212,10 @@ Name
 mooring_override_label
 X
 3
-543
+693
 Y
 3
-51
+54
 Width
 3
 195
@@ -1260,13 +1260,13 @@ Name
 object 713
 X
 3
-156
+114
 Y
 3
 123
 Width
 3
-162
+225
 Height
 3
 24
@@ -1308,7 +1308,7 @@ Name
 object 72441
 X
 3
-210
+258
 Y
 3
 453
@@ -1356,7 +1356,7 @@ Name
 object 7244132
 X
 3
-141
+198
 Y
 3
 663
@@ -1404,7 +1404,7 @@ Name
 object 724413236
 X
 3
-234
+291
 Y
 3
 633
@@ -1452,7 +1452,7 @@ Name
 object 7244134
 X
 3
-237
+294
 Y
 3
 603
@@ -1500,7 +1500,7 @@ Name
 object 7244135
 X
 3
-294
+342
 Y
 3
 423
@@ -1548,7 +1548,7 @@ Name
 object 7244143
 X
 3
-297
+345
 Y
 3
 393
@@ -1596,13 +1596,13 @@ Name
 object 726
 X
 3
-216
+219
 Y
 3
 543
 Width
 3
-195
+249
 Height
 3
 24
@@ -1644,7 +1644,7 @@ Name
 object 72647
 X
 3
-228
+276
 Y
 3
 333
@@ -1692,13 +1692,13 @@ Name
 object 727
 X
 3
-51
+15
 Y
 3
 753
 Width
 3
-267
+324
 Height
 3
 24
@@ -1707,8 +1707,8 @@ Tool Tip
 0
 Caption
 5
-36
-Other mooring and substructure costs
+42
+Other mooring, found., and substruc. costs
 TextColour
 4
 0
@@ -1740,13 +1740,13 @@ Name
 object 72728
 X
 3
-186
+165
 Y
 3
 723
 Width
 3
-132
+174
 Height
 3
 24
@@ -1788,13 +1788,13 @@ Name
 object 72730
 X
 3
-45
+42
 Y
 3
 693
 Width
 3
-270
+297
 Height
 3
 24
@@ -1836,7 +1836,7 @@ Name
 object 72740
 X
 3
-132
+153
 Y
 3
 483
@@ -1884,13 +1884,13 @@ Name
 object 72751
 X
 3
-75
+48
 Y
 3
 243
 Width
 3
-243
+291
 Height
 3
 24
@@ -1932,7 +1932,7 @@ Name
 object 728
 X
 3
-129
+150
 Y
 3
 213
@@ -1980,13 +1980,13 @@ Name
 object 729
 X
 3
-132
+87
 Y
 3
 183
 Width
 3
-186
+252
 Height
 3
 24
@@ -2028,13 +2028,13 @@ Name
 object 73
 X
 3
-174
+126
 Y
 3
 93
 Width
 3
-144
+213
 Height
 3
 24
@@ -2076,13 +2076,13 @@ Name
 object 730
 X
 3
-129
+87
 Y
 3
 153
 Width
 3
-189
+252
 Height
 3
 24
@@ -2124,7 +2124,7 @@ Name
 object 731
 X
 3
-294
+342
 Y
 3
 303
@@ -2172,13 +2172,13 @@ Name
 other_ancillary_marine_system_cost
 X
 3
-411
+468
 Y
 3
 663
 Width
 3
-90
+100
 Height
 3
 24
@@ -2235,13 +2235,13 @@ Name
 other_mooring_cost
 X
 3
-318
+339
 Y
 3
 753
 Width
 3
-90
+100
 Height
 3
 24
@@ -2298,13 +2298,13 @@ Name
 other_outfitting_structure_cost
 X
 3
-420
+468
 Y
 3
 453
 Width
 3
-90
+100
 Height
 3
 24
@@ -2361,13 +2361,13 @@ Name
 outfitting_structure_cost
 X
 3
-318
+339
 Y
 3
 243
 Width
 3
-90
+100
 Height
 3
 24
@@ -2424,13 +2424,13 @@ Name
 outfitting_structure_cost_total
 X
 3
-318
+339
 Y
 3
 243
 Width
 3
-90
+100
 Height
 3
 24
@@ -2487,13 +2487,13 @@ Name
 personnel_access_system_mooring_cost
 X
 3
-411
+468
 Y
 3
 573
 Width
 3
-90
+100
 Height
 3
 24
@@ -2550,13 +2550,13 @@ Name
 railings_cost
 X
 3
-420
+468
 Y
 3
 393
 Width
 3
-90
+100
 Height
 3
 24
@@ -2613,13 +2613,13 @@ Name
 scour_protection_cost
 X
 3
-318
+339
 Y
 3
 213
 Width
 3
-90
+100
 Height
 3
 24
@@ -2676,13 +2676,13 @@ Name
 service_platforms_and_decks_cost
 X
 3
-420
+468
 Y
 3
 333
 Width
 3
-90
+100
 Height
 3
 24
@@ -2739,13 +2739,13 @@ Name
 subfoundation_or_bedding_cost
 X
 3
-318
+339
 Y
 3
 153
 Width
 3
-90
+100
 Height
 3
 24
@@ -2802,13 +2802,13 @@ Name
 transportation_cost
 X
 3
-318
+339
 Y
 3
 723
 Width
 3
-90
+100
 Height
 3
 24
@@ -2865,7 +2865,7 @@ Name
 tt_anchors_and_piles_cost
 X
 3
-417
+447
 Y
 3
 93
@@ -2891,7 +2891,7 @@ Name
 tt_ancillary_marine_systems_cost
 X
 3
-414
+447
 Y
 3
 483
@@ -2917,7 +2917,7 @@ Name
 tt_connecting_hardware_cost
 X
 3
-417
+447
 Y
 3
 123
@@ -2943,7 +2943,7 @@ Name
 tt_integration_assembly_testing_checkout_cost
 X
 3
-414
+447
 Y
 3
 693
@@ -2969,7 +2969,7 @@ Name
 tt_messenger_lines_and_buoys_cost
 X
 3
-417
+447
 Y
 3
 183
@@ -2995,7 +2995,7 @@ Name
 tt_mooring_lines_cost
 X
 3
-417
+447
 Y
 3
 63
@@ -3021,7 +3021,7 @@ Name
 tt_other_mooring_substructure_cost
 X
 3
-414
+447
 Y
 3
 753
@@ -3047,7 +3047,7 @@ Name
 tt_outfitting_structure_cost
 X
 3
-417
+447
 Y
 3
 243
@@ -3073,7 +3073,7 @@ Name
 tt_scour_protection_cost
 X
 3
-417
+447
 Y
 3
 213
@@ -3099,7 +3099,7 @@ Name
 tt_subfoundation_or_bedding_cost
 X
 3
-417
+447
 Y
 3
 153
@@ -3125,7 +3125,7 @@ Name
 tt_transportation_cost
 X
 3
-414
+447
 Y
 3
 723
@@ -3151,13 +3151,13 @@ Name
 vessel_landing_cost
 X
 3
-420
+468
 Y
 3
 303
 Width
 3
-90
+100
 Height
 3
 24
