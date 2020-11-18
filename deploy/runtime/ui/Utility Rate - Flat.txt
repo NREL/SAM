@@ -45,7 +45,7 @@ X
 9
 Y
 3
-465
+464
 Width
 3
 565
@@ -582,7 +582,7 @@ X
 519
 Y
 3
-351
+342
 Width
 3
 422
@@ -615,7 +615,7 @@ X
 519
 Y
 3
-300
+288
 Width
 3
 422
@@ -812,10 +812,10 @@ Name
 ur_nm_credit_month
 X
 3
-684
+714
 Y
 3
-267
+261
 Width
 3
 99
@@ -856,13 +856,13 @@ Name
 ur_nm_credit_rollover
 X
 3
-951
+834
 Y
 3
 234
 Width
 3
-225
+309
 Height
 3
 24
@@ -871,8 +871,8 @@ Tool Tip
 0
 Caption
 5
-29
-Apply credits to future bills
+49
+Roll over net excess compensation to future bills
 State
 2
 0
@@ -889,7 +889,7 @@ Name
 ur_nm_yearend_sell_rate
 X
 3
-831
+714
 Y
 3
 234
@@ -1032,7 +1032,7 @@ X
 714
 Y
 3
-381
+369
 Width
 3
 184
@@ -1069,7 +1069,7 @@ X
 714
 Y
 3
-327
+315
 Width
 3
 184
@@ -1211,7 +1211,7 @@ Numeric
 ur_nm_credit_month
 3
 1
-Month for credit rollover:
+Month for end of true-up period
  
 Electricity Rates - General
 47
@@ -1226,7 +1226,7 @@ Choice
 ur_nm_credit_rollover
 3
 1
-Apply credits to future bills
+Roll over net excess compensation to future bills
  
 Electricity Rates - General
 0
@@ -1240,7 +1240,7 @@ CheckBox
 ur_nm_yearend_sell_rate
 3
 1
-Sell rate for kWh credits remaining at end of specified month
+Compensation rate for net excess generation
 $/kWh
 Electricity Rates - General
 0
@@ -1295,7 +1295,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-7270
+7329
 on_load{'Utility Rate - Flat'} = define(){
 	set_battery_fom_inputs();
 	set_metering_billing_inputs();
@@ -1305,6 +1305,7 @@ on_load{'Utility Rate - Flat'} = define(){
 // set inputs on Utility Rate - Energy Charge form
 // based on values of inputs on Utility Rate - Flat form
 // NOTE: Copy any changes here to function on Utility Rate - Energy Charge form
+// so that on_change() for ur_ec_tou_mat updates correctly
 function set_ec_schedule_inputs()
 {	
 	eme = value('ur_metering_option');
