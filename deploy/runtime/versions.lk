@@ -81,15 +81,15 @@ version_upgrade{'2020.11.12'} = define() {
     
     // Use en_batt instead of cfg.tech to capture fuel cell configurations
     if (oldvalue('en_batt') == 1) {
+		message('The old Battery Storage page has been split into two new input pages: Battery Cell and System, and Battery Dispatch.');
         old_replacement_option = oldvalue('batt_replacement_schedule');
         max_replacements = max(old_replacement_option);
+        repl_msg = 'For the battery "Replace at specified schedule" option, "Battery bank replacement schedule (%/year)" replaces the two "Battery bank replacement schedule" and "Battery bank replacement percent" inputs to avoid inconsistencies between the two.';
         if (max_replacements > 1) {
-            message(max_replacements + ' replacements of the battery per year are no longer supported in ' + samver() + '.' +
-                    ' Using the "Replace at specified capacity" option may serve your needs, otherwise contact us at sam.support@nrel.gov for support.', 'warning');
+            message( repl_msg + ' You used the replacement schedule to specify up to ' + max_replacements + ' replacements per year, so you may need to adjust the replacement percentages in the new schedule. Please contact us at sam.support@nrel.gov if you need help with this.', 'warning');
         }
         else if (max_replacements > 0) {
-            message('Replace at specified schedule no longer uses the "Battery bank replacement schedule" option.' +
-                     ' All replacement information should be specified in "Battery bank replacement %"');
+            message(repl_msg);
         }
         
         fin = cfg.fin;
@@ -97,8 +97,7 @@ version_upgrade{'2020.11.12'} = define() {
         if (is_fom) {
             old_cycle_cost = oldvalue('batt_cycle_cost');
             value('batt_cycle_cost', [old_cycle_cost], 'Convert single value to array.');
-            message('You can now specify a different battery cycle cost for each year of the analysis period on the Battery Dispatch page.'
-                     + ' This input is now labelled "Cycle Degradation Penalty"', 'notice');
+            message('We have renamed "Battery cycle cost" to "Cycle degradation penalty" to make it clear that this is a dispatch parameter rather than a project cost. The cycle degradation penalty is now an array so you have the option to specify a different penalty for each year of the analysis period.', 'notice');
         }
     
     }
