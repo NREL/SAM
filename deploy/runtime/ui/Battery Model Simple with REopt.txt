@@ -682,7 +682,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2697
+2631
 on_load{'Battery Model Simple with REopt'} = define(){
 	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
 };
@@ -702,7 +702,7 @@ on_change{'call_reopt'} = define(){
 		msgbox("Weather file and load number of records must be the same.");
 		exit;
 	}
-	if (load_len != 8760 * 15 && load_len != 8760 * 2 && load_len != 8760) {
+	if (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) {
 		msgbox("Simulation timestep must be 15, 30 or 60 minutes.");
 		exit;
 	}
@@ -764,18 +764,17 @@ on_change{'call_reopt'} = define(){
 	value('batt_simple_dispatch', 2);
 
 	load = ${load};
-	ts_load = #load / #grid_charge;
 	
 	dispatch = alloc(#load);
-	for (i=0; i<8760; i++){
+	for (i=0; i<#grid_charge; i++){
 		if (batt_to_grid){
 			discharge = batt_to_grid[i] + batt_to_load[i];
 		} else{
 			discharge = batt_to_load[i];
 		}
 		charge = -pv_charge[i] - grid_charge[i];
-		for (j=0; j<ts_load; j++)
-			dispatch[i * ts_load + j] = discharge + charge;
+		
+		dispatch[i] = discharge + charge;
 	}
 
 	value('batt_custom_dispatch', dispatch);
