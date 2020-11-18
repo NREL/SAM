@@ -682,7 +682,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2372
+2697
 on_load{'Battery Model Simple with REopt'} = define(){
 	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
 };
@@ -695,6 +695,17 @@ on_change{'call_reopt'} = define(){
 	// reset size to 0 to remove battery costs from total_installed_cost
 	value("batt_simple_kw", 0);
 	value("batt_simple_kwh", 0); 
+	
+	wf_len = 60 / ${ui_step_minutes} * 8760;
+	load_len = #(${load});
+	if (wf_len != load_len) {
+		msgbox("Weather file and load number of records must be the same.");
+		exit;
+	}
+	if (load_len != 8760 * 15 && load_len != 8760 * 2 && load_len != 8760) {
+		msgbox("Simulation timestep must be 15, 30 or 60 minutes.");
+		exit;
+	}
 	
 	reopt = reopt_size_battery();
 	y = reopt.response;
