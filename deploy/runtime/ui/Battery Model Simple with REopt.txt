@@ -682,7 +682,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2631
+2723
 on_load{'Battery Model Simple with REopt'} = define(){
 	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
 };
@@ -706,6 +706,7 @@ on_change{'call_reopt'} = define(){
 		msgbox("Simulation timestep must be 15, 30 or 60 minutes.");
 		exit;
 	}
+	value('batt_custom_dispatch',${load}); //reset size of dispatch array to match load and wf
 	
 	reopt = reopt_size_battery();
 	y = reopt.response;

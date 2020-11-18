@@ -238,7 +238,7 @@ Battery REopt Optimization
 Numeric
 
 0
-2970
+3065
 on_change{'call_reopt'} = define()
 {
 	wf_len = 60 / ${ui_step_minutes} * 8760;
@@ -276,6 +276,8 @@ on_change{'call_reopt'} = define()
 	// reset size to 0 to remove battery costs from total_installed_cost
 	value("batt_bank_power", 0);
 	value("batt_bank_size", 0); 
+	
+	value('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf
 
 	reopt = reopt_size_battery();
 	
