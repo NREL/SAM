@@ -914,7 +914,7 @@ void Simulation::GetVariableLengths( std::vector<ArraySize> &sizes )
 		else if (it->second->Type() == VV_MATRIX)
 		{
 			it->second->Matrix(&tmp.n_rows, &tmp.n_cols);
-			if (tmp.n_rows > 1 && tmp.n_cols > 1 && std::find(sizes.begin(), sizes.end(), tmp) == sizes.end())
+			if (tmp.n_rows > 1 && tmp.n_cols > 0 && std::find(sizes.begin(), sizes.end(), tmp) == sizes.end())
 				sizes.push_back(tmp);
 		}
 	}
