@@ -1,7 +1,7 @@
 Battery Dispatch Behind the Meter
-1056
-499
-21
+1053
+474
+20
 GroupBox
 
 1
@@ -21,14 +21,14 @@ Width
 697
 Height
 3
-157
+133
 Tool Tip
 5
 0
 Caption
 5
-26
-Automated Dispatch Options
+58
+Cycle Degradation Penalty for Price Signal Forecast Option
 Bold
 2
 1
@@ -99,7 +99,7 @@ Width
 1042
 Height
 3
-484
+463
 Tool Tip
 5
 0
@@ -217,10 +217,10 @@ Name
 batt_cycle_cost
 X
 3
-591
+666
 Y
 3
-450
+429
 Width
 3
 114
@@ -259,10 +259,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-591
+666
 Y
 3
-423
+402
 Width
 3
 198
@@ -276,7 +276,7 @@ Items
 6
 2
 Calculate automatically
-Enter cost
+Enter penalty
 Selection
 3
 4294967295
@@ -296,20 +296,20 @@ X
 354
 Y
 3
-363
+345
 Width
 3
 678
 Height
 3
-69
+54
 Tool Tip
 5
 0
 Caption
 5
-313
-The dispatch options will cycle the battery if anticipated revenue exceeds the cycle degradation penalty. A higher penalty will decrease cycling, a lower penalty will increase cycling and may lead to additional battery replacements. See the "Battery Cell and System - Battery Lifetime" page for degradation modes.
+304
+The controller cycles the battery only if anticipated electricity savings exceed the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the  Battery Cell and System page.
 TextColour
 4
 0
@@ -329,45 +329,6 @@ AlignRight
 2
 0
 AlignTop
-2
-1
-Divider
-
-1
-10
-Name
-5
-22
-batt_cycle_costs_label
-X
-3
-354
-Y
-3
-345
-Width
-3
-633
-Height
-3
-22
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-25
-Cycle Degradation Penalty
-Bold
 2
 1
 CheckBox
@@ -822,11 +783,11 @@ SchedNumeric
 batt_cycle_cost_choice
 3
 1
-Cycle degradation penalty choice
+Cycle degradation penalty method
  
- 
-34
-Calculate automatically|Enter cost
+BatteryDispatch
+37
+Calculate automatically|Enter penalty
 0
 1
 1
@@ -883,7 +844,7 @@ Battery dispatch options
  
 BatteryDispatch
 155
-Peak shaving one-day look ahead|Peak shaving one-day look behind|Input grid power targets|Input battery power targets|Manual dispatch|Price Signal Forecast
+Peak shaving one-day look ahead|Peak shaving one-day look behind|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast
 3
 1
 1
