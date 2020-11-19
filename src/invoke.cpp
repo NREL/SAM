@@ -2085,7 +2085,7 @@ void fcall_nsrdbquery(lk::invoke_t &cxt)
 {
 	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
 	//Create the wind data object
-	NSRDBDialog dlgNSRDB(SamApp::Window(), "Choose Weather Files to Download from NSRDB");
+	NSRDBDialog dlgNSRDB(SamApp::Window(), "Advanced NSRDB Download");
 	dlgNSRDB.CenterOnParent();
 	int code = dlgNSRDB.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
