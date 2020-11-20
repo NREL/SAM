@@ -1486,7 +1486,7 @@ Tool Tip
 5
 0
 
-21
+22
 inv_cec_date
 3
 4
@@ -1498,6 +1498,19 @@ PV Inverter (CEC Database)
 1
 4
 0
+Default
+inv_cec_hybrid
+3
+4
+CEC hybrid
+ 
+PV Inverter (CEC Database)
+0
+0
+1
+4
+1
+N
 Default
 inv_cec_name
 3
