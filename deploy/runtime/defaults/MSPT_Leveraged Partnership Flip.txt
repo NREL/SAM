@@ -5,7 +5,7 @@ A_sf_UI
 1
 1
 1
-1.26905e+06
+1269050
 CT
 1
 1
@@ -994,7 +994,7 @@ csp.pt.cost.heliostats_m2
 1
 1
 1
-1.26905e+06
+1269050
 csp.pt.cost.installed_per_capacity
 1
 1
@@ -1084,7 +1084,7 @@ csp.pt.cost.site_improvements_m2
 1
 1
 1
-1.26905e+06
+1269050
 csp.pt.cost.storage
 1
 1
@@ -2116,7 +2116,7 @@ helio_area_tot
 1
 1
 1
-1.26905e+06
+1269050
 helio_height
 1
 1
@@ -11408,7 +11408,7 @@ itc_fed_percent
 1
 1
 1
-30
+22
 itc_fed_percent_deprbas_fed
 1
 1
