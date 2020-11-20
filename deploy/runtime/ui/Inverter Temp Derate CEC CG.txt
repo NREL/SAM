@@ -42,10 +42,10 @@ Name
 btn_update_cec_cg_plot
 X
 3
-186
+33
 Y
 3
-270
+267
 Width
 3
 135
@@ -72,16 +72,16 @@ Name
 inv_derate_label
 X
 3
-327
+180
 Y
 3
-270
+267
 Width
 3
-186
+270
 Height
 3
-39
+30
 Tool Tip
 5
 0

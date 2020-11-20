@@ -42,7 +42,7 @@ Name
 btn_update_plc_plot
 X
 3
-123
+30
 Y
 3
 270
@@ -72,16 +72,16 @@ Name
 inv_derate_label
 X
 3
-264
+177
 Y
 3
 264
 Width
 3
-123
+201
 Height
 3
-57
+51
 Tool Tip
 5
 0
