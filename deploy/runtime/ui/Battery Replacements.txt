@@ -42,10 +42,10 @@ Name
 batt_replacement_capacity
 X
 3
-585
+624
 Y
 3
-45
+39
 Width
 3
 90
@@ -145,10 +145,10 @@ Name
 batt_replacement_schedule_percent
 X
 3
-585
+624
 Y
 3
-75
+69
 Width
 3
 90
