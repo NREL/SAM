@@ -1,6 +1,6 @@
 Inverter Datasheet
-788
-524
+779
+469
 29
 GroupBox
 
@@ -45,7 +45,7 @@ X
 12
 Y
 3
-441
+399
 Width
 3
 764
@@ -105,7 +105,7 @@ X
 12
 Y
 3
-267
+270
 Width
 3
 764
@@ -135,7 +135,7 @@ X
 402
 Y
 3
-288
+279
 Width
 3
 131
@@ -375,7 +375,7 @@ X
 183
 Y
 3
-465
+423
 Width
 3
 153
@@ -405,7 +405,7 @@ X
 24
 Y
 3
-465
+423
 Width
 3
 153
@@ -497,7 +497,7 @@ X
 378
 Y
 3
-465
+423
 Width
 3
 386
@@ -1077,7 +1077,7 @@ X
 264
 Y
 3
-333
+324
 Width
 3
 100
@@ -1139,7 +1139,7 @@ X
 402
 Y
 3
-333
+324
 Width
 3
 100
@@ -1201,7 +1201,7 @@ X
 264
 Y
 3
-309
+300
 Width
 3
 100
@@ -1263,7 +1263,7 @@ X
 402
 Y
 3
-309
+300
 Width
 3
 100
@@ -1446,27 +1446,27 @@ Name
 object 7
 X
 3
-12
+15
 Y
 3
-396
+354
 Width
 3
-756
+528
 Height
 3
-45
+36
 Tool Tip
 5
 0
 Caption
 5
-141
-Note: If you are modeling a system with microinverters or DC power optimizers, see the "Losses" page to adjust the system losses accordingly.
+133
+If you are modeling a system with microinverters or DC power optimizers, see the Losses page to adjust the system losses accordingly.
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -1507,7 +1507,7 @@ Inverter data filename
  
 PV Inverter (Datasheet)
 0
-1
+9
 1
 4
 0

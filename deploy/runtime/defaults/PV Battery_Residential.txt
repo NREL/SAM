@@ -2570,8 +2570,7 @@ inv_cec_cg_eff_euro
 inv_cec_cg_filename
 1
 4
-9
-<invalid>
+0
 inv_cec_cg_idcmax
 1
 1

@@ -1,6 +1,6 @@
 Inverter CEC Coefficient Generator
-1268
-978
+1265
+974
 28
 GroupBox
 
@@ -1531,11 +1531,10 @@ Inverter data filename
  
 PV Inverter (CEC Coefficient Generator)
 0
-0
+9
 1
 4
-9
-<invalid>
+0
 TextEntry
 inv_cec_cg_idcmax
 3
