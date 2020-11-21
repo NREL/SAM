@@ -62,6 +62,110 @@
 
 -->
 
+<h1 id="2020-11-29">Version 2020.11.29, SSC Version xxx: November 29, 2020</h1>
+
+<p>This version consists of several improvements and updates. Highlights include:</p>
+
+<ul>
+<li>Improved battery dispatch for both front-of-meter and behind-the-meter battery storage applications.</li>
+<li>Improve electricity bill calculations for distributed behind-the-meter financial models.</li>
+<li>Update photovoltaic module and inverter libraries.</li>
+<li>Integrate NREL LandBOSSE wind balance-of-system (BOS) cost model into SAM.</a>
+<li>Update default values to better align with <a href="https://atb.nrel.gov/">NREL Annual Technology Baseline (ATB).</a></li>
+<li>Update solar resource data downloads from the NSRDB to access newest datasets for subhourly data, typical year (TMY, TGY, TDY) data, subhourly data, and data for Europe, Africa and Asia.</li>
+</ul>
+
+<p>In the following list of changes, numbers in parentheses are links to detailed descriptions and code on the SAM or SSC GitHub repositories.</p>
+
+<h2>General</h2>
+
+<ul>
+<li>Fix issue with scroll bars disappearing when long pages are loaded in the user interface. (<a href="https://github.com/NREL/SAM/issues/405">405</a>)</li>
+<li>Fix problem opening files with parametric simulations that caused SAM to crash with "Could not inflate stream" error. (<a href="https://github.com/NREL/SAM/issues/393">393</a>)</li>
+<li>Fix problem with Welcome page when SAM starts without an internet connection. (<a href="https://github.com/NREL/SAM/issues/376">376</a>)</li>
+<li>Update default ITC and PTC tax credits to reflect current market conditions. (<a href="https://github.com/NREL/SAM/pull/450">450</a>)</li>
+<li>Update sun angle calculations for all solar models to use NREL Solar Position Algorithm (SPA). (<a href="https://github.com/NREL/ssc/issues/279">279</a>)</li>
+</ul>
+
+<h2>Detailed Photovoltaic</h2>
+
+<ul>
+<li>Add module mass input for transient thermal model that adjusts cell temperature calculation for simulation time steps of less than 20 minutes, and improve user interface and documentation to make it clear how the model works. (<a href="https://github.com/NREL/SAM/issues/380">380</a>)</li>
+<li>Rename Array DC power variable to Inverter DC input power to avoid confusion about whether value includes DC losses. (<a href="https://github.com/NREL/SAM/issues/383">383</a>)</li> 
+<li>Improve inverter temperature derate curve inputs, and normalize efficiency table to Pmax instead of efficiency. (<a href="https://github.com/NREL/SAM/pull/412">412</a>)</li>
+<li>Fix module coefficient generator for CEC Module Model with User Entered Specifications option to work with newer high-current modules. (<a href="https://github.com/NREL/ssc/issues/129">129</a>)</li>
+<li>Improve warning messages for bifacial modules with one-axis trackers and non-zero tilt. (<a href="https://github.com/NREL/ssc/issues/364">364</a>)</li>
+</ul>
+
+<h2>Battery Storage</h2>
+
+<ul>
+<li>Add new behind-the-meter (BTM) dispatch option that reponds to electricity rates and cycle degradation penalty.</li>
+<li>Add option so battery cost can be specified in $/kWh, $/kW, or both</li>
+<li>Simplify battery replacement cost option so annual replacement can be specified with a single input array instead of two.</li>
+<li>Rename Array DC power variable to Inverter DC input power to avoid confusion about whether value includes power from battery for DC-connected batteries. (<a href="https://github.com/NREL/SAM/issues/383">383</a>)</li> 
+<li>Fix issue with REopt for PVWatts for rates with no max usage units that caused a user interface error. (<a href="https://github.com/NREL/SAM/issues/388">388</a>)</li>
+<li>Fix but with battery sizing when using AC power values. (<a href="https://github.com/NREL/SAM/issues/375">375</a>)</li>
+<li>Update default parameters for battery chemistries. (<a href="https://github.com/NREL/SAM/issues/323">323</a>)</li>
+<li>Add a PDF report template for battery configurations. (<a href="https://github.com/NREL/SAM/issues/302">302</a>)</li>
+<li>Fix an issue that allowed battery capacity percent to exceed 100% when the calendar degradation model option was set to None. (<a href="https://github.com/NREL/ssc/issues/478">478</a>)</li>
+<li>Fix issue with battery thermal model for subhourly simulations. (<a href="https://github.com/NREL/ssc/issues/472">472</a>)</li>
+<li>Fix an issue that prevented battery ancillary losses from being correctly applied. (<a href="https://github.com/NREL/ssc/issues/379">379</a>)</li>
+<li>Fix issue with battery current and state of charge calculation. (<a href="https://github.com/NREL/ssc/issues/445">445</a>)</li>
+</ul>
+
+<h2>Retail Electricity Rates and Bill Calculations</h2>
+
+<ul>
+<li>Fix issues with display of electricity bill data for demand charges, net billing credits, and net metering credits. (<a href="https://github.com/NREL/SAM/issues/442">442</a>, <a href="https://github.com/NREL/SAM/issues/372">372</a>)</li>
+<li>Update electricity rate downloads from Utility Rate Database to use latest API versions, and fix broken downloads due to using http instead of https. (<a href="https://github.com/NREL/SAM/issues/379".379</a>, <a href="https://github.com/NREL/SAM/issues/361">361</a>, <a href="https://github.com/NREL/SAM/issues/379">379</a>)</li>
+<li>Remove 500 rate limit for that caused some rates to be missing for utilties with more than 500 rates. (<a href="https://github.com/NREL/SAM/issues/361">361</a>)</li>
+<li>Fix display of net billing dollar amounts in monthly results table. Bill calculations were correct, but table was not displaying correct values. (<a href="https://github.com/NREL/SAM/issues/372">372</a>)</li>
+<li>Add option to choose month for end of net metering true-up period. (<a href="https://github.com/NREL/SAM/issues/16">16</a>)</li>
+<li>Apply net excess generation credit at end of true-up period to January when true-up period ends in December. (<a href="https://github.com/NREL/SAM/issues/16">16</a>)</li>
+<li>Improve metering option variable labels.</li>
+</ul>
+
+<h2>Financial Models</h2>
+
+<ul>
+<li>Improve reporting of energy quantities in PPA Single Owner project cash flow to separate gross and net annual electricity generation so the effect of self-consumption for inverter nighttime consumption, battery charging, and concentrating solar power parasitic loads is clear. (<a href="https://github.com/NREL/SAM/issues/370">370</a>)</li>
+<li>Fix labels for incentives inputs so they are visible in the inputs browser and other variable lists to facilitate identifying variables for SDK/PySAM programmers. (<a href="https://github.com/NREL/SAM/issues/403">403</a>)</li>
+</ul>
+
+<h2>Marine Energy</h2>
+
+<ul>
+<li>Add graphs to Summary tab on Results page. (<a href="https://github.com/NREL/SAM/issues/390">390</a>)</li>
+<li>Add detailed cost break down option for specifying Wave and Tidal energy capital costs. (<a href="https://github.com/NREL/SAM/issues/389">389</a>)</li>
+</ul>
+
+<h2>Wind Power</h2>
+
+<ul>
+<li>Implement NREL LandBOSSE wind balance-of-system (BOS) cost model as an option for calculating the BOS capital cost on the System Costs page for the Wind Power model. (<a href="https://github.com/NREL/SAM/issues/270">270</a>)</li>
+<li>Fix issue with wind resource data downloads from WIND Toolkit API. (<a href="https://github.com/NREL/SAM/issues/353">353</a>, <a href="https://github.com/NREL/SAM/issues/216">216</a>)
+</ul>
+
+<h2>Concentrating Solar Power (CSP)</h2>
+
+<ul>
+<li>For molten salt power tower model, replace power cycle Supercritical Carbon Dioxide (sCO2) option with a macro and external Python script, see Power Cycle input page and Help for details. (<a href="https://github.com/NREL/ssc/issues/454">454</a>)</li>
+<li>Remove Dish Stirling and Direct Steam Power Tower models from SAM. These models are available in the SAM 2020.2.29 legacy version, which is available for download from the <a href="https://sam.nrel.gov/download">SAM website</a>. (<a href="https://github.com/NREL/SAM/issues/363">363</a>)</li>
+<li>For molten salt power tower and physical trough models, display better information about air-cooled condenser model paramters. (<a href="https://github.com/NREL/SAM/issues/366">366</a>)</li>
+<li>Remove custom HTF option from Empirical Trough model to avoid errors. (<a href="https://github.com/NREL/SAM/issues/316">316</a>)</li>
+<li>Fix issue for the Linear Fresnel Molten Salt model with the solar field option not correctly enabling and disabling the solar multiple and field area inputs. (<a href="https://github.com/NREL/SAM/issues/201">201</a>)</li>
+<li>Fix a bug in the Generic CSP model that allowed the cycle to consume more power than available in TES when the solar field output was low. (<a href="https://github.com/NREL/ssc/issues/477">477</a>)</li>
+<li>Fix a bug with the Generic CSP model that ignored solar field area at design, and affected the calculation of system power generated. (<a href="https://github.com/NREL/ssc/issues/476">476</a>)</li>
+</ul>
+
+<h2>Solar Resource Data</h2>
+
+<ul>
+<li>Update weather file downloads to work with latest NSRDB APIs so SAM can download from the new 5-minute datasets and data for Europe, Africa, and Asia from the new MSG-IODC datasets, and typical year data as TMY, TGY, or TDY from the new TMY datasets. (<a href="https://github.com/NREL/SAM/issues/271">271</a>)</li>
+<li>Fix problems reading weather files from some sources that are based on minute values of 60 for the top of the hour instead of zero. (<a href="https://github.com/NREL/SAM/issues/365">365</a>)</li>
+</ul>
+
 <h1 id="2020-2-29-r3">Version 2020.2.29 Revision 3, SSC Version 242: July 31, 2020</h1>
 
 <p>This is an update to SAM 2020.2.29 Revision 2 that fixes the issues listed beow. For detailed descriptions of issues fixed for this update, see <a href="https://github.com/NREL/SAM/milestone/12">GitHub Issues for SAM 2020.2.29 Patch 3</a> and for <a href="https://github.com/NREL/ssc/issues/435">SSC 2020 Patch 3</a>.</p>
