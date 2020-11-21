@@ -1,7 +1,7 @@
 Inverter CEC Database
 992
 626
-28
+29
 TextEntry
 
 1
@@ -12,13 +12,57 @@ Name
 inv_cec_date
 X
 3
-843
+882
 Y
 3
 591
 Width
 3
 100
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+11
+Name
+5
+14
+inv_cec_hybrid
+X
+3
+480
+Y
+3
+591
+Width
+3
+90
 Height
 3
 24
@@ -62,7 +106,7 @@ Y
 591
 Width
 3
-399
+276
 Height
 3
 24
@@ -100,13 +144,13 @@ Name
 inv_cec_type
 X
 3
-567
+648
 Y
 3
 591
 Width
 3
-198
+156
 Height
 3
 24
@@ -659,8 +703,8 @@ Library
 CEC Inverters
 Fields
 5
-94
-Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax,cec_type,cec_date
+105
+Name,Paco,Pdco,Pso,Pnt,Vac,Vdcmax,Vdco,Mppt_high,Mppt_low,C0,C1,C2,C3,Idcmax,cec_hybrid,cec_type,cec_date
 Numeric
 
 1
@@ -1506,11 +1550,10 @@ CEC hybrid
  
 PV Inverter (CEC Database)
 0
-0
-1
 4
 1
-N
+4
+0
 Default
 inv_cec_name
 3
@@ -1522,8 +1565,7 @@ PV Inverter (CEC Database)
 4
 1
 4
-2
-''
+0
 Default
 inv_cec_type
 3
