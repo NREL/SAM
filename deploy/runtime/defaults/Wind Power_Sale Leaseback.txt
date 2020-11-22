@@ -3487,7 +3487,7 @@ ptc_fed_amount
 2
 1
 1
-0.022
+0.015
 ptc_fed_escal
 1
 1

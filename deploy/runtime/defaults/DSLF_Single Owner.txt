@@ -1211,7 +1211,7 @@ csp.lf.cost.plm.total
 1
 1
 1
-3.47641e+06
+3476410
 csp.lf.cost.power_plant
 1
 1
@@ -3781,7 +3781,7 @@ itc_fed_percent
 1
 1
 1
-30
+22
 itc_fed_percent_deprbas_fed
 1
 1

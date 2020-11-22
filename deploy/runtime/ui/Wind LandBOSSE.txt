@@ -1,7 +1,7 @@
 Wind LandBOSSE
-875
-1562
-85
+823
+1553
+88
 Numeric
 
 1
@@ -74,13 +74,13 @@ Name
 btn_bos_apply
 X
 3
-252
+15
 Y
 3
-330
+393
 Width
 3
-147
+162
 Height
 3
 24
@@ -93,7 +93,7 @@ Caption
 Apply BOS Estimate
 TabOrder
 3
-4294967295
+9
 Button
 
 1
@@ -104,13 +104,13 @@ Name
 btn_bos_run
 X
 3
-252
+15
 Y
 3
-303
+315
 Width
 3
-147
+162
 Height
 3
 24
@@ -123,7 +123,7 @@ Caption
 Calculate BOS
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -444,10 +444,10 @@ Name
 depth
 X
 3
-282
+285
 Y
 3
-186
+180
 Width
 3
 90
@@ -495,7 +495,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -692,10 +692,10 @@ Name
 distance_to_interconnect_mi
 X
 3
-282
+285
 Y
 3
-159
+153
 Width
 3
 90
@@ -743,7 +743,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 CheckBox
 
 1
@@ -757,10 +757,10 @@ X
 33
 Y
 3
-57
+66
 Width
 3
-372
+321
 Height
 3
 24
@@ -776,7 +776,7 @@ State
 0
 TabOrder
 3
-4294967295
+1
 Numeric
 
 1
@@ -1459,6 +1459,36 @@ BackColour
 TabOrder
 3
 4294967295
+GroupBox
+
+1
+8
+Name
+5
+13
+grp_landbosse
+X
+3
+9
+Y
+3
+6
+Width
+3
+812
+Height
+3
+90
+Tool Tip
+5
+0
+Caption
+5
+22
+Enable LandBOSSE Model
+Bold
+2
+1
 Numeric
 
 1
@@ -1469,10 +1499,10 @@ Name
 gust_velocity_m_per_s
 X
 3
-282
+285
 Y
 3
-270
+264
 Width
 3
 90
@@ -1520,7 +1550,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Numeric
 
 1
@@ -1531,10 +1561,10 @@ Name
 hub_height
 X
 3
-624
+627
 Y
 3
-240
+234
 Width
 3
 90
@@ -1656,10 +1686,10 @@ Name
 interconnect_voltage_kV
 X
 3
-282
+285
 Y
 3
-132
+126
 Width
 3
 90
@@ -1707,7 +1737,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -1718,10 +1748,10 @@ Name
 labor_cost_multiplier
 X
 3
-282
+285
 Y
 3
-243
+237
 Width
 3
 90
@@ -1769,7 +1799,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+6
 Numeric
 
 1
@@ -1842,10 +1872,10 @@ Name
 num_turbines
 X
 3
-624
+627
 Y
 3
-132
+126
 Width
 3
 90
@@ -1895,40 +1925,6 @@ BackColour
 TabOrder
 3
 4294967295
-Hyperlink
-
-1
-9
-Name
-5
-9
-object 14
-X
-3
-6
-Y
-3
-35
-Width
-3
-150
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-18
-Eberle et al. 2019
-URL
-5
-44
-https://www.nrel.gov/docs/fy19osti/72201.pdf
-TabOrder
-3
-4294967295
 Divider
 
 1
@@ -1939,13 +1935,13 @@ Name
 object 22
 X
 3
-39
+36
 Y
 3
 1422
 Width
 3
-795
+771
 Height
 3
 16
@@ -1984,7 +1980,7 @@ Y
 1203
 Width
 3
-795
+771
 Height
 3
 16
@@ -2023,7 +2019,7 @@ Y
 1131
 Width
 3
-795
+771
 Height
 3
 16
@@ -2062,7 +2058,7 @@ Y
 939
 Width
 3
-795
+771
 Height
 3
 16
@@ -2101,7 +2097,7 @@ Y
 864
 Width
 3
-795
+771
 Height
 3
 16
@@ -2140,7 +2136,7 @@ Y
 726
 Width
 3
-795
+771
 Height
 3
 16
@@ -2179,7 +2175,7 @@ Y
 591
 Width
 3
-795
+771
 Height
 3
 16
@@ -2218,7 +2214,7 @@ Y
 456
 Width
 3
-795
+771
 Height
 3
 16
@@ -2251,7 +2247,7 @@ Name
 object 2271
 X
 3
-480
+453
 Y
 3
 108
@@ -2286,6 +2282,36 @@ GroupBox
 8
 Name
 5
+8
+object 4
+X
+3
+9
+Y
+3
+348
+Width
+3
+812
+Height
+3
+87
+Tool Tip
+5
+0
+Caption
+5
+31
+Balance of System Model Results
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
 10
 object 425
 X
@@ -2293,13 +2319,13 @@ X
 6
 Y
 3
-369
+438
 Width
 3
-861
+812
 Height
 3
-1179
+1110
 Tool Tip
 5
 0
@@ -2320,16 +2346,16 @@ Name
 object 42573
 X
 3
-6
+9
 Y
 3
-90
+99
 Width
 3
-861
+812
 Height
 3
-279
+246
 Tool Tip
 5
 0
@@ -2376,17 +2402,65 @@ Label
 13
 Name
 5
+8
+object 7
+X
+3
+360
+Y
+3
+66
+Width
+3
+450
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+59
+The LandBOSSE model may take a few moments to load and run.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 9
 object 73
 X
 3
-6
+21
 Y
 3
-6
+24
 Width
 3
-861
+792
 Height
 3
 39
@@ -2395,12 +2469,12 @@ Tool Tip
 0
 Caption
 5
-258
-When checkbox is enabled, balance of system (BOS) costs are calculated using a subset of inputs from the Land-based Balance-of-System Systems Engineering model (LandBOSSE). Please refer to the following for details about how the model calculates these costs:
+267
+The first time you enable the NREL Land-Based Balance of System (LandBOSSE) cost model, SAM installs the model, which may take a few minutes. Once it is installed, enable the model to calculate BOS costs based on the model inputs. See Help for details and references.
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -2428,27 +2502,27 @@ Name
 object 732
 X
 3
-405
+180
 Y
 3
-336
+315
 Width
 3
-456
+636
 Height
 3
-33
+24
 Tool Tip
 5
 0
 Caption
 5
-79
-Click to apply to the BOS Cost per kW input in the Capital Costs section above.
+75
+Calculate BOS costs based on the inputs you entered. See below for results.
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -2465,7 +2539,55 @@ AlignRight
 0
 AlignTop
 2
+0
+Label
+
 1
+13
+Name
+5
+10
+object 748
+X
+3
+180
+Y
+3
+393
+Width
+3
+636
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+75
+Replace SAM balance of system cost input with estimate from BOS cost model.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -2538,10 +2660,10 @@ Name
 rated_thrust_N
 X
 3
-282
+285
 Y
 3
-213
+207
 Width
 3
 90
@@ -2589,7 +2711,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -2600,10 +2722,10 @@ Name
 rotor_diameter
 X
 3
-624
+627
 Y
 3
-267
+261
 Width
 3
 90
@@ -2663,10 +2785,10 @@ Name
 row_spacing_rotor_diameters
 X
 3
-624
+627
 Y
 3
-186
+180
 Width
 3
 90
@@ -3036,10 +3158,10 @@ Name
 total_bos_cost
 X
 3
-282
+291
 Y
 3
-414
+366
 Width
 3
 90
@@ -3098,10 +3220,10 @@ Name
 total_bos_cost_per_capacity
 X
 3
-624
+633
 Y
 3
-414
+366
 Width
 3
 90
@@ -4648,10 +4770,10 @@ Name
 turbine_rating_MW
 X
 3
-624
+627
 Y
 3
-213
+207
 Width
 3
 90
@@ -4711,10 +4833,10 @@ Name
 turbine_spacing_rotor_diameters
 X
 3
-624
+627
 Y
 3
-159
+153
 Width
 3
 90
@@ -4774,10 +4896,10 @@ Name
 wind_shear_exponent
 X
 3
-624
+627
 Y
 3
-294
+288
 Width
 3
 90
@@ -4916,7 +5038,7 @@ Default
 depth
 3
 1
-Turbine Foundation Depth
+Turbine foundation depth
  m
 Wind LandBOSSE
 0
@@ -4972,7 +5094,7 @@ Default
 distance_to_interconnect_mi
 3
 1
-Distance to Interconnect
+Distance to interconnect
 miles
 Wind LandBOSSE
 0
@@ -4986,11 +5108,11 @@ Numeric
 en_landbosse
 3
 1
- 
+Enable LandBOSSE model
  
 Wind LandBOSSE
 0
-2
+3
 1
 1
 1
