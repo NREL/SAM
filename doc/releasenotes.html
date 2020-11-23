@@ -105,7 +105,7 @@
 <li>Simplify battery replacement cost option so annual replacement can be specified with a single input array instead of two.</li>
 <li>Rename Array DC power variable to Inverter DC input power to avoid confusion about whether value includes power from battery for DC-connected batteries. (<a href="https://github.com/NREL/SAM/issues/383">383</a>)</li> 
 <li>Fix issue with REopt for PVWatts for rates with no max usage units that caused a user interface error. (<a href="https://github.com/NREL/SAM/issues/388">388</a>)</li>
-<li>Fix but with battery sizing when using AC power values. (<a href="https://github.com/NREL/SAM/issues/375">375</a>)</li>
+<li>Fix bug with battery sizing when using AC power values. (<a href="https://github.com/NREL/SAM/issues/375">375</a>)</li>
 <li>Update default parameters for battery chemistries. (<a href="https://github.com/NREL/SAM/issues/323">323</a>)</li>
 <li>Add a PDF report template for battery configurations. (<a href="https://github.com/NREL/SAM/issues/302">302</a>)</li>
 <li>Fix an issue that allowed battery capacity percent to exceed 100% when the calendar degradation model option was set to None. (<a href="https://github.com/NREL/ssc/issues/478">478</a>)</li>
@@ -118,7 +118,7 @@
 
 <ul>
 <li>Fix issues with display of electricity bill data for demand charges, net billing credits, and net metering credits. (<a href="https://github.com/NREL/SAM/issues/442">442</a>, <a href="https://github.com/NREL/SAM/issues/372">372</a>)</li>
-<li>Update electricity rate downloads from Utility Rate Database to use latest API versions, and fix broken downloads due to using http instead of https. (<a href="https://github.com/NREL/SAM/issues/379".379</a>, <a href="https://github.com/NREL/SAM/issues/361">361</a>, <a href="https://github.com/NREL/SAM/issues/379">379</a>)</li>
+<li>Update electricity rate downloads from Utility Rate Database to use latest API versions, and fix broken downloads due to using http instead of https. (<a href="https://github.com/NREL/SAM/issues/361">361</a>, <a href="https://github.com/NREL/SAM/issues/379">379</a>)</li>
 <li>Remove 500 rate limit for that caused some rates to be missing for utilties with more than 500 rates. (<a href="https://github.com/NREL/SAM/issues/361">361</a>)</li>
 <li>Fix display of net billing dollar amounts in monthly results table. Bill calculations were correct, but table was not displaying correct values. (<a href="https://github.com/NREL/SAM/issues/372">372</a>)</li>
 <li>Add option to choose month for end of net metering true-up period. (<a href="https://github.com/NREL/SAM/issues/16">16</a>)</li>
