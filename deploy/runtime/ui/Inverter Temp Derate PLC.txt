@@ -72,16 +72,16 @@ Name
 inv_derate_label
 X
 3
-177
+171
 Y
 3
-264
+261
 Width
 3
-201
+207
 Height
 3
-51
+60
 Tool Tip
 5
 0

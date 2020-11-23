@@ -42,13 +42,13 @@ Name
 Label1
 X
 3
-372
+354
 Y
 3
 87
 Width
 3
-479
+497
 Height
 3
 41
@@ -487,16 +487,16 @@ Name
 object 7
 X
 3
-372
+354
 Y
 3
-165
+168
 Width
 3
-479
+497
 Height
 3
-89
+98
 Tool Tip
 5
 0
@@ -583,16 +583,16 @@ Name
 object 72
 X
 3
-372
+354
 Y
 3
 129
 Width
 3
-479
+497
 Height
 3
-34
+37
 Tool Tip
 5
 0
@@ -857,13 +857,13 @@ Name
 wacc_message
 X
 3
-372
+354
 Y
 3
-255
+267
 Width
 3
-479
+497
 Height
 3
 42

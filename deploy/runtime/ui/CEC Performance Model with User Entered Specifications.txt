@@ -1,6 +1,6 @@
 CEC Performance Model with User Entered Specifications
 1163
-859
+877
 52
 Numeric
 
@@ -176,7 +176,7 @@ Y
 78
 Width
 3
-100
+110
 Height
 3
 21
@@ -582,7 +582,7 @@ Y
 54
 Width
 3
-100
+110
 Height
 3
 21
@@ -617,7 +617,7 @@ X
 255
 Y
 3
-816
+837
 Width
 3
 896
@@ -1550,7 +1550,7 @@ Y
 102
 Width
 3
-100
+110
 Height
 3
 21
@@ -1606,7 +1606,7 @@ Name
 6par_transient_thermal_model_unit_mass
 X
 3
-660
+699
 Y
 3
 753
@@ -1855,7 +1855,7 @@ X
 9
 Y
 3
-795
+816
 Width
 3
 1151
@@ -2005,7 +2005,7 @@ X
 138
 Y
 3
-816
+837
 Width
 3
 111
@@ -2035,7 +2035,7 @@ X
 24
 Y
 3
-816
+837
 Width
 3
 111
@@ -2068,10 +2068,10 @@ Y
 438
 Width
 3
-420
+441
 Height
 3
-24
+36
 Tool Tip
 5
 0
@@ -2101,7 +2101,7 @@ Width
 533
 Height
 3
-114
+138
 Tool Tip
 5
 0
@@ -2227,7 +2227,7 @@ Width
 609
 Height
 3
-75
+96
 Tool Tip
 5
 0
@@ -2287,7 +2287,7 @@ Width
 516
 Height
 3
-36
+48
 Tool Tip
 5
 0
@@ -2422,16 +2422,16 @@ Name
 transient_thermal_model_message
 X
 3
-807
+843
 Y
 3
-738
+732
 Width
 3
-348
+312
 Height
 3
-48
+78
 Tool Tip
 5
 0
