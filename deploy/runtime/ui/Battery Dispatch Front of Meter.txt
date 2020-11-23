@@ -1340,14 +1340,14 @@ equations{'ui_batt_is_dc'}=define()
 	return !${batt_ac_or_dc};
 };
 
-7632
+7630
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
 	toggle_dispatch_fom();
 	enable_charge_from_clip();
 	//on_change{'batt_dispatch_choice'};
-28	//on_change{'batt_select_weather_file_forecast'};
+	//on_change{'batt_select_weather_file_forecast'};
 	//on_change{'batt_cycle_cost_choice'};
 	show('ui_batt_is_dc',false);
 	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
