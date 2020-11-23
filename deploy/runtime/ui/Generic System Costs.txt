@@ -1695,13 +1695,13 @@ Name
 object 723
 X
 3
-45
+30
 Y
 3
 231
 Width
 3
-198
+213
 Height
 3
 21

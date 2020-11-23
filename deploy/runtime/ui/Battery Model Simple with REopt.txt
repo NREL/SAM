@@ -1,6 +1,6 @@
 Battery Model Simple with REopt
-599
-413
+611
+407
 13
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 0
 Width
 3
-572
+584
 Height
 3
 387
@@ -51,7 +51,7 @@ Width
 90
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -127,13 +127,13 @@ Name
 batt_simple_chemistry
 X
 3
-402
+381
 Y
 3
-21
+24
 Width
 3
-171
+200
 Height
 3
 24
@@ -161,13 +161,13 @@ Name
 batt_simple_dispatch
 X
 3
-402
+381
 Y
 3
-48
+51
 Width
 3
-171
+200
 Height
 3
 24
@@ -196,10 +196,10 @@ Name
 batt_simple_kw
 X
 3
-153
+132
 Y
 3
-48
+51
 Width
 3
 90
@@ -258,10 +258,10 @@ Name
 batt_simple_kwh
 X
 3
-153
+132
 Y
 3
-21
+24
 Width
 3
 90
@@ -377,7 +377,7 @@ Width
 162
 Height
 3
-24
+30
 Tool Tip
 5
 0

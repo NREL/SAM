@@ -81,7 +81,7 @@ Width
 270
 Height
 3
-30
+39
 Tool Tip
 5
 0

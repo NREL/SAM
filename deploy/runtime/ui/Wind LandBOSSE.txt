@@ -2454,16 +2454,16 @@ Name
 object 73
 X
 3
-21
+12
 Y
 3
 24
 Width
 3
-792
+810
 Height
 3
-39
+36
 Tool Tip
 5
 0

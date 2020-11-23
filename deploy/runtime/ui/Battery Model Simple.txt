@@ -1,6 +1,6 @@
 Battery Model Simple
-586
-88
+664
+92
 5
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 3
 Width
 3
-572
+617
 Height
 3
 81
@@ -48,7 +48,7 @@ Y
 18
 Width
 3
-171
+210
 Height
 3
 24
@@ -82,7 +82,7 @@ Y
 45
 Width
 3
-171
+210
 Height
 3
 24

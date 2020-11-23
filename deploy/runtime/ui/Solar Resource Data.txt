@@ -1,6 +1,6 @@
 Solar Resource Data
-884
-975
+894
+972
 47
 GroupBox
 
@@ -519,7 +519,7 @@ Width
 153
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -549,7 +549,7 @@ Width
 252
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -570,16 +570,16 @@ Name
 btn_download
 X
 3
-633
+660
 Y
 3
-474
+471
 Width
 3
-234
+205
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -609,7 +609,7 @@ Width
 252
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -639,7 +639,7 @@ Width
 153
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -958,7 +958,7 @@ Y
 474
 Width
 3
-381
+369
 Height
 3
 24
@@ -996,7 +996,7 @@ Name
 in_location_list
 X
 3
-303
+282
 Y
 3
 474
@@ -1070,13 +1070,13 @@ Name
 in_nsrdb_options
 X
 3
-405
+390
 Y
 3
 474
 Width
 3
-222
+270
 Height
 3
 24
@@ -1145,13 +1145,13 @@ Name
 is_advanced
 X
 3
-633
+660
 Y
 3
-447
+444
 Width
 3
-234
+215
 Height
 3
 24

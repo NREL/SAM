@@ -21,7 +21,7 @@ Width
 697
 Height
 3
-133
+139
 Tool Tip
 5
 0
@@ -189,7 +189,7 @@ Width
 117
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -220,7 +220,7 @@ X
 666
 Y
 3
-429
+438
 Width
 3
 114
@@ -262,7 +262,7 @@ X
 666
 Y
 3
-402
+414
 Width
 3
 198
@@ -302,7 +302,7 @@ Width
 678
 Height
 3
-54
+66
 Tool Tip
 5
 0
@@ -493,7 +493,7 @@ Width
 282
 Height
 3
-105
+120
 Tool Tip
 5
 0

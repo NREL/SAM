@@ -2864,10 +2864,10 @@ Y
 693
 Width
 3
-582
+675
 Height
 3
-33
+39
 Tool Tip
 5
 0
