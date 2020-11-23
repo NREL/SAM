@@ -51,7 +51,7 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-version_upgrade{'2020.11.12'} = define() {
+version_upgrade{'2020.11.29'} = define() {
     const cfg = config();
 	if( cfg.tech == 'MSPT' )
 	{
@@ -65,7 +65,7 @@ version_upgrade{'2020.11.12'} = define() {
 		}
 	}
     
-    //To be included in next full release (version_upgrade{'2020.10.?'})
+    //To be included in next full release (version_upgrade{'2020.11.29'})
     if (cfg.tech == 'Dish Stirling' )
     {
 		retire_tech();

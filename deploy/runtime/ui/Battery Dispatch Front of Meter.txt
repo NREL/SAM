@@ -1,6 +1,6 @@
 Battery Dispatch Front of Meter
-1058
-491
+1059
+494
 28
 GroupBox
 
@@ -150,16 +150,16 @@ Name
 batt_auto_fom_help
 X
 3
-393
+390
 Y
 3
 36
 Width
 3
-633
+645
 Height
 3
-54
+60
 Tool Tip
 5
 0
@@ -246,7 +246,7 @@ Width
 184
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -277,7 +277,7 @@ X
 678
 Y
 3
-267
+279
 Width
 3
 104
@@ -319,7 +319,7 @@ X
 678
 Y
 3
-240
+252
 Width
 3
 198
@@ -353,13 +353,13 @@ X
 390
 Y
 3
-186
+180
 Width
 3
-633
+651
 Height
 3
-51
+78
 Tool Tip
 5
 0
@@ -398,16 +398,16 @@ Name
 batt_cycle_costs_label
 X
 3
-393
+390
 Y
 3
-168
+165
 Width
 3
 633
 Height
 3
-22
+16
 Tool Tip
 5
 0
@@ -1340,14 +1340,14 @@ equations{'ui_batt_is_dc'}=define()
 	return !${batt_ac_or_dc};
 };
 
-7630
+7632
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
 	toggle_dispatch_fom();
 	enable_charge_from_clip();
 	//on_change{'batt_dispatch_choice'};
-	//on_change{'batt_select_weather_file_forecast'};
+28	//on_change{'batt_select_weather_file_forecast'};
 	//on_change{'batt_cycle_cost_choice'};
 	show('ui_batt_is_dc',false);
 	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');

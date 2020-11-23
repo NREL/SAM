@@ -287,13 +287,13 @@ Name
 array_cable_system_cost_method
 X
 3
-318
+297
 Y
 3
 435
 Width
 3
-126
+160
 Height
 3
 24
@@ -509,13 +509,13 @@ Name
 assembly_and_install_cost_method
 X
 3
-318
+297
 Y
 3
 357
 Width
 3
-126
+160
 Height
 3
 24
@@ -732,13 +732,13 @@ Name
 development_cost_method
 X
 3
-318
+297
 Y
 3
 249
 Width
 3
-126
+160
 Height
 3
 24
@@ -954,13 +954,13 @@ Name
 eng_and_mgmt_cost_method
 X
 3
-318
+297
 Y
 3
 276
 Width
 3
-126
+160
 Height
 3
 24
@@ -1176,13 +1176,13 @@ Name
 export_cable_system_cost_method
 X
 3
-318
+297
 Y
 3
 462
 Width
 3
-126
+160
 Height
 3
 24
@@ -1890,13 +1890,13 @@ Name
 mooring_found_substruc_cost_method
 X
 3
-318
+297
 Y
 3
 111
 Width
 3
-126
+160
 Height
 3
 24
@@ -2264,7 +2264,7 @@ Name
 object 718
 X
 3
-36
+27
 Y
 3
 384
@@ -2312,7 +2312,7 @@ Name
 object 71851
 X
 3
-36
+27
 Y
 3
 303
@@ -2408,7 +2408,7 @@ Name
 object 7185357
 X
 3
-21
+12
 Y
 3
 543
@@ -2456,7 +2456,7 @@ Name
 object 71856
 X
 3
-36
+27
 Y
 3
 462
@@ -2504,7 +2504,7 @@ Name
 object 71866
 X
 3
-36
+27
 Y
 3
 84
@@ -2552,7 +2552,7 @@ Name
 object 719
 X
 3
-36
+27
 Y
 3
 435
@@ -2600,7 +2600,7 @@ Name
 object 71933
 X
 3
-36
+27
 Y
 3
 57
@@ -2648,7 +2648,7 @@ Name
 object 71949
 X
 3
-36
+27
 Y
 3
 357
@@ -2696,7 +2696,7 @@ Name
 object 71952
 X
 3
-24
+15
 Y
 3
 276
@@ -2840,7 +2840,7 @@ Name
 object 7195464
 X
 3
-36
+27
 Y
 3
 516
@@ -2888,7 +2888,7 @@ Name
 object 720
 X
 3
-36
+27
 Y
 3
 249
@@ -2936,7 +2936,7 @@ Name
 object 72050
 X
 3
-36
+27
 Y
 3
 330
@@ -3080,7 +3080,7 @@ Name
 object 7205567
 X
 3
-36
+27
 Y
 3
 489
@@ -3128,7 +3128,7 @@ Name
 object 72067
 X
 3
-6
+4294967293
 Y
 3
 111
@@ -3781,13 +3781,13 @@ Name
 offshore_substation_cost_method
 X
 3
-318
+297
 Y
 3
 516
 Width
 3
-126
+160
 Height
 3
 24
@@ -4003,13 +4003,13 @@ Name
 onshore_substation_cost_method
 X
 3
-318
+297
 Y
 3
 489
 Width
 3
-126
+160
 Height
 3
 24
@@ -4447,13 +4447,13 @@ Name
 other_elec_infra_cost_method
 X
 3
-318
+297
 Y
 3
 543
 Width
 3
-126
+160
 Height
 3
 24
@@ -4669,13 +4669,13 @@ Name
 other_infrastructure_cost_method
 X
 3
-318
+297
 Y
 3
 384
 Width
 3
-126
+160
 Height
 3
 24
@@ -4891,13 +4891,13 @@ Name
 plant_commissioning_cost_method
 X
 3
-318
+297
 Y
 3
 303
 Width
 3
-126
+160
 Height
 3
 24
@@ -5113,13 +5113,13 @@ Name
 power_takeoff_system_cost_method
 X
 3
-318
+297
 Y
 3
 84
 Width
 3
-126
+160
 Height
 3
 24
@@ -5779,13 +5779,13 @@ Name
 site_access_port_staging_cost_method
 X
 3
-318
+297
 Y
 3
 330
 Width
 3
-126
+160
 Height
 3
 24
@@ -6001,13 +6001,13 @@ Name
 structural_assembly_cost_method
 X
 3
-318
+297
 Y
 3
 57
 Width
 3
-126
+160
 Height
 3
 24
@@ -6601,7 +6601,7 @@ Name
 tt_array_cable_system_cost
 X
 3
-282
+273
 Y
 3
 435
@@ -6628,7 +6628,7 @@ Name
 tt_assembly_and_install_cost
 X
 3
-282
+273
 Y
 3
 357
@@ -6654,7 +6654,7 @@ Name
 tt_development_cost
 X
 3
-282
+273
 Y
 3
 249
@@ -6681,7 +6681,7 @@ Name
 tt_eng_and_mgmt_cost
 X
 3
-282
+273
 Y
 3
 276
@@ -6707,7 +6707,7 @@ Name
 tt_export_cable_system_cost
 X
 3
-282
+273
 Y
 3
 462
@@ -6785,7 +6785,7 @@ Name
 tt_mooring_found_substruc_cost
 X
 3
-282
+273
 Y
 3
 111
@@ -6811,7 +6811,7 @@ Name
 tt_offshore_substation_cost
 X
 3
-282
+273
 Y
 3
 516
@@ -6837,7 +6837,7 @@ Name
 tt_onshore_substation_cost
 X
 3
-282
+273
 Y
 3
 489
@@ -6889,7 +6889,7 @@ Name
 tt_other_elec_infra_cost
 X
 3
-282
+273
 Y
 3
 543
@@ -6915,7 +6915,7 @@ Name
 tt_other_infrastructure_cost
 X
 3
-282
+273
 Y
 3
 384
@@ -6941,7 +6941,7 @@ Name
 tt_plant_commissioning_cost
 X
 3
-282
+273
 Y
 3
 303
@@ -6967,7 +6967,7 @@ Name
 tt_power_takeoff_system_cost
 X
 3
-282
+273
 Y
 3
 84
@@ -7046,7 +7046,7 @@ Name
 tt_site_access_port_staging_cost
 X
 3
-282
+273
 Y
 3
 330
@@ -7073,7 +7073,7 @@ Name
 tt_structural_assembly_cost
 X
 3
-282
+273
 Y
 3
 57

@@ -17,7 +17,7 @@ def csv_to_dict(csvfile):
                 data[lppa] = row[4]
                 values[key] = data
         except IndexError as e:
-            print("Error while parsing CSV: " + row)
+            print("Error while parsing CSV: " + str(row))
             raise e
     return values
 

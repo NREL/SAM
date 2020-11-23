@@ -1449,13 +1449,13 @@ X
 15
 Y
 3
-354
+348
 Width
 3
 528
 Height
 3
-36
+42
 Tool Tip
 5
 0
