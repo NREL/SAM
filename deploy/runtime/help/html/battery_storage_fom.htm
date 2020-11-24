@@ -294,11 +294,11 @@ When you choose the custom lead acid battery type, SAM retains the capacity and 
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Battery Thermal</span></h3>
 <p class="p_Text"><span class="f_Text">The thermal model calculates the battery temperature, which modifies the battery capacity. The system configuration assumes that the battery is stored in a conditioned room at a fixed temperature and is not exposed directly to heat from the sun. The two main heat-transfer terms are transfer between the battery and the room, and internal energy generation via resistive heating. The battery internal resistance input is under &quot;Battery Voltage.&quot;</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Thermal Properties</span></h4>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Specific heat Cp (J/kgK)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Specific heat Cp (J/kg-K)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Estimated specific heat capacity for the battery.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heat transfer coefficient h (W/m²)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heat transfer coefficient h (W/m²-K)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Estimated heat transfer coefficient for heat transfer from the battery to the room.</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The default value for behind-the-meter applications is 50, assuming free convection or passive cooling. For front-of-meter applications, the default is 500 for forced convection or active cooling.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The default value for behind-the-meter applications is 7.5 W/m²-K, and for front-of-meter applications, the default is 7.5 W/m²-K.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Room temperature (°C)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Temperature of the room where the battery will be stored. The default value is 25.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Capacity fade with temperature</span></h4>
