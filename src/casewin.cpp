@@ -733,6 +733,9 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 		m_macros->ConfigurationChanged();
 
 		SamApp::Project().SetModified( true );
+
+		Layout(); // test recenter configuration after change issue 457
+
 	}
 	else if ( evt.GetType() == CaseEvent::SAVE_NOTIFICATION )
 	{
