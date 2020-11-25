@@ -137,7 +137,7 @@ Name
 assembly_and_install_cost_method
 X
 3
-219
+240
 Y
 3
 378
@@ -458,7 +458,7 @@ Name
 capex_check
 X
 3
-96
+117
 Y
 3
 459
@@ -678,7 +678,7 @@ Name
 development_cost_method
 X
 3
-219
+240
 Y
 3
 213
@@ -965,7 +965,7 @@ Name
 elec_infras_cost_method
 X
 3
-219
+240
 Y
 3
 279
@@ -1252,7 +1252,7 @@ Name
 eng_and_mgmt_cost_method
 X
 3
-219
+240
 Y
 3
 246
@@ -1811,7 +1811,7 @@ Name
 object 7
 X
 3
-273
+291
 Y
 3
 186
@@ -1907,13 +1907,13 @@ Name
 object 721
 X
 3
-417
+432
 Y
 3
 186
 Width
 3
-120
+106
 Height
 3
 24
@@ -2099,13 +2099,13 @@ Name
 object 75
 X
 3
-33
+40
 Y
 3
 345
 Width
 3
-186
+200
 Height
 3
 24
@@ -2147,7 +2147,7 @@ Name
 object 7521
 X
 3
-36
+57
 Y
 3
 213
@@ -2195,7 +2195,7 @@ Name
 object 752122
 X
 3
-4294967287
+12
 Y
 3
 246
@@ -2243,7 +2243,7 @@ Name
 object 7526
 X
 3
-4294967290
+15
 Y
 3
 279
@@ -2297,7 +2297,7 @@ Y
 312
 Width
 3
-189
+210
 Height
 3
 24
@@ -2339,7 +2339,7 @@ Name
 object 757
 X
 3
-9
+30
 Y
 3
 411
@@ -2387,7 +2387,7 @@ Name
 object 75735
 X
 3
-9
+30
 Y
 3
 378
@@ -2560,7 +2560,7 @@ Name
 other_infrastructure_cost_method
 X
 3
-219
+240
 Y
 3
 411
@@ -2909,7 +2909,7 @@ Name
 plant_commissioning_cost_method
 X
 3
-219
+240
 Y
 3
 312
@@ -3132,7 +3132,7 @@ Name
 site_access_port_staging_cost_method
 X
 3
-219
+240
 Y
 3
 345
