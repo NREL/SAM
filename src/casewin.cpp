@@ -151,42 +151,42 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	wxColour lafore( *wxWHITE ), laback( 100,100,100 );
 
-	wxPanel *left_panel = new wxPanel( this );
-	left_panel->SetBackgroundColour( laback );
+	m_left_panel = new wxPanel(this);
+	m_left_panel->SetBackgroundColour( laback );
 	
-	m_inputPageList = new InputPageList( left_panel, ID_INPUTPAGELIST );
+	m_inputPageList = new InputPageList( m_left_panel, ID_INPUTPAGELIST );
 	m_inputPageList->SetCaseWindow( this );
 	m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
 
 	wxFont lafont( *wxNORMAL_FONT );
 	lafont.SetWeight( wxFONTWEIGHT_BOLD );
-	m_configLabel = new wxStaticText( left_panel, wxID_ANY, "-technology-" );
+	m_configLabel = new wxStaticText( m_left_panel, wxID_ANY, "-technology-" );
 	m_configLabel->SetBackgroundColour( laback );
 	m_configLabel->SetForegroundColour( lafore );
 	m_configLabel->SetFont( lafont );
 	
 
 	
-	m_simButton = new wxMetroButton( left_panel, ID_SIMULATE, "Simulate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
+	m_simButton = new wxMetroButton( m_left_panel, ID_SIMULATE, "Simulate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
 	m_simButton->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
-	m_resultsButton = new wxMetroButton( left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA( graph ) );
+	m_resultsButton = new wxMetroButton( m_left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA( graph ) );
 
 	wxBoxSizer *szhl = new wxBoxSizer( wxHORIZONTAL );
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
 
 	wxSizer *szsims = new wxGridSizer(2, 0, 0);
-	szsims->Add( new wxMetroButton( left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_STOCHASTIC, "Stochastic" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_P50P90, "P50 / P90" ), 0, wxALL|wxEXPAND, 0 );
-	szsims->Add( new wxMetroButton( left_panel, ID_MACRO, "Macros" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90" ), 0, wxALL|wxEXPAND, 0 );
+	szsims->Add( new wxMetroButton(m_left_panel, ID_MACRO, "Macros" ), 0, wxALL|wxEXPAND, 0 );
 
 	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
 	szvl->Add( m_configLabel, 0, wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
 	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
 	szvl->Add( szsims, 0, wxALL|wxEXPAND, 0 );
-	left_panel->SetSizer( szvl );
+	m_left_panel->SetSizer( szvl );
 
 	m_pageFlipper = new wxSimplebook( this, ID_PAGES, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 	
@@ -227,7 +227,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	wxDevicePPIToScale( wxClientDC(this).GetPPI(), &xScale, &yScale );
 	
 	SetMinimumPaneSize( 50 );
-	SplitVertically( left_panel, m_pageFlipper, (int)(210*xScale) );
+	SplitVertically( m_left_panel, m_pageFlipper, (int)(210*xScale) );
 	
 	
 	m_pageNote = new PageNote( this );
@@ -716,6 +716,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 	{
 		wxString sel = m_inputPageList->GetStringSelection();
 		UpdateConfiguration();
+
 		if (!sel.empty()) 
 			SwitchToInputPage( sel );
 		else
@@ -734,7 +735,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 
 		SamApp::Project().SetModified( true );
 
-		Layout(); // test recenter configuration after change issue 457
+		m_left_panel->Layout();
 
 	}
 	else if ( evt.GetType() == CaseEvent::SAVE_NOTIFICATION )

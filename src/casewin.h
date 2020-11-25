@@ -89,6 +89,8 @@ public:
 private:
 	Case *m_case;
 	
+	wxPanel* m_left_panel;
+
 	InputPageList *m_inputPageList;
 	std::vector<InputPageGroup*> m_pageGroups;
 	UIFormDatabase m_forms;
