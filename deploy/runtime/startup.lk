@@ -191,11 +191,6 @@ function setup_flat_plate_pv_pages()
 	setup_grid_page();
 }
 
-function setup_pv_battery_pages(is_btm)
-{
-	setup_flat_plate_pv_pages();
-
-	addpage([['Battery Model',
 function setup_lifetime_page( degradation_mode )
 {
 	sidebar_name = 'Lifetime and Degradation';
