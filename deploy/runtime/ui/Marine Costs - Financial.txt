@@ -842,7 +842,7 @@ Name
 object 7
 X
 3
-273
+288
 Y
 3
 198
@@ -986,13 +986,13 @@ Name
 object 72124
 X
 3
-417
+431
 Y
 3
 198
 Width
 3
-120
+106
 Height
 3
 24
@@ -1862,7 +1862,7 @@ Name
 tt_insurance_during_construction_cost
 X
 3
-786
+789
 Y
 3
 258
@@ -1914,7 +1914,7 @@ Name
 tt_project_contingency_budget_cost
 X
 3
-786
+789
 Y
 3
 225
