@@ -572,8 +572,8 @@ Tool Tip
 0
 Caption
 5
-37
-Total operation and maintenance costs
+38
+Total operations and maintenance costs
 TextColour
 4
 0
@@ -620,8 +620,8 @@ Tool Tip
 0
 Caption
 5
-549
-The fixed annual operation and maintenance (O&M) cost on the Financial Parameters page is the sum of the Operations and Maintenance costs on this page. On this page, enter itemized operations and maintenance costs in $ or $/kW, check Override Cost Structure to enter the total O&M cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the O&M cost. The value in the 'Total operations and mainetance cost' box is used as the 'Fixed operating cost (annual) value in the Financial parameters tab. See Help for details.
+535
+The fixed annual operating cost on the Financial Parameters page is the sum of the Operations and Maintenance (O&M) costs on this page. On this page, enter itemized operations and maintenance costs in $ or $/kW, check Override Cost Structure to enter the total O&M cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the O&M cost. The value in the 'Total operations and mainetance costs' box is used as the 'Fixed operating cost (annual) value in the Financial Parameters page. See Help for details.
 TextColour
 4
 0
