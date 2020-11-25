@@ -2588,6 +2588,8 @@ void SamApp::ShowHelp( const wxString &context )
 		fn.MakeAbsolute();
 		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + "index.html";
 #ifdef __WXGTK__
+		if ( ! context.IsEmpty() )
+			url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + context + ".htm";
 		wxLaunchDefaultBrowser( url );
 		return;
 #else
