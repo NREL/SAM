@@ -67,9 +67,11 @@
 <p>This version consists of several improvements and updates. Highlights include:</p>
 
 <ul>
+<li>Implement NREL Solar Position Algorithm (SPA) for sun angle calculatinos for all solar performance models.</li>
 <li>Improved battery dispatch for both front-of-meter and behind-the-meter battery storage applications.</li>
 <li>Improve electricity bill calculations for distributed behind-the-meter financial models.</li>
-<li>Update photovoltaic module and inverter libraries.</li>
+<li>Update utility rate data download from OpenEI Utility Rate Database (URDB) to API Version 7 and fix a bug that prevented all rates from being listed for some large utilities.</li>
+<li>Improved photovoltaic "slope-aware" backtracking algorithm.</li>
 <li>Integrate NREL LandBOSSE wind balance-of-system (BOS) cost model into SAM.</a>
 <li>Update default values to better align with <a href="https://atb.nrel.gov/">NREL Annual Technology Baseline (ATB).</a></li>
 <li>Update solar resource data downloads from the NSRDB to access newest datasets for subhourly data, typical year (TMY, TGY, TDY) data, subhourly data, and data for Europe, Africa and Asia.</li>
@@ -85,16 +87,19 @@
 <li>Fix problem with Welcome page when SAM starts without an internet connection. (<a href="https://github.com/NREL/SAM/issues/376">376</a>)</li>
 <li>Update default ITC and PTC tax credits to reflect current market conditions. (<a href="https://github.com/NREL/SAM/pull/450">450</a>)</li>
 <li>Update sun angle calculations for all solar models to use NREL Solar Position Algorithm (SPA). (<a href="https://github.com/NREL/ssc/issues/279">279</a>)</li>
+<li>For the SSC compute module pvwattsv5_1ts, add external shading. This change does not affect the PVWatts implementation in SAM, which uses the pvwattsv7 compute module. (<a href="https://github.com/NREL/ssc/pull/462">462</a>)</li>
 </ul>
 
 <h2>Detailed Photovoltaic</h2>
 
 <ul>
+<li>Improve backtracking algorithm to use method described in Anderson, K (2020), "Slope-aware Backtracking for Single Axis Trackers", NREL/TP-5K00-76626. A new slope input will be added in a future version of SAM. (<a href="https://github.com/NREL/ssc/issues/457">457</a>).</li>
 <li>Add module mass input for transient thermal model that adjusts cell temperature calculation for simulation time steps of less than 20 minutes, and improve user interface and documentation to make it clear how the model works. (<a href="https://github.com/NREL/SAM/issues/380">380</a>)</li>
 <li>Rename Array DC power variable to Inverter DC input power to avoid confusion about whether value includes DC losses. (<a href="https://github.com/NREL/SAM/issues/383">383</a>)</li> 
 <li>Improve inverter temperature derate curve inputs, and normalize efficiency table to Pmax instead of efficiency. (<a href="https://github.com/NREL/SAM/pull/412">412</a>)</li>
 <li>Fix module coefficient generator for CEC Module Model with User Entered Specifications option to work with newer high-current modules. (<a href="https://github.com/NREL/ssc/issues/129">129</a>)</li>
 <li>Improve warning messages for bifacial modules with one-axis trackers and non-zero tilt. (<a href="https://github.com/NREL/ssc/issues/364">364</a>)</li>
+<li>Update default system size for PPA financial models to 50 MW and Commercial to 500 kW. (<a href="https://github.com/NREL/SAM/pull/421">392</a>)</li>
 </ul>
 
 <h2>Battery Storage</h2>
