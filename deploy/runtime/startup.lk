@@ -456,10 +456,9 @@ function setup_windpower_pages()
 	//addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Siting Considerations' } );
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine' } );
 	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm' } );
-	setup_grid_page();
 	addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses', 'help'='wind_losses'} );
 	addpage( [[ 'Wind Uncertainty' ]], { 'sidebar'='Uncertainties','help'='wind_uncertainties'} );
-
+	setup_grid_page();
 }
 
 function setup_solar_water_heating_pages()
@@ -797,7 +796,7 @@ setmodules( ['pvwattsv7','grid']);
 setup_pvwatts_pages();
 
 setconfig( 'PVWatts', 'Residential' );
-setmodules( ['pvwattsv7', 'belpe', 'grid','utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv7', 'belpe', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
@@ -825,21 +824,21 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_all_equity_partnership_flip_pages();
 
 setconfig( 'PVWatts', 'Sale Leaseback' );
-setmodules( ['pvwattsv7', 'grid','saleleaseback']);
+setmodules( ['pvwattsv7', 'grid', 'saleleaseback']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_sale_leaseback_pages();
 
 setconfig( 'PVWatts', 'Single Owner' );
-setmodules( ['pvwattsv7', 'grid','singleowner']);
+setmodules( ['pvwattsv7', 'grid', 'singleowner']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages();
 
 setconfig( 'PVWatts', 'Merchant Plant' );
-setmodules( ['pvwattsv7', 'grid','merchantplant']);
+setmodules( ['pvwattsv7', 'grid', 'merchantplant']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
@@ -853,7 +852,7 @@ addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 setconfig( 'PVWatts', 'Third Party' );
-setmodules( ['pvwattsv7', 'belpe', 'grid','utilityrate5', 'thirdpartyownership']);
+setmodules( ['pvwattsv7', 'belpe', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 setup_thirdparty_pages( LOAD_BELPE); //includes building load calculator by default in this function
@@ -909,7 +908,7 @@ setup_all_equity_partnership_flip_pages();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Sale Leaseback' );
-setmodules( ['windpower', 'grid','wind_landbosse', 'saleleaseback']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'saleleaseback']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
@@ -920,7 +919,7 @@ setup_sale_leaseback_pages();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'Single Owner' );
-setmodules( ['windpower', 'grid','wind_landbosse', 'singleowner']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'singleowner']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
@@ -930,7 +929,7 @@ addpage( [['Wind Farm Costs','O and M Costs',
 setup_single_owner_pages();
 
 setconfig( 'Wind Power', 'Merchant Plant' );
-setmodules( ['windpower', 'grid','wind_landbosse', 'merchantplant']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'merchantplant']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs','O and M Costs',
@@ -941,7 +940,7 @@ setup_merchant_plant_pages();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'LCOE Calculator' );
-setmodules( ['windpower', 'grid','lcoefcr']);
+setmodules( ['windpower', 'grid', 'lcoefcr']);
 setup_windpower_pages();
 setup_lcoefcr_pages();
 
@@ -951,7 +950,6 @@ setup_lcoefcr_pages();
            { 'sidebar'='Incentives','help'='Incentives' } );*/
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'None' );
-//setmodules( ['windpower','grid']);
 setmodules( ['windpower', 'grid']);
 setup_windpower_pages();
 
@@ -980,7 +978,7 @@ setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
 // Fuel Cell /////////////////////////////////////////////////////////
 setconfig( 'Fuel Cell', 'Commercial');
-setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'cashloan'] );
+setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='fuelcell_pv_system' } );
 setup_fuel_cell_pages_btm();
@@ -991,7 +989,7 @@ addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_ra
 addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
 setconfig( 'Fuel Cell', 'Single Owner');
-setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid','utilityrate5', 'thermalrate', 'singleowner']);
+setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='fuelcell_pv_system' } );
 setup_fuel_cell_pages_fom();
@@ -1010,31 +1008,31 @@ addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', '
 setup_leveraged_partnership_flip_pages();
 
 setconfig( 'Geothermal Power', 'All Equity Partnership Flip' );
-setmodules( ['geothermal', 'grid','equpartflip']);
+setmodules( ['geothermal', 'grid', 'equpartflip']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
 setup_all_equity_partnership_flip_pages();
 
 setconfig( 'Geothermal Power', 'Sale Leaseback' );
-setmodules( ['geothermal', 'grid','saleleaseback']);
+setmodules( ['geothermal', 'grid', 'saleleaseback']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
 setup_sale_leaseback_pages();
 
 setconfig( 'Geothermal Power', 'Single Owner' );
-setmodules( ['geothermal', 'grid','singleowner']);
+setmodules( ['geothermal', 'grid', 'singleowner']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
 setup_single_owner_pages();
 
 setconfig( 'Geothermal Power', 'Merchant Plant' );
-setmodules( ['geothermal', 'grid','merchantplant']);
+setmodules( ['geothermal', 'grid', 'merchantplant']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='geo_system_costs' } );
 setup_merchant_plant_pages();
 
 setconfig( 'Geothermal Power', 'LCOE Calculator' );
-setmodules( ['geothermal',  'grid','lcoefcr']);
+setmodules( ['geothermal',  'grid', 'lcoefcr']);
 setup_geothermal_power_pages();
 setup_lcoefcr_pages();
 
@@ -1074,7 +1072,7 @@ setup_commercial_pages(LOAD_SIMPLE); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'Leveraged Partnership Flip' );
-setmodules( ['generic_system', 'grid','levpartflip']);
+setmodules( ['generic_system', 'grid', 'levpartflip']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
@@ -1082,7 +1080,7 @@ setup_leveraged_partnership_flip_pages();
 
 //-----------------------------------------------------
 setconfig( 'Generic System', 'All Equity Partnership Flip' );
-setmodules( ['generic_system', 'grid','equpartflip']);
+setmodules( ['generic_system', 'grid', 'equpartflip']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
@@ -1112,7 +1110,7 @@ addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs',
 setup_merchant_plant_pages();
 
 setconfig( 'Generic System', 'Host Developer' );
-setmodules( ['generic_system', 'grid','utilityrate5', 'host_developer']);
+setmodules( ['generic_system', 'grid', 'utilityrate5', 'host_developer']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
@@ -1241,7 +1239,7 @@ addpage( [[ 'HCPV Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='p
 setup_merchant_plant_pages();
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'LCOE Calculator' );
-setmodules( ['hcpv', 'grid',  'lcoefcr']);
+setmodules( ['hcpv', 'grid', 'lcoefcr']);
 setup_hcpv_pages();
 setup_lcoefcr_pages();
 //-----------------------------------------------------
@@ -1367,7 +1365,7 @@ addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'
 setup_merchant_plant_pages();
 //-----------------------------------------------------
 setconfig( 'Biopower', 'LCOE Calculator' );
-setmodules( ['biomass', 'grid',  'lcoefcr']);
+setmodules( ['biomass', 'grid', 'lcoefcr']);
 setup_biopower_pages();
 setup_lcoefcr_pages();
 //-----------------------------------------------------
@@ -1453,7 +1451,6 @@ function setup_DSGL_IPH_pages()
 	addpage( [[ 'LF DSG System Design' ]], { 'sidebar'='System Design', 'help'='iph_linear_ds-system_design' } );
 	addpage( [[ 'LF DSG Solar Field' ]], { 'sidebar'='Solar Field', 'help'='iph_linear_ds-solar_field' } );
 	addpage( [[ 'LF DSG Boiler Header', 'Linear Fresnel Boiler Geometry' ]], { 'sidebar'='Collector and Receiver', 'help'='iph_linear_ds-collector_receiver' } );
- 	//setup_grid_page();
 }
 
 //--------------------------------------------------
@@ -1484,7 +1481,7 @@ function setup_DSLF_pages()
 
 //-----------------------------------------------------
 setconfig( 'DSLF', 'LCOE Calculator' );
-setmodules( ['tcslinear_fresnel', 'grid',  'lcoefcr']);
+setmodules( ['tcslinear_fresnel', 'grid', 'lcoefcr']);
 setup_DSLF_pages();
 setup_lcoefcr_pages();
 
@@ -1613,7 +1610,7 @@ function setup_MSLF_pages()
 
 //-----------------------------------------------------
 setconfig( 'MSLF', 'LCOE Calculator' );
-setmodules( ['tcsMSLF', 'grid',  'lcoefcr']);
+setmodules( ['tcsMSLF', 'grid', 'lcoefcr']);
 setup_MSLF_pages();
 setup_lcoefcr_pages();
 
@@ -1764,41 +1761,65 @@ if ( en_pvsamv3 )
 // Battery /////////////////////////////////////////////////////////////////////
 
 // PV Battery //////////////////////////////////////////////////////////////
+
+function setup_pv_battery_pages(is_btm)
+{
+	addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
+	addpage( [ ['Simple Efficiency Module Model'],
+//				['CEC Performance Model with Module Database', { 'name'='Test 1', 'collapsible'=true, 'collapsible_var'='pv.module.test_1.is_shown' }],
+				['CEC Performance Model with Module Database'],
+				['CEC Performance Model with User Entered Specifications'],
+				['Sandia PV Array Performance Model with Module Database'],
+				['IEC61853 Single Diode Model'] ],
+			{ 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model' } );
+	addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'],
+			 ['Inverter Datasheet', 'Inverter Temp Derate DS'],
+			 ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'],
+			 ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ],
+			{ 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model' } );
+	// Battery Enable form stores hidden en_batt variable required by some UI forms to determine if there is a battery
+	addpage( [ ['PV System Design', {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
+	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
+	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
+
+	if (is_btm)
+		setup_battery_pages_behind_the_meter();
+	else
+		setup_battery_pages_front_of_meter();
+
+	setup_grid_page();
+}
+
 setconfig( 'PV Battery', 'Residential' );
 setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_behind_the_meter(); // modified to remove exclusive var
+setup_pv_battery_pages(true);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE_CRIT ); //includes building load calculator
 
 setconfig( 'PV Battery', 'Commercial' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_behind_the_meter();
+setup_pv_battery_pages(true);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_commercial_pages( LOAD_SIMPLE_CRIT ); //belpe not valid for commercial
 
 setconfig( 'PV Battery', 'Third Party' );
 setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'thirdpartyownership']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_behind_the_meter();
+setup_pv_battery_pages(true);
 setup_lifetime_page( DEGRADATION_PVSAM );
 setup_thirdparty_pages( LOAD_BELPE_CRIT ); //includes building load calculator by default in this function
 
 setconfig( 'PV Battery', 'Host Developer' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'host_developer']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_behind_the_meter();
+setup_pv_battery_pages(true);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_host_developer_pages( LOAD_SIMPLE_CRIT ); //includes building load calculator by default in this function
 
 setconfig( 'PV Battery', 'Single Owner' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_front_of_meter();
+setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages( );
@@ -1806,73 +1827,75 @@ setup_utility_rate_optional();
 
 setconfig( 'PV Battery', 'Merchant Plant' );
 setmodules( ['pvsamv1', 'grid', 'merchantplant']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_front_of_meter();
+setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_merchant_plant_pages( );
 
 setconfig( 'PV Battery', 'Leveraged Partnership Flip' );
 setmodules( ['pvsamv1', 'grid', 'levpartflip']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_front_of_meter();
+setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_leveraged_partnership_flip_pages( );
 
 setconfig( 'PV Battery', 'All Equity Partnership Flip' );
 setmodules( ['pvsamv1', 'grid', 'equpartflip']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_front_of_meter();
+setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_all_equity_partnership_flip_pages( );
 
 setconfig( 'PV Battery', 'Sale Leaseback' );
 setmodules( ['pvsamv1', 'grid', 'saleleaseback']);
-setup_flat_plate_pv_pages();
-setup_battery_pages_front_of_meter();
+setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_sale_leaseback_pages( );
 
 // Generic Battery /////////////////////////////////////////////////////////
 
+function setup_generic_battery_pages(is_btm) {
+	addpage( [[ 'Generic System Plant' ,'Battery Enable']], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
+
+	if (is_btm)
+		setup_battery_pages_behind_the_meter();
+	else
+		setup_battery_pages_front_of_meter();
+
+	setup_grid_page();
+}
+
 setconfig( 'Generic Battery', 'Residential' );
 setmodules( ['belpe', 'generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
-setup_generic_system_pages();
-setup_battery_pages_behind_the_meter(); // modified to remove exclusive var
+setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_residential_pages( LOAD_BELPE_CRIT );
 
 setconfig( 'Generic Battery', 'Commercial' );
 setmodules( ['generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
-setup_generic_system_pages();
-setup_battery_pages_behind_the_meter(); // modified to remove exclusive var
+setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs','O and M Costs']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_commercial_pages( LOAD_SIMPLE_CRIT ); //does not include building load calculator
 
 setconfig( 'Generic Battery', 'Third Party' );
 setmodules( ['belpe', 'generic_system', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
-setup_generic_system_pages();
-setup_battery_pages_behind_the_meter();
+setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 setup_thirdparty_pages( LOAD_BELPE_CRIT );
 
 setconfig( 'Generic Battery', 'Host Developer' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'host_developer']);
-setup_generic_system_pages();
-setup_battery_pages_behind_the_meter();
+setup_generic_battery_pages(true);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_host_developer_pages( LOAD_SIMPLE_CRIT );
 
 setconfig( 'Generic Battery', 'Single Owner' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'singleowner']);
-setup_generic_system_pages();
-setup_battery_pages_front_of_meter();
+setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_single_owner_pages( );
@@ -1880,46 +1903,42 @@ setup_utility_rate_optional();
 
 setconfig( 'Generic Battery', 'Merchant Plant' );
 setmodules( ['generic_system', 'battery', 'grid', 'merchantplant']);
-setup_generic_system_pages();
-setup_battery_pages_front_of_meter();
+setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_merchant_plant_pages( );
 
 setconfig( 'Generic Battery', 'Leveraged Partnership Flip' );
 setmodules( ['generic_system', 'battery', 'grid', 'levpartflip']);
-setup_generic_system_pages();
-setup_battery_pages_front_of_meter();
+setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_leveraged_partnership_flip_pages( );
 
 setconfig( 'Generic Battery', 'All Equity Partnership Flip' );
 setmodules( ['generic_system', 'battery', 'grid', 'equpartflip']);
-setup_generic_system_pages();
-setup_battery_pages_front_of_meter();
+setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_all_equity_partnership_flip_pages( );
 
 setconfig( 'Generic Battery', 'Sale Leaseback' );
 setmodules( ['generic_system', 'battery', 'grid', 'saleleaseback']);
-setup_generic_system_pages();
-setup_battery_pages_front_of_meter();
+setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_sale_leaseback_pages( );
 
 // PVWatts Battery /////////////////////////////////////////////////////////
 setconfig( 'PVWatts Battery', 'Residential' );
-setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid','utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_residential_pages( LOAD_BELPE_CRIT ); //includes building load calculator
 
 setconfig( 'PVWatts Battery', 'Commercial' );
-setmodules( ['pvwattsv7', 'battwatts','grid', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv7', 'battwatts', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
@@ -1933,7 +1952,7 @@ addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System C
 setup_host_developer_pages( LOAD_SIMPLE_CRIT ); //includes building load calculator by default in this function
 
 setconfig( 'PVWatts Battery', 'Third Party' );
-setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid','utilityrate5', 'thirdpartyownership']);
+setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 setup_thirdparty_pages( LOAD_BELPE_CRIT ); //includes building load calculator by default in this function
