@@ -593,7 +593,7 @@ Width
 195
 Height
 3
-93
+153
 Tool Tip
 5
 0
@@ -1574,7 +1574,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 0

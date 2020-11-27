@@ -1,6 +1,6 @@
 Inverter Temp Derate DS
-786
-324
+781
+329
 5
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 764
 Height
 3
-312
+315
 Tool Tip
 5
 0
@@ -42,7 +42,7 @@ Name
 btn_update_ds_plot
 X
 3
-123
+30
 Y
 3
 270
@@ -72,16 +72,16 @@ Name
 inv_derate_label
 X
 3
-264
+177
 Y
 3
-264
+258
 Width
 3
-123
+201
 Height
 3
-57
+63
 Tool Tip
 5
 0
@@ -123,7 +123,7 @@ X
 21
 Y
 3
-39
+33
 Width
 3
 345

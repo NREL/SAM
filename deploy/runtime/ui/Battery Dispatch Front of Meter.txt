@@ -1,6 +1,6 @@
 Battery Dispatch Front of Meter
-1058
-491
+1059
+494
 28
 GroupBox
 
@@ -150,16 +150,16 @@ Name
 batt_auto_fom_help
 X
 3
-393
+390
 Y
 3
 36
 Width
 3
-633
+645
 Height
 3
-54
+60
 Tool Tip
 5
 0
@@ -246,7 +246,7 @@ Width
 184
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -333,7 +333,7 @@ Items
 6
 2
 Calculate automatically
-Enter cost
+Enter penalty
 Selection
 3
 4294967295
@@ -350,23 +350,23 @@ Name
 batt_cycle_cost_description
 X
 3
-393
+390
 Y
 3
-198
+180
 Width
 3
-633
+651
 Height
 3
-51
+78
 Tool Tip
 5
 0
 Caption
 5
-305
-The dispatch options will cycle the battery if anticipated revenue exceeds the cycle degradation penalty. A higher penalty will decrease cycling, a lower penalty will increase cycling and may lead to additional battery replacements. See the "Battery Storage - Battery Lifetime" page for degradation modes.
+293
+The controller cycles the battery only if anticipated revenue exceeds the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the  Battery Cell and System page.
 TextColour
 4
 0
@@ -398,16 +398,16 @@ Name
 batt_cycle_costs_label
 X
 3
-393
+390
 Y
 3
-183
+165
 Width
 3
 633
 Height
 3
-22
+16
 Tool Tip
 5
 0
@@ -663,7 +663,7 @@ X
 393
 Y
 3
-105
+93
 Width
 3
 633
@@ -702,7 +702,7 @@ X
 678
 Y
 3
-126
+114
 Width
 3
 48
@@ -764,7 +764,7 @@ X
 678
 Y
 3
-153
+141
 Width
 3
 48
@@ -1165,11 +1165,11 @@ SchedNumeric
 batt_cycle_cost_choice
 3
 1
-Cycle degradation penalty choice
+Cycle degradation penalty option
  
 BatteryDispatch
-34
-Calculate automatically|Enter cost
+37
+Calculate automatically|Enter penalty
 0
 1
 1

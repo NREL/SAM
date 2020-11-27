@@ -1,5 +1,5 @@
 1
-123
+124
 adjust
 1
 5
@@ -433,6 +433,10 @@ inv_cec_date
 4
 3
 n/a
+inv_cec_hybrid
+1
+4
+0
 inv_cec_name
 1
 4

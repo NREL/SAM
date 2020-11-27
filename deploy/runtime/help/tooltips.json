@@ -283,7 +283,7 @@
 		{
 			"name": "tt_interconnection_and_power_marketing_cost",
 			"title": "Interconnection and Power Marketing",
-			"tip": "Activities to gain access to the transmission grid and negotiate contracts to sell or otherwise market  power."
+			"tip": "Activities to gain access to the transmission grid and negotiate contracts to sell or otherwise market power."
 		},
 		{
 			"name": "tt_project_management_during_development_cost",
@@ -308,7 +308,7 @@
 		{
 			"name": "tt_procurement_management_cost",
 			"title": "Procurement Management",
-			"tip": "Bid management, purchasing, negotiations, contract management."
+			"tip": "Bid management, purchasing, negotiations, and contract management."
 		},
 		{
 			"name": "tt_construction_management_cost",
@@ -348,7 +348,7 @@
 		{
 			"name": "tt_offshore_substation_cost",
 			"title": "Offshore Substation",
-			"tip": "Electric conversion equipment required to step-up or convert power for export to the onshore grid and\nsupport structure,  also onboard work platforms, accommodation, equipment storage, helicopter access, etc."
+			"tip": "Electric conversion equipment required to step-up or convert power for export to the onshore grid and\nsupport structure, also onboard work platforms, accommodation, equipment storage, helicopter access, etc."
 		},
 		{
 			"name": "tt_onshore_transmission_infrastructure_cost",

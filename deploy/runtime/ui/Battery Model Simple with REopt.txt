@@ -1,6 +1,6 @@
 Battery Model Simple with REopt
-599
-413
+611
+407
 13
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 0
 Width
 3
-572
+584
 Height
 3
 387
@@ -51,7 +51,7 @@ Width
 90
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -127,13 +127,13 @@ Name
 batt_simple_chemistry
 X
 3
-402
+381
 Y
 3
-21
+24
 Width
 3
-171
+200
 Height
 3
 24
@@ -161,13 +161,13 @@ Name
 batt_simple_dispatch
 X
 3
-402
+381
 Y
 3
-48
+51
 Width
 3
-171
+200
 Height
 3
 24
@@ -196,10 +196,10 @@ Name
 batt_simple_kw
 X
 3
-153
+132
 Y
 3
-48
+51
 Width
 3
 90
@@ -258,10 +258,10 @@ Name
 batt_simple_kwh
 X
 3
-153
+132
 Y
 3
-21
+24
 Width
 3
 90
@@ -377,7 +377,7 @@ Width
 162
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -682,7 +682,7 @@ equations{'batt_simple_meter_position'} = define()
 	return batt_meter_position;
 };
 
-2372
+3605
 on_load{'Battery Model Simple with REopt'} = define(){
 	enable("batt_custom_dispatch", (value("batt_simple_dispatch") == 2));
 };
@@ -695,6 +695,21 @@ on_change{'call_reopt'} = define(){
 	// reset size to 0 to remove battery costs from total_installed_cost
 	value("batt_simple_kw", 0);
 	value("batt_simple_kwh", 0); 
+	dispatch_original_mode = value("batt_simple_dispatch"); //save original dispatch mode
+	value("batt_simple_dispatch",0); //set dispatch mode to 0 to run ReOPT
+	wf_len = 60 / ${ui_step_minutes} * 8760;
+	load_len = #(${load});
+	if (wf_len != load_len) {
+		msgbox("Weather file and load number of records must be the same.");
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
+		exit;
+	}
+	if (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) {
+		msgbox("Simulation timestep must be 15, 30 or 60 minutes.");
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
+		exit;
+	}
+	
 	
 	reopt = reopt_size_battery();
 	y = reopt.response;
@@ -705,11 +720,13 @@ on_change{'call_reopt'} = define(){
 		else{
 			msgbox("ReOpt Lite API timed out. Please try again later.");
 		}
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
 		exit;
 	}
 
 	if (y.outputs == null || y.outputs.Scenario == null){
 		msgbox("Error in ReOpt response. Try again later or another system design.");
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
 		exit;
 	}
 	
@@ -726,6 +743,7 @@ on_change{'call_reopt'} = define(){
 			value('batt_simple_kw', 0.0);
 			value('batt_simple_kwh', 0.0);
 		}
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
 		exit;
 	}
 
@@ -733,14 +751,18 @@ on_change{'call_reopt'} = define(){
 		"\nOptimal power: " + to_string(batt.size_kw) + "\nOverride " +
 		"'Battery capacity', 'Battery power', and 'Custom Dispatch' with results?";
 	apply = yesno(apply_str);
-	if (!apply)
+	if (!apply) {
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
 		exit;
+	}
 	
 	value('batt_simple_kw', batt.size_kw);
 	value('batt_simple_kwh', batt.size_kwh);
 	
-	if (batt.size_kw == 0 && batt.size_kwh == 0)
+	if (batt.size_kw == 0 && batt.size_kwh == 0) {
+		value("batt_simple_dispatch",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT
 		exit;
+	}
 	
 	batt_to_grid = null;
 	if (batt.year_one_to_grid_series_kw)
@@ -753,18 +775,17 @@ on_change{'call_reopt'} = define(){
 	value('batt_simple_dispatch', 2);
 
 	load = ${load};
-	ts_load = #load / #grid_charge;
 	
 	dispatch = alloc(#load);
-	for (i=0; i<8760; i++){
+	for (i=0; i<#grid_charge; i++){
 		if (batt_to_grid){
 			discharge = batt_to_grid[i] + batt_to_load[i];
 		} else{
 			discharge = batt_to_load[i];
 		}
 		charge = -pv_charge[i] - grid_charge[i];
-		for (j=0; j<ts_load; j++)
-			dispatch[i * ts_load + j] = discharge + charge;
+		
+		dispatch[i] = discharge + charge;
 	}
 
 	value('batt_custom_dispatch', dispatch);

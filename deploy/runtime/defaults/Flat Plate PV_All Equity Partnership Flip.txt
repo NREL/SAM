@@ -1,5 +1,5 @@
 1
-866
+867
 6par_aisc
 1
 1
@@ -2103,8 +2103,7 @@ inv_cec_cg_eff_euro
 inv_cec_cg_filename
 1
 4
-9
-<invalid>
+0
 inv_cec_cg_idcmax
 1
 1
@@ -2206,6 +2205,10 @@ inv_cec_date
 4
 3
 n/a
+inv_cec_hybrid
+1
+4
+0
 inv_cec_name
 1
 4
@@ -2907,7 +2910,7 @@ itc_fed_percent
 1
 1
 1
-26
+22
 itc_fed_percent_deprbas_fed
 1
 1

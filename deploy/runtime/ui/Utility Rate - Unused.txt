@@ -87,7 +87,7 @@ Y
 84
 Width
 3
-90
+180
 Height
 3
 24
@@ -138,7 +138,7 @@ Width
 1380
 Height
 3
-36
+42
 Tool Tip
 5
 0

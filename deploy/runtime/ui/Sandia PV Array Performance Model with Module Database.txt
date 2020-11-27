@@ -341,7 +341,7 @@ Width
 545
 Height
 3
-39
+75
 Tool Tip
 5
 0
@@ -509,13 +509,13 @@ X
 606
 Y
 3
-507
+504
 Width
 3
 405
 Height
 3
-99
+111
 Tool Tip
 5
 0
@@ -2336,10 +2336,10 @@ Name
 snl_transient_thermal_model_unit_mass
 X
 3
-714
+822
 Y
 3
-528
+525
 Width
 3
 99
@@ -2360,7 +2360,7 @@ Format
 0
 Decimals
 3
-0
+3
 Prefix
 5
 0
@@ -2460,16 +2460,16 @@ Name
 transient_thermal_model_message
 X
 3
-615
+612
 Y
 3
-555
+546
 Width
 3
-390
+396
 Height
 3
-48
+63
 Tool Tip
 5
 0

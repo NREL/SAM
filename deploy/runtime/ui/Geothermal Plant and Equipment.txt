@@ -1050,7 +1050,7 @@ Y
 87
 Width
 3
-384
+365
 Height
 3
 24
@@ -2894,7 +2894,7 @@ equations{ 'system_capacity' } = define() {
 	return ${gross_output}*1000;}; // MW to kW
 //	return ${geotherm.net_output}*1000;}; // MW to kW > 100% with net output
 
-1391
+1378
 function update_controls()
 {
 	flash_message();
@@ -2933,7 +2933,7 @@ function binary_message()
 	message = '';
 	
 	if (!${conversion_type})
-		message = 'Plant efficiency set as percentage of maximum possible plant efficiency';
+		message = 'Plant efficiency set as percentage of max plant efficiency';
 	
 	property( 'geotherm_binary_message','Caption',message );
 }

@@ -840,7 +840,7 @@ csp.gss.cost.site_improvements.area
 1
 1
 1
-1.24339e+06
+1243390
 csp.gss.cost.site_improvements.cost_per_m2
 1
 1
@@ -858,7 +858,7 @@ csp.gss.cost.solar_field.area
 1
 1
 1
-1.24339e+06
+1243390
 csp.gss.cost.solar_field.cost_per_m2
 1
 1
@@ -1068,7 +1068,7 @@ csp.gss.sf.field_area
 1
 1
 1
-1.24339e+06
+1243390
 csp.gss.sf.irr_loss_f0
 1
 1
@@ -2278,7 +2278,7 @@ itc_fed_percent
 1
 1
 1
-30
+22
 itc_fed_percent_deprbas_fed
 1
 1
