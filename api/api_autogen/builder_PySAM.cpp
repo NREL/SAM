@@ -930,35 +930,37 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << cmod_doc;
 
-    fx_file << "Input Consistency Warning\n"
-               "==================================\n"
-               "\n"
-               "As described in :ref:`Possible Problems <possible_problems>`, some input parameters are interdepedent but the equations accounting for these\n"
-               "interdependencies that enforce consistency among these input parameters are not available in the PySAM module. Therefore,\n"
-               "the onus is on the PySAM user to check that interdependencies are correctly handled. The variables which may require\n"
-               "additional logic include:\n\n";
+    if (tech_symbol != "TcsmoltenSalt") {
+        fx_file << "Input Consistency Warning\n"
+                   "==================================\n"
+                   "\n"
+                   "As described in :ref:`Possible Problems <possible_problems>`, some input parameters are interdepedent but the equations accounting for these\n"
+                   "interdependencies that enforce consistency among these input parameters are not available in the PySAM module. Therefore,\n"
+                   "the onus is on the PySAM user to check that interdependencies are correctly handled. The variables which may require\n"
+                   "additional logic include:\n\n";
 
-    std::set<std::string> dependent_vars;
-    for (const auto& i : root->vardefs_order) {
-        auto mm = root->m_vardefs.find(i);
-        std::map<std::string, var_def> vardefs = mm->second;
-        for (auto& it : vardefs) {
-            std::string var_symbol = it.first;
-            var_def vd = it.second;
+        std::set<std::string> dependent_vars;
+        for (const auto& i : root->vardefs_order) {
+            auto mm = root->m_vardefs.find(i);
+            std::map<std::string, var_def> vardefs = mm->second;
+            for (auto& it : vardefs) {
+                std::string var_symbol = it.first;
+                var_def vd = it.second;
 
-            for (const auto & ds: vd.downstream)
-                dependent_vars.insert(ds);
+                for (const auto & ds: vd.downstream)
+                    dependent_vars.insert(ds);
 
-            for (const auto & ds: vd.upstream)
-                dependent_vars.insert(ds);
+                for (const auto & ds: vd.upstream)
+                    dependent_vars.insert(ds);
+            }
         }
+
+        for (const auto& i : dependent_vars)
+            fx_file << " - " << i << "\n";
+
+        fx_file << "\n"
+                   "Provided for each of these inputs is a list of other inputs that are potentially interdependent. \n\n";
     }
-
-    for (const auto& i : dependent_vars)
-        fx_file << " - " << i << "\n";
-
-    fx_file << "\n"
-               "Provided for each of these inputs is a list of other inputs that are potentially interdependent. \n\n";
 
     fx_file << "Creating an Instance\n===================================\n\n"
                "Refer to the :ref:`Initializing a Model <initializing>` page for details on the different ways to create an instance of a PySAM class.\n\n"
