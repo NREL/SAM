@@ -877,7 +877,7 @@ extern "C"
 
 	/**
 	 * Set subarray1_shading:string_option: Sub-array 1 shading string option
-	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
+	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
 	 */
@@ -925,7 +925,7 @@ extern "C"
 
 	/**
 	 * Set subarray2_shading:string_option: Sub-array 2 Shading string option
-	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
+	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
 	 */
@@ -973,7 +973,7 @@ extern "C"
 
 	/**
 	 * Set subarray3_shading:string_option: Sub-array 3 Shading string option
-	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
+	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
 	 */
@@ -1021,7 +1021,7 @@ extern "C"
 
 	/**
 	 * Set subarray4_shading:string_option: Sub-array 4 Shading string option
-	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
+	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
 	 */
@@ -4461,7 +4461,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_credit_month: Month of rollover credits [$/kWh]
+	 * Set ur_nm_credit_month: Month of year end payout (true-up) [mn]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=11
 	 * required if: ?=11
@@ -4469,7 +4469,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_credit_rollover: Roll over credits to next year [0/1]
+	 * Set ur_nm_credit_rollover: Apply net metering true-up credits to future bills [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
@@ -4477,7 +4477,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_nm_credit_rollover_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_yearend_sell_rate: Net metering credit sell rate [$/kWh]
+	 * Set ur_nm_yearend_sell_rate: Net metering true-up credit sell rate [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -5765,8 +5765,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_inv_pso_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_inv_tdc_loss_percent_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_lifetime_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_loss_ond_nget(SAM_table ptr, SAM_error *err);
@@ -5784,6 +5782,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_diodes_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_gross_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_inv_tdc_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_invmppt_loss_nget(SAM_table ptr, SAM_error *err);
 

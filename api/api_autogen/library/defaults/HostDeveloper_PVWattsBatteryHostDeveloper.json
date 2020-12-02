@@ -37,12 +37,12 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 215.864,
+			"system_capacity": 540,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_capacity": [16.000000],
+			"om_capacity": [19.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -50,7 +50,7 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [300.000000],
+			"om_replacement_cost1": [206.670000],
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 334113
 		},
@@ -58,7 +58,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": 22,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -221,7 +221,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 215.864
+			"system_capacity": 540
 		},
 		"ReturnOnEquity": {
 			"roe_input": [0.000000]
@@ -278,7 +278,7 @@
 			"construction_financing_cost": 6682.27
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 300
+			"battery_per_kWh": 206.67
 		}
 	}
 }

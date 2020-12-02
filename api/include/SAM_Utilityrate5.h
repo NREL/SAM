@@ -168,7 +168,7 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_credit_month: Month of rollover credits [$/kWh]
+	 * Set ur_nm_credit_month: Month of year end payout (true-up) [mn]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=11
 	 * required if: ?=11
@@ -176,7 +176,7 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_credit_rollover: Roll over credits to next year [0/1]
+	 * Set ur_nm_credit_rollover: Apply net metering true-up credits to future bills [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
@@ -184,7 +184,7 @@ extern "C"
 	SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_nm_credit_rollover_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_yearend_sell_rate: Net metering credit sell rate [$/kWh]
+	 * Set ur_nm_yearend_sell_rate: Net metering true-up credit sell rate [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -523,12 +523,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_sep_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Utilityrate5_Outputs_excess_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Utilityrate5_Outputs_excess_dollars_earned_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Utilityrate5_Outputs_excess_kwhs_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_excess_kwhs_earned_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_lifetime_load_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -540,6 +534,10 @@ extern "C"
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_peak_w_sys_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_peak_wo_sys_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Utilityrate5_Outputs_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Utilityrate5_Outputs_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_Utilityrate5_Outputs_savings_year1_nget(SAM_table ptr, SAM_error *err);
 
@@ -577,12 +575,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Utilityrate5_Outputs_year1_electric_load_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_excess_dollars_applied_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_excess_dollars_earned_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_excess_kwhs_applied_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_excess_kwhs_earned_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_dc_peak_per_period_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -614,8 +606,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_salespurchases_without_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_cumulative_excess_dollars_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_cumulative_excess_generation_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -656,6 +646,10 @@ extern "C"
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_utility_bill_wo_sys_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_net_billing_credits_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_nm_dollars_applied_aget(SAM_table ptr, int* length, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

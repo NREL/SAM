@@ -9549,17 +9549,6 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_inv_pso_loss_percent_nget(SAM_ta
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_inv_tdc_loss_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_ac_inv_tdc_loss_percent", &result))
-		make_access_error("SAM_Pvsamv1", "annual_ac_inv_tdc_loss_percent");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_lifetime_loss_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9653,6 +9642,17 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_gross_nget(SAM_table ptr, SAM_er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_dc_gross", &result))
 		make_access_error("SAM_Pvsamv1", "annual_dc_gross");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_inv_tdc_loss_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_dc_inv_tdc_loss_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_dc_inv_tdc_loss_percent");
 	});
 	return result;
 }

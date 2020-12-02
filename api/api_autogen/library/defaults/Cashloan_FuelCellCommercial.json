@@ -32,7 +32,7 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [500.000000],
+			"om_replacement_cost1": [206.670000],
 			"om_replacement_cost2": [0.000000],
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 2.45151e+06
@@ -49,7 +49,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": 22,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -161,7 +161,7 @@
 			"batt_computed_bank_capacity": 100.205,
 			"batt_replacement_option": 0,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
+			"battery_per_kWh": 206.67,
 			"en_batt": 1
 		},
 		"FuelCell": {

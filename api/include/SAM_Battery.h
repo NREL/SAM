@@ -1191,7 +1191,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_credit_month: Month of rollover credits [$/kWh]
+	 * Set ur_nm_credit_month: Month of year end payout (true-up) [mn]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=11
 	 * required if: ?=11
@@ -1199,7 +1199,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_credit_rollover: Roll over credits to next year [0/1]
+	 * Set ur_nm_credit_rollover: Apply net metering true-up credits to future bills [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
@@ -1207,7 +1207,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_nm_credit_rollover_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_yearend_sell_rate: Net metering credit sell rate [$/kWh]
+	 * Set ur_nm_yearend_sell_rate: Net metering true-up credit sell rate [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0

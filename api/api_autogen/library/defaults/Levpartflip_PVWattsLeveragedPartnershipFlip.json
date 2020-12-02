@@ -37,12 +37,12 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 20000,
+			"system_capacity": 50000,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_capacity": [13.000000],
+			"om_capacity": [17.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -58,7 +58,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": 22,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -215,7 +215,7 @@
 		"SystemOutput": {
 			"degradation": [0.500000],
 			"gen": [0],
-			"system_capacity": 20000
+			"system_capacity": 50000
 		},
 		"Moratorium": {
 			"loan_moratorium": 0
