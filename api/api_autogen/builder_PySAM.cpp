@@ -930,11 +930,38 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << cmod_doc;
 
+    fx_file << "Input Consistency Warning\n"
+               "==================================\n"
+               "\n"
+               "As described in :ref:`Possible Problems <possible_problems>`, some input parameters are interdepedent but the equations accounting for these\n"
+               "interdependencies that enforce consistency among these input parameters are not available in the PySAM module. Therefore,\n"
+               "the onus is on the PySAM user to check that interdependencies are correctly handled. The variables which may require\n"
+               "additional logic include:\n\n";
+
+    std::set<std::string> dependent_vars;
+    for (const auto& i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
+        std::map<std::string, var_def> vardefs = mm->second;
+        for (auto& it : vardefs) {
+            std::string var_symbol = it.first;
+            var_def vd = it.second;
+
+            for (const auto & ds: vd.downstream)
+                dependent_vars.insert(ds);
+
+            for (const auto & ds: vd.upstream)
+                dependent_vars.insert(ds);
+        }
+    }
+
+    for (const auto& i : dependent_vars)
+        fx_file << " - " << i << "\n";
+
+    fx_file << "\n"
+               "Provided for each of these inputs is a list of other inputs that are potentially interdependent. \n\n";
+
     fx_file << "Creating an Instance\n===================================\n\n"
-               "There are three methods to create a new instance of a PySAM module. Using ``default`` populates the new"
-               "class' attributes with default values specific to a ``config``. Each technology-financial"
-               "configuration corresponds to a SAM GUI configuration. Using ``new`` creates an instance with empty "
-               "attributes. The ``wrap`` function allows compatibility with PySSC, for details, refer to :doc:`../PySSC`.\n\n"
+               "Refer to the :ref:`Initializing a Model <initializing>` page for details on the different ways to create an instance of a PySAM class.\n\n"
                "**" << tech_symbol << " model description**\n\n";
 
     fx_file << ".. automodule:: PySAM." << tech_symbol << "\n";
@@ -949,7 +976,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         std::string module_symbol = format_as_symbol(mm->first);
 
-        fx_file << module_symbol << " Group\n===================================\n\n";
+        if (module_symbol == "Outputs" && mm->second.empty())
+            continue;
+
+        fx_file << module_symbol << " Group\n======================================================\n\n";
         fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
         fx_file << "\t:members:\n\n";
     }
