@@ -961,6 +961,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Controller_q_pb_design_nset(SAM_table ptr, double number, SAM_error *err);
 
+	/**
+	 * Set tanks_in_parallel: Tanks are in parallel, not in series, with solar field [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Controller_tanks_in_parallel_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	//
 	// SystemDesign parameters
@@ -1684,6 +1692,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_q_pb_design_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_tanks_in_parallel_nget(SAM_table ptr, SAM_error *err);
+
 
 	/**
 	 * SystemDesign Getters
@@ -1901,17 +1911,29 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_balance_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_cr_to_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_cycle_to_field_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_field_delivered_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_field_recirc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_field_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_htf_heat_sink_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_loop_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_tes_ch_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_pc_to_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_tes_dc_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_tes_cold_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_m_dot_tes_hot_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_mass_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_mass_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err);
 

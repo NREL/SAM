@@ -91,6 +91,12 @@ SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_ec_tou_mat_mset(SAM_table p
 	});
 }
 
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_en_ts_buy_rate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_en_ts_buy_rate", number);
+	});
+}
+
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_en_ts_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_en_ts_sell_rate", number);
@@ -112,6 +118,18 @@ SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_monthly_fixed_charge_nset(S
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_monthly_min_charge", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nm_credit_month", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_nm_credit_rollover_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nm_credit_rollover", number);
 	});
 }
 
@@ -321,6 +339,17 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ec_tou_mat_mget(SAM_tabl
 
 
 
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_en_ts_buy_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_en_ts_buy_rate", &result))
+		make_access_error("SAM_Utilityrate5", "ur_en_ts_buy_rate");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -359,6 +388,28 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_monthly_min_charge_nget(S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_monthly_min_charge", &result))
 		make_access_error("SAM_Utilityrate5", "ur_monthly_min_charge");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nm_credit_month", &result))
+		make_access_error("SAM_Utilityrate5", "ur_nm_credit_month");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_credit_rollover_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nm_credit_rollover", &result))
+		make_access_error("SAM_Utilityrate5", "ur_nm_credit_rollover");
 	});
 	return result;
 }

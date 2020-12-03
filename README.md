@@ -20,6 +20,11 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 * [Google Test](https://github.com/google/googletest) is a C++ test framework that enables comprehensive unit-testing of software.  Contributions to the project will eventually be required to have associated unit tests written in this framework.
 
+* [jsoncpp](https://github.com/open-source-parsers/jsoncpp) is a C++ library that allows manipulating JSON values, including serialization and deserialization to and from strings.
+
+* [Python](https://www.python.org)/[Miniconda](https://docs.conda.io/) Necessary additional information is included in the install directory.
+
+
 * This repository, **SAM**, provides the user interface to assign values to inputs of the SSC compute modules, run the modules in the correct order, and display simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimensional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
 
 We also include two Sandia libraries, [stepwise](https://dakota.sandia.gov/content/packages/stepwise), and [LHS](https://dakota.sandia.gov/content/packages/lhs), which are distributed as part of the Dakota platform, licensed under [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html).  These libraries may be found [here](https://github.com/NREL/SAM/tree/develop/Sandia).
@@ -39,7 +44,7 @@ These are the general quick steps you need to follow to set up your computer for
 
     * Windows: Visual Studio 2017 Community or other editions available at https://www.visualstudio.com/.
     * Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
-    * Linux: g++ compiler available at http://www.cprogramming.com/g++.html or as part of the Linux distribution.
+    * Linux: g++ compiler available at [https://gcc.gnu.org](https://gcc.gnu.org/) or installed via your Linux distribution.
 
 2. Download the wxWidgets 3.1.1 source code for your operating system from https://www.wxwidgets.org/downloads/.
 
@@ -68,3 +73,7 @@ If you would like to submit code to fix an issue or add a feature, you can use G
 SAM's open source code is copyrighted by the Alliance for Sustainable Energy and licensed with BSD-3-Clause terms, found [here](https://github.com/NREL/SAM/blob/develop/LICENSE).
 
 SAM also includes two [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html) licensed libraries from Sandia National Laboratory.  These Fortran libraries have been pre-compiled and included as binaries [here](https://github.com/NREL/SAM/tree/develop/Sandia).  To swap in a new version of these libraries, you may compile them as binary/executables and copy them into the respective folder.
+
+# Citing this package
+
+System Advisor Model Version 2020.2.29 (2020.2.29). SAM source code. National Renewable Energy Laboratory. Golden, CO. Accessed May 27, 2020. https://github.com/NREL/ssc

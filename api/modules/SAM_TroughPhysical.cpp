@@ -4411,6 +4411,42 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_balance_aget(SAM_table ptr, 
 
 
 
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_cold_tank_to_hot_tank_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_cold_tank_to_hot_tank", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "m_dot_cold_tank_to_hot_tank");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_cr_to_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_cr_to_tes_hot", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "m_dot_cr_to_tes_hot");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_cycle_to_field_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_cycle_to_field", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "m_dot_cycle_to_field");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_field_delivered_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4429,6 +4465,18 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_field_recirc_aget(SAM_table 
 	result = ssc_data_get_array(ptr, "m_dot_field_recirc", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "m_dot_field_recirc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_field_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_field_to_cycle", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "m_dot_field_to_cycle");
 	});
 	return result;
 }
@@ -4459,24 +4507,36 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_pc_aget(SAM_table ptr, int* 
 
 
 
-SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_tes_ch_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_pc_to_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "m_dot_tes_ch", length);
+	result = ssc_data_get_array(ptr, "m_dot_pc_to_tes_cold", length);
 	if (!result)
-		make_access_error("SAM_TroughPhysical", "m_dot_tes_ch");
+		make_access_error("SAM_TroughPhysical", "m_dot_pc_to_tes_cold");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_tes_dc_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_tes_cold_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "m_dot_tes_dc", length);
+	result = ssc_data_get_array(ptr, "m_dot_tes_cold_out", length);
 	if (!result)
-		make_access_error("SAM_TroughPhysical", "m_dot_tes_dc");
+		make_access_error("SAM_TroughPhysical", "m_dot_tes_cold_out");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_tes_hot_out_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_tes_hot_out", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "m_dot_tes_hot_out");
 	});
 	return result;
 }
@@ -4489,6 +4549,30 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_water_pc_aget(SAM_table ptr,
 	result = ssc_data_get_array(ptr, "m_dot_water_pc", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "m_dot_water_pc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_mass_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "mass_tes_cold", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "mass_tes_cold");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_mass_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "mass_tes_hot", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "mass_tes_hot");
 	});
 	return result;
 }
@@ -4855,6 +4939,18 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_pipe_tes_diams_aget(SAM_table ptr,
 
 
 
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_pipe_tes_lengths_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pipe_tes_lengths", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "pipe_tes_lengths");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TroughPhysical_Outputs_pipe_tes_mdot_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5209,6 +5305,17 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_rh_aget(SAM_table ptr, int* length
 	result = ssc_data_get_array(ptr, "rh", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "rh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_Outputs_sim_duration_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sim_duration", &result))
+		make_access_error("SAM_TroughPhysical", "sim_duration");
 	});
 	return result;
 }

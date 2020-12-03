@@ -1,5 +1,5 @@
 1
-426
+428
 ac_nameplate
 1
 1
@@ -1063,7 +1063,7 @@ engr_per_watt
 1
 1
 1
-0.08
+0.07
 engr_percent
 1
 1
@@ -1505,7 +1505,7 @@ install_labor_perwatt
 1
 1
 1
-0.13
+0.11
 install_labor_total
 1
 1
@@ -1613,7 +1613,7 @@ itc_fed_percent
 1
 1
 1
-26
+22
 itc_fed_percent_deprbas_fed
 1
 1
@@ -1697,7 +1697,7 @@ land_per_watt
 1
 1
 1
-0.03
+0
 land_percent
 1
 1
@@ -2028,7 +2028,7 @@ om_capacity
 2
 1
 1
-13
+17
 om_capacity_escal
 1
 1
@@ -2242,13 +2242,13 @@ per_inverter
 1
 1
 1
-0.06
+0.05
 per_module
 1
 1
 1
 1
-0.38
+0.41
 permitting_fixed
 1
 1
@@ -2483,6 +2483,12 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 subtotal_direct
 1
 1
@@ -2494,7 +2500,7 @@ system_capacity
 1
 1
 1
-20000
+50000
 system_use_lifetime_output
 1
 1
@@ -2584,6 +2590,12 @@ tz
 1
 1
 -7
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

@@ -1,0 +1,4179 @@
+Marine Costs - Structural Assembly
+919
+603
+51
+Label
+
+1
+13
+Name
+5
+0
+X
+3
+192
+Y
+3
+69
+Width
+3
+171
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+11
+Prime mover
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+21
+active_structure_cost
+X
+3
+492
+Y
+3
+219
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+5
+Numeric
+
+1
+17
+Name
+5
+37
+additional_structural_components_cost
+X
+3
+363
+Y
+3
+279
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+Numeric
+
+1
+17
+Name
+5
+19
+ballast_system_cost
+X
+3
+492
+Y
+3
+399
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+10
+Numeric
+
+1
+17
+Name
+5
+21
+buoyancy_chamber_cost
+X
+3
+492
+Y
+3
+159
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+3
+Label
+
+1
+13
+Name
+5
+8
+coatings
+X
+3
+195
+Y
+3
+489
+Width
+3
+168
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+8
+Coatings
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+13
+coatings_cost
+X
+3
+363
+Y
+3
+489
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+13
+CheckBox
+
+1
+9
+Name
+5
+35
+detailed_cost_choice_marine_systems
+X
+3
+363
+Y
+3
+339
+Width
+3
+174
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+33
+detailed_cost_choice_struct_assem
+X
+3
+366
+Y
+3
+99
+Width
+3
+171
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+30
+external_ballast_chambers_cost
+X
+3
+492
+Y
+3
+189
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4
+Label
+
+1
+13
+Name
+5
+19
+level_5_total_prime
+X
+3
+363
+Y
+3
+42
+Width
+3
+129
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+21
+level_5_total_prime50
+X
+3
+492
+Y
+3
+42
+Width
+3
+195
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Sub-Category Totals
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+19
+marine_systems_cost
+X
+3
+363
+Y
+3
+309
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+8
+Numeric
+
+1
+17
+Name
+5
+25
+marine_systems_cost_total
+X
+3
+363
+Y
+3
+309
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+24
+navigation_lighting_cost
+X
+3
+492
+Y
+3
+429
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+11
+Label
+
+1
+13
+Name
+5
+7
+object 
+X
+3
+291
+Y
+3
+249
+Width
+3
+201
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+23
+Other prime mover costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+GroupBox
+
+1
+8
+Name
+5
+9
+object 41
+X
+3
+9
+Y
+3
+9
+Width
+3
+900
+Height
+3
+587
+Tool Tip
+5
+0
+Caption
+5
+19
+Structural Assembly
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 713
+X
+3
+288
+Y
+3
+159
+Width
+3
+204
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+17
+Buoyancy chambers
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72446
+X
+3
+120
+Y
+3
+519
+Width
+3
+243
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+27
+Transportation of structure
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72647
+X
+3
+276
+Y
+3
+459
+Width
+3
+216
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+25
+Other marine system costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+14
+object 7264745
+X
+3
+315
+Y
+3
+429
+Width
+3
+177
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+19
+Navigation lighting
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 72748
+X
+3
+291
+Y
+3
+369
+Width
+3
+177
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+24
+Personnel access system 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 728
+X
+3
+198
+Y
+3
+309
+Width
+3
+165
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+14
+Marine systems
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 729
+X
+3
+102
+Y
+3
+279
+Width
+3
+261
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+32
+Additional structural components
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 73
+X
+3
+288
+Y
+3
+129
+Width
+3
+204
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+27
+Primary structural assembly
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 730
+X
+3
+315
+Y
+3
+219
+Width
+3
+177
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+16
+Active structure
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 731
+X
+3
+315
+Y
+3
+399
+Width
+3
+177
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+14
+Ballast system
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 733
+X
+3
+96
+Y
+3
+549
+Width
+3
+267
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+31
+Other structural assembly costs
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 734
+X
+3
+291
+Y
+3
+189
+Width
+3
+201
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+25
+External ballast chambers
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+11
+other_costs
+X
+3
+363
+Y
+3
+549
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+15
+Numeric
+
+1
+17
+Name
+5
+24
+other_marine_system_cost
+X
+3
+492
+Y
+3
+459
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+12
+Numeric
+
+1
+17
+Name
+5
+22
+other_prime_mover_cost
+X
+3
+492
+Y
+3
+249
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+Label
+
+1
+13
+Name
+5
+27
+override_check_structural39
+X
+3
+21
+Y
+3
+114
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+28
+personnel_access_system_cost
+X
+3
+492
+Y
+3
+369
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+9
+Numeric
+
+1
+17
+Name
+5
+25
+primary_struct_assem_cost
+X
+3
+492
+Y
+3
+129
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
+16
+prime_mover_cost
+X
+3
+363
+Y
+3
+69
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+1
+Numeric
+
+1
+17
+Name
+5
+22
+prime_mover_cost_total
+X
+3
+363
+Y
+3
+69
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+15
+struct_override
+X
+3
+24
+Y
+3
+228
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+21
+struct_override_label
+X
+3
+705
+Y
+3
+48
+Width
+3
+195
+Height
+3
+240
+Tool Tip
+5
+0
+Caption
+5
+147
+The category cost breakdown cannot be used when 'Override cost structure' is selected. The values in the category cost columns will not be applied.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+22
+total_bos_cost_per_kwh
+X
+3
+21
+Y
+3
+171
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+26
+total_capital_cost_per_kwh
+X
+3
+651
+Y
+3
+648
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+25
+total_device_cost_per_kwh
+X
+3
+651
+Y
+3
+648
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+28
+total_financial_cost_per_kwh
+X
+3
+651
+Y
+3
+648
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+29
+total_operations_cost_per_kwh
+X
+3
+651
+Y
+3
+648
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+24
+transport_structure_cost
+X
+3
+363
+Y
+3
+519
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+14
+ToolTipCtrl
+
+1
+7
+Name
+5
+16
+tt_coatings_cost
+X
+3
+471
+Y
+3
+489
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+ToolTipCtrl
+
+1
+7
+Name
+5
+22
+tt_marine_systems_cost
+X
+3
+471
+Y
+3
+309
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+ToolTipCtrl
+
+1
+7
+Name
+5
+33
+tt_other_structural_assembly_cost
+X
+3
+471
+Y
+3
+549
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+ToolTipCtrl
+
+1
+7
+Name
+5
+19
+tt_prime_mover_cost
+X
+3
+471
+Y
+3
+69
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+ToolTipCtrl
+
+1
+7
+Name
+5
+28
+tt_structural_component_cost
+X
+3
+471
+Y
+3
+279
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+ToolTipCtrl
+
+1
+7
+Name
+5
+35
+tt_transportation_of_structure_cost
+X
+3
+471
+Y
+3
+519
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+0
+
+87
+active_structure_cost
+3
+1
+ 
+$
+ 
+0
+1
+1
+1
+1
+1
+0
+Numeric
+additional_structural_components_cost
+3
+1
+Structural components cost 
+$
+ME Device Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+additional_structural_components_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+array_cable_system_cost_input
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+array_cable_system_cost_method
+3
+1
+ 
+$ 
+ 
+0
+1
+1
+1
+1
+1
+0
+Default
+array_cable_system_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+assembly_and_install_cost_input
+3
+1
+Assembly and install cost input 
+$, $/kW 
+ME BoS Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+assembly_and_install_cost_method
+3
+1
+Assembly and install cost method
+$
+ME Cost Choice
+0
+3
+1
+1
+1
+1
+2
+Choice
+assembly_and_install_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+ballast_system_cost
+3
+1
+ 
+$
+ 
+0
+1
+1
+1
+1
+1
+0
+Default
+buoyancy_chamber_cost
+3
+1
+ 
+$
+ 
+0
+1
+1
+1
+1
+1
+0
+Numeric
+coatings_cost
+3
+1
+Coatings (structural assembly) costs
+$
+ME Device Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+coatings_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_marine_systems
+3
+1
+Marine sytems detailed cost choice
+ 
+ME Cost Choice
+0
+3
+1
+1
+1
+1
+0
+Default
+detailed_cost_choice_struct_assem
+3
+1
+Prime mover detailed cost choice 
+ 
+ME Cost Choice
+0
+3
+1
+1
+1
+1
+0
+Default
+development_cost_input
+3
+1
+Development cost input
+$, $/kW
+ME BoS Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+development_cost_method
+3
+1
+Development cost method
+ 
+ME Cost Choice
+0
+3
+1
+1
+1
+1
+2
+Choice
+development_cost_modeled
+3
+1
+ 
+$ 
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+eng_and_mgmt_cost_input
+3
+1
+E&M cost input
+$, $/kW
+ME BoS Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+eng_and_mgmt_cost_method
+3
+1
+E&M cost method
+ 
+ME Cost Choice
+0
+3
+1
+1
+1
+1
+2
+Choice
+eng_and_mgmt_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+export_cable_system_cost_input
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+export_cable_system_cost_method
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+export_cable_system_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+external_ballast_chambers_cost
+3
+1
+ 
+$
+ 
+0
+1
+1
+1
+1
+1
+0
+Numeric
+insurance_during_construction_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+itemized_check_structural
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+maintenance_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+marine_energy_tech
+3
+1
+ 
+ 
+ 
+15
+0=Wave| 1=Tidal
+8
+1
+1
+1
+1
+0
+Default
+marine_system_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+marine_systems_cost
+3
+1
+Marine systems costs
+$
+ME Device Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+marine_systems_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+method_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+mooring_found_substruc_cost_input
+3
+1
+Mooring cost input 
+$, $/kW 
+ME Device Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+mooring_found_substruc_cost_method
+3
+1
+Mooring cost method
+ 
+ME Cost Choice
+0
+3
+1
+1
+1
+1
+2
+Choice
+mooring_found_substruc_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+navigation_lighting_cost
+3
+1
+ 
+$
+ 
+0
+1
+1
+1
+1
+1
+0
+Default
+offshore_substation_cost_input
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+offshore_substation_cost_method
+3
+1
+ 
+$
+ 
+0
+1
+1
+1
+1
+1
+0
+Default
+offshore_substation_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+onshore_substation_cost_input
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+onshore_substation_cost_method
+3
+1
+ 
+$
+ 
+0
+1
+1
+1
+1
+1
+0
+Default
+onshore_substation_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+operations_cost_modeled
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+other_cost_total
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+other_costs
+3
+1
+Other structural assembly costs 
+$ 
+ME Device Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+other_elec_infra_cost_input
+3
+1
+ 
+ 
+ 
+0
+2
+1
+1
+1
+1
+0
+Default
+other_elec_infra_cost_method
+3
+1
+ 
+$
+ 
+0
+3
+1
+1
+1
+1
+0
+Default
+other_elec_infra_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+other_infrastructure_cost_input
+3
+1
+Other infrastructure cost input 
+$, $/kW
+ME BoS Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+other_infrastructure_cost_method
+3
+1
+Other infrastructure cost method
+$
+ME Cost Choice
+0
+3
+1
+1
+1
+1
+2
+Choice
+other_infrastructure_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+other_marine_system_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+other_prime_mover_cost
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+override_check_structural
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+personnel_access_system_cost
+3
+1
+ 
+$
+ 
+0
+1
+1
+1
+1
+1
+0
+Default
+plant_commissioning_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+power_takeoff_system_cost_input
+3
+1
+PTO cost input 
+$, $/kW
+ME Device Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+power_takeoff_system_cost_method
+3
+1
+PTO cost method
+$
+ME Cost Choice
+0
+3
+1
+1
+1
+1
+2
+Choice
+power_takeoff_system_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+primary_struct_assem_cost
+3
+1
+ 
+$
+ 
+0
+1
+1
+1
+1
+1
+0
+Numeric
+prime_mover_cost
+3
+1
+Prime mover costs
+$
+ME Device Costs
+0
+3
+1
+1
+1
+1
+0
+Numeric
+prime_mover_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+prime_mover_cost_total_check
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+project_contingency_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+reserve_accounts_modeled
+3
+1
+ 
+ 
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+site_access_port_staging_cost_modeled
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+struct_level_total_label
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Numeric
+struct_override
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+struct_user_input_label
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Numeric
+structural_assembly_cost
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+structural_assembly_cost_input
+3
+1
+Structural assembly cost input
+$, $/kW
+ME Device Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+structural_assembly_cost_method
+3
+1
+Structural assembly cost method 
+ 
+ME Cost Choice
+0
+3
+1
+1
+1
+1
+2
+Default
+structural_assembly_cost_modeled
+3
+1
+ 
+$ 
+ 
+0
+9
+1
+1
+1
+1
+0
+Numeric
+structural_assembly_cost_modeled_formatted
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+structural_assembly_cost_total
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+total_bos_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+total_capital_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+total_device_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+total_financial_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+total_installed_cost_structural
+3
+1
+ 
+$
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
+total_operations_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+total_rated_capacity
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+transport_structure_cost
+3
+1
+Structure transportation costs 
+$
+ME Device Costs
+0
+3
+1
+1
+1
+1
+0
+Default
+transport_structure_cost_total
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+variable_marine_systems
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+variable_prime_mover
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+
+8912
+equations {'total_rated_capacity'} = define() {
+	return ${system_capacity};
+};
+
+equations{'marine_energy_tech'} = define() {
+	tech = technology();
+
+	if (tech == 'MEwave') return 0;
+	else return 1; //tidal
+};
+
+equations {'prime_mover_cost_total'} = define() {
+	return ${primary_struct_assem_cost}+${buoyancy_chamber_cost}+
+	${external_ballast_chambers_cost}+${active_structure_cost}+${other_prime_mover_cost};
+};
+
+equations {'additional_structural_components_cost_total'} = define() {
+	return ${additional_structural_components_cost};
+};
+
+equations {'marine_systems_cost_total'} = define() {
+	return ${personnel_access_system_cost}+${ballast_system_cost}+
+		${navigation_lighting_cost}+${other_marine_system_cost};
+};
+
+equations {'coatings_cost_total'} = define() {
+	return ${coatings_cost};
+};
+
+equations {'transport_structure_cost_total'} = define() {
+	return ${transport_structure_cost};
+};
+
+equations {'other_cost_total'} = define() {
+	return ${other_costs};
+};
+
+equations {'prime_mover_cost_total_check'} = define() {
+	if (${detailed_cost_choice_struct_assem}==0)
+	{
+		return ${prime_mover_cost};
+	}
+	else
+	{
+		return ${prime_mover_cost_total};
+	}
+};
+
+equations {'marine_system_cost_total_check'} = define() {
+	if (${detailed_cost_choice_marine_systems}==0)
+	{
+		return ${marine_systems_cost};
+	}
+	else
+	{
+		return ${marine_systems_cost_total};
+	}
+};
+
+equations {'structural_assembly_cost_total'} = define() {
+	return ${prime_mover_cost_total_check}+${additional_structural_components_cost_total}+${marine_system_cost_total_check}+
+		${coatings_cost_total}+${transport_structure_cost_total}+${other_cost_total};
+};
+
+
+
+
+equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
+	
+
+	obj = ssc_create();
+   
+	ssc_var(obj,'device_rated_power', ${device_rated_power});
+	ssc_var(obj,'system_capacity', ${system_capacity});
+	ssc_var(obj,'devices_per_row', ${devices_per_row});
+	ssc_var(obj,'annual_energy', ${annual_energy});
+	
+	
+	ssc_var(obj,'structural_assembly_cost_method', ${structural_assembly_cost_method});
+	ssc_var(obj,'structural_assembly_cost_input', ${structural_assembly_cost_input});
+	//ssc_var(obj,'structural_assembly_cost_total', ${structural_assembly_cost_total});
+	ssc_var(obj,'power_takeoff_system_cost_method', ${power_takeoff_system_cost_method});
+	ssc_var(obj,'power_takeoff_system_cost_input', ${power_takeoff_system_cost_input});
+	//ssc_var(obj,'power_takeoff_system_cost_total', ${power_takeoff_system_cost_total});
+	ssc_var(obj,'mooring_found_substruc_cost_method', ${mooring_found_substruc_cost_method});
+	ssc_var(obj,'mooring_found_substruc_cost_input', ${mooring_found_substruc_cost_input});
+	//ssc_var(obj,'mooring_found_substruc_cost_total', ${mooring_found_substruc_cost_total});	
+	
+	ssc_var(obj,'development_cost_method', ${development_cost_method});
+	ssc_var(obj,'development_cost_input', ${development_cost_input});
+	ssc_var(obj,'eng_and_mgmt_cost_method', ${eng_and_mgmt_cost_method});
+	ssc_var(obj,'eng_and_mgmt_cost_input', ${eng_and_mgmt_cost_input});
+	ssc_var(obj,'assembly_and_install_cost_method', ${assembly_and_install_cost_method});
+	ssc_var(obj,'assembly_and_install_cost_input', ${assembly_and_install_cost_input});
+	ssc_var(obj,'other_infrastructure_cost_method', ${other_infrastructure_cost_method});
+	ssc_var(obj,'other_infrastructure_cost_input', ${other_infrastructure_cost_input});
+	
+	ssc_var(obj,'array_cable_system_cost_method', ${array_cable_system_cost_method});
+	ssc_var(obj,'array_cable_system_cost_input', ${array_cable_system_cost_input});
+	ssc_var(obj,'export_cable_system_cost_method', ${export_cable_system_cost_method});
+	ssc_var(obj,'export_cable_system_cost_input', ${export_cable_system_cost_input});
+	ssc_var(obj,'onshore_substation_cost_method', ${onshore_substation_cost_method});
+	ssc_var(obj,'onshore_substation_cost_input', ${onshore_substation_cost_input});
+	ssc_var(obj,'offshore_substation_cost_method', ${offshore_substation_cost_method});
+	ssc_var(obj,'offshore_substation_cost_input', ${offshore_substation_cost_input});
+	ssc_var(obj,'other_elec_infra_cost_method', ${other_elec_infra_cost_method});
+	ssc_var(obj,'other_elec_infra_cost_input', ${other_elec_infra_cost_input});
+	
+	ssc_var(obj,'marine_energy_tech', ${marine_energy_tech});
+//	if (${marine_energy_tech} < 0.5)
+	tech = technology();
+	if (tech == 'MEwave')	{
+		ssc_var(obj,'library_or_input_wec', ${library_or_input_wec});
+//		msgbox("library_or_input_wec " + ${library_or_input_wec});
+		ssc_var(obj,'lib_wave_device', ${lib_wave_device});
+//		msgbox("lib_wave_device " + ${lib_wave_device});
+	}
+	ssc_var(obj, 'inter_array_cable_length', ${inter_array_cable_length});
+	ssc_var(obj,'riser_cable_length', ${riser_cable_length});
+	ssc_var(obj, 'export_cable_length', ${export_cable_length});  
+	
+
+	success = ssc_exec(obj, 'mhk_costs');
+	
+	
+	${structural_assembly_cost_modeled} = ssc_var( obj, 'structural_assembly_cost_modeled' );
+	${power_takeoff_system_cost_modeled} = ssc_var( obj, 'power_takeoff_system_cost_modeled' );
+	${mooring_found_substruc_cost_modeled} = ssc_var( obj, 'mooring_found_substruc_cost_modeled' );
+
+	${development_cost_modeled} = ssc_var( obj, 'development_cost_modeled' );
+	${eng_and_mgmt_cost_modeled} = ssc_var( obj, 'eng_and_mgmt_cost_modeled' );
+	${plant_commissioning_cost_modeled} = ssc_var( obj, 'plant_commissioning_cost_modeled' );
+	${site_access_port_staging_cost_modeled} = ssc_var( obj, 'site_access_port_staging_cost_modeled' );
+	${assembly_and_install_cost_modeled} = ssc_var( obj, 'assembly_and_install_cost_modeled' );
+	${other_infrastructure_cost_modeled} = ssc_var( obj, 'other_infrastructure_cost_modeled' );
+
+	${array_cable_system_cost_modeled} = ssc_var( obj, 'array_cable_system_cost_modeled' );
+	${export_cable_system_cost_modeled} = ssc_var( obj, 'export_cable_system_cost_modeled' );
+	${onshore_substation_cost_modeled} = ssc_var( obj, 'onshore_substation_cost_modeled' );
+	${offshore_substation_cost_modeled} = ssc_var( obj, 'offshore_substation_cost_modeled' );
+	${other_elec_infra_cost_modeled} = ssc_var( obj, 'other_elec_infra_cost_modeled' );
+
+	${project_contingency_modeled} = ssc_var( obj, 'project_contingency' );
+	${insurance_during_construction_modeled} = ssc_var( obj, 'insurance_during_construction' );
+	${reserve_accounts_modeled} = ssc_var( obj, 'reserve_accounts' );
+
+	${operations_cost_modeled} = ssc_var( obj, 'operations_cost' );
+	${maintenance_cost_modeled} = ssc_var( obj, 'maintenance_cost' );
+	
+	/*${total_capital_cost_per_kwh} = ssc_var(obj, 'total_capital_cost_per_kwh');
+	${total_device_cost_per_kwh} = ssc_var(obj, 'total_device_cost_per_kwh');
+	${total_bos_cost_per_kwh} = ssc_var(obj, 'total_bos_cost_per_kwh');
+	${total_financial_cost_per_kwh} = ssc_var(obj, 'total_financial_cost_per_kwh');
+	${total_operations_cost_per_kwh} = ssc_var(obj, 'total_operations_cost_per_kwh');
+	*/
+	ssc_free(obj);
+};
+
+equations {'structural_assembly_cost_modeled_formatted'} = define() {
+	value = ${structural_assembly_cost_modeled};
+	string = sprintf('%M',value);
+	result = to_real(string);
+	//return result/100;
+	return result;
+};
+
+
+equations {'itemized_check_structural'} = define() {
+	if (${device_cost_override}!=1)
+	{
+		return ?${structural_assembly_cost_method}
+				[
+					0,
+					0,
+					2,
+					1
+				];
+	}
+	else
+	{
+		return 2;
+	}
+};
+
+equations {'structural_assembly_cost'} = define() {
+	return ?${structural_assembly_cost_method}
+			[
+				${structural_assembly_cost_input}*${system_capacity},
+				${structural_assembly_cost_input},
+				${structural_assembly_cost_modeled_formatted},
+				${structural_assembly_cost_total}
+			];
+};
+
+equations {'total_installed_cost_structural'} = define() {
+	return ${structural_assembly_cost};
+};
+
+equations {'method_check'} = define() {
+	return ?${structural_assembly_cost_method}
+		[
+			0,
+			1,
+			2,
+			3
+		];
+};
+
+equations {'variable_marine_systems'} = define() {
+	if (${marine_systems_cost}!=0 && ${personnel_access_system_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${marine_systems_cost}!=0 && ${ballast_system_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${marine_systems_cost}!=0 && ${navigation_lighting_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${marine_systems_cost}!=0 && ${other_marine_system_cost}!=0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+};
+
+equations {'variable_prime_mover'} = define() {
+	if (${prime_mover_cost}!=0 && ${primary_struct_assem_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${prime_mover_cost}!=0 && ${buoyancy_chamber_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${prime_mover_cost}!=0 && ${external_ballast_chambers_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${prime_mover_cost}!=0 && ${active_structure_cost}!=0)
+	{
+		return 1;
+	}
+	else if (${prime_mover_cost}!=0 && ${other_prime_mover_cost}!=0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+};
+
+equations {'override_check_structural'} = define() {
+	if (${device_cost_override}==0)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+};
+
+equations {'struct_override'} = define() {
+	return ${device_cost_override};};
+
+
+
+
+
+			
+5387
+on_load{'Marine Costs - Structural Assembly'} = define() {
+	check_override_structural();
+	on_change{'struct_override'};
+	on_change{'itemized_check_structural'};
+	//on_change{'variable_marine_systems'};
+	//on_change{'variable_prime_mover'};
+	enable_itemized_structural();
+	//show_marine_system_warning();
+	//show_prime_mover_warning();
+	on_change{'detailed_cost_choice_struct_assem'};
+	detailed_cost_structural();
+	on_change{'detailed_cost_choice_marine_systems'};
+	detailed_cost_marine_systems();
+	
+};
+
+on_change{'struct_override'} = define() {
+	check_override_structural();
+};
+
+
+function check_override_structural()
+{
+	check_value = value('struct_override');
+	//enable('structural_assembly_cost_input',check_value!=1);
+	//enable('structural_assembly_cost_total',check_value!=1);
+	//enable('structural_assembly_cost_method',check_value!=1);
+	//enable('structural_assembly_cost_modeled',check_value!=1);
+	//enable('structural_assembly_cost',check_value!=1);
+	show('struct_override_label',check_value==1);
+	
+	refresh();
+}
+
+on_change{'itemized_check_structural'} = define() {
+	enable_itemized_structural();
+};
+
+/*on_change{'variable_marine_systems'} = define() {
+	show_marine_system_warning();
+};
+
+on_change{'variable_prime_mover'} = define() {
+	show_prime_mover_warning();
+};
+
+function show_prime_mover_warning()
+{
+	show('warning_prime_mover',value('variable_prime_mover')==1);
+	refresh();
+}
+
+function show_marine_system_warning()
+{
+	show('warning_marine_systems',value('variable_marine_systems')==1);
+	refresh();
+}*/
+
+on_change{'detailed_cost_choice_struct_assem'} = define() {
+	detailed_cost_structural();
+};
+
+function detailed_cost_structural()
+{
+	if (value('itemized_check_structural')==1)
+	{
+		detailed_value = value('detailed_cost_choice_struct_assem');
+		enable('prime_mover_cost',detailed_value==0);
+		show('prime_mover_cost',detailed_value==0);
+		//show('level_4_total_prime',detailed_value==0);
+		enable('prime_mover_cost_total',detailed_value);
+		show('prime_mover_cost_total',detailed_value);
+		//show('level_5_total_prime',detailed_value);
+		enable('primary_struct_assem_cost',detailed_value);
+		enable('buoyancy_chamber_cost',detailed_value);
+		enable('external_ballast_chambers_cost',detailed_value);
+		enable('active_structure_cost',detailed_value);
+		enable('other_prime_mover_cost',detailed_value);
+		enable('prime_mover_cost_total',detailed_value);
+		
+		
+	
+		refresh();
+	}
+}
+
+on_change{'detailed_cost_choice_marine_systems'} = define() {
+	detailed_cost_marine_systems();
+};
+
+function detailed_cost_marine_systems()
+{
+	if (value('itemized_check_structural')==1)
+	{
+		detailed_value_marine = value('detailed_cost_choice_marine_systems');
+		enable('marine_systems_cost',detailed_value_marine==0);
+		show('marine_systems_cost',detailed_value_marine==0);
+		show('marine_systems_cost_total',detailed_value_marine);
+		enable('marine_systems_cost_total',detailed_value_marine);
+		enable('personnel_access_system_cost',detailed_value_marine);
+		enable('ballast_system_cost',detailed_value_marine);
+		enable('navigation_lighting_cost',detailed_value_marine);
+		enable('other_marine_system_cost',detailed_value_marine);
+		show('warning_marine_systems',detailed_value_marine==2);
+		
+		refresh();
+	}
+}
+
+function enable_itemized_structural()
+{
+	itemized_value = value('itemized_check_structural');
+	enable('prime_mover_cost',itemized_value==1);
+	enable('detailed_cost_choice_struct_assem',itemized_value==1);
+	enable('primary_struct_assem_cost',itemized_value==1);
+	enable('buoyancy_chamber_cost',itemized_value==1);
+	enable('external_ballast_chambers_cost',itemized_value==1);
+	enable('active_structure_cost',itemized_value==1);
+	enable('other_prime_mover_cost',itemized_value==1);
+	enable('additional_structural_components_cost',itemized_value==1);
+	enable('marine_systems_cost',itemized_value==1);
+	enable('detailed_cost_choice_marine_systems',itemized_value==1);
+	enable('personnel_access_system_cost',itemized_value==1);
+	enable('ballast_system_cost',itemized_value==1);
+	enable('navigation_lighting_cost',itemized_value==1);
+	enable('other_marine_system_cost',itemized_value==1);
+	enable('coatings_cost',itemized_value==1);
+	enable('transport_structure_cost',itemized_value==1);
+	enable('other_costs',itemized_value==1);
+	enable('prime_mover_cost_total',itemized_value==1);
+	enable('additional_structural_components_cost_total',itemized_value==1);
+	enable('marine_systems_cost_total',itemized_value==1);
+	enable('coatings_cost_total',itemized_value==1);
+	enable('transport_structure_cost_total',itemized_value==1);
+	enable('other_cost_total',itemized_value==1);
+	enable('structural_assembly_cost_input',itemized_value!=2);
+	show('structural_assembly_cost_total',itemized_value==1);
+	//show('struct_level_total_label',itemized_value==1);
+	show('structural_assembly_cost_input',(itemized_value==0 || itemized_value==2));
+	//show('struct_user_input_label',(itemized_value==0 || itemized_value==2));
+	show('warning_prime_mover',itemized_value==4);
+	show('warning_marine_systems',itemized_value==4);
+	if (itemized_value==1)
+	{
+		detailed_cost_structural();
+		detailed_cost_marine_systems();
+	}
+	//placeholder for non-itemized totals
+	/*show('additional_structural_components_cost_total',itemized_value==3);
+	show('coatings_cost_total',itemized_value==3);
+	show('transport_structure_cost_total',itemized_value==3);
+	show('other_cost_total',itemized_value==3);*/
+	
+	refresh();
+	
+	
+}
+
+	

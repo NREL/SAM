@@ -45,19 +45,21 @@
 <span class="f_CHNote">&nbsp;</span><br />
 <span class="f_Note">The default cost values that appear when you create a file or case are intended to illustrate SAM's use. The cost data are meant to be realistic, but not to represent actual costs for a specific project. For more information and a list of online resources for cost data, see the technology pages on the <a href="https://sam.nrel.gov" target="_blank" class="weblink" title="https://sam.nrel.gov">SAM website</a>.</span><br />
 <span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">The System Costs page only available for cases with a cash-flow-based financial mode. It is not available with the No Financial Model option or the LCOE Calculator financial model.</span></p>
+<span class="f_Note">The System Costs page only available for cases with a cash-flow-based financial model. It is not available with the No Financial Model option or the LCOE Calculator financial model.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Direct Capital Costs</span></h3>
 <p class="p_Text"><span class="f_Text">A direct capital cost represents an expense for a specific piece of equipment or installation service that applies in year zero of the cash flow.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note:</span><span class="f_Note"> Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different direct capital cost categories does not affect the final results.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Plant Cost ($)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A fixed dollar amount.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">System size (kW)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The </span><span class="f_CHInterfaceElement">Nameplate Capacity</span><span class="f_VariableDescription"> from the <a href="generic_system_plant.htm" class="topiclink">Power Plant</a> page.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cost per capacity ($/W)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A cost per Watt of nameplate capacity.</span></p>
-<p class="p_Text"><span class="f_Text">If the system includes a battery, you can specify the battery installation cost in $/kWh of battery capacity, $/kW of maximum discharge power, or both.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Plant cost per capacity ($/W)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost per Watt of nameplate capacity from the <a href="generic_system_plant.htm" class="topiclink">Power Plant</a> page.</span></p>
+<p class="p_Text"><span class="f_Text">If the system includes a battery, you can specify the battery installation cost in $/kWh of battery capacity, $/kW of maximum discharge power, or both:</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery cost per capacity ($/kWh DC)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Battery installation cost in $/kWh of nominal bank capacity from the Battery Cell and System page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery cost per kW ($/kW DC)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Battery installation cost in $/kW of maximum charge power from the Battery Cell and System page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Contingency cost (%)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A percentage of the sum of the plant cost and plant cost per capacity to account for expected uncertainties in direct capital cost estimates.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A percentage of the sum of the plant and battery costs to account for expected uncertainties in direct capital cost estimates.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Direct Cost ($)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The sum of plant cost, plant cost per capacity, and contingency costs.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Indirect Capital Costs</span></h3>

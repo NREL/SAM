@@ -739,16 +739,16 @@ Name
 thermal_model_label
 X
 3
-21
+9
 Y
 3
-375
+372
 Width
 3
-678
+699
 Height
 3
-48
+63
 Tool Tip
 5
 0
@@ -1003,7 +1003,7 @@ BatteryCell
 
 DataArray
 
-1470
+1614
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1020,24 +1020,26 @@ equations{'batt_surface_area'} = define()
 };
 equations{'batt_room_temperature_celsius'} = define()
 {
-	if (strpos(lower(technology()),'generic')<0)
+	if ( strpos(lower(technology()),'generic')<0 )
 	{
-		wfread = ssc_create();
 		solar_resource =  ${solar_resource_file};
 		if (file_exists(solar_resource))
 		{
+			wfread = ssc_create();
 			//msgbox(solar_resource);
 			ssc_var(wfread, "file_name", solar_resource);
 			ssc_var(wfread, "header_only", 0);
 			
 			T = [];
-			if (!ssc_exec(wfread, "wfreader")){
+			result = ssc_exec(wfread, "wfreader");
+			if (0 == result){
 				T = ssc_var(wfread, "tdry");
 			}
 			else {
-				msgbox('failed');
+				msgbox('Failed to read temperature from weather file!\n' + result);
 				return 0;
 			}
+		ssc_free(wfread);
 		}
 		else {
 			// unknown, perhaps solar resource callback isn't complete
@@ -1046,6 +1048,7 @@ equations{'batt_room_temperature_celsius'} = define()
 	}
 	else {
 		len = 8760;
+		// generic plant constant generation profile
 		if (${spec_mode} == 1){
 			T = ${energy_output_array};
 			len = #T;
@@ -1078,8 +1081,7 @@ equations{'batt_room_temperature_celsius'} = define()
 on_load{'Battery Thermal'} = define() {
 	on_change{'cap_vs_temp'}(); // update the plot
 	on_change{'batt_thermal_choice'}();
-	
-	show_thermal_options;
+	show_thermal_options();
 };
 
 function show_thermal_options()

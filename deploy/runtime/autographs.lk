@@ -17,13 +17,13 @@ function rescom_financial_graphs()
 {
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', -1, true, false,'bottom' );
 	agraph( 'cf_after_tax_cash_flow', 'After Tax Cash Flow- System Lifetime', '', '$' );
-	agraph( 'monthly_energy,year1_monthly_load,year1_monthly_cumulative_excess_generation', 'Monthly Energy and Load', '', 'kWh', -1, true, true, 'bottom'  );
+	agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh', -1, true, true, 'bottom'  );
 }
 
 function third_party_graphs()
 {
 	agraph( 'cf_agreement_cost,cf_energy_value', 'Annual Agreement Cost and Electricity Savings', 'Year', '$' );
-	agraph( 'monthly_energy,year1_monthly_load', 'Year 1 Monthly Solar Energy Production and Electric Load', '', 'kWh' );
+	agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh' );
 
 }
 
@@ -33,7 +33,7 @@ function host_developer_graphs()
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', -1, true, false,'bottom' );
 	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
 	agraph( 'cf_agreement_cost,annual_energy_value', 'Host Annual Agreement Cost and Electricity Savings', 'Year', '$', -1, true, true, 'bottom' );
-
+	agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh', -1, true, true, 'bottom'  );
 }
 
 function ppa_revenue_graphs()
@@ -109,12 +109,17 @@ autographs{ 'Wind Power' } = define() { base_technology_graphs(); wind_pruf_grap
 autographs{ 'MEwave' } = define()
 {
 	agraph( 'annual_energy_distribution', 'Annual Energy Production (kWh)', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4); 
+	agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_om_cost_lcoe','LCOE Contribution','','', -1, true, false, 'bottom', 5);
 };
 
 autographs{ 'MEtidal' } = define()
 {
-	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'Velocity (m/s)', 'Annual Energy (kWh)', -1, true, false,'bottom' );
-	agraph( 'annual_cumulative_energy_distribution', 'Annual Cumulative Energy Production', 'Velocity (m/s)', 'Annual Energy (kWh)', -1, true, false,'bottom' );
+	min_vel = output('tidal_min_velocity');
+	max_vel = output('tidal_max_velocity');
+	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'Velocity Bin Number', 'Annual Energy (kWh)', -1, true, false, 'bottom', 0, [0], [3.3] );
+	agraph( 'annual_cumulative_energy_distribution', 'Annual Cumulative Energy Production', 'Velocity Bin Number', 'Annual Energy (kWh)', -1, true, false,'bottom',0, min_vel, max_vel);
+	//agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_operations_cost_lcoe','LCOE Contribution','','',-1,true, false, 'bottom', 5);
+	agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_om_cost_lcoe','LCOE Contribution','','',-1,true, false, 'bottom', 5);
 };
 
 autographs{ 'PVWatts'} = define() 

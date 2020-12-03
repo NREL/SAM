@@ -24,11 +24,11 @@ endif()
 
 Project(sam)
 
-if (NOT skip_api)
+if (SAMAPI_EXPORT)
 	add_subdirectory(api)
 endif()
 
-include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs)
+include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs $ENV{SSCDIR}/jsoncpp/include)
 
 set(SAM_SRC
 	src/ide.cpp
@@ -75,7 +75,8 @@ set(SAM_SRC
 	src/troughloop.cpp
 	src/shadingfactors.cpp
 	src/materials.cpp
-	src/codegenerator.cpp)
+	src/codegenerator.cpp
+	src/pythonhandler.cpp src/pythonhandler.h)
 
 
 #####################################################################################################################
@@ -122,12 +123,17 @@ add_definitions(-DLK_USE_WXWIDGETS )
 #####################################################################################################################
 
 if (UNIX)
-	set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
-	if (APPLE)
-		find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base )
-	else()
-		find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base )
-	endif()
+    if (EXISTS /usr/local/bin/wx-config-3)
+        set(wxWidgets_CONFIG_EXECUTABLE /usr/local/bin/wx-config-3)
+    else ()
+        set(wxWidgets_CONFIG_EXECUTABLE $ENV{WXMSW3}/bin/wx-config)
+    endif ()
+
+    if (APPLE)
+        find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base )
+    else()
+	find_package(wxWidgets REQUIRED xrc stc richtext ribbon propgrid aui gl html qa adv core xml net base )
+    endif()
 else()
 	set(wxWidgets_ROOT_DIR $ENV{WXMSW3})
 	find_package(wxWidgets REQUIRED xrc webview stc richtext ribbon propgrid aui gl html qa adv core xml net base scintilla)
@@ -206,13 +212,13 @@ else()
 	unset(SSC_LIB CACHE)
 	find_library( WEX_LIB
 			NAMES wex.a wex.lib
-			PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Release)
+			PATHS $ENV{WEX_LIB} $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Release)
 	find_library( LK_LIB
 			NAMES lk.a lk.lib
-			PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
+			PATHS $ENV{LK_LIB} $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
 	find_library( SSC_LIB
 			NAMES ssc.dylib ssc.lib ssc.so
-			PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
+			PATHS $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
 	target_link_libraries(${SAM_EXE} optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 
 	if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
@@ -221,13 +227,13 @@ else()
 		unset(SSCD_LIB CACHE)
 		find_library( WEXD_LIB
 				NAMES wexd.a wexd.lib
-				PATHS $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Debug)
+				PATHS $ENV{WEXD_LIB} $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Debug)
 		find_library( LKD_LIB
 				NAMES lkd.a lkd.lib
-				PATHS $ENV{LKDIR}/build $ENV{LKDIR}/build/Debug)
+				PATHS $ENV{LKD_LIB} $ENV{LKDIR}/build $ENV{LKDIR}/build/Debug)
 		find_library( SSCD_LIB
 				NAMES sscd.dylib sscd.lib sscd.so
-				PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
+				PATHS $ENV{SSCD_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
 		target_link_libraries(${SAM_EXE} debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	endif()
 endif()
@@ -269,8 +275,9 @@ if (UNIX)
             POST_BUILD
             COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}/Contents
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime
-            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime
-            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime
+            COMMAND mkdir -p ${SAM_APP}/Contents/runtime/bin
+            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime/bin
+            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime/bin
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
             COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
             COMMAND cp ${SSC_SO} ${SAM_APP}/Contents/Frameworks
@@ -289,7 +296,7 @@ if (UNIX)
                 POST_BUILD
                 COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}
                 COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/lhs.bin ${SAM_APP}/runtime/bin
-                COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/stepwise.bin ${SAM_APP}/runtime
+                COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/stepwise.bin ${SAM_APP}/runtime/bin
 #                COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/build_linux/GtkTheme ${SAM_APP}/linux_64
                 COMMAND cp ${SSC_SO} ${SAM_APP}/linux_64
         )

@@ -1,5 +1,5 @@
 1
-554
+556
 FossilFill
 1
 2
@@ -384,7 +384,7 @@ const_per_interest1
 1
 1
 1
-28299874
+28299870
 const_per_interest2
 1
 1
@@ -444,7 +444,7 @@ const_per_interest_total
 1
 1
 1
-28299874
+28299870
 const_per_months1
 1
 1
@@ -541,7 +541,7 @@ const_per_principal1
 1
 1
 1
-707496832
+707496768
 const_per_principal2
 1
 1
@@ -571,7 +571,7 @@ const_per_principal_total
 1
 1
 1
-707496832
+707496768
 const_per_total1
 1
 1
@@ -708,7 +708,7 @@ csp.gss.cost.contingency
 1
 1
 1
-38528928
+38528924
 csp.gss.cost.contingency_percent
 1
 1
@@ -744,7 +744,7 @@ csp.gss.cost.epc.total
 1
 1
 1
-76562488
+76562480
 csp.gss.cost.fossil_backup
 1
 1
@@ -804,7 +804,7 @@ csp.gss.cost.plm.total
 1
 1
 1
-18434466
+18434462
 csp.gss.cost.power_plant
 1
 1
@@ -834,7 +834,7 @@ csp.gss.cost.sales_tax.total
 1
 1
 1
-23557688
+23557686
 csp.gss.cost.sales_tax.value
 1
 1
@@ -846,7 +846,7 @@ csp.gss.cost.site_improvements
 1
 1
 1
-19894202
+19894200
 csp.gss.cost.site_improvements.area
 1
 1
@@ -864,7 +864,7 @@ csp.gss.cost.solar_field
 1
 1
 1
-298413024
+298412992
 csp.gss.cost.solar_field.area
 1
 1
@@ -882,7 +882,7 @@ csp.gss.cost.storage
 1
 1
 1
-66506028
+66506020
 csp.gss.cost.storage.cost_per_kwht
 1
 1
@@ -2312,7 +2312,7 @@ itc_fed_percent
 1
 1
 1
-30
+22
 itc_fed_percent_deprbas_fed
 1
 1
@@ -2817,7 +2817,7 @@ property_assessed_value
 1
 1
 1
-707496832
+707496768
 property_tax_rate
 1
 1
@@ -3042,6 +3042,12 @@ station_id
 4
 5
 91486
+step
+1
+1
+1
+1
+3600
 storage_config
 1
 1
@@ -3162,19 +3168,19 @@ total_direct_cost
 1
 1
 1
-588942208
+588942144
 total_indirect_cost
 1
 1
 1
 1
-118554640
+118554624
 total_installed_cost
 1
 1
 1
 1
-707496832
+707496768
 track_mode
 1
 1
@@ -3427,6 +3433,12 @@ ui_disp_9_turbout
 1
 1
 1
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

@@ -347,7 +347,8 @@
 				[220.000000, 4.580000, 842.000000, 0.000118, 0.000000, 0.641000, 941.000000]
 			],
 			"pb_pump_coef": 0.55,
-			"q_pb_design": 5.18791
+			"q_pb_design": 5.18791,
+			"tanks_in_parallel": 1
 		},
 		"SystemDesign": {
 			"tshours": 6

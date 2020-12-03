@@ -8908,7 +8908,6 @@
 			"piping_length_mult": 2.6,
 			"piping_loss": 10200,
 			"preheat_flux": 50,
-			"preheat_target_Tdiff": 25,
 			"rec_absorptance": 0.94,
 			"rec_height": 21.6029,
 			"rec_hl_perm2": 30,
@@ -8979,6 +8978,7 @@
 			"hot_tank_Thtr": 500,
 			"hot_tank_max_heat": 30,
 			"tank_pairs": 1,
+			"tanks_in_parallel": 1,
 			"u_tank": 0.4
 		},
 		"RADCOOL": {

@@ -1,6 +1,6 @@
 Battery Dispatch Front of Meter
-1058
-491
+1059
+494
 28
 GroupBox
 
@@ -150,16 +150,16 @@ Name
 batt_auto_fom_help
 X
 3
-393
+390
 Y
 3
 36
 Width
 3
-633
+645
 Height
 3
-54
+60
 Tool Tip
 5
 0
@@ -246,7 +246,7 @@ Width
 184
 Height
 3
-24
+30
 Tool Tip
 5
 0
@@ -264,10 +264,10 @@ Battery dispatch by time step: Negative to charge, positive to discharge.
 TabOrder
 3
 8
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 15
@@ -277,55 +277,35 @@ X
 678
 Y
 3
-273
+279
 Width
 3
-90
+104
 Height
 3
 24
 Tool Tip
 5
 0
+Label
+5
+5
 Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
+UseSchedule
 2
 1
-Editable
+ScheduleOnly
 2
-1
-ForeColour
-4
 0
+FixedLength
+3
+4294967295
+Description
+5
 0
-0
-255
-BackColour
-4
-255
-255
-255
-255
 TabOrder
 3
-5
+4294967295
 Choice
 
 1
@@ -339,7 +319,7 @@ X
 678
 Y
 3
-246
+252
 Width
 3
 198
@@ -353,7 +333,7 @@ Items
 6
 2
 Calculate automatically
-Enter cost
+Enter penalty
 Selection
 3
 4294967295
@@ -370,23 +350,23 @@ Name
 batt_cycle_cost_description
 X
 3
-393
+390
 Y
 3
-204
+180
 Width
 3
-633
+651
 Height
 3
-36
+78
 Tool Tip
 5
 0
 Caption
 5
-116
-The automated dispatch options cycle the battery only when the value of the battery is greater than the cycle cost. 
+293
+The controller cycles the battery only if anticipated revenue exceeds the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the  Battery Cell and System page.
 TextColour
 4
 0
@@ -418,16 +398,16 @@ Name
 batt_cycle_costs_label
 X
 3
-393
+390
 Y
 3
-183
+165
 Width
 3
 633
 Height
 3
-22
+16
 Tool Tip
 5
 0
@@ -442,8 +422,8 @@ Colour
 255
 Caption
 5
-19
-Battery Cycle Costs
+25
+Cycle Degradation Penalty
 Bold
 2
 1
@@ -683,7 +663,7 @@ X
 393
 Y
 3
-105
+93
 Width
 3
 633
@@ -722,7 +702,7 @@ X
 678
 Y
 3
-126
+114
 Width
 3
 48
@@ -784,7 +764,7 @@ X
 678
 Y
 3
-153
+141
 Width
 3
 48
@@ -1170,26 +1150,26 @@ Battery Power (kWdc)|1
 DataArray
 batt_cycle_cost
 3
-1
-Battery cycle cost
+2
+Cycle degradation penalty
 $/cycle-kWh
 BatteryDispatch
 0
 2
 1
-1
+2
 1
 1
 0.1
-Numeric
+SchedNumeric
 batt_cycle_cost_choice
 3
 1
-Battery cycle cost choice
+Cycle degradation penalty option
  
 BatteryDispatch
-34
-Calculate automatically|Enter cost
+37
+Calculate automatically|Enter penalty
 0
 1
 1

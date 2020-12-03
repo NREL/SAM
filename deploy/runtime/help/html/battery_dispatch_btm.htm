@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Battery Dispatch BTM</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "battery_dispatch_btm.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Battery Dispatch BTM</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Charge Limits and Priority</span></h3>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Minimum state of charge, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Sets a limit on the quantity of energy that can be drained from the battery. Battery lifetime is highly dependent on depth of discharge, so this value should be set based on your battery chemistry and desired performance over time. For example a value of 15% would prevent the battery from discharging below a 15% state of charge.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum state of charge, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Sets a limit on the quantity of energy that can be sent to the battery. Battery lifetime is dependent on depth of discharge and state of charge, so this value should be set based on your battery chemistry and desired performance over time. For example a value of 95% would prevent the battery from charging above 95% state of charge.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Initial state of charge, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The state of charge of the battery at the beginning of the simulation. A value of 100% would be for a fully charged battery, 0% would be for a fully discharged battery.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Minimum time at charge state, min</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">This setting only applies to subhourly simulations. You can ignore it for hourly simulations. For sub-hourly simulations, there may be periods of time where the photovoltaic output varies above and below the load causing rapid cycling of the battery. This kind of cycling, especially if the cycles are deep, may degrade battery performance over time. The minimum time at charge state prevents the battery to change between charging and discharging within the number of minutes that you specify.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Storage Dispatch Controller (Behind the Meter)</span></h3>
+<p class="p_Text"><span class="f_Text">The dispatch controller determines the timing of battery charges and discharges and discharge limits. For behind-the-meter (BTM) systems (Residential, Commercial, or Third Party Financing financial models), you can choose a dispatch option where SAM determines the timing automatically, use the manual dispatch controller to define the timing using hour-by-month weekday and weekend matrices, or input a time series battery power signal.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Dispatch Options</span></h3>
+<p class="p_Text"><span class="f_Text">Choose the dispatch option that most closely represents how you would like the battery to be charged and discharged.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Peak Shaving</span></h4>
+<p class="p_Text"><span class="f_Text">The peak shaving options attempt to operate the battery to reduce peak demand over a forecast period, considering the load and solar resource over the period. Use this option to reduce monthly demand charges when the rates on the <a href="electricity_rates.htm" class="topiclink">Electricity Rates</a> page include demand rates.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Peak-shaving one-day look ahead</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For each day, dispatch the battery based on the solar resource and load data over the next 24 hours. The look-ahead option is based on a perfect prediction of the future load and solar resource data.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Peak shaving one-day look behind</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Similar to the one-day look ahead option, but based on the previous 24 hours of solar resource and load data for the prediction. The look-behind option adds some uncertainty to the dispatch because the prediction of the solar resource and load is based on previous day's load and solar resource.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Input grid power targets</span></h4>
+<p class="p_Text"><span class="f_Text">The grid power target option attempts to operate the battery in response to grid power targets that you specify. In each time step, the controller compares the electric load to the power target, charges the battery when the load is less than the target, and discharges when the load is greater than the target. You can specify a constant annual target, twelve constant monthly targets, or a target for each time step.</span></p>
+<p class="p_Text"><span class="f_Text">Choose </span><span class="f_CHInterfaceElement">Input grid power targets</span><span class="f_Text">, and then choose either </span><span class="f_CHInterfaceElement">Monthly power targets</span><span class="f_Text"> or </span><span class="f_CHInterfaceElement">Time series power targets</span><span class="f_Text">:</span></p>
+<p class="p_Text" style="text-align: center;"><img alt="ss-battery-dispatch-btm-grid-targets" width="354" height="55" style="margin:0 auto 0 auto;width:354px;height:55px;border:none" src="ss-battery-dispatch-btm-grid-targets.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Monthly power targets</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to specify a either a single grid power target for the entire year, or a grid power target for each month. For </span><span class="f_CHInterfaceElement">Monthly grid power targets</span><span class="f_VariableDescription">, Click </span><span class="f_CHInterfaceElement">Edit values</span><span class="f_VariableDescription"> to specify the targets. To apply a single target to the entire year, enter the target as a single value in the Edit Values window and click </span><span class="f_CHInterfaceElement">Apply</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Time series power targets</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to enter a grid power target for each time step in the simulation. For </span><span class="f_CHInterfaceElement">Time series grid power targets</span><span class="f_VariableDescription">, click </span><span class="f_CHInterfaceElement">Edit array</span><span class="f_VariableDescription"> to specify the targets.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Input battery power targets</span></h4>
+<p class="p_Text"><span class="f_Text">The battery power targets option operates the battery in response to battery power targets you specify. In each time step, the controller attempts to charge to the negative power value you enter, or discharge to the positive power value you enter.</span></p>
+<p class="p_Text"><span class="f_Text">Choose </span><span class="f_CHInterfaceElement">Input battery power</span><span class="f_Text"> targets, and then enter the battery power target data.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Time series battery power targets</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit array</span><span class="f_VariableDescription"> and import or copy and paste an array of battery power values in kW, where discharge power is positive, charge power is negative. The array must have the same number of rows as simulation time steps: For hourly simulations, 8,760 rows, for for 15-minute simulations 35,040 rows, etc.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Manual dispatch</span></h4>
+<p class="p_Text"><span class="f_Text">For the manual dispatch option, you specify the timing of battery charges and discharges using up to six dispatch periods and a set of weekday and weekend hourly profiles by month under </span><span class="f_CHInterfaceElement">Manual Dispatch</span><span class="f_Text">.</span></p>
+<p class="p_Text"><span class="f_Text">The manual dispatch controller assumes that the system meets the electric load before charging the battery. For any time step with &quot;charge from system&quot; allowed, the system charges the battery with any power in excess of the load.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Price signal forecast</span></h4>
+<p class="p_Text"><span class="f_Text">The price signal forecast option operates the battery to minimize the electricity bill over the next 24 hours by considering the load, system power output, and electricity rates. It uses the cycle degradation penalty to consider the cost of &nbsp;future battery replacements.</span></p>
+<p class="p_Text"><span class="f_Text">Choose </span><span class="f_CHInterfaceElement">Price signal forecast</span><span class="f_Text">, and then choose a cycle degradation penalty method and assign a penalty if needed.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cycle degradation penalty method</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the price signal forecast option, choose a method for estimating the cost of cycling the battery: Choose </span><span class="f_CHInterfaceElement">Calculate automatically</span><span class="f_VariableDescription"> if you want SAM to calculate the cost, or choose </span><span class="f_CHInterfaceElement">Enter penalty</span><span class="f_VariableDescription"> to enter a cost per cycle-kWh value.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you choose the &quot;calculate automatically&quot; option, SAM reports the calculated penalty as </span><span class="f_CHInterfaceElement">Computed cycle degradation penalty</span><span class="f_VariableDescription"> in the <a href="battery_results.htm" class="topiclink">battery time series results</a>.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cycle degradation penalty</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The penalty in $/cycle-kWh of battery total capacity for cycling the battery. You can either enter a single value, or click the blue &quot;val/sched&quot; button to enter a different penalty for each year of the analysis period.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Charge Options</span></h3>
+<p class="p_Text"><span class="f_Text">For the dispatch options except manual dispatch, choose whether the battery can charge from the grid, from the system, or both. For the manual dispatch option, use manual dispatch inputs to specify how the battery is charged.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery can charge from grid</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Allow power from the grid to charge the battery.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery can change from system</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Allow power from the power system to charge the battery.</span></p>
+<p class="p_Text"><span class="f_Heading3_atocs_">Manual Dispatch Model</span></p>
+<p class="p_Text"><span class="f_Text">The manual dispatch option allows you to manually specify the timing of battery charges and discharges. Choose the </span><span class="f_CHInterfaceElement">Manual dispatch</span><span class="f_Text"> option under </span><span class="f_CHInterfaceElement">Dispatch Options</span><span class="f_Text"> to make the manual dispatch inputs active.</span></p>
+<p class="p_Text"><span class="f_Text">You can specify how you want to charge the battery (from grid or system), and whether to allow battery discharging for up to six periods. Use the weekday and weekend schedules to specify the hour of day and month of year that each period applies.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Charge from system</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For each period that you want to allow the battery to be charged by power from the system, check the box in the </span><span class="f_CHInterfaceElement">Charge from system</span><span class="f_VariableDescription"> column. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Charge from grid</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For each period that you want to allow the battery to be charged by power from the grid, check the box in the </span><span class="f_CHInterfaceElement">Allow</span><span class="f_VariableDescription"> column, and specify the percentage of the battery's state of charge that can be charged from the grid over the time step.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For example, for hourly simulations, a value of 25% would allow the grid to deliver 25% of the battery state of charge at the beginning of the hour over the hour. The purpose of the percentage is to prevent the battery from being charged too quickly. See the example below under </span><span class="f_CHInterfaceElement">Discharge</span><span class="f_VariableDescription"> for more details.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For subhourly simulations, the charge and discharge percentages apply to the subhourly time step even though the periods are defined in hours.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For a behind-the-meter application, if </span><span class="f_CHInterfaceElement">Charge from grid</span><span class="f_VariableDescription"> and </span><span class="f_CHInterfaceElement">Charge from system</span><span class="f_VariableDescription"> are both checked for a given period, and if in a time step in that period the system power is greater than the <a href="electric_load.htm" class="topiclink">load</a>, power from the grid will supplement the system power to meet the battery charge requirement.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If </span><span class="f_CHInterfaceElement">Charge from grid</span><span class="f_VariableDescription"> and </span><span class="f_CHInterfaceElement">Allow discharging</span><span class="f_VariableDescription"> are both checked for a given period, and if in a time step in that period the battery state of charge is above the minimum state of charge, the battery discharges until it reaches the minimum state of charge, at which point it starts charging from the grid, either until it reaches the maximum state of charge, or until the time period changes to one that does not allow charging from the grid.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Discharge</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For each period that you want to allow the battery to discharge, check the box in the </span><span class="f_CHInterfaceElement">Allow</span><span class="f_VariableDescription"> column, and specify the percentage of the battery's available charge that can be dispatched over the time step. The available charge is defined by the minimum and maximum state of charge values under </span><span class="f_CHInterfaceElement">Charge Limits and Priority</span><span class="f_VariableDescription">. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For example, if Period 3 is the four consecutive hours between 3 pm and 6 pm, the discharge capacity is 25%, and the charge limits are 30% and 96%, for an hourly simulation, that would allow up to 25% of the charge the battery holds at the beginning of the 3 pm hour to be discharged over the hour. For the 4 pm hour, 25% of the charge at the end of the 3 pm hour would be available, and so on until the end of Period 3. The 25% value would discharge the battery over the full four-hour period. (A 20% value would have the same effect for a 5-hour period, i.e., if Period 3 were between 3 pm and 7 pm.)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For a one-minute simulation, a capacity to discharge of 25% would allow up to 25% of the available charge to be dispatched </span><span class="f_Emphasis">every minute</span><span class="f_VariableDescription"> over Period 3, so a smaller percentage would be required to allow the battery to discharge over the full four-hour period.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Weekday and Weekend Schedules</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">To define the hour of day and month of year that each period applies, use your mouse to select a rectangle in the schedule matrix, and use your keyboard to type the period number (1-6). The number you type should appear in the rectangle.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">See <a href="weekday-schedule.htm" class="topiclink">Weekday-weekend Schedules</a> for a step-by-step description of how to use the schedule matrices</span>.</p>
+
+</td></tr></table>
+
+</body>
+</html>

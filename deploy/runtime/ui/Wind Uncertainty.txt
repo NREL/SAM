@@ -153,7 +153,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+38
 Numeric
 
 1
@@ -215,7 +215,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+39
 Numeric
 
 1
@@ -277,7 +277,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+37
 Numeric
 
 1
@@ -339,7 +339,7 @@ BackColour
 255
 TabOrder
 3
-8
+40
 DataMatrix
 
 1
@@ -492,7 +492,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+41
 Numeric
 
 1
@@ -554,7 +554,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+42
 Numeric
 
 1
@@ -616,7 +616,7 @@ BackColour
 255
 TabOrder
 3
-8
+43
 Numeric
 
 1
@@ -678,7 +678,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+50
 Numeric
 
 1
@@ -740,7 +740,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+51
 Numeric
 
 1
@@ -802,7 +802,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+52
 Numeric
 
 1
@@ -864,7 +864,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+49
 Numeric
 
 1
@@ -926,7 +926,7 @@ BackColour
 255
 TabOrder
 3
-8
+53
 Numeric
 
 1
@@ -988,7 +988,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+11
 Numeric
 
 1
@@ -1050,7 +1050,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+12
 Numeric
 
 1
@@ -1112,7 +1112,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+10
 Numeric
 
 1
@@ -1174,7 +1174,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+14
 Numeric
 
 1
@@ -1236,7 +1236,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+15
 Numeric
 
 1
@@ -1298,7 +1298,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+13
 Numeric
 
 1
@@ -1360,7 +1360,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -1422,7 +1422,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+9
 Numeric
 
 1
@@ -1484,7 +1484,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Numeric
 
 1
@@ -1546,7 +1546,7 @@ BackColour
 255
 TabOrder
 3
-8
+17
 Numeric
 
 1
@@ -1608,7 +1608,7 @@ BackColour
 255
 TabOrder
 3
-8
+18
 Numeric
 
 1
@@ -1670,7 +1670,7 @@ BackColour
 255
 TabOrder
 3
-8
+16
 GroupBox
 
 1
@@ -1762,7 +1762,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+26
 Numeric
 
 1
@@ -1824,7 +1824,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+24
 Numeric
 
 1
@@ -1886,7 +1886,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+25
 Numeric
 
 1
@@ -1948,7 +1948,7 @@ BackColour
 255
 TabOrder
 3
-8
+27
 Numeric
 
 1
@@ -2010,7 +2010,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+21
 Numeric
 
 1
@@ -2072,7 +2072,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+22
 Numeric
 
 1
@@ -2134,7 +2134,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+20
 Numeric
 
 1
@@ -2145,7 +2145,7 @@ Name
 meas_speed_uncert
 X
 3
-258
+261
 Y
 3
 768
@@ -2196,7 +2196,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+19
 Numeric
 
 1
@@ -2258,7 +2258,7 @@ BackColour
 255
 TabOrder
 3
-8
+23
 Divider
 
 1
@@ -2855,7 +2855,8 @@ Tool Tip
 Caption
 5
 575
-Curtailment is the deliberate management of a wind plant to reduce the amount of energy compared to what is possible from the available resource. This may occur because of grid limitations, environmental or permitting requirements (e.g., to prevent bird or bat deaths or to prevent flicker), or deliberate operational strategies. Grid-driven curtailment can be predicted, to some extent, from operational histories of the transmission operator, but it is very dependent on weather, the other generators in the system, and the operating strategies of the balancing authority. 
+Curtailment is the deliberate management of a wind plant to reduce the amount of energy compared to what is possible from the available resource. This may occur because of grid limitations, environmental or permitting requirements (e.g., to prevent bird or bat deaths or to prevent flicker), or deliberate operational strategies. Grid-driven curtailment can be predicted, to some extent, from operational histories of the transmission operator, but it is very dependent on weather, the other generators in the system, and the operating strategies of the balancing authority.
+
 TextColour
 4
 0
@@ -2903,7 +2904,8 @@ Tool Tip
 Caption
 5
 414
-Electrical losses from a wind farm are the energy losses inherent in energy transmission in collector lines, transformers, and other site equipment and transmission to the point of revenue metering. These transmission-related losses are therefore directly impacted by the site layout, cable runs, and electrical design. Parasitic losses include nacelle air conditioning and yawing turbines in low wind conditions. 
+Electrical losses from a wind farm are the energy losses inherent in energy transmission in collector lines, transformers, and other site equipment and transmission to the point of revenue metering. These transmission-related losses are therefore directly impacted by the site layout, cable runs, and electrical design. Parasitic losses include nacelle air conditioning and yawing turbines in low wind conditions.
+
 TextColour
 4
 0
@@ -2951,7 +2953,8 @@ Tool Tip
 Caption
 5
 413
-Availability is the probability that a wind plant could produce energy when required. Energy-based availability is the amount of energy produced as a percentage of the total amount of energy that the wind plant could have captured if turbines were always ready to generate power. Availability is driven by the interaction of the turbine with the local environment and the O&M strategy of the wind plant operator. 
+Availability is the probability that a wind plant could produce energy when required. Energy-based availability is the amount of energy produced as a percentage of the total amount of energy that the wind plant could have captured if turbines were always ready to generate power. Availability is driven by the interaction of the turbine with the local environment and the O&M strategy of the wind plant operator.
+
 TextColour
 4
 0
@@ -3095,7 +3098,8 @@ Tool Tip
 Caption
 5
 138
-Wake effects are the losses due to the reduced wind resource in a turbine wake. Adopting novel control strategies may reduce wake losses. 
+Wake effects are the losses due to the reduced wind resource in a turbine wake. Adopting novel control strategies may reduce wake losses.
+
 TextColour
 4
 0
@@ -3336,7 +3340,8 @@ Tool Tip
 Caption
 5
 249
-Measurement-based uncertainty and production-based uncertainty contribute to each Wind Speed-related or Energy-related uncertainty component. These uncertainties are combined into a Total Uncertainty using the correlation coefficients matrix below. 
+Measurement-based uncertainty and production-based uncertainty contribute to each Wind Speed-related or Energy-related uncertainty component. These uncertainties are combined into a Total Uncertainty using the correlation coefficients matrix below.
+
 TextColour
 4
 0
@@ -3515,7 +3520,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+56
 Numeric
 
 1
@@ -3577,7 +3582,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+55
 Numeric
 
 1
@@ -3639,7 +3644,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+54
 Numeric
 
 1
@@ -3701,7 +3706,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+57
 Numeric
 
 1
@@ -3763,7 +3768,7 @@ BackColour
 255
 TabOrder
 3
-8
+58
 Numeric
 
 1
@@ -3825,7 +3830,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+3
 Numeric
 
 1
@@ -3887,7 +3892,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -3949,7 +3954,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -4011,7 +4016,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Numeric
 
 1
@@ -4073,7 +4078,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -4135,7 +4140,7 @@ BackColour
 255
 TabOrder
 3
-8
+6
 Numeric
 
 1
@@ -4197,7 +4202,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+32
 Numeric
 
 1
@@ -4445,7 +4450,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+45
 Numeric
 
 1
@@ -4507,7 +4512,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+47
 Numeric
 
 1
@@ -4569,7 +4574,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+46
 Numeric
 
 1
@@ -4631,7 +4636,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+44
 Numeric
 
 1
@@ -4693,7 +4698,7 @@ BackColour
 255
 TabOrder
 3
-8
+48
 Numeric
 
 1
@@ -4755,7 +4760,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+29
 Numeric
 
 1
@@ -4817,7 +4822,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+28
 Numeric
 
 1
@@ -4879,7 +4884,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+30
 Numeric
 
 1
@@ -4941,7 +4946,7 @@ BackColour
 255
 TabOrder
 3
-8
+31
 Numeric
 
 1
@@ -5003,7 +5008,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+34
 Numeric
 
 1
@@ -5065,7 +5070,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+35
 Numeric
 
 1
@@ -5127,7 +5132,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+33
 Numeric
 
 1
@@ -5189,7 +5194,7 @@ BackColour
 255
 TabOrder
 3
-8
+36
 
 63
 avail_bop_uncert
@@ -5241,7 +5246,7 @@ Total availability
 % E
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5297,7 +5302,7 @@ Total electrical
 % E
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5367,7 +5372,7 @@ Total environmental
 % E
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5507,7 +5512,7 @@ Total 10 year
 % WS
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5521,7 +5526,7 @@ Total 20 year
 % WS
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5535,7 +5540,7 @@ Total lifetime variability Year 1
 % WS
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5591,7 +5596,7 @@ Total horizontal extrapolation
 % WS
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5661,7 +5666,7 @@ Total measurement uncertainty
 % WS
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5731,7 +5736,7 @@ Total curtailment and operational strategies
 % E
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5815,7 +5820,7 @@ Total historical wind resource
  % WS
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5870,8 +5875,7 @@ total_uncert
 Total combined uncertainty
 % E
 Uncertainty
-11
-Uncertainty
+0
 8
 1
 1
@@ -5942,7 +5946,7 @@ Total turbine performance
 % E
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -5998,7 +6002,7 @@ Total vertical extrapolation
 % WS
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -6054,7 +6058,7 @@ Total wake effects
 % E
 Uncertainty
 0
-8
+10
 1
 1
 1
@@ -6068,7 +6072,7 @@ Total wind speed-based uncertainty
 %
 Uncertainty
 0
-8
+2
 1
 1
 1
@@ -6076,81 +6080,81 @@ Uncertainty
 0
 Numeric
 
-2384
+2359
 equations{ 'resource_uncert_total' } = define() {
-	return sqrt( pow(${resource_adj_uncert}, 2) + 
-		pow(${resource_datasyn_uncert}, 2) + 
-		pow(${resource_dist_uncert}, 2) + 
-		pow(${resource_period_uncert}, 2) + 
+	return sqrt( pow(${resource_adj_uncert}, 2) +
+		pow(${resource_datasyn_uncert}, 2) +
+		pow(${resource_dist_uncert}, 2) +
+		pow(${resource_period_uncert}, 2) +
 		pow(${resource_refdata_uncert}, 2) );
 };
 
 equations{ 'avail_uncert_total' } = define() {
-	return sqrt( pow(${avail_bop_uncert}, 2) + 
-		pow(${avail_grid_uncert}, 2) + 
+	return sqrt( pow(${avail_bop_uncert}, 2) +
+		pow(${avail_grid_uncert}, 2) +
 		pow(${avail_turb_uncert}, 2) );
 };
 
 equations{ 'elec_uncert_total' } = define() {
-	return sqrt( pow(${elec_eff_uncert}, 2) + 
+	return sqrt( pow(${elec_eff_uncert}, 2) +
 		pow(${elec_parasitic_uncert}, 2) );
 };
 
 equations{ 'env_uncert_total' } = define() {
-	return sqrt( pow(${env_degrad_uncert}, 2) + 
-		pow(${env_exp_uncert}, 2) + 
+	return sqrt( pow(${env_degrad_uncert}, 2) +
+		pow(${env_exp_uncert}, 2) +
 		pow(${env_env_uncert}, 2) +
 		pow(${env_icing_uncert}, 2) );
 };
 
 equations{ 'eval_uncert_total' } = define() {
-	return sqrt( pow(${eval_climate_uncert}, 2) + 
-		pow(${eval_perf_uncert}, 2) + 
+	return sqrt( pow(${eval_climate_uncert}, 2) +
+		pow(${eval_perf_uncert}, 2) +
 		pow(${eval_period_uncert}, 2) );
 };
 
 equations{ 'eval_uncert_10yr_total' } = define() {
-	return sqrt( pow(${eval_climate_10yr_uncert}, 2) + 
-		pow(${eval_perf_10yr_uncert}, 2) + 
+	return sqrt( pow(${eval_climate_10yr_uncert}, 2) +
+		pow(${eval_perf_10yr_uncert}, 2) +
 		pow(${eval_period_10yr_uncert}, 2) );
 };
 
 equations{ 'eval_uncert_20yr_total' } = define() {
-	return sqrt( pow(${eval_climate_20yr_uncert}, 2) + 
-		pow(${eval_perf_20yr_uncert}, 2) + 
+	return sqrt( pow(${eval_climate_20yr_uncert}, 2) +
+		pow(${eval_perf_20yr_uncert}, 2) +
 		pow(${eval_period_20yr_uncert}, 2) );
 };
 
 equations{ 'hextrap_uncert_total' } = define() {
-	return sqrt( pow(${hextrap_approp_uncert}, 2) + 
-		pow(${hextrap_sens_uncert}, 2) + 
+	return sqrt( pow(${hextrap_approp_uncert}, 2) +
+		pow(${hextrap_sens_uncert}, 2) +
 		pow(${hextrap_inputs_uncert}, 2));
 };
 
 equations{ 'vextrap_uncert_total' } = define() {
-	return sqrt( pow(${vextrap_inputs_uncert}, 2) + 
-		pow(${vextrap_comp_uncert}, 2) + 
+	return sqrt( pow(${vextrap_inputs_uncert}, 2) +
+		pow(${vextrap_comp_uncert}, 2) +
 		pow(${vextrap_stress_uncert}, 2) );
 };
 
 
 equations{ 'meas_uncert_total' } = define() {
-	return sqrt( pow(${meas_atm_uncert}, 2) + 
-		pow(${meas_data_uncert}, 2) + 
+	return sqrt( pow(${meas_atm_uncert}, 2) +
+		pow(${meas_data_uncert}, 2) +
 		pow(${meas_speed_uncert}, 2) +
 		pow(${meas_dir_uncert}, 2) );
 };
 
 equations{ 'ops_uncert_total' } = define() {
-	return sqrt( pow(${ops_env_uncert}, 2) + 
-		pow(${ops_grid_uncert}, 2) + 
+	return sqrt( pow(${ops_env_uncert}, 2) +
+		pow(${ops_grid_uncert}, 2) +
 		pow(${ops_load_uncert}, 2) +
 		pow(${ops_strategies_uncert}, 2) );
 };
 
 equations{ 'turb_uncert_total' } = define() {
-	return sqrt( pow(${turb_generic_uncert}, 2) + 
-		pow(${turb_hysteresis_uncert}, 2) + 
+	return sqrt( pow(${turb_generic_uncert}, 2) +
+		pow(${turb_hysteresis_uncert}, 2) +
 		pow(${turb_specific_uncert}, 2) +
 		pow(${turb_subopt_uncert}, 2) );
 };
@@ -6160,7 +6164,7 @@ equations{ 'wake_uncert_total' } = define() {
 		pow(${wake_ext_uncert}, 2) +
 		pow(${wake_future_uncert}, 2));
 };
-3769
+3758
 function calculate_uncertainties(){
 	combine_uncertainty(1);
 	combine_uncertainty(10);
@@ -6261,28 +6265,28 @@ function combine_uncertainty(year) {
 		eval_perf = ${eval_perf_20yr_uncert};
 		eval_climate = ${eval_climate_20yr_uncert};
 	}
-	components = [${resource_period_uncert}, ${resource_refdata_uncert}, 
-		${resource_adj_uncert}, ${resource_dist_uncert}, 
-		${resource_datasyn_uncert}, eval_period, 
-		eval_climate, eval_perf, ${meas_speed_uncert}, 
-		${meas_dir_uncert}, ${meas_atm_uncert}, ${meas_data_uncert}, 
-		${hextrap_inputs_uncert}, ${hextrap_sens_uncert}, ${hextrap_approp_uncert}, 
+	components = [${resource_period_uncert}, ${resource_refdata_uncert},
+		${resource_adj_uncert}, ${resource_dist_uncert},
+		${resource_datasyn_uncert}, eval_period,
+		eval_climate, eval_perf, ${meas_speed_uncert},
+		${meas_dir_uncert}, ${meas_atm_uncert}, ${meas_data_uncert},
+		${hextrap_inputs_uncert}, ${hextrap_sens_uncert}, ${hextrap_approp_uncert},
 		${vextrap_inputs_uncert}, ${vextrap_comp_uncert}, ${vextrap_stress_uncert},
 		${wake_int_uncert}, ${wake_ext_uncert}, ${wake_future_uncert},
-		${avail_turb_uncert}, ${avail_bop_uncert}, ${avail_grid_uncert}, 
-		${elec_eff_uncert}, ${elec_parasitic_uncert}, ${turb_subopt_uncert}, 
-		${turb_generic_uncert}, ${turb_specific_uncert}, ${turb_hysteresis_uncert}, 
-		${env_icing_uncert}, ${env_degrad_uncert}, ${env_env_uncert}, ${env_exp_uncert}, 
+		${avail_turb_uncert}, ${avail_bop_uncert}, ${avail_grid_uncert},
+		${elec_eff_uncert}, ${elec_parasitic_uncert}, ${turb_subopt_uncert},
+		${turb_generic_uncert}, ${turb_specific_uncert}, ${turb_hysteresis_uncert},
+		${env_icing_uncert}, ${env_degrad_uncert}, ${env_env_uncert}, ${env_exp_uncert},
 		${ops_load_uncert}, ${ops_grid_uncert}, ${ops_env_uncert}, ${ops_strategies_uncert}];
 	n_wspd_comps = 18;
 	sens = ${sensitivity_uncert};
 	correlation = ${correlation_uncert};
 	for ( i = 0; i < n_wspd_comps; i++ ){
 		components[i] = sens*components[i];
-	} 
+	}
 	for ( i = 0; i < #components; i++ ){
 		components[i] /= 100.;
-	} 
+	}
 	total = 0;
 	wspd = 0;
 	for ( i = 0; i < #components; i++ ){

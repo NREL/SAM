@@ -1,5 +1,5 @@
 1
-442
+444
 A_absorber
 1
 1
@@ -1831,7 +1831,7 @@ itc_fed_percent
 1
 1
 1
-30
+22
 itc_fed_percent_deprbas_fed
 1
 1
@@ -2518,6 +2518,12 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 system_availability
 1
 1
@@ -2673,6 +2679,12 @@ tz
 1
 1
 -7
+ui_step_minutes
+1
+1
+1
+1
+60
 use_specific_weather_file
 1
 1

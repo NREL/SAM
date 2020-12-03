@@ -13,7 +13,7 @@
 	
 cfg = configuration();
 
-if ( cfg[0] != 'MSPT' || cfg[0] != 'DSPT' )
+if ( cfg[0] != 'MSPT')
 {
 	msgbox(active_case() + ' is not a power tower system!\nThis script runs only with the Molten Salt Power Tower or Direct Steam Power Tower model.\nExiting script.');
 	exit;

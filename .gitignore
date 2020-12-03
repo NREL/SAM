@@ -319,6 +319,10 @@ resource/splash*
 
 build_linux/python
 
+deploy/runtime/python/Miniconda*
+
+deploy/runtime/python/Python*
+
 build_linux/sam\.deploy/libraries/
 
 build_linux/sam\.deploy/linux_64/GtkTheme/gtk-2\.0/
@@ -367,3 +371,5 @@ src/private - nrel.h
 src/private - os.h
 
 sam\.bin
+
+deploy/~script

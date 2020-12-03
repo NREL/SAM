@@ -1,0 +1,116 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// This script makes direct calls to SSC to replicate the simulation
+// behavior of the Detailed PV model in SAM 2018.11.11 and earlier to run 
+// simulations over a single year and apply an AC degradation rate on the
+// total annual output in Years 2 and later.
+//
+// It reads inputs from either a Detailed PV / Single Owner or 
+// PV Battery / Single Owner case and passes them to the SSC modules required 
+// for those configurations (pvsamv1, grid, singleowner).
+//
+// The script saves the inputs for each SSC module in a text file for your
+// reference. You can comment out that step if you do not need the files.
+//
+// It overrides the behavior in SAM 2020.2.29 and later to run simulations over
+// the analysis period and apply degradation to the DC side of the system.
+//
+// IMPORTANT: Be sure to set the value of the AC degradation rate input for the
+// singleowner module before running the script. We've set it to the default 
+// value of 0.5. This input is an array, set it to [0.5] for an annual degradation
+// rate of 0.5%, or to an array of values for each year in the analysis period.
+//
+// Written 4/15/2020, tested in SAM 2020.2.29 r1
+//
+////////////////////////////////////////////////////////////////////////////////
+
+T.ac_degradation = [0.5]; // AC degradation rate, %/year
+
+// check configuration and inputs
+config = configuration();
+if ( config[0] == 'PV Battery' )
+{
+	x = get('batt_replacement_option');
+	if ( x!= 0)
+	{
+		outln('Battery replacements cannot be modeled for simulations over a single year. Setting to "No replacements".');
+		set('batt_replacement_option',0);
+	}
+	
+}
+
+// simulation from SAM case over analysis period for comparison
+simulate();
+x = get('gen');
+outln('analysis_period = ' + get('analysis_period'));
+outln('number of time steps = ' + #x);
+outln();
+
+// simulation from SSC, force to simulation over one year
+
+// start with pvsamv1 SSC module
+obj = ssc_module_create_from_case('pvsamv1');
+
+// save pvsamv1 inputs to text file
+ok = ssc_dump(obj,cwd()+'/pvsamv1_inputs.txt'); 
+if ( !ok ) { outln('Failed to write inputs to text file.'); }
+
+// force simulation over one year instead of over analysis period
+ssc_var( obj, 'system_use_lifetime_output', 0 ); // 0=over one year, 1=over analysis period
+
+// run pvsamv1
+sim = ssc_exec(obj, 'pvsamv1');
+outln( 'pvsamv1:' );
+if ( sim ) { outln( sim ); }
+else { outln('ok'); }
+
+// store pvsamv1 results
+T.gen = ssc_var( obj, 'gen' );
+T.annual_energy = ssc_var( obj, 'annual_energy' );
+
+// close pvsamv1 object
+ssc_free(obj);
+
+// now run the grid module and store some results
+obj = ssc_module_create_from_case('grid');
+ok = ssc_dump(obj,cwd()+'/grid_inputs.txt');
+if ( !ok ) { outln('Failed to write inputs to text file.'); }
+ssc_var( obj, 'gen', T.gen); // grid requires this output of pvsamv1
+ssc_var( obj, 'system_use_lifetime_output', 0 );
+sim = ssc_exec(obj, 'grid');
+outln( 'grid:' );
+if ( sim ) { outln( sim ); }
+else { outln('ok'); }
+T.annual_energy= ssc_var( obj, 'annual_energy' );
+ssc_free(obj);
+
+// run singleowner modules
+obj = ssc_module_create_from_case('singleowner');
+ok = ssc_dump(obj,cwd()+'/singleowner_inputs.txt');
+if ( !ok ) { outln('Failed to write inputs to text file.'); }
+ssc_var( obj, 'gen', T.gen); // singleowner requires this output of pvsamv1
+ssc_var( obj, 'system_use_lifetime_output', 0 );
+ssc_var( obj, 'degradation', T.ac_degradation ); 
+sim = ssc_exec(obj, 'singleowner');
+outln( 'singleowner:' );
+if ( sim ) { outln( sim ); }
+else { outln('ok'); }
+
+T.npv = ssc_var( obj, 'project_return_aftertax_npv' );
+T.cf_energy_net = ssc_var( obj, 'cf_energy_net');
+ssc_free(obj);
+
+outln();
+
+keys = @T;
+
+for (i=0; i<#keys; i++)
+{
+	outln(keys[i] + ' = ' + T{keys[i]});
+}
+
+csvwrite(cwd()+'/results.csv', T);
+browse(cwd());
+
+
+

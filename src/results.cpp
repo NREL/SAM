@@ -664,8 +664,29 @@ void ResultsViewer::Setup( Simulation *sim )
 	m_metricsTable->Clear();
 
 	m_metrics.clear();
+	m_metricRows.clear();
+	m_metricTables.clear();
+
+
+	// clear all the current metric tables
+	size_t i = 0;
+	while (i < m_summaryLayout->Count())
+	{
+		if (MetricsTable* mt = dynamic_cast<MetricsTable*>(m_summaryLayout->Get(i)))
+			m_summaryLayout->Delete(mt);
+		else
+			i++;
+	}
+	// recreate base metric table to report if no results available
+	m_metricsTable = new MetricsTable(m_summaryLayout);
+	m_summaryLayout->Add(m_metricsTable);
+
+
+
 	ResultsCallbackContext cc( this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing );
-		
+	
+	// Callback context uses the invoke "metric" function to add to the m_metrics collection
+
 	// first try to invoke a T/F specific callback if one exists
 	if ( lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup( "metrics", cfg->Technology + "|" + cfg->Financing ))
 		cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
@@ -680,46 +701,111 @@ void ResultsViewer::Setup( Simulation *sim )
 			cc.Invoke( metricscb, SamApp::GlobalCallbacks().GetEnv() );
 	}
 	
-	if ( m_metrics.size() > 0 && m_sim->Outputs().size() > 0 )
+	if (m_metrics.size() > 0 && m_sim->Outputs().size() > 0)
 	{
 		matrix_t<wxString> metrics;
-		metrics.resize( m_metrics.size()+1, 2 );
-		metrics(0,0) = "Metric";
-		metrics(0,1) = "Value";
-
-		for( size_t i=0;i<m_metrics.size();i++ )
+		metrics.resize(m_metrics.size() + 1, 2);
+		metrics(0, 0) = "Metric";
+		metrics(0, 1) = "Value";
+		for (size_t i = 0; i < m_metrics.size(); i++)
 		{
-			MetricData &md = m_metrics[i];
-			wxString slab( md.var );
-			wxString sval( "<inval>" );
+			MetricData& md = m_metrics[i];
+			wxString slab(md.var);
+			wxString sval("<inval>");
 
 			double value = 0.0;
-			if ( VarValue *vv = m_sim->GetValue( md.var ) )
+			if (VarValue* vv = m_sim->GetValue(md.var))
 			{
-				value = md.scale*(double)vv->Value();
+				value = md.scale * (double)vv->Value();
 
 				int deci = md.deci;
-				if ( md.mode == 'g' ) deci = wxNUMERIC_GENERIC;
-				else if ( md.mode == 'e' ) deci = wxNUMERIC_EXPONENTIAL;
-				else if ( md.mode == 'h' ) deci = wxNUMERIC_HEXADECIMAL;
-			
-				slab = md.label;
-				if ( slab.IsEmpty() )
-					slab = m_sim->GetLabel( md.var );
-				
-				wxString post = md.post;
-				if ( post.IsEmpty() )
-					post = " " + m_sim->GetUnits( md.var );
-				
-				sval = wxNumericFormat( value, wxNUMERIC_REAL, 
-					deci, md.thousep, md.pre, post );
-			}
+				if (md.mode == 'g') deci = wxNUMERIC_GENERIC;
+				else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
+				else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
 
-			metrics(i+1, 0) = slab;
-			metrics(i+1, 1) = sval;
+				slab = md.label;
+				if (slab.IsEmpty())
+					slab = m_sim->GetLabel(md.var);
+
+				wxString post = md.post;
+				if (post.IsEmpty())
+					post = " " + m_sim->GetUnits(md.var);
+
+				sval = wxNumericFormat(value, wxNUMERIC_REAL,
+					deci, md.thousep, md.pre, post);
+			}
+			metrics(i + 1, 0) = slab;
+			metrics(i + 1, 1) = sval;
 		}
 
-		m_metricsTable->SetData( metrics );
+		m_metricsTable->SetData(metrics);
+
+
+		// process any additional tables and associated rows
+		if (m_metricTables.size() > 0 && m_metricRows.size() > 0) {
+			// rewrite as lambda
+			std::vector<int> numTableRows(m_metricTables.size());
+			for (size_t iRow = 0; iRow < m_metricRows.size(); iRow++) {
+				for (size_t iTable = 0; iTable < m_metricTables.size(); iTable++) {
+					if (m_metricRows[iRow].tableName == m_metricTables[iTable].tableName)
+						numTableRows[iTable]++;
+				}
+			}
+
+
+			for (size_t iTable = 0; iTable < m_metricTables.size(); iTable++) {
+				if (numTableRows[iTable] > 0 && m_metricTables[iTable].headers.size() > 0) {
+
+					size_t ncols = m_metricTables[iTable].headers.size();
+					matrix_t<wxString> metrics;
+					metrics.resize(numTableRows[iTable] + (size_t)1, ncols);
+					for (size_t icol=0; icol < ncols; icol++) 
+						metrics(0, icol) = m_metricTables[iTable].headers[icol];
+
+					size_t iMetrics = 0;
+					for (size_t iRow = 0; iRow < m_metricRows.size(); iRow++)
+					{
+						if (m_metricTables[iTable].tableName == m_metricRows[iRow].tableName) {
+							MetricRow& mr = m_metricRows[iRow];
+							wxString slab(mr.label);
+							metrics(iMetrics + 1, 0) = slab;
+
+							for (size_t icol = 0; icol < mr.metrics.size(); icol++) {
+
+								wxString sval("<inval>");
+
+								double value = 0.0;
+								if (VarValue* vv = m_sim->GetValue(mr.metrics[icol].var))
+								{
+									value = mr.metrics[icol].scale * vv->Value();
+
+									int deci = mr.metrics[icol].deci;
+									if (mr.metrics[icol].mode == 'g') deci = wxNUMERIC_GENERIC;
+									else if (mr.metrics[icol].mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
+									else if (mr.metrics[icol].mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
+
+									wxString post = mr.metrics[icol].post;
+									if (post.IsEmpty())
+										post = " " + m_sim->GetUnits(mr.metrics[icol].var);
+
+									sval = wxNumericFormat(value, wxNUMERIC_REAL,
+										deci, mr.metrics[icol].thousep, mr.metrics[icol].pre, post);
+								}
+								metrics(iMetrics + 1, icol+1) = sval;
+							}
+							iMetrics++;
+						}
+					}
+
+					if (iMetrics > 0) {
+						MetricsTable* metricsTable = new MetricsTable(m_summaryLayout);
+						metricsTable->SetData(metrics);
+						m_summaryLayout->Add(metricsTable);
+					}
+				}
+			}
+		}
+
 	}
 	else if ( m_sim->Outputs().size() > 0 )
 	{
@@ -760,7 +846,7 @@ void ResultsViewer::Setup( Simulation *sim )
 
 
 	// update excel exchange outputs
-	size_t i=0;
+	i=0;
 	while( i < m_summaryLayout->Count() )
 	{
 		if ( ExcelExchSummary *exsum = dynamic_cast<ExcelExchSummary*>( m_summaryLayout->Get(i) ) )
@@ -1110,8 +1196,12 @@ void ResultsViewer::Setup( Simulation *sim )
 		m_depreciationTable->Thaw();
 	}
 
-	if ( m_cashflow.size() > 0 ) ShowPage( PAGE_CASH_FLOW );
-	else HidePage( PAGE_CASH_FLOW );
+	if (m_cashflow.size() > 0) {
+		ShowPage(PAGE_CASH_FLOW);
+		m_cashFlowTable->GetParent()->Layout();
+	}
+	else 
+		HidePage( PAGE_CASH_FLOW );
 
 
 	CreateAutoGraphs();
@@ -2416,7 +2506,7 @@ void TabularBrowser::UpdateNotebook(ArraySizeKey grid_size, wxString var_name)
 		wxString group = group_by_name[var_name];
 		if (grid_size.n_cols == 1)
 		{
-			m_notebook->AddPage(m_gridMap[grid_size], group, (bool)wxID_ANY);
+			m_notebook->AddPage(m_gridMap[grid_size], group, true);
 			m_tabLabelsMap[grid_size] = group;
 		}
 		else
@@ -2425,7 +2515,7 @@ void TabularBrowser::UpdateNotebook(ArraySizeKey grid_size, wxString var_name)
 			wxString units = m_sim->GetUnits(var_name);
 			if (!units.IsEmpty())
 				label = label + " (" + units + ")";
-			m_notebook->AddPage(m_gridMap[grid_size], label , (bool)wxID_ANY);
+			m_notebook->AddPage(m_gridMap[grid_size], label, true);
 			m_tabLabelsMap[grid_size] = label;
 		}
 		m_numberOfTabs++;

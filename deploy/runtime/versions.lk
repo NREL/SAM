@@ -51,6 +51,58 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
+version_upgrade{'2020.11.29'} = define() {
+    const cfg = config();
+	if( cfg.tech == 'MSPT' )
+	{
+		pc_config = oldvalue("pc_config");
+		if(pc_config == 2)
+		{
+			value("pc_config", 0);
+			message('The Supercritical Carbon Dioxide (sCO2) Power Cycle option has been removed from the Power Cycle page.'
+						'To model an sCO2 cycle, use the sCO2 Cycle Integration macro with the NREL sCO2 Power Cycle Python model. See the macro instructions for details.'
+						' Setting power cycle option to the default Rankine Cycle.','warning');
+		}
+	}
+    
+    //To be included in next full release (version_upgrade{'2020.11.29'})
+    if (cfg.tech == 'Dish Stirling' )
+    {
+		retire_tech();
+		//The version upgrade script is set up to delete cases with this technology made from a previous release from the project file. This is done in project.cpp
+		message('The Dish Stirling model is not available in SAM ' + samver() +'. Removing Case \"' + case_name() + '\" from the file. The most recent version with the model is SAM 2020.2.29, which you can download from https://sam.nrel.gov/download/','warning');
+    }
+    if (cfg.tech == 'DSPT')
+    {
+		retire_tech();
+		//The version upgrade script is set up to delete cases with this technology made from a previous release from the project file. This is done in project.cpp
+		message ('The Direct Steam Power Tower model is not available in SAM ' + samver() +'. Removing Case \"' + case_name() + '\" from the file. The most recent version with the model is SAM 2020.2.29, which you can download from https://sam.nrel.gov/download/','warning');
+	}
+    
+    // Use en_batt instead of cfg.tech to capture fuel cell configurations
+    if (oldvalue('en_batt') == 1) {
+		message('The old Battery Storage page has been split into two new input pages: Battery Cell and System, and Battery Dispatch.');
+        old_replacement_option = oldvalue('batt_replacement_schedule');
+        max_replacements = max(old_replacement_option);
+        repl_msg = 'For the battery "Replace at specified schedule" option, "Battery bank replacement schedule (%/year)" replaces the two "Battery bank replacement schedule" and "Battery bank replacement percent" inputs to avoid inconsistencies between the two.';
+        if (max_replacements > 1) {
+            message( repl_msg + ' You used the replacement schedule to specify up to ' + max_replacements + ' replacements per year, so you may need to adjust the replacement percentages in the new schedule. Please contact us at sam.support@nrel.gov if you need help with this.', 'warning');
+        }
+        else if (max_replacements > 0) {
+            message(repl_msg);
+        }
+        
+        fin = cfg.fin;
+        is_fom = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' || fin == 'Merchant Plant');
+        if (is_fom) {
+            old_cycle_cost = oldvalue('batt_cycle_cost');
+            value('batt_cycle_cost', [old_cycle_cost], 'Convert single value to array.');
+            message('We have renamed "Battery cycle cost" to "Cycle degradation penalty" to make it clear that this is a dispatch parameter rather than a project cost. The cycle degradation penalty is now an array so you have the option to specify a different penalty for each year of the analysis period.', 'notice');
+        }
+    
+    }
+};
+
 version_upgrade{'2020.2.29'} = define() {
     const cfg = config();
     if ( cfg.tech == 'Generic System' || cfg.tech == 'Flat Plate PV' )
@@ -147,7 +199,7 @@ version_upgrade{'2020.2.29'} = define() {
                         value( 'combo_htf_type', old_combo_htf_type + 1 );
         }
     }
-       // update ppa_price_input before configuration changes
+    // update ppa_price_input before configuration changes
     fin = cfg.fin;
     is_ppa = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' || fin == 'Host Developer');
     if ( is_ppa ) 
@@ -155,7 +207,6 @@ version_upgrade{'2020.2.29'} = define() {
 		value( 'ppa_price_input', [oldvalue('ppa_price_input')], 'Convert single value to array.' );
         message('You can now specify a different PPA price for each year of the analysis period on the Finanical Parameters page.','notice');
     }
-
 };
 
 // ** Not sure how this works for patches, so using new version number for testing

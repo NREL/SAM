@@ -1,7 +1,7 @@
 Utility Rate - Flat
-1422
-522
-23
+1412
+538
+27
 GroupBox
 
 1
@@ -42,16 +42,16 @@ Name
 GroupBox2
 X
 3
-12
+9
 Y
 3
-438
+464
 Width
 3
 565
 Height
 3
-75
+70
 Tool Tip
 5
 0
@@ -102,10 +102,10 @@ Name
 GroupBox7
 X
 3
-12
+9
 Y
 3
-387
+414
 Width
 3
 565
@@ -141,7 +141,7 @@ Width
 1403
 Height
 3
-170
+198
 Tool Tip
 5
 0
@@ -162,16 +162,16 @@ Name
 GroupBox9
 X
 3
-582
+576
 Y
 3
-387
+414
 Width
 3
-830
+833
 Height
 3
-126
+120
 Tool Tip
 5
 0
@@ -192,10 +192,10 @@ Name
 Label4
 X
 3
-615
+612
 Y
 3
-444
+465
 Width
 3
 791
@@ -243,13 +243,13 @@ X
 27
 Y
 3
-33
+24
 Width
 3
 1380
 Height
 3
-49
+46
 Tool Tip
 5
 0
@@ -321,7 +321,7 @@ X
 108
 Y
 3
-87
+78
 Width
 3
 227
@@ -368,6 +368,102 @@ Save rate to file...
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+19
+lbl_metering_option
+X
+3
+18
+Y
+3
+354
+Width
+3
+471
+Height
+3
+51
+Tool Tip
+5
+0
+Caption
+5
+92
+Only the Buy All / Sell All metering option is available for front-of-meter battery systems.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+16
+msg_unused_items
+X
+3
+396
+Y
+3
+99
+Width
+3
+837
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+120
+This rate from the URDB contains items that SAM's electricity bill calculator does not consider. See Unused Items below.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 SchedNumeric
 
 1
@@ -378,10 +474,10 @@ Name
 rate_escalation
 X
 3
-876
+873
 Y
 3
-411
+438
 Width
 3
 75
@@ -421,10 +517,10 @@ Name
 ur_annual_min_charge
 X
 3
-261
+231
 Y
 3
-486
+504
 Width
 3
 75
@@ -486,7 +582,7 @@ X
 519
 Y
 3
-324
+342
 Width
 3
 422
@@ -519,7 +615,7 @@ X
 519
 Y
 3
-264
+288
 Width
 3
 422
@@ -558,7 +654,7 @@ Width
 346
 Height
 3
-134
+113
 Tool Tip
 5
 0
@@ -592,10 +688,10 @@ Name
 ur_monthly_fixed_charge
 X
 3
-261
+231
 Y
 3
-405
+429
 Width
 3
 75
@@ -654,10 +750,10 @@ Name
 ur_monthly_min_charge
 X
 3
-261
+231
 Y
 3
-459
+477
 Width
 3
 75
@@ -706,6 +802,83 @@ BackColour
 TabOrder
 3
 10
+Choice
+
+1
+9
+Name
+5
+18
+ur_nm_credit_month
+X
+3
+714
+Y
+3
+261
+Width
+3
+99
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+12
+Jan
+Feb
+Mar
+Apr
+May
+Jun
+Jul
+Aug
+Sep
+Oct
+Nov
+Dec
+Selection
+3
+11
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+21
+ur_nm_credit_rollover
+X
+3
+834
+Y
+3
+234
+Width
+3
+363
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+49
+Roll over net excess compensation to future bills
+State
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -716,7 +889,7 @@ Name
 ur_nm_yearend_sell_rate
 X
 3
-826
+714
 Y
 3
 234
@@ -778,10 +951,10 @@ Name
 ur_rate_url
 X
 3
-432
+396
 Y
 3
-105
+75
 Width
 3
 404
@@ -856,10 +1029,10 @@ Name
 ur_ts_buy_rate
 X
 3
-717
+714
 Y
 3
-351
+369
 Width
 3
 184
@@ -896,7 +1069,7 @@ X
 714
 Y
 3
-294
+315
 Width
 3
 184
@@ -921,7 +1094,7 @@ TabOrder
 3
 3
 
-11
+14
 rate_escalation
 3
 2
@@ -978,6 +1151,20 @@ Electricity Rates - General
 1
 0
 CheckBox
+ur_has_unused_items
+3
+1
+URDB unused items
+ 
+Electricity Rates - General
+0
+4
+1
+1
+1
+1
+0
+Default
 ur_metering_option
 3
 1
@@ -1021,10 +1208,39 @@ Electricity Rates - General
 1
 0
 Numeric
+ur_nm_credit_month
+3
+1
+Month for end of true-up period
+ 
+Electricity Rates - General
+47
+Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
+2
+1
+1
+1
+1
+0
+Choice
+ur_nm_credit_rollover
+3
+1
+Roll over net excess compensation to future bills
+ 
+Electricity Rates - General
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 ur_nm_yearend_sell_rate
 3
 1
-Sell rate for kWh credits remaining at end of year
+Compensation rate for net excess generation
 $/kWh
 Electricity Rates - General
 0
@@ -1079,92 +1295,135 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-5431
-on_load{"Utility Rate - Flat"} = define(){
-	check_configuration();
-	ur_flat_buysell_rates(); // refresh when switching pages
+7329
+on_load{'Utility Rate - Flat'} = define(){
+	set_battery_fom_inputs();
+	set_metering_billing_inputs();
+	show('msg_unused_items', value('ur_has_unused_items'));
 };	
 
-function check_configuration()
-{
-	tech = technology();
-	finance = financing();
-
-	// Under the single owner configuration, only one metering option is valid
-	if (tech == 'Flat Plate PV' && finance == 'Single Owner'){
-		if (value('ur_metering_option') != 4){
-			logmsg('Got here');
-			value('ur_metering_option', 4);
-			logmsg(value('ur_metering_option'));
-			refresh('ur_metering_option');
-		}
-	}
-}	
-
-function ur_flat_buysell_rates()
+// set inputs on Utility Rate - Energy Charge form
+// based on values of inputs on Utility Rate - Flat form
+// NOTE: Copy any changes here to function on Utility Rate - Energy Charge form
+// so that on_change() for ur_ec_tou_mat updates correctly
+function set_ec_schedule_inputs()
 {	
-	eme = value("ur_metering_option");
-	enable( "ur_nm_yearend_sell_rate", eme==0 );
-	if (eme==2 || eme==3|| eme==4)
+	eme = value('ur_metering_option');
+	en_ts_buy = value('ur_en_ts_buy_rate');
+	en_ts_sell = value('ur_en_ts_sell_rate');
+	if (eme==0)
 	{
-		enable( "ur_ts_sell_rate", true );
-		enable( "ur_ts_buy_rate", true );
-		enable( "ur_en_ts_sell_rate", true );
-		enable( "ur_en_ts_buy_rate", true );
-		en_sell = value("ur_en_ts_sell_rate");
-		if (en_sell==1){
-			property("ur_ec_tou_mat","HideColumn",5);
-		}
-		else {
-			property("ur_ec_tou_mat","ShowColumn",5);
-		}
-		en_buy = value("ur_en_ts_buy_rate");
-		if (en_buy==1){
-			property("ur_ec_tou_mat","HideColumn",4);
-		}
-		else {
-			property("ur_ec_tou_mat","ShowColumn",4);
-		}
+		property('ur_ec_tou_mat','ShowColumn',4);
+		property('ur_ec_tou_mat','HideColumn',5);
+	}
+	elseif (eme==1)
+	{
+		property('ur_ec_tou_mat','ShowColumn',4);
+		property('ur_ec_tou_mat','ShowColumn',5);
 	}
 	else
 	{
-		property("ur_ec_tou_mat","ShowColumn",4);
-		enable( "ur_ts_sell_rate", false );
-		enable( "ur_ts_buy_rate", false );
-		enable( "ur_en_ts_sell_rate", false );
-		enable( "ur_en_ts_buy_rate", false );
-		if (eme == 0) {
-			property("ur_ec_tou_mat","HideColumn",5);
+		if (en_ts_buy)
+		{
+			property('ur_ec_tou_mat','HideColumn',4);
 		}
-		elseif (eme == 1) {
-			property("ur_ec_tou_mat","ShowColumn",5);
+		else
+		{
+			property('ur_ec_tou_mat','ShowColumn',4);
 		}
-		
+		if (en_ts_sell)
+		{
+			property('ur_ec_tou_mat','HideColumn',5);
+		}
+		else
+		{
+			property('ur_ec_tou_mat','ShowColumn',5);
+		}
+	}
+	if (en_ts_sell && en_ts_buy)
+	{
+		enable( 'ur_ec_tou_mat', false);
+		enable( 'ur_ec_sched_weekday', false);
+		enable( 'ur_ec_sched_weekend', false);
+		enable( 'lbl_wkday', false);
+		enable( 'lbl_wkend', false);
+	}
+	else
+	{
+		enable( 'ur_ec_tou_mat', true);
+		enable( 'ur_ec_sched_weekday', true);
+		enable( 'ur_ec_sched_weekend', true);
+		enable( 'lbl_wkday', true);
+		enable( 'lbl_wkend', true);
+	}	
+}
+
+// input options for fom battery
+function set_battery_fom_inputs()
+{
+	tech = technology();
+	finance = financing();
+	// retail electricity purchase for battery charging only available for single owner financial model
+	batt_tech = ( tech == 'PV Battery' || tech == 'Generic Battery' );
+	show('lbl_metering_option',false);
+	if ( batt_tech && finance == 'Single Owner'){
+		value('ur_metering_option', 4);
+		enable('ur_metering_option', false);
+		show('lbl_metering_option',true);
+	}
+	refresh('ur_metering_option');
+}	
+
+function set_metering_billing_inputs()
+{	
+	eme = value('ur_metering_option');
+	enable( 'ur_nm_yearend_sell_rate', eme==0 );
+	enable( 'ur_nm_credit_rollover', eme==0 );
+	enable( 'ur_nm_credit_month', eme==0 || eme==1 || eme==3 );
+	if (eme==2 || eme==3|| eme==4)
+	{
+		enable( 'ur_en_ts_sell_rate', true );
+		enable( 'ur_ts_sell_rate', value('ur_en_ts_sell_rate') );
+		enable( 'ur_en_ts_buy_rate', true );
+		enable( 'ur_ts_buy_rate', value('ur_en_ts_buy_rate') );
+	}
+	else // net energy metering
+	{
+		enable( 'ur_ts_sell_rate', false );
+		enable( 'ur_ts_buy_rate', false );
+		enable( 'ur_en_ts_sell_rate', false );
+		enable( 'ur_en_ts_buy_rate', false );
 	}
 }
 
 on_change{'ur_en_ts_sell_rate'} = define()
 {
-	ur_flat_buysell_rates();
+	set_metering_billing_inputs();
+	set_ec_schedule_inputs();
+	refresh();
 };
 
 on_change{'ur_en_ts_buy_rate'} = define()
 {
-	ur_flat_buysell_rates();
+	set_metering_billing_inputs();
+	set_ec_schedule_inputs();
+	refresh();
 };
 
 on_change{'ur_metering_option'} = define()
 {
-	check_configuration();
-	ur_flat_buysell_rates();
-
-	eme = value("ur_metering_option");
-	if (eme == 0 || eme == 1) {
+	set_metering_billing_inputs();
+	set_ec_schedule_inputs();
+	
+	eme = value('ur_metering_option');
+	if (eme == 0 || eme == 1) 
+	{
 		// Disable these so we don't get an exception
 		// Can't do this in ur_flat_buy_sell_rates without creating an infinte loop
-		value( 'ur_en_ts_buy_rate', 0 );
-		value( 'ur_en_ts_sell_rate', 0 );
+		value( 'ur_en_ts_buy_rate', false );
+		value( 'ur_en_ts_sell_rate', false );
 	}
+	refresh();
 };
 
 on_change{'btnSaveRateData'} = define() {
@@ -1177,12 +1436,12 @@ on_change{'btnSaveRateData'} = define() {
 		if (urdb_write(file))
 		{	
 			value( 'ur_ratedata_filename', file );
-			msgbox("Rate saved! \n");
+			msgbox('Rate saved! \n');
 		}
 		else
 		{
-			value( 'ur_ratedata_filename', "" );
-			msgbox("Rate save failed! \n");
+			value( 'ur_ratedata_filename', '' );
+			msgbox('Rate save failed! \n');
 		}
 	}
 };
@@ -1197,12 +1456,12 @@ on_change{'btnLoadRateData'} = define() {
 		if (urdb_read(file))
 		{	
 			value( 'ur_ratedata_filename', file );
-			msgbox("Rate loaded! \n");
+			msgbox('Rate loaded! \n');
 		}
 		else
 		{
-			value( 'ur_ratedata_filename', "" );
-			msgbox("Rate load failed! \n");
+			value( 'ur_ratedata_filename', '' );
+			msgbox('Rate load failed! \n');
 		}
 	}
 };
@@ -1210,7 +1469,7 @@ on_change{'btnLoadRateData'} = define() {
 on_change{'btnQueryOpenEI'} = define() {
 	logmsg('running btnQueryOpenEI');
 	guid = openeiutilityrateform();
-	if ( guid == "" ) return;
+	if ( guid == '' ) return;
 	hash = urdb_get(guid);
 	// meta data
 	value ('ur_name', hash{'name'});
@@ -1218,71 +1477,85 @@ on_change{'btnQueryOpenEI'} = define() {
 	value ('ur_source', hash{'source'});
 	
 	value ('ur_description', hash{'description'}
-	 +	"\n" + hash{'basicinformationcomments'}
-	 +	"\n" + hash{'energycomments'}
-	 +	"\n" + hash{'demandcomments'});
+	 +	hash{'basicinformationcomments'}
+	 +	hash{'energycomments'}
+	 +	hash{'demandcomments'});
 	
 	value ('ur_start_date', hash{'start_date'});
 	value ('ur_end_date', hash{'end_date'});
 	value ('ur_uri', hash{'rateurl'});
 	
-	// applicability
-	value("ur_demand_min",hash{'peakkwcapacitymin'});
-	value("ur_demand_max",hash{'peakkwcapacitymax'});
-	value("ur_demand_history",hash{'peakkwcapacityhistory'});
-
-	value("ur_energy_min",hash{'peakkwhusagemin'});
-	value("ur_energy_max",hash{'peakkwhusagemax'});
-	value("ur_energy_history",hash{'peakkwhusagehistory'});
-
-	value("ur_voltage_min",hash{'voltageminimum'});
-	value("ur_voltage_max",hash{'voltagemaximum'});
+	value( 'ur_rate_notes',hash{'ratenotes'});
 	
-	value("ur_voltage_category",hash{'voltagecategory'});
-	value("ur_phase_wiring",hash{'phasewiring'});
+	// applicability
+	value('ur_demand_min',hash{'peakkwcapacitymin'});
+	value('ur_demand_max',hash{'peakkwcapacitymax'});
+	value('ur_demand_history',hash{'peakkwcapacityhistory'});
+
+	value('ur_energy_min',hash{'peakkwhusagemin'});
+	value('ur_energy_max',hash{'peakkwhusagemax'});
+	value('ur_energy_history',hash{'peakkwhusagehistory'});
+
+	value('ur_voltage_min',hash{'voltageminimum'});
+	value('ur_voltage_max',hash{'voltagemaximum'});
+	
+	value('ur_voltage_category',hash{'voltagecategory'});
+	value('ur_phase_wiring',hash{'phasewiring'});
 
 	// urls update hyperlink
 	property( 'ur_rate_url', 'caption', hash{'rateurl'} );
 	property( 'ur_rate_url', 'url', hash{'rateurl'} );
 	property( 'ur_rate_json_url', 'caption', hash{'jsonurl'} );
 	property( 'ur_rate_json_url', 'url', hash{'jsonurl'} );
-	
 
 	// fixed charges
 	value ('ur_monthly_fixed_charge', hash{'monthly_fixed_charge'});
+	
+	// minimum charges
 	value ('ur_monthly_min_charge', hash{'monthly_min_charge'});
 	value ('ur_annual_min_charge', hash{'annual_min_charge'});
 	
-	// checkboxes
-	nm_enable = hash{'enable_net_metering'};
-	if (nm_enable==1)
-		value( 'ur_metering_option', 0);
-	else
-		value( 'ur_metering_option', 2);
-	enable( "ur_nm_yearend_sell_rate", nm_enable==1 );
-		
-	//logmsg(' calling on_change{ur_ec_enable}() from btnQueryOpenEI' );
-		
+	// metering option
+	value('ur_metering_option',hash{'metering_option'});	
 	value( 'ur_dc_enable', hash{'dc_enable'});
-	on_change{"ur_dc_enable"}(); // invoke callback for ur_ec_enable to set up enable/disable of widgets
-	// no year end sell rate in URDB
-	
+	on_change{'ur_dc_enable'}(); // invoke callback for ur_ec_enable to set up enable/disable of widgets
+	set_battery_fom_inputs(); // reset to buy all / sell all for battery FOM
 	
 	// schedules
 	value ('ur_ec_sched_weekday', hash{'ec_sched_weekday'});
 	value ('ur_ec_sched_weekend', hash{'ec_sched_weekend'});
 	value ('ur_dc_sched_weekday', hash{'dc_sched_weekday'});
 	value ('ur_dc_sched_weekend', hash{'dc_sched_weekend'});
-//	msgbox("weekday" + hash{'ec_sched_weekday'});
+//	msgbox('weekday' + hash{'ec_sched_weekday'});
 
+	value('ur_ec_tou_mat', hash{'ec_tou_mat'});
+	value('ur_dc_tou_mat', hash{'dc_tou_mat'});
+	value('ur_dc_flat_mat', hash{'dc_flat_mat'});
 
+	// unused items
+	value('ur_has_unused_items',hash{'hasunuseditems'});
+	value('ur_is_default',hash{'isdefault'});
+	value('ur_service_type',hash{'servicetype'});
+	value('ur_demand_window',hash{'demandwindow'});
+	arr = [];
+	for ( i=0; i<12; i++ )
+	{
+		arr[i] = hash{'fueladjustmentsmonthly'+to_string(i)};
+	}
+	value('ur_fuel_adjustments_monthly', arr);
+	arr = [];
+	for ( i=0; i<12; i++ )
+	{
+		arr[i] = hash{'demandratchetpercentage'+to_string(i)};
+	}
+	value('ur_demand_ratchet_percentage', arr);
+	value('ur_cr_sched', hash{'cr_sched'});
+	value('ur_cr_tou_mat', hash{'cr_tou_mat'});
+	value('ur_energy_attrs', hash{'energyattrs'});
+	value('ur_demand_attrs', hash{'demandattrs'});
+	value('ur_fixed_attrs', hash{'fixedattrs'});
+	show('msg_unused_items', value('ur_has_unused_items'));
+	refresh();
 
-	value("ur_ec_tou_mat", hash{"ec_tou_mat"});
-	value("ur_dc_tou_mat", hash{"dc_tou_mat"});
-	value("ur_dc_flat_mat", hash{"dc_flat_mat"});
-
-	msgbox("OpenEI rate applied! \n");
+	msgbox('OpenEI rate applied! \n');
 };
-
-
-

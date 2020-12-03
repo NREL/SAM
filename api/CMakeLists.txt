@@ -8,6 +8,11 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 cmake_minimum_required(VERSION 2.8)
 
+option(SAMAPI_EXPORT "Export of ssc binaries to the SAM_api directory; for Unix, compile ssc libraries for SAM_api" ON)
+
+option(SAM_SKIP_AUTOGEN "Re-generate the SAMAPI files from export_config" ON)
+
+
 if(APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
     set(CMAKE_MACOSX_RPATH 1)
@@ -27,7 +32,7 @@ endif()
 
 Project(SAM_API)
 
-if (NOT skip_autogen)
+if (NOT SAM_SKIP_AUTOGEN)
     add_subdirectory(api_autogen)
 endif()
 
@@ -83,7 +88,7 @@ set_target_properties(SAM_api
     DEBUG_POSTFIX "d"
     )
 
-if (NOT skip_api)
+if (NOT SAM_SKIP_AUTOGEN)
     add_dependencies(SAM_api export_config)
 endif()
 
@@ -110,12 +115,12 @@ else()
     unset(SSC_LIB CACHE)
     find_library( SSC_LIB
             NAMES ssc.dylib ssc.lib ssc.so
-            PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
+            PATHS $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
     if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
         unset(SSCD_LIB CACHE)
         find_library( SSCD_LIB
                 NAMES sscd.dylib sscd.lib sscd.so
-                PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
+                PATHS $ENV{SSCD_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
         target_link_libraries(SAM_api debug ${SSCD_LIB})
     endif()
 
@@ -123,7 +128,7 @@ else()
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so
-                PATHS $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/../build_linux_ssc/ssc )
+                PATHS $ENV{SSCE_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/../build_linux_ssc/ssc )
         target_link_libraries(SAM_api ${SSCE_LIB})
     else()
         target_link_libraries(SAM_api optimized ${SSC_LIB})

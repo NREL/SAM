@@ -120,13 +120,20 @@ for ( i=0; i<4; i++ ) // up to 4 construction loans
 	I.constr.int[i] = get('const_per_interest_rate' + to_string(i+1) )/100;
 }
 
+arr = get('om_fixed');
+if ( #arr > 1 )
+{
+	msgbox('O&M in $/yr specified as array of values!\nScript assumes single value. Exiting script.');
+	exit;
+}
+I.operating_cost_fixed = arr[0];
 arr = get('om_capacity');
 if ( #arr > 1 )
 {
 	msgbox('O&M in $/kW-yr specified as array of values!\nScript assumes single value. Exiting script.');
 	exit;
 }
-I.operating_cost_fixed = arr[0] * get('system_capacity');
+I.operating_cost_fixed += arr[0] * get('system_capacity');
 arr = get('cf_om_production_expense');
 I.operating_cost_variable = arr[1] * get('annual_energy'); // use Year 1 value, ignore annual values if specified as schedule
 
@@ -171,9 +178,9 @@ O.crf = CRF( O.wacc, I.analysis_period );
 O.pvdep = PVDEP( I.macrs_5yr, O.wacc, I.inflation );
 O.pff = PFF( I.eff_tax, O.pvdep ); 
 O.fcr = FCR( O.crf, O.pff, O.cff );
-O.lcoe = LCOE( O.fcr, I.installed_cost, I.operating_cost_fixed, I.operating_cost_variable, I.annual_energy );
-O.sam_lcoe = get('lcoe_real')/100;
-O.sam_to_fcr = O.sam_lcoe / O.lcoe;
+O.lcoe_fcr = LCOE( O.fcr, I.installed_cost, I.operating_cost_fixed, I.operating_cost_variable, I.annual_energy );
+O.lcoe_cash_flow = get('lcoe_real')/100;
+O.cash_flow_to_script = O.lcoe_cash_flow / O.lcoe_fcr;
 outln();
 outln('--- Outputs ---');
 

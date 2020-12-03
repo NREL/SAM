@@ -1764,7 +1764,7 @@ Y
 45
 Width
 3
-405
+423
 Height
 3
 24
@@ -1773,8 +1773,8 @@ Tool Tip
 0
 Caption
 5
-60
-Normalize supplied load profile to monthly utility bill data
+64
+Normalize supplied load profile to monthly electricity bill data
 State
 2
 1

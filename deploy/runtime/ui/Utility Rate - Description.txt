@@ -1,6 +1,6 @@
 Utility Rate - Description
-1413
-491
+1416
+505
 20
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 1403
 Height
 3
-313
+319
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 9
 Y
 3
-372
+381
 Width
 3
 1403
@@ -87,8 +87,8 @@ Tool Tip
 0
 Caption
 5
-334
-The description and applicability information is for your reference. SAM does not use it in calculations. The information is from the U.S. Utility Rate Database, but may not correspond to the actual energy charge and demand charge data from the database. The description fields are editable, so you can change them to suit your needs.
+329
+The description and applicability information is for your reference. SAM does not use it in calculations. The information is from the Utility Rate Database, but may not correspond to the actual energy charge and demand charge data from the database. The description fields are editable, so you can change them to suit your needs.
 TextColour
 4
 0
@@ -123,7 +123,7 @@ X
 177
 Y
 3
-453
+462
 Width
 3
 90
@@ -185,7 +185,7 @@ X
 177
 Y
 3
-426
+435
 Width
 3
 90
@@ -247,7 +247,7 @@ X
 177
 Y
 3
-399
+408
 Width
 3
 90
@@ -397,7 +397,7 @@ X
 528
 Y
 3
-453
+462
 Width
 3
 90
@@ -459,7 +459,7 @@ X
 528
 Y
 3
-426
+435
 Width
 3
 90
@@ -521,7 +521,7 @@ X
 528
 Y
 3
-399
+408
 Width
 3
 90
@@ -627,7 +627,7 @@ X
 1113
 Y
 3
-396
+405
 Width
 3
 130
@@ -847,7 +847,7 @@ X
 864
 Y
 3
-450
+459
 Width
 3
 130
@@ -891,7 +891,7 @@ X
 864
 Y
 3
-423
+432
 Width
 3
 90
@@ -953,7 +953,7 @@ X
 864
 Y
 3
-396
+405
 Width
 3
 90
@@ -1056,13 +1056,12 @@ Electricity Rates - Description Metadata
 0
 1
 4
-5
-empty
+0
 MultilineText
 ur_end_date
 3
 4
- 
+End date
  
 Electricity Rates - Description Metadata
 0

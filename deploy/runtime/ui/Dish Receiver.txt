@@ -5,7 +5,7 @@ Dish Receiver
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -81,6 +84,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +129,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -140,6 +146,9 @@ Width
 Height
 3
 53
+Tool Tip
+5
+0
 Caption
 5
 8
@@ -150,7 +159,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -167,6 +176,9 @@ Width
 Height
 3
 77
+Tool Tip
+5
+0
 Caption
 5
 8
@@ -177,7 +189,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -194,6 +206,9 @@ Width
 Height
 3
 80
+Tool Tip
+5
+0
 Caption
 5
 10
@@ -204,7 +219,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -221,6 +236,9 @@ Width
 Height
 3
 152
+Tool Tip
+5
+0
 Caption
 5
 6
@@ -231,7 +249,7 @@ Bold
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -248,6 +266,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -290,7 +311,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -307,6 +328,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -349,7 +373,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -366,6 +390,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -408,7 +435,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 14
@@ -425,6 +452,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -467,7 +497,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -484,6 +514,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -526,7 +559,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 4
@@ -543,6 +576,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -585,7 +621,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -602,6 +638,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -644,7 +683,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 12
@@ -661,6 +700,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0

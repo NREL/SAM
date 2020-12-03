@@ -47,7 +47,6 @@
 *  THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************************************/
 
-#include "private.h"
 #include <set>
 //#include <chrono>
 
@@ -87,8 +86,6 @@
 #include <wex/icons/qmark.cpng>
 #include <wex/utils.h>
 
-#include <ssc/sscapi.h>
-
 //#include "../resource/nrel_small.cpng"
 //#include "../resource/main_menu.cpng"
 #include "../resource/menu.cpng"
@@ -99,7 +96,10 @@
 #include <lk/eval.h>
 #include <lk/stdlib.h>
 
+#include <ssc/sscapi.h>
+
 #include "main.h"
+#include "private.h"
 #include "welcome.h"
 #include "project.h"
 #include "variables.h"
@@ -110,12 +110,18 @@
 #include "uiobjects.h"
 #include "variablegrid.h"
 #include "script.h"
+#include "pythonhandler.h"
 
 // application globals
 static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2020, 11, 29 }, // 2020.11.29 ssc 250 release
+		{ 2020, 11, 17 }, // 2020.11.17 ssc 247 beta  - expires 11/17/2021
+		{ 2020, 11, 12 }, // 2020.11.12 ssc 246 beta  - expires 11/12/2021
+		{ 2020, 11, 5 }, // 2020.11.5 ssc 245 beta for Ty - expires 11/5/2021
+		{ 2020, 11, 3 }, // 2020.11.3 ssc 244 beta for the 2021 release - expires 11/3/2021
 		{ 2020, 2, 29 }, //2020.2.29 release
 		{ 2020, 02, 24 }, //2020.2.24 beta
 		{ 2020, 02, 17 }, //VS2019 beta release
@@ -171,7 +177,7 @@ static SamApp::ver releases[] = {
 		{ 2017, 2, 28 }, // Beta release
 		{ 2017, 2, 14 }, // Beta release
 	{ 2017, 1, 17 }, // public 'ones and sevens' release !
-		{ 2016, 12, 29 }, // Beta release - expires 2/28/17 
+		{ 2016, 12, 29 }, // Beta release - expires 2/28/17
 		{ 2016, 10, 25 }, // Beta release
 		{ 2016, 7, 21 }, // Beta release - expires 12/31/16
 		{ 2016, 5, 4 }, //dc adjustment factor added, internal release
@@ -180,7 +186,7 @@ static SamApp::ver releases[] = {
 		{ 2016, 2, 29 }, // internal release
 		{ 2016, 2, 26 }, // utility rate changes
 		{ 2016, 2, 22 }, // self-shading update
-		{ 2016, 2, 19 }, // PV variable changes 
+		{ 2016, 2, 19 }, // PV variable changes
 		{ 2016, 2, 16 }, // new versioning scheme
 		{ 2016, 1, 21 }, // internal release
 		{ 2015, 11, 16 }, // utility rate variable changes
@@ -203,11 +209,12 @@ static ConfigDatabase g_cfgDatabase;
 static InputPageDatabase g_uiDatabase;
 static wxLogWindow *g_logWindow = 0;
 static ScriptDatabase g_globalCallbacks;
+static PythonConfig pythonConfig;
 
 class SamLogWindow : public wxLogWindow
 {
 public:
-	SamLogWindow( )	: wxLogWindow( 0, "sam-log" ) { 
+	SamLogWindow( )	: wxLogWindow( 0, "sam-log" ) {
 		GetFrame()->SetPosition( wxPoint( 5, 5 ) );
 		GetFrame()->SetClientSize( wxScaleSize(1000,200) );
 	}
@@ -215,7 +222,7 @@ public:
 		g_logWindow = 0; // clear the global pointer, then delete the frame
 		return true;
 	}
-	
+
 	static void Setup()
 	{
 		if ( g_logWindow != 0 )
@@ -283,12 +290,12 @@ BEGIN_EVENT_TABLE( MainWindow, wxFrame )
 END_EVENT_TABLE()
 
 MainWindow::MainWindow()
-	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" (Open Source) ") + SamApp::VersionStr(), 
+	: wxFrame( 0, wxID_ANY, wxT("SAM") + wxString(" (Open Source) ") + SamApp::VersionStr(),
 		wxDefaultPosition, wxScaleSize( 1100, 700 ) )
 {
 #ifdef __WXMSW__
 	SetIcon( wxICON( appicon ) );
-#endif	
+#endif
 
 #ifdef __WXOSX__
 	wxMenu *fileMenu = new wxMenu;
@@ -312,7 +319,7 @@ MainWindow::MainWindow()
 	caseMenu->Append( ID_CASE_SIMULATE, "Simulate\tF5" );
 	caseMenu->Append( ID_CASE_REPORT, "Create report\tF6" );
 	caseMenu->Append( ID_CASE_CLEAR_RESULTS, "Clear all results" );
-	caseMenu->AppendSeparator();	
+	caseMenu->AppendSeparator();
 	caseMenu->Append( ID_CASE_RENAME, "Rename\tF2" );
 	caseMenu->Append( ID_CASE_DUPLICATE, "Duplicate" );
 	caseMenu->Append( ID_CASE_DELETE, "Delete" );
@@ -327,7 +334,7 @@ MainWindow::MainWindow()
 	helpMenu->Append( wxID_HELP );
 	helpMenu->AppendSeparator();
 	helpMenu->Append( wxID_ABOUT );
-		
+
 	wxMenuBar *menuBar = new wxMenuBar;
 	menuBar->Append( fileMenu, wxT("&File") );
 	menuBar->Append( caseMenu, wxT("&Case")  );
@@ -353,21 +360,21 @@ MainWindow::MainWindow()
 	metbut->SetToolTip( "Add case" );
 	m_caseTabList = new wxMetroTabList( m_caseTabPanel, ID_CASE_TABS, wxDefaultPosition, wxDefaultSize, wxMT_MENUBUTTONS );
 
-	tools->Add( m_caseTabList, 1, wxALL|wxEXPAND, 0 );		
+	tools->Add( m_caseTabList, 1, wxALL|wxEXPAND, 0 );
 	tools->Add( metbut = new wxMetroButton( m_caseTabPanel, ID_PAGE_NOTES, wxEmptyString, wxBITMAP_PNG_FROM_DATA( notes_white ), wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
 	metbut->SetToolTip( "Add a page note" );
 
 	tools->Add( new wxMetroButton( m_caseTabPanel, wxID_HELP, "Help",/* wxBITMAP_PNG_FROM_DATA(qmark) */ wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL|wxEXPAND, 0 );
-	
+
 	m_caseNotebook = new wxSimplebook( m_caseTabPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
-		
+
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( tools, 0, wxALL|wxEXPAND, 0 );
 	sizer->Add( m_caseNotebook, 1, wxALL|wxEXPAND, 0 );
 	m_caseTabPanel->SetSizer(sizer);
-	 
+
 	m_topBook->SetSelection( 0 );
-	
+
 	std::vector<wxAcceleratorEntry> entries;
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F5,  ID_INTERNAL_INVOKE_SSC_DEBUG ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F7,  ID_INTERNAL_IDE ) ) ;
@@ -399,7 +406,7 @@ private:
 	wxCheckListBox *m_cklList;
 public:
 	CaseImportDialog( wxWindow *parent, const wxString &title )
-		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, 
+		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition,
 			wxScaleSize(350,300), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 	{
 		m_cklList = new wxCheckListBox( this, wxID_ANY );
@@ -412,7 +419,7 @@ public:
 
 		SetEscapeId( wxID_CANCEL );
 	}
-	
+
 	void SetItems( const wxArrayString &list )
 	{
 		m_cklList->Clear();
@@ -442,7 +449,7 @@ void MainWindow::ImportCases()
 		return;
 	}
 
-	
+
 	int prj_major, prj_minor, prj_micro;
 	int sam_major, sam_minor, sam_micro;
 
@@ -452,7 +459,7 @@ void MainWindow::ImportCases()
 		wxMessageBox( "Could not read project file:\n\n" + file );
 		return;
 	}
-	
+
 	size_t file_ver = prj.GetVersionInfo( &prj_major, &prj_minor, &prj_micro );
 	size_t sam_ver = SamApp::Version( &sam_major, &sam_minor, &sam_micro );
 
@@ -461,7 +468,7 @@ void MainWindow::ImportCases()
 		wxMessageBox( "The file '" + wxFileNameFromPath(file) + "' was saved using a newer SAM version "
 			+ wxString::Format( "%d.%d.%d.\n"
 				"You are currently using SAM version %d.%d.%d.\n\n"
-				"Please upgrade to the latest version of SAM to import a case from this file.",				
+				"Please upgrade to the latest version of SAM to import a case from this file.",
 				prj_major, prj_minor, prj_micro, sam_major, sam_minor, sam_micro), "Version Error", wxICON_ERROR);
 		return;
 	}
@@ -471,11 +478,11 @@ void MainWindow::ImportCases()
 		VersionUpgrade upgd;
 
 		{ // scope to show busy info dialog
-//			wxBusyInfo info( "Upgrading project file to current SAM version..." );		
+//			wxBusyInfo info( "Upgrading project file to current SAM version..." );
 			if ( !upgd.Run( prj ) )
 				wxMessageBox("Error upgrading older project file:\n\n", file );
 		}
-
+        
 		upgd.ShowReportDialog( file, true );
 	}
 
@@ -558,7 +565,7 @@ wxString MainWindow::GetProjectFileName()
 
 
 wxString MainWindow::GetUniqueCaseName( wxString base )
-{	
+{
 	if ( base.IsEmpty() ) base = wxT("untitled");
 	int unique_num = 0;
 	wxString suffix;
@@ -576,7 +583,7 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 		if (!ShowConfigurationDialog( this, &tech, &fin, &reset ))
 			return false;
 	}
-	
+
 	if ( 0 == SamApp::Config().Find( tech, fin ) )
 	{
 		wxMessageBox("Internal error: could not locate configuration information for " + tech + "/" + fin );
@@ -598,8 +605,8 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 	if( CaseWindow *cw = GetCaseWindow(c) )
 		return cw;
 
-	wxString name = m_project.GetCaseName( c );	
-	
+	wxString name = m_project.GetCaseName( c );
+
 	wxBusyCursor bc;
 
 	m_caseNotebook->Freeze();
@@ -612,7 +619,7 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 	m_caseTabList->Refresh();
 	wxGetApp().Yield();
 
-	// when creating a new case, at least 
+	// when creating a new case, at least
 	// show the first input page
 	wxArrayString pages = win->GetInputPages();
 	if ( pages.size() > 0 )
@@ -696,7 +703,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		wxLaunchDefaultBrowser(SamApp::GetUserLocalDataDir());
 		break;
 	case ID_INTERNAL_CASE_VALUES:
-		
+
 		if (Case *cc = GetCurrentCase())
 		{
 			//CaseVarGrid(cases);
@@ -767,7 +774,7 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			wxString str_label = " ";
 			for (std::vector<VarInfoLookup>::iterator it = var_info_lookup_vec.begin(); it != var_info_lookup_vec.end(); ++it)
 			{
-				if ((*it).Lookup(*idx)) 
+				if ((*it).Lookup(*idx))
 					str_label = (*it).Label(*idx);
 			}
 			var_labels.push_back(str_label);
@@ -887,14 +894,14 @@ void MainWindow::OnCommand( wxCommandEvent &evt )
 		break;
 	case wxID_OPEN:
 		{
-			if ( !CloseProject() ) return;			
+			if ( !CloseProject() ) return;
 			wxFileDialog dlg(this, "Open SAM file", wxEmptyString, wxEmptyString, "SAM Project Files (*.sam)|*.sam", wxFD_OPEN );
 			if (dlg.ShowModal() == wxID_OK)
 				if( !LoadProject( dlg.GetPath() ) )
-					wxMessageBox("Error loading project file:\n\n" 
+					wxMessageBox("Error loading project file:\n\n"
 						+ dlg.GetPath() + "\n\n" + m_project.GetLastError(), "Notice", wxOK, this );
 		}
-		break;	
+		break;
 	case ID_NEW_SCRIPT:
 		SamScriptWindow::CreateNewWindow();
 		break;
@@ -956,14 +963,14 @@ void MainWindow::Save()
 
 	if ( !SaveProject( m_projectFileName ) )
 		wxMessageBox("Error writing project to disk:\n\n" + m_projectFileName, "Notice", wxOK, this );
-			
+
 	UpdateFrameTitle();
 }
 
 void MainWindow::SaveAs()
 {
-	wxFileDialog dlg( this, "Save SAM file as", wxPathOnly(m_projectFileName), 
-		m_projectFileName, "SAM Project File (*.sam)|*.sam", 
+	wxFileDialog dlg( this, "Save SAM file as", wxPathOnly(m_projectFileName),
+		m_projectFileName, "SAM Project File (*.sam)|*.sam",
 		wxFD_SAVE|wxFD_OVERWRITE_PROMPT );
 	if ( dlg.ShowModal() == wxID_OK )
 	{
@@ -985,22 +992,23 @@ bool MainWindow::LoadProject( const wxString &file )
 		return false;
 
 	ProjectFile pf;
-	if ( !pf.ReadArchive( file ) )
-		return false;
-	 
+	// tell user to save and check file if issue 
+	if (!pf.ReadArchive(file))
+		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
+
 	int major, minor, micro;
 	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );
-	
+
 	int sammajor, samminor, sammicro;
 	size_t sam_ver = SamApp::Version( &sammajor, &samminor, &sammicro );
-	
+
 	if ( file_ver > sam_ver )
 	{
 		wxMessageBox( wxString::Format("The file '%s' was last saved using SAM version %d.%d.%d.\n"
 				"You are currently running SAM version %d.%d.%d.\n\n"
 				"Please upgrade to the latest version of SAM to open this file.",
-				(const char*)wxFileNameFromPath(file).c_str(), 
-				major, minor, micro, 
+				(const char*)wxFileNameFromPath(file).c_str(),
+				major, minor, micro,
 				sammajor, samminor, sammicro ),
 				"Version Error", wxICON_ERROR );
 
@@ -1015,18 +1023,23 @@ bool MainWindow::LoadProject( const wxString &file )
 			"window lists any input variables that have changed between versions.\n\n",
 			major, minor, micro, (const char*)wxFileNameFromPath(file).c_str()),
 			"Notice", wxICON_INFORMATION, this);
-		
+
 //		wxBusyInfo info( "Upgrading project file to current SAM version..." );
-		
+
 		VersionUpgrade upgd;
-		upgd.Run( pf );		
+		upgd.Run( pf );
 		upgd.ShowReportDialog( file );
+		if (pf.GetCases().size() == 0) {
+			wxMessageBox("Cannot open a file that contains only retired cases.", "Information", wxOK);
+			pf.Clear();
+			return false;
+		}
 	}
 
 	// copy over project file data,
 	// but don't copy PF event listeners
 	m_project.Copy( pf, false );
-		
+
 	m_topBook->SetSelection( 1 );
 	std::vector<Case*> cases = m_project.GetCases();
 	for( size_t i=0;i<cases.size();i++ )
@@ -1035,12 +1048,12 @@ bool MainWindow::LoadProject( const wxString &file )
 	// restore UI view properties
 	wxArrayString ordered_tabs = wxSplit( m_project.GetProperty( "ui.case_tab_order" ), '|' );
 	wxArrayString tabs = m_caseTabList->GetLabels();
-		
+
 	// re-add tabs in order that they were saved
 	m_caseTabList->Clear();
 	for( size_t i=0;i<ordered_tabs.size();i++ )
 	{
-		if ( tabs.Index( ordered_tabs[i] ) >= 0 ) 
+		if ( tabs.Index( ordered_tabs[i] ) >= 0 )
 		{ // only add a tab from the ordered list if it actually is a case
 			m_caseTabList->Append( ordered_tabs[i] );
 			tabs.Remove( ordered_tabs[i] );
@@ -1061,7 +1074,7 @@ bool MainWindow::LoadProject( const wxString &file )
 	SamApp::FileHistory().AddFileToHistory( file );
 	m_welcomeScreen->UpdateRecentList();
 
-	return true;	
+	return true;
 }
 
 bool MainWindow::SaveProject( const wxString &file )
@@ -1079,9 +1092,9 @@ bool MainWindow::SaveProject( const wxString &file )
 		if ( CaseWindow *cw = dynamic_cast<CaseWindow*>(m_caseNotebook->GetPage(i)) )
 			cw->SaveCurrentViewProperties();
 
-	
+
 	// update version information in project to current SAM
-	m_project.SetVersionInfo( 
+	m_project.SetVersionInfo(
 		SamApp::VersionMajor(),
 		SamApp::VersionMinor(),
 		SamApp::VersionMicro(),
@@ -1122,7 +1135,7 @@ bool MainWindow::SwitchToCaseWindow( const wxString &case_name )
 				m_caseTabList->SetSelection( idx );
 				m_caseTabList->Refresh();
 			}
-		}		
+		}
 
 		// update all the page notes so they get
 		// hidden/shown appropriately
@@ -1148,7 +1161,7 @@ void MainWindow::OnCaseTabButton( wxCommandEvent & )
 	menu.Append( ID_CASE_SIMULATE, "Simulate\tF5" );
 	menu.Append( ID_CASE_REPORT, "Create report\tF6" );
 	menu.Append( ID_CASE_CLEAR_RESULTS, "Clear all results" );
-	menu.AppendSeparator();	
+	menu.AppendSeparator();
 	menu.Append( ID_CASE_RENAME, "Rename\tF2" );
 	menu.Append( ID_CASE_DUPLICATE, "Duplicate" );
 	menu.Append( ID_CASE_DELETE, "Delete" );
@@ -1185,12 +1198,12 @@ Case *MainWindow::GetCurrentCase()
 void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 {
 	size_t tab_sel = m_caseTabList->GetSelection();
-	wxString case_name = m_caseTabList->GetLabel( tab_sel );	
+	wxString case_name = m_caseTabList->GetLabel( tab_sel );
 	Case *c = m_project.GetCase( case_name );
 	CaseWindow *cw = GetCaseWindow( c );
 
 	if ( c == 0 || cw == 0 ) return; // error
-	
+
 	switch( evt.GetId() )
 	{
 	case ID_CASE_CONFIG:
@@ -1198,7 +1211,7 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			wxString tech, fin;
 			c->GetConfiguration( &tech, &fin );
 			wxString t2(tech), f2(fin);
-			if( ShowConfigurationDialog( this, &t2, &f2, NULL ) 
+			if( ShowConfigurationDialog( this, &t2, &f2, NULL )
 				&& (t2 != tech || f2 != fin) )
 				c->SetConfiguration( t2, f2 ); // this will cause case window to update accordingly
 		}
@@ -1224,10 +1237,17 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		}
 		break;
 	case ID_CASE_DELETE:
-		if ( wxYES == wxMessageBox("Really delete case " + case_name + "?  This action cannot be reversed.", "Query", wxYES_NO, this ) )
-		{
-			DeleteCaseWindow( c );
-			m_project.DeleteCase( case_name );
+		if (m_project.GetCases().size() > 1) {
+			if (wxYES == wxMessageBox("Really delete case " + case_name + "?  This action cannot be reversed.", "Query", wxYES_NO, this)) {
+				DeleteCaseWindow(c);
+				m_project.DeleteCase(case_name);
+				if (m_project.GetCases().size() == 0) {
+					m_topBook->SetSelection(0);
+				}
+			}
+		}
+		else {
+			wxMessageBox("Cannot delete case when there is only one case in the file.", "Information", wxOK);
 		}
 		break;
 	case ID_CASE_DUPLICATE:
@@ -1247,7 +1267,7 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		{
 			// load default values from config from disk
 			c->LoadDefaults();
-			
+
 			// update ui
 			c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values().ListAll() ) );
 		}
@@ -1266,7 +1286,7 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 		break;
 	case ID_CASE_CLEAR_RESULTS:
 		c->BaseCase().Clear();
-		cw->UpdateResults();		
+		cw->UpdateResults();
 		break;
 	};
 
@@ -1287,11 +1307,11 @@ void MainWindow::OnClose( wxCloseEvent &evt )
 		evt.Veto();
 		return;
 	}
-	
+
 	// save window position to settings
 	wxRect rr;
 	GetPosition( &rr.x,&rr.y );
-	GetClientSize( &rr.width, &rr.height );	
+	GetClientSize( &rr.width, &rr.height );
 	SamApp::Settings().Write( "window_x", rr.x);
 	SamApp::Settings().Write( "window_y", rr.y);
 	SamApp::Settings().Write( "window_width", rr.width);
@@ -1316,7 +1336,7 @@ class SplashScreen : public wxDialog
 public:
 
 	SplashScreen()
-		: wxDialog( 0, wxID_ANY, wxEmptyString, wxDefaultPosition, 
+		: wxDialog( 0, wxID_ANY, wxEmptyString, wxDefaultPosition,
 		wxScaleSize( 515, 385 ), wxBORDER_NONE ),
 		m_message( "Starting up...please wait" )
 	{
@@ -1336,22 +1356,23 @@ public:
 
 		int width, height;
 		GetClientSize( &width, &height );
-		 
-		
+
+
 		// dc.SetBackground( wxBrush( wxMetroTheme::Colour( wxMT_ACCENT ) ) ); // metro blue
 		// dc.SetBackground( wxBrush( wxColour(219, 192, 4) ) ); // bright yellowish orange
 		// dc.SetBackground( wxBrush( wxColour(2, 152, 152) ) ); // bright teal
 		// dc.SetBackground( wxBrush( wxColour(120, 67, 163) ) ); // violet
 		// dc.SetBackground( wxBrush( wxColour(191, 38, 96) ) ); // reddish pink
-		// dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green	
-		// dc.SetBackground( wxBrush( wxColour(130,186,0) ) ); // pale lime green		
+		// dc.SetBackground( wxBrush( wxColour(15,79,34) ) ); // dark forest green
+		// dc.SetBackground( wxBrush( wxColour(130,186,0) ) ); // pale lime green
 		// dc.SetBackground(wxBrush(wxColour(241, 47, 144))); // hot pink, making development more fun for everyone!
 		// dc.SetBackground(wxBrush(wxColour(23, 26, 33))); // dark gray 2017.1.17
 		//dc.SetBackground(wxBrush(wxColour(62, 121, 123))); // blue green 2017.9.5
 		//dc.SetBackground(wxBrush(wxColour(83, 76, 173))); // dark lavender 2018.10.10
 		// dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
-		dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
-
+		//dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
+		// dc.SetBackground(wxBrush(wxColour(255, 117, 24))); // Testing Autumn (Pumpkin) color
+		dc.SetBackground(wxBrush(wxColour(151, 69, 21))); // Burnt Orange from Brian 11/12/2020
 		dc.Clear();
 
 		double scaleX, scaleY;
@@ -1364,7 +1385,7 @@ public:
 		dc.SetTextForeground( *wxWHITE );
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 30 ) );
 		dc.DrawText( "System Advisor Model", wxScalePoint( wxPoint(35, 65), scaleX, scaleY ) );
-		
+
 		dc.SetFont( wxMetroTheme::Font( wxMT_LIGHT, 18 ) );
 		dc.DrawText( "(Open Source) " + SamApp::VersionStr(), wxScalePoint(wxPoint(35, 135),scaleX,scaleY));
 		dc.DrawText( m_message, wxScalePoint( wxPoint(35, 275), scaleX, scaleY) );
@@ -1417,14 +1438,14 @@ bool ScriptDatabase::LoadScript( const wxString &source )
 	if ( parse.error_count() != 0
 		|| parse.token() != lk::lexer::END)
 	{
-		wxLogStatus("fail: callback script load: parsing did not reach end of input ");				
+		wxLogStatus("fail: callback script load: parsing did not reach end of input ");
 		for (int x=0; x < parse.error_count(); x++)
 			wxLogStatus( parse.error(x));
 
 		return false;
 	}
 	else if ( tree != 0 )
-	{							
+	{
 		cb_data *cbf = new cb_data;
 		cbf->source = source;
 		cbf->tree = tree;
@@ -1447,19 +1468,19 @@ bool ScriptDatabase::LoadScript( const wxString &source )
 
 void ScriptDatabase::ClearAll()
 {
-	for( size_t i=0;i<m_cblist.size();i++) 
+	for( size_t i=0;i<m_cblist.size();i++)
 	{
 		delete m_cblist[i]->tree;
 		delete m_cblist[i];
 	}
-	
+
 	m_cblist.clear();
 	m_cbenv.clear_objs();
 	m_cbenv.clear_vars();
 }
 
 lk::node_t *ScriptDatabase::Lookup( const wxString &method_name, const wxString &obj_name )
-{	
+{
 	lk::vardata_t *cbvar = m_cbenv.lookup( method_name, true);
 
 	if (!cbvar || cbvar->type() != lk::vardata_t::HASH )
@@ -1469,21 +1490,21 @@ lk::node_t *ScriptDatabase::Lookup( const wxString &method_name, const wxString 
 	}
 
 	lk::vardata_t *cbref = cbvar->lookup( obj_name );
-	if ( cbref == 0 
+	if ( cbref == 0
 		|| cbref->type() != lk::vardata_t::FUNCTION
 		|| cbref->deref().func() == 0 )
 	{
 		// wxLogStatus("ScriptDatabase::Invoke: could not find function entry for '%s'", (const char*)obj_name.c_str() );
 		return 0;
 	}
-	
+
 	lk::expr_t *p_define = cbref->deref().func();
 	if ( p_define->oper != lk::expr_t::DEFINE )
 	{
 		wxLogStatus("ScriptDatabase::Invoke: improper function structure, must be a 'define' for %s, instead: %s", (const char*)obj_name.c_str(), cbref->func()->operstr() );
 		return 0;
 	}
-	
+
 	if ( p_define->right == 0 )
 	{
 		wxLogStatus("ScriptDatabase::Invoke: function block nonexistent for '%s'\n", (const char*)obj_name.c_str());
@@ -1499,7 +1520,7 @@ InputPageData::InputPageData() {
 }
 
 void InputPageData::Clear()
-{ 
+{
 	m_form.DeleteAll();
 	m_vars.clear();
 	m_eqns.Clear();
@@ -1631,14 +1652,14 @@ bool InputPageDatabase::LoadFile( const wxString &file )
 {
 	wxFileName ff(file);
 	wxString name( ff.GetName() );
-	
+
 	InputPageData *pd = new InputPageData;
-	
+
 	bool ok = true;
 	wxFFileInputStream is( file );
 	if ( !is.IsOk() || !pd->Read( is ) )
 		ok = false;
-	
+
 	pd->Form().SetName( name );
 
 	if ( ok ) Add( name, pd );
@@ -1763,7 +1784,7 @@ void ConfigDatabase::SetModules( const wxArrayString &list )
 	if ( m_curConfig != 0 ) m_curConfig->Simulations = list;
 }
 
-void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar, 
+void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar,
 	const wxString &hlpcxt, const wxString &exclvar,
 	const std::vector<PageInfo> &exclhdr_pages,
 	bool excl_tabs )
@@ -1790,10 +1811,10 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 		if ( InputPageData *ipd = SamApp::InputPages().Lookup( pi.Name ) )
 		{
 			ci->InputPages[ pi.Name ] = ipd;
-						
+
 			ci->Equations.AddDatabase( &ipd->Equations() );
 			ci->Equations.Add( ipd->Equations().GetEquations() );
-					
+
 			VarDatabase &vars = ipd->Variables();
 			for( VarDatabase::iterator it = vars.begin();
 				it != vars.end();
@@ -1840,7 +1861,7 @@ void ConfigDatabase::RebuildCaches()
 		ci->Equations.Clear();
 		ci->AutoVariables.clear();
 		ci->InputPages.clear();
-		
+
 		for( std::vector<InputPageGroup*>::iterator it1 = ci->InputPageGroups.begin();
 			it1 != ci->InputPageGroups.end(); ++it1 )
 		{
@@ -1853,7 +1874,7 @@ void ConfigDatabase::RebuildCaches()
 				VarInfo *vv = ci->AutoVariables.Lookup( igrp->ExclusivePageVar );
 				if ( vv == 0 )
 				{
-					vv = ci->AutoVariables.Create( igrp->ExclusivePageVar, VV_NUMBER, 
+					vv = ci->AutoVariables.Create( igrp->ExclusivePageVar, VV_NUMBER,
 						"Current selection for " + igrp->SideBarLabel );
 
 					vv->Flags |= VF_EXCLUSIVE_PAGES;
@@ -1887,7 +1908,7 @@ wxArrayString ConfigDatabase::GetFinancingForTech(const wxString &tech)
 	return wxArrayString();
 
 }
-		
+
 ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 {
 	for( size_t i=0;i<m_configList.size();i++ )
@@ -1927,7 +1948,7 @@ public:
 		case wxMT_DIMHOVER: return wxColour( 0, 107, 186 );
 		case wxMT_LIGHTHOVER: return wxColour( 231, 232, 238 );
 		case wxMT_ACCENT: return wxColour( 255, 143, 50 );
-		case wxMT_TEXT: return wxColour( 135, 135, 135 ); 
+		case wxMT_TEXT: return wxColour( 135, 135, 135 );
 		case wxMT_ACTIVE: return wxColour( 0, 114, 198 );
 		case wxMT_SELECT:  return wxColour(193,210,238);
 		case wxMT_HIGHLIGHT: return wxColour(224,232,246);
@@ -1941,9 +1962,9 @@ bool SamApp::OnInit()
 {
 
 #ifdef __WXMSW__
-	/*wxMSWSetupExceptionHandler( 
+	/*wxMSWSetupExceptionHandler(
 		wxString("SAM"),
-		SamApp::VersionStr(), 
+		SamApp::VersionStr(),
 		wxString("sam.support@nrel.gov") );
 		*/
 #endif
@@ -1953,12 +1974,12 @@ bool SamApp::OnInit()
 	// We don't use built-in icons or AUI, and rather have clean lines and text
 	// rather than blurry look, now that UI pages can be made to scale (as of 8/24/2015)
 #ifdef __WXMSW__
-    typedef BOOL (WINAPI *SetProcessDPIAware_t)(void); 
-    wxDynamicLibrary dllUser32(wxT("user32.dll")); 
-    SetProcessDPIAware_t pfnSetProcessDPIAware = 
-        (SetProcessDPIAware_t)dllUser32.RawGetSymbol(wxT("SetProcessDPIAware")); 
-    if ( pfnSetProcessDPIAware ) 
-        pfnSetProcessDPIAware(); 
+    typedef BOOL (WINAPI *SetProcessDPIAware_t)(void);
+    wxDynamicLibrary dllUser32(wxT("user32.dll"));
+    SetProcessDPIAware_t pfnSetProcessDPIAware =
+        (SetProcessDPIAware_t)dllUser32.RawGetSymbol(wxT("SetProcessDPIAware"));
+    if ( pfnSetProcessDPIAware )
+        pfnSetProcessDPIAware();
 #endif
 
 
@@ -1970,12 +1991,12 @@ bool SamApp::OnInit()
 	// set app and vendow
 	SetAppName( "" );
 	SetVendorName( "" );
-	
+
 #ifdef _DEBUG
 	SamLogWindow::Setup();
 #endif
-	
-	wxLogStatus( "startup version %d.%d.%d with SSC version %d, %s", 
+
+	wxLogStatus( "startup version %d.%d.%d with SSC version %d, %s",
 		releases[0].major,
 		releases[0].minor,
 		releases[0].micro,
@@ -1987,7 +2008,7 @@ bool SamApp::OnInit()
 	ObjectTypes::Register( new StringHash );
 	ObjectTypes::Register( new Case );
 
-	// register all input page UI objects 
+	// register all input page UI objects
 	wxUIObjectTypeProvider::RegisterBuiltinTypes();
 	RegisterUIObjectsForSAM();
 
@@ -1997,15 +2018,15 @@ extern void RegisterReportObjectTypes();
 
 	for( int i=0;i<argc;i++ )
 		g_appArgs.Add( argv[i] );
-	
+
 	if ( g_appArgs.Count() < 1 || !wxDirExists( wxPathOnly(g_appArgs[0]) ) )
 	{
 		wxMessageBox("Startup error - cannot determine application runtime folder from startup argument.\n\n"
 			"Try running " + g_appArgs[0] + " by specifying the full path to the executable.");
 		return false;
 	}
-	
-	g_config = new wxConfig( "", "" );
+
+	g_config = new wxConfig( "SystemAdvisorModel", "NREL" );
 
 	wxInitAllImageHandlers();
 
@@ -2016,11 +2037,11 @@ extern void RegisterReportObjectTypes();
 
 	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
 	wxPLPlot::SetPdfDefaultFont( "ComputerModernSansSerif" );
-		
+
 	wxString proxy = SamApp::ReadProxyFile();
 	if ( ! proxy.IsEmpty() )
 		wxEasyCurl::SetProxyAddress( proxy );
-	
+
 	SplashScreen splash;
 	splash.CenterOnScreen();
 	splash.Show();
@@ -2039,20 +2060,20 @@ extern void RegisterReportObjectTypes();
 
 	// so that script windows are specialized to SAM, not the base generic one
 	SamScriptWindow::SetFactory( new SamScriptWindowFactory );
-	
+
 	bool first_load = true;
 	wxString fl_key = wxString::Format("first_load_%d", VersionMajor()*10000+VersionMinor()*100+VersionMicro() );
 	Settings().Read(fl_key, &first_load, true);
-		
+
 	if ( first_load )
 	{
 		// register the first load
 		Settings().Write(fl_key, false);
 
-		// enable web update app 
+		// enable web update app
 		wxConfig cfg("SamUpdate3", "NREL");
 		cfg.Write("allow_web_updates", true);
-				
+
 		// after installing a new version, always show the reminders again until the user turns them off
 		Settings().Write( "show_reminder", true );
 	}
@@ -2066,7 +2087,7 @@ extern void RegisterReportObjectTypes();
 		Settings().Read("window_width", &f_width, -1);
 		Settings().Read("window_height", &f_height, -1);
 		Settings().Read("window_maximized", &b_maximize, false);
-		
+
 		if (b_maximize)
 			g_mainWindow->Maximize();
 		else
@@ -2093,14 +2114,15 @@ extern void RegisterReportObjectTypes();
 		}
 	}
 	
+    LoadPythonConfig();
 
-	return true;
+    return true;
 }
 
 void SamApp::OnFatalException()
 {
 #ifdef __WXMSW__
-	//wxMSWHandleApplicationFatalException();	
+	//wxMSWHandleApplicationFatalException();
 #endif
 }
 
@@ -2113,14 +2135,14 @@ public:
 	SurveyDialog( wxWindow *parent, const wxString &title )
 		: wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE )
 	{
-		wxStaticText *text = new wxStaticText( this, wxID_ANY, 
+		wxStaticText *text = new wxStaticText( this, wxID_ANY,
 			"Thank you for using this beta release of SAM.  "
 			"The SAM development team would greatly appreciate any feedback you might provide.  "
 			"Please click on the link below to help us improve future versions of SAM.  ");
 		text->Wrap( 500 );
-		
-	/*	wxHyperlinkCtrl *hyp1 = new wxHyperlinkCtrl( this, wxID_ANY, 
-			"Click to fill out the SAM Beta online survey... (recommended)",  
+
+	/*	wxHyperlinkCtrl *hyp1 = new wxHyperlinkCtrl( this, wxID_ANY,
+			"Click to fill out the SAM Beta online survey... (recommended)",
 			"https://www.surveymonkey.com/s/sam-beta-survey" );*/
 
 		wxHyperlinkCtrl *hyp2 = new wxHyperlinkCtrl( this, wxID_ANY,
@@ -2146,16 +2168,16 @@ int SamApp::OnExit()
 
 	if ( g_config != 0 ) delete g_config;
 
-	
+
 #ifdef __BETARELEASE__
 	SurveyDialog dlg( 0, "Feedback" );
 	dlg.CenterOnScreen();
 	dlg.ShowModal();
 #endif
-	
+
 
 	wxEasyCurl::Shutdown();
-	
+
 	wxLog::SetActiveTarget( 0 );
 	return 0;
 }
@@ -2189,7 +2211,7 @@ void SamApp::Restart()
 #endif
 			else
 				forms_loaded++;
-			
+
 			has_more = dir.GetNext( &file );
 		}
 	}
@@ -2200,7 +2222,7 @@ void SamApp::Restart()
 //	wxString ui_time(std::to_string(diff) + "ms ");
 //#ifdef UI_BINARY
 //	wxLogStatus(wxString::Format(" %d forms loaded as binary in %s", (int)forms_loaded, (const char*)ui_time.c_str()));
-//#else	
+//#else
 //	wxLogStatus(wxString::Format(" %d forms loaded as text in %s", (int)forms_loaded, (const char*)ui_time.c_str()));
 //#endif
 
@@ -2305,10 +2327,10 @@ wxString SamApp::GetRuntimePath()
 }
 
 wxString SamApp::GetUserLocalDataDir()
-{	
+{
 	wxString path = wxStandardPaths::Get().GetUserLocalDataDir() + "/sam-" + SamApp::VersionStr();
 	path.Replace("\\","/");
-	
+
 	if (!wxDirExists( path ))
 		wxFileName::Mkdir( path, 511, wxPATH_MKDIR_FULL );
 
@@ -2375,7 +2397,7 @@ public:
 		SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 
 #if defined(__WXMSW__)||defined(__WXOSX__)
-		m_webView = wxWebView::New( this, ID_BROWSER, ::wxWebViewDefaultURLStr, wxDefaultPosition, wxDefaultSize, 
+		m_webView = wxWebView::New( this, ID_BROWSER, ::wxWebViewDefaultURLStr, wxDefaultPosition, wxDefaultSize,
 			::wxWebViewBackendDefault, wxBORDER_NONE );
 		m_webView->SetPage( m_aboutHtml, "About SAM" );
 #else
@@ -2394,8 +2416,8 @@ public:
 		tools->Add( new wxMetroButton( this, ID_RELEASE_NOTES, "Release notes" ), 0, wxALL|wxEXPAND, 0 );
 		tools->Add( new wxMetroButton( this, ID_SCRIPT_REFERENCE, "Scripting reference" ), 0, wxALL|wxEXPAND, 0 );
 		tools->AddStretchSpacer();
-		tools->Add( new wxMetroButton( this, wxID_ABOUT, "About" ), 0, wxALL|wxEXPAND, 0 ); 
-		tools->Add( new wxMetroButton( this, wxID_CLOSE, "Close" ), 0, wxALL|wxEXPAND, 0 ); 
+		tools->Add( new wxMetroButton( this, wxID_ABOUT, "About" ), 0, wxALL|wxEXPAND, 0 );
+		tools->Add( new wxMetroButton( this, wxID_CLOSE, "Close" ), 0, wxALL|wxEXPAND, 0 );
 
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( tools, 0, wxALL|wxEXPAND, 0 );
@@ -2409,7 +2431,7 @@ public:
 
 	void CreateAboutHtml()
 	{
-		
+
 		wxString proxy( wxEasyCurl::GetProxyForURL( "https://sam.nrel.gov" ) );
 		if ( proxy.IsEmpty() ) proxy = "default";
 		else proxy = "proxy: " + proxy;
@@ -2424,7 +2446,7 @@ public:
 			"<font color=#a9a9a9 face=\"Segoe UI Light\" size=10>System Advisor Model (Open Source)</font><br><p>"
 				"Copyright 2017 Alliance for Sustainable Energy, LLC<br>"
 
-"NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC (�Alliance�) under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S. The Government retains for itself and others acting on its behalf a nonexclusive, paid-up, irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute copies to the public, perform publicly and display publicly, and to permit others to do so.<br><br>"
+    "NOTICE: This software was developed at least in part by Alliance for Sustainable Energy, LLC (\"Alliance\") under Contract No. DE-AC36-08GO28308 with the U.S. Department of Energy and the U.S. The Government retains for itself and others acting on its behalf a nonexclusive, paid-up, irrevocable worldwide license in the software to reproduce, prepare derivative works, distribute copies to the public, perform publicly and display publicly, and to permit others to do so.<br><br>"
 
 "Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:<br><br>"
 
@@ -2434,11 +2456,11 @@ public:
 
 "3. The entire corresponding source code of any redistribution, with or without modification, by a research entity, including but not limited to any contracting manager/operator of a United States National Laboratory, any institution of higher learning, and any non-profit organization, must be made publicly available under this license for as long as the redistribution is made available by the research entity.<br><br>"
 
-"4. Redistribution of this software, without modification, must refer to the software by the same designation. Redistribution of a modified version of this software (i) may not refer to the modified version by the same designation, or by any confusingly similar designation, and (ii) must refer to the underlying software originally provided by Alliance as �System Advisor Model� or �SAM�. Except to comply with the foregoing, the terms �System Advisor Model�, �SAM�, or any confusingly similar designation may not be used to refer to any modified version of this software or any modified version of the underlying software originally provided by Alliance without the prior written consent of Alliance.<br><br>"
+"4. Redistribution of this software, without modification, must refer to the software by the same designation. Redistribution of a modified version of this software (i) may not refer to the modified version by the same designation, or by any confusingly similar designation, and (ii) must refer to the underlying software originally provided by Alliance as \"System Advisor Model\" or \"SAM\". Except to comply with the foregoing, the terms \"System Advisor Model\", \"SAM\", or any confusingly similar designation may not be used to refer to any modified version of this software or any modified version of the underlying software originally provided by Alliance without the prior written consent of Alliance.<br><br>"
 
 "5. The name of the copyright holder, contributors, the United States Government, the United States Department of Energy, or any of their employees may not be used to endorse or promote products derived from this software without specific prior written permission.<br><br>"
 
-"THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ""AS IS"" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."  
+"THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ""AS IS"" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
 				"</p></font></body></html>";
 	}
 	void LoadPage( wxString url )
@@ -2473,7 +2495,7 @@ public:
 			url = SamApp::WebApi( "forum" );
 		else if ( url == ":website" )
 			url = SamApp::WebApi( "website" );
-					
+
 #if defined(__WXMSW__)||defined(__WXOSX__)
 		m_webView->LoadURL( url );
 #else
@@ -2556,8 +2578,8 @@ END_EVENT_TABLE()
 
 
 void SamApp::ShowHelp( const wxString &context )
-{	
-	wxString url; 
+{
+	wxString url;
 	if ( context.Left(1) == ":" )
 		url = context; // for things like :about, etc
 	else
@@ -2566,14 +2588,16 @@ void SamApp::ShowHelp( const wxString &context )
 		fn.MakeAbsolute();
 		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + "index.html";
 #ifdef __WXGTK__
+		if ( ! context.IsEmpty() )
+			url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + context + ".htm";
 		wxLaunchDefaultBrowser( url );
 		return;
 #else
 		if ( ! context.IsEmpty() )
-			url += "?" + context + ".htm";		
+			url += "?" + context + ".htm";
 #endif
 	}
-	
+
 	wxWindow *modal_active = 0;
 	wxWindow *nonmodal_tlw = 0;
 	for( wxWindowList::iterator wl = wxTopLevelWindows.begin();
@@ -2608,9 +2632,9 @@ void SamApp::ShowHelp( const wxString &context )
 			gs_helpWin->SetSize(h_rect);
 		}
 	}
-	else if ( 0 == gs_helpWin )			
+	else if ( 0 == gs_helpWin )
 		gs_helpWin = new HelpWin( parent );
-		
+
 	gs_helpWin->Show( );
 	gs_helpWin->LoadPage( url );
 	gs_helpWin->Raise();
@@ -2636,7 +2660,7 @@ int SamApp::RevisionNumber()
 	return patch;
 }
 
-wxString SamApp::VersionStr( bool with_patches, bool short_style ) 
+wxString SamApp::VersionStr( bool with_patches, bool short_style )
 {
 	wxString vs( wxString::Format("%d.%d.%d", VersionMajor(), VersionMinor(), VersionMicro()) );
 	if ( version_label != 0 && strlen(version_label) > 0 )
@@ -2737,8 +2761,8 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 	lk::input_string p( buf );
 	lk::parser parse( p );
 	lk::node_t *tree = parse.script();
-			
-	if ( parse.error_count() != 0 
+
+	if ( parse.error_count() != 0
 		|| parse.token() != lk::lexer::END)
 	{
 		if ( errors )
@@ -2756,14 +2780,14 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 		env.register_funcs( lk::stdlib_sysio() );
 		env.register_funcs( lk::stdlib_math() );
 		env.register_funcs( lk::stdlib_string() );
-		env.register_funcs( lk::stdlib_wxui() );		
+		env.register_funcs( lk::stdlib_wxui() );
 		env.register_funcs( invoke_general_funcs(), 0 );
 		env.register_funcs( invoke_config_funcs(), 0 );
 
 		lk::eval e( tree, &env );
 		bool ok = e.run();
 		if ( tree ) delete tree;
-		
+
 		if ( !ok && errors )
 			for( size_t i=0;i<e.error_count();i++ )
 				errors->Add( e.get_error(i) );
@@ -2772,7 +2796,69 @@ bool SamApp::LoadAndRunScriptFile( const wxString &script_file, wxArrayString *e
 	}
 }
 
+std::string SamApp::GetPythonConfigPath(){
+    wxFileName path( GetAppPath() + "/../runtime/python" );
+    path.Normalize();
+    return path.GetFullPath().ToStdString();
+}
 
+void SamApp::LoadPythonConfig(){
+    pythonConfig = ReadPythonConfig(GetPythonConfigPath() + "/python_config.json");
+    if (CheckPythonInstalled(pythonConfig)){
+        set_python_path(GetPythonConfigPath().c_str());
+        return;
+    }
+}
+
+bool SamApp::CheckPythonPackage(const std::string& pip_name){
+    if (CheckPythonInstalled(pythonConfig)){
+        if (CheckPythonPackageInstalled(pip_name, pythonConfig))
+            return true;
+    }
+    return false;
+}
+
+void SamApp::InstallPython() {
+    if (pythonConfig.pythonVersion.empty() && pythonConfig.minicondaVersion.empty())
+        LoadPythonConfig();
+
+    auto python_path = GetPythonConfigPath();
+    // already installed and correctly configured
+    if (CheckPythonInstalled(pythonConfig)){
+        set_python_path(python_path.c_str());
+        return;
+    }
+
+#ifdef __WXMSW__
+    // windows
+    bool errors = InstallPythonWindows(python_path, pythonConfig);
+#else
+    bool errors = InstallPythonUnix(python_path, pythonConfig);
+#endif
+    if (errors)
+        throw std::runtime_error("Error installing python.");
+    LoadPythonConfig();
+}
+
+void SamApp::InstallPythonPackage(const std::string& pip_name) {
+    if (CheckPythonPackageInstalled(pip_name, pythonConfig))
+        return;
+    auto packageConfig = ReadPythonPackageConfig(pip_name, GetPythonConfigPath() + "/" + pip_name + ".json");
+
+#ifdef __WXMSW__
+	bool retval = InstallFromPipWindows(GetPythonConfigPath() + "\\" + pythonConfig.pipPath, packageConfig);
+#else
+	std::string pip_exec = GetPythonConfigPath() + "/" + pythonConfig.pipPath;
+	bool retval = InstallFromPip(pip_exec, packageConfig);
+#endif
+    if (retval == 0){
+        pythonConfig.packages.push_back(pip_name);
+        WritePythonConfig(GetPythonConfigPath() + "/python_config.json", pythonConfig);
+    }
+    else {
+        throw std::runtime_error("Error installing " + pip_name);
+    }
+}
 
 enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
 
@@ -2813,7 +2899,7 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	label->SetFont( font );
 	label->SetForegroundColour( *wxWHITE );
 
-	m_pChkUseDefaults = new wxCheckBox(this, wxID_ANY, "Reset new inputs to default values" );	
+	m_pChkUseDefaults = new wxCheckBox(this, wxID_ANY, "Reset new inputs to default values" );
 	m_pChkUseDefaults->SetValue(true);
 
 	wxBoxSizer *hbox = new wxBoxSizer (wxHORIZONTAL );
@@ -2825,20 +2911,20 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	//hbox->Add( CreateButtonSizer( wxOK|wxCANCEL ) );
 	hbox->Add( new wxMetroButton(this, wxID_OK, "   OK   "), 0, wxALL, 0 );
 	hbox->Add( new wxMetroButton(this, wxID_CANCEL, "Cancel"), 0, wxALL, 0 );
-	
+
 	wxBoxSizer *vbox = new wxBoxSizer( wxVERTICAL );
 //	vbox->Add(label, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 8);
 	vbox->Add(label, 0, wxALL | wxEXPAND , 8);
 	vbox->Add(choice_sizer, 1, wxALL | wxEXPAND, 0);
-	vbox->Add( hbox, 0, wxALL|wxEXPAND, 0 );	
+	vbox->Add( hbox, 0, wxALL|wxEXPAND, 0 );
 	SetSizer( vbox );
 
-	
+
 	std::vector<wxAcceleratorEntry> entries;
 	entries.push_back( wxAcceleratorEntry( ::wxACCEL_NORMAL, WXK_F1, wxID_HELP ) );
 	entries.push_back( wxAcceleratorEntry( ::wxACCEL_NORMAL, WXK_ESCAPE, wxID_CANCEL ) );
 	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
-	
+
 	PopulateTech();
 
 }
@@ -2861,8 +2947,8 @@ void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 		wxString L(SamApp::Config().Options(m_tnames[seltech]).LongName);
 
 		wxDataViewItemArray dvia;
-		
-		size_t cnt = m_pTech->GetModel()->GetChildren(wxDataViewItem(0), dvia);
+
+		m_pTech->GetModel()->GetChildren(wxDataViewItem(0), dvia);
 		bool foundTech = false;
 		for (size_t i = 0; (i < dvia.Count()) && !foundTech; i++)
 		{
@@ -2870,7 +2956,7 @@ void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 			m_pTech->SetCurrentItem(dvi);
 			if (m_pTech->IsContainer(dvi))
 			{
-				cnt = m_pTech->GetModel()->GetChildren(dvi, dvia);
+				m_pTech->GetModel()->GetChildren(dvi, dvia);
 				for (size_t ic = 0; (ic < dvia.Count()) && !foundTech; ic++)
 				{
 					const wxDataViewItem dvic = dvia[ic];
@@ -2899,14 +2985,14 @@ void ConfigDialog::SetConfiguration(const wxString &t, const wxString &f)
 			L = (SamApp::Config().Options(m_fnames[selfin]).LongName);
 			bool foundFin = false;
 
-			cnt = m_pFin->GetModel()->GetChildren(wxDataViewItem(0), dvia);
+			m_pFin->GetModel()->GetChildren(wxDataViewItem(0), dvia);
 
 			for (size_t i = 0; (i < dvia.Count()) && !foundFin; i++)
 			{
 				wxDataViewItem dvi = dvia[i];
 				if (m_pFin->IsContainer(dvi))
 				{
-					cnt = m_pFin->GetModel()->GetChildren(dvi, dvia);
+					m_pFin->GetModel()->GetChildren(dvi, dvia);
 					for (size_t ic = 0; (ic < dvia.Count()) && !foundFin; ic++)
 					{
 						wxDataViewItem dvic = dvia[i];
@@ -2947,7 +3033,7 @@ void ConfigDialog::PopulateTech()
 	m_pTech->DeleteAllItems();
 
 	m_tnames = SamApp::Config().GetTechnologies();
-	
+
 	// Manually add groups here - eventually move to startup.lk
 	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
 	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Battery Storage");
@@ -2961,16 +3047,17 @@ void ConfigDialog::PopulateTech()
 		if ( L.IsEmpty() ) L = m_tnames[i];
 		if (TP.Find("PV") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_pv, L);
-		else if (TP.Find("CSP") != wxNOT_FOUND)
+		else if (TP.Find("CSP") != wxNOT_FOUND )
 			m_pTech->AppendItem(cont_csp, L);
+		else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
 		else if (TP.Find("ME") != wxNOT_FOUND)
 			m_pTech->AppendItem(cont_me, L);
-		else if (TP.Find("BATT") != wxNOT_FOUND) 
-			m_pTech->AppendItem(cont_batt, L); 
+		else if (TP.Find("BATT") != wxNOT_FOUND)
+			m_pTech->AppendItem(cont_batt, L);
 		else
 			m_pTech->AppendItem(wxDataViewItem(0), L);
 	}
-	
+
 }
 
 void ConfigDialog::UpdateFinTree()
@@ -3053,7 +3140,7 @@ void ConfigDialog::OnTechTree(wxDataViewEvent &)
 	if (title.empty())
 		title = "None";
 	m_techname = title;
-	for (int i = 0; i < m_tnames.Count(); i++)
+	for (size_t i = 0; i < m_tnames.Count(); i++)
 	{
 		if (SamApp::Config().Options(m_tnames[i]).LongName == m_techname)
 		{
@@ -3077,7 +3164,7 @@ void ConfigDialog::OnFinTree(wxDataViewEvent &)
 	if (title.empty() || m_pFin->IsContainer(m_pFin->GetCurrentItem()))
 		title = "None";
 	m_finname = title;
-	for (int i = 0; i < m_fnames.Count(); i++)
+	for (size_t i = 0; i < m_fnames.Count(); i++)
 	{
 		if (SamApp::Config().Options(m_fnames[i]).LongName == m_finname)
 		{
@@ -3150,17 +3237,17 @@ bool ShowConfigurationDialog( wxWindow *parent, wxString *tech, wxString *fin, b
 	wxWindow *trans = wxCreateTransparentOverlay( parent );
 	wxPoint pt( trans->GetPosition() );
 	wxSize size( trans->GetClientSize() );
-	
+
 	ConfigDialog *dlg = new ConfigDialog( trans );
 	dlg->SetPosition( pt );
 	dlg->SetClientSize( (int)(700*wxGetScreenHDScale()), size.y );
-	
+
 	if ( reset != 0 ) dlg->ShowResetCheckbox( *reset );
 	else dlg->ShowResetCheckbox( false );
 
 	if ( !tech->IsEmpty() && !fin->IsEmpty() )
 		dlg->SetConfiguration( *tech, *fin );
-    	
+
 	dlg->Raise();
 
 	bool result = false;
