@@ -398,18 +398,20 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                     }
                 }
 
-                if (!vd.downstream.empty()) {
-                    doc += "\\n\\n";
-                    doc += "*Changes to this variable may require updating the values of the following*: \\n";
-                    for (const auto & ds: vd.downstream)
-                        doc += "\\t - " + ds + "\\n";
-                }
+                if (tech_symbol != "TcsmoltenSalt") {
+                    if (!vd.downstream.empty()) {
+                        doc += "\\n\\n";
+                        doc += "*Changes to this variable may require updating the values of the following*: \\n";
+                        for (const auto &ds: vd.downstream)
+                            doc += "\\t - " + ds + "\\n";
+                    }
 
-                if (!vd.upstream.empty()) {
-                    doc += "\\n\\n";
-                    doc += "*This variable may need to be updated if the values of the following have changed*: \\n";
-                    for (const auto & ds: vd.upstream)
-                        doc += "\\t - " + ds + "\\n";
+                    if (!vd.upstream.empty()) {
+                        doc += "\\n\\n";
+                        doc += "*This variable may need to be updated if the values of the following have changed*: \\n";
+                        for (const auto &ds: vd.upstream)
+                            doc += "\\t - " + ds + "\\n";
+                    }
                 }
 
                 fx_file << "(setter)" << group_symbol << "_set_" << var_symbol << ",\n";
