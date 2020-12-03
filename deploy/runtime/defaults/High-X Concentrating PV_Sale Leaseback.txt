@@ -1,5 +1,5 @@
 1
-471
+474
 adjust
 1
 5
@@ -1933,6 +1933,10 @@ inv_cec_date
 4
 3
 n/a
+inv_cec_hybrid
+1
+4
+0
 inv_cec_name
 1
 4
@@ -1954,7 +1958,7 @@ inv_snl_c0
 1
 1
 1
--5.94331e-08
+-5.94e-08
 inv_snl_c1
 1
 1
@@ -1978,13 +1982,13 @@ inv_snl_eff_cec
 1
 1
 1
-97.6325
+97.632
 inv_snl_eff_euro
 1
 1
 1
 1
-97.4567
+97.4562
 inv_snl_idcmax
 1
 1
@@ -2079,7 +2083,7 @@ itc_fed_percent
 1
 1
 1
-26
+22
 itc_fed_percent_deprbas_fed
 1
 1
@@ -2819,6 +2823,12 @@ station_id
 4
 5
 78208
+step
+1
+1
+1
+1
+3600
 system_capacity
 1
 1
@@ -2853,7 +2863,7 @@ total_direct_cost
 1
 1
 1
-5500250
+5500253
 total_indirect_cost
 1
 1
@@ -2872,6 +2882,12 @@ tz
 1
 1
 -7
+ui_step_minutes
+1
+1
+1
+1
+60
 use_specific_weather_file
 1
 1

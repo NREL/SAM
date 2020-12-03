@@ -1,5 +1,5 @@
 1
-1178
+1180
 A_aperture
 1
 2
@@ -5051,7 +5051,7 @@ itc_fed_percent
 1
 1
 1
-30
+22
 itc_fed_percent_deprbas_fed
 1
 1
@@ -6403,6 +6403,12 @@ station_id
 4
 5
 67345
+step
+1
+1
+1
+1
+3600
 store_fl_props
 1
 3
@@ -6527,8 +6533,8 @@ tes_lengths
 1
 3
 1
-11
-0 90 100 120 0 0 0 0 80 120 80 
+10
+0 90 100 120 0 30 90 80 120 80 
 
 tes_pump_coef
 1
@@ -7443,6 +7449,12 @@ ui_receiver_description
 4
 12
 Schott PTR80
+ui_step_minutes
+1
+1
+1
+1
+60
 use_specific_weather_file
 1
 1

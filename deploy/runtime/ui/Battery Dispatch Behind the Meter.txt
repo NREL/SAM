@@ -1,7 +1,37 @@
 Battery Dispatch Behind the Meter
 1053
-337
-16
+474
+20
+GroupBox
+
+1
+8
+Name
+5
+9
+AutoDCBox
+X
+3
+345
+Y
+3
+327
+Width
+3
+697
+Height
+3
+139
+Tool Tip
+5
+0
+Caption
+5
+58
+Cycle Degradation Penalty for Price Signal Forecast Option
+Bold
+2
+1
 Label
 
 1
@@ -15,7 +45,7 @@ X
 33
 Y
 3
-201
+216
 Width
 3
 285
@@ -69,7 +99,7 @@ Width
 1042
 Height
 3
-325
+463
 Tool Tip
 5
 0
@@ -159,7 +189,7 @@ Width
 117
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -177,6 +207,130 @@ For each simulation time step enter a rate in kW: less than zero to charge the b
 TabOrder
 3
 5
+SchedNumeric
+
+1
+12
+Name
+5
+15
+batt_cycle_cost
+X
+3
+666
+Y
+3
+438
+Width
+3
+114
+Height
+3
+24
+Tool Tip
+5
+0
+Label
+5
+5
+Value
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+0
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+22
+batt_cycle_cost_choice
+X
+3
+666
+Y
+3
+414
+Width
+3
+198
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+Calculate automatically
+Enter penalty
+Selection
+3
+4294967295
+TabOrder
+3
+4
+Label
+
+1
+13
+Name
+5
+27
+batt_cycle_cost_description
+X
+3
+354
+Y
+3
+345
+Width
+3
+678
+Height
+3
+66
+Tool Tip
+5
+0
+Caption
+5
+304
+The controller cycles the battery only if anticipated electricity savings exceed the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the  Battery Cell and System page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 CheckBox
 
 1
@@ -190,7 +344,7 @@ X
 33
 Y
 3
-273
+288
 Width
 3
 258
@@ -223,7 +377,7 @@ X
 33
 Y
 3
-297
+312
 Width
 3
 258
@@ -256,7 +410,7 @@ X
 33
 Y
 3
-249
+264
 Width
 3
 258
@@ -295,7 +449,7 @@ Width
 288
 Height
 3
-129
+150
 Tool Tip
 5
 0
@@ -304,12 +458,13 @@ Selection
 0
 Items
 6
-5
+6
 Peak shaving one-day look ahead
 Peak shaving one-day look behind
 Input grid power targets
 Input battery power targets
 Manual dispatch
+Price signal forecast
 ShowCaptions
 2
 1
@@ -329,16 +484,16 @@ Name
 batt_dispatch_label
 X
 3
-753
+747
 Y
 3
-207
+201
 Width
 3
 282
 Height
 3
-105
+120
 Tool Tip
 5
 0
@@ -380,7 +535,7 @@ X
 15
 Y
 3
-183
+198
 Width
 3
 303
@@ -595,7 +750,7 @@ Bold
 2
 1
 
-8
+10
 batt_custom_dispatch
 3
 2
@@ -611,6 +766,35 @@ Battery Power(kWdc)|1
 1
 0
 DataArray
+batt_cycle_cost
+3
+2
+Cycle degradation penalty
+$/cycle-kWh
+BatteryDispatch
+0
+2
+1
+2
+1
+1
+0.1
+SchedNumeric
+batt_cycle_cost_choice
+3
+1
+Cycle degradation penalty method
+ 
+BatteryDispatch
+37
+Calculate automatically|Enter penalty
+0
+1
+1
+1
+1
+0
+Default
 batt_dispatch_auto_can_charge
 3
 1
@@ -659,8 +843,8 @@ batt_dispatch_choice
 Battery dispatch options
  
 BatteryDispatch
-133
-Peak shaving one-day look ahead|Peak shaving one-day look behind|Input grid power targets|Input battery power targets|Manual dispatch
+155
+Peak shaving one-day look ahead|Peak shaving one-day look behind|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast
 3
 1
 1
@@ -714,7 +898,7 @@ BatteryDispatch
 MonthlyFactor
 
 0
-1172
+1432
 on_load{'Battery Dispatch Behind the Meter'}=define()
 {	
 	toggle_dispatch();
@@ -728,6 +912,11 @@ on_load{'Battery Dispatch Behind the Meter'}=define()
 
 on_change{'batt_dispatch_choice'}=define(){toggle_dispatch();};
 on_change{'batt_target_choice'} = define(){toggle_dispatch_target();};
+
+on_change{'batt_cycle_cost_choice'}=define()
+{
+	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
+};
 
 function toggle_dispatch_target()
 {
@@ -746,6 +935,13 @@ function toggle_custom_dispatch()
 	else
 		enable('batt_custom_dispatch', true);
 }
+
+function enable_auto_inputs_btm(on_off)
+{
+	enable('batt_cycle_cost_choice', on_off);
+	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
+}
+
 function enable_target_inputs(on_off)
 {
 	if (!on_off)

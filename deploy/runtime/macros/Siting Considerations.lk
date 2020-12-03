@@ -107,7 +107,7 @@ else //user input location
 }
 
 //create the URL and call the wind prospector service**********************************************************************************************************
-url = 'http://developer.nrel.gov/api/wind/wind_prospector?api_key=<SAMAPIKEY>&category=all_land_ownership,all_restricted,all_species&lat='
+url = 'https://developer.nrel.gov/api/wind/wind_prospector?api_key=<SAMAPIKEY>&category=all_land_ownership,all_restricted,all_species&lat='
 + lat +'&long=' + lon +'&radius=' + radius +'&alo_details=1';
 json = curl(url);
 

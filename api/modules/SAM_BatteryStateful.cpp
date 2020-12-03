@@ -282,12 +282,6 @@ SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_option_nset(SAM_table
 	});
 }
 
-SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "replacement_schedule", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_schedule_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "replacement_schedule_percent", arr, length);
@@ -396,9 +390,9 @@ SAM_EXPORT void SAM_BatteryStateful_StatePack_last_idx_nset(SAM_table ptr, doubl
 	});
 }
 
-SAM_EXPORT void SAM_BatteryStateful_StatePack_loss_percent_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_BatteryStateful_StatePack_loss_kw_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "loss_percent", number);
+		ssc_data_set_number(ptr, "loss_kw", number);
 	});
 }
 
@@ -1067,18 +1061,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_replacement_option_nget(SAM_tab
 
 
 
-SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "replacement_schedule", length);
-	if (!result)
-		make_access_error("SAM_BatteryStateful", "replacement_schedule");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1280,11 +1262,11 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_last_idx_nget(SAM_table ptr, SAM
 
 
 
-SAM_EXPORT double SAM_BatteryStateful_StatePack_loss_percent_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_BatteryStateful_StatePack_loss_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "loss_percent", &result))
-		make_access_error("SAM_BatteryStateful", "loss_percent");
+	if (!ssc_data_get_number(ptr, "loss_kw", &result))
+		make_access_error("SAM_BatteryStateful", "loss_kw");
 	});
 	return result;
 }

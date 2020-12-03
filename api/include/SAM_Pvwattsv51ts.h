@@ -64,6 +64,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_diffuse_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set elevation: Elevation [m]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_elevation_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set hour: Hour [hr]
 	 * options: 0-23
 	 * constraints: None
@@ -112,7 +120,23 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_poa_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set tamb: Ambient temperature [C]
+	 * Set pressure: Pressure [mbars]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_pressure_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set shaded_percent: Percent of panels that are shaded [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvwattsv51ts_PVWatts_shaded_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tamb: Ambient temperature (dry bulb temperature) [C]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -249,6 +273,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_diffuse_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_elevation_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_hour_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_lat_nget(SAM_table ptr, SAM_error *err);
@@ -260,6 +286,10 @@ extern "C"
 	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_month_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_poa_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_pressure_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_shaded_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv51ts_PVWatts_tamb_nget(SAM_table ptr, SAM_error *err);
 

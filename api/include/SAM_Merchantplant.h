@@ -1974,12 +1974,12 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_replacement_option_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_replacement_schedule: Battery bank replacements per year (user specified) [number/year]
-	 * options: None
+	 * Set batt_replacement_schedule_percent: Percentage of battery capacity to replace in each year [%]
+	 * options: length <= analysis_period
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_replacement_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_replacement_schedule_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set battery_per_kWh: Battery cost [$/kWh]
@@ -2716,7 +2716,7 @@ extern "C"
 
 	SAM_EXPORT double SAM_Merchantplant_BatterySystem_batt_replacement_option_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_BatterySystem_batt_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_BatterySystem_batt_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_BatterySystem_battery_per_kWh_nget(SAM_table ptr, SAM_error *err);
 
@@ -3737,8 +3737,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_npv_uti_pbi_income_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Outputs_ppa_gen_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_insandproptax_nget(SAM_table ptr, SAM_error *err);
@@ -3756,6 +3754,8 @@ extern "C"
 	SAM_EXPORT double SAM_Merchantplant_Outputs_purchase_of_property_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_pv_cafds_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_revenue_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_salvage_value_nget(SAM_table ptr, SAM_error *err);
 

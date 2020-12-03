@@ -90,7 +90,7 @@ extern "C"
 	 * Set Qfull: Fully charged cell capacity [Ah]
 	 * options: None
 	 * constraints: None
-	 * required if: voltage_choice=0&chem~2
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Qfull_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -396,14 +396,6 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_option_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set replacement_schedule: Battery bank number of replacements in each year [[number/year]]
-	 * options: length <= analysis_period
-	 * constraints: None
-	 * required if: replacement_option=2
-	 */
-	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set replacement_schedule_percent: Percentage of battery capacity to replace in each year [[%/year]]
 	 * options: length <= analysis_period
 	 * constraints: None
@@ -553,12 +545,12 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StatePack_last_idx_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set loss_percent: Power loss percent [%]
+	 * Set loss_kw: Ancillary power loss (kW DC for DC connected, AC for AC connected) [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_BatteryStateful_StatePack_loss_percent_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_BatteryStateful_StatePack_loss_kw_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set n_replacements: Number of replacements at current year
@@ -900,8 +892,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_BatteryStateful_ParamsPack_replacement_option_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_schedule_loss_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -943,7 +933,7 @@ extern "C"
 
 	SAM_EXPORT double SAM_BatteryStateful_StatePack_last_idx_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_BatteryStateful_StatePack_loss_percent_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_BatteryStateful_StatePack_loss_kw_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StatePack_n_replacements_nget(SAM_table ptr, SAM_error *err);
 

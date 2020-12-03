@@ -1,5 +1,5 @@
 1
-634
+636
 A_sf
 1
 1
@@ -8044,7 +8044,7 @@ itc_fed_percent
 1
 1
 1
-30
+22
 itc_fed_percent_deprbas_fed
 1
 1
@@ -9141,6 +9141,12 @@ station_id
 4
 5
 91486
+step
+1
+1
+1
+1
+3600
 system_capacity
 1
 1
@@ -9272,6 +9278,12 @@ ui_receiver_height
 1
 1
 23.8084
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_tower_height
 1
 1

@@ -22,6 +22,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <algorithm>
 #include <memory>
+#include <fstream>
 
 // threading
 #include <thread>
@@ -505,6 +506,175 @@ static void fcall_codegen_metric(lk::invoke_t &cxt)
 	}
 }
 
+static void fcall_metric_table(lk::invoke_t& cxt)
+{
+	LK_DOC("metric_table", "Add an output metric table to the current configuration. Options include headers", "(string:tableName, [table:options]):none");
+
+	if (ResultsCallbackContext* ci = static_cast<ResultsCallbackContext*>(cxt.user_data()))
+	{
+		MetricTable mt;
+		mt.tableName = cxt.arg(0).as_string().MakeLower();
+
+		if (cxt.arg_count() > 1)
+		{
+			lk::vardata_t& opts = cxt.arg(1).deref();
+			if (lk::vardata_t* x = opts.lookup("headers"))
+			{
+				wxString ch = x->as_string();
+				mt.headers = wxSplit(ch, ',');
+			}
+		}
+		ci->GetResultsViewer()->AddMetricTable(mt);
+	}
+}
+
+static void fcall_metric_row(lk::invoke_t& cxt)
+{
+	LK_DOC("metric_row", "Add an output metric row to the current configuration. Options include mode(s),deci(s),thousep(s),pre(s),post(s),label,scale(s)", "(string:variable(s)), [table:options]):none");
+
+	if (ResultsCallbackContext* ci = static_cast<ResultsCallbackContext*>(cxt.user_data()))
+	{
+		MetricRow mr;
+		wxArrayString vars = wxSplit(cxt.arg(0).as_string(), ',');
+		wxArrayString modes, decis, thouseps, pres, posts, scales;
+
+		if (cxt.arg_count() > 1)
+		{
+			lk::vardata_t& opts = cxt.arg(1).deref();
+			if (lk::vardata_t* x = opts.lookup("mode")) {
+				modes = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("deci")) {
+				decis = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("thousep")) {
+				thouseps = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("pre"))
+				pres = wxSplit(x->as_string(), ',');
+
+			if (lk::vardata_t* x = opts.lookup("post"))
+				posts = wxSplit(x->as_string(), ',');
+
+			if (lk::vardata_t* x = opts.lookup("scale")) {
+				scales = wxSplit(x->as_string(), ',');
+			}
+
+
+			if (lk::vardata_t* x = opts.lookup("label"))
+				mr.label = x->as_string();
+
+			if (lk::vardata_t* x = opts.lookup("tableName"))
+				mr.tableName = x->as_string().MakeLower();
+		}
+
+
+		for (size_t i = 0; i < vars.GetCount(); i++) {
+			MetricData md;
+			md.var = vars[i];
+
+			if (i < modes.GetCount())
+			{
+				wxString mm = modes[i];
+				mm.MakeLower();
+				if (mm == "f") md.mode ='f';
+				else if (mm == "e")md.mode = 'e';
+				else if (mm == "h") md.mode = 'h';
+			}
+
+			if (i <decis.GetCount()) {
+				int deci = wxAtoi(decis[i]);
+				md.deci = deci;
+			}
+					
+			if ( i < thouseps.GetCount()) {
+				wxString mm = thouseps[i];
+				mm.MakeLower();
+				if (mm == "f") md.thousep = false;
+				else md.thousep = true;
+			}
+
+			if (i < pres.GetCount()) {
+				md.pre = pres[i];
+			}
+
+			if (i < posts.GetCount()) {
+				md.post = posts[i];
+			}
+
+			if (i < scales.GetCount())	{
+				double scale = wxAtof(scales[i]);
+				md.scale = scale;
+			}
+
+			mr.metrics.push_back(md);
+		}
+
+/*		MetricRow mr;
+		mr.vars = wxSplit(cxt.arg(0).as_string(),',');
+
+		if (cxt.arg_count() > 1)
+		{
+			lk::vardata_t& opts = cxt.arg(1).deref();
+
+			if (lk::vardata_t* x = opts.lookup("mode"))	{
+				wxArrayString modes = wxSplit(x->as_string(), ',');
+				for (size_t i = 0; i < modes.GetCount(); i++) {
+					wxString mm = modes[i];
+					mm.MakeLower();
+					if (mm == "f") mr.modes.push_back('f');
+					else if (mm == "e")mr.modes.push_back('e');
+					else if (mm == "h") mr.modes.push_back('h');
+					else mr.modes.push_back('g');
+				}
+			}
+
+			if (lk::vardata_t* x = opts.lookup("deci")) {
+				wxArrayString decis = wxSplit(x->as_string(), ',');
+				for (size_t i = 0; i < decis.GetCount(); i++) {
+					int deci = wxAtoi(decis[i]);
+					mr.decis.push_back(deci);
+				}
+			}
+
+			if (lk::vardata_t* x = opts.lookup("thousep")) {
+				wxArrayString thouseps = wxSplit(x->as_string(), ',');
+				for (size_t i = 0; i < thouseps.GetCount(); i++) {
+					wxString mm = thouseps[i];
+					mm.MakeLower();
+					if (mm == "f") mr.thouseps.push_back(false);
+					else mr.thouseps.push_back(true);
+				}
+			}
+
+			if (lk::vardata_t* x = opts.lookup("pre"))
+				mr.pres = wxSplit(x->as_string(),',');
+
+			if (lk::vardata_t* x = opts.lookup("post"))
+				mr.posts = wxSplit(x->as_string(), ',');
+
+			if (lk::vardata_t* x = opts.lookup("label"))
+				mr.label = x->as_string();
+
+			if (lk::vardata_t* x = opts.lookup("scale")) {
+				wxArrayString scales = wxSplit(x->as_string(), ',');
+				for (size_t i = 0; i < scales.GetCount(); i++) {
+					double scale = wxAtof(scales[i]);
+					mr.scales.push_back(scale);
+				}
+			}
+
+			if (lk::vardata_t* x = opts.lookup("tableName"))
+				mr.tableName = x->as_string().MakeLower();
+		}
+*/
+		ci->GetResultsViewer()->AddMetricRow(mr);
+	}
+}
+
 
 static void fcall_metric( lk::invoke_t &cxt )
 {
@@ -544,6 +714,9 @@ static void fcall_metric( lk::invoke_t &cxt )
 
 			if ( lk::vardata_t *x = opts.lookup("scale") )
 				md.scale = x->as_number();
+
+//			if (lk::vardata_t* x = opts.lookup("tableName"))
+//				md.tableName = x->as_string().MakeLower();
 		}
 
 		ci->GetResultsViewer()->AddMetric( md );
@@ -601,7 +774,7 @@ static void fcall_add_gain_term(lk::invoke_t &cxt)
 
 static void fcall_agraph( lk::invoke_t &cxt )
 {
-	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR), [number:Xmin value], [number:Xmax value]]:none" );
+	LK_DOC("agraph", "Create an autograph", "(string:Y, string:title, string:xlabel, string:ylabel, [int:size], [bool:show_xvalues], [bool:show_legend], [string:legend_position (bottom, right, floating)], [integer:graph_type(BAR, STACKED, LINE, SCATTER, CONTOUR, SECTOR), [number:Xmin value], [number:Xmax value]]:none" );
 
 	if ( ResultsCallbackContext *ci = static_cast<ResultsCallbackContext*>(cxt.user_data()) )
 	{
@@ -1912,7 +2085,7 @@ void fcall_nsrdbquery(lk::invoke_t &cxt)
 {
 	LK_DOC("nsrdbquery", "Creates the NSRDB data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
 	//Create the wind data object
-	NSRDBDialog dlgNSRDB(SamApp::Window(), "Choose Weather Files to Download from NSRDB");
+	NSRDBDialog dlgNSRDB(SamApp::Window(), "Advanced NSRDB Download");
 	dlgNSRDB.CenterOnParent();
 	int code = dlgNSRDB.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -2009,7 +2182,6 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 		url.Replace("<HUBHEIGHT>", hh[i].Left(hh[i].Len() - 1));
 		url.Replace("<LAT>", wxString::Format("%lg", lat));
 		url.Replace("<LON>", wxString::Format("%lg", lon));
-		url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 		wxEasyCurl *curl = new wxEasyCurl;
 		curls.push_back(curl);
 		urls.push_back(url);
@@ -2493,15 +2665,24 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			int dc_tou_row=0;
 			int dc_flat_row=0;
 			int ndx;
-			double br, sr, ub,dc;
+			double br, sr, ub, dc;
 			wxString per_tier;
 			wxString var_name;
 			wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
 			bool overwrite = true;
-			ndx = upgrade_list.Index("ur_enable_net_metering");
+			// "cr" is for unused coincident rate
+			double cr;
+			matrix_t<float> cr_tou_mat(72, 4); // will resize
+			int cr_tou_row = 0;
+			int cr_row = 0;
+			/*ndx = upgrade_list.Index("ur_enable_net_metering");
 			int nm = 1; // default to net metering
 			if (ndx > -1 && ndx < (int)upgrade_value.Count())
-				nm = (int)atof(upgrade_value[ndx].c_str());
+				nm = (int)atof(upgrade_value[ndx].c_str());*/
+			int metering_option = 0;
+			ndx = upgrade_list.Index("ur_metering_option");
+			if (ndx > -1 && ndx < (int)upgrade_value.Count())
+				metering_option = (int)atof(upgrade_value[ndx].c_str());
 			double flat_buy_rate = 0;
 			double flat_sell_rate = 0;
 			ndx = upgrade_list.Index("ur_flat_buy_rate");
@@ -2510,7 +2691,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			ndx = upgrade_list.Index("ur_flat_sell_rate");
 			if (ndx > -1 && ndx < (int)upgrade_value.Count())
 				flat_sell_rate = atof(upgrade_value[ndx].c_str());
-			if (nm > 0) flat_sell_rate = flat_buy_rate;
+			//if (nm > 0) flat_sell_rate = flat_buy_rate;
 			// energy charge matrix inputs
 			for (int per=1;per<13 && overwrite;per++)
 			{
@@ -2531,7 +2712,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 						sr = atof(upgrade_value[ndx].c_str());
 					else
 						overwrite = false;
-					if (nm > 0) sr = br;
+					//if (nm > 0) sr = br;
 					ndx = upgrade_list.Index(per_tier + "ub");
 					if (ndx > -1 && ndx < (int)upgrade_value.Count())
 						ub = atof(upgrade_value[ndx].c_str());
@@ -2577,7 +2758,30 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 						dc_tou_mat.at(dc_tou_row,3)=dc;
 						dc_tou_row++;
 					}
-			// flat demand
+			// unused coincident rate tou
+					dc = -1;
+					ub = -1;
+					per_tier = wxString::Format("ur_cr_p%d_t%d_", per, tier);
+					ndx = upgrade_list.Index(per_tier + "dc");
+					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+						dc = atof(upgrade_value[ndx].c_str());
+					else
+						overwrite = false;
+					ndx = upgrade_list.Index(per_tier + "ub");
+					if (ndx > -1 && ndx < (int)upgrade_value.Count())
+						ub = atof(upgrade_value[ndx].c_str());
+					else
+						overwrite = false;
+					if (!overwrite) continue;
+					if (dc > 0 || cr_tou_row == 0) // must have one row
+					{
+						cr_tou_mat.at(cr_tou_row, 0) = per;
+						cr_tou_mat.at(cr_tou_row, 1) = tier;
+						cr_tou_mat.at(cr_tou_row, 2) = ub;
+						cr_tou_mat.at(cr_tou_row, 3) = dc;
+						cr_tou_row++;
+					}
+					// flat demand
 					dc = -1;
 					ub = -1;
 					per_tier = wxString::Format("ur_dc_%s_t%d_", months[per - 1], tier);
@@ -2620,6 +2824,12 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 					vv->Set(dc_tou_mat);
 					list.Add(var_name);
 				}
+				var_name = "ur_cr_tou_mat";
+				if (VarValue* vv = c->Values().Get(var_name))
+				{
+					vv->Set(cr_tou_mat);
+					list.Add(var_name);
+				}
 				var_name = "ur_dc_flat_mat";
 				if (VarValue *vv = c->Values().Get(var_name))
 				{
@@ -2629,15 +2839,12 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			}
 		}
 
-
 		// this causes the UI and other variables to be updated
 		c->VariablesChanged( list );
 	}
 
 	cxt.result().assign( ret_val ? 1.0 : 0.0 );
 }
-
-
 
 static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &mat)
 {
@@ -2660,9 +2867,6 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 	return true;
 }
 
-
-
-
 void fcall_urdb_get(lk::invoke_t &cxt)
 {
 	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(string:guid):boolean");
@@ -2672,20 +2876,22 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 	OpenEI::RateData rate;
 	OpenEI api;
 
+    wxString rate_notes;
+
 	if (api.RetrieveUtilityRateData(guid, rate))
 	{
 		cxt.result().empty_hash();
 
-		// meta data
-		cxt.result().hash_item("name").assign(rate.Header.Utility);
-		cxt.result().hash_item("schedule_name").assign(rate.Header.Name);
-		cxt.result().hash_item("source").assign(rate.Header.Source);
-		cxt.result().hash_item("description").assign(rate.Header.Description);
-		cxt.result().hash_item("start_date").assign(rate.Header.StartDate);
-		cxt.result().hash_item("end_date").assign(rate.Header.EndDate);
-		cxt.result().hash_item("basicinformationcomments").assign(rate.Header.BasicInformationComments);
-		cxt.result().hash_item("energycomments").assign(rate.Header.EnergyComments);
-		cxt.result().hash_item("demandcomments").assign(rate.Header.DemandComments);
+        // meta data
+        cxt.result().hash_item("name").assign(rate.Header.Utility);
+        cxt.result().hash_item("schedule_name").assign(rate.Header.Name);
+        cxt.result().hash_item("source").assign(rate.Header.Source);
+        cxt.result().hash_item("description").assign(rate.Header.Description);
+        cxt.result().hash_item("start_date").assign(rate.Header.StartDate);
+        cxt.result().hash_item("end_date").assign(rate.Header.EndDate);
+        cxt.result().hash_item("basicinformationcomments").assign(rate.Header.BasicInformationComments);
+        cxt.result().hash_item("energycomments").assign(rate.Header.EnergyComments);
+        cxt.result().hash_item("demandcomments").assign(rate.Header.DemandComments);
 
 		// applicability
 		cxt.result().hash_item("peakkwcapacityhistory").assign(rate.Applicability.peakkwcapacityhistory);
@@ -2699,20 +2905,62 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("voltagecategory").assign(rate.Applicability.voltagecategory);
 		cxt.result().hash_item("phasewiring").assign(rate.Applicability.phasewiring);
 
+		// unused items
+		cxt.result().hash_item("hasunuseditems").assign(rate.Unused.HasUnusedItems);
+		cxt.result().hash_item("isdefault").assign(rate.Unused.IsDefault);
+		cxt.result().hash_item("servicetype").assign(rate.Unused.ServiceType);
+		cxt.result().hash_item("demandwindow").assign(rate.Unused.DemandWindow);
+		for (int i = 0; i < 12; i++)
+		{
+			cxt.result().hash_item(wxString::Format("fueladjustmentsmonthly%d", i)).assign(rate.Unused.FuelAdjustmentsMonthly[i]);
+			cxt.result().hash_item(wxString::Format("demandratchetpercentage%d", i)).assign(rate.Unused.DemandRatchetPercentage[i]);
+		}
+		if (!applydiurnalschedule(cxt, "cr_sched", rate.Unused.CoincidentSchedule)) return;
+		if (!copy_mat(cxt, "cr_tou_mat", rate.Unused.CoincidentRateStructure)) return;
+
+		cxt.result().hash_item("energyattrs").assign(rate.Unused.EnergyAttrs);
+		cxt.result().hash_item("demandattrs").assign(rate.Unused.DemandAttrs);
+		cxt.result().hash_item("fixedattrs").assign(rate.Unused.FixedAttrs);
+
 		// URLs
 		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
 		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);
-
-		// net metering
-		if (rate.NetMetering)
-			cxt.result().hash_item("enable_net_metering").assign(1.0);
-		else
-			cxt.result().hash_item("enable_net_metering").assign(0.0);
-
+		
+		// metering option
+		// "Net Metering", "Net Billing Instantaneous", "Net Billing Hourly", or "Buy All Sell All"
+		if (rate.DgRules == "Net Metering")
+			cxt.result().hash_item("metering_option").assign(0.0);
+		else if (rate.DgRules == "Net Billing Instantaneous")
+			cxt.result().hash_item("metering_option").assign(2.0);
+		else if (rate.DgRules == "Net Billing Hourly")
+			cxt.result().hash_item("metering_option").assign(2.0);
+		else if (rate.DgRules == "Buy All Sell All")
+			cxt.result().hash_item("metering_option").assign(4.0);
+        else // set to default Net Energy Metering
+        {
+            cxt.result().hash_item("metering_option").assign(0.0);
+            rate_notes.append(wxString::Format("Metering option not provided with rate data.\n"));
+        }
+		
 		// fixed charges
-		cxt.result().hash_item("monthly_fixed_charge").assign(rate.FixedMonthlyCharge);
-		cxt.result().hash_item("monthly_min_charge").assign(rate.MinMonthlyCharge);
-		cxt.result().hash_item("annual_min_charge").assign(rate.MinAnnualCharge);
+		//  "$/day", "$/month" or "$/year" TO DO handle $/day and $/year
+        double fixed_charges = rate.FixedChargeFirstMeter + rate.FixedChargeAddlMeter;
+        cxt.result().hash_item("monthly_fixed_charge").assign(0.0);
+        if ((rate.FixedChargeUnits) == "$/month")
+            cxt.result().hash_item("monthly_fixed_charge").assign(fixed_charges);
+        else if ( fixed_charges > 0 )
+            rate_notes.append(wxString::Format("SAM does not model fixed charge rate of %f with %s units.\n", fixed_charges, rate.FixedChargeUnits));
+
+		// minimum charges
+		// "$/day", "$/month" or "$/year" TO DO handle $/day
+        cxt.result().hash_item("monthly_min_charge").assign(0.0);
+        cxt.result().hash_item("annual_min_charge").assign(0.0);
+        if (rate.MinChargeUnits == "$/month")
+			cxt.result().hash_item("monthly_min_charge").assign(rate.MinCharge);
+		else if ( rate.MinChargeUnits == "$/year")
+			cxt.result().hash_item("annual_min_charge").assign(rate.MinCharge);
+        else if (rate.MinCharge > 0 )
+            rate_notes.append(wxString::Format("SAM does not model minimum charge rate of %f with %s units.\n", rate.MinCharge, rate.MinChargeUnits));
 
 		// schedules
 		if (!applydiurnalschedule(cxt, "ec_sched_weekday", rate.EnergyWeekdaySchedule)) return;
@@ -2721,7 +2969,6 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		if (!applydiurnalschedule(cxt, "dc_sched_weekday", rate.DemandWeekdaySchedule)) return;
 		if (!applydiurnalschedule(cxt, "dc_sched_weekend", rate.DemandWeekendSchedule)) return;
 
-
 		cxt.result().hash_item("ec_enable").assign(1.0);
 		if (!copy_mat(cxt, "ec_tou_mat", rate.EnergyStructure)) return;
 
@@ -2729,70 +2976,8 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		if (!copy_mat(cxt, "dc_flat_mat", rate.DemandFlatStructure)) return;
 		if (!copy_mat(cxt, "dc_tou_mat", rate.DemandTOUStructure)) return;
 
-		/*
-		// energy rate structure, e.g. "ur_ec_p1_t1_ub"
-		bool ec_enable = false;
-		for (int period = 0; period < 12; period++)
-		{
-			for (int tier = 0; tier < 6; tier++)
-			{
-				wxString period_tier = wxString::Format("ur_ec_p%d_t%d_",period+1,tier+1);
-				cxt.result().hash_item(period_tier + "ub").assign(rate.EnergyMax[period][tier]);
-				double buy_rate = rate.EnergyBuy[period][tier] + rate.EnergyAdj[period][tier];
-				if (!ec_enable && (buy_rate != 0)) ec_enable = true;
-				cxt.result().hash_item(period_tier + "br").assign(buy_rate);
-				cxt.result().hash_item(period_tier + "sr").assign(rate.EnergySell[period][tier]);
-				// todo - handle different energy upper bound units
-			}
-		}
-		if (ec_enable)
-			cxt.result().hash_item("ec_enable").assign(1.0);
-		else
-			cxt.result().hash_item("ec_enable").assign(0.0);
-		*/
+        cxt.result().hash_item("ratenotes").assign(rate_notes);
 
-
-		/*
-
-
-		wxString months[] = { "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" };
-
-		lk::vardata_t vd;
-		bool dc_enable = false;
-		for (int month = 0; month < 12; month++)
-		{
-			for (int tier = 0; tier < 6; tier++)
-			{
-				wxString period_tier = wxString::Format("ur_dc_%s_t%d_", months[month], tier + 1);
-				vd = cxt.result().hash_item(period_tier + "ub");
-//				if (vd.)
-				cxt.result().hash_item(period_tier + "ub").assign(rate.FlatDemandMax[rate.FlatDemandMonth[month]][tier]);
-				double charge = rate.FlatDemandCharge[rate.FlatDemandMonth[month]][tier] + rate.FlatDemandAdj[rate.FlatDemandMonth[month]][tier];
-				if (!dc_enable && (charge != 0)) dc_enable = true;
-				cxt.result().hash_item(period_tier + "dc").assign(charge);
-			}
-		}
-		*/
-
-
-		/*
-		// demand rate structure, e.g. ur_dc_p1_t1_ub
-		for (int period = 0; period < 12; period++)
-		{
-			for (int tier = 0; tier < 6; tier++)
-			{
-				wxString period_tier = wxString::Format("ur_dc_p%d_t%d_", period + 1, tier + 1);
-				cxt.result().hash_item(period_tier + "ub").assign(rate.DemandMax[period][tier]);
-				double charge = rate.DemandCharge[period][tier] + rate.DemandAdj[period][tier];
-				if (!dc_enable && (charge != 0)) dc_enable = true;
-				cxt.result().hash_item(period_tier + "dc").assign(charge);
-			}
-		}
-		if (dc_enable)
-			cxt.result().hash_item("dc_enable").assign(1.0);
-		else
-			cxt.result().hash_item("dc_enable").assign(0.0);
-		*/
 	}
 }
 
@@ -4521,6 +4706,34 @@ static void fcall_parametric_export(lk::invoke_t &cxt)
 	else cxt.result().assign(0.0);
 }
 
+static void fcall_read_json(lk::invoke_t &cxt)
+{
+    LK_DOC("read_json", "Returns contents of JSON file as a hash table", "( string:file ): table")
+
+    wxString file(cxt.arg(0).as_string());
+    if (!wxFileExists(file)) {
+        cxt.error("file does not exist");
+        return;
+    }
+
+    std::ifstream ifs(file.ToStdString().c_str(), std::ios::in | std::ios::binary | std::ios::ate);
+
+    std::ifstream::pos_type fileSize = ifs.tellg();
+    ifs.seekg(0, std::ios::beg);
+
+    std::vector<char> bytes(fileSize);
+    ifs.read(bytes.data(), fileSize);
+
+    std::string input_string = std::string(bytes.data(), fileSize);
+
+    lk_string err;
+    lk::vardata_t results;
+    auto data = json_to_ssc_data(input_string.c_str());
+    if (ssc_data_lookup(data, "error"))
+        cxt.result().assign("read_json error: " + std::string(ssc_data_get_string(data, "error")));
+    sscdata_to_lkhash(data, cxt.result());
+}
+
 static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 {
     LK_DOC("reopt_size_battery", "From a detailed or simple photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "( none ): table");
@@ -4823,6 +5036,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_pdfreport,
             fcall_pagenote,
             fcall_macrocall,
+            fcall_read_json,
 #ifdef __WXMSW__
 		fcall_xl_create,
 		fcall_xl_free,
@@ -4941,6 +5155,8 @@ lk::fcall_t* invoke_resultscallback_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_metric,
+		fcall_metric_row,
+		fcall_metric_table,
 		fcall_cfline,
 		fcall_cfrow,
 		fcall_agraph,

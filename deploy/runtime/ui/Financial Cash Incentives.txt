@@ -5907,11 +5907,11 @@ Numeric
 cbi_fed_deprbas_fed
 3
 1
- 
+Federal CBI reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -5921,11 +5921,11 @@ CheckBox
 cbi_fed_deprbas_sta
 3
 1
- 
+Federal CBI reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -5949,11 +5949,11 @@ Numeric
 cbi_fed_tax_fed
 3
 1
- 
+Federal CBI is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -5963,11 +5963,11 @@ CheckBox
 cbi_fed_tax_sta
 3
 1
- 
+Federal CBI is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -5991,11 +5991,11 @@ Numeric
 cbi_oth_deprbas_fed
 3
 1
- 
+Other CBI reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6005,11 +6005,11 @@ CheckBox
 cbi_oth_deprbas_sta
 3
 1
- 
+Other CBI reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6033,11 +6033,11 @@ Numeric
 cbi_oth_tax_fed
 3
 1
- 
+Other CBI is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6047,11 +6047,11 @@ CheckBox
 cbi_oth_tax_sta
 3
 1
- 
+Other CBI is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6075,11 +6075,11 @@ Numeric
 cbi_sta_deprbas_fed
 3
 1
- 
+State CBI reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6089,11 +6089,11 @@ CheckBox
 cbi_sta_deprbas_sta
 3
 1
- 
+State CBI reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6117,11 +6117,11 @@ Numeric
 cbi_sta_tax_fed
 3
 1
- 
+State CBI is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6131,11 +6131,11 @@ CheckBox
 cbi_sta_tax_sta
 3
 1
- 
+State CBI is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6159,11 +6159,11 @@ Numeric
 cbi_uti_deprbas_fed
 3
 1
- 
+Utility CBI reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6173,11 +6173,11 @@ CheckBox
 cbi_uti_deprbas_sta
 3
 1
- 
+Utility CBI reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6201,11 +6201,11 @@ Numeric
 cbi_uti_tax_fed
 3
 1
- 
+Utility CBI is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6215,11 +6215,11 @@ CheckBox
 cbi_uti_tax_sta
 3
 1
- 
+Utility CBI is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6243,11 +6243,11 @@ Numeric
 ibi_fed_amount_deprbas_fed
 3
 1
- 
+Federal IBI amount reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6257,11 +6257,11 @@ CheckBox
 ibi_fed_amount_deprbas_sta
 3
 1
- 
+Federal IBI amount reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6271,11 +6271,11 @@ CheckBox
 ibi_fed_amount_tax_fed
 3
 1
- 
+Federal IBI amount is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6285,11 +6285,11 @@ CheckBox
 ibi_fed_amount_tax_sta
 3
 1
- 
+Federal IBI amount is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6313,11 +6313,11 @@ Numeric
 ibi_fed_percent_deprbas_fed
 3
 1
- 
+Federal IBI percentage reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6327,11 +6327,11 @@ CheckBox
 ibi_fed_percent_deprbas_sta
 3
 1
- 
+Federal IBI percentage reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6341,7 +6341,7 @@ CheckBox
 ibi_fed_percent_maxvalue
 3
 1
-Federal IBI maximum limit
+Federal IBI percentage maximum limit
 $
 Cash Incentives
 0
@@ -6355,11 +6355,11 @@ Numeric
 ibi_fed_percent_tax_fed
 3
 1
- 
+Federal IBI percentage is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6369,11 +6369,11 @@ CheckBox
 ibi_fed_percent_tax_sta
 3
 1
- 
+Federal IBI percentage is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6397,11 +6397,11 @@ Numeric
 ibi_oth_amount_deprbas_fed
 3
 1
- 
+Other IBI amount reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6411,11 +6411,11 @@ CheckBox
 ibi_oth_amount_deprbas_sta
 3
 1
- 
+Other IBI amount reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6425,11 +6425,11 @@ CheckBox
 ibi_oth_amount_tax_fed
 3
 1
- 
+Other IBI amount is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6439,11 +6439,11 @@ CheckBox
 ibi_oth_amount_tax_sta
 3
 1
- 
+Other IBI amount is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6467,11 +6467,11 @@ Numeric
 ibi_oth_percent_deprbas_fed
 3
 1
- 
+Other IBI percentage reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6481,11 +6481,11 @@ CheckBox
 ibi_oth_percent_deprbas_sta
 3
 1
- 
+Other IBI percentage reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6495,7 +6495,7 @@ CheckBox
 ibi_oth_percent_maxvalue
 3
 1
-Other IBI maximum limit
+Other IBI percentage maximum limit
 $
 Cash Incentives
 0
@@ -6509,11 +6509,11 @@ Numeric
 ibi_oth_percent_tax_fed
 3
 1
- 
+Other IBI percentage is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6523,11 +6523,11 @@ CheckBox
 ibi_oth_percent_tax_sta
 3
 1
- 
+Other IBI percentage is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6551,11 +6551,11 @@ Numeric
 ibi_sta_amount_deprbas_fed
 3
 1
- 
+State IBI amount reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6565,11 +6565,11 @@ CheckBox
 ibi_sta_amount_deprbas_sta
 3
 1
- 
+State IBI amount reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6579,11 +6579,11 @@ CheckBox
 ibi_sta_amount_tax_fed
 3
 1
- 
+State IBI amount is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6593,11 +6593,11 @@ CheckBox
 ibi_sta_amount_tax_sta
 3
 1
- 
+State IBI amount is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6621,11 +6621,11 @@ Numeric
 ibi_sta_percent_deprbas_fed
 3
 1
- 
+State IBI percentage reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6635,11 +6635,11 @@ CheckBox
 ibi_sta_percent_deprbas_sta
 3
 1
- 
+State IBI percentage reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6649,7 +6649,7 @@ CheckBox
 ibi_sta_percent_maxvalue
 3
 1
-State IBI maximum limit
+State IBI percentage maximum limit
 $
 Cash Incentives
 0
@@ -6663,11 +6663,11 @@ Numeric
 ibi_sta_percent_tax_fed
 3
 1
- 
+State IBI percentage is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6677,11 +6677,11 @@ CheckBox
 ibi_sta_percent_tax_sta
 3
 1
- 
+State IBI percentage is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6705,11 +6705,11 @@ Numeric
 ibi_uti_amount_deprbas_fed
 3
 1
- 
+Utility IBI amount reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6719,11 +6719,11 @@ CheckBox
 ibi_uti_amount_deprbas_sta
 3
 1
- 
+Utility IBI amount reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6733,11 +6733,11 @@ CheckBox
 ibi_uti_amount_tax_fed
 3
 1
- 
+Utility IBI amount is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6747,11 +6747,11 @@ CheckBox
 ibi_uti_amount_tax_sta
 3
 1
- 
+Utility IBI amount is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6775,11 +6775,11 @@ Numeric
 ibi_uti_percent_deprbas_fed
 3
 1
- 
+Utility IBI percentage reduces federal basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6789,11 +6789,11 @@ CheckBox
 ibi_uti_percent_deprbas_sta
 3
 1
- 
+Utility IBI percentage reduces state basis
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6803,7 +6803,7 @@ CheckBox
 ibi_uti_percent_maxvalue
 3
 1
-Utility IBI maximum limit
+Utility IBI percentage maximum limit
 $
 Cash Incentives
 0
@@ -6817,11 +6817,11 @@ Numeric
 ibi_uti_percent_tax_fed
 3
 1
- 
+Utility IBI percentage is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6831,11 +6831,11 @@ CheckBox
 ibi_uti_percent_tax_sta
 3
 1
- 
+Utility IBI percentage is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6873,25 +6873,25 @@ Numeric
 pbi_fed_for_ds
 3
 1
- 
+Federal PBI available for debt service
  
 Cash Incentives
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
-Default
+CheckBox
 pbi_fed_tax_fed
 3
 1
- 
+Federal PBI is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6901,11 +6901,11 @@ CheckBox
 pbi_fed_tax_sta
 3
 1
- 
+Federal PBI is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6957,25 +6957,25 @@ Numeric
 pbi_oth_for_ds
 3
 1
- 
+Other PBI available for debt service
  
 Cash Incentives
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
-Default
+CheckBox
 pbi_oth_tax_fed
 3
 1
- 
+Other PBI is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -6985,11 +6985,11 @@ CheckBox
 pbi_oth_tax_sta
 3
 1
- 
+Other PBI is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -7041,25 +7041,25 @@ Numeric
 pbi_sta_for_ds
 3
 1
- 
+State PBI available for debt service
  
 Cash Incentives
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
-Default
+CheckBox
 pbi_sta_tax_fed
 3
 1
- 
+State PBI is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -7069,11 +7069,11 @@ CheckBox
 pbi_sta_tax_sta
 3
 1
- 
+State PBI is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -7125,25 +7125,25 @@ Numeric
 pbi_uti_for_ds
 3
 1
- 
+Utility PBI available for debt service
  
 Cash Incentives
 0
+1
+1
+1
+1
+1
 0
-1
-1
-1
-1
-0
-Default
+CheckBox
 pbi_uti_tax_fed
 3
 1
- 
+Utility PBI is federal taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1
@@ -7153,11 +7153,11 @@ CheckBox
 pbi_uti_tax_sta
 3
 1
- 
+Utility PBI is state taxable
  
 Cash Incentives
 0
-0
+1
 1
 1
 1

@@ -48,7 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 457361,
+			"construction_financing_cost": 457359,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -95,7 +95,7 @@
 			"om_replacement_cost1": [500.000000],
 			"om_replacement_cost_escal": 0,
 			"system_use_recapitalization": 0,
-			"total_installed_cost": 2.28681e+07
+			"total_installed_cost": 2.28679e+07
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -256,10 +256,10 @@
 			"pbi_uti_term": 10
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 4000.32,
+			"batt_computed_bank_capacity": 4000,
 			"batt_meter_position": 1,
 			"batt_replacement_option": 1,
-			"batt_replacement_schedule": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
+			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 200,
 			"en_batt": 1
 		},
@@ -279,7 +279,7 @@
 		"FuelCell": {
 		},
 		"CapacityPayments": {
-			"cp_battery_nameplate": 4.00032,
+			"cp_battery_nameplate": 4,
 			"cp_capacity_credit_percent": [0.000000],
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,

@@ -1,6 +1,6 @@
 Inverter Part Load Curve
-791
-752
+782
+714
 27
 GroupBox
 
@@ -45,7 +45,7 @@ X
 12
 Y
 3
-669
+645
 Width
 3
 764
@@ -105,7 +105,7 @@ X
 12
 Y
 3
-312
+324
 Width
 3
 764
@@ -141,7 +141,7 @@ Width
 764
 Height
 3
-47
+62
 Tool Tip
 5
 0
@@ -309,7 +309,7 @@ X
 189
 Y
 3
-696
+672
 Width
 3
 153
@@ -339,7 +339,7 @@ X
 27
 Y
 3
-696
+672
 Width
 3
 153
@@ -431,7 +431,7 @@ X
 21
 Y
 3
-333
+342
 Width
 3
 326
@@ -521,7 +521,7 @@ X
 375
 Y
 3
-696
+672
 Width
 3
 386
@@ -1284,13 +1284,13 @@ Name
 object 7
 X
 3
-12
+363
 Y
 3
-630
+273
 Width
 3
-759
+408
 Height
 3
 42
@@ -1299,12 +1299,12 @@ Tool Tip
 0
 Caption
 5
-141
-Note: If you are modeling a system with microinverters or DC power optimizers, see the "Losses" page to adjust the system losses accordingly.
+121
+If you are modeling a system with microinverters or DC power optimizers, see the Losses page to adjust the system losses.
 TextColour
 4
-255
-128
+0
+0
 0
 255
 Bold
@@ -1335,7 +1335,7 @@ X
 357
 Y
 3
-333
+342
 Width
 3
 411
@@ -1633,7 +1633,7 @@ Inverter data filename
  
 PV Inverter (Part Load Curve)
 0
-1
+9
 1
 4
 0

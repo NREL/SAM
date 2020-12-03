@@ -1453,9 +1453,9 @@ SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_replacement_option_nset(SAM
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_replacement_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_batt_replacement_schedule_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "batt_replacement_schedule", arr, length);
+		ssc_data_set_array(ptr, "batt_replacement_schedule_percent", arr, length);
 	});
 }
 
@@ -4266,12 +4266,12 @@ SAM_EXPORT double SAM_Merchantplant_BatterySystem_batt_replacement_option_nget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_BatterySystem_batt_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_BatterySystem_batt_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "batt_replacement_schedule", length);
+	result = ssc_data_get_array(ptr, "batt_replacement_schedule_percent", length);
 	if (!result)
-		make_access_error("SAM_Merchantplant", "batt_replacement_schedule");
+		make_access_error("SAM_Merchantplant", "batt_replacement_schedule_percent");
 	});
 	return result;
 }
@@ -9851,18 +9851,6 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_npv_uti_pbi_income_nget(SAM_table pt
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Outputs_ppa_gen_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "ppa_gen", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "ppa_gen");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Merchantplant_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9956,6 +9944,18 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_pv_cafds_nget(SAM_table ptr, SAM_err
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pv_cafds", &result))
 		make_access_error("SAM_Merchantplant", "pv_cafds");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Outputs_revenue_gen_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "revenue_gen", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "revenue_gen");
 	});
 	return result;
 }

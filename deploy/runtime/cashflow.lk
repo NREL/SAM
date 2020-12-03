@@ -65,11 +65,16 @@ function cf_production()
 { 
 	fin = financing();
 	cfline( 'ENERGY', -1); 
-	cfline( 'cf_energy_net', 0);
-	if ( fin == "Single Owner" || fin == "Merchant Plant" ) 
+	if ( fin == "Single Owner" )
+	{
+		cfline( 'cf_energy_sales', 0);
+		cfline( 'cf_energy_purchases', 0);
+	}
+	if ( fin == "Merchant Plant" ) 
 	{
 		cfline( 'cf_energy_curtailed', 0);
 	}	
+	cfline( 'cf_energy_net', 0);
 	cfline( '' );
 }
 
@@ -118,6 +123,8 @@ function cf_revenue()
 	elseif ( fin == "Single Owner" )
 	{
 		cfline( 'cf_ppa_price' , -2 );
+		cfline( 'cf_energy_sales_value', 0); 
+		cfline( 'cf_energy_purchases_value', 0); 
 		cfline( 'cf_energy_value', 0); 
 		cfline( 'cf_curtailment_value', 0); 
 		cfline( 'cf_capacity_payment', 0); 
@@ -1315,12 +1322,14 @@ function set_annual_values( xl )
 	fin = financing();
 	if ( fin == 'Single Owner' )
 	{
-		xl_set( xl, output('cf_energy_net'), 'AnnualEnergy'); 
+		xl_set( xl, output('cf_energy_sales'), 'EnergyToGrid');
+		xl_set( xl, output('cf_energy_purchases'), 'EnergyFromGrid');
 		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
 		xl_set( xl, output('cf_energy_curtailed'), 'CurtailedEnergy');
-		xl_set( xl, output('cf_curtailment_value'), 'AnnualCurtailmentRevenue'); 
-		xl_set( xl, output('cf_energy_value'), 'AnnualPPARevenue'); 
+		xl_set( xl, output('cf_energy_sales_value'), 'GrossRevenue'); 
+		xl_set( xl, output('cf_energy_purchases_value'), 'RevenueSelfConsumption');
 		xl_set( xl, output('cf_capacity_payment'), 'AnnualCapacityRevenue');
+		xl_set( xl, output('cf_curtailment_value'), 'AnnualCurtailmentRevenue'); 
 	}
 	elseif( fin == 'All Equity Partnership Flip' || fin == 'Leveraged Partnership Flip' || fin == 'Sale Leaseback' )
 	{

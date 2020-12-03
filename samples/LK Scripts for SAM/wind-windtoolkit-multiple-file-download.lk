@@ -1,7 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 /*
 	This script reads latitude and longitude pairs from a CSV file and downloads
-	wind resource files in the .srw format to a folder that you choose.
+	wind resource files in the .srw format to a folder that you choose from the
+	WIND Toolkit Data - SAM Format (SRW) API on developer.gov:
+
+	https://developer.nrel.gov/docs/wind/wind-toolkit/wtk-srw-download/
 	
 	It then runs a simulation for each downloaded wind resource file and writes
 	results to a CSV file with the following outputs for each file: annual
@@ -10,13 +13,14 @@
 	It requires an API key from the NREL Developer Network at:
 	https://developer.nrel.gov
 	
-	Tested in SAM 2020.2.29
+	Tested in SAM 2020.2.29 r3
 	
 */
 ////////////////////////////////////////////////////////////////////////////////
 
 year = '2010'; // available years 2007 - 2012
-key = 'abc123'; // replace with key from NREL Developer Network
+key = ''; // replace with key from NREL Developer Network
+email = ''; // replace with email use to register for key
 
 // read latitude and longitude from CSV file
 csv_file = cwd() + '/wind-windtoolkit-multiple-file-download.csv';
@@ -38,7 +42,9 @@ for(i=0;i<#coordinates;i++)
 	Lon = to_string(coordinates[i][1]);
 	
 	url = 'http://developer.nrel.gov/api/wind/srw_aggregate_extract?api_key=<APIKEY>&year=<YEAR>&lat=<LAT>&lon=<LON>';
+	url = 'https://developer.nrel.gov/api/wind-toolkit/v2/wind/wtk-srw-download?api_key=<APIKEY>&year=<YEAR>&lat=<LAT>&lon=<LON>&email=<EMAIL>';
 	url = replace(url, '<APIKEY>', key);
+	url = replace(url, '<EMAIL>', email);
 	url = replace(url, '<YEAR>', year);
 	url = replace(url, '<LAT>', Lat);
 	url = replace(url, '<LON>', Lon);
@@ -49,11 +55,11 @@ for(i=0;i<#coordinates;i++)
 	// download data to file only if it was not downloaded before
 	if ( file_exists( f ) )
 	{
-		outln( 'Wind resource file for ' + Lat + ', ' + Lon + ', ' + year + ' already exists. Skipping download.'); 
+		outln( 'Wind resource file for lat=' + Lat + ', lon=' + Lon + ', year=' + year + ' already exists. Skipping download.'); 
 	}
 	else
 	{	
-		outln('Downloading data for ' + Lat + ', ' + Lon + ', ' + year + '.');
+		outln('Downloading data for lat=' + Lat + ', lon=' + Lon + ', year=' + year + '.');
 		ok = curl( url, {'file' =  f } );
 		if ( !ok )
 		{

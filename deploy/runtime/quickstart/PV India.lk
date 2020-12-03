@@ -54,7 +54,7 @@ exitIf( !msgbox("Welcome to the PV for India Wizard!\n" +
 /* For now, load updated file from Sara */
 /* copy to user folder and load */
 template_file = runtimedir() + "quickstart/PV_for_India.sam";
-user_file = curDir + "/PV__for_India.sam";
+user_file = curDir + "/PV_for_India.sam";
 copy_file(template_file, user_file, true);
 exitIf (!open_project(user_file));
 	
