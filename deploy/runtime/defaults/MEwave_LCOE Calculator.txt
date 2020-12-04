@@ -1,5 +1,5 @@
 1
-685
+696
 accumulators_cost
 1
 1
@@ -1451,6 +1451,12 @@ hydraulic_reservoir_cost
 1
 1
 1
+1
+0
+in_location
+1
+0
+in_time_frame
 1
 0
 incentives_cost
@@ -3922,6 +3928,9 @@ unscheduled_maintenance_cost_total_check
 1
 1
 0
+use_specific_wave_file
+1
+0
 use_specific_wf_wave
 1
 1
@@ -4056,6 +4065,12 @@ wave_device_name
 4
 3
 RM3
+wave_download
+1
+0
+wave_library_folder_list
+1
+0
 wave_power_end_height
 1
 1
@@ -4119,6 +4134,9 @@ wave_resource_end_period
 1
 1
 14.5
+wave_resource_file
+1
+0
 wave_resource_filename
 1
 4
@@ -4151,18 +4169,24 @@ wave_resource_matrix
 9.25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 9.75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 
+wave_resource_model_choice
+1
+1
+1
+1
+0
 wave_resource_start_height
 1
 1
 1
 1
-0.25
+0
 wave_resource_start_period
 1
 1
 1
 1
-7.5
+0
 weather_forecasting_cost
 1
 1
@@ -4174,4 +4198,4 @@ wharfage_fees_cost
 1
 1
 1
-7.56598e-307
+0
