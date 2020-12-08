@@ -1,29 +1,47 @@
-/*@
-<p>This macro downloads solar resource files from the NREL National Solar Radiation
-Database <a href="https://developer.nrel.gov/docs/solar/nsrdb/puerto_rico_data_download/">Puerto Rico SHR</a> 
-data and adds them to the solar resource library on the Location and Resource
-input page.</p>
-<p>
-<ol>
-<li>Type values for <b>latitude</b> and <b>longitude</b> value at right. If you 
+/*
+
+This script downloads solar resource files from the NREL National Solar Radiation
+Database using the Puerto Rico SHR API and puts them in the SAM Downloaded 
+Weather Files folder on your computer.
+
+For information about the API, see:
+
+https://developer.nrel.gov/docs/solar/nsrdb/puerto-rico-download/
+
+This script requires an NREL Developer API key. Register for a free key at:
+
+https://developer.nrel.gov
+
+To use the script:
+
+1. replace <API_KEY> and <EMAIL> below with your NREL Developer API key and the
+email address you used to request the key.
+
+2. Set the values of inputs.lat and inputs.lon. If you 
 do not know the latitude and longitude of your location, you can use an internet 
-search to find it.</li>
-<li>Choose a <b>time step</b>. For most analyses, choose 60-minute or 30-minute 
-data. 5-minute data will take longer to download.</li>
-<li>Choose a <b>year</b>. To download multiple files for P50/P90 simulations, 
-choose "all" (downloading multiple files may take a while).</li>
-<li>Click <b>Run macro</b> above.</b>  
-</ol>
-</p>
-<p>Note that typical year (TMY) data is not available from this dataset.</p>
-@*/
+search to find it.
+
+3. Set inputs.interval to the data time step you want to download. For most analyses, 
+choose 60-minute or 30-minute data. 5-minute data will take longer to download.
+
+4. Set inputs.names to the year for the weather file. To download multiple files 
+for P50/P90 simulations, set the value to "all" (downloading multiple files may 
+take a while). See the API documentation (link above) for a list of available years.
+
+5. Run the macro to download the file(s).
+
+Note that typical year (TMY) data is not available from this dataset.
+
+Last tested in SAM 2020.11.29.
+
+*/
 
 // Set up required inputs
 inputs = null;
 inputs.lat = 18.5; // Latitude in Puerto Rico
 inputs.lon = -66.1; // Longitude in Puerto Rico
 inputs.interval = 60; // Time interval for data: 60, 30, or 5
-inputs.names = "1998"; // Years. Multiple years can be downloaded with a comma seperated list, or use "all" for all available years
+inputs.names = "all"; // Years. Multiple years can be downloaded with a comma seperated list, or use "all" for all hourly data for all available years
 inputs.api_key="<API_KEY>"; // Your API key for developer.nrel.gov 
 inputs.email="<EMAIL>"; // The email address associated with your API key
 
@@ -64,10 +82,7 @@ set_url = define ( format, inputs )
 	url += '&attributes='+attributes;
 	url +=  '&wkt=POINT(' + to_string(lon) + ' ' + to_string(lat) + ')';
 
-	outln(url);
-
 	return (url);
-
 };
 
 fname = 'nsrdb_puerto_rico_' + inputs.lat + '_' + inputs.lon + '_' + inputs.interval + '_' + inputs.names;
@@ -83,6 +98,7 @@ if ( inputs.names != 'all' )
 	if ( json_var.errors == [] )
 	{
 		request = set_url( 'csv', inputs );
+		outln( request );
 		ok = curl( request , { 'file' = f } );
 		if ( !ok ) 
 		{	 
@@ -122,7 +138,8 @@ else
 	{
 		f = path + '/' + 'nsrdb_puerto_rico_' + inputs.lat + '_' + inputs.lon + '_' + inputs.interval + '_' + available_years[i] + '.csv';
 		outln('Downloading ' + f );
-		request = set_url ( 'csv', {'lat'=inputs.lat, 'lon'=inputs.lon, 'interval'=60, 'names' = available_years[i]});
+		request = set_url ( 'csv', {'lat'=inputs.lat, 'lon'=inputs.lon,  'email'=inputs.email, 'api_key'=inputs.api_key, 'interval'=60, 'names' = available_years[i]});
+		outln( request );
 		ok = curl( request , { 'file' = f } );
 		if ( !ok ) { outln('  Download failed.');}
 	}
