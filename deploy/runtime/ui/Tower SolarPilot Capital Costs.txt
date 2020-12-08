@@ -1,6 +1,6 @@
 Tower SolarPilot Capital Costs
-794
-871
+828
+870
 74
 GroupBox
 
@@ -12,13 +12,13 @@ Name
 GroupBox1
 X
 3
-6
+9
 Y
 3
 3
 Width
 3
-780
+812
 Height
 3
 566
@@ -42,13 +42,13 @@ Name
 GroupBox211
 X
 3
-6
+9
 Y
 3
 573
 Width
 3
-780
+812
 Height
 3
 200
@@ -72,13 +72,13 @@ Name
 GroupBox31
 X
 3
-6
+9
 Y
 3
 777
 Width
 3
-780
+812
 Height
 3
 89
@@ -246,7 +246,7 @@ Name
 Label211
 X
 3
-186
+188
 Y
 3
 621
@@ -294,7 +294,7 @@ Name
 Label212
 X
 3
-405
+407
 Y
 3
 621
@@ -342,7 +342,7 @@ Name
 Label311
 X
 3
-513
+515
 Y
 3
 621
@@ -764,7 +764,7 @@ Name
 csp.pt.cost.epc.per_acre
 X
 3
-183
+186
 Y
 3
 645
@@ -1207,7 +1207,7 @@ Y
 825
 Width
 3
-133
+136
 Height
 3
 21
@@ -3680,7 +3680,7 @@ Y
 801
 Width
 3
-133
+136
 Height
 3
 21
@@ -4831,7 +4831,7 @@ Tower SolarPilot Capital Costs
 0
 Default
 
-5754
+5831
 // ui only
 equations{ 'csp.pt.cost.heliostats_m2' } = define() {
 	area = ${A_sf_UI};
@@ -4841,6 +4841,11 @@ equations{ 'csp.pt.cost.heliostats_m2' } = define() {
 // ui only
 equations{ 'csp.pt.cost.site_improvements_m2' } = define() {
 	return ${A_sf_UI};
+};
+
+// ui only
+equations{'ui_tower_height'} = define() {
+	return ${h_tower};
 };
 
 // ui only
