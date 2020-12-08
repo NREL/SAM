@@ -18,17 +18,18 @@ choose "all" (downloading multiple files may take a while).</li>
 <p>Note that typical year (TMY) data is not available from this dataset.</p>
 @*/
 
-// Macro inputs
-//@ name=lat;type=text;label=Latitude;value=18.5
-//@ name=lon;type=text;label=Longitude;value=-66.1 
-//@ name=interval;type=combo;label=Time step;value=5,30,60;sel=2
-//@ name=names;type=combo;label=Choose a year;value=1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,all;sel=0
+// Set up required inputs
+inputs = null;
+inputs.lat = 18.5; // Latitude in Puerto Rico
+inputs.lon = -66.1; // Longitude in Puerto Rico
+inputs.interval = 60; // Time interval for data: 60, 30, or 5
+inputs.names = "1998"; // Years. Multiple years can be downloaded with a comma seperated list, or use "all" for all available years
+inputs.api_key="<API_KEY>"; // Your API key for developer.nrel.gov 
+inputs.email="<EMAIL>"; // The email address associated with your API key
 
-// Macro must be run from a case
-if ( typeof(macro) == 'unknown' ) {
-	msgbox('This macro must be run from within a case.');
-	exit;
-}
+// URLs for the Puerto Rico downloads
+nsrdb_pr_query_csv="https://developer.nrel.gov/api/nsrdb/v2/solar/puerto-rico-download.csv?";
+nsrdb_pr_query_json="https://developer.nrel.gov/api/nsrdb/v2/solar/puerto-rico-download.json?";
 
 // folder to store weather files (script creates subfolder for each location).
 path = wfdownloaddir();
@@ -50,34 +51,38 @@ set_url = define ( format, inputs )
 
 	// interval
 	// 5, 30, or 60
-	interval = macro.interval;
+	interval = inputs.interval;
 
 	// request url
-	if ( format == 'csv' ) { url = webapi('nsrdb_pr_query_csv'); }
-	if ( format == 'json' ) { url = webapi('nsrdb_pr_query_json'); }
+	if ( format == 'csv' ) { url = nsrdb_pr_query_csv; }
+	if ( format == 'json' ) { url = nsrdb_pr_query_json; }
 	
+	url += 'email='+inputs.email;
+	url += '&api_key='+inputs.api_key;
 	url += '&names='+names;
 	url += '&interval='+interval;
 	url += '&attributes='+attributes;
 	url +=  '&wkt=POINT(' + to_string(lon) + ' ' + to_string(lat) + ')';
 
+	outln(url);
+
 	return (url);
 
 };
 
-fname = 'nsrdb_puerto_rico_' + macro.lat + '_' + macro.lon + '_' + macro.interval + '_' + macro.names;
+fname = 'nsrdb_puerto_rico_' + inputs.lat + '_' + inputs.lon + '_' + inputs.interval + '_' + inputs.names;
 f = path + '/' + fname + '.csv';
 outln( 'Downloading ' + f );
 
-if ( macro.names != 'all' )
+if ( inputs.names != 'all' )
 {
 	// test request
-	json_str = curl( set_url( 'json', macro ) );
+	json_str = curl( set_url( 'json', inputs ) );
 	json_var = json_read( json_str );
 	
 	if ( json_var.errors == [] )
 	{
-		request = set_url( 'csv', macro );
+		request = set_url( 'csv', inputs );
 		ok = curl( request , { 'file' = f } );
 		if ( !ok ) 
 		{	 
@@ -92,7 +97,7 @@ if ( macro.names != 'all' )
 	}
 	else
 	{
-		outln('Unable to download file for Latitude = ' + macro.lat + ', Longitude = ' + macro.lon );
+		outln('Unable to download file for Latitude = ' + inputs.lat + ', Longitude = ' + inputs.lon );
 		if ( strpos( json_var.errors, 'wkt' ) > -1 )
 		{
 			outln( 'That location does not appear to be in the area covered by the NSRDB Puerto Rico database.');
@@ -103,21 +108,21 @@ if ( macro.names != 'all' )
 else
 {
 	outln('Downloading files for all available years.');
-	path += '/' + 'nsrdb_puerto_rico_' + macro.lat + '_' + macro.lon;
+	path += '/' + 'nsrdb_puerto_rico_' + inputs.lat + '_' + inputs.lon;
 	ok = true;
 	if ( !dir_exists( path ) ) { ok = mkdir( path , false ); }
 	if ( !ok )
 	{
-		outln('Failed to create folder for multiple files. Quitting macro.');
+		outln('Failed to create folder for multiple files. Quitting script.');
 		outln( path );
 		exit;
 	}
 	available_years = [1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
 	for( i=0; i<#available_years; i++ )
 	{
-		f = path + '/' + 'nsrdb_puerto_rico_' + macro.lat + '_' + macro.lon + '_' + macro.interval + '_' + available_years[i] + '.csv';
+		f = path + '/' + 'nsrdb_puerto_rico_' + inputs.lat + '_' + inputs.lon + '_' + inputs.interval + '_' + available_years[i] + '.csv';
 		outln('Downloading ' + f );
-		request = set_url ( 'csv', {'lat'=macro.lat, 'lon'=macro.lon, 'interval'=60, 'names' = available_years[i]});
+		request = set_url ( 'csv', {'lat'=inputs.lat, 'lon'=inputs.lon, 'interval'=60, 'names' = available_years[i]});
 		ok = curl( request , { 'file' = f } );
 		if ( !ok ) { outln('  Download failed.');}
 	}
