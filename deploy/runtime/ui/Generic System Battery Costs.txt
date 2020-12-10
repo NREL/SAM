@@ -2973,7 +2973,7 @@ battery_per_kW
 3
 1
 Battery cost per kW
-$/kW dc
+$/kW DC
 Generic Battery Capital Costs
 0
 2
@@ -2987,7 +2987,7 @@ battery_per_kWh
 3
 1
 Battery cost per capacity
-$/kWh dc
+$/kWh DC
 Generic Battery Capital Costs
 0
 2
@@ -3356,7 +3356,7 @@ equations{ 'battery_energy' } = define() {
 	return ${batt_computed_bank_capacity}; };
 
 equations{ 'battery_power' } = define() {
-	return ${batt_power_discharge_max_kwac};};
+	return ${batt_power_discharge_max_kwdc};};
 
 equations{ 'battery_total' } = define() {
 	return ${battery_energy}*${battery_per_kWh} + ${battery_power}*${battery_per_kW} ;
