@@ -1,5 +1,5 @@
 1
-696
+698
 accumulators_cost
 1
 1
@@ -3928,6 +3928,9 @@ unscheduled_maintenance_cost_total_check
 1
 1
 0
+use_specific_ts_wf_wave
+1
+0
 use_specific_wave_file
 1
 0
@@ -4185,6 +4188,9 @@ wave_resource_start_period
 1
 1
 1
+1
+0
+wave_resource_ts_filename
 1
 0
 weather_forecasting_cost

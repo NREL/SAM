@@ -531,8 +531,8 @@ TextEntry
 11
 Name
 5
-24
-user_specified_wf_wave18
+22
+user_specified_wf_wave
 X
 3
 21
@@ -600,7 +600,33 @@ TabOrder
 3
 10
 
+2
+use_specific_ts_wf_wave
+3
 0
+ 
+ 
+ 
+0
+0
+1
+0
+Default
+wave_resource_ts_filename
+3
+0
+Wave resource file name
+ 
+ME Wave Resource 
+0
+9
+1
+0
+Default
 
-0
+165
+/*equations{'wave_resource_ts_filename'} = define() {
+	if(${use_specific_ts_wf_wave}) return (${user_specified_wave_resource_ts});
+	else return ${file_name_ts};
+};*/
 0

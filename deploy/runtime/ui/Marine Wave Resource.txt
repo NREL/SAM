@@ -424,10 +424,10 @@ Name
 location
 X
 3
-15
+18
 Y
 3
-54
+57
 Width
 3
 1223
@@ -808,8 +808,8 @@ TextEntry
 11
 Name
 5
-24
-user_specified_wf_wave18
+22
+user_specified_wf_wave
 X
 3
 21
