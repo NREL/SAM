@@ -1,0 +1,147 @@
+/*
+
+This script downloads solar resource files from the NREL National Solar Radiation
+Database using the Puerto Rico SHR API and puts them in the SAM Downloaded 
+Weather Files folder on your computer.
+
+For information about the API, see:
+
+https://developer.nrel.gov/docs/solar/nsrdb/puerto-rico-download/
+
+This script requires an NREL Developer API key. Register for a free key at:
+
+https://developer.nrel.gov
+
+To use the script:
+
+1. replace <API_KEY> and <EMAIL> below with your NREL Developer API key and the
+email address you used to request the key.
+
+2. Set the values of inputs.lat and inputs.lon. If you 
+do not know the latitude and longitude of your location, you can use an internet 
+search to find it.
+
+3. Set inputs.interval to the data time step you want to download. For most analyses, 
+choose 60-minute or 30-minute data. 5-minute data will take longer to download.
+
+4. Set inputs.names to the year for the weather file. To download multiple files 
+for P50/P90 simulations, set the value to "all" (downloading multiple files may 
+take a while). See the API documentation (link above) for a list of available years.
+
+5. Run the macro to download the file(s).
+
+Note that typical year (TMY) data is not available from this dataset.
+
+Last tested in SAM 2020.11.29.
+
+*/
+
+// Set up required inputs
+inputs = null;
+inputs.lat = 18.5; // Latitude in Puerto Rico
+inputs.lon = -66.1; // Longitude in Puerto Rico
+inputs.interval = 60; // Time interval for data: 60, 30, or 5
+inputs.names = "all"; // Years. Multiple years can be downloaded with a comma seperated list, or use "all" for all hourly data for all available years
+inputs.api_key="<API_KEY>"; // Your API key for developer.nrel.gov 
+inputs.email="<EMAIL>"; // The email address associated with your API key
+
+// URLs for the Puerto Rico downloads
+nsrdb_pr_query_csv="https://developer.nrel.gov/api/nsrdb/v2/solar/puerto-rico-download.csv?";
+nsrdb_pr_query_json="https://developer.nrel.gov/api/nsrdb/v2/solar/puerto-rico-download.json?";
+
+// folder to store weather files (script creates subfolder for each location).
+path = wfdownloaddir();
+
+// Set these parameters
+set_url = define ( format, inputs )
+{
+	// latitude and longitude for a location in Puerto Rico
+	lat = inputs.lat;
+	lon = inputs.lon;
+
+	// names
+	// 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+	names = inputs.names;
+
+	// attributes (not required, but request only data SAM uses for simulations)
+	// air_temperature, clearsky_dhi, clearsky_dni, clearsky_ghi, dhi, dni, ghi, solar_zenith_angle, surface_albedo, surface_pressure, total_precipitable_water, wind_speed
+	attributes = 'air_temperature,dhi,dni,ghi,surface_albedo,surface_pressure,wind_speed';
+
+	// interval
+	// 5, 30, or 60
+	interval = inputs.interval;
+
+	// request url
+	if ( format == 'csv' ) { url = nsrdb_pr_query_csv; }
+	if ( format == 'json' ) { url = nsrdb_pr_query_json; }
+	
+	url += 'email='+inputs.email;
+	url += '&api_key='+inputs.api_key;
+	url += '&names='+names;
+	url += '&interval='+interval;
+	url += '&attributes='+attributes;
+	url +=  '&wkt=POINT(' + to_string(lon) + ' ' + to_string(lat) + ')';
+
+	return (url);
+};
+
+fname = 'nsrdb_puerto_rico_' + inputs.lat + '_' + inputs.lon + '_' + inputs.interval + '_' + inputs.names;
+f = path + '/' + fname + '.csv';
+outln( 'Downloading ' + f );
+
+if ( inputs.names != 'all' )
+{
+	// test request
+	json_str = curl( set_url( 'json', inputs ) );
+	json_var = json_read( json_str );
+	
+	if ( json_var.errors == [] )
+	{
+		request = set_url( 'csv', inputs );
+		outln( request );
+		ok = curl( request , { 'file' = f } );
+		if ( !ok ) 
+		{	 
+			outln( 'Download failed. Request URL:\n' + request);
+		}
+		else
+		{
+			outln( 'Done.' );
+			show_page( 'Location and Resource' );
+			set( 'solar_resource', fname);
+		}
+	}
+	else
+	{
+		outln('Unable to download file for Latitude = ' + inputs.lat + ', Longitude = ' + inputs.lon );
+		if ( strpos( json_var.errors, 'wkt' ) > -1 )
+		{
+			outln( 'That location does not appear to be in the area covered by the NSRDB Puerto Rico database.');
+		}
+		outln( json_var.errors );
+	}
+}
+else
+{
+	outln('Downloading files for all available years.');
+	path += '/' + 'nsrdb_puerto_rico_' + inputs.lat + '_' + inputs.lon;
+	ok = true;
+	if ( !dir_exists( path ) ) { ok = mkdir( path , false ); }
+	if ( !ok )
+	{
+		outln('Failed to create folder for multiple files. Quitting script.');
+		outln( path );
+		exit;
+	}
+	available_years = [1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
+	for( i=0; i<#available_years; i++ )
+	{
+		f = path + '/' + 'nsrdb_puerto_rico_' + inputs.lat + '_' + inputs.lon + '_' + inputs.interval + '_' + available_years[i] + '.csv';
+		outln('Downloading ' + f );
+		request = set_url ( 'csv', {'lat'=inputs.lat, 'lon'=inputs.lon,  'email'=inputs.email, 'api_key'=inputs.api_key, 'interval'=60, 'names' = available_years[i]});
+		outln( request );
+		ok = curl( request , { 'file' = f } );
+		if ( !ok ) { outln('  Download failed.');}
+	}
+	outln('Done. To run P50/P90 simulations, click "P50 / P90" and select "' + path + '" for the weather file folder.');
+}
