@@ -179,8 +179,8 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	// this information is consistent with the variable definitions in the wfreader module
 	wfvec vars[] = {
 		{ "beam", "Beam irradiance - DNI", "W/m2" },
-		{ "diffuse","Diffuse irradiance - DHI", "W/m2" },
-		{ "global", "Global irradiance - GHI", "W/m2" },
+		{ "diff","Diffuse irradiance - DHI", "W/m2" },
+		{ "glob", "Global irradiance - GHI", "W/m2" },
 		{ "poa", "Plane of array irradiance -POA", "W/m2" },
 		{ "wspd", "Wind speed", "m/s" },
 		{ "wdir", "Wind direction", "deg" },
@@ -589,7 +589,7 @@ static void fcall_metric_row(lk::invoke_t& cxt)
 				int deci = wxAtoi(decis[i]);
 				md.deci = deci;
 			}
-					
+
 			if ( i < thouseps.GetCount()) {
 				wxString mm = thouseps[i];
 				mm.MakeLower();
@@ -2925,7 +2925,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		// URLs
 		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
 		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);
-		
+
 		// metering option
 		// "Net Metering", "Net Billing Instantaneous", "Net Billing Hourly", or "Buy All Sell All"
 		if (rate.DgRules == "Net Metering")
@@ -2941,7 +2941,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
             cxt.result().hash_item("metering_option").assign(0.0);
             rate_notes.append(wxString::Format("Metering option not provided with rate data.\n"));
         }
-		
+
 		// fixed charges
 		//  "$/day", "$/month" or "$/year" TO DO handle $/day and $/year
         double fixed_charges = rate.FixedChargeFirstMeter + rate.FixedChargeAddlMeter;

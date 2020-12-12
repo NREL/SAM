@@ -2624,7 +2624,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-32190
+32185
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2917,9 +2917,9 @@ function update_info( ctxt )
 		result = ssc_exec( obj, 'wfreader' );
 		if ( 0 == result )
 		{
-			value( 'annual_global', ssc_var(obj, 'annual_global') );
+			value( 'annual_global', ssc_var(obj, 'annual_glob') );
 			value( 'annual_beam', ssc_var(obj, 'annual_beam') );
-			value( 'annual_diffuse', ssc_var(obj, 'annual_diffuse') );
+			value( 'annual_diffuse', ssc_var(obj, 'annual_diff') );
 			value( 'annual_tdry', ssc_var(obj, 'annual_tdry') );
 			value( 'annual_wspd', ssc_var(obj, 'annual_wspd') );
 			value( 'annual_snow', ssc_var(obj, 'annual_snow') );

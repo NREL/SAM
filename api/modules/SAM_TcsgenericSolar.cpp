@@ -1373,12 +1373,12 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_gen_aget(SAM_table ptr, int* leng
 
 
 
-SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_global_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_glob_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "global", length);
+	result = ssc_data_get_array(ptr, "glob", length);
 	if (!result)
-		make_access_error("SAM_TcsgenericSolar", "global");
+		make_access_error("SAM_TcsgenericSolar", "glob");
 	});
 	return result;
 }

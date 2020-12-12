@@ -733,7 +733,7 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_global_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_glob_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err);
 

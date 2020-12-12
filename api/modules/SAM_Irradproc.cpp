@@ -55,9 +55,9 @@ SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_day_aset(SAM_table ptr, double
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diffuse_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diff_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "diffuse", arr, length);
+		ssc_data_set_array(ptr, "diff", arr, length);
 	});
 }
 
@@ -73,9 +73,9 @@ SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_gcr_nset(SAM_table ptr, double
 	});
 }
 
-SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_global_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_glob_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "global", arr, length);
+		ssc_data_set_array(ptr, "glob", arr, length);
 	});
 }
 
@@ -232,12 +232,12 @@ SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_day_aget(SAM_table ptr, int
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diffuse_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "diffuse", length);
+	result = ssc_data_get_array(ptr, "diff", length);
 	if (!result)
-		make_access_error("SAM_Irradproc", "diffuse");
+		make_access_error("SAM_Irradproc", "diff");
 	});
 	return result;
 }
@@ -266,12 +266,12 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_gcr_nget(SAM_table ptr, SAM_
 
 
 
-SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_global_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_glob_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "global", length);
+	result = ssc_data_get_array(ptr, "glob", length);
 	if (!result)
-		make_access_error("SAM_Irradproc", "global");
+		make_access_error("SAM_Irradproc", "glob");
 	});
 	return result;
 }

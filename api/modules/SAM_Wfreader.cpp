@@ -88,22 +88,22 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_beam_nget(SAM_table ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_diffuse_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_diff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_diffuse", &result))
-		make_access_error("SAM_Wfreader", "annual_diffuse");
+	if (!ssc_data_get_number(ptr, "annual_diff", &result))
+		make_access_error("SAM_Wfreader", "annual_diff");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_global_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_glob_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_global", &result))
-		make_access_error("SAM_Wfreader", "annual_global");
+	if (!ssc_data_get_number(ptr, "annual_glob", &result))
+		make_access_error("SAM_Wfreader", "annual_glob");
 	});
 	return result;
 }
@@ -203,12 +203,12 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_description_sget(SAM_table ptr, SAM_
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_diffuse_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_diff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "diffuse", length);
+	result = ssc_data_get_array(ptr, "diff", length);
 	if (!result)
-		make_access_error("SAM_Wfreader", "diffuse");
+		make_access_error("SAM_Wfreader", "diff");
 	});
 	return result;
 }
@@ -238,12 +238,12 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_format_sget(SAM_table ptr, SAM_error
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_global_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_glob_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "global", length);
+	result = ssc_data_get_array(ptr, "glob", length);
 	if (!result)
-		make_access_error("SAM_Wfreader", "global");
+		make_access_error("SAM_Wfreader", "glob");
 	});
 	return result;
 }
