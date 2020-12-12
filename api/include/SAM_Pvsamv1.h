@@ -1634,7 +1634,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_aisc_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_aisc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_area: Module area [m2]
@@ -1642,7 +1642,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_area_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_area_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_bifacial_ground_clearance_height: Module ground clearance height [m]
@@ -1650,7 +1650,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_bifacial_transmission_factor: Bifacial transmission factor [0-1]
@@ -1658,7 +1658,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_bifaciality: Bifaciality factor [%]
@@ -1666,7 +1666,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifaciality_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifaciality_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_bvoc: Open circuit voltage temperature coefficient [V/C]
@@ -1674,7 +1674,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bvoc_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bvoc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_celltech: Solar cell technology type
@@ -1682,7 +1682,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=5
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_celltech_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_celltech_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_gpmp: Maximum power point temperature coefficient [%/C]
@@ -1690,7 +1690,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_gpmp_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_gpmp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_imp: Imp [A]
@@ -1698,7 +1698,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_imp_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_imp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_is_bifacial: Modules are bifacial [0/1]
@@ -1706,7 +1706,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_isc: Isc [A]
@@ -1714,7 +1714,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_isc_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_isc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_mounting: Array mounting height
@@ -1722,7 +1722,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_mounting_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_mounting_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_nser: Nseries
@@ -1730,7 +1730,7 @@ extern "C"
 	 * constraints: INTEGER,POSITIVE
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_nser_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_nser_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_standoff: Standoff mode
@@ -1738,7 +1738,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=6
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_standoff_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_standoff_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_tnoct: Nominal operating cell temperature [C]
@@ -1746,7 +1746,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_tnoct_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_tnoct_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_transient_thermal_model_unit_mass: Module unit mass [kg/m^2]
@@ -1754,7 +1754,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_transient_thermal_model_unit_mass_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_transient_thermal_model_unit_mass_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_vmp: Maximum power point voltage [V]
@@ -1762,7 +1762,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_vmp_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_vmp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_voc: Voc [V]
@@ -1770,7 +1770,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_voc_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_voc_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -4946,41 +4946,41 @@ extern "C"
 	 * CECPerformanceModelWithUserEnteredSpecifications Getters
 	 */
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_aisc_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_aisc_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_area_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_area_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_ground_clearance_height_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_ground_clearance_height_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_transmission_factor_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_transmission_factor_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifaciality_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifaciality_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bvoc_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bvoc_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_celltech_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_celltech_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_gpmp_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_gpmp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_imp_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_imp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_is_bifacial_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_is_bifacial_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_isc_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_isc_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_mounting_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_mounting_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_nser_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_nser_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_standoff_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_standoff_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_tnoct_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_tnoct_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_transient_thermal_model_unit_mass_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_transient_thermal_model_unit_mass_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_vmp_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_vmp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_voc_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_voc_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -5731,18 +5731,6 @@ extern "C"
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Adj_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Il_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Io_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Rs_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Rsh_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_a_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_ac_loss_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_transmission_loss_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -6140,6 +6128,18 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_shadedb_subarray3_shade_frac_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_shadedb_subarray4_shade_frac_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Adj_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Il_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Io_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Rs_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Rsh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_a_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_snowdepth_aget(SAM_table ptr, int* length, SAM_error *err);
 

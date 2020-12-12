@@ -1028,7 +1028,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
         fx_file << "\tdef assign(self): \n"
                    "\t\tpass\n"
                    "\n"
-                   "\tdef export(self) -> Dict[Dict]:\n"
+                   "\tdef export(self) -> dict:\n"
                    "\t\tpass\n"
                    "\n"
                    "\tdef __init__(self, *args, **kwargs): \n"
