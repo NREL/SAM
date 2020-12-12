@@ -60,10 +60,10 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
                    "\t//\n"
                    "\t// " << module_symbol << " parameters\n"
                    "\t//\n\n";
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_symbol = it->first;
+        for (auto & vardef : vardefs) {
+            std::string var_symbol = vardef.first;
 
-            var_def vd = it->second;
+            var_def vd = vardef.second;
             std::string var_name = vd.name;
 
             fx_file << "\t/**\n";
@@ -105,8 +105,8 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
             }
         }
     }
-    for (size_t i = 0; i < root->vardefs_order.size(); i++) {
-        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+    for (auto & i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
         std::map<std::string, var_def> vardefs = mm->second;
         std::string module_symbol = format_as_symbol(mm->first);
 
@@ -117,10 +117,10 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
         fx_file << "\n\t/**\n";
         fx_file << "\t * " << module_symbol << " Getters\n\t */\n\n";
 
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it){
-            std::string var_symbol = it->first;
+        for (auto & vardef : vardefs){
+            std::string var_symbol = vardef.first;
 
-            var_def vd = it->second;
+            var_def vd = vardef.second;
             std::string var_name = vd.name;
 
             if (vd.type == "number"){
@@ -208,10 +208,10 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
         if (mm->first == "AdjustmentFactors")
             continue;
 
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_symbol = it->first;
+        for (auto & vardef : vardefs) {
+            std::string var_symbol = vardef.first;
 
-            var_def vd = it->second;
+            var_def vd = vardef.second;
             std::string var_name = vd.name;
 
             fx_file << "SAM_EXPORT void SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol;
@@ -247,18 +247,18 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
     }
 
     // getters
-    for (size_t i = 0; i < root->vardefs_order.size(); i++) {
-        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+    for (auto & i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
         std::map<std::string, var_def> vardefs = mm->second;
         std::string module_symbol = format_as_symbol(mm->first);
 
         if (mm->first == "AdjustmentFactors")
             continue;
 
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it){
-            std::string var_symbol = it->first;
+        for (auto & vardef : vardefs){
+            std::string var_symbol = vardef.first;
 
-            var_def vd = it->second;
+            var_def vd = vardef.second;
             std::string var_name = vd.name;
 
             if (vd.type == "number"){

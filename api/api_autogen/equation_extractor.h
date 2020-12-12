@@ -36,7 +36,7 @@ public:
     }
 
 
-    bool parse_and_export_eqns(std::string eqn_script);
+    bool parse_and_export_eqns(const std::string& eqn_script);
 
     /// Returns the input and outputs of each equation
     void export_to_equation_info();

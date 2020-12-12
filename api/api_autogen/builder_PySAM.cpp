@@ -73,13 +73,13 @@ std::string get_params_str(const std::string &doc){
     size_t startpos = doc.find("Input:");
     startpos = doc.find("\\n", startpos);
     size_t endpos = doc.find("Output:");
-    startpos = doc.find("'", startpos+2);
+    startpos = doc.find('\'', startpos+2);
     while (startpos < endpos){
         if (params.length() > 0)
             params += ", ";
-        size_t word_end = doc.find("'", startpos+1);
+        size_t word_end = doc.find('\'', startpos+1);
         params += doc.substr(startpos+1, word_end - startpos - 1);
-        startpos = doc.find("'", doc.find("\\n", word_end));
+        startpos = doc.find('\'', doc.find("\\n", word_end));
     }
     return params;
 }
