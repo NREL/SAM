@@ -607,9 +607,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     // define fx to set or get a ssc variable by name
     fx_file << "static PyObject *\n"
             << tech_symbol << "_value(" << object_type << " *self, PyObject *args)\n"
-                              "{\n"
-                              "\treturn " << cmod_type << "_value(self, args);\n"
-                              "}\n\n";
+                              "{\n\treturn " << cmod_type << "_value(self, args);\n}\n\n";
+
+    fx_file << "static PyObject *\n"
+            << tech_symbol << "_unassign(" << object_type << " *self, PyObject *args)\n"
+                              "{\n\treturn " << cmod_type << "_unassign(self, args);\n}\n\n";
 
     fx_file << "static PyMethodDef " << tech_symbol << "_methods[] = {\n";
 
@@ -618,7 +620,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                    "\t\t\t\tPyDoc_STR(\"setup() -> None\\n Setup parameters in simulation\")},\n";
     }
 
-    fx_file << "\t\t{\"execute\",            (PyCFunction)" << tech_symbol << "_execute,  METH_VARARGS,\n"
+    fx_file << "\t\t{\"execute\",           (PyCFunction)" << tech_symbol << "_execute,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"execute(int verbosity) -> None\\n Execute simulation with verbosity level 0 (default) or 1\")},\n"
                "\t\t{\"assign\",            (PyCFunction)" << tech_symbol << "_assign,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from nested dictionary, except for Outputs\\n\\n"
@@ -627,7 +629,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t{\"export\",            (PyCFunction)" << tech_symbol << "_export,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into nested dictionary\")},\n"
                "\t\t{\"value\",             (PyCFunction)" << tech_symbol << "_value, METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"value(name, optional value) -> Union[None, float, dict, sequence, str]\\n Get or set by name a value in any of the variable groups.\")},\n";;
+               "\t\t\t\tPyDoc_STR(\"value(name, optional value) -> Union[None, float, dict, sequence, str]\\n Get or set by name a value in any of the variable groups.\")},\n"
+               "\t\t{\"unassign\",          (PyCFunction)" << tech_symbol << "_unassign, METH_VARARGS,\n"
+               "\t\t\t\tPyDoc_STR(\"unassign(name) -> None\\n Unassign a value in any of the variable groups.\")},\n";
 
     // add ssc equations as methods under the cmod class
     auto cmod_it = root->m_eqn_entries.find(cmod_symbol);
@@ -1058,6 +1062,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\tpass\n"
                "\n"
                "\tdef value(self, name, value=None):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef unassign(self, name):\n"
                "\t\tpass\n"
                "\n"
                "\tdef execute(self, int_verbosity):\n"
