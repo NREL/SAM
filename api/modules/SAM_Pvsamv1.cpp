@@ -11,13 +11,8 @@
 #include "SAM_Pvsamv1.h"
 
 SAM_EXPORT int SAM_Pvsamv1_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("pvsamv1", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("pvsamv1", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Pvsamv1_SolarResource_albedo_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{

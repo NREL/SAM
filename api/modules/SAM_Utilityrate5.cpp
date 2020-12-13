@@ -11,13 +11,8 @@
 #include "SAM_Utilityrate5.h"
 
 SAM_EXPORT int SAM_Utilityrate5_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("utilityrate5", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("utilityrate5", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_TOU_demand_single_peak_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

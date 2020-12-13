@@ -540,10 +540,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\tPySAM_has_error(error);\n\t}\n";
 
     if (stateful) {
-        fx_file << "\tif (!self->cmod_ptr) {\n"
-                   "\tSAM_error error = new_error();\n"
-                   "\tSAM_module_destruct(self->cmod_ptr, &error);\n"
-                   "\tPySAM_has_error(error);\n\t}\n";
+        fx_file << "\tif (self->cmod_ptr) {\n"
+                   "\t\tSAM_error error = new_error();\n"
+                   "\t\tSAM_module_destruct(self->cmod_ptr, &error);\n"
+                   "\t\tPySAM_has_error(error);\n\t}\n";
     }
 
     fx_file << "\tPyObject_Del(self);\n"

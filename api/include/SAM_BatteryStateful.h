@@ -25,9 +25,6 @@ extern "C"
 
 	SAM_EXPORT SAM_BatteryStateful SAM_BatteryStateful_setup(SAM_table data, SAM_error* err);
 
-	/// verbosity level 0 or 1. Returns 1 on success
-	SAM_EXPORT int SAM_BatteryStateful_execute(SAM_table data, int verbosity, SAM_error* err);
-
 
 	//
 	// Controls parameters

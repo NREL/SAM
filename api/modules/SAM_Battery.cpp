@@ -11,13 +11,8 @@
 #include "SAM_Battery.h"
 
 SAM_EXPORT int SAM_Battery_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("battery", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("battery", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Battery_Simulation_percent_complete_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

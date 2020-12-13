@@ -11,13 +11,8 @@
 #include "SAM_Wfreader.h"
 
 SAM_EXPORT int SAM_Wfreader_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("wfreader", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("wfreader", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Wfreader_WeatherReader_file_name_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{

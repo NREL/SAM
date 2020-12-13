@@ -11,11 +11,7 @@
 #include "SAM_BatteryStateful.h"
 
 SAM_EXPORT SAM_BatteryStateful SAM_BatteryStateful_setup(SAM_table data, SAM_error* err){
-	SAM_module result = nullptr;
-	translateExceptions(err, [&]{
-		result = ssc_stateful_module_create("battery_stateful", data);
-	});
-	return result;
+	return SAM_stateful_module_setup("battery_stateful", data, err);
 }
 
 SAM_EXPORT void SAM_BatteryStateful_Controls_control_mode_nset(SAM_table ptr, double number, SAM_error *err){

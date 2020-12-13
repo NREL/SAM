@@ -11,13 +11,8 @@
 #include "SAM_Irradproc.h"
 
 SAM_EXPORT int SAM_Irradproc_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("irradproc", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("irradproc", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_albedo_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
