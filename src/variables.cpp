@@ -23,6 +23,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <cmath>
 #include <numeric>
 #include <algorithm>
+#include <fstream>
 
 #include <wx/datstrm.h>
 #include <wx/wfstream.h>
@@ -34,6 +35,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/exttextstream.h>
 #include <lk/stdlib.h>
 #include <lk/eval.h>
+#include <rapidjson/istreamwrapper.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/ostreamwrapper.h>
 
 #include "variables.h"
 
@@ -725,6 +730,82 @@ bool VarTable::Read_text(wxInputStream &_I)
 	return ok;
 }
 
+bool VarTable::Write_JSON(const std::string& file, size_t maxdim)
+{
+	std::ofstream out( file );
+	if (!out.is_open()) return false;
+	rapidjson::Document doc;
+	Write_JSON(doc, maxdim);
+	rapidjson::OStreamWrapper osw(out);
+	rapidjson::Writer<rapidjson::OStreamWrapper> writer(osw);
+	doc.Accept(writer);
+	out.close();
+	return true;
+}
+
+
+void VarTable::Write_JSON(rapidjson::Document& doc, size_t maxdim)
+{
+	doc.SetObject();
+	wxArrayString names;
+	VarValue* v;
+	if (maxdim == 0)
+	{
+		doc.AddMember(rapidjson::Value("Number Variables", doc.GetAllocator()).Move(), size(), doc.GetAllocator());
+		names = ListAll();
+		names.Sort();
+		for (size_t i = 0; i < names.Count(); i++)
+		{
+			v = Get(names[i]);
+			if (v != NULL)
+			{
+				v->Write_JSON(doc, names[i]);
+#ifdef _DEBUG
+				if (v->Type() == VV_BINARY)
+				{
+					wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)v->Binary().GetDataLen());
+				}
+#endif
+			}
+		}
+	}
+	else
+	{
+		for (iterator it = begin(); it != end(); ++it)
+		{
+			VarValue& vv = *(it->second);
+			if (vv.Type() == VV_ARRAY
+				&& vv.Length() <= maxdim)
+				names.Add(it->first);
+			else if (vv.Type() == VV_MATRIX
+				&& vv.Matrix().nrows() <= maxdim
+				&& vv.Matrix().ncols() <= maxdim)
+				names.Add(it->first);
+			else if (vv.Type() != VV_MATRIX
+				&& vv.Type() != VV_ARRAY)
+				names.Add(it->first);
+		}
+
+		names.Sort();
+		for (size_t i = 0; i < names.Count(); i++)
+		{
+			v = Get(names[i]);
+			if (v != NULL)
+			{
+				v->Write_JSON(doc, names[i]);
+#ifdef _DEBUG
+				if (v->Type() == VV_BINARY)
+				{
+					wxLogStatus("WRITE VV_BINARY(%s): %d bytes", (const char*)names[i].c_str(), (int)v->Binary().GetDataLen());
+				}
+#endif
+			}
+		}
+	}
+}
+
+
+
 bool VarTable::AsSSCData(ssc_data_t p_dat) {
     ssc_data_clear(p_dat);
     ssc_var_t entry = ssc_var_create();
@@ -1165,6 +1246,131 @@ void wxTextOutputStream::WriteDouble(double d)
 	}
 
 }
+
+
+void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
+{
+	wxString x;
+	rapidjson::Value json_val;
+	/*
+    switch (vd->type) {
+    default:
+    case SSC_INVALID:
+        return json_val;
+    case SSC_NUMBER:
+        json_val = vd->num[0];
+        return json_val;
+    case SSC_STRING:
+        json_val.SetString(vd->str.c_str(),d.GetAllocator());
+        return json_val;
+    case SSC_ARRAY:
+        json_val.SetArray();
+        for (size_t i = 0; i < vd->num.ncols(); i++) {
+            json_val.PushBack(rapidjson::Value(vd->num[i]), d.GetAllocator());
+        }
+        return json_val;
+    case SSC_MATRIX:
+        json_val.SetArray();
+        for (size_t i = 0; i < vd->num.nrows(); i++) {
+            json_val.PushBack(rapidjson::Value(rapidjson::kArrayType), d.GetAllocator());
+            for (size_t j = 0; j < vd->num.ncols(); j++) {
+                json_val[(rapidjson::SizeType)i].PushBack(vd->num.at(i, j),d.GetAllocator());
+            }
+        }
+        return json_val;
+    case SSC_DATARR:
+        json_val.SetArray();
+        for (auto& dat : vd->vec) {
+            json_val.PushBack(ssc_var_to_rapidjson(&dat,d),d.GetAllocator());
+        }
+        return json_val;
+    case SSC_DATMAT:
+        json_val.SetArray();
+        for (auto& row : vd->mat) {
+            auto json_row =rapidjson::Value(rapidjson::kArrayType);
+            for (auto& dat : row) {
+                json_row.PushBack(ssc_var_to_rapidjson(&dat,d), d.GetAllocator());
+            }
+            json_val.PushBack(json_row, d.GetAllocator());
+        }
+        return json_val;
+    case SSC_TABLE:
+        json_val.SetObject();
+        for (auto const& it : *vd->table.get_hash()) {
+            json_val.AddMember(rapidjson::Value(it.first.c_str(), d.GetAllocator()).Move(), ssc_var_to_rapidjson(it.second, d).Move(), d.GetAllocator());
+        }
+        return json_val;
+    }
+
+	*/
+
+	switch (m_type)
+	{
+	case VV_INVALID:
+		break; // no data to be written
+	case VV_NUMBER:
+	case VV_ARRAY:
+	case VV_MATRIX:
+		json_val.SetArray();
+		for (size_t i = 0; i < m_val.nrows(); i++) {
+			json_val.PushBack(rapidjson::Value(rapidjson::kArrayType), doc.GetAllocator());
+			for (size_t j = 0; j < m_val.ncols(); j++) {
+				json_val[(rapidjson::SizeType)i].PushBack(m_val(i, j), doc.GetAllocator());
+			}
+		}
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		break;
+	case VV_STRING:
+		x = m_str;
+		if (wxFileName::Exists(x))	{ // write filename only
+			wxString fn, ext;
+			wxFileName::SplitPath(x, NULL, &fn, &ext);
+			x = fn + "." + ext;
+		}
+		json_val.SetString(x.c_str(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		break;
+		/* TODO
+	case VV_TABLE:
+		m_tab.Write_text(_O);
+		break;
+	case VV_STRING:
+		x = m_str;
+		if (wxFileName::Exists(x))
+		{ // write filename only
+			wxString fn, ext;
+			wxFileName::SplitPath(x, NULL, &fn, &ext);
+			x = fn + "." + ext;
+		}
+		x.Replace("\r", "");
+		n = x.Len();
+		out.Write32((wxUint32)n);
+		if (n > 0)
+		{
+			out.PutChar('\n');
+			for (size_t i = 0; i < n; i++)
+			{
+				out.PutChar(x[i]);
+			}
+		}
+		out.PutChar('\n');
+		break;
+	case VV_DATMAT:
+	case VV_DATARR:
+		throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
+	case VV_BINARY:
+		out.Write32(m_bin.GetDataLen());
+		out.PutChar('\n');
+		wxByte* p = (wxByte*)m_bin.GetData();
+		for (size_t i = 0; i < m_bin.GetDataLen(); i++)
+			out.Write(p[i]);
+		break;
+		*/
+	}
+
+}
+
+
 
 bool VarValue::Read_text(wxInputStream &_I)
 {

@@ -503,9 +503,12 @@ bool Case::Read( wxInputStream &_i )
 bool Case::SaveDefaults(bool quiet)
 {
 	if (!m_config) return false;
-#ifdef UI_BINARY
+#if defined(UI_BINARY)
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
+#elif defined(__SAVE_AS_JSON__)
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".json";
 #else
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
@@ -523,8 +526,10 @@ bool Case::SaveDefaults(bool quiet)
 	VarValue *vv = m_vals.Get("library_folder_list");
 	if (vv)	vv->Set(wxString("x"));
 
-#ifdef UI_BINARY
+#if defined(UI_BINARY)
 	m_vals.Write(out);
+#elif defined(__SAVE_AS_JSON__)
+	m_vals.Write_JSON(file.ToStdString());
 #else
 	m_vals.Write_text(out);
 #endif
