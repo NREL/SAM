@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
 1847
 1161
-16
+17
 Hyperlink
 
 1
@@ -329,8 +329,8 @@ Library
 8
 Name
 5
-8
-location
+11
+location_ts
 X
 3
 15
@@ -348,8 +348,8 @@ Tool Tip
 0
 Library
 5
-16
-WaveResourceData
+18
+WaveResourceDataTS
 Fields
 5
 127
@@ -599,8 +599,57 @@ Download and add to library...
 TabOrder
 3
 10
+DataArray
 
+1
+10
+Name
+5
+23
+wave_significant_height
+X
+3
+924
+Y
+3
+396
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
 2
+Label
+5
+0
+Description
+5
+0
+TabOrder
+3
+4294967295
+
+4
+location_ts
+3
+4
+Wave resource location
+ 
+Wave Resource
+20
+WaveResourceDataTS|0
+1
+1
+4
+9
+<invalid>
+Library
 use_specific_ts_wf_wave
 3
 0
@@ -623,10 +672,116 @@ ME Wave Resource
 1
 0
 Default
+wave_significant_height
+3
+2
+ 
+ 
+ 
+0
+0
+1
+2
+1
+1
+0
+Default
 
 165
 /*equations{'wave_resource_ts_filename'} = define() {
 	if(${use_specific_ts_wf_wave}) return (${user_specified_wave_resource_ts});
 	else return ${file_name_ts};
 };*/
-0
+2907
+function enable_disable_library() {
+	enable_library = !value('use_specific_wf_wave');
+	enable('wave_resource_matrix',false);
+	property('wave_resource_matrix','ColorMap',enable_library);
+	enable('location',enable_library);
+	enable('btnScanLibrary',enable_library);
+	enable('average_power_flux',enable_library);
+	enable('bathymetry',enable_library);
+	enable('city',enable_library);
+	enable('country',enable_library);
+	enable('data_source',enable_library);
+	enable('file_name',enable_library);
+	enable('frequency_sum',enable_library);
+	enable('lat',enable_library);
+	enable('location_ts',enable_library);
+	enable('lon',enable_library);
+	enable('max_frequency',enable_library);
+	enable('max_frequency_Hs',enable_library);
+	enable('max_frequency_Te',enable_library);
+	enable('name',enable_library);
+	enable('nearby_buoy_number',enable_library);
+	enable('notes',enable_library);
+	enable('sea_bed',enable_library);
+	enable('state',enable_library);
+	enable('tz',enable_library);
+	//enable('in_time_frame',enable_library);
+	//enable('in_location',enable_library);
+	//enable('wave_download',enable_library);
+	
+}
+
+on_change{'btnScanLibrary'} = define() {
+	rescanlibrary('wave');
+
+};
+
+on_change{'btn_add_remove_folders'} = define() {
+	update_library_folders('');
+};
+
+on_change{'btn_refresh_library'} = define() {
+	update_library_folders('');
+	update_info('on_change btn_refesh_library');
+};
+
+on_load{'Marine Wave Resource'} = define() {
+	enable("wave_resource_matrix",false);
+	on_change{'use_specific_wf_wave'}();
+	enable_disable_library();
+	//show('use_specific_wave_file', false); // determines whether user_specified_weather_file is used instead of solar_data_file_name
+	//show('user_specified_wave_file', false); // requires use_specific_weather_file = 1, set by LK script
+	//value('wave_data_file_name_load', value('wave_data_file_name'));
+	//show('wave_data_file_name_load', false); // stores weather file name when UI form loaded
+	//show('wave_data_file_name', false); 
+	//show('in_time_frame', value('in_wave_options') != 0 ); //No option for TMY data on first iteraiton
+	
+	//refresh();
+	//update_library_folders( '' );
+	//update_info( 'on_load Wave Resource Data');
+};
+
+on_change{'location'} = define() {
+	file = ${file_name};
+	value("name",value("location"));
+	
+	if (!file_exists(file))
+	{
+		rescanlibrary( 'wave_ts' );
+		refresh('location');
+		return;
+	}
+	file = replace(file, '\\', '/');
+	fn = open(file,'r');
+
+	close(fn);
+};
+
+on_change{'use_specific_wf_wave'} = define() {
+	enable( 'user_specified_wf_wave', ${use_specific_wf_wave} );
+	enable( 'select_wf_wind', ${use_specific_wf_wave} );
+	enable_disable_library();
+};
+
+on_change{'select_wf_wave'} = define() {
+	file = choose_file( path_only( value('user_specified_wf_wave') ), 'Choose a wave resource file', 
+		'Wave Resource Files (*.csv|*.csv');
+		
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+		value( 'user_specified_wf_wave', file );
+	}
+};

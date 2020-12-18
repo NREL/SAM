@@ -1428,7 +1428,7 @@ equations{ 'frequency_sum' } = define ()
 	return sum_mat;
 };
 
-29385
+29403
 function enable_disable_library() {
 	enable_library = !value('use_specific_wf_wave');
 	enable('wave_resource_matrix',false);
@@ -1454,9 +1454,9 @@ function enable_disable_library() {
 	enable('sea_bed',enable_library);
 	enable('state',enable_library);
 	enable('tz',enable_library);
-	enable('in_time_frame',enable_library);
-	enable('in_location',enable_library);
-	enable('wave_download',enable_library);
+	//enable('in_time_frame',enable_library);
+	//enable('in_location',enable_library);
+	//enable('wave_download',enable_library);
 	
 }
 
@@ -1480,14 +1480,14 @@ on_load{'Marine Wave Resource'} = define() {
 	enable_disable_library();
 	//show('use_specific_wave_file', false); // determines whether user_specified_weather_file is used instead of solar_data_file_name
 	//show('user_specified_wave_file', false); // requires use_specific_weather_file = 1, set by LK script
-	value('wave_data_file_name_load', value('wave_data_file_name'));
-	show('wave_data_file_name_load', false); // stores weather file name when UI form loaded
-	show('wave_data_file_name', false); 
+	//value('wave_data_file_name_load', value('wave_data_file_name'));
+	//show('wave_data_file_name_load', false); // stores weather file name when UI form loaded
+	//show('wave_data_file_name', false); 
 	//show('in_time_frame', value('in_wave_options') != 0 ); //No option for TMY data on first iteraiton
 	
-	refresh();
-	update_library_folders( '' );
-	update_info( 'on_load Wave Resource Data');
+	//refresh();
+	//update_library_folders( '' );
+	//update_info( 'on_load Wave Resource Data');
 };
 
 on_change{'location'} = define() {
