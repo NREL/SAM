@@ -324,13 +324,14 @@ Industrial Process Heat (IPH)
 <li>Update <a href="#pvwatts">PVWatts<a> from Version 5 to Version 7 with new module parameter values, optional snow model and <a href="#pvwatts">other updates</a>.</li>
 <li>New battery sizing and dispatch optimization option based on NREL's <a href="https://reopt.nrel.gov/tool">ReOpt Lite</a>.</li>
 <li>New models for grid interconnection limits and curtailment.</li>
+<li>New battery storage category to separate battery model configurations from Detailed PV and Generic System configurations.</li>	
 </ul>
 
 <p>For details about work done for this release, see <a href="https://github.com/NREL/SAM/issues?q=is%3Aissue+milestone%3A%222020+Release%22">GitHub Issues for SAM 2020.2.29 release</a>.
 
 <h2>General</h2>
 
-<p>New model configuration selection tree for choosing models when creating case.</p>
+<p>New model configuration selection tree for choosing models when creating a case to make it easier to find models.</p>
 <p>Check for Updates now works for both new software versions and revision number changes within a given version.</p>
 <p>LK script fixes to <code>to_int()</code> function.</p>
 <p>Fix Combine Cases macro to correctly assign cost to user input in Generic System case.</p>
@@ -411,8 +412,7 @@ Industrial Process Heat (IPH)
 
 <h2>Battery Storage</h2>
 
-<p>The battery storage model is available as part of the Detailed PV and Generic System models. A simple version of the model is available with the PVWatts performance model.</p>
-
+<p>Separate battery storage model configurations from the Detailed PV and Generic System configurations with a new "Battery Storage" category in the performance model list. (Inputs for the simple battery model are still on the PVWatts System Design input page.)</p>
 <p>Convert some inputs to drop-down lists to make user interface less cluttered.</p>
 
 <h2>Marine Energy</h2>
