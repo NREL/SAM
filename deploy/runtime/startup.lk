@@ -662,7 +662,10 @@ setconfig( 'Flat Plate PV', 'Residential' );
 setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs', 'O and M Costs',
+	{'name'='PV Capex Table', 'caption'='PV Capex Table', 'collapsible'=true, 'collapsible_var'='pv_capex_table_is_shown'}]], 
+	{ 'sidebar'='System Costs', 'help'='pv_system_costs', 'exclusive_var'='pv_capex_choice'} );
+//addpage( [[ 'PV Capex Table']], {'sidebar'='PV Capex Table', 'help'='pv_capex_table_costs'} );
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 setconfig( 'Flat Plate PV', 'Third Party' );
@@ -682,7 +685,11 @@ setconfig( 'Flat Plate PV', 'Commercial' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+//addpage( [[ 'PV Capital Costs', 'O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs', 'O and M Costs',
+	{'name'='PV Capex Table', 'caption'='PV Capex Table', 'collapsible'=true, 'collapsible_var'='pv_capex_table_is_shown'}]], 
+	{ 'sidebar'='System Costs', 'help'='pv_system_costs', 'exclusive_var'='pv_capex_choice'} );
+//addpage( [[ 'PV Capex Table']], {'sidebar'='PV Capex Table', 'help'='pv_capex_table_costs'} );
 setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
 
 setconfig( 'Flat Plate PV', 'Single Owner' );
@@ -691,7 +698,7 @@ setconfig( 'Flat Plate PV', 'Single Owner' );
 setmodules( ['pvsamv1', 'grid', 'singleowner'] );
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs','PV Capex Table','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages( );
 //addpage( [[ 'Financial Capacity Payments' ]], { 'sidebar'='Ancillary Services', 'help'='ancillary_services' });
 // setup_utility_rate_optional(); // required if utilityrate5 included in config
@@ -700,7 +707,7 @@ setconfig( 'Flat Plate PV', 'Merchant Plant' );
 setmodules( ['pvsamv1', 'grid', 'merchantplant']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Capital Costs','PV Capex Table','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_merchant_plant_pages( );
 
 setconfig( 'Flat Plate PV', 'Leveraged Partnership Flip' );

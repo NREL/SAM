@@ -1,7 +1,7 @@
 PV Capital Costs
 826
 681
-96
+98
 GroupBox
 
 1
@@ -869,6 +869,87 @@ BackColour
 TabOrder
 3
 16
+CheckBox
+
+1
+9
+Name
+5
+17
+capex_table_check
+X
+3
+21
+Y
+3
+231
+Width
+3
+364
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+61
+Use Capex cost table to define costs based on system capacity
+State
+2
+0
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+17
+capex_table_label
+X
+3
+18
+Y
+3
+261
+Width
+3
+406
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+74
+When this box is checked the capital costs are defined used a lookup table
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -5265,7 +5346,7 @@ TabOrder
 3
 52
 
-59
+60
 bos_equip_fixed
 3
 1
@@ -5322,6 +5403,20 @@ Capital Costs
 1
 0
 Numeric
+capex_table_check
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+CheckBox
 contingency
 3
 1
@@ -6095,7 +6190,7 @@ Capital Costs
 0
 Numeric
 
-4503
+4596
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6203,7 +6298,13 @@ equations{ 'install_margin_total' } = define() {
 		+ ${modulearray_area}*${install_margin_perarea}; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}; };
+	if (${capex_table_check}==0) {
+		return ${total_direct_cost}+${total_indirect_cost};
+	}
+	else {
+		return ${capex_table_total_installed_cost};
+	}
+};
 
 equations{ 'inverterarray_power' } = define() {
 	return ${inverter_power}*${inverter_num_units}; };
@@ -6265,9 +6366,11 @@ equations { 'system_use_recapitalization' } = define () {
 };
 	
 
-575
+3408
 on_load{"PV Capital Costs"}=define()
 {
+	capex_table_enable();
+	
 	is_detailed_pv = ( technology() != "PVWatts" );
 	show("land_area_value",is_detailed_pv);
 	show("land_per_acre",is_detailed_pv);
@@ -6281,3 +6384,80 @@ on_load{"PV Capital Costs"}=define()
 	show("install_labor_perarea",is_detailed_pv);
 	show("install_margin_perarea",is_detailed_pv);
 };
+
+on_change{'capex_table_check'} = define() {
+	capex_table_enable();
+};
+
+function capex_table_enable()
+{
+	table_choice = value("capex_table_check");
+	enable("module_num_units", table_choice!=1);
+	enable("module_power", table_choice!=1);
+	enable("modulearray_power", table_choice!=1);
+	enable("inverter_num_units", table_choice!=1);
+	enable("inverter_power", table_choice!=1);
+	enable("inverterarray_power", table_choice!=1);
+	
+	enable("per_module",table_choice!=1);
+	enable("per_inverter",table_choice!=1);
+	enable("module_costunits",table_choice!=1);
+	enable("inverter_costunits",table_choice!=1);
+	enable("module_total",table_choice!=1);
+	enable("inverter_total",table_choice!=1);
+	enable("bos_equip_fixed",table_choice!=1);
+	enable("bos_equip_perwatt",table_choice!=1);
+	enable("bos_equip_perarea",table_choice!=1);
+	enable("bos_equip_total",table_choice!=1);
+	enable("install_labor_fixed",table_choice!=1);
+	enable("install_labor_perwatt",table_choice!=1);
+	enable("install_labor_perarea",table_choice!=1);
+	enable("install_labor_total",table_choice!=1);
+	enable("install_margin_fixed",table_choice!=1);
+	enable("install_margin_perwatt",table_choice!=1);
+	enable("install_margin_perarea",table_choice!=1);
+	enable("install_margin_total",table_choice!=1);
+	enable("subtotal_direct",table_choice!=1);
+	enable("contingency_percent",table_choice!=1);
+	enable("contingency",table_choice!=1);
+	enable("total_direct_cost",table_choice!=1);
+	
+	//Indirect Capital Costs
+	enable("permitting_percent", table_choice!=1);
+	enable("permitting_per_watt", table_choice!=1);
+	enable("permitting_fixed", table_choice!=1);
+	enable("permitting_total", table_choice!=1);
+	enable("engr_percent", table_choice!=1);
+	enable("engr_per_watt", table_choice!=1);
+	enable("engr_fixed", table_choice!=1);
+	enable("engr_total", table_choice!=1);
+	enable("grid_percent", table_choice!=1);
+	enable("grid_per_watt", table_choice!=1);
+	enable("grid_fixed", table_choice!=1);
+	enable("grid_total", table_choice!=1);
+	enable("land_area_value", table_choice!=1);
+	enable("land_per_acre", table_choice!=1);
+	enable("land_percent", table_choice!=1);
+	enable("land_per_watt", table_choice!=1);
+	enable("land_fixed", table_choice!=1);
+	enable("land_total", table_choice!=1);
+	enable("landprep_per_acre", table_choice!=1);
+	enable("landprep_percent", table_choice!=1);
+	enable("landprep_per_watt", table_choice!=1);
+	enable("landprep_fixed", table_choice!=1);
+	enable("landprep_total", table_choice!=1);
+	enable("sales_tax_percent", table_choice!=1);
+	enable("sales_tax_value", table_choice!=1);
+	enable("sales_tax_total", table_choice!=1);
+	enable("total_indirect_cost", table_choice!=1);
+	show("capex_table_label", table_choice==1);
+	//Uncollapse capex table
+	if (table_choice==1)
+	{
+		value("pv_capex_table_is_shown", 1);
+	}
+	
+	refresh();
+	
+}	
+
