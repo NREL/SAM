@@ -1311,7 +1311,7 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	case VV_NUMBER:
 		json_val = rapidjson::kWriteNanAndInfFlag; // default if NaN, inf or invalid
 		if (m_val.nrows() == 1 && m_val.ncols() == 1) {
-			if (!isnan(m_val(0, 0)) && !isinf(m_val(0, 0)))
+			if (!std::isnan(m_val(0, 0)) && !std::isinf(m_val(0, 0)))
 				json_val = m_val(0, 0);
 		}
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
@@ -1319,7 +1319,7 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	case VV_ARRAY:
 		json_val.SetArray();
 		for (size_t j = 0; j < m_val.ncols(); j++) {
-			if (isnan(m_val(0, j)) || isinf(m_val(0, j)))
+			if (std::isnan(m_val(0, j)) || std::isinf(m_val(0, j)))
 				json_val.PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
 			else
 				json_val.PushBack(rapidjson::Value(m_val(0, j)), doc.GetAllocator());
@@ -1331,7 +1331,7 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 		for (size_t i = 0; i < m_val.nrows(); i++) {
 			json_val.PushBack(rapidjson::Value(rapidjson::kArrayType), doc.GetAllocator());
 			for (size_t j = 0; j < m_val.ncols(); j++) {
-				if (isnan(m_val(i,j)) || isinf(m_val(i,j)))
+				if (std::isnan(m_val(i,j)) || std::isinf(m_val(i,j)))
 					json_val[(rapidjson::SizeType)i].PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
 				else
 					json_val[(rapidjson::SizeType)i].PushBack(m_val(i, j), doc.GetAllocator());
