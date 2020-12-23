@@ -694,6 +694,7 @@ void VarTable::Write_text(wxOutputStream &_O, size_t maxdim)
 		}
 	}
 }
+
 bool VarTable::Read_text(const wxString &file)
 {
 	wxFFileInputStream in(file);
@@ -729,6 +730,70 @@ bool VarTable::Read_text(wxInputStream &_I)
 
 	return ok;
 }
+
+
+bool VarTable::Read_JSON( const std::string& file)
+{
+
+	std::ifstream in(file);
+	rapidjson::Document doc;
+	rapidjson::IStreamWrapper isw(in);
+
+	doc.ParseStream(isw);
+	if (doc.HasParseError()) {
+		// throw?
+		in.close();
+		return false;
+	}
+	else {
+		Read_JSON(doc);
+		in.close();
+		return true;
+	}
+}
+
+bool VarTable::Read_JSON(const rapidjson::Document& doc)
+{
+	clear();
+	bool ok = true;
+	/*
+	reference rapidjson_to_ssc_data
+		if (document.HasParseError()) {
+		std::string s = rapidjson::GetParseError_En(document.GetParseError());
+		vt->assign("error", s);
+		return dynamic_cast<ssc_data_t>(vt);
+	}
+//    static const char* kTypeNames[] = { "Null", "False", "True", "Object", "Array", "String", "Number" };
+	for (rapidjson::Value::ConstMemberIterator itr = document.MemberBegin(); itr != document.MemberEnd(); ++itr) {
+		//printf("Type of member %s is %s\n", itr->name.GetString(), kTypeNames[itr->value.GetType()]);
+		var_data ssc_val;
+		rapidjson_to_ssc_var(itr->value, &ssc_val);
+		vt->assign(itr->name.GetString(), ssc_val);
+	}
+
+	*/
+
+
+	for (rapidjson::Value::ConstMemberIterator itr = doc.MemberBegin(); itr != doc.MemberEnd(); ++itr) {
+		VarValue* value = new VarValue;
+		ok = ok && value->Read_JSON(itr->value);
+
+#ifdef _DEBUG
+		if (value->Type() == VV_BINARY)
+		{
+			//			wxLogStatus("READ VV_BINARY(%s): %d bytes", (const char*)name.c_str(), (int)value->Binary().GetDataLen());
+		}
+#endif
+
+		if (find(itr->name.GetString()) == end()) 
+			(*this)[itr->name.GetString()] = value;
+		else 
+			delete value;
+	}
+
+	return ok;
+}
+
 
 bool VarTable::Write_JSON(const std::string& file, size_t maxdim)
 {
@@ -1247,12 +1312,183 @@ void wxTextOutputStream::WriteDouble(double d)
 
 }
 
+bool VarValue::Read_JSON(const rapidjson::Value& json_val)
+{
+/*
+reference json_to_ssc_var
+	if (!ssc_val)
+		return;
+	auto vd = static_cast<var_data*>(ssc_val);
+	vd->clear();
+	//using namespace Json;
+	//Json::Value::Members members;
+	bool is_arr, is_mat;
+	std::vector<ssc_number_t> vec;
+	std::vector<var_data>* vd_arr;
+	var_table* vd_tab;
+
+	auto is_numerical = [](const rapidjson::Value& json_val) {
+		bool is_num = true;
+		for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
+			if (!json_val[i].IsNumber() && !json_val[i].IsBool()) {
+				is_num = false;
+				break;
+			}
+		}
+		return is_num;
+	};
+
+	switch (json_val.GetType()) {
+	default:
+	case rapidjson::Type::kNullType:
+		return;
+	case rapidjson::Type::kNumberType:
+	case rapidjson::Type::kFalseType:
+	case rapidjson::Type::kTrueType:
+		vd->type = SSC_NUMBER;
+		vd->num[0] = json_val.GetDouble();
+		return;
+	case rapidjson::Type::kStringType:
+		vd->type = SSC_STRING;
+		vd->str = json_val.GetString();
+		return;
+	case rapidjson::Type::kArrayType:
+		// determine if SSC_ARRAY
+		is_arr = is_numerical(json_val);
+		if (is_arr) {
+			vd->type = SSC_ARRAY;
+			if (json_val[0].IsNull())
+				return;
+			for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
+				vec.push_back(json_val[i].GetDouble());
+			}
+			vd->num.assign(&vec[0], vec.size());
+			return;
+		}
+		// SSC_MATRIX
+		is_mat = true;
+		for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
+			if (json_val[i].GetType() != rapidjson::Type::kArrayType || !is_numerical(json_val[i])) {
+				is_mat = false;
+				break;
+			}
+		}
+		if (is_mat) {
+			vd->type = SSC_MATRIX;
+			if (json_val[0].IsNull())
+				return;
+			for (rapidjson::SizeType irow = 0; irow < json_val.Size(); irow++) {
+				for (rapidjson::SizeType icol = 0; icol < json_val[irow].Size(); icol++) {
+					vec.push_back(json_val[irow][icol].GetDouble());
+				}
+			}
+			vd->num.assign(&vec[0], json_val.Size(), json_val[0].Size());
+			return;
+		}
+		// SSC_DATARR
+		vd_arr = &vd->vec;
+		for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
+			vd_arr->emplace_back(var_data());
+			auto entry = &vd_arr->back();
+			rapidjson_to_ssc_var(json_val[i], entry);
+		}
+		vd->type = SSC_DATARR;
+		return;
+	case rapidjson::Type::kObjectType:
+		vd_tab = &vd->table;
+		for (rapidjson::Value::ConstMemberIterator itr = json_val.MemberBegin(); itr != json_val.MemberEnd(); ++itr) {
+			auto entry = vd_tab->assign(itr->name.GetString(), var_data());
+			rapidjson_to_ssc_var(itr->value, entry);
+		}
+		vd->type = SSC_TABLE;
+	}
+
+*/
+	bool ok = true;
+	bool is_arr, is_mat;
+	size_t nr, nc;
+
+	auto is_numerical = [](const rapidjson::Value& json_val) {
+		bool is_num = true;
+		for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
+			if (!json_val[i].IsNumber() && !json_val[i].IsBool()) {
+				is_num = false;
+				break;
+			}
+		}
+		return is_num;
+	};
+
+	switch (json_val.GetType()) {
+	case rapidjson::Type::kNullType:
+		m_type = VV_INVALID;
+		ok = false;
+		break;
+	case rapidjson::Type::kNumberType:
+	case rapidjson::Type::kFalseType:
+	case rapidjson::Type::kTrueType:
+		m_type = VV_NUMBER;
+		m_val.resize_fill(1, 1, 0.0);
+		m_val(0,0) = json_val.GetDouble();
+		break;
+	case rapidjson::Type::kStringType:
+		m_type = VV_STRING;
+		m_str = json_val.GetString();
+		break;
+	case rapidjson::Type::kArrayType:
+		// determine if SSC_ARRAY
+		is_arr = is_numerical(json_val);
+		if (is_arr) {
+			m_type = SSC_ARRAY;
+			if (json_val[0].IsNull())
+				return false;
+			nr = 1;
+			nc = json_val.Size();
+			if (nr * nc < 1) return false; // big error
+			m_val.resize_fill(nr, nc, 0.0);
+
+			for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
+				m_val.at(0,i)= json_val[i].GetDouble();
+			}
+			break;
+		}
+		// SSC_MATRIX
+		is_mat = true;
+		for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
+			if (json_val[i].GetType() != rapidjson::Type::kArrayType || !is_numerical(json_val[i])) {
+				is_mat = false;
+				break;
+			}
+		}
+		if (is_mat) {
+			m_type = SSC_MATRIX;
+			if (json_val[0].IsNull())
+				return false;
+			nr = json_val.Size();
+			if (nr < 1) return false;
+			nc = json_val[0].Size();
+			if (nr * nc < 1) return false; // big error
+			m_val.resize_fill(nr, nc, 0.0);
+			for (rapidjson::SizeType irow = 0; irow < json_val.Size(); irow++) {
+				for (rapidjson::SizeType icol = 0; icol < json_val[irow].Size(); icol++) {
+					m_val.at(irow,icol) =  json_val[irow][icol].GetDouble();
+				}
+			}
+			break;
+		}
+		// TODO other types
+	default:
+		return false;
+	}
+	return ok;
+}
+
 
 void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 {
 	wxString x;
 	rapidjson::Value json_val;
-	/*
+	/* from ssc for reference
     switch (vd->type) {
     default:
     case SSC_INVALID:

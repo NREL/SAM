@@ -606,6 +606,10 @@ bool Case::LoadDefaults( wxString *pmsg )
 	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
 	binary = true;
+#elif defined(__SAVE_AS_JSON__)
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".json";
+	binary = false;
 #else
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";

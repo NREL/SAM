@@ -117,6 +117,8 @@ public:
 
 	void Write_JSON(rapidjson::Document&, size_t maxdim = 0); // MaxDim specifies the maximum allowable array or matrix dimension when writing.
 	bool Write_JSON(const std::string& file, size_t maxdim = 0);
+	bool Read_JSON(const rapidjson::Document&); 
+	bool Read_JSON(const std::string& file);
 
     // returns a pointer to a ssc::var_table class that'll need to be freed using ssc_data_free
     bool AsSSCData(ssc_data_t p_dat);
@@ -154,6 +156,7 @@ public:
 	bool Read_text(wxInputStream &);
 
 	void Write_JSON(rapidjson::Document&, const wxString&);
+	bool Read_JSON(const rapidjson::Value&);
 
 	// returns a pointer to a ssc::var_data class that'll need to be freed using ssc_var_free
     bool AsSSCVar(ssc_var_t p_var);
