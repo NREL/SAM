@@ -109,8 +109,12 @@ public:
 		wxString error;
 	};
 
-	bool LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di = 0, VarTable *invalids = 0, bool binary = true );
+//	bool LoadValuesFromExternalSource(wxInputStream& in,
+//		LoadStatus* di = 0, VarTable* invalids = 0, bool binary = true);
+	bool LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di = 0, VarTable* invalids = 0);
+	bool VarTableFromInputStream(VarTable* vt, wxInputStream& in, bool binary);
+	bool VarTableFromJSONFile(VarTable* vt, const std::string& file);
+
 
 	bool LoadDefaults( wxString *error_msg = 0 );
 	bool SaveDefaults( bool quiet = false );

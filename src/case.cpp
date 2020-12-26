@@ -378,7 +378,13 @@ bool Case::Read( wxInputStream &_i )
 	// read in the variable table
 	m_oldVals.clear();
 	LoadStatus di;
-	bool ok = LoadValuesFromExternalSource( _i, &di, &m_oldVals );
+//	bool ok = LoadValuesFromExternalSource(_i, &di, &m_oldVals);
+
+	VarTable vt;
+	bool ok = VarTableFromInputStream(&vt, _i, true);
+	if (ok)
+		ok &= LoadValuesFromExternalSource(&vt, &di, &m_oldVals);
+
 
 	if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() )
 	{
@@ -537,17 +543,42 @@ bool Case::SaveDefaults(bool quiet)
 	return true;
 }
 
-bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di, VarTable *oldvals, bool binary)
+bool Case::VarTableFromInputStream(VarTable *vt, wxInputStream& in, bool binary)
 {
-	VarTable vt;
-// All project files are assumed to be stored as binary
+	if (!vt) return false;
 	bool read_ok = true;
 	if (!binary) // text call from LoadDefaults
-		read_ok = vt.Read_text(in);
+		read_ok = vt->Read_text(in);
 	else
-		read_ok = vt.Read(in);
+		read_ok = vt->Read(in);
+	return read_ok;
+}
 
+bool Case::VarTableFromJSONFile(VarTable* vt, const std::string& file)
+{
+	if (!vt)
+		return false;
+	else
+		return vt->Read_JSON(file);
+}
+
+
+
+//bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
+//		LoadStatus *di, VarTable *oldvals, bool binary)
+bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarTable* oldvals)
+{
+	// ---------------------------------------------------------------------------------
+	// separate function to creat VarTable from wxInputStream and rapidJSON document
+//	VarTable vt;
+// All project files are assumed to be stored as binary
+//	bool read_ok = true;
+//	if (!binary) // text call from LoadDefaults
+//		read_ok = vt.Read_text(in);
+//	else
+//		read_ok = vt.Read(in);
+//	// -------------------------------------------------------------------------------
+	bool read_ok = true;
 	if (!read_ok)
 	{
 		wxString e("Error reading inputs from external source");
@@ -561,7 +592,7 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 	bool ok = (vt.size() == m_vals.size());
 	// copy over values for variables that already exist
 	// in the configuration
-	for( VarTable::iterator it = vt.begin();
+	for( VarTable::const_iterator it = vt.begin();
 		it != vt.end();
 		++it )
 	{
@@ -585,7 +616,23 @@ bool Case::LoadValuesFromExternalSource( wxInputStream &in,
 			ok = false;
 		}
 	}
-	
+	// Testing - find values in configuration that are not read in 
+	VarTable vtmp = vt;
+	for (VarTable::iterator it = m_vals.begin();
+		it != m_vals.end();
+		++it)
+	{
+		if (VarValue* vv = vtmp.Get(it->first))
+		{
+			// found - not an issue
+		}
+		else
+		{
+			if (di) di->not_found.Add(it->first);
+			ok = false;
+		}
+	}
+// remove above code after testing
 
 	if (RecalculateAll() < 0 )
 	{
@@ -618,16 +665,22 @@ bool Case::LoadDefaults( wxString *pmsg )
 	LoadStatus di;
 	wxString message;
 	bool ok = false;
+	VarTable vt;
 	if ( wxFileExists(file) )
 	{
+#if defined(__SAVE_AS_JSON__)
+		ok = VarTableFromJSONFile(&vt, file.ToStdString());
+#else
 		wxFFileInputStream in(file);
 		if (!in.IsOk())
 		{
 			if ( pmsg ) *pmsg = "Could not open defaults file";
 			return false;
 		}
-	
-		ok = LoadValuesFromExternalSource( in, &di, (VarTable *)0, binary );
+		ok = VarTableFromInputStream(&vt, in, binary);
+#endif
+		ok &= LoadValuesFromExternalSource(vt, &di, (VarTable*)0);
+//		ok = LoadValuesFromExternalSource(in, &di, (VarTable*)0, binary);
 		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
 				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
 				"Would you like to update the defaults with the current values right now?\n"
@@ -661,6 +714,12 @@ bool Case::LoadDefaults( wxString *pmsg )
 	{
 		if ( wxYES == wxShowTextMessageDialog( message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO) )
 		{
+#if defined(__SAVE_AS_JSON__)
+			if (m_vals.Write_JSON(file.ToStdString(), 0))
+				wxMessageBox("Saved defaults for configuration.");
+			else
+				wxMessageBox("Error writing to defaults file: " + file);
+#else
 			wxFFileOutputStream out( file );
 			if( out.IsOk() )
 			{
@@ -673,6 +732,7 @@ bool Case::LoadDefaults( wxString *pmsg )
 			}
 			else
 				wxMessageBox("Error writing to defaults file: " + file );
+#endif
 		}
 	}
 

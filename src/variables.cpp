@@ -1439,7 +1439,7 @@ reference json_to_ssc_var
 		// determine if SSC_ARRAY
 		is_arr = is_numerical(json_val);
 		if (is_arr) {
-			m_type = SSC_ARRAY;
+			m_type = VV_ARRAY;
 			if (json_val[0].IsNull())
 				return false;
 			nr = 1;
@@ -1452,7 +1452,6 @@ reference json_to_ssc_var
 			}
 			break;
 		}
-		// SSC_MATRIX
 		is_mat = true;
 		for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
 			if (json_val[i].GetType() != rapidjson::Type::kArrayType || !is_numerical(json_val[i])) {
@@ -1461,7 +1460,7 @@ reference json_to_ssc_var
 			}
 		}
 		if (is_mat) {
-			m_type = SSC_MATRIX;
+			m_type = VV_MATRIX;
 			if (json_val[0].IsNull())
 				return false;
 			nr = json_val.Size();
