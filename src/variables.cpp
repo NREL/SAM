@@ -39,6 +39,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/ostreamwrapper.h>
+#include <rapidjson/prettywriter.h> // for stringify JSON
+
 
 #include "variables.h"
 
@@ -802,7 +804,8 @@ bool VarTable::Write_JSON(const std::string& file, size_t maxdim)
 	rapidjson::Document doc;
 	Write_JSON(doc, maxdim);
 	rapidjson::OStreamWrapper osw(out);
-	rapidjson::Writer<rapidjson::OStreamWrapper> writer(osw);
+//	rapidjson::Writer<rapidjson::OStreamWrapper> writer(osw);
+	rapidjson::PrettyWriter<rapidjson::OStreamWrapper> writer(osw);
 	doc.Accept(writer);
 	out.close();
 	return true;
@@ -816,7 +819,7 @@ void VarTable::Write_JSON(rapidjson::Document& doc, size_t maxdim)
 	VarValue* v;
 	if (maxdim == 0)
 	{
-		doc.AddMember(rapidjson::Value("Number Variables", doc.GetAllocator()).Move(), size(), doc.GetAllocator());
+//		doc.AddMember(rapidjson::Value("Number Variables", doc.GetAllocator()).Move(), size(), doc.GetAllocator());
 		names = ListAll();
 		names.Sort();
 		for (size_t i = 0; i < names.Count(); i++)
@@ -1407,6 +1410,8 @@ reference json_to_ssc_var
 	bool ok = true;
 	bool is_arr, is_mat;
 	size_t nr, nc;
+	rapidjson::Document json_table;
+	std::string strTable = "table";
 
 	auto is_numerical = [](const rapidjson::Value& json_val) {
 		bool is_num = true;
@@ -1475,7 +1480,18 @@ reference json_to_ssc_var
 			}
 			break;
 		}
-		// TODO other types
+	case rapidjson::Type::kObjectType:
+		m_type = VV_TABLE; // need VV_BINARY, too.
+		//json_table.AddMember(rapidjson::Value(strTable.c_str(), strTable.size(), json_table.GetAllocator()).Move(), json_val.GetObject(), json_table.GetAllocator());
+		//m_tab.Read_JSON(json_table);
+//		json_val.GetObject();
+		for (rapidjson::Value::ConstMemberIterator itr = json_val.MemberBegin(); itr != json_val.MemberEnd(); ++itr) {
+			wxString name = wxString(itr->name.GetString());
+			m_tab.emplace(name, new VarValue());
+			auto vv = m_tab.at(name);
+			vv->Read_JSON(itr->value);
+		}
+		break;
 	default:
 		return false;
 	}
@@ -1487,6 +1503,7 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 {
 	wxString x;
 	rapidjson::Value json_val;
+	rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
 	/* from ssc for reference
     switch (vd->type) {
     default:
@@ -1584,43 +1601,23 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 		json_val.SetString(x.c_str(), doc.GetAllocator());
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 		break;
-		/* TODO
 	case VV_TABLE:
-		m_tab.Write_text(_O);
-		break;
-	case VV_STRING:
-		x = m_str;
-		if (wxFileName::Exists(x))
-		{ // write filename only
-			wxString fn, ext;
-			wxFileName::SplitPath(x, NULL, &fn, &ext);
-			x = fn + "." + ext;
-		}
-		x.Replace("\r", "");
-		n = x.Len();
-		out.Write32((wxUint32)n);
-		if (n > 0)
-		{
-			out.PutChar('\n');
-			for (size_t i = 0; i < n; i++)
-			{
-				out.PutChar(x[i]);
-			}
-		}
-		out.PutChar('\n');
+		m_tab.Write_JSON(json_table);
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
 		break;
 	case VV_DATMAT:
 	case VV_DATARR:
 		throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
-	case VV_BINARY:
-		out.Write32(m_bin.GetDataLen());
-		out.PutChar('\n');
+		break;
+/*	case VV_BINARY:
 		wxByte* p = (wxByte*)m_bin.GetData();
 		for (size_t i = 0; i < m_bin.GetDataLen(); i++)
 			out.Write(p[i]);
 		break;
-		*/
-	}
+	default:
+		throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT" + m_type));
+		break;
+*/	}
 
 }
 
