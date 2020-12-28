@@ -1,7 +1,7 @@
 Battery Voltage
 1055
 681
-21
+22
 GroupBox
 
 1
@@ -576,68 +576,6 @@ AlignRight
 AlignTop
 2
 1
-Numeric
-
-1
-17
-Name
-5
-19
-batt_cutoff_voltage
-X
-3
-270
-Y
-3
-174
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Divider
 
 1
@@ -818,6 +756,68 @@ Horizontal
 TabOrder
 3
 4
+Numeric
+
+1
+17
+Name
+5
+19
+batt_voltage_cutoff
+X
+3
+270
+Y
+3
+174
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -876,10 +876,10 @@ Name
 batt_voltage_matrix
 X
 3
-438
+405
 Y
 3
-444
+450
 Width
 3
 556
@@ -1114,8 +1114,70 @@ Voltage Model Options
 Bold
 2
 1
+Numeric
 
-12
+1
+17
+Name
+5
+7
+x_check
+X
+3
+168
+Y
+3
+216
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+14
 batt_C_rate
 3
 1
@@ -1199,7 +1261,7 @@ BatteryCell
 1
 1
 2.04
- 
+Default
 batt_Vnom_default
 3
 1
@@ -1227,20 +1289,6 @@ BatteryCell
 1
 1
 450
-Default
-batt_cutoff_voltage
-3
-1
-Cell cutoff voltage
-V
-BatteryCell
-0
-2
-1
-1
-1
-1
-0
 Default
 batt_resistance
 3
@@ -1271,6 +1319,34 @@ Electrochemical model|Voltage table
 1
 0
 RadioChoice
+batt_voltage_cutoff
+3
+1
+Cell cutoff voltage
+V
+BatteryCell
+0
+2
+1
+1
+1
+1
+0
+Default
+batt_voltage_cutoff_default
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 batt_voltage_matrix
 3
 3
@@ -1292,13 +1368,31 @@ Depth of discharge [%]| Cell voltage [V]
 100 0.5 
 
 DataMatrix
-
+x_check
+3
+1
+X
+ 
+ 
 0
-4981
+0
+1
+1
+1
+1
+0
+Default
+
+91
+equations{'batt_voltage_cutoff_default'} = define() {
+	return 0.66*${batt_Vnom_default};
+};
+5479
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
 	update_voltage_plot();
+	cutoff_check();
 
 	on_change{'batt_voltage_choice'};
 	on_change{'batt_bank_voltage'};
@@ -1311,11 +1405,21 @@ on_load{'Battery Voltage'} = define()
 	on_change{'batt_Qexp_percent'};
 	on_change{'batt_Qnom_percent'};
 	on_change{'batt_voltage_matrix'};
-	on_change{'batt_cutoff_voltage'};
+	on_change{'batt_voltage_cutoff'};
 };
 
-on_change{'batt_cutoff_voltage'} = define() {
+function cutoff_check()
+{
+	cutoff_value = value('batt_voltage_cutoff');
+	cutoff_default = value('batt_voltage_cutoff_default');
+	if(cutoff_value==0) {
+		value('batt_voltage_cutoff',cutoff_default);
+	}
+}
+
+on_change{'batt_voltage_cutoff'} = define() {
 	update_voltage_plot();
+	cutoff_check();
 };
 	
 
@@ -1334,6 +1438,7 @@ on_change{'batt_Vnom_default'} = define()
 {
 	update_voltage_plot();
 	battsize_warning_check();
+	cutoff_check();
 };
 on_change{'batt_Qexp_percent'} = define(){update_voltage_plot();};
 on_change{'batt_Qnom_percent'} = define(){update_voltage_plot();};
@@ -1383,12 +1488,13 @@ function update_voltage_plot()
 	Vfull = table{'Vfull'};
 	DOD_vect = table{'DOD'};
 	V_vect = table{'V'};
+	Vcut = value('batt_voltage_cutoff');
 	clearplot( 'batt_voltage_plot');
 	plot( DOD_vect, V_vect, {'thick'=2, 'type'='line', 'color'='blue'});
 	plotopt( {'title'='Voltage Discharge', 'legend'=false });
 	axis( 'x1', {'label'='Depth of Discharge (%)', 'min'=-0.5, 'max'=100+0.5});
-	axis( 'y1', {'label'='Voltage (V)', 'min'=min(V_vect), 'max'=Vfull+0.1});
-	
+	//axis( 'y1', {'label'='Voltage (V)', 'min'=min(V_vect), 'max'=Vfull+0.1});
+	axis( 'y1', {'label'='Voltage (V)', 'min'=Vcut, 'max'=Vfull+0.1});
 	// also update calendar life plot, since depends on voltage in model case
 	mode = value('batt_calendar_choice');
 	if (mode == 1){
@@ -1418,7 +1524,7 @@ function cell_voltage_vs_dod()
 		Vnom = ${batt_Vnom};
 		C_rate = ${batt_C_rate};
 		eta = 0.995;
-		
+		Vcut = ${batt_voltage_cutoff};
 		// strange bug, after simulation Qnom is calculated erroneously
 		Qnom = Qnom_percent*Qfull*0.01;
 		Qexp = Qexp_percent*Qfull*0.01;
@@ -1429,7 +1535,10 @@ function cell_voltage_vs_dod()
 		B = 3/Qexp;
 		K = ((Vfull - Vnom + A*(exp(-B*Qnom) - 1))*(Qfull - Qnom))/(Qnom);
 		E0 = Vfull + K + R*I - A;
-		
+		C = (-1*Vcut + E0 - R*I + A*(exp(-B*Qfull)))/K;
+		x = Qfull / (C - 1);
+		value('x_check',x);
+		Qfull += x;
 		q0 = Qfull;
 		V_vect[0] = Vfull;
 		t_vect[0] = 0;
@@ -1444,7 +1553,7 @@ function cell_voltage_vs_dod()
 			count++;
 			t = i*0.1;
 			q0 = Qfull - I*t;
-			V = E0 - R*I - K*(Qfull/(Qfull-I*t)) + A*exp(-B*I*t);
+			V = E0 - R*I - K*(Qfull/(Qfull -I*t)) + A*exp(-B*I*t);
 			DOD = (1.-(q0/Qfull))*100;
 			//logmsg('t: ' + t + ' V: ' + V + 'DOD: ' + DOD);
 			if ( (V < Vfull/2) || (V > 2*Vfull) || DOD > 100)
