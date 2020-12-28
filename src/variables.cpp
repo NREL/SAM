@@ -1407,10 +1407,12 @@ reference json_to_ssc_var
 	}
 
 */
+	wxByte p;
 	bool ok = true;
 	bool is_arr, is_mat;
 	size_t nr, nc;
 	rapidjson::Document json_table;
+	rapidjson::Value json_bin_array;
 	std::string strTable = "table";
 
 	auto is_numerical = [](const rapidjson::Value& json_val) {
@@ -1437,6 +1439,7 @@ reference json_to_ssc_var
 		m_val(0,0) = json_val.GetDouble();
 		break;
 	case rapidjson::Type::kStringType:
+		// might be VV_BINARY
 		m_type = VV_STRING;
 		m_str = json_val.GetString();
 		break;
@@ -1481,15 +1484,41 @@ reference json_to_ssc_var
 			break;
 		}
 	case rapidjson::Type::kObjectType:
-		m_type = VV_TABLE; // need VV_BINARY, too.
-		//json_table.AddMember(rapidjson::Value(strTable.c_str(), strTable.size(), json_table.GetAllocator()).Move(), json_val.GetObject(), json_table.GetAllocator());
-		//m_tab.Read_JSON(json_table);
-//		json_val.GetObject();
-		for (rapidjson::Value::ConstMemberIterator itr = json_val.MemberBegin(); itr != json_val.MemberEnd(); ++itr) {
-			wxString name = wxString(itr->name.GetString());
-			m_tab.emplace(name, new VarValue());
-			auto vv = m_tab.at(name);
-			vv->Read_JSON(itr->value);
+		/* VV_BINARY if first member is like
+		    "shading_3d_scene": {
+        "VV_TYPE": "VV_BINARY",
+        "DATA": [
+            132,
+            1,
+		*/
+		if (json_val.HasMember("VV_TYPE") && json_val.FindMember("VV_TYPE")->value.IsInt() && json_val.FindMember("VV_TYPE")->value.GetInt() == VV_BINARY) {
+			m_type = VV_BINARY;
+			if (json_val.HasMember("DATA") && json_val.FindMember("DATA")->value.IsArray()) {
+				//json_bin_array = json_val.FindMember("DATA")->value.GetArray();
+				nr = json_val.FindMember("DATA")->value.GetArray().Size();
+				m_bin.Clear();
+				m_bin.SetDataLen(nr);
+				//for (rapidjson::SizeType i = 0; i < nr; i++)
+				//	m_bin.AppendByte((wxByte) json_bin_array[i].GetUint());
+//				for (auto& v : json_val.FindMember("DATA")->value.GetArray())
+//					m_bin.AppendByte((char)v.GetInt());
+				for (rapidjson::SizeType i = 0; i < nr; i++) {
+					p = (json_val.FindMember("DATA")->value.GetArray()[i].GetUint() >> 24) & 0xFF;
+					m_bin.AppendByte(p);
+				}
+			}
+		}
+		else {
+			m_type = VV_TABLE; // need VV_BINARY, too.
+			//json_table.AddMember(rapidjson::Value(strTable.c_str(), strTable.size(), json_table.GetAllocator()).Move(), json_val.GetObject(), json_table.GetAllocator());
+			//m_tab.Read_JSON(json_table);
+	//		json_val.GetObject();
+			for (rapidjson::Value::ConstMemberIterator itr = json_val.MemberBegin(); itr != json_val.MemberEnd(); ++itr) {
+				wxString name = wxString(itr->name.GetString());
+				m_tab.emplace(name, new VarValue());
+				auto vv = m_tab.at(name);
+				vv->Read_JSON(itr->value);
+			}
 		}
 		break;
 	default:
@@ -1502,8 +1531,9 @@ reference json_to_ssc_var
 void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 {
 	wxString x;
-	rapidjson::Value json_val;
+	rapidjson::Value json_val, json_bin_array;
 	rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
+	wxByte* p; // for VV_BINARY
 	/* from ssc for reference
     switch (vd->type) {
     default:
@@ -1609,15 +1639,20 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	case VV_DATARR:
 		throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
 		break;
-/*	case VV_BINARY:
-		wxByte* p = (wxByte*)m_bin.GetData();
+	case VV_BINARY:
+		json_val.SetObject();
+		json_val.AddMember("VV_TYPE", rapidjson::Value(VV_BINARY), doc.GetAllocator());
+		json_bin_array.SetArray();
+		p = (wxByte*)m_bin.GetData();
 		for (size_t i = 0; i < m_bin.GetDataLen(); i++)
-			out.Write(p[i]);
+			json_bin_array.PushBack(p[i], doc.GetAllocator());
+		json_val.AddMember(rapidjson::Value("DATA"), json_bin_array.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 		break;
 	default:
-		throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT" + m_type));
+		throw(std::runtime_error("Function not implemented for " + m_type));
 		break;
-*/	}
+	}
 
 }
 
