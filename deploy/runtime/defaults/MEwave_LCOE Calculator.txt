@@ -1,5 +1,5 @@
 1
-700
+715
 accumulators_cost
 1
 1
@@ -261,6 +261,12 @@ average_power_flux
 1
 1
 32.2
+average_power_flux_ts
+1
+1
+1
+1
+0
 balance_of_system_cost_input
 1
 1
@@ -314,6 +320,11 @@ bathymetry
 4
 14
 Gently Sloping
+bathymetry_ts
+1
+4
+9
+<invalid>
 bearings_cost
 1
 1
@@ -477,6 +488,11 @@ city
 4
 6
 Eureka
+city_ts
+1
+4
+9
+<invalid>
 closing_costs_cost
 1
 1
@@ -560,6 +576,11 @@ country
 4
 13
 United States
+country_ts
+1
+4
+9
+<invalid>
 cranage_cost
 1
 1
@@ -571,6 +592,11 @@ data_source
 4
 21
 Sandia; SAND2014-9040
+data_source_ts
+1
+4
+9
+<invalid>
 debt_service_reserve_account_cost
 1
 1
@@ -1057,7 +1083,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5.65588e+06
+5655880
 eng_and_mgmt_cost_input
 1
 1
@@ -1075,7 +1101,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-5.65588e+06
+5655880
 eng_and_mgmt_cost_total
 1
 1
@@ -1189,7 +1215,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-1.60345e+06
+1603450
 export_cable_system_cost_total
 1
 1
@@ -1249,6 +1275,11 @@ file_name
 4
 46
 Humboldt_California_Wave Resource _SAM CSV.csv
+file_name_ts
+1
+4
+9
+<invalid>
 financial_cost_input
 1
 1
@@ -1488,7 +1519,7 @@ insurance_during_construction_cost
 1
 1
 1
-3.64551e+06
+3645510
 insurance_during_construction_cost_input
 1
 1
@@ -1500,7 +1531,7 @@ insurance_during_construction_cost_modeled_ui
 1
 1
 1
-3.64551e+06
+3645510
 insurance_during_construction_method
 1
 1
@@ -1512,7 +1543,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3.64551e+06
+3645510
 insurance_operations_cost
 1
 1
@@ -1675,6 +1706,12 @@ lat
 1
 1
 40.8418
+lat_ts
+1
+1
+1
+1
+0
 laydown_area_cost
 1
 1
@@ -1768,6 +1805,12 @@ lon
 1
 1
 -124.248
+lon_ts
+1
+1
+1
+1
+0
 long_term_service_agreement_cost
 1
 1
@@ -1827,7 +1870,7 @@ maintenance_cost
 1
 1
 1
-3.65828e+06
+3658280
 maintenance_cost_input
 1
 1
@@ -1845,7 +1888,7 @@ maintenance_cost_modeled
 1
 1
 1
-3.65828e+06
+3658280
 maintenance_cost_total
 1
 1
@@ -2025,6 +2068,11 @@ name
 4
 28
 Humboldt Bay - DOE Reference
+name_ts
+1
+4
+9
+<invalid>
 navigation_lighting_cost
 1
 1
@@ -2036,6 +2084,11 @@ nearby_buoy_number
 4
 10
 NDBC 46212
+nearby_buoy_number_ts
+1
+4
+9
+<invalid>
 noise_mitigation_cost
 1
 1
@@ -2046,6 +2099,11 @@ notes
 1
 4
 0
+notes_ts
+1
+4
+9
+<invalid>
 number_devices
 1
 1
@@ -2420,7 +2478,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-2.03767e+06
+2037670
 other_elec_infra_cost_total_display
 1
 1
@@ -3275,6 +3333,11 @@ sea_bed
 4
 13
 Sand and Clay
+sea_bed_ts
+1
+4
+9
+<invalid>
 self_supporting_towers_with_insulators_cost
 1
 1
@@ -3328,7 +3391,7 @@ site_access_port_staging_cost
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_input
 1
 1
@@ -3346,13 +3409,13 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_modeled_ui
 1
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_total
 1
 1
@@ -3430,6 +3493,11 @@ state
 4
 10
 California
+state_ts
+1
+4
+9
+<invalid>
 stator_cost
 1
 1
@@ -3820,6 +3888,12 @@ tz
 1
 1
 -7
+tz_ts
+1
+1
+1
+1
+0
 ui_capital_cost_capacity
 1
 1
@@ -4073,6 +4147,12 @@ wave_device_name
 3
 RM3
 wave_download
+1
+0
+wave_energy_period
+1
+2
+1
 1
 0
 wave_library_folder_list

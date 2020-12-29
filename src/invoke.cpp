@@ -3394,6 +3394,7 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
     else if (type == "wave_ts")
     {
         wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
+        ScanWaveResourceTSData(wave_resource_ts_db, true);
         reloaded = Library::Load(wave_resource_ts_db);
     }
 

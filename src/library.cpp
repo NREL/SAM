@@ -1214,7 +1214,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     // TODO - update fields based on final file
     wxBusyInfo* busy = 0;
     if (show_busy)
-        busy = new wxBusyInfo("Updating wave resource library...");
+        busy = new wxBusyInfo("Updating wave resource time series library...");
 
     wxString path = SamApp::GetRuntimePath() + "../wave_resource_ts/";
     wxDir dir(path);
@@ -1351,14 +1351,14 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
             if ((height_arr = ssc_data_get_array(pdata, "wave_significant_height", &nrows)) != 0)
             {
                 wxString wstr = "";
+                //wstr += "[";
                 for (int r = 0; r < nrows; r++)
                 {
-                    wstr += "[";
-                    
                     wstr += wxString::Format("%g", height_arr[r]);
                     wstr += ";";
-                    wstr += "]";
+                    
                 }
+                //wstr += "]";
                 csv(row, 14) = wxString(wstr);
             }
             if ((period_arr = ssc_data_get_array(pdata, "wave_energy_period", &nrows)) != 0)
@@ -1366,11 +1366,12 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
                 wxString wstr = "";
                 for (int r = 0; r < nrows; r++)
                 {
-                    wstr += "[";
+                    //wstr += "[";
                     wstr += wxString::Format("%g", period_arr[r]);
                     wstr += ";";
-                    wstr += "]";
+                    
                 }
+                //wstr += "]";
                 csv(row, 15) = wxString(wstr);
             }
             row++;

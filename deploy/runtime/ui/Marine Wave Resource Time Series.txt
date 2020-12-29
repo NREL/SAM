@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
 1847
 1161
-17
+18
 Hyperlink
 
 1
@@ -42,8 +42,8 @@ Button
 8
 Name
 5
-14
-btnScanLibrary
+17
+btnScanLibrary_ts
 X
 3
 789
@@ -349,7 +349,7 @@ Tool Tip
 Library
 5
 18
-WaveResourceDataTS
+WaveResourceTSData
 Fields
 5
 127
@@ -605,14 +605,49 @@ DataArray
 10
 Name
 5
+18
+wave_energy_period
+X
+3
+1041
+Y
+3
+426
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+2
+Label
+5
+0
+Description
+5
+0
+TabOrder
+3
+4294967295
+DataArray
+
+1
+10
+Name
+5
 23
 wave_significant_height
 X
 3
-924
+1041
 Y
 3
-396
+387
 Width
 3
 90
@@ -635,21 +670,207 @@ TabOrder
 3
 4294967295
 
+19
+average_power_flux_ts
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Numeric
+bathymetry_ts
+3
 4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+TextEntry
+city_ts
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+TextEntry
+country_ts
+3
+4
+ 
+ 
+ 
+0
+0
+1
+4
+9
+<invalid>
+TextEntry
+data_source_ts
+3
+4
+ 
+ 
+ 
+0
+0
+1
+4
+9
+<invalid>
+TextEntry
+file_name_ts
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+TextEntry
+lat_ts
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Numeric
 location_ts
 3
 4
 Wave resource location
  
-Wave Resource
+ME Wave Resource
 20
-WaveResourceDataTS|0
+WaveResourceTSData|0
+17
 1
+4
+4
+Test
+Library
+lon_ts
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Numeric
+name_ts
+3
+4
+ 
+ 
+ 
+0
+0
 1
 4
 9
 <invalid>
-Library
+TextEntry
+nearby_buoy_number_ts
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+TextEntry
+notes_ts
+3
+4
+ 
+ 
+ 
+0
+0
+1
+4
+9
+<invalid>
+TextEntry
+sea_bed_ts
+3
+4
+ 
+ 
+ 
+0
+0
+1
+4
+9
+<invalid>
+TextEntry
+state_ts
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+TextEntry
+tz_ts
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Numeric
 use_specific_ts_wf_wave
 3
 0
@@ -661,6 +882,20 @@ use_specific_ts_wf_wave
 1
 0
 Default
+wave_energy_period
+3
+2
+Wave Energy Period
+s
+ 
+0
+8
+1
+2
+1
+1
+0
+DataArray
 wave_resource_ts_filename
 3
 0
@@ -675,72 +910,66 @@ Default
 wave_significant_height
 3
 2
- 
- 
+ Significant wave height
+m 
  
 0
-0
+8
 1
 2
 1
 1
 0
-Default
+DataArray
 
 165
 /*equations{'wave_resource_ts_filename'} = define() {
 	if(${use_specific_ts_wf_wave}) return (${user_specified_wave_resource_ts});
 	else return ${file_name_ts};
 };*/
-2907
+2805
 function enable_disable_library() {
 	enable_library = !value('use_specific_wf_wave');
 	enable('wave_resource_matrix',false);
 	property('wave_resource_matrix','ColorMap',enable_library);
-	enable('location',enable_library);
-	enable('btnScanLibrary',enable_library);
-	enable('average_power_flux',enable_library);
-	enable('bathymetry',enable_library);
-	enable('city',enable_library);
-	enable('country',enable_library);
-	enable('data_source',enable_library);
-	enable('file_name',enable_library);
-	enable('frequency_sum',enable_library);
-	enable('lat',enable_library);
 	enable('location_ts',enable_library);
-	enable('lon',enable_library);
-	enable('max_frequency',enable_library);
-	enable('max_frequency_Hs',enable_library);
-	enable('max_frequency_Te',enable_library);
-	enable('name',enable_library);
-	enable('nearby_buoy_number',enable_library);
-	enable('notes',enable_library);
-	enable('sea_bed',enable_library);
-	enable('state',enable_library);
-	enable('tz',enable_library);
+	enable('btnScanLibrary',enable_library);
+	enable('average_power_flux_ts',enable_library);
+	enable('bathymetry_ts',enable_library);
+	enable('city_ts',enable_library);
+	enable('country_ts',enable_library);
+	enable('data_source_ts',enable_library);
+	//enable('file_name',enable_library);
+	enable('frequency_sum',enable_library);
+	enable('lat_ts',enable_library);
+	enable('location_ts',enable_library);
+	enable('lon_ts',enable_library);
+	//enable('max_frequency',enable_library);
+	//enable('max_frequency_Hs',enable_library);
+	//enable('max_frequency_Te',enable_library);
+	enable('name_ts',enable_library);
+	enable('nearby_buoy_number_ts',enable_library);
+	enable('notes_ts',enable_library);
+	enable('sea_bed_ts',enable_library);
+	enable('state_ts',enable_library);
+	enable('tz_ts',enable_library);
 	//enable('in_time_frame',enable_library);
 	//enable('in_location',enable_library);
 	//enable('wave_download',enable_library);
 	
 }
 
-on_change{'btnScanLibrary'} = define() {
-	rescanlibrary('wave');
+on_change{'btnScanLibrary_ts'} = define() {
+	rescanlibrary('wave_ts');
 
 };
 
-on_change{'btn_add_remove_folders'} = define() {
-	update_library_folders('');
-};
 
-on_change{'btn_refresh_library'} = define() {
-	update_library_folders('');
-	update_info('on_change btn_refesh_library');
-};
-
-on_load{'Marine Wave Resource'} = define() {
+on_load{'Marine Wave Resource Time Series'} = define() {
+	rescanlibrary('wave_ts');
+	
 	enable("wave_resource_matrix",false);
-	on_change{'use_specific_wf_wave'}();
+	//on_change{'use_specific_ts_wf_wave'}();
 	enable_disable_library();
 	//show('use_specific_wave_file', false); // determines whether user_specified_weather_file is used instead of solar_data_file_name
 	//show('user_specified_wave_file', false); // requires use_specific_weather_file = 1, set by LK script
@@ -750,18 +979,18 @@ on_load{'Marine Wave Resource'} = define() {
 	//show('in_time_frame', value('in_wave_options') != 0 ); //No option for TMY data on first iteraiton
 	
 	//refresh();
-	//update_library_folders( '' );
-	//update_info( 'on_load Wave Resource Data');
+	//( '' );
+	//update_info( 'on_load Wave Resource Data Time Series');
 };
 
-on_change{'location'} = define() {
+on_change{'location_ts'} = define() {
 	file = ${file_name};
-	value("name",value("location"));
+	value("name",value("location_ts"));
 	
 	if (!file_exists(file))
 	{
 		rescanlibrary( 'wave_ts' );
-		refresh('location');
+		refresh('location_ts');
 		return;
 	}
 	file = replace(file, '\\', '/');
@@ -771,7 +1000,7 @@ on_change{'location'} = define() {
 };
 
 on_change{'use_specific_wf_wave'} = define() {
-	enable( 'user_specified_wf_wave', ${use_specific_wf_wave} );
+	enable( 'user_specified_ts_wf_wave', ${use_specific_wf_wave} );
 	enable( 'select_wf_wind', ${use_specific_wf_wave} );
 	enable_disable_library();
 };
