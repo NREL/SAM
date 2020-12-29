@@ -40,6 +40,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <rapidjson/stringbuffer.h>
 #include <rapidjson/ostreamwrapper.h>
 #include <rapidjson/prettywriter.h> // for stringify JSON
+#include <rapidjson/memorybuffer.h> // for VV_Binary
+#include <rapidjson/stringbuffer.h> // for VV_Binary
 
 
 #include "variables.h"
@@ -302,6 +304,64 @@ void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out) {
 }
 
 wxString vv_strtypes[9] = { "invalid", "number", "array", "matrix", "string", "table", "binary", "data array", "data matrix" };
+/*
+class IBinaryWrapper {
+public:
+	typedef char Ch;
+	IBinaryWrapper(wxMemoryBuffer& imb) : m_imb(imb) {
+		m_pos = 0;
+		m_p = (wxByte*)imb.GetData();
+	}
+	Ch Peek() const { // 1
+		if (m_pos < m_imb.GetDataLen())
+			return (Ch)m_p[m_pos];
+		else
+			return '\0';
+	}
+	Ch Take() { // 2
+		if (m_pos < m_imb.GetDataLen())
+		{
+			return (Ch)m_p[m_pos];
+			m_pos++;
+		}
+		else
+			return '\0';
+	}
+	size_t Tell() const { return m_pos; } // 3
+	Ch* PutBegin() { assert(false); return 0; }
+	void Put(Ch) { assert(false); }
+	void Flush() { assert(false); }
+	size_t PutEnd(Ch*) { assert(false); return 0; }
+private:
+	IBinaryWrapper(const IBinaryWrapper&);
+	IBinaryWrapper& operator=(const IBinaryWrapper&);
+	wxMemoryBuffer& m_imb;
+	size_t m_pos;
+	wxByte* m_p;
+};
+
+class OBinaryWrapper {
+public:
+	typedef char Ch;
+	OBinaryWrapper(wxMemoryBuffer& imb) : m_imb(imb) {
+		m_pos = 0;
+//		m_p = (wxByte*)imb.GetData();
+	}
+	Ch Peek() const { assert(false); return '\0'; }
+	Ch Take() { assert(false); return '\0'; }
+	size_t Tell() const {  }
+	Ch* PutBegin() { assert(false); return 0; }
+	void Put(Ch c) { m_imb.(c); }                  // 1
+	void Flush() { os_.flush(); }                   // 2
+	size_t PutEnd(Ch*) { assert(false); return 0; }
+private:
+	OBinaryWrapper(const OBinaryWrapper&);
+	OBinaryWrapper& operator=(const OBinaryWrapper&);
+	wxMemoryBuffer& m_imb;
+	size_t m_pos;
+	wxByte* m_p;
+};
+*/
 
 VarTable::VarTable()
 {
@@ -1493,21 +1553,40 @@ reference json_to_ssc_var
 		*/
 		if (json_val.HasMember("VV_TYPE") && json_val.FindMember("VV_TYPE")->value.IsInt() && json_val.FindMember("VV_TYPE")->value.GetInt() == VV_BINARY) {
 			m_type = VV_BINARY;
-			if (json_val.HasMember("DATA") && json_val.FindMember("DATA")->value.IsArray()) {
+//			if (json_val.HasMember("DATA") && json_val.FindMember("DATA")->value.IsArray()) {
+//				//json_bin_array = json_val.FindMember("DATA")->value.GetArray();
+//				nr = json_val.FindMember("DATA")->value.GetArray().Size();
+//				nr = nr / 2;
+//				m_bin.Clear();
+//				m_bin.SetDataLen(nr);
+//				//for (rapidjson::SizeType i = 0; i < nr; i++)
+//				//	m_bin.AppendByte((wxByte) json_bin_array[i].GetUint());
+////				for (auto& v : json_val.FindMember("DATA")->value.GetArray())
+////					m_bin.AppendByte((char)v.GetInt());
+//				for (rapidjson::SizeType i = 0; i < nr; i++) {
+//					p = (wxByte)(json_val.FindMember("DATA")->value.GetArray()[i].GetInt());
+//					m_bin.AppendByte(p);
+//				}
+//			}
+//		}
+			if (json_val.HasMember("DATA")) {// && json_val.FindMember("DATA")->value.IsArray()) {
 				//json_bin_array = json_val.FindMember("DATA")->value.GetArray();
-				nr = json_val.FindMember("DATA")->value.GetArray().Size();
+				//nr = json_val.FindMember("DATA")->value.GetArray().Size();
+				//nr = nr / 2;
+				nr = json_val.FindMember("DATA")->value.GetStringLength();
 				m_bin.Clear();
-				m_bin.SetDataLen(nr);
+			//	m_bin.SetDataLen(nr);
 				//for (rapidjson::SizeType i = 0; i < nr; i++)
 				//	m_bin.AppendByte((wxByte) json_bin_array[i].GetUint());
 //				for (auto& v : json_val.FindMember("DATA")->value.GetArray())
 //					m_bin.AppendByte((char)v.GetInt());
 				for (rapidjson::SizeType i = 0; i < nr; i++) {
-					p = (json_val.FindMember("DATA")->value.GetArray()[i].GetUint() >> 24) & 0xFF;
+					p = (wxByte)(json_val.FindMember("DATA")->value.GetString()[i]);
 					m_bin.AppendByte(p);
 				}
 			}
 		}
+
 		else {
 			m_type = VV_TABLE; // need VV_BINARY, too.
 			//json_table.AddMember(rapidjson::Value(strTable.c_str(), strTable.size(), json_table.GetAllocator()).Move(), json_val.GetObject(), json_table.GetAllocator());
@@ -1533,7 +1612,91 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	wxString x;
 	rapidjson::Value json_val, json_bin_array;
 	rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
-	wxByte* p; // for VV_BINARY
+//	wxByte* p; // for VV_BINARY
+	const char* p; // for VV_BINARY
+	rapidjson::MemoryBuffer mb;
+	rapidjson::StringBuffer sb;
+
+
+	if (m_type == VV_NUMBER) {
+		json_val = rapidjson::kWriteNanAndInfFlag; // default if NaN, inf or invalid
+		if (m_val.nrows() == 1 && m_val.ncols() == 1) {
+			if (!std::isnan(m_val(0, 0)) && !std::isinf(m_val(0, 0)))
+				json_val = m_val(0, 0);
+		}
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+	else if (m_type == VV_ARRAY) {
+		json_val.SetArray();
+		for (size_t j = 0; j < m_val.ncols(); j++) {
+			if (std::isnan(m_val(0, j)) || std::isinf(m_val(0, j)))
+				json_val.PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
+			else
+				json_val.PushBack(rapidjson::Value(m_val(0, j)), doc.GetAllocator());
+		}
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+	else if (m_type == VV_MATRIX) {
+		json_val.SetArray();
+		for (size_t i = 0; i < m_val.nrows(); i++) {
+			json_val.PushBack(rapidjson::Value(rapidjson::kArrayType), doc.GetAllocator());
+			for (size_t j = 0; j < m_val.ncols(); j++) {
+				if (std::isnan(m_val(i, j)) || std::isinf(m_val(i, j)))
+					json_val[(rapidjson::SizeType)i].PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
+				else
+					json_val[(rapidjson::SizeType)i].PushBack(m_val(i, j), doc.GetAllocator());
+			}
+		}
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+	else if (m_type == VV_STRING) {
+		x = m_str;
+		if (wxFileName::Exists(x)) { // write filename only
+			wxString fn, ext;
+			wxFileName::SplitPath(x, NULL, &fn, &ext);
+			x = fn + "." + ext;
+		}
+		json_val.SetString(x.c_str(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+	else if (m_type == VV_TABLE) {
+		m_tab.Write_JSON(json_table);
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
+	}
+	else if (m_type == VV_DATMAT || m_type == VV_DATARR) 
+		throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
+	else if (m_type == VV_BINARY) {
+		json_val.SetObject();
+		json_val.AddMember("VV_TYPE", rapidjson::Value(VV_BINARY), doc.GetAllocator());
+		/*
+				json_bin_array.SetArray();
+				p = (const char*)m_bin.GetData();
+
+				for (size_t i = 0; i < m_bin.GetDataLen(); i++)
+					json_bin_array.PushBack(p[i], doc.GetAllocator());
+
+				IBinaryWrapper bw(m_bin);
+
+
+		//		p = (const char*)m_bin.GetData();
+		//		json_table.Parse(p, m_bin.GetDataLen());
+		*/
+				p = (const char*)m_bin.GetData();
+		//		for (size_t i = 0; i < m_bin.GetDataLen(); i++)
+		//			sb.Put(p[i]);
+				
+			//	rapidjson::Writer<rapidjson::StringBuffer> writer(sb);
+			//	json_bin_array.Accept(writer);
+			//	json_bin_array.SetString(sb.GetString(), sb.GetLength());
+				json_bin_array.SetString(p, m_bin.GetDataLen());
+				//		json_val.AddMember("DATA", json_table.Move(), doc.GetAllocator());
+		//		json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
+				json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
+				doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+	else
+		throw(std::runtime_error("Function not implemented for " + m_type));
+
 	/* from ssc for reference
     switch (vd->type) {
     default:
@@ -1585,7 +1748,7 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
     }
 
 	*/
-
+/*
 	switch (m_type)
 	{
 	case VV_INVALID:
@@ -1642,18 +1805,35 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	case VV_BINARY:
 		json_val.SetObject();
 		json_val.AddMember("VV_TYPE", rapidjson::Value(VV_BINARY), doc.GetAllocator());
+/*
 		json_bin_array.SetArray();
-		p = (wxByte*)m_bin.GetData();
+		p = (const char*)m_bin.GetData();
+
 		for (size_t i = 0; i < m_bin.GetDataLen(); i++)
 			json_bin_array.PushBack(p[i], doc.GetAllocator());
-		json_val.AddMember(rapidjson::Value("DATA"), json_bin_array.Move(), doc.GetAllocator());
+
+		IBinaryWrapper bw(m_bin);
+
+
+//		p = (const char*)m_bin.GetData();
+//		json_table.Parse(p, m_bin.GetDataLen());
+
+		p = (const char*)m_bin.GetData();
+		for (size_t i = 0; i < m_bin.GetDataLen(); i++)
+			sb.Put(p[i]);
+
+		rapidjson::Writer<rapidjson::StringBuffer> writer(sb);
+		json_bin_array.Accept(writer);
+
+//		json_val.AddMember("DATA", json_table.Move(), doc.GetAllocator());
+		json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 		break;
 	default:
 		throw(std::runtime_error("Function not implemented for " + m_type));
 		break;
 	}
-
+*/
 }
 
 
