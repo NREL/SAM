@@ -306,64 +306,6 @@ void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out) {
 }
 
 wxString vv_strtypes[9] = { "invalid", "number", "array", "matrix", "string", "table", "binary", "data array", "data matrix" };
-/*
-class IBinaryWrapper {
-public:
-	typedef char Ch;
-	IBinaryWrapper(wxMemoryBuffer& imb) : m_imb(imb) {
-		m_pos = 0;
-		m_p = (wxByte*)imb.GetData();
-	}
-	Ch Peek() const { // 1
-		if (m_pos < m_imb.GetDataLen())
-			return (Ch)m_p[m_pos];
-		else
-			return '\0';
-	}
-	Ch Take() { // 2
-		if (m_pos < m_imb.GetDataLen())
-		{
-			return (Ch)m_p[m_pos];
-			m_pos++;
-		}
-		else
-			return '\0';
-	}
-	size_t Tell() const { return m_pos; } // 3
-	Ch* PutBegin() { assert(false); return 0; }
-	void Put(Ch) { assert(false); }
-	void Flush() { assert(false); }
-	size_t PutEnd(Ch*) { assert(false); return 0; }
-private:
-	IBinaryWrapper(const IBinaryWrapper&);
-	IBinaryWrapper& operator=(const IBinaryWrapper&);
-	wxMemoryBuffer& m_imb;
-	size_t m_pos;
-	wxByte* m_p;
-};
-
-class OBinaryWrapper {
-public:
-	typedef char Ch;
-	OBinaryWrapper(wxMemoryBuffer& imb) : m_imb(imb) {
-		m_pos = 0;
-//		m_p = (wxByte*)imb.GetData();
-	}
-	Ch Peek() const { assert(false); return '\0'; }
-	Ch Take() { assert(false); return '\0'; }
-	size_t Tell() const {  }
-	Ch* PutBegin() { assert(false); return 0; }
-	void Put(Ch c) { m_imb.(c); }                  // 1
-	void Flush() { os_.flush(); }                   // 2
-	size_t PutEnd(Ch*) { assert(false); return 0; }
-private:
-	OBinaryWrapper(const OBinaryWrapper&);
-	OBinaryWrapper& operator=(const OBinaryWrapper&);
-	wxMemoryBuffer& m_imb;
-	size_t m_pos;
-	wxByte* m_p;
-};
-*/
 
 VarTable::VarTable()
 {
@@ -1530,8 +1472,12 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 		json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
-	else
-		throw(std::runtime_error("Function not implemented for " + m_type));
+	else {
+	// uncomment for production	throw(std::runtime_error("Function not implemented for " + m_type));
+		x = wxString::Format("unhandled type specified in UI: %s", vv_strtypes[m_type]);
+		json_val.SetString(x.c_str(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
 }
 
 
