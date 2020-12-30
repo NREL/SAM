@@ -798,27 +798,20 @@ bool VarTable::Read_text(wxInputStream &_I)
 
 bool VarTable::Read_JSON( const std::string& file)
 {
-
-//	std::ifstream in(file);
 	rapidjson::Document doc;
-//	rapidjson::IStreamWrapper isw(in);
-	FILE* fp = fopen(file.c_str(), "r"); // non-Windows use "r"
+	FILE* fp = fopen(file.c_str(), "r"); 
 	if (!fp) return false;
 	char readBuffer[65536];
 	rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
-
-	//	doc.ParseStream(isw);
 	doc.ParseStream(is);
 	if (doc.HasParseError()) {
 		// throw?
 		fclose(fp);
-		//in.close();
 		return false;
 	}
 	else {
 		Read_JSON(doc);
 		fclose(fp);
-		//in.close();
 		return true;
 	}
 }
@@ -849,23 +842,16 @@ bool VarTable::Read_JSON(const rapidjson::Document& doc)
 
 bool VarTable::Write_JSON(const std::string& file, size_t maxdim)
 {
-//	std::ofstream out( file );
-
-//	if (!out.is_open()) return false;
-	FILE* fp = fopen(file.c_str(), "w"); // non-Windows use "w"
+	FILE* fp = fopen(file.c_str(), "w"); 
 	if (!fp) return false;
 	char writeBuffer[65536];
 	rapidjson::FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
 
 	rapidjson::Document doc;
 	Write_JSON(doc, maxdim);
-//	rapidjson::OStreamWrapper osw(out);
-//	rapidjson::Writer<rapidjson::OStreamWrapper> writer(osw);
-//	rapidjson::PrettyWriter<rapidjson::OStreamWrapper> writer(osw);
 	rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(os);
 	doc.Accept(writer);
 	fclose(fp);
-//	out.close();
 	return true;
 }
 

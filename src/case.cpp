@@ -653,7 +653,7 @@ bool Case::LoadDefaults( wxString *pmsg )
 	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
 	binary = true;
-#elif defined(__SAVE_AS_JSON__)
+#elif defined(__LOAD_AS_JSON__)
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".json";
 	binary = false;
@@ -668,7 +668,7 @@ bool Case::LoadDefaults( wxString *pmsg )
 	VarTable vt;
 	if ( wxFileExists(file) )
 	{
-#if defined(__SAVE_AS_JSON__)
+#if defined(__LOAD_AS_JSON__)
 		ok = VarTableFromJSONFile(&vt, file.ToStdString());
 #else
 		wxFFileInputStream in(file);
