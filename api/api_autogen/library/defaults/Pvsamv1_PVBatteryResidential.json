@@ -372,8 +372,6 @@
 			"batt_current_charge_max": 1998.4,
 			"batt_current_choice": 1,
 			"batt_current_discharge_max": 1998.4,
-			"batt_cycle_cost": [0.100000],
-			"batt_cycle_cost_choice": 0,
 			"batt_dc_ac_efficiency": 96,
 			"batt_dc_dc_efficiency": 99,
 			"batt_inverter_efficiency_cutoff": 90,
@@ -473,6 +471,8 @@
 		},
 		"BatteryDispatch": {
 			"batt_custom_dispatch": [0.000000],
+			"batt_cycle_cost": [0.100000],
+			"batt_cycle_cost_choice": 0,
 			"batt_dispatch_auto_can_charge": 1,
 			"batt_dispatch_auto_can_fuelcellcharge": 0,
 			"batt_dispatch_auto_can_gridcharge": 0,
