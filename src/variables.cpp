@@ -35,13 +35,15 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/exttextstream.h>
 #include <lk/stdlib.h>
 #include <lk/eval.h>
-#include <rapidjson/istreamwrapper.h>
+//#include <rapidjson/istreamwrapper.h>
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
-#include <rapidjson/ostreamwrapper.h>
+//#include <rapidjson/ostreamwrapper.h>
 #include <rapidjson/prettywriter.h> // for stringify JSON
-#include <rapidjson/memorybuffer.h> // for VV_Binary
-#include <rapidjson/stringbuffer.h> // for VV_Binary
+//#include <rapidjson/memorybuffer.h> // for VV_Binary
+//#include <rapidjson/stringbuffer.h> // for VV_Binary
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/filewritestream.h>
 
 
 #include "variables.h"
@@ -797,19 +799,26 @@ bool VarTable::Read_text(wxInputStream &_I)
 bool VarTable::Read_JSON( const std::string& file)
 {
 
-	std::ifstream in(file);
+//	std::ifstream in(file);
 	rapidjson::Document doc;
-	rapidjson::IStreamWrapper isw(in);
+//	rapidjson::IStreamWrapper isw(in);
+	FILE* fp = fopen(file.c_str(), "r"); // non-Windows use "r"
+	if (!fp) return false;
+	char readBuffer[65536];
+	rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
 
-	doc.ParseStream(isw);
+	//	doc.ParseStream(isw);
+	doc.ParseStream(is);
 	if (doc.HasParseError()) {
 		// throw?
-		in.close();
+		fclose(fp);
+		//in.close();
 		return false;
 	}
 	else {
 		Read_JSON(doc);
-		in.close();
+		fclose(fp);
+		//in.close();
 		return true;
 	}
 }
@@ -840,15 +849,23 @@ bool VarTable::Read_JSON(const rapidjson::Document& doc)
 
 bool VarTable::Write_JSON(const std::string& file, size_t maxdim)
 {
-	std::ofstream out( file );
-	if (!out.is_open()) return false;
+//	std::ofstream out( file );
+
+//	if (!out.is_open()) return false;
+	FILE* fp = fopen(file.c_str(), "w"); // non-Windows use "w"
+	if (!fp) return false;
+	char writeBuffer[65536];
+	rapidjson::FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
+
 	rapidjson::Document doc;
 	Write_JSON(doc, maxdim);
-	rapidjson::OStreamWrapper osw(out);
+//	rapidjson::OStreamWrapper osw(out);
 //	rapidjson::Writer<rapidjson::OStreamWrapper> writer(osw);
-	rapidjson::PrettyWriter<rapidjson::OStreamWrapper> writer(osw);
+//	rapidjson::PrettyWriter<rapidjson::OStreamWrapper> writer(osw);
+	rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(os);
 	doc.Accept(writer);
-	out.close();
+	fclose(fp);
+//	out.close();
 	return true;
 }
 
@@ -1468,8 +1485,8 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	rapidjson::Value json_val, json_bin_array;
 	rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
 	const char* p; // for VV_BINARY
-	rapidjson::MemoryBuffer mb;
-	rapidjson::StringBuffer sb;
+//	rapidjson::MemoryBuffer mb;
+//	rapidjson::StringBuffer sb;
 
 
 	if (m_type == VV_NUMBER) {
