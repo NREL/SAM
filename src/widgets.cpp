@@ -3596,7 +3596,8 @@ const wxString &verticalLabel)
 	{
 		// for top buttons layout (default)
 		wxBoxSizer *h_tb_sizer = new wxBoxSizer(wxHORIZONTAL);
-		h_tb_sizer->Add(m_caption, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+//		h_tb_sizer->Add(m_caption, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 3);
+		h_tb_sizer->Add(m_caption, 0, wxALL | wxEXPAND, 3);
 		h_tb_sizer->AddStretchSpacer();
 		if (!bottombuttons)
 		{

@@ -818,24 +818,6 @@ bool VarTable::Read_JSON(const rapidjson::Document& doc)
 {
 	clear();
 	bool ok = true;
-	/*
-	reference rapidjson_to_ssc_data
-		if (document.HasParseError()) {
-		std::string s = rapidjson::GetParseError_En(document.GetParseError());
-		vt->assign("error", s);
-		return dynamic_cast<ssc_data_t>(vt);
-	}
-//    static const char* kTypeNames[] = { "Null", "False", "True", "Object", "Array", "String", "Number" };
-	for (rapidjson::Value::ConstMemberIterator itr = document.MemberBegin(); itr != document.MemberEnd(); ++itr) {
-		//printf("Type of member %s is %s\n", itr->name.GetString(), kTypeNames[itr->value.GetType()]);
-		var_data ssc_val;
-		rapidjson_to_ssc_var(itr->value, &ssc_val);
-		vt->assign(itr->name.GetString(), ssc_val);
-	}
-
-	*/
-
-
 	for (rapidjson::Value::ConstMemberIterator itr = doc.MemberBegin(); itr != doc.MemberEnd(); ++itr) {
 		VarValue* value = new VarValue;
 		ok = ok && value->Read_JSON(itr->value);
@@ -852,7 +834,6 @@ bool VarTable::Read_JSON(const rapidjson::Document& doc)
 		else 
 			delete value;
 	}
-
 	return ok;
 }
 
@@ -879,7 +860,6 @@ void VarTable::Write_JSON(rapidjson::Document& doc, size_t maxdim)
 	VarValue* v;
 	if (maxdim == 0)
 	{
-//		doc.AddMember(rapidjson::Value("Number Variables", doc.GetAllocator()).Move(), size(), doc.GetAllocator());
 		names = ListAll();
 		names.Sort();
 		for (size_t i = 0; i < names.Count(); i++)
@@ -1377,96 +1357,6 @@ void wxTextOutputStream::WriteDouble(double d)
 
 bool VarValue::Read_JSON(const rapidjson::Value& json_val)
 {
-/*
-reference json_to_ssc_var
-	if (!ssc_val)
-		return;
-	auto vd = static_cast<var_data*>(ssc_val);
-	vd->clear();
-	//using namespace Json;
-	//Json::Value::Members members;
-	bool is_arr, is_mat;
-	std::vector<ssc_number_t> vec;
-	std::vector<var_data>* vd_arr;
-	var_table* vd_tab;
-
-	auto is_numerical = [](const rapidjson::Value& json_val) {
-		bool is_num = true;
-		for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
-			if (!json_val[i].IsNumber() && !json_val[i].IsBool()) {
-				is_num = false;
-				break;
-			}
-		}
-		return is_num;
-	};
-
-	switch (json_val.GetType()) {
-	default:
-	case rapidjson::Type::kNullType:
-		return;
-	case rapidjson::Type::kNumberType:
-	case rapidjson::Type::kFalseType:
-	case rapidjson::Type::kTrueType:
-		vd->type = SSC_NUMBER;
-		vd->num[0] = json_val.GetDouble();
-		return;
-	case rapidjson::Type::kStringType:
-		vd->type = SSC_STRING;
-		vd->str = json_val.GetString();
-		return;
-	case rapidjson::Type::kArrayType:
-		// determine if SSC_ARRAY
-		is_arr = is_numerical(json_val);
-		if (is_arr) {
-			vd->type = SSC_ARRAY;
-			if (json_val[0].IsNull())
-				return;
-			for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
-				vec.push_back(json_val[i].GetDouble());
-			}
-			vd->num.assign(&vec[0], vec.size());
-			return;
-		}
-		// SSC_MATRIX
-		is_mat = true;
-		for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
-			if (json_val[i].GetType() != rapidjson::Type::kArrayType || !is_numerical(json_val[i])) {
-				is_mat = false;
-				break;
-			}
-		}
-		if (is_mat) {
-			vd->type = SSC_MATRIX;
-			if (json_val[0].IsNull())
-				return;
-			for (rapidjson::SizeType irow = 0; irow < json_val.Size(); irow++) {
-				for (rapidjson::SizeType icol = 0; icol < json_val[irow].Size(); icol++) {
-					vec.push_back(json_val[irow][icol].GetDouble());
-				}
-			}
-			vd->num.assign(&vec[0], json_val.Size(), json_val[0].Size());
-			return;
-		}
-		// SSC_DATARR
-		vd_arr = &vd->vec;
-		for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
-			vd_arr->emplace_back(var_data());
-			auto entry = &vd_arr->back();
-			rapidjson_to_ssc_var(json_val[i], entry);
-		}
-		vd->type = SSC_DATARR;
-		return;
-	case rapidjson::Type::kObjectType:
-		vd_tab = &vd->table;
-		for (rapidjson::Value::ConstMemberIterator itr = json_val.MemberBegin(); itr != json_val.MemberEnd(); ++itr) {
-			auto entry = vd_tab->assign(itr->name.GetString(), var_data());
-			rapidjson_to_ssc_var(itr->value, entry);
-		}
-		vd->type = SSC_TABLE;
-	}
-
-*/
 	wxByte p;
 	bool ok = true;
 	bool is_arr, is_mat;
@@ -1544,54 +1434,19 @@ reference json_to_ssc_var
 			break;
 		}
 	case rapidjson::Type::kObjectType:
-		/* VV_BINARY if first member is like
-		    "shading_3d_scene": {
-        "VV_TYPE": "VV_BINARY",
-        "DATA": [
-            132,
-            1,
-		*/
 		if (json_val.HasMember("VV_TYPE") && json_val.FindMember("VV_TYPE")->value.IsInt() && json_val.FindMember("VV_TYPE")->value.GetInt() == VV_BINARY) {
 			m_type = VV_BINARY;
-//			if (json_val.HasMember("DATA") && json_val.FindMember("DATA")->value.IsArray()) {
-//				//json_bin_array = json_val.FindMember("DATA")->value.GetArray();
-//				nr = json_val.FindMember("DATA")->value.GetArray().Size();
-//				nr = nr / 2;
-//				m_bin.Clear();
-//				m_bin.SetDataLen(nr);
-//				//for (rapidjson::SizeType i = 0; i < nr; i++)
-//				//	m_bin.AppendByte((wxByte) json_bin_array[i].GetUint());
-////				for (auto& v : json_val.FindMember("DATA")->value.GetArray())
-////					m_bin.AppendByte((char)v.GetInt());
-//				for (rapidjson::SizeType i = 0; i < nr; i++) {
-//					p = (wxByte)(json_val.FindMember("DATA")->value.GetArray()[i].GetInt());
-//					m_bin.AppendByte(p);
-//				}
-//			}
-//		}
 			if (json_val.HasMember("DATA")) {// && json_val.FindMember("DATA")->value.IsArray()) {
-				//json_bin_array = json_val.FindMember("DATA")->value.GetArray();
-				//nr = json_val.FindMember("DATA")->value.GetArray().Size();
-				//nr = nr / 2;
 				nr = json_val.FindMember("DATA")->value.GetStringLength();
 				m_bin.Clear();
-			//	m_bin.SetDataLen(nr);
-				//for (rapidjson::SizeType i = 0; i < nr; i++)
-				//	m_bin.AppendByte((wxByte) json_bin_array[i].GetUint());
-//				for (auto& v : json_val.FindMember("DATA")->value.GetArray())
-//					m_bin.AppendByte((char)v.GetInt());
 				for (rapidjson::SizeType i = 0; i < nr; i++) {
 					p = (wxByte)(json_val.FindMember("DATA")->value.GetString()[i]);
 					m_bin.AppendByte(p);
 				}
 			}
 		}
-
 		else {
 			m_type = VV_TABLE; // need VV_BINARY, too.
-			//json_table.AddMember(rapidjson::Value(strTable.c_str(), strTable.size(), json_table.GetAllocator()).Move(), json_val.GetObject(), json_table.GetAllocator());
-			//m_tab.Read_JSON(json_table);
-	//		json_val.GetObject();
 			for (rapidjson::Value::ConstMemberIterator itr = json_val.MemberBegin(); itr != json_val.MemberEnd(); ++itr) {
 				wxString name = wxString(itr->name.GetString());
 				m_tab.emplace(name, new VarValue());
@@ -1612,7 +1467,6 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	wxString x;
 	rapidjson::Value json_val, json_bin_array;
 	rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
-//	wxByte* p; // for VV_BINARY
 	const char* p; // for VV_BINARY
 	rapidjson::MemoryBuffer mb;
 	rapidjson::StringBuffer sb;
@@ -1668,172 +1522,13 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	else if (m_type == VV_BINARY) {
 		json_val.SetObject();
 		json_val.AddMember("VV_TYPE", rapidjson::Value(VV_BINARY), doc.GetAllocator());
-		/*
-				json_bin_array.SetArray();
-				p = (const char*)m_bin.GetData();
-
-				for (size_t i = 0; i < m_bin.GetDataLen(); i++)
-					json_bin_array.PushBack(p[i], doc.GetAllocator());
-
-				IBinaryWrapper bw(m_bin);
-
-
-		//		p = (const char*)m_bin.GetData();
-		//		json_table.Parse(p, m_bin.GetDataLen());
-		*/
-				p = (const char*)m_bin.GetData();
-		//		for (size_t i = 0; i < m_bin.GetDataLen(); i++)
-		//			sb.Put(p[i]);
-				
-			//	rapidjson::Writer<rapidjson::StringBuffer> writer(sb);
-			//	json_bin_array.Accept(writer);
-			//	json_bin_array.SetString(sb.GetString(), sb.GetLength());
-				json_bin_array.SetString(p, m_bin.GetDataLen());
-				//		json_val.AddMember("DATA", json_table.Move(), doc.GetAllocator());
-		//		json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
-				json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
-				doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		p = (const char*)m_bin.GetData();
+		json_bin_array.SetString(p, m_bin.GetDataLen());
+		json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else
 		throw(std::runtime_error("Function not implemented for " + m_type));
-
-	/* from ssc for reference
-    switch (vd->type) {
-    default:
-    case SSC_INVALID:
-        return json_val;
-    case SSC_NUMBER:
-        json_val = vd->num[0];
-        return json_val;
-    case SSC_STRING:
-        json_val.SetString(vd->str.c_str(),d.GetAllocator());
-        return json_val;
-    case SSC_ARRAY:
-        json_val.SetArray();
-        for (size_t i = 0; i < vd->num.ncols(); i++) {
-            json_val.PushBack(rapidjson::Value(vd->num[i]), d.GetAllocator());
-        }
-        return json_val;
-    case SSC_MATRIX:
-        json_val.SetArray();
-        for (size_t i = 0; i < vd->num.nrows(); i++) {
-            json_val.PushBack(rapidjson::Value(rapidjson::kArrayType), d.GetAllocator());
-            for (size_t j = 0; j < vd->num.ncols(); j++) {
-                json_val[(rapidjson::SizeType)i].PushBack(vd->num.at(i, j),d.GetAllocator());
-            }
-        }
-        return json_val;
-    case SSC_DATARR:
-        json_val.SetArray();
-        for (auto& dat : vd->vec) {
-            json_val.PushBack(ssc_var_to_rapidjson(&dat,d),d.GetAllocator());
-        }
-        return json_val;
-    case SSC_DATMAT:
-        json_val.SetArray();
-        for (auto& row : vd->mat) {
-            auto json_row =rapidjson::Value(rapidjson::kArrayType);
-            for (auto& dat : row) {
-                json_row.PushBack(ssc_var_to_rapidjson(&dat,d), d.GetAllocator());
-            }
-            json_val.PushBack(json_row, d.GetAllocator());
-        }
-        return json_val;
-    case SSC_TABLE:
-        json_val.SetObject();
-        for (auto const& it : *vd->table.get_hash()) {
-            json_val.AddMember(rapidjson::Value(it.first.c_str(), d.GetAllocator()).Move(), ssc_var_to_rapidjson(it.second, d).Move(), d.GetAllocator());
-        }
-        return json_val;
-    }
-
-	*/
-/*
-	switch (m_type)
-	{
-	case VV_INVALID:
-		break; // no data to be written
-	case VV_NUMBER:
-		json_val = rapidjson::kWriteNanAndInfFlag; // default if NaN, inf or invalid
-		if (m_val.nrows() == 1 && m_val.ncols() == 1) {
-			if (!std::isnan(m_val(0, 0)) && !std::isinf(m_val(0, 0)))
-				json_val = m_val(0, 0);
-		}
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
-		break;
-	case VV_ARRAY:
-		json_val.SetArray();
-		for (size_t j = 0; j < m_val.ncols(); j++) {
-			if (std::isnan(m_val(0, j)) || std::isinf(m_val(0, j)))
-				json_val.PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
-			else
-				json_val.PushBack(rapidjson::Value(m_val(0, j)), doc.GetAllocator());
-		}
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
-		break;
-	case VV_MATRIX:
-		json_val.SetArray();
-		for (size_t i = 0; i < m_val.nrows(); i++) {
-			json_val.PushBack(rapidjson::Value(rapidjson::kArrayType), doc.GetAllocator());
-			for (size_t j = 0; j < m_val.ncols(); j++) {
-				if (std::isnan(m_val(i,j)) || std::isinf(m_val(i,j)))
-					json_val[(rapidjson::SizeType)i].PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
-				else
-					json_val[(rapidjson::SizeType)i].PushBack(m_val(i, j), doc.GetAllocator());
-			}
-		}
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
-		break;
-	case VV_STRING:
-		x = m_str;
-		if (wxFileName::Exists(x))	{ // write filename only
-			wxString fn, ext;
-			wxFileName::SplitPath(x, NULL, &fn, &ext);
-			x = fn + "." + ext;
-		}
-		json_val.SetString(x.c_str(), doc.GetAllocator());
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
-		break;
-	case VV_TABLE:
-		m_tab.Write_JSON(json_table);
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
-		break;
-	case VV_DATMAT:
-	case VV_DATARR:
-		throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
-		break;
-	case VV_BINARY:
-		json_val.SetObject();
-		json_val.AddMember("VV_TYPE", rapidjson::Value(VV_BINARY), doc.GetAllocator());
-/*
-		json_bin_array.SetArray();
-		p = (const char*)m_bin.GetData();
-
-		for (size_t i = 0; i < m_bin.GetDataLen(); i++)
-			json_bin_array.PushBack(p[i], doc.GetAllocator());
-
-		IBinaryWrapper bw(m_bin);
-
-
-//		p = (const char*)m_bin.GetData();
-//		json_table.Parse(p, m_bin.GetDataLen());
-
-		p = (const char*)m_bin.GetData();
-		for (size_t i = 0; i < m_bin.GetDataLen(); i++)
-			sb.Put(p[i]);
-
-		rapidjson::Writer<rapidjson::StringBuffer> writer(sb);
-		json_bin_array.Accept(writer);
-
-//		json_val.AddMember("DATA", json_table.Move(), doc.GetAllocator());
-		json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
-		break;
-	default:
-		throw(std::runtime_error("Function not implemented for " + m_type));
-		break;
-	}
-*/
 }
 
 
