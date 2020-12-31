@@ -3535,22 +3535,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_current_discharge_max_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_cycle_cost: Input battery cycle degradaton penalty per year [$/cycle-kWh]
-	 * options: length 1 or analysis_period, length 1 will be extended using inflation
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_cycle_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set batt_cycle_cost_choice: Use SAM cost model for degradaton penalty or input custom via batt_cycle_cost [0/1]
-	 * options: 0=UseCostModel,1=InputCost
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set batt_dc_ac_efficiency: Battery DC to AC efficiency
 	 * options: None
 	 * constraints: None
@@ -4020,6 +4004,22 @@ extern "C"
 	 * required if: en_batt=1&batt_dispatch_choice=3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_custom_dispatch_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set batt_cycle_cost: Input battery cycle degradaton penalty per year [$/cycle-kWh]
+	 * options: length 1 or analysis_period, length 1 will be extended using inflation
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set batt_cycle_cost_choice: Use SAM cost model for degradaton penalty or input custom via batt_cycle_cost [0/1]
+	 * options: 0=UseCostModel,1=InputCost
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_dispatch_auto_can_charge: System charging allowed for automated dispatch? [kW]
@@ -5460,10 +5460,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_current_discharge_max_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Pvsamv1_BatterySystem_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_cycle_cost_choice_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_dc_ac_efficiency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_dc_dc_efficiency_nget(SAM_table ptr, SAM_error *err);
@@ -5592,6 +5588,10 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_auto_gridcharge_max_daily_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_custom_dispatch_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_charge_nget(SAM_table ptr, SAM_error *err);
 

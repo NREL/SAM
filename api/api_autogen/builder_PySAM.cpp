@@ -744,8 +744,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\trv = new" << tech_symbol << "Object((void*)ptr);\n"
                "\tif (rv == NULL)\n"
                "\t\treturn NULL;\n\n"
-               "\trv->data_owner_ptr = NULL;\n"
-               "\treturn (PyObject *)rv;\n"
+               "\trv->data_owner_ptr = NULL;\n";
+    if (stateful) {
+        fx_file << "\trv->cmod_ptr = NULL;\n";
+    }
+    fx_file << "\treturn (PyObject *)rv;\n"
                "}\n\n";
 
     // defaults loading fx
@@ -765,8 +768,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\n"
                "\trv->data_owner_ptr = NULL;\n"
                "\tPySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", def);\n"
-               "\n"
-               "\treturn (PyObject *)rv;\n"
+               "\n";
+    if (stateful) {
+        fx_file << "\trv->cmod_ptr = NULL;\n";
+    }
+    fx_file << "\treturn (PyObject *)rv;\n"
                "}\n\n";
 
     // creating module from shared ssc data with defaults fx
@@ -794,8 +800,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\trv = new" << tech_symbol << "Object((void*)ptr);\n"
                "\tif (rv == NULL)\n"
                "\t\tgoto fail;\n"
-               "\trv->data_owner_ptr = module;\n"
-               "\tif (!def)\n"
+               "\trv->data_owner_ptr = module;\n";
+    if (stateful) {
+        fx_file << "\trv->cmod_ptr = NULL;\n";
+    }
+    fx_file << "\tif (!def)\n"
                "\t\treturn (PyObject *)rv;\n"
                "\tPySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", def);\n"
                "\treturn (PyObject *)rv;\n"
