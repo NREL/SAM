@@ -35,13 +35,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/exttextstream.h>
 #include <lk/stdlib.h>
 #include <lk/eval.h>
-//#include <rapidjson/istreamwrapper.h>
 #include <rapidjson/writer.h>
 #include <rapidjson/stringbuffer.h>
-//#include <rapidjson/ostreamwrapper.h>
 #include <rapidjson/prettywriter.h> // for stringify JSON
-//#include <rapidjson/memorybuffer.h> // for VV_Binary
-//#include <rapidjson/stringbuffer.h> // for VV_Binary
 #include <rapidjson/filereadstream.h>
 #include <rapidjson/filewritestream.h>
 
@@ -1320,7 +1316,7 @@ bool VarValue::Read_JSON(const rapidjson::Value& json_val)
 		}
 		return is_num;
 	};
-
+	
 	switch (json_val.GetType()) {
 	case rapidjson::Type::kNullType:
 		m_type = VV_INVALID;
@@ -1413,14 +1409,14 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	rapidjson::Value json_val, json_bin_array;
 	rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
 	const char* p; // for VV_BINARY
-//	rapidjson::MemoryBuffer mb;
-//	rapidjson::StringBuffer sb;
 
 
 	if (m_type == VV_NUMBER) {
-		json_val = rapidjson::kWriteNanAndInfFlag; // default if NaN, inf or invalid
+		json_val = "ERROR: non-numeric value writte"; // default if NaN, inf or invalid
 		if (m_val.nrows() == 1 && m_val.ncols() == 1) {
-			if (!std::isnan(m_val(0, 0)) && !std::isinf(m_val(0, 0)))
+			if (std::isnan(m_val(0, 0)) || std::isinf(m_val(0, 0)))
+				json_val = rapidjson::kWriteNanAndInfFlag; // default if NaN, inf or invalid
+			else
 				json_val = m_val(0, 0);
 		}
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
@@ -1474,7 +1470,7 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	}
 	else {
 	// uncomment for production	throw(std::runtime_error("Function not implemented for " + m_type));
-		x = wxString::Format("unhandled type specified in UI: %s", vv_strtypes[m_type]);
+		x = wxString::Format("ERROR: unhandled type specified in UI: %s", vv_strtypes[m_type]);
 		json_val.SetString(x.c_str(), doc.GetAllocator());
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
