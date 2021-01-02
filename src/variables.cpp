@@ -1412,13 +1412,15 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 
 
 	if (m_type == VV_NUMBER) {
-		json_val = "ERROR: non-numeric value writte"; // default if NaN, inf or invalid
+		json_val = "ERROR: non-numeric value write"; // default if NaN, inf or invalid
 		if (m_val.nrows() == 1 && m_val.ncols() == 1) {
 			if (std::isnan(m_val(0, 0)) || std::isinf(m_val(0, 0)))
 				json_val = rapidjson::kWriteNanAndInfFlag; // default if NaN, inf or invalid
 			else
 				json_val = m_val(0, 0);
 		}
+		else
+			json_val = 0.0;  // issue with pbi_[xxx]_for_ds incorrect types in .txt defaults - update and remove for production.
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_ARRAY) {

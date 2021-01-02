@@ -1787,7 +1787,7 @@ TabOrder
 3
 4294967295
 
-24
+23
 balance_of_system_scheduled_maintenance_cost
 3
 1
@@ -2009,17 +2009,6 @@ other_unscheduled_maintenance_cost
 1
 1
 1
-1
-0
-Default
-regular_cable_surveys_cost
-3
-0
- 
- 
- 
-0
-0
 1
 0
 Default

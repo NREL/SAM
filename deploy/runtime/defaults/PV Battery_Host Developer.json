@@ -44742,8 +44742,8 @@
         0.0
     ],
     "crit_load_is_shown": 0.0,
-    "crit_load_pct": 2,
-    "crit_load_type": 2,
+    "crit_load_pct": 0.0,
+    "crit_load_type": 0.0,
     "crit_load_user_data": [
         0.0,
         0.0,

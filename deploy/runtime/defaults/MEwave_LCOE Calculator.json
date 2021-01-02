@@ -1534,7 +1534,6 @@
     "quayside_docking_fees_cost": 0.0,
     "railings_cost": 0.0,
     "rectifying_circuit_cost": 0.0,
-    "regular_cable_surveys_cost": "unhandled type specified in UI: invalid",
     "reserve_accounts_cost": 10936540.0,
     "reserve_accounts_cost_input": 0.0,
     "reserve_accounts_cost_method": 2.0,
