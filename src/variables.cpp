@@ -1330,7 +1330,6 @@ bool VarValue::Read_JSON(const rapidjson::Value& json_val)
 		m_val(0,0) = json_val.GetDouble();
 		break;
 	case rapidjson::Type::kStringType:
-		// might be VV_BINARY
 		m_type = VV_STRING;
 		m_str = json_val.GetString();
 		break;
