@@ -8785,7 +8785,7 @@
     "annual_beam": 7.92706,
     "annual_diffuse": 1.24089,
     "annual_global": 5.9594,
-    "annual_snow": 2,
+    "annual_snow": "inf",
     "annual_tdry": 24.0951,
     "annual_wspd": 2.28094,
     "casing_size": 9.625,

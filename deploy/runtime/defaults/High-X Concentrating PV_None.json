@@ -8773,7 +8773,7 @@
     "annual_beam": 6.86777,
     "annual_diffuse": 1.45856,
     "annual_global": 5.38363,
-    "annual_snow": 2,
+    "annual_snow": "inf",
     "annual_tdry": 6.55673,
     "annual_wspd": 0.592694,
     "array_ac_wiring_loss": 0.99,

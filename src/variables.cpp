@@ -21,6 +21,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include <cmath>
+#include <cstring>
 #include <numeric>
 #include <algorithm>
 #include <fstream>
@@ -1296,6 +1297,20 @@ void wxTextOutputStream::WriteDouble(double d)
 
 }
 
+double JSONValueToVarValueDouble(const rapidjson::Value& json_val)
+{
+	double d;
+	if (json_val.IsString()) {
+		d = std::numeric_limits<double>::quiet_NaN();
+		if (strcmp(json_val.GetString(), "inf") == 0)
+			d = std::numeric_limits<double>::infinity();
+	}
+	else
+		d = json_val.GetDouble();
+	return d;
+}
+
+
 bool VarValue::Read_JSON(const rapidjson::Value& json_val)
 {
 	wxByte p;
@@ -1327,11 +1342,21 @@ bool VarValue::Read_JSON(const rapidjson::Value& json_val)
 	case rapidjson::Type::kTrueType:
 		m_type = VV_NUMBER;
 		m_val.resize_fill(1, 1, 0.0);
-		m_val(0,0) = json_val.GetDouble();
+		//		m_val(0, 0) = json_val.GetDouble();
+		m_val(0, 0) = JSONValueToVarValueDouble(json_val);
 		break;
 	case rapidjson::Type::kStringType:
-		m_type = VV_STRING;
-		m_str = json_val.GetString();
+		// special case "nan" or "inf"
+		if ((strcmp(json_val.GetString(), "nan") == 0) || (strcmp(json_val.GetString(), "inf") == 0)) {
+			m_type = VV_NUMBER;
+			m_val.resize_fill(1, 1, 0.0);
+			//		m_val(0, 0) = json_val.GetDouble();
+			m_val(0, 0) = JSONValueToVarValueDouble(json_val);
+		}
+		else {
+			m_type = VV_STRING;
+			m_str = json_val.GetString();
+		}
 		break;
 	case rapidjson::Type::kArrayType:
 		// determine if SSC_ARRAY
@@ -1346,7 +1371,8 @@ bool VarValue::Read_JSON(const rapidjson::Value& json_val)
 			m_val.resize_fill(nr, nc, 0.0);
 
 			for (rapidjson::SizeType i = 0; i < json_val.Size(); i++) {
-				m_val.at(0,i)= json_val[i].GetDouble();
+//				m_val.at(0, i) = json_val[i].GetDouble();
+				m_val.at(0, i) = JSONValueToVarValueDouble(json_val[i]);
 			}
 			break;
 		}
@@ -1368,7 +1394,8 @@ bool VarValue::Read_JSON(const rapidjson::Value& json_val)
 			m_val.resize_fill(nr, nc, 0.0);
 			for (rapidjson::SizeType irow = 0; irow < json_val.Size(); irow++) {
 				for (rapidjson::SizeType icol = 0; icol < json_val[irow].Size(); icol++) {
-					m_val.at(irow,icol) =  json_val[irow][icol].GetDouble();
+//					m_val.at(irow, icol) = json_val[irow][icol].GetDouble();
+					m_val.at(irow, icol) = JSONValueToVarValueDouble(json_val[irow][icol]);
 				}
 			}
 			break;
@@ -1402,6 +1429,19 @@ bool VarValue::Read_JSON(const rapidjson::Value& json_val)
 }
 
 
+rapidjson::Value VarValueDoubleToJSONValue(const double& d)
+{
+	rapidjson::Value json_val;
+	if (std::isnan(d))
+		json_val = "nan";
+	else if (std::isinf(d))
+		json_val = "inf";
+	else
+		json_val = d;
+	return json_val;
+}
+
+
 void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 {
 	wxString x;
@@ -1413,22 +1453,22 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	if (m_type == VV_NUMBER) {
 		json_val = "ERROR: non-numeric value write"; // default if NaN, inf or invalid
 		if (m_val.nrows() == 1 && m_val.ncols() == 1) {
-			if (std::isnan(m_val(0, 0)) || std::isinf(m_val(0, 0)))
-				json_val = rapidjson::kWriteNanAndInfFlag; // default if NaN, inf or invalid
-			else
-				json_val = m_val(0, 0);
+//			if (std::isnan(m_val(0, 0)) || std::isinf(m_val(0, 0))) 
+//				json_val = rapidjson::kWriteNanAndInfFlag; // default if NaN, inf or invalid flag =2 and written as integer and read in as double
+			json_val = VarValueDoubleToJSONValue(m_val(0,0));
 		}
-		else
-			json_val = 0.0;  // issue with pbi_[xxx]_for_ds incorrect types in .txt defaults - update and remove for production.
+//		else
+//			json_val = 0.0;  // issue with pbi_[xxx]_for_ds incorrect types in .txt defaults - update and remove for production.
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_ARRAY) {
 		json_val.SetArray();
 		for (size_t j = 0; j < m_val.ncols(); j++) {
-			if (std::isnan(m_val(0, j)) || std::isinf(m_val(0, j)))
-				json_val.PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
-			else
-				json_val.PushBack(rapidjson::Value(m_val(0, j)), doc.GetAllocator());
+//			if (std::isnan(m_val(0, j)) || std::isinf(m_val(0, j)))
+//				json_val.PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
+//			else
+//				json_val.PushBack(rapidjson::Value(m_val(0, j)), doc.GetAllocator());
+			json_val.PushBack(VarValueDoubleToJSONValue(m_val(0, j)), doc.GetAllocator());
 		}
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
@@ -1437,10 +1477,11 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 		for (size_t i = 0; i < m_val.nrows(); i++) {
 			json_val.PushBack(rapidjson::Value(rapidjson::kArrayType), doc.GetAllocator());
 			for (size_t j = 0; j < m_val.ncols(); j++) {
-				if (std::isnan(m_val(i, j)) || std::isinf(m_val(i, j)))
-					json_val[(rapidjson::SizeType)i].PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
-				else
-					json_val[(rapidjson::SizeType)i].PushBack(m_val(i, j), doc.GetAllocator());
+//				if (std::isnan(m_val(i, j)) || std::isinf(m_val(i, j)))
+//					json_val[(rapidjson::SizeType)i].PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
+//				else
+//					json_val[(rapidjson::SizeType)i].PushBack(m_val(i, j), doc.GetAllocator());
+				json_val[(rapidjson::SizeType)i].PushBack(VarValueDoubleToJSONValue(m_val(i, j)), doc.GetAllocator());
 			}
 		}
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());

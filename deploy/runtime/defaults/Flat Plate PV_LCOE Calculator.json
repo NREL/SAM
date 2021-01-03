@@ -8821,7 +8821,7 @@
     "annual_beam": 7.33564,
     "annual_diffuse": 1.34843,
     "annual_global": 5.79476,
-    "annual_snow": 2,
+    "annual_snow": "nan",
     "annual_tdry": 21.9385,
     "annual_wspd": 1.78648,
     "array_area": 105179.9296875,

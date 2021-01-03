@@ -62,6 +62,8 @@ void sscdata_to_lkhash(ssc_data_t p_dat, lk::vardata_t &out);
 // clears vardata and assigns the ssc_data to the ssc_data_t
 void sscdata_to_lkvar(ssc_data_t p_dat, const char *name, lk::vardata_t &out);
 
+void DoubleToJSONValue(rapidjson::Value& json_val);
+
 // clears vardata and assigns the value from ssc_var_t
 void sscvar_to_lkvar(ssc_var_t vd, lk::vardata_t &out);
 

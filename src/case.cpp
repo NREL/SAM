@@ -765,15 +765,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 	// load the default values for the current
 	// configuration from the external data file
-	/*
-#ifdef UI_BINARY
-	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
-		+ m_config->Technology + "_" + m_config->Financing;
-#else
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing + ".txt";
-#endif
-*/
+
 #ifdef UI_BINARY
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
@@ -816,13 +808,6 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 		// find the default value for this variable.  first priority is externally saved default,
 		// then as a fallback use the internal default value
-
-		// debugging 
-		wxString vn = it->first;
-		if (vn == "en_batt") {
-			// do somesthing to break here
-			vn = "stop here";
-		}
 			
 
 		VarValue *val_default = vt_defaults.Get( it->first );

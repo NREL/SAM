@@ -1528,7 +1528,7 @@
     "ui_capital_cost_capacity": 0.0,
     "ui_capital_cost_reference": 449934560.0,
     "ui_cfin": 0.0,
-    "ui_crf": 2,
+    "ui_crf": "inf",
     "ui_fcr_input_option": 0.0,
     "ui_fixed_charge_rate": 0.108,
     "ui_ireal": 0.0,

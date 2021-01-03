@@ -17959,7 +17959,7 @@
     "annual_diffuse": 1.34843,
     "annual_global": 5.79476,
     "annual_peak": 274.2309875488281,
-    "annual_snow": 2,
+    "annual_snow": "nan",
     "annual_tdry": 21.9385,
     "annual_wspd": 1.78648,
     "array_area": 2622.64794921875,

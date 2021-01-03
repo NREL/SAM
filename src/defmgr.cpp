@@ -35,6 +35,8 @@ static wxString GetDefaultsFile( const wxString &t, const wxString &f )
 {	
 #ifdef UI_BINARY
 	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f;
+#elif defined(__LOAD_AS_JSON__)
+	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".json";
 #else
 	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".txt";
 #endif
@@ -267,7 +269,7 @@ void ValueEditor::OnEditField( wxCommandEvent & )
 
 
 enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY, ID_LOAD, ID_CONFIGS, 
-	ID_POPUP_first, ID_CHECK_ALL, ID_UNCHECK_ALL, ID_CHECK_SELECTED, ID_UNCHECK_SELECTED, ID_SAVE_TEXT, ID_SAVE_BINARY, ID_POPUP_last };
+	ID_POPUP_first, ID_CHECK_ALL, ID_UNCHECK_ALL, ID_CHECK_SELECTED, ID_UNCHECK_SELECTED, ID_SAVE_TEXT, ID_SAVE_JSON,ID_SAVE_BINARY, ID_POPUP_last };
 
 BEGIN_EVENT_TABLE( DefaultsManager, wxPanel )
 	EVT_BUTTON( ID_QUERY, DefaultsManager::OnQuery )
@@ -364,6 +366,7 @@ void DefaultsManager::OnPopupMenu( wxCommandEvent &evt )
 		break;
 	case ID_SAVE_BINARY:
 	case ID_SAVE_TEXT:
+	case ID_SAVE_JSON:
 		OnSaveAsType(evt);
 		break;
 	}
@@ -379,6 +382,8 @@ void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
 			bool success = true;
 #ifdef UI_BINARY
 			if (!tab.Read(file))
+#elif defined(__LOAD_AS_JSON__)
+			if (!tab.Read_JSON(file.ToStdString()))
 #else
 			if (!tab.Read_text(file))
 #endif
@@ -395,6 +400,11 @@ void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
 			{
 				file = SamApp::GetRuntimePath() + "/defaults/" + m_techList[i] + "_" + m_finList[i] + ".txt";
 				success = tab.Write_text(file);
+			}
+			else if (evt.GetId() == ID_SAVE_JSON)
+			{
+				file = SamApp::GetRuntimePath() + "/defaults/" + m_techList[i] + "_" + m_finList[i] + ".json";
+				success = tab.Write_JSON(file.ToStdString());
 			}
 			else
 				Log(wxString::Format("invalid event ID: %d", evt.GetId()));
@@ -415,7 +425,7 @@ void DefaultsManager::OnListRightClick( wxMouseEvent & )
 	menu.AppendSeparator();
 //	menu.Append(ID_SAVE_BINARY, "Save checked as binary");
 //	menu.Append(ID_SAVE_TEXT, "Save checked as text");
-	menu.Append(ID_SAVE_TEXT, "Save checked");
+	menu.Append(ID_SAVE_JSON, "Save checked");
 	PopupMenu( &menu );
 }
 
@@ -440,7 +450,9 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 		VarTable tab;
 #ifdef UI_BINARY
-		if ( !tab.Read( file ))			
+		if ( !tab.Read( file ))		
+#elif defined(__LOAD_AS_JSON__)
+		if (!tab.Read_JSON(file.ToStdString()))
 #else
 		if (!tab.Read_text(file))
 #endif
@@ -469,6 +481,8 @@ void DefaultsManager::OnLoad( wxCommandEvent & )
 	VarTable tab;
 #ifdef UI_BINARY
 	if (!tab.Read(file))
+#elif defined(__LOAD_AS_JSON__)
+	if (!tab.Read_JSON(file.ToStdString()))
 #else
 	if (!tab.Read_text(file))
 #endif
@@ -504,6 +518,8 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 		VarTable tab;
 #ifdef UI_BINARY
 		if (!tab.Read(file))
+#elif defined(__LOAD_AS_JSON__)
+		if (!tab.Read_JSON(file.ToStdString()))
 #else
 		if (!tab.Read_text(file))
 #endif
@@ -572,6 +588,8 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 		{
 #ifdef UI_BINARY
 			if (!tab.Write(file))
+#elif defined(__LOAD_AS_JSON__)
+			if (!tab.Write_JSON(file.ToStdString()))
 #else
 			if (!tab.Write_text(file))
 #endif
@@ -598,6 +616,8 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 		VarTable tab;
 #ifdef UI_BINARY
 		if ( !tab.Read( file ) )
+#elif defined(__LOAD_AS_JSON__)
+		if (!tab.Read_JSON(file.ToStdString()))
 #else
 		if (!tab.Read_text(file))
 #endif
@@ -612,6 +632,8 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 
 #ifdef UI_BINARY
 			if (!tab.Write(file))
+#elif defined(__LOAD_AS_JSON__)
+			if (!tab.Write_JSON(file.ToStdString()))
 #else
 			if (!tab.Write_text(file))
 #endif

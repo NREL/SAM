@@ -8782,7 +8782,7 @@
     "annual_diffuse": 1.45856,
     "annual_draw": 73000.0,
     "annual_global": 5.38363,
-    "annual_snow": 2,
+    "annual_snow": "nan",
     "annual_tdry": 6.55673,
     "annual_wspd": 0.592694,
     "area_coll": 2.9800000190734865,

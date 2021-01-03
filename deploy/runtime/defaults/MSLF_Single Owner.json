@@ -9160,7 +9160,7 @@
     "annual_beam": 7.36408,
     "annual_diffuse": 1.33978,
     "annual_global": 5.83819,
-    "annual_snow": 2,
+    "annual_snow": "nan",
     "annual_tdry": 18.1261,
     "annual_wspd": 2.35368,
     "aux_array": [

@@ -8769,7 +8769,7 @@
             1.0
         ]
     },
-    "annual_albedo": 2,
+    "annual_albedo": "nan",
     "annual_beam": 4.11599,
     "annual_diffuse": 1.66759,
     "annual_global": 3.84577,
