@@ -765,6 +765,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 	// load the default values for the current
 	// configuration from the external data file
+	/*
 #ifdef UI_BINARY
 	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
 		+ m_config->Technology + "_" + m_config->Financing;
@@ -772,16 +773,34 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing + ".txt";
 #endif
+*/
+#ifdef UI_BINARY
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing;
+#elif defined(__LOAD_AS_JSON__)
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".json";
+#else
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".txt";
+#endif
+
+
 
 	VarTable vt_defaults;
 	if ( wxFileExists(file))
 	{
+
+#if defined(__LOAD_AS_JSON__)
+		VarTableFromJSONFile(&vt_defaults, file.ToStdString());
+#else 
 		wxFFileInputStream in(file);
 		if ( in.IsOk() )
-#ifdef UI_BINARY
+	#ifdef UI_BINARY
 			vt_defaults.Read( in );
-#else
+	#else
 			vt_defaults.Read_text(in);
+	#endif
 #endif
 	}
 
