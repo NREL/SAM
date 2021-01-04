@@ -32,6 +32,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "invoke.h"
 #include <lk/stdlib.h>
 
+#define __SAVE_AS_JSON__ 1
+#define __LOAD_AS_JSON__ 1
      
 CaseCallbackContext::CaseCallbackContext( Case *cc, const wxString &name )
 	: m_case(cc), m_name(name)
