@@ -1,5 +1,5 @@
 1
-876
+882
 6par_aisc
 1
 1
@@ -352,6 +352,45 @@ calculated_dcac_ratio
 1
 1
 1.18069
+capex_table_capacity_choice
+1
+1
+1
+1
+0
+capex_table_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_inputs
+1
+3
+3
+2
+2 0.35 
+5 0.4 
+8 0.45 
+
+capex_table_total_direct_cost
+1
+1
+1
+1
+0
+capex_table_total_indirect_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_cost
+1
+1
+1
+1
+0
 cbi_fed_amount
 1
 1

@@ -1,5 +1,5 @@
 1
-820
+823
 6par_aisc
 1
 1
@@ -364,6 +364,12 @@ capex_table_capacity_choice
 1
 1
 0
+capex_table_cost_per_kw
+1
+1
+1
+1
+0
 capex_table_inputs
 1
 3
@@ -373,6 +379,18 @@ capex_table_inputs
 5 0.4 
 8 0.45 
 
+capex_table_total_direct_cost
+1
+1
+1
+1
+0
+capex_table_total_indirect_cost
+1
+1
+1
+1
+0
 capex_table_total_installed_cost
 1
 1
