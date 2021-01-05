@@ -486,6 +486,12 @@ batt_Qfull
 1
 1
 3.2
+batt_Qfull_cutoff
+1
+1
+1
+1
+0
 batt_Qfull_flow
 1
 1
@@ -1108,7 +1114,7 @@ batt_voltage_cutoff_default
 1
 1
 1
-0
+2.376
 batt_voltage_matrix
 1
 3
@@ -6566,9 +6572,3 @@ wf_nrecords
 1
 1
 8760
-x_check
-1
-1
-1
-1
-0

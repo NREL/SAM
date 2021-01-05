@@ -1,7 +1,7 @@
 Battery Voltage
 1055
 681
-22
+23
 GroupBox
 
 1
@@ -156,6 +156,130 @@ BackColour
 TabOrder
 3
 9
+Numeric
+
+1
+17
+Name
+5
+10
+batt_Qfull
+X
+3
+339
+Y
+3
+231
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+17
+batt_Qfull_cutoff
+X
+3
+207
+Y
+3
+210
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1114,68 +1238,6 @@ Voltage Model Options
 Bold
 2
 1
-Numeric
-
-1
-17
-Name
-5
-7
-x_check
-X
-3
-168
-Y
-3
-216
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 
 14
 batt_C_rate
@@ -1205,6 +1267,20 @@ BatteryCell
 1
 1
 1
+Default
+batt_Qfull_cutoff
+3
+1
+Qfull after cutoff implementation
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
 Default
 batt_Qnom_percent
 3
@@ -1368,26 +1444,12 @@ Depth of discharge [%]| Cell voltage [V]
 100 0.5 
 
 DataMatrix
-x_check
-3
-1
-X
- 
- 
-0
-0
-1
-1
-1
-1
-0
-Default
 
 91
 equations{'batt_voltage_cutoff_default'} = define() {
 	return 0.66*${batt_Vnom_default};
 };
-5479
+5524
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
@@ -1537,8 +1599,9 @@ function cell_voltage_vs_dod()
 		E0 = Vfull + K + R*I - A;
 		C = (-1*Vcut + E0 - R*I + A*(exp(-B*Qfull)))/K;
 		x = Qfull / (C - 1);
-		value('x_check',x);
 		Qfull += x;
+		//value('batt_Qfull',Qfull);
+		value('batt_Qfull_cutoff',Qfull);
 		q0 = Qfull;
 		V_vect[0] = Vfull;
 		t_vect[0] = 0;
