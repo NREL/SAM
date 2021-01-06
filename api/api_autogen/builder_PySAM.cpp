@@ -767,7 +767,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\treturn NULL;\n"
                "\n"
                "\trv->data_owner_ptr = NULL;\n"
-               "\tPySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", def);\n"
+               "\tif (PySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", def) < 0) {\n"
+               "\t\t" << tech_symbol << "_dealloc(rv);\n\t\treturn NULL;\n\t}"
                "\n";
     if (stateful) {
         fx_file << "\trv->cmod_ptr = NULL;\n";
