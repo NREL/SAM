@@ -1269,7 +1269,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     csv(2, 12) = "notes";
 
     csv(0, 13) = "File name";
-    csv(2, 13) = "file_name";
+    csv(2, 13) = "file_name_ts";
 
     csv(0, 14) = "Significant wave height";
     csv(1, 14) = "m";
@@ -1288,7 +1288,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
         wxString wf = path + "/" + file;
 
         ssc_data_t pdata = ssc_data_create();
-        ssc_data_set_string(pdata, "wave_resource_filename", (const char*)wf.c_str());
+        ssc_data_set_string(pdata, "wave_resource_filename_ts", (const char*)wf.c_str());
         ssc_data_set_number(pdata, "wave_resource_model_choice", 1);
 
         if (const char* err = ssc_module_exec_simple_nothread("wave_file_reader", pdata))

@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
 1847
 1161
-18
+19
 Hyperlink
 
 1
@@ -120,11 +120,11 @@ TextEntry
 11
 Name
 5
-9
-file_name
+12
+file_name_ts
 X
 3
-279
+276
 Y
 3
 312
@@ -468,11 +468,11 @@ Button
 8
 Name
 5
-14
-select_wf_wave
+17
+select_wf_wave_ts
 X
 3
-651
+654
 Y
 3
 570
@@ -498,8 +498,8 @@ CheckBox
 9
 Name
 5
-20
-use_specific_wf_wave
+23
+use_specific_ts_wf_wave
 X
 3
 21
@@ -531,8 +531,8 @@ TextEntry
 11
 Name
 5
-22
-user_specified_wf_wave
+31
+user_specified_wave_resource_ts
 X
 3
 21
@@ -634,6 +634,50 @@ Description
 TabOrder
 3
 4294967295
+TextEntry
+
+1
+11
+Name
+5
+25
+wave_resource_filename_ts
+X
+3
+351
+Y
+3
+498
+Width
+3
+960
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+128
+0
+64
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 DataArray
 
 1
@@ -670,7 +714,7 @@ TabOrder
 3
 4294967295
 
-19
+21
 average_power_flux_ts
 3
 1
@@ -740,15 +784,14 @@ TextEntry
 file_name_ts
 3
 4
+Wave resource file from library
  
- 
- 
+ME Wave Resource
 0
 8
 1
 4
-9
-<invalid>
+0
 TextEntry
 lat_ts
 3
@@ -873,13 +916,28 @@ tz_ts
 Numeric
 use_specific_ts_wf_wave
 3
+1
+ 
+ 
+ 
 0
+5
+1
+1
+1
+1
+0
+CheckBox
+user_specified_wave_resource_ts
+3
+4
  
  
  
 0
 0
 1
+4
 0
 Default
 wave_energy_period
@@ -896,15 +954,27 @@ s
 1
 0
 DataArray
-wave_resource_ts_filename
+wave_resource_file_ts
 3
 0
+ 
+ 
+ 
+0
+8
+1
+0
+Default
+wave_resource_filename_ts
+3
+4
 Wave resource file name
  
 ME Wave Resource 
 0
 9
 1
+4
 0
 Default
 wave_significant_height
@@ -922,24 +992,28 @@ m
 0
 DataArray
 
-165
-/*equations{'wave_resource_ts_filename'} = define() {
+251
+equations{'wave_resource_filename_ts'} = define() {
 	if(${use_specific_ts_wf_wave}) return (${user_specified_wave_resource_ts});
 	else return ${file_name_ts};
-};*/
-2805
+};
+
+equations{'wave_resource_file_ts'} = define() {
+	return ${wave_resource_filename_ts};
+};
+3370
 function enable_disable_library() {
-	enable_library = !value('use_specific_wf_wave');
-	enable('wave_resource_matrix',false);
-	property('wave_resource_matrix','ColorMap',enable_library);
+	enable_library = !value('use_specific_ts_wf_wave');
+	//enable('wave_resource_matrix',false);
+	//property('wave_resource_matrix','ColorMap',enable_library);
 	enable('location_ts',enable_library);
-	enable('btnScanLibrary',enable_library);
+	enable('btnScanLibrary_ts',enable_library);
 	enable('average_power_flux_ts',enable_library);
 	enable('bathymetry_ts',enable_library);
 	enable('city_ts',enable_library);
 	enable('country_ts',enable_library);
 	enable('data_source_ts',enable_library);
-	//enable('file_name',enable_library);
+	enable('file_name_ts',enable_library);
 	enable('frequency_sum',enable_library);
 	enable('lat_ts',enable_library);
 	enable('location_ts',enable_library);
@@ -953,10 +1027,11 @@ function enable_disable_library() {
 	enable('sea_bed_ts',enable_library);
 	enable('state_ts',enable_library);
 	enable('tz_ts',enable_library);
+	enable('user_specified_wave_resource_ts',!enable_library);
 	//enable('in_time_frame',enable_library);
 	//enable('in_location',enable_library);
 	//enable('wave_download',enable_library);
-	
+	refresh();
 }
 
 on_change{'btnScanLibrary_ts'} = define() {
@@ -966,11 +1041,17 @@ on_change{'btnScanLibrary_ts'} = define() {
 
 
 on_load{'Marine Wave Resource Time Series'} = define() {
-	rescanlibrary('wave_ts');
+	value('use_specific_ts_wf_wave',1);
+	value('use_specific_ts_wf_wave',0);
 	
-	enable("wave_resource_matrix",false);
+	//rescanlibrary('wave_ts');
+	//enable('user_specified_wave_resource_ts',false);
+	//enable("wave_resource_matrix",false);
 	//on_change{'use_specific_ts_wf_wave'}();
 	enable_disable_library();
+	on_change{'use_specific_ts_wf_wave'};
+	on_change{'select_wf_wave_ts'};
+	on_change{'file_name_ts'};
 	//show('use_specific_wave_file', false); // determines whether user_specified_weather_file is used instead of solar_data_file_name
 	//show('user_specified_wave_file', false); // requires use_specific_weather_file = 1, set by LK script
 	//value('wave_data_file_name_load', value('wave_data_file_name'));
@@ -984,9 +1065,9 @@ on_load{'Marine Wave Resource Time Series'} = define() {
 };
 
 on_change{'location_ts'} = define() {
-	file = ${file_name};
+	file = ${file_name_ts};
 	value("name",value("location_ts"));
-	
+	refresh();
 	if (!file_exists(file))
 	{
 		rescanlibrary( 'wave_ts' );
@@ -999,18 +1080,26 @@ on_change{'location_ts'} = define() {
 	close(fn);
 };
 
-on_change{'use_specific_wf_wave'} = define() {
-	enable( 'user_specified_ts_wf_wave', ${use_specific_wf_wave} );
-	enable( 'select_wf_wind', ${use_specific_wf_wave} );
-	enable_disable_library();
+on_change{'file_name_ts'} = define() {
+	if (value('use_specific_ts_wf_wave')==0) {
+		value('wave_resource_filename_ts',value('file_name_ts'));
+		//refresh('wave_resource_filename_ts');
+	}
 };
 
-on_change{'select_wf_wave'} = define() {
-	file = choose_file( path_only( value('user_specified_wf_wave') ), 'Choose a wave resource file', 
+on_change{'use_specific_ts_wf_wave'} = define() {
+	enable('user_specified_wave_resource_ts', ${use_specific_ts_wf_wave}==1 );
+	//enable( 'select_wf_wind', ${use_specific_wf_wave} );
+	enable_disable_library();
+	refresh();
+};
+
+on_change{'select_wf_wave_ts'} = define() {
+	file = choose_file( path_only( value('user_specified_wave_resource_ts') ), 'Choose a wave resource file', 
 		'Wave Resource Files (*.csv|*.csv');
 		
 	if ( file != '' ) {
 		file = replace(file, '\\', '/');
-		value( 'user_specified_wf_wave', file );
+		value( 'user_specified_wave_resource_ts', file );
 	}
 };
