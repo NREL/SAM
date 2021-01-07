@@ -1453,21 +1453,13 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	if (m_type == VV_NUMBER) {
 		json_val = "ERROR: non-numeric value write"; // default if NaN, inf or invalid
 		if (m_val.nrows() == 1 && m_val.ncols() == 1) {
-//			if (std::isnan(m_val(0, 0)) || std::isinf(m_val(0, 0))) 
-//				json_val = rapidjson::kWriteNanAndInfFlag; // default if NaN, inf or invalid flag =2 and written as integer and read in as double
 			json_val = VarValueDoubleToJSONValue(m_val(0,0));
 		}
-//		else
-//			json_val = 0.0;  // issue with pbi_[xxx]_for_ds incorrect types in .txt defaults - update and remove for production.
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_ARRAY) {
 		json_val.SetArray();
 		for (size_t j = 0; j < m_val.ncols(); j++) {
-//			if (std::isnan(m_val(0, j)) || std::isinf(m_val(0, j)))
-//				json_val.PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
-//			else
-//				json_val.PushBack(rapidjson::Value(m_val(0, j)), doc.GetAllocator());
 			json_val.PushBack(VarValueDoubleToJSONValue(m_val(0, j)), doc.GetAllocator());
 		}
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
@@ -1477,10 +1469,6 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 		for (size_t i = 0; i < m_val.nrows(); i++) {
 			json_val.PushBack(rapidjson::Value(rapidjson::kArrayType), doc.GetAllocator());
 			for (size_t j = 0; j < m_val.ncols(); j++) {
-//				if (std::isnan(m_val(i, j)) || std::isinf(m_val(i, j)))
-//					json_val[(rapidjson::SizeType)i].PushBack(rapidjson::kWriteNanAndInfFlag, doc.GetAllocator());
-//				else
-//					json_val[(rapidjson::SizeType)i].PushBack(m_val(i, j), doc.GetAllocator());
 				json_val[(rapidjson::SizeType)i].PushBack(VarValueDoubleToJSONValue(m_val(i, j)), doc.GetAllocator());
 			}
 		}
