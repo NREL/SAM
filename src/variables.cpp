@@ -788,7 +788,8 @@ bool VarTable::Write_JSON(const std::string& file, size_t maxdim)
 
 	rapidjson::Document doc;
 	Write_JSON(doc, maxdim);
-	rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(os);
+//	rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt 
+	rapidjson::Writer<rapidjson::FileWriteStream> writer(os);
 	doc.Accept(writer);
 	fclose(fp);
 	return true;
