@@ -19,4 +19,4 @@ deploy/runtime/defaults/*.txt text eol=lf
 *.jpg binary
 *.data binary
 
-*.json diff=zip
+*.zip diff=zip
