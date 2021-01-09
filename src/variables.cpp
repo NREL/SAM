@@ -32,6 +32,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/tokenzr.h>
 #include <wx/log.h>
 #include <wx/mstream.h>
+#include <wx/zipstrm.h>
 #include <wx/filename.h>
 #include <wex/exttextstream.h>
 #include <lk/stdlib.h>
@@ -792,6 +793,16 @@ bool VarTable::Write_JSON(const std::string& file, size_t maxdim)
 	rapidjson::Writer<rapidjson::FileWriteStream> writer(os);
 	doc.Accept(writer);
 	fclose(fp);
+	// testing adding JSON to zip archive
+	wxString sfn = "c:\\tmp\\test.zip";
+	wxFFileOutputStream out(sfn);
+	wxZipOutputStream zip(out);
+	wxFileInputStream in(file);
+	zip.PutNextEntry(file);
+	zip.Write(in);
+	zip.Close();
+
+
 	return true;
 }
 
