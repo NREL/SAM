@@ -526,20 +526,22 @@ bool Case::SaveDefaults(bool quiet)
 		"Save Defaults", wxYES_NO))
 		return false;
 
+#if defined(__SAVE_AS_JSON__)
+m_vals.Write_JSON(file.ToStdString());
+
+#else
 	wxFFileOutputStream out(file);
 	if (!out.IsOk()) return false;
 
-
 	// set default library_folder_list blank
-	VarValue *vv = m_vals.Get("library_folder_list");
+	VarValue* vv = m_vals.Get("library_folder_list");
 	if (vv)	vv->Set(wxString("x"));
 
-#if defined(UI_BINARY)
-	m_vals.Write(out);
-#elif defined(__SAVE_AS_JSON__)
-	m_vals.Write_JSON(file.ToStdString());
-#else
-	m_vals.Write_text(out);
+	#if defined(UI_BINARY)
+		m_vals.Write(out);
+	#else
+		m_vals.Write_text(out);
+	#endif
 #endif
 	wxLogStatus("Case: defaults saved for " + file);
 	return true;

@@ -782,24 +782,31 @@ bool VarTable::Read_JSON(const rapidjson::Document& doc)
 
 bool VarTable::Write_JSON(const std::string& file, size_t maxdim)
 {
-	FILE* fp = fopen(file.c_str(), "w"); 
-	if (!fp) return false;
-	char writeBuffer[65536];
-	rapidjson::FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
+//	FILE* fp = fopen(file.c_str(), "w"); 
+//	if (!fp) return false;
+//	char writeBuffer[65536];
+//	rapidjson::FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
 
 	rapidjson::Document doc;
 	Write_JSON(doc, maxdim);
-//	rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt 
-	rapidjson::Writer<rapidjson::FileWriteStream> writer(os);
+
+	rapidjson::StringBuffer os;
+	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt 
+
+	//	rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt 
+//	rapidjson::Writer<rapidjson::FileWriteStream> writer(os);
 	doc.Accept(writer);
-	fclose(fp);
+//	fclose(fp);
 	// testing adding JSON to zip archive
-	wxString sfn = "c:\\tmp\\test.zip";
+	wxString sfn = file;
+	wxFileName fn(sfn);
+	sfn.Replace(".json", ".zip");
 	wxFFileOutputStream out(sfn);
 	wxZipOutputStream zip(out);
-	wxFileInputStream in(file);
-	zip.PutNextEntry(file);
-	zip.Write(in);
+//	wxFileInputStream in(file);
+//	zip.PutNextEntry(file);
+	zip.PutNextEntry(fn.GetFullName());
+	zip.Write(os.GetString(), os.GetSize());
 	zip.Close();
 
 
