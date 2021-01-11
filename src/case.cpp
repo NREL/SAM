@@ -670,11 +670,15 @@ bool Case::LoadDefaults( wxString *pmsg )
 	wxString message;
 	bool ok = false;
 	VarTable vt;
-	if ( wxFileExists(file) )
-	{
 #if defined(__LOAD_AS_JSON__)
+	wxString schk = file;
+	schk.Replace(".json", ".zip");
+	if (wxFileExists(schk))
+	{
 		ok = VarTableFromJSONFile(&vt, file.ToStdString());
 #else
+	if (wxFileExists(file))
+	{
 		wxFFileInputStream in(file);
 		if (!in.IsOk())
 		{

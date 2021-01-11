@@ -740,13 +740,13 @@ bool VarTable::Read_text(wxInputStream &_I)
 bool VarTable::Read_JSON( const std::string& file)
 {
 	rapidjson::Document doc;
-
+/*
 	FILE* fp = fopen(file.c_str(), "r"); 
 	if (!fp) return false;
 	char readBuffer[65536];
 	rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
-
-	/*
+	*/
+	
 	wxString sfn = file;
 	wxFileName fn(sfn);
 	sfn.Replace(".json", ".zip");
@@ -778,17 +778,17 @@ bool VarTable::Read_JSON( const std::string& file)
 	zis.Read(os);
 
 	rapidjson::StringStream is(os.GetString().c_str());
-	*/
+	
 	doc.ParseStream(is);
 	if (doc.HasParseError()) {
 		// throw?
-		fclose(fp);
-//		wxLogError(wxS("Could not read the zip file string conversion '%s'."), upZe->GetName());
+//		fclose(fp);
+		wxLogError(wxS("Could not read the zip file string conversion '%s'."), upZe->GetName());
 		return false;
 	}
 	else {
 		Read_JSON(doc);
-		fclose(fp);
+//		fclose(fp);
 		return true;
 	}
 }
