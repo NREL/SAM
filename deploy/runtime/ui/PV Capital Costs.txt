@@ -1,7 +1,7 @@
 PV Capital Costs
-826
-681
-98
+1242
+684
+106
 GroupBox
 
 1
@@ -215,246 +215,6 @@ Caption
 5
 1
 $
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-8
-Label612
-X
-3
-432
-Y
-3
-87
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-5
-$/Wdc
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-8
-Label711
-X
-3
-309
-Y
-3
-87
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-1
-$
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-6
-Label8
-X
-3
-69
-Y
-3
-111
-Width
-3
-239
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-27
-Balance of system equipment
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-7
-Label81
-X
-3
-69
-Y
-3
-135
-Width
-3
-239
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-18
-Installation labor
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-8
-Label811
-X
-3
-69
-Y
-3
-159
-Width
-3
-239
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-29
-Installer margin and overhead
 TextColour
 4
 0
@@ -869,6 +629,174 @@ BackColour
 TabOrder
 3
 16
+Label
+
+1
+13
+Name
+5
+19
+bos_equipment_label
+X
+3
+69
+Y
+3
+111
+Width
+3
+239
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+27
+Balance of system equipment
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+MatrixData
+
+1
+9
+Name
+5
+19
+capex_matrix_widget
+X
+3
+876
+Y
+3
+93
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Description
+5
+16
+Matrix of values
+Fields
+6
+13
+capacity_row0
+capacity_row1
+capacity_row2
+capacity_row3
+capacity_row4
+cost_per_watt_row0
+cost_per_watt_row1
+cost_per_watt_row2
+cost_per_watt_row4
+cost_per_watt_row3
+use_dc_capacity
+include_sales_tax
+sales_tax_basis
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+18
+capex_table_button
+X
+3
+249
+Y
+3
+189
+Width
+3
+318
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+54
+Input capex costs using a capacity interpolation table
+TabOrder
+3
+4294967295
+MultilineText
+
+1
+11
+Name
+5
+23
+capex_table_cap_warning
+X
+3
+852
+Y
+3
+240
+Width
+3
+303
+Height
+3
+57
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 CheckBox
 
 1
@@ -879,16 +807,16 @@ Name
 capex_table_check
 X
 3
-21
+18
 Y
 3
-231
+228
 Width
 3
 364
 Height
 3
-24
+18
 Tool Tip
 5
 0
@@ -912,10 +840,10 @@ Name
 capex_table_label
 X
 3
-18
+831
 Y
 3
-261
+177
 Width
 3
 406
@@ -950,6 +878,250 @@ AlignRight
 AlignTop
 2
 0
+MultilineText
+
+1
+11
+Name
+5
+23
+capex_table_tax_warning
+X
+3
+852
+Y
+3
+306
+Width
+3
+303
+Height
+3
+57
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+DataMatrix
+
+1
+27
+Name
+5
+18
+capex_table_widget
+X
+3
+831
+Y
+3
+522
+Width
+3
+325
+Height
+3
+159
+Tool Tip
+5
+0
+PasteAppendRows
+2
+0
+PasteAppendCols
+2
+0
+ShowButtons
+2
+1
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
+ShadeC0
+2
+0
+ShowCols
+2
+1
+ShowColLabels
+2
+1
+ColLabels
+5
+76
+Capacity (kW), Direct costs ($/W), Sales tax basis (%), Indirect Costs ($/W)
+NumRowsLabel
+5
+5
+Rows:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+1
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+0
+Numeric
+
+1
+17
+Name
+5
+29
+capex_table_widget_total_cost
+X
+3
+1053
+Y
+3
+108
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+18
+capex_widget_label
+X
+3
+21
+Y
+3
+246
+Width
+3
+405
+Height
+3
+51
+Tool Tip
+5
+0
+Caption
+5
+192
+Click the 'Edit values' button to edit the capacity and cost table values used to interpolate to the correct total system cost. The itemized inputs are not used when this checkbox is selected.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -1013,6 +1185,45 @@ BackColour
 TabOrder
 3
 26
+Divider
+
+1
+10
+Name
+5
+19
+contingency_divider
+X
+3
+69
+Y
+3
+213
+Width
+3
+738
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+11
+Contingency
+Bold
+2
+1
 Numeric
 
 1
@@ -1075,6 +1286,102 @@ BackColour
 TabOrder
 3
 14
+Label
+
+1
+13
+Name
+5
+12
+dollar_label
+X
+3
+309
+Y
+3
+87
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+1
+$
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+21
+dollar_per_watt_label
+X
+3
+432
+Y
+3
+87
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+5
+$/Wdc
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -1324,6 +1631,54 @@ BackColour
 TabOrder
 3
 35
+Label
+
+1
+13
+Name
+5
+10
+equal_lbl1
+X
+3
+657
+Y
+3
+135
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+=
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -1635,6 +1990,54 @@ BackColour
 TabOrder
 3
 8
+Label
+
+1
+13
+Name
+5
+19
+install_labor_label
+X
+3
+69
+Y
+3
+135
+Width
+3
+239
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+18
+Installation labor
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -2135,6 +2538,54 @@ BackColour
 TabOrder
 3
 53
+Label
+
+1
+13
+Name
+5
+31
+installer_margin_overhead_label
+X
+3
+69
+Y
+3
+159
+Width
+3
+239
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+29
+Installer margin and overhead
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Choice
 
 1
@@ -3800,45 +4251,6 @@ Divider
 Name
 5
 11
-object 2284
-X
-3
-69
-Y
-3
-213
-Width
-3
-738
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-11
-Contingency
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-11
 object 2285
 X
 3
@@ -4163,102 +4575,6 @@ X
 Y
 3
 363
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-1
-+
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 766
-X
-3
-657
-Y
-3
-135
-Width
-3
-12
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-1
-=
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 767
-X
-3
-414
-Y
-3
-135
 Width
 3
 12
@@ -4906,6 +5222,54 @@ BackColour
 TabOrder
 3
 31
+Label
+
+1
+13
+Name
+5
+9
+plus_lbl1
+X
+3
+414
+Y
+3
+135
+Width
+3
+12
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
++
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 Numeric
 
 1
@@ -5041,7 +5405,7 @@ Name
 sales_tax_value
 X
 3
-492
+489
 Y
 3
 510
@@ -5156,6 +5520,68 @@ BackColour
 TabOrder
 3
 24
+Numeric
+
+1
+17
+Name
+5
+9
+test_calc
+X
+3
+912
+Y
+3
+141
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -5346,7 +5772,7 @@ TabOrder
 3
 52
 
-60
+67
 bos_equip_fixed
 3
 1
@@ -5403,6 +5829,46 @@ Capital Costs
 1
 0
 Numeric
+capex_matrix_widget
+3
+5
+ 
+ 
+ 
+0
+0
+1
+5
+1
+0
+Default
+capex_table_button_value
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Button
+capex_table_cap_warning
+3
+4
+ 
+ 
+ 
+0
+0
+1
+4
+9
+<invalid>
+Label
 capex_table_check
 3
 1
@@ -5417,6 +5883,47 @@ capex_table_check
 1
 0
 CheckBox
+capex_table_tax_warning
+3
+4
+ 
+ 
+ 
+0
+0
+1
+4
+9
+<invalid>
+Label
+capex_table_widget
+3
+3
+ 
+ 
+ 
+0
+0
+1
+3
+1
+1
+0
+Default
+capex_table_widget_total_cost
+3
+1
+Widget cost
+$
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 contingency
 3
 1
@@ -6147,6 +6654,20 @@ system_use_recapitalization
 1
 0
 Default
+test_calc
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 total_direct_cost
 3
 1
@@ -6190,7 +6711,7 @@ Capital Costs
 0
 Numeric
 
-4596
+6995
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6364,13 +6885,90 @@ equations{ 'total_direct_cost' } = define() {
 equations { 'system_use_recapitalization' } = define () {
 	return 0;
 };
-	
 
-3408
+equations {'$MIMO Capex Table'} = define() {
+	table = ${capex_matrix_widget};
+	cap0 = table.capacity_row0;
+	cap1 = table.capacity_row1;
+	cap2 = table.capacity_row2;
+	cap3 = table.capacity_row3;
+	cap4 = table.capacity_row4;
+	cost0 = table.cost_per_watt_row0;
+	cost1 = table.cost_per_watt_row1;
+	cost2 = table.cost_per_watt_row2;
+	cost3 = table.cost_per_watt_row3;
+	cost4 = table.cost_per_watt_row4;
+	sales_tax = ${sales_tax_value};
+	if (table.use_dc_capacity ==0) {
+		sys_cap = ${system_capacity};
+		${capex_table_cap_warning} = '';
+	}
+	else if (table.use_dc_capacity == 1) {
+		sys_cap = ${inverter_capacity};
+		${capex_table_cap_warning} = '';
+	}
+	else {
+		sys_cap = ${system_capacity};
+		${capex_table_cap_warning} = 'Set use_dc_capacity=0 for DC capacity, 1 for AC capacity. Defaulting to DC.';
+	}
+	
+	if (table.include_sales_tax == 0) {
+		sales_tax_basis = 0;
+		${capex_table_tax_warning} = '';
+	}
+	else if (table.include_sales_tax == 1) {
+		sales_tax_basis = table.sales_tax_basis;
+		${capex_table_tax_warning} = '';
+	}
+	else {
+		sales_tax_basis = 0;
+		${capex_table_tax_warning} = 'Set include_sales_tax=0 for no sales tax, 1 for sales tax then set sales_tax basis. Defaulting to no sales tax';
+	}
+	
+	if (sys_cap < cap0) {
+		cap_iter = cap0;
+		cost_iter = cost0;
+	}
+	else if (sys_cap > cap0 && sys_cap < cap1 ) {
+		cap_iter = (sys_cap - cap0)/(cap1 - cap0);
+		cost_iter = cap_iter*(cost1 - cost0) + cost0;
+		${capex_table_widget_total_cost} = cost_iter*sys_cap*1000*(1+sales_tax_basis*sales_tax);
+		return;
+	}
+	else if (sys_cap > cap1 && sys_cap < cap2) {
+		cap_iter = (sys_cap - cap1)/(cap2 - cap1);
+		cost_iter = cap_iter*(cost2 - cost1) + cost1;
+		${capex_table_widget_total_cost} = cost_iter*sys_cap*1000*(1+sales_tax_basis*sales_tax);
+		return;
+	}
+	else if (sys_cap > cap2 && sys_cap < cap3) {
+		cap_iter = (sys_cap - cap2)/(cap3 - cap2);
+		cost_iter = cap_iter*(cost3 - cost2) + cost2;
+		${capex_table_widget_total_cost} = cost_iter*sys_cap*1000*(1+sales_tax_basis*sales_tax);
+		return;
+	}
+	else if (sys_cap > cap3 && sys_cap < cap4) {
+		cap_iter = (sys_cap - cap3)/(cap4 - cap3);
+		cost_iter = cap_iter*(cost4 - cost3) + cost3;
+		${capex_table_widget_total_cost} = cost_iter*sys_cap*1000*(1+sales_tax_basis*sales_tax);
+		return;
+	}
+	else {
+		cap_iter = cap4;
+		cost_iter = cost4;
+		${capex_table_widget_total_cost} = cost_iter*sys_cap*1000*(1+sales_tax_basis*sales_tax);
+		return;
+	}
+};
+
+
+
+9587
 on_load{"PV Capital Costs"}=define()
 {
 	capex_table_enable();
-	
+	on_change{'capex_table_button'};
+	capex_table_option();
 	is_detailed_pv = ( technology() != "PVWatts" );
 	show("land_area_value",is_detailed_pv);
 	show("land_per_acre",is_detailed_pv);
@@ -6384,6 +6982,92 @@ on_load{"PV Capital Costs"}=define()
 	show("install_labor_perarea",is_detailed_pv);
 	show("install_margin_perarea",is_detailed_pv);
 };
+
+on_change{'capex_table_button'} = define() {
+	capex_table_option();
+};
+
+function capex_table_option() 
+{
+	check = value('capex_table_button_value');
+	show("module_num_units", check!=1);
+	show("module_power", check!=1);
+	show("modulearray_power", check!=1);
+	show("inverter_num_units", check!=1);
+	show("inverter_power", check!=1);
+	show("inverterarray_power", check!=1);
+	
+	show("per_module",check!=1);
+	show("per_inverter",check!=1);
+	show("module_costunits",check!=1);
+	show("inverter_costunits",check!=1);
+	show("module_total",check!=1);
+	show("inverter_total",check!=1);
+	show("bos_equip_fixed",check!=1);
+	show("bos_equip_perwatt",check!=1);
+	show("bos_equip_perarea",check!=1);
+	show("bos_equip_total",check!=1);
+	show("install_labor_fixed",check!=1);
+	show("install_labor_perwatt",check!=1);
+	show("install_labor_perarea",check!=1);
+	show("install_labor_total",check!=1);
+	show("install_margin_fixed",check!=1);
+	show("install_margin_perwatt",check!=1);
+	show("install_margin_perarea",check!=1);
+	show("install_margin_total",check!=1);
+	show("subtotal_direct",check!=1);
+	show("contingency_percent",check!=1);
+	show("contingency",check!=1);
+	show('bos_equipment_label',check!=1);
+	show('install_labor_label',check!=1);
+	show('installer_margin_overhead_label',check!=1);
+	show('dollar_label',check!=1);
+	show('contingency_divider',check!=1);
+	//show("total_direct_cost",check!=1);
+	
+	//Indirect Capital Costs
+	show("permitting_percent", check!=1);
+	show("permitting_per_watt", check!=1);
+	show("permitting_fixed", check!=1);
+	show("permitting_total", check!=1);
+	show("engr_percent", check!=1);
+	show("engr_per_watt", check!=1);
+	show("engr_fixed", check!=1);
+	show("engr_total", check!=1);
+	show("grid_percent", check!=1);
+	show("grid_per_watt", check!=1);
+	show("grid_fixed", check!=1);
+	show("grid_total", check!=1);
+	show("land_area_value", check!=1);
+	show("land_per_acre", check!=1);
+	show("land_percent", check!=1);
+	show("land_per_watt", check!=1);
+	show("land_fixed", check!=1);
+	show("land_total", check!=1);
+	show("landprep_per_acre", check!=1);
+	show("landprep_percent", check!=1);
+	show("landprep_per_watt", check!=1);
+	show("landprep_fixed", check!=1);
+	show("landprep_total", check!=1);
+	show("sales_tax_percent", check!=1);
+	show("sales_tax_value", check!=1);
+	show("sales_tax_total", check!=1);
+	//show("total_indirect_cost", check!=1);
+	//how("capex_table_label", check==1);
+	//show("total_installed_cost", check!=1);
+	show("installed_per_capacity", check!=1);
+	show('capex_table_widget',check==1);
+	refresh();
+	
+	if(value('capex_table_button_value')==0) {
+		value('capex_table_button_value',1);
+		property('capex_table_button','Caption','Input capex costs as itemized inputs');
+	}
+	else {
+		value('capex_table_button_value',0);
+		property('capex_table_button','Caption','Input capex costs using a capacity interpolation table');
+	}
+}
 
 on_change{'capex_table_check'} = define() {
 	capex_table_enable();
@@ -6451,13 +7135,143 @@ function capex_table_enable()
 	enable("sales_tax_total", table_choice!=1);
 	enable("total_indirect_cost", table_choice!=1);
 	show("capex_table_label", table_choice==1);
+	enable('capex_matrix_widget',table_choice==1);
+	show('capex_widget_label',table_choice==1);
+	//enable("total_installed_cost", table_choice!=1);
+	//enable("installed_per_capacity", table_choice!=1);
 	//Uncollapse capex table
 	if (table_choice==1)
 	{
-		value("pv_capex_table_is_shown", 1);
+		//value("pv_capex_table_is_shown", 1);
+		value('total_installed_cost',${capex_table_widget_total_cost});
 	}
 	
 	refresh();
 	
 }	
+
+function interpolate_capex_table()
+{
+	input = ${capex_table_widget};
+	if (value('capex_table_capacity_choice')==0)
+	{
+		sys_cap = ${system_capacity};
+	}
+	else
+	{
+		sys_cap = ${total_inverter_capacity};
+	}
+	nr = #input;
+	nc = #input[0];
+	
+	
+	refresh();
+	idx=0;
+	//Cap_low = [];
+	//Cap_high = [];
+	if (nc < 3) {
+		if (sys_cap > input[nr - 1][0]) {
+			cost = input[nr - 1][0];
+			
+		}
+		else if (sys_cap < input[0][0]) {
+			cost = input[0][0];
+			
+		}
+		else {
+			while (sys_cap < input[idx][0]) {
+				idx++;
+			}
+		
+			Cap_low = input[idx][0];
+			Cap_high = input[idx+1][0];
+			cost_low = input[idx][1];
+			cost_high = input[idx+1][1];
+			cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
+			
+		}
+		total_cost = cost*sys_cap*1000;
+		//value("capex_table_cost_per_kw", cost*1000);
+		value("total_direct_cost", total_cost);
+		value("capex_table_total_installed_cost",total_cost + ${capex_table_sales_tax_total});
+		refresh();
+	}
+	else if (nc == 3) {
+		if (sys_cap > input[nr - 1][0]) {
+			cost = input[nr - 1][1];
+			ind_cost = input[nr -1][2];
+			
+		}
+		else if (sys_cap < input[0][0]) {
+			cost = input[0][1];
+			ind_cost = input[0][2];
+			
+		}
+		else {
+			while (sys_cap < input[idx][0]) {
+				idx++;
+			}
+		
+			Cap_low = input[idx][0];
+			Cap_high = input[idx+1][0];
+			cost_low = input[idx][1];
+			cost_high = input[idx+1][1];
+			ind_cost_low = input[idx][2];
+			ind_cost_high = input[idx+1][2];
+			cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
+			ind_cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (ind_cost_high - ind_cost_low) + ind_cost_low;
+		}
+		total_direct_cost = (cost)*sys_cap*1000;
+		total_indirect_cost = (ind_cost)*sys_cap*1000;
+		total_cost = total_direct_cost + total_indirect_cost + ${capex_table_sales_tax_total};
+		
+		value("total_direct_cost",total_direct_cost);
+		value("total_indirect_cost",total_indirect_cost);
+		value("capex_table_total_installed_cost",total_cost);
+		refresh();
+	}
+	
+
+}
+/*
+on_change{'capex_matrix_widget'} = define() {
+	table = ${capex_matrix_widget};
+	cap0 = table.capacity_row0;
+	cap1 = talbe.capacity_row1;
+	cap2 = table.capacity_row2;
+	cost0 = table.cost_per_watt_row0;
+	cost1 = table_cost_per_watt_row1;
+	cost2 = table_cost_per_watt_row2;
+	
+	
+	sys_cap = ${system_capacity};
+	
+	if (sys_cap < cap0) {
+		cap_iter = cap0;
+		cost_iter = cost0;
+	}
+	else if (sys_cap > cap0 && sys_cap < cap1 ) {
+		cap_iter = (sys_cap - cap0)/(cap1 - cap0);
+		cost_iter = cap_iter*(cost1 - cost0) + cost0;
+	}
+	else if (sys_cap > cap1 && sys_cap < cap2) {
+		cap_iter = (sys_cap - cap1)/(cap2 - cap1);
+		cost_iter = cap_iter*(cost2 - cost1) + cost1;
+	}
+	else if (sys_cap > cap2 && sys_cap < cap3) {
+		cap_iter = (sys_cap - cap2)/(cap3 - cap2);
+		cost_iter = cap_iter*(cost3 - cost2) + cost2;
+	}
+	else if (sys_cap > cap3 && sys_cap < cap4) {
+		cap_iter = (sys_cap - cap3)/(cap4 - cap3);
+		cost_iter = cap_iter*(cost4 - cost3) + cost3;
+	}
+	else {
+		cap_iter = cap4;
+		cost_iter = cost4;
+	}
+};*/
+
+	
+	
 

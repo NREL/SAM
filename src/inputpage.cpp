@@ -222,6 +222,14 @@ void ActiveInputPage::Initialize()
 					td->SetFields( vv->IndexLabels );
 			}
 
+            if (vv->Type == VV_MATRIX && vv->IndexLabels.size() > 0
+                && (type == "MatrixData"))
+            {
+                objs[i]->Property("Fields").Set(vv->IndexLabels);
+                if (MatrixDataCtrl* td = objs[i]->GetNative<MatrixDataCtrl>())
+                    td->SetFields(vv->IndexLabels);
+            }
+
 
 			wxTextCtrl *tc = objs[i]->GetNative<wxTextCtrl>();
 			if ( tc != 0 && (vv->Flags & VF_CALCULATED || vv->Flags & VF_INDICATOR ) )
@@ -542,6 +550,11 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
 		else val.Set(dm->GetData());
 	}
+    else if (AFDataMatrixDialogCtrl* dm = obj->GetNative<AFDataMatrixDialogCtrl>())
+    {
+        if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
+        else val.Set(dm->GetData());
+    }
 	else if (AFMonthByHourFactorCtrl *dm = obj->GetNative<AFMonthByHourFactorCtrl>())
 	{
 		if ( dir == VAR_TO_OBJ ) dm->SetData( val.Matrix() );
@@ -625,6 +638,25 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 			}
 		}
 	}
+    else if ( MatrixDataCtrl *td = obj->GetNative<MatrixDataCtrl>() )
+    {
+        if (val.Type() == VV_TABLE)
+        {
+            VarTable& T = val.Table();
+            if (dir == VAR_TO_OBJ) {
+                wxArrayString list = T.ListAll();
+                for (size_t i = 0; i < list.size(); i++)
+                    td->Set(list[i], T.Get(list[i])->Value());
+            }
+            else
+            {
+                T.clear();
+                wxArrayString list = td->GetFields();
+                for (size_t i = 0; i < list.size(); i++)
+                    T.Set(list[i], VarValue((float)td->Get(list[i])));
+            }
+        }
+    }
 	else return false; // object data exch not handled for this type
 
 	return true;  // all ok!
