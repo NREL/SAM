@@ -25,6 +25,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <numeric>
 #include <algorithm>
 #include <fstream>
+#include <memory>
+
+
 
 #include <wx/datstrm.h>
 #include <wx/wfstream.h>
