@@ -788,13 +788,17 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 
 
 	VarTable vt_defaults;
-	if ( wxFileExists(file))
-	{
 
 #if defined(__LOAD_AS_JSON__)
+	wxString schk = file;
+	schk.Replace(".json", ".zip");
+	if (wxFileExists(schk))
+	{
 		VarTableFromJSONFile(&vt_defaults, file.ToStdString());
 #else 
-		wxFFileInputStream in(file);
+	if (wxFileExists(file))
+	{
+			wxFFileInputStream in(file);
 		if ( in.IsOk() )
 	#ifdef UI_BINARY
 			vt_defaults.Read( in );
