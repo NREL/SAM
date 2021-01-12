@@ -568,20 +568,8 @@ bool Case::VarTableFromJSONFile(VarTable* vt, const std::string& file)
 
 
 
-//bool Case::LoadValuesFromExternalSource( wxInputStream &in, 
-//		LoadStatus *di, VarTable *oldvals, bool binary)
 bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarTable* oldvals)
 {
-	// ---------------------------------------------------------------------------------
-	// separate function to creat VarTable from wxInputStream and rapidJSON document
-//	VarTable vt;
-// All project files are assumed to be stored as binary
-//	bool read_ok = true;
-//	if (!binary) // text call from LoadDefaults
-//		read_ok = vt.Read_text(in);
-//	else
-//		read_ok = vt.Read(in);
-//	// -------------------------------------------------------------------------------
 	bool read_ok = true;
 	if (!read_ok)
 	{
@@ -649,7 +637,8 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 	return ok;
 }
 
-bool Case::LoadDefaults( wxString *pmsg )
+
+bool Case::LoadDefaults(wxString* pmsg)
 {
 	if (!m_config) return false;
 	bool binary = true;
@@ -688,7 +677,6 @@ bool Case::LoadDefaults( wxString *pmsg )
 		ok = VarTableFromInputStream(&vt, in, binary);
 #endif
 		ok &= LoadValuesFromExternalSource(vt, &di, (VarTable*)0);
-//		ok = LoadValuesFromExternalSource(in, &di, (VarTable*)0, binary);
 		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
 				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
 				"Would you like to update the defaults with the current values right now?\n"

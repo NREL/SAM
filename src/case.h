@@ -116,7 +116,7 @@ public:
 	bool VarTableFromJSONFile(VarTable* vt, const std::string& file);
 
 
-	bool LoadDefaults( wxString *error_msg = 0 );
+	bool LoadDefaults( wxString *pmsg = 0 );
 	bool SaveDefaults( bool quiet = false );
 
 	bool SetConfiguration( const wxString &tech, const wxString &fin, bool silent=false, wxString *message = 0 );
