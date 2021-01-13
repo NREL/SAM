@@ -1,7 +1,7 @@
 PV Capital Costs
-1242
-684
-106
+1249
+1044
+104
 GroupBox
 
 1
@@ -45,7 +45,7 @@ X
 9
 Y
 3
-297
+300
 Width
 3
 812
@@ -75,13 +75,13 @@ X
 9
 Y
 3
-585
+591
 Width
 3
 812
 Height
 3
-89
+293
 Tool Tip
 5
 0
@@ -105,7 +105,7 @@ X
 306
 Y
 3
-315
+318
 Width
 3
 104
@@ -153,7 +153,7 @@ X
 432
 Y
 3
-315
+318
 Width
 3
 101
@@ -201,7 +201,7 @@ X
 552
 Y
 3
-315
+318
 Width
 3
 101
@@ -249,7 +249,7 @@ X
 15
 Y
 3
-339
+342
 Width
 3
 293
@@ -297,7 +297,7 @@ X
 15
 Y
 3
-363
+366
 Width
 3
 293
@@ -345,7 +345,7 @@ X
 15
 Y
 3
-387
+390
 Width
 3
 293
@@ -677,52 +677,6 @@ AlignRight
 AlignTop
 2
 0
-MatrixData
-
-1
-9
-Name
-5
-19
-capex_matrix_widget
-X
-3
-876
-Y
-3
-93
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Description
-5
-16
-Matrix of values
-Fields
-6
-13
-capacity_row0
-capacity_row1
-capacity_row2
-capacity_row3
-capacity_row4
-cost_per_watt_row0
-cost_per_watt_row1
-cost_per_watt_row2
-cost_per_watt_row4
-cost_per_watt_row3
-use_dc_capacity
-include_sales_tax
-sales_tax_basis
-TabOrder
-3
-4294967295
 Button
 
 1
@@ -733,10 +687,10 @@ Name
 capex_table_button
 X
 3
-249
+60
 Y
 3
-189
+675
 Width
 3
 318
@@ -763,10 +717,10 @@ Name
 capex_table_cap_warning
 X
 3
-852
+468
 Y
 3
-240
+735
 Width
 3
 303
@@ -807,16 +761,16 @@ Name
 capex_table_check
 X
 3
-18
+36
 Y
 3
-228
+744
 Width
 3
 364
 Height
 3
-18
+24
 Tool Tip
 5
 0
@@ -840,10 +794,10 @@ Name
 capex_table_label
 X
 3
-831
+36
 Y
 3
-177
+717
 Width
 3
 406
@@ -888,10 +842,10 @@ Name
 capex_table_tax_warning
 X
 3
-852
+468
 Y
 3
-306
+801
 Width
 3
 303
@@ -932,16 +886,16 @@ Name
 capex_table_widget
 X
 3
-831
+840
 Y
 3
-522
+636
 Width
 3
-325
+364
 Height
 3
-159
+189
 Tool Tip
 5
 0
@@ -1022,10 +976,10 @@ Name
 capex_table_widget_total_cost
 X
 3
-1053
+282
 Y
 3
-108
+774
 Width
 3
 90
@@ -1084,10 +1038,10 @@ Name
 capex_widget_label
 X
 3
-21
+36
 Y
 3
-246
+807
 Width
 3
 405
@@ -1395,7 +1349,7 @@ X
 552
 Y
 3
-363
+366
 Width
 3
 100
@@ -1457,7 +1411,7 @@ X
 432
 Y
 3
-363
+366
 Width
 3
 100
@@ -1519,7 +1473,7 @@ X
 309
 Y
 3
-363
+366
 Width
 3
 100
@@ -1581,7 +1535,7 @@ X
 681
 Y
 3
-363
+366
 Width
 3
 127
@@ -1692,7 +1646,7 @@ X
 552
 Y
 3
-387
+390
 Width
 3
 100
@@ -1754,7 +1708,7 @@ X
 432
 Y
 3
-387
+390
 Width
 3
 100
@@ -1816,7 +1770,7 @@ X
 309
 Y
 3
-387
+390
 Width
 3
 100
@@ -1878,7 +1832,7 @@ X
 681
 Y
 3
-387
+390
 Width
 3
 127
@@ -2487,7 +2441,7 @@ X
 681
 Y
 3
-636
+642
 Width
 3
 127
@@ -2883,7 +2837,7 @@ X
 201
 Y
 3
-423
+426
 Width
 3
 90
@@ -2945,7 +2899,7 @@ X
 552
 Y
 3
-447
+450
 Width
 3
 100
@@ -3007,7 +2961,7 @@ X
 201
 Y
 3
-447
+450
 Width
 3
 90
@@ -3071,7 +3025,7 @@ X
 432
 Y
 3
-447
+450
 Width
 3
 100
@@ -3133,7 +3087,7 @@ X
 309
 Y
 3
-447
+450
 Width
 3
 100
@@ -3195,7 +3149,7 @@ X
 681
 Y
 3
-447
+450
 Width
 3
 127
@@ -3258,7 +3212,7 @@ X
 552
 Y
 3
-471
+474
 Width
 3
 100
@@ -3320,7 +3274,7 @@ X
 201
 Y
 3
-471
+474
 Width
 3
 90
@@ -3384,7 +3338,7 @@ X
 432
 Y
 3
-471
+474
 Width
 3
 100
@@ -3446,7 +3400,7 @@ X
 309
 Y
 3
-471
+474
 Width
 3
 100
@@ -3508,7 +3462,7 @@ X
 681
 Y
 3
-471
+474
 Width
 3
 127
@@ -3571,7 +3525,7 @@ X
 45
 Y
 3
-603
+609
 Width
 3
 380
@@ -3715,7 +3669,7 @@ X
 294
 Y
 3
-456
+459
 Width
 3
 12
@@ -3763,7 +3717,7 @@ X
 12
 Y
 3
-471
+474
 Width
 3
 187
@@ -3811,7 +3765,7 @@ X
 75
 Y
 3
-447
+450
 Width
 3
 124
@@ -4142,7 +4096,7 @@ X
 69
 Y
 3
-408
+411
 Width
 3
 582
@@ -4181,7 +4135,7 @@ X
 681
 Y
 3
-534
+537
 Width
 3
 127
@@ -4295,7 +4249,7 @@ X
 72
 Y
 3
-495
+498
 Width
 3
 579
@@ -4334,7 +4288,7 @@ X
 471
 Y
 3
-612
+618
 Width
 3
 210
@@ -4430,7 +4384,7 @@ X
 417
 Y
 3
-456
+459
 Width
 3
 12
@@ -4478,7 +4432,7 @@ X
 660
 Y
 3
-363
+366
 Width
 3
 12
@@ -4526,7 +4480,7 @@ X
 537
 Y
 3
-363
+366
 Width
 3
 12
@@ -4574,7 +4528,7 @@ X
 417
 Y
 3
-363
+366
 Width
 3
 12
@@ -4670,7 +4624,7 @@ X
 468
 Y
 3
-549
+552
 Width
 3
 210
@@ -4766,7 +4720,7 @@ X
 537
 Y
 3
-456
+459
 Width
 3
 12
@@ -4814,7 +4768,7 @@ X
 660
 Y
 3
-456
+459
 Width
 3
 12
@@ -4986,7 +4940,7 @@ X
 552
 Y
 3
-339
+342
 Width
 3
 100
@@ -5048,7 +5002,7 @@ X
 432
 Y
 3
-339
+342
 Width
 3
 100
@@ -5110,7 +5064,7 @@ X
 309
 Y
 3
-339
+342
 Width
 3
 100
@@ -5172,7 +5126,7 @@ X
 681
 Y
 3
-339
+342
 Width
 3
 127
@@ -5283,7 +5237,7 @@ X
 285
 Y
 3
-510
+513
 Width
 3
 100
@@ -5345,7 +5299,7 @@ X
 681
 Y
 3
-510
+513
 Width
 3
 127
@@ -5408,7 +5362,7 @@ X
 489
 Y
 3
-510
+513
 Width
 3
 100
@@ -5526,68 +5480,6 @@ Numeric
 17
 Name
 5
-9
-test_calc
-X
-3
-912
-Y
-3
-141
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
 17
 total_direct_cost
 X
@@ -5658,7 +5550,7 @@ X
 681
 Y
 3
-549
+552
 Width
 3
 127
@@ -5721,7 +5613,7 @@ X
 681
 Y
 3
-612
+618
 Width
 3
 127
@@ -6963,12 +6855,12 @@ equations {'$MIMO Capex Table'} = define() {
 
 
 
-9587
+9597
 on_load{"PV Capital Costs"}=define()
 {
-	capex_table_enable();
-	on_change{'capex_table_button'};
-	capex_table_option();
+	//capex_table_enable();
+	//on_change{'capex_table_button'};
+	//capex_table_option();
 	is_detailed_pv = ( technology() != "PVWatts" );
 	show("land_area_value",is_detailed_pv);
 	show("land_per_acre",is_detailed_pv);
@@ -6982,7 +6874,7 @@ on_load{"PV Capital Costs"}=define()
 	show("install_labor_perarea",is_detailed_pv);
 	show("install_margin_perarea",is_detailed_pv);
 };
-
+/*
 on_change{'capex_table_button'} = define() {
 	capex_table_option();
 };
@@ -7131,7 +7023,7 @@ function capex_table_enable()
 	enable("landprep_fixed", table_choice!=1);
 	enable("landprep_total", table_choice!=1);
 	enable("sales_tax_percent", table_choice!=1);
-	enable("sales_tax_value", table_choice!=1);
+	//enable("sales_tax_value", table_choice!=1);
 	enable("sales_tax_total", table_choice!=1);
 	enable("total_indirect_cost", table_choice!=1);
 	show("capex_table_label", table_choice==1);
