@@ -191,44 +191,6 @@ public:
 	}
 };
 
-class wxUIMatrixDataObject : public wxUIObject
-{
-public:
-    wxUIMatrixDataObject() {
-        AddProperty("Description", new wxUIProperty(wxString("Matrix of values")));
-        AddProperty("Fields", new wxUIProperty(wxArrayString()));
-        AddProperty("TabOrder", new wxUIProperty((int)-1));
-    }
-    virtual wxString GetTypeName() { return "MatrixData"; }
-    virtual wxUIObject* Duplicate() { wxUIObject* o = new wxUIMatrixDataObject; o->Copy(this); return o; }
-    virtual bool IsNativeObject() { return true; }
-    virtual bool DrawDottedOutline() { return false; }
-    virtual wxWindow* CreateNative(wxWindow* parent) {
-        MatrixDataCtrl* mf = new MatrixDataCtrl(parent, wxID_ANY);
-        mf->SetDescription(Property("Description").GetString());
-        mf->SetFields(Property("Fields").GetStringList());
-        return AssignNative(mf);
-    }
-    virtual void OnPropertyChanged(const wxString& id, wxUIProperty* p)
-    {
-        if (MatrixDataCtrl* pt = GetNative<MatrixDataCtrl>())
-        {
-            if (id == "Description") pt->SetDescription(p->GetString());
-            if (id == "Fields") pt->SetFields(p->GetStringList());
-        }
-    }
-    virtual void Draw(wxWindow* win, wxDC& dc, const wxRect& geom)
-    {
-        wxRendererNative::Get().DrawPushButton(win, dc, geom);
-        dc.SetFont(*wxNORMAL_FONT);
-        dc.SetTextForeground(*wxBLACK);
-        wxString label("MatrixData...");
-        int x, y;
-        dc.GetTextExtent(label, &x, &y);
-        dc.DrawText(label, geom.x + geom.width / 2 - x / 2, geom.y + geom.height / 2 - y / 2);
-    }
-};
-
 
 class wxUIPTLayoutObject : public wxUIObject
 {
@@ -634,83 +596,7 @@ public:
 
 };
 
-class wxUIDataMatrixDialogObject : public wxUIObject
-{
-public:
-    wxUIDataMatrixDialogObject() {
-        AddProperty("PasteAppendRows", new wxUIProperty(false));
-        AddProperty("PasteAppendCols", new wxUIProperty(false));
-        AddProperty("ShowButtons", new wxUIProperty(true));
-        AddProperty("ShowRows", new wxUIProperty(true));
-        AddProperty("ShowRowLabels", new wxUIProperty(false));
-        AddProperty("RowLabels", new wxUIProperty(wxString("")));
-        AddProperty("ShadeR0C0", new wxUIProperty(false));
-        AddProperty("VerticalLabel", new wxUIProperty(wxString("")));
-        AddProperty("HorizontalLabel", new wxUIProperty(wxString("")));
-        AddProperty("ShadeC0", new wxUIProperty(false));
-        AddProperty("ShowCols", new wxUIProperty(true));
-        AddProperty("ShowColLabels", new wxUIProperty(true));
-        AddProperty("ColLabels", new wxUIProperty(wxString("")));
-        AddProperty("NumRowsLabel", new wxUIProperty(wxString("Rows:")));
-        AddProperty("NumColsLabel", new wxUIProperty(wxString("Cols:")));
-        AddProperty("Layout", new wxUIProperty(0, "Buttons on top,Buttons on side"));
-        AddProperty("ChoiceColumn", new wxUIProperty(-1));
-        AddProperty("Choices", new wxUIProperty(wxString("Choice1,Choice2")));
-        AddProperty("HideColumn", new wxUIProperty(-1));
-        AddProperty("ShowColumn", new wxUIProperty(-1));
-        AddProperty("ColorMap", new wxUIProperty(false));
 
-        Property("Width").Set(400);
-        Property("Height").Set(300);
-    }
-    virtual wxString GetTypeName() { return "DataMatrixDialog"; }
-    virtual wxUIObject* Duplicate() { wxUIObject* o = new wxUIDataMatrixDialogObject; o->Copy(this); return o; }
-    virtual bool IsNativeObject() { return true; }
-    virtual wxWindow* CreateNative(wxWindow* parent) {
-        AFDataMatrixDialogCtrl* dm = new AFDataMatrixDialogCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), Property("ChoiceColumn").GetInteger(), false, Property("HorizontalLabel").GetString(), Property("VerticalLabel").GetString());
-        dm->PasteAppendRows(Property("PasteAppendRows").GetBoolean());
-        dm->PasteAppendCols(Property("PasteAppendCols").GetBoolean());
-        dm->ShowButtons(Property("ShowButtons").GetBoolean());
-        dm->ShowRows(Property("ShowRows").GetBoolean());
-        dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
-        dm->SetRowLabels(Property("RowLabels").GetString());
-        dm->ShadeR0C0(Property("ShadeR0C0").GetBoolean());
-        dm->SetR0C0Label(Property("LeftSideLabel").GetString());
-        dm->ShadeC0(Property("ShadeC0").GetBoolean());
-        dm->ShowCols(Property("ShowCols").GetBoolean());
-        dm->ShowColLabels(Property("ShowColLabels").GetBoolean());
-        dm->SetColLabels(Property("ColLabels").GetString());
-        dm->SetNumRowsLabel(Property("NumRowsLabel").GetString());
-        dm->SetNumColsLabel(Property("NumColsLabel").GetString());
-        dm->ShowCol(Property("ShowColumn").GetInteger(), true);
-        dm->ShowCol(Property("HideColumn").GetInteger(), false);
-        dm->ColorMap(Property("ColorMap").GetBoolean());
-        return AssignNative(dm);
-    }
-    virtual void OnPropertyChanged(const wxString& id, wxUIProperty* p)
-    {
-        if (AFDataMatrixCtrl* dm = GetNative<AFDataMatrixCtrl>())
-        {
-            if (id == "PasteAppendRows") dm->PasteAppendRows(p->GetBoolean());
-            if (id == "PasteAppendCols") dm->PasteAppendCols(p->GetBoolean());
-            if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
-            if (id == "LeftSideLabel") dm->SetR0C0Label(p->GetString());
-            if (id == "ShadeC0") dm->ShadeC0(p->GetBoolean());
-            if (id == "ShowButtons") dm->ShowButtons(p->GetBoolean());
-            if (id == "ShowCols") dm->ShowCols(p->GetBoolean());
-            if (id == "ShowRows") dm->ShowRows(p->GetBoolean());
-            if (id == "ShowRowLabels") dm->ShowRowLabels(p->GetBoolean());
-            if (id == "ShowColLabels") dm->ShowColLabels(p->GetBoolean());
-            //			if (id == "ColLabels") dm->SetColLabels(p->GetString());
-            if (id == "NumRowsLabel") dm->SetNumRowsLabel(p->GetString());
-            if (id == "NumColsLabel") dm->SetNumColsLabel(p->GetString());
-            if (id == "ShowColumn") dm->ShowCol(p->GetInteger(), true);
-            if (id == "HideColumn") dm->ShowCol(p->GetInteger(), false);
-            if (id == "ColorMap") dm->ColorMap(p->GetBoolean());
-        }
-    }
-
-};
 
 class wxUIDataMatrixObject : public wxUIObject
 {
@@ -1063,7 +949,6 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register(new wxUIDataLifetimeMatrixObject);
 	wxUIObjectTypeProvider::Register(new wxUIStringArrayObject);
 	wxUIObjectTypeProvider::Register(new wxUIDataMatrixObject);
-    wxUIObjectTypeProvider::Register(new wxUIDataMatrixDialogObject);
 	wxUIObjectTypeProvider::Register(new wxUIShadingFactorsObject);
 	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );
 	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );
@@ -1071,6 +956,5 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register( new wxUILossAdjustmentCtrl );
 	wxUIObjectTypeProvider::Register( new wxUIScene3DObject );
 	wxUIObjectTypeProvider::Register(new wxUITableDataObject);
-    wxUIObjectTypeProvider::Register(new wxUIMatrixDataObject);
 	wxUIObjectTypeProvider::Register(new wxUIToolTipCtrl);
 }
