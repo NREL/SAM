@@ -99,7 +99,6 @@ function set_rate_from_urdb()
 	
 	outln('Searching for list of rates for ' + utility_choice + '.');
 	rate_list = urdb_list_rates( utility_choice );
-	outln( rate_list );
 	
 	// separate rate names from rate guids
 	i=0;
