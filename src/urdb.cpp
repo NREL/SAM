@@ -232,7 +232,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
-		if (err) *err = "Could not retrieve JSON data for zip=" + zipcode + ".";
+		if (err) *err = "Web API call to urdb_companies_by_zip returned empty JSON for zip code = " + zipcode + ".";
 		return false;
 	}
 
@@ -240,49 +240,55 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	wxJSONValue root;
 	if (reader.Parse(json_data, &root) != 0)
 	{
-		if (err) *err = "Could not process returned JSON data for zip=" + zipcode + ".";
+		if (err) *err = "Could not parse JSON for zip code = " + zipcode + ".";
 		return false;
 	}
 
 	wxJSONValue item_list = root.Item("outputs");
 	// does not resolve to OpenEI names only EIA names
 	//wxString buf = item_list.Item("utility_name").AsString();
+    // EIAID number for utility company
+    // some zip codes return company_id with multipe EIAIDs separated by single pipes
 	wxString company_id = item_list.Item("company_id").AsString();
 	if (company_id.IsEmpty())
 	{
-		if (err) *err = "Could not process returned JSON companies for zip=" + zipcode + ".";
+		if (err) *err = "JSON returned by web API call to urdb_companies_by_zip returned empty company_id for zip code =" + zipcode + ".";
 		return false;
 	}
 
 	// OpenEI ask query to return company name given EIAID https://openei.org/services/doc/ask/
-	company_id.Replace("|", "%7C%7C"); // urlencode
-	url = SamApp::WebApi("urdb_name");
-	url.Replace("<EIAID>", company_id);
+    url = SamApp::WebApi("urdb_ask");
+    url.Replace("<QUESTION>", "[[Category:Utility+Companies]][[EiaUtilityId::"+company_id+"]]");
+    url.Replace("<PROPERTIES>", "?EiaUtilityId");
 
-	json_data = MyGet(url);
+    url.Replace("|", "||"); // double pipe to separate multipe EIAIDs in ask query
+    
+    json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
-		if (err) *err = "Could not retrieve JSON EIA name for zip=" + zipcode + ".";
+		if (err) *err = "URDB ask for query by zip returned empty JSON for EIAID = " + company_id + ".";
 		return false;
 	}
 
 	if (reader.Parse(json_data, &root) != 0)
 	{
-		if (err) *err = "Could not process returned JSON EIA name for zip=" + zipcode + ".";
+		if (err) *err = "URDB ask for query by zip: Failed to parse JSON failed for EIAID = " + company_id + ".";
 		return false;
 	}
 
 	names.Clear();
 	item_list = root["results"];
 	wxArrayString list_name = item_list.GetMemberNames();
-	// list_name[0] should be resolved name
-	if (list_name.Count() > 0)
+	if (list_name.GetCount() > 0)
 	{
-		wxString urdbname = list_name[0];
-		if (item_list[list_name[0] ].HasMember("fulltext"))
-			urdbname = item_list[list_name[0] ]["fulltext"].AsString();
-		urdbname.Replace("&amp;", "&");
-		names.Add(urdbname);
+        for (int i = 0; i < list_name.GetCount(); i++)
+        {
+            wxString urdbname = list_name[i];
+            if (item_list[list_name[i]].HasMember("fulltext"))
+                urdbname = item_list[list_name[i]]["fulltext"].AsString();
+            urdbname.Replace("&amp;", "&");
+            names.Add(urdbname);
+        }
 	}
 
 	if (err) *err = wxEmptyString;
@@ -290,51 +296,6 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	return true;
 
 }
-
-bool OpenEI::ResolveUtilityName(const wxString &name, wxString *urdb_name, wxString *err)
-{
-
-	wxString utlnm = name;
-	utlnm.Replace("&", "%26");
-
-	wxString url = SamApp::WebApi("urdb_name_from_eiaid");
-	url.Replace("<EIAID>", utlnm);
-
-	wxString json_data = MyGet(url);
-	if (json_data.IsEmpty())
-	{
-		if (err) *err = "Could not retrieve rate information for " + name;
-		return false;
-	}
-
-	wxJSONReader reader;
-	//	reader.SetSkipStringDoubleQuotes(true);
-	wxJSONValue root;
-	if (reader.Parse(json_data, &root) != 0)
-	{
-		if (err) *err = "Could not process returned JSON data for utility rates for " + name;
-		return false;
-	}
-
-	wxString urdbname = "";
-	wxJSONValue item_list = root["results"];
-	wxArrayString list_name = item_list.GetMemberNames();
-	// list_name[0] should be resolved name
-	if (list_name.Count() > 0)
-	{
-		urdbname = list_name[0];
-		if (item_list[list_name[0]].HasMember("fulltext"))
-			urdbname = item_list[list_name[0]]["fulltext"].AsString();
-	}
-	else
-		urdbname = name;
-
-	if (urdb_name) *urdb_name = urdbname;
-	if (err) *err = wxEmptyString;
-
-	return true;
-}
-
 
 bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rates, wxString *err)
 {
@@ -366,7 +327,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
-		if (err) *err = "Could not retrieve rate information for " + name + " " + url;
+		if (err) *err = "Web API call to urdb_rates returned empty JSON for utility company name = " + name + " " + url;
 		return false;
 	}
 
@@ -374,7 +335,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 
 	if (reader.Parse( json_data, &root )!=0)
 	{
-		if (err) *err = "Could not process returned JSON data for utility rates for " + name;
+		if (err) *err = "Could not parse JSON for utility company name = " + name;
 		return false;
 	}
 
@@ -385,6 +346,13 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	old_offset = offset;
 	offset = max_limit + 1;
 	count = item_list.Size();
+
+    if (count == 0)
+    {
+        if (err) *err = "No rates found for utility company name = " + name;
+        return false;
+    }
+
 	while (count != 0)
 	{
 		url.Replace(wxString::Format("&offset=%d",old_offset), wxString::Format("&offset=%d", offset));
@@ -443,7 +411,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	wxString json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
-		if (err) *err="Could not retrieve utility rate JSON data for " + guid;
+		if (err) *err="Web API call to urdb_rates returned empty JSON for GUID = " + guid;
 		return false;
 	}
 
@@ -452,14 +420,14 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	wxJSONValue root;
 	if (reader.Parse( json_data, &root )!=0)
 	{
-		if (err) *err = "Could not process returned JSON data for utility rate: " + guid;
+		if (err) *err = "Could not parse JSON for GUID = " + guid;
 		return false;
 	}
 
 	wxJSONValue val = root.Item("items").ItemAt(0);
 	if (val.IsNull())
 	{
-		if (err) *err = "Root JSON structure error - cannot read rate data information.";
+		if (err) *err = "Root JSON structure error: Items is null for GUID = " + guid;
 		return false;
 	}
 
@@ -870,7 +838,18 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	 : wxDialog( parent, wxID_ANY, title, wxDefaultPosition, wxScaleSize(800,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 {
 
-	cboResCom = new wxChoice(this, ID_cboResCom);
+    txtZipCode = new wxExtTextCtrl(this);
+    btnQueryZipCode = new wxButton(this, ID_btnQueryZipCode, "Search by zip code");
+
+    lstUtilities = new AFSearchListBox(this, ID_lstUtilities);
+
+    btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "Show all");
+    lblUtilityCount = new wxStaticText(this, ID_lblStatus, "");
+    lblStatus = new wxStaticText(this, ID_lblStatus, "");
+
+    lblRateStatus = new wxStaticText(this, ID_lblRateStatus, "Select a utility to show available rates.");
+
+    cboResCom = new wxChoice(this, ID_cboResCom);
 	cboResCom->Append("All");
 	cboResCom->Append("Residential");
 	cboResCom->Append("Commercial");
@@ -890,18 +869,15 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	chkActiveOnly = new wxCheckBox(this, ID_chkActiveOnly, "Show active");
 	chkActiveOnly->SetValue(true);
 
-	btnQueryAgain = new wxButton(this, ID_btnQueryAgain, "Show all");
-	lblUtilityCount = new wxStaticText(this, ID_lblStatus, "");
-
-	lstUtilities = new AFSearchListBox(this, ID_lstUtilities);
-
 	lstRates = new AFSearchListBox(this, ID_lstRates);
-	lblRateStatus = new wxStaticText(this, ID_lblRateStatus, "Select a utility to show available rates.");
 
 	txtRateName = new wxExtTextCtrl(this, ID_txtRateName);
 	txtRateName->SetEditable( false );
 	txtRateName->SetForegroundColour( wxColour(0, 0, 0) );
 	txtRateName->SetBackgroundColour( wxColour(255, 255, 255) );
+
+    txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY);
+    txtRateName->SetEditable(false);
 
 	txtRateStartDate = new wxExtTextCtrl(this, ID_txtRateStartDate);
 	txtRateStartDate->SetEditable(false);
@@ -918,18 +894,11 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	txtRateGUID->SetForegroundColour(wxColour(0, 0, 0));
 	txtRateGUID->SetBackgroundColour(wxColour(255, 255, 255));
 
-	txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY );
-
 	hypOpenEILink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "View rate on OpenEI website...", "https://en.openei.org/wiki/Utility_Rate_Database");
 	hypJSONLink = new wxHyperlinkCtrl(this, ID_hypOpenEILink, "Get rate as JSON...", "https://en.openei.org/wiki/Utility_Rate_Database");
 
-	lblStatus = new wxStaticText(this, ID_lblStatus, "");
-	
 	btnApply = new wxButton(this, ID_btnApply, "Download and apply utility rate");
 	btnClose = new wxButton(this, ID_btnClose, "Cancel");
-
-	txtZipCode = new wxExtTextCtrl(this);
-	btnQueryZipCode = new wxButton(this, ID_btnQueryZipCode, "Search by zip code");
 
 	wxBoxSizer *sz_zipcode = new wxBoxSizer(wxHORIZONTAL);
 	sz_zipcode->Add(new wxStaticText(this, wxID_ANY, "Zip code:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
@@ -953,7 +922,7 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Description"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 	sz_right_grid->Add(txtRateDescription, 1, wxALL | wxEXPAND, 2);
 	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Start"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
-	sz_right_grid->Add( txtRateStartDate, 1, wxALL|wxEXPAND, 2 );	
+	sz_right_grid->Add(txtRateStartDate, 1, wxALL|wxEXPAND, 2 );	
 	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "End"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 	sz_right_grid->Add(txtRateEndDate, 1, wxALL | wxEXPAND, 2);
 	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "GUID"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
@@ -1019,7 +988,6 @@ void OpenEIUtilityRateDialog::QueryUtilities()
 
 	lblStatus->SetLabel("Ready.");
 	lblUtilityCount->SetLabel(wxString::Format("%d utilities", (int)lstUtilities->Count()));
-	lstUtilities->SetFocus();
 
 }
 
@@ -1060,25 +1028,14 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 
 	wxString err;
 
-	wxString urdb_utility_name = "";
-	// first resolve aliases
-	if (!api.ResolveUtilityName(utility_name, &urdb_utility_name, &err))
-	{
-		urdb_utility_name = utility_name;
-	}
-
-	if (urdb_utility_name == "")
-		urdb_utility_name = utility_name;
-
-	// get any rates
-	if (!api.QueryUtilityRates(urdb_utility_name, mUtilityRates, &err))
-	{
+    if (!api.QueryUtilityRates(utility_name, mUtilityRates, &err))
+    {
 		busy.~wxBusyInfo();
 		wxMessageBox("Error:\n\n" + err);
 		return;
 	}
 
-	lblRateStatus->SetLabel(wxString::Format("%d rates available for %s", (int)mUtilityRates.size(), urdb_utility_name));
+    lblRateStatus->SetLabel(wxString::Format("%d rates available for %s", (int)mUtilityRates.size(), utility_name));
 
 	if (mUtilityRates.size() == 0)
 		lblStatus->SetLabel(wxString::Format("No rates for %s.", utility_name));

@@ -1,0 +1,107 @@
+/*
+
+This script demonstrates how to use the URDB functions to download data from the
+OpenEI Utility Rate Database (URDB).
+
+These functions access the URDB API using URLS listed in the Web API 
+configuration file webapis.conf in the SAM runtime folder:
+
+ * urdb_list_utilities(): urdb_companies_all
+
+ * urdb_list_utilities_by_zip_code(): urdb_companies_by_zip
+
+ * urdb_list_rates(): urdb_rates
+
+URDB: https://openei.org/wiki/Utility_Rate_Database
+
+URDB API: https://openei.org/services/doc/rest/util_rates/?version=7
+
+A GUID is a unique id for a rate in the URDB.
+
+Tested in SAM 2020.11.29 r1
+
+*/
+
+// Function to convert rates list from an array to a table of rate names and guids
+function rates_array_to_table( arr )
+{
+	T = {};
+	n=0;
+	for ( i=0; i<#arr; i=i+2 )
+	{
+		//outln( 'Rate ' + i+1 + ': ' + rates_pge[i] + ', ' + rates_pge[i+1] );
+		T.name[n] = arr[i];
+		T.guid[n] = arr[i+1];
+		n++;
+	}
+	return T;
+}
+
+// Get an array of all utility company names in the database ///////////////////
+utilities_all = urdb_list_utilities();
+outln( '== List all Utilities ==' );
+for ( i=0; i<#utilities_all; i++ )
+{
+	outln( utilities_all[i] );
+}	
+
+// Get an array of all utility company names that serve a given zip code ///////
+// note that some zip codes like 59102 are served by more than one utility
+zip = 59102;
+utilities_zip = urdb_list_utilities_by_zip_code( zip );
+outln( '\n== Utilities for Zipcode ' + zip + ' ==' );
+for ( i=0; i<#utilities_zip; i++ )
+{
+	outln( utilities_zip[i] );
+}
+
+// Get an array of rate names and guids for a given utility company name ///////
+// note that the company name must exactly match the listing in the URDB
+utility_name = utilities_zip[0];
+rates = urdb_list_rates( utility_name );
+outln( '\n== Rates for ' + utility_name + ' ==' );
+for ( i=0; i<#rates-1; i=i+2 )
+{
+	outln(rates[i] + ',' + rates[i+1] );
+}
+
+// Write a list of utility rates and guids to a CSV file ///////////////////////
+// convert utility name to a string suitable for a file name
+str = replace( utility_name, ' ', '-');
+str = replace( str, '.', '');
+str = replace( str, '&', 'and');
+fname = cwd() + '/' + str + '-rates.csv';
+
+rates_table = rates_array_to_table( rates );
+
+ok = csvwrite( fname, rates_table );
+if ( ok ) { browse( fname ); }
+else { outln( '\nFailed to write rates table to CSV file.' );}
+
+// Return a table of rate data given a guid and write it to a CSV file /////////
+// note that this CSV file format is different from the ones used below for the
+// urdb_write() and urdb_read() functions
+guid = rates[1];
+R = urdb_get( guid );
+fname = cwd() +'/rate-data-guid-' + guid + '.csv';
+ok = csvwrite( fname, R );
+outln( '\n== Test Get Data for GUID ' + guid + ' and Write to File ==' );
+if ( ok ) { outln( 'Rate data for guid ' + guid + ' written to ' + fname ); }
+else { outln( 'Failed to write data to file for guid ' + guid ); }
+
+// Write inputs from Electricity Rates page to a CSV file //////////////////////
+// equivalent to clicking "Save rate to file" on Electricity Rates page 
+fname = cwd() +'/rate-data-from-sam.csv';
+ok = urdb_write( fname );
+outln( '\n== Test Write Rata Data from Electricity Rates Page to ' + fname + ' ==' );
+if ( ok ) { outln( 'Rate data written to: ' + fname ); }
+else { outln( 'Failed to write rate data.' ); }
+
+// Read data from a CSV file and write to Electricity Rates page inputs ////////
+// equivalent to clicking "Load rate from file" on Electricity Rates page
+ok = urdb_read( fname );
+outln( '\n== Test Load Inputs to Electricity Rates Page from ' + fname + ' ==' );
+if ( ok ) { outln( 'Rate inputs loaded from : ' + fname ); }
+else { outln( 'Failed to load rate data.' ); }
+
+browse( path_only( fname ) );
