@@ -2087,7 +2087,7 @@ void fcall_nsrdbquery(lk::invoke_t &cxt)
 	//Create the wind data object
 	NSRDBDialog dlgNSRDB(SamApp::Window(), "Advanced NSRDB Download");
 	dlgNSRDB.CenterOnParent();
-	int code = dlgNSRDB.ShowModal(); //shows the dialog and makes it szo you can't interact with other parts until window is closed
+	int code = dlgNSRDB.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
 	//Return an empty string if the window was dismissed
 	if (code == wxID_CANCEL)
