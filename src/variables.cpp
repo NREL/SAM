@@ -820,31 +820,19 @@ bool VarTable::Read_JSON(const rapidjson::Document& doc)
 }
 
 
-bool VarTable::Write_JSON(const std::string& file, size_t maxdim)
+bool VarTable::Write_JSON(const std::string& file, const wxArrayString& asCalculated, const wxArrayString& asIndicator, const  size_t maxdim)
 {
-//	FILE* fp = fopen(file.c_str(), "w"); 
-//	if (!fp) return false;
-//	char writeBuffer[65536];
-//	rapidjson::FileWriteStream os(fp, writeBuffer, sizeof(writeBuffer));
-
 	rapidjson::Document doc;
-	Write_JSON(doc, maxdim);
+	Write_JSON(doc, asCalculated, asIndicator, maxdim);
 
 	rapidjson::StringBuffer os;
-	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt 
-
-	//	rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt 
-//	rapidjson::Writer<rapidjson::FileWriteStream> writer(os);
+	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB 
 	doc.Accept(writer);
-//	fclose(fp);
-	// testing adding JSON to zip archive
 	wxString sfn = file;
 	wxFileName fn(sfn);
 	sfn.Replace(".json", ".zip");
 	wxFFileOutputStream out(sfn);
 	wxZipOutputStream zip(out);
-//	wxFileInputStream in(file);
-//	zip.PutNextEntry(file);
 	zip.PutNextEntry(fn.GetFullName());
 	zip.Write(os.GetString(), os.GetSize());
 	zip.Close();
@@ -854,7 +842,7 @@ bool VarTable::Write_JSON(const std::string& file, size_t maxdim)
 }
 
 
-void VarTable::Write_JSON(rapidjson::Document& doc, size_t maxdim)
+void VarTable::Write_JSON(rapidjson::Document& doc, const wxArrayString& asCalculated, const wxArrayString& asIndicator, const  size_t maxdim)
 {
 	doc.SetObject();
 	wxArrayString names;
@@ -868,7 +856,12 @@ void VarTable::Write_JSON(rapidjson::Document& doc, size_t maxdim)
 			v = Get(names[i]);
 			if (v != NULL)
 			{
-				v->Write_JSON(doc, names[i]);
+				if (asCalculated.Index(names[i]) != wxNOT_FOUND)
+					v->Write_JSON_Constant(doc, names[i], asCalculated, asIndicator, -777); // can define constants for calculated
+				else if (asIndicator.Index(names[i]) != wxNOT_FOUND)
+					v->Write_JSON_Constant(doc, names[i], asCalculated, asIndicator, -888); // can define constants for indicator
+				else
+					v->Write_JSON(doc, names[i], asCalculated, asIndicator);
 #ifdef _DEBUG
 				if (v->Type() == VV_BINARY)
 				{
@@ -901,7 +894,12 @@ void VarTable::Write_JSON(rapidjson::Document& doc, size_t maxdim)
 			v = Get(names[i]);
 			if (v != NULL)
 			{
-				v->Write_JSON(doc, names[i]);
+				if (asCalculated.Index(names[i]) != wxNOT_FOUND)
+					v->Write_JSON_Constant(doc, names[i], asCalculated, asIndicator, -777); // can define constants for calculated
+				else if (asIndicator.Index(names[i]) != wxNOT_FOUND)
+					v->Write_JSON_Constant(doc, names[i], asCalculated, asIndicator, -888); // can define constants for indicator
+				else
+					v->Write_JSON(doc, names[i], asCalculated, asIndicator);
 #ifdef _DEBUG
 				if (v->Type() == VV_BINARY)
 				{
@@ -1501,7 +1499,7 @@ rapidjson::Value VarValueDoubleToJSONValue(const double& d)
 }
 
 
-void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
+void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name, const wxArrayString& asCalculated, const wxArrayString& asIndicator)
 {
 	wxString x;
 	rapidjson::Value json_val, json_bin_array;
@@ -1544,7 +1542,7 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_TABLE) {
-		m_tab.Write_JSON(json_table);
+		m_tab.Write_JSON(json_table, asCalculated, asIndicator);
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_DATMAT || m_type == VV_DATARR) 
@@ -1559,6 +1557,70 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name)
 	}
 	else {
 	// uncomment for production	throw(std::runtime_error("Function not implemented for " + m_type));
+		x = wxString::Format("ERROR: unhandled type specified in UI: %s", vv_strtypes[m_type]);
+		json_val.SetString(x.c_str(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+}
+
+void VarValue::Write_JSON_Constant(rapidjson::Document& doc, const wxString& name, const wxArrayString& asCalculated, const wxArrayString& asIndicator, const double dConstant)
+{
+	wxString x;
+	rapidjson::Value json_val, json_bin_array;
+	rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
+	const char* p; // for VV_BINARY
+
+
+	if (m_type == VV_NUMBER) {
+		json_val = "ERROR: non-numeric value write"; // default if NaN, inf or invalid
+		if (m_val.nrows() == 1 && m_val.ncols() == 1) {
+			json_val = VarValueDoubleToJSONValue(dConstant);
+		}
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+	else if (m_type == VV_ARRAY) {
+		json_val.SetArray();
+		for (size_t j = 0; j < m_val.ncols(); j++) {
+			json_val.PushBack(VarValueDoubleToJSONValue(dConstant), doc.GetAllocator());
+		}
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+	else if (m_type == VV_MATRIX) {
+		json_val.SetArray();
+		for (size_t i = 0; i < m_val.nrows(); i++) {
+			json_val.PushBack(rapidjson::Value(rapidjson::kArrayType), doc.GetAllocator());
+			for (size_t j = 0; j < m_val.ncols(); j++) {
+				json_val[(rapidjson::SizeType)i].PushBack(VarValueDoubleToJSONValue(dConstant), doc.GetAllocator());
+			}
+		}
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+	else if (m_type == VV_STRING) {
+		x << dConstant;
+		if (wxFileName::Exists(x)) { // write filename only
+			wxString fn, ext;
+			wxFileName::SplitPath(x, NULL, &fn, &ext);
+			x = fn + "." + ext;
+		}
+		json_val.SetString(x.c_str(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+	else if (m_type == VV_TABLE) {
+		m_tab.Write_JSON(json_table, asCalculated, asIndicator);
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
+	}
+	else if (m_type == VV_DATMAT || m_type == VV_DATARR)
+		throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
+	else if (m_type == VV_BINARY) {
+		json_val.SetObject();
+		json_val.AddMember("VV_TYPE", rapidjson::Value(VV_BINARY), doc.GetAllocator());
+		p = (const char*)m_bin.GetData();
+		json_bin_array.SetString(p, m_bin.GetDataLen());
+		json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+	}
+	else {
+		// uncomment for production	throw(std::runtime_error("Function not implemented for " + m_type));
 		x = wxString::Format("ERROR: unhandled type specified in UI: %s", vv_strtypes[m_type]);
 		json_val.SetString(x.c_str(), doc.GetAllocator());
 		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());

@@ -532,7 +532,16 @@ bool Case::SaveDefaults(bool quiet)
 
 
 #if defined(__SAVE_AS_JSON__)
-	m_vals.Write_JSON(file.ToStdString());
+
+	wxArrayString asCalculated, asIndicator;
+	auto vil = Variables();
+	for (auto& var : vil) {
+		if (var.second->Flags & VF_CALCULATED)
+			asCalculated.push_back(var.first);
+		else if (var.second->Flags & VF_INDICATOR)
+			asIndicator.push_back(var.first);
+	}
+	m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
 
 #else
 	wxFFileOutputStream out(file);
@@ -712,7 +721,16 @@ bool Case::LoadDefaults(wxString* pmsg)
 		if ( wxYES == wxShowTextMessageDialog( message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO) )
 		{
 #if defined(__SAVE_AS_JSON__)
-			if (m_vals.Write_JSON(file.ToStdString(), 0))
+
+			wxArrayString asCalculated, asIndicator;
+			auto vil = Variables();
+			for (auto& var : vil) {
+				if (var.second->Flags & VF_CALCULATED)
+					asCalculated.push_back(var.first);
+				else if (var.second->Flags & VF_INDICATOR)
+					asIndicator.push_back(var.first);
+			}
+			if (m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
 				wxMessageBox("Saved defaults for configuration.");
 			else
 				wxMessageBox("Error writing to defaults file: " + file);

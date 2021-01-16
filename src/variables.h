@@ -117,8 +117,8 @@ public:
 	bool Read_text(wxInputStream &);
 	bool Read_text(const wxString &file);
 
-	void Write_JSON(rapidjson::Document&, size_t maxdim = 0); // MaxDim specifies the maximum allowable array or matrix dimension when writing.
-	bool Write_JSON(const std::string& file, size_t maxdim = 0);
+	void Write_JSON(rapidjson::Document&, const wxArrayString&, const wxArrayString&, const size_t maxdim = 0); // MaxDim specifies the maximum allowable array or matrix dimension when writing.
+	bool Write_JSON(const std::string& file, const wxArrayString&, const wxArrayString&, const size_t maxdim = 0);
 	bool Read_JSON(const rapidjson::Document&); 
 	bool Read_JSON(const std::string& file);
 
@@ -157,7 +157,9 @@ public:
 	void Write_text(wxOutputStream &);
 	bool Read_text(wxInputStream &);
 
-	void Write_JSON(rapidjson::Document&, const wxString&);
+	void Write_JSON(rapidjson::Document&, const wxString&, const wxArrayString&, const wxArrayString&);
+	void Write_JSON_Constant(rapidjson::Document&, const wxString&, const wxArrayString&, const wxArrayString&, const double);
+
 	bool Read_JSON(const rapidjson::Value&);
 
 	// returns a pointer to a ssc::var_data class that'll need to be freed using ssc_var_free

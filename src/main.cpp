@@ -622,6 +622,11 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 	// when creating a new case, at least
 	// show the first input page
 	wxArrayString pages = win->GetInputPages();
+	// update all equations and callbacks by going through pages to handle indicators and calculated values updating from default files
+	Freeze();
+	for (auto &page : pages)
+		win->SwitchToInputPage(page);
+	Thaw();
 	if ( pages.size() > 0 )
 		win->SwitchToInputPage( pages[0] );
 

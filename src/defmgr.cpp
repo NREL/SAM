@@ -407,7 +407,19 @@ void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
 			else if (evt.GetId() == ID_SAVE_JSON)
 			{
 				file = SamApp::GetRuntimePath() + "/defaults/" + m_techList[i] + "_" + m_finList[i] + ".json";
-				success = tab.Write_JSON(file.ToStdString());
+				auto &cfgdb = SamApp::Config();
+				auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
+				if (pci != NULL) {
+					auto vil = pci->Variables;
+					wxArrayString asCalculated, asIndicator;
+					for (auto& var : vil) {
+						if (var.second->Flags & VF_CALCULATED) 
+							asCalculated.push_back(var.first);
+						else if (var.second->Flags & VF_INDICATOR) 
+							asIndicator.push_back(var.first);
+					}
+					success = tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
+				}
 			}
 			else
 				Log(wxString::Format("invalid event ID: %d", evt.GetId()));
@@ -592,7 +604,19 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 #ifdef UI_BINARY
 			if (!tab.Write(file))
 #elif defined(__LOAD_AS_JSON__)
-			if (!tab.Write_JSON(file.ToStdString()))
+			wxArrayString asCalculated, asIndicator;
+			auto& cfgdb = SamApp::Config();
+			auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
+			if (pci != NULL) {
+				auto vil = pci->Variables;
+					for (auto& var : vil) {
+					if (var.second->Flags & VF_CALCULATED)
+						asCalculated.push_back(var.first);
+					else if (var.second->Flags & VF_INDICATOR)
+						asIndicator.push_back(var.first);
+				}
+			}
+			if (!tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
 #else
 			if (!tab.Write_text(file))
 #endif
@@ -636,7 +660,19 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 #ifdef UI_BINARY
 			if (!tab.Write(file))
 #elif defined(__LOAD_AS_JSON__)
-			if (!tab.Write_JSON(file.ToStdString()))
+			wxArrayString asCalculated, asIndicator;
+			auto& cfgdb = SamApp::Config();
+			auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
+			if (pci != NULL) {
+				auto vil = pci->Variables;
+				for (auto& var : vil) {
+					if (var.second->Flags & VF_CALCULATED)
+						asCalculated.push_back(var.first);
+					else if (var.second->Flags & VF_INDICATOR)
+						asIndicator.push_back(var.first);
+				}
+			}
+			if (!tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
 #else
 			if (!tab.Write_text(file))
 #endif
