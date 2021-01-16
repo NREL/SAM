@@ -3580,7 +3580,7 @@ TabOrder
 3
 2
 
-91
+93
 DISCARD_UNUSED_latitude
 3
 1
@@ -4243,6 +4243,20 @@ Physical Trough Solar Field
 1
 180
 Default
+flat_plate_system_capacity
+3
+1
+Flat plate system capacity
+kW
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 flat_plate_tilt
 3
 1
@@ -4818,6 +4832,20 @@ Physical Trough Solar Field
 8 1 1 8 1 1 7 1 1 6 1 1 5 1 1 4 1 1 3 1 1 2 1 1 1 
 
 TroughLoop
+ui_fp_system_capacity
+3
+1
+Flat Plate System Capacity
+kW
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 washing_frequency
 3
 1
@@ -4861,7 +4889,76 @@ Physical Trough Solar Field
 25
 Default
 
-9227
+11336
+
+equations{ '$MIMO$ Flat_Plate_Array_Design_Equations' } = define() {
+	// 
+	data.frta = ${flat_plate_tested_frta};
+	data.frul = ${flat_plate_tested_frul};
+	data.iam = ${flat_plate_tested_iam};
+	data.area_coll = ${flat_plate_tested_area_coll};
+	data.m_dot_tested = ${flat_plate_tested_m_dot};
+	data.heat_capacity_tested = ${flat_plate_tested_heat_capacity};
+	//
+	data.latitude = ${lat};
+	data.longitude = ${lon};
+	data.timezone = ${tz};
+	//
+	data.tilt = ${flat_plate_tilt};
+	data.azimuth = ${flat_plate_azimuth};
+	// 
+	data.dni_des = ${I_bn_des};
+	data.ti_minus_ta = 30.;		// from the shw equations
+	//
+	//data.m_dot_array_design = ${q_pb_design} * 1.e3 /
+	//  (${field_htf_cp_avg} * (${T_loop_out} - ${T_loop_in_des}));
+	data.m_dot_array_design = ${field_thermal_output} * 1.e3 /
+		(${field_htf_cp_avg} * (${T_loop_out} - ${T_PTC_in_des}));
+		
+	if (data.m_dot_array_design > ${m_dot_htfmax} * ${nLoops}) {
+		data.m_dot_array_design = ${m_dot_htfmax} * ${nLoops};
+	}
+	elseif (data.m_dot_array_design < ${m_dot_htfmin} * ${nLoops}) {
+		data.m_dot_array_design = ${m_dot_htfmin} * ${nLoops};
+	}
+		
+	data.specific_heat = ${field_htf_cp_avg};	// [kJ/kg-K]
+	data.temp_rise_array_design = ${T_PTC_in_des} - ${T_loop_in_des};
+	
+	//msgbox(
+	//${field_thermal_output} + "\n"
+	// + ${field_htf_cp_avg} + "\n"
+	// + ${T_loop_out} + "\n"
+	// + ${T_PTC_in_des} + "\n"
+	// + data.m_dot_array_design + "\n"
+	// + ${m_dot_htfmax} + "\n"
+	// + ${nLoops} + "\n"
+	// + ${m_dot_htfmin} + "\n"
+	// );
+	//data.iam = nan();
+	
+	success = ssc_eqn("Flat_Plate_Array_Design_Equations", data);
+	if (!success) {
+		//${flat_plate_num_in_series} = -999.;
+		//${flat_plate_num_in_parallel} = -999.;
+		//${flat_plate_num_collectors} = -999.;
+		//${flat_plate_aperture_array} = -999.;
+		${flat_plate_system_capacity} = -999.;
+	}
+	else {
+		//${flat_plate_num_in_series} = data.num_in_series;
+		//${flat_plate_num_in_parallel} = data.num_in_parallel;
+		//${flat_plate_num_collectors} = data.num_collectors;
+		//${flat_plate_aperture_array} = data.aperture_array;
+		//
+		${flat_plate_system_capacity} = data.system_capacity;
+	}
+	
+	return 0;
+};
+
+
+
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {

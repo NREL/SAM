@@ -1,7 +1,7 @@
 Financial LCOE Calculator
 871
 712
-37
+38
 SchedNumeric
 
 1
@@ -1517,6 +1517,68 @@ BackColour
 TabOrder
 3
 6
+Numeric
+
+1
+17
+Name
+5
+29
+ui_flat_plate_system_capacity
+X
+3
+651
+Y
+3
+135
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -1999,7 +2061,7 @@ TabOrder
 3
 4294967295
 
-29
+30
 c_construction_cost
 3
 2
@@ -2282,6 +2344,20 @@ LCOE Calculator
 1
 1
 Default
+ui_flat_plate_system_capacity
+3
+1
+FPC system capacity
+kW
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 ui_ireal
 3
 1
@@ -2407,7 +2483,11 @@ LCOE Calculator
 0
 Default
 
-1770
+1872
+
+equations{ 'ui_flat_plate_system_capacity' } = define() {
+  return ${flat_plate_system_capacity};
+};
 
 
 equations{ 'ui_system_capacity' } = define() {
