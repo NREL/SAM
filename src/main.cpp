@@ -594,7 +594,8 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 		m_topBook->SetSelection( 1 ); // switch to cases view if currently in welcome window
 
 	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
-	c->SetConfiguration( tech, fin );
+//	c->SetConfiguration(tech, fin);
+	c->SetConfiguration(tech, fin, true);  // shj testing
 	c->LoadDefaults();
 	CreateCaseWindow( c );
 	return true;

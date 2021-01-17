@@ -359,7 +359,7 @@ void Case::Write( wxOutputStream &_o )
 
 
 
-bool Case::Read( wxInputStream &_i )
+bool Case::Read(wxInputStream& _i)
 {
 	wxDataInputStream in(_i);
 
@@ -372,15 +372,15 @@ bool Case::Read( wxInputStream &_i )
 	wxString tech = in.ReadString();
 	wxString fin = in.ReadString();
 
-	if ( !SetConfiguration( tech, fin ) )
-	  {
-		wxLogStatus( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin );
-	  }
+	if (!SetConfiguration(tech, fin))
+	{
+		wxLogStatus("Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin);
+	}
 
 	// read in the variable table
 	m_oldVals.clear();
 	LoadStatus di;
-//	bool ok = LoadValuesFromExternalSource(_i, &di, &m_oldVals);
+	//	bool ok = LoadValuesFromExternalSource(_i, &di, &m_oldVals);
 
 	VarTable vt;
 	bool ok = VarTableFromInputStream(&vt, _i, true);
@@ -388,19 +388,19 @@ bool Case::Read( wxInputStream &_i )
 		ok &= LoadValuesFromExternalSource(&vt, &di, &m_oldVals);
 
 
-	if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() )
+	if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
 	{
 		wxLogStatus("discrepancy reading in values from project file: %d not found, %d wrong type, %d read != %d in config",
-			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size() );
-		
-		if ( di.not_found.size() > 0 )
-		  {
-		    wxLogStatus("\not found: " + wxJoin(di.not_found, ',') );
-		  }
-		if ( di.wrong_type.size() > 0 )
-		  {
-		    wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ',') );
-		  }
+			(int)di.not_found.size(), (int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.not_found.size() > 0)
+		{
+			wxLogStatus("\not found: " + wxJoin(di.not_found, ','));
+		}
+		if (di.wrong_type.size() > 0)
+		{
+			wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
+		}
 		if (m_vals.size() > m_oldVals.size())
 		{
 			for (auto newVal : m_vals) {
@@ -417,145 +417,96 @@ bool Case::Read( wxInputStream &_i )
 		}
 
 	}
-	
-	if ( ver <= 1 )
+
+	if (ver <= 1)
 	{
 		m_baseCase.Clear();
 		VarTable dum;
-		if ( !dum.Read( _i ) )
-		  {
-		    wxLogStatus("error reading dummy var table in Case::Read");
+		if (!dum.Read(_i))
+		{
+			wxLogStatus("error reading dummy var table in Case::Read");
 			m_lastError += "Error reading dummy var table in Case::Read \n";
 			dum.clear();
-		  }
+		}
 	}
 	else
-		if ( !m_baseCase.Read( _i ) )
-		  {
-		    wxLogStatus("error reading m_baseCase in Case::Read");
+		if (!m_baseCase.Read(_i))
+		{
+			wxLogStatus("error reading m_baseCase in Case::Read");
 			m_lastError += "Error reading m_baseCase in Case::Read \n";
 			m_baseCase.Clear();
 		}
 
-	if ( !m_properties.Read( _i ) )
-	  {
-	    wxLogStatus("error reading m_properties in Case::Read");
+	if (!m_properties.Read(_i))
+	{
+		wxLogStatus("error reading m_properties in Case::Read");
 		m_lastError += "Error reading m_properties in Case::Read \n";
 		m_properties.clear();
-	  }
-	if ( !m_notes.Read( _i ) )
-	  {
-	    wxLogStatus("error reading m_notes in Case::Read");
+	}
+	if (!m_notes.Read(_i))
+	{
+		wxLogStatus("error reading m_notes in Case::Read");
 		m_lastError += "Error reading m_notes in Case::Read \n";
 		m_notes.clear();
 	}
 
-	if ( ver >= 3 )
+	if (ver >= 3)
 	{
-		if (!m_excelExch.Read( _i ))
-		  {
+		if (!m_excelExch.Read(_i))
+		{
 			wxLogStatus("error reading excel exchange data in Case::Read");
 			m_lastError += "Error reading excel exchange data in Case::Read \n";
 			//m_excelExch.clear();
 		}
 	}
 
-	if ( ver >= 4 )
+	if (ver >= 4)
 	{
 		m_graphs.clear();
 		size_t n = in.Read32();
-		for( size_t i=0;i<n;i++) 
+		for (size_t i = 0; i < n; i++)
 		{
 			Graph g;
-			if ( !g.Read( _i ) )
-			  {
-			    wxLogStatus("error reading Graph %d of %d in Case::Read", (int)i, (int)n);
+			if (!g.Read(_i))
+			{
+				wxLogStatus("error reading Graph %d of %d in Case::Read", (int)i, (int)n);
 				m_lastError += wxString::Format("Error reading Graph %d of %d in Case::Read", (int)i, (int)n);
 			}
 			else
-				m_graphs.push_back( g );
+				m_graphs.push_back(g);
 		}
 
-		if ( !m_perspective.Read( _i ) )
-		  {
-		    wxLogStatus("error reading perspective of results viewer in Case::Read");
+		if (!m_perspective.Read(_i))
+		{
+			wxLogStatus("error reading perspective of results viewer in Case::Read");
 			m_lastError += "Error reading perspective of results viewer in Case::Read \n";
 			m_perspective.clear();
 		}
 	}
 
-	if ( ver >= 5 )
+	if (ver >= 5)
 	{
 		if (!m_parametric.Read(_i))
 		{
 			wxLogStatus("error reading parametric simulation information in Case::Read");
 			m_lastError += "Error reading parametric simulation information in Case::Read \n";
 			m_parametric.ClearRuns();
-//			m_parametric.clear();
+			//			m_parametric.clear();
 		}
 	}
 
-	if ( ver >= 6 )
+	if (ver >= 6)
 	{
-		if ( !m_stochastic.Read( _i ) )
-		  {
-		    wxLogStatus("error reading stochastic simulation information in Case::Read");
+		if (!m_stochastic.Read(_i))
+		{
+			wxLogStatus("error reading stochastic simulation information in Case::Read");
 			m_lastError += "Error reading stochastic simulation information in Case::Read \n";
-//			m_stochastic.clear();
+			//			m_stochastic.clear();
 		}
 	}
 	return (in.Read8() == code);
 }
 
-
-bool Case::SaveDefaults(bool quiet)
-{
-	if (!m_config) return false;
-#if defined(UI_BINARY)
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing;
-#elif defined(__SAVE_AS_JSON__)
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing + ".json";
-#else
-	wxString file = SamApp::GetRuntimePath() + "/defaults/"
-		+ m_config->Technology + "_" + m_config->Financing + ".txt";
-#endif
-	if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
-		+ m_config->Technology + " / " + m_config->Financing,
-		"Save Defaults", wxYES_NO))
-		return false;
-
-	// set default library_folder_list blank
-	VarValue* vv = m_vals.Get("library_folder_list");
-	if (vv)	vv->Set(wxString("x"));
-
-
-#if defined(__SAVE_AS_JSON__)
-
-	wxArrayString asCalculated, asIndicator;
-	auto vil = Variables();
-	for (auto& var : vil) {
-		if (var.second->Flags & VF_CALCULATED)
-			asCalculated.push_back(var.first);
-		else if (var.second->Flags & VF_INDICATOR)
-			asIndicator.push_back(var.first);
-	}
-	m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
-
-#else
-	wxFFileOutputStream out(file);
-	if (!out.IsOk()) return false;
-
-	#if defined(UI_BINARY)
-		m_vals.Write(out);
-	#else
-		m_vals.Write_text(out);
-	#endif
-#endif
-	wxLogStatus("Case: defaults saved for " + file);
-	return true;
-}
 
 bool Case::VarTableFromInputStream(VarTable *vt, wxInputStream& in, bool binary)
 {
@@ -636,12 +587,13 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 	}
 // remove above code after testing
 
-	if (RecalculateAll() < 0 )
+//	if (RecalculateAll() < 0)
+	if (RecalculateAll(true) < 0) // shj - testing
 	{
 		wxString e("Error recalculating equations after loading values from external source");	
 		if ( di ) di->error = e;
 		wxLogStatus( e );
-		return false;
+	//	return false; // shj - testing
 	}
 
 	return ok;
@@ -653,7 +605,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 	if (!m_config) return false;
 	bool binary = true;
 #ifdef UI_BINARY
-	wxString file = SamApp::GetRuntimePath() + "/defaults/" 
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->Technology + "_" + m_config->Financing;
 	binary = true;
 #elif defined(__LOAD_AS_JSON__)
@@ -681,27 +633,27 @@ bool Case::LoadDefaults(wxString* pmsg)
 		wxFFileInputStream in(file);
 		if (!in.IsOk())
 		{
-			if ( pmsg ) *pmsg = "Could not open defaults file";
+			if (pmsg) *pmsg = "Could not open defaults file";
 			return false;
 		}
 		ok = VarTableFromInputStream(&vt, in, binary);
 #endif
 		ok &= LoadValuesFromExternalSource(vt, &di, (VarTable*)0);
 		message = wxString::Format("Defaults file is likely out of date: " + wxFileNameFromPath(file) + "\n\n"
-				"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
-				"Would you like to update the defaults with the current values right now?\n"
-				"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
-				(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
-		
-		if ( di.wrong_type.size() > 0 )
+			"Variables: %d loaded but not in configuration, %d wrong type, defaults file has %d, config has %d\n\n"
+			"Would you like to update the defaults with the current values right now?\n"
+			"(Otherwise press Shift-F10 later)\n", (int)di.not_found.size(),
+			(int)di.wrong_type.size(), (int)di.nread, (int)m_vals.size());
+
+		if (di.wrong_type.size() > 0)
 		{
-			message += "\nWrong data type: " + wxJoin( di.wrong_type, ',' );
+			message += "\nWrong data type: " + wxJoin(di.wrong_type, ',');
 			ok = false;
 		}
 
-		if ( di.not_found.size() > 0 )
+		if (di.not_found.size() > 0)
 		{
-			message += "\nLoaded but don't exist in config: " + wxJoin( di.not_found, ',' );
+			message += "\nLoaded but don't exist in config: " + wxJoin(di.not_found, ',');
 			ok = false;
 		}
 	}
@@ -711,14 +663,14 @@ bool Case::LoadDefaults(wxString* pmsg)
 		ok = false;
 	}
 
-	if ( pmsg != 0 )
+	if (pmsg != 0)
 	{
 		*pmsg = message;
 		return ok;
 	}
-	else if ( !ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size() ) 
+	else if (!ok || di.not_found.size() > 0 || di.wrong_type.size() > 0 || di.nread != m_vals.size())
 	{
-		if ( wxYES == wxShowTextMessageDialog( message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO) )
+		if (wxYES == wxShowTextMessageDialog(message, "Query", SamApp::Window(), wxDefaultSize, wxYES_NO))
 		{
 #if defined(__SAVE_AS_JSON__)
 
@@ -735,23 +687,73 @@ bool Case::LoadDefaults(wxString* pmsg)
 			else
 				wxMessageBox("Error writing to defaults file: " + file);
 #else
-			wxFFileOutputStream out( file );
-			if( out.IsOk() )
+			wxFFileOutputStream out(file);
+			if (out.IsOk())
 			{
 #ifdef UI_BINARY
-				m_vals.Write( out );
+				m_vals.Write(out);
 #else
 				m_vals.Write_text(out);
 #endif
 				wxMessageBox("Saved defaults for configuration.");
 			}
 			else
-				wxMessageBox("Error writing to defaults file: " + file );
+				wxMessageBox("Error writing to defaults file: " + file);
 #endif
 		}
 	}
 
 	return ok;
+}
+
+bool Case::SaveDefaults(bool quiet)
+{
+	if (!m_config) return false;
+#if defined(UI_BINARY)
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing;
+#elif defined(__SAVE_AS_JSON__)
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".json";
+#else
+	wxString file = SamApp::GetRuntimePath() + "/defaults/"
+		+ m_config->Technology + "_" + m_config->Financing + ".txt";
+#endif
+	if (!quiet && wxNO == wxMessageBox("Save defaults for configuration:\n\n"
+		+ m_config->Technology + " / " + m_config->Financing,
+		"Save Defaults", wxYES_NO))
+		return false;
+
+	// set default library_folder_list blank
+	VarValue* vv = m_vals.Get("library_folder_list");
+	if (vv)	vv->Set(wxString("x"));
+
+
+#if defined(__SAVE_AS_JSON__)
+
+	wxArrayString asCalculated, asIndicator;
+	auto vil = Variables();
+	for (auto& var : vil) {
+		if (var.second->Flags & VF_CALCULATED)
+			asCalculated.push_back(var.first);
+		else if (var.second->Flags & VF_INDICATOR)
+			asIndicator.push_back(var.first);
+	}
+	m_vals.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
+
+#else
+	wxFFileOutputStream out(file);
+	if (!out.IsOk()) return false;
+
+#if defined(UI_BINARY)
+	m_vals.Write(out);
+#else
+	m_vals.Write_text(out);
+#endif
+#endif
+	wxLogStatus("Case: defaults saved for " + file);
+	return true;
+
 }
 
 
@@ -861,7 +863,6 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 			vv->Copy(*val_default);
 		}
 	}
-			
 	// reevalute all equations
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();
@@ -870,7 +871,6 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		for( size_t i=0;i<eval.GetErrors().size();i++ )
 			notices.Add( eval.GetErrors()[i] );
 	}
-
 	// setup the local callback environment
 	// by merging all the functions defined
 	// in the various input page callback scripts
