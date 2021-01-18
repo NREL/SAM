@@ -182,7 +182,7 @@ bool ActiveInputPage::LoadFile( const wxString &file )
 //static wxColour UIColorCalculatedFore(29,80,173);
 //static wxColour UIColorCalculatedBack(222,233,244);
 
-void ActiveInputPage::Initialize()
+void ActiveInputPage::Initialize(bool doDataExchange)
 {
 	VarInfoLookup &vdb = GetVariables();
 	VarTable &vals = GetValues();
@@ -253,8 +253,8 @@ void ActiveInputPage::Initialize()
 				}
 			}
 
-			if ( VarValue *vval = vals.Get( name ) )
-				DataExchange( objs[i], *vval, VAR_TO_OBJ );
+			if (VarValue *vval = vals.Get( name ) )
+				if (doDataExchange) DataExchange( objs[i], *vval, VAR_TO_OBJ );
 		}
 	}
 

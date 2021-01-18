@@ -598,6 +598,8 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 	c->SetConfiguration(tech, fin, true);  // shj testing
 	c->LoadDefaults();
 	CreateCaseWindow( c );
+	// move recalculate all here after callback called and initialized
+	c->RecalculateAll();
 	return true;
 }
 

@@ -586,16 +586,14 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 		}
 	}
 // remove above code after testing
-
 //	if (RecalculateAll() < 0)
 	if (RecalculateAll(true) < 0) // shj - testing
 	{
 		wxString e("Error recalculating equations after loading values from external source");	
-		if ( di ) di->error = e;
+	//	if ( di ) di->error = e;// shj - testing
 		wxLogStatus( e );
 	//	return false; // shj - testing
 	}
-
 	return ok;
 }
 
@@ -677,7 +675,9 @@ bool Case::LoadDefaults(wxString* pmsg)
 			wxArrayString asCalculated, asIndicator;
 			auto vil = Variables();
 			for (auto& var : vil) {
-				if (var.second->Flags & VF_CALCULATED)
+				if (var.second->Flags & VF_CHANGE_MODEL) // skip "en_batt" shj testing
+					continue;
+				else if (var.second->Flags & VF_CALCULATED)
 					asCalculated.push_back(var.first);
 				else if (var.second->Flags & VF_INDICATOR)
 					asIndicator.push_back(var.first);
@@ -734,7 +734,9 @@ bool Case::SaveDefaults(bool quiet)
 	wxArrayString asCalculated, asIndicator;
 	auto vil = Variables();
 	for (auto& var : vil) {
-		if (var.second->Flags & VF_CALCULATED)
+		if (var.second->Flags & VF_CHANGE_MODEL) // skip "en_batt" shj testing
+			continue;
+		else if (var.second->Flags & VF_CALCULATED)
 			asCalculated.push_back(var.first);
 		else if (var.second->Flags & VF_INDICATOR)
 			asIndicator.push_back(var.first);
@@ -863,6 +865,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 			vv->Copy(*val_default);
 		}
 	}
+	/* shj testing - moved to after case initialize all forms for callback initialization
 	// reevalute all equations
 	CaseEvaluator eval( this, m_vals, m_config->Equations );
 	int n = eval.CalculateAll();
@@ -871,6 +874,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 		for( size_t i=0;i<eval.GetErrors().size();i++ )
 			notices.Add( eval.GetErrors()[i] );
 	}
+	*/
 	// setup the local callback environment
 	// by merging all the functions defined
 	// in the various input page callback scripts
