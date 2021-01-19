@@ -1,7 +1,7 @@
 Financial LCOE Calculator
 871
 712
-38
+46
 SchedNumeric
 
 1
@@ -795,6 +795,44 @@ Divider
 Name
 5
 9
+object 21
+X
+3
+447
+Y
+3
+165
+Width
+3
+27
+Height
+3
+106
+Tool Tip
+5
+0
+Orientation
+3
+1
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+9
 object 22
 X
 3
@@ -945,23 +983,23 @@ Name
 object 7
 X
 3
-15
+534
 Y
 3
-27
+189
 Width
 3
-831
+90
 Height
 3
-63
+24
 Tool Tip
 5
 0
 Caption
 5
-375
-The fixed-charge rate method of calculating the levelized cost of energy simplifies time-dependent calculations and is appropriate for market-level analysis such as for the NREL Annual Technology Baseline, or for very preliminary project analysis. The cash flow method of SAM's other financial models is more suitable for more detailed project analysis. See Help for details.
+12
+Capital cost
 TextColour
 4
 0
@@ -976,13 +1014,13 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Label
 
 1
@@ -1127,6 +1165,102 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+10
+object 736
+X
+3
+15
+Y
+3
+27
+Width
+3
+831
+Height
+3
+63
+Tool Tip
+5
+0
+Caption
+5
+375
+The fixed-charge rate method of calculating the levelized cost of energy simplifies time-dependent calculations and is appropriate for market-level analysis such as for the NREL Annual Technology Baseline, or for very preliminary project analysis. The cash flow method of SAM's other financial models is more suitable for more detailed project analysis. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+object 78
+X
+3
+462
+Y
+3
+216
+Width
+3
+162
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+29
+Fixed operating cost (annual)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -1137,7 +1271,7 @@ Name
 ui_capital_cost_capacity
 X
 3
-351
+327
 Y
 3
 189
@@ -1189,6 +1323,68 @@ BackColour
 TabOrder
 3
 3
+Numeric
+
+1
+17
+Name
+5
+28
+ui_capital_cost_capacity_fpc
+X
+3
+741
+Y
+3
+189
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1251,6 +1447,68 @@ BackColour
 TabOrder
 3
 1
+Numeric
+
+1
+17
+Name
+5
+25
+ui_capital_cost_fixed_fpc
+X
+3
+627
+Y
+3
+189
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1323,10 +1581,10 @@ Name
 ui_cost_input_option
 X
 3
-198
+324
 Y
 3
-162
+132
 Width
 3
 300
@@ -1517,68 +1775,6 @@ BackColour
 TabOrder
 3
 6
-Numeric
-
-1
-17
-Name
-5
-29
-ui_flat_plate_system_capacity
-X
-3
-651
-Y
-3
-135
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -1636,7 +1832,7 @@ Name
 ui_operating_cost_capacity
 X
 3
-351
+327
 Y
 3
 216
@@ -1688,6 +1884,68 @@ BackColour
 TabOrder
 3
 4
+Numeric
+
+1
+17
+Name
+5
+30
+ui_operating_cost_capacity_fpc
+X
+3
+741
+Y
+3
+216
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1750,6 +2008,68 @@ BackColour
 TabOrder
 3
 2
+Numeric
+
+1
+17
+Name
+5
+27
+ui_operating_cost_fixed_fpc
+X
+3
+627
+Y
+3
+216
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1822,10 +2142,72 @@ Name
 ui_system_capacity
 X
 3
-351
+327
 Y
 3
-135
+162
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+22
+ui_system_capacity_fpc
+X
+3
+741
+Y
+3
+162
 Width
 3
 90
@@ -1936,6 +2318,68 @@ BackColour
 TabOrder
 3
 5
+Numeric
+
+1
+17
+Name
+5
+30
+ui_variable_operating_cost_fpc
+X
+3
+702
+Y
+3
+246
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+4
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -2061,7 +2505,7 @@ TabOrder
 3
 4294967295
 
-30
+36
 c_construction_cost
 3
 2
@@ -2259,10 +2703,38 @@ LCOE Calculator
 1
 0
 Default
+ui_capital_cost_capacity_fpc
+3
+1
+Capital cost FPC
+$/kW
+LCOE Calculator
+0
+3
+1
+1
+1
+1
+0
+Default
 ui_capital_cost_fixed
 3
 1
 Capital cost
+$
+LCOE Calculator
+0
+3
+1
+1
+1
+1
+0
+Default
+ui_capital_cost_fixed_fpc
+3
+1
+Capital cost FPC
 $
 LCOE Calculator
 0
@@ -2344,20 +2816,6 @@ LCOE Calculator
 1
 1
 Default
-ui_flat_plate_system_capacity
-3
-1
-FPC system capacity
-kW
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 ui_ireal
 3
 1
@@ -2398,10 +2856,38 @@ LCOE Calculator
 1
 0
 Default
+ui_operating_cost_capacity_fpc
+3
+1
+Operating cost FPC
+$/kW-yr
+LCOE Calculator
+0
+3
+1
+1
+1
+1
+0
+Default
 ui_operating_cost_fixed
 3
 1
 Operating cost
+$
+LCOE Calculator
+0
+3
+1
+1
+1
+1
+0
+Default
+ui_operating_cost_fixed_fpc
+3
+1
+Operating cost FPC
 $
 LCOE Calculator
 0
@@ -2429,9 +2915,23 @@ Default
 ui_system_capacity
 3
 1
-System capacity
+PTC system capacity
 kW
 LCOE Calculator
+0
+8
+1
+1
+1
+1
+0
+Default
+ui_system_capacity_fpc
+3
+1
+FPC system capacity
+kW
+ 
 0
 8
 1
@@ -2444,6 +2944,20 @@ ui_variable_operating_cost
 3
 1
 Variable operating cost
+$/kWh
+LCOE Calculator
+0
+2
+1
+1
+1
+1
+0
+Default
+ui_variable_operating_cost_fpc
+3
+1
+Variable operating cost FPC
 $/kWh
 LCOE Calculator
 0
@@ -2482,13 +2996,26 @@ LCOE Calculator
 1
 0
 Default
+variable_operating_cost_fpc
+3
+1
+Variable operating cost FPC (VOC)
+$/kWh
+LCOE Calculator
+0
+8
+1
+1
+1
+1
+0
+Default
 
-1872
+2399
 
-equations{ 'ui_flat_plate_system_capacity' } = define() {
+equations{ 'ui_system_capacity_fpc' } = define() {
   return ${flat_plate_system_capacity};
 };
-
 
 equations{ 'ui_system_capacity' } = define() {
   return ${system_capacity}; 
@@ -2496,20 +3023,27 @@ equations{ 'ui_system_capacity' } = define() {
 
 equations{ 'fixed_operating_cost' } = define() {
   if (${ui_cost_input_option}==0) 
-    return ${ui_operating_cost_fixed};
+    return ${ui_operating_cost_fixed} + ${ui_operating_cost_fixed_fpc};
   else 
-    return ${system_capacity}*${ui_operating_cost_capacity}; 
+    return ${system_capacity}*${ui_operating_cost_capacity} +
+		${flat_plate_system_capacity}*${ui_operating_cost_capacity_fpc}; 
 };
 
 equations{ 'variable_operating_cost' } = define() {
-  return ${ui_variable_operating_cost};
+  // this is now a weighted average of the PTC and FPC VOCs, and
+  // is less accurate because it is using the system capacities (kW)
+  // instead of the generations (kWh) to weight it
+  return (${ui_variable_operating_cost} * ${ui_system_capacity} +
+    ${ui_variable_operating_cost_fpc} * ${ui_system_capacity_fpc}) /
+    (${ui_system_capacity} + ${ui_system_capacity_fpc});
 };
 
 equations{ 'capital_cost' } = define() {
   if (${ui_cost_input_option}==0)
-    return ${ui_capital_cost_fixed};
+    return ${ui_capital_cost_fixed} + ${ui_capital_cost_fixed_fpc};
   else  
-    return ${system_capacity}*${ui_capital_cost_capacity}; 
+    return ${system_capacity}*${ui_capital_cost_capacity} +
+		${flat_plate_system_capacity}*${ui_capital_cost_capacity_fpc}; 
 };
 
 equations{ '$MIMO$ fixed_charge_rate_calculator' } = define() {
@@ -2549,13 +3083,17 @@ equations{ '$MIMO$ fixed_charge_rate_calculator' } = define() {
     ${fixed_charge_rate} = fcr;
   }
 };
-1618
+1822
 function enable_disable() {
   fixed = ( value('ui_cost_input_option') == 0 );
   enable( 'ui_capital_cost_fixed', fixed );
+  enable( 'ui_capital_cost_fixed_fpc', fixed );
   enable( 'ui_operating_cost_fixed', fixed );
+  enable( 'ui_operating_cost_fixed_fpc', fixed );
   enable( 'ui_capital_cost_capacity', !fixed );
+  enable( 'ui_capital_cost_capacity_fpc', !fixed );
   enable( 'ui_operating_cost_capacity', !fixed );
+  enable( 'ui_operating_cost_capacity_fpc', !fixed );
   calculator = ( value('ui_fcr_input_option') == 1 );
   enable( 'c_lifetime', calculator );
   enable( 'c_inflation', calculator );
