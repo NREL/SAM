@@ -55,8 +55,7 @@ public:
 	virtual ~ActiveInputPage();
 	
 	// initialize by running any existing callbacks for it
-//	void Initialize();
-	void Initialize(bool doDataExchange= true); // shj - testing
+	void Initialize();
 
 	// Find() will look for an object on this specific input page
 	wxUIObject *Find( const wxString &name );

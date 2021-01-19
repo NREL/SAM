@@ -590,9 +590,9 @@ bool Case::LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di, VarT
 	if (RecalculateAll(true) < 0) // shj - testing
 	{
 		wxString e("Error recalculating equations after loading values from external source");	
-	//	if ( di ) di->error = e;// shj - testing
+		if ( di ) di->error = e;// shj - testing
 		wxLogStatus( e );
-	//	return false; // shj - testing
+		return false; // shj - testing
 	}
 	return ok;
 }
@@ -675,7 +675,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 			wxArrayString asCalculated, asIndicator;
 			auto vil = Variables();
 			for (auto& var : vil) {
-				if (var.second->Flags & VF_CHANGE_MODEL) // skip "en_batt" shj testing
+				if (var.second->Flags & VF_CHANGE_MODEL) 
 					continue;
 				else if (var.second->Flags & VF_CALCULATED)
 					asCalculated.push_back(var.first);
@@ -734,7 +734,7 @@ bool Case::SaveDefaults(bool quiet)
 	wxArrayString asCalculated, asIndicator;
 	auto vil = Variables();
 	for (auto& var : vil) {
-		if (var.second->Flags & VF_CHANGE_MODEL) // skip "en_batt" shj testing
+		if (var.second->Flags & VF_CHANGE_MODEL) 
 			continue;
 		else if (var.second->Flags & VF_CALCULATED)
 			asCalculated.push_back(var.first);

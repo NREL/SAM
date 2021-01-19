@@ -413,7 +413,7 @@ void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
 					auto vil = pci->Variables;
 					wxArrayString asCalculated, asIndicator;
 					for (auto& var : vil) {
-						if (var.second->Flags & VF_CHANGE_MODEL) // skip "en_batt" shj testing
+						if (var.second->Flags & VF_CHANGE_MODEL) 
 							continue;
 						else if (var.second->Flags & VF_CALCULATED)
 							asCalculated.push_back(var.first);
@@ -612,7 +612,7 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 			if (pci != NULL) {
 				auto vil = pci->Variables;
 				for (auto& var : vil) {
-					if (var.second->Flags & VF_CHANGE_MODEL) // skip "en_batt" shj testing
+					if (var.second->Flags & VF_CHANGE_MODEL) 
 						continue;
 					else if (var.second->Flags & VF_CALCULATED)
 						asCalculated.push_back(var.first);
@@ -670,7 +670,7 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 			if (pci != NULL) {
 				auto vil = pci->Variables;
 				for (auto& var : vil) {
-					if (var.second->Flags & VF_CHANGE_MODEL) // skip "en_batt" shj testing
+					if (var.second->Flags & VF_CHANGE_MODEL)
 						continue;
 					else if (var.second->Flags & VF_CALCULATED)
 						asCalculated.push_back(var.first);
