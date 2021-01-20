@@ -589,7 +589,7 @@ static void fcall_metric_row(lk::invoke_t& cxt)
 				int deci = wxAtoi(decis[i]);
 				md.deci = deci;
 			}
-					
+
 			if ( i < thouseps.GetCount()) {
 				wxString mm = thouseps[i];
 				mm.MakeLower();
@@ -2925,7 +2925,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		// URLs
 		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
 		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);
-		
+
 		// metering option
 		// "Net Metering", "Net Billing Instantaneous", "Net Billing Hourly", or "Buy All Sell All"
 		if (rate.DgRules == "Net Metering")
@@ -2941,7 +2941,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
             cxt.result().hash_item("metering_option").assign(0.0);
             rate_notes.append(wxString::Format("Metering option not provided with rate data.\n"));
         }
-		
+
 		// fixed charges
 		//  "$/day", "$/month" or "$/year" TO DO handle $/day and $/year
         double fixed_charges = rate.FixedChargeFirstMeter + rate.FixedChargeAddlMeter;
@@ -4831,7 +4831,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
-                                         "total_installed_cost", "value_of_lost_load"};
+                                         "total_installed_cost"};
 
     copy_vars_into_ssc_data(pv_vars);
     copy_vars_into_ssc_data(batt_vars);
