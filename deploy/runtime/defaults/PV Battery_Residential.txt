@@ -1,5 +1,5 @@
 1
-1018
+1020
 6par_aisc
 1
 1
@@ -1108,6 +1108,12 @@ batt_voltage_cutoff
 1
 1
 1
+2.376
+batt_voltage_cutoff_choice
+1
+1
+1
+1
 0
 batt_voltage_cutoff_default
 1
@@ -1115,6 +1121,12 @@ batt_voltage_cutoff_default
 1
 1
 2.376
+batt_voltage_cutoff_display
+1
+1
+1
+1
+0
 batt_voltage_matrix
 1
 3

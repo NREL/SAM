@@ -1,7 +1,7 @@
 Battery Voltage
 1055
 681
-23
+25
 GroupBox
 
 1
@@ -162,76 +162,14 @@ Numeric
 17
 Name
 5
-10
-batt_Qfull
-X
-3
-339
-Y
-3
-231
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
 17
 batt_Qfull_cutoff
 X
 3
-207
+270
 Y
 3
-210
+204
 Width
 3
 90
@@ -893,6 +831,163 @@ X
 270
 Y
 3
+234
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+26
+batt_voltage_cutoff_choice
+X
+3
+15
+Y
+3
+171
+Width
+3
+147
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+25
+Input cell cutoff voltage
+State
+2
+0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+27
+batt_voltage_cutoff_default
+X
+3
+270
+Y
+3
+174
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+27
+batt_voltage_cutoff_display
+X
+3
+270
+Y
+3
 174
 Width
 3
@@ -1000,7 +1095,7 @@ Name
 batt_voltage_matrix
 X
 3
-405
+402
 Y
 3
 450
@@ -1239,7 +1334,7 @@ Bold
 2
 1
 
-14
+16
 batt_C_rate
 3
 1
@@ -1402,21 +1497,49 @@ Cell cutoff voltage
 V
 BatteryCell
 0
-2
+10
 1
 1
 1
 1
 0
 Default
-batt_voltage_cutoff_default
+batt_voltage_cutoff_choice
 3
 1
  
  
  
 0
+0
+1
+1
+1
+1
+0
+CheckBox
+batt_voltage_cutoff_default
+3
+1
+Cell cutoff voltage
+V
+ 
+0
 8
+1
+1
+1
+1
+0
+Default
+batt_voltage_cutoff_display
+3
+1
+Cell cutoff voltage
+V
+ 
+0
+0
 1
 1
 1
@@ -1445,16 +1568,29 @@ Depth of discharge [%]| Cell voltage [V]
 
 DataMatrix
 
-91
+425
 equations{'batt_voltage_cutoff_default'} = define() {
 	return 0.66*${batt_Vnom_default};
 };
-5524
+
+equations{'batt_voltage_cutoff'} = define() {
+	check = ${batt_voltage_cutoff_choice};
+	if (check && ${batt_voltage_cutoff_display}!=0) {
+		return ${batt_voltage_cutoff_display};
+	}
+	else if (check && ${batt_voltage_cutoff_display}==0) {
+		return ${batt_voltage_cutoff_display};
+	}
+	else {return ${batt_voltage_cutoff_default};}
+};
+
+
+5595
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
 	update_voltage_plot();
-	cutoff_check();
+	
 
 	on_change{'batt_voltage_choice'};
 	on_change{'batt_bank_voltage'};
@@ -1468,22 +1604,24 @@ on_load{'Battery Voltage'} = define()
 	on_change{'batt_Qnom_percent'};
 	on_change{'batt_voltage_matrix'};
 	on_change{'batt_voltage_cutoff'};
+	on_change{'batt_voltage_cutoff_choice'};
 };
 
-function cutoff_check()
-{
-	cutoff_value = value('batt_voltage_cutoff');
-	cutoff_default = value('batt_voltage_cutoff_default');
-	if(cutoff_value==0) {
-		value('batt_voltage_cutoff',cutoff_default);
-	}
-}
 
-on_change{'batt_voltage_cutoff'} = define() {
+
+on_change{'batt_voltage_cutoff_display'} = define() {
 	update_voltage_plot();
-	cutoff_check();
-};
 	
+};
+
+on_change{'batt_voltage_cutoff_choice'} = define() {
+	check = value('batt_voltage_cutoff_choice');
+	show('batt_voltage_cutoff_display',check);
+	show('batt_voltage_cutoff_default',!check);
+	
+	update_voltage_plot();
+	refresh();
+};
 
 on_change{'batt_voltage_choice'} = define()
 {		
@@ -1597,9 +1735,11 @@ function cell_voltage_vs_dod()
 		B = 3/Qexp;
 		K = ((Vfull - Vnom + A*(exp(-B*Qnom) - 1))*(Qfull - Qnom))/(Qnom);
 		E0 = Vfull + K + R*I - A;
-		C = (-1*Vcut + E0 - R*I + A*(exp(-B*Qfull)))/K;
-		x = Qfull / (C - 1);
-		Qfull += x;
+		if (Vcut !=0) {
+			C = (-1*Vcut + E0 - R*I + A*(exp(-B*Qfull)))/K;
+			x = Qfull / (C - 1);
+			Qfull += x;
+		}
 		//value('batt_Qfull',Qfull);
 		value('batt_Qfull_cutoff',Qfull);
 		q0 = Qfull;
