@@ -491,7 +491,7 @@ batt_Qfull_cutoff
 1
 1
 1
-0
+3.2
 batt_Qfull_flow
 1
 1
@@ -1108,7 +1108,7 @@ batt_voltage_cutoff
 1
 1
 1
-2.376
+0
 batt_voltage_cutoff_choice
 1
 1

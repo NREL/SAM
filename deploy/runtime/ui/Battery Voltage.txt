@@ -1497,7 +1497,7 @@ Cell cutoff voltage
 V
 BatteryCell
 0
-10
+8
 1
 1
 1
