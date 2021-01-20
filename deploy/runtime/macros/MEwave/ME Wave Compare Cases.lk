@@ -667,15 +667,15 @@ if (num_cases ==2)
 
 	if (lcoe[1]>lcoe[0])
 	{
-	baselineCase = 1;
-	advancedCase = 0;
+		baselineCase = 1;
+		advancedCase = 0;
 	}
-	if (lcoe[0]>lcoe[1])
+	if (lcoe[0]>=lcoe[1])
 	{
-	baselineCase = 0;
-	advancedCase = 1;
+		baselineCase = 0;
+		advancedCase = 1;
 	}
-
+	
 capexLcoeChange = ((capEx[baselineCase]-capEx[advancedCase])*fcr[baselineCase])/aep[baselineCase];
 opexLcoeChange = (opEx[baselineCase]-opEx[advancedCase])/aep[baselineCase];
 aepLcoeChange = (lcoe[baselineCase]-lcoe[advancedCase])-(capexLcoeChange + opexLcoeChange);
