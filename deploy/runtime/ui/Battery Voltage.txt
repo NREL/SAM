@@ -1,7 +1,7 @@
 Battery Voltage
 1055
 681
-25
+21
 GroupBox
 
 1
@@ -107,7 +107,7 @@ X
 270
 Y
 3
-489
+516
 Width
 3
 90
@@ -163,75 +163,13 @@ Numeric
 Name
 5
 17
-batt_Qfull_cutoff
-X
-3
-270
-Y
-3
-204
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-17
 batt_Qnom_percent
 X
 3
 270
 Y
 3
-516
+543
 Width
 3
 90
@@ -280,6 +218,68 @@ BackColour
 TabOrder
 3
 10
+Numeric
+
+1
+17
+Name
+5
+9
+batt_Vcut
+X
+3
+270
+Y
+3
+489
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -818,225 +818,6 @@ Horizontal
 TabOrder
 3
 4
-Numeric
-
-1
-17
-Name
-5
-19
-batt_voltage_cutoff
-X
-3
-270
-Y
-3
-234
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-CheckBox
-
-1
-9
-Name
-5
-26
-batt_voltage_cutoff_choice
-X
-3
-15
-Y
-3
-171
-Width
-3
-147
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-25
-Input cell cutoff voltage
-State
-2
-0
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-27
-batt_voltage_cutoff_default
-X
-3
-270
-Y
-3
-174
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-27
-batt_voltage_cutoff_display
-X
-3
-270
-Y
-3
-174
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -1334,7 +1115,7 @@ Bold
 2
 1
 
-16
+20
 batt_C_rate
 3
 1
@@ -1391,6 +1172,20 @@ BatteryCell
 1
 95
  
+batt_Vcut
+3
+1
+Cell cutoff voltage
+V
+BatteryCell
+0
+0
+1
+1
+1
+1
+0
+Default
 batt_Vexp
 3
 1
@@ -1490,20 +1285,6 @@ Electrochemical model|Voltage table
 1
 0
 RadioChoice
-batt_voltage_cutoff
-3
-1
-Cell cutoff voltage
-V
-BatteryCell
-0
-8
-1
-1
-1
-1
-0
-Default
 batt_voltage_cutoff_choice
 3
 1
@@ -1567,25 +1348,78 @@ Depth of discharge [%]| Cell voltage [V]
 100 0.5 
 
 DataMatrix
+table_DoD
+3
+2
+ 
+ 
+ 
+0
+8
+1
+2
+1
+1
+0
+Default
+table_V
+3
+2
+ 
+ 
+ 
+0
+8
+1
+2
+1
+1
+0
+Default
+table_Vfull
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+test_table
+3
+5
+ 
+ 
+ 
+0
+8
+1
+5
+1
+0
+Default
 
-425
+254
 equations{'batt_voltage_cutoff_default'} = define() {
 	return 0.66*${batt_Vnom_default};
 };
 
-equations{'batt_voltage_cutoff'} = define() {
-	check = ${batt_voltage_cutoff_choice};
-	if (check && ${batt_voltage_cutoff_display}!=0) {
-		return ${batt_voltage_cutoff_display};
-	}
-	else if (check && ${batt_voltage_cutoff_display}==0) {
-		return ${batt_voltage_cutoff_display};
-	}
-	else {return ${batt_voltage_cutoff_default};}
+
+/*
+equations{'$MIMO$ table data'} = define() {
+	table = ${test_table};
+	//${table_DoD} = table.DOD;
+	//${table_V} = table.V;
+	${table_Vfull} = table.Vfull;
 };
 
 
-5595
+5586
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
@@ -1599,29 +1433,13 @@ on_load{'Battery Voltage'} = define()
 	on_change{'batt_Vfull'};
 	on_change{'batt_Vexp'};
 	on_change{'batt_Vnom'};
+	on_change{'batt_Vcut'};
 	on_change{'batt_Vnom_default'};
 	on_change{'batt_Qexp_percent'};
 	on_change{'batt_Qnom_percent'};
 	on_change{'batt_voltage_matrix'};
-	on_change{'batt_voltage_cutoff'};
-	on_change{'batt_voltage_cutoff_choice'};
 };
 
-
-
-on_change{'batt_voltage_cutoff_display'} = define() {
-	update_voltage_plot();
-	
-};
-
-on_change{'batt_voltage_cutoff_choice'} = define() {
-	check = value('batt_voltage_cutoff_choice');
-	show('batt_voltage_cutoff_display',check);
-	show('batt_voltage_cutoff_default',!check);
-	
-	update_voltage_plot();
-	refresh();
-};
 
 on_change{'batt_voltage_choice'} = define()
 {		
@@ -1634,11 +1452,11 @@ on_change{'batt_resistance'} = define(){update_voltage_plot();};
 on_change{'batt_Vfull'} = define(){update_voltage_plot();};
 on_change{'batt_Vexp'} = define(){update_voltage_plot();};
 on_change{'batt_Vnom'} = define(){update_voltage_plot();};
+on_change{'batt_Vcut'} = define(){update_voltage_plot();};
 on_change{'batt_Vnom_default'} = define()
 {
 	update_voltage_plot();
 	battsize_warning_check();
-	cutoff_check();
 };
 on_change{'batt_Qexp_percent'} = define(){update_voltage_plot();};
 on_change{'batt_Qnom_percent'} = define(){update_voltage_plot();};
@@ -1654,7 +1472,10 @@ function set_voltage_choice(update_defaults)
 	if (is_vanadium) { model_inputs_on = false; }
 		
 	// never allow iron to use a voltage model (doesn't exist)
-	if (is_iron && model_inputs_on) { value('batt_voltage_choice', 1); }
+	if (is_iron && model_inputs_on) { 
+		value('batt_voltage_choice', 1); 
+		model_inputs_on = false;
+	}
 
 	//show_voltage_model_inputs(show_model_inputs);	
 	enable_voltage_model_inputs(model_inputs_on);
@@ -1666,6 +1487,7 @@ function show_voltage_model_inputs(show_inputs)
 	show('batt_Vfull', show_inputs);
 	show('batt_Vexp', show_inputs);
 	show('batt_Vnom', show_inputs);
+	show('batt_voltage_cutoff', show_inputs);
 	show('batt_Qexp_percent', show_inputs);
 	show('batt_Qnom_percent', show_inputs);
 }
@@ -1676,6 +1498,7 @@ function enable_voltage_model_inputs(on)
 	enable('batt_Vfull', on);
 	enable('batt_Vexp', on);
 	enable('batt_Vnom', on);
+	enable('batt_Vcut', on);
 	enable('batt_Qexp_percent', on);
 	enable('batt_Qnom_percent', on);
 	
@@ -1688,7 +1511,7 @@ function update_voltage_plot()
 	Vfull = table{'Vfull'};
 	DOD_vect = table{'DOD'};
 	V_vect = table{'V'};
-	Vcut = value('batt_voltage_cutoff');
+	Vcut = value('batt_Vcut');
 	clearplot( 'batt_voltage_plot');
 	plot( DOD_vect, V_vect, {'thick'=2, 'type'='line', 'color'='blue'});
 	plotopt( {'title'='Voltage Discharge', 'legend'=false });
@@ -1724,7 +1547,7 @@ function cell_voltage_vs_dod()
 		Vnom = ${batt_Vnom};
 		C_rate = ${batt_C_rate};
 		eta = 0.995;
-		Vcut = ${batt_voltage_cutoff};
+		Vcut = ${batt_Vcut};
 		// strange bug, after simulation Qnom is calculated erroneously
 		Qnom = Qnom_percent*Qfull*0.01;
 		Qexp = Qexp_percent*Qfull*0.01;
@@ -1735,13 +1558,14 @@ function cell_voltage_vs_dod()
 		B = 3/Qexp;
 		K = ((Vfull - Vnom + A*(exp(-B*Qnom) - 1))*(Qfull - Qnom))/(Qnom);
 		E0 = Vfull + K + R*I - A;
-		if (Vcut !=0) {
-			C = (-1*Vcut + E0 - R*I + A*(exp(-B*Qfull)))/K;
-			x = Qfull / (C - 1);
-			Qfull += x;
-		}
+		//if (Vcut !=0) {
+		C = (-1*Vcut + E0 - R*I + A*(exp(-B*Qfull)))/K;
+		x = Qfull / (C - 1);
+			//Qfull += x;
+		//}
 		//value('batt_Qfull',Qfull);
-		value('batt_Qfull_cutoff',Qfull);
+		value('batt_Qfull_cutoff',Qfull + x);
+		Qfull_cutoff = Qfull + x;
 		q0 = Qfull;
 		V_vect[0] = Vfull;
 		t_vect[0] = 0;
@@ -1751,15 +1575,17 @@ function cell_voltage_vs_dod()
 
 		//logmsg('Vfull: ' + Vfull + ' Vexp: ' + Vexp + ' Vnom: ' + Vnom + ' Qfull: ' + Qfull + ' Qexp: ' + Qexp + ' Qnom: ' + Qnom + 'Qnom_percent: ' + Qnom_percent + ' C: ' + C_rate); 
 		//logmsg('A: ' + A + ' B: ' + B + ' K: ' + K + 'R: ' + R + ' EO: ' + E0 ); 
-
+		//I = Qfull_cutoff * C_rate;
+		//I_v = Qfull_cutoff * C_rate;
 		for (i = 1; i <= stop; i++){
 			count++;
-			t = i*0.1;
+			t = i*0.10;
 			q0 = Qfull - I*t;
-			V = E0 - R*I - K*(Qfull/(Qfull -I*t)) + A*exp(-B*I*t);
+			V = E0 - R*I - K*(Qfull_cutoff/(Qfull_cutoff -I*t)) + A*exp(-B*I*t);
 			DOD = (1.-(q0/Qfull))*100;
 			//logmsg('t: ' + t + ' V: ' + V + 'DOD: ' + DOD);
-			if ( (V < Vfull/2) || (V > 2*Vfull) || DOD > 100)
+			//if ( (V < Vcut) || (V > 2*Vfull) || DOD > 101)
+			if (  V < Vcut-0.1 || DOD > 101) 
 				break;
 			else
 			{
@@ -1784,5 +1610,8 @@ function cell_voltage_vs_dod()
 	table{'DOD'} = DOD_vect;
 	table{'V'} = V_vect;
 	table{'Vfull'} = Vfull;
+	value('test_table',table);
+	value('table_DoD', DOD_vect);
+	value('table_V',V_vect);
 	return table;
 }
