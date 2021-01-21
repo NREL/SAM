@@ -589,7 +589,7 @@ static void fcall_metric_row(lk::invoke_t& cxt)
 				int deci = wxAtoi(decis[i]);
 				md.deci = deci;
 			}
-					
+
 			if ( i < thouseps.GetCount()) {
 				wxString mm = thouseps[i];
 				mm.MakeLower();
@@ -2925,7 +2925,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		// URLs
 		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
 		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);
-		
+
 		// metering option
 		// "Net Metering", "Net Billing Instantaneous", "Net Billing Hourly", or "Buy All Sell All"
 		if (rate.DgRules == "Net Metering")
@@ -2941,7 +2941,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
             cxt.result().hash_item("metering_option").assign(0.0);
             rate_notes.append(wxString::Format("Metering option not provided with rate data.\n"));
         }
-		
+
 		// fixed charges
 		//  "$/day", "$/month" or "$/year" TO DO handle $/day and $/year
         double fixed_charges = rate.FixedChargeFirstMeter + rate.FixedChargeAddlMeter;
@@ -4831,7 +4831,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
-                                         "total_installed_cost", "value_of_lost_load"};
+                                         "total_installed_cost"};
 
     copy_vars_into_ssc_data(pv_vars);
     copy_vars_into_ssc_data(batt_vars);
@@ -4877,8 +4877,10 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     if (auto err_vd = results.lookup("messages"))
         throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
-    if (auto err_vd = results.lookup("error"))
-        throw lk::error_t(err_vd->as_string() );
+    if (auto err_vd = results.lookup("error")){
+        cxt.result().hash_item("error", err_vd->as_string());
+        return;
+    }
 
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
@@ -4887,7 +4889,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result... This may take a few minutes.", "ReOpt Lite API",
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "ReOpt Lite API",
             wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();
     wxGetApp().Yield( true );
@@ -4921,7 +4923,7 @@ static void fcall_setup_landbosse(lk::invoke_t &cxt)
     if (SamApp::CheckPythonPackage("landbosse"))
         return;
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing the balance-of-system (BOS) cost model... Please note that it may take a few minutes to complete the initial installation. Once installed, you will be able to quickly estimate BOS costs using NREL's Land-based Balance-of-System Systems Engineering (LandBOSSE).\n"
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing the balance-of-system (BOS) cost model. Please note that it may take a few minutes to complete the initial installation. Once installed, you will be able to quickly estimate BOS costs using NREL's Land-based Balance-of-System Systems Engineering (LandBOSSE).\n"
                                                     "\n"
                                                     "While you wait, please refer to Eberle et al. 2019 for more information about the methods that were used to develop LandBOSSE. It is important to note that the SAM user interface only includes a limited set of LandBOSSE inputs. If you would like to access more detailed inputs, please use the LandBOSSE model directly",
                         "Land-Based Balance of System Cost Model",
