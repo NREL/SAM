@@ -4889,7 +4889,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result... This may take a few minutes.", "ReOpt Lite API",
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "ReOpt Lite API",
             wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();
     wxGetApp().Yield( true );
@@ -4923,7 +4923,7 @@ static void fcall_setup_landbosse(lk::invoke_t &cxt)
     if (SamApp::CheckPythonPackage("landbosse"))
         return;
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing the balance-of-system (BOS) cost model... Please note that it may take a few minutes to complete the initial installation. Once installed, you will be able to quickly estimate BOS costs using NREL's Land-based Balance-of-System Systems Engineering (LandBOSSE).\n"
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing the balance-of-system (BOS) cost model. Please note that it may take a few minutes to complete the initial installation. Once installed, you will be able to quickly estimate BOS costs using NREL's Land-based Balance-of-System Systems Engineering (LandBOSSE).\n"
                                                     "\n"
                                                     "While you wait, please refer to Eberle et al. 2019 for more information about the methods that were used to develop LandBOSSE. It is important to note that the SAM user interface only includes a limited set of LandBOSSE inputs. If you would like to access more detailed inputs, please use the LandBOSSE model directly",
                         "Land-Based Balance of System Cost Model",
