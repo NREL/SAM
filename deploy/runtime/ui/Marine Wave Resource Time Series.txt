@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
 1847
 1161
-19
+20
 Hyperlink
 
 1
@@ -492,6 +492,41 @@ Browse...
 TabOrder
 3
 4294967295
+DataArray
+
+1
+10
+Name
+5
+10
+time_check
+X
+3
+1041
+Y
+3
+462
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+2
+Label
+5
+0
+Description
+5
+0
+TabOrder
+3
+4294967295
 CheckBox
 
 1
@@ -714,7 +749,7 @@ TabOrder
 3
 4294967295
 
-21
+22
 average_power_flux_ts
 3
 1
@@ -900,6 +935,20 @@ state_ts
 9
 <invalid>
 TextEntry
+time_check
+3
+2
+Time Check
+ 
+ 
+0
+8
+1
+2
+1
+1
+0
+DataArray
 tz_ts
 3
 1
