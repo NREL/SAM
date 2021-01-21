@@ -162,21 +162,21 @@ AlignTop
 0
 
 0
-4282
+4383
 on_change{'call_reopt'} = define()
 {
+	batt_kw_original = value("batt_bank_power");
+	batt_kwh_original = value("batt_bank_size");
 	dispatch_original_mode = value('batt_dispatch_choice'); //store original batt dispatch mode
-	value('batt_dispatch_choice',0); //set batt dispatch mode to 0 for ReOPT call
+	
 	wf_len = 60 / ${ui_step_minutes} * 8760;
 	load_len = #(${load});
 	if (wf_len != load_len) {
 		msgbox("Weather file and load number of records must be the same.");
-		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
 		exit;
 	}
 	if (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) {
 		msgbox("Simulation timestep must be 15, 30 or 60 minutes.");
-		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
 		exit;
 	}
 
@@ -188,7 +188,6 @@ on_change{'call_reopt'} = define()
 			refresh();
 		}
 		else {
-			value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
 			exit;
 		}
 	}
@@ -200,7 +199,6 @@ on_change{'call_reopt'} = define()
 			refresh();
 		}
 		else {
-			value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
 			exit;
 		}
 	}
@@ -208,6 +206,7 @@ on_change{'call_reopt'} = define()
 	// reset size to 0 to remove battery costs from total_installed_cost
 	value("batt_bank_power", 0);
 	value("batt_bank_size", 0); 
+	value('batt_dispatch_choice',0); //set batt dispatch mode to 0 for ReOPT call
 	
 	value('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf
 
@@ -221,6 +220,8 @@ on_change{'call_reopt'} = define()
 			msgbox("ReOpt Lite API timed out. Please try again later.");
 		}
 		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
 		exit;
 	}
 	
@@ -229,12 +230,16 @@ on_change{'call_reopt'} = define()
 	if (y.outputs == null || y.outputs.Scenario == null){
 		msgbox("Error in ReOpt response. Try again later or another system design.");
 		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
 		exit;
 	}
 
 	if (y.outputs.Scenario.status != "optimal"){
 		msgbox(y.outputs.Scenario.status);
 		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
 		exit;
 	}
 
@@ -251,6 +256,8 @@ on_change{'call_reopt'} = define()
 			value('batt_bank_size', 0.0);
 		}
 		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
 		exit;
 	}
 
@@ -260,6 +267,8 @@ on_change{'call_reopt'} = define()
 	apply = yesno(apply_str);
 	if (!apply) {
 		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
 		exit;
 	}
 

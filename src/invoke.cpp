@@ -4877,8 +4877,10 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     if (auto err_vd = results.lookup("messages"))
         throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
-    if (auto err_vd = results.lookup("error"))
-        throw lk::error_t(err_vd->as_string() );
+    if (auto err_vd = results.lookup("error")){
+        cxt.result().hash_item("error", err_vd->as_string());
+        return;
+    }
 
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
