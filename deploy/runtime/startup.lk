@@ -110,7 +110,7 @@ function setup_elec_load_page( mode ) //i is 1 for technologies that HAVE the bu
 	else return;
 }
 
-function setup_battery_pages_behind_the_meter()
+function setup_battery_pages_behind_the_meter_reopt()
 {
 	addpage([['Battery Model',
 			  'Battery Bank Sizing',
@@ -131,6 +131,28 @@ function setup_battery_pages_behind_the_meter()
 			  ]],
 			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm' } );
 }
+
+function setup_battery_pages_behind_the_meter()
+{
+	addpage([['Battery Model',
+			  'Battery Bank Sizing',
+			   'Battery Current and Capacity',
+			   'Battery Configuration',
+               {'name'='Battery Lifetime', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
+			   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
+			   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
+			   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
+			  ]],
+			  { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm' } );
+			  
+	addpage([['Battery Dispatch Common',
+			   'Battery Dispatch Behind the Meter',
+			   'Battery Dispatch Manual',
+			  ]],
+			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm' } );
+}
+
 
 function setup_battery_pages_front_of_meter()
 {
@@ -1784,7 +1806,7 @@ function setup_pv_battery_pages(is_btm)
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
 
 	if (is_btm)
-		setup_battery_pages_behind_the_meter();
+		setup_battery_pages_behind_the_meter_reopt();
 	else
 		setup_battery_pages_front_of_meter();
 

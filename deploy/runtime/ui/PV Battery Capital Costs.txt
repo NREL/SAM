@@ -6764,7 +6764,7 @@ Capital Costs
 0
 Numeric
 
-5031
+5047
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6962,7 +6962,7 @@ equations { 'battery_energy' } = define () {
 
 equations { 'battery_power' } = define () {
 	if( technology() == 'PV Battery' )
-	{ return ${batt_power_discharge_max_kwdc}; }
+	{ return  ?${en_batt}[0,${batt_power_discharge_max_kwdc}]; }
 	else { return ${batt_simple_kw}; }
 };
 
