@@ -18,7 +18,7 @@ bill can be for a simple flat rate, while the RE system is for time-of-use rates
 <li>If you have not already, set up a case for the RE system (with batteries if
 you are considering storage). The assumptions on the Electricity Rates input page
 should be for the RE system scenario.</li>
-<li>Choose a rate option for the "no system" scenario from the list at right.  If you choose the flat rate option, enter the flat rate and optional fixed monthly charge.</li>
+<li>Choose a rate option for the "no system" scenario from the list at right.  If you choose the flat rate option (Option 2), enter the flat rate and optional fixed monthly charge.</li>
 <li>Click <strong>Run macro</strong> above.</li>
 </ol>
 
