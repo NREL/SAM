@@ -1,5 +1,5 @@
 1
-225
+224
 Monthly_util
 1
 2
@@ -1415,12 +1415,6 @@ utility_bill_data
 12
 300 300 300 300 300 400 500 500 400 300 300 300 
 
-value_of_lost_load
-1
-1
-1
-1
-100
 wf_nrecords
 1
 1
