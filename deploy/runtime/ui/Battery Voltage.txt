@@ -1115,7 +1115,7 @@ Bold
 2
 1
 
-20
+13
 batt_C_rate
 3
 1
@@ -1285,48 +1285,6 @@ Electrochemical model|Voltage table
 1
 0
 RadioChoice
-batt_voltage_cutoff_choice
-3
-1
- 
- 
- 
-0
-0
-1
-1
-1
-1
-0
-CheckBox
-batt_voltage_cutoff_default
-3
-1
-Cell cutoff voltage
-V
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-batt_voltage_cutoff_display
-3
-1
-Cell cutoff voltage
-V
- 
-0
-0
-1
-1
-1
-1
-0
-Default
 batt_voltage_matrix
 3
 3
@@ -1348,78 +1306,12 @@ Depth of discharge [%]| Cell voltage [V]
 100 0.5 
 
 DataMatrix
-table_DoD
-3
+
 2
- 
- 
- 
-0
-8
-1
-2
-1
-1
-0
-Default
-table_V
-3
-2
- 
- 
- 
-0
-8
-1
-2
-1
-1
-0
-Default
-table_Vfull
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-test_table
-3
-5
- 
- 
- 
-0
-8
-1
-5
-1
-0
-Default
-
-254
-equations{'batt_voltage_cutoff_default'} = define() {
-	return 0.66*${batt_Vnom_default};
-};
 
 
-/*
-equations{'$MIMO$ table data'} = define() {
-	table = ${test_table};
-	//${table_DoD} = table.DOD;
-	//${table_V} = table.V;
-	${table_Vfull} = table.Vfull;
-};
 
-
-5586
+5501
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
@@ -1610,8 +1502,5 @@ function cell_voltage_vs_dod()
 	table{'DOD'} = DOD_vect;
 	table{'V'} = V_vect;
 	table{'Vfull'} = Vfull;
-	value('test_table',table);
-	value('table_DoD', DOD_vect);
-	value('table_V',V_vect);
 	return table;
 }
