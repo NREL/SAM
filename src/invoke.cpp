@@ -2877,8 +2877,8 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().empty_hash();
 
         // meta data
-        cxt.result().hash_item("name").assign(rate.Header.Utility);
-        cxt.result().hash_item("schedule_name").assign(rate.Header.Name);
+        cxt.result().hash_item("utility").assign(rate.Header.Utility);
+        cxt.result().hash_item("name").assign(rate.Header.Name);
         cxt.result().hash_item("source").assign(rate.Header.Source);
         cxt.result().hash_item("description").assign(rate.Header.Description);
         cxt.result().hash_item("start_date").assign(rate.Header.StartDate);

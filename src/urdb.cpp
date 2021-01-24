@@ -207,6 +207,13 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 		return false;
 	}
 
+    if ( root.HasMember("error") )
+    {
+        wxJSONValue error_list = root.Item("error");
+        if (err) *err = "URDB API error: " + error_list.Item("message").AsString();
+        return false;
+    }
+
 	names.Clear();
 	wxJSONValue item_list = root.Item("items");
 	int count = item_list.Size();
@@ -296,6 +303,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	return true;
 
 }
+
 
 bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rates, wxString *err)
 {
@@ -809,6 +817,7 @@ enum {
   ID_txtRateDescription,
   ID_txtRateEndDate,
   ID_txtRateStartDate,
+  ID_txtRateUtility,
   ID_txtRateName,
   ID_lstRates,
   ID_lstUtilities,
@@ -871,13 +880,18 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 
 	lstRates = new AFSearchListBox(this, ID_lstRates);
 
+    txtRateUtility = new wxExtTextCtrl(this, ID_txtRateUtility);
+    txtRateUtility->SetEditable(false);
+    txtRateUtility->SetForegroundColour(wxColour(0, 0, 0));
+    txtRateUtility->SetBackgroundColour(wxColour(255, 255, 255));
+
 	txtRateName = new wxExtTextCtrl(this, ID_txtRateName);
 	txtRateName->SetEditable( false );
 	txtRateName->SetForegroundColour( wxColour(0, 0, 0) );
 	txtRateName->SetBackgroundColour( wxColour(255, 255, 255) );
+    txtRateName->SetEditable(false);
 
     txtRateDescription = new wxTextCtrl(this, ID_txtRateDescription, "", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE | wxTE_WORDWRAP | wxTE_PROCESS_TAB | wxTE_READONLY);
-    txtRateName->SetEditable(false);
 
 	txtRateStartDate = new wxExtTextCtrl(this, ID_txtRateStartDate);
 	txtRateStartDate->SetEditable(false);
@@ -917,7 +931,9 @@ OpenEIUtilityRateDialog::OpenEIUtilityRateDialog(wxWindow *parent, const wxStrin
 
 	wxFlexGridSizer *sz_right_grid = new wxFlexGridSizer(2);
 	sz_right_grid->AddGrowableCol(1);
-	sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Name"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
+    sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Utility"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+    sz_right_grid->Add(txtRateUtility, 1, wxALL | wxEXPAND, 2);
+    sz_right_grid->Add( new wxStaticText(this, wxID_ANY, "Name"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	sz_right_grid->Add( txtRateName, 1, wxALL|wxEXPAND, 2 );	
 	sz_right_grid->Add(new wxStaticText(this, wxID_ANY, "Description"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 	sz_right_grid->Add(txtRateDescription, 1, wxALL | wxEXPAND, 2);
@@ -977,7 +993,7 @@ void OpenEIUtilityRateDialog::QueryUtilities()
 	{
 		busy.~wxBusyInfo();
 		lstUtilities->Clear();
-		wxMessageBox("Error:\n\n" + err);
+		wxMessageBox("Error Getting List of Utility Companies\n\n" + err, "URDB Download Message");
 		return;
 	}
 
@@ -1001,7 +1017,7 @@ void OpenEIUtilityRateDialog::QueryUtilitiesByZipCode()
 	{
 		busy.~wxBusyInfo();
 		lstUtilities->Clear();
-		wxMessageBox("Error:\n\n" + err);
+		wxMessageBox("Query by Zipcode Error\n\n" + err, "URDB Download Message");
 		return;
 	}
 
@@ -1028,10 +1044,11 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 
 	wxString err;
 
+    // get rates
     if (!api.QueryUtilityRates(utility_name, mUtilityRates, &err))
     {
 		busy.~wxBusyInfo();
-		wxMessageBox("Error:\n\n" + err);
+		wxMessageBox("Utility Rate Query Error\n\n" + err, "URDB Download Message");
 		return;
 	}
 
@@ -1096,6 +1113,7 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 
 	if (guid.IsEmpty())
 	{
+        txtRateUtility->SetValue(wxEmptyString);
 		txtRateName->SetValue(wxEmptyString);
 		txtRateDescription->SetValue(wxEmptyString);
 		txtRateStartDate->SetValue(wxEmptyString);
@@ -1112,8 +1130,9 @@ void OpenEIUtilityRateDialog::UpdateRateData()
 		wxBusyInfo busy("Getting rate data...", this);
 		if (api.RetrieveUtilityRateData(guid, mRateData, &json_url))
 		{
-			
-			txtRateName->SetValue(mRateData.Header.Name);
+
+            txtRateUtility->SetValue(mRateData.Header.Utility);
+            txtRateName->SetValue(mRateData.Header.Name);
 			txtRateStartDate->SetValue( mRateData.Header.StartDate );
 			txtRateEndDate->SetValue(mRateData.Header.EndDate);
 			txtRateGUID->SetValue(mRateData.Header.GUID);

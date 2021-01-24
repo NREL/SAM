@@ -170,6 +170,7 @@ private:
 	wxHyperlinkCtrl *hypOpenEILink;
 	wxHyperlinkCtrl *hypJSONLink;
 	wxTextCtrl *txtRateDescription;
+    wxExtTextCtrl* txtRateUtility;
 	wxExtTextCtrl *txtRateName;
 	wxExtTextCtrl *txtRateStartDate;
 	wxExtTextCtrl *txtRateEndDate;

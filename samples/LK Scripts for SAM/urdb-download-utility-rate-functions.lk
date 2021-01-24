@@ -57,7 +57,7 @@ for ( i=0; i<#utilities_zip; i++ )
 
 // Get an array of rate names and guids for a given utility company name ///////
 // note that the company name must exactly match the listing in the URDB
-utility_name = utilities_zip[0];
+utility_name = "PG&E";
 rates = urdb_list_rates( utility_name );
 outln( '\n== Rates for ' + utility_name + ' ==' );
 for ( i=0; i<#rates-1; i=i+2 )
@@ -83,11 +83,12 @@ else { outln( '\nFailed to write rates table to CSV file.' );}
 // urdb_write() and urdb_read() functions
 guid = rates[1];
 R = urdb_get( guid );
-fname = cwd() +'/rate-data-guid-' + guid + '.csv';
+fname = cwd() +'/rate-data-from-urdb-guid-' + guid + '.csv';
 ok = csvwrite( fname, R );
 outln( '\n== Test Get Data for GUID ' + guid + ' and Write to File ==' );
 if ( ok ) { outln( 'Rate data for guid ' + guid + ' written to ' + fname ); }
 else { outln( 'Failed to write data to file for guid ' + guid ); }
+browse( fname );
 
 // Write inputs from Electricity Rates page to a CSV file //////////////////////
 // equivalent to clicking "Save rate to file" on Electricity Rates page 
@@ -96,7 +97,7 @@ ok = urdb_write( fname );
 outln( '\n== Test Write Rata Data from Electricity Rates Page to ' + fname + ' ==' );
 if ( ok ) { outln( 'Rate data written to: ' + fname ); }
 else { outln( 'Failed to write rate data.' ); }
-
+browse( fname );
 // Read data from a CSV file and write to Electricity Rates page inputs ////////
 // equivalent to clicking "Load rate from file" on Electricity Rates page
 ok = urdb_read( fname );
@@ -104,4 +105,4 @@ outln( '\n== Test Load Inputs to Electricity Rates Page from ' + fname + ' ==' )
 if ( ok ) { outln( 'Rate inputs loaded from : ' + fname ); }
 else { outln( 'Failed to load rate data.' ); }
 
-browse( path_only( fname ) );
+outln( '\nDone.');
