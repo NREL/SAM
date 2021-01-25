@@ -2350,7 +2350,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 void fcall_urdb_list_utilities(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_utilities", "Lists utility companies from the OpenEI Utility Rate Database.", "(none):string");
+	LK_DOC("urdb_list_utilities", "Returns a list of all utility company names in the OpenEI Utility Rate Database.", "(none):string");
 	wxArrayString names;
 	OpenEI api;
 	if (api.QueryUtilityCompanies(names))
@@ -2363,7 +2363,7 @@ void fcall_urdb_list_utilities(lk::invoke_t &cxt)
 
 void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_utilities_by_zip_code", "Lists utility companies from the OpenEI Utility Rate Database for zip code.", "(string:zip_code):string");
+	LK_DOC("urdb_list_utilities_by_zip_code", "Returns a list of utility company names for a given zip code from the OpenEI Utility Rate Database.", "(string:zip_code):array");
 	wxString zip_code = cxt.arg(0).as_string();
 	wxArrayString names;
 	OpenEI api;
@@ -2377,29 +2377,23 @@ void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &cxt)
 
 void fcall_urdb_list_rates(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_rates", "Lists rates for utility argument from OpenEI Utility Rate Database.", "(string:utility):string");
-	wxString utility = cxt.arg(0).as_string();
+	LK_DOC("urdb_list_rates", "Returns a list of rate names and GUIDs for a given utility company name from OpenEI Utility Rate Database.", "(string:utility):array");
+
+    wxString utility = cxt.arg(0).as_string();
 
 	std::vector<OpenEI::RateInfo> ratelist;
 	OpenEI api;
 
-	wxString urdb_utility_name = "";
-	// first resolve aliases
-	if (!api.ResolveUtilityName(utility, &urdb_utility_name))
-	{
-		cxt.result().assign(-1);
-		return;
-	}
-
-	if (api.QueryUtilityRates(urdb_utility_name, ratelist))
-	{
+    if (api.QueryUtilityRates(utility, ratelist))
+    {
 		cxt.result().empty_vector();
-		for (int i = 0; i<(int)ratelist.size(); i++)
+        
+        for (int i = 0; i<(int)ratelist.size(); i++)
 		{
 			cxt.result().vec_append(ratelist[i].Name);
 			cxt.result().vec_append(ratelist[i].GUID);
-		}
-	}
+        }
+    }
 	else
 		cxt.result().assign(-1);
 
@@ -2571,7 +2565,7 @@ void fcall_group_read(lk::invoke_t &cxt)
 
 void fcall_urdb_write(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_write", "Writes rate data from current case to a file.", "(string:filename):boolean");
+	LK_DOC("urdb_write", "Writes inputs from Electricity Rates page for the current case to a CSV file.", "(string:filename):boolean");
 
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -2612,7 +2606,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 
 void fcall_urdb_read(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_read", "Reads rate data from a file to the current case.", "(string:filename):boolean");
+	LK_DOC("urdb_read", "Loads rate data from a CSV file to the Electricity Rates page for the current case.", "(string:filename):boolean");
 
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -2869,7 +2863,7 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 
 void fcall_urdb_get(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(string:guid):boolean");
+	LK_DOC("urdb_get", "Returns rate data from the OpenEI Utility Rate Database given a GUID.", "(string:guid):table");
 	wxString guid = cxt.arg(0).as_string();
 	if (guid.IsEmpty()) return;
 
@@ -2883,8 +2877,8 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().empty_hash();
 
         // meta data
-        cxt.result().hash_item("name").assign(rate.Header.Utility);
-        cxt.result().hash_item("schedule_name").assign(rate.Header.Name);
+        cxt.result().hash_item("utility").assign(rate.Header.Utility);
+        cxt.result().hash_item("name").assign(rate.Header.Name);
         cxt.result().hash_item("source").assign(rate.Header.Source);
         cxt.result().hash_item("description").assign(rate.Header.Description);
         cxt.result().hash_item("start_date").assign(rate.Header.StartDate);
