@@ -113,7 +113,7 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 		|| !wxDirExists( m_folder->GetValue() ) 
 		|| list.size() < 10 )
 	{
-		wxMessageBox("Please select a folder with at least 10 weather data files.\n\nSee Help for details and a link to NSRDB historical data.", "P50/P90 Simulations", wxOK, this );
+		wxMessageBox(wxString::Format("Please choose a folder!\nYou either did not choose a folder, or the folder you chose has less than 10 weather files.",list.size()), "P50/P90 Simulations", wxOK, this );
 		return;
 	}
 
@@ -128,8 +128,11 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 
 		wxString file = wxFileNameFromPath(list[i]);
 		wxString ext = wxFileName(file).GetExt().Lower();
-		if (ext != "tm2" && ext != "tm3" && ext != "csv" && ext != "smw" && ext != "srw" )
-			continue; 
+        if (ext != "tm2" && ext != "epw" && ext != "csv" && ext != "smw" && ext != "srw")
+        {
+            wxMessageBox(wxString::Format("Invalid file!\nP50/P90 simulations do not work with the %s file extension. Only csv, srw, smw, epw, and tm2 file extensions are supported. Please remove any files with invalid extensions from the weather file folder.",ext), "P50/P90 Simulations", wxOK, this);
+            return;
+        }
 
 		long yrval = -1;
 		int pos2 = file.find_last_of("."); //need to find the period that separates the file extension, not any other periods that may be present in the file name
@@ -146,7 +149,7 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 	
 	if (years.size() < 10)
 	{
-		wxMessageBox("It is not possible to empirically determine the P90 value with less than 10 years of weather data.");
+		wxMessageBox(wxString::Format("Insufficient number of files!\nThe folder you chose has less than 10 files with correctly formatted file names. Please be sure that all file names in the folder include the year preceeded by an underscore like \"filename_2008.csv\". Folder contains %d files with valid file names.", years.size() ), "P50/P90 Simulations", wxOK, this);
 		return;
 	}
 
@@ -194,7 +197,7 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 		sim->Override("user_specified_wf_wind", VarValue(weatherFile));
 
 		if ( !sim->Prepare() )
-			wxMessageBox( wxString::Format("internal error preparing simulation %d for P50 / P90", (int)(n+1)) );
+			wxMessageBox( wxString::Format("Internal error preparing simulation %d for P50/P90.", (int)(n+1)) );
 
 		tpd.Update( 0, (float)n / (float)years.size() * 100.0f, wxString::Format("%d of %d", (int)(n+1), (int)years.size()  ) );
 		

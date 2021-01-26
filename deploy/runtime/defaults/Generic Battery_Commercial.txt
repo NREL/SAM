@@ -2842,6 +2842,10 @@ ur_uri
 1
 4
 0
+ur_utility
+1
+4
+0
 ur_voltage_category
 1
 4
@@ -2871,9 +2875,3 @@ utility_bill_data
 12
 300 300 300 300 300 400 500 500 400 300 300 300 
 
-value_of_lost_load
-1
-1
-1
-1
-100

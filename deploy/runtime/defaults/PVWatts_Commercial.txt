@@ -1,5 +1,5 @@
 1
-368
+369
 ac_nameplate
 1
 1
@@ -982,7 +982,7 @@ itc_fed_percent
 1
 1
 1
-22
+26
 itc_fed_percent_deprbas_fed
 1
 1
@@ -2236,6 +2236,10 @@ ur_unused_is_shown
 1
 0
 ur_uri
+1
+4
+0
+ur_utility
 1
 4
 0
