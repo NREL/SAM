@@ -1787,7 +1787,7 @@ TabOrder
 3
 4294967295
 
-24
+23
 balance_of_system_scheduled_maintenance_cost
 3
 1
@@ -2012,17 +2012,6 @@ other_unscheduled_maintenance_cost
 1
 0
 Default
-regular_cable_surveys_cost
-3
-0
- 
- 
- 
-0
-0
-1
-0
-Default
 scheduled_maintenance_cost
 3
 1
@@ -2189,7 +2178,7 @@ equations {'maintenance_override_check'} = define() {
 
 
 
-3913
+3911
 on_load{'Marine Costs - Maintenance'} = define() {
 	on_change{'detailed_cost_choice_scheduled_maintenance'};
 	detailed_cost_scheduled_maintenance();
@@ -2284,7 +2273,6 @@ function enable_itemized_maintenance()
 	show('maintenance_cost_total',itemized_value==1);
 	show('maintenance_level_total_label',itemized_value==1);
 	show('maintenance_cost_input',(itemized_value==0 || itemized_value==2));
-	
 	if (itemized_value==1)
 	{
 		detailed_cost_scheduled_maintenance();

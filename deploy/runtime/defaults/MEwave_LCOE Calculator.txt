@@ -1,5 +1,5 @@
 1
-673
+672
 accumulators_cost
 1
 1
@@ -3086,9 +3086,6 @@ rectifying_circuit_cost
 1
 1
 1
-1
-0
-regular_cable_surveys_cost
 1
 0
 reserve_accounts_cost
