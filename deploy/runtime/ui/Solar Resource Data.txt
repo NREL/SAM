@@ -510,7 +510,7 @@ Name
 btn_add_file_to_library
 X
 3
-717
+715
 Y
 3
 567
@@ -540,10 +540,10 @@ Name
 btn_add_remove_folders
 X
 3
-612
+616
 Y
 3
-309
+306
 Width
 3
 252
@@ -570,10 +570,10 @@ Name
 btn_download
 X
 3
-660
+663
 Y
 3
-471
+474
 Width
 3
 205
@@ -600,7 +600,7 @@ Name
 btn_refresh_library
 X
 3
-612
+616
 Y
 3
 336
@@ -630,7 +630,7 @@ Name
 btn_view_data
 X
 3
-717
+715
 Y
 3
 609
@@ -958,7 +958,7 @@ Y
 474
 Width
 3
-369
+366
 Height
 3
 24
@@ -1291,13 +1291,13 @@ X
 18
 Y
 3
-309
+306
 Width
 3
 588
 Height
 3
-54
+60
 Tool Tip
 5
 0

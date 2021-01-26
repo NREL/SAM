@@ -1307,11 +1307,8 @@ Depth of discharge [%]| Cell voltage [V]
 
 DataMatrix
 
-2
-
-
-
-5501
+0
+4901
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
