@@ -233,7 +233,7 @@ enum { ID_SELECT_INPUTS = wxID_HIGHEST+494, ID_SELECT_OUTPUTS, ID_NUMRUNS,
 	ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, 
 	ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, 
 	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, 
-	ID_SHOW_ALL_INPUTS, ID_QUICK_SETUP, ID_IMPORT, ID_EXPORT_MENU, ID_GEN_LK };
+	ID_SHOW_ALL_INPUTS, ID_NEW_CASE, ID_QUICK_SETUP, ID_IMPORT, ID_EXPORT_MENU, ID_GEN_LK };
 
 
 
@@ -270,7 +270,8 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_MENU(ID_INPUTMENU_FILL_DOWN_SEQUENCE, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_INPUTMENU_FILL_DOWN_EVENLY, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_SHOW_ALL_INPUTS, ParametricViewer::OnMenuItem)
-END_EVENT_TABLE()
+	EVT_MENU(ID_NEW_CASE, ParametricViewer::OnMenuItem)
+	END_EVENT_TABLE()
 
 
 
@@ -615,10 +616,10 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 	switch (evt.GetId())
 	{
 	case ID_OUTPUTMENU_ADD_PLOT:
-		AddPlot(m_grid_data->GetVarName(0,m_selected_grid_col));
+		AddPlot(m_grid_data->GetVarName(0, m_selected_grid_col));
 		break;
 	case ID_OUTPUTMENU_REMOVE_PLOT:
-		RemovePlot(m_grid_data->GetVarName(0,m_selected_grid_col));
+		RemovePlot(m_grid_data->GetVarName(0, m_selected_grid_col));
 		break;
 	case ID_OUTPUTMENU_SHOW_DATA:
 		ShowAllData();
@@ -651,7 +652,32 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		{
 			if (m_grid_data->GetRuns()[m_selected_grid_row])
 			{
-				new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row+1));
+				new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
+			}
+		}
+		break;
+	case ID_NEW_CASE:
+		if ((int)m_grid_data->GetRuns().size() > m_selected_grid_row)
+		{
+			if (m_grid_data->GetRuns()[m_selected_grid_row])
+			{
+			//	new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
+				// create new case with updated vartable
+				if (Case* dup = dynamic_cast<Case*>(m_case->Duplicate()))
+				{
+					// update var table
+					auto pvtParametric = m_grid_data->GetRuns()[m_selected_grid_row]->GetInputVarTable();
+					for (auto it = pvtParametric->begin(); it != pvtParametric->end(); ++it) {
+						if (auto pvv = dup->Values().Get(it->first)) {
+							if (pvv->Type() == it->second->Type())
+								pvv->Copy(*it->second);
+						}
+					}
+
+					wxString case_name = wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1);
+					SamApp::Project().AddCase(SamApp::Window()->GetUniqueCaseName(case_name), dup);
+					SamApp::Window()->CreateCaseWindow(dup);
+				}
 			}
 		}
 		break;
@@ -1069,6 +1095,7 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 		wxPoint point = evt.GetPosition();
 		wxMenu *menu = new wxMenu;
 		menu->Append(ID_SHOW_ALL_INPUTS, _T("Show inputs"));
+		menu->Append(ID_NEW_CASE, _T("Create new case"));
 		PopupMenu(menu, point);
 	}
 }
