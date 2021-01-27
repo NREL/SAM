@@ -1,5 +1,5 @@
 1
-727
+729
 A_aperture
 1
 2
@@ -3065,6 +3065,18 @@ flat_plate_tilt
 1
 1
 40
+flat_plates_in_parallel
+1
+1
+1
+1
+-1
+flat_plates_in_series
+1
+1
+1
+1
+-1
 fluid_dens_inlet_temp
 1
 1

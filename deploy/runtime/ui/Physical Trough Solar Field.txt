@@ -3580,7 +3580,7 @@ TabOrder
 3
 2
 
-93
+95
 DISCARD_UNUSED_latitude
 3
 1
@@ -4270,6 +4270,34 @@ Physical Trough Solar Field
 1
 1
 40
+Default
+flat_plates_in_parallel
+3
+1
+Flat plates in parallel
+-
+flat_plates_in_parallel
+0
+2
+1
+1
+1
+1
+-1
+Default
+flat_plates_in_series
+3
+1
+Flate plates in series
+-
+ 
+0
+2
+1
+1
+1
+1
+-1
 Default
 fluid_dens_inlet_temp
 3
