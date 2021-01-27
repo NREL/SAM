@@ -1,5 +1,5 @@
 1
-760
+761
 A_aperture
 1
 1
@@ -2749,7 +2749,7 @@ itc_fed_percent
 1
 1
 1
-22
+26
 itc_fed_percent_deprbas_fed
 1
 1
@@ -4801,6 +4801,10 @@ ur_uri
 4
 5
 empty
+ur_utility
+1
+4
+0
 ur_voltage_category
 1
 4

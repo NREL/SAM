@@ -1,5 +1,5 @@
 Name,Vintage,Area,Material,Cells in Series,Parallel Strings,Isco,Voco,Impo,Vmpo,Aisc,Aimp,C0,C1,Bvoco,Mbvoc,Bvmpo,Mbvmp,N,C2,C3,A0,A1,A2,A3,A4,B0,B1,B2,B3,B4,B5,dT,FD,a,b,C4,C5,IXO,IXXO,C6,C7,Notes
-Units,,,,,,A,V,A,V
+Units,,,,,,A,V,A,V,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 [0],snl_sandia_vintage,snl_area,snl_material,snl_series_cells,snl_parallel_cells,snl_isco,snl_voco,snl_impo,snl_vmpo,snl_aisc,snl_aimp,snl_c0,snl_c1,snl_bvoco,snl_mbvoc,snl_bvmpo,snl_mbvmp,snl_n,snl_c2,snl_c3,snl_a0,snl_a1,snl_a2,snl_a3,snl_a4,snl_b0,snl_b1,snl_b2,snl_b3,snl_b4,snl_b5,snl_dtc,snl_fd,snl_a,snl_b,snl_c4,snl_c5,snl_ixo,snl_ixxo,snl_c6,snl_c7,snl_sandia_notes
 Advent Solar AS160 [ 2006],2006,1.312,mc-Si,72,1,5.564,42.832,5.028,32.41,0.000537,-0.000491,1.0233,-0.0233,-0.1703,0,-0.1731,0,1.174,-0.76444,-15.5087,0.9281,0.06615,-0.01384,0.001298,-0.000046,1,-0.002438,0.0003103,-0.00001246,2.11E-07,-1.36E-09,3,1,-3.35,-0.1161,0.9974,0.0026,5.54,3.56,1.173,-0.173,Source: Sandia National Laboratories Updated 9/25/2012 Module Database
 Advent Solar Ventura 210 [ 2008],2008,1.646,mc-Si,60,1,8.34,35.31,7.49,27.61,0.00077,-0.00015,0.937,0.063,-0.133,0,-0.135,0,1.495,0.0182,-10.758,0.9067,0.09573,-0.0266,0.00343,-0.0001794,1,-0.002438,0.00031,-0.00001246,2.11E-07,-1.36E-09,3,1,-3.45,-0.077,0.972,0.028,8.25,5.2,1.067,-0.067,Source: Sandia National Laboratories Updated 9/25/2012 Module Database
