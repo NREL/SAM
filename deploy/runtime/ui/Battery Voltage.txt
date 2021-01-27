@@ -1308,7 +1308,7 @@ Depth of discharge [%]| Cell voltage [V]
 DataMatrix
 
 0
-4901
+5433
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
@@ -1470,11 +1470,10 @@ function cell_voltage_vs_dod()
 			count++;
 			t = i*0.10;
 			q0 = Qfull - I*t;
-			V = E0 - R*I - K*(Qfull_cutoff/(Qfull_cutoff -I*t)) + A*exp(-B*I*t);
+			V = E0 - R*I - K*(Qfull_cutoff/(Qfull_cutoff -I*t));
 			DOD = (1.-(q0/Qfull))*100;
-			//logmsg('t: ' + t + ' V: ' + V + 'DOD: ' + DOD);
-			//if ( (V < Vcut) || (V > 2*Vfull) || DOD > 101)
-			if (  V < Vcut-0.1 || DOD > 101) 
+			logmsg('t: ' + t + ' V: ' + V + 'DOD: ' + DOD);
+			if ( (V < Vcut-0.1) || DOD > 101)
 				break;
 			else
 			{
@@ -1501,3 +1500,4 @@ function cell_voltage_vs_dod()
 	table{'Vfull'} = Vfull;
 	return table;
 }
+	
