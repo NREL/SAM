@@ -242,6 +242,11 @@ function trueup_credit()
 		T.month = months[ get('ur_nm_credit_month') ];
 		T.credit = -sum( get( 'year1_nm_dollars_applied' ) );
 	}
+	if ( metering == 3 )
+	{
+		T.month = months[ get('ur_nm_credit_month') ];
+		T.credit = -get('year1_net_billing_credits')[get('ur_nm_credit_month')];
+	}
 	else
 	{
 		T.month = 'n/a';
@@ -281,7 +286,7 @@ if ( typeof(macro) == 'unknown' ) {
 	exit;
 }
 
-get_case();
+//get_case();
 config = configuration();
 is_commercial = ( config[1] == 'Commercial' );
 is_tpo = ( config[1] == 'Host Developer' || config[1] == 'Third Party' );
