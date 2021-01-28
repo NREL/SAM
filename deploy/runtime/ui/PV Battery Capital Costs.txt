@@ -5864,7 +5864,7 @@ TabOrder
 3
 52
 
-64
+65
 battery_energy
 3
 1
@@ -5935,6 +5935,20 @@ Capital Costs
 1
 0
 Numeric
+battery_total_cost_lcos
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 bos_equip_fixed
 3
 1
@@ -6764,7 +6778,7 @@ Capital Costs
 0
 Numeric
 
-5047
+5127
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6968,6 +6982,10 @@ equations { 'battery_power' } = define () {
 
 equations { 'system_use_recapitalization' } = define () {
 	return 0;
+};
+
+equations{'battery_total_cost_lcos'} = define() {
+	return ${battery_total};
 };
 
 593
