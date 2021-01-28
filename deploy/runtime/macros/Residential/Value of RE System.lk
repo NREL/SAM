@@ -18,7 +18,7 @@ bill can be for a simple flat rate, while the RE system is for time-of-use rates
 <li>If you have not already, set up a case for the RE system (with batteries if
 you are considering storage). The assumptions on the Electricity Rates input page
 should be for the RE system scenario.</li>
-<li>Choose a rate option for the "no system" scenario from the list at right.  If you choose the flat rate option (Option 2), enter the flat rate and optional fixed monthly charge.</li>
+<li>Choose a rate option for the "no system" scenario from the list at right.  If you choose the flat rate option, enter the flat rate and optional fixed monthly charge.</li>
 <li>Click <strong>Run macro</strong> above.</li>
 </ol>
 
@@ -83,7 +83,7 @@ function set_rate_from_urdb()
 		zip = in( 'Enter the zip code: ', '00000', 'Zip Code' );
 		outln('Searching for rates by zip code.');
 		utility_list = urdb_list_utilities_by_zip_code ( zip );
-		if ( utility_list == null )
+			if ( utility_list == null )
 		{
 			msgbox( 'No utilities found for zip code ' + zip + '.' );
 			return false;
@@ -183,11 +183,18 @@ function get_basecase_rate()
 
 function set_flat_rate( flat_rate, fixed_charge)
 {
+
+	if ( flat_rate == 0 )
+	{
+		ok = yesno('Flat rate is zero!\nIf you meant to use a flat buy rate of zero, click Yes to continue.\nOtherwise click No and set the value of \"Flat rate ($/kWh) for Option 2\" before running the script again.');
+		if ( !ok ) { exit; }
+	}
+	
 	set('ur_monthly_fixed_charge', fixed_charge);
 	set('ur_annual_min_charge',0);
 	set('ur_monthly_min_charge',0);
 	set('ur_dc_enable',0);
-	
+
 	set('ur_ec_sched_weekday', 
 		[ [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ], 
 		[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ], 
@@ -217,23 +224,30 @@ function set_flat_rate( flat_rate, fixed_charge)
 		[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ] ] );
 
 	set('ur_ec_tou_mat', 
-		[ [ 1, 1, 9.9999996802856925e+037, 0, flat_rate, flat_rate ] ] );
+		[ [ 1, 1, 1e+38, 0, flat_rate, flat_rate ] ] );
 
 	return true;
 
 }
 
-function eoy_net_metering_credit()
+function trueup_credit()
 {
+	months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 	metering = get('ur_metering_option');
-	is_net_metering_kwh = ( metering == 0 );
-	if ( is_net_metering_kwh ) 
+	T={};
+	// for net metering, need annual trueup dollar amount for bill calculation
+	// for net metering with rollover and other metering options, trueup credits are rolled into energy charge, so no need to show amount as separate
+	if ( metering == 0 && get('ur_nm_credit_rollover') == 0 ) 
 	{
-		yrend_sell_rate = get('ur_nm_yearend_sell_rate');
-		nm_credits_kwh = get('year1_monthly_cumulative_excess_generation');
-		return - yrend_sell_rate * nm_credits_kwh[11];
+		T.month = months[ get('ur_nm_credit_month') ];
+		T.credit = -sum( get( 'year1_nm_dollars_applied' ) );
 	}
-	else return 0;
+	else
+	{
+		T.month = 'n/a';
+		T.credit = 0;
+	}
+	return T;
 }
 
 function cost_w_bill( none_cf, re_cf, w_re_bill, is_comm, pv_tax )
@@ -270,15 +284,10 @@ if ( typeof(macro) == 'unknown' ) {
 get_case();
 config = configuration();
 is_commercial = ( config[1] == 'Commercial' );
-ok = ( config[1] == 'Residential' || config[1] == 'Commercial' );
-if ( !ok )
-{
-	msgbox('This macro works only with the Residential or Commercial financial models.');
-	exit;
-}
+is_tpo = ( config[1] == 'Host Developer' || config[1] == 'Third Party' );
 
-if ( get('en_batt') == 1 ) { batt = true; }
-else { batt = false; }
+if ( get('en_batt') == 1 ) batt = true;
+else batt = false;
 
 // Financial parameters that apply to all scenarios
 analysis_period = get('analysis_period');
@@ -297,8 +306,15 @@ if ( macro.rate_option == '2. Flat rate' )
 
 	outln('Running simulation for base case with no system and flat rate.');
 	ok = set_flat_rate( macro.flat , macro.fixed );
-	if ( ok ) { simulate('',true); }
-	else { msgbox ('Unable to set flat rate.\n Results will be based on using the same rate for all scenarios.' ); }
+	if ( ok )
+	{
+		simulate('',true);
+	}	
+	else
+	{
+		msgbox ('Unable to set flat rate.\n Exiting script.' );
+		exit;
+	}
 
 	restore_rate = true;
 }
@@ -311,8 +327,15 @@ elseif ( macro.rate_option == '3. Different rate structure' )
 	// get new base rate and run a simulation
 	ok = get_basecase_rate();
 	outln('Running simulation for base case with no system with different rate.');
-	if ( ok ) { simulate('',true); }
-	else { msgbox( 'Unable to set rate data for case with no system.\n Results will be based on using the same rate for all scenarios.' ); }
+	if ( ok ) 
+	{
+		simulate('',true); 
+	 }
+	else 
+	{
+		msgbox( 'Unable to set rate data for case with no system.\n Please try again using Rate Option 1 or 2.\n\nExiting script.' );
+		exit;
+	}	
 	
 	restore_rate = true;
 }
@@ -325,8 +348,8 @@ else
 if ( restore_rate )
 {
 	outln('Cleaning up temporary files and restoring inputs on Utility Rate page to original data.');
-	if ( file_exists( temp_file ) && urdb_read( temp_file ) ) remove_file( temp_file );
-	else msgbox( 'Unable to restore original rate data.\nCould not find temporary file:\n' + temp_file + '.');
+	if ( file_exists( temp_file ) && urdb_read( temp_file ) ) { remove_file( temp_file ); }
+	else { msgbox( 'Unable to restore original rate data.\nCould not find temporary file:\n' + temp_file + '.'); }
 }
 
 // get monthly bill components
@@ -361,7 +384,9 @@ dc_tou = get('year1_monthly_dc_tou_with_system');
 dc_fixed = get('year1_monthly_dc_fixed_with_system');
 min_mon = get('year1_monthly_minimum_with_system');
 min_ann = get('year1_annual_minimum_with_system');
-pv_yrend_nm_credit = eoy_net_metering_credit();
+T = trueup_credit();
+pv_yrend_nm_credit = T.credit;
+pv_yrend_nm_month = T.month;
 total = get('year1_monthly_utility_bill_w_sys');
 // year 1 bill components for pv only
 pv_ec = sum(ec);
@@ -411,7 +436,9 @@ if ( batt )
 	batt_dc_tou = sum(dc_tou);
 	batt_min_mon = sum(min_mon);
 	batt_min_ann = sum(min_ann);
-	batt_yrend_nm_credit = eoy_net_metering_credit();
+	T = trueup_credit();
+	batt_yrend_nm_credit = T.credit;
+	batt_yrend_nm_month = T.month;
 	batt_total_bill = sum(total);
 	batt_bill_savings = none_total_bill- batt_total_bill;
 	//annual cash flows for value calculations
@@ -433,6 +460,11 @@ outln( none_npc + '-' + pv_npc_w_bill + '=' + diff );
 outln(pv_annual_cost[0]);*/
 // HTML Output
 case = case_name();
+str_html_trueup = '';
+if ( pv_yrend_nm_month != 'n/a' )
+{
+	str_html_trueup = '<tr bgcolor=#ffffff><td>Trueup credit (' + pv_yrend_nm_month + ')</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_yrend_nm_credit) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_yrend_nm_credit) + '</td>' ] + '</tr>';
+}
 str_html = '<html><body>' + 
            '<h3><font size = "4">Total Electricity Bill in Year 1</font></h3>' + 
            '<table bgcolor=#dddddd width=100%>' + 
@@ -442,8 +474,8 @@ str_html = '<html><body>' +
            '<tr bgcolor=#ffffff><td width="50%">Demand (fixed)</td><td align="right">' + f_num(none_dc_fixed) + '</td><td align="right">' + f_num(pv_dc_fixed) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_dc_fixed) + '</td>' ] + '</tr>' +             
            '<tr><td>Demand (TOU)</td><td align="right">' + f_num(none_dc_tou) + '</td><td align="right">' + f_num(pv_dc_tou) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_dc_tou) + '</td>' ] + '</tr>' +             
            '<tr bgcolor=#ffffff><td>Monthly minimum</td><td align="right">' + f_num(none_min_mon) + '</td><td align="right">' + f_num(pv_min_mon) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_min_mon) + '</td>' ] + '</tr>' +             
-		   '<tr><td>Annual minimum</td><td align="right">' + f_num(none_min_ann) + '</td><td align="right">' + f_num(pv_min_ann) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_min_ann) + '</td>' ] + '</tr>' +             
-		   '<tr bgcolor=#ffffff><td>Year end net metering credit</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_yrend_nm_credit) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_yrend_nm_credit) + '</td>' ] + '</tr>' +             
+		   '<tr><td>Annual minimum</td><td align="right">' + f_num(none_min_ann) + '</td><td align="right">' + f_num(pv_min_ann) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_min_ann) + '</td>' ] + '</tr>' + 
+			str_html_trueup + 
            '<tr><td><b>Total bill</b></td><td align="right"><b>' + f_num(none_total_bill) + '</b></td><td align="right"><b>' + f_num(pv_total_bill) + '</b></td>' + ? batt [ '' , '<td align="right"><b>' + f_num(batt_total_bill) + '</b></td>' ] + '</tr>' +
            '<tr bgcolor=#ffffff><td>Savings compared to no system</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_bill_savings) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_bill_savings) + '</td>' ] + '</tr>' +
 		   '</table>' +
@@ -456,10 +488,15 @@ str_html = '<html><body>' +
            '<tr ' + ? is_commercial ['','bgcolor=#ffffff'] + '><td width="50%">System costs after tax</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_npc) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npc) + '</td>' ] + '</tr>' +
            '<tr ' + ? is_commercial ['bgcolor=#ffffff',''] + '><td width="50%">Battery replacement cost</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(0) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npc_replacement) + '</td>' ] + '</tr>' +
            '<tr ' + ? is_commercial ['','bgcolor=#ffffff'] + '><td width="50%"><b>Total cost</b></td><td align="right"><b>' + f_num(0) + '</b></td><td align="right"><b>' + f_num(pv_npc_w_bill) + '</b></td>' + ? batt [ '' , '<td align="right"><b>' + f_num(batt_npc_w_bill) + '</b></td>' ] + '</tr>' +
-		   '<tr ' + ? is_commercial ['bgcolor=#ffffff',''] + '><td>NPV of project with bill savings</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_npv) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npv) + '</td>' ] + '</tr>' +
+		   '<tr ' + ? is_commercial ['bgcolor=#ffffff',''] + '><td>' + ? is_tpo ['NPV of project','Host NPV'] + ' with bill savings</td><td align="right">' + f_num(0) + '</td><td align="right">' + f_num(pv_npv) + '</td>' + ? batt [ '' , '<td align="right">' + f_num(batt_npv) + '</td>' ] + '</tr>' +
 		   '</table>' +
           '</body></html>';
 
+str_csv_trueup = '';
+if ( pv_yrend_nm_month != 'n/a' )
+{
+	str_csv_trueup = 'Trueup credit (' + pv_yrend_nm_month + '),' + 0 + ',' + pv_yrend_nm_credit + ',' + ? batt [ '' , batt_yrend_nm_credit ] + '\n';
+}
 str_csv =  'Total Electricity Bill in Year 1' + '\n' +
 'Charge,No System,' + ? batt [ 'RE System' , 'RE Only,RE+Battery' ] + '\n' +
 'Energy,' + none_ec + ',' + pv_ec + ',' + ? batt [ '' , batt_ec ] + '\n' +
@@ -468,8 +505,8 @@ str_csv =  'Total Electricity Bill in Year 1' + '\n' +
 'Demand (TOU),' + none_dc_tou + ',' + pv_dc_tou + ',' + ? batt [ '' , batt_dc_tou ] + '\n' +      
 'Monthly minimum,' + none_min_mon + ',' + pv_min_mon + ',' + ? batt [ '' , batt_min_mon ] + '\n' +        
 'Annual minimum,' + none_min_ann + ',' + pv_min_ann + ',' + ? batt [ '' , batt_min_ann ] + '\n' +
-'Year end net metering credit,' + 0 + ',' + pv_yrend_nm_credit + ',' + ? batt [ '' , batt_yrend_nm_credit ] + '\n' +
-'Total bill,' + none_total_bill + ',' + pv_total_bill + ',' + ? batt [ '' , batt_total_bill ] + '\n' +
+str_csv_trueup +
+'Total bill,' + none_total_bill + ',' + pv_total_bill + ? batt [ '' , batt_total_bill ] + '\n' +
 'Savings compared to no system,' + 0 + ',' + pv_bill_savings + ',' + ? batt [ '' , batt_bill_savings ] + '\n' +
 '' + '\n' +
 'Present Value of Annual Costs and Net Present Value' + '\n' +
@@ -478,10 +515,10 @@ str_csv =  'Total Electricity Bill in Year 1' + '\n' +
 ? is_commercial [ '' , 'Income tax increase due to bill savings,' + 0 + ',' + pv_npv_tax + ',' + ? batt [ '' , batt_npv_tax ]  + '\n' ]  +
 'System costs after tax,' + 0 + ',' + pv_npc + ',' + ? batt [ '' , batt_npc ] + '\n' +
 'Battery replacement cost,' + 0 + ',' + 0 + ',' + ? batt [ '' , batt_npc_replacement ] + '\n' +
-'Total cost,' + 0 + ',' + pv_npc_w_bill + ',' + ? batt [ '' , batt_npc_w_bill ] + '\n' +
-'NPV of project with bill savings,' + 0 + ',' + pv_npv + ',' + ? batt [ '' , batt_npv ];
+'Total cost,' + 0 + ',' + pv_npc_w_bill + ? batt [ '' , batt_npc_w_bill ] + '\n' +
+? is_tpo['NPV of project','Host NPV'] +' with bill savings,' + 0 + ',' + pv_npv + ',' + ? batt [ '' , batt_npv ];
 
-f_csv = homedir()+'/'+case_name()+'_value_of_re_report.csv';
+f_csv = homedir()+'/'+replace(case_name(),'/','-')+'_value_of_re_report.csv';
 ok = write_text_file(f_csv,str_csv);
 if ( ok ) 
 {
