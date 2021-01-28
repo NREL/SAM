@@ -1,42 +1,43 @@
 /*@
 
-The Third Party Ownership - Host/Developer model calculates both the host's 
-indifference point and the PPA price required to cover the developer's costs
-and required internal rate of return.
-<br><br>
-From the host's perspective, the agreement is financially beneficial when the
-PPA price exceeds the indifference point.
-<br><br>
-This macro calculates and plots the PPA price and indifference point for a range
+<p>This macro calculates the host indifference point over a range of system sizes 
+for the Third Party Ownership - Host / Developer model. This helps determine, from the
+developer perspective, how large the system would need to be to both meet the 
+developer returns requirement and be beneficial to the host.</p>
+
+<p>From the host perspective, the agreement is econonically beneficial when the
+PPA price exceeds the host indifference point.</p>
+
+<p>Run the macro to generate a plot of the PPA price and indifference point for a range
 of system sizes given the cost and financial assumptions you provided on the input
-pages.
-<br><br>
-<img src="$MACROPATH/tpo_sample_plot.png">
-<br><br>
-The macro plots levelized values of the PPA price and indifference point to account
-for the cost and value of the project over its lifetime.
-<br><br>
-<b>Instructions:</b><br>
+pages, and to generate a table of these and other metrics for further analysis.</p>
+
+<p><img src="$MACROPATH/tpo_sample_plot.png"></p>
+
+<p>The values in the plot are levelized values of the PPA price and indifference 
+point to account for the cost and value of the project over its lifetime.</p>
+
+<h3>Instructions:</h3>
 <ol>
   <li>For <strong>Minimum DC capacity (kW)</strong> (at right), enter the smallest nameplate capacity you want to consider.</li>
   <li>For <strong>Increment (kW)</strong>, enter the capacity increment. For example, if you want to plot system sizes in increments of 10 kW, enter 10.</li>
   <li>For <strong>Number of sizes</strong>, enter the number of sizes you want to consider.</li>
-  <li>Click <strong>Run macro</strong> to start the calculations.</li>
+  <li>If you want to save the plot and table to a .png and .csv file, respectively, choose <strong>Yes</strong> for <strong>Save results?</strong>.
+  <li>Click <strong>Run macro</strong> (above) to start the calculations.</li>
 </ol> 
-<br><br>
 
-<strong>Note:</strong> If you are running the Detailed Photovoltaic model, the 
-macro uses the 'Specify desired array size' option on the System Design page to 
+<p><strong>Note:</strong> If you are running the Detailed Photovoltaic model, the 
+macro uses the <strong>Estimate Subarray 1 configuration</strong> option on the System Design page to 
 try to determine the number of modules and inverters required to achieve the
 system size for the range of values you specify. The actual size may differ from 
 the desired size depending on the nameplate capacities of the module and inverter
-you chose for the system.
+you chose for the system.</p>
 
 @*/
-//sys_size = [1000, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000];
-//@ name=start_size;type=number;label=Minimum DC capacity (kW):;value=1000
-//@ name=step_size;type=number;label=Increment (kW):;value=2000
+//@ name=start_size;type=number;label=Minimum DC capacity (kW):;value=500
+//@ name=step_size;type=number;label=Increment (kW):;value=100
 //@ name=number_steps;type=number;label=Number of sizes:;value=10
+//@ name=save_results;type=combo;label=Save results?;value=Yes,No;sel=1
 
 
 // display warning if the macro is run outside of a case
@@ -45,128 +46,137 @@ if ( typeof(macro) == 'unknown' ) {
 	exit;
 }
 
-if (configuration()[1] != 'Host Developer') {
-	msgbox('This macro only works for the Third Party Ownership - Host/Developer model.');
-	exit;
-}
-
 // get original values to reset
-if (configuration()[0]=='Flat Plate PV') {
-	org_mode = get('size_auto_or_manual');
-	org_sys_size = get('desired_size');
+if (configuration()[0]=='Flat Plate PV') 
+{
+	// check that only one subarray is enabled
+	if ( get('subarray2_enable') || get('subarray3_enable') || get('subarray4_enable') )
+	{
+		outln('This macro disables Subarrays 3-4 and sizes the system using a single subarray. You can reenable the subarrays on the System Design page after the macro finishes.');
+	}
+	original_enable_auto_size = get('enable_auto_size');
+	original_capacity = get('desired_size');
+	original_inverter_count = get('inverter_count');
+	original_subarray1_modules_per_string = get('subarray1_modules_per_string');
+	original_subarray1_nstrings = get('subarray1_nstrings');
 }	
-else {
-	org_sys_size = get('system_capacity');
+else 
+{
+	original_capacity = get('system_capacity');
 }
 
 // number of simulations
-num_runs = macro.number_steps + 1;
+num_runs = macro.number_steps;
 // set system size for plotting
 sys_size = alloc(num_runs);
 // actual size for detailed pv model
 actual_size = alloc(num_runs);
-// capture developer nominal levelized ppa
+// developer nominal levelized ppa
 developer_ppa = alloc(num_runs);
-// capture developer net present value
+// developer net present value
 developer_npv = alloc(num_runs);
-// capture host nominal levelized NTE
+// host nominal levelized indifference point
 host_nte = alloc(num_runs);
-// capture host net present value
+// host net present value
 host_npv = alloc(num_runs);
 
-// output formatting
-as_len=strlen(sprintf('%,',round(macro.start_size + num_runs*macro.step_size  + 3)));
-ppa_len=5;
-nte_len=5;
-irr_len=5;
-npv_len=10;
+// build html string for html table output
+str_html =  '<html><body>';
+str_html += '<h3><font size = "4">Indifference vs PPA Price Results</font></h3>';
+str_html += '<table bgcolor=#dddddd width=100%>';
+str_html += '<tr><th>Capacity (DC kW)</th><th>PPA Price (\u00A2/kWh)</th><th>Host Indifference Point (\u00A2/kWh)</th><th>Host NPV ($)</th><th>Developer IRR (%)</th><th>Developer NPV ($)</th></tr>';            
 
-// run all systems sizes and capture results
-outln('Running simulations...\n');outln('configuration...\n' + configuration());
-outln('Capacity (DC kW)\tPPA Price (\u00A2/kWh)\tHost Indifference Point (\u00A2/kWh)\tHost NPV ($)\t\tDeveloper IRR (%)\tDeveloper NPV ($)');
+// run a simulation for each capacity and store results
+outln('Running ' + num_runs + ' simulations:');
 for (i=0;i<num_runs;i++)
 {
 	sys_size[i] = macro.start_size + i * macro.step_size;
 	actual_size[i] = sprintf('%,',round(sys_size[i]));
-	if (configuration()[0]=='Flat Plate PV') {
-		set('size_auto_or_manual', 0);
+	if (configuration()[0]=='Flat Plate PV') 
+	{
+		set('enable_auto_size', 1);
 		set('desired_size', sys_size[i]);
 		actual_size[i] = sprintf('%,',round(get('system_capacity')));
-		}
-	else {
+	}
+	else 
+	{
 		set('system_capacity', sys_size[i]);
 	}
-	while (strlen(actual_size[i]) < as_len) 
-		actual_size[i] = "  " + actual_size[i];
-
+	outln(actual_size[i] + ' kW');
+	
 	// Run simulation
 	simulate('', false);
-	// capture outputs to plot
+	
+	// store data for csv and format data for table
+	T.developer_ppa[i] = get('lppa_nom');
 	developer_ppa[i] = sprintf('%.2f',get('lppa_nom'));
-	while (strlen(developer_ppa[i]) < ppa_len) 
-		developer_ppa[i] = "  " + developer_ppa[i];
 
+	T.host_indifference_point[i] = get('lnte_nom');
 	host_nte[i] = sprintf('%.2f',get('lnte_nom'));
-	while (strlen(host_nte[i]) < nte_len) 
-		host_nte[i] = "  " + host_nte[i];
 
+	T.developer_npv[i] = get('project_return_aftertax_npv');
 	developer_npv[i] =sprintf('%,',round(get('project_return_aftertax_npv')));
-	while (strlen(developer_npv[i]) < npv_len) 
-		developer_npv[i] = "  " + developer_npv[i];
 
+	T.host_npv[i] = get('npv');
 	host_npv[i] = sprintf('%,',round(get('npv')));
-	while (strlen(host_npv[i]) < npv_len) 
-		host_npv[i] = "  " + host_npv[i];
 
+	T.developer_irr[i] = get('flip_actual_irr');
 	developer_irr[i] = sprintf('%.2f',get('flip_actual_irr'));
-	while (strlen(developer_irr[i]) < ppa_len) 
-		developer_irr[i] = "  " + developer_irr[i];
-
-
-
-
-//	outln(sprintf('%,',round(actual_size[i])) + '\t\t' + sprintf('%.2f',developer_ppa[i]) + '\t\t' + sprintf('%.2f',host_nte[i]) + '\t\t\t\t' + sprintf('%,',round(host_npv[i])) + '\t\t' + sprintf('%.2f',developer_irr[i]) +'\t\t' + sprintf('%,',round(developer_npv[i])) );
-	outln(actual_size[i] + '\t\t' + developer_ppa[i] + '\t\t' + host_nte[i] + '\t\t\t\t' + host_npv[i] + '\t\t' + developer_irr[i] +'\t\t' + developer_npv[i] );
+	
+	// use alternate row shading for html table
+	even_row = mod(i,2) ==0;
+	str_html += '<tr'+? even_row ['',' bgcolor=#ffffff']+'><td align="right">'+actual_size[i]+'</td><td align="right">'+developer_ppa[i]+'</td><td align="right">'+host_nte[i]+'</td><td align="right">'+host_npv[i]+'</td><td align="right">'+developer_irr[i]+'</td><td align="right">'+developer_npv[i]+'</td></tr>';            
 }
 
+str_html += '</table>';
+str_html += '</body></html>';
 
-outln('\nDone.');
+// reset inputs to original values
+if (configuration()[0]=='Flat Plate PV') 
+{
+	set('enable_auto_size',original_enable_auto_size);
+	set('desired_size',original_capacity);
+	set('inverter_count',original_inverter_count);
+	set('subarray1_modules_per_string', original_subarray1_modules_per_string);
+	set('subarray1_nstrings', original_subarray1_nstrings);
+}	
+else 
+{
+	set('system_capacity', original_capacity);
+}
 
-// report outputs and create plot
+// generate html report
+html_dialog ( str_html , 'Indifference vs PPA Price' + ' for "' + active_case() +'"');
 
+// generate plot
 min_value = floor(min(min(developer_ppa), min(host_nte)))-1;
 max_value = ceil(max(max(developer_ppa), max(host_nte)))+1;
-
 
 labels = ['Nominal Levelized Host Indifference Point (\u00A2/kWh)', 'Nominal Levelized PPA Price (\u00A2/kWh)'];
 ylabel = '\u00A2/kWh';
 xlabel = 'DC kW';
 newplot();
 plot(actual_size,host_nte, {'yap'='left', 'series' = labels[0]});
-//plot(sys_size,developer_ppa, {'yap'='right', 'color'='green', 'series' = labels[1]});
 plot(actual_size,developer_ppa, {'yap'='left', 'color'='green', 'series' = labels[1]});
-//axis( 'y1', { 'label'=labels[0], 'min'=min_value, 'max' = max_value } );
-//axis( 'y2', { 'label'=labels[1], 'min'=min_value, 'max' = max_value } );
 axis( 'y1', { 'label'=ylabel, 'min'=min_value, 'max' = max_value } );
 axis( 'x1', {'label'=xlabel} );
 plotopt( { 'title'='Host Indifference Point and PPA Price vs System Size',  'legendpos'='northeast' } );
 
-// reset original values
-if (configuration()[0]=='Flat Plate PV') {
-	set('size_auto_or_manual',org_mode);
-	set('desired_size',org_sys_size);
-}	
-else {
-	set('system_capacity', org_sys_size);
+// save results
+if ( macro.save_results == 'Yes' )
+{
+	f_path = choose_dir(cwd(),'Choose a folder to save results');
+	f_base_name = replace(active_case(),'/','-') + '-indifference-vs-ppa-price-plot.png';
+	
+	f_name = f_path + '/' + f_base_name + '.png';
+	ok = plotout( f_name , 'png');
+	if ( ok == false) outln('Could not save the plot to ' + f_name);
+	else outln('Saved plot to ' + f_name);
+
+	f_name = f_path + '/' + f_base_name + '.csv';
+	ok = csvwrite( f_name , T );
+	if ( ok == false) outln('Could not save data to ' + f_name);
+	else outln('Saved data to ' + f_name);
 }
 
-/*
-// save an image of the plot:
-f_path=choose_dir(homedir(),'Save Plot');
-f_name = f_path + '/plot.png';
-outln(f_name);
-ok = plotout( f_name , 'png'); //defaults to png if file type not given
-
-if ( ok == false) msgbox('Could not save the plot to ' + f_name);
-else msgbox('Saved plot to ' + f_name);
-*/
+outln('Done. If you do not see the plot or HTML report, try minimizing the SAM window to see if they are hidden behind the window.'); 	
