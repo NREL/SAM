@@ -1,7 +1,7 @@
-PV Capex Table
+PV Capex Table Land
 826
 516
-10
+12
 GroupBox
 
 1
@@ -38,8 +38,8 @@ Button
 8
 Name
 5
-29
-btn_update_capex_table_inputs
+34
+btn_update_capex_table_inputs_land
 X
 3
 249
@@ -68,8 +68,8 @@ Numeric
 17
 Name
 5
-23
-capex_table_cost_per_kw
+28
+capex_table_land_cost_per_kw
 X
 3
 222
@@ -130,8 +130,8 @@ DataMatrix
 27
 Name
 5
-21
-capex_table_dc_inputs
+23
+capex_table_land_inputs
 X
 3
 21
@@ -185,8 +185,8 @@ ShowColLabels
 1
 ColLabels
 5
-33
-Capacity (kWdc),DC Costs ($/kWdc)
+27
+Acreage,Land Costs ($/acre)
 NumRowsLabel
 5
 5
@@ -220,8 +220,8 @@ Plot
 6
 Name
 5
-19
-capex_table_dc_plot
+21
+capex_table_land_plot
 X
 3
 456
@@ -291,8 +291,8 @@ Numeric
 17
 Name
 5
-35
-capex_table_total_installed_dc_cost
+37
+capex_table_total_installed_land_cost
 X
 3
 222
@@ -360,7 +360,7 @@ X
 30
 Y
 3
-429
+468
 Width
 3
 192
@@ -372,8 +372,8 @@ Tool Tip
 0
 Caption
 5
-24
-Total installed DC costs
+20
+Total installed cost
 TextColour
 4
 0
@@ -395,44 +395,54 @@ AlignRight
 AlignTop
 2
 0
-Divider
+Label
 
 1
-10
+13
 Name
 5
-9
-object 21
+24
+capex_table_total_label1
 X
 3
-414
+30
 Y
 3
-303
+429
 Width
 3
-393
+192
 Height
 3
-16
+24
 Tool Tip
 5
 0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
 Caption
 5
+26
+Total installed Land costs
+TextColour
+4
 0
+0
+0
+255
 Bold
 2
 1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -440,7 +450,7 @@ Numeric
 Name
 5
 15
-system_capacity
+land_area_value
 X
 3
 222
@@ -495,47 +505,144 @@ BackColour
 TabOrder
 3
 4294967295
+Divider
 
-3
-capex_table_cost_per_kw
-3
 1
-Cost per kw
- 
- 
-0
+10
+Name
+5
 9
-1
-1
-1
-1
+object 21
+X
+3
+414
+Y
+3
+303
+Width
+3
+393
+Height
+3
+16
+Tool Tip
+5
 0
-Default
-capex_table_dc_inputs
+Orientation
 3
-3
-PV Capex Table Inputs
- 
-Capital Costs
 0
-3
-1
-3
-3
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
 2
-2 0.35 
-5 0.4 
-8 0.45 
+1
+Numeric
 
-DataMatrix
-capex_table_total_installed_dc_cost
+1
+17
+Name
+5
+20
+total_installed_cost
+X
+3
+222
+Y
+3
+468
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+3
+capex_table_land_cost_per_kw
 3
 1
  
  
  
 0
-9
+8
+1
+1
+1
+1
+0
+Default
+capex_table_land_inputs
+3
+3
+ 
+ 
+ 
+0
+0
+1
+3
+1
+1
+0
+Default
+capex_table_total_installed_land_cost
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -544,8 +651,8 @@ capex_table_total_installed_dc_cost
 Default
 
 0
-5657
-function capex_table_dc_inputs_update_plot()
+4431
+function capex_table_land_inputs_update_plot()
 {
 	Cap = [];
 	cost_per_kw = [];
@@ -553,14 +660,14 @@ function capex_table_dc_inputs_update_plot()
 	sys_cost_bin = [];
 	
 	
-	input = ${capex_table_dc_inputs};
+	input = ${capex_table_land_inputs};
 	
-	sys_cap = ${system_capacity};
+	sys_cap = ${land_area_value};
 		
 	sys_cap_bin[0] = sys_cap;
-	sys_cap_bin[1] = 100;
-	sys_cost_bin[0] = ${capex_table_cost_per_kw};
-	sys_cost_bin[1] = 100;
+	sys_cap_bin[1] = -500000;
+	sys_cost_bin[0] = ${capex_table_land_cost_per_kw};
+	sys_cost_bin[1] = -100;
 	
 	curves = [ [ 1000, 25, 'black' ],
 			   [ 800,  25, 'blue' ],
@@ -584,17 +691,17 @@ function capex_table_dc_inputs_update_plot()
 		
 		
 			   
-	setplot( 'capex_table_dc_plot' );
+	setplot( 'capex_table_land_plot' );
 	clearplot();
 		
-	plot(Cap,cost_per_kw,{"series"="DC Costs Interp. Table",
+	plot(Cap,cost_per_kw,{"series"="Land Costs Interp. Table",
 		"thick"=2, "scale"=true,"color"=curves[0][2]});
 	plot(sys_cap_bin,sys_cost_bin,
 		{"series"="Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='northwest'});
 		
-	axis('x1', {'label'='Capacity (kWdc)', 'min'=0, 'max'=max(Cap)+1});
-	axis('y1', {'label'='Capex ($/kWdc)', 'min'=0, 'max'= max(cost_per_kw)+500});
+	axis('x1', {'label'='Acreage (acres)', 'min'=0, 'max'=max(Cap)+1});
+	axis('y1', {'label'='Capex ($/acre)', 'min'=0, 'max'= max(cost_per_kw)+500});
 	
 	
 	/*
@@ -668,30 +775,30 @@ function capex_table_dc_inputs_update_plot()
 	*/
 }
 
-on_load{ 'PV Capex Table' } = define() {	
-	//capex_table_dc_inputs_update_plot();
-	interpolate_dc_capex_table();
-	capex_table_dc_inputs_update_plot();
+on_load{ 'PV Capex Table Land' } = define() {	
+	//capex_table_land_inputs_update_plot();
+	interpolate_land_capex_table();
+	capex_table_land_inputs_update_plot();
 };
 
 on_change{'btn_update_capex_table_inputs'} = define() {	
-	//capex_table_dc_inputs_update_plot();
-	interpolate_dc_capex_table();
-	capex_table_dc_inputs_update_plot();
+	//capex_table_land_inputs_update_plot();
+	interpolate_land_capex_table();
+	capex_table_land_inputs_update_plot();
 };
 
 
-on_change{'capex_table_dc_inputs'} = define() {
-	interpolate_dc_capex_table();
-	capex_table_dc_inputs_update_plot();
+on_change{'capex_table_land_inputs'} = define() {
+	interpolate_land_capex_table();
+	capex_table_land_inputs_update_plot();
 };
 
 
-function interpolate_dc_capex_table()
+function interpolate_land_capex_table()
 {
-	input = ${capex_table_dc_inputs};
+	input = ${capex_table_land_inputs};
 	
-	sys_cap = ${system_capacity};
+	sys_cap = ${land_area_value};
 	
 	nr = #input;
 	nc = #input[0];
@@ -703,12 +810,12 @@ function interpolate_dc_capex_table()
 	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
 	if (sys_cap > input[nr - 1][0]) {
 		cost = input[nr - 1][0];
-		value('high_value',input[nr-1][0]);
+
 			
 	}
 	else if (sys_cap < input[0][0]) {
 		cost = input[0][0];
-		value('low_value',input[0][0]);
+
 			
 	}
 	else {
@@ -720,55 +827,16 @@ function interpolate_dc_capex_table()
 		Cap_high = input[idx][0];
 		cost_low = input[idx-1][1];
 		cost_high = input[idx][1];
+
 		cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
 			
 	}
 	total_cost = cost*sys_cap;
-	value("capex_table_cost_per_kw", cost);
-	value("capex_table_total_installed_dc_cost",total_cost);
+	value("capex_table_land_cost_per_kw", cost);
+	value("capex_table_total_installed_land_cost",total_cost);
 	//value("total_installed_cost", total_cost);
 	//refresh();
 	
-	/*
-	else if (nc == 3) {
-		property('capex_table_inputs','HideColumn',1);
-		if (sys_cap > input[nr - 1][0]) {
-			cost = input[nr - 1][1];
-			ind_cost = input[nr -1][2];
-			
-		}
-		else if (sys_cap < input[0][0]) {
-			cost = input[0][1];
-			ind_cost = input[0][2];
-			
-		}
-		else {
-			while (sys_cap < input[idx][0]) {
-				idx++;
-			}
-		
-			Cap_low = input[idx][0];
-			Cap_high = input[idx+1][0];
-			cost_low = input[idx][1];
-			cost_high = input[idx+1][1];
-			ind_cost_low = input[idx][2];
-			ind_cost_high = input[idx+1][2];
-			cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
-			ind_cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (ind_cost_high - ind_cost_low) + ind_cost_low;
-		}
-		total_direct_cost = (cost)*sys_cap;
-		total_indirect_cost = (ind_cost)*sys_cap;
-		total_cost = total_direct_cost + total_indirect_cost;
-		value("capex_table_cost_per_kw", total_cost/sys_cap);
-		value("capex_table_total_direct_cost",total_direct_cost);
-		value("capex_table_total_indirect_cost",total_indirect_cost);
-		value("capex_table_total_installed_cost",total_cost);
-		//value("total_installed_cost", total_cost);
-		refresh();
-	}
-	*/
-	//value("total_installed_cost", total_cost);
-
 }
 			
 

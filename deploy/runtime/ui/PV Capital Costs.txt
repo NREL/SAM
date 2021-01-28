@@ -6204,7 +6204,7 @@ Capital Costs
 0
 Numeric
 
-6997
+7090
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6316,7 +6316,9 @@ equations{ 'total_installed_cost' } = define() {
 		return ${total_direct_cost}+${total_indirect_cost};
 	}
 	else {
-		return ${capex_table_total_installed_cost};
+		return ${capex_table_total_installed_dc_cost} + 
+			${capex_table_total_installed_ac_cost}+
+			${capex_table_total_installed_land_cost};
 	}
 };
 
