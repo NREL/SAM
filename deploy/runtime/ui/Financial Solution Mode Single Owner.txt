@@ -523,7 +523,7 @@ MultilineText
 1
 
 
-2028
+1303
 // This form is a copy of Financial Solution Flip Leaseback
 // so ppa_soln_mode radio button can have different labels
 // to indicated IRR target is for the tax investor for flip 
@@ -550,24 +550,11 @@ on_change{'flip_target_year'} = define () {
 	display_message();
 };
 
-function is_batt_tech_repl()
-{
-	t = technology();
-	is_batt_enabled = ( t == 'PV Battery'
-	|| t == 'Generic Battery'
-	|| ( t == 'Fuel Cell' && value('en_batt') ) );
-	return ( is_batt_enabled && value('batt_replacement_option') != 0 ); 
-}	
 
 function display_message() 
 {
 	txt = '';
 	clr = 'black';
-	if ( is_batt_tech_repl() && value('ppa_soln_mode') == 0 )
-	{
-		txt += '"Specify IRR target" solution mode is not available for projects with battery replacements. ';
-		clr = 'red';
-	}
 	if ( value('flip_target_year') > value('analysis_period') )
 	{
 		txt += 'IRR target year is greater than the analysis period. ';
@@ -583,10 +570,6 @@ function display_message()
 
 function soln_mode_ctrl_refresh()
 {
-	if ( is_batt_tech_repl() && (value('ppa_soln_mode') == 0) )
-	{
-		msgbox('"Specify IRR target" solution mode is not available!\nFor projects with battery replacement schedules, choose "Specify PPA price," or change the battery replacement option on the Battery Storage page to "No replacements."');
-	}
     is_specify_irr = ( value('ppa_soln_mode') == 0 );
     enable( 'flip_target_percent', is_specify_irr );
     enable( 'ppa_price_input', !is_specify_irr );
