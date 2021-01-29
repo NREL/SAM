@@ -1,7 +1,7 @@
 Financial LCOE Calculator
 871
-712
-46
+868
+53
 SchedNumeric
 
 1
@@ -15,7 +15,7 @@ X
 405
 Y
 3
-501
+651
 Width
 3
 90
@@ -57,7 +57,7 @@ X
 405
 Y
 3
-528
+678
 Width
 3
 90
@@ -119,7 +119,7 @@ X
 405
 Y
 3
-393
+543
 Width
 3
 90
@@ -181,7 +181,7 @@ X
 405
 Y
 3
-474
+624
 Width
 3
 90
@@ -223,7 +223,7 @@ X
 405
 Y
 3
-366
+516
 Width
 3
 90
@@ -285,7 +285,7 @@ X
 405
 Y
 3
-339
+489
 Width
 3
 90
@@ -347,7 +347,7 @@ X
 405
 Y
 3
-312
+462
 Width
 3
 90
@@ -409,7 +409,7 @@ X
 405
 Y
 3
-420
+570
 Width
 3
 90
@@ -471,7 +471,7 @@ X
 405
 Y
 3
-447
+597
 Width
 3
 90
@@ -533,7 +533,7 @@ X
 570
 Y
 3
-582
+732
 Width
 3
 90
@@ -595,7 +595,7 @@ X
 717
 Y
 3
-312
+462
 Width
 3
 90
@@ -657,7 +657,7 @@ X
 570
 Y
 3
-609
+759
 Width
 3
 90
@@ -719,7 +719,7 @@ X
 570
 Y
 3
-339
+489
 Width
 3
 240
@@ -798,6 +798,44 @@ Name
 object 21
 X
 3
+324
+Y
+3
+288
+Width
+3
+525
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+11
+object 2121
+X
+3
 447
 Y
 3
@@ -836,10 +874,10 @@ Name
 object 22
 X
 3
-12
+15
 Y
 3
-561
+708
 Width
 3
 837
@@ -878,7 +916,7 @@ X
 12
 Y
 3
-267
+417
 Width
 3
 837
@@ -962,7 +1000,7 @@ Width
 850
 Height
 3
-693
+849
 Tool Tip
 5
 0
@@ -1082,7 +1120,7 @@ X
 30
 Y
 3
-666
+816
 Width
 3
 321
@@ -1391,6 +1429,132 @@ Numeric
 17
 Name
 5
+31
+ui_capital_cost_capacity_hx_fpc
+X
+3
+594
+Y
+3
+354
+Width
+3
+123
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+6
+ $/kWt
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+28
+ui_capital_cost_capacity_tes
+X
+3
+594
+Y
+3
+321
+Width
+3
+123
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+7
+ $/MWht
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 21
 ui_capital_cost_fixed
 X
@@ -1522,7 +1686,7 @@ X
 252
 Y
 3
-636
+786
 Width
 3
 90
@@ -1624,7 +1788,7 @@ X
 252
 Y
 3
-582
+732
 Width
 3
 90
@@ -1686,7 +1850,7 @@ X
 96
 Y
 3
-285
+435
 Width
 3
 516
@@ -1726,7 +1890,7 @@ X
 159
 Y
 3
-312
+462
 Width
 3
 90
@@ -1775,6 +1939,131 @@ BackColour
 TabOrder
 3
 6
+Numeric
+
+1
+17
+Name
+5
+18
+ui_hx_capacity_fpc
+X
+3
+444
+Y
+3
+354
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+14
+ui_hx_fpc_cost
+X
+3
+741
+Y
+3
+354
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -1788,7 +2077,7 @@ X
 600
 Y
 3
-372
+522
 Width
 3
 237
@@ -2083,7 +2372,7 @@ X
 252
 Y
 3
-609
+759
 Width
 3
 90
@@ -2108,6 +2397,131 @@ Decimals
 Prefix
 5
 0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+8
+ui_q_tes
+X
+3
+444
+Y
+3
+321
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+15
+ui_storage_cost
+X
+3
+741
+Y
+3
+321
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+1
+$
 Suffix
 5
 0
@@ -2393,7 +2807,7 @@ X
 570
 Y
 3
-663
+813
 Width
 3
 90
@@ -2455,7 +2869,7 @@ X
 570
 Y
 3
-636
+786
 Width
 3
 90
@@ -2505,7 +2919,7 @@ TabOrder
 3
 4294967295
 
-36
+42
 c_construction_cost
 3
 2
@@ -2717,6 +3131,34 @@ LCOE Calculator
 1
 0
 Default
+ui_capital_cost_capacity_hx_fpc
+3
+1
+FPC HX capital cost
+$/kWt
+LCOE Calculator
+0
+3
+1
+1
+1
+1
+0
+Default
+ui_capital_cost_capacity_tes
+3
+1
+TES capital cost
+$/MWht
+LCOE Calculator
+0
+3
+1
+1
+1
+1
+0
+Default
 ui_capital_cost_fixed
 3
 1
@@ -2816,6 +3258,34 @@ LCOE Calculator
 1
 1
 Default
+ui_hx_capacity_fpc
+3
+1
+FPC HX duty
+kW
+LCOE Calculator
+0
+8
+1
+1
+1
+1
+0
+Default
+ui_hx_fpc_cost
+3
+1
+FPC HX cost
+$
+LCOE Calculator
+0
+9
+1
+1
+1
+1
+0
+Default
 ui_ireal
 3
 1
@@ -2906,6 +3376,34 @@ Project financing factor (PFF)
 LCOE Calculator
 0
 8
+1
+1
+1
+1
+0
+Default
+ui_q_tes
+3
+1
+Storage capacity
+MWht
+LCOE Calculator
+0
+8
+1
+1
+1
+1
+0
+Default
+ui_storage_cost
+3
+1
+Storage cost
+$
+LCOE Calculator
+0
+9
 1
 1
 1
@@ -3011,10 +3509,26 @@ LCOE Calculator
 0
 Default
 
-2399
+2856
 
 equations{ 'ui_system_capacity_fpc' } = define() {
   return ${flat_plate_system_capacity};
+};
+
+equations{ 'ui_hx_capacity_fpc' } = define() {
+  return ${flat_plate_system_capacity};
+};
+
+equations{ 'ui_q_tes' } = define() {
+  return ${Q_tes};
+};
+
+equations{ 'ui_storage_cost' } = define() {
+  return ${ui_q_tes} * ${ui_capital_cost_capacity_tes};
+};
+
+equations{ 'ui_hx_fpc_cost' } = define() {
+  return ${ui_hx_capacity_fpc} * ${ui_capital_cost_capacity_hx_fpc};
 };
 
 equations{ 'ui_system_capacity' } = define() {
@@ -3040,10 +3554,12 @@ equations{ 'variable_operating_cost' } = define() {
 
 equations{ 'capital_cost' } = define() {
   if (${ui_cost_input_option}==0)
-    return ${ui_capital_cost_fixed} + ${ui_capital_cost_fixed_fpc};
+    return ${ui_capital_cost_fixed} + ${ui_capital_cost_fixed_fpc} +
+		${ui_storage_cost} + ${ui_hx_fpc_cost};
   else  
     return ${system_capacity}*${ui_capital_cost_capacity} +
-		${flat_plate_system_capacity}*${ui_capital_cost_capacity_fpc}; 
+		${flat_plate_system_capacity}*${ui_capital_cost_capacity_fpc} +
+		${ui_storage_cost} + ${ui_hx_fpc_cost}; 
 };
 
 equations{ '$MIMO$ fixed_charge_rate_calculator' } = define() {
