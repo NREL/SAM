@@ -1842,7 +1842,8 @@ setconfig( 'PV Battery', 'Single Owner' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
-addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+//addpage( [[ 'PV Battery Capital Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
+addpage( [[ 'PV Battery Capital Costs','PV Battery O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 setup_single_owner_pages( );
 setup_utility_rate_optional();
 

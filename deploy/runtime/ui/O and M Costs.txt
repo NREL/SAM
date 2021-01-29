@@ -331,8 +331,8 @@ SchedNumeric
 12
 Name
 5
-13
-om_fixed_cost
+8
+om_fixed
 X
 3
 219

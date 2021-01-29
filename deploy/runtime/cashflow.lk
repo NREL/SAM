@@ -649,6 +649,14 @@ function cf_levelized_metrics()
 	cfline('npv_energy_nom', 0); 
 	cfline('lcoe_nom',2); 
 	cfline( '' ); 
+	cfline('LCOS CALCULATIONS', -1);
+	cfline('cf_annual_cost_lcos', 0);
+	cfline('cf_annual_discharge_lcos', 0);
+	cfline('npv_annual_costs_lcos', 0);
+	cfline('npv_energy_lcos_nom', 0);
+	cfline('lcos_nom', 2);
+	cfline('lcos_real', 2);
+	//cfline( '' );
 	cfline('npv_ppa_revenue', 0); 
 	cfline('npv_energy_nom', 0); 
 	cfline('lppa_nom',2); 

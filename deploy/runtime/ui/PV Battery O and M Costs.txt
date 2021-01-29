@@ -1639,70 +1639,70 @@ add_om_num_types
 Default
 om_batt_capacity_cost
 3
-1
+2
  
  
 Operation and Maintenance Costs
 0
 0
 1
-1
+2
 1
 1
 0
 SchedNumeric
 om_batt_fixed_cost
 3
-1
+2
  
  
 Operation and Maintenance Costs
 0
 0
 1
-1
+2
 1
 1
 0
 SchedNumeric
 om_batt_replacement_cost
 3
-1
+2
  
  
 Operation and Maintenance Costs 
 0
 0
 1
-1
+2
 1
 1
 0
 SchedNumeric
 om_batt_variable_cost
 3
-1
+2
  
  
 Operation and Maintenance Costs 
 0
 0
 1
-1
+2
 1
 1
 0
 SchedNumeric
 om_capacity
 3
-1
+2
  
  
 Operation and Maintenance Costs
 0
 0
 1
-1
+2
 1
 1
 0
@@ -1723,14 +1723,14 @@ Operation and Maintenance Costs
 Default
 om_fixed
 3
-1
+2
  
  
 Operation and Maintenance Costs 
 0
 0
 1
-1
+2
 1
 1
 0
@@ -1751,14 +1751,14 @@ om_fixed_escal
 Default
 om_production
 3
-1
+2
  
  
 Operation and Maintenance Costs
 0
 0
 1
-1
+2
 1
 1
 0
