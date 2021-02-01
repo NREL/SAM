@@ -2954,7 +2954,7 @@ TabOrder
 3
 20
 
-28
+29
 battery_energy
 3
 1
@@ -3025,6 +3025,20 @@ Generic Battery Capital Costs
 1
 0
 Numeric
+battery_total_cost_lcos
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 fixed_plant_input
 3
 1
@@ -3348,7 +3362,7 @@ Generic Battery Capital Costs
 0
 Numeric
 
-2178
+2260
 equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
 
@@ -3407,6 +3421,10 @@ equations{ 'genericsys.cost.plant_scaled' } = define() {
 
 equations { 'system_use_recapitalization' } = define () {
 		return 0;
+};
+
+equations {'battery_total_cost_lcos' } = define() {
+	return ${battery_total};
 };
 
 

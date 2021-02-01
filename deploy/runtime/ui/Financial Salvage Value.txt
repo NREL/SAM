@@ -339,17 +339,26 @@ Salvage Value
 0
 Default
 
-223
+412
 equations{ 'salvage_value' } = define() {
 	return ${salvage_percentage} / 100.0 * ${total_installed_cost}; };
 
 equations{ 'batt_salvage_value' } = define() {
-	return ${batt_salvage_percentage} / 100.0 * ${battery_total}; };
-275
+	tech = technology();
+	batt_replacement_tech = ( (tech=='PV Battery')
+	|| (tech=='Generic Battery') || (tech== 'PVWatts Battery'));
+	if (batt_replacement_tech) {
+		return ${batt_salvage_percentage} / 100.0 * ${battery_total};
+	}
+	else {
+		return 0;
+	}
+};
+301
 on_load{'Financial Salvage Value'} = define() {
 	tech = technology();
 	batt_replacement_tech = ( (tech=='PV Battery')
-	|| (tech=='Generic Battery')    );
+	|| (tech=='Generic Battery') || (tech== 'PVWatts Battery'));
 	show('batt_salvage_percentage',batt_replacement_tech);
 	show('batt_salvage_value',batt_replacement_tech);
 	refresh();

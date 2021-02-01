@@ -422,54 +422,6 @@ Label
 13
 Name
 5
-7
-Label28
-X
-3
-219
-Y
-3
-24
-Width
-3
-90
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-2
-PV
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 6
 Label3
 X
@@ -1497,6 +1449,54 @@ BackColour
 TabOrder
 3
 6
+Label
+
+1
+13
+Name
+5
+8
+pv_label
+X
+3
+219
+Y
+3
+24
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+2
+PV
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
 Numeric
 
 1
@@ -1820,9 +1820,12 @@ Operation and Maintenance Costs
 0
 Default
 
-218
+341
 equations{'ui_batt_capacity'} = define() {
-	return ${batt_computed_bank_capacity};
+	tech = technology();
+	if( (tech == 'PV Battery') || (tech == 'Generic Battery'))
+	{ return ${batt_computed_bank_capacity}; }
+	else { return ${batt_simple_kwh}; }
 };
 
 equations{'ui_pv_capacity'} = define() {
@@ -1834,4 +1837,15 @@ equations{ 'add_om_num_types'} = define(){
 };
 
 
-0
+243
+on_load{'PV Battery O and M Costs'} = define() {
+	tech = technology();
+	generic = (tech == "Generic Battery");
+	if (generic) {
+		property('pv_label','Caption','Power Plant');
+	}
+	else {
+		property('pv_label','Caption', 'PV');
+	}
+	refresh();
+};
