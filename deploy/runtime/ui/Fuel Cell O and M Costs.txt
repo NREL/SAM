@@ -2447,7 +2447,7 @@ Operation and Maintenance Costs
 0
 Default
 
-916
+1142
 
 equations{ 'om_fuel_cost'} = define(){
 	fuel_price = ${fc_fuel_cost};
@@ -2469,7 +2469,16 @@ equations{ 'add_om_num_types'} = define(){
 	return 2;
 };
 equations{ 'om_capacity1_nameplate'} = define(){
-	return ${batt_computed_bank_capacity};
+	if( technology() == 'PV Battery' || technology() == 'Fuel Cell')
+			return ?${en_batt}
+				[0,	${batt_power_discharge_max_kwac}];
+	else if ((technology() == 'PVWatts Battery' ))
+		{
+			return ?${batt_simple_enable}
+				[0,	${batt_simple_kw}];
+		}
+	else
+		return 0;
 };
 equations{ 'om_capacity2_nameplate'} = define(){
 	return ${fuelcell_power_nameplate};
