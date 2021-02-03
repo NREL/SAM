@@ -1,5 +1,5 @@
 1
-749
+751
 LeadAcid_q10
 1
 1
@@ -3460,7 +3460,7 @@ om_capacity1_nameplate
 1
 1
 1
-100.205
+0
 om_capacity2
 1
 2

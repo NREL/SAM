@@ -87,9 +87,9 @@ Physical Trough IPH,LCOH Calculator,24327778,NA,NA,; Notice: Piping geometry fil
 DSGL IPH,None,10845376,NA,NA,; 
 DSGL IPH,LCOH Calculator,10845376,NA,NA,; 
 Fuel Cell,Commercial,OVERWRITE	
-Fuel Cell,Commercial,1937263.625000,8.455160,NA,Defaults file is likely out of date: Fuel Cell_Commercial.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 666, config has 663  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
+Fuel Cell,Commercial,1937263.625000,8.455160,NA,Defaults file is likely out of date: Fuel Cell_Commercial.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 662, config has 664  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
 Fuel Cell,Single Owner,OVERWRITE	
-Fuel Cell,Single Owner,1911049.750000,43.644711,53.704651,Defaults file is likely out of date: Fuel Cell_Single Owner.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 753, config has 750  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
+Fuel Cell,Single Owner,1911049.750000,43.644711,53.704651,Defaults file is likely out of date: Fuel Cell_Single Owner.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 749, config has 751  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
 MEwave,LCOE Calculator,59434320,NA,NA,; 
 MEtidal,LCOE Calculator,216151664,NA,NA,; 
 Geothermal Power,Single Owner,262800000,7.340549,7.890485,; 
@@ -122,23 +122,19 @@ Generic System,Sale Leaseback,756864000,32.130512,35.256783,;
 Generic System,LCOE Calculator,756864000,NA,NA,; 
 Generic System,None,756864000,NA,NA,; 
 PV Battery,Residential,OVERWRITE	
-PV Battery,Residential,8586.734375,11.207056,NA,Defaults file is likely out of date: PV Battery_Residential.txt  Variables: 8 loaded but not in configuration, 0 wrong type, defaults file has 1023, config has 1016  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: 1,batt_voltage_cutoff_display,batt_voltage_cutoff_choice,batt_voltage_cutoff_default,table_V,table_Vfull,table_DoD,test_table; 
+PV Battery,Residential,8588.577148,11.205471,NA,Defaults file is likely out of date: PV Battery_Residential.txt  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 1018, config has 1017  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: X; 
 PV Battery,Commercial,OVERWRITE	
-PV Battery,Commercial,911877.375000,4.274710,NA,Defaults file is likely out of date: PV Battery_Commercial.txt  Variables: 5 loaded but not in configuration, 0 wrong type, defaults file has 990, config has 986  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: 1,batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
+PV Battery,Commercial,911877.375000,4.274710,NA,Defaults file is likely out of date: PV Battery_Commercial.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 985, config has 987  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
 PV Battery,Third Party,OVERWRITE	
-PV Battery,Third Party,34797.320313,NA,NA,Defaults file is likely out of date: PV Battery_Third Party.txt  Variables: 5 loaded but not in configuration, 0 wrong type, defaults file has 817, config has 813  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: 1,batt_voltage_cutoff_display,batt_voltage_cutoff_choice,batt_voltage_cutoff,batt_voltage_cutoff_default; 
+PV Battery,Third Party,34803.335938,NA,NA,Defaults file is likely out of date: PV Battery_Third Party.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 812, config has 814  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
 PV Battery,Host Developer,OVERWRITE	
-PV Battery,Host Developer,911877.375000,13.250628,10.808079,Defaults file is likely out of date: PV Battery_Host Developer.txt  Variables: 5 loaded but not in configuration, 0 wrong type, defaults file has 1131, config has 1127  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: 1,batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
+PV Battery,Host Developer,911877.375000,13.250628,10.808079,Defaults file is likely out of date: PV Battery_Host Developer.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 1126, config has 1128  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
 PV Battery,Single Owner,OVERWRITE	
-PV Battery,Single Owner,92851800,7.822405,9.770092,Defaults file is likely out of date: PV Battery_Single Owner.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 1091, config has 1087  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
-PV Battery,Merchant Plant,OVERWRITE	
-PV Battery,Merchant Plant,92851800,6.945095,NA,Defaults file is likely out of date: PV Battery_Merchant Plant.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 1010, config has 1006  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
-PV Battery,Leveraged Partnership Flip,OVERWRITE	
-PV Battery,Leveraged Partnership Flip,92851800,7.927040,9.770092,Defaults file is likely out of date: PV Battery_Leveraged Partnership Flip.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 1037, config has 1033  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
-PV Battery,All Equity Partnership Flip,OVERWRITE	
-PV Battery,All Equity Partnership Flip,92851800,9.339453,10.855659,Defaults file is likely out of date: PV Battery_All Equity Partnership Flip.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 1027, config has 1023  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
-PV Battery,Sale Leaseback,OVERWRITE	
-PV Battery,Sale Leaseback,92851800,9.510104,9.770092,Defaults file is likely out of date: PV Battery_Sale Leaseback.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 1020, config has 1016  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
+PV Battery,Single Owner,92853712,7.822246,9.770247,Defaults file is likely out of date: PV Battery_Single Owner.txt  Variables: 1 loaded but not in configuration, 0 wrong type, defaults file has 1089, config has 1088  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: X; 
+PV Battery,Merchant Plant,92853712,6.944921,NA,; 
+PV Battery,Leveraged Partnership Flip,92853712,7.926877,9.770247,; 
+PV Battery,All Equity Partnership Flip,92853712,9.339336,10.855829,; 
+PV Battery,Sale Leaseback,92853712,9.509971,9.770247,; 
 PVWatts Battery,Residential,8022.540527,11.707731,NA,; 
 PVWatts Battery,Commercial,943666.062500,4.284003,NA,; 
 PVWatts Battery,Third Party,8022.540527,NA,NA,; 
@@ -152,13 +148,9 @@ Generic Battery,Third Party,fail,fail,fail
 Generic Battery,Host Developer,OVERWRITE	
 Generic Battery,Host Developer,fail,fail,fail
 Generic Battery,Single Owner,OVERWRITE	
-Generic Battery,Single Owner,73188808,20.644444,10.399786,Defaults file is likely out of date: Generic Battery_Single Owner.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 559, config has 555  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
-Generic Battery,Merchant Plant,OVERWRITE	
-Generic Battery,Merchant Plant,73188808,19.609224,NA,Defaults file is likely out of date: Generic Battery_Merchant Plant.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 478, config has 474  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
-Generic Battery,Leveraged Partnership Flip,OVERWRITE	
-Generic Battery,Leveraged Partnership Flip,73188808,24.984722,28.888296,Defaults file is likely out of date: Generic Battery_Leveraged Partnership Flip.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 505, config has 501  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
-Generic Battery,All Equity Partnership Flip,OVERWRITE	
-Generic Battery,All Equity Partnership Flip,73188808,28.859795,34.665955,Defaults file is likely out of date: Generic Battery_All Equity Partnership Flip.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 495, config has 491  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
-Generic Battery,Sale Leaseback,OVERWRITE	
-Generic Battery,Sale Leaseback,73188808,29.023140,34.665955,Defaults file is likely out of date: Generic Battery_Sale Leaseback.txt  Variables: 4 loaded but not in configuration, 0 wrong type, defaults file has 488, config has 484  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: batt_voltage_cutoff_display,batt_voltage_cutoff,batt_voltage_cutoff_choice,batt_voltage_cutoff_default; 
+Generic Battery,Single Owner,168051168,9.572287,10.364738,Defaults file is likely out of date: Generic Battery_Single Owner.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 554, config has 556  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Generic Battery,Merchant Plant,73190888,19.608706,NA,; 
+Generic Battery,Leveraged Partnership Flip,73190888,24.984268,28.888752,; 
+Generic Battery,All Equity Partnership Flip,73190888,28.859419,34.666504,; 
+Generic Battery,Sale Leaseback,73190888,29.022758,34.666504,; 
 final_configuration_eof,none,NA,NA,NA,
