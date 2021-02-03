@@ -651,15 +651,15 @@ capex_table_total_installed_land_cost
 Default
 
 0
-4431
+4461
 function capex_table_land_inputs_update_plot()
 {
 	Cap = [];
 	cost_per_kw = [];
 	sys_cap_bin = [];
 	sys_cost_bin = [];
-	
-	
+	cost_per_kw[0] = 0;
+	Cap[0] = 0;
 	input = ${capex_table_land_inputs};
 	
 	sys_cap = ${land_area_value};

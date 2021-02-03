@@ -541,15 +541,15 @@ capex_table_total_installed_ac_cost
 Default
 
 0
-4407
+4437
 function capex_table_ac_inputs_update_plot()
 {
 	Cap = [];
 	cost_per_kw = [];
 	sys_cap_bin = [];
 	sys_cost_bin = [];
-	
-	
+	cost_per_kw[0] = 0;
+	Cap[0] = 0;
 	input = ${capex_table_ac_inputs};
 	
 	sys_cap = ${total_inverter_capacity};

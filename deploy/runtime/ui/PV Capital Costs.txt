@@ -6204,7 +6204,7 @@ Capital Costs
 0
 Numeric
 
-7090
+4693
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6381,80 +6381,7 @@ equations { 'system_use_recapitalization' } = define () {
 	return 0;
 };
 
-equations {'$MIMO Capex Table'} = define() {
-	table = ${capex_matrix_widget};
-	cap0 = table.capacity_row0;
-	cap1 = table.capacity_row1;
-	cap2 = table.capacity_row2;
-	cap3 = table.capacity_row3;
-	cap4 = table.capacity_row4;
-	cost0 = table.cost_per_watt_row0;
-	cost1 = table.cost_per_watt_row1;
-	cost2 = table.cost_per_watt_row2;
-	cost3 = table.cost_per_watt_row3;
-	cost4 = table.cost_per_watt_row4;
-	sales_tax = ${sales_tax_value};
-	if (table.use_dc_capacity ==0) {
-		sys_cap = ${system_capacity};
-		${capex_table_cap_warning} = '';
-	}
-	else if (table.use_dc_capacity == 1) {
-		sys_cap = ${inverter_capacity};
-		${capex_table_cap_warning} = '';
-	}
-	else {
-		sys_cap = ${system_capacity};
-		${capex_table_cap_warning} = 'Set use_dc_capacity=0 for DC capacity, 1 for AC capacity. Defaulting to DC.';
-	}
-	
-	if (table.include_sales_tax == 0) {
-		sales_tax_basis = 0;
-		${capex_table_tax_warning} = '';
-	}
-	else if (table.include_sales_tax == 1) {
-		sales_tax_basis = table.sales_tax_basis;
-		${capex_table_tax_warning} = '';
-	}
-	else {
-		sales_tax_basis = 0;
-		${capex_table_tax_warning} = 'Set include_sales_tax=0 for no sales tax, 1 for sales tax then set sales_tax basis. Defaulting to no sales tax';
-	}
-	
-	if (sys_cap < cap0) {
-		cap_iter = cap0;
-		cost_iter = cost0;
-	}
-	else if (sys_cap > cap0 && sys_cap < cap1 ) {
-		cap_iter = (sys_cap - cap0)/(cap1 - cap0);
-		cost_iter = cap_iter*(cost1 - cost0) + cost0;
-		${capex_table_widget_total_cost} = cost_iter*sys_cap*1000*(1+sales_tax_basis*sales_tax);
-		return;
-	}
-	else if (sys_cap > cap1 && sys_cap < cap2) {
-		cap_iter = (sys_cap - cap1)/(cap2 - cap1);
-		cost_iter = cap_iter*(cost2 - cost1) + cost1;
-		${capex_table_widget_total_cost} = cost_iter*sys_cap*1000*(1+sales_tax_basis*sales_tax);
-		return;
-	}
-	else if (sys_cap > cap2 && sys_cap < cap3) {
-		cap_iter = (sys_cap - cap2)/(cap3 - cap2);
-		cost_iter = cap_iter*(cost3 - cost2) + cost2;
-		${capex_table_widget_total_cost} = cost_iter*sys_cap*1000*(1+sales_tax_basis*sales_tax);
-		return;
-	}
-	else if (sys_cap > cap3 && sys_cap < cap4) {
-		cap_iter = (sys_cap - cap3)/(cap4 - cap3);
-		cost_iter = cap_iter*(cost4 - cost3) + cost3;
-		${capex_table_widget_total_cost} = cost_iter*sys_cap*1000*(1+sales_tax_basis*sales_tax);
-		return;
-	}
-	else {
-		cap_iter = cap4;
-		cost_iter = cost4;
-		${capex_table_widget_total_cost} = cost_iter*sys_cap*1000*(1+sales_tax_basis*sales_tax);
-		return;
-	}
-};
+
 
 
 

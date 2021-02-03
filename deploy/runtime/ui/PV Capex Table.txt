@@ -544,15 +544,15 @@ capex_table_total_installed_dc_cost
 Default
 
 0
-5657
+5615
 function capex_table_dc_inputs_update_plot()
 {
 	Cap = [];
 	cost_per_kw = [];
 	sys_cap_bin = [];
 	sys_cost_bin = [];
-	
-	
+	cost_per_kw[0] = 0;
+	Cap[0] = 0;
 	input = ${capex_table_dc_inputs};
 	
 	sys_cap = ${system_capacity};
@@ -703,12 +703,10 @@ function interpolate_dc_capex_table()
 	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
 	if (sys_cap > input[nr - 1][0]) {
 		cost = input[nr - 1][0];
-		value('high_value',input[nr-1][0]);
 			
 	}
 	else if (sys_cap < input[0][0]) {
 		cost = input[0][0];
-		value('low_value',input[0][0]);
 			
 	}
 	else {
