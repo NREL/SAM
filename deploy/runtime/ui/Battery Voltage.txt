@@ -1115,7 +1115,7 @@ Bold
 2
 1
 
-13
+12
 batt_C_rate
 3
 1
@@ -1143,20 +1143,6 @@ BatteryCell
 1
 1
 1
-Default
-batt_Qfull_cutoff
-3
-1
-Qfull after cutoff implementation
- 
- 
-0
-8
-1
-1
-1
-1
-0
 Default
 batt_Qnom_percent
 3
@@ -1307,9 +1293,7 @@ Depth of discharge [%]| Cell voltage [V]
 
 DataMatrix
 
-69
-equations{'batt_Qfull_voltage'} = define() {
-	return ${batt_Qfull};};
+0
 5604
 on_load{'Battery Voltage'} = define()
 {
