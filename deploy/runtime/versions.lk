@@ -212,7 +212,7 @@ version_upgrade{'2020.2.29'} = define() {
 // ** Not sure how this works for patches, so using new version number for testing
 version_upgrade{'2018.11.11'} = define () {
 	const cfg = config();
-	if ( cfg.tech == 'Flat Plate PV' )
+	if ( cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config changed from Flat Plate PV to PV Battery in 2020.2.29 function
 	{
 		old_inverter = value( 'inv_snl_inverter_name' );
 		str = runtimedir();
@@ -238,7 +238,7 @@ version_upgrade{'2018.11.11'} = define () {
 };
 version_upgrade{'2018.10.29'} = define() {
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config changed from Flat Plate PV to PV Battery in 2020.2.29 function
 	{
 		//upgrades for the new way that auto-sizing works
 		dcac_old = oldvalue('dcac_ratio');
@@ -262,7 +262,6 @@ version_upgrade{'2018.10.29'} = define() {
 				message('We have updated the way that SAM automatically sizes systems in this version. We have used the same system configuration' 
 				' as was specified in your old file, but turned off automatic system sizing in this case because it may not result in the same system configuration.'
 				' Please go to the System Design page if you wish to turn automatic system sizing on again.', 'warning');
-
 			}
 	
 		}
@@ -288,7 +287,7 @@ version_upgrade{'2018.10.29'} = define() {
 
 version_upgrade{'2018.9.20'} = define() {
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config changed from Flat Plate PV to PV Battery in 2020.2.29 function
 	{
 		//upgrades for multiple MPPT inverters
 		x = oldvalue('modules_per_string');
@@ -423,7 +422,8 @@ version_upgrade{'2018.8.29'} = define() {
 	solar_resource_techs = 'Flat Plate PV,PVWatts,High-X Concentrating PV,Biopower,'
 	                     + 'Geothermal Power,Solar Water Heating,Physical Trough,'
 	                     + 'Empirical Trough,MSPT,DSPT,MSLF,DSLF,Dish Stirling,'
-	                     + 'Generic CSP System,Physical Trough IPH,DSGL IPH,ISCC';
+	                     + 'Generic CSP System,Physical Trough IPH,DSGL IPH,ISCC'
+	                     + 'PV Battery,PVWatts Battery'; // in case config was changed from Flat Plate PV or PVWatts by 2020.2.29 function
 	if ( strpos( solar_resource_techs , cfg.tech ) > -1 )
 	{
 		message("The new Solar Resource input page makes it easy to download weather files from "
@@ -432,134 +432,21 @@ version_upgrade{'2018.8.29'} = define() {
 		"the old default weather file library because it contained out-of-date data. "
 		"<br><br>Use the tools on the Solar Resource input page to download weather files "
 		"and build a library with the files you need for your work.");
-		
-		// check that current weather file is not already in library
 
 		library = csvread( userlocaldatadir() + '/SolarResourceData.csv', { 'table' = true } );
 		wf_in_lib = ( library{'Name'} ?@ value( 'solar_resource' ) ) > -1;
-		first_wf_in_lib = library{'Name'}[3];
-		download_ok = false;
-
+		
 		if ( value('use_specific_weather_file') == 1 ) // file was user specified file
 		{
 			user_wf = value('user_specified_weather_file');
-			add_folder = yesno( 'Add folder to SAM weather file folders?\n' 
-			                   + 'The weather file ' +  file_only(user_wf) + ' is not in the solar resource library. '
-							   + 'We have removed the \"Choose a Weather File from Your Computer\" option from the Solar Resource page ' 
-							   + 'to make it easier to keep track of your SAM weather files. To use a weather file, you must add its '
-							   + 'folder to the list of SAM library folders.\n\n'
-			                   + 'Click Yes to add ' + path_only(user_wf) + ' to the list of SAM library folders '
-			                   + 'and set ' + file_only(user_wf) + ' as the weather file.\n\nClick No to add the folder or choose '
-			                   + 'a different file later.' );
-			if ( add_folder )
-			{
-				x = get_settings('solar_data_paths');
-				if ( strlen( x ) > 0 ) 
-					x += ';';
-				x += path_only( user_wf );
-				paths = get_settings('solar_data_paths');
-				if ( strpos( lower(paths), lower(x) < 0 ) )
-					set_settings('solar_data_paths', x ); // not sure how to update solar_data_paths setting
-				rescanlibrary('solar');// need to refresh library here
-				libkey = file_only( user_wf );
-				libkey = mid(libkey,0,#libkey-4);		
-				value( 'solar_resource', libkey );
-			}	
-			else // user chose not to add folder, so set to first file in library
-			{
-				msgbox( 'Setting weather file to the first file in your solar resource library.\nUse the tools on the Solar Resource page to download '
-					    + 'or choose a different file.\n\n' + first_wf_in_lib);
-				value( 'solar_resource', first_wf_in_lib );	    
-			}
+			message('The weather file ' +  file_only(user_wf) + ' is not in the solar resource library. '
+					+ 'We have removed the \"Choose a Weather File from Your Computer\" option from the Solar Resource page ' 
+					+ 'to make it easier to keep track of your SAM weather files. To use a weather file, you must add its '
+					+ 'folder to the list of SAM library folders on the Solar Resource page.','warning');
 		}
-		elseif ( wf_in_lib )
+		elseif ( !wf_in_lib )
 		{
-			message( 'The weather file ' + value('solar_resource') + ' is in your solar resource library.' );
-		}
-		else // file was not user file and not already in library, so try to download replacement file
-		{
-		
-			user_ok = false;
-
-			// get latitude and longitude from old file solar resource ui inputs
-			lat = value( 'lat' );
-			lon = value( 'lon' );
-
-			// url for nsrdb download (based on callback script for solar resource form
-			url = 'https://developer.nrel.gov/api/solar/nsrdb_psm3_download.csv';
-			url += '?api_key=<SAMAPIKEY>';
-			url += '&&full_name=sam_user';
-			url += '&&email=<USEREMAIL>';
-			url += '&&affiliation=unknown'; 
-			url += '&&mailing_list=false';
-			url += '&&reason=SAM';
-			url += '&&interval=60';
-			
-			url +='&attributes=dni,dhi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo';
-			url += '&&utc=false';
-			url += '&&leap_day=false';
-			url += '&&names=tmy';
-			url += '&&wkt=POINT(' + lon + '%20' + lat + ')';
-			
-			// name for downloaded weather file
-			name = value( 'solar_resource' );
-			name = replace( name , ' (TMY2)' , '' );
-			name = replace( name , ' (TMY3)' , '' );
-			name = replace( name , ' (INTL)' , '' );
-			name = replace( name , ', ' , ',' );
-			name = replace( name , ',' , '_' );
-			name = replace( name , '  ' , ' ' );
-			name = replace( name , ' ' , '_' );
-			fname = wfdownloaddir() + '/' + name + '_' + lat + '_' + lon + '_psmv3_60_tmy' + '.csv';
-			
-			// download weather file from NSRDB
-			user_ok = yesno( 'Download new weather file?\nThe weather file ' 
-			                + value('solar_resource') 
-			                + ' is not in your solar resource library. '
-			                + 'Click Yes to download a replacement file from the NSRDB now. '
-			                + 'Click No to download or choose a different file later.' );
-
-			if ( user_ok ) // user chose to download replacement file
-			{
-				ok = curl( url , { 'file'= fname } ); // curl() should automatically replace <SAMAPI> and <USEREMAIL > with values from private.h
-
-				// rudimentary check that downloaded weather file is valid
-				if ( ok )
-				{
-					test = csvread( fname );
-					if ( test != null )
-						if ( #test > 10 ) download_ok = true;// valid file has more than 10 rows
-				}			
-
-				// if file was downloaded refresh solar resource library and update value
-				if ( download_ok )
-				{
-					rescanlibrary('solar');
-					lib_name = replace( file_only( fname ), '.csv' , '' );
-					value( 'solar_resource' , lib_name );
-					message( 'New weather file downloaded for ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) +
-							' degrees E and added to solar resource library:\n' + file_only(fname) );
-				}
-				else // download failed, set library to first file
-				{
-					remove_file( fname );
-					msgbox('Failed to download new weather file!\nA weather file for your '
-							+ 'location at ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) 
-							+ ' degrees E may not be available from the NSRDB, or the NSRDB '
-							+ 'service may be down.\n\nPlease contact sam.support@nrel.gov for help with your weather file.\n\n'
-							+ 'Setting weather file to first file in your solar resource '
-							+ 'library. Use the tools on the Solar Resource page to download '
-							+ 'or choose a different file later.\n\n' + first_wf_in_lib );
-					value( 'solar_resource', first_wf_in_lib );	    
-					message('Failed to download new weather file for ' + sprintf('%.1f',lat) + ' degrees N, ' + sprintf('%.1f',lon) + ' degrees E. A weather file for that location may not be available from the NSRDB, or the NSRDB service may be down. Use the tools on the Solar Resource page to download or choose a weather file.');
-				}
-			}
-			else // user chose not to download replacement file, set library to first file
-			{
-				msgbox( 'Setting weather file to first weather file in your solar resource library.\nUse the tools on the Solar Resource page to download '
-					    + 'or choose a different file.\n\n' + first_wf_in_lib);
-				value( 'solar_resource', first_wf_in_lib );	    
-			}
+			message( 'The weather file ' +  file_only(value('solar_resource')) + ' is not in your solar resource library. Use the tools on the Solar Resource page to download or choose a different file.','warning' );
 		}
 	}
 	
@@ -631,7 +518,7 @@ version_upgrade{'2017.1.17'} = define() {
 
 version_upgrade{'2016.12.29'} = define() {
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{	
 		//transformer loss changed
 			xfmr_ll = oldvalue('transformer_loss');
@@ -670,7 +557,7 @@ version_upgrade{'2016.12.29'} = define() {
 
 version_upgrade{'2016.10.25'} = define() {
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{	
 		//degradation bug
 		if (value('subarray2_enable') == 1 || value('subarray3_enable') == 1 || value('subarray4_enable') == 1)
@@ -723,7 +610,7 @@ version_upgrade{'2016.3.2'} = define() {
 
 	//TELL USERS IF THE ANSWERS ARE GOING TO CHANGE
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{	
 		message('This version fixes a bug in how AC wiring and transformer losses are applied. This may change your results slightly. Please see the release notes for more detail.', 'warning');
 		if (value('subarray1_shade_mode') == 1 || value('subarray2_shade_mode') == 1 || value('subarray3_shade_mode') == 1 || value('subarray4_shade_mode') == 1)
@@ -791,7 +678,7 @@ version_upgrade{'2016.2.26'} = define() {
 
 version_upgrade{'2016.2.22'} = define() {
 	const cfg = config();
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{
 		for (i=1; i<5; i++)
 		{
@@ -813,7 +700,7 @@ version_upgrade{'2016.1.21'} = define() {
 			if (value('wind.turbine.blade_design') == 0 || value('wind.turbine.tower_design') == 0)
 				message('The default recommendation for user-entered turbines has been updated to "Advanced" blade and tower design. Please check your Wind Turbine design page if you would like to update your inputs.', 'notice');
 	}
-	if (cfg.tech == 'Flat Plate PV')
+	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{		
 		if ((cfg.fin == 'Residential' || cfg.fin == 'Commercial') && value('en_batt') == 1)
 		{
@@ -899,10 +786,13 @@ version_upgrade{'2015.11.16'} = define() {
 
 version_upgrade{'2015.10.29'} = define() {
 	const cfg = config();
-	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) && value('en_batt') == 1)
+	if( ( cfg.tech == 'Flat Plate PV' && value('en_batt') == 1 ) || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
 	{
-		x = oldvalue('batt_replacement_cost');
-		value( 'batt_replacement_cost', x[0] ); // batt_replacement_cost is now single value
+		if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) 
+		{
+			x = oldvalue('batt_replacement_cost');
+			value( 'batt_replacement_cost', x[0] ); // batt_replacement_cost is now single value
+		}	
 	}
 };
 
@@ -991,8 +881,13 @@ version_upgrade{'2015.8.17'} = define() {
 	}
 	
 	// Add two new dispatch modes, pushed manual to index 2002
-	if( cfg.tech == 'Flat Plate PV' && (cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) && value('en_batt') == 1)
-		value("batt_dispatch_choice",2, "Keep as manual dispatch");
+	if( ( cfg.tech == 'Flat Plate PV' && value('en_batt') == 1 )  || cfg.tech == 'PV Battery') // in case config was changed from flat plate pv to pv battery in 2020.2.29 function
+	{
+		if ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' ) 
+		{
+			value("batt_dispatch_choice",2, "Keep as manual dispatch"); 
+		}
+	}	
 
 };
 
@@ -1077,7 +972,7 @@ version_upgrade{'2015.4.10'} = define() {
 
 //***********************************************************************************************************************************************************
 
-//PUBLIC VERSION
+//PUBLIC VERSION (last version with no battery model)
 version_upgrade{'2015.1.30'} = define() {
 	
 	//get the configuration
