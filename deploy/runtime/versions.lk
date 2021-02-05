@@ -64,7 +64,10 @@ version_upgrade{'2020.11.29'} = define() {
 						' Setting power cycle option to the default Rankine Cycle.','warning');
 		}
 	}
-    
+	if( cfg.tech == 'Physical Trough' )
+	{
+		value('tes_lengths', [[0,90,100,120,0,30,90,80,80,120,80]], "Hidden variable 'tes_lengths' updated per issue 419");
+	}
     //To be included in next full release (version_upgrade{'2020.11.29'})
     if (cfg.tech == 'Dish Stirling' )
     {
