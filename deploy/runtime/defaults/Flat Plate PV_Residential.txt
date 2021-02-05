@@ -1,5 +1,5 @@
 1
-866
+867
 6par_aisc
 1
 1
@@ -2668,6 +2668,12 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area_capex
+1
+1
+1
+1
+0.0188076
 land_area_value
 1
 1
