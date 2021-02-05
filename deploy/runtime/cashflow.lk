@@ -657,6 +657,8 @@ function cf_levelized_metrics()
 	cfline( '' ); 
 	cfline('LCOS CALCULATIONS', -1);
 	cfline('cf_annual_cost_lcos', 0);
+	cfline('cf_charging_cost_grid', 0);
+	cfline('cf_charging_cost_pv', 0);
 	cfline('cf_annual_discharge_lcos', 0);
 	cfline( '' );
 	cfline('npv_annual_costs_lcos', 0);

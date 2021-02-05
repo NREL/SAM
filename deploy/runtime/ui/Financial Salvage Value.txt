@@ -285,8 +285,8 @@ TabOrder
 batt_salvage_percentage
 3
 1
-Battery salvage value
-% of battery cost
+Storage salvage value
+% of storage cost
  
 0
 0
@@ -299,7 +299,7 @@ Default
 batt_salvage_value
 3
 1
-End of analysis period battery value
+End of analysis period storage value
 $
  
 0
@@ -339,14 +339,15 @@ Salvage Value
 0
 Default
 
-412
+433
 equations{ 'salvage_value' } = define() {
-	return ${salvage_percentage} / 100.0 * ${total_installed_cost}; };
+	return ${salvage_percentage} / 100.0 * (${total_installed_cost}-${battery_total}); };
 
 equations{ 'batt_salvage_value' } = define() {
 	tech = technology();
 	batt_replacement_tech = ( (tech=='PV Battery')
 	|| (tech=='Generic Battery') || (tech== 'PVWatts Battery'));
+	
 	if (batt_replacement_tech) {
 		return ${batt_salvage_percentage} / 100.0 * ${battery_total};
 	}
