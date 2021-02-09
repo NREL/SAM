@@ -149,7 +149,7 @@ ShadeC0
 0
 ShowCols
 2
-1
+0
 ShowColLabels
 2
 1

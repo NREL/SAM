@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-25
-Capital Costs Table Input
+30
+Land Capital Costs Table Input
 Bold
 2
 1
@@ -149,7 +149,7 @@ ShadeC0
 0
 ShowCols
 2
-1
+0
 ShowColLabels
 2
 1
