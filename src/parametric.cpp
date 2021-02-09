@@ -1236,8 +1236,8 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 				if (g.Type >= 0)
 				{
 					GraphCtrl* gc = new GraphCtrl(m_layout, wxID_ANY);
-//					gc->Display(m_grid_data->GetRuns(), g);
-					gc->DisplayParametrics(m_grid_data->GetRuns(), g);
+					gc->Display(m_grid_data->GetRuns(), g);
+// TODO - fix failing call					gc->DisplayParametrics(m_grid_data->GetRuns(), g);
 					m_graphs.push_back(gc);
 					// TODO sizing
 					m_layout->Add(gc, 800, 400);
