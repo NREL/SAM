@@ -1094,7 +1094,7 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 		//	row menu
 		wxPoint point = evt.GetPosition();
 		wxMenu *menu = new wxMenu;
-		menu->Append(ID_SHOW_ALL_INPUTS, _T("Show inputs"));
+//		menu->Append(ID_SHOW_ALL_INPUTS, _T("Show inputs"));
 		menu->Append(ID_NEW_CASE, _T("Create new case"));
 		PopupMenu(menu, point);
 	}
@@ -1144,13 +1144,30 @@ bool ParametricViewer::Plot(int col, Graph &g)
 			{
 				case VV_NUMBER:
 				{
-					g.Type = Graph::BAR;
-					g.Size = 15; // bar size
-					ret_val = true;
-					g.YLabel = m_grid_data->GetColLabelValue(col);
-					if (!m_grid_data->GetUnits(col).IsEmpty())
-						g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
-					g.XLabel = "Run number";
+					// line plot if single input and contour if two inputs
+					if (m_input_names.Count() == 1) {
+						g.Type = Graph::LINE;
+						g.Size = 3; // bar size
+						ret_val = true;
+						g.YLabel = m_grid_data->GetColLabelValue(col);
+						//	if (!m_grid_data->GetUnits(col).IsEmpty())
+						//		g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
+						if (auto pxvv = m_grid_data->GetVarValue(0, 0)) {
+							if (VarInfo* vi = m_grid_data->GetVarInfo(0, 0)) {
+								g.XLabel = vi->Label;
+								g.X.push_back(m_grid_data->GetVarName(0, 0));
+								//g.ShowXValues = true;
+								// TODO Xmin, Xmax
+								//g.XMin 
+								g.ShowLegend = false;
+							}
+						}
+						else {
+							g.XLabel = "Run number";
+						}
+					}
+					else if (m_input_names.Count() == 2) {
+					}
 				}
 				break;
 				// arrays - determine if monthly or hourly
@@ -1163,8 +1180,8 @@ bool ParametricViewer::Plot(int col, Graph &g)
 					{
 						g.Type = Graph::BAR;
 						g.YLabel = m_grid_data->GetColLabelValue(col);
-						if (!m_grid_data->GetUnits(col).IsEmpty())
-							g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
+					//	if (!m_grid_data->GetUnits(col).IsEmpty())
+					//		g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
 						g.XLabel = "Run number";
 						ret_val = true;
 					}
@@ -1203,7 +1220,7 @@ void ParametricViewer::RemoveAllPlots()
 }
 
 
-void ParametricViewer::AddPlot(const wxString &output_name)
+void ParametricViewer::AddPlot(const wxString& output_name)
 {
 	// check if already plotted
 	int col = m_grid_data->GetColumnForName(output_name);
@@ -1218,27 +1235,28 @@ void ParametricViewer::AddPlot(const wxString &output_name)
 				m_plot_var_names.push_back(output_name);
 				if (g.Type >= 0)
 				{
-					GraphCtrl *gc = new GraphCtrl(m_layout, wxID_ANY);
-					gc->Display(m_grid_data->GetRuns(), g);
+					GraphCtrl* gc = new GraphCtrl(m_layout, wxID_ANY);
+//					gc->Display(m_grid_data->GetRuns(), g);
+					gc->DisplayParametrics(m_grid_data->GetRuns(), g);
 					m_graphs.push_back(gc);
 					// TODO sizing
 					m_layout->Add(gc, 800, 400);
 				}
 				else // DView
 				{
-					wxDVTimeSeriesCtrl *dv = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
+					wxDVTimeSeriesCtrl* dv = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
 					for (int row = 0; row < m_grid_data->GetRowsCount(); row++)
 					{
 						size_t n;
-						double *y = m_grid_data->GetArray(row, col, &n);
-						size_t steps_per_hour = n/8760;
-						if ( steps_per_hour > 0 
-							&& steps_per_hour <= 60 
-							&& n == steps_per_hour*8760 )
-						{ 
-							dv->AddDataSet(new TimeSeriesData(y, n, 1.0/steps_per_hour, 0.0, // by default not instantaneous values for hourly data
-									m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", (int)(row + 1)), 
-									m_grid_data->GetUnits(col)), true );
+						double* y = m_grid_data->GetArray(row, col, &n);
+						size_t steps_per_hour = n / 8760;
+						if (steps_per_hour > 0
+							&& steps_per_hour <= 60
+							&& n == steps_per_hour * 8760)
+						{
+							dv->AddDataSet(new TimeSeriesData(y, n, 1.0 / steps_per_hour, 0.0, // by default not instantaneous values for hourly data
+								m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", (int)(row + 1)),
+								m_grid_data->GetUnits(col)), true);
 							dv->SelectDataSetAtIndex(row);
 						}
 					}
