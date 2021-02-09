@@ -1713,7 +1713,7 @@ TabOrder
 3
 2
 
-54
+53
 Q_tes
 3
 1
@@ -2387,21 +2387,6 @@ Physical Trough Thermal Storage
 1
 1
 -1
-Default
-tes_lengths
-3
-3
-Custom SGS lengths
-m
-Physical Trough Thermal Storage
-0
-2
-1
-3
-1
-11
-0 90 100 120 0 0 0 0 80 120 80 
-
 Default
 tes_pump_coef
 3

@@ -220,7 +220,7 @@ Replace in Year (%)|2
 DataArray
 
 0
-976
+345
 on_load{'Battery Replacements'} = define() {
 	on_change{'batt_replacement_option'}();
 };
@@ -230,22 +230,5 @@ on_change{ 'batt_replacement_option' } = define() {
 	enable('batt_replacement_capacity', option==1);
 	enable('batt_replacement_schedule', option==2);
 	enable('batt_replacement_schedule_percent', option==2);
-	check_ppa_soln_mode( option );
 };
-
-function check_ppa_soln_mode( opt ) {
-	f = financing();
-	soln_mode = 99;
-	if ( f == 'Host Developer' 
-	|| f == 'Single Owner' 
-	|| f == 'Merchant Plant' 
-	|| f == 'Leveraged Partnership Flip' 
-	|| f == 'All Equity Partnership Flip' 
-	|| f == 'Sale Leaseback' ) 
-	{ soln_mode = value('ppa_soln_mode'); }
-	if ( soln_mode == 0 && opt != 0 )
-	{
-		msgbox('"Specify IRR target" solution mode is not available!\nFor projects with battery replacement schedules, choose "Specify PPA price" on the Revenue or Financial Parameters page, or change the battery replacement option to "No replacements."');
-	}	
-}
 
