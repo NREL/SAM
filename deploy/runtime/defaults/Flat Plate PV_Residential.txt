@@ -1,5 +1,5 @@
 1
-867
+870
 6par_aisc
 1
 1
@@ -258,6 +258,12 @@ YrBuilt
 1
 1
 1980
+ac_capex_table_shown
+1
+1
+1
+1
+1
 ac_lifetime_losses
 1
 2
@@ -1039,6 +1045,12 @@ periods
 3
 0 0 0 
 
+dc_capex_table_shown
+1
+1
+1
+1
+1
 dc_degradation
 1
 2
@@ -2680,6 +2692,12 @@ land_area_value
 1
 1
 0.0188076
+land_capex_table_shown
+1
+1
+1
+1
+0
 land_fixed
 1
 1

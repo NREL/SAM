@@ -685,7 +685,11 @@ setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 
+	{'name'='PV Capex Table', 'caption'='DC Costs Interpolation Table','collapsible'=true, 'collapsible_var'='dc_capex_table_shown'},
+	{'name'='PV Capex Table AC', 'caption'='AC Costs Interpolation Table','collapsible'=true, 'collapsible_var'='ac_capex_table_shown'},
+	{'name'='PV Capex Table Land', 'caption'='Land Costs Interpolation Table','collapsible'=true, 'collapsible_var'='land_capex_table_shown'},
+	'O and M Costs Capex Table']], 
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 //addpage( [[ 'PV Capex Table']], {'sidebar'='PV Capex Table', 'help'='pv_capex_table_costs'} );
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator

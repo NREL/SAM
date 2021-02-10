@@ -1,6 +1,6 @@
 PV Capital Costs
-1249
-1044
+827
+694
 96
 GroupBox
 
