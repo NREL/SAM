@@ -1142,63 +1142,84 @@ bool ParametricViewer::Plot(int col, Graph &g)
 			g.Y.push_back(m_grid_data->GetVarName(0,col));
 			switch (vv->Type())
 			{
-				case VV_NUMBER:
-				{
-					// line plot if single input and contour if two inputs
-					if (m_input_names.Count() == 1) {
-						g.Type = Graph::LINE;
-						g.Size = 3; // bar size
-						ret_val = true;
-						g.YLabel = m_grid_data->GetColLabelValue(col);
-						if (auto pxvv = m_grid_data->GetVarValue(0, 0)) {
-							if (VarInfo* vi = m_grid_data->GetVarInfo(0, 0)) {
-								g.XLabel = vi->Label;
-								g.X.push_back(m_grid_data->GetVarName(0, 0));
-								//g.ShowXValues = true;
-								if (!m_grid_data->GetUnits(col).IsEmpty()) {
-									g.XLabel += " (" + vi->Units + ")";
-								}
-
-								// TODO Xmin, Xmax
-								//g.XMin 
-								g.ShowLegend = false;
+			case VV_NUMBER:
+			{
+				// line plot if single input and contour if two inputs
+				if (m_input_names.Count() == 1) {
+					g.Type = Graph::LINE;
+					g.Size = 3;
+					ret_val = true;
+					g.YLabel = m_grid_data->GetColLabelValue(col);
+					if (auto pxvv = m_grid_data->GetVarValue(0, 0)) {
+						if (VarInfo* vi = m_grid_data->GetVarInfo(0, 0)) {
+							g.XLabel = vi->Label;
+							g.X.push_back(m_grid_data->GetVarName(0, 0));
+							if (!m_grid_data->GetUnits(col).IsEmpty()) {
+								g.XLabel += " (" + vi->Units + ")";
 							}
-						}
-						else {
-							g.XLabel = "Run number";
+							g.ShowLegend = false;
 						}
 					}
-					else if (m_input_names.Count() == 2) {
+					else {
+						g.XLabel = "Run number";
+					}
+				}
+				else if (m_input_names.Count() == 2) {
+					// contour plot
+					g.Type = Graph::CONTOUR;
+					g.Size = 3; // bar size
+					ret_val = true;
+					g.YLabel = m_grid_data->GetColLabelValue(col);
+					if (auto pxvv = m_grid_data->GetVarValue(0, 0)) {
+						if (VarInfo* vi = m_grid_data->GetVarInfo(0, 0)) {
+							g.XLabel = vi->Label;
+							g.X.push_back(m_grid_data->GetVarName(0, 0));
+							if (!m_grid_data->GetUnits(col).IsEmpty()) {
+								g.XLabel += " (" + vi->Units + ")";
+							}
+							g.ShowLegend = false;
+						}
+					}
+					if (auto pyvv = m_grid_data->GetVarValue(0, 1)) {
+						if (VarInfo* vi = m_grid_data->GetVarInfo(0, 1)) {
+							g.YLabel = vi->Label;
+							g.X.push_back(m_grid_data->GetVarName(0, 1));
+							if (!m_grid_data->GetUnits(col).IsEmpty()) {
+								g.XLabel += " (" + vi->Units + ")";
+							}
+							g.ShowLegend = false;
+						}
 					}
 				}
 				break;
 				// arrays - determine if monthly or hourly
-				case VV_ARRAY:
-				{
-					size_t n;
-					m_grid_data->GetArray(0, col, &n); // checked above for rows>0
+			}
+			case VV_ARRAY:
+			{
+				size_t n;
+				m_grid_data->GetArray(0, col, &n); // checked above for rows>0
 
-					if (n == 12) // asume monthly
-					{
-						g.Type = Graph::BAR;
-						g.YLabel = m_grid_data->GetColLabelValue(col);
+				if (n == 12) // asume monthly
+				{
+					g.Type = Graph::BAR;
+					g.YLabel = m_grid_data->GetColLabelValue(col);
 					//	if (!m_grid_data->GetUnits(col).IsEmpty())
 					//		g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
-						g.XLabel = "Run number";
-						ret_val = true;
-					}
-					else if (n == 8760)
-					{
-//						g.Type = Graph::LINE;
-//						g.YLabel = m_grid_data->GetColLabelValue(col);
-//						if (!m_grid_data->GetUnits(col).IsEmpty())
-//							g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
-//						g.XLabel = "Run number";
-						g.Type = -1; // DView - do not use GraphCtrl
-						ret_val = true;
-					}
+					g.XLabel = "Run number";
+					ret_val = true;
 				}
-				break;
+				else if (n == 8760)
+				{
+					//						g.Type = Graph::LINE;
+					//						g.YLabel = m_grid_data->GetColLabelValue(col);
+					//						if (!m_grid_data->GetUnits(col).IsEmpty())
+					//							g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
+					//						g.XLabel = "Run number";
+					g.Type = -1; // DView - do not use GraphCtrl
+					ret_val = true;
+				}
+			}
+			break;
 			}
 		}
 	}

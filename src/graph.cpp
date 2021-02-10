@@ -593,43 +593,79 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 
 	if (m_g.Type == Graph::CONTOUR)
 	{// TODO ensure m_g.X.count == 2 m_g.Y.count == 1
-		if (m_g.Y.size() == 1)
-			ndata = 0;
+		if (m_g.X.size() == 2 && m_g.Y.size() == 1) {
+			// y size checked for 1 above
+			double zmin = 1e99, zmax = -1e99;
+			wxMatrix<double> XX, YY, ZZ;
+			// assume num x and num y values same initially
+			// TODO - fix above assumption based on parametrics table
+			size_t nx = sqrt(sims.size()), ny = sqrt(sims.size());
+			XX.Resize(nx , ny );
+			YY.Resize(nx,  ny);
+			ZZ.Resize(nx , ny );
+			for (size_t i = 0; i < nx; i++)
+			{
+				for (size_t j = 0; j < ny; j++)
+				{
+					XX.At(i , j ) = sims[j]->GetValue(m_g.X[0])->Value();
+					YY.At(i , j ) = sims[i * ny]->GetValue(m_g.X[1])->Value();
+					ZZ.At(i , j ) = sims[i * ny + j]->GetValue(m_g.Y[0])->Value();
+					if (ZZ.At(i , j ) < zmin) zmin = ZZ.At(i , j );
+					if (ZZ.At(i , j ) > zmax) zmax = ZZ.At(i , j );
+				}
+			}
+			wxPLContourPlot* plot = 0;
+			wxPLColourMap* jet = new wxPLJetColourMap(zmin, zmax);
+			plot = new wxPLContourPlot(XX, YY, ZZ, true, wxEmptyString, 24, jet);
+			if (plot != 0)
+			{
+				AddPlot(plot, wxPLPlotCtrl::X_TOP, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
+				SetSideWidget(jet);
+			}
+			GetYAxis1()->SetReversed(true); // need setting
+			GetYAxis1()->SetLabel(m_g.YLabel);
+			GetXAxis2()->SetLabel(m_g.XLabel);
+		}
+		ndata = sims.size();
+		return 0;
+
 	}
 	else
 	{ // TODO ensure m_g.X.count == 1 m_g.Y.count == 1
-		for (size_t i = 0; i < sims.size(); i++)
-		{
-			if (VarValue* vv = sims[i]->GetValue(m_g.Y[0]))
+		if (m_g.X.size() == 1 && m_g.Y.size() == 1) {
+			for (size_t i = 0; i < sims.size(); i++)
 			{
-				int count = 0;
-				if (vv->Type() == VV_NUMBER)
-					count = 1;
-				else if (vv->Type() == VV_ARRAY)
-					count = vv->Length();
-
-				if (count > 0)
+				if (VarValue* vv = sims[i]->GetValue(m_g.Y[0]))
 				{
-					yvars.push_back(vv);
-					ynames.push_back(m_g.Y[0]);
+					int count = 0;
+					if (vv->Type() == VV_NUMBER)
+						count = 1;
+					else if (vv->Type() == VV_ARRAY)
+						count = vv->Length();
+
+					if (count > 0)
+					{
+						yvars.push_back(vv);
+						ynames.push_back(m_g.Y[0]);
+					}
+				}
+				if (VarValue* vv = sims[i]->GetValue(m_g.X[0]))
+				{
+					int count = 0;
+					if (vv->Type() == VV_NUMBER)
+						count = 1;
+					else if (vv->Type() == VV_ARRAY)
+						count = vv->Length();
+
+					if (count > 0)
+					{
+						xvars.push_back(vv);
+						xnames.push_back(m_g.X[0]);
+					}
 				}
 			}
-			if (VarValue* vv = sims[i]->GetValue(m_g.X[0]))
-			{
-				int count = 0;
-				if (vv->Type() == VV_NUMBER)
-					count = 1;
-				else if (vv->Type() == VV_ARRAY)
-					count = vv->Length();
-
-				if (count > 0)
-				{
-					xvars.push_back(vv);
-					xnames.push_back(m_g.X[0]);
-				}
-			}
+			ndata = sims.size();
 		}
-		ndata = sims.size();
 	}
 
 	if (ndata < 0)
@@ -644,15 +680,6 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 	int cidx = 0; // colour index
 	wxPLBarPlot* last_bar = 0;
 	std::vector<wxPLBarPlot*> bar_group;
-
-	std::vector<wxRealPoint> sine_data;
-	std::vector<wxRealPoint> cosine_data;
-	std::vector<wxRealPoint> tangent_data;
-	for (double x = -6; x < 3; x += 0.1) {
-		sine_data.push_back(wxRealPoint(x, 3 * sin(x) * sin(x)));
-		cosine_data.push_back(wxRealPoint(x / 2, 2 * cos(x / 2) * x));
-		tangent_data.push_back(wxRealPoint(x, x * tan(x)));
-	}
 
 	// assert yvars.size = xvars.size == sims.size
 	for (size_t i = 0; i < sims.size(); i++)
