@@ -672,7 +672,7 @@ Default
 equations{'land_area_capex'} = define() {
 	return ${land_area_value};
 };
-4461
+4459
 function capex_table_land_inputs_update_plot()
 {
 	Cap = [];
@@ -722,7 +722,7 @@ function capex_table_land_inputs_update_plot()
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='northwest'});
 		
 	axis('x1', {'label'='Acreage (acres)', 'min'=0, 'max'=max(Cap)+1});
-	axis('y1', {'label'='Capex ($/acre)', 'min'=0, 'max'= max(cost_per_kw)+500});
+	axis('y1', {'label'='Capex ($/acre)', 'min'=0, 'max'= max(cost_per_kw)+1});
 	
 	
 	/*
@@ -830,12 +830,12 @@ function interpolate_land_capex_table()
 	
 	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
 	if (sys_cap > input[nr - 1][0]) {
-		cost = input[nr - 1][0];
+		cost = input[nr - 1][1];
 
 			
 	}
 	else if (sys_cap < input[0][0]) {
-		cost = input[0][0];
+		cost = input[0][1];
 
 			
 	}

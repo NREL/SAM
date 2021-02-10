@@ -685,11 +685,7 @@ setmodules( ['belpe', 'pvsamv1', 'grid', 'utilityrate5', 'cashloan']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 
-	{'name'='PV Capex Table', 'caption'='DC Costs Interpolation Table','collapsible'=true, 'collapsible_var'='dc_capex_table_shown'},
-	{'name'='PV Capex Table AC', 'caption'='AC Costs Interpolation Table','collapsible'=true, 'collapsible_var'='ac_capex_table_shown'},
-	{'name'='PV Capex Table Land', 'caption'='Land Costs Interpolation Table','collapsible'=true, 'collapsible_var'='land_capex_table_shown'},
-	'O and M Costs Capex Table']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 //addpage( [[ 'PV Capex Table']], {'sidebar'='PV Capex Table', 'help'='pv_capex_table_costs'} );
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator
@@ -705,7 +701,7 @@ setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'host_developer']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Capital Costs','O and M Costs' ],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs' } );
 setup_host_developer_pages( LOAD_SIMPLE );
 
@@ -715,7 +711,7 @@ setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 //addpage( [[ 'PV Capital Costs', 'O and M Costs' ]], { 'sidebar'='System Costs', 'help'='pv_system_costs' } );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 //addpage( [[ 'PV Capex Table']], {'sidebar'='PV Capex Table', 'help'='pv_capex_table_costs'} );
 setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
@@ -727,7 +723,7 @@ setmodules( ['pvsamv1', 'grid', 'singleowner'] );
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_single_owner_pages( );
 //addpage( [[ 'Financial Capacity Payments' ]], { 'sidebar'='Ancillary Services', 'help'='ancillary_services' });
@@ -738,7 +734,7 @@ setmodules( ['pvsamv1', 'grid', 'merchantplant']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_merchant_plant_pages( );
 
@@ -747,7 +743,7 @@ setmodules( ['pvsamv1', 'grid', 'levpartflip']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_leveraged_partnership_flip_pages( );
 
@@ -756,7 +752,7 @@ setmodules( ['pvsamv1', 'grid', 'equpartflip']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_all_equity_partnership_flip_pages( );
 
@@ -765,7 +761,7 @@ setmodules( ['pvsamv1', 'grid', 'saleleaseback']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_sale_leaseback_pages( );
 
@@ -844,7 +840,7 @@ setmodules( ['pvwattsv7', 'belpe', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
@@ -853,7 +849,7 @@ setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
@@ -862,7 +858,7 @@ setmodules( ['pvwattsv7', 'grid', 'levpartflip']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_leveraged_partnership_flip_pages();
 
@@ -871,7 +867,7 @@ setmodules( ['pvwattsv7', 'grid', 'equpartflip']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_all_equity_partnership_flip_pages();
 
@@ -880,7 +876,7 @@ setmodules( ['pvwattsv7', 'grid', 'saleleaseback']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_sale_leaseback_pages();
 
@@ -889,7 +885,7 @@ setmodules( ['pvwattsv7', 'grid', 'singleowner']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_single_owner_pages();
 
@@ -898,7 +894,7 @@ setmodules( ['pvwattsv7', 'grid', 'merchantplant']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_merchant_plant_pages();
 
@@ -907,7 +903,7 @@ setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'host_developer']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs', 'O and M Costs'],
-	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']], 
+	[ 'PV Capital Costs Interpolation Table', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 

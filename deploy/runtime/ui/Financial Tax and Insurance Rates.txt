@@ -1,7 +1,7 @@
 Financial Tax and Insurance Rates
 862
 159
-10
+11
 GroupBox
 
 1
@@ -32,6 +32,54 @@ Project Tax and Insurance Rates
 Bold
 2
 1
+Label
+
+1
+13
+Name
+5
+29
+capex_table_sales_tax_warning
+X
+3
+81
+Y
+3
+90
+Width
+3
+75
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+8
+Hi Paul!
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 SchedNumeric
 
 1
@@ -647,4 +695,21 @@ equations{ 'property_assessed_value' } = define() {
 	return ${prop_tax_cost_assessed_percent} / 100.0 * ${total_installed_cost}; };
 
 
-0
+374
+function enable_sales_tax() 
+{
+	
+	tech = technology();
+	if (tech=='Flat Plate PV' || tech=='PVWatts') {
+		capex_cost_choice = value('pv_capex_cost_choice');
+		enable('sales_tax_rate', capex_cost_choice!=1);
+		show('capex_table_sales_tax_warning', capex_cost_choice==1);
+		refresh();
+	}
+}
+
+on_load{'Financial Tax and Insurance Rates'} = define() {
+	enable_sales_tax();
+};
+	
+	
