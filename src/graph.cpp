@@ -66,6 +66,7 @@ void Graph::Copy(Graph *gr)
 {
 	Type = gr->Type;
 	Y = gr->Y;
+	X = gr->X;
 	
 	XLabel = gr->XLabel;
 	YLabel = gr->YLabel;
@@ -89,20 +90,23 @@ void Graph::Copy(Graph *gr)
 
 bool Graph::SameAs(Graph *gr)
 {
-	return ( this->Title == gr->Title && this->Y == gr->Y );
+	return ( this->Title == gr->Title && this->Y == gr->Y && this->X == gr->X );
 }
 
 bool Graph::Write( wxOutputStream &os )
 {
 	wxDataOutputStream ds(os);
 	ds.Write16( 0xfd ); // identifier
-	ds.Write8( 1 ); // version
+	ds.Write8( 2 ); // version 2 added X
 
 	ds.Write32( Type );
 	ds.WriteString( Title );
 	ds.Write32( Y.Count() );
 	for (int i=0;i<(int)Y.Count();i++)
 		ds.WriteString( Y[i] );
+	ds.Write32(X.Count());
+	for (int i = 0; i < (int)X.Count(); i++)
+		ds.WriteString(X[i]);
 
 	ds.WriteString( XLabel );
 	ds.WriteString( YLabel );
@@ -130,7 +134,7 @@ bool Graph::Read( wxInputStream &is )
 	wxDataInputStream ds(is);
 
 	unsigned short identifier = ds.Read16();
-	/*unsigned char ver = */ ds.Read8(); // read the version number, not currently used...
+	unsigned char ver = ds.Read8(); // read the version number, not currently used...
 
 	Type = ds.Read32();
 	Title = ds.ReadString();
@@ -139,6 +143,14 @@ bool Graph::Read( wxInputStream &is )
 	count = ds.Read32();
 	for (i=0;i<count;i++)
 		Y.Add( ds.ReadString() );
+
+	if (ver > 1) {
+		X.Clear();
+		count = ds.Read32();
+		for (i = 0; i < count; i++)
+			X.Add(ds.ReadString());
+
+	}
 
 	XLabel = ds.ReadString();
 	YLabel = ds.ReadString();
@@ -596,34 +608,30 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 				else if (vv->Type() == VV_ARRAY)
 					count = vv->Length();
 
-				if (i == 0) ndata = count;
-				else if (ndata != count) ndata = -1;
-
 				if (count > 0)
 				{
 					yvars.push_back(vv);
 					ynames.push_back(m_g.Y[0]);
 				}
-				if (VarValue* vv = sims[i]->GetValue(m_g.X[0]))
+			}
+			if (VarValue* vv = sims[i]->GetValue(m_g.X[0]))
+			{
+				int count = 0;
+				if (vv->Type() == VV_NUMBER)
+					count = 1;
+				else if (vv->Type() == VV_ARRAY)
+					count = vv->Length();
+
+				if (count > 0)
 				{
-					int count = 0;
-					if (vv->Type() == VV_NUMBER)
-						count = 1;
-					else if (vv->Type() == VV_ARRAY)
-						count = vv->Length();
-
-					if (i == 0) ndata = count;
-					else if (ndata != count) ndata = -1;
-
-					if (count > 0)
-					{
-						xvars.push_back(vv);
-						xnames.push_back(m_g.X[0]);
-					}
+					xvars.push_back(vv);
+					xnames.push_back(m_g.X[0]);
 				}
 			}
 		}
+		ndata = sims.size();
 	}
+
 	if (ndata < 0)
 	{
 		SetTitle("All variables must have the same number of data values.");
@@ -631,28 +639,35 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 		return -1;
 	}
 
-	std::vector< std::vector<wxRealPoint> > plotdata(sims.size());
+	std::vector<wxRealPoint > plotdata;// (sims.size());
 
 	int cidx = 0; // colour index
 	wxPLBarPlot* last_bar = 0;
 	std::vector<wxPLBarPlot*> bar_group;
 
+	std::vector<wxRealPoint> sine_data;
+	std::vector<wxRealPoint> cosine_data;
+	std::vector<wxRealPoint> tangent_data;
+	for (double x = -6; x < 3; x += 0.1) {
+		sine_data.push_back(wxRealPoint(x, 3 * sin(x) * sin(x)));
+		cosine_data.push_back(wxRealPoint(x / 2, 2 * cos(x / 2) * x));
+		tangent_data.push_back(wxRealPoint(x, x * tan(x)));
+	}
 
-	// assert yvars.size = xvars.size
-	for (size_t i = 0; i < yvars.size(); i++)
+	// assert yvars.size = xvars.size == sims.size
+	for (size_t i = 0; i < sims.size(); i++)
 	{
 		if (yvars[i]->Type() == VV_ARRAY)
 		{
 			size_t n = 0;
 			double* p = yvars[i]->Array(&n);
 
-			plotdata[i].reserve(ndata);
 			for (size_t k = 0; k < n; k++)
 			{
 				if (std::isnan(p[k]))
-					plotdata[i].push_back(wxRealPoint(k, 0));
+					plotdata.push_back(wxRealPoint(k, 0));
 				else
-					plotdata[i].push_back(wxRealPoint(k, p[k]));
+					plotdata.push_back(wxRealPoint(k, p[k]));
 			}
 		}
 		else
@@ -663,42 +678,47 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 			if (!std::isnan(xvars[i]->Value()))
 				xval = xvars[i]->Value();
 
-			plotdata[i].push_back(wxRealPoint(xval, yval));
+			plotdata.push_back(wxRealPoint(xval, yval));
 
 		}
 
-		wxPLPlottable* plot = 0;
-		if (m_g.Type == Graph::LINE) {
-			plot = new wxPLLinePlot(plotdata[i], ynames[i], s_colours[cidx],
-				wxPLLinePlot::SOLID, m_g.Size + 2);
-		}
-		else if (m_g.Type == Graph::SCATTER)
-		{
-			plot = new wxPLScatterPlot(plotdata[i], ynames[i], s_colours[cidx], m_g.Size + 2);
-			if (plotdata[i].size() < 100)
-				plot->SetAntiAliasing(true);
-		}
-
-
-		if (++cidx >= (int)s_colours.size()) cidx = 0; // incr and wrap around colour index
-
-		if (plot != 0)
-			AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
 	}
+	/*
+	wxPLPlottable* plot = 0;
+	if (m_g.Type == Graph::LINE) {
+		plot = new wxPLLinePlot(plotdata, "something", "forest green",	wxPLLinePlot::SOLID, m_g.Size + 2);
+	}
+	else if (m_g.Type == Graph::SCATTER)
+	{
+		plot = new wxPLScatterPlot(plotdata, ynames[0], s_colours[cidx], m_g.Size + 2);
+		if (plotdata.size() < 100)
+			plot->SetAntiAliasing(true);
+	}
+	*/
 
+	if (++cidx >= (int)s_colours.size()) cidx = 0; // incr and wrap around colour index
 
+//	if (plot != 0)
+//		AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
+
+	AddPlot(new wxPLLinePlot(plotdata, "3\\dot sin^2(x)", "forest green", wxPLLinePlot::DOTTED),
+		wxPLPlotCtrl::X_BOTTOM,
+		wxPLPlotCtrl::Y_LEFT,
+		wxPLPlotCtrl::PLOT_TOP);
+
+	/*
 	// group the bars together if they're not stacked and not single values
 	if (ndata > 1 && m_g.Type == Graph::BAR)
 		for (size_t i = 0; i < bar_group.size(); i++)
 			bar_group[i]->SetGroup(bar_group);
 
 	// create the axes
-	if (ndata == 1)
+	if (m_g.Type == Graph::LINE)
 	{
 		// single value axis
-		wxPLLabelAxis* x1 = new wxPLLabelAxis(-1, yvars.size(), m_g.XLabel);
-		for (size_t i = 0; i < ynames.size(); i++)
-			x1->Add(i, wxString::Format("%d", (int)(i + 1)));
+		wxPLLabelAxis* x1 = new wxPLLabelAxis(-1, xvars.size(), m_g.XLabel);
+		for (size_t i = 0; i < xvars.size(); i++)
+			x1->Add(i, wxString::Format("%g", xvars[i]->Value()));
 		//			x1->Add(i, ynames[i]);
 		SetXAxis1(x1);
 	}
@@ -716,7 +736,7 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 		SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
 	}
 
-
+	
 	// setup y axis
 
 	if (GetPlotCount() > 0)
@@ -752,7 +772,7 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 		SetYAxis1(new wxPLLinearAxis(ymin, ymax, m_g.YLabel));
 	}
 
-
+	*/
 	Invalidate();
 	Refresh();
 	return 0;

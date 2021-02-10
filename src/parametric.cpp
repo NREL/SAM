@@ -1150,13 +1150,21 @@ bool ParametricViewer::Plot(int col, Graph &g)
 						g.Size = 3; // bar size
 						ret_val = true;
 						g.YLabel = m_grid_data->GetColLabelValue(col);
-						//	if (!m_grid_data->GetUnits(col).IsEmpty())
-						//		g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
+						if (VarInfo* vi = m_grid_data->GetVarInfo(0, col)) {
+							g.YLabel = vi->Label;
+						}
+						if (!m_grid_data->GetUnits(col).IsEmpty()) {
+							g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
+						}
 						if (auto pxvv = m_grid_data->GetVarValue(0, 0)) {
 							if (VarInfo* vi = m_grid_data->GetVarInfo(0, 0)) {
 								g.XLabel = vi->Label;
 								g.X.push_back(m_grid_data->GetVarName(0, 0));
 								//g.ShowXValues = true;
+								if (!m_grid_data->GetUnits(col).IsEmpty()) {
+									g.XLabel += " (" + m_grid_data->GetUnits(0) + ")";
+								}
+
 								// TODO Xmin, Xmax
 								//g.XMin 
 								g.ShowLegend = false;
@@ -1236,8 +1244,8 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 				if (g.Type >= 0)
 				{
 					GraphCtrl* gc = new GraphCtrl(m_layout, wxID_ANY);
-					gc->Display(m_grid_data->GetRuns(), g);
-// TODO - fix failing call					gc->DisplayParametrics(m_grid_data->GetRuns(), g);
+					//gc->Display(m_grid_data->GetRuns(), g);
+					gc->DisplayParametrics(m_grid_data->GetRuns(), g);
 					m_graphs.push_back(gc);
 					// TODO sizing
 					m_layout->Add(gc, 800, 400);
