@@ -1150,19 +1150,13 @@ bool ParametricViewer::Plot(int col, Graph &g)
 						g.Size = 3; // bar size
 						ret_val = true;
 						g.YLabel = m_grid_data->GetColLabelValue(col);
-						if (VarInfo* vi = m_grid_data->GetVarInfo(0, col)) {
-							g.YLabel = vi->Label;
-						}
-						if (!m_grid_data->GetUnits(col).IsEmpty()) {
-							g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
-						}
 						if (auto pxvv = m_grid_data->GetVarValue(0, 0)) {
 							if (VarInfo* vi = m_grid_data->GetVarInfo(0, 0)) {
 								g.XLabel = vi->Label;
 								g.X.push_back(m_grid_data->GetVarName(0, 0));
 								//g.ShowXValues = true;
 								if (!m_grid_data->GetUnits(col).IsEmpty()) {
-									g.XLabel += " (" + m_grid_data->GetUnits(0) + ")";
+									g.XLabel += " (" + vi->Units + ")";
 								}
 
 								// TODO Xmin, Xmax
@@ -1588,7 +1582,8 @@ wxString ParametricGridData::GetColLabelValue(int col)
 		{
 			if (VarInfo *vi = m_par.GetCase()->Variables().Lookup(m_var_names[col]))
 			{
-				col_label = m_var_names[col];
+//				col_label = m_var_names[col];
+				col_label = vi->Label;
 				col_units = vi->Units;
 			}
 		}
@@ -1596,7 +1591,8 @@ wxString ParametricGridData::GetColLabelValue(int col)
 		{
 			if (m_par.Runs.size() > 0)
 			{
-				col_label = m_var_names[col];
+				col_label = m_par.Runs[0]->GetLabel(m_var_names[col]);
+//				col_label = m_var_names[col];
 				col_units = m_par.Runs[0]->GetUnits(m_var_names[col]);
 			}
 			if (col_label.IsEmpty() || (col_label.Left(11) == "<not found:"))
@@ -1609,7 +1605,8 @@ wxString ParametricGridData::GetColLabelValue(int col)
 					col_label = m_var_names[col];
 				else
 				{
-					col_label = names[ndx];
+//					col_label = names[ndx];
+					col_label = labels[ndx];
 					col_units = units[ndx];
 				}
 			}

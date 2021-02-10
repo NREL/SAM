@@ -683,10 +683,10 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 		}
 
 	}
-	/*
+	
 	wxPLPlottable* plot = 0;
 	if (m_g.Type == Graph::LINE) {
-		plot = new wxPLLinePlot(plotdata, "something", "forest green",	wxPLLinePlot::SOLID, m_g.Size + 2);
+		plot = new wxPLLinePlot(plotdata, m_g.XLabel, s_colours[cidx],	wxPLLinePlot::SOLID, m_g.Size + 2);
 	}
 	else if (m_g.Type == Graph::SCATTER)
 	{
@@ -694,18 +694,18 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 		if (plotdata.size() < 100)
 			plot->SetAntiAliasing(true);
 	}
-	*/
+	
 
 	if (++cidx >= (int)s_colours.size()) cidx = 0; // incr and wrap around colour index
 
-//	if (plot != 0)
-//		AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
-
+	if (plot != 0)
+		AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
+/*
 	AddPlot(new wxPLLinePlot(plotdata, "3\\dot sin^2(x)", "forest green", wxPLLinePlot::DOTTED),
 		wxPLPlotCtrl::X_BOTTOM,
 		wxPLPlotCtrl::Y_LEFT,
 		wxPLPlotCtrl::PLOT_TOP);
-
+*/
 	/*
 	// group the bars together if they're not stacked and not single values
 	if (ndata > 1 && m_g.Type == Graph::BAR)
@@ -736,13 +736,13 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 		SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
 	}
 
-	
+*/	
 	// setup y axis
 
 	if (GetPlotCount() > 0)
 	{
-		double ymin, ymax;
-		GetPlot(0)->GetMinMax(0, 0, &ymin, &ymax);
+		double xmin, xmax, ymin, ymax;
+		GetPlot(0)->GetMinMax(&xmin, &xmax, &ymin, &ymax);
 		for (size_t i = 1; i < GetPlotCount(); i++)
 			GetPlot(i)->ExtendMinMax(0, 0, &ymin, &ymax);
 
@@ -769,10 +769,11 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 				ymin -= (ymin * 0.05);
 		}
 
+		SetXAxis1(new wxPLLinearAxis(xmin, xmax, m_g.XLabel));
 		SetYAxis1(new wxPLLinearAxis(ymin, ymax, m_g.YLabel));
 	}
 
-	*/
+	
 	Invalidate();
 	Refresh();
 	return 0;
