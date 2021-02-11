@@ -719,7 +719,7 @@ function capex_table_land_inputs_update_plot()
 		"thick"=2, "scale"=true,"color"=curves[0][2]});
 	plot(sys_cap_bin,sys_cost_bin,
 		{"series"="Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
-	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='northwest'});
+	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
 		
 	axis('x1', {'label'='Acreage (acres)', 'min'=0, 'max'=max(Cap)+1});
 	axis('y1', {'label'='Capex ($/acre)', 'min'=0, 'max'= max(cost_per_kw)+1});
