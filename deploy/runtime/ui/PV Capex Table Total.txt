@@ -1,7 +1,7 @@
 PV Capex Table Total
-825
-212
-11
+824
+207
+12
 Numeric
 
 1
@@ -213,8 +213,8 @@ Tool Tip
 0
 Caption
 5
-26
-Total installed land costs
+15
+Total land cost
 TextColour
 4
 0
@@ -261,8 +261,8 @@ Tool Tip
 0
 Caption
 5
-24
-Total installed AC costs
+13
+Total AC cost
 TextColour
 4
 0
@@ -309,8 +309,8 @@ Tool Tip
 0
 Caption
 5
-24
-Total installed DC costs
+13
+Total DC cost
 TextColour
 4
 0
@@ -428,13 +428,13 @@ Name
 object 4
 X
 3
-6
+9
 Y
 3
-3
+6
 Width
 3
-813
+812
 Height
 3
 201
@@ -461,6 +461,54 @@ X
 27
 Y
 3
+78
+Width
+3
+387
+Height
+3
+75
+Tool Tip
+5
+0
+Caption
+5
+239
+Be sure to include any sales tax in the capital cost. The sales tax on the Financial Parameters page is disabled when you use cost curves to define the total installed cost because this approach does not separate direct and indirect costs.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+object 73
+X
+3
+27
+Y
+3
 21
 Width
 3
@@ -473,8 +521,8 @@ Tool Tip
 0
 Caption
 5
-389
-Use these capex interpolation tables to define the DC Module costs, AC inverter costs, and land costs for your project. The interpolation tables will automatically calculate the costs for each category based on the DC module array capacity, AC inverter capacity, and total land area calculated in the System Design page. The total installed cost is the sum of these three cost components. 
+284
+Use these capital cost tables to define up to three cost curves in $/Wdc, $/Wac, and $/acre. SAM uses the nameplate DC capacity, total inverter AC capacity and total land area to determine a capital cost from each curve. The total installed cost is the sum of the three capital costs.
 TextColour
 4
 0

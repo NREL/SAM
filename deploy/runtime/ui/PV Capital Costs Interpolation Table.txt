@@ -1,6 +1,6 @@
 PV Capital Costs Interpolation Table
-825
-212
+824
+208
 11
 Numeric
 
@@ -428,13 +428,13 @@ Name
 object 4
 X
 3
-6
+9
 Y
 3
-3
+6
 Width
 3
-813
+812
 Height
 3
 201

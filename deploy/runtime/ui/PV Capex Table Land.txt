@@ -1,6 +1,6 @@
 PV Capex Table Land
-832
-330
+826
+315
 12
 GroupBox
 
@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-30
-Land Capital Costs Table Input
+23
+Land Capital Cost Table
 Bold
 2
 1
@@ -194,7 +194,7 @@ Name
 capex_table_land_plot
 X
 3
-456
+453
 Y
 3
 27
@@ -232,8 +232,8 @@ Tool Tip
 0
 Caption
 5
-17
-Capex cost per kw
+19
+Capex cost per acre
 TextColour
 4
 0
@@ -342,8 +342,8 @@ Tool Tip
 0
 Caption
 5
-26
-Total installed Land costs
+15
+Total land cost
 TextColour
 4
 0

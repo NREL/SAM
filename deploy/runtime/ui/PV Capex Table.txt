@@ -1,6 +1,6 @@
 PV Capex Table
-832
-328
+826
+318
 12
 GroupBox
 
@@ -15,7 +15,7 @@ X
 9
 Y
 3
-3
+6
 Width
 3
 812
@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-28
-DC Capital Costs Table Input
+21
+DC Capital Cost Table
 Bold
 2
 1
@@ -343,8 +343,8 @@ Tool Tip
 0
 Caption
 5
-24
-Total installed DC costs
+13
+Total DC cost
 TextColour
 4
 0
@@ -540,7 +540,7 @@ Tool Tip
 Caption
 5
 1
-X
+x
 TextColour
 4
 0
