@@ -1,6 +1,6 @@
 PV Capital Costs
 827
-694
+748
 96
 GroupBox
 
@@ -51,7 +51,7 @@ Width
 812
 Height
 3
-284
+257
 Tool Tip
 5
 0
@@ -75,7 +75,37 @@ X
 9
 Y
 3
-591
+564
+Width
+3
+812
+Height
+3
+59
+Tool Tip
+5
+0
+Caption
+5
+9
+Salex Tax
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+GroupBox35
+X
+3
+9
+Y
+3
+627
 Width
 3
 812
@@ -2042,7 +2072,7 @@ X
 681
 Y
 3
-642
+675
 Width
 3
 127
@@ -3126,7 +3156,7 @@ X
 45
 Y
 3
-609
+642
 Width
 3
 380
@@ -3736,7 +3766,7 @@ X
 681
 Y
 3
-537
+504
 Width
 3
 127
@@ -3837,45 +3867,6 @@ Caption
 Bold
 2
 1
-Divider
-
-1
-10
-Name
-5
-11
-object 2291
-X
-3
-72
-Y
-3
-498
-Width
-3
-579
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-9
-Sales Tax
-Bold
-2
-1
 Label
 
 1
@@ -3889,7 +3880,7 @@ X
 471
 Y
 3
-618
+651
 Width
 3
 210
@@ -4225,7 +4216,7 @@ X
 468
 Y
 3
-552
+519
 Width
 3
 210
@@ -4838,7 +4829,7 @@ X
 285
 Y
 3
-513
+585
 Width
 3
 100
@@ -4900,7 +4891,7 @@ X
 681
 Y
 3
-513
+585
 Width
 3
 127
@@ -4963,7 +4954,7 @@ X
 489
 Y
 3
-513
+585
 Width
 3
 100
@@ -5151,7 +5142,7 @@ X
 681
 Y
 3
-552
+519
 Width
 3
 127
@@ -5214,7 +5205,7 @@ X
 681
 Y
 3
-618
+651
 Width
 3
 127
@@ -6204,7 +6195,7 @@ Capital Costs
 0
 Numeric
 
-4693
+4690
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6313,7 +6304,7 @@ equations{ 'install_margin_total' } = define() {
 
 equations{ 'total_installed_cost' } = define() {
 	if(${pv_capex_cost_choice}==0) {
-		return ${total_direct_cost}+${total_indirect_cost};
+		return ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total};
 	}
 	else {
 		return ${capex_table_total_installed_dc_cost} + 
@@ -6335,8 +6326,8 @@ equations{ 'total_indirect_cost' } = define() {
 		+${engr_total}
 		+${grid_total}
 		+${land_total}
-		+${landprep_total}
-		+${sales_tax_total}; };
+		+${landprep_total};};
+
 
 equations{ 'grid_total' } = define() {
 	return ${grid_percent}/100*${total_direct_cost} 
