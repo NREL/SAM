@@ -635,7 +635,7 @@ Lease price escalation rate
 %/year
 Third Party Ownership
 0
-0
+2
 1
 1
 1
@@ -663,7 +663,7 @@ First year monthly lease price
 $/month
 Third Party Ownership
 0
-0
+2
 1
 1
 1
@@ -691,7 +691,7 @@ PPA price escalation rate
 %/year
 Third Party Ownership
 0
-0
+2
 1
 1
 1
@@ -705,7 +705,7 @@ First year PPA price
 $/kWh
 Third Party Ownership
 0
-0
+2
 1
 1
 1
