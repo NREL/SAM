@@ -1,6 +1,6 @@
 Fuel Cell Costs
-956
-886
+949
+821
 128
 GroupBox
 
@@ -4597,8 +4597,8 @@ Tool Tip
 0
 Caption
 5
-155
-The total installed cost is the sum of the direct and indirect costs. Note that it does not include any financing costs from the Financial Parameters page.
+167
+The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.
 TextColour
 4
 0

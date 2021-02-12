@@ -3488,8 +3488,8 @@ Tool Tip
 0
 Caption
 5
-155
-The total installed cost is the sum of the direct and indirect costs. Note that it does not include any financing costs from the Financial Parameters page.
+167
+The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.
 TextColour
 4
 0
@@ -3809,7 +3809,7 @@ Name
 lbl_land_preparation
 X
 3
-18
+45
 Y
 3
 495
@@ -5487,7 +5487,7 @@ Name
 sales_tax_total
 X
 3
-705
+708
 Y
 3
 630
