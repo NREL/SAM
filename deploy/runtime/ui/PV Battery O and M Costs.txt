@@ -18,7 +18,7 @@ Y
 0
 Width
 3
-934
+812
 Height
 3
 248
@@ -426,10 +426,10 @@ Name
 Label3
 X
 3
-201
+45
 Y
 3
-201
+177
 Width
 3
 686
@@ -777,8 +777,8 @@ Tool Tip
 0
 Caption
 5
-2
-kW
+3
+kWh
 TextColour
 4
 0
