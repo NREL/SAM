@@ -1218,7 +1218,7 @@ Depth of discharge [%]| Cell voltage [V]
 DataMatrix
 
 0
-4869
+4901
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
@@ -1266,7 +1266,10 @@ function set_voltage_choice(update_defaults)
 	if (is_vanadium) { model_inputs_on = false; }
 		
 	// never allow iron to use a voltage model (doesn't exist)
-	if (is_iron && model_inputs_on) { value('batt_voltage_choice', 1); }
+	if (is_iron && model_inputs_on) { 
+		value('batt_voltage_choice', 1); 
+		model_inputs_on = false;
+	}
 
 	//show_voltage_model_inputs(show_model_inputs);	
 	enable_voltage_model_inputs(model_inputs_on);

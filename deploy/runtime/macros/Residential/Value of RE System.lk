@@ -83,7 +83,7 @@ function set_rate_from_urdb()
 		zip = in( 'Enter the zip code: ', '00000', 'Zip Code' );
 		outln('Searching for rates by zip code.');
 		utility_list = urdb_list_utilities_by_zip_code ( zip );
-			if ( utility_list == null )
+		if ( utility_list == null )
 		{
 			msgbox( 'No utilities found for zip code ' + zip + '.' );
 			return false;
@@ -297,8 +297,8 @@ if ( macro.rate_option == '2. Flat rate' )
 
 	outln('Running simulation for base case with no system and flat rate.');
 	ok = set_flat_rate( macro.flat , macro.fixed );
-	if ( ok ) simulate('',true);
-	else msgbox ('Unable to set flat rate.\n Results will be based on using the same rate for all scenarios.' );
+	if ( ok ) { simulate('',true); }
+	else { msgbox ('Unable to set flat rate.\n Results will be based on using the same rate for all scenarios.' ); }
 
 	restore_rate = true;
 }
@@ -311,8 +311,8 @@ elseif ( macro.rate_option == '3. Different rate structure' )
 	// get new base rate and run a simulation
 	ok = get_basecase_rate();
 	outln('Running simulation for base case with no system with different rate.');
-	if ( ok ) simulate('',true);
-	else msgbox( 'Unable to set rate data for case with no system.\n Results will be based on using the same rate for all scenarios.' );
+	if ( ok ) { simulate('',true); }
+	else { msgbox( 'Unable to set rate data for case with no system.\n Results will be based on using the same rate for all scenarios.' ); }
 	
 	restore_rate = true;
 }

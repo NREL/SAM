@@ -306,16 +306,16 @@ Name
 ur_description
 X
 3
-99
+96
 Y
 3
-222
+198
 Width
 3
 816
 Height
 3
-138
+168
 Tool Tip
 5
 0
@@ -353,7 +353,7 @@ X
 561
 Y
 3
-162
+150
 Width
 3
 352
@@ -580,10 +580,10 @@ Name
 ur_name
 X
 3
-99
+96
 Y
 3
-78
+102
 Width
 3
 816
@@ -664,50 +664,6 @@ TextEntry
 11
 Name
 5
-16
-ur_schedule_name
-X
-3
-99
-Y
-3
-105
-Width
-3
-816
-Height
-3
-21
-Tool Tip
-5
-0
-Text
-5
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4
-TextEntry
-
-1
-11
-Name
-5
 9
 ur_source
 X
@@ -715,7 +671,7 @@ X
 96
 Y
 3
-132
+126
 Width
 3
 816
@@ -759,7 +715,7 @@ X
 96
 Y
 3
-162
+150
 Width
 3
 352
@@ -803,7 +759,7 @@ X
 96
 Y
 3
-192
+174
 Width
 3
 816
@@ -834,6 +790,50 @@ BackColour
 TabOrder
 3
 0
+TextEntry
+
+1
+11
+Name
+5
+10
+ur_utility
+X
+3
+96
+Y
+3
+78
+Width
+3
+816
+Height
+3
+21
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+1
 TextEntry
 
 1
@@ -1003,7 +1003,7 @@ TabOrder
 3
 4294967295
 
-17
+18
 ur_demand_history
 3
 1
@@ -1118,14 +1118,13 @@ ur_name
 4
 Name
  
-Electricity Rates - Description Metadata
+ 
 0
 0
 1
 4
-5
-empty
-TextEntry
+0
+Default
 ur_phase_wiring
 3
 4
@@ -1181,6 +1180,19 @@ ur_uri
 3
 4
 URI
+ 
+Electricity Rates - Description Metadata
+0
+0
+1
+4
+5
+empty
+TextEntry
+ur_utility
+3
+4
+Utility
  
 Electricity Rates - Description Metadata
 0

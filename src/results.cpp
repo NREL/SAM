@@ -188,6 +188,10 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 					gbn = "Electricity Rate Data by Year"; // annual monthly
 				else if (grp == "UR_DMP")
 					gbn = "Electricity Demand Data by Period"; // monthly period
+				else if (grp == "LIFETIME_MP")
+					gbn = "Lifetime Merchant Plant"; // merchant plant output - SAM issue 485 - can be the same or different from other Lifetime data (e.g. hourly, 15minute, monthly, etc.)
+				else if (grp == "WTPCD")
+					gbn = "Wind Turbine Power Curve Data"; 
 			}
 
 			group_by_name[list[j]] = gbn;
