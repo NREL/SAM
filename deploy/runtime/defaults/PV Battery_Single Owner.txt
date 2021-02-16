@@ -1061,7 +1061,7 @@ battery_lifetime_shown
 1
 1
 1
-1
+0
 battery_losses_shown
 1
 1
@@ -1097,7 +1097,7 @@ battery_thermal_shown
 1
 1
 1
-1
+0
 battery_total
 1
 1
@@ -1109,7 +1109,7 @@ battery_voltage_shown
 1
 1
 1
-1
+0
 beta_oc_calc
 1
 1
