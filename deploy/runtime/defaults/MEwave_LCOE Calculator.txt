@@ -1,5 +1,5 @@
 1
-672
+705
 accumulators_cost
 1
 1
@@ -260,7 +260,7 @@ average_power_flux
 1
 1
 1
-37
+32.2
 average_power_flux_ts
 1
 1
@@ -486,8 +486,8 @@ cathodic_protection_system_cost
 city
 1
 4
-7
-Newport
+6
+Eureka
 city_ts
 1
 4
@@ -591,7 +591,7 @@ data_source
 1
 4
 21
-Sandia; SAND2015-7963
+Sandia; SAND2014-9040
 data_source_ts
 1
 4
@@ -1071,7 +1071,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5.65588e+06
+5655880
 eng_and_mgmt_cost_input
 1
 1
@@ -1089,7 +1089,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-5.65588e+06
+5655880
 eng_and_mgmt_cost_total
 1
 1
@@ -1203,7 +1203,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-1.60345e+06
+1603450
 export_cable_system_cost_total
 1
 1
@@ -1266,8 +1266,8 @@ Humboldt_California_Wave Resource _SAM CSV.csv
 file_name_ts
 1
 4
-78
-C:\Users\mprillim\sam_dev\sam\deploy\wave_resource_ts\test_timeseries_data.csv
+24
+test_timeseries_data.csv
 financial_cost_input
 1
 1
@@ -1507,7 +1507,7 @@ insurance_during_construction_cost
 1
 1
 1
-3.64551e+06
+3645510
 insurance_during_construction_cost_input
 1
 1
@@ -1519,7 +1519,7 @@ insurance_during_construction_cost_modeled_ui
 1
 1
 1
-3.64551e+06
+3645510
 insurance_during_construction_method
 1
 1
@@ -1531,7 +1531,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3.64551e+06
+3645510
 insurance_operations_cost
 1
 1
@@ -1693,7 +1693,7 @@ lat
 1
 1
 1
-44.6899
+40.8418
 lat_ts
 1
 1
@@ -1793,7 +1793,7 @@ lon
 1
 1
 1
--124.135
+-124.248
 lon_ts
 1
 1
@@ -1859,7 +1859,7 @@ maintenance_cost
 1
 1
 1
-3.65828e+06
+3658280
 maintenance_cost_input
 1
 1
@@ -1877,7 +1877,7 @@ maintenance_cost_modeled
 1
 1
 1
-3.65828e+06
+3658280
 maintenance_cost_total
 1
 1
@@ -2072,7 +2072,7 @@ nearby_buoy_number
 1
 4
 10
-NDBC 46094
+NDBC 46212
 nearby_buoy_number_ts
 1
 4
@@ -2087,8 +2087,7 @@ noise_mitigation_cost
 notes
 1
 4
-58
-Pacific Marine Energy Test Center - North Energy Test Site
+0
 notes_ts
 1
 4
@@ -2459,7 +2458,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-2.03767e+06
+2037670
 other_elec_infra_cost_total_display
 1
 1
@@ -3303,8 +3302,8 @@ scour_protection_elec_infras_cost
 sea_bed
 1
 4
-9
-Soft Sand
+13
+Sand and Clay
 sea_bed_ts
 1
 4
@@ -3363,7 +3362,7 @@ site_access_port_staging_cost
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_input
 1
 1
@@ -3381,13 +3380,13 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_modeled_ui
 1
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_total
 1
 1
@@ -3463,8 +3462,8 @@ stakeholder_outreach_cost
 state
 1
 4
-6
-Oregon
+10
+California
 state_ts
 1
 4
