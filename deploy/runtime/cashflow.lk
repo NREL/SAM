@@ -659,9 +659,9 @@ function cf_levelized_metrics()
 	cfline('cf_annual_cost_lcos', 0);
 	cfline('cf_charging_cost_grid', 0);
 	cfline('cf_charging_cost_pv', 0);
-	cfline('cf_om_production1_expense', 0);
-	cfline('cf_om_capacity1_expense', 0);
-	cfline('cf_om_fixed1_expense', 0);
+	cfline('cf_om_batt_production_expense', 0);
+	cfline('cf_om_batt_capacity_expense', 0);
+	cfline('cf_om_batt_fixed_expense', 0);
 	cfline('cf_batt_replacement_cost', 0);
 	cfline('cf_salvage_cost_lcos', 0);
 	cfline('cf_util_escal_rate', 2);

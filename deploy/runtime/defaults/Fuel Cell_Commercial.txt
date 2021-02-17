@@ -1,5 +1,5 @@
 1
-664
+665
 LeadAcid_q10
 1
 1
@@ -881,6 +881,12 @@ battery_thermal_shown
 1
 0
 battery_total
+1
+1
+1
+1
+0
+battery_total_cost_lcos
 1
 1
 1
@@ -2726,7 +2732,7 @@ om_capacity1_nameplate
 1
 1
 1
-100.205
+0
 om_capacity2
 1
 2
