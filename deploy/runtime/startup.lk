@@ -26,7 +26,7 @@ if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
-addconfig( 'MEwave', ['LCOE Calculator']);
+addconfig( 'MEwave', ['LCOE Calculator', 'None']);
 addconfig( 'MEtidal', ['LCOE Calculator']);
 addconfig( 'Geothermal Power', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
@@ -1721,6 +1721,10 @@ setconfig( 'MEwave', 'LCOE Calculator' );
 setmodules( ['wave_file_reader', 'mhk_wave', 'lcoefcr']);
 setup_mewave_pages();
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
+//-----------------------------------------------------
+setconfig( 'MEwave', 'None' );
+setmodules( ['wave_file_reader', 'mhk_wave']);
+setup_mewave_pages();
 
 function setup_metidal_pages()
 {
