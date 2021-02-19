@@ -1,5 +1,5 @@
 1
-752
+755
 LeadAcid_q10
 1
 1
@@ -846,6 +846,12 @@ batt_volume
 1
 0.19991
 battery_energy
+1
+1
+1
+1
+0
+battery_indirect_cost_percent
 1
 1
 1
@@ -4232,6 +4238,12 @@ tod_library
 4
 16
 Uniform Dispatch
+total_battery_indirect_cost
+1
+1
+1
+1
+0
 total_direct_cost
 1
 1
@@ -4250,6 +4262,12 @@ total_installed_cost
 1
 1
 2322000
+total_system_indirect_cost
+1
+1
+1
+1
+110000
 tz
 1
 1

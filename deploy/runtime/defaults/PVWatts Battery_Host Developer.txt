@@ -1,5 +1,5 @@
 1
-546
+547
 ac_nameplate
 1
 1
@@ -184,6 +184,12 @@ battery_energy
 1
 1
 10
+battery_indirect_cost_percent
+1
+1
+1
+1
+20
 battery_per_kW
 1
 1

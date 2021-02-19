@@ -1,5 +1,5 @@
 1
-490
+491
 LeadAcid_q10
 1
 1
@@ -865,6 +865,12 @@ battery_energy
 1
 1
 9.60768
+battery_indirect_cost_percent
+1
+1
+1
+1
+20
 battery_lifetime_shown
 1
 1
