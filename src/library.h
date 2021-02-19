@@ -93,6 +93,7 @@ bool ShowWindResourceDataSettings();
 bool ScanWindResourceData(const wxString &db_file, bool show_busy = false);
 bool ScanWaveResourceData(const wxString &db_file, bool show_busy = false);
 bool ScanWaveResourceTSData(const wxString &db_file, bool show_busy = false);
+bool WaveResourceTSData_makeJPD(const wxString& db_file, bool show_busy = false);
 
 class LibraryCtrl;
 class wxTextCtrl;
