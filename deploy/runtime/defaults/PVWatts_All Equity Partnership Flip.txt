@@ -1,11 +1,11 @@
 1
-427
+439
 ac_nameplate
 1
 1
 1
 1
-16666.7
+41666.7
 adjust
 1
 5
@@ -136,7 +136,18 @@ bos_equip_total
 1
 1
 1
-4000000
+10000000
+capex_matrix_widget
+1
+5
+1
+0
+capex_table_ac_cost_per_kw
+1
+1
+1
+1
+0
 capex_table_ac_inputs
 1
 3
@@ -151,7 +162,18 @@ capex_table_ac_inputs
 2000000 0.425 
 5000000 0.425 
 
-capex_table_capacity_choice
+capex_table_button_value
+1
+1
+1
+1
+0
+capex_table_cap_warning
+1
+4
+9
+<invalid>
+capex_table_check
 1
 1
 1
@@ -177,15 +199,12 @@ capex_table_dc_inputs
 2000000 0.785 
 5000000 0.785 
 
-capex_table_inputs
+capex_table_land_cost_per_kw
 1
-3
-3
-2
-2 0.35 
-5 0.4 
-8 0.45 
-
+1
+1
+1
+0
 capex_table_land_inputs
 1
 3
@@ -197,19 +216,36 @@ capex_table_land_inputs
 100 6926 
 1000 6926 
 
-capex_table_total_direct_cost
+capex_table_tax_warning
+1
+4
+9
+<invalid>
+capex_table_total_installed_ac_cost
 1
 1
 1
 1
 0
-capex_table_total_indirect_cost
+capex_table_total_installed_dc_cost
 1
 1
 1
 1
 0
-capex_table_total_installed_cost
+capex_table_total_installed_land_cost
+1
+1
+1
+1
+0
+capex_table_widget
+1
+3
+1
+1
+0
+capex_table_widget_total_cost
 1
 1
 1
@@ -369,7 +405,7 @@ const_per_interest1
 1
 1
 1
-213529
+513822
 const_per_interest2
 1
 1
@@ -429,7 +465,7 @@ const_per_interest_total
 1
 1
 1
-213529
+513822
 const_per_months1
 1
 1
@@ -526,7 +562,7 @@ const_per_principal1
 1
 1
 1
-21352900
+51382248
 const_per_principal2
 1
 1
@@ -556,13 +592,13 @@ const_per_principal_total
 1
 1
 1
-21352900
+51382248
 const_per_total1
 1
 1
 1
 1
-427058
+1.02764e+06
 const_per_total2
 1
 1
@@ -622,13 +658,13 @@ construction_financing_cost
 1
 1
 1
-427058
+1.02764e+06
 contingency
 1
 1
 1
 1
-498000
+1245000
 contingency_percent
 1
 1
@@ -646,13 +682,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-169948
+408951
 cost_dev_fee_value
 1
 1
 1
 1
-640587
+1.54147e+06
 cost_equity_closing
 1
 1
@@ -1119,7 +1155,7 @@ engr_total
 1
 1
 1
-1600000
+3500000
 equip1_reserve_cost
 1
 1
@@ -1233,7 +1269,7 @@ grid_total
 1
 1
 1
-600000
+1500000
 ibi_fed_amount
 1
 1
@@ -1555,7 +1591,7 @@ install_labor_total
 1
 1
 1
-2600000
+5500000
 install_margin_fixed
 1
 1
@@ -1579,13 +1615,13 @@ install_margin_total
 1
 1
 1
-1200000
+3000000
 installed_per_capacity
 1
 1
 1
 1
-1.06764
+1.02764
 insurance_rate
 1
 1
@@ -1615,19 +1651,25 @@ inverter_power
 1
 1
 1
-16666.7
+41666.7
 inverter_total
 1
 1
 1
 1
-1200000
+2500000
 inverterarray_power
 1
 1
 1
 1
-16666.7
+41666.7
+inverterarray_power_w
+1
+1
+1
+1
+41666668
 is_advanced
 1
 1
@@ -1718,6 +1760,12 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area_capex
+1
+1
+1
+1
+0
 land_area_value
 1
 1
@@ -1753,7 +1801,7 @@ land_total
 1
 1
 1
-600000
+0
 landprep_fixed
 1
 1
@@ -1783,7 +1831,7 @@ landprep_total
 1
 1
 1
-400000
+1000000
 lat
 1
 1
@@ -1973,7 +2021,7 @@ mera_cost1
 1
 1
 1
-5000000
+12500000
 mera_cost2
 1
 1
@@ -2018,13 +2066,13 @@ module_power
 1
 1
 1
-20000
+50000
 module_total
 1
 1
 1
 1
-7600000
+20500000
 module_type
 1
 1
@@ -2042,7 +2090,13 @@ modulearray_power
 1
 1
 1
-20000
+50000
+modulearray_power_w
+1
+1
+1
+1
+50000000
 months_receivables_reserve
 1
 1
@@ -2304,7 +2358,7 @@ permitting_total
 1
 1
 1
-200000
+500000
 ppa_escalation
 1
 1
@@ -2346,7 +2400,7 @@ property_assessed_value
 1
 1
 1
-21352900
+51382248
 property_tax_rate
 1
 1
@@ -2389,6 +2443,12 @@ ptc_sta_term
 1
 1
 10
+pv_capex_cost_choice
+1
+1
+1
+1
+0
 real_discount_rate
 1
 1
@@ -2418,7 +2478,7 @@ sales_tax_total
 1
 1
 1
-854900
+2137250
 sales_tax_value
 1
 1
@@ -2532,7 +2592,7 @@ subtotal_direct
 1
 1
 1
-16600000
+41500000
 system_capacity
 1
 1
@@ -2581,6 +2641,12 @@ tax_investor_preflip_tax_percent
 1
 1
 99
+test_calc
+1
+1
+1
+1
+0
 tilt
 1
 1
@@ -2597,19 +2663,19 @@ total_direct_cost
 1
 1
 1
-17098000
+42745000
 total_indirect_cost
 1
 1
 1
 1
-4254900
+6500000
 total_installed_cost
 1
 1
 1
 1
-21352900
+51382248
 tz
 1
 1
