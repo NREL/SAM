@@ -263,13 +263,36 @@ function setup_residential_pages( mode ) // mode determines whether or not the b
   setup_elec_load_page( mode );
 }
 
-function setup_thirdparty_pages( load ) // FOR NOW, THIRD PARTY OWNERSHIP MODEL IS ONLY VALID FOR PVWATTS AND PV DETAILED and generic system!!
+function setup_thirdparty_pages( load ) // Third party host
 {
   setting( { 'analysis_period_var'='cf_length' } );
   addpage( [[ 'Financial Third Party Ownership']],
-           { 'sidebar'='Financial Parameters', 'help'='fin_thirdparty'} );
+           { 'sidebar'='Financial Parameters', 'help'='fin_tpo_host'} );
   setup_utility_rate();
   setup_elec_load_page( load ); // BELPE IS VALID FOR BOTH PVWATTS AND PV DETAILED, but not generic system
+}
+
+function setup_host_developer_pages(mode) // third party host-developer
+{
+  setting( { 'analysis_period_var'='cf_length' } );
+  addpage( [[ 'Financial Solution Mode Single Owner',
+              'Financial Analysis Host Developer Parameters',
+		      'Financial Tax and Insurance Rates',
+		      'Financial Salvage Value',
+		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
+               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+           { 'sidebar'='Financial Parameters', 'help'='fin_tpo_host_developer' }  );
+  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
+
+  addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+  addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
+  setup_utility_rate();
+  setup_elec_load_page( mode );
 }
 
 function setup_lcoefcr_pages() // LCOE calculator will not work with tower models because cost inputs required for solar pilot
@@ -372,29 +395,6 @@ function setup_merchant_plant_pages()
            { 'sidebar'='Incentives', 'help'='incentives' } );
   addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
-}
-
-function setup_host_developer_pages(mode)
-{
-  setting( { 'analysis_period_var'='cf_length' } );
-  addpage( [[ 'Financial Solution Mode Single Owner',
-              'Financial Analysis Host Developer Parameters',
-		      'Financial Tax and Insurance Rates',
-		      'Financial Salvage Value',
-		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
-              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
-              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
-              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
-               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
-           { 'sidebar'='Financial Parameters', 'help'='fin_tpo_host_developer' }  );
-  addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
-
-  addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
-           { 'sidebar'='Incentives', 'help'='incentives' } );
-  addpage( [['Financial Depreciation Detailed' ]],
-           { 'sidebar'='Depreciation', 'help'='depreciation' });
-  setup_utility_rate();
-  setup_elec_load_page( mode );
 }
 
 function setup_leveraged_partnership_flip_pages()
