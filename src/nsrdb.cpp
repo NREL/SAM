@@ -550,6 +550,13 @@ void NSRDBDialog::GetResources()
 		return;
 	}
 
+    if (root.HasMember("error"))
+    {
+       wxJSONValue error_list = root.Item("error");
+       wxMessageBox( wxString::Format("NSRDB API error!\n\nMessage: %s\n\nCode: %s ", error_list.Item("message").AsString(), error_list.Item("code").AsString() ));
+       return;
+    }
+
 	wxJSONValue output_list = root["outputs"];
 
 	// format location to use in file name
