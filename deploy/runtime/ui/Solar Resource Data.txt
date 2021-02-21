@@ -540,7 +540,7 @@ Name
 btn_add_remove_folders
 X
 3
-616
+615
 Y
 3
 306
@@ -600,7 +600,7 @@ Name
 btn_refresh_library
 X
 3
-616
+615
 Y
 3
 336
@@ -2624,7 +2624,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-32190
+32295
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2933,7 +2933,9 @@ function update_info( ctxt )
 		}
 		else
 		{
-			msgbox('Weather file reader failed!\n' + result);
+			msgbox('Weather file reader failed!\n' 
+			+ result
+			+ '\n\nTo avoid this message, remove  the following file from your weather file folders: \n' + wf);
 			value( 'annual_global', nan() );
 			value( 'annual_beam', nan() );
 			value( 'annual_diffuse', nan() );
