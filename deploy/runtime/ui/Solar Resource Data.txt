@@ -48,7 +48,7 @@ Y
 504
 Width
 3
-847
+853
 Height
 3
 21
@@ -540,7 +540,7 @@ Name
 btn_add_remove_folders
 X
 3
-616
+621
 Y
 3
 306
@@ -570,16 +570,16 @@ Name
 btn_download
 X
 3
-663
+651
 Y
 3
 474
 Width
 3
-205
+223
 Height
 3
-30
+24
 Tool Tip
 5
 0
@@ -600,7 +600,7 @@ Name
 btn_refresh_library
 X
 3
-616
+621
 Y
 3
 336
@@ -663,10 +663,10 @@ X
 18
 Y
 3
-66
+63
 Width
 3
-846
+855
 Height
 3
 36
@@ -761,7 +761,7 @@ Y
 393
 Width
 3
-846
+855
 Height
 3
 51
@@ -871,7 +871,7 @@ Y
 264
 Width
 3
-846
+855
 Height
 3
 39
@@ -1076,7 +1076,7 @@ Y
 474
 Width
 3
-270
+258
 Height
 3
 24
@@ -1145,10 +1145,10 @@ Name
 is_advanced
 X
 3
-660
+659
 Y
 3
-444
+447
 Width
 3
 215
@@ -1243,10 +1243,10 @@ X
 18
 Y
 3
-30
+27
 Width
 3
-846
+855
 Height
 3
 33
@@ -1768,7 +1768,7 @@ Y
 102
 Width
 3
-846
+855
 Height
 3
 159
@@ -2624,7 +2624,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-32185
+32828
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2757,8 +2757,10 @@ on_change{'btn_download'} = define() {
 function test_decimal_degrees( loc_in ) 
 {
 	str = replace( loc_in, ', ', ',' );
-	str = replace( str, ' ', ',' ); // allow space separated lat/lon pair	
+	//if ( strpos(str,',') < 0 ) { str = replace( loc_in, ' ', ',' ); }
+	str = replace( loc_in, ' ', ',' );
 	arr = split( str, ',' );
+	msg = 'For geocoding: ';
 	if ( #arr == 2 ) // loc_in may be a lat/lon pair
 	{
 		// check for NSEW in string
@@ -2768,26 +2770,28 @@ function test_decimal_degrees( loc_in )
 		// check for values in range
 		lat = to_real( arr[0] ); // lat = 0 if arr[0] is a string with no numbers
 		lon = to_real( arr[1] ); // lon = 0 if arr[0] is a string with no numbers
-		is_out_of_range =  ( ( lat <= -90 || lat >= 90 ) || ( lon <=-180 || lon >= 180 ) );
+		is_out_of_range =  ( ( lat < -90 || lat > 90 ) || ( lon <-180 || lon > 180 ) );
 		is_string = ( lat == 0 && lon == 0 ); // assume no one is modeling a system at 0,0
-		msg = '"' + loc_in + '"' + ' is not a valid lat/lon pair in Decimal Degrees (uses N/S, E/W)';
 		loc_out = null;
-		if ( is_string )
+		if ( is_nsew && !is_string)
 		{
-			loc_out = loc_in;
-			msg = '\"' + loc_in + '\"' + ' appears to be a city/state pair';
+			msg += '"' + loc_in + '"' + ' is not a valid lat/lon pair in Decimal Degrees. Coordinates must be in Decimal Degrees without the letters N, S, E, or W.';
 		}
-		elseif ( !is_nsew && !is_out_of_range )
+		elseif ( !is_string && !is_out_of_range )
 		{
 			loc_out = str;
-			msg = '\"' + loc_in + '\"' + ' appears to be a valid lat/lon pair in Decimal Degrees';
+			msg += '\"' + loc_in + '\"' + ' appears to be a valid lat/lon pair in Decimal Degrees.';
 		}
-
+		else
+		{
+			loc_out = loc_in;
+			msg += '\"' + loc_in + '\"' + ' appears to be a city/state pair.';
+		}
 	}
 	else
 	{
 		loc_out = loc_in;
-		msg = '\"' + loc_in + '\"' + ' appears to be a street address or location name';
+		msg += '\"' + loc_in + '\"' + ' appears to be a street address or location name. (Locations entered as coordinates must be in Decimal Degrees separated by a comma.)';
 	}
 	return [loc_out, msg ]; 
 }
@@ -3123,16 +3127,28 @@ function nsrdb( location, is_tmy )
 		url = webapi( 'nsrdb_query' );
 		url = replace( url, '<LAT>', g.lat );
 		url = replace( url, '<LON>', g.lon );
+		//url = replace( url, '<LAT>', 'xxx' );
+		//url = replace( url, '<LON>', 'yyy' );
 		json_str = curl( url );
 		msg += 'URL for NSRDB Data Query: ' + url + '\n\n';
 		var = json_read( json_str );
 		if ( typeof( var ) == 'table' )
 		{
-			if ( var.errors != [] )
+			if ( var.errors != null)
 			{
-				msg += var.errors + '.\n';
-				if ( strpos( lower(var.errors.code), 'api' ) > -1 ) // no or invalid api key
-					{ msg += 'See private.h to set API keys.'; }
+				if ( #var.errors > 0 )
+				{
+					msg += 'Message from NSRDB Data Query: ' + var.errors[0] + '.\nStatus = ' + var.status;
+				}
+				else { json_ok = true; }	
+			}
+			elseif ( var.error != null )
+			{
+				if ( #@var.error > 0 )
+				{
+					msg += 'NSRDB Data Query Error: ' + var.error.message + '.\nCode = ' + var.error.code;
+					if ( strpos( lower(var.code), 'api' ) > -1 ) { msg += 'See private.h to set API keys.'; }
+				}	
 			}
 			elseif ( var.outputs == null )
 			{
@@ -3151,10 +3167,6 @@ function nsrdb( location, is_tmy )
 		{
 			msg += 'NSRDB Data Query did not return valid JSON string:\n';
 			msg += json_str;
-			if ( strpos( lower(json_str), 'api' ) > -1 ) // no or invalid api key
-			{
-				msg += 'See private.h to set API keys.\n';
-			}	
 		}
 		if ( json_ok )
 		{
@@ -3202,6 +3214,7 @@ function nsrdb( location, is_tmy )
 				dataset_ok = true;
 			}
 		}
+		//else { msg += 'JSON tests failed. There may be a problem with the service.'; }
 	}
 	else
 	{
@@ -3314,8 +3327,8 @@ function nsrdb_get()
 			base_url = dataset[n].url;
 			base_url += '?api_key=<SAMAPIKEY>';
 			base_url += '&full_name=sam_user';
-			//base_url += '&email=<USEREMAIL>'; TO DO CHANGE BACK**
-			base_url += '&email=sam.support@nrel.gov';
+			base_url += '&email=<USEREMAIL>';
+			//base_url += '&email=sam.support@nrel.gov';
 			base_url += '&affiliation=unknown'; 
 			base_url += '&mailing_list=false';
 			base_url += '&reason=SAM';
@@ -3402,7 +3415,7 @@ function nsrdb_get()
 					wf_error = '';
 					start = start_timer();
 					progressbar( pb_years, { 'message' = 'Downloading file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
-					curl_ok = curl( url , { 'file'= fname } ); // curl() should replace <SAMAPI> and <USEREMAIL > with values from private.h
+					curl_ok = curl( url , { 'file'= fname } ); // curl() should replace <SAMAPI> from private.h and <USEREMAIL > from registry
 					time = elapsed_time() / 1000;
 					write_line( flog, 'Download time: ' + time + ' seconds.\n' );
 					progressbar( pb_years, { 'message' = 'Checking file ' + to_string(i+1) + ' of ' + #type + '.' , 'value' = 1+i } );
@@ -3422,6 +3435,8 @@ function nsrdb_get()
 							file_text = read_text_file( fname );
 							if ( #file_text < 1000 ) // probably JSON returned by NSRDB
 							{ 
+								var_err = json_read( file_text );
+								msg += 'Error message from NSRDB: \n' + var_err.errors[0] +'\n\n';
 								write_line( flog, 'Text from file:\n' +  file_text );
 							}
 							msg += 'Weather file test failed for ' + file_only( fname ) + '.\n';
