@@ -143,7 +143,7 @@ extern "C"
 	 * Set calendar_a: Calendar life model coefficient [1/sqrt(day)]
 	 * options: None
 	 * constraints: None
-	 * required if: calendar_choice=1
+	 * required if: life_model=0&calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_a_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -151,7 +151,7 @@ extern "C"
 	 * Set calendar_b: Calendar life model coefficient [K]
 	 * options: None
 	 * constraints: None
-	 * required if: calendar_choice=1
+	 * required if: life_model=0&calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_b_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -159,7 +159,7 @@ extern "C"
 	 * Set calendar_c: Calendar life model coefficient [K]
 	 * options: None
 	 * constraints: None
-	 * required if: calendar_choice=1
+	 * required if: life_model=0&calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_c_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -167,7 +167,7 @@ extern "C"
 	 * Set calendar_choice: Calendar life degradation input option [0/1/2]
 	 * options: 0=None,1=LithiomIonModel,2=InputLossTable
 	 * constraints: None
-	 * required if: *
+	 * required if: life_model=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -175,7 +175,7 @@ extern "C"
 	 * Set calendar_matrix: Table with Day # and Capacity % columns [[[#, %]]]
 	 * options: None
 	 * constraints: None
-	 * required if: calendar_choice=2
+	 * required if: life_model=0&calendar_choice=2
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -183,7 +183,7 @@ extern "C"
 	 * Set calendar_q0: Calendar life model initial capacity cofficient
 	 * options: None
 	 * constraints: None
-	 * required if: calendar_choice=1
+	 * required if: life_model=0&calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_q0_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -199,7 +199,7 @@ extern "C"
 	 * Set cycling_matrix: Table with DOD %, Cycle #, and Capacity % columns [[[%, #, %]]]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: life_model=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_cycling_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -242,6 +242,14 @@ extern "C"
 	 * required if: chem=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_leadacid_tn_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set life_model: Battery life model specifier [0/1]
+	 * options: 0=calendar/cycle,1=NMC
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_life_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set maximum_SOC: Maximum allowed state-of-charge [%]
@@ -308,7 +316,7 @@ extern "C"
 	 * Set cap_vs_temp: Table with Temperature and Capacity % as columns [[[C,%]]]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: life_model=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_cap_vs_temp_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -847,6 +855,8 @@ extern "C"
 	SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_qn_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_tn_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_ParamsCell_life_model_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_ParamsCell_maximum_SOC_nget(SAM_table ptr, SAM_error *err);
 

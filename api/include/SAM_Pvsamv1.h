@@ -3844,7 +3844,7 @@ extern "C"
 	 * Set batt_calendar_a: Calendar life model coefficient [1/sqrt(day)]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: en_batt=1&batt_life_model=0&batt_calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_a_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -3852,7 +3852,7 @@ extern "C"
 	 * Set batt_calendar_b: Calendar life model coefficient [K]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: en_batt=1&batt_life_model=0&batt_calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_b_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -3860,7 +3860,7 @@ extern "C"
 	 * Set batt_calendar_c: Calendar life model coefficient [K]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: en_batt=1&batt_life_model=0&batt_calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_c_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -3868,7 +3868,7 @@ extern "C"
 	 * Set batt_calendar_choice: Calendar life degradation input option [0/1/2]
 	 * options: 0=NoCalendarDegradation,1=LithiomIonModel,2=InputLossTable
 	 * constraints: None
-	 * required if: None
+	 * required if: en_batt=1&batt_life_model=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -3876,7 +3876,7 @@ extern "C"
 	 * Set batt_calendar_lifetime_matrix: Days vs capacity
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: en_batt=1&batt_life_model=0&batt_calendar_choice=2
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_lifetime_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -3884,7 +3884,7 @@ extern "C"
 	 * Set batt_calendar_q0: Calendar life model initial capacity cofficient
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: en_batt=1&batt_life_model=0&batt_calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_q0_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -3913,10 +3913,18 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_initial_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set batt_life_model: Battery life model specifier [0/1]
+	 * options: 0=calendar/cycle,1=NMC
+	 * constraints: None
+	 * required if: en_batt=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_life_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set batt_lifetime_matrix: Cycles vs capacity at different depths-of-discharge
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: en_batt=1&batt_life_model=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_lifetime_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -4009,7 +4017,7 @@ extern "C"
 	 * Set batt_cycle_cost: Input battery cycle degradaton penalty per year [$/cycle-kWh]
 	 * options: length 1 or analysis_period, length 1 will be extended using inflation
 	 * constraints: None
-	 * required if: None
+	 * required if: batt_cycle_cost_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -4017,7 +4025,7 @@ extern "C"
 	 * Set batt_cycle_cost_choice: Use SAM cost model for degradaton penalty or input custom via batt_cycle_cost [0/1]
 	 * options: 0=UseCostModel,1=InputCost
 	 * constraints: None
-	 * required if: None
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -5561,6 +5569,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_h_to_ambient_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_initial_SOC_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_life_model_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryCell_batt_lifetime_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 

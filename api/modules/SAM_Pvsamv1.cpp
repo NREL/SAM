@@ -2846,6 +2846,12 @@ SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_initial_SOC_nset(SAM_table ptr, dou
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_life_model_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_life_model", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_lifetime_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "batt_lifetime_matrix", mat, nrows, ncols);
@@ -8516,6 +8522,17 @@ SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_initial_SOC_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_initial_SOC", &result))
 		make_access_error("SAM_Pvsamv1", "batt_initial_SOC");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_life_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_life_model", &result))
+		make_access_error("SAM_Pvsamv1", "batt_life_model");
 	});
 	return result;
 }
