@@ -39,7 +39,8 @@ Decimals
 3
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -101,7 +102,8 @@ Decimals
 3
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -163,7 +165,8 @@ Decimals
 3
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -533,7 +536,8 @@ Decimals
 3
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0

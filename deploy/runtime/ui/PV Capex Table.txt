@@ -629,7 +629,7 @@ Default
 capex_table_dc_inputs
 3
 3
-PV Capex Table Inputs
+PV Capex Table DC Inputs
  
 Capital Costs
 0
