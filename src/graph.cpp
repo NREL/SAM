@@ -594,35 +594,44 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 	if (m_g.Type == Graph::CONTOUR)
 	{// TODO ensure m_g.X.count == 2 m_g.Y.count == 1
 		if (m_g.X.size() == 2 && m_g.Y.size() == 1) {
-			// y size checked for 1 above
+			// detemine matrix size x[0] x x[1] = num sims
+			std::vector<double> xv, yv;
+			for (size_t i = 0; i < sims.size(); i++) {
+				double x = sims[i]->GetValue(m_g.X[0])->Value();
+				double y = sims[i]->GetValue(m_g.X[1])->Value();
+				auto itx = std::find(xv.begin(), xv.end(), x);
+				auto ity = std::find(yv.begin(), yv.end(), y);
+				if (itx == xv.end())
+					xv.push_back(x);
+				if (ity == yv.end())
+					yv.push_back(y);
+			}
 			double zmin = 1e99, zmax = -1e99;
 			wxMatrix<double> XX, YY, ZZ;
-			// assume num x and num y values same initially
-			// TODO - fix above assumption based on parametrics table
-			size_t nx = sqrt(sims.size()), ny = sqrt(sims.size());
-			XX.Resize(nx , ny );
-			YY.Resize(nx,  ny);
-			ZZ.Resize(nx , ny );
-			for (size_t i = 0; i < nx; i++)
+			size_t nx = xv.size(), ny = yv.size();
+			XX.Resize(ny , nx );
+			YY.Resize(ny,  nx);
+			ZZ.Resize(ny , nx );
+			for (size_t j = 0; j < ny; j++)
 			{
-				for (size_t j = 0; j < ny; j++)
+				for (size_t i = 0; i < nx; i++)
 				{
-					XX.At(i , j ) = sims[j]->GetValue(m_g.X[0])->Value();
-					YY.At(i , j ) = sims[i * ny]->GetValue(m_g.X[1])->Value();
-					ZZ.At(i , j ) = sims[i * ny + j]->GetValue(m_g.Y[0])->Value();
-					if (ZZ.At(i , j ) < zmin) zmin = ZZ.At(i , j );
-					if (ZZ.At(i , j ) > zmax) zmax = ZZ.At(i , j );
+					XX.At(j , i ) = sims[i]->GetValue(m_g.X[0])->Value();
+					YY.At(j , i ) = sims[j*nx+i]->GetValue(m_g.X[1])->Value();
+					ZZ.At(j , i ) = sims[j * nx + i]->GetValue(m_g.Y[0])->Value();
+					if (ZZ.At(j , i ) < zmin) zmin = ZZ.At(j , i );
+					if (ZZ.At(j , i ) > zmax) zmax = ZZ.At(j , i );
 				}
 			}
 			wxPLContourPlot* plot = 0;
-			wxPLColourMap* jet = new wxPLJetColourMap(zmin, zmax);
+			wxPLColourMap* jet = new wxPLParulaColourMap(zmin, zmax);
 			plot = new wxPLContourPlot(XX, YY, ZZ, true, wxEmptyString, 24, jet);
 			if (plot != 0)
 			{
 				AddPlot(plot, wxPLPlotCtrl::X_TOP, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
 				SetSideWidget(jet);
 			}
-			GetYAxis1()->SetReversed(true); // need setting
+			//GetYAxis1()->SetReversed(true); // need setting
 			GetYAxis1()->SetLabel(m_g.YLabel);
 			GetXAxis2()->SetLabel(m_g.XLabel);
 		}
