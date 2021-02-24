@@ -220,6 +220,7 @@ private:
 	wxArrayString getFromCSV(const wxString& input_name, int& rows, int& cols);
 	wxArrayString getFromExcel(const wxString& input_name, int& rows, int& cols);
 	void SaveToCSV();
+	void SendToExcelOld();
 	void SendToExcel();
 	void GetTextData(wxString &dat, char sep);
 

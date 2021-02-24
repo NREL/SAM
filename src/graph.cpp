@@ -626,14 +626,16 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 			wxPLContourPlot* plot = 0;
 			wxPLColourMap* jet = new wxPLParulaColourMap(zmin, zmax);
 			plot = new wxPLContourPlot(XX, YY, ZZ, true, wxEmptyString, 24, jet);
+			SetTitle(m_g.Title);
 			if (plot != 0)
 			{
-				AddPlot(plot, wxPLPlotCtrl::X_TOP, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
+				AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
 				SetSideWidget(jet);
 			}
 			//GetYAxis1()->SetReversed(true); // need setting
 			GetYAxis1()->SetLabel(m_g.YLabel);
-			GetXAxis2()->SetLabel(m_g.XLabel);
+			GetXAxis1()->SetLabel(m_g.XLabel);
+			
 		}
 		ndata = sims.size();
 		return 0;

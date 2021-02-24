@@ -155,12 +155,14 @@ public:
 	ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxString &label, VarValue *vv);
 	ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<double> > &values_vec);
 
+	void SendToExcel();
+
+
 private:
 	void OnCommand(wxCommandEvent &evt);
 
 	void CopyToClipboard();
 	void SaveToCSV();
-	void SendToExcel();
 	void GetTextData(wxString &dat, char sep);
 
 	void CreateUI();

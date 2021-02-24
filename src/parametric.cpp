@@ -1010,7 +1010,7 @@ void ParametricViewer::SaveToCSV()
 
 }
 
-void ParametricViewer::SendToExcel()
+void ParametricViewer::SendToExcelOld()
 {
 	wxBusyInfo busy("Processing data table... please wait");
 	wxString dat;
@@ -1040,6 +1040,60 @@ void ParametricViewer::SendToExcel()
 		wxTheClipboard->Close();
 		xl.PasteClipboard();
 	}
+#endif
+}
+
+
+void ParametricViewer::SendToExcel()
+{
+	wxBusyInfo busy("Processing data table... please wait");
+//	wxString dat;
+//	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+//	dat.Replace(",", "");
+
+#ifdef __WXMSW__
+/*	wxExcelAutomation xl;
+	if (!xl.StartExcel())
+	{
+		wxMessageBox("Could not start Excel.");
+		return;
+	}
+
+	xl.Show(true);
+
+	if (!xl.NewWorkbook())
+	{
+		wxMessageBox("Could not create a new Excel worksheet.");
+		return;
+	}
+*/
+	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
+		if (!m_grid_data->IsInput(col)) {
+			std::vector<std::vector<double> > values_vec;
+			wxArrayString labels;
+			for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+			{
+				std::vector<double> vec = m_grid_data->GetArray(row, col);
+				if (vec.size() == 0) // single values
+					vec.push_back(m_grid_data->GetDouble(row, col));
+				values_vec.push_back(vec);
+				labels.push_back(wxString::Format("Run %d", row + 1));
+			}
+			ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
+			apd.SendToExcel();
+		}
+	}
+
+/*
+	if (wxTheClipboard->Open())
+	{
+		wxTheClipboard->SetData(new wxTextDataObject(dat));
+		wxTheClipboard->Close();
+		xl.PasteClipboard();
+	}
+	*/
 #endif
 }
 
@@ -1185,11 +1239,12 @@ bool ParametricViewer::Plot(int col, Graph &g)
 							g.YLabel = vi->Label;
 							g.X.push_back(m_grid_data->GetVarName(0, 1));
 							if (!m_grid_data->GetUnits(col).IsEmpty()) {
-								g.XLabel += " (" + vi->Units + ")";
+								g.YLabel += " (" + vi->Units + ")";
 							}
 							g.ShowLegend = false;
 						}
 					}
+					g.Title = m_grid_data->GetColLabelValue(col);
 				}
 				break;
 				// arrays - determine if monthly or hourly
@@ -1259,8 +1314,12 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 				if (g.Type >= 0)
 				{
 					GraphCtrl* gc = new GraphCtrl(m_layout, wxID_ANY);
-					//gc->Display(m_grid_data->GetRuns(), g);
-					gc->DisplayParametrics(m_grid_data->GetRuns(), g);
+					
+					if (g.Type == Graph::CONTOUR)
+						gc->DisplayParametrics(m_grid_data->GetRuns(), g);
+					else // old processing
+						gc->Display(m_grid_data->GetRuns(), g);
+
 					m_graphs.push_back(gc);
 					// TODO sizing
 					m_layout->Add(gc, 800, 400);
