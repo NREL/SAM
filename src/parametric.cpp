@@ -1054,7 +1054,7 @@ void ParametricViewer::SendToExcel()
 //	dat.Replace(",", "");
 
 #ifdef __WXMSW__
-/*	wxExcelAutomation xl;
+	wxExcelAutomation xl;
 	if (!xl.StartExcel())
 	{
 		wxMessageBox("Could not start Excel.");
@@ -1068,7 +1068,7 @@ void ParametricViewer::SendToExcel()
 		wxMessageBox("Could not create a new Excel worksheet.");
 		return;
 	}
-*/
+
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
 		if (!m_grid_data->IsInput(col)) {
 			std::vector<std::vector<double> > values_vec;
@@ -1082,7 +1082,17 @@ void ParametricViewer::SendToExcel()
 				labels.push_back(wxString::Format("Run %d", row + 1));
 			}
 			ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
-			apd.SendToExcel();
+//			apd.SendToExcel();
+			wxString sheetName = m_grid_data->GetColLabelValue(col);
+			// valid sheet names - no \ / ? * [ ] and 31 characters max
+			sheetName.Replace("\\", "_");
+			sheetName.Replace("/", "_");
+			sheetName.Replace("?", "_");
+			sheetName.Replace("*", "_");
+			sheetName.Replace("[", "_");
+			sheetName.Replace("]", "_");
+			sheetName = sheetName.Left(31);
+			apd.SendToExcelSheet(xl, sheetName);
 		}
 	}
 

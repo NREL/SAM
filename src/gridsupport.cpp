@@ -1363,6 +1363,26 @@ void ArrayPopupDialog::SendToExcel()
 #endif
 }
 
+void ArrayPopupDialog::SendToExcelSheet(wxExcelAutomation& xl, wxString &sheetName)
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+#ifdef __WXMSW__
+
+//	if (wxTheClipboard->Open())
+	{
+//		wxTheClipboard->SetData(new wxTextDataObject(dat));
+//		wxTheClipboard->Close();
+		xl.PasteNewWorksheet(sheetName, dat);
+	}
+#endif
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
 AlignRightGridCellAttrProvider::AlignRightGridCellAttrProvider()

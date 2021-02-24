@@ -156,7 +156,7 @@ public:
 	ArrayPopupDialog(wxWindow *parent, const wxString &title, const wxArrayString &labels, std::vector<std::vector<double> > &values_vec);
 
 	void SendToExcel();
-
+	void SendToExcelSheet(wxExcelAutomation& xl, wxString& sheetName);
 
 private:
 	void OnCommand(wxCommandEvent &evt);
