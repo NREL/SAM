@@ -1,5 +1,5 @@
 1
-862
+865
 6par_aisc
 1
 1
@@ -427,6 +427,20 @@ calculated_dcac_ratio
 1
 1
 1.21893
+capex_ac_warning_message
+1
+4
+0
+capex_dc_warning_message
+1
+4
+9
+<invalid>
+capex_land_warning_message
+1
+4
+9
+<invalid>
 capex_table_ac_cost_per_kw
 1
 1
