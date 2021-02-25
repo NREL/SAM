@@ -84,11 +84,16 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Check this box to enable the bifacial model and its inputs.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">The CEC module library indicates whether the module is bifacial. You can sort the library table by clicking the Bifacial column heading: Bifacial modules have a value of one.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Transmission Fraction</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of array area that prevents light from reaching the surface behind the array to the area that lets light through as a fraction between 0 and 1. For modules made of glass or other transparent material that allows light to pass through the module between cells, the ratio would be the total cell area divided by the total array area. For modules with an opaque back, the ratio would be the total module area divided by the total array area.</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For example, given the diagram below of a rectangular array of modules that allow light to pass both in the space between cells and the space between modules, the transmission factor would be:</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Transmission Factor = Total Cell Area (m2) / [ ( Module Length (m) + Sx (m) ) × Module Width (m) ]</span></p>
-<p class="p_VariableDescription" style="text-align: center;"><img alt="IMG_PVBifacialTransmissionFactor" width="400" height="133" style="margin:0 auto 0 auto;width:400px;height:133px;border:none" src="img_pvbifacialtransmissionfactor.png"/></p>
-<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">The module dimensions you use for this calculation should be consistent with any dimensions you use elsewhere in SAM, such as for shading calculations.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of array area that allows light to reach the surface behind the array to the area that blocks light, expressed as a fraction between 0 and 1. The array area is the total area occupied by the modules, including space between the modules. Light passes through space between modules, and, for modules made of glass or other transparent material, may also pass through the space between cells in each module.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For an array of opaque modules:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Transmission Factor = ( Array Area (m2) - Total Opaque Area (m2) ) / Array Area (m2)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Where the total opaque area is the total module area for opaque modules, or the total cell area plus the area of the frame or other material that may block light for transparent modules.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><span class="f_VariableDescription">&nbsp;</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes. </span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">The transmission fraction is by definition related to the ground coverage ratio (GCR), so you should verify that the GCR input is consistent with the transmission fraction. SAM does not automatically verify that the two inputs are consistent.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">Be careful to use the same module dimensions for these calculations as those elsewhere in SAM, such as for shading calculations.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Bifaciality</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of rear-side efficiency to front-side efficiency. Typically a value between 0.65 and 0.9 provided on the bifacial module datasheeet.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ground clearance height </span></p>
@@ -534,11 +539,16 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Check this box to enable the bifacial model and its inputs.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">The CEC module library indicates whether the module is bifacial. You can sort the library table by clicking the Bifacial column heading: Bifacial modules have a value of one.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Transmission Fraction</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of array area that prevents light from reaching the surface behind the array to the area that lets light through as a fraction between 0 and 1. For modules made of glass or other transparent material that allows light to pass through the module between cells, the ratio would be the total cell area divided by the total array area. For modules with an opaque back, the ratio would be the total module area divided by the total array area.</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For example, given the diagram below of a rectangular array of modules that allow light to pass both in the space between cells and the space between modules, the transmission factor would be:</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Transmission Factor = Total Cell Area (m2) / [ ( Module Length (m) + Sx (m) ) × Module Width (m) ]</span></p>
-<p class="p_VariableDescription" style="text-align: center;"><img alt="IMG_PVBifacialTransmissionFactor" width="400" height="133" style="margin:0 auto 0 auto;width:400px;height:133px;border:none" src="img_pvbifacialtransmissionfactor.png"/></p>
-<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">The module dimensions you use for this calculation should be consistent with any dimensions you use elsewhere in SAM, such as for shading calculations.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of array area that allows light to reach the surface behind the array to the area that blocks light, expressed as a fraction between 0 and 1. The array area is the total area occupied by the modules, including space between the modules. Light passes through space between modules, and, for modules made of glass or other transparent material, may also pass through the space between cells in each module.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For an array of opaque modules:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Transmission Factor = ( Array Area (m2) - Total Opaque Area (m2) ) / Array Area (m2)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Where the total opaque area is the total module area for opaque modules, or the total cell area plus the area of the frame or other material that may block light for transparent modules.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><span class="f_VariableDescription">&nbsp;</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes. </span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">The transmission fraction is by definition related to the ground coverage ratio (GCR), so you should verify that the GCR input is consistent with the transmission fraction. SAM does not automatically verify that the two inputs are consistent.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">Be careful to use the same module dimensions for these calculations as those elsewhere in SAM, such as for shading calculations.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Bifaciality</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of rear-side efficiency to front-side efficiency. Typically a value between 0.65 and 0.9 provided on the bifacial module datasheeet.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ground clearance height </span></p>
@@ -639,11 +649,16 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Check this box to enable the bifacial model and its inputs.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">The CEC module library indicates whether the module is bifacial. You can sort the library table by clicking the Bifacial column heading: Bifacial modules have a value of one.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Transmission Fraction</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of array area that prevents light from reaching the surface behind the array to the area that lets light through as a fraction between 0 and 1. For modules made of glass or other transparent material that allows light to pass through the module between cells, the ratio would be the total cell area divided by the total array area. For modules with an opaque back, the ratio would be the total module area divided by the total array area.</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For example, given the diagram below of a rectangular array of modules that allow light to pass both in the space between cells and the space between modules, the transmission factor would be:</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Transmission Factor = Total Cell Area (m2) / [ ( Module Length (m) + Sx (m) ) × Module Width (m) ]</span></p>
-<p class="p_VariableDescription" style="text-align: center;"><img alt="IMG_PVBifacialTransmissionFactor" width="400" height="133" style="margin:0 auto 0 auto;width:400px;height:133px;border:none" src="img_pvbifacialtransmissionfactor.png"/></p>
-<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">The module dimensions you use for this calculation should be consistent with any dimensions you use elsewhere in SAM, such as for shading calculations.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of array area that allows light to reach the surface behind the array to the area that blocks light, expressed as a fraction between 0 and 1. The array area is the total area occupied by the modules, including space between the modules. Light passes through space between modules, and, for modules made of glass or other transparent material, may also pass through the space between cells in each module.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For an array of opaque modules:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Transmission Factor = ( Array Area (m2) - Total Opaque Area (m2) ) / Array Area (m2)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Where the total opaque area is the total module area for opaque modules, or the total cell area plus the area of the frame or other material that may block light for transparent modules.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><span class="f_VariableDescription">&nbsp;</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes. </span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">The transmission fraction is by definition related to the ground coverage ratio (GCR), so you should verify that the GCR input is consistent with the transmission fraction. SAM does not automatically verify that the two inputs are consistent.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">Be careful to use the same module dimensions for these calculations as those elsewhere in SAM, such as for shading calculations.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Bifaciality</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of rear-side efficiency to front-side efficiency. Typically a value between 0.65 and 0.9 provided on the bifacial module datasheeet.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ground clearance height </span></p>
