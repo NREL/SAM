@@ -738,7 +738,7 @@ equations{'modulearray_power_w'} = define() {
 };
 
 
-6504
+6770
 function capex_table_dc_inputs_update_plot()
 {
 	Cap = [];
@@ -900,19 +900,26 @@ function interpolate_dc_capex_table()
 	idx=0;
 	//Cap_low = [];
 	//Cap_high = [];
-	
+	if (nc == 1) {
+		cost = 0;
+		total_cost = cost*sys_cap;
+		value("capex_table_cost_per_kw", cost);
+		value("capex_table_total_installed_dc_cost",total_cost);
+		property('capex_dc_warning_message', 'Caption', 'The cost table must have two columns: Capacity (Wdc) and DC Costs ($/Wdc).');
+		exit;
+	}
 	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
 	if (sys_cap > input[nr - 1][0]) {
 		cost = input[nr - 1][1];
 		cap_string = to_string(to_int(sys_cap));
 		table_string = to_string(to_int(input[nr-1][0]));
-		property('capex_dc_warning_message','Caption','The DC system capacity is '+cap_string+' Wdc and the maximum capex interpolation table DC capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the interpolation table.');
+		property('capex_dc_warning_message','Caption','The DC system capacity is '+cap_string+' Wdc and the maximum costs table DC capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
 	}
 	else if (sys_cap < input[0][0]) {
 		cost = input[0][1];
 		cap_string = to_string(to_int(sys_cap));
 		table_string = to_string(to_int(input[0][0]));
-		property('capex_dc_warning_message','Caption','The DC system capacity is '+cap_string+' Wdc and the maximum capex interpolation table DC capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the interpolation table.');
+		property('capex_dc_warning_message','Caption','The DC system capacity is '+cap_string+' Wdc and the maximum costs interpolation table DC capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
 			
 	}
 	else {

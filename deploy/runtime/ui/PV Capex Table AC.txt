@@ -732,7 +732,7 @@ Default
 equations{'inverterarray_power_w'} = define() {
 	return ${inverterarray_power}*1000;
 };
-5333
+5583
 function capex_table_ac_inputs_update_plot()
 {
 	Cap = [];
@@ -775,10 +775,10 @@ function capex_table_ac_inputs_update_plot()
 	setplot( 'capex_table_ac_plot' );
 	clearplot();
 		
-	plot(Cap,cost_per_kw,{"series"="AC Costs Interp. Table",
+	plot(Cap,cost_per_kw,{"series"="AC Costs Table",
 		"thick"=2, "scale"=true,"color"=curves[0][2]});
 	plot(sys_cap_bin,sys_cost_bin,
-		{"series"="Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
+		{"series"="AC Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
 		
 	axis('x1', {'label'='Capacity (Wac)', 'min'=Cap[0]-50, 'max'=Cap[nr-1]+50});
@@ -887,20 +887,27 @@ function interpolate_ac_capex_table()
 	idx=0;
 	//Cap_low = [];
 	//Cap_high = [];
-	
+	if (nc == 1) {
+		cost = 0;
+		total_cost = cost*sys_cap;
+		value("capex_table_ac_cost_per_kw", cost);
+		value("capex_table_total_installed_ac_cost",total_cost);
+		property('capex_ac_warning_message', 'Caption', 'The cost table must have two columns: Capacity (Wac) and AC Costs ($/Wac).');
+		exit;
+	}
 	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
 	if (sys_cap > input[nr - 1][0]) {
 		cost = input[nr - 1][1];
 		cap_string = to_string(to_int(sys_cap));
 		table_string = to_string(to_int(input[nr-1][0]));
-		property('capex_ac_warning_message','Caption','The AC system capacity is '+cap_string+' Wac and the maximum capex interpolation table DC capacity value is '+table_string + ' Wac. The system capacity is outside the bounds of the interpolation table.');
+		property('capex_ac_warning_message','Caption','The AC system capacity is '+cap_string+' Wac and the maximum costs table AC capacity value is '+table_string + ' Wac. The system capacity is outside the bounds of the costs table.');
 			
 	}
 	else if (sys_cap < input[0][0]) {
 		cost = input[0][1];
 		cap_string = to_string(to_int(sys_cap));
 		table_string = to_string(to_int(input[0][0]));
-		property('capex_ac_warning_message','Caption','The AC system capacity is '+cap_string+' Wac and the maximum capex interpolation table DC capacity value is '+table_string + ' Wac. The system capacity is outside the bounds of the interpolation table.');
+		property('capex_ac_warning_message','Caption','The AC system capacity is '+cap_string+' Wac and the maximum costs table AC capacity value is '+table_string + ' Wac. The system capacity is outside the bounds of the costs table.');
 			
 	}
 	else {

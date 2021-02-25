@@ -732,7 +732,7 @@ Default
 equations{'land_area_capex'} = define() {
 	return ${land_area_value};
 };
-5291
+5597
 function capex_table_land_inputs_update_plot()
 {
 	Cap = [];
@@ -775,10 +775,10 @@ function capex_table_land_inputs_update_plot()
 	setplot( 'capex_table_land_plot' );
 	clearplot();
 		
-	plot(Cap,cost_per_kw,{"series"="Land Costs Interp. Table",
+	plot(Cap,cost_per_kw,{"series"="Land Costs Table",
 		"thick"=2, "scale"=true,"color"=curves[0][2]});
 	plot(sys_cap_bin,sys_cost_bin,
-		{"series"="Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
+		{"series"="Land Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
 		
 	axis('x1', {'label'='Acreage (acres)', 'min'=0, 'max'=max(Cap)+1});
@@ -887,7 +887,14 @@ function interpolate_land_capex_table()
 	idx=0;
 	//Cap_low = [];
 	//Cap_high = [];
-	
+	if (nc == 1) {
+		cost = 0;
+		total_cost = cost*sys_cap;
+		value("capex_table_land_cost_per_kw", cost);
+		value("capex_table_total_installed_land_cost",total_cost);
+		property('capex_land_warning_message', 'Caption', 'The cost table must have two columns: Acreage (acres) and Land Costs ($/acre).');
+		exit;
+	}
 	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
 	if (sys_cap > input[nr - 1][0]) {
 		cost = input[nr - 1][1];

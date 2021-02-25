@@ -1,4 +1,4 @@
-PV Capital Costs Interpolation Table
+PV Capital Cost Curve
 824
 208
 11
@@ -36,7 +36,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 1
@@ -99,7 +99,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 1
@@ -162,7 +162,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 1
@@ -447,7 +447,7 @@ Tool Tip
 Caption
 5
 22
-PV Capital Cost Tables
+PV Capital Cost Curves
 Bold
 2
 1
@@ -470,14 +470,14 @@ Width
 759
 Height
 3
-51
+63
 Tool Tip
 5
 0
 Caption
 5
-389
-Use these capex interpolation tables to define the DC Module costs, AC inverter costs, and land costs for your project. The interpolation tables will automatically calculate the costs for each category based on the DC module array capacity, AC inverter capacity, and total land area calculated in the System Design page. The total installed cost is the sum of these three cost components. 
+450
+Use these capex curves to define the DC Module costs, AC inverter costs, and land costs for your project. The cost tables will automatically calculate the costs for each category based on the DC module array capacity, AC inverter capacity, and total land area calculated in the System Design page. Please account for indirect costs such as sales tax costs in the cost table inputs. The total installed cost is the sum of these three cost components. 
 TextColour
 4
 0
@@ -533,7 +533,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 1

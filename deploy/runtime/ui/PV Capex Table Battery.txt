@@ -1,7 +1,7 @@
 PV Capex Table Battery
-826
-318
-12
+833
+389
+13
 GroupBox
 
 1
@@ -21,14 +21,14 @@ Width
 812
 Height
 3
-310
+370
 Tool Tip
 5
 0
 Caption
 5
-21
-DC Capital Cost Table
+26
+Battery Capital Cost Table
 Bold
 2
 1
@@ -45,7 +45,7 @@ X
 393
 Y
 3
-276
+342
 Width
 3
 90
@@ -94,6 +94,53 @@ BackColour
 TabOrder
 3
 4294967295
+Label
+
+1
+13
+Name
+5
+26
+capex_batt_warning_message
+X
+3
+24
+Y
+3
+273
+Width
+3
+774
+Height
+3
+51
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -107,7 +154,7 @@ X
 210
 Y
 3
-276
+342
 Width
 3
 90
@@ -217,8 +264,8 @@ ShowColLabels
 1
 ColLabels
 5
-31
-Capacity (Wdc),DC Costs ($/Wdc)
+39
+Capacity (Wdc),DC Battery Costs ($/Wdc)
 NumRowsLabel
 5
 5
@@ -282,7 +329,7 @@ X
 18
 Y
 3
-276
+342
 Width
 3
 192
@@ -294,8 +341,8 @@ Tool Tip
 0
 Caption
 5
-18
-Capex cost per Wdc
+26
+Capex cost per battery Wdc
 TextColour
 4
 0
@@ -330,7 +377,7 @@ X
 720
 Y
 3
-276
+342
 Width
 3
 90
@@ -393,7 +440,7 @@ X
 564
 Y
 3
-276
+342
 Width
 3
 156
@@ -405,8 +452,8 @@ Tool Tip
 0
 Caption
 5
-13
-Total DC cost
+18
+Total battery cost
 TextColour
 4
 0
@@ -479,7 +526,7 @@ X
 531
 Y
 3
-276
+342
 Width
 3
 15
@@ -527,7 +574,7 @@ X
 366
 Y
 3
-276
+342
 Width
 3
 15
@@ -575,7 +622,7 @@ X
 303
 Y
 3
-276
+342
 Width
 3
 57
@@ -673,7 +720,7 @@ Default
 equations{'battery_power_w'} = define() {
 	return ${battery_power} * 1000;
 };
-5678
+6737
 function capex_table_batt_inputs_update_plot()
 {
 	Cap = [];
@@ -717,10 +764,10 @@ function capex_table_batt_inputs_update_plot()
 	setplot( 'capex_table_batt_plot' );
 	clearplot();
 		
-	plot(Cap,cost_per_kw,{"series"="DC Costs Interp. Table",
+	plot(Cap,cost_per_kw,{"series"="DC Battery Costs Table",
 		"thick"=2, "scale"=true,"color"=curves[0][2]});
 	plot(sys_cap_bin,sys_cost_bin,
-		{"series"="Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
+		{"series"="Battery Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
 		
 	axis('x1', {'label'='Capacity (Wdc)', 'min'=Cap[0]-50, 'max'=Cap[nr-1]+50});
@@ -829,15 +876,28 @@ function interpolate_batt_capex_table()
 	idx=0;
 	//Cap_low = [];
 	//Cap_high = [];
-	
+	if (nc == 1) {
+		cost = 0;
+		total_cost = cost*sys_cap;
+		value("capex_table_batt_cost_per_kw", cost);
+		value("capex_table_total_installed_batt_cost",total_cost);
+		property('capex_batt_warning_message', 'Caption', 'The cost table must have two columns: Capacity (Wdc) and DC Battery Costs ($/Wdc).');
+		exit;
+	}
 	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
 	if (sys_cap > input[nr - 1][0]) {
 		cost = input[nr - 1][1];
-			
+		cap_string = to_string(to_int(sys_cap));
+		table_string = to_string(to_int(input[nr-1][0]));
+		property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the maximum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
+	
 	}
 	else if (sys_cap < input[0][0]) {
 		cost = input[0][1];
-			
+		cap_string = to_string(to_int(sys_cap));
+		table_string = to_string(to_int(input[nr-1][0]));
+		property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the minimum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
+	
 	}
 	else {
 		while (sys_cap >= input[idx][0]) {
@@ -849,7 +909,7 @@ function interpolate_batt_capex_table()
 		cost_low = input[idx-1][1];
 		cost_high = input[idx][1];
 		cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
-			
+		property('capex_batt_warning_message','Caption','');	
 	}
 	total_cost = cost*sys_cap;
 	value("capex_table_batt_cost_per_kw", cost);
