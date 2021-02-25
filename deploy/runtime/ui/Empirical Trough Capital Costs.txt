@@ -1,7 +1,7 @@
 Empirical Trough Capital Costs
-748
-578
-55
+734
+597
+56
 GroupBox
 
 1
@@ -51,7 +51,7 @@ Width
 722
 Height
 3
-209
+167
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-480
+501
 Width
 3
 722
@@ -105,7 +105,7 @@ X
 480
 Y
 3
-399
+462
 Width
 3
 98
@@ -489,7 +489,7 @@ X
 309
 Y
 3
-399
+462
 Width
 3
 68
@@ -1542,7 +1542,7 @@ X
 582
 Y
 3
-531
+552
 Width
 3
 136
@@ -2170,7 +2170,7 @@ X
 378
 Y
 3
-399
+462
 Width
 3
 100
@@ -2233,7 +2233,7 @@ X
 582
 Y
 3
-399
+462
 Width
 3
 136
@@ -2296,7 +2296,7 @@ X
 207
 Y
 3
-399
+462
 Width
 3
 100
@@ -2985,7 +2985,7 @@ X
 12
 Y
 3
-501
+522
 Width
 3
 209
@@ -3018,6 +3018,36 @@ AlignRight
 2
 0
 AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+441
+Width
+3
+722
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+9
+Sales Tax
+Bold
 2
 1
 Numeric
@@ -3096,7 +3126,7 @@ X
 582
 Y
 3
-447
+399
 Width
 3
 136
@@ -3159,7 +3189,7 @@ X
 582
 Y
 3
-507
+528
 Width
 3
 136
@@ -3897,11 +3927,11 @@ equations{ 'csp.tr.cost.sales_tax.total' } = define() {
     return ${sales_tax_rate}/100*${total_direct_cost}*${csp.tr.cost.sales_tax.percent}/100; };
 
 equations{ 'total_indirect_cost' } = define() {
-	return ${csp.tr.cost.epc.total}+${csp.tr.cost.plm.total}+${csp.tr.cost.sales_tax.total}; };
+	return ${csp.tr.cost.epc.total}+${csp.tr.cost.plm.total}; };
 
 //total cost equations
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}; };
+	return ${total_direct_cost}+${total_indirect_cost}+${csp.tr.cost.sales_tax.total}; };
 	
 equations{ 'csp.tr.cost.installed_per_capacity' } = define() {
 	return 0.001*${total_installed_cost}/${ui_net_capacity}; };
