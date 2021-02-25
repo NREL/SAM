@@ -52,19 +52,53 @@
 <li>...
 </ul>
 
-<h2></h2>
-
-<ul>
-<li></li>
-<li></li>
-<li></li>
-</ul>
 
 -->
 
+<h1 id="2020-11-29-r1">Version 2020.11.29 Revision 1, SSC Version 252: February 25, 2020</h1>
+
+<p>This is a maintenance update to <a href="#2020-11-29">SAM 2020.11.29</a>.</p>
+
+<ul>
+<li>Revert default Federal Investment Tax Credit (ITC) to 26%. (<a href="https://github.com/NREL/SAM/issues/493">493</a>)</li>
+<li>Fix power tower to correctly update tower height cost value. (<a href="https://github.com/NREL/SAM/pull/475">475</a>)</li>
+<li>Fix photovoltaic model simulation warnings for bifacial and one-axis tracking. (<a href="https://github.com/NREL/ssc/issues/364">364</a>)
+<li>Battery model:<ul>
+<li>Fix generic battery display of power units on System Costs page. (<a href="https://github.com/NREL/SAM/issues/469">469</a>)</li>
+<li>Fix PV-fuel-cell-battery battery O&M cost calculation. (<a href="https://github.com/NREL/SAM/pull/521">521</a>)</li>
+<li>Make sure user interface panels on battery input pages are collapsed in a consistent way for all battery configurations. (<a href="https://github.com/NREL/SAM/pull/515">515</a>)</li>
+<li>Fix an issue with voltage model enabling in the user interface for flow batteries. (<a href="https://github.com/NREL/SAM/issues/505">505</a>)</li>
+<li>Fix issues with battery voltage model. (<a href="https://github.com/NREL/ssc/issues/520">520</a>, <a href="https://github.com/NREL/ssc/issues/517">517</a>)
+<li>Fix message about Specify IRR target for battery not being available for configurations with PPA financial models (it is). (<a href="https://github.com/NREL/SAM/issues/516">516</a>)</li>
+<li>Fix PDF report generator for PV-Battery with PPA financial model configurations. (<a href="https://github.com/NREL/SAM/pull/528">528</a>)</li>
+<li>Integrate new NREL NMC lifetime model (available in SSC only). (<a href="https://github.com/NREL/ssc/issues/521">521</a>)
+<li>Remove REopt optimization option from Generic Battery configurations. (<a href="https://github.com/NREL/SAM/issues/479">479</a>)
+</ul></li>
+<li>Electricity bill calculation:<ul>
+<li>Fix electricity bill calculations to correctly apply time series buy/sell rates to bill without system. (<a href="https://github.com/NREL/SAM/issues/494">494</a>)</li>
+<li>Fix handling of nested tiers. (<a href="https://github.com/NREL/SAM/issues/275">275</a>)</li>
+<li>Improve reporting of monthly results. (<a href="https://github.com/NREL/SAM/issues/492">492</a>)</li>
+</ul></li>
+<li>Macros:<ul>
+<li>Modify Value of RE macro to support Third Party Ownership financial models. (<a href="https://github.com/NREL/SAM/issues/492">492</a>)</li>
+<li>FIx Indifference vs PPA Price macro for Third Party Ownership finanical model. (<a href="https://github.com/NREL/SAM/issues/490">490</a>)</li>
+<li>Fix Value of RE macro rate switching option. (<a href="https://github.com/NREL/SAM/issues/499">499</a>, <a href="https://github.com/NREL/SAM/issues/487">487</a>)</li>
+<li>Update Solar Resource File converter to work with SolarAnywhere V3.4 files and older. (<a href="https://github.com/NREL/SAM/issues/491">491</a>)</li>
+<li>Fix marine energy Compare Cases macro when comparing cases with the same LCOE. (<a href="https://github.com/NREL/SAM/issues/497">497</a>)</li>
+<li>Remove Puerto Rico solar resource download macro now that data is available from Location and Resource page, move code to LK script samples. (<a href="https://github.com/NREL/SAM/pull/473">473</a>)</li>
+</ul></li>
+<li>Fix upgrade script issue that caused SAM to crash when opening some files created in older versions of SAM. (<a href="https://github.com/NREL/SAM/issues/518">518</a>)</li>
+<li>For Third Party Ownership model, make PPA price and lease term available for parametric simulations. (<a href="https://github.com/NREL/SAM/pull/536">536</a>)</li>
+<li>Improve handling of API errors for weather file downloads from NSRDB. (<a href="https://github.com/NREL/SAM/pull/541">541</a>)</li>
+<li>Improve Data Table categories on Results page. (<a href="https://github.com/NREL/SAM/issues/485">485</a>)</li>
+<li>Clean up Marine Energy System Costs pages. (<a href="https://github.com/NREL/SAM/pull/489">489</a>)</li>
+<li>Fix REopt inputs to remove unused value of lost load, and only set battery capacity to zero when REopt finds an optimal solution. (<a href="https://github.com/NREL/SAM/issues/482">482</a>, <a href="https://github.com/NREL/SAM/issues/495">495</a>)</li>
+<li>Fix P50/P90 simulations to work with weather files files in EPW format. (<a href="https://github.com/NREL/SAM/issues/480">480</a>)
+
+
 <h1 id="2020-11-29">Version 2020.11.29, SSC Version 250: November 29, 2020</h1>
 
-<p>This version consists of several improvements and updates. Highlights include:</p>
+<p>This new version consists of several improvements and updates. Highlights include:</p>
 
 <ul>
 <li>Implement NREL Solar Position Algorithm (SPA) for sun angle calculations for all solar performance models.</li>
