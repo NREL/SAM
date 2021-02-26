@@ -1,7 +1,7 @@
 Generic System Battery Costs
-830
-554
-62
+826
+619
+63
 GroupBox
 
 1
@@ -51,7 +51,7 @@ Width
 812
 Height
 3
-260
+242
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-453
+522
 Width
 3
 812
@@ -311,7 +311,7 @@ X
 312
 Y
 3
-387
+360
 Width
 3
 99
@@ -1060,7 +1060,7 @@ X
 645
 Y
 3
-501
+570
 Width
 3
 133
@@ -1560,10 +1560,10 @@ Name
 genericsys.cost.sales_tax.percent
 X
 3
-282
+234
 Y
 3
-378
+468
 Width
 3
 100
@@ -1622,13 +1622,13 @@ Name
 genericsys.cost.sales_tax.total
 X
 3
-642
+645
 Y
 3
-378
+468
 Width
 3
-136
+133
 Height
 3
 21
@@ -1685,10 +1685,10 @@ Name
 genericsys.cost.sales_tax.value
 X
 3
-495
+423
 Y
 3
-378
+468
 Width
 3
 100
@@ -1750,7 +1750,7 @@ X
 30
 Y
 3
-483
+552
 Width
 3
 302
@@ -1936,7 +1936,7 @@ X
 6
 Y
 3
-354
+444
 Width
 3
 812
@@ -2251,10 +2251,58 @@ Name
 object 732
 X
 3
+537
+Y
+3
+468
+Width
+3
+105
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+15
+Total sales tax
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7327
+X
+3
 468
 Y
 3
-477
+546
 Width
 3
 171
@@ -2590,7 +2638,7 @@ X
 711
 Y
 3
-369
+342
 Width
 3
 15
@@ -2878,7 +2926,7 @@ X
 711
 Y
 3
-405
+378
 Width
 3
 15
@@ -2926,7 +2974,7 @@ X
 435
 Y
 3
-387
+360
 Width
 3
 210
@@ -2974,7 +3022,7 @@ X
 435
 Y
 3
-420
+393
 Width
 3
 210
@@ -3022,7 +3070,7 @@ X
 648
 Y
 3
-387
+360
 Width
 3
 127
@@ -3211,7 +3259,7 @@ X
 645
 Y
 3
-477
+546
 Width
 3
 133
@@ -3274,7 +3322,7 @@ X
 648
 Y
 3
-420
+393
 Width
 3
 127
@@ -3850,4 +3898,15 @@ equations{'total_system_indirect_cost'} = define() {
 
 
 
-0
+243
+on_load{'PV Battery O and M Costs'} = define() {
+	tech = technology();
+	generic = (tech == "Generic Battery");
+	if (generic) {
+		property('pv_label','Caption','Power Plant');
+	}
+	else {
+		property('pv_label','Caption', 'PV');
+	}
+	refresh();
+};

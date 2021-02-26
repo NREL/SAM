@@ -1,5 +1,5 @@
 1
-1094
+1097
 6par_aisc
 1
 1
@@ -1555,7 +1555,7 @@ const_per_interest1
 1
 1
 1
-529403
+529402
 const_per_interest2
 1
 1
@@ -1615,7 +1615,7 @@ const_per_interest_total
 1
 1
 1
-529403
+529402
 const_per_months1
 1
 1
@@ -6464,6 +6464,12 @@ total_area
 1
 1
 262950
+total_battery_indirect_cost
+1
+1
+1
+1
+0
 total_dc_inverter_capacity
 1
 1
@@ -6512,6 +6518,18 @@ total_modules
 1
 1
 161220
+total_system_indirect_cost
+1
+1
+1
+1
+0
+total_system_installed_cost
+1
+1
+1
+1
+0
 transformer_load_loss
 1
 1

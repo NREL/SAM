@@ -1,7 +1,7 @@
 Fuel Cell Costs
 951
-877
-135
+942
+136
 GroupBox
 
 1
@@ -75,7 +75,7 @@ X
 9
 Y
 3
-777
+840
 Width
 3
 934
@@ -105,7 +105,7 @@ X
 9
 Y
 3
-663
+774
 Width
 3
 934
@@ -3363,7 +3363,7 @@ X
 777
 Y
 3
-828
+891
 Width
 3
 127
@@ -4647,7 +4647,7 @@ X
 48
 Y
 3
-795
+858
 Width
 3
 350
@@ -5449,7 +5449,7 @@ X
 564
 Y
 3
-804
+867
 Width
 3
 210
@@ -5463,6 +5463,54 @@ Caption
 5
 20
 Total installed cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 71
+X
+3
+567
+Y
+3
+795
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+15
+Total sales tax
 TextColour
 4
 0
@@ -6903,10 +6951,10 @@ Name
 sales_tax_percent
 X
 3
-378
+255
 Y
 3
-684
+795
 Width
 3
 100
@@ -6965,10 +7013,10 @@ Name
 sales_tax_total
 X
 3
-774
+777
 Y
 3
-684
+795
 Width
 3
 127
@@ -7028,10 +7076,10 @@ Name
 sales_tax_value
 X
 3
-582
+444
 Y
 3
-684
+795
 Width
 3
 100
@@ -7345,7 +7393,7 @@ X
 777
 Y
 3
-804
+867
 Width
 3
 127
@@ -8681,7 +8729,7 @@ total_system_indirect_cost
 0
 Default
 
-7028
+7025
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -8928,35 +8976,15 @@ equations{'total_system_indirect_cost'} = define() {
 	return ${total_indirect_cost} - ${total_battery_indirect_cost};
 };
 	
-981
-/*on_load{"Fuel Cell Costs"}=define()
-{
-	f = financing();
-	t = technology();
-	show_batt = true;
-	
-	show( "lblFinancingCost", 
-		(f!='None')&&(f!='Residential')&&(f!='Commercial')&&(f!='Third Party')&&(f!='Single Owner'));
-	
-	show( "battery_energy", show_batt);
-	show( "battery_per_kWh", show_batt);
-	show( "battery_power", show_batt);
-	show( "battery_per_kW", show_batt);
-	show( "battery_cost_units", show_batt);
-	show( "battery_total", show_batt);
-		
-	is_detailed_pv = ( t != "PVWatts" );
-	show("land_area_value",is_detailed_pv);
-	show("land_per_acre",is_detailed_pv);
-	show("landprep_per_acre",is_detailed_pv);
-//	show("lbl_land_purchase",is_detailed_pv);
-//	show("lbl_land_preparation",is_detailed_pv);
-	show("lbl_land_plus",is_detailed_pv);
-	show("lbl_cost_per_area",is_detailed_pv);
-	show("lbl_cost_per_area_plus",is_detailed_pv);
-	show("bos_equip_perarea",is_detailed_pv);
-	show("install_labor_perarea",is_detailed_pv);
-	show("install_margin_perarea",is_detailed_pv);
-	
+243
+on_load{'PV Battery O and M Costs'} = define() {
+	tech = technology();
+	generic = (tech == "Generic Battery");
+	if (generic) {
+		property('pv_label','Caption','Power Plant');
+	}
+	else {
+		property('pv_label','Caption', 'PV');
+	}
+	refresh();
 };
-*/
