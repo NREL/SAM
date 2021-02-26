@@ -308,9 +308,9 @@ function solar_anywhere_to_sam_csv( wf )
 		if ( line == 0 ) 
 		{
 			arr = split( str_line, ',');
-			if ( #arr != 8 ) 
+			if ( to_string(arr[0]) != "0" ) 
 			{
-				msgbox('Input file does not appear to be in a SolarAnywhere format: First row has ' + #arr + ' columns instead of 8. Exiting script.\n');
+				msgbox('Input file does not appear to be in a SolarAnywhere format.\n First column of first row does not contain a zero (0). Exiting script.\n');
 				exit;
 			}
 		}
@@ -358,7 +358,8 @@ function solar_anywhere_to_sam_csv( wf )
 		// write first and second header rows to output file
 		if ( line == 0 ) // first header row
 		{
-			headers = 'Source,Location ID,Latitude,Longitude,Time Zone,Elevation'; // SAM CSV header (minimum is Latitude,Longitude,Time Zone,Elevation)
+			//headers = 'Source,Location ID,Latitude,Longitude,Time Zone,Elevation'; // SAM CSV header (minimum is Latitude,Longitude,Time Zone,Elevation)
+			headers = 'Source,Latitude,Longitude,Time Zone,Elevation'; // SAM CSV header (minimum is Latitude,Longitude,Time Zone,Elevation)
 			ok = write_line( fout , to_string(headers) );
 			if ( ok == false ) 
 			{
@@ -366,17 +367,17 @@ function solar_anywhere_to_sam_csv( wf )
 				exit;
 			}
 			arr = split( str_line, ',' ); // SA header
-			if ( #arr != 8 ) 
+			if ( to_string(arr[0]) != "0" ) 
 			{
-				outln('Input file does not appear to be in a SolarAnywhere format: First row has ' + #arr + ' columns instead of 8. Exiting script.\n');
+				outln('Input file does not appear to be in a SolarAnywhere format: First column of first row does not contain a zero (0). Exiting script.\n');
 				exit;
 			}
 			h1[0] = "SolarAnywhere"; // source
-			h1[1] = to_string(arr[0]) + to_string(arr[1]); // location id
-			h1[2] = arr[4]; // latitude
-			h1[3] = arr[5]; // longitude
-			h1[4] = arr[3]; // time zone
-			h1[5] = arr[6]; // elevation
+			//h1[1] = to_string(arr[0]) + to_string(arr[1]); // location id
+			h1[1] = arr[4]; // latitude
+			h1[2] = arr[5]; // longitude
+			h1[3] = arr[3]; // time zone
+			h1[4] = arr[6]; // elevation
 			ok = write_line( fout , arr_to_str(h1) );
 			if ( ok == false ) 
 			{
@@ -570,33 +571,32 @@ function solar_anywhere_to_sam_csv( wf )
 
 	// check to see if input file was for a set of complete years
 	// if not, rename the output file with a partial year
-	// (assumes that partial year was the last year in the multi-year file)
-	if ( mod(line-2,8760)!=0 ) 
-	{ // line should be the total number of lines in the input file
+	// (for multi-yaer, assumes that partial year was the last year)
+	if ( mod(line-2,8760)!=0  ) // line should be the total number of lines in the input file
+	{  
 		outln('\n'+file_only(output_file) + ' does not contain a complete year of data.');
-		new_name = replace( output_file, '_samcsv_' + to_string(T.y), '_samcsv_' + to_string(T.y) + 'part' );
+		if ( fcount > 0 ) // last year from multi-year file with partial cata
+		{ 
+			new_name = replace( output_file, '_samcsv_' + to_string(T.y), '_samcsv_' + to_string(T.y) + 'part' ); 
+		}	
+		else // single-year file with partial data
+		{ 
+			new_name = replace( output_file, '_samcsv', '_samcsv_part' ); 
+		} 
 		ok = rename_file( output_file , new_name );
-		if (ok==true)
+		if (ok==true) 
 		{
-			outln('File renamed to\n ' + file_only(new_name) );
+			outln('File renamed to\n ' + file_only(new_name) ); 
+			output_file = new_name;
 		}
 		else
 		{
-			outln('Unable to rename ' + file_only(output_file) );
+			outln('Unable to rename ' + file_only(output_file) ); 
 		}
 	}
-
+	
+	outln('Weather file converted to:\n\t' + output_file );
 	browse( path_only(output_file) );
-	// if input file is for a single year, show converted data in data viewer
-	if (fcount == 0 )
-	{
-		outln('Weather file converted to:\n\t' + output_file );
-		/*if ( wf_check( output_file ) ) 
-		{	 
-			dview_solar( output_file );
-			browse( path_only( output_file ) );
-		}*/
-	} 
 } 
 
 // convert PVsyst CSV weather format to SAM CSV

@@ -40,10 +40,9 @@
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">For <a href="solar_hot_water.htm" class="topiclink">solar water heating</a> systems, the solar fraction is the ratio of solar energy to total energy delivered to the water storage tank. The solar fraction is based on the energy values for year one of the project cash flow.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Solar Fraction</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Solar Fraction = Total Solar Energy Delivered to Tank (kWh/year) ÷ Total Energy Delivered to Tank (kWh/year)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Where</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Total Solar Energy Delivered to Tank (kWh) = Total Q Collector to Tank (kWh/year) + <a href="mtp_aux_w_wo_solar.htm" class="topiclink">Aux With Solar</a> (kWh/year)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">and </span><span class="f_Emphasis">Total Q Collector to Tank i</span><span class="f_VariableDescription">s the sum of the <a href="shw_results.htm" class="topiclink">hourly</a> </span><span class="f_Emphasis">Q Collector to Tank</span><span class="f_VariableDescription"> values.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Solar Fraction = Q auxiliary only (kWh/year) ÷ System Energy (kWh/year)</span></p>
+<p class="p_Text"><span class="f_CHInterfaceElement">System energy</span><span class="f_Text"> is the sum of the time series </span><span class="f_CHInterfaceElement">System power generated</span><span class="f_Text"> output, and represents total electricity saved by the system, and </span><span class="f_CHInterfaceElement">Q auxiliary only</span><span class="f_Text"> is the energy that would be delivered to the tank without the solar collector. See the Solar Water Heating <a href="shw_results.htm" class="topiclink">Results</a> for details.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM assumes that the solar water heating system does not export energy. For any time step that &quot;system power generated&quot; is greater than the load defined on the Electric Load page, it sets system power generated equal to the load.</span></p>
 
 </td></tr></table>
 

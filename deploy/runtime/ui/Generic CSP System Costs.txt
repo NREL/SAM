@@ -1,7 +1,7 @@
 Generic CSP System Costs
-739
-560
-52
+740
+579
+53
 GroupBox
 
 1
@@ -51,7 +51,7 @@ Width
 722
 Height
 3
-209
+161
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 9
 Y
 3
-462
+480
 Width
 3
 722
@@ -102,10 +102,10 @@ Name
 Label1111
 X
 3
-480
+483
 Y
 3
-384
+441
 Width
 3
 98
@@ -486,10 +486,10 @@ Name
 Label511
 X
 3
-309
+312
 Y
 3
-384
+441
 Width
 3
 68
@@ -1354,7 +1354,7 @@ X
 582
 Y
 3
-513
+531
 Width
 3
 136
@@ -1979,10 +1979,10 @@ Name
 csp.gss.cost.sales_tax.percent
 X
 3
-378
+381
 Y
 3
-384
+441
 Width
 3
 100
@@ -2042,10 +2042,10 @@ Name
 csp.gss.cost.sales_tax.total
 X
 3
-582
+585
 Y
 3
-384
+441
 Width
 3
 136
@@ -2105,10 +2105,10 @@ Name
 csp.gss.cost.sales_tax.value
 X
 3
-207
+210
 Y
 3
-384
+441
 Width
 3
 100
@@ -2797,7 +2797,7 @@ X
 36
 Y
 3
-486
+504
 Width
 3
 188
@@ -2830,6 +2830,36 @@ AlignRight
 2
 0
 AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+9
+Y
+3
+420
+Width
+3
+722
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+9
+Sales Tax
+Bold
 2
 1
 Numeric
@@ -2908,7 +2938,7 @@ X
 582
 Y
 3
-432
+378
 Width
 3
 136
@@ -2971,7 +3001,7 @@ X
 582
 Y
 3
-489
+507
 Width
 3
 136
@@ -3598,7 +3628,7 @@ equations{ 'csp.gss.cost.bop_mwe' } = define() {
 	return ${w_des}; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}; };
+	return ${total_direct_cost}+${total_indirect_cost}+${csp.gss.cost.sales_tax.total}; };
 
 equations{ 'csp.gss.cost.solar_field.area' } = define() {
 	return ${csp.gss.sf.field_area}; };
@@ -3613,7 +3643,7 @@ equations{ 'csp.gss.cost.contingency' } = define() {
 	+${csp.gss.cost.bop}); };
 
 equations{ 'total_indirect_cost' } = define() {
-	return ${csp.gss.cost.epc.total}+${csp.gss.cost.plm.total}+${csp.gss.cost.sales_tax.total}; };
+	return ${csp.gss.cost.epc.total}+${csp.gss.cost.plm.total}; };
 
 equations{ 'csp.gss.cost.sales_tax.total' } = define() {
 	return ${csp.gss.cost.sales_tax.value}/100*${total_direct_cost}*${csp.gss.cost.sales_tax.percent}/100; };

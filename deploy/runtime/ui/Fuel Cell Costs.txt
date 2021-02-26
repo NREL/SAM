@@ -92,6 +92,36 @@ Total Installed Cost
 Bold
 2
 1
+GroupBox
+
+1
+8
+Name
+5
+10
+GroupBox31
+X
+3
+9
+Y
+3
+663
+Width
+3
+934
+Height
+3
+59
+Tool Tip
+5
+0
+Caption
+5
+9
+Salex Tax
+Bold
+2
+1
 Label
 
 1
@@ -4629,8 +4659,8 @@ Tool Tip
 0
 Caption
 5
-155
-The total installed cost is the sum of the direct and indirect costs. Note that it does not include any financing costs from the Financial Parameters page.
+167
+The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.
 TextColour
 4
 0
@@ -5266,7 +5296,7 @@ X
 777
 Y
 3
-630
+603
 Width
 3
 127
@@ -5403,45 +5433,6 @@ Colour
 Caption
 5
 0
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-11
-object 2291
-X
-3
-69
-Y
-3
-588
-Width
-3
-690
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-9
-Sales Tax
 Bold
 2
 1
@@ -6082,7 +6073,7 @@ X
 564
 Y
 3
-645
+618
 Width
 3
 210
@@ -6912,10 +6903,10 @@ Name
 sales_tax_percent
 X
 3
-357
+378
 Y
 3
-603
+684
 Width
 3
 100
@@ -6974,10 +6965,10 @@ Name
 sales_tax_total
 X
 3
-777
+774
 Y
 3
-606
+684
 Width
 3
 127
@@ -7037,10 +7028,10 @@ Name
 sales_tax_value
 X
 3
-564
+582
 Y
 3
-603
+684
 Width
 3
 100
@@ -7291,7 +7282,7 @@ X
 777
 Y
 3
-645
+618
 Width
 3
 127
@@ -8816,7 +8807,7 @@ equations{ 'install_margin_total' } = define() {
 		/*+ ${modulearray_area}*${install_margin_perarea}*/; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}; };
+	return ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total}; };
 
 equations{ 'inverterarray_power' } = define() {
 	return ${inverter_power}*${inverter_num_units}; };
@@ -8834,8 +8825,7 @@ equations{ 'total_indirect_cost' } = define() {
 		+${engr_total}
 		+${grid_total}
 		+${land_total}
-		+${landprep_total}
-		+${sales_tax_total}; };
+		+${landprep_total}; };
 
 equations{ 'grid_total' } = define() {
 	return ${grid_percent}/100*${total_direct_cost} 

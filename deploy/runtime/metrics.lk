@@ -20,16 +20,23 @@ function third_party_metrics()
 
 function host_developer_metrics()
 {
-	metric( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'lppa_nom', {'label'='Levelized PPA price (nominal)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
-	metric( 'lppa_real', {'label'='Levelized PPA price (real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
-	metric( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'lcoe_real', {'label'='Levelized COE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
-	metric( 'project_return_aftertax_npv', {'label'='Developer net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'npv', {'label'='Host net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	metric( 'year1_nte', {'label'='Host indifference point (year 1)', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' } );
-	metric( 'lnte_nom', {'label'='Levelized host indifference point (nominal)', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' } );
-	metric( 'lnte_real', {'label'='Levelized host indifference point (real)', 'mode'='f', 'deci'='2', 'post'='\u00A2/kWh' } );
+	metric_table('Table1', {'headers'='Project Metrics, '});
+	metric_row( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
+	metric_row( 'lcoe_real', {'label'='Levelized COE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
+	metric_row( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
+	metric_row( 'lppa_nom', {'label'='Levelized PPA price (nominal)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
+	metric_row( 'lppa_real', {'label'='Levelized PPA price (real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
+	
+	metric_table('Table2', {'headers'='Developer Metrics, '});
+	metric_row( 'flip_actual_irr', {'label'='Developer internal rate of return (IRR)', 'mode'='f', 'post'='%', 'deci'='2', 'thousep'='false', 'tableName'='Table2' } );
+	metric_row( 'flip_actual_year', {'label'='Year developer IRR is achieved', 'post'=' ', 'thousep'='false', 'tableName'='Table2' } );
+	metric_row( 'project_return_aftertax_npv', {'label'='Developer net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='Table2' } );
+
+	metric_table('Table3', {'headers'='Host Metrics, '});
+	metric_row( 'npv', {'label'='Host net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='Table3' } );
+	metric_row( 'year1_nte', {'label'='Host indifference point (year 1)', 'mode'='f', 'deci'='2', 'thousep'='false', 'post'='\u00A2/kWh', 'tableName'='Table3' } );
+	metric_row( 'lnte_nom', {'label'='Levelized host indifference point (nominal)', 'mode'='f', 'deci'='2', 'thousep'='false', 'post'='\u00A2/kWh', 'tableName'='Table3' } );
+	metric_row( 'lnte_real', {'label'='Levelized host indifference point (real)', 'mode'='f', 'deci'='2', 'thousep'='false', 'post'='\u00A2/kWh', 'tableName'='Table3' } );
 }
 
 function lcoefcr_metrics()

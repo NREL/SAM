@@ -822,7 +822,7 @@ ur_rate_notes
 4
 Rate notes
  
- 
+Electricity Rates - Unused Items
 0
 4
 1
