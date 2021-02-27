@@ -1,7 +1,7 @@
 PV Capex Table Battery
-833
-389
-13
+829
+494
+20
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 812
 Height
 3
-370
+478
 Tool Tip
 5
 0
@@ -38,14 +38,76 @@ Numeric
 17
 Name
 5
-15
-battery_power_w
+18
+battery_energy_kwh
 X
 3
-393
+339
 Y
 3
-342
+450
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+16
+battery_power_kw
+X
+3
+339
+Y
+3
+411
 Width
 3
 90
@@ -107,7 +169,7 @@ X
 24
 Y
 3
-273
+342
 Width
 3
 774
@@ -151,10 +213,72 @@ Name
 capex_table_batt_cost_per_kw
 X
 3
-210
+186
 Y
 3
-342
+411
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+29
+capex_table_batt_cost_per_kwh
+X
+3
+186
+Y
+3
+450
 Width
 3
 90
@@ -222,7 +346,7 @@ Width
 416
 Height
 3
-223
+280
 Tool Tip
 5
 0
@@ -264,8 +388,8 @@ ShowColLabels
 1
 ColLabels
 5
-39
-Capacity (Wdc),DC Battery Costs ($/Wdc)
+45
+Capacity (kWh), Costs ($/kWdc), Costs ($/kWh)
 NumRowsLabel
 5
 5
@@ -312,7 +436,7 @@ Width
 346
 Height
 3
-225
+285
 Tool Tip
 5
 0
@@ -329,10 +453,58 @@ X
 18
 Y
 3
-342
+411
 Width
 3
-192
+168
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+25
+Capex battery cost per kW
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+24
+capex_table_perkw_label3
+X
+3
+18
+Y
+3
+450
+Width
+3
+168
 Height
 3
 24
@@ -342,7 +514,7 @@ Tool Tip
 Caption
 5
 26
-Capex cost per battery Wdc
+Capex battery cost per kWh
 TextColour
 4
 0
@@ -374,10 +546,10 @@ Name
 capex_table_total_installed_batt_cost
 X
 3
-720
+600
 Y
 3
-342
+447
 Width
 3
 90
@@ -437,13 +609,13 @@ Name
 capex_table_total_label22
 X
 3
-564
+495
 Y
 3
-342
+447
 Width
 3
-156
+102
 Height
 3
 24
@@ -485,10 +657,10 @@ Name
 object 2115
 X
 3
-18
+21
 Y
 3
-255
+318
 Width
 3
 789
@@ -523,10 +695,10 @@ Name
 object 716
 X
 3
-531
+459
 Y
 3
-342
+447
 Width
 3
 15
@@ -567,14 +739,158 @@ Label
 13
 Name
 5
+12
+object 71612
+X
+3
+459
+Y
+3
+411
+Width
+3
+15
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
++
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
 9
 object 75
 X
 3
-366
+321
 Y
 3
-342
+450
+Width
+3
+15
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+x
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7520
+X
+3
+321
+Y
+3
+411
+Width
+3
+15
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+1
+x
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 759
+X
+3
+321
+Y
+3
+411
 Width
 3
 15
@@ -619,13 +935,61 @@ Name
 object 76
 X
 3
-303
+276
 Y
 3
-342
+411
 Width
 3
-57
+45
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+4
+$/kW
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7611
+X
+3
+276
+Y
+3
+450
+Width
+3
+42
 Height
 3
 24
@@ -635,7 +999,7 @@ Tool Tip
 Caption
 5
 5
-$/Wdc
+$/kWh
 TextColour
 4
 0
@@ -658,12 +1022,26 @@ AlignTop
 2
 0
 
-4
-battery_power_w
+6
+battery_energy_kwh
 3
 1
  
-Wdc
+kWh
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+battery_power_kw
+3
+1
+ 
+kW
 Capital Costs
 0
 8
@@ -681,6 +1059,20 @@ capex_table_batt_cost_per_kw
  
 0
 9
+1
+1
+1
+1
+0
+Default
+capex_table_batt_cost_per_kwh
+3
+1
+ 
+ 
+ 
+0
+8
 1
 1
 1
@@ -716,27 +1108,39 @@ Capital Costs
 0
 Default
 
-77
-equations{'battery_power_w'} = define() {
-	return ${battery_power} * 1000;
+147
+equations{'battery_power_kw'} = define() {
+	return ${battery_power};
 };
-6737
+
+equations{'battery_energy_kwh'} = define() {
+	return ${battery_energy};
+};
+9245
 function capex_table_batt_inputs_update_plot()
 {
 	Cap = [];
+	Cap_kwh = [];
 	cost_per_kw = [];
+	cost_per_kwh = [];
 	sys_cap_bin = [];
 	sys_cost_bin = [];
 	cost_per_kw[0] = 0;
 	Cap[0] = 0;
 	input = ${capex_table_batt_inputs};
 	
-	sys_cap = ${battery_power_w};
+	sys_cap = ${battery_energy_kwh};
+	sys_kwh_cap = sys_cap;
+	//sys_kwh_cap = ${battery_energy};
 		
 	sys_cap_bin[0] = sys_cap;
+	sys_cap_kwh_bin[0] = sys_kwh_cap;
 	sys_cap_bin[1] = -1000000;
-	sys_cost_bin[0] = ${capex_table_cost_per_kw};
+	sys_cap_kwh_bin[1] = sys_cap_bin[1];
+	sys_cost_bin[0] = ${capex_table_batt_cost_per_kw};
+	sys_cost_kwh_bin[0] = ${capex_table_batt_cost_per_kwh};
 	sys_cost_bin[1] = -1000000;
+	sys_cost_kwh_bin[1] = sys_cost_bin[1];
 	
 	curves = [ [ 1000, 25, 'black' ],
 			   [ 800,  25, 'blue' ],
@@ -752,7 +1156,9 @@ function capex_table_batt_inputs_update_plot()
 	{
 		if (input[idx][0] > 0){
 			Cap[idx] = input[idx][0];
+			Cap_kwh[idx] = input[idx][0];
 			cost_per_kw[idx] = input[idx][1];
+			cost_per_kwh[idx] = input[idx][2];
 				
 		}
 		
@@ -767,11 +1173,15 @@ function capex_table_batt_inputs_update_plot()
 	plot(Cap,cost_per_kw,{"series"="DC Battery Costs Table",
 		"thick"=2, "scale"=true,"color"=curves[0][2]});
 	plot(sys_cap_bin,sys_cost_bin,
-		{"series"="Battery Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
-	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
+		{"series"="Battery Cost (kW)","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
+	plot(Cap_kwh,cost_per_kwh,{"series"="DC Battery Costs Table",
+		"thick"=2, "scale"=true,"color"=curves[1][2]});
+	plot(sys_cap_kwh_bin,sys_cost_kwh_bin,
+		{"series"="Battery Cost (kWh)","type"="scatter","thick"=5,"scale"=true,"color"=curves[4][2]});
+	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southeast'});
 		
-	axis('x1', {'label'='Capacity (Wdc)', 'min'=Cap[0]-50, 'max'=Cap[nr-1]+50});
-	axis('y1', {'label'='Capex ($/Wdc)', 'min'=0, 'max'= max(cost_per_kw)+0.1});
+	axis('x1', {'label'='Capacity (kWh)', 'min'=Cap[0], 'max'=Cap[nr-1]+1});
+	axis('y1', {'label'='Capex ($/kW, $/kWh)', 'min'=0, 'max'= max(cost_per_kw)+0.1});
 	
 	
 	/*
@@ -868,7 +1278,8 @@ function interpolate_batt_capex_table()
 {
 	input = ${capex_table_batt_inputs};
 	
-	sys_cap = ${battery_power_w};
+	sys_cap = ${battery_energy_kwh};
+	sys_kwh_cap = sys_cap;
 	
 	nr = #input;
 	nc = #input[0];
@@ -884,36 +1295,78 @@ function interpolate_batt_capex_table()
 		property('capex_batt_warning_message', 'Caption', 'The cost table must have two columns: Capacity (Wdc) and DC Battery Costs ($/Wdc).');
 		exit;
 	}
-	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
-	if (sys_cap > input[nr - 1][0]) {
-		cost = input[nr - 1][1];
-		cap_string = to_string(to_int(sys_cap));
-		table_string = to_string(to_int(input[nr-1][0]));
-		property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the maximum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
-	
-	}
-	else if (sys_cap < input[0][0]) {
-		cost = input[0][1];
-		cap_string = to_string(to_int(sys_cap));
-		table_string = to_string(to_int(input[nr-1][0]));
-		property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the minimum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
-	
-	}
-	else {
-		while (sys_cap >= input[idx][0]) {
-				idx++;
-			}
+	else if (nc == 2) {
+		if (sys_cap > input[nr - 1][0]) {
+			cost = input[nr - 1][1];
+			cap_string = to_string(to_int(sys_cap));
+			table_string = to_string(to_int(input[nr-1][0]));
+			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the maximum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
 		
-		Cap_low = input[idx-1][0];
-		Cap_high = input[idx][0];
-		cost_low = input[idx-1][1];
-		cost_high = input[idx][1];
-		cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
-		property('capex_batt_warning_message','Caption','');	
+		}
+		else if (sys_cap < input[0][0]) {
+			cost = input[0][1];
+			cap_string = to_string(to_int(sys_cap));
+			table_string = to_string(to_int(input[nr-1][0]));
+			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the minimum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
+		
+		}
+		else {
+			while (sys_cap >= input[idx][0]) {
+					idx++;
+				}
+			
+			Cap_low = input[idx-1][0];
+			Cap_high = input[idx][0];
+			cost_low = input[idx-1][1];
+			cost_kwh_low = input[idx-1][2];
+			cost_high = input[idx][1];
+			cost_kwh_high = input[idx][2];
+			cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
+			cost_kwh = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_kwh_high - cost_kwh_low) + cost_kwh_low;
+			property('capex_batt_warning_message','Caption','');	
+		}
+		total_cost = cost*sys_cap + cost_kwh * sys_kwh_cap;
+		value("capex_table_batt_cost_per_kw", cost);
+		value("capex_table_total_installed_batt_cost",total_cost);
+		}
+	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
+	else {
+		if (sys_cap > input[nr - 1][0]) {
+			cost = input[nr - 1][1];
+			cost_kwh = input[nr - 1][2];
+			cap_string = to_string(to_int(sys_cap));
+			table_string = to_string(to_int(input[nr-1][0]));
+			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the maximum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
+		
+		}
+		else if (sys_cap < input[0][0]) {
+			cost = input[0][1];
+			cost_kwh = input[0][2];
+			cap_string = to_string(to_int(sys_cap));
+			table_string = to_string(to_int(input[nr-1][0]));
+			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the minimum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
+		
+		}
+		else {
+			while (sys_cap >= input[idx][0]) {
+					idx++;
+				}
+			
+			Cap_low = input[idx-1][0];
+			Cap_high = input[idx][0];
+			cost_low = input[idx-1][1];
+			cost_kwh_low = input[idx-1][2];
+			cost_high = input[idx][1];
+			cost_kwh_high = input[idx][2];
+			cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
+			cost_kwh = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_kwh_high - cost_kwh_low) + cost_kwh_low;
+			property('capex_batt_warning_message','Caption','');	
+		}
+		total_cost = cost*sys_cap + cost_kwh * sys_kwh_cap;
+		value("capex_table_batt_cost_per_kw", cost);
+		value("capex_table_batt_cost_per_kwh", cost_kwh);
+		value("capex_table_total_installed_batt_cost",total_cost);
 	}
-	total_cost = cost*sys_cap;
-	value("capex_table_batt_cost_per_kw", cost);
-	value("capex_table_total_installed_batt_cost",total_cost);
 	//value("total_installed_cost", total_cost);
 	//refresh();
 	
