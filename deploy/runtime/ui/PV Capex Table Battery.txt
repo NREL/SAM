@@ -1116,7 +1116,7 @@ equations{'battery_power_kw'} = define() {
 equations{'battery_energy_kwh'} = define() {
 	return ${battery_energy};
 };
-9245
+9291
 function capex_table_batt_inputs_update_plot()
 {
 	Cap = [];
@@ -1292,7 +1292,7 @@ function interpolate_batt_capex_table()
 		total_cost = cost*sys_cap;
 		value("capex_table_batt_cost_per_kw", cost);
 		value("capex_table_total_installed_batt_cost",total_cost);
-		property('capex_batt_warning_message', 'Caption', 'The cost table must have two columns: Capacity (Wdc) and DC Battery Costs ($/Wdc).');
+		property('capex_batt_warning_message', 'Caption', 'The cost table must have at least two columns: Capacity (kWh) and Costs ($/kWdc). A third column can also be used for Costs ($/kWh)');
 		exit;
 	}
 	else if (nc == 2) {
@@ -1300,14 +1300,14 @@ function interpolate_batt_capex_table()
 			cost = input[nr - 1][1];
 			cap_string = to_string(to_int(sys_cap));
 			table_string = to_string(to_int(input[nr-1][0]));
-			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the maximum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
+			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' kWh and the maximum costs table DC battery capacity value is '+table_string + ' kWh. The system capacity is outside the bounds of the costs table.');
 		
 		}
 		else if (sys_cap < input[0][0]) {
 			cost = input[0][1];
 			cap_string = to_string(to_int(sys_cap));
 			table_string = to_string(to_int(input[nr-1][0]));
-			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the minimum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
+			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' kWh and the minimum costs table DC battery capacity value is '+table_string + ' kWh. The system capacity is outside the bounds of the costs table.');
 		
 		}
 		else {
@@ -1336,15 +1336,15 @@ function interpolate_batt_capex_table()
 			cost_kwh = input[nr - 1][2];
 			cap_string = to_string(to_int(sys_cap));
 			table_string = to_string(to_int(input[nr-1][0]));
-			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the maximum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
+			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' kWh and the maximum costs table DC battery capacity value is '+table_string + ' kWh. The system capacity is outside the bounds of the costs table.');
 		
 		}
 		else if (sys_cap < input[0][0]) {
 			cost = input[0][1];
 			cost_kwh = input[0][2];
 			cap_string = to_string(to_int(sys_cap));
-			table_string = to_string(to_int(input[nr-1][0]));
-			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' Wdc and the minimum costs table DC battery capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
+			table_string = to_string(to_int(input[0][0]));
+			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' kWh and the minimum costs table DC battery capacity value is '+table_string + ' kWh. The system capacity is outside the bounds of the costs table.');
 		
 		}
 		else {

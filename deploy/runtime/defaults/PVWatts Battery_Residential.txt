@@ -313,9 +313,14 @@ capex_table_ac_cost_per_kw
 capex_table_ac_inputs
 1
 3
-1
-1
-0
+5
+2
+1 1.28 
+4000 1.28 
+7000 1.28 
+7001 0.79 
+100000 0.79 
+
 capex_table_batt_cost_per_kw
 1
 1
@@ -331,11 +336,13 @@ capex_table_batt_cost_per_kwh
 capex_table_batt_inputs
 1
 3
+5
 3
-3
-5 350 100 
-10 250 80 
-15 150 60 
+1 1970.5 0 
+2.99 1970.5 0 
+3 1970.5 0 
+20 1073.53 0 
+299 1073.53 0 
 
 capex_table_cost_per_kw
 1
@@ -346,11 +353,13 @@ capex_table_cost_per_kw
 capex_table_dc_inputs
 1
 3
-3
+5
 2
-2 0.35 
-5 0.4 
-8 0.45 
+1 1.43 
+4000 1.43 
+7000 1.43 
+7001 1.07 
+100000 1.07 
 
 capex_table_total_installed_ac_cost
 1

@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-23
-Land Capital Cost Table
+28
+Fuel Cell Capital Cost Table
 Bold
 2
 1
@@ -225,8 +225,8 @@ ShowColLabels
 1
 ColLabels
 5
-27
-Acreage,Land Costs ($/acre)
+37
+Capacity (kW), Fuel Cell Costs ($/kW)
 NumRowsLabel
 5
 5
@@ -674,15 +674,18 @@ capex_table_fuelcell_cost_per_kw
 Default
 capex_table_fuelcell_inputs
 3
-0
+3
  
  
  
 0
 0
 1
+3
+1
+1
 0
- 
+Default
 capex_table_total_installed_fuelcell_cost
 3
 1
@@ -716,7 +719,7 @@ Default
 equations{'fuelcell_power_kw'} = define() {
 	return ${fuelcell_power_total};
 };
-5688
+5683
 function capex_table_fuelcell_inputs_update_plot()
 {
 	Cap = [];
@@ -876,7 +879,7 @@ function interpolate_fuelcell_capex_table()
 		total_cost = cost*sys_cap;
 		value("capex_table_fuelcell_cost_per_kw", cost);
 		value("capex_table_total_installed_fuelcell_cost",total_cost);
-		property('capex_fuelcell_warning_message', 'Caption', 'The cost table must have two columns: Acreage (acres) and Land Costs ($/acre).');
+		property('capex_fuelcell_warning_message', 'Caption', 'The cost table must have two columns: Capacity (kW) and Fuel Cell Costs ($/kW).');
 		exit;
 	}
 	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
@@ -884,14 +887,14 @@ function interpolate_fuelcell_capex_table()
 		cost = input[nr - 1][1];
 		cap_string = to_string(to_int(sys_cap));
 		table_string = to_string(to_int(input[nr-1][0]));
-		value('capex_fuelcell_warning_message','Caption','The total acreage is '+cap_string+' acres and the maximum cost table acreage value is '+table_string + ' acres. The system capacity is outside the bounds of the cost table.');
+		value('capex_fuelcell_warning_message','Caption','The total capacity is '+cap_string+' kW and the maximum cost table capacity value is '+table_string + ' kW. The system capacity is outside the bounds of the cost table.');
 			
 	}
 	else if (sys_cap < input[0][0]) {
 		cost = input[0][1];
 		cap_string = to_string(to_int(sys_cap));
 		table_string = to_string(to_int(input[0][0]));
-		property('capex_fuelcell_warning_message','Caption','The total acreage is '+cap_string+' acres and the maximum cost table acreage value is '+table_string + ' Wdc. The land use is outside the bounds of the cost table.');
+		property('capex_fuelcell_warning_message','Caption','The total capacity is '+cap_string+' kW and the maximum cost table capacity value is '+table_string + ' kW. The land use is outside the bounds of the cost table.');
 			
 	}
 	else {
