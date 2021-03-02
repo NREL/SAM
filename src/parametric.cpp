@@ -1047,11 +1047,6 @@ void ParametricViewer::SendToExcelOld()
 void ParametricViewer::SendToExcel()
 {
 	wxBusyInfo busy("Processing data table... please wait");
-//	wxString dat;
-//	GetTextData(dat, '\t');
-
-	// strip commas per request from Paul 5/23/12 meeting
-//	dat.Replace(",", "");
 
 #ifdef __WXMSW__
 	wxExcelAutomation xl;
@@ -1069,41 +1064,31 @@ void ParametricViewer::SendToExcel()
 		return;
 	}
 
-	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
-		if (!m_grid_data->IsInput(col)) {
-			std::vector<std::vector<double> > values_vec;
-			wxArrayString labels;
-			for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
-			{
-				std::vector<double> vec = m_grid_data->GetArray(row, col);
-				if (vec.size() == 0) // single values
-					vec.push_back(m_grid_data->GetDouble(row, col));
-				values_vec.push_back(vec);
-				labels.push_back(wxString::Format("Run %d", row + 1));
-			}
-			ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
-//			apd.SendToExcel();
-			wxString sheetName = m_grid_data->GetColLabelValue(col);
-			// valid sheet names - no \ / ? * [ ] and 31 characters max
-			sheetName.Replace("\\", "_");
-			sheetName.Replace("/", "_");
-			sheetName.Replace("?", "_");
-			sheetName.Replace("*", "_");
-			sheetName.Replace("[", "_");
-			sheetName.Replace("]", "_");
-			sheetName = sheetName.Left(31);
-			apd.SendToExcelSheet(xl, sheetName);
+	for (int col = m_grid_data->GetNumberCols()-1; col >= 0; col--) { // reorder to match list of Excel sheets with parametric table
+		std::vector<std::vector<double> > values_vec;
+		wxArrayString labels;
+		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+		{
+			std::vector<double> vec = m_grid_data->GetArray(row, col);
+			if (vec.size() == 0) // single values
+				vec.push_back(m_grid_data->GetDouble(row, col));
+			values_vec.push_back(vec);
+			labels.push_back(wxString::Format("Run %d", row + 1));
 		}
+		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
+		wxString sheetName = m_grid_data->GetColLabelValue(col);
+		// valid sheet names - no \ / ? * [ ] and 31 characters max
+		sheetName.Replace("\\", "_");
+		sheetName.Replace("/", "_");
+		sheetName.Replace("?", "_");
+		sheetName.Replace("*", "_");
+		sheetName.Replace("[", "_");
+		sheetName.Replace("]", "_");
+		if (m_grid_data->IsInput(col)) sheetName = "IN_" + sheetName;
+		sheetName = sheetName.Left(31);
+		apd.SendToExcelSheet(xl, sheetName);
 	}
 
-/*
-	if (wxTheClipboard->Open())
-	{
-		wxTheClipboard->SetData(new wxTextDataObject(dat));
-		wxTheClipboard->Close();
-		xl.PasteClipboard();
-	}
-	*/
 #endif
 }
 
