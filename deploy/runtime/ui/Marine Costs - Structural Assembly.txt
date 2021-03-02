@@ -1106,7 +1106,7 @@ Name
 object 72748
 X
 3
-291
+315
 Y
 3
 369
@@ -1121,8 +1121,8 @@ Tool Tip
 0
 Caption
 5
-24
-Personnel access system 
+23
+Personnel access system
 TextColour
 4
 0
