@@ -2624,7 +2624,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-32828
+32933
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2937,7 +2937,9 @@ function update_info( ctxt )
 		}
 		else
 		{
-			msgbox('Weather file reader failed!\n' + result);
+			msgbox('Weather file reader failed!\n' 
+			+ result
+			+ '\n\nTo avoid this message, remove  the following file from your weather file folders: \n' + wf);
 			value( 'annual_global', nan() );
 			value( 'annual_beam', nan() );
 			value( 'annual_diffuse', nan() );

@@ -204,7 +204,7 @@ Name
 Electrical Infrastructure Costs
 X
 3
-6
+9
 Y
 3
 12
