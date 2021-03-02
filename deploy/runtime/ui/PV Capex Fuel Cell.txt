@@ -79,29 +79,6 @@ AlignRight
 AlignTop
 2
 1
-Plot
-
-1
-6
-Name
-5
-21
-capex_table_fuel_plot
-X
-3
-453
-Y
-3
-27
-Width
-3
-346
-Height
-3
-225
-Tool Tip
-5
-0
 Numeric
 
 1
@@ -253,6 +230,29 @@ ShowColumn
 4294967295
 ColorMap
 2
+0
+Plot
+
+1
+6
+Name
+5
+25
+capex_table_fuelcell_plot
+X
+3
+453
+Y
+3
+27
+Width
+3
+346
+Height
+3
+225
+Tool Tip
+5
 0
 Label
 
@@ -719,7 +719,7 @@ Default
 equations{'fuelcell_power_kw'} = define() {
 	return ${fuelcell_power_total};
 };
-5683
+5690
 function capex_table_fuelcell_inputs_update_plot()
 {
 	Cap = [];
@@ -728,13 +728,13 @@ function capex_table_fuelcell_inputs_update_plot()
 	sys_cost_bin = [];
 	cost_per_kw[0] = 0;
 	Cap[0] = 0;
-	input = ${capex_table_land_inputs};
+	input = ${capex_table_fuelcell_inputs};
 	
 	sys_cap = ${fuelcell_power_kw};
 		
 	sys_cap_bin[0] = sys_cap;
 	sys_cap_bin[1] = -500000;
-	sys_cost_bin[0] = ${capex_table_land_cost_per_kw};
+	sys_cost_bin[0] = ${capex_table_fuelcell_cost_per_kw};
 	sys_cost_bin[1] = -100;
 	
 	curves = [ [ 1000, 25, 'black' ],
@@ -843,7 +843,7 @@ function capex_table_fuelcell_inputs_update_plot()
 	*/
 }
 
-on_load{ 'PV Capex Table Land' } = define() {	
+on_load{ 'PV Capex Fuel Cell' } = define() {	
 	//capex_table_fuelcell_inputs_update_plot();
 	interpolate_fuelcell_capex_table();
 	capex_table_fuelcell_inputs_update_plot();

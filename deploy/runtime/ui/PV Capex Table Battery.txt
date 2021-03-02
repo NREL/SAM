@@ -546,7 +546,7 @@ Name
 capex_table_total_installed_batt_cost
 X
 3
-600
+723
 Y
 3
 447
@@ -609,7 +609,7 @@ Name
 capex_table_total_label22
 X
 3
-495
+621
 Y
 3
 447

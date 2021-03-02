@@ -738,7 +738,7 @@ equations{'modulearray_power_w'} = define() {
 };
 
 
-6770
+6765
 function capex_table_dc_inputs_update_plot()
 {
 	Cap = [];
@@ -782,10 +782,10 @@ function capex_table_dc_inputs_update_plot()
 	setplot( 'capex_table_dc_plot' );
 	clearplot();
 		
-	plot(Cap,cost_per_kw,{"series"="DC Costs Interp. Table",
+	plot(Cap,cost_per_kw,{"series"="DC Costs Table",
 		"thick"=2, "scale"=true,"color"=curves[0][2]});
 	plot(sys_cap_bin,sys_cost_bin,
-		{"series"="Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
+		{"series"="DC Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
 		
 	axis('x1', {'label'='Capacity (Wdc)', 'min'=Cap[0]-50, 'max'=Cap[nr-1]+50});
