@@ -3916,7 +3916,7 @@ extern "C"
 	 * Set batt_life_model: Battery life model specifier [0/1]
 	 * options: 0=calendar/cycle,1=NMC
 	 * constraints: None
-	 * required if: en_batt=1
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_life_model_nset(SAM_table ptr, double number, SAM_error *err);
 
