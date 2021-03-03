@@ -1250,7 +1250,7 @@ void ArrayPopupDialog::OnCommand(wxCommandEvent &evt)
 	}
 }
 
-void ArrayPopupDialog::GetTextData(wxString &dat, char sep)
+void ArrayPopupDialog::GetTextData(wxString &dat, char sep, bool withHeader)
 {
 	dat = wxEmptyString;
 	if (!m_grid)
@@ -1261,23 +1261,25 @@ void ArrayPopupDialog::GetTextData(wxString &dat, char sep)
 	dat.Alloc(approxbytes);
 
 	int c;
+	// header
+	if (withHeader) {
+		for (c = 0; c < m_grid_data->GetNumberCols(); c++)
+		{
+			wxString label = m_grid_data->GetColLabelValue(c);
+			label.Replace('\n', " | ");
 
-	for (c = 0; c<m_grid_data->GetNumberCols(); c++)
-	{
-		wxString label = m_grid_data->GetColLabelValue(c);
-		label.Replace('\n', " | ");
+			if (sep == ',')
+				dat += '"' + label + '"';
+			else
+				dat += label;
 
-		if (sep == ',')
-			dat += '"' + label + '"';
-		else
-			dat += label;
-
-		if (c < m_grid_data->GetNumberCols() - 1)
-			dat += sep;
-		else
-			dat += '\n';
+			if (c < m_grid_data->GetNumberCols() - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
 	}
-
+	// data
 	for (int r = 0; r<m_grid_data->GetNumberRows(); r++)
 	{
 		for (c = 0; c<m_grid_data->GetNumberCols(); c++)

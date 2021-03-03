@@ -219,6 +219,7 @@ private:
 	void CopyToClipboard();
 	wxArrayString getFromCSV(const wxString& input_name, int& rows, int& cols);
 	wxArrayString getFromExcel(const wxString& input_name, int& rows, int& cols);
+	void SaveToCSVOld();
 	void SaveToCSV();
 	void SendToExcelOld();
 	void SendToExcel();

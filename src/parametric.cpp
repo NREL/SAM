@@ -989,7 +989,7 @@ wxArrayString ParametricViewer::getFromExcel(const wxString& input_name, int& ro
 #endif // __WXMSW__
 }
 
-void ParametricViewer::SaveToCSV()
+void ParametricViewer::SaveToCSVOld()
 {
 	wxFileDialog fdlg(this, "Save as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	if (fdlg.ShowModal() != wxID_OK) return;
@@ -1043,6 +1043,63 @@ void ParametricViewer::SendToExcelOld()
 #endif
 }
 
+void ParametricViewer::SaveToCSV()
+{
+	wxFileDialog fdlg(this, "Save as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	if (fdlg.ShowModal() != wxID_OK) return;
+
+	FILE* fp = fopen(fdlg.GetPath().c_str(), "w");
+	if (!fp)
+	{
+		wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
+		return;
+	}
+
+	wxBusyInfo busy("Writing CSV file... please wait");
+
+	wxString sep = ",";
+	wxString header;
+
+	for (int c = 0; c < m_grid_data->GetNumberCols(); c++)
+	{
+		wxString label = m_grid_data->GetColLabelValue(c);
+		label.Replace('\n', " | ");
+
+		if (sep == ',')
+			header += '"' + label + '"';
+		else
+			header += label;
+
+		if (c < m_grid_data->GetNumberCols() - 1)
+			header += sep;
+		else
+			header += '\n';
+	}
+	fputs(header.c_str(), fp);
+
+
+
+	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
+		std::vector<std::vector<double> > values_vec;
+		wxArrayString labels;
+		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+		{
+			std::vector<double> vec = m_grid_data->GetArray(row, col);
+			if (vec.size() == 0) // single values
+				vec.push_back(m_grid_data->GetDouble(row, col));
+			values_vec.push_back(vec);
+			labels.push_back(wxString::Format("Run %d", row + 1));
+		}
+		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
+		wxString dat;
+		apd.GetTextData(dat, ',', false);
+		fputs(dat.c_str(), fp);
+	}
+
+
+	fclose(fp);
+
+}
 
 void ParametricViewer::SendToExcel()
 {

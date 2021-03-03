@@ -157,13 +157,13 @@ public:
 
 	void SendToExcel();
 	void SendToExcelSheet(wxExcelAutomation& xl, wxString& sheetName);
+	void GetTextData(wxString& dat, char sep, bool withHeader = true);
 
 private:
 	void OnCommand(wxCommandEvent &evt);
 
 	void CopyToClipboard();
 	void SaveToCSV();
-	void GetTextData(wxString &dat, char sep);
 
 	void CreateUI();
 
