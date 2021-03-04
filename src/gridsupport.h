@@ -158,6 +158,7 @@ public:
 	void SendToExcel();
 	void SendToExcelSheet(wxExcelAutomation& xl, wxString& sheetName);
 	void GetTextData(wxString& dat, char sep, bool withHeader = true);
+	void GetParametricTextData(wxString& dat, char sep);
 
 private:
 	void OnCommand(wxCommandEvent &evt);

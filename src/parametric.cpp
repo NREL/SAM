@@ -1058,26 +1058,13 @@ void ParametricViewer::SaveToCSV()
 	wxBusyInfo busy("Writing CSV file... please wait");
 
 	wxString sep = ",";
-	wxString header;
-
-	for (int c = 0; c < m_grid_data->GetNumberCols(); c++)
-	{
-		wxString label = m_grid_data->GetColLabelValue(c);
-		label.Replace('\n', " | ");
-
-		if (sep == ',')
-			header += '"' + label + '"';
-		else
-			header += label;
-
-		if (c < m_grid_data->GetNumberCols() - 1)
-			header += sep;
-		else
-			header += '\n';
+	wxString header = "run";
+	//  e.g. run,1,2,3,...
+	for (int run = 1; run < m_grid_data->GetNumberRows()+1; run++) {
+		header += sep + wxString::Format("%d", run);
 	}
+	header += "\n";
 	fputs(header.c_str(), fp);
-
-
 
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
 		std::vector<std::vector<double> > values_vec;
@@ -1092,7 +1079,8 @@ void ParametricViewer::SaveToCSV()
 		}
 		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
 		wxString dat;
-		apd.GetTextData(dat, ',', false);
+//		apd.GetTextData(dat, ',', false);
+		apd.GetParametricTextData(dat, ',');
 		fputs(dat.c_str(), fp);
 	}
 

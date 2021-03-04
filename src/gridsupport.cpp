@@ -1294,6 +1294,41 @@ void ArrayPopupDialog::GetTextData(wxString &dat, char sep, bool withHeader)
 	}
 }
 
+void ArrayPopupDialog::GetParametricTextData(wxString& dat, char sep)
+{
+	dat = wxEmptyString;
+	if (!m_grid)
+		return;
+
+	wxGridTableBase* m_grid_data = m_grid->GetTable();
+	size_t approxbytes = m_grid_data->GetNumberRows() * 15 * m_grid_data->GetNumberCols();
+	dat.Alloc(approxbytes);
+	for (int r = 0; r < m_grid_data->GetNumberRows(); r++)
+	{
+		for (int c = 0; c < m_grid_data->GetNumberCols(); c++)
+		{
+			if (c == 0) {
+				dat += GetTitle();
+				wxString colHeader = m_grid_data->GetColLabelValue(c);
+				if (colHeader != "Index") {// single values
+					dat += " - ";
+					if (colHeader != "Month")
+						dat += colHeader;
+					dat += " " + m_grid_data->GetValue(r, c);
+				}
+			}
+			else {
+				dat += m_grid_data->GetValue(r, c);
+			}
+
+			if (c < m_grid_data->GetNumberCols() - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
+	}
+}
+
 
 void ArrayPopupDialog::CopyToClipboard()
 {
