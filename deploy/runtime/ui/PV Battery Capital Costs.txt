@@ -7465,7 +7465,7 @@ $
 0
 Default
 
-5526
+5594
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -7671,7 +7671,8 @@ equations { 'system_use_recapitalization' } = define () {
 };
 
 equations{'battery_total_cost_lcos'} = define() {
-	return ${battery_total}+${total_battery_indirect_cost};
+	return ${battery_total}+${total_battery_indirect_cost}
+		+${sales_tax_value}/100*${sales_tax_percent}/100*${battery_total};
 };
 
 equations{'total_battery_indirect_cost'} = define() {
