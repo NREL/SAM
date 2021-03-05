@@ -3156,7 +3156,7 @@ TabOrder
 3
 40
 
-62
+44
 const_per_interest1
 3
 1
@@ -3171,20 +3171,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_interest1_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_interest2
 3
 1
@@ -3199,20 +3185,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_interest2_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_interest3
 3
 1
@@ -3227,20 +3199,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_interest3_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_interest4
 3
 1
@@ -3255,20 +3213,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_interest4_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_interest5
 3
 1
@@ -3283,20 +3227,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_interest5_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_interest_rate1
 3
 1
@@ -3381,20 +3311,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_interest_total_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_months1
 3
 1
@@ -3628,20 +3544,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_principal1_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_principal2
 3
 1
@@ -3656,20 +3558,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_principal2_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_principal3
 3
 1
@@ -3684,20 +3572,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_principal3_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_principal4
 3
 1
@@ -3712,20 +3586,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_principal4_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_principal5
 3
 1
@@ -3740,20 +3600,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_principal5_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_principal_total
 3
 1
@@ -3768,20 +3614,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_principal_total_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_total1
 3
 1
@@ -3796,20 +3628,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_total1_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_total2
 3
 1
@@ -3824,20 +3642,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_total2_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_total3
 3
 1
@@ -3852,20 +3656,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_total3_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_total4
 3
 1
@@ -3880,20 +3670,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_total4_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_total5
 3
 1
@@ -3908,20 +3684,6 @@ Construction Period Debt
 1
 0
 Numeric
-const_per_total5_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 const_per_upfront_rate1
 3
 1
@@ -4006,22 +3768,8 @@ Construction Period Debt
 1
 0
 Numeric
-construction_financing_cost_batt
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 
-7468
+3665
 equations{ '$MIMO$ construction_interest' } = define() {
 	// construction interest calculation for each of the five construction period loans
 	C = ${total_installed_cost}; // installed cost
@@ -4116,102 +3864,6 @@ equations{ 'const_per_interest_total' } = define() {
   ${const_per_interest3} +
   ${const_per_interest4} +
   ${const_per_interest5}; };
-  
-equations{ '$MIMO$ construction_interest lcos' } = define() {
-	// construction interest calculation for each of the five construction period loans
-	tech = technology();
-	if (tech == "PVWatts Battery" || tech == "PV Battery" || tech == "Generic Battery" || tech == "Fuel Cell") {
-	
-		C = ${battery_total_cost_lcos};
-		// installed cost
-	}
-	else {
-		C = 0;
-	}
-
-	// Loan 1
-	r = ${const_per_interest_rate1} / 100; // annual loan rate
-	t = ${const_per_months1};              // loan term in months
-	f = ${const_per_percent1} / 100;       // percent of installed cost for loan principal
-	P = f * C;                             // principal
-	I = P * r / 12 * t / 2;                // loan interest
-	u = ${const_per_upfront_rate1} / 100;  // up-front rate
-	F = P * u ;                            // up-front fee
-	${const_per_principal1_batt} = P;
-	${const_per_interest1_batt} = I;
-	${const_per_total1_batt} = I + F;
-
-	// Loan 2
-	r = ${const_per_interest_rate2} / 100; // annual loan rate
-	t = ${const_per_months2};              // loan term in months
-	f = ${const_per_percent2} / 100;       // percent of installed cost for loan principal
-	P = f * C;                             // principal
-	I = P * r / 12 * t / 2;                // loan interest
-	u = ${const_per_upfront_rate2} / 100;  // up-front rate
-	F = P * u ;                            // up-front fee
-	${const_per_principal2_batt} = P;
-	${const_per_interest2_batt} = I;
-	${const_per_total2_batt} = I + F;
-
-	// Loan 3
-	r = ${const_per_interest_rate3} / 100; // annual loan rate
-	t = ${const_per_months3};              // loan term in months
-	f = ${const_per_percent3} / 100;       // percent of installed cost for loan principal
-	P = f * C;                             // principal
-	I = P * r / 12 * t / 2;                // loan interest
-	u = ${const_per_upfront_rate3} / 100;  // up-front rate
-	F = P * u ;                            // up-front fee
-	${const_per_principal3_batt} = P;
-	${const_per_interest3_batt} = I;
-	${const_per_total3_batt} = I + F;
-
-	// Loan 4
-	r = ${const_per_interest_rate4} / 100; // annual loan rate
-	t = ${const_per_months4};              // loan term in months
-	f = ${const_per_percent4} / 100;       // percent of installed cost for loan principal
-	P = f * C;                             // principal
-	I = P * r / 12 * t / 2;                // loan interest
-	u = ${const_per_upfront_rate4} / 100;  // up-front rate
-	F = P * u ;                            // up-front fee
-	${const_per_principal4_batt} = P;
-	${const_per_interest4_batt} = I;
-	${const_per_total4_batt} = I + F;
-
-	// Loan 5
-	r = ${const_per_interest_rate5} / 100; // annual loan rate
-	t = ${const_per_months5};              // loan term in months
-	f = ${const_per_percent5} / 100;       // percent of installed cost for loan principal
-	P = f * C;                             // principal
-	I = P * r / 12 * t / 2;                // loan interest
-	u = ${const_per_upfront_rate5} / 100;  //up-front rate
-	F = P * u ;                            //up-front fee
-	${const_per_principal5_batt} = P;
-	${const_per_interest5_batt} = I;
-	${const_per_total5_batt} = I + F;
-
-	return 0; 
-};
-
-equations{ 'const_per_principal_total_batt' } = define() {
-	return  ${const_per_principal1_batt} +
-  ${const_per_principal2_batt} +
-  ${const_per_principal3_batt} +
-  ${const_per_principal4_batt} +
-  ${const_per_principal5_batt}; };
-
-equations{ 'construction_financing_cost_batt' } = define() {
-	return  ${const_per_total1_batt} +
-  ${const_per_total2_batt} +
-  ${const_per_total3_batt} +
-  ${const_per_total4_batt} +
-  ${const_per_total5_batt}; };
-
-equations{ 'const_per_interest_total_batt' } = define() {
-	return  ${const_per_interest1_batt} +
-  ${const_per_interest2_batt} +
-  ${const_per_interest3_batt} +
-  ${const_per_interest4_batt} +
-  ${const_per_interest5_batt}; };
   
 
 
