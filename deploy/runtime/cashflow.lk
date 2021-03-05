@@ -664,13 +664,14 @@ function cf_levelized_metrics()
 	cfline('cf_om_batt_fixed_expense', 0);
 	cfline('cf_batt_replacement_cost', 0);
 	cfline('cf_salvage_cost_lcos', 0);
-	cfline('cf_util_escal_rate', 2);
+	cfline('cf_annual_cost_lcoe_system', 2);
 	cfline('cf_annual_discharge_lcos', 0);
 	cfline( '' );
 	cfline('npv_annual_costs_lcos', 0);
 	cfline('npv_energy_lcos_nom', 0);
 	cfline('lcos_nom', 2);
 	cfline('lcos_real', 2); 
+	cfline('lcoe_system', 2);
 	
 	if ( has_roe ) 
 	{
