@@ -15,6 +15,7 @@
             "calendar_choice": 1.0,
             "calendar_q0": 0.999,
             "chem": 1,
+            "life_model": 0,
             "cycling_matrix": [
                 [
                     100,
