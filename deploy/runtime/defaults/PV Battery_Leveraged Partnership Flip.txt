@@ -1,5 +1,5 @@
 1
-1039
+1042
 6par_aisc
 1
 1
@@ -1127,13 +1127,13 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_total_cost_lcos
 1
 1
 1
 1
-1438480
+2738537
 battery_voltage_shown
 1
 1
@@ -1555,7 +1555,7 @@ const_per_interest1
 1
 1
 1
-529403
+529402
 const_per_interest2
 1
 1
@@ -1615,7 +1615,7 @@ const_per_interest_total
 1
 1
 1
-529403
+529402
 const_per_months1
 1
 1
@@ -1814,7 +1814,7 @@ contingency
 1
 1
 1
-1288210
+1.28821e+06
 contingency_percent
 1
 1
@@ -1850,7 +1850,7 @@ cost_dev_fee_value
 1
 1
 1
-1588210
+1.58821e+06
 cost_equity_closing
 1
 1
@@ -2495,7 +2495,7 @@ engr_total
 1
 1
 1
-3500160
+3.50016e+06
 equip1_reserve_cost
 1
 1
@@ -2609,7 +2609,7 @@ grid_total
 1
 1
 1
-1500070
+1.50007e+06
 ibi_fed_amount
 1
 1
@@ -3975,7 +3975,7 @@ landprep_total
 1
 1
 1
-1000040
+1.00004e+06
 lat
 1
 1
@@ -4755,7 +4755,7 @@ sales_tax_total
 1
 1
 1
-2211430
+2.21143e+06
 sales_tax_value
 1
 1
@@ -6458,6 +6458,12 @@ total_area
 1
 1
 262950
+total_battery_indirect_cost
+1
+1
+1
+1
+1.30006e+06
 total_dc_inverter_capacity
 1
 1
@@ -6475,7 +6481,7 @@ total_indirect_cost
 1
 1
 1
-8711715
+6.50029e+06
 total_installed_cost
 1
 1
@@ -6506,6 +6512,18 @@ total_modules
 1
 1
 161220
+total_system_indirect_cost
+1
+1
+1
+1
+5200231
+total_system_installed_cost
+1
+1
+1
+1
+50201712
 transformer_load_loss
 1
 1

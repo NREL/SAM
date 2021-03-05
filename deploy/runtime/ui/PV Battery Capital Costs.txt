@@ -5134,8 +5134,8 @@ Tool Tip
 0
 Caption
 5
-27
-Total battery indirect cost
+26
+Total system indirect cost
 TextColour
 4
 0

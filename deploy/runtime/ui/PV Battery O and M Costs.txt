@@ -1,6 +1,6 @@
 PV Battery O and M Costs
-1111
-539
+862
+254
 33
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 0
 Width
 3
-812
+845
 Height
 3
 248
