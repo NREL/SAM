@@ -919,7 +919,7 @@ function interpolate_dc_capex_table()
 		cost = input[0][1];
 		cap_string = to_string(to_int(sys_cap));
 		table_string = to_string(to_int(input[0][0]));
-		property('capex_dc_warning_message','Caption','The DC system capacity is '+cap_string+' Wdc and the maximum costs interpolation table DC capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
+		property('capex_dc_warning_message','Caption','The DC system capacity is '+cap_string+' Wdc and the minimum costs interpolation table DC capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
 			
 	}
 	else {

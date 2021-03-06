@@ -908,7 +908,7 @@ function interpolate_land_capex_table()
 		cost = input[0][1];
 		cap_string = to_string(to_int(sys_cap));
 		table_string = to_string(to_int(input[0][0]));
-		property('capex_land_warning_message','Caption','The total acreage is '+cap_string+' acres and the maximum cost table acreage value is '+table_string + ' Wdc. The land use is outside the bounds of the cost table.');
+		property('capex_land_warning_message','Caption','The total acreage is '+cap_string+' acres and the minimum cost table acreage value is '+table_string + ' Wdc. The land use is outside the bounds of the cost table.');
 			
 	}
 	else {

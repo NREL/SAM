@@ -719,7 +719,7 @@ Default
 equations{'fuelcell_power_kw'} = define() {
 	return ${fuelcell_power_total};
 };
-5690
+5691
 function capex_table_fuelcell_inputs_update_plot()
 {
 	Cap = [];
@@ -894,7 +894,7 @@ function interpolate_fuelcell_capex_table()
 		cost = input[0][1];
 		cap_string = to_string(to_int(sys_cap));
 		table_string = to_string(to_int(input[0][0]));
-		property('capex_fuelcell_warning_message','Caption','The total capacity is '+cap_string+' kW and the maximum cost table capacity value is '+table_string + ' kW. The land use is outside the bounds of the cost table.');
+		property('capex_fuelcell_warning_message','Caption','The total capacity is '+cap_string+' kW and the minimumm cost table capacity value is '+table_string + ' kW. The land use is outside the bounds of the cost table.');
 			
 	}
 	else {

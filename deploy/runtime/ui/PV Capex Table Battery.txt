@@ -1116,7 +1116,7 @@ equations{'battery_power_kw'} = define() {
 equations{'battery_energy_kwh'} = define() {
 	return ${battery_energy};
 };
-9291
+9288
 function capex_table_batt_inputs_update_plot()
 {
 	Cap = [];
@@ -1306,7 +1306,7 @@ function interpolate_batt_capex_table()
 		else if (sys_cap < input[0][0]) {
 			cost = input[0][1];
 			cap_string = to_string(to_int(sys_cap));
-			table_string = to_string(to_int(input[nr-1][0]));
+			table_string = to_string(to_int(input[0][0]));
 			property('capex_batt_warning_message','Caption','The DC battery system capacity is '+cap_string+' kWh and the minimum costs table DC battery capacity value is '+table_string + ' kWh. The system capacity is outside the bounds of the costs table.');
 		
 		}
