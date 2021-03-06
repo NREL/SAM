@@ -1,7 +1,7 @@
 PV Capex Table
-826
-318
-12
+830
+379
+13
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 812
 Height
 3
-310
+364
 Tool Tip
 5
 0
@@ -30,6 +30,53 @@ Caption
 21
 DC Capital Cost Table
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+24
+capex_dc_warning_message
+X
+3
+24
+Y
+3
+273
+Width
+3
+768
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 Numeric
@@ -42,10 +89,10 @@ Name
 capex_table_cost_per_kw
 X
 3
-210
+213
 Y
 3
-276
+330
 Width
 3
 90
@@ -217,10 +264,10 @@ Name
 capex_table_perkw_label
 X
 3
-18
+21
 Y
 3
-276
+330
 Width
 3
 192
@@ -265,10 +312,10 @@ Name
 capex_table_total_installed_dc_cost
 X
 3
-720
+723
 Y
 3
-276
+330
 Width
 3
 90
@@ -328,10 +375,10 @@ Name
 capex_table_total_label22
 X
 3
-564
+567
 Y
 3
-276
+330
 Width
 3
 156
@@ -376,10 +423,10 @@ Name
 modulearray_power_w
 X
 3
-393
+396
 Y
 3
-276
+330
 Width
 3
 90
@@ -476,10 +523,10 @@ Name
 object 716
 X
 3
-531
+534
 Y
 3
-276
+330
 Width
 3
 15
@@ -524,10 +571,10 @@ Name
 object 75
 X
 3
-366
+369
 Y
 3
-276
+330
 Width
 3
 15
@@ -572,10 +619,10 @@ Name
 object 76
 X
 3
-303
+306
 Y
 3
-276
+330
 Width
 3
 57
@@ -611,7 +658,20 @@ AlignTop
 2
 0
 
+5
+capex_dc_warning_message
+3
 4
+ 
+ 
+ 
+0
+0
+1
+4
+9
+<invalid>
+Label
 capex_table_cost_per_kw
 3
 1
@@ -629,11 +689,11 @@ Default
 capex_table_dc_inputs
 3
 3
-PV Capex Table Inputs
+PV Capex Table DC Inputs
  
 Capital Costs
 0
-3
+1
 1
 3
 3
@@ -678,7 +738,7 @@ equations{'modulearray_power_w'} = define() {
 };
 
 
-5644
+6765
 function capex_table_dc_inputs_update_plot()
 {
 	Cap = [];
@@ -722,10 +782,10 @@ function capex_table_dc_inputs_update_plot()
 	setplot( 'capex_table_dc_plot' );
 	clearplot();
 		
-	plot(Cap,cost_per_kw,{"series"="DC Costs Interp. Table",
+	plot(Cap,cost_per_kw,{"series"="DC Costs Table",
 		"thick"=2, "scale"=true,"color"=curves[0][2]});
 	plot(sys_cap_bin,sys_cost_bin,
-		{"series"="Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
+		{"series"="DC Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
 		
 	axis('x1', {'label'='Capacity (Wdc)', 'min'=Cap[0]-50, 'max'=Cap[nr-1]+50});
@@ -821,6 +881,12 @@ on_change{'capex_table_dc_inputs'} = define() {
 	capex_table_dc_inputs_update_plot();
 };
 
+on_change{'modulearray_power_w'} = define() {
+	interpolate_dc_capex_table();
+	capex_table_dc_inputs_update_plot();
+};
+
+
 
 function interpolate_dc_capex_table()
 {
@@ -834,18 +900,30 @@ function interpolate_dc_capex_table()
 	idx=0;
 	//Cap_low = [];
 	//Cap_high = [];
-	
+	if (nc == 1) {
+		cost = 0;
+		total_cost = cost*sys_cap;
+		value("capex_table_cost_per_kw", cost);
+		value("capex_table_total_installed_dc_cost",total_cost);
+		property('capex_dc_warning_message', 'Caption', 'The cost table must have two columns: Capacity (Wdc) and DC Costs ($/Wdc).');
+		exit;
+	}
 	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
 	if (sys_cap > input[nr - 1][0]) {
 		cost = input[nr - 1][1];
-			
+		cap_string = to_string(to_int(sys_cap));
+		table_string = to_string(to_int(input[nr-1][0]));
+		property('capex_dc_warning_message','Caption','The DC system capacity is '+cap_string+' Wdc and the maximum costs table DC capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
 	}
 	else if (sys_cap < input[0][0]) {
 		cost = input[0][1];
+		cap_string = to_string(to_int(sys_cap));
+		table_string = to_string(to_int(input[0][0]));
+		property('capex_dc_warning_message','Caption','The DC system capacity is '+cap_string+' Wdc and the minimum costs interpolation table DC capacity value is '+table_string + ' Wdc. The system capacity is outside the bounds of the costs table.');
 			
 	}
 	else {
-		while (sys_cap > input[idx][0]) {
+		while (sys_cap >= input[idx][0]) {
 				idx++;
 			}
 		
@@ -854,13 +932,14 @@ function interpolate_dc_capex_table()
 		cost_low = input[idx-1][1];
 		cost_high = input[idx][1];
 		cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
-			
+		property('capex_dc_warning_message','Caption','');
+
 	}
 	total_cost = cost*sys_cap;
 	value("capex_table_cost_per_kw", cost);
 	value("capex_table_total_installed_dc_cost",total_cost);
 	//value("total_installed_cost", total_cost);
-	//refresh();
+	refresh();
 	
 	/*
 	else if (nc == 3) {
