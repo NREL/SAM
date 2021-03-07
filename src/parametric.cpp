@@ -228,25 +228,26 @@ void ParametricGrid::OnColSort(wxGridEvent& evt)
 	int col = evt.GetCol();
 	if (col >= 0) { //-1,-1 is top left corner
 		// check to see if number (single value) for sorting
-		auto pTable = GetTable();
-		ParametricGridData* pgd = static_cast<ParametricGridData* > pTable;
-		if ( ) {
+		if (ParametricGridData* pgd = static_cast<ParametricGridData*>(GetTable())) {
 			if (auto vv = pgd->GetVarValue(0, col)) {
-				bool asc = true;
-				int sortCol = GetSortingColumn();
-				if (col == sortCol)
-					asc = !IsSortOrderAscending();
-				else
-					UnsetSortingColumn();
+				if (vv->Type() == VV_NUMBER) {
+					bool asc = true;
+					int sortCol = GetSortingColumn();
+					if (col == sortCol)
+						asc = !IsSortOrderAscending();
+					else
+						UnsetSortingColumn();
 
-				SetSortingColumn(col, asc); //- does not work for custom grids for indicator
+					SetSortingColumn(col, asc); //- does not work for custom grids for indicator
 
-//				pTable->GetCol
+	//				pTable->GetCol
 
-//					AutoSizeColLabelSize(col);
+					AutoSizeColLabelSize(col);
+				}
 			}
 		}
 	}
+	
 }
 
 
@@ -1216,7 +1217,7 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
 		//	row menu
 		wxPoint point = evt.GetPosition();
 		wxMenu *menu = new wxMenu;
-//		menu->Append(ID_SHOW_ALL_INPUTS, _T("Show inputs"));
+		menu->Append(ID_SHOW_ALL_INPUTS, _T("Show inputs"));
 		menu->Append(ID_NEW_CASE, _T("Create new case"));
 		PopupMenu(menu, point);
 	}
@@ -1910,6 +1911,7 @@ wxString ParametricGridData::GetValue(int row, int col)
 	{
 		if ((col > -1) && (col < m_cols))
 		{
+
 			if (VarValue *vv = GetVarValue(row, col))
 				value = vv->AsString();
 		}
