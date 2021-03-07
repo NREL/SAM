@@ -161,7 +161,8 @@ public:
 		long style = wxWANTS_CHARS, const wxString& name = wxPanelNameStr);
 	virtual ~ParametricGrid();
 
-	void OnLeftClick(wxGridEvent &evt);
+	void OnLeftClick(wxGridEvent& evt);
+	void OnColSort(wxGridEvent& evt);
 
 	DECLARE_EVENT_TABLE()
 };

@@ -202,6 +202,7 @@ bool ParametricData::Read( wxInputStream &_I )
 
 BEGIN_EVENT_TABLE(ParametricGrid, wxExtGridCtrl)
 EVT_GRID_CELL_LEFT_CLICK(ParametricGrid::OnLeftClick)
+EVT_GRID_COL_SORT(ParametricGrid::OnColSort)
 END_EVENT_TABLE()
 
 
@@ -220,6 +221,33 @@ void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 	evt.Skip();
 }
 
+void ParametricGrid::OnColSort(wxGridEvent& evt)
+{
+//	SetGridCursor(evt.GetRow(), evt.GetCol());
+	evt.Skip();
+	int col = evt.GetCol();
+	if (col >= 0) { //-1,-1 is top left corner
+		// check to see if number (single value) for sorting
+		auto pTable = GetTable();
+		ParametricGridData* pgd = static_cast<ParametricGridData* > pTable;
+		if ( ) {
+			if (auto vv = pgd->GetVarValue(0, col)) {
+				bool asc = true;
+				int sortCol = GetSortingColumn();
+				if (col == sortCol)
+					asc = !IsSortOrderAscending();
+				else
+					UnsetSortingColumn();
+
+				SetSortingColumn(col, asc); //- does not work for custom grids for indicator
+
+//				pTable->GetCol
+
+//					AutoSizeColLabelSize(col);
+			}
+		}
+	}
+}
 
 
 
@@ -1733,6 +1761,19 @@ wxString ParametricGridData::GetColLabelValue(int col)
 		}
 		if (!col_units.IsEmpty())
 			col_label += " (" + col_units + ")";
+
+		// sorting indicator
+		if (auto pGrid = GetView()) {
+			bool asc = true;
+			int sortCol = pGrid->GetSortingColumn();
+			if (col == sortCol) {
+				asc = pGrid->IsSortOrderAscending();
+				if (asc)
+					col_label += L" \x2303";
+				else
+					col_label += L" \x2304";
+			}
+		}
 	}
 	return col_label;
 }
