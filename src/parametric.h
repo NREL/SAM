@@ -133,7 +133,10 @@ public:
 
 	std::vector<Simulation *> GetRuns();
 
+	void SortColumn(const int& col, const bool& asc);
+
 private:
+	std::vector< std::pair<double, int> > m_rowSortOrder;
 	int m_rows;
 	int m_cols;
 	wxArrayString m_col_hdrs;
@@ -218,6 +221,7 @@ private:
 	bool ImportAsTable(wxString& vals, VarValue& vv);
 	void ImportData(wxArrayString& vals, int& row, int& col);
 	void CopyToClipboard();
+	void CopyToClipboardOld();
 	wxArrayString getFromCSV(const wxString& input_name, int& rows, int& cols);
 	wxArrayString getFromExcel(const wxString& input_name, int& rows, int& cols);
 	void SaveToCSVOld();

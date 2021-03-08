@@ -19,6 +19,8 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON A
 WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+#include <iostream>
+#include <fstream>
 
 #include <wx/panel.h>
 #include <wx/button.h>
@@ -229,20 +231,20 @@ void ParametricGrid::OnColSort(wxGridEvent& evt)
 	if (col >= 0) { //-1,-1 is top left corner
 		// check to see if number (single value) for sorting
 		if (ParametricGridData* pgd = static_cast<ParametricGridData*>(GetTable())) {
-			if (auto vv = pgd->GetVarValue(0, col)) {
+			if (auto vv = pgd->GetVarValue(0, col)) { // assumption that all column values are of same type
 				if (vv->Type() == VV_NUMBER) {
+					// code to set indicator for column header in pgd->GetColLabelValue
 					bool asc = true;
 					int sortCol = GetSortingColumn();
 					if (col == sortCol)
 						asc = !IsSortOrderAscending();
 					else
 						UnsetSortingColumn();
-
 					SetSortingColumn(col, asc); //- does not work for custom grids for indicator
-
-	//				pTable->GetCol
-
 					AutoSizeColLabelSize(col);
+					// end indicator code
+					// actual sorting of data
+					pgd->SortColumn(col, asc);
 				}
 			}
 		}
@@ -971,6 +973,45 @@ void ParametricViewer::CopyToClipboard()
 {
 	wxBusyInfo busy("Processing data table... please wait");
 	wxString dat;
+
+	wxString sep = ",";
+	wxString header = "run";
+	//  e.g. run,1,2,3,...
+	for (int run = 1; run < m_grid_data->GetNumberRows() + 1; run++) {
+		header += sep + wxString::Format("%d", run);
+	}
+	header += "\n";
+	dat << header;
+
+	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
+		std::vector<std::vector<double> > values_vec;
+		wxArrayString labels;
+		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+		{
+			std::vector<double> vec = m_grid_data->GetArray(row, col);
+			if (vec.size() == 0) // single values
+				vec.push_back(m_grid_data->GetDouble(row, col));
+			values_vec.push_back(vec);
+			labels.push_back(wxString::Format("Run %d", row + 1));
+		}
+		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
+		wxString apddat;
+
+		apd.GetParametricTextData(apddat, ',');
+		dat << apddat;
+	}
+
+	if (wxTheClipboard->Open())
+	{
+		wxTheClipboard->SetData(new wxTextDataObject(dat));
+		wxTheClipboard->Close();
+	}
+}
+
+void ParametricViewer::CopyToClipboardOld()
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
 	GetTextData(dat, '\t');
 
 	// strip commas per request from Paul 5/23/12 meeting
@@ -1077,8 +1118,15 @@ void ParametricViewer::SaveToCSV()
 	wxFileDialog fdlg(this, "Save as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	if (fdlg.ShowModal() != wxID_OK) return;
 
-	FILE* fp = fopen(fdlg.GetPath().c_str(), "w");
-	if (!fp)
+
+//	FILE* fp = fopen(fdlg.GetPath().c_str(), "w");
+//	if (!fp)
+//	{
+//		wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
+//		return;
+//	}
+	std::ofstream fp(fdlg.GetPath().ToStdString(), std::ios::out | std::ios::binary);
+	if (!fp.is_open())
 	{
 		wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
 		return;
@@ -1093,7 +1141,8 @@ void ParametricViewer::SaveToCSV()
 		header += sep + wxString::Format("%d", run);
 	}
 	header += "\n";
-	fputs(header.c_str(), fp);
+	fp << header;
+	//fputs(header.c_str(), fp);
 
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
 		std::vector<std::vector<double> > values_vec;
@@ -1106,15 +1155,17 @@ void ParametricViewer::SaveToCSV()
 			values_vec.push_back(vec);
 			labels.push_back(wxString::Format("Run %d", row + 1));
 		}
-		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
+		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
 		wxString dat;
 //		apd.GetTextData(dat, ',', false);
+
 		apd.GetParametricTextData(dat, ',');
-		fputs(dat.c_str(), fp);
+		fp << dat;
+	//	fputs(dat.c_str(), fp);
 	}
+	fp.close();
 
-
-	fclose(fp);
+//	fclose(fp);
 
 }
 
@@ -1149,8 +1200,8 @@ void ParametricViewer::SendToExcel()
 			values_vec.push_back(vec);
 			labels.push_back(wxString::Format("Run %d", row + 1));
 		}
-		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
-		wxString sheetName = m_grid_data->GetColLabelValue(col);
+		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
+		wxString sheetName = m_grid_data->GetColLabelValue(col).ToAscii(' ');
 		// valid sheet names - no \ / ? * [ ] and 31 characters max
 		sheetName.Replace("\\", "_");
 		sheetName.Replace("/", "_");
@@ -1811,6 +1862,24 @@ void ParametricGridData::SetVarInfo(int , int col, VarInfo *vi)
 	}
 }
 
+void ParametricGridData::SortColumn(const int& col, const bool& asc)
+{
+	m_rowSortOrder.clear(); // clear sort order if wxNOT_FOUND set for column
+	if ((col > -1) && (col < m_cols)) {
+		if (auto vv = GetVarValue(0, col)) {
+			if (vv->Type() == VV_NUMBER) {
+				for (int r = 0; r < m_rows; r++) {
+					m_rowSortOrder.push_back(std::make_pair(GetDouble(r, col), r));
+				}
+				if (asc)
+					std::sort(m_rowSortOrder.begin(), m_rowSortOrder.end(), [](std::pair<double, int> a, std::pair<double, int> b) {return a.first < b.first; });
+				else
+					std::sort(m_rowSortOrder.begin(), m_rowSortOrder.end(), [](std::pair<double, int> a, std::pair<double, int> b) {return a.first > b.first; });
+			}
+		}
+	}
+}
+
 int ParametricGridData::GetColumnForName(const wxString &name)
 {
 	return m_var_names.Index(name);
@@ -1821,15 +1890,19 @@ VarValue* ParametricGridData::GetVarValue(int row, int col)
 	VarValue* vv = NULL;
 	if ((col>-1) && (col < m_cols))
 	{
+		// sorted row
+		int sorted_row = row;
+		if (m_rowSortOrder.size() == m_rows) // sort order set
+			sorted_row = m_rowSortOrder[row].second;
 		if (IsInput(col))
 		{
 			if (row < (int)m_par.Setup[col].Values.size())
-				vv = &m_par.Setup[col].Values[row];
+				vv = &m_par.Setup[col].Values[sorted_row];
 		}
 		else
 		{
 			if (row < (int)m_par.Runs.size())
-				vv = m_par.Runs[row]->GetOutput(m_var_names[col]);
+				vv = m_par.Runs[sorted_row]->GetOutput(m_var_names[col]);
 		}
 	}
 	return vv;
@@ -1840,16 +1913,19 @@ void ParametricGridData::SetVarValue(int row, int col, VarValue *vv)
 {
 	if ((col>-1) && (col < m_cols))
 	{
+		int sorted_row = row;
+		if (m_rowSortOrder.size() == m_rows) // sort order set
+			sorted_row = m_rowSortOrder[row].second;
 		if (IsInput(col))
 		{
 			if (row < (int)m_par.Setup[col].Values.size())
-				if (VarValue *var_value = &m_par.Setup[col].Values[row])
+				if (VarValue *var_value = &m_par.Setup[col].Values[sorted_row])
 					var_value = vv;
 		}
 		else
 		{
 			if (row < (int)m_par.Runs.size())
-				if (VarValue *var_value = m_par.Runs[row]->GetOutput(m_var_names[col]))
+				if (VarValue *var_value = m_par.Runs[sorted_row]->GetOutput(m_var_names[col]))
 					var_value = vv;
 		}
 	}
@@ -1909,6 +1985,11 @@ wxString ParametricGridData::GetValue(int row, int col)
 {
 	wxString value = wxEmptyString;
 	{
+		// sorted row
+		//int sorted_row = row;
+		//if (m_rowSortOrder.size() == m_rows) // sort order set
+		//	sorted_row = m_rowSortOrder[row].second;
+
 		if ((col > -1) && (col < m_cols))
 		{
 
@@ -1923,6 +2004,11 @@ void ParametricGridData::SetValue(int row, int col, const wxString& value)
 {
 	if ((col > -1) && (col < m_cols))
 	{
+		// sorted row
+		//int sorted_row = row;
+		//if (m_rowSortOrder.size() == m_rows) // sort order set
+		//	sorted_row = m_rowSortOrder[row].second;
+
 		if (IsInput(col))
 		{
 			if ( row >= 0 && row < (int)m_valid_run.size())
