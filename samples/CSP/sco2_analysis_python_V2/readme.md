@@ -6,3 +6,4 @@ See the [example](/example) folder for documentation and sample scripts.
 
 To use data from this Python model in SAM, run the model, and then in SAM, create or open a Molten Salt Power Tower case and run the sCO2 Cycle Integration macro to import the JSON file created by the model.
 
+My name is Hamad Khalid AL-Ali
