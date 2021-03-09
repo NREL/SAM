@@ -1,5 +1,5 @@
 1
-1086
+1108
 6par_aisc
 1
 1
@@ -351,7 +351,7 @@ array_area
 1
 1
 1
-105180
+262950
 batt_C_rate
 1
 1
@@ -922,7 +922,7 @@ batt_power_discharge_max_kwac
 1
 1
 1
-999.999
+960
 batt_power_discharge_max_kwdc
 1
 1
@@ -1056,6 +1056,12 @@ battery_energy
 1
 1
 4000
+battery_energy_kwh
+1
+1
+1
+1
+4000
 battery_lifetime_shown
 1
 1
@@ -1086,6 +1092,12 @@ battery_power
 1
 1
 999.999
+battery_power_kw
+1
+1
+1
+1
+999.999
 battery_replacements_shown
 1
 1
@@ -1103,7 +1115,7 @@ battery_total
 1
 1
 1
-1400000
+1438480
 battery_voltage_shown
 1
 1
@@ -1139,13 +1151,13 @@ bos_equip_total
 1
 1
 1
-4000180
+10000444
 calculated_dcac_ratio
 1
 1
 1
 1
-1.18069
+1.20255
 cap_vs_temp
 1
 3
@@ -1156,6 +1168,122 @@ cap_vs_temp
 30 103.1 
 45 105.4 
 
+capex_ac_warning_message
+1
+4
+0
+capex_dc_warning_message
+1
+4
+9
+<invalid>
+capex_land_warning_message
+1
+4
+9
+<invalid>
+capex_table_ac_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_ac_inputs
+1
+3
+7
+2
+5000000 0.44 
+10000000 0.44 
+10000000 0.39 
+50000000 0.39 
+50000000 0.33 
+100000000 0.33 
+100000000 0.29 
+
+capex_table_batt_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_batt_cost_per_kwh
+1
+1
+1
+1
+0
+capex_table_batt_inputs
+1
+3
+7
+3
+30000 310 240 
+59999 310 240 
+60000 350 221 
+119999 350 221 
+120000 430 196 
+239999 430 196 
+240000 600 192 
+
+capex_table_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_dc_inputs
+1
+3
+7
+2
+5000000 0.79 
+10000000 0.79 
+10000000 0.75 
+50000000 0.75 
+50000000 0.69 
+100000000 0.69 
+100000000 0.65 
+
+capex_table_land_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_land_inputs
+1
+3
+3
+2
+0 0 
+1000 0 
+10000 0 
+
+capex_table_total_installed_ac_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_batt_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_dc_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_land_cost
+1
+1
+1
+1
+0
 cbi_fed_amount
 1
 1
@@ -1413,7 +1541,7 @@ cec_i_o_ref
 1
 1
 1
-8.36e-11
+8.36043e-11
 cec_i_sc_ref
 1
 1
@@ -1478,7 +1606,7 @@ cec_r_sh_ref
 1
 1
 1
-500.068
+500.069
 cec_standoff
 1
 1
@@ -1525,7 +1653,7 @@ const_per_interest1
 1
 1
 1
-228679
+529402
 const_per_interest2
 1
 1
@@ -1585,7 +1713,7 @@ const_per_interest_total
 1
 1
 1
-228679
+529402
 const_per_months1
 1
 1
@@ -1682,7 +1810,7 @@ const_per_principal1
 1
 1
 1
-22867948
+52940248
 const_per_principal2
 1
 1
@@ -1712,13 +1840,13 @@ const_per_principal_total
 1
 1
 1
-22867948
+52940248
 const_per_total1
 1
 1
 1
 1
-457359
+1058805
 const_per_total2
 1
 1
@@ -1778,13 +1906,13 @@ construction_financing_cost
 1
 1
 1
-457359
+1058805
 contingency
 1
 1
 1
 1
-540022
+1288210
 contingency_percent
 1
 1
@@ -1849,7 +1977,7 @@ cp_system_nameplate
 1
 1
 1
-20.0009
+50.0022
 dc_adjust
 1
 5
@@ -2453,7 +2581,7 @@ engr_total
 1
 1
 1
-1600071
+3500160
 equip1_reserve_cost
 1
 1
@@ -2579,7 +2707,7 @@ grid_total
 1
 1
 1
-600027
+1500070
 ibi_fed_amount
 1
 1
@@ -2935,7 +3063,7 @@ install_labor_total
 1
 1
 1
-2600120
+5500244
 install_margin_fixed
 1
 1
@@ -2959,13 +3087,13 @@ install_margin_total
 1
 1
 1
-1200050
+3000133
 installed_per_capacity
 1
 1
 1
 1
-1.14335
+1.05876
 insurance_rate
 1
 1
@@ -3116,7 +3244,8 @@ n/a
 inv_cec_hybrid
 1
 4
-0
+5
+empty
 inv_cec_name
 1
 4
@@ -3609,7 +3738,7 @@ inv_snl_c0
 1
 1
 1
--2.45e-08
+-2.44558e-08
 inv_snl_c1
 1
 1
@@ -3633,13 +3762,13 @@ inv_snl_eff_cec
 1
 1
 1
-97.5882
+97.5869
 inv_snl_eff_euro
 1
 1
 1
 1
-97.3788
+97.377
 inv_snl_idcmax
 1
 1
@@ -3764,7 +3893,7 @@ inverter_num_units
 1
 1
 1
-22
+54
 inverter_power
 1
 1
@@ -3776,13 +3905,19 @@ inverter_total
 1
 1
 1
-1200050
+2500111
 inverterarray_power
 1
 1
 1
 1
-16940
+41580
+inverterarray_power_w
+1
+1
+1
+1
+41580000
 irrad_mode
 1
 1
@@ -3879,12 +4014,18 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area_capex
+1
+1
+1
+1
+216.583
 land_area_value
 1
 1
 1
 1
-86.6332
+216.583
 land_fixed
 1
 1
@@ -3914,7 +4055,7 @@ land_total
 1
 1
 1
-600027
+0
 landprep_fixed
 1
 1
@@ -3944,7 +4085,7 @@ landprep_total
 1
 1
 1
-400018
+1000040
 lat
 1
 1
@@ -4087,7 +4228,7 @@ mera_cost1
 1
 1
 1
-5000222
+12500555
 mera_cost2
 1
 1
@@ -4161,7 +4302,7 @@ module_num_units
 1
 1
 1
-64488
+161220
 module_power
 1
 1
@@ -4173,7 +4314,7 @@ module_total
 1
 1
 1
-7600340
+20500910
 module_width
 1
 1
@@ -4185,13 +4326,19 @@ modulearray_area
 1
 1
 1
-105180
+262950
 modulearray_power
 1
 1
 1
 1
-20000.9
+50002.2
+modulearray_power_w
+1
+1
+1
+1
+50002220
 months_receivables_reserve
 1
 1
@@ -4233,7 +4380,7 @@ num_strings_total
 1
 1
 1
-5374
+13435
 offset
 1
 1
@@ -4485,7 +4632,7 @@ permitting_total
 1
 1
 1
-200009
+500022
 ppa_escalation
 1
 1
@@ -4527,7 +4674,7 @@ property_assessed_value
 1
 1
 1
-22867948
+52940248
 property_tax_rate
 1
 1
@@ -4684,6 +4831,12 @@ pv.storage.p6.gridcharge
 1
 1
 0
+pv_capex_cost_choice
+1
+1
+1
+1
+0
 rate_escalation
 1
 2
@@ -4748,7 +4901,7 @@ sales_tax_total
 1
 1
 1
-927038
+2211430
 sales_tax_value
 1
 1
@@ -5722,7 +5875,7 @@ subarray1_nmodules
 1
 1
 1
-64488
+161220
 subarray1_nmodx
 1
 1
@@ -5752,7 +5905,7 @@ subarray1_ref_nmodules
 1
 1
 1
-64488
+161220
 subarray1_rotlim
 1
 1
@@ -6385,13 +6538,13 @@ subtotal_direct
 1
 1
 1
-18000736
+42940320
 system_capacity
 1
 1
 1
 1
-20000.9
+50002.2
 system_use_lifetime_output
 1
 1
@@ -6426,55 +6579,55 @@ total_area
 1
 1
 1
-105180
+262950
 total_dc_inverter_capacity
 1
 1
 1
 1
-17417.5
+42752.1
 total_direct_cost
 1
 1
 1
 1
-18540758
+44228532
 total_indirect_cost
 1
 1
 1
 1
-4327190
+6500290
 total_installed_cost
 1
 1
 1
 1
-22867948
+52940248
 total_inverter_capacity
 1
 1
 1
 1
-16940
+41580
 total_land_area
 1
 1
 1
 1
-86.6332
+216.583
 total_module_area
 1
 1
 1
 1
-105180
+262950
 total_modules
 1
 1
 1
 1
-64488
+161220
 transformer_load_loss
 1
 1
@@ -6528,7 +6681,7 @@ ui_subarray1_nrows
 1
 1
 1
-671.75
+1679.38
 ui_subarray1_row_spacing
 1
 1
