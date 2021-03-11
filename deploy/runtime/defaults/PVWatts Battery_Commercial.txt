@@ -1,17 +1,11 @@
 1
-406
+415
 ac_nameplate
 1
 1
 1
 1
 450
-add_om_num_types
-1
-1
-1
-1
-1
 adjust
 1
 5
@@ -184,12 +178,12 @@ battery_energy
 1
 1
 10
-battery_indirect_cost_percent
+battery_energy_kwh
 1
 1
 1
 1
-20
+10
 battery_per_kW
 1
 1
@@ -208,13 +202,13 @@ battery_power
 1
 1
 5
+battery_power_kw
+1
+1
+1
+1
+5
 battery_total
-1
-1
-1
-1
-5214.05
-battery_total_cost_lcos
 1
 1
 1
@@ -244,6 +238,100 @@ bos_equip_total
 1
 1
 129600
+capex_ac_warning_message
+1
+4
+0
+capex_dc_warning_message
+1
+4
+9
+<invalid>
+capex_table_ac_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_ac_inputs
+1
+3
+9
+2
+100000 0.79 
+199999 0.79 
+200000 0.72 
+499999 0.72 
+500000 0.68 
+999999 0.68 
+1000000 0.66 
+2000000 0.66 
+2000000 0.65 
+
+capex_table_batt_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_batt_cost_per_kwh
+1
+1
+1
+1
+0
+capex_table_batt_inputs
+1
+3
+7
+3
+300 970 240 
+599 970 240 
+600 1000 221 
+1199 1000 221 
+1200 1030 196 
+2399 1030 196 
+2400 1120 192 
+
+capex_table_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_dc_inputs
+1
+3
+9
+2
+100000 1.08 
+199999 1.08 
+200000 1 
+499999 1 
+500000 0.96 
+999999 0.96 
+1000000 0.95 
+2000000 0.95 
+2000000 0.94 
+
+capex_table_total_installed_ac_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_batt_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_dc_cost
+1
+1
+1
+1
+0
 cbi_fed_amount
 1
 1
@@ -1160,6 +1248,12 @@ inverterarray_power
 1
 1
 450
+inverterarray_power_w
+1
+1
+1
+1
+450000
 is_advanced
 1
 1
@@ -1495,6 +1589,12 @@ modulearray_power
 1
 1
 540
+modulearray_power_w
+1
+1
+1
+1
+540000
 nominal_discount_rate
 1
 1
@@ -1885,6 +1985,12 @@ ptc_sta_term
 1
 1
 10
+pv_capex_cost_choice
+1
+1
+1
+1
+0
 rate_escalation
 1
 2
@@ -2085,12 +2191,6 @@ ui_net_capital_cost
 1
 1
 908951
-ui_pv_capacity
-1
-1
-1
-1
-540
 ui_step_minutes
 1
 1

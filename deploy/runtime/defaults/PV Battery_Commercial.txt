@@ -1,5 +1,5 @@
 1
-996
+1007
 6par_aisc
 1
 1
@@ -1065,12 +1065,12 @@ battery_energy
 1
 1
 19.2154
-battery_indirect_cost_percent
+battery_energy_kwh
 1
 1
 1
 1
-20
+19.2154
 battery_lifetime_shown
 1
 1
@@ -1101,6 +1101,12 @@ battery_power
 1
 1
 9.60768
+battery_power_kw
+1
+1
+1
+1
+9.60768
 battery_replacements_shown
 1
 1
@@ -1119,12 +1125,6 @@ battery_total
 1
 1
 10019
-battery_total_cost_lcos
-1
-1
-1
-1
-64878.1
 battery_voltage_shown
 1
 1
@@ -1177,6 +1177,126 @@ cap_vs_temp
 30 103.1 
 45 105.4 
 
+capex_ac_warning_message
+1
+4
+0
+capex_dc_warning_message
+1
+4
+9
+<invalid>
+capex_land_warning_message
+1
+4
+9
+<invalid>
+capex_table_ac_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_ac_inputs
+1
+3
+9
+2
+100000 0.79 
+199999 0.79 
+200000 0.72 
+499999 0.72 
+500000 0.68 
+999999 0.68 
+1000000 0.66 
+2000000 0.66 
+2000000 0.65 
+
+capex_table_batt_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_batt_cost_per_kwh
+1
+1
+1
+1
+0
+capex_table_batt_inputs
+1
+3
+7
+3
+300 970 240 
+599 970 240 
+600 1000 221 
+1199 1000 221 
+1200 1030 196 
+2399 1030 196 
+2400 1120 192 
+
+capex_table_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_dc_inputs
+1
+3
+9
+2
+100000 1.08 
+199999 1.08 
+200000 1 
+499999 1 
+500000 0.96 
+999999 0.96 
+1000000 0.95 
+2000000 0.95 
+2000000 0.94 
+
+capex_table_land_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_land_inputs
+1
+3
+3
+2
+0 0 
+1000 0 
+10000 0 
+
+capex_table_total_installed_ac_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_batt_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_dc_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_land_cost
+1
+1
+1
+1
+0
 cbi_fed_amount
 1
 1
@@ -3274,6 +3394,12 @@ inverterarray_power
 1
 1
 419.02
+inverterarray_power_w
+1
+1
+1
+1
+419020
 irrad_mode
 1
 1
@@ -3370,6 +3496,12 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area_capex
+1
+1
+1
+1
+2.16019
 land_area_value
 1
 1
@@ -3598,6 +3730,12 @@ modulearray_power
 1
 1
 498.72
+modulearray_power_w
+1
+1
+1
+1
+498720
 mppt_hi_inverter
 1
 1
@@ -4127,6 +4265,12 @@ pv.storage.p6.discharge
 1
 0
 pv.storage.p6.gridcharge
+1
+1
+1
+1
+0
+pv_capex_cost_choice
 1
 1
 1
@@ -5812,12 +5956,6 @@ total_area
 1
 1
 2622.65
-total_battery_indirect_cost
-1
-1
-1
-1
-54859.1
 total_dc_inverter_capacity
 1
 1
@@ -5866,18 +6004,6 @@ total_modules
 1
 1
 1608
-total_system_indirect_cost
-1
-1
-1
-1
-219437
-total_system_installed_cost
-1
-1
-1
-1
-779999
 transformer_load_loss
 1
 1
@@ -5932,12 +6058,6 @@ ui_net_capital_cost
 1
 1
 844877
-ui_pv_capacity
-1
-1
-1
-1
-498.72
 ui_step_minutes
 1
 1

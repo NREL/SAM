@@ -7465,7 +7465,7 @@ $
 0
 Default
 
-5526
+5505
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -7584,7 +7584,21 @@ equations{ 'install_margin_total' } = define() {
 	};
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total}; 
+	tech = technology();
+	if (${pv_capex_cost_choice}==0) {
+		return ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total};
+	}
+	else if (${pv_capex_cost_choice}==1 && tech == 'PV Battery') {
+		return ${capex_table_total_installed_dc_cost} + 
+			${capex_table_total_installed_ac_cost}+
+			${capex_table_total_installed_land_cost}+
+			${capex_table_total_installed_batt_cost};
+	}
+	else {
+		return ${capex_table_total_installed_dc_cost} + 
+			${capex_table_total_installed_ac_cost}+
+			${capex_table_total_installed_batt_cost};
+	}
 };
 
 equations{ 'inverterarray_power' } = define() {

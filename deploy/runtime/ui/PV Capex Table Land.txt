@@ -1,7 +1,7 @@
 PV Capex Table Land
-826
-315
-12
+827
+383
+13
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 812
 Height
 3
-307
+361
 Tool Tip
 5
 0
@@ -30,6 +30,53 @@ Caption
 23
 Land Capital Cost Table
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+26
+capex_land_warning_message
+X
+3
+21
+Y
+3
+276
+Width
+3
+789
+Height
+3
+39
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 Numeric
@@ -45,7 +92,7 @@ X
 210
 Y
 3
-279
+324
 Width
 3
 90
@@ -66,7 +113,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -220,7 +267,7 @@ X
 18
 Y
 3
-279
+324
 Width
 3
 192
@@ -268,7 +315,7 @@ X
 720
 Y
 3
-279
+324
 Width
 3
 90
@@ -289,10 +336,11 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
-0
+1
+$
 Suffix
 5
 0
@@ -330,7 +378,7 @@ X
 549
 Y
 3
-279
+324
 Width
 3
 171
@@ -378,7 +426,7 @@ X
 393
 Y
 3
-279
+324
 Width
 3
 90
@@ -399,7 +447,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -471,14 +519,14 @@ Label
 13
 Name
 5
-8
-object 7
+10
+object 710
 X
 3
 534
 Y
 3
-279
+324
 Width
 3
 15
@@ -526,7 +574,7 @@ X
 366
 Y
 3
-279
+324
 Width
 3
 15
@@ -574,7 +622,7 @@ X
 303
 Y
 3
-279
+324
 Width
 3
 39
@@ -610,7 +658,20 @@ AlignTop
 2
 0
 
+5
+capex_land_warning_message
+3
 4
+ 
+ 
+ 
+0
+0
+1
+4
+9
+<invalid>
+Label
 capex_table_land_cost_per_kw
 3
 1
@@ -628,11 +689,11 @@ Default
 capex_table_land_inputs
 3
 3
+PV Capex Table Land Inputs
  
- 
- 
+Capital Costs
 0
-0
+1
 1
 3
 1
@@ -672,7 +733,7 @@ Default
 equations{'land_area_capex'} = define() {
 	return ${land_area_value};
 };
-4459
+5597
 function capex_table_land_inputs_update_plot()
 {
 	Cap = [];
@@ -715,10 +776,10 @@ function capex_table_land_inputs_update_plot()
 	setplot( 'capex_table_land_plot' );
 	clearplot();
 		
-	plot(Cap,cost_per_kw,{"series"="Land Costs Interp. Table",
+	plot(Cap,cost_per_kw,{"series"="Land Costs Table",
 		"thick"=2, "scale"=true,"color"=curves[0][2]});
 	plot(sys_cap_bin,sys_cost_bin,
-		{"series"="Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
+		{"series"="Land Cost","type"="scatter","thick"=5,"scale"=true,"color"=curves[2][2]});
 	plotopt({"popup"=false,"backcolor"=[255,255,255],"legend"=true, 'legendpos'='southwest'});
 		
 	axis('x1', {'label'='Acreage (acres)', 'min'=0, 'max'=max(Cap)+1});
@@ -827,28 +888,48 @@ function interpolate_land_capex_table()
 	idx=0;
 	//Cap_low = [];
 	//Cap_high = [];
-	
+	if (nc == 1) {
+		cost = 0;
+		total_cost = cost*sys_cap;
+		value("capex_table_land_cost_per_kw", cost);
+		value("capex_table_total_installed_land_cost",total_cost);
+		property('capex_land_warning_message', 'Caption', 'The cost table must have two columns: Acreage (acres) and Land Costs ($/acre).');
+		exit;
+	}
 	//property('capex_table_inputs','ShowColumn','Capacity (kW),Costs ($/kW)');
 	if (sys_cap > input[nr - 1][0]) {
 		cost = input[nr - 1][1];
-
+		cap_string = to_string(to_int(sys_cap));
+		table_string = to_string(to_int(input[nr-1][0]));
+		value('capex_land_warning_message','Caption','The total acreage is '+cap_string+' acres and the maximum cost table acreage value is '+table_string + ' acres. The system capacity is outside the bounds of the cost table.');
 			
 	}
 	else if (sys_cap < input[0][0]) {
 		cost = input[0][1];
-
+		cap_string = to_string(to_int(sys_cap));
+		table_string = to_string(to_int(input[0][0]));
+		property('capex_land_warning_message','Caption','The total acreage is '+cap_string+' acres and the minimum cost table acreage value is '+table_string + ' Wdc. The land use is outside the bounds of the cost table.');
 			
 	}
 	else {
-		while (sys_cap > input[idx][0]) {
+		while (sys_cap >= input[idx][0]) {
 				idx++;
 			}
 		
-		Cap_low = input[idx-1][0];
-		Cap_high = input[idx][0];
-		cost_low = input[idx-1][1];
-		cost_high = input[idx][1];
-
+		if (idx != 0) {
+			Cap_low = input[idx-1][0];
+			Cap_high = input[idx][0];	
+			cost_low = input[idx-1][1];
+			cost_high = input[idx][1];
+		}
+		else
+		{
+			Cap_low = input[0][0];
+			Cap_high = input[1][0];
+			cost_low = input[0][1];
+			cost_high = input[1][1];
+		}
+		property('capex_land_warning_message','Caption','');
 		cost = (sys_cap - Cap_low)/(Cap_high - Cap_low) * (cost_high - cost_low) + cost_low;
 			
 	}

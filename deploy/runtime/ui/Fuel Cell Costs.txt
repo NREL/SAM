@@ -8729,7 +8729,7 @@ total_system_indirect_cost
 0
 Default
 
-7025
+6903
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -8855,7 +8855,16 @@ equations{ 'install_margin_total' } = define() {
 		/*+ ${modulearray_area}*${install_margin_perarea}*/; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total}; };
+	if (${pv_capex_cost_choice} == 0) {
+		return ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total};
+	}
+	else {
+		return ${capex_table_total_installed_dc_cost} + 
+			${capex_table_total_installed_ac_cost}+
+			${capex_table_total_installed_batt_cost}+
+			${capex_table_total_installed_fuelcell_cost};
+	}
+};
 
 equations{ 'inverterarray_power' } = define() {
 	return ${inverter_power}*${inverter_num_units}; };
