@@ -1,5 +1,5 @@
 1
-415
+416
 ac_nameplate
 1
 1
@@ -184,6 +184,12 @@ battery_energy_kwh
 1
 1
 10
+battery_indirect_cost_percent
+1
+1
+1
+1
+20
 battery_per_kW
 1
 1
@@ -2584,26 +2590,3 @@ ur_voltage_min
 1
 1
 0
-use_specific_weather_file
-1
-1
-1
-1
-0
-user_specified_weather_file
-1
-4
-0
-utility_bill_data
-1
-2
-1
-12
-300 300 300 300 300 400 500 500 400 300 300 300 
-
-wf_nrecords
-1
-1
-1
-1
-8760

@@ -1,7 +1,7 @@
 Fuel Cell Costs
 951
 942
-136
+135
 GroupBox
 
 1
@@ -1048,68 +1048,6 @@ BackColour
 TabOrder
 3
 3
-Numeric
-
-1
-17
-Name
-5
-29
-battery_indirect_cost_percent
-X
-3
-438
-Y
-3
-690
-Width
-3
-99
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -7507,7 +7445,7 @@ TabOrder
 3
 51
 
-87
+86
 battery_energy
 3
 1
@@ -7522,20 +7460,6 @@ Fuel Cell Capital Costs
 1
 0
 Numeric
-battery_indirect_cost_percent
-3
-1
-Percentage of indirect cost attributed to battery
-%
- 
-0
-2
-1
-1
-1
-1
-0
-Default
 battery_per_kW
 3
 1
@@ -8729,7 +8653,7 @@ total_system_indirect_cost
 0
 Default
 
-6903
+7515
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -8974,26 +8898,24 @@ equations { 'system_use_recapitalization' } = define () {
 };
 
 equations {'battery_total_cost_lcos'} = define() {
-	return ${battery_total}+${total_battery_indirect_cost};
+	if (${pv_capex_cost_choice}==0) {
+		return ${battery_total}+${total_battery_indirect_cost} + 
+			${battery_total}*${sales_tax_percent}/100*${sales_tax_value}/100;
+	}
+	else {
+		return ${capex_table_total_installed_batt_cost};
+	}
 };
 
 equations{'total_battery_indirect_cost'} = define() {
-	return ${battery_indirect_cost_percent}/100 * ${total_indirect_cost};
+	return ${battery_power} * (${permitting_per_battkw} +
+		${engr_per_battkw} + ${grid_per_battkw} +
+		${land_per_battkw} + ${landprep_per_battkw});
+		
 };
 
 equations{'total_system_indirect_cost'} = define() {
 	return ${total_indirect_cost} - ${total_battery_indirect_cost};
 };
-	
-243
-on_load{'PV Battery O and M Costs'} = define() {
-	tech = technology();
-	generic = (tech == "Generic Battery");
-	if (generic) {
-		property('pv_label','Caption','Power Plant');
-	}
-	else {
-		property('pv_label','Caption', 'PV');
-	}
-	refresh();
-};
+
+0
