@@ -1,5 +1,5 @@
 1
-986
+1007
 6par_aisc
 1
 1
@@ -200,7 +200,7 @@ LeadAcid_q10_computed
 1
 1
 1
-37.665
+35.712
 LeadAcid_q20
 1
 1
@@ -212,7 +212,7 @@ LeadAcid_q20_computed
 1
 1
 1
-40.5
+38.4
 LeadAcid_qn
 1
 1
@@ -224,7 +224,7 @@ LeadAcid_qn_computed
 1
 1
 1
-24.3
+23.04
 LeadAcid_tn
 1
 1
@@ -362,7 +362,7 @@ array_area
 1
 1
 1
-1135.18
+2622.65
 batt_C_rate
 1
 1
@@ -422,7 +422,7 @@ batt_Qfull_flow
 1
 1
 1
-40.5
+38.4
 batt_Qnom
 1
 1
@@ -605,7 +605,7 @@ batt_computed_bank_capacity
 1
 1
 1
-4000
+19.2154
 batt_computed_series
 1
 1
@@ -623,7 +623,7 @@ batt_computed_strings
 1
 1
 1
-2498
+12
 batt_computed_voltage
 1
 1
@@ -635,7 +635,7 @@ batt_current_charge_max
 1
 1
 1
-1998.4
+19.2
 batt_current_choice
 1
 1
@@ -647,7 +647,7 @@ batt_current_discharge_max
 1
 1
 1
-1998.4
+19.2
 batt_custom_dispatch
 1
 2
@@ -861,13 +861,13 @@ batt_mass
 1
 1
 1
-39603.9
+190.251
 batt_max_power
 1
 1
 1
 1
-999.999
+9.60768
 batt_maximum_SOC
 1
 1
@@ -897,7 +897,7 @@ batt_num_cells
 1
 1
 1
-347222
+1668
 batt_power_charge_max_kwac
 1
 1
@@ -909,19 +909,19 @@ batt_power_charge_max_kwdc
 1
 1
 1
-999.999
+9.60768
 batt_power_discharge_max_kwac
 1
 1
 1
 1
-999.999
+9.6
 batt_power_discharge_max_kwdc
 1
 1
 1
 1
-10.1331
+9.60768
 batt_replacement_capacity
 1
 1
@@ -989,7 +989,7 @@ batt_surface_area
 1
 1
 1
-89.0141
+2.53426
 batt_target_choice
 1
 1
@@ -1046,13 +1046,19 @@ batt_volume
 1
 1
 1
-57.1428
+0.274505
 battery_energy
 1
 1
 1
 1
-20.2662
+19.2154
+battery_energy_kwh
+1
+1
+1
+1
+19.2154
 battery_lifetime_shown
 1
 1
@@ -1082,7 +1088,13 @@ battery_power
 1
 1
 1
-10.1331
+9.60768
+battery_power_kw
+1
+1
+1
+1
+9.60768
 battery_replacements_shown
 1
 1
@@ -1100,7 +1112,7 @@ battery_total
 1
 1
 1
-12159.7
+10019
 battery_voltage_shown
 1
 1
@@ -1136,13 +1148,13 @@ bos_equip_total
 1
 1
 1
-53965.9
+119693
 calculated_dcac_ratio
 1
 1
 1
 1
-1.20205
+1.1902
 cap_vs_temp
 1
 3
@@ -1153,6 +1165,126 @@ cap_vs_temp
 30 103.1 
 45 105.4 
 
+capex_ac_warning_message
+1
+4
+0
+capex_dc_warning_message
+1
+4
+9
+<invalid>
+capex_land_warning_message
+1
+4
+9
+<invalid>
+capex_table_ac_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_ac_inputs
+1
+3
+9
+2
+100000 0.79 
+199999 0.79 
+200000 0.72 
+499999 0.72 
+500000 0.68 
+999999 0.68 
+1000000 0.66 
+2000000 0.66 
+2000000 0.65 
+
+capex_table_batt_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_batt_cost_per_kwh
+1
+1
+1
+1
+0
+capex_table_batt_inputs
+1
+3
+7
+3
+300 970 240 
+599 970 240 
+600 1000 221 
+1199 1000 221 
+1200 1030 196 
+2399 1030 196 
+2400 1120 192 
+
+capex_table_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_dc_inputs
+1
+3
+9
+2
+100000 1.08 
+199999 1.08 
+200000 1 
+499999 1 
+500000 0.96 
+999999 0.96 
+1000000 0.95 
+2000000 0.95 
+2000000 0.94 
+
+capex_table_land_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_land_inputs
+1
+3
+3
+2
+0 0 
+1000 0 
+10000 0 
+
+capex_table_total_installed_ac_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_batt_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_dc_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_land_cost
+1
+1
+1
+1
+0
 cbi_fed_amount
 1
 1
@@ -1410,7 +1542,7 @@ cec_i_o_ref
 1
 1
 1
-8.36e-11
+8.36043e-11
 cec_i_sc_ref
 1
 1
@@ -1475,7 +1607,7 @@ cec_r_sh_ref
 1
 1
 1
-500.068
+500.069
 cec_standoff
 1
 1
@@ -1522,7 +1654,7 @@ contingency
 1
 1
 1
-0
+21945.4
 contingency_percent
 1
 1
@@ -1973,7 +2105,7 @@ engr_total
 1
 1
 1
-0
+219437
 escal_belpe
 1
 2
@@ -2401,7 +2533,7 @@ install_labor_total
 1
 1
 1
-25903.6
+74807.9
 install_margin_fixed
 1
 1
@@ -2425,13 +2557,13 @@ install_margin_total
 1
 1
 1
-140311
+79795.1
 installed_per_capacity
 1
 1
 1
 1
-1.57633
+1.69409
 insurance_rate
 1
 1
@@ -2582,7 +2714,8 @@ n/a
 inv_cec_hybrid
 1
 4
-0
+5
+empty
 inv_cec_name
 1
 4
@@ -3075,7 +3208,7 @@ inv_snl_c0
 1
 1
 1
--2.06e-07
+-2.06147e-07
 inv_snl_c1
 1
 1
@@ -3099,13 +3232,13 @@ inv_snl_eff_cec
 1
 1
 1
-98.228
+98.2284
 inv_snl_eff_euro
 1
 1
 1
 1
-98.1763
+98.1767
 inv_snl_idcmax
 1
 1
@@ -3230,7 +3363,7 @@ inverter_num_units
 1
 1
 1
-3
+7
 inverter_power
 1
 1
@@ -3242,13 +3375,19 @@ inverter_total
 1
 1
 1
-15110.5
+59846.3
 inverterarray_power
 1
 1
 1
 1
-179.58
+419.02
+inverterarray_power_w
+1
+1
+1
+1
+419020
 irrad_mode
 1
 1
@@ -3345,12 +3484,18 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area_capex
+1
+1
+1
+1
+2.16019
 land_area_value
 1
 1
 1
 1
-0.935007
+2.16019
 land_fixed
 1
 1
@@ -3542,7 +3687,7 @@ module_num_units
 1
 1
 1
-696
+1608
 module_power
 1
 1
@@ -3554,7 +3699,7 @@ module_total
 1
 1
 1
-69076.4
+204475
 module_width
 1
 1
@@ -3566,13 +3711,19 @@ modulearray_area
 1
 1
 1
-1135.18
+2622.65
 modulearray_power
 1
 1
 1
 1
-215.864
+498.72
+modulearray_power_w
+1
+1
+1
+1
+498720
 mppt_hi_inverter
 1
 1
@@ -3608,7 +3759,7 @@ num_strings_total
 1
 1
 1
-58
+134
 offset
 1
 1
@@ -3926,7 +4077,7 @@ permitting_total
 1
 1
 1
-23745
+54859.2
 prop_tax_assessed_decline
 1
 1
@@ -3944,7 +4095,7 @@ property_assessed_value
 1
 1
 1
-340273
+844877
 property_tax_rate
 1
 1
@@ -4096,6 +4247,12 @@ pv.storage.p6.discharge
 1
 0
 pv.storage.p6.gridcharge
+1
+1
+1
+1
+0
+pv_capex_cost_choice
 1
 1
 1
@@ -5093,7 +5250,7 @@ subarray1_nmodules
 1
 1
 1
-696
+1608
 subarray1_nmodx
 1
 1
@@ -5123,7 +5280,7 @@ subarray1_ref_nmodules
 1
 1
 1
-696
+1608
 subarray1_rotlim
 1
 1
@@ -5756,13 +5913,13 @@ subtotal_direct
 1
 1
 1
-316528
+548636
 system_capacity
 1
 1
 1
 1
-215.864
+498.72
 system_use_lifetime_output
 1
 1
@@ -5780,55 +5937,55 @@ total_area
 1
 1
 1
-1135.18
+2622.65
 total_dc_inverter_capacity
 1
 1
 1
 1
-183.392
+427.915
 total_direct_cost
 1
 1
 1
 1
-316528
+570582
 total_indirect_cost
 1
 1
 1
 1
-23745
+274296
 total_installed_cost
 1
 1
 1
 1
-340273
+844877
 total_inverter_capacity
 1
 1
 1
 1
-179.58
+419.02
 total_land_area
 1
 1
 1
 1
-0.935007
+2.16019
 total_module_area
 1
 1
 1
 1
-1135.18
+2622.65
 total_modules
 1
 1
 1
 1
-696
+1608
 transformer_load_loss
 1
 1
@@ -5870,13 +6027,13 @@ ui_loan_amount
 1
 1
 1
-204164
+506926
 ui_net_capital_cost
 1
 1
 1
 1
-340273
+844877
 ui_step_minutes
 1
 1
@@ -5894,7 +6051,7 @@ ui_subarray1_nrows
 1
 1
 1
-49.7143
+114.857
 ui_subarray1_row_spacing
 1
 1
