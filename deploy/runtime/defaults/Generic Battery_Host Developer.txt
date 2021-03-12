@@ -1,5 +1,5 @@
 1
-602
+604
 LeadAcid_q10
 1
 1
@@ -855,7 +855,7 @@ battery_total_cost_lcos
 1
 1
 1
-11707
+12201.9
 battery_voltage_shown
 1
 1
@@ -3370,6 +3370,12 @@ tod_library
 4
 16
 Uniform Dispatch
+total_battery_indirect_cost
+1
+1
+1
+1
+494.923
 total_direct_cost
 1
 1
@@ -3388,6 +3394,12 @@ total_installed_cost
 1
 1
 15165
+total_system_indirect_cost
+1
+1
+1
+1
+1979.69
 ui_annual_load
 1
 1
