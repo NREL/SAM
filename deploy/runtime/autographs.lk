@@ -12,6 +12,25 @@ function wind_pruf_graphs()
 	}
 }
 
+function wind_heatmap_graphs()
+{
+	if (${wind_resource_model_choice} == 0) {
+		agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Hour', 'Month', -1, true, false, 'bottom', 4); 
+	}
+}
+
+function heatmap_graphs()
+{
+	tech = technology();
+	agraph( 'annual_energy_distribution_time', 'Annual PV Energy Production (kWh)', 'Hour', 'Month', -1, true, false, 'bottom', 4);
+	if (tech == "Fuel Cell") {
+		agraph( 'annual_energy_distribution_time_fc', 'Annual FC Energy Production (kWh)', 'Hour', 'Month', -1, true, false, 'bottom', 4); 
+	}
+
+}
+
+
+
 //**************Categories of graphs for financials**************************
 function rescom_financial_graphs()
 {
@@ -99,9 +118,11 @@ autographs{ 'High-X Concentrating PV' } = define() { base_technology_graphs(); }
 autographs{ 'Concentrating Solar Power = Physical Trough' } = define() { base_technology_graphs(); };
 autographs{ 'Dish Stirling' } = define() { base_technology_graphs(); };
 autographs{ 'Generic CSP System' } = define() { base_technology_graphs(); };
-autographs{ 'Solar Water Heating' } = define() { base_technology_graphs(); };
-autographs{ 'Generic System' } = define() { base_technology_graphs(); };
-autographs{ 'Wind Power' } = define() { base_technology_graphs(); wind_pruf_graphs();};
+autographs{ 'Solar Water Heating' } = define() { base_technology_graphs(); heatmap_graphs();};
+autographs{ 'Generic System' } = define() { base_technology_graphs(); heatmap_graphs(); };
+autographs{ 'Wind Power' } = define() { base_technology_graphs(); wind_heatmap_graphs(); wind_pruf_graphs();};
+autographs{ 'Fuel Cell' } = define() {heatmap_graphs();};
+autographs{ 'Biopower' } = define() {heatmap_graphs();};
 
 //**************Technologies with unique graphs***************************
 
@@ -126,6 +147,8 @@ autographs{ 'MEtidal' } = define()
 autographs{ 'PVWatts'} = define() 
 {	
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 
+	agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Hour', 'Month', -1, true, false, 'bottom', 4); 
+
 };
 
 autographs{ 'PVWatts Battery'} = define() 
@@ -133,6 +156,9 @@ autographs{ 'PVWatts Battery'} = define()
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 
 	if (is_assigned('outage_durations'))
 		resiliency_graphs();
+		
+	agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Hour', 'Month', -1, true, false, 'bottom', 4); 
+
 };
 
 autographs{ 'Flat Plate PV' } = define()
@@ -155,6 +181,8 @@ autographs{ 'Flat Plate PV' } = define()
 			columns += 'annual_ac_lifetime_loss_percent,';
 	columns += 'annual_xfmr_loss_percent,annual_ac_perf_adj_loss_percent';
 	agraph(columns, 'Energy Loss', '', '%', -1, false, true, 'right'); 
+	agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Hour', 'Month', -1, true, false, 'bottom', 4); 
+
 
 };
 
@@ -167,6 +195,9 @@ autographs{ 'PV Battery' } = define()
 		agraph('annual_poa_shading_loss_percent,annual_poa_soiling_loss_percent,annual_dc_module_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_ac_inv_clip_loss_percent,annual_ac_inv_pso_loss_percent,annual_ac_inv_pnt_loss_percent,annual_ac_inv_eff_loss_percent,annual_ac_battery_loss_percent,annual_ac_wiring_loss_percent,annual_ac_transformer_loss_percent,annual_ac_perf_adj_loss_percent', 'Energy Loss', '', '%', -1, false, true, 'right'); 
 	if (is_assigned('outage_durations'))
 		resiliency_graphs();
+		
+	agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Hour', 'Month', -1, true, false, 'bottom', 4); 
+
 };
 
 autographs{ 'Empirical Trough' } = define() 
@@ -178,6 +209,7 @@ autographs{ 'Empirical Trough' } = define()
 autographs{ 'Geothermal Power' } = define() 
 { 
 	base_technology_graphs();		//add monthly_resource_temperature on separate x scale? also add monthly_power on separate scale?
+	heatmap_graphs();
 };
 
 //**************Financials***************************
