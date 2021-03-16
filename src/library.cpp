@@ -1279,6 +1279,9 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     csv(1, 15) = "s";
     csv(2, 15) = "wave_energy_period";
 
+    csv(0, 16) = "Frequency distribution";
+    csv(2, 16) = "wave_resource_matrix";
+
     int row = 3;
     wxString file;
     bool has_more = dir.GetFirst(&file, "*.csv", wxDIR_FILES);
@@ -1301,6 +1304,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
             ssc_number_t val;
             ssc_number_t* height_arr;
             ssc_number_t* period_arr;
+            ssc_number_t* mat;
             int nrows, ncols;
             const char* str;
 
@@ -1373,6 +1377,21 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
                 }
                 //wstr += "]";
                 csv(row, 15) = wxString(wstr);
+            }
+            if ((mat = ssc_data_get_matrix(pdata, "wave_resource_matrix", &nrows, &ncols)) != 0)
+            {
+                wxString wstr = "";
+                for (int r = 0; r < nrows; r++)
+                {
+                    wstr += "[";
+                    for (int c = 0; c < ncols; c++)
+                    {
+                        wstr += wxString::Format("%g", mat[r * ncols + c]);
+                        if (c < ncols - 1) wstr += ";";
+                    }
+                    wstr += "]";
+                }
+                csv(row, 16) = wxString(wstr);
             }
             row++;
         }
