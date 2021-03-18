@@ -2039,92 +2039,100 @@ void StochasticPanel::OnRemoveCorr(wxCommandEvent &)
 		m_corrList->Select(idx-1>=0?idx-1:idx);
 }
 
+void StochasticPanel::ComputeSamples()
+{
+    if (m_chk_weather_files->GetValue())
+        UpdateWeatherFileCDF();
+
+    wxArrayString errors;
+    //	matrix_t<double> table;
+
+    if (!ComputeLHSInputVectors(m_sd, m_input_data, &errors))
+    {
+        wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
+        return;
+    }
+
+    wxArrayString collabels;
+    for (size_t i = 0; i < m_sd.InputDistributions.Count(); i++)
+    {
+        wxString item = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
+        wxString label = GetLabelFromVarName(item);
+        collabels.Add(label);
+    }
+
+    wxDialog* dlg = new wxDialog(this, wxID_ANY, "Stochastic Input Vectors", wxDefaultPosition, wxScaleSize(400, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+    wxExtGridCtrl* grid = new wxExtGridCtrl(dlg, wxID_ANY);
+    grid->EnableCopyPaste(true);
+    grid->CreateGrid(m_input_data.nrows(), m_input_data.ncols());
+    grid->Freeze();
+    // for string value variables - show string values (e.g. lists - array type, weather files,...)
+    for (size_t j = 0; j < m_input_data.ncols(); j++)
+    {
+        wxString var = m_sd.InputDistributions[j];
+        wxArrayString parts = wxStringTokenize(var, ":");
+        if (parts.Count() < 2) continue;
+        int dist_type = wxAtoi(parts[1]);
+        if ((parts.Count() < 6) && (dist_type != LHS_USERCDF)) continue;
+        if (dist_type == LHS_USERCDF)
+        {
+            wxString item = GetVarNameFromInputDistribution(parts[0]);
+            wxArrayString values;
+            if (item == m_weather_folder_varname)
+            {
+                //values = m_weather_files;
+                for (size_t i = 0; i < m_input_data.nrows(); i++)
+                {
+                    wxString wf;
+                    if (GetWeatherFileForSum(m_input_data(i, j), &wf))
+                        grid->SetCellValue(i, j, wf 
+                            + wxString::Format(" (%lg)", m_input_data(i, j)));
+                }
+            }
+            else
+            {
+                VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(item);
+                if (!vi) continue;
+                values = vi->IndexLabels;
+            }
+            if (values.Count() > 0)
+            {
+                for (size_t i = 0; i < m_input_data.nrows(); i++)
+                {
+                    int ndx = (int)m_input_data(i, j);
+                    if ((ndx >= 0) && (ndx < (int)values.Count()))
+                        grid->SetCellValue(i, j, values[ndx]);
+                }
+            }
+        }
+        else
+        {
+            for (size_t i = 0; i < m_input_data.nrows(); i++)
+                grid->SetCellValue(i, j, wxString::Format("%lg", m_input_data(i, j)));
+        }
+    }
+
+
+    for (size_t i = 0; i < m_input_data.ncols(); i++)
+        grid->SetColLabelValue(i, collabels[i]);
+    grid->AutoSize();
+    grid->Thaw();
+
+    m_regenerate_samples = false;
+    dlg->Show();
+
+}
 
 void StochasticPanel::OnComputeSamples(wxCommandEvent &)
 {
-	if (m_chk_weather_files->GetValue())
-		UpdateWeatherFileCDF();
-
-	wxArrayString errors;
-//	matrix_t<double> table;
-
-	if (!ComputeLHSInputVectors( m_sd, m_input_data, &errors))
-	{
-		wxShowTextMessageDialog("An error occured while computing the samples using LHS:\n\n" + wxJoin(errors,'\n'));
-		return;
-	}
-
-	wxArrayString collabels;
-	for (size_t i = 0; i < m_sd.InputDistributions.Count(); i++)
-	{
-		wxString item = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
-		wxString label = GetLabelFromVarName(item);
-		collabels.Add(label);
-	}
-	
-	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Stochastic Input Vectors", wxDefaultPosition, wxScaleSize(400,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
-	wxExtGridCtrl *grid = new wxExtGridCtrl( dlg, wxID_ANY );
-	grid->EnableCopyPaste( true );
-	grid->CreateGrid(m_input_data.nrows(), m_input_data.ncols() );
-	grid->Freeze();
-	// for string value variables - show string values (e.g. lists - array type, weather files,...)
-	for (size_t j = 0; j < m_input_data.ncols(); j++)
-	{
-		wxString var = m_sd.InputDistributions[j];
-		wxArrayString parts = wxStringTokenize(var, ":");
-		if (parts.Count() < 2) continue;
-		int dist_type = wxAtoi(parts[1]);
-		if ((parts.Count() < 6) && (dist_type != LHS_USERCDF)) continue;
-		if (dist_type == LHS_USERCDF)
-		{
-			wxString item = GetVarNameFromInputDistribution(parts[0]);
-			wxArrayString values;
-			if (item == m_weather_folder_varname)
-			{
-				//values = m_weather_files;
-				for (size_t i = 0; i < m_input_data.nrows(); i++)
-				{
-					wxString wf;
-					if (GetWeatherFileForSum(m_input_data(i,j), &wf))
-						grid->SetCellValue(i, j, "(" + wf + ")  " 
-							+ wxString::Format("%lg", m_input_data(i, j)));
-				}
-			}
-			else
-			{
-				VarInfo *vi = m_case->GetConfiguration()->Variables.Lookup(item);
-				if (!vi) continue;
-				values = vi->IndexLabels;
-			}
-			if (values.Count() > 0)
-			{
-				for (size_t i = 0; i < m_input_data.nrows(); i++)
-				{
-					int ndx = (int)m_input_data(i, j);
-					if ((ndx >= 0) && (ndx < (int)values.Count()))
-						grid->SetCellValue(i, j, values[ndx]);
-				}
-			}
-		}
-		else
-		{
-			for (size_t i = 0; i < m_input_data.nrows(); i++)
-				grid->SetCellValue(i, j, wxString::Format("%lg", m_input_data(i, j)));
-		}
-	}
-
-
-	for( size_t i=0;i< m_input_data.ncols();i++ )
-		grid->SetColLabelValue( i, collabels[i] );
-	grid->AutoSize();
-	grid->Thaw();
-
-	m_regenerate_samples = false;
-	dlg->Show();
+    ComputeSamples();
 }
 
 void StochasticPanel::OnSimulate( wxCommandEvent & )
 {
+    // do not show or regenerate computed samples if the user generated them immediately before simulating
+    if ( m_regenerate_samples )
+        ComputeSamples();
 	Simulate();
 }
 
@@ -2230,7 +2238,7 @@ void StochasticPanel::Simulate()
 		}
 
 		if (!s->Prepare())
-			wxMessageBox(wxString::Format("internal error preparing simulation %d for stochastic", (int)(i + 1)), "Stochastic Simulation Message");
+			wxMessageBox(wxString::Format("Internal error preparing simulation %d for stochastic simulation.", (int)(i + 1)), "Stochastic Simulation Message");
 
 		tpd.Update(0, (float)i / (float)m_sd.N * 100.0f, wxString::Format("%d of %d", (int)(i + 1), (int)m_sd.N));
 
