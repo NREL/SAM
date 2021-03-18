@@ -1435,7 +1435,7 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 				{
 					GraphCtrl* gc = new GraphCtrl(m_layout, wxID_ANY);
 					
-					if (g.Type == Graph::CONTOUR)
+					if ((g.Type == Graph::CONTOUR) || (g.Type == Graph::LINE))
 						gc->DisplayParametrics(m_grid_data->GetRuns(), g);
 					else // old processing
 						gc->Display(m_grid_data->GetRuns(), g);
