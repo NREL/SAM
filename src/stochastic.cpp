@@ -1064,7 +1064,7 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 
 	// do not change unless persistence is changed.
 	m_weather_folder_varname = "stochastic_weather_folder";
-	m_weather_folder_displayname = "Weather Files";
+	m_weather_folder_displayname = wxString::Format("Weather Files (%s)", m_cbo_weather_files->GetValue()) ;
 
 	m_regenerate_samples = true;
 
@@ -1493,9 +1493,12 @@ void StochasticPanel::OnComboWeather(wxCommandEvent &)
 wxString StochasticPanel::GetLabelFromVarName(const wxString &var_name)
 {
 	wxString label;
-	if (var_name == m_weather_folder_varname)
-		label = m_weather_folder_displayname;
-	else
+    if (var_name == m_weather_folder_varname)
+    {
+        //label = m_weather_folder_displayname;
+        label = wxString::Format("Weather Files (%s)", m_cbo_weather_files->GetValue());
+    }
+    else
 		label = m_case->GetConfiguration()->Variables.Label(var_name);
 	return label;
 }
@@ -2362,7 +2365,9 @@ void StochasticPanel::Simulate()
 		wxString L, u;
 		if (var == m_weather_folder_varname)
 		{
-			L = m_weather_folder_displayname;
+			//L = m_weather_folder_displayname;
+            L = wxString::Format("Weather Files (%s)", m_cbo_weather_files->GetValue());
+
 			u = "";
 		}
 		else
