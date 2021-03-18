@@ -810,7 +810,7 @@ public:
 		int num_rows = listValues.Count();
 		if ((num_rows == 0) || ((int)cdf_values.Count() != num_rows))
 		{
-			wxMessageBox("Error setting up user CDF");
+			wxMessageBox("Error setting up user CDF.", "Stochastic Simulation Message");
 			return;
 		}
 		cdf_grid->Freeze();
@@ -999,7 +999,7 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	sizer_corr->Add( new wxButton(szbox->GetStaticBox(), ID_btnRemoveCorr, "Remove", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );	
 	// weather file option
 	wxBoxSizer *sizer_wf = new wxBoxSizer(wxHORIZONTAL);
-	m_chk_weather_files = new wxCheckBox(this, ID_Check_Weather, "Enable weather file analysis");
+	m_chk_weather_files = new wxCheckBox(this, ID_Check_Weather, "Include weather file normal distribution based on DNI or DHI");
 	sizer_wf->Add(m_chk_weather_files, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
 
 	wxArrayString weather_file_columns;
@@ -1009,12 +1009,12 @@ StochasticPanel::StochasticPanel(wxWindow *parent, Case *cc)
 	m_cbo_weather_files = new wxComboBox(this, ID_Combo_Weather, InitialValue, wxDefaultPosition, wxDefaultSize, weather_file_columns, wxCB_READONLY);
 	sizer_wf->Add(m_cbo_weather_files, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER_VERTICAL, 10);
 
-	wxStaticText *label = new wxStaticText(this, wxID_ANY, "Select folder:");
+	wxStaticText *label = new wxStaticText(this, wxID_ANY, "Weather file folder:");
 	sizer_wf->Add(label, 0,  wxRIGHT | wxALIGN_CENTER_VERTICAL, 2);
 	sizer_wf->Add(m_folder = new wxTextCtrl(this, wxID_ANY), 2, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 	m_folder->SetEditable(false);
-	sizer_wf->Add(new wxButton(this, ID_Select_Folder, "...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
-	sizer_wf->Add(new wxButton(this, ID_Show_Weather_CDF, "Show CDF", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
+	sizer_wf->Add(new wxButton(this, ID_Select_Folder, "Choose folder...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
+	sizer_wf->Add(new wxButton(this, ID_Show_Weather_CDF, "Show CDF...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxRIGHT | wxALIGN_CENTER_VERTICAL, 0);
 
 
 	wxBoxSizer *sizer_corr_v = new wxBoxSizer( wxVERTICAL );
@@ -1119,7 +1119,7 @@ void StochasticPanel::UpdateWeatherFileList()
 
 	if (!wxDirExists(fld))
 	{
-		wxMessageBox("Please select a weather file folder.");
+		wxMessageBox("Please choose a weather file folder.","Stochastic Simulation Message");
 		return;
 	}
 
@@ -1188,7 +1188,7 @@ void StochasticPanel::UpdateWeatherFileInputDistribution()
 
 	if (!wxDirExists(fld))
 	{
-		wxMessageBox("Please select a weather file folder.");
+		wxMessageBox("Please choose a weather file folder.","Stochastic Simulation Message");
 		return;
 	}
 
@@ -1314,14 +1314,14 @@ void StochasticPanel::UpdateWeatherFileSums()
 
 		if (ssc_module_exec_simple_nothread("wfreader", pdata))
 		{
-			wxMessageBox("Error scanning '" + wf + "'");
+			wxMessageBox("Error scanning '" + wf + "'", "Stochastic Simulation Message");
 			continue;
 		}
 
 		ssc_number_t p;
 		if (!ssc_data_get_number(pdata, output_value.c_str(),&p))
 		{
-			wxMessageBox("Error retrieving annual " + selection + " for '" + wf + "'");
+			wxMessageBox("Error retrieving annual " + selection + " for '" + wf + "'", "Stochastic Simulation Message");
 			continue;
 		}
 		m_weather_file_sums.push_back(p);
@@ -1332,7 +1332,7 @@ void StochasticPanel::UpdateWeatherFileSums()
 	if (m_weather_file_sums.size() != m_weather_files.Count())
 	{
 		m_weather_file_sums.clear();
-		wxMessageBox("Error with annual " + selection);
+		wxMessageBox("Error with annual " + selection, "Stochastic Simulation Message");
 	}
 	/*
 	else
@@ -1388,13 +1388,13 @@ void StochasticPanel::UpdateWeatherFileCDF()
 	int ndx = GetWeatherFileDistributionIndex();
 	if (ndx < 0)
 	{
-		wxMessageBox("Error retrieving weather file intput distribution");
+		wxMessageBox("Error retrieving weather file input distribution. Please enable weather file distribution before showing CDF.","Stochastic Simulation Message");
 		return;
 	}
 	wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
 	if (parts.Count() < 1)
 	{
-		wxMessageBox("Error with weather file intput distribution count");
+		wxMessageBox("Error with weather file intput distribution count.", "Stochastic Simulation Message");
 		return;
 	}
 	wxString input_distribution = parts[0];
@@ -1426,23 +1426,44 @@ void StochasticPanel::UpdateWeatherFileCDF()
 void StochasticPanel::OnShowWeatherCDF(wxCommandEvent &)
 {
 	UpdateWeatherFileCDF();
-	// write out to user in window
-	int ndx = GetWeatherFileDistributionIndex();
-	if (ndx >= 0)
+    int ndx = GetWeatherFileDistributionIndex();
+    if (ndx >= 0)
 	{
-		wxString cdf = "Weather file sum cdf\n";
-		wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
-		if (parts.Count() > 3)
-		{
-			for (size_t j = 3; j < parts.Count(); j = j + 2)
-			{
-				wxString wf;
-				if (GetWeatherFileForSum(wxAtof(parts[j]), &wf))
-					cdf += "(" + wf + ")  " + parts[j] + "  " + parts[j + 1] + "\n";
-			}
-			wxMessageBox(cdf);
-		}
-	}
+        wxArrayString parts = wxStringTokenize(m_sd.InputDistributions[ndx], ":");
+        size_t wf_count = 0;
+        if (parts.Count() > 3)
+        {
+            wxDialog* dlg = new wxDialog(this, wxID_ANY, "Weather File CDF", wxDefaultPosition, wxScaleSize(800, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+            wxExtGridCtrl* grid = new wxExtGridCtrl(dlg, wxID_ANY);
+            grid->EnableCopyPaste(true);
+            grid->CreateGrid(parts.Count()/2-1, 3);
+            grid->Freeze();
+            for (size_t j = 3; j < parts.Count(); j = j + 2)
+            {
+                wxString wf;
+                if (GetWeatherFileForSum(wxAtof(parts[j]), &wf))
+                {
+                    grid->SetCellValue(wf_count, 0, wf);
+                    grid->SetCellValue(wf_count, 1, parts[j]);
+                    grid->SetCellValue(wf_count, 2, parts[j + 1]);
+                    if ( !wf.empty() )
+                        wf_count++;
+                }
+            }
+            grid->SetColLabelValue(0, "Weather File");
+            wxString selection = m_cbo_weather_files->GetValue().Lower();
+            if (selection == "ghi")
+                grid->SetColLabelValue(1, "GHI");
+            else
+                grid->SetColLabelValue(1, "DNI");
+            grid->SetColLabelValue(2, "CDF");
+            grid->AutoSize();
+            grid->Thaw();
+            dlg->Show();
+        }
+        else
+            wxMessageBox("No CDF to show.", "Stochastic Simulation Message");
+    }
 }
 
 void StochasticPanel::OnSelectFolder(wxCommandEvent &)
@@ -1664,7 +1685,7 @@ void StochasticPanel::OnAddInput(wxCommandEvent &)
 	}
 
 	wxSortByLabels(names, labels);
-	SelectVariableDialog dlg(this, "Select Inputs");
+	SelectVariableDialog dlg(this, "Choose Inputs");
 	dlg.SetItems(names, labels);
 	dlg.SetCheckedNames( varlist );
 	if (dlg.ShowModal() == wxID_OK)
@@ -1857,7 +1878,7 @@ void StochasticPanel::OnRemoveInput(wxCommandEvent &)
 	int idx = m_inputList->GetSelection();
 	if (idx < 0)
 	{
-		wxMessageBox("No input variable selected.");
+		wxMessageBox("No input variable selected.", "Stochastic Simulation Message");
 		return;
 	}
 	else
@@ -1891,7 +1912,7 @@ void StochasticPanel::OnAddOutput(wxCommandEvent &)
 	}
 
 	wxSortByLabels(names, labels);
-	SelectVariableDialog dlg(this, "Select Output Metrics");
+	SelectVariableDialog dlg(this, "Choose Output Metrics");
 	dlg.SetItems(names, labels);
 	dlg.SetCheckedNames( m_sd.Outputs );
 	if (dlg.ShowModal() == wxID_OK)
@@ -1905,7 +1926,7 @@ void StochasticPanel::OnRemoveOutput(wxCommandEvent &)
 {
 	int idx = m_outputList->GetSelection();
 	if (idx < 0)
-		wxMessageBox("No output metric selected.");
+		wxMessageBox("No output metric selected.", "Stochastic Simulation Message");
 	else
 		m_sd.Outputs.RemoveAt(idx);
 
@@ -1957,7 +1978,7 @@ void StochasticPanel::OnAddCorr(wxCommandEvent &)
 
 		if (list.Count() != 2)
 		{
-			wxMessageBox("You must pick exactly 2 input variables to correlate.");
+			wxMessageBox("You must choose exactly 2 input variables to correlate.", "Stochastic Simulation Message");
 			return;
 		}
 
@@ -2003,7 +2024,7 @@ void StochasticPanel::OnRemoveCorr(wxCommandEvent &)
 {
 	int idx = m_corrList->GetSelection();
 	if (idx < 0)
-		wxMessageBox("No correlation selected.");
+		wxMessageBox("No correlation selected.", "Stochastic Simulation Message");
 	else
 		m_sd.Correlations.RemoveAt(idx);
 
@@ -2038,7 +2059,7 @@ void StochasticPanel::OnComputeSamples(wxCommandEvent &)
 		collabels.Add(label);
 	}
 	
-	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Data Vectors", wxDefaultPosition, wxScaleSize(400,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
+	wxDialog *dlg = new wxDialog( this, wxID_ANY, "Stochastic Input Vectors", wxDefaultPosition, wxScaleSize(400,600), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 	wxExtGridCtrl *grid = new wxExtGridCtrl( dlg, wxID_ANY );
 	grid->EnableCopyPaste( true );
 	grid->CreateGrid(m_input_data.nrows(), m_input_data.ncols() );
@@ -2125,7 +2146,7 @@ void StochasticPanel::Simulate()
 
 	if (m_sd.Outputs.size() == 0)
 	{
-		wxMessageBox("please select one or more output variables to analyze first.");
+		wxMessageBox("Please choose one or more output variables.", "Stochastic Simulation Message");
 		return;
 	}
 
@@ -2206,7 +2227,7 @@ void StochasticPanel::Simulate()
 		}
 
 		if (!s->Prepare())
-			wxMessageBox(wxString::Format("internal error preparing simulation %d for stochastic", (int)(i + 1)));
+			wxMessageBox(wxString::Format("internal error preparing simulation %d for stochastic", (int)(i + 1)), "Stochastic Simulation Message");
 
 		tpd.Update(0, (float)i / (float)m_sd.N * 100.0f, wxString::Format("%d of %d", (int)(i + 1), (int)m_sd.N));
 
