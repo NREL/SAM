@@ -245,6 +245,10 @@ void ParametricGrid::OnColSort(wxGridEvent& evt)
 					// end indicator code
 					// actual sorting of data
 					pgd->SortColumn(col, asc);
+					if (ParametricViewer* pv = static_cast<ParametricViewer*> (GetParent())) {
+						pv->RemoveAllPlots();
+						pv->AddAllPlots();
+					}
 				}
 			}
 		}
@@ -1366,6 +1370,15 @@ bool ParametricViewer::Plot(int col, Graph &g)
 					}
 					g.Title = m_grid_data->GetColLabelValue(col);
 				}
+				else { // default behavior in past versions
+					g.Type = Graph::BAR;
+					g.Size = 15; // bar size
+					ret_val = true;
+					g.YLabel = m_grid_data->GetColLabelValue(col);
+					if (!m_grid_data->GetUnits(col).IsEmpty())
+						g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
+					g.XLabel = "Run number";
+				}
 				break;
 				// arrays - determine if monthly or hourly
 			}
@@ -1434,12 +1447,17 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 				if (g.Type >= 0)
 				{
 					GraphCtrl* gc = new GraphCtrl(m_layout, wxID_ANY);
-					
+					if (m_input_names.Count() > 2)
+						gc->Display(m_grid_data->GetRuns(), g);
+					else
+						gc->DisplayParametrics(m_grid_data->GetRuns(), g);
+
+					/*
 					if ((g.Type == Graph::CONTOUR) || (g.Type == Graph::LINE))
 						gc->DisplayParametrics(m_grid_data->GetRuns(), g);
 					else // old processing
 						gc->Display(m_grid_data->GetRuns(), g);
-
+						*/
 					m_graphs.push_back(gc);
 					// TODO sizing
 					m_layout->Add(gc, 800, 400);
@@ -1879,6 +1897,19 @@ void ParametricGridData::SortColumn(const int& col, const bool& asc)
 		}
 	}
 }
+
+
+int ParametricGridData::GetRunNumberForRowNumber(const int& rowNum)
+{
+	int runNumber = -1;
+	if (rowNum > 0 && rowNum < m_rows) {
+		runNumber = rowNum+1;
+		if (m_rowSortOrder.size() == m_rows)
+			runNumber = m_rowSortOrder[rowNum].second + 1;
+	}
+	return runNumber;
+}
+
 
 int ParametricGridData::GetColumnForName(const wxString &name)
 {

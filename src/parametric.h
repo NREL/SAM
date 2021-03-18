@@ -135,6 +135,8 @@ public:
 
 	void SortColumn(const int& col, const bool& asc);
 
+	int GetRunNumberForRowNumber(const int& rowNum);
+
 private:
 	std::vector< std::pair<double, int> > m_rowSortOrder;
 	int m_rows;
@@ -189,6 +191,9 @@ public:
 	bool ExportFromMacro(wxString path, bool asExcel = true);
 	bool SetInputFromMacro(wxString varName, int index, wxString val);
 
+	void AddAllPlots();
+	void RemoveAllPlots();
+
 private:
 	void OnCommand(wxCommandEvent &evt);
 	void OnGridColLabelRightClick(wxGridEvent &evt);
@@ -208,9 +213,6 @@ private:
 //	void AddHeatMap(const wxString& x_name, const wxString& y_name, const wxString& output_name);
 	void RemovePlot(const wxString &output_name);
 	bool Plot(int col, Graph &g);
-	void AddAllPlots();
-	void RemoveAllPlots();
-
 	void FillDown(int rows);
 
 	void ShowAllData();
