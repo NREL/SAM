@@ -48,7 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 457359,
+			"construction_financing_cost": 1.05880e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -79,7 +79,7 @@
 			"roe_input": [0.000000],
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 20000.9,
+			"system_capacity": 50002.2,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
@@ -95,7 +95,7 @@
 			"om_replacement_cost1": [293.840000],
 			"om_replacement_cost_escal": 0,
 			"system_use_recapitalization": 0,
-			"total_installed_cost": 2.28679e+07
+			"total_installed_cost": 5.29402e+07
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -269,7 +269,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 20000.9
+			"system_capacity": 50002.2
 		},
 		"UtilityBill": {
 		},
@@ -284,7 +284,7 @@
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,
 			"cp_capacity_payment_type": 0,
-			"cp_system_nameplate": 20.0009
+			"cp_system_nameplate": 50.0022
 		},
 		"GridLimits": {
 			"grid_curtailment_price": [0.000000],

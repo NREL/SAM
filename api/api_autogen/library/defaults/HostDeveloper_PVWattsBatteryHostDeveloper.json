@@ -52,7 +52,7 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [206.670000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 334113
+			"total_installed_cost": 908951
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -275,7 +275,7 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 6682.27
+			"construction_financing_cost": 18179
 		},
 		"BatterySystem": {
 			"battery_per_kWh": 206.67
