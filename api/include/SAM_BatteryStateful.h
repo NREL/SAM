@@ -108,6 +108,14 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Qnom_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set Vcut: Cell cutoff voltage [V]
+	 * options: None
+	 * constraints: None
+	 * required if: voltage_choice=0&chem~2
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Vcut_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set Vexp: Cell voltage at end of exponential zone [V]
 	 * options: None
 	 * constraints: None
@@ -821,6 +829,8 @@ extern "C"
 	SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qfull_flow_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qnom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vcut_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vexp_nget(SAM_table ptr, SAM_error *err);
 
