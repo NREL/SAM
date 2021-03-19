@@ -22,6 +22,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <algorithm>
 #include <memory>
+#include <ctypes.h>
 
 #include <wx/datstrm.h>
 #include <wx/gauge.h>
@@ -7654,7 +7655,7 @@ CodeGen_pySAM::CodeGen_pySAM(Case* cc, const wxString& folder) : m_case(cc), m_f
 std::string format_as_variable(std::string str){
     std::replace(str.begin(), str.end(), '.', '_');
     int first = str.substr(0, 1).c_str()[0];
-    if (std::isdigit(first)) {
+    if (isdigit(first)) {
         std::string remaining = str.substr(1);
         switch (first) {
             case 48:
@@ -7682,7 +7683,7 @@ std::string format_as_variable(std::string str){
         }
     }
     else {
-        if (!std::isalpha(first) && first != 95 /* "_" */)
+        if (!isalpha(first) && first != 95 /* "_" */)
             throw std::runtime_error("Variable must begin with alphanumeric character or '_'.");
     }
     return str;
