@@ -767,7 +767,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\treturn NULL;\n"
                "\n"
                "\trv->data_owner_ptr = NULL;\n"
-               "\tPySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", def);\n"
+               "\tif (PySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", def) < 0) {\n"
+               "\t\t" << tech_symbol << "_dealloc(rv);\n\t\treturn NULL;\n\t}"
                "\n";
     if (stateful) {
         fx_file << "\trv->cmod_ptr = NULL;\n";
@@ -949,8 +950,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
         fx_file << "Input Consistency Warning\n"
                    "==================================\n"
                    "\n"
-                   "As described in :ref:`Possible Problems <possible_problems>`, some input parameters are interdepedent but the equations accounting for these\n"
-                   "interdependencies that enforce consistency among these input parameters are not available in the PySAM module. Therefore,\n"
+                   "As described in :ref:`Possible Problems <possible_problems>`, some input parameters are interdependent but the equations \n"
+                   "that enforce consistency are not available in this PySAM module. Therefore,\n"
                    "the onus is on the PySAM user to check that interdependencies are correctly handled. The variables which may require\n"
                    "additional logic include:\n\n";
 

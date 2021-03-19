@@ -1,11 +1,11 @@
 1
-368
+381
 ac_nameplate
 1
 1
 1
 1
-179.167
+450
 adjust
 1
 5
@@ -142,7 +142,70 @@ bos_equip_total
 1
 1
 1
-53750
+129600
+capex_ac_warning_message
+1
+4
+0
+capex_dc_warning_message
+1
+4
+9
+<invalid>
+capex_table_ac_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_ac_inputs
+1
+3
+9
+2
+100000 0.79 
+199999 0.79 
+200000 0.72 
+499999 0.72 
+500000 0.68 
+999999 0.68 
+1000000 0.66 
+2000000 0.66 
+2000000 0.65 
+
+capex_table_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_dc_inputs
+1
+3
+9
+2
+100000 1.08 
+199999 1.08 
+200000 1 
+499999 1 
+500000 0.96 
+999999 0.96 
+1000000 0.95 
+2000000 0.95 
+2000000 0.94 
+
+capex_table_total_installed_ac_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_dc_cost
+1
+1
+1
+1
+0
 cbi_fed_amount
 1
 1
@@ -297,7 +360,7 @@ contingency
 1
 1
 1
-9094.5
+23328
 contingency_percent
 1
 1
@@ -486,7 +549,7 @@ engr_total
 1
 1
 1
-0
+237600
 escal_belpe
 1
 2
@@ -880,7 +943,7 @@ install_labor_total
 1
 1
 1
-25800
+81000
 install_margin_fixed
 1
 1
@@ -904,13 +967,13 @@ install_margin_total
 1
 1
 1
-139750
+86400
 installed_per_capacity
 1
 1
 1
 1
-1.63491
+1.71925
 insurance_rate
 1
 1
@@ -940,19 +1003,25 @@ inverter_power
 1
 1
 1
-179.167
+450
 inverter_total
 1
 1
 1
 1
-15050
+64800
 inverterarray_power
 1
 1
 1
 1
-179.167
+450
+inverterarray_power_w
+1
+1
+1
+1
+450000
 is_advanced
 1
 1
@@ -982,7 +1051,7 @@ itc_fed_percent
 1
 1
 1
-22
+26
 itc_fed_percent_deprbas_fed
 1
 1
@@ -1263,13 +1332,13 @@ module_power
 1
 1
 1
-215
+540
 module_total
 1
 1
 1
 1
-68800
+221400
 module_type
 1
 1
@@ -1287,7 +1356,13 @@ modulearray_power
 1
 1
 1
-215
+540
+modulearray_power_w
+1
+1
+1
+1
+540000
 nominal_discount_rate
 1
 1
@@ -1611,7 +1686,7 @@ permitting_total
 1
 1
 1
-23650
+59400
 prop_tax_assessed_decline
 1
 1
@@ -1629,7 +1704,7 @@ property_assessed_value
 1
 1
 1
-351507
+928396
 property_tax_rate
 1
 1
@@ -1672,6 +1747,12 @@ ptc_sta_term
 1
 1
 10
+pv_capex_cost_choice
+1
+1
+1
+1
+0
 rate_escalation
 1
 2
@@ -1701,7 +1782,7 @@ sales_tax_total
 1
 1
 1
-15612.2
+24867.6
 sales_tax_value
 1
 1
@@ -1799,7 +1880,7 @@ subtotal_direct
 1
 1
 1
-303150
+583200
 system_capacity
 1
 1
@@ -1818,6 +1899,12 @@ system_use_recapitalization
 1
 1
 0
+test_calc
+1
+1
+1
+1
+0
 tilt
 1
 1
@@ -1829,19 +1916,19 @@ total_direct_cost
 1
 1
 1
-312245
+606528
 total_indirect_cost
 1
 1
 1
 1
-39262.2
+297000
 total_installed_cost
 1
 1
 1
 1
-351507
+928396
 tz
 1
 1
@@ -1859,13 +1946,13 @@ ui_loan_amount
 1
 1
 1
-351507
+928396
 ui_net_capital_cost
 1
 1
 1
 1
-351507
+928396
 ui_step_minutes
 1
 1
@@ -2236,6 +2323,10 @@ ur_unused_is_shown
 1
 0
 ur_uri
+1
+4
+0
+ur_utility
 1
 4
 0

@@ -52,6 +52,7 @@
 			"batt_Qfull": 3.2,
 			"batt_Qfull_flow": 7994.25,
 			"batt_Qnom": 3.126,
+			"batt_Vcut": 2.772,
 			"batt_Vexp": 3.53,
 			"batt_Vfull": 4.2,
 			"batt_Vnom": 3.342,

@@ -24,7 +24,7 @@
 			"real_discount_rate": 6.4,
 			"reserves_interest": 1.75,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 20000.9
+			"system_capacity": 50002.2
 		},
 		"SystemCosts": {
 			"om_capacity": [17.000000],
@@ -42,7 +42,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 22,
+			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -193,10 +193,10 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 20000.9
+			"system_capacity": 50002.2
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 427077,
+			"construction_financing_cost": 1.02769e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -210,7 +210,7 @@
 			"system_use_lifetime_output": 1,
 			"system_use_recapitalization": 0,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 2.13538e+07
+			"total_installed_cost": 5.13845e+07
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,

@@ -2350,7 +2350,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 void fcall_urdb_list_utilities(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_utilities", "Lists utility companies from the OpenEI Utility Rate Database.", "(none):string");
+	LK_DOC("urdb_list_utilities", "Returns a list of all utility company names in the OpenEI Utility Rate Database.", "(none):string");
 	wxArrayString names;
 	OpenEI api;
 	if (api.QueryUtilityCompanies(names))
@@ -2363,7 +2363,7 @@ void fcall_urdb_list_utilities(lk::invoke_t &cxt)
 
 void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_utilities_by_zip_code", "Lists utility companies from the OpenEI Utility Rate Database for zip code.", "(string:zip_code):string");
+	LK_DOC("urdb_list_utilities_by_zip_code", "Returns a list of utility company names for a given zip code from the OpenEI Utility Rate Database.", "(string:zip_code):array");
 	wxString zip_code = cxt.arg(0).as_string();
 	wxArrayString names;
 	OpenEI api;
@@ -2377,29 +2377,23 @@ void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &cxt)
 
 void fcall_urdb_list_rates(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_rates", "Lists rates for utility argument from OpenEI Utility Rate Database.", "(string:utility):string");
-	wxString utility = cxt.arg(0).as_string();
+	LK_DOC("urdb_list_rates", "Returns a list of rate names and GUIDs for a given utility company name from OpenEI Utility Rate Database.", "(string:utility):array");
+
+    wxString utility = cxt.arg(0).as_string();
 
 	std::vector<OpenEI::RateInfo> ratelist;
 	OpenEI api;
 
-	wxString urdb_utility_name = "";
-	// first resolve aliases
-	if (!api.ResolveUtilityName(utility, &urdb_utility_name))
-	{
-		cxt.result().assign(-1);
-		return;
-	}
-
-	if (api.QueryUtilityRates(urdb_utility_name, ratelist))
-	{
+    if (api.QueryUtilityRates(utility, ratelist))
+    {
 		cxt.result().empty_vector();
-		for (int i = 0; i<(int)ratelist.size(); i++)
+        
+        for (int i = 0; i<(int)ratelist.size(); i++)
 		{
 			cxt.result().vec_append(ratelist[i].Name);
 			cxt.result().vec_append(ratelist[i].GUID);
-		}
-	}
+        }
+    }
 	else
 		cxt.result().assign(-1);
 
@@ -2571,7 +2565,7 @@ void fcall_group_read(lk::invoke_t &cxt)
 
 void fcall_urdb_write(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_write", "Writes rate data from current case to a file.", "(string:filename):boolean");
+	LK_DOC("urdb_write", "Writes inputs from Electricity Rates page for the current case to a CSV file.", "(string:filename):boolean");
 
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -2612,7 +2606,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 
 void fcall_urdb_read(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_read", "Reads rate data from a file to the current case.", "(string:filename):boolean");
+	LK_DOC("urdb_read", "Loads rate data from a CSV file to the Electricity Rates page for the current case.", "(string:filename):boolean");
 
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -2869,7 +2863,7 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 
 void fcall_urdb_get(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(string:guid):boolean");
+	LK_DOC("urdb_get", "Returns rate data from the OpenEI Utility Rate Database given a GUID.", "(string:guid):table");
 	wxString guid = cxt.arg(0).as_string();
 	if (guid.IsEmpty()) return;
 
@@ -2883,8 +2877,8 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().empty_hash();
 
         // meta data
-        cxt.result().hash_item("name").assign(rate.Header.Utility);
-        cxt.result().hash_item("schedule_name").assign(rate.Header.Name);
+        cxt.result().hash_item("utility").assign(rate.Header.Utility);
+        cxt.result().hash_item("name").assign(rate.Header.Name);
         cxt.result().hash_item("source").assign(rate.Header.Source);
         cxt.result().hash_item("description").assign(rate.Header.Description);
         cxt.result().hash_item("start_date").assign(rate.Header.StartDate);
@@ -4831,7 +4825,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
-                                         "total_installed_cost", "value_of_lost_load"};
+                                         "total_installed_cost"};
 
     copy_vars_into_ssc_data(pv_vars);
     copy_vars_into_ssc_data(batt_vars);
@@ -4877,8 +4871,10 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     if (auto err_vd = results.lookup("messages"))
         throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
-    if (auto err_vd = results.lookup("error"))
-        throw lk::error_t(err_vd->as_string() );
+    if (auto err_vd = results.lookup("error")){
+        cxt.result().hash_item("error", err_vd->as_string());
+        return;
+    }
 
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
@@ -4887,7 +4883,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result... This may take a few minutes.", "ReOpt Lite API",
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "ReOpt Lite API",
             wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();
     wxGetApp().Yield( true );
@@ -4921,7 +4917,7 @@ static void fcall_setup_landbosse(lk::invoke_t &cxt)
     if (SamApp::CheckPythonPackage("landbosse"))
         return;
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing the balance-of-system (BOS) cost model... Please note that it may take a few minutes to complete the initial installation. Once installed, you will be able to quickly estimate BOS costs using NREL's Land-based Balance-of-System Systems Engineering (LandBOSSE).\n"
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing the balance-of-system (BOS) cost model. Please note that it may take a few minutes to complete the initial installation. Once installed, you will be able to quickly estimate BOS costs using NREL's Land-based Balance-of-System Systems Engineering (LandBOSSE).\n"
                                                     "\n"
                                                     "While you wait, please refer to Eberle et al. 2019 for more information about the methods that were used to develop LandBOSSE. It is important to note that the SAM user interface only includes a limited set of LandBOSSE inputs. If you would like to access more detailed inputs, please use the LandBOSSE model directly",
                         "Land-Based Balance of System Cost Model",

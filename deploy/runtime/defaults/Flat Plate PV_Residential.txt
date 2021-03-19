@@ -1,5 +1,5 @@
 1
-847
+865
 6par_aisc
 1
 1
@@ -420,13 +420,94 @@ bos_equip_total
 1
 1
 1
-1689.43
+1454.79
 calculated_dcac_ratio
 1
 1
 1
 1
 1.21893
+capex_ac_warning_message
+1
+4
+0
+capex_dc_warning_message
+1
+4
+9
+<invalid>
+capex_land_warning_message
+1
+4
+9
+<invalid>
+capex_table_ac_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_ac_inputs
+1
+3
+5
+2
+1 1.28 
+4000 1.28 
+7000 1.28 
+7001 0.79 
+100000 0.79 
+
+capex_table_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_dc_inputs
+1
+3
+5
+2
+1 1.43 
+4000 1.43 
+7000 1.43 
+7001 1.07 
+100000 1.07 
+
+capex_table_land_cost_per_kw
+1
+1
+1
+1
+0
+capex_table_land_inputs
+1
+3
+3
+2
+0 0 
+1000 0 
+10000 0 
+
+capex_table_total_installed_ac_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_dc_cost
+1
+1
+1
+1
+0
+capex_table_total_installed_land_cost
+1
+1
+1
+1
+0
 cbi_fed_amount
 1
 1
@@ -684,7 +765,7 @@ cec_i_o_ref
 1
 1
 1
-3.99e-12
+3.98831e-12
 cec_i_sc_ref
 1
 1
@@ -743,13 +824,13 @@ cec_r_s
 1
 1
 1
-0.499389
+0.499388
 cec_r_sh_ref
 1
 1
 1
 1
-457.185
+457.186
 cec_standoff
 1
 1
@@ -1089,7 +1170,7 @@ engr_total
 1
 1
 1
-0
+4599.01
 escal_belpe
 1
 2
@@ -1529,7 +1610,7 @@ install_labor_total
 1
 1
 1
-1877.15
+891.645
 install_margin_fixed
 1
 1
@@ -1553,13 +1634,13 @@ install_margin_total
 1
 1
 1
-4692.87
+1267.07
 installed_per_capacity
 1
 1
 1
 1
-2.5111
+2.7215
 insurance_rate
 1
 1
@@ -1710,7 +1791,8 @@ n/a
 inv_cec_hybrid
 1
 4
-0
+5
+empty
 inv_cec_name
 1
 4
@@ -2203,7 +2285,7 @@ inv_snl_c0
 1
 1
 1
--3.08e-06
+-3.08138e-06
 inv_snl_c1
 1
 1
@@ -2227,13 +2309,13 @@ inv_snl_eff_cec
 1
 1
 1
-97.0529
+97.0531
 inv_snl_eff_euro
 1
 1
 1
 1
-96.6762
+96.6764
 inv_snl_idcmax
 1
 1
@@ -2370,13 +2452,19 @@ inverter_total
 1
 1
 1
-657.002
+1173.22
 inverterarray_power
 1
 1
 1
 1
 3.85
+inverterarray_power_w
+1
+1
+1
+1
+3850
 irrad_mode
 1
 1
@@ -2412,7 +2500,7 @@ itc_fed_percent
 1
 1
 1
-22
+26
 itc_fed_percent_deprbas_fed
 1
 1
@@ -2473,6 +2561,12 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area_capex
+1
+1
+1
+1
+0.0188076
 land_area_value
 1
 1
@@ -2683,7 +2777,7 @@ loan_amount
 1
 1
 1
-11784.3
+12771.6
 loan_rate
 1
 1
@@ -2766,7 +2860,7 @@ module_total
 1
 1
 1
-2111.79
+1924.08
 module_width
 1
 1
@@ -2785,6 +2879,12 @@ modulearray_power
 1
 1
 4.69287
+modulearray_power_w
+1
+1
+1
+1
+4692.87
 mortgage
 1
 1
@@ -3148,7 +3248,7 @@ permitting_total
 1
 1
 1
-469.287
+1126.29
 prop_tax_assessed_decline
 1
 1
@@ -3166,7 +3266,7 @@ property_assessed_value
 1
 1
 1
-11784.3
+12771.6
 property_tax_rate
 1
 1
@@ -3215,6 +3315,12 @@ pv.radmode.is_shown
 1
 1
 0
+pv_capex_cost_choice
+1
+1
+1
+1
+0
 rate_escalation
 1
 2
@@ -3249,7 +3355,7 @@ sales_tax_total
 1
 1
 1
-286.734
+335.54
 sales_tax_value
 1
 1
@@ -4870,7 +4976,7 @@ subtotal_direct
 1
 1
 1
-11028.2
+6710.8
 system_capacity
 1
 1
@@ -4884,6 +4990,12 @@ system_use_lifetime_output
 1
 1
 system_use_recapitalization
+1
+1
+1
+1
+0
+test_calc
 1
 1
 1
@@ -4906,19 +5018,19 @@ total_direct_cost
 1
 1
 1
-11028.2
+6710.8
 total_indirect_cost
 1
 1
 1
 1
-756.021
+5725.3
 total_installed_cost
 1
 1
 1
 1
-11784.3
+12771.6
 total_inverter_capacity
 1
 1
@@ -4984,7 +5096,7 @@ ui_net_capital_cost
 1
 1
 1
-11784.3
+12771.6
 ui_step_minutes
 1
 1
@@ -5424,6 +5536,10 @@ ur_unused_is_shown
 1
 0
 ur_uri
+1
+4
+0
+ur_utility
 1
 4
 0

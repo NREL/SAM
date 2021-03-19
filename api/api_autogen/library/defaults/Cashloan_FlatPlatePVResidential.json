@@ -29,7 +29,7 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [500.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 11784.3
+			"total_installed_cost": 12771.6
 		},
 		"Depreciation": {
 		},
@@ -37,7 +37,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 22,
+			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,

@@ -20,7 +20,7 @@
 			"add_om_num_types": 2,
 			"om_capacity": [16.000000],
 			"om_capacity1": [0.000000],
-			"om_capacity1_nameplate": 100.205,
+			"om_capacity1_nameplate": 0,
 			"om_capacity2": [0.000000],
 			"om_capacity2_nameplate": 200,
 			"om_capacity_escal": 0,
@@ -35,7 +35,7 @@
 			"om_replacement_cost1": [206.670000],
 			"om_replacement_cost2": [0.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 2.45151e+06
+			"total_installed_cost": 2.44922e+06
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -49,7 +49,7 @@
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 22,
+			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,

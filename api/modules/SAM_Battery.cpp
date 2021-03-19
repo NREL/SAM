@@ -302,6 +302,12 @@ SAM_EXPORT void SAM_Battery_BatteryCell_batt_Qnom_nset(SAM_table ptr, double num
 	});
 }
 
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_Vcut_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_Vcut", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_BatteryCell_batt_Vexp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Vexp", number);
@@ -377,6 +383,12 @@ SAM_EXPORT void SAM_Battery_BatteryCell_batt_h_to_ambient_nset(SAM_table ptr, do
 SAM_EXPORT void SAM_Battery_BatteryCell_batt_initial_SOC_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_initial_SOC", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_life_model_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_life_model", number);
 	});
 }
 
@@ -1416,6 +1428,17 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_Qnom_nget(SAM_table ptr, SAM_erro
 
 
 
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vcut_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_Vcut", &result))
+		make_access_error("SAM_Battery", "batt_Vcut");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Battery_BatteryCell_batt_Vexp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1554,6 +1577,17 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_initial_SOC_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_initial_SOC", &result))
 		make_access_error("SAM_Battery", "batt_initial_SOC");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_life_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_life_model", &result))
+		make_access_error("SAM_Battery", "batt_life_model");
 	});
 	return result;
 }

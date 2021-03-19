@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12095
+12242
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -490,6 +490,7 @@ function set_batt_defaults_from_data(defs)
 		value('batt_Vnom',cell_params.vnom);
 		value('batt_Qexp',cell_params.qexp);
 		value('batt_Vnom',cell_params.vnom);
+		value('batt_Vcut',cell_params.vcut);
 		
 		${batt_Qexp_percent} = ${batt_Qexp}/${batt_Qfull}/0.01;
 		${batt_Qnom_percent} = cell_params.qnom/${batt_Qfull}/0.01;
@@ -535,6 +536,7 @@ function LMO()
 	value('batt_Vfull',4.2);
 	value('batt_Vexp',4.1);
 	value('batt_Vnom',3.6);
+	value('batt_Vcut',2.772);
 	value('batt_Qfull',1.5);
 	value('batt_Qexp_percent',0.666);
 	value('batt_Qnom_percent',93.33);
@@ -567,6 +569,7 @@ function LCO()
 	value('batt_Vfull',4.2);
 	value('batt_Vexp',4.15);
 	value('batt_Vnom',3.7);
+	value('batt_Vcut',2.772);
 	value('batt_Qfull',2.55);
 	value('batt_Qexp_percent',0.40);
 	value('batt_Qnom_percent',78.4);
@@ -591,6 +594,7 @@ function LTO()
 	value('batt_Vfull',2.8);
 	value('batt_Vexp',2.4);
 	value('batt_Vnom',2);
+	value('batt_Vcut',1.848);
 	value('batt_Qfull',12);
 	value('batt_Qexp_percent',2.1);
 	value('batt_Qnom_percent',91.7);
@@ -626,6 +630,7 @@ function NCA()
 	value('batt_Vfull',4.2);
 	value('batt_Vexp',4.1);
 	value('batt_Vnom',3.6);
+	value('batt_Vcut',2.772);
 	value('batt_Qfull',55);
 	value('batt_Qexp_percent',1.8);
 	value('batt_Qnom_percent',98.2);

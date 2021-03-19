@@ -1729,7 +1729,7 @@ extern "C"
 	 * Set tes_lengths: Custom TES lengths [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_lengths_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 

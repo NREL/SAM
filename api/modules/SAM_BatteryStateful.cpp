@@ -68,6 +68,12 @@ SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Qnom_nset(SAM_table ptr, double n
 	});
 }
 
+SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Vcut_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "Vcut", number);
+	});
+}
+
 SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Vexp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "Vexp", number);
@@ -167,6 +173,12 @@ SAM_EXPORT void SAM_BatteryStateful_ParamsCell_leadacid_qn_nset(SAM_table ptr, d
 SAM_EXPORT void SAM_BatteryStateful_ParamsCell_leadacid_tn_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "leadacid_tn", number);
+	});
+}
+
+SAM_EXPORT void SAM_BatteryStateful_ParamsCell_life_model_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "life_model", number);
 	});
 }
 
@@ -665,6 +677,17 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qnom_nget(SAM_table ptr, SAM_er
 
 
 
+SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vcut_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "Vcut", &result))
+		make_access_error("SAM_BatteryStateful", "Vcut");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vexp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -848,6 +871,17 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_tn_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "leadacid_tn", &result))
 		make_access_error("SAM_BatteryStateful", "leadacid_tn");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_BatteryStateful_ParamsCell_life_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "life_model", &result))
+		make_access_error("SAM_BatteryStateful", "life_model");
 	});
 	return result;
 }
