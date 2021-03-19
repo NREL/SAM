@@ -1295,7 +1295,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-7329
+7317
 on_load{'Utility Rate - Flat'} = define(){
 	set_battery_fom_inputs();
 	set_metering_billing_inputs();
@@ -1472,8 +1472,8 @@ on_change{'btnQueryOpenEI'} = define() {
 	if ( guid == '' ) return;
 	hash = urdb_get(guid);
 	// meta data
+	value ('ur_utility', hash{'utility'});
 	value ('ur_name', hash{'name'});
-	value ('ur_schedule_name', hash{'schedule_name'});
 	value ('ur_source', hash{'source'});
 	
 	value ('ur_description', hash{'description'}
