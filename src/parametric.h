@@ -137,6 +137,8 @@ public:
 
 	int GetRunNumberForRowNumber(const int& rowNum);
 
+	std::vector<int> GetRowSortOrder();
+
 private:
 	std::vector< std::pair<double, int> > m_rowSortOrder;
 	int m_rows;
@@ -196,7 +198,8 @@ public:
 
 private:
 	void OnCommand(wxCommandEvent &evt);
-	void OnGridColLabelRightClick(wxGridEvent &evt);
+	void OnGridColLabelRightClick(wxGridEvent& evt);
+	void OnGridColSort(wxGridEvent& evt);
 	void OnMenuItem(wxCommandEvent &evt);
 
 	void SelectInputs();

@@ -245,11 +245,11 @@ void ParametricGrid::OnColSort(wxGridEvent& evt)
 					// end indicator code
 					// actual sorting of data
 					pgd->SortColumn(col, asc);
-					if (ParametricViewer* pv = static_cast<ParametricViewer*> (GetParent())) {
+/*					if (ParametricViewer* pv = static_cast<ParametricViewer*> (GetParent())) {
 						pv->RemoveAllPlots();
 						pv->AddAllPlots();
 					}
-				}
+*/				}
 			}
 		}
 	}
@@ -294,6 +294,7 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_CLEAR, ParametricViewer::OnCommand)
 
+	EVT_GRID_CMD_COL_SORT(ID_GRID, ParametricViewer::OnGridColSort)
 	EVT_GRID_CMD_LABEL_RIGHT_CLICK(ID_GRID, ParametricViewer::OnGridColLabelRightClick)
 	EVT_MENU(ID_OUTPUTMENU_ADD_PLOT, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_REMOVE_PLOT, ParametricViewer::OnMenuItem)
@@ -1222,9 +1223,15 @@ void ParametricViewer::SendToExcel()
 }
 
 
-void ParametricViewer::OnGridColLabelRightClick(wxGridEvent &evt)
+void ParametricViewer::OnGridColSort(wxGridEvent& evt)
 {
-	m_selected_grid_col = evt.GetCol();
+	RemoveAllPlots();
+	AddAllPlots();
+}
+
+void ParametricViewer::OnGridColLabelRightClick(wxGridEvent & evt)
+{
+		m_selected_grid_col = evt.GetCol();
 	m_selected_grid_row = evt.GetRow();
 	if (m_selected_grid_row < 0)
 	{
@@ -1447,19 +1454,22 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 				if (g.Type >= 0)
 				{
 					GraphCtrl* gc = new GraphCtrl(m_layout, wxID_ANY);
-					if (m_input_names.Count() > 2)
-						gc->Display(m_grid_data->GetRuns(), g);
+					if (m_input_names.Count() > 2) { // previous bar graph behavior with runs sorted
+						std::vector<Simulation*> orderedSims;
+						auto& rowOrder = m_grid_data->GetRowSortOrder();
+						auto& unorderedSim = m_grid_data->GetRuns();
+						if (unorderedSim.size() == rowOrder.size()) {
+							for (size_t i = 0; i < rowOrder.size(); i++)
+								orderedSims.push_back(unorderedSim[rowOrder[i]]);
+							gc->Display(orderedSims, g);
+						}
+						else {
+							gc->Display(m_grid_data->GetRuns(), g);
+						}
+					}
 					else
 						gc->DisplayParametrics(m_grid_data->GetRuns(), g);
-
-					/*
-					if ((g.Type == Graph::CONTOUR) || (g.Type == Graph::LINE))
-						gc->DisplayParametrics(m_grid_data->GetRuns(), g);
-					else // old processing
-						gc->Display(m_grid_data->GetRuns(), g);
-						*/
 					m_graphs.push_back(gc);
-					// TODO sizing
 					m_layout->Add(gc, 800, 400);
 				}
 				else // DView
@@ -1910,6 +1920,19 @@ int ParametricGridData::GetRunNumberForRowNumber(const int& rowNum)
 	return runNumber;
 }
 
+std::vector<int> ParametricGridData::GetRowSortOrder()
+{
+	std::vector<int> rowOrder;
+	if (m_rowSortOrder.size() == m_rows) {
+		for (size_t i = 0; i < m_rowSortOrder.size(); i++)
+			rowOrder.push_back(m_rowSortOrder[i].second);
+	}
+	else {
+		for (int i = 0; i < m_rows; i++)
+			rowOrder.push_back(i);
+	}
+	return rowOrder;
+}
 
 int ParametricGridData::GetColumnForName(const wxString &name)
 {
