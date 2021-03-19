@@ -424,6 +424,12 @@ batt_Qnom_percent
 1
 1
 97.6875
+batt_Vcut
+1
+1
+1
+1
+2.772
 batt_Vexp
 1
 1
@@ -1936,7 +1942,7 @@ contingency
 1
 1
 1
-1288210
+1.28821e+06
 contingency_percent
 1
 1
@@ -2605,7 +2611,7 @@ engr_total
 1
 1
 1
-3500160
+3.50016e+06
 equip1_reserve_cost
 1
 1
@@ -2731,7 +2737,7 @@ grid_total
 1
 1
 1
-1500070
+1.50007e+06
 ibi_fed_amount
 1
 1
@@ -4109,7 +4115,7 @@ landprep_total
 1
 1
 1
-1000040
+1.00004e+06
 lat
 1
 1
@@ -4925,7 +4931,7 @@ sales_tax_total
 1
 1
 1
-2211430
+2.21143e+06
 sales_tax_value
 1
 1
@@ -6627,7 +6633,7 @@ total_indirect_cost
 1
 1
 1
-6500290
+6.50029e+06
 total_installed_cost
 1
 1
