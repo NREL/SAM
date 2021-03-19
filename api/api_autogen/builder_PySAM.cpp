@@ -1062,6 +1062,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         for (const auto& it : vardefs) {
             std::string var_symbol = it.first;
+            if (var_symbol == "global")
+                continue;
             fx_file << "\t" << var_symbol << " = " << statictype_str[it.second.type_n] << "\n";
         }
         fx_file << "\n\n";
