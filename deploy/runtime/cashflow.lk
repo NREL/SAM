@@ -669,6 +669,7 @@ function cf_levelized_metrics()
 		cfline('cf_batt_replacement_cost', 0);
 		cfline('cf_salvage_cost_lcos', 0);
 		cfline('cf_annual_discharge_lcos', 0);
+		cfline('cf_util_escal_rate', 5);
 		cfline( '' );
 		cfline('npv_annual_costs_lcos', 0);
 		cfline('npv_energy_lcos_nom', 0);
