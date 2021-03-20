@@ -22,7 +22,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <algorithm>
 #include <memory>
-#include <ctypes.h>
+#include <ctype.h>
 
 #include <wx/datstrm.h>
 #include <wx/gauge.h>
