@@ -22,7 +22,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <algorithm>
 #include <memory>
-#include <ctype.h>
+#include <cctype>
 
 #include <wx/datstrm.h>
 #include <wx/gauge.h>
@@ -7952,7 +7952,7 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 		pySAM_name = pySAM_name.substr(0, pySAM_name.Find("_") + 1) + pySAM_name.Mid(pos + 1);
 	}
 	pySAM_name.Replace('.', '_');
-    pySAM_name = format_as_variable(pySAM_name);
+    pySAM_name = format_as_variable(pySAM_name.ToStdString());
 
 	switch (type)
 	{
