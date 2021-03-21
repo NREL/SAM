@@ -11,13 +11,8 @@
 #include "SAM_TroughPhysicalProcessHeat.h"
 
 SAM_EXPORT int SAM_TroughPhysicalProcessHeat_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("trough_physical_process_heat", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("trough_physical_process_heat", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Weather_azimuth_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

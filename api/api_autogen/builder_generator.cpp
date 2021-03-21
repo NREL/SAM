@@ -173,7 +173,7 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
         }
         else{
             // regular values
-            std::string var_symbol = remove_periods(vd.name);
+            std::string var_symbol = format_as_variable(vd.name);
             if ( var_type == 1 || var_type == 3) {
                 auto it = m_vardefs.find(vd.group);
                 if (it == m_vardefs.end()){
@@ -421,7 +421,7 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
                 continue;
 
             if (!first) json << ",";
-            json << "\n\t\t\t\"" + remove_periods(var_symbol) + "\": ";
+            json << "\n\t\t\t\"" + format_as_variable(var_symbol) + "\": ";
             json << ssc_value_to_json(v.type_n, vv);
 
 

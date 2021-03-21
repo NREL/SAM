@@ -73,13 +73,13 @@ std::string get_params_str(const std::string &doc){
     size_t startpos = doc.find("Input:");
     startpos = doc.find("\\n", startpos);
     size_t endpos = doc.find("Output:");
-    startpos = doc.find("'", startpos+2);
+    startpos = doc.find('\'', startpos+2);
     while (startpos < endpos){
         if (params.length() > 0)
             params += ", ";
-        size_t word_end = doc.find("'", startpos+1);
+        size_t word_end = doc.find('\'', startpos+1);
         params += doc.substr(startpos+1, word_end - startpos - 1);
-        startpos = doc.find("'", doc.find("\\n", word_end));
+        startpos = doc.find('\'', doc.find("\\n", word_end));
     }
     return params;
 }
@@ -398,18 +398,20 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                     }
                 }
 
-                if (!vd.downstream.empty()) {
-                    doc += "\\n\\n";
-                    doc += "*Changes to this variable may require updating the values of the following*: \\n";
-                    for (const auto & ds: vd.downstream)
-                        doc += "\\t - " + ds + "\\n";
-                }
+                if (tech_symbol != "TcsmoltenSalt") {
+                    if (!vd.downstream.empty()) {
+                        doc += "\\n\\n";
+                        doc += "*Changes to this variable may require updating the values of the following*: \\n";
+                        for (const auto &ds: vd.downstream)
+                            doc += "\\t - " + ds + "\\n";
+                    }
 
-                if (!vd.upstream.empty()) {
-                    doc += "\\n\\n";
-                    doc += "*This variable may need to be updated if the values of the following have changed*: \\n";
-                    for (const auto & ds: vd.upstream)
-                        doc += "\\t - " + ds + "\\n";
+                    if (!vd.upstream.empty()) {
+                        doc += "\\n\\n";
+                        doc += "*This variable may need to be updated if the values of the following have changed*: \\n";
+                        for (const auto &ds: vd.upstream)
+                            doc += "\\t - " + ds + "\\n";
+                    }
                 }
 
                 fx_file << "(setter)" << group_symbol << "_set_" << var_symbol << ",\n";
@@ -538,10 +540,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\tPySAM_has_error(error);\n\t}\n";
 
     if (stateful) {
-        fx_file << "\tif (!self->cmod_ptr) {\n"
-                   "\tSAM_error error = new_error();\n"
-                   "\tSAM_module_destruct(self->cmod_ptr, &error);\n"
-                   "\tPySAM_has_error(error);\n\t}\n";
+        fx_file << "\tif (self->cmod_ptr) {\n"
+                   "\t\tSAM_error error = new_error();\n"
+                   "\t\tSAM_module_destruct(self->cmod_ptr, &error);\n"
+                   "\t\tPySAM_has_error(error);\n\t}\n";
     }
 
     fx_file << "\tPyObject_Del(self);\n"
@@ -605,9 +607,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     // define fx to set or get a ssc variable by name
     fx_file << "static PyObject *\n"
             << tech_symbol << "_value(" << object_type << " *self, PyObject *args)\n"
-                              "{\n"
-                              "\treturn " << cmod_type << "_value(self, args);\n"
-                              "}\n\n";
+                              "{\n\treturn " << cmod_type << "_value(self, args);\n}\n\n";
+
+    fx_file << "static PyObject *\n"
+            << tech_symbol << "_unassign(" << object_type << " *self, PyObject *args)\n"
+                              "{\n\treturn " << cmod_type << "_unassign(self, args);\n}\n\n";
 
     fx_file << "static PyMethodDef " << tech_symbol << "_methods[] = {\n";
 
@@ -616,7 +620,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                    "\t\t\t\tPyDoc_STR(\"setup() -> None\\n Setup parameters in simulation\")},\n";
     }
 
-    fx_file << "\t\t{\"execute\",            (PyCFunction)" << tech_symbol << "_execute,  METH_VARARGS,\n"
+    fx_file << "\t\t{\"execute\",           (PyCFunction)" << tech_symbol << "_execute,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"execute(int verbosity) -> None\\n Execute simulation with verbosity level 0 (default) or 1\")},\n"
                "\t\t{\"assign\",            (PyCFunction)" << tech_symbol << "_assign,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from nested dictionary, except for Outputs\\n\\n"
@@ -625,7 +629,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t{\"export\",            (PyCFunction)" << tech_symbol << "_export,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into nested dictionary\")},\n"
                "\t\t{\"value\",             (PyCFunction)" << tech_symbol << "_value, METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"value(name, optional value) -> Union[None, float, dict, sequence, str]\\n Get or set by name a value in any of the variable groups.\")},\n";;
+               "\t\t\t\tPyDoc_STR(\"value(name, optional value) -> Union[None, float, dict, sequence, str]\\n Get or set by name a value in any of the variable groups.\")},\n"
+               "\t\t{\"unassign\",          (PyCFunction)" << tech_symbol << "_unassign, METH_VARARGS,\n"
+               "\t\t\t\tPyDoc_STR(\"unassign(name) -> None\\n Unassign a value in any of the variable groups.\")},\n";
 
     // add ssc equations as methods under the cmod class
     auto cmod_it = root->m_eqn_entries.find(cmod_symbol);
@@ -738,8 +744,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\trv = new" << tech_symbol << "Object((void*)ptr);\n"
                "\tif (rv == NULL)\n"
                "\t\treturn NULL;\n\n"
-               "\trv->data_owner_ptr = NULL;\n"
-               "\treturn (PyObject *)rv;\n"
+               "\trv->data_owner_ptr = NULL;\n";
+    if (stateful) {
+        fx_file << "\trv->cmod_ptr = NULL;\n";
+    }
+    fx_file << "\treturn (PyObject *)rv;\n"
                "}\n\n";
 
     // defaults loading fx
@@ -758,9 +767,13 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\treturn NULL;\n"
                "\n"
                "\trv->data_owner_ptr = NULL;\n"
-               "\tPySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", def);\n"
-               "\n"
-               "\treturn (PyObject *)rv;\n"
+               "\tif (PySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", def) < 0) {\n"
+               "\t\t" << tech_symbol << "_dealloc(rv);\n\t\treturn NULL;\n\t}"
+               "\n";
+    if (stateful) {
+        fx_file << "\trv->cmod_ptr = NULL;\n";
+    }
+    fx_file << "\treturn (PyObject *)rv;\n"
                "}\n\n";
 
     // creating module from shared ssc data with defaults fx
@@ -788,8 +801,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\trv = new" << tech_symbol << "Object((void*)ptr);\n"
                "\tif (rv == NULL)\n"
                "\t\tgoto fail;\n"
-               "\trv->data_owner_ptr = module;\n"
-               "\tif (!def)\n"
+               "\trv->data_owner_ptr = module;\n";
+    if (stateful) {
+        fx_file << "\trv->cmod_ptr = NULL;\n";
+    }
+    fx_file << "\tif (!def)\n"
                "\t\treturn (PyObject *)rv;\n"
                "\tPySAM_load_defaults((PyObject*)rv, rv->x_attr, rv->data_ptr, \"" << cmod_symbol << "\", def);\n"
                "\treturn (PyObject *)rv;\n"
@@ -930,11 +946,40 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << cmod_doc;
 
+    if (tech_symbol != "TcsmoltenSalt") {
+        fx_file << "Input Consistency Warning\n"
+                   "==================================\n"
+                   "\n"
+                   "As described in :ref:`Possible Problems <possible_problems>`, some input parameters are interdependent but the equations \n"
+                   "that enforce consistency are not available in this PySAM module. Therefore,\n"
+                   "the onus is on the PySAM user to check that interdependencies are correctly handled. The variables which may require\n"
+                   "additional logic include:\n\n";
+
+        std::set<std::string> dependent_vars;
+        for (const auto& i : root->vardefs_order) {
+            auto mm = root->m_vardefs.find(i);
+            std::map<std::string, var_def> vardefs = mm->second;
+            for (auto& it : vardefs) {
+                std::string var_symbol = it.first;
+                var_def vd = it.second;
+
+                for (const auto & ds: vd.downstream)
+                    dependent_vars.insert(ds);
+
+                for (const auto & ds: vd.upstream)
+                    dependent_vars.insert(ds);
+            }
+        }
+
+        for (const auto& i : dependent_vars)
+            fx_file << " - " << i << "\n";
+
+        fx_file << "\n"
+                   "Provided for each of these inputs is a list of other inputs that are potentially interdependent. \n\n";
+    }
+
     fx_file << "Creating an Instance\n===================================\n\n"
-               "There are three methods to create a new instance of a PySAM module. Using ``default`` populates the new"
-               "class' attributes with default values specific to a ``config``. Each technology-financial"
-               "configuration corresponds to a SAM GUI configuration. Using ``new`` creates an instance with empty "
-               "attributes. The ``wrap`` function allows compatibility with PySSC, for details, refer to :doc:`../PySSC`.\n\n"
+               "Refer to the :ref:`Initializing a Model <initializing>` page for details on the different ways to create an instance of a PySAM class.\n\n"
                "**" << tech_symbol << " model description**\n\n";
 
     fx_file << ".. automodule:: PySAM." << tech_symbol << "\n";
@@ -949,7 +994,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         std::string module_symbol = format_as_symbol(mm->first);
 
-        fx_file << module_symbol << " Group\n===================================\n\n";
+        if (module_symbol == "Outputs" && mm->second.empty())
+            continue;
+
+        fx_file << module_symbol << " Group\n======================================================\n\n";
         fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
         fx_file << "\t:members:\n\n";
     }
@@ -994,7 +1042,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
         fx_file << "\tdef assign(self): \n"
                    "\t\tpass\n"
                    "\n"
-                   "\tdef export(self) -> Dict[Dict]:\n"
+                   "\tdef export(self) -> dict:\n"
                    "\t\tpass\n"
                    "\n"
                    "\tdef __init__(self, *args, **kwargs): \n"
@@ -1014,6 +1062,8 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         for (const auto& it : vardefs) {
             std::string var_symbol = it.first;
+            if (var_symbol == "global")
+                continue;
             fx_file << "\t" << var_symbol << " = " << statictype_str[it.second.type_n] << "\n";
         }
         fx_file << "\n\n";
@@ -1024,6 +1074,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\tpass\n"
                "\n"
                "\tdef value(self, name, value=None):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef unassign(self, name):\n"
                "\t\tpass\n"
                "\n"
                "\tdef execute(self, int_verbosity):\n"

@@ -11,13 +11,8 @@
 #include "SAM_Layoutarea.h"
 
 SAM_EXPORT int SAM_Layoutarea_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("layoutarea", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("layoutarea", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Layoutarea_Common_positions_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{

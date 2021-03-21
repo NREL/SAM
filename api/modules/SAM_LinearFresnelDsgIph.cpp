@@ -11,13 +11,8 @@
 #include "SAM_LinearFresnelDsgIph.h"
 
 SAM_EXPORT int SAM_LinearFresnelDsgIph_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("linear_fresnel_dsg_iph", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("linear_fresnel_dsg_iph", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_LinearFresnelDsgIph_Weather_file_name_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{

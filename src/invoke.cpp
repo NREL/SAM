@@ -179,8 +179,8 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	// this information is consistent with the variable definitions in the wfreader module
 	wfvec vars[] = {
 		{ "beam", "Beam irradiance - DNI", "W/m2" },
-		{ "diffuse","Diffuse irradiance - DHI", "W/m2" },
-		{ "global", "Global irradiance - GHI", "W/m2" },
+		{ "diff","Diffuse irradiance - DHI", "W/m2" },
+		{ "glob", "Global irradiance - GHI", "W/m2" },
 		{ "poa", "Plane of array irradiance -POA", "W/m2" },
 		{ "wspd", "Wind speed", "m/s" },
 		{ "wdir", "Wind direction", "deg" },
