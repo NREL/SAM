@@ -1,6 +1,6 @@
 Battery Bank Sizing
 1052
-235
+228
 15
 GroupBox
 
@@ -45,7 +45,7 @@ X
 867
 Y
 3
-57
+111
 Width
 3
 90
@@ -107,7 +107,7 @@ X
 867
 Y
 3
-84
+138
 Width
 3
 90
@@ -169,7 +169,7 @@ X
 591
 Y
 3
-57
+111
 Width
 3
 90
@@ -231,7 +231,7 @@ X
 591
 Y
 3
-111
+165
 Width
 3
 90
@@ -293,7 +293,7 @@ X
 591
 Y
 3
-84
+138
 Width
 3
 90
@@ -355,7 +355,7 @@ X
 174
 Y
 3
-84
+138
 Width
 3
 90
@@ -417,7 +417,7 @@ X
 330
 Y
 3
-84
+138
 Width
 3
 54
@@ -451,7 +451,7 @@ X
 174
 Y
 3
-57
+111
 Width
 3
 90
@@ -513,7 +513,7 @@ X
 330
 Y
 3
-57
+111
 Width
 3
 54
@@ -547,7 +547,7 @@ X
 591
 Y
 3
-138
+192
 Width
 3
 90
@@ -609,7 +609,7 @@ X
 390
 Y
 3
-84
+138
 Width
 3
 198
@@ -657,7 +657,7 @@ X
 390
 Y
 3
-57
+111
 Width
 3
 198
@@ -702,16 +702,16 @@ Name
 batt_size_choice
 X
 3
-57
+24
 Y
 3
-18
+57
 Width
 3
-714
+294
 Height
 3
-32
+53
 Tool Tip
 5
 0
@@ -728,7 +728,7 @@ ShowCaptions
 1
 Horizontal
 2
-1
+0
 TabOrder
 3
 1
@@ -742,23 +742,23 @@ Name
 batt_size_label
 X
 3
-12
+27
 Y
 3
-165
+18
 Width
 3
 1029
 Height
 3
-51
+36
 Tool Tip
 5
 0
 Caption
 5
-184
-Bank capacity and power fields are values measured before conversion and parasitic losses.  If specified in AC, the DC/AC conversion efficiency will be used to scale the battery size. 
+227
+Specify desired values for the nominal bank capacity and power for SAM to calculate the number of cells and strings, or specify the number of cells and strings yourself. Verify the battery size under Current and Capacity below.
 TextColour
 4
 0

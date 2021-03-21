@@ -832,7 +832,7 @@ batt_Cp
 1
 Specific heat Cp
 J/KgK
-BatteryCell
+Battery Thermal
 0
 2
 1
@@ -846,7 +846,7 @@ batt_h_to_ambient
 1
 Heat transfer coefficient h
 W/m2K
-BatteryCell
+Battery Thermal
 0
 2
 1
@@ -860,7 +860,7 @@ batt_mass
 1
 Battery mass
 kg
-BatteryCell
+Battery Thermal
 0
 8
 1
@@ -874,7 +874,7 @@ batt_room_temperature_celsius
 2
  Calculated environment temperature
 C
-BatteryCell
+Battery Thermal
 0
 8
 1
@@ -888,7 +888,7 @@ batt_room_temperature_single
 1
 Single environment temperature
 C
-BatteryCell
+Battery Thermal
 23
 Environment temperature
 2
@@ -903,7 +903,7 @@ batt_room_temperature_vector
 2
 Time series environment temperature
 C
-BatteryCell
+Battery Thermal
 17
 Temperature (C)|1
 0
@@ -918,7 +918,7 @@ batt_specific_energy_per_mass
 1
 Specific energy per mass
 Wh/kg
-BatteryCell
+Battery Thermal
 0
 2
 1
@@ -932,7 +932,7 @@ batt_specific_energy_per_volume
 1
 Specific energy per volume
 Wh/L
-BatteryCell
+Battery Thermal
 0
 2
 1
@@ -946,7 +946,7 @@ batt_surface_area
 1
 Battery surface area
 m
-BatteryCell
+Battery Thermal
 0
 10
 1
@@ -960,7 +960,7 @@ batt_thermal_choice
 1
 Environment temp option
  
-BatteryCell
+Battery Thermal
 97
 Use weather file ambient temperature|Enter single fixed temperature|Enter time series temperature
 0
@@ -975,7 +975,7 @@ batt_volume
 1
 Battery volume
 m3
-BatteryCell
+Battery Thermal
 0
 8
 1
@@ -989,7 +989,7 @@ cap_vs_temp
 3
 Capacity vs temperature
  
-BatteryCell
+Battery Thermal
 0
 1
 1

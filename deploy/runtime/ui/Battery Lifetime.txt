@@ -854,7 +854,7 @@ batt_calendar_a
 1
 a
 1/sqrt(day)
-BatteryCell
+Battery Lifetime
 0
 2
 1
@@ -868,7 +868,7 @@ batt_calendar_b
 1
 b
 K
-BatteryCell
+Battery Lifetime
 0
 2
 1
@@ -882,7 +882,7 @@ batt_calendar_c
 1
 c
 K
-BatteryCell
+Battery Lifetime
 0
 2
 1
@@ -896,7 +896,7 @@ batt_calendar_choice
 1
 Calendar degradation options
  
-BatteryCell
+Battery Lifetime
 29
 None|Lithium-ion model|Custom
 3
@@ -911,7 +911,7 @@ batt_calendar_lifetime_matrix
 3
 Calendar lifetime matrix
  
-BatteryCell
+Battery Lifetime
 0
 3
 1
@@ -928,7 +928,7 @@ batt_calendar_q0
 1
 q0
 fraction
-BatteryCell
+Battery Lifetime
 0
 0
 1
@@ -942,7 +942,7 @@ batt_lifetime_matrix
 3
 Lifetime matrix
  
-BatteryCell
+Battery Lifetime
 0
 3
 1

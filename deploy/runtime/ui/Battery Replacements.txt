@@ -179,7 +179,7 @@ batt_replacement_capacity
 1
 Battery bank replacement threshold
 % capacity
-BatterySystem
+Battery Replacements
 0
 2
 1
@@ -193,7 +193,7 @@ batt_replacement_option
 1
 Battery replacement options
  
-BatterySystem
+Battery Replacements
 75
 No replacements|Replace at specified capacity|Replace at specified schedule
 3
@@ -208,7 +208,7 @@ batt_replacement_schedule_percent
 2
 Battery bank replacement schedule (%/year)
  
-BatterySystem
+Battery Replacements
 21
 Replace in Year (%)|2
 0
