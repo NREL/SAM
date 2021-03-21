@@ -787,7 +787,7 @@ Name
 thermal_model_label5
 X
 3
-18
+15
 Y
 3
 21

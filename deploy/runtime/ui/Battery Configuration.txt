@@ -104,7 +104,7 @@ Name
 batt_ac_or_dc
 X
 3
-30
+26
 Y
 3
 48
@@ -563,15 +563,15 @@ PV inverter nominal efficiency
 0
 Numeric
 
-372
+374
 equations{'batt_ui_inverter_eff'} = define() {
-	if ( technology() == 'Generic Battery' ) { return 0; }	
+	if ( technology() == 'Generic Battery' ) { return 96; }	
 	inv_model = ${inverter_model};
 	if (inv_model == 0){ return ${inv_snl_eff_cec};		}
 	elseif (inv_model == 1) { return ${inv_ds_eff}; }
 	elseif (inv_model == 2) { return ${inv_pd_eff}; }
 	elseif (inv_model == 3) { return ${inv_cec_cg_eff_cec}; }
-	else { return 0; } 
+	else { return 96; } 
 };
 1478
 on_load{'Battery Configuration'} = define()

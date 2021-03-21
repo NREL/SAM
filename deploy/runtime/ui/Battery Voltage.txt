@@ -726,10 +726,10 @@ Name
 batt_voltage_choice
 X
 3
-30
+27
 Y
 3
-87
+81
 Width
 3
 339
@@ -888,7 +888,7 @@ Width
 357
 Height
 3
-36
+54
 Tool Tip
 5
 0
@@ -926,10 +926,10 @@ Name
 object 7
 X
 3
-24
+15
 Y
 3
-27
+21
 Width
 3
 975
@@ -1129,11 +1129,13 @@ Depth of discharge [%]| Cell voltage [V]
 
 DataMatrix
 
-162
-equations{'batt_ui_bank_voltage'} = define() { return ${batt_computed_voltage}; };
+164
+equations{'batt_ui_bank_voltage'} = define() 
+{ return ${batt_computed_voltage}; };
 
-equations{'batt_ui_cell_voltage'} = define() { return ${batt_Vnom_default}; };
-6853
+equations{'batt_ui_cell_voltage'} = define() 
+{ return ${batt_Vnom_default}; };
+7024
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice( false );
@@ -1186,13 +1188,14 @@ function set_voltage_choice( is_update_default )
 	is_electrochemical = value('batt_voltage_choice') == 0;
 	is_vanadium_flow = value('batt_chem') == 2;
 	enable('batt_voltage_matrix', !is_electrochemical);
-	enable('batt_Vnom', is_electrochemical);
+	// vanadium flow model only uses nominal voltage as input
+	enable('batt_Vnom', is_electrochemical && !is_vanadium_flow);
 	enable('batt_C_rate', is_electrochemical && !is_vanadium_flow );
 	enable('batt_Vfull', is_electrochemical && !is_vanadium_flow);
 	enable('batt_Vexp', is_electrochemical && !is_vanadium_flow);
 	enable('batt_Qexp_percent', is_electrochemical && !is_vanadium_flow);
 	enable('batt_Qnom_percent', is_electrochemical && !is_vanadium_flow);
-	if ( is_vanadium_flow ) { msg = 'For Vanadium redox flow batteries, enter the voltage at 50% SOC.'; }
+	if ( is_vanadium_flow ) { msg = 'The Electrochemical model for Vanadium redox flow batteries requires only the nominal voltage as input. Use the voltage at 50% SOC for the nominal voltage.'; }
 	property('lbl_vanadium_flow','Caption',msg);
 	/*
 	if ( value('batt_voltage_choice') == 0 )

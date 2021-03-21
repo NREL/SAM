@@ -104,7 +104,7 @@ Name
 batt_replacement_option
 X
 3
-39
+26
 Y
 3
 24

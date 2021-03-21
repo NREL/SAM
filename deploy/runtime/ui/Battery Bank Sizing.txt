@@ -702,16 +702,16 @@ Name
 batt_size_choice
 X
 3
-24
+26
 Y
 3
-57
+60
 Width
 3
 294
 Height
 3
-53
+50
 Tool Tip
 5
 0
@@ -742,10 +742,10 @@ Name
 batt_size_label
 X
 3
-27
+15
 Y
 3
-18
+21
 Width
 3
 1029

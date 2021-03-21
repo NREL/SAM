@@ -1,6 +1,6 @@
 Battery Ancillary Losses
-1052
-190
+1051
+181
 8
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 1042
 Height
 3
-185
+173
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 batt_loss_choice
 X
 3
-42
+26
 Y
 3
-81
+72
 Width
 3
 252
@@ -82,10 +82,10 @@ Name
 batt_losses
 X
 3
-486
+477
 Y
 3
-156
+147
 Width
 3
 90
@@ -119,10 +119,10 @@ Name
 batt_losses_charging
 X
 3
-486
+477
 Y
 3
-84
+75
 Width
 3
 90
@@ -149,10 +149,10 @@ Name
 batt_losses_discharging
 X
 3
-486
+477
 Y
 3
-108
+99
 Width
 3
 90
@@ -179,10 +179,10 @@ Name
 batt_losses_idle
 X
 3
-486
+477
 Y
 3
-132
+123
 Width
 3
 90
@@ -212,7 +212,7 @@ X
 15
 Y
 3
-30
+21
 Width
 3
 1008
