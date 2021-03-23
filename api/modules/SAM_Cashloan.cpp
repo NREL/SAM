@@ -11,13 +11,8 @@
 #include "SAM_Cashloan.h"
 
 SAM_EXPORT int SAM_Cashloan_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("cashloan", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("cashloan", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Cashloan_FinancialParameters_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

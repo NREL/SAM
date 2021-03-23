@@ -1,5 +1,5 @@
 1
-681
+684
 LeadAcid_q10
 1
 1
@@ -233,6 +233,12 @@ batt_Qnom_percent
 1
 1
 88.9
+batt_Vcut
+1
+1
+1
+1
+2.706
 batt_Vexp
 1
 1

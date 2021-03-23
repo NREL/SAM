@@ -14,10 +14,10 @@
 			"real_discount_rate": 6.4,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 215
+			"system_capacity": 540
 		},
 		"SystemCosts": {
-			"om_capacity": [16.000000],
+			"om_capacity": [19.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -27,7 +27,7 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [500.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 351507
+			"total_installed_cost": 928396
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],

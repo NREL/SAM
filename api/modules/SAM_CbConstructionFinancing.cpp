@@ -11,13 +11,8 @@
 #include "SAM_CbConstructionFinancing.h"
 
 SAM_EXPORT int SAM_CbConstructionFinancing_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("cb_construction_financing", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("cb_construction_financing", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

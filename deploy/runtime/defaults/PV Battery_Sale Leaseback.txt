@@ -1,5 +1,5 @@
 1
-1033
+1037
 6par_aisc
 1
 1
@@ -424,6 +424,12 @@ batt_Qnom_percent
 1
 1
 97.6875
+batt_Vcut
+1
+1
+1
+1
+2.772
 batt_Vexp
 1
 1
