@@ -22,6 +22,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <algorithm>
 #include <memory>
+#include <cctype>
 
 #include <wx/datstrm.h>
 #include <wx/gauge.h>
@@ -7651,6 +7652,42 @@ CodeGen_pySAM::CodeGen_pySAM(Case* cc, const wxString& folder) : m_case(cc), m_f
 	wxFileName::SplitPath(m_fullpath, &m_folder, &m_name, &m_ext);
 }
 
+std::string format_as_variable(std::string str){
+    std::replace(str.begin(), str.end(), '.', '_');
+    int first = str.substr(0, 1).c_str()[0];
+    if (isdigit(first)) {
+        std::string remaining = str.substr(1);
+        switch (first) {
+            case 48:
+                return "zero" + remaining;
+            case 49:
+                return "one" + remaining;
+            case 50:
+                return "two" + remaining;
+            case 51:
+                return "three" + remaining;
+            case 52:
+                return "four" + remaining;
+            case 53:
+                return "five" + remaining;
+            case 54:
+                return "six" + remaining;
+            case 55:
+                return "seven" + remaining;
+            case 56:
+                return "eight" + remaining;
+            case 57:
+                return "nine" + remaining;
+            default:
+                throw std::runtime_error("Unrecognized digit");
+        }
+    }
+    else {
+        if (!isalpha(first) && first != 95 /* "_" */)
+            throw std::runtime_error("Variable must begin with alphanumeric character or '_'.");
+    }
+    return str;
+}
 
 bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 {
@@ -7915,7 +7952,7 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 		pySAM_name = pySAM_name.substr(0, pySAM_name.Find("_") + 1) + pySAM_name.Mid(pos + 1);
 	}
 	pySAM_name.Replace('.', '_');
-
+    pySAM_name = format_as_variable(pySAM_name.ToStdString());
 
 	switch (type)
 	{
@@ -8174,7 +8211,6 @@ bool CodeGen_pySAM::SupportingFiles()
 
 bool CodeGen_pySAM::Footer()
 {
-	fprintf(m_fp, "	\"number_inputs\" : %d\n", m_num_inputs);
 	fprintf(m_fp, "}\n");
 	return true;
 }

@@ -1,5 +1,5 @@
 1
-1008
+1005
 6par_aisc
 1
 1
@@ -1165,21 +1165,7 @@ cap_vs_temp
 30 103.1 
 45 105.4 
 
-capex_ac_warning_message
-1
-4
-0
-capex_dc_warning_message
-1
-4
-9
-<invalid>
-capex_land_warning_message
-1
-4
-9
-<invalid>
-capex_table_ac_cost_per_kw
+capex_table_ac_cost_per_w
 1
 1
 1
@@ -1225,7 +1211,7 @@ capex_table_batt_inputs
 2399 1030 196 
 2400 1120 192 
 
-capex_table_cost_per_kw
+capex_table_cost_per_w
 1
 1
 1
@@ -1246,7 +1232,7 @@ capex_table_dc_inputs
 2000000 0.95 
 2000000 0.94 
 
-capex_table_land_cost_per_kw
+capex_table_land_cost_per_acre
 1
 1
 1

@@ -9,12 +9,14 @@
             "Vfull": 4.1,
             "Vnom": 3.4,
             "Vnom_default": 3.6,
+            "Vcut": 2.706,
             "calendar_a": 0.0033143,
             "calendar_b": -3191,
             "calendar_c": 389.7,
             "calendar_choice": 1.0,
             "calendar_q0": 0.999,
             "chem": 1,
+            "life_model": 0,
             "cycling_matrix": [
                 [
                     100,

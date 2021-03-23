@@ -42,7 +42,7 @@ struct function_builder{
 
 std::string indent(std::string s, size_t n = 1);
 
-std::string remove_periods(std::string str);
+std::string format_as_variable(std::string str);
 
 std::string format_as_symbol(std::string s);
 

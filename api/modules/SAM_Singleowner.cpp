@@ -11,13 +11,8 @@
 #include "SAM_Singleowner.h"
 
 SAM_EXPORT int SAM_Singleowner_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("singleowner", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("singleowner", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

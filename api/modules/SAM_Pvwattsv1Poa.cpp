@@ -11,13 +11,8 @@
 #include "SAM_Pvwattsv1Poa.h"
 
 SAM_EXPORT int SAM_Pvwattsv1Poa_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("pvwattsv1_poa", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("pvwattsv1_poa", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Pvwattsv1Poa_Weather_beam_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{

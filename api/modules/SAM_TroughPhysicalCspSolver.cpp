@@ -11,13 +11,8 @@
 #include "SAM_TroughPhysicalCspSolver.h"
 
 SAM_EXPORT int SAM_TroughPhysicalCspSolver_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("trough_physical_csp_solver", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("trough_physical_csp_solver", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_TroughPhysicalCspSolver_Weather_azimuth_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

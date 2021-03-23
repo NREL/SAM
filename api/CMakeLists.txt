@@ -71,6 +71,10 @@ else()
     endif()
 endif()
 
+if(APPLE)
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=10.9" )
+endif()
+
 
 
 #####################################################################################################################

@@ -11,13 +11,8 @@
 #include "SAM_Pvsandiainv.h"
 
 SAM_EXPORT int SAM_Pvsandiainv_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("pvsandiainv", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("pvsandiainv", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Pvsandiainv_SandiaInverterModel_c0_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

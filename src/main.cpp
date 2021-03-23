@@ -484,7 +484,7 @@ void MainWindow::ImportCases()
 			if ( !upgd.Run( prj ) )
 				wxMessageBox("Error upgrading older project file:\n\n", file );
 		}
-        
+
 		upgd.ShowReportDialog( file, true );
 	}
 
@@ -994,7 +994,7 @@ bool MainWindow::LoadProject( const wxString &file )
 		return false;
 
 	ProjectFile pf;
-	// tell user to save and check file if issue 
+	// tell user to save and check file if issue
 	if (!pf.ReadArchive(file))
 		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
 
@@ -2115,7 +2115,7 @@ extern void RegisterReportObjectTypes();
 			if (lksw->Load(argv[2])) lksw->RunScript();
 		}
 	}
-	
+
     LoadPythonConfig();
 
     return true;
@@ -2807,7 +2807,9 @@ std::string SamApp::GetPythonConfigPath(){
 void SamApp::LoadPythonConfig(){
     pythonConfig = ReadPythonConfig(GetPythonConfigPath() + "/python_config.json");
     if (CheckPythonInstalled(pythonConfig)){
-        set_python_path(GetPythonConfigPath().c_str());
+        std::string python_path = GetPythonConfigPath();
+        if (!set_python_path(python_path.c_str()))
+            throw std::runtime_error("set_python_path error for directory " + python_path);
         return;
     }
 }
@@ -2827,7 +2829,8 @@ void SamApp::InstallPython() {
     auto python_path = GetPythonConfigPath();
     // already installed and correctly configured
     if (CheckPythonInstalled(pythonConfig)){
-        set_python_path(python_path.c_str());
+        if (!set_python_path(python_path.c_str()))
+            throw std::runtime_error("set_python_path error for directory " + python_path);
         return;
     }
 

@@ -1,7 +1,7 @@
 PV Capex Table
 830
 379
-13
+14
 GroupBox
 
 1
@@ -619,6 +619,54 @@ Name
 object 76
 X
 3
+486
+Y
+3
+330
+Width
+3
+39
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+3
+Wdc
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 761
+X
+3
 306
 Y
 3
@@ -658,26 +706,13 @@ AlignTop
 2
 0
 
-5
-capex_dc_warning_message
-3
 4
- 
- 
- 
-0
-0
-1
-4
-9
-<invalid>
-Label
-capex_table_cost_per_kw
+capex_table_cost_per_w
 3
 1
-Cost per kw
- 
- 
+DC cost per Watt
+ $/Wdc
+Capital Costs
 0
 9
 1
@@ -706,9 +741,9 @@ DataMatrix
 capex_table_total_installed_dc_cost
 3
 1
- 
- 
- 
+Total installed DC cost
+$
+Capital Costs
 0
 9
 1
@@ -720,11 +755,11 @@ Default
 modulearray_power_w
 3
 1
- 
+Array system size
 Wdc
- 
+Capital Costs
 0
-8
+9
 1
 1
 1
@@ -738,7 +773,7 @@ equations{'modulearray_power_w'} = define() {
 };
 
 
-6765
+6761
 function capex_table_dc_inputs_update_plot()
 {
 	Cap = [];
@@ -753,7 +788,7 @@ function capex_table_dc_inputs_update_plot()
 		
 	sys_cap_bin[0] = sys_cap;
 	sys_cap_bin[1] = -1000000;
-	sys_cost_bin[0] = ${capex_table_cost_per_kw};
+	sys_cost_bin[0] = ${capex_table_cost_per_w};
 	sys_cost_bin[1] = -1000000;
 	
 	curves = [ [ 1000, 25, 'black' ],
@@ -903,7 +938,7 @@ function interpolate_dc_capex_table()
 	if (nc == 1) {
 		cost = 0;
 		total_cost = cost*sys_cap;
-		value("capex_table_cost_per_kw", cost);
+		value("capex_table_cost_per_w", cost);
 		value("capex_table_total_installed_dc_cost",total_cost);
 		property('capex_dc_warning_message', 'Caption', 'The cost table must have two columns: Capacity (Wdc) and DC Costs ($/Wdc).');
 		exit;
@@ -936,7 +971,7 @@ function interpolate_dc_capex_table()
 
 	}
 	total_cost = cost*sys_cap;
-	value("capex_table_cost_per_kw", cost);
+	value("capex_table_cost_per_w", cost);
 	value("capex_table_total_installed_dc_cost",total_cost);
 	//value("total_installed_cost", total_cost);
 	refresh();
@@ -971,7 +1006,7 @@ function interpolate_dc_capex_table()
 		total_direct_cost = (cost)*sys_cap;
 		total_indirect_cost = (ind_cost)*sys_cap;
 		total_cost = total_direct_cost + total_indirect_cost;
-		value("capex_table_cost_per_kw", total_cost/sys_cap);
+		value("capex_table_cost_per_w", total_cost/sys_cap);
 		value("capex_table_total_direct_cost",total_direct_cost);
 		value("capex_table_total_indirect_cost",total_indirect_cost);
 		value("capex_table_total_installed_cost",total_cost);

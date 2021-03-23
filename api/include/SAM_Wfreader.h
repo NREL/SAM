@@ -67,9 +67,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_Wfreader_Outputs_annual_beam_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Wfreader_Outputs_annual_diffuse_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Wfreader_Outputs_annual_diff_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Wfreader_Outputs_annual_global_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Wfreader_Outputs_annual_glob_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Wfreader_Outputs_annual_snow_nget(SAM_table ptr, SAM_error *err);
 
@@ -87,13 +87,13 @@ extern "C"
 
 	SAM_EXPORT const char* SAM_Wfreader_Outputs_description_sget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Wfreader_Outputs_diffuse_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Wfreader_Outputs_diff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Wfreader_Outputs_elev_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_Wfreader_Outputs_format_sget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Wfreader_Outputs_global_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Wfreader_Outputs_glob_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Wfreader_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err);
 

@@ -4,11 +4,12 @@
             "Vnom_default": 2,
             "Qfull": 30,
             "leadacid_q20": 100,
-            "leadacid_q10": 43, 
+            "leadacid_q10": 43,
             "leadacid_qn": 40,
             "leadacid_tn": 1,
             "calendar_choice": 0,
             "chem": 0,
+            "life_model": 0,
             "cycling_matrix": [
                 [
                     100,
