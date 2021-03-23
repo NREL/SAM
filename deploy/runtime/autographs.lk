@@ -24,11 +24,11 @@ function heatmap_graphs()
 	tech = technology();
 	if (tech == "Wind Power") {
 		if (${wind_resource_model_choice} == 0) {
-			agraph( 'annual_energy_distribution_time', 'Year 1 Annual Energy Production (kWh)', 'Month', 'Hour', -1, true, false, 'bottom', 4); 
+			agraph( 'annual_energy_distribution_time', 'Year 1 Annual Energy Production (kWh)', 'Day', 'Hour', -1, true, false, 'bottom', 4); 
 		}
 	}
 	else {
-		agraph( 'annual_energy_distribution_time', 'Year 1 Annual Energy Production (kWh)', 'Month', 'Hour', -1, true, false, 'bottom', 4); 
+		agraph( 'annual_energy_distribution_time', 'Year 1 Annual Energy Production (kWh)', 'Day', 'Hour', -1, true, false, 'bottom', 4); 
 	}
 
 }
