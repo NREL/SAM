@@ -1104,7 +1104,7 @@ void StochasticPanel::OnMenuItem(wxCommandEvent &evt)
 	switch (evt.GetId())
 	{
 	case ID_SHOW_ALL_INPUTS:
-		if (m_dataGrid->GetNumberRows() > m_selected_grid_row && (int) m_sims.size() > m_selected_grid_row)
+		if (m_selected_grid_col > -1 && m_dataGrid->GetNumberRows() > m_selected_grid_row && (int) m_sims.size() > m_selected_grid_row)
 		{
 				new VariableGridFrame(this, &SamApp::Project(), m_case, m_sims[m_selected_grid_row]->GetInputVarTable(), wxString::Format("Inputs for stochastic run %d", m_selected_grid_row + 1));
 		}

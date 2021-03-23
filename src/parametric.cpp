@@ -248,11 +248,11 @@ void ParametricGrid::OnColSort(wxGridEvent& evt)
 				}
 			}
 		}
-		else {
-			// clear sorting 
-			pgd->ClearSorting();
-		}
-
+//		else {
+//			// clear sorting 
+//			pgd->ClearSorting();
+//			AutoSizeColumns();
+//		}
 	}
 	
 }
@@ -268,7 +268,7 @@ enum { ID_SELECT_INPUTS = wxID_HIGHEST+494, ID_SELECT_OUTPUTS, ID_NUMRUNS,
 	ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, 
 	ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, 
 	ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, 
-	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, 
+	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, ID_CLEAR_SORTING,
 	ID_SHOW_ALL_INPUTS, ID_NEW_CASE, ID_QUICK_SETUP, ID_IMPORT, ID_EXPORT_MENU, ID_GEN_LK };
 
 
@@ -292,6 +292,7 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_GEN_LK, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_CLEAR_SORTING, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_CLEAR, ParametricViewer::OnCommand)
 
@@ -300,9 +301,9 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_MENU(ID_OUTPUTMENU_ADD_PLOT, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_REMOVE_PLOT, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_SHOW_DATA, ParametricViewer::OnMenuItem)
-	EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
-	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
-	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
+//	EVT_MENU(ID_OUTPUTMENU_CLIPBOARD, ParametricViewer::OnMenuItem)
+//	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
+//	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_INPUTMENU_FILL_DOWN_SEQUENCE, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_INPUTMENU_FILL_DOWN_EVENLY, ParametricViewer::OnMenuItem)
@@ -675,6 +676,12 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		SendToExcel();
 		break;
 #endif
+	case ID_CLEAR_SORTING:
+		m_grid_data->ClearSorting();
+		UpdateGrid();
+		RemoveAllPlots();
+		AddAllPlots();
+		break;
 	case ID_INPUTMENU_FILL_DOWN_ONE_VALUE:
 		FillDown(1);
 		break;
@@ -1232,7 +1239,7 @@ void ParametricViewer::OnGridColSort(wxGridEvent& evt)
 
 void ParametricViewer::OnGridColLabelRightClick(wxGridEvent & evt)
 {
-		m_selected_grid_col = evt.GetCol();
+	m_selected_grid_col = evt.GetCol();
 	m_selected_grid_row = evt.GetRow();
 	if (m_selected_grid_row < 0)
 	{
@@ -1246,6 +1253,10 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent & evt)
 #ifdef __WXMSW__
 			menu->Append(ID_OUTPUTMENU_EXCEL, _T("Send to Excel"));
 #endif
+			if (m_grid_data->IsSorted()) {
+				menu->AppendSeparator();
+				menu->Append(ID_CLEAR_SORTING, _T("Clear column sorting"));
+			}
 			PopupMenu(menu, point);
 		}
 		else // header with variables
@@ -1300,7 +1311,7 @@ void ParametricViewer::ShowAllData()
 		values_vec.push_back(vec);
 		labels.push_back(wxString::Format("Run %d", row + 1));
 	}
-	ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col), labels, values_vec);
+	ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
 	apd.ShowModal();
 }
 
@@ -1333,9 +1344,9 @@ bool ParametricViewer::Plot(int col, Graph &g)
 				// line plot if single input and contour if two inputs
 				if (m_input_names.Count() == 1) {
 					g.Type = Graph::LINE;
-					g.Size = 3;
+					//g.Size = 3;
 					ret_val = true;
-					g.YLabel = m_grid_data->GetColLabelValue(col);
+					g.YLabel = m_grid_data->GetColLabelValue(col).ToAscii(' ');
 					if (auto pxvv = m_grid_data->GetVarValue(0, 0)) {
 						if (VarInfo* vi = m_grid_data->GetVarInfo(0, 0)) {
 							g.XLabel = vi->Label;
@@ -1355,7 +1366,7 @@ bool ParametricViewer::Plot(int col, Graph &g)
 					g.Type = Graph::CONTOUR;
 					g.Size = 3; // bar size
 					ret_val = true;
-					g.YLabel = m_grid_data->GetColLabelValue(col);
+					g.YLabel = m_grid_data->GetColLabelValue(col).ToAscii(' ');
 					if (auto pxvv = m_grid_data->GetVarValue(0, 0)) {
 						if (VarInfo* vi = m_grid_data->GetVarInfo(0, 0)) {
 							g.XLabel = vi->Label;
@@ -1376,13 +1387,13 @@ bool ParametricViewer::Plot(int col, Graph &g)
 							g.ShowLegend = false;
 						}
 					}
-					g.Title = m_grid_data->GetColLabelValue(col);
+					g.Title = m_grid_data->GetColLabelValue(col).ToAscii(' ');
 				}
 				else { // default behavior in past versions
 					g.Type = Graph::BAR;
 					g.Size = 15; // bar size
 					ret_val = true;
-					g.YLabel = m_grid_data->GetColLabelValue(col);
+					g.YLabel = m_grid_data->GetColLabelValue(col).ToAscii(' ');
 					if (!m_grid_data->GetUnits(col).IsEmpty())
 						g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
 					g.XLabel = "Run number";
@@ -1398,7 +1409,7 @@ bool ParametricViewer::Plot(int col, Graph &g)
 				if (n == 12) // asume monthly
 				{
 					g.Type = Graph::BAR;
-					g.YLabel = m_grid_data->GetColLabelValue(col);
+					g.YLabel = m_grid_data->GetColLabelValue(col).ToAscii(' ');
 					//	if (!m_grid_data->GetUnits(col).IsEmpty())
 					//		g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
 					g.XLabel = "Run number";
@@ -1486,7 +1497,7 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 							&& n == steps_per_hour * 8760)
 						{
 							dv->AddDataSet(new TimeSeriesData(y, n, 1.0 / steps_per_hour, 0.0, // by default not instantaneous values for hourly data
-								m_grid_data->GetColLabelValue(col) + wxString::Format(" : run(%d)", (int)(row + 1)),
+								m_grid_data->GetColLabelValue(col).ToAscii(' ') + wxString::Format(" : run(%d)", (int)(row + 1)),
 								m_grid_data->GetUnits(col)), true);
 							dv->SelectDataSetAtIndex(row);
 						}
@@ -1841,7 +1852,7 @@ wxString ParametricGridData::GetColLabelValue(int col)
 				}
 			}
 		}
-		if (!col_units.IsEmpty())
+		if (col_units.length() > 0 && col_units != " ")
 			col_label += " (" + col_units + ")";
 
 		// sorting indicator
