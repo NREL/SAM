@@ -134,12 +134,17 @@ public:
 	std::vector<Simulation *> GetRuns();
 
 	void SortColumn(const int& col, const bool& asc);
+	int GetSortColumn();
+	void ClearSorting();
+	bool IsSorted();
+	bool IsSortedAscending();
 
 	int GetRunNumberForRowNumber(const int& rowNum);
 
 	std::vector<int> GetRowSortOrder();
 
 private:
+	int m_sortColumn;
 	std::vector< std::pair<double, int> > m_rowSortOrder;
 	int m_rows;
 	int m_cols;

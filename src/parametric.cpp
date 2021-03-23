@@ -228,30 +228,31 @@ void ParametricGrid::OnColSort(wxGridEvent& evt)
 //	SetGridCursor(evt.GetRow(), evt.GetCol());
 	evt.Skip();
 	int col = evt.GetCol();
-	if (col >= 0) { //-1,-1 is top left corner
 		// check to see if number (single value) for sorting
-		if (ParametricGridData* pgd = static_cast<ParametricGridData*>(GetTable())) {
+	if (ParametricGridData* pgd = static_cast<ParametricGridData*>(GetTable())) {
+		if (col >= 0) { //-1,-1 is top left corner
 			if (auto vv = pgd->GetVarValue(0, col)) { // assumption that all column values are of same type
 				if (vv->Type() == VV_NUMBER) {
 					// code to set indicator for column header in pgd->GetColLabelValue
+					int sortCol = pgd->GetSortColumn();
 					bool asc = true;
-					int sortCol = GetSortingColumn();
 					if (col == sortCol)
-						asc = !IsSortOrderAscending();
-					else
-						UnsetSortingColumn();
-					SetSortingColumn(col, asc); //- does not work for custom grids for indicator
-					AutoSizeColLabelSize(col);
-					// end indicator code
-					// actual sorting of data
+						asc = !pgd->IsSortedAscending();
+					//					else
+					//						UnsetSortingColumn();
+										//SetSortingColumn(col, asc); //- does not work for custom grids for indicator
+										// end indicator code
+										// actual sorting of data
 					pgd->SortColumn(col, asc);
-/*					if (ParametricViewer* pv = static_cast<ParametricViewer*> (GetParent())) {
-						pv->RemoveAllPlots();
-						pv->AddAllPlots();
-					}
-*/				}
+					AutoSizeColLabelSize(col);
+				}
 			}
 		}
+		else {
+			// clear sorting 
+			pgd->ClearSorting();
+		}
+
 	}
 	
 }
@@ -1669,6 +1670,7 @@ ParametricGridData::ParametricGridData(Case *cc) :m_par(cc->Parametric()), m_cas
 
 	m_rows = 0;
 	m_cols = 0;
+	ClearSorting();
 	Init();
 }
 
@@ -1843,15 +1845,15 @@ wxString ParametricGridData::GetColLabelValue(int col)
 			col_label += " (" + col_units + ")";
 
 		// sorting indicator
-		if (auto pGrid = GetView()) {
-			bool asc = true;
-			int sortCol = pGrid->GetSortingColumn();
+		if (IsSorted()) {
+			int sortCol = GetSortColumn();
 			if (col == sortCol) {
-				asc = pGrid->IsSortOrderAscending();
-				if (asc)
-					col_label += L" \x2303";
-				else
-					col_label += L" \x2304";
+				if (auto pGrid = GetView()) {
+					if (IsSortedAscending())
+						col_label += L" \x2303";
+					else
+						col_label += L" \x2304";
+				}
 			}
 		}
 	}
@@ -1890,10 +1892,38 @@ void ParametricGridData::SetVarInfo(int , int col, VarInfo *vi)
 	}
 }
 
+int ParametricGridData::GetSortColumn()
+{
+	return m_sortColumn;
+}
+
+void ParametricGridData::ClearSorting()
+{
+	m_rowSortOrder.clear();
+	m_sortColumn = -1;
+}
+
+bool ParametricGridData::IsSorted()
+{
+	return (m_rowSortOrder.size() > 0);
+}
+
+bool ParametricGridData::IsSortedAscending()
+{
+	bool bRetVal = false;
+	if (IsSorted()) {
+		if (m_rowSortOrder.size() > 1)
+			bRetVal = (m_rowSortOrder[0] <= m_rowSortOrder[1]);
+	}
+	return bRetVal;
+}
+
+
 void ParametricGridData::SortColumn(const int& col, const bool& asc)
 {
-	m_rowSortOrder.clear(); // clear sort order if wxNOT_FOUND set for column
 	if ((col > -1) && (col < m_cols)) {
+		ClearSorting();
+		m_sortColumn = col;
 		if (auto vv = GetVarValue(0, col)) {
 			if (vv->Type() == VV_NUMBER) {
 				for (int r = 0; r < m_rows; r++) {
