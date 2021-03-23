@@ -587,8 +587,8 @@ Tool Tip
 0
 Caption
 5
-542
-Use these capex curves to define the DC Module costs, AC inverter costs, battery costs, and fuel cell costs for your project. The cost tables will automatically calculate the costs for each category based on the DC module array capacity, AC inverter capacity, battery energy and power capacities, and fuel cell nameplate capacity specified in the PV System, Battery Storage, and Fuel Cell pages. Please account for indirect costs such as sales tax costs in the cost table inputs. The total installed cost is the sum of these cost components. 
+501
+Use these capex curves to define the DC costs, AC costs, battery costs, and fuel cell costs for your project. The cost tables will automatically calculate the costs for each category based on the DC array capacity, AC inverter capacity, battery energy capacity, and fuel cell nameplate capacity specified in the PV System, Battery Storage, and Fuel Cell pages. Please account for indirect costs such as sales tax in the cost table inputs. The total installed cost is the sum of these cost components. 
 TextColour
 4
 0

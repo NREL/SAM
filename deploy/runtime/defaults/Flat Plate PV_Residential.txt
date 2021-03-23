@@ -1,5 +1,5 @@
 1
-867
+862
 6par_aisc
 1
 1
@@ -439,21 +439,7 @@ calculated_dcac_ratio
 1
 1
 1.21893
-capex_ac_warning_message
-1
-4
-0
-capex_dc_warning_message
-1
-4
-9
-<invalid>
-capex_land_warning_message
-1
-4
-9
-<invalid>
-capex_table_ac_cost_per_kw
+capex_table_ac_cost_per_w
 1
 1
 1
@@ -470,7 +456,7 @@ capex_table_ac_inputs
 7001 0.79 
 100000 0.79 
 
-capex_table_cost_per_kw
+capex_table_cost_per_w
 1
 1
 1
@@ -487,7 +473,7 @@ capex_table_dc_inputs
 7001 1.07 
 100000 1.07 
 
-capex_table_land_cost_per_kw
+capex_table_land_cost_per_acre
 1
 1
 1

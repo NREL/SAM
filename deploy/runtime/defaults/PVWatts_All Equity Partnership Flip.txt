@@ -1,5 +1,5 @@
 1
-432
+428
 ac_nameplate
 1
 1
@@ -157,17 +157,8 @@ bos_equip_total
 1
 1
 1
-5e+12
-capex_ac_warning_message
-1
-4
-0
-capex_dc_warning_message
-1
-4
-9
-<invalid>
-capex_table_ac_cost_per_kw
+10000000
+capex_table_ac_cost_per_w
 1
 1
 1
@@ -176,10 +167,17 @@ capex_table_ac_cost_per_kw
 capex_table_ac_inputs
 1
 3
-1
-1
-0
-capex_table_cost_per_kw
+7
+2
+5000000 0.44 
+10000000 0.44 
+10000000 0.39 
+50000000 0.39 
+50000000 0.33 
+100000000 0.33 
+100000000 0.29 
+
+capex_table_cost_per_w
 1
 1
 1

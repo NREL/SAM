@@ -1,7 +1,7 @@
 PV Capex Table Battery
 829
 494
-20
+22
 GroupBox
 
 1
@@ -695,10 +695,10 @@ Name
 object 716
 X
 3
-459
+483
 Y
 3
-447
+450
 Width
 3
 15
@@ -743,7 +743,7 @@ Name
 object 71612
 X
 3
-459
+483
 Y
 3
 411
@@ -935,13 +935,13 @@ Name
 object 76
 X
 3
-276
+429
 Y
 3
 411
 Width
 3
-45
+30
 Height
 3
 24
@@ -950,8 +950,8 @@ Tool Tip
 0
 Caption
 5
-4
-$/kW
+2
+kW
 TextColour
 4
 0
@@ -981,6 +981,54 @@ Name
 5
 11
 object 7611
+X
+3
+429
+Y
+3
+450
+Width
+3
+42
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+3
+kWh
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+12
+object 76114
 X
 3
 276
@@ -1021,16 +1069,64 @@ AlignRight
 AlignTop
 2
 0
+Label
+
+1
+13
+Name
+5
+10
+object 765
+X
+3
+276
+Y
+3
+411
+Width
+3
+45
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+4
+$/kW
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 
 6
 battery_energy_kwh
 3
 1
- 
+Rated battery bank capacity
 kWh
- 
+Capital Costs
 0
-8
+9
 1
 1
 1
@@ -1040,11 +1136,11 @@ Default
 battery_power_kw
 3
 1
- 
+Rated battery bank power
 kW
 Capital Costs
 0
-8
+9
 1
 1
 1
@@ -1054,9 +1150,9 @@ Default
 capex_table_batt_cost_per_kw
 3
 1
- 
- 
- 
+Battery cost per kilowatt
+$/kW
+Capital Costs
 0
 9
 1
@@ -1068,11 +1164,11 @@ Default
 capex_table_batt_cost_per_kwh
 3
 1
- 
- 
- 
+Battery cost per kilowatt hour
+$/kWh
+Capital Costs
 0
-8
+9
 1
 1
 1
@@ -1096,7 +1192,7 @@ Default
 capex_table_total_installed_batt_cost
 3
 1
- 
+Total battery installed cost
 $
 Capital Costs
 0
