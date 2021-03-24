@@ -201,11 +201,21 @@ public:
 	void AddAllPlots();
 	void RemoveAllPlots();
 
+	enum ColumnFilterType {cft_less_than, cft_greater_than, cft_equal_to};
+
+	struct ColumnFilter {
+		int filterColumn;
+		ColumnFilterType filterType;
+		double filterCriteria;
+	};
+
 private:
 	void OnCommand(wxCommandEvent &evt);
 	void OnGridColLabelRightClick(wxGridEvent& evt);
 	void OnGridColSort(wxGridEvent& evt);
 	void OnMenuItem(wxCommandEvent &evt);
+
+	void FilterColumn(int& col);
 
 	void SelectInputs();
 	void SelectOutputs();
@@ -261,6 +271,10 @@ private:
 	GraphCtrl *m_current_graph;
 	wxSnapLayout *m_layout;
 	std::vector<wxWindow*> m_graphs;
+
+
+	std::vector< ColumnFilter > m_columnFilters;
+
 
 	DECLARE_EVENT_TABLE();
 };

@@ -257,7 +257,51 @@ void ParametricGrid::OnColSort(wxGridEvent& evt)
 	
 }
 
+////////////////////////////////////////////////////////////////////
+enum { ID_FILTER_COLUMN_TYPE = wxID_HIGHEST + 294, ID_FILTER_COLUMN_CRITERIA };
 
+class FilterColumnDialog : public wxDialog
+{
+	wxListBox* lstFilterType;
+	wxNumericCtrl* numFilterCriteria;
+	ParametricViewer::ColumnFilter m_sColumnFilter;
+
+public:
+
+	FilterColumnDialog(wxWindow* parent, int id, ParametricViewer::ColumnFilter& sColumnFilter, wxPoint& position )
+		: wxDialog(parent, id, "Filter column", position, wxScaleSize(600, 350),
+			wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER), m_sColumnFilter(sColumnFilter)
+	{
+		lstFilterType = new wxListBox(this, ID_FILTER_COLUMN_TYPE, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_SINGLE);
+
+		wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
+		sizer->Add(lstFilterType, 0, wxLEFT | wxRIGHT | wxEXPAND, 10);
+		sizer->Add(CreateButtonSizer(wxHELP | wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
+		SetSizerAndFit(sizer);
+	}
+
+	~FilterColumnDialog()
+	{
+	}
+
+	void OnFilterTypeChange(wxCommandEvent&)
+	{
+		SamApp::ShowHelp("excel_exchange");
+	}
+
+
+	void OnHelp(wxCommandEvent&)
+	{
+		SamApp::ShowHelp("excel_exchange");
+	}
+
+	DECLARE_EVENT_TABLE();
+};
+
+BEGIN_EVENT_TABLE(FilterColumnDialog, wxDialog)
+EVT_LISTBOX(ID_FILTER_COLUMN_TYPE, FilterColumnDialog::OnFilterTypeChange)
+EVT_BUTTON(wxID_HELP, FilterColumnDialog::OnHelp)
+END_EVENT_TABLE()
 
 
 
@@ -268,7 +312,7 @@ enum { ID_SELECT_INPUTS = wxID_HIGHEST+494, ID_SELECT_OUTPUTS, ID_NUMRUNS,
 	ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, 
 	ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, 
 	ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, 
-	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, ID_CLEAR_SORTING,
+	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, ID_CLEAR_SORTING, ID_FILTER_COLUMN,
 	ID_SHOW_ALL_INPUTS, ID_NEW_CASE, ID_QUICK_SETUP, ID_IMPORT, ID_EXPORT_MENU, ID_GEN_LK };
 
 
@@ -293,6 +337,7 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_GEN_LK, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_CLEAR_SORTING, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_FILTER_COLUMN, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_CLEAR, ParametricViewer::OnCommand)
 
@@ -682,6 +727,9 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		RemoveAllPlots();
 		AddAllPlots();
 		break;
+	case ID_FILTER_COLUMN:
+		FilterColumn(m_selected_grid_col);
+		break;
 	case ID_INPUTMENU_FILL_DOWN_ONE_VALUE:
 		FillDown(1);
 		break;
@@ -727,6 +775,12 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		break;
 	}
 }
+
+void ParametricViewer::FilterColumn(int& col)
+{
+
+}
+
 
 void ParametricViewer::GetTextData(wxString &dat, char sep)
 {
