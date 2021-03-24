@@ -1723,8 +1723,8 @@ setup_merchant_plant_pages();
 // Marine Energy ////////////////////////////////////////////////////////////////////
 function setup_mewave_pages()
 {
-	addpage( [[ 'Marine Wave Resource Time Series']], 
-			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource' } );
+	addpage( [[ 'Marine Wave Resource'],[ 'Marine Wave Resource Time Series']], 
+			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_var'='wave_resource_model_choice' } );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );

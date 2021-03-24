@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
-1847
-1161
-25
+1291
+622
+16
 Hyperlink
 
 1
@@ -120,50 +120,6 @@ TextEntry
 11
 Name
 5
-9
-file_name
-X
-3
-279
-Y
-3
-312
-Width
-3
-960
-Height
-3
-24
-Tool Tip
-5
-0
-Text
-5
-0
-Editable
-2
-1
-ForeColour
-4
-128
-0
-64
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-TextEntry
-
-1
-11
-Name
-5
 12
 file_name_ts
 X
@@ -202,68 +158,6 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
-
-1
-17
-Name
-5
-13
-frequency_sum
-X
-3
-1014
-Y
-3
-1110
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 GroupBox
 
 1
@@ -291,36 +185,6 @@ Caption
 5
 28
 Wave Energy Resource Library
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-17
-group_wave_matrix
-X
-3
-12
-Y
-3
-621
-Width
-3
-1270
-Height
-3
-524
-Tool Tip
-5
-0
-Caption
-5
-57
-Annual Frequency of Occurrence of Sea States from Library
 Bold
 2
 1
@@ -465,37 +329,6 @@ Library
 8
 Name
 5
-8
-location
-X
-3
-15
-Y
-3
-75
-Width
-3
-1223
-Height
-3
-225
-Tool Tip
-5
-0
-Library
-5
-16
-WaveResourceData
-Fields
-5
-127
-Name,City,State,Country,Latitude,Longitude,Nearby Buoy Number,Average Power Flux,Bathymetry,Sea Bed,Time Zone,Data Source,Notes
-Library
-
-1
-8
-Name
-5
 11
 location_ts
 X
@@ -521,192 +354,6 @@ Fields
 5
 127
 Name,City,State,Country,Latitude,Longitude,Nearby Buoy Number,Average Power Flux,Bathymetry,Sea Bed,Time Zone,Data Source,Notes
-Numeric
-
-1
-17
-Name
-5
-13
-max_frequency
-X
-3
-195
-Y
-3
-1110
-Width
-3
-103
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-9
-Numeric
-
-1
-17
-Name
-5
-16
-max_frequency_Hs
-X
-3
-456
-Y
-3
-1110
-Width
-3
-103
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-9
-Numeric
-
-1
-17
-Name
-5
-16
-max_frequency_Te
-X
-3
-771
-Y
-3
-1110
-Width
-3
-103
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-10
 GroupBox
 
 1
@@ -952,153 +599,8 @@ Download and add to library...
 TabOrder
 3
 10
-DataMatrix
 
-1
-27
-Name
-5
-20
-wave_resource_matrix
-X
-3
-30
-Y
-3
-639
-Width
-3
-1200
-Height
-3
-464
-Tool Tip
-5
-0
-PasteAppendRows
-2
-0
-PasteAppendCols
-2
-0
-ShowButtons
-2
-0
-ShowRows
-2
-0
-ShowRowLabels
-2
-0
-RowLabels
-5
-0
-ShadeR0C0
-2
-1
-VerticalLabel
-5
-32
-Hs = significant wave height (m)
-HorizontalLabel
-5
-27
-Te = wave energy period (s)
-ShadeC0
-2
-0
-ShowCols
-2
-0
-ShowColLabels
-2
-0
-ColLabels
-5
-0
-NumRowsLabel
-5
-5
-Rows:
-NumColsLabel
-5
-5
-Cols:
-Layout
-3
-1
-ChoiceColumn
-3
-4294967295
-Choices
-5
-15
-Choice1,Choice2
-HideColumn
-3
-4294967295
-ShowColumn
-3
-4294967295
-ColorMap
-2
-1
-RadioChoice
-
-1
-11
-Name
-5
-26
-wave_resource_model_choice
-X
-3
-948
-Y
-3
-24
-Width
-3
-306
-Height
-3
-45
-Tool Tip
-5
-0
-Selection
-3
-0
-Items
-6
-2
-Choose from JPD library
-Choose from time series library
-ShowCaptions
-2
-1
-Horizontal
-2
-0
-TabOrder
-3
-4294967295
-
-47
-average_power_flux
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
+22
 average_power_flux_ts
 3
 1
@@ -1113,19 +615,6 @@ average_power_flux_ts
 1
 0
 Numeric
-bathymetry
-3
-4
- 
- 
- 
-0
-8
-1
-4
-1
-0
-Default
 bathymetry_ts
 3
 4
@@ -1139,19 +628,6 @@ bathymetry_ts
 9
 <invalid>
 TextEntry
-city
-3
-4
- 
- 
- 
-0
-8
-1
-4
-1
-0
-Default
 city_ts
 3
 4
@@ -1165,19 +641,6 @@ city_ts
 9
 <invalid>
 TextEntry
-country
-3
-4
- 
- 
- 
-0
-8
-1
-4
-1
-0
-Default
 country_ts
 3
 4
@@ -1191,19 +654,6 @@ country_ts
 9
 <invalid>
 TextEntry
-data_source
-3
-4
- 
- 
- 
-0
-8
-1
-4
-1
-0
-Default
 data_source_ts
 3
 4
@@ -1212,19 +662,6 @@ data_source_ts
  
 0
 0
-1
-4
-9
-<invalid>
-TextEntry
-file_name
-3
-4
-Wave resource file from library
- 
- 
-0
-8
 1
 4
 9
@@ -1242,60 +679,6 @@ ME Wave Resource
 4
 0
 TextEntry
-frequency_sum
-3
-1
-Frequency sum
-%
-ME Wave Resource
-0
-8
-1
-1
-1
-1
-0
-Numeric
-in_location
-3
-4
- 
- 
- 
-0
-0
-1
-4
-0
-TextEntry
-in_time_frame
-3
-1
- 
- 
- 
-0
-0
-1
-1
-1
-1
-0
-RadioChoice
-lat
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 lat_ts
 3
 1
@@ -1310,20 +693,6 @@ lat_ts
 1
 0
 Numeric
-location
-3
-4
-Wave resource location
- 
-ME Wave Resource
-18
-WaveResourceData|0
-17
-1
-4
-27
-CalWave Central Coast South
-Library
 location_ts
 3
 4
@@ -1338,20 +707,6 @@ WaveResourceTSData|0
 12
 PacWave East
 Library
-lon
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 lon_ts
 3
 1
@@ -1366,75 +721,7 @@ lon_ts
 1
 0
 Numeric
-max_frequency
-3
-1
-Probability of dominant wave
- 
-ME Wave Resource
-0
-8
-1
-1
-1
-1
-0
-Numeric
-max_frequency_Hs
-3
-1
-Dominant wave height
-m
-ME Wave Resource
-0
-8
-1
-1
-1
-1
-0
-Numeric
-max_frequency_Te
-3
-1
-Dominant wave period
-s
-ME Wave Resource
-0
-8
-1
-1
-1
-1
-0
-Numeric
-name
-3
-4
- 
- 
- 
-0
-8
-1
-4
-9
-<invalid>
-TextEntry
 name_ts
-3
-4
- 
- 
- 
-0
-8
-1
-4
-9
-<invalid>
-TextEntry
-nearby_buoy_number
 3
 4
  
@@ -1460,19 +747,6 @@ nearby_buoy_number_ts
 9
 <invalid>
 TextEntry
-notes
-3
-4
- 
- 
- 
-0
-8
-1
-4
-9
-<invalid>
-TextEntry
 notes_ts
 3
 4
@@ -1481,19 +755,6 @@ notes_ts
  
 0
 0
-1
-4
-9
-<invalid>
-TextEntry
-sea_bed
-3
-4
- 
- 
- 
-0
-8
 1
 4
 9
@@ -1512,19 +773,6 @@ sea_bed_ts
 9
 <invalid>
 TextEntry
-state
-3
-4
- 
- 
- 
-0
-8
-1
-4
-9
-<invalid>
-Default
 state_ts
 3
 4
@@ -1552,20 +800,6 @@ Time Check
 1
 0
 DataArray
-tz
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 tz_ts
 3
 1
@@ -1620,19 +854,6 @@ s
 1
 0
 DataArray
-wave_resource_file
-3
-4
-Wave file
- 
-Location and Resource
-0
-9
-1
-4
-9
-<invalid>
-Default
 wave_resource_file_ts
 3
 0
@@ -1643,19 +864,6 @@ wave_resource_file_ts
 8
 1
 0
-Default
-wave_resource_filename
-3
-4
-Wave resource file name
- 
-ME Wave Resource
-0
-9
-1
-4
-9
-<invalid>
 Default
 wave_resource_filename_ts
 3
@@ -1669,34 +877,6 @@ ME Wave Resource
 4
 0
 Default
-wave_resource_matrix
-3
-3
-Wave resource matrix
- 
-ME Wave Resource
-0
-3
-1
-3
-1
-1
-0
-DataMatrix
-wave_resource_model_choice
-3
-1
-JPD or Time Series data
- 
-MEWave
-0
-1
-1
-1
-1
-1
-0
-RadioChoice
 wave_significant_height
 3
 2
@@ -1712,7 +892,7 @@ m
 0
 DataArray
 
-1086
+253
 equations{'wave_resource_filename_ts'} = define() {
 	if(${use_specific_ts_wf_wave}) return (${user_specified_wave_resource_ts});
 	else return ${file_name_ts};
@@ -1722,48 +902,8 @@ equations{'wave_resource_file_ts'} = define() {
 	return ${wave_resource_filename_ts};
 };
 
-equations{'wave_resource_filename'} = define() {
-	if ( ${use_specific_ts_wf_wave} ) return ${user_specified_wave_resource_ts};
-	else return ${file_name};
-};
 
-equations{'wave_resource_file'} = define() {
-	return ${wave_resource_filename};
-};
-
-equations{ '$MIMO$ mhk_wave_resource_freq' } = define () {
-	mat = ${wave_resource_matrix};
-	
-	max_Hs = 0;
-	max_Te = 0;
-	max_freq = 0;
-	for (r=1;r<#mat; r++)
-		for (c=1; c<#mat[0];c++)
-			if (mat[r][c] > max_freq)
-			{
-				max_freq =mat[r][c];
-				max_Hs = mat[r][0];
-				max_Te = mat[0][c];
-			}
-	${max_frequency} = max_freq;
-	${max_frequency_Hs} = max_Hs;
-	${max_frequency_Te} = max_Te;
-	
-	return 0;
-};
-
-
-equations{ 'frequency_sum' } = define () 
-{
-	mat = ${wave_resource_matrix};
-	sum_mat = 0;
-	for (r=1;r<#mat; r++)
-		for (c=1; c<#mat[0];c++)
-			sum_mat += mat[r][c];
-	return sum_mat;
-};
-
-4885
+3372
 function enable_disable_library() {
 	enable_library = !value('use_specific_ts_wf_wave');
 	enable('wave_resource_matrix',false);
@@ -1795,48 +935,12 @@ function enable_disable_library() {
 	//enable('wave_download',enable_library);
 	refresh();
 	
-	enable('location',enable_library);
-	enable('average_power_flux',enable_library);
-	enable('bathymetry',enable_library);
-	enable('city',enable_library);
-	enable('country',enable_library);
-	enable('data_source',enable_library);
-	enable('file_name',enable_library);
-	enable('frequency',enable_library);
-	enable('lat',enable_library);
-	enable('location',enable_library);
-	enable('lon',enable_library);
-	//enable('max_frequency',enable_library);
-	//enable('max_frequency_Hs',enable_library);
-	//enable('max_frequency_Te',enable_library);
-	enable('name',enable_library);
-	enable('nearby_buoy_number',enable_library);
-	enable('notes',enable_library);
-	enable('sea_bed',enable_library);
-	enable('state',enable_library);
-	enable('tz',enable_library);
-	//enable('in_time_frame',enable_library);
-	//enable('in_location',enable_library);
-	//enable('wave_download',enable_library);
-	refresh();
 }
 
-function library_choice() {
-	choice = value('wave_resource_model_choice');
-	show('location', choice==0);
-	show('location_ts', choice!=0);
-	show('file_name_ts',choice!=0);
-	show('file_name', choice==0);
-	refresh();
-}
 
-on_change{'wave_resource_model_choice'} = define() {
-	library_choice();
-};
 
 on_change{'btnScanLibrary_ts'} = define() {
 	rescanlibrary('wave_ts');
-	rescanlibrary('wave');
 
 };
 
@@ -1859,8 +963,6 @@ on_load{'Marine Wave Resource Time Series'} = define() {
 	//show('wave_data_file_name_load', false); // stores weather file name when UI form loaded
 	//show('wave_data_file_name', false); 
 	//show('in_time_frame', value('in_wave_options') != 0 ); //No option for TMY data on first iteraiton
-	library_choice();
-	on_change{'wave_resource_model_choice'};
 	//refresh();
 	//( '' );
 	//update_info( 'on_load Wave Resource Data Time Series');
@@ -1882,21 +984,6 @@ on_change{'location_ts'} = define() {
 	close(fn);
 };
 
-on_change{'location'} = define() {
-	file = ${file_name};
-	value("name",value("location"));
-	
-	if (!file_exists(file))
-	{
-		rescanlibrary( 'wave' );
-		refresh('location');
-		return;
-	}
-	file = replace(file, '\\', '/');
-	fn = open(file,'r');
-
-	close(fn);
-};
 
 on_change{'file_name_ts'} = define() {
 	if (value('use_specific_ts_wf_wave')==0) {
