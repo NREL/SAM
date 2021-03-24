@@ -1,5 +1,5 @@
 1
-683
+682
 LeadAcid_q10
 1
 1
@@ -233,6 +233,12 @@ batt_Qnom_percent
 1
 1
 88.9
+batt_Vcut
+1
+1
+1
+1
+2.706
 batt_Vexp
 1
 1
@@ -938,16 +944,7 @@ cap_vs_temp
 25 100 
 40 100 
 
-capex_ac_warning_message
-1
-4
-0
-capex_dc_warning_message
-1
-4
-9
-<invalid>
-capex_table_ac_cost_per_kw
+capex_table_ac_cost_per_w
 1
 1
 1
@@ -993,7 +990,7 @@ capex_table_batt_inputs
 2399 708.18 0 
 2400 469.01 0 
 
-capex_table_cost_per_kw
+capex_table_cost_per_w
 1
 1
 1
@@ -3231,7 +3228,7 @@ property_assessed_value
 1
 1
 1
-2449220
+2.44922e+06
 property_tax_rate
 1
 1
@@ -3662,7 +3659,7 @@ thermal_load_annual_total
 1
 1
 1
-7646300
+7.6463e+06
 thermal_load_escalation
 1
 2
@@ -3816,7 +3813,7 @@ total_installed_cost
 1
 1
 1
-2449220
+2.44922e+06
 tz
 1
 1
@@ -3834,13 +3831,13 @@ ui_loan_amount
 1
 1
 1
-2449220
+2.44922e+06
 ui_net_capital_cost
 1
 1
 1
 1
-2449220
+2.44922e+06
 ui_pv_capacity
 1
 1

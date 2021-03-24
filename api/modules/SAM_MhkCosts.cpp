@@ -11,18 +11,7 @@
 #include "SAM_MhkCosts.h"
 
 SAM_EXPORT int SAM_MhkCosts_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("mhk_costs", data, verbosity, err);
-	});
-	return n_err;
-}
-
-
-SAM_EXPORT void SAM_MhkCosts_MHKCosts_annual_energy_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "annual_energy", number);
-	});
+	return SAM_module_exec("mhk_costs", data, verbosity, err);
 }
 
 SAM_EXPORT void SAM_MhkCosts_MHKCosts_array_cable_system_cost_input_nset(SAM_table ptr, double number, SAM_error *err){
@@ -222,17 +211,6 @@ SAM_EXPORT void SAM_MhkCosts_MHKCosts_system_capacity_nset(SAM_table ptr, double
 		ssc_data_set_number(ptr, "system_capacity", number);
 	});
 }
-
-SAM_EXPORT double SAM_MhkCosts_MHKCosts_annual_energy_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_energy", &result))
-		make_access_error("SAM_MhkCosts", "annual_energy");
-	});
-	return result;
-}
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_array_cable_system_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -801,61 +779,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_structural_assembly_cost_modeled_nget(SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "structural_assembly_cost_modeled", &result))
 		make_access_error("SAM_MhkCosts", "structural_assembly_cost_modeled");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MhkCosts_Outputs_total_bos_cost_per_kwh_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_bos_cost_per_kwh", &result))
-		make_access_error("SAM_MhkCosts", "total_bos_cost_per_kwh");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MhkCosts_Outputs_total_capital_cost_per_kwh_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_capital_cost_per_kwh", &result))
-		make_access_error("SAM_MhkCosts", "total_capital_cost_per_kwh");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MhkCosts_Outputs_total_device_cost_per_kwh_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_device_cost_per_kwh", &result))
-		make_access_error("SAM_MhkCosts", "total_device_cost_per_kwh");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MhkCosts_Outputs_total_financial_cost_per_kwh_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_financial_cost_per_kwh", &result))
-		make_access_error("SAM_MhkCosts", "total_financial_cost_per_kwh");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MhkCosts_Outputs_total_operations_cost_per_kwh_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_operations_cost_per_kwh", &result))
-		make_access_error("SAM_MhkCosts", "total_operations_cost_per_kwh");
 	});
 	return result;
 }

@@ -80,12 +80,12 @@ extern "C"
 	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_day_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set diffuse: Diffuse horizontal irradiance [W/m2]
+	 * Set diff: Diffuse horizontal irradiance [W/m2]
 	 * options: None
 	 * constraints: LENGTH_EQUAL=beam
 	 * required if: irrad_mode~1
 	 */
-	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diffuse_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_diff_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set elevation: Elevation [m]
@@ -104,12 +104,12 @@ extern "C"
 	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_gcr_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set global: Global horizontal irradiance [W/m2]
+	 * Set glob: Global horizontal irradiance [W/m2]
 	 * options: None
 	 * constraints: LENGTH_EQUAL=beam
 	 * required if: irrad_mode~0
 	 */
-	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_global_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_glob_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set hour: Hour [hr]
@@ -240,13 +240,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_day_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diffuse_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_diff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_elevation_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_gcr_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_global_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_glob_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Irradproc_IrradianceProcessor_hour_aget(SAM_table ptr, int* length, SAM_error *err);
 

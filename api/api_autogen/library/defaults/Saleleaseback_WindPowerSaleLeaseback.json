@@ -53,7 +53,7 @@
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
 			"itc_sta_percent_maxvalue": 1e+38,
-			"ptc_fed_amount": [0.022000],
+			"ptc_fed_amount": [0.015000],
 			"ptc_fed_escal": 2.5,
 			"ptc_fed_term": 10,
 			"ptc_sta_amount": [0.000000],

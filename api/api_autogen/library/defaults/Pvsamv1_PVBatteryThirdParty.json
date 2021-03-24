@@ -55,14 +55,14 @@
 		},
 		"SystemDesign": {
 			"enable_mismatch_vmax_calc": 0,
-			"inverter_count": 1,
+			"inverter_count": 4,
 			"subarray1_azimuth": 180,
 			"subarray1_backtrack": 0,
 			"subarray1_gcr": 0.3,
 			"subarray1_modules_per_string": 7,
 			"subarray1_monthly_tilt": [40.000000, 40.000000, 40.000000, 20.000000, 20.000000, 20.000000, 20.000000, 20.000000, 20.000000, 40.000000, 40.000000, 40.000000],
 			"subarray1_mppt_input": 1,
-			"subarray1_nstrings": 2,
+			"subarray1_nstrings": 8,
 			"subarray1_rotlim": 45,
 			"subarray1_tilt": 20,
 			"subarray1_tilt_eq_lat": 0,
@@ -103,7 +103,7 @@
 			"subarray4_tilt": 20,
 			"subarray4_tilt_eq_lat": 0,
 			"subarray4_track_mode": 0,
-			"system_capacity": 4.69287
+			"system_capacity": 18.7715
 		},
 		"Shading": {
 			"subarray1_shade_mode": 0,
@@ -173,7 +173,7 @@
 			"cec_height": 0,
 			"cec_i_l_ref": 6.23681,
 			"cec_i_mp_ref": 5.85,
-			"cec_i_o_ref": 3.99e-12,
+			"cec_i_o_ref": 3.98831e-12,
 			"cec_i_sc_ref": 6.23,
 			"cec_is_bifacial": 0,
 			"cec_module_length": 1.631,
@@ -181,8 +181,8 @@
 			"cec_mounting_config": 0,
 			"cec_mounting_orientation": 0,
 			"cec_n_s": 96,
-			"cec_r_s": 0.499389,
-			"cec_r_sh_ref": 457.185,
+			"cec_r_s": 0.499388,
+			"cec_r_sh_ref": 457.186,
 			"cec_standoff": 6,
 			"cec_t_noct": 46.4,
 			"cec_temp_corr_mode": 0,
@@ -191,24 +191,24 @@
 			"cec_v_oc_ref": 67.9
 		},
 		"CECPerformanceModelWithUserEnteredSpecifications": {
-			"6par_aisc": 0.004,
-			"6par_area": 1.3,
-			"6par_bifacial_ground_clearance_height": 1,
-			"6par_bifacial_transmission_factor": 0.013,
-			"6par_bifaciality": 0.65,
-			"6par_bvoc": -0.11,
-			"6par_celltech": 1,
-			"6par_gpmp": -0.41,
-			"6par_imp": 6,
-			"6par_is_bifacial": 0,
-			"6par_isc": 7,
-			"6par_mounting": 0,
-			"6par_nser": 60,
-			"6par_standoff": 6,
-			"6par_tnoct": 46,
-			"6par_transient_thermal_model_unit_mass": 11.0919,
-			"6par_vmp": 30,
-			"6par_voc": 37
+			"sixpar_aisc": 0.004,
+			"sixpar_area": 1.3,
+			"sixpar_bifacial_ground_clearance_height": 1,
+			"sixpar_bifacial_transmission_factor": 0.013,
+			"sixpar_bifaciality": 0.65,
+			"sixpar_bvoc": -0.11,
+			"sixpar_celltech": 1,
+			"sixpar_gpmp": -0.41,
+			"sixpar_imp": 6,
+			"sixpar_is_bifacial": 0,
+			"sixpar_isc": 7,
+			"sixpar_mounting": 0,
+			"sixpar_nser": 60,
+			"sixpar_standoff": 6,
+			"sixpar_tnoct": 46,
+			"sixpar_transient_thermal_model_unit_mass": 11.0919,
+			"sixpar_vmp": 30,
+			"sixpar_voc": 37
 		},
 		"SandiaPVArrayPerformanceModelWithModuleDatabase": {
 			"snl_a": -3.62,
@@ -293,15 +293,15 @@
 			"inv_num_mppt": 1,
 			"inv_pd_eff": 95,
 			"inv_pd_paco": 4000,
-			"inv_snl_eff_cec": 97.0529,
+			"inv_snl_eff_cec": 97.0531,
 			"inv_snl_paco": 3850,
-			"inverter_count": 1,
+			"inverter_count": 4,
 			"inverter_model": 0,
 			"mppt_hi_inverter": 480,
 			"mppt_low_inverter": 100
 		},
 		"InverterCECDatabase": {
-			"inv_snl_c0": -3.08e-06,
+			"inv_snl_c0": -3.08138e-06,
 			"inv_snl_c1": -4.8e-05,
 			"inv_snl_c2": 0.000124,
 			"inv_snl_c3": -0.001632,
@@ -312,7 +312,9 @@
 			"inv_snl_vdcmax": 480,
 			"inv_snl_vdco": 400,
 			"inv_tdc_cec_db": [
-				[1.000000, 52.800000, -0.021000]
+				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
+				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
+				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
 			]
 		},
 		"InverterCECCoefficientGenerator": {
@@ -327,7 +329,9 @@
 			"inv_cec_cg_vdcmax": 600,
 			"inv_cec_cg_vdco": 398.497,
 			"inv_tdc_cec_cg": [
-				[1.000000, 52.800000, -0.021000]
+				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
+				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
+				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
 			]
 		},
 		"InverterDatasheet": {
@@ -338,7 +342,9 @@
 			"inv_ds_vdcmax": 600,
 			"inv_ds_vdco": 310,
 			"inv_tdc_ds": [
-				[1.000000, 52.800000, -0.021000]
+				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
+				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
+				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
 			]
 		},
 		"InverterPartLoadCurve": {
@@ -350,7 +356,9 @@
 			"inv_pd_vdcmax": 600,
 			"inv_pd_vdco": 310,
 			"inv_tdc_plc": [
-				[1.000000, 52.800000, -0.021000]
+				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
+				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
+				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
 			]
 		},
 		"InverterMermoudLejeuneModel": {
@@ -358,14 +366,12 @@
 		"BatterySystem": {
 			"batt_ac_dc_efficiency": 96,
 			"batt_ac_or_dc": 1,
-			"batt_computed_bank_capacity": 4000,
+			"batt_computed_bank_capacity": 9.60768,
 			"batt_computed_series": 139,
-			"batt_computed_strings": 2498,
-			"batt_current_charge_max": 1998.4,
+			"batt_computed_strings": 6,
+			"batt_current_charge_max": 9.6,
 			"batt_current_choice": 1,
-			"batt_current_discharge_max": 1998.4,
-			"batt_cycle_cost": [0.100000],
-			"batt_cycle_cost_choice": 0,
+			"batt_current_discharge_max": 9.6,
 			"batt_dc_ac_efficiency": 96,
 			"batt_dc_dc_efficiency": 99,
 			"batt_inverter_efficiency_cutoff": 90,
@@ -374,16 +380,16 @@
 			"batt_losses_charging": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_losses_discharging": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_losses_idle": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"batt_mass": 39603.9,
+			"batt_mass": 95.1255,
 			"batt_meter_position": 0,
 			"batt_power_charge_max_kwac": 5.20833,
-			"batt_power_charge_max_kwdc": 999.999,
-			"batt_power_discharge_max_kwac": 999.999,
-			"batt_power_discharge_max_kwdc": 5.06655,
+			"batt_power_charge_max_kwdc": 4.80384,
+			"batt_power_discharge_max_kwac": 4.8,
+			"batt_power_discharge_max_kwdc": 4.80384,
 			"batt_replacement_capacity": 50,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"batt_surface_area": 89.0141,
+			"batt_surface_area": 1.59649,
 			"en_batt": 1
 		},
 		"Load": {
@@ -392,16 +398,17 @@
 			"load_escalation": [0.000000]
 		},
 		"BatteryCell": {
-			"LeadAcid_q10_computed": 18.8325,
-			"LeadAcid_q20_computed": 20.25,
-			"LeadAcid_qn_computed": 12.15,
+			"LeadAcid_q10_computed": 17.856,
+			"LeadAcid_q20_computed": 19.2,
+			"LeadAcid_qn_computed": 11.52,
 			"LeadAcid_tn": 1,
 			"batt_C_rate": 0.2,
 			"batt_Cp": 1500,
 			"batt_Qexp": 2.584,
 			"batt_Qfull": 3.2,
-			"batt_Qfull_flow": 20.25,
+			"batt_Qfull_flow": 19.2,
 			"batt_Qnom": 3.126,
+			"batt_Vcut": 2.772,
 			"batt_Vexp": 3.53,
 			"batt_Vfull": 4.2,
 			"batt_Vnom": 3.342,
@@ -464,6 +471,8 @@
 		},
 		"BatteryDispatch": {
 			"batt_custom_dispatch": [0.000000],
+			"batt_cycle_cost": [0.100000],
+			"batt_cycle_cost_choice": 0,
 			"batt_dispatch_auto_can_charge": 1,
 			"batt_dispatch_auto_can_fuelcellcharge": 0,
 			"batt_dispatch_auto_can_gridcharge": 0,
