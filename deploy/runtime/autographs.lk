@@ -22,9 +22,13 @@ function wind_heatmap_graphs()
 function heatmap_graphs()
 {
 	tech = technology();
-	agraph( 'annual_energy_distribution_time', 'Annual PV Energy Production (kWh)', 'Hour', 'Month', -1, true, false, 'bottom', 4);
-	if (tech == "Fuel Cell") {
-		agraph( 'annual_energy_distribution_time_fc', 'Annual FC Energy Production (kWh)', 'Hour', 'Month', -1, true, false, 'bottom', 4); 
+	if (tech == "Wind Power") {
+		if (${wind_resource_model_choice} == 0) {
+			agraph( 'annual_energy_distribution_time', 'Year 1 Annual Energy Production (kWh)', 'Day', 'Hour', -1, true, false, 'bottom', 4); 
+		}
+	}
+	else {
+		agraph( 'annual_energy_distribution_time', 'Year 1 Annual Energy Production (kWh)', 'Day', 'Hour', -1, true, false, 'bottom', 4); 
 	}
 
 }
