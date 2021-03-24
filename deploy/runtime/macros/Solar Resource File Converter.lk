@@ -390,7 +390,7 @@ function solar_anywhere_to_sam_csv( wf )
 		{
 			// try to determine input file format
 			arr = split( str_line, ',' );
-			if ( #arr < 20 ) { sa_tmy3 = false; }
+			if ( strpos( lower(arr[0]), 'observation' ) > -1 ) { sa_tmy3 = false; }
 			else {sa_tmy3 = true; }
 			//get relevant SA column headers and convert to SAM CSV headers
 			i_ghi = -1;
@@ -400,6 +400,9 @@ function solar_anywhere_to_sam_csv( wf )
 			i_wspd = -1;
 			i_rh = -1;
 			i_snow = -1;
+			i_albedo = -1;
+			i_pm10 = -1;
+			i_pm25 = -1;
 			for ( i=0; i<#arr; i++ )
 			{
 				if ( sa_tmy3 ) 
@@ -421,6 +424,9 @@ function solar_anywhere_to_sam_csv( wf )
 					if ( strpos(lower(to_string(arr[i])),'m/s') > -1 ) { i_wspd = i; } // avoid 'wind' because WindSpeedObservationType
 					if ( strpos(lower(to_string(arr[i])),'humid') > -1 ) { i_rh = i; } 
 					if ( strpos(lower(to_string(arr[i])),'snow') > -1 ) { i_snow = i; } // snow depth in meters
+					if ( strpos(lower(to_string(arr[i])),'albedo') > -1 ) { i_albedo = i; }
+					if ( strpos(lower(to_string(arr[i])),'10') > -1 ) { i_pm10 = i; } // Particulate Matter 10 (g/m3), PM not used by SAM but requested by CPR https://github.com/NREL/SAM/issues/554
+					if ( strpos(lower(to_string(arr[i])),'2.5') > -1 ) { i_pm25 = i; } // Particulate Matter 2.5 (g/m3)
 				}
 			}
 			// SAM CSV headers can be in any order: Year,Month,Day,Hour,Minute,GHI,DNI,DHI,Tdry,Tdew,RH,Pres,Wspd,Wdir,Albedo,Snow
@@ -432,6 +438,9 @@ function solar_anywhere_to_sam_csv( wf )
 			if ( i_wspd > -1 ) { column_headers += ',Wspd'; }
 			if ( i_rh > -1 ) { column_headers += ',RH'; }
 			if ( i_snow > -1 ) { column_headers += ',Snow'; }
+			if ( i_albedo > -1 ) { column_headers += ',Albedo'; }
+			if ( i_pm10 > -1 ) { column_headers += ',PM 10 (g/m3)'; }
+			if ( i_pm25 > -1 ) { column_headers += ',PM 2.5 (g/m3)'; }
 			arr_column_headers = split( column_headers, ','); // for indexing
 			ok = write_line( fout , column_headers );
 			if ( ok == false ) 
@@ -518,9 +527,10 @@ function solar_anywhere_to_sam_csv( wf )
 			if ( (arr_column_headers ?@ 'Snow') > -1 ) // convert m to cm if not -999 flag
 			{
 				snow = to_real(arr[i_snow]); 
-				if ( snow >= 0  ) { snow = snow / 100; } 
+				if ( snow >= 0  ) { snow = snow * 100; } 
 				data[arr_column_headers ?@ 'Snow'] = snow;
-			}	
+			}
+			outln('line = ' + line );
 			// check to see if input file is multi-year file
 			// if it is, close the output file and append year to file name 
 			// then, open a new output file, and write header data to it
