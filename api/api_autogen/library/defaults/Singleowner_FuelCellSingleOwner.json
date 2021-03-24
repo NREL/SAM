@@ -87,7 +87,7 @@
 			"add_om_num_types": 2,
 			"om_capacity": [50.000000],
 			"om_capacity1": [0.000000],
-			"om_capacity1_nameplate": 100.205,
+			"om_capacity1_nameplate": 0,
 			"om_capacity2": [0.000000],
 			"om_capacity2_nameplate": 200,
 			"om_capacity_escal": 0,
@@ -99,11 +99,11 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [300.000000],
+			"om_replacement_cost1": [293.840000],
 			"om_replacement_cost2": [0.000000],
 			"om_replacement_cost_escal": 0,
 			"system_use_recapitalization": 0,
-			"total_installed_cost": 3.08633e+06
+			"total_installed_cost": 2.322e+06
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -268,7 +268,7 @@
 			"batt_meter_position": 0,
 			"batt_replacement_option": 0,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
+			"battery_per_kWh": 293.84,
 			"en_batt": 1
 		},
 		"ElectricityRates": {

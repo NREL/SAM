@@ -1,6 +1,6 @@
 Physical Trough Capital Costs
-795
-589
+792
+642
 66
 GroupBox
 
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-504
+555
 Width
 3
 780
@@ -393,7 +393,7 @@ X
 99
 Y
 3
-432
+519
 Width
 3
 155
@@ -1445,7 +1445,7 @@ X
 642
 Y
 3
-546
+597
 Width
 3
 136
@@ -2074,7 +2074,7 @@ X
 258
 Y
 3
-432
+519
 Width
 3
 100
@@ -2136,7 +2136,7 @@ X
 642
 Y
 3
-432
+519
 Width
 3
 136
@@ -2199,7 +2199,7 @@ X
 447
 Y
 3
-432
+519
 Width
 3
 100
@@ -2950,7 +2950,7 @@ X
 33
 Y
 3
-525
+576
 Width
 3
 305
@@ -3075,7 +3075,7 @@ X
 642
 Y
 3
-456
+429
 Width
 3
 136
@@ -3097,45 +3097,6 @@ Colour
 Caption
 5
 0
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-11
-object 2237
-X
-3
-12
-Y
-3
-420
-Width
-3
-603
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-9
-Sales Tax
 Bold
 2
 1
@@ -3174,6 +3135,36 @@ Colour
 Caption
 5
 0
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+501
+Width
+3
+780
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+9
+Group box
 Bold
 2
 1
@@ -3238,7 +3229,7 @@ X
 429
 Y
 3
-471
+444
 Width
 3
 210
@@ -3478,7 +3469,7 @@ X
 426
 Y
 3
-522
+573
 Width
 3
 213
@@ -3589,7 +3580,7 @@ X
 642
 Y
 3
-471
+444
 Width
 3
 136
@@ -3652,7 +3643,7 @@ X
 642
 Y
 3
-522
+573
 Width
 3
 136
@@ -4347,7 +4338,7 @@ equations{ 'direct_subtotal'} = define() {
 };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost};
+	return ${total_direct_cost}+${total_indirect_cost}+${csp.dtr.cost.sales_tax.total};
 };
 
 equations{ 'csp.dtr.cost.installed_per_capacity' } = define() {
@@ -4357,7 +4348,7 @@ equations{ 'csp.dtr.cost.fossil_backup' } = define() {
 	return ${csp.dtr.cost.fossil_backup.mwe}*${csp.dtr.cost.fossil_backup.cost_per_kwe}*1000; };
 
 equations{ 'total_indirect_cost' } = define() {
-	return ${csp.dtr.cost.epc.total}+${csp.dtr.cost.plm.total}+${csp.dtr.cost.sales_tax.total}; };
+	return ${csp.dtr.cost.epc.total}+${csp.dtr.cost.plm.total}; };
 
 equations{ 'csp.dtr.cost.power_plant.mwe' } = define() {
 	return ${P_ref}; };

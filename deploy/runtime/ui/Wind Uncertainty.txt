@@ -2856,7 +2856,6 @@ Caption
 5
 575
 Curtailment is the deliberate management of a wind plant to reduce the amount of energy compared to what is possible from the available resource. This may occur because of grid limitations, environmental or permitting requirements (e.g., to prevent bird or bat deaths or to prevent flicker), or deliberate operational strategies. Grid-driven curtailment can be predicted, to some extent, from operational histories of the transmission operator, but it is very dependent on weather, the other generators in the system, and the operating strategies of the balancing authority.
-
 TextColour
 4
 0
@@ -2905,7 +2904,6 @@ Caption
 5
 414
 Electrical losses from a wind farm are the energy losses inherent in energy transmission in collector lines, transformers, and other site equipment and transmission to the point of revenue metering. These transmission-related losses are therefore directly impacted by the site layout, cable runs, and electrical design. Parasitic losses include nacelle air conditioning and yawing turbines in low wind conditions.
-
 TextColour
 4
 0
@@ -2954,7 +2952,6 @@ Caption
 5
 413
 Availability is the probability that a wind plant could produce energy when required. Energy-based availability is the amount of energy produced as a percentage of the total amount of energy that the wind plant could have captured if turbines were always ready to generate power. Availability is driven by the interaction of the turbine with the local environment and the O&M strategy of the wind plant operator.
-
 TextColour
 4
 0
@@ -3099,7 +3096,6 @@ Caption
 5
 138
 Wake effects are the losses due to the reduced wind resource in a turbine wake. Adopting novel control strategies may reduce wake losses.
-
 TextColour
 4
 0
@@ -3292,7 +3288,6 @@ Caption
 5
 532
 All uncertainty components and subcomponents are assumed to be random normally-distributed (i.e. have Gaussian error distributions), and subsequently the uncertainties quoted correspond to standard deviations. These are expressed as dimensionless quantities, as a percentage in terms of either mean wind speed or energy.  A speed-to-energy “sensitivity factor”, 𝛿 (%ΔE/%ΔWS), is used to relate uncertainty in mean wind speed (% WS) to uncertainty in energy (%E), simply as a multiplier of the standard deviation in mean wind speed.
-
 TextColour
 4
 0
@@ -3341,7 +3336,6 @@ Caption
 5
 249
 Measurement-based uncertainty and production-based uncertainty contribute to each Wind Speed-related or Energy-related uncertainty component. These uncertainties are combined into a Total Uncertainty using the correlation coefficients matrix below.
-
 TextColour
 4
 0
