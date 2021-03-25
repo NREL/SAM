@@ -270,7 +270,7 @@ class FilterColumnDialog : public wxDialog
 
 public:
 
-	FilterColumnDialog(wxWindow* parent, int id, ParametricViewer::ColumnFilter& sColumnFilter, wxPoint position = wxDefaultPosition )
+	FilterColumnDialog(wxWindow* parent, int id, ParametricViewer::ColumnFilter sColumnFilter, wxPoint position = wxDefaultPosition )
 		: wxDialog(parent, id, "Filter column", position, wxScaleSize(600, 350),
 			wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER), m_sColumnFilter(sColumnFilter)
 	{
@@ -342,7 +342,7 @@ enum { ID_SELECT_INPUTS = wxID_HIGHEST+494, ID_SELECT_OUTPUTS, ID_NUMRUNS,
 	ID_INPUTMENU_FILL_DOWN_ONE_VALUE, ID_INPUTMENU_FILL_DOWN_EVENLY, 
 	ID_OUTPUTMENU_ADD_PLOT, ID_OUTPUTMENU_REMOVE_PLOT, 
 	ID_OUTPUTMENU_SHOW_DATA, ID_OUTPUTMENU_CLIPBOARD, 
-	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, ID_CLEAR_SORTING, ID_FILTER_COLUMN,
+	ID_OUTPUTMENU_CSV, ID_OUTPUTMENU_EXCEL, ID_CLEAR_SORTING, ID_FILTER_COLUMN, ID_CLEAR_FILTERS,
 	ID_SHOW_ALL_INPUTS, ID_NEW_CASE, ID_QUICK_SETUP, ID_IMPORT, ID_EXPORT_MENU, ID_GEN_LK };
 
 
@@ -367,6 +367,7 @@ BEGIN_EVENT_TABLE(ParametricViewer, wxPanel)
 	EVT_MENU(ID_OUTPUTMENU_CSV, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_GEN_LK, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_CLEAR_SORTING, ParametricViewer::OnMenuItem)
+	EVT_MENU(ID_CLEAR_FILTERS, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_FILTER_COLUMN, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_OUTPUTMENU_EXCEL, ParametricViewer::OnMenuItem)
 	EVT_MENU(ID_CLEAR, ParametricViewer::OnCommand)
@@ -757,6 +758,12 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		RemoveAllPlots();
 		AddAllPlots();
 		break;
+	case ID_CLEAR_FILTERS:
+		m_columnFilters.clear();
+		UpdateGrid();
+		RemoveAllPlots();
+		AddAllPlots();
+		break;
 	case ID_FILTER_COLUMN:
 		FilterColumn(m_selected_grid_col);
 		break;
@@ -809,10 +816,12 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 int ParametricViewer::GetColumnFiltersIndexForColumn(int& col)
 {
 	int ndx = -1;
-	for (auto& cf : m_columnFilters) {
-		ndx++;
-		if (cf.filterColumn == col)
-			break;
+	bool found = false;
+	for (size_t i = 0; i < m_columnFilters.size() && !found; i++) {
+		if (m_columnFilters[i].filterColumn == col) {
+			found = true;
+			ndx = i;
+		}
 	}
 	return ndx;
 }
@@ -836,6 +845,9 @@ void ParametricViewer::FilterColumn(int& col)
 		else {
 			m_columnFilters.erase(m_columnFilters.begin() + ndx);
 		}
+		UpdateGrid();
+		RemoveAllPlots();
+		AddAllPlots();
 	}
 
 }
@@ -1370,6 +1382,10 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent & evt)
 				menu->AppendSeparator();
 				menu->Append(ID_CLEAR_SORTING, _T("Clear column sorting"));
 			}
+			if (m_columnFilters.size() > 0) {
+				menu->AppendSeparator();
+				menu->Append(ID_CLEAR_FILTERS, _T("Clear all column filters"));
+			}
 			PopupMenu(menu, point);
 		}
 		else // header with variables
@@ -1382,8 +1398,12 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent & evt)
 				menu->Append(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, _T("Fill down one value"));
 				menu->Append(ID_INPUTMENU_FILL_DOWN_SEQUENCE, _T("Fill down sequence"));
 				menu->Append(ID_INPUTMENU_FILL_DOWN_EVENLY, _T("Fill down evenly"));
-				menu->AppendSeparator();
-				menu->Append(ID_FILTER_COLUMN, _T("Filter column"));
+				if (auto vv = m_grid_data->GetVarValue(0, m_selected_grid_col)) {
+					if (vv->Type() == VV_NUMBER) {
+						menu->AppendSeparator();
+						menu->Append(ID_FILTER_COLUMN, _T("Filter column"));
+					}
+				}
 				PopupMenu(menu, point);
 			}
 			else
@@ -1398,8 +1418,12 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent & evt)
 				int ndx = m_plot_var_names.Index(m_grid_data->GetVarName(0,m_selected_grid_col));
 				menu->Enable(ID_OUTPUTMENU_ADD_PLOT, (ndx == wxNOT_FOUND));
 				menu->Enable(ID_OUTPUTMENU_REMOVE_PLOT, (ndx != wxNOT_FOUND));
-				menu->AppendSeparator();
-				menu->Append(ID_FILTER_COLUMN, _T("Filter column"));
+				if (auto vv = m_grid_data->GetVarValue(0, m_selected_grid_col)) {
+					if (vv->Type() == VV_NUMBER) {
+						menu->AppendSeparator();
+						menu->Append(ID_FILTER_COLUMN, _T("Filter column"));
+					}
+				}
 				PopupMenu(menu, point);
 			}
 		}
@@ -1597,8 +1621,12 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 							gc->Display(m_grid_data->GetRuns(), g);
 						}
 					}
-					else
-						gc->DisplayParametrics(m_grid_data->GetRuns(), g);
+					else {
+						if (g.X.size() == 0) // old type monthly, etc
+							gc->Display(m_grid_data->GetRuns(), g);
+						else
+							gc->DisplayParametrics(m_grid_data->GetRuns(), g);
+					}
 					m_graphs.push_back(gc);
 					m_layout->Add(gc, 800, 400);
 				}
@@ -1752,6 +1780,34 @@ void ParametricViewer::SelectOutputs()
 	}
 }
 
+bool ParametricViewer::ShowRow(int& row)
+{ // assumption at this point is VV_NUMBER type column to setup a column filter
+	bool showRow = true;
+	for (size_t i = 0; i < m_columnFilters.size() && showRow; i++) {
+		int col = m_columnFilters[i].filterColumn;
+		if (auto vv = m_grid_data->GetVarValue(row, col)) {
+			if (vv->Type() == VV_NUMBER) {// extra paranoid
+				switch (m_columnFilters[i].filterType) {
+				case cft_less_than:
+					showRow = (vv->Value() < m_columnFilters[i].filterCriteria);
+					break;
+				case cft_greater_than:
+					showRow = (vv->Value() > m_columnFilters[i].filterCriteria);
+					break;
+				case cft_equal_to: // may need tolerance
+					showRow = (vv->Value() == m_columnFilters[i].filterCriteria);
+					break;
+				default:
+					showRow = false;
+					break;
+				}
+			}
+		}
+	}
+	return showRow;
+}
+
+
 void ParametricViewer::UpdateGrid()
 {
 	// update grid data with m_par updates from configure and number of runs
@@ -1763,6 +1819,7 @@ void ParametricViewer::UpdateGrid()
 	//m_grid->ForceRefresh();
 	// setting with attr in table base
 	
+	m_grid->Freeze();
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++)
 	{
 		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
@@ -1777,8 +1834,15 @@ void ParametricViewer::UpdateGrid()
 		}
 	}
 	
-	m_grid->AutoSizeColumns();
+	for (int row = 0; row < m_grid_data->GetNumberRows(); row++) {
+		if (ShowRow(row))
+			m_grid->ShowRow(row);
+		else
+			m_grid->HideRow(row);
+	}
 
+	m_grid->AutoSizeColumns();
+	m_grid->Thaw();
 }
 
 
@@ -2676,7 +2740,14 @@ void ParametricGridData::FillEvenly(int col)
 
 std::vector<Simulation *> ParametricGridData::GetRuns()
 {
-	return m_par.Runs;
+//	return m_par.Runs;
+	std::vector<Simulation*> sims;
+	auto view = GetView();
+	for (size_t i = 0; i < m_par.Runs.size(); i++) {
+		if (view->IsRowShown(i))
+			sims.push_back(m_par.Runs[i]);
+	}
+	return sims;
 }
 
 

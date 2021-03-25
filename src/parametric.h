@@ -227,6 +227,7 @@ private:
 
 	void FilterColumn(int& col);
 	int GetColumnFiltersIndexForColumn(int& col);
+	bool ShowRow(int& row);
 
 	void SelectInputs();
 	void SelectOutputs();
