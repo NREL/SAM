@@ -1,5 +1,5 @@
 1
-1106
+1113
 6par_aisc
 1
 1
@@ -1139,13 +1139,13 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_total_cost_lcos
 1
 1
 1
 1
-0
+2.81046e+06
 battery_voltage_shown
 1
 1
@@ -6601,7 +6601,7 @@ total_battery_indirect_cost
 1
 1
 1
-0
+1.30006e+06
 total_dc_inverter_capacity
 1
 1
@@ -6655,13 +6655,13 @@ total_system_indirect_cost
 1
 1
 1
-0
+5200231
 total_system_installed_cost
 1
 1
 1
 1
-0
+50129788
 transformer_load_loss
 1
 1

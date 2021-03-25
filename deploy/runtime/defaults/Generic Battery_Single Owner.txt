@@ -1,5 +1,5 @@
 1
-564
+565
 LeadAcid_q10
 1
 1
@@ -864,13 +864,13 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_total_cost_lcos
 1
 1
 1
 1
-5901343
+4881260
 battery_voltage_shown
 1
 1
@@ -892,7 +892,7 @@ capacity_factor_calc
 1
 1
 1
-41.856
+96
 cbi_fed_amount
 1
 1
@@ -1042,7 +1042,7 @@ const_per_interest1
 1
 1
 1
-1498250
+1.49825e+06
 const_per_interest2
 1
 1
@@ -1102,7 +1102,7 @@ const_per_interest_total
 1
 1
 1
-1498250
+1.49825e+06
 const_per_months1
 1
 1
@@ -1235,7 +1235,7 @@ const_per_total1
 1
 1
 1
-2996490
+2.99649e+06
 const_per_total2
 1
 1
@@ -1295,7 +1295,7 @@ construction_financing_cost
 1
 1
 1
-2996490
+2.99649e+06
 conv_eff
 1
 1
@@ -1903,7 +1903,7 @@ first_year_output
 1
 1
 1
-73331712
+168192000
 first_year_output_peak
 1
 1
@@ -3138,7 +3138,7 @@ total_battery_indirect_cost
 1
 1
 1
-4462864
+3.44278e+06
 total_direct_cost
 1
 1
@@ -3150,7 +3150,7 @@ total_indirect_cost
 1
 1
 1
-22314320
+17213904
 total_installed_cost
 1
 1
@@ -3162,7 +3162,7 @@ total_system_indirect_cost
 1
 1
 1
-17851456
+13771123
 ui_batt_capacity
 1
 1
@@ -3567,4 +3567,4 @@ user_capacity_factor
 1
 1
 1
-43.6
+100
