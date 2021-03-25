@@ -258,49 +258,79 @@ void ParametricGrid::OnColSort(wxGridEvent& evt)
 }
 
 ////////////////////////////////////////////////////////////////////
-enum { ID_FILTER_COLUMN_TYPE = wxID_HIGHEST + 294, ID_FILTER_COLUMN_CRITERIA };
+enum { ID_FILTER_COLUMN_TYPE = wxID_HIGHEST + 294, ID_FILTER_COLUMN_CRITERIA, ID_FILTER_APPLY, ID_FILTER_REMOVE };
 
 class FilterColumnDialog : public wxDialog
 {
-	wxListBox* lstFilterType;
+	wxComboBox* cboFilterType;
 	wxNumericCtrl* numFilterCriteria;
 	ParametricViewer::ColumnFilter m_sColumnFilter;
+	wxButton* btnApplyFilter;
+	wxButton* btnRemoveFilter;
 
 public:
 
-	FilterColumnDialog(wxWindow* parent, int id, ParametricViewer::ColumnFilter& sColumnFilter, wxPoint& position )
+	FilterColumnDialog(wxWindow* parent, int id, ParametricViewer::ColumnFilter& sColumnFilter, wxPoint position = wxDefaultPosition )
 		: wxDialog(parent, id, "Filter column", position, wxScaleSize(600, 350),
 			wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER), m_sColumnFilter(sColumnFilter)
 	{
-		lstFilterType = new wxListBox(this, ID_FILTER_COLUMN_TYPE, wxDefaultPosition, wxDefaultSize, 0, 0, wxLB_SINGLE);
+		//	enum ColumnFilterType {cft_less_than, cft_greater_than, cft_equal_to};
+		wxArrayString choices;
+		choices.Add("Is less than");
+		choices.Add("Is greater than");
+		choices.Add("Is equal to");
+		cboFilterType = new wxComboBox(this, ID_FILTER_COLUMN_TYPE, choices[(int)m_sColumnFilter.filterType], wxDefaultPosition, wxDefaultSize, choices);
+		cboFilterType->SetSelection((int)sColumnFilter.filterType);
+		numFilterCriteria = new wxNumericCtrl(this, ID_FILTER_COLUMN_CRITERIA, sColumnFilter.filterCriteria);
+		btnApplyFilter = new wxButton(this, ID_FILTER_APPLY, "Apply filter");
+		btnRemoveFilter = new wxButton(this, ID_FILTER_REMOVE, "Remove filter");
 
-		wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
-		sizer->Add(lstFilterType, 0, wxLEFT | wxRIGHT | wxEXPAND, 10);
-		sizer->Add(CreateButtonSizer(wxHELP | wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
-		SetSizerAndFit(sizer);
+		wxBoxSizer *szInputs = new wxBoxSizer(wxHORIZONTAL);
+		szInputs->Add(cboFilterType, 0, wxLEFT | wxRIGHT | wxEXPAND, 1);
+		szInputs->Add(numFilterCriteria, 0, wxLEFT | wxRIGHT | wxEXPAND, 1);
+
+		wxBoxSizer* szButtons = new wxBoxSizer(wxHORIZONTAL);
+		szButtons->Add(btnApplyFilter, 0, wxLEFT | wxRIGHT | wxEXPAND, 1);
+		szButtons->Add(btnRemoveFilter, 0, wxLEFT | wxRIGHT | wxEXPAND, 1);
+
+		wxBoxSizer* szMain = new wxBoxSizer(wxVERTICAL);
+		szMain->Add(szInputs);
+		szMain->Add(szButtons);
+
+		SetSizerAndFit(szMain);
 	}
 
 	~FilterColumnDialog()
 	{
 	}
 
-	void OnFilterTypeChange(wxCommandEvent&)
+	ParametricViewer::ColumnFilter& GetColumnFilter()
 	{
-		SamApp::ShowHelp("excel_exchange");
+		return m_sColumnFilter;
 	}
 
-
-	void OnHelp(wxCommandEvent&)
+	void OnApplyFilter(wxCommandEvent&)
 	{
-		SamApp::ShowHelp("excel_exchange");
+		m_sColumnFilter.filterType = (ParametricViewer::ColumnFilterType)cboFilterType->GetSelection();
+		m_sColumnFilter.filterCriteria = numFilterCriteria->Value();
+		EndModal(wxID_OK);
 	}
+
+	void OnRemoveFilter(wxCommandEvent&)
+	{
+		m_sColumnFilter.filterColumn = -1;
+		m_sColumnFilter.filterType = (ParametricViewer::ColumnFilterType)cboFilterType->GetSelection();
+		m_sColumnFilter.filterCriteria = numFilterCriteria->Value();
+		EndModal(wxID_OK);
+	}
+
 
 	DECLARE_EVENT_TABLE();
 };
 
 BEGIN_EVENT_TABLE(FilterColumnDialog, wxDialog)
-EVT_LISTBOX(ID_FILTER_COLUMN_TYPE, FilterColumnDialog::OnFilterTypeChange)
-EVT_BUTTON(wxID_HELP, FilterColumnDialog::OnHelp)
+EVT_BUTTON(ID_FILTER_APPLY, FilterColumnDialog::OnApplyFilter)
+EVT_BUTTON(ID_FILTER_REMOVE, FilterColumnDialog::OnRemoveFilter)
 END_EVENT_TABLE()
 
 
@@ -776,8 +806,37 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 	}
 }
 
+int ParametricViewer::GetColumnFiltersIndexForColumn(int& col)
+{
+	int ndx = -1;
+	for (auto& cf : m_columnFilters) {
+		ndx++;
+		if (cf.filterColumn == col)
+			break;
+	}
+	return ndx;
+}
+
+
 void ParametricViewer::FilterColumn(int& col)
 {
+	int ndx = GetColumnFiltersIndexForColumn(col);
+	ColumnFilter sColumnFilter(col);
+	if (ndx > -1)
+		sColumnFilter = m_columnFilters[ndx];
+	FilterColumnDialog dlg(this, wxID_ANY, sColumnFilter);
+	if (dlg.ShowModal() == wxID_OK) {
+		sColumnFilter = dlg.GetColumnFilter();
+		if (sColumnFilter.filterColumn > -1) {
+			if (ndx > -1)
+				m_columnFilters[ndx] = sColumnFilter;
+			else
+				m_columnFilters.push_back(sColumnFilter);
+		}
+		else {
+			m_columnFilters.erase(m_columnFilters.begin() + ndx);
+		}
+	}
 
 }
 
@@ -1323,6 +1382,8 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent & evt)
 				menu->Append(ID_INPUTMENU_FILL_DOWN_ONE_VALUE, _T("Fill down one value"));
 				menu->Append(ID_INPUTMENU_FILL_DOWN_SEQUENCE, _T("Fill down sequence"));
 				menu->Append(ID_INPUTMENU_FILL_DOWN_EVENLY, _T("Fill down evenly"));
+				menu->AppendSeparator();
+				menu->Append(ID_FILTER_COLUMN, _T("Filter column"));
 				PopupMenu(menu, point);
 			}
 			else
@@ -1332,10 +1393,13 @@ void ParametricViewer::OnGridColLabelRightClick(wxGridEvent & evt)
 				wxMenu *menu = new wxMenu;
 				menu->Append(ID_OUTPUTMENU_ADD_PLOT, _T("Add plot"));
 				menu->Append(ID_OUTPUTMENU_REMOVE_PLOT, _T("Remove plot"));
+				menu->AppendSeparator();
 				menu->Append(ID_OUTPUTMENU_SHOW_DATA, _T("Show all data"));
 				int ndx = m_plot_var_names.Index(m_grid_data->GetVarName(0,m_selected_grid_col));
 				menu->Enable(ID_OUTPUTMENU_ADD_PLOT, (ndx == wxNOT_FOUND));
 				menu->Enable(ID_OUTPUTMENU_REMOVE_PLOT, (ndx != wxNOT_FOUND));
+				menu->AppendSeparator();
+				menu->Append(ID_FILTER_COLUMN, _T("Filter column"));
 				PopupMenu(menu, point);
 			}
 		}

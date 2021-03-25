@@ -204,6 +204,16 @@ public:
 	enum ColumnFilterType {cft_less_than, cft_greater_than, cft_equal_to};
 
 	struct ColumnFilter {
+		ColumnFilter::ColumnFilter() {
+			filterColumn = -1;
+			filterType = ColumnFilterType::cft_less_than;
+			filterCriteria = 0.0;
+		};
+		ColumnFilter::ColumnFilter(int &col) {
+			filterColumn = col;
+			filterType = ColumnFilterType::cft_less_than;
+			filterCriteria = 0.0;
+		};
 		int filterColumn;
 		ColumnFilterType filterType;
 		double filterCriteria;
@@ -216,6 +226,7 @@ private:
 	void OnMenuItem(wxCommandEvent &evt);
 
 	void FilterColumn(int& col);
+	int GetColumnFiltersIndexForColumn(int& col);
 
 	void SelectInputs();
 	void SelectOutputs();
