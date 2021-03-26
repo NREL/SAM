@@ -12,6 +12,29 @@ function wind_pruf_graphs()
 	}
 }
 
+function wind_heatmap_graphs()
+{
+	if (${wind_resource_model_choice} == 0) {
+		agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Hour', 'Month', -1, true, false, 'bottom', 4); 
+	}
+}
+
+function heatmap_graphs()
+{
+	tech = technology();
+	if (tech == "Wind Power") {
+		if (${wind_resource_model_choice} == 0) {
+			agraph( 'annual_energy_distribution_time', 'Year 1 Annual Energy Production (kWh)', 'Day', 'Hour', -1, true, false, 'bottom', 4); 
+		}
+	}
+	else {
+		agraph( 'annual_energy_distribution_time', 'Year 1 Annual Energy Production (kWh)', 'Day', 'Hour', -1, true, false, 'bottom', 4); 
+	}
+
+}
+
+
+
 //**************Categories of graphs for financials**************************
 function rescom_financial_graphs()
 {
