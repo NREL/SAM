@@ -1,7 +1,7 @@
 PV Capex Table Land
 827
 383
-13
+14
 GroupBox
 
 1
@@ -85,8 +85,8 @@ Numeric
 17
 Name
 5
-28
-capex_table_land_cost_per_kw
+30
+capex_table_land_cost_per_acre
 X
 3
 210
@@ -619,6 +619,54 @@ Name
 object 78
 X
 3
+483
+Y
+3
+324
+Width
+3
+39
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+5
+acres
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 783
+X
+3
 303
 Y
 3
@@ -658,28 +706,15 @@ AlignTop
 2
 0
 
-5
-capex_land_warning_message
+4
+capex_table_land_cost_per_acre
 3
-4
- 
- 
- 
-0
-0
 1
-4
+Land cost per acre
+$/acre
+Capital Costs
+0
 9
-<invalid>
-Label
-capex_table_land_cost_per_kw
-3
-1
- 
- 
- 
-0
-8
 1
 1
 1
@@ -703,11 +738,11 @@ Default
 capex_table_total_installed_land_cost
 3
 1
- 
- 
- 
+Total land installed cost
+$
+Capital Costs
 0
-8
+9
 1
 1
 1
@@ -717,11 +752,11 @@ Default
 land_area_capex
 3
 1
- 
+Total land area
 acres
- 
+Capital Costs
 0
-8
+9
 1
 1
 1
@@ -733,7 +768,7 @@ Default
 equations{'land_area_capex'} = define() {
 	return ${land_area_value};
 };
-5597
+5603
 function capex_table_land_inputs_update_plot()
 {
 	Cap = [];
@@ -748,7 +783,7 @@ function capex_table_land_inputs_update_plot()
 		
 	sys_cap_bin[0] = sys_cap;
 	sys_cap_bin[1] = -500000;
-	sys_cost_bin[0] = ${capex_table_land_cost_per_kw};
+	sys_cost_bin[0] = ${capex_table_land_cost_per_acre};
 	sys_cost_bin[1] = -100;
 	
 	curves = [ [ 1000, 25, 'black' ],
@@ -891,7 +926,7 @@ function interpolate_land_capex_table()
 	if (nc == 1) {
 		cost = 0;
 		total_cost = cost*sys_cap;
-		value("capex_table_land_cost_per_kw", cost);
+		value("capex_table_land_cost_per_acre", cost);
 		value("capex_table_total_installed_land_cost",total_cost);
 		property('capex_land_warning_message', 'Caption', 'The cost table must have two columns: Acreage (acres) and Land Costs ($/acre).');
 		exit;
@@ -934,7 +969,7 @@ function interpolate_land_capex_table()
 			
 	}
 	total_cost = cost*sys_cap;
-	value("capex_table_land_cost_per_kw", cost);
+	value("capex_table_land_cost_per_acre", cost);
 	value("capex_table_total_installed_land_cost",total_cost);
 	//value("total_installed_cost", total_cost);
 	//refresh();

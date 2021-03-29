@@ -11,13 +11,8 @@
 #include "SAM_Sco2DesignCycle.h"
 
 SAM_EXPORT int SAM_Sco2DesignCycle_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("sco2_design_cycle", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("sco2_design_cycle", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Sco2DesignCycle_SCO2PowerCycle_I_N_t_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

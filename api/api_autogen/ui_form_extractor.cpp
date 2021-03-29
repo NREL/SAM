@@ -8,7 +8,7 @@
 std::unordered_map<std::string, std::unordered_map<std::string, VarValue>> SAM_ui_form_to_defaults;
 ui_form_extractor_database SAM_ui_extracted_db;
 
-VarValue ui_form_extractor::get_varvalue(wxInputStream &is, wxString var_name) {
+VarValue ui_form_extractor::get_varvalue(wxInputStream &is, const wxString& var_name) {
     wxTextInputStream in(is, "\n");
     VarValue vv;
 
@@ -135,7 +135,7 @@ void ui_form_extractor::get_eqn_and_callback_script(wxInputStream& is) {
     m_callback_script = tmp.ToStdString();
 }
 
-bool ui_form_extractor::extract(std::string file) {
+bool ui_form_extractor::extract(const std::string& file) {
     wxFileName ff(file);
 
     // store the lk scripts
@@ -148,15 +148,13 @@ bool ui_form_extractor::extract(std::string file) {
 }
 
 /// Populates SAM_ui_extracted_db, SAM_ui_form_to_eqn_info, and
-bool ui_form_extractor_database::populate_ui_data(std::string ui_path, std::vector<std::string> ui_form_names){
-    for (size_t i = 0; i < ui_form_names.size(); i++){
-        std::string ui_name = ui_form_names[i];
-
+bool ui_form_extractor_database::populate_ui_data(const std::string& ui_path, const std::vector<std::string>& ui_form_names){
+    for (const auto& ui_name : ui_form_names){
         ui_form_extractor* ui_fe = SAM_ui_extracted_db.make_entry(ui_name);
         bool success = ui_fe->extract(ui_path + ui_name + ".txt");
 
         if (!success){
-            std::cout << "ui_form_extractor_database error: Cannot open " + ui_name + " file at " + ui_path;
+            std::cout << "ui_form_extractor_database error: Cannot open " << ui_name << " file at " << ui_path;
             return false;
         }
 

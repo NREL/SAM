@@ -37,12 +37,13 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
 
     fx_file << "\tSAM_EXPORT typedef void * SAM_" << cmod_symbol << ";\n\n";
 
-    if (stateful) {
-        fx_file << "\tSAM_EXPORT SAM_" << cmod_symbol << " SAM_"<< cmod_symbol << "_setup(SAM_table data, SAM_error* err);\n"
-                   "\n";
+    if (!stateful) {
+        fx_file << "\t/// verbosity level 0 or 1. Returns 1 on success\n"
+                   "\tSAM_EXPORT int SAM_" << cmod_symbol  << "_execute(SAM_table data, int verbosity, SAM_error* err);\n\n";
     }
-    fx_file << "\t/// verbosity level 0 or 1. Returns 1 on success\n"
-               "\tSAM_EXPORT int SAM_" << cmod_symbol  << "_execute(SAM_table data, int verbosity, SAM_error* err);\n\n";
+    else {
+        fx_file << "\tSAM_EXPORT SAM_" << cmod_symbol << " SAM_" << cmod_symbol  << "_setup(SAM_table data, SAM_error* err);\n\n";
+    }
 
     // start ssc variables
 
@@ -60,10 +61,10 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
                    "\t//\n"
                    "\t// " << module_symbol << " parameters\n"
                    "\t//\n\n";
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_symbol = it->first;
+        for (auto & vardef : vardefs) {
+            std::string var_symbol = vardef.first;
 
-            var_def vd = it->second;
+            var_def vd = vardef.second;
             std::string var_name = vd.name;
 
             fx_file << "\t/**\n";
@@ -105,8 +106,8 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
             }
         }
     }
-    for (size_t i = 0; i < root->vardefs_order.size(); i++) {
-        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+    for (auto & i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
         std::map<std::string, var_def> vardefs = mm->second;
         std::string module_symbol = format_as_symbol(mm->first);
 
@@ -117,10 +118,10 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
         fx_file << "\n\t/**\n";
         fx_file << "\t * " << module_symbol << " Getters\n\t */\n\n";
 
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it){
-            std::string var_symbol = it->first;
+        for (auto & vardef : vardefs){
+            std::string var_symbol = vardef.first;
 
-            var_def vd = it->second;
+            var_def vd = vardef.second;
             std::string var_name = vd.name;
 
             if (vd.type == "number"){
@@ -175,26 +176,13 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
                "#include \"ErrorHandler.h\"\n"
                "#include \"SAM_" << cmod_symbol << ".h\"\n\n";
 
-    if (stateful) {
-        fx_file << "SAM_EXPORT SAM_" << cmod_symbol << " SAM_" << cmod_symbol << "_setup(SAM_table data, SAM_error* err){\n"
-                   "\tSAM_module result = nullptr;\n"
-                   "\ttranslateExceptions(err, [&]{\n"
-                   "\t\tresult = ssc_stateful_module_create(\"" << cmod << "\", data);\n"
-                   "\t});\n"
-                   "\treturn result;\n"
-                   "}\n"
-                   "\n";
+    if (!stateful) {
+        fx_file << "SAM_EXPORT int SAM_" << cmod_symbol << "_execute(SAM_table data, int verbosity, SAM_error* err){\n"
+                   "\treturn SAM_module_exec(\"" << cmod << "\", data, verbosity, err);\n}\n\n";
     }
     else {
-        fx_file << "SAM_EXPORT int SAM_" << cmod_symbol << "_execute(SAM_table data, int verbosity, SAM_error* err){\n"
-                   "\tint n_err = 0;\n"
-                   "\ttranslateExceptions(err, [&]{\n"
-                   "\t\tn_err += SAM_module_exec(\"" << cmod << "\", data, verbosity, err);\n"
-                   "\t});\n"
-                   "\treturn n_err;\n"
-                   "}\n"
-                   "\n"
-                   "\n";
+        fx_file << "SAM_EXPORT SAM_" << cmod_symbol << " SAM_" << cmod_symbol << "_setup(SAM_table data, SAM_error* err){\n"
+                   "\treturn SAM_stateful_module_setup(\"" << cmod << "\", data, err);\n}\n\n";
     }
 
     // start ssc variables
@@ -208,10 +196,10 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
         if (mm->first == "AdjustmentFactors")
             continue;
 
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it) {
-            std::string var_symbol = it->first;
+        for (auto & vardef : vardefs) {
+            std::string var_symbol = vardef.first;
 
-            var_def vd = it->second;
+            var_def vd = vardef.second;
             std::string var_name = vd.name;
 
             fx_file << "SAM_EXPORT void SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol;
@@ -247,18 +235,18 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
     }
 
     // getters
-    for (size_t i = 0; i < root->vardefs_order.size(); i++) {
-        auto mm = root->m_vardefs.find(root->vardefs_order[i]);
+    for (auto & i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
         std::map<std::string, var_def> vardefs = mm->second;
         std::string module_symbol = format_as_symbol(mm->first);
 
         if (mm->first == "AdjustmentFactors")
             continue;
 
-        for (auto it = vardefs.begin(); it != vardefs.end(); ++it){
-            std::string var_symbol = it->first;
+        for (auto & vardef : vardefs){
+            std::string var_symbol = vardef.first;
 
-            var_def vd = it->second;
+            var_def vd = vardef.second;
             std::string var_name = vd.name;
 
             if (vd.type == "number"){

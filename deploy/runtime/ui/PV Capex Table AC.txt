@@ -1,7 +1,7 @@
 PV Capex Table AC
 829
 381
-13
+14
 GroupBox
 
 1
@@ -85,8 +85,8 @@ Numeric
 17
 Name
 5
-26
-capex_table_ac_cost_per_kw
+25
+capex_table_ac_cost_per_w
 X
 3
 210
@@ -619,6 +619,54 @@ Name
 object 76
 X
 3
+483
+Y
+3
+333
+Width
+3
+45
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+3
+Wac
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 761
+X
+3
 303
 Y
 3
@@ -658,27 +706,15 @@ AlignTop
 2
 0
 
-5
-capex_ac_warning_message
-3
 4
- 
- 
- 
-0
-0
-1
-4
-0
-Label
-capex_table_ac_cost_per_kw
+capex_table_ac_cost_per_w
 3
 1
- 
- 
- 
+AC cost per Watt
+$/Wac
+Capital Costs
 0
-8
+9
 1
 1
 1
@@ -702,11 +738,11 @@ Default
 capex_table_total_installed_ac_cost
 3
 1
- 
- 
- 
+Total installed AC costs
+ $
+Capital Costs
 0
-8
+9
 1
 1
 1
@@ -716,11 +752,11 @@ Default
 inverterarray_power_w
 3
 1
- 
+Inverter AC rating
 Wac
- 
+Capital Costs
 0
-8
+9
 1
 1
 1
@@ -732,7 +768,7 @@ Default
 equations{'inverterarray_power_w'} = define() {
 	return ${inverterarray_power}*1000;
 };
-5583
+5580
 function capex_table_ac_inputs_update_plot()
 {
 	Cap = [];
@@ -747,7 +783,7 @@ function capex_table_ac_inputs_update_plot()
 		
 	sys_cap_bin[0] = sys_cap;
 	sys_cap_bin[1] = -100;
-	sys_cost_bin[0] = ${capex_table_ac_cost_per_kw};
+	sys_cost_bin[0] = ${capex_table_ac_cost_per_w};
 	sys_cost_bin[1] = -100;
 	
 	curves = [ [ 1000, 25, 'black' ],
@@ -890,7 +926,7 @@ function interpolate_ac_capex_table()
 	if (nc == 1) {
 		cost = 0;
 		total_cost = cost*sys_cap;
-		value("capex_table_ac_cost_per_kw", cost);
+		value("capex_table_ac_cost_per_w", cost);
 		value("capex_table_total_installed_ac_cost",total_cost);
 		property('capex_ac_warning_message', 'Caption', 'The cost table must have two columns: Capacity (Wac) and AC Costs ($/Wac).');
 		exit;
@@ -932,7 +968,7 @@ function interpolate_ac_capex_table()
 		property('capex_ac_warning_message','Caption','');
 	}
 	total_cost = cost*sys_cap;
-	value("capex_table_ac_cost_per_kw", cost);
+	value("capex_table_ac_cost_per_w", cost);
 	value("capex_table_total_installed_ac_cost",total_cost);
 	//value("total_installed_cost", total_cost);
 	//refresh();

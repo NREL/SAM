@@ -587,8 +587,8 @@ Tool Tip
 0
 Caption
 5
-521
-Use these capex curves to define the DC Module costs, AC inverter costs, land costs, and battery costs for your project. The cost tables will automatically calculate the costs for each category based on the DC module array capacity, AC inverter capacity, total land area, and battery energy capacities calculated in the System Design and Battery Cell and System pages. Please account for indirect costs such as sales tax costs in the cost table inputs. The total installed cost is the sum of these three cost components. 
+496
+Use these capex curves to define the DC costs, AC costs, land costs, and battery costs for your project. The cost tables will automatically calculate the costs for each category based on the DC array capacity, AC inverter capacity, total land area, and battery energy capacity calculated in the System Design and Battery Cell and System pages. Please account for indirect costs such as sales tax costs in the cost table inputs. The total installed cost is the sum of these three cost components. 
 TextColour
 4
 0
