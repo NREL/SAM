@@ -166,7 +166,7 @@ Name
 batt_Qfull
 X
 3
-156
+186
 Y
 3
 117
@@ -228,7 +228,7 @@ Name
 batt_Vnom_default
 X
 3
-156
+186
 Y
 3
 90
@@ -290,7 +290,7 @@ Name
 batt_bank_voltage
 X
 3
-156
+186
 Y
 3
 63
@@ -1068,7 +1068,7 @@ Name
 batt_current_choice
 X
 3
-321
+336
 Y
 3
 66

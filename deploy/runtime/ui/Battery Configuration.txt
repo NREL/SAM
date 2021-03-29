@@ -563,9 +563,10 @@ PV inverter nominal efficiency
 0
 Numeric
 
-374
+445
 equations{'batt_ui_inverter_eff'} = define() {
-	if ( technology() == 'Generic Battery' ) { return 96; }	
+	// note PVWatts default inv_eff set to 96% in cmod_pvwattsv7.cpp var table
+	if ( technology() != 'PV Battery' ) { return 96; }	
 	inv_model = ${inverter_model};
 	if (inv_model == 0){ return ${inv_snl_eff_cec};		}
 	elseif (inv_model == 1) { return ${inv_ds_eff}; }
