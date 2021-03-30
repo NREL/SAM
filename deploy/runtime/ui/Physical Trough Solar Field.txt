@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-9227
+10167
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -4737,6 +4737,7 @@ equations{ 'defocus' } = define() {
 	return 1;
 };
 
+/*
 equations{ 'max_field_flow_velocity' } = define() {
 	return ${m_dot_htfmax}*4/(${fluid_dens_outlet_temp} * pi() * 
 				pow( ${min_inner_diameter},2) );
@@ -4746,11 +4747,13 @@ equations{ 'min_field_flow_velocity' } = define() {
 	return ${m_dot_htfmin}*4/(${fluid_dens_inlet_temp} * pi() * 
 				pow(${min_inner_diameter},2) );
 };
+*/
 
 equations{ 'fthrctrl' } = define() {
 	return ${combo_feather}+1;
 };
 
+/*
 equations{ 'field_htf_cp_avg' } = define() {
 	if (${combo_htf_type} < 10 )
 		return substance_specific_heat( ${Fluid}, 0.5*(${T_loop_in_des}+${T_loop_out}) );
@@ -4758,6 +4761,7 @@ equations{ 'field_htf_cp_avg' } = define() {
 		return substance_userhtf(${field_fl_props},0.5*(${T_loop_in_des}+${T_loop_out}),"specific heat"); 
 		//return cspdtr_tes_userhtf( 1, 0.5*(${T_loop_in_des}+${T_loop_out}) );
 };
+*/
 
 equations{ 'FieldConfig' } = define() {
 	if( ${combo_FieldConfig} == 0 )
@@ -5057,6 +5061,38 @@ equations{ 'Type_cpnt' } = define() {
 	T[${nSCA} + 2] = Type_cpnt_x_1;
 
 	return T;
+};
+
+
+equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
+	// field_htf_cp_avg
+	data.T_loop_in_des = ${T_loop_in_des};
+	data.T_loop_out = ${T_loop_out};
+	data.fluid = ${Fluid};
+	data.field_fl_props = ${field_fl_props};
+	
+	// max_field_flow_velocity
+	data.m_dot_htfmax = ${m_dot_htfmax};
+	data.fluid_dens_outlet_temp = ${fluid_dens_outlet_temp};
+	data.min_inner_diameter = ${min_inner_diameter};
+	
+	// min_field_flow_velocity
+	data.m_dot_htfmin = ${m_dot_htfmin};
+	data.fluid_dens_inlet_temp = ${fluid_dens_inlet_temp};
+	
+	success = ssc_eqn("Physical_Trough_Solar_Field_Equations", data);
+	if (!success) {
+		${max_field_flow_velocity} = -999.;
+		${min_field_flow_velocity} = -999.;
+		${field_htf_cp_avg} = -999.;
+	}
+	else {
+		${max_field_flow_velocity} = data.max_field_flow_velocity;
+		${min_field_flow_velocity} = data.min_field_flow_velocity;
+		${field_htf_cp_avg} = data.field_htf_cp_avg;
+	}
+	
+	return 0;
 };
 
 3556
