@@ -1085,7 +1085,7 @@ void StochasticPanel::OnGridColLabelRightClick(wxGridEvent &evt)
 {
 	m_selected_grid_col = evt.GetCol();
 	m_selected_grid_row = evt.GetRow();
-	if (m_selected_grid_col < 0) // row header
+	if ((m_selected_grid_col < 0) && (m_selected_grid_row > -1)) // row header - skip upper left corner -1,-1
 	{
 		//	row menu
 		wxPoint point = evt.GetPosition();
