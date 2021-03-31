@@ -43,7 +43,6 @@ branches:
   only:
   - master
   - develop
-  - MHK
   - patch
-  - wind_pruf
+  - heatmap_month_by_hour
   - Command_line_script
