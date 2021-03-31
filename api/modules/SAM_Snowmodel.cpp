@@ -11,8 +11,13 @@
 #include "SAM_Snowmodel.h"
 
 SAM_EXPORT int SAM_Snowmodel_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("snowmodel", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("snowmodel", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_Snowmodel_PVSnowModel_snowdepth_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{

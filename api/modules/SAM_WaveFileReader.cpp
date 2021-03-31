@@ -11,8 +11,13 @@
 #include "SAM_WaveFileReader.h"
 
 SAM_EXPORT int SAM_WaveFileReader_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("wave_file_reader", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("wave_file_reader", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

@@ -19,7 +19,7 @@
 			"system_capacity": 4.69287
 		},
 		"SystemCosts": {
-			"om_capacity": [29.000000],
+			"om_capacity": [20.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -27,9 +27,9 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [316.310000],
+			"om_replacement_cost1": [300.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 20909.6
+			"total_installed_cost": 17577.4
 		},
 		"Depreciation": {
 		},
@@ -146,10 +146,10 @@
 			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 9.60768,
+			"batt_computed_bank_capacity": 4000,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 316.31,
+			"battery_per_kWh": 300,
 			"en_batt": 1
 		},
 		"FuelCell": {

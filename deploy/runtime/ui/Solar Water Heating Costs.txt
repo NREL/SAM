@@ -1,7 +1,7 @@
 Solar Water Heating Costs
 699
-665
-37
+503
+36
 GroupBox
 
 1
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-471
+405
 Width
 3
 683
@@ -153,7 +153,7 @@ X
 480
 Y
 3
-429
+318
 Width
 3
 98
@@ -345,7 +345,7 @@ X
 309
 Y
 3
-429
+318
 Width
 3
 68
@@ -995,7 +995,7 @@ X
 579
 Y
 3
-525
+459
 Width
 3
 100
@@ -1058,7 +1058,7 @@ X
 12
 Y
 3
-492
+426
 Width
 3
 266
@@ -1155,36 +1155,6 @@ BackColour
 TabOrder
 3
 0
-GroupBox
-
-1
-8
-Name
-5
-8
-object 4
-X
-3
-6
-Y
-3
-408
-Width
-3
-683
-Height
-3
-57
-Tool Tip
-5
-0
-Caption
-5
-9
-Sales Tax
-Bold
-2
-1
 Numeric
 
 1
@@ -1574,7 +1544,7 @@ X
 378
 Y
 3
-429
+318
 Width
 3
 100
@@ -1637,7 +1607,7 @@ X
 579
 Y
 3
-429
+318
 Width
 3
 100
@@ -1700,7 +1670,7 @@ X
 207
 Y
 3
-429
+318
 Width
 3
 100
@@ -1986,7 +1956,7 @@ X
 579
 Y
 3
-498
+432
 Width
 3
 100
@@ -2471,10 +2441,10 @@ equations{ 'total_direct' } = define() {
 +${collector}; };
 
 equations{ 'total_indirect' } = define() {
-	return ${epc_total}+${plm_total}; };
+	return ${epc_total}+${plm_total}+${sales_tax_total}; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct}+${total_indirect}+${sales_tax_total}; };
+	return ${total_direct}+${total_indirect}; };
 
 equations { 'system_use_recapitalization' } = define () {
 	return 0;};

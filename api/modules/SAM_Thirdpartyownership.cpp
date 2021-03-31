@@ -11,8 +11,13 @@
 #include "SAM_Thirdpartyownership.h"
 
 SAM_EXPORT int SAM_Thirdpartyownership_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("thirdpartyownership", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("thirdpartyownership", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{

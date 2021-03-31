@@ -1,7 +1,7 @@
 Financial Tax and Insurance Rates
-857
-230
-13
+862
+159
+10
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 850
 Height
 3
-221
+152
 Tool Tip
 5
 0
@@ -30,53 +30,6 @@ Caption
 31
 Project Tax and Insurance Rates
 Bold
-2
-1
-Label
-
-1
-13
-Name
-5
-29
-capex_table_sales_tax_warning
-X
-3
-18
-Y
-3
-171
-Width
-3
-384
-Height
-3
-48
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
 2
 1
 SchedNumeric
@@ -92,7 +45,7 @@ X
 213
 Y
 3
-36
+33
 Width
 3
 60
@@ -131,10 +84,10 @@ Name
 insurance_rate
 X
 3
-216
+213
 Y
 3
-111
+114
 Width
 3
 60
@@ -190,94 +143,16 @@ Divider
 Name
 5
 9
-object 21
-X
-3
-24
-Y
-3
-96
-Width
-3
-375
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-23
-Sales Tax and Insurance
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-10
-object 214
-X
-3
-24
-Y
-3
-21
-Width
-3
-375
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-10
-Income Tax
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-9
 object 22
 X
 3
-435
+441
 Y
 3
-21
+15
 Width
 3
-375
+327
 Height
 3
 22
@@ -310,10 +185,10 @@ Name
 prop_tax_assessed_decline
 X
 3
-585
+588
 Y
 3
-90
+87
 Width
 3
 60
@@ -372,10 +247,10 @@ Name
 prop_tax_cost_assessed_percent
 X
 3
-585
+588
 Y
 3
-36
+33
 Width
 3
 60
@@ -434,10 +309,10 @@ Name
 property_assessed_value
 X
 3
-585
+588
 Y
 3
-63
+60
 Width
 3
 120
@@ -496,10 +371,10 @@ Name
 property_tax_rate
 X
 3
-585
+588
 Y
 3
-117
+114
 Width
 3
 60
@@ -558,10 +433,10 @@ Name
 sales_tax_rate
 X
 3
-216
+213
 Y
 3
-138
+87
 Width
 3
 60
@@ -623,7 +498,7 @@ X
 213
 Y
 3
-63
+60
 Width
 3
 60
@@ -772,29 +647,4 @@ equations{ 'property_assessed_value' } = define() {
 	return ${prop_tax_cost_assessed_percent} / 100.0 * ${total_installed_cost}; };
 
 
-768
-function enable_sales_tax() 
-{
-
-	str = 'The sales tax rate applies to the total direct cost on the System Costs page.';
-	color = 'black';
-	
-	tech = technology();
-	if (tech=='Flat Plate PV' || tech=='PVWatts') {
-		capex_cost_choice = value('pv_capex_cost_choice');
-		enable('sales_tax_rate', capex_cost_choice!=1);
-		if ( capex_cost_choice == 1 ) {
-			str = 'Sales tax is disabled for the capital cost curve option on the System Costs page. Be sure to include sales tax in the costs you specify on the System Costs page.';
-			color = 'black';
-		}	
-	}
-
-	property( 'capex_table_sales_tax_warning', 'Caption', str );
-	property( 'capex_table_sales_tax_warning', 'TextColour', color );
-}
-
-on_load{'Financial Tax and Insurance Rates'} = define() {
-	enable_sales_tax();
-};
-	
-	
+0

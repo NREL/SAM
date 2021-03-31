@@ -11,8 +11,13 @@
 #include "SAM_Tcsdish.h"
 
 SAM_EXPORT int SAM_Tcsdish_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("tcsdish", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("tcsdish", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_Tcsdish_Weather_file_name_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{

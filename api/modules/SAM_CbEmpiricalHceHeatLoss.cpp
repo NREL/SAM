@@ -11,8 +11,13 @@
 #include "SAM_CbEmpiricalHceHeatLoss.h"
 
 SAM_EXPORT int SAM_CbEmpiricalHceHeatLoss_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("cb_empirical_hce_heat_loss", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("cb_empirical_hce_heat_loss", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_CbEmpiricalHceHeatLoss_Hce_HCEFrac_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{

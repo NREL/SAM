@@ -1,7 +1,7 @@
 Dish Capital Costs
-738
-529
-47
+733
+520
+46
 GroupBox
 
 1
@@ -51,7 +51,7 @@ Width
 722
 Height
 3
-158
+209
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 9
 Y
 3
-435
+423
 Width
 3
 722
@@ -147,13 +147,13 @@ Label
 Name
 5
 9
-Label1111
+Label1112
 X
 3
-483
+480
 Y
 3
-396
+342
 Width
 3
 98
@@ -482,14 +482,14 @@ Label
 13
 Name
 5
-8
-Label511
+7
+Label51
 X
 3
-312
+309
 Y
 3
-396
+342
 Width
 3
 68
@@ -1354,7 +1354,7 @@ X
 582
 Y
 3
-486
+474
 Width
 3
 136
@@ -1979,10 +1979,10 @@ Name
 csp.ds.cost.sales_tax.percent
 X
 3
-381
+378
 Y
 3
-396
+342
 Width
 3
 100
@@ -2042,10 +2042,10 @@ Name
 csp.ds.cost.sales_tax.total
 X
 3
-585
+582
 Y
 3
-396
+342
 Width
 3
 136
@@ -2108,7 +2108,7 @@ X
 210
 Y
 3
-396
+342
 Width
 3
 100
@@ -2421,7 +2421,7 @@ X
 27
 Y
 3
-459
+447
 Width
 3
 242
@@ -2454,36 +2454,6 @@ AlignRight
 2
 0
 AlignTop
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-8
-object 4
-X
-3
-9
-Y
-3
-375
-Width
-3
-722
-Height
-3
-54
-Tool Tip
-5
-0
-Caption
-5
-9
-Sales Tax
-Bold
 2
 1
 Numeric
@@ -2562,7 +2532,7 @@ X
 582
 Y
 3
-336
+390
 Width
 3
 136
@@ -2625,7 +2595,7 @@ X
 582
 Y
 3
-462
+450
 Width
 3
 136
@@ -3187,10 +3157,10 @@ equations{ 'total_direct_cost' } = define() {
 +${csp.ds.cost.contingency}; };
 
 equations{ 'total_indirect_cost' } = define() {
-	return ${csp.ds.cost.epc.total}+${csp.ds.cost.plm.total}; };
+	return ${csp.ds.cost.epc.total}+${csp.ds.cost.plm.total}+${csp.ds.cost.sales_tax.total}; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}+${csp.ds.cost.sales_tax.total}; };
+	return ${total_direct_cost}+${total_indirect_cost}; };
 
 equations{ 'csp.ds.cost.receiver' } = define() {
 	return ${csp.ds.ncollectors}*${csp.ds.cost.receiver.kw}*${csp.ds.cost.receiver.cost_per_kw}; };

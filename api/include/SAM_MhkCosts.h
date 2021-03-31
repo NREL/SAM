@@ -32,6 +32,14 @@ extern "C"
 	//
 
 	/**
+	 * Set annual_energy: Annual energy production [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_MhkCosts_MHKCosts_annual_energy_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set array_cable_system_cost_input: Array cable system cost [$]
 	 * options: None
 	 * constraints: None
@@ -300,6 +308,8 @@ extern "C"
 	 * MHKCosts Getters
 	 */
 
+	SAM_EXPORT double SAM_MhkCosts_MHKCosts_annual_energy_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_MhkCosts_MHKCosts_array_cable_system_cost_input_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkCosts_MHKCosts_array_cable_system_cost_method_nget(SAM_table ptr, SAM_error *err);
@@ -408,6 +418,16 @@ extern "C"
 	SAM_EXPORT double SAM_MhkCosts_Outputs_site_access_port_staging_cost_modeled_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkCosts_Outputs_structural_assembly_cost_modeled_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkCosts_Outputs_total_bos_cost_per_kwh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkCosts_Outputs_total_capital_cost_per_kwh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkCosts_Outputs_total_device_cost_per_kwh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkCosts_Outputs_total_financial_cost_per_kwh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkCosts_Outputs_total_operations_cost_per_kwh_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

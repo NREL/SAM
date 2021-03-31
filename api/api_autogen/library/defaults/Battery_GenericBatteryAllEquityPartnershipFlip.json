@@ -16,6 +16,8 @@
 			"batt_current_charge_max": 1998.4,
 			"batt_current_choice": 0,
 			"batt_current_discharge_max": 1998.4,
+			"batt_cycle_cost": [0.100000],
+			"batt_cycle_cost_choice": 0,
 			"batt_dc_ac_efficiency": 96,
 			"batt_dc_dc_efficiency": 99,
 			"batt_inverter_efficiency_cutoff": 90,
@@ -35,7 +37,7 @@
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_surface_area": 89.0141,
 			"en_batt": 1,
-			"om_replacement_cost1": [293.840000]
+			"om_replacement_cost1": [500.000000]
 		},
 		"SystemOutput": {
 		},
@@ -52,7 +54,6 @@
 			"batt_Qfull": 3.2,
 			"batt_Qfull_flow": 7994.25,
 			"batt_Qnom": 3.126,
-			"batt_Vcut": 2.772,
 			"batt_Vexp": 3.53,
 			"batt_Vfull": 4.2,
 			"batt_Vnom": 3.342,
@@ -120,8 +121,6 @@
 		"BatteryDispatch": {
 			"batt_auto_gridcharge_max_daily": 100,
 			"batt_custom_dispatch": [0.000000],
-			"batt_cycle_cost": [0.100000],
-			"batt_cycle_cost_choice": 0,
 			"batt_dispatch_auto_can_charge": 1,
 			"batt_dispatch_auto_can_clipcharge": 1,
 			"batt_dispatch_auto_can_fuelcellcharge": 0,

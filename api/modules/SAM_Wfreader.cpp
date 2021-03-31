@@ -11,8 +11,13 @@
 #include "SAM_Wfreader.h"
 
 SAM_EXPORT int SAM_Wfreader_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("wfreader", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("wfreader", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_Wfreader_WeatherReader_file_name_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -83,22 +88,22 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_beam_nget(SAM_table ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_diff_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_diffuse_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_diff", &result))
-		make_access_error("SAM_Wfreader", "annual_diff");
+	if (!ssc_data_get_number(ptr, "annual_diffuse", &result))
+		make_access_error("SAM_Wfreader", "annual_diffuse");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Wfreader_Outputs_annual_glob_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_global_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_glob", &result))
-		make_access_error("SAM_Wfreader", "annual_glob");
+	if (!ssc_data_get_number(ptr, "annual_global", &result))
+		make_access_error("SAM_Wfreader", "annual_global");
 	});
 	return result;
 }
@@ -198,12 +203,12 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_description_sget(SAM_table ptr, SAM_
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_diff_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_diffuse_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "diff", length);
+	result = ssc_data_get_array(ptr, "diffuse", length);
 	if (!result)
-		make_access_error("SAM_Wfreader", "diff");
+		make_access_error("SAM_Wfreader", "diffuse");
 	});
 	return result;
 }
@@ -233,12 +238,12 @@ SAM_EXPORT const char* SAM_Wfreader_Outputs_format_sget(SAM_table ptr, SAM_error
 
 
 
-SAM_EXPORT double* SAM_Wfreader_Outputs_glob_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Wfreader_Outputs_global_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "glob", length);
+	result = ssc_data_get_array(ptr, "global", length);
 	if (!result)
-		make_access_error("SAM_Wfreader", "glob");
+		make_access_error("SAM_Wfreader", "global");
 	});
 	return result;
 }

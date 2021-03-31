@@ -37,12 +37,12 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 50002.2,
+			"system_capacity": 20000.9,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_capacity": [17.000000],
+			"om_capacity": [13.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -50,9 +50,9 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [293.840000],
+			"om_replacement_cost1": [500.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 5.29402e+07
+			"total_installed_cost": 2.28681e+07
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -215,7 +215,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 50002.2
+			"system_capacity": 20000.9
 		},
 		"Moratorium": {
 			"loan_moratorium": 0
@@ -266,7 +266,7 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 1.05880e+06
+			"construction_financing_cost": 457361
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -283,7 +283,7 @@
 			"batt_computed_bank_capacity": 4000,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 293.84,
+			"battery_per_kWh": 200,
 			"en_batt": 1
 		}
 	}

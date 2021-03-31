@@ -174,22 +174,17 @@ SAM_get_string_func(void *handle, const char *cmod_symbol, const char *group, co
 SAM_EXPORT SAM_get_table_t
 SAM_get_table_func(void *handle, const char *cmod_symbol, const char *group, const char *var_name, SAM_error *err);
 
-
 //
 // Creating and running single simulations
 //
 
 SAM_EXPORT typedef void* SAM_module;
 
-SAM_EXPORT int SAM_module_exec(const char* cmod, SAM_table data, int verbosity, SAM_error *err);
-
-// Stateful module needs to be created before execution
-SAM_EXPORT SAM_module SAM_stateful_module_setup(const char* cmod, SAM_table data, SAM_error *err);
-
-SAM_EXPORT int SAM_stateful_module_exec(SAM_module cm, SAM_table data, int verbosity, SAM_error *err);
-
 SAM_EXPORT void SAM_module_destruct(SAM_module cm, SAM_error *err);
 
+SAM_EXPORT int SAM_module_exec(const char* cmod, SAM_table data, int verbosity, SAM_error *err);
+
+SAM_EXPORT int SAM_stateful_module_exec(SAM_module cm, SAM_table data, int verbosity, SAM_error *err);
 
 #ifdef __cplusplus
 } // extern "C"

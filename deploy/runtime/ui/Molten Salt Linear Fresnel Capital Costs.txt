@@ -1,7 +1,7 @@
 Molten Salt Linear Fresnel Capital Costs
-738
-592
-56
+742
+579
+55
 GroupBox
 
 1
@@ -51,7 +51,7 @@ Width
 722
 Height
 3
-167
+209
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-492
+477
 Width
 3
 722
@@ -153,7 +153,7 @@ X
 480
 Y
 3
-456
+399
 Width
 3
 98
@@ -489,7 +489,7 @@ X
 309
 Y
 3
-456
+399
 Width
 3
 68
@@ -1542,7 +1542,7 @@ X
 582
 Y
 3
-543
+528
 Width
 3
 136
@@ -2170,7 +2170,7 @@ X
 378
 Y
 3
-456
+399
 Width
 3
 100
@@ -2233,7 +2233,7 @@ X
 582
 Y
 3
-456
+399
 Width
 3
 136
@@ -2296,7 +2296,7 @@ X
 207
 Y
 3
-456
+399
 Width
 3
 100
@@ -2798,7 +2798,7 @@ X
 582
 Y
 3
-399
+447
 Width
 3
 136
@@ -2861,7 +2861,7 @@ X
 582
 Y
 3
-519
+504
 Width
 3
 136
@@ -3174,7 +3174,7 @@ X
 12
 Y
 3
-510
+495
 Width
 3
 437
@@ -3207,36 +3207,6 @@ AlignRight
 2
 0
 AlignTop
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-8
-object 4
-X
-3
-6
-Y
-3
-435
-Width
-3
-722
-Height
-3
-56
-Tool Tip
-5
-0
-Caption
-5
-9
-Sales Tax
-Bold
 2
 1
 
@@ -3883,7 +3853,7 @@ equations{ 'csp.mslf.cost.power_plant' } = define() {
 	return ${csp.mslf.cost.power_plant.mwe}*${csp.mslf.cost.power_plant.cost_per_kwe}*1000; };
 
 equations{ 'csp.mslf.cost.total_installed' } = define() {
-	return ${csp.mslf.cost.total_direct}+${csp.mslf.cost.total_indirect}+${csp.mslf.cost.sales_tax.total}; };
+	return ${csp.mslf.cost.total_direct}+${csp.mslf.cost.total_indirect}; };
 
 equations{ 'csp.mslf.cost.bop_mwe' } = define() {
 	return ${demand_var}; };
@@ -3938,7 +3908,7 @@ equations{ 'csp.mslf.cost.solar_field' } = define() {
 	return ${csp.mslf.cost.solar_field.area}*${csp.mslf.cost.solar_field.cost_per_m2}; };
 
 equations{ 'csp.mslf.cost.total_indirect' } = define() {
-	return ${csp.mslf.cost.epc.total}+${csp.mslf.cost.plm.total}; };
+	return ${csp.mslf.cost.epc.total}+${csp.mslf.cost.plm.total}+${csp.mslf.cost.sales_tax.total}; };
 
 equations{ 'csp.mslf.cost.fossil_backup' } = define() {
 	return ${csp.mslf.cost.fossil_backup.mwe}*${csp.mslf.cost.fossil_backup.cost_per_kwe}*1000; };

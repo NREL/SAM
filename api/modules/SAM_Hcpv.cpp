@@ -11,8 +11,13 @@
 #include "SAM_Hcpv.h"
 
 SAM_EXPORT int SAM_Hcpv_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("hcpv", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("hcpv", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_Hcpv_SolarResourceData_file_name_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{

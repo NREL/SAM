@@ -173,7 +173,7 @@
 			"cec_height": 0,
 			"cec_i_l_ref": 6.23681,
 			"cec_i_mp_ref": 5.85,
-			"cec_i_o_ref": 3.98831e-12,
+			"cec_i_o_ref": 3.99e-12,
 			"cec_i_sc_ref": 6.23,
 			"cec_is_bifacial": 0,
 			"cec_module_length": 1.631,
@@ -181,8 +181,8 @@
 			"cec_mounting_config": 0,
 			"cec_mounting_orientation": 0,
 			"cec_n_s": 96,
-			"cec_r_s": 0.499388,
-			"cec_r_sh_ref": 457.186,
+			"cec_r_s": 0.499389,
+			"cec_r_sh_ref": 457.185,
 			"cec_standoff": 6,
 			"cec_t_noct": 46.4,
 			"cec_temp_corr_mode": 0,
@@ -191,24 +191,24 @@
 			"cec_v_oc_ref": 67.9
 		},
 		"CECPerformanceModelWithUserEnteredSpecifications": {
-			"sixpar_aisc": 0.004,
-			"sixpar_area": 1.3,
-			"sixpar_bifacial_ground_clearance_height": 1,
-			"sixpar_bifacial_transmission_factor": 0.013,
-			"sixpar_bifaciality": 0.65,
-			"sixpar_bvoc": -0.11,
-			"sixpar_celltech": 1,
-			"sixpar_gpmp": -0.41,
-			"sixpar_imp": 6,
-			"sixpar_is_bifacial": 0,
-			"sixpar_isc": 7,
-			"sixpar_mounting": 0,
-			"sixpar_nser": 60,
-			"sixpar_standoff": 6,
-			"sixpar_tnoct": 46,
-			"sixpar_transient_thermal_model_unit_mass": 11.0919,
-			"sixpar_vmp": 30,
-			"sixpar_voc": 37
+			"6par_aisc": 0.004,
+			"6par_area": 1.3,
+			"6par_bifacial_ground_clearance_height": 1,
+			"6par_bifacial_transmission_factor": 0.013,
+			"6par_bifaciality": 0.65,
+			"6par_bvoc": -0.11,
+			"6par_celltech": 1,
+			"6par_gpmp": -0.41,
+			"6par_imp": 6,
+			"6par_is_bifacial": 0,
+			"6par_isc": 7,
+			"6par_mounting": 0,
+			"6par_nser": 60,
+			"6par_standoff": 6,
+			"6par_tnoct": 46,
+			"6par_transient_thermal_model_unit_mass": 11.0919,
+			"6par_vmp": 30,
+			"6par_voc": 37
 		},
 		"SandiaPVArrayPerformanceModelWithModuleDatabase": {
 			"snl_a": -3.62,
@@ -293,7 +293,7 @@
 			"inv_num_mppt": 1,
 			"inv_pd_eff": 95,
 			"inv_pd_paco": 4000,
-			"inv_snl_eff_cec": 97.0531,
+			"inv_snl_eff_cec": 97.0529,
 			"inv_snl_paco": 3850,
 			"inverter_count": 1,
 			"inverter_model": 0,
@@ -301,7 +301,7 @@
 			"mppt_low_inverter": 100
 		},
 		"InverterCECDatabase": {
-			"inv_snl_c0": -3.08138e-06,
+			"inv_snl_c0": -3.08e-06,
 			"inv_snl_c1": -4.8e-05,
 			"inv_snl_c2": 0.000124,
 			"inv_snl_c3": -0.001632,
@@ -312,9 +312,7 @@
 			"inv_snl_vdcmax": 480,
 			"inv_snl_vdco": 400,
 			"inv_tdc_cec_db": [
-				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
-				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
-				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
+				[1.000000, 52.800000, -0.021000]
 			]
 		},
 		"InverterCECCoefficientGenerator": {
@@ -329,9 +327,7 @@
 			"inv_cec_cg_vdcmax": 600,
 			"inv_cec_cg_vdco": 398.497,
 			"inv_tdc_cec_cg": [
-				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
-				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
-				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
+				[1.000000, 52.800000, -0.021000]
 			]
 		},
 		"InverterDatasheet": {
@@ -342,9 +338,7 @@
 			"inv_ds_vdcmax": 600,
 			"inv_ds_vdco": 310,
 			"inv_tdc_ds": [
-				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
-				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
-				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
+				[1.000000, 52.800000, -0.021000]
 			]
 		},
 		"InverterPartLoadCurve": {
@@ -356,9 +350,7 @@
 			"inv_pd_vdcmax": 600,
 			"inv_pd_vdco": 310,
 			"inv_tdc_plc": [
-				[800.000000, 28.000000, -0.020000, 56.000000, 0.000000],
-				[600.000000, 52.000000, -0.037500, 60.000000, 0.000000],
-				[390.000000, 38.000000, -0.012500, 50.000000, -0.025000]
+				[1.000000, 52.800000, -0.021000]
 			]
 		},
 		"InverterMermoudLejeuneModel": {

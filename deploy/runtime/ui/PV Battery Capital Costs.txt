@@ -1,6 +1,6 @@
 PV Battery Capital Costs
-861
-776
+865
+705
 107
 GroupBox
 
@@ -75,7 +75,7 @@ X
 9
 Y
 3
-675
+609
 Width
 3
 845
@@ -89,36 +89,6 @@ Caption
 5
 20
 Total Installed Cost
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-10
-GroupBox33
-X
-3
-9
-Y
-3
-609
-Width
-3
-845
-Height
-3
-59
-Tool Tip
-5
-0
-Caption
-5
-9
-Salex Tax
 Bold
 2
 1
@@ -2440,7 +2410,7 @@ X
 711
 Y
 3
-726
+660
 Width
 3
 127
@@ -3476,7 +3446,7 @@ X
 72
 Y
 3
-699
+633
 Width
 3
 395
@@ -3488,8 +3458,8 @@ Tool Tip
 0
 Caption
 5
-167
-The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.
+155
+The total installed cost is the sum of the direct and indirect costs. Note that it does not include any financing costs from the Financial Parameters page.
 TextColour
 4
 0
@@ -3809,7 +3779,7 @@ Name
 lbl_land_preparation
 X
 3
-45
+18
 Y
 3
 495
@@ -4370,6 +4340,45 @@ Caption
 Bold
 2
 1
+Divider
+
+1
+10
+Name
+5
+11
+object 2291
+X
+3
+99
+Y
+3
+519
+Width
+3
+579
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+9
+Sales Tax
+Bold
+2
+1
 Label
 
 1
@@ -4383,7 +4392,7 @@ X
 498
 Y
 3
-702
+636
 Width
 3
 210
@@ -5425,10 +5434,10 @@ Name
 sales_tax_percent
 X
 3
-309
+312
 Y
 3
-630
+534
 Width
 3
 100
@@ -5490,7 +5499,7 @@ X
 708
 Y
 3
-630
+534
 Width
 3
 127
@@ -5550,10 +5559,10 @@ Name
 sales_tax_value
 X
 3
-513
+519
 Y
 3
-630
+534
 Width
 3
 100
@@ -5804,7 +5813,7 @@ X
 711
 Y
 3
-702
+636
 Width
 3
 127
@@ -6755,7 +6764,7 @@ Capital Costs
 0
 Numeric
 
-5505
+5047
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6874,21 +6883,7 @@ equations{ 'install_margin_total' } = define() {
 	};
 
 equations{ 'total_installed_cost' } = define() {
-	tech = technology();
-	if (${pv_capex_cost_choice}==0) {
-		return ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total};
-	}
-	else if (${pv_capex_cost_choice}==1 && tech == 'PV Battery') {
-		return ${capex_table_total_installed_dc_cost} + 
-			${capex_table_total_installed_ac_cost}+
-			${capex_table_total_installed_land_cost}+
-			${capex_table_total_installed_batt_cost};
-	}
-	else {
-		return ${capex_table_total_installed_dc_cost} + 
-			${capex_table_total_installed_ac_cost}+
-			${capex_table_total_installed_batt_cost};
-	}
+	return ${total_direct_cost}+${total_indirect_cost}; 
 };
 
 equations{ 'inverterarray_power' } = define() {
@@ -6905,7 +6900,8 @@ equations{ 'total_indirect_cost' } = define() {
 		+${engr_total}
 		+${grid_total}
 		+${land_total}
-		+${landprep_total};
+		+${landprep_total}
+		+${sales_tax_total};
 };
 
 equations{ 'grid_total' } = define() {

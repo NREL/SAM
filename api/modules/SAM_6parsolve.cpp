@@ -11,8 +11,13 @@
 #include "SAM_6parsolve.h"
 
 SAM_EXPORT int SAM_6parsolve_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("6parsolve", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("6parsolve", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_6parsolve_SixParameterSolver_Imp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

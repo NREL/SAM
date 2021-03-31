@@ -1,7 +1,7 @@
 Battery Voltage
 1055
 681
-21
+20
 GroupBox
 
 1
@@ -107,7 +107,7 @@ X
 270
 Y
 3
-516
+489
 Width
 3
 90
@@ -169,7 +169,7 @@ X
 270
 Y
 3
-543
+516
 Width
 3
 90
@@ -218,68 +218,6 @@ BackColour
 TabOrder
 3
 10
-Numeric
-
-1
-17
-Name
-5
-9
-batt_Vcut
-X
-3
-270
-Y
-3
-489
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -876,10 +814,10 @@ Name
 batt_voltage_matrix
 X
 3
-402
+438
 Y
 3
-450
+444
 Width
 3
 556
@@ -1115,7 +1053,7 @@ Bold
 2
 1
 
-12
+11
 batt_C_rate
 3
 1
@@ -1158,20 +1096,6 @@ BatteryCell
 1
 95
  
-batt_Vcut
-3
-1
-Cell cutoff voltage
-V
-BatteryCell
-0
-0
-1
-1
-1
-1
-0
-Default
 batt_Vexp
 3
 1
@@ -1213,7 +1137,7 @@ BatteryCell
 1
 1
 2.04
-Default
+ 
 batt_Vnom_default
 3
 1
@@ -1294,12 +1218,11 @@ Depth of discharge [%]| Cell voltage [V]
 DataMatrix
 
 0
-5604
+4901
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice(false);
 	update_voltage_plot();
-	
 
 	on_change{'batt_voltage_choice'};
 	on_change{'batt_bank_voltage'};
@@ -1308,14 +1231,11 @@ on_load{'Battery Voltage'} = define()
 	on_change{'batt_Vfull'};
 	on_change{'batt_Vexp'};
 	on_change{'batt_Vnom'};
-	on_change{'batt_Vcut'};
 	on_change{'batt_Vnom_default'};
 	on_change{'batt_Qexp_percent'};
 	on_change{'batt_Qnom_percent'};
 	on_change{'batt_voltage_matrix'};
 };
-
-
 on_change{'batt_voltage_choice'} = define()
 {		
 	set_voltage_choice(false);
@@ -1327,7 +1247,6 @@ on_change{'batt_resistance'} = define(){update_voltage_plot();};
 on_change{'batt_Vfull'} = define(){update_voltage_plot();};
 on_change{'batt_Vexp'} = define(){update_voltage_plot();};
 on_change{'batt_Vnom'} = define(){update_voltage_plot();};
-on_change{'batt_Vcut'} = define(){update_voltage_plot();};
 on_change{'batt_Vnom_default'} = define()
 {
 	update_voltage_plot();
@@ -1362,7 +1281,6 @@ function show_voltage_model_inputs(show_inputs)
 	show('batt_Vfull', show_inputs);
 	show('batt_Vexp', show_inputs);
 	show('batt_Vnom', show_inputs);
-	show('batt_voltage_cutoff', show_inputs);
 	show('batt_Qexp_percent', show_inputs);
 	show('batt_Qnom_percent', show_inputs);
 }
@@ -1373,7 +1291,6 @@ function enable_voltage_model_inputs(on)
 	enable('batt_Vfull', on);
 	enable('batt_Vexp', on);
 	enable('batt_Vnom', on);
-	enable('batt_Vcut', on);
 	enable('batt_Qexp_percent', on);
 	enable('batt_Qnom_percent', on);
 	
@@ -1386,13 +1303,12 @@ function update_voltage_plot()
 	Vfull = table{'Vfull'};
 	DOD_vect = table{'DOD'};
 	V_vect = table{'V'};
-	Vcut = value('batt_Vcut');
 	clearplot( 'batt_voltage_plot');
 	plot( DOD_vect, V_vect, {'thick'=2, 'type'='line', 'color'='blue'});
 	plotopt( {'title'='Voltage Discharge', 'legend'=false });
 	axis( 'x1', {'label'='Depth of Discharge (%)', 'min'=-0.5, 'max'=100+0.5});
-	//axis( 'y1', {'label'='Voltage (V)', 'min'=min(V_vect), 'max'=Vfull+0.1});
-	axis( 'y1', {'label'='Voltage (V)', 'min'=Vcut, 'max'=Vfull+0.1});
+	axis( 'y1', {'label'='Voltage (V)', 'min'=min(V_vect), 'max'=Vfull+0.1});
+	
 	// also update calendar life plot, since depends on voltage in model case
 	mode = value('batt_calendar_choice');
 	if (mode == 1){
@@ -1400,7 +1316,7 @@ function update_voltage_plot()
 		value('batt_calendar_choice', 2);
 		value('batt_calendar_choice', 1);
 	}
-	refresh();
+
 	
 }
 
@@ -1422,7 +1338,7 @@ function cell_voltage_vs_dod()
 		Vnom = ${batt_Vnom};
 		C_rate = ${batt_C_rate};
 		eta = 0.995;
-		Vcut = ${batt_Vcut};
+		
 		// strange bug, after simulation Qnom is calculated erroneously
 		Qnom = Qnom_percent*Qfull*0.01;
 		Qexp = Qexp_percent*Qfull*0.01;
@@ -1433,11 +1349,7 @@ function cell_voltage_vs_dod()
 		B = 3/Qexp;
 		K = ((Vfull - Vnom + A*(exp(-B*Qnom) - 1))*(Qfull - Qnom))/(Qnom);
 		E0 = Vfull + K + R*I - A;
-		//if (Vcut !=0) {
-		C = (-1*Vcut + E0 - R*Qfull + A*(exp(-B*Qfull)))/K;
-		x = Qfull / (C - 1);
-		refresh();
-		Qfull_cutoff = Qfull + x;
+		
 		q0 = Qfull;
 		V_vect[0] = Vfull;
 		t_vect[0] = 0;
@@ -1447,25 +1359,16 @@ function cell_voltage_vs_dod()
 
 		//logmsg('Vfull: ' + Vfull + ' Vexp: ' + Vexp + ' Vnom: ' + Vnom + ' Qfull: ' + Qfull + ' Qexp: ' + Qexp + ' Qnom: ' + Qnom + 'Qnom_percent: ' + Qnom_percent + ' C: ' + C_rate); 
 		//logmsg('A: ' + A + ' B: ' + B + ' K: ' + K + 'R: ' + R + ' EO: ' + E0 ); 
-		//I = Qfull_cutoff * C_rate;
-		//I_v = Qfull_cutoff * C_rate;
+
 		for (i = 1; i <= stop; i++){
 			count++;
-			t = i*0.10;
+			t = i*0.1;
 			q0 = Qfull - I*t;
-			V = E0 - R*I - K*(Qfull_cutoff/(Qfull_cutoff -I*t))+ A*exp(-B*I*t);
+			V = E0 - R*I - K*(Qfull/(Qfull-I*t)) + A*exp(-B*I*t);
 			DOD = (1.-(q0/Qfull))*100;
-			logmsg('t: ' + t + ' V: ' + V + 'DOD: ' + DOD);
-			if ( (V < Vcut-0.1) || DOD > 101) {
-				t = Qfull/I;
-				q0 = Qfull - I*t;
-				V = E0 - R*I - K*(Qfull_cutoff/(Qfull_cutoff -I*t))+ A*exp(-B*I*t);
-				DOD = (1.-(q0/Qfull))*100;
-				t_vect[count] = t;
-				V_vect[count] = V;
-				DOD_vect[count] = DOD;
+			//logmsg('t: ' + t + ' V: ' + V + 'DOD: ' + DOD);
+			if ( (V < Vfull/2) || (V > 2*Vfull) || DOD > 100)
 				break;
-			}
 			else
 			{
 				t_vect[count] = t;
@@ -1491,4 +1394,3 @@ function cell_voltage_vs_dod()
 	table{'Vfull'} = Vfull;
 	return table;
 }
-	

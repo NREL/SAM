@@ -185,7 +185,7 @@ VarValue* find_default_from_ui(std::string name, std::string config){
     std::vector<std::string> all_ui = find_ui_forms_for_config(config);
 
     for (size_t i = 0; i < all_ui.size(); i++){
-        std::unordered_map<std::string, VarValue>& ui_def = SAM_ui_form_to_defaults[all_ui[i]];
+        std::unordered_map<std::string, VarValue> ui_def = SAM_ui_form_to_defaults[all_ui[i]];
         if (ui_def.find(name) != ui_def.end()){
             return &ui_def[name];
         }

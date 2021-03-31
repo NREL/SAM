@@ -11,8 +11,13 @@
 #include "SAM_Utilityrate4.h"
 
 SAM_EXPORT int SAM_Utilityrate4_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("utilityrate4", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("utilityrate4", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_Utilityrate4_Common_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

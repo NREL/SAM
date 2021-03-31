@@ -11,8 +11,13 @@
 #include "SAM_TcstroughEmpirical.h"
 
 SAM_EXPORT int SAM_TcstroughEmpirical_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("tcstrough_empirical", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("tcstrough_empirical", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_TcstroughEmpirical_Weather_azimuth_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

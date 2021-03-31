@@ -877,7 +877,7 @@ extern "C"
 
 	/**
 	 * Set subarray1_shading:string_option: Sub-array 1 shading string option
-	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
+	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
 	 */
@@ -925,7 +925,7 @@ extern "C"
 
 	/**
 	 * Set subarray2_shading:string_option: Sub-array 2 Shading string option
-	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
+	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
 	 */
@@ -973,7 +973,7 @@ extern "C"
 
 	/**
 	 * Set subarray3_shading:string_option: Sub-array 3 Shading string option
-	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
+	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
 	 */
@@ -1021,7 +1021,7 @@ extern "C"
 
 	/**
 	 * Set subarray4_shading:string_option: Sub-array 4 Shading string option
-	 * options: 0=shadingdb,1=average,2=maximum,3=minimum
+	 * options: 0=shadingdb,1=shadingdb_notc,2=average,3=maximum,4=minimum
 	 * constraints: INTEGER,MIN=-1,MAX=4
 	 * required if: ?=-1
 	 */
@@ -1634,7 +1634,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_aisc_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_aisc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_area: Module area [m2]
@@ -1642,7 +1642,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_area_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_area_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_bifacial_ground_clearance_height: Module ground clearance height [m]
@@ -1650,7 +1650,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_bifacial_transmission_factor: Bifacial transmission factor [0-1]
@@ -1658,7 +1658,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_bifaciality: Bifaciality factor [%]
@@ -1666,7 +1666,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifaciality_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifaciality_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_bvoc: Open circuit voltage temperature coefficient [V/C]
@@ -1674,7 +1674,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bvoc_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bvoc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_celltech: Solar cell technology type
@@ -1682,7 +1682,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=5
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_celltech_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_celltech_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_gpmp: Maximum power point temperature coefficient [%/C]
@@ -1690,7 +1690,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_gpmp_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_gpmp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_imp: Imp [A]
@@ -1698,7 +1698,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_imp_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_imp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_is_bifacial: Modules are bifacial [0/1]
@@ -1706,7 +1706,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_isc: Isc [A]
@@ -1714,7 +1714,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_isc_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_isc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_mounting: Array mounting height
@@ -1722,7 +1722,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_mounting_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_mounting_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_nser: Nseries
@@ -1730,7 +1730,7 @@ extern "C"
 	 * constraints: INTEGER,POSITIVE
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_nser_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_nser_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_standoff: Standoff mode
@@ -1738,7 +1738,7 @@ extern "C"
 	 * constraints: INTEGER,MIN=0,MAX=6
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_standoff_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_standoff_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_tnoct: Nominal operating cell temperature [C]
@@ -1746,7 +1746,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_tnoct_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_tnoct_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_transient_thermal_model_unit_mass: Module unit mass [kg/m^2]
@@ -1754,7 +1754,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_transient_thermal_model_unit_mass_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_transient_thermal_model_unit_mass_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_vmp: Maximum power point voltage [V]
@@ -1762,7 +1762,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_vmp_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_vmp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set 6par_voc: Voc [V]
@@ -1770,7 +1770,7 @@ extern "C"
 	 * constraints: None
 	 * required if: module_model=2
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_voc_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_voc_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -3535,6 +3535,22 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_current_discharge_max_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set batt_cycle_cost: Input battery cycle degradaton penalty per year [$/cycle-kWh]
+	 * options: length 1 or analysis_period, length 1 will be extended using inflation
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_cycle_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set batt_cycle_cost_choice: Use SAM cost model for degradaton penalty or input custom via batt_cycle_cost [0/1]
+	 * options: 0=UseCostModel,1=InputCost
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set batt_dc_ac_efficiency: Battery DC to AC efficiency
 	 * options: None
 	 * constraints: None
@@ -3809,14 +3825,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_Qnom_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_Vcut: Cutoff voltage for battery rated capacity [V]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_Vcut_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set batt_Vexp: Cell voltage at end of exponential zone [V]
 	 * options: None
 	 * constraints: None
@@ -3852,7 +3860,7 @@ extern "C"
 	 * Set batt_calendar_a: Calendar life model coefficient [1/sqrt(day)]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_life_model=0&batt_calendar_choice=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_a_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -3860,7 +3868,7 @@ extern "C"
 	 * Set batt_calendar_b: Calendar life model coefficient [K]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_life_model=0&batt_calendar_choice=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_b_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -3868,7 +3876,7 @@ extern "C"
 	 * Set batt_calendar_c: Calendar life model coefficient [K]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_life_model=0&batt_calendar_choice=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_c_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -3876,7 +3884,7 @@ extern "C"
 	 * Set batt_calendar_choice: Calendar life degradation input option [0/1/2]
 	 * options: 0=NoCalendarDegradation,1=LithiomIonModel,2=InputLossTable
 	 * constraints: None
-	 * required if: en_batt=1&batt_life_model=0
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -3884,7 +3892,7 @@ extern "C"
 	 * Set batt_calendar_lifetime_matrix: Days vs capacity
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_life_model=0&batt_calendar_choice=2
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_lifetime_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -3892,7 +3900,7 @@ extern "C"
 	 * Set batt_calendar_q0: Calendar life model initial capacity cofficient
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_life_model=0&batt_calendar_choice=1
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_calendar_q0_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -3921,18 +3929,10 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_initial_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_life_model: Battery life model specifier [0/1]
-	 * options: 0=calendar/cycle,1=NMC
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_life_model_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set batt_lifetime_matrix: Cycles vs capacity at different depths-of-discharge
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_life_model=0
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_lifetime_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -4020,22 +4020,6 @@ extern "C"
 	 * required if: en_batt=1&batt_dispatch_choice=3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_custom_dispatch_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set batt_cycle_cost: Input battery cycle degradaton penalty per year [$/cycle-kWh]
-	 * options: length 1 or analysis_period, length 1 will be extended using inflation
-	 * constraints: None
-	 * required if: batt_cycle_cost_choice=1
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set batt_cycle_cost_choice: Use SAM cost model for degradaton penalty or input custom via batt_cycle_cost [0/1]
-	 * options: 0=UseCostModel,1=InputCost
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_dispatch_auto_can_charge: System charging allowed for automated dispatch? [kW]
@@ -4477,7 +4461,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_credit_month: Month of year end payout (true-up) [mn]
+	 * Set ur_nm_credit_month: Month of rollover credits [$/kWh]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=11
 	 * required if: ?=11
@@ -4485,7 +4469,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_credit_rollover: Apply net metering true-up credits to future bills [0/1]
+	 * Set ur_nm_credit_rollover: Roll over credits to next year [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: ?=0
@@ -4493,7 +4477,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_nm_credit_rollover_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ur_nm_yearend_sell_rate: Net metering true-up credit sell rate [$/kWh]
+	 * Set ur_nm_yearend_sell_rate: Net metering credit sell rate [$/kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -4962,41 +4946,41 @@ extern "C"
 	 * CECPerformanceModelWithUserEnteredSpecifications Getters
 	 */
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_aisc_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_aisc_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_area_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_area_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_ground_clearance_height_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_ground_clearance_height_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_transmission_factor_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_transmission_factor_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifaciality_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifaciality_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bvoc_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bvoc_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_celltech_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_celltech_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_gpmp_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_gpmp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_imp_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_imp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_is_bifacial_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_is_bifacial_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_isc_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_isc_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_mounting_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_mounting_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_nser_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_nser_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_standoff_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_standoff_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_tnoct_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_tnoct_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_transient_thermal_model_unit_mass_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_transient_thermal_model_unit_mass_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_vmp_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_vmp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_voc_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_voc_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -5476,6 +5460,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_current_discharge_max_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_BatterySystem_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_cycle_cost_choice_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_dc_ac_efficiency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_dc_dc_efficiency_nget(SAM_table ptr, SAM_error *err);
@@ -5552,8 +5540,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_Qnom_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_Vcut_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_Vexp_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_Vfull_nget(SAM_table ptr, SAM_error *err);
@@ -5579,8 +5565,6 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_h_to_ambient_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_initial_SOC_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_life_model_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryCell_batt_lifetime_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
@@ -5608,10 +5592,6 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_auto_gridcharge_max_daily_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_custom_dispatch_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_charge_nget(SAM_table ptr, SAM_error *err);
 
@@ -5751,6 +5731,18 @@ extern "C"
 	 * Outputs Getters
 	 */
 
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Adj_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Il_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Io_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Rs_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Rsh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_a_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_ac_loss_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_transmission_loss_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -5773,6 +5765,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_inv_pso_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_inv_tdc_loss_percent_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_lifetime_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_loss_ond_nget(SAM_table ptr, SAM_error *err);
@@ -5790,8 +5784,6 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_diodes_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_gross_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_inv_tdc_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_invmppt_loss_nget(SAM_table ptr, SAM_error *err);
 
@@ -6148,18 +6140,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_shadedb_subarray3_shade_frac_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_shadedb_subarray4_shade_frac_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Adj_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Il_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Io_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Rs_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Rsh_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_a_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_snowdepth_aget(SAM_table ptr, int* length, SAM_error *err);
 

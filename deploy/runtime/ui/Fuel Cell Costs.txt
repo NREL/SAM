@@ -1,6 +1,6 @@
 Fuel Cell Costs
-949
-821
+948
+778
 128
 GroupBox
 
@@ -51,7 +51,7 @@ Width
 934
 Height
 3
-263
+284
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 9
 Y
 3
-723
+681
 Width
 3
 934
@@ -89,36 +89,6 @@ Caption
 5
 20
 Total Installed Cost
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-10
-GroupBox31
-X
-3
-9
-Y
-3
-663
-Width
-3
-934
-Height
-3
-59
-Tool Tip
-5
-0
-Caption
-5
-9
-Salex Tax
 Bold
 2
 1
@@ -3301,7 +3271,7 @@ X
 777
 Y
 3
-774
+732
 Width
 3
 127
@@ -4585,7 +4555,7 @@ X
 48
 Y
 3
-741
+699
 Width
 3
 350
@@ -4597,8 +4567,8 @@ Tool Tip
 0
 Caption
 5
-167
-The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.
+155
+The total installed cost is the sum of the direct and indirect costs. Note that it does not include any financing costs from the Financial Parameters page.
 TextColour
 4
 0
@@ -5234,7 +5204,7 @@ X
 777
 Y
 3
-603
+630
 Width
 3
 127
@@ -5374,6 +5344,45 @@ Caption
 Bold
 2
 1
+Divider
+
+1
+10
+Name
+5
+11
+object 2291
+X
+3
+69
+Y
+3
+588
+Width
+3
+690
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+9
+Sales Tax
+Bold
+2
+1
 Label
 
 1
@@ -5387,7 +5396,7 @@ X
 564
 Y
 3
-750
+708
 Width
 3
 210
@@ -5867,7 +5876,7 @@ X
 564
 Y
 3
-618
+645
 Width
 3
 210
@@ -6649,10 +6658,10 @@ Name
 sales_tax_percent
 X
 3
-378
+357
 Y
 3
-684
+603
 Width
 3
 100
@@ -6711,10 +6720,10 @@ Name
 sales_tax_total
 X
 3
-774
+777
 Y
 3
-684
+606
 Width
 3
 127
@@ -6774,10 +6783,10 @@ Name
 sales_tax_value
 X
 3
-582
+564
 Y
 3
-684
+603
 Width
 3
 100
@@ -6965,7 +6974,7 @@ X
 777
 Y
 3
-618
+645
 Width
 3
 127
@@ -7028,7 +7037,7 @@ X
 777
 Y
 3
-750
+708
 Width
 3
 127
@@ -8245,7 +8254,7 @@ Fuel Cell Capital Costs
 0
 Numeric
 
-6903
+6666
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -8371,16 +8380,7 @@ equations{ 'install_margin_total' } = define() {
 		/*+ ${modulearray_area}*${install_margin_perarea}*/; };
 
 equations{ 'total_installed_cost' } = define() {
-	if (${pv_capex_cost_choice} == 0) {
-		return ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total};
-	}
-	else {
-		return ${capex_table_total_installed_dc_cost} + 
-			${capex_table_total_installed_ac_cost}+
-			${capex_table_total_installed_batt_cost}+
-			${capex_table_total_installed_fuelcell_cost};
-	}
-};
+	return ${total_direct_cost}+${total_indirect_cost}; };
 
 equations{ 'inverterarray_power' } = define() {
 	return ${inverter_power}*${inverter_num_units}; };
@@ -8398,7 +8398,8 @@ equations{ 'total_indirect_cost' } = define() {
 		+${engr_total}
 		+${grid_total}
 		+${land_total}
-		+${landprep_total}; };
+		+${landprep_total}
+		+${sales_tax_total}; };
 
 equations{ 'grid_total' } = define() {
 	return ${grid_percent}/100*${total_direct_cost} 

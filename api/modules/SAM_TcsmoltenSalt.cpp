@@ -11,8 +11,13 @@
 #include "SAM_TcsmoltenSalt.h"
 
 SAM_EXPORT int SAM_TcsmoltenSalt_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("tcsmolten_salt", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("tcsmolten_salt", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_TcsmoltenSalt_SolarResource_solar_resource_data_tset(SAM_table ptr, SAM_table tab, SAM_error *err){
 	SAM_table_set_table(ptr, "solar_resource_data", tab, err);

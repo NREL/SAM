@@ -1,6 +1,6 @@
 Generic System Costs
 826
-473
+453
 46
 GroupBox
 
@@ -51,7 +51,7 @@ Width
 812
 Height
 3
-140
+191
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-375
+357
 Width
 3
 812
@@ -687,7 +687,7 @@ X
 645
 Y
 3
-423
+405
 Width
 3
 133
@@ -1187,10 +1187,10 @@ Name
 genericsys.cost.sales_tax.percent
 X
 3
-285
+282
 Y
 3
-330
+276
 Width
 3
 100
@@ -1249,10 +1249,10 @@ Name
 genericsys.cost.sales_tax.total
 X
 3
-645
+642
 Y
 3
-330
+276
 Width
 3
 136
@@ -1312,10 +1312,10 @@ Name
 genericsys.cost.sales_tax.value
 X
 3
-498
+495
 Y
 3
-330
+276
 Width
 3
 100
@@ -1377,7 +1377,7 @@ X
 30
 Y
 3
-405
+387
 Width
 3
 302
@@ -1480,6 +1480,45 @@ Divider
 10
 Name
 5
+9
+object 21
+X
+3
+39
+Y
+3
+261
+Width
+3
+573
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+9
+Sales Tax
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
 11
 object 2141
 X
@@ -1487,7 +1526,7 @@ X
 642
 Y
 3
-255
+303
 Width
 3
 136
@@ -1547,36 +1586,6 @@ Colour
 Caption
 5
 0
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-8
-object 4
-X
-3
-6
-Y
-3
-306
-Width
-3
-812
-Height
-3
-66
-Tool Tip
-5
-0
-Caption
-5
-9
-Sales Tax
 Bold
 2
 1
@@ -1785,7 +1794,7 @@ X
 468
 Y
 3
-399
+381
 Width
 3
 171
@@ -1833,7 +1842,7 @@ X
 468
 Y
 3
-267
+315
 Width
 3
 171
@@ -2328,7 +2337,7 @@ X
 642
 Y
 3
-267
+315
 Width
 3
 136
@@ -2391,7 +2400,7 @@ X
 645
 Y
 3
-399
+381
 Width
 3
 133
@@ -2771,7 +2780,7 @@ equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}+${genericsys.cost.sales_tax.total}; };
+	return ${total_direct_cost}+${total_indirect_cost}; };
 
 equations{ 'genericsys.cost.installed_per_capacity' } = define() {
 	return ${total_installed_cost}/${system_capacity}/1000; };
@@ -2787,7 +2796,7 @@ equations{ 'genericsys.cost.contingency' } = define() {
 *(${genericsys.cost.plant}+${genericsys.cost.plant_scaled}); };
 
 equations{ 'total_indirect_cost' } = define() {
-	return ${genericsys.cost.epc.total}+${genericsys.cost.plm.total}; };
+	return ${genericsys.cost.epc.total}+${genericsys.cost.plm.total}+${genericsys.cost.sales_tax.total}; };
 
 equations{ 'genericsys.cost.sales_tax.total' } = define() {
 	return ${genericsys.cost.sales_tax.value}/100*${total_direct_cost}*${genericsys.cost.sales_tax.percent}/100; };

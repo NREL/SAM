@@ -11,8 +11,13 @@
 #include "SAM_Iec61853par.h"
 
 SAM_EXPORT int SAM_Iec61853par_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("iec61853par", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("iec61853par", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_Iec61853par_IEC61853_input_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{

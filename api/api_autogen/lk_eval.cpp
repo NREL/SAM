@@ -1154,40 +1154,8 @@ std::string indent(std::string s, size_t n){
     return s;
 }
 
-std::string format_as_variable(std::string str){
+std::string remove_periods(std::string str){
     std::replace(str.begin(), str.end(), '.', '_');
-    int first = str.substr(0, 1).c_str()[0];
-    if (std::isdigit(first)) {
-        std::string remaining = str.substr(1);
-        switch (first) {
-            case 48:
-                return "zero" + remaining;
-            case 49:
-                return "one" + remaining;
-            case 50:
-                return "two" + remaining;
-            case 51:
-                return "three" + remaining;
-            case 52:
-                return "four" + remaining;
-            case 53:
-                return "five" + remaining;
-            case 54:
-                return "six" + remaining;
-            case 55:
-                return "seven" + remaining;
-            case 56:
-                return "eight" + remaining;
-            case 57:
-                return "nine" + remaining;
-            default:
-                throw std::runtime_error("Unrecognized digit");
-        }
-    }
-    else {
-        if (!std::isalpha(first) && first != 95 /* "_" */)
-            throw std::runtime_error("Variable must begin with alphanumeric character or '_'.");
-    }
     return str;
 }
 

@@ -1,7 +1,6 @@
 #ifndef SYSTEM_ADVISOR_MODEL_BUILDER_GENERATOR_H
 #define SYSTEM_ADVISOR_MODEL_BUILDER_GENERATOR_H
 
-#include <ctype.h>
 #include <string>
 #include <map>
 

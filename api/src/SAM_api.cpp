@@ -453,7 +453,7 @@ SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_
 
         if (!ssc_module_exec( cm, data )){
             std::string str = std::string(cmod) + " execution error.\n";
-            int idx = 0;
+            size_t idx = 0;
             while ( const char *msg = ssc_module_log( cm, idx++, nullptr, nullptr ) )
             {
                 str += "\t";
@@ -482,25 +482,4 @@ SAM_EXPORT int SAM_stateful_module_exec(SAM_module cm, SAM_table data, int verbo
         }
     });
     return 1;
-}
-
-SAM_EXPORT SAM_module SAM_stateful_module_setup(const char* cmod, SAM_table data, SAM_error* err) {
-    SAM_module cm = nullptr;
-    translateExceptions(err, [&]{
-        cm = ssc_module_create(cmod);
-        if (!data) throw std::runtime_error("Invalid SAM_table.");
-
-        if (!ssc_stateful_module_setup(cm, data)) {
-            std::string str = std::string(cmod) + " setup error.\n";
-            int idx = 0;
-            while ( const char *msg = ssc_module_log( cm, idx++, nullptr, nullptr ) )
-            {
-                str += "\t";
-                str += std::string(msg);
-                str += "\n\n";
-            }
-            throw std::runtime_error(str);
-        }
-    });
-    return cm;
 }

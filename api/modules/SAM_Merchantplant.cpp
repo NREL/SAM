@@ -11,8 +11,13 @@
 #include "SAM_Merchantplant.h"
 
 SAM_EXPORT int SAM_Merchantplant_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("merchantplant", data, verbosity, err);
+	int n_err = 0;
+	translateExceptions(err, [&]{
+		n_err += SAM_module_exec("merchantplant", data, verbosity, err);
+	});
+	return n_err;
 }
+
 
 SAM_EXPORT void SAM_Merchantplant_FinancialParameters_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{

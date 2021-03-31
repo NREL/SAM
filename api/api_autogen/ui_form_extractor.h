@@ -36,7 +36,7 @@ private:
     equation_extractor* eqn_extractor;
 
     /// Gets default values and stores into SAM_config_to_defaults
-    VarValue get_varvalue(wxInputStream &is, const wxString& var_name);
+    VarValue get_varvalue(wxInputStream &is, wxString var_name);
 
     /// Stores the eqn and callback LK script
     void get_eqn_and_callback_script(wxInputStream& is);
@@ -50,7 +50,7 @@ public:
     std::vector<std::string> m_functions;
 
 
-    ui_form_extractor(const std::string& n){
+    ui_form_extractor(std::string n){
         ui_form_name = n;
         eqn_extractor = new equation_extractor(n);
     };
@@ -59,7 +59,7 @@ public:
         delete eqn_extractor;
     }
 
-    bool extract(const std::string& file);
+    bool extract(std::string file);
 
     std::string get_callback_script() {return m_callback_script;}
 
@@ -67,7 +67,7 @@ public:
         return eqn_extractor->parse_and_export_eqns(m_eqn_script);
     }
 
-    std::vector<equation_info>* get_eqn_infos() const{
+    std::vector<equation_info>* get_eqn_infos(){
         if (SAM_ui_form_to_eqn_info.find(ui_form_name) != SAM_ui_form_to_eqn_info.end())
             return &(SAM_ui_form_to_eqn_info.find(ui_form_name)->second);
         else
@@ -89,25 +89,25 @@ public:
     ui_form_extractor_database() = default;
 
     ~ui_form_extractor_database(){
-        for (auto & it : ui_form_map)
-            delete it.second;
+        for (auto it = ui_form_map.begin(); it != ui_form_map.end(); it++)
+            delete it->second;
     }
 
-    ui_form_extractor* find(const std::string& ui_name){
+    ui_form_extractor* find(std::string ui_name){
         auto it = ui_form_map.find(ui_name);
         if (it != ui_form_map.end())
             return it->second;
         else
-            return nullptr;
+            return NULL;
     }
 
     ui_form_extractor* make_entry(std::string ui_form_name) {
-        auto* ufe = new ui_form_extractor(ui_form_name);
+        ui_form_extractor* ufe = new ui_form_extractor(ui_form_name);
         ui_form_map.insert({ui_form_name, ufe});
         return ufe;
     }
 
-    static bool populate_ui_data(const std::string& ui_path, const std::vector<std::string>& ui_form_names);
+    bool populate_ui_data(std::string ui_path, std::vector<std::string> ui_form_names);
 
 };
 
