@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-12378
+13324
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -5065,6 +5065,15 @@ equations{ 'Type_cpnt' } = define() {
 
 
 equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
+	// max_field_flow_velocity
+	data.m_dot_htfmax = ${m_dot_htfmax};
+	data.fluid_dens_outlet_temp = ${fluid_dens_outlet_temp};
+	data.min_inner_diameter = ${min_inner_diameter};
+	
+	// min_field_flow_velocity
+	data.m_dot_htfmin = ${m_dot_htfmin};
+	data.fluid_dens_inlet_temp = ${fluid_dens_inlet_temp};
+	
 	// field_htf_cp_avg
 	data.T_loop_in_des = ${T_loop_in_des};
 	data.T_loop_out = ${T_loop_out};
@@ -5095,6 +5104,14 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.csp_dtr_sca_length_3 = ${csp_dtr_sca_length_3};
 	data.csp_dtr_sca_length_4 = ${csp_dtr_sca_length_4};
 	
+	// total_aperture
+	data.single_loop_aperature = ${single_loop_aperature};
+	data.nloops = ${FIELD_COPY_nLoops};
+	
+	// required_number_of_loops_for_SM1
+	data.total_required_aperture_for_SM1 = ${total_required_aperture_for_SM1};
+	//data.single_loop_aperature = ${single_loop_aperature};  // already read in above
+	
 	// loop_optical_efficiency
 	data.csp_dtr_sca_calc_sca_eff_1 = ${csp_dtr_sca_calc_sca_eff_1};
 	data.csp_dtr_sca_calc_sca_eff_2 = ${csp_dtr_sca_calc_sca_eff_2};
@@ -5105,33 +5122,36 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.csp_dtr_hce_optical_eff_3 = ${csp_dtr_hce_optical_eff_3};
 	data.csp_dtr_hce_optical_eff_4 = ${csp_dtr_hce_optical_eff_4};
 	
-	// max_field_flow_velocity
-	data.m_dot_htfmax = ${m_dot_htfmax};
-	data.fluid_dens_outlet_temp = ${fluid_dens_outlet_temp};
-	data.min_inner_diameter = ${min_inner_diameter};
-	
-	// min_field_flow_velocity
-	data.m_dot_htfmin = ${m_dot_htfmin};
-	data.fluid_dens_inlet_temp = ${fluid_dens_inlet_temp};
+	// total_loop_conversion_efficiency
+	//data.loop_optical_efficiency = ${loop_optical_efficiency};	// already calculated above
+	//data.nloops = ${FIELD_COPY_nLoops};  // already read in above
 	
 	success = ssc_eqn("Physical_Trough_Solar_Field_Equations", data);
 	if (!success) {
+		${max_field_flow_velocity} = -999.;
+		${min_field_flow_velocity} = -999.;
 		${field_htf_cp_avg} = -999.;
 		// NOTE: these equations works, but setting the value crashes SAM
 		//${min_inner_diameter} = -999.;
 		//${single_loop_aperature} = -999.;
 		//${cspdtr_loop_hce_heat_loss} = -999.;
-		${max_field_flow_velocity} = -999.;
-		${min_field_flow_velocity} = -999.;
+		//${total_aperture} = -999.;
+		//${required_number_of_loops_for_SM1} = -999.;
+		//${loop_optical_efficiency} = -999.;
+		//${total_loop_conversion_efficiency} = -999.;
 	}
 	else {
+		${max_field_flow_velocity} = data.max_field_flow_velocity;
+		${min_field_flow_velocity} = data.min_field_flow_velocity;
 		${field_htf_cp_avg} = data.field_htf_cp_avg;
 		// NOTE: these equations works, but setting the value crashes SAM
 		//${min_inner_diameter} = data.min_inner_diameter;
 		//${single_loop_aperature} = data.single_loop_aperature;
 		//${cspdtr_loop_hce_heat_loss} = data.cspdtr_loop_hce_heat_loss;
-		${max_field_flow_velocity} = data.max_field_flow_velocity;
-		${min_field_flow_velocity} = data.min_field_flow_velocity;
+		//${total_aperture} = data.total_aperture;
+		//${required_number_of_loops_for_SM1} = data.required_number_of_loops_for_SM1;
+		//${loop_optical_efficiency} = data.loop_optical_efficiency;
+		//${total_loop_conversion_efficiency} = data.total_loop_conversion_efficiency;
 	}
 	
 	return 0;
