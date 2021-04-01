@@ -17,7 +17,9 @@ before_script:
   - export WEXDIR=/home/travis/build/$user/wex
   - export SSCDIR=/home/travis/build/$user/ssc
   - export SAMNTDIR=/home/travis/build/$user/SAM
-  - if [[ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ]]; then export BRANCH_NAME=$TRAVIS_BRANCH; else export BRANCH_NAME=$TRAVIS_PULL_REQUEST_BRANCH; fi
+  #Matt, restore the next line after you rebase ssc branch heatmap_month_by_hour with the patch branch and remove the develop branch updates that do not work with patch branch roots of SAM
+  #- if [[ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ]]; then export BRANCH_NAME=$TRAVIS_BRANCH; else export BRANCH_NAME=$TRAVIS_PULL_REQUEST_BRANCH; fi
+  BRANCH_NAME="patch"
   - git clone --depth=1 https://github.com/google/googletest /home/travis/build/$user/googletest
   - git clone --depth=1 --branch=$BRANCH_NAME https://github.com/$user/lk $LKDIR; if [[ $? != "0" ]]; then git clone --depth=1 --branch="patch" https://github.com/$user/lk $LKDIR; fi
   - git clone --depth=1 --branch=$BRANCH_NAME https://github.com/$user/wex $WEXDIR; if [[ $? != "0" ]]; then git clone --depth=1 --branch="patch" https://github.com/$user/wex $WEXDIR; fi
