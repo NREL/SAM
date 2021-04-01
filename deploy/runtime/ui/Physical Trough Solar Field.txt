@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-13324
+14095
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -5126,6 +5126,20 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	//data.loop_optical_efficiency = ${loop_optical_efficiency};	// already calculated above
 	//data.nloops = ${FIELD_COPY_nLoops};  // already read in above
 	
+	// field_thermal_output
+	// <nothing new needed>
+		
+	// total_required_aperture_for_sm1
+	data.q_pb_design = ${q_pb_design};	
+	
+	// total_land_area
+	data.fixed_land_area = ${fixed_land_area};
+	data.non_solar_field_land_area_multiplier = ${non_solar_field_land_area_multiplier};
+	
+	// fixed_land_area
+	data.row_distance = ${Row_Distance};
+	data.max_collector_width = ${max_collector_width};
+	
 	success = ssc_eqn("Physical_Trough_Solar_Field_Equations", data);
 	if (!success) {
 		${max_field_flow_velocity} = -999.;
@@ -5139,6 +5153,10 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		//${required_number_of_loops_for_SM1} = -999.;
 		//${loop_optical_efficiency} = -999.;
 		//${total_loop_conversion_efficiency} = -999.;
+		//${field_thermal_output} = -999.;
+		//${total_required_aperture_for_sm1} = -999.;
+		//${total_land_area} = -999.;
+		//${fixed_land_area} = -999.;
 	}
 	else {
 		${max_field_flow_velocity} = data.max_field_flow_velocity;
@@ -5152,6 +5170,10 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		//${required_number_of_loops_for_SM1} = data.required_number_of_loops_for_SM1;
 		//${loop_optical_efficiency} = data.loop_optical_efficiency;
 		//${total_loop_conversion_efficiency} = data.total_loop_conversion_efficiency;
+		//${field_thermal_output} = data.field_thermal_output;
+		//${total_required_aperture_for_SM1} = data.total_required_aperture_for_sm1;
+		//${total_land_area} = data.total_land_area;
+		//${fixed_land_area} = data.fixed_land_area;
 	}
 	
 	return 0;
