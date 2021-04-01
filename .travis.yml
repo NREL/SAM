@@ -19,9 +19,9 @@ before_script:
   - export SAMNTDIR=/home/travis/build/$user/SAM
   - if [[ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ]]; then export BRANCH_NAME=$TRAVIS_BRANCH; else export BRANCH_NAME=$TRAVIS_PULL_REQUEST_BRANCH; fi
   - git clone --depth=1 https://github.com/google/googletest /home/travis/build/$user/googletest
-  - git clone --depth=1 --branch=$BRANCH_NAME https://github.com/$user/lk $LKDIR; if [[ $? != "0" ]]; then git clone --depth=1 --branch="develop" https://github.com/$user/lk $LKDIR; fi
-  - git clone --depth=1 --branch=$BRANCH_NAME https://github.com/$user/wex $WEXDIR; if [[ $? != "0" ]]; then git clone --depth=1 --branch="develop" https://github.com/$user/wex $WEXDIR; fi
-  - git clone --depth=1 --branch=$BRANCH_NAME https://github.com/$user/ssc $SSCDIR; if [[ $? != "0" ]]; then git clone --depth=1 --branch="develop" https://github.com/$user/ssc $SSCDIR; fi
+  - git clone --depth=1 --branch=$BRANCH_NAME https://github.com/$user/lk $LKDIR; if [[ $? != "0" ]]; then git clone --depth=1 --branch="patch" https://github.com/$user/lk $LKDIR; fi
+  - git clone --depth=1 --branch=$BRANCH_NAME https://github.com/$user/wex $WEXDIR; if [[ $? != "0" ]]; then git clone --depth=1 --branch="patch" https://github.com/$user/wex $WEXDIR; fi
+  - git clone --depth=1 --branch=$BRANCH_NAME https://github.com/$user/ssc $SSCDIR; if [[ $? != "0" ]]; then git clone --depth=1 --branch="patch" https://github.com/$user/ssc $SSCDIR; fi
 
 script:
   - export PATH=$PATH:$HOME/wx-3.1.1/bin
