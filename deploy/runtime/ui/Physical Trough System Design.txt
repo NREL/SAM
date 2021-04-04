@@ -1328,20 +1328,37 @@ System Design
 0
 Default
 
-2114
+2467
 // the picture (object 12) is saved as:
 //  \sam_dev\sam\deploy\runtime\ui\Physical Trough System Design_object 12.png
 
-/*
-equations{ 'csp.dtr.pwrb.nameplate' } = define() {
-	return ${P_ref}*${gross_net_conversion_factor}; }; //MWe
-
-equations{ 'q_pb_design' } = define() 
-{
-	return ${P_ref}/${eta_ref};
+equations{ 'solar_mult' } = define() {
+	return 2;
 };
 
-*/
+equations{ 'Q_rec_des' } = define() {
+	return 624;
+};
+
+equations{ 'tshours_sf' } = define() {
+	return 6;
+};
+
+equations{ 'nLoops' } = define() {
+	return 181;
+};
+
+equations{ 'csp.dtr.pwrb.nameplate' } = define() {
+	return 100;
+};
+
+equations{ 'q_pb_design' } = define() {
+	return 312;
+};
+
+
+
+/*
 equations{ 'solar_mult' } = define() {
 	return ?${radio_sm_or_area}
 [
@@ -1369,6 +1386,14 @@ equations{ 'nLoops' } = define() {
 	return ceil(retval); // SAMwx used "@round" here
 };
 
+equations{ 'csp.dtr.pwrb.nameplate' } = define() {
+	return ${P_ref}*${gross_net_conversion_factor}; }; //MWe
+
+equations{ 'q_pb_design' } = define() 
+{
+	return ${P_ref}/${eta_ref};
+};
+
 equations{ '$MIMO$ Physical_Trough_System_Design_Equations' } = define() {
 	// csp_dtr_pwrb_nameplate
 	data.P_ref = ${P_ref};
@@ -1376,23 +1401,23 @@ equations{ '$MIMO$ Physical_Trough_System_Design_Equations' } = define() {
 	
 	// q_pb_design
 	data.eta_ref = ${eta_ref};
-	/*
+	
 	// solar_mult
-	data.radio_sm_or_area = ${radio_sm_or_area};
-	data.specified_solar_multiple = ${specified_solar_multiple};
-	data.total_aperture = ${total_aperture};
-	data.total_required_aperture_for_SM1 = ${total_required_aperture_for_SM1};
+	//data.radio_sm_or_area = ${radio_sm_or_area};
+	//data.specified_solar_multiple = ${specified_solar_multiple};
+	//data.total_aperture = ${total_aperture};
+	//data.total_required_aperture_for_SM1 = ${total_required_aperture_for_SM1};
 
 	// q_rec_des
-	data.q_pb_design = ${q_pb_design};
+	//data.q_pb_design = ${q_pb_design};
 	
 	// tshours_sf
-	data.tshours = ${tshours};
+	//data.tshours = ${tshours};
 	
 	// nloops
-	data.specified_total_aperture = ${specified_total_aperture};
-	data.single_loop_aperture = ${single_loop_aperture};
-*/
+	//data.specified_total_aperture = ${specified_total_aperture};
+	//data.single_loop_aperture = ${single_loop_aperture};
+
 	success = ssc_eqn("Physical_Trough_System_Design_Equations", data);
 	if (!success) {
 		${csp.dtr.pwrb.nameplate} = -999.;
@@ -1413,7 +1438,7 @@ equations{ '$MIMO$ Physical_Trough_System_Design_Equations' } = define() {
 	
 	return 0;
 };
-
+*/
 277
 on_load{'Physical Trough System Design'} = define() {
 	on_change{'radio_sm_or_area'}();
