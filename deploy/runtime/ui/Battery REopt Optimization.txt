@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-286
-Use from the current case the lat/lon from Location and Resource, System Design parameters, Subarray 1 losses, System Costs, Electricity Rates and Electric Load pages to determine for the current PV system design the optimal battery power, capacity and dispatch from the REopt Lite API.
+316
+Automatically size the battery bank and calculate an hour-by-hour dispatch schedule using the REopt Lite API web service. This sends values of SAM inputs to the service, runs a REopt optimization on the service, and modifies SAM battery size and dispatch inputs with results from the REopt run. See Help for details.
 TextColour
 4
 0
@@ -135,8 +135,8 @@ Tool Tip
 0
 Caption
 5
-137
-Note: REopt downloads its own weather file from the provided lat/lon and does not use the one provided on the Location and Resource page.
+101
+The REopt optimization uses a different weather file than the file on the Location and Resource page.
 TextColour
 4
 0

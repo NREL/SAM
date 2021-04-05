@@ -466,12 +466,12 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
     settings.GetProperty(wxT("tabIndex")).ToLong(&i);
     SetSelection(i);
 
-    int energy_index = -1;
-    for (size_t i = 0; i < m_tsDataSets.size(); i++)
-    {
-        if (m_tsDataSets[i]->GetMetaData() == "hourly_energy")
-            energy_index = i;
-    }
+	int energy_index = -1;
+	for( size_t i=0;i<m_tsDataSets.size();i++ )
+	{
+		if ( m_tsDataSets[i]->GetMetaData() == "gen" )
+			energy_index = i;
+	}
 
 
 
@@ -2926,20 +2926,26 @@ void TabularBrowser::UpdateAll()
     UpdateSelectionList(vsx, vsy);
     RemoveUnusedVariables();
 
-    wxArrayString tmp = m_selectedVars;
-    size_t n = tmp.size();
-
-    for (int i = 0; i != (int)n; i++)
-    {
-        int idx = m_names.Index(tmp[i]);
-
+	wxArrayString tmp = m_selectedVars;
+	size_t n = tmp.size();
+	for (int i = 0; i != (int)n; i++)
+	{
+		int idx = m_names.Index(tmp[i]);
+		if (idx >= 0)
+		{
+			m_varSel->SelectRowInCol(idx);
+			ProcessAdded(tmp[i]);
+		}
+	}
+    if (n == 0) {
+        int idx = m_names.Index("gen");
         if (idx >= 0)
         {
             m_varSel->SelectRowInCol(idx);
-            ProcessAdded(tmp[i]);
+            ProcessAdded("gen");
         }
     }
-    UpdateSelectionExpansion(vsx, vsy);
+	UpdateSelectionExpansion(vsx, vsy);
 }
 void TabularBrowser::UpdateCase()
 {
