@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-14854
+15092
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -4789,7 +4789,6 @@ equations{ 'field_htf_cp_avg' } = define() {
 		//return cspdtr_tes_userhtf( 1, 0.5*(${T_loop_in_des}+${T_loop_out}) );
 };
 
-/*
 equations{ 'min_inner_diameter' } = define() {
 	aLoopCtl = ${trough_loop_control};
 	
@@ -4809,7 +4808,6 @@ equations{ 'min_inner_diameter' } = define() {
 	
 	return minval;
 };
-*/
 
 equations{ 'single_loop_aperature' } = define() {
 	aLoop = ${trough_loop_control};
@@ -4933,7 +4931,6 @@ equations{ 'loop_optical_efficiency' } = define() {
 	return weighted_hce_eff*weighted_sca_eff; 
 };
 
-
 equations{ 'field_thermal_output' } = define() {
 	return ${I_bn_des}*${total_loop_conversion_efficiency}*${total_aperture}/1.E6;  // default now = 626.008
 	//return ${solar_mult}*${P_ref}/${eta_ref};   // default = 623.596
@@ -4953,6 +4950,7 @@ equations{ 'fixed_land_area' } = define() {
 	return ${total_aperture} * ${Row_Distance} / ${max_collector_width} * 0.0002471;
 };
 
+/*
 equations{ 'SCAInfoArray' } = define() {
 	a = ${trough_loop_control};
 	assemblies = a[0];
@@ -4974,6 +4972,7 @@ equations{ 'SCADefocusArray' } = define() {
 
 	return p1;
 };
+*/
 
 equations{ 'total_tracking_power' } = define() {
 	return ${nSCA}*${nLoops}*${SCA_drives_elec};
@@ -5065,6 +5064,7 @@ equations{ 'Type_cpnt' } = define() {
 
 
 equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
+/*
 	// csp.dtr.pwrb.nameplate
 	data.P_ref = ${P_ref};
 	data.gross_net_conversion_factor = ${gross_net_conversion_factor};
@@ -5111,10 +5111,11 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.csp_dtr_hce_optical_eff_2 = ${csp_dtr_hce_optical_eff_2};
 	data.csp_dtr_hce_optical_eff_3 = ${csp_dtr_hce_optical_eff_3};
 	data.csp_dtr_hce_optical_eff_4 = ${csp_dtr_hce_optical_eff_4};
-
+*/
 	// SCAInfoArray
 	// <nothing new needed>
-
+	data.trough_loop_control = ${trough_loop_control};
+/*
 	// SCADefocusArray
 	// <nothing new needed>
 
@@ -5166,8 +5167,17 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	// total_tracking_power
 	data.nsca = ${nSCA};
 	data.sca_drives_elec = ${SCA_drives_elec};
-	
+	*/
 	success = ssc_eqn("Physical_Trough_Solar_Field_Equations", data);
+	if (!success) {
+		${SCAInfoArray} = -999.;
+		${SCADefocusArray} = -999.;
+	}
+	else {
+		${SCAInfoArray} = data.sca_info_array;
+		${SCADefocusArray} = data.sca_defocus_array;
+	}
+	
 	/*
 	if (!success) {
 		${csp.dtr.pwrb.nameplate} = -999.;

@@ -1695,7 +1695,11 @@ Physical Trough Receiver Library
 ui default
 TextEntry
 
-18391
+18473
+//equations{ 'SCAInfoArray_copy' } = define () {
+//	return ${SCAInfoArray};
+//};
+
 equations{ 'receivers_in_field' } = define () {
   arr = ${SCAInfoArray};
   n = ${nColt};
