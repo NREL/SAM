@@ -2904,7 +2904,6 @@ void TabularBrowser::UpdateAll()
 	for (int i = 0; i != (int)n; i++)
 	{
 		int idx = m_names.Index(tmp[i]);
-        wxString tmp_string = tmp[i];
 		if (idx >= 0)
 		{
 			m_varSel->SelectRowInCol(idx);

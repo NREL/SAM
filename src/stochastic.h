@@ -179,6 +179,7 @@ public:
 	void OnSimulate( wxCommandEvent & );
 
 	void Simulate();
+    void ComputeSamples();
 
 	void OnSelectFolder(wxCommandEvent &);
 	void OnCheckWeather(wxCommandEvent &);

@@ -1855,7 +1855,7 @@ Battery Current and Capacity
 2
 Default
 
-10783
+10781
 equations{ '$MIMO$ batt_bank_computed' } = define() {
 
 	choice = ${batt_size_choice};
@@ -2054,8 +2054,8 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 	{
 		if ( choice == 0 ) // Set bank capacity
 		{
-			p_discharge = ${batt_bank_power};
-			p_charge = p_discharge;
+			p_discharge = bank_power;
+			p_charge = bank_power_charge;
 		}
 		else // specify cells
 		{
@@ -2122,7 +2122,7 @@ equations{ '$MIMO$ batt_bank_computed' } = define() {
 		if (${batt_ac_or_dc} == 1) // AC-connected
 		{
 			batt_bank_power_discharge_ac = p_discharge * (${batt_dc_ac_efficiency}*0.01);
-			batt_bank_power_charge_ac =  p_charge * (${batt_dc_ac_efficiency}*0.01);
+			batt_bank_power_charge_ac =  p_charge / (${batt_ac_dc_efficiency}*0.01);
 		}
 		else // DC-connected
 		{
