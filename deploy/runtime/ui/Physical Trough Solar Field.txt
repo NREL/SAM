@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-16348
+16558
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -4866,10 +4866,10 @@ equations{ 'cspdtr_loop_hce_heat_loss' } = define() {
 
 	return derate;
 };
-*/
+
 equations{ 'total_aperture' } = define() {
 	return ${single_loop_aperature} * ${FIELD_COPY_nLoops}; };
-/*
+
 equations{ 'required_number_of_loops_for_SM1' } = define() {
 	return ceil(${total_required_aperture_for_SM1}/${single_loop_aperature}); };
 
@@ -4930,12 +4930,12 @@ equations{ 'loop_optical_efficiency' } = define() {
 
 	return weighted_hce_eff*weighted_sca_eff; 
 };
-*/
+
 equations{ 'field_thermal_output' } = define() {
 	return ${I_bn_des}*${total_loop_conversion_efficiency}*${total_aperture}/1.E6;  // default now = 626.008
 	//return ${solar_mult}*${P_ref}/${eta_ref};   // default = 623.596
 };
-/*
+
 equations{ 'total_required_aperture_for_SM1' } = define() {
 	return ${q_pb_design}/( ${I_bn_des}*${total_loop_conversion_efficiency} )*1000000.0; 
 };
@@ -5141,7 +5141,7 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.radio_sm_or_area = ${radio_sm_or_area};
 	data.specified_solar_multiple = ${specified_solar_multiple};
 	data.specified_total_aperture = ${specified_total_aperture};
-/*
+
 	// total_aperture
 	// <nothing new needed>
 
@@ -5153,7 +5153,7 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 
 	// Q_rec_des
 	// <nothing new needed>
-
+/*
 	// tshours_sf
 	data.tshours = ${tshours};
 
@@ -5185,7 +5185,10 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${total_required_aperture_for_SM1} = -999.;
 		${required_number_of_loops_for_SM1} = -999.;
 		${nLoops} = -999.;
-		// Stopped here
+		${total_aperture} = -999.;
+		${field_thermal_output} = -999.;
+		${solar_mult} = -999.;
+		${Q_rec_des} = -999.;
 	}
 	else {
 		${csp.dtr.pwrb.nameplate} = data.csp_dtr_pwrb_nameplate;
@@ -5202,9 +5205,11 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${total_loop_conversion_efficiency} = data.total_loop_conversion_efficiency;
 		${total_required_aperture_for_SM1} = data.total_required_aperture_for_sm1;
 		${required_number_of_loops_for_SM1} = data.required_number_of_loops_for_sm1;
-		//msgbox(data.nloops);
 		${nLoops} = data.nloops;
-		// Stopped here
+		${total_aperture} = data.total_aperture;
+		${field_thermal_output} = data.field_thermal_output;
+		${solar_mult} = data.solar_mult;
+		${Q_rec_des} = data.q_rec_des;
 	}
 	
 	/*
