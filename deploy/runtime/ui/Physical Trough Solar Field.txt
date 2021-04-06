@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-15715
+16277
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -4770,7 +4770,7 @@ equations{ 'Fluid' } = define() {
 		50  //    user defined HTF
 	];
 };
-
+/*
 equations{ 'max_field_flow_velocity' } = define() {
 	return ${m_dot_htfmax}*4/(${fluid_dens_outlet_temp} * pi() * 
 				pow( ${min_inner_diameter},2) );
@@ -4781,7 +4781,6 @@ equations{ 'min_field_flow_velocity' } = define() {
 				pow(${min_inner_diameter},2) );
 };
 
-/*
 equations{ 'field_htf_cp_avg' } = define() {
 	if (${combo_htf_type} < 10 )
 		return substance_specific_heat( ${Fluid}, 0.5*(${T_loop_in_des}+${T_loop_out}) );
@@ -4870,14 +4869,14 @@ equations{ 'cspdtr_loop_hce_heat_loss' } = define() {
 */
 equations{ 'total_aperture' } = define() {
 	return ${single_loop_aperature} * ${FIELD_COPY_nLoops}; };
-
+/*
 equations{ 'required_number_of_loops_for_SM1' } = define() {
 	return ceil(${total_required_aperture_for_SM1}/${single_loop_aperature}); };
 
 equations{ 'total_loop_conversion_efficiency' } = define() {
 	return ${loop_optical_efficiency}*${cspdtr_loop_hce_heat_loss}; 
 };
-/*
+
 equations{ 'loop_optical_efficiency' } = define() {
 	aLoopCtl = ${trough_loop_control};
 	if (#aLoopCtl != aLoopCtl[0]*3+1) return -888.8;
@@ -4936,11 +4935,11 @@ equations{ 'field_thermal_output' } = define() {
 	return ${I_bn_des}*${total_loop_conversion_efficiency}*${total_aperture}/1.E6;  // default now = 626.008
 	//return ${solar_mult}*${P_ref}/${eta_ref};   // default = 623.596
 };
-
+/*
 equations{ 'total_required_aperture_for_SM1' } = define() {
 	return ${q_pb_design}/( ${I_bn_des}*${total_loop_conversion_efficiency} )*1000000.0; 
 };
-
+*/
 equations{ 'total_land_area' } = define() {
 	return ${fixed_land_area} * ${non_solar_field_land_area_multiplier};
 };
@@ -5119,7 +5118,7 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 
 	// SCADefocusArray
 	// <nothing new needed>
-/*
+
 	// max_field_flow_velocity
 	data.m_dot_htfmax = ${m_dot_htfmax};
 	data.fluid_dens_outlet_temp = ${fluid_dens_outlet_temp};
@@ -5128,15 +5127,15 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.m_dot_htfmin = ${m_dot_htfmin};
 	data.fluid_dens_inlet_temp = ${fluid_dens_inlet_temp};
 
-	// required_number_of_loops_for_SM1
-	data.total_required_aperture_for_sm1 = ${total_required_aperture_for_SM1};
-
 	// total_loop_conversion_efficiency
 	// <nothing new needed>
 
 	// total_required_aperture_for_SM1
 	// <nothing new needed>
-
+	
+	// required_number_of_loops_for_SM1
+	// <nothing new needed>
+/*
 	// nLoops
 	data.radio_sm_or_area = ${radio_sm_or_area};
 	data.specified_solar_multiple = ${specified_solar_multiple};
@@ -5180,6 +5179,12 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${loop_optical_efficiency} = -999.;
 		${SCAInfoArray} = -999.;
 		${SCADefocusArray} = -999.;
+		${max_field_flow_velocity} = -999.;
+		${min_field_flow_velocity} = -999.;
+		${total_loop_conversion_efficiency} = -999.;
+		${total_required_aperture_for_SM1} = -999.;
+		${required_number_of_loops_for_SM1} = -999.;
+		// Stopped here
 	}
 	else {
 		${csp.dtr.pwrb.nameplate} = data.csp_dtr_pwrb_nameplate;
@@ -5191,6 +5196,12 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${loop_optical_efficiency} = data.loop_optical_efficiency;
 		${SCAInfoArray} = data.sca_info_array;
 		${SCADefocusArray} = data.sca_defocus_array;
+		${max_field_flow_velocity} = data.max_field_flow_velocity;
+		${min_field_flow_velocity} = data.min_field_flow_velocity;
+		${total_loop_conversion_efficiency} = data.total_loop_conversion_efficiency;
+		${total_required_aperture_for_SM1} = data.total_required_aperture_for_sm1;
+		${required_number_of_loops_for_SM1} = data.required_number_of_loops_for_sm1;
+		// Stopped here
 	}
 	
 	/*
