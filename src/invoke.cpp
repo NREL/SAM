@@ -178,7 +178,7 @@ static void fcall_dview_wave_data_file( lk::invoke_t &cxt )
 	// this information is consistent with the variable definitions in the wfreader module
 	wfvec vars[] = {
 		{ "wave_significant_height", "Significant wave height", "m" },
-		{ "wave_energy_period","Wave energy period", "W/m2" },
+		{ "wave_energy_period","Wave energy period", "s" },
 		{ 0, 0, 0 } };
 
     ssc_number_t start = 0;

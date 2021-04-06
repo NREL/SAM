@@ -387,6 +387,28 @@ ResultsViewer::ResultsViewer( wxWindow *parent, int id )
 			m_uncertaintiesViewer = new UncertaintiesViewer(this);
 			AddPage(m_uncertaintiesViewer, "Uncertainties");
 		}
+        /*
+        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave")
+        {
+            VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
+            int wave_resource_model_choice_value = wave_resource_model_choice->Value();
+            if (wave_resource_model_choice_value != 1)
+            {
+                HidePage(5);
+                HidePage(6);
+                HidePage(7);
+                HidePage(8);
+                HidePage(9);
+            }
+            else
+            {
+                ShowPage(5);
+                ShowPage(6);
+                ShowPage(7);
+                ShowPage(8);
+                ShowPage(9);
+            }
+        }*/
 	}
 	//m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
 	//AddPage( m_durationCurve, "Duration curve" );
@@ -923,8 +945,10 @@ void ResultsViewer::Setup( Simulation *sim )
 			{
 				size_t n = 0;
 				double *p = vv->Array( &n );
+                int three_hour_data = 0;
 				
-				int steps_per_hour = (int)n / 8760; 
+				int steps_per_hour = (int)n / 8760;
+                
 				if (steps_per_hour * 8760 != (int)n)
 					steps_per_hour = -1;
 				int steps_per_hour_lt = 0;
@@ -948,7 +972,7 @@ void ResultsViewer::Setup( Simulation *sim )
 					group = "Lifetime Hourly Data";
 					time_step = 1;
 				}
-                else if (n == 2920)
+                else if (n == 2920 || (n < 2920 && steps_per_hour < 1))
                 {
                     group = "Three Hour Data";
                     time_step = 3;
@@ -1016,6 +1040,28 @@ void ResultsViewer::Setup( Simulation *sim )
 		    }
 			m_uncertaintiesViewer->Setup(m_sim);
 		}
+
+        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave")
+        {
+            VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
+            int wave_resource_model_choice_value = wave_resource_model_choice->Value();
+            if (wave_resource_model_choice_value != 1)
+            {
+                HidePage(5);
+                HidePage(6);
+                HidePage(7);
+                HidePage(8);
+                HidePage(9);
+            }
+            else
+            {
+                ShowPage(5);
+                ShowPage(6);
+                ShowPage(7);
+                ShowPage(8);
+                ShowPage(9);
+            }
+        }
 	}
 
 	m_tables->Setup( m_sim );
