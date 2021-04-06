@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-16558
+14770
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -4939,18 +4939,7 @@ equations{ 'field_thermal_output' } = define() {
 equations{ 'total_required_aperture_for_SM1' } = define() {
 	return ${q_pb_design}/( ${I_bn_des}*${total_loop_conversion_efficiency} )*1000000.0; 
 };
-*/
-equations{ 'total_land_area' } = define() {
-	return ${fixed_land_area} * ${non_solar_field_land_area_multiplier};
-};
 
-
-//max_collector_width defined on Physical Trough Collector Header page
-equations{ 'fixed_land_area' } = define() {
-	return ${total_aperture} * ${Row_Distance} / ${max_collector_width} * 0.0002471;
-};
-
-/*
 equations{ 'SCAInfoArray' } = define() {
 	a = ${trough_loop_control};
 	assemblies = a[0];
@@ -4972,11 +4961,20 @@ equations{ 'SCADefocusArray' } = define() {
 
 	return p1;
 };
-*/
+
+//max_collector_width defined on Physical Trough Collector Header page
+equations{ 'fixed_land_area' } = define() {
+	return ${total_aperture} * ${Row_Distance} / ${max_collector_width} * 0.0002471;
+};
+
+equations{ 'total_land_area' } = define() {
+	return ${fixed_land_area} * ${non_solar_field_land_area_multiplier};
+};
 
 equations{ 'total_tracking_power' } = define() {
 	return ${nSCA}*${nLoops}*${SCA_drives_elec};
 };
+*/
 
 equations{ 'K_cpnt' } = define() {
 	K_cpnt_0 = [0.9, 0, 0.19, 0, 0.9, -1, -1, -1, -1, -1, -1];
@@ -5137,7 +5135,6 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	// <nothing new needed>
 
 	// nLoops
-	//msgbox('radio_sm_or_area' + ${radio_sm_or_area});
 	data.radio_sm_or_area = ${radio_sm_or_area};
 	data.specified_solar_multiple = ${specified_solar_multiple};
 	data.specified_total_aperture = ${specified_total_aperture};
@@ -5153,13 +5150,13 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 
 	// Q_rec_des
 	// <nothing new needed>
-/*
+	
 	// tshours_sf
 	data.tshours = ${tshours};
 
 	// fixed_land_area
 	data.row_distance = ${Row_Distance};
-	data.max_collector_width = ${max_collector_width};
+	data.max_collector_width = 6;
 
 	// total_land_area
 	data.non_solar_field_land_area_multiplier = ${non_solar_field_land_area_multiplier};
@@ -5167,52 +5164,8 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	// total_tracking_power
 	data.nsca = ${nSCA};
 	data.sca_drives_elec = ${SCA_drives_elec};
-	*/
+
 	success = ssc_eqn("Physical_Trough_Solar_Field_Equations", data);
-	if (!success) {
-		${csp.dtr.pwrb.nameplate} = -999.;
-		${q_pb_design} = -999.;
-		${field_htf_cp_avg} = -999.;
-		${single_loop_aperature} = -999.;
-		${min_inner_diameter} = -999.;
-		${cspdtr_loop_hce_heat_loss} = -999.;
-		${loop_optical_efficiency} = -999.;
-		${SCAInfoArray} = -999.;
-		${SCADefocusArray} = -999.;
-		${max_field_flow_velocity} = -999.;
-		${min_field_flow_velocity} = -999.;
-		${total_loop_conversion_efficiency} = -999.;
-		${total_required_aperture_for_SM1} = -999.;
-		${required_number_of_loops_for_SM1} = -999.;
-		${nLoops} = -999.;
-		${total_aperture} = -999.;
-		${field_thermal_output} = -999.;
-		${solar_mult} = -999.;
-		${Q_rec_des} = -999.;
-	}
-	else {
-		${csp.dtr.pwrb.nameplate} = data.csp_dtr_pwrb_nameplate;
-		${q_pb_design} = data.q_pb_design;
-		${field_htf_cp_avg} = data.field_htf_cp_avg;
-		${single_loop_aperature} = data.single_loop_aperature;
-		${min_inner_diameter} = data.min_inner_diameter;
-		${cspdtr_loop_hce_heat_loss} = data.cspdtr_loop_hce_heat_loss;
-		${loop_optical_efficiency} = data.loop_optical_efficiency;
-		${SCAInfoArray} = data.sca_info_array;
-		${SCADefocusArray} = data.sca_defocus_array;
-		${max_field_flow_velocity} = data.max_field_flow_velocity;
-		${min_field_flow_velocity} = data.min_field_flow_velocity;
-		${total_loop_conversion_efficiency} = data.total_loop_conversion_efficiency;
-		${total_required_aperture_for_SM1} = data.total_required_aperture_for_sm1;
-		${required_number_of_loops_for_SM1} = data.required_number_of_loops_for_sm1;
-		${nLoops} = data.nloops;
-		${total_aperture} = data.total_aperture;
-		${field_thermal_output} = data.field_thermal_output;
-		${solar_mult} = data.solar_mult;
-		${Q_rec_des} = data.q_rec_des;
-	}
-	
-	/*
 	if (!success) {
 		${csp.dtr.pwrb.nameplate} = -999.;
 		${q_pb_design} = -999.;
@@ -5238,7 +5191,7 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${total_land_area} = -999.;
 		${total_tracking_power} = -999.;
 	}
-	else {		
+	else {
 		${csp.dtr.pwrb.nameplate} = data.csp_dtr_pwrb_nameplate;
 		${q_pb_design} = data.q_pb_design;
 		${field_htf_cp_avg} = data.field_htf_cp_avg;
@@ -5263,7 +5216,7 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${total_land_area} = data.total_land_area;
 		${total_tracking_power} = data.total_tracking_power;
 	}
-*/	
+	
 	return 0;
 };
 
