@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-16277
+16348
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -5135,13 +5135,13 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	
 	// required_number_of_loops_for_SM1
 	// <nothing new needed>
-/*
+
 	// nLoops
+	//msgbox('radio_sm_or_area' + ${radio_sm_or_area});
 	data.radio_sm_or_area = ${radio_sm_or_area};
 	data.specified_solar_multiple = ${specified_solar_multiple};
 	data.specified_total_aperture = ${specified_total_aperture};
-	data.single_loop_aperture = ${single_loop_aperature};
-
+/*
 	// total_aperture
 	// <nothing new needed>
 
@@ -5184,6 +5184,7 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${total_loop_conversion_efficiency} = -999.;
 		${total_required_aperture_for_SM1} = -999.;
 		${required_number_of_loops_for_SM1} = -999.;
+		${nLoops} = -999.;
 		// Stopped here
 	}
 	else {
@@ -5201,6 +5202,8 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${total_loop_conversion_efficiency} = data.total_loop_conversion_efficiency;
 		${total_required_aperture_for_SM1} = data.total_required_aperture_for_sm1;
 		${required_number_of_loops_for_SM1} = data.required_number_of_loops_for_sm1;
+		//msgbox(data.nloops);
+		${nLoops} = data.nloops;
 		// Stopped here
 	}
 	
@@ -5217,9 +5220,9 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${SCADefocusArray} = -999.;
 		${max_field_flow_velocity} = -999.;
 		${min_field_flow_velocity} = -999.;
-		${required_number_of_loops_for_SM1} = -999.;
 		${total_loop_conversion_efficiency} = -999.;
 		${total_required_aperture_for_SM1} = -999.;
+		${required_number_of_loops_for_SM1} = -999.;
 		${nLoops} = -999.;
 		${total_aperture} = -999.;
 		${field_thermal_output} = -999.;
@@ -5242,9 +5245,9 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${SCADefocusArray} = data.sca_defocus_array;
 		${max_field_flow_velocity} = data.max_field_flow_velocity;
 		${min_field_flow_velocity} = data.min_field_flow_velocity;
-		${required_number_of_loops_for_SM1} = data.required_number_of_loops_for_sm1;
 		${total_loop_conversion_efficiency} = data.total_loop_conversion_efficiency;
 		${total_required_aperture_for_SM1} = data.total_required_aperture_for_sm1;
+		${required_number_of_loops_for_SM1} = data.required_number_of_loops_for_sm1;
 		${nLoops} = data.nloops;
 		${total_aperture} = data.total_aperture;
 		${field_thermal_output} = data.field_thermal_output;

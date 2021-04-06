@@ -1328,7 +1328,7 @@ System Design
 0
 Default
 
-2479
+2485
 // the picture (object 12) is saved as:
 //  \sam_dev\sam\deploy\runtime\ui\Physical Trough System Design_object 12.png
 
@@ -1344,9 +1344,9 @@ equations{ 'tshours_sf' } = define() {
 	return 6;
 };
 
-equations{ 'nLoops' } = define() {
-	return 181;
-};
+//equations{ 'nLoops' } = define() {
+//	return 181;
+//};
 
 //equations{ 'csp.dtr.pwrb.nameplate' } = define() {
 //	return 100;
