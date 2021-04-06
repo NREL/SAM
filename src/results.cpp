@@ -146,12 +146,14 @@ void PopulateSelectionList( wxDVSelectionListCtrl *sel, wxArrayString *names, Si
 			steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
 
 		wxString group;
-		if (row_length == 1)
-			group = "Single Values";
-		else if (row_length == 12 && col_length == 1)
-			group = "Monthly Data";
-		else if (row_length == 8760 && col_length == 1)
-			group = "Hourly Data";
+        if (row_length == 1)
+            group = "Single Values";
+        else if (row_length == 12 && col_length == 1)
+            group = "Monthly Data";
+        else if (row_length == 8760 && col_length == 1)
+            group = "Hourly Data";
+        else if (row_length == 2920 && col_length == 1)
+            group = "Three Hour Data";
 		else if ((int)row_length == an_period && col_length == 1)
 			group = "Annual Data";
 		else if (((int)row_length == (an_period - 1) * 12) && (lifetime) && (col_length == 1))
@@ -946,6 +948,11 @@ void ResultsViewer::Setup( Simulation *sim )
 					group = "Lifetime Hourly Data";
 					time_step = 1;
 				}
+                else if (n == 2920)
+                {
+                    group = "Three Hour Data";
+                    time_step = 3;
+                }
 				else if ((steps_per_hour_lt >= 2 && steps_per_hour_lt <= 60) && (use_lifetime))
 				{
 					group = wxString::Format("Lifetime %d Minute Data", 60 / (steps_per_hour_lt));

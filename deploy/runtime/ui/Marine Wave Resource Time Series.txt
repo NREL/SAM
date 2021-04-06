@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
 1291
 622
-16
+17
 Hyperlink
 
 1
@@ -63,6 +63,36 @@ Caption
 5
 15
 Refresh Library
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+18
+btn_view_wave_data
+X
+3
+927
+Y
+3
+423
+Width
+3
+121
+Height
+3
+43
+Tool Tip
+5
+0
+Caption
+5
+9
+View Data
 TabOrder
 3
 4294967295
@@ -903,7 +933,7 @@ equations{'wave_resource_file_ts'} = define() {
 };
 
 
-3372
+3609
 function enable_disable_library() {
 	enable_library = !value('use_specific_ts_wf_wave');
 	enable('wave_resource_matrix',false);
@@ -936,6 +966,11 @@ function enable_disable_library() {
 	refresh();
 	
 }
+
+on_change{'btn_view_wave_data'} = define() {
+	if ( dview_wave(value('wave_resource_filename_ts')) )
+	{	msgbox('Failed to read file!\nThe data viewer was not able to open the weather file:\n' + value('wave_resource_filename_ts') ); }
+};
 
 
 

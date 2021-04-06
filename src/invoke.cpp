@@ -145,9 +145,9 @@ struct wfvec {
 	char const *units;
 };
 
-static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
+static void fcall_dview_wave_data_file( lk::invoke_t &cxt )
 {
-	LK_DOC("dview_solar", "Read a solar weather data file on disk (*.csv,*.tm2,*.tm3,*.epw,*.smw) and popup a frame with a data viewer.", "(string:filename):boolean");
+	LK_DOC("dview_wave", "Read a solar weather data file on disk (*.csv) and popup a frame with a data viewer.", "(string:filename):boolean");
 
 	wxString file( cxt.arg(0).as_string() );
 	if ( !wxFileExists( file ) ) {
@@ -155,12 +155,11 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 		return;
 	}
 
-
 	ssc_data_t pdata = ssc_data_create();
-	ssc_data_set_string(pdata, "file_name", (const char*)file.c_str());
-	ssc_data_set_number(pdata, "header_only", 0);
+    ssc_data_set_number(pdata, "wave_resource_model_choice", 1);
+    ssc_data_set_string(pdata, "wave_resource_filename_ts", (const char*)file.c_str());
 
-	if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
+	if ( const char *err = ssc_module_exec_simple_nothread( "wave_file_reader", pdata ) )
 	{
 		wxLogStatus("error scanning '" + file + "'");
 		cxt.error(err);
@@ -178,24 +177,14 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 
 	// this information is consistent with the variable definitions in the wfreader module
 	wfvec vars[] = {
-		{ "beam", "Beam irradiance - DNI", "W/m2" },
-		{ "diff","Diffuse irradiance - DHI", "W/m2" },
-		{ "glob", "Global irradiance - GHI", "W/m2" },
-		{ "poa", "Plane of array irradiance -POA", "W/m2" },
-		{ "wspd", "Wind speed", "m/s" },
-		{ "wdir", "Wind direction", "deg" },
-		{ "tdry", "Dry bulb temp", "C" },
-		{ "twet", "Wet bulb temp", "C" },
-		{ "tdew", "Dew point temp", "C" },
-		{ "rhum", "Relative humidity", "%" },
-		{ "pres", "Pressure", "millibar" },
-		{ "snow", "Snow depth", "cm" },
-		{ "albedo", "Albedo", "fraction" },
+		{ "wave_significant_height", "Significant wave height", "m" },
+		{ "wave_energy_period","Wave energy period", "W/m2" },
 		{ 0, 0, 0 } };
 
-	ssc_number_t start, step; // start & step in seconds, then convert to hours
-	ssc_data_get_number( pdata, "start", &start ); start /= 3600;
-	ssc_data_get_number( pdata, "step", &step ); step /= 3600;
+    ssc_number_t start = 0;
+    ssc_number_t step = 3600 * 3; // start & step in seconds, then convert to hours
+	start /= 3600;
+	step /= 3600;
 
 	size_t i=0;
 	while( vars[i].name != 0 )
@@ -225,6 +214,88 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	dview->DisplayTabs();
 
 	frame->Show();
+}
+
+static void fcall_dview_solar_data_file(lk::invoke_t& cxt)
+{
+    LK_DOC("dview_solar", "Read a solar weather data file on disk (*.csv,*.tm2,*.tm3,*.epw,*.smw) and popup a frame with a data viewer.", "(string:filename):boolean");
+
+    wxString file(cxt.arg(0).as_string());
+    if (!wxFileExists(file)) {
+        cxt.result().assign(0.0);
+        return;
+    }
+
+
+    ssc_data_t pdata = ssc_data_create();
+    ssc_data_set_string(pdata, "file_name", (const char*)file.c_str());
+    ssc_data_set_number(pdata, "header_only", 0);
+
+    if (const char* err = ssc_module_exec_simple_nothread("wfreader", pdata))
+    {
+        wxLogStatus("error scanning '" + file + "'");
+        cxt.error(err);
+        cxt.result().assign(0.0);
+        return;
+    }
+
+    wxFrame* frame = new wxFrame(SamApp::Window(), wxID_ANY, "Data Viewer: " + file, wxDefaultPosition, wxScaleSize(1000, 700),
+        (wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER));
+#ifdef __WXMSW__
+    frame->SetIcon(wxICON(appicon));
+#endif
+
+    wxDVPlotCtrl* dview = new wxDVPlotCtrl(frame, wxID_ANY);
+
+    // this information is consistent with the variable definitions in the wfreader module
+    wfvec vars[] = {
+        { "beam", "Beam irradiance - DNI", "W/m2" },
+        { "diff","Diffuse irradiance - DHI", "W/m2" },
+        { "glob", "Global irradiance - GHI", "W/m2" },
+        { "poa", "Plane of array irradiance -POA", "W/m2" },
+        { "wspd", "Wind speed", "m/s" },
+        { "wdir", "Wind direction", "deg" },
+        { "tdry", "Dry bulb temp", "C" },
+        { "twet", "Wet bulb temp", "C" },
+        { "tdew", "Dew point temp", "C" },
+        { "rhum", "Relative humidity", "%" },
+        { "pres", "Pressure", "millibar" },
+        { "snow", "Snow depth", "cm" },
+        { "albedo", "Albedo", "fraction" },
+        { 0, 0, 0 } };
+
+    ssc_number_t start, step; // start & step in seconds, then convert to hours
+    ssc_data_get_number(pdata, "start", &start); start /= 3600;
+    ssc_data_get_number(pdata, "step", &step); step /= 3600;
+
+    size_t i = 0;
+    while (vars[i].name != 0)
+    {
+        int len;
+        ssc_number_t* p = ssc_data_get_array(pdata, vars[i].name, &len);
+        if (p != 0 && len > 2)
+        {
+            std::vector<double> plot_data(len);
+            for (int j = 0; j < len; j++)
+                plot_data[j] = p[j];
+
+            wxDVArrayDataSet* dvset = new wxDVArrayDataSet(vars[i].label, vars[i].units, start, step, plot_data);
+            dvset->SetGroupName(wxFileNameFromPath(file));
+            dview->AddDataSet(dvset);
+        }
+
+        i++;
+    }
+
+    ssc_data_free(pdata);
+
+    dview->GetStatisticsTable()->RebuildDataViewCtrl();
+    if (i > 0)
+        dview->SelectDataIndex(0);
+
+    dview->DisplayTabs();
+
+    frame->Show();
 }
 
 static void fcall_logmsg( lk::invoke_t &cxt )
@@ -5048,6 +5119,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_case_name,
             fcall_dview,
             fcall_dview_solar_data_file,
+            fcall_dview_wave_data_file,
             fcall_pdfreport,
             fcall_pagenote,
             fcall_macrocall,
