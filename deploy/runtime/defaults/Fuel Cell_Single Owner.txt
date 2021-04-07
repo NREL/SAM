@@ -1,5 +1,5 @@
 1
-753
+755
 LeadAcid_q10
 1
 1
@@ -268,6 +268,12 @@ batt_auto_gridcharge_max_daily
 1
 1
 100
+batt_bank_duration
+1
+1
+1
+1
+2
 batt_bank_ncells_serial
 1
 1
@@ -541,6 +547,12 @@ batt_dispatch_update_frequency_hours
 1
 1
 24
+batt_duration_choice
+1
+1
+1
+1
+1
 batt_gridcharge_percent_1
 1
 1
