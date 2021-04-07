@@ -18,7 +18,7 @@ Y
 108
 Width
 3
-90
+100
 Height
 3
 24
@@ -81,7 +81,7 @@ Y
 81
 Width
 3
-90
+100
 Height
 3
 24
@@ -144,7 +144,7 @@ Y
 135
 Width
 3
-90
+100
 Height
 3
 24
@@ -470,7 +470,7 @@ Width
 759
 Height
 3
-63
+59
 Tool Tip
 5
 0
@@ -515,7 +515,7 @@ Y
 168
 Width
 3
-90
+100
 Height
 3
 24
@@ -563,9 +563,67 @@ TabOrder
 3
 4294967295
 
+3
+capex_total_ac_cost_percent
+3
+1
+AC Costs
+ 
+ 
 0
+8
+1
+1
+1
+1
+0
+Default
+capex_total_dc_cost_percent
+3
+1
+DC Costs
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+capex_total_land_cost_percent
+3
+1
+Land Costs
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-0
+430
+equations{'capex_total_dc_cost_percent'} = define() {
+	return ${capex_table_total_installed_dc_cost} / 
+		${total_installed_cost} * 100;
+};
+
+equations{'capex_total_ac_cost_percent'} = define() {
+	return ${capex_table_total_installed_ac_cost} / 
+		${total_installed_cost} * 100;
+};
+
+equations{'capex_total_land_cost_percent'} = define() {
+	return ${capex_table_total_installed_land_cost} / 
+		${total_installed_cost} * 100;
+};
+		
+	
 221
 on_load{'PV Capital Cost Curve'} = define() {
 	tech = technology();

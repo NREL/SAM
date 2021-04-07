@@ -118,7 +118,13 @@ autographs{ 'Generic CSP System' } = define() { base_technology_graphs(); heatma
 autographs{ 'Solar Water Heating' } = define() { base_technology_graphs(); heatmap_graphs(); };
 autographs{ 'Generic System' } = define() { base_technology_graphs(); heatmap_graphs(); };
 autographs{ 'Wind Power' } = define() { base_technology_graphs(); heatmap_graphs(); wind_pruf_graphs();};
-autographs{ 'Fuel Cell' } = define() {heatmap_graphs();};
+autographs{ 'Fuel Cell' } = define() 
+{
+	heatmap_graphs();
+	if(value('pv_capex_cost_choice')==1) {
+		agraph( 'capex_total_dc_cost_percent,capex_total_ac_cost_percent,capex_total_land_cost_percent,capex_total_batt_cost_percent,capex_total_fc_cost_percent','LCOE Contribution','','', -1, true, false, 'bottom', 5);
+	} 
+};
 autographs{ 'Biopower' } = define() {heatmap_graphs();};
 autographs{ 'Generic Battery' } = define() {heatmap_graphs();};
 
@@ -143,15 +149,23 @@ autographs{ 'MEtidal' } = define()
 autographs{ 'PVWatts'} = define() 
 {	
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 
+	if(value('pv_capex_cost_choice')==1) {
+		agraph( 'capex_total_dc_cost_percent,capex_total_ac_cost_percent','LCOE Contribution','','', -1, true, false, 'bottom', 5);
+	} 
 	heatmap_graphs();
 };
 
 autographs{ 'PVWatts Battery'} = define() 
 {	
-	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 
+	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' );
+	if(value('pv_capex_cost_choice')==1) {
+		agraph( 'capex_total_dc_cost_percent,capex_total_ac_cost_percent,capex_total_land_cost_percent,capex_total_batt_cost_percent','LCOE Contribution','','', -1, true, false, 'bottom', 5);
+	}
 	heatmap_graphs();
 	if (is_assigned('outage_durations'))
 		resiliency_graphs();
+		
+	
 };
 
 autographs{ 'Flat Plate PV' } = define()
@@ -173,7 +187,10 @@ autographs{ 'Flat Plate PV' } = define()
 		if (value('system_use_lifetime_output') && value('en_ac_lifetime_losses'))
 			columns += 'annual_ac_lifetime_loss_percent,';
 	columns += 'annual_xfmr_loss_percent,annual_ac_perf_adj_loss_percent';
-	agraph(columns, 'Energy Loss', '', '%', -1, false, true, 'right'); 
+	agraph(columns, 'Energy Loss', '', '%', -1, false, true, 'right');
+	if(value('pv_capex_cost_choice')==1) {
+		agraph( 'capex_total_dc_cost_percent,capex_total_ac_cost_percent,capex_total_land_cost_percent','LCOE Contribution','','', -1, true, false, 'bottom', 5);
+	}
 	heatmap_graphs();
 
 };
@@ -181,6 +198,9 @@ autographs{ 'Flat Plate PV' } = define()
 autographs{ 'PV Battery' } = define()
 {	
 	agraph( 'monthly_energy', 'Monthly Energy Production', '', 'kWh' , -1, true, false, 'bottom' ); 
+	if(value('pv_capex_cost_choice')==1) {
+		agraph( 'capex_total_dc_cost_percent,capex_total_ac_cost_percent,capex_total_land_cost_percent,capex_total_batt_cost_percent','LCOE Contribution','','', -1, true, false, 'bottom', 5);
+	}
 	heatmap_graphs();
 	if (value('batt_ac_or_dc') == 0)
 		agraph('annual_poa_shading_loss_percent,annual_poa_soiling_loss_percent,annual_dc_module_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_dc_battery_loss_percent, annual_ac_inv_clip_loss_percent,annual_ac_inv_pso_loss_percent,annual_ac_inv_pnt_loss_percent,annual_ac_inv_eff_loss_percent,annual_ac_wiring_loss_percent,annual_ac_transformer_loss_percent,annual_ac_perf_adj_loss_percent', 'Energy Loss', '', '%', -1, false, true, 'right'); 

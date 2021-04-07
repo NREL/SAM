@@ -18,7 +18,7 @@ Y
 114
 Width
 3
-90
+100
 Height
 3
 24
@@ -81,7 +81,7 @@ Y
 141
 Width
 3
-90
+100
 Height
 3
 24
@@ -144,7 +144,7 @@ Y
 87
 Width
 3
-90
+100
 Height
 3
 24
@@ -207,7 +207,7 @@ Y
 168
 Width
 3
-90
+100
 Height
 3
 24
@@ -626,7 +626,7 @@ Y
 210
 Width
 3
-90
+100
 Height
 3
 24
@@ -674,7 +674,103 @@ TabOrder
 3
 4294967295
 
+5
+capex_total_ac_cost_percent
+3
+1
+AC Costs
+ 
+ 
 0
+8
+1
+1
+1
+1
+0
+Default
+capex_total_batt_cost_percent
+3
+1
+Battery Costs
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+capex_total_dc_cost_percent
+3
+1
+DC Costs
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+capex_total_fc_cost_percent
+3
+1
+Fuel Cell Costs
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+capex_total_land_cost_percent
+3
+1
+Land Costs
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-0
+722
+equations{'capex_total_dc_cost_percent'} = define() {
+	return ${capex_table_total_installed_dc_cost} / 
+		${total_installed_cost} * 100;
+};
+
+equations{'capex_total_ac_cost_percent'} = define() {
+	return ${capex_table_total_installed_ac_cost} / 
+		${total_installed_cost} * 100;
+};
+
+equations{'capex_total_land_cost_percent'} = define() {
+	return ${capex_table_total_installed_land_cost} / 
+		${total_installed_cost} * 100;
+};
+
+equations{'capex_total_batt_cost_percent'} = define() {
+	return ${capex_table_total_installed_batt_cost} / 
+		${total_installed_cost} * 100;
+};
+
+equations{'capex_total_fc_cost_percent'} = define() {
+	return ${capex_table_total_installed_fuelcell_cost} / 
+		${total_installed_cost} * 100;
+};
+		
+	
 0

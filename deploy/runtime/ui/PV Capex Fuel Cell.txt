@@ -113,7 +113,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -312,13 +312,13 @@ Name
 capex_table_total_installed_fuelcell_cost
 X
 3
-720
+714
 Y
 3
 324
 Width
 3
-90
+100
 Height
 3
 24
@@ -336,7 +336,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
@@ -374,13 +374,13 @@ Name
 capex_table_total_label1
 X
 3
-549
+564
 Y
 3
 324
 Width
 3
-171
+145
 Height
 3
 24
@@ -389,8 +389,8 @@ Tool Tip
 0
 Caption
 5
-15
-Total land cost
+20
+Total fuel cell cost
 TextColour
 4
 0
@@ -446,7 +446,7 @@ Format
 0
 Decimals
 3
-3
+2
 Prefix
 5
 0
