@@ -673,7 +673,7 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 				if (VarValue* vv = sims[i]->GetValue(m_g.X[0]))
 				{
 					int count = 0;
-					if (vv->Type() == VV_NUMBER)
+					if ((vv->Type() == VV_NUMBER) || (vv->Type() == VV_STRING)) // solar resource, modules, inverters, etc.
 						count = 1;
 					else if (vv->Type() == VV_ARRAY)
 						count = vv->Length();
@@ -723,7 +723,9 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 			double xval = 0, yval = 0;
 			if (!std::isnan(yvars[i]->Value()))
 				yval = yvars[i]->Value();
-			if (!std::isnan(xvars[i]->Value()))
+			if (xvars[i]->Type() == VV_STRING)
+				xval = i;
+			else if (!std::isnan(xvars[i]->Value()))
 				xval = xvars[i]->Value();
 
 			plotdata.push_back(wxRealPoint(xval, yval));
@@ -748,43 +750,6 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 
 	if (plot != 0)
 		AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
-/*
-	AddPlot(new wxPLLinePlot(plotdata, "3\\dot sin^2(x)", "forest green", wxPLLinePlot::DOTTED),
-		wxPLPlotCtrl::X_BOTTOM,
-		wxPLPlotCtrl::Y_LEFT,
-		wxPLPlotCtrl::PLOT_TOP);
-*/
-	/*
-	// group the bars together if they're not stacked and not single values
-	if (ndata > 1 && m_g.Type == Graph::BAR)
-		for (size_t i = 0; i < bar_group.size(); i++)
-			bar_group[i]->SetGroup(bar_group);
-
-	// create the axes
-	if (m_g.Type == Graph::LINE)
-	{
-		// single value axis
-		wxPLLabelAxis* x1 = new wxPLLabelAxis(-1, xvars.size(), m_g.XLabel);
-		for (size_t i = 0; i < xvars.size(); i++)
-			x1->Add(i, wxString::Format("%g", xvars[i]->Value()));
-		//			x1->Add(i, ynames[i]);
-		SetXAxis1(x1);
-	}
-	else if (ndata == 12)
-	{
-		// month axis
-		wxPLLabelAxis* x1 = new wxPLLabelAxis(-1, 12, m_g.XLabel);
-		for (size_t i = 0; i < 12; i++)
-			x1->Add(i, s_monthNames[i]);
-		SetXAxis1(x1);
-	}
-	else
-	{
-		// linear axis
-		SetXAxis1(new wxPLLinearAxis(-1, ndata + 1, m_g.XLabel));
-	}
-
-*/	
 	// setup y axis
 
 	if (GetPlotCount() > 0)
