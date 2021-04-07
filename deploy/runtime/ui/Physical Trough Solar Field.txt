@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-14770
+14712
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -5073,7 +5073,7 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	// field_htf_cp_avg
 	data.T_loop_in_des = ${T_loop_in_des};
 	data.T_loop_out = ${T_loop_out};
-	data.fluid = ${Fluid};
+	data.Fluid = ${Fluid};
 	data.field_fl_props = ${field_fl_props};
 
 	// single_loop_aperature
@@ -5112,7 +5112,6 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 
 	// SCAInfoArray
 	// <nothing new needed>
-	data.trough_loop_control = ${trough_loop_control};
 
 	// SCADefocusArray
 	// <nothing new needed>
@@ -5155,15 +5154,15 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.tshours = ${tshours};
 
 	// fixed_land_area
-	data.row_distance = ${Row_Distance};
+	data.Row_Distance = ${Row_Distance};
 	data.max_collector_width = 6;
 
 	// total_land_area
 	data.non_solar_field_land_area_multiplier = ${non_solar_field_land_area_multiplier};
 
 	// total_tracking_power
-	data.nsca = ${nSCA};
-	data.sca_drives_elec = ${SCA_drives_elec};
+	data.nSCA = ${nSCA};
+	data.SCA_drives_elec = ${SCA_drives_elec};
 
 	success = ssc_eqn("Physical_Trough_Solar_Field_Equations", data);
 	if (!success) {
@@ -5174,8 +5173,8 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${min_inner_diameter} = -999.;
 		${cspdtr_loop_hce_heat_loss} = -999.;
 		${loop_optical_efficiency} = -999.;
-		${SCAInfoArray} = -999.;
-		${SCADefocusArray} = -999.;
+		${SCAInfoArray} = null;
+		${SCADefocusArray} = null;
 		${max_field_flow_velocity} = -999.;
 		${min_field_flow_velocity} = -999.;
 		${total_loop_conversion_efficiency} = -999.;
@@ -5199,8 +5198,8 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${min_inner_diameter} = data.min_inner_diameter;
 		${cspdtr_loop_hce_heat_loss} = data.cspdtr_loop_hce_heat_loss;
 		${loop_optical_efficiency} = data.loop_optical_efficiency;
-		${SCAInfoArray} = data.sca_info_array;
-		${SCADefocusArray} = data.sca_defocus_array;
+		${SCAInfoArray} = data.scainfoarray;
+		${SCADefocusArray} = data.scadefocusarray;
 		${max_field_flow_velocity} = data.max_field_flow_velocity;
 		${min_field_flow_velocity} = data.min_field_flow_velocity;
 		${total_loop_conversion_efficiency} = data.total_loop_conversion_efficiency;
