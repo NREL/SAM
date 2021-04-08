@@ -863,7 +863,7 @@ Physical Trough Collector Library
 <invalid>
 Default
 
-4591
+4484
 equations{ '$MIMO$ collectors in field' } = define () {
   arr = ${SCAInfoArray};
   n = ${nColt};
@@ -898,10 +898,7 @@ equations{ '$MIMO$ get values from pages' } = define() {
 	${W_aperture} = acollector;
 
 	//for land area equation on solar field page:
-	arr = ${arr_collectors_in_loop};
-	n = #arr;
-	for ( i=0; i<n; i++ ) widths[i] = acollector[arr[i]];
-	${max_collector_width} = max(widths);
+	${max_collector_width} = -999;
 
 	acollector[0] = ${csp_dtr_sca_aperture_1};
 	acollector[1] = ${csp_dtr_sca_aperture_2};
