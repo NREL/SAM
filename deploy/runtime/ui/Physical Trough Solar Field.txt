@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-14921
+15161
 /*
 Doesn't work to create functions in 'equations' section
 cspdtr_solf_userhtf_dens = define(tempC) {
@@ -4976,6 +4976,7 @@ equations{ 'total_tracking_power' } = define() {
 };
 */
 
+/*
 equations{ 'K_cpnt' } = define() {
 	K_cpnt_0 = [0.9, 0, 0.19, 0, 0.9, -1, -1, -1, -1, -1, -1];
 	K_cpnt_1 = [0, 0.6, 0.05, 0, 0.6, 0, 0.6, 0, 0.42, 0, 0.15];
@@ -5059,7 +5060,7 @@ equations{ 'Type_cpnt' } = define() {
 
 	return T;
 };
-
+*/
 
 equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 
@@ -5166,6 +5167,9 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	// total_tracking_power
 	data.nSCA = ${nSCA};
 	data.SCA_drives_elec = ${SCA_drives_elec};
+	
+	// K_cpnt
+	// <nothing new needed>
 
 	success = ssc_eqn("Physical_Trough_Solar_Field_Equations", data);
 	if (!success) {
@@ -5192,6 +5196,10 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${fixed_land_area} = -999.;
 		${total_land_area} = -999.;
 		${total_tracking_power} = -999.;
+		${K_cpnt} = null;
+		${D_cpnt} = null;
+		${L_cpnt} = null;
+		${Type_cpnt} = null;
 	}
 	else {
 		${csp.dtr.pwrb.nameplate} = data.csp_dtr_pwrb_nameplate;
@@ -5217,6 +5225,10 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${fixed_land_area} = data.fixed_land_area;
 		${total_land_area} = data.total_land_area;
 		${total_tracking_power} = data.total_tracking_power;
+		${K_cpnt} = data.k_cpnt;
+		${D_cpnt} = data.d_cpnt;
+		${L_cpnt} = data.l_cpnt;
+		${Type_cpnt} = data.type_cpnt;
 	}
 	
 	return 0;
