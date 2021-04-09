@@ -1443,7 +1443,8 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-2082
+4328
+/*
 equations{ 'csp_dtr_sca_ap_length_1' } = define() {
 	return ${csp_dtr_sca_length_1}/${csp_dtr_sca_ncol_per_sca_1};
 };
@@ -1474,10 +1475,10 @@ equations{ 'csp_dtr_sca_calc_sca_eff_1' } = define() {
 
 equations{ 'csp_dtr_sca_calc_latitude_1' } = define() {
 	return ${lat}; };
-
+*/
 equations{ 'csp_dtr_sca_calc_zenith_1' } = define() {
 	return pi()/180*(90-(90-(${lat}-23.5))); };
-
+/*
 equations{ 'csp_dtr_sca_calc_iam_1' } = define() {
 			IAM = ${IAMs_1}[0];
 			l_IAM = #${IAMs_1};
@@ -1499,11 +1500,76 @@ equations{ 'csp_dtr_sca_calc_iam_1' } = define() {
 			//return ${IAMs_1}[0];  //+ ${csp_dtr_sca_calc_theta_1}/${csp_dtr_sca_calc_costh_1}*${csp_dtr_sca_iam1_1}
 			//+ pow(${csp_dtr_sca_calc_theta_1},2)/${csp_dtr_sca_calc_costh_1}*${csp_dtr_sca_iam2_1}; 
 };
+*/
+//equations{ 'csp_dtr_sca_calc_theta_1' } = define() {
+//	return acos(${csp_dtr_sca_calc_costh_1}); };
 
-equations{ 'csp_dtr_sca_calc_theta_1' } = define() {
-	return acos(${csp_dtr_sca_calc_costh_1}); };
+
+
+equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
+
+	// csp_dtr_sca_ap_length_1
+	data.csp_dtr_sca_length = ${csp_dtr_sca_length_1};
+	data.csp_dtr_sca_ncol_per_sca = ${csp_dtr_sca_ncol_per_sca_1};
 	
+	// csp_dtr_sca_calc_theta_1
+	// <nothing new needed>
+	
+	// csp_dtr_sca_calc_end_gain_1
+	data.csp_dtr_sca_ave_focal_len = ${csp_dtr_sca_ave_focal_len_1};
+	data.csp_dtr_sca_piping_dist = ${csp_dtr_sca_piping_dist_1};
 
+	// csp_dtr_sca_calc_costh_1
+	data.csp_dtr_sca_calc_zenith = ${csp_dtr_sca_calc_zenith_1};
+	data.tilt = ${tilt};
+	data.azimuth = ${azimuth};
+	
+	// csp_dtr_sca_calc_end_loss_1
+	data.nSCA = ${nSCA};
+	
+	// csp_dtr_sca_calc_sca_eff_1
+	data.csp_dtr_sca_tracking_error = ${csp_dtr_sca_tracking_error_1};
+	data.csp_dtr_sca_geometry_effects = ${csp_dtr_sca_geometry_effects_1};
+	data.csp_dtr_sca_clean_reflectivity = ${csp_dtr_sca_clean_reflectivity_1};
+	data.csp_dtr_sca_mirror_dirt = ${csp_dtr_sca_mirror_dirt_1};
+	data.csp_dtr_sca_general_error = ${csp_dtr_sca_general_error_1};
+	
+	// csp_dtr_sca_calc_latitude_1
+	data.lat = ${lat};
+	
+	// csp_dtr_sca_calc_zenith_1
+	// <nothing new needed>
+	/*
+	// csp_dtr_sca_calc_iam_1
+	data.IAMs = ${IAMs_1};
+	*/
+
+	success = ssc_eqn("Physical_Trough_Collector_Type_Equations", data);
+	if (!success) {
+		${csp_dtr_sca_ap_length_1} = -999.;
+		${csp_dtr_sca_calc_theta_1} = -999.;
+		${csp_dtr_sca_calc_end_gain_1} = -999.;
+		${csp_dtr_sca_calc_costh_1} = -999.;
+		${csp_dtr_sca_calc_end_loss_1} = -999.;
+		${csp_dtr_sca_calc_sca_eff_1} = -999.;
+		${csp_dtr_sca_calc_latitude_1} = -999.;
+		//${csp_dtr_sca_calc_zenith_1} = -999.;
+		${csp_dtr_sca_calc_iam_1} = -999.;
+	}
+	else {
+		${csp_dtr_sca_ap_length_1} = data.csp_dtr_sca_ap_length;
+		${csp_dtr_sca_calc_theta_1} = data.csp_dtr_sca_calc_theta;
+		${csp_dtr_sca_calc_end_gain_1} = data.csp_dtr_sca_calc_end_gain;
+		${csp_dtr_sca_calc_costh_1} = data.csp_dtr_sca_calc_costh;
+		${csp_dtr_sca_calc_end_loss_1} = data.csp_dtr_sca_calc_end_loss;
+		${csp_dtr_sca_calc_sca_eff_1} = data.csp_dtr_sca_calc_sca_eff;
+		${csp_dtr_sca_calc_latitude_1} = data.csp_dtr_sca_calc_latitude;
+		//${csp_dtr_sca_calc_zenith_1} = data.csp_dtr_sca_calc_zenith;
+		${csp_dtr_sca_calc_iam_1} = data.csp_dtr_sca_calc_iam;
+	}
+	
+	return 0;
+};
 	
 	
 
