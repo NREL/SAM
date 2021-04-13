@@ -1814,15 +1814,15 @@ Editable
 0
 ForeColour
 4
-128
-0
-64
+29
+80
+173
 255
 BackColour
 4
-255
-255
-255
+222
+233
+244
 255
 TabOrder
 3
@@ -2477,7 +2477,7 @@ TextEntry
 solar_resource
 3
 4
-Location
+Solar resource library current selection
  
 Location and Resource
 19
@@ -2494,7 +2494,7 @@ Weather file
  
 Location and Resource
 0
-12
+0
 1
 4
 0
