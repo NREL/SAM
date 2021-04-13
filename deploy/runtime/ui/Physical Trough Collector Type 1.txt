@@ -1443,7 +1443,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-4368
+4360
 /*
 equations{ 'csp_dtr_sca_ap_length_1' } = define() {
 	return ${csp_dtr_sca_length_1}/${csp_dtr_sca_ncol_per_sca_1};
@@ -1475,10 +1475,10 @@ equations{ 'csp_dtr_sca_calc_sca_eff_1' } = define() {
 
 equations{ 'csp_dtr_sca_calc_latitude_1' } = define() {
 	return ${lat}; };
-*/
+
 equations{ 'csp_dtr_sca_calc_zenith_1' } = define() {
 	return pi()/180*(90-(90-(${lat}-23.5))); };
-/*
+
 equations{ 'csp_dtr_sca_calc_iam_1' } = define() {
 			IAM = ${IAMs_1}[0];
 			l_IAM = #${IAMs_1};
@@ -1553,7 +1553,7 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 		${csp_dtr_sca_calc_end_loss_1} = -999.;
 		${csp_dtr_sca_calc_sca_eff_1} = -999.;
 		${csp_dtr_sca_calc_latitude_1} = -999.;
-		//${csp_dtr_sca_calc_zenith_1} = -999.;
+		${csp_dtr_sca_calc_zenith_1} = -999.;
 		${csp_dtr_sca_calc_iam_1} = -999.;
 	}
 	else {
@@ -1564,7 +1564,7 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 		${csp_dtr_sca_calc_end_loss_1} = data.csp_dtr_sca_calc_end_loss_1;
 		${csp_dtr_sca_calc_sca_eff_1} = data.csp_dtr_sca_calc_sca_eff_1;
 		${csp_dtr_sca_calc_latitude_1} = data.csp_dtr_sca_calc_latitude_1;
-		//${csp_dtr_sca_calc_zenith_1} = data.csp_dtr_sca_calc_zenith_1;
+		${csp_dtr_sca_calc_zenith_1} = data.csp_dtr_sca_calc_zenith_1;
 		${csp_dtr_sca_calc_iam_1} = data.csp_dtr_sca_calc_iam_1;
 	}
 	
