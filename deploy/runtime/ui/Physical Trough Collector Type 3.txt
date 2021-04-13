@@ -1442,7 +1442,7 @@ Physical Trough Collector Type 3
 5
 Numeric
 
-1830
+1835
 equations{ 'csp_dtr_sca_calc_zenith_3' } = define() {
 	return 3.1415926/180*(90-(90-(${lat}-23.5))); 
 };
@@ -1502,10 +1502,11 @@ equations{ 'csp_dtr_sca_calc_iam_3' } = define() {
 	//		+ pow(${csp_dtr_sca_calc_theta_3},2)/${csp_dtr_sca_calc_costh_3}*${csp_dtr_sca_iam2_3};
 };
 
+/*
 equations{ 'csp_dtr_sca_ap_length_3' } = define() {
 	return ${csp_dtr_sca_length_3}/${csp_dtr_sca_ncol_per_sca_3};
 };
-
+*/
 
 1051
 on_change{'apply_collector_library_3'} = define() {

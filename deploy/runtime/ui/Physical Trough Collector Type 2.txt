@@ -1442,7 +1442,7 @@ Physical Trough Collector Type 2
 5
 Numeric
 
-1819
+1823
 equations{ 'csp_dtr_sca_calc_theta_2' } = define() {
 	return acos(${csp_dtr_sca_calc_costh_2});
 };
@@ -1486,11 +1486,11 @@ equations{ 'csp_dtr_sca_calc_iam_2' } = define() {
 	//	+ ${csp_dtr_sca_calc_theta_2}/${csp_dtr_sca_calc_costh_2}*${csp_dtr_sca_iam1_2}
 	//	+ pow(${csp_dtr_sca_calc_theta_2},2)/${csp_dtr_sca_calc_costh_2}*${csp_dtr_sca_iam2_2};
 };
-
+/*
 equations{ 'csp_dtr_sca_ap_length_2' } = define() {
 	return ${csp_dtr_sca_length_2}/${csp_dtr_sca_ncol_per_sca_2};
 };
-
+*/
 equations{ 'csp_dtr_sca_calc_end_loss_2' } = define() {
 	return  1 - (${csp_dtr_sca_ave_focal_len_2}*tan(${csp_dtr_sca_calc_theta_2}) 
 			- ( ${nSCA} - 1) / ${nSCA} * ${csp_dtr_sca_calc_end_gain_2})

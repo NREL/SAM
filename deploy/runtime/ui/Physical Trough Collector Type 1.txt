@@ -1443,7 +1443,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-4360
+4850
 /*
 equations{ 'csp_dtr_sca_ap_length_1' } = define() {
 	return ${csp_dtr_sca_length_1}/${csp_dtr_sca_ncol_per_sca_1};
@@ -1509,9 +1509,13 @@ equations{ 'csp_dtr_sca_calc_iam_1' } = define() {
 equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 
 	// csp_dtr_sca_ap_length_1
-	data.csp_dtr_sca_length_1 = ${csp_dtr_sca_length_1};
-	data.csp_dtr_sca_ncol_per_sca_1 = ${csp_dtr_sca_ncol_per_sca_1};
-	
+	data.csp_dtr_sca_lengths =
+		[${csp_dtr_sca_length_1}, ${csp_dtr_sca_length_2},
+		${csp_dtr_sca_length_3}, ${csp_dtr_sca_length_4}];
+	data.csp_dtr_sca_ncol_per_scas =
+		[${csp_dtr_sca_ncol_per_sca_1}, ${csp_dtr_sca_ncol_per_sca_2},
+		${csp_dtr_sca_ncol_per_sca_3}, ${csp_dtr_sca_ncol_per_sca_4}];
+
 	// csp_dtr_sca_calc_theta_1
 	// <nothing new needed>
 	
@@ -1546,7 +1550,10 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 
 	success = ssc_eqn("Physical_Trough_Collector_Type_Equations", data);
 	if (!success) {
-		${csp_dtr_sca_ap_length_1} = -999.;
+		${csp_dtr_sca_ap_length_1} = -999;
+		${csp_dtr_sca_ap_length_2} = -999;
+		${csp_dtr_sca_ap_length_3} = -999;
+		${csp_dtr_sca_ap_length_4} = -999;
 		${csp_dtr_sca_calc_theta_1} = -999.;
 		${csp_dtr_sca_calc_end_gain_1} = -999.;
 		${csp_dtr_sca_calc_costh_1} = -999.;
@@ -1557,7 +1564,10 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 		${csp_dtr_sca_calc_iam_1} = -999.;
 	}
 	else {
-		${csp_dtr_sca_ap_length_1} = data.csp_dtr_sca_ap_length_1;
+		${csp_dtr_sca_ap_length_1} = data.csp_dtr_sca_ap_lengths[0][0];
+		${csp_dtr_sca_ap_length_2} = data.csp_dtr_sca_ap_lengths[0][1];
+		${csp_dtr_sca_ap_length_3} = data.csp_dtr_sca_ap_lengths[0][2];
+		${csp_dtr_sca_ap_length_4} = data.csp_dtr_sca_ap_lengths[0][3];
 		${csp_dtr_sca_calc_theta_1} = data.csp_dtr_sca_calc_theta_1;
 		${csp_dtr_sca_calc_end_gain_1} = data.csp_dtr_sca_calc_end_gain_1;
 		${csp_dtr_sca_calc_costh_1} = data.csp_dtr_sca_calc_costh_1;
