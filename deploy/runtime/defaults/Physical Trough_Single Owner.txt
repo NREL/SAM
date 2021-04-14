@@ -1,5 +1,5 @@
 1
-1188
+1190
 A_aperture
 1
 2
@@ -3521,6 +3521,13 @@ csp_dtr_sca_length_4
 1
 1
 115
+csp_dtr_sca_lengths
+1
+2
+1
+4
+102 102 102 102 
+
 csp_dtr_sca_mirror_dirt_1
 1
 1
@@ -3569,6 +3576,13 @@ csp_dtr_sca_ncol_per_sca_4
 1
 1
 8
+csp_dtr_sca_ncol_per_scas
+1
+2
+1
+4
+12 12 12 12 
+
 csp_dtr_sca_notify_text_1
 1
 4

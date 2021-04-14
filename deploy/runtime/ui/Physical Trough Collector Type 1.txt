@@ -1133,7 +1133,7 @@ TabOrder
 3
 4
 
-22
+24
 IAMs_1
 3
 2
@@ -1359,6 +1359,21 @@ Physical Trough Collector Type 1
 1
 102
 Numeric
+csp_dtr_sca_lengths
+3
+2
+Lengths of collector assemblies
+m
+Physical Trough Collector Type 1
+0
+8
+1
+2
+1
+4
+102 102 102 102 
+
+Default
 csp_dtr_sca_mirror_dirt_1
 3
 1
@@ -1387,6 +1402,21 @@ Physical Trough Collector Type 1
 1
 12
 Numeric
+csp_dtr_sca_ncol_per_scas
+3
+2
+Numbers of modules per assembly
+ 
+Physical Trough Collector Type 1
+0
+8
+1
+2
+1
+4
+12 12 12 12 
+
+Default
 csp_dtr_sca_notify_text_1
 3
 4
@@ -1443,7 +1473,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-4846
+5023
 /*
 equations{ 'csp_dtr_sca_ap_length_1' } = define() {
 	return ${csp_dtr_sca_length_1}/${csp_dtr_sca_ncol_per_sca_1};
@@ -1505,16 +1535,23 @@ equations{ 'csp_dtr_sca_calc_iam_1' } = define() {
 //	return acos(${csp_dtr_sca_calc_costh_1}); };
 
 
+equations{ 'csp_dtr_sca_lengths' } = define() {
+	return [${csp_dtr_sca_length_1}, ${csp_dtr_sca_length_2},
+		${csp_dtr_sca_length_3}, ${csp_dtr_sca_length_4}];
+};
+
+equations{ 'csp_dtr_sca_ncol_per_scas' } = define() {
+	return [${csp_dtr_sca_ncol_per_sca_1}, ${csp_dtr_sca_ncol_per_sca_2},
+		${csp_dtr_sca_ncol_per_sca_3}, ${csp_dtr_sca_ncol_per_sca_4}];
+};
+
+
 
 equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 
 	// csp_dtr_sca_ap_length_1
-	data.csp_dtr_sca_lengths =
-		[${csp_dtr_sca_length_1}, ${csp_dtr_sca_length_2},
-		${csp_dtr_sca_length_3}, ${csp_dtr_sca_length_4}];
-	data.csp_dtr_sca_ncol_per_scas =
-		[${csp_dtr_sca_ncol_per_sca_1}, ${csp_dtr_sca_ncol_per_sca_2},
-		${csp_dtr_sca_ncol_per_sca_3}, ${csp_dtr_sca_ncol_per_sca_4}];
+	data.csp_dtr_sca_lengths = ${csp_dtr_sca_lengths};
+	data.csp_dtr_sca_ncol_per_scas = ${csp_dtr_sca_ncol_per_scas};
 
 	// csp_dtr_sca_calc_theta_1
 	// <nothing new needed>
