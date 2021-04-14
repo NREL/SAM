@@ -1,7 +1,7 @@
 Battery Bank Sizing
 1051
 313
-17
+18
 GroupBox
 
 1
@@ -544,7 +544,7 @@ Y
 141
 Width
 3
-87
+90
 Height
 3
 51
@@ -557,8 +557,8 @@ Selection
 Items
 6
 2
-AC values
-DC values
+DC units
+AC units
 ShowCaptions
 2
 1
@@ -858,6 +858,54 @@ Name
 object 7
 X
 3
+30
+Y
+3
+258
+Width
+3
+984
+Height
+3
+45
+Tool Tip
+5
+0
+Caption
+5
+182
+Bank capacity and power fields are values measured before conversion and parasitic losses. If specified in AC, the DC/AC conversion efficiency will be used to scale the battery size.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 717
+X
+3
 24
 Y
 3
@@ -1031,8 +1079,8 @@ batt_bank_size_dc_ac
 Battery desired bank capacity DC or AC
  
 Battery Sizing
-19
-AC values|DC values
+17
+DC units|AC units
 1
 1
 1
@@ -1089,7 +1137,7 @@ RadioChoice
 equations{'batt_bank_power_dc_ac'} = define() {
 	return ${batt_bank_size_dc_ac};
 };
-2126
+2084
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1132,7 +1180,6 @@ function set_bank_sizing()
 	enable('batt_bank_power', isauto);
 	enable('batt_bank_voltage', isauto);
 	enable('batt_bank_size_dc_ac', isauto);
-	enable('batt_bank_power_dc_ac', isauto);
 	enable('batt_duration_choice', isauto);
 	enable('batt_bank_duration', isauto);
 	// manual specify
