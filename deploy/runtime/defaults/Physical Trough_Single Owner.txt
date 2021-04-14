@@ -1,5 +1,5 @@
 1
-1192
+1197
 A_aperture
 1
 2
@@ -3432,6 +3432,13 @@ csp_dtr_sca_calc_zenith_4
 1
 1
 0.150622
+csp_dtr_sca_clean_reflectivities
+1
+2
+1
+4
+0.935 0.935 0.935 0.935 
+
 csp_dtr_sca_clean_reflectivity_1
 1
 1
@@ -3480,6 +3487,20 @@ csp_dtr_sca_general_error_4
 1
 1
 1
+csp_dtr_sca_general_errors
+1
+2
+1
+4
+0.99 0.99 0.99 0.99 
+
+csp_dtr_sca_geometry_effects
+1
+2
+1
+4
+0.98 0.98 0.98 0.98 
+
 csp_dtr_sca_geometry_effects_1
 1
 1
@@ -3559,6 +3580,13 @@ csp_dtr_sca_mirror_dirt_4
 1
 1
 0.97
+csp_dtr_sca_mirror_dirts
+1
+2
+1
+4
+0.95 0.95 0.95 0.95 
+
 csp_dtr_sca_ncol_per_sca_1
 1
 1
@@ -3665,6 +3693,13 @@ csp_dtr_sca_tracking_error_4
 1
 1
 0.988
+csp_dtr_sca_tracking_errors
+1
+2
+1
+4
+0.994 0.994 0.994 0.994 
+
 csp_dtr_sca_w_profile_1
 1
 1
