@@ -1443,7 +1443,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-4850
+4846
 /*
 equations{ 'csp_dtr_sca_ap_length_1' } = define() {
 	return ${csp_dtr_sca_length_1}/${csp_dtr_sca_ncol_per_sca_1};
@@ -1543,10 +1543,10 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 	
 	// csp_dtr_sca_calc_zenith_1
 	// <nothing new needed>
-	/*
+	
 	// csp_dtr_sca_calc_iam_1
 	data.IAMs = ${IAMs_1};
-	*/
+	
 
 	success = ssc_eqn("Physical_Trough_Collector_Type_Equations", data);
 	if (!success) {
