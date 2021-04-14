@@ -1,5 +1,5 @@
 1
-841
+843
 A_aperture
 1
 2
@@ -2525,6 +2525,13 @@ csp_dtr_sca_ave_focal_len_4
 1
 1
 2.15
+csp_dtr_sca_ave_focal_lens
+1
+2
+1
+4
+1.8 1.8 1.8 1.8 
+
 csp_dtr_sca_calc_costh_1
 1
 1
@@ -2919,6 +2926,13 @@ csp_dtr_sca_piping_dist_4
 1
 1
 1
+csp_dtr_sca_piping_dists
+1
+2
+1
+4
+1 1 1 1 
+
 csp_dtr_sca_tracking_error_1
 1
 1

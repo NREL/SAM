@@ -1133,7 +1133,7 @@ TabOrder
 3
 4
 
-24
+26
 IAMs_1
 3
 2
@@ -1191,6 +1191,21 @@ Physical Trough Collector Type 1
 1
 1.8
 Numeric
+csp_dtr_sca_ave_focal_lens
+3
+2
+Average surface-to-focus path lengths
+m
+Physical Trough Collector Type 1
+0
+8
+1
+2
+1
+4
+1.8 1.8 1.8 1.8 
+
+Default
 csp_dtr_sca_calc_costh_1
 3
 1
@@ -1444,6 +1459,21 @@ Physical Trough Collector Type 1
 1
 1
 Numeric
+csp_dtr_sca_piping_dists
+3
+2
+Piping distances between assemblies
+m
+Physical Trough Collector Type 1
+0
+8
+1
+2
+1
+4
+1 1 1 1 
+
+Default
 csp_dtr_sca_tracking_error_1
 3
 1
@@ -1473,7 +1503,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-5023
+5543
 /*
 equations{ 'csp_dtr_sca_ap_length_1' } = define() {
 	return ${csp_dtr_sca_length_1}/${csp_dtr_sca_ncol_per_sca_1};
@@ -1545,6 +1575,16 @@ equations{ 'csp_dtr_sca_ncol_per_scas' } = define() {
 		${csp_dtr_sca_ncol_per_sca_3}, ${csp_dtr_sca_ncol_per_sca_4}];
 };
 
+equations{ 'csp_dtr_sca_ave_focal_lens' } = define() {
+	return [${csp_dtr_sca_ave_focal_len_1}, ${csp_dtr_sca_ave_focal_len_2},
+		${csp_dtr_sca_ave_focal_len_3}, ${csp_dtr_sca_ave_focal_len_4}];
+};
+
+equations{ 'csp_dtr_sca_piping_dists' } = define() {
+	return [${csp_dtr_sca_piping_dist_1}, ${csp_dtr_sca_piping_dist_2},
+		${csp_dtr_sca_piping_dist_3}, ${csp_dtr_sca_piping_dist_4}];
+};
+
 
 
 equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
@@ -1557,8 +1597,10 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 	// <nothing new needed>
 	
 	// csp_dtr_sca_calc_end_gain_1
-	data.csp_dtr_sca_ave_focal_len_1 = ${csp_dtr_sca_ave_focal_len_1};
-	data.csp_dtr_sca_piping_dist_1 = ${csp_dtr_sca_piping_dist_1};
+	data.csp_dtr_sca_ave_focal_lens = ${csp_dtr_sca_ave_focal_lens};
+	//data.csp_dtr_sca_ave_focal_len_1 = ${csp_dtr_sca_ave_focal_len_1};
+	data.csp_dtr_sca_piping_dists = ${csp_dtr_sca_piping_dists};
+	//data.csp_dtr_sca_piping_dist_1 = ${csp_dtr_sca_piping_dist_1};
 
 	// csp_dtr_sca_calc_costh_1
 	//data.csp_dtr_sca_calc_zenith_1 = ${csp_dtr_sca_calc_zenith_1};
