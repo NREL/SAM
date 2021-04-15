@@ -1578,7 +1578,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-6486
+6491
 /*
 equations{ 'csp_dtr_sca_ap_length_1' } = define() {
 	return ${csp_dtr_sca_length_1}/${csp_dtr_sca_ncol_per_sca_1};
@@ -1750,7 +1750,7 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 		${csp_dtr_sca_calc_end_gain_1} = data.csp_dtr_sca_calc_end_gains[0][0];
 		${csp_dtr_sca_calc_costh_1} = data.csp_dtr_sca_calc_costh;			// singular
 		${csp_dtr_sca_calc_end_loss_1} = data.csp_dtr_sca_calc_end_losses[0][0];
-		${csp_dtr_sca_calc_sca_eff_1} = data.csp_dtr_sca_calc_sca_eff_1;
+		${csp_dtr_sca_calc_sca_eff_1} = data.csp_dtr_sca_calc_sca_effs[0][0];
 		${csp_dtr_sca_calc_latitude_1} = data.csp_dtr_sca_calc_latitude;	// singular
 		${csp_dtr_sca_calc_zenith_1} = data.csp_dtr_sca_calc_zenith;		// singular
 		${csp_dtr_sca_calc_iam_1} = data.csp_dtr_sca_calc_iam_1;
