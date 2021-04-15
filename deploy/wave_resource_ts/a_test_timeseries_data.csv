@@ -1,5 +1,6 @@
 Name,City,State,Country,Latitude,Longitude,Nearby Buoy Number,Average Power Flux (kW/m),Bathymetry,Sea Bed,Time Zone,Data Source,Notes
 PacWave East,Newport,Oregon,United States,44.6899 N,124.1346 W,NDBC 46094,37,Gently Sloping,Soft Sand,-7,Sandia; SAND2015-7963,Pacific Marine Energy Test Center - North Energy Test Site
+Year ,Month,Day,Hour,Minute,Wave Period,Wave Height,,,,,,
 2008,1,1,0,30,10.3433,2.35354,,,,,,
 2008,1,1,3,30,10.2281,2.39468,,,,,,
 2008,1,1,6,30,10.0164,2.45756,,,,,,
