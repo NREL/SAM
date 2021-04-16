@@ -1592,7 +1592,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-6609
+9317
 /*
 equations{ 'csp_dtr_sca_ap_length_1' } = define() {
 	return ${csp_dtr_sca_length_1}/${csp_dtr_sca_ncol_per_sca_1};
@@ -1739,7 +1739,6 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 	// <nothing new needed>
 	
 	// csp_dtr_sca_calc_iam_1
-	//data.IAMs_1 = ${IAMs_1};
 	data.IAMs = ${IAMs};
 
 	success = ssc_eqn("Physical_Trough_Collector_Type_Equations", data);
@@ -1749,13 +1748,37 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 		${csp_dtr_sca_ap_length_3} = -999;
 		${csp_dtr_sca_ap_length_4} = -999;
 		${csp_dtr_sca_calc_theta_1} = -999.;
+		${csp_dtr_sca_calc_theta_2} = -999.;
+		${csp_dtr_sca_calc_theta_3} = -999.;
+		${csp_dtr_sca_calc_theta_4} = -999.;
 		${csp_dtr_sca_calc_end_gain_1} = -999.;
+		${csp_dtr_sca_calc_end_gain_2} = -999.;
+		${csp_dtr_sca_calc_end_gain_3} = -999.;
+		${csp_dtr_sca_calc_end_gain_4} = -999.;
 		${csp_dtr_sca_calc_costh_1} = -999.;
+		${csp_dtr_sca_calc_costh_2} = -999.;
+		${csp_dtr_sca_calc_costh_3} = -999.;
+		${csp_dtr_sca_calc_costh_4} = -999.;
 		${csp_dtr_sca_calc_end_loss_1} = -999.;
+		${csp_dtr_sca_calc_end_loss_2} = -999.;
+		${csp_dtr_sca_calc_end_loss_3} = -999.;
+		${csp_dtr_sca_calc_end_loss_4} = -999.;
 		${csp_dtr_sca_calc_sca_eff_1} = -999.;
+		${csp_dtr_sca_calc_sca_eff_2} = -999.;
+		${csp_dtr_sca_calc_sca_eff_3} = -999.;
+		${csp_dtr_sca_calc_sca_eff_4} = -999.;
 		${csp_dtr_sca_calc_latitude_1} = -999.;
+		${csp_dtr_sca_calc_latitude_2} = -999.;
+		${csp_dtr_sca_calc_latitude_3} = -999.;
+		${csp_dtr_sca_calc_latitude_4} = -999.;
 		${csp_dtr_sca_calc_zenith_1} = -999.;
+		${csp_dtr_sca_calc_zenith_2} = -999.;
+		${csp_dtr_sca_calc_zenith_3} = -999.;
+		${csp_dtr_sca_calc_zenith_4} = -999.;
 		${csp_dtr_sca_calc_iam_1} = -999.;
+		${csp_dtr_sca_calc_iam_2} = -999.;
+		${csp_dtr_sca_calc_iam_3} = -999.;
+		${csp_dtr_sca_calc_iam_4} = -999.;
 	}
 	else {
 		${csp_dtr_sca_ap_length_1} = data.csp_dtr_sca_ap_lengths[0][0];
@@ -1763,13 +1786,37 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 		${csp_dtr_sca_ap_length_3} = data.csp_dtr_sca_ap_lengths[0][2];
 		${csp_dtr_sca_ap_length_4} = data.csp_dtr_sca_ap_lengths[0][3];
 		${csp_dtr_sca_calc_theta_1} = data.csp_dtr_sca_calc_theta;			// singular
+		${csp_dtr_sca_calc_theta_2} = data.csp_dtr_sca_calc_theta;			// singular
+		${csp_dtr_sca_calc_theta_3} = data.csp_dtr_sca_calc_theta;			// singular
+		${csp_dtr_sca_calc_theta_4} = data.csp_dtr_sca_calc_theta;			// singular
 		${csp_dtr_sca_calc_end_gain_1} = data.csp_dtr_sca_calc_end_gains[0][0];
+		${csp_dtr_sca_calc_end_gain_2} = data.csp_dtr_sca_calc_end_gains[0][1];
+		${csp_dtr_sca_calc_end_gain_3} = data.csp_dtr_sca_calc_end_gains[0][2];
+		${csp_dtr_sca_calc_end_gain_4} = data.csp_dtr_sca_calc_end_gains[0][3];
 		${csp_dtr_sca_calc_costh_1} = data.csp_dtr_sca_calc_costh;			// singular
+		${csp_dtr_sca_calc_costh_2} = data.csp_dtr_sca_calc_costh;			// singular
+		${csp_dtr_sca_calc_costh_3} = data.csp_dtr_sca_calc_costh;			// singular
+		${csp_dtr_sca_calc_costh_4} = data.csp_dtr_sca_calc_costh;			// singular
 		${csp_dtr_sca_calc_end_loss_1} = data.csp_dtr_sca_calc_end_losses[0][0];
+		${csp_dtr_sca_calc_end_loss_2} = data.csp_dtr_sca_calc_end_losses[0][1];
+		${csp_dtr_sca_calc_end_loss_3} = data.csp_dtr_sca_calc_end_losses[0][2];
+		${csp_dtr_sca_calc_end_loss_4} = data.csp_dtr_sca_calc_end_losses[0][3];
 		${csp_dtr_sca_calc_sca_eff_1} = data.csp_dtr_sca_calc_sca_effs[0][0];
+		${csp_dtr_sca_calc_sca_eff_2} = data.csp_dtr_sca_calc_sca_effs[0][1];
+		${csp_dtr_sca_calc_sca_eff_3} = data.csp_dtr_sca_calc_sca_effs[0][2];
+		${csp_dtr_sca_calc_sca_eff_4} = data.csp_dtr_sca_calc_sca_effs[0][3];
 		${csp_dtr_sca_calc_latitude_1} = data.csp_dtr_sca_calc_latitude;	// singular
+		${csp_dtr_sca_calc_latitude_2} = data.csp_dtr_sca_calc_latitude;	// singular
+		${csp_dtr_sca_calc_latitude_3} = data.csp_dtr_sca_calc_latitude;	// singular
+		${csp_dtr_sca_calc_latitude_4} = data.csp_dtr_sca_calc_latitude;	// singular
 		${csp_dtr_sca_calc_zenith_1} = data.csp_dtr_sca_calc_zenith;		// singular
+		${csp_dtr_sca_calc_zenith_2} = data.csp_dtr_sca_calc_zenith;		// singular
+		${csp_dtr_sca_calc_zenith_3} = data.csp_dtr_sca_calc_zenith;		// singular
+		${csp_dtr_sca_calc_zenith_4} = data.csp_dtr_sca_calc_zenith;		// singular
 		${csp_dtr_sca_calc_iam_1} = data.csp_dtr_sca_calc_iams[0][0];
+		${csp_dtr_sca_calc_iam_2} = data.csp_dtr_sca_calc_iams[0][1];
+		${csp_dtr_sca_calc_iam_3} = data.csp_dtr_sca_calc_iams[0][2];
+		${csp_dtr_sca_calc_iam_4} = data.csp_dtr_sca_calc_iams[0][3];
 	}
 	
 	return 0;

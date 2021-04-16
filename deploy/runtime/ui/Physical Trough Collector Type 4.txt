@@ -1442,7 +1442,8 @@ Physical Trough Collector Type 4
 5
 Numeric
 
-1832
+1831
+/*
 equations{ 'csp_dtr_sca_calc_end_loss_4' } = define() {
 	return  1 - (${csp_dtr_sca_ave_focal_len_4}*tan(${csp_dtr_sca_calc_theta_4}) 
 - ( ${nSCA} - 1) / ${nSCA} * ${csp_dtr_sca_calc_end_gain_4})
@@ -1469,11 +1470,9 @@ equations{ 'csp_dtr_sca_calc_iam_4' } = define() {
 //+ pow(${csp_dtr_sca_calc_theta_4},2)/${csp_dtr_sca_calc_costh_4}*${csp_dtr_sca_iam2_4}; 
 };
 
-/*
 equations{ 'csp_dtr_sca_ap_length_4' } = define() {
 	return ${csp_dtr_sca_length_4}/${csp_dtr_sca_ncol_per_sca_4};
 };
-*/
 
 equations{ 'csp_dtr_sca_calc_latitude_4' } = define() {
 	return ${lat};
@@ -1507,7 +1506,7 @@ equations{ 'csp_dtr_sca_calc_sca_eff_4' } = define() {
 			* ${csp_dtr_sca_general_error_4};
 };
 
-
+*/
 1051
 on_change{'apply_collector_library_4'} = define() {
     
