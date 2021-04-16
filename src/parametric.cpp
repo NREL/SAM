@@ -1122,21 +1122,33 @@ void ParametricViewer::CopyToClipboard()
 	dat << header;
 
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
-		std::vector<std::vector<double> > values_vec;
-		wxArrayString labels;
-		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
-		{
-			std::vector<double> vec = m_grid_data->GetArray(row, col);
-			if (vec.size() == 0) // single values
-				vec.push_back(m_grid_data->GetDouble(row, col));
-			values_vec.push_back(vec);
-			labels.push_back(wxString::Format("Run %d", row + 1));
-		}
-		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
-		wxString apddat;
+		if (VarValue* vv = m_grid_data->GetVarValue(0, col)) {
+			wxString apddat;
+			if (vv->Type() == VV_STRING) {
+				apddat = m_grid_data->GetColLabelValue(col);
 
-		apd.GetParametricTextData(apddat, ',');
-		dat << apddat;
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+					apddat += "," + m_grid_data->GetValue(row, col);
+				apddat += "\n";
+			}
+			else {
+
+				std::vector<std::vector<double> > values_vec;
+				wxArrayString labels;
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+				{
+					std::vector<double> vec = m_grid_data->GetArray(row, col);
+					if (vec.size() == 0) // single values
+						vec.push_back(m_grid_data->GetDouble(row, col));
+					values_vec.push_back(vec);
+					labels.push_back(wxString::Format("Run %d", row + 1));
+				}
+				ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
+
+				apd.GetParametricTextData(apddat, ',');
+			}
+			dat << apddat;
+		}
 	}
 
 	if (wxTheClipboard->Open())
@@ -1283,27 +1295,35 @@ void ParametricViewer::SaveToCSV()
 	//fputs(header.c_str(), fp);
 
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
-		std::vector<std::vector<double> > values_vec;
-		wxArrayString labels;
-		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
-		{
-			std::vector<double> vec = m_grid_data->GetArray(row, col);
-			if (vec.size() == 0) // single values
-				vec.push_back(m_grid_data->GetDouble(row, col));
-			values_vec.push_back(vec);
-			labels.push_back(wxString::Format("Run %d", row + 1));
-		}
-		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
-		wxString dat;
-//		apd.GetTextData(dat, ',', false);
+		if (VarValue* vv = m_grid_data->GetVarValue(0, col)) {
+			wxString dat;
+			if (vv->Type() == VV_STRING) {
+				dat = m_grid_data->GetColLabelValue(col);
 
-		apd.GetParametricTextData(dat, ',');
-		fp << dat;
-	//	fputs(dat.c_str(), fp);
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+					dat += "," + m_grid_data->GetValue(row, col);
+				dat += "\n";
+			}
+			else {
+				std::vector<std::vector<double> > values_vec;
+				wxArrayString labels;
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+				{
+					std::vector<double> vec = m_grid_data->GetArray(row, col);
+					if (vec.size() == 0) // single values
+						vec.push_back(m_grid_data->GetDouble(row, col));
+					values_vec.push_back(vec);
+					labels.push_back(wxString::Format("Run %d", row + 1));
+				}
+				ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
+
+				apd.GetParametricTextData(dat, ',');
+			}
+			fp << dat;
+		}
 	}
 	fp.close();
 
-//	fclose(fp);
 
 }
 
