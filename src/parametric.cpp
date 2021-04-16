@@ -1469,6 +1469,29 @@ void ParametricViewer::FillDown(int rows)
 		m_grid_data->FillDown(col,rows);
 }
 
+bool ParametricViewer::IsLineInputs()
+{
+	bool retVal = false;
+	if (m_input_names.Count() == 1) {
+		if (VarValue* vv = m_case->Values().Get(m_input_names[0]))
+			retVal = (vv->Type() == VV_NUMBER);
+	}
+	return retVal;
+}
+
+bool ParametricViewer::IsContourInputs()
+{
+	bool retVal = false;
+	if (m_input_names.Count() == 2) {
+		if (VarValue* vv1 = m_case->Values().Get(m_input_names[0])) {
+			if (VarValue* vv2 = m_case->Values().Get(m_input_names[0])) {
+				retVal = ((vv1->Type() == VV_NUMBER) && (vv2->Type() == VV_NUMBER));
+			}
+		}
+	}
+	return retVal;
+}
+
 
 bool ParametricViewer::Plot(int col, Graph &g)
 {
@@ -1484,7 +1507,7 @@ bool ParametricViewer::Plot(int col, Graph &g)
 			case VV_NUMBER:
 			{
 				// line plot if single input and contour if two inputs
-				if (m_input_names.Count() == 1) {
+				if (IsLineInputs()) {
 					g.Type = Graph::LINE;
 					//g.Size = 3;
 					ret_val = true;
@@ -1503,7 +1526,7 @@ bool ParametricViewer::Plot(int col, Graph &g)
 						g.XLabel = "Run number";
 					}
 				}
-				else if (m_input_names.Count() == 2) {
+				else if (IsContourInputs()) {
 					// contour plot
 					g.Type = Graph::CONTOUR;
 					g.Size = 3; // bar size
@@ -1552,18 +1575,11 @@ bool ParametricViewer::Plot(int col, Graph &g)
 				{
 					g.Type = Graph::BAR;
 					g.YLabel = m_grid_data->GetColLabelValue(col).ToAscii(' ');
-					//	if (!m_grid_data->GetUnits(col).IsEmpty())
-					//		g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
 					g.XLabel = "Run number";
 					ret_val = true;
 				}
 				else if (n == 8760)
 				{
-					//						g.Type = Graph::LINE;
-					//						g.YLabel = m_grid_data->GetColLabelValue(col);
-					//						if (!m_grid_data->GetUnits(col).IsEmpty())
-					//							g.YLabel += " (" + m_grid_data->GetUnits(col) + ")";
-					//						g.XLabel = "Run number";
 					g.Type = -1; // DView - do not use GraphCtrl
 					ret_val = true;
 				}
@@ -1622,10 +1638,10 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 						}
 					}
 					else {
-						if (g.X.size() == 0) // old type monthly, etc
-							gc->Display(m_grid_data->GetRuns(), g);
-						else
+						if (IsLineInputs() || IsContourInputs()) 
 							gc->DisplayParametrics(m_grid_data->GetRuns(), g);
+						else // old type monthly, etc
+							gc->Display(m_grid_data->GetRuns(), g);
 					}
 					m_graphs.push_back(gc);
 					m_layout->Add(gc, 800, 400);

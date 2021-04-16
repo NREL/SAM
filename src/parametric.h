@@ -239,10 +239,12 @@ private:
 	void Generate_lk();
 
 	void AddPlot(const wxString& output_name);
-//	void AddLinePlot(const wxString& input_name, const wxString& output_name);
-//	void AddHeatMap(const wxString& x_name, const wxString& y_name, const wxString& output_name);
 	void RemovePlot(const wxString &output_name);
 	bool Plot(int col, Graph &g);
+
+	bool IsLineInputs();
+	bool IsContourInputs();
+
 	void FillDown(int rows);
 
 	void ShowAllData();
