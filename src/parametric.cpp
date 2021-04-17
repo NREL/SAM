@@ -1269,12 +1269,6 @@ void ParametricViewer::SaveToCSV()
 	if (fdlg.ShowModal() != wxID_OK) return;
 
 
-//	FILE* fp = fopen(fdlg.GetPath().c_str(), "w");
-//	if (!fp)
-//	{
-//		wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
-//		return;
-//	}
 	std::ofstream fp(fdlg.GetPath().ToStdString(), std::ios::out | std::ios::binary);
 	if (!fp.is_open())
 	{
@@ -1292,7 +1286,6 @@ void ParametricViewer::SaveToCSV()
 	}
 	header += "\n";
 	fp << header;
-	//fputs(header.c_str(), fp);
 
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
 		if (VarValue* vv = m_grid_data->GetVarValue(0, col)) {
@@ -1348,28 +1341,52 @@ void ParametricViewer::SendToExcel()
 	}
 
 	for (int col = m_grid_data->GetNumberCols()-1; col >= 0; col--) { // reorder to match list of Excel sheets with parametric table
-		std::vector<std::vector<double> > values_vec;
-		wxArrayString labels;
-		for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
-		{
-			std::vector<double> vec = m_grid_data->GetArray(row, col);
-			if (vec.size() == 0) // single values
-				vec.push_back(m_grid_data->GetDouble(row, col));
-			values_vec.push_back(vec);
-			labels.push_back(wxString::Format("Run %d", row + 1));
+		if (VarValue* vv = m_grid_data->GetVarValue(0, col)) {
+			wxString sheetName = m_grid_data->GetColLabelValue(col).ToAscii(' ');
+			// valid sheet names - no \ / ? * [ ] and 31 characters max
+			sheetName.Replace("\\", "_");
+			sheetName.Replace("/", "_");
+			sheetName.Replace("?", "_");
+			sheetName.Replace("*", "_");
+			sheetName.Replace("[", "_");
+			sheetName.Replace("]", "_");
+			if (m_grid_data->IsInput(col)) sheetName = "IN_" + sheetName;
+			sheetName = sheetName.Left(31);
+
+			if (vv->Type() == VV_STRING) {
+				wxString header = "Index\t";
+				wxString dat = "0\t";
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++) {
+					header += wxString::Format("Run %d", row + 1);
+					dat += m_grid_data->GetValue(row, col);
+					if (row < m_grid_data->GetNumberRows() - 1) {
+						header += '\t';
+						dat += '\t';
+					}
+					else {
+						header += '\n';
+						dat += '\n';
+					}
+				}
+				dat = header + dat;
+				dat.Replace(",", "");
+				xl.PasteNewWorksheet(sheetName, dat);
+			}
+			else {
+				std::vector<std::vector<double> > values_vec;
+				wxArrayString labels;
+				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
+				{
+					std::vector<double> vec = m_grid_data->GetArray(row, col);
+					if (vec.size() == 0) // single values
+						vec.push_back(m_grid_data->GetDouble(row, col));
+					values_vec.push_back(vec);
+					labels.push_back(wxString::Format("Run %d", row + 1));
+				}
+				ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
+				apd.SendToExcelSheet(xl, sheetName);
+			}
 		}
-		ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
-		wxString sheetName = m_grid_data->GetColLabelValue(col).ToAscii(' ');
-		// valid sheet names - no \ / ? * [ ] and 31 characters max
-		sheetName.Replace("\\", "_");
-		sheetName.Replace("/", "_");
-		sheetName.Replace("?", "_");
-		sheetName.Replace("*", "_");
-		sheetName.Replace("[", "_");
-		sheetName.Replace("]", "_");
-		if (m_grid_data->IsInput(col)) sheetName = "IN_" + sheetName;
-		sheetName = sheetName.Left(31);
-		apd.SendToExcelSheet(xl, sheetName);
 	}
 
 #endif

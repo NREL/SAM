@@ -1410,13 +1410,7 @@ void ArrayPopupDialog::SendToExcelSheet(wxExcelAutomation& xl, wxString &sheetNa
 	dat.Replace(",", "");
 
 #ifdef __WXMSW__
-
-//	if (wxTheClipboard->Open())
-	{
-//		wxTheClipboard->SetData(new wxTextDataObject(dat));
-//		wxTheClipboard->Close();
-		xl.PasteNewWorksheet(sheetName, dat);
-	}
+	xl.PasteNewWorksheet(sheetName, dat);
 #endif
 }
 
