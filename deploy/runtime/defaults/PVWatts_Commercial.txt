@@ -1,5 +1,5 @@
 1
-379
+381
 ac_nameplate
 1
 1
@@ -159,7 +159,7 @@ bos_equip_total
 1
 1
 1
-129600
+540000
 capex_table_ac_cost_per_w
 1
 1

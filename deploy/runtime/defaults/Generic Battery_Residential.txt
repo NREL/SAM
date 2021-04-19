@@ -1,5 +1,5 @@
 1
-493
+494
 LeadAcid_q10
 1
 1
@@ -709,7 +709,7 @@ batt_power_charge_max_kwac
 1
 1
 1
-5.20833
+5.004
 batt_power_charge_max_kwdc
 1
 1
@@ -721,7 +721,7 @@ batt_power_discharge_max_kwac
 1
 1
 1
-4.8
+4.61169
 batt_power_discharge_max_kwdc
 1
 1

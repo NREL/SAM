@@ -624,7 +624,7 @@ Y
 96
 Width
 3
-39
+105
 Height
 3
 21
@@ -633,8 +633,8 @@ Tool Tip
 0
 Caption
 5
-4
-$/kW
+15
+$/kWh nameplate
 TextColour
 4
 0
