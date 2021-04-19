@@ -1675,7 +1675,7 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 						}
 					}
 					else {
-						if (IsLineInputs() || IsContourInputs()) 
+						if ((IsLineInputs() || IsContourInputs()) && (g.X.size()!=0))
 							gc->DisplayParametrics(m_grid_data->GetRuns(), g);
 						else // old type monthly, etc
 							gc->Display(m_grid_data->GetRuns(), g);
