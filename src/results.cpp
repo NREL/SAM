@@ -469,7 +469,7 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 	int energy_index = -1;
 	for( size_t i=0;i<m_tsDataSets.size();i++ )
 	{
-		if ( m_tsDataSets[i]->GetMetaData() == "hourly_energy" )
+		if ( m_tsDataSets[i]->GetMetaData() == "gen" )
 			energy_index = i;
 	}
 
@@ -490,7 +490,7 @@ void ResultsViewer::SetDViewState( wxDVPlotCtrlSettings &settings )
 
 //	m_dailySeries->SetTopSelectedNames(settings.GetProperty(wxT("tsDailyTopSelectedNames")));
 //	m_dailySeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsDailyBottomSelectedNames")));
-	
+
 //	if ( settings.GetProperty(wxT("tsDailyAxisMin")).ToDouble(&min) )
 		//m_dailySeries->SetViewMin(min);
 	//if ( settings.GetProperty(wxT("tsDailyAxisMax")).ToDouble(&max) )
@@ -2901,17 +2901,23 @@ void TabularBrowser::UpdateAll()
 
 	wxArrayString tmp = m_selectedVars;
 	size_t n = tmp.size();
-
 	for (int i = 0; i != (int)n; i++)
 	{
 		int idx = m_names.Index(tmp[i]);
-
 		if (idx >= 0)
 		{
 			m_varSel->SelectRowInCol(idx);
 			ProcessAdded(tmp[i]);
 		}
 	}
+    if (n == 0) {
+        int idx = m_names.Index("gen");
+        if (idx >= 0)
+        {
+            m_varSel->SelectRowInCol(idx);
+            ProcessAdded("gen");
+        }
+    }
 	UpdateSelectionExpansion(vsx, vsy);
 }
 void TabularBrowser::UpdateCase()
