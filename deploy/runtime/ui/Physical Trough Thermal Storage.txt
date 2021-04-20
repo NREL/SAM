@@ -2459,7 +2459,18 @@ Physical Trough Thermal Storage
 0
 Numeric
 
-3863
+4163
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
+
+// Just a combo converter
 equations{ 'store_fluid' } = define() {
 	return ?${combo_tes_htf_type}
 	[
@@ -2476,6 +2487,7 @@ equations{ 'store_fluid' } = define() {
 	];
 };
 
+// Just a combo converter
 equations{ 'csp.dtr.tes.htf_min_opt_temp' } = define() {
 	return ?${combo_tes_htf_type}
 	[
@@ -2492,6 +2504,7 @@ equations{ 'csp.dtr.tes.htf_min_opt_temp' } = define() {
 	];
 };
 
+// Just a combo converter
 equations{ 'csp.dtr.tes.htf_max_opt_temp' } = define() {
 	return ?${combo_tes_htf_type}
 	[

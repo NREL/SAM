@@ -2356,7 +2356,7 @@ System Control
 0
 Default
 
-1774
+1419
 //
 //  ONLY ADD UI INDICATOR AND AGGREGATOR EQUATIONS BELOW!
 //
@@ -2365,7 +2365,7 @@ Default
 //   referencing in ssc_equations.h
 //
 
-// Just aggregator of UI inputs
+// Just UI input aggregator
 equations{ 'aux_array' } = define() {
 	a[0] = ${aux_par};
 	a[1] = ${aux_par_f};
@@ -2375,7 +2375,7 @@ equations{ 'aux_array' } = define() {
 	return a;
 };
 
-// Just aggregator of UI inputs
+// Just UI input aggregator
 equations{ 'bop_array' } = define() {
 	a[0] = ${bop_par};
 	a[1] = ${bop_par_f};
@@ -2397,23 +2397,6 @@ equations{ 'csp.pt.par.calc.aux' } = define() {
 *( ${aux_par_0} + ${aux_par_1} + ${aux_par_2} )
 *${P_ref}; };
 
-/*
-equations{ 'disp_wlim_max' } = define() {
-	return ${disp_wlim_maxspec}*(1.-${adjust}{'constant'}/100.);
-};
-
-equations{ 'is_wlim_series' } = define() {
-	return ${is_dispatch};
-};
-
-equations{ 'wlim_series' } = define() {
-	wl = [];
-	wlconst = ${disp_wlim_max}*1000.;  //convert MW -> kW
-	for(i=0; i<8760; i++)
-		wl[i] = wlconst;
-	return wl;
-};
-*/
 
 equations{ '$MIMO$ Physical_Trough_System_Control_Equations' } = define() {
 	data.is_dispatch = ${is_dispatch};

@@ -2795,7 +2795,17 @@ System Control
 
 DiurnalPeriod
 
-610
+832
+//
+//  ONLY ADD UI INDICATOR AND AGGREGATOR EQUATIONS BELOW!
+//
+//   if the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
+
+// Just UI input aggregators
 equations{ '$MIMO$ dispatch_vars_by_tech' } = define() {
 
   //turbine output fraction (,3)

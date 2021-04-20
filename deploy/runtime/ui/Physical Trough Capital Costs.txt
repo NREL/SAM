@@ -4349,8 +4349,7 @@ equations{ 'direct_subtotal'} = define() {
 };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}+${csp.dtr.cost.sales_tax.total};
-};
+	return ${total_direct_cost}+${total_indirect_cost}+${csp.dtr.cost.sales_tax.total}; };
 
 equations{ 'csp.dtr.cost.installed_per_capacity' } = define() {
 	return 0.001*${total_installed_cost}/${csp.dtr.pwrb.nameplate}; };
