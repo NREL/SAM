@@ -1695,11 +1695,18 @@ Physical Trough Receiver Library
 ui default
 TextEntry
 
-18473
-//equations{ 'SCAInfoArray_copy' } = define () {
-//	return ${SCAInfoArray};
-//};
+18604
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
 
+
+// Just UI indicator
 equations{ 'receivers_in_field' } = define () {
   arr = ${SCAInfoArray};
   n = ${nColt};
@@ -1714,13 +1721,9 @@ equations{ 'receivers_in_field' } = define () {
   return str; 
 };
 
+// Just input aggregators:
 // every array here has to be changed by hand if the number of receiver
 // types or variations per receiver type changes
-equations{ '$MIMO$ test' } = define() {
- return 0;
-};
-
-
 equations{ 'D_2' } = define() { 
 	// [t][v] where t=type and v=variation within the type
 	hce[0][0] = ${csp_dtr_hce_diam_absorber_inner_1};
@@ -2200,7 +2203,6 @@ equations{ 'AnnulusGas' } = define() { // annulus gas type
 	}		
 	return hce;
 };
-
 
 3537
 on_load{ 'Physical Trough Receiver Header' } = define() {
