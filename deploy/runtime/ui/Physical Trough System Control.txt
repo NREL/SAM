@@ -2356,13 +2356,13 @@ System Control
 0
 Default
 
-1772
+1774
 //
 //  ONLY ADD UI INDICATOR AND AGGREGATOR EQUATIONS BELOW!
 //
 //   if the equations change an input value
-//   modify the below main MIMO or add one
-//   referenced in ssc_equations.h
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
 //
 
 // Just aggregator of UI inputs
