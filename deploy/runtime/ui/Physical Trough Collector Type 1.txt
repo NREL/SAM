@@ -1133,21 +1133,7 @@ TabOrder
 3
 4
 
-32
-IAMs
-3
-3
-Incidence angle modifier coefficients
- 
-Physical Trough Collector Type 1
-0
-8
-1
-3
-1
-1
-0
-Default
+31
 IAMs_1
 3
 2
@@ -1592,8 +1578,15 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-7230
-
+7370
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
 
 equations{ 'csp_dtr_sca_lengths' } = define() {
 	return [${csp_dtr_sca_length_1}, ${csp_dtr_sca_length_2},
@@ -1640,10 +1633,6 @@ equations{ 'csp_dtr_sca_general_errors' } = define() {
 		${csp_dtr_sca_general_error_3}, ${csp_dtr_sca_general_error_4}];
 };
 
-equations{ 'IAMs' } = define() {
-	return [${IAMs_1}, ${IAMs_2}, ${IAMs_3}, ${IAMs_4}];
-};
-
 equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 
 	// csp_dtr_sca_ap_length_1
@@ -1679,7 +1668,7 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 	// <nothing new needed>
 	
 	// csp_dtr_sca_calc_iam_1
-	data.IAMs = ${IAMs};
+	data.IAM_matrix = ${IAM_matrix};
 
 	success = ssc_eqn("Physical_Trough_Collector_Type_Equations", data);
 	if (!success) {

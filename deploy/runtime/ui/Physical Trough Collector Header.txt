@@ -894,6 +894,19 @@ equations{ '$MIMO$ collector constants' } = define() {
 };
 
 // Just input aggregator
+equations{ 'IAM_matrix' } = define() {
+	base_matrix[0] = ${IAMs_1};
+	base_matrix[1] = ${IAMs_2};
+	base_matrix[2] = ${IAMs_3};
+	base_matrix[3] = ${IAMs_4};
+	
+	// #array for length of array
+	// #matrix[0] for length of 1st array in 
+	
+	return base_matrix;
+};
+
+// Just input aggregator
 equations{ '$MIMO$ get values from pages' } = define() {
 	acollector[0] = ${csp_dtr_sca_w_profile_1};
 	acollector[1] = ${csp_dtr_sca_w_profile_2};
@@ -970,19 +983,6 @@ equations{ '$MIMO$ get values from pages' } = define() {
 	acollector[3] = ${csp_dtr_sca_piping_dist_4};
 	${Distance_SCA} = acollector;
 
-};
-
-// Just input aggregator
-equations{ 'IAM_matrix' } = define() {
-	base_matrix[0] = ${IAMs_1};
-	base_matrix[1] = ${IAMs_2};
-	base_matrix[2] = ${IAMs_3};
-	base_matrix[3] = ${IAMs_4};
-	
-	// #array for length of array
-	// #matrix[0] for length of 1st array in 
-	
-	return base_matrix;
 };
 
 1038
