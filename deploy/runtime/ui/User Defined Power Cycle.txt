@@ -2407,7 +2407,8 @@ Power Cycle
 0
 Default
 
-3091
+3174
+// This equation is only for a UI indicator
 equations{ 'ud_W_dot_cool_calc' } = define(){
 	return ${P_ref}*${ud_f_W_dot_cool_des}/100.0; };
 	
@@ -2417,6 +2418,7 @@ equations{ 'ud_m_dot_design' } = define(){
 equations{ 'ud_COPY_T_HTF_des' } = define(){
 	return ${T_htf_hot_des}; };
 
+// This MIMO is only for UI indicators
 equations{ '$MIMO$ ui_udpc_checks' } = define()
 {
 	obj = ssc_create();
