@@ -863,7 +863,17 @@ Physical Trough Collector Library
 <invalid>
 Default
 
-4484
+3954
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
+// Just UI indicator
 equations{ '$MIMO$ collectors in field' } = define () {
   arr = ${SCAInfoArray};
   n = ${nColt};
@@ -871,25 +881,19 @@ equations{ '$MIMO$ collectors in field' } = define () {
   for ( i=0; i<#arr; i++ ) // number of collector assemblies in loop
     for ( j=0; j<n; j++ ) 
       if ( arr[i][0] == j+1 ) { // collector type number for UI display (1-4)
-        c[i] = j; // collector type number for max width calculation in MIMO below (0-3)
         s[j] = to_string(j+1);
         str = str + s[j] + " - ";
 	  }
   ${collectors_in_field} = str + "Hot";
-  ${arr_collectors_in_loop} = c;
 };
 
 equations{ '$MIMO$ collector constants' } = define() {
-	// value of nColt must match the number of collector types allowed
+	// Value of nColt must match the number of collector types allowed
 	// Each array calculated below must have nColt values in it
 	${nColt} = 4;
-	
-	// these were constants in SAMwx
-	//${OptCharType} = [1,1,1,1];
-	//${CollectorType} = [1,1,1,1];
-	//${reflectivity} = [1,1,1,1];
 };
 
+// Just input aggregator
 equations{ '$MIMO$ get values from pages' } = define() {
 	acollector[0] = ${csp_dtr_sca_w_profile_1};
 	acollector[1] = ${csp_dtr_sca_w_profile_2};
@@ -905,26 +909,6 @@ equations{ '$MIMO$ get values from pages' } = define() {
 	acollector[2] = ${csp_dtr_sca_aperture_3};
 	acollector[3] = ${csp_dtr_sca_aperture_4};
 	${A_aperture} = acollector;
-	
-	/*
-	acollector[0] = ${csp_dtr_sca_iam0_1};
-	acollector[1] = ${csp_dtr_sca_iam0_2};
-	acollector[2] = ${csp_dtr_sca_iam0_3};
-	acollector[3] = ${csp_dtr_sca_iam0_4};
-	${IamF0} = acollector;
-	
-	acollector[0] = ${csp_dtr_sca_iam1_1};
-	acollector[1] = ${csp_dtr_sca_iam1_2};
-	acollector[2] = ${csp_dtr_sca_iam1_3};
-	acollector[3] = ${csp_dtr_sca_iam1_4};
-	${IamF1} = acollector;
-
-	acollector[0] = ${csp_dtr_sca_iam2_1};
-	acollector[1] = ${csp_dtr_sca_iam2_2};
-	acollector[2] = ${csp_dtr_sca_iam2_3};
-	acollector[3] = ${csp_dtr_sca_iam2_4};
-	${IamF2} = acollector;
-	*/
 
 	acollector[0] = ${csp_dtr_sca_tracking_error_1};
 	acollector[1] = ${csp_dtr_sca_tracking_error_2};
@@ -988,8 +972,8 @@ equations{ '$MIMO$ get values from pages' } = define() {
 
 };
 
+// Just input aggregator
 equations{ 'IAM_matrix' } = define() {
-
 	base_matrix[0] = ${IAMs_1};
 	base_matrix[1] = ${IAMs_2};
 	base_matrix[2] = ${IAMs_3};
@@ -999,7 +983,6 @@ equations{ 'IAM_matrix' } = define() {
 	// #matrix[0] for length of 1st array in 
 	
 	return base_matrix;
-	
 };
 
 1038
