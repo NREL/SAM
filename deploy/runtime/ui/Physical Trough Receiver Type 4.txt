@@ -5366,7 +5366,8 @@ Physical Trough Receiver Type 4
 0
 ValueMatrix
 
-1232
+1237
+/*
 equations{ 'csp_dtr_hce_design_heat_loss_4' } = define() {
 	return  ${csp_dtr_hce_var1_field_fraction_4}
    * ${csp_dtr_hce_var1_rated_heat_loss_4}
@@ -5400,7 +5401,7 @@ equations{ 'csp_dtr_hce_optical_eff_4' } = define() {
    * ${csp_dtr_hce_var4_abs_abs_4}
    * ${csp_dtr_hce_var4_env_trans_4};
 };
-
+*/
 3974
 on_change{'apply_receiver_library_4'} = define() {
 

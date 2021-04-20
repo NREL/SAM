@@ -1,5 +1,5 @@
 1
-1140
+1164
 A_aperture
 1
 2
@@ -1808,6 +1808,13 @@ csp_dtr_hce_optical_eff_4
 1
 1
 0.850631
+csp_dtr_hce_var1_abs_abs
+1
+2
+1
+4
+0.95 0.95 0.95 0.95 
+
 csp_dtr_hce_var1_abs_abs_1
 1
 1
@@ -1880,6 +1887,13 @@ csp_dtr_hce_var1_bellows_shadowing_4
 1
 1
 0.935
+csp_dtr_hce_var1_bellows_shadowings
+1
+2
+1
+4
+0.963 0.963 0.963 0.963 
+
 csp_dtr_hce_var1_broken_glass_1
 1
 1
@@ -1952,6 +1966,13 @@ csp_dtr_hce_var1_env_emis_4
 1
 1
 0.86
+csp_dtr_hce_var1_env_trans
+1
+2
+1
+4
+0.963 0.963 0.963 0.963 
+
 csp_dtr_hce_var1_env_trans_1
 1
 1
@@ -2000,6 +2021,13 @@ csp_dtr_hce_var1_field_fraction_4
 1
 1
 1
+csp_dtr_hce_var1_field_fractions
+1
+2
+1
+4
+1 1 1 1 
+
 csp_dtr_hce_var1_gas_type_1
 1
 1
@@ -2048,6 +2076,13 @@ csp_dtr_hce_var1_hce_dirt_4
 1
 1
 0.98
+csp_dtr_hce_var1_hce_dirts
+1
+2
+1
+4
+0.98 0.98 0.98 0.98 
+
 csp_dtr_hce_var1_rated_heat_loss_1
 1
 1
@@ -2072,6 +2107,20 @@ csp_dtr_hce_var1_rated_heat_loss_4
 1
 1
 190
+csp_dtr_hce_var1_rated_heat_losses
+1
+2
+1
+4
+250 250 250 250 
+
+csp_dtr_hce_var2_abs_abs
+1
+2
+1
+4
+0 0 0 0 
+
 csp_dtr_hce_var2_abs_abs_1
 1
 1
@@ -2144,6 +2193,13 @@ csp_dtr_hce_var2_bellows_shadowing_4
 1
 1
 0.935
+csp_dtr_hce_var2_bellows_shadowings
+1
+2
+1
+4
+0.963 0.963 0.963 0.963 
+
 csp_dtr_hce_var2_broken_glass_1
 1
 1
@@ -2216,6 +2272,13 @@ csp_dtr_hce_var2_env_emis_4
 1
 1
 0.86
+csp_dtr_hce_var2_env_trans
+1
+2
+1
+4
+0 0 0 0 
+
 csp_dtr_hce_var2_env_trans_1
 1
 1
@@ -2264,6 +2327,13 @@ csp_dtr_hce_var2_field_fraction_4
 1
 1
 0
+csp_dtr_hce_var2_field_fractions
+1
+2
+1
+4
+0 0 0 0 
+
 csp_dtr_hce_var2_gas_type_1
 1
 1
@@ -2312,6 +2382,13 @@ csp_dtr_hce_var2_hce_dirt_4
 1
 1
 0.98
+csp_dtr_hce_var2_hce_dirts
+1
+2
+1
+4
+0.98 0.98 0.98 0.98 
+
 csp_dtr_hce_var2_rated_heat_loss_1
 1
 1
@@ -2336,6 +2413,20 @@ csp_dtr_hce_var2_rated_heat_loss_4
 1
 1
 1270
+csp_dtr_hce_var2_rated_heat_losses
+1
+2
+1
+4
+0 0 0 0 
+
+csp_dtr_hce_var3_abs_abs
+1
+2
+1
+4
+0 0 0 0 
+
 csp_dtr_hce_var3_abs_abs_1
 1
 1
@@ -2408,6 +2499,13 @@ csp_dtr_hce_var3_bellows_shadowing_4
 1
 1
 0.935
+csp_dtr_hce_var3_bellows_shadowings
+1
+2
+1
+4
+0.963 0.963 0.963 0.963 
+
 csp_dtr_hce_var3_broken_glass_1
 1
 1
@@ -2480,6 +2578,13 @@ csp_dtr_hce_var3_env_emis_4
 1
 1
 1
+csp_dtr_hce_var3_env_trans
+1
+2
+1
+4
+0 0 0 0 
+
 csp_dtr_hce_var3_env_trans_1
 1
 1
@@ -2528,6 +2633,13 @@ csp_dtr_hce_var3_field_fraction_4
 1
 1
 0
+csp_dtr_hce_var3_field_fractions
+1
+2
+1
+4
+0 0 0 0 
+
 csp_dtr_hce_var3_gas_type_1
 1
 1
@@ -2576,6 +2688,13 @@ csp_dtr_hce_var3_hce_dirt_4
 1
 1
 1
+csp_dtr_hce_var3_hce_dirts
+1
+2
+1
+4
+0.98 0.98 0.98 0.98 
+
 csp_dtr_hce_var3_rated_heat_loss_1
 1
 1
@@ -2600,6 +2719,20 @@ csp_dtr_hce_var3_rated_heat_loss_4
 1
 1
 1500
+csp_dtr_hce_var3_rated_heat_losses
+1
+2
+1
+4
+0 0 0 0 
+
+csp_dtr_hce_var4_abs_abs
+1
+2
+1
+4
+0.95 0.95 0.95 0.95 
+
 csp_dtr_hce_var4_abs_abs_1
 1
 1
@@ -2672,6 +2805,13 @@ csp_dtr_hce_var4_bellows_shadowing_4
 1
 1
 0.963
+csp_dtr_hce_var4_bellows_shadowings
+1
+2
+1
+4
+0.963 0.963 0.963 0.963 
+
 csp_dtr_hce_var4_broken_glass_1
 1
 1
@@ -2744,6 +2884,13 @@ csp_dtr_hce_var4_env_emis_4
 1
 1
 0
+csp_dtr_hce_var4_env_trans
+1
+2
+1
+4
+0 0 0 0 
+
 csp_dtr_hce_var4_env_trans_1
 1
 1
@@ -2792,6 +2939,13 @@ csp_dtr_hce_var4_field_fraction_4
 1
 1
 0
+csp_dtr_hce_var4_field_fractions
+1
+2
+1
+4
+0 0 0 0 
+
 csp_dtr_hce_var4_gas_type_1
 1
 1
@@ -2840,6 +2994,13 @@ csp_dtr_hce_var4_hce_dirt_4
 1
 1
 0.98
+csp_dtr_hce_var4_hce_dirts
+1
+2
+1
+4
+0.98 0.98 0.98 0.98 
+
 csp_dtr_hce_var4_rated_heat_loss_1
 1
 1
@@ -2864,6 +3025,13 @@ csp_dtr_hce_var4_rated_heat_loss_4
 1
 1
 0
+csp_dtr_hce_var4_rated_heat_losses
+1
+2
+1
+4
+0 0 0 0 
+
 csp_dtr_sca_ap_length_1
 1
 1
