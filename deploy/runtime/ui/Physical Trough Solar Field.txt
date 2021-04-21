@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-7023
+7107
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -4781,10 +4781,11 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 
 	// single_loop_aperature
 	data.trough_loop_control = ${trough_loop_control};
-	data.csp_dtr_sca_aperture_1 = ${csp_dtr_sca_aperture_1};
-	data.csp_dtr_sca_aperture_2 = ${csp_dtr_sca_aperture_2};
-	data.csp_dtr_sca_aperture_3 = ${csp_dtr_sca_aperture_3};
-	data.csp_dtr_sca_aperture_4 = ${csp_dtr_sca_aperture_4};
+	data.A_aperture = ${A_aperture};
+	//data.csp_dtr_sca_aperture_1 = ${csp_dtr_sca_aperture_1};
+	//data.csp_dtr_sca_aperture_2 = ${csp_dtr_sca_aperture_2};
+	//data.csp_dtr_sca_aperture_3 = ${csp_dtr_sca_aperture_3};
+	//data.csp_dtr_sca_aperture_4 = ${csp_dtr_sca_aperture_4};
 
 	// min_inner_diameter
 	data.csp_dtr_hce_diam_absorber_inner_1 = ${csp_dtr_hce_diam_absorber_inner_1};
@@ -4855,10 +4856,11 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 
 	// fixed_land_area
 	data.Row_Distance = ${Row_Distance};
-	data.csp_dtr_sca_w_profile_1 = ${csp_dtr_sca_w_profile_1};
-	data.csp_dtr_sca_w_profile_2 = ${csp_dtr_sca_w_profile_2};
-	data.csp_dtr_sca_w_profile_3 = ${csp_dtr_sca_w_profile_3};
-	data.csp_dtr_sca_w_profile_4 = ${csp_dtr_sca_w_profile_4};
+	data.W_aperture = ${W_aperture};
+	//data.csp_dtr_sca_w_profile_1 = ${csp_dtr_sca_w_profile_1};
+	//data.csp_dtr_sca_w_profile_2 = ${csp_dtr_sca_w_profile_2};
+	//data.csp_dtr_sca_w_profile_3 = ${csp_dtr_sca_w_profile_3};
+	//data.csp_dtr_sca_w_profile_4 = ${csp_dtr_sca_w_profile_4};
 
 	// total_land_area
 	data.non_solar_field_land_area_multiplier = ${non_solar_field_land_area_multiplier};
