@@ -743,6 +743,41 @@ bool ShowSolarResourceDataSettings()
 	else return false;
 }
 
+bool ShowWaveResourceDataSettings()
+{
+    wxString dnpath;
+    if (!SamApp::Settings().Read("wave_download_path", &dnpath) || dnpath.IsEmpty())
+    {
+        dnpath = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
+        SamApp::Settings().Write("wave_download_path", dnpath);
+    }
+
+    if (!wxDirExists(dnpath))
+    {
+        if (wxFileName::Mkdir(dnpath, 511, ::wxPATH_MKDIR_FULL))
+            SamApp::Settings().Write("wave_download_path", dnpath);
+        else
+            wxMessageBox("Please select a Wave \"Resource Data Folder\" in the following dialog.");
+    }
+
+    wxString buf;
+    wxArrayString paths;
+    if (SamApp::Settings().Read("wave_data_paths", &buf))
+        paths = wxStringTokenize(buf, ";");
+
+    SettingsDialog dialog(SamApp::Window(), "Wave Resource Data Folder Settings", "Wave Data File");
+    dialog.CenterOnParent();
+    dialog.SetLibraryPaths(paths);
+    dialog.SetDownloadPath(dnpath);
+    if (dialog.ShowModal() == wxID_OK)
+    {
+        SamApp::Settings().Write("wave_download_path", dialog.GetDownloadPath());
+        SamApp::Settings().Write("wave_data_paths", wxJoin(dialog.GetLibraryPaths(), ';'));
+        return true;
+    }
+    else return false;
+}
+
 bool ShowWindResourceDataSettings()
 {
 	wxMessageBox("Wind data settings not supported yet.");

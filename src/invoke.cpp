@@ -73,6 +73,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "stochastic.h"
 #include "codegencallback.h"
 #include "nsrdb.h"
+#include "wavetoolkit.h"
 #include "graph.h"
 
 std::mutex global_mu;
@@ -2180,6 +2181,34 @@ void fcall_nsrdbquery(lk::invoke_t &cxt)
 	cxt.result().hash_item("addfolder").assign(addfolder);
 }
 
+void fcall_wavetoolkit(lk::invoke_t& cxt)
+{
+    LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
+    //Create the wind data object
+    WaveDownloadDialog dlgWave(SamApp::Window(), "Advanced Wave Download");
+    dlgWave.CenterOnParent();
+    int code = dlgWave.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+    //Return an empty string if the window was dismissed
+    if (code == wxID_CANCEL)
+    {
+        cxt.result().assign(wxEmptyString);
+        return;
+    }
+
+    //Get selected filename
+    wxString foldername = dlgWave.GetWeatherFolder();
+    wxString filename = dlgWave.GetWeatherFile();
+    wxString addfolder = dlgWave.GetAddFolder();
+
+    cxt.result().empty_hash();
+
+    // meta data
+    cxt.result().hash_item("file").assign(filename);
+    cxt.result().hash_item("folder").assign(foldername);
+    cxt.result().hash_item("addfolder").assign(addfolder);
+}
+
 void fcall_windtoolkit(lk::invoke_t &cxt)
 {
 	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
@@ -3426,8 +3455,9 @@ void fcall_showsettings( lk::invoke_t &cxt )
 {
 	LK_DOC("showsettings", "Show the settings dialog for either 'solar' or 'wind' data files.", "(string:type):boolean");
 	wxString type( cxt.arg(0).as_string().Lower() );
-	if ( type == "solar" ) cxt.result().assign( ShowSolarResourceDataSettings() ? 1.0 : 0.0 );
-	else if ( type == "wind" ) cxt.result().assign( ShowWindResourceDataSettings() ? 1.0 : 0.0 );
+    if (type == "solar") cxt.result().assign(ShowSolarResourceDataSettings() ? 1.0 : 0.0);
+    else if (type == "wind") cxt.result().assign(ShowWindResourceDataSettings() ? 1.0 : 0.0);
+    else if (type == "wave") cxt.result().assign(ShowWaveResourceDataSettings() ? 1.0 : 0.0);
 }
 
 void fcall_rescanlibrary( lk::invoke_t &cxt )
@@ -5278,6 +5308,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_current_at_voltage_sandia,
 		fcall_windtoolkit,
 		fcall_nsrdbquery,
+        fcall_wavetoolkit,
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,

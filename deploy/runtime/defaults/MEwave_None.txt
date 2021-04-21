@@ -1,5 +1,5 @@
 1
-677
+679
 accumulators_cost
 1
 1
@@ -3932,6 +3932,18 @@ Device 1
 wave_download
 1
 0
+wave_download_end_year
+1
+1
+1
+1
+2000
+wave_download_start_year
+1
+1
+1
+1
+1990
 wave_energy_period
 1
 2

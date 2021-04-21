@@ -1755,6 +1755,7 @@ function setup_mewave_pages()
 }
 setconfig( 'MEwave', 'LCOE Calculator' );
 setmodules( ['wave_file_reader', 'mhk_wave', 'lcoefcr']);
+//setmodules( ['mhk_wave', 'lcoefcr']);
 setup_mewave_pages();
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 //-----------------------------------------------------
