@@ -863,7 +863,7 @@ Physical Trough Collector Library
 <invalid>
 Default
 
-3954
+7190
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -906,6 +906,110 @@ equations{ 'IAM_matrix' } = define() {
 	return base_matrix;
 };
 
+// This and others can't be set in a MIMO if read by another MIMO
+equations{ 'W_aperture' } = define() {
+	acollector[0] = ${csp_dtr_sca_w_profile_1};
+	acollector[1] = ${csp_dtr_sca_w_profile_2};
+	acollector[2] = ${csp_dtr_sca_w_profile_3};
+	acollector[3] = ${csp_dtr_sca_w_profile_4};
+	return acollector;
+};
+
+//for land area equation on solar field page:
+equations{ 'max_collector_width' } = define() {
+	return -999;
+};
+
+equations{ 'A_aperture' } = define() {
+	acollector[0] = ${csp_dtr_sca_aperture_1};
+	acollector[1] = ${csp_dtr_sca_aperture_2};
+	acollector[2] = ${csp_dtr_sca_aperture_3};
+	acollector[3] = ${csp_dtr_sca_aperture_4};
+	return acollector;
+};
+
+equations{ 'TrackingError' } = define() {
+	acollector[0] = ${csp_dtr_sca_tracking_error_1};
+	acollector[1] = ${csp_dtr_sca_tracking_error_2};
+	acollector[2] = ${csp_dtr_sca_tracking_error_3};
+	acollector[3] = ${csp_dtr_sca_tracking_error_4};
+	return acollector;
+};
+
+equations{ 'GeomEffects' } = define() {
+	acollector[0] = ${csp_dtr_sca_geometry_effects_1};
+	acollector[1] = ${csp_dtr_sca_geometry_effects_2};
+	acollector[2] = ${csp_dtr_sca_geometry_effects_3};
+	acollector[3] = ${csp_dtr_sca_geometry_effects_4};
+	return acollector;
+};
+
+equations{ 'Rho_mirror_clean' } = define() {
+	acollector[0] = ${csp_dtr_sca_clean_reflectivity_1};
+	acollector[1] = ${csp_dtr_sca_clean_reflectivity_2};
+	acollector[2] = ${csp_dtr_sca_clean_reflectivity_3};
+	acollector[3] = ${csp_dtr_sca_clean_reflectivity_4};
+	return acollector;
+};
+
+equations{ 'Dirt_mirror' } = define() {
+	acollector[0] = ${csp_dtr_sca_mirror_dirt_1};
+	acollector[1] = ${csp_dtr_sca_mirror_dirt_2};
+	acollector[2] = ${csp_dtr_sca_mirror_dirt_3};
+	acollector[3] = ${csp_dtr_sca_mirror_dirt_4};
+	return acollector;
+};
+
+equations{ 'Error' } = define() {
+	acollector[0] = ${csp_dtr_sca_general_error_1};
+	acollector[1] = ${csp_dtr_sca_general_error_2};
+	acollector[2] = ${csp_dtr_sca_general_error_3};
+	acollector[3] = ${csp_dtr_sca_general_error_4};
+	return acollector;
+};
+
+equations{ 'Ave_Focal_Length' } = define() {
+	acollector[0] = ${csp_dtr_sca_ave_focal_len_1};
+	acollector[1] = ${csp_dtr_sca_ave_focal_len_2};
+	acollector[2] = ${csp_dtr_sca_ave_focal_len_3};
+	acollector[3] = ${csp_dtr_sca_ave_focal_len_4};
+	return acollector;
+};
+
+equations{ 'L_SCA' } = define() {
+	acollector[0] = ${csp_dtr_sca_length_1};
+	acollector[1] = ${csp_dtr_sca_length_2};
+	acollector[2] = ${csp_dtr_sca_length_3};
+	acollector[3] = ${csp_dtr_sca_length_4};
+	return acollector;
+};
+
+equations{ 'L_aperture' } = define() {
+	acollector[0] = ${csp_dtr_sca_ap_length_1};
+	acollector[1] = ${csp_dtr_sca_ap_length_2};
+	acollector[2] = ${csp_dtr_sca_ap_length_3};
+	acollector[3] = ${csp_dtr_sca_ap_length_4};
+	return acollector;
+};
+
+equations{ 'ColperSCA' } = define() {
+	acollector[0] = ${csp_dtr_sca_ncol_per_sca_1};
+	acollector[1] = ${csp_dtr_sca_ncol_per_sca_2};
+	acollector[2] = ${csp_dtr_sca_ncol_per_sca_3};
+	acollector[3] = ${csp_dtr_sca_ncol_per_sca_4};
+	return acollector;
+};
+
+equations{ 'Distance_SCA' } = define() {
+	acollector[0] = ${csp_dtr_sca_piping_dist_1};
+	acollector[1] = ${csp_dtr_sca_piping_dist_2};
+	acollector[2] = ${csp_dtr_sca_piping_dist_3};
+	acollector[3] = ${csp_dtr_sca_piping_dist_4};
+	return acollector;
+};
+
+
+/*
 // Just input aggregator
 equations{ '$MIMO$ get values from pages' } = define() {
 	acollector[0] = ${csp_dtr_sca_w_profile_1};
@@ -984,7 +1088,7 @@ equations{ '$MIMO$ get values from pages' } = define() {
 	${Distance_SCA} = acollector;
 
 };
-
+*/
 1038
 on_load{ 'Physical Trough Collector Header' } = define() {
 	on_change{ 'collector_library' }();
