@@ -587,12 +587,13 @@ Selection
 4
 Items
 6
-5
+6
 Automated dispatch look ahead
 Automated dispatch one day look behind
 Automated dispatch custom weather file
 Dispatch to custom time series
 Manual dispatch
+PV smoothing
 ShowCaptions
 2
 1
@@ -1239,8 +1240,8 @@ batt_dispatch_choice
 Battery dispatch choice front-of-meter
  
 BatteryDispatch
-154
-Automated dispatch look ahead|Automated dispatch one day look behind|Automated dispatch custom weather file|Dispatch to custom time series|Manual dispatch
+167
+Automated dispatch look ahead|Automated dispatch one day look behind|Automated dispatch custom weather file|Dispatch to custom time series|Manual dispatch|PV Smoothing
 3
 1
 1
