@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-7107
+7093
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -4799,7 +4799,7 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.csp_dtr_hce_design_heat_loss_2 = ${csp_dtr_hce_design_heat_loss_2};
 	data.csp_dtr_hce_design_heat_loss_3 = ${csp_dtr_hce_design_heat_loss_3};
 	data.csp_dtr_hce_design_heat_loss_4 = ${csp_dtr_hce_design_heat_loss_4};
-	data.csp_dtr_sca_lengths = ${csp_dtr_sca_lengths};
+	data.csp_dtr_sca_lengths = ${L_SCA};
 
 	// loop_optical_efficiency
 	data.csp_dtr_sca_calc_sca_eff_1 = ${csp_dtr_sca_calc_sca_eff_1};

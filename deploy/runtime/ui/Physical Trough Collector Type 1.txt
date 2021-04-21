@@ -1578,7 +1578,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-7356
+7237
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1637,14 +1637,14 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 
 	// csp_dtr_sca_ap_length_1
 	data.csp_dtr_sca_lengths = ${L_SCA};
-	data.csp_dtr_sca_ncol_per_scas = ${csp_dtr_sca_ncol_per_scas};
+	data.csp_dtr_sca_ncol_per_scas = ${ColperSCA};
 
 	// csp_dtr_sca_calc_theta_1
 	// <nothing new needed>
 	
 	// csp_dtr_sca_calc_end_gain_1
-	data.csp_dtr_sca_ave_focal_lens = ${csp_dtr_sca_ave_focal_lens};
-	data.csp_dtr_sca_piping_dists = ${csp_dtr_sca_piping_dists};
+	data.csp_dtr_sca_ave_focal_lens = ${Ave_Focal_Length};
+	data.csp_dtr_sca_piping_dists = ${Distance_SCA};
 
 	// csp_dtr_sca_calc_costh_1
 	//data.csp_dtr_sca_calc_zenith_1 = ${csp_dtr_sca_calc_zenith_1};
@@ -1655,11 +1655,11 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 	data.nSCA = ${nSCA};
 	
 	// csp_dtr_sca_calc_sca_eff_1
-	data.csp_dtr_sca_tracking_errors = ${csp_dtr_sca_tracking_errors};
-	data.csp_dtr_sca_geometry_effects = ${csp_dtr_sca_geometry_effects};
-	data.csp_dtr_sca_clean_reflectivities = ${csp_dtr_sca_clean_reflectivities};
-	data.csp_dtr_sca_mirror_dirts = ${csp_dtr_sca_mirror_dirts};
-	data.csp_dtr_sca_general_errors = ${csp_dtr_sca_general_errors};
+	data.csp_dtr_sca_tracking_errors = ${TrackingError};
+	data.csp_dtr_sca_geometry_effects = ${GeomEffects};
+	data.csp_dtr_sca_clean_reflectivities = ${Rho_mirror_clean};
+	data.csp_dtr_sca_mirror_dirts = ${Dirt_mirror};
+	data.csp_dtr_sca_general_errors = ${Error};
 	
 	// csp_dtr_sca_calc_latitude_1
 	data.lat = ${lat};
