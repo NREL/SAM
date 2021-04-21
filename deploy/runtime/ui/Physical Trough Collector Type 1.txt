@@ -1578,7 +1578,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-7185
+5328
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1587,51 +1587,6 @@ Numeric
 //   modify the below main MIMO or add one,
 //   referencing in ssc_equations.h
 //
-
-equations{ 'csp_dtr_sca_lengths' } = define() {
-	return [${csp_dtr_sca_length_1}, ${csp_dtr_sca_length_2},
-		${csp_dtr_sca_length_3}, ${csp_dtr_sca_length_4}];
-};
-
-equations{ 'csp_dtr_sca_ncol_per_scas' } = define() {
-	return [${csp_dtr_sca_ncol_per_sca_1}, ${csp_dtr_sca_ncol_per_sca_2},
-		${csp_dtr_sca_ncol_per_sca_3}, ${csp_dtr_sca_ncol_per_sca_4}];
-};
-
-equations{ 'csp_dtr_sca_ave_focal_lens' } = define() {
-	return [${csp_dtr_sca_ave_focal_len_1}, ${csp_dtr_sca_ave_focal_len_2},
-		${csp_dtr_sca_ave_focal_len_3}, ${csp_dtr_sca_ave_focal_len_4}];
-};
-
-equations{ 'csp_dtr_sca_piping_dists' } = define() {
-	return [${csp_dtr_sca_piping_dist_1}, ${csp_dtr_sca_piping_dist_2},
-		${csp_dtr_sca_piping_dist_3}, ${csp_dtr_sca_piping_dist_4}];
-};
-
-equations{ 'csp_dtr_sca_tracking_errors' } = define() {
-	return [${csp_dtr_sca_tracking_error_1}, ${csp_dtr_sca_tracking_error_2},
-		${csp_dtr_sca_tracking_error_3}, ${csp_dtr_sca_tracking_error_4}];
-};
-
-equations{ 'csp_dtr_sca_geometry_effects' } = define() {
-	return [${csp_dtr_sca_geometry_effects_1}, ${csp_dtr_sca_geometry_effects_2},
-		${csp_dtr_sca_geometry_effects_3}, ${csp_dtr_sca_geometry_effects_4}];
-};
-
-equations{ 'csp_dtr_sca_clean_reflectivities' } = define() {
-	return [${csp_dtr_sca_clean_reflectivity_1}, ${csp_dtr_sca_clean_reflectivity_2},
-		${csp_dtr_sca_clean_reflectivity_3}, ${csp_dtr_sca_clean_reflectivity_4}];
-};
-
-equations{ 'csp_dtr_sca_mirror_dirts' } = define() {
-	return [${csp_dtr_sca_mirror_dirt_1}, ${csp_dtr_sca_mirror_dirt_2},
-		${csp_dtr_sca_mirror_dirt_3}, ${csp_dtr_sca_mirror_dirt_4}];
-};
-
-equations{ 'csp_dtr_sca_general_errors' } = define() {
-	return [${csp_dtr_sca_general_error_1}, ${csp_dtr_sca_general_error_2},
-		${csp_dtr_sca_general_error_3}, ${csp_dtr_sca_general_error_4}];
-};
 
 equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 
@@ -1655,11 +1610,11 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 	data.nSCA = ${nSCA};
 	
 	// csp_dtr_sca_calc_sca_eff_1
-	data.csp_dtr_sca_tracking_errors = ${TrackingError};
-	data.csp_dtr_sca_geometry_effects = ${GeomEffects};
-	data.csp_dtr_sca_clean_reflectivities = ${Rho_mirror_clean};
-	data.csp_dtr_sca_mirror_dirts = ${Dirt_mirror};
-	data.csp_dtr_sca_general_errors = ${Error};
+	data.TrackingError = ${TrackingError};
+	data.GeomEffects = ${GeomEffects};
+	data.Rho_mirror_clean = ${Rho_mirror_clean};
+	data.Dirt_mirror = ${Dirt_mirror};
+	data.Error = ${Error};
 	
 	// csp_dtr_sca_calc_latitude_1
 	data.lat = ${lat};
