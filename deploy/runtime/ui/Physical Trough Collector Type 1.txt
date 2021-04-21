@@ -1578,7 +1578,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-7237
+7185
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1636,15 +1636,15 @@ equations{ 'csp_dtr_sca_general_errors' } = define() {
 equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 
 	// csp_dtr_sca_ap_length_1
-	data.csp_dtr_sca_lengths = ${L_SCA};
-	data.csp_dtr_sca_ncol_per_scas = ${ColperSCA};
+	data.L_SCA = ${L_SCA};
+	data.ColperSCA = ${ColperSCA};
 
 	// csp_dtr_sca_calc_theta_1
 	// <nothing new needed>
 	
 	// csp_dtr_sca_calc_end_gain_1
-	data.csp_dtr_sca_ave_focal_lens = ${Ave_Focal_Length};
-	data.csp_dtr_sca_piping_dists = ${Distance_SCA};
+	data.Ave_Focal_Length = ${Ave_Focal_Length};
+	data.Distance_SCA = ${Distance_SCA};
 
 	// csp_dtr_sca_calc_costh_1
 	//data.csp_dtr_sca_calc_zenith_1 = ${csp_dtr_sca_calc_zenith_1};
