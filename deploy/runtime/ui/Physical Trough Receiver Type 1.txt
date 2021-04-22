@@ -5726,7 +5726,7 @@ Physical Trough Receiver Type 1
 1.17192
 ValueMatrix
 
-7950
+8055
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -5736,7 +5736,7 @@ ValueMatrix
 //   referencing in ssc_equations.h
 //
 
-
+/*
 // Just UI aggregators
 equations{ 'csp_dtr_hce_var1_field_fractions' } = define() {
 	return [
@@ -5957,28 +5957,34 @@ equations{ 'csp_dtr_hce_var4_env_trans' } = define() {
 	${csp_dtr_hce_var4_env_trans_4}
 	];
 };
+*/
 
 equations{ '$MIMO$ Physical_Trough_Receiver_Type_Equations' } = define() {
 	
 	data.HCE_FieldFrac = ${HCE_FieldFrac};
 	data.Design_loss = ${Design_loss};
 	data.Shadowing = ${Shadowing};
-	//data.csp_dtr_hce_var1_bellows_shadowings = ${csp_dtr_hce_var1_bellows_shadowings};
+	data.Dirt_HCE = ${Dirt_HCE};
+	data.alpha_abs = ${alpha_abs};
+	data.Tau_envelope = ${Tau_envelope};
+	/*
+	data.csp_dtr_hce_var1_bellows_shadowings = ${csp_dtr_hce_var1_bellows_shadowings};
 	data.csp_dtr_hce_var1_hce_dirts = ${csp_dtr_hce_var1_hce_dirts};
 	data.csp_dtr_hce_var1_abs_abs = ${csp_dtr_hce_var1_abs_abs};
 	data.csp_dtr_hce_var1_env_trans = ${csp_dtr_hce_var1_env_trans};
-	//data.csp_dtr_hce_var2_bellows_shadowings = ${csp_dtr_hce_var2_bellows_shadowings};
+	data.csp_dtr_hce_var2_bellows_shadowings = ${csp_dtr_hce_var2_bellows_shadowings};
 	data.csp_dtr_hce_var2_hce_dirts = ${csp_dtr_hce_var2_hce_dirts};
 	data.csp_dtr_hce_var2_abs_abs = ${csp_dtr_hce_var2_abs_abs};
 	data.csp_dtr_hce_var2_env_trans = ${csp_dtr_hce_var2_env_trans};
-	//data.csp_dtr_hce_var3_bellows_shadowings = ${csp_dtr_hce_var3_bellows_shadowings};
+	data.csp_dtr_hce_var3_bellows_shadowings = ${csp_dtr_hce_var3_bellows_shadowings};
 	data.csp_dtr_hce_var3_hce_dirts = ${csp_dtr_hce_var3_hce_dirts};
 	data.csp_dtr_hce_var3_abs_abs = ${csp_dtr_hce_var3_abs_abs};
 	data.csp_dtr_hce_var3_env_trans = ${csp_dtr_hce_var3_env_trans};
-	//data.csp_dtr_hce_var4_bellows_shadowings = ${csp_dtr_hce_var4_bellows_shadowings};
+	data.csp_dtr_hce_var4_bellows_shadowings = ${csp_dtr_hce_var4_bellows_shadowings};
 	data.csp_dtr_hce_var4_hce_dirts = ${csp_dtr_hce_var4_hce_dirts};
 	data.csp_dtr_hce_var4_abs_abs = ${csp_dtr_hce_var4_abs_abs};
 	data.csp_dtr_hce_var4_env_trans = ${csp_dtr_hce_var4_env_trans};
+	*/
 
 	success = ssc_eqn("Physical_Trough_Receiver_Type_Equations", data);
 	if (!success) {
