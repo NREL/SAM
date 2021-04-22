@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-6591
+6611
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -4784,6 +4784,7 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.A_aperture = ${A_aperture};
 
 	// min_inner_diameter
+	data.D_2 = ${D_2};
 	data.csp_dtr_hce_diam_absorber_inner_1 = ${csp_dtr_hce_diam_absorber_inner_1};
 	data.csp_dtr_hce_diam_absorber_inner_2 = ${csp_dtr_hce_diam_absorber_inner_2};
 	data.csp_dtr_hce_diam_absorber_inner_3 = ${csp_dtr_hce_diam_absorber_inner_3};
