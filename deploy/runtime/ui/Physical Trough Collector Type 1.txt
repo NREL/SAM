@@ -1578,7 +1578,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-5328
+4661
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1608,13 +1608,6 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 	
 	// csp_dtr_sca_calc_end_loss_1
 	data.nSCA = ${nSCA};
-	
-	// csp_dtr_sca_calc_sca_eff_1
-	data.TrackingError = ${TrackingError};
-	data.GeomEffects = ${GeomEffects};
-	data.Rho_mirror_clean = ${Rho_mirror_clean};
-	data.Dirt_mirror = ${Dirt_mirror};
-	data.Error = ${Error};
 	
 	// csp_dtr_sca_calc_latitude_1
 	data.lat = ${lat};
@@ -1647,10 +1640,6 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 		${csp_dtr_sca_calc_end_loss_2} = -999.;
 		${csp_dtr_sca_calc_end_loss_3} = -999.;
 		${csp_dtr_sca_calc_end_loss_4} = -999.;
-		${csp_dtr_sca_calc_sca_eff_1} = -999.;
-		${csp_dtr_sca_calc_sca_eff_2} = -999.;
-		${csp_dtr_sca_calc_sca_eff_3} = -999.;
-		${csp_dtr_sca_calc_sca_eff_4} = -999.;
 		${csp_dtr_sca_calc_latitude_1} = -999.;
 		${csp_dtr_sca_calc_latitude_2} = -999.;
 		${csp_dtr_sca_calc_latitude_3} = -999.;
@@ -1685,10 +1674,6 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 		${csp_dtr_sca_calc_end_loss_2} = data.csp_dtr_sca_calc_end_losses[0][1];
 		${csp_dtr_sca_calc_end_loss_3} = data.csp_dtr_sca_calc_end_losses[0][2];
 		${csp_dtr_sca_calc_end_loss_4} = data.csp_dtr_sca_calc_end_losses[0][3];
-		${csp_dtr_sca_calc_sca_eff_1} = data.csp_dtr_sca_calc_sca_effs[0][0];
-		${csp_dtr_sca_calc_sca_eff_2} = data.csp_dtr_sca_calc_sca_effs[0][1];
-		${csp_dtr_sca_calc_sca_eff_3} = data.csp_dtr_sca_calc_sca_effs[0][2];
-		${csp_dtr_sca_calc_sca_eff_4} = data.csp_dtr_sca_calc_sca_effs[0][3];
 		${csp_dtr_sca_calc_latitude_1} = data.csp_dtr_sca_calc_latitude;	// singular
 		${csp_dtr_sca_calc_latitude_2} = data.csp_dtr_sca_calc_latitude;	// singular
 		${csp_dtr_sca_calc_latitude_3} = data.csp_dtr_sca_calc_latitude;	// singular

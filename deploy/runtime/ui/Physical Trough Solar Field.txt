@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-6611
+7013
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -4798,11 +4798,14 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.csp_dtr_hce_design_heat_loss_4 = ${csp_dtr_hce_design_heat_loss_4};
 	data.L_SCA = ${L_SCA};
 
+	// csp_dtr_sca_calc_sca_eff_1
+	data.TrackingError = ${TrackingError};
+	data.GeomEffects = ${GeomEffects};
+	data.Rho_mirror_clean = ${Rho_mirror_clean};
+	data.Dirt_mirror = ${Dirt_mirror};
+	data.Error = ${Error};
+
 	// loop_optical_efficiency
-	data.csp_dtr_sca_calc_sca_eff_1 = ${csp_dtr_sca_calc_sca_eff_1};
-	data.csp_dtr_sca_calc_sca_eff_2 = ${csp_dtr_sca_calc_sca_eff_2};
-	data.csp_dtr_sca_calc_sca_eff_3 = ${csp_dtr_sca_calc_sca_eff_3};
-	data.csp_dtr_sca_calc_sca_eff_4 = ${csp_dtr_sca_calc_sca_eff_4};
 	data.csp_dtr_hce_optical_eff_1 = ${csp_dtr_hce_optical_eff_1};
 	data.csp_dtr_hce_optical_eff_2 = ${csp_dtr_hce_optical_eff_2};
 	data.csp_dtr_hce_optical_eff_3 = ${csp_dtr_hce_optical_eff_3};
@@ -4873,6 +4876,10 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${single_loop_aperature} = -999.;
 		${min_inner_diameter} = -999.;
 		${cspdtr_loop_hce_heat_loss} = -999.;
+		${csp_dtr_sca_calc_sca_eff_1} = -999.;
+		${csp_dtr_sca_calc_sca_eff_2} = -999.;
+		${csp_dtr_sca_calc_sca_eff_3} = -999.;
+		${csp_dtr_sca_calc_sca_eff_4} = -999.;
 		${loop_optical_efficiency} = -999.;
 		${SCAInfoArray} = null;
 		${SCADefocusArray} = null;
@@ -4902,6 +4909,10 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${single_loop_aperature} = data.single_loop_aperature;
 		${min_inner_diameter} = data.min_inner_diameter;
 		${cspdtr_loop_hce_heat_loss} = data.cspdtr_loop_hce_heat_loss;
+		${csp_dtr_sca_calc_sca_eff_1} = data.csp_dtr_sca_calc_sca_effs[0][0];
+		${csp_dtr_sca_calc_sca_eff_2} = data.csp_dtr_sca_calc_sca_effs[0][1];
+		${csp_dtr_sca_calc_sca_eff_3} = data.csp_dtr_sca_calc_sca_effs[0][2];
+		${csp_dtr_sca_calc_sca_eff_4} = data.csp_dtr_sca_calc_sca_effs[0][3];
 		${loop_optical_efficiency} = data.loop_optical_efficiency;
 		${SCAInfoArray} = data.scainfoarray;
 		${SCADefocusArray} = data.scadefocusarray;
