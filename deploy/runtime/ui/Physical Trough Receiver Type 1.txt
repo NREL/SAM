@@ -5726,7 +5726,7 @@ Physical Trough Receiver Type 1
 1.17192
 ValueMatrix
 
-8566
+7950
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -5962,27 +5962,20 @@ equations{ '$MIMO$ Physical_Trough_Receiver_Type_Equations' } = define() {
 	
 	data.HCE_FieldFrac = ${HCE_FieldFrac};
 	data.Design_loss = ${Design_loss};
-	//data.csp_dtr_hce_var1_field_fractions = ${csp_dtr_hce_var1_field_fractions};
-	//data.csp_dtr_hce_var1_rated_heat_losses = ${csp_dtr_hce_var1_rated_heat_losses};
-	//data.csp_dtr_hce_var2_field_fractions = ${csp_dtr_hce_var2_field_fractions};
-	//data.csp_dtr_hce_var2_rated_heat_losses = ${csp_dtr_hce_var2_rated_heat_losses};
-	//data.csp_dtr_hce_var3_field_fractions = ${csp_dtr_hce_var3_field_fractions};
-	//data.csp_dtr_hce_var3_rated_heat_losses = ${csp_dtr_hce_var3_rated_heat_losses};
-	//data.csp_dtr_hce_var4_field_fractions = ${csp_dtr_hce_var4_field_fractions};
-	//data.csp_dtr_hce_var4_rated_heat_losses = ${csp_dtr_hce_var4_rated_heat_losses};
-	data.csp_dtr_hce_var1_bellows_shadowings = ${csp_dtr_hce_var1_bellows_shadowings};
+	data.Shadowing = ${Shadowing};
+	//data.csp_dtr_hce_var1_bellows_shadowings = ${csp_dtr_hce_var1_bellows_shadowings};
 	data.csp_dtr_hce_var1_hce_dirts = ${csp_dtr_hce_var1_hce_dirts};
 	data.csp_dtr_hce_var1_abs_abs = ${csp_dtr_hce_var1_abs_abs};
 	data.csp_dtr_hce_var1_env_trans = ${csp_dtr_hce_var1_env_trans};
-	data.csp_dtr_hce_var2_bellows_shadowings = ${csp_dtr_hce_var2_bellows_shadowings};
+	//data.csp_dtr_hce_var2_bellows_shadowings = ${csp_dtr_hce_var2_bellows_shadowings};
 	data.csp_dtr_hce_var2_hce_dirts = ${csp_dtr_hce_var2_hce_dirts};
 	data.csp_dtr_hce_var2_abs_abs = ${csp_dtr_hce_var2_abs_abs};
 	data.csp_dtr_hce_var2_env_trans = ${csp_dtr_hce_var2_env_trans};
-	data.csp_dtr_hce_var3_bellows_shadowings = ${csp_dtr_hce_var3_bellows_shadowings};
+	//data.csp_dtr_hce_var3_bellows_shadowings = ${csp_dtr_hce_var3_bellows_shadowings};
 	data.csp_dtr_hce_var3_hce_dirts = ${csp_dtr_hce_var3_hce_dirts};
 	data.csp_dtr_hce_var3_abs_abs = ${csp_dtr_hce_var3_abs_abs};
 	data.csp_dtr_hce_var3_env_trans = ${csp_dtr_hce_var3_env_trans};
-	data.csp_dtr_hce_var4_bellows_shadowings = ${csp_dtr_hce_var4_bellows_shadowings};
+	//data.csp_dtr_hce_var4_bellows_shadowings = ${csp_dtr_hce_var4_bellows_shadowings};
 	data.csp_dtr_hce_var4_hce_dirts = ${csp_dtr_hce_var4_hce_dirts};
 	data.csp_dtr_hce_var4_abs_abs = ${csp_dtr_hce_var4_abs_abs};
 	data.csp_dtr_hce_var4_env_trans = ${csp_dtr_hce_var4_env_trans};
