@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-7013
+7700
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -4790,12 +4790,12 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.csp_dtr_hce_diam_absorber_inner_3 = ${csp_dtr_hce_diam_absorber_inner_3};
 	data.csp_dtr_hce_diam_absorber_inner_4 = ${csp_dtr_hce_diam_absorber_inner_4};
 
+	// csp_dtr_hce_design_heat_loss_1
+	data.HCE_FieldFrac = ${HCE_FieldFrac};
+	data.Design_loss = ${Design_loss};
+
 	// cspdtr_loop_hce_heat_loss
 	data.I_bn_des = ${I_bn_des};
-	data.csp_dtr_hce_design_heat_loss_1 = ${csp_dtr_hce_design_heat_loss_1};
-	data.csp_dtr_hce_design_heat_loss_2 = ${csp_dtr_hce_design_heat_loss_2};
-	data.csp_dtr_hce_design_heat_loss_3 = ${csp_dtr_hce_design_heat_loss_3};
-	data.csp_dtr_hce_design_heat_loss_4 = ${csp_dtr_hce_design_heat_loss_4};
 	data.L_SCA = ${L_SCA};
 
 	// csp_dtr_sca_calc_sca_eff_1
@@ -4805,11 +4805,14 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	data.Dirt_mirror = ${Dirt_mirror};
 	data.Error = ${Error};
 
+	// csp_dtr_hce_optical_eff_1
+	data.Shadowing = ${Shadowing};
+	data.Dirt_HCE = ${Dirt_HCE};
+	data.alpha_abs = ${alpha_abs};
+	data.Tau_envelope = ${Tau_envelope};
+
 	// loop_optical_efficiency
-	data.csp_dtr_hce_optical_eff_1 = ${csp_dtr_hce_optical_eff_1};
-	data.csp_dtr_hce_optical_eff_2 = ${csp_dtr_hce_optical_eff_2};
-	data.csp_dtr_hce_optical_eff_3 = ${csp_dtr_hce_optical_eff_3};
-	data.csp_dtr_hce_optical_eff_4 = ${csp_dtr_hce_optical_eff_4};
+	// <nothing new needed>
 
 	// SCAInfoArray
 	// <nothing new needed>
@@ -4875,12 +4878,20 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${field_htf_cp_avg} = -999.;
 		${single_loop_aperature} = -999.;
 		${min_inner_diameter} = -999.;
+		${csp_dtr_hce_design_heat_loss_1} = -999;
+		${csp_dtr_hce_design_heat_loss_2} = -999;
+		${csp_dtr_hce_design_heat_loss_3} = -999;
+		${csp_dtr_hce_design_heat_loss_4} = -999;		
 		${cspdtr_loop_hce_heat_loss} = -999.;
 		${csp_dtr_sca_calc_sca_eff_1} = -999.;
 		${csp_dtr_sca_calc_sca_eff_2} = -999.;
 		${csp_dtr_sca_calc_sca_eff_3} = -999.;
 		${csp_dtr_sca_calc_sca_eff_4} = -999.;
 		${loop_optical_efficiency} = -999.;
+		${csp_dtr_hce_optical_eff_1} = -999;
+		${csp_dtr_hce_optical_eff_2} = -999;
+		${csp_dtr_hce_optical_eff_3} = -999;
+		${csp_dtr_hce_optical_eff_4} = -999;
 		${SCAInfoArray} = null;
 		${SCADefocusArray} = null;
 		${max_field_flow_velocity} = -999.;
@@ -4908,12 +4919,20 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${field_htf_cp_avg} = data.field_htf_cp_avg;
 		${single_loop_aperature} = data.single_loop_aperature;
 		${min_inner_diameter} = data.min_inner_diameter;
+		${csp_dtr_hce_design_heat_loss_1} = data.csp_dtr_hce_design_heat_losses[0][0];
+		${csp_dtr_hce_design_heat_loss_2} = data.csp_dtr_hce_design_heat_losses[0][1];
+		${csp_dtr_hce_design_heat_loss_3} = data.csp_dtr_hce_design_heat_losses[0][2];
+		${csp_dtr_hce_design_heat_loss_4} = data.csp_dtr_hce_design_heat_losses[0][3];	
 		${cspdtr_loop_hce_heat_loss} = data.cspdtr_loop_hce_heat_loss;
 		${csp_dtr_sca_calc_sca_eff_1} = data.csp_dtr_sca_calc_sca_effs[0][0];
 		${csp_dtr_sca_calc_sca_eff_2} = data.csp_dtr_sca_calc_sca_effs[0][1];
 		${csp_dtr_sca_calc_sca_eff_3} = data.csp_dtr_sca_calc_sca_effs[0][2];
 		${csp_dtr_sca_calc_sca_eff_4} = data.csp_dtr_sca_calc_sca_effs[0][3];
 		${loop_optical_efficiency} = data.loop_optical_efficiency;
+		${csp_dtr_hce_optical_eff_1} = data.csp_dtr_hce_optical_effs[0][0];
+		${csp_dtr_hce_optical_eff_2} = data.csp_dtr_hce_optical_effs[0][1];
+		${csp_dtr_hce_optical_eff_3} = data.csp_dtr_hce_optical_effs[0][2];
+		${csp_dtr_hce_optical_eff_4} = data.csp_dtr_hce_optical_effs[0][3];
 		${SCAInfoArray} = data.scainfoarray;
 		${SCADefocusArray} = data.scadefocusarray;
 		${max_field_flow_velocity} = data.max_field_flow_velocity;

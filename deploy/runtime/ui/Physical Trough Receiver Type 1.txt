@@ -5726,7 +5726,7 @@ Physical Trough Receiver Type 1
 1.17192
 ValueMatrix
 
-1560
+220
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -5735,41 +5735,6 @@ ValueMatrix
 //   modify the below main MIMO or add one,
 //   referencing in ssc_equations.h
 //
-
-
-equations{ '$MIMO$ Physical_Trough_Receiver_Type_Equations' } = define() {
-	
-	data.HCE_FieldFrac = ${HCE_FieldFrac};
-	data.Design_loss = ${Design_loss};
-	data.Shadowing = ${Shadowing};
-	data.Dirt_HCE = ${Dirt_HCE};
-	data.alpha_abs = ${alpha_abs};
-	data.Tau_envelope = ${Tau_envelope};
-
-	success = ssc_eqn("Physical_Trough_Receiver_Type_Equations", data);
-	if (!success) {
-		${csp_dtr_hce_design_heat_loss_1} = -999;
-		${csp_dtr_hce_design_heat_loss_2} = -999;
-		${csp_dtr_hce_design_heat_loss_3} = -999;
-		${csp_dtr_hce_design_heat_loss_4} = -999;
-		${csp_dtr_hce_optical_eff_1} = -999;
-		${csp_dtr_hce_optical_eff_2} = -999;
-		${csp_dtr_hce_optical_eff_3} = -999;
-		${csp_dtr_hce_optical_eff_4} = -999;
-	}
-	else {
-		${csp_dtr_hce_design_heat_loss_1} = data.csp_dtr_hce_design_heat_losses[0][0];
-		${csp_dtr_hce_design_heat_loss_2} = data.csp_dtr_hce_design_heat_losses[0][1];
-		${csp_dtr_hce_design_heat_loss_3} = data.csp_dtr_hce_design_heat_losses[0][2];
-		${csp_dtr_hce_design_heat_loss_4} = data.csp_dtr_hce_design_heat_losses[0][3];
-		${csp_dtr_hce_optical_eff_1} = data.csp_dtr_hce_optical_effs[0][0];
-		${csp_dtr_hce_optical_eff_2} = data.csp_dtr_hce_optical_effs[0][1];
-		${csp_dtr_hce_optical_eff_3} = data.csp_dtr_hce_optical_effs[0][2];
-		${csp_dtr_hce_optical_eff_4} = data.csp_dtr_hce_optical_effs[0][3];
-	}
-	
-	return 0;
-};
 
 3974
 on_change{'apply_receiver_library_1'} = define() {
