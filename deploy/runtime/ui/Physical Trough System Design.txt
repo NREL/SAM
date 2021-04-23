@@ -1328,7 +1328,16 @@ System Design
 0
 Default
 
-0
+220
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
 277
 on_load{'Physical Trough System Design'} = define() {
 	on_change{'radio_sm_or_area'}();

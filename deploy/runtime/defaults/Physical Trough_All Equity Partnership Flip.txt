@@ -1,5 +1,5 @@
 1
-1212
+1203
 A_aperture
 1
 2
@@ -3377,13 +3377,6 @@ csp_dtr_sca_ave_focal_len_4
 1
 1
 2.15
-csp_dtr_sca_ave_focal_lens
-1
-2
-1
-4
-1.8 1.8 1.8 1.8 
-
 csp_dtr_sca_calc_costh_1
 1
 1
@@ -3576,13 +3569,6 @@ csp_dtr_sca_calc_zenith_4
 1
 1
 0.150622
-csp_dtr_sca_clean_reflectivities
-1
-2
-1
-4
-0.935 0.935 0.935 0.935 
-
 csp_dtr_sca_clean_reflectivity_1
 1
 1
@@ -3631,20 +3617,6 @@ csp_dtr_sca_general_error_4
 1
 1
 1
-csp_dtr_sca_general_errors
-1
-2
-1
-4
-0.99 0.99 0.99 0.99 
-
-csp_dtr_sca_geometry_effects
-1
-2
-1
-4
-0.98 0.98 0.98 0.98 
-
 csp_dtr_sca_geometry_effects_1
 1
 1
@@ -3693,13 +3665,6 @@ csp_dtr_sca_length_4
 1
 1
 115
-csp_dtr_sca_lengths
-1
-2
-1
-4
-102 102 102 102 
-
 csp_dtr_sca_mirror_dirt_1
 1
 1
@@ -3724,13 +3689,6 @@ csp_dtr_sca_mirror_dirt_4
 1
 1
 0.97
-csp_dtr_sca_mirror_dirts
-1
-2
-1
-4
-0.95 0.95 0.95 0.95 
-
 csp_dtr_sca_ncol_per_sca_1
 1
 1
@@ -3755,13 +3713,6 @@ csp_dtr_sca_ncol_per_sca_4
 1
 1
 8
-csp_dtr_sca_ncol_per_scas
-1
-2
-1
-4
-12 12 12 12 
-
 csp_dtr_sca_notify_text_1
 1
 4
@@ -3806,13 +3757,6 @@ csp_dtr_sca_piping_dist_4
 1
 1
 1
-csp_dtr_sca_piping_dists
-1
-2
-1
-4
-1 1 1 1 
-
 csp_dtr_sca_tracking_error_1
 1
 1
@@ -3837,13 +3781,6 @@ csp_dtr_sca_tracking_error_4
 1
 1
 0.988
-csp_dtr_sca_tracking_errors
-1
-2
-1
-4
-0.994 0.994 0.994 0.994 
-
 csp_dtr_sca_w_profile_1
 1
 1

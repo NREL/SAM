@@ -1335,7 +1335,18 @@ Phys Trough System Design
 6
 Default
 
-846
+1173
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
+
+// Just UI indicator
 equations{ 'specified_q_dot_rec_des' } = define() 
 {
 	return ${specified_solar_multiple}*${q_pb_design}; 
@@ -1346,21 +1357,25 @@ equations{ 'system_capacity' } = define()
 	return ${specified_q_dot_rec_des}*1000.0;
 };
 
+// Just UI indicator
 equations{ 'SD_COPY_nLoops' } = define()
 {
 	return ${nLoops};
 };
 
+// Just UI indicator
 equations{ 'SD_COPY_total_aperture' } = define()
 {
 	return ${total_aperture};
 };
 
+// Just UI indicator
 equations{ 'SD_COPY_solar_mult' } = define()
 {
 	return ${solar_mult};
 };
 
+// Just UI indicator
 equations{ 'SD_COPY_field_thermal_output' } = define()
 {
 	return ${field_thermal_output};

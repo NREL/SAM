@@ -1133,7 +1133,7 @@ TabOrder
 3
 4
 
-31
+22
 IAMs_1
 3
 2
@@ -1191,21 +1191,6 @@ Physical Trough Collector Type 1
 1
 1.8
 Numeric
-csp_dtr_sca_ave_focal_lens
-3
-2
-Average surface-to-focus path lengths
-m
-Physical Trough Collector Type 1
-0
-8
-1
-2
-1
-4
-1.8 1.8 1.8 1.8 
-
-Default
 csp_dtr_sca_calc_costh_1
 3
 1
@@ -1318,21 +1303,6 @@ Physical Trough Collector Type 1
 1
 0
 Default
-csp_dtr_sca_clean_reflectivities
-3
-2
-Mirror reflectances
- 
-Physical Trough Collector Type 1
-0
-8
-1
-2
-1
-4
-0.935 0.935 0.935 0.935 
-
-Default
 csp_dtr_sca_clean_reflectivity_1
 3
 1
@@ -1361,36 +1331,6 @@ Physical Trough Collector Type 1
 1
 0.99
 Numeric
-csp_dtr_sca_general_errors
-3
-2
-General optical errors
- 
-Physical Trough Collector Type 1
-0
-8
-1
-2
-1
-4
-0.99 0.99 0.99 0.99 
-
-Default
-csp_dtr_sca_geometry_effects
-3
-2
-Geometry effectss
- 
-Physical Trough Collector Type 1
-0
-8
-1
-2
-1
-4
-0.98 0.98 0.98 0.98 
-
-Default
 csp_dtr_sca_geometry_effects_1
 3
 1
@@ -1419,21 +1359,6 @@ Physical Trough Collector Type 1
 1
 102
 Numeric
-csp_dtr_sca_lengths
-3
-2
-Lengths of collector assemblies
-m
-Physical Trough Collector Type 1
-0
-8
-1
-2
-1
-4
-102 102 102 102 
-
-Default
 csp_dtr_sca_mirror_dirt_1
 3
 1
@@ -1448,21 +1373,6 @@ Physical Trough Collector Type 1
 1
 0.95
 Numeric
-csp_dtr_sca_mirror_dirts
-3
-2
-Dirt on mirrors
- 
-Physical Trough Collector Type 1
-0
-8
-1
-2
-1
-4
-0.95 0.95 0.95 0.95 
-
-Default
 csp_dtr_sca_ncol_per_sca_1
 3
 1
@@ -1477,21 +1387,6 @@ Physical Trough Collector Type 1
 1
 12
 Numeric
-csp_dtr_sca_ncol_per_scas
-3
-2
-Numbers of modules per assembly
- 
-Physical Trough Collector Type 1
-0
-8
-1
-2
-1
-4
-12 12 12 12 
-
-Default
 csp_dtr_sca_notify_text_1
 3
 4
@@ -1519,21 +1414,6 @@ Physical Trough Collector Type 1
 1
 1
 Numeric
-csp_dtr_sca_piping_dists
-3
-2
-Piping distances between assemblies
-m
-Physical Trough Collector Type 1
-0
-8
-1
-2
-1
-4
-1 1 1 1 
-
-Default
 csp_dtr_sca_tracking_error_1
 3
 1
@@ -1548,21 +1428,6 @@ Physical Trough Collector Type 1
 1
 0.994
 Numeric
-csp_dtr_sca_tracking_errors
-3
-2
-Tracking errors
- 
-Physical Trough Collector Type 1
-0
-8
-1
-2
-1
-4
-0.994 0.994 0.994 0.994 
-
-Default
 csp_dtr_sca_w_profile_1
 3
 1
@@ -1578,7 +1443,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-4661
+4657
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1690,8 +1555,6 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 	
 	return 0;
 };
-	
-	
 
 1048
 on_change{'apply_collector_library_1'} = define() {
