@@ -374,7 +374,7 @@ function MEwave_metrics()
 	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
 	metric( 'device_average_power', {'label'='Average power per device', 'mode'='f', 'deci'='0', 'thousep'='true','post'=' kW', 'tableName'='Table1' } );
 	metric( 'system_capacity', {'label'='System capacity', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' kW', 'tableName'='Table1'});
-	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' %', 'tableName'='Table1'});
+	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'= ' %', 'tableName'='Table1'});
 
 	metric_table('Table2', {'headers'='Costs,$ million,$/kW,LCOE'});
 	metric_row( 'total_installed_cost_mill,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
