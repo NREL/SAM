@@ -2829,7 +2829,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		f = open(fn, 'rb'); \n");
 	fprintf(f, "		data = []; \n");
 	fprintf(f, "		for line in f : \n");
-	fprintf(f, "			data.extend([n for n in map(double, line.split(b','))])\n");
+	fprintf(f, "			data.extend([n for n in map(float, line.split(b','))])\n");
 	fprintf(f, "		f.close(); \n");
 	fprintf(f, "		return self.data_set_array(p_data, name, data); \n");
 	fprintf(f, "	def data_set_matrix(self,p_data,name,mat):\n");
@@ -2847,7 +2847,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		f = open(fn, 'rb'); \n");
 	fprintf(f, "		data = []; \n");
 	fprintf(f, "		for line in f : \n");
-	fprintf(f, "			lst = ([n for n in map(double, line.split(b','))])\n");
+	fprintf(f, "			lst = ([n for n in map(float, line.split(b','))])\n");
 	fprintf(f, "			data.append(lst);\n");
 	fprintf(f, "		f.close(); \n");
 	fprintf(f, "		return self.data_set_matrix(p_data, name, data); \n");
@@ -2876,7 +2876,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		for r in range(nrows.value):\n");
 	fprintf(f, "			row = []\n");
 	fprintf(f, "			for c in range(ncols.value):\n");
-	fprintf(f, "				row.append( double(parr[idx]) )\n");
+	fprintf(f, "				row.append( float(parr[idx]) )\n");
 	fprintf(f, "				idx = idx + 1\n");
 	fprintf(f, "			mat.append(row)\n");
 	fprintf(f, "		return mat\n");
