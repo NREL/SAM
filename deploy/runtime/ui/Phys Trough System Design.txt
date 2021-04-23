@@ -1335,7 +1335,7 @@ Phys Trough System Design
 6
 Default
 
-1173
+1377
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1364,9 +1364,11 @@ equations{ 'SD_COPY_nLoops' } = define()
 };
 
 // Just UI indicator
+// *total_aperture from another form
 equations{ 'SD_COPY_total_aperture' } = define()
 {
 	return ${total_aperture};
+	//return 20992;
 };
 
 // Just UI indicator
@@ -1376,22 +1378,28 @@ equations{ 'SD_COPY_solar_mult' } = define()
 };
 
 // Just UI indicator
+// *field_thermal_output from another form
 equations{ 'SD_COPY_field_thermal_output' } = define()
 {
 	return ${field_thermal_output};
+	//return 13.89;
 };
 
+// *total_required_aperture_for_SM1 too
+// *single_loop_aperature
+/*
 equations{ 'nLoops' } = define() {
 	retval = ( ${specified_solar_multiple}*${total_required_aperture_for_SM1}
 				/ ${single_loop_aperature}  );
 	return ceil(retval); // SAMwx used "@round" here
 };
 
+// *field_thermal_output from another form
 equations{ 'solar_mult' } = define() {
 	return ${field_thermal_output}/${q_pb_design};
-	//return ${specified_solar_multiple}; 
+	//return 2.68;
 };
-
+*/
 2144
 on_load{'Phys Trough System Design'} = define(){
 	on_change{'combo_htf_type'}();
