@@ -1328,7 +1328,7 @@ System Design
 0
 Default
 
-958
+999
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1344,6 +1344,9 @@ equations{ '$MIMO$ Physical_Trough_System_Design_Equations' } = define() {
 	data.P_ref = ${P_ref};
 	data.gross_net_conversion_factor = ${gross_net_conversion_factor};
 
+	// q_pb_design
+	data.eta_ref = ${eta_ref};
+
 	/*
 	// q_pb_design
 	data.eta_ref = ${eta_ref};
@@ -1357,13 +1360,13 @@ equations{ '$MIMO$ Physical_Trough_System_Design_Equations' } = define() {
 	success = ssc_eqn("Physical_Trough_System_Design_Equations", data);
 	if (!success) {
 		${csp.dtr.pwrb.nameplate} = -999.;
-		//${q_pb_design} = -999.;
+		${q_pb_design} = -999.;
 		//${Q_rec_des} = -999.;
 		//${tshours_sf} = -999.;
 	}
 	else {
 		${csp.dtr.pwrb.nameplate} = data.csp_dtr_pwrb_nameplate;
-		//${q_pb_design} = data.q_pb_design;
+		${q_pb_design} = data.q_pb_design;
 		//${Q_rec_des} = data.q_rec_des;
 		//${tshours_sf} = data.tshours_sf;
 	}

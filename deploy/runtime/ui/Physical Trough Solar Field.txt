@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-7189
+7093
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -4766,10 +4766,8 @@ equations{ 'Fluid' } = define() {
 
 equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 
-	// q_pb_design
-	data.P_ref = ${P_ref};
-	data.eta_ref = ${eta_ref};
-		
+	data.q_pb_design = ${q_pb_design};
+	
 	// field_htf_cp_avg
 	data.T_loop_in_des = ${T_loop_in_des};
 	data.T_loop_out = ${T_loop_out};
@@ -4866,7 +4864,6 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 
 	success = ssc_eqn("Physical_Trough_Solar_Field_Equations", data);
 	if (!success) {
-		${q_pb_design} = -999.;
 		${field_htf_cp_avg} = -999.;
 		${single_loop_aperature} = -999.;
 		${min_inner_diameter} = -999.;
@@ -4906,7 +4903,6 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 		${Type_cpnt} = null;
 	}
 	else {
-		${q_pb_design} = data.q_pb_design;
 		${field_htf_cp_avg} = data.field_htf_cp_avg;
 		${single_loop_aperature} = data.single_loop_aperature;
 		${min_inner_diameter} = data.min_inner_diameter;

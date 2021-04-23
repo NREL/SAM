@@ -1095,7 +1095,7 @@ AlignTop
 2
 1
 
-17
+19
 I_bn_des
 3
 1
@@ -1264,6 +1264,20 @@ Phys Trough System Design
 1
 100
 Default
+radio_sm_or_area
+3
+1
+Solar field mode (0=SM, 1=area)
+ 
+Phys Trough System Design
+0
+8
+1
+1
+1
+1
+0
+Default
 solar_mult
 3
 1
@@ -1306,6 +1320,20 @@ Phys Trough System Design
 1
 1.9
 Default
+specified_total_aperture
+3
+1
+ Field aperture
+m2
+Phys Trough System Design
+0
+8
+1
+1
+1
+1
+877000
+Default
 system_capacity
 3
 1
@@ -1335,7 +1363,7 @@ Phys Trough System Design
 6
 Default
 
-1377
+1706
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1344,6 +1372,18 @@ Default
 //   modify the below main MIMO or add one,
 //   referencing in ssc_equations.h
 //
+
+// Constant for compatibility with power trough
+equations{ 'radio_sm_or_area' } = define() 
+{
+	return 0;   // don't use specified total aperture (there is none)
+};
+
+// Constant for compatibility with power trough
+equations{ 'specified_total_aperture' } = define() 
+{
+	return -1;   // placeholder
+};
 
 
 // Just UI indicator
@@ -1360,29 +1400,31 @@ equations{ 'system_capacity' } = define()
 // Just UI indicator
 equations{ 'SD_COPY_nLoops' } = define()
 {
-	return ${nLoops};
+	//return ${nLoops};
+	return 8;
 };
 
 // Just UI indicator
 // *total_aperture from another form
 equations{ 'SD_COPY_total_aperture' } = define()
 {
-	return ${total_aperture};
-	//return 20992;
+	//return ${total_aperture};
+	return 20992;
 };
 
 // Just UI indicator
 equations{ 'SD_COPY_solar_mult' } = define()
 {
-	return ${solar_mult};
+	//return ${solar_mult};
+	return 2.89;
 };
 
 // Just UI indicator
 // *field_thermal_output from another form
 equations{ 'SD_COPY_field_thermal_output' } = define()
 {
-	return ${field_thermal_output};
-	//return 13.89;
+	//return ${field_thermal_output};
+	return 13.89;
 };
 
 // *total_required_aperture_for_SM1 too

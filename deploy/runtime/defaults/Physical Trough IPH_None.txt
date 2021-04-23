@@ -1,5 +1,5 @@
 1
-711
+713
 A_aperture
 1
 2
@@ -3716,6 +3716,12 @@ q_pb_design
 1
 1
 5.18791
+radio_sm_or_area
+1
+1
+1
+1
+0
 rec_qf_delay
 1
 1
@@ -3853,6 +3859,12 @@ specified_solar_multiple
 1
 1
 2.5
+specified_total_aperture
+1
+1
+1
+1
+-1
 state
 1
 4
