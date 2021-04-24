@@ -1095,7 +1095,7 @@ AlignTop
 2
 1
 
-19
+21
 I_bn_des
 3
 1
@@ -1124,6 +1124,20 @@ Phys Trough Solar Field
 1
 50
 Numeric
+Q_rec_des
+3
+1
+Field thermal power
+MWt
+System Design
+0
+8
+1
+1
+1
+1
+0
+Default
 SD_COPY_field_thermal_output
 3
 1
@@ -1361,6 +1375,20 @@ Phys Trough System Design
 1
 1
 6
+Default
+tshours_sf
+3
+1
+Solar field hours of storage
+hours
+Phys Trough System Design
+0
+8
+1
+1
+1
+1
+0
 Default
 
 1706
