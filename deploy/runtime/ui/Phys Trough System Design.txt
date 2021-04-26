@@ -1428,31 +1428,31 @@ equations{ 'system_capacity' } = define()
 // Just UI indicator
 equations{ 'SD_COPY_nLoops' } = define()
 {
-	//return ${nLoops};
-	return 8;
+	return ${nLoops};
+	//return 8;
 };
 
 // Just UI indicator
 // *total_aperture from another form
 equations{ 'SD_COPY_total_aperture' } = define()
 {
-	//return ${total_aperture};
-	return 20992;
+	return ${total_aperture};
+	//return 20992;
 };
 
 // Just UI indicator
 equations{ 'SD_COPY_solar_mult' } = define()
 {
-	//return ${solar_mult};
-	return 2.89;
+	return ${solar_mult};
+	//return 2.89;
 };
 
 // Just UI indicator
 // *field_thermal_output from another form
 equations{ 'SD_COPY_field_thermal_output' } = define()
 {
-	//return ${field_thermal_output};
-	return 13.89;
+	return ${field_thermal_output};
+	//return 13.89;
 };
 
 // *total_required_aperture_for_SM1 too
