@@ -178,8 +178,8 @@ static void fcall_dview_wave_data_file( lk::invoke_t &cxt )
 
 	// this information is consistent with the variable definitions in the wfreader module
 	wfvec vars[] = {
-		{ "wave_significant_height", "Significant wave height", "m" },
-		{ "wave_energy_period","Wave energy period", "s" },
+		{ "significant_wave_height", "Significant wave height", "m" },
+		{ "energy_period","Wave energy period", "s" },
 		{ 0, 0, 0 } };
 
     ssc_number_t start = 0;
@@ -3492,7 +3492,7 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
         wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
         wxString wave_resource_db = SamApp::GetRuntimePath() + "../wave_resource/test_time_series_jpd.csv";
         ScanWaveResourceTSData(wave_resource_ts_db, true);
-        WaveResourceTSData_makeJPD(wave_resource_db, true);
+        //WaveResourceTSData_makeJPD(wave_resource_db, true);
         reloaded = Library::Load(wave_resource_ts_db);
         //reloaded2 = Library::Load(wave_resource_db);
     }

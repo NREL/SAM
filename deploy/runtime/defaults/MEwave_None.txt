@@ -1,5 +1,5 @@
 1
-679
+677
 accumulators_cost
 1
 1
@@ -3944,12 +3944,6 @@ wave_download_start_year
 1
 1
 1990
-wave_energy_period
-1
-2
-1
-1
-0
 wave_library_folder_list
 1
 0
@@ -4073,12 +4067,6 @@ wave_resource_start_height
 wave_resource_start_period
 1
 1
-1
-1
-0
-wave_significant_height
-1
-2
 1
 1
 0

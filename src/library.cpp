@@ -1308,11 +1308,11 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
 
     csv(0, 14) = "Significant wave height";
     csv(1, 14) = "m";
-    csv(2, 14) = "wave_significant_height";
+    csv(2, 14) = "significant_wave_height";
 
     csv(0, 15) = "Wave period";
     csv(1, 15) = "s";
-    csv(2, 15) = "wave_energy_period";
+    csv(2, 15) = "energy_period";
 
     csv(0, 16) = "Frequency distribution";
     csv(2, 16) = "wave_resource_matrix";
@@ -1387,7 +1387,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
 
             csv(row, 13) = ff.GetFullPath();
 
-            if ((height_arr = ssc_data_get_array(pdata, "wave_significant_height", &nrows)) != 0)
+            if ((height_arr = ssc_data_get_array(pdata, "significant_wave_height", &nrows)) != 0)
             {
                 wxString wstr = "";
                 //wstr += "[";
@@ -1400,7 +1400,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
                 //wstr += "]";
                 csv(row, 14) = wxString(wstr);
             }
-            if ((period_arr = ssc_data_get_array(pdata, "wave_energy_period", &nrows)) != 0)
+            if ((period_arr = ssc_data_get_array(pdata, "energy_period", &nrows)) != 0)
             {
                 wxString wstr = "";
                 for (int r = 0; r < nrows; r++)

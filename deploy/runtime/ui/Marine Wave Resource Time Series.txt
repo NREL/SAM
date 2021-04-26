@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
 1288
 911
-26
+22
 Hyperlink
 
 1
@@ -372,7 +372,7 @@ Y
 573
 Width
 3
-573
+582
 Height
 3
 24
@@ -381,8 +381,8 @@ Tool Tip
 0
 Text
 5
-77
-Type the latitude and longitude of the desired wave energy converter location
+76
+Type the latitude and longitude of the desired wave energy resource location
 Editable
 2
 1
@@ -731,161 +731,6 @@ Wave Energy Resource File
 Bold
 2
 1
-Label
-
-1
-13
-Name
-5
-10
-object 718
-X
-3
-750
-Y
-3
-672
-Width
-3
-496
-Height
-3
-68
-Tool Tip
-5
-0
-Caption
-5
-251
-Check the box and click Browse to choose a .csv file stored on your computer without adding it to the wave resource library. Note that the matrix data above shows data from files in the library, not from the file you choose here. See Help for details.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-4294967295
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Button
-
-1
-8
-Name
-5
-17
-select_wf_wave_ts
-X
-3
-654
-Y
-3
-702
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-9
-Browse...
-TabOrder
-3
-4294967295
-CheckBox
-
-1
-9
-Name
-5
-23
-use_specific_ts_wf_wave
-X
-3
-21
-Y
-3
-672
-Width
-3
-501
-Height
-3
-27
-Tool Tip
-5
-0
-Caption
-5
-65
-Choose wave energy resource file instead of choosing from library
-State
-2
-0
-TabOrder
-3
-4294967295
-TextEntry
-
-1
-11
-Name
-5
-31
-user_specified_wave_resource_ts
-X
-3
-21
-Y
-3
-702
-Width
-3
-624
-Height
-3
-24
-Tool Tip
-5
-0
-Text
-5
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -1011,7 +856,7 @@ TabOrder
 3
 4294967295
 
-32
+30
 average_power_flux_ts
 3
 1
@@ -1078,6 +923,20 @@ data_source_ts
 9
 <invalid>
 TextEntry
+energy_period
+3
+2
+Wave Energy Period
+s
+ 
+0
+8
+1
+2
+1
+1
+0
+DataArray
 file_name_ts
 3
 4
@@ -1291,6 +1150,20 @@ sea_bed_ts
 9
 <invalid>
 TextEntry
+significant_wave_height
+3
+2
+ Significant wave height
+m 
+ 
+0
+8
+1
+2
+1
+1
+0
+DataArray
 state_ts
 3
 4
@@ -1332,32 +1205,6 @@ tz_ts
 1
 0
 Numeric
-use_specific_ts_wf_wave
-3
-1
- 
- 
- 
-0
-5
-1
-1
-1
-1
-0
-CheckBox
-user_specified_wave_resource_ts
-3
-4
- 
- 
- 
-0
-0
-1
-4
-0
-Default
 wave_download_end_year
 3
 1
@@ -1386,20 +1233,6 @@ Data start year
 1
 0
 Default
-wave_energy_period
-3
-2
-Wave Energy Period
-s
- 
-0
-8
-1
-2
-1
-1
-0
-DataArray
 wave_resource_file_ts
 3
 4
@@ -1425,25 +1258,10 @@ ME Wave Resource
 4
 0
 Default
-wave_significant_height
-3
-2
- Significant wave height
-m 
- 
-0
-8
-1
-2
-1
-1
-0
-DataArray
 
-253
+171
 equations{'wave_resource_filename_ts'} = define() {
-	if(${use_specific_ts_wf_wave}) return (${user_specified_wave_resource_ts});
-	else return ${file_name_ts};
+	return ${file_name_ts};
 };
 
 equations{'wave_resource_file_ts'} = define() {
@@ -1451,9 +1269,10 @@ equations{'wave_resource_file_ts'} = define() {
 };
 
 
-30049
+29120
+/*
 function enable_disable_library() {
-	enable_library = !value('use_specific_ts_wf_wave');
+	
 	enable('wave_resource_matrix',false);
 	property('wave_resource_matrix','ColorMap',enable_library);
 	enable('location_ts',enable_library);
@@ -1477,13 +1296,12 @@ function enable_disable_library() {
 	enable('sea_bed_ts',enable_library);
 	enable('state_ts',enable_library);
 	enable('tz_ts',enable_library);
-	enable('user_specified_wave_resource_ts',!enable_library);
 	//enable('in_time_frame',enable_library);
 	//enable('in_location',enable_library);
 	//enable('wave_download',enable_library);
 	refresh();
 	
-}
+}*/
 
 on_change{'btn_view_wave_data'} = define() {
 	if ( dview_wave(value('wave_resource_filename_ts')) )
@@ -1558,16 +1376,11 @@ function wave_library( item, is_key )
 
 
 on_load{'Marine Wave Resource Time Series'} = define() {
-	value('use_specific_ts_wf_wave',1);
-	value('use_specific_ts_wf_wave',0);
 	
 	//rescanlibrary('wave_ts');
-	//enable('user_specified_wave_resource_ts',false);
 	//enable("wave_resource_matrix",false);
 	//on_change{'use_specific_ts_wf_wave'}();
-	enable_disable_library();
-	on_change{'use_specific_ts_wf_wave'};
-	on_change{'select_wf_wave_ts'};
+	//enable_disable_library();
 	on_change{'file_name_ts'};
 	on_change{'in_time_frame'};
 	show_year_inputs();
@@ -1605,10 +1418,10 @@ on_change{'location_ts'} = define() {
 
 
 on_change{'file_name_ts'} = define() {
-	if (value('use_specific_ts_wf_wave')==0) {
-		value('wave_resource_filename_ts',value('file_name_ts'));
-		//refresh('wave_resource_filename_ts');
-	}
+	
+	value('wave_resource_filename_ts',value('file_name_ts'));
+	//refresh('wave_resource_filename_ts');
+	
 };
 
 on_change{'in_time_frame'} = define() {
@@ -1650,22 +1463,6 @@ function location_options()
 	refresh('');
 }
 
-on_change{'use_specific_ts_wf_wave'} = define() {
-	enable('user_specified_wave_resource_ts', ${use_specific_ts_wf_wave}==1 );
-	//enable( 'select_wf_wind', ${use_specific_wf_wave} );
-	enable_disable_library();
-	refresh();
-};
-
-on_change{'select_wf_wave_ts'} = define() {
-	file = choose_file( path_only( value('user_specified_wave_resource_ts') ), 'Choose a wave resource file', 
-		'Wave Resource Files (*.csv|*.csv');
-		
-	if ( file != '' ) {
-		file = replace(file, '\\', '/');
-		value( 'user_specified_wave_resource_ts', file );
-	}
-};
 
 on_change{'btn_wave_download'} = define() {
 	if ( value( 'is_advanced_wave' ) ) { wave_download_all(); }
@@ -1826,9 +1623,9 @@ function wave_download_all()
 		{
 			if ((fn != '') && (dn != ''))
 			{
-				value( 'use_specific_ts_wf_wave', 1 );
+				//value( 'use_specific_ts_wf_wave', 1 );
 				fn = replace(fn, '\\', '/');
-				value( 'user_specified_wave_resource_ts', fn );
+				//value( 'user_specified_wave_resource_ts', fn );
 			}
 		}
 		else
@@ -1836,7 +1633,7 @@ function wave_download_all()
 			rescanlibrary( 'wave_ts' );  //** is this necessary??
 			if (fn != '')
 			{
-				value( 'use_specific_ts_wf_wave', 0 );
+				
 				value( 'location_ts', file_to_key( fn ) );
 			}
 		}
@@ -2219,8 +2016,8 @@ function update_info( ctxt )
 			value( 'lat_ts', ssc_var(obj, 'lat') );
 			value( 'lon_ts', ssc_var(obj, 'lon') );
 			value( 'nearby_buoy_number_ts', ssc_var(obj, 'nearby_buoy_number') );
-			value( 'wave_significant_height', ssc_var(obj, 'wave_significant_height') );
-			value( 'wave_energy_period', ssc_var(obj, 'wave_energy_period') );
+			value( 'significant_wave_height', ssc_var(obj, 'significant_wave_height') );
+			value( 'energy_period', ssc_var(obj, 'energy_period') );
 			// used for timestep calculation in editscene3d
 			value( 'number_records', ssc_var(obj, 'number_records') );
 			value( 'number_hours', ssc_var(obj, 'number_hours') );
@@ -2230,8 +2027,8 @@ function update_info( ctxt )
 			msgbox('Weather file reader failed!\n' 
 			+ result
 			+ '\n\nTo avoid this message, remove  the following file from your weather file folders: \n' + wf);
-			value( 'wave_significant_height', nan() );
-			value( 'wave_energy_period', nan() );
+			value( 'significant_wave_height', nan() );
+			value( 'energy_period', nan() );
 			value( 'number_records', 0);
 			value( 'number_hours', 0);
 		}
