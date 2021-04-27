@@ -1269,7 +1269,7 @@ equations{'wave_resource_file_ts'} = define() {
 };
 
 
-29120
+29128
 /*
 function enable_disable_library() {
 	
@@ -1310,7 +1310,7 @@ on_change{'btn_view_wave_data'} = define() {
 
 on_change{'btn_refresh_library'} = define() {
 	rescanlibrary('wave_ts');
-	update_info('on_change btn_refresh_library');
+	//update_info('on_change btn_refresh_library');
 };
 
 on_change{'btn_add_remove_folders'} = define() {
@@ -1340,7 +1340,7 @@ on_change{'btn_add_remove_folders'} = define() {
 
 on_change{'btnScanLibrary_ts'} = define() {
 	rescanlibrary('wave_ts');
-	update_info('on_change btnScanLibrary_ts');
+	//update_info('on_change btnScanLibrary_ts');
 
 };
 
@@ -1396,7 +1396,7 @@ on_load{'Marine Wave Resource Time Series'} = define() {
 	//show('in_time_frame', value('in_wave_options') != 0 ); //No option for TMY data on first iteraiton
 	//refresh();
 	//( '' );
-	update_info( 'on_load Wave Resource Data Time Series');
+	//update_info( 'on_load Wave Resource Data Time Series');
 };
 
 on_change{'location_ts'} = define() {
@@ -1413,7 +1413,7 @@ on_change{'location_ts'} = define() {
 	fn = open(file,'r');
 
 	close(fn);
-	update_info('on_change location_ts');
+	//update_info('on_change location_ts');
 };
 
 

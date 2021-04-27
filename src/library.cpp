@@ -1314,8 +1314,8 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     csv(1, 15) = "s";
     csv(2, 15) = "energy_period";
 
-    csv(0, 16) = "Frequency distribution";
-    csv(2, 16) = "wave_resource_matrix";
+    //csv(0, 16) = "Frequency distribution";
+    //csv(2, 16) = "wave_resource_matrix";
 
     int row = 3;
     wxString file;
@@ -1413,6 +1413,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
                 //wstr += "]";
                 csv(row, 15) = wxString(wstr);
             }
+            /*
             if ((mat = ssc_data_get_matrix(pdata, "wave_resource_matrix", &nrows, &ncols)) != 0)
             {
                 wxString wstr = "";
@@ -1427,7 +1428,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
                     wstr += "]";
                 }
                 csv(row, 16) = wxString(wstr);
-            }
+            }*/
             row++;
         }
 

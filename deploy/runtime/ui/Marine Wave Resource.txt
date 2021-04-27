@@ -1465,7 +1465,7 @@ equations{ 'frequency_sum' } = define ()
 	return sum_mat;
 };
 
-7840
+7846
 function enable_disable_library() {
 	enable_library = !value('use_specific_wf_wave');
 	enable('wave_resource_matrix',false);
@@ -1499,7 +1499,7 @@ function enable_disable_library() {
 
 on_change{'btnScanLibrary'} = define() {
 	rescanlibrary('wave');
-	update_info('on_change btnScanLibrary');
+	//update_info('on_change btnScanLibrary');
 
 };
 
@@ -1518,7 +1518,7 @@ on_load{'Marine Wave Resource'} = define() {
 	//refresh();
 	//update_library_folders( '' );
 	//update_info( 'on_load Wave Resource Data');
-	update_info( 'on_load Wave Resource Data');
+	//update_info( 'on_load Wave Resource Data');
 };
 
 on_change{'location'} = define() {
@@ -1535,7 +1535,7 @@ on_change{'location'} = define() {
 	fn = open(file,'r');
 
 	close(fn);
-	update_info('on_change location');
+	//update_info('on_change location');
 };
 
 on_change{'use_specific_wf_wave'} = define() {
