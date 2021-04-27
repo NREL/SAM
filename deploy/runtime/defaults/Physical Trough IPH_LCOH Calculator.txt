@@ -3812,7 +3812,7 @@ radio_sm_or_area
 1
 1
 1
-0
+-1
 rec_qf_delay
 1
 1

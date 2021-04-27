@@ -1290,7 +1290,7 @@ Phys Trough System Design
 1
 1
 1
-0
+-1
 Default
 solar_mult
 3
@@ -1391,7 +1391,7 @@ Phys Trough System Design
 0
 Default
 
-1706
+1701
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1404,7 +1404,7 @@ Default
 // Constant for compatibility with power trough
 equations{ 'radio_sm_or_area' } = define() 
 {
-	return 0;   // don't use specified total aperture (there is none)
+	return -1;   // -1 = use IPH-specific solar_mult calculation
 };
 
 // Constant for compatibility with power trough
