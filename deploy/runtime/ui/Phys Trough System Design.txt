@@ -1391,7 +1391,7 @@ Phys Trough System Design
 0
 Default
 
-1701
+1239
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1420,6 +1420,7 @@ equations{ 'specified_q_dot_rec_des' } = define()
 	return ${specified_solar_multiple}*${q_pb_design}; 
 };
 
+// Just UI indicator
 equations{ 'system_capacity' } = define()
 {
 	return ${specified_q_dot_rec_des}*1000.0;
@@ -1429,7 +1430,6 @@ equations{ 'system_capacity' } = define()
 equations{ 'SD_COPY_nLoops' } = define()
 {
 	return ${nLoops};
-	//return 8;
 };
 
 // Just UI indicator
@@ -1437,14 +1437,12 @@ equations{ 'SD_COPY_nLoops' } = define()
 equations{ 'SD_COPY_total_aperture' } = define()
 {
 	return ${total_aperture};
-	//return 20992;
 };
 
 // Just UI indicator
 equations{ 'SD_COPY_solar_mult' } = define()
 {
 	return ${solar_mult};
-	//return 2.89;
 };
 
 // Just UI indicator
@@ -1452,24 +1450,8 @@ equations{ 'SD_COPY_solar_mult' } = define()
 equations{ 'SD_COPY_field_thermal_output' } = define()
 {
 	return ${field_thermal_output};
-	//return 13.89;
 };
 
-// *total_required_aperture_for_SM1 too
-// *single_loop_aperature
-/*
-equations{ 'nLoops' } = define() {
-	retval = ( ${specified_solar_multiple}*${total_required_aperture_for_SM1}
-				/ ${single_loop_aperature}  );
-	return ceil(retval); // SAMwx used "@round" here
-};
-
-// *field_thermal_output from another form
-equations{ 'solar_mult' } = define() {
-	return ${field_thermal_output}/${q_pb_design};
-	//return 2.68;
-};
-*/
 2144
 on_load{'Phys Trough System Design'} = define(){
 	on_change{'combo_htf_type'}();
