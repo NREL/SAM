@@ -863,7 +863,7 @@ Physical Trough Collector Library
 <invalid>
 Default
 
-4362
+4485
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -872,6 +872,13 @@ Default
 //   modify the below main MIMO or add one,
 //   referencing in ssc_equations.h
 //
+
+
+equations{ '$MIMO$ collector constants' } = define() {
+	// Value of nColt must match the number of collector types allowed
+	// Each array calculated below must have nColt values in it
+	${nColt} = 4;
+};
 
 // Just UI indicator
 equations{ '$MIMO$ collectors in field' } = define () {
@@ -887,12 +894,6 @@ equations{ '$MIMO$ collectors in field' } = define () {
   ${collectors_in_field} = str + "Hot";
 };
 
-equations{ '$MIMO$ collector constants' } = define() {
-	// Value of nColt must match the number of collector types allowed
-	// Each array calculated below must have nColt values in it
-	${nColt} = 4;
-};
-
 // Just input aggregator
 equations{ 'IAM_matrix' } = define() {
 	base_matrix[0] = ${IAMs_1};
@@ -906,7 +907,7 @@ equations{ 'IAM_matrix' } = define() {
 	return base_matrix;
 };
 
-// This and others can't be set in a MIMO if read by another MIMO
+// Just input aggregator
 equations{ 'W_aperture' } = define() {
 	acollector[0] = ${csp_dtr_sca_w_profile_1};
 	acollector[1] = ${csp_dtr_sca_w_profile_2};
@@ -915,11 +916,7 @@ equations{ 'W_aperture' } = define() {
 	return acollector;
 };
 
-//for land area equation on solar field page:
-equations{ 'max_collector_width' } = define() {
-	return -999;
-};
-
+// Just input aggregator
 equations{ 'A_aperture' } = define() {
 	acollector[0] = ${csp_dtr_sca_aperture_1};
 	acollector[1] = ${csp_dtr_sca_aperture_2};
@@ -928,6 +925,7 @@ equations{ 'A_aperture' } = define() {
 	return acollector;
 };
 
+// Just input aggregator
 equations{ 'TrackingError' } = define() {
 	acollector[0] = ${csp_dtr_sca_tracking_error_1};
 	acollector[1] = ${csp_dtr_sca_tracking_error_2};
@@ -936,6 +934,7 @@ equations{ 'TrackingError' } = define() {
 	return acollector;
 };
 
+// Just input aggregator
 equations{ 'GeomEffects' } = define() {
 	acollector[0] = ${csp_dtr_sca_geometry_effects_1};
 	acollector[1] = ${csp_dtr_sca_geometry_effects_2};
@@ -944,6 +943,7 @@ equations{ 'GeomEffects' } = define() {
 	return acollector;
 };
 
+// Just input aggregator
 equations{ 'Rho_mirror_clean' } = define() {
 	acollector[0] = ${csp_dtr_sca_clean_reflectivity_1};
 	acollector[1] = ${csp_dtr_sca_clean_reflectivity_2};
@@ -952,6 +952,7 @@ equations{ 'Rho_mirror_clean' } = define() {
 	return acollector;
 };
 
+// Just input aggregator
 equations{ 'Dirt_mirror' } = define() {
 	acollector[0] = ${csp_dtr_sca_mirror_dirt_1};
 	acollector[1] = ${csp_dtr_sca_mirror_dirt_2};
@@ -960,6 +961,7 @@ equations{ 'Dirt_mirror' } = define() {
 	return acollector;
 };
 
+// Just input aggregator
 equations{ 'Error' } = define() {
 	acollector[0] = ${csp_dtr_sca_general_error_1};
 	acollector[1] = ${csp_dtr_sca_general_error_2};
@@ -968,6 +970,7 @@ equations{ 'Error' } = define() {
 	return acollector;
 };
 
+// Just input aggregator
 equations{ 'Ave_Focal_Length' } = define() {
 	acollector[0] = ${csp_dtr_sca_ave_focal_len_1};
 	acollector[1] = ${csp_dtr_sca_ave_focal_len_2};
@@ -976,6 +979,7 @@ equations{ 'Ave_Focal_Length' } = define() {
 	return acollector;
 };
 
+// Just input aggregator
 equations{ 'L_SCA' } = define() {
 	acollector[0] = ${csp_dtr_sca_length_1};
 	acollector[1] = ${csp_dtr_sca_length_2};
@@ -984,6 +988,7 @@ equations{ 'L_SCA' } = define() {
 	return acollector;
 };
 
+// Just input aggregator
 equations{ 'L_aperture' } = define() {
 	acollector[0] = ${csp_dtr_sca_ap_length_1};
 	acollector[1] = ${csp_dtr_sca_ap_length_2};
@@ -992,6 +997,7 @@ equations{ 'L_aperture' } = define() {
 	return acollector;
 };
 
+// Just input aggregator
 equations{ 'ColperSCA' } = define() {
 	acollector[0] = ${csp_dtr_sca_ncol_per_sca_1};
 	acollector[1] = ${csp_dtr_sca_ncol_per_sca_2};
@@ -1000,6 +1006,7 @@ equations{ 'ColperSCA' } = define() {
 	return acollector;
 };
 
+// Just input aggregator
 equations{ 'Distance_SCA' } = define() {
 	acollector[0] = ${csp_dtr_sca_piping_dist_1};
 	acollector[1] = ${csp_dtr_sca_piping_dist_2};

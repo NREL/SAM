@@ -4709,7 +4709,7 @@ Physical Trough Solar Field
 25
 Default
 
-7093
+7203
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -4719,12 +4719,16 @@ Default
 //   referencing in ssc_equations.h
 //
 
+
+// Just UI indicator
 equations{ 'FIELD_COPY_I_bn_des' } = define() {
 	return ${I_bn_des}; };
-	
+
+// Just UI indicator	
 equations{ 'FIELD_COPY_T_loop_in_des' } = define() {
 	return ${T_loop_in_des}; };
 
+// Just UI indicator
 equations{ 'FIELD_COPY_T_loop_out' } = define() {
 	return ${T_loop_out}; };
 
@@ -4734,10 +4738,12 @@ equations{ 'defocus' } = define() {
 	return 1;
 };
 
+// Just combo converter
 equations{ 'fthrctrl' } = define() {
 	return ${combo_feather}+1;
 };
 
+// Just combo converter
 equations{ 'FieldConfig' } = define() {
 	if( ${combo_FieldConfig} == 0 )	{
 		return 1;
@@ -4747,6 +4753,7 @@ equations{ 'FieldConfig' } = define() {
 	}
 };
 
+// Just combo converter
 equations{ 'Fluid' } = define() {
 	return ?${combo_htf_type}
 	[
@@ -4765,8 +4772,6 @@ equations{ 'Fluid' } = define() {
 };
 
 equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
-
-	data.q_pb_design = ${q_pb_design};
 	
 	// field_htf_cp_avg
 	data.T_loop_in_des = ${T_loop_in_des};
@@ -4823,7 +4828,7 @@ equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	// <nothing new needed>
 
 	// total_required_aperture_for_SM1
-	// <nothing new needed>
+	data.q_pb_design = ${q_pb_design};
 	
 	// required_number_of_loops_for_SM1
 	// <nothing new needed>

@@ -1391,7 +1391,7 @@ Phys Trough System Design
 0
 Default
 
-1239
+1159
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1433,7 +1433,6 @@ equations{ 'SD_COPY_nLoops' } = define()
 };
 
 // Just UI indicator
-// *total_aperture from another form
 equations{ 'SD_COPY_total_aperture' } = define()
 {
 	return ${total_aperture};
@@ -1446,7 +1445,6 @@ equations{ 'SD_COPY_solar_mult' } = define()
 };
 
 // Just UI indicator
-// *field_thermal_output from another form
 equations{ 'SD_COPY_field_thermal_output' } = define()
 {
 	return ${field_thermal_output};

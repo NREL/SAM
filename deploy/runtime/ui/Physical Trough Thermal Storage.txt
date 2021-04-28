@@ -2459,7 +2459,7 @@ Physical Trough Thermal Storage
 0
 Numeric
 
-4163
+4129
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -2470,7 +2470,7 @@ Numeric
 //
 
 
-// Just a combo converter
+// Just combo converter
 equations{ 'store_fluid' } = define() {
 	return ?${combo_tes_htf_type}
 	[
@@ -2487,7 +2487,7 @@ equations{ 'store_fluid' } = define() {
 	];
 };
 
-// Just a combo converter
+// Just combo converter
 equations{ 'csp.dtr.tes.htf_min_opt_temp' } = define() {
 	return ?${combo_tes_htf_type}
 	[
@@ -2504,7 +2504,7 @@ equations{ 'csp.dtr.tes.htf_min_opt_temp' } = define() {
 	];
 };
 
-// Just a combo converter
+// Just combo converter
 equations{ 'csp.dtr.tes.htf_max_opt_temp' } = define() {
 	return ?${combo_tes_htf_type}
 	[
@@ -2521,43 +2521,43 @@ equations{ 'csp.dtr.tes.htf_max_opt_temp' } = define() {
 	];
 };
 
-// Just a UI indicator	
+// Just UI indicator	
 equations{ 'TES_COPY_q_pb_design' } = define(){
 	return ${q_pb_design}; };
 
-// Just a UI indicator	
+// Just UI indicator	
 equations{ 'TES_COPY_tshours' } = define(){
 	return ${tshours}; };
 	
-// Just a UI indicator	
+// Just UI indicator	
 equations{ 'TES_COPY_T_loop_out' } = define(){
 	return ${T_loop_out}; };
 
-// Just a UI indicator	
+// Just UI indicator	
 equations{ 'TES_COPY_T_loop_in_des' } = define(){
 	return ${T_loop_in_des}; };
 
-// Just a UI indicator	
+// Just UI indicator	
 equations{ 'csp.dtr.tes.thermal_capacity' } = define(){
 	return ${Q_tes}; };
 
-// Just a UI indicator
+// Just UI indicator
 equations{ 'dt_cold' } = define() {
 	return ${dt_hot}; };
 
-// Just a UI indicator
+// Just UI indicator
 equations{ 'csp.dtr.tes.htf_calc_temp' } = define() {
 	return ( ${T_loop_in_des} + ${T_loop_out} )/2; };
 
-// Just a UI indicator
+// Just UI indicator
 equations{ 'V_tank_hot_ini' } = define() {
 	return ${h_tank_min}/${h_tank}*${vol_tank}; };
 
-// Just a UI indicator
+// Just UI indicator
 equations{ 'csp.dtr.tes.min_fluid_volume' } = define() {
 	return ${vol_tank}*${h_tank_min}/${h_tank}; };
 
-// Just a UI indicator
+// Just UI indicator
 equations{ 'csp.dtr.tes.hx_derate' } = define() {
 	if (${is_hx} != 1 )
 		return 1; /* fluids are the same, no HX */
@@ -2570,7 +2570,7 @@ equations{ 'csp.dtr.tes.hx_derate' } = define() {
 	}
 };
 
-// Outputs just UI indicators
+// Just UI indicators
 equations{ '$MIMO$ ui_tes_calcs' } = define()
 {
 	obj = ssc_create();
