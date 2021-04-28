@@ -1,7 +1,7 @@
 Battery Dispatch PV Smoothing
 1058
 335
-20
+28
 Numeric
 
 1
@@ -202,10 +202,10 @@ Name
 batt_dispatch_pvs_battery_energy
 X
 3
-861
+882
 Y
 3
-36
+30
 Width
 3
 90
@@ -264,10 +264,10 @@ Name
 batt_dispatch_pvs_battery_power
 X
 3
-864
+882
 Y
 3
-66
+60
 Width
 3
 90
@@ -326,10 +326,10 @@ Name
 batt_dispatch_pvs_battery_rte
 X
 3
-864
+882
 Y
 3
-99
+90
 Width
 3
 90
@@ -512,14 +512,76 @@ Numeric
 17
 Name
 5
+39
+batt_dispatch_pvs_interconnection_limit
+X
+3
+882
+Y
+3
+150
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 20
 batt_dispatch_pvs_kf
 X
 3
-876
+882
 Y
 3
-264
+258
 Width
 3
 90
@@ -578,10 +640,10 @@ Name
 batt_dispatch_pvs_ki
 X
 3
-876
+882
 Y
 3
-234
+228
 Width
 3
 90
@@ -640,10 +702,10 @@ Name
 batt_dispatch_pvs_kp
 X
 3
-876
+882
 Y
 3
-204
+198
 Width
 3
 90
@@ -718,6 +780,68 @@ Tool Tip
 Value
 1
 10
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+30
+batt_dispatch_pvs_nameplate_ac
+X
+3
+882
+Y
+3
+120
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
 Mode
 3
 1
@@ -973,6 +1097,84 @@ BackColour
 TabOrder
 3
 4294967295
+Button
+
+1
+8
+Name
+5
+15
+btn_BDPVS_reset
+X
+3
+756
+Y
+3
+291
+Width
+3
+188
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+17
+Reset to Defaults
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+17
+lbl_BDPVS_warning
+X
+3
+393
+Y
+3
+30
+Width
+3
+276
+Height
+3
+90
+Tool Tip
+5
+0
+Caption
+5
+190
+You have selected a ramp interval greater than 30 minutes. While the PV Smoothing model will work with longer intervals, please note that it was designed for intervals of 30 minutes or less.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 GroupBox
 
 1
@@ -983,16 +1185,16 @@ Name
 object 4
 X
 3
-649
+651
 Y
 3
-168
+183
 Width
 3
 350
 Height
 3
-142
+140
 Tool Tip
 5
 0
@@ -1033,8 +1235,200 @@ PV Smoothing
 Bold
 2
 1
+Label
 
+1
+13
+Name
+5
+8
+object 7
+X
+3
+393
+Y
+3
+123
+Width
+3
+16
+Height
+3
 18
+Tool Tip
+5
+0
+Caption
+5
+1
+*
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 71
+X
+3
+576
+Y
+3
+171
+Width
+3
+16
+Height
+3
+18
+Tool Tip
+5
+0
+Caption
+5
+1
+*
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+10
+object 714
+X
+3
+252
+Y
+3
+267
+Width
+3
+356
+Height
+3
+50
+Tool Tip
+5
+0
+Caption
+5
+128
+* For the purposes of the PV smoothing model, nameplate is defined as the minimum of the AC nameplate and the interconnect limit
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+object 72
+X
+3
+576
+Y
+3
+201
+Width
+3
+16
+Height
+3
+18
+Tool Tip
+5
+0
+Caption
+5
+1
+*
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+
+20
 batt_dispatch_pvs_ac_lb
 3
 1
@@ -1175,6 +1569,20 @@ Battery Dispatch PV Smoothing
 1
 3
 Numeric
+batt_dispatch_pvs_interconnection_limit
+3
+1
+Interconnection limit
+kWac
+ 
+0
+8
+1
+1
+1
+1
+0
+Numeric
 batt_dispatch_pvs_kf
 3
 1
@@ -1221,7 +1629,7 @@ batt_dispatch_pvs_max_ramp
 3
 1
  Maximum ramp rate
- %
+ % of nameplate per ramp interval
 Battery Dispatch PV Smoothing
 0
 0
@@ -1230,6 +1638,20 @@ Battery Dispatch PV Smoothing
 1
 1
 10
+Numeric
+batt_dispatch_pvs_nameplate_ac
+3
+1
+Nameplate
+kWac
+ 
+0
+8
+1
+1
+1
+1
+0
 Numeric
 batt_dispatch_pvs_ramp_interval
 3
@@ -1288,13 +1710,13 @@ minutes
 60
 Numeric
 
-683
+944
 equations{'batt_dispatch_pvs_wf_timestep'} = define() {
 	return(${ui_step_minutes});
 };
 
 equations{'batt_dispatch_pvs_ramp_interval'} = define() {
-	return(${ui_step_minutes}*${batt_dispatch_pvs_timestep_multiplier});
+	return(${batt_dispatch_pvs_wf_timestep}*${batt_dispatch_pvs_timestep_multiplier});
 };
 
 equations{'batt_dispatch_pvs_battery_energy'} = define() {
@@ -1305,6 +1727,15 @@ equations{'batt_dispatch_pvs_battery_power'} = define() {
 	return(${batt_power_charge_max_kwdc});
 };
 
+equations{'batt_dispatch_pvs_interconnection_limit'} = define() {
+	return(${grid_interconnection_limit_kwac});
+};
+
+equations{'batt_dispatch_pvs_nameplate_ac'} = define() {
+	return(${total_inverter_capacity});// todo - generic? PV array only?
+};
+
+
 equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		if (${batt_ac_or_dc} == 1) {
 			return (${batt_ac_dc_efficiency}*${batt_dc_ac_efficiency}/100.0);
@@ -1314,4 +1745,37 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-0
+1140
+on_load{'Battery Dispatch PV Smoothing'} = define() {
+	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
+	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
+	on_change{'batt_dispatch_pvs_ac_lb_enable'}();
+	on_change{'batt_dispatch_pvs_short_forecast_enable'}();
+};
+
+on_change{ 'batt_dispatch_pvs_ac_ub_enable' } = define () {
+	en_ub = value("batt_dispatch_pvs_ac_ub_enable");
+	enable("batt_dispatch_pvs_ac_ub", en_ub);
+};
+
+on_change{ 'batt_dispatch_pvs_ac_lb_enable' } = define () {
+	en_lb = value("batt_dispatch_pvs_ac_lb_enable");
+	enable("batt_dispatch_pvs_ac_lb", en_lb);
+};
+
+on_change{ 'batt_dispatch_pvs_short_forecast_enable' } = define () {
+	en_sf = value("batt_dispatch_pvs_short_forecast_enable");
+	enable("batt_dispatch_pvs_forecast_shift_periods", en_sf);
+};
+
+on_change{ 'btn_BDPVS_reset' } = define () {
+	value( 'batt_dispatch_pvs_kp', 1.2 );
+	value( 'batt_dispatch_pvs_ki', 1.8 );
+	value( 'batt_dispatch_pvs_kf', 0.3 );
+};
+
+on_change{ 'batt_dispatch_pvs_timestep_multiplier' } = define () {
+	ramp_interval = to_real(value("batt_dispatch_pvs_ramp_interval"));
+	show("lbl_BDPVS_warning", (ramp_interval > 30.0));
+	refresh();
+};
