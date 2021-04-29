@@ -1125,7 +1125,7 @@ batt_auto_gridcharge_max_daily
 1
 Maximum percent per day
 %
-BatteryDispatch
+Battery Dispatch FOM
 0
 2
 1
@@ -1139,7 +1139,7 @@ batt_custom_dispatch
 2
 Time series battery power targets
 kWdc
-BatteryDispatch
+Battery Dispatch FOM
 22
 Battery Power (kWdc)|1
 2
@@ -1154,7 +1154,7 @@ batt_cycle_cost
 2
 Cycle degradation penalty
 $/cycle-kWh
-BatteryDispatch
+Battery Dispatch FOM
 0
 2
 1
@@ -1168,7 +1168,7 @@ batt_cycle_cost_choice
 1
 Cycle degradation penalty option
  
-BatteryDispatch
+Battery Dispatch FOM
 37
 Calculate automatically|Enter penalty
 0
@@ -1183,7 +1183,7 @@ batt_dispatch_auto_can_charge
 1
 Battery can charge from unclipped PV
  
-BatteryDispatch
+Battery Dispatch FOM
 0
 3
 1
@@ -1197,7 +1197,7 @@ batt_dispatch_auto_can_clipcharge
 1
 Battery can charge from otherwise clipped PV power
 W
-BatteryDispatch
+Battery Dispatch FOM
 0
 3
 1
@@ -1211,7 +1211,7 @@ batt_dispatch_auto_can_fuelcellcharge
 1
 Battery can charge from fuel cell
  
-BatteryDispatch
+Battery Dispatch FOM
 0
 3
 1
@@ -1225,7 +1225,7 @@ batt_dispatch_auto_can_gridcharge
 1
 Battery can charge from grid
  
-BatteryDispatch
+Battery Dispatch FOM
 0
 1
 1
@@ -1239,9 +1239,9 @@ batt_dispatch_choice
 1
 Battery dispatch choice front-of-meter
  
-BatteryDispatch
-167
-Automated dispatch look ahead|Automated dispatch one day look behind|Automated dispatch custom weather file|Dispatch to custom time series|Manual dispatch|PV Smoothing
+Battery Dispatch FOM
+154
+Automated dispatch look ahead|Automated dispatch one day look behind|Automated dispatch custom weather file|Dispatch to custom time series|Manual dispatch
 3
 1
 1
@@ -1254,7 +1254,7 @@ batt_dispatch_update_frequency_hours
 1
 Frequency to update dispatch
 hours
-BatteryDispatch
+Battery Dispatch FOM
 0
 2
 1
@@ -1268,7 +1268,7 @@ batt_look_ahead_hours
 1
 Look-ahead period
 hours
-BatteryDispatch
+Battery Dispatch FOM
 0
 2
 1
@@ -1282,7 +1282,7 @@ batt_pv_clipping_forecast
 2
 PV clipping forecast power
 kW
-BatteryDispatch
+Battery Dispatch FOM
 0
 3
 1
@@ -1296,7 +1296,7 @@ batt_pv_dc_forecast
 2
 PV DC forecast power
 kW
-BatteryDispatch
+Battery Dispatch FOM
 0
 0
 1
@@ -1310,7 +1310,7 @@ batt_user_specified_weather_file
 4
 Weather forecast file on disk
  
-BatteryDispatch
+Battery Dispatch FOM
 0
 1
 1
@@ -1322,7 +1322,7 @@ ui_batt_is_dc
 1
 Is DC-connected for show-hide
  
-BatteryDispatch
+Battery Dispatch FOM
 0
 8
 1
