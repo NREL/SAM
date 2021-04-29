@@ -756,7 +756,7 @@ batt_custom_dispatch
 2
 Time series battery power targets
 kWdc
-BatteryDispatch
+Battery Dispatch BTM
 21
 Battery Power(kWdc)|1
 2
@@ -771,7 +771,7 @@ batt_cycle_cost
 2
 Cycle degradation penalty
 $/cycle-kWh
-BatteryDispatch
+Battery Dispatch BTM
 0
 2
 1
@@ -785,7 +785,7 @@ batt_cycle_cost_choice
 1
 Cycle degradation penalty method
  
-BatteryDispatch
+Battery Dispatch BTM
 37
 Calculate automatically|Enter penalty
 0
@@ -800,7 +800,7 @@ batt_dispatch_auto_can_charge
 1
 Battery can charge from system
  
-BatteryDispatch
+Battery Dispatch BTM
 0
 3
 1
@@ -814,7 +814,7 @@ batt_dispatch_auto_can_fuelcellcharge
 1
 Battery can charge from fuel cell
  
-BatteryDispatch
+Battery Dispatch BTM
 0
 3
 1
@@ -828,7 +828,7 @@ batt_dispatch_auto_can_gridcharge
 1
 Battery can charge from grid
  
-BatteryDispatch
+Battery Dispatch BTM
 0
 3
 1
@@ -842,7 +842,7 @@ batt_dispatch_choice
 1
 Battery dispatch options
  
-BatteryDispatch
+Battery Dispatch BTM
 155
 Peak shaving one-day look ahead|Peak shaving one-day look behind|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast
 3
@@ -857,7 +857,7 @@ batt_target_choice
 1
 Grid power target options
  
-BatteryDispatch
+Battery Dispatch BTM
 47
 Monthly power targets|Time series power targets
 1
@@ -872,7 +872,7 @@ batt_target_power
 2
 Time series grid power targets
 kWac
-BatteryDispatch
+Battery Dispatch BTM
 26
 Grid Target Power (kWac)|1
 0
@@ -887,7 +887,7 @@ batt_target_power_monthly
 2
 Monthly grid power targets
 kWac
-BatteryDispatch
+Battery Dispatch BTM
 0
 0
 1

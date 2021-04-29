@@ -473,13 +473,15 @@ function setup_windpower_pages()
 {
 	addpage( [[ 'Wind Resource File'],
 	          [ 'Wind Speed Weibull Distribution'],
-	          [ 'Wind Resource Distribution']],
+	          [ 'Wind Resource Probability Table']],
 	         { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource' } );
 	//addpage( [[ 'Wind Siting Considerations' ]], { 'sidebar'='Siting Considerations' } );
 	addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine' } );
 	addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm' } );
 	addpage( [[ 'Wind Losses' ]], { 'sidebar'='Losses', 'help'='wind_losses'} );
-	addpage( [[ 'Wind Uncertainty' ]], { 'sidebar'='Uncertainties','help'='wind_uncertainties'} );
+	addpage( [ [{ 'name'='Wind Uncertainty None','caption'='No Uncertainty Model'}],
+	           [{ 'name'='Wind Uncertainty','caption'='Enable Uncertainty Model' }] ],
+	         { 'sidebar'='Uncertainties','help'='wind_uncertainties', 'exclusive_var' = 'en_wind_uncertainty'} );
 	setup_grid_page();
 }
 
