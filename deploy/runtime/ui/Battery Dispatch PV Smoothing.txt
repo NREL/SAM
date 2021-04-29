@@ -77,10 +77,10 @@ X
 54
 Y
 3
-201
+198
 Width
 3
-138
+212
 Height
 3
 24
@@ -89,8 +89,8 @@ Tool Tip
 0
 Caption
 5
-14
-AC lower bound
+21
+Enable AC lower bound
 State
 2
 1
@@ -175,7 +175,7 @@ Y
 168
 Width
 3
-138
+212
 Height
 3
 24
@@ -184,8 +184,8 @@ Tool Tip
 0
 Caption
 5
-14
-AC upper bound
+21
+Enable AC upper bound
 State
 2
 1
@@ -953,10 +953,10 @@ X
 54
 Y
 3
-231
+228
 Width
 3
-182
+208
 Height
 3
 24
@@ -965,8 +965,8 @@ Tool Tip
 0
 Caption
 5
-25
-Short-term power forecast
+32
+Enable short-term power forecast
 State
 2
 1
