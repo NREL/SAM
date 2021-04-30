@@ -1,5 +1,5 @@
 1
-833
+838
 6par_aisc
 1
 1
@@ -2696,6 +2696,13 @@ modulearray_power_w
 1
 1
 498720
+mpeak
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 mppt_hi_inverter
 1
 1
@@ -5028,6 +5035,12 @@ ur_dc_enable
 1
 1
 1
+ur_dc_enable_ratchet
+1
+1
+1
+1
+0
 ur_dc_flat_mat
 1
 3
@@ -5070,6 +5083,25 @@ ur_dc_ratchet
 10 0.6 0 
 11 0.6 0 
 
+ur_dc_ratchet_firstyear_peaks
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
+ur_dc_ratchet_is_shown
+1
+1
+1
+1
+0
+ur_dc_ratchet_lookback
+1
+1
+1
+1
+11
 ur_dc_sched_weekday
 1
 3

@@ -111,7 +111,7 @@ Y
 69
 Width
 3
-418
+646
 Height
 3
 600
@@ -195,7 +195,7 @@ Name
 ur_dc_ratchet_firstyear_peaks
 X
 3
-813
+840
 Y
 3
 33
@@ -337,10 +337,14 @@ months
 Default
 
 0
-313
+451
 on_load{'Utility Rate - Ratchet Demand Charges'} = define() {
-	update_firstyear_demand_peaks();
+	//update_firstyear_demand_peaks();
 	on_change{'btn_update_peaks'};
+	fin = financing();
+	is_btm = (fin != "Single Owner");
+	show('btn_update_peaks', is_btm);
+	refresh();
 };
 
 on_change{'btn_update_peaks'} = define() {
@@ -348,5 +352,7 @@ on_change{'btn_update_peaks'} = define() {
 };
 
 function update_firstyear_demand_peaks() {
-	value('ur_dc_ratchet_firstyear_peaks',value('mpeak'));
+	if (fin != "Single Owner") {
+		value('ur_dc_ratchet_firstyear_peaks',value('mpeak'));
+	}
 }

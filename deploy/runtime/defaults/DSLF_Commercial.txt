@@ -1,5 +1,5 @@
 1
-707
+713
 A_aperture
 1
 3
@@ -904,7 +904,7 @@ csp.lf.cost.plm.total
 1
 1
 1
-3476410
+3.47641e+06
 csp.lf.cost.power_plant
 1
 1
@@ -988,7 +988,7 @@ csp.lf.cost.total_indirect
 1
 1
 1
-52156548
+39175176
 csp.lf.cost.total_installed
 1
 1
@@ -3313,6 +3313,13 @@ m_pb_demand
 1
 1
 0
+mpeak
+1
+2
+1
+12
+171.037 183.586 189.564 214.24 235.944 274.243 262.464 263.976 249.139 222.339 162.555 185.168 
+
 nLoops
 1
 1
@@ -3973,7 +3980,7 @@ total_direct_cost
 1
 1
 1
-52156548
+39175176
 total_installed_cost
 1
 1
@@ -4062,6 +4069,12 @@ ur_dc_enable
 1
 1
 1
+ur_dc_enable_ratchet
+1
+1
+1
+1
+0
 ur_dc_flat_mat
 1
 3
@@ -4086,6 +4099,32 @@ ur_dc_is_shown
 1
 1
 1
+ur_dc_ratchet
+1
+3
+1
+12
+0 1 2 3 4 5 6 7 8 9 10 11 
+
+ur_dc_ratchet_firstyear_peaks
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
+ur_dc_ratchet_is_shown
+1
+1
+1
+1
+0
+ur_dc_ratchet_lookback
+1
+1
+1
+1
+11
 ur_dc_sched_weekday
 1
 3

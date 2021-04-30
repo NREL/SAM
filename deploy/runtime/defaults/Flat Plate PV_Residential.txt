@@ -5266,8 +5266,9 @@ ur_dc_ratchet_firstyear_peaks
 1
 2
 1
-1
-0
+12
+1.85407 1.76038 1.81704 2.29535 2.68522 4.05075 4.30453 4.19724 3.6658 2.55071 1.71415 1.87435 
+
 ur_dc_ratchet_is_shown
 1
 1
@@ -5279,7 +5280,7 @@ ur_dc_ratchet_lookback
 1
 1
 1
-0
+11
 ur_dc_sched_weekday
 1
 3

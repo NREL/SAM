@@ -1510,7 +1510,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4462600
+4.4626e+06
 csp.mslf.cost.power_plant
 1
 1
@@ -1594,7 +1594,7 @@ csp.mslf.cost.total_indirect
 1
 1
 1
-75203984
+56339616
 csp.mslf.cost.total_installed
 1
 1
@@ -4507,7 +4507,7 @@ total_direct_cost
 1
 1
 1
-75203984
+56339616
 total_installed_cost
 1
 1

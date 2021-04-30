@@ -6651,7 +6651,7 @@ total_indirect_cost
 1
 1
 1
-80474208
+61205116
 total_installed_cost
 1
 1

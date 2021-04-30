@@ -1,5 +1,5 @@
 1
-547
+553
 a_error_test_number
 1
 1
@@ -2492,6 +2492,13 @@ mortgage
 1
 1
 1
+mpeak
+1
+2
+1
+12
+1.85407 1.76038 1.81704 2.29535 2.68522 4.05075 4.30453 4.19724 3.6658 2.55071 1.71415 1.87435 
+
 mv_overhead_collector
 1
 1
@@ -3524,6 +3531,12 @@ ur_dc_enable
 1
 1
 0
+ur_dc_enable_ratchet
+1
+1
+1
+1
+0
 ur_dc_flat_mat
 1
 3
@@ -3548,6 +3561,31 @@ ur_dc_is_shown
 1
 1
 0
+ur_dc_ratchet
+1
+3
+1
+1
+0
+ur_dc_ratchet_firstyear_peaks
+1
+2
+1
+12
+1.85407 1.76038 1.81704 2.29535 2.68522 4.05075 4.30453 4.19724 3.6658 2.55071 1.71415 1.87435 
+
+ur_dc_ratchet_is_shown
+1
+1
+1
+1
+0
+ur_dc_ratchet_lookback
+1
+1
+1
+1
+11
 ur_dc_sched_weekday
 1
 3
@@ -4168,8 +4206,8 @@ USA
 wind_resource.description
 1
 4
-80
-Southern WY - flat lands (NREL AWS Truepower representative file),,,,,,,,,,,,,,,
+65
+Southern WY - flat lands (NREL AWS Truepower representative file)
 wind_resource.elev
 1
 1

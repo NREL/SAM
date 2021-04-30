@@ -1,5 +1,5 @@
 1
-559
+564
 LeadAcid_q10
 1
 1
@@ -864,7 +864,7 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_voltage_shown
 1
 1
@@ -886,7 +886,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+41.856
 cbi_fed_amount
 1
 1
@@ -1036,7 +1036,7 @@ const_per_interest1
 1
 1
 1
-1498250
+1.49825e+06
 const_per_interest2
 1
 1
@@ -1096,7 +1096,7 @@ const_per_interest_total
 1
 1
 1
-1498250
+1.49825e+06
 const_per_months1
 1
 1
@@ -1229,7 +1229,7 @@ const_per_total1
 1
 1
 1
-2996490
+2.99649e+06
 const_per_total2
 1
 1
@@ -1289,7 +1289,7 @@ construction_financing_cost
 1
 1
 1
-2996490
+2.99649e+06
 conv_eff
 1
 1
@@ -1897,7 +1897,7 @@ first_year_output
 1
 1
 1
-33638400
+73331712
 first_year_output_peak
 1
 1
@@ -3191,6 +3191,12 @@ ur_dc_enable
 1
 1
 0
+ur_dc_enable_ratchet
+1
+1
+1
+1
+0
 ur_dc_flat_mat
 1
 3
@@ -3215,6 +3221,32 @@ ur_dc_is_shown
 1
 1
 0
+ur_dc_ratchet
+1
+3
+1
+12
+0 1 2 3 4 5 6 7 8 9 10 11 
+
+ur_dc_ratchet_firstyear_peaks
+1
+2
+1
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
+ur_dc_ratchet_is_shown
+1
+1
+1
+1
+0
+ur_dc_ratchet_lookback
+1
+1
+1
+1
+11
 ur_dc_sched_weekday
 1
 3
