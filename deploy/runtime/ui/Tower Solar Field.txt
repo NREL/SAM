@@ -1,7 +1,7 @@
 Tower Solar Field
 845
 1042
-55
+54
 GroupBox
 
 1
@@ -1150,68 +1150,6 @@ Numeric
 17
 Name
 5
-21
-helio_active_fraction
-X
-3
-702
-Y
-3
-978
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-7
-Numeric
-
-1
-17
-Name
-5
 14
 helio_area_tot
 X
@@ -2188,23 +2126,23 @@ Name
 object 72
 X
 3
-300
+288
 Y
 3
-954
+978
 Width
 3
-210
+516
 Height
 3
-63
+51
 Tool Tip
 5
 0
 Caption
 5
-107
-Availability losses reduce the solar field output to represent component outages, soiling, or other events.
+176
+Availability losses reduce the solar field output to represent component outages, soiling, or other events. Heliostat availability loss of 1% included in default Constant loss.
 TextColour
 4
 0
@@ -2868,7 +2806,7 @@ TabOrder
 3
 4294967295
 
-71
+70
 A_sf
 3
 1
@@ -3220,20 +3158,6 @@ Heliostat Field
 1
 1
 8
-Default
-helio_active_fraction
-3
-1
-Heliostat availability
- 
-Heliostat Field
-0
-2
-1
-1
-1
-1
-0.99
 Default
 helio_area_tot
 3
@@ -3867,7 +3791,11 @@ Heliostat Field
 0.7
 Numeric
 
-3546
+3609
+equations{'helio_active_fraction'} = define() {
+	return 1;
+};
+
 equations{ 'land_max_calc' } = define() {
 	return ${land_max}*${THT}; };
 
@@ -3995,7 +3923,7 @@ equations { "fossil_spec_cost" } = define(){ return ${csp.pt.cost.fossil_per_kwe
 equations { "dni_des_calc" } = define() {return ${dni_des}; };
 equations { "opt_algorithm" } = define() {return 1;};
 equations { "opt_flux_penalty" } = define() {return 0.25;};
-9254
+9291
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -4075,7 +4003,7 @@ function call_solarpilot(is_optimize) {
 	ssc_var(obj, "helio_width",${helio_width});
 	ssc_var(obj, "helio_height",${helio_height});
 	ssc_var(obj, "helio_optical_error",${helio_optical_error});
-	ssc_var(obj, "helio_active_fraction",${helio_active_fraction});
+	ssc_var(obj, "helio_active_fraction",${helio_active_fraction}); // removed from UI for 2020.11.29 r2
 	ssc_var(obj, "dens_mirror",${dens_mirror});
 	ssc_var(obj, "helio_reflectance",${helio_reflectance});
 	ssc_var(obj, "rec_absorptance",${rec_absorptance});

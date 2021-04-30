@@ -2046,7 +2046,7 @@ helio_active_fraction
 1
 1
 1
-0.99
+1
 helio_area_tot
 1
 1
@@ -12301,7 +12301,7 @@ constant
 1
 1
 1
-0
+1
 en_hourly
 1
 1
