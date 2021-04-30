@@ -154,6 +154,8 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
             group = "Hourly Data";
         else if ((int)row_length == an_period && col_length == 1)
             group = "Annual Data";
+        else if (row_length == 2920 && col_length == 1)
+            group = "Three Hour Data";
         else if (((int)row_length == (an_period - 1) * 12) && (lifetime) && (col_length == 1))
             group = "Lifetime Monthly Data";
         else if (((int)row_length == (an_period - 1) * 8760) && (lifetime) && (col_length == 1))
@@ -943,6 +945,11 @@ void ResultsViewer::Setup(Simulation* sim)
                     group = "Hourly Data";
                     time_step = 1;
                 }
+                else if (n == 2920 || (n < 2920 && steps_per_hour < 1))
+                {
+                    group = "Three Hour Data";
+                    time_step = 3;
+                }
                 else if (((int)n == (an_period - 1) * 8760) && (use_lifetime))
                 {
                     group = "Lifetime Hourly Data";
@@ -1034,6 +1041,28 @@ void ResultsViewer::Setup(Simulation* sim)
                 HidePage(10);
             }
         }
+        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave")
+        {
+            VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
+            int wave_resource_model_choice_value = wave_resource_model_choice->Value();
+            if (wave_resource_model_choice_value != 1)
+            {
+                HidePage(5);
+                HidePage(6);
+                HidePage(7);
+                HidePage(8);
+                HidePage(9);
+            }
+            else
+            {
+                ShowPage(5);
+                ShowPage(6);
+                ShowPage(7);
+                ShowPage(8);
+                ShowPage(9);
+            }
+        }
+    
     }
 
     m_tables->Setup(m_sim);
