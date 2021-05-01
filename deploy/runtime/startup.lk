@@ -345,13 +345,13 @@ function setup_utility_rate()
 // 'en_electricity_rates' is only an input available for single owner configurations
 function setup_utility_rate_optional()
 {
-	addpage( [[{'name'='Utility Rate - Enable','caption'='No Electricity Rate'}],
-			  [{'name'='Utility Rate - Flat', 'caption'='Enable Electricity Rate'},
+	addpage( [[{'name'='Utility Rate - Enable','caption'='Use PPA Price'}],
+			  [{'name'='Utility Rate - Flat', 'caption'='Use Retail Rates'},
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
 			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false},
 			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
-		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates', 'exclusive_var'='en_electricity_rates' } );
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases', 'exclusive_var'='en_electricity_rates' } );
 }
 
 function setup_single_owner_pages()

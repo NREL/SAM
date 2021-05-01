@@ -393,8 +393,8 @@ Tool Tip
 0
 Caption
 5
-92
-Only the Buy All / Sell All metering option is available for front-of-meter battery systems.
+168
+For front-of-meter battery systems, only the Buy All / Sell All metering option is available to define energy buy rates for electricity purchases to charge the battery.
 TextColour
 4
 0
@@ -1297,31 +1297,37 @@ DataArray
 0
 7317
 on_load{'Utility Rate - Flat'} = define(){
-	set_battery_fom_inputs();
-	set_metering_billing_inputs();
+	set_metering_billing_inputs(); 
+	//set_ec_schedule_inputs();
 	show('msg_unused_items', value('ur_has_unused_items'));
-};	
+};
+
+function is_fom_batt()
+{
+	is_batt_tech = ( technology() == 'PV Battery' || technology() == 'Generic Battery' );
+	is_fom = ( financing() == 'Single Owner' );
+	return ( is_batt_tech && is_fom );
+}
 
 // set inputs on Utility Rate - Energy Charge form
 // based on values of inputs on Utility Rate - Flat form
-// NOTE: Copy any changes here to function on Utility Rate - Energy Charge form
-// so that on_change() for ur_ec_tou_mat updates correctly
+// NOTE: This function is also called on Utility Rate - Energy Charge form
 function set_ec_schedule_inputs()
 {	
 	eme = value('ur_metering_option');
 	en_ts_buy = value('ur_en_ts_buy_rate');
 	en_ts_sell = value('ur_en_ts_sell_rate');
-	if (eme==0)
+	if (eme==0) // net energy metering
 	{
 		property('ur_ec_tou_mat','ShowColumn',4);
 		property('ur_ec_tou_mat','HideColumn',5);
 	}
-	elseif (eme==1)
+	elseif (eme==1) // net energy metering with $ credits
 	{
 		property('ur_ec_tou_mat','ShowColumn',4);
 		property('ur_ec_tou_mat','ShowColumn',5);
 	}
-	else
+	else // net billing (both options), buy all / sell all
 	{
 		if (en_ts_buy)
 		{
@@ -1331,11 +1337,11 @@ function set_ec_schedule_inputs()
 		{
 			property('ur_ec_tou_mat','ShowColumn',4);
 		}
-		if (en_ts_sell)
+		if (en_ts_sell || is_fom_batt() )
 		{
 			property('ur_ec_tou_mat','HideColumn',5);
 		}
-		else
+		elseif ( !is_fom_batt() )
 		{
 			property('ur_ec_tou_mat','ShowColumn',5);
 		}
@@ -1348,7 +1354,7 @@ function set_ec_schedule_inputs()
 		enable( 'lbl_wkday', false);
 		enable( 'lbl_wkend', false);
 	}
-	else
+	else // no time series buy or sell rates
 	{
 		enable( 'ur_ec_tou_mat', true);
 		enable( 'ur_ec_sched_weekday', true);
@@ -1358,32 +1364,21 @@ function set_ec_schedule_inputs()
 	}	
 }
 
-// input options for fom battery
-function set_battery_fom_inputs()
-{
-	tech = technology();
-	finance = financing();
-	// retail electricity purchase for battery charging only available for single owner financial model
-	batt_tech = ( tech == 'PV Battery' || tech == 'Generic Battery' );
-	show('lbl_metering_option',false);
-	if ( batt_tech && finance == 'Single Owner'){
-		value('ur_metering_option', 4);
-		enable('ur_metering_option', false);
-		show('lbl_metering_option',true);
-	}
-	refresh('ur_metering_option');
-}	
-
 function set_metering_billing_inputs()
 {	
 	eme = value('ur_metering_option');
+	//value('ur_metering_option', 4);
+	enable('ur_metering_option', !is_fom_batt());
+	enable('ur_en_ts_sell_rate', !is_fom_batt());
+	enable('ur_ts_sell_rate', !is_fom_batt());
+	show('lbl_metering_option',is_fom_batt());
 	enable( 'ur_nm_yearend_sell_rate', eme==0 );
 	enable( 'ur_nm_credit_rollover', eme==0 );
 	enable( 'ur_nm_credit_month', eme==0 || eme==1 || eme==3 );
 	if (eme==2 || eme==3|| eme==4)
 	{
-		enable( 'ur_en_ts_sell_rate', true );
-		enable( 'ur_ts_sell_rate', value('ur_en_ts_sell_rate') );
+		enable( 'ur_en_ts_sell_rate', !is_fom_batt() );
+		enable( 'ur_ts_sell_rate', value('ur_en_ts_sell_rate') && !is_fom_batt() );
 		enable( 'ur_en_ts_buy_rate', true );
 		enable( 'ur_ts_buy_rate', value('ur_en_ts_buy_rate') );
 	}
@@ -1414,7 +1409,6 @@ on_change{'ur_metering_option'} = define()
 {
 	set_metering_billing_inputs();
 	set_ec_schedule_inputs();
-	
 	eme = value('ur_metering_option');
 	if (eme == 0 || eme == 1) 
 	{
@@ -1516,10 +1510,10 @@ on_change{'btnQueryOpenEI'} = define() {
 	value ('ur_annual_min_charge', hash{'annual_min_charge'});
 	
 	// metering option
-	value('ur_metering_option',hash{'metering_option'});	
+	if ( !is_fom_batt() ) {value('ur_metering_option',hash{'metering_option'});	}
 	value( 'ur_dc_enable', hash{'dc_enable'});
 	on_change{'ur_dc_enable'}(); // invoke callback for ur_ec_enable to set up enable/disable of widgets
-	set_battery_fom_inputs(); // reset to buy all / sell all for battery FOM
+	
 	
 	// schedules
 	value ('ur_ec_sched_weekday', hash{'ec_sched_weekday'});
