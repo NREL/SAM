@@ -1,5 +1,5 @@
 1
-1150
+1152
 6par_aisc
 1
 1
@@ -477,6 +477,12 @@ batt_ac_or_dc
 1
 1
 1
+batt_bank_duration
+1
+1
+1
+1
+2
 batt_bank_ncells_serial
 1
 1
@@ -738,6 +744,12 @@ batt_dispatch_choice
 1
 1
 0
+batt_duration_choice
+1
+1
+1
+1
+1
 batt_gridcharge_percent_1
 1
 1
