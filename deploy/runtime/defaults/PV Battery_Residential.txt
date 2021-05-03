@@ -812,7 +812,7 @@ batt_duration_choice
 1
 1
 1
-1
+0
 batt_gridcharge_percent_1
 1
 1
