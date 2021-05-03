@@ -1295,10 +1295,9 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-7359
+7725
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
-	//set_ec_schedule_inputs();
 	show('msg_unused_items', value('ur_has_unused_items'));
 };
 
@@ -1369,7 +1368,6 @@ function set_ec_schedule_inputs()
 function set_metering_billing_inputs()
 {	
 	eme = value('ur_metering_option');
-	//value('ur_metering_option', 4);
 	enable('ur_metering_option', !is_fom_batt());
 	enable('ur_en_ts_sell_rate', !is_fom_batt());
 	enable('ur_ts_sell_rate', !is_fom_batt());
@@ -1457,8 +1455,14 @@ on_change{'btnLoadRateData'} = define() {
 		else
 		{
 			value( 'ur_ratedata_filename', '' );
-			msgbox('Rate load failed! \n');
+			msgbox('Failed to load rate data from file! \n');
 		}
+		if ( value('ur_metering_option') != 4 && is_fom_batt() )
+		{
+			msgbox('Rate not valid for FOM Battery!\nThe rate you are loading does not use the Buy All / Sell All metering option, which is required for front-of-meter systems with storage. Setting metering option to Buy All / Sell All. Please check the rate data to verify that it is appropriate for your analysis.');
+			value('ur_metering_option',4);
+		}
+
 	}
 };
 
