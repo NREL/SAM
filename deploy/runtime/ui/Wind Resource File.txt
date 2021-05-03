@@ -1,6 +1,6 @@
 Wind Resource File
-753
-698
+755
+693
 20
 GroupBox
 
@@ -261,10 +261,10 @@ X
 15
 Y
 3
-30
+27
 Width
 3
-804
+723
 Height
 3
 24

@@ -82,7 +82,7 @@ LeadAcid_q10
 1
 Discharge rate 10-hour
 %
-BatteryCell
+Battery Chemistry
 0
 2
 1
@@ -96,7 +96,7 @@ LeadAcid_q10_computed
 1
 Discharge rate 10-hour calculated
 Ah
-BatteryCell
+Battery Chemistry
 0
 8
 1
@@ -110,7 +110,7 @@ LeadAcid_q20
 1
 Discharge rate 10-hour
 %
-BatteryCell
+Battery Chemistry
 0
 2
 1
@@ -124,7 +124,7 @@ LeadAcid_q20_computed
 1
 Discharge rate 10-hour calculated
 Ah
-BatteryCell
+Battery Chemistry
 0
 8
 1
@@ -138,7 +138,7 @@ LeadAcid_qn
 1
 Capacity at n-hour discharge rate
 %
-BatteryCell
+Battery Chemistry
 0
 1
 1
@@ -152,7 +152,7 @@ LeadAcid_qn_computed
 1
 Capacity at n-hour discharge rate calculated
 Ah
-BatteryCell
+Battery Chemistry
 0
 8
 1
@@ -166,7 +166,7 @@ LeadAcid_tn
 1
 Hours of storage
 hours
-BatteryCell
+Battery Chemistry
 0
 1
 1
@@ -180,7 +180,7 @@ batt_Qexp
 1
 Battery capacity exp
 Ah
-BatteryCell
+Battery Chemistry
 0
 9
 1
@@ -194,7 +194,7 @@ batt_Qnom
 1
 Battery capacity nominal
 Ah
-BatteryCell
+Battery Chemistry
 0
 9
 1
@@ -208,7 +208,7 @@ batt_chem
 1
 Battery chemistry options
  
-BatteryCell
+Battery Chemistry
 0
 9
 1
@@ -222,7 +222,7 @@ batt_meter_position
 1
 Battery meter position
  
-BatteryCell
+Battery Chemistry
 0
 0
 1
@@ -236,7 +236,7 @@ batt_type
 1
 Battery type
  
-BatteryCell
+Battery Chemistry
 449
 Lead Acid: Flooded|Lead Acid: VRLA Gel|Lead Acid: VRLA AGM|Lead Acid: Custom|Lithium Ion: Lithium Manganese Oxide (LMO/Graphite)|Lithium Ion: Lithium Iron Phosphate (LFP/Graphite)|Lithium Ion: Lithium Cobalt Oxide (LCO/Graphite)|Lithium Ion: LMO/Lithium Titanate (LMO/LTO)|Lithium Ion: Nickel Manganese Cobalt Oxide (NMC/Graphite)|Lithium Ion: Nickel Cobalt Aluminum Oxide (NCA/Graphite)|Lithium Ion: Custom|Flow Battery: Vanadium|Flow Battery: Iron
 2
@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12242
+12269
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -277,9 +277,9 @@ on_change{'batt_type'} = define()
 	type = value('batt_type');
 	
 	if (type != 3 && type != 10)
-		update_default = yesno('Replace inputs with default values for this battery type?');
+		{ update_default = yesno('Replace inputs with default values for this battery type?'); }
 	else
-		update_default = false;
+		{ update_default = false; }
 	
 	islead = (value('batt_chem') == 0);
 	islithium = (value('batt_chem') == 1);
@@ -298,16 +298,16 @@ on_change{'batt_type'} = define()
 	
 	// lead acid
 	if (islead)
-		set_lead_acid(update_default);
+		{ set_lead_acid(update_default); }
 	// Lithium Ion
 	else if (islithium)
-		set_lithium_ion(update_default);
+		{ set_lithium_ion(update_default); }
 	// Vanadium Redox FLow
 	else if (isvanadium)
-		set_vanadium(update_default);
+		{ set_vanadium(update_default); }
 	// Iron Flow
 	else if (isiron)
-		set_iron(update_default);
+		{ set_iron(update_default); }
 
 	battsize_warning_check();
 };
@@ -424,7 +424,7 @@ function set_vanadium(update_default)
 	if (update_default)
 	{
 		if (${batt_type} == 11)
-			VRFB();
+			{ VRFB(); }
 	}
 }
 function set_iron(update_default)
@@ -488,9 +488,9 @@ function set_batt_defaults_from_data(defs)
 		value('batt_Vfull',cell_params.vfull);
 		value('batt_Vexp',cell_params.vexp);
 		value('batt_Vnom',cell_params.vnom);
+		value('batt_Vcut',cell_params.vcut);
 		value('batt_Qexp',cell_params.qexp);
 		value('batt_Vnom',cell_params.vnom);
-		value('batt_Vcut',cell_params.vcut);
 		
 		${batt_Qexp_percent} = ${batt_Qexp}/${batt_Qfull}/0.01;
 		${batt_Qnom_percent} = cell_params.qnom/${batt_Qfull}/0.01;

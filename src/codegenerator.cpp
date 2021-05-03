@@ -2830,7 +2830,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		f = open(fn, 'rb'); \n");
 	fprintf(f, "		data = []; \n");
 	fprintf(f, "		for line in f : \n");
-	fprintf(f, "			data.extend([n for n in map(double, line.split(b','))])\n");
+	fprintf(f, "			data.extend([n for n in map(float, line.split(b','))])\n");
 	fprintf(f, "		f.close(); \n");
 	fprintf(f, "		return self.data_set_array(p_data, name, data); \n");
 	fprintf(f, "	def data_set_matrix(self,p_data,name,mat):\n");
@@ -2848,7 +2848,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		f = open(fn, 'rb'); \n");
 	fprintf(f, "		data = []; \n");
 	fprintf(f, "		for line in f : \n");
-	fprintf(f, "			lst = ([n for n in map(double, line.split(b','))])\n");
+	fprintf(f, "			lst = ([n for n in map(float, line.split(b','))])\n");
 	fprintf(f, "			data.append(lst);\n");
 	fprintf(f, "		f.close(); \n");
 	fprintf(f, "		return self.data_set_matrix(p_data, name, data); \n");
@@ -2877,7 +2877,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		for r in range(nrows.value):\n");
 	fprintf(f, "			row = []\n");
 	fprintf(f, "			for c in range(ncols.value):\n");
-	fprintf(f, "				row.append( double(parr[idx]) )\n");
+	fprintf(f, "				row.append( float(parr[idx]) )\n");
 	fprintf(f, "				idx = idx + 1\n");
 	fprintf(f, "			mat.append(row)\n");
 	fprintf(f, "		return mat\n");
@@ -7886,6 +7886,8 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 			const char* name = input_order[kk][jj];
 			if (!Input(p_data, name, m_folder, array_matrix_threshold))
 				m_errors.Add(wxString::Format("Input %s write failed", name));
+			if (jj < input_order[kk].size() - 1)
+			    fprintf(m_fp, ",\n");
 		}
 //		CreateSSCModule(simlist[kk]);
 //		RunSSCModule(simlist[kk]);
@@ -7959,13 +7961,13 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "	\"%s\" : \"%s\",\n", (const char*)pySAM_name.c_str(), (const char*)str_value.c_str());
+		fprintf(m_fp, "	\"%s\" : \"%s\"", (const char*)pySAM_name.c_str(), (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	\"%s\" : %.17g,\n", (const char*)pySAM_name.c_str(), dbl_value);
+		fprintf(m_fp, "	\"%s\" : %.17g", (const char*)pySAM_name.c_str(), dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -7979,7 +7981,7 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ],\n", dbl_value);
+			fprintf(m_fp, " %.17g ]", dbl_value);
 		}
 		break;
 	case SSC_MATRIX:
@@ -8002,7 +8004,7 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ] ],\n", dbl_value);
+			fprintf(m_fp, " %.17g ] ]", dbl_value);
 		}
 		// TODO tables in future
 	}
@@ -8211,6 +8213,7 @@ bool CodeGen_pySAM::SupportingFiles()
 
 bool CodeGen_pySAM::Footer()
 {
+	fprintf(m_fp, "\n}\n");
 	fprintf(m_fp, "}\n");
 	return true;
 }

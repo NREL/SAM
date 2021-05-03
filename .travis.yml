@@ -43,7 +43,6 @@ branches:
   only:
   - master
   - develop
-  - MHK
   - patch
-  - wind_pruf
+  - SAM22_stochastic
   - Command_line_script
