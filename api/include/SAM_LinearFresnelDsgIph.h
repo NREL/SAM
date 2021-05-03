@@ -781,6 +781,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_field_energy_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_thermal_consumption_nget(SAM_table ptr, SAM_error *err);

@@ -89,8 +89,6 @@ SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_c0_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_c1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -99,8 +97,6 @@ SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_c1_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_c2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -111,8 +107,6 @@ SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_c2_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_c3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -121,8 +115,6 @@ SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_c3_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvsandiainv_SandiaInverterModel_dc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -134,8 +126,6 @@ SAM_EXPORT double* SAM_Pvsandiainv_SandiaInverterModel_dc_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvsandiainv_SandiaInverterModel_dc_voltage_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -146,8 +136,6 @@ SAM_EXPORT double* SAM_Pvsandiainv_SandiaInverterModel_dc_voltage_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_paco_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -156,8 +144,6 @@ SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_paco_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_pdco_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -168,8 +154,6 @@ SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_pdco_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_pntare_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -178,8 +162,6 @@ SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_pntare_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_pso_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -190,8 +172,6 @@ SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_pso_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_vdco_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -200,8 +180,6 @@ SAM_EXPORT double SAM_Pvsandiainv_SandiaInverterModel_vdco_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvsandiainv_Outputs_ac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -213,8 +191,6 @@ SAM_EXPORT double* SAM_Pvsandiainv_Outputs_ac_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvsandiainv_Outputs_acpar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -224,8 +200,6 @@ SAM_EXPORT double* SAM_Pvsandiainv_Outputs_acpar_aget(SAM_table ptr, int* length
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvsandiainv_Outputs_cliploss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -237,8 +211,6 @@ SAM_EXPORT double* SAM_Pvsandiainv_Outputs_cliploss_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvsandiainv_Outputs_eff_inv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -248,8 +220,6 @@ SAM_EXPORT double* SAM_Pvsandiainv_Outputs_eff_inv_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvsandiainv_Outputs_ntloss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -261,8 +231,6 @@ SAM_EXPORT double* SAM_Pvsandiainv_Outputs_ntloss_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvsandiainv_Outputs_plr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -273,8 +241,6 @@ SAM_EXPORT double* SAM_Pvsandiainv_Outputs_plr_aget(SAM_table ptr, int* length, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvsandiainv_Outputs_soloss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -284,6 +250,4 @@ SAM_EXPORT double* SAM_Pvsandiainv_Outputs_soloss_aget(SAM_table ptr, int* lengt
 	});
 	return result;
 }
-
-
 

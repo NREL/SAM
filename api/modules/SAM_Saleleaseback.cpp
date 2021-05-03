@@ -1493,8 +1493,6 @@ SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_escalation_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1505,8 +1503,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Revenue_ppa_price_input_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_soln_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1515,8 +1511,6 @@ SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_soln_max_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_soln_max_iterations_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1527,8 +1521,6 @@ SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_soln_max_iterations_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_soln_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1537,8 +1529,6 @@ SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_soln_min_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1549,8 +1539,6 @@ SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_soln_mode_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_soln_tolerance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1559,8 +1547,6 @@ SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_soln_tolerance_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1571,8 +1557,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_analysis_period_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip1_reserve_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1581,8 +1565,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip1_reserve_cost_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip1_reserve_freq_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1593,8 +1575,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip1_reserve_freq_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip2_reserve_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1603,8 +1583,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip2_reserve_cost_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip2_reserve_freq_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1615,8 +1593,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip2_reserve_freq_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip3_reserve_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1625,8 +1601,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip3_reserve_cost_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip3_reserve_freq_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1637,8 +1611,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip3_reserve_freq_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip_reserve_depr_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1648,8 +1620,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip_reserve_depr_fed_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip_reserve_depr_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1658,8 +1628,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_equip_reserve_depr_sta_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_FinancialParameters_federal_tax_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1671,8 +1639,6 @@ SAM_EXPORT double* SAM_Saleleaseback_FinancialParameters_federal_tax_rate_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_inflation_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1681,8 +1647,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_inflation_rate_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_insurance_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1693,8 +1657,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_insurance_rate_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_prop_tax_assessed_decline_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1703,8 +1665,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_prop_tax_assessed_declin
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_prop_tax_cost_assessed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1715,8 +1675,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_prop_tax_cost_assessed_p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_property_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1725,8 +1683,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_property_tax_rate_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_real_discount_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1737,8 +1693,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_real_discount_rate_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_reserves_interest_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1747,8 +1701,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_reserves_interest_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_FinancialParameters_state_tax_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1760,8 +1712,6 @@ SAM_EXPORT double* SAM_Saleleaseback_FinancialParameters_state_tax_rate_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1770,8 +1720,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_system_capacity_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1782,8 +1730,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_system_heat_rate_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_add_om_num_types_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1793,8 +1739,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_add_om_num_types_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1803,8 +1747,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_annual_fuel_usage_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1816,8 +1758,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_annual_fuel_usage_lifetime_aget
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1827,8 +1767,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_capacity_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_capacity1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1840,8 +1778,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_capacity1_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_capacity1_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1850,8 +1786,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_capacity1_nameplate_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_capacity2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1863,8 +1797,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_capacity2_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_capacity2_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1874,8 +1806,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_capacity2_nameplate_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1884,8 +1814,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_capacity_escal_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1897,8 +1825,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fixed_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fixed1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1908,8 +1834,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fixed1_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fixed2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1921,8 +1845,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fixed2_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1931,8 +1853,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_fixed_escal_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1944,8 +1864,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fuel_cost_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_fuel_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1954,8 +1872,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_fuel_cost_escal_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1967,8 +1883,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1978,8 +1892,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_cost_escal_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1988,8 +1900,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_1_usage_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2001,8 +1911,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2012,8 +1920,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_cost_escal_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2022,8 +1928,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_opt_fuel_2_usage_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2035,8 +1939,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2046,8 +1948,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production1_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2059,8 +1959,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production1_values_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2070,8 +1968,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production2_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production2_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2083,8 +1979,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_production2_values_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2093,8 +1987,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_production_escal_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_replacement_cost1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2106,8 +1998,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_replacement_cost1_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_replacement_cost2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2118,8 +2008,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_replacement_cost2_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2128,8 +2016,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_replacement_cost_escal_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2140,8 +2026,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2150,8 +2034,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_f
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2162,8 +2044,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_amount_deprbas_s
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2172,8 +2052,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2184,8 +2062,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2194,8 +2070,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_deprbas_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2206,8 +2080,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_fed_percent_maxvalue
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2216,8 +2088,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2228,8 +2098,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_f
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2238,8 +2106,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_amount_deprbas_s
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2250,8 +2116,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2260,8 +2124,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2272,8 +2134,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_deprbas_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2282,8 +2142,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_itc_sta_percent_maxvalue
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2295,8 +2153,6 @@ SAM_EXPORT double* SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_amount_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2306,8 +2162,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_escal_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2316,8 +2170,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_fed_term_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2329,8 +2181,6 @@ SAM_EXPORT double* SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_amount_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2339,8 +2189,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_escal_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2351,8 +2199,6 @@ SAM_EXPORT double SAM_Saleleaseback_TaxCreditIncentives_ptc_sta_term_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_custom_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2361,8 +2207,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_custom_percent_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_macrs_15_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2373,8 +2217,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_macrs_15_percent_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_macrs_5_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2383,8 +2225,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_macrs_5_percent_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_sl_15_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2395,8 +2235,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_sl_15_percent_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_sl_20_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2405,8 +2243,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_sl_20_percent_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_sl_39_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2417,8 +2253,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_sl_39_percent_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_sl_5_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2427,8 +2261,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_alloc_sl_5_percent_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2439,8 +2271,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2449,8 +2279,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_custom_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2461,8 +2289,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_macrs_15_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2471,8 +2297,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_macrs_5_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2483,8 +2307,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_sl_15_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2493,8 +2315,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_sl_20_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2505,8 +2325,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_sl_39_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2515,8 +2333,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_fed_sl_5_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2527,8 +2343,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2537,8 +2351,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_custom_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2549,8 +2361,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_macrs_15_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2559,8 +2369,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_macrs_5_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2571,8 +2379,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_sl_15_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2581,8 +2387,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_sl_20_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2593,8 +2397,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_sl_39_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2603,8 +2405,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_bonus_sta_sl_5_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Depreciation_depr_custom_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2616,8 +2416,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Depreciation_depr_custom_schedule_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2626,8 +2424,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_custom_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2638,8 +2434,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_macrs_15_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2648,8 +2442,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_macrs_5_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2660,8 +2452,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_sl_15_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2670,8 +2460,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_sl_20_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2682,8 +2470,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_sl_39_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2692,8 +2478,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_fed_sl_5_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2704,8 +2488,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_custom_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2714,8 +2496,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_macrs_15_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2726,8 +2506,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_macrs_5_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2736,8 +2514,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_sl_15_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2748,8 +2524,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_sl_20_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2758,8 +2532,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_sl_39_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2770,8 +2542,6 @@ SAM_EXPORT double SAM_Saleleaseback_Depreciation_depr_itc_sta_sl_5_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2780,8 +2550,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_amount_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2792,8 +2560,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_fed_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2802,8 +2568,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_deprbas_sta_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2814,8 +2578,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2824,8 +2586,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2836,8 +2596,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2846,8 +2604,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_amount_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2858,8 +2614,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_fed_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2868,8 +2622,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_deprbas_sta_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2880,8 +2632,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2890,8 +2640,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2902,8 +2650,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2912,8 +2658,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_amount_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2924,8 +2668,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_fed_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2934,8 +2676,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_deprbas_sta_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2946,8 +2686,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2956,8 +2694,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2968,8 +2704,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2978,8 +2712,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_amount_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2990,8 +2722,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_fed_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3000,8 +2730,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_deprbas_sta_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3012,8 +2740,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3022,8 +2748,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3034,8 +2758,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3044,8 +2766,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3056,8 +2776,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_fed
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3066,8 +2784,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_deprbas_sta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3078,8 +2794,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_fed_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3088,8 +2802,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_amount_tax_sta_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3100,8 +2812,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3110,8 +2820,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_fe
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3122,8 +2830,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_deprbas_st
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3132,8 +2838,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_maxvalue_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3144,8 +2848,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_fed_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3154,8 +2856,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_fed_percent_tax_sta_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3166,8 +2866,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3176,8 +2874,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_fed
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3188,8 +2884,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_deprbas_sta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3198,8 +2892,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_fed_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3210,8 +2902,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_amount_tax_sta_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3220,8 +2910,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3232,8 +2920,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_fe
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3242,8 +2928,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_deprbas_st
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3254,8 +2938,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_maxvalue_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3264,8 +2946,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_fed_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3276,8 +2956,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_oth_percent_tax_sta_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3286,8 +2964,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3298,8 +2974,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_fed
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3308,8 +2982,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_deprbas_sta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3320,8 +2992,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_fed_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3330,8 +3000,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_amount_tax_sta_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3342,8 +3010,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3352,8 +3018,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_fe
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3364,8 +3028,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_deprbas_st
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3374,8 +3036,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_maxvalue_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3386,8 +3046,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_fed_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3396,8 +3054,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_sta_percent_tax_sta_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3408,8 +3064,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3418,8 +3072,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_fed
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3430,8 +3082,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_deprbas_sta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3440,8 +3090,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_fed_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3452,8 +3100,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_amount_tax_sta_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3462,8 +3108,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3474,8 +3118,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_fe
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3484,8 +3126,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_deprbas_st
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3496,8 +3136,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_maxvalue_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3507,8 +3145,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_fed_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3517,8 +3153,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_ibi_uti_percent_tax_sta_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3530,8 +3164,6 @@ SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_fed_amount_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3540,8 +3172,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_escal_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3552,8 +3182,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3563,8 +3191,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3573,8 +3199,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_fed_term_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_oth_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3586,8 +3210,6 @@ SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_oth_amount_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3596,8 +3218,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_escal_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3608,8 +3228,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3619,8 +3237,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3629,8 +3245,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_oth_term_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3642,8 +3256,6 @@ SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_sta_amount_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3652,8 +3264,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_escal_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3664,8 +3274,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3675,8 +3283,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3685,8 +3291,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_sta_term_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_uti_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3698,8 +3302,6 @@ SAM_EXPORT double* SAM_Saleleaseback_PaymentIncentives_pbi_uti_amount_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3708,8 +3310,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_escal_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3720,8 +3320,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3731,8 +3329,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3741,8 +3337,6 @@ SAM_EXPORT double SAM_Saleleaseback_PaymentIncentives_pbi_uti_term_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3754,8 +3348,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemOutput_degradation_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3766,8 +3358,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemOutput_gen_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3776,8 +3366,6 @@ SAM_EXPORT double SAM_Saleleaseback_SystemOutput_system_capacity_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3788,8 +3376,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_construction_financing_cost_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_cost_dev_fee_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3798,8 +3384,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_cost_dev_fee_percent_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_cost_equity_closing_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3810,8 +3394,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_cost_equity_closing_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_cost_other_financing_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3820,8 +3402,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_cost_other_financing_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_fedbas_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3832,8 +3412,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_fedbas_method_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_stabas_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3842,8 +3420,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_depr_stabas_method_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_flip_target_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3854,8 +3430,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_flip_target_percent_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_flip_target_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3864,8 +3438,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_flip_target_year_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3876,8 +3448,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_salvage_percentage_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_sponsor_operating_margin_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3887,8 +3457,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_sponsor_operating_margin_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_sponsor_operating_margin_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3897,8 +3465,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_sponsor_operating_margin_escal
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_SaleLeaseback_system_lifetime_recapitalize_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3910,8 +3476,6 @@ SAM_EXPORT double* SAM_Saleleaseback_SaleLeaseback_system_lifetime_recapitalize_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_recapitalization_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3920,8 +3484,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_recapitalization_cost_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_recapitalization_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3932,8 +3494,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_recapitalization_escala
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3942,8 +3502,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_use_lifetime_output_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_use_recapitalization_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3954,8 +3512,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_system_use_recapitalization_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_tax_investor_required_lease_reserve_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3964,8 +3520,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_tax_investor_required_lease_re
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3976,8 +3530,6 @@ SAM_EXPORT double SAM_Saleleaseback_SaleLeaseback_total_installed_cost_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3986,8 +3538,6 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor1_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3998,8 +3548,6 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor2_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4008,8 +3556,6 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor3_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4020,8 +3566,6 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor4_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4030,8 +3574,6 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor5_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor6_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4042,8 +3584,6 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor6_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor7_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4052,8 +3592,6 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor7_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor8_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4064,8 +3602,6 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor8_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor9_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4074,8 +3610,6 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_dispatch_factor9_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_TimeOfDelivery_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4087,8 +3621,6 @@ SAM_EXPORT double* SAM_Saleleaseback_TimeOfDelivery_dispatch_factors_ts_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4098,8 +3630,6 @@ SAM_EXPORT double* SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekday_mget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -4111,8 +3641,6 @@ SAM_EXPORT double* SAM_Saleleaseback_TimeOfDelivery_dispatch_sched_weekend_mget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4121,8 +3649,6 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_ppa_multiplier_model_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_OtherCapitalCosts_months_receivables_reserve_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4133,8 +3659,6 @@ SAM_EXPORT double SAM_Saleleaseback_OtherCapitalCosts_months_receivables_reserve
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_OtherCapitalCosts_months_working_reserve_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4143,8 +3667,6 @@ SAM_EXPORT double SAM_Saleleaseback_OtherCapitalCosts_months_working_reserve_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_BatterySystem_batt_bank_replacement_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4156,8 +3678,6 @@ SAM_EXPORT double* SAM_Saleleaseback_BatterySystem_batt_bank_replacement_aget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_BatterySystem_batt_computed_bank_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4167,8 +3687,6 @@ SAM_EXPORT double SAM_Saleleaseback_BatterySystem_batt_computed_bank_capacity_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_BatterySystem_batt_replacement_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4177,8 +3695,6 @@ SAM_EXPORT double SAM_Saleleaseback_BatterySystem_batt_replacement_option_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_BatterySystem_batt_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4190,8 +3706,6 @@ SAM_EXPORT double* SAM_Saleleaseback_BatterySystem_batt_replacement_schedule_per
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_BatterySystem_battery_per_kWh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4200,8 +3714,6 @@ SAM_EXPORT double SAM_Saleleaseback_BatterySystem_battery_per_kWh_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_BatterySystem_en_batt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4212,8 +3724,6 @@ SAM_EXPORT double SAM_Saleleaseback_BatterySystem_en_batt_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_adjusted_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4222,8 +3732,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_adjusted_installed_cost_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_analysis_period_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4234,8 +3742,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_analysis_period_irr_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_fedtax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4244,8 +3750,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_fedtax_total_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_statax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4256,8 +3760,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_statax_total_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4266,8 +3768,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4278,8 +3778,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_fed_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_oth_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4288,8 +3786,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_oth_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4300,8 +3796,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_sta_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_uti_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4310,8 +3804,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cbi_total_uti_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_annual_costs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4323,8 +3815,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_annual_costs_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_battery_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4334,8 +3824,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_battery_replacement_cost_aget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4347,8 +3835,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_battery_replacement_cost_schedul
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_equip1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4358,8 +3844,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_equip1_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_equip2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4371,8 +3855,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_equip2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_equip3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4382,8 +3864,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_equip3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_leasepayment_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4395,8 +3875,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_leasepayment_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_merr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4406,8 +3884,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_merr_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_om_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4419,8 +3895,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_om_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_receivables_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4430,8 +3904,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_disbursement_receivables_aget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_effective_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4443,8 +3915,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_effective_tax_frac_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4454,8 +3924,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4467,8 +3935,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_apr_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4478,8 +3944,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_aug_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4491,8 +3955,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dec_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4502,8 +3964,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch1_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4515,8 +3975,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch2_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4526,8 +3984,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch3_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4539,8 +3995,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch4_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4550,8 +4004,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch5_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4563,8 +4015,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch6_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4574,8 +4024,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch7_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4587,8 +4035,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch8_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4598,8 +4044,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_dispatch9_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4611,8 +4055,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_feb_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4622,8 +4064,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_jan_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4635,8 +4075,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_jul_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4646,8 +4084,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_jun_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4659,8 +4095,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_mar_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4670,8 +4104,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_may_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4683,8 +4115,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4694,8 +4124,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4707,8 +4135,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4718,8 +4144,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4731,8 +4155,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4742,8 +4164,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4755,8 +4175,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4766,8 +4184,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4779,8 +4195,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_monthly_firstyear_TOD
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4790,8 +4204,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_nov_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4803,8 +4215,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_oct_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4814,8 +4224,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_sep_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4827,8 +4235,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_value_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_custom_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4838,8 +4244,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_custom_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_macrs_15_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4851,8 +4255,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_macrs_15_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_macrs_5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4862,8 +4264,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_macrs_5_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_me1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4875,8 +4275,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_me1_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_me2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4886,8 +4284,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_me2_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_me3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4899,8 +4295,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_me3_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_15_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4910,8 +4304,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_15_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_20_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4923,8 +4315,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_20_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_39_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4934,8 +4324,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_39_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4947,8 +4335,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_sl_5_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4958,8 +4344,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_total_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_federal_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4971,8 +4355,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_federal_tax_frac_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_equip1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4982,8 +4364,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_equip1_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_equip2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4995,8 +4375,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_equip2_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_equip3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5006,8 +4384,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_equip3_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_leasepayment_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5019,8 +4395,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_leasepayment_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_om_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5030,8 +4404,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_om_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_receivables_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5043,8 +4415,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_funding_receivables_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_insurance_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5055,8 +4425,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_insurance_expense_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5065,8 +4433,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cf_length_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_net_salvage_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5078,8 +4444,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_net_salvage_value_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5089,8 +4453,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_capacity_expense_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5102,8 +4464,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_fixed_expense_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_fuel_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5113,8 +4473,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_fuel_expense_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5126,8 +4484,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5137,8 +4493,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_production_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5150,8 +4504,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_om_production_expense_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_operating_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5161,8 +4513,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_operating_expenses_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_fedtax_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5174,8 +4524,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_fedtax_total_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_statax_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5185,8 +4533,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_statax_total_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5198,8 +4544,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_fed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5209,8 +4553,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_fed_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_oth_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5222,8 +4564,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_oth_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_sta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5233,8 +4573,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_sta_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_uti_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5246,8 +4584,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pbi_total_uti_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ppa_price_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5257,8 +4593,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ppa_price_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pretax_cashflow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5270,8 +4604,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pretax_cashflow_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pretax_operating_cashflow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5281,8 +4613,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_pretax_operating_cashflow_aget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_property_tax_assessed_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5294,8 +4624,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_property_tax_assessed_value_aget
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_property_tax_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5305,8 +4633,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_property_tax_expense_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ptc_fed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5318,8 +4644,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ptc_fed_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5329,8 +4653,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ptc_sta_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ptc_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5342,8 +4664,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_ptc_total_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_recapitalization_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5353,8 +4673,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_recapitalization_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_equip1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5366,8 +4684,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_equip1_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_equip2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5377,8 +4693,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_equip2_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_equip3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5390,8 +4704,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_equip3_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_interest_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5401,8 +4713,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_interest_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_leasepayment_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5414,8 +4724,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_leasepayment_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_leasepayment_interest_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5425,8 +4733,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_leasepayment_interest_ag
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_om_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5438,8 +4744,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_om_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_receivables_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5449,8 +4753,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_receivables_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5462,8 +4764,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_reserve_total_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5473,8 +4773,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_apr_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5486,8 +4784,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_aug_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5497,8 +4793,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dec_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5510,8 +4804,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch1_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5521,8 +4813,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch2_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5534,8 +4824,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch3_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5545,8 +4833,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch4_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5558,8 +4844,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch5_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5569,8 +4853,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch6_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5582,8 +4864,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch7_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5593,8 +4873,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch8_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5606,8 +4884,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_dispatch9_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5617,8 +4893,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_feb_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5630,8 +4904,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_jan_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5641,8 +4913,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_jul_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5654,8 +4924,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_jun_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5665,8 +4933,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_mar_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5678,8 +4944,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_may_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5689,8 +4953,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD1_a
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5702,8 +4964,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD2_a
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5713,8 +4973,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD3_a
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5726,8 +4984,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD4_a
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5737,8 +4993,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD5_a
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5750,8 +5004,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD6_a
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5761,8 +5013,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD7_a
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5774,8 +5024,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD8_a
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5785,8 +5033,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_monthly_firstyear_TOD9_a
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5798,8 +5044,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_nov_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5809,8 +5053,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_oct_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5822,8 +5064,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_revenue_sep_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_adj_reserve_release_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5833,8 +5073,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_adj_reserve_release_aget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5846,8 +5084,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_cash_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5857,8 +5093,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_cash_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_devfee_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5870,8 +5104,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_devfee_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_irr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5881,8 +5113,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_irr_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_npv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5894,8 +5124,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_npv_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_tax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5905,8 +5133,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_aftertax_tax_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5918,8 +5144,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_income_prior_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5929,8 +5153,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_income_prior_ince
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_income_with_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5942,8 +5164,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_income_with_incen
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_taxable_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5953,8 +5173,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_fedtax_taxable_incentive
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_financing_activities_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5966,8 +5184,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_financing_activities_age
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_investing_activities_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5977,8 +5193,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_investing_activities_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_lpra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5990,8 +5204,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_lpra_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_margin_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6001,8 +5213,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_margin_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me1cs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6014,8 +5224,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me1cs_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me1ra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6025,8 +5233,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me1ra_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me2cs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6038,8 +5244,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me2cs_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me2ra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6049,8 +5253,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me2ra_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me3cs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6062,8 +5264,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me3cs_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me3ra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6073,8 +5273,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_me3ra_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_mecs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6086,8 +5284,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_mecs_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_operating_activities_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6097,8 +5293,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_operating_activities_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_operating_margin_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6110,8 +5304,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_operating_margin_aget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6121,8 +5313,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_irr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6134,8 +5324,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_irr_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_npv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6145,8 +5333,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_pretax_npv_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_ra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6158,8 +5344,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_ra_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_receivablesra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6169,8 +5353,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_receivablesra_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6182,8 +5364,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_income_prior_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6193,8 +5373,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_income_prior_ince
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_income_with_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6206,8 +5384,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_income_with_incen
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_taxable_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6217,8 +5393,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_statax_taxable_incentive
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_wcra_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6230,8 +5404,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_sponsor_wcra_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_custom_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6241,8 +5413,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_custom_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_macrs_15_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6254,8 +5424,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_macrs_15_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_macrs_5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6265,8 +5433,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_macrs_5_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_me1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6278,8 +5444,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_me1_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_me2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6289,8 +5453,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_me2_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_me3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6302,8 +5464,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_me3_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_15_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6313,8 +5473,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_15_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_20_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6326,8 +5484,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_20_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_39_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6337,8 +5493,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_39_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6350,8 +5504,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_sl_5_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6361,8 +5513,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_stadepr_total_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_state_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6374,8 +5524,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_state_tax_frac_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6385,8 +5533,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_cash_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6398,8 +5544,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_cash_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_irr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6409,8 +5553,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_irr_aget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_itc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6422,8 +5564,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_itc_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_max_irr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6433,8 +5573,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_max_irr_ag
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_npv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6446,8 +5584,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_npv_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_ptc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6457,8 +5593,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_ptc_aget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_tax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6470,8 +5604,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_aftertax_tax_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6481,8 +5613,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_income_prior_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6494,8 +5624,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_income_prior
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_income_with_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6505,8 +5633,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_income_with_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_taxable_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6518,8 +5644,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_fedtax_taxable_ince
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_financing_activities_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6529,8 +5653,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_financing_activitie
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_investing_activities_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6542,8 +5664,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_investing_activitie
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_operating_activities_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6553,8 +5673,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_operating_activitie
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6566,8 +5684,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_cashflow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6577,8 +5693,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_cashflow_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_irr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6590,8 +5704,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_irr_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_npv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6601,8 +5713,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_pretax_npv_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6614,8 +5724,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_income_prior_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6625,8 +5733,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_income_prior
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_income_with_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6638,8 +5744,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_income_with_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_taxable_incentives_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6649,8 +5753,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_tax_investor_statax_taxable_ince
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_total_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6662,8 +5764,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_total_revenue_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_financing_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6672,8 +5772,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_financing_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_installed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6684,8 +5782,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_installed_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_installedperwatt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6694,8 +5790,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_installedperwatt_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_prefinancing_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6706,8 +5800,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_cost_prefinancing_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_debt_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6716,8 +5808,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_debt_fraction_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6728,8 +5818,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_custom_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6738,8 +5826,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_macrs_15_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6750,8 +5836,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_macrs_5_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_none_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6760,8 +5844,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_none_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_none_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6772,8 +5854,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_none_percent_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6782,8 +5862,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_15_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6794,8 +5872,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_20_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6804,8 +5880,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_39_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6816,8 +5890,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_sl_5_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6826,8 +5898,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_alloc_total_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6838,8 +5908,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_custom_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6848,8 +5916,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_macrs_15_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6860,8 +5926,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_macrs_5_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6870,8 +5934,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_15_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6882,8 +5944,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_20_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6892,8 +5952,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_39_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6904,8 +5962,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_sl_5_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6914,8 +5970,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_after_itc_total_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6926,8 +5980,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_custom_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6936,8 +5988,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_macrs_15_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6948,8 +5998,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_macrs_5_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6958,8 +6006,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_15_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6970,8 +6016,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_20_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6980,8 +6024,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_39_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6992,8 +6034,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_sl_5_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7002,8 +6042,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_cbi_reduc_total_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7014,8 +6052,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_custom_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7024,8 +6060,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_custom_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7036,8 +6070,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_macrs_1
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7046,8 +6078,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_macrs_5
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7058,8 +6088,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_15_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7068,8 +6096,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_20_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7080,8 +6106,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_39_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7090,8 +6114,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_sl_5_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7102,8 +6124,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_first_year_bonus_total_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7112,8 +6132,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_custom_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7124,8 +6142,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_macrs_15_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7134,8 +6150,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_macrs_5_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7146,8 +6160,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_15_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7156,8 +6168,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_20_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7168,8 +6178,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_39_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7178,8 +6186,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_sl_5_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7190,8 +6196,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_fixed_amount_total_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7200,8 +6204,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_custom_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7212,8 +6214,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_macrs_15_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7222,8 +6222,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_macrs_5_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7234,8 +6232,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_15_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7244,8 +6240,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_20_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7256,8 +6250,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_39_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7266,8 +6258,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_sl_5_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7278,8 +6268,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_ibi_reduc_total_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7288,8 +6276,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_custom
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7300,8 +6286,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_macrs_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7310,8 +6294,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_macrs_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7322,8 +6304,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_15_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7332,8 +6312,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_20_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7344,8 +6322,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_39_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7354,8 +6330,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_sl_5_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7366,8 +6340,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_fed_reduction_total_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7376,8 +6348,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_custom
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7388,8 +6358,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_macrs_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7398,8 +6366,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_macrs_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7410,8 +6376,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_15_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7420,8 +6384,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_20_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7432,8 +6394,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_39_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7442,8 +6402,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_sl_5_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7454,8 +6412,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_itc_sta_reduction_total_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7464,8 +6420,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_macrs_15_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7476,8 +6430,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_macrs_5_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7486,8 +6438,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_custom_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7498,8 +6448,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_macrs_15_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7508,8 +6456,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_macrs_5_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7520,8 +6466,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_15_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7530,8 +6474,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_20_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7542,8 +6484,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_39_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7552,8 +6492,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_sl_5_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7564,8 +6502,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_amount_total_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7574,8 +6510,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_custom_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7586,8 +6520,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_macrs_15_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7596,8 +6528,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_macrs_5_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7608,8 +6538,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_custom_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7618,8 +6546,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_macrs_15_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7630,8 +6556,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_macrs_5_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7640,8 +6564,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_15_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7652,8 +6574,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_20_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7662,8 +6582,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_39_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7674,8 +6592,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_sl_5_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7684,8 +6600,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_qual_total_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7696,8 +6610,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_15_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7706,8 +6618,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_20_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7718,8 +6628,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_39_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7728,8 +6636,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_sl_5_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7740,8 +6646,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_percent_total_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7750,8 +6654,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_custom_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7762,8 +6664,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_macrs_15_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7772,8 +6672,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_macrs_5_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7784,8 +6682,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_15_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7794,8 +6690,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_20_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7806,8 +6700,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_39_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7816,8 +6708,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_sl_5_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7828,8 +6718,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_prior_itc_total_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7838,8 +6726,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_15_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7850,8 +6736,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_20_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7860,8 +6744,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_39_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7872,8 +6754,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_sl_5_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7882,8 +6762,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_fedbas_total_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7894,8 +6772,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_custom_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7904,8 +6780,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_macrs_15_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7916,8 +6790,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_macrs_5_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7926,8 +6798,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_15_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7938,8 +6808,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_20_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7948,8 +6816,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_39_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7960,8 +6826,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_sl_5_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7970,8 +6834,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_after_itc_total_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7982,8 +6844,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_custom_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7992,8 +6852,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_macrs_15_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8004,8 +6862,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_macrs_5_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8014,8 +6870,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_15_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8026,8 +6880,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_20_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8036,8 +6888,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_39_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8048,8 +6898,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_sl_5_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8058,8 +6906,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_cbi_reduc_total_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8070,8 +6916,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_custom_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8080,8 +6924,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_custom_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8092,8 +6934,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_macrs_1
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8102,8 +6942,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_macrs_5
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8114,8 +6952,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_15_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8124,8 +6960,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_20_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8136,8 +6970,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_39_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8146,8 +6978,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_sl_5_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8158,8 +6988,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_first_year_bonus_total_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8168,8 +6996,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_custom_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8180,8 +7006,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_macrs_15_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8190,8 +7014,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_macrs_5_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8202,8 +7024,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_15_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8212,8 +7032,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_20_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8224,8 +7042,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_39_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8234,8 +7050,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_sl_5_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8246,8 +7060,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_fixed_amount_total_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8256,8 +7068,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_custom_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8268,8 +7078,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_macrs_15_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8278,8 +7086,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_macrs_5_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8290,8 +7096,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_15_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8300,8 +7104,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_20_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8312,8 +7114,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_39_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8322,8 +7122,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_sl_5_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8334,8 +7132,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_ibi_reduc_total_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8344,8 +7140,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_custom
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8356,8 +7150,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_macrs_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8366,8 +7158,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_macrs_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8378,8 +7168,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_15_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8388,8 +7176,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_20_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8400,8 +7186,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_39_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8410,8 +7194,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_sl_5_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8422,8 +7204,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_fed_reduction_total_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8432,8 +7212,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_custom
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8444,8 +7222,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_macrs_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8454,8 +7230,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_macrs_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8466,8 +7240,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_15_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8476,8 +7248,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_20_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8488,8 +7258,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_39_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8498,8 +7266,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_sl_5_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8510,8 +7276,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_itc_sta_reduction_total_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8520,8 +7284,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_macrs_15_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8532,8 +7294,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_macrs_5_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8542,8 +7302,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_custom_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8554,8 +7312,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_macrs_15_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8564,8 +7320,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_macrs_5_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8576,8 +7330,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_15_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8586,8 +7338,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_20_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8598,8 +7348,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_39_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8608,8 +7356,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_sl_5_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8620,8 +7366,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_amount_total_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8630,8 +7374,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_custom_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8642,8 +7384,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_macrs_15_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8652,8 +7392,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_macrs_5_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8664,8 +7402,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_custom_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8674,8 +7410,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_macrs_15_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8686,8 +7420,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_macrs_5_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8696,8 +7428,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_15_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8708,8 +7438,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_20_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8718,8 +7446,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_39_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8730,8 +7456,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_sl_5_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8740,8 +7464,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_qual_total_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8752,8 +7474,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_15_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8762,8 +7482,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_20_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8774,8 +7492,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_39_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8784,8 +7500,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_sl_5_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8796,8 +7510,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_percent_total_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8806,8 +7518,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_custom_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8818,8 +7528,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_macrs_15_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8828,8 +7536,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_macrs_5_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8840,8 +7546,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_15_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8850,8 +7554,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_20_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8862,8 +7564,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_39_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8872,8 +7572,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_sl_5_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8884,8 +7582,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_prior_itc_total_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8894,8 +7590,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_15_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8906,8 +7600,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_20_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8916,8 +7608,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_39_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8928,8 +7618,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_sl_5_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8938,8 +7626,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_depr_stabas_total_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_distribution_of_development_fee_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8950,8 +7636,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_distribution_of_development_fee_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_effective_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8960,8 +7644,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_effective_tax_rate_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8972,8 +7654,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch1_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8982,8 +7662,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch2_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8994,8 +7672,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch3_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9004,8 +7680,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch4_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9016,8 +7690,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch5_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9026,8 +7698,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch6_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch7_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9038,8 +7708,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch7_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch8_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9048,8 +7716,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch8_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch9_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9060,8 +7726,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_dispatch9_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9070,8 +7734,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price1_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9082,8 +7744,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price2_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9092,8 +7752,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price3_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9104,8 +7762,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price4_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9114,8 +7770,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price5_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price6_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9126,8 +7780,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price6_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price7_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9136,8 +7788,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price7_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price8_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9148,8 +7798,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price8_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price9_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9158,8 +7806,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_energy_price9_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9170,8 +7816,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch1_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9180,8 +7824,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch2_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9192,8 +7834,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch3_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9202,8 +7842,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch4_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9214,8 +7852,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch5_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9224,8 +7860,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch6_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch7_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9236,8 +7870,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch7_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch8_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9246,8 +7878,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch8_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch9_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9258,8 +7888,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_firstyear_revenue_dispatch9_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_actual_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9268,8 +7896,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_actual_irr_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_actual_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9280,8 +7906,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_actual_year_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_target_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9290,8 +7914,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_target_irr_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_target_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9302,8 +7924,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_flip_target_year_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9312,8 +7932,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_fedtax_total_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_statax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9324,8 +7942,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_statax_total_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9334,8 +7950,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9346,8 +7960,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_fed_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_oth_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9356,8 +7968,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_oth_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9368,8 +7978,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_sta_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9378,8 +7986,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ibi_total_uti_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_issuance_of_equity_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9390,8 +7996,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_issuance_of_equity_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9400,8 +8004,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_custom_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9412,8 +8014,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_macrs_15_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9422,8 +8022,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_macrs_5_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9434,8 +8032,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_15_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9444,8 +8040,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_20_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9456,8 +8050,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_39_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9466,8 +8058,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_sl_5_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9478,8 +8068,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_fixed_total_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9488,8 +8076,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_custom_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9500,8 +8086,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_macrs_15_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9510,8 +8094,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_macrs_5_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9522,8 +8104,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_15_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9532,8 +8112,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_20_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9544,8 +8122,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_39_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9554,8 +8130,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_sl_5_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9566,8 +8140,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_fed_percent_total_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9576,8 +8148,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_custom_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9588,8 +8158,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_macrs_15_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9598,8 +8166,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_macrs_5_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9610,8 +8176,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_15_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9620,8 +8184,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_20_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9632,8 +8194,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_39_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9642,8 +8202,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_sl_5_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9654,8 +8212,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_fixed_total_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9664,8 +8220,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_custom_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9676,8 +8230,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_macrs_15_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9686,8 +8238,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_macrs_5_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9698,8 +8248,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_15_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9708,8 +8256,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_20_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9720,8 +8266,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_39_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9730,8 +8274,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_sl_5_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9742,8 +8284,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_disallow_sta_percent_total_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_fixed_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9752,8 +8292,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_fixed_total_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9764,8 +8302,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_percent_total_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9774,8 +8310,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_custom_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9786,8 +8320,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_macrs_15_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9796,8 +8328,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_macrs_5_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9808,8 +8338,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_15_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9818,8 +8346,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_20_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9830,8 +8356,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_39_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9840,8 +8364,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_sl_5_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9852,8 +8374,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_fed_qual_total_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_fixed_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9862,8 +8382,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_fixed_total_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9874,8 +8392,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_percent_total_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9884,8 +8400,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_custom_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9896,8 +8410,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_macrs_15_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9906,8 +8418,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_macrs_5_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9918,8 +8428,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_15_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9928,8 +8436,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_20_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9940,8 +8446,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_39_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9950,8 +8454,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_sl_5_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9962,8 +8464,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_sta_qual_total_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9972,8 +8472,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_total_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -9984,8 +8482,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_total_fed_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9994,8 +8490,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_itc_total_sta_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoe_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10006,8 +8500,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoe_nom_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoe_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10016,8 +8508,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoe_real_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_fed_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10028,8 +8518,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_fed_nom_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_fed_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10038,8 +8526,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_fed_real_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_sta_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10050,8 +8536,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_sta_nom_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_sta_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10060,8 +8544,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_lcoptc_sta_real_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_lppa_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10072,8 +8554,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_lppa_nom_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_lppa_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10082,8 +8562,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_lppa_real_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_nominal_discount_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10094,8 +8572,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_nominal_discount_rate_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_annual_costs_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10104,8 +8580,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_annual_costs_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_energy_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10116,8 +8590,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_energy_nom_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_energy_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10126,8 +8598,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_energy_real_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_ppa_revenue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10138,8 +8608,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_ppa_revenue_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_ppa_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10149,8 +8617,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ppa_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_ppa_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10159,8 +8625,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ppa_escalation_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Saleleaseback_Outputs_ppa_multipliers_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10172,8 +8636,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_ppa_multipliers_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_ppa_price_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10182,8 +8644,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ppa_price_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10194,8 +8654,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_fuel_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_insandproptax_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10204,8 +8662,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_insandproptax_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_oandm_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10216,8 +8672,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_oandm_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_oandm_nonfuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10226,8 +8680,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_oandm_nonfuel_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_prop_tax_assessed_value_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10238,8 +8690,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_prop_tax_assessed_value_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_purchase_of_plant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10248,8 +8698,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_purchase_of_plant_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_sale_of_property_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10260,8 +8708,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_sale_of_property_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_salvage_value_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10270,8 +8716,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_salvage_value_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_size_of_equity_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10282,8 +8726,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_size_of_equity_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_aftertax_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10292,8 +8734,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_aftertax_irr_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_aftertax_npv_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10304,8 +8744,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_aftertax_npv_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_equity_in_lessee_llc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10314,8 +8752,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_equity_in_lessee_llc_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_pretax_development_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10326,8 +8762,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_pretax_development_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_pretax_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10336,8 +8770,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_pretax_irr_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_pretax_npv_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10348,8 +8780,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_sponsor_pretax_npv_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_aftertax_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10358,8 +8788,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_aftertax_irr_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_aftertax_npv_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10370,8 +8798,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_aftertax_npv_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_pretax_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10380,8 +8806,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_pretax_irr_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_pretax_npv_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -10392,8 +8816,6 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_tax_investor_pretax_npv_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Saleleaseback_Outputs_wacc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10402,6 +8824,4 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_wacc_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 

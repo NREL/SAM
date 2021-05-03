@@ -89,8 +89,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_P_ref_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_cold_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -99,8 +97,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_cold_des_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_hot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -111,8 +107,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_hot_des_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiTesCalcs_Common_design_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -121,8 +115,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_design_eff_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiTesCalcs_Common_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -134,8 +126,6 @@ SAM_EXPORT double* SAM_UiTesCalcs_Common_field_fl_props_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -144,8 +134,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -156,8 +144,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_min_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiTesCalcs_Common_rec_htf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -166,8 +152,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_rec_htf_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiTesCalcs_Common_tank_pairs_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -178,8 +162,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_tank_pairs_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiTesCalcs_Common_tshours_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -188,8 +170,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_tshours_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiTesCalcs_Common_u_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -200,8 +180,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_u_tank_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiTesCalcs_Outputs_csp_pt_tes_htf_density_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -210,8 +188,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Outputs_csp_pt_tes_htf_density_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiTesCalcs_Outputs_csp_pt_tes_tank_diameter_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -222,8 +198,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Outputs_csp_pt_tes_tank_diameter_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_dot_tes_est_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -232,8 +206,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_dot_tes_est_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_tes_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -244,8 +216,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Outputs_q_tes_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiTesCalcs_Outputs_tes_avail_vol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -255,8 +225,6 @@ SAM_EXPORT double SAM_UiTesCalcs_Outputs_tes_avail_vol_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiTesCalcs_Outputs_vol_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -265,6 +233,4 @@ SAM_EXPORT double SAM_UiTesCalcs_Outputs_vol_tank_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 

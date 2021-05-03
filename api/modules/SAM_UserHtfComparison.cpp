@@ -47,8 +47,6 @@ SAM_EXPORT double SAM_UserHtfComparison_Common_HTF_code1_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UserHtfComparison_Common_HTF_code2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -57,8 +55,6 @@ SAM_EXPORT double SAM_UserHtfComparison_Common_HTF_code2_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UserHtfComparison_Common_fl_props1_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -70,8 +66,6 @@ SAM_EXPORT double* SAM_UserHtfComparison_Common_fl_props1_mget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UserHtfComparison_Common_fl_props2_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -82,8 +76,6 @@ SAM_EXPORT double* SAM_UserHtfComparison_Common_fl_props2_mget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UserHtfComparison_Outputs_are_equal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -92,6 +84,4 @@ SAM_EXPORT double SAM_UserHtfComparison_Outputs_are_equal_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 

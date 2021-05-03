@@ -48,8 +48,6 @@ SAM_EXPORT double* SAM_Iec61853par_IEC61853_input_mget(SAM_table ptr, int* nrows
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853par_IEC61853_nser_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -58,8 +56,6 @@ SAM_EXPORT double SAM_Iec61853par_IEC61853_nser_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Iec61853par_IEC61853_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -70,8 +66,6 @@ SAM_EXPORT double SAM_Iec61853par_IEC61853_type_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853par_IEC61853_verbose_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -80,8 +74,6 @@ SAM_EXPORT double SAM_Iec61853par_IEC61853_verbose_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Iec61853par_Outputs_C1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -92,8 +84,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_C1_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853par_Outputs_C2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -102,8 +92,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_C2_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Iec61853par_Outputs_C3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -114,8 +102,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_C3_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853par_Outputs_D1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -124,8 +110,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_D1_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Iec61853par_Outputs_D2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -136,8 +120,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_D2_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853par_Outputs_D3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -146,8 +128,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_D3_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Iec61853par_Outputs_Egref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -158,8 +138,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_Egref_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853par_Outputs_Il_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -168,8 +146,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_Il_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Iec61853par_Outputs_Io_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -180,8 +156,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_Io_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853par_Outputs_alphaIsc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -190,8 +164,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_alphaIsc_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Iec61853par_Outputs_betaVoc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -202,8 +174,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_betaVoc_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853par_Outputs_gammaPmp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -213,8 +183,6 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_gammaPmp_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853par_Outputs_n_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -223,6 +191,4 @@ SAM_EXPORT double SAM_Iec61853par_Outputs_n_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 

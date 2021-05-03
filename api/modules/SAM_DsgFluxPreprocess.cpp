@@ -137,8 +137,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_CT_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_P_HP_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -147,8 +145,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_P_HP_in_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_P_HP_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -159,8 +155,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_P_HP_out_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_P_cycle_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -169,8 +163,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_P_cycle_des_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_Q_rec_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -181,8 +173,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_Q_rec_des_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_T_ITD_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -191,8 +181,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_T_ITD_des_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_T_amb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -203,8 +191,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_T_amb_des_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_T_approach_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -213,8 +199,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_T_approach_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_T_rh_out_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -225,8 +209,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_T_rh_out_ref_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_T_sh_out_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -235,8 +217,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_T_sh_out_ref_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_b_q_loss_flux_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -247,8 +227,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_b_q_loss_flux_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_dT_cooling_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -257,8 +235,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_dT_cooling_ref_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_eta_cycle_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -269,8 +245,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_eta_cycle_des_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_max_flux_b_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -279,8 +253,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_max_flux_b_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_max_flux_rh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -291,8 +263,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_max_flux_rh_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_max_flux_sh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -301,8 +271,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_max_flux_sh_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_rh_frac_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -313,8 +281,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_rh_frac_ref_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_rh_q_loss_flux_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -323,8 +289,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_rh_q_loss_flux_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_DsgFluxPreprocess_Common_sh_q_loss_flux_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -335,8 +299,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Common_sh_q_loss_flux_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Outputs_f_b_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -345,8 +307,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Outputs_f_b_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_DsgFluxPreprocess_Outputs_f_rh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -357,8 +317,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Outputs_f_rh_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Outputs_f_sh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -368,8 +326,6 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Outputs_f_sh_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_DsgFluxPreprocess_Outputs_max_flux_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -378,6 +334,4 @@ SAM_EXPORT double SAM_DsgFluxPreprocess_Outputs_max_flux_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 

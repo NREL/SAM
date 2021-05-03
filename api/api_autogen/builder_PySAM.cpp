@@ -307,8 +307,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                            "{\n"
                            "\treturn PySAM_matrix_getter(SAM_" << cmod_symbol << "_" << group_symbol << "_" << var_symbol
                         << "_mget, self->data_ptr);\n"
-                           "}\n"
-                           "\n";
+                           "}\n\n";
                 if (output)
                     continue;
                 fx_file << "static int\n"

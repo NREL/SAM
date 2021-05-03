@@ -221,8 +221,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_array_cable_system_cost_input_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_array_cable_system_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -231,8 +229,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_array_cable_system_cost_method_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_assembly_and_install_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -243,8 +239,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_assembly_and_install_cost_input_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_assembly_and_install_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -253,8 +247,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_assembly_and_install_cost_method_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_development_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -265,8 +257,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_development_cost_input_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_development_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -275,8 +265,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_development_cost_method_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_device_rated_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -287,8 +275,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_device_rated_power_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_devices_per_row_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -297,8 +283,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_devices_per_row_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_eng_and_mgmt_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -309,8 +293,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_eng_and_mgmt_cost_input_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_eng_and_mgmt_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -319,8 +301,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_eng_and_mgmt_cost_method_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_export_cable_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -331,8 +311,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_export_cable_length_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_export_cable_system_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -341,8 +319,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_export_cable_system_cost_input_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_export_cable_system_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -353,8 +329,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_export_cable_system_cost_method_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_inter_array_cable_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -363,8 +337,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_inter_array_cable_length_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_MhkCosts_MHKCosts_lib_wave_device_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -376,8 +348,6 @@ SAM_EXPORT const char* SAM_MhkCosts_MHKCosts_lib_wave_device_sget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_library_or_input_wec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -386,8 +356,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_library_or_input_wec_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_marine_energy_tech_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -398,8 +366,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_marine_energy_tech_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_mooring_found_substruc_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -408,8 +374,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_mooring_found_substruc_cost_input_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_mooring_found_substruc_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -420,8 +384,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_mooring_found_substruc_cost_method_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_offshore_substation_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -430,8 +392,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_offshore_substation_cost_input_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_offshore_substation_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -442,8 +402,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_offshore_substation_cost_method_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_onshore_substation_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -452,8 +410,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_onshore_substation_cost_input_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_onshore_substation_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -464,8 +420,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_onshore_substation_cost_method_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_other_elec_infra_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -474,8 +428,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_other_elec_infra_cost_input_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_other_elec_infra_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -486,8 +438,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_other_elec_infra_cost_method_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_other_infrastructure_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -496,8 +446,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_other_infrastructure_cost_input_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_other_infrastructure_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -508,8 +456,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_other_infrastructure_cost_method_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_power_takeoff_system_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -518,8 +464,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_power_takeoff_system_cost_input_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_power_takeoff_system_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -530,8 +474,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_power_takeoff_system_cost_method_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_riser_cable_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -540,8 +482,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_riser_cable_length_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_structural_assembly_cost_input_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -552,8 +492,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_structural_assembly_cost_input_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_structural_assembly_cost_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -562,8 +500,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_structural_assembly_cost_method_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_MHKCosts_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -574,8 +510,6 @@ SAM_EXPORT double SAM_MhkCosts_MHKCosts_system_capacity_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_Outputs_array_cable_system_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -584,8 +518,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_array_cable_system_cost_modeled_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_Outputs_assembly_and_install_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -596,8 +528,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_assembly_and_install_cost_modeled_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_Outputs_development_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -606,8 +536,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_development_cost_modeled_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_Outputs_eng_and_mgmt_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -618,8 +546,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_eng_and_mgmt_cost_modeled_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_Outputs_export_cable_system_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -628,8 +554,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_export_cable_system_cost_modeled_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_Outputs_insurance_during_construction_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -640,8 +564,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_insurance_during_construction_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_Outputs_maintenance_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -650,8 +572,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_maintenance_cost_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_Outputs_mooring_found_substruc_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -662,8 +582,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_mooring_found_substruc_cost_modeled_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_Outputs_offshore_substation_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -672,8 +590,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_offshore_substation_cost_modeled_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_Outputs_onshore_substation_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -684,8 +600,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_onshore_substation_cost_modeled_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_Outputs_operations_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -694,8 +608,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_operations_cost_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_Outputs_other_elec_infra_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -706,8 +618,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_other_elec_infra_cost_modeled_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_Outputs_other_infrastructure_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -716,8 +626,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_other_infrastructure_cost_modeled_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_Outputs_plant_commissioning_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -728,8 +636,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_plant_commissioning_cost_modeled_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_Outputs_power_takeoff_system_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -738,8 +644,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_power_takeoff_system_cost_modeled_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_Outputs_project_contingency_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -750,8 +654,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_project_contingency_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_Outputs_reserve_accounts_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -760,8 +662,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_reserve_accounts_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkCosts_Outputs_site_access_port_staging_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -772,8 +672,6 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_site_access_port_staging_cost_modeled_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkCosts_Outputs_structural_assembly_cost_modeled_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -782,6 +680,4 @@ SAM_EXPORT double SAM_MhkCosts_Outputs_structural_assembly_cost_modeled_nget(SAM
 	});
 	return result;
 }
-
-
 

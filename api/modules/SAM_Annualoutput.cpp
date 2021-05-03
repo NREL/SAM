@@ -59,8 +59,6 @@ SAM_EXPORT double SAM_Annualoutput_AnnualOutput_analysis_period_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Annualoutput_AnnualOutput_energy_availability_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -70,8 +68,6 @@ SAM_EXPORT double* SAM_Annualoutput_AnnualOutput_energy_availability_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Annualoutput_AnnualOutput_energy_curtailment_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -83,8 +79,6 @@ SAM_EXPORT double* SAM_Annualoutput_AnnualOutput_energy_curtailment_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Annualoutput_AnnualOutput_energy_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -94,8 +88,6 @@ SAM_EXPORT double* SAM_Annualoutput_AnnualOutput_energy_degradation_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Annualoutput_AnnualOutput_system_hourly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -107,8 +99,6 @@ SAM_EXPORT double* SAM_Annualoutput_AnnualOutput_system_hourly_energy_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Annualoutput_AnnualOutput_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -117,8 +107,6 @@ SAM_EXPORT double SAM_Annualoutput_AnnualOutput_system_use_lifetime_output_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Annualoutput_Outputs_annual_availability_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -130,8 +118,6 @@ SAM_EXPORT double* SAM_Annualoutput_Outputs_annual_availability_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Annualoutput_Outputs_annual_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -141,8 +127,6 @@ SAM_EXPORT double* SAM_Annualoutput_Outputs_annual_degradation_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Annualoutput_Outputs_annual_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -154,8 +138,6 @@ SAM_EXPORT double* SAM_Annualoutput_Outputs_annual_energy_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Annualoutput_Outputs_hourly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -166,8 +148,6 @@ SAM_EXPORT double* SAM_Annualoutput_Outputs_hourly_energy_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Annualoutput_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -177,6 +157,4 @@ SAM_EXPORT double* SAM_Annualoutput_Outputs_monthly_energy_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 

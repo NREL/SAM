@@ -77,8 +77,6 @@ SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_Adj_ref_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_I_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -87,8 +85,6 @@ SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_I_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_Il_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -99,8 +95,6 @@ SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_Il_ref_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_Io_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -109,8 +103,6 @@ SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_Io_ref_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_Rs_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -121,8 +113,6 @@ SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_Rs_ref_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_Rsh_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -131,8 +121,6 @@ SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_Rsh_ref_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_T_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -143,8 +131,6 @@ SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_T_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_a_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -153,8 +139,6 @@ SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_a_ref_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_alpha_isc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -165,8 +149,6 @@ SAM_EXPORT double SAM_Singlediodeparams_SingleDiodeModel_alpha_isc_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediodeparams_Outputs_Il_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -175,8 +157,6 @@ SAM_EXPORT double SAM_Singlediodeparams_Outputs_Il_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Singlediodeparams_Outputs_Io_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -187,8 +167,6 @@ SAM_EXPORT double SAM_Singlediodeparams_Outputs_Io_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediodeparams_Outputs_Rs_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -197,8 +175,6 @@ SAM_EXPORT double SAM_Singlediodeparams_Outputs_Rs_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Singlediodeparams_Outputs_Rsh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -209,8 +185,6 @@ SAM_EXPORT double SAM_Singlediodeparams_Outputs_Rsh_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediodeparams_Outputs_a_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -219,6 +193,4 @@ SAM_EXPORT double SAM_Singlediodeparams_Outputs_a_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 

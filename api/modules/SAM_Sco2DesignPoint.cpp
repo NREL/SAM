@@ -95,8 +95,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Common_P_high_limit_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2DesignPoint_Common_T_amb_array_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -107,8 +105,6 @@ SAM_EXPORT double* SAM_Sco2DesignPoint_Common_T_amb_array_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Common_T_amb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -117,8 +113,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Common_T_amb_des_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignPoint_Common_T_htf_hot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -129,8 +123,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Common_T_htf_hot_des_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Common_W_dot_net_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -139,8 +131,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Common_W_dot_net_des_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignPoint_Common_deltaT_ACC_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -151,8 +141,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Common_deltaT_ACC_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Common_deltaT_PHX_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -161,8 +149,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Common_deltaT_PHX_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignPoint_Common_eta_c_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -173,8 +159,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Common_eta_c_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Common_eta_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -184,8 +168,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Common_eta_des_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Common_eta_t_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -194,8 +176,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Common_eta_t_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2DesignPoint_Common_part_load_fracs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -207,8 +187,6 @@ SAM_EXPORT double* SAM_Sco2DesignPoint_Common_part_load_fracs_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Common_run_off_des_study_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -217,8 +195,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Common_run_off_des_study_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_P_comp_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -229,8 +205,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_P_comp_in_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_P_comp_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -239,8 +213,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_P_comp_out_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_T_amb_array_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -252,8 +224,6 @@ SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_T_amb_array_out_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_T_amb_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -263,8 +233,6 @@ SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_T_amb_coefs_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_T_amb_eta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -276,8 +244,6 @@ SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_T_amb_eta_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_T_amb_r_squared_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -286,8 +252,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_T_amb_r_squared_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_T_htf_cold_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -298,8 +262,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_T_htf_cold_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_UA_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -309,8 +271,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_UA_total_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_eta_thermal_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -319,8 +279,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_eta_thermal_calc_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_part_load_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -332,8 +290,6 @@ SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_part_load_coefs_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_part_load_eta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -343,8 +299,6 @@ SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_part_load_eta_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_part_load_fracs_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -356,8 +310,6 @@ SAM_EXPORT double* SAM_Sco2DesignPoint_Outputs_part_load_fracs_out_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_part_load_r_squared_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -367,8 +319,6 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_part_load_r_squared_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_recomp_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -377,6 +327,4 @@ SAM_EXPORT double SAM_Sco2DesignPoint_Outputs_recomp_frac_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 

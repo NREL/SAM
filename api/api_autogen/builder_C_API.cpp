@@ -256,7 +256,7 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
                            "\ttranslateExceptions(err, [&]{\n"
                            "\tif (!ssc_data_get_number(ptr, \"" << var_name<< "\", &result))\n"
                            "\t\tmake_access_error(\"SAM_" << cmod_symbol << "\", \"" << var_name << "\");\n"
-                           "\t});\n\treturn result;\n}\n\n";
+                           "\t});\n\treturn result;\n}";
             }
             else if (vd.type == "string"){
                 fx_file << "SAM_EXPORT const char* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
@@ -266,7 +266,7 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
                            "\tresult = ssc_data_get_string(ptr, \"" << var_name<< "\");\n"
                            "\tif (!result)\n"
                            "\t\tmake_access_error(\"SAM_" << cmod_symbol << "\", \"" << var_name << "\");\n"
-                           "\t});\n\treturn result;\n}\n\n";
+                           "\t});\n\treturn result;\n}";
             }
             else if (vd.type == "array"){
                 fx_file << "SAM_EXPORT double* SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
@@ -276,7 +276,7 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
                            "\tresult = ssc_data_get_array(ptr, \"" << var_name<< "\", length);\n"
                            "\tif (!result)\n"
                            "\t\tmake_access_error(\"SAM_" << cmod_symbol << "\", \"" << var_name << "\");\n"
-                           "\t});\n\treturn result;\n}\n\n";
+                           "\t});\n\treturn result;\n}";
 
             }
             else if (vd.type == "matrix"){
@@ -287,7 +287,7 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
                            "\tresult = ssc_data_get_matrix(ptr, \"" << var_name<< "\", nrows, ncols);\n"
                            "\tif (!result)\n"
                            "\t\tmake_access_error(\"SAM_" << cmod_symbol << "\", \"" << var_name << "\");\n"
-                           "\t});\n\treturn result;\n}\n\n";
+                           "\t});\n\treturn result;\n}";
             }
             else if (vd.type == "table"){
                 fx_file << "SAM_EXPORT SAM_table SAM_" << cmod_symbol << "_" << module_symbol << "_" << var_symbol << "_";
@@ -297,7 +297,7 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
                            "\tresult = ssc_data_get_table(ptr, \"" << var_name<< "\");\n"
                            "\tif (!result)\n"
                            "\t\tmake_access_error(\"SAM_" << cmod_symbol << "\", \"" << var_name << "\");\n"
-                           "\t});\n\treturn result;\n}\n\n";
+                           "\t});\n\treturn result;\n}";
             }
             else{
                 throw std::runtime_error(vd.type + " for " + var_name);

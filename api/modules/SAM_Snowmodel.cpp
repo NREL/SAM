@@ -84,8 +84,6 @@ SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_snowdepth_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_nmody_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -94,8 +92,6 @@ SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_nmody_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_subarray1_poa_shaded_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -107,8 +103,6 @@ SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_subarray1_poa_shaded_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_subarray1_surf_tilt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -119,8 +113,6 @@ SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_subarray1_surf_tilt_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_tilt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -130,8 +122,6 @@ SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_tilt_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_track_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -140,8 +130,6 @@ SAM_EXPORT double SAM_Snowmodel_PVSnowModel_subarray1_track_mode_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -153,8 +141,6 @@ SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_tdry_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -164,8 +150,6 @@ SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_wspd_aget(SAM_table ptr, int* lengt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Snowmodel_TimeSeries_hourly_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -177,8 +161,6 @@ SAM_EXPORT double* SAM_Snowmodel_TimeSeries_hourly_gen_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Snowmodel_TimeSeries_sunup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -189,8 +171,6 @@ SAM_EXPORT double* SAM_Snowmodel_TimeSeries_sunup_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Snowmodel_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -200,8 +180,6 @@ SAM_EXPORT double SAM_Snowmodel_Outputs_annual_energy_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Snowmodel_Outputs_annual_energy_before_snow_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -210,8 +188,6 @@ SAM_EXPORT double SAM_Snowmodel_Outputs_annual_energy_before_snow_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Snowmodel_Outputs_hourly_energy_before_snow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -223,8 +199,6 @@ SAM_EXPORT double* SAM_Snowmodel_Outputs_hourly_energy_before_snow_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Snowmodel_Outputs_hourly_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -234,8 +208,6 @@ SAM_EXPORT double* SAM_Snowmodel_Outputs_hourly_gen_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Snowmodel_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -247,8 +219,6 @@ SAM_EXPORT double* SAM_Snowmodel_Outputs_monthly_energy_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Snowmodel_Outputs_monthly_energy_before_snow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -258,6 +228,4 @@ SAM_EXPORT double* SAM_Snowmodel_Outputs_monthly_energy_before_snow_aget(SAM_tab
 	});
 	return result;
 }
-
-
 

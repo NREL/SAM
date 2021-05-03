@@ -563,6 +563,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Hcpv_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Hcpv_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_Hcpv_Outputs_annual_input_radiation_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Hcpv_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);

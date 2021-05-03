@@ -41,8 +41,6 @@ SAM_EXPORT double SAM_Timeseq_TimeSequence_end_time_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Timeseq_TimeSequence_start_time_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -52,8 +50,6 @@ SAM_EXPORT double SAM_Timeseq_TimeSequence_start_time_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Timeseq_TimeSequence_time_step_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -62,8 +58,6 @@ SAM_EXPORT double SAM_Timeseq_TimeSequence_time_step_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Timeseq_Outputs_day_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -75,8 +69,6 @@ SAM_EXPORT double* SAM_Timeseq_Outputs_day_aget(SAM_table ptr, int* length, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Timeseq_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -86,8 +78,6 @@ SAM_EXPORT double* SAM_Timeseq_Outputs_hour_aget(SAM_table ptr, int* length, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Timeseq_Outputs_minute_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -99,8 +89,6 @@ SAM_EXPORT double* SAM_Timeseq_Outputs_minute_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Timeseq_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -110,8 +98,6 @@ SAM_EXPORT double* SAM_Timeseq_Outputs_month_aget(SAM_table ptr, int* length, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Timeseq_Outputs_time_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -123,8 +109,6 @@ SAM_EXPORT double* SAM_Timeseq_Outputs_time_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Timeseq_Outputs_timehr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -134,6 +118,4 @@ SAM_EXPORT double* SAM_Timeseq_Outputs_timehr_aget(SAM_table ptr, int* length, S
 	});
 	return result;
 }
-
-
 

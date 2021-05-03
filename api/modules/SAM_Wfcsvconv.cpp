@@ -48,8 +48,6 @@ SAM_EXPORT const char* SAM_Wfcsvconv_WeatherFileConverter_input_file_sget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_Wfcsvconv_WeatherFileConverter_output_file_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -59,8 +57,6 @@ SAM_EXPORT const char* SAM_Wfcsvconv_WeatherFileConverter_output_file_sget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_Wfcsvconv_WeatherFileConverter_output_filename_format_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -72,8 +68,6 @@ SAM_EXPORT const char* SAM_Wfcsvconv_WeatherFileConverter_output_filename_format
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_Wfcsvconv_WeatherFileConverter_output_folder_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -83,6 +77,4 @@ SAM_EXPORT const char* SAM_Wfcsvconv_WeatherFileConverter_output_folder_sget(SAM
 	});
 	return result;
 }
-
-
 

@@ -41,8 +41,6 @@ SAM_EXPORT double SAM_Sco2CompCurves_Common_P_comp_in_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CompCurves_Common_T_comp_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -52,8 +50,6 @@ SAM_EXPORT double SAM_Sco2CompCurves_Common_T_comp_in_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CompCurves_Common_comp_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -62,8 +58,6 @@ SAM_EXPORT double SAM_Sco2CompCurves_Common_comp_type_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_eta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -75,8 +69,6 @@ SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_eta_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_eta_ND_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -87,8 +79,6 @@ SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_eta_ND_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CompCurves_Outputs_eta_norm_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -97,8 +87,6 @@ SAM_EXPORT double SAM_Sco2CompCurves_Outputs_eta_norm_design_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_phi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -110,8 +98,6 @@ SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_phi_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_phi_ND_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -122,8 +108,6 @@ SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_phi_ND_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CompCurves_Outputs_phi_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -132,8 +116,6 @@ SAM_EXPORT double SAM_Sco2CompCurves_Outputs_phi_design_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_psi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -145,8 +127,6 @@ SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_psi_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_psi_ND_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -157,8 +137,6 @@ SAM_EXPORT double* SAM_Sco2CompCurves_Outputs_psi_ND_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CompCurves_Outputs_psi_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -167,6 +145,4 @@ SAM_EXPORT double SAM_Sco2CompCurves_Outputs_psi_design_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 

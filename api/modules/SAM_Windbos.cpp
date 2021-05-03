@@ -215,8 +215,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_access_road_entrances_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_construction_time_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -225,8 +223,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_construction_time_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_contingency_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -237,8 +233,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_contingency_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_crane_breakdowns_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -247,8 +241,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_crane_breakdowns_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_delivery_assist_required_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -259,8 +251,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_delivery_assist_required_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_development_fee_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -269,8 +259,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_development_fee_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_distance_to_interconnect_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -281,8 +269,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_distance_to_interconnect_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_hub_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -291,8 +277,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_hub_height_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_interconnect_voltage_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -303,8 +287,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_interconnect_voltage_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_machine_rating_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -313,8 +295,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_machine_rating_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_mv_overhead_collector_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -325,8 +305,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_mv_overhead_collector_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_mv_thermal_backfill_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -335,8 +313,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_mv_thermal_backfill_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_new_switchyard_required_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -347,8 +323,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_new_switchyard_required_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_number_of_turbines_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -357,8 +331,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_number_of_turbines_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_om_building_size_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -369,8 +341,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_om_building_size_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_overhead_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -379,8 +349,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_overhead_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_pad_mount_transformer_required_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -391,8 +359,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_pad_mount_transformer_required_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_performance_bond_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -401,8 +367,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_performance_bond_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_profit_margin_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -413,8 +377,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_profit_margin_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_quantity_permanent_met_towers_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -423,8 +385,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_quantity_permanent_met_towers_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_quantity_test_met_towers_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -435,8 +395,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_quantity_test_met_towers_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_rock_trenching_required_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -445,8 +403,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_rock_trenching_required_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_rotor_diameter_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -457,8 +413,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_rotor_diameter_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_sales_and_use_tax_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -467,8 +421,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_sales_and_use_tax_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_site_terrain_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -479,8 +431,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_site_terrain_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_soil_condition_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -489,8 +439,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_soil_condition_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_tower_top_mass_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -501,8 +449,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_tower_top_mass_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_turbine_capital_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -511,8 +457,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_turbine_capital_cost_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_turbine_layout_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -523,8 +467,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_turbine_layout_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_turbine_transportation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -533,8 +475,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_turbine_transportation_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_WindBos_warranty_management_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -545,8 +485,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_warranty_management_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_WindBos_weather_delay_days_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -555,8 +493,6 @@ SAM_EXPORT double SAM_Windbos_WindBos_weather_delay_days_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_Outputs_access_roads_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -567,8 +503,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_access_roads_cost_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_Outputs_building_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -577,8 +511,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_building_cost_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_Outputs_development_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -589,8 +521,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_development_cost_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_Outputs_electrical_installation_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -599,8 +529,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_electrical_installation_cost_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_Outputs_electrical_materials_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -611,8 +539,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_electrical_materials_cost_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_Outputs_engineering_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -621,8 +547,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_engineering_cost_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_Outputs_erection_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -633,8 +557,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_erection_cost_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_Outputs_foundation_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -643,8 +565,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_foundation_cost_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_Outputs_insurance_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -655,8 +575,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_insurance_cost_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_Outputs_markup_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -665,8 +583,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_markup_cost_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_Outputs_power_performance_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -677,8 +593,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_power_performance_cost_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_Outputs_project_mgmt_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -687,8 +601,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_project_mgmt_cost_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_Outputs_project_total_budgeted_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -699,8 +611,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_project_total_budgeted_cost_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_Outputs_site_compound_security_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -709,8 +619,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_site_compound_security_cost_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windbos_Outputs_substation_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -721,8 +629,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_substation_cost_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_Outputs_transmission_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -732,8 +638,6 @@ SAM_EXPORT double SAM_Windbos_Outputs_transmission_cost_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windbos_Outputs_transportation_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -742,6 +646,4 @@ SAM_EXPORT double SAM_Windbos_Outputs_transportation_cost_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 

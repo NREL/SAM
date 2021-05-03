@@ -48,8 +48,6 @@ SAM_EXPORT double* SAM_Iec61853interp_IEC61853_input_mget(SAM_table ptr, int* nr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Iec61853interp_IEC61853_param_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -60,8 +58,6 @@ SAM_EXPORT double* SAM_Iec61853interp_IEC61853_param_mget(SAM_table ptr, int* nr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853interp_SingleDiodeModel_I_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -70,8 +66,6 @@ SAM_EXPORT double SAM_Iec61853interp_SingleDiodeModel_I_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Iec61853interp_SingleDiodeModel_T_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -82,8 +76,6 @@ SAM_EXPORT double SAM_Iec61853interp_SingleDiodeModel_T_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853interp_Outputs_Il_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -92,8 +84,6 @@ SAM_EXPORT double SAM_Iec61853interp_Outputs_Il_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Iec61853interp_Outputs_Io_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -104,8 +94,6 @@ SAM_EXPORT double SAM_Iec61853interp_Outputs_Io_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853interp_Outputs_Rs_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -114,8 +102,6 @@ SAM_EXPORT double SAM_Iec61853interp_Outputs_Rs_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Iec61853interp_Outputs_Rsh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -126,8 +112,6 @@ SAM_EXPORT double SAM_Iec61853interp_Outputs_Rsh_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Iec61853interp_Outputs_a_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -136,6 +120,4 @@ SAM_EXPORT double SAM_Iec61853interp_Outputs_a_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 

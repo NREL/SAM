@@ -1193,8 +1193,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_analysis_period_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_debt_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1203,8 +1201,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_debt_fraction_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_FinancialParameters_federal_tax_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1216,8 +1212,6 @@ SAM_EXPORT double* SAM_Ippppa_FinancialParameters_federal_tax_rate_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_inflation_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1226,8 +1220,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_inflation_rate_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_insurance_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1238,8 +1230,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_insurance_rate_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_loan_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1248,8 +1238,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_loan_rate_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_loan_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1260,8 +1248,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_loan_term_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_prop_tax_assessed_decline_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1270,8 +1256,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_prop_tax_assessed_decline_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_prop_tax_cost_assessed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1282,8 +1266,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_prop_tax_cost_assessed_percent_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_property_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1293,8 +1275,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_property_tax_rate_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_real_discount_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1303,8 +1283,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_real_discount_rate_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_FinancialParameters_state_tax_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1316,8 +1294,6 @@ SAM_EXPORT double* SAM_Ippppa_FinancialParameters_state_tax_rate_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1326,8 +1302,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_system_capacity_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_FinancialParameters_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1338,8 +1312,6 @@ SAM_EXPORT double SAM_Ippppa_FinancialParameters_system_heat_rate_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_add_om_num_types_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1349,8 +1321,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_add_om_num_types_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1359,8 +1329,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_annual_fuel_usage_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1372,8 +1340,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1383,8 +1349,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1396,8 +1360,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity1_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity1_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1406,8 +1368,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity1_nameplate_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1419,8 +1379,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity2_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity2_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1430,8 +1388,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity2_nameplate_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1440,8 +1396,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity_escal_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1453,8 +1407,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1464,8 +1416,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed1_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1477,8 +1427,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed2_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1487,8 +1435,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_fixed_escal_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1500,8 +1446,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuel_cost_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_fuel_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1510,8 +1454,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_fuel_cost_escal_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_opt_fuel_1_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1523,8 +1465,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_opt_fuel_1_cost_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_opt_fuel_1_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1534,8 +1474,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_opt_fuel_1_cost_escal_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_opt_fuel_1_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1544,8 +1482,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_opt_fuel_1_usage_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_opt_fuel_2_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1557,8 +1493,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_opt_fuel_2_cost_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_opt_fuel_2_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1568,8 +1502,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_opt_fuel_2_cost_escal_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_opt_fuel_2_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1578,8 +1510,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_opt_fuel_2_usage_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1591,8 +1521,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1602,8 +1530,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production1_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1615,8 +1541,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production1_values_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1626,8 +1550,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production2_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production2_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1639,8 +1561,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production2_values_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1649,8 +1569,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_production_escal_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_replacement_cost1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1662,8 +1580,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_replacement_cost1_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_replacement_cost2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1674,8 +1590,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_replacement_cost2_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1684,8 +1598,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_replacement_cost_escal_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Depreciation_depr_fed_custom_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1697,8 +1609,6 @@ SAM_EXPORT double* SAM_Ippppa_Depreciation_depr_fed_custom_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Depreciation_depr_fed_sl_years_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1708,8 +1618,6 @@ SAM_EXPORT double SAM_Ippppa_Depreciation_depr_fed_sl_years_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Depreciation_depr_fed_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1718,8 +1626,6 @@ SAM_EXPORT double SAM_Ippppa_Depreciation_depr_fed_type_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Depreciation_depr_sta_custom_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1731,8 +1637,6 @@ SAM_EXPORT double* SAM_Ippppa_Depreciation_depr_sta_custom_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Depreciation_depr_sta_sl_years_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1741,8 +1645,6 @@ SAM_EXPORT double SAM_Ippppa_Depreciation_depr_sta_sl_years_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Depreciation_depr_sta_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1753,8 +1655,6 @@ SAM_EXPORT double SAM_Ippppa_Depreciation_depr_sta_type_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1763,8 +1663,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_amount_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1775,8 +1673,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1785,8 +1681,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1797,8 +1691,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_percent_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1807,8 +1699,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1819,8 +1709,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1829,8 +1717,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_fed_percent_maxvalue_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1841,8 +1727,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_amount_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1851,8 +1735,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1863,8 +1745,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1873,8 +1753,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_percent_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1885,8 +1763,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1896,8 +1772,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1906,8 +1780,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_itc_sta_percent_maxvalue_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_TaxCreditIncentives_ptc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1919,8 +1791,6 @@ SAM_EXPORT double* SAM_Ippppa_TaxCreditIncentives_ptc_fed_amount_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_ptc_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1930,8 +1800,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_ptc_fed_escal_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_ptc_fed_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1940,8 +1808,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_ptc_fed_term_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_TaxCreditIncentives_ptc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1953,8 +1819,6 @@ SAM_EXPORT double* SAM_Ippppa_TaxCreditIncentives_ptc_sta_amount_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_ptc_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1963,8 +1827,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_ptc_sta_escal_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_ptc_sta_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1975,8 +1837,6 @@ SAM_EXPORT double SAM_Ippppa_TaxCreditIncentives_ptc_sta_term_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1985,8 +1845,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_amount_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1997,8 +1855,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2007,8 +1863,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_deprbas_sta_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2019,8 +1873,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2029,8 +1881,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2041,8 +1891,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2051,8 +1899,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_amount_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2063,8 +1909,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2073,8 +1917,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2085,8 +1927,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2095,8 +1935,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2107,8 +1945,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2117,8 +1953,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_amount_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2129,8 +1963,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2139,8 +1971,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2151,8 +1981,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2161,8 +1989,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2173,8 +1999,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2183,8 +2007,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_amount_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2195,8 +2017,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2205,8 +2025,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_deprbas_sta_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2217,8 +2035,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2227,8 +2043,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2239,8 +2053,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2249,8 +2061,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_amount_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2261,8 +2071,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_amount_deprbas_fed_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2271,8 +2079,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_amount_deprbas_sta_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2283,8 +2089,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_amount_tax_fed_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2293,8 +2097,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_amount_tax_sta_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2305,8 +2107,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2315,8 +2115,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_deprbas_fed_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2327,8 +2125,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_deprbas_sta_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2337,8 +2133,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_maxvalue_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2349,8 +2143,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_tax_fed_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2359,8 +2151,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_fed_percent_tax_sta_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2371,8 +2161,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_amount_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2381,8 +2169,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_amount_deprbas_fed_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2393,8 +2179,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_amount_deprbas_sta_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2403,8 +2187,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_amount_tax_fed_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2415,8 +2197,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_amount_tax_sta_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2425,8 +2205,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2437,8 +2215,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_deprbas_fed_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2447,8 +2223,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_deprbas_sta_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2459,8 +2233,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_maxvalue_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2469,8 +2241,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_tax_fed_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2481,8 +2251,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_oth_percent_tax_sta_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2491,8 +2259,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_amount_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2503,8 +2269,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_amount_deprbas_fed_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2513,8 +2277,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_amount_deprbas_sta_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2525,8 +2287,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_amount_tax_fed_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2535,8 +2295,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_amount_tax_sta_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2547,8 +2305,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2557,8 +2313,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_deprbas_fed_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2569,8 +2323,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_deprbas_sta_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2579,8 +2331,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_maxvalue_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2591,8 +2341,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_tax_fed_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2601,8 +2349,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_sta_percent_tax_sta_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2613,8 +2359,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_amount_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2623,8 +2367,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_amount_deprbas_fed_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2635,8 +2377,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_amount_deprbas_sta_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2645,8 +2385,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_amount_tax_fed_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2657,8 +2395,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_amount_tax_sta_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2667,8 +2403,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2679,8 +2413,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_deprbas_fed_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2689,8 +2421,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_deprbas_sta_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2701,8 +2431,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_maxvalue_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2712,8 +2440,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_tax_fed_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2722,8 +2448,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_ibi_uti_percent_tax_sta_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_PaymentIncentives_pbi_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2735,8 +2459,6 @@ SAM_EXPORT double* SAM_Ippppa_PaymentIncentives_pbi_fed_amount_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2745,8 +2467,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_fed_escal_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2757,8 +2477,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2768,8 +2486,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_fed_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2778,8 +2494,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_fed_term_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_PaymentIncentives_pbi_oth_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2791,8 +2505,6 @@ SAM_EXPORT double* SAM_Ippppa_PaymentIncentives_pbi_oth_amount_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_oth_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2801,8 +2513,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_oth_escal_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2813,8 +2523,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2824,8 +2532,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_oth_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2834,8 +2540,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_oth_term_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_PaymentIncentives_pbi_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2847,8 +2551,6 @@ SAM_EXPORT double* SAM_Ippppa_PaymentIncentives_pbi_sta_amount_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2857,8 +2559,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_sta_escal_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2869,8 +2569,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2880,8 +2578,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_sta_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2890,8 +2586,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_sta_term_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_PaymentIncentives_pbi_uti_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2903,8 +2597,6 @@ SAM_EXPORT double* SAM_Ippppa_PaymentIncentives_pbi_uti_amount_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_uti_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2913,8 +2605,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_uti_escal_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2925,8 +2615,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2936,8 +2624,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_uti_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2946,8 +2632,6 @@ SAM_EXPORT double SAM_Ippppa_PaymentIncentives_pbi_uti_term_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Common_bid_price_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2959,8 +2643,6 @@ SAM_EXPORT double* SAM_Ippppa_Common_bid_price_aget(SAM_table ptr, int* length, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_bid_price_esc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2970,8 +2652,6 @@ SAM_EXPORT double SAM_Ippppa_Common_bid_price_esc_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2980,8 +2660,6 @@ SAM_EXPORT double SAM_Ippppa_Common_construction_financing_cost_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Common_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2993,8 +2671,6 @@ SAM_EXPORT double* SAM_Ippppa_Common_degradation_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3003,8 +2679,6 @@ SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor1_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3015,8 +2689,6 @@ SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor2_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3025,8 +2697,6 @@ SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor3_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3037,8 +2707,6 @@ SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor4_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3047,8 +2715,6 @@ SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor5_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor6_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3059,8 +2725,6 @@ SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor6_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor7_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3069,8 +2733,6 @@ SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor7_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor8_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3081,8 +2743,6 @@ SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor8_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor9_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3091,8 +2751,6 @@ SAM_EXPORT double SAM_Ippppa_Common_dispatch_factor9_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Common_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3104,8 +2762,6 @@ SAM_EXPORT double* SAM_Ippppa_Common_dispatch_sched_weekday_mget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Common_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3115,8 +2771,6 @@ SAM_EXPORT double* SAM_Ippppa_Common_dispatch_sched_weekend_mget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Common_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3128,8 +2782,6 @@ SAM_EXPORT double* SAM_Ippppa_Common_gen_aget(SAM_table ptr, int* length, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_market_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3138,8 +2790,6 @@ SAM_EXPORT double SAM_Ippppa_Common_market_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_min_dscr_required_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3150,8 +2800,6 @@ SAM_EXPORT double SAM_Ippppa_Common_min_dscr_required_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_min_dscr_target_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3160,8 +2808,6 @@ SAM_EXPORT double SAM_Ippppa_Common_min_dscr_target_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_min_irr_target_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3172,8 +2818,6 @@ SAM_EXPORT double SAM_Ippppa_Common_min_irr_target_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_optimize_lcoe_wrt_debt_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3182,8 +2826,6 @@ SAM_EXPORT double SAM_Ippppa_Common_optimize_lcoe_wrt_debt_fraction_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_optimize_lcoe_wrt_ppa_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3194,8 +2836,6 @@ SAM_EXPORT double SAM_Ippppa_Common_optimize_lcoe_wrt_ppa_escalation_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_positive_cashflow_required_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3204,8 +2844,6 @@ SAM_EXPORT double SAM_Ippppa_Common_positive_cashflow_required_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_ppa_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3216,8 +2854,6 @@ SAM_EXPORT double SAM_Ippppa_Common_ppa_escalation_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_ppa_soln_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3226,8 +2862,6 @@ SAM_EXPORT double SAM_Ippppa_Common_ppa_soln_max_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_ppa_soln_max_iterations_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3238,8 +2872,6 @@ SAM_EXPORT double SAM_Ippppa_Common_ppa_soln_max_iterations_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_ppa_soln_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3248,8 +2880,6 @@ SAM_EXPORT double SAM_Ippppa_Common_ppa_soln_min_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_ppa_soln_tolerance_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3260,8 +2890,6 @@ SAM_EXPORT double SAM_Ippppa_Common_ppa_soln_tolerance_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3270,8 +2898,6 @@ SAM_EXPORT double SAM_Ippppa_Common_salvage_percentage_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_soln_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3282,8 +2908,6 @@ SAM_EXPORT double SAM_Ippppa_Common_soln_mode_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3292,8 +2916,6 @@ SAM_EXPORT double SAM_Ippppa_Common_system_capacity_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Common_system_recapitalization_boolean_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3305,8 +2927,6 @@ SAM_EXPORT double* SAM_Ippppa_Common_system_recapitalization_boolean_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_system_recapitalization_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3315,8 +2935,6 @@ SAM_EXPORT double SAM_Ippppa_Common_system_recapitalization_cost_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_system_recapitalization_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3327,8 +2945,6 @@ SAM_EXPORT double SAM_Ippppa_Common_system_recapitalization_escalation_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3337,8 +2953,6 @@ SAM_EXPORT double SAM_Ippppa_Common_system_use_lifetime_output_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Common_system_use_recapitalization_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3349,8 +2963,6 @@ SAM_EXPORT double SAM_Ippppa_Common_system_use_recapitalization_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Common_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3359,8 +2971,6 @@ SAM_EXPORT double SAM_Ippppa_Common_total_installed_cost_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_actual_debt_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3371,8 +2981,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_actual_debt_frac_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_actual_ppa_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3381,8 +2989,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_actual_ppa_escalation_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_cbi_fedtax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3393,8 +2999,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_cbi_fedtax_total_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_cbi_statax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3403,8 +3007,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_cbi_statax_total_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_cbi_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3415,8 +3017,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_cbi_total_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_cbi_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3425,8 +3025,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_cbi_total_fed_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_cbi_total_oth_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3437,8 +3035,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_cbi_total_oth_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_cbi_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3448,8 +3044,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_cbi_total_sta_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_cbi_total_uti_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3458,8 +3052,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_cbi_total_uti_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_after_tax_cash_flow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3471,8 +3063,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_after_tax_cash_flow_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_after_tax_net_equity_cash_flow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3482,8 +3072,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_after_tax_net_equity_cash_flow_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_after_tax_net_equity_cost_flow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3495,8 +3083,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_after_tax_net_equity_cost_flow_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_debt_balance_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3506,8 +3092,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_debt_balance_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_debt_payment_interest_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3519,8 +3103,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_debt_payment_interest_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_debt_payment_principal_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3530,8 +3112,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_debt_payment_principal_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_debt_payment_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3543,8 +3123,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_debt_payment_total_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_deductible_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3554,8 +3132,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_deductible_expenses_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3567,8 +3143,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_degradation_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_effective_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3578,8 +3152,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_effective_tax_frac_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3591,8 +3163,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3602,8 +3172,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_apr_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3615,8 +3183,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_aug_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3626,8 +3192,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dec_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3639,8 +3203,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch1_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3650,8 +3212,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch2_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3663,8 +3223,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch3_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3674,8 +3232,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch4_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3687,8 +3243,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch5_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3698,8 +3252,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch6_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3711,8 +3263,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch7_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3722,8 +3272,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch8_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3735,8 +3283,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_dispatch9_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3746,8 +3292,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_feb_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3759,8 +3303,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_jan_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3770,8 +3312,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_jul_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3783,8 +3323,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_jun_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3794,8 +3332,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_mar_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3807,8 +3343,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_may_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3818,8 +3352,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD1_aget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3831,8 +3363,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD2_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3842,8 +3372,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD3_aget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3855,8 +3383,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD4_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3866,8 +3392,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD5_aget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3879,8 +3403,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD6_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3890,8 +3412,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD7_aget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3903,8 +3423,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD8_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3914,8 +3432,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_monthly_firstyear_TOD9_aget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3927,8 +3443,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_nov_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3938,8 +3452,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_oct_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3951,8 +3463,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_net_sep_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_price_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3962,8 +3472,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_price_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3975,8 +3483,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_energy_value_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_depr_sched_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3986,8 +3492,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_depr_sched_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_depreciation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3999,8 +3503,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_depreciation_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_incentive_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4010,8 +3512,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_incentive_income_less_deductions_ag
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_income_taxes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4023,8 +3523,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_income_taxes_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_tax_savings_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4034,8 +3532,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_tax_savings_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_taxable_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4047,8 +3543,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_fed_taxable_income_less_deductions_aget
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_federal_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4058,8 +3552,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_federal_tax_frac_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_insurance_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4071,8 +3563,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_insurance_expense_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4081,8 +3571,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_cf_length_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_net_salvage_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4094,8 +3582,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_net_salvage_value_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4105,8 +3591,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_capacity_expense_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4118,8 +3602,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_fixed_expense_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_fuel_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4129,8 +3611,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_fuel_expense_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4142,8 +3622,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4153,8 +3631,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_production_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4166,8 +3642,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_om_production_expense_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_operating_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4177,8 +3651,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_operating_expenses_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_operating_income_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4190,8 +3662,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_operating_income_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_fedtax_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4201,8 +3671,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_fedtax_total_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_statax_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4214,8 +3682,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_statax_total_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4225,8 +3691,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_total_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_total_fed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4238,8 +3702,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_total_fed_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_total_oth_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4249,8 +3711,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_total_oth_aget(SAM_table ptr, int* 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_total_sta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4262,8 +3722,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_total_sta_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_total_uti_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4273,8 +3731,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pbi_total_uti_aget(SAM_table ptr, int* 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_ppa_price_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4286,8 +3742,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_ppa_price_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pretax_dscr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4297,8 +3751,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_pretax_dscr_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_property_tax_assessed_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4310,8 +3762,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_property_tax_assessed_value_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_property_tax_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4321,8 +3771,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_property_tax_expense_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_ptc_fed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4334,8 +3782,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_ptc_fed_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4345,8 +3791,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* length
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_ptc_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4358,8 +3802,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_ptc_total_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_recapitalization_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4369,8 +3811,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_recapitalization_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4382,8 +3822,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_apr_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4393,8 +3831,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_aug_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4406,8 +3842,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dec_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4417,8 +3851,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch1_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4430,8 +3862,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch2_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4441,8 +3871,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch3_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4454,8 +3882,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch4_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4465,8 +3891,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch5_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4478,8 +3902,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch6_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4489,8 +3911,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch7_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4502,8 +3922,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch8_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4513,8 +3931,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_dispatch9_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4526,8 +3942,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_feb_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4537,8 +3951,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_jan_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4550,8 +3962,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_jul_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4561,8 +3971,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_jun_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4574,8 +3982,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_mar_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4585,8 +3991,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_may_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4598,8 +4002,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD1_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4609,8 +4011,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD2_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4622,8 +4022,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD3_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4633,8 +4031,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD4_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4646,8 +4042,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD5_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4657,8 +4051,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD6_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4670,8 +4062,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD7_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4681,8 +4071,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD8_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4694,8 +4082,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_monthly_firstyear_TOD9_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4705,8 +4091,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_nov_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4718,8 +4102,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_oct_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4729,8 +4111,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_revenue_sep_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_and_fed_tax_savings_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4742,8 +4122,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_and_fed_tax_savings_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_depr_sched_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4753,8 +4131,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_depr_sched_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_depreciation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4766,8 +4142,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_depreciation_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_incentive_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4777,8 +4151,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_incentive_income_less_deductions_ag
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_income_taxes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4790,8 +4162,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_income_taxes_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_tax_savings_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4801,8 +4171,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_tax_savings_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_taxable_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4814,8 +4182,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_sta_taxable_income_less_deductions_aget
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Ippppa_Outputs_cf_state_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4826,8 +4192,6 @@ SAM_EXPORT double* SAM_Ippppa_Outputs_cf_state_tax_frac_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_debt_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4836,8 +4200,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_debt_fraction_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_effective_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4848,8 +4210,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_effective_tax_rate_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4858,8 +4218,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch1_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4870,8 +4228,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch2_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4880,8 +4236,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch3_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4892,8 +4246,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch4_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4902,8 +4254,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch5_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch6_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4914,8 +4264,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch6_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch7_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4924,8 +4272,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch7_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch8_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4936,8 +4282,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch8_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch9_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4946,8 +4290,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_dispatch9_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4958,8 +4300,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price1_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4968,8 +4308,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price2_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4980,8 +4318,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price3_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4990,8 +4326,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price4_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5002,8 +4336,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price5_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price6_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5012,8 +4344,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price6_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price7_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5024,8 +4354,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price7_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price8_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5034,8 +4362,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price8_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price9_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5046,8 +4372,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_energy_price9_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5056,8 +4380,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch1_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5068,8 +4390,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch2_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5078,8 +4398,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch3_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5090,8 +4408,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch4_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5100,8 +4416,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch5_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch6_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5112,8 +4426,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch6_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch7_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5122,8 +4434,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch7_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch8_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5134,8 +4444,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch8_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch9_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5144,8 +4452,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_firstyear_revenue_dispatch9_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5156,8 +4462,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_ibi_statax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5166,8 +4470,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_ibi_statax_total_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_ibi_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5178,8 +4480,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_ibi_total_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_ibi_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5188,8 +4488,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_ibi_total_fed_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_ibi_total_oth_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5200,8 +4498,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_ibi_total_oth_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_ibi_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5210,8 +4506,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_ibi_total_sta_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5222,8 +4516,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_irr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5232,8 +4524,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_irr_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_itc_fed_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5244,8 +4534,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_itc_fed_total_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_itc_sta_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5254,8 +4542,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_itc_sta_total_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5266,8 +4552,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_itc_total_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_itc_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5276,8 +4560,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_itc_total_fed_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_itc_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5288,8 +4570,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_itc_total_sta_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_latcf_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5298,8 +4578,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_latcf_nom_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_latcf_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5310,8 +4588,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_latcf_real_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_lcoe_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5320,8 +4596,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_lcoe_nom_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_lcoe_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5332,8 +4606,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_lcoe_real_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_lcoptc_fed_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5342,8 +4614,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_lcoptc_fed_nom_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_lcoptc_fed_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5354,8 +4624,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_lcoptc_fed_real_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_lcoptc_sta_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5364,8 +4632,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_lcoptc_sta_nom_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_lcoptc_sta_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5376,8 +4642,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_lcoptc_sta_real_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_lppa_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5386,8 +4650,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_lppa_nom_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_lppa_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5398,8 +4660,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_lppa_real_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_min_cashflow_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5408,8 +4668,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_min_cashflow_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_min_dscr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5420,8 +4678,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_min_dscr_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_npv_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5430,8 +4686,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_npv_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_ppa_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5442,8 +4696,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_ppa_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_ppa_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5452,8 +4704,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_ppa_escalation_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5464,8 +4714,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_present_value_insandproptax_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5474,8 +4722,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_present_value_insandproptax_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Ippppa_Outputs_present_value_oandm_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5486,8 +4732,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_present_value_oandm_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_present_value_oandm_nonfuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5497,8 +4741,6 @@ SAM_EXPORT double SAM_Ippppa_Outputs_present_value_oandm_nonfuel_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Ippppa_Outputs_wacc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5507,6 +4749,4 @@ SAM_EXPORT double SAM_Ippppa_Outputs_wacc_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 

@@ -203,8 +203,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_TOU_demand_single_peak_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -213,8 +211,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_en_electricity_rates_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -226,8 +222,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_rate_escalation_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_annual_min_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -237,8 +231,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_annual_min_charge_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_dc_enable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -247,8 +239,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_dc_enable_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_flat_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -260,8 +250,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_flat_mat_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -271,8 +259,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_sched_weekday_mget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -284,8 +270,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_sched_weekend_mget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -295,8 +279,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_tou_mat_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -308,8 +290,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ec_sched_weekday_mget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ec_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -319,8 +299,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ec_sched_weekend_mget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ec_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -332,8 +310,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ec_tou_mat_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_en_ts_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -342,8 +318,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_en_ts_buy_rate_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -354,8 +328,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_metering_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -364,8 +336,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_metering_option_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_monthly_fixed_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -376,8 +346,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_monthly_fixed_charge_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_monthly_min_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -386,8 +354,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_monthly_min_charge_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -398,8 +364,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_credit_month_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_credit_rollover_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -408,8 +372,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_credit_rollover_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_yearend_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -420,8 +382,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nm_yearend_sell_rate_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_sell_eq_buy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -430,8 +390,6 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_sell_eq_buy_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ts_buy_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -443,8 +401,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ts_buy_rate_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ts_sell_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -455,8 +411,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ts_sell_rate_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -465,8 +419,6 @@ SAM_EXPORT double SAM_Utilityrate5_Lifetime_analysis_period_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate5_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -477,8 +429,6 @@ SAM_EXPORT double SAM_Utilityrate5_Lifetime_inflation_rate_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -487,8 +437,6 @@ SAM_EXPORT double SAM_Utilityrate5_Lifetime_system_use_lifetime_output_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -500,8 +448,6 @@ SAM_EXPORT double* SAM_Utilityrate5_SystemOutput_degradation_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -511,8 +457,6 @@ SAM_EXPORT double* SAM_Utilityrate5_SystemOutput_gen_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Load_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -524,8 +468,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Load_load_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Load_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -535,8 +477,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Load_load_escalation_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_annual_electric_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -548,8 +488,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_annual_electric_load_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_annual_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -559,8 +497,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_annual_energy_value_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_bill_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -572,8 +508,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_bill_load_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_dc_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -583,8 +517,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_dc_fixed_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_dc_fixed_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -596,8 +528,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_dc_fixed_ym_mget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_dc_tou_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -607,8 +537,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_dc_tou_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_dc_tou_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -620,8 +548,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_dc_tou_ym_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -631,8 +557,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_apr_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -644,8 +568,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_apr_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_aug_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -655,8 +577,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_aug_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_dec_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -668,8 +588,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_dec_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_feb_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -679,8 +597,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_feb_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_gross_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -692,8 +608,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_gross_ym_mget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_jan_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -703,8 +617,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_jan_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_jul_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -716,8 +628,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_jul_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_jun_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -727,8 +637,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_jun_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_mar_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -740,8 +648,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_mar_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_may_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -751,8 +657,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_may_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_nov_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -764,8 +668,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_nov_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_oct_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -775,8 +677,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_oct_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_sep_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -788,8 +688,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_sep_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -799,8 +697,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_ec_ym_mget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -812,8 +708,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_fixed_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_fixed_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -823,8 +717,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_fixed_ym_mget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_minimum_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -836,8 +728,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_minimum_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_minimum_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -847,8 +737,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_w_sys_minimum_ym_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_dc_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -860,8 +748,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_dc_fixed_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_dc_fixed_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -871,8 +757,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_dc_fixed_ym_mget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_dc_tou_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -884,8 +768,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_dc_tou_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_dc_tou_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -895,8 +777,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_dc_tou_ym_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -908,8 +788,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_apr_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -919,8 +797,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_apr_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_aug_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -932,8 +808,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_aug_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_dec_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -943,8 +817,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_dec_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_feb_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -956,8 +828,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_feb_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_jan_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -967,8 +837,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_jan_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_jul_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -980,8 +848,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_jul_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_jun_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -991,8 +857,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_jun_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_mar_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1004,8 +868,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_mar_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_may_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1015,8 +877,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_may_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_nov_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1028,8 +888,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_nov_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_oct_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1039,8 +897,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_oct_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_sep_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1052,8 +908,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_sep_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1063,8 +917,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_ec_ym_mget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1076,8 +928,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_fixed_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_fixed_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1087,8 +937,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_fixed_ym_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_minimum_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1100,8 +948,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_minimum_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_minimum_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1111,8 +957,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_charge_wo_sys_minimum_ym_mget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_elec_cost_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1124,8 +968,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_elec_cost_with_system_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_Outputs_elec_cost_with_system_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1134,8 +976,6 @@ SAM_EXPORT double SAM_Utilityrate5_Outputs_elec_cost_with_system_year1_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_elec_cost_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1147,8 +987,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_elec_cost_without_system_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_Outputs_elec_cost_without_system_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1157,8 +995,6 @@ SAM_EXPORT double SAM_Utilityrate5_Outputs_elec_cost_without_system_year1_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_apr_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1170,8 +1006,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_apr_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_aug_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1181,8 +1015,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_aug_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_dec_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1194,8 +1026,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_dec_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_feb_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1205,8 +1035,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_feb_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_jan_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1218,8 +1046,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_jan_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_jul_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1229,8 +1055,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_jul_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_jun_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1242,8 +1066,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_jun_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_mar_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1253,8 +1075,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_mar_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_may_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1266,8 +1086,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_may_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_nov_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1277,8 +1095,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_nov_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_oct_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1290,8 +1106,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_oct_tp_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_sep_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1301,8 +1115,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_w_sys_ec_sep_tp_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_apr_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1314,8 +1126,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_apr_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_aug_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1325,8 +1135,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_aug_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_dec_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1338,8 +1146,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_dec_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_feb_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1349,8 +1155,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_feb_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_jan_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1362,8 +1166,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_jan_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_jul_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1373,8 +1175,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_jul_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_jun_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1386,8 +1186,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_jun_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_mar_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1397,8 +1195,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_mar_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_may_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1410,8 +1206,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_may_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_nov_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1421,8 +1215,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_nov_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_oct_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1434,8 +1226,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_oct_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_sep_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1445,8 +1235,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_energy_wo_sys_ec_sep_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_excess_kwhs_earned_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1458,8 +1246,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_excess_kwhs_earned_ym_mget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_lifetime_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1469,8 +1255,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_lifetime_load_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_charge_w_sys_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1482,8 +1266,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_charge_w_sys_mget
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_charge_wo_sys_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1493,8 +1275,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_charge_wo_sys_mge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_peak_w_sys_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1506,8 +1286,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_peak_w_sys_mget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_peak_wo_sys_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1517,8 +1295,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_monthly_tou_demand_peak_wo_sys_mget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1530,8 +1306,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_net_billing_credits_ym_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1542,8 +1316,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_nm_dollars_applied_ym_mget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_Outputs_savings_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1552,8 +1324,6 @@ SAM_EXPORT double SAM_Utilityrate5_Outputs_savings_year1_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_apr_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1565,8 +1335,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_apr_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_aug_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1576,8 +1344,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_aug_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_dec_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1589,8 +1355,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_dec_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_feb_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1600,8 +1364,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_feb_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_jan_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1613,8 +1375,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_jan_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_jul_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1624,8 +1384,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_jul_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_jun_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1637,8 +1395,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_jun_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_mar_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1648,8 +1404,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_mar_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_may_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1661,8 +1415,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_may_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_nov_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1672,8 +1424,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_nov_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_oct_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1685,8 +1435,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_oct_tp_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_sep_tp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1696,8 +1444,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_surplus_w_sys_ec_sep_tp_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1709,8 +1455,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_true_up_credits_ym_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_two_meter_sales_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1720,8 +1464,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_two_meter_sales_ym_mget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1733,8 +1475,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_utility_bill_w_sys_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_utility_bill_w_sys_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1744,8 +1484,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_utility_bill_w_sys_ym_mget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_utility_bill_wo_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1757,8 +1495,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_utility_bill_wo_sys_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_utility_bill_wo_sys_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1769,8 +1505,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_utility_bill_wo_sys_ym_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate5_Outputs_year1_electric_load_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1779,8 +1513,6 @@ SAM_EXPORT double SAM_Utilityrate5_Outputs_year1_electric_load_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_excess_kwhs_earned_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1792,8 +1524,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_excess_kwhs_earned_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_dc_peak_per_period_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1803,8 +1533,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_dc_peak_per_period_aget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_dc_tou_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1816,8 +1544,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_dc_tou_schedule_aget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_dc_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1827,8 +1553,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_dc_with_system_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_dc_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1840,8 +1564,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_dc_without_system_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_e_fromgrid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1851,8 +1573,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_e_fromgrid_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_e_tofromgrid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1864,8 +1584,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_e_tofromgrid_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_e_togrid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1875,8 +1593,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_e_togrid_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_ec_tou_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1888,8 +1604,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_ec_tou_schedule_aget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_ec_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1899,8 +1613,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_ec_with_system_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_ec_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1912,8 +1624,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_ec_without_system_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_p_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1923,8 +1633,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_p_system_to_load_aget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_p_tofromgrid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1936,8 +1644,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_p_tofromgrid_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_salespurchases_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1947,8 +1653,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_salespurchases_with_sys
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_salespurchases_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1960,8 +1664,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_salespurchases_without_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1971,8 +1673,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_hourly_system_to_load_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_cumulative_excess_generation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1984,8 +1684,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_cumulative_excess_gene
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_dc_fixed_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1995,8 +1693,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_dc_fixed_with_system_a
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_dc_fixed_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2008,8 +1704,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_dc_fixed_without_syste
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_dc_tou_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2019,8 +1713,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_dc_tou_with_system_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_dc_tou_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2032,8 +1724,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_dc_tou_without_system_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2043,8 +1733,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_ec_charge_gross_with_s
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2056,8 +1744,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_ec_charge_with_system_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_ec_charge_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2067,8 +1753,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_ec_charge_without_syst
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2080,8 +1764,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_electricity_to_grid_ag
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_fixed_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2091,8 +1773,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_fixed_with_system_aget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_fixed_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2104,8 +1784,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_fixed_without_system_a
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2115,8 +1793,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_load_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_minimum_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2128,8 +1804,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_minimum_with_system_ag
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_minimum_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2139,8 +1813,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_minimum_without_system
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_peak_w_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2152,8 +1824,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_peak_w_system_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_peak_wo_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2163,8 +1833,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_peak_wo_system_aget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_use_w_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2176,8 +1844,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_use_w_system_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_use_wo_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2187,8 +1853,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_use_wo_system_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2200,8 +1864,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_utility_bill_w_sys_age
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_utility_bill_wo_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2211,8 +1873,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_monthly_utility_bill_wo_sys_ag
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_net_billing_credits_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2224,8 +1884,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_net_billing_credits_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_nm_dollars_applied_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2235,8 +1893,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_nm_dollars_applied_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_true_up_credits_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2248,8 +1904,6 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_true_up_credits_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_two_meter_sales_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2259,6 +1913,4 @@ SAM_EXPORT double* SAM_Utilityrate5_Outputs_year1_two_meter_sales_aget(SAM_table
 	});
 	return result;
 }
-
-
 

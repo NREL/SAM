@@ -59,8 +59,6 @@ SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_Il_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_Io_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -69,8 +67,6 @@ SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_Io_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_Rs_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -81,8 +77,6 @@ SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_Rs_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_Rsh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -91,8 +85,6 @@ SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_Rsh_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_Vop_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -103,8 +95,6 @@ SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_Vop_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_a_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -113,8 +103,6 @@ SAM_EXPORT double SAM_Singlediode_SingleDiodeModel_a_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Singlediode_Outputs_I_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -125,8 +113,6 @@ SAM_EXPORT double SAM_Singlediode_Outputs_I_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediode_Outputs_Isc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -135,8 +121,6 @@ SAM_EXPORT double SAM_Singlediode_Outputs_Isc_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Singlediode_Outputs_V_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -147,8 +131,6 @@ SAM_EXPORT double SAM_Singlediode_Outputs_V_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Singlediode_Outputs_Voc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -157,6 +139,4 @@ SAM_EXPORT double SAM_Singlediode_Outputs_Voc_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 

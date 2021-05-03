@@ -101,8 +101,6 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_albedo_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Poacalib_POACalibrate_array_az_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -112,8 +110,6 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_array_az_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Poacalib_POACalibrate_array_tilt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -122,8 +118,6 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_array_tilt_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Poacalib_POACalibrate_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -135,8 +129,6 @@ SAM_EXPORT double* SAM_Poacalib_POACalibrate_beam_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Poacalib_POACalibrate_diffuse_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -147,8 +139,6 @@ SAM_EXPORT double* SAM_Poacalib_POACalibrate_diffuse_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Poacalib_POACalibrate_elevation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -157,8 +147,6 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_elevation_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Poacalib_POACalibrate_latitude_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -169,8 +157,6 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_latitude_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Poacalib_POACalibrate_longitude_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -179,8 +165,6 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_longitude_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Poacalib_POACalibrate_poa_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -192,8 +176,6 @@ SAM_EXPORT double* SAM_Poacalib_POACalibrate_poa_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Poacalib_POACalibrate_pressure_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -202,8 +184,6 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_pressure_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Poacalib_POACalibrate_tamb_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -214,8 +194,6 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_tamb_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Poacalib_POACalibrate_time_zone_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -224,8 +202,6 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_time_zone_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Poacalib_POACalibrate_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -236,8 +212,6 @@ SAM_EXPORT double SAM_Poacalib_POACalibrate_year_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Poacalib_Outputs_pcalc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -247,6 +221,4 @@ SAM_EXPORT double* SAM_Poacalib_Outputs_pcalc_aget(SAM_table ptr, int* length, S
 	});
 	return result;
 }
-
-
 

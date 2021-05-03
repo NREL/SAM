@@ -89,8 +89,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_N_t_des_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_P_high_limit_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -99,8 +97,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_P_high_limit_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_mc_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -111,8 +107,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_mc_in_des_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_t_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -121,8 +115,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_T_t_in_des_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_UA_total_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -133,8 +125,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_UA_total_des_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_W_dot_net_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -143,8 +133,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_W_dot_net_des_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_mc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -155,8 +143,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_mc_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_rc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -165,8 +151,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_rc_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_t_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -177,8 +161,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_eta_t_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_opt_tol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -187,8 +169,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_opt_tol_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_tol_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -199,8 +179,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_SCO2PowerCycle_I_tol_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_LT_frac_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -209,8 +187,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_LT_frac_des_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_N_mc_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -221,8 +197,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_N_mc_des_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_PR_mc_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -232,8 +206,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_PR_mc_des_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_P_mc_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -242,8 +214,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_P_mc_out_des_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2DesignCycle_Outputs_O_T_array_des_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -255,8 +225,6 @@ SAM_EXPORT double* SAM_Sco2DesignCycle_Outputs_O_T_array_des_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_eta_thermal_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -265,8 +233,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_eta_thermal_des_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_m_dot_PHX_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -277,8 +243,6 @@ SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_m_dot_PHX_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_recomp_frac_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -287,6 +251,4 @@ SAM_EXPORT double SAM_Sco2DesignCycle_Outputs_O_recomp_frac_des_nget(SAM_table p
 	});
 	return result;
 }
-
-
 

@@ -683,6 +683,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_dump_tot_nget(SAM_table ptr, SAM_error *err);

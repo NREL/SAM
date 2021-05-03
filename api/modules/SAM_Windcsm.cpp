@@ -83,8 +83,6 @@ SAM_EXPORT double SAM_Windcsm_WindCsm_hub_height_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_WindCsm_machine_rating_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -93,8 +91,6 @@ SAM_EXPORT double SAM_Windcsm_WindCsm_machine_rating_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_WindCsm_num_bearings_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -105,8 +101,6 @@ SAM_EXPORT double SAM_Windcsm_WindCsm_num_bearings_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_WindCsm_num_blades_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -115,8 +109,6 @@ SAM_EXPORT double SAM_Windcsm_WindCsm_num_blades_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_WindCsm_onboard_crane_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -127,8 +119,6 @@ SAM_EXPORT double SAM_Windcsm_WindCsm_onboard_crane_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_WindCsm_rotor_torque_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -137,8 +127,6 @@ SAM_EXPORT double SAM_Windcsm_WindCsm_rotor_torque_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_WindCsm_turbine_carbon_blades_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -149,8 +137,6 @@ SAM_EXPORT double SAM_Windcsm_WindCsm_turbine_carbon_blades_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_WindCsm_turbine_class_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -159,8 +145,6 @@ SAM_EXPORT double SAM_Windcsm_WindCsm_turbine_class_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_WindCsm_turbine_rotor_diameter_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -171,8 +155,6 @@ SAM_EXPORT double SAM_Windcsm_WindCsm_turbine_rotor_diameter_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_WindCsm_turbine_user_exponent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -181,8 +163,6 @@ SAM_EXPORT double SAM_Windcsm_WindCsm_turbine_user_exponent_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_bedplate_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -193,8 +173,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_bedplate_cost_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_blade_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -203,8 +181,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_blade_cost_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_controls_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -215,8 +191,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_controls_cost_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_drivetrain_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -225,8 +199,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_drivetrain_cost_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_drivetrain_mass_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -237,8 +209,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_drivetrain_mass_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_electrical_connections_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -247,8 +217,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_electrical_connections_cost_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_gearbox_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -259,8 +227,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_gearbox_cost_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_generator_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -269,8 +235,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_generator_cost_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_high_speed_side_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -281,8 +245,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_high_speed_side_cost_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_hub_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -291,8 +253,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_hub_cost_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_hvac_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -303,8 +263,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_hvac_cost_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_low_speed_side_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -313,8 +271,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_low_speed_side_cost_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_main_bearings_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -325,8 +281,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_main_bearings_cost_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_mainframe_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -335,8 +289,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_mainframe_cost_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_pitch_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -347,8 +299,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_pitch_cost_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_rotor_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -357,8 +307,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_rotor_cost_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_rotor_mass_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -369,8 +317,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_rotor_mass_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_spinner_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -379,8 +325,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_spinner_cost_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_tower_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -391,8 +335,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_tower_cost_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_tower_mass_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -401,8 +343,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_tower_mass_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_transformer_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -413,8 +353,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_transformer_cost_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_turbine_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -423,8 +361,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_turbine_cost_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Windcsm_Outputs_variable_speed_electronics_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -435,8 +371,6 @@ SAM_EXPORT double SAM_Windcsm_Outputs_variable_speed_electronics_cost_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Windcsm_Outputs_yaw_system_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -445,6 +379,4 @@ SAM_EXPORT double SAM_Windcsm_Outputs_yaw_system_cost_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
