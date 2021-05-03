@@ -2246,7 +2246,7 @@ property_assessed_value
 1
 1
 1
-1.55131e+06
+1551310
 property_tax_rate
 1
 1
@@ -2480,7 +2480,7 @@ total_direct_cost
 1
 1
 1
-1.36679e+06
+1366790
 total_indirect_cost
 1
 1
@@ -2492,7 +2492,7 @@ total_installed_cost
 1
 1
 1
-1.55131e+06
+1551310
 ui_annual_load
 1
 1
@@ -2510,7 +2510,7 @@ ui_net_capital_cost
 1
 1
 1
-1.55131e+06
+1551310
 ui_wacc
 1
 1

@@ -1295,7 +1295,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-7317
+7359
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
 	//set_ec_schedule_inputs();
@@ -1304,7 +1304,9 @@ on_load{'Utility Rate - Flat'} = define(){
 
 function is_fom_batt()
 {
-	is_batt_tech = ( technology() == 'PV Battery' || technology() == 'Generic Battery' );
+	is_batt_tech = ( technology() == 'PV Battery' 
+					|| technology() == 'Generic Battery' 
+					|| technology() == 'Fuel Cell');
 	is_fom = ( financing() == 'Single Owner' );
 	return ( is_batt_tech && is_fom );
 }
