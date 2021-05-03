@@ -1137,12 +1137,17 @@ RadioChoice
 equations{'batt_bank_power_dc_ac'} = define() {
 	return ${batt_bank_size_dc_ac};
 };
-2175
+3194
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
 	set_bank_sizing();
-	set_duration_choice();
+	//set_duration_choice();
+	is_cap = (value('batt_duration_choice') == 0);
+	
+	show('batt_bank_duration',!is_cap);
+	show('batt_bank_size',is_cap);
+	refresh();
 	
 	on_change{'batt_size_choice'};
 	on_change{'batt_bank_size'};
@@ -1160,7 +1165,16 @@ on_change{'batt_bank_size'} = define(){
 	battsize_warning_check();
 };
 on_change{'batt_bank_power'} = define(){
+	
+	is_cap = (value('batt_duration_choice') == 0);
+	if (!is_cap) {
+		bank_power = value('batt_bank_power');
+		bank_duration = value('batt_bank_duration');
+		bank_size = bank_power * bank_duration;
+		value('batt_bank_size',bank_size);
+	}
 	battsize_warning_check();
+		
 };
 on_change{'batt_bank_size_specify'} = define(){battsize_warning_check();};
 on_change{'batt_duration_choice'} = define()
@@ -1170,6 +1184,13 @@ on_change{'batt_duration_choice'} = define()
 };
 on_change{'batt_bank_duration'} = define()
 {
+	
+	is_cap = (value('batt_duration_choice') == 0);
+	if (!is_cap) {
+		bank_power = value('batt_bank_power');
+		bank_duration = value('batt_bank_duration');
+		value('batt_bank_size',bank_power * bank_duration);
+	}
 	battsize_warning_check();
 };
 function set_bank_sizing()
@@ -1223,9 +1244,24 @@ function set_duration_choice()
 		duration = value('batt_bank_duration');
 		bank_cap_calc = duration * bank_power;
 		value('batt_bank_size', bank_cap_calc);
-		
 	}
 	
 	refresh();
+}
+
+function calc_batt_size() {
+	is_cap = (value('batt_duration_choice') == 0);
+	if (is_cap) {
+		bank_cap = value('batt_bank_size');
+		bank_power = value('batt_bank_power');
+		bank_duration = bank_cap / bank_power;
+		value('batt_bank_duration',batt_duration);
+	}
+	else {
+		bank_duration = value('batt_bank_duration');
+		bank_power = value('batt_bank_power');
+		bank_cap = bank_power * bank_duration;
+		value('batt_bank_size', bank_cap);
+	}
 }
 	
