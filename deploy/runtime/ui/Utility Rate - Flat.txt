@@ -1295,7 +1295,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-7725
+8582
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
 	show('msg_unused_items', value('ur_has_unused_items'));
@@ -1435,7 +1435,7 @@ on_change{'btnSaveRateData'} = define() {
 		else
 		{
 			value( 'ur_ratedata_filename', '' );
-			msgbox('Rate save failed! \n');
+			msgbox('Failed to save rate data to CSV file!\n');
 		}
 	}
 };
@@ -1450,16 +1450,29 @@ on_change{'btnLoadRateData'} = define() {
 		if (urdb_read(file))
 		{	
 			value( 'ur_ratedata_filename', file );
-			msgbox('Rate loaded! \n');
+			// check energy charge max usage units
+			M = value( 'ur_ec_tou_mat' );
+			max_usage_units_msg = '';
+			for ( i=0; i<#M; i++ )
+			{
+				if ( M[i][3] < 0 )
+				{
+					max_usage_units_msg = 'Maximum usage units for energy charge table in imported file was invalid (' + M[i][3] + ') for one or more periods or tiers. Value changed to zero (kWh)';
+					M[i][3] = 0;
+				}
+			}
+			if ( max_usage_units_msg != '' ) { value( 'ur_ec_tou_mat', M ); 	}
+			msgbox('Rate loaded!\n' + max_usage_units_msg);
 		}
 		else
 		{
 			value( 'ur_ratedata_filename', '' );
-			msgbox('Failed to load rate data from file! \n');
+			msgbox('Failed to load rate data from file!\nPlease check that it is correctly formatted. You can save the current rate to file to see what the file format looks like.');
 		}
 		if ( value('ur_metering_option') != 4 && is_fom_batt() )
 		{
-			msgbox('Rate not valid for FOM Battery!\nThe rate you are loading does not use the Buy All / Sell All metering option, which is required for front-of-meter systems with storage. Setting metering option to Buy All / Sell All. Please check the rate data to verify that it is appropriate for your analysis.');
+			metering_options = ['Net energy metering','Net Energy Metering with $ Credits','Net Billing','Net Billing with Carryover to Next Month','Buy All / Sell All'];
+			msgbox('Metering option not valid for FOM Battery!\nThe rate data you are loading uses the ' + metering_options[value('ur_metering_option')] + ' metering option. Front-of-meter systems with storage require the Buy All / Sell All metering option with no sell rates. Changing metering option to Buy All / Sell All. Please check the rate data to verify that it is appropriate for your analysis.');
 			value('ur_metering_option',4);
 		}
 
