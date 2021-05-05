@@ -1967,7 +1967,7 @@ en_electricity_rates
 1
 1
 1
-1
+0
 en_snowloss
 1
 1
@@ -4570,7 +4570,7 @@ ur_metering_option
 1
 1
 1
-0
+4
 ur_monthly_fixed_charge
 1
 1
@@ -4604,7 +4604,7 @@ ur_nm_yearend_sell_rate
 1
 1
 1
-0.0289
+0
 ur_phase_wiring
 1
 4

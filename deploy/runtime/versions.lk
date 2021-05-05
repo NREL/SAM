@@ -104,6 +104,22 @@ version_upgrade{'2020.11.29'} = define() {
         }
     
     }
+
+    // front-of-meter battery set sell rate to zero in case it is incorrectly set to nonzero value
+    if  ( ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ) && cfg.fin == 'Single Owner' )
+    {
+		x = value('ur_ec_tou_mat');
+		y=[];
+		show_msg = false;
+		for (i=0; i<#x; i++ )
+		{
+			if ( x[i][5] != 0 ) { y[i] = [x[i][0],x[i][1],x[i][2],x[i][3],x[i][4],0]; }
+			show_msg = true;
+		}
+		value('ur_ec_tou_mat',y,'Sell rates do not apply for front-of-meter battery systems. Setting all sell rates in time-of-use energy rate table to zero.');
+		message('For front-of-meter battery systems, we have renamed the Electricity Rates input page to Electricity Purchases to make it clearer that those inputs are for electricity purchases to charge the battery.','notice');
+    }
+    
 };
 
 version_upgrade{'2020.2.29'} = define() {
