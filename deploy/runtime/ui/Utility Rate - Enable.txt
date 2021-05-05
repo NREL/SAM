@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-426
-To use retail prices for these power purchases, choose "Enable Electricity Rate" from the list above and download or define an electricity rate structure. With electricity rates enabled, electricity delivered to the grid is sold at the PPA price, and electricity from the grid is purchased at retail rates defined by the rate structure. This assumes there is one meter to measure sales and a separate one to measure purchases.
+395
+The Use Retail Rates option defines an electricity rate structure so that electricity delivered to the grid is sold at the PPA price, and electricity from the grid is purchased at retail rates defined by the rate structure. This assumes there is one meter to measure sales and a separate one to measure purchases. Choose this option when power to charge the battery is purchased at retail rates.
 TextColour
 4
 0
@@ -48,36 +48,6 @@ AlignRight
 2
 0
 AlignTop
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-19
-Utility Rate Enable
-X
-3
-9
-Y
-3
-3
-Width
-3
-1403
-Height
-3
-129
-Tool Tip
-5
-0
-Caption
-5
-23
-Retail Electricity Rate
-Bold
 2
 1
 Label
@@ -105,8 +75,8 @@ Tool Tip
 0
 Caption
 5
-287
-By default, retail electricity rates are disabled for the PPA Single Owner financial model so that any power required to charge the battery or meet inverter nighttime load is treated as negative power generation, which effectively reduces revenue from power sales at the PPA power price.
+288
+The Use PPA Price option treats power required to charge the battery or meet inverter nighttime load as negative power generation, which effectively reduces revenue from power sales at the PPA power price. Choose this option when power to charge the battery is purchased at the PPA price.
 TextColour
 4
 0
@@ -126,6 +96,36 @@ AlignRight
 2
 0
 AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+22
+electricity_rate_group
+X
+3
+9
+Y
+3
+3
+Width
+3
+1403
+Height
+3
+129
+Tool Tip
+5
+0
+Caption
+5
+21
+Electricity Purchases
+Bold
 2
 1
 
