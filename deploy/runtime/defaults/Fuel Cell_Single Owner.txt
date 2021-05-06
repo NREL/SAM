@@ -558,7 +558,7 @@ batt_duration_choice
 1
 1
 1
-1
+0
 batt_gridcharge_percent_1
 1
 1
@@ -2109,7 +2109,7 @@ en_electricity_rates
 1
 1
 1
-1
+0
 en_snowloss
 1
 1
@@ -4772,7 +4772,7 @@ ur_metering_option
 1
 1
 1
-0
+4
 ur_monthly_fixed_charge
 1
 1

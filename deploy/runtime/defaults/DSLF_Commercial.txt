@@ -4343,7 +4343,7 @@ ur_nm_yearend_sell_rate
 1
 1
 1
-0.02789
+0
 ur_phase_wiring
 1
 4

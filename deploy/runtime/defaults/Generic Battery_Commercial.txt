@@ -492,7 +492,7 @@ batt_duration_choice
 1
 1
 1
-1
+0
 batt_gridcharge_percent_1
 1
 1
@@ -2288,7 +2288,7 @@ property_assessed_value
 1
 1
 1
-1.55131e+06
+1551310
 property_tax_rate
 1
 1
@@ -2528,7 +2528,7 @@ total_direct_cost
 1
 1
 1
-1.36679e+06
+1366790
 total_indirect_cost
 1
 1
