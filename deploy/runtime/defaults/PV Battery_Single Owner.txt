@@ -756,7 +756,7 @@ batt_duration_choice
 1
 1
 1
-1
+0
 batt_gridcharge_percent_1
 1
 1
@@ -1157,7 +1157,7 @@ battery_total
 1
 1
 1
-1.43848e+06
+1438480
 battery_voltage_shown
 1
 1
@@ -1940,7 +1940,7 @@ contingency
 1
 1
 1
-1.28821e+06
+1288210
 contingency_percent
 1
 1
@@ -2609,7 +2609,7 @@ engr_total
 1
 1
 1
-3.50016e+06
+3500160
 equip1_reserve_cost
 1
 1
@@ -2735,7 +2735,7 @@ grid_total
 1
 1
 1
-1.50007e+06
+1500070
 ibi_fed_amount
 1
 1
@@ -4113,7 +4113,7 @@ landprep_total
 1
 1
 1
-1.00004e+06
+1000040
 lat
 1
 1
@@ -4929,7 +4929,7 @@ sales_tax_total
 1
 1
 1
-2.21143e+06
+2211430
 sales_tax_value
 1
 1
@@ -7078,7 +7078,7 @@ ur_nm_yearend_sell_rate
 1
 1
 1
-0.02789
+0
 ur_phase_wiring
 1
 4

@@ -383,7 +383,7 @@ batt_initial_SOC
 1
 Initial state of charge
 %
-Batatery Charge Limits
+Battery Charge Limits
 0
 2
 1
@@ -397,7 +397,7 @@ batt_maximum_SOC
 1
 Maximum state of charge
 %
-Batatery Charge Limits
+Battery Charge Limits
 0
 2
 1
@@ -411,7 +411,7 @@ batt_minimum_SOC
 1
 Minimum state of charge
 %
-Batatery Charge Limits
+Battery Charge Limits
 0
 2
 1
@@ -425,7 +425,7 @@ batt_minimum_modetime
 1
 Minimum time at charge state
 min
-Batatery Charge Limits
+Battery Charge Limits
 0
 2
 1
