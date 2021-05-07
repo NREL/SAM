@@ -2540,7 +2540,7 @@ total_installed_cost
 1
 1
 1
-1.55131e+06
+1551310
 total_system_indirect_cost
 1
 1
@@ -2570,7 +2570,7 @@ ui_net_capital_cost
 1
 1
 1
-1.55131e+06
+1551310
 ui_pv_capacity
 1
 1
@@ -2969,7 +2969,7 @@ user_capacity_factor
 1
 1
 1
-100
+20
 utility_bill_data
 1
 2

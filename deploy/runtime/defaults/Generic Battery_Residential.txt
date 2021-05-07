@@ -3149,7 +3149,7 @@ user_capacity_factor
 1
 1
 1
-100
+20
 utility_bill_data
 1
 2
