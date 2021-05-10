@@ -87,7 +87,7 @@ Physical Trough IPH,LCOH Calculator,24216286,NA,NA,; Notice: Piping geometry fil
 DSGL IPH,None,10845376,NA,NA,; 
 DSGL IPH,LCOH Calculator,10845376,NA,NA,; 
 Fuel Cell,Commercial,1937263.625000,8.455160,NA,; 
-Fuel Cell,Single Owner,1911049.750000,47.073650,57.019970,; 
+Fuel Cell,Single Owner,1911049.750000,46.999733,56.969955,; 
 MEwave,LCOE Calculator,59434320,NA,NA,; 
 MEtidal,LCOE Calculator,216151664,NA,NA,; 
 Geothermal Power,Single Owner,262800000,7.340549,7.890485,; 

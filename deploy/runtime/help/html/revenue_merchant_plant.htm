@@ -40,7 +40,184 @@
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
 <p class="p_Text"><span class="f_Text">The Revenue page provides inputs to define the sources of revenue for the merchant plant. A merchant plant can earn revenue for energy and ancillary services and from capacity payments. SAM calculates reports the annual revenue for each type of service in the project <a href="cashflow.htm" class="topiclink">cash flow</a>.</span></p>
 <p class="p_Text"><span class="f_Text">For energy and ancillary services, you can specify cleared capacity and price values for the following time scales over the entire analysis period:</span></p>
-<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Single Value: The same cleared capacity (MW) and price ($/MWh) applies over the entire analysis period.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Monthly: Cleared capacity and price values change from month to month.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Daily: Values change from day to day.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Hourly: Values change hourly.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Subhourly: As long as you use a weather file with the same time step as the pricing time scale, values apply to each simulation time step (30, 20, 15, 10, 5, or 1-minute time steps are allowed).</span></p><p class="p_Text"><span class="f_Text">Annual revenue from capacity payments can be calculated as a fixed price or a price per unit of eligible capacity with an optional annual capacity payment escalation rate.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Single Value: The same cleared capacity (MW) and price ($/MWh) applies over the entire analysis period.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Monthly: Cleared capacity and price values change from month to month.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Daily: Values change from day to day.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Hourly: Values change hourly.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Subhourly: As long as you use a weather file with the same time step as the pricing time scale, values apply to each simulation time step (30, 20, 15, 10, 5, or 1-minute time steps are allowed).</span></p><p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If the power generation (kW) in a given time step is less than the cleared capacity (MW) for energy and ancillary services in that time step, SAM generates a simulation error because this condition would be a violation of the merchant contract.</span></p>
+<p class="p_Text"><span class="f_Text">Annual revenue from capacity payments can be calculated as a fixed price or a price per unit of eligible capacity with an optional annual capacity payment escalation rate.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 6px 0 6px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:18px"><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="9" height="9" style="margin:0;width:9px;height:9px;border:none" src="hmtoggle_arrow1.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Example Compensation Scenarios</a></span></td></tr></table></div><div id="TOGGLE0186A1" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span style="font-family: Verdana,Geneva,Arial,sans-serif;">The following examples show how SAM calculates compensation for energy services, ancillary services, and capacity payments under different conditions for a single time step.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Scenario 1 : Energy service with generation in time step sufficient to meet energy cleared capacity</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table style="border:none; border-spacing:0; border-collapse:collapse;">
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generation</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">65 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy cleared capacity</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">50 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy price</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">30 $/MWh</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Energy Compensation ($) = 50 MW × 1 hour × $30/MWh = $1,500</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Scenario 2: Energy service with generation in time step not sufficient to meet energy cleared capacity.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table style="border:none; border-spacing:0; border-collapse:collapse;">
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generation</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">42 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy cleared capacity</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">50 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy price</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">30 $/MWh</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_VariableDescription"><span class="f_VariableDescription">This scenario causes the simulation to stop because the generation of 42 MW is less than the energy cleared capacity of 50 MW. To resolve the error, either the generation in that time step would need to be increased, or the energy cleared capacity would have to be decreased.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Scenario 3: Energy and ancillary service with generation in time step sufficient to clear both energy and ancillary capacity requirements.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table style="border:none; border-spacing:0; border-collapse:collapse;">
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generation</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">65 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy cleared capacity</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">50 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Ancillary cleared capacity</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">10 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy price</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">$30/MWh</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Ancillary price</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">$15/MWh</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Energy Compensation ($) = 50 MW × 1 hour × $30/MWh = $1,500</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Remaining Capacity Available for Ancillary Service (MW) = 65 MW – 50 MW = 15 MW</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Ancillary Compensation ($) = 10 MW × 1 hour × $15/MWh = $150</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Compensation ($) = $1,500 + $150 = $1,650</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Scenario 4: Energy and ancillary service with generation in time step sufficient to clear energy capacity requirement but not ancillary capacity requirement.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table style="border:none; border-spacing:0; border-collapse:collapse;">
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate capacity</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">100 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generation</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">65 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy cleared capacity</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">50 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Ancillary cleared capacity</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">20 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy price</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">30 $/MWh</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Ancillary price</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">15 $/MWh</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Energy Compensation ($) = 50 MW × 1 hour × $30/MWh = $1,500</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Remaining Capacity Available for Ancillary Service (MW) = 65 MW – 50 MW = 15 MW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">This scenario causes a simulation error because the remaining capacity of 15 MW is less than the ancillary cleared capacity of 20 MW. To resolve the error, either the generation in that time step would need to be increased, or the ancillary cleared capacity would have to be reduced</span><span style="font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Scenario 5 : Energy service and capacity payments with generation in time step sufficient to meet energy cleared capacity.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 24px;"><table style="border:none; border-spacing:0; border-collapse:collapse;">
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate capacity</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">100 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generation</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">65 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy cleared capacity</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">50 MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Energy price</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">30 $/MWh</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Capacity payment amount</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">$100/MW</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Capacity credit</span></p>
+</td>
+<td style="vertical-align:top; width:297px; padding:4px; border:solid thin #000000;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">10%</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Energy Compensation ($) = 50 MW × 1 hour × $30/MWh = $1,500</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Annual capacity revenue ($/year) = 100 MW × $100/MW × 10% = $1,000/year</span></p>
+</td>
+</tr>
+</table>
+</div>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Energy Market Revenue</span></h3>
 <p class="p_Text"><span class="f_Text">Energy market revenue is revenue for capacity available in each time step at the specified price in $/MWh. The cleared capacity is the portion of the generated capacity in a given time step that is compensated at the energy price.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enable energy market revenue</span></p>
@@ -77,5 +254,9 @@
 
 </td></tr></table>
 
+<script type="text/javascript">
+HMInitToggle('TOGGLE0186A1_ICON','hm.type','dropdown','hm.state','0','hm.src0','hmtoggle_arrow0.gif','hm.src1','hmtoggle_arrow1.gif','onclick','HMToggle(\'toggle\',\'TOGGLE0186A1\',\'TOGGLE0186A1_ICON\')');
+HMInitToggle('TOGGLE0186A1','hm.type','dropdown','hm.state','0');
+</script>
 </body>
 </html>

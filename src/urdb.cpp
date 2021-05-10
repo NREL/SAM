@@ -641,7 +641,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 				double sell = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
 				double adj = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
 				wxString units = json_string(ers_tier[tier].Item("unit"));
-				int iunits = -1; // unsupported
+				int iunits = 0; // assume kWh if units not provided
 				if (units.Lower() == "kwh")
 					iunits = 0;
 				else if (units.Lower() == "kwh/kw")
