@@ -3204,7 +3204,7 @@ function nsrdb( location, is_tmy )
 			{
 				str_tmy = '';
 				if ( is_tmy ) { str_tmy = 'TMY'; }
-				msg += 'No ' + str_tmy + 'file available for \"' + location + '\". (Avalable datasets: ' + available_names + ')\n';
+				msg += 'No ' + str_tmy + ' file available for \"' + location + '\". (Avalable datasets: ' + available_names + ')\n\n';
 				msg += 'Try the Advanced Download option or see https://sam.nrel.gov/weather for other sources of data.\n';
 				dataset_ok = false;
 			}
@@ -3330,7 +3330,6 @@ function nsrdb_get()
 			base_url += '?api_key=<SAMAPIKEY>';
 			base_url += '&full_name=sam_user';
 			base_url += '&email=<USEREMAIL>';
-			//base_url += '&email=sam.support@nrel.gov';
 			base_url += '&affiliation=unknown'; 
 			base_url += '&mailing_list=false';
 			base_url += '&reason=SAM';

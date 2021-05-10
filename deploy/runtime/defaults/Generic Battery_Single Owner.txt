@@ -209,6 +209,12 @@ batt_auto_gridcharge_max_daily
 1
 1
 100
+batt_bank_duration
+1
+1
+1
+1
+4
 batt_bank_ncells_serial
 1
 1
@@ -482,6 +488,12 @@ batt_dispatch_update_frequency_hours
 1
 1
 1
+batt_duration_choice
+1
+1
+1
+1
+0
 batt_gridcharge_percent_1
 1
 1
@@ -3496,7 +3508,7 @@ ur_nm_yearend_sell_rate
 1
 1
 1
-0.02789
+0
 ur_phase_wiring
 1
 4

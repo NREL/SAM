@@ -214,6 +214,12 @@ batt_ac_or_dc
 1
 1
 1
+batt_bank_duration
+1
+1
+1
+1
+2
 batt_bank_ncells_serial
 1
 1
@@ -470,6 +476,12 @@ batt_dispatch_auto_can_gridcharge
 1
 0
 batt_dispatch_choice
+1
+1
+1
+1
+0
+batt_duration_choice
 1
 1
 1
