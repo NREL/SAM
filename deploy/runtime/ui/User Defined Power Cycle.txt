@@ -2407,16 +2407,29 @@ Power Cycle
 0
 Default
 
-3091
-equations{ 'ud_W_dot_cool_calc' } = define(){
-	return ${P_ref}*${ud_f_W_dot_cool_des}/100.0; };
+1965
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
 	
 equations{ 'ud_m_dot_design' } = define(){
 	return 1.0; };
 	
+// Just UI indicator
+equations{ 'ud_W_dot_cool_calc' } = define(){
+	return ${P_ref}*${ud_f_W_dot_cool_des}/100.0; };
+
+// Just UI indicator
 equations{ 'ud_COPY_T_HTF_des' } = define(){
 	return ${T_htf_hot_des}; };
 
+// Just UI indicators
 equations{ '$MIMO$ ui_udpc_checks' } = define()
 {
 	obj = ssc_create();
@@ -2424,8 +2437,7 @@ equations{ '$MIMO$ ui_udpc_checks' } = define()
 
 	ret = ssc_exec(obj, 'ui_udpc_checks');
 
-	if(ret==0)
-	{
+	if(ret==0) {
 		n_T_htf_calc = ssc_var(obj, "n_T_htf_pars");		//[MWt-hr]
 		T_htf_low = ssc_var(obj, "T_htf_low");
 		T_htf_des = ssc_var(obj, "T_htf_des");
@@ -2441,8 +2453,7 @@ equations{ '$MIMO$ ui_udpc_checks' } = define()
 		m_dot_des = ssc_var(obj, "m_dot_des");
 		m_dot_high = ssc_var(obj, "m_dot_high");
 	}
-	else
-	{
+	else {
 		n_T_htf_calc = 1./0.;
 		T_htf_low = 1./0.;
 		T_htf_des = 1./0.;
@@ -2477,54 +2488,6 @@ equations{ '$MIMO$ ui_udpc_checks' } = define()
 	ssc_free( obj );
 };
 
-/*
-equations{ '$MIMO$ ui_tes_calcs' } = define()
-{
-	obj = ssc_create();
-
-	ssc_var(obj, "W_dot_pb_des", ${P_ref});			//[MWe]
-	ssc_var(obj, "eta_pb_des", ${design_eff});		//[-]
-	ssc_var(obj, "tes_hrs", ${tshours});			//[hrs]
-	ssc_var(obj, "T_HTF_hot", ${T_htf_hot_des});	//[C]
-	ssc_var(obj, "T_HTF_cold", ${T_htf_cold_des});	//[C]
-	ssc_var(obj, "TES_HTF_code", ${rec_htf});		//[-]
-	ssc_var(obj, "TES_HTF_props", ${field_fl_props});	//[-]
-	ssc_var(obj, "h_tank_min", ${h_tank_min});		//[m]
-	ssc_var(obj, "h_tank", ${h_tank});				//[m]
-	ssc_var(obj, "tank_pairs", ${tank_pairs});		//[-]
-	ssc_var(obj, "u_tank", ${u_tank});				//[-]
-
-	ret = ssc_exec(obj, 'ui_tes_calcs');
-	
-	if(ret==0)
-	{
-		q_tes_des = ssc_var(obj, "q_tes_des");		//[MWt-hr]
-		vol_one_temp_avail = ssc_var(obj, "vol_one_temp_avail");	//[m^3]
-		vol_one_temp_total = ssc_var(obj, "vol_one_temp_total");	//[m^3]
-		d_tank = ssc_var(obj, "d_tank");			//[m]
-		q_dot_loss = ssc_var(obj, "q_dot_loss");	//[MWt]
-		dens = ssc_var(obj, "HTF_dens");			//[kg/m^3]
-	}
-	else
-	{
-		q_tes_des = 1.0/0.0;
-		vol_one_temp_avail = 1.0/0.0;
-		vol_one_temp_total = 1.0/0.0;
-		d_tank = 1.0/0.0;
-		q_dot_loss = 1.0/0.0;
-		dens = 1.0/0.0;
-	}
-	
-	${Q_tes} = q_tes_des;
-	${tes_avail_vol} = vol_one_temp_avail;
-	${vol_tank} = vol_one_temp_total;
-	${csp.pt.tes.tank_diameter} = d_tank;
-	${q_dot_tes_est} = q_dot_loss;
-	${csp.pt.tes.htf_density} = dens;
-	
-	ssc_free( obj );	
-};
-*/
 3165
 on_load{'User Defined Power Cycle'} = define(){
 	on_change{'ud_enable_gen_table'}();
