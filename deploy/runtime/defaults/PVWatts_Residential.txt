@@ -1,5 +1,5 @@
 1
-415
+416
 Monthly_util
 1
 2
@@ -430,6 +430,12 @@ dc_ac_ratio
 1
 1
 1.2
+dc_ratchet_minimum
+1
+1
+1
+1
+1
 debt_fraction
 1
 1

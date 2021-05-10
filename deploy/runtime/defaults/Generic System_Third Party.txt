@@ -1,5 +1,5 @@
 1
-125
+126
 adjust
 1
 5
@@ -60,6 +60,12 @@ conv_eff
 1
 1
 34.118
+dc_ratchet_minimum
+1
+1
+1
+1
+1
 degradation
 1
 2

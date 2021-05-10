@@ -1,5 +1,5 @@
 1
-406
+407
 A_absorber
 1
 1
@@ -681,6 +681,12 @@ d_pipe_tower
 1
 1
 0.4
+dc_ratchet_minimum
+1
+1
+1
+1
+100
 debt_fraction
 1
 1

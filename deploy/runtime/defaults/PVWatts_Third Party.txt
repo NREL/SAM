@@ -1,5 +1,5 @@
 1
-207
+208
 Monthly_util
 1
 2
@@ -199,6 +199,12 @@ dc_ac_ratio
 1
 1
 1.2
+dc_ratchet_minimum
+1
+1
+1
+1
+1
 degradation
 1
 2

@@ -1,5 +1,5 @@
 1
-692
+693
 LeadAcid_q10
 1
 1
@@ -1264,6 +1264,12 @@ dc_degradation
 1
 1
 0.5
+dc_ratchet_minimum
+1
+1
+1
+1
+100
 debt_fraction
 1
 1
@@ -4325,16 +4331,3 @@ user_specified_weather_file
 1
 4
 0
-utility_bill_data
-1
-2
-1
-12
-300 300 300 300 300 400 500 500 400 300 300 300 
-
-wf_nrecords
-1
-1
-1
-1
-8760

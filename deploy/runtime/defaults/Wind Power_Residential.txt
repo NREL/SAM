@@ -1,5 +1,5 @@
 1
-553
+554
 a_error_test_number
 1
 1
@@ -451,6 +451,12 @@ crane_breakdowns_sugg
 1
 1
 0
+dc_ratchet_minimum
+1
+1
+1
+1
+1
 debt_fraction
 1
 1

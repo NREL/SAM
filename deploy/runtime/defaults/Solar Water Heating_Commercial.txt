@@ -1,5 +1,5 @@
 1
-371
+372
 FRUL
 1
 1
@@ -371,6 +371,12 @@ daily_draw
 1
 1
 200
+dc_ratchet_minimum
+1
+1
+1
+1
+100
 debt_fraction
 1
 1

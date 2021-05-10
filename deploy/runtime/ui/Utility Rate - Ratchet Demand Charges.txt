@@ -1,7 +1,7 @@
 Utility Rate - Ratchet Demand Charges
-1413
-691
-6
+1422
+399
+8
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 1403
 Height
 3
-680
+389
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 btn_update_peaks
 X
 3
-693
+723
 Y
 3
-81
+72
 Width
 3
 258
@@ -62,6 +62,107 @@ Update demand peaks with year 1 load peaks
 TabOrder
 3
 4294967295
+Numeric
+
+1
+17
+Name
+5
+18
+dc_ratchet_minimum
+X
+3
+507
+Y
+3
+72
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+21
+Y
+3
+96
+Width
+3
+1232
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+31
+Ratchet Demand Charges by Month
+Bold
+2
+1
 CheckBox
 
 1
@@ -108,13 +209,13 @@ X
 30
 Y
 3
-69
+114
 Width
 3
-646
+1219
 Height
 3
-600
+258
 Tool Tip
 5
 0
@@ -201,7 +302,7 @@ Y
 33
 Width
 3
-90
+96
 Height
 3
 24
@@ -278,7 +379,21 @@ TabOrder
 3
 4294967295
 
-4
+5
+dc_ratchet_minimum
+3
+1
+Minimum billing demand
+kW
+Electricity Rates - Demand Charge Rates
+0
+0
+1
+1
+1
+1
+0
+Default
 ur_dc_enable_ratchet
 3
 1
@@ -310,7 +425,7 @@ Default
 ur_dc_ratchet_firstyear_peaks
 3
 2
-First year demand peaks
+Year 0 demand peaks
 kW
 Electricity Rates - Demand Charge Rates
 0
@@ -337,7 +452,7 @@ months
 Default
 
 0
-451
+933
 on_load{'Utility Rate - Ratchet Demand Charges'} = define() {
 	//update_firstyear_demand_peaks();
 	on_change{'btn_update_peaks'};
@@ -345,6 +460,8 @@ on_load{'Utility Rate - Ratchet Demand Charges'} = define() {
 	is_btm = (fin != "Single Owner");
 	show('btn_update_peaks', is_btm);
 	refresh();
+	on_change{'ur_dc_enable_ratchet'};
+	enable_ratchet_demand_charges();
 };
 
 on_change{'btn_update_peaks'} = define() {
@@ -355,4 +472,20 @@ function update_firstyear_demand_peaks() {
 	if (fin != "Single Owner") {
 		value('ur_dc_ratchet_firstyear_peaks',value('mpeak'));
 	}
+}
+
+on_change{'ur_dc_enable_ratchet'} = define() {
+	enable_ratchet_demand_charges();
+};
+
+function enable_ratchet_demand_charges()
+{
+	is_enabled = (value('ur_dc_enable_ratchet')==1);
+	enable('ur_dc_ratchet',is_enabled);
+	enable('ur_dc_ratchet_lookback',is_enabled);
+	enable('dc_ratchet_minimum',is_enabled);
+	enable('ur_dc_ratchet_firstyear_peaks',is_enabled);
+	enable('btn_update_peaks',is_enabled);
+	refresh();
+
 }

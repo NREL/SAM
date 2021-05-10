@@ -1,5 +1,5 @@
 1
-503
+504
 FossilFill
 1
 2
@@ -929,6 +929,12 @@ csp.gss.tes.temp_loss_f3
 1
 1
 0
+dc_ratchet_minimum
+1
+1
+1
+1
+100
 debt_fraction
 1
 1

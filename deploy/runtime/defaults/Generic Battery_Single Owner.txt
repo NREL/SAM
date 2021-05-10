@@ -1,5 +1,5 @@
 1
-564
+565
 LeadAcid_q10
 1
 1
@@ -1362,6 +1362,12 @@ cp_system_nameplate
 1
 1
 20
+dc_ratchet_minimum
+1
+1
+1
+1
+0
 debt_message
 1
 4
@@ -3575,15 +3581,3 @@ ur_voltage_max
 1
 1
 0
-ur_voltage_min
-1
-1
-1
-1
-0
-user_capacity_factor
-1
-1
-1
-1
-43.6

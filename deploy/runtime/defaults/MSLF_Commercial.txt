@@ -1,5 +1,5 @@
 1
-767
+768
 A_aperture
 1
 1
@@ -1923,6 +1923,12 @@ d_tank
 1
 1
 19.9839
+dc_ratchet_minimum
+1
+1
+1
+1
+100
 debt_fraction
 1
 1

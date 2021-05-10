@@ -1,5 +1,5 @@
 1
-1136
+1137
 A_aperture
 1
 2
@@ -3432,6 +3432,12 @@ dT_cw_ref
 1
 1
 10
+dc_ratchet_minimum
+1
+1
+1
+1
+100
 debt_fraction
 1
 1

@@ -1,5 +1,5 @@
 1
-287
+288
 adjust
 1
 5
@@ -209,6 +209,12 @@ conv_eff
 1
 1
 34.118
+dc_ratchet_minimum
+1
+1
+1
+1
+1
 debt_fraction
 1
 1

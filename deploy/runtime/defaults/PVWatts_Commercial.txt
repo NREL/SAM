@@ -1,5 +1,5 @@
 1
-385
+386
 ac_nameplate
 1
 1
@@ -369,6 +369,12 @@ dc_ac_ratio
 1
 1
 1.2
+dc_ratchet_minimum
+1
+1
+1
+1
+100
 debt_fraction
 1
 1
