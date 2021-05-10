@@ -536,7 +536,7 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
 
     m_profilePlots->SetSelectedNames(settings.GetProperty(wxT("profileSelectedNames")));
 
-    if (m_profilePlots->GetNumberOfSelections() == 0 || settings.GetProperty(wxT("profileSelectedNames")) == wxT("System power generated (kW);")) {
+    if (m_profilePlots->GetNumberOfSelections() == 0) {
         m_profilePlots->SelectDataSetAtIndex(energy_index);
         m_profilePlots->SetMonthIndexSelected(0, true);
         m_profilePlots->SetMonthIndexSelected(1, true);
