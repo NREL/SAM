@@ -87,11 +87,6 @@ add_library(SAM_api SHARED ${SAM_API_SRC} ${SAM_API_MODULES})
 
 target_include_directories(SAM_api PRIVATE include src $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
 
-set_target_properties(SAM_api
-    PROPERTIES
-    DEBUG_POSTFIX "d"
-    )
-
 if (NOT SAM_SKIP_AUTOGEN)
     add_dependencies(SAM_api export_config)
 endif()
