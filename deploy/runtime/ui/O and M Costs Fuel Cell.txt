@@ -2351,7 +2351,7 @@ fc_fuel_cost
 3
 2
 Fuel cell fuel cost
- 
+$/MMBTU
 Operation and Maintenance Costs
 0
 3
@@ -2647,7 +2647,7 @@ ui_batt_capacity
 1
 Battery capacity for cost calculations
 kWh
-Operations and Maintenance Costs
+Operation and Maintenance Costs
 0
 9
 1
@@ -2661,7 +2661,7 @@ ui_fuelcell_capacity
 1
 Battery capacity for cost calculations
 kW
-Operations and Maintenance Costs
+Operation and Maintenance Costs
 0
 9
 1

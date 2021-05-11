@@ -1,6 +1,6 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
 Flat Plate PV,Residential,8740.773438,8.755652,NA,; 
-Flat Plate PV,Commercial,912000.062500,3.139143,NA,; 
+Flat Plate PV,Commercial,912000.062500,3.561718,NA,; 
 Flat Plate PV,Third Party,34963.093750,NA,NA,; 
 Flat Plate PV,Host Developer,912000.062500,428494.875000,1069.999512,; 
 Flat Plate PV,Single Owner,92995000,420642.062500,1070.019287,; 
@@ -123,10 +123,10 @@ PV Battery,Residential,8588.589844,11.205457,NA,;
 PV Battery,Commercial,911877.375000,4.274710,NA,; 
 PV Battery,Third Party,34803.335938,NA,NA,; 
 PV Battery,Host Developer,911877.375000,13.250628,10.808079,; 
-PV Battery,Single Owner,92853624,7.822259,9.770245,; 
-PV Battery,Merchant Plant,92853712,6.944926,NA,; 
+PV Battery,Single Owner,92853624,7.794683,9.770245,; 
+PV Battery,Merchant Plant,92853712,6.917350,NA,; 
 PV Battery,Leveraged Partnership Flip,92853712,7.926886,9.770247,; 
-PV Battery,All Equity Partnership Flip,92853712,9.339341,10.855831,; 
+PV Battery,All Equity Partnership Flip,92853712,9.311765,10.855831,; 
 PV Battery,Sale Leaseback,92853712,9.509977,9.770247,; 
 PVWatts Battery,Residential,8022.692383,11.707509,NA,; 
 PVWatts Battery,Commercial,943666.062500,4.284003,NA,; 
@@ -136,9 +136,9 @@ Generic Battery,Residential,6692.069824,58.621361,NA,;
 Generic Battery,Commercial,361540.093750,24.837135,NA,; 
 Generic Battery,Third Party,6692.069824,NA,NA,; 
 Generic Battery,Host Developer,361540.093750,14.470059,10.830667,; 
-Generic Battery,Single Owner,73190888,20.643936,10.399951,; 
-Generic Battery,Merchant Plant,73190888,19.608706,NA,; 
+Generic Battery,Single Owner,73190888,20.610245,10.399951,; 
+Generic Battery,Merchant Plant,73190888,19.575014,NA,; 
 Generic Battery,Leveraged Partnership Flip,73190888,24.984268,28.888752,; 
-Generic Battery,All Equity Partnership Flip,73190888,28.859419,34.666504,; 
+Generic Battery,All Equity Partnership Flip,73190888,28.825727,34.666504,; 
 Generic Battery,Sale Leaseback,73190888,29.022760,34.666504,; 
 final_configuration_eof,none,NA,NA,NA,
