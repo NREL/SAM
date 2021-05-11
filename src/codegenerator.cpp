@@ -8214,7 +8214,6 @@ bool CodeGen_pySAM::SupportingFiles()
 bool CodeGen_pySAM::Footer()
 {
 	fprintf(m_fp, "\n}\n");
-	fprintf(m_fp, "}\n");
 	return true;
 }
 
