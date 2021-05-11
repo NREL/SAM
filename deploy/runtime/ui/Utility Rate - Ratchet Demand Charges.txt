@@ -230,7 +230,7 @@ ShowButtons
 1
 ShowRows
 2
-1
+0
 ShowRowLabels
 2
 0
@@ -254,7 +254,7 @@ ShowCols
 0
 ShowColLabels
 2
-1
+0
 ColLabels
 5
 47
