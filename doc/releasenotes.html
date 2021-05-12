@@ -73,14 +73,13 @@
 <ul>
 <li>Reorganize battery inputs so that sizing parameters are all in one place and closer to the sizing inputs, and fix issue with sizing using DC and AC capacities. (<a href="https://github.com/NREL/SAM/pull/569">569</a>, <a href="https://github.com/NREL/SAM/pull/560">560</a>)</li>
 <li>Add battery sizing option so battery capacity can be specified in kW and h, or kW and kWh to facilitate parametric simulations on battery capacity. (<a href="https://github.com/NREL/SAM/pull/606">606</a>)</li>
-<li>Fix behind-the-meter battery dispatch issues to prevent accidental discharging of battery to grid. (<a href="https://github.com/NREL/SAM/pull/561">561</a>)</li>
+<li>Fix behind-the-meter battery dispatch issues to prevent accidental discharging of battery to grid by limiting nominal voltage to range specified in voltage table. (Not an issue for electrochemical voltage model.) (<a href="https://github.com/NREL/SAM/pull/561">561</a>, <a href="https://github.com/NREL/ssc/pull/568">568</a>)</li>
 <li>For front-of-meter battery systems, changed the "Utility Rates" page label to "Electricity Purchases" and improved text in user interface to make it clearer that the inputs on that page are for specifying how electricity to charge the battery is purchased. (<a href="https://github.com/NREL/SAM/pull/611">611</a>)</li>
 <li>Fixed issue for front-of-meter battery models that allowed retail sell rate to be non-zero so that battery discharge power was compensated at both the PPA price and sell rate instead of only at the PPA price. (<a href="https://github.com/NREL/SAM/pull/603">603</a>)</li>
 <li>Remove fuel cell and battery variables from results when system does not include a fuel cell or battery. <a href="https://github.com/NREL/SSC/pull/570">570</a></li>
 <li>Shorten some battery output variable labels to make graphs and tables easier to work with. (<a href="https://github.com/NREL/SSC/pull/576">576</a>)</li>
 <li>Fix issues with Lithium-ion NMC lifetime model's calculation of length of day for simulations with one-minute timesteps. (<a href="https://github.com/NREL/SSC/pull/549">549</a>, <a href="https://github.com/NREL/SSC/pull/545">545</a>)</li></li>
 </ul>
-<li>Move Physical Trough user interface equations from SAM to SSC so they are accessible from the SSC API. (<a href="https://github.com/NREL/SAM/pull/607">607</a>)</li>
 <li>Fix LK scripting issue when adding folders to the solar resource library. (<a href="https://github.com/NREL/SAM/pull/611">611</a>)</li>
 <li>Revise Help to improve battery, electricity bill calculation, and other topics. (<a href="https://github.com/NREL/SAM/pull/617">617</a>, <a href="https://github.com/NREL/SAM/pull/602">602</a>)</li>
 </ul>
