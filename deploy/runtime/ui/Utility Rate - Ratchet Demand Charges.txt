@@ -286,36 +286,6 @@ ShowColumn
 ColorMap
 2
 0
-MonthlyFactor
-
-1
-8
-Name
-5
-29
-ur_dc_ratchet_firstyear_peaks
-X
-3
-840
-Y
-3
-33
-Width
-3
-96
-Height
-3
-24
-Tool Tip
-5
-0
-Description
-5
-32
-Year 0 monthly demand peaks (kW)
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -378,6 +348,36 @@ BackColour
 TabOrder
 3
 4294967295
+MonthlyFactor
+
+1
+8
+Name
+5
+28
+ur_dc_ratchet_yearzero_peaks
+X
+3
+840
+Y
+3
+33
+Width
+3
+96
+Height
+3
+24
+Tool Tip
+5
+0
+Description
+5
+32
+Year 0 monthly demand peaks (kW)
+TabOrder
+3
+4294967295
 
 5
 dc_ratchet_minimum
@@ -422,20 +422,6 @@ Electricity Rates - Demand Charge Rates
 1
 0
 Default
-ur_dc_ratchet_firstyear_peaks
-3
-2
-Year 0 demand peaks
-kW
-Electricity Rates - Demand Charge Rates
-0
-0
-1
-2
-1
-1
-0
-Default
 ur_dc_ratchet_lookback
 3
 1
@@ -450,9 +436,23 @@ months
 1
 0
 Default
+ur_dc_ratchet_yearzero_peaks
+3
+2
+Year 0 demand peaks
+kW
+Electricity Rates - Demand Charge Rates
+0
+0
+1
+2
+1
+1
+0
+Default
 
 0
-933
+954
 on_load{'Utility Rate - Ratchet Demand Charges'} = define() {
 	//update_firstyear_demand_peaks();
 	on_change{'btn_update_peaks'};
@@ -469,8 +469,9 @@ on_change{'btn_update_peaks'} = define() {
 };
 
 function update_firstyear_demand_peaks() {
+    fin = financing();
 	if (fin != "Single Owner") {
-		value('ur_dc_ratchet_firstyear_peaks',value('mpeak'));
+		value('ur_dc_ratchet_yearzero_peaks',value('mpeak'));
 	}
 }
 
@@ -484,7 +485,7 @@ function enable_ratchet_demand_charges()
 	enable('ur_dc_ratchet',is_enabled);
 	enable('ur_dc_ratchet_lookback',is_enabled);
 	enable('dc_ratchet_minimum',is_enabled);
-	enable('ur_dc_ratchet_firstyear_peaks',is_enabled);
+	enable('ur_dc_ratchet_yearzero_peaks',is_enabled);
 	enable('btn_update_peaks',is_enabled);
 	refresh();
 
