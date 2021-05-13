@@ -1,5 +1,5 @@
 1
-465
+467
 LeadAcid_q10
 1
 1
@@ -889,7 +889,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+96
 cbi_fed_amount
 1
 1
@@ -1399,7 +1399,7 @@ first_year_output
 1
 1
 1
-361613
+1808064
 first_year_output_peak
 1
 1
@@ -2265,7 +2265,7 @@ property_assessed_value
 1
 1
 1
-1551310
+1.55131e+06
 property_tax_rate
 1
 1
@@ -2499,7 +2499,7 @@ total_direct_cost
 1
 1
 1
-1366790
+1.36679e+06
 total_indirect_cost
 1
 1
@@ -2511,7 +2511,7 @@ total_installed_cost
 1
 1
 1
-1551310
+1.55131e+06
 ui_annual_load
 1
 1
@@ -2529,7 +2529,7 @@ ui_net_capital_cost
 1
 1
 1
-1551310
+1.55131e+06
 ui_wacc
 1
 1
@@ -2610,19 +2610,19 @@ ur_dc_ratchet
 1
 3
 12
-3
-0 0.6 0 
-1 0.6 0 
-2 0.6 0 
-3 0.6 0 
-4 0.6 0 
-5 0.95 1 
-6 0.95 1 
-7 0.95 1 
-8 0.95 1 
-9 0.6 0 
-10 0.6 0 
-11 0.6 0 
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
 
 ur_dc_ratchet_firstyear_peaks
 1
@@ -2960,3 +2960,16 @@ ur_voltage_min
 1
 1
 0
+user_capacity_factor
+1
+1
+1
+1
+100
+utility_bill_data
+1
+2
+1
+12
+300 300 300 300 300 400 500 500 400 300 300 300 
+

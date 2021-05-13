@@ -233,10 +233,11 @@ ShowRows
 0
 ShowRowLabels
 2
-0
+1
 RowLabels
 5
-0
+47
+Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
 ShadeR0C0
 2
 0
@@ -254,11 +255,11 @@ ShowCols
 0
 ShowColLabels
 2
-0
+1
 ColLabels
 5
-47
-Month,Ratchet Value (%),Use Current Month (0/1)
+41
+Ratchet Value (%),Use Current Month (0/1)
 NumRowsLabel
 5
 15
@@ -272,11 +273,10 @@ Layout
 1
 ChoiceColumn
 3
-0
+4294967295
 Choices
 5
-47
-Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
+0
 HideColumn
 3
 4294967295
