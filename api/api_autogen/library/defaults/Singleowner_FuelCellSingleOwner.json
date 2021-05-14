@@ -272,7 +272,7 @@
 			"en_batt": 1
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 1
+			"en_electricity_rates": 0
 		},
 		"SystemOutput": {
 			"degradation": [0.000000],

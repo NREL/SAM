@@ -52,7 +52,7 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [232.290000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 15337.1
+			"total_installed_cost": 15165
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -275,10 +275,10 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 306.742
+			"construction_financing_cost": 303.299
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 4000,
+			"batt_computed_bank_capacity": 19.2154,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 232.29,

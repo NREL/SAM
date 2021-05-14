@@ -6927,6 +6927,17 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_solzen_aget(SAM_table ptr, int* len
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_capacity", &result))
+		make_access_error("SAM_TcsmoltenSalt", "system_capacity");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_tank_losses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
