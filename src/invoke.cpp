@@ -3500,10 +3500,12 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 
 	if ( reloaded != 0 )
 	{
-		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
-		for( size_t i=0;i<objs.size();i++ )
-			if ( LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>() )
-				lc->ReloadLibrary();
+		if (&cc != NULL) {
+			std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+			for (size_t i = 0; i < objs.size(); i++)
+				if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
+					lc->ReloadLibrary();
+		}
 	}
 
     if (reloaded2 != 0)

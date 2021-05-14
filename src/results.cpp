@@ -538,8 +538,22 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
 
     m_profilePlots->SetSelectedNames(settings.GetProperty(wxT("profileSelectedNames")));
 
-    if (m_profilePlots->GetNumberOfSelections() == 0)
+    if (m_profilePlots->GetNumberOfSelections() == 0) {
         m_profilePlots->SelectDataSetAtIndex(energy_index);
+        m_profilePlots->SetMonthIndexSelected(0, true);
+        m_profilePlots->SetMonthIndexSelected(1, true);
+        m_profilePlots->SetMonthIndexSelected(2, true);
+        m_profilePlots->SetMonthIndexSelected(3, true);
+        m_profilePlots->SetMonthIndexSelected(4, true);
+        m_profilePlots->SetMonthIndexSelected(5, true);
+        m_profilePlots->SetMonthIndexSelected(6, true);
+        m_profilePlots->SetMonthIndexSelected(7, true);
+        m_profilePlots->SetMonthIndexSelected(8, true);
+        m_profilePlots->SetMonthIndexSelected(9, true);
+        m_profilePlots->SetMonthIndexSelected(10, true);
+        m_profilePlots->SetMonthIndexSelected(11, true);
+        m_profilePlots->SetMonthIndexSelected(12, true);
+    }
 
     //***Statistics Table Properties:  None
 
@@ -2966,6 +2980,7 @@ void TabularBrowser::UpdateAll()
 			ProcessAdded(tmp[i]);
 		}
 	}
+    
     if (n == 0) {
         int idx = m_names.Index("gen");
         if (idx >= 0)
@@ -2974,6 +2989,7 @@ void TabularBrowser::UpdateAll()
             ProcessAdded("gen");
         }
     }
+    
 	UpdateSelectionExpansion(vsx, vsy);
 }
 void TabularBrowser::UpdateCase()
@@ -2998,6 +3014,10 @@ void TabularBrowser::OnCommand(wxCommandEvent& evt)
             ProcessRemovedAll(sizes[i]);
 
         UpdateAll();
+        ProcessRemoved("gen");
+        int vsx, vsy;
+        UpdateSelectionList(vsx, vsy);
+        UpdateSelectionExpansion(vsx, vsy);
     }
     break;
     case IDOB_COPYCLIPBOARD:
