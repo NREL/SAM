@@ -1,7 +1,7 @@
 Utility Rate - Ratchet Demand Charges
-1422
-399
-8
+1421
+447
+9
 GroupBox
 
 1
@@ -21,14 +21,14 @@ Width
 1403
 Height
 3
-389
+440
 Tool Tip
 5
 0
 Caption
 5
-15
-Demand Ratchets
+24
+Rates for Billing Demand
 Bold
 2
 1
@@ -42,10 +42,10 @@ Name
 btn_update_peaks
 X
 3
-708
+705
 Y
 3
-60
+126
 Width
 3
 258
@@ -72,10 +72,10 @@ Name
 dc_ratchet_minimum
 X
 3
-507
+504
 Y
 3
-63
+129
 Width
 3
 90
@@ -137,7 +137,7 @@ X
 21
 Y
 3
-96
+156
 Width
 3
 1232
@@ -158,9 +158,57 @@ Colour
 255
 Caption
 5
-24
-Demand Ratchets by Month
+23
+Billing Demand by Month
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+36
+Y
+3
+57
+Width
+3
+1149
+Height
+3
+45
+Tool Tip
+5
+0
+Caption
+5
+408
+Use matrix to set billing demand ratchet percentages and rules for considering the current month when calculating the peak billing demand. The year 0 peaks that serve as the basis for year 1 can be based on the monthly electrical load peaks from the Load page or can be user-specified. Set the absolute minimum peak billing demand using the Minimum billing demand input. Maximum lookback period is 12 months.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 CheckBox
@@ -173,10 +221,10 @@ Name
 ur_dc_enable_ratchet
 X
 3
-30
+36
 Y
 3
-36
+27
 Width
 3
 258
@@ -188,8 +236,8 @@ Tool Tip
 0
 Caption
 5
-22
-Enable demand ratchets
+40
+Enable billing demand for energy charges
 State
 2
 0
@@ -206,10 +254,10 @@ Name
 ur_dc_ratchet
 X
 3
-30
+24
 Y
 3
-114
+180
 Width
 3
 1219
@@ -252,14 +300,14 @@ ShadeC0
 0
 ShowCols
 2
-1
+0
 ShowColLabels
 2
 1
 ColLabels
 5
-31
-Ratchet (%),Apply Ratchet (0/1)
+63
+Billing Demand Percentage (%),Consider Actual Peak Demand (0/1)
 NumRowsLabel
 5
 15
@@ -296,10 +344,10 @@ Name
 ur_dc_ratchet_lookback
 X
 3
-507
+504
 Y
 3
-36
+102
 Width
 3
 90
@@ -358,10 +406,10 @@ Name
 ur_dc_ratchet_yearzero_peaks
 X
 3
-840
+837
 Y
 3
-33
+99
 Width
 3
 96
