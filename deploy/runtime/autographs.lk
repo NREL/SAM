@@ -139,7 +139,7 @@ autographs{ 'MEwave' } = define()
 {
 	agraph( 'annual_energy_distribution', 'Annual Energy Production (kWh)', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4); 
 	if (is_assigned('annual_energy_distribution_time')) {
-		agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Month', 'Hour', -1, true, false, 'bottom', 4); 
+		agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Day', 'Hour', -1, true, false, 'bottom', 4); 
 	}
 
 	agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_om_cost_lcoe','LCOE Contribution','','', -1, true, false, 'bottom', 5);
