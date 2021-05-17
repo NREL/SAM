@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-25
-Ratcheting Demand Charges
+15
+Demand Ratchets
 Bold
 2
 1
@@ -42,10 +42,10 @@ Name
 btn_update_peaks
 X
 3
-723
+708
 Y
 3
-72
+60
 Width
 3
 258
@@ -57,8 +57,8 @@ Tool Tip
 0
 Caption
 5
-42
-Update demand peaks with year 1 load peaks
+25
+Copy peaks from load data
 TabOrder
 3
 4294967295
@@ -75,7 +75,7 @@ X
 507
 Y
 3
-72
+63
 Width
 3
 90
@@ -158,8 +158,8 @@ Colour
 255
 Caption
 5
-31
-Ratchet Demand Charges by Month
+24
+Demand Ratchets by Month
 Bold
 2
 1
@@ -188,8 +188,8 @@ Tool Tip
 0
 Caption
 5
-32
-Enable ratcheting demand charges
+22
+Enable demand ratchets
 State
 2
 0
@@ -252,14 +252,14 @@ ShadeC0
 0
 ShowCols
 2
-0
+1
 ShowColLabels
 2
 1
 ColLabels
 5
-41
-Ratchet Value (%),Use Current Month (0/1)
+31
+Ratchet (%),Apply Ratchet (0/1)
 NumRowsLabel
 5
 15
@@ -425,7 +425,7 @@ Default
 ur_dc_ratchet_lookback
 3
 1
-Number of months in lookback window
+Lookback period
 months
  
 0
@@ -439,7 +439,7 @@ Default
 ur_dc_ratchet_yearzero_peaks
 3
 2
-Year 0 demand peaks
+Monthly peaks in Year 0
 kW
 Electricity Rates - Demand Charge Rates
 0
