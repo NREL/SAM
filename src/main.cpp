@@ -121,7 +121,7 @@ static SamApp::ver releases[] = {
 		{ 2021, 3, 25 }, // 2021.3.25 ssc 254 EPRI Beta expires 3/25/2022
 		{ 2021, 3, 8 }, // 2021.3.8 ssc 253 EPRI Beta expires 3/8/2022
 		{ 2021, 2, 24 }, // 2021.2.24 ssc 251 release
-		{ 2020, 11, 29 }, // 2020.11.29 ssc 250 release
+		{ 2020, 11, 29 }, // 2020.11.29 ssc 250 release r1 ssc 252 2/25/2021 and r2 ssc 256 on 5/12/2021
 		{ 2020, 11, 17 }, // 2020.11.17 ssc 247 beta  - expires 11/17/2021
 		{ 2020, 11, 12 }, // 2020.11.12 ssc 246 beta  - expires 11/12/2021
 		{ 2020, 11, 5 }, // 2020.11.5 ssc 245 beta for Ty - expires 11/5/2021

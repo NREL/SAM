@@ -1673,37 +1673,60 @@ Thermal Energy Storage
 0
 Numeric
 
-1781
+2058
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
 
+// Just UI indicator
+equations{ 'TES_COPY_q_pb_design' } = define(){
+	return ${q_pb_design}; };
+
+// Just UI indicator
+equations{ 'TES_COPY_tshours' } = define(){
+	return ${tshours}; };
+
+// Just UI indicator
+equations{ 'TES_COPY_T_htf_hot_des' } = define(){
+	return ${T_loop_out}; };
+
+// Just UI indicator
+equations{ 'TES_COPY_T_htf_cold_des' } = define(){
+	return ${T_loop_in_des}; };
+
+// Outputs just UI indicators
 equations{ '$MIMO$ ui_tes_calcs' } = define()
 {
 	obj = ssc_create();
 
-	ssc_var(obj, "P_ref", ${q_pb_design});			//[MWe]
-	ssc_var(obj, "design_eff", 1.0);		//[-]
-	ssc_var(obj, "tshours", ${tshours});			//[hrs]
-	ssc_var(obj, "T_htf_hot_des", ${T_loop_out});	//[C]
+	ssc_var(obj, "P_ref", ${q_pb_design});				//[MWe]
+	ssc_var(obj, "design_eff", 1.0);					//[-]
+	ssc_var(obj, "tshours", ${tshours});				//[hrs]
+	ssc_var(obj, "T_htf_hot_des", ${T_loop_out});		//[C]
 	ssc_var(obj, "T_htf_cold_des", ${T_loop_in_des});	//[C]
-	ssc_var(obj, "rec_htf", ${Fluid});		//[-]
+	ssc_var(obj, "rec_htf", ${Fluid});					//[-]
 	ssc_var(obj, "field_fl_props", ${field_fl_props});	//[-]
-	ssc_var(obj, "h_tank_min", ${h_tank_min});		//[m]
-	ssc_var(obj, "h_tank", ${h_tank});				//[m]
-	ssc_var(obj, "tank_pairs", ${tank_pairs});		//[-]
-	ssc_var(obj, "u_tank", ${u_tank});				//[-]
+	ssc_var(obj, "h_tank_min", ${h_tank_min});			//[m]
+	ssc_var(obj, "h_tank", ${h_tank});					//[m]
+	ssc_var(obj, "tank_pairs", ${tank_pairs});			//[-]
+	ssc_var(obj, "u_tank", ${u_tank});					//[-]
 
 	ret = ssc_exec(obj, 'ui_tes_calcs');
 	
-	if(ret==0)
-	{
-		q_tes_des = ssc_var(obj, "q_tes");		//[MWt-hr]
+	if(ret==0) {
+		q_tes_des = ssc_var(obj, "q_tes");					//[MWt-hr]
 		vol_one_temp_avail = ssc_var(obj, "tes_avail_vol");	//[m^3]
-		vol_one_temp_total = ssc_var(obj, "vol_tank");	//[m^3]
-		d_tank = ssc_var(obj, "csp_pt_tes_tank_diameter");			//[m]
-		q_dot_loss = ssc_var(obj, "q_dot_tes_est");	//[MWt]
-		dens = ssc_var(obj, "csp_pt_tes_htf_density");			//[kg/m^3]
+		vol_one_temp_total = ssc_var(obj, "vol_tank");		//[m^3]
+		d_tank = ssc_var(obj, "csp_pt_tes_tank_diameter");	//[m]
+		q_dot_loss = ssc_var(obj, "q_dot_tes_est");			//[MWt]
+		dens = ssc_var(obj, "csp_pt_tes_htf_density");		//[kg/m^3]
 	}
-	else
-	{
+	else {
 		q_tes_des = 1.0/0.0;
 		vol_one_temp_avail = 1.0/0.0;
 		vol_one_temp_total = 1.0/0.0;
@@ -1721,26 +1744,6 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	
 	ssc_free( obj );	
 };
-
-// Set System Design Parameters copied from MSPT System Design
-equations{ 'TES_COPY_q_pb_design' } = define(){
-	return ${q_pb_design}; };
-
-equations{ 'TES_COPY_tshours' } = define(){
-	return ${tshours}; };
-
-equations{ 'TES_COPY_T_htf_hot_des' } = define(){
-	return ${T_loop_out}; };
-	
-equations{ 'TES_COPY_T_htf_cold_des' } = define(){
-	return ${T_loop_in_des}; };
-
-
-
-
-
-
-
 
 832
 on_load{"Phys Trough Direct Storage"} = define() {

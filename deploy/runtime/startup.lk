@@ -344,15 +344,15 @@ function setup_utility_rate()
 }
 
 // 'en_electricity_rates' is only an input available for single owner configurations
-function setup_utility_rate_optional()
+function setup_electricity_purchases()
 {
-	addpage( [[{'name'='Utility Rate - Enable','caption'='No Electricity Rate'}],
-			  [{'name'='Utility Rate - Flat', 'caption'='Enable Electricity Rate'},
+	addpage( [[{'name'='Utility Rate - Enable','caption'='Use PPA Price'}],
+			  [{'name'='Utility Rate - Flat', 'caption'='Use Retail Rates'},
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
 			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false},
 			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
-		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates', 'exclusive_var'='en_electricity_rates' } );
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases', 'exclusive_var'='en_electricity_rates' } );
 }
 
 function setup_single_owner_pages()
@@ -730,7 +730,7 @@ addpage( [[ 'PV Capital Costs', 'O and M Costs'],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_single_owner_pages( );
 //addpage( [[ 'Financial Capacity Payments' ]], { 'sidebar'='Ancillary Services', 'help'='ancillary_services' });
-// setup_utility_rate_optional(); // required if utilityrate5 included in config
+// setup_electricity_purchases(); // required if utilityrate5 included in config
 
 setconfig( 'Flat Plate PV', 'Merchant Plant' );
 setmodules( ['pvsamv1', 'grid', 'merchantplant']);
@@ -1057,7 +1057,7 @@ setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs','Fuel Cell O and M Costs' ],
 	[ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell', 'O and M Costs Capex Table']], { 'sidebar'='System Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='fuelcell_system_costs' } );
 setup_single_owner_pages();
-setup_utility_rate_optional();
+setup_electricity_purchases();
 addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
 
 // Geothermal Power ////////////////////////////////////////////////////////////
@@ -1889,7 +1889,7 @@ setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery','O and M Costs Capex Table']], { 'sidebar'='System Costs', 'help'='pv_system_costs','exclusive_var'='pv_capex_cost_choice' } );
 setup_single_owner_pages( );
-setup_utility_rate_optional();
+setup_electricity_purchases();
 
 setconfig( 'PV Battery', 'Merchant Plant' );
 setmodules( ['pvsamv1', 'grid', 'merchantplant']);
@@ -1969,7 +1969,7 @@ setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs','O and M Costs' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_single_owner_pages( );
-setup_utility_rate_optional();
+setup_electricity_purchases();
 
 setconfig( 'Generic Battery', 'Merchant Plant' );
 setmodules( ['generic_system', 'battery', 'grid', 'merchantplant']);

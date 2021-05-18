@@ -5366,41 +5366,15 @@ Physical Trough Receiver Type 1
 1.17192
 ValueMatrix
 
-1236
-equations{ 'csp_dtr_hce_design_heat_loss_1' } = define() {
-	return  ${csp_dtr_hce_var1_field_fraction_1}
-   * ${csp_dtr_hce_var1_rated_heat_loss_1}
-+ ${csp_dtr_hce_var2_field_fraction_1}
-   * ${csp_dtr_hce_var2_rated_heat_loss_1}
-+ ${csp_dtr_hce_var3_field_fraction_1}
-   * ${csp_dtr_hce_var3_rated_heat_loss_1}
-+ ${csp_dtr_hce_var4_field_fraction_1}
-   * ${csp_dtr_hce_var4_rated_heat_loss_1};
-};
-
-equations{ 'csp_dtr_hce_optical_eff_1' } = define() {
-	return  ${csp_dtr_hce_var1_field_fraction_1}
-   * ${csp_dtr_hce_var1_bellows_shadowing_1}
-   * ${csp_dtr_hce_var1_hce_dirt_1}
-   * ${csp_dtr_hce_var1_abs_abs_1}
-   * ${csp_dtr_hce_var1_env_trans_1}
-+ ${csp_dtr_hce_var2_field_fraction_1}
-   * ${csp_dtr_hce_var2_bellows_shadowing_1}
-   * ${csp_dtr_hce_var2_hce_dirt_1}
-   * ${csp_dtr_hce_var2_abs_abs_1}
-   * ${csp_dtr_hce_var2_env_trans_1}
-+ ${csp_dtr_hce_var3_field_fraction_1}
-   * ${csp_dtr_hce_var3_bellows_shadowing_1}
-   * ${csp_dtr_hce_var3_hce_dirt_1}
-   * ${csp_dtr_hce_var3_abs_abs_1}
-   * ${csp_dtr_hce_var3_env_trans_1}
-+ ${csp_dtr_hce_var4_field_fraction_1}
-   * ${csp_dtr_hce_var4_bellows_shadowing_1}
-   * ${csp_dtr_hce_var4_hce_dirt_1}
-   * ${csp_dtr_hce_var4_abs_abs_1}
-   * ${csp_dtr_hce_var4_env_trans_1};
-   
-};
+220
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
 
 3974
 on_change{'apply_receiver_library_1'} = define() {

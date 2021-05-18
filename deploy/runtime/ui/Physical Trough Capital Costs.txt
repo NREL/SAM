@@ -4326,7 +4326,18 @@ Physical Trough Capital Costs
 0
 Numeric
 
-3896
+4146
+//
+//  ONLY ADD UI INDICATOR AND AGGREGATOR EQUATIONS BELOW!
+//
+//   if the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
+
+// All of the below are just UI indicators:
+
 equations{ 'direct_subtotal'} = define() {
   return ${csp.dtr.cost.site_improvements} +
 		 ${csp.dtr.cost.solar_field} +
@@ -4338,8 +4349,7 @@ equations{ 'direct_subtotal'} = define() {
 };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}+${csp.dtr.cost.sales_tax.total};
-};
+	return ${total_direct_cost}+${total_indirect_cost}+${csp.dtr.cost.sales_tax.total}; };
 
 equations{ 'csp.dtr.cost.installed_per_capacity' } = define() {
 	return 0.001*${total_installed_cost}/${csp.dtr.pwrb.nameplate}; };
@@ -4361,13 +4371,13 @@ equations{ 'csp.dtr.cost.nameplate' } = define() {
 
 equations{ 'total_direct_cost' } = define() {
 	return ${csp.dtr.cost.contingency}
-+${csp.dtr.cost.site_improvements}
-+${csp.dtr.cost.solar_field}
-+${csp.dtr.cost.htf_system}
-+${csp.dtr.cost.storage}
-+${csp.dtr.cost.fossil_backup}
-+${csp.dtr.cost.power_plant} 
-+${csp.dtr.cost.bop}; };
+	+${csp.dtr.cost.site_improvements}
+	+${csp.dtr.cost.solar_field}
+	+${csp.dtr.cost.htf_system}
+	+${csp.dtr.cost.storage}
+	+${csp.dtr.cost.fossil_backup}
+	+${csp.dtr.cost.power_plant} 
+	+${csp.dtr.cost.bop}; };
 
 equations{ 'csp.dtr.cost.contingency' } = define() {
 	return ${csp.dtr.cost.contingency_percent}/100*(
@@ -4399,15 +4409,15 @@ equations{ 'csp.dtr.cost.solar_field.area' } = define() {
 
 equations{ 'csp.dtr.cost.plm.total' } = define() {
 	return ${csp.dtr.cost.plm.per_acre}*${csp.dtr.cost.total_land_area} 
-+ ${csp.dtr.cost.plm.percent}/100*${total_direct_cost} 
-+ ${csp.dtr.cost.nameplate}*1000000*${csp.dtr.cost.plm.per_watt} 
-+ ${csp.dtr.cost.plm.fixed}; };
+	+ ${csp.dtr.cost.plm.percent}/100*${total_direct_cost} 
+	+ ${csp.dtr.cost.nameplate}*1000000*${csp.dtr.cost.plm.per_watt} 
+	+ ${csp.dtr.cost.plm.fixed}; };
 
 equations{ 'csp.dtr.cost.epc.total' } = define() {
 	return ${csp.dtr.cost.epc.per_acre}*${csp.dtr.cost.total_land_area} 
-+ ${csp.dtr.cost.epc.percent}/100*${total_direct_cost} 
-+ ${csp.dtr.cost.nameplate}*1000000*${csp.dtr.cost.epc.per_watt} 
-+ ${csp.dtr.cost.epc.fixed}; };
+	+ ${csp.dtr.cost.epc.percent}/100*${total_direct_cost} 
+	+ ${csp.dtr.cost.nameplate}*1000000*${csp.dtr.cost.epc.per_watt} 
+	+ ${csp.dtr.cost.epc.fixed}; };
 
 equations{ 'csp.dtr.cost.storage.mwht' } = define() {
 	return ${csp.dtr.tes.thermal_capacity}; };
@@ -4435,7 +4445,6 @@ equations{ 'csp.dtr.cost.site_improvements' } = define() {
 
 equations { 'system_use_recapitalization' } = define () {
 	return 0;};
-
 
 136
 on_load{"DTR Capital Costs"}=define()
