@@ -1,5 +1,5 @@
 1
-1189
+1193
 A_aperture
 1
 2
@@ -1652,7 +1652,7 @@ csp.dtr.cost.plm.total
 1
 1
 1
-8215107
+8215106
 csp.dtr.cost.power_plant
 1
 1
@@ -3370,7 +3370,7 @@ csp_dtr_sca_calc_theta_1
 1
 1
 1
-0.151417
+0.151418
 csp_dtr_sca_calc_theta_2
 1
 1
@@ -3394,7 +3394,7 @@ csp_dtr_sca_calc_zenith_1
 1
 1
 1
-0.15062
+0.150622
 csp_dtr_sca_calc_zenith_2
 1
 1
@@ -5666,7 +5666,7 @@ max_field_flow_velocity
 1
 1
 1
-3.74479
+3.74475
 mc_bal_cold
 1
 1
@@ -5723,7 +5723,7 @@ min_field_flow_velocity
 1
 1
 1
-0.268562
+0.268559
 min_inner_diameter
 1
 1
@@ -6657,7 +6657,7 @@ total_indirect_cost
 1
 1
 1
-80474208
+61205112
 total_installed_cost
 1
 1
@@ -6737,6 +6737,12 @@ ud_COPY_T_HTF_des
 1
 1
 391
+ud_Q_dot_HTF_ND_des
+1
+1
+1
+1
+0.999999
 ud_T_amb_des
 1
 1
@@ -6821,6 +6827,18 @@ ud_W_dot_cool_calc
 1
 1
 0
+ud_W_dot_cooling_ND_des
+1
+1
+1
+1
+1
+ud_W_dot_gross_ND_des
+1
+1
+1
+1
+0.998402
 ud_enable_gen_table
 1
 1
@@ -7061,6 +7079,12 @@ ud_m_dot_low_calc
 1
 1
 0.3
+ud_m_dot_water_ND_des
+1
+1
+1
+1
+1
 ud_m_dot_water_cool_des
 1
 1

@@ -44,5 +44,5 @@ branches:
   - master
   - develop
   - patch
-  - SAM22_stochastic
+  - ssc_574_SAM_608
   - Command_line_script

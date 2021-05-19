@@ -1442,70 +1442,7 @@ Physical Trough Collector Type 4
 5
 Numeric
 
-1826
-equations{ 'csp_dtr_sca_calc_end_loss_4' } = define() {
-	return  1 - (${csp_dtr_sca_ave_focal_len_4}*tan(${csp_dtr_sca_calc_theta_4}) 
-- ( ${nSCA} - 1) / ${nSCA} * ${csp_dtr_sca_calc_end_gain_4})
- / (${csp_dtr_sca_length_4}*${csp_dtr_sca_ncol_per_sca_4}); };
-
-equations{ 'csp_dtr_sca_calc_iam_4' } = define() {
-	IAM = ${IAMs_4}[0];
-	l_IAM = #${IAMs_4};
-	if(l_IAM < 2)
-	{
-		return IAM;
-	}
-	else
-	{
-		for(i=1;i<l_IAM;i++)
-		{
-			IAM = IAM + ${IAMs_4}[i]*
-			pow(${csp_dtr_sca_calc_theta_4},i)/${csp_dtr_sca_calc_costh_4};
-		}
-		return IAM;
-	}
-//	return ${csp_dtr_sca_iam0_4}
-//+ ${csp_dtr_sca_calc_theta_4}/${csp_dtr_sca_calc_costh_4}*${csp_dtr_sca_iam1_4}
-//+ pow(${csp_dtr_sca_calc_theta_4},2)/${csp_dtr_sca_calc_costh_4}*${csp_dtr_sca_iam2_4}; 
-};
-
-equations{ 'csp_dtr_sca_ap_length_4' } = define() {
-	return ${csp_dtr_sca_length_4}/${csp_dtr_sca_ncol_per_sca_4};
-};
-
-equations{ 'csp_dtr_sca_calc_latitude_4' } = define() {
-	return ${lat};
-};
-
-equations{ 'csp_dtr_sca_calc_zenith_4' } = define() {
-	return 3.1415926/180*(90-(90-(${lat}-23.5)));
-};
-
-equations{ 'csp_dtr_sca_calc_costh_4' } = define() {
-	return  sqrt(1 - pow(cos(1.57-${csp_dtr_sca_calc_zenith_4}-${tilt}) - cos(${tilt}) 
-               * cos(1.57-${csp_dtr_sca_calc_zenith_4}) * (1 - cos(0 - ${azimuth})), 2)
-				);
-};
-
-equations{ 'csp_dtr_sca_calc_end_gain_4' } = define() {
-	return  max( ${csp_dtr_sca_ave_focal_len_4} * tan( ${csp_dtr_sca_calc_theta_4} ) 
-				- ${csp_dtr_sca_piping_dist_4},
-				 0);
-};
-
-equations{ 'csp_dtr_sca_calc_theta_4' } = define() {
-	return acos(${csp_dtr_sca_calc_costh_4});
-};
-
-equations{ 'csp_dtr_sca_calc_sca_eff_4' } = define() {
-	return  ${csp_dtr_sca_tracking_error_4}
-			* ${csp_dtr_sca_geometry_effects_4}
-			* ${csp_dtr_sca_clean_reflectivity_4}
-			* ${csp_dtr_sca_mirror_dirt_4}
-			* ${csp_dtr_sca_general_error_4};
-};
-
-
+0
 1051
 on_change{'apply_collector_library_4'} = define() {
     
