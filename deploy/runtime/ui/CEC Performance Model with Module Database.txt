@@ -1,7 +1,7 @@
 CEC Performance Model with Module Database
 1017
 1184
-60
+61
 GroupBox
 
 1
@@ -1368,6 +1368,68 @@ BackColour
 TabOrder
 3
 15
+Numeric
+
+1
+17
+Name
+5
+27
+cec_ground_clearance_height
+X
+3
+852
+Y
+3
+855
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Choice
 
 1
@@ -3021,7 +3083,7 @@ AlignTop
 2
 1
 
-46
+47
 alpha_sc_calc
 3
 1
@@ -3246,6 +3308,20 @@ PV Module (CEC Database)
 1
 0.05
 Numeric
+cec_ground_clearance_height
+3
+1
+Heat transfer ground clearance height
+m
+ 
+0
+2
+1
+1
+1
+1
+0
+Default
 cec_heat_transfer
 3
 1
@@ -3367,7 +3443,7 @@ Lacunarity Length scale
 m
  
 0
-2
+8
 1
 1
 1
@@ -3667,7 +3743,7 @@ PV Module (CEC Database)
 Total Irradiance = 1000 W/m2, Cell temp = 25 C
 TextEntry
 
-685
+918
 equations{ 'cec_p_mp_ref' } = define() {
 	return ${cec_i_mp_ref}*${cec_v_mp_ref}; };
 
@@ -3691,6 +3767,12 @@ equations{ 'gamma_r_calc' } = define() {
 	
 equations{'cec_step'} = define() {
 	return ${step};
+};
+
+equations{'cec_lacunarity_length'} = define() {
+	return -77.8775 + 1.5627*${cec_ground_clearance_height} +
+		0.8455*${ui_subarray1_length_side}/${subarray1_gcr} +
+		22.1391*${ui_subarray1_length_side} + 0.0069*${subarray1_tilt};
 };
 3074
 function cec_module_update_ui()
