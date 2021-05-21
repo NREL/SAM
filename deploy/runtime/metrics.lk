@@ -402,18 +402,36 @@ function MEwave_metrics()
 	
 	//metric_table('Table1', {'headers'='Metric,Value'});
 	//me_lcoefcr_metrics();
-	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
-	metric( 'device_average_power', {'label'='Average power per device', 'mode'='f', 'deci'='0', 'thousep'='true','post'=' kW', 'tableName'='Table1' } );
-	metric( 'system_capacity', {'label'='System capacity', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' kW', 'tableName'='Table1'});
-	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' %', 'tableName'='Table1'});
-
-	metric_table('Table2', {'headers'='Costs,$ million,$/kW,LCOE'});
-	metric_row( 'total_installed_cost_mill,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
-	metric_row( 'device_costs_total_mill,total_device_cost_per_kw,total_device_cost_kwh', {'label'='-  Device cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
-	metric_row( 'balance_of_system_cost_total_mill,total_bos_cost_per_kw,total_bos_cost_kwh', {'label'='-  Balance of system cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
-	metric_row( 'financial_cost_total_mill,total_financial_cost_per_kw,total_financial_cost_kwh', {'label'='-  Financial cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
-	metric_row( 'total_operating_cost_mill,total_operations_cost_per_kw,total_om_cost_kwh', {'label'='O&M cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill/yr, $/kW/yr, $/kWh', 'tableName'='Table2' });
+	if(value('system_capacity') > 1) {
+		metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
+		metric( 'device_average_power', {'label'='Average power per device', 'mode'='f', 'deci'='0', 'thousep'='true','post'=' kW', 'tableName'='Table1' } );
+		metric( 'system_capacity', {'label'='System capacity', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' kW', 'tableName'='Table1'});
+		metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' %', 'tableName'='Table1'});
+	}
+	else {
+		metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' Wh', 'tableName'='Table1', 'scale'='1000' } );
+		metric( 'device_average_power', {'label'='Average power per device', 'mode'='f', 'deci'='0', 'thousep'='true','post'=' W', 'tableName'='Table1','scale'='1000' } );
+		metric( 'system_capacity', {'label'='System capacity', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' W', 'tableName'='Table1','scale'='1000'});
+		metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' %', 'tableName'='Table1','scale'='1'});
+	}
 	
+	if(value('total_installed_cost_mill') > 1) {
+		metric_table('Table2', {'headers'='Costs,$ million,$/kW,LCOE'});
+		metric_row( 'total_installed_cost_mill,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'device_costs_total_mill,total_device_cost_per_kw,total_device_cost_kwh', {'label'='-  Device cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'balance_of_system_cost_total_mill,total_bos_cost_per_kw,total_bos_cost_kwh', {'label'='-  Balance of system cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'financial_cost_total_mill,total_financial_cost_per_kw,total_financial_cost_kwh', {'label'='-  Financial cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'total_operating_cost_mill,total_operations_cost_per_kw,total_om_cost_kwh', {'label'='O&M cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill/yr, $/kW/yr, $/kWh', 'tableName'='Table2' });
+	}
+	else {
+		metric_table('Table2', {'headers'='Costs,$ ,$/kW,LCOE'});
+		metric_row( 'total_installed_cost,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'device_costs_total,total_device_cost_per_kw,total_device_cost_kwh', {'label'='-  Device cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'balance_of_system_cost_total,total_bos_cost_per_kw,total_bos_cost_kwh', {'label'='-  Balance of system cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'financial_cost_total,total_financial_cost_per_kw,total_financial_cost_kwh', {'label'='-  Financial cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'total_operating_cost,total_operations_cost_per_kw,total_om_cost_kwh', {'label'='O&M cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $/yr, $/kW/yr, $/kWh', 'tableName'='Table2' });
+
+	}
 }
 
 function MEtidal_metrics() 
@@ -423,10 +441,18 @@ function MEtidal_metrics()
 	
 	//metric_table('Table1', {'headers'='Metric,Value'});
 	//me_lcoefcr_metrics();
-	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
-	metric( 'device_average_power', {'label'='Average power per device', 'mode'='f', 'deci'='0', 'thousep'='true','post'=' kW', 'tableName'='Table1' } );
-	metric( 'system_capacity', {'label'='System capacity', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' kW', 'tableName'='Table1'});
-	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' %', 'tableName'='Table1'});
+	if(value('system_capacity') > 1) {
+		metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
+		metric( 'device_average_power', {'label'='Average power per device', 'mode'='f', 'deci'='0', 'thousep'='true','post'=' kW', 'tableName'='Table1' } );
+		metric( 'system_capacity', {'label'='System capacity', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' kW', 'tableName'='Table1'});
+		metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' %', 'tableName'='Table1'});
+	}
+	else {
+		metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1', 'scale'='1' } );
+		metric( 'device_average_power', {'label'='Average power per device', 'mode'='f', 'deci'='0', 'thousep'='true','post'=' W', 'tableName'='Table1','scale'='1000' } );
+		metric( 'system_capacity', {'label'='System capacity', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' W', 'tableName'='Table1','scale'='1000'});
+		metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= ' %', 'tableName'='Table1','scale'='1'});
+	}
 
 	/*metric_table('Table3', {'headers'='Costs,Cost per Production, Cost per Capacity'});
 	metric_row( 'total_capital_cost_per_kwh,total_capital_cost_per_kw', {'label'='Total capital cost', 'mode'='f,f', 'deci'='2,2', 'thousep'='true,true', 'post'= '$/kWh,$/kW', 'tableName'='Table3' });
@@ -443,12 +469,23 @@ function MEtidal_metrics()
 	metric_row( 'total_operating_cost_mill,total_operations_cost_per_kw,total_operations_cost_kwh,', {'label'='O&M cost (annual)', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= '$mill,$/kW/yr,$/kWh', 'tableName'='Table2' });
 	*/
 	
-	metric_table('Table3', {'headers'='Costs,$ million,$/kW,LCOE'});
-	metric_row( 'total_installed_cost_mill,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table3' });
-	metric_row( 'device_costs_total_mill,total_device_cost_per_kw,total_device_cost_kwh', {'label'='-  Device cost', 'mode'='f,f,f', 'deci'='2,0,2,', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table3' });
-	metric_row( 'balance_of_system_cost_total_mill,total_bos_cost_per_kw,total_bos_cost_kwh', {'label'='-  Balance of system cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table3' });
-	metric_row( 'financial_cost_total_mill,total_financial_cost_per_kw,total_financial_cost_kwh', {'label'='-  Financial cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table3' });
-	metric_row( 'total_operating_cost_mill,total_operations_cost_per_kw,total_om_cost_kwh', {'label'='O&M cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill/yr, $/kW/yr, $/kWh', 'tableName'='Table3' });
+	if(value('total_installed_cost_mill') > 1) {
+		metric_table('Table2', {'headers'='Costs,$ million,$/kW,LCOE'});
+		metric_row( 'total_installed_cost_mill,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'device_costs_total_mill,total_device_cost_per_kw,total_device_cost_kwh', {'label'='-  Device cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'balance_of_system_cost_total_mill,total_bos_cost_per_kw,total_bos_cost_kwh', {'label'='-  Balance of system cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'financial_cost_total_mill,total_financial_cost_per_kw,total_financial_cost_kwh', {'label'='-  Financial cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'total_operating_cost_mill,total_operations_cost_per_kw,total_om_cost_kwh', {'label'='O&M cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $mill/yr, $/kW/yr, $/kWh', 'tableName'='Table2' });
+	}
+	else {
+		metric_table('Table2', {'headers'='Costs,$ ,$/kW,LCOE'});
+		metric_row( 'total_installed_cost,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'device_costs_total,total_device_cost_per_kw,total_device_cost_kwh', {'label'='-  Device cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'balance_of_system_cost_total,total_bos_cost_per_kw,total_bos_cost_kwh', {'label'='-  Balance of system cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'financial_cost_total,total_financial_cost_per_kw,total_financial_cost_kwh', {'label'='-  Financial cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'total_operating_cost,total_operations_cost_per_kw,total_om_cost_kwh', {'label'='O&M cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $/yr, $/kW/yr, $/kWh', 'tableName'='Table2' });
+
+	}
 }
 
 metrics{ 'High-X Concentrating PV' } = define() { generic_hcpv_metrics(); };

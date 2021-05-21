@@ -2178,7 +2178,7 @@ equations {'maintenance_override_check'} = define() {
 
 
 
-3911
+3932
 on_load{'Marine Costs - Maintenance'} = define() {
 	on_change{'detailed_cost_choice_scheduled_maintenance'};
 	detailed_cost_scheduled_maintenance();
@@ -2278,5 +2278,6 @@ function enable_itemized_maintenance()
 		detailed_cost_scheduled_maintenance();
 		detailed_cost_unscheduled_maintenance();
 	}
+	override_om_cost();
 	refresh();
 }

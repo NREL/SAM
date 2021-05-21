@@ -2495,10 +2495,9 @@ equations {'financial_itemized_shown'} = define() {
 
 
 
-2923
+2914
 on_load{'Marine Costs - Financial'} = define() {
-	on_change{'financial_cost_override'};
-	override_financial_cost();
+	
 	
 	//Project Contingency Budget
 	show('project_contingency_cost_total',value('project_contingency_cost_method')==3);
@@ -2520,6 +2519,9 @@ on_load{'Marine Costs - Financial'} = define() {
 	show('other_financial_cost_input',value('other_financial_cost_method')!=3);
 	enable('other_financial_cost_input',value('other_financial_cost_method')!=2);
 	
+	on_change{'financial_cost_override'};
+	override_financial_cost();
+	
 	refresh();
 };
 
@@ -2538,26 +2540,26 @@ function override_financial_cost()
 	
 	//Project Contingency Budget Inputs
 	enable('project_contingency_budget_cost',override_value==0);
-	//enable('project_contingency_cost_input',override_value==0);
+	enable('project_contingency_cost_input',override_value==0);
 	enable('project_contingency_cost_method',override_value==0);
 	//enable('project_contingency_cost_modeled',override_value==0);
 	
 	//Insurance during Construction Inputs
 	enable('insurance_during_construction_cost',override_value==0);
-	//enable('insurance_during_construction_cost_input',override_value==0);
-	enable('insurance_during_construction_cost_method',override_value==0);
+	enable('insurance_during_construction_cost_input',override_value==0);
+	enable('insurance_during_construction_method',override_value==0);
 	//enable('insurance_during_construction_cost_modeled',override_value==0);
 	
 	//Reserve Accounts Inputs
 	enable('reserve_accounts_cost',override_value==0);
-	//enable('reserve_accounts_cost_input',override_value==0);
+	enable('reserve_accounts_cost_input',override_value==0);
 	enable('reserve_accounts_cost_method',override_value==0);
 	//enable('reserve_accounts_cost_modeled',override_value==0);
 	//enable('reserve_accounts_cost_total',override_value==0);
 	
 	//Other Financial Cost Inputs
 	enable('other_financial_cost',override_value==0);
-	//enable('other_financial_cost_input',override_value==0);
+	enable('other_financial_cost_input',override_value==0);
 	enable('other_financial_cost_method',override_value==0);
 	//enable('other_financial_cost_modeled',override_value==0);
 	
