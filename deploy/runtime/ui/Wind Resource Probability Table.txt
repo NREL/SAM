@@ -1,6 +1,6 @@
-Wind Resource Distribution
-777
-668
+Wind Resource Probability Table
+757
+663
 2
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 3
 Width
 3
-761
+744
 Height
 3
 656
@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-37
-Define the Wind Resource Distribution
+55
+Define the Wind Resource using a Table of Probabilities
 Bold
 2
 1
@@ -48,7 +48,7 @@ Y
 24
 Width
 3
-742
+730
 Height
 3
 624
