@@ -1665,8 +1665,8 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 					GraphCtrl* gc = new GraphCtrl(m_layout, wxID_ANY);
 					if (m_input_names.Count() > 2) { // previous bar graph behavior with runs sorted
 						std::vector<Simulation*> orderedSims;
-						auto& rowOrder = m_grid_data->GetRowSortOrder();
-						auto& unorderedSim = m_grid_data->GetRuns();
+						auto rowOrder = m_grid_data->GetRowSortOrder();
+						auto unorderedSim = m_grid_data->GetRuns();
 						if (unorderedSim.size() == rowOrder.size()) {
 							for (size_t i = 0; i < rowOrder.size(); i++)
 								orderedSims.push_back(unorderedSim[rowOrder[i]]);
