@@ -35,7 +35,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/metro.h>
 #include <wex/utils.h>
 #include <wex/snaplay.h>
+#ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
+#endif
 
 #include "parametric.h"
 #include "main.h"
