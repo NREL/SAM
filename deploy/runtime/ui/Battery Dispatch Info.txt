@@ -1,0 +1,87 @@
+Battery Dispatch Info
+1070
+127
+2
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+12
+Width
+3
+1042
+Height
+3
+105
+Tool Tip
+5
+0
+Caption
+5
+27
+Storage Dispatch Controller
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+81
+Y
+3
+66
+Width
+3
+867
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+73
+Insert informative text about the different battery dispatch options here
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+
+0
+
+0
+0

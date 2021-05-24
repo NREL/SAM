@@ -2898,11 +2898,12 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-6360
+6403
 on_load{'Battery Dispatch Manual'}=define()
 {	
+	value('batt_dispatch_choice', 4);
 	show_label();
-	toggle_dispatch();
+	//toggle_dispatch();
 		
 	on_change{'pv.storage.p1.discharge'};
 	on_change{'pv.storage.p2.discharge'};
@@ -2984,6 +2985,7 @@ function toggle_gridcharge_percent()
 	enable('batt_gridcharge_percent_5', (value('pv.storage.p5.gridcharge')==1));
 	enable('batt_gridcharge_percent_6', (value('pv.storage.p6.gridcharge')==1));
 }
+/*
 function toggle_dispatch()
 {
 	allow_grid_charge = true;
@@ -3031,6 +3033,7 @@ function toggle_dispatch_target()
 	else
 		enable_target_inputs(true);
 }
+*/
 function enable_grid_charge(on_off)
 {
 	if (!on_off && !behind_the_meter())

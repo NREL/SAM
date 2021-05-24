@@ -1,0 +1,275 @@
+Battery Dispatch Peak Shaving
+1072
+128
+5
+CheckBox
+
+1
+9
+Name
+5
+29
+batt_dispatch_auto_can_charge
+X
+3
+459
+Y
+3
+60
+Width
+3
+258
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+30
+Battery can charge from system
+State
+2
+1
+TabOrder
+3
+7
+CheckBox
+
+1
+9
+Name
+5
+37
+batt_dispatch_auto_can_fuelcellcharge
+X
+3
+459
+Y
+3
+84
+Width
+3
+258
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+33
+Battery can charge from fuel cell
+State
+2
+1
+TabOrder
+3
+8
+CheckBox
+
+1
+9
+Name
+5
+33
+batt_dispatch_auto_can_gridcharge
+X
+3
+459
+Y
+3
+36
+Width
+3
+258
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+28
+Battery can charge from grid
+State
+2
+1
+TabOrder
+3
+6
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+9
+Width
+3
+1042
+Height
+3
+114
+Tool Tip
+5
+0
+Caption
+5
+29
+Peak Shaving Battery Dispatch
+Bold
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+33
+peak_shaving_batt_dispatch_choice
+X
+3
+57
+Y
+3
+36
+Width
+3
+384
+Height
+3
+57
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Peak shaving one-day look ahead
+Peak shaving one-day look behind
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+
+5
+batt_dispatch_auto_can_charge
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_auto_can_fuelcellcharge
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_auto_can_gridcharge
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_choice
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+peak_shaving_batt_dispatch_choice
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+
+0
+551
+on_load{'Battery Dispatch Peak Shaving'}=define()
+{	
+		
+	//on_change{'batt_dispatch_choice'};
+	
+	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
+	on_change{'peak_shaving_batt_dispatch_choice'};
+	peak_shaving_choice();
+};
+
+on_change{'peak_shaving_batt_dispatch_choice'} = define() {
+	peak_shaving_choice();
+};
+
+function peak_shaving_choice() {
+	choice = value('peak_shaving_batt_dispatch_choice');
+	if (choice == 0) {
+		value('batt_dispatch_choice',0);
+	}
+	else if (choice == 1) {
+		value('batt_dispatch_choice', 1);
+	}
+}
+
+
+
+
