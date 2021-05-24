@@ -1,7 +1,7 @@
 Marine Costs - Electrical Infrastructure
 922
 1577
-111
+121
 Label
 
 1
@@ -557,6 +557,69 @@ BackColour
 TabOrder
 3
 1
+Numeric
+
+1
+17
+Name
+5
+31
+array_cable_system_cost_modeled
+X
+3
+339
+Y
+3
+66
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1385,6 +1448,174 @@ State
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+34
+detailed_cost_modeled_array_cables
+X
+3
+159
+Y
+3
+96
+Width
+3
+198
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+16
+Use modeled cost
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+35
+detailed_cost_modeled_export_cables
+X
+3
+153
+Y
+3
+306
+Width
+3
+198
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+16
+Use modeled cost
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+41
+detailed_cost_modeled_offshore_substation
+X
+3
+162
+Y
+3
+789
+Width
+3
+198
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+16
+Use modeled cost
+State
+2
+0
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+40
+detailed_cost_modeled_onshore_substation
+X
+3
+618
+Y
+3
+996
+Width
+3
+180
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+3
+Enter in $
+Enter detailed costs
+Use modeled value
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+39
+detailed_cost_modeled_other_elec_infras
+X
+3
+504
+Y
+3
+1521
+Width
+3
+201
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+Enter in $
+Use modeled value ($)
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1803,6 +2034,69 @@ Name
 5
 24
 export_cable_system_cost
+X
+3
+339
+Y
+3
+276
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+Numeric
+
+1
+17
+Name
+5
+32
+export_cable_system_cost_modeled
 X
 3
 339
@@ -4255,6 +4549,69 @@ Numeric
 17
 Name
 5
+32
+offshore_substation_cost_modeled
+X
+3
+339
+Y
+3
+759
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+21
+Numeric
+
+1
+17
+Name
+5
 30
 offshore_substation_cost_total
 X
@@ -4320,6 +4677,69 @@ Name
 5
 23
 onshore_substation_cost
+X
+3
+342
+Y
+3
+981
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+31
+onshore_substation_cost_modeled
 X
 3
 342
@@ -4824,6 +5244,69 @@ Name
 5
 21
 other_elec_infra_cost
+X
+3
+339
+Y
+3
+1521
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+1
+$
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+35
+Numeric
+
+1
+17
+Name
+5
+29
+other_elec_infra_cost_modeled
 X
 3
 339
@@ -5818,7 +6301,7 @@ TabOrder
 3
 29
 
-73
+78
 array_cable_accessories_and_jointing_cost
 3
 1
@@ -6127,6 +6610,76 @@ ME Cost Choice
 1
 0
 Default
+detailed_cost_modeled_array_cables
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_modeled_export_cables
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_modeled_offshore_substation
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_modeled_onshore_substation
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+detailed_cost_modeled_other_elec_infras
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Choice
 ducting_system_cost
 3
 1
@@ -6645,14 +7198,14 @@ ME BoS Costs
 1
 0
 Default
-other_elec_infra_cost_total_display
+other_elec_infra_cost_total
 3
 1
  
  
  
 0
-0
+8
 1
 1
 1
@@ -6842,7 +7395,7 @@ underground_cable_system_cost
 0
 Default
 
-4259
+5003
 equations {'elec_infras_cost_modeled'} = define() {
 	return ${array_cable_system_cost_modeled}+${export_cable_system_cost_modeled}+
 		${offshore_substation_cost_modeled}+${onshore_substation_cost_modeled}+
@@ -6856,13 +7409,19 @@ equations {'array_cable_system_cost_total'} = define() {
 };
 
 equations {'array_cable_system_cost_total_check'} = define() {
-	if (${detailed_cost_choice_array_cables}==0)
+	if (${detailed_cost_modeled_array_cables}==1)
 	{
-		return ${array_cable_system_cost};
+		return ${array_cable_system_cost_modeled};
 	}
-	else
-	{
-		return ${array_cable_system_cost_total};
+	else {
+		if (${detailed_cost_choice_array_cables}==0)
+		{
+			return ${array_cable_system_cost};
+		}
+		else
+		{
+			return ${array_cable_system_cost_total};
+		}
 	}
 };
 
@@ -6875,13 +7434,20 @@ equations {'export_cable_system_cost_total'} = define() {
 };
 
 equations {'export_cable_system_cost_total_check'} = define() {
-	if (${detailed_cost_choice_export_cables}==0)
+	if (${detailed_cost_modeled_export_cables}==1)
 	{
-		return ${export_cable_system_cost};
+		return ${export_cable_system_cost_modeled};
 	}
-	else
+	else 
 	{
-		return ${export_cable_system_cost_total};
+		if (${detailed_cost_choice_export_cables}==0)
+		{
+			return ${export_cable_system_cost};
+		}
+		else
+		{
+			return ${export_cable_system_cost_total};
+		}
 	}
 };
 
@@ -6909,13 +7475,19 @@ equations {'offshore_substation_cost_total'} = define() {
 };
 
 equations {'offshore_substation_cost_total_check'} = define() {
-	if (${detailed_cost_choice_offshore_substation}==0)
+	if (${detailed_cost_modeled_offshore_substation}==1)
 	{
-		return ${offshore_substation_cost};
+		return ${array_cable_system_cost_modeled};
 	}
-	else
-	{
-		return ${offshore_substation_cost_total};
+	else {
+		if (${detailed_cost_choice_offshore_substation}==0)
+		{
+			return ${offshore_substation_cost};
+		}
+		else
+		{
+			return ${offshore_substation_cost_total};
+		}
 	}
 };
 
@@ -6927,6 +7499,7 @@ equations {'onshore_substation_cost_total'} = define() {
 };
 
 equations {'onshore_substation_cost_total_check'} = define() {
+	/*
 	if (${detailed_cost_choice_onshore_substation}==0)
 	{
 		return ${onshore_substation_cost};
@@ -6934,6 +7507,18 @@ equations {'onshore_substation_cost_total_check'} = define() {
 	else
 	{
 		return ${onshore_substation_cost_total};
+	}*/
+	if (${detailed_cost_modeled_onshore_substation} == 0)
+	{
+		return ${onshore_substation_cost};
+	}
+	else if (${detailed_cost_modeled_onshore_substation} == 1) 
+	{
+		return ${onshore_substation_cost_total};
+	}
+	else 
+	{
+		return ${onshore_substation_cost_modeled};
 	}
 };
 
@@ -6956,14 +7541,17 @@ equations {'onshore_transmission_infrastructure_cost_total_check'} = define() {
 };
 
 equations {'other_elec_infra_cost_total'} = define() {
-	return ${other_elec_infra_cost};
+	if (${detailed_cost_modeled_other_elec_infras} == 0)
+		return ${other_elec_infra_cost};
+	else
+		return ${other_elec_infra_cost_modeled};
 };
 
 equations {'elec_infras_cost_total'} = define() {
 	return ${array_cable_system_cost_total_check}+${export_cable_system_cost_total_check}+
 		${cable_protection_cost_total_check}+${offshore_substation_cost_total_check}+
 		${onshore_substation_cost_total_check}+${onshore_transmission_infrastructure_cost_total_check}
-		+${other_elec_infra_cost};
+		+${other_elec_infra_cost_total};
 };
 
 equations {'elec_infras_cost'} = define() {
@@ -7000,7 +7588,7 @@ equations{'elec_infras_override'} = define() {
 
 
 
-10653
+14030
 on_load{'Marine Costs - Electrical Infrastructure'} = define() {
 	on_change{'itemized_check_elec_infras'};
 	//on_change{'level_eng'};
@@ -7013,11 +7601,21 @@ on_load{'Marine Costs - Electrical Infrastructure'} = define() {
 	on_change{'detailed_cost_choice_onshore_substation'};
 	on_change{'detailed_cost_choice_onshore_transmission_infrastructure'};
 	detailed_cost_array_cables();
+	on_change{'detailed_cost_modeled_array_cables'};
+	check_modeled_array_cables();
 	detailed_cost_export_cables();
+	on_change{'detailed_cost_modeled_export_cables'};
+	check_modeled_export_cables();
 	detailed_cost_cable_protection();
 	detailed_cost_offshore_substation();
+	on_change{'detailed_cost_modeled_offshore_substation'};
+	check_modeled_offshore_substation();
 	detailed_cost_onshore_substation();
+	on_change{'detailed_cost_modeled_onshore_substation'};
+	check_modeled_onshore_substation();
 	detailed_cost_onshore_transmission_infrastructure();
+	on_change{'detailed_cost_modeled_other_elec_infras'};
+	check_modeled_other_elec_infras();
 	check_override_elec_infras();
 	on_change{'elec_infras_override'};
 };
@@ -7025,6 +7623,25 @@ on_load{'Marine Costs - Electrical Infrastructure'} = define() {
 on_change{'elec_infras_override'} = define() {
 	check_override_elec_infras();
 };
+
+on_change{'detailed_cost_modeled_array_cables'} = define() {
+	check_modeled_array_cables();
+};
+
+function check_modeled_array_cables() 
+{
+	check_value = value('detailed_cost_modeled_array_cables');
+	if (check_value == 1) {
+		value('detailed_cost_choice_array_cables', 0);
+	}
+	show('array_cable_system_cost_modeled',check_value == 1);
+	show('array_cable_system_cost',check_value == 0);
+	show('array_cable_system_cost_total', check_value == 0);
+	enable('detailed_cost_choice_array_cables', check_value == 0);
+	
+	refresh();
+	
+}
 
 function check_override_elec_infras()
 {
@@ -7058,6 +7675,24 @@ function detailed_cost_array_cables()
 		
 		refresh();
 	}
+}
+
+on_change{'detailed_cost_modeled_export_tables'} = define() {
+	check_modeled_export_cables();
+};
+
+function check_modeled_export_cables()
+{
+	check_value = value('detailed_cost_modeled_export_cables');
+	if (check_value == 1) {
+		value('detailed_cost_choice_export_cables', 0);
+	}
+	show('export_cable_system_cost_modeled',check_value == 1);
+	show('export_cable_system_cost',check_value == 0);
+	show('export_cable_system_cost_total', check_value == 0);
+	enable('detailed_cost_choice_export_cables', check_value == 0);
+	
+	refresh();
 }
 
 on_change{'detailed_cost_choice_export_cables'} = define() {
@@ -7108,6 +7743,24 @@ function detailed_cost_cable_protection()
 	}
 }
 
+on_change{'detailed_cost_modeled_offshore_substation'} = define() {
+	check_modeled_offshore_substation();
+};
+
+function check_modeled_offshore_substation() 
+{
+	check_value = value('detailed_cost_modeled_offshore_substation');
+	if (check_value == 1) {
+		value('detailed_cost_choice_offshore_substation', 0);
+	}
+	show('offshore_substation_cost_modeled',check_value == 1);
+	show('offshore_substation_cost',check_value == 0);
+	show('offshore_substation_cost_total', check_value == 0);
+	enable('detailed_cost_choice_offshore_substation', check_value == 0);
+	
+	refresh();
+}
+
 on_change{'detailed_cost_choice_offshore_substation'} = define() {
 	detailed_cost_offshore_substation();
 };
@@ -7130,6 +7783,25 @@ function detailed_cost_offshore_substation()
 	}
 }
 
+on_change{'detailed_cost_modeled_onshore_substation'} = define() {
+	//check_modeled_onshore_substation();
+	detailed_cost_onshore_substation();
+};
+
+function check_modeled_onshore_substation() 
+{
+	check_value = value('detailed_cost_modeled_onshore_substation');
+	if (check_value == 1) {
+		value('detailed_cost_choice_onshore_substation', 0);
+	}
+	show('onshore_substation_cost_modeled',check_value == 1);
+	show('onshore_substation_cost',check_value == 0);
+	show('onshore_substation_cost_total', check_value == 0);
+	enable('detailed_cost_choice_onshore_substation', check_value == 0);
+	
+	refresh();
+}
+
 on_change{'detailed_cost_choice_onshore_substation'} = define() {
 	detailed_cost_onshore_substation();
 };
@@ -7138,19 +7810,22 @@ function detailed_cost_onshore_substation()
 {
 	if (value('itemized_check_elec_infras')==1)
 	{
-		detailed_value = value('detailed_cost_choice_onshore_substation');
+		//detailed_value = value('detailed_cost_choice_onshore_substation');
+		detailed_value = value('detailed_cost_modeled_onshore_substation');
 		enable('onshore_substation_cost',detailed_value==0);
 		show('onshore_substation_cost',detailed_value==0);
-		enable('onshore_substation_cost_total',detailed_value);
-		show('onshore_substation_cost_total',detailed_value);
-		enable('land_leases_onshore_substation_cost',detailed_value);
-		enable('underground_cable_system_cost',detailed_value);
-		enable('foundation_onshore_substation_cost',detailed_value);
-		enable('electrical_equipment_onshore_substation_cost',detailed_value);
-		enable('protection_control_cost',detailed_value);
-		enable('building_facilities_cost',detailed_value);
-		enable('civil_infrastructure_cost',detailed_value);
-		enable('other_onshore_substation_cost',detailed_value);
+		enable('onshore_substation_cost_total',detailed_value==1);
+		show('onshore_substation_cost_total',detailed_value==1);
+		show('onshore_substation_cost_modeled',detailed_value==2);
+		enable('onshore_substation_cost_modeled',detailed_value==2);
+		enable('land_leases_onshore_substation_cost',detailed_value==1);
+		enable('underground_cable_system_cost',detailed_value==1);
+		enable('foundation_onshore_substation_cost',detailed_value==1);
+		enable('electrical_equipment_onshore_substation_cost',detailed_value==1);
+		enable('protection_control_cost',detailed_value==1);
+		enable('building_facilities_cost',detailed_value==1);
+		enable('civil_infrastructure_cost',detailed_value==1);
+		enable('other_onshore_substation_cost',detailed_value==1);
 		
 		refresh();
 	}
@@ -7178,6 +7853,22 @@ function detailed_cost_onshore_transmission_infrastructure()
 		
 		refresh();
 	}
+}
+
+on_change{'detailed_cost_modeled_other_elec_infras'} = define() {
+	check_modeled_other_elec_infras();
+};
+
+function check_modeled_other_elec_infras()
+{
+	
+	
+	check_value = value('detailed_cost_modeled_other_elec_infras');
+	show('other_elec_infra_cost_modeled',check_value == 1);
+	show('other_elec_infra_cost',check_value != 1);
+	
+	refresh();
+	
 }
 
 on_change{'itemized_check_elec_infras'} = define() {
@@ -7252,11 +7943,15 @@ function enable_itemized_elec_infras()
 	if (itemized_value==1)
 	{
 		detailed_cost_array_cables();
+		check_modeled_array_cables();
 		detailed_cost_export_cables();
+		check_modeled_export_cables();
 		detailed_cost_cable_protection();
 		detailed_cost_offshore_substation();
+		check_modeled_offshore_substation();
 		detailed_cost_onshore_substation();
 		detailed_cost_onshore_transmission_infrastructure();
+		check_modeled_other_elec_infras();
 	}
 	/*if (value('itemized_check_eng')==1)
 	{

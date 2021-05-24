@@ -3739,7 +3739,7 @@ variable_prime_mover
 0
 Default
 
-8823
+8863
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -3875,11 +3875,11 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	${assembly_and_install_cost_modeled} = ssc_var( obj, 'assembly_and_install_cost_modeled' );
 	${other_infrastructure_cost_modeled} = ssc_var( obj, 'other_infrastructure_cost_modeled' );
 
-	${array_cable_system_cost} = ssc_var( obj, 'array_cable_system_cost_modeled' );
-	${export_cable_system_cost} = ssc_var( obj, 'export_cable_system_cost_modeled' );
-	${onshore_substation_cost} = ssc_var( obj, 'onshore_substation_cost_modeled' );
-	${offshore_substation_cost} = ssc_var( obj, 'offshore_substation_cost_modeled' );
-	${other_elec_infra_cost} = ssc_var( obj, 'other_elec_infra_cost_modeled' );
+	${array_cable_system_cost_modeled} = ssc_var( obj, 'array_cable_system_cost_modeled' );
+	${export_cable_system_cost_modeled} = ssc_var( obj, 'export_cable_system_cost_modeled' );
+	${onshore_substation_cost_modeled} = ssc_var( obj, 'onshore_substation_cost_modeled' );
+	${offshore_substation_cost_modeled} = ssc_var( obj, 'offshore_substation_cost_modeled' );
+	${other_elec_infra_cost_modeled} = ssc_var( obj, 'other_elec_infra_cost_modeled' );
 
 	${project_contingency_modeled} = ssc_var( obj, 'project_contingency' );
 	${insurance_during_construction_modeled} = ssc_var( obj, 'insurance_during_construction' );

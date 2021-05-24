@@ -2495,7 +2495,7 @@ equations {'financial_itemized_shown'} = define() {
 
 
 
-2914
+3140
 on_load{'Marine Costs - Financial'} = define() {
 	
 	
@@ -2540,26 +2540,34 @@ function override_financial_cost()
 	
 	//Project Contingency Budget Inputs
 	enable('project_contingency_budget_cost',override_value==0);
-	enable('project_contingency_cost_input',override_value==0);
+	if (value('project_contingency_cost_method') < 2) {
+		enable('project_contingency_cost_input',override_value==0);
+	}
 	enable('project_contingency_cost_method',override_value==0);
 	//enable('project_contingency_cost_modeled',override_value==0);
 	
 	//Insurance during Construction Inputs
 	enable('insurance_during_construction_cost',override_value==0);
-	enable('insurance_during_construction_cost_input',override_value==0);
+	if (value('insurance_during_construction_method') < 2) {
+		enable('insurance_during_construction_cost_input',override_value==0);
+	}
 	enable('insurance_during_construction_method',override_value==0);
 	//enable('insurance_during_construction_cost_modeled',override_value==0);
 	
 	//Reserve Accounts Inputs
 	enable('reserve_accounts_cost',override_value==0);
-	enable('reserve_accounts_cost_input',override_value==0);
+	if (value('reserve_accounts_cost_method') < 2) {
+		enable('reserve_accounts_cost_input',override_value==0);
+	}
 	enable('reserve_accounts_cost_method',override_value==0);
 	//enable('reserve_accounts_cost_modeled',override_value==0);
 	//enable('reserve_accounts_cost_total',override_value==0);
 	
 	//Other Financial Cost Inputs
 	enable('other_financial_cost',override_value==0);
-	enable('other_financial_cost_input',override_value==0);
+	if (value('other_financial_cost_method') < 2) {
+		enable('other_financial_cost_input',override_value==0);
+	}
 	enable('other_financial_cost_method',override_value==0);
 	//enable('other_financial_cost_modeled',override_value==0);
 	
