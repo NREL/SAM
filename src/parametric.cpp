@@ -35,7 +35,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/metro.h>
 #include <wex/utils.h>
 #include <wex/snaplay.h>
+#ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
+#endif
 
 #include "parametric.h"
 #include "main.h"
@@ -1663,8 +1665,8 @@ void ParametricViewer::AddPlot(const wxString& output_name)
 					GraphCtrl* gc = new GraphCtrl(m_layout, wxID_ANY);
 					if (m_input_names.Count() > 2) { // previous bar graph behavior with runs sorted
 						std::vector<Simulation*> orderedSims;
-						auto& rowOrder = m_grid_data->GetRowSortOrder();
-						auto& unorderedSim = m_grid_data->GetRuns();
+						auto rowOrder = m_grid_data->GetRowSortOrder();
+						auto unorderedSim = m_grid_data->GetRuns();
 						if (unorderedSim.size() == rowOrder.size()) {
 							for (size_t i = 0; i < rowOrder.size(); i++)
 								orderedSims.push_back(unorderedSim[rowOrder[i]]);

@@ -33,7 +33,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 #include <wex/metro.h>
+#ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
+#endif
 
 #include "widgets.h"
 #include "inputpage.h"
@@ -1400,6 +1402,7 @@ void ArrayPopupDialog::SendToExcel()
 #endif
 }
 
+#ifdef __WXMSW__
 void ArrayPopupDialog::SendToExcelSheet(wxExcelAutomation& xl, wxString &sheetName)
 {
 	wxBusyInfo busy("Processing data table... please wait");
@@ -1409,10 +1412,9 @@ void ArrayPopupDialog::SendToExcelSheet(wxExcelAutomation& xl, wxString &sheetNa
 	// strip commas per request from Paul 5/23/12 meeting
 	dat.Replace(",", "");
 
-#ifdef __WXMSW__
 	xl.PasteNewWorksheet(sheetName, dat);
-#endif
 }
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////
 

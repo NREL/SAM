@@ -134,7 +134,7 @@ bool Graph::Read( wxInputStream &is )
 	wxDataInputStream ds(is);
 
 	unsigned short identifier = ds.Read16();
-	unsigned char ver = ds.Read8(); // read the version number, not currently used...
+	unsigned char ver = ds.Read8(); // Version 2 is current version
 
 	Type = ds.Read32();
 	Title = ds.ReadString();

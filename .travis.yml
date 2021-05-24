@@ -44,5 +44,5 @@ branches:
   - master
   - develop
   - patch
-  - ssc_574_SAM_608
+  - EPRI_Parametrics
   - Command_line_script

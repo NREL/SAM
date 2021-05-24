@@ -204,12 +204,12 @@ public:
 	enum ColumnFilterType {cft_less_than, cft_greater_than, cft_equal_to};
 
 	struct ColumnFilter {
-		ColumnFilter::ColumnFilter() {
+		ColumnFilter() {
 			filterColumn = -1;
 			filterType = ColumnFilterType::cft_less_than;
 			filterCriteria = 0.0;
 		};
-		ColumnFilter::ColumnFilter(int &col) {
+		ColumnFilter(int &col) {
 			filterColumn = col;
 			filterType = ColumnFilterType::cft_less_than;
 			filterCriteria = 0.0;
