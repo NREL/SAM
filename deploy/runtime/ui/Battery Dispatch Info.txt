@@ -1,7 +1,50 @@
 Battery Dispatch Info
-1070
-127
+1061
+226
+3
+RadioChoice
+
+1
+11
+Name
+5
+23
+batt_dispatch_choice_ui
+X
+3
+33
+Y
+3
+48
+Width
+3
+288
+Height
+3
+150
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+5
+Peak shaving one-day look ahead
+Input grid power targets
+Input battery power targets
+Manual dispatch
+Price signal forecast
+ShowCaptions
 2
+1
+Horizontal
+2
+0
+TabOrder
+3
+1
 GroupBox
 
 1
@@ -21,7 +64,7 @@ Width
 1042
 Height
 3
-105
+204
 Tool Tip
 5
 0
@@ -42,13 +85,13 @@ Name
 object 7
 X
 3
-81
+474
 Y
 3
-66
+54
 Width
 3
-867
+387
 Height
 3
 24
@@ -81,7 +124,32 @@ AlignTop
 2
 0
 
+1
+batt_dispatch_choice_ui
+3
+1
+ 
+ 
+ 
 0
+0
+1
+1
+1
+1
+0
+Default
 
 0
-0
+216
+on_change{'batt_dispatch_choice_ui'} = define() {
+	change_dispatch_excl_var();
+};
+
+function change_dispatch_excl_var()
+{
+	excl = value('batt_dispatch_choice_ui');
+	value('batt_dispatch_excl', excl);
+	
+	//refresh();
+}
