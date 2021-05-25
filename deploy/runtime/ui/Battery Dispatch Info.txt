@@ -1,7 +1,106 @@
 Battery Dispatch Info
 1061
 226
+6
+CheckBox
+
+1
+9
+Name
+5
+29
+batt_dispatch_auto_can_charge
+X
 3
+351
+Y
+3
+72
+Width
+3
+258
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+30
+Battery can charge from system
+State
+2
+1
+TabOrder
+3
+7
+CheckBox
+
+1
+9
+Name
+5
+37
+batt_dispatch_auto_can_fuelcellcharge
+X
+3
+351
+Y
+3
+96
+Width
+3
+258
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+33
+Battery can charge from fuel cell
+State
+2
+1
+TabOrder
+3
+8
+CheckBox
+
+1
+9
+Name
+5
+33
+batt_dispatch_auto_can_gridcharge
+X
+3
+351
+Y
+3
+48
+Width
+3
+258
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+28
+Battery can charge from grid
+State
+2
+1
+TabOrder
+3
+6
 RadioChoice
 
 1
@@ -31,7 +130,7 @@ Selection
 Items
 6
 5
-Peak shaving one-day look ahead
+Peak shaving
 Input grid power targets
 Input battery power targets
 Manual dispatch
@@ -85,13 +184,13 @@ Name
 object 7
 X
 3
-474
+348
 Y
 3
-54
+144
 Width
 3
-387
+549
 Height
 3
 24
@@ -124,7 +223,49 @@ AlignTop
 2
 0
 
+4
+batt_dispatch_auto_can_charge
+3
 1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_auto_can_fuelcellcharge
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_auto_can_gridcharge
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 batt_dispatch_choice_ui
 3
 1
@@ -141,7 +282,12 @@ batt_dispatch_choice_ui
 Default
 
 0
-216
+553
+on_load{'Battery Dispatch Info'} = define() {
+	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
+	refresh();
+};
+
 on_change{'batt_dispatch_choice_ui'} = define() {
 	change_dispatch_excl_var();
 };
@@ -150,6 +296,12 @@ function change_dispatch_excl_var()
 {
 	excl = value('batt_dispatch_choice_ui');
 	value('batt_dispatch_excl', excl);
+	
+	show('batt_dispatch_auto_can_charge',excl != 3);
+	show('batt_dispatch_auto_can_gridcharge', excl !=3);
+	if (technology() == 'Fuel Cell')
+		show('batt_dispatch_auto_can_fuelcellcharge', excl !=3);
+
 	
 	//refresh();
 }

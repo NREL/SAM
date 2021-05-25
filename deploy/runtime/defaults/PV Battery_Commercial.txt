@@ -1,5 +1,5 @@
 1
-1014
+1015
 6par_aisc
 1
 1
@@ -1075,6 +1075,11 @@ batt_ui_nominal_bank_power
 1
 1
 9.60768
+batt_user_specified_weather_file
+1
+4
+9
+<invalid>
 batt_voltage_choice
 1
 1

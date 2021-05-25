@@ -1,7 +1,7 @@
 Battery Dispatch Price Signal
 1060
 205
-8
+5
 GroupBox
 
 1
@@ -156,105 +156,6 @@ AlignRight
 AlignTop
 2
 1
-CheckBox
-
-1
-9
-Name
-5
-29
-batt_dispatch_auto_can_charge
-X
-3
-45
-Y
-3
-78
-Width
-3
-258
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-30
-Battery can charge from system
-State
-2
-1
-TabOrder
-3
-7
-CheckBox
-
-1
-9
-Name
-5
-37
-batt_dispatch_auto_can_fuelcellcharge
-X
-3
-45
-Y
-3
-102
-Width
-3
-258
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-33
-Battery can charge from fuel cell
-State
-2
-1
-TabOrder
-3
-8
-CheckBox
-
-1
-9
-Name
-5
-33
-batt_dispatch_auto_can_gridcharge
-X
-3
-45
-Y
-3
-54
-Width
-3
-258
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-28
-Battery can charge from grid
-State
-2
-1
-TabOrder
-3
-6
 GroupBox
 
 1
@@ -317,12 +218,11 @@ Cycle degradation penalty method
 Default
 
 0
-496
+421
 on_load{'Battery Dispatch Price Signal'}=define()
 {	
 	value('batt_dispatch_choice', 5);	
 	
-	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
 };
 
 

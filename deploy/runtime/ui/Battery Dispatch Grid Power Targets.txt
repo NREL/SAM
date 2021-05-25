@@ -1,7 +1,7 @@
 Battery Dispatch Grid Power Targets
 1071
 203
-9
+6
 GroupBox
 
 1
@@ -32,105 +32,6 @@ Monthly or Time Series Inputs for Grid Power Target Option
 Bold
 2
 1
-CheckBox
-
-1
-9
-Name
-5
-29
-batt_dispatch_auto_can_charge
-X
-3
-39
-Y
-3
-69
-Width
-3
-258
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-30
-Battery can charge from system
-State
-2
-1
-TabOrder
-3
-7
-CheckBox
-
-1
-9
-Name
-5
-37
-batt_dispatch_auto_can_fuelcellcharge
-X
-3
-39
-Y
-3
-93
-Width
-3
-258
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-33
-Battery can charge from fuel cell
-State
-2
-1
-TabOrder
-3
-8
-CheckBox
-
-1
-9
-Name
-5
-33
-batt_dispatch_auto_can_gridcharge
-X
-3
-39
-Y
-3
-45
-Width
-3
-258
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-28
-Battery can charge from grid
-State
-2
-1
-TabOrder
-3
-6
 Choice
 
 1
@@ -356,7 +257,7 @@ Battery Dispatch BTM
 Default
 
 0
-953
+878
 on_load{'Battery Dispatch Grid Power Targets'}=define()
 {	
 	value('batt_dispatch_choice', 2);
@@ -364,7 +265,6 @@ on_load{'Battery Dispatch Grid Power Targets'}=define()
 	on_change{'batt_dispatch_choice'};
 	on_change{'batt_target_choice'};
 	
-	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
 };
 
 
