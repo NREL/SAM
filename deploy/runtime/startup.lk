@@ -156,9 +156,10 @@ function setup_battery_pages_behind_the_meter()
 			   'Battery Dispatch Manual',
 			  ]],
 			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm' } );*/
-	addpage( [[ 'Battery Dispatch Peak Shaving' ], [ 'Battery Dispatch Grid Power Targets' ], ['Battery Dispatch Battery Power Targets'], ['Battery Dispatch Manual'], ['Battery Dispatch Price Signal']],
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], 
+		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [{'name'='Battery Dispatch Manual', 'caption'='Manual'}], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
 			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl',
-			  'exclusive_header_pages' = ['Battery Dispatch Common']} );
+			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Info'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 }
 
 
@@ -175,12 +176,17 @@ function setup_battery_pages_front_of_meter()
 			   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 			   ] ],
 			  { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom' } );
-			  
+	/*		  
 	addpage([ ['Battery Dispatch Common',
 			   'Battery Dispatch Front of Meter',
 			   'Battery Dispatch Manual',
 			   ] ],
-			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom' } );		  
+			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom' } );
+	*/
+	addpage( [[ {'name'='Battery Dispatch Automated', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], 
+		[{'name'='Battery Dispatch Manual', 'caption'='Manual'}]],
+			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl',
+			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Info FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 }
 
 function setup_pvwatts_battery_pages_behind_the_meter()

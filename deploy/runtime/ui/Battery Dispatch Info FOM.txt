@@ -1,7 +1,7 @@
-Battery Dispatch Info
-1061
-226
-6
+Battery Dispatch Info FOM
+1055
+225
+8
 CheckBox
 
 1
@@ -41,6 +41,39 @@ CheckBox
 9
 Name
 5
+33
+batt_dispatch_auto_can_clipcharge
+X
+3
+351
+Y
+3
+93
+Width
+3
+348
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+44
+Battery can charge from clipped system power
+State
+2
+0
+TabOrder
+3
+11
+CheckBox
+
+1
+9
+Name
+5
 37
 batt_dispatch_auto_can_fuelcellcharge
 X
@@ -48,7 +81,7 @@ X
 351
 Y
 3
-96
+120
 Width
 3
 258
@@ -97,7 +130,7 @@ Caption
 Battery can charge from grid
 State
 2
-1
+0
 TabOrder
 3
 6
@@ -120,7 +153,7 @@ Width
 288
 Height
 3
-150
+75
 Tool Tip
 5
 0
@@ -129,12 +162,10 @@ Selection
 0
 Items
 6
-5
-Peak shaving
-Input grid power targets
-Input battery power targets
+3
+Automated dispatch
+Dispatch to custom time series
 Manual dispatch
-Price signal forecast
 ShowCaptions
 2
 1
@@ -184,10 +215,10 @@ Name
 object 7
 X
 3
-348
+351
 Y
 3
-144
+156
 Width
 3
 549
@@ -222,9 +253,85 @@ AlignRight
 AlignTop
 2
 0
+Numeric
 
+1
+17
+Name
+5
+13
+ui_batt_is_dc
+X
+3
+222
+Y
+3
+183
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
 4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+7
 batt_dispatch_auto_can_charge
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_auto_can_clipcharge
 3
 1
  
@@ -266,6 +373,20 @@ batt_dispatch_auto_can_gridcharge
 1
 0
 Default
+batt_dispatch_choice
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 batt_dispatch_choice_ui
 3
 1
@@ -280,13 +401,46 @@ batt_dispatch_choice_ui
 1
 0
 Default
-
+ui_batt_is_dc
+3
+1
+Is DC-connected for show-hide
+ 
+Battery Dispatch FOM
 0
-555
-on_load{'Battery Dispatch Info'} = define() {
+8
+1
+1
+1
+1
+0
+Default
+
+67
+equations{'ui_batt_is_dc'}=define()
+{
+	return !${batt_ac_or_dc};
+};
+985
+on_load{'Battery Dispatch Info FOM'} = define() {
 	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
+	show('ui_batt_is_dc',false);
+	enable_charge_from_clip();
 	//refresh();
 };
+
+on_change{'ui_batt_is_dc'}=define()
+{
+	enable_charge_from_clip();
+};
+
+function enable_charge_from_clip()
+{
+	if ( value('ui_batt_is_dc' ) == true && value('automated_dispatch_choice') < 3 )
+	{ enable('batt_dispatch_auto_can_clipcharge', true); }
+	else 
+	{ enable('batt_dispatch_auto_can_clipcharge', false); } 
+}
 
 on_change{'batt_dispatch_choice_ui'} = define() {
 	change_dispatch_excl_var();
@@ -296,10 +450,11 @@ function change_dispatch_excl_var()
 {
 	
 	excl = value('batt_dispatch_choice_ui');
-	show('batt_dispatch_auto_can_charge',excl != 3);
-	show('batt_dispatch_auto_can_gridcharge', excl !=3);
+	show('batt_dispatch_auto_can_charge',excl != 2);
+	show('batt_dispatch_auto_can_gridcharge', excl !=2);
+	show('batt_dispatch_auto_can_clipcharge', excl != 2);
 	if (technology() == 'Fuel Cell')
-		show('batt_dispatch_auto_can_fuelcellcharge', excl !=3);
+		show('batt_dispatch_auto_can_fuelcellcharge', excl !=2);
 
 	
 	value('batt_dispatch_excl', excl);
