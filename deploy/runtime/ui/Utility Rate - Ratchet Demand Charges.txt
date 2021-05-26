@@ -62,68 +62,6 @@ Copy peaks from load data
 TabOrder
 3
 4294967295
-Numeric
-
-1
-17
-Name
-5
-18
-dc_ratchet_minimum
-X
-3
-504
-Y
-3
-129
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Divider
 
 1
@@ -211,47 +149,14 @@ AlignRight
 AlignTop
 2
 1
-CheckBox
-
-1
-9
-Name
-5
-20
-ur_dc_enable_ratchet
-X
-3
-36
-Y
-3
-27
-Width
-3
-258
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-40
-Enable billing demand for energy charges
-State
-2
-0
-TabOrder
-3
-4294967295
 DataMatrix
 
 1
 27
 Name
 5
-13
-ur_dc_ratchet
+41
+ur_ec_billing_demand_lookback_percentages
 X
 3
 24
@@ -340,8 +245,8 @@ Numeric
 17
 Name
 5
-22
-ur_dc_ratchet_lookback
+36
+ur_ec_billing_demand_lookback_period
 X
 3
 504
@@ -396,14 +301,109 @@ BackColour
 TabOrder
 3
 4294967295
+Numeric
+
+1
+17
+Name
+5
+28
+ur_ec_billing_demand_minimum
+X
+3
+504
+Y
+3
+129
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+27
+ur_ec_enable_billing_demand
+X
+3
+36
+Y
+3
+27
+Width
+3
+258
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+40
+Enable billing demand for energy charges
+State
+2
+0
+TabOrder
+3
+4294967295
 MonthlyFactor
 
 1
 8
 Name
 5
-28
-ur_dc_ratchet_yearzero_peaks
+23
+ur_yearzero_usage_peaks
 X
 3
 837
@@ -428,35 +428,7 @@ TabOrder
 4294967295
 
 5
-dc_ratchet_minimum
-3
-1
-Minimum billing demand
-kW
-Electricity Rates - Demand Charge Rates
-0
-0
-1
-1
-1
-1
-0
-Default
-ur_dc_enable_ratchet
-3
-1
-Enable ratchet demand charges
- 
-Electricity Rates - Demand Charge Rates
-0
-3
-1
-1
-1
-1
-0
-Default
-ur_dc_ratchet
+ur_ec_billing_demand_lookback_percentages
 3
 3
 Ratchet demand charge rates
@@ -470,7 +442,7 @@ Electricity Rates - Demand Charge Rates
 1
 0
 Default
-ur_dc_ratchet_lookback
+ur_ec_billing_demand_lookback_period
 3
 1
 Lookback period
@@ -484,7 +456,35 @@ months
 1
 0
 Default
-ur_dc_ratchet_yearzero_peaks
+ur_ec_billing_demand_minimum
+3
+1
+Minimum billing demand
+kW
+Electricity Rates - Demand Charge Rates
+0
+0
+1
+1
+1
+1
+0
+Default
+ur_ec_enable_billing_demand
+3
+1
+Enable ratchet demand charges
+ 
+Electricity Rates - Demand Charge Rates
+0
+3
+1
+1
+1
+1
+0
+Default
+ur_yearzero_usage_peaks
 3
 2
 Monthly peaks in Year 0
@@ -500,7 +500,7 @@ Electricity Rates - Demand Charge Rates
 Default
 
 0
-954
+1017
 on_load{'Utility Rate - Ratchet Demand Charges'} = define() {
 	//update_firstyear_demand_peaks();
 	on_change{'btn_update_peaks'};
@@ -508,7 +508,7 @@ on_load{'Utility Rate - Ratchet Demand Charges'} = define() {
 	is_btm = (fin != "Single Owner");
 	show('btn_update_peaks', is_btm);
 	refresh();
-	on_change{'ur_dc_enable_ratchet'};
+	on_change{'ur_ec_enable_billing_demand'};
 	enable_ratchet_demand_charges();
 };
 
@@ -519,21 +519,21 @@ on_change{'btn_update_peaks'} = define() {
 function update_firstyear_demand_peaks() {
     fin = financing();
 	if (fin != "Single Owner") {
-		value('ur_dc_ratchet_yearzero_peaks',value('mpeak'));
+		value('ur_yearzero_usage_peaks',value('mpeak'));
 	}
 }
 
-on_change{'ur_dc_enable_ratchet'} = define() {
+on_change{'ur_ec_enable_billing_demand'} = define() {
 	enable_ratchet_demand_charges();
 };
 
 function enable_ratchet_demand_charges()
 {
-	is_enabled = (value('ur_dc_enable_ratchet')==1);
-	enable('ur_dc_ratchet',is_enabled);
-	enable('ur_dc_ratchet_lookback',is_enabled);
-	enable('dc_ratchet_minimum',is_enabled);
-	enable('ur_dc_ratchet_yearzero_peaks',is_enabled);
+	is_enabled = (value('ur_ec_enable_billing_demand')==1);
+	enable('ur_ec_billing_demand_lookback_percentages',is_enabled);
+	enable('ur_ec_billing_demand_lookback_period',is_enabled);
+	enable('ur_ec_billing_demand_minimum',is_enabled);
+	enable('ur_yearzero_usage_peaks',is_enabled);
 	enable('btn_update_peaks',is_enabled);
 	refresh();
 
