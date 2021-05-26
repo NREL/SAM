@@ -1776,7 +1776,7 @@ int StochasticPanel::GetInputDistributionIndex(int idx)
 	// update input editing and removal index if weather file distribution enabled.
 	int ndx = idx;
 	bool wf_input_found = false;
-	for (int i = 0; i <= ndx; i++)
+	for (int i = 0; ((i < (int)m_sd.InputDistributions.Count()) && (i < (idx+1))); i++)
 	{
 		wxString var_name = GetVarNameFromInputDistribution(m_sd.InputDistributions[i]);
 		if (var_name == m_weather_folder_varname)
@@ -1786,7 +1786,7 @@ int StochasticPanel::GetInputDistributionIndex(int idx)
 		}
 	}
 	if (wf_input_found) ndx++;
-	return ndx;
+	return std::min(ndx, (int)m_sd.InputDistributions.Count());
 }
 
 void StochasticPanel::OnEditInput(wxCommandEvent &)
