@@ -1,5 +1,5 @@
 1
-768
+772
 A_aperture
 1
 1
@@ -1203,7 +1203,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4.4626e+06
+4462600
 csp.mslf.cost.power_plant
 1
 1
@@ -1923,12 +1923,6 @@ d_tank
 1
 1
 19.9839
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-100
 debt_fraction
 1
 1
@@ -4511,12 +4505,6 @@ ur_dc_enable
 1
 1
 1
-ur_ec_enable_billing_demand
-1
-1
-1
-1
-0
 ur_dc_flat_mat
 1
 3
@@ -4541,43 +4529,6 @@ ur_dc_is_shown
 1
 1
 0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_yearzero_usage_peaks
-1
-2
-1
-12
-234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
-
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
 ur_dc_sched_weekday
 1
 3
@@ -4669,6 +4620,48 @@ ur_description
 1
 4
 0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+100
+ur_ec_enable_billing_demand
+1
+1
+1
+1
+3.33505e-317
 ur_ec_is_shown
 1
 1
@@ -4902,6 +4895,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 use_specific_weather_file
 1
 1
@@ -4937,6 +4937,7 @@ washes_per_year
 1
 1
 120
+
 water_per_wash
 1
 1
