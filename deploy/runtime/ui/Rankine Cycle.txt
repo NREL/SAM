@@ -3460,30 +3460,43 @@ Rad cool
 0.4
 Default
 
-582
+886
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
+
+// Just combo converter
 equations{ 'CT' } = define() {
 	return ${csp.pt.pwrb.condenser_type} + 1; };
-	
+
+// Just combo converter
 equations{ 'tech_type' } = define() {
 	if (${csp.pt.pwrb.pressure_mode} == 1) //sliding pressure
 		return 3; // user defined
-		else
-		if(${csp.pt.pwrb.pressure_mode}==2) //first custom cycle
+	elseif(${csp.pt.pwrb.pressure_mode}==2) //first custom cycle
 		return 5;
-		else
-		if(${csp.pt.pwrb.pressure_mode}==3) //second custom cycle
+	elseif(${csp.pt.pwrb.pressure_mode}==3) //second custom cycle
 		return 6;
 	else // fixed pressure
 		return 1; // tower
 };
 
+// Just UI indicator
 equations{ 'ctes_cost' } = define() {
 	return ${ctes_cost_per_m3} / 1000;
 };
 
+// Just UI indicator
 equations{ 'radiator_fluidcost' } = define() {
 	return ${radiator_fluidcost_per_m3} / 1000;
 };
+
 4635
 on_load{"Rankine Cycle"} = define() {
 	on_change{"csp.pt.pwrb.condenser_type"}();

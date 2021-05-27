@@ -1,5 +1,5 @@
 1
-803
+807
 A_aperture
 1
 1
@@ -1187,7 +1187,7 @@ cost_dev_fee_tax_liability
 1
 1
 1
-4352090
+4.35209e+06
 cost_dev_fee_value
 1
 1
@@ -1486,7 +1486,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4462600
+4.4626e+06
 csp.mslf.cost.power_plant
 1
 1
@@ -1570,7 +1570,7 @@ csp.mslf.cost.total_indirect
 1
 1
 1
-75203984
+56339616
 csp.mslf.cost.total_installed
 1
 1
@@ -4417,7 +4417,7 @@ total_direct_cost
 1
 1
 1
-75203984
+56339616
 total_installed_cost
 1
 1
@@ -4481,6 +4481,12 @@ ud_COPY_T_HTF_des
 1
 1
 525
+ud_Q_dot_HTF_ND_des
+1
+1
+1
+1
+1
 ud_T_amb_des
 1
 1
@@ -4565,6 +4571,18 @@ ud_W_dot_cool_calc
 1
 1
 0
+ud_W_dot_cooling_ND_des
+1
+1
+1
+1
+1
+ud_W_dot_gross_ND_des
+1
+1
+1
+1
+0.99839
 ud_enable_gen_table
 1
 1
@@ -4805,6 +4823,12 @@ ud_m_dot_low_calc
 1
 1
 0.3
+ud_m_dot_water_ND_des
+1
+1
+1
+1
+1
 ud_m_dot_water_cool_des
 1
 1

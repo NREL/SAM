@@ -376,65 +376,33 @@ Electricity Rates - Energy Charge Rates
 DataMatrix
 
 0
-1273
+857
+// this callback script uses functions defined on Utility Rate - Flat
+
 on_load{'Utility Rate - Energy Charge'} = define(){
-	set_ec_schedule_inputs_copy();
+	set_ec_schedule_inputs();
+
+	if ( is_fom_batt() )
+	{
+		x = value('ur_ec_tou_mat');
+		is_sell_rate = false;
+		for (i=0; i<#x; i++ )
+		{
+			if ( x[i][5] != 0 ) 
+			{
+				y[i] = [x[i][0],x[i][1],x[i][2],x[i][3],x[i][4],0]; 
+				is_sell_rate = true;
+			}
+		}
+		if ( is_sell_rate )
+		{
+			msgbox('Setting all Sell Rate(s) to Zero\nSell rates for front-of-meter battery systems are disabled and should be set to zero. Versions of SAM older than SAM 2020.11.29 r2 incorreclty allowed non-zero sell rates. This file may have been created with an older version of SAM or an LK script may have set sell rates to non-zero values.');
+			value('ur_ec_tou_mat',y);		
+		}
+	}
 };
 
 on_change{'ur_ec_tou_mat'} = define(){
-	set_ec_schedule_inputs_copy();
+	set_ec_schedule_inputs();
 };
 
-// copy of function from Utility Rate - Enable form
-function set_ec_schedule_inputs_copy()
-{	
-	eme = value('ur_metering_option');
-	en_ts_buy = value('ur_en_ts_buy_rate');
-	en_ts_sell = value('ur_en_ts_sell_rate');
-	if (eme==0)
-	{
-		property('ur_ec_tou_mat','ShowColumn',4);
-		property('ur_ec_tou_mat','HideColumn',5);
-	}
-	elseif (eme==1)
-	{
-		property('ur_ec_tou_mat','ShowColumn',4);
-		property('ur_ec_tou_mat','ShowColumn',5);
-	}
-	else
-	{
-		if (en_ts_buy)
-		{
-			property('ur_ec_tou_mat','HideColumn',4);
-		}
-		else
-		{
-			property('ur_ec_tou_mat','ShowColumn',4);
-		}
-		if (en_ts_sell)
-		{
-			property('ur_ec_tou_mat','HideColumn',5);
-		}
-		else
-		{
-			property('ur_ec_tou_mat','ShowColumn',5);
-		}
-	}
-	if (en_ts_sell && en_ts_buy)
-	{
-		enable( 'ur_ec_tou_mat', false);
-		enable( 'ur_ec_sched_weekday', false);
-		enable( 'ur_ec_sched_weekend', false);
-		enable( 'lbl_wkday', false);
-		enable( 'lbl_wkend', false);
-	}
-	else
-	{
-		enable( 'ur_ec_tou_mat', true);
-		enable( 'ur_ec_sched_weekday', true);
-		enable( 'ur_ec_sched_weekend', true);
-		enable( 'lbl_wkday', true);
-		enable( 'lbl_wkend', true);
-	}	
-}
-	

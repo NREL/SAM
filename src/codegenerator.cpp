@@ -485,6 +485,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 
 	// run compute modules in sequence (INOUT variables will be updated)
 //	for (size_t kk = 0; kk < simlist.size(); kk++)
+	// Issue SAM #614 - write out all inputs before first compute module is called so that INOUT are not overwritten inbetween compute module
 	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
 	{
 		for (size_t jj = 0; jj < input_order[kk].size(); jj++)
@@ -493,10 +494,16 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 			if (!Input(p_data, name, m_folder, array_matrix_threshold))
 				m_errors.Add(wxString::Format("Input %s write failed", name));
 		}
+	}
+	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
+	{
 		CreateSSCModule(simlist[kk]);
 		RunSSCModule(simlist[kk]);
 		FreeSSCModule();
 	}
+
+
+
 	// outputs - metrics for case
 	m_data.clear();
 	CodeGenCallbackContext cc(this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing);
@@ -8214,7 +8221,6 @@ bool CodeGen_pySAM::SupportingFiles()
 bool CodeGen_pySAM::Footer()
 {
 	fprintf(m_fp, "\n}\n");
-	fprintf(m_fp, "}\n");
 	return true;
 }
 

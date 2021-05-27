@@ -44,5 +44,5 @@ branches:
   - master
   - develop
   - patch
-  - SAM22_stochastic
+  - EPRI_Parametrics
   - Command_line_script
