@@ -521,9 +521,14 @@ function setup_fuel_cell_pages_btm()
 					]],
 				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
+	/*
 	addpage([['Fuel Cell Dispatch',
 			'Battery Dispatch Behind the Meter',
-			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});
+			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});*/
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], 
+		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], ['Battery Dispatch Empty'], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
+			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl',
+			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Fuel Cell Dispatch Manual', 'Battery Dispatch Info'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
     setup_grid_page();
 }
 
@@ -543,9 +548,14 @@ function setup_fuel_cell_pages_fom()
 					]],
 				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
+	/*
 	addpage([['Fuel Cell Dispatch',
 			'Battery Dispatch Front of Meter',
-			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});
+			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});*/
+	addpage( [[ {'name'='Battery Dispatch Automated', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], 
+		['Battery Dispatch Empty']],
+			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl',
+			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Fuel Cell Dispatch Manual', 'Battery Dispatch Info FOM' ], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 	setup_grid_page();
 }
 

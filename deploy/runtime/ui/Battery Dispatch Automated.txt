@@ -15,7 +15,7 @@ X
 42
 Y
 3
-48
+42
 Width
 3
 264
@@ -543,7 +543,7 @@ X
 6
 Y
 3
-12
+6
 Width
 3
 1042
@@ -675,7 +675,7 @@ batt_user_specified_weather_file
 Default
 
 0
-3834
+3889
 on_load{'Battery Dispatch Automated'}=define()
 {	
 	// fom = front of meter
@@ -683,6 +683,8 @@ on_load{'Battery Dispatch Automated'}=define()
 	on_change{'automated_dispatch_choice'};
 	select_automated_dispatch_option();
 	toggle_dispatch_fom_automated();
+	if (technology() == "Fuel Cell")
+		toggle_dispatch();
 	//on_change{'batt_dispatch_choice'};
 	//on_change{'batt_select_weather_file_forecast'};
 	//on_change{'batt_cycle_cost_choice'};

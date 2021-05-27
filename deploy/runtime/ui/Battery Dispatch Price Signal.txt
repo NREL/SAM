@@ -1,6 +1,6 @@
 Battery Dispatch Price Signal
-1060
-205
+1057
+193
 5
 GroupBox
 
@@ -12,10 +12,10 @@ Name
 AutoDCBox
 X
 3
-318
+15
 Y
 3
-45
+33
 Width
 3
 697
@@ -42,10 +42,10 @@ Name
 batt_cycle_cost
 X
 3
-639
+336
 Y
 3
-156
+144
 Width
 3
 114
@@ -84,10 +84,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-639
+336
 Y
 3
-132
+120
 Width
 3
 198
@@ -118,10 +118,10 @@ Name
 batt_cycle_cost_description
 X
 3
-327
+24
 Y
 3
-63
+51
 Width
 3
 678
@@ -169,7 +169,7 @@ X
 6
 Y
 3
-21
+6
 Width
 3
 1042
@@ -218,10 +218,12 @@ Cycle degradation penalty method
 Default
 
 0
-421
+475
 on_load{'Battery Dispatch Price Signal'}=define()
 {	
-	value('batt_dispatch_choice', 5);	
+	value('batt_dispatch_choice', 5);
+	if (technology() == "Fuel Cell")
+		toggle_dispatch();
 	
 };
 

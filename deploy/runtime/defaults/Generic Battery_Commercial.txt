@@ -1,5 +1,5 @@
 1
-460
+464
 LeadAcid_q10
 1
 1
@@ -481,6 +481,18 @@ batt_dispatch_choice
 1
 1
 0
+batt_dispatch_choice_ui
+1
+1
+1
+1
+0
+batt_dispatch_excl
+1
+1
+1
+1
+0
 batt_duration_choice
 1
 1
@@ -795,6 +807,11 @@ batt_ui_nominal_bank_power
 1
 1
 9.60768
+batt_user_specified_weather_file
+1
+4
+9
+<invalid>
 batt_voltage_choice
 1
 1
@@ -2235,6 +2252,12 @@ peak_9
 1
 1
 226.751
+peak_shaving_batt_dispatch_choice
+1
+1
+1
+1
+0
 prop_tax_assessed_decline
 1
 1
@@ -2252,7 +2275,7 @@ property_assessed_value
 1
 1
 1
-1551310
+1.55131e+06
 property_tax_rate
 1
 1
@@ -2486,7 +2509,7 @@ total_direct_cost
 1
 1
 1
-1366790
+1.36679e+06
 total_indirect_cost
 1
 1
@@ -2498,7 +2521,7 @@ total_installed_cost
 1
 1
 1
-1551310
+1.55131e+06
 ui_annual_load
 1
 1
@@ -2516,7 +2539,7 @@ ui_net_capital_cost
 1
 1
 1
-1551310
+1.55131e+06
 ui_wacc
 1
 1

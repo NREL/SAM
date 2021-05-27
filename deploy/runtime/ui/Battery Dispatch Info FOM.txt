@@ -1,6 +1,6 @@
 Battery Dispatch Info FOM
 1055
-225
+213
 8
 CheckBox
 
@@ -15,7 +15,7 @@ X
 351
 Y
 3
-72
+60
 Width
 3
 258
@@ -48,13 +48,13 @@ X
 351
 Y
 3
-93
+84
 Width
 3
 348
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -81,7 +81,7 @@ X
 351
 Y
 3
-120
+108
 Width
 3
 258
@@ -114,7 +114,7 @@ X
 351
 Y
 3
-48
+36
 Width
 3
 258
@@ -147,7 +147,7 @@ X
 33
 Y
 3
-48
+36
 Width
 3
 288
@@ -188,7 +188,7 @@ X
 6
 Y
 3
-12
+6
 Width
 3
 1042
@@ -218,20 +218,20 @@ X
 351
 Y
 3
-156
+144
 Width
 3
-549
+594
 Height
 3
-24
+48
 Tool Tip
 5
 0
 Caption
 5
-73
-Insert informative text about the different battery dispatch options here
+215
+Battery dispatch option chosen from the radio buttons on the left will determine which inputs are displayed in the box below. The charging checkboxes control dispatch behavior for each option except Manual Dispatch.
 TextColour
 4
 0
@@ -246,13 +246,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Numeric
 
 1
@@ -266,7 +266,7 @@ X
 222
 Y
 3
-183
+171
 Width
 3
 90
@@ -421,7 +421,7 @@ equations{'ui_batt_is_dc'}=define()
 {
 	return !${batt_ac_or_dc};
 };
-985
+1039
 on_load{'Battery Dispatch Info FOM'} = define() {
 	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
 	show('ui_batt_is_dc',false);
@@ -443,6 +443,8 @@ function enable_charge_from_clip()
 }
 
 on_change{'batt_dispatch_choice_ui'} = define() {
+	if(technology() == "Fuel Cell")
+		toggle_dispatch();
 	change_dispatch_excl_var();
 };
 

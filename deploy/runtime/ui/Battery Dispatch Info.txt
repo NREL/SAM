@@ -190,17 +190,17 @@ Y
 144
 Width
 3
-549
+654
 Height
 3
-24
+51
 Tool Tip
 5
 0
 Caption
 5
-73
-Insert informative text about the different battery dispatch options here
+215
+Battery dispatch option chosen from the radio buttons on the left will determine which inputs are displayed in the box below. The charging checkboxes control dispatch behavior for each option except Manual Dispatch.
 TextColour
 4
 0
@@ -215,13 +215,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 
 4
 batt_dispatch_auto_can_charge
@@ -282,13 +282,15 @@ batt_dispatch_choice_ui
 Default
 
 0
-555
+609
 on_load{'Battery Dispatch Info'} = define() {
 	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
 	//refresh();
 };
 
 on_change{'batt_dispatch_choice_ui'} = define() {
+	if(technology() == "Fuel Cell")
+		toggle_dispatch();
 	change_dispatch_excl_var();
 };
 

@@ -1,6 +1,6 @@
 Battery Dispatch Battery Power Targets
-1092
-207
+1056
+195
 4
 GroupBox
 
@@ -12,10 +12,10 @@ Name
 InputDispatchBox
 X
 3
-333
+21
 Y
 3
-36
+30
 Width
 3
 697
@@ -42,10 +42,10 @@ Name
 batt_custom_dispatch
 X
 3
-576
+264
 Y
 3
-60
+54
 Width
 3
 117
@@ -79,10 +79,10 @@ Name
 batt_dispatch_label
 X
 3
-735
+423
 Y
 3
-54
+48
 Width
 3
 282
@@ -130,7 +130,7 @@ X
 6
 Y
 3
-18
+6
 Width
 3
 1042
@@ -165,13 +165,14 @@ kWdc
 Default
 
 0
-181
+202
 on_load{'Battery Dispatch Battery Power Targets'}=define()
 {	
 	value('batt_dispatch_choice', 3);
 		
 	on_change{'batt_dispatch_choice'};
-	on_change{'batt_target_choice'};
+	if (technology() == "Fuel Cell")
+		toggle_dispatch();
 	
 };
 

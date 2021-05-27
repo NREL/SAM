@@ -1,6 +1,6 @@
 Battery Dispatch Custom Time Series
-1067
-137
+1055
+128
 3
 GroupBox
 
@@ -15,7 +15,7 @@ X
 6
 Y
 3
-12
+6
 Width
 3
 1042
@@ -42,10 +42,10 @@ Name
 batt_custom_dispatch
 X
 3
-240
+204
 Y
 3
-78
+81
 Width
 3
 184
@@ -79,7 +79,7 @@ Name
 batt_dispatch_label
 X
 3
-45
+18
 Y
 3
 39
@@ -135,11 +135,13 @@ Battery Dispatch FOM
 Default
 
 0
-254
+309
 on_load{'Battery Dispatch Custom Time Series'}=define()
 {	
 	// fom = front of meter
 	value('batt_dispatch_choice',3);
+	if (technology() == "Fuel Cell")
+		toggle_dispatch();
 	//on_change{'batt_dispatch_choice'};
 	//on_change{'batt_select_weather_file_forecast'};
 	//on_change{'batt_cycle_cost_choice'};
