@@ -255,12 +255,9 @@ private:
 	bool ImportAsTable(wxString& vals, VarValue& vv);
 	void ImportData(wxArrayString& vals, int& row, int& col);
 	void CopyToClipboard();
-	void CopyToClipboardOld();
 	wxArrayString getFromCSV(const wxString& input_name, int& rows, int& cols);
 	wxArrayString getFromExcel(const wxString& input_name, int& rows, int& cols);
-	void SaveToCSVOld();
 	void SaveToCSV();
-	void SendToExcelOld();
 	void SendToExcel();
 	void GetTextData(wxString &dat, char sep);
 

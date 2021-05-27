@@ -1160,21 +1160,6 @@ void ParametricViewer::CopyToClipboard()
 	}
 }
 
-void ParametricViewer::CopyToClipboardOld()
-{
-	wxBusyInfo busy("Processing data table... please wait");
-	wxString dat;
-	GetTextData(dat, '\t');
-
-	// strip commas per request from Paul 5/23/12 meeting
-	dat.Replace(",", "");
-
-	if (wxTheClipboard->Open())
-	{
-		wxTheClipboard->SetData(new wxTextDataObject(dat));
-		wxTheClipboard->Close();
-	}
-}
 
 wxArrayString ParametricViewer::getFromCSV(const wxString& input_name, int& row, int& col) {
 	wxArrayString vals;
@@ -1209,60 +1194,6 @@ wxArrayString ParametricViewer::getFromExcel(const wxString& input_name, int& ro
 #else
 	return wxArrayString();
 #endif // __WXMSW__
-}
-
-void ParametricViewer::SaveToCSVOld()
-{
-	wxFileDialog fdlg(this, "Save as CSV", wxEmptyString, "results.csv", "Comma-separated values (*.csv)|*.csv", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
-	if (fdlg.ShowModal() != wxID_OK) return;
-
-	FILE *fp = fopen(fdlg.GetPath().c_str(), "w");
-	if (!fp)
-	{
-		wxMessageBox("Could not open file for write:\n\n" + fdlg.GetPath());
-		return;
-	}
-
-	wxBusyInfo busy("Writing CSV file... please wait");
-
-	wxString dat;
-	GetTextData(dat, ',');
-	fputs(dat.c_str(), fp);
-	fclose(fp);
-
-}
-
-void ParametricViewer::SendToExcelOld()
-{
-	wxBusyInfo busy("Processing data table... please wait");
-	wxString dat;
-	GetTextData(dat, '\t');
-
-	// strip commas per request from Paul 5/23/12 meeting
-	dat.Replace(",", "");
-
-#ifdef __WXMSW__
-	wxExcelAutomation xl;
-	if (!xl.StartExcel())
-	{
-		wxMessageBox("Could not start Excel.");
-		return;
-	}
-
-	xl.Show(true);
-
-	if (!xl.NewWorkbook())
-	{
-		wxMessageBox("Could not create a new Excel worksheet.");
-		return;
-	}
-	if (wxTheClipboard->Open())
-	{
-		wxTheClipboard->SetData(new wxTextDataObject(dat));
-		wxTheClipboard->Close();
-		xl.PasteClipboard();
-	}
-#endif
 }
 
 void ParametricViewer::SaveToCSV()
