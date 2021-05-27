@@ -1,5 +1,5 @@
 1
-567
+568
 LeadAcid_q10
 1
 1
@@ -876,7 +876,7 @@ battery_total
 1
 1
 1
-1.43848e+06
+1438480
 battery_voltage_shown
 1
 1
@@ -1043,12 +1043,18 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+4.94066e-323
 const_per_interest1
 1
 1
 1
 1
-1.49825e+06
+1498250
 const_per_interest2
 1
 1
@@ -1108,7 +1114,7 @@ const_per_interest_total
 1
 1
 1
-1.49825e+06
+1498250
 const_per_months1
 1
 1
@@ -1241,7 +1247,7 @@ const_per_total1
 1
 1
 1
-2.99649e+06
+2996490
 const_per_total2
 1
 1
@@ -1301,7 +1307,7 @@ construction_financing_cost
 1
 1
 1
-2.99649e+06
+2996490
 conv_eff
 1
 1
@@ -1362,12 +1368,6 @@ cp_system_nameplate
 1
 1
 20
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-0
 debt_message
 1
 4
@@ -3209,12 +3209,6 @@ ur_dc_enable
 1
 1
 0
-ur_ec_enable_billing_demand
-1
-1
-1
-1
-0
 ur_dc_flat_mat
 1
 3
@@ -3239,43 +3233,6 @@ ur_dc_is_shown
 1
 1
 0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_yearzero_usage_peaks
-1
-2
-1
-12
-0 0 0 0 0 0 0 0 0 0 0 0 
-
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
 ur_dc_sched_weekday
 1
 3
@@ -3364,6 +3321,48 @@ ur_desc_is_shown
 ur_description
 1
 4
+0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+0
+ur_ec_enable_billing_demand
+1
+1
+1
+1
 0
 ur_ec_is_shown
 1
@@ -3587,6 +3586,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 user_capacity_factor
 1
 1
