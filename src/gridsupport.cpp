@@ -33,7 +33,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 #include <wex/metro.h>
+#ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
+#endif
 
 #include "widgets.h"
 #include "inputpage.h"
@@ -1250,7 +1252,7 @@ void ArrayPopupDialog::OnCommand(wxCommandEvent &evt)
 	}
 }
 
-void ArrayPopupDialog::GetTextData(wxString &dat, char sep)
+void ArrayPopupDialog::GetTextData(wxString &dat, char sep, bool withHeader)
 {
 	dat = wxEmptyString;
 	if (!m_grid)
@@ -1261,28 +1263,65 @@ void ArrayPopupDialog::GetTextData(wxString &dat, char sep)
 	dat.Alloc(approxbytes);
 
 	int c;
+	// header
+	if (withHeader) {
+		for (c = 0; c < m_grid_data->GetNumberCols(); c++)
+		{
+			wxString label = m_grid_data->GetColLabelValue(c);
+			label.Replace('\n', " | ");
 
-	for (c = 0; c<m_grid_data->GetNumberCols(); c++)
-	{
-		wxString label = m_grid_data->GetColLabelValue(c);
-		label.Replace('\n', " | ");
+			if (sep == ',')
+				dat += '"' + label + '"';
+			else
+				dat += label;
 
-		if (sep == ',')
-			dat += '"' + label + '"';
-		else
-			dat += label;
-
-		if (c < m_grid_data->GetNumberCols() - 1)
-			dat += sep;
-		else
-			dat += '\n';
+			if (c < m_grid_data->GetNumberCols() - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
 	}
-
+	// data
 	for (int r = 0; r<m_grid_data->GetNumberRows(); r++)
 	{
 		for (c = 0; c<m_grid_data->GetNumberCols(); c++)
 		{
 			dat += m_grid_data->GetValue(r, c);
+
+			if (c < m_grid_data->GetNumberCols() - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
+	}
+}
+
+void ArrayPopupDialog::GetParametricTextData(wxString& dat, char sep)
+{
+	dat = wxEmptyString;
+	if (!m_grid)
+		return;
+
+	wxGridTableBase* m_grid_data = m_grid->GetTable();
+	size_t approxbytes = m_grid_data->GetNumberRows() * 15 * m_grid_data->GetNumberCols();
+	dat.Alloc(approxbytes);
+	for (int r = 0; r < m_grid_data->GetNumberRows(); r++)
+	{
+		for (int c = 0; c < m_grid_data->GetNumberCols(); c++)
+		{
+			if (c == 0) {
+				dat += GetTitle();
+				wxString colHeader = m_grid_data->GetColLabelValue(c);
+				if (colHeader != "Index") {// single values
+					dat += " - ";
+					if (colHeader != "Month")
+						dat += colHeader;
+					dat += " " + m_grid_data->GetValue(r, c);
+				}
+			}
+			else {
+				dat += m_grid_data->GetValue(r, c);
+			}
 
 			if (c < m_grid_data->GetNumberCols() - 1)
 				dat += sep;
@@ -1362,6 +1401,20 @@ void ArrayPopupDialog::SendToExcel()
 	}
 #endif
 }
+
+#ifdef __WXMSW__
+void ArrayPopupDialog::SendToExcelSheet(wxExcelAutomation& xl, wxString &sheetName)
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat;
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+	xl.PasteNewWorksheet(sheetName, dat);
+}
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
