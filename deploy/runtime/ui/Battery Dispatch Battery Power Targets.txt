@@ -1,37 +1,7 @@
 Battery Dispatch Battery Power Targets
-1056
-195
-4
-GroupBox
-
-1
-8
-Name
-5
-16
-InputDispatchBox
-X
+1050
+101
 3
-21
-Y
-3
-30
-Width
-3
-697
-Height
-3
-142
-Tool Tip
-5
-0
-Caption
-5
-50
-Time Series Inputs for Battery Power Target Option
-Bold
-2
-1
 DataArray
 
 1
@@ -45,7 +15,7 @@ X
 264
 Y
 3
-54
+60
 Width
 3
 117
@@ -79,23 +49,23 @@ Name
 batt_dispatch_label
 X
 3
-423
+15
 Y
 3
-48
+21
 Width
 3
-282
+918
 Height
 3
-120
+36
 Tool Tip
 5
 0
 Caption
 5
-214
-Battery targets are maximum power values. Use negative target values to charge the battery and positive to discharge. SAM will attempt to meet the power target within constraints of the system's operational limits.
+210
+Battery targets are maximum power values. Use negative target values to charge the battery and positive to discharge. SAM attempts to meet the power target within constraints of the system's operational limits.
 TextColour
 4
 0
@@ -130,13 +100,13 @@ X
 6
 Y
 3
-6
+3
 Width
 3
 1042
 Height
 3
-180
+96
 Tool Tip
 5
 0

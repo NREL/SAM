@@ -1,6 +1,6 @@
 Battery Dispatch Automated
-1065
-390
+1050
+343
 13
 RadioChoice
 
@@ -12,16 +12,16 @@ Name
 automated_dispatch_choice
 X
 3
-42
+15
 Y
 3
-42
+60
 Width
 3
-264
+204
 Height
 3
-90
+72
 Tool Tip
 5
 0
@@ -31,9 +31,9 @@ Selection
 Items
 6
 3
-Automated dispatch look ahead
-Automated dispatch one day look behind
-Automated dispatch custom weather file
+Look ahead
+One day look behind
+Dispatch to custom weather file
 ShowCaptions
 2
 1
@@ -53,16 +53,16 @@ Name
 batt_auto_fom_help
 X
 3
-375
+15
 Y
 3
-36
+21
 Width
 3
-645
+918
 Height
 3
-60
+36
 Tool Tip
 5
 0
@@ -101,10 +101,10 @@ Name
 batt_cycle_cost
 X
 3
-663
+414
 Y
 3
-279
+222
 Width
 3
 104
@@ -143,10 +143,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-663
+414
 Y
 3
-252
+195
 Width
 3
 198
@@ -177,16 +177,64 @@ Name
 batt_cycle_cost_description
 X
 3
-375
+15
 Y
 3
-180
+273
 Width
 3
-651
+918
 Height
 3
-78
+36
+Tool Tip
+5
+0
+Caption
+5
+187
+For the Dispatch to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+28
+batt_cycle_cost_description4
+X
+3
+15
+Y
+3
+156
+Width
+3
+918
+Height
+3
+36
 Tool Tip
 5
 0
@@ -225,13 +273,13 @@ Name
 batt_cycle_costs_label
 X
 3
-375
+15
 Y
 3
-165
+138
 Width
 3
-633
+920
 Height
 3
 16
@@ -254,45 +302,6 @@ Cycle Degradation Penalty
 Bold
 2
 1
-Divider
-
-1
-10
-Name
-5
-21
-batt_dispatch_options
-X
-3
-378
-Y
-3
-93
-Width
-3
-633
-Height
-3
-22
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-40
-Dispatch Frequency and Look-ahead Period
-Bold
-2
-1
 Numeric
 
 1
@@ -303,10 +312,10 @@ Name
 batt_dispatch_update_frequency_hours
 X
 3
-663
+414
 Y
 3
-114
+60
 Width
 3
 48
@@ -365,10 +374,10 @@ Name
 batt_look_ahead_hours
 X
 3
-663
+414
 Y
 3
-141
+87
 Width
 3
 48
@@ -427,10 +436,10 @@ Name
 batt_select_weather_file_forecast
 X
 3
-381
+15
 Y
 3
-327
+312
 Width
 3
 90
@@ -457,13 +466,13 @@ Name
 batt_user_specified_weather_file
 X
 3
-477
+105
 Y
 3
-327
+312
 Width
 3
-537
+828
 Height
 3
 24
@@ -501,13 +510,13 @@ Name
 batt_weather_label
 X
 3
-378
+12
 Y
 3
-303
+255
 Width
 3
-636
+920
 Height
 3
 19
@@ -543,13 +552,13 @@ X
 6
 Y
 3
-6
+3
 Width
 3
 1042
 Height
 3
-369
+339
 Tool Tip
 5
 0

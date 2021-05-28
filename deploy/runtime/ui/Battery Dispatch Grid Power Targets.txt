@@ -1,37 +1,7 @@
 Battery Dispatch Grid Power Targets
-1071
-203
-6
-GroupBox
-
-1
-8
-Name
+1049
+151
 5
-18
-GridPowerTargetBox
-X
-3
-15
-Y
-3
-33
-Width
-3
-697
-Height
-3
-124
-Tool Tip
-5
-0
-Caption
-5
-58
-Monthly or Time Series Inputs for Grid Power Target Option
-Bold
-2
-1
 Choice
 
 1
@@ -76,23 +46,23 @@ Name
 batt_target_label
 X
 3
-420
+15
 Y
 3
-48
+21
 Width
 3
-285
+918
 Height
 3
-105
+36
 Tool Tip
 5
 0
 Caption
 5
-199
-Grid targets are maximum power values. SAM charges the battery when the electric load is less than the target in a given time step and discharges the battery when the load is greater than the target.
+303
+Battery charges when the electric load is less than the target in a given time step and discharges when the load is greater than the target. Enter either time series (hourly or subhourly) or monthly targets. Grid targets are maximum power values, so the battery may charge or discharge up to the target.
 TextColour
 4
 0
@@ -194,13 +164,13 @@ X
 6
 Y
 3
-6
+3
 Width
 3
 1042
 Height
 3
-180
+144
 Tool Tip
 5
 0

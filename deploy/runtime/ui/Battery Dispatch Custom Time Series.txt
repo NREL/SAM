@@ -1,6 +1,6 @@
 Battery Dispatch Custom Time Series
-1055
-128
+1050
+97
 3
 GroupBox
 
@@ -15,20 +15,20 @@ X
 6
 Y
 3
-6
+3
 Width
 3
 1042
 Height
 3
-115
+88
 Tool Tip
 5
 0
 Caption
 5
-27
-Custom Time Series Dispatch
+30
+Dispatch to Custom Time Series
 Bold
 2
 1
@@ -42,10 +42,10 @@ Name
 batt_custom_dispatch
 X
 3
-204
+228
 Y
 3
-81
+54
 Width
 3
 184
@@ -79,16 +79,16 @@ Name
 batt_dispatch_label
 X
 3
-18
+15
 Y
 3
-39
+21
 Width
 3
-627
+918
 Height
 3
-30
+18
 Tool Tip
 5
 0

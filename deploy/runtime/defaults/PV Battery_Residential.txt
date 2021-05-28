@@ -818,13 +818,13 @@ batt_dispatch_choice_ui
 1
 1
 1
-0
+4.94066e-323
 batt_dispatch_excl
 1
 1
 1
 1
-0
+3.33506e-317
 batt_duration_choice
 1
 1
@@ -4258,7 +4258,7 @@ peak_shaving_batt_dispatch_choice
 1
 1
 1
-0
+3.33505e-317
 per_inverter
 1
 1
