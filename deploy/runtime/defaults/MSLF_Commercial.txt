@@ -4667,7 +4667,7 @@ ur_ec_enable_billing_demand
 1
 1
 1
-3.33505e-317
+0
 ur_ec_is_shown
 1
 1

@@ -958,7 +958,7 @@ capacity_factor_calc
 1
 1
 1
-96
+19.2
 cbi_fed_amount
 1
 1
@@ -1492,7 +1492,7 @@ first_year_output
 1
 1
 1
-33638.4
+6727.68
 first_year_output_peak
 1
 1
@@ -3151,7 +3151,7 @@ user_capacity_factor
 1
 1
 1
-100
+20
 utility_bill_data
 1
 2
