@@ -1821,14 +1821,43 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-1140
+2481
 on_load{'Battery Dispatch PV Smoothing'} = define() {
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
 	on_change{'batt_dispatch_pvs_ac_lb_enable'}();
 	on_change{'batt_dispatch_pvs_short_forecast_enable'}();
+
+	toggle_dispatch(); // do not enable unless mode == 5
 };
 
+function toggle_dispatch()
+{
+	mode = ${batt_dispatch_choice};
+	pvsmoothing = (mode == 5);
+	enable('batt_dispatch_pvs_ac_lb',pvsmoothing);
+	enable('batt_dispatch_pvs_ac_lb_enable',pvsmoothing);
+	enable('batt_dispatch_pvs_ac_ub',pvsmoothing);
+	enable('batt_dispatch_pvs_ac_ub_enable',pvsmoothing);
+	enable('batt_dispatch_pvs_battery_energy',pvsmoothing);
+	enable('batt_dispatch_pvs_battery_power',pvsmoothing);
+	enable('batt_dispatch_pvs_battery_rte',pvsmoothing);
+	enable('batt_dispatch_pvs_curtail_as_control',pvsmoothing);
+	enable('batt_dispatch_pvs_curtail_if_violation',pvsmoothing);
+	enable('batt_dispatch_pvs_forecast_shift_periods',pvsmoothing);
+	enable('batt_dispatch_pvs_interconnection_limit',pvsmoothing);
+	enable('batt_dispatch_pvs_kf',pvsmoothing);
+	enable('batt_dispatch_pvs_ki',pvsmoothing);
+	enable('batt_dispatch_pvs_kp',pvsmoothing);
+	enable('batt_dispatch_pvs_max_ramp',pvsmoothing);
+	enable('batt_dispatch_pvs_nameplate_ac',pvsmoothing);
+	enable('batt_dispatch_pvs_ramp_interval',pvsmoothing);
+	enable('batt_dispatch_pvs_short_forecast_enable',pvsmoothing);
+	enable('batt_dispatch_pvs_soc_rest',pvsmoothing);
+	enable('batt_dispatch_pvs_timestep_multiplier',pvsmoothing);
+	enable('batt_dispatch_pvs_wf_timestep',pvsmoothing);
+	enable('btn_BDPVS_reset',pvsmoothing);
+}
 on_change{ 'batt_dispatch_pvs_ac_ub_enable' } = define () {
 	en_ub = value("batt_dispatch_pvs_ac_ub_enable");
 	enable("batt_dispatch_pvs_ac_ub", en_ub);

@@ -1240,8 +1240,8 @@ batt_dispatch_choice
 Battery dispatch choice front-of-meter
  
 Battery Dispatch FOM
-154
-Automated dispatch look ahead|Automated dispatch one day look behind|Automated dispatch custom weather file|Dispatch to custom time series|Manual dispatch
+167
+Automated dispatch look ahead|Automated dispatch one day look behind|Automated dispatch custom weather file|Dispatch to custom time series|Manual dispatch|PV smoothing
 3
 1
 1
@@ -1341,7 +1341,7 @@ equations{'ui_batt_is_dc'}=define()
 	return !${batt_ac_or_dc};
 };
 
-7630
+7809
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
@@ -1389,8 +1389,8 @@ function toggle_dispatch_fom()
 
 	// Turn on/off forecast input
 	//toggle_forecast();
-	enable('batt_select_weather_file_forecast', ${batt_dispatch_choice} == 2);
-	enable('batt_user_specified_weather_file', ${batt_dispatch_choice} == 2);
+	enable('batt_select_weather_file_forecast', ${batt_dispatch_choice} == 2 || ${batt_dispatch_choice} == 5);
+	enable('batt_user_specified_weather_file', ${batt_dispatch_choice} == 2 || ${batt_dispatch_choice} == 5);
 	
 	if (${batt_dispatch_choice} == 2)
 	{
@@ -1400,8 +1400,13 @@ function toggle_dispatch_fom()
 
 	mode = ${batt_dispatch_choice};
 
+	if (mode == 5) // PV Smoothing
+	{
+		enable_auto_inputs_fom(false);
+		enable_non_manual_inputs_fom(false);
+	}
 	// manual disptch
-	if (mode == 4)
+	else if (mode == 4)
 	{
 		enable_auto_inputs_fom(false);
 		enable_non_manual_inputs_fom(false);
