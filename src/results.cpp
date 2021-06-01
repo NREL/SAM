@@ -45,7 +45,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/plot/plaxis.h>
 #include <wex/plot/pllineplot.h>
 #include <wex/numeric.h>
+#ifdef __WXMSW__
 #include <wex/ole/excelauto.h>
+#endif
 #include <wex/csv.h>
 #include <wex/utils.h>
 #include <wex/snaplay.h>

@@ -2106,7 +2106,7 @@ total_indirect_cost
 1
 1
 1
-42000000
+0
 total_installed_cost
 1
 1

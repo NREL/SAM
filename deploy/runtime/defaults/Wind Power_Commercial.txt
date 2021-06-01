@@ -1,5 +1,5 @@
 1
-551
+559
 a_error_test_number
 1
 1
@@ -346,6 +346,12 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+4.94066e-323
 cols
 1
 1
@@ -2510,6 +2516,13 @@ moorLines
 1
 1
 3
+mpeak
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 mv_overhead_collector
 1
 1
@@ -3660,6 +3673,48 @@ ur_description
 1
 4
 0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+100
+ur_ec_enable_billing_demand
+1
+1
+1
+1
+0
 ur_ec_is_shown
 1
 1
@@ -3883,6 +3938,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 use_specific_wf_wind
 1
 1
@@ -4192,8 +4254,8 @@ USA
 wind_resource.description
 1
 4
-80
-Southern WY - flat lands (NREL AWS Truepower representative file),,,,,,,,,,,,,,,
+65
+Southern WY - flat lands (NREL AWS Truepower representative file)
 wind_resource.elev
 1
 1
@@ -4363,29 +4425,29 @@ wind_turbine_powercurve_powerout
 1
 2
 1
-41
-0 0 0 0 3.7 10.5 19 29.4 41 54.3 66.8 77.7 86.4 92.8 97.3 100 100.8 100.6 99.8 99.4 98.6 97.8 97.3 97.3 98 99.7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+25
+0 0 0.5 4.1 10.5 19 29.4 41 54.3 66.8 77.7 86.4 92.8 97.8 100 99.9 99.2 98.4 97.5 96.8 96.4 96.3 96.8 98 99.2 
 
 wind_turbine_powercurve_powerout_from_lib
 1
 2
 1
-41
-0 0 0 0 3.7 10.5 19 29.4 41 54.3 66.8 77.7 86.4 92.8 97.3 100 100.8 100.6 99.8 99.4 98.6 97.8 97.3 97.3 98 99.7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+25
+0 0 0.5 4.1 10.5 19 29.4 41 54.3 66.8 77.7 86.4 92.8 97.8 100 99.9 99.2 98.4 97.5 96.8 96.4 96.3 96.8 98 99.2 
 
 wind_turbine_powercurve_windspeeds
 1
 2
 1
-41
-0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 
+25
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
 
 wind_turbine_powercurve_windspeeds_from_lib
 1
 2
 1
-41
-0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 
+25
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
 
 wind_turbine_rated_wind_speed
 1

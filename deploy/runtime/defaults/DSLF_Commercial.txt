@@ -1,5 +1,5 @@
 1
-707
+715
 A_aperture
 1
 3
@@ -751,6 +751,12 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+4.94066e-323
 city
 1
 4
@@ -988,7 +994,7 @@ csp.lf.cost.total_indirect
 1
 1
 1
-52156548
+39175176
 csp.lf.cost.total_installed
 1
 1
@@ -3313,6 +3319,13 @@ m_pb_demand
 1
 1
 0
+mpeak
+1
+2
+1
+12
+171.037 183.586 189.564 214.24 235.944 274.243 262.464 263.976 249.139 222.339 162.555 185.168 
+
 nLoops
 1
 1
@@ -3973,7 +3986,7 @@ total_direct_cost
 1
 1
 1
-52156548
+39175176
 total_installed_cost
 1
 1
@@ -4176,6 +4189,48 @@ ur_desc_is_shown
 ur_description
 1
 4
+0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+100
+ur_ec_enable_billing_demand
+1
+1
+1
+1
 0
 ur_ec_is_shown
 1
@@ -4409,6 +4464,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 use_specific_weather_file
 1
 1

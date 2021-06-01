@@ -864,7 +864,7 @@ csp.gss.cost.site_improvements.area
 1
 1
 1
-1243390
+1.24339e+06
 csp.gss.cost.site_improvements.cost_per_m2
 1
 1
@@ -882,7 +882,7 @@ csp.gss.cost.solar_field.area
 1
 1
 1
-1243390
+1.24339e+06
 csp.gss.cost.solar_field.cost_per_m2
 1
 1
@@ -1092,7 +1092,7 @@ csp.gss.sf.field_area
 1
 1
 1
-1243390
+1.24339e+06
 csp.gss.sf.irr_loss_f0
 1
 1
@@ -3168,7 +3168,7 @@ total_indirect_cost
 1
 1
 1
-118554624
+94996944
 total_installed_cost
 1
 1
