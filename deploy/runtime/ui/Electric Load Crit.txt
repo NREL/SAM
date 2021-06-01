@@ -3580,7 +3580,7 @@ TabOrder
 3
 0
 
-45
+46
 annual_crit
 3
 1
@@ -4001,6 +4001,20 @@ Electric Load
 1
 0
 DataArray
+mpeak
+3
+2
+Monthly load peaks
+kW
+Electric load
+0
+8
+1
+2
+1
+1
+0
+Default
 normalize_to_utility_bill
 3
 1
@@ -4213,7 +4227,7 @@ Electric Load
 
 Default
 
-4284
+4303
 equations{ 'escal_other' } = define() {
 	return ${escal_input_hourly};
 };
@@ -4400,6 +4414,7 @@ equations{ '$MIMO$ elecload' } = define() {
 	${energy_12} = mload[11];
 	${peak_12} = mpeak[11];
 	${crit_12} = mcrit[11];
+	${mpeak} = mpeak;
 	${load} = load;
 	${load_annual_total} = sum(load)*tshr;
 	${annual_peak} = max(load);
