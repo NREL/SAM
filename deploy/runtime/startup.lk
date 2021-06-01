@@ -2,7 +2,7 @@
 
 en_iscc = 0;
 
-en_pvsamv3 = 1;
+en_pvsamv3 = 0;
 
 // define all the configurations
 if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );

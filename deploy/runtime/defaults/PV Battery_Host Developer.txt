@@ -1,5 +1,5 @@
 1
-1156
+1155
 6par_aisc
 1
 1
@@ -739,12 +739,6 @@ batt_dispatch_auto_can_gridcharge
 1
 0
 batt_dispatch_choice
-1
-1
-1
-1
-0
-batt_dispatch_choice_excl
 1
 1
 1

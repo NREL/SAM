@@ -1,5 +1,5 @@
 1
-492
+490
 LeadAcid_q10
 1
 1
@@ -209,12 +209,6 @@ batt_ac_or_dc
 1
 1
 1
-batt_auto_gridcharge_max_daily
-1
-1
-1
-1
-100
 batt_bank_duration
 1
 1
@@ -488,12 +482,6 @@ batt_dispatch_choice
 1
 1
 4
-batt_dispatch_choice_excl
-1
-1
-1
-1
-2
 batt_dispatch_choice_ui
 1
 1
@@ -900,7 +888,7 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_voltage_shown
 1
 1
@@ -922,7 +910,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+41.856
 cbi_fed_amount
 1
 1
@@ -1072,7 +1060,7 @@ const_per_interest1
 1
 1
 1
-1498250
+1.49825e+06
 const_per_interest2
 1
 1
@@ -1132,7 +1120,7 @@ const_per_interest_total
 1
 1
 1
-1498250
+1.49825e+06
 const_per_months1
 1
 1
@@ -1265,7 +1253,7 @@ const_per_total1
 1
 1
 1
-2996490
+2.99649e+06
 const_per_total2
 1
 1
@@ -1325,7 +1313,7 @@ construction_financing_cost
 1
 1
 1
-2996490
+2.99649e+06
 conv_eff
 1
 1
@@ -1343,13 +1331,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-1192450
+1.19245e+06
 cost_dev_fee_value
 1
 1
 1
 1
-4494740
+4.49474e+06
 cost_equity_closing
 1
 1
@@ -1881,7 +1869,7 @@ first_year_output
 1
 1
 1
-33638400
+73331712
 first_year_output_peak
 1
 1

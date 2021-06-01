@@ -1,5 +1,5 @@
 1
-605
+604
 LeadAcid_q10
 1
 1
@@ -476,12 +476,6 @@ batt_dispatch_auto_can_gridcharge
 1
 0
 batt_dispatch_choice
-1
-1
-1
-1
-0
-batt_dispatch_choice_excl
 1
 1
 1
