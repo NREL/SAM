@@ -12,20 +12,43 @@
 <script type="text/javascript">
 <!--
     var defaulttopic="introduction.htm";
-    var query = window.location.search.substring(1).replace(/:|&#58;|&#x3a;|\//g,"");
+    var query = window.location.search.substring(1), hash = window.location.hash, xssTest = /&#39;|&#x27;|&#34;|&#x22;|&quot;|&#61;|&#x3D;|%27|%22|%3d|:|&#58;|&#x3a;|=|%3a|3a;|58;|\/|'|"/i, cntxRX = /contextid=\d*/, cntxMatch = cntxRX.exec(query), cntxSrc = "";
     if (query != "") {
-       defaulttopic = query + window.location.hash;
-       if (typeof(hmGetContextId) != "undefined") {
-         var tmpCntx = hmGetContextId(query);
-         if (tmpCntx != "") defaulttopic = tmpCntx;
-       }
+      if (typeof(hmGetContextId) != "undefined") {
+        if (cntxMatch != null) {
+		  cntxSrc = hmGetContextId(cntxMatch[0]);
+        };
+        if (cntxSrc != "") {
+          defaulttopic = cntxSrc;
+        } else {
+            if (!xssTest.test(query) && !xssTest.test(hash))
+               defaulttopic = query + hash;
+        }
+      }
     }
-document.write('<frameset cols="240,*" frameborder="0" framespacing="1">');
-if (document.getElementById) {
-  document.write('<frame name="hmnavigation" src="hmcontent.htm" title="Navigation frame">'); }
-else {
-  document.write('<frame name="hmnavigation" src="hmcontent.htm" title="Navigation frame">'); }
-document.write('<frame name="hmcontent" src="' + defaulttopic + '" title="Content frame">');
+document.write('<frameset name="samframe" cols="240,*" frameborder="0" framespacing="1">');
+var frame1 = document.createElement("frame");
+if (document.getElementById) 
+{
+  frame1.name = "hmnavigation";
+  frame1.src = "hmcontent.htm";
+  frame1.title = "Navigation frame";
+}
+else 
+{
+  frame1.name = "hmnavigation";
+  frame1.src = "hmcontent.htm";
+  frame1.title = "Navigation frame";
+}
+var frame2 = document.createElement("frame");
+frame2.name = "hmcontent";
+frame2.src = defaulttopic;
+frame2.title = "Content frame";
+
+var frameset = document.getElementsByName("samframe")[0];
+frameset.appendChild(frame1);
+frameset.appendChild(frame2);
+
 document.write('</frameset>');
 //-->
 </script>

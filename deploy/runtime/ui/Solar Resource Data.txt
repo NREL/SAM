@@ -2687,7 +2687,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-32883
+32928
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
