@@ -2338,7 +2338,7 @@ mera_cost1
 1
 1
 1
-281665
+281664
 mera_cost2
 1
 1
@@ -2972,7 +2972,7 @@ total_indirect_cost
 1
 1
 1
-579210
+304198
 total_installed_cost
 1
 1

@@ -1753,6 +1753,12 @@ cec_v_oc_ref
 1
 1
 67.9
+chk_update_peaks
+1
+1
+1
+1
+4.94066e-323
 city
 1
 4
@@ -3953,6 +3959,13 @@ mortgage
 1
 1
 1
+mpeak
+1
+2
+1
+12
+1.85407 1.76038 1.81704 2.29535 2.68522 4.05075 4.30453 4.19724 3.6658 2.55071 1.71415 1.87435 
+
 mppt_hi_inverter
 1
 1
@@ -6529,6 +6542,48 @@ ur_description
 1
 4
 0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+1
+ur_ec_enable_billing_demand
+1
+1
+1
+1
+0
 ur_ec_is_shown
 1
 1
@@ -6758,6 +6813,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+1.85407 1.76038 1.81704 2.29535 2.68522 4.05075 4.30453 4.19724 3.6658 2.55071 1.71415 1.87435 
+
 use_specific_weather_file
 1
 1

@@ -1,5 +1,5 @@
 1
-287
+293
 adjust
 1
 5
@@ -215,6 +215,12 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+4.94066e-323
 conv_eff
 1
 1
@@ -940,6 +946,13 @@ loan_term
 1
 1
 25
+mpeak
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 nameplate_capacity
 1
 1
@@ -1255,7 +1268,7 @@ property_assessed_value
 1
 1
 1
-71856960
+71856952
 property_tax_rate
 1
 1
@@ -1387,13 +1400,13 @@ total_indirect_cost
 1
 1
 1
-10702100
+8255910
 total_installed_cost
 1
 1
 1
 1
-71856960
+71856952
 ui_annual_load
 1
 1
@@ -1405,13 +1418,13 @@ ui_loan_amount
 1
 1
 1
-43114176
+43114172
 ui_net_capital_cost
 1
 1
 1
 1
-71856960
+71856952
 ui_wacc
 1
 1
@@ -1572,6 +1585,48 @@ ur_desc_is_shown
 ur_description
 1
 4
+0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+100
+ur_ec_enable_billing_demand
+1
+1
+1
+1
 0
 ur_ec_is_shown
 1
@@ -1801,6 +1856,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 user_capacity_factor
 1
 1

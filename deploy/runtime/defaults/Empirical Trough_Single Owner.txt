@@ -1307,7 +1307,7 @@ const_per_interest1
 1
 1
 1
-21137908
+21137906
 const_per_interest2
 1
 1
@@ -1367,7 +1367,7 @@ const_per_interest_total
 1
 1
 1
-21137908
+21137906
 const_per_months1
 1
 1
@@ -1464,7 +1464,7 @@ const_per_principal1
 1
 1
 1
-528447680
+528447648
 const_per_principal2
 1
 1
@@ -1494,13 +1494,13 @@ const_per_principal_total
 1
 1
 1
-528447680
+528447648
 const_per_total1
 1
 1
 1
 1
-26422384
+26422382
 const_per_total2
 1
 1
@@ -1560,7 +1560,7 @@ construction_financing_cost
 1
 1
 1
-26422384
+26422382
 cooling_tower_operation_mode
 1
 1
@@ -3701,7 +3701,7 @@ property_assessed_value
 1
 1
 1
-528447680
+528447648
 property_tax_rate
 1
 1
@@ -3942,13 +3942,13 @@ total_indirect_cost
 1
 1
 1
-76669904
+58598792
 total_installed_cost
 1
 1
 1
 1
-528447680
+528447648
 track_mode
 1
 1

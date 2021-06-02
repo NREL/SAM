@@ -3180,7 +3180,7 @@ total_indirect_cost
 1
 1
 1
-118554624
+94996944
 total_installed_cost
 1
 1
