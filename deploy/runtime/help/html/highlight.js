@@ -1,11 +1,11 @@
 // ----------------------------------------------------------------------------
-// Zoom Search Engine 6.0 (15/Jul/2008)
+// Zoom Search Engine 7.0 (10/Apr/2014)
 // Highlight & auto-scroll script (DOM version)
 //
 // email: zoom@wrensoft.com
 // www: http://www.wrensoft.com
 //
-// Copyright (C) Wrensoft 2008
+// Copyright (C) Wrensoft 2014
 // ----------------------------------------------------------------------------
 // Use this script to allow your search matches to highlight and scroll to
 // the matched word on the actual web page where it was found.
@@ -212,6 +212,8 @@ function ZHighlightText(terms, text)
 {  	
     text=text.replace(/&amp;/ig, '&');
     text=text.replace(/&nbsp;/ig, '');
+    text=text.replace(/</ig, '&lt;');
+    text=text.replace(/>/ig, '&gt;');
 
     for (var i=0; i<terms.length; i++) // take each term in turn
     {
@@ -276,9 +278,9 @@ function ZHighlightReplace(q, node)
 	var newtext = ZHighlightText(q, node_value);
 	if (newtext != node_value)
 	{
-		var repl = document.createElement('span');
-		repl.innerHTML = newtext;
-		node.parentNode.replaceChild(repl, node);
+  	    var repl = document.createElement('span'); 
+            repl.innerHTML = newtext;
+	    node.parentNode.replaceChild(repl, node);
 	}
 }
 

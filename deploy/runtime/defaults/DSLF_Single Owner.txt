@@ -1211,7 +1211,7 @@ csp.lf.cost.plm.total
 1
 1
 1
-3476410
+3.47641e+06
 csp.lf.cost.power_plant
 1
 1
@@ -1295,7 +1295,7 @@ csp.lf.cost.total_indirect
 1
 1
 1
-51874300
+38968196
 csp.lf.cost.total_installed
 1
 1
@@ -4704,7 +4704,7 @@ total_direct_cost
 1
 1
 1
-51874300
+38968196
 total_installed_cost
 1
 1
