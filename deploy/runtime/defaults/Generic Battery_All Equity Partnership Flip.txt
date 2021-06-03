@@ -928,7 +928,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+41.856
 cbi_fed_amount
 1
 1

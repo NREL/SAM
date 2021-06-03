@@ -1,5 +1,5 @@
 1
-784
+791
 LeadAcid_q10
 1
 1
@@ -4934,9 +4934,8 @@ ur_yearzero_usage_peaks
 1
 2
 1
-12
-0 0 0 0 0 0 0 0 0 0 0 0 
-
+1
+0
 use_specific_weather_file
 1
 1

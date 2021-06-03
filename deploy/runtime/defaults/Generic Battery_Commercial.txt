@@ -1,5 +1,5 @@
 1
-470
+478
 LeadAcid_q10
 1
 1
@@ -919,7 +919,7 @@ capacity_factor_calc
 1
 1
 1
-96
+19.2
 cbi_fed_amount
 1
 1
