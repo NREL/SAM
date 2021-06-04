@@ -1787,15 +1787,16 @@ static void fcall_style( lk::invoke_t &cxt )
 	so->Style( &face, &size, &colour, &bold, &ital, &align, &line_width, &line_style );
 
 	/* table properties */
-	int hdrSize, hdrFace, hdrAlign;
+    int hdrSize, hdrFace, hdrAlign, hdrLines;
 	bool hdrBold;
 	wxColour hdrColour;
 	int cellAlign;
 	bool gridLines, hdrLine, tabBorder;
 	std::vector<float> rowSizes, colSizes;
+    std::vector<int> bldLines;
 
-	so->TableStyle( &hdrSize, &hdrFace, &hdrAlign, &hdrBold, &hdrColour,
-		&hdrLine, &cellAlign, &gridLines, &rowSizes, &colSizes, &tabBorder );
+	so->TableStyle( &hdrSize, &hdrLines, &hdrFace, &hdrAlign, &hdrBold, &hdrColour,
+		&hdrLine, &cellAlign, &gridLines, &rowSizes, &colSizes, &bldLines, &tabBorder );
 
 	lk::vardata_t &tab = cxt.arg(0);
 	lk::vardata_t *v = 0;
@@ -1873,6 +1874,25 @@ static void fcall_style( lk::invoke_t &cxt )
 		if (hdrSize < 1) hdrSize = 1;
 		if (hdrSize > 300) hdrSize = 300;
 	}
+
+    if ((v = tab.lookup("header_lines")))
+    {
+        hdrLines = v->as_integer();
+        if (hdrLines < 1) hdrLines = 1;
+        if (hdrLines > 10) hdrLines = 10;
+    }
+
+    if ((v = tab.lookup("bold_lines")))
+    {
+        lk::vardata_t& vv2 = v->deref();
+        if (vv2.type() == lk::vardata_t::VECTOR)
+        {
+            bldLines.resize(vv2.length());
+            for (size_t i = 0; i < vv2.length(); i++)
+                bldLines[i] = (float)vv2.index(i)->as_number();
+        }
+
+    }
 
 	if ((v=tab.lookup("header_face")))
 	{	
@@ -1955,8 +1975,8 @@ static void fcall_style( lk::invoke_t &cxt )
 	if ((v=tab.lookup("table_border")))
 		tabBorder = v->as_boolean();
 
-	so->TableStyle( hdrSize, hdrFace, hdrAlign, hdrBold,
-		hdrColour, hdrLine, cellAlign, gridLines, rowSizes, colSizes,
+	so->TableStyle( hdrSize, hdrLines, hdrFace, hdrAlign, hdrBold,
+		hdrColour, hdrLine, cellAlign, gridLines, rowSizes, colSizes, bldLines,
 		tabBorder);
 }
 
@@ -2187,7 +2207,7 @@ void SamReportScriptObject::Render( wxPageOutputDevice &dv )
 	
 	// initialize styles
 	Style( wxPageOutputDevice::SANSERIF, 12, *wxBLACK, false, false, wxLEFT, 0.013f, wxPageOutputDevice::SOLID );
-	TableStyle( 12, wxPageOutputDevice::SANSERIF, wxCENTER, true, *wxBLACK, true, wxLEFT, false, std::vector<float>(), std::vector<float>(), true );
+	TableStyle( 12, 1, wxPageOutputDevice::SANSERIF, wxCENTER, true, *wxBLACK, true, wxLEFT, false, std::vector<float>(), std::vector<float>(), std::vector<int>(), true );
 
 	// run the script.
 	// callback functions invoke rendering capabilities and state/style changes
@@ -2278,11 +2298,12 @@ void SamReportScriptObject::Style( int *face, int *size, wxColour *c, bool *b, b
 	*line_style = m_curLineStyle;
 }
 
-void SamReportScriptObject::TableStyle( int hdrSize, int hdrFace, int hdrAlign, bool hdrBold, const wxColour &hdrColor,
-	bool hdrLine, int cellAlign, bool gridLines, const std::vector<float> &rowSizes, const std::vector<float> &colSizes,
+void SamReportScriptObject::TableStyle( int hdrSize, int hdrLines, int hdrFace, int hdrAlign, bool hdrBold, const wxColour &hdrColor,
+	bool hdrLine, int cellAlign, bool gridLines, const std::vector<float> &rowSizes, const std::vector<float> &colSizes, const std::vector<int> &bldLines,
 	bool tabBorder )
 {
 	m_headerSize = hdrSize;
+    m_headerLines = hdrLines;
 	m_headerFace = hdrFace;
 	m_headerAlign = hdrAlign;
 	m_headerBold = hdrBold;
@@ -2292,14 +2313,16 @@ void SamReportScriptObject::TableStyle( int hdrSize, int hdrFace, int hdrAlign, 
 	m_gridLines = gridLines;
 	m_rowSizes = rowSizes;
 	m_colSizes = colSizes;
+    m_bldLines = bldLines;
 	m_tableBorder = tabBorder;
 }
 
-void SamReportScriptObject::TableStyle( int *hdrSize, int *hdrFace, int *hdrAlign, bool *hdrBold, wxColour *hdrColor,
-	bool *hdrLine, int *cellAlign, bool *gridLines, std::vector<float> *rowSizes, std::vector<float> *colSizes,
+void SamReportScriptObject::TableStyle( int *hdrSize, int *hdrLines, int *hdrFace, int *hdrAlign, bool *hdrBold, wxColour *hdrColor,
+	bool *hdrLine, int *cellAlign, bool *gridLines, std::vector<float> *rowSizes, std::vector<float> *colSizes, std::vector<int> *bldLines,
 	bool *tabBorder)
 {
 	*hdrSize = m_headerSize;
+    *hdrLines = m_headerLines;
 	*hdrFace = m_headerFace;
 	*hdrAlign = m_headerAlign; 
 	*hdrBold = m_headerBold;
@@ -2309,6 +2332,7 @@ void SamReportScriptObject::TableStyle( int *hdrSize, int *hdrFace, int *hdrAlig
 	*gridLines = m_gridLines;
 	*rowSizes = m_rowSizes;
 	*colSizes = m_colSizes;
+    *bldLines = m_bldLines;
 	*tabBorder = m_tableBorder;
 }
 
@@ -2426,9 +2450,15 @@ void SamReportScriptObject::RenderTable( const matrix_t<wxString> &tab )
 	matrix_t<cellgeom> cellsize( tab.nrows(), tab.ncols(), cellgeom() );
 	for (int r=0;r<(int)tab.nrows();r++)
 	{
-		if (r == 0) m_curDevice->Font( m_headerFace, m_headerSize, m_headerBold, false );
+		if (r < m_headerLines) m_curDevice->Font( m_headerFace, m_headerSize, m_headerBold, false );
 		else if (r == 1) m_curDevice->Font( m_curFace, m_curSize, m_curBold, m_curItalic );
-
+        for (int b = 0; b < m_bldLines.size(); b++) {
+            if (r == m_bldLines[b]) {
+                m_curDevice->Font(m_headerFace, m_headerSize, true, false);
+                break;
+            }
+            else m_curDevice->Font(m_headerFace, m_headerSize, m_curBold, m_curItalic);
+        }
 		for (int c=0;c<(int)tab.ncols();c++)
 		{
 			float width, height;
@@ -2481,7 +2511,7 @@ void SamReportScriptObject::RenderTable( const matrix_t<wxString> &tab )
 	
 	for (int r=0;r<(int)tab.nrows();r++)
 	{
-		if ( r == 0 )
+		if ( r < m_headerLines )
 		{ // configure header text properties
 			m_curDevice->Color( m_headerColour );
 			m_curDevice->Font( m_headerFace, m_headerSize, m_headerBold, false );
@@ -2491,6 +2521,16 @@ void SamReportScriptObject::RenderTable( const matrix_t<wxString> &tab )
 			m_curDevice->Color( m_curColour );
 			m_curDevice->Font( m_curFace, m_curSize, m_curBold, m_curItalic );
 		}
+        else {
+            for (int b = 0; b < m_bldLines.size(); b++) {
+                if (r == m_bldLines[b]) {
+                    m_curDevice->Font(m_curFace, m_curSize, true, false);
+                    break;
+                }
+                else m_curDevice->Font(m_curFace, m_curSize, m_curBold, m_curItalic);
+            }
+        }
+        
 
 		float xpos = tab_x;
 		for (int c=0;c<(int)tab.ncols();c++)
