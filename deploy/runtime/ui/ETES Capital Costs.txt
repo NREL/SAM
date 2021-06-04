@@ -3191,7 +3191,7 @@ ETES Cost
 -999
 Default
 
-6702
+7479
 // ui only
 equations{ 'ui_etes_cost__nameplate' } = define() {
 	return ${nameplate};
@@ -3283,6 +3283,20 @@ equations{ '$MIMO$ ui_etes_cost__etes_cmod' } = define()
 	ssc_var(obj, "bop_par_0", ${bop_par_0});         
 	ssc_var(obj, "bop_par_1", ${bop_par_1});         
 	ssc_var(obj, "bop_par_2", ${bop_par_2});         
+
+	ssc_var(obj, "ppa_multiplier_model", ${ppa_multiplier_model});         
+	ssc_var(obj, "dispatch_factors_ts", ${dispatch_factors_ts});
+	ssc_var(obj, "dispatch_sched_weekday", ${dispatch_sched_weekday});
+	ssc_var(obj, "dispatch_sched_weekend", ${dispatch_sched_weekend});
+	ssc_var(obj, "dispatch_factor1", ${dispatch_factor1});
+	ssc_var(obj, "dispatch_factor2", ${dispatch_factor2});
+	ssc_var(obj, "dispatch_factor3", ${dispatch_factor3});
+	ssc_var(obj, "dispatch_factor4", ${dispatch_factor4});
+	ssc_var(obj, "dispatch_factor5", ${dispatch_factor5});
+	ssc_var(obj, "dispatch_factor6", ${dispatch_factor6});
+	ssc_var(obj, "dispatch_factor7", ${dispatch_factor7});
+	ssc_var(obj, "dispatch_factor8", ${dispatch_factor8});
+	ssc_var(obj, "dispatch_factor9", ${dispatch_factor9}); 
 
 	ssc_var(obj, "cycle_spec_cost", ${cycle_spec_cost});
 	ssc_var(obj, "tes_spec_cost", ${tes_spec_cost});
