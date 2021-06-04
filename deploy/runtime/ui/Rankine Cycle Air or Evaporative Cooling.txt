@@ -1,0 +1,1015 @@
+Rankine Cycle Air or Evaporative Cooling
+913
+316
+13
+Numeric
+
+1
+17
+Name
+5
+6
+P_boil
+X
+3
+321
+Y
+3
+24
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+Numeric
+
+1
+17
+Name
+5
+10
+P_cond_min
+X
+3
+321
+Y
+3
+246
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+24
+Numeric
+
+1
+17
+Name
+5
+12
+P_cond_ratio
+X
+3
+321
+Y
+3
+222
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+23
+Numeric
+
+1
+17
+Name
+5
+9
+T_ITD_des
+X
+3
+321
+Y
+3
+150
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+22
+Numeric
+
+1
+17
+Name
+5
+9
+T_amb_des
+X
+3
+321
+Y
+3
+126
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+19
+Numeric
+
+1
+17
+Name
+5
+10
+T_approach
+X
+3
+321
+Y
+3
+198
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+21
+Plot
+
+1
+6
+Name
+5
+17
+acc_pressure_plot
+X
+3
+543
+Y
+3
+21
+Width
+3
+346
+Height
+3
+276
+Tool Tip
+5
+0
+Choice
+
+1
+9
+Name
+5
+26
+csp.pt.pwrb.condenser_type
+X
+3
+321
+Y
+3
+99
+Width
+3
+184
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+Evaporative
+Air-cooled
+Selection
+3
+4294967295
+TabOrder
+3
+18
+Choice
+
+1
+9
+Name
+5
+25
+csp.pt.pwrb.pressure_mode
+X
+3
+321
+Y
+3
+72
+Width
+3
+184
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+4
+Fixed pressure
+Sliding pressure
+Sliding pressure designed for high backpressure
+Sliding pressure designed for low backpressure
+Selection
+3
+4294967295
+TabOrder
+3
+17
+GroupBox
+
+1
+8
+Name
+5
+26
+cycle_technology_group_box
+X
+3
+3
+Y
+3
+6
+Width
+3
+899
+Height
+3
+300
+Tool Tip
+5
+0
+Caption
+5
+24
+Rankine Cycle Parameters
+Bold
+2
+1
+Numeric
+
+1
+17
+Name
+5
+9
+dT_cw_ref
+X
+3
+321
+Y
+3
+174
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+20
+Numeric
+
+1
+17
+Name
+5
+8
+n_pl_inc
+X
+3
+321
+Y
+3
+270
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+25
+Numeric
+
+1
+17
+Name
+5
+10
+pb_bd_frac
+X
+3
+321
+Y
+3
+48
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+8
+
+13
+CT
+3
+1
+Condenser type
+ 
+Power Cycle
+0
+8
+1
+1
+1
+1
+1
+Default
+P_boil
+3
+1
+Boiler operating pressure
+Bar
+Power Cycle
+0
+2
+1
+1
+1
+1
+100
+Default
+P_cond_min
+3
+1
+Min condenser pressure
+inHg
+Power Cycle
+0
+2
+1
+1
+1
+1
+1.25
+Default
+P_cond_ratio
+3
+1
+Condenser pressure ratio
+ 
+Power Cycle
+0
+2
+1
+1
+1
+1
+1.0028
+Default
+T_ITD_des
+3
+1
+ITD at design point
+°C
+Power Cycle
+0
+2
+1
+1
+1
+1
+16
+Default
+T_amb_des
+3
+1
+Ambient temperature at design
+°C
+Power Cycle
+0
+2
+1
+1
+1
+1
+27
+Default
+T_approach
+3
+1
+Approach temperature
+°C
+Power Cycle
+0
+2
+1
+1
+1
+1
+5
+Default
+csp.pt.pwrb.condenser_type
+3
+1
+Condenser type
+ 
+Power Cycle
+39
+Evaporative|Air-cooled|Hybrid|Radiative
+2
+1
+1
+1
+1
+0
+Choice
+csp.pt.pwrb.pressure_mode
+3
+1
+Turbine inlet pressure control
+ 
+Power Cycle
+110
+Fixed pressure|Sliding pressure|Sliding pressure with high backpressure|Sliding pressure with low backpressure
+2
+1
+1
+1
+1
+0
+Choice
+dT_cw_ref
+3
+1
+Reference condenser water dT
+°C
+Power Cycle
+0
+2
+1
+1
+1
+1
+20
+Default
+n_pl_inc
+3
+1
+Cooling system part load levels
+ 
+Power Cycle
+0
+2
+1
+1
+1
+1
+8
+Default
+pb_bd_frac
+3
+1
+Steam cycle blowdown fraction
+ 
+Power Cycle
+0
+2
+1
+1
+1
+1
+0.013
+Default
+tech_type
+3
+1
+1: Fixed (tower) 3: Sliding
+ 
+Power Cycle
+0
+8
+1
+1
+1
+1
+0
+Default
+
+671
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
+
+// Just combo converter
+equations{ 'CT' } = define() {
+	return ${csp.pt.pwrb.condenser_type} + 1; };
+
+// Just combo converter
+equations{ 'tech_type' } = define() {
+	if (${csp.pt.pwrb.pressure_mode} == 1) //sliding pressure
+		return 3; // user defined
+	elseif(${csp.pt.pwrb.pressure_mode}==2) //first custom cycle
+		return 5;
+	elseif(${csp.pt.pwrb.pressure_mode}==3) //second custom cycle
+		return 6;
+	else // fixed pressure
+		return 1; // tower
+};
+
+
+3241
+on_load{"Rankine Cycle"} = define() {
+	on_change{"csp.pt.pwrb.condenser_type"}();
+	on_change{"T_amb_des"};
+	on_change{"P_cond_min"};
+};
+
+on_change{"csp.pt.pwrb.condenser_type"} = define() {
+	mode = value("csp.pt.pwrb.condenser_type");
+	
+	show("label_hybrid_cooling", mode==2);
+	show("acc_pressure_plot", mode==1);
+	update_acc_press_plot();
+	
+	// 0 = evap, 1 = air, 2 = hybrid, 3=radiative
+	enable("T_approach", mode==0||mode==2||mode==3);
+	enable("dT_cw_ref", mode==0||mode==2);
+	enable("T_ITD_des", mode==1||mode==2);
+	enable("P_cond_ratio", mode==1||mode==2);
+
+	if (mode==3) {
+		property("cycle_technology_group_box", "Height", 798);
+		property("radiative_cooling_divider", "Y", 309);
+		property("radiator_field_divider", "Y", 336);
+		property("cold_storage_divider", "Y", 336);
+		property("cost_divider", "Y", 666);
+		property("csp.pt.pwrb.pressure_mode", "Items",
+		 ["Fixed pressure",
+		 "Sliding pressure",
+		 "Sliding for high backpressure",
+		 "Sliding for low backpressure"]);
+	}
+	else {
+		property("cycle_technology_group_box", "Height", 300);
+		property("radiative_cooling_divider", "Y", -50);
+		property("radiator_field_divider", "Y", -50);
+		property("cold_storage_divider", "Y", -50);
+		property("cost_divider", "Y", -50);
+		if (value("csp.pt.pwrb.pressure_mode") > 1)
+			// keep "Turbine inlet pressure control" from being blank
+			value("csp.pt.pwrb.pressure_mode", 0);
+		property("csp.pt.pwrb.pressure_mode", "Items",
+		 ["Fixed pressure",
+		 "Sliding pressure"]);
+	}
+
+	refresh();
+};
+on_change{"T_amb_des"} = define(){update_acc_press_plot();};
+on_change{"P_cond_min"} = define(){update_acc_press_plot();};
+
+function update_acc_press_plot()
+{
+	table = acc_press_vs_load_temp();
+	desPcond = table{'desPcond'};
+	p_cond = table{'p_cond'};
+	Tamb = table{'Tamb'};
+	
+	
+	clearplot( 'acc_pressure_plot');
+	plot( Tamb, p_cond, {'thick'=3, 'type' = 'line', 'color' = 'blue'});//, 'series' = 'Tamb: ' + ${T_amb_des} + ' [C]'
+	plotopt( {'title' = 'Air-cooled Condenser Model (full-load)', 'legend' = true});//, 'legendpos'=[15,12]
+	axis( 'x1', {'label' = 'Ambient Temperature [C]', 'min' = 0, 'max' = ${T_amb_des}*1.1});
+	axis( 'y1', {'label' = 'Condenser Pressure [inHg]', 'min'= 0, 'max' = desPcond*1.1});
+}
+
+function acc_press_vs_load_temp()
+{
+	P_cond_min = ${P_cond_min};
+	T_amb_des = ${T_amb_des};
+	
+	// Fitted regression model coefficients
+	A = [[147.96619, 71.23482281, 27.55395547],
+		 [-329.021562, -159.2675368, -62.24857193],
+		 [183.4601872, 89.50235831, 35.57127305]];
+	
+	Nsteps = 10;
+	
+	// Normalized factors 
+	p_norm = 0.;
+	T_norm = 1.0;	// normalized ambient temperature
+	q_norm = 1.; 	// Approximately Full load
+	t_step = (T_norm - 0.85)/Nsteps;
+	for (t = 0; t <= Nsteps + 1; t++){
+		if (T_norm > 0.8925){
+			for (i = 0; i < #A; i++){
+				for (j = 0; j < #A[i]; j++){
+					p_norm += A[i][j]*pow(T_norm, i)*pow(q_norm,j);
+				}
+			}
+		}
+		else
+			p_norm = 1;
+	
+		T_vec[t] = T_norm*(T_amb_des+273.15) - 273.15;
+		if (T_norm == 1.0)
+			desPcond = p_norm*P_cond_min;
+			
+		if (p_norm > 1)
+			p_vec[t] = p_norm*P_cond_min;
+		else
+			p_vec[t] = P_cond_min;
+		// step down
+		T_norm -= t_step;
+		p_norm = 0.0; // Reset p
+	}
+	
+	table{'desPcond'} = desPcond;
+	table{'Tamb'} = T_vec;
+	table{'p_cond'} = p_vec;
+	return table;
+}
+
+
+

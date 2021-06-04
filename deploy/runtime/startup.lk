@@ -24,6 +24,7 @@ addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Lev
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
+addconfig( 'ETES', ['Single Owner']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
 addconfig( 'MEwave', ['LCOE Calculator']);
@@ -61,6 +62,7 @@ configopt( 'DSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresn
 configopt( 'MSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Molten Salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 if ( en_iscc ) { configopt( 'ISCC',       { 'tree_parent'='CSP', 'long_name'='Integrated Solar Combined Cycle',    'short_name'='Tower Salt ISCC',  'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
 configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'ETES',         				  { 'tree_parent'='CSP', 'long_name'='ETES',          'short_name'='ETES',       'description'='Electric thermal energy storage' } );
 configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MEwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
 configopt( 'MEtidal',                    { 'tree_parent'='ME', 'long_name'='Tidal',          'short_name'='Marine Tidal',         'description'='Marine energy tidal system' });
@@ -537,6 +539,18 @@ function setup_fuel_cell_pages_fom()
 	setup_grid_page();
 }
 
+function setup_etes_pages()
+{
+	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
+	addpage( [['ETES System Design']], { 'sidebar'='System Design' } );
+	addpage( [['ETES Heater']], {'sidebar'='Heater' } );
+	addpage( [[ 'Rankine Cycle Air or Evaporative Cooling' ], [ 'User Defined Power Cycle' ]],
+			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
+			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
+	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
+	addpage( [[ 'ETES System Control' ]], { 'sidebar'='System Control', 'help'='mspt_system_control'});
+}
+
 function setup_csp_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
@@ -768,6 +782,14 @@ addpage( [[ 'PV Capital Costs', 'O and M Costs'],
 	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'O and M Costs Capex Table']],
 	{ 'sidebar'='System Costs', 'exclusive_var'='pv_capex_cost_choice','help'='pv_system_costs'} );
 setup_sale_leaseback_pages( );
+
+// ETES ///////
+setconfig('ETES', 'Single Owner');
+setmodules( ['etes_electric_resistance']);
+setup_etes_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+setup_single_owner_pages();
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
