@@ -1,0 +1,246 @@
+/*
+
+This script downloads solar resource data from the Solcast API (Historical 
+API - TMY) as a JSON file and converts it to a SAM CSV weather file. It also 
+displays a message if data required for the SAM PV or CSP models is missing.
+
+Solcast API: 
+	https://solcast.com/solar-data-api/api-toolkit/
+
+Download SAM CSV files from the Solcast website:
+	https://solcast.com/historical-and-tmy/software-integration/
+
+To use the script, sign up for a Solcast API key and enter your key
+below.
+
+Once you have a key, assign values to lat (latitude) and lon (longitude) below
+and click Run.
+
+The script saves the SAM CSV weather file to the SAM Downloaded Weather Files
+folder so you can find it in the Solar Resource library on SAM's Location and
+Resource input page.
+
+Note. This script briefly stores the downloaded JSON file in your operating 
+system's temporary files folder and then deletes it.
+
+Tested in SAM 2020.11.29 r2
+
+*/
+
+// Inputs //////////////////////////////////////////////////////////////////////
+
+// register at https://toolkit.solcast.com.au/register
+key = '';
+
+// lat/lon pairs for testing (Solcast unmetered)
+/*
+-33.856784,151.215297
+36.099763,-112.112485
+51.178882,-1.826215
+41.89021,12.492231
+29.977296,31.132496
+27.175145,78.042142
+*/
+
+// latitude and longitude in decimal degrees (note LK geocode() function is 
+// available to convert location name and/or address to lat/lon)
+lat = 41.89021;
+lon = 12.492231;
+
+// Functions ///////////////////////////////////////////////////////////////////
+
+// Parse Solcast timestamp parameter into SAM's year, month, day, hour, minute
+//2059-06-20T04:00:00.0000000+10:00
+function parse_timestamp( str )
+{
+	arr = split( str, '-' );
+	T.year = to_string(to_int(arr[0]));
+	T.month = to_string(to_int(arr[1]));
+	arr = split( arr[2], 'T' );
+	T.day = to_string(to_int(arr[0]));
+	arr = split( arr[1], ':' );
+	T.hour = to_string(to_int(arr[0]));
+	T.minute = to_string(to_int(arr[1]));
+	return T;
+}
+
+// Given a table of output_parameters returned by Solcast API, return a table
+// of SAM column names paired to Solcast parameter names.
+// Only include parameters that SAM uses, and return a message about missing data for PV and CSP.
+function solcast_names_to_sam_cols( T )
+{
+	// solcast to sam (sts)
+	sts{'period_start'} = 'timestamp'; // requires parsing into year, month, day, hour, minute
+	sts{'air_temp'} = 'tdry';
+	sts{'dewpoint'} = 'tdew';
+	sts{'ghi'} = 'ghi';
+	sts{'dni'} = 'dni';
+	sts{'dhi'} = 'dhi';
+	sts{'relative_humidity'} = 'rhum';
+	sts{'snow_depth'} = 'snow';
+	sts{'sfc_pressure'} = 'pressure';
+	sts{'wind_direction_10m'} = 'wdir';
+	sts{'wind_speed_10m'} = 'wspd';
+	sts{'albedo_daily'} = 'albedo';
+
+	solcast_params = @sts;
+
+	for ( i=0; i<#solcast_params; i++ )
+	{
+		if ( (T ?@ solcast_params[i]) > -1 )
+		{
+			R{sts{solcast_params[i]}} = solcast_params[i];
+		}
+	}
+	
+	sam_data = @R;
+	str = 'dni,ghi,tdry,wspd';
+	sam_pv_required_data = split( str, ',' );
+	pv_missing = '';
+	for (i = 0; i<#sam_pv_required_data; i++)
+	{
+		x = sam_data ?@ sam_pv_required_data[i];
+		if ( x < 0 ) 
+		{
+			if ( pv_missing != '' ) { pv_missing += ', '; }
+			pv_missing += sam_pv_required_data[i]; 
+		}
+	} 
+	str = 'dni,tdry,wspd,pressure,rhum';
+	sam_csp_required_data = split( str, ',' );
+	csp_missing = ''; 
+	for (i = 0; i<#sam_csp_required_data; i++)
+	{
+		x = sam_data ?@ sam_csp_required_data[i];
+		if ( x < 0 ) 
+		{
+			if ( csp_missing != '' ) { csp_missing += ', '; }
+			csp_missing += sam_csp_required_data[i]; 
+		}
+	}
+	
+	R.missing = '';
+	if ( pv_missing != '' )
+	{
+		R.missing += 'Solcast file is missing ' + pv_missing + ' data required for SAM PV simulations';
+	} 
+	if ( csp_missing != '' )
+	{
+		if ( pv_missing == '' ) { R.missing += 'Solcast file is missing '; }
+		else { R.missing += ', and '; }
+		R.missing += csp_missing + ' data required for SAM CSP simulations';
+	}
+	R.missing += '.'; 
+	
+	return R;
+}
+
+// Main ////////////////////////////////////////////////////////////////////////
+
+// URL for API call
+url = 'https://api.solcast.com.au/';
+url = url + 'tmy_hourly?api_key=' + key;
+url = url + '&latitude=' + to_string(lat);
+url = url + '&longitude=' + to_string(lon);
+url = url + '&output_parameters=period_start,air_temp,ghi,dhi,dni,relative_humidity,snow_depth,sfc_pressure,wind_direction_10m,wind_speed_10m,albedo_daily';
+url = url + '&timzone' + 'longitudonal';
+url = url + '&format=json';
+
+outln( 'URL for API call:\n  ' + url );
+
+// temporary file name for downloaded JSON
+f = tempfile('json','sol');
+
+outln( 'Downloading JSON from Solcast to temporary file:\n  ' + f );
+ok = curl(url, { 'file' = f } );
+
+if ( ok ) { outln( 'Converting JSON to SAM CSV.' ); }
+else { 'Download (cURL) failed. Quitting.'; exit; }
+
+D = read_json( f );
+outln( 'Deleting temporary JSON file.' );
+remove_file( f );
+
+// check JSON for error messages
+status = D{'response_status'};
+if (  status != null )
+{
+	msgbox('Message from Solcast API:\n\"' + status{'message'} + '\"\n\nExiting script.' );
+	outln( 'No weather data in JSON. Quitting.');
+	exit;
+}
+
+// name for SAM CSV file
+name = 'solcast_tmy_' + to_string(lat) + '_' + to_string(lon) + '.csv';
+fname = wfdownloaddir() + '/' + name;
+outln('Converting data from JSON and writing to SAM CSV file:\n  ' + fname);
+
+// data for header rows
+elevation = D{'elevation'};
+time_zone = to_string(to_int(D{'timezone'})); // strip '+' from positive time zones
+
+// get list of names of returned parameters
+params = D{'output_parameters'};
+
+// convert parameter names to SAM column names
+sam_columns = solcast_names_to_sam_cols( @params );
+
+// message if data required by SAM is missing
+if ( sam_columns.missing != '' )
+{
+	ok = yesno( 'Missing data!\n' + sam_columns.missing + '\n\nContinue anyway?' + '\n\nContinue to create SAM CSV file with missing data.');
+	if ( !ok ) { outln( 'Quitting.'); exit; }
+}
+
+// header rows
+sam_header1 = 'latitude,longitude,time zone,elevation,data source';
+sam_header2 = to_string(lat) + ',' + to_string(lon) + ',' + time_zone + ',' + elevation + ',Solcast via LK';
+
+// column headings
+// column order deterimend by sam_columns table
+// SAM does not require a specific column order
+// (could use arrays instead to enforce a column order)
+sam_header3 = join(@sam_columns, ',');
+sam_header3 = replace( sam_header3, 'timestamp', 'year,month,day,hour,minute' );
+sam_header3 = replace( sam_header3, 'missing', '' );
+
+// read time stamp data from start of time step
+time_stamps = params{'period_start'};
+
+// open output file for writing
+fout = open( fname, 'w' );
+
+// write two header rows and column headings
+write_line( fout, sam_header1 );
+write_line( fout, sam_header2 );
+write_line( fout, sam_header3 );
+
+// store arrays of parameter and column names for loops
+sam_cols = @sam_columns;
+solcast_names = @params;
+
+// for each time step and column, write a value to the file with values 
+// separated by commas
+for( i=0; i<#time_stamps; i++ )
+{
+	str = '';
+	for ( j=0; j<#sam_cols; j++ )
+	{
+		if ( str != '' ) { str = str + ','; }
+		// parse time stamp column into year, month, day, hour, minute
+		if ( sam_cols[j] == 'timestamp' )
+		{
+			TS = parse_timestamp( time_stamps[i] );
+			str = str + TS.year + ',' + TS.month + ',' + TS.day + ',' + TS.hour + ',' + TS.minute;
+		}
+		elseif ( sam_cols[j] != 'missing' ) // exclude missing data message
+		{
+			str = str + params{sam_columns{sam_cols[j]}}[i];
+		}
+	}
+	write_line( fout, str );
+}
+
+close( fout );
+outln( 'Done.');
+browse( fname );
