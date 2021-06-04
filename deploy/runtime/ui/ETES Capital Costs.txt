@@ -463,634 +463,6 @@ Numeric
 Name
 5
 15
-csp.pt.cost.bop
-X
-3
-642
-Y
-3
-147
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
-23
-csp.pt.cost.contingency
-X
-3
-642
-Y
-3
-249
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
-21
-csp.pt.cost.epc.total
-X
-3
-645
-Y
-3
-399
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
-34
-csp.pt.cost.installed_per_capacity
-X
-3
-645
-Y
-3
-579
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-21
-csp.pt.cost.nameplate
-X
-3
-477
-Y
-3
-345
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-0
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
-21
-csp.pt.cost.plm.total
-X
-3
-645
-Y
-3
-423
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
-23
-csp.pt.cost.power_block
-X
-3
-642
-Y
-3
-171
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
-27
-csp.pt.cost.sales_tax.total
-X
-3
-645
-Y
-3
-462
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
-27
-csp.pt.cost.sales_tax.value
-X
-3
-477
-Y
-3
-462
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
-19
-csp.pt.cost.storage
-X
-3
-642
-Y
-3
-102
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
-15
 cycle_spec_cost
 X
 3
@@ -1332,68 +704,6 @@ BackColour
 TabOrder
 3
 15
-Numeric
-
-1
-17
-Name
-5
-16
-heater_cost_calc
-X
-3
-642
-Y
-3
-48
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -2321,132 +1631,6 @@ Numeric
 17
 Name
 5
-17
-total_direct_cost
-X
-3
-642
-Y
-3
-285
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
-19
-total_indirect_cost
-X
-3
-645
-Y
-3
-498
-Width
-3
-136
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-2
-$ 
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-0
-Numeric
-
-1
-17
-Name
-5
 20
 total_installed_cost
 X
@@ -2455,6 +1639,195 @@ X
 Y
 3
 555
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+0
+Numeric
+
+1
+17
+Name
+5
+16
+ui_bop_cost_calc
+X
+3
+642
+Y
+3
+147
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+0
+Numeric
+
+1
+17
+Name
+5
+24
+ui_contingency_cost_calc
+X
+3
+642
+Y
+3
+249
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+0
+Numeric
+
+1
+17
+Name
+5
+18
+ui_cycle_cost_calc
+X
+3
+642
+Y
+3
+171
 Width
 3
 136
@@ -2573,6 +1946,69 @@ Numeric
 17
 Name
 5
+16
+ui_epc_cost_calc
+X
+3
+645
+Y
+3
+399
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+0
+Numeric
+
+1
+17
+Name
+5
 19
 ui_etes_cost__P_ref
 X
@@ -2601,7 +2037,69 @@ Format
 1
 Decimals
 3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
 3
+0
+Numeric
+
+1
+17
+Name
+5
+23
+ui_etes_cost__nameplate
+X
+3
+477
+Y
+3
+345
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
 Prefix
 5
 0
@@ -2697,6 +2195,68 @@ Numeric
 17
 Name
 5
+23
+ui_etes_cost__sales_tax
+X
+3
+477
+Y
+3
+462
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+0
+Numeric
+
+1
+17
+Name
+5
 22
 ui_etes_cost__tes_mwht
 X
@@ -2725,10 +2285,451 @@ Format
 1
 Decimals
 3
-3
+1
 Prefix
 5
 0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+0
+Numeric
+
+1
+17
+Name
+5
+19
+ui_heater_cost_calc
+X
+3
+642
+Y
+3
+48
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+35
+ui_installed_per_capacity_cost_calc
+X
+3
+645
+Y
+3
+579
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+17
+ui_land_cost_calc
+X
+3
+645
+Y
+3
+423
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+0
+Numeric
+
+1
+17
+Name
+5
+22
+ui_sales_tax_cost_calc
+X
+3
+645
+Y
+3
+462
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+0
+Numeric
+
+1
+17
+Name
+5
+20
+ui_storage_cost_calc
+X
+3
+642
+Y
+3
+102
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+0
+Numeric
+
+1
+17
+Name
+5
+20
+ui_total_direct_cost
+X
+3
+642
+Y
+3
+285
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+0
+Numeric
+
+1
+17
+Name
+5
+22
+ui_total_indirect_cost
+X
+3
+645
+Y
+3
+498
+Width
+3
+136
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+2
+$ 
 Suffix
 5
 0
@@ -2782,160 +2783,6 @@ Tower SolarPilot Capital Costs
 1
 1
 8.85
-Default
-csp.pt.cost.bop
-3
-1
-Balance of plant cost total
-$
-Tower SolarPilot Capital Costs
-0
-9
-1
-1
-1
-1
--999
-Default
-csp.pt.cost.contingency
-3
-1
-Contingency cost
-$
-Tower SolarPilot Capital Costs
-0
-9
-1
-1
-1
-1
--999
-Default
-csp.pt.cost.epc.total
-3
-1
-EPC and owner cost total
-$
-Tower SolarPilot Capital Costs
-0
-9
-1
-1
-1
-1
--999
-Default
-csp.pt.cost.installed_per_capacity
-3
-1
-Estimated total installed cost per net capacity ($/kW)
- 
-Tower SolarPilot Capital Costs
-0
-8
-1
-1
-1
-1
--999
-Default
-csp.pt.cost.nameplate
-3
-1
-Cycle net (nameplate) capacity
-MWe
-Tower SolarPilot Capital Costs
-0
-8
-1
-1
-1
-1
--999
-Default
-csp.pt.cost.plm.total
-3
-1
-Land cost total
-$
-Tower SolarPilot Capital Costs
-0
-9
-1
-1
-1
-1
--999
-Default
-csp.pt.cost.power_block
-3
-1
-Power cycle cost total
-$
-Tower SolarPilot Capital Costs
-0
-9
-1
-1
-1
-1
--999
-Default
-csp.pt.cost.sales_tax.total
-3
-1
-Sales tax total
-$
-Tower SolarPilot Capital Costs
-0
-9
-1
-1
-1
-1
--999
-Default
-csp.pt.cost.sales_tax.value
-3
-1
-Sales tax rate
-%
-Tower SolarPilot Capital Costs
-0
-8
-1
-1
-1
-1
--999
-Default
-csp.pt.cost.site_improvements_m2
-3
-1
-Site improvement cost
-m²
-Tower SolarPilot Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
-csp.pt.cost.storage
-3
-1
-Thermal energy storage cost total
-$
-Tower SolarPilot Capital Costs
-0
-9
-1
-1
-1
-1
--999
 Default
 cycle_spec_cost
 3
@@ -3091,40 +2938,54 @@ Tower SolarPilot Capital Costs
 1
 40
 Default
-total_direct_cost
-3
-1
-Total direct cost
- 
-Tower SolarPilot Capital Costs
-0
-9
-1
-1
-1
-1
--999
-Default
-total_indirect_cost
-3
-1
-Total indirect cost
-$
-Tower SolarPilot Capital Costs
-0
-9
-1
-1
-1
-1
--999
-Default
 total_installed_cost
 3
 1
 Total installed cost
 $
 Tower SolarPilot Capital Costs
+0
+9
+1
+1
+1
+1
+-999
+Default
+ui_bop_cost_calc
+3
+1
+Balance of plant cost total
+$
+ETES Cost
+0
+9
+1
+1
+1
+1
+-999
+Default
+ui_contingency_cost_calc
+3
+1
+Contingency cost
+$
+ETES Cost
+0
+9
+1
+1
+1
+1
+-999
+Default
+ui_cycle_cost_calc
+3
+1
+Power cycle cost total
+$
+ETES Cost
 0
 9
 1
@@ -3147,6 +3008,20 @@ Tower SolarPilot Capital Costs
 1
 -999
 Default
+ui_epc_cost_calc
+3
+1
+EPC and owner cost total
+$
+ETES Cost
+0
+9
+1
+1
+1
+1
+-999
+Default
 ui_etes_cost__P_ref
 3
 1
@@ -3161,11 +3036,39 @@ Tower SolarPilot Capital Costs
 1
 -999
 Default
+ui_etes_cost__nameplate
+3
+1
+Cycle net (nameplate) capacity
+MWe
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
 ui_etes_cost__q_dot_heater
 3
 1
 Heater capacity
 MWt
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+ui_etes_cost__sales_tax
+3
+1
+Sales tax rate
+%
 ETES Cost
 0
 8
@@ -3189,10 +3092,108 @@ Tower SolarPilot Capital Costs
 1
 -999
 Default
+ui_heater_cost_calc
+3
+1
+Total heater cost
+$
+ETES Cost
+0
+9
+1
+1
+1
+1
+-999
+Default
+ui_installed_per_capacity_cost_calc
+3
+1
+ Estimated total installed cost per net capacity ($/kW)
+ 
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+ui_land_cost_calc
+3
+1
+Land cost total
+$
+ETES Cost
+0
+9
+1
+1
+1
+1
+-999
+Default
+ui_sales_tax_cost_calc
+3
+1
+Sales tax total
+$
+ETES Cost
+0
+9
+1
+1
+1
+1
+-999
+Default
+ui_storage_cost_calc
+3
+1
+Thermal energy storage cost total
+$
+ETES Cost
+0
+9
+1
+1
+1
+1
+-999
+Default
+ui_total_direct_cost
+3
+1
+Total direct cost
+ 
+ETES Cost
+0
+9
+1
+1
+1
+1
+-999
+Default
+ui_total_indirect_cost
+3
+1
+Total indirect cost
+$
+ETES Cost
+0
+9
+1
+1
+1
+1
+-999
+Default
 
-614
+6702
 // ui only
-equations{ 'csp.pt.cost.nameplate' } = define() {
+equations{ 'ui_etes_cost__nameplate' } = define() {
 	return ${nameplate};
 };
 
@@ -3212,7 +3213,7 @@ equations{ 'ui_etes_cost__P_ref' } = define() {
 };
 
 // ui only
-equations{ 'csp.pt.cost.sales_tax.value' } = define() {
+equations{ 'ui_etes_cost__sales_tax' } = define() {
 	return ${sales_tax_rate};
 };
 
@@ -3221,8 +3222,141 @@ equations { 'system_use_recapitalization' } = define () {
 	return 0;
 };
 
-equations {'total_installed_cost' } = define() {
-	return ${nameplate}*5000;
+equations{ '$MIMO$ ui_etes_cost__etes_cmod' } = define()
+{
+	obj = ssc_create();
+	ssc_var(obj, "sim_type", 2);
+	
+	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
+	
+	ssc_var(obj, "solar_resource_file", ${solar_resource_file});
+	
+	ssc_var(obj, "T_htf_cold_des", ${T_htf_cold_des});
+	ssc_var(obj, "T_htf_hot_des", ${T_htf_hot_des});
+	ssc_var(obj, "P_ref", ${P_ref});
+	ssc_var(obj, "design_eff", ${design_eff});
+	ssc_var(obj, "tshours", ${tshours});
+	ssc_var(obj, "heater_mult", ${heater_mult});
+	ssc_var(obj, "gross_net_conversion_factor", ${gross_net_conversion_factor});
+	
+	ssc_var(obj, "pc_config", ${pc_config});
+	ssc_var(obj, "pb_pump_coef", ${pb_pump_coef});
+	ssc_var(obj, "startup_time", ${startup_time});                  
+	ssc_var(obj, "startup_frac", ${startup_frac});
+	ssc_var(obj, "cycle_max_frac", ${cycle_max_frac});
+	ssc_var(obj, "cycle_cutoff_frac", ${cycle_cutoff_frac});
+	ssc_var(obj, "q_sby_frac", ${q_sby_frac});
+
+	ssc_var(obj, "dT_cw_ref", ${dT_cw_ref});       
+	ssc_var(obj, "T_amb_des", ${T_amb_des});         
+	ssc_var(obj, "P_boil", ${P_boil});         
+	ssc_var(obj, "CT", ${CT});               
+	ssc_var(obj, "T_approach", ${T_approach});                    
+	ssc_var(obj, "T_ITD_des", ${T_ITD_des});       
+	ssc_var(obj, "P_cond_ratio", ${P_cond_ratio});         
+	ssc_var(obj, "pb_bd_frac", ${pb_bd_frac});   
+	ssc_var(obj, "P_cond_min", ${P_cond_min});       
+	ssc_var(obj, "n_pl_inc", ${n_pl_inc});       
+	ssc_var(obj, "tech_type", ${tech_type});           
+
+	ssc_var(obj, "ud_f_W_dot_cool_des", ${ud_f_W_dot_cool_des});         
+	ssc_var(obj, "ud_m_dot_water_cool_des", ${ud_m_dot_water_cool_des});
+	ssc_var(obj, "ud_ind_od", ${ud_ind_od});
+
+	ssc_var(obj, "hot_htf_code", ${hot_htf_code});         
+	ssc_var(obj, "ud_hot_htf_props", ${ud_hot_htf_props});   
+	ssc_var(obj, "csp.pt.tes.init_hot_htf_percent", ${csp.pt.tes.init_hot_htf_percent});
+	ssc_var(obj, "h_tank", ${h_tank});
+	ssc_var(obj, "cold_tank_max_heat", ${cold_tank_max_heat});
+	ssc_var(obj, "u_tank", ${u_tank});
+	ssc_var(obj, "tank_pairs", ${tank_pairs});               
+	ssc_var(obj, "cold_tank_Thtr", ${cold_tank_Thtr});       
+	ssc_var(obj, "h_tank_min", ${h_tank_min});
+	ssc_var(obj, "hot_tank_Thtr", ${hot_tank_Thtr});       
+	ssc_var(obj, "hot_tank_max_heat", ${hot_tank_max_heat}); 
+
+	ssc_var(obj, "is_dispatch", ${is_dispatch});
+
+	ssc_var(obj, "pb_fixed_par", ${pb_fixed_par});     
+	ssc_var(obj, "bop_par", ${bop_par});   
+	ssc_var(obj, "bop_par_f", ${bop_par_f});             
+	ssc_var(obj, "bop_par_0", ${bop_par_0});         
+	ssc_var(obj, "bop_par_1", ${bop_par_1});         
+	ssc_var(obj, "bop_par_2", ${bop_par_2});         
+
+	ssc_var(obj, "cycle_spec_cost", ${cycle_spec_cost});
+	ssc_var(obj, "tes_spec_cost", ${tes_spec_cost});
+	ssc_var(obj, "heater_spec_cost", ${heater_spec_cost});     
+	ssc_var(obj, "bop_spec_cost", ${bop_spec_cost});
+	ssc_var(obj, "contingency_rate", ${contingency_rate}); 
+	ssc_var(obj, "sales_tax_frac", ${sales_tax_frac});
+	ssc_var(obj, "epc_cost_perc_of_direct", ${epc_cost_perc_of_direct});
+	ssc_var(obj, "epc_cost_per_watt", ${epc_cost_per_watt});
+	ssc_var(obj, "epc_cost_fixed", ${epc_cost_fixed});
+	ssc_var(obj, "land_cost_perc_of_direct", ${land_cost_perc_of_direct});
+	ssc_var(obj, "land_cost_per_watt", ${land_cost_per_watt});
+	ssc_var(obj, "land_cost_fixed", ${land_cost_fixed});
+
+	ssc_var(obj, "sales_tax_rate", ${sales_tax_rate});
+
+	ssc_var(obj, "const_per_interest_rate1", ${const_per_interest_rate1});    
+	ssc_var(obj, "const_per_interest_rate2", ${const_per_interest_rate2});
+	ssc_var(obj, "const_per_interest_rate3", ${const_per_interest_rate3});
+	ssc_var(obj, "const_per_interest_rate4", ${const_per_interest_rate4});
+	ssc_var(obj, "const_per_interest_rate5", ${const_per_interest_rate5});
+	ssc_var(obj, "const_per_months1", ${const_per_months1});
+	ssc_var(obj, "const_per_months2", ${const_per_months2});
+	ssc_var(obj, "const_per_months3", ${const_per_months3});
+	ssc_var(obj, "const_per_months4", ${const_per_months4});
+	ssc_var(obj, "const_per_months5", ${const_per_months5});
+	ssc_var(obj, "const_per_percent1", ${const_per_percent1});
+	ssc_var(obj, "const_per_percent2", ${const_per_percent2});
+	ssc_var(obj, "const_per_percent3", ${const_per_percent3});
+	ssc_var(obj, "const_per_percent4", ${const_per_percent4});
+	ssc_var(obj, "const_per_percent5", ${const_per_percent5});
+	ssc_var(obj, "const_per_upfront_rate1", ${const_per_upfront_rate1});       
+	ssc_var(obj, "const_per_upfront_rate2", ${const_per_upfront_rate2});       
+	ssc_var(obj, "const_per_upfront_rate3", ${const_per_upfront_rate3});       
+	ssc_var(obj, "const_per_upfront_rate4", ${const_per_upfront_rate4});       
+	ssc_var(obj, "const_per_upfront_rate5", ${const_per_upfront_rate5});       
+
+	//ret_d = ssc_dump(obj, 'etes_cap_costs_mimo.txt');
+
+	ret = ssc_exec(obj, 'etes_electric_resistance');
+
+	if(ret==0) {
+		${ui_heater_cost_calc} = ssc_var(obj, "heater_cost_calc");
+		${ui_storage_cost_calc} = ssc_var(obj, "tes_cost_calc");
+		${ui_bop_cost_calc} = ssc_var(obj, "bop_cost_calc");
+		${ui_cycle_cost_calc} = ssc_var(obj, "cycle_cost_calc");
+		${ui_direct_subtotal} = ssc_var(obj, "direct_subtotal_cost_calc");
+		${ui_contingency_cost_calc} = ssc_var(obj, "contingency_cost_calc");
+		${ui_total_direct_cost} = ssc_var(obj, "total_direct_cost_calc");
+		${ui_epc_cost_calc} = ssc_var(obj, "epc_cost_calc");
+		${ui_land_cost_calc} = ssc_var(obj, "land_cost_calc");
+		${ui_sales_tax_cost_calc} = ssc_var(obj, "sales_tax_cost_calc");
+		${ui_total_indirect_cost} = ssc_var(obj, "total_indirect_cost_calc");
+		${total_installed_cost} = ssc_var(obj, "total_installed_cost");		
+		${ui_installed_per_capacity_cost_calc} = ssc_var(obj, "installed_per_cap_cost_calc");
+	}
+	else {
+		vf = -789;
+		${ui_heater_cost_calc} = vf;
+		${ui_storage_cost_calc} = vf;
+		${ui_bop_cost_calc} = vf;
+		${ui_cycle_cost_calc} = vf;
+		${ui_direct_subtotal} = vf;
+		${ui_contingency_cost_calc} = vf;
+		${ui_total_direct_cost} = vf;
+		${ui_epc_cost_calc} = vf;
+		${ui_land_cost_calc} = vf;
+		${ui_sales_tax_cost_calc} = vf;
+		${ui_total_indirect_cost} = vf;		
+		${total_installed_cost} = vf;
+		${ui_installed_per_capacity_cost_calc} = vf;
+	}
+	
+	ssc_free( obj );
 };
 
 139

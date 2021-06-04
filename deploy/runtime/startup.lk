@@ -785,10 +785,10 @@ setup_sale_leaseback_pages( );
 
 // ETES ///////
 setconfig('ETES', 'Single Owner');
-setmodules( ['etes_electric_resistance']);
+setmodules( ['etes_electric_resistance', 'singleowner']);
 setup_etes_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+addpage([['ETES Capital Costs','O and M Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
 setup_single_owner_pages();
 
 // CSThermal - Physical Trough ////////////////////////////////
