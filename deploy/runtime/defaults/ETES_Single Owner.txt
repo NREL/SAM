@@ -178,7 +178,7 @@ constant
 1
 1
 1
-0
+4
 en_hourly
 1
 1
@@ -262,7 +262,7 @@ bop_par
 1
 1
 1
-0.025
+0
 bop_par_0
 1
 1
@@ -778,12 +778,6 @@ cp_system_nameplate
 1
 1
 103.5
-csp.pt.par.calc.bop
-1
-1
-1
-1
--1
 csp.pt.pwrb.condenser_type
 1
 1
@@ -1347,6 +1341,12 @@ equip_reserve_depr_fed
 1
 0
 equip_reserve_depr_sta
+1
+1
+1
+1
+0
+etes_bop_des_calc
 1
 1
 1

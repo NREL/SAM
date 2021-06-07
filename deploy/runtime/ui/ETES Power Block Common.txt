@@ -1143,7 +1143,7 @@ Power Cycle
 0.3
 Default
 
-6705
+6379
 // Set copy of variables from MSPT System Design page
 equations{ 'PB_COPY_P_ref' } = define(){
 	return ${P_ref}; };
@@ -1292,15 +1292,5 @@ equations{ '$MIMO$ ui_etes_power_block_common__etes_cmod' } = define()
 	
 	ssc_free( obj );
 };
-
-// Set copy of variables from Molten Salt Tower Receiver
-/*equations{ 'PB_COPY_htf_cp_avg' } = define(){
-	return ${csp.pt.rec.htf_c_avg}; };
-*/	
-/*equations{ 'PB_m_dot_htf_cycle_des' } = define(){
-	return ${PB_COPY_q_pb_design}*1000.0
-		/(${PB_COPY_htf_cp_avg}
-		*(${PB_COPY_T_htf_hot_des}-${PB_COPY_T_htf_cold_des})); };
-*/
 
 0
