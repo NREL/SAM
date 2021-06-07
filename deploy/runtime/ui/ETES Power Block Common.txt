@@ -63,7 +63,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 1
@@ -125,7 +125,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 1
@@ -187,7 +187,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 1
@@ -249,7 +249,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -311,7 +311,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -373,7 +373,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 1
@@ -435,10 +435,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -589,7 +589,7 @@ BackColour
 255
 TabOrder
 3
-15
+5
 Numeric
 
 1
@@ -651,7 +651,7 @@ BackColour
 255
 TabOrder
 3
-16
+6
 GroupBox
 
 1
@@ -743,7 +743,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+1
 Numeric
 
 1
@@ -805,7 +805,7 @@ BackColour
 255
 TabOrder
 3
-11
+2
 Numeric
 
 1
@@ -867,7 +867,7 @@ BackColour
 255
 TabOrder
 3
-14
+4
 Numeric
 
 1
@@ -929,7 +929,7 @@ BackColour
 255
 TabOrder
 3
-13
+3
 
 15
 PB_COPY_P_ref

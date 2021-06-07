@@ -311,7 +311,7 @@ BackColour
 255
 TabOrder
 3
-11
+2
 Numeric
 
 1
@@ -373,7 +373,7 @@ BackColour
 255
 TabOrder
 3
-13
+4
 Numeric
 
 1
@@ -435,7 +435,7 @@ BackColour
 255
 TabOrder
 3
-14
+5
 Numeric
 
 1
@@ -497,7 +497,7 @@ BackColour
 255
 TabOrder
 3
-15
+6
 Numeric
 
 1
@@ -559,7 +559,7 @@ BackColour
 255
 TabOrder
 3
-12
+3
 Numeric
 
 1
@@ -621,7 +621,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+9
 Numeric
 
 1
@@ -683,7 +683,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+8
 Numeric
 
 1
@@ -745,7 +745,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+7
 Numeric
 
 1
@@ -807,7 +807,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+13
 Numeric
 
 1
@@ -869,7 +869,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+14
 Numeric
 
 1
@@ -931,7 +931,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+15
 Numeric
 
 1
@@ -993,7 +993,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+11
 Numeric
 
 1
@@ -1055,7 +1055,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+10
 Numeric
 
 1
@@ -1117,7 +1117,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+12
 Numeric
 
 1
@@ -1179,7 +1179,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+16
 Numeric
 
 1
@@ -1241,7 +1241,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+17
 Numeric
 
 1
@@ -1273,10 +1273,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+1
 Prefix
 5
 0
@@ -1505,7 +1505,7 @@ BackColour
 255
 TabOrder
 3
-4
+1
 
 20
 adjust

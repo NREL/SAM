@@ -63,7 +63,7 @@ BackColour
 255
 TabOrder
 3
-6
+1
 Numeric
 
 1
@@ -125,7 +125,7 @@ BackColour
 255
 TabOrder
 3
-24
+8
 Numeric
 
 1
@@ -187,7 +187,7 @@ BackColour
 255
 TabOrder
 3
-23
+7
 Numeric
 
 1
@@ -249,7 +249,7 @@ BackColour
 255
 TabOrder
 3
-22
+4
 Numeric
 
 1
@@ -311,7 +311,7 @@ BackColour
 255
 TabOrder
 3
-19
+3
 Numeric
 
 1
@@ -373,7 +373,7 @@ BackColour
 255
 TabOrder
 3
-21
+6
 Plot
 
 1
@@ -558,7 +558,7 @@ BackColour
 255
 TabOrder
 3
-20
+5
 Numeric
 
 1
@@ -620,7 +620,7 @@ BackColour
 255
 TabOrder
 3
-25
+9
 Numeric
 
 1
@@ -682,7 +682,7 @@ BackColour
 255
 TabOrder
 3
-8
+2
 
 13
 CT
@@ -789,8 +789,8 @@ csp.pt.pwrb.condenser_type
 Condenser type
  
 Power Cycle
-39
-Evaporative|Air-cooled|Hybrid|Radiative
+22
+Evaporative|Air-cooled
 2
 1
 1
