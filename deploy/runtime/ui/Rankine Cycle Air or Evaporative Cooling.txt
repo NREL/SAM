@@ -898,8 +898,8 @@ equations{ 'tech_type' } = define() {
 };
 
 
-3241
-on_load{"Rankine Cycle"} = define() {
+3268
+on_load{"Rankine Cycle Air or Evaporative Cooling"} = define() {
 	on_change{"csp.pt.pwrb.condenser_type"}();
 	on_change{"T_amb_des"};
 	on_change{"P_cond_min"};
