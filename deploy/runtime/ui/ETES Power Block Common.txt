@@ -1143,7 +1143,7 @@ Power Cycle
 0.3
 Default
 
-6700
+6705
 // Set copy of variables from MSPT System Design page
 equations{ 'PB_COPY_P_ref' } = define(){
 	return ${P_ref}; };
@@ -1166,7 +1166,7 @@ equations{ 'PB_COPY_T_htf_hot_des' } = define(){
 equations{ 'PB_COPY_T_htf_cold_des' } = define(){
 	return ${T_htf_cold_des}; };
 
-equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
+equations{ '$MIMO$ ui_etes_power_block_common__etes_cmod' } = define()
 {
 	obj = ssc_create();
 	ssc_var(obj, "sim_type", 2);
