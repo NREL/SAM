@@ -1788,7 +1788,7 @@ System Control
 0.0055
 Default
 
-5754
+5897
 equations{ '$MIMO$ ui_etes_system_control__etes_cmod' } = define()
 {
 	obj = ssc_create();
@@ -1841,6 +1841,9 @@ equations{ '$MIMO$ ui_etes_system_control__etes_cmod' } = define()
 	ssc_var(obj, "h_tank_min", ${h_tank_min});
 	ssc_var(obj, "hot_tank_Thtr", ${hot_tank_Thtr});       
 	ssc_var(obj, "hot_tank_max_heat", ${hot_tank_max_heat}); 
+
+	ssc_var(obj, "f_q_dot_des_allowable_su", ${f_q_dot_des_allowable_su});
+	ssc_var(obj, "hrs_startup_at_max_rate", ${hrs_startup_at_max_rate});
 
 	ssc_var(obj, "is_dispatch", ${is_dispatch});
 
