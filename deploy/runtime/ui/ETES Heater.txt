@@ -315,32 +315,6 @@ Selection
 TabOrder
 3
 23
-MaterialProperties
-
-1
-7
-Name
-5
-14
-field_fl_props
-X
-3
-720
-Y
-3
-57
-Width
-3
-107
-Height
-3
-27
-Tool Tip
-5
-0
-TabOrder
-3
-24
 GroupBox
 
 1
@@ -371,8 +345,34 @@ System Design Parameters
 Bold
 2
 1
+MaterialProperties
 
-10
+1
+7
+Name
+5
+16
+ud_hot_htf_props
+X
+3
+723
+Y
+3
+54
+Width
+3
+107
+Height
+3
+27
+Tool Tip
+5
+0
+TabOrder
+3
+24
+
+7
 HEATER_COPY_T_htf_cold_des
 3
 1
@@ -429,20 +429,6 @@ ETES Heater
 1
 0
 Default
-csp.pt.rec.htf_c_avg
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 etes_hot_htf_type_dd
 3
 1
@@ -457,38 +443,10 @@ ETES Heater
 1
 0
 Numeric
-field_fl_props
-3
-3
- 
- 
-ETES Heater
-0
-8
-1
-3
-1
-1
-0
-Default
 hot_htf_code
 3
 1
 HTF type
- 
-ETES Heater
-0
-8
-1
-1
-1
-1
-0
-Default
-rec_htf
-3
-1
- 
  
 ETES Heater
 0
@@ -515,7 +473,7 @@ ETES Heater
 
 MaterialProperties
 
-883
+563
 equations{ 'hot_htf_code' } = define() {
 	return ?${etes_hot_htf_type_dd}
 	[
@@ -524,20 +482,6 @@ equations{ 'hot_htf_code' } = define() {
 		50 // 36+) User specified (lookup tables)
    	];
 };
-
-equations { 'csp.pt.rec.htf_c_avg' } = define() {
-	return -1.0;
-}; 
-
-// Copy htf code and ud props to var names for TES page
-equations {'rec_htf'} = define() {
-	return ${hot_htf_code};
-};
-
-equations {'field_fl_props'} = define () {
-	return ${ud_hot_htf_props};
-};
-// ***************************************************
 
 equations{ 'HEATER_COPY_heater_mult' } = define() {
 	return ${heater_mult}; };

@@ -546,7 +546,7 @@ function setup_etes_pages()
 	addpage( [['ETES Heater']], {'sidebar'='Heater' } );
 	addpage( [[ 'Rankine Cycle Air or Evaporative Cooling' ], [ 'User Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
-			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
+			  'exclusive_header_pages' = ['ETES Power Block Common']} );
 	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
 	addpage( [[ 'ETES System Control' ]], { 'sidebar'='System Control', 'help'='mspt_system_control'});
 }

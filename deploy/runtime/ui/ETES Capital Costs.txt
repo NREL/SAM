@@ -3191,7 +3191,7 @@ ETES Cost
 -999
 Default
 
-7479
+7465
 // ui only
 equations{ 'ui_etes_cost__nameplate' } = define() {
 	return ${nameplate};
@@ -3265,7 +3265,7 @@ equations{ '$MIMO$ ui_etes_cost__etes_cmod' } = define()
 
 	ssc_var(obj, "hot_htf_code", ${hot_htf_code});         
 	ssc_var(obj, "ud_hot_htf_props", ${ud_hot_htf_props});   
-	ssc_var(obj, "csp.pt.tes.init_hot_htf_percent", ${csp.pt.tes.init_hot_htf_percent});
+	ssc_var(obj, "tes_init_hot_htf_percent", ${tes_init_hot_htf_percent});
 	ssc_var(obj, "h_tank", ${h_tank});
 	ssc_var(obj, "cold_tank_max_heat", ${cold_tank_max_heat});
 	ssc_var(obj, "u_tank", ${u_tank});
