@@ -1885,7 +1885,7 @@ addpage( [[ 'PV Battery Capital Costs','O and M Costs' ],
 setup_host_developer_pages( LOAD_SIMPLE_CRIT ); //includes building load calculator by default in this function
 
 setconfig( 'PV Battery', 'Single Owner' );
-setmodules( ['pvsamv1', 'grid', 'pv_smoothing', 'utilityrate5', 'singleowner']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs','O and M Costs' ],

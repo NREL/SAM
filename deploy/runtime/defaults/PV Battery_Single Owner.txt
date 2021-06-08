@@ -1,5 +1,5 @@
 1
-1119
+1140
 6par_aisc
 1
 1
@@ -1283,7 +1283,7 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_voltage_shown
 1
 1
@@ -2072,7 +2072,7 @@ contingency
 1
 1
 1
-1288210
+1.28821e+06
 contingency_percent
 1
 1
@@ -2741,7 +2741,7 @@ engr_total
 1
 1
 1
-3500160
+3.50016e+06
 equip1_reserve_cost
 1
 1
@@ -2867,7 +2867,7 @@ grid_total
 1
 1
 1
-1500070
+1.50007e+06
 ibi_fed_amount
 1
 1
@@ -4245,7 +4245,7 @@ landprep_total
 1
 1
 1
-1000040
+1.00004e+06
 lat
 1
 1
@@ -5061,7 +5061,7 @@ sales_tax_total
 1
 1
 1
-2211430
+2.21143e+06
 sales_tax_value
 1
 1
@@ -6757,7 +6757,7 @@ total_indirect_cost
 1
 1
 1
-6500290
+6.50029e+06
 total_installed_cost
 1
 1
@@ -7330,7 +7330,7 @@ ur_yearzero_usage_peaks
 2
 1
 12
-0 0 0 0 0 0 0 0 0 0 0 0 
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
 
 use_specific_weather_file
 1
@@ -7347,8 +7347,7 @@ use_wf_albedo
 user_specified_weather_file
 1
 4
-64
-phoenix_az_33.450495_-111.983688_psmv3_60_tmy_5mInterpolated.csv
+0
 vdcmax_inverter
 1
 1
@@ -7360,4 +7359,4 @@ wf_nrecords
 1
 1
 1
-105120
+8760
