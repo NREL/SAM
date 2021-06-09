@@ -1919,7 +1919,7 @@ equations{ '$MIMO$ ui_etes_system_control__etes_cmod' } = define()
 	ssc_free( obj );
 };
 621
-on_load{"MSPT System Control"} = define()
+on_load{"ETES System Control"} = define()
 {
 	on_change{"is_dispatch"}();
 };

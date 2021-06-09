@@ -3373,8 +3373,8 @@ equations{ '$MIMO$ ui_etes_cost__etes_cmod' } = define()
 	ssc_free( obj );
 };
 
-139
-on_load{"Molten Salt Tower Capital Costs"}=define()
+126
+on_load{"ETES Capital Costs"}=define()
 {
 	fin = financing();
 	
