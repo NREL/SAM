@@ -1800,7 +1800,7 @@ equations{'batt_dispatch_pvs_battery_energy'} = define() {
 };
 
 equations{'batt_dispatch_pvs_battery_power'} = define() {
-	return(${batt_power_charge_max_kwdc});
+	return(${batt_power_charge_max_kwac});
 };
 
 equations{'batt_dispatch_pvs_interconnection_limit'} = define() {
