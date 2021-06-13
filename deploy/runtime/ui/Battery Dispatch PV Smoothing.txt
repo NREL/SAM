@@ -822,8 +822,8 @@ Numeric
 17
 Name
 5
-30
-batt_dispatch_pvs_nameplate_ac
+27
+batt_dispatch_pvs_nameplate
 X
 3
 882
@@ -1490,7 +1490,7 @@ AlignTop
 2
 0
 
-21
+22
 batt_dispatch_pvs_ac_lb
 3
 1
@@ -1701,7 +1701,7 @@ Battery Dispatch PV Smoothing
 1
 10
 Numeric
-batt_dispatch_pvs_nameplate_ac
+batt_dispatch_pvs_nameplate
 3
 1
 Nameplate
@@ -1715,6 +1715,20 @@ Battery Dispatch PV Smoothing
 1
 0
 Numeric
+batt_dispatch_pvs_nameplate_ac
+3
+1
+Power scaling factor
+kWac
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 batt_dispatch_pvs_ramp_interval
 3
 1
@@ -1786,7 +1800,7 @@ Battery Dispatch PV Smoothing
 60
 Numeric
 
-944
+1193
 equations{'batt_dispatch_pvs_wf_timestep'} = define() {
 	return(${ui_step_minutes});
 };
@@ -1807,8 +1821,16 @@ equations{'batt_dispatch_pvs_interconnection_limit'} = define() {
 	return(${grid_interconnection_limit_kwac});
 };
 
-equations{'batt_dispatch_pvs_nameplate_ac'} = define() {
+equations{'batt_dispatch_pvs_nameplate'} = define() {
 	return(${total_inverter_capacity});// todo - generic? PV array only?
+};
+
+// todo - move to compute module?
+equations{'batt_dispatch_pvs_nameplate_ac'} = define() {
+	if (${total_inverter_capacity}>${grid_interconnection_limit_kwac}) 
+		return ${grid_interconnection_limit_kwac};
+	else
+		return ${total_inverter_capacity};
 };
 
 
