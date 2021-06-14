@@ -6307,7 +6307,21 @@ TabOrder
 3
 0
 
-92
+93
+baseline_cost
+3
+1
+Baseline cost
+$/kW
+Geothermal Capital Costs
+0
+10
+1
+1
+1
+1
+0
+Default
 geotherm.cost.capital_total
 3
 1
@@ -6862,7 +6876,7 @@ Baseline Cost
 $/kW
 Geothermal Capital Costs
 0
-8
+10
 1
 1
 1
@@ -6932,7 +6946,7 @@ geotherm.cost.plant_total.amount
  
 Geothermal Capital Costs
 0
-9
+11
 1
 1
 1
@@ -7599,7 +7613,7 @@ Geothermal Capital Costs
 0
 Numeric
 
-14110
+14243
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -7789,7 +7803,7 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 	{
 		geothermal = ssc_module_create_from_case('geothermal');	
 		ssc_var( geothermal, 'system_capacity', ${nameplate} );
-
+		ssc_var( geothermal, 'ui_calculations_only', 0);
 		ssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER
 		ssc_var( geothermal, 'resource_temp', ${resource_temp} );
 		ssc_var( geothermal, 'resource_depth', ${resource_depth} );
@@ -7918,6 +7932,10 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 	{
 		return 0;
 	}
+};
+
+equations{'baseline_cost'} = define() {
+	return ${geotherm.cost.plant_per_kW};
 };
 
 equations{ 'system_use_recapitalization' } = define() {
