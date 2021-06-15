@@ -476,6 +476,126 @@ SAM_EXPORT void SAM_EtesElectricResistance_SystemCosts_tes_spec_cost_nset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate1", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate2", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate3", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate4", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate5", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months1", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months2", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months3", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months4", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months5", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent1", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent2", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent3", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent4", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent5", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate1", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate2", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate3", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate4", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate5", number);
+	});
+}
+
 SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_sales_tax_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sales_tax_rate", number);
@@ -1336,11 +1456,255 @@ SAM_EXPORT double SAM_EtesElectricResistance_SystemCosts_tes_spec_cost_nget(SAM_
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate1", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_interest_rate1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate2", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_interest_rate2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate3", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_interest_rate3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate4", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_interest_rate4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate5", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_interest_rate5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_months1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months1", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_months1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_months2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months2", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_months2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_months3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months3", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_months3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_months4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months4", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_months4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_months5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months5", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_months5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_percent1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent1", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_percent1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_percent2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent2", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_percent2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_percent3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent3", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_percent3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_percent4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent4", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_percent4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_percent5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent5", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_percent5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate1", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_upfront_rate1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate2", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_upfront_rate2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate3", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_upfront_rate3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate4", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_upfront_rate4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate5", &result))
+		make_access_error("SAM_EtesElectricResistance", "const_per_upfront_rate5");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_sales_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sales_tax_rate", &result))
 		make_access_error("SAM_EtesElectricResistance", "sales_tax_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_tes_cold", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "T_tes_cold");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_tes_hot", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "T_tes_hot");
 	});
 	return result;
 }
@@ -1493,6 +1857,17 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_energy_full_availabi
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "construction_financing_cost", &result))
+		make_access_error("SAM_EtesElectricResistance", "construction_financing_cost");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_e_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1511,6 +1886,30 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_gen_aget(SAM_table ptr, in
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_mass_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "mass_tes_cold", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "mass_tes_cold");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_mass_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "mass_tes_hot", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "mass_tes_hot");
 	});
 	return result;
 }
@@ -1613,12 +2012,34 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_tes_losses_aget(SAM_
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_capacity", &result))
+		make_access_error("SAM_EtesElectricResistance", "system_capacity");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "time_hr", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "time_hr");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
+		make_access_error("SAM_EtesElectricResistance", "total_installed_cost");
 	});
 	return result;
 }

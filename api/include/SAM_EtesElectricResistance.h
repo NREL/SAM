@@ -698,6 +698,166 @@ extern "C"
 	//
 
 	/**
+	 * Set const_per_interest_rate1: Interest rate, loan 1 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_interest_rate2: Interest rate, loan 2 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_interest_rate3: Interest rate, loan 3 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_interest_rate4: Interest rate, loan 4 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_interest_rate5: Interest rate, loan 5 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_months1: Months prior to operation, loan 1
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_months2: Months prior to operation, loan 2
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_months3: Months prior to operation, loan 3
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_months4: Months prior to operation, loan 4
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_months5: Months prior to operation, loan 5
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_percent1: Percent of total installed cost, loan 1 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_percent2: Percent of total installed cost, loan 2 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_percent3: Percent of total installed cost, loan 3 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_percent4: Percent of total installed cost, loan 4 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_percent5: Percent of total installed cost, loan 5 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_upfront_rate1: Upfront fee on principal, loan 1 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_upfront_rate2: Upfront fee on principal, loan 2 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_upfront_rate3: Upfront fee on principal, loan 3 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_upfront_rate4: Upfront fee on principal, loan 4 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set const_per_upfront_rate5: Upfront fee on principal, loan 5 [%]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set sales_tax_rate: Sales tax rate [%]
 	 * options: None
 	 * constraints: None
@@ -914,12 +1074,56 @@ extern "C"
 	 * FinancialParameters Getters
 	 */
 
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate4_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_interest_rate5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_months1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_months2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_months3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_months4_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_months5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_percent1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_percent2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_percent3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_percent4_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_percent5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate4_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_const_per_upfront_rate5_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_sales_tax_rate_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * Outputs Getters
 	 */
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_gross_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -947,9 +1151,15 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_energy_full_availability_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_construction_financing_cost_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_e_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_mass_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_mass_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -967,7 +1177,11 @@ extern "C"
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_tes_losses_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

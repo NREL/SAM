@@ -1,5 +1,5 @@
 1
-761
+773
 A_aperture
 1
 1
@@ -906,6 +906,12 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+4.94066e-323
 city
 1
 4
@@ -1287,7 +1293,7 @@ csp.mslf.cost.total_indirect
 1
 1
 1
-75203984
+56339616
 csp.mslf.cost.total_installed
 1
 1
@@ -2948,6 +2954,13 @@ mc_bal_sca
 1
 1
 4.5
+mpeak
+1
+2
+1
+12
+171.037 183.586 189.564 214.24 235.944 274.243 262.464 263.976 249.139 222.339 162.555 185.168 
+
 mslf_is_hx
 1
 1
@@ -3776,7 +3789,7 @@ total_direct_cost
 1
 1
 1
-75203984
+56339616
 total_installed_cost
 1
 1
@@ -3840,6 +3853,12 @@ ud_COPY_T_HTF_des
 1
 1
 525
+ud_Q_dot_HTF_ND_des
+1
+1
+1
+1
+1
 ud_T_amb_des
 1
 1
@@ -3924,6 +3943,18 @@ ud_W_dot_cool_calc
 1
 1
 0
+ud_W_dot_cooling_ND_des
+1
+1
+1
+1
+1
+ud_W_dot_gross_ND_des
+1
+1
+1
+1
+0.99839
 ud_enable_gen_table
 1
 1
@@ -4164,6 +4195,12 @@ ud_m_dot_low_calc
 1
 1
 0.3
+ud_m_dot_water_ND_des
+1
+1
+1
+1
+1
 ud_m_dot_water_cool_des
 1
 1
@@ -4589,6 +4626,48 @@ ur_description
 1
 4
 0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+100
+ur_ec_enable_billing_demand
+1
+1
+1
+1
+0
 ur_ec_is_shown
 1
 1
@@ -4822,6 +4901,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 use_specific_weather_file
 1
 1

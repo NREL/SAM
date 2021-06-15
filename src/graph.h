@@ -64,7 +64,8 @@ public:
 	int Type;
 
 	wxArrayString Y;
-	
+	wxArrayString X;
+
 	wxString XLabel;
 	wxString YLabel;
 	wxString Title;
@@ -99,7 +100,10 @@ public:
 	int Display(Simulation *sim, Graph &g);
 
 	// one variable over multiple simulations
-	int Display(std::vector<Simulation *> sims, Graph &g);
+	int Display(std::vector<Simulation*> sims, Graph& g);
+
+	// one variable over multiple simulations
+	int DisplayParametrics(std::vector<Simulation*> sims, Graph& g);
 
 	void SetGraph( const Graph &g ) { m_g = g; }
 	Graph GetGraph() { return m_g; }
