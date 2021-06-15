@@ -391,7 +391,7 @@ function setup_merchant_plant_pages()
               {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
                {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
            { 'sidebar'='Financial Parameters', 'help'='fin_merchant_plant' }  );
-  addpage( [[ 'Financial Merchant Plant', 'Financial Capacity Payments']],
+  addpage( [[ 'Financial Merchant Plant', 'Financial Capacity Payments', 'Cambium API Data']],
             { 'sidebar'='Revenue', 'help'='revenue_merchant_plant' } );
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );

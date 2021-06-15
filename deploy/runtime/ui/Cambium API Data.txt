@@ -1,0 +1,407 @@
+Cambium API Data
+875
+291
+7
+Button
+
+1
+8
+Name
+5
+23
+btn_cambium_to_lifetime
+X
+3
+105
+Y
+3
+210
+Width
+3
+225
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Add as Lifetime Data
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+16
+cambium_location
+X
+3
+426
+Y
+3
+42
+Width
+3
+225
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+21
+cambium_location_type
+X
+3
+105
+Y
+3
+42
+Width
+3
+225
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+14
+cambium_metric
+X
+3
+105
+Y
+3
+84
+Width
+3
+225
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+Cost: End Use Energy [$/MWh]
+Cost: End Use Capacity [$/MWh]
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+16
+cambium_scenario
+X
+3
+105
+Y
+3
+126
+Width
+3
+225
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+12
+cambium_year
+X
+3
+105
+Y
+3
+168
+Width
+3
+112
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+9
+Width
+3
+850
+Height
+3
+241
+Tool Tip
+5
+0
+Caption
+5
+16
+Cambium API Data
+Bold
+2
+1
+
+5
+cambium_location
+3
+4
+Location:
+ 
+ 
+0
+0
+1
+4
+0
+Choice
+cambium_location_type
+3
+4
+Location Type:
+ 
+ 
+0
+0
+1
+4
+0
+Choice
+cambium_metric
+3
+4
+Metric:
+ 
+ 
+0
+0
+1
+4
+0
+Choice
+cambium_scenario
+3
+4
+Scenario:
+ 
+ 
+0
+0
+1
+4
+0
+Choice
+cambium_year
+3
+4
+Year:
+ 
+ 
+0
+0
+1
+4
+0
+Choice
+
+0
+3409
+on_load{'Cambium API Data'} = define() {
+	// globals for api meta data
+	global project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';
+	global api_meta_endpoint = 'api/project/detail/?uuid=';
+	global api_data_endpoint = 'api/load_data/';
+	global api_url = 'https://cambium.nrel.gov/';
+	global api_meta_json = {};
+
+	// api globals for storing both the option and the description
+	global api_metrics = {};
+	global api_scenarios = {};
+
+	// make an api call to retrieve the metadata (takes a couple seconds)
+	api_meta_json = json_read(curl(api_url + api_meta_endpoint + project_uuid));
+	
+	// strip api options
+	api_scenarios = get_api_json('scenarios');
+	api_metrics = get_api_json('metrics');
+	for(i=0;i<#api_meta_json.meta.years; i++)
+			years[i] = api_meta_json.meta.years[i][0];
+			
+	// update choice fields
+	property('cambium_location_type','Items',@api_meta_json.meta.locations);
+	property('cambium_scenario','Items',@api_scenarios);
+	property('cambium_metric','Items',@api_metrics);
+	property('cambium_year','Items',years);
+	enable('cambium_location', value('cambium_location_type') != '');
+	update_submission_btn();
+	
+	refresh();
+};
+
+get_api_json = define(key) {
+	return_json = {};
+	
+	// initialize json of descriptions mapped to the objects they describe
+	for(i=0;i<#api_meta_json.meta{key};i++)
+		return_json{api_meta_json.meta{key}[i][0]} = api_meta_json.meta{key}[i][2];
+	
+	return return_json;
+};
+
+on_change{'cambium_location_type'} = define() {
+	location_type = value('cambium_location_type');
+	
+	if( location_type != null)
+	{
+		// extract locations from the metadata based on type field
+		for(i=0;i<#api_meta_json.meta.locations{location_type}; i++)
+			locations[i] = api_meta_json.meta.locations{location_type}[i][0];
+		
+		property('cambium_location','Items',locations);
+		enable('cambium_location',true);
+		refresh();
+	}
+	else
+	{
+		msgbox('invalid location type');
+		enable('cambium_location',false);
+	}
+	
+	update_submission_btn();
+};
+
+on_change{'cambium_location'} =
+on_change{'cambium_metric'} = 
+on_change{'cambium_scenario'} =
+on_change{'cambium_year'} =
+define() {
+	update_submission_btn();
+};
+
+update_submission_btn = define() {
+	enable('btn_cambium_to_lifetime', value('cambium_location_type') != ''
+		&& value('cambium_location') != ''
+		&& value('cambium_metric') != ''
+		&& value('cambium_scenario') != ''
+		&& value('cambium_year') != '');
+};
+
+on_change{'btn_cambium_to_lifetime'} = define() {
+	api_data_json = {};
+	api_data_json = cambium_api_call();
+	data_matrix = [[]];
+	for(i=0;i<25;i++)
+	{
+		for(j=0;j<#api_data_json.data.base.x;j++)
+		{
+			data_matrix[0][i*#api_data_json.data.base.x+j]=api_data_json.data.base.x[j];
+			data_matrix[1][i*#api_data_json.data.layers[0].y+j]=api_data_json.data.layers[0].y[j];
+		}
+	}
+	msgbox('Retrieved dataset, size: '+#data_matrix[0]+' (25*8760)');
+};
+
+// submit the API call with the gathered data
+cambium_api_call = define() {
+
+	input_json = {
+		'location': value('cambium_location'),
+		'location_type': value('cambium_location_type'),
+		'metric': value('cambium_metric'),
+		'scenario': value('cambium_scenario'),
+		'scenario_diff': null,
+		'technology': 'ALL',
+		'technology_type': 'Technologies',
+		'year': value('cambium_year')
+	};
+	post_data = {
+		'project_uuid': project_uuid,
+		'inputs': input_json,
+		'x_axis': 'interval'
+	};
+	curl_output = curl(api_url+api_data_endpoint,{"post":json_write(post_data)});
+	return json_read(curl_output);
+};
