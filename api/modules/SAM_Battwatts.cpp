@@ -275,6 +275,18 @@ SAM_EXPORT double* SAM_Battwatts_Load_load_escalation_aget(SAM_table ptr, int* l
 
 
 
+SAM_EXPORT double* SAM_Battwatts_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Battwatts", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battwatts_Outputs_annual_export_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

@@ -1441,7 +1441,7 @@ extern "C"
 	 * Set fuelcell_replacement_option: Enable fuel cell replacement? [0=none,1=capacity based,2=user schedule]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=2
-	 * required if: ?=0
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_replacement_option_nset(SAM_table ptr, double number, SAM_error *err);
 

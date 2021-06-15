@@ -1694,6 +1694,30 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_Controller_custom_tes_pipe_sizes_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set disp_wlim_maxspec: disp_wlim_maxspec [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_disp_wlim_maxspec_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set fluid_dens_inlet_temp: fluid_dens_inlet_temp [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_fluid_dens_inlet_temp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set fluid_dens_outlet_temp: fluid_dens_outlet_temp [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_fluid_dens_outlet_temp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set has_hot_tank_bypass: Bypass valve connects field outlet to cold tank [-]
 	 * options: None
 	 * constraints: None
@@ -1708,6 +1732,46 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Controller_k_tes_loss_coeffs_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set lat: lat [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_lat_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set non_solar_field_land_area_multiplier: non_solar_field_land_area_multiplier [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_non_solar_field_land_area_multiplier_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set radio_sm_or_area: radio_sm_or_area [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_radio_sm_or_area_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set specified_solar_multiple: specified_solar_multiple [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_specified_solar_multiple_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set specified_total_aperture: specified_total_aperture [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_specified_total_aperture_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tanks_in_parallel: Tanks are in parallel, not in series, with solar field [-]
@@ -1748,6 +1812,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_wallthicks_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set trough_loop_control: trough_loop_control [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_trough_loop_control_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	/**
@@ -2192,9 +2264,25 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Controller_custom_tes_pipe_sizes_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Controller_disp_wlim_maxspec_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_fluid_dens_inlet_temp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_fluid_dens_outlet_temp_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_Controller_has_hot_tank_bypass_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Controller_k_tes_loss_coeffs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_lat_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_non_solar_field_land_area_multiplier_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_radio_sm_or_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_specified_solar_multiple_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_specified_total_aperture_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Controller_tanks_in_parallel_nget(SAM_table ptr, SAM_error *err);
 
@@ -2205,6 +2293,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_Controller_tes_pump_coef_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Controller_tes_wallthicks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Controller_trough_loop_control_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

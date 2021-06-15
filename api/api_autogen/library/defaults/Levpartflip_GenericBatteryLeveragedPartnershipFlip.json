@@ -52,7 +52,7 @@
 			"om_production_escal": 0,
 			"om_replacement_cost1": [293.840000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.49748e+08
+			"total_installed_cost": 1.49825e+08
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -266,7 +266,7 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 2.99495e+06
+			"construction_financing_cost": 2.99649e+06
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,

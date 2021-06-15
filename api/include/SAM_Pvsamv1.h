@@ -3487,7 +3487,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_ac_or_dc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_computed_bank_capacity: Computed bank capacity [kWh]
+	 * Set batt_computed_bank_capacity: Battery computed bank capacity [kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3495,7 +3495,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_computed_bank_capacity_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_computed_series: Number of cells in series
+	 * Set batt_computed_series: Battery number of cells in series
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3503,7 +3503,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_computed_series_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_computed_strings: Number of strings of cells
+	 * Set batt_computed_strings: Battery number of strings of cells
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3511,7 +3511,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_computed_strings_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_current_charge_max: Maximum charge current [A]
+	 * Set batt_current_charge_max: Battery maximum charge current [A]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3527,7 +3527,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_current_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_current_discharge_max: Maximum discharge current [A]
+	 * Set batt_current_discharge_max: Battery maximum discharge current [A]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3615,7 +3615,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_meter_position_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_power_charge_max_kwac: Maximum charge power (AC) [kWac]
+	 * Set batt_power_charge_max_kwac: Battery maximum charge power (AC) [kWac]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3623,7 +3623,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_power_charge_max_kwac_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_power_charge_max_kwdc: Maximum charge power (DC) [kWdc]
+	 * Set batt_power_charge_max_kwdc: Battery maximum charge power (DC) [kWdc]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3631,7 +3631,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_power_charge_max_kwdc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_power_discharge_max_kwac: Maximum discharge power (AC) [kWac]
+	 * Set batt_power_discharge_max_kwac: Battery maximum discharge power (AC) [kWac]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3639,7 +3639,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_power_discharge_max_kwac_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_power_discharge_max_kwdc: Maximum discharge power (DC) [kWdc]
+	 * Set batt_power_discharge_max_kwdc: Battery maximum discharge power (DC) [kWdc]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4413,6 +4413,38 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set ur_ec_billing_demand_lookback_percentages: Billing demand lookback percentages by month and consider actual peak demand
+	 * options: 12x2
+	 * constraints: None
+	 * required if: ur_ec_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_percentages_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_ec_billing_demand_lookback_period: Billing demand lookback period [mn]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=12
+	 * required if: ur_ec_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_ec_billing_demand_minimum: Minimum billing demand
+	 * options: None
+	 * constraints: None
+	 * required if: ur_ec_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_minimum_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_ec_enable_billing_demand: Enable billing demand for energy charges [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_enable_billing_demand_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set ur_ec_sched_weekday: Energy charge weekday schedule
 	 * options: 12x24
 	 * constraints: None
@@ -4523,6 +4555,14 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ts_sell_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ur_yearzero_usage_peaks: Peak usage by month for year zero
+	 * options: 12
+	 * constraints: None
+	 * required if: ur_ec_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_yearzero_usage_peaks_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	/**
@@ -5718,6 +5758,14 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_dc_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_percentages_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_period_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_minimum_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_ec_enable_billing_demand_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
@@ -5745,6 +5793,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ts_buy_rate_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ts_sell_rate_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_yearzero_usage_peaks_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -5832,6 +5882,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_wiring_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_annual_export_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 

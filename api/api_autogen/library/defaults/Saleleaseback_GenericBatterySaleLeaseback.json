@@ -196,7 +196,7 @@
 			"system_capacity": 20000
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 2.99495e+06,
+			"construction_financing_cost": 2.99649e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -210,7 +210,7 @@
 			"system_use_lifetime_output": 1,
 			"system_use_recapitalization": 0,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 1.49748e+08
+			"total_installed_cost": 1.49825e+08
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,
