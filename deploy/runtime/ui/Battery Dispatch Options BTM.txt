@@ -1,0 +1,348 @@
+Battery Dispatch Options BTM
+1051
+184
+6
+CheckBox
+
+1
+9
+Name
+5
+29
+batt_dispatch_auto_can_charge
+X
+3
+309
+Y
+3
+81
+Width
+3
+258
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+30
+Battery can charge from system
+State
+2
+1
+TabOrder
+3
+7
+CheckBox
+
+1
+9
+Name
+5
+37
+batt_dispatch_auto_can_fuelcellcharge
+X
+3
+309
+Y
+3
+102
+Width
+3
+258
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+33
+Battery can charge from fuel cell
+State
+2
+1
+TabOrder
+3
+8
+CheckBox
+
+1
+9
+Name
+5
+33
+batt_dispatch_auto_can_gridcharge
+X
+3
+309
+Y
+3
+60
+Width
+3
+258
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+28
+Battery can charge from grid
+State
+2
+1
+TabOrder
+3
+6
+RadioChoice
+
+1
+11
+Name
+5
+23
+batt_dispatch_choice_ui
+X
+3
+15
+Y
+3
+60
+Width
+3
+288
+Height
+3
+117
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+5
+Peak shaving
+Input grid power targets
+Input battery power targets
+Manual dispatch
+Price signal forecast
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+1
+Label
+
+1
+13
+Name
+5
+20
+lbl_dispatch_options
+X
+3
+15
+Y
+3
+21
+Width
+3
+918
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+180
+Tool Tip
+5
+0
+Caption
+5
+47
+Behind-the-meter (BTM) Storage Dispatch Options
+Bold
+2
+1
+
+4
+batt_dispatch_auto_can_charge
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_auto_can_fuelcellcharge
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_auto_can_gridcharge
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_choice_ui
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+
+0
+1894
+on_load{'Battery Dispatch Options BTM'} = define() {
+	show_hide_charge_options();
+	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
+	{ 
+		msg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options.';
+		clr = 'red';
+	}
+	else
+	{
+		msg = 'The storage dispatch options determine how and  when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';
+		clr = 'black';
+	}
+	property('lbl_dispatch_options','Caption',msg);
+	property('lbl_dispatch_options','TextColour',clr);
+};
+
+on_change{'batt_dispatch_choice_ui'} = define() {
+	show_hide_charge_options();
+	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
+};
+
+// hide charge options for manual dispatch
+function show_hide_charge_options()
+{
+	if ( technology() == 'Fuel Cell' && value('en_batt') == 0  )
+	{ enable('batt_dispatch_choice_ui',false); }
+	else
+	{
+		option = value('batt_dispatch_choice_ui');
+		show('batt_dispatch_auto_can_charge',option != 3);
+		show('batt_dispatch_auto_can_gridcharge', option !=3);
+		if (technology() == 'Fuel Cell') 
+		{ show('batt_dispatch_auto_can_fuelcellcharge', option !=3); }
+		else
+		{ show('batt_dispatch_auto_can_fuelcellcharge', false); }
+	}
+}
+
+
+
+/*
+on_load{'Battery Dispatch Options BTM'} = define() {
+	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
+	//refresh();
+};
+
+on_change{'batt_dispatch_choice_ui'} = define() {
+	if(technology() == "Fuel Cell")
+		toggle_dispatch();
+	change_dispatch_excl_var();
+};
+
+function change_dispatch_excl_var()
+{
+	
+	excl = value('batt_dispatch_choice_ui');
+	show('batt_dispatch_auto_can_charge',excl != 3);
+	show('batt_dispatch_auto_can_gridcharge', excl !=3);
+	if (technology() == 'Fuel Cell')
+		show('batt_dispatch_auto_can_fuelcellcharge', excl !=3);
+	value('batt_dispatch_excl', excl);
+	//refresh();
+}
+*/
