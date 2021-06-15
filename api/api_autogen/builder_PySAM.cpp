@@ -14,6 +14,7 @@
 std::string module_doc(const std::string& tech_symbol){
     static std::unordered_map<std::string, std::string> desc = {
             {"Battery", "Detailed battery storage model"},
+            {"BatteryStateful", "BatteryStateful has two major differences from the Battery module: 1) it contains only the “physical” component models of the battery (thermal, voltage, capacity, lifetime) and none of the dispatch methods (peak shaving, etc) of the Battery module; 2) the Battery module runs annual or multi-year simulations in a single execution, whereas BatteryStateful is run one timestep at a time using control variables, current or power, and can be run at sub-minute timesteps."},
             {"Battwatts", "Simplified battery storage model"},
             {"Belpe", "Electric load calculator for residential buildings"},
             {"Biomass", "Biomass combustion for electricity generation"},
@@ -40,9 +41,6 @@ std::string module_doc(const std::string& tech_symbol){
             {"Sco2AirCooler", "Supercritical CO2 Power Cycle Air Cooler"},
             {"Sco2CspSystem", "Supercritical CO2 Power Cycle Design and Off-Design Simulation"},
             {"Sco2CspUdPcTables", "Supercritical CO2 Power Cycle"},
-            {"Sco2DesignPoint", "Supercritical CO2 Power Cycle Design Point"},
-            {"Sco2DesignCycle", "Supercritical CO2 Power Cycle Design"},
-            {"Sco2Offdesign", "Supercritical CO2 Power Cycle Off Design"},
             {"Singleowner", "PPA single owner financial model"},
             {"Swh", "Solar water heating model for residential and commercial building applications"},
             {"TcsdirectSteam", "CSP direct steam power tower model for power generation"},
