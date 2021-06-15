@@ -7613,7 +7613,7 @@ Geothermal Capital Costs
 0
 Numeric
 
-14243
+14446
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -7801,9 +7801,10 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 
 	if (${geotherm.cost.plant_auto_estimate})
 	{
-		geothermal = ssc_module_create_from_case('geothermal');	
+		geothermal = ssc_create();	
+		ssc_var( geothermal, 'ui_calculations_only', 1);
 		ssc_var( geothermal, 'system_capacity', ${nameplate} );
-		ssc_var( geothermal, 'ui_calculations_only', 0);
+		ssc_var( geothermal, 'adjust:constant', 0.0);
 		ssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER
 		ssc_var( geothermal, 'resource_temp', ${resource_temp} );
 		ssc_var( geothermal, 'resource_depth', ${resource_depth} );
@@ -7856,16 +7857,16 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 		
 		if (ssc_exec(geothermal, 'geothermal') == 0) 
 		{
-			cost = ssc_create('geothermal_cost');
+			//geothermal = ssc_create('geothermal_geothermals');
 			
 			conversion_type = ${conversion_type};
 			gross_output = ${geotherm.cost.plant_size};
 			design_temp = ssc_var(geothermal, "design_temp");
 			second_law_eff = ssc_var(geothermal, "eff_secondlaw");
-			ssc_var(cost,'gross_output', gross_output);
-			ssc_var(cost,'design_temp', design_temp);
-			ssc_var(cost,'eff_secondlaw', second_law_eff);
-			ssc_var(cost, "conversion_type", conversion_type);
+			ssc_var(geothermal,'gross_output', gross_output);
+			ssc_var(geothermal,'design_temp', design_temp);
+			ssc_var(geothermal,'eff_secondlaw', second_law_eff);
+			ssc_var(geothermal, "conversion_type", conversion_type);
 			
 			//Flash
 			if (${conversion_type})
@@ -7894,7 +7895,7 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 				x_lp = ssc_var(geothermal, "x_lp");			
 				lp_flash_pressure = ssc_var(geothermal, "lp_flash_pressure");
 				flash_count = ssc_var(geothermal, "flash_count"); 
-				
+				/*
 				ssc_var(cost,'qRejectTotal', qRejectTotal);
 				ssc_var(cost,'qCondenser', qCondenser);
 				ssc_var(cost,'v_stage_1', v_stage_1);
@@ -7919,14 +7920,23 @@ equations{ 'geotherm.cost.plant_per_kW'} = define() {
 				ssc_var(cost,'x_lp', x_lp);
 				ssc_var(cost,'lp_flash_pressure', lp_flash_pressure);
 				ssc_var(cost,'flash_count', flash_count);
+				*/
 			}
 			
-			ssc_exec(cost, 'geothermal_costs');	
-			plant_per_kW = ssc_var(cost, "baseline_cost");	
-			
-			return plant_per_kW;
+			if (ssc_exec(geothermal, 'geothermal_costs')==0) {	
+				plant_per_kW = ssc_var(geothermal, "baseline_cost");	
+				ssc_free(geothermal);
+				return plant_per_kW;
+			}
+			else {
+				return 300;
+			}
 		}
-		ssc_free(geothermal);
+		else {
+			ssc_free(geothermal);
+			return 500;
+		}
+		//ssc_free(geothermal);
 	}
 	else
 	{
