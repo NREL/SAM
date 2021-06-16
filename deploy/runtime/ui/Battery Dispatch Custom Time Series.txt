@@ -1,0 +1,152 @@
+Battery Dispatch Custom Time Series
+1050
+97
+3
+GroupBox
+
+1
+8
+Name
+5
+16
+InputDispatchBox
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+88
+Tool Tip
+5
+0
+Caption
+5
+30
+Dispatch to Custom Time Series
+Bold
+2
+1
+DataArray
+
+1
+10
+Name
+5
+20
+batt_custom_dispatch
+X
+3
+228
+Y
+3
+54
+Width
+3
+184
+Height
+3
+30
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+20
+Battery power (kWdc)
+Description
+5
+73
+Battery dispatch by time step: Negative to charge, positive to discharge.
+TabOrder
+3
+8
+Label
+
+1
+13
+Name
+5
+19
+batt_dispatch_label
+X
+3
+15
+Y
+3
+21
+Width
+3
+918
+Height
+3
+18
+Tool Tip
+5
+0
+Caption
+5
+110
+Import time series data to charge or discharge the battery according to a predetermined schedule by time step.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+1
+batt_custom_dispatch
+3
+2
+Time series battery power targets
+kWdc
+Battery Dispatch FOM
+0
+2
+1
+2
+1
+1
+0
+Default
+
+0
+309
+on_load{'Battery Dispatch Custom Time Series'}=define()
+{	
+	// fom = front of meter
+	value('batt_dispatch_choice',3);
+	if (technology() == "Fuel Cell")
+		toggle_dispatch();
+	//on_change{'batt_dispatch_choice'};
+	//on_change{'batt_select_weather_file_forecast'};
+	//on_change{'batt_cycle_cost_choice'};
+};
+
+
+
+

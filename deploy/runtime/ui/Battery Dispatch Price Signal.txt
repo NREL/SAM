@@ -1,0 +1,214 @@
+Battery Dispatch Price Signal
+1052
+122
+4
+SchedNumeric
+
+1
+12
+Name
+5
+15
+batt_cycle_cost
+X
+3
+333
+Y
+3
+87
+Width
+3
+114
+Height
+3
+24
+Tool Tip
+5
+0
+Label
+5
+5
+Value
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+0
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+22
+batt_cycle_cost_choice
+X
+3
+333
+Y
+3
+60
+Width
+3
+198
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+Calculate automatically
+Enter penalty
+Selection
+3
+4294967295
+TabOrder
+3
+4
+Label
+
+1
+13
+Name
+5
+27
+batt_cycle_cost_description
+X
+3
+15
+Y
+3
+21
+Width
+3
+918
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+304
+The controller cycles the battery only if anticipated electricity savings exceed the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the  Battery Cell and System page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+114
+Tool Tip
+5
+0
+Caption
+5
+30
+Price Signals Battery Dispatch
+Bold
+2
+1
+
+2
+batt_cycle_cost
+3
+2
+Cycle degradation penalty 
+$/cycle-kWh
+ 
+0
+0
+1
+2
+1
+1
+0
+Default
+batt_cycle_cost_choice
+3
+1
+Cycle degradation penalty method
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+
+0
+475
+on_load{'Battery Dispatch Price Signal'}=define()
+{	
+	value('batt_dispatch_choice', 5);
+	if (technology() == "Fuel Cell")
+		toggle_dispatch();
+	
+};
+
+
+on_change{'batt_dispatch_choice'}=define(){toggle_dispatch();};
+
+on_change{'batt_cycle_cost_choice'}=define()
+{
+	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
+};
+
+function enable_auto_inputs_btm(on_off)
+{
+	enable('batt_cycle_cost_choice', on_off);
+	enable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);
+}
+
+
