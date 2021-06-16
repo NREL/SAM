@@ -119,6 +119,7 @@ private:
 	wxPanel *m_exclPanel;
 	wxBoxSizer *m_exclPanelSizer;
 	wxMetroButton *m_exclPageButton;
+    wxMetroListBox *m_exclRadioButton;
 	wxMetroTabList *m_exclPageTabList;
 	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg );
 	void LoadPageList( const std::vector<PageInfo> &list, bool header );

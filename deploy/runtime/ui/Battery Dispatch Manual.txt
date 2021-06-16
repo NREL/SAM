@@ -108,13 +108,13 @@ Name
 Battery_weekday
 X
 3
-78
+21
 Y
 3
-249
+252
 Width
 3
-90
+483
 Height
 3
 21
@@ -139,13 +139,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -156,13 +156,13 @@ Name
 Battery_weekend
 X
 3
-570
+561
 Y
 3
-249
+252
 Width
 3
-90
+483
 Height
 3
 21
@@ -187,13 +187,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -1383,20 +1383,20 @@ X
 522
 Y
 3
-42
+36
 Width
 3
 519
 Height
 3
-60
+36
 Tool Tip
 5
 0
 Caption
 5
-190
-To enable manual dispatch, choose the Manual Dispatch option above. For each enabled charge or discharge period the "% capacity" is the percentage of available capacity in a given time step.
+122
+For each enabled charge or discharge period the "% capacity" is the percentage of available capacity in a given time step.
 TextColour
 4
 0
@@ -1458,7 +1458,7 @@ Name
 dispatch_manual_sched
 X
 3
-42
+21
 Y
 3
 273
@@ -1494,7 +1494,7 @@ Name
 dispatch_manual_sched_weekend
 X
 3
-531
+561
 Y
 3
 273
@@ -1533,13 +1533,13 @@ X
 522
 Y
 3
-111
+150
 Width
 3
 519
 Height
 3
-99
+66
 Tool Tip
 5
 0
@@ -2898,11 +2898,12 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-6360
+6403
 on_load{'Battery Dispatch Manual'}=define()
 {	
+	value('batt_dispatch_choice', 4);
 	show_label();
-	toggle_dispatch();
+	//toggle_dispatch();
 		
 	on_change{'pv.storage.p1.discharge'};
 	on_change{'pv.storage.p2.discharge'};
@@ -2984,6 +2985,7 @@ function toggle_gridcharge_percent()
 	enable('batt_gridcharge_percent_5', (value('pv.storage.p5.gridcharge')==1));
 	enable('batt_gridcharge_percent_6', (value('pv.storage.p6.gridcharge')==1));
 }
+/*
 function toggle_dispatch()
 {
 	allow_grid_charge = true;
@@ -3031,6 +3033,7 @@ function toggle_dispatch_target()
 	else
 		enable_target_inputs(true);
 }
+*/
 function enable_grid_charge(on_off)
 {
 	if (!on_off && !behind_the_meter())
