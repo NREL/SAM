@@ -1,6 +1,6 @@
 Battery Dispatch Options BTM
-1051
-184
+1056
+188
 6
 CheckBox
 
@@ -120,7 +120,7 @@ Width
 288
 Height
 3
-117
+114
 Tool Tip
 5
 0

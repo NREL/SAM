@@ -1280,13 +1280,13 @@ X
 6
 Y
 3
-12
+3
 Width
 3
 1042
 Height
 3
-352
+361
 Tool Tip
 5
 0
@@ -1800,7 +1800,7 @@ Battery Dispatch PV Smoothing
 60
 Numeric
 
-1193
+1484
 equations{'batt_dispatch_pvs_wf_timestep'} = define() {
 	return(${ui_step_minutes});
 };
@@ -1822,15 +1822,28 @@ equations{'batt_dispatch_pvs_interconnection_limit'} = define() {
 };
 
 equations{'batt_dispatch_pvs_nameplate'} = define() {
-	return(${total_inverter_capacity});// todo - generic? PV array only?
+	if (technology() != "Generic Battery") {
+		return(${total_inverter_capacity});// todo - generic? PV array only?
+	}
+	else {
+		return ${system_capacity};
+	}
 };
 
 // todo - move to compute module?
 equations{'batt_dispatch_pvs_nameplate_ac'} = define() {
-	if (${total_inverter_capacity}>${grid_interconnection_limit_kwac}) 
-		return ${grid_interconnection_limit_kwac};
-	else
-		return ${total_inverter_capacity};
+	if (technology() != "Generic Battery") {
+		if (${total_inverter_capacity}>${grid_interconnection_limit_kwac}) 
+			return ${grid_interconnection_limit_kwac};
+		else
+			return ${total_inverter_capacity};
+	}
+	else {
+		if (${system_capacity}>${grid_interconnection_limit_kwac})
+			return ${grid_interconnection_limit_kwac};
+		else
+			return ${system_capacity};
+		}
 };
 
 
@@ -1843,13 +1856,13 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-2481
+2515
 on_load{'Battery Dispatch PV Smoothing'} = define() {
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
 	on_change{'batt_dispatch_pvs_ac_lb_enable'}();
 	on_change{'batt_dispatch_pvs_short_forecast_enable'}();
-
+	value('batt_dispatch_choice', 5);
 	toggle_dispatch(); // do not enable unless mode == 5
 };
 

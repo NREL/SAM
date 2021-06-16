@@ -153,7 +153,7 @@ Width
 288
 Height
 3
-75
+90
 Tool Tip
 5
 0
@@ -162,10 +162,11 @@ Selection
 0
 Items
 6
-3
+4
 Automated dispatch
 Dispatch to custom time series
 Manual dispatch
+PV smoothing algorithm
 ShowCaptions
 2
 1
@@ -387,7 +388,7 @@ Battery Dispatch - FOM Options
 RadioChoice
 
 0
-2101
+2103
 on_load{'Battery Dispatch Options FOM'} = define() {
 	show_hide_charge_options();
 	enable_charge_from_clip();
@@ -403,6 +404,7 @@ on_load{'Battery Dispatch Options FOM'} = define() {
 	}
 	property('lbl_dispatch_options','Caption',msg);
 	property('lbl_dispatch_options','TextColour',clr);
+	
 };
 
 on_change{'batt_dispatch_choice_ui'} = define() {
