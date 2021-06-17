@@ -26,18 +26,6 @@ SAM_EXPORT void SAM_WaveFileReader_WeatherReader_wave_resource_filename_sset(SAM
 	});
 }
 
-SAM_EXPORT void SAM_WaveFileReader_WeatherReader_wave_resource_filename_ts_sset(SAM_table ptr, const char* str, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_string(ptr, "wave_resource_filename_ts", str);
-	});
-}
-
-SAM_EXPORT void SAM_WaveFileReader_WeatherReader_wave_resource_model_choice_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "wave_resource_model_choice", number);
-	});
-}
-
 SAM_EXPORT double SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -55,29 +43,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_s
 	result = ssc_data_get_string(ptr, "wave_resource_filename");
 	if (!result)
 		make_access_error("SAM_WaveFileReader", "wave_resource_filename");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_ts_sget(SAM_table ptr, SAM_error *err){
-	const char* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_string(ptr, "wave_resource_filename_ts");
-	if (!result)
-		make_access_error("SAM_WaveFileReader", "wave_resource_filename_ts");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_WaveFileReader_WeatherReader_wave_resource_model_choice_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "wave_resource_model_choice", &result))
-		make_access_error("SAM_WaveFileReader", "wave_resource_model_choice");
 	});
 	return result;
 }
@@ -143,42 +108,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_data_source_sget(SAM_table ptr
 
 
 
-SAM_EXPORT double* SAM_WaveFileReader_Outputs_day_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "day", length);
-	if (!result)
-		make_access_error("SAM_WaveFileReader", "day");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_WaveFileReader_Outputs_energy_period_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "energy_period", length);
-	if (!result)
-		make_access_error("SAM_WaveFileReader", "energy_period");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_WaveFileReader_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "hour", length);
-	if (!result)
-		make_access_error("SAM_WaveFileReader", "hour");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_WaveFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -195,30 +124,6 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lon", &result))
 		make_access_error("SAM_WaveFileReader", "lon");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_WaveFileReader_Outputs_minute_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "minute", length);
-	if (!result)
-		make_access_error("SAM_WaveFileReader", "minute");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_WaveFileReader_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "month", length);
-	if (!result)
-		make_access_error("SAM_WaveFileReader", "month");
 	});
 	return result;
 }
@@ -261,46 +166,12 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_notes_sget(SAM_table ptr, SAM_
 
 
 
-SAM_EXPORT double SAM_WaveFileReader_Outputs_number_hours_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "number_hours", &result))
-		make_access_error("SAM_WaveFileReader", "number_hours");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_WaveFileReader_Outputs_number_records_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "number_records", &result))
-		make_access_error("SAM_WaveFileReader", "number_records");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_sea_bed_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_string(ptr, "sea_bed");
 	if (!result)
 		make_access_error("SAM_WaveFileReader", "sea_bed");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_WaveFileReader_Outputs_significant_wave_height_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "significant_wave_height", length);
-	if (!result)
-		make_access_error("SAM_WaveFileReader", "significant_wave_height");
 	});
 	return result;
 }
@@ -336,18 +207,6 @@ SAM_EXPORT double* SAM_WaveFileReader_Outputs_wave_resource_matrix_mget(SAM_tabl
 	result = ssc_data_get_matrix(ptr, "wave_resource_matrix", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_WaveFileReader", "wave_resource_matrix");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_WaveFileReader_Outputs_year_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "year", length);
-	if (!result)
-		make_access_error("SAM_WaveFileReader", "year");
 	});
 	return result;
 }
