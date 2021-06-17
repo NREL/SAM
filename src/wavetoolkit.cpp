@@ -41,21 +41,21 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "main.h"
 
 
+static const char* help_text =
+"NREL Wave Toolkit data is only available for locations in the continental United States. Each weather file contains wave resource data for a single year.\n\n"
+"See Help for details.";
+
 enum {
 	ID_txtAddress, ID_txtFolder, ID_cboFilter, /*ID_cboWeatherFile,*/ ID_chlResources,
-	ID_btnSelectAll, ID_btnClearAll, ID_btnSelectFiltered, ID_btnShowSelected, ID_btnShowAll, ID_btnResources, ID_btnFolder, ID_search
+	ID_btnSelectAll, ID_btnClearAll, ID_btnSelectFiltered, ID_btnShowSelected, ID_btnShowAll, ID_btnResources, ID_btnFolder, ID_search, ID_radAddress, ID_radLatLon, ID_txtLat, ID_txtLon,
+    ID_cboYears, ID_lstYears, ID_radSingleYear, ID_radMultiYear
 };
 
 BEGIN_EVENT_TABLE( WaveDownloadDialog, wxDialog )
-	EVT_BUTTON(ID_btnSelectAll, WaveDownloadDialog::OnEvt)
-	EVT_BUTTON(ID_btnClearAll, WaveDownloadDialog::OnEvt)
-	EVT_BUTTON(ID_btnSelectFiltered, WaveDownloadDialog::OnEvt)
-	EVT_BUTTON(ID_btnShowSelected, WaveDownloadDialog::OnEvt)
-	EVT_BUTTON(ID_btnShowAll, WaveDownloadDialog::OnEvt)
-	EVT_BUTTON(ID_btnResources, WaveDownloadDialog::OnEvt)
 	EVT_BUTTON(ID_btnFolder, WaveDownloadDialog::OnEvt)
-	EVT_TEXT(ID_search, WaveDownloadDialog::OnEvt)
-	EVT_BUTTON(wxID_OK, WaveDownloadDialog::OnEvt)
+    EVT_RADIOBUTTON(ID_radAddress, WaveDownloadDialog::OnEvt)
+    EVT_RADIOBUTTON(ID_radLatLon, WaveDownloadDialog::OnEvt)
+	//EVT_BUTTON(wxID_OK, WaveDownloadDialog::OnEvt)
 	EVT_CHECKLISTBOX(ID_chlResources, WaveDownloadDialog::OnEvt)
 	EVT_BUTTON(wxID_HELP, WaveDownloadDialog::OnEvt)
 END_EVENT_TABLE()
@@ -70,77 +70,79 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
 		SamApp::Settings().Read("wave_download_path", &dnpath);
 	m_txtFolder = new wxTextCtrl(this, ID_txtFolder, dnpath);// , wxDefaultPosition, wxSize(500, 30));
 	m_txtFolder->SetValue(dnpath);
+    m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
+	//m_txtAddress = new wxTextCtrl(this, ID_txtAddress, "40.842,-124.25");// , wxDefaultPosition, wxSize(500, 30));
 
-	m_txtAddress = new wxTextCtrl(this, ID_txtAddress, "40.842,-124.25");// , wxDefaultPosition, wxSize(500, 30));
+    wxBoxSizer* szFolder = new wxBoxSizer(wxHORIZONTAL);
+    szFolder->Add(new wxStaticText(this, wxID_ANY, "Choose download folder:"), 0, wxALL, 2);
+    szFolder->Add(m_txtFolder, 5, wxALL | wxEXPAND, 2);
+    szFolder->Add(m_btnFolder, 0, wxALL, 2);
 
-	m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
-	m_btnSelectAll = new wxButton(this, ID_btnSelectAll, "Select all");
-	m_btnClearAll = new wxButton(this, ID_btnClearAll, "Clear all");
-	m_btnShowSelected = new wxButton(this, ID_btnShowSelected, "Show selected");
-	m_btnShowAll = new wxButton(this, ID_btnShowAll, "Show all");
-	m_btnSelectFiltered = new wxButton(this, ID_btnSelectFiltered, "Select filtered");
-	m_btnResources = new wxButton(this, ID_btnResources, "Find");
-	m_search = new wxSearchCtrl(this, ID_search, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER | wxTE_PROCESS_TAB);
-	//m_cboWeatherFile = new wxComboBox(this, ID_cboWeatherFile, ""); // populate with selected resources
-	m_chlResources = new wxCheckListBox(this, ID_chlResources, wxDefaultPosition, wxSize(800,200)); // populate with returned resources
+    radAddress = new wxRadioButton(this, ID_radAddress, "Enter street address or zip code:");
+    radLatLon = new wxRadioButton(this, ID_radLatLon, "Enter location coordinates (deg):");
+    //radSingleYear = new wxRadioButton(this, ID_radSingleYear, "Choose a single year");
+    //radMultiYear = new wxRadioButton(this, ID_radMultiYear, "Choose years");
+    txtAddress = new wxTextCtrl(this, ID_txtAddress, "Eureka, CA");
 
-	wxString msg = "Use this window to list all weather files available from the NSRDB for a given location, and choose files to download and add to your solar resource library.\n";
+    txtLat = new wxTextCtrl(this, ID_txtLat, "40", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC));
+    txtLon = new wxTextCtrl(this, ID_txtLon, "-116", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC));
+
+	wxString msg = "Use this window to list all weather files available from the USWave dataset for a given location, and choose files to download and add to your solar resource library.\n";
 	msg += "Type an address or latitude and longtitude, for example, \"eureka ca\" or \"40.842,-124.25\", and click Find to list available files.\n";
 	msg += "When the list appears, select the file or files you want to download, or use the filter and auto-select buttons to find and select files.\n";
 	msg += "Choose the download folder where you want SAM to save files, or use the default SAM Downloaded Weather Files folder.\n";
 	msg += " SAM automatically adds the folder to the list of folders it uses to populate your solar resource library.";
 	msg += "Click OK to download the selected files and add them to your solar resource library.";
 
-	wxBoxSizer *szAddress = new wxBoxSizer(wxHORIZONTAL);
-	szAddress->Add(new wxStaticText(this, wxID_ANY, "1. Find location:"), 0, wxALL , 2);
-	szAddress->Add(m_txtAddress, 5, wxALL|wxEXPAND, 2);
-	szAddress->Add(m_btnResources, 0, wxALL, 2);
+    wxArrayString years;
+    wxArrayString list_years;
+    for (int x = 1979; x < 2011; x++) {
+        wxString year_string = std::to_string(x);
+        years.Add(year_string);
+        list_years.Add(year_string);
+    }
 
-	wxBoxSizer *szFolder = new wxBoxSizer(wxHORIZONTAL);
-	szFolder->Add(new wxStaticText(this, wxID_ANY, "3. Choose download folder:"), 0, wxALL, 2);
-	szFolder->Add(m_txtFolder, 5, wxALL | wxEXPAND, 2);
-	szFolder->Add(m_btnFolder, 0, wxALL, 2);
-/*
-	wxBoxSizer *szWeatherFile = new wxBoxSizer(wxHORIZONTAL);
-	szWeatherFile->Add(new wxStaticText(this, wxID_ANY, "4. Choose file for simulation (optional):"), 0, wxALL , 2);
-	szWeatherFile->Add(m_cboWeatherFile, 5, wxALL | wxEXPAND, 2);
-*/	
-    /*
-    wxBoxSizer* szChkBtn = new wxBoxSizer(wxHORIZONTAL);
-	szChkBtn->Add(new wxStaticText(this, wxID_ANY, "Auto-select:"), 0, wxALL, 2);
-	szChkBtn->Add(m_chk60, 0, wxALL, 2);
-	szChkBtn->Add(m_chk30, 0, wxALL, 2);
-	szChkBtn->Add(m_chk5, 0, wxALL, 2);
-	szChkBtn->Add(m_chkTmy, 0, wxALL, 2);
-	szChkBtn->Add(m_chkTgy, 0, wxALL, 2);
-	szChkBtn->Add(m_chkTdy, 0, wxALL, 2);
-    */
+    lstYears = new wxListBox(this, ID_lstYears, wxDefaultPosition, wxDefaultSize, list_years, wxLB_MULTIPLE);
 
-	wxBoxSizer* szFilter = new wxBoxSizer(wxHORIZONTAL);
-	szFilter->Add(new wxStaticText(this, wxID_ANY, "Filter:"), 0, wxALL, 2);
-	szFilter->Add(m_search, 0, wxALIGN_CENTER_VERTICAL | wxALL, 2);
-	szFilter->Add(m_btnSelectFiltered, 0, wxALL, 2);
-	szFilter->Add(m_btnShowSelected, 0, wxALL, 2);
-	szFilter->Add(m_btnShowAll, 0, wxALL, 2);
-	szFilter->Add(m_btnSelectAll, 0, wxALL, 2);
-	szFilter->Add(m_btnClearAll, 0, wxALL, 2);
-	
-	wxBoxSizer *szgrid = new wxBoxSizer(wxVERTICAL);
-	szgrid->Add(new wxStaticText(this, wxID_ANY, "2. Select files to download:"), 0, wxALL, 2);
-	szgrid->Add(m_chlResources, 10, wxALL | wxEXPAND, 1);
-	szgrid->Add(szFilter, 0, wxALL, 1);
+    wxBoxSizer* szll = new wxBoxSizer(wxHORIZONTAL);
+    szll->Add(new wxStaticText(this, wxID_ANY, "Latitude"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    szll->Add(txtLat, 0, wxALL, 5);
+    szll->Add(new wxStaticText(this, wxID_ANY, "Longitude"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    szll->Add(txtLon, 0, wxALL, 5);
 
-	wxBoxSizer *szmain = new wxBoxSizer( wxVERTICAL );
-	szmain->Add(new wxStaticText(this, wxID_ANY, msg), 0, wxALL | wxEXPAND, 10);
-	szmain->Add(szAddress, 0,  wxEXPAND, 1);
-	szmain->Add(szgrid, 10, wxALL | wxEXPAND, 1);
-	szmain->Add(szFolder, 0, wxALL | wxEXPAND, 1);
-	//szmain->Add(szWeatherFile, 0, wxALL | wxEXPAND, 1);
-	szmain->Add( CreateButtonSizer( wxHELP|wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
+    wxFlexGridSizer* szgrid = new wxFlexGridSizer(2);
+    szgrid->AddGrowableCol(1);
+    szgrid->Add(radAddress, 0, wxALL | wxALIGN_CENTER_VERTICAL, 1);
+    szgrid->Add(txtAddress, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 1);
+    szgrid->Add(radLatLon, 0, wxALL | wxALIGN_CENTER_VERTICAL, 1);
+    szgrid->Add(szll, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 1);
 
-	SetSizer( szmain );
-	Fit();
-	m_txtAddress->SetFocus();
+    wxBoxSizer* szyr = new wxBoxSizer(wxHORIZONTAL);
+    szyr->Add(new wxStaticText(this, wxID_ANY, "Select years"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
+    szyr->Add(lstYears, 0, wxALL, 5);
+
+
+    wxBoxSizer* szmain = new wxBoxSizer(wxVERTICAL);
+    szmain->Add(szgrid, 0, wxLEFT | wxRIGHT | wxTOP, 10);
+    szmain->Add(szyr, 0, wxLEFT | wxRIGHT, 10);
+    szmain->Add(szFolder, 0, wxLEFT | wxRIGHT, 1);
+
+    wxStaticText* note = new wxStaticText(this, wxID_ANY, help_text);
+    note->Wrap(550);
+    szmain->Add(note, 0, wxLEFT | wxRIGHT | wxALIGN_CENTER, 10);
+
+    szmain->Add(CreateButtonSizer(wxHELP | wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
+
+    SetSizer(szmain);
+    Fit();
+
+    radAddress->SetValue(true);
+    txtAddress->SetFocus();
+    txtAddress->SelectAll();
+    txtLat->Enable(false);
+    txtLon->Enable(false);
+    lstYears->Enable(true);
+
 }
 
 
@@ -152,97 +154,15 @@ void WaveDownloadDialog::OnEvt( wxCommandEvent &e )
 			SamApp::ShowHelp("nsrdb_advanced_download");
             //SamApp::ShowHelp("wave_advanced_download");
 			break;
-		case ID_btnResources:
-			{
-				GetResources();
-				//std::sort(m_links.begin(),m_links.end());
-				// select first item (should be tmy)
-				//if (m_links.size() > 0) m_links[0].is_selected = true;
-				RefreshList(0);
-			}
-			break;
-		case ID_search:
-			{
-				for (size_t i = 0; i < m_links.size(); i++)
-				{
-					if (m_links[i].display.Lower().Contains(m_search->GetValue().Lower()))
-						m_links[i].is_visible = true;
-					else
-						m_links[i].is_visible = false;
-				}
-				RefreshList(0);
-			}
-			break;
-		case ID_btnSelectFiltered:
-			{
-				size_t count = 0;
-				size_t first_item = 0;
-				if (m_search->GetValue() == "")
-				{
-					wxMessageBox("Type a keyword in the Search box before clicking Check Filtered.", "Wave Download Message", wxOK, this);
-					break;
-				}
-				for (size_t i = 0; i < m_links.size(); i++)
-				{
-					m_links[i].is_visible = true;
-					if (m_links[i].display.Lower().Contains(m_search->GetValue().Lower()))
-					{
-						if (count == 0) first_item = i;
-						m_links[i].is_selected = true;
-						count++;
-					}
-				}
-				m_search->SetValue("");
-				RefreshList(first_item);
-			}
-			break;
-		case ID_btnShowSelected:
-			{
-				for (size_t i = 0; i < m_links.size(); i++)
-				{
-					if (m_links[i].is_selected) m_links[i].is_visible = true;
-					else m_links[i].is_visible = false;
-				}
-				RefreshList(0);
-			}
-			break;
-		case ID_btnShowAll:
-			{
-				for (size_t i = 0; i < m_links.size(); i++)
-					m_links[i].is_visible = true;
-				RefreshList(0);
-			}
-		    break;
-		case ID_btnSelectAll:
-			{
-				for (size_t i = 0; i < m_links.size(); i++)
-				{
-					m_links[i].is_selected = true;
-					m_links[i].is_visible = true;
-				}
-				RefreshList(0);
-			}
-			break;
-		case ID_btnClearAll:
-			{
-				m_search->SetValue("");
-				for (size_t i = 0; i < m_links.size(); i++)
-				{
-					m_links[i].is_selected = false;
-					m_links[i].is_visible = true;
-				}
-				RefreshList(0);
-			}
-			break;
-		case ID_chlResources:
-			{
-				for (size_t i = 0; i < m_links.size(); i++)
-				{
-					if (m_links[i].display == m_chlResources->GetString(e.GetInt()))
-						m_links[i].is_selected = m_chlResources->IsChecked(e.GetInt());
-				}
-			}
-			break;
+        case ID_radAddress:
+        case ID_radLatLon:
+            {
+                bool addr = radAddress->GetValue();
+                txtAddress->Enable(addr);
+                txtLat->Enable(!addr);
+                txtLon->Enable(!addr);
+            }
+            break;
 		case ID_btnFolder:
 			{
 				wxDirDialog dlg(SamApp::Window(), "Choose Download Folder", m_txtFolder->GetValue(), wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
@@ -253,118 +173,7 @@ void WaveDownloadDialog::OnEvt( wxCommandEvent &e )
 				}
 			}
 			break;
-		case wxID_OK:
-			{
-				wxEasyCurl curl;
-				wxArrayInt arychecked;
-				wxString file_list = "";
-				for (size_t i = 0; i < m_links.size(); i++)
-				{
-					if (m_links[i].is_selected) 
-					{
-						arychecked.push_back((int)i);
-					}
-				}
-				if (arychecked.Count() > 0)
-				{
-					bool stopped = false;
-					int num_downloaded = 0;
-					wxString library_fn = "";
-					// check for valid download folder 
-					wxString default_dnload_path;
-					SamApp::Settings().Read("wave_download_path", &default_dnload_path);
-					m_weatherFolder = m_txtFolder->GetValue();
-					if (!wxDirExists(m_weatherFolder))
-					{
-						wxMessageBox("Choose a valid folder for weather file downloads.", "Wave Download Message", wxOK, this);
-						// reset to download folder
-						m_txtFolder->SetValue(default_dnload_path);
-						stopped = true;
-					}
-					// check for existing library entries
-					wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
-					Library *l = Library::Find(wxFileName(wave_resource_db).GetName());
-					if ( !wxFileExists( wave_resource_db ) ) 
-					{
-						ScanWaveResourceTSData( wave_resource_db );
-						l = Library::Load(wave_resource_db);
-					}
-					if (l==NULL)
-					{
-						wxMessageBox("Library " + wave_resource_db + " not found.", "Wave Download Message", wxOK, this);
-						stopped = true;
-					}
-					if (!stopped)
-					{
-						wxProgressDialog pdlg("Downloading from USWave dataset", "", (int)arychecked.Count(), this,
-							wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
-	#ifdef __WXMSW__
-						pdlg.SetIcon(wxICON(appicon));
-	#endif
-						pdlg.Show();
-						for (size_t i = 0; i < arychecked.Count(); i++)
-						{
-							if (l->FindEntry(m_links[arychecked[i]].display) > -1)
-							{
-								wxMessageBox("Skipping download.\n\n" + m_links[arychecked[i]].display + "\n\nFile is already in your wave resource library.", "Wave Download Message", wxOK, this);
-								continue;
-							}
-
-							int ndx = arychecked[i];
-							wxString url = m_links[ndx].URL;
-							// SAM specific attributes to minimize files size 
-							wxString attr = m_links[ndx].attributes;
-							wxString curstr = m_links[ndx].display;
-							//Download the weather file
-							pdlg.Update(i+1, "File: " + curstr );
-#ifdef __DEBUG__
-			wxLogStatus("downloading (%d of %d): %s", (int)(i+1), (int)arychecked.Count(), (const char*)url.c_str());
-#endif
-							bool ok = curl.Get(url+attr);
-							// try without attributes
-							if (ok && (curl.GetDataAsString().Length() < 1000)) 
-								ok = curl.Get(url);
-							if (!ok)
-								wxMessageBox("Download failed.\n\n" + curstr +"\n\nThere may be a problem with your internet connection,\nor the USWave web service may be down.", "Wave Download Message", wxOK, this);
-							else if (curl.GetDataAsString().Length() < 1000)
-								wxMessageBox("Weather file not available.\n\n" + curstr + "\n\n" + curl.GetDataAsString(), "Wave Download Message", wxOK, this);
-							else
-							{
-								wxString fn = curstr + ".csv";
-								fn = m_weatherFolder + "/" + fn;
-								file_list += fn + "\n";
-								if (!curl.WriteDataToFile(fn))
-								{
-									wxMessageBox("Failed to write file.\n\n" + fn, "Wave Download Message", wxOK, this);
-									//break;
-								}
-								num_downloaded++;
-							}
-							if (pdlg.WasCancelled())
-								break;
-						}
-						if (!stopped && (num_downloaded > 0))
-						{
-							if (default_dnload_path != m_weatherFolder)
-							{
-								wxArrayString paths;
-								wxString buf;
-								if (SamApp::Settings().Read("wave_data_paths", &buf))
-									paths = wxStringTokenize(buf, ";");
-								if (paths.Index(m_weatherFolder) == wxNOT_FOUND)
-								{
-									paths.Add(m_weatherFolder);
-									SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
-								}
-							}
-							if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your wave resource library:\n\n" + file_list, "Wave Download Message",wxOK,this);
-							EndModal(wxID_OK);
-						}
-					}
-				}
-				else wxMessageBox("Nothing to download.\n\nChoose a file to download, or type a location and click Find to generate a list of available files.", "Wave Download Message", wxOK, this);
-			}
-			break;
+		
 	}
 }
 
@@ -407,6 +216,54 @@ void WaveDownloadDialog::RefreshList( size_t first_item )
 	}
 	m_chlResources->Thaw();
 	m_chlResources->SetFirstItem(first_item);
+}
+
+wxString WaveDownloadDialog::GetYear()
+{
+    bool year_bool = radSingleYear->GetValue();
+    bool multiyear_bool = radMultiYear->GetValue();
+    if (year_bool)
+        return cboYears->GetStringSelection();
+    else return "";
+    
+}
+
+wxArrayString WaveDownloadDialog::GetMultiYear()
+{
+    wxArrayString my;
+    for (size_t i = 0; i < lstYears->GetCount(); i++)
+        if (lstYears->IsSelected(i))
+            my.Add(lstYears->GetString(i));
+    return my;
+}
+
+bool WaveDownloadDialog::IsSingleYear()
+{
+    return radSingleYear->GetValue();
+}
+
+bool WaveDownloadDialog::IsAddressMode()
+{
+    return radAddress->GetValue();
+}
+
+wxString WaveDownloadDialog::GetAddress()
+{
+    return txtAddress->GetValue();
+}
+
+double WaveDownloadDialog::GetLatitude()
+{
+    double num = std::numeric_limits<double>::quiet_NaN();
+    txtLat->GetValue().ToDouble(&num);
+    return num;
+}
+
+double WaveDownloadDialog::GetLongitude()
+{
+    double num = std::numeric_limits<double>::quiet_NaN();
+    txtLon->GetValue().ToDouble(&num);
+    return num;
 }
 
 void WaveDownloadDialog::GetResources()

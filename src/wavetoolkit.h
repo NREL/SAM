@@ -28,10 +28,13 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 class wxComboBox;
 class wxCheckListBox;
+class wxRadioButton;
+class wxComboBox;
 class wxButton;
 class wxTextCtrl;
 class wxCheckbox;
 class wxSearchCtrl;
+class wxArrayString;
 
 class WaveDownloadDialog : public wxDialog
 {
@@ -47,6 +50,14 @@ public:
 	wxString &GetAddFolder() {
 		return m_addFolder;
 	};
+
+    bool IsAddressMode();
+    bool IsSingleYear();
+    wxString GetAddress();
+    double GetLatitude();
+    double GetLongitude();
+    wxString GetYear();
+    wxArrayString GetMultiYear();
 
 	struct LinkInfo
 	{
@@ -119,7 +130,13 @@ private:
 	void GetResources();
 	void RefreshList(size_t );
 	size_t SelectItems( wxString, wxCheckBox * );
-
+    wxRadioButton* radAddress;
+    wxRadioButton* radLatLon;
+    wxRadioButton* radSingleYear;
+    wxRadioButton* radMultiYear;
+    wxTextCtrl* txtAddress, * txtLat, * txtLon;
+    wxListBox* lstYears;
+    wxComboBox* cboYears;
 	std::vector<LinkInfo> m_links;
 	wxString m_weatherFile;
 	wxString m_weatherFolder;
@@ -133,6 +150,4 @@ private:
 
 	DECLARE_EVENT_TABLE()
 };
-
-
 #endif
