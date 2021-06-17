@@ -59,7 +59,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"TroughPhysical", "CSP parabolic trough system using heat transfer and thermodynamic component models"},
             {"TroughPhysicalProcessHeat", "Parabolic trough for industrial process heat applications"},
             {"Utilityrate5", "Retail electricity bill calculator"},
-            {"Wavefile", "Load wave resource data from file. Data can be in either\nProbability distribution format or 3-hour time series arrays"},
+            {"WaveFileReader", "Load wave resource data from file. Data can be in either\nProbability distribution format or 3-hour time series arrays"},
             {"Windpower", "Wind power system with one or more wind turbines"}
     };
 
