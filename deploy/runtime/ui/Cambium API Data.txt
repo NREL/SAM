@@ -1,7 +1,7 @@
 Cambium API Data
 875
 291
-7
+10
 Button
 
 1
@@ -12,7 +12,7 @@ Name
 btn_cambium_to_lifetime
 X
 3
-105
+330
 Y
 3
 210
@@ -29,6 +29,38 @@ Caption
 5
 20
 Add as Lifetime Data
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+19
+cambium_data_target
+X
+3
+105
+Y
+3
+210
+Width
+3
+225
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+0
 TabOrder
 3
 4294967295
@@ -130,6 +162,34 @@ Selection
 TabOrder
 3
 4294967295
+ToolTipCtrl
+
+1
+7
+Name
+5
+19
+cambium_metric_tips
+X
+3
+330
+Y
+3
+84
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+12
+Description:
+Tips
+5
+40
+Select an option to see its description.
 Choice
 
 1
@@ -162,6 +222,34 @@ Selection
 TabOrder
 3
 4294967295
+ToolTipCtrl
+
+1
+7
+Name
+5
+21
+cambium_scenario_tips
+X
+3
+330
+Y
+3
+126
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+12
+Description:
+Tips
+5
+40
+Select an option to see its description.
 Choice
 
 1
@@ -225,7 +313,20 @@ Bold
 2
 1
 
-5
+6
+cambium_data_target
+3
+4
+Target:
+ 
+ 
+0
+0
+1
+4
+1
+0
+Choice
 cambium_location
 3
 4
@@ -288,7 +389,7 @@ Year:
 Choice
 
 0
-3409
+5886
 on_load{'Cambium API Data'} = define() {
 	// globals for api meta data
 	global project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';
@@ -300,6 +401,15 @@ on_load{'Cambium API Data'} = define() {
 	// api globals for storing both the option and the description
 	global api_metrics = {};
 	global api_scenarios = {};
+	
+	// global json for the data target map from choice widget
+	global cambium_target = {
+		'Energy Market Revenue':'mp_energy_market_revenue',
+		'Ancillary Service #1':'mp_ancserv1_revenue',
+		'Ancillary Service #2':'mp_ancserv2_revenue',
+		'Ancillary Service #3':'mp_ancserv3_revenue',
+		'Ancillary Service #4':'mp_ancserv4_revenue',
+	};
 
 	// make an api call to retrieve the metadata (takes a couple seconds)
 	api_meta_json = json_read(curl(api_url + api_meta_endpoint + project_uuid));
@@ -307,6 +417,8 @@ on_load{'Cambium API Data'} = define() {
 	// strip api options
 	api_scenarios = get_api_json('scenarios');
 	api_metrics = get_api_json('metrics');
+	//updateToolTip('cambium_metric_tips',api_metrics);
+	//updateToolTip('cambium_scenario_tips',api_scenarios);
 	for(i=0;i<#api_meta_json.meta.years; i++)
 			years[i] = api_meta_json.meta.years[i][0];
 			
@@ -315,6 +427,8 @@ on_load{'Cambium API Data'} = define() {
 	property('cambium_scenario','Items',@api_scenarios);
 	property('cambium_metric','Items',@api_metrics);
 	property('cambium_year','Items',years);
+	update_cambium_target();
+	
 	enable('cambium_location', value('cambium_location_type') != '');
 	update_submission_btn();
 	
@@ -353,35 +467,68 @@ on_change{'cambium_location_type'} = define() {
 	update_submission_btn();
 };
 
+on_change{'cambium_scenario'} = define() {
+	property('cambium_scenario_tips','Tips','Description: '+api_scenarios{value('cambium_scenario')});
+	update_submission_btn();
+};
+
+on_change{'cambium_metric'} = define() {
+	property('cambium_metric_tips','Tips','Description: '+api_metrics{value('cambium_metric')});
+	update_submission_btn();
+};
+
+// update submission button enable regardless of which input is filled last
 on_change{'cambium_location'} =
-on_change{'cambium_metric'} = 
-on_change{'cambium_scenario'} =
 on_change{'cambium_year'} =
+on_change{'cambium_data_target'} =
 define() {
 	update_submission_btn();
 };
 
+// enable submission button if all fields are filled
 update_submission_btn = define() {
 	enable('btn_cambium_to_lifetime', value('cambium_location_type') != ''
 		&& value('cambium_location') != ''
 		&& value('cambium_metric') != ''
 		&& value('cambium_scenario') != ''
-		&& value('cambium_year') != '');
+		&& value('cambium_year') != ''
+		&& value('cambium_data_target') != '');
 };
 
+// when submission button is pressed, API call is made 
 on_change{'btn_cambium_to_lifetime'} = define() {
-	api_data_json = {};
-	api_data_json = cambium_api_call();
-	data_matrix = [[]];
-	for(i=0;i<25;i++)
+	pb = progressbar({
+						'title' = 'API Call Progress',
+						'message' = 'Making API Call...',
+						'cancelbutton' = true,
+						'closebutton' = false,
+						'time' = false,
+						'max' = 2*value("analysis_period")+1
+					});
+
+	curl_output = cambium_api_call();
+	api_data_json = json_read(curl_output);
+	progressbar(pb, {'message' = 'Reading Lifetime Data...'});
+	data_matrix = value(cambium_target{value('cambium_data_target')});
+	//msgbox('lifetime data size: '+#data_matrix);
+	//msgbox('lifetime data[0] size: '+#data_matrix[0]);
+	//msgbox('lifetime data[1] size: '+#data_matrix[1]);
+	progressbar(pb, {'message' = 'Copying Hourly Data...','value' = value("analysis_period")-1});
+	
+	for(i=0;i<value("analysis_period");i++)
 	{
 		for(j=0;j<#api_data_json.data.base.x;j++)
 		{
-			data_matrix[0][i*#api_data_json.data.base.x+j]=api_data_json.data.base.x[j];
-			data_matrix[1][i*#api_data_json.data.layers[0].y+j]=api_data_json.data.layers[0].y[j];
+			data_matrix[i*#api_data_json.data.layers[0].y+j][1]=api_data_json.data.layers[0].y[j];
 		}
+		progressbar(pb, {'value' = value("analysis_period")+i});
 	}
-	msgbox('Retrieved dataset, size: '+#data_matrix[0]+' (25*8760)');
+	
+	progressbar(pb, {'message' = 'Setting Lifetime Data...','value' = 2*value("analysis_period")});
+	property(cambium_target{value('cambium_data_target')},'Mode','Hourly');
+	value(cambium_target{value('cambium_data_target')},data_matrix);
+	//msgbox('Retrieved dataset, size: '+#data_matrix[0]+' (25*8760)');
+	progressbar(pb);
 };
 
 // submit the API call with the gathered data
@@ -402,6 +549,29 @@ cambium_api_call = define() {
 		'inputs': input_json,
 		'x_axis': 'interval'
 	};
-	curl_output = curl(api_url+api_data_endpoint,{"post":json_write(post_data)});
-	return json_read(curl_output);
+	return curl(api_url+api_data_endpoint,{"post":json_write(post_data)});
 };
+
+update_cambium_target = define() {
+	target_items = [];
+	if (value('mp_enable_energy_market_revenue'))
+		target_items[#target_items] = 'Energy Market Revenue';
+	for(i=1;i<=4;i++)
+		if(value('mp_enable_ancserv'+i))
+			target_items[#target_items] = 'Ancillary Service #'+i;
+	property('cambium_data_target','Items',target_items);
+	//set the selection if something is available
+	if(#target_items)
+	{
+		value('cambium_data_target',target_items[0]);
+	}
+};
+
+/*
+updateToolTip = define(name,tipJson) {
+	tipString = '';
+	for(i=0;i<#tipJson;i++)
+		tipString += (@tipJson)[i]+' - '+tipJson{(@tipJson)[i]}+'\n';
+	property(name,'Tips',tipString);
+};
+*/
