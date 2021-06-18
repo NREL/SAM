@@ -735,7 +735,7 @@ batt_power_discharge_max_kwac
 1
 1
 1
-4.8
+4.61169
 batt_power_discharge_max_kwdc
 1
 1

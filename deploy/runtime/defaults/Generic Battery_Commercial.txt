@@ -1,5 +1,5 @@
 1
-478
+481
 LeadAcid_q10
 1
 1
@@ -855,7 +855,7 @@ battery_indirect_cost_percent
 1
 1
 1
-20
+0
 battery_lifetime_shown
 1
 1
@@ -909,7 +909,7 @@ battery_total_cost_lcos
 1
 1
 1
-48610.3
+11707
 battery_voltage_shown
 1
 1
@@ -1441,7 +1441,7 @@ first_year_output
 1
 1
 1
-1808064
+361613
 first_year_output_peak
 1
 1
@@ -2319,7 +2319,7 @@ property_assessed_value
 1
 1
 1
-1551310
+1.55131e+06
 property_tax_rate
 1
 1
@@ -2553,13 +2553,13 @@ total_battery_indirect_cost
 1
 1
 1
-36903.4
+0
 total_direct_cost
 1
 1
 1
 1
-1366790
+1.36679e+06
 total_indirect_cost
 1
 1
@@ -2571,13 +2571,13 @@ total_installed_cost
 1
 1
 1
-1551310
+1.55131e+06
 total_system_indirect_cost
 1
 1
 1
 1
-147614
+184517
 ui_annual_load
 1
 1
@@ -2601,7 +2601,7 @@ ui_net_capital_cost
 1
 1
 1
-1551310
+1.55131e+06
 ui_pv_capacity
 1
 1

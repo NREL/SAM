@@ -1,5 +1,5 @@
 1
-508
+511
 LeadAcid_q10
 1
 1
@@ -924,7 +924,7 @@ battery_indirect_cost_percent
 1
 1
 1
-20
+0
 battery_lifetime_shown
 1
 1
@@ -978,7 +978,7 @@ battery_total_cost_lcos
 1
 1
 1
-16471.2
+15355.5
 battery_voltage_shown
 1
 1
@@ -1534,7 +1534,7 @@ first_year_output
 1
 1
 1
-33638.4
+6727.68
 first_year_output_peak
 1
 1
@@ -2742,7 +2742,7 @@ total_battery_indirect_cost
 1
 1
 1
-1115.73
+0
 total_direct_cost
 1
 1
@@ -2766,7 +2766,7 @@ total_system_indirect_cost
 1
 1
 1
-4462.91
+5578.64
 ui_annual_load
 1
 1

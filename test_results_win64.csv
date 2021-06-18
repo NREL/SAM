@@ -133,12 +133,19 @@ PVWatts Battery,Commercial,943666.062500,4.284003,NA,;
 PVWatts Battery,Third Party,8022.692383,NA,NA,; 
 PVWatts Battery,Host Developer,943666.062500,13.037173,10.830657,; 
 Generic Battery,Residential,6692.069824,58.621361,NA,; 
-Generic Battery,Commercial,361540.093750,24.837135,NA,; 
+Generic Battery,Commercial,OVERWRITE	
+Generic Battery,Commercial,361540.093750,24.837135,NA,Defaults file is likely out of date: Generic Battery_Commercial.txt  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 471, config has 481  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: om_replacement_cost1,om_fuel_cost_escal,om_fuel_cost; 
 Generic Battery,Third Party,6692.069824,NA,NA,; 
-Generic Battery,Host Developer,361540.093750,14.470059,10.830667,; 
-Generic Battery,Single Owner,73190888,20.610245,10.399951,; 
-Generic Battery,Merchant Plant,73190888,19.575014,NA,; 
-Generic Battery,Leveraged Partnership Flip,73190888,24.984268,28.888752,; 
-Generic Battery,All Equity Partnership Flip,73190888,28.825727,34.666504,; 
-Generic Battery,Sale Leaseback,73190888,29.022760,34.666504,; 
+Generic Battery,Host Developer,OVERWRITE	
+Generic Battery,Host Developer,361540.093750,14.470059,10.830667,Defaults file is likely out of date: Generic Battery_Host Developer.txt  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 612, config has 622  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: om_replacement_cost1,om_fuel_cost_escal,om_fuel_cost; 
+Generic Battery,Single Owner,OVERWRITE	
+Generic Battery,Single Owner,73190888,20.610245,10.399951,Defaults file is likely out of date: Generic Battery_Single Owner.txt  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 569, config has 579  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: om_replacement_cost1,om_fuel_cost_escal,om_fuel_cost; 
+Generic Battery,Merchant Plant,OVERWRITE	
+Generic Battery,Merchant Plant,73190888,19.575014,NA,Defaults file is likely out of date: Generic Battery_Merchant Plant.txt  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 480, config has 490  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: om_replacement_cost1,om_fuel_cost_escal,om_fuel_cost; 
+Generic Battery,Leveraged Partnership Flip,OVERWRITE	
+Generic Battery,Leveraged Partnership Flip,73190888,24.984268,28.888752,Defaults file is likely out of date: Generic Battery_Leveraged Partnership Flip.txt  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 507, config has 517  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: om_replacement_cost1,om_fuel_cost_escal,om_fuel_cost; 
+Generic Battery,All Equity Partnership Flip,OVERWRITE	
+Generic Battery,All Equity Partnership Flip,73190888,28.825727,34.666504,Defaults file is likely out of date: Generic Battery_All Equity Partnership Flip.txt  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 497, config has 507  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: om_replacement_cost1,om_fuel_cost_escal,om_fuel_cost; 
+Generic Battery,Sale Leaseback,OVERWRITE	
+Generic Battery,Sale Leaseback,73190888,29.022760,34.666504,Defaults file is likely out of date: Generic Battery_Sale Leaseback.txt  Variables: 3 loaded but not in configuration, 0 wrong type, defaults file has 490, config has 500  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later)  Loaded but don't exist in config: om_replacement_cost1,om_fuel_cost_escal,om_fuel_cost; 
 final_configuration_eof,none,NA,NA,NA,
