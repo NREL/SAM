@@ -436,6 +436,8 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	wxString help = sidebar;
 	wxString exclusive_var;
 	bool exclusive_tabs = false;
+    bool exclusive_radio = false;
+    bool exclusive_hide = false;
 	std::vector<PageInfo> excl_header_pages;
 
 	if ( cxt.arg_count() > 1 )
@@ -454,6 +456,12 @@ static void fcall_addpage( lk::invoke_t &cxt )
 		if ( lk::vardata_t *x = props.lookup("exclusive_tabs") )
 			exclusive_tabs = x->as_boolean();
 
+        if (lk::vardata_t* x = props.lookup("exclusive_radio"))
+            exclusive_radio = x->as_boolean();
+
+        if (lk::vardata_t* x = props.lookup("exclusive_hide"))
+            exclusive_hide = x->as_boolean();
+
 		if ( lk::vardata_t *x = props.lookup("exclusive_header_pages") )
 		{
 			lk::vardata_t &vec = x->deref();
@@ -470,7 +478,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
 		}
 	}
-	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs );
+	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs, exclusive_hide);
 }
 
 
