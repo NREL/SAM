@@ -1,5 +1,5 @@
 1
-1058
+1059
 6par_aisc
 1
 1
@@ -6700,12 +6700,6 @@ ui_batt_capacity
 1
 1
 4000
-ui_batt_is_dc
-1
-1
-1
-1
-0
 ui_pv_capacity
 1
 1

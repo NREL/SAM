@@ -1,5 +1,5 @@
 1
-791
+792
 LeadAcid_q10
 1
 1
@@ -4488,12 +4488,6 @@ ui_batt_capacity
 1
 1
 100.205
-ui_batt_is_dc
-1
-1
-1
-1
-0
 ui_fuelcell_capacity
 1
 1
