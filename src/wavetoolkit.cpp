@@ -68,13 +68,13 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
 	SamApp::Settings().Read("WaveDownloadFolder", &dnpath);
 	if (dnpath.Len() <=0)
 		SamApp::Settings().Read("wave_download_path", &dnpath);
-	m_txtFolder = new wxTextCtrl(this, ID_txtFolder, dnpath);// , wxDefaultPosition, wxSize(500, 30));
+	m_txtFolder = new wxTextCtrl(this, ID_txtFolder, dnpath, wxDefaultPosition, wxDefaultSize, 0);// , wxDefaultPosition, wxSize(500, 30));
 	m_txtFolder->SetValue(dnpath);
     m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
 	//m_txtAddress = new wxTextCtrl(this, ID_txtAddress, "40.842,-124.25");// , wxDefaultPosition, wxSize(500, 30));
 
     wxBoxSizer* szFolder = new wxBoxSizer(wxHORIZONTAL);
-    szFolder->Add(new wxStaticText(this, wxID_ANY, "Choose download folder:"), 0, wxALL, 2);
+    szFolder->Add(new wxStaticText(this, wxID_ANY, "Choose download folder:"), 0, wxALL, 10);
     szFolder->Add(m_txtFolder, 5, wxALL | wxEXPAND, 2);
     szFolder->Add(m_btnFolder, 0, wxALL, 2);
 
@@ -91,7 +91,7 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
 	msg += "Type an address or latitude and longtitude, for example, \"eureka ca\" or \"40.842,-124.25\", and click Find to list available files.\n";
 	msg += "When the list appears, select the file or files you want to download, or use the filter and auto-select buttons to find and select files.\n";
 	msg += "Choose the download folder where you want SAM to save files, or use the default SAM Downloaded Weather Files folder.\n";
-	msg += " SAM automatically adds the folder to the list of folders it uses to populate your solar resource library.";
+	msg += "SAM automatically adds the folder to the list of folders it uses to populate your solar resource library.\n";
 	msg += "Click OK to download the selected files and add them to your solar resource library.";
 
     wxArrayString years;
@@ -112,20 +112,23 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
 
     wxFlexGridSizer* szgrid = new wxFlexGridSizer(2);
     szgrid->AddGrowableCol(1);
-    szgrid->Add(radAddress, 0, wxALL | wxALIGN_CENTER_VERTICAL, 1);
+    szgrid->Add(radAddress, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
     szgrid->Add(txtAddress, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 1);
-    szgrid->Add(radLatLon, 0, wxALL | wxALIGN_CENTER_VERTICAL, 1);
+    szgrid->Add(radLatLon, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
     szgrid->Add(szll, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 1);
 
     wxBoxSizer* szyr = new wxBoxSizer(wxHORIZONTAL);
     szyr->Add(new wxStaticText(this, wxID_ANY, "Select years"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
     szyr->Add(lstYears, 0, wxALL, 5);
 
-
+    
     wxBoxSizer* szmain = new wxBoxSizer(wxVERTICAL);
-    szmain->Add(szgrid, 0, wxLEFT | wxRIGHT | wxTOP, 10);
+    szmain->Add(new wxStaticText(this, wxID_ANY, msg), 0, wxALL | wxEXPAND, 10);
+    szmain->Add(szgrid, 10, wxALL | wxEXPAND, 10);
     szmain->Add(szyr, 0, wxLEFT | wxRIGHT, 10);
-    szmain->Add(szFolder, 0, wxLEFT | wxRIGHT, 1);
+    szmain->Add(szFolder, 0, wxALL | wxEXPAND, 10);
+    
+    
 
     wxStaticText* note = new wxStaticText(this, wxID_ANY, help_text);
     note->Wrap(550);
@@ -137,6 +140,7 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     Fit();
 
     radAddress->SetValue(true);
+    radLatLon->SetValue(false);
     txtAddress->SetFocus();
     txtAddress->SelectAll();
     txtLat->Enable(false);

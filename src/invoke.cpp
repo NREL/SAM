@@ -2246,7 +2246,8 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
     //Create a folder to put the weather file in
     wxString wfdir;
-    wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
+    //wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
+    wfdir = foldername;
     if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
 
 
@@ -2265,7 +2266,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
     for (size_t i = 0; i < years_final.Count(); i++)
     {
-        url = SamApp::WebApi("windtoolkit");
+        url = SamApp::WebApi("wave_query");
         url.Replace("<YEAR>", years_final[i]);
         url.Replace("<LAT>", wxString::Format("%lg", lat));
         url.Replace("<LON>", wxString::Format("%lg", lon));
@@ -2313,6 +2314,8 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     float per = 0.0f, act_time;
     int curhh = 0;
     wxString cur_hh = "";
+    wxString file_list = "";
+    int num_downloaded = 0;
     while (1)
     {
         size_t i, num_finished = 0;
@@ -2384,6 +2387,31 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
         for (size_t i = 0; i < years_final.Count(); i++)
         {
+            bool ok = curls[i]->Get(urls[i]);
+            // try without attributes
+            if (ok && (curls[i]->GetDataAsString().Length() < 1000))
+                ok = curls[i]->Get(urls[i]);
+            if (!ok)
+                wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.", "NSRDB Download Message", wxOK);
+            else if (curls[i]->GetDataAsString().Length() < 1000)
+                wxMessageBox("Weather file not available.\n\n" + urls[i] + "\n\n" + curls[i]->GetDataAsString(), "NSRDB Download Message", wxOK);
+            else
+            {
+                wxString fn = filename_array[i] + ".csv";
+                //fn = m_weatherFolder + "/" + fn;
+                file_list += filename_array[i] + "\n";
+                if (!curls[i]->WriteDataToFile(fn))
+                {
+                    wxMessageBox("Failed to write file.\n\n" + fn, "NSRDB Download Message", wxOK);
+                    //break;
+                }
+                num_downloaded++;
+            }
+
+            //if (pdlg.WasCancelled())
+              //  break;
+
+            /*
             wxString wave_csv_data = curls[i]->GetDataAsString();
             if (!csv.ReadString(wave_csv_data))
             {
@@ -2391,18 +2419,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
                 success = false;
             }
-            /*
-            if (i == 0)
-                csv_main.Copy(csv);
-            else
-            {
-                // add header (row 2), units (row 3) and hub heights (row 4)
-                // add data (rows 5 through end of data)
-                for (size_t j = 2; j < csv.NumRows() && j < csv_main.NumRows(); j++)
-                    for (size_t k = 0; k < 4; k++)
-                        csv_main(j, i * 4 + k) = csv(j, k);
-            }
-            */
+            
             filename_array[i] += ".csv";
             if (!csv.WriteFile(filename_array[i]))
             {
@@ -2410,8 +2427,26 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 ecd.Finalize();
                 return;
             }
+            */
         }
         // write out combined hub height file
+        if (!stopped && (num_downloaded > 0))
+        {
+            if (default_dnload_path != foldername)
+            {
+                wxArrayString paths;
+                wxString buf;
+                if (SamApp::Settings().Read("solar_data_paths", &buf))
+                    paths = wxStringTokenize(buf, ";");
+                if (paths.Index(foldername) == wxNOT_FOUND)
+                {
+                    paths.Add(foldername);
+                    SamApp::Settings().Write("solar_data_paths", wxJoin(paths, ';'));
+                }
+            }
+            if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NSRDB Download Message", wxOK, this);
+            EndModal(wxID_OK);
+        }
         
     }
 
