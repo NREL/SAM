@@ -835,7 +835,7 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_q2_0_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set q_relative: Overall relative capacity due to lifetime effects [Ah]
+	 * Set q_relative: Overall relative capacity due to lifetime effects [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -875,7 +875,7 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_q_relative_neg_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set q_relative_thermal: Relative capacity due to thermal effects [Ah]
+	 * Set q_relative_thermal: Relative capacity due to thermal effects [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
