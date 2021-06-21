@@ -2430,22 +2430,22 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
             */
         }
         // write out combined hub height file
-        if (!stopped && (num_downloaded > 0))
+        if (num_downloaded > 0)
         {
-            if (default_dnload_path != foldername)
+            if (wxDirExists(wfdir))
             {
                 wxArrayString paths;
                 wxString buf;
-                if (SamApp::Settings().Read("solar_data_paths", &buf))
+                if (SamApp::Settings().Read("wave_data_paths", &buf))
                     paths = wxStringTokenize(buf, ";");
                 if (paths.Index(foldername) == wxNOT_FOUND)
                 {
                     paths.Add(foldername);
-                    SamApp::Settings().Write("solar_data_paths", wxJoin(paths, ';'));
+                    SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
                 }
             }
-            if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NSRDB Download Message", wxOK, this);
-            EndModal(wxID_OK);
+            if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NSRDB Download Message", wxOK);
+            //EndModal(wxID_OK);
         }
         
     }
@@ -2473,7 +2473,12 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         return;
     }
     */
-    cxt.result().assign(filename_array[0]);
+    cxt.result().empty_hash();
+
+    // meta data
+    cxt.result().hash_item("file").assign(filename);
+    cxt.result().hash_item("folder").assign(foldername);
+    cxt.result().hash_item("addfolder").assign(addfolder);
     //Return the downloaded filename
     
 }
