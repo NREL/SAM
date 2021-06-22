@@ -1,5 +1,5 @@
 1
-672
+673
 accumulators_cost
 1
 1
@@ -1045,7 +1045,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5.65588e+06
+5655880
 eng_and_mgmt_cost_input
 1
 1
@@ -1063,7 +1063,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-5.65588e+06
+5655880
 eng_and_mgmt_cost_total
 1
 1
@@ -1177,7 +1177,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-1.60345e+06
+1603450
 export_cable_system_cost_total
 1
 1
@@ -1470,7 +1470,7 @@ insurance_during_construction_cost
 1
 1
 1
-3.64551e+06
+3645510
 insurance_during_construction_cost_input
 1
 1
@@ -1482,7 +1482,7 @@ insurance_during_construction_cost_modeled_ui
 1
 1
 1
-3.64551e+06
+3645510
 insurance_during_construction_method
 1
 1
@@ -1494,7 +1494,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3.64551e+06
+3645510
 insurance_operations_cost
 1
 1
@@ -1801,7 +1801,7 @@ maintenance_cost
 1
 1
 1
-3.65828e+06
+3658280
 maintenance_cost_input
 1
 1
@@ -1819,7 +1819,7 @@ maintenance_cost_modeled
 1
 1
 1
-3.65828e+06
+3658280
 maintenance_cost_total
 1
 1
@@ -2385,7 +2385,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-2.03767e+06
+2037670
 other_elec_infra_cost_total_display
 1
 1
@@ -3284,7 +3284,7 @@ site_access_port_staging_cost
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_input
 1
 1
@@ -3302,13 +3302,13 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_modeled_ui
 1
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_total
 1
 1
@@ -3926,6 +3926,11 @@ user_wave_power_matrix
 9.25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 9.75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
 
+user_wec_matrix_string
+1
+4
+22
+String value goes here
 valves_cost
 1
 1

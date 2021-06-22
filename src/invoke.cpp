@@ -65,6 +65,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "materials.h"
 #include "results.h"
 #include "windtoolkit.h"
+#include "wectoolkit.h"
 #include "urdb.h"
 #include "macro.h"
 #include "invoke.h"
@@ -3367,6 +3368,66 @@ void fcall_showsettings( lk::invoke_t &cxt )
 	else if ( type == "wind" ) cxt.result().assign( ShowWindResourceDataSettings() ? 1.0 : 0.0 );
 }
 
+void fcall_weclibrary(lk::invoke_t& cxt)
+{
+    LK_DOC("weclibrary", "Add WEC power matrix to Wave Energy Converter library", "(string):void");
+    UICallbackContext& cc = *(UICallbackContext*)cxt.user_data();
+
+
+    wxString wec_power_matrix_string(cxt.arg(0).as_string().Lower());
+    //Create the wind data object
+    WECToolkitDialog spd(SamApp::Window(), "Download Wind Resource File");
+    spd.CenterOnParent();
+    int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+    //Return an empty string if the window was dismissed
+    if (code == wxID_CANCEL)
+    {
+        cxt.result().assign(wxEmptyString);
+        return;
+    }
+
+    wxString name = spd.GetName();
+    wxString tech = spd.GetTech();
+    wxString type = spd.GetType();
+    double diam = spd.GetDiam();
+    wxString diam_str = wxString::Format("%g", diam);
+    double mass = spd.GetMass();
+    wxString mass_str = wxString::Format("%g", mass);
+    wxString found = spd.GetFound();
+    wxString moor = spd.GetMoor();
+    wxString str_mat = spd.GetStrMat();
+
+
+    std::string wec_library_db = SamApp::GetRuntimePath() + "../libraries/Wave Energy Converters.csv";
+
+    std::ifstream ifs(wec_library_db);
+    std::vector<std::string> file;
+    std::string buf;
+    while (getline(ifs, buf)) {
+        file.push_back(buf);
+    }
+
+    std::string buf_new = name + "," + tech + "," + type + "," + diam_str + "," + mass_str + "," + found + "," + moor + "," + str_mat + "," + wec_power_matrix_string + "\n";
+    file.push_back(buf_new);
+
+    std::ofstream fout(wec_library_db);
+    for (const auto& e : file)
+        fout << e << "\n";
+
+    Library* reloaded = 0;
+
+    reloaded = Library::Load(wec_library_db);
+    if (reloaded != 0) {
+        if (&cc != NULL) {
+            std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+            for (size_t i = 0; i < objs.size(); i++)
+                if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
+                    lc->ReloadLibrary();
+        }
+    }
+}
+
 void fcall_rescanlibrary( lk::invoke_t &cxt )
 {
 	LK_DOC("rescanlibrary", "Rescan the indicated resource data library ('solar' or 'wind' or 'wave') and update any library widgets.", "(string:type):boolean");
@@ -5195,6 +5256,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_snlinverter,
 		fcall_current_at_voltage_cec,
 		fcall_current_at_voltage_sandia,
+        fcall_weclibrary,
 		fcall_windtoolkit,
 		fcall_nsrdbquery,
 		fcall_openeiutilityrateform,

@@ -45,6 +45,7 @@ set(SAM_SRC
 	src/stochastic.cpp
 	src/urdb.cpp
 	src/nsrdb.cpp
+	src/wectoolkit.cpp
 	src/windtoolkit.cpp
 	src/gridsupport.cpp
 	src/macro.cpp

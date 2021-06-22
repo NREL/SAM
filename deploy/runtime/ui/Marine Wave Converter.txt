@@ -1,7 +1,7 @@
 Marine Wave Converter
 1292
 796
-8
+10
 GroupBox
 
 1
@@ -32,6 +32,36 @@ Wave Energy Converter
 Bold
 2
 1
+Button
+
+1
+8
+Name
+5
+14
+btn_export_wec
+X
+3
+843
+Y
+3
+741
+Width
+3
+306
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+42
+Save WEC power matrix in converter library
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -425,8 +455,52 @@ ShowColumn
 ColorMap
 2
 1
+TextEntry
 
-14
+1
+11
+Name
+5
+22
+user_wec_matrix_string
+X
+3
+336
+Y
+3
+741
+Width
+3
+480
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+15
 device_characteristic_diameter
 3
 1
@@ -607,6 +681,19 @@ ME Wave Energy Converter
 9.75 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 280 264 240 224 
 
 DataMatrix
+user_wec_matrix_string
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+TextEntry
 wave_device_name
 3
 4
@@ -635,7 +722,7 @@ ME Wave Energy Converter
 0
 DataMatrix
 
-377
+728
 equations{ 'device_rated_power' } = define () 
 {
 	max_power = 0;
@@ -653,14 +740,33 @@ equations{ 'wave_power_matrix' } = define()
 	else
 		return ${lib_wave_power_matrix};
 };
+/*
+equations{ 'user_wec_matrix_string' } = define() 
+{
+	if (${library_or_input_wec}==1) {
+		str = '';
+		mat = ${user_wave_power_matrix};
+		for (r=0; r<#mat; r++) {
+			str += '[';
+			for (c=0; c<#mat[0]; c++) {
+				if (c != #mat[0] - 1)
+					str += to_string(mat[r][c]) + ",";
+				else
+					str += to_string(mat[r][c]);
+			}
+			str += ']';
+		}
+	}
+};*/
 
 
-983
+1465
 function update_controls()
 {
 	input_wec = (value("library_or_input_wec") == 1);
 	show("user_wave_power_matrix", input_wec);
 	show("user_entered", input_wec);
+	show('btn_export_wec', input_wec);
 	show("lib_wave_device", !input_wec);
 	show("lib_wave_power_matrix", !input_wec);
 	show('wave_device_name', !input_wec);
@@ -680,6 +786,26 @@ on_load{'Marine Wave Converter'}=define()
 	//enable("lib_wave_power_curve", false);
 	value( 'wave_device_name', value( 'lib_wave_device' ) );
 	update_controls();
+};
+
+on_change{'btn_export_wec'} = define() {
+	if (value('library_or_input_wec')==1) {
+		mat = value('user_wave_power_matrix');
+		str = '';
+		for (r=0; r<#mat; r++) {
+			str += '[';
+			for (c=0; c<#mat[0]; c++) {
+				if (c != #mat[0] - 1)
+					str += to_string(mat[r][c]) + ";";
+				else
+					str += to_string(mat[r][c]);
+			}
+			str += ']';
+		}
+		value('user_wec_matrix_string',str);
+		weclibrary(value('user_wec_matrix_string'));
+	}
+	refresh();
 };
 
 
