@@ -3376,7 +3376,7 @@ void fcall_weclibrary(lk::invoke_t& cxt)
 
     wxString wec_power_matrix_string(cxt.arg(0).as_string().Lower());
     //Create the wind data object
-    WECToolkitDialog spd(SamApp::Window(), "Download Wind Resource File");
+    WECToolkitDialog spd(SamApp::Window(), "Save wave energy converter to file");
     spd.CenterOnParent();
     int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -3391,13 +3391,26 @@ void fcall_weclibrary(lk::invoke_t& cxt)
     wxString tech = spd.GetTech();
     wxString type = spd.GetType();
     double diam = spd.GetDiam();
-    wxString diam_str = wxString::Format("%g", diam);
+    wxString diam_str = wxString::Format("%.2f", diam);
     double mass = spd.GetMass();
-    wxString mass_str = wxString::Format("%g", mass);
+    wxString mass_str = wxString::Format("%.2f", mass);
     wxString found = spd.GetFound();
     wxString moor = spd.GetMoor();
     wxString str_mat = spd.GetStrMat();
 
+
+    // TODO - update fields based on final file
+    wxBusyInfo* busy = 0;
+    busy = new wxBusyInfo("Updating wave energy converter library...");
+
+    wxString path = SamApp::GetRuntimePath() + "../libraries/Wave Energy Converters.csv";
+    wxDir dir(path);
+    /*
+    if (!dir.IsOpened()) {
+        if (busy) delete busy;
+        return;
+    }
+    */
 
     std::string wec_library_db = SamApp::GetRuntimePath() + "../libraries/Wave Energy Converters.csv";
 
@@ -3426,6 +3439,8 @@ void fcall_weclibrary(lk::invoke_t& cxt)
                     lc->ReloadLibrary();
         }
     }
+
+    if (busy) delete busy;
 }
 
 void fcall_rescanlibrary( lk::invoke_t &cxt )

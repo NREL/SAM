@@ -760,7 +760,7 @@ equations{ 'user_wec_matrix_string' } = define()
 };*/
 
 
-1465
+1554
 function update_controls()
 {
 	input_wec = (value("library_or_input_wec") == 1);
@@ -796,9 +796,11 @@ on_change{'btn_export_wec'} = define() {
 			str += '[';
 			for (c=0; c<#mat[0]; c++) {
 				if (c != #mat[0] - 1)
-					str += to_string(mat[r][c]) + ";";
+					//str += to_string(mat[r][c]) + ";";
+					str += sprintf('%.2f',mat[r][c]) + ";";
 				else
-					str += to_string(mat[r][c]);
+					//str += to_string(mat[r][c]);
+					str += sprintf('%.2f', mat[r][c]);
 			}
 			str += ']';
 		}
