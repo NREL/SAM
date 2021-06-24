@@ -1794,9 +1794,10 @@ static void fcall_style( lk::invoke_t &cxt )
 	bool gridLines, hdrLine, tabBorder;
 	std::vector<float> rowSizes, colSizes;
     std::vector<int> bldLines;
+    std::vector<int> totalLines;
 
 	so->TableStyle( &hdrSize, &hdrLines, &hdrFace, &hdrAlign, &hdrBold, &hdrColour,
-		&hdrLine, &cellAlign, &gridLines, &rowSizes, &colSizes, &bldLines, &tabBorder );
+		&hdrLine, &cellAlign, &gridLines, &rowSizes, &colSizes, &bldLines, &totalLines, &tabBorder );
 
 	lk::vardata_t &tab = cxt.arg(0);
 	lk::vardata_t *v = 0;
@@ -1950,6 +1951,16 @@ static void fcall_style( lk::invoke_t &cxt )
 	if ((v=tab.lookup("header_line")))
 		hdrLine = v->as_boolean();
 
+    if ((v = tab.lookup("total_lines"))) {
+        lk::vardata_t& vv2 = v->deref();
+        if (vv2.type() == lk::vardata_t::VECTOR)
+        {
+            totalLines.resize(vv2.length());
+            for (size_t i = 0; i < vv2.length(); i++)
+                totalLines[i] = (float)vv2.index(i)->as_number();
+        }
+    }
+
 	if ((v=tab.lookup("col_sizes")))
 	{
 		lk::vardata_t &vv2 = v->deref();
@@ -1976,7 +1987,7 @@ static void fcall_style( lk::invoke_t &cxt )
 		tabBorder = v->as_boolean();
 
 	so->TableStyle( hdrSize, hdrLines, hdrFace, hdrAlign, hdrBold,
-		hdrColour, hdrLine, cellAlign, gridLines, rowSizes, colSizes, bldLines,
+		hdrColour, hdrLine, cellAlign, gridLines, rowSizes, colSizes, bldLines, totalLines,
 		tabBorder);
 }
 
@@ -2207,7 +2218,7 @@ void SamReportScriptObject::Render( wxPageOutputDevice &dv )
 	
 	// initialize styles
 	Style( wxPageOutputDevice::SANSERIF, 12, *wxBLACK, false, false, wxLEFT, 0.013f, wxPageOutputDevice::SOLID );
-	TableStyle( 12, 1, wxPageOutputDevice::SANSERIF, wxCENTER, true, *wxBLACK, true, wxLEFT, false, std::vector<float>(), std::vector<float>(), std::vector<int>(), true );
+	TableStyle( 12, 1, wxPageOutputDevice::SANSERIF, wxCENTER, true, *wxBLACK, true, wxLEFT, false, std::vector<float>(), std::vector<float>(), std::vector<int>(), std::vector<int>(), true );
 
 	// run the script.
 	// callback functions invoke rendering capabilities and state/style changes
@@ -2299,7 +2310,7 @@ void SamReportScriptObject::Style( int *face, int *size, wxColour *c, bool *b, b
 }
 
 void SamReportScriptObject::TableStyle( int hdrSize, int hdrLines, int hdrFace, int hdrAlign, bool hdrBold, const wxColour &hdrColor,
-	bool hdrLine, int cellAlign, bool gridLines, const std::vector<float> &rowSizes, const std::vector<float> &colSizes, const std::vector<int> &bldLines,
+	bool hdrLine, int cellAlign, bool gridLines, const std::vector<float> &rowSizes, const std::vector<float> &colSizes, const std::vector<int> &bldLines, const std::vector<int> &totalLines,
 	bool tabBorder )
 {
 	m_headerSize = hdrSize;
@@ -2314,11 +2325,12 @@ void SamReportScriptObject::TableStyle( int hdrSize, int hdrLines, int hdrFace, 
 	m_rowSizes = rowSizes;
 	m_colSizes = colSizes;
     m_bldLines = bldLines;
+    m_totalLines = totalLines;
 	m_tableBorder = tabBorder;
 }
 
 void SamReportScriptObject::TableStyle( int *hdrSize, int *hdrLines, int *hdrFace, int *hdrAlign, bool *hdrBold, wxColour *hdrColor,
-	bool *hdrLine, int *cellAlign, bool *gridLines, std::vector<float> *rowSizes, std::vector<float> *colSizes, std::vector<int> *bldLines,
+	bool *hdrLine, int *cellAlign, bool *gridLines, std::vector<float> *rowSizes, std::vector<float> *colSizes, std::vector<int> *bldLines, std::vector<int> *totalLines,
 	bool *tabBorder)
 {
 	*hdrSize = m_headerSize;
@@ -2333,6 +2345,7 @@ void SamReportScriptObject::TableStyle( int *hdrSize, int *hdrLines, int *hdrFac
 	*rowSizes = m_rowSizes;
 	*colSizes = m_colSizes;
     *bldLines = m_bldLines;
+    *totalLines = m_totalLines;
 	*tabBorder = m_tableBorder;
 }
 
@@ -2581,7 +2594,19 @@ void SamReportScriptObject::RenderTable( const matrix_t<wxString> &tab )
 	if (m_headerLine && row_heights.size() > 0)
 		m_curDevice->Line( tab_x, tab_y+row_heights[0], 
 			tab_x+tab_width, tab_y+row_heights[0] );
-	
+    float ypos_total_lines = tab_y+row_heights[0];
+    for (int r = 1; r < (int)tab.nrows(); r++) {
+        ypos_total_lines += row_heights[r];
+        for (int b = 0; b < m_totalLines.size(); b++) {
+            if (r == m_totalLines[b]) {
+                m_curDevice->Line(tab_x, ypos_total_lines - row_heights[r], tab_x + tab_width, ypos_total_lines - row_heights[r]);
+                m_curDevice->Line(tab_x, ypos_total_lines, tab_x + tab_width, ypos_total_lines);
+                break;
+            }
+            
+        }
+    }
+
 	if (m_tableBorder)
 		m_curDevice->Rect( tab_x, tab_y, tab_width, tab_height );
 

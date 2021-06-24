@@ -261,10 +261,10 @@ public:
 	void Style( int *face, int *size, wxColour *c, 
 		bool *b, bool *it, int *al, float *line_width, int *line_style );
 	void TableStyle( int hdrSize, int hdrLines, int hdrFace, int hdrAlign, bool hdrBold, const wxColour &hdrColor,
-		bool hdrLine, int cellAlign, bool gridLines, const std::vector<float> &rowSizes, const std::vector<float> &colSizes, const std::vector<int> &bldLines,
+		bool hdrLine, int cellAlign, bool gridLines, const std::vector<float> &rowSizes, const std::vector<float> &colSizes, const std::vector<int> &bldLines, const std::vector<int> &totalLines,
 		bool tabBorder );
 	void TableStyle( int *hdrSize, int *hdrLines, int *hdrFace, int *hdrAlign, bool *hdrBold, wxColour *hdrColor,
-		bool *hdrLine, int *cellAlign, bool *gridLines, std::vector<float> *rowSizes, std::vector<float> *colSizes, std::vector<int> *bldLines,
+		bool *hdrLine, int *cellAlign, bool *gridLines, std::vector<float> *rowSizes, std::vector<float> *colSizes, std::vector<int> *bldLines, std::vector<int> *totalLines,
 		bool *tabBorder );
 
 	void MoveTo( float x, float y );
@@ -302,6 +302,7 @@ private:
 	std::vector<float> m_rowSizes;	
 	std::vector<float> m_colSizes;
     std::vector<int> m_bldLines;
+    std::vector<int> m_totalLines;
 	bool m_tableBorder;
 
 	wxString m_script;
