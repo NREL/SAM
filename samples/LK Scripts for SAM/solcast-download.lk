@@ -143,7 +143,7 @@ url = url + 'tmy_hourly?api_key=' + key;
 url = url + '&latitude=' + to_string(lat);
 url = url + '&longitude=' + to_string(lon);
 url = url + '&output_parameters=period_start,air_temp,ghi,dhi,dni,relative_humidity,snow_depth,sfc_pressure,wind_direction_10m,wind_speed_10m,albedo_daily';
-url = url + '&timzone' + 'longitudonal';
+url = url + '&timezone' + 'longitudinal';
 url = url + '&format=json';
 
 outln( 'URL for API call:\n  ' + url );
