@@ -1,41 +1,7 @@
 Marine Wave Resource
-1296
-1156
-23
-Hyperlink
-
-1
-9
-Name
-5
-10
-Hyperlink2
-X
-3
-27
-Y
-3
-468
-Width
-3
-847
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-137
-For locations not covered by the wave resource library, click here to go to the SAM website Weather Page for links to other data sources.
-URL
-5
-33
-https://sam.nrel.gov/weather-data
-TabOrder
-3
-0
+1292
+1066
+14
 Button
 
 1
@@ -66,54 +32,66 @@ Refresh Library
 TabOrder
 3
 4294967295
-Label
+Button
 
 1
-13
+8
 Name
 5
-24
-download_weather_caption
+22
+btn_add_remove_folders
 X
 3
-24
+684
 Y
 3
 360
 Width
 3
-846
+252
 Height
 3
-43
+30
 Tool Tip
 5
 0
 Caption
 5
-342
-The High Resolution Ocean Surface Wave Hindcast is a database with 30  years of 3-hour resolution wave data that you can download and add to your wave resource library.  Download the joint probability distribution (JPD) file based on a specified year, a specified subset of a year, or the entire multi-year dataset for a particular location. 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
+34
+Add/remove weather file folders...
+TabOrder
 3
-4294967295
-WordWrap
 2
+Button
+
 1
-AlignRight
-2
+8
+Name
+5
+23
+btn_refresh_library_mat
+X
+3
+684
+Y
+3
+393
+Width
+3
+252
+Height
+3
+30
+Tool Tip
+5
 0
-AlignTop
-2
-1
+Caption
+5
+15
+Refresh library
+TabOrder
+3
+3
 TextEntry
 
 1
@@ -171,7 +149,7 @@ X
 1014
 Y
 3
-1005
+927
 Width
 3
 90
@@ -236,10 +214,10 @@ Y
 12
 Width
 3
-1248
+1269
 Height
 3
-331
+418
 Tool Tip
 5
 0
@@ -263,7 +241,7 @@ X
 12
 Y
 3
-516
+438
 Width
 3
 1270
@@ -280,92 +258,6 @@ Annual Frequency of Occurrence of Sea States from Library
 Bold
 2
 1
-TextEntry
-
-1
-11
-Name
-5
-15
-in_location_jpd
-X
-3
-27
-Y
-3
-441
-Width
-3
-573
-Height
-3
-24
-Tool Tip
-5
-0
-Text
-5
-77
-Type the latitude and longitude of the desired wave energy converter location
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-6
-RadioChoice
-
-1
-11
-Name
-5
-17
-in_time_frame_jpd
-X
-3
-33
-Y
-3
-414
-Width
-3
-403
-Height
-3
-24
-Tool Tip
-5
-0
-Selection
-3
-0
-Items
-6
-3
-Entire year
-Specified range
-Entire dataset
-ShowCaptions
-2
-1
-Horizontal
-2
-1
-TabOrder
-3
-8
 Label
 
 1
@@ -414,6 +306,51 @@ AlignRight
 AlignTop
 2
 1
+MultilineText
+
+1
+11
+Name
+5
+19
+library_folder_list
+X
+3
+81
+Y
+3
+360
+Width
+3
+588
+Height
+3
+60
+Tool Tip
+5
+0
+Text
+5
+37
+List of Wave Resource library folders
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Library
 
 1
@@ -458,7 +395,7 @@ X
 195
 Y
 3
-1005
+927
 Width
 3
 103
@@ -520,7 +457,7 @@ X
 456
 Y
 3
-1005
+927
 Width
 3
 103
@@ -582,7 +519,7 @@ X
 771
 Y
 3
-1005
+927
 Width
 3
 103
@@ -631,295 +568,6 @@ BackColour
 TabOrder
 3
 10
-GroupBox
-
-1
-8
-Name
-5
-8
-object 4
-X
-3
-12
-Y
-3
-345
-Width
-3
-1270
-Height
-3
-162
-Tool Tip
-5
-0
-Caption
-5
-37
-Download Marine Energy Resource Files
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-10
-object 418
-X
-3
-6
-Y
-3
-1050
-Width
-3
-1269
-Height
-3
-96
-Tool Tip
-5
-0
-Caption
-5
-25
-Wave Energy Resource File
-Bold
-2
-1
-Label
-
-1
-13
-Name
-5
-10
-object 718
-X
-3
-750
-Y
-3
-1071
-Width
-3
-496
-Height
-3
-68
-Tool Tip
-5
-0
-Caption
-5
-251
-Check the box and click Browse to choose a .csv file stored on your computer without adding it to the wave resource library. Note that the matrix data above shows data from files in the library, not from the file you choose here. See Help for details.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-4294967295
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Button
-
-1
-8
-Name
-5
-14
-select_wf_wave
-X
-3
-651
-Y
-3
-1101
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-9
-Browse...
-TabOrder
-3
-4294967295
-CheckBox
-
-1
-9
-Name
-5
-20
-use_specific_wf_wave
-X
-3
-21
-Y
-3
-1071
-Width
-3
-501
-Height
-3
-27
-Tool Tip
-5
-0
-Caption
-5
-65
-Choose wave energy resource file instead of choosing from library
-State
-2
-0
-TabOrder
-3
-4294967295
-TextEntry
-
-1
-11
-Name
-5
-22
-user_specified_wf_wave
-X
-3
-21
-Y
-3
-1101
-Width
-3
-624
-Height
-3
-24
-Tool Tip
-5
-0
-Text
-5
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Button
-
-1
-8
-Name
-5
-13
-wave_download
-X
-3
-618
-Y
-3
-441
-Width
-3
-234
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-30
-Download and add to library...
-TabOrder
-3
-10
-TextEntry
-
-1
-11
-Name
-5
-22
-wave_resource_filename
-X
-3
-798
-Y
-3
-402
-Width
-3
-459
-Height
-3
-24
-Tool Tip
-5
-0
-Text
-5
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 DataMatrix
 
 1
@@ -933,7 +581,7 @@ X
 33
 Y
 3
-534
+456
 Width
 3
 1200
@@ -1373,15 +1021,14 @@ wave_download
 Default
 wave_library_folder_list
 3
-2
+4
  
  
  
 0
-0
+8
 1
-2
-1
+4
 1
 0
 Default
@@ -1465,7 +1112,7 @@ equations{ 'frequency_sum' } = define ()
 	return sum_mat;
 };
 
-7846
+2478
 function enable_disable_library() {
 	enable_library = !value('use_specific_wf_wave');
 	enable('wave_resource_matrix',false);
@@ -1506,7 +1153,7 @@ on_change{'btnScanLibrary'} = define() {
 
 on_load{'Marine Wave Resource'} = define() {
 	enable("wave_resource_matrix",false);
-	on_change{'use_specific_wf_wave'}();
+	//on_change{'use_specific_wf_wave'}();
 	enable_disable_library();
 	//show('use_specific_wave_file', false); // determines whether user_specified_weather_file is used instead of solar_data_file_name
 	//show('user_specified_wave_file', false); // requires use_specific_weather_file = 1, set by LK script
@@ -1516,7 +1163,7 @@ on_load{'Marine Wave Resource'} = define() {
 	//show('in_time_frame', value('in_wave_options') != 0 ); //No option for TMY data on first iteraiton
 	
 	//refresh();
-	//update_library_folders( '' );
+	update_library_folders( '' );
 	//update_info( 'on_load Wave Resource Data');
 	//update_info( 'on_load Wave Resource Data');
 };
@@ -1538,143 +1185,12 @@ on_change{'location'} = define() {
 	//update_info('on_change location');
 };
 
-on_change{'use_specific_wf_wave'} = define() {
-	enable( 'user_specified_wf_wave', ${use_specific_wf_wave} );
-	enable( 'select_wf_wind', ${use_specific_wf_wave} );
-	enable_disable_library();
+
+on_change{'btn_refresh_library_mat'} = define() {
+	rescanlibrary('wave');
+	//update_info('on_change btn_refresh_library');
 };
 
-on_change{'select_wf_wave'} = define() {
-	file = choose_file( path_only( value('user_specified_wf_wave') ), 'Choose a wave resource file', 
-		'Wave Resource Files (*.csv|*.csv');
-		
-	if ( file != '' ) {
-		file = replace(file, '\\', '/');
-		value( 'user_specified_wf_wave', file );
-	}
-};
-
-function update_info( ctxt )
-{
-	wf = value('wave_resource_filename'); 
-	L = strlen( value( 'wave_library_folder_list' ) );
-	/*msgbox('Hello from update_info() in ' + ctxt + '!\nsolar_resource_file = ' + value('solar_resource_file')
-	       + '\nsolar_data_file_name = ' + value('solar_data_file_name')
-	       + '\n\nsolar_data_file_name_load = ' + value('solar_data_file_name_load')  
-	       + '\n\nuser_specified_weather_file = ' + value('user_specified_weather_file')
-	       + '\n\nfile_name = ' + value('file_name') 
-	       + '\n\nsolar_resource = ' + value('solar_resource') 
-	       + '\n\nwf is in library = ' + wave_library(value('solar_resource_file'),false){'is_in_library'}
-	       + '\n\ncurrent selection is in library = ' + wave_library(value('solar_resource'),true){'is_in_library'} );*/
-	
-	//if selected library file is no longer in library reload library, and exit
-	wf_ok = false;
-	if (!file_exists(wf) )
-	{
-		msg_caption = 'Weather file does not exist. Please choose or download a different file above.';
-		msg_color = 'red';
-		show_button = false;
-		rescanlibrary('wave'); // remove deleted file from library
-	}
-	// display message depending on whether file is in library or is a user-specified file
-	elseif ( wf != value('file_name') )
-	{
-		msg_caption = 'The weather file is different from the file selected in the library because it was modified by an LK script. Click Add File to Library if you want the file to appear in the library list above.';
-		msg_color = 'red';
-		show_button = true;
-	}
-	elseif ( strlen( value( 'library_folder_list' ) ) < L ) // ** this check should never be true, right???
-	{
-		msg_caption = 'Weather file folder not in list? Please choose or download a different file above, or click Add file to library.';
-		msg_color = 'red';
-		show_button = true;
-	}
-	elseif ( !wave_library(slash_back_to_forward(value('location_ts')),true){'is_in_library'} )
-	{
-		msg_caption = 'Weather file is not in library. Please choose or download a different file above, or click Add file to library.';
-		msg_color = 'red';
-		show_button = true;
-	}
-	else
-	{
-		msg_caption = 'The following information describes the data in the highlighted weather file from the Solar Resource library above. This is the file SAM will use when you click Simulate.';
-		msg_color = 'black';
-		show_button = false;
-		wf_ok = true;
-	}
-
-	// show / hide PV only summary data
-
-	// display message for new users if library contains only default files
-	
-
-	// calculate and display annual summary data
-	if ( wf_ok )
-	{
-		obj = ssc_create();
-		ssc_var( obj, "wave_resource_model_choice", 0);
-		ssc_var( obj, "wave_resource_filename", value('wave_resource_filename'));
-		result = ssc_exec( obj, 'wave_file_reader' );
-		if ( 0 == result )
-		{
-			value( 'name_', ssc_var(obj, 'name') );
-			value( 'city', ssc_var(obj, 'city') );
-			value( 'state', ssc_var(obj, 'state') );
-			value( 'country', ssc_var(obj, 'country') );
-			value( 'lat', ssc_var(obj, 'lat') );
-			value( 'lon', ssc_var(obj, 'lon') );
-			value( 'nearby_buoy_number', ssc_var(obj, 'nearby_buoy_number') );
-			//value( 'wave_significant_height', ssc_var(obj, 'wave_significant_height') );
-			//value( 'wave_energy_period', ssc_var(obj, 'wave_energy_period') );
-			// used for timestep calculation in editscene3d
-			//alue( 'number_records', ssc_var(obj, 'number_records') );
-			//value( 'number_hours', ssc_var(obj, 'number_hours') );
-			value( 'wave_resource_matrix', ssc_var(obj, 'wave_resource_matrix'));
-		}
-		else
-		{
-			msgbox('Weather file reader failed!\n' 
-			+ result
-			+ '\n\nTo avoid this message, remove  the following file from your weather file folders: \n' + wf);
-			//value( 'wave_significant_height', nan() );
-			//value( 'wave_energy_period', nan() );
-			//value( 'number_records', 0);
-			//value( 'number_hours', 0);
-			
-		}
-		ssc_free( obj );
-	}
-	
-	if ( librarygetcurrentselection('location') == '' )
-	{
-		librarynotifytext('location','Please choose a file. Nothing selected.');
-	}
-	elseif ( !wave_library(slash_back_to_forward(value('location_ts')),true){'is_in_library'} ) 
-	{
-		librarynotifytext('location', 'Please choose a file. Current selection not in library.');
-	}
-	elseif (librarygetnumbermatches('location') < 1)
-	{
-		value('in_location', librarygetfiltertext('location_ts'));
-		librarynotifytext('location', 'No match found. Try downloading a weather file below.');
-	}
-	elseif ( librarygetcurrentselection('location_ts') != file_to_key( value('wave_resource_filename_ts')) )
-	{
-		librarynotifytext('location','Current selection is different from weather file.');
-	}
-	else
-	{
-		librarynotifytext('location', ''); //'Everything is fine.'
-		value('in_location_jpd', 'Type a location name, street address, or lat,lon in decimal degrees');
-	}
-	
-	//msgbox('libraryget functions'+
-	//'\nfiltertext = ' + librarygetfiltertext('solar_resource') 
-	//+ '\nnumber matches = ' + librarygetnumbermatches('solar_resource') 
-	//+ '\ncurrentselection = ' + librarygetcurrentselection('solar_resource'));
-	
-	//display_tech_message();
-}
 
 
 

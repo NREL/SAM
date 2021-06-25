@@ -1,7 +1,7 @@
 Marine Wave Resource Time Series
-1288
-911
-22
+1289
+618
+21
 Hyperlink
 
 1
@@ -15,7 +15,7 @@ X
 27
 Y
 3
-600
+567
 Width
 3
 847
@@ -139,7 +139,7 @@ X
 927
 Y
 3
-555
+522
 Width
 3
 121
@@ -169,7 +169,7 @@ X
 618
 Y
 3
-573
+540
 Width
 3
 234
@@ -247,7 +247,7 @@ X
 24
 Y
 3
-492
+459
 Width
 3
 846
@@ -345,7 +345,7 @@ Width
 1270
 Height
 3
-460
+424
 Tool Tip
 5
 0
@@ -369,7 +369,7 @@ X
 27
 Y
 3
-573
+540
 Width
 3
 582
@@ -414,7 +414,7 @@ X
 519
 Y
 3
-573
+540
 Width
 3
 90
@@ -446,7 +446,7 @@ X
 903
 Y
 3
-495
+462
 Width
 3
 180
@@ -486,7 +486,7 @@ X
 30
 Y
 3
-546
+513
 Width
 3
 565
@@ -527,7 +527,7 @@ X
 618
 Y
 3
-546
+513
 Width
 3
 210
@@ -684,7 +684,7 @@ X
 12
 Y
 3
-477
+444
 Width
 3
 1270
@@ -701,36 +701,6 @@ Download Marine Energy Resource Files
 Bold
 2
 1
-GroupBox
-
-1
-8
-Name
-5
-10
-object 418
-X
-3
-12
-Y
-3
-651
-Width
-3
-1269
-Height
-3
-96
-Tool Tip
-5
-0
-Caption
-5
-25
-Wave Energy Resource File
-Bold
-2
-1
 Numeric
 
 1
@@ -744,7 +714,7 @@ X
 1164
 Y
 3
-528
+495
 Width
 3
 90
@@ -806,7 +776,7 @@ X
 1164
 Y
 3
-495
+462
 Width
 3
 90
@@ -1269,7 +1239,7 @@ equations{'wave_resource_file_ts'} = define() {
 };
 
 
-29128
+29154
 /*
 function enable_disable_library() {
 	
@@ -1936,7 +1906,8 @@ function update_library_folders( new_path )
 	// update list to display
 	value( 'library_folder_list', get_settings('wave_download_path') + '\n' 
 	       + replace( clean_list , ';' , '\n' ) );
-	rescanlibrary( 'wave_ts' );        
+	rescanlibrary( 'wave_ts' );   
+	rescanlibrary( 'wave' );     
 }
 
 function update_info( ctxt )
