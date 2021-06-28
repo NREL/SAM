@@ -117,6 +117,7 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2021, 6, 2 }, // 2021.6.2 ssc 257 EPRI Beta expires 6/2/2022
 		{ 2021, 4, 19 }, // 2021.4.19 ssc 255 EPRI Beta expires 4/19/2022
 		{ 2021, 3, 25 }, // 2021.3.25 ssc 254 EPRI Beta expires 3/25/2022
 		{ 2021, 3, 8 }, // 2021.3.8 ssc 253 EPRI Beta expires 3/8/2022
@@ -1791,7 +1792,7 @@ void ConfigDatabase::SetModules( const wxArrayString &list )
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar,
 	const wxString &hlpcxt, const wxString &exclvar,
 	const std::vector<PageInfo> &exclhdr_pages,
-	bool excl_tabs )
+	bool excl_tabs, bool excl_hide )
 {
 	if ( m_curConfig == 0 ) return;
 
@@ -1803,6 +1804,7 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->ExclusivePageVar = exclvar;
 	ip->ExclusiveHeaderPages = exclhdr_pages;
 	ip->ExclusiveTabs = excl_tabs;
+    ip->ExclusiveHide = excl_hide;
 
 	m_curConfig->InputPageGroups.push_back( ip );
 }

@@ -1,5 +1,5 @@
 1
-561
+569
 LeadAcid_q10
 1
 1
@@ -89,6 +89,12 @@ analysis_period_warning
 4
 12
 No messages.
+automated_dispatch_choice
+1
+1
+1
+1
+0
 batt_C_rate
 1
 1
@@ -203,12 +209,6 @@ batt_ac_or_dc
 1
 1
 1
-batt_auto_gridcharge_max_daily
-1
-1
-1
-1
-100
 batt_bank_duration
 1
 1
@@ -482,6 +482,18 @@ batt_dispatch_choice
 1
 1
 4
+batt_dispatch_choice_ui
+1
+1
+1
+1
+2
+batt_dispatch_excl
+1
+1
+1
+1
+3.33506e-317
 batt_dispatch_update_frequency_hours
 1
 1
@@ -898,7 +910,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+41.856
 cbi_fed_amount
 1
 1
@@ -1043,6 +1055,12 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+4.94066e-323
 const_per_interest1
 1
 1
@@ -1909,7 +1927,7 @@ first_year_output
 1
 1
 1
-33638400
+168192000
 first_year_output_peak
 1
 1
@@ -3151,12 +3169,6 @@ total_installed_cost
 1
 1
 149824720
-ui_batt_is_dc
-1
-1
-1
-1
-0
 ui_wacc
 1
 1
@@ -3315,6 +3327,48 @@ ur_desc_is_shown
 ur_description
 1
 4
+0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+0
+ur_ec_enable_billing_demand
+1
+1
+1
+1
 0
 ur_ec_is_shown
 1
@@ -3538,6 +3592,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 user_capacity_factor
 1
 1

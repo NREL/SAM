@@ -1,5 +1,5 @@
 1
-379
+387
 ac_nameplate
 1
 1
@@ -341,6 +341,12 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+4.94066e-323
 city
 1
 4
@@ -1354,6 +1360,13 @@ modulearray_power_w
 1
 1
 540000
+mpeak
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 nominal_discount_rate
 1
 1
@@ -2111,6 +2124,48 @@ ur_description
 1
 4
 0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+100
+ur_ec_enable_billing_demand
+1
+1
+1
+1
+0
 ur_ec_is_shown
 1
 1
@@ -2337,6 +2392,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 use_specific_weather_file
 1
 1

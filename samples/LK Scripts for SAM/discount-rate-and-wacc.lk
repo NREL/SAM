@@ -1,0 +1,68 @@
+//
+// This script demonstrates how to use LK to set real discount rate
+// such that payback periods show effects of all WACC parameters
+//
+// Script written by Steven Janzou using SAM 2016.7.21 beta, September 27, 2016
+// Tested and modified for SAM 2020.11.29
+//
+
+//set the current SAM case (optional if you have one set up)
+// active_case();
+//set configuration
+// configuration('Flat Plate PV', 'Residential');
+// load defaults (optional)
+//load_defaults();
+// set up output list
+// loop over values of loan rates (0,1,2,...,10)
+
+ap = get("analysis_period");
+
+for(rl=0;rl<11;rl++)
+{
+// set loan rate in active case 
+	set('loan_rate',rl);
+// get all values that determine wacc and use to set real discount rate
+// state tax rate
+	ts=get('state_tax_rate')[0]/100;
+// federal tax rate
+	tf=get('federal_tax_rate')[0]/100;
+// effective tax rate	
+	te=ts+(1-ts)*tf;
+// debt fraction
+	fd=get('debt_fraction')/100;
+// inflation	
+	ri=get('inflation_rate')/100;
+// calculate real discount rate to set using wacc=dr
+	rd = ( ri*(1-fd) + (1-te)*rl/100*fd) / ( 1-(1+ri)*(1-fd) );
+// calculate real discount rate to set using wacc=dn
+//	rd = ( (1-te)*rl/100 - ri) / ( 1+ri) ;
+// set discount rate and run case
+	set('real_discount_rate', rd*100);
+//display results of simulation
+	msg="";
+	ok = simulate(msg,1);
+	if (ok==true) 
+	{ // write out payback period and WACC (could plot as funciton of loan rate)
+		rloan = get("loan_rate");
+		dreal = get('real_discount_rate');
+		dnominal = get('nominal_discount_rate');
+		wacc = get('wacc');
+	// simple payback
+		spb = get('payback');
+	// discounted payback
+		dpb = get('discounted_payback');
+		outln(sprintf("rl=%lg dr=%lg, dn=%lg, spb=%lg, dpb=%lg, wacc=%lg",rloan,dreal,dnominal,spb,dpb,wacc));
+		rl_ary[rl]=rloan;
+		dpb_ary[rl]=dpb;
+		spb_ary[rl]=spb;
+	}
+	else 	
+		outln("Simulation failed with the following messages:\n",msg);
+}
+plot(rl_ary,dpb_ary,{ 'thick'=5,'color'=[70,22,105], 'series'="discounted payback" });
+plot(rl_ary,spb_ary,{ 'thick'=5,'color'=[34,168,130], 'series'="simple payback" });
+axis('x1', {'min'=0, 'max'=rl-1, 'label'='loan rate (%)' });
+axis('y1', {'min'=0, 'max'=ap, 'label'='discounted payback (years)' });
+plotopt({'legendpos'='northwest', 'title'='Payback'});
+
+

@@ -1,5 +1,5 @@
 1
-688
+699
 LeadAcid_q10
 1
 1
@@ -537,6 +537,18 @@ batt_dispatch_auto_can_gridcharge
 1
 0
 batt_dispatch_choice
+1
+1
+1
+1
+0
+batt_dispatch_choice_ui
+1
+1
+1
+1
+0
+batt_dispatch_excl
 1
 1
 1
@@ -1230,6 +1242,12 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+4.94066e-323
 city
 1
 4
@@ -2857,6 +2875,13 @@ modulearray_power_w
 1
 1
 215000
+mpeak
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 nominal_discount_rate
 1
 1
@@ -3199,6 +3224,12 @@ peak_9
 1
 1
 226.751
+peak_shaving_batt_dispatch_choice
+1
+1
+1
+1
+3.33505e-317
 per_inverter
 1
 1
@@ -3264,7 +3295,7 @@ property_assessed_value
 1
 1
 1
-2449220
+2.44922e+06
 property_tax_rate
 1
 1
@@ -3695,7 +3726,7 @@ thermal_load_annual_total
 1
 1
 1
-7646300
+7.6463e+06
 thermal_load_escalation
 1
 2
@@ -3849,7 +3880,7 @@ total_installed_cost
 1
 1
 1
-2449220
+2.44922e+06
 tz
 1
 1
@@ -3867,13 +3898,13 @@ ui_loan_amount
 1
 1
 1
-2449220
+2.44922e+06
 ui_net_capital_cost
 1
 1
 1
 1
-2449220
+2.44922e+06
 ui_pv_capacity
 1
 1
@@ -4046,6 +4077,48 @@ ur_desc_is_shown
 ur_description
 1
 4
+0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+100
+ur_ec_enable_billing_demand
+1
+1
+1
+1
 0
 ur_ec_is_shown
 1
@@ -4276,6 +4349,13 @@ ur_voltage_min
 1
 1
 0
+ur_yearzero_usage_peaks
+1
+2
+1
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 use_specific_weather_file
 1
 1
