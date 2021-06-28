@@ -1,5 +1,5 @@
 1
-712
+691
 accumulators_cost
 1
 1
@@ -261,12 +261,6 @@ average_power_flux
 1
 1
 37
-average_power_flux_ts
-1
-1
-1
-1
-0
 balance_of_system_cost_input
 1
 1
@@ -320,11 +314,6 @@ bathymetry
 4
 14
 Gently Sloping
-bathymetry_ts
-1
-4
-9
-<invalid>
 bearings_cost
 1
 1
@@ -488,11 +477,6 @@ city
 4
 7
 Newport
-city_ts
-1
-4
-9
-<invalid>
 closing_costs_cost
 1
 1
@@ -576,11 +560,6 @@ country
 4
 13
 United States
-country_ts
-1
-4
-9
-<invalid>
 cranage_cost
 1
 1
@@ -592,11 +571,6 @@ data_source
 4
 21
 Sandia; SAND2015-7963
-data_source_ts
-1
-4
-9
-<invalid>
 debt_service_reserve_account_cost
 1
 1
@@ -1479,27 +1453,7 @@ hydraulic_reservoir_cost
 1
 1
 0
-in_location
-1
-4
-9
-<invalid>
 in_location_jpd
-1
-0
-in_location_list
-1
-2
-1
-1
-0
-in_location_options_wave
-1
-1
-1
-1
-0
-in_time_frame
 1
 0
 in_time_frame_jpd
@@ -1599,12 +1553,6 @@ interconnection_and_power_marketing_cost_total_check
 1
 0
 interconnection_studies_and_fees_cost
-1
-1
-1
-1
-0
-is_advanced_wave
 1
 1
 1
@@ -1730,12 +1678,6 @@ lat
 1
 1
 44.6899
-lat_ts
-1
-1
-1
-1
-0
 laydown_area_cost
 1
 1
@@ -1830,12 +1772,6 @@ lon
 1
 1
 -124.135
-lon_ts
-1
-1
-1
-1
-0
 long_term_service_agreement_cost
 1
 1
@@ -2093,11 +2029,6 @@ name
 4
 9
 <invalid>
-name_ts
-1
-4
-9
-<invalid>
 navigation_lighting_cost
 1
 1
@@ -2109,11 +2040,6 @@ nearby_buoy_number
 4
 10
 NDBC 46094
-nearby_buoy_number_ts
-1
-4
-9
-<invalid>
 noise_mitigation_cost
 1
 1
@@ -2125,11 +2051,6 @@ notes
 4
 58
 Pacific Marine Energy Test Center - North Energy Test Site
-notes_ts
-1
-4
-9
-<invalid>
 number_devices
 1
 1
@@ -3353,11 +3274,6 @@ sea_bed
 4
 9
 Soft Sand
-sea_bed_ts
-1
-4
-9
-<invalid>
 self_supporting_towers_with_insulators_cost
 1
 1
@@ -3520,11 +3436,6 @@ state
 4
 6
 Oregon
-state_ts
-1
-4
-9
-<invalid>
 stator_cost
 1
 1
@@ -3684,12 +3595,6 @@ tidal_resource_end_velocity
 tidal_resource_start_velocity
 1
 1
-1
-1
-0
-time_check
-1
-2
 1
 1
 0
@@ -3909,12 +3814,6 @@ tz
 1
 1
 -7
-tz_ts
-1
-1
-1
-1
-0
 ui_capital_cost_capacity
 1
 1
@@ -4167,18 +4066,6 @@ RM3
 wave_download
 1
 0
-wave_download_end_year
-1
-1
-1
-1
-2000
-wave_download_start_year
-1
-1
-1
-1
-1990
 wave_library_folder_list
 1
 4
