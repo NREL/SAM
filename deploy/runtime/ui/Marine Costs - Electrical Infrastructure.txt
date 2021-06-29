@@ -1,7 +1,7 @@
 Marine Costs - Electrical Infrastructure
-919
-1405
-116
+920
+1431
+117
 Label
 
 1
@@ -261,7 +261,7 @@ Width
 900
 Height
 3
-1384
+1411
 Tool Tip
 5
 0
@@ -1283,6 +1283,39 @@ State
 TabOrder
 3
 4294967295
+CheckBox
+
+1
+9
+Name
+5
+56
+detailed_cost_choice_onshore_transmission_infrastructure
+X
+3
+369
+Y
+3
+1173
+Width
+3
+255
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+20
+Enter detailed costs
+State
+2
+0
+TabOrder
+3
+4294967295
 Choice
 
 1
@@ -1436,7 +1469,7 @@ X
 480
 Y
 3
-1356
+1386
 Width
 3
 201
@@ -2384,7 +2417,7 @@ X
 468
 Y
 3
-1176
+1206
 Width
 3
 100
@@ -2894,7 +2927,7 @@ X
 24
 Y
 3
-1329
+1359
 Width
 3
 444
@@ -2942,7 +2975,7 @@ X
 309
 Y
 3
-1266
+1296
 Width
 3
 159
@@ -3230,7 +3263,7 @@ X
 24
 Y
 3
-1299
+1329
 Width
 3
 444
@@ -3374,7 +3407,7 @@ X
 75
 Y
 3
-1236
+1266
 Width
 3
 393
@@ -3518,7 +3551,7 @@ X
 183
 Y
 3
-1206
+1236
 Width
 3
 285
@@ -3662,7 +3695,7 @@ X
 315
 Y
 3
-1176
+1206
 Width
 3
 153
@@ -4286,7 +4319,7 @@ X
 21
 Y
 3
-1356
+1386
 Width
 3
 318
@@ -4901,7 +4934,7 @@ X
 468
 Y
 3
-1299
+1329
 Width
 3
 100
@@ -5090,7 +5123,7 @@ X
 339
 Y
 3
-1356
+1386
 Width
 3
 100
@@ -5153,7 +5186,7 @@ X
 339
 Y
 3
-1356
+1386
 Width
 3
 100
@@ -5405,7 +5438,7 @@ X
 468
 Y
 3
-1329
+1359
 Width
 3
 100
@@ -5468,7 +5501,7 @@ X
 468
 Y
 3
-1266
+1296
 Width
 3
 100
@@ -5657,7 +5690,7 @@ X
 468
 Y
 3
-1206
+1236
 Width
 3
 100
@@ -5846,7 +5879,7 @@ X
 468
 Y
 3
-1236
+1266
 Width
 3
 100
@@ -6065,7 +6098,7 @@ X
 447
 Y
 3
-1356
+1386
 Width
 3
 24
@@ -6437,7 +6470,7 @@ detailed_cost_choice_onshore_substation
 1
 0
 CheckBox
-detailed_cost_choice_onshore_transmission
+detailed_cost_choice_onshore_transmission_infrastructure
 3
 1
 Onshore transmission infrastructure detailed cost choice 
@@ -7236,7 +7269,7 @@ underground_cable_system_cost
 0
 Default
 
-4965
+4980
 equations {'elec_infras_cost_modeled'} = define() {
 	return ${array_cable_system_cost_modeled}+${export_cable_system_cost_modeled}+
 		${offshore_substation_cost_modeled}+${onshore_substation_cost_modeled}+
@@ -7365,7 +7398,7 @@ equations {'onshore_transmission_infrastructure_cost_total'} = define() {
 };
 
 equations {'onshore_transmission_infrastructure_cost_total_check'} = define() {
-	if (${detailed_cost_choice_onshore_transmission}==0)
+	if (${detailed_cost_choice_onshore_transmission_infrastructure}==0)
 	{
 		return ${onshore_transmission_infrastructure_cost};
 	}
@@ -7423,7 +7456,7 @@ equations{'elec_infras_override'} = define() {
 
 
 
-12355
+12400
 on_load{'Marine Costs - Electrical Infrastructure'} = define() {
 	on_change{'itemized_check_elec_infras'};
 	//on_change{'level_eng'};
@@ -7593,7 +7626,7 @@ function detailed_cost_onshore_substation()
 	}
 }
 
-on_change{'detailed_cost_choice_onshore_transmission'} = define() {
+on_change{'detailed_cost_choice_onshore_transmission_infrastructure'} = define() {
 	detailed_cost_onshore_transmission_infrastructure();
 };
 
@@ -7601,7 +7634,7 @@ function detailed_cost_onshore_transmission_infrastructure()
 {
 	if (value('itemized_check_elec_infras')==1)
 	{
-		detailed_value = value('detailed_cost_choice_onshore_transmission');
+		detailed_value = value('detailed_cost_choice_onshore_transmission_infrastructure');
 		enable('onshore_transmission_infrastructure_cost',detailed_value==0);
 		show('onshore_transmission_infrastructure_cost',detailed_value==0);
 		enable('onshore_transmission_infrastructure_cost_total',detailed_value);
@@ -7691,7 +7724,7 @@ function enable_itemized_elec_infras()
 	enable('other_onshore_substation_cost',itemized_value==1);
 	enable('onshore_transmission_infrastructure_cost',itemized_value==1);
 	enable('onshore_transmission_infrastructure_cost_total',itemized_value==1);
-	enable('detailed_cost_choice_onshore_transmission',itemized_value==1);
+	enable('detailed_cost_choice_onshore_transmission_infrastructure',itemized_value==1);
 	enable('land_leases_cost',itemized_value==1);
 	enable('underground_cable_system_cost',itemized_value==1);
 	enable('structure_foundations_cost',itemized_value==1);

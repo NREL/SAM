@@ -688,7 +688,7 @@ detailed_cost_choice_onshore_substation
 1
 1
 0
-detailed_cost_choice_onshore_transmission
+detailed_cost_choice_onshore_transmission_infrastructure
 1
 1
 1
@@ -994,7 +994,7 @@ elec_infras_cost_modeled
 1
 1
 1
-21459928
+21459932
 elec_infras_cost_total
 1
 1
@@ -2208,7 +2208,7 @@ onshore_substation_cost
 1
 1
 1
-2145000
+7.121e-307
 onshore_substation_cost_input
 1
 1
