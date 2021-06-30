@@ -414,7 +414,7 @@ bos_equip_fixed
 1
 1
 1
-0
+3.23793e-317
 bos_equip_perarea
 1
 1

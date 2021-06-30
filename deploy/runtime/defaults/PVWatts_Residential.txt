@@ -205,7 +205,7 @@ bos_equip_fixed
 1
 1
 1
-0.31
+3.23793e-317
 bos_equip_perarea
 1
 1
@@ -215,14 +215,9 @@ bos_equip_perarea
 bos_equip_perwatt
 1
 1
-5
-2
-1 1.28 
-4000 1.28 
-7000 1.28 
-7001 0.79 
-100000 0.79 
-
+1
+1
+0.31
 bos_equip_total
 1
 1

@@ -136,7 +136,7 @@ bos_equip_fixed
 1
 1
 1
-0.24
+3.23793e-317
 bos_equip_perarea
 1
 1
@@ -146,14 +146,9 @@ bos_equip_perarea
 bos_equip_perwatt
 1
 1
-5
-2
-1 1.28 
-4000 1.28 
-7000 1.28 
-7001 0.79 
-100000 0.79 
-
+1
+1
+0.24
 bos_equip_total
 1
 1
@@ -1725,7 +1720,7 @@ property_assessed_value
 1
 1
 1
-1.37271e+06
+1372710
 property_tax_rate
 1
 1
@@ -1937,7 +1932,7 @@ total_direct_cost
 1
 1
 1
-1.03334e+06
+1033340
 total_indirect_cost
 1
 1
@@ -1949,7 +1944,7 @@ total_installed_cost
 1
 1
 1
-1.37271e+06
+1372710
 tz
 1
 1
@@ -1967,13 +1962,13 @@ ui_loan_amount
 1
 1
 1
-1.37271e+06
+1372710
 ui_net_capital_cost
 1
 1
 1
 1
-1.37271e+06
+1372710
 ui_step_minutes
 1
 1

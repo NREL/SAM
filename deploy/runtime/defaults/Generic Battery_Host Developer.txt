@@ -2845,7 +2845,7 @@ om_batt_replacement_cost
 2
 1
 1
-0
+232.29
 om_batt_variable_cost
 1
 2
