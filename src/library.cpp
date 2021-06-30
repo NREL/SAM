@@ -1415,8 +1415,8 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
 
                 if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
                 {
-                    str = wxString::Format("%g", year_arr[0]);
-                    csv(row, 6) = wxString(str);
+                    wxString yr_str = wxString::Format("%g", year_arr[0]);
+                    csv(row, 6) = wxString(yr_str);
                 }
 
                 if (ssc_data_get_number(pdata, "tz", &val))
