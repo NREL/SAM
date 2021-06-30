@@ -42,7 +42,7 @@ Name
 btn_add_remove_folders
 X
 3
-684
+630
 Y
 3
 360
@@ -72,7 +72,7 @@ Name
 btn_refresh_library_mat
 X
 3
-684
+630
 Y
 3
 393
@@ -102,7 +102,7 @@ Name
 file_name
 X
 3
-279
+222
 Y
 3
 312
@@ -316,7 +316,7 @@ Name
 library_folder_list
 X
 3
-81
+27
 Y
 3
 360

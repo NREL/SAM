@@ -1330,38 +1330,28 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     csv(1, 5) = "deg";
     csv(2, 5) = "lon";
 
-    csv(0, 6) = "Nearby buoy number";
-    csv(2, 6) = "nearby_buoy_number";
+    csv(0, 6) = "Year";
+    csv(2, 6) = "year";
 
-    csv(0, 7) = "Average power flux";
-    csv(1, 7) = "kW/m";
-    csv(2, 7) = "average_power_flux";
+    csv(0, 7) = "Time zone";
+    csv(2, 7) = "tz";
 
-    csv(0, 8) = "Bathymetry";
-    csv(2, 8) = "bathymetry";
+    csv(0, 8) = "Data source";
+    csv(2, 8) = "data_source";
 
-    csv(0, 9) = "Sea bed";
-    csv(2, 9) = "sea_bed";
+    csv(0, 9) = "Notes";
+    csv(2, 9) = "notes";
 
-    csv(0, 10) = "Time zone";
-    csv(2, 10) = "tz";
+    csv(0, 10) = "File name";
+    csv(2, 10) = "file_name_ts";
 
-    csv(0, 11) = "Data source";
-    csv(2, 11) = "data_source";
+    csv(0, 11) = "Significant wave height";
+    csv(1, 11) = "m";
+    csv(2, 11) = "significant_wave_height";
 
-    csv(0, 12) = "Notes";
-    csv(2, 12) = "notes";
-
-    csv(0, 13) = "File name";
-    csv(2, 13) = "file_name_ts";
-
-    csv(0, 14) = "Significant wave height";
-    csv(1, 14) = "m";
-    csv(2, 14) = "significant_wave_height";
-
-    csv(0, 15) = "Wave period";
-    csv(1, 15) = "s";
-    csv(2, 15) = "energy_period";
+    csv(0, 12) = "Wave period";
+    csv(1, 12) = "s";
+    csv(2, 12) = "energy_period";
 
     //csv(0, 16) = "Frequency distribution";
     //csv(2, 16) = "wave_resource_matrix";
@@ -1397,6 +1387,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
                 ssc_number_t val;
                 ssc_number_t* height_arr;
                 ssc_number_t* period_arr;
+                ssc_number_t* year_arr;
                 ssc_number_t* mat;
                 int nrows, ncols;
                 const char* str;
@@ -1422,28 +1413,22 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
                 if (ssc_data_get_number(pdata, "lon", &val))
                     csv(row, 5) = wxString::Format("%g", val);
 
-                if ((str = ssc_data_get_string(pdata, "nearby_buoy_number")) != 0)
+                if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
+                {
+                    str = wxString::Format("%g", year_arr[0]);
                     csv(row, 6) = wxString(str);
-
-                if (ssc_data_get_number(pdata, "average_power_flux", &val))
-                    csv(row, 7) = wxString::Format("%g", val);
-
-                if ((str = ssc_data_get_string(pdata, "bathymetry")) != 0)
-                    csv(row, 8) = wxString(str);
-
-                if ((str = ssc_data_get_string(pdata, "sea_bed")) != 0)
-                    csv(row, 9) = wxString(str);
+                }
 
                 if (ssc_data_get_number(pdata, "tz", &val))
-                    csv(row, 10) = wxString::Format("%g", val);
+                    csv(row, 7) = wxString::Format("%g", val);
 
                 if ((str = ssc_data_get_string(pdata, "data_source")) != 0)
-                    csv(row, 11) = wxString(str);
+                    csv(row, 8) = wxString(str);
 
                 if ((str = ssc_data_get_string(pdata, "notes")) != 0)
-                    csv(row, 12) = wxString(str);
+                    csv(row, 9) = wxString(str);
 
-                csv(row, 13) = ff.GetFullPath();
+                csv(row, 10) = ff.GetFullPath();
 
                 if ((height_arr = ssc_data_get_array(pdata, "significant_wave_height", &nrows)) != 0)
                 {
@@ -1456,7 +1441,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
 
                     }
                     //wstr += "]";
-                    csv(row, 14) = wxString(wstr);
+                    csv(row, 11) = wxString(wstr);
                 }
                 if ((period_arr = ssc_data_get_array(pdata, "energy_period", &nrows)) != 0)
                 {
@@ -1469,7 +1454,7 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
 
                     }
                     //wstr += "]";
-                    csv(row, 15) = wxString(wstr);
+                    csv(row, 12) = wxString(wstr);
                 }
                 /*
                 if ((mat = ssc_data_get_matrix(pdata, "wave_resource_matrix", &nrows, &ncols)) != 0)

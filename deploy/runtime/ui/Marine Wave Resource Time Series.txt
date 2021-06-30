@@ -1,6 +1,6 @@
 Marine Wave Resource Time Series
-1291
-585
+1288
+441
 14
 Hyperlink
 
@@ -46,7 +46,7 @@ Name
 btnScanLibrary_ts
 X
 3
-789
+672
 Y
 3
 27
@@ -76,7 +76,7 @@ Name
 btn_add_remove_folders
 X
 3
-666
+636
 Y
 3
 366
@@ -106,7 +106,7 @@ Name
 btn_refresh_library
 X
 3
-666
+636
 Y
 3
 396
@@ -136,16 +136,16 @@ Name
 btn_view_wave_data
 X
 3
-939
+1161
 Y
 3
-372
+318
 Width
 3
-121
+94
 Height
 3
-43
+28
 Tool Tip
 5
 0
@@ -292,10 +292,10 @@ Name
 file_name_ts
 X
 3
-216
+192
 Y
 3
-309
+321
 Width
 3
 960
@@ -366,13 +366,13 @@ Name
 label_library
 X
 3
-15
+18
 Y
 3
 30
 Width
 3
-764
+644
 Height
 3
 21
@@ -414,7 +414,7 @@ Name
 library_folder_list
 X
 3
-63
+33
 Y
 3
 366
@@ -459,7 +459,7 @@ Name
 location_ts
 X
 3
-15
+24
 Y
 3
 93
@@ -468,7 +468,7 @@ Width
 1223
 Height
 3
-204
+216
 Tool Tip
 5
 0
@@ -478,8 +478,8 @@ Library
 WaveResourceTSData
 Fields
 5
-127
-Name,City,State,Country,Latitude,Longitude,Nearby Buoy Number,Average Power Flux,Bathymetry,Sea Bed,Time Zone,Data Source,Notes
+75
+Name,City,State,Country,Latitude,Longitude,Year,Time Zone,Data Source,Notes
 GroupBox
 
 1
@@ -511,7 +511,7 @@ Bold
 2
 1
 
-9
+10
 energy_period
 3
 2
@@ -630,6 +630,20 @@ ME Wave Resource
 9
 1
 4
+0
+Default
+year
+3
+2
+ 
+ 
+ 
+0
+0
+1
+2
+1
+1
 0
 Default
 
