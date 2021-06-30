@@ -281,7 +281,7 @@ batt_dispatch_choice_ui
 Default
 
 0
-1894
+2331
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
@@ -307,7 +307,21 @@ on_change{'batt_dispatch_choice_ui'} = define() {
 function show_hide_charge_options()
 {
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0  )
-	{ enable('batt_dispatch_choice_ui',false); }
+	{ 
+		enable('batt_dispatch_choice_ui',false); 
+		//Peak Shaving Inputs
+		enable('peak_shaving_batt_dispatch_choice', false);
+		//Input Grid Power Targets Inputs
+		enable('batt_target_choice', false);
+		enable('batt_target_power', false);
+		enable('batt_target_power_monthly', false);
+		//Input Battery Power Targets Inputs
+		enable('batt_custom_dispatch', false);
+		//Price Signal Dispatch Inputs
+		enable('batt_cycle_cost', false);
+		enable('batt_cycle_cost_choice', false);
+		
+	}
 	else
 	{
 		option = value('batt_dispatch_choice_ui');
