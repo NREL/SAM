@@ -1,7 +1,7 @@
 Electric Load Critical
-847
-178
-5
+848
+212
+6
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 824
 Height
 3
-155
+183
 Tool Tip
 5
 0
@@ -219,8 +219,41 @@ The critical electric load during an outage period is specified as the average p
 TabOrder
 3
 3
+CheckBox
 
-4
+1
+9
+Name
+5
+20
+run_resiliency_calcs
+X
+3
+417
+Y
+3
+135
+Width
+3
+274
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+48
+Enable resilence calculations for every timestep
+State
+2
+1
+TabOrder
+3
+4294967295
+
+5
 crit_load
 3
 2
@@ -277,6 +310,20 @@ Electric Load
 1
 0
 DataArray
+run_resiliency_calcs
+3
+1
+Enable resilence calculations for every timestep
+0/1
+Electric Load
+0
+5
+1
+1
+1
+1
+0
+Default
 
 0
 330

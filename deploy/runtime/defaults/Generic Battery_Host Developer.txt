@@ -3338,6 +3338,12 @@ roe_input
 1
 1
 0
+run_resiliency_calcs
+1
+1
+1
+1
+0
 sales_tax_rate
 1
 1
