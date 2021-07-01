@@ -3727,7 +3727,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 
 void fcall_showsettings( lk::invoke_t &cxt )
 {
-	LK_DOC("showsettings", "Show the settings dialog for either 'solar' or 'wind' data files.", "(string:type):boolean");
+	LK_DOC("showsettings", "Show the settings dialog for either 'solar', 'wind', or 'wave' data files.", "(string:type):boolean");
 	wxString type( cxt.arg(0).as_string().Lower() );
     if (type == "solar") cxt.result().assign(ShowSolarResourceDataSettings() ? 1.0 : 0.0);
     else if (type == "wind") cxt.result().assign(ShowWindResourceDataSettings() ? 1.0 : 0.0);

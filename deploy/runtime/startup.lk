@@ -1751,7 +1751,7 @@ setup_merchant_plant_pages();
 // Marine Energy ////////////////////////////////////////////////////////////////////
 function setup_mewave_pages(lcoe_fcr)
 {
-	addpage( [[ 'Marine Wave Resource'],[ 'Marine Wave Resource Time Series']], 
+	addpage( [[ {'name'='Marine Wave Resource', 'caption'='Frequency of Occurence'}],[ {'name'='Marine Wave Resource Time Series', 'caption'='Time Series'}]], 
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_var'='wave_resource_model_choice' } );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );

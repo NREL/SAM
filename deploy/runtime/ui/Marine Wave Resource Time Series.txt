@@ -282,50 +282,6 @@ AlignRight
 AlignTop
 2
 1
-TextEntry
-
-1
-11
-Name
-5
-12
-file_name_ts
-X
-3
-192
-Y
-3
-321
-Width
-3
-960
-Height
-3
-24
-Tool Tip
-5
-0
-Text
-5
-0
-Editable
-2
-1
-ForeColour
-4
-128
-0
-64
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 GroupBox
 
 1
@@ -510,8 +466,52 @@ Download Marine Energy Resource Files
 Bold
 2
 1
+TextEntry
 
-10
+1
+11
+Name
+5
+17
+wave_data_file_ts
+X
+3
+192
+Y
+3
+321
+Width
+3
+960
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+128
+0
+64
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+9
 energy_period
 3
 2
@@ -519,25 +519,13 @@ Wave Energy Period
 s
 ME Wave Resource
 0
-8
+9
 1
 2
 1
 1
 0
 DataArray
-file_name_ts
-3
-4
-Wave resource file from library
- 
-ME Wave Resource
-0
-8
-1
-4
-0
-TextEntry
 library_folder_list
 3
 4
@@ -568,11 +556,11 @@ Library
 number_hours
 3
 1
- 
- 
+Number of hours in wave file
+hr
 ME Wave Resource
 0
-8
+9
 1
 1
 1
@@ -582,11 +570,11 @@ Default
 number_records
 3
 1
- 
+Number of records in wave file
  
 ME Wave Resource
 0
-8
+9
 1
 1
 1
@@ -600,26 +588,25 @@ significant_wave_height
 m 
 ME Wave Resource
 0
-8
+9
 1
 2
 1
 1
 0
 DataArray
-wave_resource_file_ts
+wave_data_file_ts
 3
 4
- 
+Wave resource file from library
  
 ME Wave Resource
 0
 8
 1
 4
-9
-<invalid>
-Default
+0
+TextEntry
 wave_resource_filename_ts
 3
 4
@@ -635,11 +622,11 @@ Default
 year
 3
 2
- 
- 
- 
+Year of wave resource file
+yr
+ME Wave Resource
 0
-0
+9
 1
 2
 1
@@ -647,17 +634,14 @@ year
 0
 Default
 
-171
+87
 equations{'wave_resource_filename_ts'} = define() {
-	return ${file_name_ts};
-};
-
-equations{'wave_resource_file_ts'} = define() {
-	return ${wave_resource_filename_ts};
+	return ${wave_data_file_ts};
 };
 
 
-21438
+
+21462
 /*
 function enable_disable_library() {
 	
@@ -670,7 +654,7 @@ function enable_disable_library() {
 	enable('city_ts',enable_library);
 	enable('country_ts',enable_library);
 	enable('data_source_ts',enable_library);
-	enable('file_name_ts',enable_library);
+	enable('wave_data_file_ts',enable_library);
 	enable('frequency_sum',enable_library);
 	enable('lat_ts',enable_library);
 	enable('location_ts',enable_library);
@@ -721,7 +705,7 @@ on_change{'btn_add_remove_folders'} = define() {
 			}	
 		}*/
 	}
-	else { msgbox( 'Could not open window!\nSolar Resource Data Folder Settings window not available.' ); }
+	else { msgbox( 'Could not open window!\nWave Resource Data Folder Settings window not available.' ); }
 };
 
 
@@ -769,7 +753,7 @@ on_load{'Marine Wave Resource Time Series'} = define() {
 	//enable("wave_resource_matrix",false);
 	//on_change{'use_specific_ts_wf_wave'}();
 	//enable_disable_library();
-	on_change{'file_name_ts'};
+	on_change{'wave_data_file_ts'};
 	update_library_folders(''); // refresh list of library folders
 	//show('use_specific_wave_file', false); // determines whether user_specified_weather_file is used instead of solar_data_file_name
 	//show('user_specified_wave_file', false); // requires use_specific_weather_file = 1, set by LK script
@@ -783,7 +767,7 @@ on_load{'Marine Wave Resource Time Series'} = define() {
 };
 
 on_change{'location_ts'} = define() {
-	file = ${file_name_ts};
+	file = ${wave_data_file_ts};
 	//value("name_ts",value("location_ts"));
 	refresh();
 	if (!file_exists(file))
@@ -800,9 +784,9 @@ on_change{'location_ts'} = define() {
 };
 
 
-on_change{'file_name_ts'} = define() {
+on_change{'wave_data_file_ts'} = define() {
 	
-	value('wave_resource_filename_ts',value('file_name_ts'));
+	value('wave_resource_filename_ts',value('wave_data_file_ts'));
 	//refresh('wave_resource_filename_ts');
 	
 };
