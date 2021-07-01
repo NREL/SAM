@@ -1,5 +1,5 @@
 1
-680
+678
 accumulators_cost
 1
 1
@@ -569,8 +569,8 @@ cranage_cost
 data_source
 1
 4
-20
-PNNL; PNNL-SA-150805
+21
+Sandia; SAND2014-9040
 debt_service_reserve_account_cost
 1
 1
@@ -1052,7 +1052,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5.65588e+06
+5655880
 eng_and_mgmt_cost_input
 1
 1
@@ -1070,7 +1070,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-5.65588e+06
+5655880
 eng_and_mgmt_cost_total
 1
 1
@@ -1184,7 +1184,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-1.60345e+06
+1603450
 export_cable_system_cost_total
 1
 1
@@ -1472,7 +1472,7 @@ insurance_during_construction_cost
 1
 1
 1
-3.64551e+06
+3645510
 insurance_during_construction_cost_input
 1
 1
@@ -1484,7 +1484,7 @@ insurance_during_construction_cost_modeled_ui
 1
 1
 1
-3.64551e+06
+3645510
 insurance_during_construction_method
 1
 1
@@ -1496,7 +1496,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3.64551e+06
+3645510
 insurance_operations_cost
 1
 1
@@ -1812,7 +1812,7 @@ maintenance_cost
 1
 1
 1
-3.65828e+06
+3658280
 maintenance_cost_input
 1
 1
@@ -1830,7 +1830,7 @@ maintenance_cost_modeled
 1
 1
 1
-3.65828e+06
+3658280
 maintenance_cost_total
 1
 1
@@ -2030,8 +2030,7 @@ noise_mitigation_cost
 notes
 1
 4
-4
-None
+0
 number_devices
 1
 1
@@ -2409,7 +2408,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-2.03767e+06
+2037670
 other_elec_infra_cost_total_display
 1
 1
@@ -3315,7 +3314,7 @@ site_access_port_staging_cost
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_input
 1
 1
@@ -3333,13 +3332,13 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_modeled_ui
 1
 1
 1
 1
-4.01006e+06
+4010060
 site_access_port_staging_cost_total
 1
 1
@@ -4012,16 +4011,6 @@ water_depth
 1
 1
 50
-wave_data_file_freq
-1
-4
-37
-Humboldt_California_Wave-Resource.csv
-wave_data_file_ts
-1
-4
-38
-Humboldt_California_Wave-Resource .csv
 wave_device_name
 1
 4
@@ -4098,8 +4087,8 @@ Humboldt_California_Wave-Resource.csv
 wave_resource_filename_ts
 1
 4
-38
-Humboldt_California_Wave-Resource .csv
+37
+Humboldt_California_Wave-Resource.csv
 wave_resource_matrix
 1
 3
