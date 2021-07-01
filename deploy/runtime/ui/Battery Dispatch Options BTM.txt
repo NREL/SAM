@@ -281,7 +281,7 @@ batt_dispatch_choice_ui
 Default
 
 0
-2331
+1710
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
@@ -334,29 +334,3 @@ function show_hide_charge_options()
 	}
 }
 
-
-
-/*
-on_load{'Battery Dispatch Options BTM'} = define() {
-	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
-	//refresh();
-};
-
-on_change{'batt_dispatch_choice_ui'} = define() {
-	if(technology() == "Fuel Cell")
-		toggle_dispatch();
-	change_dispatch_excl_var();
-};
-
-function change_dispatch_excl_var()
-{
-	
-	excl = value('batt_dispatch_choice_ui');
-	show('batt_dispatch_auto_can_charge',excl != 3);
-	show('batt_dispatch_auto_can_gridcharge', excl !=3);
-	if (technology() == 'Fuel Cell')
-		show('batt_dispatch_auto_can_fuelcellcharge', excl !=3);
-	value('batt_dispatch_excl', excl);
-	//refresh();
-}
-*/
