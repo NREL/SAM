@@ -188,12 +188,14 @@ Cycle degradation penalty method
 Default
 
 0
-475
+507
 on_load{'Battery Dispatch Price Signal'}=define()
 {	
 	value('batt_dispatch_choice', 5);
 	if (technology() == "Fuel Cell")
 		toggle_dispatch();
+		
+	show_hide_charge_options();
 	
 };
 

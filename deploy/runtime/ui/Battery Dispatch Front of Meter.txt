@@ -1340,7 +1340,7 @@ equations{'ui_batt_is_dc'}=define()
 	return !${batt_ac_or_dc};
 };
 
-7630
+4292
 on_load{'Battery Dispatch Front of Meter'}=define()
 {	
 	// fom = front of meter
@@ -1425,113 +1425,6 @@ function toggle_dispatch_fom()
 		
 	}
 }
-
-/*
-on_change{'batt_select_weather_file_forecast'}=define()
-{
-	toggle_inputs();
-};
-*/
-/*
-function toggle_inputs()
-{
-	// enable time series
-	en_ts = value('ppa_multiplier_model') == 1; 
-	
-	//time series inputs
-	enable('dispatch_factors_ts', en_ts );
-	
-	//schedule inputs
-	enable('apply_tod_library_values', !en_ts );
-	enable('tod_library', !en_ts );
-	enable( 'dispatch_sched_weekday', !en_ts );
-	enable( 'dispatch_sched_weekend', !en_ts );
-	enable( 'dispatch_factor1', !en_ts );
-	enable( 'dispatch_factor2', !en_ts );
-	enable( 'dispatch_factor3', !en_ts );
-	enable( 'dispatch_factor4', !en_ts );
-	enable( 'dispatch_factor5', !en_ts );
-	enable( 'dispatch_factor6', !en_ts );
-	enable( 'dispatch_factor7', !en_ts );
-	enable( 'dispatch_factor8', !en_ts );
-	enable( 'dispatch_factor9', !en_ts );
-	enable( 'btnSaveDispatchData', !en_ts );
-	enable( 'btnLoadDispatchData', !en_ts );
-	enable( 'dispatch_data_filename', !en_ts );
-}
-
-on_change{'apply_tod_library_values'} = define() {
-
-	value( 'dispatch_sched_weekday', value('lib_dispatch_sched_weekday') );
-	value( 'dispatch_sched_weekend', value('lib_dispatch_sched_weekend') );
-	value( 'dispatch_factor1',       value('lib_dispatch_factor1')       );
-	value( 'dispatch_factor2',       value('lib_dispatch_factor2')       );
-	value( 'dispatch_factor3',       value('lib_dispatch_factor3')       );
-	value( 'dispatch_factor4',       value('lib_dispatch_factor4')       );
-	value( 'dispatch_factor5',       value('lib_dispatch_factor5')       );
-	value( 'dispatch_factor6',       value('lib_dispatch_factor6')       );
-	value( 'dispatch_factor7',       value('lib_dispatch_factor7')       );
-	value( 'dispatch_factor8',       value('lib_dispatch_factor8')       );
-	value( 'dispatch_factor9',       value('lib_dispatch_factor9')       );
-	
-};
-
-on_change{'btnSaveDispatchData'} = define() {
-	logmsg('running btnSaveDispatchData');
-	file = choose_file( '', 'Save TOD Factors Data As', 
-		'Data Files (*.csv)|*.csv', true);
-		
-	if ( file != '' ) {
-		file = replace(file, '\\', '/');
-		if (group_write('Time of Delivery Factors',file))
-		{	
-			value( 'dispatch_data_filename', file );
-			msgbox("Data saved! \n");
-		}
-		else
-		{
-			value( 'dispatch_data_filename', "" );
-			msgbox("Data save failed! \n");
-		}
-	}
-};
-
-on_change{'btnLoadDispatchData'} = define() {
-	logmsg('running btnLoadDispatchData');
-	file = choose_file( '', 'Open TOD Factors File', 
-		'Data Files (*.csv)|*.csv');
-		
-	if ( file != '' ) {
-		file = replace(file, '\\', '/');
-		update = false;
-		data = csvread(file);
-		for ( i=0; i<#data; i++ )
-		{
-			row = data[i];
-			if ( row[0] == 'use_tod_library_values' )
-			{
-				update = yesno('Update TOD data file before loading?\nSAM cannot load your TOD data file because it contains the variable \'use_tod_library_values\' from an older version of SAM that this version of SAM does not use. Click Yes if you want SAM to remove that variable from the file before loading it. Click No to return to the TOD factors page without modifying or loading the file.');
-				if (update == true )
-				{
-					data -@ i;
-					csvwrite( file, data );
-				}
-			}	
-		}
-
-		if (group_read('Time of Delivery Factors',file))
-		{	
-			value( 'dispatch_data_filename', file );
-			msgbox("Data loaded! \n");
-		}
-		else
-		{
-			value( 'dispatch_data_filename', "" );
-			msgbox("Data load failed! \n");
-		}
-	}
-};
-*/
 
 function enable_auto_inputs_fom(on_off)
 {

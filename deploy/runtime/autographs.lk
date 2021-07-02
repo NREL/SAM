@@ -113,21 +113,37 @@ function resiliency_graphs()
 //**************Technologies***************************
 autographs{ 'High-X Concentrating PV' } = define() { base_technology_graphs(); heatmap_graphs(); };
 autographs{ 'Concentrating Solar Power = Physical Trough' } = define() { base_technology_graphs(); heatmap_graphs(); };
-autographs{ 'Dish Stirling' } = define() { base_technology_graphs(); };
+autographs{ 'Dish Stirling' } = define() { base_technology_graphs(); heatmap_graphs(); };
 autographs{ 'Generic CSP System' } = define() { base_technology_graphs(); heatmap_graphs(); };
-autographs{ 'Solar Water Heating' } = define() { base_technology_graphs(); heatmap_graphs(); };
+autographs{ 'Solar Water Heating' } = define() { base_technology_graphs(); heatmap_graphs();};
 autographs{ 'Generic System' } = define() { base_technology_graphs(); heatmap_graphs(); };
 autographs{ 'Wind Power' } = define() { base_technology_graphs(); heatmap_graphs(); wind_pruf_graphs();};
 autographs{ 'Fuel Cell' } = define() {heatmap_graphs();};
 autographs{ 'Biopower' } = define() {heatmap_graphs();};
+autographs{ 'Physical Trough' } = define() {heatmap_graphs();};
+autographs{ 'Empirical Trough' } = define() {heatmap_graphs();};
+autographs{ 'MSPT' } = define() {heatmap_graphs();};
+autographs{ 'MSLF' } = define() {heatmap_graphs();};
+autographs{ 'DSLF' } = define() {heatmap_graphs();};
+autographs{ 'Generic CSP System' } = define() {heatmap_graphs();};
+autographs{ 'Physical Trough IPH' } = define() {heatmap_graphs();};
+autographs{ 'DSGL IPH' } = define() {heatmap_graphs();};
 autographs{ 'Generic Battery' } = define() {heatmap_graphs();};
+
+
+
 
 //**************Technologies with unique graphs***************************
 
 autographs{ 'MEwave' } = define()
 {
 	agraph( 'annual_energy_distribution', 'Annual Energy Production (kWh)', 'Te = wave energy period (s)', 'Hs = significant wave height (m)', -1, true, false, 'bottom', 4); 
-	agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_om_cost_lcoe','LCOE Contribution','','', -1, true, false, 'bottom', 5);
+	if (is_assigned('annual_energy_distribution_time')) {
+		agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Day', 'Hour', -1, true, false, 'bottom', 4); 
+	}
+	if (financing() != "None") {
+		agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_om_cost_lcoe','LCOE Contribution','','', -1, true, false, 'bottom', 5);
+	}
 };
 
 autographs{ 'MEtidal' } = define()
@@ -137,7 +153,9 @@ autographs{ 'MEtidal' } = define()
 	agraph( 'annual_energy_distribution', 'Annual Energy Production', 'Velocity Bin Number', 'Annual Energy (kWh)', -1, true, false, 'bottom', 0, [0], [3.3] );
 	agraph( 'annual_cumulative_energy_distribution', 'Annual Cumulative Energy Production', 'Velocity Bin Number', 'Annual Energy (kWh)', -1, true, false,'bottom',0, min_vel, max_vel);
 	//agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_operations_cost_lcoe','LCOE Contribution','','',-1,true, false, 'bottom', 5);
-	agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_om_cost_lcoe','LCOE Contribution','','',-1,true, false, 'bottom', 5);
+	if (financing() != "None") {
+		agraph( 'total_device_cost_lcoe,total_bos_cost_lcoe,total_financial_cost_lcoe,total_om_cost_lcoe','LCOE Contribution','','',-1,true, false, 'bottom', 5);
+	}
 };
 
 autographs{ 'PVWatts'} = define() 
@@ -152,6 +170,9 @@ autographs{ 'PVWatts Battery'} = define()
 	heatmap_graphs();
 	if (is_assigned('outage_durations'))
 		resiliency_graphs();
+		
+	//agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Month', 'Hour', -1, true, false, 'bottom', 4); 
+	heatmap_graphs();
 };
 
 autographs{ 'Flat Plate PV' } = define()
@@ -188,6 +209,10 @@ autographs{ 'PV Battery' } = define()
 		agraph('annual_poa_shading_loss_percent,annual_poa_soiling_loss_percent,annual_dc_module_loss_percent,annual_dc_mismatch_loss_percent,annual_dc_diodes_loss_percent,annual_dc_wiring_loss_percent,annual_dc_tracking_loss_percent,annual_dc_nameplate_loss_percent,annual_ac_inv_clip_loss_percent,annual_ac_inv_pso_loss_percent,annual_ac_inv_pnt_loss_percent,annual_ac_inv_eff_loss_percent,annual_ac_battery_loss_percent,annual_ac_wiring_loss_percent,annual_ac_transformer_loss_percent,annual_ac_perf_adj_loss_percent', 'Energy Loss', '', '%', -1, false, true, 'right'); 
 	if (is_assigned('outage_durations'))
 		resiliency_graphs();
+		
+	//agraph( 'annual_energy_distribution_time', 'Annual Energy Production (kWh)', 'Month', 'Hour', -1, true, false, 'bottom', 4); 
+	heatmap_graphs();
+
 };
 
 autographs{ 'Empirical Trough' } = define() 

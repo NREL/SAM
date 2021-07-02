@@ -3325,7 +3325,7 @@ property_assessed_value
 1
 1
 1
-2.44922e+06
+2449220
 property_tax_rate
 1
 1
@@ -3756,7 +3756,7 @@ thermal_load_annual_total
 1
 1
 1
-7.6463e+06
+7646300
 thermal_load_escalation
 1
 2
@@ -3952,13 +3952,13 @@ ui_loan_amount
 1
 1
 1
-2.44922e+06
+2449220
 ui_net_capital_cost
 1
 1
 1
 1
-2.44922e+06
+2449220
 ui_pv_capacity
 1
 1
