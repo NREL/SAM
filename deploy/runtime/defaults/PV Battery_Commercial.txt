@@ -1,5 +1,5 @@
 1
-1022
+1023
 6par_aisc
 1
 1
@@ -4345,6 +4345,12 @@ ref_conditions
 4
 46
 Total Irradiance = 1000 W/m2, Cell temp = 25 C
+run_resiliency_calcs
+1
+1
+1
+1
+0
 sales_tax_percent
 1
 1

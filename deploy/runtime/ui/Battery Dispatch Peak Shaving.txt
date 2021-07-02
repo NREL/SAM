@@ -152,13 +152,16 @@ peak_shaving_batt_dispatch_choice
 Default
 
 0
-488
+524
 on_load{'Battery Dispatch Peak Shaving'}=define()
 {	
 	on_change{'peak_shaving_batt_dispatch_choice'};
 	peak_shaving_choice();
-	if (technology() == "Fuel Cell")
+	if (technology() == "Fuel Cell") 
 		toggle_dispatch();
+		
+	show_hide_charge_options();
+		
 };
 
 on_change{'peak_shaving_batt_dispatch_choice'} = define() {

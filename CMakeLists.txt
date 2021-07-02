@@ -46,6 +46,7 @@ set(SAM_SRC
 	src/urdb.cpp
 	src/nsrdb.cpp
 	src/windtoolkit.cpp
+	src/wavetoolkit.cpp
 	src/gridsupport.cpp
 	src/macro.cpp
 	src/p50p90.cpp

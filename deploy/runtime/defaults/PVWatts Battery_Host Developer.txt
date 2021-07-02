@@ -1,5 +1,5 @@
 1
-562
+563
 ac_nameplate
 1
 1
@@ -2842,6 +2842,12 @@ reserves_interest
 roe_input
 1
 2
+1
+1
+0
+run_resiliency_calcs
+1
+1
 1
 1
 0

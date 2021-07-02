@@ -1,5 +1,5 @@
 1
-501
+502
 LeadAcid_q10
 1
 1
@@ -2635,6 +2635,12 @@ real_discount_rate
 1
 1
 6.4
+run_resiliency_calcs
+1
+1
+1
+1
+0
 sales_tax_rate
 1
 1

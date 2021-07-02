@@ -552,7 +552,7 @@ batt_dispatch_choice_ui
 1
 1
 1
-2
+0
 batt_dispatch_excl
 1
 1
