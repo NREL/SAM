@@ -388,7 +388,7 @@ Battery Dispatch - FOM Options
 RadioChoice
 
 0
-2103
+2544
 on_load{'Battery Dispatch Options FOM'} = define() {
 	show_hide_charge_options();
 	enable_charge_from_clip();
@@ -417,7 +417,21 @@ on_change{'batt_dispatch_choice_ui'} = define() {
 function show_hide_charge_options()
 {
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0  )
-	{ enable('batt_dispatch_choie_ui',false);}
+	{ 
+		enable('batt_dispatch_choice_ui',false);
+		//Automated Dispatch Inputs
+		enable('automated_dispatch_choice', false);
+		enable('batt_cycle_cost', false);
+		enable('batt_cycle_cost_choice',false);
+		enable('batt_dispatch_update_frequency_hours', false);
+		enable('batt_look_ahead_hours', false);
+		enable('batt_user_specified_weather_file', false);
+		enable('batt_select_weather_file_forecast', false);
+		
+		//Custom time series inputs
+		enable('batt_custom_dispatch', false);
+		
+	}
 	else
 	{
 		option = value('batt_dispatch_choice_ui');

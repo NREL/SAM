@@ -1,5 +1,5 @@
 1
-417
+419
 Monthly_util
 1
 2
@@ -182,6 +182,18 @@ azimuth
 1
 1
 180
+batt_salvage_percentage
+1
+1
+1
+1
+0
+batt_salvage_value
+1
+1
+1
+1
+0
 batt_simple_enable
 1
 1
@@ -193,7 +205,7 @@ bos_equip_fixed
 1
 1
 1
-0
+3.23793e-317
 bos_equip_perarea
 1
 1
@@ -211,7 +223,7 @@ bos_equip_total
 1
 1
 1
-1240
+4000.31
 capex_table_ac_cost_per_w
 1
 1
@@ -1061,7 +1073,7 @@ installed_per_capacity
 1
 1
 1
-2.7215
+3.44608
 insurance_rate
 1
 1
@@ -1390,7 +1402,7 @@ loan_amount
 1
 1
 1
-10886
+13784.3
 loan_rate
 1
 1
@@ -1560,6 +1572,12 @@ normalize_to_utility_bill
 1
 1
 0
+om_batt_replacement_cost
+1
+2
+1
+1
+0
 om_capacity
 1
 2
@@ -1608,12 +1626,6 @@ om_production_escal
 1
 1
 0
-om_replacement_cost1
-1
-2
-1
-1
-500
 om_replacement_cost_escal
 1
 1
@@ -1893,7 +1905,7 @@ property_assessed_value
 1
 1
 1
-10886
+13784.3
 property_tax_rate
 1
 1
@@ -1971,7 +1983,7 @@ sales_tax_total
 1
 1
 1
-286
+424.016
 sales_tax_value
 1
 1
@@ -2069,7 +2081,7 @@ subtotal_direct
 1
 1
 1
-5720
+8480.31
 system_capacity
 1
 1
@@ -2105,7 +2117,7 @@ total_direct_cost
 1
 1
 1
-5720
+8480.31
 total_indirect_cost
 1
 1
@@ -2117,7 +2129,7 @@ total_installed_cost
 1
 1
 1
-10886
+13784.3
 tz
 1
 1
@@ -2135,7 +2147,7 @@ ui_net_capital_cost
 1
 1
 1
-10886
+13784.3
 ui_step_minutes
 1
 1

@@ -89,6 +89,7 @@ DSGL IPH,LCOH Calculator,10845376,NA,NA,;
 Fuel Cell,Commercial,1.93726e+06,8.45516,NA,; 
 Fuel Cell,Single Owner,1.91105e+06,46.9997,56.97,; 
 MEwave,LCOE Calculator,59434320,NA,NA,; 
+MEwave,None,594343.187500,NA,NA,; 
 MEtidal,LCOE Calculator,216151664,NA,NA,; 
 Geothermal Power,Single Owner,262800000,7.34055,7.89048,; 
 Geothermal Power,Merchant Plant,262800000,6.65703,NA,; 
