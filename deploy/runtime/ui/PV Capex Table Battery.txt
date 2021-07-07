@@ -1204,7 +1204,7 @@ Capital Costs
 0
 Default
 
-147
+149
 equations{'battery_power_kw'} = define() {
 	return ${battery_power};
 };
@@ -1212,6 +1212,8 @@ equations{'battery_power_kw'} = define() {
 equations{'battery_energy_kwh'} = define() {
 	return ${battery_energy};
 };
+
+
 9288
 function capex_table_batt_inputs_update_plot()
 {

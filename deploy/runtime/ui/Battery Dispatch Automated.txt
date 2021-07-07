@@ -684,7 +684,7 @@ batt_user_specified_weather_file
 Default
 
 0
-3889
+3918
 on_load{'Battery Dispatch Automated'}=define()
 {	
 	// fom = front of meter
@@ -698,6 +698,7 @@ on_load{'Battery Dispatch Automated'}=define()
 	//on_change{'batt_select_weather_file_forecast'};
 	//on_change{'batt_cycle_cost_choice'};
 	show('batt_dispatch_auto_can_fuelcellcharge', technology()=='Fuel Cell');
+	show_hide_charge_options();
 };
 
 on_change{'automated_dispatch_choice'}=define()

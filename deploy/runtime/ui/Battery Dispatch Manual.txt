@@ -2898,7 +2898,7 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-6403
+5358
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	value('batt_dispatch_choice', 4);
@@ -2985,55 +2985,7 @@ function toggle_gridcharge_percent()
 	enable('batt_gridcharge_percent_5', (value('pv.storage.p5.gridcharge')==1));
 	enable('batt_gridcharge_percent_6', (value('pv.storage.p6.gridcharge')==1));
 }
-/*
-function toggle_dispatch()
-{
-	allow_grid_charge = true;
-	allow_pv_charge = true;
-	allow_discharge = true;
-	
-	front_of_meter = !behind_the_meter();
-	if (front_of_meter == true)
-	{
-		mode = ${batt_dispatch_choice};
-		if (mode == 4)
-		{
-			allow_grid_charge = true;
-			enable_manual_inputs(true, allow_pv_charge, allow_grid_charge, allow_discharge);
-			toggle_discharge_percent();
-			toggle_gridcharge_percent();
-		}
-		else
-		{
-			enable_manual_inputs(false, false, false, false);
-		}	
-	}
-	else
-	{
-		mode = ${batt_dispatch_choice};
 
-		if (mode != 4)
-			enable_manual_inputs(false, false, false, false);
-		else
-		{
-			enable_manual_inputs(true, allow_pv_charge, allow_grid_charge, allow_discharge );
-			toggle_discharge_percent();
-			toggle_gridcharge_percent();
-		}
-		toggle_dispatch_target();
-		toggle_custom_dispatch();
-		enable_auto_inputs_btm(mode == 5); // Price signal dispatch
-	}
-}
-function toggle_dispatch_target()
-{
-	mode = ${batt_dispatch_choice};
-	if (mode != 2)
-		enable_target_inputs(false);
-	else
-		enable_target_inputs(true);
-}
-*/
 function enable_grid_charge(on_off)
 {
 	if (!on_off && !behind_the_meter())

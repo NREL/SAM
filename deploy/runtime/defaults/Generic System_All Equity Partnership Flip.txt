@@ -1,5 +1,5 @@
 1
-334
+336
 adjust
 1
 5
@@ -47,6 +47,18 @@ analysis_period_warning
 4
 12
 No messages.
+batt_salvage_percentage
+1
+1
+1
+1
+0
+batt_salvage_value
+1
+1
+1
+1
+0
 capacity_factor_calc
 1
 1
@@ -1628,6 +1640,12 @@ nominal_discount_rate
 1
 1
 9.06
+om_batt_replacement_cost
+1
+2
+1
+1
+0
 om_capacity
 1
 2
@@ -1676,12 +1694,6 @@ om_production_escal
 1
 1
 0
-om_replacement_cost1
-1
-2
-1
-1
-300
 om_replacement_cost_escal
 1
 1
