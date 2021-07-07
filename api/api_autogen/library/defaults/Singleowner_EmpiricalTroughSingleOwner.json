@@ -48,7 +48,6 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"construction_financing_cost": 2.64224e+07,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
@@ -85,7 +84,6 @@
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_batt_replacement_cost": [0.000000],
 			"om_capacity": [66.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -283,12 +281,6 @@
 		"GridLimits": {
 			"grid_curtailment_price": [0.000000],
 			"grid_curtailment_price_esc": 0
-		},
-		"Battery": {
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		}
 	}
 }

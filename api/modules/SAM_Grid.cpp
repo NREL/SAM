@@ -56,18 +56,6 @@ SAM_EXPORT void SAM_Grid_SystemOutput_gen_aset(SAM_table ptr, double* arr, int l
 	});
 }
 
-SAM_EXPORT void SAM_Grid_Load_crit_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "crit_load", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Grid_Load_grid_outage_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "grid_outage", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_Grid_Load_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load", arr, length);
@@ -153,30 +141,6 @@ SAM_EXPORT double* SAM_Grid_SystemOutput_gen_aget(SAM_table ptr, int* length, SA
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
 		make_access_error("SAM_Grid", "gen");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Grid_Load_crit_load_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "crit_load", length);
-	if (!result)
-		make_access_error("SAM_Grid", "crit_load");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Grid_Load_grid_outage_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "grid_outage", length);
-	if (!result)
-		make_access_error("SAM_Grid", "grid_outage");
 	});
 	return result;
 }

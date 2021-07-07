@@ -7,7 +7,6 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
@@ -28,7 +27,6 @@
 			"system_capacity": 99999.9
 		},
 		"SystemCosts": {
-			"om_batt_replacement_cost": [0.000000],
 			"om_capacity": [66.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -257,12 +255,6 @@
 		"OtherCapitalCosts": {
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6
-		},
-		"Battery": {
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		},
 		"BatterySystem": {
 		}

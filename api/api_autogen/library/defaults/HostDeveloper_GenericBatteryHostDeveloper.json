@@ -9,7 +9,6 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -44,10 +43,6 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [0.000000],
-			"om_batt_fixed_cost": [0.000000],
-			"om_batt_replacement_cost": [232.290000],
-			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [16.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -55,8 +50,7 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 15165,
-			"ui_batt_capacity": 19.2154
+			"total_installed_cost": 15165
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -224,6 +218,7 @@
 		},
 		"SystemOutput": {
 			"degradation": [0.000000],
+			"gen": [0],
 			"system_capacity": 215
 		},
 		"ReturnOnEquity": {
@@ -286,13 +281,6 @@
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 232.29,
 			"en_batt": 1
-		},
-		"Battery": {
-			"battery_total_cost_lcos": 11707
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		}
 	}
 }

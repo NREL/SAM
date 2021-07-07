@@ -103,22 +103,6 @@ extern "C"
 	//
 
 	/**
-	 * Set crit_load: Critical electricity load (year 1) [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Grid_Load_crit_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set grid_outage: Timesteps with grid outage [0/1]
-	 * options: 0=GridAvailable,1=GridUnavailable,Length=load
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Grid_Load_grid_outage_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set load: Electricity load (year 1) [kW]
 	 * options: None
 	 * constraints: None
@@ -167,10 +151,6 @@ extern "C"
 	/**
 	 * Load Getters
 	 */
-
-	SAM_EXPORT double* SAM_Grid_Load_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Grid_Load_grid_outage_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_table ptr, int* length, SAM_error *err);
 

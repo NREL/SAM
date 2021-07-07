@@ -9,7 +9,6 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -43,7 +42,6 @@
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_batt_replacement_cost": [0.000000],
 			"om_capacity": [110.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -285,12 +283,6 @@
 			"tax_investor_postflip_tax_percent": 10,
 			"tax_investor_preflip_cash_percent": 98,
 			"tax_investor_preflip_tax_percent": 98
-		},
-		"Battery": {
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		},
 		"BatterySystem": {
 		}

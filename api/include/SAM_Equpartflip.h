@@ -101,14 +101,6 @@ extern "C"
 	SAM_EXPORT void SAM_Equpartflip_FinancialParameters_analysis_period_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_salvage_percentage: Net pre-tax cash battery salvage value [%]
-	 * options: None
-	 * constraints: MIN=0,MAX=100
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_FinancialParameters_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set equip1_reserve_cost: Major equipment reserve 1 cost [$/W]
 	 * options: None
 	 * constraints: MIN=0
@@ -298,44 +290,44 @@ extern "C"
 	SAM_EXPORT void SAM_Equpartflip_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set om_batt_capacity_cost: Battery capacity-based System Costs amount [$/kWcap]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_batt_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_batt_fixed_cost: Battery fixed System Costs annual amount [$/year]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_batt_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_batt_replacement_cost: Replacement cost 1 [$/kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_batt_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_batt_variable_cost: Battery production-based System Costs amount [$/MWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_batt_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_capacity1: Battery capacity-based System Costs amount [$/kWcap]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity1_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_capacity1_nameplate: Battery capacity for System Costs values [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity1_nameplate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_capacity2: Fuel cell capacity-based System Costs amount [$/kWcap]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity2_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_capacity2_nameplate: Fuel cell capacity for System Costs values [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_capacity2_nameplate_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_capacity_escal: Capacity-based O&M escalation [%/year]
@@ -352,6 +344,22 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_fixed1: Battery fixed System Costs annual amount [$/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed1_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_fixed2: Fuel cell fixed System Costs annual amount [$/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fixed2_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_fixed_escal: Fixed O&M escalation [%/year]
@@ -376,38 +384,6 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuel_cost_escal_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set om_fuelcell_capacity_cost: Fuel cell capacity-based System Costs amount [$/kWcap]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuelcell_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_fuelcell_fixed_cost: Fuel cell fixed System Costs annual amount [$/year]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuelcell_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_fuelcell_replacement_cost: Replacement cost 2 [$/kW]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuelcell_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_fuelcell_variable_cost: Fuel cell production-based System Costs amount [$/MWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_fuelcell_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_1_cost: Biomass feedstock cost [$/unit]
@@ -466,12 +442,28 @@ extern "C"
 	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set om_production1: Battery production-based System Costs amount [$/MWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production1_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set om_production1_values: Battery production for System Costs values [kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production1_values_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_production2: Fuel cell production-based System Costs amount [$/MWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production2_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production2_values: Fuel cell production for System Costs values [kWh]
@@ -490,6 +482,22 @@ extern "C"
 	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set om_replacement_cost1: Replacement cost 1 [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost1_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_replacement_cost2: Replacement cost 2 [$/kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Equpartflip_SystemCosts_om_replacement_cost2_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
 	 * options: None
 	 * constraints: None
@@ -504,22 +512,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Equpartflip_SystemCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ui_batt_capacity: Battery capacity for System Costs values [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemCosts_ui_batt_capacity_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ui_fuelcell_capacity: Fuel cell capacity for System Costs values [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemCosts_ui_fuelcell_capacity_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -2045,133 +2037,6 @@ extern "C"
 
 
 	//
-	// Battery parameters
-	//
-
-	/**
-	 * Set batt_annual_charge_from_system: Battery annual energy charged from system [kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Battery_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set batt_annual_discharge_energy: Battery annual energy discharged [kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Battery_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set batt_capacity_percent: Battery relative capacity to nameplate [%]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Battery_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set battery_total_cost_lcos: Battery total investment cost [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Battery_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set grid_to_batt: Electricity to grid from battery [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Battery_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_batt_to_grid: Energy to grid from battery [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Battery_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_grid_to_batt: Energy to battery from grid [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Battery_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_grid_to_load: Energy to load from grid [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Battery_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_system_to_grid: Energy to grid from system [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Battery_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// ChargesByMonth parameters
-	//
-
-	/**
-	 * Set charge_w_sys_ec_ym: Energy charge with system [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set true_up_credits_ym: Net annual true-up payments [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_ChargesByMonth_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set year1_monthly_ec_charge_with_system: Energy charge with system [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_ChargesByMonth_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// Monthly parameters
-	//
-
-	/**
-	 * Set year1_monthly_ec_charge_gross_with_system: Energy charge with system before credits [$/mo]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Monthly_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set year1_monthly_electricity_to_grid: Electricity to/from grid [kWh/mo]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_Monthly_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
 	// BatterySystem parameters
 	//
 
@@ -2249,8 +2114,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Equpartflip_FinancialParameters_analysis_period_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Equpartflip_FinancialParameters_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Equpartflip_FinancialParameters_equip1_reserve_cost_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_FinancialParameters_equip1_reserve_freq_nget(SAM_table ptr, SAM_error *err);
@@ -2302,33 +2165,29 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_batt_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_batt_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_capacity1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_capacity1_nameplate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_capacity2_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_capacity2_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fixed1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fixed2_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_fuel_cost_escal_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fuelcell_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fuelcell_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fuelcell_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_fuelcell_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_opt_fuel_1_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2344,19 +2203,23 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production1_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production2_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_production2_values_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_replacement_cost1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Equpartflip_SystemCosts_om_replacement_cost2_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Equpartflip_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_SystemCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Equpartflip_SystemCosts_ui_batt_capacity_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Equpartflip_SystemCosts_ui_fuelcell_capacity_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2778,49 +2641,6 @@ extern "C"
 
 
 	/**
-	 * Battery Getters
-	 */
-
-	SAM_EXPORT double* SAM_Equpartflip_Battery_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Battery_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Equpartflip_Battery_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Battery_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Battery_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Battery_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Battery_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Battery_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * ChargesByMonth Getters
-	 */
-
-	SAM_EXPORT double* SAM_Equpartflip_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_ChargesByMonth_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * Monthly Getters
-	 */
-
-	SAM_EXPORT double* SAM_Equpartflip_Monthly_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Monthly_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
-
-
-	/**
 	 * BatterySystem Getters
 	 */
 
@@ -2859,21 +2679,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_Equpartflip_Outputs_cbi_total_uti_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_annual_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_annual_discharge_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_annual_costs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_battery_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_charging_cost_grid_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_charging_cost_grid_month_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_charging_cost_pv_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_disbursement_equip1_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3000,12 +2810,6 @@ extern "C"
 	SAM_EXPORT double SAM_Equpartflip_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_net_salvage_value_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_batt_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_batt_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_batt_production_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_om_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3164,8 +2968,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_oct_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_revenue_sep_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_salvage_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_sponsor_aftertax_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3867,21 +3669,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_Equpartflip_Outputs_lcoptc_sta_real_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Equpartflip_Outputs_lcos_nom_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Equpartflip_Outputs_lcos_real_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Equpartflip_Outputs_lppa_nom_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_Outputs_lppa_real_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_Outputs_nominal_discount_rate_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Equpartflip_Outputs_npv_annual_costs_lcos_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Equpartflip_Outputs_npv_energy_lcos_nom_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Equpartflip_Outputs_npv_energy_lcos_real_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Equpartflip_Outputs_npv_annual_costs_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_Outputs_npv_energy_nom_nget(SAM_table ptr, SAM_error *err);
 
