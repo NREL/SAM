@@ -113,7 +113,7 @@
 			"ur_nm_yearend_sell_rate": 0,
 			"ur_ts_buy_rate": [0.000000],
 			"ur_ts_sell_rate": [0.000000],
-			"ur_yearzero_usage_peaks": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
+			"ur_yearzero_usage_peaks": [0.000000]
 		},
 		"Lifetime": {
 			"analysis_period": 30,

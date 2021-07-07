@@ -7,6 +7,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"equip1_reserve_cost": 0.25,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
@@ -28,6 +29,7 @@
 			"system_capacity": 48000
 		},
 		"SystemCosts": {
+			"om_batt_replacement_cost": [0.000000],
 			"om_capacity": [42.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -36,7 +38,6 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [0.000000],
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 6.48e+07
 		},
@@ -266,6 +267,12 @@
 		"DeveloperCapitalRecovery": {
 			"sponsor_cap_recovery_mode": 0,
 			"sponsor_cap_recovery_year": 3
+		},
+		"Battery": {
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		},
 		"BatterySystem": {
 		}

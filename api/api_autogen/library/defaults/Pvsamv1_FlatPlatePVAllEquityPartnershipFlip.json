@@ -364,8 +364,7 @@
 		"InverterMermoudLejeuneModel": {
 		},
 		"BatterySystem": {
-			"en_batt": 0,
-			"om_replacement_cost1": [500.000000]
+			"en_batt": 0
 		},
 		"Load": {
 		},

@@ -1,7 +1,7 @@
 {
 	"defaults": {
 		"WeatherReader": {
-			"use_specific_wf_wave": 0
+			"wave_resource_model_choice": 0
 		}
 	}
 }

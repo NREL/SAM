@@ -390,8 +390,7 @@
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_surface_area": 89.0141,
-			"en_batt": 1,
-			"om_replacement_cost1": [293.840000]
+			"en_batt": 1
 		},
 		"Load": {
 		},
@@ -468,7 +467,6 @@
 			]
 		},
 		"BatteryDispatch": {
-			"batt_auto_gridcharge_max_daily": 100,
 			"batt_custom_dispatch": [0.000000],
 			"batt_cycle_cost": [0.100000],
 			"batt_cycle_cost_choice": 0,

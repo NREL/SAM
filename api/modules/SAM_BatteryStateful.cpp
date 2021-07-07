@@ -422,6 +422,18 @@ SAM_EXPORT void SAM_BatteryStateful_StateCell_DOD_min_nset(SAM_table ptr, double
 	});
 }
 
+SAM_EXPORT void SAM_BatteryStateful_StateCell_EFC_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "EFC", number);
+	});
+}
+
+SAM_EXPORT void SAM_BatteryStateful_StateCell_EFC_dt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "EFC_dt", number);
+	});
+}
+
 SAM_EXPORT void SAM_BatteryStateful_StateCell_I_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "I_loss", number);
@@ -536,9 +548,21 @@ SAM_EXPORT void SAM_BatteryStateful_StateCell_day_age_of_battery_nset(SAM_table 
 	});
 }
 
+SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_cal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dq_relative_cal", number);
+	});
+}
+
 SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_calendar_old_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dq_relative_calendar_old", number);
+	});
+}
+
+SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_cyc_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dq_relative_cyc", number);
 	});
 }
 
@@ -677,6 +701,12 @@ SAM_EXPORT void SAM_BatteryStateful_StateCell_rainflow_jlt_nset(SAM_table ptr, d
 SAM_EXPORT void SAM_BatteryStateful_StateCell_rainflow_peaks_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "rainflow_peaks", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_BatteryStateful_StateCell_temp_avg_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "temp_avg", number);
 	});
 }
 
@@ -1438,6 +1468,28 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_DOD_min_nget(SAM_table ptr, SAM_
 
 
 
+SAM_EXPORT double SAM_BatteryStateful_StateCell_EFC_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "EFC", &result))
+		make_access_error("SAM_BatteryStateful", "EFC");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_BatteryStateful_StateCell_EFC_dt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "EFC_dt", &result))
+		make_access_error("SAM_BatteryStateful", "EFC_dt");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_BatteryStateful_StateCell_I_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1649,11 +1701,33 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_day_age_of_battery_nget(SAM_tabl
 
 
 
+SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_cal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dq_relative_cal", &result))
+		make_access_error("SAM_BatteryStateful", "dq_relative_cal");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_calendar_old_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dq_relative_calendar_old", &result))
 		make_access_error("SAM_BatteryStateful", "dq_relative_calendar_old");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_cyc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dq_relative_cyc", &result))
+		make_access_error("SAM_BatteryStateful", "dq_relative_cyc");
 	});
 	return result;
 }
@@ -1908,6 +1982,17 @@ SAM_EXPORT double* SAM_BatteryStateful_StateCell_rainflow_peaks_aget(SAM_table p
 	result = ssc_data_get_array(ptr, "rainflow_peaks", length);
 	if (!result)
 		make_access_error("SAM_BatteryStateful", "rainflow_peaks");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_avg_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "temp_avg", &result))
+		make_access_error("SAM_BatteryStateful", "temp_avg");
 	});
 	return result;
 }
