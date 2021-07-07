@@ -1,5 +1,5 @@
 1
-1144
+1142
 A_aperture
 1
 2
@@ -5129,12 +5129,6 @@ offset_xpan_hdr
 1
 1
 1
-om_batt_replacement_cost
-1
-2
-1
-1
-0
 om_capacity
 1
 2
@@ -5178,12 +5172,6 @@ om_production
 1
 4
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1

@@ -1,7 +1,7 @@
-O and M Costs
-829
-189
-14
+Operating Costs Fuel
+824
+150
+12
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 812
 Height
 3
-176
+143
 Tool Tip
 5
 0
@@ -42,13 +42,13 @@ Name
 Label1
 X
 3
-408
+375
 Y
 3
 21
 Width
 3
-203
+137
 Height
 3
 21
@@ -57,8 +57,8 @@ Tool Tip
 0
 Caption
 5
-33
-Escalation rate (above inflation)
+15
+Escalation rate
 TextColour
 4
 0
@@ -73,10 +73,10 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -90,7 +90,7 @@ Name
 Label2
 X
 3
-243
+222
 Y
 3
 21
@@ -124,7 +124,7 @@ WordWrap
 0
 AlignRight
 2
-0
+1
 AlignTop
 2
 0
@@ -138,16 +138,16 @@ Name
 Label3
 X
 3
-537
+519
 Y
 3
-54
+45
 Width
 3
-274
+295
 Height
 3
-110
+95
 Tool Tip
 5
 0
@@ -176,49 +176,6 @@ AlignRight
 AlignTop
 2
 1
-SchedNumeric
-
-1
-12
-Name
-5
-24
-om_batt_replacement_cost
-X
-3
-219
-Y
-3
-117
-Width
-3
-118
-Height
-3
-21
-Tool Tip
-5
-0
-Label
-5
-5
-Value
-UseSchedule
-2
-0
-ScheduleOnly
-2
-0
-FixedLength
-3
-4294967295
-Description
-5
-124
-Type a battery replacement cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
-TabOrder
-3
-7
 SchedNumeric
 
 1
@@ -444,7 +401,7 @@ X
 219
 Y
 3
-141
+117
 Width
 3
 118
@@ -487,7 +444,7 @@ X
 411
 Y
 3
-141
+117
 Width
 3
 100
@@ -643,91 +600,14 @@ BackColour
 TabOrder
 3
 6
-Numeric
 
-1
-17
-Name
-5
-25
-om_replacement_cost_escal
-X
-3
-411
-Y
-3
-117
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-2
- %
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
 8
-
-10
-om_batt_replacement_cost
-3
-2
-Battery replacement cost
-$/kWh
-Operation and Maintenance Costs
-0
-2
-1
-2
-1
-1
-0
-SchedNumeric
 om_capacity
 3
 2
 Fixed cost by capacity
 $/kW-yr
-Operation and Maintenance Costs
+Operating Costs
 0
 2
 1
@@ -741,7 +621,7 @@ om_capacity_escal
 1
 Fixed cost per capacity escalation
 %/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -755,7 +635,7 @@ om_fixed
 2
 Fixed annual cost
 $/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 2
 1
@@ -769,7 +649,7 @@ om_fixed_escal
 1
 Fixed annual cost escalation
 %/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -783,7 +663,7 @@ om_fuel_cost
 2
 Fossil fuel cost
 $/MMBtu
-Operation and Maintenance Costs
+Operating Costs
 0
 2
 1
@@ -797,7 +677,7 @@ om_fuel_cost_escal
 1
 Fossil fuel cost escalation
 %/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -811,7 +691,7 @@ om_production
 2
 Variable cost by generation
 $/MWh
-Operation and Maintenance Costs
+Operating Costs
 0
 2
 1
@@ -825,21 +705,7 @@ om_production_escal
 1
 Variable cost by generation escalation
 %/yr
-Operation and Maintenance Costs
-0
-3
-1
-1
-1
-1
-0
-Numeric
-om_replacement_cost_escal
-3
-1
-Escalation cost for battery replacements
-%/year
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -850,23 +716,4 @@ Operation and Maintenance Costs
 Numeric
 
 0
-654
-on_load{'O and M Costs'}=define(){
-	tech=technology();
-	fuel_tech = ( (tech=='Generic System') 
-	||(tech=='Generic Battery')
-	||(tech=='Generic CSP System') 
-	||(tech=='Empirical Trough') 
-	||(tech=='MSPT') 
-	||(tech=='DSPT') 
-    ||(tech=='Physical Trough') 
-    ||(tech=='DSLF') 
-    ||(tech=='MSLF') );
-    // PVWatts Battery does not model replacements
-    batt_replacement_tech = ( (tech=='PV Battery')
-	|| (tech=='Generic Battery')    );
-    show('om_fuel_cost', fuel_tech );
-    show('om_fuel_cost_escal',  fuel_tech );
-	show('om_batt_replacement_cost', batt_replacement_tech );
-    show('om_replacement_cost_escal', batt_replacement_tech );
-	};	
+0

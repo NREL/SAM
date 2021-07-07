@@ -1,5 +1,5 @@
 1
-767
+765
 A_aperture
 1
 3
@@ -1223,7 +1223,7 @@ csp.lf.cost.plm.total
 1
 1
 1
-3.47641e+06
+3476410
 csp.lf.cost.power_plant
 1
 1
@@ -4083,12 +4083,6 @@ nominal_discount_rate
 1
 1
 9.06
-om_batt_replacement_cost
-1
-2
-1
-1
-0
 om_capacity
 1
 2
@@ -4132,12 +4126,6 @@ om_production
 1
 4
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1

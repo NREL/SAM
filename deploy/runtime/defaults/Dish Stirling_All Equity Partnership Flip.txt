@@ -1,5 +1,5 @@
 1
-451
+450
 A_absorber
 1
 1
@@ -2166,12 +2166,6 @@ om_production_escal
 om_replacement_cost1
 1
 2
-1
-1
-0
-om_replacement_cost_escal
-1
-1
 1
 1
 0
