@@ -182,6 +182,49 @@ SchedNumeric
 12
 Name
 5
+24
+om_batt_replacement_cost
+X
+3
+219
+Y
+3
+117
+Width
+3
+118
+Height
+3
+21
+Tool Tip
+5
+0
+Label
+5
+5
+Value
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+124
+Type a battery replacement cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
+TabOrder
+3
+7
+SchedNumeric
+
+1
+12
+Name
+5
 11
 om_capacity
 X
@@ -600,49 +643,6 @@ BackColour
 TabOrder
 3
 6
-SchedNumeric
-
-1
-12
-Name
-5
-20
-om_replacement_cost1
-X
-3
-219
-Y
-3
-117
-Width
-3
-118
-Height
-3
-21
-Tool Tip
-5
-0
-Label
-5
-5
-Value
-UseSchedule
-2
-0
-ScheduleOnly
-2
-0
-FixedLength
-3
-4294967295
-Description
-5
-124
-Type a battery replacement cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
-TabOrder
-3
-7
 Numeric
 
 1
@@ -708,6 +708,20 @@ TabOrder
 8
 
 10
+om_batt_replacement_cost
+3
+2
+Battery replacement cost
+$/kWh
+Operation and Maintenance Costs
+0
+2
+1
+2
+1
+1
+0
+SchedNumeric
 om_capacity
 3
 2
@@ -820,20 +834,6 @@ Operation and Maintenance Costs
 1
 0
 Numeric
-om_replacement_cost1
-3
-2
-Battery replacement cost
-$/kWh
-Operation and Maintenance Costs
-0
-2
-1
-2
-1
-1
-0
-SchedNumeric
 om_replacement_cost_escal
 3
 1
@@ -850,7 +850,7 @@ Operation and Maintenance Costs
 Numeric
 
 0
-650
+654
 on_load{'O and M Costs'}=define(){
 	tech=technology();
 	fuel_tech = ( (tech=='Generic System') 
@@ -867,6 +867,6 @@ on_load{'O and M Costs'}=define(){
 	|| (tech=='Generic Battery')    );
     show('om_fuel_cost', fuel_tech );
     show('om_fuel_cost_escal',  fuel_tech );
-	show('om_replacement_cost1', batt_replacement_tech );
+	show('om_batt_replacement_cost', batt_replacement_tech );
     show('om_replacement_cost_escal', batt_replacement_tech );
 	};	

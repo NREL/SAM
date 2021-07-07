@@ -1,6 +1,6 @@
 Solar Water Heating Costs
-699
-665
+697
+571
 37
 GroupBox
 

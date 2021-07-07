@@ -1,5 +1,5 @@
 1
-555
+557
 a_error_test_number
 1
 1
@@ -148,6 +148,18 @@ avail_uncert_total
 1
 1
 2.50272
+batt_salvage_percentage
+1
+1
+1
+1
+0
+batt_salvage_value
+1
+1
+1
+1
+0
 bos_cost_fixed
 1
 1
@@ -2552,6 +2564,12 @@ obos_warning
 4
 64
 Offshore BOS cost model failed with error: fail(nTurb, min=2): 1
+om_batt_replacement_cost
+1
+2
+1
+1
+0
 om_building_size
 1
 1
@@ -2624,12 +2642,6 @@ om_production_escal
 1
 1
 0
-om_replacement_cost1
-1
-2
-1
-1
-500
 om_replacement_cost_escal
 1
 1
@@ -3268,7 +3280,7 @@ substation_cost
 1
 1
 1
-3124540
+3.12454e+06
 substructCont
 1
 1
@@ -4519,4 +4531,4 @@ wspd_uncert
 1
 1
 1
-9.10558
+0
