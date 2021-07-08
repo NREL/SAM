@@ -1,4 +1,4 @@
-Financial Capacity Payments
+Financial Capacity Payments Tab UI
 926
 220
 12
@@ -584,129 +584,11 @@ AlignTop
 2
 1
 
-6
-cp_battery_nameplate
-3
-1
-Battery nameplate
-MW
-Capacity Payment
 0
-8
-1
-1
-1
-1
-0
-Numeric
-cp_capacity_credit_percent
-3
-2
-Capacity credit (eligible % of nameplate)
-%
-Capacity Payment
-0
-2
-1
-2
-1
-1
-0
-SchedNumeric
-cp_capacity_payment_amount
-3
-2
-Capacity payment amount
-$ or $/MW
-Capacity Payment
-0
-3
-1
-2
-1
-1
-0
-SchedNumeric
-cp_capacity_payment_esc
-3
-1
-Capacity payment escalation
-%/year
-Capacity Payment
-0
-2
-1
-1
-1
-1
-0
-Numeric
-cp_capacity_payment_type
-3
-1
-Payment Type
- 
-Capacity Payment
-27
-Capacity basis|Fixed amount
-1
-1
-1
-1
-1
-0
-RadioChoice
-cp_system_nameplate
-3
-1
-System nameplate
-MW
-Capacity Payment
-0
-8
-1
-1
-1
-1
-0
-Numeric
 
-357
-equations{ 'cp_system_nameplate' } = define() {
-	return ${system_capacity}/1000;
-};
-
-equations{ 'cp_battery_nameplate' } = define() {
-	t = technology();
-	if ( (t=='PV Battery') || (t=='Generic Battery') )
-		{ x = ${batt_computed_bank_capacity}/1000; }
-	elseif ( t == 'PVWatts Battery' )	
-		{ x = ${batt_simple_kwh}/1000; }
-	else 
-		{ x = 0; }
-	return x;	
-};
-731
-function capacity_payments_ctrl_refresh()
-{
-	fixed_payment = (value("cp_capacity_payment_type") == 1);
-	show("cp_payment_units",!fixed_payment);
-	show("cp_payment_units_dollars",fixed_payment);
-
-	//enable("cp_capacity_credit_group",!fixed_payment);
-	enable("cp_capacity_credit_percent",!fixed_payment);
-
-	enable("cp_system_nameplate",!fixed_payment);
-	enable("cp_battery_nameplate",!fixed_payment);
-	
-	cp_payment = value("cp_capacity_payment_amount");
-	show_escalation = (#cp_payment < 2);
-	enable("cp_capacity_payment_esc",show_escalation);
-
-	refresh();
-}
-
-on_load{"Financial Capacity Payments"} =
+0
+179
+on_load{"Financial Capacity Payments Tab UI"} =
 on_change{"cp_capacity_payment_type"} =
 on_change{"cp_capacity_payment_amount"} = define()
 {
