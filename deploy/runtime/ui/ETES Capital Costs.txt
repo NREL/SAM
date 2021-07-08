@@ -3191,7 +3191,7 @@ ETES Cost
 -999
 Default
 
-7465
+7608
 // ui only
 equations{ 'ui_etes_cost__nameplate' } = define() {
 	return ${nameplate};
@@ -3274,6 +3274,9 @@ equations{ '$MIMO$ ui_etes_cost__etes_cmod' } = define()
 	ssc_var(obj, "h_tank_min", ${h_tank_min});
 	ssc_var(obj, "hot_tank_Thtr", ${hot_tank_Thtr});       
 	ssc_var(obj, "hot_tank_max_heat", ${hot_tank_max_heat}); 
+
+	ssc_var(obj, "f_q_dot_des_allowable_su", ${f_q_dot_des_allowable_su});
+	ssc_var(obj, "hrs_startup_at_max_rate", ${hrs_startup_at_max_rate});
 
 	ssc_var(obj, "is_dispatch", ${is_dispatch});
 
