@@ -4,8 +4,6 @@
 #
 #####################################################################################################################
 
-set(CMAKE_VERBOSE_MAKEFILE ON)
-
 cmake_minimum_required(VERSION 3.11)
 
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
@@ -21,6 +19,10 @@ endif()
 # Project Settings
 #
 #####################################################################################################################
+
+option(SAMAPI_EXPORT "Export of ssc binaries to the SAM_api directory; for Unix, compile ssc libraries for SAM_api" ON)
+
+option(SAM_SKIP_AUTOGEN "Skips the automatic regeneration of SAMAPI files from export_config" ON)
 
 Project(sam)
 
@@ -44,6 +46,7 @@ set(SAM_SRC
 	src/urdb.cpp
 	src/nsrdb.cpp
 	src/windtoolkit.cpp
+	src/wavetoolkit.cpp
 	src/gridsupport.cpp
 	src/macro.cpp
 	src/p50p90.cpp

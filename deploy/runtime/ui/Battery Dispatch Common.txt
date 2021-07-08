@@ -1,6 +1,6 @@
 Battery Dispatch Common
-1052
-125
+1049
+90
 7
 Label
 
@@ -12,23 +12,23 @@ Name
 batt_SOC_warning
 X
 3
-69
+663
 Y
 3
-87
+15
 Width
 3
-810
+378
 Height
 3
-21
+69
 Tool Tip
 5
 0
 Caption
 5
-104
-Battery efficiency at extreme low SOC or high SOC may decrease due to non-linearity of the voltage curve
+219
+Allowing the battery to discharge below 10% or to charge above 95% may decrease the battery efficiency because of the shape of the voltage curve. See the inputs under Battery Voltage on the Battery Cell and System page.
 TextColour
 4
 255
@@ -43,13 +43,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 Label
 
 1
@@ -108,7 +108,7 @@ Name
 batt_initial_SOC
 X
 3
-588
+543
 Y
 3
 24
@@ -170,7 +170,7 @@ Name
 batt_maximum_SOC
 X
 3
-243
+198
 Y
 3
 51
@@ -232,7 +232,7 @@ Name
 batt_minimum_SOC
 X
 3
-243
+198
 Y
 3
 24
@@ -294,7 +294,7 @@ Name
 batt_minimum_modetime
 X
 3
-588
+543
 Y
 3
 51
@@ -365,7 +365,7 @@ Width
 1042
 Height
 3
-117
+84
 Tool Tip
 5
 0

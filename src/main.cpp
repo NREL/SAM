@@ -1792,7 +1792,7 @@ void ConfigDatabase::SetModules( const wxArrayString &list )
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar,
 	const wxString &hlpcxt, const wxString &exclvar,
 	const std::vector<PageInfo> &exclhdr_pages,
-	bool excl_tabs )
+	bool excl_tabs, bool excl_hide )
 {
 	if ( m_curConfig == 0 ) return;
 
@@ -1804,6 +1804,7 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->ExclusivePageVar = exclvar;
 	ip->ExclusiveHeaderPages = exclhdr_pages;
 	ip->ExclusiveTabs = excl_tabs;
+    ip->ExclusiveHide = excl_hide;
 
 	m_curConfig->InputPageGroups.push_back( ip );
 }
@@ -2295,6 +2296,10 @@ void SamApp::Restart()
 	wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
 	if (!wxFileExists(wave_resource_db)) ScanWaveResourceData(wave_resource_db);
 	Library::Load(wave_resource_db);
+
+    wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
+    if (!wxFileExists(wave_resource_ts_db)) ScanWaveResourceTSData(wave_resource_ts_db);
+    Library::Load(wave_resource_ts_db);
 }
 
 wxString SamApp::WebApi( const wxString &name )

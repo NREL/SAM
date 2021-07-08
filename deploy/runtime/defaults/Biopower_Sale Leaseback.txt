@@ -1,5 +1,5 @@
 1
-707
+709
 adjust
 1
 5
@@ -89,6 +89,18 @@ annual_wspd
 1
 1
 5.37725
+batt_salvage_percentage
+1
+1
+1
+1
+0
+batt_salvage_value
+1
+1
+1
+1
+0
 biopwr.cost.boiler
 1
 1
@@ -2463,7 +2475,7 @@ const_per_interest1
 1
 1
 1
-1881180
+1.88118e+06
 const_per_interest2
 1
 1
@@ -2523,7 +2535,7 @@ const_per_interest_total
 1
 1
 1
-1881180
+1.88118e+06
 const_per_months1
 1
 1
@@ -2656,7 +2668,7 @@ const_per_total1
 1
 1
 1
-3762360
+3.76236e+06
 const_per_total2
 1
 1
@@ -2716,7 +2728,7 @@ construction_financing_cost
 1
 1
 1
-3762360
+3.76236e+06
 cost_dev_fee_percent
 1
 1
@@ -3770,6 +3782,12 @@ nominal_discount_rate
 1
 1
 9.06
+om_batt_replacement_cost
+1
+2
+1
+1
+0
 om_capacity
 1
 2
@@ -3851,12 +3869,6 @@ om_production
 om_production_escal
 1
 1
-1
-1
-0
-om_replacement_cost1
-1
-2
 1
 1
 0

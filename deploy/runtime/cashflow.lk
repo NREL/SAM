@@ -639,6 +639,7 @@ function cf_returns()
 function cf_levelized_metrics()
 {
 	fin = financing();
+	tech = technology();
 	has_roe = ( fin == 'Single Owner' || fin == 'Host Developer' );
 	cfline('AFTER-TAX LEVELIZED COE AND PPA PRICE', -1); 
 	cfline('cf_annual_costs', 0); 
@@ -648,10 +649,32 @@ function cf_levelized_metrics()
 	cfline('npv_annual_costs',0 ); 
 	cfline('npv_energy_nom', 0); 
 	cfline('lcoe_nom',2); 
-	cfline( '' ); 
+	
+	cfline( '' );
 	cfline('npv_ppa_revenue', 0); 
 	cfline('npv_energy_nom', 0); 
-	cfline('lppa_nom',2); 
+	cfline('lppa_nom',2);
+	
+	if ((tech == "PV Battery" || tech == "PVWatts Battery" || tech == "Generic Battery" || tech == "Fuel Cell")
+		&& has_roe)
+	{
+		cfline( '' ); 
+		cfline('LCOS CALCULATIONS', -1);
+		cfline('cf_annual_cost_lcos', 0);
+		cfline('cf_charging_cost_grid', 0);
+		cfline('cf_charging_cost_pv', 0);
+		cfline('cf_om_fixed1_expense', 0);
+		cfline('cf_om_production1_expense', 0);
+		cfline('cf_om_capacity1_expense', 0);
+		cfline('cf_salvage_cost_lcos', 0);
+		cfline('cf_annual_discharge_lcos', 0);
+		cfline( '' );
+		cfline('npv_annual_costs_lcos', 0);
+		cfline('npv_energy_lcos_nom', 0);
+		cfline('lcos_nom', 2);
+		cfline('lcos_real', 2); 
+	}
+		
 	if ( has_roe ) 
 	{
 		cfline( '' ); 
@@ -1324,6 +1347,7 @@ function set_annual_values( xl )
 	{
 		xl_set( xl, output('cf_energy_sales'), 'EnergyToGrid');
 		xl_set( xl, output('cf_energy_purchases'), 'EnergyFromGrid');
+		xl_set( xl, output('cf_annual_discharge_lcos'), 'StorageDischarge');
 		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
 		xl_set( xl, output('cf_energy_curtailed'), 'CurtailedEnergy');
 		xl_set( xl, output('cf_energy_sales_value'), 'GrossRevenue'); 
@@ -1553,6 +1577,13 @@ function set_system_cost_salvage( xl )
 	send_excel( xl, 'salvage_percentage'); 
 }
 
+function set_lcos( x1 )
+{
+	xl_set( xl, output('cf_annual_discharge_lcos'), 'StorageDischarge');
+	xl_set( x1, output('cf_annual_cost_lcos'), 'StorageCosts');
+	
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Results page Cash Flow tab
 ////////////////////////////////////////////////////////////////////////////////
@@ -1763,6 +1794,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
  	set_analysis_period();
 	set_debt_parameters( xl );
 	set_annual_values( xl );
+	set_lcos( xl );
 	set_solution_mode( xl );
 	set_construction_financing( xl );
 	set_incentives(xl);

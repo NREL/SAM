@@ -1,0 +1,183 @@
+Battery Dispatch Peak Shaving
+1051
+111
+3
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+105
+Tool Tip
+5
+0
+Caption
+5
+29
+Peak Shaving Battery Dispatch
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+15
+Y
+3
+21
+Width
+3
+918
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+149
+Peak shaving attempts to reduce daily demand peaks based on the solar resource and load in either the previous 24-hour period or next 24-hour period.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+33
+peak_shaving_batt_dispatch_choice
+X
+3
+15
+Y
+3
+48
+Width
+3
+243
+Height
+3
+57
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+One day look ahead
+One day look behind
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+
+2
+batt_dispatch_choice
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
+peak_shaving_batt_dispatch_choice
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+
+0
+524
+on_load{'Battery Dispatch Peak Shaving'}=define()
+{	
+	on_change{'peak_shaving_batt_dispatch_choice'};
+	peak_shaving_choice();
+	if (technology() == "Fuel Cell") 
+		toggle_dispatch();
+		
+	show_hide_charge_options();
+		
+};
+
+on_change{'peak_shaving_batt_dispatch_choice'} = define() {
+	peak_shaving_choice();
+};
+
+function peak_shaving_choice() {
+	choice = value('peak_shaving_batt_dispatch_choice');
+	if (choice == 0) {
+		value('batt_dispatch_choice',0);
+	}
+	else if (choice == 1) {
+		value('batt_dispatch_choice', 1);
+	}
+}
+
+
+
+
