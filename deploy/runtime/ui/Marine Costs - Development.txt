@@ -5394,13 +5394,13 @@ Tips
 5
 0
 
-65
+63
 closing_costs_cost
 3
 1
- 
- 
- 
+Closing Costs
+$
+ME BoS Costs
 0
 0
 1
@@ -5510,9 +5510,9 @@ Default
 development_cost
 3
 1
- 
- 
- 
+Development cost input
+$
+ME BoS Costs
 0
 8
 1
@@ -5524,9 +5524,9 @@ Default
 development_cost_total
 3
 1
- 
- 
- 
+Development cost total
+$
+ME BoS Costs
 0
 8
 1
@@ -5538,11 +5538,11 @@ Default
 development_override
 3
 1
- 
- 
- 
+Development override choice
+0/1
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -5552,9 +5552,9 @@ Default
 due_diligence_cost
 3
 1
- 
- 
- 
+Due diligence cost
+$
+ME BoS Costs
 0
 0
 1
@@ -5566,9 +5566,9 @@ Default
 engineering_certification_cost
 3
 1
- 
- 
- 
+Engineering certification cost
+$
+ME BoS Costs
 0
 0
 1
@@ -5580,11 +5580,11 @@ Default
 environmental_scoping_cost
 3
 1
- 
- 
- 
+Environmental scoping cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5594,9 +5594,9 @@ Default
 environmental_surveys_cost
 3
 1
- 
- 
- 
+Environmental surveys cost
+$
+ME BoS Costs
 0
 0
 1
@@ -5608,11 +5608,11 @@ Default
 feed_cost
 3
 1
- 
- 
- 
+Feed cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5622,7 +5622,7 @@ Default
 financing_and_incentives_cost
 3
 1
-Financing and incentives costs 
+Financing and incentives cost input
 $
 ME BoS Costs
 0
@@ -5636,9 +5636,9 @@ Default
 financing_and_incentives_cost_total
 3
 1
- 
- 
- 
+Financing and incentives cost toal
+$
+ME BoS Costs
 0
 8
 1
@@ -5650,9 +5650,9 @@ Default
 financing_and_incentives_cost_total_check
 3
 1
- 
- 
- 
+Financing and incentives cost
+$
+ME BoS Costs
 0
 8
 1
@@ -5664,9 +5664,9 @@ Default
 geological_and_bathymetry_cost
 3
 1
- 
- 
- 
+Geological and bathymetry cost
+$
+ME BoS Costs
 0
 0
 1
@@ -5678,9 +5678,9 @@ Default
 incentives_cost
 3
 1
- 
- 
- 
+Incentives cost
+$
+ME BoS Costs
 0
 0
 1
@@ -5692,7 +5692,7 @@ Default
 initial_engineering_cost
 3
 1
-Initial engineering costs 
+Initial engineering cost input
 $ 
 ME BoS Costs
 0
@@ -5706,11 +5706,11 @@ Default
 initial_engineering_cost_total
 3
 1
- 
- 
- 
+Initial engineering cost total
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -5720,9 +5720,9 @@ Default
 initial_engineering_cost_total_check
 3
 1
- 
- 
- 
+Initial engineering cost 
+$
+ME BoS Costs
 0
 8
 1
@@ -5734,7 +5734,7 @@ Default
 interconnection_and_power_marketing_cost
 3
 1
-Interconnection costs
+Interconnection cost input
 $ 
 ME BoS Costs
 0
@@ -5748,9 +5748,9 @@ Default
 interconnection_and_power_marketing_cost_total
 3
 1
- 
- 
- 
+Interconnection cost total
+$
+ME BoS Costs
 0
 8
 1
@@ -5762,9 +5762,9 @@ Default
 interconnection_and_power_marketing_cost_total_check
 3
 1
- 
- 
- 
+Interconnection cost
+$
+ME BoS Costs
 0
 8
 1
@@ -5776,9 +5776,9 @@ Default
 interconnection_studies_and_fees_cost
 3
 1
- 
- 
- 
+Interconnection studies and fees cost
+$
+ME BoS Costs
 0
 0
 1
@@ -5790,9 +5790,9 @@ Default
 itemized_check_development
 3
 1
+Development itemized cost choice
  
- 
- 
+ME Cost Choice
 0
 8
 1
@@ -5804,11 +5804,11 @@ Default
 lease_acquisition_activities_cost
 3
 1
- 
- 
- 
+Lease acquisition activities cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5818,39 +5818,11 @@ Default
 legal_support_cost
 3
 1
- 
- 
- 
+Legal support cost
+$
+ME BoS Costs
 0
 0
-1
-1
-1
-1
-0
-Default
-level_check
-3
-1
- 
- 
- 
-0
-0
-1
-1
-1
-1
-0
-Choice
-level_value
-3
-1
- 
- 
- 
-0
-8
 1
 1
 1
@@ -5860,9 +5832,9 @@ Default
 onshore_interconnection_rights_cost
 3
 1
- 
- 
- 
+Onshore interconnection rights cost
+$
+ME BoS Costs
 0
 0
 1
@@ -5888,9 +5860,9 @@ Default
 other_financing_cost
 3
 1
- 
- 
- 
+Other financing cost
+$
+ME BoS Costs
 0
 0
 1
@@ -5902,9 +5874,9 @@ Default
 other_initial_engineering_cost
 3
 1
- 
- 
- 
+Other initial engineering cost
+$
+ME BoS Costs
 0
 0
 1
@@ -5916,9 +5888,9 @@ Default
 other_interconnection_cost
 3
 1
- 
- 
- 
+Other interconnection cost
+$
+ME BoS Costs
 0
 0
 1
@@ -5930,11 +5902,11 @@ Default
 other_permitting_and_leasing_cost
 3
 1
- 
- 
- 
+Other permitting and leasing costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5944,9 +5916,9 @@ Default
 other_project_management_cost
 3
 1
- 
- 
- 
+Other project management costs
+$
+ME BoS Costs
 0
 0
 1
@@ -5958,9 +5930,9 @@ Default
 other_site_characterization_cost
 3
 1
- 
- 
- 
+Other site characterization costs
+$
+ME BoS Costs
 0
 0
 1
@@ -5972,11 +5944,11 @@ Default
 other_site_selection_cost
 3
 1
- 
- 
- 
+Other site selection costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5986,11 +5958,11 @@ Default
 permit_acquisition_activities_cost
 3
 1
- 
- 
- 
+Permit acquisition activities cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -6000,7 +5972,7 @@ Default
 permitting_and_leasing_cost
 3
 1
-Permitting costs 
+Permitting cost input
 $
 ME BoS Costs
 0
@@ -6014,11 +5986,11 @@ Default
 permitting_and_leasing_cost_total
 3
 1
+Permitting cost total
  
- 
- 
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -6028,9 +6000,9 @@ Default
 permitting_and_leasing_cost_total_check
 3
 1
+Permitting cost
  
- 
- 
+ME BoS Costs
 0
 8
 1
@@ -6042,9 +6014,9 @@ Default
 power_marketing_cost
 3
 1
+Power marketing costs
  
- 
- 
+ME BoS Costs
 0
 0
 1
@@ -6056,11 +6028,11 @@ Default
 pre_feed_cost
 3
 1
+Pre-FEED costs
  
- 
- 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -6070,9 +6042,9 @@ Default
 procurement_cost
 3
 1
+Procurement costs
  
- 
- 
+ME BoS Costs
 0
 0
 1
@@ -6098,9 +6070,9 @@ Default
 profit_cost
 3
 1
- 
- 
- 
+Profit cost
+$
+ME BoS Costs
 0
 0
 1
@@ -6112,7 +6084,7 @@ Default
 project_management_during_development_cost
 3
 1
-Project management costs 
+Project management cost input
 $
 ME BoS Costs
 0
@@ -6126,9 +6098,9 @@ Default
 project_management_during_development_cost_total
 3
 1
- 
- 
- 
+Project management cost total
+$
+ME BoS Costs
 0
 8
 1
@@ -6140,9 +6112,9 @@ Default
 project_management_during_development_cost_total_check
 3
 1
- 
- 
- 
+Project management costs
+$
+ME BoS Costs
 0
 8
 1
@@ -6154,9 +6126,9 @@ Default
 resource_and_metocean_assessment_cost
 3
 1
- 
- 
- 
+Resource and metocean assessment costs
+$
+ME BoS Costs
 0
 0
 1
@@ -6168,11 +6140,11 @@ Default
 resource_assessment_cost
 3
 1
- 
- 
- 
+Resource assessment costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -6182,9 +6154,9 @@ Default
 salaries_cost
 3
 1
- 
- 
- 
+Salary costs
+$
+ME BoS Costs
 0
 0
 1
@@ -6196,9 +6168,9 @@ Default
 sales_general_and_administrative_cost
 3
 1
- 
- 
- 
+General and administrative sales costs
+$
+ME BoS Costs
 0
 0
 1
@@ -6210,7 +6182,7 @@ Default
 site_characterization_cost
 3
 1
-Site characterization costs
+Site characterization cost input
 $ 
 ME BoS Costs
 0
@@ -6224,9 +6196,9 @@ Default
 site_characterization_cost_total
 3
 1
- 
- 
- 
+Site characterization cost total
+$
+ME BoS Costs
 0
 8
 1
@@ -6238,9 +6210,9 @@ Default
 site_characterization_cost_total_check
 3
 1
- 
- 
- 
+Site characterization costs
+$
+ME BoS Costs
 0
 8
 1
@@ -6252,7 +6224,7 @@ Default
 site_selection_cost
 3
 1
-Site selection costs 
+Site selection cost input 
 $
 ME BoS Costs
 0
@@ -6266,11 +6238,11 @@ Default
 site_selection_cost_total
 3
 1
- 
- 
- 
+Site selection cost total
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -6280,9 +6252,9 @@ Default
 site_selection_cost_total_check
 3
 1
- 
- 
- 
+Site selections costs
+$
+ME BoS Costs
 0
 8
 1
@@ -6294,9 +6266,9 @@ Default
 stakeholder_outreach_cost
 3
 1
- 
- 
- 
+Stakeholder outreach costs
+$
+ME BoS Costs
 0
 0
 1
@@ -6306,7 +6278,7 @@ stakeholder_outreach_cost
 0
 Default
 
-4156
+4058
 equations {'site_selection_cost_total'} = define() {
 	return ${resource_assessment_cost}+${environmental_scoping_cost}+
 		${pre_feed_cost}+${other_site_selection_cost};
@@ -6456,23 +6428,13 @@ equations {'development_cost'} = define() {
 			];
 };
 
-equations {'level_value'} = define() {
-	return ?${level_check}
-			[
-				0,
-				1,
-				2
-			];
-};
-
 equations {'development_override'} = define() {
 	return ${balance_of_system_cost_override};};
 
 
-13538
+10420
 on_load{'Marine Costs - Development'} = define() {
 	on_change{'itemized_check_development'};
-	on_change{'level_value'};
 	enable_itemized_development();
 	on_change{'detailed_cost_choice_site_selection'};
 	detailed_cost_site_selection();
@@ -6665,10 +6627,6 @@ function detailed_cost_site_selection()
 on_change{'itemized_check_development'} = define() {
 	enable_itemized_development();
 };
-	
-on_change{'level_value'} = define() {
-	enable_itemized_level();
-};
 
 function enable_itemized_development()
 {
@@ -6725,7 +6683,6 @@ function enable_itemized_development()
 	enable('legal_support_cost',itemized_value==1);
 	enable('other_financing_cost',itemized_value==1);
 	enable('other_development_cost',itemized_value==1);
-	enable('level_check',itemized_value==1);
 	enable('development_cost_input',itemized_value!=2);
 	show('development_cost_input',itemized_value!=1);
 	//show('development_cost_input_label',itemized_value!=1);
@@ -6744,39 +6701,3 @@ function enable_itemized_development()
 	
 	refresh();
 }
-
-/*function enable_itemized_level()
-{
-		itemized_value_level = value('level_value');
-		enable('site_selection_cost',(itemized_value_level==1 || itemized_value_level==0));
-		enable('resource_assessment_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('environmental_scoping_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('pre_feed_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('permitting_and_leasing_cost',(itemized_value_level==1 || itemized_value_level==0));
-		enable('permit_acquisition_activities_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('lease_acquisition_activities_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('professional_advisory_services_cost',(itemized_value_level==1 || itemized_value_level==2 || itemized_value_level==0));
-		enable('initial_engineering_cost',(itemized_value_level==1 || itemized_value_level==0));
-		enable('feed_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('engineering_certification_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('site_characterization_cost',(itemized_value_level==1 || itemized_value_level==0));
-		enable('environmental_surveys_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('resource_and_metocean_assessment_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('geological_and_bathymetry_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('interconnection_and_power_marketing_cost',(itemized_value_level==1 || itemized_value_level==0));
-		enable('interconnection_studies_and_fees_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('onshore_interconnection_rights_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('power_marketing_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('project_management_during_development_cost',(itemized_value_level==1 || itemized_value_level==0));
-		enable('procurement_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('salaries_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('sales_general_and_administrative_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('stakeholder_outreach_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('profit_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('financing_and_incentives_cost',(itemized_value_level==1 || itemized_value_level==0));
-		enable('due_diligence_cost',itemized_value_level==2);
-		enable('incentives_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('closing_costs_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('legal_support_cost',(itemized_value_level==2 || itemized_value_level==0));
-		enable('other_development_cost',(itemized_value_level==1 || itemized_value_level==2 || itemized_value_level==0));
-}*/

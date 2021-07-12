@@ -330,7 +330,7 @@ Name
 array_cable_accessories_and_jointing_cost
 X
 3
-468
+465
 Y
 3
 156
@@ -4745,15 +4745,15 @@ TabOrder
 3
 29
 
-61
+59
 array_cable_accessories_and_jointing_cost
 3
 1
- 
- 
- 
+Array cable accessories and jointing costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -4763,11 +4763,11 @@ Default
 array_cable_system_commissioning_cost
 3
 1
- 
- 
- 
+Array cable system commissioning costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -4777,7 +4777,7 @@ Default
 array_cable_system_cost
 3
 1
-Array cable system costs
+Array cable system cost input
 $
 ME BoS Costs
 0
@@ -4791,11 +4791,11 @@ Default
 array_cable_system_cost_total
 3
 1
- 
- 
- 
+Array cable system cost total
+$ 
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -4805,9 +4805,9 @@ Default
 array_cable_system_cost_total_check
 3
 1
- 
- 
- 
+Array cable system cost
+$ 
+ME BoS Costs
 0
 8
 1
@@ -4819,11 +4819,11 @@ Default
 array_cable_system_transportation_cost
 3
 1
- 
- 
- 
+Array cable system transportation costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -4833,11 +4833,11 @@ Default
 array_cables_cost
 3
 1
- 
- 
- 
+Array cables cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -4847,11 +4847,11 @@ Default
 bend_restrictors_cost
 3
 1
- 
- 
- 
+Bend restrictors cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -4861,11 +4861,11 @@ Default
 bend_stiffeners_cost
 3
 1
- 
- 
- 
+Bend stiffeners cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -4875,9 +4875,9 @@ Default
 cable_accessories_and_jointing_cost
 3
 1
- 
- 
- 
+Cable accessories and jointing costs
+$ 
+ME BoS Costs
 0
 0
 1
@@ -4889,11 +4889,11 @@ Default
 cable_mattresses_cost
 3
 1
- 
- 
- 
+Cable mattresses cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -4903,7 +4903,7 @@ Default
 cable_protection_cost
 3
 1
-Cable protection costs 
+Cable protection cost input 
 $ 
 ME BoS Costs
 0
@@ -4917,11 +4917,11 @@ Default
 cable_protection_cost_total
 3
 1
- 
- 
- 
+Cable protection cost total
+$ 
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -4931,9 +4931,9 @@ Default
 cable_protection_cost_total_check
 3
 1
- 
- 
- 
+Cable protection costs
+$ 
+ME BoS Costs
 0
 8
 1
@@ -5015,11 +5015,11 @@ Default
 ducting_system_cost
 3
 1
- 
- 
- 
+Ducting sytem costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5029,9 +5029,9 @@ Default
 elec_infras_cost
 3
 1
- 
- 
- 
+Electrical infrastructure costs
+$ 
+ME BoS Costs
 0
 8
 1
@@ -5071,9 +5071,9 @@ Choice
 elec_infras_cost_modeled
 3
 1
- 
- 
- 
+Electrical infrastructure modeled costs
+$ 
+ME BoS Costs
 0
 8
 1
@@ -5085,9 +5085,9 @@ Default
 elec_infras_cost_total
 3
 1
- 
- 
- 
+Electrical infrastructure cost total
+$ 
+ME BoS Costs
 0
 8
 1
@@ -5099,11 +5099,11 @@ Default
 elec_infras_override
 3
 1
+Electrical infrastructure cost input choice
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -5113,11 +5113,11 @@ Default
 electrical_conversion_equipment_cost
 3
 1
- 
- 
- 
+Electrical conversion equipment costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5127,11 +5127,11 @@ Default
 export_cable_accessories_and_jointing_cost
 3
 1
- 
- 
- 
+Export cable accessories and jointing costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5141,11 +5141,11 @@ Default
 export_cable_commissioning_cost
 3
 1
- 
- 
- 
+Export cable commissioning costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5155,7 +5155,7 @@ Default
 export_cable_system_cost
 3
 1
-Export cable system costs
+Export cable system cost input
 $ 
 ME BoS Costs
 0
@@ -5169,11 +5169,11 @@ Default
 export_cable_system_cost_total
 3
 1
- 
- 
- 
+Export cable system cost total
+$ 
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -5183,9 +5183,9 @@ Default
 export_cable_system_cost_total_check
 3
 1
- 
- 
- 
+Export cable system costs
+$ 
+ME BoS Costs
 0
 8
 1
@@ -5197,11 +5197,11 @@ Default
 export_cable_system_transportation_cost
 3
 1
- 
- 
- 
+Export cable system transportation costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5211,11 +5211,11 @@ Default
 export_cables_cost
 3
 1
- 
- 
- 
+Export cables costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5225,11 +5225,11 @@ Default
 facilities_and_ancillary_systems_cost
 3
 1
- 
- 
- 
+Facilities and ancillary systems cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5239,9 +5239,9 @@ Default
 itemized_check_elec_infras
 3
 1
+Electrical infrastructure itemized cost choice
  
- 
- 
+ME Cost Choice
 0
 8
 1
@@ -5253,11 +5253,11 @@ Default
 jtube_seals_cost
 3
 1
- 
- 
- 
+Jtube seals cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5267,11 +5267,11 @@ Default
 land_leases_cost
 3
 1
- 
- 
- 
+Land leases cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5281,7 +5281,7 @@ Default
 offshore_substation_cost
 3
 1
-Offshore substation costs 
+Offshore substation cost input
 $ 
 ME BoS Costs
 0
@@ -5295,11 +5295,11 @@ Default
 offshore_substation_cost_total
 3
 1
- 
- 
- 
+Offshore substation cost total
+$ 
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -5309,23 +5309,9 @@ Default
 offshore_substation_cost_total_check
 3
 1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-offshore_substation_cost_total_display
-3
-1
- 
- 
- 
+Offshore substation costs
+$ 
+ME BoS Costs
 0
 8
 1
@@ -5337,9 +5323,9 @@ Default
 onshore_substation_cost
 3
 1
- 
- 
- 
+Onshore substation cost input
+$ 
+ME BoS Costs
 0
 0
 1
@@ -5351,11 +5337,11 @@ Default
 onshore_substation_cost_total
 3
 1
- 
- 
- 
+Onshore substation cost total
+$ 
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -5365,9 +5351,9 @@ Default
 onshore_substation_cost_total_check
 3
 1
- 
- 
- 
+Onshore substation costs
+$ 
+ME BoS Costs
 0
 8
 1
@@ -5379,11 +5365,11 @@ Default
 onshore_substations_cost
 3
 1
- 
- 
- 
+Onshore substations cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5407,11 +5393,11 @@ Default
 onshore_transmission_infrastructure_transportation_cost
 3
 1
- 
- 
- 
+Onshore tranmission infrastructure transportation costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5421,11 +5407,11 @@ Default
 other_array_cable_system_cost
 3
 1
- 
- 
- 
+Other array cable system costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5435,11 +5421,11 @@ Default
 other_cable_protection_cost
 3
 1
- 
- 
- 
+Other cable protection costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5460,28 +5446,14 @@ ME BoS Costs
 1
 0
 Default
-other_elec_infra_cost_total_display
-3
-1
- 
- 
- 
-0
-0
-1
-1
-1
-1
-0
-Default
 other_export_cable_system_cost
 3
 1
- 
- 
- 
+Other export cable system costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5491,11 +5463,11 @@ Default
 other_offshore_substation_cost
 3
 1
- 
- 
- 
+Other offshore substation costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5505,11 +5477,11 @@ Default
 other_onshore_transmission_infrastructure_cost
 3
 1
- 
- 
- 
+Other onshore transmission infrastructure costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5519,11 +5491,11 @@ Default
 overhead_lines_cost
 3
 1
- 
- 
- 
+Overhead lines cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5533,11 +5505,11 @@ Default
 scour_protection_elec_infras_cost
 3
 1
- 
- 
- 
+Scour protection costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5547,11 +5519,11 @@ Default
 self_supporting_towers_with_insulators_cost
 3
 1
- 
- 
- 
+Self supporting towers cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5561,11 +5533,11 @@ Default
 substructure_and_foundation_cost
 3
 1
- 
- 
- 
+Substructures and foundation costs
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5575,11 +5547,11 @@ Default
 topside_cost
 3
 1
- 
- 
- 
+Topsides cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -5589,11 +5561,11 @@ Default
 underground_cable_system_cost
 3
 1
- 
- 
- 
+Underground cable system cost
+$ 
+ME BoS Costs
 0
-0
+1
 1
 1
 1

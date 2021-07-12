@@ -1,7 +1,7 @@
 Marine Costs - Device Costs
 992
 434
-33
+30
 Numeric
 
 1
@@ -161,147 +161,6 @@ BackColour
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-22
-itemized_check_mooring
-X
-3
-51
-Y
-3
-369
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-18
-itemized_check_pto
-X
-3
-57
-Y
-3
-351
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-25
-itemized_check_structural
-X
-3
-75
-Y
-3
-363
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 Numeric
 
 1
@@ -1712,13 +1571,13 @@ TabOrder
 3
 4294967295
 
-5
+3
 device_cost_input
 3
 1
 Total device costs
 $
-ME O&M Costs
+ME Device Costs
 0
 3
 1
@@ -1746,7 +1605,7 @@ device_costs_total
 1
 Total device costs
 $
- 
+ME Device Costs
 0
 9
 1
@@ -1755,36 +1614,8 @@ $
 1
 0
 Default
-device_costs_total_display
-3
-1
- 
- 
- 
-0
-1
-1
-1
-1
-1
-0
-Default
-device_costs_total_mill
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 
-984
+891
 equations {'device_costs_total'} = define() {
 	if (${device_cost_override}!=1)
 	{
@@ -1798,9 +1629,6 @@ equations {'device_costs_total'} = define() {
 	}
 };
 
-equations {'device_costs_total_mill'} = define() {
-	return ${device_costs_total}/1000000;
-};
 
 /*equations {'total_installed_cost'} = define() {
 	return ${device_costs_total};

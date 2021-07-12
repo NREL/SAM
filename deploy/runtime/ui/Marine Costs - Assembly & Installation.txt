@@ -218,7 +218,7 @@ Name
 assembly_and_install_override
 X
 3
-87
+147
 Y
 3
 135
@@ -2802,11 +2802,11 @@ Tips
 array_cables_assem_install_cost
 3
 1
- 
- 
- 
+Array cables cost
+$
+ME Bos Costs
 0
-0
+1
 1
 1
 1
@@ -2816,9 +2816,9 @@ Default
 assembly_and_install_cost
 3
 1
- 
- 
- 
+Assembly and install cost input
+$
+ME BoS Costs
 0
 8
 1
@@ -2830,9 +2830,9 @@ Default
 assembly_and_install_cost_total
 3
 1
- 
- 
- 
+Assembly and install cost total
+$
+ME BoS Costs
 0
 8
 1
@@ -2844,11 +2844,11 @@ Default
 assembly_and_install_override
 3
 1
- 
- 
- 
+Assembly and install cost override choice
+$
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -2900,11 +2900,11 @@ CheckBox
 foundation_assem_install_cost
 3
 1
- 
- 
- 
+Foundation costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2914,9 +2914,9 @@ Default
 itemized_check_assem_install
 3
 1
+Assembly and install cost input method choice
  
- 
- 
+ME Cost Choice
 0
 8
 1
@@ -2928,7 +2928,7 @@ Default
 marine_energy_converter_device_cost
 3
 1
-Marine energy converter device costs 
+Marine energy converter device cost input
 $
 ME BoS Costs
 0
@@ -2942,11 +2942,11 @@ Default
 marine_energy_converter_device_cost_total
 3
 1
- 
- 
- 
+Marine energy converter device cost total
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -2956,9 +2956,9 @@ Default
 marine_energy_converter_device_cost_total_check
 3
 1
- 
- 
- 
+Marine energy converter cost
+$
+ME BoS Costs
 0
 8
 1
@@ -2970,11 +2970,11 @@ Default
 noise_mitigation_cost
 3
 1
- 
- 
- 
+Noise mitigation cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2984,11 +2984,11 @@ Default
 offshore_accommodations_platform_cost
 3
 1
- 
- 
- 
+Offshore accomodation platform cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2998,7 +2998,7 @@ Default
 offshore_electrical_infrastructure_cost
 3
 1
-Offshore electrical infrastructure costs 
+Offshore electrical infrastructure cost input
 $ 
 ME BoS Costs
 0
@@ -3012,11 +3012,11 @@ Default
 offshore_electrical_infrastructure_cost_total
 3
 1
- 
- 
- 
+Offshore electrical infrastructure cost total
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -3026,9 +3026,9 @@ Default
 offshore_electrical_infrastructure_cost_total_check
 3
 1
- 
- 
- 
+Offshore electrical infrastructure cost
+$
+ME BoS Costs
 0
 8
 1
@@ -3040,11 +3040,11 @@ Default
 offshore_export_cables_assem_install_cost
 3
 1
- 
- 
- 
+Offshore export cables cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3068,11 +3068,11 @@ Default
 offshore_substation_assem_install_cost
 3
 1
- 
- 
- 
+Offshore substation cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3082,11 +3082,11 @@ Default
 onshore_electric_infrastructure_assem_install_cost
 3
 1
- 
- 
- 
+Onshore electrical infrastructure cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3110,11 +3110,11 @@ Default
 other_marine_energy_converter_device_cost
 3
 1
- 
- 
- 
+Other marine energy converter device cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3124,11 +3124,11 @@ Default
 other_offshore_electrical_infrastructure_cost
 3
 1
- 
- 
- 
+Other offshore electrical infrastructure cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3138,11 +3138,11 @@ Default
 other_substructure_cost
 3
 1
- 
- 
- 
+Other substructure cost input
+$
+ME Bos Costs
 0
-0
+1
 1
 1
 1
@@ -3152,11 +3152,11 @@ Default
 power_takeoff_system_assem_install_cost
 3
 1
- 
- 
- 
+Power takeoff system cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3166,11 +3166,11 @@ Default
 scour_protection_assem_install_cost
 3
 1
- 
- 
- 
+Scour protection cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3180,11 +3180,11 @@ Default
 structural_assembly_assem_install_cost
 3
 1
- 
- 
- 
+Structural assembly of WEC cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3194,11 +3194,11 @@ Default
 substructure_assem_install_cost
 3
 1
- 
- 
- 
+Substructure cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3208,9 +3208,9 @@ Default
 substructure_assem_install_cost_total
 3
 1
- 
+Substructure cost total
 $ 
- 
+ME BoS Costs
 0
 11
 1
@@ -3222,9 +3222,9 @@ Default
 substructure_assem_install_cost_total_check
 3
 1
- 
- 
- 
+Substructure cost
+$
+ME BoS Costs
 0
 8
 1

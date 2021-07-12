@@ -3285,7 +3285,7 @@ TabOrder
 3
 4294967295
 
-9
+8
 balance_of_system_cost_input
 3
 1
@@ -3328,28 +3328,14 @@ $
 1
 0
 Default
-balance_of_system_cost_total_mill
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 capex_check
 3
 1
- 
- 
- 
+Capex cost
+$
+ME Costs
 0
-8
+9
 1
 1
 1
@@ -3359,11 +3345,11 @@ Default
 plant_commissioning_cost
 3
 1
- 
- 
- 
+Plant commissioning cost
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -3401,11 +3387,11 @@ Default
 plant_commissioning_cost_modeled_ui
 3
 1
- 
- 
- 
+Plant commissioning modeled cost
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -3413,7 +3399,7 @@ plant_commissioning_cost_modeled_ui
 0
 Default
 
-2023
+1909
 equations {'balance_of_system_cost_total'} = define() {
 	if (${balance_of_system_cost_override}!=1)
 	{
@@ -3425,10 +3411,6 @@ equations {'balance_of_system_cost_total'} = define() {
 	{
 		return ${balance_of_system_cost_input};
 	}
-};
-
-equations {'balance_of_system_cost_total_mill'} = define() {
-	return ${balance_of_system_cost_total}/1000000;
 };
 
 equations {'capex_check'} = define() {
