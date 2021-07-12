@@ -388,7 +388,7 @@ Battery Dispatch - FOM Options
 RadioChoice
 
 0
-2544
+2546
 on_load{'Battery Dispatch Options FOM'} = define() {
 	show_hide_charge_options();
 	enable_charge_from_clip();
