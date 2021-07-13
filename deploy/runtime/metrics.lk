@@ -57,6 +57,8 @@ function so_metrics()
 	metric( 'lppa_real', {'label'='Levelized PPA price (real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2' } );
 	metric( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'lcoe_real', {'label'='Levelized COE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	//metric( 'lcos_nom', {'label'='Levelized COS (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	//metric( 'lcos_real', {'label'='Levelized COS (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric( 'project_return_aftertax_npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'flip_actual_irr', {'label'='Internal rate of return (IRR)', 'mode'='f', 'post'=' %', 'deci'='2' } );
 	metric( 'flip_actual_year', {'label'='Year IRR is achieved', 'post'=' '} );
@@ -169,7 +171,9 @@ function pv_battery_metrics()
 	metric( 'kwh_per_kw', {'label'='Energy yield (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true' } );
 	metric( 'performance_ratio', {'label'='Performance ratio (year 1)', 'mode'='f', 'deci'='2', 'post'='' } );
 	metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );//includes inverter and ancillary
-	metric( 'batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%' } ); 
+	metric( 'batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%' } );
+	//metric( 'lcos_nom', {'label'='Levelized COS (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	//metric( 'lcos_real', {'label'='Levelized COS (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 }
 
 function wind_power_metrics() 
@@ -373,30 +377,6 @@ metrics{ 'Fuel Cell' } = define() {
 
 function MEwave_metrics() 
 {
-	//metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
-	// second metric table example - under development
-	/*
-	metric( 'device_average_power', {'label'='Average power per device', 'mode'='f', 'deci'='0', 'thousep'='true','post'='kW', 'tableName'='Table2' } );
-	metric( 'system_capacity', {'label'='System Capacity', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= 'kW', 'tableName'='Table2'});
-	metric( 'capacity_factor', {'label'='Capacity Factor', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'= '%', 'tableName'='Table2'});
-	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table2' } );
-	metric( 'total_capital_cost_per_kwh', {'label'='Total capital cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= '$/kWh', 'tableName'='Table3' });
-	metric( 'total_capital_cost_per_kw', {'label'='Total capital cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= '$/kW', 'tableName'='Table3' });
-	metric( 'total_device_cost_per_kwh', {'label'='Total device cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= '$/kWh', 'tableName'='Table3' });
-	metric( 'total_device_cost_per_kw', {'label'='Total device cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= '$/kW', 'tableName'='Table3' });
-	metric( 'total_bos_cost_per_kwh', {'label'='Total balance of system cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='$/kWh', 'tableName'='Table3' });
-	metric( 'total_bos_cost_per_kw', {'label'='Total balance of system cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='$/kW', 'tableName'='Table3' });
-	metric( 'total_financial_cost_per_kwh', {'label'='Total financial cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='$/kWh', 'tableName'='Table3' });
-	metric( 'total_financial_cost_per_kw', {'label'='Total financial cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='$/kW', 'tableName'='Table3' });
-	metric( 'total_operations_cost_per_kwh', {'label'='Total operating cost (annual)', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='$/kWh', 'tableName'='Table3' });
-	metric( 'total_operations_cost_per_kw', {'label'='Total operating cost (annual)', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='$/kW', 'tableName'='Table3' });
-	metric( 'total_installed_cost_lcoe', {'label'='Total installed cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table3' });
-	metric( 'total_device_cost_lcoe', {'label'='Total device cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table3' });
-	metric( 'total_bos_cost_lcoe', {'label'='Total balance of system cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table3' });
-	metric( 'total_financial_cost_lcoe', {'label'='Total financial cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table3' });
-	metric( 'total_operations_cost_lcoe', {'label'='Total operating cost (annual)', 'mode'= 'f', 'deci'='2', 'thousep'='true', 'post'='%', 'tableName'='Table3' });
-	*/
-	//change to separate functions
 	
 	//metric_row( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
 	
@@ -414,15 +394,15 @@ function MEwave_metrics()
 		metric( 'system_capacity', {'label'='System capacity', 'mode'='f', 'deci'='3', 'thousep'='true', 'post'= ' kW', 'tableName'='Table1','scale'='1'});
 		metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='3', 'thousep'='true', 'post'= ' %', 'tableName'='Table1','scale'='1'});
 	}
-	
-	
-	metric_table('Table2', {'headers'='Category,Costs,Costs per capacity,LCOE'});
-	metric_row( 'total_installed_cost,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' , $/kW, $/kWh', 'pre'='$,,','tableName'='Table2' });
-	metric_row( 'device_costs_total,total_device_cost_per_kw,total_device_cost_kwh', {'label'='-  Device cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' , $/kW, $/kWh', 'pre'='$,,','tableName'='Table2' });
-	metric_row( 'balance_of_system_cost_total,total_bos_cost_per_kw,total_bos_cost_kwh', {'label'='-  Balance of system cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' , $/kW, $/kWh', 'pre'='$,,','tableName'='Table2' });
-	metric_row( 'financial_cost_total,total_financial_cost_per_kw,total_financial_cost_kwh', {'label'='-  Financial cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' , $/kW, $/kWh', 'pre'='$,,','tableName'='Table2' });
-	metric_row( 'total_operating_cost,total_operations_cost_per_kw,total_om_cost_kwh', {'label'='O&M cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' /yr, $/kW/yr, $/kWh', 'pre'='$,,','tableName'='Table2' });
 
+	if (financing()  != "None") {
+		metric_table('Table2', {'headers'='Category,Cost,Cost per capacity,LCOE'});
+		metric_row( 'total_installed_cost,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'device_costs_total,total_device_cost_per_kw,total_device_cost_kwh', {'label'='-  Device cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'balance_of_system_cost_total,total_bos_cost_per_kw,total_bos_cost_kwh', {'label'='-  Balance of system cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'financial_cost_total,total_financial_cost_per_kw,total_financial_cost_kwh', {'label'='-  Financial cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $, $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'total_operating_cost,total_operations_cost_per_kw,total_om_cost_kwh', {'label'='O&M cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' $/yr, $/kW/yr, $/kWh', 'tableName'='Table2' });
+	}
 	
 }
 

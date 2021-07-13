@@ -1569,7 +1569,7 @@ X
 9
 Y
 3
-537
+534
 Width
 3
 870
@@ -1828,7 +1828,7 @@ X
 18
 Y
 3
-102
+105
 Width
 3
 855
@@ -1856,7 +1856,7 @@ Name
 solar_resource_file
 X
 3
-105
+102
 Y
 3
 609
@@ -2687,7 +2687,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-32928
+32883
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
