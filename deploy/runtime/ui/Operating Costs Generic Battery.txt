@@ -1580,7 +1580,7 @@ Tool Tip
 Caption
 5
 11
-Power Pland
+Power Plant
 TextColour
 4
 0
