@@ -961,7 +961,7 @@ void ResultsViewer::Setup(Simulation* sim)
                     group = "Hourly Data";
                     time_step = 1;
                 }
-                else if (n == 2920 || (n < 2920 && steps_per_hour < 1))
+                else if (n == 2920)
                 {
                     group = "Three Hour Data";
                     time_step = 3;
