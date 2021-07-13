@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Wind Capital Costs</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "cc_wind.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Wind Capital Costs</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The Wind System Costs page allows you to specify the costs of a wind power project. For information about sources of wind cost data, see <a href="https://sam.nrel.gov/wind.html" target="_blank" class="weblink" title="https://sam.nrel.gov/wind.html">https://sam.nrel.gov/wind.html</a>.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">The default cost values that appear when you create a file or case are intended to illustrate SAM's use. The cost data are meant to be realistic, but not to represent actual costs for a specific project. For more information and a list of online resources for cost data, see the technology pages on the <a href="https://sam.nrel.gov" target="_blank" class="weblink" title="https://sam.nrel.gov">SAM website</a>.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The System Costs page only available for cases with a cash-flow-based financial model. It is not available with the No Financial Model option or the LCOE Calculator financial model.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Capital Cost Models</span></h3>
+<p class="p_Text"><span class="f_Text">The capital cost models are implementations of NREL cost models that you can use to estimate turbine and balance-of-system (BOS) costs.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Land-based installation</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to apply capital costs from NREL cost models for land-based wind farms.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Offshore installation</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to use default values for offshore wind farms.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Estimate turbine costs now</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Replace the </span><span class="f_CHInterfaceElement">Turbine cost</span><span class="f_VariableDescription"> &quot;cost per kW&quot; value with a value from the NREL cost models, and set the &quot;cost per turbine&quot; and &quot;fixed cost&quot; values to zero. The cost estimates include sales tax, so this also sets the sales tax basis to zero.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Go to balance-of-system (BOS) cost model inputs</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click this button to show the inputs for either the land-based or offshore BOS cost models. To apply a BOS cost from one of the BOS, first populate the inputs for either the land-based or offshore BOS model, and then click </span><span class="f_CHInterfaceElement">Apply BOS Estimate</span><span class="f_VariableDescription"> to apply the value. </span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_VariableDescription"><a href="cc_wind.htm#landbosmodel" class="topiclink">Land Based Balance of System Cost model</a></span></p><p class="p_VariableDescription" style="text-indent: 0; padding-left: 13px; margin-left: 24px;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:13px;margin-left:-13px">&#8226;</span><span class="f_VariableDescription"><a href="cc_wind.htm#offshorebos" class="topiclink">Offshore Balace of System Cost model</a></span></p><h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Capital Costs</span></h3>
+<p class="p_Text"><span class="f_Text">A capital cost represents an expense for a specific piece of equipment or installation service that applies in year zero of the cash flow.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note:</span><span class="f_Note"> Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different direct capital cost categories does not affect the final results.</span></p>
+<p class="p_Text"><span class="f_Text">For each direct cost category, you can specify the cost in $/kW of wind farm capacity, a fixed cost in $, or a cost per turbine in $/turbine. If you specify more than one cost, for example a foundation cost in both $/kW and $/turbine, SAM adds the values together to calculate the total category cost.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Turbine Cost</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cost of a single turbine. You can type values in $/kW, $/turbine, fixed amount, or a combination of the three. The total turbine cost is the sum of three values.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Balance of System cost</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Material, labor, and other costs associated with building turbine foundations for the entire wind farm. You can type values in $/kW, $/turbine, fixed amount, or a combination of the three. The total turbine cost is the sum of three values.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Wind farm capacity</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The wind farm's nameplate capacity from the <a href="wind_farm.htm" class="topiclink">Wind Farm</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of turbines</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of turbines in the project from the <a href="wind_farm.htm" class="topiclink">Wind Farm</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total installed cost</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The sum of the total turbine cost and total balance of system cost.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total installed cost per kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total installed cost divided by the wind farm nameplate capacity.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Operation and Maintenance Costs</span></h3>
+<p class="p_Text"><span class="f_Text">Operating costs represent annual expenditures on equipment and services that occur after the system is installed. SAM allows you to enter operating costs in three ways: Fixed annual, fixed by capacity, and variable by generation. Operating costs are reported on the project <a href="cashflow.htm" class="topiclink">cash flow</a> in Years 1 and later.</span></p>
+<p class="p_Text"><span class="f_Text">For each operating cost category, you can specify an optional annual </span><span class="f_CHInterfaceElement">Escalation Rate</span><span class="f_Text"> to represent an expected annual increase in operating cost above the annual inflation rate specified on the <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page. For an escalation rate of zero, the operating cost in years two and later is the year one cost adjusted for inflation. For a non-zero escalation rate, the operating cost in years two and later is the year one cost adjusted for inflation plus escalation.</span></p>
+<p class="p_Text"><span class="f_Text">For expenses such as component replacements that occur in particular years, you can use an annual schedule to assign costs to individual years. See below for details.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fixed annual cost ($/yr)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed annual cost that applied to each year in the project cash flow.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fixed cost by capacity ($/kW-yr)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed annual cost proportional to the system's rated or nameplate capacity.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Variable cost by generation ($/MWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A variable annual cost proportional to the system's total annual electrical output in AC megawatt-hours. The annual energy output depends on either the performance model's calculated first year value and the </span><span class="f_CHInterfaceElement">degradation rate</span><span class="f_VariableDescription"> from the <a href="lifetime.htm" class="topiclink">Lifetime</a> page, or on an annual schedule of costs, depending on the option chosen.</span></p>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0 3px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="landbosmodel" class="hmanchor"></a><img id="TOGGLE0186A1_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A1','TOGGLE0186A1_ICON')">Land-Based Balance of System Cost LandBOSSE Model</a></span></td></tr></table></div><div id="TOGGLE0186A1" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The Land-Based Balance of System cost model is an implementation of NREL's LandBOSSE model Costs inputs apply only when you choose the </span><span class="f_CHInterfaceElement">Land-based installation</span><span class="f_Text"> option under </span><span class="f_CHInterfaceElement">Capital Cost Models</span><span class="f_Text">. SAM applies the results of the BOS cost model to the </span><span class="f_CHInterfaceElement">Balance of System Cost</span><span class="f_Text"> input when you click </span><span class="f_CHInterfaceElement">Apply BOS Estimate</span><span class="f_Text">.</span></p>
+<p class="p_Text"><span class="f_Text">For information and references about the NREL LandBOSSE model in SAM, see the &quot;Wind Cost Data&quot; section of the <a href="https://sam.nrel.gov/wind.html" target="_blank" class="weblink" title="https://sam.nrel.gov/wind.html">Wind page on the SAM website</a>. Those materials include:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Eberle, A.; Roberts, O.; Key, A.; Bhaskar, P.; Dykes, K. (2019) NREL's Balance-of-System Cost Model for Land-Based Wind. National Renewable Energy Laboratory. 62 pp. NREL/TP-6A20-72201. (<a href="https://www.nrel.gov/docs/fy19osti/72201.pdf" target="_blank" class="weblink">PDF 3.0 MB</a>)</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">LandBOSSE in SAM (Tutorial/Documentation). Description of the LandBOSSE implementation in SAM. (<a href="https://sam.nrel.gov/images/web_page_files/sam-wind-landbosse-tutorial-nov-2020.pdf" target="_blank" class="weblink">PDF 603 KB</a>)</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast"><a href="https://github.com/wisdem/landbosse" target="_blank" class="weblink">LandBOSSE source code on GitHub</a>.</span></p><p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The LandBOSSE cost model runs separately from the SAM simulation. The cost model calculates a cost estimate that you can use for SAM's balance of system cost input in the Capital Costs section at the top of the System Costs page. The SAM simulation uses the value of that input in the financial model's cash flow calculations.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Enable LandBOSSE Model</span></h3>
+<p class="p_Text"><span class="f_Text">The first time you check Enable Land-Based Balance of System Cost Model, SAM installs the NREL LandBOSSE BOS cost model. Once the cost model is installed, when you check the box, SAM enables the BOS model inputs.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> It may take a few minutes to install the LandBOSSE model. After the model is installed, it takes a few moments to run, so be prepared to wait after clicking </span><span class="f_CHInterfaceElement">Enable Land-Based Balance of System Cost Model</span><span class="f_Note">, </span><span class="f_CHInterfaceElement">Calculate BOS</span><span class="f_Note">, or </span><span class="f_CHInterfaceElement">Apply BOS Estimate</span><span class="f_Note">.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Balance of System Model Inputs</span></h3>
+<p class="p_Text"><span class="f_Text">To enable these inputs, click </span><span class="f_CHInterfaceElement">Enable Land-Based Balance of System Cost Model</span><span class="f_Text">.</span></p>
+<p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_ListLast" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">For a detailed description of these inputs and instructions for using the LandBOSSE model, see &quot;LandBOSSE in SAM (Tutorial/Documentation)&quot;, a description of the LandBOSSE model implementation in SAM. (<a href="https://sam.nrel.gov/images/web_page_files/sam-wind-landbosse-tutorial-nov-2020.pdf" target="_blank" class="weblink">PDF 603 KB</a>)</span></p><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Interconnect voltage, kV</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The voltage at the interconnection point between the project substation and the interconnecting utility substation.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Distance to interconnect, miles</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The distance bewteen the substation and point of interconnection with the grid.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Turbine foundation depth, m</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The depth of the turbine foundation. The LandBOSSE model uses costs for a shallow spread-foot foundation design.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Turbine rated thrust, N</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum force experienced by the wind turbine under extreme conditions. This affects the foundation cost.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Labor cost multiplier</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Multiplier for all labor costs in the model.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">50-year gust velocity, m/s</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Wind velocity for the extreme 50-year wind gust at the project site.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Calculate BOS</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">After you have entered values for the model inputs, click </span><span class="f_CHInterfaceElement">Calculate BOS</span><span class="f_VariableDescription"> to run the model and calculate a balance-of-system cost estimate. It may take a few moments for the model to run. When the model finishes, it populates values udner </span><span class="f_CHInterfaceElement">Balance of System Model Results</span><span class="f_VariableDescription"> and </span><span class="f_CHInterfaceElement">Balance of System Model Detailed Results</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you want to use the calculated cost estimate for your SAM simulation, click </span><span class="f_CHInterfaceElement">Apply BOS estimate</span><span class="f_VariableDescription">.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Balance of System Model Results</span></h3>
+<p class="p_Text"><span class="f_Text">After you click </span><span class="f_CHInterfaceElement">Calculate BOS</span><span class="f_Text">, when the LandBOSSE model finishes running, it displays the total BOS cost estimate along with cost details from the model.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total BOS Cost Estimate, $</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total balance of system cost estimate calculated by the LandBOSSE model.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">BOS Cost Estimate per kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cost estimate in dollars per kW of nameplate capacity. When you click </span><span class="f_CHInterfaceElement">Apply BOS Estimate</span><span class="f_VariableDescription">, SAM copies this value to the balance of system cost input under </span><span class="f_Term">Capital Costs</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Apply BOS Estimate</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click to replace the balance of system &quot;cost per kW&quot; SAM cost input under </span><span class="f_CHInterfaceElement">Capital Costs</span><span class="f_VariableDescription"> with the BOS cost estimate calculated by the LandBOSSE model. This sets the balance of system &quot;cost per turbine&quot; and &quot;fixed cost&quot; to zero.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rock Trenching Required</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The percentage of total gravel/rock thermal backfill required to optimize soil thermal resistivity for collector cabling.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Contingency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A percentage of the BOS total costs set aside for unexpected costs that occur during the construction period.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Warranty Management</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cost of personnel to manage contracts during the warranty period and make any required claims as a percentage of the total balance of system costs.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Sales and Use Tax</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Taxes on projects vary dramatically by counties and states, with some having Renewable Energy Zones without taxes. &nbsp;For more information on sales and use taxes in the United States, see the <a href="http://taxfoundation.org/article/state-and-local-sales-tax-rates-2013" target="_blank" class="weblink" title="http://taxfoundation.org/article/state-and-local-sales-tax-rates-2013">Tax Foundation</a> and <a href="http://www.dsireusa.org/summarytables/finre.cfm" target="_blank" class="weblink" title="http://www.dsireusa.org/summarytables/finre.cfm">DSIRE USA</a> websites.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Overhead</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Percentage of the project budget for overhead costs such as administration, trailer rental, utilities, etc.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Profit Margin</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Percentage of the BOS project that is being considered as the project profit margin for the BOS activities.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Development Fee</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">This is the accumulation of different costs of developing a project such as real estate, wind resource study, interconnection costs, environmental and permitting, etc. &nbsp;This could also include project profits created by the sale of the project from one developer to another developer.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Balance of System Detailed Results</span></h3>
+<p class="p_Text"><span class="f_Text">The detailed results shows the cost breakdown of results from the LandBOSSE model. For details</span><span class="f_ListLast">, see &quot;LandBOSSE in SAM (Tutorial/Documentation)&quot;, a description of the LandBOSSE model implementation in SAM. (<a href="https://sam.nrel.gov/images/web_page_files/sam-wind-landbosse-tutorial-nov-2020.pdf" target="_blank" class="weblink">PDF 603 KB</a>).</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 2px 2px 2px 2px; margin: 3px 0 3px 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:19px"><a id="offshorebos" class="hmanchor"></a><img id="TOGGLE0186A2_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" width="16" height="16" style="margin:0;width:16px;height:16px;border:none" src="ico-minus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:HMToggle('toggle','TOGGLE0186A2','TOGGLE0186A2_ICON')">Offshore Balance of System Cost Model</a></span></td></tr></table></div><div id="TOGGLE0186A2" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 6px 0;"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The offshore balance of system cost model is for a wind farm installed offshore, in a body of water such as coastal ocean waters or lake. The model calculates a value for the </span><span class="f_CHInterfaceElement">Balance of System</span><span class="f_Text"> cost input in $/kW based on the data you provide for the detailed costs.</span></p>
+<p class="p_Text"><span class="f_Text">For a description of the model and its inputs, see </span><span class="f_Text" style="font-family: Arial,Helvetica,sans-serif; background-color: #ffffff;">Maness, M.; Maples, B.; Smith, A.; NREL Offshore Balance-of-System Model. National Renewable Energy Laboratory, NREL/TP-6A20-66874. (<a href="http://www.nrel.gov/docs/fy17osti/66874.pdf" target="_blank" class="weblink">PDF 4.7 MB</a>).</span></p>
+<p class="p_Text"><span class="f_Text" style="font-family: Arial,Helvetica,sans-serif; background-color: #ffffff;">After you specify values for the detailed inputs, click&nbsp;</span><span class="f_CHInterfaceElement">Apply BOS Estimate</span><span class="f_Text" style="font-family: Arial,Helvetica,sans-serif; background-color: #ffffff;">&nbsp;to calculate the BOS cost and automatically apply it to the&nbsp;</span><span class="f_CHInterfaceElement">Balance of System Cost</span><span class="f_Text" style="font-family: Arial,Helvetica,sans-serif; background-color: #ffffff;">.</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+</td></tr></table>
+
+<script type="text/javascript">
+HMInitToggle('TOGGLE0186A1_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.png','hm.src1','ico-minus-16x16.png','onclick','HMToggle(\'toggle\',\'TOGGLE0186A1\',\'TOGGLE0186A1_ICON\')');
+HMInitToggle('TOGGLE0186A1','hm.type','dropdown','hm.state','0');
+HMInitToggle('TOGGLE0186A2_ICON','hm.type','dropdown','hm.state','0','hm.src0','ico-plus-16x16.png','hm.src1','ico-minus-16x16.png','onclick','HMToggle(\'toggle\',\'TOGGLE0186A2\',\'TOGGLE0186A2_ICON\')');
+HMInitToggle('TOGGLE0186A2','hm.type','dropdown','hm.state','0');
+</script>
+</body>
+</html>

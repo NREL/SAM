@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Geothermal Capital Costs</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "cc_geothermal.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Geothermal Capital Costs</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">As with all of the SAM models, the cost page is used to calculate a total installed cost and an operating cost for use in the financial models. The inputs on this page do not impact the performance of the system.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">The default cost values that appear when you create a file or case are intended to illustrate SAM's use. The cost data are meant to be realistic, but not to represent actual costs for a specific project. For more information and a list of online resources for cost data, see the technology pages on the <a href="https://sam.nrel.gov" target="_blank" class="weblink" title="https://sam.nrel.gov">SAM website</a>.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The System Costs page only available for cases with a cash-flow-based financial model. It is not available with the No Financial Model option or the LCOE Calculator financial model.</span></p>
+<p class="p_Text"><span class="f_Text">This is an overview of the geothermal cost inputs (which come from the GETEM model). For more details of how geothermal system costs are specified in the SAM's geothermal model, see the following sections of the GETEM documentation at the following link: <a href="https://energy.gov/eere/geothermal/getem-manuals-and-revision-notes" target="_blank" class="weblink">https://energy.gov/eere/geothermal/getem-manuals-and-revision-notes</a>.</span></p>
+<p class="p_Text"><span class="f_Text">From the GETEM Guide to Providing Input to the Model, May 2011:</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Model Input</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Pages 10-22</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Binary</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Section 4.1.c on page A-11</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Section 4.1.g on page A-15</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Flash</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Section 5.2.a on page A-20</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Number of Wells to Drill</span></h3>
+<p class="p_Text"><span class="f_Text">GETEM calculates the number of production wells necessary based on inputs on the <a href="geo_plant_equipment.htm" class="topiclink">Plant and Equipment</a> page. Based on the number of production wells required, you can specify how many wells have to be drilled in this section.</span></p>
+<p class="p_Text"><span class="f_Text">Because confirmation wells can sometimes be used for production, this section has an input to specify what portion of the confirmation wells will be used on this way. The number of confirmation wells that will be used for production is calculated by multiplying the number of confirmation wells (entered in the &quot;Drilling and Associated Costs&quot; section) by the &quot;% of Confirmation Wells Used for Production&quot; and is shown in the &quot;Number of Confirmation Wells&quot; textbox.</span></p>
+<p class="p_Text"><span class="f_Text">The rest of the production wells have to be drilled and will incur the production well drilling cost. The number of production wells that will have to be drilled is calculated by subtracting the production wells to be drilled from the total production wells required and is shown in the &quot;Number of Production Wells to be Drilled&quot; textbox.</span></p>
+<p class="p_Text"><span class="f_Text">The number of injection wells is typically a function of the number of production wells. You can specify this ration in the &quot;Ratio of Injection Wells to Production Wells&quot; input. (Keep in mind that the ratio is the injection wells to the total number of production wells, not the number of production wells that have to be drilled.) This value will be multiplied by the &quot;Total Production Wells Required&quot; value to calculate the &quot;Number of Injection Wells to be Drilled.&quot;</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Drilling and associated costs</span></h3>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Exploration and Confirmation</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cost for exploration and confirmation wells is expressed as a function of the cost of a production well. The &quot;Cost multiplier&quot; column is multiplied by the production well cost to calculate the &quot;Cost per well.&quot; This value is multiplied by the &quot;# of wells&quot; input to calculated the &quot;Drilling cost&quot;. You can specify other costs for exploration and confirmation in the &quot;Non-drilling cost&quot; column, which will be added to the &quot;Drilling cost&quot; to calculate the total.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Production and Injection</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Production and injection drilling costs are specified as a function of the depth of the wells. The well depth is assumed to be the resource depth, specified on the Resource input page. The drilling cost per well is calculated using the depth and the chosen cost curve, which is a function relating well depth to cost. The 3 Cost Curves (Low, Medium, and High) bracket the Sandia National Laboratories drilling data (see GETEM reference manuals for details). The cost per well for production and injection wells (derived from the depth and the cost curve) is shown in the &quot;Cost per well&quot; column. The number of wells shown in the &quot;# of wells&quot; column comes from the values in the &quot;Number of Wells to Drill&quot; section above. The &quot;Drilling cost&quot; is calculated by multiplying the &quot;# of wells&quot; by the &quot;Cost per well.&quot; The total number of wells and drilling cost is displayed below the Production and Injection wells. You can specify non-drilling costs in this row, which will be added to the drilling cost, to calculate the total cost for production and injection wells.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Surface Equipment, Installation and Stimulation Cost</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Surface equipment and well stimulation costs are assumed to be a function of the total number of production and injection wells. The value entered in the &quot;Cost per well&quot; column will be multiplied by the value in the &quot;# of wells&quot; column to calculate the total, shown in the &quot;Non-drilling cost&quot; column.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Over-riding calculated costs</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">You can choose to override drilling and associated cost calculations and enter their own cost. If the &quot;Calculate&quot; box is unchecked, the total for the section will be the value entered in the &quot;Specified Total Drilling, Surface Equipment, and Stimulation Cost&quot; input.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Plant Capital Cost</span></h3>
+<p class="p_Text"><span class="f_Text">The plant capital costs are entered on a &quot;per Kw&quot; basis, meaning that you enter the dollars per kilowatt, and SAM will multiply this by the size of the unit (from the &quot;Plant and Equipment&quot; input page) to calculate the Power Plant Cost.</span></p>
+<p class="p_Text"><span class="f_Text">The calculated value can be over-ridden by un-checking the &quot;Calculated&quot; checkbox and entering a value in the &quot;Specified Plant Cost&quot; input.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Pump Cost Inputs</span></h4>
+<p class="p_Text"><span class="f_Text">The pump costs are entered as a function of the pump depth and pump size (calculated on the Plant and Equipment input page). The installation and casing cost is specified on a per foot basis and multiplied by the calculated pump depth to determine the total cost. Pump cost is specified on a per horsepower basis and is multiplied by a function of the pump size to determine the cost per pump.</span></p>
+<p class="p_Text"><span class="f_Text">The total installed cost per pump is the sum of the pump cost and the installation and casing cost. This is multiplied by the total number of production wells required to calculate the total pump cost.</span></p>
+<p class="p_Text"><span class="f_Text">The calculated value can be over-ridden by un-checking the &quot;Calculated&quot; checkbox and entering a value in the &quot;Specified Pump Cost&quot; input.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Recapitalization Cost</span></h4>
+<p class="p_Text"><span class="f_Text">The recapitalization cost will be added each time the resource has to be re-drilled to reach a new section of the geothermal resource in order to increase the production well temperature. Recapitalization costs can be specified directly, or calculated by checking the &quot;Calculate&quot; checkbox. The calculated value is the sum of confirmation, production, and injection drilling costs (excluding non-drilling costs), the surface equipment and installation cost, and the total pump costs.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Total Installed Costs</span></h4>
+<p class="p_Text"><span class="f_Text">The total installed cost is the sum of all of the direct and indirect capital costs that you specify. SAM uses this value to calculate the project's <a href="mtf_costs.htm" class="topiclink">net capital cost</a>, which is the total installed cost less any cash incentives on the <a href="incentives.htm" class="topiclink">Incentives</a> page and plus any additional financing costs from <a href="financial_parameters.htm" class="topiclink">Financial Parameters</a> page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total installed cost ($)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The sum of total direct cost and total indirect cost.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total installed cost per capacity ($/Wdc or $/kW)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Total installed cost divided by the total system rated or nameplate capacity. This value is provided for reference only. SAM does not use it in cash flow calculations.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Indirect Capital Costs</span></h4>
+<p class="p_Text"><span class="f_Text">Indirect capital costs are broken down into three types: engineering, procurement, and construction; project, land, and misc; and sales tax. The first two can be entered as a percentage of direct costs, as a stand alone value, or both (which will be summed to calculate a total). The sales tax percentage is entered on the Financial Parameters page and is applied to some portion of the direct cost. These three types of indirect costs are summed to calculated the total indirect cost.</span></p>
+<p class="p_Text"><span class="f_Text">The calculated value can be over-ridden by un-checking the &quot;Calculated&quot; checkbox and entering a value in the &quot;Specified Indirect Cost&quot; input.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>
