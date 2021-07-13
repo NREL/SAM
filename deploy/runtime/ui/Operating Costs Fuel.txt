@@ -605,7 +605,7 @@ TabOrder
 om_capacity
 3
 2
-Fixed cost by capacity
+Operating cost by capacity
 $/kW-yr
 Operating Costs
 0
@@ -619,7 +619,7 @@ SchedNumeric
 om_capacity_escal
 3
 1
-Fixed cost per capacity escalation
+Operating cost by capacity escalation rate
 %/yr
 Operating Costs
 0
@@ -633,7 +633,7 @@ Numeric
 om_fixed
 3
 2
-Fixed annual cost
+Fixed operating cost
 $/yr
 Operating Costs
 0
@@ -647,7 +647,7 @@ SchedNumeric
 om_fixed_escal
 3
 1
-Fixed annual cost escalation
+Fixed operating cost escalation rate
 %/yr
 Operating Costs
 0
@@ -675,7 +675,7 @@ SchedNumeric
 om_fuel_cost_escal
 3
 1
-Fossil fuel cost escalation
+Fossil fuel cost escalation rate
 %/yr
 Operating Costs
 0
@@ -689,7 +689,7 @@ Numeric
 om_production
 3
 2
-Variable cost by generation
+Variable operating cost
 $/MWh
 Operating Costs
 0
@@ -703,7 +703,7 @@ SchedNumeric
 om_production_escal
 3
 1
-Variable cost by generation escalation
+Variable operating cost escalation rate
 %/yr
 Operating Costs
 0
