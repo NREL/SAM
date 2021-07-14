@@ -1,5 +1,5 @@
 1
-821
+823
 A_aperture
 1
 1
@@ -3761,6 +3761,18 @@ om_fixed
 1
 0
 om_fixed_escal
+1
+1
+1
+1
+0
+om_fuel_cost
+1
+2
+1
+1
+10
+om_fuel_cost_escal
 1
 1
 1
