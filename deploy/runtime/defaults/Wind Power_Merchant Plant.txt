@@ -1,5 +1,5 @@
 1
-599
+600
 a_error_test_number
 1
 1
@@ -178,6 +178,12 @@ cambium_scenario
 4
 8
 Mid-case
+cambium_start_year
+1
+1
+1
+1
+0
 cambium_year
 1
 4

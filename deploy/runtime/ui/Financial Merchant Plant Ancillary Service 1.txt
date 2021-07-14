@@ -490,13 +490,18 @@ Merchant Plant Revenue
 Default
 
 0
-2535
+2955
 on_load{'Financial Merchant Plant Ancillary Service 1'} = define() {
 	property("mp_energy_market_revenue","AnalysisPeriod",value("analysis_period"));
 	property("mp_ancserv1_revenue","AnalysisPeriod",value("analysis_period"));
 	property("mp_ancserv2_revenue","AnalysisPeriod",value("analysis_period"));
 	property("mp_ancserv3_revenue","AnalysisPeriod",value("analysis_period"));
 	property("mp_ancserv4_revenue","AnalysisPeriod",value("analysis_period"));
+	property("mp_energy_market_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv1_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv2_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv3_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv4_revenue_single","AnalysisPeriod",value("analysis_period"));
 	update_merchant_plant_inputs();
 	refresh();
 };

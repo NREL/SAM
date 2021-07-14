@@ -1,5 +1,5 @@
 1
-819
+820
 A_aperture
 1
 1
@@ -780,6 +780,12 @@ cambium_scenario
 4
 8
 Mid-case
+cambium_start_year
+1
+1
+1
+1
+0
 cambium_year
 1
 4

@@ -517,7 +517,7 @@ Merchant Plant Revenue
 Default
 
 0
-3027
+3447
 function update_merchant_plant_inputs()
 {
 	market_enable = value('mp_enable_energy_market_revenue');
@@ -557,6 +557,11 @@ on_load{'Financial Merchant Plant Energy Market Revenue'} = define() {
 	property("mp_ancserv2_revenue","AnalysisPeriod",value("analysis_period"));
 	property("mp_ancserv3_revenue","AnalysisPeriod",value("analysis_period"));
 	property("mp_ancserv4_revenue","AnalysisPeriod",value("analysis_period"));
+	property("mp_energy_market_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv1_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv2_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv3_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv4_revenue_single","AnalysisPeriod",value("analysis_period"));
 	update_merchant_plant_inputs();
 	refresh();
 };

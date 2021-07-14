@@ -1,5 +1,5 @@
 1
-886
+887
 6par_aisc
 1
 1
@@ -376,6 +376,12 @@ cambium_scenario
 4
 8
 Mid-case
+cambium_start_year
+1
+1
+1
+1
+0
 cambium_year
 1
 4

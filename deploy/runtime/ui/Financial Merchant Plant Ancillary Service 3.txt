@@ -193,8 +193,8 @@ Tool Tip
 0
 Caption
 5
-28
-Enable energy market revenue
+27
+Enable ancillary service #3
 State
 2
 1
@@ -266,8 +266,8 @@ Tool Tip
 0
 Caption
 5
-21
-Energy Market Revenue
+28
+Ancillary Service #3 Revenue
 Bold
 2
 1
@@ -490,13 +490,18 @@ Merchant Plant Revenue
 Default
 
 0
-501
+921
 on_load{'Financial Merchant Plant Ancillary Service 3'} = define() {
 	property("mp_energy_market_revenue","AnalysisPeriod",value("analysis_period"));
 	property("mp_ancserv1_revenue","AnalysisPeriod",value("analysis_period"));
 	property("mp_ancserv2_revenue","AnalysisPeriod",value("analysis_period"));
 	property("mp_ancserv3_revenue","AnalysisPeriod",value("analysis_period"));
 	property("mp_ancserv4_revenue","AnalysisPeriod",value("analysis_period"));
+	property("mp_energy_market_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv1_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv2_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv3_revenue_single","AnalysisPeriod",value("analysis_period"));
+	property("mp_ancserv4_revenue_single","AnalysisPeriod",value("analysis_period"));
 	update_merchant_plant_inputs();
 	refresh();
 };
