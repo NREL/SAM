@@ -2971,7 +2971,7 @@ om_fuel_cost
 2
 1
 1
-10.37
+10
 om_fuel_cost_escal
 1
 1
