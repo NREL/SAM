@@ -51,6 +51,42 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
+// this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
+version_upgrade{'2021.6.2'} = define() {
+
+	const cfg = config();
+	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' );
+	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' );
+	is_fom_fin = ( cfig.fin == 'Single Owner' || cfig.fin == 'Leveraged Partnership Flip' || cfig.fin == 'All Equity Partnership Flip' || cfig.fin == 'Sale Leaseback' || cfig.fin == 'Merchant Plant' );
+	if ( is_batt_tech )
+	{
+		if ( is_fom_fin )
+		{
+			old = oldvalue( 'batt_dispatch_choice_ui');
+			if ( old == 0 ) { new == 0; value( 'automated_dispatch_choice', 0 ); }
+			if ( old == 1 ) { new == 0; value( 'automated_dispatch_choice', 1 ); }
+			if ( old == 2 ) { new == 1; }
+			if ( old == 3 ) { new == 2; }
+			if ( old == 4 ) { new == 3; }
+			value( 'batt_dispatch_choice_ui', new );
+			message( 'The inputs for front-of-meter battery dispatch options have been reorganized. Please check the options on the Battery Dispatch input page to verify they were correctly converted.' );
+			// check for custom weather file for forecast
+		}
+		if ( is_btm_fin )
+		{
+			old = oldvalue( 'batt_dispatch_choice_ui');
+			if ( old == 0 ) { new == 0; value( 'peak_shaving_batt_dispatch_choice', 0 ); }
+			if ( old == 1 ) { new == 0; value( 'peak_shaving_batt_dispatch_choice', 1 ); }
+			if ( old == 2 ) { new == 1; }
+			if ( old == 3 ) { new == 2; }
+			if ( old == 4 ) { new == 3; }
+			if ( old == 5 ) { new == 4; }
+			value( 'batt_dispatch_choice_ui', new );
+			message( 'The inputs for behind-the-meter battery dispatch options have been reorganized. Please check the options on the Battery Dispatch input page to verify they were correctly converted.' );
+		}
+	}
+};
+
 version_upgrade{'2020.11.29'} = define() {
     const cfg = config();
 	if( cfg.tech == 'MSPT' )
