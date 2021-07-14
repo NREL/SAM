@@ -49,7 +49,7 @@
 <p class="p_VariableDescription"><span class="f_VariableDescription">Use this option to define an array of devices by specifying the number of rows and devices per row under </span><span class="f_CHInterfaceElement">Array Layout</span><span class="f_VariableDescription">.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Array Layout</span></h4>
 <p class="p_Text"><span class="f_Text">The Array Layout parameters define the relative positions of devices when there is more than one device, and the lengths of electrical cable connecting the array to the shore. SAM can only model devices arranged in rectangular arrays.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The array layout parameters are used to calculate cable lengths for cost calculations on the System Costs page. These parameters do not affect estimates of electrical losses on the Losses page.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The array layout parameters are used to calculate cable lengths for cost calculations on the Installation Costs page. These parameters do not affect estimates of electrical losses on the Losses page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of rows</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Number of device rows perpendicular to the wave direction.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Devices per row</span></p>
@@ -59,7 +59,7 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row spacing</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The distance between rows in meters. This variable is hidden when there is a single device in the system.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Distance to shore, m</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The distance between the edge of the array closest to the shore and the shoreline in meters. Used to calculate the export cable cost on the System Costs page.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The distance between the edge of the array closest to the shore and the shoreline in meters. Used to calculate the export cable cost on the Installation Costs page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Water depth, m</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The average depth of water in the array in meters.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cable system overbuild, %</span></p>
@@ -69,7 +69,7 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Build export cable redundancy</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Adds extra length to export cable length, assuming two export cables instead of one.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Calculated Cable Lengths</span></h4>
-<p class="p_Text"><span class="f_Text">The calculated cable length values are determined from the array layout parameters and used to calculate cable costs on the System Costs page. All lengths are in meters.</span></p>
+<p class="p_Text"><span class="f_Text">The calculated cable length values are determined from the array layout parameters and used to calculate cable costs on the Installation Costs page. All lengths are in meters.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Inter-array cable length, m</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The total length of cable used within the array of devices.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Cable Length = ( Devices per Row - 1 ) × Spacing Between Devices in a Row × Number of Rows + Row Spacing × (Number of Rows - 1)</span></p>

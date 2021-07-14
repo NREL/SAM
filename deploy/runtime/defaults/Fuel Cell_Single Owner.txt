@@ -1,5 +1,5 @@
 1
-792
+790
 LeadAcid_q10
 1
 1
@@ -3675,18 +3675,6 @@ om_capacity
 1
 1
 50
-om_capacity1_nameplate
-1
-1
-1
-1
-0
-om_capacity2_nameplate
-1
-1
-1
-1
-200
 om_capacity_escal
 1
 1
@@ -3710,7 +3698,7 @@ om_fuel_cost
 2
 1
 1
-10.37
+10
 om_fuel_cost_escal
 1
 1
