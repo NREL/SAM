@@ -188,43 +188,43 @@ batt_target_choice
 1
 Grid power target options
  
-Battery Dispatch BTM 
+Battery Dispatch
 0
-1
+3
 1
 1
 1
 1
 0
-Default
+ListBox
 batt_target_power
 3
 2
 Time series grid power targets
 kWac
-Battery Dispatch BTM 
+Battery Dispatch
 0
-0
+2
 1
 2
 1
 1
 0
-Default
+DataArray
 batt_target_power_monthly
 3
 2
 Monthly grid power targets
 kWac
-Battery Dispatch BTM
+Battery Dispatch
 0
-0
+2
 1
 2
 1
 1
 0
-Default
+MonthlyFactor
 
 0
 965

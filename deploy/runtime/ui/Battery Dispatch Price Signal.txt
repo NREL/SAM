@@ -163,29 +163,30 @@ batt_cycle_cost
 2
 Cycle degradation penalty 
 $/cycle-kWh
- 
+Battery Dispatch
 0
-0
+2
 1
 2
 1
 1
 0
-Default
+SchedNumeric
 batt_cycle_cost_choice
 3
 1
 Cycle degradation penalty method
  
- 
-0
-0
+Battery Dispatch
+37
+Calculate automatically|Enter penalty
+2
 1
 1
 1
 1
 0
-Default
+ListBox
 
 0
 507
