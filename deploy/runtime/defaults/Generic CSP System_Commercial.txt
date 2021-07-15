@@ -1,5 +1,5 @@
 1
-507
+505
 FossilFill
 1
 2
@@ -575,7 +575,7 @@ csp.gss.cost.site_improvements.area
 1
 1
 1
-1.24339e+06
+1243390
 csp.gss.cost.site_improvements.cost_per_m2
 1
 1
@@ -593,7 +593,7 @@ csp.gss.cost.solar_field.area
 1
 1
 1
-1.24339e+06
+1243390
 csp.gss.cost.solar_field.cost_per_m2
 1
 1
@@ -803,7 +803,7 @@ csp.gss.sf.field_area
 1
 1
 1
-1.24339e+06
+1243390
 csp.gss.sf.irr_loss_f0
 1
 1
@@ -1869,12 +1869,6 @@ ntod
 1
 1
 9
-om_batt_replacement_cost
-1
-2
-1
-1
-0
 om_capacity
 1
 2
@@ -1918,12 +1912,6 @@ om_production
 1
 3.5
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
