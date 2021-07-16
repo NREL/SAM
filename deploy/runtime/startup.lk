@@ -11,7 +11,7 @@ if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
 // PopulateTech() function in main.cpp.
 // order of financial models for each performance model determined by order of array items in second parameter of addconfig().
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Community Solar', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -77,7 +77,8 @@ configopt( 'Leveraged Partnership Flip',  { 'tree_parent'='PPA', 'long_name'='Pa
 configopt( 'All Equity Partnership Flip', { 'tree_parent'='PPA', 'long_name'='Partnership Flip without Debt',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
 configopt( 'Sale Leaseback',              { 'tree_parent'='PPA', 'long_name'='Sale Leaseback',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
 configopt( 'Single Owner PPA Buy Rate',   { 'tree_parent'='PPA', 'long_name'='Single Owner with Buy Rate',         'short_name'='Single owner buy rate',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
-configopt( 'Merchant Plant',              { 'long_name'='Merchant Plant',                         'short_name'='Merchant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
+configopt( 'Merchant Plant',              { 'long_name'='Merchant Plant', 'short_name'='Merchant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
+configopt( 'Community Solar',             { 'long_name'='Community Solar', 'short_name'='Community', 'description'='Community solar owner model' } );
 configopt( 'None',                        { 'long_name'='No Financial Model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
 enum { LOAD_SIMPLE, LOAD_BELPE, LOAD_SIMPLE_CRIT, LOAD_BELPE_CRIT, NO_LOAD };
@@ -392,6 +393,31 @@ function setup_single_owner_pages()
   addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 }
+
+function setup_community_solar_pages()
+{
+  setting( { 'analysis_period_var'='cf_length' } );
+  addpage( [[ 'Financial CS Subscribers' ]], {'sidebar' = 'Community Solar', 'help' = 'fin_community_solar'} );
+  addpage( [[ 'Financial Analysis Parameters',
+		      'Financial Tax and Insurance Rates',
+		      'Financial Salvage Value',
+		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
+               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+           { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+  addpage( [[ 'Financial Solution Mode Single Owner',
+  			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Financial Curtailment Price', 'caption'='Curtailment Payments', 'collapsible'=true, 'collapsible_var'='revenue_curtailment_is_shown', 'collapsed_by_default'=true } ]],
+            { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
+  addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+  addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
+}
+
 
 function setup_merchant_plant_pages()
 {
@@ -942,6 +968,16 @@ addpage( [[ 'PV Capital Costs' ],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+
+setconfig( 'PVWatts', 'Community Solar' );
+setmodules( ['pvwattsv7', 'grid', 'singleowner']); // TO DO add communitysolar module when ready
+setup_pvwatts_pages();
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_community_solar_pages();
 
 setconfig( 'PVWatts', 'Merchant Plant' );
 setmodules( ['pvwattsv7', 'grid', 'merchantplant']);
