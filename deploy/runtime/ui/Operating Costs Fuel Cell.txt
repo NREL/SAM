@@ -1,4 +1,4 @@
-Fuel Cell O and M Costs
+Operating Costs Fuel Cell
 951
 258
 48
@@ -42,13 +42,13 @@ Name
 Label1
 X
 3
-683
+777
 Y
 3
 24
 Width
 3
-203
+110
 Height
 3
 21
@@ -57,8 +57,8 @@ Tool Tip
 0
 Caption
 5
-33
-Escalation rate (above inflation)
+15
+Escalation rate
 TextColour
 4
 0
@@ -73,7 +73,7 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 1
@@ -667,7 +667,7 @@ Y
 144
 Width
 3
-99
+111
 Height
 3
 21
@@ -763,7 +763,7 @@ Y
 120
 Width
 3
-120
+111
 Height
 3
 21
@@ -907,7 +907,7 @@ Y
 96
 Width
 3
-39
+111
 Height
 3
 21
@@ -955,7 +955,7 @@ Y
 72
 Width
 3
-39
+111
 Height
 3
 21
@@ -1099,7 +1099,7 @@ Y
 48
 Width
 3
-39
+111
 Height
 3
 21
@@ -1108,8 +1108,8 @@ Tool Tip
 0
 Caption
 5
-3
-kWh
+6
+DC kWh
 TextColour
 4
 0
@@ -2332,15 +2332,15 @@ TabOrder
 3
 4294967295
 
-25
+23
 add_om_num_types
 3
 1
+Operating cost types flag
  
- 
-Operation and Maintenance Costs
+Operating Costs
 0
-8
+4
 1
 1
 1
@@ -2351,8 +2351,8 @@ fc_fuel_cost
 3
 2
 Fuel cell fuel cost
-$/MMBTU
-Operation and Maintenance Costs
+$/MMBtu or $/MCf
+Operating Costs
 0
 3
 1
@@ -2364,9 +2364,9 @@ SchedNumeric
 om_batt_capacity_cost
 3
 2
-Battery fixed cost by capacity 
+Battery operating cost by capacity 
 $/kW-yr 
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2378,9 +2378,9 @@ SchedNumeric
 om_batt_fixed_cost
 3
 2
-Battery fixed annual cost 
+Battery fixed operating cost 
 $/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2394,7 +2394,7 @@ om_batt_replacement_cost
 2
 Battery replacement cost
 $/kWh
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2406,23 +2406,9 @@ SchedNumeric
 om_batt_variable_cost
 3
 2
-Battery production cost
+Battery variable operating cost
 $/kWh discharged
-Operation and Maintenance Costs
-0
-1
-1
-2
-1
-1
-0
-Default
-om_capacity
-3
-2
-PV fixed cost by capacity
-$/kW-yr 
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2431,40 +2417,26 @@ Operation and Maintenance Costs
 1
 0
 SchedNumeric
-om_capacity1_nameplate
+om_capacity
+3
+2
+Operating cost by capacity
+$/kW-yr 
+Operating Costs
+0
 3
 1
-Battery bank capacity for cost calculations 
-kW
-Operation and Maintenance Costs
-0
-9
-1
-1
+2
 1
 1
 0
-Default
-om_capacity2_nameplate
-3
-1
-Fuel cell capacity for cost calculations
-kW
-Operation and Maintenance Costs
-0
-9
-1
-1
-1
-1
-0
-Default
+SchedNumeric
 om_capacity_escal
 3
 1
-Fixed cost per capacity escalation
+Operating cost by capacity escalation rate
 %/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2476,9 +2448,9 @@ Numeric
 om_fixed
 3
 2
-PV fixed annual cost 
+Fixed operating cost
 $/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2490,9 +2462,9 @@ SchedNumeric
 om_fixed_escal
 3
 1
-Fixed annual cost escalation
+Fixed operating cost escalation rate
 %/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2505,10 +2477,10 @@ om_fuel_cost
 3
 2
 Fossil fuel cost
-$/MMBTU
-Operation and Maintenance Costs
+$/MMBtu
+Operating Costs
 0
-8
+3
 1
 2
 1
@@ -2520,7 +2492,7 @@ om_fuel_cost_escal
 1
 Fossil fuel cost escalation
 %/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 9
 1
@@ -2532,9 +2504,9 @@ Numeric
 om_fuel_price_units
 3
 1
-Fuel units
+Fuel cost units (0=MMBtu 1=MCf)
  
-Operation and Maintenance Costs
+Operating Costs
 13
 $/MCf|$/MMBtu
 3
@@ -2547,9 +2519,9 @@ Choice
 om_fuelcell_capacity_cost
 3
 2
-Fuel cell fixed cost by capacity
+Fuel cell operating cost by capacity
 $/kW-yr
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2561,9 +2533,9 @@ SchedNumeric
 om_fuelcell_fixed_cost
 3
 2
-Fuel cell fixed annual cost
+Fuel cell fixed operating cost
 $/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2577,7 +2549,7 @@ om_fuelcell_replacement_cost
 2
 Fuel cell stack replacement cost
 $/kW
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2589,23 +2561,23 @@ SchedNumeric
 om_fuelcell_variable_cost
 3
 2
-Fuel cell production cost
+Fuel cell variable operating cost
 $/kWh generated
-Operation and Maintenance Costs
+Operating Costs
 0
-1
+3
 1
 2
 1
 1
 0
-Default
+SchedNumeric
 om_production
 3
 2
-PV variable cost by generation
+Variable operating cost
 $/MWh 
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2617,9 +2589,9 @@ SchedNumeric
 om_production_escal
 3
 1
-Variable cost by generation escalation
+Variable operating cost escalation rate
 %/yr
-Operation and Maintenance Costs
+Operating Costs
 0
 3
 1
@@ -2631,9 +2603,9 @@ Numeric
 om_replacement_cost_escal
 3
 1
-Replacement cost escalation 
+Replacement cost escalation rate
 %/year
-Operation and Maintenance Costs
+Operating Costs
 0
 1
 1
@@ -2645,25 +2617,25 @@ Numeric
 ui_batt_capacity
 3
 1
-Battery capacity for cost calculations
+Battery capacity for operating cost page
 kWh
-Operation and Maintenance Costs
+Operating Costs
 0
-9
+5
 1
 1
 1
 1
 0
-Default
+Numeric
 ui_fuelcell_capacity
 3
 1
-Battery capacity for cost calculations
+Fuel cell capacity for operating cost page
 kW
-Operation and Maintenance Costs
+Operating Costs
 0
-9
+5
 1
 1
 1
@@ -2673,30 +2645,34 @@ Default
 ui_pv_capacity
 3
 1
-PV capacity for cost calculations
+PV capacity for operating cost page
 kW
-Operation and Maintenance Costs
+Operating Costs
 0
-9
+5
 1
 1
 1
 1
 0
-Default
+Numeric
 
-1111
+926
 
 equations{ 'om_fuel_cost'} = define(){
 	fuel_price = ${fc_fuel_cost};
 	// need all prices in $/MMBtu 
 	// Convert $/MCF to $/MMBtu (1 MCF = 1.037 MCF)
 	if (${om_fuel_price_units} == 0)
+	{
 		for(i=0;i<#fuel_price;i++)
+		{
 			fuel_price[i] = fuel_price[i] * 1.037;
-	
+		}	
+	}
 	return fuel_price;
 };
+
 /*
 Set additional o and m cost values calculated in financial models
 only one fuel cost 
@@ -2705,13 +2681,6 @@ since have different multipliers base on technology
 */
 equations{ 'add_om_num_types'} = define(){
 	return 2;
-};
-equations{ 'om_capacity1_nameplate'} = define(){
-	return ?${en_batt}[0,${batt_power_discharge_max_kwac}];
-};
-
-equations{ 'om_capacity2_nameplate'} = define(){
-	return ${fuelcell_power_nameplate};
 };
 
 equations{ 'ui_fuelcell_capacity'} = define() {

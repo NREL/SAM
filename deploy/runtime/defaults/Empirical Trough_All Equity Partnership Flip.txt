@@ -1,5 +1,5 @@
 1
-779
+777
 AntiFrPar
 1
 1
@@ -3402,12 +3402,6 @@ nominal_discount_rate
 1
 1
 9.06
-om_batt_replacement_cost
-1
-2
-1
-1
-0
 om_capacity
 1
 2
@@ -3451,12 +3445,6 @@ om_production
 1
 4
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
