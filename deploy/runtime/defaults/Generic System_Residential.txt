@@ -1,5 +1,5 @@
 1
-289
+290
 adjust
 1
 5
@@ -368,7 +368,7 @@ first_year_output
 1
 1
 1
-1681920
+1513728
 first_year_output_peak
 1
 1
@@ -1389,6 +1389,12 @@ ui_net_capital_cost
 1
 1
 2184000
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1
