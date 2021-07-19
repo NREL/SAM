@@ -1282,7 +1282,7 @@ TabOrder
 3
 4294967295
 
-19
+18
 om_cost_input
 3
 1
@@ -1316,7 +1316,7 @@ total_bos_cost_lcoe
 1
 BOS cost
  
- 
+ME Costs
 0
 9
 1
@@ -1328,9 +1328,9 @@ Default
 total_bos_cost_per_kw
 3
 1
- 
- 
- 
+BOS cost per kW
+$/kW
+ME Costs
 0
 8
 1
@@ -1342,9 +1342,9 @@ Default
 total_bos_cost_percent
 3
 1
- 
- 
- 
+BOS cost LCOE percentage
+%
+ME Costs
 0
 8
 1
@@ -1356,9 +1356,9 @@ Default
 total_capital_cost_per_kw
 3
 1
- 
- 
- 
+Total capital cost per kW
+$/kW
+ME Costs
 0
 8
 1
@@ -1372,7 +1372,7 @@ total_device_cost_lcoe
 1
 Device cost
  
- 
+ME Costs
 0
 9
 1
@@ -1384,9 +1384,9 @@ Default
 total_device_cost_per_kw
 3
 1
- 
- 
- 
+Device cost per kW
+$/kW
+ME Costs
 0
 8
 1
@@ -1398,9 +1398,9 @@ Default
 total_device_cost_percent
 3
 1
- 
- 
- 
+Device cost LCOE percentage
+%
+ME Costs
 0
 8
 1
@@ -1414,7 +1414,7 @@ total_financial_cost_lcoe
 1
 Financial cost
  
- 
+ME Costs
 0
 9
 1
@@ -1426,9 +1426,9 @@ Default
 total_financial_cost_per_kw
 3
 1
- 
- 
- 
+Financial cost per kW
+$/kW
+ME Costs
 0
 8
 1
@@ -1440,9 +1440,9 @@ Default
 total_financial_cost_percent
 3
 1
- 
- 
- 
+Financial cost percent
+%
+ME Costs
 0
 8
 1
@@ -1454,9 +1454,9 @@ Default
 total_installed_cost_lcoe
 3
 1
- 
- 
- 
+Installed cost 
+$/kWh
+ME Costs
 0
 8
 1
@@ -1468,9 +1468,9 @@ Default
 total_installed_cost_percent
 3
 1
- 
- 
- 
+Installed cost LCOE percentage
+%
+ME Costs
 0
 8
 1
@@ -1484,23 +1484,9 @@ total_operating_cost
 1
  Total Opex
 $/year
- 
+ME Costs
 0
 9
-1
-1
-1
-1
-0
-Default
-total_operating_cost_mill
-3
-1
- 
- 
- 
-0
-8
 1
 1
 1
@@ -1512,7 +1498,7 @@ total_operations_cost_lcoe
 1
 Operating cost (annual)
  
- 
+ME Costs
 0
 9
 1
@@ -1524,9 +1510,9 @@ Default
 total_operations_cost_per_kw
 3
 1
- 
- 
- 
+Operations cost per kW
+$/kW
+ME Costs
 0
 8
 1
@@ -1538,9 +1524,9 @@ Default
 total_operations_cost_percent
 3
 1
- 
- 
- 
+Operations cost percent
+%
+ME Costs
 0
 8
 1
@@ -1550,7 +1536,7 @@ total_operations_cost_percent
 0
 Default
 
-2923
+2560
 equations {'total_operating_cost'} = define() {
 	if (${om_cost_override}!=1)
 	{
@@ -1562,9 +1548,6 @@ equations {'total_operating_cost'} = define() {
 	}
 };
 
-equations {'total_operating_cost_mill'} = define() {
-	return ${total_operating_cost}/1000000;
-};
 
 equations {'total_capital_cost_per_kw'} = define() {
 	return ${total_installed_cost}/${system_capacity};
@@ -1631,27 +1614,6 @@ equations {'total_operations_cost_lcoe'} = define(){
 	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
 };*/
 
-equations {'opex_we_shown'} = define() {
-	if (${operations_cost_method}==3) 
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-};
-
-equations {'maintenance_we_shown'} = define() {
-	if (${maintenance_cost_method}==3)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-};
 
 
 

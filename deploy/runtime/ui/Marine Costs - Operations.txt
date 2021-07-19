@@ -3356,7 +3356,7 @@ TabOrder
 annual_leases_fees_cost
 3
 1
-Annual leases and business costs 
+Annual leases and business cost input
 $ 
 ME O&M Costs
 0
@@ -3370,11 +3370,11 @@ Default
 annual_leases_fees_cost_total
 3
 1
- 
- 
- 
+Annual leases and business cost total
+$
+ME O&M Costs
 0
-8
+9
 1
 1
 1
@@ -3384,9 +3384,9 @@ Default
 annual_leases_fees_cost_total_check
 3
 1
- 
- 
- 
+Annual leases and business cost 
+$
+ME O&M Costs
 0
 8
 1
@@ -3398,11 +3398,11 @@ Default
 condition_monitoring_operations_cost
 3
 1
- 
- 
- 
+Condition and monitoring costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3454,7 +3454,7 @@ CheckBox
 environmental_health_and_safety_monitoring_cost
 3
 1
-Health and safety monitoring costs
+Health and safety monitoring cost input
 $
 ME O&M Costs
 0
@@ -3468,11 +3468,11 @@ Default
 environmental_health_and_safety_monitoring_cost_total
 3
 1
- 
- 
- 
+Health and safety monitoring cost total
+$
+ME O&M Costs
 0
-8
+9
 1
 1
 1
@@ -3482,9 +3482,9 @@ Default
 environmental_health_and_safety_monitoring_cost_total_check
 3
 1
- 
- 
- 
+Health and safety monitoring cost
+$
+ME O&M Costs
 0
 8
 1
@@ -3496,11 +3496,11 @@ Default
 environmental_monitoring_operations_cost
 3
 1
- 
- 
- 
+Environmental monitoring costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3510,11 +3510,11 @@ Default
 federal_energy_regulatory_commission_fees_cost
 3
 1
- 
- 
- 
+Federal energy regulatory commission fees cost
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3524,11 +3524,11 @@ Default
 generation_planning_and_integration_cost
 3
 1
- 
- 
- 
+Generation plannign and integrations costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3538,11 +3538,11 @@ Default
 health_safety_monitoring_cost
 3
 1
- 
- 
- 
+Health and safety monitoring cost
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3566,11 +3566,11 @@ Default
 itemized_check_operations
 3
 1
+Operations cost input choice
  
- 
- 
+ME Cost Choice
 0
-0
+1
 1
 1
 1
@@ -3580,11 +3580,11 @@ Default
 marine_energy_converter_power_consumption_cost
 3
 1
- 
- 
- 
+WEC power consumption cost
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3594,11 +3594,11 @@ Default
 marine_management_cost
 3
 1
- 
- 
- 
+Marine management cost
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3608,11 +3608,11 @@ Default
 onshore_land_lease_cost
 3
 1
- 
- 
- 
+Onshore land lease cost
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3622,11 +3622,11 @@ Default
 operating_equipment_cost
 3
 1
- 
- 
- 
+Operating equipment costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3636,11 +3636,11 @@ Default
 operating_facilities_cost
 3
 1
- 
- 
- 
+Operating facilities cost
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3650,11 +3650,11 @@ Default
 operating_margin_cost
 3
 1
- 
- 
- 
+Operating margin cost
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3664,11 +3664,11 @@ Default
 operations_cost
 3
 1
- 
- 
- 
+Operations cost
+$
+ME O&M Costs
 0
-8
+9
 1
 1
 1
@@ -3706,11 +3706,11 @@ Choice
 operations_cost_total
 3
 1
- 
- 
- 
+Operations cost total
+$
+ME O&M Costs
 0
-8
+9
 1
 1
 1
@@ -3734,11 +3734,11 @@ Default
 operations_management_general_administration_cost_total
 3
 1
- 
- 
- 
+Operations, management, and general admin cost total
+$
+ME O&M Costs
 0
-8
+9
 1
 1
 1
@@ -3748,9 +3748,9 @@ Default
 operations_management_general_administration_cost_total_check
 3
 1
- 
- 
- 
+Operations, management, and general admin costs
+$
+ME O&M Costs
 0
 8
 1
@@ -3762,11 +3762,11 @@ Default
 operations_override_check
 3
 1
+Operations override cost chocie
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -3776,11 +3776,11 @@ Default
 other_business_cost
 3
 1
- 
- 
- 
+Other business costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3790,11 +3790,11 @@ Default
 other_gen_admin_cost
 3
 1
- 
- 
- 
+Other general administration costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3804,11 +3804,11 @@ Default
 other_monitoring_cost
 3
 1
- 
- 
- 
+Other monitoring costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3832,11 +3832,11 @@ Default
 professional_advisory_services_operations_cost
 3
 1
- 
- 
- 
+Professional advisory services operations cost
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3846,11 +3846,11 @@ Default
 sales_general_and_administrative_operations_cost
 3
 1
- 
- 
- 
+Sales, general, and administrative operations costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3860,11 +3860,11 @@ Default
 submerged_land_lease_cost
 3
 1
- 
- 
- 
+Submerged land lease costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3874,11 +3874,11 @@ Default
 transmission_charges_rights_cost
 3
 1
- 
- 
- 
+Transmissions charges cost
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -3888,11 +3888,11 @@ Default
 weather_forecasting_cost
 3
 1
- 
- 
- 
+Weather forecasting cost
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1

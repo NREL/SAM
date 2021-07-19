@@ -1185,11 +1185,11 @@ Default
 itemized_check_other_infras
 3
 1
+Other infrastructure cost input chioce
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -1255,11 +1255,11 @@ Default
 other_infras_override
 3
 1
+Other infrastructure cost override
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -1269,11 +1269,11 @@ Default
 other_infrastructure_cost
 3
 1
- 
- 
- 
+Other infrastructure cost
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -1283,11 +1283,11 @@ Default
 other_infrastructure_cost_total
 3
 1
- 
- 
- 
+Other infrastructure cost total
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1

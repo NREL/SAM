@@ -4523,10 +4523,10 @@ Name
 pto_override
 X
 3
-27
+90
 Y
 3
-204
+201
 Width
 3
 90
@@ -5625,15 +5625,15 @@ TabOrder
 3
 6
 
-76
+70
 accumulators_cost
 3
 1
- 
- 
- 
+Accumulators cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -5643,7 +5643,7 @@ Default
 air_turbine_cost
 3
 1
-Air turbine costs 
+Air turbine cost input
 $
 ME Device Costs
 0
@@ -5657,11 +5657,11 @@ Default
 air_turbine_cost_total
 3
 1
- 
- 
- 
+Air turbine cost total
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -5671,9 +5671,9 @@ Default
 air_turbine_cost_total_check
 3
 1
- 
- 
- 
+Air turbine cost
+$
+ME Device Costs
 0
 8
 1
@@ -5685,11 +5685,11 @@ Default
 bearings_cost
 3
 1
- 
- 
- 
+Bearings cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -5699,11 +5699,11 @@ Default
 blades_rotor_assembly_cost
 3
 1
- 
- 
- 
+Blade and rotor assembly costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -5727,9 +5727,9 @@ Default
 coatings_pto_cost_total
 3
 1
- 
- 
- 
+Coatings (PTO) cost total
+$
+ME Device Costs
 0
 8
 1
@@ -5741,11 +5741,11 @@ Default
 cooling_system_cost
 3
 1
- 
- 
- 
+Cooling system cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -5755,11 +5755,11 @@ Default
 cooling_system_gearbox_cost
 3
 1
- 
- 
- 
+Cooling system gearbox cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -5839,7 +5839,7 @@ Default
 electrical_generator_cost
 3
 1
-Electrical generator costs 
+Electrical generator cost input
 $
 ME Device Costs
 0
@@ -5853,11 +5853,11 @@ Default
 electrical_generator_cost_total
 3
 1
- 
- 
- 
+Electrical generator cost total
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -5867,9 +5867,9 @@ Default
 electrical_generator_cost_total_check
 3
 1
- 
- 
- 
+Electrical generator cost 
+$
+ME Device Costs
 0
 8
 1
@@ -5881,11 +5881,11 @@ Default
 frequency_converter_cost
 3
 1
- 
- 
- 
+Frequency converter cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -5895,7 +5895,7 @@ Default
 gearbox_cost
 3
 1
-Gearbox (PTO) costs 
+Gearbox (PTO) cost input 
 $
 ME Device Costs
 0
@@ -5909,11 +5909,11 @@ Default
 gearbox_cost_total
 3
 1
- 
- 
- 
+Gearbox (PTO) cost total
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -5923,9 +5923,9 @@ Default
 gearbox_cost_total_check
 3
 1
- 
- 
- 
+Gearbox (PTO) cost
+$
+ME Device Costs
 0
 8
 1
@@ -5937,9 +5937,9 @@ Default
 gears_cost
 3
 1
- 
- 
- 
+Gears cost
+$
+ME Device Costs
 0
 1
 1
@@ -5979,7 +5979,7 @@ Default
 hydraulic_drivetrain_cost
 3
 1
- Hydraulic drivetrain costs
+Hydraulic drivetrain cost input
 $
 ME Device Costs
 0
@@ -5993,11 +5993,11 @@ Numeric
 hydraulic_drivetrain_cost_total
 3
 1
- 
- 
- 
+Hydraulic drivetrain cost total
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -6007,9 +6007,9 @@ Default
 hydraulic_drivetrain_cost_total_check
 3
 1
- 
- 
- 
+Hydraulic drivetrain cost
+$
+ME Device Costs
 0
 8
 1
@@ -6063,9 +6063,9 @@ Default
 itemized_check_pto
 3
 1
+PTO cost input option
  
- 
- 
+ME Cost Choice
 0
 8
 1
@@ -6105,11 +6105,11 @@ Default
 lubrication_system_cost
 3
 1
- 
- 
- 
+Lubrication system cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6119,11 +6119,11 @@ Default
 other_air_turbine_cost
 3
 1
- 
- 
- 
+Other air turbine costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6133,11 +6133,11 @@ Default
 other_electrical_generator_cost
 3
 1
- 
- 
- 
+Other electrical generator costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6147,11 +6147,11 @@ Default
 other_gearbox_cost
 3
 1
- 
- 
- 
+Other gearbox costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6161,11 +6161,11 @@ Default
 other_hydraulic_drivetrain_cost
 3
 1
- 
- 
- 
+Other hydraulic drivetrain costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6175,11 +6175,11 @@ Default
 other_power_electronics_cost
 3
 1
- 
- 
- 
+Other power electronics costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6203,9 +6203,9 @@ Default
 other_pto_total
 3
 1
- 
- 
- 
+Other PTO cost total
+$
+ME Device Costs
 0
 8
 1
@@ -6217,9 +6217,9 @@ Default
 other_shortterm_energy_storage_cost
 3
 1
- 
- 
- 
+Other short-term energy storage costs
+$
+ME Device Costs
 0
 0
 1
@@ -6231,11 +6231,11 @@ Default
 plumbing_fittings_cost
 3
 1
- 
- 
- 
+Plumbing fittings costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6245,11 +6245,11 @@ Default
 power_electrical_system_cost
 3
 1
- 
- 
- 
+Power electrical system cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6259,7 +6259,7 @@ Default
 power_electronics_cost
 3
 1
-Power electronics costs 
+Power electronics cost input
 $
 ME Device Costs
 0
@@ -6273,11 +6273,11 @@ Default
 power_electronics_cost_total
 3
 1
- 
- 
- 
+Power electronics cost total
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -6287,9 +6287,9 @@ Default
 power_electronics_cost_total_check
 3
 1
- 
- 
- 
+Power electronics cost
+$
+ME Device Costs
 0
 8
 1
@@ -6301,7 +6301,7 @@ Default
 power_takeoff_enclosure_cost
 3
 1
- PTO enclosure costs
+PTO enclosure cost
 $
 ME Device Costs
 0
@@ -6315,9 +6315,9 @@ Default
 power_takeoff_enclosure_cost_total
 3
 1
- 
- 
- 
+PTO enclosure cost total
+$
+ME Device Costs
 0
 8
 1
@@ -6329,11 +6329,11 @@ Default
 power_takeoff_system_cost
 3
 1
- 
- 
- 
+Power takeoff system cost
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -6357,9 +6357,9 @@ Numeric
 power_takeoff_system_cost_total
 3
 1
- 
- 
- 
+Power takeoff system cost total
+$
+ME Device Costs
 0
 8
 1
@@ -6385,11 +6385,11 @@ Numeric
 primary_hydraulic_pump_cost
 3
 1
- 
- 
- 
+Primary hydraulic pump cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6399,11 +6399,11 @@ Numeric
 pto_override
 3
 1
- 
- 
- 
+PTO cost input override option
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -6413,11 +6413,11 @@ Default
 rectifying_circuit_cost
 3
 1
- 
- 
- 
+Rectifying circuit cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6427,11 +6427,11 @@ Numeric
 rotors_cost
 3
 1
- 
- 
- 
+Rotors cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6441,11 +6441,11 @@ Default
 scada_cost
 3
 1
- 
- 
- 
+SCADA costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6455,11 +6455,11 @@ Default
 sensor_elec_gen_cost
 3
 1
- 
- 
- 
+Electric generator sensor costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6469,11 +6469,11 @@ Default
 sensors_cost
 3
 1
- 
- 
- 
+Sensors cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6483,11 +6483,11 @@ Default
 shaft_assembly_cost
 3
 1
- 
- 
- 
+Shaft assembly cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6511,9 +6511,9 @@ Default
 shortterm_energy_storage_cost_total
 3
 1
- 
- 
- 
+Short-term energy storage cost total
+$
+ME Device Costs
 0
 8
 1
@@ -6525,11 +6525,11 @@ Default
 stator_cost
 3
 1
- 
- 
- 
+Stator costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -6539,25 +6539,11 @@ Default
 struct_and_mechanical_cost
 3
 1
- 
- 
- 
-0
+Structural and mechanical costs
+$
+ME Device Costs
 0
 1
-1
-1
-1
-0
-Default
-test_num
-3
-1
- 
- 
- 
-0
-0
 1
 1
 1
@@ -6581,9 +6567,9 @@ Default
 transport_power_conversion_chain_cost_total
 3
 1
- 
- 
- 
+Power conversion chain transport cost total
+$
+ME Device Costs
 0
 8
 1
@@ -6597,7 +6583,7 @@ turbine_bearings_cost
 1
 Turbine bearings cost 
 $ 
- 
+ME Device Costs
 0
 3
 1
@@ -6609,81 +6595,11 @@ Default
 valves_cost
 3
 1
- 
- 
- 
+Valve costs
+$
+ME Device Costs
 0
-0
 1
-1
-1
-1
-0
-Default
-variable_air_turbine
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-variable_electrical_generator
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-variable_gearbox
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-variable_hydraulic_drivetrain
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-variable_power_electronics
-3
-1
- 
- 
- 
-0
-8
 1
 1
 1
@@ -6691,7 +6607,7 @@ variable_power_electronics
 0
 Default
 
-6667
+3623
 equations {'hydraulic_drivetrain_cost_total'} = define() {
 	return ${primary_hydraulic_pump_cost}+${rectifying_circuit_cost}+
 		${accumulators_cost}+${hydraulic_motor_cost}+${hydraulic_reservoir_cost}+${hydraulic_fluid_cost}+
@@ -6753,45 +6669,6 @@ equations {'itemized_check_pto'} = define() {
 	}
 };
 
-equations {'variable_hydraulic_drivetrain'} = define() {
-	if (${hydraulic_drivetrain_cost}!=0 && ${primary_hydraulic_pump_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${hydraulic_drivetrain_cost}!=0 && ${rectifying_circuit_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${hydraulic_drivetrain_cost}!=0 && ${accumulators_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${hydraulic_drivetrain_cost}!=0 && ${hydraulic_motor_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${hydraulic_drivetrain_cost}!=0 && ${valves_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${hydraulic_drivetrain_cost}!=0 && ${hydraulic_reservoir_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${hydraulic_drivetrain_cost}!=0 && ${plumbing_fittings_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${hydraulic_drivetrain_cost}!=0 && ${other_hydraulic_drivetrain_cost}!=0)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-};
-
 equations {'hydraulic_drivetrain_cost_total_check'} = define() {
 	if (${detailed_cost_choice_hydraulic_drivetrain}==0)
 		{
@@ -6803,40 +6680,6 @@ equations {'hydraulic_drivetrain_cost_total_check'} = define() {
 		}
 };
 	
-equations {'variable_gearbox'} = define() {
-	if (${gearbox_cost}!=0 && ${gears_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${gearbox_cost}!=0 && ${bearings_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${gearbox_cost}!=0 && ${housing_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${gearbox_cost}!=0 && ${sensors_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${gearbox_cost}!=0 && ${lube_system_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${gearbox_cost}!=0 && ${cooling_system_gearbox_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${gearbox_cost}!=0 && ${other_gearbox_cost}!=0)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-};
 
 equations {'gearbox_cost_total_check'} = define() {
 	if (${detailed_cost_choice_gearbox}==0) 
@@ -6847,33 +6690,6 @@ equations {'gearbox_cost_total_check'} = define() {
 		{
 			return ${gearbox_cost_total};
 		}
-};
-
-equations {'variable_air_turbine'} = define() {
-	if (${air_turbine_cost}!=0 && ${blades_rotor_assembly_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${air_turbine_cost}!=0 && ${hub_assembly_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${air_turbine_cost}!=0 && ${shaft_assembly_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${air_turbine_cost}!=0 && ${turbine_bearings_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${air_turbine_cost}!=0 && ${other_air_turbine_cost}!=0)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
 };
 
 equations {'air_turbine_cost_total_check'} = define() {
@@ -6887,40 +6703,7 @@ equations {'air_turbine_cost_total_check'} = define() {
 		}
 };
 
-equations {'variable_electrical_generator'} = define() {
-	if (${electrical_generator_cost}!=0 && ${cooling_system_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${electrical_generator_cost}!=0 && ${lubrication_system_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${electrical_generator_cost}!=0 && ${rotors_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${electrical_generator_cost}!=0 && ${sensors_elec_gen_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${electrical_generator_cost}!=0 && ${stator_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${electrical_generator_cost}!=0 && ${struct_and_mechanical_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${electrical_generator_cost}!=0 && ${other_electrical_generator_cost}!=0)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-};
+
 
 equations {'electrical_generator_cost_total_check'} = define() {
 	if (${detailed_cost_choice_electrical_generator}==0)
@@ -6933,28 +6716,6 @@ equations {'electrical_generator_cost_total_check'} = define() {
 		}
 };
 
-equations {'variable_power_electronics'} = define() {
-	if (${power_electronics_cost}!=0 && ${frequency_converter_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${power_electronics_cost}!=0 && ${power_electrical_system_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${power_electronics_cost}!=0 && ${scada_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${power_electronics_cost}!=0 && ${other_power_electronics_cost}!=0)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-};
 
 equations {'power_electronics_cost_total_check'} = define() {
 	if (${detailed_cost_choice_power_electronics}==0)
@@ -6992,7 +6753,7 @@ equations {'pto_override'} = define() {
 
 
 
-10135
+10096
 on_load{'Marine Costs - PTO'} = define() {
 	check_override_pto();
 	on_change{'pto_override'};
@@ -7223,7 +6984,6 @@ function enable_itemized_pto()
 	enable('coatings_pto_cost',itemized_value==1);
 	enable('transport_power_conversion_chain_cost',itemized_value==1);
 	enable('other_pto_cost',itemized_value==1);
-	enable('test_num',itemized_value==1);
 	enable('power_takeoff_system_cost_input',itemized_value!=2);
 	show('power_takeoff_system_cost_input',(itemized_value==0 || itemized_value==2));
 	//show('power_takeoff_system_cost_input_label',(itemized_value==0 || itemized_value==2));

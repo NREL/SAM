@@ -1,6 +1,6 @@
 Marine Costs - Financial
-924
-448
+918
+442
 40
 Label
 
@@ -1979,13 +1979,13 @@ AlignTop
 2
 0
 
-31
+28
 carrying_cost_during_construction_cost
 3
 1
- 
- 
- 
+Carrying cost during construction
+$
+ME Financial Costs
 0
 0
 1
@@ -2078,28 +2078,14 @@ $
 1
 0
 Default
-financial_cost_total_mill
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 insurance_during_construction_cost
 3
 1
- 
- 
- 
+Insurance during construction cost
+$
+ME Financial Costs
 0
-8
+9
 1
 1
 1
@@ -2137,11 +2123,11 @@ Choice
 itemized_check_construction_insurance
 3
 1
+Construction insurance cost input choice
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -2151,11 +2137,11 @@ Default
 itemized_check_contingency
 3
 1
+Contingency costs cost input choice
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -2165,11 +2151,11 @@ Default
 itemized_check_other_financial
 3
 1
+Other financial cost input choice
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -2179,11 +2165,11 @@ Default
 itemized_check_reserve_accounts
 3
 1
+Reserve accounts cost input choice
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -2207,11 +2193,11 @@ Default
 other_financial_cost
 3
 1
- 
- 
- 
+Other financial costs
+$
+ME Financial Costs
 0
-8
+9
 1
 1
 1
@@ -2249,11 +2235,11 @@ Default
 other_financial_cost_modeled
 3
 1
- 
- 
- 
+Other financial cost modeled
+$
+ME Financial Costs
 0
-8
+9
 1
 1
 1
@@ -2264,8 +2250,8 @@ other_reserve_account_cost
 3
 1
 Other reserve account costs 
- 
- 
+$
+ME Financial Costs
 0
 3
 1
@@ -2277,11 +2263,11 @@ Default
 project_contingency_budget_cost
 3
 1
- 
- 
- 
+Project contingency budget cost
+$
+ME Financial Costs
 0
-8
+9
 1
 1
 1
@@ -2319,11 +2305,11 @@ Choice
 reserve_accounts_cost
 3
 1
- 
- 
- 
+Reserve accounts costs
+$
+ME Financial Costs
 0
-8
+9
 1
 1
 1
@@ -2361,11 +2347,11 @@ Choice
 reserve_accounts_cost_total
 3
 1
- 
- 
- 
+Reserve accounts cost total
+$
+ME Financial Costs
 0
-8
+9
 1
 1
 1
@@ -2375,37 +2361,9 @@ Default
 total_installed_cost
 3
 1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-total_installed_cost_mill
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-total_test
-3
-1
- 
- 
- 
+Total installed cost
+$
+ME Costs
 0
 8
 1
@@ -2415,7 +2373,7 @@ total_test
 0
 Default
 
-1800
+1702
 equations {'total_installed_cost'} = define() {
 	//fin_cost = round(${financial_cost_total});
 	//bos_cost = round(${balance_of_system_cost_total});
@@ -2428,10 +2386,6 @@ equations {'total_installed_cost'} = define() {
 
 equations {'total_test'} = define() {
 	return ${financial_cost_total} + ${device_costs_total} + ${balance_of_system_cost_total};
-};
-
-equations {'total_installed_cost_mill'} = define() {
-	return ${total_installed_cost}/1000000;
 };
 
 

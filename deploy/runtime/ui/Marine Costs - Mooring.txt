@@ -3237,11 +3237,11 @@ Default
 ancillary_marine_systems_cost_total
 3
 1
- 
- 
- 
+Ancillary marine systems cost total
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -3251,9 +3251,9 @@ Default
 ancillary_marine_systems_cost_total_check
 3
 1
- 
- 
- 
+Ancillary marine systems cost input option
+$
+ME Device Costs
 0
 8
 1
@@ -3265,11 +3265,11 @@ Default
 ballast_system_mooring_cost
 3
 1
- 
- 
- 
+Ballast system cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3279,11 +3279,11 @@ Default
 cathodic_protection_system_cost
 3
 1
- 
- 
- 
+Cathodic protection system cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3293,11 +3293,11 @@ Default
 condition_monitoring_cost
 3
 1
- 
- 
- 
+Condition monitoring cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3363,9 +3363,9 @@ Default
 itemized_check_mooring
 3
 1
+Morring cost input option
  
- 
- 
+ME Cost Choice
 0
 8
 1
@@ -3377,11 +3377,11 @@ Default
 ladders_cost
 3
 1
- 
- 
- 
+Ladders cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3391,11 +3391,11 @@ Default
 marine_coatings_cost
 3
 1
- 
- 
- 
+Marine coatings cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3419,11 +3419,11 @@ Default
 mooring_found_substruc_cost
 3
 1
- 
- 
- 
+Mooring cost 
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -3433,11 +3433,11 @@ Default
 mooring_found_substruc_cost_total
 3
 1
- 
- 
- 
+Mooring cost total
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -3461,11 +3461,11 @@ Default
 mooring_override
 3
 1
+Mooring override option
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -3475,11 +3475,11 @@ Default
 other_ancillary_marine_system_cost
 3
 1
- 
- 
- 
+Other ancillary marine system costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3503,11 +3503,11 @@ Default
 other_outfitting_structure_cost
 3
 1
- 
- 
- 
+Other outfitting structure costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3531,11 +3531,11 @@ Default
 outfitting_structure_cost_total
 3
 1
- 
- 
- 
+Outfitting structure cost total
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -3545,9 +3545,9 @@ Default
 outfitting_structure_cost_total_check
 3
 1
- 
- 
- 
+Outfitting structure cost input option
+$
+ME Device Costs
 0
 8
 1
@@ -3559,11 +3559,11 @@ Default
 personnel_access_system_mooring_cost
 3
 1
- 
- 
- 
+Personnel access system cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3573,11 +3573,11 @@ Default
 railings_cost
 3
 1
- 
- 
- 
+Railings cost
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3601,11 +3601,11 @@ Default
 service_platforms_and_decks_cost
 3
 1
- 
- 
- 
+Service platforms and decks costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3643,11 +3643,11 @@ Default
 vessel_landing_cost
 3
 1
- 
- 
- 
+Vessels landing costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1

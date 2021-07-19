@@ -1791,11 +1791,11 @@ TabOrder
 balance_of_system_scheduled_maintenance_cost
 3
 1
- 
- 
- 
+Scheduled balance of system maintenance costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -1805,11 +1805,11 @@ Default
 balance_of_system_unscheduled_maintenance_cost
 3
 1
- 
- 
- 
+Unscheduled balance of system maintenance costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -1847,11 +1847,11 @@ CheckBox
 itemized_check_maintenance
 3
 1
+Maintenance cost input choice
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -1875,11 +1875,11 @@ Default
 maintenance_cost
 3
 1
- 
- 
- 
+Maintenance cost
+$
+ME O&M Costs
 0
-8
+9
 1
 1
 1
@@ -1917,11 +1917,11 @@ Choice
 maintenance_cost_total
 3
 1
- 
- 
- 
+Maintenance cost total
+$
+ME O&M Costs
 0
-8
+9
 1
 1
 1
@@ -1931,11 +1931,11 @@ Default
 maintenance_override_check
 3
 1
+Maintenance cost override choice
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -1945,11 +1945,11 @@ Default
 marine_energy_converter_scheduled_maintenance_cost
 3
 1
- 
- 
- 
+Scheduled marine energy converter maintenance costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -1959,11 +1959,11 @@ Default
 marine_energy_converter_unscheduled_maintenance_cost
 3
 1
- 
- 
- 
+Unscheduled marine energy converter maintenance costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -1987,11 +1987,11 @@ Default
 other_scheduled_maintenance_cost
 3
 1
- 
- 
- 
+Other scheduled maintenance costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -2001,11 +2001,11 @@ Default
 other_unscheduled_maintenance_cost
 3
 1
- 
- 
- 
+Other unscheduled maintenance costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -2029,11 +2029,11 @@ Default
 scheduled_maintenance_cost_total
 3
 1
- 
- 
- 
+Scheduled maintenance cost total
+$
+ME O&M Costs
 0
-8
+9
 1
 1
 1
@@ -2043,9 +2043,9 @@ Default
 scheduled_maintenance_cost_total_check
 3
 1
- 
- 
- 
+Scheduled maintenance cost input option
+$
+ME O&M Costs
 0
 8
 1
@@ -2057,11 +2057,11 @@ Default
 unscheduled_maintenance_contingency_cost
 3
 1
- 
- 
- 
+Unscheduled maintenance contingency costs
+$
+ME O&M Costs
 0
-0
+1
 1
 1
 1
@@ -2085,11 +2085,11 @@ Default
 unscheduled_maintenance_cost_total
 3
 1
- 
- 
- 
+Unscheduled maintenance cost total
+$
+ME O&M Costs
 0
-8
+9
 1
 1
 1
@@ -2099,9 +2099,9 @@ Default
 unscheduled_maintenance_cost_total_check
 3
 1
- 
- 
- 
+Unscheduled maintenance cost input option
+$
+ME O&M Costs
 0
 8
 1

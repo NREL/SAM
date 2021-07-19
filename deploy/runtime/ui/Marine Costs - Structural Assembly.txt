@@ -2518,13 +2518,13 @@ Tips
 5
 0
 
-87
+82
 active_structure_cost
 3
 1
- 
+Active structure cost
 $
- 
+ME Device Costs
 0
 1
 1
@@ -2550,11 +2550,11 @@ Default
 additional_structural_components_cost_total
 3
 1
- 
- 
- 
+Structural components cost total
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -2564,11 +2564,11 @@ Default
 array_cable_system_cost_input
 3
 1
- 
- 
- 
+Array cable system cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2578,9 +2578,9 @@ Default
 array_cable_system_cost_method
 3
 1
+Array cable system cost method
  
-$ 
- 
+ME Cost Choice
 0
 1
 1
@@ -2592,9 +2592,9 @@ Default
 array_cable_system_cost_modeled
 3
 1
- 
+Array cable system cost modeled
 $
- 
+ME BoS Costs
 0
 9
 1
@@ -2634,7 +2634,7 @@ Choice
 assembly_and_install_cost_modeled
 3
 1
- 
+Assembly and install cost modeled
 $
  
 0
@@ -2648,7 +2648,7 @@ Default
 ballast_system_cost
 3
 1
- 
+Ballast system cost
 $
  
 0
@@ -2662,7 +2662,7 @@ Default
 buoyancy_chamber_cost
 3
 1
- 
+Buoyancy chamber costs
 $
  
 0
@@ -2690,11 +2690,11 @@ Default
 coatings_cost_total
 3
 1
- 
- 
+Coatings (structural assembly) cost total
+$
  
 0
-8
+9
 1
 1
 1
@@ -2760,7 +2760,7 @@ Choice
 development_cost_modeled
 3
 1
- 
+Development cost modeled
 $ 
  
 0
@@ -2802,7 +2802,7 @@ Choice
 eng_and_mgmt_cost_modeled
 3
 1
- 
+Engineering and management cost modeled
 $
  
 0
@@ -2816,11 +2816,11 @@ Default
 export_cable_system_cost_input
 3
 1
- 
+Export cable system cost input
  
  
 0
-0
+1
 1
 1
 1
@@ -2830,11 +2830,11 @@ Default
 export_cable_system_cost_method
 3
 1
+Export cable system cost method
  
- 
- 
+ME Cost Choice
 0
-0
+1
 1
 1
 1
@@ -2844,7 +2844,7 @@ Default
 export_cable_system_cost_modeled
 3
 1
- 
+Export cable system cost modeled
 $
  
 0
@@ -2858,7 +2858,7 @@ Default
 external_ballast_chambers_cost
 3
 1
- 
+External ballast chambers cost
 $
  
 0
@@ -2872,7 +2872,7 @@ Numeric
 insurance_during_construction_modeled
 3
 1
- 
+Insurance during construction cost modeled
 $
  
 0
@@ -2886,11 +2886,11 @@ Default
 itemized_check_structural
 3
 1
+Structural assembly cost input option
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -2900,7 +2900,7 @@ Default
 maintenance_cost_modeled
 3
 1
- 
+Maintenance cost modeled
 $
  
 0
@@ -2919,7 +2919,7 @@ marine_energy_tech
  
 15
 0=Wave| 1=Tidal
-8
+9
 1
 1
 1
@@ -2929,11 +2929,11 @@ Default
 marine_system_cost_total_check
 3
 1
- 
+Marine systems cost 
  
  
 0
-8
+9
 1
 1
 1
@@ -2943,7 +2943,7 @@ Default
 marine_systems_cost
 3
 1
-Marine systems costs
+Marine systems cost input
 $
 ME Device Costs
 0
@@ -2957,11 +2957,11 @@ Default
 marine_systems_cost_total
 3
 1
- 
- 
- 
+Marine systems cost total
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -2975,7 +2975,7 @@ method_check
  
  
 0
-8
+9
 1
 1
 1
@@ -3013,9 +3013,9 @@ Choice
 mooring_found_substruc_cost_modeled
 3
 1
- 
+Mooring cost modeled
 $
- 
+ME Device Costs
 0
 9
 1
@@ -3027,7 +3027,7 @@ Default
 navigation_lighting_cost
 3
 1
- 
+Navigation lighting cost
 $
  
 0
@@ -3041,11 +3041,11 @@ Default
 offshore_substation_cost_input
 3
 1
- 
- 
- 
+Offshore substation cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3055,9 +3055,9 @@ Default
 offshore_substation_cost_method
 3
 1
+Offshore substation cost method
  
-$
- 
+ME Cost Choice
 0
 1
 1
@@ -3069,9 +3069,9 @@ Default
 offshore_substation_cost_modeled
 3
 1
- 
+Offshore substation cost modeled
 $
- 
+ME BoS Costs
 0
 9
 1
@@ -3083,11 +3083,11 @@ Default
 onshore_substation_cost_input
 3
 1
- 
- 
- 
+Onshore substation cost input
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -3097,9 +3097,9 @@ Default
 onshore_substation_cost_method
 3
 1
+Onshore substation cost method
  
-$
- 
+ME Cost Choice
 0
 1
 1
@@ -3111,9 +3111,9 @@ Default
 onshore_substation_cost_modeled
 3
 1
- 
+Onshore substation cost modeled
 $
- 
+ME BoS Costs
 0
 9
 1
@@ -3125,11 +3125,11 @@ Default
 operations_cost_modeled
 3
 1
- 
- 
- 
+Operations cost modeled
+$
+ME O&M Costs
 0
-8
+9
 1
 1
 1
@@ -3167,11 +3167,11 @@ Default
 other_elec_infra_cost_input
 3
 1
- 
- 
- 
+Other electrical infrastructure cost input
+$
+ME Device Costs
 0
-2
+3
 1
 1
 1
@@ -3181,9 +3181,9 @@ Default
 other_elec_infra_cost_method
 3
 1
+Other electrical infrastructure cost method
  
-$
- 
+ME Cost Choice
 0
 3
 1
@@ -3195,9 +3195,9 @@ Default
 other_elec_infra_cost_modeled
 3
 1
- 
+Other electrical infrastructure cost modeled
 $
- 
+ME Device Costs
 0
 9
 1
@@ -3237,9 +3237,9 @@ Choice
 other_infrastructure_cost_modeled
 3
 1
- 
+Other infrastructure cost modeled
 $
- 
+ME BoS Costs
 0
 9
 1
@@ -3251,11 +3251,11 @@ Default
 other_marine_system_cost
 3
 1
- 
- 
- 
+Other marine system costs
+$
+ME Device Costs
 0
-0
+1
 1
 1
 1
@@ -3265,25 +3265,11 @@ Default
 other_prime_mover_cost
 3
 1
- 
- 
- 
+Other prime mover costs
+$
+ME Device Costs
 0
-0
 1
-1
-1
-1
-0
-Default
-override_check_structural
-3
-1
- 
- 
- 
-0
-8
 1
 1
 1
@@ -3293,7 +3279,7 @@ Default
 personnel_access_system_cost
 3
 1
- 
+Personnel access system costs
 $
  
 0
@@ -3307,9 +3293,9 @@ Default
 plant_commissioning_cost_modeled
 3
 1
- 
+Plant commissioning cost modeled
 $
- 
+ME BoS Costs
 0
 9
 1
@@ -3336,7 +3322,7 @@ power_takeoff_system_cost_method
 3
 1
 PTO cost method
-$
+ 
 ME Cost Choice
 0
 3
@@ -3349,9 +3335,9 @@ Choice
 power_takeoff_system_cost_modeled
 3
 1
- 
+PTO cost modeled
 $
- 
+ME Device Costs
 0
 9
 1
@@ -3363,9 +3349,9 @@ Default
 primary_struct_assem_cost
 3
 1
- 
+Primary structural assembly cost
 $
- 
+ME Device Costs
 0
 1
 1
@@ -3377,7 +3363,7 @@ Numeric
 prime_mover_cost
 3
 1
-Prime mover costs
+Prime mover cost input
 $
 ME Device Costs
 0
@@ -3391,11 +3377,11 @@ Numeric
 prime_mover_cost_total
 3
 1
- 
- 
- 
+Prime mover cost total
+$
+ME Device costs
 0
-8
+9
 1
 1
 1
@@ -3405,11 +3391,11 @@ Default
 prime_mover_cost_total_check
 3
 1
- 
- 
- 
+Prime mover cost
+$
+ME Device Costs
 0
-8
+9
 1
 1
 1
@@ -3419,9 +3405,9 @@ Default
 project_contingency_modeled
 3
 1
- 
+Project contingency cost modeled
 $
- 
+ME Financial Costs
 0
 9
 1
@@ -3433,9 +3419,9 @@ Default
 reserve_accounts_modeled
 3
 1
- 
- 
- 
+Reserve accounts cost modeled
+$
+ME Financial Costs
 0
 9
 1
@@ -3447,8 +3433,22 @@ Default
 site_access_port_staging_cost_modeled
 3
 1
- 
+Site access and port staging cost modeled
 $
+ME BoS Costs
+0
+9
+1
+1
+1
+1
+0
+Default
+struct_override
+3
+1
+ 
+ 
  
 0
 9
@@ -3458,54 +3458,12 @@ $
 1
 0
 Default
-struct_level_total_label
-3
-1
- 
- 
- 
-0
-0
-1
-1
-1
-1
-0
-Numeric
-struct_override
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-struct_user_input_label
-3
-1
- 
- 
- 
-0
-0
-1
-1
-1
-1
-0
-Numeric
 structural_assembly_cost
 3
 1
- 
+Structural assembly cost
 $
- 
+ME Device Costs
 0
 9
 1
@@ -3545,9 +3503,9 @@ Default
 structural_assembly_cost_modeled
 3
 1
- 
+Structural assembly cost modeled
 $ 
- 
+ME Device Costs
 0
 9
 1
@@ -3563,7 +3521,7 @@ structural_assembly_cost_modeled_formatted
  
  
 0
-8
+9
 1
 1
 1
@@ -3573,9 +3531,9 @@ Default
 structural_assembly_cost_total
 3
 1
- 
+Structural assembly cost total 
 $
- 
+ME Device Costs
 0
 9
 1
@@ -3591,7 +3549,7 @@ total_bos_cost_per_kwh
  
  
 0
-8
+9
 1
 1
 1
@@ -3605,7 +3563,7 @@ total_capital_cost_per_kwh
  
  
 0
-8
+9
 1
 1
 1
@@ -3619,7 +3577,7 @@ total_device_cost_per_kwh
  
  
 0
-8
+9
 1
 1
 1
@@ -3633,7 +3591,7 @@ total_financial_cost_per_kwh
  
  
 0
-8
+9
 1
 1
 1
@@ -3661,7 +3619,7 @@ total_operations_cost_per_kwh
  
  
 0
-8
+9
 1
 1
 1
@@ -3675,7 +3633,7 @@ total_rated_capacity
  
  
 0
-0
+1
 1
 1
 1
@@ -3699,39 +3657,11 @@ Default
 transport_structure_cost_total
 3
 1
- 
- 
- 
+Structure transportation cost total
+$
+ME Device Costs
 0
-8
-1
-1
-1
-1
-0
-Default
-variable_marine_systems
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
-variable_prime_mover
-3
-1
- 
- 
- 
-0
-8
+9
 1
 1
 1
@@ -3739,7 +3669,7 @@ variable_prime_mover
 0
 Default
 
-8912
+7852
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -3948,66 +3878,6 @@ equations {'method_check'} = define() {
 		];
 };
 
-equations {'variable_marine_systems'} = define() {
-	if (${marine_systems_cost}!=0 && ${personnel_access_system_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${marine_systems_cost}!=0 && ${ballast_system_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${marine_systems_cost}!=0 && ${navigation_lighting_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${marine_systems_cost}!=0 && ${other_marine_system_cost}!=0)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-};
-
-equations {'variable_prime_mover'} = define() {
-	if (${prime_mover_cost}!=0 && ${primary_struct_assem_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${prime_mover_cost}!=0 && ${buoyancy_chamber_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${prime_mover_cost}!=0 && ${external_ballast_chambers_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${prime_mover_cost}!=0 && ${active_structure_cost}!=0)
-	{
-		return 1;
-	}
-	else if (${prime_mover_cost}!=0 && ${other_prime_mover_cost}!=0)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
-};
-
-equations {'override_check_structural'} = define() {
-	if (${device_cost_override}==0)
-	{
-		return 0;
-	}
-	else
-	{
-		return 1;
-	}
-};
 
 equations {'struct_override'} = define() {
 	return ${device_cost_override};};

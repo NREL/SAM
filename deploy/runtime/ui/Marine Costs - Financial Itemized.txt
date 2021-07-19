@@ -1,6 +1,6 @@
 Marine Costs - Financial Itemized
-918
-218
+915
+205
 18
 Label
 
@@ -822,11 +822,11 @@ Tips
 financial_override_check
 3
 1
+Financial override check
  
- 
- 
+ME Financial Costs
 0
-8
+9
 1
 1
 1
@@ -836,11 +836,11 @@ Default
 insurance_during_construction_cost_modeled_ui
 3
 1
- 
- 
- 
+Insurance during construction cost modeled
+$
+ME Financial Costs
 0
-8
+9
 1
 1
 1
@@ -850,11 +850,11 @@ Default
 project_contingency_cost_modeled_ui
 3
 1
- 
- 
- 
+Project contingency cost modeled
+$
+ME Financial Costs
 0
-8
+9
 1
 1
 1
@@ -864,11 +864,11 @@ Default
 reserve_accounts_cost_modeled_ui
 3
 1
- 
- 
- 
+Reserve accounts cost modeled 
+$
+ME Financial Costs
 0
-8
+9
 1
 1
 1

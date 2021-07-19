@@ -1559,7 +1559,7 @@ Y
 372
 Width
 3
-90
+100
 Height
 3
 24
@@ -2214,11 +2214,11 @@ TabOrder
 assembly_areas_cost
 3
 1
- 
- 
- 
+Assembly areas cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2270,11 +2270,11 @@ Default
 entrance_exit_fees_cost
 3
 1
- 
- 
- 
+Entrance and exit fees costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2284,11 +2284,11 @@ Default
 fabrication_facilities_cost
 3
 1
- 
- 
- 
+Fabrication facilities costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2298,11 +2298,11 @@ Default
 itemized_check_site_access
 3
 1
+Site access cost input option
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -2312,11 +2312,11 @@ Default
 laydown_area_cost
 3
 1
- 
- 
- 
+Laydown area costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2326,11 +2326,11 @@ Default
 other_port_fees_cost
 3
 1
- 
- 
- 
+Other port fees cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2354,11 +2354,11 @@ Default
 other_staging_port_cost
 3
 1
- 
- 
- 
+Other staging port costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2368,11 +2368,11 @@ Default
 personnel_facilities_cost
 3
 1
- 
- 
- 
+Personnel facilites costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2382,7 +2382,7 @@ Default
 port_fees_cost
 3
 1
-Port fees costs 
+Port fees cost input 
 $ 
 ME BoS Costs
 0
@@ -2396,11 +2396,11 @@ Default
 port_fees_cost_total
 3
 1
- 
- 
- 
+Port fees cost total
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -2410,9 +2410,9 @@ Default
 port_fees_cost_total_check
 3
 1
- 
- 
- 
+Port fees cost
+$
+ME BoS Costs
 0
 8
 1
@@ -2452,11 +2452,11 @@ Default
 quay_cost
 3
 1
- 
- 
- 
+Quay costs
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2466,11 +2466,11 @@ Default
 quayside_docking_fees_cost
 3
 1
- 
- 
- 
+Quayside docking fees cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
@@ -2480,11 +2480,11 @@ Default
 site_access_override
 3
 1
+Site access cost override option
  
- 
- 
+ME Cost Choice
 0
-8
+9
 1
 1
 1
@@ -2494,11 +2494,11 @@ Default
 site_access_port_staging_cost
 3
 1
- 
- 
- 
+Site access port staging costs
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -2536,11 +2536,11 @@ Choice
 site_access_port_staging_cost_modeled_ui
 3
 1
- 
- 
- 
+Site access port staging cost modeled
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -2550,11 +2550,11 @@ Default
 site_access_port_staging_cost_total
 3
 1
- 
- 
- 
+Site access port staging cost total
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -2564,7 +2564,7 @@ Default
 staging_port_cost
 3
 1
-Staging port costs 
+Staging port cost input
 $
 ME BoS Costs
 0
@@ -2578,11 +2578,11 @@ Default
 staging_port_cost_total
 3
 1
- 
- 
- 
+Staging port cost total
+$
+ME BoS Costs
 0
-8
+9
 1
 1
 1
@@ -2592,9 +2592,9 @@ Default
 staging_port_cost_total_check
 3
 1
- 
- 
- 
+Staging port costs
+$
+ME BoS Costs
 0
 8
 1
@@ -2606,11 +2606,11 @@ Default
 wharfage_fees_cost
 3
 1
- 
- 
- 
+Wharfage fees cost
+$
+ME BoS Costs
 0
-0
+1
 1
 1
 1
