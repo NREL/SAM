@@ -1,5 +1,5 @@
 1
-494
+491
 CT
 1
 1
@@ -1124,12 +1124,6 @@ disp_horizon
 1
 1
 48
-disp_inventory_incentive
-1
-1
-1
-1
-0.3
 disp_max_iter
 1
 1
@@ -1148,12 +1142,6 @@ disp_pen_delta_w
 1
 1
 0.1
-disp_rsu_cost
-1
-1
-1
-1
-952
 disp_time_weighting
 1
 1
@@ -1166,12 +1154,6 @@ disp_timeout
 1
 1
 5
-disp_wlim_maxspec
-1
-1
-1
-1
-1
 dispatch_data_filename
 1
 4

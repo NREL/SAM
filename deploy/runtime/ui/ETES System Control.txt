@@ -1,7 +1,7 @@
 ETES System Control
 840
-412
-28
+386
+25
 GroupBox
 
 1
@@ -573,7 +573,7 @@ X
 258
 Y
 3
-324
+318
 Width
 3
 100
@@ -635,7 +635,7 @@ X
 258
 Y
 3
-297
+294
 Width
 3
 100
@@ -752,68 +752,6 @@ Numeric
 17
 Name
 5
-24
-disp_inventory_incentive
-X
-3
-702
-Y
-3
-270
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-13
-Numeric
-
-1
-17
-Name
-5
 13
 disp_max_iter
 X
@@ -821,7 +759,7 @@ X
 702
 Y
 3
-297
+294
 Width
 3
 100
@@ -883,7 +821,7 @@ X
 702
 Y
 3
-324
+318
 Width
 3
 100
@@ -945,7 +883,7 @@ X
 258
 Y
 3
-378
+342
 Width
 3
 100
@@ -1000,68 +938,6 @@ Numeric
 17
 Name
 5
-13
-disp_rsu_cost
-X
-3
-258
-Y
-3
-351
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-10
-Numeric
-
-1
-17
-Name
-5
 19
 disp_time_weighting
 X
@@ -1069,7 +945,7 @@ X
 702
 Y
 3
-243
+270
 Width
 3
 100
@@ -1131,7 +1007,7 @@ X
 702
 Y
 3
-351
+342
 Width
 3
 100
@@ -1180,68 +1056,6 @@ BackColour
 TabOrder
 3
 16
-Numeric
-
-1
-17
-Name
-5
-17
-disp_wlim_maxspec
-X
-3
-702
-Y
-3
-378
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-17
 Numeric
 
 1
@@ -1355,7 +1169,7 @@ Width
 830
 Height
 3
-186
+156
 Tool Tip
 5
 0
@@ -1507,7 +1321,7 @@ TabOrder
 3
 1
 
-20
+17
 adjust
 3
 5
@@ -1633,20 +1447,6 @@ System Control
 1
 48
 Default
-disp_inventory_incentive
-3
-1
-Time horizon terminal TES inventory incentive
- 
- System Control
-0
-2
-1
-1
-1
-1
-0.3
-Default
 disp_max_iter
 3
 1
@@ -1689,20 +1489,6 @@ System Control
 1
 0.1
 Default
-disp_rsu_cost
-3
-1
-Receiver startup cost penalty
-$/start
-System Control
-0
-2
-1
-1
-1
-1
-952
-Default
 disp_time_weighting
 3
 1
@@ -1730,20 +1516,6 @@ System Control
 1
 1
 5
-Default
-disp_wlim_maxspec
-3
-1
-Max. net power to the grid
-MWe
-System Control
-0
-2
-1
-1
-1
-1
-1
 Default
 etes_bop_des_calc
 3
@@ -1788,7 +1560,7 @@ System Control
 0.0055
 Default
 
-5897
+6311
 equations{ '$MIMO$ ui_etes_system_control__etes_cmod' } = define()
 {
 	obj = ssc_create();
@@ -1846,6 +1618,14 @@ equations{ '$MIMO$ ui_etes_system_control__etes_cmod' } = define()
 	ssc_var(obj, "hrs_startup_at_max_rate", ${hrs_startup_at_max_rate});
 
 	ssc_var(obj, "is_dispatch", ${is_dispatch});
+	ssc_var(obj, "disp_csu_cost", ${disp_csu_cost});
+	ssc_var(obj, "disp_frequency", ${disp_frequency});
+	ssc_var(obj, "disp_horizon", ${disp_horizon});
+	ssc_var(obj, "disp_max_iter", ${disp_max_iter});
+	ssc_var(obj, "disp_mip_gap", ${disp_mip_gap});
+	ssc_var(obj, "disp_pen_delta_w", ${disp_pen_delta_w});
+	ssc_var(obj, "disp_time_weighting", ${disp_time_weighting});
+	ssc_var(obj, "disp_timeout", ${disp_timeout});
 
 	ssc_var(obj, "pb_fixed_par", ${pb_fixed_par});     
 	ssc_var(obj, "bop_par", ${bop_par});   

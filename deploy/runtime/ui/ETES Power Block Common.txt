@@ -1143,7 +1143,7 @@ Power Cycle
 0.3
 Default
 
-6522
+6937
 // Set copy of variables from MSPT System Design page
 equations{ 'PB_COPY_P_ref' } = define(){
 	return ${P_ref}; };
@@ -1223,7 +1223,15 @@ equations{ '$MIMO$ ui_etes_power_block_common__etes_cmod' } = define()
 	ssc_var(obj, "hrs_startup_at_max_rate", ${hrs_startup_at_max_rate});
 
 	ssc_var(obj, "is_dispatch", ${is_dispatch});
-
+	ssc_var(obj, "disp_csu_cost", ${disp_csu_cost});
+	ssc_var(obj, "disp_frequency", ${disp_frequency});
+	ssc_var(obj, "disp_horizon", ${disp_horizon});
+	ssc_var(obj, "disp_max_iter", ${disp_max_iter});
+	ssc_var(obj, "disp_mip_gap", ${disp_mip_gap});
+	ssc_var(obj, "disp_pen_delta_w", ${disp_pen_delta_w});
+	ssc_var(obj, "disp_time_weighting", ${disp_time_weighting});
+	ssc_var(obj, "disp_timeout", ${disp_timeout});
+	
 	ssc_var(obj, "pb_fixed_par", ${pb_fixed_par});     
 	ssc_var(obj, "bop_par", ${bop_par});   
 	ssc_var(obj, "bop_par_f", ${bop_par_f});             
