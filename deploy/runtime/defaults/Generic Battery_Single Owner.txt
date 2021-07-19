@@ -912,13 +912,13 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_total_cost_lcos
 1
 1
 1
 1
-1438480
+1.43848e+06
 battery_voltage_shown
 1
 1
@@ -1096,7 +1096,7 @@ const_per_interest1
 1
 1
 1
-1498250
+1.49825e+06
 const_per_interest2
 1
 1
@@ -1156,7 +1156,7 @@ const_per_interest_total
 1
 1
 1
-1498250
+1.49825e+06
 const_per_months1
 1
 1
@@ -1289,7 +1289,7 @@ const_per_total1
 1
 1
 1
-2996490
+2.99649e+06
 const_per_total2
 1
 1
@@ -1349,7 +1349,7 @@ construction_financing_cost
 1
 1
 1
-2996490
+2.99649e+06
 conv_eff
 1
 1
@@ -2650,6 +2650,12 @@ om_batt_fixed_cost
 1
 1
 0
+om_batt_nameplate
+1
+1
+1
+1
+4000
 om_batt_replacement_cost
 1
 2
@@ -3229,12 +3235,6 @@ total_system_indirect_cost
 1
 1
 17213904
-ui_batt_capacity
-1
-1
-1
-1
-4000
 ui_pv_capacity
 1
 1
