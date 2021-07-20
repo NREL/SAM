@@ -2026,6 +2026,12 @@ om_batt_fixed_cost
 1
 1
 0
+om_batt_nameplate
+1
+1
+1
+1
+19.2154
 om_batt_replacement_cost
 1
 2
@@ -2602,12 +2608,6 @@ ui_annual_load
 1
 1
 0
-ui_batt_capacity
-1
-1
-1
-1
-19.2154
 ui_loan_amount
 1
 1

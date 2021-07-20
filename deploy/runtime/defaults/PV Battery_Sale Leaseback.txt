@@ -4531,6 +4531,12 @@ om_batt_fixed_cost
 1
 1
 0
+om_batt_nameplate
+1
+1
+1
+1
+4000
 om_batt_replacement_cost
 1
 2
@@ -6782,12 +6788,6 @@ tz
 1
 1
 -7
-ui_batt_capacity
-1
-1
-1
-1
-4000
 ui_pv_capacity
 1
 1
