@@ -1,0 +1,774 @@
+Operating Costs Land Lease
+831
+270
+12
+GroupBox
+
+1
+8
+Name
+5
+9
+GroupBox1
+X
+3
+9
+Y
+3
+3
+Width
+3
+812
+Height
+3
+245
+Tool Tip
+5
+0
+Caption
+5
+16
+Land Lease Costs
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+27
+Y
+3
+174
+Width
+3
+640
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+10
+Land Lease
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+10
+object 215
+X
+3
+27
+Y
+3
+81
+Width
+3
+640
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+18
+Land Area Estimate
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+21
+Y
+3
+21
+Width
+3
+777
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+325
+Enter the land area multiplier and land lease cost if the project leases land. SAM calculates the land area occupied by photovoltaic modules or CSP collectors based on information on the System Design page. Use the land area multiplier to account for additional land. For land purchase costs, see the Installation Costs page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+object 79
+X
+3
+519
+Y
+3
+147
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+2
+ha
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Numeric
+
+1
+17
+Name
+5
+12
+om_land_area
+X
+3
+285
+Y
+3
+147
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+19
+om_land_lease_escal
+X
+3
+285
+Y
+3
+222
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+2
+ %
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+Numeric
+
+1
+17
+Name
+5
+17
+ui_collector_area
+X
+3
+285
+Y
+3
+99
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+15
+ui_land_area_ha
+X
+3
+417
+Y
+3
+147
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+ui_land_area_multiplier
+X
+3
+285
+Y
+3
+123
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+18
+ui_land_area_units
+X
+3
+387
+Y
+3
+198
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Items
+6
+2
+$/acre
+$/ha
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+SchedNumeric
+
+1
+12
+Name
+5
+13
+ui_land_lease
+X
+3
+285
+Y
+3
+198
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Label
+5
+14
+$/acre or $/ha
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+69
+Enter an annual land lease cost for each year of the analysis period.
+TabOrder
+3
+1
+
+8
+om_land_area
+3
+1
+Land area estimate
+acres
+ 
+0
+8
+1
+1
+1
+1
+0
+Numeric
+om_land_lease
+3
+2
+Land lease cost
+$/acre
+Operating Costs
+0
+2
+1
+2
+1
+1
+0
+SchedNumeric
+om_land_lease_escal
+3
+1
+Land lease escalation rate
+%/yr
+Operating Costs
+0
+2
+1
+1
+1
+1
+0
+Numeric
+ui_collector_area
+3
+1
+Land area occupied by modules/collectors
+acres
+ 
+0
+4
+1
+1
+1
+1
+0
+Numeric
+ui_land_area_ha
+3
+1
+Land area estimate
+ha
+ 
+0
+5
+1
+1
+1
+1
+0
+Numeric
+ui_land_area_multiplier
+3
+1
+Land area multiplier
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Numeric
+ui_land_area_units
+3
+1
+Land area units
+ 
+ 
+11
+$/acre|$/ha
+3
+1
+1
+1
+1
+0
+Choice
+ui_land_lease
+3
+2
+Annual land lease cost
+ 
+ 
+0
+2
+1
+2
+1
+1
+0
+SchedNumeric
+
+807
+equations{ 'om_land_lease'} = define(){
+	if ( ${ui_land_area_units} == 1 )
+	{
+		for ( i=0; i<#${ui_land_lease}; i++)
+		{
+			x[i] = ${ui_land_lease}[i] * 2.47105;
+		}
+	}
+	else
+	{
+		x = ${ui_land_lease};
+	}
+	return x;
+};
+
+equations{ 'om_land_area' } = define() {
+	return ${ui_collector_area} * ${ui_land_area_multiplier};
+};
+
+equations{ 'ui_collector_area' } = define() 
+{
+	if ( technology() == 'PVWatts' )
+	{ 
+		// land area estmate https://www.nrel.gov/analysis/tech-size.html
+		eff = ?${module_type}[0.17,0.201,0.156];
+		return ${system_capacity}*eff / ${gcr} * 0.0002471; // area (m2) = capacity (kW) / 1 (kW/m2)
+	}
+	elseif ( technology() == 'Flat Plate PV' )
+	{
+		return ${total_land_area};
+	}
+	else
+	{
+		return 0;
+	}
+};
+
+equations{ 'ui_land_area_ha' } = define()
+{
+	return ${om_land_area} * 0.404686;
+};
+479
+on_load{'Operating Costs Land Lease'} = define() {
+	enable_lease_escalation();
+};
+
+on_change{'ui_land_lease'} = define() {
+	enable_lease_escalation();
+};
+
+on_change{'ui_land_area_units'} = define() {
+	enable_lease_escalation();
+};
+
+function enable_lease_escalation() 
+{
+	enable( 'om_land_lease_escal',#${ui_land_lease}==1);
+	units=['$/acre','$/ha'];
+	property('ui_land_lease','Label',units[${ui_land_area_units}]);
+	property( 'ui_land_lease','FixedLength',${analysis_period});
+}

@@ -1,7 +1,7 @@
 Financial CS Subscribers
-864
-257
-20
+857
+247
+22
 Label
 
 1
@@ -12,16 +12,16 @@ Name
 msg_subscriber_share
 X
 3
-15
+12
 Y
 3
-183
+201
 Width
 3
-834
+582
 Height
 3
-57
+39
 Tool Tip
 5
 0
@@ -185,10 +185,10 @@ Name
 object 74
 X
 3
-261
+267
 Y
 3
-66
+69
 Width
 3
 99
@@ -236,10 +236,10 @@ X
 165
 Y
 3
-66
+69
 Width
 3
-90
+99
 Height
 3
 24
@@ -281,10 +281,10 @@ Name
 object 77
 X
 3
-363
+369
 Y
 3
-66
+69
 Width
 3
 99
@@ -327,6 +327,54 @@ Name
 5
 10
 object 775
+X
+3
+15
+Y
+3
+174
+Width
+3
+147
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+5
+Total
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7751
 X
 3
 15
@@ -425,7 +473,7 @@ Name
 subscriber_growth_rate_anchor
 X
 3
-363
+369
 Y
 3
 93
@@ -476,7 +524,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -487,7 +535,7 @@ Name
 subscriber_growth_rate_general
 X
 3
-363
+369
 Y
 3
 120
@@ -538,7 +586,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+4
 Numeric
 
 1
@@ -549,7 +597,7 @@ Name
 subscriber_growth_rate_subsidized
 X
 3
-363
+369
 Y
 3
 147
@@ -600,7 +648,7 @@ BackColour
 255
 TabOrder
 3
-4294967295
+6
 SchedNumeric
 
 1
@@ -617,7 +665,7 @@ Y
 93
 Width
 3
-90
+100
 Height
 3
 24
@@ -639,10 +687,11 @@ FixedLength
 4294967295
 Description
 5
-0
+57
+Enter an anchor subscriber share of system for each year.
 TabOrder
 3
-4294967295
+1
 SchedNumeric
 
 1
@@ -659,7 +708,7 @@ Y
 120
 Width
 3
-90
+100
 Height
 3
 24
@@ -681,10 +730,11 @@ FixedLength
 4294967295
 Description
 5
-0
+57
+Enter a general subscriber share of system for each year.
 TabOrder
 3
-4294967295
+3
 SchedNumeric
 
 1
@@ -701,7 +751,7 @@ Y
 147
 Width
 3
-90
+100
 Height
 3
 24
@@ -723,10 +773,11 @@ FixedLength
 4294967295
 Description
 5
-0
+60
+Enter a subsidized subscriber share of system for each year.
 TabOrder
 3
-4294967295
+5
 Numeric
 
 1
@@ -737,7 +788,7 @@ Name
 ui_share_kw_anchor
 X
 3
-261
+267
 Y
 3
 93
@@ -799,7 +850,7 @@ Name
 ui_share_kw_general
 X
 3
-261
+267
 Y
 3
 120
@@ -861,7 +912,7 @@ Name
 ui_share_kw_subsidized
 X
 3
-261
+267
 Y
 3
 147
@@ -923,10 +974,10 @@ Name
 ui_total_capacity
 X
 3
-723
+708
 Y
 3
-66
+69
 Width
 3
 90
@@ -981,17 +1032,79 @@ Numeric
 17
 Name
 5
-19
-ui_total_subscribed
+22
+ui_total_subscribed_kw
 X
 3
-723
+267
 Y
 3
-93
+174
 Width
 3
-90
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+25
+ui_total_subscribed_share
+X
+3
+165
+Y
+3
+174
+Width
+3
+100
 Height
 3
 24
@@ -1038,7 +1151,7 @@ TabOrder
 3
 4294967295
 
-11
+12
 subscriber_growth_rate_anchor
 3
 1
@@ -1179,14 +1292,28 @@ Community Solar
 1
 0
 Numeric
-ui_total_subscribed
+ui_total_subscribed_kw
 3
 1
 Total subscribed capacity in first year
 kW
 Community Solar
 0
-4
+5
+1
+1
+1
+1
+0
+Numeric
+ui_total_subscribed_share
+3
+1
+Total subscribed share in first year
+%/nameplate capacity
+Community Solar
+0
+5
 1
 1
 1
@@ -1194,15 +1321,21 @@ Community Solar
 0
 Numeric
 
-560
+729
 equations{'ui_total_capacity'} = define() {
 	return ${system_capacity};
 };
 
-equations{'ui_total_subscribed'} = define() {
+equations{'ui_total_subscribed_kw'} = define() {
 	return ${ui_share_kw_anchor}
 	+ ${ui_share_kw_general}
 	+ ${ui_share_kw_subsidized};
+};
+
+equations{'ui_total_subscribed_share'} = define() {
+	return ${subscriber_share_anchor}[0]
+	+ ${subscriber_share_general}[0]
+	+ ${subscriber_share_subsidized}[0];
 };
 
 equations{'ui_share_kw_anchor'} = define() {
@@ -1217,7 +1350,7 @@ equations{'ui_share_kw_subsidized'} = define() {
 	return ${subscriber_share_subsidized}[0]/100 * ${system_capacity};
 };
 
-1741
+1723
 on_load{'Financial CS Subscribers'} = define()
 {
 	property('subscriber_share_anchor','FixedLength',${analysis_period});
@@ -1254,17 +1387,14 @@ function enable_growth_rate()
 
 function subscriber_share_message()
 {
-	total = ${subscriber_share_anchor}[0]
-	+ ${subscriber_share_general}[0]
-	+ ${subscriber_share_subsidized}[0];
-	if ( total > 100 )
+	if ( ${ui_total_subscribed_share} > 100 )
 	{
-		msg = 'The project is oversubscribed at ' + total + '% in Year 1! Reduce the anchor, general, or subsidized subscriber subscription rate so that the total is 100% or less.'; 
+		msg = 'The project is oversubscribed at ' + ${ui_total_subscribed_share} + '% in Year 1! Reduce the anchor, general, or subsidized subscriber subscription rate so that the total is 100% or less.'; 
 		color = 'red';
 	}
 	else
 	{
-		msg = 'The project is ' + total + '% subscribed in the first year. See the unsubscribed rate in the results after running a simulation.';
+		msg = 'The unubscribed share is ' + to_string(100-${ui_total_subscribed_share}) + '% for the first year. See the unsubscribed share by year in the results after running a simulation.';
 		color = 'black';
 	}
 	property('msg_subscriber_share','Caption',msg);

@@ -397,7 +397,9 @@ function setup_single_owner_pages()
 function setup_community_solar_pages()
 {
   setting( { 'analysis_period_var'='cf_length' } );
-  addpage( [[ 'Financial CS Subscribers' ]], {'sidebar' = 'Community Solar', 'help' = 'fin_community_solar'} );
+  addpage( [[ 'Financial CS Subscribers' , 
+              'Financial CS Revenue' ,
+              'Financial CS Costs' ]], {'sidebar' = 'Community Solar', 'help' = 'fin_community_solar'} );
   addpage( [[ 'Financial Analysis Parameters',
 		      'Financial Tax and Insurance Rates',
 		      'Financial Salvage Value',
@@ -976,7 +978,7 @@ setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
-addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_community_solar_pages();
 
 setconfig( 'PVWatts', 'Merchant Plant' );
