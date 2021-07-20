@@ -109,61 +109,37 @@ Biopower,All Equity Partnership Flip,353982848,14.5781,15.9104,;
 Biopower,Sale Leaseback,353982848,13.9412,14.184,; 
 Biopower,LCOE Calculator,353982848,NA,NA,; 
 Biopower,None,353982848,NA,NA,; 
-Generic System,Residential,OVERWRITE	
-Generic System,Residential,1513728,26.7361,NA,Defaults file is likely out of date: Generic System_Residential.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 289, config has 290  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic System,Commercial,OVERWRITE	
-Generic System,Commercial,35591988,25.5779,NA,Defaults file is likely out of date: Generic System_Commercial.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 293, config has 294  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic System,Third Party,OVERWRITE	
-Generic System,Third Party,30274.6,NA,NA,Defaults file is likely out of date: Generic System_Third Party.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 127, config has 128  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic System,Host Developer,OVERWRITE	
-Generic System,Host Developer,35591988,14.4408,14.1439,Defaults file is likely out of date: Generic System_Host Developer.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 434, config has 435  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic System,Single Owner,OVERWRITE	
-Generic System,Single Owner,756864000,28.0699,29.308,Defaults file is likely out of date: Generic System_Single Owner.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 343, config has 344  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic System,Merchant Plant,OVERWRITE	
-Generic System,Merchant Plant,756864000,25.2089,NA,Defaults file is likely out of date: Generic System_Merchant Plant.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 317, config has 318  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic System,Leveraged Partnership Flip,OVERWRITE	
-Generic System,Leveraged Partnership Flip,756864000,28.4712,29.7473,Defaults file is likely out of date: Generic System_Leveraged Partnership Flip.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 344, config has 345  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic System,All Equity Partnership Flip,OVERWRITE	
-Generic System,All Equity Partnership Flip,756864000,32.8122,36.4225,Defaults file is likely out of date: Generic System_All Equity Partnership Flip.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 334, config has 335  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic System,Sale Leaseback,OVERWRITE	
-Generic System,Sale Leaseback,756864000,32.1305,35.2568,Defaults file is likely out of date: Generic System_Sale Leaseback.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 327, config has 328  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic System,LCOE Calculator,OVERWRITE	
-Generic System,LCOE Calculator,756864000,NA,NA,Defaults file is likely out of date: Generic System_LCOE Calculator.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 45, config has 46  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic System,None,OVERWRITE	
-Generic System,None,756864000,NA,NA,Defaults file is likely out of date: Generic System_None.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 16, config has 17  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Generic System,Residential,1513728,26.7361,NA,; 
+Generic System,Commercial,35591988,25.5779,NA,; 
+Generic System,Third Party,30274.6,NA,NA,; 
+Generic System,Host Developer,35591988,14.4408,14.1439,; 
+Generic System,Single Owner,756864000,28.0699,29.308,; 
+Generic System,Merchant Plant,756864000,25.2089,NA,; 
+Generic System,Leveraged Partnership Flip,756864000,28.4712,29.7473,; 
+Generic System,All Equity Partnership Flip,756864000,32.8122,36.4225,; 
+Generic System,Sale Leaseback,756864000,32.1305,35.2568,; 
+Generic System,LCOE Calculator,756864000,NA,NA,; 
+Generic System,None,756864000,NA,NA,; 
 PV Battery,Residential,8588.59,11.2055,NA,; 
 PV Battery,Commercial,911872,4.27473,NA,; 
 PV Battery,Third Party,34803.3,NA,NA,; 
 PV Battery,Host Developer,911877,13.2506,10.8081,; 
-PV Battery,Single Owner,996416,103.116,9.40166,; Notice: The simple efficiency and Sandia module models do not allow limiting module voltage to the MPPT tracking range of the inverter.
-PV Battery,Merchant Plant,OVERWRITE	
-PV Battery,Merchant Plant,92853712,6.94493,NA,Defaults file is likely out of date: PV Battery_Merchant Plant.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 1042, config has 1064  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-PV Battery,Leveraged Partnership Flip,OVERWRITE	
-PV Battery,Leveraged Partnership Flip,92853712,7.92689,9.77025,Defaults file is likely out of date: PV Battery_Leveraged Partnership Flip.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 1069, config has 1091  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-PV Battery,All Equity Partnership Flip,OVERWRITE	
-PV Battery,All Equity Partnership Flip,92853712,9.33934,10.8558,Defaults file is likely out of date: PV Battery_All Equity Partnership Flip.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 1059, config has 1081  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-PV Battery,Sale Leaseback,OVERWRITE	
-PV Battery,Sale Leaseback,92853712,9.50998,9.77025,Defaults file is likely out of date: PV Battery_Sale Leaseback.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 1052, config has 1074  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+PV Battery,Single Owner,996456,103.113,9.40234,; Notice: The simple efficiency and Sandia module models do not allow limiting module voltage to the MPPT tracking range of the inverter.
+PV Battery,Merchant Plant,92853712,6.94493,NA,; 
+PV Battery,Leveraged Partnership Flip,92853712,7.92689,9.77025,; 
+PV Battery,All Equity Partnership Flip,92853712,9.33934,10.8558,; 
+PV Battery,Sale Leaseback,92853712,9.50998,9.77025,; 
 PVWatts Battery,Residential,8022.69,11.7075,NA,; 
 PVWatts Battery,Commercial,943666,4.284,NA,; 
 PVWatts Battery,Third Party,8022.69,NA,NA,; 
 PVWatts Battery,Host Developer,943666,13.0372,10.8307,; 
-Generic Battery,Residential,OVERWRITE	
-Generic Battery,Residential,6692.07,58.6214,NA,Defaults file is likely out of date: Generic Battery_Residential.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 514, config has 515  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic Battery,Commercial,OVERWRITE	
-Generic Battery,Commercial,361540,24.8371,NA,Defaults file is likely out of date: Generic Battery_Commercial.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 484, config has 485  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic Battery,Third Party,OVERWRITE	
-Generic Battery,Third Party,6692.07,NA,NA,Defaults file is likely out of date: Generic Battery_Third Party.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 335, config has 336  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic Battery,Host Developer,OVERWRITE	
-Generic Battery,Host Developer,361540,14.4701,10.8307,Defaults file is likely out of date: Generic Battery_Host Developer.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 625, config has 626  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic Battery,Single Owner,OVERWRITE	
-Generic Battery,Single Owner,73190888,20.6439,10.4,Defaults file is likely out of date: Generic Battery_Single Owner.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 581, config has 604  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic Battery,Merchant Plant,OVERWRITE	
-Generic Battery,Merchant Plant,73190888,19.6087,NA,Defaults file is likely out of date: Generic Battery_Merchant Plant.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 492, config has 515  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic Battery,Leveraged Partnership Flip,OVERWRITE	
-Generic Battery,Leveraged Partnership Flip,73190888,24.9843,28.8888,Defaults file is likely out of date: Generic Battery_Leveraged Partnership Flip.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 519, config has 542  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic Battery,All Equity Partnership Flip,OVERWRITE	
-Generic Battery,All Equity Partnership Flip,73190888,28.8594,34.6665,Defaults file is likely out of date: Generic Battery_All Equity Partnership Flip.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 509, config has 532  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
-Generic Battery,Sale Leaseback,OVERWRITE	
-Generic Battery,Sale Leaseback,73190888,29.0228,34.6665,Defaults file is likely out of date: Generic Battery_Sale Leaseback.txt  Variables: 0 loaded but not in configuration, 0 wrong type, defaults file has 502, config has 525  Would you like to update the defaults with the current values right now? (Otherwise press Shift-F10 later) ; 
+Generic Battery,Residential,6692.07,58.6214,NA,; 
+Generic Battery,Commercial,361540,24.8371,NA,; 
+Generic Battery,Third Party,6692.07,NA,NA,; 
+Generic Battery,Host Developer,361540,14.4701,10.8307,; 
+Generic Battery,Single Owner,73190888,20.6439,10.4,; 
+Generic Battery,Merchant Plant,73190888,19.6087,NA,; 
+Generic Battery,Leveraged Partnership Flip,73190888,24.9843,28.8888,; 
+Generic Battery,All Equity Partnership Flip,73190888,28.8594,34.6665,; 
+Generic Battery,Sale Leaseback,73190888,29.0228,34.6665,; 
 final_configuration_eof,none,NA,NA,NA,
