@@ -124,15 +124,15 @@ batt_custom_dispatch
 2
  Time series battery power targets
 kWdc
- 
+Battery Dispatch
 0
-0
+2
 1
 2
 1
 1
 0
-Default
+DataArray
 
 0
 234

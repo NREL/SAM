@@ -76,7 +76,6 @@ configopt( 'Single Owner',                { 'tree_parent'='PPA', 'long_name'='Si
 configopt( 'Leveraged Partnership Flip',  { 'tree_parent'='PPA', 'long_name'='Partnership Flip with Debt',         'short_name'='Flip (debt)',      'description'='Developer/investor partnership flip PPA structure with debt' } );
 configopt( 'All Equity Partnership Flip', { 'tree_parent'='PPA', 'long_name'='Partnership Flip without Debt',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
 configopt( 'Sale Leaseback',              { 'tree_parent'='PPA', 'long_name'='Sale Leaseback',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
-configopt( 'Single Owner PPA Buy Rate',   { 'tree_parent'='PPA', 'long_name'='Single Owner with Buy Rate',         'short_name'='Single owner buy rate',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
 configopt( 'Merchant Plant',              { 'long_name'='Merchant Plant',                         'short_name'='Merchant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
 configopt( 'None',                        { 'long_name'='No Financial Model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
@@ -131,7 +130,7 @@ function setup_battery_pages_behind_the_meter_reopt()
 			  ]],
 			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm' } );*/
 			  
-	addpage( [[ {'name'='Battery Dispatch Peak Shaving', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], 
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], 
 		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [{'name'='Battery Dispatch Manual', 'caption'='Manual'}], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
 			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
@@ -156,7 +155,7 @@ function setup_battery_pages_behind_the_meter()
 			   'Battery Dispatch Manual',
 			  ]],
 			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm' } );*/
-	addpage( [[ {'name'='Battery Dispatch Peak Shaving', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], 
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], 
 		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [{'name'='Battery Dispatch Manual', 'caption'='Manual'}], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
 			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
@@ -183,7 +182,7 @@ function setup_battery_pages_front_of_meter()
 			   ] ],
 			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom' } );
 	*/
-	addpage( [[ {'name'='Battery Dispatch Automated', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], 
+	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], 
 		[{'name'='Battery Dispatch Manual', 'caption'='Manual'}]],
 			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
@@ -527,7 +526,7 @@ function setup_fuel_cell_pages_btm()
 	addpage([['Fuel Cell Dispatch',
 			'Battery Dispatch Behind the Meter',
 			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});*/
-	addpage( [[ {'name'='Battery Dispatch Peak Shaving', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], 
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], 
 		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], ['Battery Dispatch Empty'], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
 			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM', 'Fuel Cell Dispatch Manual' ], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
@@ -554,7 +553,7 @@ function setup_fuel_cell_pages_fom()
 	addpage([['Fuel Cell Dispatch',
 			'Battery Dispatch Front of Meter',
 			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});*/
-	addpage( [[ {'name'='Battery Dispatch Automated', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], 
+	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], 
 		['Battery Dispatch Empty']],
 			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM', 'Fuel Cell Dispatch Manual' ], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
