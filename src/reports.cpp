@@ -2598,9 +2598,13 @@ void SamReportScriptObject::RenderTable( const matrix_t<wxString> &tab )
     for (int r = 1; r < (int)tab.nrows(); r++) {
         ypos_total_lines += row_heights[r];
         for (int b = 0; b < m_totalLines.size(); b++) {
-            if (r == m_totalLines[b]) {
+            if (r == m_totalLines[b] && r != (int)tab.nrows() - 1) {
                 m_curDevice->Line(tab_x, ypos_total_lines - row_heights[r], tab_x + tab_width, ypos_total_lines - row_heights[r]);
                 m_curDevice->Line(tab_x, ypos_total_lines, tab_x + tab_width, ypos_total_lines);
+                break;
+            }
+            else if (r == m_totalLines[b] && r == (int)tab.nrows() - 1) {
+                m_curDevice->Line(tab_x, ypos_total_lines - row_heights[r], tab_x + tab_width, ypos_total_lines - row_heights[r]);
                 break;
             }
             
