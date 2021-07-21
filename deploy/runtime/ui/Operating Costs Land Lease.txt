@@ -1,7 +1,7 @@
 Operating Costs Land Lease
-831
-270
-12
+828
+168
+8
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 812
 Height
 3
-245
+158
 Tool Tip
 5
 0
@@ -29,84 +29,6 @@ Caption
 5
 16
 Land Lease Costs
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-27
-Y
-3
-174
-Width
-3
-640
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-10
-Land Lease
-Bold
-2
-1
-Divider
-
-1
-10
-Name
-5
-10
-object 215
-X
-3
-27
-Y
-3
-81
-Width
-3
-640
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-18
-Land Area Estimate
 Bold
 2
 1
@@ -135,8 +57,8 @@ Tool Tip
 0
 Caption
 5
-325
-Enter the land area multiplier and land lease cost if the project leases land. SAM calculates the land area occupied by photovoltaic modules or CSP collectors based on information on the System Design page. Use the land area multiplier to account for additional land. For land purchase costs, see the Installation Costs page.
+343
+Enter the annual land lease cost per acre or hectare either as a single value with optional escalation rate or for each year. Land lease costs are annual lease payments. The land area estimate is from the System Design page. Use the land area multiplier to account for additional land. For land purchase costs, see the Installation Costs page.
 TextColour
 4
 0
@@ -168,10 +90,10 @@ Name
 object 79
 X
 3
-519
+525
 Y
 3
-147
+84
 Width
 3
 90
@@ -212,76 +134,14 @@ Numeric
 17
 Name
 5
-12
-om_land_area
-X
-3
-285
-Y
-3
-147
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
 19
 om_land_lease_escal
 X
 3
-285
+279
 Y
 3
-222
+132
 Width
 3
 100
@@ -337,14 +197,14 @@ Numeric
 17
 Name
 5
-17
-ui_collector_area
+12
+ui_land_area
 X
 3
-285
+279
 Y
 3
-99
+84
 Width
 3
 100
@@ -403,72 +263,10 @@ Name
 ui_land_area_ha
 X
 3
-417
+423
 Y
 3
-147
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-23
-ui_land_area_multiplier
-X
-3
-285
-Y
-3
-123
+84
 Width
 3
 100
@@ -527,10 +325,10 @@ Name
 ui_land_area_units
 X
 3
-387
+381
 Y
 3
-198
+108
 Width
 3
 90
@@ -561,10 +359,10 @@ Name
 ui_land_lease
 X
 3
-285
+279
 Y
 3
-198
+108
 Width
 3
 100
@@ -595,21 +393,7 @@ TabOrder
 3
 1
 
-8
-om_land_area
-3
-1
-Land area estimate
-acres
- 
-0
-8
-1
-1
-1
-1
-0
-Numeric
+7
 om_land_lease
 3
 2
@@ -638,10 +422,10 @@ Operating Costs
 1
 0
 Numeric
-ui_collector_area
+ui_land_area
 3
 1
-Land area occupied by modules/collectors
+Land area estimate
 acres
  
 0
@@ -710,7 +494,8 @@ Annual land lease cost
 0
 SchedNumeric
 
-807
+498
+// om_land_lease in $/acre
 equations{ 'om_land_lease'} = define(){
 	if ( ${ui_land_area_units} == 1 )
 	{
@@ -726,31 +511,15 @@ equations{ 'om_land_lease'} = define(){
 	return x;
 };
 
-equations{ 'om_land_area' } = define() {
-	return ${ui_collector_area} * ${ui_land_area_multiplier};
-};
-
-equations{ 'ui_collector_area' } = define() 
-{
-	if ( technology() == 'PVWatts' )
-	{ 
-		// land area estmate https://www.nrel.gov/analysis/tech-size.html
-		eff = ?${module_type}[0.17,0.201,0.156];
-		return ${system_capacity}*eff / ${gcr} * 0.0002471; // area (m2) = capacity (kW) / 1 (kW/m2)
-	}
-	elseif ( technology() == 'Flat Plate PV' )
-	{
-		return ${total_land_area};
-	}
-	else
-	{
-		return 0;
-	}
+// total_land_area must be defined on System Design form
+// or equivalent for each technology
+equations{ 'ui_land_area' } = define() {
+	return ${total_land_area};
 };
 
 equations{ 'ui_land_area_ha' } = define()
 {
-	return ${om_land_area} * 0.404686;
+	return ${total_land_area} / 2.47105;
 };
 479
 on_load{'Operating Costs Land Lease'} = define() {
