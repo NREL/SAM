@@ -1058,6 +1058,12 @@ SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_q_rec_standby_nset(SAM_table p
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "timestep_load_fractions", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "weekday_schedule", mat, nrows, ncols);
@@ -3080,6 +3086,18 @@ SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_q_rec_standby_nget(SAM_table
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_rec_standby", &result))
 		make_access_error("SAM_TroughPhysicalProcessHeat", "q_rec_standby");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "timestep_load_fractions", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalProcessHeat", "timestep_load_fractions");
 	});
 	return result;
 }

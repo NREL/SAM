@@ -2,6 +2,7 @@
 	"defaults": {
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"debt_fraction": 80,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
@@ -19,6 +20,7 @@
 			"system_capacity": 200
 		},
 		"SystemCosts": {
+			"om_batt_replacement_cost": [0.000000],
 			"om_capacity": [10.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -160,6 +162,12 @@
 		"ThirdPartyOwnership": {
 			"elec_cost_with_system": [0],
 			"elec_cost_without_system": [0]
+		},
+		"Battery": {
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		}
 	}
 }

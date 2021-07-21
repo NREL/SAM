@@ -2,6 +2,7 @@
 	"defaults": {
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"debt_fraction": 60,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
@@ -18,6 +19,10 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
+			"om_batt_capacity_cost": [0.000000],
+			"om_batt_fixed_cost": [0.000000],
+			"om_batt_replacement_cost": [232.290000],
+			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [16.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -25,7 +30,8 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.55131e+06
+			"total_installed_cost": 1.55131e+06,
+			"ui_batt_capacity": 19.2154
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -167,6 +173,13 @@
 		"ThirdPartyOwnership": {
 			"elec_cost_with_system": [0],
 			"elec_cost_without_system": [0]
+		},
+		"Battery": {
+			"battery_total_cost_lcos": 11707
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		}
 	}
 }

@@ -1454,6 +1454,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set weekday_schedule: 12x24 CSP operation Time-of-Use Weekday schedule [-]
 	 * options: None
 	 * constraints: None
@@ -1901,6 +1909,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Tou_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 

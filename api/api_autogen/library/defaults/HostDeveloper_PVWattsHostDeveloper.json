@@ -9,6 +9,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -42,6 +43,7 @@
 			"term_tenor": 18
 		},
 		"SystemCosts": {
+			"om_batt_replacement_cost": [0.000000],
 			"om_capacity": [19.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -219,7 +221,6 @@
 		},
 		"SystemOutput": {
 			"degradation": [0.500000],
-			"gen": [0],
 			"system_capacity": 540
 		},
 		"ReturnOnEquity": {
@@ -277,6 +278,12 @@
 			"construction_financing_cost": 1.16927e+09
 		},
 		"BatterySystem": {
+		},
+		"Battery": {
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		}
 	}
 }

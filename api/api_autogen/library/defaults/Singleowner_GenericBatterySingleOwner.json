@@ -48,6 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"construction_financing_cost": 2.99649e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
@@ -85,6 +86,10 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
+			"om_batt_capacity_cost": [0.000000],
+			"om_batt_fixed_cost": [0.000000],
+			"om_batt_replacement_cost": [293.840000],
+			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [13.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -93,7 +98,8 @@
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
 			"system_use_recapitalization": 0,
-			"total_installed_cost": 1.49825e+08
+			"total_installed_cost": 1.49825e+08,
+			"ui_batt_capacity": 4000
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -287,6 +293,13 @@
 		"GridLimits": {
 			"grid_curtailment_price": [0.000000],
 			"grid_curtailment_price_esc": 0
+		},
+		"Battery": {
+			"battery_total_cost_lcos": 1.43848e+06
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		}
 	}
 }
