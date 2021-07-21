@@ -970,7 +970,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << cmod_doc;
 
-    if (tech_symbol != "TcsmoltenSalt") {
+    if (tech_symbol != "TcsmoltenSalt" && tech_symbol != "TroughPhysical") {
         fx_file << "Input Consistency Warning\n"
                    "==================================\n"
                    "\n"

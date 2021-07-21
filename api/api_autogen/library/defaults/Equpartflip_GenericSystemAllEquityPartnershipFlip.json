@@ -29,7 +29,6 @@
 			"system_capacity": 100000
 		},
 		"SystemCosts": {
-			"om_batt_replacement_cost": [0.000000],
 			"om_capacity": [25.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -38,7 +37,6 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 1.092e+09
 		},
 		"TaxCreditIncentives": {

@@ -20,16 +20,14 @@
 			"system_capacity": 200
 		},
 		"SystemCosts": {
-			"om_batt_replacement_cost": [0.000000],
 			"om_capacity": [10.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [5.000000],
+			"om_fuel_cost": [10.000000],
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 2.184e+06
 		},
 		"Depreciation": {

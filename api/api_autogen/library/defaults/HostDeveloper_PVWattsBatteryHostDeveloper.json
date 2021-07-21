@@ -43,20 +43,13 @@
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [0.000000],
-			"om_batt_fixed_cost": [0.000000],
-			"om_batt_replacement_cost": [206.670000],
-			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [19.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 908951,
-			"ui_batt_capacity": 10
+			"total_installed_cost": 908951
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,

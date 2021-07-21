@@ -55,8 +55,7 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 844877,
-			"ui_batt_capacity": 19.2154
+			"total_installed_cost": 844877
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,

@@ -29,11 +29,12 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
+			"om_fuel_cost": [0.000000],
+			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 46901.9,
-			"ui_batt_capacity": 9.60768
+			"total_installed_cost": 46901.9
 		},
 		"Depreciation": {
 		},

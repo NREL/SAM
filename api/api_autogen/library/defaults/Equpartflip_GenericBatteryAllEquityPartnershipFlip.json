@@ -38,11 +38,12 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
+			"om_fuel_cost": [0.000000],
+			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.49825e+08,
-			"ui_batt_capacity": 4000
+			"total_installed_cost": 1.49825e+08
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
