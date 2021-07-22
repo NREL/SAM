@@ -1,7 +1,7 @@
 Battery Dispatch PV Smoothing
-1058
-371
-29
+1051
+354
+27
 Numeric
 
 1
@@ -12,10 +12,10 @@ Name
 batt_dispatch_pvs_ac_lb
 X
 3
-375
+399
 Y
 3
-228
+252
 Width
 3
 90
@@ -77,13 +77,13 @@ X
 54
 Y
 3
-228
+246
 Width
 3
 212
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -107,10 +107,10 @@ Name
 batt_dispatch_pvs_ac_ub
 X
 3
-375
+399
 Y
 3
-198
+225
 Width
 3
 90
@@ -172,13 +172,13 @@ X
 54
 Y
 3
-198
+225
 Width
 3
 212
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -205,7 +205,7 @@ X
 882
 Y
 3
-30
+60
 Width
 3
 90
@@ -267,7 +267,7 @@ X
 882
 Y
 3
-60
+87
 Width
 3
 90
@@ -329,7 +329,7 @@ X
 882
 Y
 3
-90
+114
 Width
 3
 90
@@ -391,13 +391,13 @@ X
 54
 Y
 3
-291
+288
 Width
 3
-164
+212
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -424,13 +424,13 @@ X
 54
 Y
 3
-321
+309
 Width
 3
-164
+212
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -454,10 +454,10 @@ Name
 batt_dispatch_pvs_forecast_shift_periods
 X
 3
-375
+399
 Y
 3
-258
+279
 Width
 3
 90
@@ -519,7 +519,7 @@ X
 882
 Y
 3
-150
+168
 Width
 3
 90
@@ -578,7 +578,7 @@ Name
 batt_dispatch_pvs_kf
 X
 3
-882
+879
 Y
 3
 288
@@ -640,10 +640,10 @@ Name
 batt_dispatch_pvs_ki
 X
 3
-882
+879
 Y
 3
-258
+261
 Width
 3
 90
@@ -702,10 +702,10 @@ Name
 batt_dispatch_pvs_kp
 X
 3
-882
+879
 Y
 3
-228
+234
 Width
 3
 90
@@ -767,7 +767,7 @@ X
 225
 Y
 3
-120
+141
 Width
 3
 90
@@ -829,7 +829,7 @@ X
 882
 Y
 3
-120
+141
 Width
 3
 90
@@ -891,7 +891,7 @@ X
 225
 Y
 3
-90
+114
 Width
 3
 90
@@ -953,13 +953,13 @@ X
 54
 Y
 3
-258
+267
 Width
 3
-208
+212
 Height
 3
-24
+21
 Tool Tip
 5
 0
@@ -986,7 +986,7 @@ X
 225
 Y
 3
-150
+168
 Width
 3
 90
@@ -1048,7 +1048,7 @@ X
 225
 Y
 3
-60
+87
 Width
 3
 90
@@ -1110,7 +1110,7 @@ X
 225
 Y
 3
-30
+60
 Width
 3
 90
@@ -1169,10 +1169,10 @@ Name
 btn_BDPVS_reset
 X
 3
-756
+750
 Y
 3
-321
+315
 Width
 3
 188
@@ -1202,20 +1202,20 @@ X
 393
 Y
 3
-30
+63
 Width
 3
-276
+300
 Height
 3
-90
+78
 Tool Tip
 5
 0
 Caption
 5
-190
-You have selected a ramp interval greater than 30 minutes. While the PV Smoothing model will work with longer intervals, please note that it was designed for intervals of 30 minutes or less.
+141
+The ramp interval is not valid. PV smoothing requires a weather file time step of 30 minutes or less and ramp interval of 30 minutes or less.
 TextColour
 4
 255
@@ -1247,16 +1247,16 @@ Name
 object 4
 X
 3
-651
+639
 Y
 3
-213
+219
 Width
 3
-350
+374
 Height
 3
-140
+125
 Tool Tip
 5
 0
@@ -1286,7 +1286,7 @@ Width
 1042
 Height
 3
-361
+349
 Tool Tip
 5
 0
@@ -1307,23 +1307,23 @@ Name
 object 7
 X
 3
-393
+15
 Y
 3
-123
+21
 Width
 3
-16
+903
 Height
 3
-18
+36
 Tool Tip
 5
 0
 Caption
 5
-1
-*
+142
+PV smoothing dispatches the battery to limit power ramp rates during periods of intermittent clouds to "smooth" the photovoltaic array output.
 TextColour
 4
 0
@@ -1338,61 +1338,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
-1
+0
 AlignTop
 2
-0
-Label
-
 1
-13
-Name
-5
-9
-object 71
-X
-3
-576
-Y
-3
-201
-Width
-3
-16
-Height
-3
-18
-Tool Tip
-5
-0
-Caption
-5
-1
-*
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
 Label
 
 1
@@ -1403,23 +1355,23 @@ Name
 object 714
 X
 3
-252
+345
 Y
 3
-297
+171
 Width
 3
-356
+410
 Height
 3
-50
+41
 Tool Tip
 5
 0
 Caption
 5
-128
-* For the purposes of the PV smoothing model, nameplate is defined as the minimum of the AC nameplate and the interconnect limit
+96
+For PV smoothing, nameplate is the minimum of the system AC capacity and the interconnect limit.
 TextColour
 4
 0
@@ -1441,54 +1393,6 @@ AlignRight
 AlignTop
 2
 1
-Label
-
-1
-13
-Name
-5
-9
-object 72
-X
-3
-576
-Y
-3
-231
-Width
-3
-16
-Height
-3
-18
-Tool Tip
-5
-0
-Caption
-5
-1
-*
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
 
 22
 batt_dispatch_pvs_ac_lb
@@ -1498,7 +1402,7 @@ AC lower bound
  fraction of nameplate
 Battery Dispatch PV Smoothing
 0
-0
+2
 1
 1
 1
@@ -1508,11 +1412,11 @@ Numeric
 batt_dispatch_pvs_ac_lb_enable
 3
 1
- 
- 
+Enable AC lower bound
+0/1 
 Battery Dispatch PV Smoothing
 0
-0
+3
 1
 1
 1
@@ -1522,11 +1426,11 @@ CheckBox
 batt_dispatch_pvs_ac_ub
 3
 1
- AC upper bound
+AC upper bound
  fraction of nameplate
 Battery Dispatch PV Smoothing
 0
-0
+2
 1
 1
 1
@@ -1536,11 +1440,11 @@ Numeric
 batt_dispatch_pvs_ac_ub_enable
 3
 1
- 
- 
+Enable AC upper bound
+0/1
 Battery Dispatch PV Smoothing
 0
-0
+3
 1
 1
 1
@@ -1550,7 +1454,7 @@ CheckBox
 batt_dispatch_pvs_battery_energy
 3
 1
- Battery energy
+Battery energy
  kWhac
 Battery Dispatch PV Smoothing
 0
@@ -1564,7 +1468,7 @@ Numeric
 batt_dispatch_pvs_battery_power
 3
 1
- Battery power
+Battery power
 kWac
 Battery Dispatch PV Smoothing
 0
@@ -1578,7 +1482,7 @@ Numeric
 batt_dispatch_pvs_battery_rte
 3
 1
- Battery round trip efficiency
+Battery round trip efficiency
  %
 Battery Dispatch PV Smoothing
 0
@@ -1592,11 +1496,11 @@ Numeric
 batt_dispatch_pvs_curtail_as_control
 3
 1
- 
- 
+Correct up-ramp violations
+0/1 
 Battery Dispatch PV Smoothing
 0
-0
+3
 1
 1
 1
@@ -1606,11 +1510,11 @@ CheckBox
 batt_dispatch_pvs_curtail_if_violation
 3
 1
- 
- 
+Curtail violations
+0/1 
 Battery Dispatch PV Smoothing
 0
-0
+3
 1
 1
 1
@@ -1620,11 +1524,11 @@ CheckBox
 batt_dispatch_pvs_forecast_shift_periods
 3
 1
-Forcasting window 
+Forecasting window 
  periods of ramp intervals
 Battery Dispatch PV Smoothing
 0
-0
+2
 1
 1
 1
@@ -1652,7 +1556,7 @@ Forecast accumulation error multiplier (kf)
  
 Battery Dispatch PV Smoothing
 0
-0
+2
 1
 1
 1
@@ -1666,7 +1570,7 @@ Return to rest SOC multiplier (ki)
  
 Battery Dispatch PV Smoothing
 0
-0
+2
 1
 1
 1
@@ -1680,7 +1584,7 @@ Track PV power multiplier (kp)
  
 Battery Dispatch PV Smoothing
 0
-0
+2
 1
 1
 1
@@ -1690,11 +1594,11 @@ Numeric
 batt_dispatch_pvs_max_ramp
 3
 1
- Maximum ramp rate
+Maximum ramp rate
  % of nameplate per ramp interval
 Battery Dispatch PV Smoothing
 0
-0
+2
 1
 1
 1
@@ -1704,7 +1608,7 @@ Numeric
 batt_dispatch_pvs_nameplate
 3
 1
-Nameplate
+Nameplate for PV smoothing
 kWac
 Battery Dispatch PV Smoothing
 0
@@ -1720,7 +1624,7 @@ batt_dispatch_pvs_nameplate_ac
 1
 Power scaling factor
 kWac
- 
+Battery Dispatch PV Smoothing
 0
 8
 1
@@ -1746,11 +1650,11 @@ Numeric
 batt_dispatch_pvs_short_forecast_enable
 3
 1
- 
- 
+Enable short-term power forecast 
+0/1 
 Battery Dispatch PV Smoothing
 0
-0
+3
 1
 1
 1
@@ -1764,7 +1668,7 @@ Battery resting SOC
 %
 Battery Dispatch PV Smoothing
 0
-0
+2
 1
 1
 1
@@ -1788,7 +1692,7 @@ Numeric
 batt_dispatch_pvs_wf_timestep
 3
 1
-Weather file timestep
+Weather file time step
 minutes
 Battery Dispatch PV Smoothing
 0
@@ -1856,7 +1760,7 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-2523
+2544
 on_load{'Battery Dispatch PV Smoothing'} = define() {
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
@@ -1916,6 +1820,6 @@ on_change{ 'btn_BDPVS_reset' } = define () {
 
 on_change{ 'batt_dispatch_pvs_timestep_multiplier' } = define () {
 	ramp_interval = to_real(value("batt_dispatch_pvs_ramp_interval"));
-	show("lbl_BDPVS_warning", (ramp_interval > 30.0));
+	show("lbl_BDPVS_warning", (ramp_interval > 30.0 || ramp_interval < 1));
 	refresh();
 };
