@@ -588,6 +588,18 @@ b_eps_HCE4
 0 
 0.1384 
 
+batt_salvage_percentage
+1
+1
+1
+1
+0
+batt_salvage_value
+1
+1
+1
+1
+0
 boiler_is_shown
 1
 1
@@ -4066,7 +4078,7 @@ om_fuel_cost
 2
 1
 1
-0
+10
 om_fuel_cost_escal
 1
 1
@@ -4080,18 +4092,6 @@ om_production
 1
 4
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost1
-1
-2
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1

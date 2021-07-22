@@ -1,5 +1,5 @@
 1
-640
+637
 A_sf
 1
 1
@@ -8430,18 +8430,6 @@ om_fixed_escal
 1
 1
 0
-om_fuel_cost
-1
-2
-1
-1
-0
-om_fuel_cost_escal
-1
-1
-1
-1
-0
 om_production
 1
 2
@@ -8457,12 +8445,6 @@ om_production_escal
 om_replacement_cost1
 1
 2
-1
-1
-0
-om_replacement_cost_escal
-1
-1
 1
 1
 0
@@ -9296,12 +9278,6 @@ ui_wacc
 1
 1
 7.10145
-ur_ec_enable_billing_demand
-1
-1
-1
-1
-0
 ur_ec_billing_demand_lookback_percentages
 1
 2
@@ -9309,6 +9285,18 @@ ur_ec_billing_demand_lookback_percentages
 12
 0 1 2 3 4 5 6 7 8 9 10 11 
 
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_ec_enable_billing_demand
+1
+1
+1
+1
+0
 ur_yearzero_usage_peaks
 1
 2
@@ -9316,12 +9304,6 @@ ur_yearzero_usage_peaks
 12
 0 0 0 0 0 0 0 0 0 0 0 0 
 
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
 use_specific_weather_file
 1
 1
