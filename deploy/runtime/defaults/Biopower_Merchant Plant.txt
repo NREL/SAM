@@ -1,5 +1,5 @@
 1
-695
+718
 adjust
 1
 5
@@ -2510,7 +2510,7 @@ const_per_interest1
 1
 1
 1
-1822850
+1.82285e+06
 const_per_interest2
 1
 1
@@ -2570,7 +2570,7 @@ const_per_interest_total
 1
 1
 1
-1822850
+1.82285e+06
 const_per_months1
 1
 1
@@ -2703,7 +2703,7 @@ const_per_total1
 1
 1
 1
-3645700
+3.6457e+06
 const_per_total2
 1
 1
@@ -2763,7 +2763,7 @@ construction_financing_cost
 1
 1
 1
-3645700
+3.6457e+06
 cost_debt_closing
 1
 1

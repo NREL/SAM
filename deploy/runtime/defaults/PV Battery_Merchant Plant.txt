@@ -1,5 +1,5 @@
 1
-1053
+1065
 6par_aisc
 1
 1
@@ -225602,7 +225602,7 @@ total_indirect_cost
 1
 1
 1
-6500290
+6.50029e+06
 total_installed_cost
 1
 1
