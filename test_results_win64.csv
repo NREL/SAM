@@ -121,7 +121,7 @@ Generic System,Sale Leaseback,756864000,32.1305,35.2568,;
 Generic System,LCOE Calculator,756864000,NA,NA,; 
 Generic System,None,756864000,NA,NA,; 
 PV Battery,Residential,8588.59,11.2055,NA,; 
-PV Battery,Commercial,911872,4.27473,NA,; 
+PV Battery,Commercial,911877,4.27471,NA,; 
 PV Battery,Third Party,34803.3,NA,NA,; 
 PV Battery,Host Developer,911877,13.2506,10.8081,; 
 PV Battery,Single Owner,996456,103.113,9.40234,; Notice: The simple efficiency and Sandia module models do not allow limiting module voltage to the MPPT tracking range of the inverter.
