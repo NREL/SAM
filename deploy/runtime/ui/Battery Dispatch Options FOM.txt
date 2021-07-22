@@ -304,9 +304,9 @@ Bold
 batt_dispatch_auto_can_charge
 3
 1
-Battery can charge from system
+Battery can charge from power generation
  
-Battery Dispatch - FOM Options
+Battery Dispatch
 0
 3
 1
@@ -318,9 +318,9 @@ CheckBox
 batt_dispatch_auto_can_clipcharge
 3
 1
-Battery can charge from clipped system power
+Battery can charge from clipped power
  
-Battery Dispatch - FOM Options
+Battery Dispatch
 0
 3
 1
@@ -334,7 +334,7 @@ batt_dispatch_auto_can_fuelcellcharge
 1
 Battery can charge from fuel cell
  
-Battery Dispatch - FOM Options
+Battery Dispatch
 0
 3
 1
@@ -348,7 +348,7 @@ batt_dispatch_auto_can_gridcharge
 1
 Battery can charge from grid
  
-Battery Dispatch - FOM Options
+Battery Dispatch
 0
 3
 1
@@ -362,7 +362,7 @@ batt_dispatch_choice
 1
 Battery dispatch option
  
-Battery Dispatch - FOM Options
+Battery Dispatch
 0
 8
 1
@@ -374,11 +374,12 @@ Default
 batt_dispatch_choice_ui
 3
 1
-Battery dispatch option copy
+Battery dispatch options FOM
  
-Battery Dispatch - FOM Options
-0
-1
+Battery Dispatch
+65
+Automated dispatch|Dispatch to custom time series|Manual dispatch
+3
 1
 1
 1

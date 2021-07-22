@@ -124,7 +124,7 @@ batt_custom_dispatch
 2
 Time series battery power targets
 kWdc
-Battery Dispatch FOM
+Battery Dispatch
 0
 2
 1
@@ -132,7 +132,7 @@ Battery Dispatch FOM
 1
 1
 0
-Default
+DataArray
 
 0
 338
