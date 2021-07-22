@@ -1215,7 +1215,7 @@ Tool Tip
 Caption
 5
 141
-The ramp interval is not valid. PV smoothing requires a weather file time step of 30 minutes or less and ramp interval of 30 minutes or less.
+The ramp interval is not valid. PV smoothing requires a weather file time step of 15 minutes or less and ramp interval of 30 minutes or less.
 TextColour
 4
 255
