@@ -378,8 +378,8 @@ batt_dispatch_choice_ui
 Battery dispatch options FOM
  
 Battery Dispatch
-65
-Automated dispatch|Dispatch to custom time series|Manual dispatch
+88
+Automated dispatch|Dispatch to custom time series|Manual dispatch|PV smoothing algorithm
 3
 1
 1

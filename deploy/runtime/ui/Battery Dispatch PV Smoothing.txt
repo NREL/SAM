@@ -1856,17 +1856,17 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-2515
+2523
 on_load{'Battery Dispatch PV Smoothing'} = define() {
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
 	on_change{'batt_dispatch_pvs_ac_lb_enable'}();
 	on_change{'batt_dispatch_pvs_short_forecast_enable'}();
 	value('batt_dispatch_choice', 5);
-	toggle_dispatch(); // do not enable unless mode == 5
+	toggle_dispatch_pvs(); // do not enable unless mode == 5
 };
 
-function toggle_dispatch()
+function toggle_dispatch_pvs()
 {
 	mode = ${batt_dispatch_choice};
 	pvsmoothing = (mode == 5);

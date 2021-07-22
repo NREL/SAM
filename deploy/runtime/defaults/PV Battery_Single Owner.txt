@@ -200,7 +200,7 @@ LeadAcid_q10_computed
 1
 1
 1
-89.44
+3437.25
 LeadAcid_q20
 1
 1
@@ -212,7 +212,7 @@ LeadAcid_q20_computed
 1
 1
 1
-208
+7993.6
 LeadAcid_qn
 1
 1
@@ -224,7 +224,7 @@ LeadAcid_qn_computed
 1
 1
 1
-83.2
+3197.44
 LeadAcid_tn
 1
 1
@@ -304,7 +304,7 @@ analysis_period
 1
 1
 1
-1
+25
 analysis_period_warning
 1
 4
@@ -357,7 +357,7 @@ array_area
 1
 1
 1
-3110
+262950
 automated_dispatch_choice
 1
 1
@@ -375,7 +375,7 @@ batt_C_rate_max_charge
 1
 1
 1
-4.8
+0.25
 batt_C_rate_max_charge_input
 1
 1
@@ -387,7 +387,7 @@ batt_C_rate_max_discharge
 1
 1
 1
-5.20833
+0.25
 batt_C_rate_max_discharge_input
 1
 1
@@ -423,7 +423,7 @@ batt_Qfull_flow
 1
 1
 1
-208
+7993.6
 batt_Qnom
 1
 1
@@ -441,7 +441,7 @@ batt_Vcut
 1
 1
 1
-2.772
+0
 batt_Vexp
 1
 1
@@ -483,7 +483,7 @@ batt_bank_duration
 1
 1
 1
-0.2
+4
 batt_bank_ncells_serial
 1
 1
@@ -507,25 +507,25 @@ batt_bank_power
 1
 1
 1
-500
+1000
 batt_bank_power_dc_ac
 1
 1
 1
 1
-1
+0
 batt_bank_size
 1
 1
 1
 1
-100
+4000
 batt_bank_size_dc_ac
 1
 1
 1
 1
-1
+0
 batt_bank_size_specify
 1
 1
@@ -612,7 +612,7 @@ batt_computed_bank_capacity
 1
 1
 1
-104.083
+4000
 batt_computed_series
 1
 1
@@ -630,7 +630,7 @@ batt_computed_strings
 1
 1
 1
-65
+2498
 batt_computed_voltage
 1
 1
@@ -642,7 +642,7 @@ batt_current_charge_max
 1
 1
 1
-998.4
+1998.4
 batt_current_choice
 1
 1
@@ -654,7 +654,7 @@ batt_current_discharge_max
 1
 1
 1
-1083.33
+1998.4
 batt_custom_dispatch
 1
 2
@@ -666,13 +666,13 @@ batt_cycle_cost
 2
 1
 1
-0
+0.1
 batt_cycle_cost_choice
 1
 1
 1
 1
-1
+0
 batt_dc_ac_efficiency
 1
 1
@@ -750,31 +750,31 @@ batt_dispatch_choice
 1
 1
 1
-5
+4
 batt_dispatch_choice_ui
 1
 1
 1
 1
-3
+2
 batt_dispatch_excl
 1
 1
 1
 1
-3
+2
 batt_dispatch_pvs_ac_lb
 1
 1
 1
 1
--0.01
+-0.1
 batt_dispatch_pvs_ac_lb_enable
 1
 1
 1
 1
-1
+0
 batt_dispatch_pvs_ac_ub
 1
 1
@@ -786,19 +786,19 @@ batt_dispatch_pvs_ac_ub_enable
 1
 1
 1
-1
+0
 batt_dispatch_pvs_battery_energy
 1
 1
 1
 1
-104.083
+4000
 batt_dispatch_pvs_battery_power
 1
 1
 1
 1
-520.416
+1041.67
 batt_dispatch_pvs_battery_rte
 1
 1
@@ -852,25 +852,25 @@ batt_dispatch_pvs_max_ramp
 1
 1
 1
-5
+10
 batt_dispatch_pvs_nameplate
 1
 1
 1
 1
-500
+41580
 batt_dispatch_pvs_nameplate_ac
 1
 1
 1
 1
-500
+41580
 batt_dispatch_pvs_ramp_interval
 1
 1
 1
 1
-600
+0
 batt_dispatch_pvs_short_forecast_enable
 1
 1
@@ -888,13 +888,13 @@ batt_dispatch_pvs_timestep_multiplier
 1
 1
 1
-10
+3
 batt_dispatch_pvs_wf_timestep
 1
 1
 1
 1
-60
+0
 batt_dispatch_update_frequency_hours
 1
 1
@@ -906,7 +906,7 @@ batt_duration_choice
 1
 1
 1
-1
+0
 batt_gridcharge_percent_1
 1
 1
@@ -954,7 +954,7 @@ batt_initial_SOC
 1
 1
 1
-0
+50
 batt_inverter_efficiency_cutoff
 1
 1
@@ -1036,19 +1036,19 @@ batt_mass
 1
 1
 1
-1030.53
+39603.9
 batt_max_power
 1
 1
 1
 1
-542.1
+999.999
 batt_maximum_SOC
 1
 1
 1
 1
-90
+95
 batt_meter_position
 1
 1
@@ -1060,43 +1060,43 @@ batt_minimum_SOC
 1
 1
 1
-10
+15
 batt_minimum_modetime
 1
 1
 1
 1
-1
+10
 batt_num_cells
 1
 1
 1
 1
-9035
+347222
 batt_power_charge_max_kwac
 1
 1
 1
 1
-520.416
+1041.67
 batt_power_charge_max_kwdc
 1
 1
 1
 1
-499.599
+999.999
 batt_power_discharge_max_kwac
 1
 1
 1
 1
-520.416
+959.999
 batt_power_discharge_max_kwdc
 1
 1
 1
 1
-542.1
+999.999
 batt_pv_clipping_forecast
 1
 2
@@ -1120,7 +1120,7 @@ batt_replacement_option
 1
 1
 1
-0
+1
 batt_replacement_schedule_percent
 1
 2
@@ -1188,7 +1188,7 @@ batt_surface_area
 1
 1
 1
-7.81639
+89.0141
 batt_thermal_choice
 1
 1
@@ -1200,7 +1200,7 @@ batt_time_capacity
 1
 1
 1
-0.2
+4
 batt_type
 1
 1
@@ -1224,13 +1224,13 @@ batt_ui_inverter_eff
 1
 1
 1
-97.3066
+97.5869
 batt_ui_nominal_bank_power
 1
 1
 1
 1
-542.1
+999.999
 batt_user_specified_weather_file
 1
 4
@@ -1253,19 +1253,19 @@ batt_volume
 1
 1
 1
-1.4869
+57.1428
 battery_energy
 1
 1
 1
 1
-104.083
+4000
 battery_energy_kwh
 1
 1
 1
 1
-104.083
+4000
 battery_indirect_cost_percent
 1
 1
@@ -1277,13 +1277,13 @@ battery_lifetime_shown
 1
 1
 1
-1
+0
 battery_losses_shown
 1
 1
 1
 1
-1
+0
 battery_per_kW
 1
 1
@@ -1301,25 +1301,25 @@ battery_power
 1
 1
 1
-542.1
+999.999
 battery_power_kw
 1
 1
 1
 1
-542.1
+999.999
 battery_replacements_shown
 1
 1
 1
 1
-1
+0
 battery_thermal_shown
 1
 1
 1
 1
-1
+0
 battery_total
 1
 1
@@ -1337,7 +1337,7 @@ battery_voltage_shown
 1
 1
 1
-1
+0
 beta_oc_calc
 1
 1
@@ -1367,13 +1367,13 @@ bos_equip_total
 1
 1
 1
-105067
+10000444
 calculated_dcac_ratio
 1
 1
 1
 1
-1.05067
+1.20255
 cap_vs_temp
 1
 3
@@ -1861,7 +1861,7 @@ const_per_interest1
 1
 1
 1
-7271.99
+529402
 const_per_interest2
 1
 1
@@ -1921,7 +1921,7 @@ const_per_interest_total
 1
 1
 1
-7271.99
+529402
 const_per_months1
 1
 1
@@ -2018,7 +2018,7 @@ const_per_principal1
 1
 1
 1
-727199
+52940248
 const_per_principal2
 1
 1
@@ -2048,13 +2048,13 @@ const_per_principal_total
 1
 1
 1
-727199
+52940248
 const_per_total1
 1
 1
 1
 1
-14544
+1058805
 const_per_total2
 1
 1
@@ -2114,7 +2114,7 @@ construction_financing_cost
 1
 1
 1
-14544
+1058805
 contingency
 1
 1
@@ -2155,7 +2155,7 @@ cp_battery_nameplate
 1
 1
 1
-0.104083
+4
 cp_capacity_credit_percent
 1
 2
@@ -2185,7 +2185,7 @@ cp_system_nameplate
 1
 1
 1
-0.525337
+50.0022
 dc_adjust
 1
 5
@@ -2592,14 +2592,14 @@ dispatch_manual_charge
 2
 1
 6
-0 0 0 0 0 0 
+1 0 0 0 0 0 
 
 dispatch_manual_discharge
 1
 2
 1
 6
-0 0 0 0 0 0 
+0 1 0 0 0 0 
 
 dispatch_manual_gridcharge
 1
@@ -2612,8 +2612,9 @@ dispatch_manual_percent_discharge
 1
 2
 1
-1
-0
+2
+25 0 
+
 dispatch_manual_percent_gridcharge
 1
 2
@@ -2625,36 +2626,36 @@ dispatch_manual_sched
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
 
 dispatch_manual_sched_weekend
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
 
 dispatch_sched_weekday
 1
@@ -3270,7 +3271,7 @@ install_labor_total
 1
 1
 1
-57787.1
+5500244
 install_margin_fixed
 1
 1
@@ -3294,13 +3295,13 @@ install_margin_total
 1
 1
 1
-31520.2
+3000133
 installed_per_capacity
 1
 1
 1
 1
-1.38425
+1.05876
 insurance_rate
 1
 1
@@ -3456,8 +3457,8 @@ empty
 inv_cec_name
 1
 4
-52
-SMA America: SC500HE-US-MV (with Cooper transformer)
+59
+SMA America: SC750CP-US (with ABB EcoDry Ultra transformer)
 inv_cec_type
 1
 4
@@ -3945,60 +3946,60 @@ inv_snl_c0
 1
 1
 1
--5.67984e-08
+-2.44558e-08
 inv_snl_c1
 1
 1
 1
 1
-3.1e-05
+1.2e-05
 inv_snl_c2
 1
 1
 1
 1
-0.004274
+0.001461
 inv_snl_c3
 1
 1
 1
 1
-0.000503
+-0.000203
 inv_snl_eff_cec
 1
 1
 1
 1
-97.3066
+97.5869
 inv_snl_eff_euro
 1
 1
 1
 1
-97.0907
+97.377
 inv_snl_idcmax
 1
 1
 1
 1
-1397.53
+1289.42
 inv_snl_inverter_name
 1
 4
-52
-SMA America: SC500HE-US-MV (with Cooper transformer)
+59
+SMA America: SC750CP-US (with ABB EcoDry Ultra transformer)
 inv_snl_mppt_hi
 1
 1
 1
 1
-480
+820
 inv_snl_mppt_low
 1
 1
 1
 1
-330
+545
 inv_snl_num_mppt
 1
 1
@@ -4010,37 +4011,37 @@ inv_snl_paco
 1
 1
 1
-500000
+770000
 inv_snl_pdco
 1
 1
 1
 1
-517086
+791706
 inv_snl_pnt
 1
 1
 1
 1
-150
+231
 inv_snl_pso
 1
 1
 1
 1
-2344.41
+2859.5
 inv_snl_vdcmax
 1
 1
 1
 1
-480
+820
 inv_snl_vdco
 1
 1
 1
 1
-370
+614
 inv_tdc_cec_cg
 1
 3
@@ -4088,7 +4089,7 @@ inverter_count
 1
 1
 1
-1
+54
 inverter_model
 1
 1
@@ -4100,31 +4101,31 @@ inverter_num_units
 1
 1
 1
-1
+54
 inverter_power
 1
 1
 1
 1
-500
+770
 inverter_total
 1
 1
 1
 1
-26266.9
+2500111
 inverterarray_power
 1
 1
 1
 1
-500
+41580
 inverterarray_power_w
 1
 1
 1
 1
-500000
+41580000
 irrad_mode
 1
 1
@@ -4226,13 +4227,13 @@ land_area_capex
 1
 1
 1
-2.5616
+216.583
 land_area_value
 1
 1
 1
 1
-2.5616
+216.583
 land_fixed
 1
 1
@@ -4435,7 +4436,7 @@ mera_cost1
 1
 1
 1
-131334
+12500555
 mera_cost2
 1
 1
@@ -4474,7 +4475,7 @@ module_area
 1
 1
 1
-1.244
+1.631
 module_aspect_ratio
 1
 1
@@ -4492,13 +4493,13 @@ module_length
 1
 1
 1
-1.45424
+1.66514
 module_model
 1
 1
 1
 1
-3
+1
 module_name
 1
 4
@@ -4509,43 +4510,43 @@ module_num_units
 1
 1
 1
-2500
+161220
 module_power
 1
 1
 1
 1
-0.210135
+0.310149
 module_total
 1
 1
 1
 1
-215388
+20500910
 module_width
 1
 1
 1
 1
-0.855432
+0.979496
 modulearray_area
 1
 1
 1
 1
-3110
+262950
 modulearray_power
 1
 1
 1
 1
-525.337
+50002.2
 modulearray_power_w
 1
 1
 1
 1
-525337
+50002220
 months_receivables_reserve
 1
 1
@@ -4563,13 +4564,13 @@ mppt_hi_inverter
 1
 1
 1
-480
+820
 mppt_low_inverter
 1
 1
 1
 1
-330
+545
 nominal_discount_rate
 1
 1
@@ -4587,7 +4588,7 @@ num_strings_total
 1
 1
 1
-250
+13435
 offset
 1
 1
@@ -4851,7 +4852,7 @@ permitting_total
 1
 1
 1
-5253.37
+500022
 ppa_escalation
 1
 1
@@ -4893,7 +4894,7 @@ property_assessed_value
 1
 1
 1
-727199
+52940248
 property_tax_rate
 1
 1
@@ -4947,7 +4948,7 @@ pv.storage.p1.charge
 1
 1
 1
-0
+1
 pv.storage.p1.discharge
 1
 1
@@ -4971,7 +4972,7 @@ pv.storage.p2.discharge
 1
 1
 1
-0
+1
 pv.storage.p2.gridcharge
 1
 1
@@ -5997,7 +5998,7 @@ step
 1
 1
 1
-3600
+0
 step_sd11par
 1
 1
@@ -6009,7 +6010,7 @@ step_spe
 1
 1
 1
-3600
+0
 subarray1_azimuth
 1
 1
@@ -6069,7 +6070,7 @@ subarray1_modules_per_string
 1
 1
 1
-10
+12
 subarray1_monthly_tilt
 1
 2
@@ -6094,7 +6095,7 @@ subarray1_nmodules
 1
 1
 1
-2500
+161220
 subarray1_nmodx
 1
 1
@@ -6112,7 +6113,7 @@ subarray1_nstrings
 1
 1
 1
-250
+13435
 subarray1_rear_irradiance_loss
 1
 1
@@ -6124,7 +6125,7 @@ subarray1_ref_nmodules
 1
 1
 1
-2500
+161220
 subarray1_rotlim
 1
 1
@@ -6160,13 +6161,13 @@ subarray1_string_vmp
 1
 1
 1
-400.004
+656.4
 subarray1_string_voc
 1
 1
 1
 1
-477
+772.8
 subarray1_tilt
 1
 1
@@ -6757,13 +6758,13 @@ subtotal_direct
 1
 1
 1
-609251
+42940320
 system_capacity
 1
 1
 1
 1
-525.337
+50002.2
 system_use_lifetime_output
 1
 1
@@ -6798,7 +6799,7 @@ total_area
 1
 1
 1
-3110
+262950
 total_battery_indirect_cost
 1
 1
@@ -6810,13 +6811,13 @@ total_dc_inverter_capacity
 1
 1
 1
-517.086
+42752.1
 total_direct_cost
 1
 1
 1
 1
-627529
+44228532
 total_indirect_cost
 1
 1
@@ -6828,43 +6829,43 @@ total_installed_cost
 1
 1
 1
-727199
+52940248
 total_inverter_capacity
 1
 1
 1
 1
-500
+41580
 total_land_area
 1
 1
 1
 1
-2.5616
+216.583
 total_module_area
 1
 1
 1
 1
-3110
+262950
 total_modules
 1
 1
 1
 1
-2500
+161220
 total_system_indirect_cost
 1
 1
 1
 1
-54635.1
+5200231
 total_system_installed_cost
 1
 1
 1
 1
-531658
+50129788
 transformer_load_loss
 1
 1
@@ -6900,37 +6901,37 @@ ui_pv_capacity
 1
 1
 1
-525.337
+50002.2
 ui_step_minutes
 1
 1
 1
 1
-60
+0
 ui_subarray1_length_side
 1
 1
 1
 1
-2.90847
+3.33029
 ui_subarray1_nrows
 1
 1
 1
 1
-26.0417
+1679.38
 ui_subarray1_row_spacing
 1
 1
 1
 1
-9.6949
+11.101
 ui_subarray2_length_side
 1
 1
 1
 1
-2.90847
+3.33029
 ui_subarray2_nrows
 1
 1
@@ -6942,13 +6943,13 @@ ui_subarray2_row_spacing
 1
 1
 1
-9.6949
+11.101
 ui_subarray3_length_side
 1
 1
 1
 1
-2.90847
+3.33029
 ui_subarray3_nrows
 1
 1
@@ -6960,13 +6961,13 @@ ui_subarray3_row_spacing
 1
 1
 1
-9.6949
+11.101
 ui_subarray4_length_side
 1
 1
 1
 1
-2.90847
+3.33029
 ui_subarray4_nrows
 1
 1
@@ -6978,7 +6979,7 @@ ui_subarray4_row_spacing
 1
 1
 1
-9.6949
+11.101
 ui_wacc
 1
 1
@@ -7329,7 +7330,7 @@ ur_nm_yearend_sell_rate
 1
 1
 1
-0.02789
+0
 ur_phase_wiring
 1
 4
@@ -7424,14 +7425,13 @@ use_wf_albedo
 user_specified_weather_file
 1
 4
-108
-C:\Users\sjanz/SAM Downloaded Weather Files/phoenix_az_33.450495_-111.983688_psmv3_60_tmy_1mInterpolated.csv
+0
 vdcmax_inverter
 1
 1
 1
 1
-480
+820
 wf_nrecords
 1
 1
