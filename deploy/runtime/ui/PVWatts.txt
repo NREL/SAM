@@ -1754,8 +1754,8 @@ Tool Tip
 0
 Caption
 5
-127
-The land area estimate is used for land purchase or lease for financial models that calculate land costs. See Help for details.
+134
+The land area estimate is for land purchase and lease calculations for financial models that include land costs. See Help for details.
 TextColour
 4
 0
