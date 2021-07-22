@@ -1704,7 +1704,7 @@ Battery Dispatch PV Smoothing
 60
 Numeric
 
-1484
+1546
 equations{'batt_dispatch_pvs_wf_timestep'} = define() {
 	return(${ui_step_minutes});
 };
@@ -1726,7 +1726,7 @@ equations{'batt_dispatch_pvs_interconnection_limit'} = define() {
 };
 
 equations{'batt_dispatch_pvs_nameplate'} = define() {
-	if (technology() != "Generic Battery") {
+	if (technology() != "Generic Battery" && technology() != "Fuel Cell") {
 		return(${total_inverter_capacity});// todo - generic? PV array only?
 	}
 	else {
@@ -1736,7 +1736,7 @@ equations{'batt_dispatch_pvs_nameplate'} = define() {
 
 // todo - move to compute module?
 equations{'batt_dispatch_pvs_nameplate_ac'} = define() {
-	if (technology() != "Generic Battery") {
+	if (technology() != "Generic Battery" && technology() != "Fuel Cell") {
 		if (${total_inverter_capacity}>${grid_interconnection_limit_kwac}) 
 			return ${grid_interconnection_limit_kwac};
 		else
@@ -1760,7 +1760,7 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-2544
+2628
 on_load{'Battery Dispatch PV Smoothing'} = define() {
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
@@ -1773,7 +1773,7 @@ on_load{'Battery Dispatch PV Smoothing'} = define() {
 function toggle_dispatch_pvs()
 {
 	mode = ${batt_dispatch_choice};
-	pvsmoothing = (mode == 5);
+	pvsmoothing = (mode == 5 && technology() == "PV Battery");
 	enable('batt_dispatch_pvs_ac_lb',pvsmoothing);
 	enable('batt_dispatch_pvs_ac_lb_enable',pvsmoothing);
 	enable('batt_dispatch_pvs_ac_ub',pvsmoothing);
@@ -1789,6 +1789,7 @@ function toggle_dispatch_pvs()
 	enable('batt_dispatch_pvs_ki',pvsmoothing);
 	enable('batt_dispatch_pvs_kp',pvsmoothing);
 	enable('batt_dispatch_pvs_max_ramp',pvsmoothing);
+	enable('batt_dispatch_pvs_nameplate',pvsmoothing);
 	enable('batt_dispatch_pvs_nameplate_ac',pvsmoothing);
 	enable('batt_dispatch_pvs_ramp_interval',pvsmoothing);
 	enable('batt_dispatch_pvs_short_forecast_enable',pvsmoothing);
