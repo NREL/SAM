@@ -226,62 +226,63 @@ Bold
 batt_dispatch_auto_can_charge
 3
 1
+Battery can charge from power generation
  
- 
- 
+Battery Dispatch
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+CheckBox
 batt_dispatch_auto_can_fuelcellcharge
 3
 1
+Battery can charge from fuel cell
  
- 
- 
+Battery Dispatch
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+CheckBox
 batt_dispatch_auto_can_gridcharge
 3
 1
+Battery can charge from grid
  
- 
- 
+Battery Dispatch
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+CheckBox
 batt_dispatch_choice_ui
 3
 1
+Battery dispatch options BTM
  
- 
- 
-0
-0
+Battery Dispatch
+103
+Peak shaving|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast
+3
 1
 1
 1
 1
 0
-Default
+RadioChoice
 
 0
-1710
+1707
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
@@ -320,7 +321,6 @@ function show_hide_charge_options()
 		//Price Signal Dispatch Inputs
 		enable('batt_cycle_cost', false);
 		enable('batt_cycle_cost_choice', false);
-		
 	}
 	else
 	{
