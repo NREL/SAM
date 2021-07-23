@@ -1760,7 +1760,7 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-2628
+2651
 on_load{'Battery Dispatch PV Smoothing'} = define() {
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
@@ -1773,7 +1773,8 @@ on_load{'Battery Dispatch PV Smoothing'} = define() {
 function toggle_dispatch_pvs()
 {
 	mode = ${batt_dispatch_choice};
-	pvsmoothing = (mode == 5 && technology() == "PV Battery");
+	pvsmoothing = true;
+//	pvsmoothing = (mode == 5 && technology() == "PV Battery");
 	enable('batt_dispatch_pvs_ac_lb',pvsmoothing);
 	enable('batt_dispatch_pvs_ac_lb_enable',pvsmoothing);
 	enable('batt_dispatch_pvs_ac_ub',pvsmoothing);

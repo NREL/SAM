@@ -559,9 +559,10 @@ function setup_fuel_cell_pages_fom()
 			'Battery Dispatch Front of Meter',
 			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});*/
 	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], 
-		['Battery Dispatch Empty'],[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}]],
+		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}],
+		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}]],
 			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
-			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM', 'Fuel Cell Dispatch Manual' ], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 	setup_grid_page();
 }
 
