@@ -357,7 +357,7 @@ bos_equip_total
 1
 1
 1
-5.00023e+12
+10000444
 calculated_dcac_ratio
 1
 1
@@ -804,7 +804,7 @@ const_per_interest1
 1
 1
 1
-5.40779e+10
+513845
 const_per_interest2
 1
 1
@@ -864,7 +864,7 @@ const_per_interest_total
 1
 1
 1
-5.40779e+10
+513845
 const_per_months1
 1
 1
