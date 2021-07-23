@@ -363,7 +363,7 @@ bos_equip_total
 1
 1
 1
-274296
+119693
 calculated_dcac_ratio
 1
 1
@@ -816,7 +816,7 @@ contingency
 1
 1
 1
-27728.8
+21544.7
 contingency_percent
 1
 1
@@ -1465,8 +1465,8 @@ iec61853_test_data
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -1549,7 +1549,7 @@ installed_per_capacity
 1
 1
 1
-2.05487
+1.71925
 insurance_rate
 1
 1
@@ -3064,7 +3064,7 @@ property_assessed_value
 1
 1
 1
-1024804
+857424
 property_tax_rate
 1
 1
@@ -3153,7 +3153,7 @@ sales_tax_total
 1
 1
 1
-29558.9
+22966.6
 sales_tax_value
 1
 1
@@ -4014,7 +4014,7 @@ step
 1
 1
 1
-0
+3600
 step_sd11par
 1
 1
@@ -4026,7 +4026,7 @@ step_spe
 1
 1
 1
-0
+3600
 subarray1_azimuth
 1
 1
@@ -4774,7 +4774,7 @@ subtotal_direct
 1
 1
 1
-693220
+538617
 system_capacity
 1
 1
@@ -4816,7 +4816,7 @@ total_direct_cost
 1
 1
 1
-720949
+560162
 total_indirect_cost
 1
 1
@@ -4828,7 +4828,7 @@ total_installed_cost
 1
 1
 1
-1024804
+857424
 total_inverter_capacity
 1
 1
@@ -4894,19 +4894,19 @@ ui_loan_amount
 1
 1
 1
-1024804
+857424
 ui_net_capital_cost
 1
 1
 1
 1
-1024804
+857424
 ui_step_minutes
 1
 1
 1
 1
-0
+60
 ui_subarray1_length_side
 1
 1
