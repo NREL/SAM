@@ -864,7 +864,7 @@ battery_indirect_cost_percent
 1
 1
 1
-0
+20
 battery_lifetime_shown
 1
 1
@@ -882,13 +882,13 @@ battery_per_kW
 1
 1
 1
-263.12
+629.47
 battery_per_kWh
 1
 1
 1
 1
-293.84
+206.67
 battery_power
 1
 1
@@ -912,13 +912,13 @@ battery_total
 1
 1
 1
-1.43848e+06
+1.45615e+06
 battery_total_cost_lcos
 1
 1
 1
 1
-1.43848e+06
+10002808
 battery_voltage_shown
 1
 1
@@ -1090,7 +1090,7 @@ const_per_interest1
 1
 1
 1
-1.49825e+06
+3.59276e+06
 const_per_interest2
 1
 1
@@ -1150,7 +1150,7 @@ const_per_interest_total
 1
 1
 1
-1.49825e+06
+3.59276e+06
 const_per_months1
 1
 1
@@ -1247,7 +1247,7 @@ const_per_principal1
 1
 1
 1
-149824720
+359276224
 const_per_principal2
 1
 1
@@ -1277,13 +1277,13 @@ const_per_principal_total
 1
 1
 1
-149824720
+359276224
 const_per_total1
 1
 1
 1
 1
-2.99649e+06
+7.18552e+06
 const_per_total2
 1
 1
@@ -1343,7 +1343,7 @@ construction_financing_cost
 1
 1
 1
-2.99649e+06
+7.18552e+06
 conv_eff
 1
 1
@@ -1373,13 +1373,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-1.19245e+06
+2.85948e+06
 cost_dev_fee_value
 1
 1
 1
 1
-4.49474e+06
+10778287
 cost_equity_closing
 1
 1
@@ -1711,7 +1711,7 @@ dispatch_factor2
 1
 1
 1
-1.5
+1
 dispatch_factor3
 1
 1
@@ -1836,50 +1836,50 @@ dispatch_sched_weekday
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
 dispatch_sched_weekend
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
 dispatch_tod_factors
 1
 2
 1
 9
-1 1.5 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 
 
 dscr
 1
 1
 1
 1
-2.4
+1.3
 dscr_reserve_months
 1
 1
@@ -1963,13 +1963,13 @@ first_year_output
 1
 1
 1
-73331712
+183337408
 first_year_output_peak
 1
 1
 1
 1
-19200
+48002.1
 fixed_plant_input
 1
 1
@@ -1999,7 +1999,7 @@ genericsys.cost.contingency
 1
 1
 1
-6071924
+15073473
 genericsys.cost.contingency_percent
 1
 1
@@ -2017,7 +2017,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-12751040
+31654294
 genericsys.cost.epc.percent
 1
 1
@@ -2029,13 +2029,13 @@ genericsys.cost.epc.total
 1
 1
 1
-12751040
+31654294
 genericsys.cost.installed_per_capacity
 1
 1
 1
 1
-7.49124
+7.18521
 genericsys.cost.per_watt
 1
 1
@@ -2053,7 +2053,7 @@ genericsys.cost.plant_scaled
 1
 1
 1
-120000000
+300013312
 genericsys.cost.plm.fixed
 1
 1
@@ -2065,7 +2065,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-4462864
+11079003
 genericsys.cost.plm.percent
 1
 1
@@ -2077,7 +2077,7 @@ genericsys.cost.plm.total
 1
 1
 1
-4462864
+11079003
 genericsys.cost.sales_tax.percent
 1
 1
@@ -2089,13 +2089,13 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-5100416
+0
 genericsys.cost.sales_tax.value
 1
 1
 1
 1
-5
+0
 grid_curtailment
 1
 2
@@ -2394,7 +2394,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 itc_fed_amount
 1
 1
@@ -2418,7 +2418,7 @@ itc_fed_percent
 1
 1
 1
-0
+26
 itc_fed_percent_deprbas_fed
 1
 1
@@ -2580,7 +2580,7 @@ mera_cost1
 1
 1
 1
-5000000
+12500555
 mera_cost2
 1
 1
@@ -2625,7 +2625,7 @@ nameplate_capacity
 1
 1
 1
-20000
+50002.2
 nominal_discount_rate
 1
 1
@@ -2667,7 +2667,7 @@ om_capacity
 2
 1
 1
-13
+19
 om_capacity_escal
 1
 1
@@ -2757,7 +2757,7 @@ pbi_fed_term
 1
 1
 1
-10
+0
 pbi_oth_amount
 1
 2
@@ -2793,7 +2793,7 @@ pbi_oth_term
 1
 1
 1
-10
+0
 pbi_sta_amount
 1
 2
@@ -2829,7 +2829,7 @@ pbi_sta_term
 1
 1
 1
-10
+0
 pbi_uti_amount
 1
 2
@@ -2865,13 +2865,13 @@ pbi_uti_term
 1
 1
 1
-10
+0
 ppa_escalation
 1
 1
 1
 1
-0.5
+1
 ppa_multiplier_model
 1
 1
@@ -2883,7 +2883,7 @@ ppa_price_input
 2
 1
 1
-0.25
+0.1
 ppa_soln_mode
 1
 1
@@ -2907,7 +2907,7 @@ property_assessed_value
 1
 1
 1
-149824720
+359276224
 property_tax_rate
 1
 1
@@ -3075,7 +3075,7 @@ sales_tax_rate
 1
 1
 1
-5
+0
 salvage_percentage
 1
 1
@@ -3133,7 +3133,7 @@ system_capacity
 1
 1
 1
-20000
+50002.2
 system_use_lifetime_output
 1
 1
@@ -3198,37 +3198,37 @@ total_battery_indirect_cost
 1
 1
 1
-0
+8546659
 total_direct_cost
 1
 1
 1
 1
-127510400
+316542944
 total_indirect_cost
 1
 1
 1
 1
-17213904
+42733296
 total_installed_cost
 1
 1
 1
 1
-149824720
+359276224
 total_system_indirect_cost
 1
 1
 1
 1
-17213904
+34186636
 ui_pv_capacity
 1
 1
 1
 1
-20000
+50002.2
 ui_wacc
 1
 1

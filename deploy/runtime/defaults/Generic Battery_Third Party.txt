@@ -11,7 +11,7 @@ LeadAcid_q10_computed
 1
 1
 1
-17.856
+7434.05
 LeadAcid_q20
 1
 1
@@ -23,7 +23,7 @@ LeadAcid_q20_computed
 1
 1
 1
-19.2
+7993.6
 LeadAcid_qn
 1
 1
@@ -35,7 +35,7 @@ LeadAcid_qn_computed
 1
 1
 1
-11.52
+4796.16
 LeadAcid_tn
 1
 1
@@ -176,7 +176,7 @@ batt_C_rate_max_charge
 1
 1
 1
-0.5
+0.25
 batt_C_rate_max_charge_input
 1
 1
@@ -188,7 +188,7 @@ batt_C_rate_max_discharge
 1
 1
 1
-0.5
+0.25
 batt_C_rate_max_discharge_input
 1
 1
@@ -224,7 +224,7 @@ batt_Qfull_flow
 1
 1
 1
-19.2
+7993.6
 batt_Qnom
 1
 1
@@ -284,7 +284,7 @@ batt_bank_duration
 1
 1
 1
-2
+4
 batt_bank_ncells_serial
 1
 1
@@ -308,7 +308,7 @@ batt_bank_power
 1
 1
 1
-5
+1000
 batt_bank_power_dc_ac
 1
 1
@@ -320,7 +320,7 @@ batt_bank_size
 1
 1
 1
-10
+4000
 batt_bank_size_dc_ac
 1
 1
@@ -413,7 +413,7 @@ batt_computed_bank_capacity
 1
 1
 1
-9.60768
+4000
 batt_computed_series
 1
 1
@@ -431,7 +431,7 @@ batt_computed_strings
 1
 1
 1
-6
+2498
 batt_computed_voltage
 1
 1
@@ -443,19 +443,19 @@ batt_current_charge_max
 1
 1
 1
-9.6
+1998.4
 batt_current_choice
 1
 1
 1
 1
-1
+0
 batt_current_discharge_max
 1
 1
 1
 1
-9.6
+1998.4
 batt_custom_dispatch
 1
 2
@@ -551,13 +551,13 @@ batt_dispatch_choice_ui
 1
 1
 1
-3
+2
 batt_dispatch_excl
 1
 1
 1
 1
-3.33506e-317
+2
 batt_duration_choice
 1
 1
@@ -605,7 +605,7 @@ batt_h_to_ambient
 1
 1
 1
-7.5
+15
 batt_initial_SOC
 1
 1
@@ -687,7 +687,7 @@ batt_mass
 1
 1
 1
-95.1255
+39603.9
 batt_maximum_SOC
 1
 1
@@ -699,7 +699,7 @@ batt_meter_position
 1
 1
 1
-0
+1
 batt_minimum_SOC
 1
 1
@@ -717,31 +717,31 @@ batt_num_cells
 1
 1
 1
-834
+347222
 batt_power_charge_max_kwac
 1
 1
 1
 1
-5.004
+1041.67
 batt_power_charge_max_kwdc
 1
 1
 1
 1
-4.80384
+999.999
 batt_power_discharge_max_kwac
 1
 1
 1
 1
-4.61169
+959.999
 batt_power_discharge_max_kwdc
 1
 1
 1
 1
-4.80384
+999.999
 batt_replacement_capacity
 1
 1
@@ -809,7 +809,7 @@ batt_surface_area
 1
 1
 1
-1.59649
+89.0141
 batt_target_choice
 1
 1
@@ -841,7 +841,7 @@ batt_time_capacity
 1
 1
 1
-2
+4
 batt_type
 1
 1
@@ -871,7 +871,7 @@ batt_ui_nominal_bank_power
 1
 1
 1
-4.80384
+999.999
 batt_voltage_choice
 1
 1
@@ -890,7 +890,7 @@ batt_volume
 1
 1
 1
-0.137253
+57.1428
 battery_lifetime_shown
 1
 1
@@ -936,7 +936,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+41.856
 chk_update_peaks
 1
 1
@@ -1072,14 +1072,14 @@ dispatch_manual_charge
 2
 1
 6
-1 1 0 0 0 0 
+1 0 0 0 0 0 
 
 dispatch_manual_discharge
 1
 2
 1
 6
-0 1 1 1 0 0 
+0 1 0 0 0 0 
 
 dispatch_manual_gridcharge
 1
@@ -1092,8 +1092,8 @@ dispatch_manual_percent_discharge
 1
 2
 1
-4
-25 25 25 0 
+2
+25 0 
 
 dispatch_manual_percent_gridcharge
 1
@@ -1106,36 +1106,36 @@ dispatch_manual_sched
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 4 4 4 4 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
 
 dispatch_manual_sched_weekend
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
 
 en_batt
 1
@@ -1310,13 +1310,13 @@ first_year_output
 1
 1
 1
-33638.4
+183337408
 first_year_output_peak
 1
 1
 1
 1
-3.84
+48002.1
 floor_area
 1
 1
@@ -1612,7 +1612,7 @@ pv.storage.p2.charge
 1
 1
 1
-1
+0
 pv.storage.p2.discharge
 1
 1
@@ -1636,7 +1636,7 @@ pv.storage.p3.discharge
 1
 1
 1
-1
+0
 pv.storage.p3.gridcharge
 1
 1
@@ -1654,7 +1654,7 @@ pv.storage.p4.discharge
 1
 1
 1
-1
+0
 pv.storage.p4.gridcharge
 1
 1
@@ -1732,7 +1732,7 @@ system_capacity
 1
 1
 1
-4
+50002.2
 system_use_lifetime_output
 1
 1
@@ -2177,7 +2177,7 @@ user_capacity_factor
 1
 1
 1
-20
+43.6
 utility_bill_data
 1
 2
