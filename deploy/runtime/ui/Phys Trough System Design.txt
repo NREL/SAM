@@ -1,7 +1,7 @@
 Phys Trough System Design
 867
 478
-22
+23
 Numeric
 
 1
@@ -525,6 +525,41 @@ Caption
 5
 22
 Choose Number of Loops
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+18
+combo_htf_type_fpc
+X
+3
+189
+Y
+3
+204
+Width
+3
+129
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+3
+PG 30-70
+PG 50-50
+Pressurized Water
+Selection
+3
+4294967295
 TabOrder
 3
 4294967295
@@ -1157,7 +1192,21 @@ AlignTop
 2
 1
 
-18
+20
+Fluid_FPC
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+35
+Default
 I_bn_des
 3
 1
@@ -1284,6 +1333,21 @@ Phys Trough System Design
 1
 150
 Default
+combo_htf_type_fpc
+3
+1
+FPC HTF fluid
+ 
+Phys Trough Solar Field
+35
+PG 30-70|PG 50-50|Pressurized Water
+2
+1
+1
+1
+1
+0
+Choice
 is_model_heat_sink_piping
 3
 1
@@ -1411,7 +1475,7 @@ Phys Trough System Design
 6
 Default
 
-856
+1023
 equations{ 'specified_q_dot_rec_des' } = define() 
 {
 	return ${specified_solar_multiple}*${q_pb_design}; 
@@ -1451,6 +1515,15 @@ equations{ 'SD_COPY_field_thermal_output' } = define()
 equations{ 'solar_mult' } = define() {
 	return ${field_thermal_output}/${q_pb_design};
 	//return ${specified_solar_multiple}; 
+};
+
+equations{ 'Fluid_FPC' } = define() {
+	return ?${combo_htf_type_fpc}
+	[
+		35, //    35.) PG_30_70
+		34, //    34.) PG_50_50
+		31  //    31.) Pressurized Water
+	];
 };
 
 2144

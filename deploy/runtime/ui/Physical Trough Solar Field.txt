@@ -4917,7 +4917,7 @@ Physical Trough Solar Field
 25
 Default
 
-11564
+11596
 
 equations{ '$MIMO$ Flat_Plate_Array_Design_Equations' } = define() {
 	// 
@@ -4943,6 +4943,7 @@ equations{ '$MIMO$ Flat_Plate_Array_Design_Equations' } = define() {
 	//msgbox(${num_in_series} + ' ' + ${num_in_parallel});
 	data.T_in_des_external = ${T_loop_in_des};
 	data.Fluid = ${Fluid};
+	data.Fluid_FPC = ${Fluid_FPC};
 	//
 	//data.m_dot_array_design = ${q_pb_design} * 1.e3 /
 	//  (${field_htf_cp_avg} * (${T_loop_out} - ${T_loop_in_des}));
