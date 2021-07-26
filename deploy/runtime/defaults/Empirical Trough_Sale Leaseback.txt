@@ -3748,8 +3748,7 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-48
-tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 solution_mode_message
 1
 4
