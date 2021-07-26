@@ -546,7 +546,7 @@ const_per_total1
 1
 1
 1
-1.02764e+06
+1027640
 const_per_total2
 1
 1
@@ -606,7 +606,7 @@ construction_financing_cost
 1
 1
 1
-1.02764e+06
+1027640
 contingency
 1
 1
@@ -2612,8 +2612,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 solution_mode_message
 1
 4
