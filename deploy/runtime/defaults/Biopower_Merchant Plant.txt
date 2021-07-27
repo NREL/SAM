@@ -223196,8 +223196,7 @@ fargo_nd_46.9_-96.8_mts1_60_tmy
 solar_resource_file
 1
 4
-35
-fargo_nd_46.9_-96.8_mts1_60_tmy.csv
+0
 state
 1
 4

@@ -2371,8 +2371,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -3325,7 +3325,7 @@ property_assessed_value
 1
 1
 1
-2.44922e+06
+2449220
 property_tax_rate
 1
 1
@@ -3580,8 +3580,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 state
 1
 4
@@ -3756,7 +3755,7 @@ thermal_load_annual_total
 1
 1
 1
-7.6463e+06
+7646300
 thermal_load_escalation
 1
 2
@@ -3916,7 +3915,7 @@ total_installed_cost
 1
 1
 1
-2.44922e+06
+2449220
 total_system_indirect_cost
 1
 1
@@ -3940,13 +3939,13 @@ ui_loan_amount
 1
 1
 1
-2.44922e+06
+2449220
 ui_net_capital_cost
 1
 1
 1
 1
-2.44922e+06
+2449220
 ui_pv_capacity
 1
 1

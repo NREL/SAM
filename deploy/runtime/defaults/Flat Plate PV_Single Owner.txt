@@ -357,7 +357,7 @@ bos_equip_total
 1
 1
 1
-5.00023e+12
+10000444
 calculated_dcac_ratio
 1
 1
@@ -804,7 +804,7 @@ const_per_interest1
 1
 1
 1
-5.40779e+10
+513845
 const_per_interest2
 1
 1
@@ -864,7 +864,7 @@ const_per_interest_total
 1
 1
 1
-5.40779e+10
+513845
 const_per_months1
 1
 1
@@ -961,7 +961,7 @@ const_per_principal1
 1
 1
 1
-5.40779e+12
+51384528
 const_per_principal2
 1
 1
@@ -991,13 +991,13 @@ const_per_principal_total
 1
 1
 1
-5.40779e+12
+51384528
 const_per_total1
 1
 1
 1
 1
-1.08156e+11
+1027690
 const_per_total2
 1
 1
@@ -1057,13 +1057,13 @@ construction_financing_cost
 1
 1
 1
-1.08156e+11
+1027690
 contingency
 1
 1
 1
 1
-1.50008e+11
+1245060
 contingency_percent
 1
 1
@@ -2084,8 +2084,8 @@ iec61853_test_data
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -2168,7 +2168,7 @@ installed_per_capacity
 1
 1
 1
-108151
+1.02764
 insurance_rate
 1
 1
@@ -3725,7 +3725,7 @@ property_assessed_value
 1
 1
 1
-5.40779e+12
+51384528
 property_tax_rate
 1
 1
@@ -3838,7 +3838,7 @@ sales_tax_total
 1
 1
 1
-2.57514e+11
+2137340
 sales_tax_value
 1
 1
@@ -4527,8 +4527,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 solution_mode_message
 1
 4
@@ -4715,7 +4714,7 @@ step
 1
 1
 1
-0
+3600
 step_sd11par
 1
 1
@@ -4727,7 +4726,7 @@ step_spe
 1
 1
 1
-0
+3600
 subarray1_azimuth
 1
 1
@@ -5475,7 +5474,7 @@ subtotal_direct
 1
 1
 1
-5.00026e+12
+41501840
 system_capacity
 1
 1
@@ -5534,7 +5533,7 @@ total_direct_cost
 1
 1
 1
-5.15027e+12
+42746896
 total_indirect_cost
 1
 1
@@ -5546,7 +5545,7 @@ total_installed_cost
 1
 1
 1
-5.40779e+12
+51384528
 total_inverter_capacity
 1
 1
@@ -5606,7 +5605,7 @@ ui_step_minutes
 1
 1
 1
-0
+60
 ui_subarray1_length_side
 1
 1

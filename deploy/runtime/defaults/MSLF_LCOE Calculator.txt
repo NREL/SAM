@@ -1771,7 +1771,7 @@ fixed_operating_cost
 1
 1
 1
-6.59999e+06
+6599990
 fossil_mode
 1
 1
@@ -2327,8 +2327,7 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-48
-tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 solarm
 1
 1

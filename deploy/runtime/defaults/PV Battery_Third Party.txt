@@ -1958,8 +1958,8 @@ iec61853_test_data
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -3909,8 +3909,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 spe_a
 1
 1
@@ -4087,7 +4086,7 @@ step
 1
 1
 1
-0
+3600
 step_sd11par
 1
 1
@@ -4099,7 +4098,7 @@ step_spe
 1
 1
 1
-0
+3600
 subarray1_azimuth
 1
 1
@@ -4931,7 +4930,7 @@ ui_step_minutes
 1
 1
 1
-0
+60
 ui_subarray1_length_side
 1
 1
