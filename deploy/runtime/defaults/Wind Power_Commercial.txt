@@ -1,5 +1,5 @@
 1
-561
+557
 a_error_test_number
 1
 1
@@ -2582,12 +2582,6 @@ obos_warning
 4
 64
 Offshore BOS cost model failed with error: fail(nTurb, min=2): 1
-om_batt_replacement_cost
-1
-2
-1
-1
-0
 om_building_size
 1
 1
@@ -2636,18 +2630,6 @@ om_fixed_escal
 1
 1
 0
-om_fuel_cost
-1
-2
-1
-1
-0
-om_fuel_cost_escal
-1
-1
-1
-1
-0
 om_production
 1
 2
@@ -2655,12 +2637,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
@@ -3298,7 +3274,7 @@ substation_cost
 1
 1
 1
-3.1295e+06
+3129500
 substructCont
 1
 1
@@ -4355,8 +4331,7 @@ wind_resource_distribution
 wind_resource_filename
 1
 4
-26
-WY Southern-Flat Lands.srw
+0
 wind_resource_model_choice
 1
 1

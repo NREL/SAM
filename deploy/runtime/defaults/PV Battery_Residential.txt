@@ -824,13 +824,13 @@ batt_dispatch_choice_ui
 1
 1
 1
-4.94066e-323
+0
 batt_dispatch_excl
 1
 1
 1
 1
-3.33506e-317
+0
 batt_duration_choice
 1
 1
@@ -2636,8 +2636,8 @@ iec61853_test_data
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -4032,6 +4032,12 @@ om_batt_fixed_cost
 1
 1
 0
+om_batt_nameplate
+1
+1
+1
+1
+9.60768
 om_batt_replacement_cost
 1
 2
@@ -5241,8 +5247,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 spe_a
 1
 1
@@ -5425,7 +5430,7 @@ step
 1
 1
 1
-0
+3600
 step_sd11par
 1
 1
@@ -5437,7 +5442,7 @@ step_spe
 1
 1
 1
-0
+3600
 subarray1_azimuth
 1
 1
@@ -6312,12 +6317,6 @@ ui_annual_load
 1
 1
 0
-ui_batt_capacity
-1
-1
-1
-1
-9.60768
 ui_net_capital_cost
 1
 1
@@ -6335,7 +6334,7 @@ ui_step_minutes
 1
 1
 1
-0
+60
 ui_subarray1_length_side
 1
 1

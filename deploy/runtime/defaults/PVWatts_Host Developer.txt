@@ -1,5 +1,5 @@
 1
-530
+526
 ac_nameplate
 1
 1
@@ -154,7 +154,7 @@ bos_equip_total
 1
 1
 1
-5.4e+10
+129600
 capex_table_ac_cost_per_w
 1
 1
@@ -369,7 +369,7 @@ const_per_interest1
 1
 1
 1
-584633536
+9283.96
 const_per_interest2
 1
 1
@@ -429,7 +429,7 @@ const_per_interest_total
 1
 1
 1
-584633536
+9283.96
 const_per_months1
 1
 1
@@ -526,7 +526,7 @@ const_per_principal1
 1
 1
 1
-5.84634e+10
+928396
 const_per_principal2
 1
 1
@@ -556,13 +556,13 @@ const_per_principal_total
 1
 1
 1
-5.84634e+10
+928396
 const_per_total1
 1
 1
 1
 1
-1.16927e+09
+18567.9
 const_per_total2
 1
 1
@@ -622,13 +622,13 @@ construction_financing_cost
 1
 1
 1
-1.16927e+09
+18567.9
 contingency
 1
 1
 1
 1
-2.16002e+09
+23328
 contingency_percent
 1
 1
@@ -1583,8 +1583,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -1667,7 +1667,7 @@ installed_per_capacity
 1
 1
 1
-108265
+1.71925
 insurance_rate
 1
 1
@@ -2205,12 +2205,6 @@ normalize_to_utility_bill
 1
 1
 0
-om_batt_replacement_cost
-1
-2
-1
-1
-0
 om_capacity
 1
 2
@@ -2235,18 +2229,6 @@ om_fixed_escal
 1
 1
 0
-om_fuel_cost
-1
-2
-1
-1
-0
-om_fuel_cost_escal
-1
-1
-1
-1
-0
 om_production
 1
 2
@@ -2254,12 +2236,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
@@ -2564,7 +2540,7 @@ property_assessed_value
 1
 1
 1
-5.84634e+10
+928396
 property_tax_rate
 1
 1
@@ -2654,7 +2630,7 @@ sales_tax_total
 1
 1
 1
-2.30258e+09
+24867.6
 sales_tax_value
 1
 1
@@ -2741,8 +2717,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 solution_mode_message
 1
 4
@@ -2774,7 +2749,7 @@ subtotal_direct
 1
 1
 1
-5.40005e+10
+583200
 system_capacity
 1
 1
@@ -2827,7 +2802,7 @@ total_direct_cost
 1
 1
 1
-5.61605e+10
+606528
 total_indirect_cost
 1
 1
@@ -2839,7 +2814,7 @@ total_installed_cost
 1
 1
 1
-5.84634e+10
+928396
 tz
 1
 1

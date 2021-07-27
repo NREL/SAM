@@ -1,5 +1,5 @@
 1
-436
+435
 adjust
 1
 5
@@ -1064,7 +1064,7 @@ first_year_output
 1
 1
 1
-73469696
+35591988
 first_year_output_peak
 1
 1
@@ -1784,12 +1784,6 @@ normalize_to_utility_bill
 1
 1
 0
-om_batt_replacement_cost
-1
-2
-1
-1
-0
 om_capacity
 1
 2
@@ -1819,7 +1813,7 @@ om_fuel_cost
 2
 1
 1
-0
+10
 om_fuel_cost_escal
 1
 1
@@ -1833,12 +1827,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
@@ -2303,6 +2291,12 @@ ui_annual_load
 1
 1
 0
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

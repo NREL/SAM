@@ -4082,13 +4082,11 @@ wave_resource_end_period
 wave_resource_filename
 1
 4
-37
-Humboldt_California_Wave-Resource.csv
+0
 wave_resource_filename_ts
 1
 4
-37
-Humboldt_California_Wave-Resource.csv
+0
 wave_resource_matrix
 1
 3

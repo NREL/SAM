@@ -1,5 +1,5 @@
 1
-492
+488
 adjust
 1
 5
@@ -526,7 +526,7 @@ const_per_principal1
 1
 1
 1
-6.07946e+06
+6079460
 const_per_principal2
 1
 1
@@ -556,7 +556,7 @@ const_per_principal_total
 1
 1
 1
-6.07946e+06
+6079460
 const_per_total1
 1
 1
@@ -1483,7 +1483,7 @@ hcpv.cost.module.totalcost
 1
 1
 1
-3.15464e+06
+3154640
 hcpv.cost.modulearray.area
 1
 1
@@ -2494,12 +2494,6 @@ nominal_discount_rate
 1
 1
 9.06
-om_batt_replacement_cost
-1
-2
-1
-1
-0
 om_capacity
 1
 2
@@ -2524,18 +2518,6 @@ om_fixed_escal
 1
 1
 0
-om_fuel_cost
-1
-2
-1
-1
-0
-om_fuel_cost_escal
-1
-1
-1
-1
-0
 om_production
 1
 2
@@ -2543,12 +2525,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
@@ -2749,7 +2725,7 @@ property_assessed_value
 1
 1
 1
-6.07946e+06
+6079460
 property_tax_rate
 1
 1
@@ -2898,8 +2874,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 solution_mode_message
 1
 4
@@ -2978,7 +2953,7 @@ total_installed_cost
 1
 1
 1
-6.07946e+06
+6079460
 tz
 1
 1

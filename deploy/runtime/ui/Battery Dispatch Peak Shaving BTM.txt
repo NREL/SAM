@@ -1,4 +1,4 @@
-Battery Dispatch Peak Shaving
+Battery Dispatch Peak Shaving BTM
 1051
 111
 3
@@ -96,7 +96,7 @@ Y
 48
 Width
 3
-243
+303
 Height
 3
 57
@@ -109,7 +109,7 @@ Selection
 Items
 6
 2
-One day look ahead
+One day look ahead (perfect)
 One day look behind
 ShowCaptions
 2
@@ -125,9 +125,9 @@ TabOrder
 batt_dispatch_choice
 3
 1
+Battery dispatch choice
  
- 
- 
+Battery Dispatch
 0
 8
 1
@@ -139,11 +139,12 @@ Default
 peak_shaving_batt_dispatch_choice
 3
 1
+Battery peak shaving options BTM
  
- 
- 
-0
-0
+Battery Dispatch
+48
+One day look ahead (perfect)|One day look behind
+3
 1
 1
 1
@@ -152,32 +153,29 @@ peak_shaving_batt_dispatch_choice
 Default
 
 0
-524
-on_load{'Battery Dispatch Peak Shaving'}=define()
+526
+on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	
 	on_change{'peak_shaving_batt_dispatch_choice'};
 	peak_shaving_choice();
-	if (technology() == "Fuel Cell") 
-		toggle_dispatch();
-		
-	show_hide_charge_options();
-		
+	if (technology() == 'Fuel Cell') { toggle_dispatch(); }
+	show_hide_charge_options();		
 };
 
-on_change{'peak_shaving_batt_dispatch_choice'} = define() {
+on_change{'peak_shaving_batt_dispatch_choice'} = define() 
+{
 	peak_shaving_choice();
 };
 
-function peak_shaving_choice() {
+function peak_shaving_choice() 
+{
 	choice = value('peak_shaving_batt_dispatch_choice');
-	if (choice == 0) {
+	if (choice == 0) 
+	{
 		value('batt_dispatch_choice',0);
 	}
-	else if (choice == 1) {
+	elseif (choice == 1) 
+	{
 		value('batt_dispatch_choice', 1);
 	}
 }
-
-
-
-

@@ -1,5 +1,5 @@
 1
-772
+770
 AntiFrPar
 1
 1
@@ -3372,12 +3372,6 @@ nominal_discount_rate
 1
 1
 9.06
-om_batt_replacement_cost
-1
-2
-1
-1
-0
 om_capacity
 1
 2
@@ -3421,12 +3415,6 @@ om_production
 1
 4
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
@@ -3760,8 +3748,7 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-48
-tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 solution_mode_message
 1
 4

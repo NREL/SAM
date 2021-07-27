@@ -1,5 +1,5 @@
 1
-345
+344
 adjust
 1
 5
@@ -1674,12 +1674,6 @@ nominal_discount_rate
 1
 1
 9.06
-om_batt_replacement_cost
-1
-2
-1
-1
-0
 om_capacity
 1
 2
@@ -1723,12 +1717,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
@@ -2125,6 +2113,12 @@ total_installed_cost
 1
 1
 1.092e+09
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

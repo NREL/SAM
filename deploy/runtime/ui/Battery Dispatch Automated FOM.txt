@@ -1,4 +1,4 @@
-Battery Dispatch Automated
+Battery Dispatch Automated FOM
 1050
 343
 13
@@ -18,7 +18,7 @@ Y
 60
 Width
 3
-204
+231
 Height
 3
 72
@@ -30,10 +30,11 @@ Selection
 0
 Items
 6
-3
-Look ahead
+4
+Perfect look ahead
 One day look behind
-Dispatch to custom weather file
+Look ahead to custom weather file
+PV smoothing
 ShowCaptions
 2
 1
@@ -312,7 +313,7 @@ Name
 batt_dispatch_update_frequency_hours
 X
 3
-414
+435
 Y
 3
 60
@@ -374,7 +375,7 @@ Name
 batt_look_ahead_hours
 X
 3
-414
+435
 Y
 3
 87
@@ -574,79 +575,81 @@ Bold
 automated_dispatch_choice
 3
 1
+Battery automated dispatch options FOM
  
- 
- 
-0
-0
+Battery Dispatch
+72
+Perfect look ahead|One day look behind|Look ahead to custom weather file
+3
 1
 1
 1
 1
 0
-Default
+RadioChoice
 batt_cycle_cost
 3
 2
 Cycle degradation penalty
 $/cycle-kWh
- 
+Battery Dispatch
 0
-0
+2
 1
 2
 1
 1
 0
-Default
+SchedNumeric
 batt_cycle_cost_choice
 3
 1
 Cycle degradation penalty option
  
- 
-0
-0
+Battery Dispatch
+37
+Calculate automatically|Enter penalty
+2
 1
 1
 1
 1
 0
-Default
+ListBox
 batt_dispatch_update_frequency_hours
 3
 1
 Frequency to update dispatch
 hours
- 
+Battery Dispatch
 0
-0
+2
 1
 1
 1
 1
 0
-Default
+Numeric
 batt_look_ahead_hours
 3
 1
 Look ahead period
 hours
- 
+Battery Dispatch
 0
-0
+2
 1
 1
 1
 1
 0
-Default
+Numeric
 batt_pv_clipping_forecast
 3
 2
  
  
- 
+Battery Dispatch
 0
 0
 1
@@ -660,7 +663,7 @@ batt_pv_dc_forecast
 2
  
  
- 
+Battery Dispatch
 0
 0
 1
@@ -672,20 +675,19 @@ Default
 batt_user_specified_weather_file
 3
 4
+Weather file for battery dispatch
  
- 
- 
+Battery Dispatch
 0
-0
+3
 1
 4
-9
-<invalid>
-Default
+0
+TextEntry
 
 0
-3918
-on_load{'Battery Dispatch Automated'}=define()
+3922
+on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
 	
