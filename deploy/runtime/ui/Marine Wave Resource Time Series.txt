@@ -1,6 +1,6 @@
 Marine Wave Resource Time Series
-1288
-441
+1305
+615
 14
 Hyperlink
 
@@ -434,8 +434,8 @@ Library
 WaveResourceTSData
 Fields
 5
-75
-Name,City,State,Country,Latitude,Longitude,Year,Time Zone,Data Source,Notes
+93
+Location ID,Distance to shore,Water depth,Latitude,Longitude,Year,Time Zone,Data Source,Notes
 GroupBox
 
 1
@@ -511,7 +511,21 @@ TabOrder
 3
 4294967295
 
+11
+distance_to_shore_file
+3
+1
+ 
+ 
+ 
+0
 8
+1
+1
+1
+1
+0
+Default
 energy_period
 3
 2
@@ -539,6 +553,20 @@ ME Wave Resource
 1
 0
 Default
+location_id
+3
+1
+Location
+ 
+ME Wave Resource
+0
+8
+1
+1
+1
+1
+0
+Numeric
 location_ts
 3
 4
@@ -595,6 +623,20 @@ ME Wave Resource
 1
 0
 DataArray
+water_depth_file
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 wave_resource_filename_ts
 3
 4
@@ -626,7 +668,7 @@ Default
 
 
 
-20666
+20670
 /*
 function enable_disable_library() {
 	
@@ -743,7 +785,7 @@ on_load{'Marine Wave Resource Time Series'} = define() {
 
 on_change{'location_ts'} = define() {
 	file = ${wave_resource_filename_ts};
-	//value("name_ts",value("location_ts"));
+	//value("location_id",value("location_ts"));
 	refresh();
 	if (!file_exists(file))
 	{

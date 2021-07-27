@@ -48,7 +48,7 @@ static const char* help_text =
 enum {
 	ID_txtAddress, ID_txtFolder, ID_cboFilter, /*ID_cboWeatherFile,*/ ID_chlResources,
 	ID_btnSelectAll, ID_btnClearAll, ID_btnSelectFiltered, ID_btnShowSelected, ID_btnShowAll, ID_btnResources, ID_btnFolder, ID_search, ID_radAddress, ID_radLatLon, ID_txtLat, ID_txtLon,
-    ID_cboYears, ID_lstYears, ID_radSingleYear, ID_radMultiYear
+    ID_cboYears, ID_lstYears, ID_radSingleYear, ID_radMultiYear, ID_cboEndpoint, ID_allyear_chk
 };
 
 BEGIN_EVENT_TABLE( WaveDownloadDialog, wxDialog )
@@ -78,6 +78,17 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     szFolder->Add(m_txtFolder, 5, wxALL | wxEXPAND, 2);
     szFolder->Add(m_btnFolder, 0, wxALL, 2);
 
+    wxBoxSizer* szEndpoint = new wxBoxSizer(wxHORIZONTAL);
+    wxArrayString endpoints;
+    endpoints.Add("West coast");
+    endpoints.Add("Atlantic coast");
+    endpoints.Add("Hawaii");
+
+    wxString InitialValue = "West coast";
+    cboEndpoint = new wxComboBox(this, ID_cboEndpoint, InitialValue, wxDefaultPosition, wxDefaultSize, endpoints, wxCB_READONLY);
+    szEndpoint->Add(new wxStaticText(this, wxID_ANY, "Select dataset"), wxALL, 15);
+    szEndpoint->Add(cboEndpoint, 0, wxALL, 5);
+
     radAddress = new wxRadioButton(this, ID_radAddress, "Enter street address or zip code:");
     radLatLon = new wxRadioButton(this, ID_radLatLon, "Enter location coordinates (deg):");
     //radSingleYear = new wxRadioButton(this, ID_radSingleYear, "Choose a single year");
@@ -87,12 +98,12 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     txtLat = new wxTextCtrl(this, ID_txtLat, "40", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC));
     txtLon = new wxTextCtrl(this, ID_txtLon, "-116", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC));
 
-	wxString msg = "Use this window to list all weather files available from the USWave dataset for a given location, and choose files to download and add to your solar resource library.\n";
+	wxString msg = "Use this window to list all weather files available from the USWave dataset for a given location, and choose files to download and add to your wave resource library.\n";
 	msg += "Type an address or latitude and longtitude, for example, \"eureka ca\" or \"40.842,-124.25\", and click Find to list available files.\n";
 	msg += "When the list appears, select the file or files you want to download, or use the filter and auto-select buttons to find and select files.\n";
 	msg += "Choose the download folder where you want SAM to save files, or use the default SAM Downloaded Weather Files folder.\n";
-	msg += "SAM automatically adds the folder to the list of folders it uses to populate your solar resource library.\n";
-	msg += "Click OK to download the selected files and add them to your solar resource library.";
+	msg += "SAM automatically adds the folder to the list of folders it uses to populate your wave resource library.\n";
+	msg += "Click OK to download the selected files and add them to your wave resource library.";
 
     wxArrayString years;
     wxArrayString list_years;
@@ -103,6 +114,7 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     }
 
     lstYears = new wxListBox(this, ID_lstYears, wxDefaultPosition, wxDefaultSize, list_years, wxLB_MULTIPLE);
+    all_years_chk = new wxCheckBox(this, ID_allyear_chk, "Download all years");
 
     wxBoxSizer* szll = new wxBoxSizer(wxHORIZONTAL);
     szll->Add(new wxStaticText(this, wxID_ANY, "Latitude"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
@@ -120,10 +132,12 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     wxBoxSizer* szyr = new wxBoxSizer(wxHORIZONTAL);
     szyr->Add(new wxStaticText(this, wxID_ANY, "Select years"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
     szyr->Add(lstYears, 0, wxALL, 5);
+    szyr->Add(all_years_chk, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
 
     
     wxBoxSizer* szmain = new wxBoxSizer(wxVERTICAL);
     szmain->Add(new wxStaticText(this, wxID_ANY, msg), 0, wxALL | wxEXPAND, 10);
+    szmain->Add(szEndpoint, 0, wxLEFT | wxRIGHT, 10);
     szmain->Add(szgrid, 10, wxALL | wxEXPAND, 10);
     szmain->Add(szyr, 0, wxLEFT | wxRIGHT, 10);
     szmain->Add(szFolder, 0, wxALL | wxEXPAND, 10);
@@ -173,6 +187,7 @@ void WaveDownloadDialog::OnEvt( wxCommandEvent &e )
 				if (dlg.ShowModal() == wxID_OK)
 				{
 					m_txtFolder->SetValue( dlg.GetPath());
+                    m_weatherFolder = m_txtFolder->GetValue();
 					SamApp::Settings().Write("wave_data_paths", dlg.GetPath());
 				}
 			}
@@ -222,21 +237,17 @@ void WaveDownloadDialog::RefreshList( size_t first_item )
 	m_chlResources->SetFirstItem(first_item);
 }
 
-wxString WaveDownloadDialog::GetYear()
+wxString WaveDownloadDialog::GetEndpoint()
 {
-    bool year_bool = radSingleYear->GetValue();
-    bool multiyear_bool = radMultiYear->GetValue();
-    if (year_bool)
-        return cboYears->GetStringSelection();
-    else return "";
-    
+    return cboEndpoint->GetStringSelection();
 }
 
 wxArrayString WaveDownloadDialog::GetMultiYear()
 {
     wxArrayString my;
+    int all_years = all_years_chk->GetValue();
     for (size_t i = 0; i < lstYears->GetCount(); i++)
-        if (lstYears->IsSelected(i))
+        if (lstYears->IsSelected(i) || all_years == 1)
             my.Add(lstYears->GetString(i));
     return my;
 }
@@ -245,6 +256,7 @@ bool WaveDownloadDialog::IsSingleYear()
 {
     return radSingleYear->GetValue();
 }
+
 
 bool WaveDownloadDialog::IsAddressMode()
 {

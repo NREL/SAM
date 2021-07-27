@@ -1,5 +1,5 @@
 1
-678
+681
 accumulators_cost
 1
 1
@@ -956,6 +956,12 @@ distance_to_shore
 1
 1
 5000
+distance_to_shore_file
+1
+1
+1
+1
+0
 ducting_system_cost
 1
 1
@@ -1052,7 +1058,7 @@ eng_and_mgmt_cost
 1
 1
 1
-5655880
+5.65588e+06
 eng_and_mgmt_cost_input
 1
 1
@@ -1070,7 +1076,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-5655880
+5.65588e+06
 eng_and_mgmt_cost_total
 1
 1
@@ -1184,7 +1190,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-1603450
+1.60345e+06
 export_cable_system_cost_total
 1
 1
@@ -1472,7 +1478,7 @@ insurance_during_construction_cost
 1
 1
 1
-3645510
+3.64551e+06
 insurance_during_construction_cost_input
 1
 1
@@ -1484,7 +1490,7 @@ insurance_during_construction_cost_modeled_ui
 1
 1
 1
-3645510
+3.64551e+06
 insurance_during_construction_method
 1
 1
@@ -1496,7 +1502,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3645510
+3.64551e+06
 insurance_operations_cost
 1
 1
@@ -1742,6 +1748,12 @@ location
 4
 28
 Humboldt Bay - DOE Reference
+location_id
+1
+1
+1
+1
+4.94066e-323
 location_ts
 1
 4
@@ -1812,7 +1824,7 @@ maintenance_cost
 1
 1
 1
-3658280
+3.65828e+06
 maintenance_cost_input
 1
 1
@@ -1830,7 +1842,7 @@ maintenance_cost_modeled
 1
 1
 1
-3658280
+3.65828e+06
 maintenance_cost_total
 1
 1
@@ -2408,7 +2420,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-2037670
+2.03767e+06
 other_elec_infra_cost_total_display
 1
 1
@@ -3314,7 +3326,7 @@ site_access_port_staging_cost
 1
 1
 1
-4010060
+4.01006e+06
 site_access_port_staging_cost_input
 1
 1
@@ -3332,13 +3344,13 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4010060
+4.01006e+06
 site_access_port_staging_cost_modeled_ui
 1
 1
 1
 1
-4010060
+4.01006e+06
 site_access_port_staging_cost_total
 1
 1
@@ -4011,6 +4023,12 @@ water_depth
 1
 1
 50
+water_depth_file
+1
+1
+1
+1
+0
 wave_device_name
 1
 4
