@@ -586,7 +586,7 @@ Tool Tip
 Caption
 5
 5
-$/kWh
+$/MWh
 TextColour
 4
 0
@@ -634,7 +634,7 @@ Tool Tip
 Caption
 5
 16
-$/kWh discharged
+$/MWh discharged
 TextColour
 4
 0
@@ -1802,7 +1802,7 @@ om_batt_variable_cost
 3
 2
 Battery variable operating cost
-$/kWh
+$/MWh
 Operating Costs
 0
 3
@@ -1900,7 +1900,7 @@ om_production
 3
 2
 Variable operating cost
-$/kWh
+$/MWh
 Operating Costs
 0
 3
