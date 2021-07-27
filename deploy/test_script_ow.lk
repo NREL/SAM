@@ -12,7 +12,7 @@ outln('writing to output file: ' + output_file );
 
 outln( 'TECHNOLOGY\tFINANCING\tDEFAULT\tANNUAL_OUTPUT\tLCOE_NOM\tLCOE_REAL\tMESSAGES');
 write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES");
-query = false; // ask user whether to overwrite each configuration that has a defaults error
+query = true; // ask user whether to overwrite each configuration that has a defaults error
 //Close any open projects and create a case to run
 close_project();
 create_case( 'Flat Plate PV', 'Residential', 'test_case');

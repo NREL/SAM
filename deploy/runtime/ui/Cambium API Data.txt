@@ -499,7 +499,7 @@ Cambium
 Choice
 
 0
-13159
+13196
 on_load{'Cambium API Data'} = define() {
 // globals for api meta data
 	global project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';
@@ -532,7 +532,7 @@ on_load{'Cambium API Data'} = define() {
 		value('cambium_meta_output',curl(api_url + api_meta_endpoint + project_uuid));
 		
 	// if curl fails
-	if(value('cambium_meta_output') == '0')
+	if(value('cambium_meta_output') == '0' && cambium_enable)
 	{
 		cambium_enable = false;
 		msgbox('Cambium Error: Possible internet issue, the button will be disabled until internet is connected and this page is reloaded.');
@@ -542,7 +542,7 @@ on_load{'Cambium API Data'} = define() {
 	{
 		display_cambium_error(value('cambium_meta_output'));
 	}
-	else
+	else if(cambium_enable)
 	{
 		api_meta_json = json_read(value('cambium_meta_output'));
 		// if json html response
