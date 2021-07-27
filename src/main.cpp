@@ -117,6 +117,7 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2021, 7, 27 }, // 2021.7.27 ssc 259 EPRI Beta expires 7/27/2022
 		{ 2021, 7, 12 }, // 2021.7.12 ssc 258 EPRI Beta expires 7/12/2022
 		{ 2021, 6, 2 }, // 2021.6.2 ssc 257 EPRI Beta expires 6/2/2022
 		{ 2021, 4, 19 }, // 2021.4.19 ssc 255 EPRI Beta expires 4/19/2022
