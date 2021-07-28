@@ -1,7 +1,7 @@
 Fuel Cell Costs
 951
 942
-135
+138
 GroupBox
 
 1
@@ -5384,13 +5384,13 @@ Name
 object 7
 X
 3
-564
+45
 Y
 3
-867
+84
 Width
 3
-210
+162
 Height
 3
 21
@@ -5399,8 +5399,8 @@ Tool Tip
 0
 Caption
 5
-20
-Total installed cost
+9
+Fuel cell
 TextColour
 4
 0
@@ -5409,7 +5409,7 @@ TextColour
 255
 Bold
 2
-1
+0
 FontSize
 3
 0
@@ -5458,6 +5458,150 @@ TextColour
 Bold
 2
 1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+11
+object 7107
+X
+3
+564
+Y
+3
+867
+Width
+3
+210
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+20
+Total installed cost
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 72
+X
+3
+45
+Y
+3
+60
+Width
+3
+162
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+8
+Inverter
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+9
+object 73
+X
+3
+45
+Y
+3
+36
+Width
+3
+162
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+17
+PV module / array
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
 FontSize
 3
 0
@@ -7505,7 +7649,7 @@ Numeric
 battery_total
 3
 1
-Total battery cost
+Battery cost total
 $
 Fuel Cell Capital Costs
 0
@@ -7519,9 +7663,9 @@ Numeric
 battery_total_cost_lcos
 3
 1
- 
- 
- 
+Battery cost total for LCOS calculations
+$
+Fuel Cell Capital Costs
 0
 8
 1
@@ -7533,7 +7677,7 @@ Default
 bos_equip_battperkw
 3
 1
-Balance of system equipment, battery
+Balance of system cost per kW maximum battery discharge power
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7547,7 +7691,7 @@ Numeric
 bos_equip_fcperkw
 3
 1
-Balance of system equipment, fuel cell
+Balance of system per kW fuel cell capacity
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7561,7 +7705,7 @@ Numeric
 bos_equip_fixed
 3
 1
-Balance of system equipment, fixed
+Balance of system fixed cost
 $
 Fuel Cell Capital Costs
 0
@@ -7575,7 +7719,7 @@ Numeric
 bos_equip_perarea
 3
 1
-Balance of system equipment, area
+Balance of system cost per PV area
 $/m2
 Fuel Cell Capital Costs
 0
@@ -7589,7 +7733,7 @@ Numeric
 bos_equip_perwatt
 3
 1
-Balance of system equipment, capacity
+Balance of system cost per Wdc PV capacity
 $/Wdc
 Fuel Cell Capital Costs
 0
@@ -7603,11 +7747,11 @@ Numeric
 bos_equip_total
 3
 1
- 
- 
+Balance of system total cost
+$
 Fuel Cell Capital Costs
 0
-8
+5
 1
 1
 1
@@ -7617,11 +7761,11 @@ Numeric
 contingency
 3
 1
- 
- 
+Contingency cost
+$
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -7631,8 +7775,8 @@ Numeric
 contingency_percent
 3
 1
-Contingency
-% of direct costs
+Contingency percent of direct cost
+% of direct cost
 Fuel Cell Capital Costs
 0
 3
@@ -7645,7 +7789,7 @@ Numeric
 engr_fixed
 3
 1
-Engineering, fixed
+Engineering fixed cost
 $
 Fuel Cell Capital Costs
 0
@@ -7659,7 +7803,7 @@ Numeric
 engr_per_battkw
 3
 1
-Engineering, battery
+Engineering cost per kW maximum battery discharge power
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7673,7 +7817,7 @@ Numeric
 engr_per_fckw
 3
 1
-Engineering, fuel cell
+Engineering cost per kW fuel cell capacity
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7687,7 +7831,7 @@ Numeric
 engr_per_watt
 3
 1
-Engineering, capacity
+Engineering cost per Wdc PV capacity
 $/Wdc
 Fuel Cell Capital Costs
 0
@@ -7701,8 +7845,8 @@ Numeric
 engr_percent
 3
 1
- 
- 
+Engineering percent of direct cost
+% of direct cost
 Fuel Cell Capital Costs
 0
 0
@@ -7715,11 +7859,11 @@ Numeric
 engr_total
 3
 1
- 
- 
+Engineering total cost
+$
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -7729,7 +7873,7 @@ Numeric
 fuelcell_per_kW
 3
 1
-Fuel cell cost per kW
+Fuel cell cost per kW fuel cell capacity
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7743,11 +7887,11 @@ Numeric
 fuelcell_power_total
 3
 1
-Fuel cell
+Fuel cell capacity
 kW
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -7771,7 +7915,7 @@ Numeric
 grid_fixed
 3
 1
-Grid interconnection, fixed
+Grid interconnection fixed cost
 $
 Fuel Cell Capital Costs
 0
@@ -7785,7 +7929,7 @@ Numeric
 grid_per_battkw
 3
 1
-Grid interconnection, battery
+Grid interconnection cost per kW maximum battery discharge power
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7799,7 +7943,7 @@ Numeric
 grid_per_fckw
 3
 1
-Grid interconnection, fuel cell
+Grid interconnection cost per kW fuel cell capacity
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7813,7 +7957,7 @@ Numeric
 grid_per_watt
 3
 1
-Grid interconnection, capacity
+Grid interconnection cost per Wdc PV capacity
 $/Wdc
 Fuel Cell Capital Costs
 0
@@ -7827,7 +7971,7 @@ Numeric
 grid_percent
 3
 1
-Grid interconnection, percent of direct cost
+Grid interconnection percent of direct cost
 %
 Fuel Cell Capital Costs
 0
@@ -7841,11 +7985,11 @@ Numeric
 grid_total
 3
 1
- 
- 
+Grid interconnection cost total
+$
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -7855,7 +7999,7 @@ Numeric
 install_labor_battperkw
 3
 1
-Installation labor, battery
+Installation labor cost per kW maximum battery discharge power
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7869,7 +8013,7 @@ Numeric
 install_labor_fcperkw
 3
 1
-Installation labor, fuel cell
+Installation labor cost per kW fuel cell capacity
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7883,7 +8027,7 @@ Numeric
 install_labor_fixed
 3
 1
-Installation labor, fixed
+Installation labor fixed cost
 $
 Fuel Cell Capital Costs
 0
@@ -7897,7 +8041,7 @@ Numeric
 install_labor_perarea
 3
 1
-Installation labor, area
+Installation labor cost per PV area
 $/m2
 Fuel Cell Capital Costs
 0
@@ -7911,7 +8055,7 @@ Numeric
 install_labor_perwatt
 3
 1
-Installation labor, capacity
+Installation labor cost per Wdc PV capacity
 $/Wdc
 Fuel Cell Capital Costs
 0
@@ -7925,11 +8069,11 @@ Numeric
 install_labor_total
 3
 1
- 
- 
+Installation labor total cost
+$
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -7939,7 +8083,7 @@ Numeric
 install_margin_battperkw
 3
 1
-Installer margin and overhead, battery
+Installer margin and overhead cost per kW maximum battery discharge power
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7953,7 +8097,7 @@ Numeric
 install_margin_fcperkw
 3
 1
-Installer margin and overhead, fuel cell
+Installer margin and overhead cost per kW fuel cell capacity
 $/kW
 Fuel Cell Capital Costs
 0
@@ -7967,7 +8111,7 @@ Numeric
 install_margin_fixed
 3
 1
-Installer margin and overhead, fixed
+Installer margin and overhead fixed cost
 $
 Fuel Cell Capital Costs
 0
@@ -7981,7 +8125,7 @@ Numeric
 install_margin_perarea
 3
 1
-Installer margin and overhead, area
+Installer margin and overhead cost per PV area
 $/m2
 Fuel Cell Capital Costs
 0
@@ -7995,7 +8139,7 @@ Numeric
 install_margin_perwatt
 3
 1
-Installer margin and overhead, capacity
+Installer margin and overhead cost per Wdc PV capacity
 $/Wdc
 Fuel Cell Capital Costs
 0
@@ -8009,11 +8153,11 @@ Numeric
 install_margin_total
 3
 1
- 
- 
+Installer margin total cost
+$
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8023,11 +8167,11 @@ Numeric
 installed_per_capacity
 3
 1
-Total installed cost per capacity
- 
+Total installed cost per Wdc PV capacity
+$/Wdc
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8052,11 +8196,11 @@ Choice
 inverter_num_units
 3
 1
-Inverter
-units
+Number of inverters
+ 
 Fuel Cell Capital Costs
 0
-8
+5
 1
 1
 1
@@ -8066,11 +8210,11 @@ Numeric
 inverter_power
 3
 1
- 
-kWac/unit
+Inverter capacity per inverter
+kWac
 Fuel Cell Capital Costs
 0
-8
+5
 1
 1
 1
@@ -8080,11 +8224,11 @@ Numeric
 inverter_total
 3
 1
- 
- 
+Inverter total cost
+$
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8094,11 +8238,11 @@ Numeric
 inverterarray_power
 3
 1
- 
+Total inverter capacity
 kWac
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8122,7 +8266,7 @@ Numeric
 land_fixed
 3
 1
-Land, fixed
+Land fixed cost
 $
 Fuel Cell Capital Costs
 0
@@ -8136,7 +8280,7 @@ Numeric
 land_per_acre
 3
 1
-Land, per acre
+Land cost per acre
 $/acre
 Fuel Cell Capital Costs
 0
@@ -8150,7 +8294,7 @@ Numeric
 land_per_battkw
 3
 1
-Land, battery
+Land cost per kW maximum battery discharge power
 $/kW
 Fuel Cell Capital Costs
 0
@@ -8164,7 +8308,7 @@ Numeric
 land_per_fckw
 3
 1
-Land, fuel cell
+Land cost per kW fuel cell capacity
 $/kW
 Fuel Cell Capital Costs
 0
@@ -8178,7 +8322,7 @@ Numeric
 land_per_watt
 3
 1
-Land, capacity
+Land cost per Wdc PV capacity
 $/Wdc
 Fuel Cell Capital Costs
 0
@@ -8192,7 +8336,7 @@ Numeric
 land_percent
 3
 1
-Land, percent of direct cost
+Land cost percent of direct cost
 %
 Fuel Cell Capital Costs
 0
@@ -8206,11 +8350,11 @@ Numeric
 land_total
 3
 1
- 
- 
+Land total cost
+$
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8220,7 +8364,7 @@ Numeric
 landprep_fixed
 3
 1
-Land preparation, fixed
+Land preparation fixed cost
 $
 Fuel Cell Capital Costs
 0
@@ -8234,7 +8378,7 @@ Numeric
 landprep_per_acre
 3
 1
-Land preparation, per acre
+Land preparation cost per acre
 $/acre
 Fuel Cell Capital Costs
 0
@@ -8248,7 +8392,7 @@ Numeric
 landprep_per_battkw
 3
 1
-Land preparation, battery
+Land preparation cost per kW maximum battery discharge power
 $/kW
 Fuel Cell Capital Costs
 0
@@ -8262,7 +8406,7 @@ Numeric
 landprep_per_fckw
 3
 1
-Land preparation, fuel cell
+Land preparation cost per kW fuel cell capacity
 $/kW
 Fuel Cell Capital Costs
 0
@@ -8276,7 +8420,7 @@ Numeric
 landprep_per_watt
 3
 1
-Land preparation, capacity
+Land preparation cost per Wdc PV capacity
 $/Wdc
 Fuel Cell Capital Costs
 0
@@ -8290,7 +8434,7 @@ Numeric
 landprep_percent
 3
 1
-Land preparation, percent of direct cost
+Land preparation cost percent of direct cost
 %
 Fuel Cell Capital Costs
 0
@@ -8304,11 +8448,11 @@ Numeric
 landprep_total
 3
 1
- 
- 
+Land preparation total cost
+$
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8333,11 +8477,11 @@ Choice
 module_num_units
 3
 1
-Module
-units
+Number of modules
+ 
 Fuel Cell Capital Costs
 0
-8
+5
 1
 1
 1
@@ -8347,11 +8491,11 @@ Numeric
 module_power
 3
 1
- 
-kWdc/unit
+PV capacity per module
+kWdc
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8361,11 +8505,11 @@ Numeric
 module_total
 3
 1
- 
- 
+PV array total cost
+$
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8375,7 +8519,7 @@ Numeric
 modulearray_area
 3
 1
- 
+PV array total area
 m2
 Fuel Cell Capital Costs
 0
@@ -8389,11 +8533,11 @@ Default
 modulearray_power
 3
 1
- 
+PV array capacity
 kWdc
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8403,7 +8547,7 @@ Numeric
 per_inverter
 3
 1
-Inverter Cost
+Inverter cost
 $/Wac or $/Unit
 Fuel Cell Capital Costs
 0
@@ -8417,7 +8561,7 @@ Numeric
 per_module
 3
 1
-Module Cost
+PV module cost
 $/Wdc or $/Unit
 Fuel Cell Capital Costs
 0
@@ -8431,7 +8575,7 @@ Numeric
 permitting_fixed
 3
 1
-Permitting, fixed
+Permitting fixed cost
 $
 Fuel Cell Capital Costs
 0
@@ -8445,7 +8589,7 @@ Numeric
 permitting_per_battkw
 3
 1
-Permitting, battery
+Permitting cost per kW maximum battery discharge power
 $/kW
 Fuel Cell Capital Costs
 0
@@ -8459,7 +8603,7 @@ Numeric
 permitting_per_fckw
 3
 1
-Permitting, fuel cell
+Permitting cost per kW fuel cell capacity
 $/kW
 Fuel Cell Capital Costs
 0
@@ -8473,7 +8617,7 @@ Numeric
 permitting_per_watt
 3
 1
-Permitting, capacity
+Permitting cost per Wdc PV capacity
 $/Wdc
 Fuel Cell Capital Costs
 0
@@ -8487,7 +8631,7 @@ Numeric
 permitting_percent
 3
 1
-Permitting, percent of direct cost
+Permitting cost percent of direct cost
 %
 Fuel Cell Capital Costs
 0
@@ -8501,7 +8645,7 @@ Numeric
 permitting_total
 3
 1
-Permitting, Environmental Studies
+Permitting total cost
 $
 Fuel Cell Capital Costs
 0
@@ -8515,7 +8659,7 @@ Numeric
 sales_tax_percent
 3
 1
-Sales tax basis, percent of direct cost
+Sales tax basis as percent of direct cost
 %
 Fuel Cell Capital Costs
 0
@@ -8529,11 +8673,11 @@ Numeric
 sales_tax_total
 3
 1
- 
- 
+Sales tax total
+$
 Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8557,8 +8701,8 @@ Numeric
 subtotal_direct
 3
 1
-Subtotal
- 
+Direct cost subtotal
+$
 Fuel Cell Capital Costs
 0
 8
@@ -8571,8 +8715,8 @@ Default
 system_use_recapitalization
 3
 1
- 
- 
+Enable geothermal recapitalization
+0,1
 Fuel Cell Capital Costs
 0
 8
@@ -8585,11 +8729,11 @@ Default
 total_battery_indirect_cost
 3
 1
- 
- 
- 
+Battery total indirect cost
+$
+Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
@@ -8600,7 +8744,7 @@ total_direct_cost
 3
 1
 Total direct cost
- 
+$
 Fuel Cell Capital Costs
 0
 9
@@ -8614,7 +8758,7 @@ total_indirect_cost
 3
 1
 Total indirect cost
- 
+$
 Fuel Cell Capital Costs
 0
 9
@@ -8628,7 +8772,7 @@ total_installed_cost
 3
 1
 Total installed cost
- 
+$
 Fuel Cell Capital Costs
 0
 9
@@ -8641,11 +8785,11 @@ Numeric
 total_system_indirect_cost
 3
 1
- 
- 
- 
+PV total indirect cost
+$
+Fuel Cell Capital Costs
 0
-8
+9
 1
 1
 1
