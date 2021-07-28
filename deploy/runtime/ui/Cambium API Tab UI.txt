@@ -275,8 +275,8 @@ Tool Tip
 0
 Caption
 5
-20
-Increment from year:
+19
+Increment from year
 TextColour
 4
 0
@@ -412,77 +412,4 @@ AlignTop
 0
 
 0
-2588
-on_load{'Cambium API Tab UI'} = define() {
-// globals for api meta data
-	global project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';
-	global api_meta_endpoint = 'api/project/detail/?uuid=';
-	global api_data_endpoint = 'api/load_data/';
-	global api_url = 'https://cambium.nrel.gov/';
-	global api_meta_json = {};
-	global cambium_enable = true;
-	global dynamic_option = 'Multiple years';
-
-	// api globals for storing both the option and the description
-	global api_metrics = {};
-	global api_scenarios = {};
-	
-	// make an api call to retrieve the metadata (takes a couple seconds)
-	if(value('cambium_meta_output') == '')
-		value('cambium_meta_output',curl(api_url + api_meta_endpoint + project_uuid));
-		
-	// if curl fails
-	if(value('cambium_meta_output') == '0')
-	{
-		cambium_enable = false;
-		msgbox('Cambium ERROR: Possible internet issue, the button will be disabled until internet is connected and this page is reloaded.');
-	}
-	// if html response
-	else if(ch(value('cambium_meta_output'),0) == '<' || ch(value('cambium_meta_output'),1) == '<')
-		display_cambium_error(value('cambium_meta_output'));
-	else
-	{
-		api_meta_json = json_read(value('cambium_meta_output'));
-		// if json html response
-		if(strcmp((@api_meta_json)[0],'message') == 0 && #api_meta_json == 1)
-		{
-			display_cambium_error(api_meta_json.message);
-		}
-		// normal json response
-		else
-		{
-			// create scenario selection
-			api_scenarios = get_api_json('scenarios');
-			
-			// create metrics selection
-			for(i=0;i<#api_meta_json.meta.metrics;i++)
-				// only keep cost options
-				if(strcmp(left(api_meta_json.meta.metrics[i][0],4),'Cost') == 0)
-					api_metrics{api_meta_json.meta.metrics[i][0]} = api_meta_json.meta.metrics[i][2];
-					
-			//updateToolTip('cambium_metric_tips',api_metrics);
-			//updateToolTip('cambium_scenario_tips',api_scenarios);
-			for(i=0;i<#api_meta_json.meta.years; i++)
-					years[i] = api_meta_json.meta.years[i][0];
-			
-			// add dynamic option
-			if(value('analysis_period')<2*(#years))
-				years[#years] = dynamic_option;
-					
-			// update choice fields
-			property('cambium_location_type','Items',@api_meta_json.meta.locations);
-			property('cambium_scenario','Items',@api_scenarios);
-			property('cambium_metric','Items',@api_metrics);
-			property('cambium_year','Items',years);
-			//property('btn_cambium_to_lifetime','Caption','Download to '+cambium_target[value('revenue_tab')][4]+' matrix');
-		}
-	}
-	
-	enable('cambium_location', value('cambium_location_type') != '');
-	update_tips();
-	update_dynamic_years();
-	update_submission_btn();
-	update_locations();
-	
-	refresh();
-};
+0
