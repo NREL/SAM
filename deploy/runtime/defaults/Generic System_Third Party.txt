@@ -1,5 +1,5 @@
 1
-127
+128
 adjust
 1
 5
@@ -422,6 +422,12 @@ ui_annual_load
 1
 1
 0
+ui_step_minutes
+1
+1
+1
+1
+60
 ur_annual_min_charge
 1
 1

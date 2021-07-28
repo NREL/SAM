@@ -1,5 +1,5 @@
 1
-293
+294
 adjust
 1
 5
@@ -404,7 +404,7 @@ first_year_output
 1
 1
 1
-81633000
+35591988
 first_year_output_peak
 1
 1
@@ -440,7 +440,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-6115490
+6.11549e+06
 genericsys.cost.epc.percent
 1
 1
@@ -452,7 +452,7 @@ genericsys.cost.epc.total
 1
 1
 1
-6115490
+6.11549e+06
 genericsys.cost.installed_per_capacity
 1
 1
@@ -512,7 +512,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-2446190
+2.44619e+06
 genericsys.cost.sales_tax.value
 1
 1
@@ -1388,7 +1388,7 @@ total_indirect_cost
 1
 1
 1
-8255910
+8.25591e+06
 total_installed_cost
 1
 1
@@ -1413,6 +1413,12 @@ ui_net_capital_cost
 1
 1
 71856952
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

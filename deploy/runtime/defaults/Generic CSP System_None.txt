@@ -408,7 +408,7 @@ csp.gss.sf.field_area
 1
 1
 1
-1.24339e+06
+1243390
 csp.gss.sf.irr_loss_f0
 1
 1
@@ -1003,8 +1003,7 @@ daggett_ca_34.865371_-116.783023_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+0
 solarm
 1
 1

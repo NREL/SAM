@@ -1,5 +1,5 @@
 1
-344
+345
 adjust
 1
 5
@@ -2112,13 +2112,19 @@ total_indirect_cost
 1
 1
 1
-42000000
+0
 total_installed_cost
 1
 1
 1
 1
 1.092e+09
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1
