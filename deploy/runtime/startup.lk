@@ -945,7 +945,7 @@ setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
-addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
 
 setconfig( 'PVWatts', 'Merchant Plant' );
