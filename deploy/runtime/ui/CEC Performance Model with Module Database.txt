@@ -3443,7 +3443,7 @@ Lacunarity Length scale
 m
  
 0
-8
+2
 1
 1
 1
@@ -3743,7 +3743,7 @@ PV Module (CEC Database)
 Total Irradiance = 1000 W/m2, Cell temp = 25 C
 TextEntry
 
-918
+922
 equations{ 'cec_p_mp_ref' } = define() {
 	return ${cec_i_mp_ref}*${cec_v_mp_ref}; };
 
@@ -3768,12 +3768,12 @@ equations{ 'gamma_r_calc' } = define() {
 equations{'cec_step'} = define() {
 	return ${step};
 };
-
+/*
 equations{'cec_lacunarity_length'} = define() {
 	return -77.8775 + 1.5627*${cec_ground_clearance_height} +
 		0.8455*${ui_subarray1_length_side}/${subarray1_gcr} +
 		22.1391*${ui_subarray1_length_side} + 0.0069*${subarray1_tilt};
-};
+};*/
 3074
 function cec_module_update_ui()
 {
