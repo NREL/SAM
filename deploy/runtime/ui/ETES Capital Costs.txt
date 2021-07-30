@@ -3191,7 +3191,7 @@ ETES Cost
 -999
 Default
 
-8023
+8022
 // ui only
 equations{ 'ui_etes_cost__nameplate' } = define() {
 	return ${nameplate};
@@ -3345,7 +3345,7 @@ equations{ '$MIMO$ ui_etes_cost__etes_cmod' } = define()
 	ssc_var(obj, "const_per_upfront_rate4", ${const_per_upfront_rate4});       
 	ssc_var(obj, "const_per_upfront_rate5", ${const_per_upfront_rate5});       
 
-	//ret_d = ssc_dump(obj, 'etes_cap_costs_mimo.txt');
+	ret_d = ssc_dump(obj, 'etes_system_des_mimo.txt');
 
 	ret = ssc_exec(obj, 'etes_electric_resistance');
 

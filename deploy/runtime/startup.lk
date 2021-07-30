@@ -24,7 +24,7 @@ addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Lev
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
-addconfig( 'ETES', ['Single Owner']);
+addconfig( 'ETES', ['Single Owner', 'Merchant Plant']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
 addconfig( 'MEwave', ['LCOE Calculator', 'None']);
@@ -828,6 +828,14 @@ setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
 addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
+
+setconfig('ETES', 'Merchant Plant');
+setmodules( ['etes_electric_resistance', 'singleowner']);
+setup_etes_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_merchant_plant_pages();
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
