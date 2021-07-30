@@ -499,7 +499,7 @@ Cambium
 Choice
 
 0
-12498
+12331
 on_load{'Cambium API Data'} =
 on_load{'Cambium API Tab UI'} = define() {
 	// globals for api meta data
@@ -527,7 +527,7 @@ on_load{'Cambium API Tab UI'} = define() {
 								['mp_enable_ancserv4','mp_ancserv4_revenue',
 								'mp_enable_ancserv4_percent_gen','mp_ancserv4_revenue_single','Ancillary Service #4']];
 
-	// make an api call to retrieve the metadata (takes a couple seconds)
+	// make an api call (if necessary) to retrieve the metadata (takes a couple seconds)
 	if(value('cambium_meta_output') == '')
 		value('cambium_meta_output',curl(webapi('cambium_meta')));
 		
@@ -565,7 +565,8 @@ on_load{'Cambium API Tab UI'} = define() {
 			for(i=0;i<#api_meta_json.meta.years; i++)
 					years[i] = api_meta_json.meta.years[i][0];
 			
-			global_years = years;
+			// retain years without dynamic option
+			global_years = years;	
 			
 			// add dynamic option if feasible
 			if(value('analysis_period')<2*(#years))
@@ -621,13 +622,9 @@ on_change{'cambium_location_type'} = define() {
 	}
 };
 
-on_change{'cambium_scenario'} = define() {
-	property('cambium_scenario_tips','Tips','Description: '+api_scenarios{value('cambium_scenario')});
-	update_submission_btn();
-};
-
+on_change{'cambium_scenario'} = 
 on_change{'cambium_metric'} = define() {
-	property('cambium_metric_tips','Tips','Description: '+api_metrics{value('cambium_metric')});
+	update_tips();
 	update_submission_btn();
 };
 
@@ -648,7 +645,7 @@ on_change{'cambium_year'} = define() {
 	refresh();
 };
 
-// enable submission button if all fields are filled
+// enable submission button if all requirements are met
 update_submission_btn = define() {
 	enable('btn_cambium_to_lifetime', value('cambium_location_type') != ''
 		&& value('cambium_location') != ''
@@ -685,7 +682,7 @@ dynamic_cambium_download = define() {
 						'max' = 2*to_int(value("analysis_period"))+1
 					});
 					
-	// load into either the price-only matrix or the 2-col matrix for this target selection
+	// Copy into either the price-only matrix or the 2-col matrix for this target selection
 	if(value(cambium_target[value('revenue_tab')][2]))
 	{
 		price_index = 0;	// copy price into first column
@@ -703,9 +700,6 @@ dynamic_cambium_download = define() {
 	{
 		year_string = to_string(global_years[year_idx+i/2]);
 		even_bool = ((i-to_int(i/2)*2) == 0);
-		
-		if(!even_bool)
-			year_string += ' duplicate';
 		
 		// if i is even, make an api call
 		if(even_bool)
@@ -738,7 +732,9 @@ dynamic_cambium_download = define() {
 				display_cambium_error(api_data_json.message);
 				return;
 			}
-		}
+		} else 
+			year_string += ' duplicate';
+			
 		pb_canceled = progressbar(pb, {'message' = 'Copying hourly data for '+year_string+'...','value' = 2*i+1});
 		for(j=0;j<#api_data_json.data.layers[0].y;j++)
 		{
