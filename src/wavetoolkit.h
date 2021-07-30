@@ -131,14 +131,12 @@ private:
 	void GetResources();
 	void RefreshList(size_t );
 	size_t SelectItems( wxString, wxCheckBox * );
-    wxRadioButton* radAddress;
-    wxRadioButton* radLatLon;
     wxRadioButton* radSingleYear;
     wxRadioButton* radMultiYear;
-    wxRadioButton* radWest;
-    wxRadioButton* radAtlantic;
+    wxRadioButton* radAllYear;
     wxRadioButton* radHawaii;
     wxTextCtrl* txtAddress, * txtLat, * txtLon;
+    wxTextCtrl* txtSingleYear, * txtStartYear, * txtEndYear;
     wxListBox* lstYears;
     wxCheckBox* all_years_chk;
     wxComboBox* cboEndpoint;

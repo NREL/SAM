@@ -48,13 +48,14 @@ static const char* help_text =
 enum {
 	ID_txtAddress, ID_txtFolder, ID_cboFilter, /*ID_cboWeatherFile,*/ ID_chlResources,
 	ID_btnSelectAll, ID_btnClearAll, ID_btnSelectFiltered, ID_btnShowSelected, ID_btnShowAll, ID_btnResources, ID_btnFolder, ID_search, ID_radAddress, ID_radLatLon, ID_txtLat, ID_txtLon,
-    ID_cboYears, ID_lstYears, ID_radSingleYear, ID_radMultiYear, ID_cboEndpoint, ID_allyear_chk
+    ID_cboYears, ID_lstYears, ID_radSingleYear, ID_radMultiYear, ID_radAllYear, ID_txtSingleYear, ID_txtStartYear, ID_txtEndYear, ID_cboEndpoint, ID_allyear_chk
 };
 
 BEGIN_EVENT_TABLE( WaveDownloadDialog, wxDialog )
 	EVT_BUTTON(ID_btnFolder, WaveDownloadDialog::OnEvt)
-    EVT_RADIOBUTTON(ID_radAddress, WaveDownloadDialog::OnEvt)
-    EVT_RADIOBUTTON(ID_radLatLon, WaveDownloadDialog::OnEvt)
+    EVT_RADIOBUTTON(ID_radSingleYear, WaveDownloadDialog::OnEvt)
+    EVT_RADIOBUTTON(ID_radMultiYear, WaveDownloadDialog::OnEvt)
+    EVT_RADIOBUTTON(ID_radAllYear, WaveDownloadDialog::OnEvt)
 	//EVT_BUTTON(wxID_OK, WaveDownloadDialog::OnEvt)
 	EVT_CHECKLISTBOX(ID_chlResources, WaveDownloadDialog::OnEvt)
 	EVT_BUTTON(wxID_HELP, WaveDownloadDialog::OnEvt)
@@ -89,11 +90,13 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     szEndpoint->Add(new wxStaticText(this, wxID_ANY, "Select dataset"), wxALL, 15);
     szEndpoint->Add(cboEndpoint, 0, wxALL, 5);
 
-    radAddress = new wxRadioButton(this, ID_radAddress, "Enter street address or zip code:");
-    radLatLon = new wxRadioButton(this, ID_radLatLon, "Enter location coordinates (deg):");
-    //radSingleYear = new wxRadioButton(this, ID_radSingleYear, "Choose a single year");
-    //radMultiYear = new wxRadioButton(this, ID_radMultiYear, "Choose years");
-    txtAddress = new wxTextCtrl(this, ID_txtAddress, "Eureka, CA");
+
+    radSingleYear = new wxRadioButton(this, ID_radSingleYear, "Choose a single year");
+    txtSingleYear = new wxTextCtrl(this, ID_txtSingleYear, "2010", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC));
+    radMultiYear = new wxRadioButton(this, ID_radMultiYear, "Choose years");
+    txtStartYear = new wxTextCtrl(this, ID_txtStartYear, "1979", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC));
+    txtEndYear = new wxTextCtrl(this, ID_txtEndYear, "1990", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC));
+    radAllYear = new wxRadioButton(this, ID_radAllYear, "Download all years (1979-2010)");
 
     txtLat = new wxTextCtrl(this, ID_txtLat, "40", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC));
     txtLon = new wxTextCtrl(this, ID_txtLon, "-116", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC));
@@ -113,26 +116,38 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
         list_years.Add(year_string);
     }
 
-    lstYears = new wxListBox(this, ID_lstYears, wxDefaultPosition, wxDefaultSize, list_years, wxLB_MULTIPLE);
-    all_years_chk = new wxCheckBox(this, ID_allyear_chk, "Download all years");
+    //lstYears = new wxListBox(this, ID_lstYears, wxDefaultPosition, wxDefaultSize, list_years, wxLB_MULTIPLE);
+    //all_years_chk = new wxCheckBox(this, ID_allyear_chk, "Download all years");
 
     wxBoxSizer* szll = new wxBoxSizer(wxHORIZONTAL);
+    szll->Add(new wxStaticText(this, wxID_ANY, "Enter desired location coordinates: "), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     szll->Add(new wxStaticText(this, wxID_ANY, "Latitude"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     szll->Add(txtLat, 0, wxALL, 5);
     szll->Add(new wxStaticText(this, wxID_ANY, "Longitude"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     szll->Add(txtLon, 0, wxALL, 5);
 
-    wxFlexGridSizer* szgrid = new wxFlexGridSizer(2);
-    szgrid->AddGrowableCol(1);
-    szgrid->Add(radAddress, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
-    szgrid->Add(txtAddress, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 1);
-    szgrid->Add(radLatLon, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
+    wxBoxSizer* szgrid = new wxBoxSizer(wxHORIZONTAL);
     szgrid->Add(szll, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 1);
 
+    /*
     wxBoxSizer* szyr = new wxBoxSizer(wxHORIZONTAL);
-    szyr->Add(new wxStaticText(this, wxID_ANY, "Select years"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
+    szyr->Add(new wxStaticText(this, wxID_ANY, "Select years to download"), wxALL | wxALIGN_CENTER_VERTICAL, 15);
     szyr->Add(lstYears, 0, wxALL, 5);
     szyr->Add(all_years_chk, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    */
+
+    wxBoxSizer* szmultyr = new wxBoxSizer(wxHORIZONTAL);
+    szmultyr->Add(new wxStaticText(this, wxID_ANY, "Start year"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    szmultyr->Add(txtStartYear, 0, wxALL, 5);
+    szmultyr->Add(new wxStaticText(this, wxID_ANY, "End year"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    szmultyr->Add(txtEndYear, 0, wxALL, 5);
+
+    wxBoxSizer* szyr = new wxBoxSizer(wxHORIZONTAL);
+    szyr->Add(radSingleYear, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    szyr->Add(txtSingleYear, 0, wxALL | wxALIGN_CENTER_VERTICAL, 1);
+    szyr->Add(radMultiYear, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
+    szyr->Add(szmultyr, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 1);
+    szyr->Add(radAllYear, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
 
     
     wxBoxSizer* szmain = new wxBoxSizer(wxVERTICAL);
@@ -153,13 +168,19 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     SetSizer(szmain);
     Fit();
 
-    radAddress->SetValue(true);
-    radLatLon->SetValue(false);
-    txtAddress->SetFocus();
-    txtAddress->SelectAll();
-    txtLat->Enable(false);
-    txtLon->Enable(false);
-    lstYears->Enable(true);
+    radSingleYear->SetValue(true);
+    radMultiYear->SetValue(false);
+    radAllYear->SetValue(false);
+    //radMultiYear->SetValue(false);
+    //radAllYear->SetValue(false);
+    //txtSingleYear->Enable(true);
+    txtSingleYear->SetFocus();
+    txtSingleYear->SelectAll();
+    txtStartYear->Enable(false);
+    txtEndYear->Enable(false);
+    txtLat->Enable(true);
+    txtLon->Enable(true);
+    //lstYears->Enable(true);
 
 }
 
@@ -172,13 +193,15 @@ void WaveDownloadDialog::OnEvt( wxCommandEvent &e )
 			SamApp::ShowHelp("nsrdb_advanced_download");
             //SamApp::ShowHelp("wave_advanced_download");
 			break;
-        case ID_radAddress:
-        case ID_radLatLon:
+        case ID_radSingleYear:
+        case ID_radMultiYear:
+        case ID_radAllYear:
             {
-                bool addr = radAddress->GetValue();
-                txtAddress->Enable(addr);
-                txtLat->Enable(!addr);
-                txtLon->Enable(!addr);
+                bool singleYear = radSingleYear->GetValue();
+                bool multiYear = radMultiYear->GetValue();
+                txtSingleYear->Enable(singleYear);
+                txtStartYear->Enable(multiYear);
+                txtEndYear->Enable(multiYear);
             }
             break;
 		case ID_btnFolder:
@@ -245,10 +268,30 @@ wxString WaveDownloadDialog::GetEndpoint()
 wxArrayString WaveDownloadDialog::GetMultiYear()
 {
     wxArrayString my;
-    int all_years = all_years_chk->GetValue();
-    for (size_t i = 0; i < lstYears->GetCount(); i++)
-        if (lstYears->IsSelected(i) || all_years == 1)
-            my.Add(lstYears->GetString(i));
+    //int all_years = all_years_chk->GetValue();
+    if (radSingleYear->GetValue() == 1)
+        my.Add(txtSingleYear->GetValue());
+    else if (radMultiYear->GetValue() == 1) {
+        wxString startyear = txtStartYear->GetValue();
+        wxString endyear = txtEndYear->GetValue();
+        int year_iter = std::numeric_limits<int>::quiet_NaN();
+        double startyear_num = std::numeric_limits<double>::quiet_NaN();
+        double endyear_num = std::numeric_limits<double>::quiet_NaN();
+        startyear.ToDouble(&startyear_num);
+        endyear.ToDouble(&endyear_num);
+        year_iter = int(startyear_num);
+        while (year_iter <= int(endyear_num)) {
+            my.Add(wxString::Format(wxT("%i"), year_iter));
+            year_iter++;
+        }
+        
+        
+    }
+    else if (radAllYear->GetValue() == 1) {
+        for (size_t i = 1979; i < 2011; i++)
+            my.Add(wxString::Format(wxT("%i"), int(i)));
+    }
+    
     return my;
 }
 
@@ -257,16 +300,6 @@ bool WaveDownloadDialog::IsSingleYear()
     return radSingleYear->GetValue();
 }
 
-
-bool WaveDownloadDialog::IsAddressMode()
-{
-    return radAddress->GetValue();
-}
-
-wxString WaveDownloadDialog::GetAddress()
-{
-    return txtAddress->GetValue();
-}
 
 double WaveDownloadDialog::GetLatitude()
 {

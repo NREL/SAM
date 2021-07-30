@@ -2237,20 +2237,10 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     
     double lat, lon;
     ecd.Update(1, 50.0f);
-    if (dlgWave.IsAddressMode() == true)	//entered an address instead of a lat/long
-    {
-        if (!wxEasyCurl::GeoCodeDeveloper(dlgWave.GetAddress(), &lat, &lon, NULL, false))
-        {
-            ecd.Log("Failed to geocode address");
-            ecd.Finalize();
-            return;
-        }
-    }
-    else
-    {
-        lat = dlgWave.GetLatitude();
-        lon = dlgWave.GetLongitude();
-    }
+   
+    lat = dlgWave.GetLatitude();
+    lon = dlgWave.GetLongitude();
+    
     ecd.Update(1, 100.0f);
     ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
 
