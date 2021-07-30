@@ -30,10 +30,11 @@ Selection
 0
 Items
 6
-3
+4
 Perfect look ahead
 One day look behind
 Look ahead to custom weather file
+PV smoothing
 ShowCaptions
 2
 1
