@@ -515,9 +515,9 @@ TabOrder
 distance_to_shore_file
 3
 1
- 
- 
- 
+Distance to shore
+m
+ME Array
 0
 8
 1
@@ -626,9 +626,9 @@ DataArray
 water_depth_file
 3
 1
- 
- 
- 
+Water depth
+m
+ME Array
 0
 8
 1
