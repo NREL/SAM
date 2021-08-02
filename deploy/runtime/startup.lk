@@ -830,7 +830,7 @@ addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operat
 setup_single_owner_pages();
 
 setconfig('ETES', 'Merchant Plant');
-setmodules( ['etes_electric_resistance', 'singleowner']);
+setmodules( ['etes_electric_resistance', 'merchantplant']);
 setup_etes_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});

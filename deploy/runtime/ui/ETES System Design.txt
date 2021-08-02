@@ -880,7 +880,7 @@ TabOrder
 3
 7
 
-12
+13
 P_ref
 3
 1
@@ -936,6 +936,20 @@ System Design
 1
 1
 0.45
+Default
+etes_financial_model
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
 Default
 gross_net_conversion_factor
 3
@@ -1050,7 +1064,17 @@ System Design
 -999
 Default
 
-6612
+6814
+equations{ 'etes_financial_model' } = define(){
+	if(financing() == "Single Ownder"){
+		return 1;
+	}
+	else if(financing() == "Merchant Plant"){
+		return 6;
+	}
+};
+
+
 equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 {
 	obj = ssc_create();
@@ -1124,6 +1148,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 	ssc_var(obj, "bop_par_1", ${bop_par_1});         
 	ssc_var(obj, "bop_par_2", ${bop_par_2});         
 
+	if(financing() == "Single Owner"){
 	ssc_var(obj, "ppa_multiplier_model", ${ppa_multiplier_model});         
 	ssc_var(obj, "dispatch_factors_ts", ${dispatch_factors_ts});
 	ssc_var(obj, "dispatch_sched_weekday", ${dispatch_sched_weekday});
@@ -1137,6 +1162,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 	ssc_var(obj, "dispatch_factor7", ${dispatch_factor7});
 	ssc_var(obj, "dispatch_factor8", ${dispatch_factor8});
 	ssc_var(obj, "dispatch_factor9", ${dispatch_factor9}); 
+	}
 
 	ssc_var(obj, "cycle_spec_cost", ${cycle_spec_cost});
 	ssc_var(obj, "tes_spec_cost", ${tes_spec_cost});

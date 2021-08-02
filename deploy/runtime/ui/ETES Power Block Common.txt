@@ -1143,7 +1143,7 @@ Power Cycle
 0.3
 Default
 
-6937
+6976
 // Set copy of variables from MSPT System Design page
 equations{ 'PB_COPY_P_ref' } = define(){
 	return ${P_ref}; };
@@ -1239,6 +1239,7 @@ equations{ '$MIMO$ ui_etes_power_block_common__etes_cmod' } = define()
 	ssc_var(obj, "bop_par_1", ${bop_par_1});         
 	ssc_var(obj, "bop_par_2", ${bop_par_2});         
 
+	if(financing() == "Single Owner"){
 	ssc_var(obj, "ppa_multiplier_model", ${ppa_multiplier_model});         
 	ssc_var(obj, "dispatch_factors_ts", ${dispatch_factors_ts});
 	ssc_var(obj, "dispatch_sched_weekday", ${dispatch_sched_weekday});
@@ -1252,6 +1253,7 @@ equations{ '$MIMO$ ui_etes_power_block_common__etes_cmod' } = define()
 	ssc_var(obj, "dispatch_factor7", ${dispatch_factor7});
 	ssc_var(obj, "dispatch_factor8", ${dispatch_factor8});
 	ssc_var(obj, "dispatch_factor9", ${dispatch_factor9}); 
+	}
 
 	ssc_var(obj, "cycle_spec_cost", ${cycle_spec_cost});
 	ssc_var(obj, "tes_spec_cost", ${tes_spec_cost});
