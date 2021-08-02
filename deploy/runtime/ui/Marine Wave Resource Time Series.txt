@@ -668,7 +668,7 @@ Default
 
 
 
-20670
+20673
 /*
 function enable_disable_library() {
 	
@@ -967,7 +967,7 @@ function wave_download_all()
 		}
 		else
 		{
-			rescanlibrary( 'wave_ts' );  //** is this necessary??
+			//rescanlibrary( 'wave_ts' );  //** is this necessary??
 			if (fn != '')
 			{
 				
@@ -1258,7 +1258,7 @@ function update_library_folders( new_path )
 	}
 	// list of library folders files to display on separate lines
 	paths = split( x, ';' );
-	// put solar download folder at top of list
+	// put wave download folder at top of list
 	clean_list = '';
 	// remove folders in list that no longer exist
 	for (i = 0; i<#paths; i++ )
@@ -1275,7 +1275,7 @@ function update_library_folders( new_path )
 	value( 'library_folder_list', get_settings('wave_download_path') + '\n' 
 	       + replace( clean_list , ';' , '\n' ) );
 	rescanlibrary( 'wave_ts' );   
-	rescanlibrary( 'wave' );     
+	//rescanlibrary( 'wave' );     
 }
 
 function slash_back_to_forward( str )
