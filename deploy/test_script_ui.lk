@@ -1,0 +1,106 @@
+folder = appdir() + "/../..";
+outln(folder);
+
+output_file = folder + "/test_results_" + ostype() + ".csv";
+file_num = open(output_file, "w");
+if ( !file_num ) {
+	outln("failed to open output file for writing:\n" + output_file );
+	exit;
+}
+
+outln('writing to output file: ' + output_file );
+
+outln( 'TECHNOLOGY\tFINANCING\tDEFAULT\tANNUAL_OUTPUT\tLCOE_NOM\tLCOE_REAL\tMESSAGES');
+write_line(file_num,"TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES");
+query = true; // ask user whether to overwrite each configuration that has a defaults error
+//Close any open projects and create a case to run
+close_project();
+create_case( 'Flat Plate PV', 'Residential', 'test_case');
+
+//Keep track of the number of configurations
+configs = 0;
+
+//loop through all technologies
+technologies = 	list_technologies();
+for (t=0; t<#technologies; t++)
+{
+	if ((technologies[t] != "DSPT") 
+	&& (technologies[t] != "Dish Stirling")
+	&& (technologies[t] != "ISCC")
+	&& (technologies[t] != "Retired"))
+	{
+		//Loop through all financing options for that technology
+		financing = list_financing(technologies[t]);
+		for(f=0; f<#financing; f++)
+		{	
+
+			//Write the technology and financing configuration to the file
+			out( technologies[t] + '\t' + financing[f] + '\t' );
+			configs++;
+			
+			//Check that the case and defaults load ok
+			active_case( 'test_case' );
+			test = configuration( technologies[t], financing[f]) ;
+
+			outln("test = " + test);
+			/*
+			message = '';
+			
+			
+			if( !load_defaults(message) )
+			{
+				msg = 'LOADERR';
+				if ( query )//&& yesno( 'Error with defaults for: ' + technologies[t] + '/' + financing[f] + '\n\n' + message + '\n\nOverwrite?'))
+				{
+					if(!overwrite_defaults())
+					{
+						outln('Defaults could not be overwritten...');
+						write_line(file_num,technologies[t] + "," + financing[f] + ", Defaults could not be overwritten...");
+						continue;
+						msg = 'OVRERR';
+					}
+					else
+						msg = 'OVERWRITE';
+				}
+				
+				out( msg + '\t');
+				write_line(file_num, technologies[t] + "," + financing[f] + "," + msg + '\t');
+			}
+			else out('OK\t');
+			
+			
+			//Check that the case simulates ok
+			message2 = '';
+			if(!simulate(message2))
+			{
+				outln( 'fail\tfail\tfail' );
+				write_line(file_num, technologies[t] + "," + financing[f] + ",fail,fail,fail" );
+				continue;
+			}
+					
+			//Record the outputs of the case
+			annual_energy = 'NA';
+			lcoe_nom = 'NA';
+			lcoe_real = 'NA';
+			lppa_nom = 'NA'; // for comparison to SAMwx 2014.1.14
+			if( null != varinfo('annual_energy') ) annual_energy = get('annual_energy');
+			if(financing[f] != 'None')
+			{
+				if( null != varinfo('lcoe_nom') ) lcoe_nom = get('lcoe_nom');
+				if( null != varinfo('lppa_nom') ) lppa_nom = get('lppa_nom');
+				if( null != varinfo('lcoe_real') ) lcoe_real = get('lcoe_real');
+			}
+			
+			str = replace( message + '; ' + message2, '\n', ' ' );
+			str = replace( str, '\r', '' );
+			str = replace( str, '\t', ' ' );
+			outln( annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real + '\t' + str);
+			write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lppa_nom + ',' + str);
+			*/
+		}
+	} // skip DSPT
+}
+
+outln( 'Total Number of Configurations: ' + configs);
+// Write line out for Travis CI scripts
+write_line(file_num, "final_configuration_eof" + "," + "none" + "," + "NA" + ',' + "NA" + ',' + "NA" + ',');

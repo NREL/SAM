@@ -297,8 +297,23 @@ static void fcall_configuration( lk::invoke_t &cxt )
 		cxt.error("no active case");
 		return;
 	}
+	if (cxt.arg_count() == 3)
+	{ // go thorugh input pages and return callback and equation errors
+		wxString tech = cxt.arg(0).as_string();
+		wxString fin = cxt.arg(1).as_string();
 
-	if ( cxt.arg_count() == 2 )
+		cxt.result().assign(0.0);
+		wxArrayString techlist = SamApp::Config().GetTechnologies();
+		if (techlist.Index(tech) == wxNOT_FOUND) return;
+		wxArrayString finlist = SamApp::Config().GetFinancingForTech(tech);
+		if (finlist.Index(fin) == wxNOT_FOUND) return;
+		wxString config_messages = wxEmptyString;
+		bool bset_config = cc->SetConfiguration(tech, fin, true, &config_messages);
+		cxt.result().empty_vector();
+		cxt.result().vec_append(bset_config);
+		cxt.result().vec_append(config_messages);
+	}
+	else if ( cxt.arg_count() == 2 )
 	{
 		wxString tech = cxt.arg(0).as_string();
 		wxString fin = cxt.arg(1).as_string();
