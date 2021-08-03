@@ -1,5 +1,5 @@
 1
-1174
+1175
 A_aperture
 1
 2
@@ -3649,6 +3649,12 @@ csp_dtr_sca_w_profile_4
 1
 1
 6
+csp_financial_model
+1
+1
+1
+1
+4
 cspdtr_loop_hce_heat_loss
 1
 1
@@ -6307,7 +6313,8 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solution_mode_message
 1
 4
