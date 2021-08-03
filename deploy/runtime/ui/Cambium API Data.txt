@@ -385,8 +385,8 @@ Tool Tip
 0
 Caption
 5
-115
-Hourly time-series price data from NREL's Cambium Database can be imported into any of the lifetime matrices above.
+123
+Hourly time-series marginal cost data from NREL's Cambium Database can be imported into any of the lifetime matrices above.
 TextColour
 4
 0
