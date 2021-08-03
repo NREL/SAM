@@ -211,7 +211,19 @@ void WaveDownloadDialog::OnEvt( wxCommandEvent &e )
 				{
 					m_txtFolder->SetValue( dlg.GetPath());
                     m_weatherFolder = m_txtFolder->GetValue();
-					SamApp::Settings().Write("wave_data_paths", dlg.GetPath());
+                    //m_weatherFolder = m_txtFolder->GetValue();
+					//SamApp::Settings().Write("wave_data_paths", dlg.GetPath());
+
+
+                    wxArrayString paths;
+                    wxString buf;
+                    if (SamApp::Settings().Read("wave_data_paths", &buf))
+                        paths = wxStringTokenize(buf, ";");
+                    if (paths.Index(m_weatherFolder) == wxNOT_FOUND)
+                    {
+                        paths.Add(m_weatherFolder);
+                        SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
+                    }
 				}
 			}
 			break;
