@@ -140,6 +140,7 @@ private:
     wxListBox* lstYears;
     wxCheckBox* all_years_chk;
     wxComboBox* cboEndpoint;
+    wxComboBox* cboSingleYear;
 	std::vector<LinkInfo> m_links;
 	wxString m_weatherFile;
 	wxString m_weatherFolder;
