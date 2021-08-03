@@ -4831,7 +4831,7 @@ Tower SolarPilot Capital Costs
 0
 Default
 
-5831
+6583
 // ui only
 equations{ 'csp.pt.cost.heliostats_m2' } = define() {
 	area = ${A_sf_UI};
@@ -4862,6 +4862,46 @@ equations{ 'csp.pt.cost.rec_height' } = define() {
 	else if (tech == 'DSPT')
 		nameplate = ${rec_height};
 	return nameplate;
+};
+
+// ui only
+equations{ 'csp.pt.cost.receiver.area' } = define(){
+	tech = technology();
+	area = 0;
+	if(tech == 'MSPT' || tech == 'ISCC'){
+		area = ?${receiver_type}
+		[
+		${rec_height}*${D_rec}*3.1415926,  //external
+		${rec_d_spec}*${csp.pt.rec.cav_ap_height}
+		];
+	}
+	else if (tech == 'DSPT'){
+		area = ${d_rec}*${rec_height}*pi();
+	}
+	return area;
+};
+
+// ui only
+equations{'csp.pt.cost.storage_mwht'} = define() {
+	tech = technology();
+	nameplate = 0;
+	if(tech == 'MSPT'){
+		nameplate = ${P_ref}/${design_eff}*${tshours};
+	}
+	return nameplate;
+};
+
+// ui only
+equations{'csp.pt.cost.power_block_mwe'} = define(){
+	tech = technology();
+	pb = 0;
+	if(tech == 'MSPT'){
+		pb = ${P_ref};
+	}
+	else if(tech == 'DSPT'){
+		pb = ${demand_var};
+	}
+	return pb;
 };
 
 // ui only

@@ -1102,7 +1102,7 @@ TabOrder
 3
 5
 
-16
+17
 I_bn_des
 3
 1
@@ -1186,6 +1186,20 @@ System Design
 1
 1
 0
+Default
+csp_financial_model
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+1
 Default
 eta_ref
 3
@@ -1328,7 +1342,7 @@ System Design
 0
 Default
 
-737
+1282
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1337,6 +1351,36 @@ Default
 //   modify the below main MIMO or add one,
 //   referencing in ssc_equations.h
 //
+
+equations{ 'csp_financial_model' } = define() {
+	if (financing() == "Single Owner"){
+		return 1;
+	}
+	else if(financing() == "Leveraged Partnership Flip"){
+		return 2;
+	}
+	else if(financing() == "All Equity Partnership Flip"){
+		return 3;
+	}
+	else if(financing() == "Sale Leaseback"){
+		return 4;
+	}
+	else if(financing() == "Commercial"){
+		return 5;
+	}
+	else if(financing() == "Merchant Plant"){
+		return 6;
+	}
+	else if(financing() == "LCOE Calculator"){
+		return 7;
+	}
+	else if(financing() == "None"){
+		return 8;
+	}
+	else{
+		return -1;
+	}
+};
 
 equations{ '$MIMO$ Physical_Trough_System_Design_Equations' } = define() {
 
