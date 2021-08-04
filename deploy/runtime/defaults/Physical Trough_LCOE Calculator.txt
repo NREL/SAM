@@ -4309,12 +4309,6 @@ radiator_unitcost
 1
 1
 13
-radio_sm_or_area
-1
-1
-1
-1
-0
 rec_qf_delay
 1
 1
@@ -5566,6 +5560,12 @@ ui_wacc
 1
 1
 0.0562537
+use_solar_mult_or_aperture_area
+1
+1
+1
+1
+0
 use_specific_weather_file
 1
 1
