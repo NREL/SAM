@@ -40,7 +40,7 @@ for (t=0; t<#technologies; t++)
 			
 			//Check that the case and defaults load ok
 			active_case( 'test_case' );
-			test = configuration( technologies[t], financing[f]) ;
+			test = check_configuration( technologies[t], financing[f], true) ;
 
 			outln("test = " + test);
 			/*

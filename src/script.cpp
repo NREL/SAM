@@ -287,6 +287,61 @@ static void fcall_simulate( lk::invoke_t &cxt )
 	else cxt.error("no active case");
 }
 
+
+static void fcall_check_configuration(lk::invoke_t& cxt)
+{
+	LK_DOC("check_configuration", "Check the current active case's technology/market configuration pages for errors.", "(string:technology, string:financing):boolean or (none):array");
+
+	Case* cc = CurrentCase();
+	if (!cc)
+	{
+		cxt.error("no active case");
+		return;
+	}
+	if (cxt.arg_count() == 3)
+	{ // captures default issue and NOT input page callback and equation issues
+		wxString tech = cxt.arg(0).as_string();
+		wxString fin = cxt.arg(1).as_string();
+
+		cxt.result().assign(0.0);
+		wxArrayString techlist = SamApp::Config().GetTechnologies();
+		if (techlist.Index(tech) == wxNOT_FOUND) return;
+		wxArrayString finlist = SamApp::Config().GetFinancingForTech(tech);
+		if (finlist.Index(fin) == wxNOT_FOUND) return;
+		wxString config_messages = wxEmptyString;
+		bool bset_config = cc->SetConfiguration(tech, fin, true, &config_messages);
+		cxt.result().empty_vector();
+		cxt.result().vec_append(bset_config);
+		cxt.result().vec_append(config_messages);
+
+		auto ccw = SamApp::Window()->GetCurrentCaseWindow();
+		auto pages = ccw->GetInputPages();
+		for (auto& page : pages) {
+			ccw->SwitchToInputPage(page); // TODO capture output
+		}
+	}
+	else if (cxt.arg_count() == 2)
+	{
+		wxString tech = cxt.arg(0).as_string();
+		wxString fin = cxt.arg(1).as_string();
+
+		cxt.result().assign(0.0);
+		wxArrayString techlist = SamApp::Config().GetTechnologies();
+		if (techlist.Index(tech) == wxNOT_FOUND) return;
+		wxArrayString finlist = SamApp::Config().GetFinancingForTech(tech);
+		if (finlist.Index(fin) == wxNOT_FOUND) return;
+
+		cxt.result().assign(cc->SetConfiguration(tech, fin, true, 0) ? 1.0 : 0.0); // invoke silently - do not show error messages
+	}
+	else
+	{
+		cxt.result().empty_vector();
+		cxt.result().vec_append(cc->GetTechnology());
+		cxt.result().vec_append(cc->GetFinancing());
+	}
+}
+
+
 static void fcall_configuration( lk::invoke_t &cxt )
 {
 	LK_DOC( "configuration", "Change the current active case's technology/market configuration, or return the current configuration.", "(string:technology, string:financing):boolean or (none):array");
@@ -298,7 +353,7 @@ static void fcall_configuration( lk::invoke_t &cxt )
 		return;
 	}
 	if (cxt.arg_count() == 3)
-	{ // go thorugh input pages and return callback and equation errors
+	{ // captures default issue and NOT input page callback and equation issues
 		wxString tech = cxt.arg(0).as_string();
 		wxString fin = cxt.arg(1).as_string();
 
@@ -590,6 +645,7 @@ lk::fcall_t *sam_functions() {
 		fcall_widgetpos,
 		fcall_focusto,
 		fcall_configuration,
+		fcall_check_configuration,
 		fcall_library,
 		fcall_load_defaults,
 		fcall_overwrite_defaults,
