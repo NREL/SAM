@@ -1443,7 +1443,7 @@ Physical Trough Collector Type 1
 5
 Numeric
 
-4657
+4673
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1453,7 +1453,7 @@ Numeric
 //   referencing in ssc_equations.h
 //
 
-equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
+equations{ '$MIMO$ Physical_Trough_Collector_Type_UI_Only_Equations' } = define() {
 
 	// csp_dtr_sca_ap_length_1
 	data.L_SCA = ${L_SCA};
@@ -1483,7 +1483,7 @@ equations{ '$MIMO$ Physical_Trough_Collector_Type_Equations' } = define() {
 	// csp_dtr_sca_calc_iam_1
 	data.IAM_matrix = ${IAM_matrix};
 
-	success = ssc_eqn("Physical_Trough_Collector_Type_Equations", data);
+	success = ssc_eqn("Physical_Trough_Collector_Type_UI_Only_Equations", data);
 	if (!success) {
 		${csp_dtr_sca_ap_length_1} = -999;
 		${csp_dtr_sca_ap_length_2} = -999;
