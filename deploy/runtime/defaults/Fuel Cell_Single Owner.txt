@@ -1,5 +1,5 @@
 1
-812
+813
 LeadAcid_q10
 1
 1
@@ -697,6 +697,12 @@ batt_dispatch_update_frequency_hours
 1
 1
 24
+batt_dispatch_wf_forecast_choice
+1
+1
+1
+1
+3.33506e-317
 batt_duration_choice
 1
 1

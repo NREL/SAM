@@ -385,7 +385,7 @@ Automated dispatch|Dispatch to custom time series|Manual dispatch|PV smoothing
 1
 1
 1
-0
+3
 RadioChoice
 
 0
