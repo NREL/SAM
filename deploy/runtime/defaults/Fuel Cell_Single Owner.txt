@@ -1,5 +1,5 @@
 1
-813
+812
 LeadAcid_q10
 1
 1
@@ -143,12 +143,6 @@ annual_wspd
 1
 1.78648
 array_type
-1
-1
-1
-1
-0
-automated_dispatch_choice
 1
 1
 1
