@@ -1766,15 +1766,15 @@ on_load{'Battery Dispatch PV Smoothing'} = define() {
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
 	on_change{'batt_dispatch_pvs_ac_lb_enable'}();
 	on_change{'batt_dispatch_pvs_short_forecast_enable'}();
-	value('batt_dispatch_choice', 5);
-	toggle_dispatch_pvs(); // do not enable unless mode == 5
+	value('batt_dispatch_choice', 1);
+	toggle_dispatch_pvs(); // do not enable unless mode == 1
 };
 
 function toggle_dispatch_pvs()
 {
 	mode = ${batt_dispatch_choice};
 	pvsmoothing = true;
-//	pvsmoothing = (mode == 5 && technology() == "PV Battery");
+//	pvsmoothing = (mode == 1 && technology() == "PV Battery");
 	enable('batt_dispatch_pvs_ac_lb',pvsmoothing);
 	enable('batt_dispatch_pvs_ac_lb_enable',pvsmoothing);
 	enable('batt_dispatch_pvs_ac_ub',pvsmoothing);

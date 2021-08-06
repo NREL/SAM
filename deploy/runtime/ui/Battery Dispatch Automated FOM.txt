@@ -2,48 +2,6 @@ Battery Dispatch Automated FOM
 1050
 343
 13
-RadioChoice
-
-1
-11
-Name
-5
-25
-automated_dispatch_choice
-X
-3
-15
-Y
-3
-60
-Width
-3
-231
-Height
-3
-72
-Tool Tip
-5
-0
-Selection
-3
-0
-Items
-6
-4
-Perfect look ahead
-One day look behind
-Look ahead to custom weather file
-PV smoothing
-ShowCaptions
-2
-1
-Horizontal
-2
-0
-TabOrder
-3
-4294967295
 Label
 
 1
@@ -365,6 +323,47 @@ BackColour
 TabOrder
 3
 2
+RadioChoice
+
+1
+11
+Name
+5
+32
+batt_dispatch_wf_forecast_choice
+X
+3
+15
+Y
+3
+60
+Width
+3
+231
+Height
+3
+72
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+Perfect look ahead
+One day look behind
+Look ahead to custom weather file
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -572,21 +571,6 @@ Bold
 1
 
 8
-automated_dispatch_choice
-3
-1
-Battery automated dispatch options FOM
- 
-Battery Dispatch
-72
-Perfect look ahead|One day look behind|Look ahead to custom weather file
-3
-1
-1
-1
-1
-0
-RadioChoice
 batt_cycle_cost
 3
 2
@@ -630,6 +614,20 @@ Battery Dispatch
 1
 0
 Numeric
+batt_dispatch_wf_forecast_choice
+3
+1
+Weather forecast choice for automatic dispatch
+ 
+Battery Dispatch
+0
+3
+1
+1
+1
+1
+0
+RadioChoice
 batt_look_ahead_hours
 3
 1
@@ -686,13 +684,12 @@ Battery Dispatch
 TextEntry
 
 0
-3922
+3755
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
 	
-	on_change{'automated_dispatch_choice'};
-	select_automated_dispatch_option();
+	on_change{'batt_dispatch_wf_forecast_choice'};
 	toggle_dispatch_fom_automated();
 	if (technology() == "Fuel Cell")
 		toggle_dispatch();
@@ -703,18 +700,10 @@ on_load{'Battery Dispatch Automated FOM'}=define()
 	show_hide_charge_options();
 };
 
-on_change{'automated_dispatch_choice'}=define()
+on_change{'batt_dispatch_wf_forecast_choice'}=define()
 { 
-
-	select_automated_dispatch_option();
 	toggle_dispatch_fom_automated();
 };
-
-function select_automated_dispatch_option()
-{
-	choice = value('automated_dispatch_choice');
-	value('batt_dispatch_choice',choice);
-}
 
 on_change{'batt_select_weather_file_forecast'}=define()
 {
@@ -743,16 +732,16 @@ function toggle_dispatch_fom_automated()
 
 	// Turn on/off forecast input
 	//toggle_forecast();
-	enable('batt_select_weather_file_forecast', ${automated_dispatch_choice} == 2);
-	enable('batt_user_specified_weather_file', ${automated_dispatch_choice} == 2);
+	enable('batt_select_weather_file_forecast', ${batt_dispatch_wf_forecast_choice} == 2);
+	enable('batt_user_specified_weather_file', ${batt_dispatch_wf_forecast_choice} == 2);
 	
-	if (${automated_dispatch_choice} == 2)
+	if (${batt_dispatch_wf_forecast_choice} == 2)
 	{
 		file = ${batt_user_specified_weather_file};
 		run_forecast(file);
 	}
 
-	mode = value('automated_dispatch_choice');
+	mode = value('batt_dispatch_wf_forecast_choice');
 	// automated dispatch
 	
 	enable_auto_inputs_fom(true);
