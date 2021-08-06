@@ -907,7 +907,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 
 		pds->Form = m_forms.Lookup( pi.Name );
 		if ( !pds->Form )
-			wxMessageBox( "error locating form data " + pi.Name );
+			m_case->HandleErrorMessage( "error locating form data " + pi.Name );
 
 		pds->Collapsible = pi.Collapsible;
 		pds->HeaderPage = header;
@@ -952,7 +952,7 @@ void CaseWindow::SetupActivePage()
 		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
 		if ( !vv )
 		{
-			wxMessageBox( "could not locate exclusive page variable " + m_currentGroup->ExclusivePageVar );
+			m_case->HandleErrorMessage("could not locate exclusive page variable " + m_currentGroup->ExclusivePageVar);
 			return;
 		}
 		else
@@ -994,7 +994,7 @@ void CaseWindow::SetupActivePage()
 		}
 		else
 		{
-			wxMessageBox("Exclusive page variable '" + m_currentGroup->ExclusivePageVar 
+			m_case->HandleErrorMessage("Exclusive page variable '" + m_currentGroup->ExclusivePageVar
 				+ wxString::Format("' has invalid value: %d.  Only %d input pages exist.", 
 					(int)excl_idx, (int)m_currentGroup->Pages.size() ) );
 		}
@@ -1005,7 +1005,7 @@ void CaseWindow::SetupActivePage()
 	}
 	else
 	{
-		wxMessageBox( "ui engine error: invalid page configuration on " + m_currentGroup->SideBarLabel );
+		m_case->HandleErrorMessage("ui engine error: invalid page configuration on " + m_currentGroup->SideBarLabel );
 		return;
 	}
 	

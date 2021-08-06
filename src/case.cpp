@@ -100,11 +100,12 @@ bool CaseCallbackContext::Invoke( lk::node_t *root, lk::env_t *parent_env )
 			for (size_t i=0;i<e.error_count();i++)
 				text += e.get_error(i);
 
-			wxShowTextMessageDialog( text );
+//			wxShowTextMessageDialog( text );
+			m_case->HandleErrorMessage(text);
 		}
 		
 	} catch(std::exception &e ){
-		wxShowTextMessageDialog( "Could not evaluate callback function: " + m_name + wxString("\n\n") + e.what());
+		m_case->HandleErrorMessage( "Could not evaluate callback function: " + m_name + wxString("\n\n") + e.what());
 		return false;
 	}
 
@@ -273,6 +274,9 @@ bool CaseEvaluator::UpdateLibrary( const wxString &trigger, wxArrayString &chang
 Case::Case()
 	: m_config(0), m_baseCase( this, wxEmptyString ), m_parametric( this )
 {
+	m_lastError = wxEmptyString;
+	m_pageErrors = wxEmptyString;
+	m_bsuppressPageErrorsMessageBoxes = false;
 }
 
 Case::~Case()
@@ -670,6 +674,13 @@ bool Case::LoadDefaults( wxString *pmsg )
 	return ok;
 }
 
+void Case::HandleErrorMessage(const wxString& msg)
+{
+	if (GetSuppressPageErrorsMessageBoxes())
+		AddPageErrors(msg);
+	else
+		wxMessageBox(msg);
+}
 
 
 bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool silent, wxString *message )

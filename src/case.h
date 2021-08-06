@@ -175,8 +175,18 @@ public:
 
 	wxString GetLastError() { return m_lastError; };
 
+	wxString GetPageErrors() { return m_pageErrors; };
+	void AddPageErrors(const wxString& err) { m_pageErrors += "\n" + err; }
+
+	bool GetSuppressPageErrorsMessageBoxes() { return m_bsuppressPageErrorsMessageBoxes; };
+	void SetSuppressPageErrorsMessageBoxes(bool suppress) { m_bsuppressPageErrorsMessageBoxes = suppress; };
+
+	void HandleErrorMessage(const wxString& msg);
+
 private:
-	wxString m_lastError;
+	bool m_bsuppressPageErrorsMessageBoxes; // input page loading errors as message boxes - normal mode = false, true for windowless tests (e.g. Travis-CI)
+	wxString m_pageErrors; // input page loading errors - variables, configuration, on_load events
+	wxString m_lastError;  // last error reading in case from file or defaults
 	std::vector<CaseEventListener*> m_listeners;
 
 	ConfigInfo *m_config;
