@@ -379,7 +379,7 @@ Battery dispatch options FOM
  
 Battery Dispatch
 78
-Automated dispatch|Dispatch to custom time series|Manual dispatch|PV smoothing
+Automated dispatch|PV smoothing|Dispatch to custom time series|Manual dispatch
 3
 1
 1
