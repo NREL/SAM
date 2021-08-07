@@ -641,10 +641,18 @@
 			"V_tes_des": 1.85,
 			"custom_tes_p_loss": 0,
 			"custom_tes_pipe_sizes": 0,
+			"disp_wlim_maxspec": 1e+38,
+			"fluid_dens_inlet_temp": 820.811,
+			"fluid_dens_outlet_temp": 706.384,
 			"has_hot_tank_bypass": 0,
 			"k_tes_loss_coeffs": [
 				[0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 			],
+			"lat": 32.13,
+			"non_solar_field_land_area_multiplier": 1.4,
+			"radio_sm_or_area": 0,
+			"specified_solar_multiple": 2,
+			"specified_total_aperture": 877000,
 			"tanks_in_parallel": 1,
 			"tes_diams": [
 				[-1.000000]
@@ -652,7 +660,8 @@
 			"tes_pump_coef": 0.15,
 			"tes_wallthicks": [
 				[-1.000000]
-			]
+			],
+			"trough_loop_control": [8.000000, 1.000000, 1.000000, 8.000000, 1.000000, 1.000000, 7.000000, 1.000000, 1.000000, 6.000000, 1.000000, 1.000000, 5.000000, 1.000000, 1.000000, 4.000000, 1.000000, 1.000000, 3.000000, 1.000000, 1.000000, 2.000000, 1.000000, 1.000000, 1.000000]
 		},
 		"AdjustmentFactors": {
 			"constant": 4
