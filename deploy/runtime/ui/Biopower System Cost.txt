@@ -3015,7 +3015,7 @@ TabOrder
 3
 34
 
-39
+38
 biopwr.cost.boiler
 3
 1
@@ -3506,20 +3506,6 @@ Biopower System Cost
 1
 0
 Default
-system_use_recapitalization
-3
-1
- 
- 
-Biopower System Cost
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -3563,7 +3549,7 @@ Biopower System Cost
 0
 Default
 
-3281
+3210
 equations{ 'biopwr.cost.sales_tax.value' } = define() {
 	return ${sales_tax_rate}; };
 
@@ -3645,8 +3631,6 @@ equations { 'total_indirect_cost' } = define () {
 	return ${biopwr.cost.total_indirect};
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 116
