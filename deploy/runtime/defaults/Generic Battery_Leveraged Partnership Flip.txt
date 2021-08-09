@@ -469,7 +469,7 @@ batt_dispatch_auto_can_clipcharge
 1
 1
 1
-1
+0
 batt_dispatch_auto_can_fuelcellcharge
 1
 1
