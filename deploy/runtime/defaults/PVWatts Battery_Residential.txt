@@ -1,5 +1,5 @@
 1
-455
+454
 Monthly_util
 1
 2
@@ -2258,7 +2258,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 state
 1
 4
@@ -2294,12 +2295,6 @@ system_capacity
 1
 4.69287
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
