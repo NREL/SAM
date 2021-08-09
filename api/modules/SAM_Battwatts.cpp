@@ -98,9 +98,21 @@ SAM_EXPORT void SAM_Battwatts_Battery_load_aset(SAM_table ptr, double* arr, int 
 	});
 }
 
+SAM_EXPORT void SAM_Battwatts_Load_grid_outage_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_outage", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Battwatts_Load_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load_escalation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Battwatts_Load_run_resiliency_calcs_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "run_resiliency_calcs", number);
 	});
 }
 
@@ -263,12 +275,47 @@ SAM_EXPORT double* SAM_Battwatts_Battery_load_aget(SAM_table ptr, int* length, S
 
 
 
+SAM_EXPORT double* SAM_Battwatts_Load_grid_outage_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_outage", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "grid_outage");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battwatts_Load_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "load_escalation", length);
 	if (!result)
 		make_access_error("SAM_Battwatts", "load_escalation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battwatts_Load_run_resiliency_calcs_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "run_resiliency_calcs", &result))
+		make_access_error("SAM_Battwatts", "run_resiliency_calcs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Battwatts", "annual_energy_distribution_time");
 	});
 	return result;
 }
