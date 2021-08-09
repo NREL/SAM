@@ -1,5 +1,5 @@
 1
-1153
+1155
 6par_aisc
 1
 1
@@ -883,6 +883,12 @@ batt_dispatch_pvs_timestep_multiplier
 1
 1
 3
+batt_dispatch_pvs_wf_forecast_choice
+1
+1
+1
+1
+1.04992e-153
 batt_dispatch_pvs_wf_timestep
 1
 1
@@ -1108,6 +1114,10 @@ batt_pv_dc_forecast
 2
 1
 1
+0
+batt_pvs_user_specified_weather_file
+1
+4
 0
 batt_replacement_capacity
 1

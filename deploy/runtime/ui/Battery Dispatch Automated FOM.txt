@@ -684,7 +684,7 @@ Battery Dispatch
 TextEntry
 
 0
-3755
+3618
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
@@ -740,6 +740,10 @@ function toggle_dispatch_fom_automated()
 		file = ${batt_user_specified_weather_file};
 		run_forecast(file);
 	}
+	else {
+		${batt_pv_dc_forecast} = [0];
+		${batt_pv_clipping_forecast} = [0];
+	}
 
 	mode = value('batt_dispatch_wf_forecast_choice');
 	// automated dispatch
@@ -775,44 +779,34 @@ function enable_non_manual_inputs_fom(on_off)
 
 function run_forecast(file)
 {
-	// only run forecast for DC-connected, AC-connected doesn't need
-	if (value('batt_ac_or_dc') == 0)
-	{
-		logmsg('Forecast file: ' + file);
-		
-		user_specified_weather_file_old = ${user_specified_weather_file};
-		use_specific_weather_file_old = ${use_specific_weather_file};
-		solar_resource_file_old = ${solar_resource_file};
-		
-		if ( file != '' ) {
-			file = replace(file, '\\', '/');
-		}	
-
-		forecast_run = ssc_module_create_from_case('pvsamv1');
-		ssc_var(forecast_run, 'en_batt', false);
-		ssc_var(forecast_run, 'use_specific_weather_file', true);	
-		ssc_var(forecast_run, 'user_specified_weather_file', file);
-		ssc_var(forecast_run, 'solar_resource_file', file);	
+	logmsg('Forecast file: ' + file);
 	
-		logmsg('use_specific_weather_file: ' + ssc_var(forecast_run, 'use_specific_weather_file'));
-		logmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));
-		logmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));
+	user_specified_weather_file_old = ${user_specified_weather_file};
+	use_specific_weather_file_old = ${use_specific_weather_file};
+	solar_resource_file_old = ${solar_resource_file};
+	
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+	}	
 
-		status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=false, 'hold_dialog'=false});
-		
-		if (status != 0)
-			logmsg('Battery forecast run failed with error: ' + status);
-		else
-		{
-			${batt_pv_dc_forecast} = ssc_var(forecast_run, 'dc_net');
-			${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
-		}
-		ssc_free(forecast_run);
-	}
+	forecast_run = ssc_module_create_from_case('pvsamv1');
+	ssc_var(forecast_run, 'en_batt', false);
+	ssc_var(forecast_run, 'use_specific_weather_file', true);	
+	ssc_var(forecast_run, 'user_specified_weather_file', file);
+	ssc_var(forecast_run, 'solar_resource_file', file);	
+
+	logmsg('use_specific_weather_file: ' + ssc_var(forecast_run, 'use_specific_weather_file'));
+	logmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));
+	logmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));
+
+	status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=false, 'hold_dialog'=false});
+	
+	if (status != 0)
+		logmsg('Battery forecast run failed with error: ' + status);
 	else
 	{
-		${batt_pv_dc_forecast} = [0];
-		${batt_pv_clipping_forecast} = [0];
+		${batt_pv_dc_forecast} = ssc_var(forecast_run, 'dc_net');
+		${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
 	}
-	
+	ssc_free(forecast_run);
 }
