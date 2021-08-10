@@ -1,7 +1,168 @@
 Battery Dispatch Peak Shaving BTM
-1051
-111
+1064
+332
+7
+Label
+
+1
+13
+Name
+5
+36
+batt_custom_weather_file_description
+X
 3
+18
+Y
+3
+138
+Width
+3
+918
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+187
+For the Dispatch to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Button
+
+1
+8
+Name
+5
+46
+batt_select_weather_file_forecast_peak_shaving
+X
+3
+18
+Y
+3
+177
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+9
+Browse...
+TabOrder
+3
+6
+TextEntry
+
+1
+11
+Name
+5
+45
+batt_user_specified_weather_file_peak_shaving
+X
+3
+108
+Y
+3
+177
+Width
+3
+828
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+Divider
+
+1
+10
+Name
+5
+18
+batt_weather_label
+X
+3
+15
+Y
+3
+120
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+32
+Custom Weather File for Forecast
+Bold
+2
+1
 GroupBox
 
 1
@@ -18,10 +179,10 @@ Y
 3
 Width
 3
-1042
+1044
 Height
 3
-105
+205
 Tool Tip
 5
 0
@@ -108,9 +269,10 @@ Selection
 0
 Items
 6
-2
+3
 One day look ahead (perfect)
 One day look behind
+Custom forecast
 ShowCaptions
 2
 1
@@ -121,7 +283,7 @@ TabOrder
 3
 4294967295
 
-3
+4
 batt_dispatch_choice
 3
 1
@@ -150,14 +312,26 @@ Battery Dispatch
 1
 0
 Default
+batt_user_specified_weather_file_peak_shaving
+3
+4
+ 
+ 
+ Battery Dispatch
+0
+3
+1
+4
+0
+Default
 peak_shaving_batt_dispatch_choice
 3
 1
 Battery peak shaving options BTM
  
 Battery Dispatch
-48
-One day look ahead (perfect)|One day look behind
+64
+One day look ahead (perfect)|One day look behind|Custom forecast
 3
 1
 1
@@ -167,7 +341,7 @@ One day look ahead (perfect)|One day look behind
 Default
 
 0
-585
+1164
 on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	
 	on_change{'peak_shaving_batt_dispatch_choice'};
@@ -181,16 +355,32 @@ on_change{'peak_shaving_batt_dispatch_choice'} = define()
 	peak_shaving_choice();
 };
 
+on_change{'batt_select_weather_file_forecast_peak_shaving'}=define()
+{
+	file = choose_file( "", 'Choose a weather file', 
+			'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');
+	${batt_user_specified_weather_file_peak_shaving} = file;
+	run_forecast(file);
+};
+
 function peak_shaving_choice() 
 {
 	value('batt_dispatch_choice', 0);
 	choice = value('peak_shaving_batt_dispatch_choice');
-	if (choice == 0) 
+
+	// Turn on/off forecast input
+	//toggle_forecast();
+	enable('batt_select_weather_file_forecast_peak_shaving', choice == 2);
+	enable('batt_user_specified_weather_file_peak_shaving', choice == 2);
+
+	value('batt_dispatch_wf_forecast_choice', choice);
+	if (choice == 2)
 	{
-		value('batt_dispatch_wf_forecast_choice',0);
+		file = ${batt_user_specified_weather_file_peak_shaving};
+		run_forecast(file);
 	}
-	elseif (choice == 1) 
-	{
-		value('batt_dispatch_wf_forecast_choice', 1);
+	else {
+		${batt_pv_ac_forecast} = [0];
+		${batt_pv_clipping_forecast} = [0];
 	}
 }
