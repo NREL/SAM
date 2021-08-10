@@ -314,11 +314,14 @@ static void fcall_check_configuration(lk::invoke_t& cxt)
 		cxt.result().vec_append(bset_config);
 		cxt.result().vec_append(config_messages);
 
+		cc->SetSuppressPageErrorsMessageBoxes(true);
 		auto ccw = SamApp::Window()->GetCurrentCaseWindow();
 		auto pages = ccw->GetInputPages();
 		for (auto& page : pages) {
-			ccw->SwitchToInputPage(page); // TODO capture output
+			ccw->SwitchToInputPage(page); 
 		}
+		auto page_messages = cc->GetPageErrors();
+		cxt.result().vec_append(page_messages);
 	}
 	else if (cxt.arg_count() == 2)
 	{

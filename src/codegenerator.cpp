@@ -463,10 +463,10 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 		name = ssc_data_next(p_data);
 	}
 	*/
-
+	// 2021.8.9 - failing for cmod_grid - no new inputs added
 	// check that input order has same count as number of compute modules
-	if (simlist.size() != input_order.size())
-		m_errors.Add("input ordering failed");
+	//if (simlist.size() != input_order.size())
+	//	m_errors.Add("input ordering failed");
 	// can do inputs with compute module calls below
 	/*
 	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
@@ -486,7 +486,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	// run compute modules in sequence (INOUT variables will be updated)
 //	for (size_t kk = 0; kk < simlist.size(); kk++)
 	// Issue SAM #614 - write out all inputs before first compute module is called so that INOUT are not overwritten inbetween compute module
-	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
+	for (size_t kk = 0; /* kk < simlist.size() && */ kk < input_order.size(); kk++) // 2021.8.9 - some compute modules do not add new inputs, e.g. cmod_grid
 	{
 		for (size_t jj = 0; jj < input_order[kk].size(); jj++)
 		{
@@ -7855,8 +7855,8 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 	*/
 
 	// check that input order has same count as number of compute modules
-	if (simlist.size() != input_order.size())
-		m_errors.Add("input ordering failed");
+	//if (simlist.size() != input_order.size())
+	//	m_errors.Add("input ordering failed");
 	// can do inputs with compute module calls below
 	/*
 	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
@@ -7875,7 +7875,7 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 
 	// run compute modules in sequence (INOUT variables will be updated)
 //	for (size_t kk = 0; kk < simlist.size(); kk++)
-	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
+	for (size_t kk = 0; /*kk < simlist.size() &&*/ kk < input_order.size(); kk++)
 	{
 
 		// create file with [case name]_[compute module].json
