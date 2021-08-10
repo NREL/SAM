@@ -834,13 +834,13 @@ batt_power_discharge_max_kwdc
 1
 1
 999.999
-batt_pv_clipping_forecast
+batt_pv_ac_forecast
 1
 2
 1
 1
 0
-batt_pv_dc_forecast
+batt_pv_clipping_forecast
 1
 2
 1

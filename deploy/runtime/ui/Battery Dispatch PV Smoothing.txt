@@ -2058,7 +2058,7 @@ function toggle_dispatch_pvs()
 		run_forecast(file);
 	}
 	else {
-		${batt_pv_dc_forecast} = [0];
+		${batt_pv_ac_forecast} = [0];
 		${batt_pv_clipping_forecast} = [0];
 	}
 	
