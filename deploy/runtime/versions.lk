@@ -90,6 +90,12 @@ version_upgrade{'2021.7.27'} = define() {
 	automated_options = ['Perfect Look Ahead','One Day Look Behind','Look Ahead to Custom Weather File'];
 	if ( is_batt_tech )
 	{
+		old_batt_pv_forecast = oldvalue('batt_pv_dc_forecast'); // array
+        value( 'batt_pv_ac_forecast', old_batt_pv_forecast );  // Often just [0], but if not, display message for user
+        if (#old_batt_pv_forecast > 1) {
+			message( 'Custom weather file forecasts for battery dispatch have changed from DC to AC power. Please re-import the forecast on the battery dispatch page to convert to AC power.' );
+        }
+        
 		if ( is_fom_fin )
 		{
 			old = oldvalue( 'batt_dispatch_choice');
