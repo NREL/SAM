@@ -750,13 +750,13 @@ batt_dispatch_choice_ui
 1
 1
 1
-2
+3
 batt_dispatch_excl
 1
 1
 1
 1
-2
+3
 batt_dispatch_pvs_ac_lb
 1
 1
