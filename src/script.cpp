@@ -298,7 +298,7 @@ static void fcall_check_configuration(lk::invoke_t& cxt)
 		cxt.error("no active case");
 		return;
 	}
-	if (cxt.arg_count() == 3)
+	if (cxt.arg_count() == 2)
 	{ // captures default issue and NOT input page callback and equation issues
 		wxString tech = cxt.arg(0).as_string();
 		wxString fin = cxt.arg(1).as_string();
@@ -308,12 +308,16 @@ static void fcall_check_configuration(lk::invoke_t& cxt)
 		if (techlist.Index(tech) == wxNOT_FOUND) return;
 		wxArrayString finlist = SamApp::Config().GetFinancingForTech(tech);
 		if (finlist.Index(fin) == wxNOT_FOUND) return;
-		wxString config_messages = wxEmptyString;
-		bool bset_config = cc->SetConfiguration(tech, fin, true, &config_messages);
 		cxt.result().empty_vector();
-		cxt.result().vec_append(bset_config);
-		cxt.result().vec_append(config_messages);
-
+		//cc->SetConfiguration(tech, fin,true,0); // causing failure
+		/*		wxString config_messages = wxEmptyString;
+		bool bset_config = cc->SetConfiguration(tech, fin, true, &config_messages);
+		if (bset_config)
+			cxt.result().vec_append("Set Configuration success");
+		else
+			cxt.result().vec_append(config_messages);
+			*/
+		cc->SetPageErrors(wxEmptyString);
 		cc->SetSuppressPageErrorsMessageBoxes(true);
 		auto ccw = SamApp::Window()->GetCurrentCaseWindow();
 		auto pages = ccw->GetInputPages();
@@ -321,20 +325,10 @@ static void fcall_check_configuration(lk::invoke_t& cxt)
 			ccw->SwitchToInputPage(page); 
 		}
 		auto page_messages = cc->GetPageErrors();
-		cxt.result().vec_append(page_messages);
-	}
-	else if (cxt.arg_count() == 2)
-	{
-		wxString tech = cxt.arg(0).as_string();
-		wxString fin = cxt.arg(1).as_string();
-
-		cxt.result().assign(0.0);
-		wxArrayString techlist = SamApp::Config().GetTechnologies();
-		if (techlist.Index(tech) == wxNOT_FOUND) return;
-		wxArrayString finlist = SamApp::Config().GetFinancingForTech(tech);
-		if (finlist.Index(fin) == wxNOT_FOUND) return;
-
-		cxt.result().assign(cc->SetConfiguration(tech, fin, true, 0) ? 1.0 : 0.0); // invoke silently - do not show error messages
+//		if (page_messages == wxEmptyString)
+//			cxt.result().vec_append("Input pages on load success");
+//		else 
+			cxt.result().vec_append(page_messages);
 	}
 	else
 	{

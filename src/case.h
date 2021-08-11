@@ -176,6 +176,7 @@ public:
 	wxString GetLastError() { return m_lastError; };
 
 	wxString GetPageErrors() { return m_pageErrors; };
+	void SetPageErrors(const wxString& err) { m_pageErrors = err;  }
 	void AddPageErrors(const wxString& err) { m_pageErrors += "\n" + err; }
 
 	bool GetSuppressPageErrorsMessageBoxes() { return m_bsuppressPageErrorsMessageBoxes; };
