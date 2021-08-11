@@ -1,7 +1,7 @@
 Battery Dispatch PV Smoothing
-1993
-910
-32
+1106
+667
+31
 Label
 
 1
@@ -12,16 +12,16 @@ Name
 batt_cycle_cost_description
 X
 3
-21
+24
 Y
 3
-150
+444
 Width
 3
-918
+958
 Height
 3
-36
+42
 Tool Tip
 5
 0
@@ -60,10 +60,10 @@ Name
 batt_dispatch_pvs_ac_lb
 X
 3
-384
+366
 Y
 3
-408
+258
 Width
 3
 90
@@ -122,10 +122,10 @@ Name
 batt_dispatch_pvs_ac_lb_enable
 X
 3
-39
+21
 Y
 3
-402
+252
 Width
 3
 212
@@ -155,10 +155,10 @@ Name
 batt_dispatch_pvs_ac_ub
 X
 3
-384
+366
 Y
 3
-381
+231
 Width
 3
 90
@@ -217,10 +217,10 @@ Name
 batt_dispatch_pvs_ac_ub_enable
 X
 3
-39
+21
 Y
 3
-381
+231
 Width
 3
 212
@@ -250,10 +250,10 @@ Name
 batt_dispatch_pvs_battery_energy
 X
 3
-852
+834
 Y
 3
-219
+69
 Width
 3
 90
@@ -312,10 +312,10 @@ Name
 batt_dispatch_pvs_battery_power
 X
 3
-852
+834
 Y
 3
-246
+96
 Width
 3
 90
@@ -374,10 +374,10 @@ Name
 batt_dispatch_pvs_battery_rte
 X
 3
-852
+834
 Y
 3
-273
+123
 Width
 3
 90
@@ -436,10 +436,10 @@ Name
 batt_dispatch_pvs_curtail_as_control
 X
 3
-39
+21
 Y
 3
-444
+294
 Width
 3
 212
@@ -469,10 +469,10 @@ Name
 batt_dispatch_pvs_curtail_if_violation
 X
 3
-39
+21
 Y
 3
-465
+315
 Width
 3
 212
@@ -502,10 +502,10 @@ Name
 batt_dispatch_pvs_forecast_shift_periods
 X
 3
-384
+393
 Y
 3
-435
+366
 Width
 3
 90
@@ -564,10 +564,10 @@ Name
 batt_dispatch_pvs_interconnection_limit
 X
 3
-852
+834
 Y
 3
-327
+177
 Width
 3
 90
@@ -626,10 +626,10 @@ Name
 batt_dispatch_pvs_kf
 X
 3
-864
+846
 Y
 3
-444
+294
 Width
 3
 90
@@ -688,10 +688,10 @@ Name
 batt_dispatch_pvs_ki
 X
 3
-864
+846
 Y
 3
-417
+267
 Width
 3
 90
@@ -750,10 +750,10 @@ Name
 batt_dispatch_pvs_kp
 X
 3
-864
+846
 Y
 3
-390
+240
 Width
 3
 90
@@ -812,10 +812,10 @@ Name
 batt_dispatch_pvs_max_ramp
 X
 3
-198
+180
 Y
 3
-303
+153
 Width
 3
 90
@@ -874,10 +874,10 @@ Name
 batt_dispatch_pvs_nameplate
 X
 3
-852
+834
 Y
 3
-300
+150
 Width
 3
 90
@@ -936,10 +936,10 @@ Name
 batt_dispatch_pvs_ramp_interval
 X
 3
-198
+180
 Y
 3
-276
+126
 Width
 3
 90
@@ -998,10 +998,10 @@ Name
 batt_dispatch_pvs_short_forecast_enable
 X
 3
-39
+15
 Y
 3
-423
+366
 Width
 3
 212
@@ -1031,10 +1031,10 @@ Name
 batt_dispatch_pvs_soc_rest
 X
 3
-198
+180
 Y
 3
-330
+180
 Width
 3
 90
@@ -1093,10 +1093,10 @@ Name
 batt_dispatch_pvs_timestep_multiplier
 X
 3
-198
+180
 Y
 3
-249
+99
 Width
 3
 90
@@ -1155,10 +1155,10 @@ Name
 batt_dispatch_pvs_wf_forecast_choice
 X
 3
-21
+87
 Y
 3
-99
+393
 Width
 3
 270
@@ -1195,10 +1195,10 @@ Name
 batt_dispatch_pvs_wf_timestep
 X
 3
-198
+180
 Y
 3
-222
+72
 Width
 3
 90
@@ -1260,7 +1260,7 @@ X
 114
 Y
 3
-189
+492
 Width
 3
 828
@@ -1304,7 +1304,7 @@ X
 21
 Y
 3
-189
+492
 Width
 3
 90
@@ -1331,10 +1331,10 @@ Name
 btn_BDPVS_reset
 X
 3
-735
+717
 Y
 3
-471
+321
 Width
 3
 188
@@ -1361,10 +1361,10 @@ Name
 lbl_BDPVS_warning
 X
 3
-366
+348
 Y
 3
-225
+75
 Width
 3
 300
@@ -1409,10 +1409,10 @@ Name
 object 4
 X
 3
-624
+606
 Y
 3
-375
+225
 Width
 3
 374
@@ -1439,16 +1439,16 @@ Name
 object 419
 X
 3
-9
+3
 Y
 3
-9
+3
 Width
 3
 1002
 Height
 3
-508
+542
 Tool Tip
 5
 0
@@ -1465,62 +1465,14 @@ Label
 13
 Name
 5
-8
-object 7
-X
-3
-21
-Y
-3
-69
-Width
-3
-138
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-15
-Forecast Choice
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
 10
 object 714
 X
 3
-318
+300
 Y
 3
-333
+183
 Width
 3
 410
@@ -1997,7 +1949,7 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-3713
+5314
 on_load{'Battery Dispatch PV Smoothing'} = define() {
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
@@ -2011,6 +1963,7 @@ function toggle_dispatch_pvs()
 {
 	mode = ${batt_dispatch_choice};
 	pvsmoothing = true;
+	forecast_enable = (value('batt_dispatch_pvs_short_forecast_enable') == 1) ;
 //	pvsmoothing = (mode == 1 && technology() == "PV Battery");
 	enable('batt_dispatch_pvs_ac_lb',${batt_dispatch_pvs_ac_lb_enable});
 	enable('batt_dispatch_pvs_ac_lb_enable',pvsmoothing);
@@ -2021,7 +1974,10 @@ function toggle_dispatch_pvs()
 	enable('batt_dispatch_pvs_battery_rte',pvsmoothing);
 	enable('batt_dispatch_pvs_curtail_as_control',pvsmoothing);
 	enable('batt_dispatch_pvs_curtail_if_violation',pvsmoothing);
-	enable('batt_dispatch_pvs_forecast_shift_periods',${batt_dispatch_pvs_short_forecast_enable});
+	enable('batt_dispatch_pvs_wf_forecast_choice',forecast_enable);
+	enable('batt_dispatch_pvs_forecast_shift_periods',forecast_enable);
+	enable('batt_pvs_user_specified_weather_file',forecast_enable);
+	enable('batt_select_weather_file_forecast_pvs', forecast_enable);
 	enable('batt_dispatch_pvs_interconnection_limit',pvsmoothing);
 	enable('batt_dispatch_pvs_kf',pvsmoothing);
 	enable('batt_dispatch_pvs_ki',pvsmoothing);
@@ -2048,8 +2004,8 @@ function toggle_dispatch_pvs()
 		value('batt_dispatch_wf_forecast_choice', 2);
 	}
 
-	enable('batt_select_weather_file_forecast_pvs', choice == 1);
-	enable('batt_pvs_user_specified_weather_file', choice == 1);
+//	enable('batt_select_weather_file_forecast_pvs', choice == 1);
+//	enable('batt_pvs_user_specified_weather_file', choice == 1);
 	
 	
 	if (choice == 1)
@@ -2076,6 +2032,34 @@ on_change{ 'batt_dispatch_pvs_ac_lb_enable' } = define () {
 on_change{ 'batt_dispatch_pvs_short_forecast_enable' } = define () {
 	en_sf = value("batt_dispatch_pvs_short_forecast_enable");
 	enable("batt_dispatch_pvs_forecast_shift_periods", en_sf);
+	enable("batt_dispatch_pvs_wf_forecast_choice", en_sf);
+//	enable("batt_select_weather_file_forecast_pvs", en_sf);
+//	enable("batt_pvs_user_specified_weather_file", en_sf);
+	// Turn on/off forecast input
+	choice = value('batt_dispatch_pvs_wf_forecast_choice');
+	if (choice == 0) 
+	{
+		value('batt_dispatch_wf_forecast_choice',0);
+	}
+	elseif (choice == 1) 
+	{
+		// Translate two option radio button to look ahead/look behind/custom
+		value('batt_dispatch_wf_forecast_choice', 2);
+	}
+
+	enable('batt_select_weather_file_forecast_pvs', choice == 1);
+	enable('batt_pvs_user_specified_weather_file', choice == 1);
+	
+	
+	if (choice == 1)
+	{
+		file = ${batt_pvs_user_specified_weather_file};
+		run_forecast(file);
+	}
+	else {
+		${batt_pv_ac_forecast} = [0];
+		${batt_pv_clipping_forecast} = [0];
+	}
 };
 
 on_change{ 'btn_BDPVS_reset' } = define () {
@@ -2091,7 +2075,30 @@ on_change{ 'batt_dispatch_pvs_timestep_multiplier' } = define () {
 };
 
 on_change{ 'batt_dispatch_pvs_wf_forecast_choice' } = define () {
-	toggle_dispatch_pvs();
+	choice = value('batt_dispatch_pvs_wf_forecast_choice');
+	if (choice == 0) 
+	{
+		value('batt_dispatch_wf_forecast_choice',0);
+	}
+	elseif (choice == 1) 
+	{
+		// Translate two option radio button to look ahead/look behind/custom
+		value('batt_dispatch_wf_forecast_choice', 2);
+	}
+
+	enable('batt_select_weather_file_forecast_pvs', choice == 1);
+	enable('batt_pvs_user_specified_weather_file', choice == 1);
+	
+	
+	if (choice == 1)
+	{
+		file = ${batt_pvs_user_specified_weather_file};
+		run_forecast(file);
+	}
+	else {
+		${batt_pv_ac_forecast} = [0];
+		${batt_pv_clipping_forecast} = [0];
+	}
 };
 
 on_change{'batt_select_weather_file_forecast_pvs'}=define()
