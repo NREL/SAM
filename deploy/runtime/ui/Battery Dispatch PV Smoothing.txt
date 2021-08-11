@@ -1949,7 +1949,7 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-5314
+4398
 on_load{'Battery Dispatch PV Smoothing'} = define() {
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
@@ -1993,31 +1993,7 @@ function toggle_dispatch_pvs()
 	enable('btn_BDPVS_reset',pvsmoothing);
 	
 	// Turn on/off forecast input
-	choice = value('batt_dispatch_pvs_wf_forecast_choice');
-	if (choice == 0) 
-	{
-		value('batt_dispatch_wf_forecast_choice',0);
-	}
-	elseif (choice == 1) 
-	{
-		// Translate two option radio button to look ahead/look behind/custom
-		value('batt_dispatch_wf_forecast_choice', 2);
-	}
-
-//	enable('batt_select_weather_file_forecast_pvs', choice == 1);
-//	enable('batt_pvs_user_specified_weather_file', choice == 1);
-	
-	
-	if (choice == 1)
-	{
-		file = ${batt_pvs_user_specified_weather_file};
-		run_forecast(file);
-	}
-	else {
-		${batt_pv_ac_forecast} = [0];
-		${batt_pv_clipping_forecast} = [0];
-	}
-	
+	update_forecast_choice_pvs();
 }
 on_change{ 'batt_dispatch_pvs_ac_ub_enable' } = define () {
 	en_ub = value("batt_dispatch_pvs_ac_ub_enable");
@@ -2033,33 +2009,7 @@ on_change{ 'batt_dispatch_pvs_short_forecast_enable' } = define () {
 	en_sf = value("batt_dispatch_pvs_short_forecast_enable");
 	enable("batt_dispatch_pvs_forecast_shift_periods", en_sf);
 	enable("batt_dispatch_pvs_wf_forecast_choice", en_sf);
-//	enable("batt_select_weather_file_forecast_pvs", en_sf);
-//	enable("batt_pvs_user_specified_weather_file", en_sf);
-	// Turn on/off forecast input
-	choice = value('batt_dispatch_pvs_wf_forecast_choice');
-	if (choice == 0) 
-	{
-		value('batt_dispatch_wf_forecast_choice',0);
-	}
-	elseif (choice == 1) 
-	{
-		// Translate two option radio button to look ahead/look behind/custom
-		value('batt_dispatch_wf_forecast_choice', 2);
-	}
-
-	enable('batt_select_weather_file_forecast_pvs', choice == 1);
-	enable('batt_pvs_user_specified_weather_file', choice == 1);
-	
-	
-	if (choice == 1)
-	{
-		file = ${batt_pvs_user_specified_weather_file};
-		run_forecast(file);
-	}
-	else {
-		${batt_pv_ac_forecast} = [0];
-		${batt_pv_clipping_forecast} = [0];
-	}
+	update_forecast_choice_pvs();
 };
 
 on_change{ 'btn_BDPVS_reset' } = define () {
@@ -2075,6 +2025,18 @@ on_change{ 'batt_dispatch_pvs_timestep_multiplier' } = define () {
 };
 
 on_change{ 'batt_dispatch_pvs_wf_forecast_choice' } = define () {
+	update_forecast_choice_pvs();
+};
+
+on_change{'batt_select_weather_file_forecast_pvs'}=define()
+{
+	file = choose_file( "", 'Choose a weather file', 
+			'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');
+	${batt_pvs_user_specified_weather_file} = file;
+	run_forecast(file);
+};
+
+function update_forecast_choice_pvs() {
 	choice = value('batt_dispatch_pvs_wf_forecast_choice');
 	if (choice == 0) 
 	{
@@ -2092,19 +2054,16 @@ on_change{ 'batt_dispatch_pvs_wf_forecast_choice' } = define () {
 	
 	if (choice == 1)
 	{
-		file = ${batt_pvs_user_specified_weather_file};
-		run_forecast(file);
+		ac_forecast = value("batt_pv_ac_forecast");
+		clipping_forecast = value("batt_pv_clipping_forecast");
+		logmsg('batt_pv_ac_forecast length ' + #ac_forecast + ' clipping forecast length ' + #clipping_forecast);
+		if (#ac_forecast <= 1 || #clipping_forecast <= 1) {
+			file = ${batt_pvs_user_specified_weather_file};
+			run_forecast(file);
+		}
 	}
 	else {
 		${batt_pv_ac_forecast} = [0];
 		${batt_pv_clipping_forecast} = [0];
 	}
-};
-
-on_change{'batt_select_weather_file_forecast_pvs'}=define()
-{
-	file = choose_file( "", 'Choose a weather file', 
-			'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');
-	${batt_pvs_user_specified_weather_file} = file;
-	run_forecast(file);
-};
+}
