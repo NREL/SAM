@@ -1,5 +1,5 @@
 1
-1190
+1191
 A_aperture
 1
 2
@@ -3673,6 +3673,12 @@ csp_dtr_sca_w_profile_4
 1
 1
 6
+csp_financial_model
+1
+1
+1
+1
+1
 cspdtr_loop_hce_heat_loss
 1
 1
@@ -6196,12 +6202,6 @@ radiator_unitcost
 1
 1
 13
-radio_sm_or_area
-1
-1
-1
-1
-0
 real_discount_rate
 1
 1
@@ -7512,6 +7512,12 @@ ui_wacc
 1
 1
 7.10145
+use_solar_mult_or_aperture_area
+1
+1
+1
+1
+0
 use_specific_weather_file
 1
 1

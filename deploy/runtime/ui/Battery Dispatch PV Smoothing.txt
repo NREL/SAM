@@ -1,0 +1,1827 @@
+Battery Dispatch PV Smoothing
+1051
+354
+27
+Numeric
+
+1
+17
+Name
+5
+23
+batt_dispatch_pvs_ac_lb
+X
+3
+399
+Y
+3
+252
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+-0.1
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+30
+batt_dispatch_pvs_ac_lb_enable
+X
+3
+54
+Y
+3
+246
+Width
+3
+212
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+21
+Enable AC lower bound
+State
+2
+1
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+batt_dispatch_pvs_ac_ub
+X
+3
+399
+Y
+3
+225
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+1.05
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+30
+batt_dispatch_pvs_ac_ub_enable
+X
+3
+54
+Y
+3
+225
+Width
+3
+212
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+21
+Enable AC upper bound
+State
+2
+1
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+32
+batt_dispatch_pvs_battery_energy
+X
+3
+882
+Y
+3
+60
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0.2
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+31
+batt_dispatch_pvs_battery_power
+X
+3
+882
+Y
+3
+87
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0.2
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+29
+batt_dispatch_pvs_battery_rte
+X
+3
+882
+Y
+3
+114
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0.9
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+36
+batt_dispatch_pvs_curtail_as_control
+X
+3
+54
+Y
+3
+288
+Width
+3
+212
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+26
+Correct up-ramp violations
+State
+2
+1
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+38
+batt_dispatch_pvs_curtail_if_violation
+X
+3
+54
+Y
+3
+309
+Width
+3
+212
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+18
+Curtail violations
+State
+2
+1
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+40
+batt_dispatch_pvs_forecast_shift_periods
+X
+3
+399
+Y
+3
+279
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+3
+Mode
+3
+0
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+39
+batt_dispatch_pvs_interconnection_limit
+X
+3
+882
+Y
+3
+168
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+20
+batt_dispatch_pvs_kf
+X
+3
+879
+Y
+3
+288
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0.3
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+20
+batt_dispatch_pvs_ki
+X
+3
+879
+Y
+3
+261
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+1.8
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+20
+batt_dispatch_pvs_kp
+X
+3
+879
+Y
+3
+234
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+1.2
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+26
+batt_dispatch_pvs_max_ramp
+X
+3
+225
+Y
+3
+141
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+10
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+27
+batt_dispatch_pvs_nameplate
+X
+3
+882
+Y
+3
+141
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+31
+batt_dispatch_pvs_ramp_interval
+X
+3
+225
+Y
+3
+114
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+10
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+39
+batt_dispatch_pvs_short_forecast_enable
+X
+3
+54
+Y
+3
+267
+Width
+3
+212
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+32
+Enable short-term power forecast
+State
+2
+1
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+26
+batt_dispatch_pvs_soc_rest
+X
+3
+225
+Y
+3
+168
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+50
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+37
+batt_dispatch_pvs_timestep_multiplier
+X
+3
+225
+Y
+3
+87
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+3
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+29
+batt_dispatch_pvs_wf_timestep
+X
+3
+225
+Y
+3
+60
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+10
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+15
+btn_BDPVS_reset
+X
+3
+750
+Y
+3
+315
+Width
+3
+188
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+17
+Reset to Defaults
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+17
+lbl_BDPVS_warning
+X
+3
+393
+Y
+3
+63
+Width
+3
+300
+Height
+3
+78
+Tool Tip
+5
+0
+Caption
+5
+141
+The ramp interval is not valid. PV smoothing requires a weather file time step of 15 minutes or less and ramp interval of 30 minutes or less.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+639
+Y
+3
+219
+Width
+3
+374
+Height
+3
+125
+Tool Tip
+5
+0
+Caption
+5
+11
+Multipliers
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+object 419
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+349
+Tool Tip
+5
+0
+Caption
+5
+12
+PV Smoothing
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+15
+Y
+3
+21
+Width
+3
+903
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+142
+PV smoothing dispatches the battery to limit power ramp rates during periods of intermittent clouds to "smooth" the photovoltaic array output.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 714
+X
+3
+345
+Y
+3
+171
+Width
+3
+410
+Height
+3
+41
+Tool Tip
+5
+0
+Caption
+5
+96
+For PV smoothing, nameplate is the minimum of the system AC capacity and the interconnect limit.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+22
+batt_dispatch_pvs_ac_lb
+3
+1
+AC lower bound 
+ fraction of nameplate
+Battery Dispatch PV Smoothing
+0
+2
+1
+1
+1
+1
+-0.1
+Numeric
+batt_dispatch_pvs_ac_lb_enable
+3
+1
+Enable AC lower bound
+0/1 
+Battery Dispatch PV Smoothing
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_pvs_ac_ub
+3
+1
+AC upper bound
+ fraction of nameplate
+Battery Dispatch PV Smoothing
+0
+2
+1
+1
+1
+1
+1.05
+Numeric
+batt_dispatch_pvs_ac_ub_enable
+3
+1
+Enable AC upper bound
+0/1
+Battery Dispatch PV Smoothing
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_pvs_battery_energy
+3
+1
+Battery energy
+ kWhac
+Battery Dispatch PV Smoothing
+0
+8
+1
+1
+1
+1
+0
+Numeric
+batt_dispatch_pvs_battery_power
+3
+1
+Battery power
+kWac
+Battery Dispatch PV Smoothing
+0
+8
+1
+1
+1
+1
+0
+Numeric
+batt_dispatch_pvs_battery_rte
+3
+1
+Battery round trip efficiency
+ %
+Battery Dispatch PV Smoothing
+0
+8
+1
+1
+1
+1
+0
+Numeric
+batt_dispatch_pvs_curtail_as_control
+3
+1
+Correct up-ramp violations
+0/1 
+Battery Dispatch PV Smoothing
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_pvs_curtail_if_violation
+3
+1
+Curtail violations
+0/1 
+Battery Dispatch PV Smoothing
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_pvs_forecast_shift_periods
+3
+1
+Forecasting window 
+ periods of ramp intervals
+Battery Dispatch PV Smoothing
+0
+2
+1
+1
+1
+1
+3
+Numeric
+batt_dispatch_pvs_interconnection_limit
+3
+1
+Interconnection limit
+kWac
+Battery Dispatch PV Smoothing
+0
+8
+1
+1
+1
+1
+0
+Numeric
+batt_dispatch_pvs_kf
+3
+1
+Forecast accumulation error multiplier (kf)
+ 
+Battery Dispatch PV Smoothing
+0
+2
+1
+1
+1
+1
+0.3
+Numeric
+batt_dispatch_pvs_ki
+3
+1
+Return to rest SOC multiplier (ki)
+ 
+Battery Dispatch PV Smoothing
+0
+2
+1
+1
+1
+1
+1.8
+Numeric
+batt_dispatch_pvs_kp
+3
+1
+Track PV power multiplier (kp)
+ 
+Battery Dispatch PV Smoothing
+0
+2
+1
+1
+1
+1
+1.2
+Numeric
+batt_dispatch_pvs_max_ramp
+3
+1
+Maximum ramp rate
+ % of nameplate per ramp interval
+Battery Dispatch PV Smoothing
+0
+2
+1
+1
+1
+1
+10
+Numeric
+batt_dispatch_pvs_nameplate
+3
+1
+Nameplate for PV smoothing
+kWac
+Battery Dispatch PV Smoothing
+0
+8
+1
+1
+1
+1
+0
+Numeric
+batt_dispatch_pvs_nameplate_ac
+3
+1
+Power scaling factor
+kWac
+Battery Dispatch PV Smoothing
+0
+8
+1
+1
+1
+1
+0
+Default
+batt_dispatch_pvs_ramp_interval
+3
+1
+ Ramp interval
+ minutes
+Battery Dispatch PV Smoothing
+0
+8
+1
+1
+1
+1
+10
+Numeric
+batt_dispatch_pvs_short_forecast_enable
+3
+1
+Enable short-term power forecast 
+0/1 
+Battery Dispatch PV Smoothing
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_pvs_soc_rest
+3
+1
+Battery resting SOC
+%
+Battery Dispatch PV Smoothing
+0
+2
+1
+1
+1
+1
+50
+Numeric
+batt_dispatch_pvs_timestep_multiplier
+3
+1
+Ramp timestep multiplier
+ 
+Battery Dispatch PV Smoothing
+0
+2
+1
+1
+1
+1
+3
+Numeric
+batt_dispatch_pvs_wf_timestep
+3
+1
+Weather file time step
+minutes
+Battery Dispatch PV Smoothing
+0
+8
+1
+1
+1
+1
+60
+Numeric
+
+1546
+equations{'batt_dispatch_pvs_wf_timestep'} = define() {
+	return(${ui_step_minutes});
+};
+
+equations{'batt_dispatch_pvs_ramp_interval'} = define() {
+	return(${batt_dispatch_pvs_wf_timestep}*${batt_dispatch_pvs_timestep_multiplier});
+};
+
+equations{'batt_dispatch_pvs_battery_energy'} = define() {
+	return(${batt_computed_bank_capacity});
+};
+
+equations{'batt_dispatch_pvs_battery_power'} = define() {
+	return(${batt_power_charge_max_kwac});
+};
+
+equations{'batt_dispatch_pvs_interconnection_limit'} = define() {
+	return(${grid_interconnection_limit_kwac});
+};
+
+equations{'batt_dispatch_pvs_nameplate'} = define() {
+	if (technology() != "Generic Battery" && technology() != "Fuel Cell") {
+		return(${total_inverter_capacity});// todo - generic? PV array only?
+	}
+	else {
+		return ${system_capacity};
+	}
+};
+
+// todo - move to compute module?
+equations{'batt_dispatch_pvs_nameplate_ac'} = define() {
+	if (technology() != "Generic Battery" && technology() != "Fuel Cell") {
+		if (${total_inverter_capacity}>${grid_interconnection_limit_kwac}) 
+			return ${grid_interconnection_limit_kwac};
+		else
+			return ${total_inverter_capacity};
+	}
+	else {
+		if (${system_capacity}>${grid_interconnection_limit_kwac})
+			return ${grid_interconnection_limit_kwac};
+		else
+			return ${system_capacity};
+		}
+};
+
+
+equations{'batt_dispatch_pvs_battery_rte'} = define() {
+		if (${batt_ac_or_dc} == 1) {
+			return (${batt_ac_dc_efficiency}*${batt_dc_ac_efficiency}/100.0);
+		}
+		else {
+			return (${batt_dc_dc_efficiency}*${batt_inverter_efficiency_cutoff}/100.0);
+		}
+	};
+
+2651
+on_load{'Battery Dispatch PV Smoothing'} = define() {
+	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
+	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
+	on_change{'batt_dispatch_pvs_ac_lb_enable'}();
+	on_change{'batt_dispatch_pvs_short_forecast_enable'}();
+	value('batt_dispatch_choice', 5);
+	toggle_dispatch_pvs(); // do not enable unless mode == 5
+};
+
+function toggle_dispatch_pvs()
+{
+	mode = ${batt_dispatch_choice};
+	pvsmoothing = true;
+//	pvsmoothing = (mode == 5 && technology() == "PV Battery");
+	enable('batt_dispatch_pvs_ac_lb',pvsmoothing);
+	enable('batt_dispatch_pvs_ac_lb_enable',pvsmoothing);
+	enable('batt_dispatch_pvs_ac_ub',pvsmoothing);
+	enable('batt_dispatch_pvs_ac_ub_enable',pvsmoothing);
+	enable('batt_dispatch_pvs_battery_energy',pvsmoothing);
+	enable('batt_dispatch_pvs_battery_power',pvsmoothing);
+	enable('batt_dispatch_pvs_battery_rte',pvsmoothing);
+	enable('batt_dispatch_pvs_curtail_as_control',pvsmoothing);
+	enable('batt_dispatch_pvs_curtail_if_violation',pvsmoothing);
+	enable('batt_dispatch_pvs_forecast_shift_periods',pvsmoothing);
+	enable('batt_dispatch_pvs_interconnection_limit',pvsmoothing);
+	enable('batt_dispatch_pvs_kf',pvsmoothing);
+	enable('batt_dispatch_pvs_ki',pvsmoothing);
+	enable('batt_dispatch_pvs_kp',pvsmoothing);
+	enable('batt_dispatch_pvs_max_ramp',pvsmoothing);
+	enable('batt_dispatch_pvs_nameplate',pvsmoothing);
+	enable('batt_dispatch_pvs_nameplate_ac',pvsmoothing);
+	enable('batt_dispatch_pvs_ramp_interval',pvsmoothing);
+	enable('batt_dispatch_pvs_short_forecast_enable',pvsmoothing);
+	enable('batt_dispatch_pvs_soc_rest',pvsmoothing);
+	enable('batt_dispatch_pvs_timestep_multiplier',pvsmoothing);
+	enable('batt_dispatch_pvs_wf_timestep',pvsmoothing);
+	enable('btn_BDPVS_reset',pvsmoothing);
+}
+on_change{ 'batt_dispatch_pvs_ac_ub_enable' } = define () {
+	en_ub = value("batt_dispatch_pvs_ac_ub_enable");
+	enable("batt_dispatch_pvs_ac_ub", en_ub);
+};
+
+on_change{ 'batt_dispatch_pvs_ac_lb_enable' } = define () {
+	en_lb = value("batt_dispatch_pvs_ac_lb_enable");
+	enable("batt_dispatch_pvs_ac_lb", en_lb);
+};
+
+on_change{ 'batt_dispatch_pvs_short_forecast_enable' } = define () {
+	en_sf = value("batt_dispatch_pvs_short_forecast_enable");
+	enable("batt_dispatch_pvs_forecast_shift_periods", en_sf);
+};
+
+on_change{ 'btn_BDPVS_reset' } = define () {
+	value( 'batt_dispatch_pvs_kp', 1.2 );
+	value( 'batt_dispatch_pvs_ki', 1.8 );
+	value( 'batt_dispatch_pvs_kf', 0.3 );
+};
+
+on_change{ 'batt_dispatch_pvs_timestep_multiplier' } = define () {
+	ramp_interval = to_real(value("batt_dispatch_pvs_ramp_interval"));
+	show("lbl_BDPVS_warning", (ramp_interval > 30.0 || ramp_interval < 1));
+	refresh();
+};

@@ -3807,12 +3807,6 @@ q_pb_design
 1
 1
 5.18791
-radio_sm_or_area
-1
-1
-1
-1
--1
 rec_qf_delay
 1
 1
@@ -3936,8 +3930,7 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-48
-tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
+0
 specified_q_dot_rec_des
 1
 1
@@ -4608,6 +4601,12 @@ ui_wacc
 1
 1
 0.00487805
+use_solar_mult_or_aperture_area
+1
+1
+1
+1
+-1
 use_specific_weather_file
 1
 1

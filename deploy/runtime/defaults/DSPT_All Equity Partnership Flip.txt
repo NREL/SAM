@@ -9007,8 +9007,7 @@ daggett_ca_34.865371_-116.783023_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
+0
 solution_mode_message
 1
 4

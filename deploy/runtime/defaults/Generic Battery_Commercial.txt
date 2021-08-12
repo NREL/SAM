@@ -1,5 +1,5 @@
 1
-484
+485
 LeadAcid_q10
 1
 1
@@ -788,7 +788,7 @@ batt_thermal_choice
 1
 1
 1
-1
+0
 batt_time_capacity
 1
 1
@@ -2337,7 +2337,7 @@ property_assessed_value
 1
 1
 1
-1.55131e+06
+1551310
 property_tax_rate
 1
 1
@@ -2583,7 +2583,7 @@ total_direct_cost
 1
 1
 1
-1.36679e+06
+1366790
 total_indirect_cost
 1
 1
@@ -2595,7 +2595,7 @@ total_installed_cost
 1
 1
 1
-1.55131e+06
+1551310
 total_system_indirect_cost
 1
 1
@@ -2619,13 +2619,19 @@ ui_net_capital_cost
 1
 1
 1
-1.55131e+06
+1551310
 ui_pv_capacity
 1
 1
 1
 1
 215
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1
