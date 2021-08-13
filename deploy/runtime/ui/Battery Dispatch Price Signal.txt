@@ -1,7 +1,7 @@
 Battery Dispatch Price Signal
-1100
-530
-17
+1092
+572
+19
 SchedNumeric
 
 1
@@ -12,10 +12,10 @@ Name
 batt_cycle_cost
 X
 3
-336
+339
 Y
 3
-486
+513
 Width
 3
 114
@@ -54,10 +54,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-336
+339
 Y
 3
-459
+486
 Width
 3
 198
@@ -88,10 +88,10 @@ Name
 batt_cycle_cost_description
 X
 3
-18
+21
 Y
 3
-420
+447
 Width
 3
 918
@@ -187,7 +187,7 @@ X
 15
 Y
 3
-174
+171
 Width
 3
 918
@@ -232,10 +232,10 @@ Name
 batt_cycle_costs_label
 X
 3
-18
+21
 Y
 3
-396
+423
 Width
 3
 920
@@ -267,14 +267,54 @@ RadioChoice
 11
 Name
 5
-36
-batt_dispatch_wf_forecast_choice_psd
+35
+batt_dispatch_load_escal_choice_psd
+X
+3
+315
+Y
+3
+375
+Width
+3
+180
+Height
+3
+41
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Match load escalation
+Enter custom escalation
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+RadioChoice
+
+1
+11
+Name
+5
+38
+batt_dispatch_load_forecast_choice_psd
 X
 3
 15
 Y
 3
-252
+255
 Width
 3
 300
@@ -302,14 +342,57 @@ Horizontal
 TabOrder
 3
 4294967295
+SchedNumeric
+
+1
+12
+Name
+5
+37
+batt_dispatch_load_forecast_escal_psd
+X
+3
+651
+Y
+3
+381
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Label
+5
+5
+Value
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+110
+Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
+TabOrder
+3
+4294967295
 RadioChoice
 
 1
 11
 Name
 5
-38
-batt_dispatch_wf_forecast_choice_psd13
+36
+batt_dispatch_wf_forecast_choice_psd
 X
 3
 15
@@ -579,14 +662,14 @@ DataArray
 10
 Name
 5
-14
-load_user_data
+27
+load_user_forecast_data_psd
 X
 3
-126
+138
 Y
 3
-369
+378
 Width
 3
 119
@@ -601,8 +684,8 @@ Mode
 1
 Label
 5
-15
-Load power (kW)
+24
+Forecast load power (kW)
 Description
 5
 164
@@ -629,7 +712,7 @@ Width
 1042
 Height
 3
-516
+544
 Tool Tip
 5
 0
@@ -689,7 +772,7 @@ AlignTop
 2
 1
 
-4
+8
 batt_cycle_cost
 3
 2
@@ -719,6 +802,48 @@ Calculate automatically|Enter penalty
 1
 0
 ListBox
+batt_dispatch_load_escal_choice_psd
+3
+1
+ 
+ 
+Battery Dispatch
+0
+0
+1
+1
+1
+1
+0
+RadioChoice
+batt_dispatch_load_forecast_choice_psd
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_load_forecast_escal_psd
+3
+2
+ Load forecast growth rate
+ %/yr
+ 
+0
+0
+1
+2
+1
+1
+0
+SchedNumeric
 batt_dispatch_wf_forecast_choice_psd
 3
 1
@@ -745,9 +870,23 @@ Battery Dispatch
 4
 0
 Default
+load_user_forecast_data_psd
+3
+2
+Forecast load power
+kW
+Battery Dispatch
+0
+0
+1
+2
+1
+1
+0
+DataArray
 
 0
-1591
+2581
 on_load{'Battery Dispatch Price Signal'}=define()
 {	
 	psd_forecast_choice();
@@ -786,6 +925,21 @@ on_change{'batt_dispatch_wf_forecast_choice_psd'} = define()
 	psd_forecast_choice() ;
 };
 
+on_change{'batt_dispatch_load_forecast_choice_psd'} = define()
+{
+	psd_forecast_choice();
+};
+
+on_change{'batt_dispatch_load_escal_choice_psd'} = define()
+{
+	psd_forecast_choice();
+};
+
+on_change{'load_user_forecast_data_psd'} = define()
+{
+	batt_load_ac_forecast = ${load_user_forecast_data_psd};
+};
+
 function psd_forecast_choice() 
 {
 	value('batt_dispatch_choice', 4);
@@ -803,11 +957,31 @@ function psd_forecast_choice()
 		clipping_forecast = value("batt_pv_clipping_forecast");
 		if (#ac_forecast <= 1 || #clipping_forecast <= 1) { 
 			file = ${batt_user_specified_weather_file_psd};
-			run_forecast(file);
+			if (file != "") {
+				run_forecast(file);
+			}
 		}
 	}
 	else {
 		${batt_pv_ac_forecast} = [0];
 		${batt_pv_clipping_forecast} = [0];
+	}
+	
+	load_choice = value("batt_dispatch_load_forecast_choice_psd");
+	enable('load_user_forecast_data_psd', load_choice == 2);
+	enable('batt_dispatch_load_escal_choice_psd', load_choice == 2);
+	enable('batt_dispatch_load_forecast_escal_psd', load_choice == 2 && ${batt_dispatch_load_escal_choice_psd} == 1);
+
+	value("batt_dispatch_load_forecast_choice", load_choice);
+	
+	if ("load_choice" == 2) {
+		batt_load_ac_forecast = ${load_user_forecast_data_psd};
+		
+		if ("batt_dispatch_load_escal_choice_psd" == 1) {
+			batt_load_ac_forecast_escalation = ${batt_dispatch_load_forecast_escal_psd};
+		}
+		else {
+			batt_load_ac_forecast_escalation = ${load_escalation};
+		}
 	}
 }

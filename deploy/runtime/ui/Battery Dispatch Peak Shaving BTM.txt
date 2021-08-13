@@ -93,7 +93,7 @@ X
 108
 Y
 3
-177
+174
 Width
 3
 828
@@ -298,12 +298,12 @@ Battery Dispatch
 1
 0
 Default
-batt_dispatch_wf_forecast_choice
+batt_dispatch_load_forecast_choice_peak_shaving
 3
 1
-Weather forecast choice for automatic dispatch
  
-Battery Dispatch
+ 
+ 
 0
 0
 1
@@ -341,7 +341,7 @@ One day look ahead (perfect)|One day look behind|Custom forecast
 Default
 
 0
-1329
+1356
 on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	
 	on_change{'peak_shaving_batt_dispatch_choice'};
@@ -380,7 +380,9 @@ function peak_shaving_choice()
 		clipping_forecast = value("batt_pv_clipping_forecast");
 		if (#ac_forecast <= 1 || #clipping_forecast <= 1) { 
 			file = ${batt_user_specified_weather_file_peak_shaving};
-			run_forecast(file);
+			if (file != "") {
+				run_forecast(file);
+			}
 		}
 	}
 	else {
