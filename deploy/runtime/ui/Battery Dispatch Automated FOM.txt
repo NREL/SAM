@@ -684,7 +684,7 @@ Battery Dispatch
 TextEntry
 
 0
-3780
+3805
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
@@ -741,7 +741,9 @@ function toggle_dispatch_fom_automated()
 		clipping_forecast = value("batt_pv_clipping_forecast");
 		if (#ac_forecast <= 1 || #clipping_forecast <= 1) { 
 			file = ${batt_user_specified_weather_file};
-			run_forecast(file);
+			if (file != "") {
+				run_forecast(file);
+			}
 		}
 	}
 	else {
@@ -803,7 +805,7 @@ function run_forecast(file)
 	logmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));
 	logmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));
 
-	status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=false, 'hold_dialog'=false});
+	status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=true, 'hold_dialog'=true});
 	
 	if (status != 0)
 		logmsg('Battery forecast run failed with error: ' + status);
