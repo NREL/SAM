@@ -341,7 +341,7 @@ One day look ahead (perfect)|One day look behind|Custom forecast
 Default
 
 0
-1164
+1329
 on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	
 	on_change{'peak_shaving_batt_dispatch_choice'};
@@ -376,8 +376,12 @@ function peak_shaving_choice()
 	value('batt_dispatch_wf_forecast_choice', choice);
 	if (choice == 2)
 	{
-		file = ${batt_user_specified_weather_file_peak_shaving};
-		run_forecast(file);
+		ac_forecast = value("batt_pv_ac_forecast");
+		clipping_forecast = value("batt_pv_clipping_forecast");
+		if (#ac_forecast <= 1 || #clipping_forecast <= 1) { 
+			file = ${batt_user_specified_weather_file_peak_shaving};
+			run_forecast(file);
+		}
 	}
 	else {
 		${batt_pv_ac_forecast} = [0];

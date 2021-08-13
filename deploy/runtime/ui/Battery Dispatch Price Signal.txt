@@ -1,7 +1,7 @@
 Battery Dispatch Price Signal
-1096
-422
-11
+1100
+530
+17
 SchedNumeric
 
 1
@@ -12,10 +12,10 @@ Name
 batt_cycle_cost
 X
 3
-333
+336
 Y
 3
-231
+486
 Width
 3
 114
@@ -54,10 +54,10 @@ Name
 batt_cycle_cost_choice
 X
 3
-333
+336
 Y
 3
-204
+459
 Width
 3
 198
@@ -88,10 +88,10 @@ Name
 batt_cycle_cost_description
 X
 3
-15
+18
 Y
 3
-165
+420
 Width
 3
 918
@@ -136,10 +136,58 @@ Name
 batt_cycle_cost_description6
 X
 3
+18
+Y
+3
+345
+Width
+3
+918
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+60
+For the Dispatch to Custom Load option, use the input below.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+30
+batt_cycle_cost_description615
+X
+3
 15
 Y
 3
-273
+174
 Width
 3
 918
@@ -184,10 +232,10 @@ Name
 batt_cycle_costs_label
 X
 3
-15
+18
 Y
 3
-141
+396
 Width
 3
 920
@@ -226,7 +274,48 @@ X
 15
 Y
 3
-69
+252
+Width
+3
+300
+Height
+3
+72
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+Perfect look ahead
+One day look behind
+Look ahead to custom load
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+RadioChoice
+
+1
+11
+Name
+5
+38
+batt_dispatch_wf_forecast_choice_psd13
+X
+3
+15
+Y
+3
+87
 Width
 3
 300
@@ -267,7 +356,7 @@ X
 15
 Y
 3
-312
+213
 Width
 3
 90
@@ -297,7 +386,7 @@ X
 105
 Y
 3
-312
+213
 Width
 3
 828
@@ -341,7 +430,85 @@ X
 12
 Y
 3
+237
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
 255
+Caption
+5
+21
+Load Forecast Horizon
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+20
+batt_weather_label12
+X
+3
+15
+Y
+3
+69
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+29
+Weather File Forecast Horizon
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+20
+batt_weather_label14
+X
+3
+12
+Y
+3
+156
 Width
 3
 920
@@ -367,6 +534,82 @@ Custom Weather File for Forecast
 Bold
 2
 1
+Divider
+
+1
+10
+Name
+5
+19
+batt_weather_label2
+X
+3
+15
+Y
+3
+327
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+24
+Custom Load for Forecast
+Bold
+2
+1
+DataArray
+
+1
+10
+Name
+5
+14
+load_user_data
+X
+3
+126
+Y
+3
+369
+Width
+3
+119
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+15
+Load power (kW)
+Description
+5
+164
+The electric load is specified as the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour, in kWh.
+TabOrder
+3
+3
 GroupBox
 
 1
@@ -386,7 +629,7 @@ Width
 1042
 Height
 3
-358
+516
 Tool Tip
 5
 0
@@ -407,10 +650,10 @@ Name
 object 7
 X
 3
-15
+12
 Y
 3
-21
+18
 Width
 3
 1001
@@ -504,7 +747,7 @@ Battery Dispatch
 Default
 
 0
-1426
+1591
 on_load{'Battery Dispatch Price Signal'}=define()
 {	
 	psd_forecast_choice();
@@ -556,8 +799,12 @@ function psd_forecast_choice()
 	value('batt_dispatch_wf_forecast_choice', choice);
 	if (choice == 2)
 	{
-		file = ${batt_user_specified_weather_file_psd};
-		run_forecast(file);
+		ac_forecast = value("batt_pv_ac_forecast");
+		clipping_forecast = value("batt_pv_clipping_forecast");
+		if (#ac_forecast <= 1 || #clipping_forecast <= 1) { 
+			file = ${batt_user_specified_weather_file_psd};
+			run_forecast(file);
+		}
 	}
 	else {
 		${batt_pv_ac_forecast} = [0];
