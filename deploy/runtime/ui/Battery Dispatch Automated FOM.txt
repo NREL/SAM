@@ -656,7 +656,7 @@ Battery Dispatch
 TextEntry
 
 0
-2583
+2609
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
@@ -713,7 +713,9 @@ function toggle_dispatch_fom_automated()
 		clipping_forecast = value("batt_pv_clipping_forecast");
 		if (#ac_forecast <= 1 || #clipping_forecast <= 1) { 
 			file = ${batt_user_specified_weather_file};
-			run_forecast(file);
+			if (file != "") {
+				run_forecast(file);
+			}
 		}
 	}
 	else {
@@ -752,4 +754,3 @@ function enable_non_manual_inputs_fom(on_off)
 	enable('batt_dispatch_auto_can_charge', on_off);
 	//enable('batt_dispatch_auto_can_clipcharge', value('ui_batt_is_dc'));
 }
-

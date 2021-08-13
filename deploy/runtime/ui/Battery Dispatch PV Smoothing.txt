@@ -1949,7 +1949,7 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-4398
+4425
 on_load{'Battery Dispatch PV Smoothing'} = define() {
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
@@ -2059,7 +2059,9 @@ function update_forecast_choice_pvs() {
 		logmsg('batt_pv_ac_forecast length ' + #ac_forecast + ' clipping forecast length ' + #clipping_forecast);
 		if (#ac_forecast <= 1 || #clipping_forecast <= 1) {
 			file = ${batt_pvs_user_specified_weather_file};
-			run_forecast(file);
+			if (file != "") {
+				run_forecast(file);
+			}
 		}
 	}
 	else {
