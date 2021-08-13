@@ -309,25 +309,26 @@ static void fcall_check_configuration(lk::invoke_t& cxt)
 		wxArrayString finlist = SamApp::Config().GetFinancingForTech(tech);
 		if (finlist.Index(fin) == wxNOT_FOUND) return;
 		cxt.result().empty_vector();
-		//cc->SetConfiguration(tech, fin,true,0); // causing failure
-		/*		wxString config_messages = wxEmptyString;
-		bool bset_config = cc->SetConfiguration(tech, fin, true, &config_messages);
-		if (bset_config)
-			cxt.result().vec_append("Set Configuration success");
-		else
-			cxt.result().vec_append(config_messages);
-			*/
+//		cc->SetConfiguration(tech, fin,true,0); // causing failure
 		cc->SetPageErrors(wxEmptyString);
 		cc->SetSuppressPageErrorsMessageBoxes(true);
+//		wxString config_messages = "";
+//		bool bset_config = cc->SetConfiguration(tech, fin, true, &config_messages);
+//		if (bset_config)
+//			cxt.result().vec_append("Set Configuration success");
+//		else
+//			cxt.result().vec_append(config_messages);
 		auto ccw = SamApp::Window()->GetCurrentCaseWindow();
+		ccw->Freeze();
 		auto pages = ccw->GetInputPages();
 		for (auto& page : pages) {
 			ccw->SwitchToInputPage(page); 
 		}
+		ccw->Thaw();
 		auto page_messages = cc->GetPageErrors();
-//		if (page_messages == wxEmptyString)
-//			cxt.result().vec_append("Input pages on load success");
-//		else 
+		if (page_messages == "")
+			cxt.result().vec_append("Input pages on load success");
+		else 
 			cxt.result().vec_append(page_messages);
 	}
 	else

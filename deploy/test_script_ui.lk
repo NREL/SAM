@@ -11,7 +11,7 @@ if ( !file_num ) {
 outln('writing to output file: ' + output_file );
 
 outln( 'TECHNOLOGY\tFINANCING\tMESSAGES');
-write_line(file_num,"TECHNOLOGY,FINANCING,ON_LOAD_MESSAGES");
+write_line(file_num,"TECHNOLOGY,FINANCING,CONFIG_MESSAGE,ON_LOAD_MESSAGES");
 query = true; // ask user whether to overwrite each configuration that has a defaults error
 //Close any open projects and create a case to run
 close_project();
@@ -39,13 +39,16 @@ for (t=0; t<#technologies; t++)
 			configs++;
 			
 			//Check that the case and defaults load ok
-			active_case( 'test_case' );
-			//config = configuration(technologies[t], financing[f],true);
-			configuration(technologies[t], financing[f]);
-			input_pages = check_configuration( technologies[t], financing[f]) ;
+			close_project();
+			create_case( technologies[t], financing[f], 'test_case');
 
+			//active_case( 'test_case' );
+			//config = configuration(technologies[t], financing[f],true);
+			//config = configuration(technologies[t], financing[f], true);
+			input_pages = check_configuration( technologies[t], financing[f]) ;
+			config='skipped';
 			outln(input_pages);
-			write_line(file_num,technologies[t] + ',' + financing[f] + ',' + input_pages);
+			write_line(file_num,technologies[t] + ',' + financing[f] + ',' + config + ',' + input_pages);
 		}
 	} // skip DSPT
 }

@@ -846,7 +846,7 @@ Merchant Plant Revenue
 ""
 Default
 
-1087
+1153
 equations{'forecast_price_signal_model'} = define()
 {
 	if (financing() == "Merchant Plant")
@@ -860,6 +860,7 @@ equations{ '$MIMO$ mp check cleared capacity' } = define() {
 	
 	data.analysis_period =  ${analysis_period};
 	data.system_capacity =  ${system_capacity};
+	data.system_use_lifetime_output = ${system_use_lifetime_output};
 	data.mp_enable_energy_market_revenue =  ${mp_enable_energy_market_revenue};
 	data.mp_enable_ancserv1 =  ${mp_enable_ancserv1};
 	data.mp_enable_ancserv2 =  ${mp_enable_ancserv2};
