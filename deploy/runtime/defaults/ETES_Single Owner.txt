@@ -1,5 +1,5 @@
 1
-487
+488
 CT
 1
 1
@@ -1347,6 +1347,12 @@ equip_reserve_depr_sta
 1
 0
 etes_bop_des_calc
+1
+1
+1
+1
+0
+etes_financial_model
 1
 1
 1
