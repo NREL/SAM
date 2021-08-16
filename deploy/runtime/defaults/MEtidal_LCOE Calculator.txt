@@ -1,5 +1,5 @@
 1
-642
+644
 accumulators_cost
 1
 1
@@ -63,51 +63,6 @@ ancillary_marine_systems_cost_total
 ancillary_marine_systems_cost_total_check
 1
 1
-1
-1
-0
-annual_cumulative_energy_distribution
-1
-2
-1
-1
-4.94066e-323
-annual_energy
-1
-1
-1
-1
-59434320
-annual_energy_distribution
-1
-3
-21
-22
-0 0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5 20.5 
-0.25 0 0 0 0 0 0 0 1.752 2.8908 0 0 0 0 0 0 0 0 0 0 0 0 
-0.75 0 0 0 0 5.6064 213.569 965.878 2136.39 1639.7 915.42 399.281 110.201 10.8624 0 0 0 0 0 0 0 0 
-1.25 0 0 0 0 7.884 764.923 7380.74 12176.4 10517.6 6216.62 2612.58 1173.84 485.654 84.6216 19.7976 16.1184 0 0 0 0 0 
-1.75 0 0 0 0 0 303.797 11429.4 21747.8 20883.1 17110.1 8262.17 4171.16 2143.75 719.634 190.092 46.7784 0 0 0 0 0 
-2.25 0 0 0 0 0 0 5270.72 36240.1 27014.4 29230.7 18202.2 7149.3 3841.08 1582.06 618.456 202.531 41.6976 0 0 0 0 
-2.75 0 0 0 0 0 0 1189.61 24756.5 28037.3 29174.5 26488.9 12556.7 5361.12 1771.62 636.502 223.38 61.32 0 0 0 0 
-3.25 0 0 0 0 0 0 0 6326.91 22839.2 20873.9 24981.8 15573.9 7266.42 2433.18 687.047 204.984 84.4464 34.9524 29.0832 0 0 
-3.75 0 0 0 0 0 0 0 925.056 9529.13 11710.9 18013.4 14510.1 7593.87 2890.98 819.936 336.822 110.902 0 0 0 0 
-4.25 0 0 0 0 0 0 0 0 2216.19 4933.81 9480.51 10164.4 6405.49 2650.86 726.642 170.645 140.686 0 0 0 0 
-4.75 0 0 0 0 0 0 0 0 501.072 2004.29 3006.43 5807.88 5068.62 2954.31 895.885 210.59 86.8992 0 0 0 0 
-5.25 0 0 0 0 0 0 0 0 0 751.608 751.608 2755.9 3392.75 2437.03 1081.07 254.215 0 0 0 0 0 
-5.75 0 0 0 0 0 0 0 0 0 0 0 501.072 1753.75 1110.77 915.42 301.694 0 0 0 0 0 
-6.25 0 0 0 0 0 0 0 0 0 0 0 0 751.608 1002.14 427.838 176.251 0 0 0 0 0 
-6.75 0 0 0 0 0 0 0 0 0 0 0 0 0 501.072 493.889 0 0 0 0 0 0 
-7.25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-7.75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-8.25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-8.75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-9.25 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-9.75 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-
-annual_energy_distribution_tidal
-1
-2
 1
 1
 0
@@ -327,6 +282,12 @@ blades_rotor_assembly_cost
 1
 1
 0
+building_facilities_cost
+1
+1
+1
+1
+0
 buoyancy_chamber_cost
 1
 1
@@ -430,12 +391,6 @@ cable_system_overbuild
 1
 1
 10
-capacity_factor
-1
-1
-1
-1
-23.7229
 capex_check
 1
 1
@@ -455,6 +410,12 @@ carrying_cost_during_construction_cost
 1
 0
 cathodic_protection_system_cost
+1
+1
+1
+1
+0
+civil_infrastructure_cost
 1
 1
 1
@@ -688,7 +649,19 @@ detailed_cost_choice_offshore_substation
 1
 1
 0
-detailed_cost_choice_onshore_transmission
+detailed_cost_choice_onshore_infrastructure
+1
+1
+1
+1
+0
+detailed_cost_choice_onshore_substation
+1
+1
+1
+1
+0
+detailed_cost_choice_onshore_transmission_infrastructure
 1
 1
 1
@@ -772,6 +745,36 @@ detailed_cost_choice_unscheduled_maintenance
 1
 1
 0
+detailed_cost_modeled_array_cables
+1
+1
+1
+1
+0
+detailed_cost_modeled_export_cables
+1
+1
+1
+1
+0
+detailed_cost_modeled_offshore_substation
+1
+1
+1
+1
+0
+detailed_cost_modeled_onshore_substation
+1
+1
+1
+1
+0
+detailed_cost_modeled_other_elec_infras
+1
+1
+1
+1
+0
 detailed_design_and_construction_eng_cost
 1
 1
@@ -826,12 +829,6 @@ development_shown
 1
 1
 0
-device_average_power
-1
-1
-1
-1
-72.9542
 device_cost_input
 1
 1
@@ -862,12 +859,6 @@ device_costs_total_mill
 1
 1
 252.416
-device_rated_capacity
-1
-1
-1
-1
-0
 device_rated_power
 1
 1
@@ -951,7 +942,7 @@ elec_infras_cost_total
 1
 1
 1
-0
+8362500
 elec_infras_override
 1
 1
@@ -959,6 +950,12 @@ elec_infras_override
 1
 0
 electrical_conversion_equipment_cost
+1
+1
+1
+1
+0
+electrical_equipment_onshore_substation_cost
 1
 1
 1
@@ -1119,7 +1116,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-0
+3629690
 export_cable_system_cost_total
 1
 1
@@ -1247,6 +1244,12 @@ floating_array
 1
 0
 foundation_assem_install_cost
+1
+1
+1
+1
+0
+foundation_onshore_substation_cost
 1
 1
 1
@@ -1401,7 +1404,7 @@ insurance_during_construction_cost
 1
 1
 1
-3.99177e+06
+4028060
 insurance_during_construction_cost_input
 1
 1
@@ -1413,7 +1416,7 @@ insurance_during_construction_cost_modeled_ui
 1
 1
 1
-3.99177e+06
+4028060
 insurance_during_construction_method
 1
 1
@@ -1425,7 +1428,7 @@ insurance_during_construction_modeled
 1
 1
 1
-3.99177e+06
+4028060
 insurance_operations_cost
 1
 1
@@ -1577,6 +1580,12 @@ ladders_cost
 1
 0
 land_leases_cost
+1
+1
+1
+1
+0
+land_leases_onshore_substation_cost
 1
 1
 1
@@ -1996,6 +2005,24 @@ onshore_electric_infrastructure_assem_install_cost
 1
 1
 0
+onshore_electrical_infrastructure_cost
+1
+1
+1
+1
+0
+onshore_electrical_infrastructure_cost_total
+1
+1
+1
+1
+0
+onshore_electrical_infrastructure_cost_total_check
+1
+1
+1
+1
+0
 onshore_interconnection_rights_cost
 1
 1
@@ -2014,12 +2041,18 @@ onshore_om_facilities_cost
 1
 1
 0
+onshore_substation_assem_install_cost
+1
+1
+1
+1
+0
 onshore_substation_cost
 1
 1
 1
 1
-8362500
+7.121e-307
 onshore_substation_cost_input
 1
 1
@@ -2049,7 +2082,7 @@ onshore_substation_cost_total_check
 1
 1
 1
-0
+8362500
 onshore_substations_cost
 1
 1
@@ -2057,6 +2090,18 @@ onshore_substations_cost
 1
 0
 onshore_transmission_infrastructure_cost
+1
+1
+1
+1
+0
+onshore_transmission_infrastructure_cost_total
+1
+1
+1
+1
+0
+onshore_transmission_infrastructure_cost_total_check
 1
 1
 1
@@ -2230,7 +2275,7 @@ other_elec_infra_cost_modeled
 1
 1
 6014068
-other_elec_infra_cost_total_display
+other_elec_infra_cost_total
 1
 1
 1
@@ -2410,6 +2455,18 @@ other_offshore_substation_cost
 1
 1
 0
+other_onshore_electrical_infrastructure_cost
+1
+1
+1
+1
+0
+other_onshore_substation_cost
+1
+1
+1
+1
+0
 other_onshore_transmission_infrastructure_cost
 1
 1
@@ -2549,6 +2606,12 @@ outfitting_structure_cost_total_check
 1
 0
 overhead_lines_cost
+1
+1
+1
+1
+0
+overhead_transmission_line_cost
 1
 1
 1
@@ -2902,6 +2965,12 @@ project_management_during_development_cost_total_check
 1
 1
 0
+protection_control_cost
+1
+1
+1
+1
+0
 pto_override
 1
 1
@@ -3129,7 +3198,7 @@ site_access_port_staging_cost
 1
 1
 1
-4390942
+4430870
 site_access_port_staging_cost_input
 1
 1
@@ -3147,13 +3216,13 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4390942
+4430870
 site_access_port_staging_cost_modeled_ui
 1
 1
 1
 1
-4390942
+4430870
 site_access_port_staging_cost_total
 1
 1
@@ -3298,6 +3367,12 @@ structural_assembly_cost_total
 1
 1
 0
+structure_foundations_cost
+1
+1
+1
+1
+0
 stuctural_assem_shown
 1
 1
@@ -3398,18 +3473,6 @@ tidal_power_curve
 3.2 1085.37 
 3.3 1055.73 
 
-tidal_power_end_velocity
-1
-1
-1
-1
-0
-tidal_power_start_velocity
-1
-1
-1
-1
-0
 tidal_resource
 1
 3
@@ -3450,58 +3513,6 @@ tidal_resource
 3.2 0 
 3.3 0 
 
-tidal_resource_calc
-1
-3
-34
-2
-0 0.009 
-0.1 0.031 
-0.2 0.042 
-0.3 0.044 
-0.4 0.048 
-0.5 0.049 
-0.6 0.053 
-0.7 0.051 
-0.8 0.052 
-0.9 0.056 
-1 0.05 
-1.1 0.052 
-1.2 0.05 
-1.3 0.048 
-1.4 0.047 
-1.5 0.043 
-1.6 0.042 
-1.7 0.04 
-1.8 0.034 
-1.9 0.031 
-2 0.026 
-2.1 0.023 
-2.2 0.02 
-2.3 0.016 
-2.4 0.013 
-2.5 0.011 
-2.6 0.007 
-2.7 0.005 
-2.8 0.004 
-2.9 0.002 
-3 0.001 
-3.1 0 
-3.2 0 
-3.3 0 
-
-tidal_resource_end_velocity
-1
-1
-1
-1
-0
-tidal_resource_start_velocity
-1
-1
-1
-1
-0
 topside_cost
 1
 1
@@ -3676,6 +3687,12 @@ transmission_charges_rights_cost
 1
 1
 0
+transmission_towers_cost
+1
+1
+1
+1
+0
 transport_power_conversion_chain_cost
 1
 1
@@ -3800,6 +3817,12 @@ underground_cable_system_cost
 1
 1
 0
+underground_cable_system_onshore_electrical_infrastructure_cost
+1
+1
+1
+1
+0
 unscheduled_maintenance_contingency_cost
 1
 1
@@ -3907,56 +3930,8 @@ water_depth
 1
 1
 1
-0
+50
 water_depth_input
-1
-1
-1
-1
-0
-wave_power_end_height
-1
-1
-1
-1
-0
-wave_power_end_period
-1
-1
-1
-1
-0
-wave_power_start_height
-1
-1
-1
-1
-0
-wave_power_start_period
-1
-1
-1
-1
-0
-wave_resource_end_height
-1
-1
-1
-1
-0
-wave_resource_end_period
-1
-1
-1
-1
-0
-wave_resource_start_height
-1
-1
-1
-1
-0
-wave_resource_start_period
 1
 1
 1

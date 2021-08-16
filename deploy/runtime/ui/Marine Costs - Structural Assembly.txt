@@ -3739,7 +3739,7 @@ variable_prime_mover
 0
 Default
 
-8912
+8863
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -3815,7 +3815,6 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_var(obj,'device_rated_power', ${device_rated_power});
 	ssc_var(obj,'system_capacity', ${system_capacity});
 	ssc_var(obj,'devices_per_row', ${devices_per_row});
-	ssc_var(obj,'annual_energy', ${annual_energy});
 	
 	
 	ssc_var(obj,'structural_assembly_cost_method', ${structural_assembly_cost_method});

@@ -3985,7 +3985,7 @@ equations {'operations_override_check'} = define() {
 
 
 
-6165
+6184
 on_load{'Marine Costs - Operations'} = define() {
 	on_change{'itemized_check_operations'};
 	enable_itemized_operations();
@@ -4009,7 +4009,6 @@ function check_override_operations()
 	//enable('operations_cost_method',check_value!=1);
 	//enable('operations_cost',check_value!=1);
 	show('operations_override_label',check_value==1);
-	
 	refresh();
 }
 
@@ -4135,6 +4134,7 @@ function enable_itemized_operations()
 		detailed_cost_annual_leases();
 		detailed_cost_gen_admin();
 	}
+	override_om_cost();
 	refresh();
 	
 	
