@@ -1064,9 +1064,9 @@ System Design
 -999
 Default
 
-6814
+6813
 equations{ 'etes_financial_model' } = define(){
-	if(financing() == "Single Ownder"){
+	if(financing() == "Single Owner"){
 		return 1;
 	}
 	else if(financing() == "Merchant Plant"){
