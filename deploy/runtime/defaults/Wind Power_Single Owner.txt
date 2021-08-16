@@ -1,5 +1,5 @@
 1
-601
+600
 a_error_test_number
 1
 1
@@ -3855,12 +3855,6 @@ system_use_lifetime_output
 1
 1
 0
-system_use_recapitalization
-1
-1
-1
-1
-0
 term_int_rate
 1
 1
@@ -4559,7 +4553,8 @@ wind_resource_distribution
 wind_resource_filename
 1
 4
-0
+26
+WY Southern-Flat Lands.srw
 wind_resource_model_choice
 1
 1

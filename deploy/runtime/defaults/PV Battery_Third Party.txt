@@ -856,7 +856,7 @@ batt_dispatch_wf_forecast_choice
 1
 1
 1
-3.33505e-317
+0
 batt_dispatch_wf_forecast_choice_psd
 1
 1
