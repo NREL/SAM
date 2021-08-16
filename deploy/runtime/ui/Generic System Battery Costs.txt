@@ -3373,7 +3373,7 @@ TabOrder
 3
 51
 
-32
+31
 battery_energy
 3
 1
@@ -3738,20 +3738,6 @@ Generic Battery Capital Costs
 1
 0
 Numeric
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Generic Battery Capital Costs
-0
-0
-1
-1
-1
-1
-0
-Default
 total_battery_indirect_cost
 3
 1
@@ -3823,7 +3809,7 @@ total_system_indirect_cost
 0
 Default
 
-2543
+2469
 equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
 
@@ -3878,10 +3864,6 @@ equations{ 'genericsys.cost.plm.total' } = define() {
 
 equations{ 'genericsys.cost.plant_scaled' } = define() {
 	return ${system_capacity}*1000*${genericsys.cost.per_watt};
-};
-
-equations { 'system_use_recapitalization' } = define () {
-		return 0;
 };
 
 equations {'battery_total_cost_lcos' } = define() {

@@ -3240,7 +3240,7 @@ Bold
 2
 1
 
-45
+44
 csp.mslf.cost.bop
 3
 1
@@ -3829,20 +3829,6 @@ MSLF Capital Costs
 1
 0
 Numeric
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-MSLF Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -3872,7 +3858,7 @@ MSLF Capital Costs
 0
 Default
 
-3869
+3798
 equations{ 'csp.mslf.cost.plm.total' } = define() {
 	return ${csp.mslf.cost.plm.per_acre}*${csp.mslf.cost.total_land_area} 
 + ${csp.mslf.cost.plm.percent}/100*${csp.mslf.cost.total_direct} 
@@ -3976,8 +3962,6 @@ equations{ 'total_direct_cost' } = define() {
 	return ${csp.mslf.cost.total_indirect};
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 0

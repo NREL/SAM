@@ -1,5 +1,5 @@
 1
-721
+720
 adjust
 1
 5
@@ -2475,7 +2475,7 @@ const_per_interest1
 1
 1
 1
-1822850
+1.82285e+06
 const_per_interest2
 1
 1
@@ -2535,7 +2535,7 @@ const_per_interest_total
 1
 1
 1
-1822850
+1.82285e+06
 const_per_months1
 1
 1
@@ -2668,7 +2668,7 @@ const_per_total1
 1
 1
 1
-3645700
+3.6457e+06
 const_per_total2
 1
 1
@@ -2728,7 +2728,7 @@ construction_financing_cost
 1
 1
 1
-3645700
+3.6457e+06
 cost_debt_closing
 1
 1
@@ -4259,7 +4259,8 @@ fargo_nd_46.9_-96.8_mts1_60_tmy
 solar_resource_file
 1
 4
-0
+35
+fargo_nd_46.9_-96.8_mts1_60_tmy.csv
 solution_mode_message
 1
 4
@@ -4293,12 +4294,6 @@ system_capacity
 1
 48535.6
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
