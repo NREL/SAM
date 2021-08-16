@@ -359,6 +359,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvwattsv1_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvwattsv1_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT const char* SAM_Pvwattsv1_Outputs_city_sget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvwattsv1_Outputs_dc_aget(SAM_table ptr, int* length, SAM_error *err);

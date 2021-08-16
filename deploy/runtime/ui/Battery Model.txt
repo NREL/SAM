@@ -589,29 +589,10 @@ function LCO()
 // Lithium titanate
 function LTO()
 {
-	// voltage curve
-	value('batt_C_rate',1);
-	value('batt_Vfull',2.8);
-	value('batt_Vexp',2.4);
-	value('batt_Vnom',2);
-	value('batt_Vcut',1.848);
-	value('batt_Qfull',12);
-	value('batt_Qexp_percent',2.1);
-	value('batt_Qnom_percent',91.7);
-	value('batt_Vnom_default',2.3);
+	get_batt_data_from_file('BatteryStateful_LMOLTO.json');
+	
 	value('batt_specific_energy_per_mass',22);
 	value('batt_specific_energy_per_volume',14);
-		
-	// Lifetime
-	lifetime = [ [20,0,100],
-				 [20,10000,90],
-				 [20,20000,85.42],
-				 [20,30000, 83.33],
-				 [80,0,100],
-				 [80,2000,90],
-				 [80,4000,85.42],
-				 [80,6000, 83.33]];
-	value('batt_lifetime_matrix',lifetime);
 }
 // Lithium nickel cobalt
 function NMC()

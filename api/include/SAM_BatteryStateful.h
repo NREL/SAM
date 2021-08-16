@@ -253,7 +253,7 @@ extern "C"
 
 	/**
 	 * Set life_model: Battery life model specifier [0/1]
-	 * options: 0=calendar/cycle,1=NMC
+	 * options: 0=calendar/cycle,1=NMC,2=LMO/LTO
 	 * constraints: None
 	 * required if: *
 	 */
@@ -579,6 +579,38 @@ extern "C"
 	//
 
 	/**
+	 * Set DOD_max: Max DOD of battery for current day [%]
+	 * options: Cycles for Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_DOD_max_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set DOD_min: Min DOD of battery for current day [%]
+	 * options: Cycles for Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_DOD_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set EFC: Total Equivalent Full Cycles [1]
+	 * options: LMO/LTO Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_EFC_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set EFC_dt: Equivalent Full Cycles cumulated for current day [1]
+	 * options: LMO/LTO Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_EFC_dt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set I_loss: Lifetime and thermal losses [A]
 	 * options: None
 	 * constraints: None
@@ -603,12 +635,52 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_T_batt_prev_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set average_range: Average cycle range [%]
+	 * Set average_range: Average cycle cycle_range [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_average_range_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set b1_dt: b1 coefficient cumulated for current day [day^-0.5]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_b1_dt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set b2_dt: b2 coefficient cumulated for current day [1/cycle]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_b2_dt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set b3_dt: b3 coefficient cumulated for current day [1]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_b3_dt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set c0_dt: c0 coefficient cumulated for current day [Ah]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_c0_dt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set c2_dt: c2 coefficient cumulated for current day [1/cycle]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_c2_dt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cell_current: Cell current [A]
@@ -643,6 +715,46 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_charge_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set cum_dt: Elapsed time for current day [day]
+	 * options: Cycles for Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_cum_dt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cycle_DOD: cycle_DOD of last cycle [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cycle_DOD_max: Max DODs of cycles concluded in current day [%]
+	 * options: Cycles for Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_max_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set cycle_DOD_range: DOD cycle_range of each cycle [%]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_DOD_range_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set cycle_range: Range of last cycle [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_cycle_range_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set day_age_of_battery: Day age of battery [day]
 	 * options: None
 	 * constraints: None
@@ -651,12 +763,60 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_day_age_of_battery_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set dq_relative_cal: Cumulative capacity change from calendar degradation [%]
+	 * options: LMO/LTO Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_cal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set dq_relative_calendar_old: Change in capacity of last time step [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_calendar_old_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dq_relative_cyc: Cumulative capacity change from cycling degradation [%]
+	 * options: LMO/LTO Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_cyc_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dq_relative_li1: Cumulative capacity change from time-dependent Li loss [1]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_li1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dq_relative_li2: Cumulative capacity change from cycle-dependent Li loss [1]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_li2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dq_relative_li3: Cumulative capacity change from BOL Li loss [1]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_li3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dq_relative_neg: Cumulative capacity change from negative electrode [1]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_neg_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set n_cycles: Number of cycles
@@ -707,7 +867,7 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_q2_0_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set q_relative: Overall relative capacity due to lifetime effects [Ah]
+	 * Set q_relative: Overall relative capacity due to lifetime effects [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -731,7 +891,23 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_q_relative_cycle_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set q_relative_thermal: Relative capacity due to thermal effects [Ah]
+	 * Set q_relative_li: Relative capacity due to loss of lithium inventory [%]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_q_relative_li_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_relative_neg: Relative capacity due to loss of anode material [%]
+	 * options: NMC Life Model
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_q_relative_neg_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_relative_thermal: Relative capacity due to thermal effects [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -763,7 +939,7 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_qn_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set rainflow_Xlt: Rainflow range of second to last half cycle [%]
+	 * Set rainflow_Xlt: Rainflow cycle_range of second to last half cycle [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -771,7 +947,7 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_rainflow_Xlt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set rainflow_Ylt: Rainflow range of last half cycle [%]
+	 * Set rainflow_Ylt: Rainflow cycle_range of last half cycle [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -787,7 +963,7 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_rainflow_jlt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set rainflow_peaks: Rainflow peaks of DOD [[%]]
+	 * Set rainflow_peaks: Rainflow peaks of cycle_DOD [[%]]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -795,12 +971,12 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_rainflow_peaks_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set range: Cycle range [%]
-	 * options: None
+	 * Set temp_avg: Average temperature for current day [K]
+	 * options: LMO/LTO Life Model
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_BatteryStateful_StateCell_range_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_temp_avg_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
@@ -959,6 +1135,14 @@ extern "C"
 	 * StateCell Getters
 	 */
 
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_DOD_max_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_DOD_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_EFC_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_EFC_dt_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_I_loss_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_SOC_prev_nget(SAM_table ptr, SAM_error *err);
@@ -966,6 +1150,16 @@ extern "C"
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_T_batt_prev_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_average_range_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_b1_dt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_b2_dt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_b3_dt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_c0_dt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_c2_dt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_cell_current_nget(SAM_table ptr, SAM_error *err);
 
@@ -975,9 +1169,31 @@ extern "C"
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_charge_mode_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_cum_dt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_cycle_DOD_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_max_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_range_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_cycle_range_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_day_age_of_battery_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_cal_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_calendar_old_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_cyc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_li1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_li2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_li3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_neg_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_n_cycles_nget(SAM_table ptr, SAM_error *err);
 
@@ -997,6 +1213,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_cycle_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_li_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_neg_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_thermal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_qmax_lifetime_nget(SAM_table ptr, SAM_error *err);
@@ -1013,7 +1233,7 @@ extern "C"
 
 	SAM_EXPORT double* SAM_BatteryStateful_StateCell_rainflow_peaks_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_BatteryStateful_StateCell_range_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_avg_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

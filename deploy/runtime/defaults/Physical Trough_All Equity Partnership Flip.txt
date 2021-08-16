@@ -1,5 +1,5 @@
 1
-1182
+1181
 A_aperture
 1
 2
@@ -6162,12 +6162,6 @@ radiator_unitcost
 1
 1
 13
-radio_sm_or_area
-1
-1
-1
-1
-0
 real_discount_rate
 1
 1
@@ -6422,12 +6416,6 @@ system_capacity
 1
 99900
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
@@ -7466,6 +7454,12 @@ ui_step_minutes
 1
 1
 60
+use_solar_mult_or_aperture_area
+1
+1
+1
+1
+0
 use_specific_weather_file
 1
 1

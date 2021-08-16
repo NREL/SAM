@@ -1,5 +1,5 @@
 1
-1064
+1063
 6par_aisc
 1
 1
@@ -1126,7 +1126,7 @@ batt_thermal_choice
 1
 1
 1
-1
+0
 batt_time_capacity
 1
 1
@@ -5247,7 +5247,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 spe_a
 1
 1
@@ -6203,12 +6204,6 @@ system_use_lifetime_output
 1
 1
 1
-system_use_recapitalization
-1
-1
-1
-1
-0
 total_area
 1
 1

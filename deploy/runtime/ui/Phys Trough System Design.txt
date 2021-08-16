@@ -1278,20 +1278,6 @@ Phys Trough System Design
 1
 100
 Default
-radio_sm_or_area
-3
-1
-Solar field mode (0=SM, 1=area)
- 
-Phys Trough System Design
-0
-8
-1
-1
-1
-1
--1
-Default
 solar_mult
 3
 1
@@ -1390,8 +1376,22 @@ Phys Trough System Design
 1
 0
 Default
+use_solar_mult_or_aperture_area
+3
+1
+Solar field mode (0=SM, 1=area)
+ 
+Phys Trough System Design
+0
+8
+1
+1
+1
+1
+-1
+Default
 
-1159
+1180
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1402,10 +1402,12 @@ Default
 //
 
 // Constant for compatibility with power trough
-equations{ 'radio_sm_or_area' } = define() 
+/*
+equations{ 'use_solar_mult_or_aperture_area' } = define() 
 {
 	return -1;   // -1 = use IPH-specific solar_mult calculation
 };
+*/
 
 // Constant for compatibility with power trough
 equations{ 'specified_total_aperture' } = define() 
@@ -1450,9 +1452,9 @@ equations{ 'SD_COPY_field_thermal_output' } = define()
 	return ${field_thermal_output};
 };
 
-2144
+2146
 on_load{'Phys Trough System Design'} = define(){
-	on_change{'combo_htf_type'}();
+//	on_change{'combo_htf_type'}();
 	on_change{'is_model_heat_sink_piping'}();
 	check_htf_temp_bounds();
 };

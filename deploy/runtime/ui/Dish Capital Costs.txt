@@ -2676,7 +2676,7 @@ TabOrder
 3
 0
 
-34
+33
 csp.ds.cost.collector
 3
 1
@@ -3097,20 +3097,6 @@ Dish Capital Costs
 1
 0
 Default
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization 
- 
-Dish Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -3154,7 +3140,7 @@ Dish Capital Costs
 0
 Default
 
-2815
+2744
 equations{ 'csp.ds.cost.engine' } = define() {
 	return ${csp.ds.ncollectors}*${csp.ds.cost.engine.kw}*${csp.ds.cost.engine.cost_per_kw}; };
 
@@ -3227,8 +3213,6 @@ equations{ 'csp.ds.cost.nameplate' } = define() {
 	return ${csp.ds.total_capacity};
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 114

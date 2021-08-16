@@ -1,5 +1,5 @@
 1
-626
+625
 LeadAcid_q10
 1
 1
@@ -788,7 +788,7 @@ batt_thermal_choice
 1
 1
 1
-1
+0
 batt_time_capacity
 1
 1
@@ -3444,12 +3444,6 @@ system_use_lifetime_output
 1
 1
 1
-system_use_recapitalization
-1
-1
-1
-1
-0
 term_int_rate
 1
 1

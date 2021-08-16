@@ -1,5 +1,5 @@
 1
-604
+603
 LeadAcid_q10
 1
 1
@@ -469,7 +469,7 @@ batt_dispatch_auto_can_clipcharge
 1
 1
 1
-1
+0
 batt_dispatch_auto_can_fuelcellcharge
 1
 1
@@ -925,7 +925,7 @@ batt_thermal_choice
 1
 1
 1
-1
+0
 batt_time_capacity
 1
 1
@@ -1044,13 +1044,13 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_total_cost_lcos
 1
 1
 1
 1
-1438480
+1.43848e+06
 battery_voltage_shown
 1
 1
@@ -1228,7 +1228,7 @@ const_per_interest1
 1
 1
 1
-1498250
+1.49825e+06
 const_per_interest2
 1
 1
@@ -1288,7 +1288,7 @@ const_per_interest_total
 1
 1
 1
-1498250
+1.49825e+06
 const_per_months1
 1
 1
@@ -1421,7 +1421,7 @@ const_per_total1
 1
 1
 1
-2996490
+2.99649e+06
 const_per_total2
 1
 1
@@ -1481,7 +1481,7 @@ construction_financing_cost
 1
 1
 1
-2996490
+2.99649e+06
 conv_eff
 1
 1
@@ -3314,12 +3314,6 @@ system_use_lifetime_output
 1
 1
 1
-system_use_recapitalization
-1
-1
-1
-1
-0
 term_int_rate
 1
 1

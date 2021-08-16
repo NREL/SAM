@@ -1,5 +1,5 @@
 1
-345
+344
 adjust
 1
 5
@@ -2043,12 +2043,6 @@ system_capacity
 1
 100000
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
