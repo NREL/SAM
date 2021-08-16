@@ -2442,7 +2442,7 @@ TabOrder
 3
 20
 
-23
+22
 fixed_plant_input
 3
 1
@@ -2709,20 +2709,6 @@ Generic System Capital Costs
 1
 0
 Numeric
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Generic System Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -2766,7 +2752,7 @@ Generic System Capital Costs
 0
 Numeric
 
-1838
+1764
 equations{ 'nameplate_capacity' } = define() {
 	return ${system_capacity}; };
 
@@ -2811,10 +2797,6 @@ equations{ 'genericsys.cost.plm.total' } = define() {
 
 equations{ 'genericsys.cost.plant_scaled' } = define() {
 	return ${system_capacity}*1000*${genericsys.cost.per_watt};
-};
-
-equations { 'system_use_recapitalization' } = define () {
-		return 0;
 };
 
 152

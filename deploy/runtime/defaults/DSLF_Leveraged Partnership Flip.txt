@@ -1,5 +1,5 @@
 1
-766
+765
 A_aperture
 1
 3
@@ -1044,7 +1044,7 @@ cost_dev_fee_tax_liability
 1
 1
 1
-2980860
+2.98086e+06
 cost_dev_fee_value
 1
 1
@@ -1211,7 +1211,7 @@ csp.lf.cost.plm.total
 1
 1
 1
-3476410
+3.47641e+06
 csp.lf.cost.power_plant
 1
 1
@@ -1295,7 +1295,7 @@ csp.lf.cost.total_indirect
 1
 1
 1
-51874300
+38968196
 csp.lf.cost.total_installed
 1
 1
@@ -4552,7 +4552,8 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solarm
 1
 1
@@ -4616,12 +4617,6 @@ system_capacity
 1
 100580
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
@@ -4709,7 +4704,7 @@ total_direct_cost
 1
 1
 1
-51874300
+38968196
 total_installed_cost
 1
 1

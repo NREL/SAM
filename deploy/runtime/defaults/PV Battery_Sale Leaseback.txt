@@ -1,5 +1,5 @@
 1
-1076
+1075
 6par_aisc
 1
 1
@@ -864,7 +864,7 @@ batt_dispatch_pvs_ramp_interval
 1
 1
 1
-0
+600
 batt_dispatch_pvs_short_forecast_enable
 1
 1
@@ -894,7 +894,7 @@ batt_dispatch_pvs_wf_timestep
 1
 1
 1
-0
+60
 batt_dispatch_update_frequency_hours
 1
 1
@@ -1335,13 +1335,13 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_total_cost_lcos
 1
 1
 1
 1
-2810460
+2.81046e+06
 battery_voltage_shown
 1
 1
@@ -2124,7 +2124,7 @@ contingency
 1
 1
 1
-1288210
+1.28821e+06
 contingency_percent
 1
 1
@@ -2148,7 +2148,7 @@ cost_dev_fee_value
 1
 1
 1
-1588210
+1.58821e+06
 cost_equity_closing
 1
 1
@@ -2741,7 +2741,7 @@ engr_total
 1
 1
 1
-3500160
+3.50016e+06
 equip1_reserve_cost
 1
 1
@@ -2855,7 +2855,7 @@ grid_total
 1
 1
 1
-1500070
+1.50007e+06
 ibi_fed_amount
 1
 1
@@ -4233,7 +4233,7 @@ landprep_total
 1
 1
 1
-1000040
+1.00004e+06
 lat
 1
 1
@@ -5023,7 +5023,7 @@ sales_tax_total
 1
 1
 1
-2211430
+2.21143e+06
 sales_tax_value
 1
 1
@@ -5700,7 +5700,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solution_mode_message
 1
 4
@@ -5877,7 +5878,7 @@ sponsor_operating_margin_amount
 1
 1
 1
-1000040
+1.00004e+06
 sponsor_operating_margin_escalation
 1
 1
@@ -6678,12 +6679,6 @@ system_use_lifetime_output
 1
 1
 1
-system_use_recapitalization
-1
-1
-1
-1
-0
 tax_investor_required_lease_reserve
 1
 1
@@ -6706,7 +6701,7 @@ total_battery_indirect_cost
 1
 1
 1
-1300060
+1.30006e+06
 total_dc_inverter_capacity
 1
 1
@@ -6724,7 +6719,7 @@ total_indirect_cost
 1
 1
 1
-6500290
+6.50029e+06
 total_installed_cost
 1
 1

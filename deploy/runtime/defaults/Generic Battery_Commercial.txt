@@ -1,5 +1,5 @@
 1
-486
+485
 LeadAcid_q10
 1
 1
@@ -2572,12 +2572,6 @@ system_use_lifetime_output
 1
 1
 1
-system_use_recapitalization
-1
-1
-1
-1
-0
 total_battery_indirect_cost
 1
 1

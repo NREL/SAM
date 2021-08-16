@@ -1,5 +1,5 @@
 1
-703
+702
 A_sf_UI
 1
 1
@@ -12541,12 +12541,6 @@ system_capacity
 1
 103500
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1

@@ -4101,7 +4101,7 @@ TabOrder
 3
 4294967295
 
-52
+51
 bop_spec_cost
 3
 1
@@ -4676,20 +4676,6 @@ Tower SolarPilot Capital Costs
 1
 3
 Default
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Tower SolarPilot Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 tes_spec_cost
 3
 1
@@ -4831,7 +4817,7 @@ Tower SolarPilot Capital Costs
 0
 Default
 
-6583
+6498
 // ui only
 equations{ 'csp.pt.cost.heliostats_m2' } = define() {
 	area = ${A_sf_UI};
@@ -4929,10 +4915,6 @@ equations{ 'csp.pt.cost.sales_tax.value' } = define() {
 //	return 0;
 //};
 
-// not used?
-equations { 'system_use_recapitalization' } = define () {
-	return 0;
-};
 
 equations{ '$MIMO$ Tower_SolarPilot_Capital_Costs_Equations' } = define() {
 	// inputs common to all technologies

@@ -1,5 +1,5 @@
 1
-707
+706
 LeadAcid_q10
 1
 1
@@ -3331,7 +3331,7 @@ property_assessed_value
 1
 1
 1
-2449220
+2.44922e+06
 property_tax_rate
 1
 1
@@ -3586,7 +3586,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 state
 1
 4
@@ -3627,12 +3628,6 @@ system_use_lifetime_output
 1
 1
 1
-system_use_recapitalization
-1
-1
-1
-1
-0
 thermal_1
 1
 1
@@ -3761,7 +3756,7 @@ thermal_load_annual_total
 1
 1
 1
-7646300
+7.6463e+06
 thermal_load_escalation
 1
 2
@@ -3921,7 +3916,7 @@ total_installed_cost
 1
 1
 1
-2449220
+2.44922e+06
 total_system_indirect_cost
 1
 1
@@ -3945,13 +3940,13 @@ ui_loan_amount
 1
 1
 1
-2449220
+2.44922e+06
 ui_net_capital_cost
 1
 1
 1
 1
-2449220
+2.44922e+06
 ui_pv_capacity
 1
 1
