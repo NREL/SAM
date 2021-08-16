@@ -151,8 +151,8 @@ Tool Tip
 0
 Caption
 5
-60
-For the Dispatch to Custom Load option, use the input below.
+62
+For the Look ahead to Custom Load option, use the input below.
 TextColour
 4
 0
@@ -513,7 +513,7 @@ X
 12
 Y
 3
-237
+234
 Width
 3
 920
@@ -822,14 +822,15 @@ batt_dispatch_load_forecast_choice_psd
  
  
  
+63
+Perfect look ahead|One day look ahead|Look ahead to custom load
 0
-0
 1
 1
 1
 1
 0
-Default
+RadioChoice
 batt_dispatch_load_forecast_escal_psd
 3
 2
@@ -886,7 +887,7 @@ Battery Dispatch
 DataArray
 
 0
-2581
+2370
 on_load{'Battery Dispatch Price Signal'}=define()
 {	
 	psd_forecast_choice();
@@ -937,7 +938,7 @@ on_change{'batt_dispatch_load_escal_choice_psd'} = define()
 
 on_change{'load_user_forecast_data_psd'} = define()
 {
-	batt_load_ac_forecast = ${load_user_forecast_data_psd};
+	${batt_load_ac_forecast} = ${load_user_forecast_data_psd};
 };
 
 function psd_forecast_choice() 
@@ -973,15 +974,5 @@ function psd_forecast_choice()
 	enable('batt_dispatch_load_forecast_escal_psd', load_choice == 2 && ${batt_dispatch_load_escal_choice_psd} == 1);
 
 	value("batt_dispatch_load_forecast_choice", load_choice);
-	
-	if ("load_choice" == 2) {
-		batt_load_ac_forecast = ${load_user_forecast_data_psd};
-		
-		if ("batt_dispatch_load_escal_choice_psd" == 1) {
-			batt_load_ac_forecast_escalation = ${batt_dispatch_load_forecast_escal_psd};
-		}
-		else {
-			batt_load_ac_forecast_escalation = ${load_escalation};
-		}
-	}
+	// Updates to load forecast vars happen in equations on Battery Dispatch Options BTM
 }
