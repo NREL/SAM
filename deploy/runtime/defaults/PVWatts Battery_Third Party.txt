@@ -1,5 +1,5 @@
 1
-233
+234
 Monthly_util
 1
 2
@@ -566,8 +566,8 @@ grid_interconnection_limit_kwac
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -945,6 +945,12 @@ real_discount_rate
 1
 1
 6.4
+run_resiliency_calcs
+1
+1
+1
+1
+0
 scale_factor
 1
 1
@@ -983,8 +989,7 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-49
-phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
+0
 state
 1
 4

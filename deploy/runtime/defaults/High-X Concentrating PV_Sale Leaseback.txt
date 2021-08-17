@@ -1,5 +1,5 @@
 1
-474
+471
 adjust
 1
 5
@@ -203,6 +203,18 @@ azaltsf
 10 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
+batt_salvage_percentage
+1
+1
+1
+1
+0
+batt_salvage_value
+1
+1
+1
+1
+0
 cbi_fed_amount
 1
 1
@@ -514,7 +526,7 @@ const_per_principal1
 1
 1
 1
-6079460
+6.07946e+06
 const_per_principal2
 1
 1
@@ -544,7 +556,7 @@ const_per_principal_total
 1
 1
 1
-6079460
+6.07946e+06
 const_per_total1
 1
 1
@@ -1413,7 +1425,7 @@ hcpv.cost.module.totalcost
 1
 1
 1
-3154640
+3.15464e+06
 hcpv.cost.modulearray.area
 1
 1
@@ -1936,7 +1948,8 @@ n/a
 inv_cec_hybrid
 1
 4
-0
+5
+empty
 inv_cec_name
 1
 4
@@ -1958,7 +1971,7 @@ inv_snl_c0
 1
 1
 1
--5.94e-08
+-5.94331e-08
 inv_snl_c1
 1
 1
@@ -1982,13 +1995,13 @@ inv_snl_eff_cec
 1
 1
 1
-97.632
+97.6325
 inv_snl_eff_euro
 1
 1
 1
 1
-97.4562
+97.4567
 inv_snl_idcmax
 1
 1
@@ -2261,7 +2274,7 @@ mera_cost1
 1
 1
 1
-281665
+281664
 mera_cost2
 1
 1
@@ -2441,18 +2454,6 @@ om_fixed_escal
 1
 1
 0
-om_fuel_cost
-1
-2
-1
-1
-0
-om_fuel_cost_escal
-1
-1
-1
-1
-0
 om_production
 1
 2
@@ -2460,18 +2461,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost1
-1
-2
-1
-1
-0
-om_replacement_cost_escal
 1
 1
 1
@@ -2666,7 +2655,7 @@ property_assessed_value
 1
 1
 1
-6079460
+6.07946e+06
 property_tax_rate
 1
 1
@@ -2841,12 +2830,6 @@ system_use_lifetime_output
 1
 1
 0
-system_use_recapitalization
-1
-1
-1
-1
-0
 tax_investor_required_lease_reserve
 1
 1
@@ -2869,13 +2852,13 @@ total_indirect_cost
 1
 1
 1
-579210
+304198
 total_installed_cost
 1
 1
 1
 1
-6079460
+6.07946e+06
 tz
 1
 1

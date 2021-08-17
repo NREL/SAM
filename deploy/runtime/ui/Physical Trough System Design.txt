@@ -875,46 +875,6 @@ BackColour
 TabOrder
 3
 4294967295
-RadioChoice
-
-1
-11
-Name
-5
-16
-radio_sm_or_area
-X
-3
-24
-Y
-3
-117
-Width
-3
-95
-Height
-3
-50
-Tool Tip
-5
-0
-Selection
-3
-0
-Items
-6
-2
-Option 1:
-Option 2:
-ShowCaptions
-2
-1
-Horizontal
-2
-0
-TabOrder
-3
-1
 Numeric
 
 1
@@ -1101,8 +1061,48 @@ BackColour
 TabOrder
 3
 5
+RadioChoice
 
-16
+1
+11
+Name
+5
+31
+use_solar_mult_or_aperture_area
+X
+3
+24
+Y
+3
+117
+Width
+3
+95
+Height
+3
+50
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Option 1:
+Option 2:
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+1
+
+17
 I_bn_des
 3
 1
@@ -1187,6 +1187,20 @@ System Design
 1
 0
 Default
+csp_financial_model
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+1
+Default
 eta_ref
 3
 1
@@ -1243,20 +1257,6 @@ System Design
 1
 0
 Default
-radio_sm_or_area
-3
-1
-Solar field mode (0=SM, 1=area)
- 
-System Design
-0
-9
-1
-1
-1
-1
-0
-RadioChoice
 solar_mult
 3
 1
@@ -1327,8 +1327,22 @@ System Design
 1
 0
 Default
+use_solar_mult_or_aperture_area
+3
+1
+Solar field mode (0=SM, 1=area)
+ 
+System Design
+0
+9
+1
+1
+1
+1
+0
+RadioChoice
 
-737
+1282
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1337,6 +1351,36 @@ Default
 //   modify the below main MIMO or add one,
 //   referencing in ssc_equations.h
 //
+
+equations{ 'csp_financial_model' } = define() {
+	if (financing() == "Single Owner"){
+		return 1;
+	}
+	else if(financing() == "Leveraged Partnership Flip"){
+		return 2;
+	}
+	else if(financing() == "All Equity Partnership Flip"){
+		return 3;
+	}
+	else if(financing() == "Sale Leaseback"){
+		return 4;
+	}
+	else if(financing() == "Commercial"){
+		return 5;
+	}
+	else if(financing() == "Merchant Plant"){
+		return 6;
+	}
+	else if(financing() == "LCOE Calculator"){
+		return 7;
+	}
+	else if(financing() == "None"){
+		return 8;
+	}
+	else{
+		return -1;
+	}
+};
 
 equations{ '$MIMO$ Physical_Trough_System_Design_Equations' } = define() {
 
@@ -1360,14 +1404,14 @@ equations{ '$MIMO$ Physical_Trough_System_Design_Equations' } = define() {
 	return 0;
 };
 
-277
+322
 on_load{'Physical Trough System Design'} = define() {
-	on_change{'radio_sm_or_area'}();
+	on_change{'use_solar_mult_or_aperture_area'}();
 };
 
-on_change{'radio_sm_or_area'} = define() 
+on_change{'use_solar_mult_or_aperture_area'} = define() 
 {
-  state = value('radio_sm_or_area');
+  state = value('use_solar_mult_or_aperture_area');
   enable ('specified_solar_multiple', state == 0);
   enable ('specified_total_aperture', state == 1);
 };

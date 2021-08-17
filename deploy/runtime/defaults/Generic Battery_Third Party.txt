@@ -1,5 +1,5 @@
 1
-334
+336
 LeadAcid_q10
 1
 1
@@ -835,7 +835,7 @@ batt_thermal_choice
 1
 1
 1
-1
+0
 batt_time_capacity
 1
 1
@@ -1310,7 +1310,7 @@ first_year_output
 1
 1
 1
-33638.4
+6727.68
 first_year_output_peak
 1
 1
@@ -1709,6 +1709,12 @@ real_discount_rate
 1
 1
 6.4
+run_resiliency_calcs
+1
+1
+1
+1
+0
 scale_factor
 1
 1
@@ -1739,6 +1745,12 @@ ui_annual_load
 1
 1
 0
+ui_step_minutes
+1
+1
+1
+1
+60
 ur_annual_min_charge
 1
 1

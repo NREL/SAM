@@ -405,7 +405,7 @@ Battery Charge Limits
 1
 1
 95
-Default
+Numeric
 batt_minimum_SOC
 3
 1
@@ -419,7 +419,7 @@ Battery Charge Limits
 1
 1
 30
-Default
+Numeric
 batt_minimum_modetime
 3
 1
@@ -433,7 +433,7 @@ Battery Charge Limits
 1
 1
 10
-Default
+Numeric
 
 0
 504

@@ -117,6 +117,8 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2021, 7, 27 }, // 2021.7.27 ssc 259 EPRI Beta expires 7/27/2022
+		{ 2021, 7, 12 }, // 2021.7.12 ssc 258 EPRI Beta expires 7/12/2022
 		{ 2021, 6, 2 }, // 2021.6.2 ssc 257 EPRI Beta expires 6/2/2022
 		{ 2021, 4, 19 }, // 2021.4.19 ssc 255 EPRI Beta expires 4/19/2022
 		{ 2021, 3, 25 }, // 2021.3.25 ssc 254 EPRI Beta expires 3/25/2022
@@ -2296,6 +2298,10 @@ void SamApp::Restart()
 	wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
 	if (!wxFileExists(wave_resource_db)) ScanWaveResourceData(wave_resource_db);
 	Library::Load(wave_resource_db);
+
+    wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
+    if (!wxFileExists(wave_resource_ts_db)) ScanWaveResourceTSData(wave_resource_ts_db);
+    Library::Load(wave_resource_ts_db);
 }
 
 wxString SamApp::WebApi( const wxString &name )

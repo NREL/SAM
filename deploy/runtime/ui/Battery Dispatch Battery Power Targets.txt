@@ -124,18 +124,18 @@ batt_custom_dispatch
 2
  Time series battery power targets
 kWdc
- 
+Battery Dispatch
 0
-0
+2
 1
 2
 1
 1
 0
-Default
+DataArray
 
 0
-202
+234
 on_load{'Battery Dispatch Battery Power Targets'}=define()
 {	
 	value('batt_dispatch_choice', 3);
@@ -143,6 +143,8 @@ on_load{'Battery Dispatch Battery Power Targets'}=define()
 	on_change{'batt_dispatch_choice'};
 	if (technology() == "Fuel Cell")
 		toggle_dispatch();
+		
+	show_hide_charge_options();
 	
 };
 

@@ -1,5 +1,5 @@
 1
-437
+434
 ac_nameplate
 1
 1
@@ -107,6 +107,18 @@ azimuth
 1
 1
 180
+batt_salvage_percentage
+1
+1
+1
+1
+0
+batt_salvage_value
+1
+1
+1
+1
+0
 batt_simple_enable
 1
 1
@@ -118,7 +130,7 @@ bos_equip_fixed
 1
 1
 1
-0
+3.23793e-317
 bos_equip_perarea
 1
 1
@@ -1501,8 +1513,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -2103,18 +2115,6 @@ om_fixed_escal
 1
 1
 0
-om_fuel_cost
-1
-2
-1
-1
-0
-om_fuel_cost_escal
-1
-1
-1
-1
-0
 om_production
 1
 2
@@ -2122,18 +2122,6 @@ om_production
 1
 0
 om_production_escal
-1
-1
-1
-1
-0
-om_replacement_cost1
-1
-2
-1
-1
-500
-om_replacement_cost_escal
 1
 1
 1
@@ -2651,7 +2639,7 @@ step
 1
 1
 1
-0
+3600
 subtotal_direct
 1
 1
@@ -2665,12 +2653,6 @@ system_capacity
 1
 50000
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
@@ -2734,7 +2716,7 @@ ui_step_minutes
 1
 1
 1
-0
+60
 ui_wacc
 1
 1

@@ -124,7 +124,7 @@ batt_custom_dispatch
 2
 Time series battery power targets
 kWdc
-Battery Dispatch FOM
+Battery Dispatch
 0
 2
 1
@@ -132,10 +132,10 @@ Battery Dispatch FOM
 1
 1
 0
-Default
+DataArray
 
 0
-309
+338
 on_load{'Battery Dispatch Custom Time Series'}=define()
 {	
 	// fom = front of meter
@@ -145,6 +145,7 @@ on_load{'Battery Dispatch Custom Time Series'}=define()
 	//on_change{'batt_dispatch_choice'};
 	//on_change{'batt_select_weather_file_forecast'};
 	//on_change{'batt_cycle_cost_choice'};
+	show_hide_charge_options();
 };
 
 

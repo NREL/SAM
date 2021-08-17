@@ -14,6 +14,7 @@
 std::string module_doc(const std::string& tech_symbol){
     static std::unordered_map<std::string, std::string> desc = {
             {"Battery", "Detailed battery storage model"},
+            {"BatteryStateful", "BatteryStateful has two major differences from the Battery module: 1) it contains only the “physical” component models of the battery (thermal, voltage, capacity, lifetime) and none of the dispatch methods (peak shaving, etc) of the Battery module; 2) the Battery module runs annual or multi-year simulations in a single execution, whereas BatteryStateful is run one timestep at a time using control variables, current or power, and can be run at sub-minute timesteps."},
             {"Battwatts", "Simplified battery storage model"},
             {"Belpe", "Electric load calculator for residential buildings"},
             {"Biomass", "Biomass combustion for electricity generation"},
@@ -40,9 +41,6 @@ std::string module_doc(const std::string& tech_symbol){
             {"Sco2AirCooler", "Supercritical CO2 Power Cycle Air Cooler"},
             {"Sco2CspSystem", "Supercritical CO2 Power Cycle Design and Off-Design Simulation"},
             {"Sco2CspUdPcTables", "Supercritical CO2 Power Cycle"},
-            {"Sco2DesignPoint", "Supercritical CO2 Power Cycle Design Point"},
-            {"Sco2DesignCycle", "Supercritical CO2 Power Cycle Design"},
-            {"Sco2Offdesign", "Supercritical CO2 Power Cycle Off Design"},
             {"Singleowner", "PPA single owner financial model"},
             {"Swh", "Solar water heating model for residential and commercial building applications"},
             {"TcsdirectSteam", "CSP direct steam power tower model for power generation"},
@@ -59,7 +57,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"TroughPhysical", "CSP parabolic trough system using heat transfer and thermodynamic component models"},
             {"TroughPhysicalProcessHeat", "Parabolic trough for industrial process heat applications"},
             {"Utilityrate5", "Retail electricity bill calculator"},
-            {"WaveFileReader", "Load wave resource data from file. Data can be in either\nProbability distribution format or 3-hour time series arrays"},
+            {"WaveFileReader", "Load wave resource data from file. Data can be in either probability distribution format or 3-hour time series arrays"},
             {"Windpower", "Wind power system with one or more wind turbines"}
     };
 
@@ -203,19 +201,32 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                    "\t}\n"
                    "\n"
                    "\tif (!PySAM_assign_from_dict(self->data_ptr, dict, \""
-                << cmod_symbol << "\", \"" << group_symbol << "\")){\n"
+                   << cmod_symbol << "\", \"" << group_symbol << "\")){\n"
                    "\t\treturn NULL;\n"
                    "\t}\n"
                    "\n"
                    "\tPy_INCREF(Py_None);\n"
                    "\treturn Py_None;\n"
-                   "}\n"
-                   "\n"
-                   "static PyObject *\n"
+                   "}\n\n";
+        fx_file << "static PyObject *\n"
+                << group_symbol << "_replace(VarGroupObject *self, PyObject *args)\n"
+                   "{\n"
+                   "\tPyObject* dict;\n"
+                   "\tif (!PyArg_ParseTuple(args, \"O:assign\", &dict)){\n"
+                   "\t\treturn NULL;\n"
+                   "\t}\n"
+                   "\tPyTypeObject* tp = &" << group_symbol << "_Type;\n\n"
+                   "\tif (!PySAM_replace_from_dict(tp, self->data_ptr, dict, \""
+                   << cmod_symbol << "\", \"" << group_symbol << "\")){\n"
+                   "\t\treturn NULL;\n"
+                   "\t}\n\n"
+                   "\tPy_INCREF(Py_None);\n"
+                   "\treturn Py_None;\n"
+                   "}\n\n";
+        fx_file << "static PyObject *\n"
                 << group_symbol << "_export(VarGroupObject *self, PyObject *args)\n"
                    "{\n"
-                   "\tPyTypeObject* tp = &" << group_symbol
-                << "_Type;\n"
+                   "\tPyTypeObject* tp = &" << group_symbol << "_Type;\n"
                    "\tPyObject* dict = PySAM_export_to_dict((PyObject *) self, tp);\n"
                    "\treturn dict;\n"
                    "}\n"
@@ -224,7 +235,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
         fx_file << "static PyMethodDef " << group_symbol << "_methods[] = {\n"
                    "\t\t{\"assign\",            (PyCFunction)" << group_symbol << "_assign,  METH_VARARGS,\n"
-                   "\t\t\tPyDoc_STR(\"assign() -> None\\n Assign attributes from dictionary\\n\\n"
+                   "\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from dictionary, overwriting but not removing values\\n\\n"
+                   "``" << group_symbol << "_vals = { var: val, ...}``\")},\n"
+                   "\t\t{\"replace\",            (PyCFunction)" << group_symbol << "_replace,  METH_VARARGS,\n"
+                   "\t\t\tPyDoc_STR(\"replace(dict) -> None\\n Replace attributes from dictionary, unassigning values not present in input dict\\n\\n"
                    "``" << group_symbol << "_vals = { var: val, ...}``\")},\n"
                    "\t\t{\"export\",            (PyCFunction)" << group_symbol << "_export,  METH_VARARGS,\n"
                    "\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into dictionary\")},\n";
@@ -588,22 +602,29 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\tPyObject* dict;\n"
                "\tif (!PyArg_ParseTuple(args, \"O:assign\", &dict)){\n"
                "\t\treturn NULL;\n"
-               "\t}\n"
-               "\n"
+               "\t}\n\n"
                "\tif (!PySAM_assign_from_nested_dict((PyObject*)self, self->x_attr, self->data_ptr, dict, \"" << cmod_symbol << "\"))\n"
-               "\t\treturn NULL;\n"
-               "\n"
+               "\t\treturn NULL;\n\n"
                "\tPy_INCREF(Py_None);\n"
                "\treturn Py_None;\n"
-               "}\n"
-               "\n"
-               "\n"
-               "static PyObject *\n"
-               "" << tech_symbol << "_export(" << object_type << " *self, PyObject *args)\n"
+               "}\n\n";
+    fx_file << "static PyObject *\n"
+            << tech_symbol << "_replace(CmodObject *self, PyObject *args)\n"
+               "{\n"
+               "\tPyObject* dict;\n"
+               "\tif (!PyArg_ParseTuple(args, \"O:assign\", &dict)){\n"
+               "\t\treturn NULL;\n"
+               "\t}\n\n"
+               "\tif (!PySAM_replace_from_nested_dict((PyObject*)self, self->x_attr, self->data_ptr, dict, \"" << cmod_symbol << "\"))\n"
+               "\t\treturn NULL;\n\n"
+               "\tPy_INCREF(Py_None);\n"
+               "\treturn Py_None;\n"
+               "}\n\n";
+    fx_file << "static PyObject *\n"
+            << tech_symbol << "_export(" << object_type << " *self, PyObject *args)\n"
                "{\n"
                "\treturn PySAM_export_to_nested_dict((PyObject *) self, self->x_attr);\n"
-               "}\n"
-               "\n";
+               "}\n\n";
 
     // define fx to set or get a ssc variable by name
     fx_file << "static PyObject *\n"
@@ -625,8 +646,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t\t\tPyDoc_STR(\"execute(int verbosity) -> None\\n Execute simulation with verbosity level 0 (default) or 1\")},\n"
                "\t\t{\"assign\",            (PyCFunction)" << tech_symbol << "_assign,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from nested dictionary, except for Outputs\\n\\n"
-               "``nested_dict = { '" << root->vardefs_order[0] << "': { var: val, ...}, ...}``"
-               "\")},\n"
+               "``nested_dict = { '" << root->vardefs_order[0] << "': { var: val, ...}, ...}``\")},\n"
+               "\t\t{\"replace\",            (PyCFunction)" << tech_symbol << "_replace,  METH_VARARGS,\n"
+               "\t\t\t\tPyDoc_STR(\"replace(dict) -> None\\n Replace attributes from nested dictionary, except for Outputs. Unassigns all values in each Group then assigns from the input dict.\\n\\n"
+               "``nested_dict = { '" << root->vardefs_order[0] << "': { var: val, ...}, ...}``\")},\n"
                "\t\t{\"export\",            (PyCFunction)" << tech_symbol << "_export,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"export() -> dict\\n Export attributes into nested dictionary\")},\n"
                "\t\t{\"value\",             (PyCFunction)" << tech_symbol << "_value, METH_VARARGS,\n"
@@ -947,7 +970,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << cmod_doc;
 
-    if (tech_symbol != "TcsmoltenSalt") {
+    if (tech_symbol != "TcsmoltenSalt" && tech_symbol != "TroughPhysical") {
         fx_file << "Input Consistency Warning\n"
                    "==================================\n"
                    "\n"
