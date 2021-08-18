@@ -880,7 +880,35 @@ TabOrder
 3
 7
 
-13
+35
+E_heater_su_des
+3
+1
+Heater startup energy
+MWt-hr
+ETES Heater
+0
+8
+1
+1
+1
+1
+-999
+Default
+PB_m_dot_htf_cycle_des
+3
+1
+Cycle design HTF mass flow rate
+kg/s
+ 
+0
+8
+1
+1
+1
+1
+-999
+Default
 P_ref
 3
 1
@@ -894,6 +922,20 @@ System Design
 1
 1
 110
+Default
+Q_tes
+3
+1
+TES thermal capacity
+MWt-hr
+TES
+0
+8
+1
+1
+1
+1
+-999
 Default
 T_htf_cold_des
 3
@@ -923,6 +965,174 @@ System Design
 1
 574
 Default
+cb_bop_cost_calc
+3
+1
+Balance of plant cost total
+$
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_contingency_cost_calc
+3
+1
+Contingency cost
+$
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_cycle_cost_calc
+3
+1
+Power cycle cost total
+$
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_direct_subtotal
+3
+1
+Direct capital cost subtotal
+$
+ETES Capital Costs
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_epc_cost_calc
+3
+1
+EPC and owner cost total
+$
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_heater_cost_calc
+3
+1
+Total heater cost
+$
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_installed_per_capacity_cost_calc
+3
+1
+Estimated total installed cost per capacity
+ 
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_land_cost_calc
+3
+1
+Land cost total
+$
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_sales_tax_cost_calc
+3
+1
+Sales tax total
+$
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_storage_cost_calc
+3
+1
+Thermal energy storage cost total
+$
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_total_direct_cost
+3
+1
+Total direct cost
+$
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
+cb_total_indirect_cost
+3
+1
+Total indirect cost
+$
+ETES Cost
+0
+8
+1
+1
+1
+1
+-999
+Default
 design_eff
 3
 1
@@ -936,6 +1146,20 @@ System Design
 1
 1
 0.45
+Default
+etes_bop_des_calc
+3
+1
+BOP
+MWe
+System Control
+0
+8
+1
+1
+1
+1
+-999
 Default
 etes_financial_model
 3
@@ -1007,6 +1231,20 @@ System Design
 1
 -999
 Default
+q_dot_tes_est
+3
+1
+Estimated tes heat loss
+MWt
+TES
+0
+8
+1
+1
+1
+1
+-999
+Default
 q_pb_design
 3
 1
@@ -1027,6 +1265,76 @@ system_capacity
  
  
  
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_avail_vol
+3
+1
+Available TES HTF volume
+m³
+TES
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_htf_density
+3
+1
+HTF density
+kg/m³
+TES
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_tank_diameter
+3
+1
+Tank diameter
+m
+TES
+0
+8
+1
+1
+1
+1
+-999
+Default
+tes_vol_total
+3
+1
+Total TES HTF Volume
+m³
+TES
+0
+8
+1
+1
+1
+1
+-999
+Default
+total_installed_cost
+3
+1
+Total installed cost
+$
+ETES Capital Costs
 0
 8
 1
@@ -1064,7 +1372,7 @@ System Design
 -999
 Default
 
-6813
+8861
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1200,7 +1508,7 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 	ssc_var(obj, "const_per_upfront_rate4", ${const_per_upfront_rate4});       
 	ssc_var(obj, "const_per_upfront_rate5", ${const_per_upfront_rate5});       
 
-	ret_d = ssc_dump(obj, 'etes_system_des_mimo.txt');
+	//ret_d = ssc_dump(obj, 'etes_system_des_mimo.txt');
 
 	ret = ssc_exec(obj, 'etes_electric_resistance');
 
@@ -1210,6 +1518,29 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${q_pb_design} = ssc_var(obj, "q_pb_design");
 		${q_dot_heater_des} = ssc_var(obj, "q_dot_heater_design");
 		${tshours_heater} = ssc_var(obj, "tshours_heater");
+		${E_heater_su_des} = ssc_var(obj, "E_heater_su_des");
+		${etes_bop_des_calc} = ssc_var(obj, "W_dot_bop_design");
+		${PB_m_dot_htf_cycle_des} = ssc_var(obj, "m_dot_htf_cycle_des");
+		${cb_heater_cost_calc} = ssc_var(obj, "heater_cost_calc");
+		${cb_storage_cost_calc} = ssc_var(obj, "tes_cost_calc");
+		${cb_bop_cost_calc} = ssc_var(obj, "bop_cost_calc");
+		${cb_cycle_cost_calc} = ssc_var(obj, "cycle_cost_calc");
+		${cb_direct_subtotal} = ssc_var(obj, "direct_subtotal_cost_calc");
+		${cb_contingency_cost_calc} = ssc_var(obj, "contingency_cost_calc");
+		${cb_total_direct_cost} = ssc_var(obj, "total_direct_cost_calc");
+		${cb_epc_cost_calc} = ssc_var(obj, "epc_cost_calc");
+		${cb_land_cost_calc} = ssc_var(obj, "land_cost_calc");
+		${cb_sales_tax_cost_calc} = ssc_var(obj, "sales_tax_cost_calc");
+		${cb_total_indirect_cost} = ssc_var(obj, "total_indirect_cost_calc");
+		${total_installed_cost} = ssc_var(obj, "total_installed_cost");		
+		${cb_installed_per_capacity_cost_calc} = ssc_var(obj, "installed_per_cap_cost_calc");
+			// TES page
+		${Q_tes} = ssc_var(obj, "Q_tes_des");
+		${tes_avail_vol} = ssc_var(obj, "V_tes_htf_avail");
+		${tes_vol_total} = ssc_var(obj, "V_tes_htf_total");
+		${tes_tank_diameter} = ssc_var(obj, "d_tank_tes");
+		${q_dot_tes_est} = ssc_var(obj, "q_dot_loss_tes_des");
+		${tes_htf_density} = ssc_var(obj, "dens_store_htf_at_T_ave");
 	}
 	else {
 		vf = -789;
@@ -1218,6 +1549,29 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 		${q_pb_design} = vf;
 		${q_dot_heater_des} = vf;
 		${tshours_heater} = vf;
+		${E_heater_su_des} = vf;
+		${etes_bop_des_calc} = vf;
+		${PB_m_dot_htf_cycle_des} = vf;
+		${cb_heater_cost_calc} = vf;
+		${cb_storage_cost_calc} = vf;
+		${cb_bop_cost_calc} = vf;
+		${cb_cycle_cost_calc} = vf;
+		${cb_direct_subtotal} = vf;
+		${cb_contingency_cost_calc} = vf;
+		${cb_total_direct_cost} = vf;
+		${cb_epc_cost_calc} = vf;
+		${cb_land_cost_calc} = vf;
+		${cb_sales_tax_cost_calc} = vf;
+		${cb_total_indirect_cost} = vf;		
+		${total_installed_cost} = vf;
+		${cb_installed_per_capacity_cost_calc} = vf;
+			// TES page
+		${Q_tes} = vf;
+		${tes_avail_vol} = vf;
+		${tes_vol_total} = vf;
+		${tes_tank_diameter} = vf;
+		${q_dot_tes_est} = vf;
+		${tes_htf_density} = vf;
 	}
 	
 	ssc_free( obj );
