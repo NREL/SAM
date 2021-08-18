@@ -902,7 +902,7 @@ TabOrder
 3
 3
 
-12
+13
 adjust
 3
 5
@@ -1055,6 +1055,20 @@ Generic System Plant
 1
 1000
 Numeric
+ui_step_minutes
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 user_capacity_factor
 3
 1
@@ -1070,7 +1084,7 @@ Generic System Plant
 100
 Numeric
 
-1123
+1307
 equations{ 'conv_eff' } = define() {
 	// check to see if heat rate non-zero
 	if ( ${heat_rate} == 0.0 )
@@ -1125,6 +1139,17 @@ equations{ 'capacity_factor_calc' } = define() {
 			output = ${first_year_output}/${system_capacity}/8760*100;
 	}
 	return output;
+};
+
+equations{ 'ui_step_minutes' } = define() {
+	if (${spec_mode}) {
+		array = ${energy_output_array};
+		len_array = #array;
+		return 60 / (len_array/8760);
+	}
+	else {
+		return 60;
+	}
 };
 
 1032

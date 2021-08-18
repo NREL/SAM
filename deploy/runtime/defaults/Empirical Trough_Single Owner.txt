@@ -1,5 +1,5 @@
 1
-786
+785
 AntiFrPar
 1
 1
@@ -3885,12 +3885,6 @@ system_capacity
 1
 99900
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1

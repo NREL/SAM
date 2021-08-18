@@ -173,44 +173,44 @@ extern "C"
 	SAM_EXPORT void SAM_Ippppa_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set om_batt_capacity_cost: Battery capacity-based System Costs amount [$/kWcap]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_batt_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_batt_fixed_cost: Battery fixed System Costs annual amount [$/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_batt_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_batt_replacement_cost: Replacement cost 1 [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_batt_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_batt_variable_cost: Battery production-based System Costs amount [$/MWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_batt_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_capacity1: Battery capacity-based System Costs amount [$/kWcap]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity1_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_capacity1_nameplate: Battery capacity for System Costs values [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity1_nameplate_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set om_capacity2: Fuel cell capacity-based System Costs amount [$/kWcap]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity2_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_capacity2_nameplate: Fuel cell capacity for System Costs values [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity2_nameplate_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_capacity_escal: Capacity-based O&M escalation [%/year]
@@ -227,22 +227,6 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_fixed1: Battery fixed System Costs annual amount [$/year]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fixed1_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_fixed2: Fuel cell fixed System Costs annual amount [$/year]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fixed2_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_fixed_escal: Fixed O&M escalation [%/year]
@@ -267,6 +251,38 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuel_cost_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_fuelcell_capacity_cost: Fuel cell capacity-based System Costs amount [$/kWcap]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuelcell_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_fuelcell_fixed_cost: Fuel cell fixed System Costs annual amount [$/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuelcell_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_fuelcell_replacement_cost: Replacement cost 2 [$/kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuelcell_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_fuelcell_variable_cost: Fuel cell production-based System Costs amount [$/MWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuelcell_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_opt_fuel_1_cost: Biomass feedstock cost [$/unit]
@@ -325,28 +341,12 @@ extern "C"
 	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set om_production1: Battery production-based System Costs amount [$/MWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production1_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_production1_values: Battery production for System Costs values [kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production1_values_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_production2: Fuel cell production-based System Costs amount [$/MWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production2_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_production2_values: Fuel cell production for System Costs values [kWh]
@@ -365,28 +365,28 @@ extern "C"
 	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set om_replacement_cost1: Replacement cost 1 [$/kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_replacement_cost1_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set om_replacement_cost2: Replacement cost 2 [$/kW]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_replacement_cost2_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Ippppa_SystemCosts_om_replacement_cost_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ui_batt_capacity: Battery capacity for System Costs values [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Ippppa_SystemCosts_ui_batt_capacity_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ui_fuelcell_capacity: Fuel cell capacity for System Costs values [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Ippppa_SystemCosts_ui_fuelcell_capacity_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1660,29 +1660,33 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Ippppa_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_batt_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_batt_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity1_nameplate_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity2_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity2_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed2_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Ippppa_SystemCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Ippppa_SystemCosts_om_fuel_cost_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuelcell_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuelcell_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuelcell_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuelcell_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_opt_fuel_1_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1698,21 +1702,17 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production1_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production2_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production2_values_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Ippppa_SystemCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_replacement_cost1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_replacement_cost2_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_Ippppa_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Ippppa_SystemCosts_ui_batt_capacity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Ippppa_SystemCosts_ui_fuelcell_capacity_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

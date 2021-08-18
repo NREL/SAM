@@ -1,5 +1,5 @@
 1
-385
+384
 ac_nameplate
 1
 1
@@ -154,7 +154,7 @@ bos_equip_total
 1
 1
 1
-540000
+129600
 capex_table_ac_cost_per_w
 1
 1
@@ -369,7 +369,7 @@ contingency
 1
 1
 1
-39744
+23328
 contingency_percent
 1
 1
@@ -898,8 +898,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -982,7 +982,7 @@ installed_per_capacity
 1
 1
 1
-2.54206
+1.71925
 insurance_rate
 1
 1
@@ -1696,7 +1696,7 @@ property_assessed_value
 1
 1
 1
-1372710
+928396
 property_tax_rate
 1
 1
@@ -1774,7 +1774,7 @@ sales_tax_total
 1
 1
 1
-42367.1
+24867.6
 sales_tax_value
 1
 1
@@ -1872,7 +1872,7 @@ subtotal_direct
 1
 1
 1
-993600
+583200
 system_capacity
 1
 1
@@ -1880,12 +1880,6 @@ system_capacity
 1
 540
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
@@ -1908,7 +1902,7 @@ total_direct_cost
 1
 1
 1
-1033340
+606528
 total_indirect_cost
 1
 1
@@ -1920,7 +1914,7 @@ total_installed_cost
 1
 1
 1
-1372710
+928396
 tz
 1
 1
@@ -1938,13 +1932,13 @@ ui_loan_amount
 1
 1
 1
-1372710
+928396
 ui_net_capital_cost
 1
 1
 1
 1
-1372710
+928396
 ui_step_minutes
 1
 1

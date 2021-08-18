@@ -1,5 +1,5 @@
 1
-436
+435
 ac_nameplate
 1
 1
@@ -148,7 +148,7 @@ bos_equip_total
 1
 1
 1
-5e+12
+10000000
 capex_table_ac_cost_per_w
 1
 1
@@ -353,7 +353,7 @@ const_per_interest1
 1
 1
 1
-5.40754e+10
+513822
 const_per_interest2
 1
 1
@@ -413,7 +413,7 @@ const_per_interest_total
 1
 1
 1
-5.40754e+10
+513822
 const_per_months1
 1
 1
@@ -510,7 +510,7 @@ const_per_principal1
 1
 1
 1
-5.40754e+12
+51382248
 const_per_principal2
 1
 1
@@ -540,13 +540,13 @@ const_per_principal_total
 1
 1
 1
-5.40754e+12
+51382248
 const_per_total1
 1
 1
 1
 1
-1.08151e+11
+1.02764e+06
 const_per_total2
 1
 1
@@ -606,13 +606,13 @@ construction_financing_cost
 1
 1
 1
-1.08151e+11
+1.02764e+06
 contingency
 1
 1
 1
 1
-1.50001e+11
+1245000
 contingency_percent
 1
 1
@@ -642,13 +642,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-4.30386e+10
+408951
 cost_dev_fee_value
 1
 1
 1
 1
-1.62226e+11
+1.54147e+06
 cost_equity_closing
 1
 1
@@ -1519,8 +1519,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -1603,7 +1603,7 @@ installed_per_capacity
 1
 1
 1
-108151
+1.02764
 insurance_rate
 1
 1
@@ -2364,7 +2364,7 @@ property_assessed_value
 1
 1
 1
-5.40754e+12
+51382248
 property_tax_rate
 1
 1
@@ -2442,7 +2442,7 @@ sales_tax_total
 1
 1
 1
-2.57502e+11
+2137250
 sales_tax_value
 1
 1
@@ -2550,7 +2550,7 @@ subtotal_direct
 1
 1
 1
-5.00003e+12
+41500000
 system_capacity
 1
 1
@@ -2558,12 +2558,6 @@ system_capacity
 1
 50000
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
@@ -2633,7 +2627,7 @@ total_direct_cost
 1
 1
 1
-5.15003e+12
+42745000
 total_indirect_cost
 1
 1
@@ -2645,7 +2639,7 @@ total_installed_cost
 1
 1
 1
-5.40754e+12
+51382248
 tz
 1
 1

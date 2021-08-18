@@ -788,7 +788,7 @@ batt_thermal_choice
 1
 1
 1
-1
+0
 batt_time_capacity
 1
 1
@@ -3444,12 +3444,6 @@ system_use_lifetime_output
 1
 1
 1
-system_use_recapitalization
-1
-1
-1
-1
-0
 term_int_rate
 1
 1
@@ -3509,6 +3503,12 @@ ui_pv_capacity
 1
 1
 215
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

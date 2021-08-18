@@ -1,5 +1,5 @@
 1
-479
+478
 adjust
 1
 5
@@ -526,7 +526,7 @@ const_per_principal1
 1
 1
 1
-6079460
+6.07946e+06
 const_per_principal2
 1
 1
@@ -556,7 +556,7 @@ const_per_principal_total
 1
 1
 1
-6079460
+6.07946e+06
 const_per_total1
 1
 1
@@ -1455,7 +1455,7 @@ hcpv.cost.module.totalcost
 1
 1
 1
-3154640
+3.15464e+06
 hcpv.cost.modulearray.area
 1
 1
@@ -2304,7 +2304,7 @@ mera_cost1
 1
 1
 1
-281665
+281664
 mera_cost2
 1
 1
@@ -2685,7 +2685,7 @@ property_assessed_value
 1
 1
 1
-6079460
+6.07946e+06
 property_tax_rate
 1
 1
@@ -2850,12 +2850,6 @@ system_use_lifetime_output
 1
 1
 0
-system_use_recapitalization
-1
-1
-1
-1
-0
 tax_investor_equity_percent
 1
 1
@@ -2902,13 +2896,13 @@ total_indirect_cost
 1
 1
 1
-579210
+304198
 total_installed_cost
 1
 1
 1
 1
-6079460
+6.07946e+06
 tz
 1
 1

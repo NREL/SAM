@@ -2072,12 +2072,6 @@ system_use_lifetime_output
 1
 1
 0
-system_use_recapitalization
-1
-1
-1
-1
-0
 term_int_rate
 1
 1
@@ -2113,6 +2107,12 @@ total_installed_cost
 1
 1
 1.092e+09
+ui_step_minutes
+1
+1
+1
+1
+60
 ui_wacc
 1
 1

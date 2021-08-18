@@ -316,7 +316,7 @@ fixed_operating_cost
 1
 1
 1
-4.97478e+06
+4974780
 fracture_angle
 1
 1
@@ -831,8 +831,7 @@ blythe_ca_33.617773_-114.588261_psmv3_60_tmy
 solar_resource_file
 1
 4
-48
-blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
+0
 specified_pump_work_amount
 1
 1

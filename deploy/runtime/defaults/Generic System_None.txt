@@ -1,5 +1,5 @@
 1
-16
+17
 adjust
 1
 5
@@ -119,6 +119,12 @@ system_capacity
 1
 1
 100000
+ui_step_minutes
+1
+1
+1
+1
+60
 user_capacity_factor
 1
 1

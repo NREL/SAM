@@ -969,6 +969,18 @@ SAM_EXPORT double SAM_Swh_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *e
 
 
 
+SAM_EXPORT double* SAM_Swh_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Swh", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Swh_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

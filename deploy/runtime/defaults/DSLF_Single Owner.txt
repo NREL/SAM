@@ -1,5 +1,5 @@
 1
-765
+764
 A_aperture
 1
 3
@@ -1223,7 +1223,7 @@ csp.lf.cost.plm.total
 1
 1
 1
-3476410
+3.47641e+06
 csp.lf.cost.power_plant
 1
 1
@@ -4641,12 +4641,6 @@ system_capacity
 1
 100580
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1

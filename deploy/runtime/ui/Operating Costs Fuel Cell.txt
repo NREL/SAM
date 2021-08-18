@@ -715,7 +715,7 @@ Y
 120
 Width
 3
-39
+45
 Height
 3
 21
@@ -725,7 +725,7 @@ Tool Tip
 Caption
 5
 5
-$/kWh
+$/MWh
 TextColour
 4
 0
@@ -773,7 +773,7 @@ Tool Tip
 Caption
 5
 16
-$/kWh discharged
+$/MWh discharged
 TextColour
 4
 0
@@ -1301,7 +1301,7 @@ Tool Tip
 Caption
 5
 15
-$/kWh generated
+$/MWh generated
 TextColour
 4
 0
@@ -2082,8 +2082,8 @@ Tool Tip
 0
 Label
 5
-4
-$/kW
+5
+$/MWh
 UseSchedule
 2
 0
@@ -2421,7 +2421,7 @@ om_batt_variable_cost
 3
 2
 Battery variable operating cost
-$/kWh discharged
+$/MWh discharged
 Operating Costs
 0
 3
@@ -2590,7 +2590,7 @@ om_fuelcell_variable_cost
 3
 2
 Fuel cell variable operating cost
-$/kWh generated
+$/MWh generated
 Operating Costs
 0
 3

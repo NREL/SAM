@@ -52,8 +52,34 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 // this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
-version_upgrade{'2021.6.2'} = define() {
+version_upgrade{'2021.7.27'} = define() {
 
+	//Battery Thermal remove weather file ambient temperature option
+	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' );
+	old_batt_thermal_choice = oldvalue('batt_thermal_choice');
+	old_batt_single_temp = oldvalue('batt_room_temperature_single');
+	old_temp_vector = oldvalue('batt_room_temperature_vector');
+	old_temp_celsius = oldvalue('batt_room_temperature_celsius');
+	new_temp_vector = [];
+	if (is_batt_tech) {
+		if (old_batt_thermal_choice == 0) { 
+			value('batt_thermal_choice', 1);
+			value('batt_room_temperature_vector', old_temp_celsius);
+			//value('batt_room_temperature_celsius', value('batt_room_temperature_vector'));
+			message('The option to use ambient file weather dry-bulb temperature inputs as the battery room temperature has been removed. The weather file ambient temperatures for this case have been copied into the Time series environment array.', 'warning');
+		}
+		elseif (old_batt_thermal_choice == 1) {
+			value('batt_thermal_choice', 0);
+			value('batt_room_temperature_single', old_batt_single_temp);
+			message('The option to use ambient file weather dry-bulb temperature inputs as the battery room temperature has been removed.');
+		}
+		else {
+			value('batt_thermal_choice', 1);
+			value('batt_room_temperature_vector', old_temp_vector);
+			message('The option to use ambient file weather dry-bulb temperature inputs as the battery room temperature has been removed.');
+		}
+	}
+	
 	const cfg = config();
 	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' );
 	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' );

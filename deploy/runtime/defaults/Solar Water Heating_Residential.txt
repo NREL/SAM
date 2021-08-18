@@ -1,5 +1,5 @@
 1
-401
+400
 FRUL
 1
 1
@@ -1897,12 +1897,6 @@ system_capacity
 1
 3.41806
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1

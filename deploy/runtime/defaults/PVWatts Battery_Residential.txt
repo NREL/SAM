@@ -1,5 +1,5 @@
 1
-455
+454
 Monthly_util
 1
 2
@@ -1217,8 +1217,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -2295,12 +2295,6 @@ system_capacity
 1
 4.69287
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1

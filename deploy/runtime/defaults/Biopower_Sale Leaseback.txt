@@ -1,5 +1,5 @@
 1
-705
+704
 adjust
 1
 5
@@ -292,7 +292,7 @@ biopwr.cost.total_indirect
 1
 1
 1
-42290148
+36457024
 biopwr.cost.turbine
 1
 1
@@ -2475,7 +2475,7 @@ const_per_interest1
 1
 1
 1
-1881180
+1.88118e+06
 const_per_interest2
 1
 1
@@ -2535,7 +2535,7 @@ const_per_interest_total
 1
 1
 1
-1881180
+1.88118e+06
 const_per_months1
 1
 1
@@ -2668,7 +2668,7 @@ const_per_total1
 1
 1
 1
-3762360
+3.76236e+06
 const_per_total2
 1
 1
@@ -2728,7 +2728,7 @@ construction_financing_cost
 1
 1
 1
-3762360
+3.76236e+06
 cost_dev_fee_percent
 1
 1
@@ -4215,12 +4215,6 @@ system_use_lifetime_output
 1
 1
 0
-system_use_recapitalization
-1
-1
-1
-1
-0
 tax_investor_required_lease_reserve
 1
 1
@@ -4243,7 +4237,7 @@ total_indirect_cost
 1
 1
 1
-42290148
+36457024
 total_installed_cost
 1
 1

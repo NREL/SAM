@@ -689,6 +689,30 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_unit_min_power_nget(SAM_table p
 
 
 
+SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_energy_distribution_time_fc_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time_fc", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "annual_energy_distribution_time_fc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Fuelcell_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

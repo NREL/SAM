@@ -1,5 +1,5 @@
 1
-979
+978
 6par_aisc
 1
 1
@@ -363,7 +363,7 @@ bos_equip_total
 1
 1
 1
-4.98721e+10
+119693
 calculated_dcac_ratio
 1
 1
@@ -820,7 +820,7 @@ const_per_interest1
 1
 1
 1
-539942272
+8574.24
 const_per_interest2
 1
 1
@@ -880,7 +880,7 @@ const_per_interest_total
 1
 1
 1
-539942272
+8574.24
 const_per_months1
 1
 1
@@ -977,7 +977,7 @@ const_per_principal1
 1
 1
 1
-5.39942e+10
+857424
 const_per_principal2
 1
 1
@@ -1007,13 +1007,13 @@ const_per_principal_total
 1
 1
 1
-5.39942e+10
+857424
 const_per_total1
 1
 1
 1
 1
-1.07988e+09
+17148.5
 const_per_total2
 1
 1
@@ -1073,13 +1073,13 @@ construction_financing_cost
 1
 1
 1
-1.07988e+09
+17148.5
 contingency
 1
 1
 1
 1
-1.9949e+09
+21544.7
 contingency_percent
 1
 1
@@ -2154,8 +2154,8 @@ iec61853_test_data
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -2238,7 +2238,7 @@ installed_per_capacity
 1
 1
 1
-108266
+1.71925
 insurance_rate
 1
 1
@@ -3912,7 +3912,7 @@ property_assessed_value
 1
 1
 1
-5.39942e+10
+857424
 property_tax_rate
 1
 1
@@ -4013,7 +4013,7 @@ sales_tax_total
 1
 1
 1
-2.12656e+09
+22966.6
 sales_tax_value
 1
 1
@@ -4896,7 +4896,7 @@ step
 1
 1
 1
-0
+3600
 step_sd11par
 1
 1
@@ -4908,7 +4908,7 @@ step_spe
 1
 1
 1
-0
+3600
 subarray1_azimuth
 1
 1
@@ -5656,7 +5656,7 @@ subtotal_direct
 1
 1
 1
-4.98725e+10
+538617
 system_capacity
 1
 1
@@ -5669,12 +5669,6 @@ system_use_lifetime_output
 1
 1
 1
-system_use_recapitalization
-1
-1
-1
-1
-0
 term_int_rate
 1
 1
@@ -5715,7 +5709,7 @@ total_direct_cost
 1
 1
 1
-5.18674e+10
+560162
 total_indirect_cost
 1
 1
@@ -5727,7 +5721,7 @@ total_installed_cost
 1
 1
 1
-5.39942e+10
+857424
 total_inverter_capacity
 1
 1
@@ -5793,7 +5787,7 @@ ui_step_minutes
 1
 1
 1
-0
+60
 ui_subarray1_length_side
 1
 1
