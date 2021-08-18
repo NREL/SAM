@@ -1,5 +1,5 @@
 1
-644
+647
 accumulators_cost
 1
 1
@@ -942,7 +942,7 @@ elec_infras_cost_total
 1
 1
 1
-8362500
+0
 elec_infras_override
 1
 1
@@ -1116,7 +1116,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-3629690
+0
 export_cable_system_cost_total
 1
 1
@@ -1404,7 +1404,7 @@ insurance_during_construction_cost
 1
 1
 1
-4028060
+3.99177e+06
 insurance_during_construction_cost_input
 1
 1
@@ -1416,7 +1416,7 @@ insurance_during_construction_cost_modeled_ui
 1
 1
 1
-4028060
+3.99177e+06
 insurance_during_construction_method
 1
 1
@@ -1428,7 +1428,7 @@ insurance_during_construction_modeled
 1
 1
 1
-4028060
+3.99177e+06
 insurance_operations_cost
 1
 1
@@ -2082,7 +2082,7 @@ onshore_substation_cost_total_check
 1
 1
 1
-8362500
+0
 onshore_substations_cost
 1
 1
@@ -3198,7 +3198,7 @@ site_access_port_staging_cost
 1
 1
 1
-4430870
+4390942
 site_access_port_staging_cost_input
 1
 1
@@ -3216,13 +3216,13 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4430870
+4390942
 site_access_port_staging_cost_modeled_ui
 1
 1
 1
 1
-4430870
+4390942
 site_access_port_staging_cost_total
 1
 1
@@ -3930,7 +3930,7 @@ water_depth
 1
 1
 1
-50
+0
 water_depth_input
 1
 1
