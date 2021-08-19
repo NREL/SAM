@@ -1372,7 +1372,7 @@ System Design
 -999
 Default
 
-8861
+9140
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1385,7 +1385,7 @@ equations{ 'etes_financial_model' } = define(){
 
 equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 {
-	obj = ssc_create();
+	obj = ssc_create();/*
 	ssc_var(obj, "sim_type", 2);
 	
 	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
@@ -1508,11 +1508,20 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 	ssc_var(obj, "const_per_upfront_rate4", ${const_per_upfront_rate4});       
 	ssc_var(obj, "const_per_upfront_rate5", ${const_per_upfront_rate5});       
 
-	//ret_d = ssc_dump(obj, 'etes_system_des_mimo.txt');
-
+	
 	ret = ssc_exec(obj, 'etes_electric_resistance');
 
+	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
+	ssc_var(obj, "const_per_upfront_rate5", 0);*/
+//	ret = ssc_auto_exec(obj, 'etes_electric_resistance', 2);
+	//ret = ssc_module_create_from_case('etes_electric_resistance');
+//	ret_d = ssc_dump(obj, 'c:/tmp/etes_system_des_mimo_ssc_auto_exec.txt');
+	ret = 1;
+
 	if(ret==0) {
+
+	// testing
+
 		${nameplate} = ssc_var(obj, "nameplate");
 		${system_capacity} = ssc_var(obj, "system_capacity");
 		${q_pb_design} = ssc_var(obj, "q_pb_design");
@@ -1577,5 +1586,79 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 	ssc_free( obj );
 };
 
-1
+2767
+on_load{"ETES System Design"} = define()
+{
+	obj = ssc_create();
+	ret = ssc_auto_exec(obj, 'etes_electric_resistance', 2);
+	//ret = ssc_module_create_from_case('etes_electric_resistance');
+	ret_d = ssc_dump(obj, 'etes_system_des_mimo_ssc_auto_exec.txt');
+
+	if(ret==0) {
+
+	// testing
+
+		${nameplate} = ssc_var(obj, "nameplate");
+		${system_capacity} = ssc_var(obj, "system_capacity");
+		${q_pb_design} = ssc_var(obj, "q_pb_design");
+		${q_dot_heater_des} = ssc_var(obj, "q_dot_heater_design");
+		${tshours_heater} = ssc_var(obj, "tshours_heater");
+		${E_heater_su_des} = ssc_var(obj, "E_heater_su_des");
+		${etes_bop_des_calc} = ssc_var(obj, "W_dot_bop_design");
+		${PB_m_dot_htf_cycle_des} = ssc_var(obj, "m_dot_htf_cycle_des");
+		${cb_heater_cost_calc} = ssc_var(obj, "heater_cost_calc");
+		${cb_storage_cost_calc} = ssc_var(obj, "tes_cost_calc");
+		${cb_bop_cost_calc} = ssc_var(obj, "bop_cost_calc");
+		${cb_cycle_cost_calc} = ssc_var(obj, "cycle_cost_calc");
+		${cb_direct_subtotal} = ssc_var(obj, "direct_subtotal_cost_calc");
+		${cb_contingency_cost_calc} = ssc_var(obj, "contingency_cost_calc");
+		${cb_total_direct_cost} = ssc_var(obj, "total_direct_cost_calc");
+		${cb_epc_cost_calc} = ssc_var(obj, "epc_cost_calc");
+		${cb_land_cost_calc} = ssc_var(obj, "land_cost_calc");
+		${cb_sales_tax_cost_calc} = ssc_var(obj, "sales_tax_cost_calc");
+		${cb_total_indirect_cost} = ssc_var(obj, "total_indirect_cost_calc");
+		${total_installed_cost} = ssc_var(obj, "total_installed_cost");		
+		${cb_installed_per_capacity_cost_calc} = ssc_var(obj, "installed_per_cap_cost_calc");
+			// TES page
+		${Q_tes} = ssc_var(obj, "Q_tes_des");
+		${tes_avail_vol} = ssc_var(obj, "V_tes_htf_avail");
+		${tes_vol_total} = ssc_var(obj, "V_tes_htf_total");
+		${tes_tank_diameter} = ssc_var(obj, "d_tank_tes");
+		${q_dot_tes_est} = ssc_var(obj, "q_dot_loss_tes_des");
+		${tes_htf_density} = ssc_var(obj, "dens_store_htf_at_T_ave");
+	}
+	else {
+		vf = -789;
+		${nameplate} = vf;
+		${system_capacity} = vf;
+		${q_pb_design} = vf;
+		${q_dot_heater_des} = vf;
+		${tshours_heater} = vf;
+		${E_heater_su_des} = vf;
+		${etes_bop_des_calc} = vf;
+		${PB_m_dot_htf_cycle_des} = vf;
+		${cb_heater_cost_calc} = vf;
+		${cb_storage_cost_calc} = vf;
+		${cb_bop_cost_calc} = vf;
+		${cb_cycle_cost_calc} = vf;
+		${cb_direct_subtotal} = vf;
+		${cb_contingency_cost_calc} = vf;
+		${cb_total_direct_cost} = vf;
+		${cb_epc_cost_calc} = vf;
+		${cb_land_cost_calc} = vf;
+		${cb_sales_tax_cost_calc} = vf;
+		${cb_total_indirect_cost} = vf;		
+		${total_installed_cost} = vf;
+		${cb_installed_per_capacity_cost_calc} = vf;
+			// TES page
+		${Q_tes} = vf;
+		${tes_avail_vol} = vf;
+		${tes_vol_total} = vf;
+		${tes_tank_diameter} = vf;
+		${q_dot_tes_est} = vf;
+		${tes_htf_density} = vf;
+	}
+	ssc_free( obj );
+
+};
 
