@@ -1,7 +1,7 @@
 Financial CS Costs
-858
-272
-15
+864
+322
+17
 GroupBox
 
 1
@@ -21,14 +21,14 @@ Width
 850
 Height
 3
-267
+312
 Tool Tip
 5
 0
 Caption
 5
-43
-Subscriber Acquisition and Management Costs
+28
+Up-front and Recurring Costs
 Bold
 2
 1
@@ -45,7 +45,7 @@ X
 18
 Y
 3
-150
+171
 Width
 3
 684
@@ -84,7 +84,7 @@ X
 18
 Y
 3
-78
+63
 Width
 3
 684
@@ -120,10 +120,10 @@ Name
 object 7
 X
 3
-573
+444
 Y
 3
-165
+210
 Width
 3
 100
@@ -168,6 +168,102 @@ Name
 object 77
 X
 3
+24
+Y
+3
+186
+Width
+3
+828
+Height
+3
+20
+Tool Tip
+5
+0
+Caption
+5
+118
+Recurring costs are annual costs in Year 1 through the analysis period required to manage the community solar project.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+11
+object 7712
+X
+3
+24
+Y
+3
+81
+Width
+3
+828
+Height
+3
+20
+Tool Tip
+5
+0
+Caption
+5
+92
+Upfront costs are initial costs in Year 0 required to establish the community solar project.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+11
+object 7715
+X
+3
 18
 Y
 3
@@ -183,8 +279,8 @@ Tool Tip
 0
 Caption
 5
-203
-Costs associated with acquiring and managing subscribers are in addition to any project O&M and land lease costs on the Operating Costs page, and tax and insurance costs on the Financial Parameters page.
+225
+Up-front and recurring costs are costs associated with the community solar project in addition to any project O&M and land lease costs on the Operating Costs page, and tax and insurance costs on the Financial Parameters page.
 TextColour
 4
 0
@@ -216,10 +312,10 @@ Name
 object 778
 X
 3
-675
+546
 Y
 3
-120
+141
 Width
 3
 18
@@ -264,10 +360,10 @@ Name
 subscriber_cost_recurring_capacity
 X
 3
-402
+273
 Y
 3
-213
+258
 Width
 3
 100
@@ -306,10 +402,10 @@ Name
 subscriber_cost_recurring_capacity_escal
 X
 3
-573
+444
 Y
 3
-213
+258
 Width
 3
 100
@@ -368,10 +464,10 @@ Name
 subscriber_cost_recurring_fixed
 X
 3
-402
+273
 Y
 3
-186
+231
 Width
 3
 100
@@ -410,10 +506,10 @@ Name
 subscriber_cost_recurring_fixed_escal
 X
 3
-573
+444
 Y
 3
-186
+231
 Width
 3
 100
@@ -472,10 +568,10 @@ Name
 subscriber_cost_recurring_generation
 X
 3
-402
+273
 Y
 3
-240
+285
 Width
 3
 100
@@ -514,10 +610,10 @@ Name
 subscriber_cost_recurring_generation_escal
 X
 3
-573
+444
 Y
 3
-240
+285
 Width
 3
 100
@@ -576,10 +672,10 @@ Name
 subscriber_cost_upfront
 X
 3
-402
+273
 Y
 3
-93
+114
 Width
 3
 100
@@ -638,10 +734,10 @@ Name
 subscriber_cost_upfront_per_capacity
 X
 3
-402
+273
 Y
 3
-120
+141
 Width
 3
 100
@@ -700,10 +796,10 @@ Name
 ui_upfront_cost_by_capacity
 X
 3
-573
+444
 Y
 3
-120
+141
 Width
 3
 100
@@ -757,9 +853,9 @@ TabOrder
 subscriber_cost_recurring_capacity
 3
 2
-Subscriber management annual cost by capacity
+Recurring annual cost by capacity
 $/kW-yr
-Community Solar
+Community Solar Costs
 0
 2
 1
@@ -771,9 +867,9 @@ SchedNumeric
 subscriber_cost_recurring_capacity_escal
 3
 1
-Subscriber management recurring annual cost by capacity escalation rate
+Recurring annual cost by capacity escalation rate
 %/yr
-Community Solar
+Community Solar Costs
 0
 3
 1
@@ -785,9 +881,9 @@ Numeric
 subscriber_cost_recurring_fixed
 3
 2
-Subscriber management annual fixed cost
+Recurring annual fixed cost
 $/yr
-Community Solar
+Community Solar Costs
 0
 2
 1
@@ -799,9 +895,9 @@ SchedNumeric
 subscriber_cost_recurring_fixed_escal
 3
 1
-Subscriber management recurring fixed annual cost escalation rate
+Recurring annual fixed cost escalation rate
 %/yr
-Community Solar
+Community Solar Costs
 0
 3
 1
@@ -813,9 +909,9 @@ Numeric
 subscriber_cost_recurring_generation
 3
 2
-Subscriber management annual cost by generation
+Recurring annual cost by generation
 $/kWh
-Community Solar
+Community Solar Costs
 0
 0
 1
@@ -827,9 +923,9 @@ SchedNumeric
 subscriber_cost_recurring_generation_escal
 3
 1
-Subscriber management recurring annual cost by generation escalation rate
+Recurring annual cost by generation escalation rate
 %/yr
-Community Solar
+Community Solar Costs
 0
 3
 1
@@ -841,9 +937,9 @@ Numeric
 subscriber_cost_upfront
 3
 2
-Subscriber acquisition fixed cost
+Up-front fixed cost
 $
-Community Solar
+Community Solar Costs
 0
 2
 1
@@ -855,9 +951,9 @@ SchedNumeric
 subscriber_cost_upfront_per_capacity
 3
 1
-Subscriber acquisition cost by capacity
+Up-front cost by capacity
 $/kW
-Community Solar
+Community Solar Costs
 0
 2
 1
@@ -871,7 +967,7 @@ ui_upfront_cost_by_capacity
 1
 Subscriber acquisition fixed cost by capacity
 $
-Community Solar
+Community Solar Costs
 0
 5
 1

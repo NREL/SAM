@@ -1,7 +1,40 @@
 Financial CS Subscribers
-857
-247
-22
+858
+274
+32
+CheckBox
+
+1
+9
+Name
+5
+29
+enable_subscriber_retail_rate
+X
+3
+522
+Y
+3
+60
+Width
+3
+306
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+46
+Consider subscriber retail cost of electricity
+State
+2
+1
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -12,16 +45,16 @@ Name
 msg_subscriber_share
 X
 3
-12
+18
 Y
 3
-201
+243
 Width
 3
-582
+507
 Height
 3
-39
+24
 Tool Tip
 5
 0
@@ -68,7 +101,7 @@ Width
 850
 Height
 3
-243
+270
 Tool Tip
 5
 0
@@ -92,7 +125,7 @@ X
 18
 Y
 3
-21
+18
 Width
 3
 828
@@ -104,8 +137,8 @@ Tool Tip
 0
 Caption
 5
-174
-For each subscriber class, assign either a share of the system in Year 1 with an annual growth rate or click Value/Sched and Edit to assign a subscription rate for each year.
+156
+For each subscriber class, assign a share of the system in Year 1 with an annual growth rate, or click Value/Sched and Edit to assign a share for each year.
 TextColour
 4
 0
@@ -134,16 +167,16 @@ Label
 Name
 5
 10
-object 712
+object 714
 X
 3
-15
+18
 Y
 3
-93
+216
 Width
 3
-147
+198
 Height
 3
 24
@@ -152,8 +185,8 @@ Tool Tip
 0
 Caption
 5
-6
-Anchor
+25
+Total subscribed capacity
 TextColour
 4
 0
@@ -168,7 +201,7 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
 1
@@ -185,10 +218,10 @@ Name
 object 74
 X
 3
-267
+321
 Y
 3
-69
+84
 Width
 3
 99
@@ -233,10 +266,10 @@ Name
 object 75
 X
 3
-165
+219
 Y
 3
-69
+84
 Width
 3
 99
@@ -281,10 +314,10 @@ Name
 object 77
 X
 3
-369
+423
 Y
 3
-69
+84
 Width
 3
 99
@@ -296,56 +329,8 @@ Tool Tip
 0
 Caption
 5
-16
-Growth rate %/yr
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 775
-X
-3
-15
-Y
-3
-174
-Width
-3
-147
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-5
-Total
+11
+Growth %/yr
 TextColour
 4
 0
@@ -374,16 +359,16 @@ Label
 Name
 5
 11
-object 7751
+object 7710
 X
 3
-15
+525
 Y
 3
-147
+84
 Width
 3
-147
+99
 Height
 3
 24
@@ -392,8 +377,8 @@ Tool Tip
 0
 Caption
 5
-10
-Subsidized
+17
+Retail rate $/kWh
 TextColour
 4
 0
@@ -414,131 +399,232 @@ AlignRight
 1
 AlignTop
 2
+0
+Numeric
+
+1
+17
+Name
+5
+18
+subscriber1_growth
+X
+3
+423
+Y
+3
+108
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+TextEntry
+
+1
+11
+Name
+5
+16
+subscriber1_name
+X
+3
+18
+Y
+3
+108
+Width
+3
+200
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+subscriber1_retail_rate
+X
+3
+525
+Y
+3
+108
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+SchedNumeric
+
+1
+12
+Name
+5
+17
+subscriber1_share
+X
+3
+219
+Y
+3
+108
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
 0
 Label
-
-1
-13
-Name
 5
-9
-object 79
-X
-3
-15
-Y
-3
-120
-Width
-3
-147
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-7
-General
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
+16
+Anchor Share (%)
+UseSchedule
 2
 1
-AlignRight
-2
-1
-AlignTop
+ScheduleOnly
 2
 0
-Numeric
-
-1
-17
-Name
+FixedLength
+3
+4294967295
+Description
 5
-29
-subscriber_growth_rate_anchor
-X
-3
-369
-Y
-3
-93
-Width
-3
-100
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
+57
+Enter an anchor subscriber share of system for each year.
 TabOrder
 3
-2
+1
 Numeric
 
 1
 17
 Name
 5
-30
-subscriber_growth_rate_general
+18
+subscriber2_growth
 X
 3
-369
+423
 Y
 3
-120
+135
 Width
 3
 100
@@ -587,20 +673,275 @@ BackColour
 TabOrder
 3
 4
+TextEntry
+
+1
+11
+Name
+5
+16
+subscriber2_name
+X
+3
+18
+Y
+3
+135
+Width
+3
+200
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Numeric
 
 1
 17
 Name
 5
-33
-subscriber_growth_rate_subsidized
+23
+subscriber2_retail_rate
 X
 3
-369
+525
 Y
 3
-147
+135
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4
+SchedNumeric
+
+1
+12
+Name
+5
+17
+subscriber2_share
+X
+3
+219
+Y
+3
+135
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Label
+5
+17
+General Share (%)
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+57
+Enter a general subscriber share of system for each year.
+TabOrder
+3
+3
+Numeric
+
+1
+17
+Name
+5
+18
+subscriber3_growth
+X
+3
+423
+Y
+3
+162
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+TextEntry
+
+1
+11
+Name
+5
+16
+subscriber3_name
+X
+3
+18
+Y
+3
+162
+Width
+3
+200
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+subscriber3_retail_rate
+X
+3
+525
+Y
+3
+162
 Width
 3
 100
@@ -655,100 +996,14 @@ SchedNumeric
 12
 Name
 5
-23
-subscriber_share_anchor
-X
-3
-165
-Y
-3
-93
-Width
-3
-100
-Height
-3
-24
-Tool Tip
-5
-0
-Label
-5
-16
-Anchor Share (%)
-UseSchedule
-2
-1
-ScheduleOnly
-2
-0
-FixedLength
-3
-4294967295
-Description
-5
-57
-Enter an anchor subscriber share of system for each year.
-TabOrder
-3
-1
-SchedNumeric
-
-1
-12
-Name
-5
-24
-subscriber_share_general
-X
-3
-165
-Y
-3
-120
-Width
-3
-100
-Height
-3
-24
-Tool Tip
-5
-0
-Label
-5
 17
-General Share (%)
-UseSchedule
-2
-1
-ScheduleOnly
-2
-0
-FixedLength
-3
-4294967295
-Description
-5
-57
-Enter a general subscriber share of system for each year.
-TabOrder
-3
-3
-SchedNumeric
-
-1
-12
-Name
-5
-27
-subscriber_share_subsidized
+subscriber3_share
 X
 3
-165
+219
 Y
 3
-147
+162
 Width
 3
 100
@@ -785,13 +1040,224 @@ Numeric
 Name
 5
 18
-ui_share_kw_anchor
+subscriber4_growth
 X
 3
-267
+423
 Y
 3
-93
+189
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+TextEntry
+
+1
+11
+Name
+5
+16
+subscriber4_name
+X
+3
+18
+Y
+3
+189
+Width
+3
+200
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+subscriber4_retail_rate
+X
+3
+525
+Y
+3
+189
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+SchedNumeric
+
+1
+12
+Name
+5
+17
+subscriber4_share
+X
+3
+219
+Y
+3
+189
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Label
+5
+20
+Subsidized Share (%)
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+60
+Enter a subsidized subscriber share of system for each year.
+TabOrder
+3
+5
+Numeric
+
+1
+17
+Name
+5
+13
+ui_share_kw_1
+X
+3
+321
+Y
+3
+108
 Width
 3
 100
@@ -846,14 +1312,14 @@ Numeric
 17
 Name
 5
-19
-ui_share_kw_general
+13
+ui_share_kw_2
 X
 3
-267
+321
 Y
 3
-120
+135
 Width
 3
 100
@@ -908,14 +1374,76 @@ Numeric
 17
 Name
 5
-22
-ui_share_kw_subsidized
+13
+ui_share_kw_3
 X
 3
-267
+321
 Y
 3
-147
+162
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+13
+ui_share_kw_4
+X
+3
+321
+Y
+3
+189
 Width
 3
 100
@@ -974,13 +1502,13 @@ Name
 ui_total_capacity
 X
 3
-708
+321
 Y
 3
-69
+60
 Width
 3
-90
+100
 Height
 3
 24
@@ -1036,10 +1564,10 @@ Name
 ui_total_subscribed_kw
 X
 3
-267
+321
 Y
 3
-174
+216
 Width
 3
 100
@@ -1098,10 +1626,10 @@ Name
 ui_total_subscribed_share
 X
 3
-165
+219
 Y
 3
-174
+216
 Width
 3
 100
@@ -1151,13 +1679,27 @@ TabOrder
 3
 4294967295
 
-12
-subscriber_growth_rate_anchor
+24
+enable_subscriber_retail_rate
 3
 1
-Anchor subscriber growth rate
+Enable subscriber retail rate
+0/1
+Community Solar Subscribers
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+subscriber1_growth
+3
+1
+Subscriber class 1 growth rate
 %/yr
-Community Solar
+Community Solar Subscribers
 0
 3
 1
@@ -1166,12 +1708,24 @@ Community Solar
 1
 0
 Numeric
-subscriber_growth_rate_general
+subscriber1_name
+3
+4
+Subscriber class 1 name
+ 
+Community Solar Subscribers
+0
+1
+1
+4
+0
+TextEntry
+subscriber1_retail_rate
 3
 1
-General susbscriber growth rate
-%/yr
-Community Solar
+Subscriber class 1 retail rate`
+$/kWh
+Community Solar Subscribers
 0
 3
 1
@@ -1180,12 +1734,26 @@ Community Solar
 1
 0
 Numeric
-subscriber_growth_rate_subsidized
+subscriber1_share
+3
+2
+Subscriber class 1 share of system
+%/nameplate capacity
+Community Solar Subscribers
+0
 3
 1
-Subsidized subscriber growth rate
+2
+1
+1
+0
+SchedNumeric
+subscriber2_growth
+3
+1
+Subscriber class 2 growth rate
 %/yr
-Community Solar
+Community Solar Subscribers
 0
 3
 1
@@ -1194,12 +1762,38 @@ Community Solar
 1
 0
 Numeric
-subscriber_share_anchor
+subscriber2_name
+3
+4
+Subscriber class 2 name
+ 
+Community Solar Subscribers
+0
+1
+1
+4
+0
+TextEntry
+subscriber2_retail_rate
+3
+1
+Subscriber class 2 retail rate`
+$/kWh
+Community Solar Subscribers
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subscriber2_share
 3
 2
-Anchor subscriber share of system
+Subscriber class 2 share of system
 %/nameplate capacity
-Community Solar
+Community Solar Subscribers
 0
 3
 1
@@ -1208,12 +1802,52 @@ Community Solar
 1
 0
 SchedNumeric
-subscriber_share_general
+subscriber3_growth
+3
+1
+Subscriber class 3 growth rate
+%/yr
+Community Solar Subscribers
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subscriber3_name
+3
+4
+Subscriber class 3 name
+ 
+Community Solar Subscribers
+0
+1
+1
+4
+0
+TextEntry
+subscriber3_retail_rate
+3
+1
+Subscriber class 3 retail rate`
+$/kWh
+Community Solar Subscribers
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subscriber3_share
 3
 2
-General subscriber  share of system
+Subscriber class 3 share of system
 %/nameplate capacity
-Community Solar
+Community Solar Subscribers
 0
 3
 1
@@ -1222,12 +1856,52 @@ Community Solar
 1
 0
 SchedNumeric
-subscriber_share_subsidized
+subscriber4_growth
+3
+1
+Subscriber class 4 growth rate
+%/yr
+Community Solar Subscribers
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subscriber4_name
+3
+4
+Subscriber class 4 name
+ 
+Community Solar Subscribers
+0
+1
+1
+4
+0
+TextEntry
+subscriber4_retail_rate
+3
+1
+Subscriber class 4 retail rate`
+$/kWh
+Community Solar Subscribers
+0
+3
+1
+1
+1
+1
+0
+Numeric
+subscriber4_share
 3
 2
-Subsidized subscriber share of system
+Subscriber class 4 share of system
 %/nameplate capacity
-Community Solar
+Community Solar Subscribers
 0
 3
 1
@@ -1236,12 +1910,12 @@ Community Solar
 1
 0
 SchedNumeric
-ui_share_kw_anchor
+ui_share_kw_1
 3
 1
-Anchor subscriber share of system in Year 1
+Subscriber class 1 share of system in Year 1
 kW
-Community Solar
+Community Solar Subscribers
 0
 9
 1
@@ -1250,12 +1924,12 @@ Community Solar
 1
 0
 Numeric
-ui_share_kw_general
+ui_share_kw_2
 3
 1
-General subscriber share of system in Year 1
+Subscriber class 2 share of system in Year 1
 kW
-Community Solar
+Community Solar Subscribers
 0
 9
 1
@@ -1264,12 +1938,26 @@ Community Solar
 1
 0
 Numeric
-ui_share_kw_subsidized
+ui_share_kw_3
 3
 1
-Subsidized subscriber share of system in Year 1
+Subscriber class 3 share of system in Year 1
 kW
-Community Solar
+Community Solar Subscribers
+0
+9
+1
+1
+1
+1
+0
+Numeric
+ui_share_kw_4
+3
+1
+Subscriber class 4 share of system in Year 1
+kW
+Community Solar Subscribers
 0
 9
 1
@@ -1283,7 +1971,7 @@ ui_total_capacity
 1
 Total system capacity
 kW
-Community Solar
+Community Solar Subscribers
 0
 4
 1
@@ -1297,7 +1985,7 @@ ui_total_subscribed_kw
 1
 Total subscribed capacity in first year
 kW
-Community Solar
+Community Solar Subscribers
 0
 5
 1
@@ -1311,7 +1999,7 @@ ui_total_subscribed_share
 1
 Total subscribed share in first year
 %/nameplate capacity
-Community Solar
+Community Solar Subscribers
 0
 5
 1
@@ -1321,68 +2009,88 @@ Community Solar
 0
 Numeric
 
-729
+792
 equations{'ui_total_capacity'} = define() {
 	return ${system_capacity};
 };
 
 equations{'ui_total_subscribed_kw'} = define() {
-	return ${ui_share_kw_anchor}
-	+ ${ui_share_kw_general}
-	+ ${ui_share_kw_subsidized};
+	return ${ui_share_kw_1}
+	+ ${ui_share_kw_2}
+	+ ${ui_share_kw_3}
+	+ ${ui_share_kw_4};
 };
 
 equations{'ui_total_subscribed_share'} = define() {
-	return ${subscriber_share_anchor}[0]
-	+ ${subscriber_share_general}[0]
-	+ ${subscriber_share_subsidized}[0];
+	return ${subscriber1_share}[0]
+	+ ${subscriber2_share}[0]
+	+ ${subscriber3_share}[0]
+	+ ${subscriber4_share}[0];
 };
 
-equations{'ui_share_kw_anchor'} = define() {
-	return ${subscriber_share_anchor}[0]/100 * ${system_capacity};
+equations{'ui_share_kw_1'} = define() {
+	return ${subscriber1_share}[0]/100 * ${system_capacity};
 };
 
-equations{'ui_share_kw_general'} = define() {
-	return ${subscriber_share_general}[0]/100 * ${system_capacity};
+equations{'ui_share_kw_2'} = define() {
+	return ${subscriber2_share}[0]/100 * ${system_capacity};
 };
 
-equations{'ui_share_kw_subsidized'} = define() {
-	return ${subscriber_share_subsidized}[0]/100 * ${system_capacity};
+equations{'ui_share_kw_3'} = define() {
+	return ${subscriber3_share}[0]/100 * ${system_capacity};
 };
 
-1723
+equations{'ui_share_kw_4'} = define() {
+	return ${subscriber4_share}[0]/100 * ${system_capacity};
+};
+
+2276
 on_load{'Financial CS Subscribers'} = define()
 {
-	property('subscriber_share_anchor','FixedLength',${analysis_period});
-	property('subscriber_share_general','FixedLength',${analysis_period});
-	property('subscriber_share_subsidized','FixedLength',${analysis_period});
+	property('subscriber1_share','FixedLength',${analysis_period});
+	property('subscriber2_share','FixedLength',${analysis_period});
+	property('subscriber3_share','FixedLength',${analysis_period});
+	property('subscriber4_share','FixedLength',${analysis_period});
 	enable_growth_rate();
 	subscriber_share_message();
+	enable_retail_rate();
 };
 
-on_change{'subscriber_share_anchor'} = define()
+on_change{'enable_subscriber_retail_rate'} = define()
 {
-	enable('subscriber_growth_rate_anchor', #${subscriber_share_anchor} == 1 );
+	enable_retail_rate();
+};
+
+on_change{'subscriber1_share'} = define()
+{
+	enable('subscriber1_growth_rate', #${subscriber1_share} == 1 );
 	subscriber_share_message();
 };
 
-on_change{'subscriber_share_general'} = define()
+on_change{'subscriber2_share'} = define()
 {
-	enable('subscriber_growth_rate_general', #${subscriber_share_general} == 1 );
+	enable('subscriber2_growth_rate', #${subscriber2_share} == 1 );
 	subscriber_share_message();
 };
 
-on_change{'subscriber_share_subsidized'} = define()
+on_change{'subscriber3_share'} = define()
 {
-	enable('subscriber_growth_rate_subsidized', #${subscriber_share_subsidized} == 1 );
+	enable('subscriber3_growth_rate', #${subscriber3_share} == 1 );
+	subscriber_share_message();
+};
+
+on_change{'subscriber4_share'} = define()
+{
+	enable('subscriber4_growth_rate', #${subscriber4_share} == 1 );
 	subscriber_share_message();
 };
 
 function enable_growth_rate() 
 {
-	enable('subscriber_growth_rate_anchor', #${subscriber_share_anchor} == 1 ); 
-	enable('subscriber_growth_rate_general', #${subscriber_share_general} == 1 ); 
-	enable('subscriber_growth_rate_subsidized', #${subscriber_share_subsidized} == 1 ); 
+	enable('subscriber1_growth_rate', #${subscriber1_share} == 1 ); 
+	enable('subscriber2_growth_rate', #${subscriber2_share} == 1 ); 
+	enable('subscriber3_growth_rate', #${subscriber3_share} == 1 ); 
+	enable('subscriber4_growth_rate', #${subscriber4_share} == 1 ); 
 }
 
 function subscriber_share_message()
@@ -1398,4 +2106,13 @@ function subscriber_share_message()
 		color = 'black';
 	}
 	property('msg_subscriber_share','Caption',msg);
-	property('msg_subscriber_share','TextColour',color);}
+	property('msg_subscriber_share','TextColour',color);
+}
+
+function enable_retail_rate()
+{
+	enable('subscriber1_retail_rate',${enable_subscriber_retail_rate});
+	enable('subscriber2_retail_rate',${enable_subscriber_retail_rate});
+	enable('subscriber3_retail_rate',${enable_subscriber_retail_rate});
+	enable('subscriber4_retail_rate',${enable_subscriber_retail_rate});
+}
