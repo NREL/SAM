@@ -1,7 +1,7 @@
 Battery Dispatch Options BTM
 1056
 188
-6
+8
 CheckBox
 
 1
@@ -101,6 +101,39 @@ State
 TabOrder
 3
 6
+CheckBox
+
+1
+9
+Name
+5
+45
+batt_dispatch_charge_only_system_exceeds_load
+X
+3
+585
+Y
+3
+84
+Width
+3
+346
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+55
+Charge from system only when system output exceeds load
+State
+2
+1
+TabOrder
+3
+4294967295
 RadioChoice
 
 1
@@ -144,6 +177,39 @@ Horizontal
 TabOrder
 3
 1
+CheckBox
+
+1
+9
+Name
+5
+48
+batt_dispatch_discharge_only_load_exceeds_system
+X
+3
+585
+Y
+3
+60
+Width
+3
+346
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+54
+Discharge battery only when load exceeds system output
+State
+2
+1
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -222,7 +288,7 @@ Bold
 2
 1
 
-8
+10
 batt_dispatch_auto_can_charge
 3
 1
@@ -265,6 +331,20 @@ Battery Dispatch
 1
 0
 CheckBox
+batt_dispatch_charge_only_system_exceeds_load
+3
+1
+ 
+ 
+ 
+0
+3
+1
+1
+1
+1
+1
+CheckBox
 batt_dispatch_choice_ui
 3
 1
@@ -280,6 +360,20 @@ Peak shaving|Input grid power targets|Input battery power targets|Manual dispatc
 1
 0
 RadioChoice
+batt_dispatch_discharge_only_load_exceeds_system
+3
+1
+ 
+ 
+ 
+0
+3
+1
+1
+1
+1
+1
+CheckBox
 batt_dispatch_load_forecast_choice
 3
 1
