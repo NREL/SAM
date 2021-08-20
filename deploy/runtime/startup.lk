@@ -184,10 +184,13 @@ function setup_battery_pages_front_of_meter()
 			   ] ],
 			  { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom' } );
 	*/
-	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
+	addpage( [
+		[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ],
+		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
+		[{'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
 		[{'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}]],
-			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl',
+		],
+			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 
 

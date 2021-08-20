@@ -2901,7 +2901,7 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 6403
 on_load{'Battery Dispatch Manual'}=define()
 {	
-	value('batt_dispatch_choice', 4);
+	value('batt_dispatch_choice', 3);
 	show_label();
 	toggle_dispatch();
 		
@@ -2996,7 +2996,7 @@ function toggle_dispatch()
 	if (front_of_meter == true)
 	{
 		mode = ${batt_dispatch_choice};
-		if (mode == 4)
+		if (mode == 3)
 		{
 			allow_grid_charge = true;
 			enable_manual_inputs(true, allow_pv_charge, allow_grid_charge, allow_discharge);
@@ -3012,7 +3012,7 @@ function toggle_dispatch()
 	{
 		mode = ${batt_dispatch_choice};
 
-		if (mode != 4)
+		if (mode != 3)
 			enable_manual_inputs(false, false, false, false);
 		else
 		{
@@ -3029,7 +3029,7 @@ function toggle_dispatch()
 function toggle_dispatch_target()
 {
 	mode = ${batt_dispatch_choice};
-	if (mode != 2)
+	if (mode != 1)
 		enable_target_inputs(false);
 	else
 		enable_target_inputs(true);
