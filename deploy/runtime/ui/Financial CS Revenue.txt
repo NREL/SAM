@@ -294,11 +294,12 @@ Height
 24
 Tool Tip
 5
-0
+118
+Click Value/Sched to switch between a single value with an escalation rate and annual values over the analysis period.
 Label
 5
-22
-Anchor Payments ($/yr)
+15
+Payments ($/yr)
 UseSchedule
 2
 1
@@ -310,8 +311,8 @@ FixedLength
 4294967295
 Description
 5
-56
-Enter an anchor subscriber payment amount for each year.
+48
+Enter a subscriber payment amount for each year.
 TabOrder
 3
 1
@@ -523,11 +524,12 @@ Height
 24
 Tool Tip
 5
-0
+118
+Click Value/Sched to switch between a single value with an escalation rate and annual values over the analysis period.
 Label
 5
-23
-General Payments ($/yr)
+15
+Payments ($/yr)
 UseSchedule
 2
 1
@@ -539,8 +541,8 @@ FixedLength
 4294967295
 Description
 5
-56
-Enter a general subscriber payment amount for each year.
+48
+Enter a subscriber payment amount for each year.
 TabOrder
 3
 3
@@ -752,11 +754,12 @@ Height
 24
 Tool Tip
 5
-0
+118
+Click Value/Sched to switch between a single value with an escalation rate and annual values over the analysis period.
 Label
 5
-26
-Subsidized Payments (%/yr)
+15
+Payments ($/yr)
 UseSchedule
 2
 1
@@ -768,8 +771,8 @@ FixedLength
 4294967295
 Description
 5
-59
-Enter a subsidized subscriber payment amount for each year.
+48
+Enter a subscriber payment amount for each year.
 TabOrder
 3
 5
@@ -981,11 +984,12 @@ Height
 24
 Tool Tip
 5
-0
+118
+Click Value/Sched to switch between a single value with an escalation rate and annual values over the analysis period.
 Label
 5
-26
-Subsidized Payments (%/yr)
+15
+Payments ($/yr)
 UseSchedule
 2
 1
@@ -997,8 +1001,8 @@ FixedLength
 4294967295
 Description
 5
-59
-Enter a subsidized subscriber payment amount for each year.
+48
+Enter a subscriber payment amount for each year.
 TabOrder
 3
 5
@@ -1652,20 +1656,6 @@ Community Solar Revenue
 1
 0
 Numeric
-subscriber_unsubsidized_generation_rate
-3
-1
-Unsubscribed generation rate
-$/kWh
-Community Solar Revenue
-0
-3
-1
-1
-1
-1
-0
-Numeric
 ui_subscriber1_name
 3
 4
@@ -1714,6 +1704,20 @@ Community Solar Revenue
 4
 0
 TextEntry
+unsubscribed_generation_rate
+3
+1
+Unsubscribed generation rate
+$/kWh
+Community Solar Revenue
+0
+2
+1
+1
+1
+1
+0
+Numeric
 
 314
 equations{'ui_subscriber1_name'} = define() {
@@ -1731,32 +1735,33 @@ equations{'ui_subscriber3_name'} = define() {
 equations{'ui_subscriber4_name'} = define() {
 	return ${subscriber4_name};
 };
-1327
+1328
 on_load{'Financial CS Revenue'} = define()
 {
-	enable_revenue_escalation_rate();
 	property('subscriber1_payment_annual','FixedLength',${analysis_period});
 	property('subscriber2_payment_annual','FixedLength',${analysis_period});
 	property('subscriber3_payment_annual','FixedLength',${analysis_period});
 	property('subscriber4_payment_annual','FixedLength',${analysis_period});
+	enable_revenue_escalation_rate();
 };
 
-on_change('subscriber1_payment_annual') = define()
+on_change{'subscriber1_payment_annual'} = define()
 {
 	enable('subscriber1_payment_annual_escal', #${subscriber1_payment_annual} == 1 ); 
 };
 
-on_change('subscriber2_payment_annual') = define()
+
+on_change{'subscriber2_payment_annual'} = define()
 {
 	enable('subscriber2_payment_annual_escal', #${subscriber2_payment_annual} == 1 ); 
 };
 
-on_change('subscriber3_payment_annual') = define()
+on_change{'subscriber3_payment_annual'} = define()
 {
 	enable('subscriber3_payment_annual_escal', #${subscriber3_payment_annual} == 1 ); 
 };
 
-on_change('subscriber4_payment_annual') = define()
+on_change{'subscriber4_payment_annual'} = define()
 {
 	enable('subscriber4_payment_annual_escal', #${subscriber4_payment_annual} == 1 ); 
 };

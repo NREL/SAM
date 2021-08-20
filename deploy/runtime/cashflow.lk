@@ -137,9 +137,11 @@ function cf_revenue()
 
 	if ( fin == 'Community Solar')
 	{
-		cfline('Anchor subscriber payment revenue', -1, 0);
-		cfline('General subscriber payment revenue', -1, 0);
-		cfline('Subsidized subscriber payment revenue', -1, 0);
+		cfline('cf_community_solar_subscriber1_revenue', -1, 0);
+		cfline('cf_community_solar_subscriber2_revenue', -1, 0);
+		cfline('cf_community_solar_subscriber3_revenue', -1, 0);
+		cfline('cf_community_solar_subscriber4_revenue', -1, 0);
+		cfline('cf_community_solar_unsubscribed_revenue', -1, 0);
 	}
 
 	if (tech == 'Fuel Cell')
@@ -176,8 +178,11 @@ function cf_om_expenses()
 	
 	if ( fin == 'Community Solar')
 	{
-		cfline('Subscriber acquisition expense', -1, 0);
-		cfline('Subscriber management expense', -1, 0);
+		cfline('cf_community_solar_upfront', -1, 0);
+		cfline('cf_community_solar_upfront_per_capacity', -1, 0);
+		cfline('cf_community_solar_recurring_fixed', -1, 0);
+		cfline('cf_community_solar_recurring_capacity', -1, 0);
+		cfline('cf_community_solar_recurring_generation', -1, 0);
 		cfline('Land lease payments expense', -1, 0); // TO DO Move this to standard om expenses 
 	}
 	 

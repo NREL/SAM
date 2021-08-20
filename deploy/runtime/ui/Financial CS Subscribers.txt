@@ -1,7 +1,7 @@
 Financial CS Subscribers
 858
 274
-32
+37
 CheckBox
 
 1
@@ -12,19 +12,20 @@ Name
 enable_subscriber_retail_rate
 X
 3
-522
+543
 Y
 3
 60
 Width
 3
-306
+303
 Height
 3
 24
 Tool Tip
 5
-0
+104
+Choose this option to include a retail cost of electricity by subscriber class in the project cash flow.
 Caption
 5
 46
@@ -122,23 +123,23 @@ Name
 object 7
 X
 3
-18
+648
 Y
 3
-18
+84
 Width
 3
-828
+99
 Height
 3
-39
+24
 Tool Tip
 5
 0
 Caption
 5
-156
-For each subscriber class, assign a share of the system in Year 1 with an annual growth rate, or click Value/Sched and Edit to assign a share for each year.
+17
+Escalation (%/yr)
 TextColour
 4
 0
@@ -153,13 +154,13 @@ FontSize
 0
 WordWrap
 2
-1
+0
 AlignRight
 2
-0
+1
 AlignTop
 2
-1
+0
 Label
 
 1
@@ -170,7 +171,7 @@ Name
 object 714
 X
 3
-18
+20
 Y
 3
 216
@@ -216,6 +217,54 @@ Name
 5
 9
 object 74
+X
+3
+18
+Y
+3
+18
+Width
+3
+828
+Height
+3
+39
+Tool Tip
+5
+0
+Caption
+5
+156
+For each subscriber class, assign a share of the system in Year 1 with an annual growth rate, or click Value/Sched and Edit to assign a share for each year.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 746
 X
 3
 321
@@ -362,7 +411,7 @@ Name
 object 7710
 X
 3
-525
+546
 Y
 3
 84
@@ -484,7 +533,8 @@ Height
 24
 Tool Tip
 5
-0
+90
+Type a name for Subscriber Class 1, for example Anchor, Commercial, Residential, LMI, etc.
 Text
 5
 0
@@ -506,17 +556,60 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 23
 subscriber1_retail_rate
 X
 3
-525
+546
+Y
+3
+108
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+113
+Click Value/Sched to switch between a single value with a growth rate and annual values over the analysis period.
+Label
+5
+19
+Retail rate ($/kWh)
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+0
+TabOrder
+3
+1
+Numeric
+
+1
+17
+Name
+5
+29
+subscriber1_retail_rate_escal
+X
+3
+648
 Y
 3
 108
@@ -590,11 +683,12 @@ Height
 24
 Tool Tip
 5
-0
+113
+Click Value/Sched to switch between a single value with a growth rate and annual values over the analysis period.
 Label
 5
-16
-Anchor Share (%)
+19
+Share of System (%)
 UseSchedule
 2
 1
@@ -606,8 +700,8 @@ FixedLength
 4294967295
 Description
 5
-57
-Enter an anchor subscriber share of system for each year.
+49
+Enter a subscriber share of system for each year.
 TabOrder
 3
 1
@@ -695,7 +789,8 @@ Height
 24
 Tool Tip
 5
-0
+90
+Type a name for Subscriber Class 2, for example Anchor, Commercial, Residential, LMI, etc.
 Text
 5
 0
@@ -717,17 +812,60 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 23
 subscriber2_retail_rate
 X
 3
-525
+546
+Y
+3
+135
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+113
+Click Value/Sched to switch between a single value with a growth rate and annual values over the analysis period.
+Label
+5
+19
+Retail rate ($/kWh)
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+0
+TabOrder
+3
+3
+Numeric
+
+1
+17
+Name
+5
+29
+subscriber2_retail_rate_escal
+X
+3
+648
 Y
 3
 135
@@ -801,11 +939,12 @@ Height
 24
 Tool Tip
 5
-0
+113
+Click Value/Sched to switch between a single value with a growth rate and annual values over the analysis period.
 Label
 5
-17
-General Share (%)
+19
+Share of System (%)
 UseSchedule
 2
 1
@@ -817,8 +956,8 @@ FixedLength
 4294967295
 Description
 5
-57
-Enter a general subscriber share of system for each year.
+49
+Enter a subscriber share of system for each year.
 TabOrder
 3
 3
@@ -906,7 +1045,8 @@ Height
 24
 Tool Tip
 5
-0
+90
+Type a name for Subscriber Class 3, for example Anchor, Commercial, Residential, LMI, etc.
 Text
 5
 0
@@ -928,17 +1068,60 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 23
 subscriber3_retail_rate
 X
 3
-525
+546
+Y
+3
+162
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+113
+Click Value/Sched to switch between a single value with a growth rate and annual values over the analysis period.
+Label
+5
+19
+Retail rate ($/kWh)
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+0
+TabOrder
+3
+5
+Numeric
+
+1
+17
+Name
+5
+29
+subscriber3_retail_rate_escal
+X
+3
+648
 Y
 3
 162
@@ -1012,11 +1195,12 @@ Height
 24
 Tool Tip
 5
-0
+113
+Click Value/Sched to switch between a single value with a growth rate and annual values over the analysis period.
 Label
 5
-20
-Subsidized Share (%)
+19
+Share of System (%)
 UseSchedule
 2
 1
@@ -1028,8 +1212,8 @@ FixedLength
 4294967295
 Description
 5
-60
-Enter a subsidized subscriber share of system for each year.
+49
+Enter a subscriber share of system for each year.
 TabOrder
 3
 5
@@ -1117,7 +1301,8 @@ Height
 24
 Tool Tip
 5
-0
+90
+Type a name for Subscriber Class 4, for example Anchor, Commercial, Residential, LMI, etc.
 Text
 5
 0
@@ -1139,17 +1324,60 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 23
 subscriber4_retail_rate
 X
 3
-525
+546
+Y
+3
+189
+Width
+3
+100
+Height
+3
+24
+Tool Tip
+5
+113
+Click Value/Sched to switch between a single value with a growth rate and annual values over the analysis period.
+Label
+5
+19
+Retail rate ($/kWh)
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+0
+TabOrder
+3
+5
+Numeric
+
+1
+17
+Name
+5
+29
+subscriber4_retail_rate_escal
+X
+3
+648
 Y
 3
 189
@@ -1223,11 +1451,12 @@ Height
 24
 Tool Tip
 5
-0
+113
+Click Value/Sched to switch between a single value with a growth rate and annual values over the analysis period.
 Label
 5
-20
-Subsidized Share (%)
+19
+Share of System (%)
 UseSchedule
 2
 1
@@ -1239,8 +1468,8 @@ FixedLength
 4294967295
 Description
 5
-60
-Enter a subsidized subscriber share of system for each year.
+49
+Enter a subscriber share of system for each year.
 TabOrder
 3
 5
@@ -1679,7 +1908,7 @@ TabOrder
 3
 4294967295
 
-24
+28
 enable_subscriber_retail_rate
 3
 1
@@ -1722,9 +1951,23 @@ Community Solar Subscribers
 TextEntry
 subscriber1_retail_rate
 3
-1
-Subscriber class 1 retail rate`
+2
+Subscriber class 1 retail rate
 $/kWh
+Community Solar Subscribers
+0
+3
+1
+2
+1
+1
+0
+SchedNumeric
+subscriber1_retail_rate_escal
+3
+1
+Subscriber class 1 retail rate escalation
+%/yr
 Community Solar Subscribers
 0
 3
@@ -1776,9 +2019,23 @@ Community Solar Subscribers
 TextEntry
 subscriber2_retail_rate
 3
-1
-Subscriber class 2 retail rate`
+2
+Subscriber class 2 retail rate
 $/kWh
+Community Solar Subscribers
+0
+3
+1
+2
+1
+1
+0
+SchedNumeric
+subscriber2_retail_rate_escal
+3
+1
+Subscriber class 2 retail rate escalation
+%/yr
 Community Solar Subscribers
 0
 3
@@ -1830,9 +2087,23 @@ Community Solar Subscribers
 TextEntry
 subscriber3_retail_rate
 3
-1
-Subscriber class 3 retail rate`
+2
+Subscriber class 3 retail rate
 $/kWh
+Community Solar Subscribers
+0
+3
+1
+2
+1
+1
+0
+SchedNumeric
+subscriber3_retail_rate_escal
+3
+1
+Subscriber class 3 retail rate escalation
+%/yr
 Community Solar Subscribers
 0
 3
@@ -1884,9 +2155,23 @@ Community Solar Subscribers
 TextEntry
 subscriber4_retail_rate
 3
-1
-Subscriber class 4 retail rate`
+2
+Subscriber class 4 retail rate
 $/kWh
+Community Solar Subscribers
+0
+3
+1
+2
+1
+1
+0
+SchedNumeric
+subscriber4_retail_rate_escal
+3
+1
+Subscriber class 4 retail rate escalation
+%/yr
 Community Solar Subscribers
 0
 3
@@ -1973,7 +2258,7 @@ Total system capacity
 kW
 Community Solar Subscribers
 0
-4
+8
 1
 1
 1
@@ -1987,7 +2272,7 @@ Total subscribed capacity in first year
 kW
 Community Solar Subscribers
 0
-5
+9
 1
 1
 1
@@ -2001,7 +2286,7 @@ Total subscribed share in first year
 %/nameplate capacity
 Community Solar Subscribers
 0
-5
+9
 1
 1
 1
@@ -2044,14 +2329,23 @@ equations{'ui_share_kw_4'} = define() {
 	return ${subscriber4_share}[0]/100 * ${system_capacity};
 };
 
-2276
+4123
 on_load{'Financial CS Subscribers'} = define()
 {
 	property('subscriber1_share','FixedLength',${analysis_period});
 	property('subscriber2_share','FixedLength',${analysis_period});
 	property('subscriber3_share','FixedLength',${analysis_period});
 	property('subscriber4_share','FixedLength',${analysis_period});
+	property('subscriber1_retail_rate','FixedLength',${analysis_period});
+	property('subscriber2_retail_rate','FixedLength',${analysis_period});
+	property('subscriber3_retail_rate','FixedLength',${analysis_period});
+	property('subscriber4_retail_rate','FixedLength',${analysis_period});
+	enable('subscriber1_retail_rate_escal', #${subscriber1_retail_rate} == 1 );
+	enable('subscriber2_retail_rate_escal', #${subscriber2_retail_rate} == 1 );
+	enable('subscriber3_retail_rate_escal', #${subscriber3_retail_rate} == 1 );
+	enable('subscriber4_retail_rate_escal', #${subscriber4_retail_rate} == 1 );
 	enable_growth_rate();
+	enable_retail_rate_escalation();
 	subscriber_share_message();
 	enable_retail_rate();
 };
@@ -2061,36 +2355,65 @@ on_change{'enable_subscriber_retail_rate'} = define()
 	enable_retail_rate();
 };
 
+on_change{'subscriber1_retail_rate'} = define()
+{
+	enable('subscriber1_retail_rate_escal', #${subscriber1_retail_rate} == 1 );
+};
+
+on_change{'subscriber2_retail_rate'} = define()
+{
+	enable('subscriber2_retail_rate_escal', #${subscriber2_retail_rate} == 1 );
+};
+
+on_change{'subscriber3_retail_rate'} = define()
+{
+	enable('subscriber3_retail_rate_escal', #${subscriber3_retail_rate} == 1 );
+};
+
+on_change{'subscriber4_retail_rate'} = define()
+{
+	enable('subscriber4_retail_rate_escal', #${subscriber4_retail_rate} == 1 );
+};
+
+
 on_change{'subscriber1_share'} = define()
 {
-	enable('subscriber1_growth_rate', #${subscriber1_share} == 1 );
+	enable('subscriber1_growth', #${subscriber1_share} == 1 );
 	subscriber_share_message();
 };
 
 on_change{'subscriber2_share'} = define()
 {
-	enable('subscriber2_growth_rate', #${subscriber2_share} == 1 );
+	enable('subscriber2_growth', #${subscriber2_share} == 1 );
 	subscriber_share_message();
 };
 
 on_change{'subscriber3_share'} = define()
 {
-	enable('subscriber3_growth_rate', #${subscriber3_share} == 1 );
+	enable('subscriber3_growth', #${subscriber3_share} == 1 );
 	subscriber_share_message();
 };
 
 on_change{'subscriber4_share'} = define()
 {
-	enable('subscriber4_growth_rate', #${subscriber4_share} == 1 );
+	enable('subscriber4_growth', #${subscriber4_share} == 1 );
 	subscriber_share_message();
 };
 
 function enable_growth_rate() 
 {
-	enable('subscriber1_growth_rate', #${subscriber1_share} == 1 ); 
-	enable('subscriber2_growth_rate', #${subscriber2_share} == 1 ); 
-	enable('subscriber3_growth_rate', #${subscriber3_share} == 1 ); 
-	enable('subscriber4_growth_rate', #${subscriber4_share} == 1 ); 
+	enable('subscriber1_growth', #${subscriber1_share} == 1 ); 
+	enable('subscriber2_growth', #${subscriber2_share} == 1 ); 
+	enable('subscriber3_growth', #${subscriber3_share} == 1 ); 
+	enable('subscriber4_growth', #${subscriber4_share} == 1 ); 
+}
+
+function enable_retail_rate_escalation()
+{
+	enable('subscriber1_retail_rate_escal', #${subscriber1_retail_rate} == 1 );
+	enable('subscriber2_retail_rate_escal', #${subscriber2_retail_rate} == 1 );
+	enable('subscriber3_retail_rate_escal', #${subscriber3_retail_rate} == 1 );
+	enable('subscriber4_retail_rate_escal', #${subscriber4_retail_rate} == 1 );
 }
 
 function subscriber_share_message()
@@ -2115,4 +2438,12 @@ function enable_retail_rate()
 	enable('subscriber2_retail_rate',${enable_subscriber_retail_rate});
 	enable('subscriber3_retail_rate',${enable_subscriber_retail_rate});
 	enable('subscriber4_retail_rate',${enable_subscriber_retail_rate});
+	enable('subscriber1_retail_rate_escal',${enable_subscriber_retail_rate});
+	enable('subscriber2_retail_rate_escal',${enable_subscriber_retail_rate});
+	enable('subscriber3_retail_rate_escal',${enable_subscriber_retail_rate});
+	enable('subscriber4_retail_rate_escal',${enable_subscriber_retail_rate});
+	if ( ${enable_subscriber_retail_rate} )
+	{
+		enable_retail_rate_escalation();
+	}
 }
