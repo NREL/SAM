@@ -114,7 +114,7 @@ X
 585
 Y
 3
-84
+81
 Width
 3
 346
@@ -480,9 +480,10 @@ equations{'batt_load_ac_forecast_escalation'} = define()
 		return [0];
 	}
 };
-1707
+2123
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
+	enable_disable_powerflow_options();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
 	{ 
 		msg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options.';
@@ -532,3 +533,16 @@ function show_hide_charge_options()
 	}
 }
 
+function enable_disable_powerflow_options()
+{
+	// 1 is AC
+	ac_or_dc = value('batt_ac_or_dc');
+	if (ac_or_dc == 0) {
+		// This option is only relevant to AC, uncheck for DC
+		value('batt_dispatch_charge_only_system_exceeds_load', 0);
+		enable('batt_dispatch_charge_only_system_exceeds_load', false);
+	}
+	else {
+		enable('batt_dispatch_charge_only_system_exceeds_load', true);
+	}
+}
