@@ -1,5 +1,5 @@
 1
-514
+515
 LeadAcid_q10
 1
 1
@@ -555,7 +555,7 @@ batt_dispatch_choice
 1
 1
 1
-4
+3
 batt_dispatch_choice_ui
 1
 1
@@ -563,6 +563,12 @@ batt_dispatch_choice_ui
 1
 0
 batt_dispatch_excl
+1
+1
+1
+1
+0
+batt_dispatch_wf_forecast_choice
 1
 1
 1

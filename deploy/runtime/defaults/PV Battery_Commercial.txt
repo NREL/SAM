@@ -1,5 +1,5 @@
 1
-1033
+1034
 6par_aisc
 1
 1
@@ -757,6 +757,12 @@ batt_dispatch_choice_ui
 1
 0
 batt_dispatch_excl
+1
+1
+1
+1
+0
+batt_dispatch_wf_forecast_choice
 1
 1
 1

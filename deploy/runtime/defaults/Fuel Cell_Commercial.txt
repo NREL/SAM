@@ -1,5 +1,5 @@
 1
-705
+706
 LeadAcid_q10
 1
 1
@@ -549,6 +549,12 @@ batt_dispatch_choice_ui
 1
 0
 batt_dispatch_excl
+1
+1
+1
+1
+0
+batt_dispatch_wf_forecast_choice
 1
 1
 1
@@ -3325,7 +3331,7 @@ property_assessed_value
 1
 1
 1
-2.44922e+06
+2449220
 property_tax_rate
 1
 1
@@ -3750,7 +3756,7 @@ thermal_load_annual_total
 1
 1
 1
-7.6463e+06
+7646300
 thermal_load_escalation
 1
 2
@@ -3910,7 +3916,7 @@ total_installed_cost
 1
 1
 1
-2.44922e+06
+2449220
 total_system_indirect_cost
 1
 1
@@ -3934,13 +3940,13 @@ ui_loan_amount
 1
 1
 1
-2.44922e+06
+2449220
 ui_net_capital_cost
 1
 1
 1
 1
-2.44922e+06
+2449220
 ui_pv_capacity
 1
 1

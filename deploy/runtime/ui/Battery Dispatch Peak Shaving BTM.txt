@@ -121,7 +121,7 @@ TabOrder
 3
 4294967295
 
-2
+3
 batt_dispatch_choice
 3
 1
@@ -130,6 +130,20 @@ Battery dispatch choice
 Battery Dispatch
 0
 8
+1
+1
+1
+1
+0
+Default
+batt_dispatch_wf_forecast_choice
+3
+1
+Weather forecast choice for automatic dispatch
+ 
+Battery Dispatch
+0
+0
 1
 1
 1
@@ -153,7 +167,7 @@ One day look ahead (perfect)|One day look behind
 Default
 
 0
-526
+585
 on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	
 	on_change{'peak_shaving_batt_dispatch_choice'};
@@ -169,13 +183,14 @@ on_change{'peak_shaving_batt_dispatch_choice'} = define()
 
 function peak_shaving_choice() 
 {
+	value('batt_dispatch_choice', 0);
 	choice = value('peak_shaving_batt_dispatch_choice');
 	if (choice == 0) 
 	{
-		value('batt_dispatch_choice',0);
+		value('batt_dispatch_wf_forecast_choice',0);
 	}
 	elseif (choice == 1) 
 	{
-		value('batt_dispatch_choice', 1);
+		value('batt_dispatch_wf_forecast_choice', 1);
 	}
 }
