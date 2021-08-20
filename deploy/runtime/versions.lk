@@ -91,8 +91,9 @@ version_upgrade{'2021.7.27'} = define() {
 	if ( is_batt_tech )
 	{
 		old_batt_pv_forecast = oldvalue('batt_pv_dc_forecast'); // array
-        value( 'batt_pv_ac_forecast', old_batt_pv_forecast );  // Often just [0], but if not, display message for user
-        if (#old_batt_pv_forecast > 1) {
+        value( 'batt_pv_ac_forecast', old_batt_pv_forecast );  // Often either doesn't exist or is [0], but if not display message for user
+        // Use sum instead of # since # is picky about this being an array
+        if (sum(old_batt_pv_forecast) > 1) {
 			message( 'Custom weather file forecasts for battery dispatch have changed from DC to AC power. Please re-import the forecast on the battery dispatch page to convert to AC power.' );
         }
         
