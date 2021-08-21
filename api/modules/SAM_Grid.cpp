@@ -26,24 +26,6 @@ SAM_EXPORT void SAM_Grid_Lifetime_system_use_lifetime_output_nset(SAM_table ptr,
 	});
 }
 
-SAM_EXPORT void SAM_Grid_GridLimits_enable_interconnection_limit_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "enable_interconnection_limit", number);
-	});
-}
-
-SAM_EXPORT void SAM_Grid_GridLimits_grid_curtailment_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "grid_curtailment", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "grid_interconnection_limit_kwac", number);
-	});
-}
-
 SAM_EXPORT void SAM_Grid_SystemOutput_annual_energy_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "annual_energy", number);
@@ -80,6 +62,24 @@ SAM_EXPORT void SAM_Grid_Load_load_escalation_aset(SAM_table ptr, double* arr, i
 	});
 }
 
+SAM_EXPORT void SAM_Grid_GridLimits_enable_interconnection_limit_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "enable_interconnection_limit", number);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_GridLimits_grid_curtailment_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_curtailment", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "grid_interconnection_limit_kwac", number);
+	});
+}
+
 SAM_EXPORT double SAM_Grid_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -96,40 +96,6 @@ SAM_EXPORT double SAM_Grid_Lifetime_system_use_lifetime_output_nget(SAM_table pt
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
 		make_access_error("SAM_Grid", "system_use_lifetime_output");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "enable_interconnection_limit", &result))
-		make_access_error("SAM_Grid", "enable_interconnection_limit");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "grid_curtailment", length);
-	if (!result)
-		make_access_error("SAM_Grid", "grid_curtailment");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "grid_interconnection_limit_kwac", &result))
-		make_access_error("SAM_Grid", "grid_interconnection_limit_kwac");
 	});
 	return result;
 }
@@ -201,6 +167,40 @@ SAM_EXPORT double* SAM_Grid_Load_load_escalation_aget(SAM_table ptr, int* length
 	result = ssc_data_get_array(ptr, "load_escalation", length);
 	if (!result)
 		make_access_error("SAM_Grid", "load_escalation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "enable_interconnection_limit", &result))
+		make_access_error("SAM_Grid", "enable_interconnection_limit");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_curtailment", length);
+	if (!result)
+		make_access_error("SAM_Grid", "grid_curtailment");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "grid_interconnection_limit_kwac", &result))
+		make_access_error("SAM_Grid", "grid_interconnection_limit_kwac");
 	});
 	return result;
 }
