@@ -49,7 +49,7 @@
 		"FinancialParameters": {
 			"analysis_period": 25,
 			"batt_salvage_percentage": 0,
-			"construction_financing_cost": 1.08151e+11,
+			"construction_financing_cost": 1.02764e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -91,8 +91,7 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"system_use_recapitalization": 0,
-			"total_installed_cost": 5.40754e+12
+			"total_installed_cost": 5.13822e+07
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,

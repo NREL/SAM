@@ -32,6 +32,7 @@
 			"add_om_num_types": 1,
 			"om_batt_capacity_cost": [0.000000],
 			"om_batt_fixed_cost": [0.000000],
+			"om_batt_nameplate": 4000,
 			"om_batt_replacement_cost": [293.840000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [17.000000],
@@ -203,7 +204,6 @@
 			"system_capacity": 50002.2
 		},
 		"Recapitalization": {
-			"system_use_recapitalization": 0
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,

@@ -49,35 +49,6 @@ extern "C"
 
 
 	//
-	// GridLimits parameters
-	//
-
-	/**
-	 * Set enable_interconnection_limit: Enable grid interconnection limit [0/1]
-	 * options: Enable a grid interconnection limit
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Grid_GridLimits_enable_interconnection_limit_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set grid_curtailment: Grid curtailment as energy delivery limit (first year) [MW]
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_Grid_GridLimits_grid_curtailment_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set grid_interconnection_limit_kwac: Grid interconnection limit [kWac]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
 	// SystemOutput parameters
 	//
 
@@ -135,6 +106,35 @@ extern "C"
 	SAM_EXPORT void SAM_Grid_Load_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
+	//
+	// GridLimits parameters
+	//
+
+	/**
+	 * Set enable_interconnection_limit: Enable grid interconnection limit [0/1]
+	 * options: Enable a grid interconnection limit
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Grid_GridLimits_enable_interconnection_limit_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set grid_curtailment: Grid curtailment as energy delivery limit (first year) [MW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Grid_GridLimits_grid_curtailment_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set grid_interconnection_limit_kwac: Grid interconnection limit [kWac]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err);
+
+
 	/**
 	 * Lifetime Getters
 	 */
@@ -142,17 +142,6 @@ extern "C"
 	SAM_EXPORT double SAM_Grid_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Grid_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * GridLimits Getters
-	 */
-
-	SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -175,6 +164,17 @@ extern "C"
 	SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Grid_Load_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * GridLimits Getters
+	 */
+
+	SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

@@ -67,6 +67,13 @@ std::string module_doc(const std::string& tech_symbol){
     return it->second;
 }
 
+bool check_inputs_consistent(const std::string &tech_symbol){
+    if (tech_symbol == "TcsmoltenSalt" || tech_symbol == "TroughPhysical" || tech_symbol == "TroughPhysicalProcessHeat")
+        return true;
+    else
+        return false;
+}
+
 std::string get_params_str(const std::string &doc){
     std::string params;
     size_t startpos = doc.find("Input:");
@@ -413,7 +420,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                     }
                 }
 
-                if (tech_symbol != "TcsmoltenSalt") {
+                if (!check_inputs_consistent(tech_symbol)) {
                     if (!vd.downstream.empty()) {
                         doc += "\\n\\n";
                         doc += "*Changes to this variable may require updating the values of the following*: \\n";
@@ -970,7 +977,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << cmod_doc;
 
-    if (tech_symbol != "TcsmoltenSalt" && tech_symbol != "TroughPhysical") {
+    if (!check_inputs_consistent(tech_symbol)) {
         fx_file << "Input Consistency Warning\n"
                    "==================================\n"
                    "\n"

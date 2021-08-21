@@ -31,6 +31,7 @@
 			"add_om_num_types": 1,
 			"om_batt_capacity_cost": [0.000000],
 			"om_batt_fixed_cost": [0.000000],
+			"om_batt_nameplate": 4000,
 			"om_batt_replacement_cost": [293.840000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [13.000000],
@@ -213,7 +214,6 @@
 			"sponsor_operating_margin": 20,
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 1,
-			"system_use_recapitalization": 0,
 			"tax_investor_required_lease_reserve": 6,
 			"total_installed_cost": 1.49825e+08
 		},

@@ -228,7 +228,6 @@
 			"loan_moratorium": 0
 		},
 		"Recapitalization": {
-			"system_use_recapitalization": 0
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,
