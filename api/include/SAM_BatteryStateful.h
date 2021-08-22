@@ -173,7 +173,7 @@ extern "C"
 
 	/**
 	 * Set calendar_choice: Calendar life degradation input option [0/1/2]
-	 * options: 0=None,1=LithiomIonModel,2=InputLossTable
+	 * options: 0=None,1=LithiumIonModel,2=InputLossTable
 	 * constraints: None
 	 * required if: life_model=0
 	 */
@@ -252,7 +252,7 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_leadacid_tn_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set life_model: Battery life model specifier [0/1]
+	 * Set life_model: Battery life model specifier [0/1/2]
 	 * options: 0=calendar/cycle,1=NMC,2=LMO/LTO
 	 * constraints: None
 	 * required if: *

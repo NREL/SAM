@@ -49,7 +49,7 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 5.39942e+10
+			"total_installed_cost": 857424
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -226,7 +226,6 @@
 			"loan_moratorium": 0
 		},
 		"Recapitalization": {
-			"system_use_recapitalization": 0
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,
@@ -271,7 +270,7 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 1.07988e+09
+			"construction_financing_cost": 17148.5
 		},
 		"BatterySystem": {
 			"en_batt": 0
