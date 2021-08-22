@@ -104,6 +104,7 @@ bool EqnDatabase::LoadFile( const wxString &file, wxArrayString *errors )
 }
 bool EqnDatabase::LoadScript( const wxString &text, wxArrayString *errors )
 {
+// check text for preprocessing setup for design point calculations SAM issue #634
 	lk::input_string in( text );
 	if ( Parse( in, errors ) ) return true;
 	else return false;

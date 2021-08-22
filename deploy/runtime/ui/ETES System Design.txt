@@ -1372,7 +1372,7 @@ System Design
 -999
 Default
 
-9140
+9175
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1385,8 +1385,8 @@ equations{ 'etes_financial_model' } = define(){
 
 equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 {
-	obj = ssc_create();/*
-	ssc_var(obj, "sim_type", 2);
+	obj = ssc_create();
+/*	ssc_var(obj, "sim_type", 2);
 	
 	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
 	
@@ -1510,14 +1510,14 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 
 	
 	ret = ssc_exec(obj, 'etes_electric_resistance');
-
-	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
-	ssc_var(obj, "const_per_upfront_rate5", 0);*/
-//	ret = ssc_auto_exec(obj, 'etes_electric_resistance', 2);
-	//ret = ssc_module_create_from_case('etes_electric_resistance');
-//	ret_d = ssc_dump(obj, 'c:/tmp/etes_system_des_mimo_ssc_auto_exec.txt');
-	ret = 1;
-
+*/
+//	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
+//	ssc_var(obj, "const_per_upfront_rate5", 0);
+	ret = ssc_auto_exec_eqn(obj, 'etes_electric_resistance', 2);
+//	//ret = ssc_module_create_from_case('etes_electric_resistance');
+	ret_d = ssc_dump(obj, 'c:/tmp/etes_system_des_mimo_ssc_auto_exec_eqn.txt');
+//	ret = 1;
+//msgbox("ret=" + ret);
 	if(ret==0) {
 
 	// testing
@@ -1586,9 +1586,11 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 	ssc_free( obj );
 };
 
-2767
+2782
 on_load{"ETES System Design"} = define()
 {
+	ret = 0;
+/*
 	obj = ssc_create();
 	ret = ssc_auto_exec(obj, 'etes_electric_resistance', 2);
 	//ret = ssc_module_create_from_case('etes_electric_resistance');
@@ -1659,6 +1661,6 @@ on_load{"ETES System Design"} = define()
 		${tes_htf_density} = vf;
 	}
 	ssc_free( obj );
-
+*/
 };
 
