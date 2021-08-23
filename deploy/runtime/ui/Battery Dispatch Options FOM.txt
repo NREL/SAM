@@ -147,7 +147,7 @@ X
 15
 Y
 3
-60
+57
 Width
 3
 288
@@ -164,9 +164,9 @@ Items
 6
 4
 Automated dispatch
+PV smoothing
 Dispatch to custom time series
 Manual dispatch
-PV smoothing
 ShowCaptions
 2
 1
@@ -379,13 +379,13 @@ Battery dispatch options FOM
  
 Battery Dispatch
 78
-Automated dispatch|Dispatch to custom time series|Manual dispatch|PV smoothing
+Automated dispatch|PV smoothing|Dispatch to custom time series|Manual dispatch
 3
 1
 1
 1
 1
-0
+3
 RadioChoice
 
 0

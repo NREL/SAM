@@ -197,7 +197,6 @@
 			"system_capacity": 103500
 		},
 		"Recapitalization": {
-			"system_use_recapitalization": 0
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 2.064,
