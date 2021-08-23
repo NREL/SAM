@@ -1,6 +1,6 @@
 Battery Dispatch PV Smoothing
-1106
-667
+1046
+548
 31
 Label
 
@@ -1439,13 +1439,13 @@ Name
 object 419
 X
 3
-3
+6
 Y
 3
 3
 Width
 3
-1002
+1042
 Height
 3
 542
@@ -1854,9 +1854,9 @@ Numeric
 batt_dispatch_pvs_wf_forecast_choice
 3
 1
-Weather File Forecast Choice for PV Smoothin
+Weather file forecast choice for PV smoothing
  
-Battery Dispatch
+Battery Dispatch PV Smoothing
 0
 3
 1
@@ -1882,11 +1882,11 @@ Numeric
 batt_pvs_user_specified_weather_file
 3
 4
+Custom weather file for forecast
  
- 
- 
+Battery Dispatch PV Smoothing
 0
-0
+1
 1
 4
 9

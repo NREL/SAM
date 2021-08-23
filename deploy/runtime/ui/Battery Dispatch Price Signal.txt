@@ -27,8 +27,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+21
+Penalty ($/cycle-kWh)
 UseSchedule
 2
 1
@@ -151,8 +151,8 @@ Tool Tip
 0
 Caption
 5
-62
-For the Look ahead to Custom Load option, use the input below.
+151
+For the Look Ahead to Custom Load option, provide a custom load profile to use for the dispatch forecast instead of the data on the Electric Load page.
 TextColour
 4
 0
@@ -199,8 +199,8 @@ Tool Tip
 0
 Caption
 5
-187
-For the Dispatch to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
+189
+For the Look Ahead to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
 TextColour
 4
 0
@@ -280,7 +280,7 @@ Width
 180
 Height
 3
-41
+47
 Tool Tip
 5
 0
@@ -367,8 +367,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+15
+Growth Rate (%)
 UseSchedule
 2
 0
@@ -398,7 +398,7 @@ X
 15
 Y
 3
-87
+84
 Width
 3
 300
@@ -439,7 +439,7 @@ X
 15
 Y
 3
-213
+210
 Width
 3
 90
@@ -469,7 +469,7 @@ X
 105
 Y
 3
-213
+210
 Width
 3
 828
@@ -684,8 +684,8 @@ Mode
 1
 Label
 5
-24
-Forecast load power (kW)
+15
+Load Power (kW)
 Description
 5
 164
@@ -748,8 +748,8 @@ Tool Tip
 0
 Caption
 5
-335
-The price signal forecast option operates the battery to minimize the electricity bill based on an electricity price estimate that represents the cost to the system owner of purchasing electricity from the grid in each time step. The forecast horizon can be selected from perfect look ahead, one day look behind, and a custom forecast.
+229
+The price signal forecast option operates the battery to minimize the electricity bill based on an electricity price estimate that represents the cost to the system owner of purchasing electricity from the grid in each time step.
 TextColour
 4
 0
@@ -778,7 +778,7 @@ batt_cycle_cost
 2
 Cycle degradation penalty 
 $/cycle-kWh
-Battery Dispatch
+Battery Dispatch Price Signal
 0
 2
 1
@@ -792,7 +792,7 @@ batt_cycle_cost_choice
 1
 Cycle degradation penalty method
  
-Battery Dispatch
+Battery Dispatch Price Signal
 37
 Calculate automatically|Enter penalty
 2
@@ -805,11 +805,11 @@ ListBox
 batt_dispatch_load_escal_choice_psd
 3
 1
+Load growth option for price signals battery dispatch
  
- 
-Battery Dispatch
+Battery Dispatch Price Signal
 0
-0
+1
 1
 1
 1
@@ -819,12 +819,12 @@ RadioChoice
 batt_dispatch_load_forecast_choice_psd
 3
 1
+Load forecast horizon options for price signal forecast
  
- 
- 
+Battery Dispatch Price Signal
 63
 Perfect look ahead|One day look ahead|Look ahead to custom load
-0
+1
 1
 1
 1
@@ -834,9 +834,9 @@ RadioChoice
 batt_dispatch_load_forecast_escal_psd
 3
 2
- Load forecast growth rate
+Load forecast growth rate
  %/yr
- 
+Battery Dispatch Price Signal
 0
 0
 1
@@ -848,11 +848,11 @@ SchedNumeric
 batt_dispatch_wf_forecast_choice_psd
 3
 1
+Weather file forecast horizon for price signals dispatch
  
- 
- 
+Battery Dispatch Price Signal
 0
-0
+1
 1
 1
 1
@@ -862,21 +862,21 @@ RadioChoice
 batt_user_specified_weather_file_psd
 3
 4
+Custom weather file for price signals forecast 
  
- 
-Battery Dispatch
+Battery Dispatch Price Signal
 0
 3
 1
 4
 0
-Default
+TextEntry
 load_user_forecast_data_psd
 3
 2
-Forecast load power
+Custom load profile
 kW
-Battery Dispatch
+Battery Dispatch Price Signal
 0
 0
 1

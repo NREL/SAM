@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-187
-For the Dispatch to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
+171
+For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
 TextColour
 4
 0
@@ -75,8 +75,8 @@ Tool Tip
 0
 Caption
 5
-62
-For the Look ahead to Custom Load option, use the input below.
+151
+For the Look Ahead to Custom Load option, provide a custom load profile to use for the dispatch forecast instead of the data on the Electric Load page.
 TextColour
 4
 0
@@ -117,7 +117,7 @@ Width
 180
 Height
 3
-41
+47
 Tool Tip
 5
 0
@@ -204,8 +204,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+15
+Growth Rate (%)
 UseSchedule
 2
 0
@@ -574,9 +574,9 @@ TabOrder
 batt_dispatch_choice
 3
 1
-Battery dispatch choice
+Peak shaving battery dispatch choice
  
-Battery Dispatch
+Battery Dispatch BTM Peak Shaving
 0
 8
 1
@@ -588,11 +588,11 @@ Default
 batt_dispatch_load_escal_choice_peak
 3
 1
+Load growth option for custom load profile
  
- 
- 
+Battery Dispatch BTM Peak Shaving
 0
-0
+3
 1
 1
 1
@@ -602,23 +602,23 @@ RadioChoice
 batt_dispatch_load_forecast_choice_peak_shaving
 3
 1
+Load forecast horizon options 
  
- 
- 
+Battery Dispatch BTM Peak Shaving
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+RadioChoice
 batt_dispatch_load_forecast_escal_peak_shaving
 3
 2
-  Load forecast growth rate
+Load forecast growth rate
  %/yr
- 
+Battery Dispatch BTM Peak Shaving
 0
 0
 1
@@ -630,9 +630,9 @@ SchedNumeric
 batt_user_specified_weather_file_peak_shaving
 3
 4
+Custom weather file for peak shaving forecast 
  
- 
- Battery Dispatch
+Battery Dispatch BTM Peak Shaving
 0
 3
 1
@@ -642,9 +642,9 @@ Default
 load_user_forecast_data_peak_shaving
 3
 2
- Forecast load power
+Custom load profile
  kW
- Battery Dispatch
+Battery Dispatch BTM Peak Shaving
 0
 0
 1
@@ -658,7 +658,7 @@ peak_shaving_batt_dispatch_choice
 1
 Battery peak shaving options BTM
  
-Battery Dispatch
+Battery Dispatch BTM Peak Shaving
 64
 One day look ahead (perfect)|One day look behind|Custom forecast
 3
