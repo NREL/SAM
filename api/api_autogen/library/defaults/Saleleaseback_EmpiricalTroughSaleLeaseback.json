@@ -207,7 +207,6 @@
 			"sponsor_operating_margin": 20,
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 0,
-			"system_use_recapitalization": 0,
 			"tax_investor_required_lease_reserve": 6,
 			"total_installed_cost": 5.28448e+08
 		},

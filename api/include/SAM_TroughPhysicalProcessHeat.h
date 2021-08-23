@@ -421,22 +421,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_Row_Distance_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set SCADefocusArray: Collector defocus order [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_SCADefocusArray_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set SCAInfoArray: Receiver (,1) and collector (,2) type for each assembly in loop [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_SCAInfoArray_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
 	 * Set SCA_drives_elec: Tracking power, in Watts per SCA drive [W/m2-K]
 	 * options: None
 	 * constraints: None
@@ -885,14 +869,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_sf_rnr_wallthicks_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set solar_mult: Solar multiple [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SolarField_solar_mult_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set theta_dep: Deploy angle [deg]
 	 * options: None
 	 * constraints: None
@@ -954,30 +930,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Controller_field_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set fluid_dens_inlet_temp: fluid_dens_inlet_temp [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Controller_fluid_dens_inlet_temp_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set fluid_dens_outlet_temp: fluid_dens_outlet_temp [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Controller_fluid_dens_outlet_temp_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set lat: lat [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Controller_lat_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set non_solar_field_land_area_multiplier: non_solar_field_land_area_multiplier [-]
 	 * options: None
 	 * constraints: None
@@ -1002,28 +954,12 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Controller_q_pb_design_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set radio_sm_or_area: radio_sm_or_area [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Controller_radio_sm_or_area_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set specified_solar_multiple: specified_solar_multiple [-]
 	 * options: None
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Controller_specified_solar_multiple_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set specified_total_aperture: specified_total_aperture [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Controller_specified_total_aperture_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tanks_in_parallel: Tanks are in parallel, not in series, with solar field [-]
@@ -1633,10 +1569,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_Row_Distance_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_SolarField_SCADefocusArray_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_SolarField_SCAInfoArray_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_SCA_drives_elec_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_SolarField_Shadowing_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
@@ -1749,8 +1681,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_SolarField_sf_rnr_wallthicks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_solar_mult_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_theta_dep_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SolarField_theta_stow_nget(SAM_table ptr, SAM_error *err);
@@ -1770,23 +1700,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Controller_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_fluid_dens_inlet_temp_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_fluid_dens_outlet_temp_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_lat_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_non_solar_field_land_area_multiplier_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_pb_pump_coef_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_q_pb_design_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_radio_sm_or_area_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_specified_solar_multiple_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_specified_total_aperture_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Controller_tanks_in_parallel_nget(SAM_table ptr, SAM_error *err);
 
@@ -2070,6 +1990,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_q_tes_heater_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_qinc_costh_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Outputs_solar_multiple_actual_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err);
 
