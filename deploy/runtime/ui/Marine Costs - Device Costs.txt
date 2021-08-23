@@ -1718,7 +1718,7 @@ device_cost_input
 1
 Total device costs
 $
-ME O&M Costs
+ME Costs - Device
 0
 3
 1
@@ -1732,7 +1732,7 @@ device_cost_override
 1
 Device cost override option
  
-ME Cost Choice
+ME Costs - Device
 0
 3
 1
@@ -1746,7 +1746,7 @@ device_costs_total
 1
 Total device costs
 $
- 
+ME Costs - Device
 0
 9
 1
@@ -1760,7 +1760,7 @@ device_costs_total_display
 1
  
  
- 
+ME Costs - Device
 0
 1
 1
@@ -1774,7 +1774,7 @@ device_costs_total_mill
 1
  
  
- 
+ME Costs - Device
 0
 8
 1

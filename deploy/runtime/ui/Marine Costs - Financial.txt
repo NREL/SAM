@@ -1985,7 +1985,7 @@ carrying_cost_during_construction_cost
 1
  
  
- 
+ME Costs - Financial
 0
 0
 1
@@ -1999,7 +1999,7 @@ debt_service_reserve_account_cost
 1
 Debt service reserve account costs
 $ 
-ME Financial Costs
+ME Costs - Financial
 0
 3
 1
@@ -2013,7 +2013,7 @@ decommissioning_reserve_account_cost
 1
 Decommissioning reserve account costs 
 $
-ME Financial Costs
+ME Costs - Financial
 0
 3
 1
@@ -2027,7 +2027,7 @@ detailed_cost_choice_reserve_accounts
 1
 Reserve accounts detailed cost choice
  
-ME Cost Choice
+ME Costs - Financial
 0
 3
 1
@@ -2041,7 +2041,7 @@ financial_cost_input
 1
 Financial costs
 $
-ME Financial Costs
+ME Costs - Financial
 0
 3
 1
@@ -2055,7 +2055,7 @@ financial_cost_override
 1
 Financial cost override option
  
-ME Cost Choice
+ME Costs - Financial
 0
 3
 1
@@ -2069,7 +2069,7 @@ financial_cost_total
 1
 Financial costs
 $
- 
+ME Costs - Financial
 0
 9
 1
@@ -2083,7 +2083,7 @@ financial_cost_total_mill
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2097,7 +2097,7 @@ insurance_during_construction_cost
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2111,7 +2111,7 @@ insurance_during_construction_cost_input
 1
 Insurance during construction cost input 
 $, $/kW 
-ME Financial Costs
+ME Costs - Financial
 0
 3
 1
@@ -2125,7 +2125,7 @@ insurance_during_construction_method
 1
 Insurance during construction cost method 
  
-ME Cost Choice
+ME Costs - Financial
 0
 3
 1
@@ -2139,7 +2139,7 @@ itemized_check_construction_insurance
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2153,7 +2153,7 @@ itemized_check_contingency
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2167,7 +2167,7 @@ itemized_check_other_financial
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2181,7 +2181,7 @@ itemized_check_reserve_accounts
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2195,7 +2195,7 @@ maintenance_reserve_account_cost
 1
 Maintenance reserve account costs 
 $ 
-ME Financial Costs
+ME Costs - Financial
 0
 3
 1
@@ -2209,7 +2209,7 @@ other_financial_cost
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2223,7 +2223,7 @@ other_financial_cost_input
 1
 Other financial cost input 
 $, $/kW 
-ME Financial Costs
+ME Costs - Financial
 0
 3
 1
@@ -2237,7 +2237,7 @@ other_financial_cost_method
 1
 Other financial cost method 
  
-ME Cost Choice
+ME Costs - Financial
 0
 3
 1
@@ -2251,7 +2251,7 @@ other_financial_cost_modeled
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2265,7 +2265,7 @@ other_reserve_account_cost
 1
 Other reserve account costs 
  
- 
+ME Costs - Financial
 0
 3
 1
@@ -2279,7 +2279,7 @@ project_contingency_budget_cost
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2293,7 +2293,7 @@ project_contingency_cost_input
 1
 Project contingency cost input 
 $, $/kW 
-ME Financial Costs
+ME Costs - Financial
 0
 3
 1
@@ -2307,7 +2307,7 @@ project_contingency_cost_method
 1
 Project contingency cost method 
  
-ME Cost Choice
+ME Costs - Financial
 0
 3
 1
@@ -2321,7 +2321,7 @@ reserve_accounts_cost
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2335,7 +2335,7 @@ reserve_accounts_cost_input
 1
 Reserve accounts cost input 
 $, $/kW 
-ME Financial Costs
+ME Costs - Financial
 0
 3
 1
@@ -2349,7 +2349,7 @@ reserve_accounts_cost_method
 1
 Reserve accounts cost method 
  
-ME Cost Choice
+ME Costs - Financial
 0
 3
 1
@@ -2363,7 +2363,7 @@ reserve_accounts_cost_total
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2377,7 +2377,7 @@ total_installed_cost
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2391,7 +2391,7 @@ total_installed_cost_mill
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -2405,7 +2405,7 @@ total_test
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
