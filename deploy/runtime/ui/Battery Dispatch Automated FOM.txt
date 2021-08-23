@@ -684,12 +684,13 @@ Battery Dispatch
 TextEntry
 
 0
-3805
+3840
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
 	
 	on_change{'batt_dispatch_wf_forecast_choice'};
+	value('batt_dispatch_choice', 0);
 	toggle_dispatch_fom_automated();
 	if (technology() == "Fuel Cell")
 		toggle_dispatch();
