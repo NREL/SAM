@@ -1,7 +1,7 @@
 Battery Lifetime
 1053
 801
-17
+18
 GroupBox
 
 1
@@ -660,7 +660,7 @@ X
 27
 Y
 3
-78
+111
 Width
 3
 966
@@ -686,6 +686,47 @@ Cycle Degradation
 Bold
 2
 1
+RadioChoice
+
+1
+11
+Name
+5
+15
+batt_life_model
+X
+3
+255
+Y
+3
+84
+Width
+3
+492
+Height
+3
+24
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+Calendar - Cycle Table
+NMC/Gr Life Model
+LMO/LTO Life Model
+ShowCaptions
+2
+1
+Horizontal
+2
+1
+TabOrder
+3
+1
 DataMatrix
 
 1
@@ -699,13 +740,13 @@ X
 48
 Y
 3
-99
+132
 Width
 3
 442
 Height
 3
-240
+207
 Tool Tip
 5
 0
@@ -837,18 +878,18 @@ X
 537
 Y
 3
-99
+132
 Width
 3
 445
 Height
 3
-240
+207
 Tool Tip
 5
 0
 
-7
+8
 batt_calendar_a
 3
 1
@@ -937,6 +978,20 @@ Battery Lifetime
 1
 1.02
 Numeric
+batt_life_model
+3
+1
+ 
+ 
+Battery Lifetime
+0
+0
+1
+1
+1
+1
+0
+Default
 batt_lifetime_matrix
 3
 3
@@ -962,7 +1017,7 @@ Battery Lifetime
 DataMatrix
 
 0
-5378
+6049
 on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
 	on_change{'batt_calendar_choice'}();
@@ -971,6 +1026,7 @@ on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_calendar_b'}();
 	on_change{'batt_calendar_c'}();
 	on_change{'batt_calendar_q0'}();
+	on_change{'batt_chem'}();
 
 };
 on_change{'batt_calendar_lifetime_matrix'} = define(){plot_calendar_life();};
@@ -978,6 +1034,31 @@ on_change{'batt_calendar_a'} = define(){plot_calendar_life();};
 on_change{'batt_calendar_b'} = define(){plot_calendar_life();};
 on_change{'batt_calendar_c'} = define(){plot_calendar_life();};
 on_change{'batt_calendar_q0'} = define(){plot_calendar_life();};
+
+on_change{'batt_chem'} = define(){
+	batt_chem = value('batt_chem');
+	if (batt_chem < 1) {
+		value('batt_life_model', 0);
+		enable('batt_life_model', false);
+	}
+	else {
+		enable('batt_life_model', true);
+	}
+};
+
+on_change{'batt_life_model'} = define(){
+	blm = value("batt_life_model");
+	enable("batt_lifetime_matrix", !blm);
+	enable("plot_cap_vs_cycle", !blm);
+	enable("batt_calendar_choice", !blm);
+	enable("batt_calendar_lifetime_matrix", !blm);
+	enable("batt_calendar_a", !blm);
+	enable("batt_calendar_b", !blm);
+	enable("batt_calendar_c", !blm);
+	enable("batt_calendar_q0", !blm);
+	enable("batt_calendar_a", !blm);
+	plot_calendar_life();
+};
 
 on_change{'batt_calendar_choice'} = define(){
 	mode = value('batt_calendar_choice');
