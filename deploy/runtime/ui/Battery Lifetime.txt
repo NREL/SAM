@@ -981,11 +981,11 @@ Numeric
 batt_life_model
 3
 1
- 
+ Battery Life Model Type
  
 Battery Lifetime
 0
-0
+3
 1
 1
 1
@@ -1017,7 +1017,7 @@ Battery Lifetime
 DataMatrix
 
 0
-5982
+6016
 on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
 	on_change{'batt_calendar_choice'}();
@@ -1032,6 +1032,7 @@ on_load{'Battery Lifetime'} = define() {
 		enable('batt_life_model', false);
 	}
 	else {
+		on_change{'batt_life_model'}();
 		enable('batt_life_model', true);
 	}
 };
