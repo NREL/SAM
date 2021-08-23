@@ -972,7 +972,7 @@ batt_life_model
 1
 1
 1
-0
+1
 batt_lifetime_matrix
 1
 3

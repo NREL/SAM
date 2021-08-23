@@ -1,5 +1,5 @@
 1
-626
+627
 LeadAcid_q10
 1
 1
@@ -565,6 +565,12 @@ batt_inverter_efficiency_cutoff
 1
 1
 90
+batt_life_model
+1
+1
+1
+1
+1
 batt_lifetime_matrix
 1
 3

@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12269
+11878
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -505,6 +505,7 @@ function set_batt_defaults_from_data(defs)
   	value('batt_bank_voltage', pack_params.nominal_voltage);
   	
 	// Lifetime
+	value('batt_life_model', cell_params.life_model);
 	value('batt_lifetime_matrix',cell_params.cycling_matrix);
 	
 	// turn calendar life model off
