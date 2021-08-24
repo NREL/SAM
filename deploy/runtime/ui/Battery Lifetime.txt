@@ -1017,7 +1017,7 @@ Battery Lifetime
 DataMatrix
 
 0
-6016
+5994
 on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
 	on_change{'batt_calendar_choice'}();
@@ -1027,7 +1027,7 @@ on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_calendar_c'}();
 	on_change{'batt_calendar_q0'}();
 	batt_chem = value('batt_chem');
-	if (batt_chem < 1) {
+	if (batt_chem != 1) {
 		value('batt_life_model', 0);
 		enable('batt_life_model', false);
 	}
@@ -1053,7 +1053,6 @@ on_change{'batt_life_model'} = define(){
 	enable("batt_calendar_c", !blm);
 	enable("batt_calendar_q0", !blm);
 	enable("batt_calendar_a", !blm);
-	plot_calendar_life();
 };
 
 on_change{'batt_calendar_choice'} = define(){
