@@ -151,8 +151,8 @@ Tool Tip
 0
 Caption
 5
-187
-For the Dispatch to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
+189
+For the Look Ahead to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
 TextColour
 4
 0
@@ -576,7 +576,7 @@ batt_cycle_cost
 2
 Cycle degradation penalty
 $/cycle-kWh
-Battery Dispatch
+Battery Dispatch FOM Automated
 0
 2
 1
@@ -590,7 +590,7 @@ batt_cycle_cost_choice
 1
 Cycle degradation penalty option
  
-Battery Dispatch
+Battery Dispatch FOM Automated
 37
 Calculate automatically|Enter penalty
 2
@@ -605,7 +605,7 @@ batt_dispatch_update_frequency_hours
 1
 Frequency to update dispatch
 hours
-Battery Dispatch
+Battery Dispatch FOM Automated
 0
 2
 1
@@ -619,7 +619,7 @@ batt_dispatch_wf_forecast_choice
 1
 Weather forecast choice for automatic dispatch
  
-Battery Dispatch
+Battery Dispatch FOM Automated
 0
 3
 1
@@ -633,7 +633,7 @@ batt_look_ahead_hours
 1
 Look ahead period
 hours
-Battery Dispatch
+Battery Dispatch FOM Automated
 0
 2
 1
@@ -647,7 +647,7 @@ batt_user_specified_weather_file
 4
 Weather file for battery dispatch
  
-Battery Dispatch
+Battery Dispatch FOM Automated
 0
 3
 1

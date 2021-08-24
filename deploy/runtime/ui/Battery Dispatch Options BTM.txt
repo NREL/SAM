@@ -393,7 +393,7 @@ batt_dispatch_wf_forecast_choice
 1
  
  
- 
+Battery Dispatch
 0
 0
 1
@@ -421,7 +421,7 @@ batt_load_ac_forecast_escalation
 2
  
  
- 
+Battery Dispatch
 0
 8
 1
@@ -491,7 +491,7 @@ on_load{'Battery Dispatch Options BTM'} = define() {
 	}
 	else
 	{
-		msg = 'The storage dispatch options determine how and  when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';
+		msg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';
 		clr = 'black';
 	}
 	property('lbl_dispatch_options','Caption',msg);

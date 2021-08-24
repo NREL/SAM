@@ -553,7 +553,7 @@ batt_ui_inverter_eff
 1
 PV inverter nominal efficiency
 %
- 
+Battery Power Converters
 0
 8
 1
