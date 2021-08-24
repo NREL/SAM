@@ -1886,7 +1886,6 @@ void fcall_ssc_auto_exec_eqn(lk::invoke_t& cxt)
 
 			// Create the ssc_data and compute module
 			wxString cm = cxt.arg(1).as_string();
-			//ssc_data_t p_data = ssc_data_create();
 			ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
 			if (!p_mod)
 			{

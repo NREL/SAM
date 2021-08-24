@@ -1372,7 +1372,7 @@ System Design
 -999
 Default
 
-9175
+4215
 equations{ 'etes_financial_model' } = define(){
 	if(financing() == "Single Owner"){
 		return 1;
@@ -1386,75 +1386,8 @@ equations{ 'etes_financial_model' } = define(){
 equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 {
 	obj = ssc_create();
-/*	ssc_var(obj, "sim_type", 2);
-	
-	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
-	
-	ssc_var(obj, "solar_resource_file", ${solar_resource_file});
-	
-	ssc_var(obj, "T_htf_cold_des", ${T_htf_cold_des});
-	ssc_var(obj, "T_htf_hot_des", ${T_htf_hot_des});
-	ssc_var(obj, "P_ref", ${P_ref});
-	ssc_var(obj, "design_eff", ${design_eff});
-	ssc_var(obj, "tshours", ${tshours});
-	ssc_var(obj, "heater_mult", ${heater_mult});
-	ssc_var(obj, "gross_net_conversion_factor", ${gross_net_conversion_factor});
-	
-	ssc_var(obj, "pc_config", ${pc_config});
-	ssc_var(obj, "pb_pump_coef", ${pb_pump_coef});
-	ssc_var(obj, "startup_time", ${startup_time});                  
-	ssc_var(obj, "startup_frac", ${startup_frac});
-	ssc_var(obj, "cycle_max_frac", ${cycle_max_frac});
-	ssc_var(obj, "cycle_cutoff_frac", ${cycle_cutoff_frac});
-	ssc_var(obj, "q_sby_frac", ${q_sby_frac});
 
-	ssc_var(obj, "dT_cw_ref", ${dT_cw_ref});       
-	ssc_var(obj, "T_amb_des", ${T_amb_des});         
-	ssc_var(obj, "P_boil", ${P_boil});         
-	ssc_var(obj, "CT", ${CT});               
-	ssc_var(obj, "T_approach", ${T_approach});                    
-	ssc_var(obj, "T_ITD_des", ${T_ITD_des});       
-	ssc_var(obj, "P_cond_ratio", ${P_cond_ratio});         
-	ssc_var(obj, "pb_bd_frac", ${pb_bd_frac});   
-	ssc_var(obj, "P_cond_min", ${P_cond_min});       
-	ssc_var(obj, "n_pl_inc", ${n_pl_inc});       
-	ssc_var(obj, "tech_type", ${tech_type});           
-
-	ssc_var(obj, "ud_f_W_dot_cool_des", ${ud_f_W_dot_cool_des});         
-	ssc_var(obj, "ud_m_dot_water_cool_des", ${ud_m_dot_water_cool_des});
-	ssc_var(obj, "ud_ind_od", ${ud_ind_od});
-
-	ssc_var(obj, "hot_htf_code", ${hot_htf_code});         
-	ssc_var(obj, "ud_hot_htf_props", ${ud_hot_htf_props});   
-	ssc_var(obj, "tes_init_hot_htf_percent", ${tes_init_hot_htf_percent});
-	ssc_var(obj, "h_tank", ${h_tank});
-	ssc_var(obj, "cold_tank_max_heat", ${cold_tank_max_heat});
-	ssc_var(obj, "u_tank", ${u_tank});
-	ssc_var(obj, "tank_pairs", ${tank_pairs});               
-	ssc_var(obj, "cold_tank_Thtr", ${cold_tank_Thtr});       
-	ssc_var(obj, "h_tank_min", ${h_tank_min});
-	ssc_var(obj, "hot_tank_Thtr", ${hot_tank_Thtr});       
-	ssc_var(obj, "hot_tank_max_heat", ${hot_tank_max_heat}); 
-
-	ssc_var(obj, "f_q_dot_des_allowable_su", ${f_q_dot_des_allowable_su});
-	ssc_var(obj, "hrs_startup_at_max_rate", ${hrs_startup_at_max_rate});
-
-	ssc_var(obj, "is_dispatch", ${is_dispatch});
-	ssc_var(obj, "disp_csu_cost", ${disp_csu_cost});
-	ssc_var(obj, "disp_frequency", ${disp_frequency});
-	ssc_var(obj, "disp_horizon", ${disp_horizon});
-	ssc_var(obj, "disp_max_iter", ${disp_max_iter});
-	ssc_var(obj, "disp_mip_gap", ${disp_mip_gap});
-	ssc_var(obj, "disp_pen_delta_w", ${disp_pen_delta_w});
-	ssc_var(obj, "disp_time_weighting", ${disp_time_weighting});
-	ssc_var(obj, "disp_timeout", ${disp_timeout});
-	
-	ssc_var(obj, "pb_fixed_par", ${pb_fixed_par});     
-	ssc_var(obj, "bop_par", ${bop_par});   
-	ssc_var(obj, "bop_par_f", ${bop_par_f});             
-	ssc_var(obj, "bop_par_0", ${bop_par_0});         
-	ssc_var(obj, "bop_par_1", ${bop_par_1});         
-	ssc_var(obj, "bop_par_2", ${bop_par_2});         
+	//#ssc_auto_exec(obj, 'etes_electric_resistance', 2);
 
 	if(financing() == "Single Owner"){
 	ssc_var(obj, "ppa_multiplier_model", ${ppa_multiplier_model});         
@@ -1472,56 +1405,22 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 	ssc_var(obj, "dispatch_factor9", ${dispatch_factor9}); 
 	}
 
-	ssc_var(obj, "cycle_spec_cost", ${cycle_spec_cost});
-	ssc_var(obj, "tes_spec_cost", ${tes_spec_cost});
-	ssc_var(obj, "heater_spec_cost", ${heater_spec_cost});     
-	ssc_var(obj, "bop_spec_cost", ${bop_spec_cost});
-	ssc_var(obj, "contingency_rate", ${contingency_rate}); 
-	ssc_var(obj, "sales_tax_frac", ${sales_tax_frac});
-	ssc_var(obj, "epc_cost_perc_of_direct", ${epc_cost_perc_of_direct});
-	ssc_var(obj, "epc_cost_per_watt", ${epc_cost_per_watt});
-	ssc_var(obj, "epc_cost_fixed", ${epc_cost_fixed});
-	ssc_var(obj, "land_cost_perc_of_direct", ${land_cost_perc_of_direct});
-	ssc_var(obj, "land_cost_per_watt", ${land_cost_per_watt});
-	ssc_var(obj, "land_cost_fixed", ${land_cost_fixed});
+	if(financing() == "Merchant Plant"){
+	ssc_var(obj, "mp_energy_market_revenue",${mp_energy_market_revenue});
+	}
 
-	ssc_var(obj, "sales_tax_rate", ${sales_tax_rate});
-
-	ssc_var(obj, "const_per_interest_rate1", ${const_per_interest_rate1});    
-	ssc_var(obj, "const_per_interest_rate2", ${const_per_interest_rate2});
-	ssc_var(obj, "const_per_interest_rate3", ${const_per_interest_rate3});
-	ssc_var(obj, "const_per_interest_rate4", ${const_per_interest_rate4});
-	ssc_var(obj, "const_per_interest_rate5", ${const_per_interest_rate5});
-	ssc_var(obj, "const_per_months1", ${const_per_months1});
-	ssc_var(obj, "const_per_months2", ${const_per_months2});
-	ssc_var(obj, "const_per_months3", ${const_per_months3});
-	ssc_var(obj, "const_per_months4", ${const_per_months4});
-	ssc_var(obj, "const_per_months5", ${const_per_months5});
-	ssc_var(obj, "const_per_percent1", ${const_per_percent1});
-	ssc_var(obj, "const_per_percent2", ${const_per_percent2});
-	ssc_var(obj, "const_per_percent3", ${const_per_percent3});
-	ssc_var(obj, "const_per_percent4", ${const_per_percent4});
-	ssc_var(obj, "const_per_percent5", ${const_per_percent5});
-	ssc_var(obj, "const_per_upfront_rate1", ${const_per_upfront_rate1});       
-	ssc_var(obj, "const_per_upfront_rate2", ${const_per_upfront_rate2});       
-	ssc_var(obj, "const_per_upfront_rate3", ${const_per_upfront_rate3});       
-	ssc_var(obj, "const_per_upfront_rate4", ${const_per_upfront_rate4});       
-	ssc_var(obj, "const_per_upfront_rate5", ${const_per_upfront_rate5});       
-
-	
+/* Not in UI but in compute module use UIHINT=SIMULATION_PARMETER 
+//	ssc_var(obj, "disp_steps_per_hour",${disp_steps_per_hour});
+//	ssc_var(obj, "disp_spec_bb",${disp_spec_bb});
+//	ssc_var(obj, "disp_reporting",${disp_reporting});
+//	ssc_var(obj, "disp_spec_presolve",${disp_spec_presolve});
+//	ssc_var(obj, "disp_spec_scaling",${disp_spec_scaling});
+*/
 	ret = ssc_exec(obj, 'etes_electric_resistance');
-*/
-//	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
-//	ssc_var(obj, "const_per_upfront_rate5", 0);
-	ret = ssc_auto_exec_eqn(obj, 'etes_electric_resistance', 2);
-//	//ret = ssc_module_create_from_case('etes_electric_resistance');
-	ret_d = ssc_dump(obj, 'c:/tmp/etes_system_des_mimo_ssc_auto_exec_eqn.txt');
-//	ret = 1;
-//msgbox("ret=" + ret);
+
+	ret_d = ssc_dump(obj, 'c:/tmp/etes_system_des_mimo_ssc_auto_exec.txt');
+
 	if(ret==0) {
-
-	// testing
-
 		${nameplate} = ssc_var(obj, "nameplate");
 		${system_capacity} = ssc_var(obj, "system_capacity");
 		${q_pb_design} = ssc_var(obj, "q_pb_design");
@@ -1586,81 +1485,4 @@ equations{ '$MIMO$ ui_etes_system_design__etes_cmod' } = define()
 	ssc_free( obj );
 };
 
-2782
-on_load{"ETES System Design"} = define()
-{
-	ret = 0;
-/*
-	obj = ssc_create();
-	ret = ssc_auto_exec(obj, 'etes_electric_resistance', 2);
-	//ret = ssc_module_create_from_case('etes_electric_resistance');
-	ret_d = ssc_dump(obj, 'etes_system_des_mimo_ssc_auto_exec.txt');
-
-	if(ret==0) {
-
-	// testing
-
-		${nameplate} = ssc_var(obj, "nameplate");
-		${system_capacity} = ssc_var(obj, "system_capacity");
-		${q_pb_design} = ssc_var(obj, "q_pb_design");
-		${q_dot_heater_des} = ssc_var(obj, "q_dot_heater_design");
-		${tshours_heater} = ssc_var(obj, "tshours_heater");
-		${E_heater_su_des} = ssc_var(obj, "E_heater_su_des");
-		${etes_bop_des_calc} = ssc_var(obj, "W_dot_bop_design");
-		${PB_m_dot_htf_cycle_des} = ssc_var(obj, "m_dot_htf_cycle_des");
-		${cb_heater_cost_calc} = ssc_var(obj, "heater_cost_calc");
-		${cb_storage_cost_calc} = ssc_var(obj, "tes_cost_calc");
-		${cb_bop_cost_calc} = ssc_var(obj, "bop_cost_calc");
-		${cb_cycle_cost_calc} = ssc_var(obj, "cycle_cost_calc");
-		${cb_direct_subtotal} = ssc_var(obj, "direct_subtotal_cost_calc");
-		${cb_contingency_cost_calc} = ssc_var(obj, "contingency_cost_calc");
-		${cb_total_direct_cost} = ssc_var(obj, "total_direct_cost_calc");
-		${cb_epc_cost_calc} = ssc_var(obj, "epc_cost_calc");
-		${cb_land_cost_calc} = ssc_var(obj, "land_cost_calc");
-		${cb_sales_tax_cost_calc} = ssc_var(obj, "sales_tax_cost_calc");
-		${cb_total_indirect_cost} = ssc_var(obj, "total_indirect_cost_calc");
-		${total_installed_cost} = ssc_var(obj, "total_installed_cost");		
-		${cb_installed_per_capacity_cost_calc} = ssc_var(obj, "installed_per_cap_cost_calc");
-			// TES page
-		${Q_tes} = ssc_var(obj, "Q_tes_des");
-		${tes_avail_vol} = ssc_var(obj, "V_tes_htf_avail");
-		${tes_vol_total} = ssc_var(obj, "V_tes_htf_total");
-		${tes_tank_diameter} = ssc_var(obj, "d_tank_tes");
-		${q_dot_tes_est} = ssc_var(obj, "q_dot_loss_tes_des");
-		${tes_htf_density} = ssc_var(obj, "dens_store_htf_at_T_ave");
-	}
-	else {
-		vf = -789;
-		${nameplate} = vf;
-		${system_capacity} = vf;
-		${q_pb_design} = vf;
-		${q_dot_heater_des} = vf;
-		${tshours_heater} = vf;
-		${E_heater_su_des} = vf;
-		${etes_bop_des_calc} = vf;
-		${PB_m_dot_htf_cycle_des} = vf;
-		${cb_heater_cost_calc} = vf;
-		${cb_storage_cost_calc} = vf;
-		${cb_bop_cost_calc} = vf;
-		${cb_cycle_cost_calc} = vf;
-		${cb_direct_subtotal} = vf;
-		${cb_contingency_cost_calc} = vf;
-		${cb_total_direct_cost} = vf;
-		${cb_epc_cost_calc} = vf;
-		${cb_land_cost_calc} = vf;
-		${cb_sales_tax_cost_calc} = vf;
-		${cb_total_indirect_cost} = vf;		
-		${total_installed_cost} = vf;
-		${cb_installed_per_capacity_cost_calc} = vf;
-			// TES page
-		${Q_tes} = vf;
-		${tes_avail_vol} = vf;
-		${tes_vol_total} = vf;
-		${tes_tank_diameter} = vf;
-		${q_dot_tes_est} = vf;
-		${tes_htf_density} = vf;
-	}
-	ssc_free( obj );
-*/
-};
-
+0
