@@ -469,6 +469,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_electrical_efficiency_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_fuel_consumption_mcf_aget(SAM_table ptr, int* length, SAM_error *err);

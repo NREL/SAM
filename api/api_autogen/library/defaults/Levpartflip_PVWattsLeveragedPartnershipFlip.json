@@ -49,7 +49,7 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 5.40754e+12
+			"total_installed_cost": 5.13822e+07
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -218,7 +218,6 @@
 			"loan_moratorium": 0
 		},
 		"Recapitalization": {
-			"system_use_recapitalization": 0
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,
@@ -263,7 +262,7 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 1.08151e+11
+			"construction_financing_cost": 1.02764e+06
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,

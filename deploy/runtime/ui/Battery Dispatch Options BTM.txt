@@ -222,7 +222,7 @@ Bold
 2
 1
 
-4
+8
 batt_dispatch_auto_can_charge
 3
 1
@@ -280,9 +280,113 @@ Peak shaving|Input grid power targets|Input battery power targets|Manual dispatc
 1
 0
 RadioChoice
-
+batt_dispatch_load_forecast_choice
+3
+1
+ 
+ 
+Battery Dispatch
 0
-1707
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_wf_forecast_choice
+3
+1
+ 
+ 
+Battery Dispatch
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_load_ac_forecast
+3
+2
+ 
+kW
+Battery Dispatch
+0
+8
+1
+2
+1
+1
+0
+Default
+batt_load_ac_forecast_escalation
+3
+2
+ 
+ 
+Battery Dispatch
+0
+8
+1
+2
+1
+1
+0
+Default
+
+972
+equations{'batt_load_ac_forecast'} = define()
+{
+	if(${batt_dispatch_load_forecast_choice} == 2) {
+		choice = ${batt_dispatch_choice_ui};
+		if (choice == 0) {
+			return ${load_user_forecast_data_peak_shaving};
+		}
+		else if (choice == 4) {
+			return ${load_user_forecast_data_psd};
+		}
+		else {
+			return [0];
+		}
+	}
+	else {
+		return [0];
+	}
+};
+
+equations{'batt_load_ac_forecast_escalation'} = define()
+{
+	if(${batt_dispatch_load_forecast_choice} == 2) {
+		choice = ${batt_dispatch_choice_ui};
+		if (choice == 0) {
+			if (${batt_dispatch_load_escal_choice_peak} == 1) {
+				return ${batt_dispatch_load_forecast_escal_psd};
+			}
+			else {
+				return ${load_escalation};
+			}
+		}
+		else if (choice == 4) {
+			if (${batt_dispatch_load_escal_choice_psd} == 1) {
+				return ${batt_dispatch_load_forecast_escal_psd};
+			}
+			else {
+				return ${load_escalation};
+			}
+		}
+		else {
+			logmsg("Setting batt_load_ac_forecast to 0");
+			return [0];
+		}
+	}
+	else {
+		return [0];
+	}
+};
+1706
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
@@ -292,7 +396,7 @@ on_load{'Battery Dispatch Options BTM'} = define() {
 	}
 	else
 	{
-		msg = 'The storage dispatch options determine how and  when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';
+		msg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';
 		clr = 'black';
 	}
 	property('lbl_dispatch_options','Caption',msg);

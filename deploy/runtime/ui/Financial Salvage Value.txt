@@ -225,7 +225,7 @@ batt_salvage_percentage
 1
 Storage salvage value
 % of storage replacement cost in final year adjusted for remaining capacity
- 
+Salvage Value
 0
 0
 1
@@ -239,7 +239,7 @@ batt_salvage_value
 1
 End of analysis period storage value
 $
- 
+Salvage Value
 0
 8
 1
