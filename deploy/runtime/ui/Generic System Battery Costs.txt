@@ -3393,7 +3393,7 @@ battery_indirect_cost_percent
 1
 Percentage of indirect cost attributed to battery
 %
- 
+Generic Battery Capital Costs
 0
 2
 1
@@ -3463,7 +3463,7 @@ battery_total_cost_lcos
 1
  
  
- 
+Generic Battery Capital Costs
 0
 8
 1
@@ -3743,7 +3743,7 @@ total_battery_indirect_cost
 1
  
  
- 
+Generic Battery Capital Costs
 0
 8
 1
@@ -3799,7 +3799,7 @@ total_system_indirect_cost
 1
  
  
- 
+Generic Battery Capital Costs
 0
 8
 1
