@@ -480,7 +480,7 @@ equations{'batt_load_ac_forecast_escalation'} = define()
 		return [0];
 	}
 };
-2123
+2252
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	enable_disable_powerflow_options();
@@ -501,6 +501,10 @@ on_load{'Battery Dispatch Options BTM'} = define() {
 on_change{'batt_dispatch_choice_ui'} = define() {
 	show_hide_charge_options();
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
+};
+
+on_change{'batt_dispatch_auto_can_charge'} = define() {
+	enable_disable_powerflow_options();
 };
 
 // hide charge options for manual dispatch
@@ -543,6 +547,6 @@ function enable_disable_powerflow_options()
 		enable('batt_dispatch_charge_only_system_exceeds_load', false);
 	}
 	else {
-		enable('batt_dispatch_charge_only_system_exceeds_load', true);
+		enable('batt_dispatch_charge_only_system_exceeds_load', ${batt_dispatch_auto_can_charge} == 1);
 	}
 }
