@@ -2032,7 +2032,7 @@ setup_merchant_plant_pages( );
 setup_electricity_purchases();
 
 setconfig( 'PV Battery', 'Leveraged Partnership Flip' );
-setmodules( ['pvsamv1', 'grid', 'levpartflip']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'levpartflip']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
@@ -2042,7 +2042,7 @@ setup_leveraged_partnership_flip_pages( );
 setup_electricity_purchases();
 
 setconfig( 'PV Battery', 'All Equity Partnership Flip' );
-setmodules( ['pvsamv1', 'grid', 'equpartflip']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'equpartflip']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
@@ -2052,7 +2052,7 @@ setup_all_equity_partnership_flip_pages( );
 setup_electricity_purchases();
 
 setconfig( 'PV Battery', 'Sale Leaseback' );
-setmodules( ['pvsamv1', 'grid', 'saleleaseback']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
