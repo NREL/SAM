@@ -4094,6 +4094,126 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set batt_dispatch_pvs_ac_lb: AC lower bound [fraction of nameplate]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_ac_lb_enable: Enable AC lower bound [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_enable_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_ac_ub: AC upper bound [fraction of nameplate]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_ub_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_ac_ub_enable: Enable AC upper bound [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_ub_enable_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_curtail_as_control: Correct up-ramp violations [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_curtail_as_control_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_curtail_if_violation: Curtail violations [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_curtail_if_violation_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_forecast_shift_periods: Forecasting window [periods of ramp intervals]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_forecast_shift_periods_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_kf: Forecast accumulation error multiplier (kf)
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_kf_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_ki: Return to rest SOC multiplier (ki)
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ki_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_kp: Track PV power multiplier (kp)
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_kp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_max_ramp: Maximum ramp rate [% of nameplate per ramp interval]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_max_ramp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_nameplate_ac: Nameplate for pv smoothing [kWac]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_nameplate_ac_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_short_forecast_enable: Enable short term power forecast [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_short_forecast_enable_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_soc_rest: Battery resting SOC [%]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_soc_rest_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_pvs_timestep_multiplier: Ramp timestep multiplier
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_timestep_multiplier_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set batt_dispatch_update_frequency_hours: Frequency to update the look-ahead dispatch [hours]
 	 * options: None
 	 * constraints: None
@@ -4579,6 +4699,35 @@ extern "C"
 	 * required if: ur_ec_enable_billing_demand=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_yearzero_usage_peaks_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// GridLimits parameters
+	//
+
+	/**
+	 * Set enable_interconnection_limit: Enable grid interconnection limit [0/1]
+	 * options: Enable a grid interconnection limit
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_GridLimits_enable_interconnection_limit_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set grid_curtailment: Grid curtailment as energy delivery limit (first year) [MW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_GridLimits_grid_curtailment_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set grid_interconnection_limit_kwac: Grid interconnection limit [kWac]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
@@ -5683,6 +5832,36 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_choice_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_enable_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_ub_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_ub_enable_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_curtail_as_control_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_curtail_if_violation_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_forecast_shift_periods_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_kf_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ki_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_kp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_max_ramp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_nameplate_ac_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_short_forecast_enable_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_soc_rest_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_timestep_multiplier_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_update_frequency_hours_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_look_ahead_hours_nget(SAM_table ptr, SAM_error *err);
@@ -5818,10 +5997,25 @@ extern "C"
 
 
 	/**
+	 * GridLimits Getters
+	 */
+
+	SAM_EXPORT double SAM_Pvsamv1_GridLimits_enable_interconnection_limit_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_GridLimits_grid_curtailment_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_GridLimits_grid_interconnection_limit_kwac_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_lifetime_loss_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_ac_loss_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_perf_adj_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_transmission_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -6051,6 +6245,30 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_target_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_PV_ramp_interval_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_P_pv_ac_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_battpower_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_battsoc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_curtail_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_pvs_energy_to_grid_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_pvs_energy_to_grid_percent_sam_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_forecast_pv_energy_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_outpower_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_pvs_violation_count_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_violation_list_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_pvs_violation_percent_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_q0_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_q1_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -6091,6 +6309,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_crit_load_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_dc_degrade_factor_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_dc_invmppt_loss_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -6124,6 +6344,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_interconnection_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_inv_cliploss_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -6160,6 +6382,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_interconnection_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_poa_beam_eff_aget(SAM_table ptr, int* length, SAM_error *err);
 

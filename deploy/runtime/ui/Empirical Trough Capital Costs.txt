@@ -3240,7 +3240,7 @@ TabOrder
 3
 0
 
-43
+42
 csp.tr.cost.bop
 3
 1
@@ -3787,20 +3787,6 @@ Empirical Trough Capital Costs
 1
 0
 Default
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Empirical Trough Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -3844,7 +3830,7 @@ Empirical Trough Capital Costs
 0
 Default
 
-3497
+3426
 // direct cost equations
 equations{ 'csp.tr.cost.site_improvements.area' } = define() {
 	return ${Solar_Field_Area}; };
@@ -3936,8 +3922,6 @@ equations{ 'total_installed_cost' } = define() {
 equations{ 'csp.tr.cost.installed_per_capacity' } = define() {
 	return 0.001*${total_installed_cost}/${ui_net_capacity}; };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 0

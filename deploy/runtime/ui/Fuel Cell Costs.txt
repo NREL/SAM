@@ -7445,7 +7445,7 @@ TabOrder
 3
 51
 
-86
+85
 battery_energy
 3
 1
@@ -7521,7 +7521,7 @@ battery_total_cost_lcos
 1
  
  
- 
+Fuel Cell Capital Costs
 0
 8
 1
@@ -8568,26 +8568,12 @@ Fuel Cell Capital Costs
 1
 0
 Default
-system_use_recapitalization
-3
-1
- 
- 
-Fuel Cell Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_battery_indirect_cost
 3
 1
  
  
- 
+Fuel Cell Capital Costs
 0
 8
 1
@@ -8653,7 +8639,7 @@ total_system_indirect_cost
 0
 Default
 
-7515
+7442
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -8892,10 +8878,6 @@ equations { 'fuelcell_power_total' } = define () {
 
 equations { 'fuelcell_total' } = define () {
 	return ${fuelcell_power_total}*${fuelcell_per_kW};};
-
-equations { 'system_use_recapitalization' } = define () {
-	return 0;
-};
 
 equations {'battery_total_cost_lcos'} = define() {
 	if (${pv_capex_cost_choice}==0) {

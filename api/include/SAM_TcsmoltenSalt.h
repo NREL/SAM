@@ -49,6 +49,19 @@ extern "C"
 
 
 	//
+	// FinancialModel parameters
+	//
+
+	/**
+	 * Set csp_financial_model:  [1-8]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialModel_csp_financial_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// TimeOfDeliveryFactors parameters
 	//
 
@@ -56,7 +69,7 @@ extern "C"
 	 * Set dispatch_factor1: Dispatch payment factor 1
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -64,7 +77,7 @@ extern "C"
 	 * Set dispatch_factor2: Dispatch payment factor 2
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -72,7 +85,7 @@ extern "C"
 	 * Set dispatch_factor3: Dispatch payment factor 3
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -80,7 +93,7 @@ extern "C"
 	 * Set dispatch_factor4: Dispatch payment factor 4
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -88,7 +101,7 @@ extern "C"
 	 * Set dispatch_factor5: Dispatch payment factor 5
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -96,7 +109,7 @@ extern "C"
 	 * Set dispatch_factor6: Dispatch payment factor 6
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -104,7 +117,7 @@ extern "C"
 	 * Set dispatch_factor7: Dispatch payment factor 7
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -112,7 +125,7 @@ extern "C"
 	 * Set dispatch_factor8: Dispatch payment factor 8
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -120,7 +133,7 @@ extern "C"
 	 * Set dispatch_factor9: Dispatch payment factor 9
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -128,7 +141,7 @@ extern "C"
 	 * Set dispatch_factors_ts: Dispatch payment factor array
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=1
+	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -136,7 +149,7 @@ extern "C"
 	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
 	 * options: None
 	 * constraints: None
-	 * required if: ?=[[1]]
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -144,12 +157,12 @@ extern "C"
 	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
 	 * options: None
 	 * constraints: None
-	 * required if: ?=[[1]]
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ppa_multiplier_model: PPA multiplier model [0/1]
+	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
 	 * options: 0=diurnal,1=timestep
 	 * constraints: INTEGER,MIN=0
 	 * required if: ?=0
@@ -2457,6 +2470,19 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_m_dot_htf_low_nset(SAM_table ptr, double number, SAM_error *err);
 
 
+	//
+	// Revenue parameters
+	//
+
+	/**
+	 * Set mp_energy_market_revenue: Energy market revenue input
+	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
+	 * constraints: None
+	 * required if: csp_financial_model=6&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
 	/**
 	 * SolarResource Getters
 	 */
@@ -2464,6 +2490,13 @@ extern "C"
 	SAM_EXPORT SAM_table SAM_TcsmoltenSalt_SolarResource_solar_resource_data_tget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_TcsmoltenSalt_SolarResource_solar_resource_file_sget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * FinancialModel Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -3115,6 +3148,13 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_m_dot_htf_ind_od_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_m_dot_htf_low_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Revenue Getters
+	 */
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**

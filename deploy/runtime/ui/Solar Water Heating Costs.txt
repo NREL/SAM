@@ -2037,7 +2037,7 @@ TabOrder
 3
 0
 
-27
+26
 bos
 3
 1
@@ -2363,20 +2363,6 @@ $/m3|$/unit
 1
 1
 Choice
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-SHW Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct
 3
 1
@@ -2420,7 +2406,7 @@ SHW Capital Costs
 0
 Numeric
 
-1503
+1432
 equations{ 'plm_total' } = define() {
 	return ${plm_nonfixed}+${plm_fixed}; };
 
@@ -2476,8 +2462,6 @@ equations{ 'total_indirect' } = define() {
 equations{ 'total_installed_cost' } = define() {
 	return ${total_direct}+${total_indirect}+${sales_tax_total}; };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 0

@@ -97,7 +97,6 @@
 			"om_opt_fuel_2_usage": 0,
 			"om_production": [4.000000],
 			"om_production_escal": 0,
-			"system_use_recapitalization": 0,
 			"total_installed_cost": 1.82285e+08
 		},
 		"TaxCreditIncentives": {

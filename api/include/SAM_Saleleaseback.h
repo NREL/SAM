@@ -290,6 +290,14 @@ extern "C"
 	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set fuelcell_annual_energy_discharged: Annual energy from fuelcell [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set om_batt_capacity_cost: Battery capacity-based System Costs amount [$/kWcap]
 	 * options: None
 	 * constraints: None
@@ -304,6 +312,14 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_batt_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_batt_nameplate: Battery capacity for System Costs values [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_batt_nameplate_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_batt_replacement_cost: Replacement cost 1 [$/kWh]
@@ -384,6 +400,14 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fuelcell_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_fuelcell_nameplate: Fuel cell capacity for System Costs values [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_fuelcell_nameplate_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set om_fuelcell_replacement_cost: Replacement cost 2 [$/kW]
@@ -488,22 +512,6 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_om_replacement_cost_escal_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ui_batt_capacity: Battery capacity for System Costs values [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_ui_batt_capacity_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ui_fuelcell_capacity: Fuel cell capacity for System Costs values [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Saleleaseback_SystemCosts_ui_fuelcell_capacity_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -2253,9 +2261,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_batt_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_batt_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2276,6 +2288,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fuelcell_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fuelcell_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_fuelcell_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Saleleaseback_SystemCosts_om_fuelcell_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2302,10 +2316,6 @@ extern "C"
 	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_ui_batt_capacity_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Saleleaseback_SystemCosts_ui_fuelcell_capacity_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
