@@ -151,8 +151,8 @@ Tool Tip
 0
 Caption
 5
-187
-For the Dispatch to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
+189
+For the Look Ahead to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
 TextColour
 4
 0
@@ -570,13 +570,13 @@ Bold
 2
 1
 
-8
+6
 batt_cycle_cost
 3
 2
 Cycle degradation penalty
 $/cycle-kWh
-Battery Dispatch
+Battery Dispatch FOM Automated
 0
 2
 1
@@ -590,7 +590,7 @@ batt_cycle_cost_choice
 1
 Cycle degradation penalty option
  
-Battery Dispatch
+Battery Dispatch FOM Automated
 37
 Calculate automatically|Enter penalty
 2
@@ -605,7 +605,7 @@ batt_dispatch_update_frequency_hours
 1
 Frequency to update dispatch
 hours
-Battery Dispatch
+Battery Dispatch FOM Automated
 0
 2
 1
@@ -619,7 +619,7 @@ batt_dispatch_wf_forecast_choice
 1
 Weather forecast choice for automatic dispatch
  
-Battery Dispatch
+Battery Dispatch FOM Automated
 0
 3
 1
@@ -633,7 +633,7 @@ batt_look_ahead_hours
 1
 Look ahead period
 hours
-Battery Dispatch
+Battery Dispatch FOM Automated
 0
 2
 1
@@ -642,40 +642,12 @@ Battery Dispatch
 1
 0
 Numeric
-batt_pv_ac_forecast
-3
-2
- 
- 
-Battery Dispatch
-0
-0
-1
-2
-1
-1
-0
-Default
-batt_pv_clipping_forecast
-3
-2
- 
- 
-Battery Dispatch
-0
-0
-1
-2
-1
-1
-0
-Default
 batt_user_specified_weather_file
 3
 4
 Weather file for battery dispatch
  
-Battery Dispatch
+Battery Dispatch FOM Automated
 0
 3
 1
@@ -684,7 +656,7 @@ Battery Dispatch
 TextEntry
 
 0
-3805
+2609
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
@@ -781,38 +753,4 @@ function enable_non_manual_inputs_fom(on_off)
 	enable('batt_dispatch_auto_can_gridcharge', on_off);
 	enable('batt_dispatch_auto_can_charge', on_off);
 	//enable('batt_dispatch_auto_can_clipcharge', value('ui_batt_is_dc'));
-}
-
-function run_forecast(file)
-{
-	logmsg('Forecast file: ' + file);
-	
-	user_specified_weather_file_old = ${user_specified_weather_file};
-	use_specific_weather_file_old = ${use_specific_weather_file};
-	solar_resource_file_old = ${solar_resource_file};
-	
-	if ( file != '' ) {
-		file = replace(file, '\\', '/');
-	}	
-
-	forecast_run = ssc_module_create_from_case('pvsamv1');
-	ssc_var(forecast_run, 'en_batt', false);
-	ssc_var(forecast_run, 'use_specific_weather_file', true);	
-	ssc_var(forecast_run, 'user_specified_weather_file', file);
-	ssc_var(forecast_run, 'solar_resource_file', file);	
-
-	logmsg('use_specific_weather_file: ' + ssc_var(forecast_run, 'use_specific_weather_file'));
-	logmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));
-	logmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));
-
-	status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=true, 'hold_dialog'=true});
-	
-	if (status != 0)
-		logmsg('Battery forecast run failed with error: ' + status);
-	else
-	{
-		${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');
-		${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
-	}
-	ssc_free(forecast_run);
 }

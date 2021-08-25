@@ -7521,7 +7521,7 @@ battery_total_cost_lcos
 1
  
  
- 
+Fuel Cell Capital Costs
 0
 8
 1
@@ -8573,7 +8573,7 @@ total_battery_indirect_cost
 1
  
  
- 
+Fuel Cell Capital Costs
 0
 8
 1
