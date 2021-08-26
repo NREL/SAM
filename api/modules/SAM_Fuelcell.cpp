@@ -736,6 +736,18 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_fuel_usage_lifetime_aget(SAM_tabl
 
 
 
+SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_annual_energy_discharged", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "fuelcell_annual_energy_discharged");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_electrical_efficiency_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

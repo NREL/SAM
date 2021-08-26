@@ -46,6 +46,7 @@
 			"add_om_num_types": 1,
 			"om_batt_capacity_cost": [0.000000],
 			"om_batt_fixed_cost": [0.000000],
+			"om_batt_nameplate": 19.2154,
 			"om_batt_replacement_cost": [232.290000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [16.000000],
@@ -234,7 +235,6 @@
 			"loan_moratorium": 0
 		},
 		"Recapitalization": {
-			"system_use_recapitalization": 0
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,

@@ -4101,7 +4101,7 @@ TabOrder
 3
 4294967295
 
-52
+51
 csp.pt.cost.bop
 3
 1
@@ -4718,20 +4718,6 @@ Tower Capital Costs
 1
 0.01298
 Default
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Tower Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -4831,7 +4817,7 @@ Tower Capital Costs
 0
 Default
 
-5590
+5519
 // Get calculated UI values that are independent variables
 //    in cost calculations
 
@@ -4985,8 +4971,6 @@ equations{ '$MIMO$ ui_tower_cost_calcs' } = define()
 	ssc_free( obj );
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 138
 on_load{"Molten Salt Tower Capital Costs"}=define()
 {

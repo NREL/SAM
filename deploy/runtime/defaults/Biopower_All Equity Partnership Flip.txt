@@ -1,5 +1,5 @@
 1
-712
+711
 adjust
 1
 5
@@ -292,7 +292,7 @@ biopwr.cost.total_indirect
 1
 1
 1
-42290148
+36457024
 biopwr.cost.turbine
 1
 1
@@ -2475,7 +2475,7 @@ const_per_interest1
 1
 1
 1
-1881180
+1.88118e+06
 const_per_interest2
 1
 1
@@ -2535,7 +2535,7 @@ const_per_interest_total
 1
 1
 1
-1881180
+1.88118e+06
 const_per_months1
 1
 1
@@ -2668,7 +2668,7 @@ const_per_total1
 1
 1
 1
-3762360
+3.76236e+06
 const_per_total2
 1
 1
@@ -2728,7 +2728,7 @@ construction_financing_cost
 1
 1
 1
-3762360
+3.76236e+06
 cost_dev_fee_percent
 1
 1
@@ -4183,7 +4183,8 @@ fargo_nd_46.9_-96.8_mts1_60_tmy
 solar_resource_file
 1
 4
-0
+35
+fargo_nd_46.9_-96.8_mts1_60_tmy.csv
 solution_mode_message
 1
 4
@@ -4229,12 +4230,6 @@ system_capacity
 1
 48535.6
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
@@ -4286,7 +4281,7 @@ total_indirect_cost
 1
 1
 1
-42290148
+36457024
 total_installed_cost
 1
 1

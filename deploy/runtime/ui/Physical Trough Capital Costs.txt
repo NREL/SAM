@@ -3694,7 +3694,7 @@ TabOrder
 3
 0
 
-45
+44
 csp.dtr.cost.bop
 3
 1
@@ -4269,20 +4269,6 @@ Physical Trough Capital Costs
 1
 0
 Numeric
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Physical Trough Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -4326,7 +4312,7 @@ Physical Trough Capital Costs
 0
 Numeric
 
-4146
+4075
 //
 //  ONLY ADD UI INDICATOR AND AGGREGATOR EQUATIONS BELOW!
 //
@@ -4443,8 +4429,6 @@ equations{ 'csp.dtr.cost.storage' } = define() {
 equations{ 'csp.dtr.cost.site_improvements' } = define() {
 	return ${csp.dtr.cost.site_improvements.area}*${csp.dtr.cost.site_improvements.cost_per_m2}; };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 136
 on_load{"DTR Capital Costs"}=define()

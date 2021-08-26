@@ -1,5 +1,5 @@
 1
-528
+529
 CT
 1
 1
@@ -161,6 +161,12 @@ annual_wspd
 1
 1
 2.28094
+baseline_cost
+1
+1
+1
+1
+0
 batt_salvage_percentage
 1
 1
@@ -339,7 +345,7 @@ const_per_interest2
 1
 1
 1
-4853150
+4.85315e+06
 const_per_interest3
 1
 1
@@ -393,7 +399,7 @@ const_per_interest_total
 1
 1
 1
-4853150
+4.85315e+06
 const_per_months1
 1
 1
@@ -586,7 +592,7 @@ construction_financing_cost
 1
 1
 1
-6701960
+6.70196e+06
 conversion_subtype
 1
 1
@@ -616,7 +622,7 @@ cost_dev_fee_value
 1
 1
 1
-3466530
+3.46653e+06
 cost_equity_closing
 1
 1
@@ -1254,7 +1260,7 @@ geotherm.cost.conf_per_well
 1
 1
 1
-1850180
+1.85018e+06
 geotherm.cost.conf_total
 1
 1
@@ -1338,7 +1344,7 @@ geotherm.cost.expl_drill
 1
 1
 1
-1541820
+1.54182e+06
 geotherm.cost.expl_multiplier
 1
 1
@@ -1368,7 +1374,7 @@ geotherm.cost.expl_total
 1
 1
 1
-2291820
+2.29182e+06
 geotherm.cost.indirect.amount_specified
 1
 1
@@ -1392,7 +1398,7 @@ geotherm.cost.inj_drill
 1
 1
 1
-4995200
+4.9952e+06
 geotherm.cost.inj_num_wells
 1
 1
@@ -1404,7 +1410,7 @@ geotherm.cost.inj_per_well
 1
 1
 1
-1541820
+1.54182e+06
 geotherm.cost.inj_prod_well_ratio
 1
 1
@@ -1512,7 +1518,7 @@ geotherm.cost.plm.nonfixed
 1
 1
 1
-3384340
+3.38434e+06
 geotherm.cost.plm.percent
 1
 1
@@ -1524,7 +1530,7 @@ geotherm.cost.plm.total
 1
 1
 1
-3384340
+3.38434e+06
 geotherm.cost.prod_cost_curve
 1
 1
@@ -1536,7 +1542,7 @@ geotherm.cost.prod_drill
 1
 1
 1
-3576630
+3.57663e+06
 geotherm.cost.prod_inj_drill
 1
 1
@@ -1572,7 +1578,7 @@ geotherm.cost.prod_per_well
 1
 1
 1
-1541820
+1.54182e+06
 geotherm.cost.prod_req
 1
 1
@@ -1632,7 +1638,7 @@ geotherm.cost.pumping.amount
 1
 1
 1
-1854070
+1.85407e+06
 geotherm.cost.pumping.amount_specified
 1
 1
@@ -1650,7 +1656,7 @@ geotherm.cost.pumps_total
 1
 1
 1
-1854070
+1.85407e+06
 geotherm.cost.recap
 1
 1
@@ -2998,7 +3004,8 @@ blythe_ca_33.617773_-114.588261_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+48
+blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv
 solution_mode_message
 1
 4

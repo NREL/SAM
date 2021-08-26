@@ -88,6 +88,7 @@
 			"add_om_num_types": 2,
 			"om_batt_capacity_cost": [0.000000],
 			"om_batt_fixed_cost": [0.000000],
+			"om_batt_nameplate": 100.205,
 			"om_batt_replacement_cost": [0.000000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [50.000000],
@@ -98,12 +99,12 @@
 			"om_fuel_cost_escal": 0,
 			"om_fuelcell_capacity_cost": [0.000000],
 			"om_fuelcell_fixed_cost": [0.000000],
+			"om_fuelcell_nameplate": 200,
 			"om_fuelcell_replacement_cost": [0.000000],
 			"om_fuelcell_variable_cost": [0.000000],
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"system_use_recapitalization": 0,
 			"total_installed_cost": 2.322e+06
 		},
 		"TaxCreditIncentives": {
