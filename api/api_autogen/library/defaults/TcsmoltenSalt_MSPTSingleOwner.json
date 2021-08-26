@@ -2,6 +2,9 @@
 	"defaults": {
 		"SolarResource": {
 		},
+		"FinancialModel": {
+			"csp_financial_model": 1
+		},
 		"TimeOfDeliveryFactors": {
 			"dispatch_factor1": 2.064,
 			"dispatch_factor2": 1.2,
@@ -9285,6 +9288,8 @@
 			"ud_m_dot_water_cool_des": 0
 		},
 		"SCO2Cycle": {
+		},
+		"Revenue": {
 		},
 		"AdjustmentFactors": {
 			"constant": 4,

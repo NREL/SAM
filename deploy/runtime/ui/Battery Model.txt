@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12269
+11827
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
