@@ -1,4 +1,4 @@
-Battery Dispatch Front of Meter
+xxBattery Dispatch Front of Meter
 1059
 494
 28
@@ -1488,14 +1488,4 @@ function run_forecast(file)
 		else
 		{
 			${batt_pv_dc_forecast} = ssc_var(forecast_run, 'dc_net');
-			${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
-		}
-		ssc_free(forecast_run);
-	}
-	else
-	{
-		${batt_pv_dc_forecast} = [0];
-		${batt_pv_clipping_forecast} = [0];
-	}
-	
-}
+			${batt_pv_

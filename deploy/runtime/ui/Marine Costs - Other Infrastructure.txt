@@ -1173,7 +1173,7 @@ dedicated_om_vessel_cost
 1
 Dedicated O&M vessel costs 
 $ 
-ME BoS Costs
+ME Costs - Other Infrastructure
 0
 3
 1
@@ -1187,7 +1187,7 @@ itemized_check_other_infras
 1
  
  
- 
+ME Costs - Other Infrastructure
 0
 8
 1
@@ -1201,7 +1201,7 @@ offshore_accomodations_other_infras_cost
 1
 Offshore accomodations costs 
 $ 
-ME BoS Costs
+ME Costs - Other Infrastructure
 0
 3
 1
@@ -1215,7 +1215,7 @@ offshore_logistical_infrastructure_other_infras_cost
 1
 Offshore logistrical infrastructure costs 
 $
-ME BoS Costs
+ME Costs - Other Infrastructure
 0
 3
 1
@@ -1229,7 +1229,7 @@ om_equipment_purchases_cost
 1
 O&M equipment purchases costs 
 $ 
-ME BoS Costs
+ME Costs - Other Infrastructure
 0
 3
 1
@@ -1243,7 +1243,7 @@ onshore_om_facilities_cost
 1
 Onshore O&M facilities costs 
 $ 
-ME BoS Costs
+ME Costs - Other Infrastructure
 0
 3
 1
@@ -1257,7 +1257,7 @@ other_infras_override
 1
  
  
- 
+ME Costs - Other Infrastructure
 0
 8
 1
@@ -1271,7 +1271,7 @@ other_infrastructure_cost
 1
  
  
- 
+ME Costs - Other Infrastructure
 0
 8
 1
@@ -1285,7 +1285,7 @@ other_infrastructure_cost_total
 1
  
  
- 
+ME Costs - Other Infrastructure
 0
 8
 1
@@ -1299,7 +1299,7 @@ other_infrastructure_transportation_other_infras_cost
 1
 Other infrastructure transportation costs 
 $ 
-ME BoS Costs
+ME Costs - Other Infrastructure
 0
 3
 1
@@ -1313,7 +1313,7 @@ other_other_infras_cost
 1
 Other (other infrastructure) costs 
 $
-ME BoS Costs
+ME Costs - Other Infrastructure
 0
 3
 1

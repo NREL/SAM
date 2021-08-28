@@ -824,7 +824,7 @@ financial_override_check
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -838,7 +838,7 @@ insurance_during_construction_cost_modeled_ui
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -852,7 +852,7 @@ project_contingency_cost_modeled_ui
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -866,7 +866,7 @@ reserve_accounts_cost_modeled_ui
 1
  
  
- 
+ME Costs - Financial
 0
 8
 1
@@ -972,7 +972,7 @@ equations {'financial_override_check'} = define() {
 
 
 
-2988
+3010
 on_load{'Marine Costs - Financial Itemized'} = define() {
 	on_change{'itemized_check_contingency'};
 	enable_contingency();
@@ -1013,7 +1013,7 @@ function enable_contingency()
 {
 	itemized_value = value('itemized_check_contingency');
 	enable('project_contingency_cost_input',itemized_value!=1);
-	
+	override_financial_cost();
 	refresh();
 }
 
@@ -1025,7 +1025,7 @@ function enable_construction_insurance()
 {
 	itemized_value_const = value('itemized_check_construction_insurance');
 	enable('insurance_during_construction_cost_input',itemized_value_const!=1);
-	
+	override_financial_cost();
 	refresh();
 }
 
@@ -1047,7 +1047,7 @@ function enable_reserve_accounts()
 	show('reserve_accounts_cost_input',(itemized_value_reserve==0 || itemized_value_reserve==2));
 	show('reserve_input_label',(itemized_value_reserve==0 || itemized_value_reserve==2));
 	
-	
+	override_financial_cost();
 	refresh();
 }
 
@@ -1059,12 +1059,8 @@ function enable_other_financial()
 {
 	itemized_value_other = value('itemized_check_other_financial');
 	enable('other_financial_cost_input',itemized_value_other!=1);
-	
+	override_financial_cost();
 	refresh();
 }
-
-on_change{'financial_cost_override'} = define() {
-	override_financial_cost();
-};
 
 
