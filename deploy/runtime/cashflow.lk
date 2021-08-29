@@ -137,11 +137,11 @@ function cf_revenue()
 
 	if ( fin == 'Community Solar')
 	{
-		cfline('cf_community_solar_subscriber1_revenue', -1, 0);
-		cfline('cf_community_solar_subscriber2_revenue', -1, 0);
-		cfline('cf_community_solar_subscriber3_revenue', -1, 0);
-		cfline('cf_community_solar_subscriber4_revenue', -1, 0);
-		cfline('cf_community_solar_unsubscribed_revenue', -1, 0);
+		cfline('cf_community_solar_subscriber1_revenue', 0);
+		cfline('cf_community_solar_subscriber2_revenue', 0);
+		cfline('cf_community_solar_subscriber3_revenue',  0);
+		cfline('cf_community_solar_subscriber4_revenue',  0);
+		cfline('cf_community_solar_unsubscribed_revenue', 0);
 	}
 
 	if (tech == 'Fuel Cell')
@@ -178,11 +178,11 @@ function cf_om_expenses()
 	
 	if ( fin == 'Community Solar')
 	{
-		cfline('cf_community_solar_upfront', -1, 0);
-		cfline('cf_community_solar_upfront_per_capacity', -1, 0);
-		cfline('cf_community_solar_recurring_fixed', -1, 0);
-		cfline('cf_community_solar_recurring_capacity', -1, 0);
-		cfline('cf_community_solar_recurring_generation', -1, 0);
+		cfline('cf_community_solar_upfront', 0);
+		cfline('cf_community_solar_upfront_per_capacity', 0);
+		cfline('cf_community_solar_recurring_fixed', 0);
+		cfline('cf_community_solar_recurring_capacity',  0);
+		cfline('cf_community_solar_recurring_generation', 0);
 		cfline('Land lease payments expense', -1, 0); // TO DO Move this to standard om expenses 
 	}
 	 
@@ -881,7 +881,57 @@ function depreciation_tables()
 	cfrow('Total,depr_fedbas_percent_total,depr_alloc_total,depr_fedbas_ibi_reduc_total,depr_fedbas_cbi_reduc_total,depr_fedbas_prior_itc_total,itc_fed_qual_total,depr_fedbas_percent_qual_total,depr_fedbas_percent_amount_total,itc_disallow_fed_percent_total,depr_fedbas_fixed_amount_total,itc_disallow_fed_fixed_total,depr_fedbas_itc_sta_reduction_total,depr_fedbas_itc_fed_reduction_total,depr_fedbas_after_itc_total,depr_fedbas_first_year_bonus_total,depr_fedbas_total'); 
 } 
  
- 
+function community_solar_intermediates()
+{
+	cfline('COMMUNITY SOLAR', -1); 
+	cfline('');
+	cfline('cf_subscriber1_share_fraction', 0); 
+	cfline('cf_subscriber2_share_fraction', 0); 
+	cfline('cf_subscriber3_share_fraction', 0); 
+	cfline('cf_subscriber4_share_fraction', 0); 
+	cfline('');
+	cfline('cf_subscriber1_retail', 0); 
+	cfline('cf_subscriber2_retail', 0); 
+	cfline('cf_subscriber3_retail', 0); 
+	cfline('cf_subscriber4_retail', 0); 
+	cfline('');
+	cfline('cf_recurring_fixed', 0); 
+	cfline('cf_recurring_capacity', 0); 
+	cfline('cf_recurring_generation', 0); 
+	cfline('');
+	cfline('cf_subscriber1_payment', 0); 
+	cfline('cf_subscriber2_payment', 0); 
+	cfline('cf_subscriber3_payment', 0); 
+	cfline('cf_subscriber4_payment', 0); 
+	cfline('');
+	cfline('cf_subscriber1_share_of_generation', 0); 
+	cfline('cf_subscriber2_share_of_generation', 0); 
+	cfline('cf_subscriber3_share_of_generation', 0); 
+	cfline('cf_subscriber4_share_of_generation', 0); 
+	cfline('cf_unsubscribed_share_of_generation', 0); 
+	cfline('');
+	cfline('cf_subscriber1_revenue_generation', 0); 
+	cfline('cf_subscriber2_revenue_generation', 0); 
+	cfline('cf_subscriber3_revenue_generation', 0); 
+	cfline('cf_subscriber4_revenue_generation', 0); 
+	cfline('cf_unsubscribed_revenue_generation', 0); 
+	cfline('');
+	cfline('cf_subscriber1_revenue_upfront', 0); 
+	cfline('cf_subscriber2_revenue_upfront', 0); 
+	cfline('cf_subscriber3_revenue_upfront', 0); 
+	cfline('cf_subscriber4_revenue_upfront', 0); 
+	cfline('');
+	cfline('cf_subscriber1_revenue_annual_payment', 0); 
+	cfline('cf_subscriber2_revenue_annual_payment', 0); 
+	cfline('cf_subscriber3_revenue_annual_payment', 0); 
+	cfline('cf_subscriber4_revenue_annual_payment', 0); 
+	cfline('');
+	cfline('cf_subscriber1_retail_cost', 0); 
+	cfline('cf_subscriber2_retail_cost', 0); 
+	cfline('cf_subscriber3_retail_cost', 0); 
+	cfline('cf_subscriber4_retail_cost', 0); 
+	cfline('');
+} 
 ////////////////////////////////////////////////////////////////////////////////
 // Functions for send to Excel with equations
 ////////////////////////////////////////////////////////////////////////////////
@@ -1655,6 +1705,7 @@ cashflow{ 'Single Owner' } = define()
 cashflow{ 'Community Solar' } = define()  
 { 
 	//cf_formatting_examples();
+	community_solar_intermediates();
 	cf_production();
 	cf_revenue();
 	cf_operating_expenses();

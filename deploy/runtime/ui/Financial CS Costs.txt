@@ -939,18 +939,18 @@ Community Solar Costs
 Numeric
 cs_cost_upfront
 3
-2
+1
 Up-front fixed cost
 $
 Community Solar Costs
 0
 2
 1
-2
+1
 1
 1
 0
-SchedNumeric
+Numeric
 cs_cost_upfront_per_capacity
 3
 1

@@ -716,7 +716,7 @@ cs_cost_recurring_generation_escal
 0
 cs_cost_upfront
 1
-2
+1
 1
 1
 1000
