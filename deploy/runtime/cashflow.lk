@@ -178,8 +178,8 @@ function cf_om_expenses()
 	
 	if ( fin == 'Community Solar')
 	{
-		cfline('cf_community_solar_upfront', 0);
-		cfline('cf_community_solar_upfront_per_capacity', 0);
+		cfline('cf_community_solar_upfront', 0); //? move to investing activities
+		cfline('cf_community_solar_upfront_per_capacity', 0); //? move to investing activities
 		cfline('cf_community_solar_recurring_fixed', 0);
 		cfline('cf_community_solar_recurring_capacity',  0);
 		cfline('cf_community_solar_recurring_generation', 0);
@@ -885,15 +885,16 @@ function community_solar_intermediates()
 {
 	cfline('COMMUNITY SOLAR', -1); 
 	cfline('');
-	cfline('cf_subscriber1_share_fraction', 0); 
-	cfline('cf_subscriber2_share_fraction', 0); 
-	cfline('cf_subscriber3_share_fraction', 0); 
-	cfline('cf_subscriber4_share_fraction', 0); 
+	cfline('cf_subscriber1_share_fraction', 4); 
+	cfline('cf_subscriber2_share_fraction', 4); 
+	cfline('cf_subscriber3_share_fraction', 4); 
+	cfline('cf_subscriber4_share_fraction', 4); 
+	cfline('cf_unsubscribed_share_fraction', 4); 
 	cfline('');
-	cfline('cf_subscriber1_retail', 0); 
-	cfline('cf_subscriber2_retail', 0); 
-	cfline('cf_subscriber3_retail', 0); 
-	cfline('cf_subscriber4_retail', 0); 
+	cfline('cf_subscriber1_retail', 3); 
+	cfline('cf_subscriber2_retail', 3); 
+	cfline('cf_subscriber3_retail', 3); 
+	cfline('cf_subscriber4_retail', 3); 
 	cfline('');
 	cfline('cf_recurring_fixed', 0); 
 	cfline('cf_recurring_capacity', 0); 

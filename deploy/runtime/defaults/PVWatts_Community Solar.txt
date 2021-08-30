@@ -707,7 +707,7 @@ cs_cost_recurring_generation
 2
 1
 1
-0.03
+0.003
 cs_cost_recurring_generation_escal
 1
 1
@@ -2764,7 +2764,7 @@ subscriber2_growth
 1
 1
 1
-2
+1.75
 subscriber2_name
 1
 4
@@ -3138,7 +3138,7 @@ ui_upfront_cost_by_capacity
 1
 1
 1
-500000000
+500000
 ui_wacc
 1
 1
