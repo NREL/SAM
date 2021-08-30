@@ -171,7 +171,7 @@ Name
 object 714
 X
 3
-20
+21
 Y
 3
 216
@@ -186,8 +186,8 @@ Tool Tip
 0
 Caption
 5
-25
-Total subscribed capacity
+27
+Total unsubscribed capacity
 TextColour
 4
 0
@@ -1789,8 +1789,8 @@ Numeric
 17
 Name
 5
-22
-ui_total_subscribed_kw
+24
+ui_total_unsubscribed_kw
 X
 3
 321
@@ -1851,8 +1851,8 @@ Numeric
 17
 Name
 5
-25
-ui_total_subscribed_share
+27
+ui_total_unsubscribed_share
 X
 3
 219
@@ -2265,7 +2265,7 @@ Community Solar Subscribers
 1
 0
 Numeric
-ui_total_subscribed_kw
+ui_total_unsubscribed_kw
 3
 1
 Total subscribed capacity in first year
@@ -2279,10 +2279,10 @@ Community Solar Subscribers
 1
 0
 Numeric
-ui_total_subscribed_share
+ui_total_unsubscribed_share
 3
 1
-Total subscribed share in first year
+Total unsubscribed share in first year
 %/nameplate capacity
 Community Solar Subscribers
 0
@@ -2294,23 +2294,25 @@ Community Solar Subscribers
 0
 Numeric
 
-792
+834
 equations{'ui_total_capacity'} = define() {
 	return ${system_capacity};
 };
 
-equations{'ui_total_subscribed_kw'} = define() {
-	return ${ui_share_kw_1}
+equations{'ui_total_unsubscribed_kw'} = define() {
+	return ${system_capacity}
+	- ( ${ui_share_kw_1}
 	+ ${ui_share_kw_2}
 	+ ${ui_share_kw_3}
-	+ ${ui_share_kw_4};
+	+ ${ui_share_kw_4} );
 };
 
-equations{'ui_total_subscribed_share'} = define() {
-	return ${subscriber1_share}[0]
+equations{'ui_total_unsubscribed_share'} = define() {
+	return 100 - 
+	( ${subscriber1_share}[0]
 	+ ${subscriber2_share}[0]
 	+ ${subscriber3_share}[0]
-	+ ${subscriber4_share}[0];
+	+ ${subscriber4_share}[0] );
 };
 
 equations{'ui_share_kw_1'} = define() {
@@ -2329,7 +2331,7 @@ equations{'ui_share_kw_4'} = define() {
 	return ${subscriber4_share}[0]/100 * ${system_capacity};
 };
 
-4123
+3988
 on_load{'Financial CS Subscribers'} = define()
 {
 	property('subscriber1_share','FixedLength',${analysis_period});
@@ -2359,17 +2361,14 @@ on_change{'subscriber1_retail_rate'} = define()
 {
 	enable('subscriber1_retail_rate_escal', #${subscriber1_retail_rate} == 1 );
 };
-
 on_change{'subscriber2_retail_rate'} = define()
 {
 	enable('subscriber2_retail_rate_escal', #${subscriber2_retail_rate} == 1 );
 };
-
 on_change{'subscriber3_retail_rate'} = define()
 {
 	enable('subscriber3_retail_rate_escal', #${subscriber3_retail_rate} == 1 );
 };
-
 on_change{'subscriber4_retail_rate'} = define()
 {
 	enable('subscriber4_retail_rate_escal', #${subscriber4_retail_rate} == 1 );
@@ -2381,19 +2380,16 @@ on_change{'subscriber1_share'} = define()
 	enable('subscriber1_growth', #${subscriber1_share} == 1 );
 	subscriber_share_message();
 };
-
 on_change{'subscriber2_share'} = define()
 {
 	enable('subscriber2_growth', #${subscriber2_share} == 1 );
 	subscriber_share_message();
 };
-
 on_change{'subscriber3_share'} = define()
 {
 	enable('subscriber3_growth', #${subscriber3_share} == 1 );
 	subscriber_share_message();
 };
-
 on_change{'subscriber4_share'} = define()
 {
 	enable('subscriber4_growth', #${subscriber4_share} == 1 );
@@ -2418,14 +2414,14 @@ function enable_retail_rate_escalation()
 
 function subscriber_share_message()
 {
-	if ( ${ui_total_subscribed_share} > 100 )
+	if ( ${ui_total_unsubscribed_share} < 0 )
 	{
-		msg = 'The project is oversubscribed at ' + ${ui_total_subscribed_share} + '% in Year 1! Reduce the anchor, general, or subsidized subscriber subscription rate so that the total is 100% or less.'; 
+		msg = 'The project is oversubscribed by ' + -${ui_total_unsubscribed_share} + '% in Year 1! Reduce the anchor, general, or subsidized subscriber subscription rate.'; 
 		color = 'red';
 	}
 	else
 	{
-		msg = 'The unubscribed share is ' + to_string(100-${ui_total_subscribed_share}) + '% for the first year. See the unsubscribed share by year in the results after running a simulation.';
+		msg = 'See the unsubscribed share by year in the results after running a simulation.';
 		color = 'black';
 	}
 	property('msg_subscriber_share','Caption',msg);
