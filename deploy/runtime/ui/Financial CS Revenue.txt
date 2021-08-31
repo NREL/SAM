@@ -560,7 +560,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -666,7 +666,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -728,7 +728,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -834,7 +834,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -940,7 +940,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -1002,7 +1002,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -1108,7 +1108,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -1214,7 +1214,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -1276,7 +1276,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -1382,7 +1382,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -1488,7 +1488,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -1550,7 +1550,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -1788,7 +1788,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3

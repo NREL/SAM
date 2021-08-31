@@ -76,7 +76,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -181,7 +181,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -286,7 +286,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -348,7 +348,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -410,7 +410,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -820,7 +820,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -913,7 +913,7 @@ cs_cost_recurring_generation
 3
 2
 Recurring annual cost by generation
-$/kWh
+$/MWh
 Community Solar Costs
 0
 2
@@ -980,9 +980,9 @@ Community Solar Costs
 0
 Numeric
 
-118
+126
 equations{'ui_upfront_cost_by_capacity'} = define() {
-	return ${system_capacity} * ${cs_cost_upfront_per_capacity};
+	return ${system_capacity} * ${cs_cost_upfront_per_capacity} * 0.001;
 };
 1017
 on_load{'Financial CS Costs'} = define()

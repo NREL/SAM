@@ -900,10 +900,10 @@ function community_solar_intermediates()
 	cfline('cf_recurring_capacity', 0); 
 	cfline('cf_recurring_generation', 0); 
 	cfline('');
-	cfline('cf_subscriber1_payment', 0); 
-	cfline('cf_subscriber2_payment', 0); 
-	cfline('cf_subscriber3_payment', 0); 
-	cfline('cf_subscriber4_payment', 0); 
+	cfline('cf_subscriber1_generation_payment', 0); 
+	cfline('cf_subscriber2_generation_payment', 0); 
+	cfline('cf_subscriber3_generation_payment', 0); 
+	cfline('cf_subscriber4_generation_payment', 0); 
 	cfline('');
 	cfline('cf_subscriber1_share_of_generation', 0); 
 	cfline('cf_subscriber2_share_of_generation', 0); 
