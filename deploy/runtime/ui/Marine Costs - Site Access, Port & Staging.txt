@@ -2216,7 +2216,7 @@ assembly_areas_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 0
 1
@@ -2230,7 +2230,7 @@ cranage_cost
 1
 Cranage costs 
 $ 
-ME BoS Costs
+ME Costs - Access Port Staging
 0
 3
 1
@@ -2244,7 +2244,7 @@ detailed_cost_choice_port_fees
 1
 Port fees detailed cost choice 
  
-ME Cost Choice
+ME Costs - Access Port Staging
 0
 3
 1
@@ -2258,7 +2258,7 @@ detailed_cost_choice_staging_port
 1
 Staging port detailed cost choice 
  
-ME Cost Choice
+ME Costs - Access Port Staging
 0
 3
 1
@@ -2272,7 +2272,7 @@ entrance_exit_fees_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 0
 1
@@ -2286,7 +2286,7 @@ fabrication_facilities_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 0
 1
@@ -2300,7 +2300,7 @@ itemized_check_site_access
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 8
 1
@@ -2314,7 +2314,7 @@ laydown_area_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 0
 1
@@ -2328,7 +2328,7 @@ other_port_fees_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 0
 1
@@ -2342,7 +2342,7 @@ other_site_access_cost
 1
 Other site access costs 
 $
-ME BoS Costs
+ME Costs - Access Port Staging
 0
 3
 1
@@ -2356,7 +2356,7 @@ other_staging_port_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 0
 1
@@ -2370,7 +2370,7 @@ personnel_facilities_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 0
 1
@@ -2384,7 +2384,7 @@ port_fees_cost
 1
 Port fees costs 
 $ 
-ME BoS Costs
+ME Costs - Access Port Staging
 0
 3
 1
@@ -2398,7 +2398,7 @@ port_fees_cost_total
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 8
 1
@@ -2412,7 +2412,7 @@ port_fees_cost_total_check
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 8
 1
@@ -2426,7 +2426,7 @@ port_fees_total
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 8
 1
@@ -2440,7 +2440,7 @@ port_improvement_cost
 1
 Port improvement costs 
 $ 
-ME BoS Costs
+ME Costs - Access Port Staging
 0
 3
 1
@@ -2454,7 +2454,7 @@ quay_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 0
 1
@@ -2468,7 +2468,7 @@ quayside_docking_fees_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 0
 1
@@ -2482,7 +2482,7 @@ site_access_override
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 8
 1
@@ -2496,7 +2496,7 @@ site_access_port_staging_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 8
 1
@@ -2510,7 +2510,7 @@ site_access_port_staging_cost_input
 1
 Site access cost input 
 $, $/kW
-ME BoS Costs
+ME Costs - Access Port Staging
 0
 3
 1
@@ -2524,7 +2524,7 @@ site_access_port_staging_cost_method
 1
 Site access cost method 
  
-ME Cost Choice
+ME Costs - Access Port Staging
 0
 3
 1
@@ -2538,7 +2538,7 @@ site_access_port_staging_cost_modeled_ui
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 8
 1
@@ -2552,7 +2552,7 @@ site_access_port_staging_cost_total
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 8
 1
@@ -2566,7 +2566,7 @@ staging_port_cost
 1
 Staging port costs 
 $
-ME BoS Costs
+ME Costs - Access Port Staging
 0
 3
 1
@@ -2580,7 +2580,7 @@ staging_port_cost_total
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 8
 1
@@ -2594,7 +2594,7 @@ staging_port_cost_total_check
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 8
 1
@@ -2608,7 +2608,7 @@ wharfage_fees_cost
 1
  
  
- 
+ME Costs - Access Port Staging
 0
 0
 1

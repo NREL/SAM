@@ -6515,7 +6515,7 @@ battery_indirect_cost_percent
 1
 Percent of indirect cost attributed to battery
 %
- 
+Capital Costs
 0
 2
 1
@@ -6585,7 +6585,7 @@ battery_total_cost_lcos
 1
 Total battery investment cost
 $
- 
+Capital Costs
 0
 9
 1
@@ -7371,7 +7371,7 @@ total_battery_indirect_cost
 1
  
  
- 
+Capital Costs
 0
 8
 1
@@ -7427,7 +7427,7 @@ total_system_indirect_cost
 1
  
  
- 
+Capital Costs
 0
 8
 1
@@ -7441,7 +7441,7 @@ total_system_installed_cost
 1
 Total system related installed cost
 $
- 
+Capital Costs
 0
 9
 1

@@ -2524,7 +2524,7 @@ active_structure_cost
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 1
 1
@@ -2538,7 +2538,7 @@ additional_structural_components_cost
 1
 Structural components cost 
 $
-ME Device Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2552,7 +2552,7 @@ additional_structural_components_cost_total
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -2566,7 +2566,7 @@ array_cable_system_cost_input
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 0
 1
@@ -2580,7 +2580,7 @@ array_cable_system_cost_method
 1
  
 $ 
- 
+ME Costs - Structural Assembly
 0
 1
 1
@@ -2594,7 +2594,7 @@ array_cable_system_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -2608,7 +2608,7 @@ assembly_and_install_cost_input
 1
 Assembly and install cost input 
 $, $/kW 
-ME BoS Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2622,7 +2622,7 @@ assembly_and_install_cost_method
 1
 Assembly and install cost method
 $
-ME Cost Choice
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2636,7 +2636,7 @@ assembly_and_install_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -2650,7 +2650,7 @@ ballast_system_cost
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 1
 1
@@ -2664,7 +2664,7 @@ buoyancy_chamber_cost
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 1
 1
@@ -2678,7 +2678,7 @@ coatings_cost
 1
 Coatings (structural assembly) costs
 $
-ME Device Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2692,7 +2692,7 @@ coatings_cost_total
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -2706,7 +2706,7 @@ detailed_cost_choice_marine_systems
 1
 Marine sytems detailed cost choice
  
-ME Cost Choice
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2720,7 +2720,7 @@ detailed_cost_choice_struct_assem
 1
 Prime mover detailed cost choice 
  
-ME Cost Choice
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2734,7 +2734,7 @@ development_cost_input
 1
 Development cost input
 $, $/kW
-ME BoS Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2748,7 +2748,7 @@ development_cost_method
 1
 Development cost method
  
-ME Cost Choice
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2762,7 +2762,7 @@ development_cost_modeled
 1
  
 $ 
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -2776,7 +2776,7 @@ eng_and_mgmt_cost_input
 1
 E&M cost input
 $, $/kW
-ME BoS Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2790,7 +2790,7 @@ eng_and_mgmt_cost_method
 1
 E&M cost method
  
-ME Cost Choice
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2804,7 +2804,7 @@ eng_and_mgmt_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -2818,7 +2818,7 @@ export_cable_system_cost_input
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 0
 1
@@ -2832,7 +2832,7 @@ export_cable_system_cost_method
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 0
 1
@@ -2846,7 +2846,7 @@ export_cable_system_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -2860,7 +2860,7 @@ external_ballast_chambers_cost
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 1
 1
@@ -2874,7 +2874,7 @@ insurance_during_construction_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -2888,7 +2888,7 @@ itemized_check_structural
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -2902,7 +2902,7 @@ maintenance_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -2916,7 +2916,7 @@ marine_energy_tech
 1
  
  
- 
+ME Costs - Structural Assembly
 15
 0=Wave| 1=Tidal
 8
@@ -2931,7 +2931,7 @@ marine_system_cost_total_check
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -2945,7 +2945,7 @@ marine_systems_cost
 1
 Marine systems costs
 $
-ME Device Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -2959,7 +2959,7 @@ marine_systems_cost_total
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -2973,7 +2973,7 @@ method_check
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -2987,7 +2987,7 @@ mooring_found_substruc_cost_input
 1
 Mooring cost input 
 $, $/kW 
-ME Device Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3001,7 +3001,7 @@ mooring_found_substruc_cost_method
 1
 Mooring cost method
  
-ME Cost Choice
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3015,7 +3015,7 @@ mooring_found_substruc_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3029,7 +3029,7 @@ navigation_lighting_cost
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 1
 1
@@ -3043,7 +3043,7 @@ offshore_substation_cost_input
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 0
 1
@@ -3057,7 +3057,7 @@ offshore_substation_cost_method
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 1
 1
@@ -3071,7 +3071,7 @@ offshore_substation_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3085,7 +3085,7 @@ onshore_substation_cost_input
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 0
 1
@@ -3099,7 +3099,7 @@ onshore_substation_cost_method
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 1
 1
@@ -3113,7 +3113,7 @@ onshore_substation_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3127,7 +3127,7 @@ operations_cost_modeled
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3141,7 +3141,7 @@ other_cost_total
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3155,7 +3155,7 @@ other_costs
 1
 Other structural assembly costs 
 $ 
-ME Device Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3169,7 +3169,7 @@ other_elec_infra_cost_input
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 2
 1
@@ -3183,7 +3183,7 @@ other_elec_infra_cost_method
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3197,7 +3197,7 @@ other_elec_infra_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3211,7 +3211,7 @@ other_infrastructure_cost_input
 1
 Other infrastructure cost input 
 $, $/kW
-ME BoS Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3225,7 +3225,7 @@ other_infrastructure_cost_method
 1
 Other infrastructure cost method
 $
-ME Cost Choice
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3239,7 +3239,7 @@ other_infrastructure_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3253,7 +3253,7 @@ other_marine_system_cost
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 0
 1
@@ -3267,7 +3267,7 @@ other_prime_mover_cost
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 0
 1
@@ -3281,7 +3281,7 @@ override_check_structural
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3295,7 +3295,7 @@ personnel_access_system_cost
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 1
 1
@@ -3309,7 +3309,7 @@ plant_commissioning_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3323,7 +3323,7 @@ power_takeoff_system_cost_input
 1
 PTO cost input 
 $, $/kW
-ME Device Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3337,7 +3337,7 @@ power_takeoff_system_cost_method
 1
 PTO cost method
 $
-ME Cost Choice
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3351,7 +3351,7 @@ power_takeoff_system_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3365,7 +3365,7 @@ primary_struct_assem_cost
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 1
 1
@@ -3379,7 +3379,7 @@ prime_mover_cost
 1
 Prime mover costs
 $
-ME Device Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3393,7 +3393,7 @@ prime_mover_cost_total
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3407,7 +3407,7 @@ prime_mover_cost_total_check
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3421,7 +3421,7 @@ project_contingency_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3435,7 +3435,7 @@ reserve_accounts_modeled
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3449,7 +3449,7 @@ site_access_port_staging_cost_modeled
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3463,7 +3463,7 @@ struct_level_total_label
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 0
 1
@@ -3477,7 +3477,7 @@ struct_override
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3491,7 +3491,7 @@ struct_user_input_label
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 0
 1
@@ -3505,7 +3505,7 @@ structural_assembly_cost
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3519,7 +3519,7 @@ structural_assembly_cost_input
 1
 Structural assembly cost input
 $, $/kW
-ME Device Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3533,7 +3533,7 @@ structural_assembly_cost_method
 1
 Structural assembly cost method 
  
-ME Cost Choice
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3547,7 +3547,7 @@ structural_assembly_cost_modeled
 1
  
 $ 
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3561,7 +3561,7 @@ structural_assembly_cost_modeled_formatted
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3575,7 +3575,7 @@ structural_assembly_cost_total
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3589,7 +3589,7 @@ total_bos_cost_per_kwh
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3603,7 +3603,7 @@ total_capital_cost_per_kwh
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3617,7 +3617,7 @@ total_device_cost_per_kwh
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3631,7 +3631,7 @@ total_financial_cost_per_kwh
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3645,7 +3645,7 @@ total_installed_cost_structural
 1
  
 $
- 
+ME Costs - Structural Assembly
 0
 9
 1
@@ -3659,7 +3659,7 @@ total_operations_cost_per_kwh
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3673,7 +3673,7 @@ total_rated_capacity
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 0
 1
@@ -3687,7 +3687,7 @@ transport_structure_cost
 1
 Structure transportation costs 
 $
-ME Device Costs
+ME Costs - Structural Assembly
 0
 3
 1
@@ -3701,7 +3701,7 @@ transport_structure_cost_total
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3715,7 +3715,7 @@ variable_marine_systems
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3729,7 +3729,7 @@ variable_prime_mover
 1
  
  
- 
+ME Costs - Structural Assembly
 0
 8
 1
@@ -3739,7 +3739,7 @@ variable_prime_mover
 0
 Default
 
-8912
+8863
 equations {'total_rated_capacity'} = define() {
 	return ${system_capacity};
 };
@@ -3815,7 +3815,6 @@ equations{ '$MIMO$ mhk modeled cost calculations' } = define() {
 	ssc_var(obj,'device_rated_power', ${device_rated_power});
 	ssc_var(obj,'system_capacity', ${system_capacity});
 	ssc_var(obj,'devices_per_row', ${devices_per_row});
-	ssc_var(obj,'annual_energy', ${annual_energy});
 	
 	
 	ssc_var(obj,'structural_assembly_cost_method', ${structural_assembly_cost_method});
