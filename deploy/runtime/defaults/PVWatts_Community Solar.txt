@@ -1,5 +1,5 @@
 1
-511
+512
 ac_nameplate
 1
 1
@@ -546,7 +546,7 @@ const_per_total1
 1
 1
 1
-1.02764e+06
+1027640
 const_per_total2
 1
 1
@@ -606,7 +606,7 @@ construction_financing_cost
 1
 1
 1
-1.02764e+06
+1027640
 contingency
 1
 1
@@ -3170,6 +3170,12 @@ ui_wacc
 1
 6.70974
 unsubscribed_payment_generation
+1
+2
+1
+1
+0
+unsubscribed_payment_generation_escal
 1
 1
 1

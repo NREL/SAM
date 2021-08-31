@@ -1,7 +1,7 @@
 Financial CS Revenue
 859
 245
-36
+37
 Label
 
 1
@@ -303,7 +303,7 @@ Name
 object 7
 X
 3
-555
+531
 Y
 3
 213
@@ -563,7 +563,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -669,7 +669,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -731,7 +731,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -837,7 +837,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -943,7 +943,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -1005,7 +1005,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -1111,7 +1111,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -1217,7 +1217,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -1279,7 +1279,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -1385,7 +1385,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -1491,7 +1491,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -1553,7 +1553,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -1757,23 +1757,67 @@ BackColour
 TabOrder
 3
 4294967295
-Numeric
+SchedNumeric
 
 1
-17
+12
 Name
 5
 31
 unsubscribed_payment_generation
 X
 3
-645
+621
 Y
 3
 213
 Width
 3
-76
+100
+Height
+3
+24
+Tool Tip
+5
+118
+Click Value/Sched to switch between a single value with an escalation rate and annual values over the analysis period.
+Label
+5
+5
+$/kWh
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+41
+Enter an unsubscribed rate for each year.
+TabOrder
+3
+5
+Numeric
+
+1
+17
+Name
+5
+37
+unsubscribed_payment_generation_escal
+X
+3
+723
+Y
+3
+213
+Width
+3
+90
 Height
 3
 24
@@ -1791,7 +1835,7 @@ Format
 1
 Decimals
 3
-3
+0
 Prefix
 5
 0
@@ -1818,9 +1862,9 @@ BackColour
 255
 TabOrder
 3
-6
+4294967295
 
-25
+26
 subscriber1_payment_annual
 3
 2
@@ -2151,9 +2195,23 @@ Community Solar Revenue
 TextEntry
 unsubscribed_payment_generation
 3
-1
+2
 Unsubscribed generation rate
 $/kWh
+Community Solar Revenue
+0
+3
+1
+2
+1
+1
+0
+SchedNumeric
+unsubscribed_payment_generation_escal
+3
+1
+Unsubscribed generation escalation
+%/yr
 Community Solar Revenue
 0
 3
@@ -2162,7 +2220,7 @@ Community Solar Revenue
 1
 1
 0
-Numeric
+MultilineText
 
 314
 equations{'ui_subscriber1_name'} = define() {
@@ -2180,7 +2238,7 @@ equations{'ui_subscriber3_name'} = define() {
 equations{'ui_subscriber4_name'} = define() {
 	return ${subscriber4_name};
 };
-2604
+2864
 on_load{'Financial CS Revenue'} = define()
 {
 	property('subscriber1_payment_annual','FixedLength',${analysis_period});
@@ -2188,10 +2246,10 @@ on_load{'Financial CS Revenue'} = define()
 	property('subscriber3_payment_annual','FixedLength',${analysis_period});
 	property('subscriber4_payment_annual','FixedLength',${analysis_period});
 
-	property('subscriber1_payment_general','FixedLength',${analysis_period});
-	property('subscriber2_payment_general','FixedLength',${analysis_period});
-	property('subscriber3_payment_general','FixedLength',${analysis_period});
-	property('subscriber4_payment_general','FixedLength',${analysis_period});
+	property('subscriber1_payment_generation','FixedLength',${analysis_period});
+	property('subscriber2_payment_generation','FixedLength',${analysis_period});
+	property('subscriber3_payment_generation','FixedLength',${analysis_period});
+	property('subscriber4_payment_generation','FixedLength',${analysis_period});
 
 	enable_revenue_escalation_rate();
 };
@@ -2229,6 +2287,10 @@ on_change{'subscriber4_payment_generation'} = define()
 {
 	enable('subscriber4_payment_generation_escal', #${subscriber4_payment_generation} == 1 ); 
 };
+on_change{'unsubscribed_payment_generation'} = define()
+{
+	enable('unsubscribed_payment_generation_escal', #${unsubscribed_payment_generation} == 1 ); 
+};
 
 function enable_revenue_escalation_rate() 
 {
@@ -2240,5 +2302,5 @@ function enable_revenue_escalation_rate()
 	enable('subscriber2_payment_generation_escal', #${subscriber2_payment_generation} == 1 ); 
 	enable('subscriber3_payment_generation_escal', #${subscriber3_payment_generation} == 1 ); 
 	enable('subscriber4_payment_generation_escal', #${subscriber4_payment_generation} == 1 ); 
-
+	enable('unsubscribed_payment_generation_escal', #${unsubscribed_payment_generation} == 1 ); 
 }
