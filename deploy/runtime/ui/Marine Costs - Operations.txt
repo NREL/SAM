@@ -3358,7 +3358,7 @@ annual_leases_fees_cost
 1
 Annual leases and business costs 
 $ 
-ME O&M Costs
+ME Costs - Operations
 0
 3
 1
@@ -3372,7 +3372,7 @@ annual_leases_fees_cost_total
 1
  
  
- 
+ME Costs - Operations
 0
 8
 1
@@ -3386,7 +3386,7 @@ annual_leases_fees_cost_total_check
 1
  
  
- 
+ME Costs - Operations
 0
 8
 1
@@ -3400,7 +3400,7 @@ condition_monitoring_operations_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3414,7 +3414,7 @@ detailed_cost_choice_annual_leases
 1
 Annual leases and fees detailed cost choice 
  
-ME Cost Choice
+ME Costs - Operations
 0
 3
 1
@@ -3428,7 +3428,7 @@ detailed_cost_choice_env_health_safety
 1
 Environmental, health, and safety monitoring detailed cost choice 
  
-ME Cost Choice
+ME Costs - Operations
 0
 3
 1
@@ -3442,7 +3442,7 @@ detailed_cost_choice_gen_admin
 1
 Operations, management, and general admin. detailed cost choice
  
-ME Cost Choice
+ME Costs - Operations
 0
 3
 1
@@ -3456,7 +3456,7 @@ environmental_health_and_safety_monitoring_cost
 1
 Health and safety monitoring costs
 $
-ME O&M Costs
+ME Costs - Operations
 0
 3
 1
@@ -3470,7 +3470,7 @@ environmental_health_and_safety_monitoring_cost_total
 1
  
  
- 
+ME Costs - Operations
 0
 8
 1
@@ -3484,7 +3484,7 @@ environmental_health_and_safety_monitoring_cost_total_check
 1
  
  
- 
+ME Costs - Operations
 0
 8
 1
@@ -3498,7 +3498,7 @@ environmental_monitoring_operations_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3512,7 +3512,7 @@ federal_energy_regulatory_commission_fees_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3526,7 +3526,7 @@ generation_planning_and_integration_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3540,7 +3540,7 @@ health_safety_monitoring_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3554,7 +3554,7 @@ insurance_operations_cost
 1
 Insurance (operations) cost 
 $ 
-ME O&M Costs
+ME Costs - Operations
 0
 3
 1
@@ -3568,7 +3568,7 @@ itemized_check_operations
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3582,7 +3582,7 @@ marine_energy_converter_power_consumption_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3596,7 +3596,7 @@ marine_management_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3610,7 +3610,7 @@ onshore_land_lease_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3624,7 +3624,7 @@ operating_equipment_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3638,7 +3638,7 @@ operating_facilities_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3652,7 +3652,7 @@ operating_margin_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3666,7 +3666,7 @@ operations_cost
 1
  
  
- 
+ME Costs - Operations
 0
 8
 1
@@ -3680,7 +3680,7 @@ operations_cost_input
 1
 Operations cost input 
 $, $/kW 
-ME O&M Costs
+ME Costs - Operations
 0
 3
 1
@@ -3694,7 +3694,7 @@ operations_cost_method
 1
 Operations cost method 
  
-ME Cost Choice
+ME Costs - Operations
 0
 3
 1
@@ -3708,7 +3708,7 @@ operations_cost_total
 1
  
  
- 
+ME Costs - Operations
 0
 8
 1
@@ -3722,7 +3722,7 @@ operations_management_general_administration_cost
 1
 Operations, management, and general admin costs 
 $ 
-ME O&M Costs
+ME Costs - Operations
 0
 3
 1
@@ -3736,7 +3736,7 @@ operations_management_general_administration_cost_total
 1
  
  
- 
+ME Costs - Operations
 0
 8
 1
@@ -3750,7 +3750,7 @@ operations_management_general_administration_cost_total_check
 1
  
  
- 
+ME Costs - Operations
 0
 8
 1
@@ -3764,7 +3764,7 @@ operations_override_check
 1
  
  
- 
+ME Costs - Operations
 0
 8
 1
@@ -3778,7 +3778,7 @@ other_business_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3792,7 +3792,7 @@ other_gen_admin_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3806,7 +3806,7 @@ other_monitoring_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3820,7 +3820,7 @@ other_operations_cost
 1
 Other operations costs 
 $
-ME O&M Costs
+ME Costs - Operations
 0
 3
 1
@@ -3834,7 +3834,7 @@ professional_advisory_services_operations_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3848,7 +3848,7 @@ sales_general_and_administrative_operations_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3862,7 +3862,7 @@ submerged_land_lease_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3876,7 +3876,7 @@ transmission_charges_rights_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3890,7 +3890,7 @@ weather_forecasting_cost
 1
  
  
- 
+ME Costs - Operations
 0
 0
 1
@@ -3985,7 +3985,7 @@ equations {'operations_override_check'} = define() {
 
 
 
-6165
+6184
 on_load{'Marine Costs - Operations'} = define() {
 	on_change{'itemized_check_operations'};
 	enable_itemized_operations();
@@ -4009,7 +4009,6 @@ function check_override_operations()
 	//enable('operations_cost_method',check_value!=1);
 	//enable('operations_cost',check_value!=1);
 	show('operations_override_label',check_value==1);
-	
 	refresh();
 }
 
@@ -4135,6 +4134,7 @@ function enable_itemized_operations()
 		detailed_cost_annual_leases();
 		detailed_cost_gen_admin();
 	}
+	override_om_cost();
 	refresh();
 	
 	

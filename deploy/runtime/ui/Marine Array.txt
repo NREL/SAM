@@ -1535,7 +1535,7 @@ ME Array
 1
 1
 1
-1
+100
 Numeric
 number_rows
 3
@@ -1549,7 +1549,7 @@ ME Array
 1
 1
 1
-3
+10
 Numeric
 riser_cable_length
 3

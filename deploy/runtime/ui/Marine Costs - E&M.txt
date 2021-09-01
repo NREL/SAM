@@ -2073,7 +2073,7 @@ construction_management_cost
 1
 Construction management costs
 $ 
-ME BoS Costs
+ME Costs - Engineering Management
 0
 3
 1
@@ -2087,7 +2087,7 @@ construction_management_cost_total
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2101,7 +2101,7 @@ construction_management_cost_total_check
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2115,7 +2115,7 @@ detailed_cost_choice_construction_management
 1
 Construction management detailed cost choice
  
-ME Cost Choice
+ME Costs - Engineering Management
 0
 3
 1
@@ -2129,7 +2129,7 @@ detailed_cost_choice_health_safety
 1
 Health, safety, and environmental monitoring detailed cost choice 
  
-ME Cost Choice
+ME Costs - Engineering Management
 0
 3
 1
@@ -2143,7 +2143,7 @@ detailed_design_and_construction_eng_cost
 1
 Detailed design costs 
 $
-ME BoS Costs
+ME Costs - Engineering Management
 0
 3
 1
@@ -2157,7 +2157,7 @@ detailed_design_and_construction_eng_cost_total
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2171,7 +2171,7 @@ eng_and_mgmt_cost
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2185,7 +2185,7 @@ eng_and_mgmt_cost_total
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2199,7 +2199,7 @@ eng_and_mgmt_override
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2213,7 +2213,7 @@ environmental_monitoring_cost
 1
  
  
- 
+ME Costs - Engineering Management
 0
 0
 1
@@ -2227,7 +2227,7 @@ health_and_safety_monitoring_cost
 1
  
  
- 
+ME Costs - Engineering Management
 0
 0
 1
@@ -2241,7 +2241,7 @@ health_safety_and_environmental_monitoring_cost
 1
 Health and safety costs 
 $
-ME BoS Costs
+ME Costs - Engineering Management
 0
 3
 1
@@ -2255,7 +2255,7 @@ health_safety_and_environmental_monitoring_cost_total
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2269,7 +2269,7 @@ health_safety_and_environmental_monitoring_cost_total_check
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2283,7 +2283,7 @@ itemized_check_eng
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2297,7 +2297,7 @@ level_eng
 1
  
  
- 
+ME Costs - Engineering Management
 0
 0
 1
@@ -2311,7 +2311,7 @@ other_construction_management_cost
 1
  
  
- 
+ME Costs - Engineering Management
 0
 0
 1
@@ -2325,7 +2325,7 @@ other_eng_cost
 1
 Other E&M costs 
 $ 
-ME BoS Costs
+ME Costs - Engineering Management
 0
 3
 1
@@ -2339,7 +2339,7 @@ other_eng_cost_total_display
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2353,7 +2353,7 @@ other_health_and_safety_cost
 1
  
  
- 
+ME Costs - Engineering Management
 0
 0
 1
@@ -2367,7 +2367,7 @@ procurement_management_cost
 1
 Procurement management costs 
 $ 
-ME BoS Costs
+ME Costs - Engineering Management
 0
 3
 1
@@ -2381,7 +2381,7 @@ procurement_management_cost_total_display
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2395,7 +2395,7 @@ profit_eng_cost
 1
  
  
- 
+ME Costs - Engineering Management
 0
 0
 1
@@ -2409,7 +2409,7 @@ project_certification_cost
 1
 Project certification costs
 $
-ME BoS Costs
+ME Costs - Engineering Management
 0
 3
 1
@@ -2423,7 +2423,7 @@ project_certification_cost_total_display
 1
  
  
- 
+ME Costs - Engineering Management
 0
 8
 1
@@ -2437,7 +2437,7 @@ salaries_eng_cost
 1
  
  
- 
+ME Costs - Engineering Management
 0
 0
 1
@@ -2451,7 +2451,7 @@ sales_general_and_administrative_eng_cost
 1
  
  
- 
+ME Costs - Engineering Management
 0
 0
 1
