@@ -1,7 +1,7 @@
 Utility Rate - Enable
-1419
-136
-3
+1420
+236
+5
 Label
 
 1
@@ -21,7 +21,7 @@ Width
 1380
 Height
 3
-57
+36
 Tool Tip
 5
 0
@@ -117,7 +117,7 @@ Width
 1403
 Height
 3
-129
+225
 Tool Tip
 5
 0
@@ -128,8 +128,115 @@ Electricity Purchases
 Bold
 2
 1
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+27
+Y
+3
+108
+Width
+3
+300
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+28
+Electricity Purchases Choice
+Bold
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+26
+ui_electricity_rate_option
+X
+3
+27
+Y
+3
+129
+Width
+3
+180
+Height
+3
+90
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Use PPA Price
+Use Retail Rates
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+
+1
+ui_electricity_rate_option
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+RadioChoice
 
 0
-
-0
-0
+484
+on_change{'ui_electricity_rate_option'} = define() {
+	if (value('ppa_soln_mode') == 0) {
+		if (value('ui_electricity_rate_option') == 0) {
+			msgbox('Use PPA Price can only be selected when the Specify PPA Price option is selected on the Revenue Tab');
+			value('ui_electricity_rate_option', 1);
+			value('en_electricity_rates', 1);
+		}
+	}
+	else {
+		if (value('ui_electricity_rate_option') == 1) {value('en_electricity_rates', 1);}
+		else {value('en_electricity_rates', 0);}
+	}
+};
+			

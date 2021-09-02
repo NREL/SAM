@@ -1,7 +1,7 @@
 Utility Rate - Flat
 1412
 538
-27
+28
 GroupBox
 
 1
@@ -365,6 +365,36 @@ Caption
 5
 20
 Save rate to file...
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+13
+copy_ppa_rate
+X
+3
+1059
+Y
+3
+312
+Width
+3
+198
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+31
+Copy PPA Rate from Revenue page
 TabOrder
 3
 4294967295
@@ -1295,10 +1325,62 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-8582
+11001
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
+	finance = (financing() == "Single Owner");
 	show('msg_unused_items', value('ur_has_unused_items'));
+	show('copy_ppa_rate', finance);
+	refresh();
+};
+
+on_change{'copy_ppa_rate'} = define() {
+	ppa_rate = value('ppa_price_input');
+	elec_rate_mat = [[]];
+	escal_mat = [];
+	if (#ppa_rate == 1) {
+		
+		elec_rate_mat[0] = [1,1,1e38,0,ppa_rate[0]*value('dispatch_factor1'),0];
+		elec_rate_mat[1] = [2,1,1e38,0,ppa_rate[0]*value('dispatch_factor2'),0];
+		elec_rate_mat[2] = [3,1,1e38,0,ppa_rate[0]*value('dispatch_factor3'),0];
+		elec_rate_mat[3] = [4,1,1e38,0,ppa_rate[0]*value('dispatch_factor4'),0];
+		elec_rate_mat[4] = [5,1,1e38,0,ppa_rate[0]*value('dispatch_factor5'),0];
+		elec_rate_mat[5] = [6,1,1e38,0,ppa_rate[0]*value('dispatch_factor6'),0];
+		elec_rate_mat[6] = [7,1,1e38,0,ppa_rate[0]*value('dispatch_factor7'),0];
+		elec_rate_mat[7] = [8,1,1e38,0,ppa_rate[0]*value('dispatch_factor8'),0];
+		elec_rate_mat[8] = [9,1,1e38,0,ppa_rate[0]*value('dispatch_factor9'),0];
+		value('ur_ec_tou_mat',elec_rate_mat);
+		value('ur_ec_sched_weekday', value('dispatch_sched_weekday'));
+		value('ur_ec_sched_weekend', value('dispatch_sched_weekend'));
+		property('rate_escalation', 'UseSchedule', 1);
+		ppa_escal = value('ppa_escalation');
+		escal_mat[0] = 0;
+		for (i = 1; i < value('analysis_period'); i++) {
+			escal_mat[i] = (pow((1+ppa_escal/100),i) - 1)*100;
+		}
+		value('rate_escalation',escal_mat);
+	}
+	else {
+		elec_rate_mat[0] = [1,1,1e38,0,ppa_rate[0]*value('dispatch_factor1'),0];
+		elec_rate_mat[1] = [2,1,1e38,0,ppa_rate[0]*value('dispatch_factor2'),0];
+		elec_rate_mat[2] = [3,1,1e38,0,ppa_rate[0]*value('dispatch_factor3'),0];
+		elec_rate_mat[3] = [4,1,1e38,0,ppa_rate[0]*value('dispatch_factor4'),0];
+		elec_rate_mat[4] = [5,1,1e38,0,ppa_rate[0]*value('dispatch_factor5'),0];
+		elec_rate_mat[5] = [6,1,1e38,0,ppa_rate[0]*value('dispatch_factor6'),0];
+		elec_rate_mat[6] = [7,1,1e38,0,ppa_rate[0]*value('dispatch_factor7'),0];
+		elec_rate_mat[7] = [8,1,1e38,0,ppa_rate[0]*value('dispatch_factor8'),0];
+		elec_rate_mat[8] = [9,1,1e38,0,ppa_rate[0]*value('dispatch_factor9'),0];
+		value('ur_ec_tou_mat',elec_rate_mat);
+		value('ur_ec_sched_weekday', value('dispatch_sched_weekday'));
+		value('ur_ec_sched_weekend', value('dispatch_sched_weekend'));
+		property('rate_escalation', 'UseSchedule', 1);
+		for (i = 0; i < value('analysis_period'); i++) {
+			escal_mat[i] = (ppa_rate[i] - ppa_rate[0])/ppa_rate[0] * 100;
+		}
+		value('rate_escalation', escal_mat);
+	}
+	refresh();
+		
 };
 
 function is_fom_batt()
