@@ -980,9 +980,9 @@ Community Solar Costs
 0
 Numeric
 
-126
+118
 equations{'ui_upfront_cost_by_capacity'} = define() {
-	return ${system_capacity} * ${cs_cost_upfront_per_capacity} * 0.001;
+	return ${system_capacity} * ${cs_cost_upfront_per_capacity};
 };
 1017
 on_load{'Financial CS Costs'} = define()
