@@ -139,7 +139,7 @@ DataArray
 on_load{'Battery Dispatch Custom Time Series'}=define()
 {	
 	// fom = front of meter
-	value('batt_dispatch_choice',3);
+	value('batt_dispatch_choice',2);
 	if (technology() == "Fuel Cell")
 		toggle_dispatch();
 	//on_change{'batt_dispatch_choice'};

@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12269
+12086
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -310,6 +310,16 @@ on_change{'batt_type'} = define()
 		{ set_iron(update_default); }
 
 	battsize_warning_check();
+	
+	batt_chem = value('batt_chem');
+	if (batt_chem != 1) {
+		value('batt_life_model', 0);
+		enable('batt_life_model', false);
+	}
+	else {
+		on_change{'batt_life_model'}();
+		enable('batt_life_model', true);
+	}
 };
 
 function is_flow()
@@ -505,6 +515,7 @@ function set_batt_defaults_from_data(defs)
   	value('batt_bank_voltage', pack_params.nominal_voltage);
   	
 	// Lifetime
+	value('batt_life_model', cell_params.life_model);
 	value('batt_lifetime_matrix',cell_params.cycling_matrix);
 	
 	// turn calendar life model off

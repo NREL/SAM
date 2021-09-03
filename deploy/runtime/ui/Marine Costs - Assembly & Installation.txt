@@ -3481,7 +3481,7 @@ array_cables_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3495,7 +3495,7 @@ assembly_and_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3509,7 +3509,7 @@ assembly_and_install_cost_total
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3523,7 +3523,7 @@ assembly_and_install_override
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3537,7 +3537,7 @@ detailed_cost_choice_mec_device
 1
 Marine energy converter device detailed cost choice 
  
-ME Cost Choice
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3551,7 +3551,7 @@ detailed_cost_choice_offshore_infrastructure
 1
 Offshore electrical infrastructure detailed cost choice 
  
-ME Cost Choice
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3565,7 +3565,7 @@ detailed_cost_choice_onshore_infrastructure
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3579,7 +3579,7 @@ detailed_cost_choice_substructures
 1
 Substructures and foundations detailed cost choice 
  
-ME Cost Choice
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3593,7 +3593,7 @@ foundation_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3607,7 +3607,7 @@ itemized_check_assem_install
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3621,7 +3621,7 @@ marine_energy_converter_device_cost
 1
 Marine energy converter device costs 
 $
-ME BoS Costs
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3635,7 +3635,7 @@ marine_energy_converter_device_cost_total
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3649,7 +3649,7 @@ marine_energy_converter_device_cost_total_check
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3663,7 +3663,7 @@ noise_mitigation_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3677,7 +3677,7 @@ offshore_accommodations_platform_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3691,7 +3691,7 @@ offshore_electrical_infrastructure_cost
 1
 Offshore electrical infrastructure costs 
 $ 
-ME BoS Costs
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3705,7 +3705,7 @@ offshore_electrical_infrastructure_cost_total
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3719,7 +3719,7 @@ offshore_electrical_infrastructure_cost_total_check
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3733,7 +3733,7 @@ offshore_export_cables_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3747,7 +3747,7 @@ offshore_logistical_infrastructure_assem_install_cost
 1
 Offshore logistical infrastructure costs 
 $ 
-ME BoS Costs
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3761,7 +3761,7 @@ offshore_substation_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3775,7 +3775,7 @@ onshore_electric_infrastructure_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3789,7 +3789,7 @@ onshore_electrical_infrastructure_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3803,7 +3803,7 @@ onshore_electrical_infrastructure_cost_total
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3817,7 +3817,7 @@ onshore_electrical_infrastructure_cost_total_check
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -3831,7 +3831,7 @@ onshore_substation_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3845,7 +3845,7 @@ other_assem_install_cost
 1
 Other assembly and install costs 
 $ 
-ME BoS Costs
+ME Costs - Assembly Installation
 0
 3
 1
@@ -3859,7 +3859,7 @@ other_marine_energy_converter_device_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3873,7 +3873,7 @@ other_offshore_electrical_infrastructure_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3887,7 +3887,7 @@ other_onshore_electrical_infrastructure_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3901,7 +3901,7 @@ other_substructure_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3915,7 +3915,7 @@ overhead_transmission_line_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3929,7 +3929,7 @@ power_takeoff_system_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3943,7 +3943,7 @@ scour_protection_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3957,7 +3957,7 @@ structural_assembly_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3971,7 +3971,7 @@ substructure_assem_install_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1
@@ -3985,7 +3985,7 @@ substructure_assem_install_cost_total
 1
  
 $ 
- 
+ME Costs - Assembly Installation
 0
 11
 1
@@ -3999,7 +3999,7 @@ substructure_assem_install_cost_total_check
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 8
 1
@@ -4013,7 +4013,7 @@ substructures_and_foundations_cost
 1
 Substructures and foundations costs 
 $ 
-ME BoS Costs
+ME Costs - Assembly Installation
 0
 3
 1
@@ -4027,7 +4027,7 @@ underground_cable_system_onshore_electrical_infrastructure_cost
 1
  
  
- 
+ME Costs - Assembly Installation
 0
 0
 1

@@ -6181,7 +6181,7 @@ array_cable_accessories_and_jointing_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6195,7 +6195,7 @@ array_cable_system_commissioning_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6209,7 +6209,7 @@ array_cable_system_cost
 1
 Array cable system costs
 $
-ME BoS Costs
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6223,7 +6223,7 @@ array_cable_system_cost_total
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6237,7 +6237,7 @@ array_cable_system_cost_total_check
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6251,7 +6251,7 @@ array_cable_system_transportation_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6265,7 +6265,7 @@ array_cables_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6279,7 +6279,7 @@ bend_restrictors_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6293,7 +6293,7 @@ bend_stiffeners_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6307,7 +6307,7 @@ building_facilities_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6321,7 +6321,7 @@ cable_accessories_and_jointing_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6335,7 +6335,7 @@ cable_mattresses_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6349,7 +6349,7 @@ cable_protection_cost
 1
 Cable protection costs 
 $ 
-ME BoS Costs
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6363,7 +6363,7 @@ cable_protection_cost_total
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6377,7 +6377,7 @@ cable_protection_cost_total_check
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6391,7 +6391,7 @@ civil_infrastructure_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6405,7 +6405,7 @@ detailed_cost_choice_array_cables
 1
 Array cable system detailed cost choice 
  
-ME Cost Choice
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6419,7 +6419,7 @@ detailed_cost_choice_cable_protection
 1
 Cable protection detailed cost choice
  
-ME Cost Choice
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6433,7 +6433,7 @@ detailed_cost_choice_export_cables
 1
 Export cable systems detailed cost choice 
  
-ME Cost Choice
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6447,7 +6447,7 @@ detailed_cost_choice_offshore_substation
 1
 Offshore substation detailed cost choice 
  
-ME Cost Choice
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6461,7 +6461,7 @@ detailed_cost_choice_onshore_substation
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6475,7 +6475,7 @@ detailed_cost_choice_onshore_transmission_infrastructure
 1
 Onshore transmission infrastructure detailed cost choice 
  
-ME Cost Choice
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6489,7 +6489,7 @@ detailed_cost_modeled_array_cables
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6503,7 +6503,7 @@ detailed_cost_modeled_export_cables
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6517,7 +6517,7 @@ detailed_cost_modeled_offshore_substation
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6531,7 +6531,7 @@ detailed_cost_modeled_onshore_substation
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6545,7 +6545,7 @@ detailed_cost_modeled_other_elec_infras
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6559,7 +6559,7 @@ ducting_system_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6573,7 +6573,7 @@ elec_infras_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6587,7 +6587,7 @@ elec_infras_cost_input
 1
 Electrical infrastructure cost input
 $ 
-ME BoS Costs
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6601,7 +6601,7 @@ elec_infras_cost_method
 1
 Electrical infrastructure cost method
  
-ME Cost Choice
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6615,7 +6615,7 @@ elec_infras_cost_modeled
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6629,7 +6629,7 @@ elec_infras_cost_total
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6643,7 +6643,7 @@ elec_infras_override
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6657,7 +6657,7 @@ electrical_conversion_equipment_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6671,7 +6671,7 @@ electrical_equipment_onshore_substation_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6685,7 +6685,7 @@ export_cable_accessories_and_jointing_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6699,7 +6699,7 @@ export_cable_commissioning_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6713,7 +6713,7 @@ export_cable_system_cost
 1
 Export cable system costs
 $ 
-ME BoS Costs
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6727,7 +6727,7 @@ export_cable_system_cost_total
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6741,7 +6741,7 @@ export_cable_system_cost_total_check
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6755,7 +6755,7 @@ export_cable_system_transportation_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6769,7 +6769,7 @@ export_cables_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6783,7 +6783,7 @@ facilities_and_ancillary_systems_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6797,7 +6797,7 @@ foundation_onshore_substation_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6811,7 +6811,7 @@ itemized_check_elec_infras
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6825,7 +6825,7 @@ jtube_seals_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6839,7 +6839,7 @@ land_leases_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6853,7 +6853,7 @@ land_leases_onshore_substation_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6867,7 +6867,7 @@ offshore_substation_cost
 1
 Offshore substation costs 
 $ 
-ME BoS Costs
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6881,7 +6881,7 @@ offshore_substation_cost_total
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6895,7 +6895,7 @@ offshore_substation_cost_total_check
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6909,7 +6909,7 @@ offshore_substation_cost_total_display
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6923,7 +6923,7 @@ onshore_substation_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6937,7 +6937,7 @@ onshore_substation_cost_total
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6951,7 +6951,7 @@ onshore_substation_cost_total_check
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -6965,7 +6965,7 @@ onshore_substations_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -6979,7 +6979,7 @@ onshore_transmission_infrastructure_cost
 1
 Onshore transmission infrastructure costs 
 $
-ME BoS Costs
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -6993,7 +6993,7 @@ onshore_transmission_infrastructure_cost_total
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -7007,7 +7007,7 @@ onshore_transmission_infrastructure_cost_total_check
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -7021,7 +7021,7 @@ onshore_transmission_infrastructure_transportation_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7035,7 +7035,7 @@ other_array_cable_system_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7049,7 +7049,7 @@ other_cable_protection_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7063,7 +7063,7 @@ other_elec_infra_cost
 1
 Other electrical infrastructure costs
 $ 
-ME BoS Costs
+ME Costs - Electrical Infrastructure
 0
 3
 1
@@ -7077,7 +7077,7 @@ other_elec_infra_cost_total
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 8
 1
@@ -7091,7 +7091,7 @@ other_export_cable_system_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7105,7 +7105,7 @@ other_offshore_substation_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7119,7 +7119,7 @@ other_onshore_substation_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7133,7 +7133,7 @@ other_onshore_transmission_infrastructure_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7147,7 +7147,7 @@ overhead_lines_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7161,7 +7161,7 @@ protection_control_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7175,7 +7175,7 @@ scour_protection_elec_infras_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7189,7 +7189,7 @@ self_supporting_towers_with_insulators_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7203,7 +7203,7 @@ structure_foundations_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7217,7 +7217,7 @@ substructure_and_foundation_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7231,7 +7231,7 @@ topside_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7245,7 +7245,7 @@ transmission_towers_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1
@@ -7259,7 +7259,7 @@ underground_cable_system_cost
 1
  
  
- 
+ME Costs - Electrical Infrastructure
 0
 0
 1

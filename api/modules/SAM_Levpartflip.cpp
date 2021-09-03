@@ -290,6 +290,12 @@ SAM_EXPORT void SAM_Levpartflip_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_
 	});
 }
 
+SAM_EXPORT void SAM_Levpartflip_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "fuelcell_annual_energy_discharged", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_batt_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_batt_capacity_cost", arr, length);
@@ -299,6 +305,12 @@ SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_batt_capacity_cost_aset(SAM_table
 SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_batt_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_batt_fixed_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_batt_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_batt_nameplate", number);
 	});
 }
 
@@ -359,6 +371,12 @@ SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_fuelcell_capacity_cost_aset(SAM_t
 SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_fuelcell_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fuelcell_fixed_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_fuelcell_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fuelcell_nameplate", number);
 	});
 }
 
@@ -443,18 +461,6 @@ SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_replacement_cost_escal_nset(SAM_t
 SAM_EXPORT void SAM_Levpartflip_SystemCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_installed_cost", number);
-	});
-}
-
-SAM_EXPORT void SAM_Levpartflip_SystemCosts_ui_batt_capacity_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "ui_batt_capacity", number);
-	});
-}
-
-SAM_EXPORT void SAM_Levpartflip_SystemCosts_ui_fuelcell_capacity_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "ui_fuelcell_capacity", number);
 	});
 }
 
@@ -2180,6 +2186,18 @@ SAM_EXPORT double* SAM_Levpartflip_SystemCosts_annual_fuel_usage_lifetime_aget(S
 
 
 
+SAM_EXPORT double* SAM_Levpartflip_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_annual_energy_discharged", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "fuelcell_annual_energy_discharged");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Levpartflip_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2198,6 +2216,17 @@ SAM_EXPORT double* SAM_Levpartflip_SystemCosts_om_batt_fixed_cost_aget(SAM_table
 	result = ssc_data_get_array(ptr, "om_batt_fixed_cost", length);
 	if (!result)
 		make_access_error("SAM_Levpartflip", "om_batt_fixed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Levpartflip_SystemCosts_om_batt_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_batt_nameplate", &result))
+		make_access_error("SAM_Levpartflip", "om_batt_nameplate");
 	});
 	return result;
 }
@@ -2315,6 +2344,17 @@ SAM_EXPORT double* SAM_Levpartflip_SystemCosts_om_fuelcell_fixed_cost_aget(SAM_t
 	result = ssc_data_get_array(ptr, "om_fuelcell_fixed_cost", length);
 	if (!result)
 		make_access_error("SAM_Levpartflip", "om_fuelcell_fixed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Levpartflip_SystemCosts_om_fuelcell_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fuelcell_nameplate", &result))
+		make_access_error("SAM_Levpartflip", "om_fuelcell_nameplate");
 	});
 	return result;
 }
@@ -2476,28 +2516,6 @@ SAM_EXPORT double SAM_Levpartflip_SystemCosts_total_installed_cost_nget(SAM_tabl
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
 		make_access_error("SAM_Levpartflip", "total_installed_cost");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Levpartflip_SystemCosts_ui_batt_capacity_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ui_batt_capacity", &result))
-		make_access_error("SAM_Levpartflip", "ui_batt_capacity");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Levpartflip_SystemCosts_ui_fuelcell_capacity_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ui_fuelcell_capacity", &result))
-		make_access_error("SAM_Levpartflip", "ui_fuelcell_capacity");
 	});
 	return result;
 }
