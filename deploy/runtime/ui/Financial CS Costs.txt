@@ -544,8 +544,8 @@ Colour
 255
 Caption
 5
-13
-Upfront Costs
+14
+Up-front Costs
 Bold
 2
 1
@@ -670,8 +670,8 @@ Tool Tip
 0
 Caption
 5
-92
-Upfront costs are initial costs in Year 0 required to establish the community solar project.
+93
+Up-front costs are initial costs in Year 0 required to establish the community solar project.
 TextColour
 4
 0

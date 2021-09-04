@@ -288,8 +288,8 @@ Colour
 255
 Caption
 5
-7
-Upfront
+8
+Up-front
 Bold
 2
 1
@@ -366,8 +366,8 @@ Tool Tip
 0
 Caption
 5
-286
-Subscription revenue is from payments made to the project by up to four subscriber classes. Revenue from each subscriber class may be from any combination of upfront, annual, or generation payments. Subscription revenue is in addition to any project revenue defined on the Revenue page.
+287
+Subscription revenue is from payments made to the project by up to four subscriber classes. Revenue from each subscriber class may be from any combination of up-front, annual, or generation payments. Subscription revenue is in addition to any project revenue defined on the Revenue page.
 TextColour
 4
 0

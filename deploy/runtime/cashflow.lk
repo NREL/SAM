@@ -883,7 +883,7 @@ function depreciation_tables()
  
 function community_solar_intermediates()
 {
-	cfline('COMMUNITY SOLAR', -1); 
+	cfline('COMMUNITY SOLAR (for testing)', -1); 
 	cfline('');
 	cfline('cf_subscriber1_share_fraction', 4); 
 	cfline('cf_subscriber2_share_fraction', 4); 
@@ -1706,7 +1706,6 @@ cashflow{ 'Single Owner' } = define()
 cashflow{ 'Community Solar' } = define()  
 { 
 	//cf_formatting_examples();
-	community_solar_intermediates();
 	cf_production();
 	cf_revenue();
 	cf_operating_expenses();
@@ -1719,8 +1718,8 @@ cashflow{ 'Community Solar' } = define()
 	cf_debt_repayment();
 	cf_debt_sizing();	 
     cf_reserves(); 
+	community_solar_intermediates();
 	depreciation_tables(); 
- 
 };  
 
 cashflow{ 'Merchant Plant' } = define()  
