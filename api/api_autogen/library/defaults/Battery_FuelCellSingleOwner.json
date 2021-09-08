@@ -122,6 +122,7 @@
 			"batt_dispatch_pvs_soc_rest": 50,
 			"batt_dispatch_pvs_timestep_multiplier": 3,
 			"batt_dispatch_update_frequency_hours": 24,
+			"batt_dispatch_wf_forecast_choice": 0,
 			"batt_look_ahead_hours": 18,
 			"batt_pv_ac_forecast": [0.000000],
 			"batt_pv_clipping_forecast": [0.000000],
