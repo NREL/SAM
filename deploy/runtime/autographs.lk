@@ -101,6 +101,11 @@ function ppa_partnership_graphs()
 	agraph( 'cf_sponsor_aftertax,cf_tax_investor_aftertax', 'Partner After-tax Cash Flows', 'Year', '$', -1, true, true, 'bottom' );
 }
 
+function cs_graphs()
+{
+	agraph( 'cf_subscriber1_share_fraction,cf_subscriber2_share_fraction,cf_subscriber3_share_fraction,cf_subscriber4_share_fraction','Subscriber Share of System','Year','Fraction of Nameplate Capacity',-1,true,true,'bottom',1);
+}
+
 function resiliency_graphs()
 {
 	if (!${crit_load_is_shown})
@@ -233,3 +238,4 @@ autographs{ 'Merchant Plant' } = define() { mp_revenue_graphs(); ppa_financial_g
 autographs{ 'All Equity Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Leveraged Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Sale Leaseback' } = define() { ppa_sale_leaseback_graphs(); ppa_partnership_graphs(); };
+autographs{ 'Community Solar' } = define() { cs_graphs(); ppa_revenue_graphs(); ppa_financial_graphs(); };

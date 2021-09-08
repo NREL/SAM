@@ -121,6 +121,37 @@ function lpf_metrics()
 	if ( value('debt_option')==0 ) metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
 }
 
+function cs_metrics()
+{
+	metric_table('table_cs_owner', {'headers'='Owner Metrics,'});
+	metric_row( 'ppa', {'label'='PPA price (year 1)', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2', 'tableName'='table_cs_owner' } );
+	metric_row( 'ppa_escalation', {'label'='PPA price escalation', 'mode'='f', 'post'=' %/year', 'deci'='2','tableName'='table_cs_owner' } );
+	metric_row( 'lppa_nom', {'label'='Levelized PPA price (nominal)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2','tableName'='table_cs_owner' } );
+	metric_row( 'lppa_real', {'label'='Levelized PPA price (real)', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2','tableName'='table_cs_owner' } );
+	metric_row( 'lcoe_nom', {'label'='Levelized COE (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2','tableName'='table_cs_owner' } );
+	metric_row( 'lcoe_real', {'label'='Levelized COE (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2','tableName'='table_cs_owner' } );
+	//metric( 'lcos_nom', {'label'='Levelized COS (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	//metric( 'lcos_real', {'label'='Levelized COS (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
+	metric_row( 'project_return_aftertax_npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ','tableName'='table_cs_owner' } );
+	metric_row( 'flip_actual_irr', {'label'='Internal rate of return (IRR)', 'mode'='f', 'post'=' %', 'deci'='2','tableName'='table_cs_owner' } );
+	metric_row( 'flip_actual_year', {'label'='Year IRR is achieved', 'post'=' ','tableName'='table_cs_owner'} );
+	metric_row( 'project_return_aftertax_irr', {'label'='IRR at end of project', 'mode'='f', 'post'=' %', 'deci'='2','tableName'='table_cs_owner' } );
+	metric_row( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ','tableName'='table_cs_owner' } );
+	metric_row( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ','tableName'='table_cs_owner' } );
+	metric_row( 'size_of_debt', {'label'='Size of debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ','tableName'='table_cs_owner' } );
+	if ( value('debt_option')==0 ) metric_row( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2','tableName'='table_cs_owner' } );
+
+	// temporary subscriber metrics for demo
+	metric_table('table_cs_subscriber', {'headers'='Subscriber Metrics,'});
+	metric_row( 'project_return_aftertax_npv', {'label'='Subscriber 1 retail cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' });
+	metric_row( 'project_return_aftertax_npv', {'label'='Subscriber 1 cost of participation', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' });
+	metric_row( 'project_return_aftertax_npv', {'label'='Subscriber 2 retail cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' });
+	metric_row( 'project_return_aftertax_npv', {'label'='Subscriber 2 cost of participation', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' });
+	metric_row( 'project_return_aftertax_npv', {'label'='Subscriber 3 retail cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' });
+	metric_row( 'project_return_aftertax_npv', {'label'='Subscriber 3 cost of participation', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' });
+	metric_row( 'project_return_aftertax_npv', {'label'='Subscriber 4 retail cost', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' });
+	metric_row( 'project_return_aftertax_npv', {'label'='Subscriber 4 cost of participation', 'mode'='f', 'deci'='2', 'thousep'='true', 'post'= ' ', 'pre'='$','tableName'='table_cs_subscriber' });
+}
 
 function sl_metrics()
 {
@@ -484,6 +515,7 @@ metrics{ 'LCOE Calculator' } = define() { lcoefcr_metrics(); };
 metrics{ 'LCOH Calculator' } = define() { iph_lcoefcr_metrics(); };
 metrics{ 'Independent Power Producer' } = define() { ipp_metrics(); };
 metrics{ 'Single Owner' } = define() { so_metrics(); };
+metrics{ 'Community Solar' } = define() { cs_metrics(); };
 metrics{ 'Merchant Plant' } = define() { mp_metrics(); };
 metrics{ 'All Equity Partnership Flip' } = define() { aepf_metrics(); };
 metrics{ 'Leveraged Partnership Flip' } = define() { lpf_metrics(); };
