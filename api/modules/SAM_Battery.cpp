@@ -578,6 +578,12 @@ SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_choice_nset(SAM_table 
 	});
 }
 
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_load_forecast_choice_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_load_forecast_choice", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_pvs_ac_lb_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_pvs_ac_lb", number);
@@ -671,6 +677,24 @@ SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_pvs_timestep_multiplie
 SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_update_frequency_hours_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_update_frequency_hours", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_wf_forecast_choice_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_wf_forecast_choice", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_load_ac_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_load_ac_forecast", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_load_ac_forecast_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_load_ac_forecast_escalation", arr, length);
 	});
 }
 
@@ -2092,6 +2116,17 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_choice_nget(SAM_tabl
 
 
 
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_load_forecast_choice_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_load_forecast_choice", &result))
+		make_access_error("SAM_Battery", "batt_dispatch_load_forecast_choice");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_pvs_ac_lb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2262,6 +2297,41 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_update_frequency_hou
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dispatch_update_frequency_hours", &result))
 		make_access_error("SAM_Battery", "batt_dispatch_update_frequency_hours");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_wf_forecast_choice_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_wf_forecast_choice", &result))
+		make_access_error("SAM_Battery", "batt_dispatch_wf_forecast_choice");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_load_ac_forecast_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_load_ac_forecast", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_load_ac_forecast");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_load_ac_forecast_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_load_ac_forecast_escalation", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_load_ac_forecast_escalation");
 	});
 	return result;
 }
