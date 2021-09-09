@@ -1,7 +1,7 @@
 Generic System Plant
 788
 527
-19
+20
 GroupBox
 
 1
@@ -118,6 +118,36 @@ Tool Tip
 TabOrder
 3
 7
+Button
+
+1
+8
+Name
+5
+15
+btn_selectcases
+X
+3
+66
+Y
+3
+93
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Select Cases...
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -1152,7 +1182,7 @@ equations{ 'ui_step_minutes' } = define() {
 	}
 };
 
-1032
+1466
 on_load{"Generic System Plant"}=define(){
 	on_change{'spec_mode'}();
 	on_change{'system_capacity'}();
@@ -1167,6 +1197,31 @@ on_change{'system_capacity'}=define(){
 	check_inputs();
 };
 
+on_change{'btn_selectcases'} = define() {
+	if ( value('spec_mode') == 0 )	// change to 2 eventually
+	{
+		combine_cases();
+    }
+};
+
+// display window for combine cases
+function combine_cases()
+{
+	// msgbox(list_cases());  // crashes SAM
+	hash = combinecasesquery();
+	// meta data
+	if ( hash != '' )
+	{
+		x=1;
+		//fn = hash{'file'};
+		//dn = hash{'folder'};
+		//af = hash{'addfolder'};
+		//if ( fn != '' )
+		//{
+		//	x = 1;
+		//}
+	}
+}
 
 function check_inputs() {
 	mode = value('spec_mode');
