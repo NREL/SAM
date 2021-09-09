@@ -405,6 +405,7 @@ function setup_community_solar_pages()
 {
   setting( { 'analysis_period_var'='cf_length' } );
   addpage( [[ 'Financial CS Subscribers',
+              'Financial CS Credit Rate',
               'Financial CS Revenue',
               'Financial CS Costs' ]], {'sidebar' = 'Community Solar', 'help' = 'fin_community_solar'} );
   addpage( [[ 'Financial Analysis Parameters',
