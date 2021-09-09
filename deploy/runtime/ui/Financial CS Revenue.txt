@@ -1,7 +1,7 @@
 Financial CS Revenue
-859
-245
-37
+861
+286
+38
 Label
 
 1
@@ -75,8 +75,8 @@ Tool Tip
 0
 Caption
 5
-8
-Annual $
+4
+$/yr
 TextColour
 4
 0
@@ -165,7 +165,7 @@ Width
 850
 Height
 3
-240
+270
 Tool Tip
 5
 0
@@ -174,6 +174,53 @@ Caption
 20
 Subscription Revenue
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+19
+lbl_revenue_message
+X
+3
+18
+Y
+3
+213
+Width
+3
+480
+Height
+3
+48
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 Divider
@@ -2238,7 +2285,7 @@ equations{'ui_subscriber3_name'} = define() {
 equations{'ui_subscriber4_name'} = define() {
 	return ${subscriber4_name};
 };
-2864
+4125
 on_load{'Financial CS Revenue'} = define()
 {
 	property('subscriber1_payment_annual','FixedLength',${analysis_period});
@@ -2252,40 +2299,49 @@ on_load{'Financial CS Revenue'} = define()
 	property('subscriber4_payment_generation','FixedLength',${analysis_period});
 
 	enable_revenue_escalation_rate();
+	duplicate_revenue_warning();
 };
 
 on_change{'subscriber1_payment_annual'} = define()
 {
-	enable('subscriber1_payment_annual_escal', #${subscriber1_payment_annual} == 1 ); 
+	enable('subscriber1_payment_annual_escal', #${subscriber1_payment_annual} == 1 );
+	duplicate_revenue_warning(); 
 };
 on_change{'subscriber2_payment_annual'} = define()
 {
 	enable('subscriber2_payment_annual_escal', #${subscriber2_payment_annual} == 1 ); 
+	duplicate_revenue_warning();
 };
 on_change{'subscriber3_payment_annual'} = define()
 {
 	enable('subscriber3_payment_annual_escal', #${subscriber3_payment_annual} == 1 ); 
+	duplicate_revenue_warning();
 };
 on_change{'subscriber4_payment_annual'} = define()
 {
 	enable('subscriber4_payment_annual_escal', #${subscriber4_payment_annual} == 1 ); 
+	duplicate_revenue_warning();
 };
 
 on_change{'subscriber1_payment_generation'} = define()
 {
 	enable('subscriber1_payment_generation_escal', #${subscriber1_payment_generation} == 1 ); 
+	duplicate_revenue_warning();
 };
 on_change{'subscriber2_payment_generation'} = define()
 {
 	enable('subscriber2_payment_generation_escal', #${subscriber2_payment_generation} == 1 ); 
+	duplicate_revenue_warning();
 };
 on_change{'subscriber3_payment_generation'} = define()
 {
 	enable('subscriber3_payment_generation_escal', #${subscriber3_payment_generation} == 1 ); 
+	duplicate_revenue_warning();
 };
 on_change{'subscriber4_payment_generation'} = define()
 {
 	enable('subscriber4_payment_generation_escal', #${subscriber4_payment_generation} == 1 ); 
+	duplicate_revenue_warning();
 };
 on_change{'unsubscribed_payment_generation'} = define()
 {
@@ -2303,4 +2359,45 @@ function enable_revenue_escalation_rate()
 	enable('subscriber3_payment_generation_escal', #${subscriber3_payment_generation} == 1 ); 
 	enable('subscriber4_payment_generation_escal', #${subscriber4_payment_generation} == 1 ); 
 	enable('unsubscribed_payment_generation_escal', #${unsubscribed_payment_generation} == 1 ); 
+}
+
+function duplicate_revenue_warning()
+{
+	str = '';
+	msg = '';
+	if ( sum(${subscriber1_payment_annual}) > 0 && sum(${subscriber1_payment_generation}) > 0 )
+	{ 
+		str += '1'; 
+	}
+	if ( sum(${subscriber2_payment_annual}) > 0 && sum(${subscriber2_payment_generation}) > 0 )
+	{ 
+		if ( str != '' ) 
+		{ 
+			str += ', ';
+		} 
+		str += '2'; 
+	}
+	if ( sum(${subscriber3_payment_annual}) > 0 && sum(${subscriber3_payment_generation}) > 0 )
+	{ 
+		if ( str != '' ) 
+		{ 
+			str += ', ';
+		} 
+		str += '3'; 
+	}
+	if ( sum(${subscriber4_payment_annual}) > 0 && sum(${subscriber4_payment_generation}) > 0 )
+	{ 
+		if ( str != '' ) 
+		{ 
+			str += ', ';
+		} 
+		str += '4'; 
+	}
+	if ( str != '' ) 
+	{ 
+		msg = 'The following subscriber classes have revenue from both annual ($/yr) and generation ($/kWh) payments: ' + str + '. Community solar projects typically earn revenue from one or the other.'; 
+	}
+	property( 'lbl_revenue_message','Caption',msg);
+	property( 'lbl_revenue_message','TextColour','red');
+
 }

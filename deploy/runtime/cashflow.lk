@@ -120,7 +120,7 @@ function cf_revenue()
 		cfline( 'cf_curtailment_value', 0); 
 		cfline( 'cf_capacity_payment', 0); 
 	}
-	elseif ( fin == 'Single Owner' || fin == 'Community Solar')
+	elseif ( fin == 'Single Owner' ) // Community solar does not earn additional project revenue
 	{
 		cfline( 'cf_ppa_price' , -2 );
 		cfline( 'cf_energy_sales_value', 0); 
@@ -129,13 +129,7 @@ function cf_revenue()
 		cfline( 'cf_curtailment_value', 0); 
 		cfline( 'cf_capacity_payment', 0); 
 	}
-	else
-	{
-		cfline( 'cf_ppa_price' , -2 );
-		cfline( 'cf_energy_value', 0); 
-	}
-
-	if ( fin == 'Community Solar')
+	elseif ( fin == 'Community Solar')
 	{
 		cfline('cf_community_solar_subscriber1_revenue', 0);
 		cfline('cf_community_solar_subscriber2_revenue', 0);
@@ -143,6 +137,12 @@ function cf_revenue()
 		cfline('cf_community_solar_subscriber4_revenue',  0);
 		cfline('cf_community_solar_unsubscribed_revenue', 0);
 	}
+	else
+	{
+		cfline( 'cf_ppa_price' , -2 );
+		cfline( 'cf_energy_value', 0); 
+	}
+
 
 	if (tech == 'Fuel Cell')
 	{
@@ -176,18 +176,9 @@ function cf_om_expenses()
 { 
 	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
 	
-	if ( fin == 'Community Solar')
-	{
-		cfline('cf_community_solar_upfront', 0); //? move to investing activities
-		cfline('cf_community_solar_upfront_per_capacity', 0); //? move to investing activities
-		cfline('cf_community_solar_recurring_fixed', 0);
-		cfline('cf_community_solar_recurring_capacity',  0);
-		cfline('cf_community_solar_recurring_generation', 0);
-		cfline('Land lease payments expense', -1, 0); // TO DO Move this to standard om expenses 
-	}
-	 
     tech = technology();
     fin = financing(); 
+
     // should be ok to delete:
     //ppa_merchant_fin = (fin == 'Host Developer' || fin == 'Single Owner' || fin == 'Merchant Plant' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' );
     if ( is_batt_tech() )
@@ -230,6 +221,17 @@ function cf_operating_expenses()
     cf_om_expenses(); 
 	cfline( 'cf_property_tax_expense', 0); 
 	cfline( 'cf_insurance_expense', 0); 
+   	if ( fin == 'Community Solar')
+	{
+		cfline( '' ); 
+		cfline('cf_community_solar_upfront', 0); //? move to investing activities
+		cfline('cf_community_solar_upfront_per_capacity', 0); //? move to investing activities
+		cfline('cf_community_solar_recurring_fixed', 0);
+		cfline('cf_community_solar_recurring_capacity',  0);
+		cfline('cf_community_solar_recurring_generation', 0);
+		cfline('Land lease payments expense', -1, 0); // TO DO Move this to standard om expenses 
+		cfline( '' ); 
+	}
 	if ( fin == "Residential" || fin == "Commercial" ) {cfline( 'cf_net_salvage_value', 0); }
 	if ( fin == 'Sale Leaseback' ) { cfline('cf_sponsor_margin', 0); }
 	cfline( 'cf_operating_expenses', 0); 
@@ -932,6 +934,20 @@ function community_solar_intermediates()
 	cfline('cf_subscriber3_bill_credit_amount', 0); 
 	cfline('cf_subscriber4_bill_credit_amount', 0); 
 	cfline('');
+	cfline('cf_subscriber1_cost_of_participation', 0); 
+	cfline('cf_subscriber2_cost_of_participation', 0); 
+	cfline('cf_subscriber3_cost_of_participation', 0); 
+	cfline('cf_subscriber4_cost_of_participation', 0); 
+	cfline('');
+	cfline('cf_subscriber1_net_benefit', 0); 
+	cfline('cf_subscriber2_net_benefit', 0); 
+	cfline('cf_subscriber3_net_benefit', 0); 
+	cfline('cf_subscriber4_net_benefit', 0); 
+	cfline('');
+	cfline('cf_subscriber1_net_benefit_cumulative', 0); 
+	cfline('cf_subscriber2_net_benefit_cumulative', 0); 
+	cfline('cf_subscriber3_net_benefit_cumulative', 0); 
+	cfline('cf_subscriber4_net_benefit_cumulative', 0); 
 } 
 ////////////////////////////////////////////////////////////////////////////////
 // Functions for send to Excel with equations
