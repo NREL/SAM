@@ -891,10 +891,10 @@ function community_solar_intermediates()
 	cfline('cf_subscriber4_share_fraction', 4); 
 	cfline('cf_unsubscribed_share_fraction', 4); 
 	cfline('');
-	cfline('cf_subscriber1_retail', 3); 
-	cfline('cf_subscriber2_retail', 3); 
-	cfline('cf_subscriber3_retail', 3); 
-	cfline('cf_subscriber4_retail', 3); 
+	cfline('cf_subscriber1_bill_credit_rate', 3); 
+	cfline('cf_subscriber2_bill_credit_rate', 3); 
+	cfline('cf_subscriber3_bill_credit_rate', 3); 
+	cfline('cf_subscriber4_bill_credit_rate', 3); 
 	cfline('');
 	cfline('cf_recurring_fixed', 0); 
 	cfline('cf_recurring_capacity', 0); 
@@ -927,10 +927,10 @@ function community_solar_intermediates()
 	cfline('cf_subscriber3_revenue_annual_payment', 0); 
 	cfline('cf_subscriber4_revenue_annual_payment', 0); 
 	cfline('');
-	cfline('cf_subscriber1_retail_cost', 0); 
-	cfline('cf_subscriber2_retail_cost', 0); 
-	cfline('cf_subscriber3_retail_cost', 0); 
-	cfline('cf_subscriber4_retail_cost', 0); 
+	cfline('cf_subscriber1_bill_credit_amount', 0); 
+	cfline('cf_subscriber2_bill_credit_amount', 0); 
+	cfline('cf_subscriber3_bill_credit_amount', 0); 
+	cfline('cf_subscriber4_bill_credit_amount', 0); 
 	cfline('');
 } 
 ////////////////////////////////////////////////////////////////////////////////

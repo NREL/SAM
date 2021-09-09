@@ -182,8 +182,8 @@ SchedNumeric
 12
 Name
 5
-23
-subscriber1_credit_rate
+28
+subscriber1_bill_credit_rate
 X
 3
 219
@@ -225,8 +225,8 @@ Numeric
 17
 Name
 5
-29
-subscriber1_credit_rate_escal
+34
+subscriber1_bill_credit_rate_escal
 X
 3
 321
@@ -287,8 +287,8 @@ SchedNumeric
 12
 Name
 5
-23
-subscriber2_credit_rate
+28
+subscriber2_bill_credit_rate
 X
 3
 219
@@ -330,8 +330,8 @@ Numeric
 17
 Name
 5
-29
-subscriber2_credit_rate_escal
+34
+subscriber2_bill_credit_rate_escal
 X
 3
 321
@@ -392,8 +392,8 @@ SchedNumeric
 12
 Name
 5
-23
-subscriber3_credit_rate
+28
+subscriber3_bill_credit_rate
 X
 3
 219
@@ -435,8 +435,8 @@ Numeric
 17
 Name
 5
-29
-subscriber3_credit_rate_escal
+34
+subscriber3_bill_credit_rate_escal
 X
 3
 321
@@ -497,8 +497,8 @@ SchedNumeric
 12
 Name
 5
-23
-subscriber4_credit_rate
+28
+subscriber4_bill_credit_rate
 X
 3
 219
@@ -540,8 +540,8 @@ Numeric
 17
 Name
 5
-29
-subscriber4_credit_rate_escal
+34
+subscriber4_bill_credit_rate_escal
 X
 3
 321
@@ -778,12 +778,12 @@ TabOrder
 4294967295
 
 12
-subscriber1_credit_rate
+subscriber1_bill_credit_rate
 3
 2
 Subscriber class 1 credit rate
 $/kWh
-Community Solar Credit Rate
+Community Bill Credits
 0
 3
 1
@@ -792,12 +792,12 @@ Community Solar Credit Rate
 1
 0
 SchedNumeric
-subscriber1_credit_rate_escal
+subscriber1_bill_credit_rate_escal
 3
 1
 Subscriber class 1 credit rate escalation
 %/yr
-Community Solar Credit Rate
+Community Bill Credits
 0
 3
 1
@@ -806,12 +806,12 @@ Community Solar Credit Rate
 1
 0
 Numeric
-subscriber2_credit_rate
+subscriber2_bill_credit_rate
 3
 2
 Subscriber class 2 credit rate
 $/kWh
-Community Solar Credit Rate
+Community Bill Credits
 0
 3
 1
@@ -820,12 +820,12 @@ Community Solar Credit Rate
 1
 0
 SchedNumeric
-subscriber2_credit_rate_escal
+subscriber2_bill_credit_rate_escal
 3
 1
 Subscriber class 2 credit rate escalation
 %/yr
-Community Solar Credit Rate
+Community Bill Credits
 0
 3
 1
@@ -834,12 +834,12 @@ Community Solar Credit Rate
 1
 0
 Numeric
-subscriber3_credit_rate
+subscriber3_bill_credit_rate
 3
 2
 Subscriber class 3 credit rate
 $/kWh
-Community Solar Credit Rate
+Community Bill Credits
 0
 3
 1
@@ -848,12 +848,12 @@ Community Solar Credit Rate
 1
 0
 SchedNumeric
-subscriber3_credit_rate_escal
+subscriber3_bill_credit_rate_escal
 3
 1
 Subscriber class 3 credit rate escalation
 %/yr
-Community Solar Credit Rate
+Community Bill Credits
 0
 3
 1
@@ -862,12 +862,12 @@ Community Solar Credit Rate
 1
 0
 Numeric
-subscriber4_credit_rate
+subscriber4_bill_credit_rate
 3
 2
 Subscriber class 4 credit rate
 $/kWh
-Community Solar Credit Rate
+Community Bill Credits
 0
 3
 1
@@ -876,12 +876,12 @@ Community Solar Credit Rate
 1
 0
 SchedNumeric
-subscriber4_credit_rate_escal
+subscriber4_bill_credit_rate_escal
 3
 1
 Subscriber class 4 credit rate escalation
 %/yr
-Community Solar Credit Rate
+Community Bill Credits
 0
 3
 1
@@ -895,7 +895,7 @@ ui_cr_subscriber1_name
 4
 Subscriber class 1 name
  
-Community Solar Credit Rate
+Community Bill Credits
 0
 9
 1
@@ -907,7 +907,7 @@ ui_cr_subscriber2_name
 4
 Subscriber class 2 name
  
-Community Solar Credit Rate
+Community Bill Credits
 0
 9
 1
@@ -919,7 +919,7 @@ ui_cr_subscriber3_name
 4
 Subscriber class 3 name
  
-Community Solar Credit Rate
+Community Bill Credits
 0
 9
 1
@@ -931,7 +931,7 @@ ui_cr_subscriber4_name
 4
 Subscriber class 4 name
  
-Community Solar Credit Rate
+Community Bill Credits
 0
 9
 1
