@@ -167,6 +167,8 @@ function cf_om_expenses()
     tech = technology();
     fin = financing(); 
     ppa_merchant_fin = (fin == 'Host Developer' || fin == 'Single Owner' || fin == 'Merchant Plant' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' );
+    cfline('cf_utility_bill', 0 );
+    /*
     if ( is_batt_tech() )
 	{
 		cfline( 'cf_battery_replacement_cost', 0);
@@ -176,6 +178,7 @@ function cf_om_expenses()
 			cfline('cf_utility_bill', 0 ); 
 		}
 	}
+	*/
 	if (tech == 'Fuel Cell')
 	{
 		cfline( 'cf_om_fixed1_expense,cf_om_capacity1_expense', 2); 

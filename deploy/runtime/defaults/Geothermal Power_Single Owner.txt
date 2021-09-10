@@ -1,5 +1,5 @@
 1
-538
+602
 CT
 1
 1
@@ -329,6 +329,12 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+0
 city
 1
 4
@@ -345,7 +351,7 @@ const_per_interest2
 1
 1
 1
-4.85315e+06
+4853150
 const_per_interest3
 1
 1
@@ -399,7 +405,7 @@ const_per_interest_total
 1
 1
 1
-4.85315e+06
+4853150
 const_per_months1
 1
 1
@@ -592,7 +598,7 @@ construction_financing_cost
 1
 1
 1
-6.70196e+06
+6701960
 conversion_subtype
 1
 1
@@ -1082,6 +1088,12 @@ elev
 1
 1
 561
+en_electricity_rates
+1
+1
+1
+1
+1
 enable_interconnection_limit
 1
 1
@@ -1276,7 +1288,7 @@ geotherm.cost.conf_per_well
 1
 1
 1
-1.85018e+06
+1850180
 geotherm.cost.conf_total
 1
 1
@@ -1360,7 +1372,7 @@ geotherm.cost.expl_drill
 1
 1
 1
-1.54182e+06
+1541820
 geotherm.cost.expl_multiplier
 1
 1
@@ -1390,7 +1402,7 @@ geotherm.cost.expl_total
 1
 1
 1
-2.29182e+06
+2291820
 geotherm.cost.indirect.amount_specified
 1
 1
@@ -1414,7 +1426,7 @@ geotherm.cost.inj_drill
 1
 1
 1
-4.9952e+06
+4995200
 geotherm.cost.inj_num_wells
 1
 1
@@ -1426,7 +1438,7 @@ geotherm.cost.inj_per_well
 1
 1
 1
-1.54182e+06
+1541820
 geotherm.cost.inj_prod_well_ratio
 1
 1
@@ -1534,7 +1546,7 @@ geotherm.cost.plm.nonfixed
 1
 1
 1
-3.38434e+06
+3384340
 geotherm.cost.plm.percent
 1
 1
@@ -1546,7 +1558,7 @@ geotherm.cost.plm.total
 1
 1
 1
-3.38434e+06
+3384340
 geotherm.cost.prod_cost_curve
 1
 1
@@ -1558,7 +1570,7 @@ geotherm.cost.prod_drill
 1
 1
 1
-3.57663e+06
+3576630
 geotherm.cost.prod_inj_drill
 1
 1
@@ -1594,7 +1606,7 @@ geotherm.cost.prod_per_well
 1
 1
 1
-1.54182e+06
+1541820
 geotherm.cost.prod_req
 1
 1
@@ -1654,7 +1666,7 @@ geotherm.cost.pumping.amount
 1
 1
 1
-1.85407e+06
+1854070
 geotherm.cost.pumping.amount_specified
 1
 1
@@ -1672,7 +1684,7 @@ geotherm.cost.pumps_total
 1
 1
 1
-1.85407e+06
+1854070
 geotherm.cost.recap
 1
 1
@@ -2896,6 +2908,12 @@ q_sby_frac
 1
 1
 0.2
+rate_escalation
+1
+2
+1
+1
+0
 real_discount_rate
 1
 1
@@ -3221,6 +3239,12 @@ ui_calculations_only
 1
 1
 0
+ui_electricity_rate_option
+1
+1
+1
+1
+0
 ui_step_minutes
 1
 1
@@ -3233,6 +3257,403 @@ ui_wacc
 1
 1
 7.10145
+ur_annual_min_charge
+1
+1
+1
+1
+0
+ur_cr_sched
+1
+3
+1
+1
+0
+ur_cr_tou_mat
+1
+3
+1
+1
+0
+ur_dc_enable
+1
+1
+1
+1
+0
+ur_dc_flat_mat
+1
+3
+12
+4
+0 1 1e+38 0 
+1 1 1e+38 0 
+2 1 1e+38 0 
+3 1 1e+38 0 
+4 1 1e+38 0 
+5 1 1e+38 0 
+6 1 1e+38 0 
+7 1 1e+38 0 
+8 1 1e+38 0 
+9 1 1e+38 0 
+10 1 1e+38 0 
+11 1 1e+38 0 
+
+ur_dc_is_shown
+1
+1
+1
+1
+1
+ur_dc_sched_weekday
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_dc_sched_weekend
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_dc_tou_mat
+1
+3
+2
+4
+1 1 1e+38 0 
+2 1 1e+38 0 
+
+ur_demand_attrs
+1
+4
+0
+ur_demand_history
+1
+1
+1
+1
+0
+ur_demand_max
+1
+1
+1
+1
+0
+ur_demand_min
+1
+1
+1
+1
+0
+ur_demand_ratchet_percentage
+1
+2
+1
+1
+0
+ur_demand_window
+1
+1
+1
+1
+0
+ur_desc_is_shown
+1
+1
+1
+1
+0
+ur_description
+1
+4
+0
+ur_ec_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_ec_billing_demand_lookback_percentages
+1
+3
+1
+1
+0
+ur_ec_billing_demand_lookback_period
+1
+1
+1
+1
+0
+ur_ec_billing_demand_minimum
+1
+1
+1
+1
+0
+ur_ec_enable_billing_demand
+1
+1
+1
+1
+0
+ur_ec_is_shown
+1
+1
+1
+1
+1
+ur_ec_sched_weekday
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_ec_sched_weekend
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_ec_tou_mat
+1
+3
+1
+6
+1 1 1e+38 0 0.06 0 
+
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
+ur_en_ts_sell_rate
+1
+1
+1
+1
+0
+ur_end_date
+1
+4
+5
+empty
+ur_energy_attrs
+1
+4
+0
+ur_energy_history
+1
+1
+1
+1
+0
+ur_energy_max
+1
+1
+1
+1
+0
+ur_energy_min
+1
+1
+1
+1
+0
+ur_fixed_attrs
+1
+4
+0
+ur_fuel_adjustments_monthly
+1
+2
+1
+1
+0
+ur_has_unused_items
+1
+1
+1
+1
+0
+ur_is_default
+1
+1
+1
+1
+0
+ur_metering_option
+1
+1
+1
+1
+4
+ur_monthly_fixed_charge
+1
+1
+1
+1
+0
+ur_monthly_min_charge
+1
+1
+1
+1
+0
+ur_name
+1
+4
+0
+ur_nm_credit_month
+1
+1
+1
+1
+0
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
+ur_nm_yearend_sell_rate
+1
+1
+1
+1
+0
+ur_phase_wiring
+1
+4
+0
+ur_rate_notes
+1
+4
+0
+ur_ratedata_filename
+1
+4
+0
+ur_schedule_name
+1
+4
+5
+empty
+ur_service_type
+1
+4
+0
+ur_source
+1
+4
+5
+empty
+ur_start_date
+1
+4
+5
+empty
+ur_ts_buy_rate
+1
+2
+1
+1
+0
+ur_ts_sell_rate
+1
+2
+1
+1
+0
+ur_unused_is_shown
+1
+1
+1
+1
+0
+ur_uri
+1
+4
+5
+empty
+ur_utility
+1
+4
+5
+empty
+ur_voltage_category
+1
+4
+0
+ur_voltage_max
+1
+1
+1
+1
+0
+ur_voltage_min
+1
+1
+1
+1
+0
+ur_yearzero_usage_peaks
+1
+2
+1
+1
+0
 use_specific_weather_file
 1
 1

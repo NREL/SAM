@@ -382,7 +382,7 @@ DataMatrix
 on_load{'Utility Rate - Energy Charge'} = define(){
 	set_ec_schedule_inputs();
 
-	if ( is_fom_batt() )
+	if ( is_fom_bool() )
 	{
 		x = value('ur_ec_tou_mat');
 		is_sell_rate = false;
