@@ -104,14 +104,14 @@ function ppa_partnership_graphs()
 function cs_graphs()
 {
 	str = 'cf_subscriber1_share_fraction';
-	if ( value('subscriber2_share')[0] > 0 ) { str += ',' + 'cf_subscriber2_share_fraction'; }
-	if ( value('subscriber3_share')[0] > 0 ) { str += ',' + 'cf_subscriber3_share_fraction'; }
-	if ( value('subscriber4_share')[0] > 0 ) { str += ',' + 'cf_subscriber4_share_fraction'; }
+	if ( sum(value('subscriber2_share')) > 0 ) { str += ',' + 'cf_subscriber2_share_fraction'; }
+	if ( sum(value('subscriber3_share')) > 0 ) { str += ',' + 'cf_subscriber3_share_fraction'; }
+	if ( sum(value('subscriber4_share')) > 0 ) { str += ',' + 'cf_subscriber4_share_fraction'; }
 	agraph( str,'Subscriber Share of System','Year','Fraction of Nameplate Capacity',-1,true,true,'bottom',1);
 	agraph( 'cf_subscriber1_net_benefit_cumulative','Subscriber 1 Cumulative Net Benefit','Year','$',-1,true,false);
-	if ( value('subscriber2_share')[0] > 0 ) { agraph( 'cf_subscriber2_net_benefit_cumulative','Subscriber 2 Cumulative Net Benefit','Year','$',-1,true,false ); }
-	if ( value('subscriber3_share')[0] > 0 ) { agraph( 'cf_subscriber3_net_benefit_cumulative','Subscriber 3 Cumulative Net Benefit','Year','$',-1,true,false ); }
-	if ( value('subscriber4_share')[0] > 0 ) { agraph( 'cf_subscriber4_net_benefit_cumulative','Subscriber 4 Cumulative Net Benefit','Year','$',-1,true,false ); }
+	if ( sum(value('subscriber2_share')) > 0 ) { agraph( 'cf_subscriber2_net_benefit_cumulative','Subscriber 2 Cumulative Net Benefit','Year','$',-1,true,false ); }
+	if ( sum(value('subscriber3_share')) > 0 ) { agraph( 'cf_subscriber3_net_benefit_cumulative','Subscriber 3 Cumulative Net Benefit','Year','$',-1,true,false ); }
+	if ( sum(value('subscriber4_share')) > 0 ) { agraph( 'cf_subscriber4_net_benefit_cumulative','Subscriber 4 Cumulative Net Benefit','Year','$',-1,true,false ); }
 	//agraph( 'cf_subscriber1_cost_of_participation,cf_subscriber1_bill_credit_amount','Subscriber 1 Cost and Bill Credits','Year','$',-1,true,true,'bottom');
 }
 
