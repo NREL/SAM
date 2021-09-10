@@ -25,8 +25,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/checkbox.h>
 #include <wx/spinctrl.h>
 
+#include "casewin.h"
 #include "combinecases.h"
 #include "main.h"
+#include "script.h"
 
 enum {
 	ID_chlCases,
@@ -38,16 +40,21 @@ BEGIN_EVENT_TABLE( CombineCasesDialog, wxDialog )
 	EVT_CHECKLISTBOX(ID_chlCases, CombineCasesDialog::OnEvt)
 	EVT_CHECKBOX(ID_chkOverwriteCapital, CombineCasesDialog::OnEvt)
 	//EVT_SPINCTRLDOUBLE(ID_spndDegradation, CombineCasesDialog::OnEvt)
+	EVT_BUTTON(wxID_OK, CombineCasesDialog::OnEvt)
+	EVT_BUTTON(wxID_HELP, CombineCasesDialog::OnEvt)
 END_EVENT_TABLE()
 
 CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title)
     : wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 {
+	
 	// Text at top of window
 	wxString msg = "Select open cases, simulate those cases and combine their generation profiles into a single profile to be used with this generic case.";
 
 	// Case selection
 	m_chlCases = new wxCheckListBox(this, ID_chlCases, wxDefaultPosition, wxSize(800, 200)); // populate with active cases
+	this->GetOpenCases();
+	this->RefreshList(0.);
 	wxBoxSizer* szcases = new wxBoxSizer(wxVERTICAL);
 	szcases->Add(new wxStaticText(this, wxID_ANY, "1. Select cases:"), 0, wxALL, 2);
 	szcases->Add(m_chlCases, 10, wxALL | wxEXPAND, 1);
@@ -69,11 +76,6 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title)
 	SetSizer(szmain);
 	Fit();
 	m_chlCases->SetFocus();
-
-	// for testing:
-	//wxConfig& config = SamApp::Settings();
-	//MainWindow* main_window = SamApp::Window();			// MainWindow.m_caseTabList  <or>  MainWindow.m_project.m_cases
-	//int x = 1;
 }
 
 void CombineCasesDialog::OnEvt(wxCommandEvent& e)
@@ -87,7 +89,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 			{
 				for (size_t i = 0; i < m_cases.size(); i++)
 				{
-					if (m_cases[i].display == m_chlCases->GetString(e.GetInt()))
+					if (m_cases[i].display_name == m_chlCases->GetString(e.GetInt()))
 					{
 						m_cases[i].is_selected = m_chlCases->IsChecked(e.GetInt());
 					}
@@ -97,27 +99,46 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 		case wxID_OK:
 			{
 				wxArrayInt arychecked;
-				for (size_t i = 0; i < m_cases.size(); i++)
-				{
-					if (m_cases[i].is_selected)
-					{
+				// Find which cases are selected
+				for (size_t i = 0; i < m_cases.size(); i++)	{
+					if (m_cases[i].is_selected) {
 						arychecked.push_back((int)i);
 					}
 				}
-				if (arychecked.Count() >= 2)
-				{
+				if (arychecked.Count() >= 1) {
 					bool overwrite_capital = m_chkOverwriteCapital->IsChecked();
 					double degradation = m_spndDegradation->GetValue();
 
+					// Simulate each case
+					for (size_t i = 0; i < arychecked.Count(); i++) {
+						// Switch to case to make current case
+						SamApp::Window()->SwitchToCaseWindow(m_cases[arychecked[i]].name);
+
+						// Simulate current case
+						Case* c = SamApp::Window()->GetCurrentCase();
+						Simulation& bcsim = c->BaseCase();
+						bcsim.Clear();
+						bool result = bcsim.Invoke();
+
+						// Get outputs and notices
+						double annual_energy = bcsim.GetOutput("annual_energy")->Value();
+						matrix_t<double> gen = bcsim.GetOutput("gen")->Matrix();
+						//wxArrayString messages = c->BaseCase().GetAllMessages();
+
+						// Update UI
+						CaseWindow* cw = SamApp::Window()->GetCaseWindow(c);
+						cw->UpdateResults();
+
+						// Set array
+						int x = 1;
+					}
 
 					EndModal(wxID_OK);
 				}
-				else if (arychecked.Count() == 1)
-				{
+				else if (arychecked.Count() == 1) {
 					wxMessageBox("Not enough cases selected.\n\nChoose at least two cases to combine.", "Combine Cases Message", wxOK, this);
 				}
-				else
-				{
+				else {
 					wxMessageBox("No cases selected.\n\nChoose at least two cases to combine.", "Combine Cases Message", wxOK, this);
 				}
 			}
@@ -132,7 +153,7 @@ void CombineCasesDialog::RefreshList(size_t first_item)
 	m_chlCases->Clear();
 	for (size_t i = 0; i < m_cases.size(); i++)
 	{
-		int ndx = m_chlCases->Append(m_cases[i].display);
+		int ndx = m_chlCases->Append(m_cases[i].display_name);
 		if (m_cases[i].is_selected) {
 			m_chlCases->Check(ndx, true);
 		}
@@ -142,4 +163,13 @@ void CombineCasesDialog::RefreshList(size_t first_item)
 	}
 	m_chlCases->Thaw();
 	m_chlCases->SetFirstItem(first_item);
+}
+
+void CombineCasesDialog::GetOpenCases()
+{
+	m_cases.clear();
+	wxArrayString names = SamApp::Window()->Project().GetCaseNames();
+	for (size_t i = 0; i < names.size(); i++) {
+		m_cases.push_back(CaseInfo(names[i], names[i]));
+	}
 }

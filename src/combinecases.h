@@ -39,15 +39,12 @@ public:
 	struct CaseInfo
 	{
 		wxString name; // dataset - e.g. psm
-		wxString displayName;
-		wxString display;
-		wxString attributes; // limit column and file size to SAM specific per NSRDB
+		wxString display_name;
 		bool is_visible;
 		bool is_selected;
-		CaseInfo(wxString& _n, wxString& _dn, wxString& _a)
-			: name(_n), displayName(_dn), attributes(_a)
+		CaseInfo(wxString& _n, wxString& _dn)
+			: name(_n), display_name(_dn)
 		{
-			display = name;
 			is_visible = true;
 			is_selected = false;
 		}
@@ -57,6 +54,8 @@ private:
     void OnEvt(wxCommandEvent &);
 
     void RefreshList(size_t first_item);
+
+	void GetOpenCases();
 
     std::vector<CaseInfo> m_cases;
     wxCheckListBox* m_chlCases;
