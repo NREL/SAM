@@ -133,8 +133,8 @@ function cs_metrics()
 	//metric( 'lcos_nom', {'label'='Levelized COS (nominal)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	//metric( 'lcos_real', {'label'='Levelized COS (real)', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2' } );
 	metric_row( 'project_return_aftertax_npv', {'label'='Net present value (NPV)', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ','tableName'='table_cs_owner' } );
-	metric_row( 'flip_actual_irr', {'label'='Internal rate of return (IRR)', 'mode'='f', 'post'=' %', 'deci'='2','tableName'='table_cs_owner' } );
-	metric_row( 'flip_actual_year', {'label'='Year IRR is achieved', 'post'=' ','tableName'='table_cs_owner'} );
+	//metric_row( 'flip_actual_irr', {'label'='Internal rate of return (IRR)', 'mode'='f', 'post'=' %', 'deci'='2','tableName'='table_cs_owner' } );
+	//metric_row( 'flip_actual_year', {'label'='Year IRR is achieved', 'post'=' ','tableName'='table_cs_owner'} );
 	metric_row( 'project_return_aftertax_irr', {'label'='IRR at end of project', 'mode'='f', 'post'=' %', 'deci'='2','tableName'='table_cs_owner' } );
 	metric_row( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ','tableName'='table_cs_owner' } );
 	metric_row( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ','tableName'='table_cs_owner' } );
