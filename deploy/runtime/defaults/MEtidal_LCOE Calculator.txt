@@ -1,5 +1,5 @@
 1
-644
+655
 accumulators_cost
 1
 1
@@ -119,7 +119,7 @@ array_cable_system_cost_modeled
 1
 1
 1
-13843586
+10639443
 array_cable_system_cost_total
 1
 1
@@ -173,7 +173,7 @@ assembly_and_install_cost
 1
 1
 1
-62976864
+388418
 assembly_and_install_cost_input
 1
 1
@@ -191,7 +191,7 @@ assembly_and_install_cost_modeled
 1
 1
 1
-62976864
+388418
 assembly_and_install_cost_total
 1
 1
@@ -227,13 +227,13 @@ balance_of_system_cost_total
 1
 1
 1
-161266448
+13917994
 balance_of_system_cost_total_mill
 1
 1
 1
 1
-161.266
+13.918
 balance_of_system_scheduled_maintenance_cost
 1
 1
@@ -396,13 +396,13 @@ capex_check
 1
 1
 1
-402806240
+15340423
 capital_cost
 1
 1
 1
 1
-449934560
+17135252
 carrying_cost_during_construction_cost
 1
 1
@@ -792,7 +792,7 @@ development_cost
 1
 1
 1
-32209776
+736747
 development_cost_input
 1
 1
@@ -810,7 +810,7 @@ development_cost_modeled
 1
 1
 1
-32209776
+736747
 development_cost_total
 1
 1
@@ -829,6 +829,12 @@ development_shown
 1
 1
 0
+device_characteristic_diameter
+1
+1
+1
+1
+20
 device_cost_input
 1
 1
@@ -846,7 +852,7 @@ device_costs_total
 1
 1
 1
-252415552
+1836620
 device_costs_total_display
 1
 1
@@ -858,19 +864,50 @@ device_costs_total_mill
 1
 1
 1
-252.416
+1.83662
+device_foundation
+1
+4
+8
+Floating
+device_mass
+1
+1
+1
+1
+687
+device_material
+1
+4
+9
+A36 Steel
+device_mooring
+1
+4
+13
+Slack Mooring
+device_pto_type
+1
+4
+20
+Hydraulic Drivetrain
 device_rated_power
 1
 1
 1
 1
-1115
+0.5
 device_spacing_in_row
 1
 1
 1
 1
 600
+device_tech_type
+1
+4
+12
+Heaving Buoy
 devices_per_row
 1
 1
@@ -912,7 +949,7 @@ elec_infras_cost
 1
 1
 1
-42999848
+12222064
 elec_infras_cost_input
 1
 1
@@ -930,13 +967,13 @@ elec_infras_cost_modeled
 1
 1
 1
-42999848
+12222064
 elec_infras_cost_total
 1
 1
 1
 1
-8362500
+0
 elec_infras_override
 1
 1
@@ -978,7 +1015,7 @@ eng_and_mgmt_cost
 1
 1
 1
-12204197
+156573
 eng_and_mgmt_cost_input
 1
 1
@@ -996,7 +1033,7 @@ eng_and_mgmt_cost_modeled
 1
 1
 1
-12204197
+156573
 eng_and_mgmt_cost_total
 1
 1
@@ -1110,7 +1147,7 @@ export_cable_system_cost_modeled
 1
 1
 1
-3629690
+905632
 export_cable_system_cost_total
 1
 1
@@ -1182,13 +1219,13 @@ financial_cost_total
 1
 1
 1
-36252560
+1380638
 financial_cost_total_mill
 1
 1
 1
 1
-36.2526
+1.38064
 financial_itemized_shown
 1
 1
@@ -1230,7 +1267,7 @@ fixed_operating_cost
 1
 1
 1
-17704912
+1204400
 floating_array
 1
 1
@@ -1398,7 +1435,7 @@ insurance_during_construction_cost
 1
 1
 1
-4028060
+153404
 insurance_during_construction_cost_input
 1
 1
@@ -1410,7 +1447,7 @@ insurance_during_construction_cost_modeled_ui
 1
 1
 1
-4028060
+153404
 insurance_during_construction_method
 1
 1
@@ -1422,7 +1459,7 @@ insurance_during_construction_modeled
 1
 1
 1
-4028060
+153404
 insurance_operations_cost
 1
 1
@@ -1621,6 +1658,44 @@ level_value
 1
 1
 0
+lib_tidal_device
+1
+4
+3
+RM1
+lib_tidal_power_curve
+1
+3
+21
+22
+0 0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5 20.5 
+0.25 0 0 0 0 0.4 0.6 0.8 1 1.1 1.1 1 0.8 0.7 0.6 0.5 0.4 0.3 0.3 0.2 0.2 0 
+0.75 0 0 0 0 3.2 5.3 7.4 9.1 9.8 9.5 8.6 7.4 6.2 5.1 4.1 3.4 2.8 2.3 1.9 1.6 0 
+1.25 0 0 0 0 9 14.8 20.5 25 26.8 25.9 23.3 20 16.8 13.8 11.3 9.2 7.6 6.3 5.2 4.3 0 
+1.75 0 0 0 0 17.6 28.9 39.9 48.3 51.6 49.7 44.7 38.4 32.2 26.5 21.7 17.8 14.6 12.1 10 8.4 0 
+2.25 0 0 0 0 29 47.5 65.4 78.8 83.8 80.6 72.4 62.3 52.2 43 35.3 28.9 23.8 19.7 16.3 13.7 0 
+2.75 0 0 0 0 43.2 70.7 97 116.3 123.1 118.1 106.1 91.3 76.5 63.2 51.9 42.5 35 28.9 24.1 20.1 0 
+3.25 0 0 0 0 60.2 98.3 134.5 160.5 169.3 162.1 145.5 125.2 105 86.8 71.3 58.5 48.2 39.9 33.2 27.8 0 
+3.75 0 0 0 0 79.9 130.4 177.8 211.2 222 212.2 190.4 164 137.6 113.8 93.6 76.9 63.3 52.5 43.7 36.6 0 
+4.25 0 0 0 0 102.4 166.7 226.7 268.3 281.1 268.2 240.5 207.2 174.1 144.1 118.5 97.4 80.3 66.6 55.5 46.5 0 
+4.75 0 0 0 0 127.6 207.4 281.2 286 286 286 286 255 214.3 177.5 146.1 120.2 99.2 82.2 68.6 57.6 0 
+5.25 0 0 0 0 155.4 252.4 286 286 286 286 286 286 258.2 214 176.3 145.1 119.8 99.4 83 69.7 0 
+5.75 0 0 0 0 186 286 286 286 286 286 286 286 286 253.6 209 172.2 142.2 118.1 98.6 82.8 0 
+6.25 0 0 0 0 219.2 286 286 286 286 286 286 286 286 286 244.2 201.2 166.4 138.2 115.5 97.1 0 
+6.75 0 0 0 0 255 286 286 286 286 286 286 286 286 286 281.9 232.4 192.2 159.7 133.5 112.3 0 
+7.25 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 265.6 219.8 182.8 152.9 128.7 0 
+7.75 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 249 207.2 173.4 146 0 
+8.25 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 279.9 233 195.1 164.4 0 
+8.75 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 260.2 218 183.8 0 
+9.25 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 286 242.1 204.1 0 
+9.75 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 286 267.4 225.6 0 
+
+library_or_input_tidal
+1
+1
+1
+1
+0
 long_term_service_agreement_cost
 1
 1
@@ -1680,7 +1755,7 @@ maintenance_cost
 1
 1
 1
-13341254
+323559
 maintenance_cost_input
 1
 1
@@ -1698,7 +1773,7 @@ maintenance_cost_modeled
 1
 1
 1
-13341254
+323559
 maintenance_cost_total
 1
 1
@@ -1812,7 +1887,7 @@ mooring_found_substruc_cost
 1
 1
 1
-49169164
+455373
 mooring_found_substruc_cost_input
 1
 1
@@ -1830,7 +1905,7 @@ mooring_found_substruc_cost_modeled
 1
 1
 1
-49169164
+455373
 mooring_found_substruc_cost_total
 1
 1
@@ -1956,7 +2031,7 @@ offshore_substation_cost_modeled
 1
 1
 1
-11150000
+5000
 offshore_substation_cost_total
 1
 1
@@ -2064,7 +2139,7 @@ onshore_substation_cost_modeled
 1
 1
 1
-8362500
+3750
 onshore_substation_cost_total
 1
 1
@@ -2076,7 +2151,7 @@ onshore_substation_cost_total_check
 1
 1
 1
-8362500
+0
 onshore_substations_cost
 1
 1
@@ -2130,7 +2205,7 @@ operations_cost
 1
 1
 1
-4363657
+880844
 operations_cost_input
 1
 1
@@ -2148,7 +2223,7 @@ operations_cost_modeled
 1
 1
 1
-4363657
+880844
 operations_cost_total
 1
 1
@@ -2268,7 +2343,7 @@ other_elec_infra_cost_modeled
 1
 1
 1
-6014068
+668239
 other_elec_infra_cost_total
 1
 1
@@ -2664,7 +2739,7 @@ plant_commissioning_cost
 1
 1
 1
-6444900
+245447
 plant_commissioning_cost_input
 1
 1
@@ -2682,13 +2757,13 @@ plant_commissioning_cost_modeled
 1
 1
 1
-6444900
+245447
 plant_commissioning_cost_modeled_ui
 1
 1
 1
 1
-6444900
+245447
 plumbing_fittings_cost
 1
 1
@@ -2778,7 +2853,7 @@ power_takeoff_system_cost
 1
 1
 1
-170767936
+581899
 power_takeoff_system_cost_input
 1
 1
@@ -2802,7 +2877,7 @@ power_takeoff_system_cost_modeled
 1
 1
 1
-170767936
+581899
 power_takeoff_system_cost_total
 1
 1
@@ -2916,7 +2991,7 @@ project_contingency_budget_cost
 1
 1
 1
-20140312
+767021
 project_contingency_cost_input
 1
 1
@@ -2934,13 +3009,13 @@ project_contingency_cost_modeled_ui
 1
 1
 1
-20140312
+767021
 project_contingency_modeled
 1
 1
 1
 1
-20140312
+767021
 project_management_during_development_cost
 1
 1
@@ -3006,7 +3081,7 @@ reserve_accounts_cost
 1
 1
 1
-12084187
+460213
 reserve_accounts_cost_input
 1
 1
@@ -3024,7 +3099,7 @@ reserve_accounts_cost_modeled_ui
 1
 1
 1
-12084187
+460213
 reserve_accounts_cost_total
 1
 1
@@ -3036,7 +3111,7 @@ reserve_accounts_modeled
 1
 1
 1
-12084187
+460213
 resource_and_metocean_assessment_cost
 1
 1
@@ -3192,7 +3267,7 @@ site_access_port_staging_cost
 1
 1
 1
-4430870
+168745
 site_access_port_staging_cost_input
 1
 1
@@ -3210,13 +3285,13 @@ site_access_port_staging_cost_modeled
 1
 1
 1
-4430870
+168745
 site_access_port_staging_cost_modeled_ui
 1
 1
 1
 1
-4430870
+168745
 site_access_port_staging_cost_total
 1
 1
@@ -3330,7 +3405,7 @@ structural_assembly_cost
 1
 1
 1
-32478454
+799349
 structural_assembly_cost_input
 1
 1
@@ -3348,13 +3423,13 @@ structural_assembly_cost_modeled
 1
 1
 1
-32478454
+799349
 structural_assembly_cost_modeled_formatted
 1
 1
 1
 1
-32478454
+799349
 structural_assembly_cost_total
 1
 1
@@ -3420,7 +3495,7 @@ system_capacity
 1
 1
 1
-111500
+50
 test_num
 1
 1
@@ -3430,42 +3505,29 @@ test_num
 tidal_power_curve
 1
 3
-34
-2
-0 0 
-0.1 0 
-0.2 0 
-0.3 0 
-0.4 0 
-0.5 0 
-0.6 10.4211 
-0.7 20.8423 
-0.8 39.9689 
-0.9 59.0956 
-1 89.2016 
-1.1 119.308 
-1.2 160.886 
-1.3 202.464 
-1.4 259.292 
-1.5 316.12 
-1.6 392.673 
-1.7 469.226 
-1.8 570.306 
-1.9 671.386 
-2 802.908 
-2.1 934.43 
-2.2 1024.71 
-2.3 1115 
-2.4 1115 
-2.5 1115 
-2.6 1115 
-2.7 1115 
-2.8 1115 
-2.9 1115 
-3 1115 
-3.1 1115 
-3.2 1085.37 
-3.3 1055.73 
+21
+22
+0 0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5 20.5 
+0.25 0 0 0 0 0.4 0.6 0.8 1 1.1 1.1 1 0.8 0.7 0.6 0.5 0.4 0.3 0.3 0.2 0.2 0 
+0.75 0 0 0 0 3.2 5.3 7.4 9.1 9.8 9.5 8.6 7.4 6.2 5.1 4.1 3.4 2.8 2.3 1.9 1.6 0 
+1.25 0 0 0 0 9 14.8 20.5 25 26.8 25.9 23.3 20 16.8 13.8 11.3 9.2 7.6 6.3 5.2 4.3 0 
+1.75 0 0 0 0 17.6 28.9 39.9 48.3 51.6 49.7 44.7 38.4 32.2 26.5 21.7 17.8 14.6 12.1 10 8.4 0 
+2.25 0 0 0 0 29 47.5 65.4 78.8 83.8 80.6 72.4 62.3 52.2 43 35.3 28.9 23.8 19.7 16.3 13.7 0 
+2.75 0 0 0 0 43.2 70.7 97 116.3 123.1 118.1 106.1 91.3 76.5 63.2 51.9 42.5 35 28.9 24.1 20.1 0 
+3.25 0 0 0 0 60.2 98.3 134.5 160.5 169.3 162.1 145.5 125.2 105 86.8 71.3 58.5 48.2 39.9 33.2 27.8 0 
+3.75 0 0 0 0 79.9 130.4 177.8 211.2 222 212.2 190.4 164 137.6 113.8 93.6 76.9 63.3 52.5 43.7 36.6 0 
+4.25 0 0 0 0 102.4 166.7 226.7 268.3 281.1 268.2 240.5 207.2 174.1 144.1 118.5 97.4 80.3 66.6 55.5 46.5 0 
+4.75 0 0 0 0 127.6 207.4 281.2 286 286 286 286 255 214.3 177.5 146.1 120.2 99.2 82.2 68.6 57.6 0 
+5.25 0 0 0 0 155.4 252.4 286 286 286 286 286 286 258.2 214 176.3 145.1 119.8 99.4 83 69.7 0 
+5.75 0 0 0 0 186 286 286 286 286 286 286 286 286 253.6 209 172.2 142.2 118.1 98.6 82.8 0 
+6.25 0 0 0 0 219.2 286 286 286 286 286 286 286 286 286 244.2 201.2 166.4 138.2 115.5 97.1 0 
+6.75 0 0 0 0 255 286 286 286 286 286 286 286 286 286 281.9 232.4 192.2 159.7 133.5 112.3 0 
+7.25 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 265.6 219.8 182.8 152.9 128.7 0 
+7.75 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 249 207.2 173.4 146 0 
+8.25 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 279.9 233 195.1 164.4 0 
+8.75 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 260.2 218 183.8 0 
+9.25 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 286 242.1 204.1 0 
+9.75 0 0 0 0 286 286 286 286 286 286 286 286 286 286 286 286 286 286 267.4 225.6 0 
 
 tidal_resource
 1
@@ -3524,7 +3586,7 @@ total_bos_cost_per_kw
 1
 1
 1
-1446.34
+278360
 total_bos_cost_per_kwh
 1
 1
@@ -3536,13 +3598,13 @@ total_bos_cost_percent
 1
 1
 1
-0.344852
+0.758902
 total_capital_cost_per_kw
 1
 1
 1
 1
-4035.29
+342705
 total_capital_cost_per_kwh
 1
 1
@@ -3560,7 +3622,7 @@ total_device_cost_per_kw
 1
 1
 1
-2263.82
+36732.4
 total_device_cost_per_kwh
 1
 1
@@ -3572,7 +3634,7 @@ total_device_cost_percent
 1
 1
 1
-0.539765
+0.100145
 total_financial_cost_lcoe
 1
 1
@@ -3584,7 +3646,7 @@ total_financial_cost_per_kw
 1
 1
 1
-325.135
+27612.8
 total_financial_cost_per_kwh
 1
 1
@@ -3596,13 +3658,13 @@ total_financial_cost_percent
 1
 1
 1
-0.0775225
+0.0752816
 total_installed_cost
 1
 1
 1
 1
-449934560
+17135252
 total_installed_cost_lcoe
 1
 1
@@ -3614,31 +3676,31 @@ total_installed_cost_mill
 1
 1
 1
-449.935
+17.1353
 total_installed_cost_percent
 1
 1
 1
 1
-0.96214
+0.934328
 total_installed_cost_structural
 1
 1
 1
 1
-32478454
+799349
 total_operating_cost
 1
 1
 1
 1
-17704912
+1204400
 total_operating_cost_mill
 1
 1
 1
 1
-17.7049
+1.2044
 total_operations_cost_lcoe
 1
 1
@@ -3650,7 +3712,7 @@ total_operations_cost_per_kw
 1
 1
 1
-158.788
+24088.1
 total_operations_cost_per_kwh
 1
 1
@@ -3662,19 +3724,19 @@ total_operations_cost_percent
 1
 1
 1
-0.0378602
+0.0656721
 total_rated_capacity
 1
 1
 1
 1
-111500
+50
 total_test
 1
 1
 1
 1
-449934560
+17135252
 transmission_charges_rights_cost
 1
 1
@@ -3734,7 +3796,7 @@ ui_capital_cost_reference
 1
 1
 1
-449934560
+17135252
 ui_cfin
 1
 1
@@ -3780,7 +3842,7 @@ ui_operating_cost_fixed
 1
 1
 1
-17704912
+1204400
 ui_pfin
 1
 1
@@ -3792,7 +3854,7 @@ ui_system_capacity
 1
 1
 1
-111500
+50
 ui_variable_operating_cost
 1
 1
@@ -3853,6 +3915,46 @@ user_input_number_rows
 1
 1
 10
+user_tidal_power_curve
+1
+3
+34
+2
+0 0 
+0.1 0 
+0.2 0 
+0.3 0 
+0.4 0 
+0.5 0 
+0.6 10.4211 
+0.7 20.8423 
+0.8 39.9689 
+0.9 59.0956 
+1 89.2016 
+1.1 119.308 
+1.2 160.886 
+1.3 202.464 
+1.4 259.292 
+1.5 316.12 
+1.6 392.673 
+1.7 469.226 
+1.8 570.306 
+1.9 671.386 
+2 802.908 
+2.1 934.43 
+2.2 1024.71 
+2.3 1115 
+2.4 1115 
+2.5 1115 
+2.6 1115 
+2.7 1115 
+2.8 1115 
+2.9 1115 
+3 1115 
+3.1 1115 
+3.2 1085.37 
+3.3 1055.73 
+
 valves_cost
 1
 1
