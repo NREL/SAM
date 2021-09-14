@@ -111,12 +111,29 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 
 					// Simulate each case
 					for (size_t i = 0; i < arychecked.Count(); i++) {
-						// Switch to case to make current case
+						// Switch to case
 						SamApp::Window()->SwitchToCaseWindow(m_cases[arychecked[i]].name);
+						Case* current_case = SamApp::Window()->GetCurrentCase();
+						CaseWindow* case_window = SamApp::Window()->GetCaseWindow(current_case);
+						//cw->UpdateConfiguration();
+						Simulation& bcsim = current_case->BaseCase();
+
+						// Grab inputs needed for combined case in generic model
+						double degradation = bcsim.GetInput("degradation")->Value();			//		'SchedNumeric', toggle 'UseSchedule'
+						ActiveInputPage* aip = 0;
+						wxUIObject* degradation_obj = case_window->FindActiveObject("degradation", &aip);
+						assert(degradation_obj && aip);
+						assert(degradation_obj->HasProperty("UseSchedule"));
+						bool use_schedule = degradation_obj->Property("UseSchedule").GetBoolean();
+
+
+						// Set Annual AC degradation rate to the combine cases input value
+						//  save whether Value or Sched, and save Value value
+
+
+
 
 						// Simulate current case
-						Case* c = SamApp::Window()->GetCurrentCase();
-						Simulation& bcsim = c->BaseCase();
 						bcsim.Clear();
 						bool result = bcsim.Invoke();
 
@@ -126,10 +143,12 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						//wxArrayString messages = c->BaseCase().GetAllMessages();
 
 						// Update UI
-						CaseWindow* cw = SamApp::Window()->GetCaseWindow(c);
-						cw->UpdateResults();
+						case_window->UpdateResults();
+						//c->SetProperty
+						// Maybe just return the value instead of setting the table value directly?
 
 						// Set array
+						degradation_obj->Property("UseSchedule").Set(true);
 						int x = 1;
 					}
 
