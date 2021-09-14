@@ -200,7 +200,7 @@
 			"system_capacity": 50002.2
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 1.05880e+06,
+			"construction_financing_cost": 1.0588e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
