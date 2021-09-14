@@ -2070,13 +2070,14 @@ setup_single_owner_pages( );
 setup_electricity_purchases();
 
 setconfig( 'PV Battery', 'Merchant Plant' );
-setmodules( ['pvsamv1', 'grid', 'merchantplant']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'merchantplant']);
 setup_pv_battery_pages(false);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
 addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_merchant_plant_pages( );
+setup_electricity_purchases();
 
 setconfig( 'PV Battery', 'Leveraged Partnership Flip' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'levpartflip']);
