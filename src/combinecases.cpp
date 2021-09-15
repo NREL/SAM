@@ -122,10 +122,11 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						// -degradation value and 
 						double degradation_orig = bcsim.GetInput("degradation")->Value();						// 'SchedNumeric', toggle 'UseSchedule'
 						ActiveInputPage* aip = 0;
-						case_window->SwitchToInputPage("Lifetime and Degradation");
-						wxUIObject* degradation_obj = case_window->FindActiveObject("degradation", &aip);
-						assert(degradation_obj && aip);
-						assert(degradation_obj->HasProperty("UseSchedule"));
+                        // ** this works only if page that contains the control is selected in the "current_case" **
+						// case_window->SwitchToInputPage("Lifetime and Degradation");
+						// wxUIObject* degradation_obj = case_window->FindActiveObject("degradation", &aip);
+						wxUIObject* degradation_obj = case_window->FindObject("degradation", &aip);
+						assert(degradation_obj && aip && degradation_obj->HasProperty("UseSchedule"));
 						bool use_schedule_orig = degradation_obj->Property("UseSchedule").GetBoolean();
 
 
@@ -152,6 +153,11 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						// Maybe just return the value instead of setting the table value directly?
 
 						// Set array
+						//if (auto pvv = current_case->Values().Get("degradation")) {
+						//	double v[] = { 1.0, 2.0, 3.0, 4.0 };
+						//	pvv->Set(v, 4);
+						//	current_case->VariableChanged("degradation"); // triggers UI update
+						//}
 						int x = 1;
 					}
 
