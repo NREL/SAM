@@ -3749,6 +3749,7 @@ void fcall_showsettings( lk::invoke_t &cxt )
     if (type == "solar") cxt.result().assign(ShowSolarResourceDataSettings() ? 1.0 : 0.0);
     else if (type == "wind") cxt.result().assign(ShowWindResourceDataSettings() ? 1.0 : 0.0);
     else if (type == "wave") cxt.result().assign(ShowWaveResourceDataSettings() ? 1.0 : 0.0);
+    else if (type == "tidal_device") cxt.result().assign(ShowTidalDeviceDataSettings() ? 1.0 : 0.0);
 }
 
 void fcall_rescanlibrary( lk::invoke_t &cxt )
@@ -3758,7 +3759,6 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 
 	wxString type(cxt.arg(0).as_string().Lower());
 	Library *reloaded = 0;
-    Library* reloaded2 = 0;
 
 	if ( type == "solar" )
 	{
@@ -3788,6 +3788,13 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
         //reloaded2 = Library::Load(wave_resource_db);
     }
 
+    else if (type == "tidal_device")
+    {
+        wxString tidal_device_db = SamApp::GetUserLocalDataDir() + "/TidalEnergyConverters.csv";
+        ScanTidalConverterData(tidal_device_db, true);
+        reloaded = Library::Load(tidal_device_db);
+    }
+
 
 	if ( reloaded != 0 )
 	{
@@ -3799,13 +3806,6 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		}
 	}
 
-    if (reloaded2 != 0)
-    {
-        std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
-        for (size_t i = 0; i < objs.size(); i++)
-            if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
-                lc->ReloadLibrary();
-    }
 }
 
 void fcall_librarygetcurrentselection(lk::invoke_t &cxt)

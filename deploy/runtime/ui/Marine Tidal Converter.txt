@@ -1,7 +1,7 @@
 Marine Tidal Converter
-1071
-1064
-8
+949
+1185
+10
 GroupBox
 
 1
@@ -15,10 +15,10 @@ X
 15
 Y
 3
-231
+357
 Width
 3
-908
+923
 Height
 3
 819
@@ -32,6 +32,66 @@ Tidal Energy Converter
 Bold
 2
 1
+Button
+
+1
+8
+Name
+5
+22
+btn_add_remove_folders
+X
+3
+621
+Y
+3
+228
+Width
+3
+252
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+34
+Add/remove weather file folders...
+TabOrder
+3
+2
+Button
+
+1
+8
+Name
+5
+19
+btn_refresh_library
+X
+3
+621
+Y
+3
+258
+Width
+3
+252
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+15
+Refresh library
+TabOrder
+3
+3
 Numeric
 
 1
@@ -45,7 +105,7 @@ X
 546
 Y
 3
-270
+375
 Width
 3
 100
@@ -107,10 +167,10 @@ X
 15
 Y
 3
-48
+27
 Width
 3
-1000
+919
 Height
 3
 166
@@ -119,26 +179,101 @@ Tool Tip
 0
 Library
 5
-23
-Tidal Energy Converters
+21
+TidalEnergyConverters
 Fields
 5
 137
 Name,Technology Type,PTO Type,Characteristic Diameter,Unballasted Structural Mass,Foundation Type,Mooring Type,Primary Structure Material
+MultilineText
+
+1
+11
+Name
+5
+19
+library_folder_list
+X
+3
+27
+Y
+3
+228
+Width
+3
+588
+Height
+3
+60
+Tool Tip
+5
+0
+Text
+5
+37
+List of Wave Resource library folders
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+12
+Y
+3
+9
+Width
+3
+927
+Height
+3
+327
+Tool Tip
+5
+0
+Caption
+5
+20
+Tidal Device Library
+Bold
+2
+1
 DataMatrix
 
 1
 27
 Name
 5
-21
-lib_tidal_power_curve
+17
+tidal_power_curve
 X
 3
 27
 Y
 3
-255
+381
 Width
 3
 300
@@ -215,46 +350,6 @@ ShowColumn
 ColorMap
 2
 0
-RadioChoice
-
-1
-11
-Name
-5
-22
-library_or_input_tidal
-X
-3
-15
-Y
-3
-27
-Width
-3
-502
-Height
-3
-21
-Tool Tip
-5
-0
-Selection
-3
-0
-Items
-6
-2
-Choose tidal converter from library
-Import tidal converter
-ShowCaptions
-2
-1
-Horizontal
-2
-1
-TabOrder
-3
-2
 Plot
 
 1
@@ -268,7 +363,7 @@ X
 345
 Y
 3
-363
+468
 Width
 3
 540
@@ -291,7 +386,7 @@ X
 18
 Y
 3
-69
+48
 Width
 3
 800
@@ -326,98 +421,8 @@ AlignRight
 AlignTop
 2
 1
-DataMatrix
 
-1
-27
-Name
-5
-22
-user_tidal_power_curve
-X
-3
-27
-Y
-3
-255
-Width
-3
-300
-Height
-3
-775
-Tool Tip
-5
-0
-PasteAppendRows
-2
-0
-PasteAppendCols
-2
-0
-ShowButtons
-2
-1
-ShowRows
-2
-1
-ShowRowLabels
-2
-0
-RowLabels
-5
-0
-ShadeR0C0
-2
-0
-VerticalLabel
-5
-0
-HorizontalLabel
-5
-0
-ShadeC0
-2
-0
-ShowCols
-2
-0
-ShowColLabels
-2
-1
-ColLabels
-5
-25
-Velocity (m/s),Power (kW)
-NumRowsLabel
-5
-5
-Rows:
-NumColsLabel
-5
-5
-Cols:
-Layout
-3
-1
-ChoiceColumn
-3
-4294967295
-Choices
-5
-15
-Choice1,Choice2
-HideColumn
-3
-4294967295
-ShowColumn
-3
-4294967295
-ColorMap
-2
-0
-
-13
+11
 device_characteristic_diameter
 3
 1
@@ -528,44 +533,29 @@ Default
 lib_tidal_device
 3
 4
- Tidal device library
+Tidal device library
  
- 
-25
-Tidal Energy Converters|0
-17
+ME Tidal Device
+23
+TidalEnergyConverters|0
+19
 1
 4
 3
 RM1
-Default
-lib_tidal_power_curve
+Library
+library_folder_list
 3
-3
+4
  
  
  
 0
-0
+8
 1
-3
-1
-1
-0
-DataMatrix
-library_or_input_tidal
-3
-1
- 
- 
- 
-0
-0
-1
-1
-1
-1
-0
+4
+9
+<invalid>
 Default
 tidal_power_curve
 3
@@ -574,7 +564,7 @@ tidal_power_curve
  
 ME Tidal Converter
 0
-8
+0
 1
 3
 34
@@ -615,22 +605,8 @@ ME Tidal Converter
 3.3 1055.73 
 
 DataMatrix
-user_tidal_power_curve
-3
-3
- 
- 
- 
-0
-0
-1
-3
-1
-1
-0
-DataMatrix
 
-416
+258
 equations{ 'device_rated_power' } = define () 
 {
 	max_power = 0;
@@ -641,15 +617,8 @@ equations{ 'device_rated_power' } = define ()
 	return max_power;
 };
 
-equations{ 'tidal_power_curve' } = define()
-{
-	if (${library_or_input_tidal})
-		return ${user_tidal_power_curve};
-	else
-		return ${lib_tidal_power_curve};
-};
 
-1752
+3005
 function plot_device_curve()
 {
 	setplot('tidal_power_curve_plot');
@@ -686,37 +655,86 @@ on_change{'tidal_power_curve'}=define()
 
 on_load{'Marine Tidal Converter'}=define()
 {
-	update_controls();
 	plot_device_curve();
+	//update_library_folders('');
 };
 
-function update_controls()
-{
-	input_tidal = (value("library_or_input_tidal") == 1);
-	show("user_tidal_power_curve", input_tidal);
-	show("lib_tidal_device", !input_tidal);
-	show("lib_tidal_power_curve", !input_tidal);
-	/*
-	show('device_mooring', !input_wec);
-	show('device_foundation', !input_wec);
-	show('device_pto_type', !input_wec);
-	show('device_mass', !input_wec);
-	show('device_characteristic_diameter', !input_wec);
-	show('device_material', !input_wec);
-	show('device_tech_type', !input_wec);
-	*/
-	refresh();
-}
 
-on_change{'library_or_input_tidal'} = define()
-{
-	update_controls();
-};
-/*
 on_change{'lib_tidal_device'} = define()
 {
-	if( librarygetcurrentselection( 'lib_tidal_device' ) != '' )
+	refresh('tidal_power_curve');
+};
+/*
+on_change{'lib_tidal_device'} = define() {
+	file = ${lib_tidal_device};
+	
+	
+	if (!file_exists(file))
 	{
-		value( 'wave_device_name', value('lib_wave_device') );
+		rescanlibrary( 'tidal_device' );
+		refresh('lib_tidal_device');
+		return;
 	}
-};*/
+	file = replace(file, '\\', '/');
+	fn = open(file,'r');
+
+	close(fn);
+	//update_info('on_change location');
+};
+*/
+
+on_change{'btn_refresh_library'} = define() {
+	rescanlibrary('tidal_device');
+	//update_info('on_change btn_refresh_library');
+};
+
+function update_library_folders( new_path )
+{
+	//msgbox('Hello from update_library_folders()');
+	x = get_settings('tidal_device_data_paths');
+	// add new path if provided and it doesn't already exist in the library
+	if ( new_path != '' && dir_exists( new_path ) && ( strpos( x, new_path ) < 0 ) )
+	{
+		if ( x != '' ) { x += ';'; }
+		x += slash_back_to_forward( new_path );
+	}
+	// list of library folders files to display on separate lines
+	paths = split( x, ';' );
+	// put solar download folder at top of list
+	clean_list = '';
+	// remove folders in list that no longer exist
+	for (i = 0; i<#paths; i++ )
+	{
+		if ( dir_exists( paths[i] ) )
+		{
+			clean_list += paths[i];
+			if ( i < #paths-1 ) { clean_list += ';'; }
+		}	
+	}		
+	// update solar_data_paths used by library.cpp and nsrdb.cpp to cleaned list		
+	set_settings('tidal_device_data_paths', clean_list );
+	// update list to display
+	value( 'library_folder_list', get_settings('tidal_device_download_path') + '\n' 
+	       + replace( clean_list , ';' , '\n' ) );
+	rescanlibrary( 'tidal_device' );      
+}
+
+function slash_back_to_forward( str )
+{
+	return replace( str, '\\', '/' );
+}
+
+function file_to_key( file ) 
+{
+		key = file_only( file );
+		key = replace( key, '.' + ext_only( file ), '' );
+		return key;
+}
+
+on_change{'btn_add_remove_folders'} = define() {
+	if ( showsettings( 'tidal_device' ) )
+	{
+		update_library_folders( '' );
+	}
+	else { msgbox( 'Could not open window!\nWave Resource Data Folder Settings window not available.' ); }
+};

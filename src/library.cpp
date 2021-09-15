@@ -29,6 +29,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/dir.h>
 #include <wx/tokenzr.h>
 
+#include <string>
+#include <fstream>
+
+
 #include <wex/utils.h>
 
 #include <ssc/sscapi.h>
@@ -778,6 +782,41 @@ bool ShowWaveResourceDataSettings()
     else return false;
 }
 
+bool ShowTidalDeviceDataSettings()
+{
+    wxString dnpath;
+    if (!SamApp::Settings().Read("tidal_device_download_path", &dnpath) || dnpath.IsEmpty())
+    {
+        dnpath = ::wxGetHomeDir() + "/SAM Downloaded Device Files";
+        SamApp::Settings().Write("wave_download_path", dnpath);
+    }
+
+    if (!wxDirExists(dnpath))
+    {
+        if (wxFileName::Mkdir(dnpath, 511, ::wxPATH_MKDIR_FULL))
+            SamApp::Settings().Write("wave_download_path", dnpath);
+        else
+            wxMessageBox("Please select a Tidal Device \"Folder\" in the following dialog.");
+    }
+
+    wxString buf;
+    wxArrayString paths;
+    if (SamApp::Settings().Read("tidal_device_data_paths", &buf))
+        paths = wxStringTokenize(buf, ";");
+
+    SettingsDialog dialog(SamApp::Window(), "Tidal Device Data Folder Settings", "Tidal Device Data File");
+    dialog.CenterOnParent();
+    dialog.SetLibraryPaths(paths);
+    dialog.SetDownloadPath(dnpath);
+    if (dialog.ShowModal() == wxID_OK)
+    {
+        SamApp::Settings().Write("tidal_device_download_path", dialog.GetDownloadPath());
+        SamApp::Settings().Write("tidal_device_data_paths", wxJoin(dialog.GetLibraryPaths(), ';'));
+        return true;
+    }
+    else return false;
+}
+
 bool ShowWindResourceDataSettings()
 {
 	wxMessageBox("Wind data settings not supported yet.");
@@ -1477,6 +1516,167 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
 
             ssc_data_free(pdata);
 
+            has_more = dir.GetNext(&file);
+        }
+    }
+
+    if (busy) delete busy;
+
+    return csv.WriteFile(db_file);
+}
+
+bool ScanTidalConverterData(const wxString& db_file, bool show_busy)
+{
+    // TODO - update fields based on final file
+    wxBusyInfo* busy = 0;
+    if (show_busy)
+        busy = new wxBusyInfo("Updating tidal library...");
+
+    wxArrayString paths;
+    //paths.Add(SamApp::GetRuntimePath() + "../wave_resource_ts/");
+
+    /*
+    wxString dnpath;
+    if (SamApp::Settings().Read("wave_download_path", &dnpath)
+        && wxDirExists(dnpath))
+        paths.Add(dnpath);
+        */
+
+    wxString slist;
+    if (SamApp::Settings().Read("tidal_device_data_paths", &slist))
+    {
+        wxArrayString ll = wxStringTokenize(slist, ";");
+        for (size_t i = 0; i < ll.size(); i++)
+            if (wxDirExists(ll[i]))
+                paths.Add(ll[i]);
+    }
+
+    
+
+    //wxString path = SamApp::GetRuntimePath() + "../wave_resource_ts/";
+    /*
+    wxDir dir(path);
+    if (!dir.IsOpened()) {
+        if (busy) delete busy;
+        return false;
+    }*/
+
+
+
+    wxCSVData csv;
+    csv(0, 0) = "Name";
+    csv(2, 0) = "[0]";
+
+    csv(0, 1) = "Technology Type";
+    csv(2, 1) = "device_tech_type";
+
+    csv(0, 2) = "PTO Type";
+    csv(2, 2) = "device_pto_type";
+
+    csv(0, 3) = "Characteristic Diameter";
+    csv(1, 3) = "m";
+    csv(2, 3) = "device_characteristic_diameter";
+
+    csv(0, 4) = "Unballasted Structural Mass";
+    csv(1, 4) = "Tonnes";
+    csv(2, 4) = "device_mass";
+
+    csv(0, 5) = "Foundation Type";
+    csv(2, 5) = "device_foundation";
+
+    csv(0, 6) = "Mooring Type";
+    csv(2, 6) = "device_mooring";
+
+    csv(0, 7) = "Primary Structure Material";
+    csv(2, 7) = "device_material";
+
+    csv(0, 8) = "Power";
+    csv(1, 8) = "kW";
+    csv(2, 8) = "tidal_power_curve";
+
+
+    //RM1
+    csv(3, 0) = "RM1";
+    csv(3, 1) = "Heaving Buoy";
+    csv(3, 2) = "Hydraulic Drivetrain";
+    csv(3, 3) = "20";
+    csv(3, 4) = "687";
+    csv(3, 5) = "Floating";
+    csv(3, 6) = "Slack Mooring";
+    csv(3, 7) = "A36 Steel";
+    csv(3, 8) = "[0;0][0.1;0][0.2;0][0.3;0][0.4;0][0.5;0][0.6;10.4211][0.7;20.8423][0.8;39.9689][0.9;59.0956][1;89.2016][1.1;119.308][1.2;160.886][1.3;202.464][1.4;259.292][1.5;316.12][1.6;392.673][1.7;469.226][1.8;570.306][1.9;671.386][2;802.908][2.1;934.43][2.2;1024.71][2.3;1115][2.4;1115][2.5;1115][2.6;1115][2.7;1115][2.8;1115][2.9;1115][3;1115][3.1;1115][3.2;1085.37][3.3;1055.73]";
+
+    //RM2
+    csv(4, 0) = "RM2";
+    csv(4, 1) = "Oscillating Surge Wave Converter";
+    csv(4, 2) = "Hydraulic Drivetrain";
+    csv(4, 3) = "25";
+    csv(4, 4) = "800";
+    csv(4, 5) = "Floating";
+    csv(4, 6) = "Taut Mooring";
+    csv(4, 7) = "Fiberglass and A36 Steel";
+    csv(4, 8) = "[0;0][0.1;0][0.2;0][0.3;0][0.4;0][0.5;0][0.6;10.4211][0.7;20.8423][0.8;39.9689][0.9;59.0956][1;89.2016][1.1;119.308][1.2;160.886][1.3;202.464][1.4;259.292][1.5;316.12][1.6;392.673][1.7;469.226][1.8;570.306][1.9;671.386][2;802.908][2.1;934.43][2.2;1024.71][2.3;1115][2.4;1115][2.5;1115][2.6;1115][2.7;1115][2.8;1115][2.9;1115][3;1115][3.1;1115][3.2;1085.37][3.3;1055.73]";
+
+    int row = 5;
+    //wxString file;
+    for (int i = 0; i < paths.size(); i++) {
+        wxString path(paths[i]);
+        wxDir dir(path);
+        if (!dir.IsOpened())
+        {
+            wxLogStatus("ScanTidalConverterData: could not open folder " + path);
+            continue;
+        }
+        wxString file;
+        bool has_more = dir.GetFirst(&file, "*.csv", wxDIR_FILES);
+        while (has_more)
+        {
+            // process file
+            std::string wf = path + "/" + std::string(file);
+            std::ifstream ifs(wf);
+            std::string buf, buf1;
+            
+            getline(ifs, buf);
+            getline(ifs, buf1);
+
+            // header name value pairs
+            wxArrayString keys = wxSplit(buf, ',');
+            
+            wxArrayString values = wxSplit(buf1, ',');
+            int ncols = (int)keys.size();
+            int ncols1 = (int)values.size();
+            
+            ssc_number_t val;
+            ssc_number_t* height_arr;
+            ssc_number_t* period_arr;
+            ssc_number_t* year_arr;
+            ssc_number_t* mat;
+            
+            const char* str;
+
+            wxFileName ff(wf);
+            ff.Normalize();
+
+            csv(row, 0) = values[0]; //Name
+            csv(row, 1) = values[1]; // Technology Type
+            csv(row, 2) = values[2]; // PTO Type
+            csv(row, 3) = values[3]; // Characteristic Diameter
+            csv(row, 4) = values[4]; //Unballasted Mass
+            csv(row, 5) = values[5]; //Foundation Type
+            csv(row, 6) = values[6]; //Mooring Type
+            csv(row, 7) = values[7]; //Primary Structural Material
+
+            wxString wstr = "";
+            //wstr += "[";
+            wxArrayString powercurve; 
+            getline(ifs, buf); //Power curve column labels
+            while (getline(ifs, buf)) {
+                powercurve = wxSplit(buf, ',');
+                wstr += "[" + powercurve[0] + ";" + powercurve[1] + "]";
+               
+            }
+            csv(row, 8) = wstr;
+            row++;
             has_more = dir.GetNext(&file);
         }
     }

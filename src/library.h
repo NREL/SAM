@@ -95,6 +95,8 @@ bool ShowWaveResourceDataSettings();
 bool ScanWaveResourceData(const wxString &db_file, bool show_busy = false);
 bool ScanWaveResourceTSData(const wxString &db_file, bool show_busy = false);
 bool WaveResourceTSData_makeJPD(const wxString& db_file, bool show_busy = false);
+bool ScanTidalConverterData(const wxString& db_file, bool show_busy = false);
+bool ShowTidalDeviceDataSettings();
 
 class LibraryCtrl;
 class wxTextCtrl;
