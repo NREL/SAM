@@ -119,17 +119,19 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						Simulation& bcsim = current_case->BaseCase();
 
 						// Grab inputs needed for combined case in generic model
-						double degradation = bcsim.GetInput("degradation")->Value();			//		'SchedNumeric', toggle 'UseSchedule'
+						// -degradation value and 
+						double degradation_orig = bcsim.GetInput("degradation")->Value();						// 'SchedNumeric', toggle 'UseSchedule'
 						ActiveInputPage* aip = 0;
+						case_window->SwitchToInputPage("Lifetime and Degradation");
 						wxUIObject* degradation_obj = case_window->FindActiveObject("degradation", &aip);
 						assert(degradation_obj && aip);
 						assert(degradation_obj->HasProperty("UseSchedule"));
-						bool use_schedule = degradation_obj->Property("UseSchedule").GetBoolean();
+						bool use_schedule_orig = degradation_obj->Property("UseSchedule").GetBoolean();
+
 
 
 						// Set Annual AC degradation rate to the combine cases input value
 						//  save whether Value or Sched, and save Value value
-
 
 
 
@@ -138,17 +140,18 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						bool result = bcsim.Invoke();
 
 						// Get outputs and notices
-						double annual_energy = bcsim.GetOutput("annual_energy")->Value();
-						matrix_t<double> gen = bcsim.GetOutput("gen")->Matrix();
+						//double annual_energy = bcsim.GetOutput("annual_energy")->Value();
+						//matrix_t<double> gen = bcsim.GetOutput("gen")->Matrix();
 						//wxArrayString messages = c->BaseCase().GetAllMessages();
 
-						// Update UI
+						// Reinstate original values
+						degradation_obj->Property("UseSchedule").Set(use_schedule_orig);
+
+						// Update UI with results
 						case_window->UpdateResults();
-						//c->SetProperty
 						// Maybe just return the value instead of setting the table value directly?
 
 						// Set array
-						degradation_obj->Property("UseSchedule").Set(true);
 						int x = 1;
 					}
 
