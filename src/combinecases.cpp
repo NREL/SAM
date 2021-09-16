@@ -47,12 +47,12 @@ END_EVENT_TABLE()
 CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title)
     : wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 {
-	
 	// Text at top of window
-	wxString msg = "Select open cases, simulate those cases and combine their generation profiles into a single profile to be used with this generic case.";
+	wxString msg = "Select open cases, simulate those cases and combine their generation\n";
+	msg += "profiles into a single profile to be used with this generic case.";
 
 	// Case selection
-	m_chlCases = new wxCheckListBox(this, ID_chlCases, wxDefaultPosition, wxSize(800, 200)); // populate with active cases
+	m_chlCases = new wxCheckListBox(this, ID_chlCases, wxDefaultPosition, wxSize(400, 200)); // populate with active cases
 	this->GetOpenCases();
 	this->RefreshList(0.);
 	wxBoxSizer* szcases = new wxBoxSizer(wxVERTICAL);
@@ -63,14 +63,19 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title)
 	m_chkOverwriteCapital = new wxCheckBox(this, ID_chkOverwriteCapital, "Overwrite Capital Expenses");
 
 	// Annual AC degradation
-	m_spndDegradation = new wxSpinCtrlDouble(this, ID_spndDegradation, "Annual AC Degradation");
+	m_spndDegradation = new wxSpinCtrlDouble(this, ID_spndDegradation, "Annual AC Degradation", wxDefaultPosition, wxSize(54, 22),
+		wxSP_ARROW_KEYS, 0, 100, 0.0, 0.1, "wxspndDegradation");
+	wxString degradation_label = "%/year  Annual AC degradation rate";
+	wxBoxSizer* szdegradation = new wxBoxSizer(wxHORIZONTAL);
+	szdegradation->Add(m_spndDegradation, 0, wxALL, 1);
+	szdegradation->Add(new wxStaticText(this, wxID_ANY, degradation_label), 0, wxALL | wxALIGN_CENTER, 1);
 
 	// Combine all into main vertical sizer
 	wxBoxSizer* szmain = new wxBoxSizer(wxVERTICAL);
 	szmain->Add(new wxStaticText(this, wxID_ANY, msg), 0, wxALL | wxEXPAND, 10);
 	szmain->Add(szcases, 10, wxALL | wxEXPAND, 1);
-	szmain->Add(m_chkOverwriteCapital);
-	szmain->Add(m_spndDegradation);
+	szmain->Add(m_chkOverwriteCapital, 0, wxALL, 5);
+	szmain->Add(szdegradation, 0, wxALL, 1);
 	szmain->Add(CreateButtonSizer(wxHELP | wxOK | wxCANCEL), 0, wxALL | wxEXPAND, 10);
 
 	SetSizer(szmain);
