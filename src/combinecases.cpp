@@ -51,7 +51,9 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title)
 	wxString msg = "Select open cases, simulate those cases and combine their generation\n";
 	msg += "profiles into a single profile to be used with this generic case.";
 
-	// Case selection
+	// Case selection list
+	Case* current_case = SamApp::Window()->GetCurrentCase();
+	m_generic_case_name = SamApp::Window()->Project().GetCaseName(current_case);
 	m_chlCases = new wxCheckListBox(this, ID_chlCases, wxDefaultPosition, wxSize(400, 200)); // populate with active cases
 	this->GetOpenCases();
 	this->RefreshList(0.);
@@ -186,12 +188,15 @@ void CombineCasesDialog::RefreshList(size_t first_item)
 	m_chlCases->Clear();
 	for (size_t i = 0; i < m_cases.size(); i++)
 	{
-		int ndx = m_chlCases->Append(m_cases[i].display_name);
-		if (m_cases[i].is_selected) {
-			m_chlCases->Check(ndx, true);
-		}
-		else {
-			m_chlCases->Check(ndx, false);
+		// Exclude generic case from displaying in case list
+		if (m_cases[i].display_name != m_generic_case_name) {
+			int ndx = m_chlCases->Append(m_cases[i].display_name);
+			if (m_cases[i].is_selected) {
+				m_chlCases->Check(ndx, true);
+			}
+			else {
+				m_chlCases->Check(ndx, false);
+			}
 		}
 	}
 	m_chlCases->Thaw();

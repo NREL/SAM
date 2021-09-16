@@ -57,6 +57,7 @@ private:
 
 	void GetOpenCases();
 
+	wxString m_generic_case_name;
     std::vector<CaseInfo> m_cases;
     wxCheckListBox* m_chlCases;
     wxCheckBox* m_chkOverwriteCapital;
