@@ -210,7 +210,7 @@ Name
 ur_ec_tou_mat
 X
 3
-21
+18
 Y
 3
 30
@@ -376,13 +376,13 @@ Electricity Rates - Energy Charge Rates
 DataMatrix
 
 0
-857
+880
 // this callback script uses functions defined on Utility Rate - Flat
 
 on_load{'Utility Rate - Energy Charge'} = define(){
 	set_ec_schedule_inputs();
 
-	if ( is_fom_bool() )
+	if ( is_fom_bool() || is_merchant_plant() )
 	{
 		x = value('ur_ec_tou_mat');
 		is_sell_rate = false;

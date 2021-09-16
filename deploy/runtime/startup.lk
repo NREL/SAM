@@ -679,12 +679,13 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 
 setconfig( 'Empirical Trough', 'Merchant Plant' );
-setmodules( ['tcstrough_empirical', 'merchantplant']);
+setmodules( ['tcstrough_empirical', 'utilityrate5', 'merchantplant']);
 setup_csp_empirical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Empirical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 setconfig( 'Empirical Trough', 'Leveraged Partnership Flip' );
 setmodules( ['tcstrough_empirical', 'utilityrate5', 'utilityrate5', 'levpartflip']);
@@ -774,7 +775,7 @@ setup_single_owner_pages( );
 setup_electricity_purchases(); // required if utilityrate5 included in config
 
 setconfig( 'Flat Plate PV', 'Merchant Plant' );
-setmodules( ['pvsamv1', 'grid', 'merchantplant']);
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'merchantplant']);
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Capital Costs' ],
@@ -782,6 +783,7 @@ addpage( [[ 'PV Capital Costs' ],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages( );
+setup_electricity_purchases();
 
 setconfig( 'Flat Plate PV', 'Leveraged Partnership Flip' );
 setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'levpartflip']);
@@ -885,12 +887,13 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 
 setconfig( 'Physical Trough', 'Merchant Plant' );
-setmodules( ['trough_physical', 'grid', 'merchantplant']);
+setmodules( ['trough_physical', 'grid', 'utilityrate5', 'merchantplant']);
 setup_csp_physical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Physical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 // PVWatts /////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'LCOE Calculator' );
@@ -967,7 +970,7 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Merchant Plant' );
-setmodules( ['pvwattsv7', 'grid', 'merchantplant']);
+setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'merchantplant']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -975,6 +978,7 @@ addpage( [[ 'PV Capital Costs' ],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Host Developer' );
 setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'host_developer']);
@@ -1074,7 +1078,7 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 
 setconfig( 'Wind Power', 'Merchant Plant' );
-setmodules( ['windpower', 'grid', 'wind_landbosse', 'merchantplant']);
+setmodules( ['windpower', 'grid', 'wind_landbosse', 'utilityrate5', 'merchantplant']);
 setup_windpower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Wind Farm Costs',
@@ -1083,6 +1087,7 @@ addpage( [['Wind Farm Costs',
 		{ 'sidebar'='Installation Costs', 'help'='cc_wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 //-----------------------------------------------------
 setconfig( 'Wind Power', 'LCOE Calculator' );
@@ -1183,11 +1188,12 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 
 setconfig( 'Geothermal Power', 'Merchant Plant' );
-setmodules( ['geothermal', 'grid', 'merchantplant']);
+setmodules( ['geothermal', 'grid', 'utilityrate5', 'merchantplant']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 setconfig( 'Geothermal Power', 'LCOE Calculator' );
 setmodules( ['geothermal',  'grid', 'lcoefcr']);
@@ -1271,12 +1277,13 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 
 setconfig( 'Generic System', 'Merchant Plant' );
-setmodules( ['generic_system', 'grid', 'merchantplant']);
+setmodules( ['generic_system', 'grid', 'utilityrate5', 'merchantplant']);
 setup_generic_system_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'Generic System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 setconfig( 'Generic System', 'Host Developer' );
 setmodules( ['generic_system', 'grid', 'utilityrate5', 'host_developer']);
@@ -1356,12 +1363,13 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'Merchant Plant' );
-setmodules( ['tcsgeneric_solar', 'grid', 'merchantplant']);
+setmodules( ['tcsgeneric_solar', 'grid', 'utilityrate5', 'merchantplant']);
 setup_generic_csp_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Generic CSP System Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_solar' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Generic CSP System', 'LCOE Calculator' );
 setmodules( ['tcsgeneric_solar', 'grid',  'lcoefcr']);
@@ -1420,12 +1428,13 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'Merchant Plant' );
-setmodules( ['hcpv', 'grid', 'merchantplant']);
+setmodules( ['hcpv', 'grid', 'utilityrate5', 'merchantplant']);
 setup_hcpv_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'HCPV Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_pv' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'High-X Concentrating PV', 'LCOE Calculator' );
 setmodules( ['hcpv', 'grid', 'lcoefcr']);
@@ -1554,13 +1563,14 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Biopower', 'Merchant Plant' );
-setmodules( ['biomass', 'grid', 'merchantplant']);
+setmodules( ['biomass', 'grid', 'utilityrate5', 'merchantplant']);
 setup_biopower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Biopower System Cost' ]],{ 'sidebar'='Installation Costs', 'help'='cc_biopower' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 addpage( [[ 'Biopower Feedstock Costs' ]], { 'sidebar'='Feedstock Costs', 'help'='biopower_feedstock_costs' } );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Biopower', 'LCOE Calculator' );
 setmodules( ['biomass', 'grid', 'lcoefcr']);
@@ -1626,12 +1636,13 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Merchant Plant' );
-setmodules( ['tcsmolten_salt', 'grid', 'merchantplant']);
+setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'merchantplant']);
 setup_MSPT_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 if ( en_iscc ) {
 	// ISCC Molten Salt Power Tower //////////////////////////////////////////////////////
 	function setup_ISCC_pages()
@@ -1745,12 +1756,13 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'DSLF', 'Merchant Plant' );
-setmodules( ['tcslinear_fresnel', 'grid', 'merchantplant']);
+setmodules( ['tcslinear_fresnel', 'grid', 'utilityrate5', 'merchantplant']);
 setup_DSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 //-----------------------------------------------------
 
 // Direct Steam Power Tower ////////////////////////////////////////////////////////////////////
@@ -1884,12 +1896,13 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Merchant Plant' );
-setmodules( ['tcsMSLF', 'grid', 'merchantplant']);
+setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'merchantplant']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
+setup_electricity_purchases();
 
 // Marine Energy ////////////////////////////////////////////////////////////////////
 function setup_mewave_pages(lcoe_fcr)
@@ -2162,12 +2175,13 @@ setup_single_owner_pages( );
 setup_electricity_purchases();
 
 setconfig( 'Generic Battery', 'Merchant Plant' );
-setmodules( ['generic_system', 'battery', 'grid', 'merchantplant']);
+setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'merchantplant']);
 setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
 addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_merchant_plant_pages( );
+setup_electricity_purchases();
 
 setconfig( 'Generic Battery', 'Leveraged Partnership Flip' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'levpartflip']);

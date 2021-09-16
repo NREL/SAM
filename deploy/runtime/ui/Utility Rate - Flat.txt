@@ -1,7 +1,7 @@
 Utility Rate - Flat
 1412
 538
-28
+29
 GroupBox
 
 1
@@ -365,6 +365,36 @@ Caption
 5
 20
 Save rate to file...
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+25
+copy_merchant_plant_rates
+X
+3
+1014
+Y
+3
+339
+Width
+3
+279
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+44
+Copy Energy Market Revenue from Revenue Page
 TabOrder
 3
 4294967295
@@ -1325,10 +1355,11 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-12322
+13057
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
-	
+	show('copy_ppa_rate', is_fom_bool());
+	show('copy_merchant_plant_rate', is_merchant_plant());
 	show('msg_unused_items', value('ur_has_unused_items'));
 	refresh();
 };
@@ -1417,6 +1448,19 @@ on_change{'copy_ppa_rate'} = define() {
 		
 };
 
+on_change{'copy_merchant_plant_rates'} = define() {
+	value('ur_en_ts_buy_rate', 1);
+	property('ur_en_ts_buy_rate', 'State', 1);
+	en_market_rev = value('mp_energy_market_revenue');
+	buy_rates = [];
+	for (i = 0; i < #en_market_rev/value('analysis_period'); i++) 
+	{
+		buy_rates[i] = en_market_rev[i][1] / 1000;
+	}
+	value('ur_ts_buy_rate', buy_rates);
+	
+};
+
 function is_fom_bool()
 {
 	/*
@@ -1430,6 +1474,12 @@ function is_fom_bool()
 				|| financing() == 'Leveraged Partnership Flip'
 				|| financing() == 'All Equity Partnership Flip');
 	return ( is_fom );
+}
+
+function is_merchant_plant() 
+{
+	is_mp = financing() == "Merchant Plant";
+	return (is_mp);
 }
 
 // set inputs on Utility Rate - Energy Charge form
@@ -1460,11 +1510,11 @@ function set_ec_schedule_inputs()
 		{
 			property('ur_ec_tou_mat','ShowColumn',4);
 		}
-		if (en_ts_sell || is_fom_bool() )
+		if (en_ts_sell || is_fom_bool() || is_merchant_plant() )
 		{
 			property('ur_ec_tou_mat','HideColumn',5);
 		}
-		elseif ( !is_fom_bool() )
+		elseif ( !is_fom_bool() || !is_merchant_plant() )
 		{
 			property('ur_ec_tou_mat','ShowColumn',5);
 		}
@@ -1490,17 +1540,17 @@ function set_ec_schedule_inputs()
 function set_metering_billing_inputs()
 {	
 	eme = value('ur_metering_option');
-	enable('ur_metering_option', !is_fom_bool());
-	enable('ur_en_ts_sell_rate', !is_fom_bool());
-	enable('ur_ts_sell_rate', !is_fom_bool());
-	show('lbl_metering_option',is_fom_bool());
+	enable('ur_metering_option', !is_fom_bool() && !is_merchant_plant());
+	enable('ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant());
+	enable('ur_ts_sell_rate', !is_fom_bool() && !is_merchant_plant());
+	show('lbl_metering_option',is_fom_bool() && !is_merchant_plant());
 	enable( 'ur_nm_yearend_sell_rate', eme==0 );
 	enable( 'ur_nm_credit_rollover', eme==0 );
 	enable( 'ur_nm_credit_month', eme==0 || eme==1 || eme==3 );
 	if (eme==2 || eme==3|| eme==4)
 	{
-		enable( 'ur_en_ts_sell_rate', !is_fom_bool() );
-		enable( 'ur_ts_sell_rate', value('ur_en_ts_sell_rate') && !is_fom_bool() );
+		enable( 'ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant() );
+		enable( 'ur_ts_sell_rate', value('ur_en_ts_sell_rate') && (!is_fom_bool() && !is_merchant_plant()) );
 		enable( 'ur_en_ts_buy_rate', true );
 		enable( 'ur_ts_buy_rate', value('ur_en_ts_buy_rate') );
 	}
