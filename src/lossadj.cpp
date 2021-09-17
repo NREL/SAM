@@ -274,7 +274,7 @@ class LossAdjustmentDialog : public wxDialog
 	PeriodFactorCtrl *m_periods; 
 public:
 	LossAdjustmentDialog( wxWindow *parent )
-		: wxDialog( parent, wxID_ANY, "Edit Losses", wxDefaultPosition, wxScaleSize(850,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+		: wxDialog( parent, wxID_ANY, "Edit Time Series Values", wxDefaultPosition, wxScaleSize(850,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		SetEscapeId( wxID_CANCEL );
 
@@ -284,16 +284,16 @@ public:
 		
 		m_constant = new wxNumericCtrl(m_scrollWin, wxID_ANY);
 
-		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly losses (%)" );
+		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly values (%)" );
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
 		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
 
-		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable hourly losses with custom periods" );
+		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable hourly values with custom periods" );
 		m_periods = new PeriodFactorCtrl( m_scrollWin );
 
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
 		
-		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant loss (%)"), 0, wxALL|wxEXPAND, 5 );
+		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant value (%)"), 0, wxALL|wxEXPAND, 5 );
 		scroll->Add(m_constant, 0, wxALL, 5);
 		scroll->Add(new wxStaticLine(m_scrollWin), 0, wxALL | wxEXPAND);
 		
@@ -383,7 +383,7 @@ AFLossAdjustmentCtrl::AFLossAdjustmentCtrl( wxWindow *parent, int id,
 {
 	SetBackgroundColour( *wxWHITE );
 
-	m_button = new wxButton( this, wxID_ANY, "Edit losses...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+	m_button = new wxButton( this, wxID_ANY, "Edit values...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
 	m_label = new wxStaticText( this, wxID_ANY, wxEmptyString );
 	m_label->SetForegroundColour( wxColour(29,80,173) );
 
