@@ -12,7 +12,7 @@ Name
 GroupBox1
 X
 3
-12
+6
 Y
 3
 9

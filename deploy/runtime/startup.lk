@@ -348,8 +348,16 @@ function setup_commercial_pages( mode ) // mode determines whether or not the bu
 
 function setup_grid_page()
 {
-  addpage( [[ 'Grid Interconnection', 'Grid Curtailment']],
-           { 'sidebar'='Grid Limits', 'help'='grid_limits' } );
+	
+	addpage( [[ 'Grid Interconnection', 'Grid Curtailment']],
+           { 'sidebar'='Grid', 'help'='grid_limits' } );
+}
+
+function setup_grid_page_with_outage()
+{
+	
+	addpage( [[ 'Grid Interconnection', 'Grid Curtailment', 'Grid Outage']],
+           { 'sidebar'='Grid', 'help'='grid_limits' } );
 }
 
 // note 'collapsed by default' does not seem to do anything. To set default behavior, set default value of collapsible_var. For example, to collapse description by default, use Defaults Manager to set ur_desc_is_shown = 0.
@@ -538,7 +546,7 @@ function setup_fuel_cell_pages_btm()
 		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], ['Battery Dispatch Empty'], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
 		{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM', 'Fuel Cell Dispatch Manual' ], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
-    setup_grid_page();
+    setup_grid_page_with_outage();
 }
 
 function setup_fuel_cell_pages_fom()
@@ -1967,11 +1975,15 @@ function setup_pv_battery_pages(is_btm)
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses' } );
 
 	if (is_btm)
+	{
 		setup_battery_pages_behind_the_meter_reopt();
+		setup_grid_page_with_outage();
+	}
 	else
+	{
 		setup_battery_pages_front_of_meter();
-
-	setup_grid_page();
+		setup_grid_page();
+     }
 }
 
 setconfig( 'PV Battery', 'Residential' );
@@ -2059,11 +2071,15 @@ function setup_generic_battery_pages(is_btm) {
 	addpage( [[ 'Generic System Plant', 'Battery Enable' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
 
 	if (is_btm)
+	{
 		setup_battery_pages_behind_the_meter();
+		setup_grid_page_with_outage();
+	}
 	else
+	{
 		setup_battery_pages_front_of_meter();
-
-	setup_grid_page();
+		setup_grid_page();
+	}	
 }
 
 setconfig( 'Generic Battery', 'Residential' );

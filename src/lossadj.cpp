@@ -164,7 +164,7 @@ public:
 		sizer->Add( pp.start, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
 		sizer->Add( new wxStaticText( pp.panel, wxID_ANY, "  End time:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
 		sizer->Add( pp.end, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
-		sizer->Add( new wxStaticText( pp.panel, wxID_ANY, "  Loss (%):"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+		sizer->Add( new wxStaticText( pp.panel, wxID_ANY, "  Value:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
 		sizer->Add( pp.factor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
 		sizer->AddStretchSpacer();
 		sizer->Add( pp.delbtn, 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
@@ -284,7 +284,7 @@ public:
 		
 		m_constant = new wxNumericCtrl(m_scrollWin, wxID_ANY);
 
-		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly values (%)" );
+		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly values" );
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
 		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
 
@@ -293,7 +293,7 @@ public:
 
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
 		
-		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant value (%)"), 0, wxALL|wxEXPAND, 5 );
+		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant value"), 0, wxALL|wxEXPAND, 5 );
 		scroll->Add(m_constant, 0, wxALL, 5);
 		scroll->Add(new wxStaticLine(m_scrollWin), 0, wxALL | wxEXPAND);
 		
@@ -403,14 +403,14 @@ AFLossAdjustmentCtrl::AFLossAdjustmentCtrl( wxWindow *parent, int id,
 
 void AFLossAdjustmentCtrl::UpdateText()
 {
-	wxString txt(wxString::Format("Constant loss: %.1f %%", m_data.constant));
+	wxString txt(wxString::Format("Constant value: %.1f %%", m_data.constant));
 
 	float avg = 0;
 	for( size_t i=0;i<m_data.hourly.size();i++ ) avg += m_data.hourly[i];
 	if ( m_data.hourly.size() > 0 ) avg /= m_data.hourly.size();
 	else avg = 0;
 
-	txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly losses: Avg = %.1f %%", avg ) : "Hourly losses: None");
+	txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly values: Avg = %.1f %%", avg ) : "Hourly values: None");
 	txt += wxString("\n") + (m_data.en_periods ? wxString::Format("Custom periods: %d", (int)m_data.periods.nrows()) : "Custom periods: None");
 	m_label->SetLabel( txt );
 }
