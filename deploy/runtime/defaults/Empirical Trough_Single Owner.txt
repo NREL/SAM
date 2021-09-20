@@ -1,5 +1,5 @@
 1
-849
+850
 AntiFrPar
 1
 1
@@ -2708,6 +2708,12 @@ insurance_rate
 1
 0.5
 is_advanced
+1
+1
+1
+1
+0
+is_btm
 1
 1
 1

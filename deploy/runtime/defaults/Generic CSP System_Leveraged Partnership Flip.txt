@@ -1,5 +1,5 @@
 1
-619
+620
 FossilFill
 1
 2
@@ -870,7 +870,7 @@ csp.gss.cost.site_improvements.area
 1
 1
 1
-1243390
+1.24339e+06
 csp.gss.cost.site_improvements.cost_per_m2
 1
 1
@@ -888,7 +888,7 @@ csp.gss.cost.solar_field.area
 1
 1
 1
-1243390
+1.24339e+06
 csp.gss.cost.solar_field.cost_per_m2
 1
 1
@@ -1098,7 +1098,7 @@ csp.gss.sf.field_area
 1
 1
 1
-1243390
+1.24339e+06
 csp.gss.sf.irr_loss_f0
 1
 1
@@ -2296,6 +2296,12 @@ irr_des
 1
 950
 is_advanced
+1
+1
+1
+1
+0
+is_btm
 1
 1
 1

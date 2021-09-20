@@ -1,5 +1,5 @@
 1
-499
+500
 ac_nameplate
 1
 1
@@ -552,7 +552,7 @@ const_per_total1
 1
 1
 1
-1027640
+1.02764e+06
 const_per_total2
 1
 1
@@ -612,7 +612,7 @@ construction_financing_cost
 1
 1
 1
-1027640
+1.02764e+06
 contingency
 1
 1
@@ -654,7 +654,7 @@ cost_dev_fee_value
 1
 1
 1
-1541470
+1.54147e+06
 cost_equity_closing
 1
 1
@@ -1665,6 +1665,12 @@ inverterarray_power_w
 1
 41666668
 is_advanced
+1
+1
+1
+1
+0
+is_btm
 1
 1
 1

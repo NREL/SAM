@@ -1,5 +1,5 @@
 1
-128
+129
 adjust
 1
 5
@@ -227,6 +227,12 @@ inflation_rate
 1
 1
 2.5
+is_btm
+1
+1
+1
+1
+0
 lease_escalation
 1
 1

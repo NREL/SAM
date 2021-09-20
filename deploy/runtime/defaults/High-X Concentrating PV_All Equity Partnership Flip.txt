@@ -1,5 +1,5 @@
 1
-542
+543
 adjust
 1
 5
@@ -532,7 +532,7 @@ const_per_principal1
 1
 1
 1
-6079460
+6.07946e+06
 const_per_principal2
 1
 1
@@ -562,7 +562,7 @@ const_per_principal_total
 1
 1
 1
-6079460
+6.07946e+06
 const_per_total1
 1
 1
@@ -1467,7 +1467,7 @@ hcpv.cost.module.totalcost
 1
 1
 1
-3154640
+3.15464e+06
 hcpv.cost.modulearray.area
 1
 1
@@ -2115,6 +2115,12 @@ is_advanced
 1
 1
 0
+is_btm
+1
+1
+1
+1
+0
 itc_fed_amount
 1
 1
@@ -2697,7 +2703,7 @@ property_assessed_value
 1
 1
 1
-6079460
+6.07946e+06
 property_tax_rate
 1
 1
@@ -2920,7 +2926,7 @@ total_installed_cost
 1
 1
 1
-6079460
+6.07946e+06
 tz
 1
 1

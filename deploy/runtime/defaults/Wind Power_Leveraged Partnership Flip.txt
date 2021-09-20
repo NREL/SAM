@@ -1,5 +1,5 @@
 1
-665
+666
 a_error_test_number
 1
 1
@@ -2965,6 +2965,12 @@ interconnect_voltage_kV
 1
 1
 137
+is_btm
+1
+1
+1
+1
+0
 itc_fed_amount
 1
 1

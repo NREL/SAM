@@ -1,5 +1,5 @@
 1
-1254
+1255
 A_aperture
 1
 2
@@ -5051,6 +5051,12 @@ insurance_rate
 1
 0.5
 is_advanced
+1
+1
+1
+1
+0
+is_btm
 1
 1
 1

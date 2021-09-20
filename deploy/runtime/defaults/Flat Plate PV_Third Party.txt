@@ -1,5 +1,5 @@
 1
-658
+659
 6par_aisc
 1
 1
@@ -1793,6 +1793,12 @@ is_advanced
 1
 1
 0
+is_btm
+1
+1
+1
+1
+0
 lat
 1
 1
@@ -2799,7 +2805,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 spe_a
 1
 1

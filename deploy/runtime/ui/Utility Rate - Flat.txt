@@ -1154,7 +1154,21 @@ TabOrder
 3
 3
 
-14
+15
+is_btm
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 rate_escalation
 3
 2
@@ -1354,12 +1368,20 @@ Sell Rate ($/kWh)|1
 0
 DataArray
 
-0
-13057
+176
+equations{'is_btm'} = define() {
+	value = financing();
+	if (value == "Commercial" || value == "Residential" ||
+		value == "Host Developer") {
+			return 1;
+	}
+	else return 0;
+};
+13058
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
 	show('copy_ppa_rate', is_fom_bool());
-	show('copy_merchant_plant_rate', is_merchant_plant());
+	show('copy_merchant_plant_rates', is_merchant_plant());
 	show('msg_unused_items', value('ur_has_unused_items'));
 	refresh();
 };

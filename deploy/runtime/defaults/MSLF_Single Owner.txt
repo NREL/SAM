@@ -1,5 +1,5 @@
 1
-886
+887
 A_aperture
 1
 1
@@ -1528,7 +1528,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4462600
+4.4626e+06
 csp.mslf.cost.power_plant
 1
 1
@@ -3364,6 +3364,12 @@ insurance_rate
 1
 0.5
 is_advanced
+1
+1
+1
+1
+0
+is_btm
 1
 1
 1
