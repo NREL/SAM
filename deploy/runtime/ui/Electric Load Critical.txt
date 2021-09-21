@@ -1,6 +1,6 @@
 Electric Load Critical
-832
-250
+833
+294
 9
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 824
 Height
 3
-237
+279
 Tool Tip
 5
 0
@@ -204,7 +204,7 @@ Width
 324
 Height
 3
-60
+51
 Tool Tip
 5
 0
@@ -296,8 +296,8 @@ Colour
 255
 Caption
 5
-20
-Simulation Time Step
+40
+Resiliency Calculations for Grid Outages
 Bold
 2
 1
@@ -320,14 +320,14 @@ Width
 723
 Height
 3
-24
+42
 Tool Tip
 5
 0
 Caption
 5
-52
-Resiliency calculations can take a long time to run.
+219
+Resiliency calculations can take along time to run. If you specified grid outages on the Grid page, you can improve simulation run times by only calculating resiliency metrics for time steps when there is a grid outage.
 TextColour
 4
 0
@@ -349,36 +349,43 @@ AlignRight
 AlignTop
 2
 1
-CheckBox
+RadioChoice
 
 1
-9
+11
 Name
 5
 20
 run_resiliency_calcs
 X
 3
-21
+39
 Y
 3
-213
+225
 Width
 3
-349
+330
 Height
 3
-24
+54
 Tool Tip
 5
 0
-Caption
-5
-49
-Enable resilence calculations for every time step
-State
+Selection
+3
+0
+Items
+6
+2
+Calculate resiliency only for outage time steps (faster)
+Calculate resiliency for all time steps (slower)
+ShowCaptions
 2
 1
+Horizontal
+2
+0
 TabOrder
 3
 4294967295
@@ -461,14 +468,15 @@ run_resiliency_calcs
 Enable resilence calculations for every timestep
 0/1
 Electric Load
-0
+105
+Calculate resiliency only for outage time steps (faster)|Calculate resiliency for all time steps (slower)
 5
 1
 1
 1
 1
 0
-Default
+RadioChoice
 
 0
 406
