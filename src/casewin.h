@@ -64,6 +64,7 @@ public:
 	void UpdateConfiguration();
 
 	bool SwitchToInputPage( const wxString &name );
+	wxString GetInputPage();
 	wxArrayString GetInputPages();
 	wxUIObject* FindActiveObject(const wxString& name, ActiveInputPage** page = 0);
 	wxUIObject* FindObject(const wxString& name, ActiveInputPage** page = 0);
