@@ -2210,7 +2210,7 @@ void fcall_nsrdbquery(lk::invoke_t &cxt)
 void fcall_combinecasesquery(lk::invoke_t& cxt)
 {
 	LK_DOC("combinecasesquery", "Creates the Combine Cases dialog box, lists all open cases, simulates selected cases and returns a combined generation profile", "(none) : string");
-	CombineCasesDialog dlgCombineCases(SamApp::Window(), "Combine Cases");
+	CombineCasesDialog dlgCombineCases(SamApp::Window(), "Combine Cases", cxt);
 	dlgCombineCases.CenterOnParent();
 	int code = dlgCombineCases.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 

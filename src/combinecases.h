@@ -34,7 +34,7 @@ class CombineCasesDialog : public wxDialog
 {
 
 public:
-    CombineCasesDialog(wxWindow* parent, const wxString& title);
+    CombineCasesDialog(wxWindow* parent, const wxString& title, lk::invoke_t& cxt);
 	int GetResultCode() {
 		return m_result_code;
 	};
@@ -66,6 +66,7 @@ private:
 	Case* m_generic_case;
 	wxString m_generic_case_name;
 	CaseWindow* m_generic_case_window;
+	std::vector<double> m_generic_degradation;
     std::vector<CaseInfo> m_cases;
     wxCheckListBox* m_chlCases;
     wxCheckBox* m_chkOverwriteCapital;

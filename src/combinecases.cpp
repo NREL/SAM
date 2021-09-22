@@ -44,11 +44,20 @@ BEGIN_EVENT_TABLE( CombineCasesDialog, wxDialog )
 	EVT_BUTTON(wxID_HELP, CombineCasesDialog::OnEvt)
 END_EVENT_TABLE()
 
-CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title)
+CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, lk::invoke_t& cxt)
     : wxDialog(parent, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
 {
 	// Initializations
 	m_result_code = -1;
+	m_generic_case = SamApp::Window()->GetCurrentCase();
+	m_generic_case_name = SamApp::Window()->Project().GetCaseName(m_generic_case);
+	m_generic_case_window = SamApp::Window()->GetCaseWindow(m_generic_case);
+	if (m_generic_case->Values().Get("system_use_lifetime_output")->Boolean()) {
+		m_generic_degradation = m_generic_case->Values().Get("generic_degradation")->Array();
+	}
+	else {
+		m_generic_degradation = m_generic_case->Values().Get("degradation")->Array();
+	}
 
 	// Text at top of window
 	wxString msg = "Select open cases, simulate those cases and combine their generation\n";
@@ -57,9 +66,6 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title)
 	msg += "Depending on the configuration, SAM may appear to be temporarily unresponsive.";
 
 	// Case selection list
-	m_generic_case = SamApp::Window()->GetCurrentCase();
-	m_generic_case_name = SamApp::Window()->Project().GetCaseName(m_generic_case);
-	m_generic_case_window = SamApp::Window()->GetCaseWindow(m_generic_case);
 	m_chlCases = new wxCheckListBox(this, ID_chlCases, wxDefaultPosition, wxSize(400, 200)); // populate with active cases
 	this->GetOpenCases();
 	this->RefreshList(0.);
@@ -68,7 +74,7 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title)
 	szcases->Add(m_chlCases, 10, wxALL | wxEXPAND, 1);
 
 	// Overwrite capital checkbox
-	m_chkOverwriteCapital = new wxCheckBox(this, ID_chkOverwriteCapital, "Overwrite capital expenses");
+	m_chkOverwriteCapital = new wxCheckBox(this, ID_chkOverwriteCapital, "Overwrite Installation Costs with combined cases costs");
 
 	// Annual AC degradation
 	// Due to complexity of AC and DC degradation and lifetime and single year simulations, require user to provide an
@@ -78,7 +84,7 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title)
 	//						 '\n or enter a zero to ignore degradation.';
 	// TODO: make this a SchedNumeric instead so a schedule could be used
 	m_spndDegradation = new wxSpinCtrlDouble(this, ID_spndDegradation, "Annual AC Degradation", wxDefaultPosition, wxSize(54, 22),
-		wxSP_ARROW_KEYS, 0, 100, 0.0, 0.1, "wxspndDegradation");
+		wxSP_ARROW_KEYS, 0, 100, m_generic_degradation[0], 0.1, "wxspndDegradation");
 	wxString degradation_label = "%/year  Annual AC degradation rate";
 	wxBoxSizer* szdegradation = new wxBoxSizer(wxHORIZONTAL);
 	szdegradation->Add(m_spndDegradation, 0, wxALL, 1);
@@ -158,23 +164,32 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						SamApp::Window()->SwitchToCaseWindow(m_cases[arychecked[i]].name);
 						Case* current_case = SamApp::Window()->GetCurrentCase();
 						CaseWindow* case_window = SamApp::Window()->GetCaseWindow(current_case);
-						//case_page_orig = ?
+						wxString case_page_orig = case_window->GetInputPage();
 						Simulation& bcsim = current_case->BaseCase();
 						wxString technology_name = current_case->GetTechnology();
 						wxString financial_name = current_case->GetFinancing();
 
 						// Set degradation, saving original value and value/sched property
 						// TODO: grab more than just the numeric if it's a schedule
-						VarValue* degradation_vv = current_case->Values().Get("degradation");
-						VarValue degradation_orig(*degradation_vv);
-						degradation_vv->Set(new double[1]{degradation}, 1);
-						ActiveInputPage* aip = 0;
 						// case_window->SwitchToInputPage("Lifetime and Degradation");
 						// wxUIObject* degradation_obj = case_window->FindActiveObject("degradation", &aip);	// works only if page containing control is active
+						ActiveInputPage* aip = 0;
 						wxUIObject* degradation_obj = case_window->FindObject("degradation", &aip);
 						assert(degradation_obj && aip && degradation_obj->HasProperty("UseSchedule"));
 						bool degradation_orig_usesched = degradation_obj->Property("UseSchedule").GetBoolean();
-						degradation_obj->Property("UseSchedule").Set(false);
+						if (degradation_orig_usesched) {
+							degradation_obj->Property("UseSchedule").Set(false);
+							//aip->Refresh();										// no effect
+							//wxWindow* win;
+							//if (win = degradation_obj->GetNative());
+							//	win->Refresh();										// no effect
+							//current_case->VariableChanged("degradation");			// no effect
+							//case_window->Refresh();								// no effect
+						}
+						VarValue* degradation_vv = current_case->Values().Get("degradation");
+						std::vector<double> degradation_orig_vec = degradation_vv->Array();
+						VarValue degradation_orig(*degradation_vv);		// redundant here
+						degradation_vv->Set(new double[1]{degradation}, 1);
 
 						// Deal with inflation
 						VarValue* inflation_vv = nullptr;
@@ -433,6 +448,14 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							"Combine Cases Message", wxOK, this);
 					}
 					EndModal(wxID_OK);
+
+					// open up data array dialog
+					wxUIObject* energy_output_array = m_generic_case_window->FindObject("energy_output_array", &aip);
+					// do assert for non-null
+					if (AFDataArrayButton* btn_energy_output_array = energy_output_array->GetNative<AFDataArrayButton>()) {
+						// see inputpage.cpp line 421
+						btn_energy_output_array->OnPressed(e);
+					}
 				}
 				else if (arychecked.Count() == 1) {
 					wxMessageBox("Not enough cases selected.\n\n"
