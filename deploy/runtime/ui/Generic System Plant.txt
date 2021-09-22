@@ -1183,7 +1183,7 @@ equations{ 'ui_step_minutes' } = define() {
 	}
 };
 
-1816
+1738
 on_load{"Generic System Plant"}=define(){
 	on_change{'spec_mode'}();
 	on_change{'system_capacity'}();
@@ -1207,19 +1207,15 @@ on_change{'btn_selectcases'} = define() {
 // display window for combine cases
 function combine_cases()
 {
-	// msgbox(list_cases());  // crashes SAM
 	hash = combinecasesquery();
 	// meta data
 	if ( hash != '' )
 	{
-		x=1;
-		//fn = hash{'file'};
-		//dn = hash{'folder'};
-		//af = hash{'addfolder'};
-		//if ( fn != '' )
-		//{
-		//	x = 1;
-		//}
+		result = hash{'result_code'};	// 0=success, 1=error
+		if ( result == 0 )
+		{
+			x=1;
+		}
 	}
 }
 

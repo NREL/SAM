@@ -2221,20 +2221,12 @@ void fcall_combinecasesquery(lk::invoke_t& cxt)
 		return;
 	}
 
-	// Just for testing:
-	cxt.result().assign(wxEmptyString);
-	return;
-	////Get selected filename
-	//wxString foldername = dlgNSRDB.GetWeatherFolder();
-	//wxString filename = dlgNSRDB.GetWeatherFile();
-	//wxString addfolder = dlgNSRDB.GetAddFolder();
+	int result = dlgCombineCases.GetResultCode();		// 0 = success, 1 = error
 
-	//cxt.result().empty_hash();
+	cxt.result().empty_hash();
 
-	//// meta data
-	//cxt.result().hash_item("file").assign(filename);
-	//cxt.result().hash_item("folder").assign(foldername);
-	//cxt.result().hash_item("addfolder").assign(addfolder);
+	// meta data
+	cxt.result().hash_item("result_code").assign(result);
 }
 
 void fcall_wavetoolkit(lk::invoke_t& cxt)

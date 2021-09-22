@@ -35,6 +35,9 @@ class CombineCasesDialog : public wxDialog
 
 public:
     CombineCasesDialog(wxWindow* parent, const wxString& title);
+	int GetResultCode() {
+		return m_result_code;
+	};
 
 	struct CaseInfo
 	{
@@ -57,7 +60,12 @@ private:
 
 	void GetOpenCases();
 
+	std::vector<double> matrix_to_vector(matrix_t<double>& matrix);
+
+	int m_result_code;
+	Case* m_generic_case;
 	wxString m_generic_case_name;
+	CaseWindow* m_generic_case_window;
     std::vector<CaseInfo> m_cases;
     wxCheckListBox* m_chlCases;
     wxCheckBox* m_chkOverwriteCapital;
