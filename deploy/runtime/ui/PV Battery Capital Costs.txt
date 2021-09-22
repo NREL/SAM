@@ -6495,7 +6495,7 @@ TabOrder
 3
 52
 
-69
+68
 battery_energy
 3
 1
@@ -6515,7 +6515,7 @@ battery_indirect_cost_percent
 1
 Percent of indirect cost attributed to battery
 %
- 
+Capital Costs
 0
 2
 1
@@ -6585,7 +6585,7 @@ battery_total_cost_lcos
 1
 Total battery investment cost
 $
- 
+Capital Costs
 0
 9
 1
@@ -7366,26 +7366,12 @@ Capital Costs
 1
 0
 Default
-system_use_recapitalization
-3
-1
- 
- 
-Capital Costs
-0
-0
-1
-1
-1
-1
-0
-Default
 total_battery_indirect_cost
 3
 1
  
  
- 
+Capital Costs
 0
 8
 1
@@ -7441,7 +7427,7 @@ total_system_indirect_cost
 1
  
  
- 
+Capital Costs
 0
 8
 1
@@ -7455,7 +7441,7 @@ total_system_installed_cost
 1
 Total system related installed cost
 $
- 
+Capital Costs
 0
 9
 1
@@ -7465,7 +7451,7 @@ $
 0
 Default
 
-6157
+6084
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -7678,10 +7664,6 @@ equations { 'battery_power' } = define () {
 	if( technology() == 'PV Battery' )
 	{ return  ?${en_batt}[0,${batt_power_discharge_max_kwdc}]; }
 	else { return ${batt_simple_kw}; }
-};
-
-equations { 'system_use_recapitalization' } = define () {
-	return 0;
 };
 
 equations{'battery_total_cost_lcos'} = define() {

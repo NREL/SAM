@@ -1332,6 +1332,18 @@ SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_energy_nget(SAM_table p
 
 
 
+SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_LinearFresnelDsgIph", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_field_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

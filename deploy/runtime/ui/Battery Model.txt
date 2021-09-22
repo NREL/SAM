@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12269
+12086
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -310,6 +310,16 @@ on_change{'batt_type'} = define()
 		{ set_iron(update_default); }
 
 	battsize_warning_check();
+	
+	batt_chem = value('batt_chem');
+	if (batt_chem != 1) {
+		value('batt_life_model', 0);
+		enable('batt_life_model', false);
+	}
+	else {
+		on_change{'batt_life_model'}();
+		enable('batt_life_model', true);
+	}
 };
 
 function is_flow()
@@ -505,6 +515,7 @@ function set_batt_defaults_from_data(defs)
   	value('batt_bank_voltage', pack_params.nominal_voltage);
   	
 	// Lifetime
+	value('batt_life_model', cell_params.life_model);
 	value('batt_lifetime_matrix',cell_params.cycling_matrix);
 	
 	// turn calendar life model off
@@ -589,29 +600,10 @@ function LCO()
 // Lithium titanate
 function LTO()
 {
-	// voltage curve
-	value('batt_C_rate',1);
-	value('batt_Vfull',2.8);
-	value('batt_Vexp',2.4);
-	value('batt_Vnom',2);
-	value('batt_Vcut',1.848);
-	value('batt_Qfull',12);
-	value('batt_Qexp_percent',2.1);
-	value('batt_Qnom_percent',91.7);
-	value('batt_Vnom_default',2.3);
+	get_batt_data_from_file('BatteryStateful_LMOLTO.json');
+	
 	value('batt_specific_energy_per_mass',22);
 	value('batt_specific_energy_per_volume',14);
-		
-	// Lifetime
-	lifetime = [ [20,0,100],
-				 [20,10000,90],
-				 [20,20000,85.42],
-				 [20,30000, 83.33],
-				 [80,0,100],
-				 [80,2000,90],
-				 [80,4000,85.42],
-				 [80,6000, 83.33]];
-	value('batt_lifetime_matrix',lifetime);
 }
 // Lithium nickel cobalt
 function NMC()

@@ -2670,12 +2670,6 @@ system_use_lifetime_output
 1
 1
 0
-system_use_recapitalization
-1
-1
-1
-1
-0
 term_int_rate
 1
 1

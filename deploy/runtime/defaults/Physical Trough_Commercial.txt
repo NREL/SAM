@@ -3372,6 +3372,12 @@ csp_dtr_sca_w_profile_4
 1
 1
 6
+csp_financial_model
+1
+1
+1
+1
+5
 cspdtr_loop_hce_heat_loss
 1
 1
@@ -5535,12 +5541,6 @@ radiator_unitcost
 1
 1
 13
-radio_sm_or_area
-1
-1
-1
-1
-0
 rate_escalation
 1
 2
@@ -5712,7 +5712,8 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 specified_solar_multiple
 1
 1
@@ -5778,12 +5779,6 @@ system_capacity
 1
 99900
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
@@ -7243,6 +7238,12 @@ ur_yearzero_usage_peaks
 12
 234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
 
+use_solar_mult_or_aperture_area
+1
+1
+1
+1
+0
 use_specific_weather_file
 1
 1

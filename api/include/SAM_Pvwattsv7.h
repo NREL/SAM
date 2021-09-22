@@ -43,7 +43,7 @@ extern "C"
 	 * Set solar_resource_data: Weather data
 	 * options: dn,df,tdry,wspd,lat,lon,tz,elev
 	 * constraints: None
-	 * required if: ?
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvwattsv7_SolarResource_solar_resource_data_tset(SAM_table ptr, SAM_table tab, SAM_error *err);
 
@@ -51,7 +51,7 @@ extern "C"
 	 * Set solar_resource_file: Weather file path
 	 * options: None
 	 * constraints: None
-	 * required if: ?
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvwattsv7_SolarResource_solar_resource_file_sset(SAM_table ptr, const char* str, SAM_error *err);
 
@@ -378,6 +378,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_ac_monthly_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvwattsv7_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_aoi_aget(SAM_table ptr, int* length, SAM_error *err);
 

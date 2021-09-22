@@ -49,6 +49,19 @@ extern "C"
 
 
 	//
+	// FinancialModel parameters
+	//
+
+	/**
+	 * Set csp_financial_model:  [1-8]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialModel_csp_financial_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// TimeOfDeliveryFactors parameters
 	//
 
@@ -56,7 +69,7 @@ extern "C"
 	 * Set dispatch_factor1: Dispatch payment factor 1
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -64,7 +77,7 @@ extern "C"
 	 * Set dispatch_factor2: Dispatch payment factor 2
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -72,7 +85,7 @@ extern "C"
 	 * Set dispatch_factor3: Dispatch payment factor 3
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -80,7 +93,7 @@ extern "C"
 	 * Set dispatch_factor4: Dispatch payment factor 4
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -88,7 +101,7 @@ extern "C"
 	 * Set dispatch_factor5: Dispatch payment factor 5
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -96,7 +109,7 @@ extern "C"
 	 * Set dispatch_factor6: Dispatch payment factor 6
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -104,7 +117,7 @@ extern "C"
 	 * Set dispatch_factor7: Dispatch payment factor 7
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -112,7 +125,7 @@ extern "C"
 	 * Set dispatch_factor8: Dispatch payment factor 8
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -120,7 +133,7 @@ extern "C"
 	 * Set dispatch_factor9: Dispatch payment factor 9
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -128,7 +141,7 @@ extern "C"
 	 * Set dispatch_factors_ts: Dispatch payment factor array
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=1
+	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -136,7 +149,7 @@ extern "C"
 	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
 	 * options: None
 	 * constraints: None
-	 * required if: ?=[[1]]
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -144,17 +157,398 @@ extern "C"
 	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
 	 * options: None
 	 * constraints: None
-	 * required if: ?=[[1]]
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ppa_multiplier_model: PPA multiplier model [0/1]
+	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
 	 * options: 0=diurnal,1=timestep
 	 * constraints: INTEGER,MIN=0
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// SystemControl parameters
+	//
+
+	/**
+	 * Set F_wc: TOU array of fractions indicating wet cooling share for hybrid cooling
+	 * options: None
+	 * constraints: None
+	 * required if: pc_config=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_F_wc_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ampl_data_dir: AMPL data file directory
+	 * options: None
+	 * constraints: None
+	 * required if: ?=''
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err);
+
+	/**
+	 * Set ampl_exec_call: System command to run AMPL code
+	 * options: None
+	 * constraints: None
+	 * required if: ?='ampl sdk_solution.run'
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
+
+	/**
+	 * Set aux_par: Aux heater, boiler parasitic [MWe/MWcap]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set aux_par_0: Aux heater, boiler parasitic - constant coefficient
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_0_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set aux_par_1: Aux heater, boiler parasitic - linear coefficient
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set aux_par_2: Aux heater, boiler parasitic - quadratic coefficient
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set aux_par_f: Aux heater, boiler parasitic - multiplying fraction
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_f_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set bop_par: Balance of plant parasitic power fraction [MWe/MWcap]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set bop_par_0: Balance of plant parasitic power fraction - const coeff
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_0_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set bop_par_1: Balance of plant parasitic power fraction - linear coeff
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set bop_par_2: Balance of plant parasitic power fraction - quadratic coeff
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set bop_par_f: Balance of plant parasitic power fraction - mult frac
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_f_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_csu_cost: Cycle startup cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_frequency: Frequency for dispatch optimization calculations [hour]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_frequency_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_horizon: Time horizon for dispatch optimization [hour]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_horizon_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_inventory_incentive: Dispatch storage terminal inventory incentive multiplier
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_max_iter: Max number of dispatch optimization iterations
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_max_iter_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_mip_gap: Dispatch optimization solution tolerance
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_mip_gap_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_pen_delta_w: Dispatch cycle production change penalty [$/kWe-change]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_pen_delta_w_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_reporting: Dispatch optimization reporting level
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_rsu_cost: Receiver startup cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_bb: Dispatch optimization B&B heuristic
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_spec_bb_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_spec_presolve_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_scaling: Dispatch optimization scaling heuristic
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_spec_scaling_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_steps_per_hour: Time steps per hour for dispatch optimization calculations
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_time_weighting: Dispatch optimization future time discounting factor
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.99
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_time_weighting_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_timeout: Max dispatch optimization solve duration [s]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_series: Time series dispatch factors
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_dispatch: Allow dispatch optimization?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_dispatch_series: Use time-series dispatch factors
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_wlim_series: Use time-series net electricity generation limits
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_wlim_series_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set pb_fixed_par: Fixed parasitic load - runs at all times [MWe/MWcap]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWe-hr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_rec_heattrace_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_rec_standby: Receiver standby energy consumption [kWt]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=9e99
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set time_start: Simulation start time [s]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_time_start_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set time_steps_per_hour: Number of simulation time steps per hour
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_time_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set time_stop: Simulation stop time [s]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=31536000
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_time_stop_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set vacuum_arrays: Allocate arrays for only the required number of steps
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_vacuum_arrays_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set weekday_schedule: 12x24 CSP operation Time-of-Use Weekday schedule
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set weekend_schedule: 12x24 CSP operation Time-of-Use Weekend schedule
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set wlim_series: Time series net electicity generation limits [kWe]
+	 * options: None
+	 * constraints: None
+	 * required if: is_wlim_series=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_wlim_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -1803,379 +2197,6 @@ extern "C"
 
 
 	//
-	// SystemControl parameters
-	//
-
-	/**
-	 * Set F_wc: TOU array of fractions indicating wet cooling share for hybrid cooling
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_F_wc_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set ampl_data_dir: AMPL data file directory
-	 * options: None
-	 * constraints: None
-	 * required if: ?=''
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set ampl_exec_call: System command to run AMPL code
-	 * options: None
-	 * constraints: None
-	 * required if: ?='ampl sdk_solution.run'
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set aux_par: Aux heater, boiler parasitic [MWe/MWcap]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set aux_par_0: Aux heater, boiler parasitic - constant coefficient
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_0_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set aux_par_1: Aux heater, boiler parasitic - linear coefficient
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_1_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set aux_par_2: Aux heater, boiler parasitic - quadratic coefficient
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_2_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set aux_par_f: Aux heater, boiler parasitic - multiplying fraction
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_aux_par_f_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set bop_par: Balance of plant parasitic power fraction [MWe/MWcap]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set bop_par_0: Balance of plant parasitic power fraction - const coeff
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_0_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set bop_par_1: Balance of plant parasitic power fraction - linear coeff
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_1_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set bop_par_2: Balance of plant parasitic power fraction - quadratic coeff
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_2_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set bop_par_f: Balance of plant parasitic power fraction - mult frac
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_bop_par_f_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_csu_cost: Cycle startup cost [$]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_frequency: Frequency for dispatch optimization calculations [hour]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_frequency_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_horizon: Time horizon for dispatch optimization [hour]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_horizon_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_inventory_incentive: Dispatch storage terminal inventory incentive multiplier
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_max_iter: Max number of dispatch optimization iterations
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_max_iter_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_mip_gap: Dispatch optimization solution tolerance
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_mip_gap_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_pen_delta_w: Dispatch cycle production change penalty [$/kWe-change]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_pen_delta_w_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_reporting: Dispatch optimization reporting level
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_rsu_cost: Receiver startup cost [$]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_spec_bb: Dispatch optimization B&B heuristic
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_spec_bb_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_spec_presolve_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_spec_scaling: Dispatch optimization scaling heuristic
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_spec_scaling_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_steps_per_hour: Time steps per hour for dispatch optimization calculations
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_time_weighting: Dispatch optimization future time discounting factor
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.99
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_time_weighting_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_timeout: Max dispatch optimization solve duration [s]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_series: Time series dispatch factors
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_dispatch: Allow dispatch optimization?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_dispatch_series: Use time-series dispatch factors
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_wlim_series: Use time-series net electricity generation limits
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_wlim_series_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set pb_fixed_par: Fixed parasitic load - runs at all times [MWe/MWcap]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWe-hr]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_rec_heattrace_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set q_rec_standby: Receiver standby energy consumption [kWt]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=9e99
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set time_start: Simulation start time [s]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_time_start_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set time_steps_per_hour: Number of simulation time steps per hour
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_time_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set time_stop: Simulation stop time [s]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=31536000
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_time_stop_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set vacuum_arrays: Allocate arrays for only the required number of steps
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_vacuum_arrays_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set weekday_schedule: 12x24 CSP operation Time-of-Use Weekday schedule
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set weekend_schedule: 12x24 CSP operation Time-of-Use Weekend schedule
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set wlim_series: Time series net electicity generation limits [kWe]
-	 * options: None
-	 * constraints: None
-	 * required if: is_wlim_series=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_wlim_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
 	// UserDefinedPowerCycle parameters
 	//
 
@@ -2449,6 +2470,19 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_m_dot_htf_low_nset(SAM_table ptr, double number, SAM_error *err);
 
 
+	//
+	// Revenue parameters
+	//
+
+	/**
+	 * Set mp_energy_market_revenue: Energy market revenue input
+	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
+	 * constraints: None
+	 * required if: csp_financial_model=6&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
 	/**
 	 * SolarResource Getters
 	 */
@@ -2456,6 +2490,13 @@ extern "C"
 	SAM_EXPORT SAM_table SAM_TcsmoltenSalt_SolarResource_solar_resource_data_tget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_TcsmoltenSalt_SolarResource_solar_resource_file_sget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * FinancialModel Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2487,6 +2528,105 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * SystemControl Getters
+	 */
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_F_wc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT const char* SAM_TcsmoltenSalt_SystemControl_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT const char* SAM_TcsmoltenSalt_SystemControl_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_aux_par_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_aux_par_0_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_aux_par_1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_aux_par_2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_aux_par_f_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_0_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_f_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_frequency_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_horizon_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_max_iter_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_mip_gap_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_pen_delta_w_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_reporting_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_spec_presolve_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_spec_scaling_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_time_weighting_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_timeout_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_wlim_series_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_time_start_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_time_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_time_stop_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_vacuum_arrays_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_wlim_series_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2935,103 +3075,6 @@ extern "C"
 
 
 	/**
-	 * SystemControl Getters
-	 */
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_F_wc_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT const char* SAM_TcsmoltenSalt_SystemControl_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT const char* SAM_TcsmoltenSalt_SystemControl_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_aux_par_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_aux_par_0_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_aux_par_1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_aux_par_2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_aux_par_f_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_0_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_bop_par_f_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_frequency_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_horizon_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_max_iter_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_mip_gap_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_pen_delta_w_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_reporting_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_spec_presolve_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_spec_scaling_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_time_weighting_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_timeout_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_wlim_series_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_time_start_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_time_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_time_stop_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_vacuum_arrays_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_wlim_series_aget(SAM_table ptr, int* length, SAM_error *err);
-
-
-	/**
 	 * UserDefinedPowerCycle Getters
 	 */
 
@@ -3105,6 +3148,13 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_m_dot_htf_ind_od_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SCO2Cycle_sco2ud_m_dot_htf_low_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Revenue Getters
+	 */
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**
@@ -3434,6 +3484,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_solaz_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_solzen_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_tank_losses_aget(SAM_table ptr, int* length, SAM_error *err);
 

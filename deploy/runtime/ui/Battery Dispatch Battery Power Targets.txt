@@ -138,7 +138,7 @@ DataArray
 234
 on_load{'Battery Dispatch Battery Power Targets'}=define()
 {	
-	value('batt_dispatch_choice', 3);
+	value('batt_dispatch_choice', 2);
 		
 	on_change{'batt_dispatch_choice'};
 	if (technology() == "Fuel Cell")

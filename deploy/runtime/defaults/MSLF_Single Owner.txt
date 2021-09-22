@@ -1,5 +1,5 @@
 1
-823
+822
 A_aperture
 1
 1
@@ -1522,7 +1522,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4462600
+4.4626e+06
 csp.mslf.cost.power_plant
 1
 1
@@ -4318,7 +4318,8 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 solarm
 1
 1
@@ -4383,12 +4384,6 @@ system_capacity
 1
 99999.9
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
