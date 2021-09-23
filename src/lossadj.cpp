@@ -164,7 +164,7 @@ public:
 		sizer->Add( pp.start, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
 		sizer->Add( new wxStaticText( pp.panel, wxID_ANY, "  End time:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
 		sizer->Add( pp.end, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
-		sizer->Add( new wxStaticText( pp.panel, wxID_ANY, "  Value:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
+		sizer->Add( new wxStaticText( pp.panel, wxID_ANY, "  Loss (%):"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
 		sizer->Add( pp.factor, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
 		sizer->AddStretchSpacer();
 		sizer->Add( pp.delbtn, 0, wxALL|wxALIGN_CENTER_VERTICAL, 4 );
@@ -274,7 +274,7 @@ class LossAdjustmentDialog : public wxDialog
 	PeriodFactorCtrl *m_periods; 
 public:
 	LossAdjustmentDialog( wxWindow *parent )
-		: wxDialog( parent, wxID_ANY, "Edit Time Series Values", wxDefaultPosition, wxScaleSize(850,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
+		: wxDialog( parent, wxID_ANY, "Edit Losses", wxDefaultPosition, wxScaleSize(850,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
 		SetEscapeId( wxID_CANCEL );
 
@@ -284,16 +284,16 @@ public:
 		
 		m_constant = new wxNumericCtrl(m_scrollWin, wxID_ANY);
 
-		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly values" );
+		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly losses (%)" );
 		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
 		m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
 
-		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable hourly values with custom periods" );
+		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable hourly losses with custom periods" );
 		m_periods = new PeriodFactorCtrl( m_scrollWin );
 
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
 		
-		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant value"), 0, wxALL|wxEXPAND, 5 );
+		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant loss (%)"), 0, wxALL|wxEXPAND, 5 );
 		scroll->Add(m_constant, 0, wxALL, 5);
 		scroll->Add(new wxStaticLine(m_scrollWin), 0, wxALL | wxEXPAND);
 		
@@ -383,7 +383,7 @@ AFLossAdjustmentCtrl::AFLossAdjustmentCtrl( wxWindow *parent, int id,
 {
 	SetBackgroundColour( *wxWHITE );
 
-	m_button = new wxButton( this, wxID_ANY, "Edit values...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
+	m_button = new wxButton( this, wxID_ANY, "Edit losses...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT );
 	m_label = new wxStaticText( this, wxID_ANY, wxEmptyString );
 	m_label->SetForegroundColour( wxColour(29,80,173) );
 
@@ -403,14 +403,14 @@ AFLossAdjustmentCtrl::AFLossAdjustmentCtrl( wxWindow *parent, int id,
 
 void AFLossAdjustmentCtrl::UpdateText()
 {
-	wxString txt(wxString::Format("Constant value: %.1f %%", m_data.constant));
+	wxString txt(wxString::Format("Constant loss: %.1f %%", m_data.constant));
 
 	float avg = 0;
 	for( size_t i=0;i<m_data.hourly.size();i++ ) avg += m_data.hourly[i];
 	if ( m_data.hourly.size() > 0 ) avg /= m_data.hourly.size();
 	else avg = 0;
 
-	txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly values: Avg = %.1f %%", avg ) : "Hourly values: None");
+	txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly losses: Avg = %.1f %%", avg ) : "Hourly losses: None");
 	txt += wxString("\n") + (m_data.en_periods ? wxString::Format("Custom periods: %d", (int)m_data.periods.nrows()) : "Custom periods: None");
 	m_label->SetLabel( txt );
 }
