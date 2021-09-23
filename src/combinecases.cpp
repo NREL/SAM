@@ -179,12 +179,6 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						bool degradation_orig_usesched = degradation_obj->Property("UseSchedule").GetBoolean();
 						if (degradation_orig_usesched) {
 							degradation_obj->Property("UseSchedule").Set(false);
-							//aip->Refresh();										// no effect
-							//wxWindow* win;
-							//if (win = degradation_obj->GetNative());
-							//	win->Refresh();										// no effect
-							//current_case->VariableChanged("degradation");			// no effect
-							//case_window->Refresh();								// no effect
 						}
 						VarValue* degradation_vv = current_case->Values().Get("degradation");
 						std::vector<double> degradation_orig_vec = degradation_vv->Array();
@@ -361,7 +355,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 
 						// Update UI with results
 						case_window->UpdateResults();
-						//case_window->SwitchToInputPage("case_page_orig");		// TODO: switch to original page (how to get current page?)
+						case_window->SwitchToInputPage(case_page_orig);
 						case_window->SwitchToPage("results");
 					}
 
@@ -398,12 +392,12 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 								"Combine Cases Message", wxOK, this);
 							return;
 						}
-						else {
+						else if (overwrite_capital) {
 							m_generic_case->Values().Get("fixed_operating_cost")->Set(om_fixed);
 						}
 					}
 
-					if (financial_name != "None") {
+					if (financial_name != "None" && overwrite_capital) {
 						//set cost parameters					
 						m_generic_case->Values().Get("fixed_plant_input")->Set(total_installed_cost);
 						m_generic_case->Values().Get("genericsys.cost.per_watt")->Set(0);

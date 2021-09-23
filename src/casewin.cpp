@@ -831,8 +831,7 @@ void CaseWindow::DetachCurrentInputPage()
 
 wxString CaseWindow::GetInputPage()
 {
-	wxArrayString input_pages = GetInputPages();
-	wxString input_page = input_pages[m_pageFlipper->GetSelection()];
+	wxString input_page = m_inputPageList->GetStringSelection();
 	// do checks
 	return input_page;
 }
