@@ -63,7 +63,7 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 	wxString msg = "Select open cases, simulate those cases and combine their generation\n";
 	msg += "profiles into a single profile to be used with this generic case.\n\n";
 	msg += "SAM will switch to each case in the project and run a simulation.\n";
-	msg += "Depending on the configuration, SAM may appear to be temporarily unresponsive.";
+	msg += "Depending on the configuration, SAM may be temporarily unresponsive.";
 
 	// Case selection list
 	m_chlCases = new wxCheckListBox(this, ID_chlCases, wxDefaultPosition, wxSize(400, 200)); // populate with active cases
@@ -74,18 +74,15 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 	szcases->Add(m_chlCases, 10, wxALL | wxEXPAND, 1);
 
 	// Overwrite capital checkbox
-	m_chkOverwriteCapital = new wxCheckBox(this, ID_chkOverwriteCapital, "Overwrite Installation Costs with combined cases costs");
+	m_chkOverwriteCapital = new wxCheckBox(this, ID_chkOverwriteCapital, "Overwrite Installation and Operating Costs with combined cases costs");
 
 	// Annual AC degradation
 	// Due to complexity of AC and DC degradation and lifetime and single year simulations, require user to provide an
 	// AC degradation rate for the combined project and ignore degradation rate inputs of individual system cases.
-	// TODO: maybe add note: 'The Year 1 hourly generation profile is used for each system. Please'
-	//						 '\n provide an annual AC degradation rate to use for the combined project,'
-	//						 '\n or enter a zero to ignore degradation.';
 	// TODO: make this a SchedNumeric instead so a schedule could be used
 	m_spndDegradation = new wxSpinCtrlDouble(this, ID_spndDegradation, "Annual AC Degradation", wxDefaultPosition, wxSize(54, 22),
 		wxSP_ARROW_KEYS, 0, 100, m_generic_degradation[0], 0.1, "wxspndDegradation");
-	wxString degradation_label = "%/year  Annual AC degradation rate";
+	wxString degradation_label = "%/year  Annual AC degradation rate for all cases";
 	wxBoxSizer* szdegradation = new wxBoxSizer(wxHORIZONTAL);
 	szdegradation->Add(m_spndDegradation, 0, wxALL, 1);
 	szdegradation->Add(new wxStaticText(this, wxID_ANY, degradation_label), 0, wxALL | wxALIGN_CENTER, 1);
@@ -335,7 +332,6 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 
 							//in cash flows, the first entry in the array is "Year 0", so must call j+1 in loop		
 							for (int i = 0; i < analysis_period; i++) {
-								// for display in System Costs page note
 								om_total_this[i] = om_fixed_this[i + 1] + om_capacity[i + 1] + om_production[i + 1]
 									+ om_fixed_this_1[i + 1] + om_capacity_1[i + 1] + om_production_1[i + 1]
 									+ om_fixed_this_2[i + 1] + om_capacity_2[i + 1] + om_production_2[i + 1]
@@ -375,8 +371,8 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					// Set the generic system performance parameters
 					m_generic_case->Values().Get("system_capacity")->Set(nameplate);
 					m_generic_case->Values().Get("spec_mode")->Set(2);		// specify the third radio button
-					//m_generic_case->Values().Get("derate")->Set(0);
-					//m_generic_case->Values().Get("heat_rate")->Set(0);
+					m_generic_case->Values().Get("derate")->Set(0);
+					m_generic_case->Values().Get("heat_rate")->Set(0);
 					m_generic_case->Values().Get("energy_output_array")->Set(hourly_energy.data(), hourly_energy.ncells());
 					m_generic_case->VariableChanged("energy_output_array"); // triggers UI update
 
@@ -397,44 +393,44 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						}
 					}
 
+					// Set installation and operating costs
 					if (financial_name != "None" && overwrite_capital) {
-						//set cost parameters					
+						// Installation Costs
 						m_generic_case->Values().Get("fixed_plant_input")->Set(total_installed_cost);
-						m_generic_case->Values().Get("genericsys.cost.per_watt")->Set(0);
-						m_generic_case->Values().Get("genericsys.cost.contingency_percent")->Set(0);
-						m_generic_case->Values().Get("genericsys.cost.epc.percent")->Set(0);
-						m_generic_case->Values().Get("genericsys.cost.epc.fixed")->Set(0);
-						m_generic_case->Values().Get("genericsys.cost.plm.percent")->Set(0);
-						m_generic_case->Values().Get("genericsys.cost.plm.fixed")->Set(0);
-						m_generic_case->Values().Get("genericsys.cost.sales_tax.percent")->Set(0);
+						m_generic_case->Values().Get("genericsys.cost.per_watt")->Set(0.);
+						m_generic_case->Values().Get("genericsys.cost.contingency_percent")->Set(0.);
+						m_generic_case->Values().Get("genericsys.cost.epc.percent")->Set(0.);
+						m_generic_case->Values().Get("genericsys.cost.epc.fixed")->Set(0.);
+						m_generic_case->Values().Get("genericsys.cost.plm.percent")->Set(0.);
+						m_generic_case->Values().Get("genericsys.cost.plm.fixed")->Set(0.);
+						m_generic_case->Values().Get("genericsys.cost.sales_tax.percent")->Set(0.);
 
-						//set O&M parameters- all are zero except for fixed (see explanation above)
+						// Operating Costs - all zero except fixed (see explanation above)
 						m_generic_case->Values().Get("om_fixed")->Set(om_fixed);
-						m_generic_case->Values().Get("om_capacity")->Set(new double[1]{0}, 1);
-						m_generic_case->Values().Get("om_production")->Set(new double[1]{0}, 1);
+						m_generic_case->Values().Get("om_capacity")->Set(new double[1]{0.}, 1);
+						m_generic_case->Values().Get("om_production")->Set(new double[1]{0.}, 1);
 						//O&M escalation rates are also zeroed because they are accounted for in the fixed O&M costs
-						m_generic_case->Values().Get("om_fixed_escal")->Set(0);
-						m_generic_case->Values().Get("om_capacity_escal")->Set(0);
-						m_generic_case->Values().Get("om_production_escal")->Set(0);
+						m_generic_case->Values().Get("om_fixed_escal")->Set(0.);
+						m_generic_case->Values().Get("om_capacity_escal")->Set(0.);
+						m_generic_case->Values().Get("om_production_escal")->Set(0.);
 
 						if (m_generic_case->Values().Get("om_fuel_cost")) {
-							m_generic_case->Values().Get("om_fuel_cost")->Set(new double[1]{0}, 1);
-							m_generic_case->Values().Get("om_fuel_cost_escal")->Set(0);
+							m_generic_case->Values().Get("om_fuel_cost")->Set(new double[1]{0.}, 1);
+							m_generic_case->Values().Get("om_fuel_cost_escal")->Set(0.);
 						}
 
 						if (m_generic_case->Values().Get("om_replacement_cost1")) {
-							m_generic_case->Values().Get("om_replacement_cost1")->Set(new double[1]{0}, 1);
-							m_generic_case->Values().Get("om_replacement_cost_escal")->Set(0);
+							m_generic_case->Values().Get("om_replacement_cost1")->Set(new double[1]{0.}, 1);
+							m_generic_case->Values().Get("om_replacement_cost_escal")->Set(0.);
 						}
 					}
 
 					// Update UI with results
 					m_result_code = 0;	// 0=success
-					m_generic_case_window->UpdateResults();
 					SamApp::Window()->SwitchToCaseWindow(m_generic_case_name);
+					int result = m_generic_case->RecalculateAll();
+					m_generic_case_window->UpdateResults();
 					m_generic_case_window->SwitchToInputPage("Power Plant");
-					ActiveInputPage* aip = 0;
-					//wxUIObject* energy_output_array = m_generic_case_window->FindActiveObject("energy_output_array", &aip);	// works only if page containing control is active
 					if (is_notices) {
 						wxMessageBox("Notices\n\n"
 							"At least one of the models generated notices.\n\n"
@@ -443,11 +439,10 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					}
 					EndModal(wxID_OK);
 
-					// open up data array dialog
+					// 'Press' Edit array... button to show energy output array
+					ActiveInputPage* aip = 0;
 					wxUIObject* energy_output_array = m_generic_case_window->FindObject("energy_output_array", &aip);
-					// do assert for non-null
 					if (AFDataArrayButton* btn_energy_output_array = energy_output_array->GetNative<AFDataArrayButton>()) {
-						// see inputpage.cpp line 421
 						btn_energy_output_array->OnPressed(e);
 					}
 				}
