@@ -58,9 +58,6 @@ public:
 	void Write( VarValue * );
 	bool Read( VarValue * );
 
-    void SetDescription(const wxString& s) { m_description = s; }
-    wxString GetDescription() { return m_description; }
-
 	struct FactorData
 	{
 		float constant; // updated from "factor" to "constant" 6/19/15
@@ -77,9 +74,7 @@ public:
 private:
 	void OnPressed(wxCommandEvent &);
 	void UpdateText();
-
-    wxString m_description;
-
+	
 	wxButton *m_button;
 	wxStaticText *m_label;
 	FactorData m_data;

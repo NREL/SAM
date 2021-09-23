@@ -36,7 +36,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "widgets.h"
 #include "lossadj.h"
 #include "variables.h"
-#include "uiobjects.h"
 
 /* hour: 0 = jan 1st 12am-1am, returns 1-12 */
 
@@ -272,16 +271,12 @@ class LossAdjustmentDialog : public wxDialog
 	AFDataArrayButton *m_hourly;
 
 	wxCheckBox *m_enablePeriods;
-	PeriodFactorCtrl *m_periods;
-
-    wxStaticText *m_description;
-
+	PeriodFactorCtrl *m_periods; 
 public:
 	LossAdjustmentDialog( wxWindow *parent )
 		: wxDialog( parent, wxID_ANY, "Edit Time Series Values", wxDefaultPosition, wxScaleSize(850,450), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 	{
-
-        SetEscapeId( wxID_CANCEL );
+		SetEscapeId( wxID_CANCEL );
 
 		m_scrollWin = new wxScrolledWindow( this, wxID_ANY );
 		m_scrollWin->SetBackgroundColour( *wxWHITE );
@@ -296,9 +291,6 @@ public:
 		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable hourly values with custom periods" );
 		m_periods = new PeriodFactorCtrl( m_scrollWin );
 
-        wxString description = "Test description: Needs to be formatted and read value from UI object property.";
-        m_description = new wxStaticText(m_scrollWin, wxID_ANY, description);
-
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
 		
 		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant value"), 0, wxALL|wxEXPAND, 5 );
@@ -312,9 +304,7 @@ public:
 		scroll->Add( m_enablePeriods, 0, wxALL|wxEXPAND, 5 );
 		scroll->Add( m_periods, 0, wxALL, 5 );
 		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
-
-        scroll->Add(m_description, 0, wxALL | wxEXPAND);
-
+		
 		m_scrollWin->SetSizer( scroll );
 
 		wxSizer *box = new wxBoxSizer(wxVERTICAL);
@@ -413,14 +403,14 @@ AFLossAdjustmentCtrl::AFLossAdjustmentCtrl( wxWindow *parent, int id,
 
 void AFLossAdjustmentCtrl::UpdateText()
 {
-	wxString txt(wxString::Format("Constant value: %.1f", m_data.constant));
+	wxString txt(wxString::Format("Constant value: %.1f %%", m_data.constant));
 
 	float avg = 0;
 	for( size_t i=0;i<m_data.hourly.size();i++ ) avg += m_data.hourly[i];
 	if ( m_data.hourly.size() > 0 ) avg /= m_data.hourly.size();
 	else avg = 0;
 
-	txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly values: Avg = %.1f", avg ) : "Hourly values: None");
+	txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly values: Avg = %.1f %%", avg ) : "Hourly values: None");
 	txt += wxString("\n") + (m_data.en_periods ? wxString::Format("Custom periods: %d", (int)m_data.periods.nrows()) : "Custom periods: None");
 	m_label->SetLabel( txt );
 }

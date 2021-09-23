@@ -886,7 +886,6 @@ class wxUILossAdjustmentCtrl : public wxUIObject
 public:
 	wxUILossAdjustmentCtrl() {
 		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
-        AddProperty("Description", new wxUIProperty(wxString("")));
 		Property("Width").Set(270);
 		Property("Height").Set(70);
 	}
@@ -894,11 +893,8 @@ public:
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUILossAdjustmentCtrl; o->Copy( this ); return o; }
 	virtual bool IsNativeObject() { return true; }
 	virtual bool DrawDottedOutline() { return false; }
-	virtual wxWindow *CreateNative( wxWindow *parent )
-    {
-        AFLossAdjustmentCtrl* la = new AFLossAdjustmentCtrl(parent, wxID_ANY);
-        la->SetDescription(Property("Description").GetString());
-	    return AssignNative( la );
+	virtual wxWindow *CreateNative( wxWindow *parent ) {
+		return AssignNative( new AFLossAdjustmentCtrl( parent, wxID_ANY ) );
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
 	{
@@ -919,13 +915,6 @@ public:
 		dc.DrawText( "Hourly losses: Avg = n.nn", geom.x+button.x+4, geom.y+dc.GetCharHeight()/*yc-y/2*/ );
 		dc.DrawText( "Custom periods: n", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
 	}
-    virtual void OnPropertyChanged(const wxString& id, wxUIProperty* p)
-    {
-        if (AFLossAdjustmentCtrl* pt = GetNative<AFLossAdjustmentCtrl>())
-        {
-            if (id == "Description") pt->SetDescription(p->GetString());
-        }
-    }
 };
 
 #include "s3tool.h"
