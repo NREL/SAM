@@ -1692,8 +1692,8 @@ Mode
 1
 Label
 5
-24
-Electric Load Power (kW)
+15
+Load Power (kW)
 Description
 5
 156

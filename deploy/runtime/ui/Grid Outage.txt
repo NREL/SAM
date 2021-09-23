@@ -1,35 +1,7 @@
 Grid Outage
-866
-202
-6
-LossAdjustment
-
-1
-8
-Name
-5
-0
-X
-3
-45
-Y
-3
-105
-Width
-3
-270
-Height
-3
-70
-Tool Tip
-5
-0
-TabOrder
-3
-4294967295
-Description
-5
-0
+859
+141
+4
 DataLifetimeArray
 
 1
@@ -40,10 +12,10 @@ Name
 grid_outage
 X
 3
-453
+144
 Y
 3
-105
+63
 Width
 3
 246
@@ -58,13 +30,16 @@ Mode
 1
 Label
 5
-0
+35
+Grid outage (0=no outage, 1=outage)
 ColumnLabel
 5
-0
+3
+0/1
 Description
 5
-0
+170
+Enter or import grid outage data for each time step over the analysis period: 0 for time steps with no outage and 1 for time steps with an outage. Click help for details.
 TabOrder
 3
 4294967295
@@ -78,6 +53,53 @@ WeeklyEnabled
 2
 0
 ShowMode
+2
+1
+Label
+
+1
+13
+Name
+5
+15
+lbl_grid_outage
+X
+3
+48
+Y
+3
+93
+Width
+3
+597
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 GroupBox
@@ -99,7 +121,7 @@ Width
 850
 Height
 3
-180
+135
 Tool Tip
 5
 0
@@ -116,113 +138,17 @@ Label
 13
 Name
 5
-8
-object 7
-X
-3
-453
-Y
-3
-81
-Width
-3
-201
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-17
-Use this for now:
-TextColour
-4
-0
-128
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
-9
-object 71
-X
-3
-45
-Y
-3
-81
-Width
-3
-201
-Height
-3
-24
-Tool Tip
-5
-0
-Caption
-5
-26
-Would be nice to use this:
-TextColour
-4
-0
-128
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 9
 object 73
 X
 3
-12
+30
 Y
 3
-30
+21
 Width
 3
-828
+813
 Height
 3
 36
@@ -231,8 +157,8 @@ Tool Tip
 0
 Caption
 5
-101
-For systems with battery storage, you can define grid outages to see if the system can meet the load.
+222
+For systems with battery storage and a critical load, you can define grid outages to see if the system can meet the critical load through the outage(s). Click Edit Lifetime Data to specify outages over the analysis period.
 TextColour
 4
 0
@@ -260,16 +186,31 @@ grid_outage
 3
 2
 Grid outage
- 
+0/1
 Grid
 0
-3
+2
 1
 2
 1
 1
 0
-LossAdjustment
+DataLifetimeArray
 
 0
-0
+563
+on_load{'Grid Outage'} = define() {
+	message = '';
+	color = 'Black';
+	// is_crit() defined in Electric Load Crit callback
+	// this will not work if Grid Outage form is used with a FOM configuration
+	if ( !is_crit() ) 
+	{
+		message = 'Modeling grid outages requires a critical load. Specify the critical load on the Electric Load page.';
+		color = 'Red';
+	}
+	property( 'lbl_grid_outage','Caption',message );
+	property( 'lbl_grid_outage','TextColour',color );
+	property( 'grid_outage','AnalysisPeriod', ${analysis_period} );
+	enable( 'grid_outage', is_crit() );
+};

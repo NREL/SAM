@@ -253,8 +253,8 @@ Mode
 1
 Label
 5
-24
-Critical Load power (kW)
+15
+Load Power (kW)
 Description
 5
 197
@@ -479,12 +479,13 @@ Calculate resiliency only for outage time steps (faster)|Calculate resiliency fo
 RadioChoice
 
 0
-406
+464
 on_load{'Electric Load Critical'} = define() {
 	on_change{'normalize_to_utility_bill'}();
 	on_change{'crit_load_type'}();
 	show_crit(is_crit()); // is_crit() defined on Electric Load Crit form
 	property('crit_load_escalation','FixedLength',${analysis_period});
+	enable( 'run_resiliency_calcs', sum(${grid_outage})>0 );
 };
 
 on_change{'crit_load_type'} = define() {
