@@ -523,6 +523,18 @@ SAM_EXPORT double SAM_MhkWave_Outputs_device_average_power_nget(SAM_table ptr, S
 
 
 
+SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_data_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "energy_period_data", length);
+	if (!result)
+		make_access_error("SAM_MhkWave", "energy_period_data");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_index_mat_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -575,6 +587,18 @@ SAM_EXPORT double SAM_MhkWave_Outputs_numberRecords_nget(SAM_table ptr, SAM_erro
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "numberRecords", &result))
 		make_access_error("SAM_MhkWave", "numberRecords");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MhkWave_Outputs_sig_wave_height_data_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "sig_wave_height_data", length);
+	if (!result)
+		make_access_error("SAM_MhkWave", "sig_wave_height_data");
 	});
 	return result;
 }

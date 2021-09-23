@@ -752,14 +752,6 @@ extern "C"
 	//
 
 	/**
-	 * Set batt_auto_gridcharge_max_daily: Allowed grid charging percent per day for automated dispatch [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_auto_gridcharge_max_daily_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set batt_custom_dispatch: Custom battery power for every time step [kW]
 	 * options: kWAC if AC-connected, else kWDC
 	 * constraints: None
@@ -784,7 +776,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_charge: System charging allowed for automated dispatch? [kW]
+	 * Set batt_dispatch_auto_can_charge: System charging allowed for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -792,7 +784,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_clipcharge: Battery can charge from clipped power for automated dispatch? [kW]
+	 * Set batt_dispatch_auto_can_clipcharge: Battery can charge from clipped power for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -800,7 +792,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_fuelcellcharge: Charging from fuel cell allowed for automated dispatch? [kW]
+	 * Set batt_dispatch_auto_can_fuelcellcharge: Charging from fuel cell allowed for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -808,12 +800,20 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_gridcharge: Grid charging allowed for automated dispatch? [kW]
+	 * Set batt_dispatch_auto_can_gridcharge: Grid charging allowed for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_gridcharge_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_charge_only_system_exceeds_load: Battery can charge from system only when system output exceeds load [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=0
+	 */
+	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4]
@@ -822,6 +822,14 @@ extern "C"
 	 * required if: en_batt=1
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_choice_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_discharge_only_load_exceeds_system: Battery can discharge battery only when load exceeds system output [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=0
+	 */
+	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_discharge_only_load_exceeds_system_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_dispatch_load_forecast_choice: Load forecast choice for automatic dispatch [0/1/2]
@@ -1706,8 +1714,6 @@ extern "C"
 	 * BatteryDispatch Getters
 	 */
 
-	SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_auto_gridcharge_max_daily_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_custom_dispatch_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -1722,7 +1728,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_gridcharge_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_choice_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_discharge_only_load_exceeds_system_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_load_forecast_choice_nget(SAM_table ptr, SAM_error *err);
 
