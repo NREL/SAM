@@ -1,7 +1,7 @@
 Marine Tidal Converter
 949
 1185
-10
+12
 GroupBox
 
 1
@@ -45,7 +45,7 @@ X
 621
 Y
 3
-228
+198
 Width
 3
 252
@@ -75,7 +75,7 @@ X
 621
 Y
 3
-258
+228
 Width
 3
 252
@@ -198,7 +198,7 @@ X
 27
 Y
 3
-228
+198
 Width
 3
 588
@@ -260,6 +260,76 @@ Tidal Device Library
 Bold
 2
 1
+RadioChoice
+
+1
+11
+Name
+5
+19
+power_matrix_choice
+X
+3
+30
+Y
+3
+267
+Width
+3
+180
+Height
+3
+66
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Choose from device library
+User-defined power matrix
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+20
+save_power_curve_btn
+X
+3
+465
+Y
+3
+417
+Width
+3
+186
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+27
+Save Power Curve to Library
+TabOrder
+3
+4294967295
 DataMatrix
 
 1
@@ -422,7 +492,7 @@ AlignTop
 2
 1
 
-11
+12
 device_characteristic_diameter
 3
 1
@@ -557,6 +627,20 @@ library_folder_list
 9
 <invalid>
 Default
+power_matrix_choice
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+RadioChoice
 tidal_power_curve
 3
 3
@@ -618,7 +702,7 @@ equations{ 'device_rated_power' } = define ()
 };
 
 
-3005
+3739
 function plot_device_curve()
 {
 	setplot('tidal_power_curve_plot');
@@ -647,6 +731,36 @@ function plot_device_curve()
 	axis( 'y1', {'label'='Power (kW)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });
 
 }
+
+on_change{'power_matrix_choice'} = define() {
+	power_matrix_option();
+};
+
+function power_matrix_option() 
+{
+	option = value('power_matrix_choice');
+	if (option == 0) {
+		enable('tidal_power_curve', false);
+		property('tidal_power_curve', 'ShowRows', 0);
+		property('tidal_power_curve', 'ShowButtons', 0);
+		show('lib_tidal_device', true);
+		show('save_power_curve_btn', false);
+	}
+	else {
+		enable('tidal_power_curve', true);
+		property('tidal_power_curve', 'ShowRows', 1);
+		property('tidal_power_curve', 'ShowButtons', 1);
+		show('lib_tidal_device', false);
+		show('save_power_curve_btn', true);
+	}
+	refresh('tidal_power_curve');
+	plot_device_curve();
+	refresh();
+}
+
+on_change{'save_power_curve_btn'} = define() {
+	return true;
+};
 
 on_change{'tidal_power_curve'}=define()
 {
