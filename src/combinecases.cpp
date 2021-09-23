@@ -79,12 +79,18 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 	// Annual AC degradation
 	// Due to complexity of AC and DC degradation and lifetime and single year simulations, require user to provide an
 	// AC degradation rate for the combined project and ignore degradation rate inputs of individual system cases.
-	// TODO: make this a SchedNumeric instead so a schedule could be used
-	m_spndDegradation = new wxSpinCtrlDouble(this, ID_spndDegradation, "Annual AC Degradation", wxDefaultPosition, wxSize(54, 22),
-		wxSP_ARROW_KEYS, 0, 100, m_generic_degradation[0], 0.1, "wxspndDegradation");
+	m_schnDegradation = new AFSchedNumeric(this, ID_spndDegradation, wxDefaultPosition, wxSize(64, 22));
+	if (m_generic_degradation.size() == 1) {
+		m_schnDegradation->UseSchedule(false);
+		m_schnDegradation->SetValue(m_generic_degradation[0]);
+	}
+	else {
+		m_schnDegradation->UseSchedule(true);
+		m_schnDegradation->SetSchedule(m_generic_degradation);
+	}
 	wxString degradation_label = "%/year  Annual AC degradation rate for all cases";
 	wxBoxSizer* szdegradation = new wxBoxSizer(wxHORIZONTAL);
-	szdegradation->Add(m_spndDegradation, 0, wxALL, 1);
+	szdegradation->Add(m_schnDegradation, 0, wxLEFT, 2);
 	szdegradation->Add(new wxStaticText(this, wxID_ANY, degradation_label), 0, wxALL | wxALIGN_CENTER, 1);
 
 	// Combine all into main vertical sizer
@@ -151,10 +157,6 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					std::vector<double> om_fixed(analysis_period, 0.);
 					bool is_notices = false;
 
-					// Get dialog inputs
-					bool overwrite_capital = m_chkOverwriteCapital->IsChecked();
-					double degradation = m_spndDegradation->GetValue();				// TODO: change this to a SchedNumeric
-
 					// Run each simulation
 					for (size_t i = 0; i < arychecked.Count(); i++) {
 						// Switch to case
@@ -166,21 +168,15 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						wxString technology_name = current_case->GetTechnology();
 						wxString financial_name = current_case->GetFinancing();
 
-						// Set degradation, saving original value and value/sched property
-						// TODO: grab more than just the numeric if it's a schedule
-						// case_window->SwitchToInputPage("Lifetime and Degradation");
-						// wxUIObject* degradation_obj = case_window->FindActiveObject("degradation", &aip);	// works only if page containing control is active
-						ActiveInputPage* aip = 0;
-						wxUIObject* degradation_obj = case_window->FindObject("degradation", &aip);
-						assert(degradation_obj && aip && degradation_obj->HasProperty("UseSchedule"));
-						bool degradation_orig_usesched = degradation_obj->Property("UseSchedule").GetBoolean();
-						if (degradation_orig_usesched) {
-							degradation_obj->Property("UseSchedule").Set(false);
-						}
+						// Set degradation, saving original value
 						VarValue* degradation_vv = current_case->Values().Get("degradation");
-						std::vector<double> degradation_orig_vec = degradation_vv->Array();
-						VarValue degradation_orig(*degradation_vv);		// redundant here
-						degradation_vv->Set(new double[1]{degradation}, 1);
+						std::vector<double> degradation_orig = degradation_vv->Array();
+						if (m_schnDegradation->UseSchedule()) {
+							degradation_vv->Set(m_schnDegradation->GetSchedule());
+						}
+						else {
+							degradation_vv->Set(new double[1]{m_schnDegradation->GetValue()}, 1);
+						}
 
 						// Deal with inflation
 						VarValue* inflation_vv = nullptr;
@@ -225,7 +221,9 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						nameplate += nameplate_this;
 						matrix_t<double> hourly_energy_this = bcsim.GetOutput("gen")->Matrix();		// TODO: what is returned here if it doesn't generate hourly data?
 
-						// need annual energy
+						// need annual energy to calculate variable O&M cost for LCOE calculator
+						// and for constant generation profile for Marine Energy
+						// Note that Wind with Weibull distribution as input reports gen calculated as annual_energy / 8760
 						double annual_energy_this = std::numeric_limits<double>::quiet_NaN();
 						if (technology_name == "Geothermal Power") {
 							annual_energy_this = bcsim.GetOutput("first_year_output")->Value();
@@ -298,7 +296,6 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							// (a) the escalation of O&M costs
 							// (b) the O&M costs by capacity and by generation, appropriately weighted by the system size/generation,
 							// (c) allows for inclusion of fuel costs that are found in some technologies but not others (fuel costs)
-							// TODO: go through whole LK script and ensure all important comments are being carried over
 							matrix_t<double> om_fixed_this = bcsim.GetOutput("cf_om_fixed_expense")->Matrix();					// O&M fixed
 							matrix_t<double> om_capacity = bcsim.GetOutput("cf_om_capacity_expense")->Matrix();					// O&M capacity based
 							matrix_t<double> om_production = bcsim.GetOutput("cf_om_production_expense")->Matrix();				// O&M production based
@@ -342,12 +339,11 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							}
 						}
 
-						// put inflation rate back and reinstate other original values
+						// put inflation rate and degradation back
 						if (financial_name != "None") {
 							inflation_vv->Set(inflation_orig);
 						}
-						degradation_obj->Property("UseSchedule").Set(degradation_orig_usesched);
-						degradation_vv->Set(new double[1]{degradation_orig.Value()}, 1);
+						degradation_vv->Set(degradation_orig);
 
 						// Update UI with results
 						case_window->UpdateResults();
@@ -371,11 +367,12 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					// Set the generic system performance parameters
 					m_generic_case->Values().Get("system_capacity")->Set(nameplate);
 					m_generic_case->Values().Get("spec_mode")->Set(2);		// specify the third radio button
-					m_generic_case->Values().Get("derate")->Set(0);
-					m_generic_case->Values().Get("heat_rate")->Set(0);
+					m_generic_case->Values().Get("derate")->Set(0);			// no additional losses- losses were computed in the individual models
+					m_generic_case->Values().Get("heat_rate")->Set(0);		// no fuel costs- accounted for in O&M fuel costs from subsystem cash flows
 					m_generic_case->Values().Get("energy_output_array")->Set(hourly_energy.data(), hourly_energy.ncells());
 					m_generic_case->VariableChanged("energy_output_array"); // triggers UI update
 
+					bool overwrite_capital = m_chkOverwriteCapital->IsChecked();
 					if (financial_name == "LCOE Calculator") {
 						if (!constant1) {
 							m_result_code = 1;

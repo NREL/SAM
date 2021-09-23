@@ -71,6 +71,7 @@ private:
     wxCheckListBox* m_chlCases;
     wxCheckBox* m_chkOverwriteCapital;
     wxSpinCtrlDouble* m_spndDegradation;
+	AFSchedNumeric* m_schnDegradation;
 
     DECLARE_EVENT_TABLE()
 };
