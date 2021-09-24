@@ -326,8 +326,8 @@ Tool Tip
 0
 Caption
 5
-219
-Resiliency calculations can take along time to run. If you specified grid outages on the Grid page, you can improve simulation run times by only calculating resiliency metrics for time steps when there is a grid outage.
+220
+Resiliency calculations can take a long time to run. If you specified grid outages on the Grid page, you can improve simulation run times by only calculating resiliency metrics for time steps when there is a grid outage.
 TextColour
 4
 0

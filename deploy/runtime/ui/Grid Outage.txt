@@ -2,10 +2,10 @@ Grid Outage
 859
 141
 4
-DataLifetimeArray
+DataArray
 
 1
-15
+10
 Name
 5
 11
@@ -15,10 +15,10 @@ X
 144
 Y
 3
-63
+66
 Width
 3
-246
+184
 Height
 3
 24
@@ -30,31 +30,15 @@ Mode
 1
 Label
 5
-35
-Grid outage (0=no outage, 1=outage)
-ColumnLabel
-5
 3
 0/1
 Description
 5
-170
-Enter or import grid outage data for each time step over the analysis period: 0 for time steps with no outage and 1 for time steps with an outage. Click help for details.
+134
+Enter or import grid outage data for each time step for one year: 0 for time steps with no outage and 1 for time steps with an outage.
 TabOrder
 3
 4294967295
-AnalysisPeriod
-3
-25
-AnnualEnabled
-2
-0
-WeeklyEnabled
-2
-0
-ShowMode
-2
-1
 Label
 
 1
@@ -157,8 +141,8 @@ Tool Tip
 0
 Caption
 5
-222
-For systems with battery storage and a critical load, you can define grid outages to see if the system can meet the critical load through the outage(s). Click Edit Lifetime Data to specify outages over the analysis period.
+214
+For systems with battery storage and a critical load, you can define grid outages to see if the system can meet the critical load through the outage(s). Click Edit Array to specify outages over the analysis period.
 TextColour
 4
 0
@@ -195,7 +179,7 @@ Grid
 1
 1
 0
-DataLifetimeArray
+DataArray
 
 0
 563
