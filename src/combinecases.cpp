@@ -169,13 +169,17 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						wxString financial_name = current_case->GetFinancing();
 
 						// Set degradation, saving original value
-						VarValue* degradation_vv = current_case->Values().Get("degradation");
-						std::vector<double> degradation_orig = degradation_vv->Array();
-						if (m_schnDegradation->UseSchedule()) {
-							degradation_vv->Set(m_schnDegradation->GetSchedule());
-						}
-						else {
-							degradation_vv->Set(new double[1]{m_schnDegradation->GetValue()}, 1);
+						VarValue* degradation_vv = nullptr;
+						std::vector<double> degradation_orig = { std::numeric_limits<double>::quiet_NaN() };
+						if (financial_name != "None" && financial_name != "LCOE Calculator") {
+							degradation_vv = current_case->Values().Get("degradation");
+							degradation_orig = degradation_vv->Array();
+							if (m_schnDegradation->UseSchedule()) {
+								degradation_vv->Set(m_schnDegradation->GetSchedule());
+							}
+							else {
+								degradation_vv->Set(new double[1]{ m_schnDegradation->GetValue() }, 1);
+							}
 						}
 
 						// Deal with inflation
@@ -339,11 +343,13 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							}
 						}
 
-						// put inflation rate and degradation back
+						// put degradation and inflation rate back
+						if (financial_name != "None" && financial_name != "LCOE Calculator") {
+							degradation_vv->Set(degradation_orig);
+						}
 						if (financial_name != "None") {
 							inflation_vv->Set(inflation_orig);
 						}
-						degradation_vv->Set(degradation_orig);
 
 						// Update UI with results
 						case_window->UpdateResults();
