@@ -443,7 +443,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						wxMessageBox("Notices\n\n"
 							"At least one of the models generated notices.\n\n"
 							"View these messages or warnings on the Notices pane of the Results page.",
-							"Combine Cases Message", wxOK, this);
+							"Combine Cases Message", wxOK | wxSTAY_ON_TOP, this);
 					}
 					EndModal(wxID_OK);
 
