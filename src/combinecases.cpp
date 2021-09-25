@@ -223,7 +223,10 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						// Add the performance parameters of this case
 						double nameplate_this = current_case->Values().Get("system_capacity")->Value();
 						nameplate += nameplate_this;
-						matrix_t<double> hourly_energy_this = bcsim.GetOutput("gen")->Matrix();		// TODO: what is returned here if it doesn't generate hourly data?
+						matrix_t<double> hourly_energy_this(1, 1, std::numeric_limits<double>::quiet_NaN());
+						if (bcsim.GetOutput("gen")) {
+							hourly_energy_this = bcsim.GetOutput("gen")->Matrix();
+						}
 
 						// need annual energy to calculate variable O&M cost for LCOE calculator
 						// and for constant generation profile for Marine Energy
