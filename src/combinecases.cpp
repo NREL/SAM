@@ -319,6 +319,8 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 								om_fixed_this_1 = bcsim.GetOutput("cf_om_fixed1_expense")->Matrix();							// battery fixed
 								om_capacity_1 = bcsim.GetOutput("cf_om_capacity1_expense")->Matrix();							// battery capacity based
 								om_production_1 = bcsim.GetOutput("cf_om_production1_expense")->Matrix();						// battery production based
+							}
+							if (bcsim.GetOutput("cf_battery_replacement_cost")) {
 								cf_batt_repl = bcsim.GetOutput("cf_battery_replacement_cost")->Matrix();						// battery replacement
 							}
 
