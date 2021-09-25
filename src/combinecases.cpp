@@ -140,7 +140,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					wxString financial_name = m_generic_case->GetFinancing();
 					double analysis_period = std::numeric_limits<double>::quiet_NaN();
 					double inflation = std::numeric_limits<double>::quiet_NaN();
-					if (financial_name == "LCOE Calculator") {
+					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
 						analysis_period = m_generic_case->Values().Get("c_lifetime")->Value();
 						inflation = m_generic_case->Values().Get("c_inflation")->Value();
 					}
@@ -171,7 +171,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						// Set degradation, saving original value
 						VarValue* degradation_vv = nullptr;
 						std::vector<double> degradation_orig = { std::numeric_limits<double>::quiet_NaN() };
-						if (financial_name != "None" && financial_name != "LCOE Calculator") {
+						if (financial_name != "None" && financial_name != "LCOE Calculator" && financial_name != "LCOH Calculator") {
 							degradation_vv = current_case->Values().Get("degradation");
 							degradation_orig = degradation_vv->Array();
 							if (m_schnDegradation->UseSchedule()) {
@@ -186,7 +186,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						VarValue* inflation_vv = nullptr;
 						double inflation_orig = std::numeric_limits<double>::quiet_NaN();
 						if (financial_name != "None") {
-							if (financial_name == "LCOE Calculator") {
+							if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
 								inflation_vv = current_case->Values().Get("c_inflation");
 							}
 							else {
@@ -242,7 +242,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 
 						// for lifetime simulation, truncate results to first 8760 values
 						double analysis_period_this = std::numeric_limits<double>::quiet_NaN();
-						if (financial_name == "LCOE Calculator") {
+						if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
 							analysis_period_this = current_case->Values().Get("c_lifetime")->Value();
 						}
 						else if (financial_name != "None") {
@@ -281,7 +281,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						// Add the financial parameters of this case, if applicable
 						double total_installed_cost_this = std::numeric_limits<double>::quiet_NaN();
 						std::vector<double> om_total_this(analysis_period, std::numeric_limits<double>::quiet_NaN());
-						if (financial_name == "LCOE Calculator") {
+						if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
 							total_installed_cost_this = current_case->Values().Get("capital_cost")->Value();
 							total_installed_cost += total_installed_cost_this;
 							double om_fixed_this = current_case->Values().Get("fixed_operating_cost")->Value();
@@ -349,7 +349,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						}
 
 						// put degradation and inflation rate back
-						if (financial_name != "None" && financial_name != "LCOE Calculator") {
+						if (financial_name != "None" && financial_name != "LCOE Calculator" && financial_name != "LCOH Calculator") {
 							degradation_vv->Set(degradation_orig);
 						}
 						if (financial_name != "None") {
@@ -384,7 +384,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					m_generic_case->VariableChanged("energy_output_array"); // triggers UI update
 
 					bool overwrite_capital = m_chkOverwriteCapital->IsChecked();
-					if (financial_name == "LCOE Calculator") {
+					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
 						if (!constant1) {
 							m_result_code = 1;
 							m_generic_case_window->UpdateResults();
