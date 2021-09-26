@@ -60,8 +60,6 @@ private:
 
 	void GetOpenCases();
 
-	std::vector<double> matrix_to_vector(matrix_t<double>& matrix);
-
 	int m_result_code;
 	Case* m_generic_case;
 	wxString m_generic_case_name;

@@ -477,7 +477,6 @@ void CombineCasesDialog::RefreshList(size_t first_item)
 	for (size_t i = 0; i < m_cases.size(); i++)
 	{
 		// Exclude generic case from displaying in case list
-		// TODO: If excluding geothermal, do here.
 		if (m_cases[i].display_name != m_generic_case_name) {
 			int ndx = m_chlCases->Append(m_cases[i].display_name);
 			if (m_cases[i].is_selected) {
@@ -499,11 +498,4 @@ void CombineCasesDialog::GetOpenCases()
 	for (size_t i = 0; i < names.size(); i++) {
 		m_cases.push_back(CaseInfo(names[i], names[i]));
 	}
-}
-
-std::vector<double> CombineCasesDialog::matrix_to_vector(matrix_t<double> &matrix)
-{
-	std::vector<double> vector;
-	std::copy(matrix.data(), matrix.data() + matrix.ncells(), back_inserter(vector));
-	return vector;
 }

@@ -1183,7 +1183,7 @@ equations{ 'ui_step_minutes' } = define() {
 	}
 };
 
-1738
+1701
 on_load{"Generic System Plant"}=define(){
 	on_change{'spec_mode'}();
 	on_change{'system_capacity'}();
@@ -1212,10 +1212,6 @@ function combine_cases()
 	if ( hash != '' )
 	{
 		result = hash{'result_code'};	// 0=success, 1=error
-		if ( result == 0 )
-		{
-			x=1;
-		}
 	}
 }
 
