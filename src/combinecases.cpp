@@ -156,6 +156,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					double total_installed_cost = 0.;
 					std::vector<double> om_fixed(analysis_period, 0.);
 					bool is_notices = false;
+					bool has_a_contingency = false;
 
 					// Run each simulation
 					for (size_t i = 0; i < arychecked.Count(); i++) {
@@ -298,6 +299,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						else if (financial_name != "None" && analysis_period > std::numeric_limits<double>::epsilon()) {
 							total_installed_cost_this = current_case->Values().Get("total_installed_cost")->Value();
 							total_installed_cost += total_installed_cost_this;
+							has_a_contingency = has_a_contingency || HasContingency(bcsim);
 							// O&M costs are taken from the cash flows of each system. All types of O&M costs
 							// are entered in as fixed O&M costs in the financial case. This accounts for several things:
 							// (a) the escalation of O&M costs
@@ -445,6 +447,12 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							"View these messages or warnings on the Notices pane of the Results page.",
 							"Combine Cases Message", wxOK | wxSTAY_ON_TOP, this);
 					}
+					if (has_a_contingency && technology_name == "Generic Battery" && financial_name != "Third Party") {
+						wxMessageBox("Notices\n\n"
+							"At least one of the models has a contingency specified.\n\n"
+							"Verify contingency is not double-counted on this generic-battery system's Installation Costs page.",
+							"Combine Cases Message", wxOK | wxSTAY_ON_TOP, this);
+					}
 					EndModal(wxID_OK);
 
 					// 'Press' Edit array... button to show energy output array
@@ -498,4 +506,29 @@ void CombineCasesDialog::GetOpenCases()
 	for (size_t i = 0; i < names.size(); i++) {
 		m_cases.push_back(CaseInfo(names[i], names[i]));
 	}
+}
+
+bool CombineCasesDialog::HasContingency(Simulation& bcsim)
+{
+	std::vector<std::string> contingency_names{
+		"contingency_rate",
+		"contingency_percent",
+		"csp.dtr.cost.contingency_percent",
+		"csp.pt.cost.contingency_percent",
+		"csp.mslf.cost.contingency_percent",
+		"csp.lf.cost.contingency_percent",
+		"csp.gss.cost.contingency_percent",
+		"csp.tr.cost.contingency_percent",
+		"biopwr.cost.contingency_percent",
+		"geotherm.cost.contingency_percent"
+	};
+	
+	for (auto& contingency_name : contingency_names) {
+		VarValue* contingency_vv = bcsim.GetOutput(contingency_name);
+		if (contingency_vv && contingency_vv->Value() > std::numeric_limits<double>::epsilon()) {
+			return true;
+		}
+	}
+	
+	return false;
 }

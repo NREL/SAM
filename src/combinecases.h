@@ -60,6 +60,8 @@ private:
 
 	void GetOpenCases();
 
+	bool HasContingency(Simulation& bcsim);
+
 	int m_result_code;
 	Case* m_generic_case;
 	wxString m_generic_case_name;
