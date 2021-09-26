@@ -404,7 +404,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					}
 
 					// Set installation and operating costs
-					if (financial_name != "None" && overwrite_capital) {
+					if (financial_name != "None" && financial_name != "Third Party" && overwrite_capital) {
 						// Installation Costs
 						m_generic_case->Values().Get("fixed_plant_input")->Set(total_installed_cost);
 						m_generic_case->Values().Get("genericsys.cost.per_watt")->Set(0.);
