@@ -496,7 +496,9 @@ void CombineCasesDialog::RefreshList(size_t first_item)
 		}
 	}
 	m_chlCases->Thaw();
-	m_chlCases->SetFirstItem(first_item);
+	if (m_chlCases->GetCount() > 0) {
+		m_chlCases->SetFirstItem(first_item);
+	}
 }
 
 void CombineCasesDialog::GetOpenCases()
