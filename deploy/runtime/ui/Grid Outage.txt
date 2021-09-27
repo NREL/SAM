@@ -182,7 +182,7 @@ Grid
 DataArray
 
 0
-563
+673
 on_load{'Grid Outage'} = define() {
 	message = '';
 	color = 'Black';
@@ -196,5 +196,13 @@ on_load{'Grid Outage'} = define() {
 	property( 'lbl_grid_outage','Caption',message );
 	property( 'lbl_grid_outage','TextColour',color );
 	property( 'grid_outage','AnalysisPeriod', ${analysis_period} );
-	enable( 'grid_outage', is_crit() );
+	
+	if ( technology() == 'Fuel Cell' ) 
+	{
+		enable( 'grid_outage', is_crit() && ${en_batt} );
+	}
+	else
+	{
+		enable( 'grid_outage', is_crit() );
+	}
 };

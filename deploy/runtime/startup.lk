@@ -1117,7 +1117,7 @@ setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ],
 		[ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']], { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
 addpage( [[ 'Operating Costs Fuel Cell' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
-setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
+setup_commercial_pages(LOAD_SIMPLE_CRIT); //belpe not valid for commercial
 addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
 addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 

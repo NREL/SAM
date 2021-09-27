@@ -479,13 +479,14 @@ Calculate resiliency only for outage time steps (faster)|Calculate resiliency fo
 RadioChoice
 
 0
-464
+984
 on_load{'Electric Load Critical'} = define() {
 	on_change{'normalize_to_utility_bill'}();
 	on_change{'crit_load_type'}();
-	show_crit(is_crit()); // is_crit() defined on Electric Load Crit form
+	show_crit(is_crit()); // show_crit() and is_crit() defined on Electric Load Crit form
 	property('crit_load_escalation','FixedLength',${analysis_period});
 	enable( 'run_resiliency_calcs', sum(${grid_outage})>0 );
+	fuel_cell_check();
 };
 
 on_change{'crit_load_type'} = define() {
@@ -493,3 +494,20 @@ on_change{'crit_load_type'} = define() {
 	enable( 'crit_load_user_data', opt);
 	enable( 'crit_load_pct', !opt);
 };
+
+on_change{'crit_load_pct'} = define() {
+	fuel_cell_check();
+};
+
+on_change{'crit_load_user_data'} = define() {
+	fuel_cell_check();
+};
+
+
+function fuel_cell_check() 
+{
+	if ( technology() == 'Fuel Cell' && is_crit() && ${en_batt} == 0 )
+	{
+		msgbox('Critical Load Requires Battery!\nYou have specified a critical load without enabling the battery on the Battery Storage page. To continue, either set the critical load percent and time series data to zero, or enable the battery.');
+	}
+}
