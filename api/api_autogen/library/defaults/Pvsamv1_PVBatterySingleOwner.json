@@ -423,6 +423,7 @@
 			"batt_chem": 1,
 			"batt_h_to_ambient": 15,
 			"batt_initial_SOC": 50,
+			"batt_life_model": 1,
 			"batt_lifetime_matrix": [
 				[10.000000, 0.000000, 100.853000],
 				[10.000000, 1250.000000, 94.884000],
@@ -491,6 +492,7 @@
 			"batt_dispatch_pvs_soc_rest": 50,
 			"batt_dispatch_pvs_timestep_multiplier": 3,
 			"batt_dispatch_update_frequency_hours": 1,
+			"batt_dispatch_wf_forecast_choice": 0,
 			"batt_look_ahead_hours": 18,
 			"batt_pv_ac_forecast": [0.000000],
 			"batt_pv_clipping_forecast": [0.000000],

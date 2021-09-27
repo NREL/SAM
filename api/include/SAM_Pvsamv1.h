@@ -4022,18 +4022,10 @@ extern "C"
 	//
 
 	/**
-	 * Set batt_auto_gridcharge_max_daily: Allowed grid charging percent per day for automated dispatch [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_auto_gridcharge_max_daily_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set batt_custom_dispatch: Custom battery power for every time step [kW]
 	 * options: kWAC if AC-connected, else kWDC
 	 * constraints: None
-	 * required if: en_batt=1&batt_dispatch_choice=3
+	 * required if: en_batt=1&batt_dispatch_choice=2
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_custom_dispatch_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -4054,7 +4046,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_charge: System charging allowed for automated dispatch? [kW]
+	 * Set batt_dispatch_auto_can_charge: System charging allowed for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4062,7 +4054,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_clipcharge: Battery can charge from clipped power for automated dispatch? [kW]
+	 * Set batt_dispatch_auto_can_clipcharge: Battery can charge from clipped power for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4070,7 +4062,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_fuelcellcharge: Charging from fuel cell allowed for automated dispatch? [kW]
+	 * Set batt_dispatch_auto_can_fuelcellcharge: Charging from fuel cell allowed for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4078,7 +4070,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_gridcharge: Grid charging allowed for automated dispatch? [kW]
+	 * Set batt_dispatch_auto_can_gridcharge: Grid charging allowed for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4086,18 +4078,42 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_gridcharge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4/5]
-	 * options: If behind the meter: 0=PeakShavingLookAhead,1=PeakShavingLookBehind,2=InputGridTarget,3=InputBatteryPower,4=ManualDispatch,5=PriceSignalForecast if front of meter: 0=AutomatedLookAhead,1=AutomatedLookBehind,2=AutomatedInputForecast,3=InputBatteryPower,4=ManualDispatch
+	 * Set batt_dispatch_charge_only_system_exceeds_load: Battery can charge from system only when system output exceeds load [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4]
+	 * options: If behind the meter: 0=PeakShaving,1=InputGridTarget,2=InputBatteryPower,3=ManualDispatch,4=PriceSignalForecast if front of meter: 0=AutomatedEconomic,1=PV_Smoothing,2=InputBatteryPower,3=ManualDispatch
 	 * constraints: None
 	 * required if: en_batt=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set batt_dispatch_discharge_only_load_exceeds_system: Battery can discharge battery only when load exceeds system output [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_meter_position=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_discharge_only_load_exceeds_system_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_dispatch_load_forecast_choice: Load forecast choice for automatic dispatch [0/1/2]
+	 * options: 0=LookAhead,1=LookBehind,2=InputForecast
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_load_forecast_choice_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set batt_dispatch_pvs_ac_lb: AC lower bound [fraction of nameplate]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4105,7 +4121,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_ac_lb_enable: Enable AC lower bound [0/1]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_enable_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4113,7 +4129,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_ac_ub: AC upper bound [fraction of nameplate]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_ub_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4121,7 +4137,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_ac_ub_enable: Enable AC upper bound [0/1]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_ub_enable_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4129,7 +4145,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_curtail_as_control: Correct up-ramp violations [0/1]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_curtail_as_control_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4137,7 +4153,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_curtail_if_violation: Curtail violations [0/1]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_curtail_if_violation_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4145,7 +4161,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_forecast_shift_periods: Forecasting window [periods of ramp intervals]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_forecast_shift_periods_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4153,7 +4169,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_kf: Forecast accumulation error multiplier (kf)
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_kf_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4161,7 +4177,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_ki: Return to rest SOC multiplier (ki)
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ki_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4169,7 +4185,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_kp: Track PV power multiplier (kp)
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_kp_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4177,7 +4193,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_max_ramp: Maximum ramp rate [% of nameplate per ramp interval]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_max_ramp_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4185,7 +4201,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_nameplate_ac: Nameplate for pv smoothing [kWac]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_nameplate_ac_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4193,7 +4209,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_short_forecast_enable: Enable short term power forecast [0/1]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_short_forecast_enable_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4201,7 +4217,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_soc_rest: Battery resting SOC [%]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_soc_rest_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4209,7 +4225,7 @@ extern "C"
 	 * Set batt_dispatch_pvs_timestep_multiplier: Ramp timestep multiplier
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=5
+	 * required if: en_batt=1&batt_meter_position=1&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_timestep_multiplier_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4222,6 +4238,30 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_update_frequency_hours_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set batt_dispatch_wf_forecast_choice: Weather forecast choice for automatic dispatch [0/1/2]
+	 * options: 0=LookAhead,1=LookBehind,2=InputForecast
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_wf_forecast_choice_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_load_ac_forecast: Load ac power forecast [kW]
+	 * options: Length either 8760 or 8760 * steps per hour
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_load_ac_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set batt_load_ac_forecast_escalation: Annual load escalation for ac power forecast [kW]
+	 * options: length <= analysis_period
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_load_ac_forecast_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set batt_look_ahead_hours: Hours to look ahead in automated dispatch [hours]
 	 * options: None
 	 * constraints: None
@@ -4231,7 +4271,7 @@ extern "C"
 
 	/**
 	 * Set batt_pv_ac_forecast: PV ac power forecast [kW]
-	 * options: None
+	 * options: Length either 8760 * steps per hour (values repeat each year) or 8760 * steps per hour * analysis period
 	 * constraints: None
 	 * required if: None
 	 */
@@ -4239,7 +4279,7 @@ extern "C"
 
 	/**
 	 * Set batt_pv_clipping_forecast: PV clipping forecast [kW]
-	 * options: None
+	 * options: Length either 8760 * steps per hour (values repeat each year) or 8760 * steps per hour * analysis period
 	 * constraints: None
 	 * required if: None
 	 */
@@ -4249,7 +4289,7 @@ extern "C"
 	 * Set batt_target_choice: Target power input option [0/1]
 	 * options: 0=InputMonthlyTarget,1=InputFullTimeSeries
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=0&batt_dispatch_choice=2
+	 * required if: en_batt=1&batt_meter_position=0&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_target_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4257,7 +4297,7 @@ extern "C"
 	 * Set batt_target_power: Grid target power for every time step [kW]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=0&batt_dispatch_choice=2
+	 * required if: en_batt=1&batt_meter_position=0&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_target_power_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -4265,7 +4305,7 @@ extern "C"
 	 * Set batt_target_power_monthly: Grid target power on monthly basis [kW]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_meter_position=0&batt_dispatch_choice=2
+	 * required if: en_batt=1&batt_meter_position=0&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_target_power_monthly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -4273,7 +4313,7 @@ extern "C"
 	 * Set dispatch_manual_charge: Periods 1-6 charging from system allowed?
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_dispatch_choice=4
+	 * required if: en_batt=1&batt_dispatch_choice=3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_charge_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -4281,7 +4321,7 @@ extern "C"
 	 * Set dispatch_manual_discharge: Periods 1-6 discharging allowed?
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_dispatch_choice=4
+	 * required if: en_batt=1&batt_dispatch_choice=3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_discharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -4297,7 +4337,7 @@ extern "C"
 	 * Set dispatch_manual_gridcharge: Periods 1-6 grid charging allowed?
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_dispatch_choice=4
+	 * required if: en_batt=1&batt_dispatch_choice=3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_gridcharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -4305,7 +4345,7 @@ extern "C"
 	 * Set dispatch_manual_percent_discharge: Periods 1-6 discharge percent [%]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_dispatch_choice=4
+	 * required if: en_batt=1&batt_dispatch_choice=3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_percent_discharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -4313,7 +4353,7 @@ extern "C"
 	 * Set dispatch_manual_percent_gridcharge: Periods 1-6 gridcharge percent [%]
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_dispatch_choice=4
+	 * required if: en_batt=1&batt_dispatch_choice=3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_percent_gridcharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -4321,7 +4361,7 @@ extern "C"
 	 * Set dispatch_manual_sched: Battery dispatch schedule for weekday
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_dispatch_choice=4
+	 * required if: en_batt=1&batt_dispatch_choice=3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -4329,7 +4369,7 @@ extern "C"
 	 * Set dispatch_manual_sched_weekend: Battery dispatch schedule for weekend
 	 * options: None
 	 * constraints: None
-	 * required if: en_batt=1&batt_dispatch_choice=4
+	 * required if: en_batt=1&batt_dispatch_choice=3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -5814,8 +5854,6 @@ extern "C"
 	 * BatteryDispatch Getters
 	 */
 
-	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_auto_gridcharge_max_daily_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_custom_dispatch_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -5830,7 +5868,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_gridcharge_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_choice_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_discharge_only_load_exceeds_system_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_load_forecast_choice_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_nget(SAM_table ptr, SAM_error *err);
 
@@ -5863,6 +5907,12 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_timestep_multiplier_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_update_frequency_hours_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_wf_forecast_choice_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_load_ac_forecast_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_load_ac_forecast_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_look_ahead_hours_nget(SAM_table ptr, SAM_error *err);
 
