@@ -191,16 +191,13 @@ function setup_battery_pages_front_of_meter()
 		],
 			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
-	
-	
-	
 }
 
 function setup_pvwatts_battery_pages_behind_the_meter()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	addpage( [[ 'PVWatts', 'Battery Model Simple with REopt']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
-	setup_grid_page();
+	setup_grid_page_with_outage();
 }
 
 function setup_pvwatts_pages()

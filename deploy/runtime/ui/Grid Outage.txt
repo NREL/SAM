@@ -141,8 +141,8 @@ Tool Tip
 0
 Caption
 5
-214
-For systems with battery storage and a critical load, you can define grid outages to see if the system can meet the critical load through the outage(s). Click Edit Array to specify outages over the analysis period.
+237
+For behind-the-meter (BTM) systems with battery storage and a critical load, you can define grid outages to see if the system can meet the critical load through the outage(s). Click Edit Array to specify outages over the analysis period.
 TextColour
 4
 0
