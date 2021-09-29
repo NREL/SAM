@@ -79,7 +79,8 @@ set(SAM_SRC
 	src/shadingfactors.cpp
 	src/materials.cpp
 	src/codegenerator.cpp
-	src/pythonhandler.cpp src/pythonhandler.h)
+	src/pythonhandler.cpp src/pythonhandler.h
+	src/combinecases.cpp src/combinecases.h)
 
 
 #####################################################################################################################
