@@ -182,7 +182,7 @@ Grid
 DataArray
 
 0
-673
+776
 on_load{'Grid Outage'} = define() {
 	message = '';
 	color = 'Black';
@@ -206,3 +206,8 @@ on_load{'Grid Outage'} = define() {
 		enable( 'grid_outage', is_crit() );
 	}
 };
+
+function is_grid_outage() // used on Electric Load Critical form
+{
+	return sum(${grid_outage}) > 0;
+}

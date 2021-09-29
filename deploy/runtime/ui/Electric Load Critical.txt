@@ -1,7 +1,7 @@
 Electric Load Critical
-833
-294
-9
+832
+298
+10
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 824
 Height
 3
-279
+282
 Tool Tip
 5
 0
@@ -262,6 +262,53 @@ The critical electric load during an outage period is specified as the average p
 TabOrder
 3
 3
+Label
+
+1
+13
+Name
+5
+17
+lbl_critical_load
+X
+3
+45
+Y
+3
+138
+Width
+3
+387
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Divider
 
 1
@@ -275,7 +322,7 @@ X
 21
 Y
 3
-165
+174
 Width
 3
 750
@@ -314,7 +361,7 @@ X
 30
 Y
 3
-180
+189
 Width
 3
 723
@@ -362,7 +409,7 @@ X
 39
 Y
 3
-225
+234
 Width
 3
 330
@@ -479,14 +526,15 @@ Calculate resiliency only for outage time steps (faster)|Calculate resiliency fo
 RadioChoice
 
 0
-984
+1744
 on_load{'Electric Load Critical'} = define() {
 	on_change{'normalize_to_utility_bill'}();
 	on_change{'crit_load_type'}();
 	show_crit(is_crit()); // show_crit() and is_crit() defined on Electric Load Crit form
 	property('crit_load_escalation','FixedLength',${analysis_period});
-	enable( 'run_resiliency_calcs', sum(${grid_outage})>0 );
+	enable_resiliency_calcs();
 	fuel_cell_check();
+	critical_load_message();
 };
 
 on_change{'crit_load_type'} = define() {
@@ -497,12 +545,19 @@ on_change{'crit_load_type'} = define() {
 
 on_change{'crit_load_pct'} = define() {
 	fuel_cell_check();
+	critical_load_message();
+	enable_resiliency_calcs();	
 };
 
 on_change{'crit_load_user_data'} = define() {
 	fuel_cell_check();
+	critical_load_message();
+	enable_resiliency_calcs();
 };
 
+on_change{'run_resiliency_calcs'} = define() {
+	critical_load_message();
+};
 
 function fuel_cell_check() 
 {
@@ -510,4 +565,23 @@ function fuel_cell_check()
 	{
 		msgbox('Critical Load Requires Battery!\nYou have specified a critical load without enabling the battery on the Battery Storage page. To continue, either set the critical load percent and time series data to zero, or enable the battery.');
 	}
+}
+
+function critical_load_message()
+{
+	msg = '';
+	clr = 'Black';
+	if ( is_crit() && !is_grid_outage() ) // is_grid_outage() defined on Grid Outage form
+	{
+		msg = 'To calculate resiliency metrics, specify a grid outage and/or choose Calculate Resiliency for All Time Steps.';
+		clr = 'Red';
+	}
+	property('lbl_critical_load','Caption',msg);
+	property('lbl_critical_load','TextColour',clr);
+}
+
+function enable_resiliency_calcs()
+{
+	if ( !is_crit() ) { value('run_resiliency_calcs', 0); }
+	enable( 'run_resiliency_calcs', is_crit() ); // is_crit() defined on Electric Load Crit form
 }
