@@ -69,6 +69,7 @@
 			"batt_chem": 1,
 			"batt_h_to_ambient": 500,
 			"batt_initial_SOC": 50,
+			"batt_life_model": 1,
 			"batt_lifetime_matrix": [
 				[20.000000, 0.000000, 100.000000],
 				[20.000000, 5000.000000, 80.000000],
