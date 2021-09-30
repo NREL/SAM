@@ -2492,7 +2492,7 @@ Physical Trough Thermal Storage
 0
 Numeric
 
-3880
+3965
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -2618,6 +2618,7 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 		d_tank = ssc_var(obj, "csp_pt_tes_tank_diameter"); 	//[m]
 		q_dot_loss = ssc_var(obj, "q_dot_tes_est");			//[MWt]
 		dens = ssc_var(obj, "csp_pt_tes_htf_density");		//[kg/m^3]
+		is_hx = !ssc_var(obj, "are_htfs_equal");		//[-]
 	}
 	else {
 		q_tes_des = 1.0/0.0;
@@ -2626,6 +2627,7 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 		d_tank = 1.0/0.0;
 		q_dot_loss = 1.0/0.0;
 		dens = 1.0/0.0;
+		is_hx = true;
 	}
 	
 	${Q_tes} = q_tes_des;
@@ -2634,14 +2636,15 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	${csp.pt.tes.tank_diameter} = d_tank;
 	${q_dot_tes_est} = q_dot_loss;
 	${csp.pt.tes.htf_density} = dens;
+	${is_hx} = is_hx;
 	
 	ssc_free( obj );	
 };
 
-3013
+1301
 on_load{'Physical Trough Thermal Storage'} = define() {
 	on_change{"combo_tes_htf_type"}();
-	hx_derate_update();
+	on_change{"is_hx"}();
 	
 	// constants and initial conditions
 	value("tc_fill", 7);
@@ -2649,47 +2652,22 @@ on_load{'Physical Trough Thermal Storage'} = define() {
 	value("t_dis_out_min", 500);
 	value("t_ch_out_max", 500);
 	value("nodes", 2000);
-	value("f_tc_cold", 2);
-	
+	value("f_tc_cold", 2);	
 };
 
 function hx_derate_update_module() {
-	
-	obj = ssc_create();
-	
-	ssc_var(obj, "HTF_code1", ${store_fluid});
-	ssc_var(obj, "fl_props1", ${store_fl_props});
-	
-	ssc_var(obj, "HTF_code2", ${Fluid});
-	ssc_var(obj, "fl_props2", ${field_fl_props});
 
-	ret = ssc_exec(obj, 'user_htf_comparison', {'show_dialog'=false, 'hold_dialog'=false});
-	
-	are_equal = ssc_var(obj, "are_equal");
-
-	is_hx = !(are_equal==1);
+	is_hx = ${is_hx};
 
 	enable('dt_hot', is_hx );
 	enable('dt_cold', is_hx );
 	enable('tanks_in_parallel', !is_hx);
 	set_tes_bypass_msg(is_hx);
-
-	// Set 'is_hx' here
-	value("is_hx", is_hx);
-	//value("flux_max_dsg", flux_max_dsg);
-	
-	ssc_free( obj );
 }
 
 function hx_derate_update() {
 	
 	hx_derate_update_module();
-	
-	//sf_htf = value("combo_htf_type");
-	//tes_htf = value("combo_tes_htf_type");
-
-	//enable('dt_hot', ( (sf_htf!=tes_htf) || ((sf_htf==9)&&(tes_htf==9))) );
-	//enable('dt_cold', ( (sf_htf!=tes_htf) || ((sf_htf==9)&&(tes_htf==9))) ) ;
 }
 
 function set_tes_bypass_msg ( v ) {
@@ -2700,60 +2678,26 @@ function set_tes_bypass_msg ( v ) {
 	property('tes_bypass_msg','Caption',msg);
 }
 
-on_change{"store_fl_props"} = define(){
-	hx_derate_update_module();
+on_change{"is_hx"} = define(){
+	
+	is_hx = ${is_hx};
+
+	enable('dt_hot', is_hx );
+	enable('dt_cold', is_hx );
+	enable('tanks_in_parallel', !is_hx);
+	set_tes_bypass_msg(is_hx);
+};
+
+on_change{"store_fl_props"}=define(){
+	on_change{"is_hx"}();
 };
 
 on_change{"combo_tes_htf_type"}=define(){
-	hx_derate_update();
+
+	on_change{"is_hx"}();
 	
     bUserDefined = (${combo_tes_htf_type} == 9);
     enable("store_fl_props", bUserDefined);
     enable("csp.dtr.tes.htf_min_opt_temp",!bUserDefined);
     enable("csp.dtr.tes.htf_max_opt_temp",!bUserDefined);
-
-	// density
-	//if (${combo_tes_htf_type} < 9 )
-	//	fluid_dens_temp = substance_density( ${store_fluid}, ${csp.dtr.tes.htf_calc_temp} );
-	//else
-	//	fluid_dens_temp = cspdtr_tes_userhtf( 2, ${csp.dtr.tes.htf_calc_temp} );
-	//value('csp.dtr.tes.fluid_dens',fluid_dens_temp);
-
-	// specific heat
-	//if (${combo_tes_htf_type} < 9 )
-	//	fluid_sph_temp = substance_specific_heat( ${store_fluid}, ${csp.dtr.tes.htf_calc_temp} );
-	//else
-	//	fluid_sph_temp = cspdtr_tes_userhtf( 1, ${csp.dtr.tes.htf_calc_temp} );
-	//value('csp.dtr.tes.fluid_sph',fluid_sph_temp);
-
 };
-
-/*
-function cspdtr_tes_userhtf(col, temperatureC) {
-	// specific heat is property 1
-	// density is property 2
-	aUserDefHTF = value("store_fl_props");
-	
-	rows = #aUserDefHTF;
-	cols = #aUserDefHTF[0];
-
-	if (cols != 7 || rows < 2 || col < 0 || col >= 7) return 1.0;
-	for (i=1;i<rows;i++)
-	{
-		if (aUserDefHTF[i][0] >= temperatureC)
-		{
-			// interp and return 
-			xmin = aUserDefHTF[i-1][0];
-			xmax = aUserDefHTF[i][0];
-			ymin = aUserDefHTF[i-1][col];
-			ymax = aUserDefHTF[i][col];
-			if (xmax <= xmin) return 1.0;
-
-			percent = (temperatureC-xmin)/(xmax-xmin);
-			return ymin + percent*(ymax-ymin);
-		}
-	}
-
-	return aUserDefHTF[rows-1][col];
-}
-*/
