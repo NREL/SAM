@@ -1760,7 +1760,7 @@ TabOrder
 3
 2
 
-53
+52
 Q_tes
 3
 1
@@ -1977,20 +1977,6 @@ csp.dtr.tes.htf_min_opt_temp
 1
 Storage HTF min operating temp
 °C
-Physical Trough Thermal Storage
-0
-8
-1
-1
-1
-1
-0
-Numeric
-csp.dtr.tes.hx_derate
-3
-1
-Thermal storage exergetic efficiency
- 
 Physical Trough Thermal Storage
 0
 8
@@ -2506,7 +2492,7 @@ Physical Trough Thermal Storage
 0
 Numeric
 
-4225
+3880
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -2603,19 +2589,6 @@ equations{ 'V_tank_hot_ini' } = define() {
 // Just UI indicator
 equations{ 'csp.dtr.tes.min_fluid_volume' } = define() {
 	return ${vol_tank}*${h_tank_min}/${h_tank}; };
-
-// Just UI indicator
-equations{ 'csp.dtr.tes.hx_derate' } = define() {
-	if (${is_hx} != 1 )
-		return 1; /* fluids are the same, no HX */
-	else
-	{
-		dt_ave = 0.5*(${dt_hot}+${dt_cold});
-		T_htf_ave = 0.5*(${T_loop_out}+${T_loop_in_des});
-		T_cold_baseline = 50.0;
-		return (T_htf_ave-2*dt_ave-T_cold_baseline)/(T_htf_ave-T_cold_baseline);
-	}
-};
 
 // Just UI indicators
 equations{ '$MIMO$ ui_tes_calcs' } = define()
