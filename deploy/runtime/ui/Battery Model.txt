@@ -263,7 +263,7 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12086
+12113
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
@@ -277,7 +277,7 @@ on_change{'batt_type'} = define()
 	type = value('batt_type');
 	
 	if (type != 3 && type != 10)
-		{ update_default = yesno('Replace inputs with default values for this battery type?'); }
+		{ update_default = yesno('Battery Type Change\nReplace inputs with default values for this battery type?'); }
 	else
 		{ update_default = false; }
 	
@@ -314,12 +314,12 @@ on_change{'batt_type'} = define()
 	batt_chem = value('batt_chem');
 	if (batt_chem != 1) {
 		value('batt_life_model', 0);
-		enable('batt_life_model', false);
+		//enable('batt_life_model', false);
 	}
-	else {
+	/*else {
 		on_change{'batt_life_model'}();
 		enable('batt_life_model', true);
-	}
+	}*/
 };
 
 function is_flow()
