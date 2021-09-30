@@ -1,5 +1,6 @@
 {
-    "tooltips": [
+    "tooltips": 
+    [
         {
             "name": "tt_loss_array_spacing",
             "title": "Array Spacing Loss",
@@ -534,6 +535,26 @@
             "name": "tt_other_maintenance_cost",
             "title": "Other Maintenance",
             "tip": "Costs not included within the maintenance categories."
+        },
+        {
+            "name": "tt_load_data",
+            "title": "Electric Load Power",
+            "tip": "Click Edit Array to enter or import hourly or subhourly load data."
+        },
+        {
+            "name": "tt_load_scaling",
+            "title": "Electric Load Scaling Factor",
+            "tip": "Multiplies the kW value in each time step by the scaling factor you enter.\nFor example, 1 = no scaling, 2 = double the load, 0.5 = half the load."
+        },
+        {
+            "name": "tt_load_growth",
+            "title": "Electric Load Annual Growth Rate",
+            "tip": "In Value mode, the growth rate applies to the previous year's\nannual kWh load starting in Year 2. In Schedule mode, each year's\nrate applies to the Year 1 kWh value. See Help for details."
+        },
+        {
+            "name": "tt_load_scale_monthly",
+            "title": "Monthly Electricity Usage for Scaling",
+            "tip": "Check the box and click Edit Values to enter total electricity\nusage by month in kWh/month, such as from an electricity bill.\nSAM adjusts the hourly or subhourly load data so that the\ntotal kWh in each month equals the data you provide. Click\nView Load Data to see the original and adjusted load data."
         }
 
     ]
