@@ -57,7 +57,7 @@ extern "C"
 
 	/**
 	 * Set solar_resource_data: Weather data
-	 * options: lat,lon,tz,elev,year,month,hour,minute,gh,dn,df,poa,tdry,twet,tdew,rhum,pres,Snow,alb,aod,wspd,wdir
+	 * options: lat,lon,tz,elev,year,month,hour,minute,gh,dn,df,poa,tdry,twet,tdew,rhum,pres,snow,alb,aod,wspd,wdir
 	 * constraints: None
 	 * required if: ?
 	 */
@@ -3708,6 +3708,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Load_crit_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set crit_load_escalation: Annual critical load escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Load_crit_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set grid_outage: Timesteps with grid outage [0/1]
 	 * options: 0=GridAvailable,1=GridUnavailable,Length=load
 	 * constraints: None
@@ -5767,6 +5775,8 @@ extern "C"
 	 */
 
 	SAM_EXPORT double* SAM_Pvsamv1_Load_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Load_crit_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Load_grid_outage_aget(SAM_table ptr, int* length, SAM_error *err);
 

@@ -340,6 +340,14 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Load_crit_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set crit_load_escalation: Annual critical load escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_Load_crit_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set grid_outage: Timesteps with grid outage [0/1]
 	 * options: 0=GridAvailable,1=GridUnavailable,Length=load
 	 * constraints: None
@@ -1595,6 +1603,8 @@ extern "C"
 	 */
 
 	SAM_EXPORT double* SAM_Battery_Load_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Load_crit_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Load_grid_outage_aget(SAM_table ptr, int* length, SAM_error *err);
 

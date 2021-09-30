@@ -2204,6 +2204,14 @@ extern "C"
 	//
 
 	/**
+	 * Set batt_annual_charge_energy: Battery annual energy charged [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Battery_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set batt_annual_charge_from_system: Battery annual energy charged from system [kWh]
 	 * options: None
 	 * constraints: None
@@ -2938,6 +2946,8 @@ extern "C"
 	/**
 	 * Battery Getters
 	 */
+
+	SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
