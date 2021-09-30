@@ -1,7 +1,7 @@
 Physical Trough Thermal Storage
 910
-429
-30
+437
+31
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 900
 Height
 3
-320
+326
 Tool Tip
 5
 0
@@ -1442,10 +1442,10 @@ Name
 tanks_in_parallel
 X
 3
-336
+369
 Y
 3
-369
+405
 Width
 3
 20
@@ -1526,6 +1526,53 @@ BackColour
 TabOrder
 3
 4
+Label
+
+1
+13
+Name
+5
+14
+tes_bypass_msg
+X
+3
+117
+Y
+3
+375
+Width
+3
+267
+Height
+3
+33
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
 Numeric
 
 1
@@ -2616,7 +2663,7 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	ssc_free( obj );	
 };
 
-2725
+3013
 on_load{'Physical Trough Thermal Storage'} = define() {
 	on_change{"combo_tes_htf_type"}();
 	hx_derate_update();
@@ -2649,6 +2696,8 @@ function hx_derate_update_module() {
 
 	enable('dt_hot', is_hx );
 	enable('dt_cold', is_hx );
+	enable('tanks_in_parallel', !is_hx);
+	set_tes_bypass_msg(is_hx);
 
 	// Set 'is_hx' here
 	value("is_hx", is_hx);
@@ -2666,6 +2715,14 @@ function hx_derate_update() {
 
 	//enable('dt_hot', ( (sf_htf!=tes_htf) || ((sf_htf==9)&&(tes_htf==9))) );
 	//enable('dt_cold', ( (sf_htf!=tes_htf) || ((sf_htf==9)&&(tes_htf==9))) ) ;
+}
+
+function set_tes_bypass_msg ( v ) {
+	msg = '';
+	if ( v ) {
+		msg = "If the storage fluid is different than the field HTF, then the field and TES must operate in parallel.";
+	}
+	property('tes_bypass_msg','Caption',msg);
 }
 
 on_change{"store_fl_props"} = define(){
