@@ -1,7 +1,7 @@
 Battery Lifetime
 1052
 852
-11
+12
 GroupBox
 
 1
@@ -31,47 +31,6 @@ Caption
 Battery Lifetime
 Bold
 2
-1
-RadioChoice
-
-1
-11
-Name
-5
-20
-batt_calendar_choice
-X
-3
-42
-Y
-3
-537
-Width
-3
-465
-Height
-3
-75
-Tool Tip
-5
-0
-Selection
-3
-0
-Items
-6
-3
-None
-Standard
-Custom
-ShowCaptions
-2
-1
-Horizontal
-2
-0
-TabOrder
-3
 1
 Plot
 
@@ -130,8 +89,8 @@ Colour
 255
 Caption
 5
-26
-Calendar Degradation Table
+20
+Calendar Degradation
 Bold
 2
 1
@@ -145,10 +104,10 @@ Name
 batt_calendar_lifetime_matrix
 X
 3
-36
+45
 Y
 3
-631
+624
 Width
 3
 450
@@ -259,8 +218,8 @@ Colour
 255
 Caption
 5
-23
-Cycle Degradation Table
+17
+Cycle Degradation
 Bold
 2
 1
@@ -293,7 +252,7 @@ Selection
 Items
 6
 3
-Calendar and Cycle Degradation Tables
+Calendar and Cycle Degradation
 Li-ion NMC/Graphite
 Li-ion LMO/LTO
 ShowCaptions
@@ -395,6 +354,35 @@ ShowColumn
 ColorMap
 2
 0
+Image
+
+1
+8
+Name
+5
+23
+img_empirical_equations
+X
+3
+135
+Y
+3
+687
+Width
+3
+264
+Height
+3
+50
+Tool Tip
+5
+0
+Image
+7
+Battery Lifetime_img_empirical_equations.png
+Centered
+2
+1
 Label
 
 1
@@ -448,8 +436,8 @@ Label
 13
 Name
 5
-8
-object 7
+10
+object 711
 X
 3
 15
@@ -513,8 +501,48 @@ Height
 Tool Tip
 5
 0
+RadioChoice
 
-8
+1
+11
+Name
+5
+18
+ui_calendar_choice
+X
+3
+42
+Y
+3
+540
+Width
+3
+144
+Height
+3
+75
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Empirical
+Custom
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+1
+
+9
 batt_calendar_a
 3
 1
@@ -563,8 +591,8 @@ batt_calendar_choice
 Calendar degradation options
  
 Battery Lifetime
-20
-None|Standard|Custom
+21
+None|Empirical|Custom
 3
 1
 1
@@ -609,8 +637,8 @@ batt_life_model
  Battery Life Model Type
  
 Battery Lifetime
-72
-Calendar and Cycle Degradation Tables|Li-ion NMC Graphite|Li-ion LMO LTO
+65
+Calendar and Cycle Degradation|Li-ion NMC Graphite|Li-ion LMO LTO
 3
 1
 1
@@ -641,8 +669,23 @@ Battery Lifetime
 100 150 50 
 
 DataMatrix
+ui_calendar_choice
+3
+1
+Battery calendar degradation choice
+0/1
+ 
+16
+Empirical|Custom
+1
+1
+1
+1
+1
+0
+RadioChoice
 
-416
+731
 // Set these values because users are unlikely to have this data
 // q = q0 - k_cal * sqrt(t)
 // k_cal = a * exp[b(1/T - 1/296)] * exp[c(SOC/T - 1/296)]
@@ -650,20 +693,28 @@ equations{'batt_calendar_q0'} = define() { return(1.02); };
 equations{'batt_calendar_a'} = define() { return(0.00266); }; // 1/sqrt(day)
 equations{'batt_calendar_b'} = define() { return(-7280); }; // K
 equations{'batt_calendar_c'} = define() { return(939); }; // K
-6602
+
+// this is a hack to facilitate showing and hiding empirical
+// equation image using batt_calendar_lifetime_matrix because
+// show() does not work with image widgets
+equations{'batt_calendar_choice'} = define()
+{
+	if ( ${batt_life_model} > 0 )
+	{
+		return 0;
+	}
+	else
+	{
+		return ${ui_calendar_choice} + 1;
+	}	
+};
+5663
 on_load{'Battery Lifetime'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
-	on_change{'batt_calendar_choice'}();
+	on_change{'ui_calendar_choice'}();
 	on_change{'batt_calendar_lifetime_matrix'}();
+	on_change{'batt_life_model'}();
 	batt_chem = value('batt_chem');
-	/*if (batt_chem != 1) {
-		value('batt_life_model', 0);
-		enable('batt_life_model', false);
-	}
-	else {
-		on_change{'batt_life_model'}();
-		enable('batt_life_model', true);
-	}*/
 };
 
 on_change{'batt_calendar_lifetime_matrix'} = define(){
@@ -671,73 +722,48 @@ on_change{'batt_calendar_lifetime_matrix'} = define(){
 };
 
 on_change{'batt_life_model'} = define(){
-	//blm = value('batt_life_model');
-	enable('batt_lifetime_matrix', !${batt_life_model});
-	enable('plot_cap_vs_cycle', !${batt_life_model});
-	enable('batt_calendar_choice', !${batt_life_model});
-	enable('batt_calendar_lifetime_matrix', !${batt_life_model});
-	//enable("batt_calendar_a", !blm);
-	//enable("batt_calendar_b", !blm);
-	//enable("batt_calendar_c", !blm);
-	//enable("batt_calendar_q0", !blm);
-	//enable("batt_calendar_a", !blm);
+	enable('batt_lifetime_matrix', ( ${batt_life_model} == 0 ));
+	enable('plot_cap_vs_cycle', ( ${batt_life_model} == 0 ));
+	enable('ui_calendar_choice', ( ${batt_life_model} == 0 ));
+	enable('batt_calendar_lifetime_matrix', ( ${batt_life_model} == 0 ));
 	
 	msg = '';
 	clr = 'Black';
 	options = ['Tables','Li-ion NMC/Graphite','Li-ion LMO/LTO'];
 	if ( ${batt_life_model} == 0 )
 	{
-		msg = 'Use the Calendar and Cycle Degradation tables below to define the battery life parameters.';
+		msg = 'Use the Calendar and Cycle Degradation inputs below to define the battery life parameters.';
 	}
 	else
 	{
-		msg = 'This option uses a battery life model for the ' + options[${batt_life_model}] + ' battery type. It disables and ignores the data in the Cycle Degradation and Calendar Degradation tables below.';
+		msg = 'This option uses a battery life model for the ' + options[${batt_life_model}] + ' battery type. It disables and ignores the data under Cycle Degradation and Calendar Degradation below.';
 	}
 	property('lbl_battery_lifetime','Caption',msg);
 	property('lbl_battery_lifetime','TextColour',clr);
 };
 
-on_change{'batt_calendar_choice'} = define(){
-	mode = value('batt_calendar_choice');
-	
-	is_model = false;
-	is_table = false;
-	if (mode == 1)
-		is_model = true;
-	else if (mode == 2)
-		is_table = true;
+on_change{'ui_calendar_choice'} = define(){
 		
-	batt_chem = value('batt_chem');
-	
-	if (is_model && batt_chem !=1)
+	if (${ui_calendar_choice} == 0 && ${batt_chem} !=1)
 	{
-		x = yesno('Calendar Degradation Table\nThe Standard calendar degradation model is not intended for the Lead Acid or Flow battery types.\n\nDo you want to use it anyway?');
+		x = yesno('Calendar Degradation Table\nThe Empirical calendar degradation model is not intended for the Lead Acid or Flow battery types.\n\nDo you want to use it anyway?');
 		if ( !x ) 
 		{ 
-			value('batt_calendar_choice', 0);
-			return; 
+			value('ui_calendar_choice', 1);
+			return;
 		}
 	}
 	
-	enable('batt_calendar_lifetime_matrix', is_table);
-	//enable('batt_calendar_a', is_model);
-	//enable('batt_calendar_b', is_model);
-	//enable('batt_calendar_c', is_model);
-	//enable('batt_calendar_q0', is_model);
-	
+	show('batt_calendar_lifetime_matrix', ${ui_calendar_choice} == 1);
+	 // show() doesn't work on image widget so hide behind table
+	//show('img_empirical_equations', ${batt_calendar_choice} == 1);
+	refresh();	
 	plot_calendar_life();
+
 };
 
 function plot_calendar_life()
 {
-	mode = value('batt_calendar_choice');
-	is_model = false;
-	is_table = false;
-	if (mode == 1)
-		is_model = true;
-	else if (mode == 2)
-		is_table = true;
-
 	clearplot('batt_calendar_life_plot');
 	setplot('batt_calendar_life_plot');
 	
@@ -751,7 +777,7 @@ function plot_calendar_life()
 	legend_string = [];
 	use_legend = false;
 	
-	if (is_model)
+	if ( ${ui_calendar_choice} == 0 )
 	{
 		a = value('batt_calendar_a');
 		b = value('batt_calendar_b');
@@ -770,10 +796,13 @@ function plot_calendar_life()
 		DOD = table{'DOD'};
 		
 		V_vec = [];
-		for (j = 0; j < #SOC_vec; j++){
+		for (j = 0; j < #SOC_vec; j++)
+		{
 			V_vec[j] = 0;
-			for (i = 0; i < #DOD; i++){
-				if (1 - DOD[i]*0.01 == SOC_vec[j]){
+			for (i = 0; i < #DOD; i++)
+			{
+				if (1 - DOD[i]*0.01 == SOC_vec[j])
+				{
 					V_vec[j] = V[i];
 				}
 			}
@@ -825,19 +854,11 @@ function plot_calendar_life()
 				count++;
 			}
 			plot(t, q, {'thick'=2, 'type'='line', 'color'=color_string[scenario], 'series'=legend_string[scenario]});	
-			/*// update table so it matches plot
-			data = [];
-			for ( i=0; i<#t; i++ )
-			{
-				data[i][0]=t[i];
-				data[i][1]=q[i];
-			}
-			enable('batt_calendar_lifetime_matrix',1);
-			value('batt_calendar_lifetime_matrix', data);
-			enable('batt_calendar_lifetime_matrix',0);		*/
 		}
+		plotopt( { 'title'='Calendar Degradation for Empirical Model', 'legend'=true, 'legendpos'='right' });
+
 	}
-	else if (is_table)
+	else if (${ui_calendar_choice} == 1)
 	{
 		T_vec = [293];
 		SOC_vec = [0.5];
@@ -854,18 +875,11 @@ function plot_calendar_life()
 		}
 		t_max = max(t);
 		plot(t, q, {'thick'=2, 'type'='line', 'color'=color_string[0]});	
+		plotopt( { 'title'='Custom Calendar Degradation', 'legend'=false });
 	}
 	
-	if (is_table || is_model)
-	{
-		if (use_legend)
-			plotopt( {'title'='Calendar Degradation', 'legend'=use_legend, 'legendpos'='right'});
-		else
-			plotopt( {'title'='Calendar Degradation', 'legend'=use_legend});
-
-		axis( 'x1', {'label'='Age of battery (days)', 'min'=0, 'max'=max(t)+10});
-		axis( 'y1', {'label'='Effective capacity (%)', 'min'=0, 'max'=100});
-	}
+	axis( 'x1', {'label'='Age of battery (days)', 'min'=0, 'max'=max(t)+10});
+	axis( 'y1', {'label'='Effective capacity (%)', 'min'=0, 'max'=100});
 }
 
 on_change{ 'batt_lifetime_matrix' } = define() {
