@@ -3018,7 +3018,7 @@ void ConfigDialog::PopulateTech()
 
 	// Manually add groups here - eventually move to startup.lk
 	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
-	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Battery Storage");
+	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
 	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
 	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
 
