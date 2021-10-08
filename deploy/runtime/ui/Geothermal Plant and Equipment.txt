@@ -1,7 +1,7 @@
 Geothermal Plant and Equipment
 909
 699
-45
+44
 CheckBox
 
 1
@@ -709,68 +709,6 @@ BackColour
 TabOrder
 3
 7
-Numeric
-
-1
-17
-Name
-5
-12
-dt_prod_well
-X
-3
-651
-Y
-3
-183
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
 Numeric
 
 1
@@ -2312,7 +2250,7 @@ TabOrder
 3
 10
 
-39
+38
 adjust
 3
 5
@@ -2440,20 +2378,6 @@ Geothermal Plant and Equipment
 1
 0
 Numeric
-dt_prod_well
-3
-1
-dt in Production Well
-C
-Geothermal Plant and Equipment
-0
-0
-1
-1
-1
-1
-0
-Default
 excess_pressure_pump
 3
 1
