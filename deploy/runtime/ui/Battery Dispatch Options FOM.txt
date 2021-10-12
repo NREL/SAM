@@ -438,11 +438,11 @@ function show_hide_charge_options()
 	}
 	else
 	{
-		show('batt_dispatch_auto_can_charge',option != 2);
-		show('batt_dispatch_auto_can_gridcharge', option !=2 );
-		show('batt_dispatch_auto_can_clipcharge', option != 2);
+		show('batt_dispatch_auto_can_charge',option != 3);
+		show('batt_dispatch_auto_can_gridcharge', option !=3 );
+		show('batt_dispatch_auto_can_clipcharge', option != 3);
 		if (technology() == 'Fuel Cell') 
-		{ show('batt_dispatch_auto_can_fuelcellcharge', option !=2); }
+		{ show('batt_dispatch_auto_can_fuelcellcharge', option !=3); }
 		else
 		{ show('batt_dispatch_auto_can_fuelcellcharge', false); }
 	}	
