@@ -3601,7 +3601,21 @@ Heliostat Field
 0.7
 Numeric
 
-3093
+3285
+// Keep these solarpilot optimization settings hardcoded in ui
+// Then they will show up in lk script if user selects Shift+F5
+// If they are in SSC equations, they will overwrite user values
+equations{'opt_algorithm'} = define(){
+	return 1;
+};
+equations{'opt_flux_penalty'} = define(){
+	return 0.25;
+};
+
+
+equations{ 'land_max_calc' } = define() {
+	return ${land_max}*${THT}; };
+
 equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 	// land_max_calc
 	data.land_max = ${land_max};
@@ -3663,10 +3677,6 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 	
 	// dni_des_calc
 	data.dni_des = ${dni_des};
-	
-	// opt_algorithm
-	
-	// opt_flux_penalty
 
 	success = ssc_eqn("Tower_SolarPilot_Solar_Field_Equations", data);
 	if (!success) {
@@ -3685,8 +3695,6 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 		${land_max_calc} = -999.;
 		${land_min_calc} = -999.;
 		${n_hel} = -999.;
-		${opt_algorithm} = -999.;
-		${opt_flux_penalty} = -999.;
 		${q_design} = -999.;
 	}
 	else {
@@ -3704,16 +3712,14 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 		${is_optimize} = data.is_optimize;
 		${land_max_calc} = data.land_max_calc;
 		${land_min_calc} = data.land_min_calc;
-		${n_hel} = data.n_hel;
-		${opt_algorithm} = data.opt_algorithm;
-		${opt_flux_penalty} = data.opt_flux_penalty;
+		${n_hel} = data.n_hel;		
 		${q_design} = data.q_design;
 	}
 	
 	return 0;
 };
 
-10776
+10806
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -3838,7 +3844,7 @@ function call_solarpilot(is_optimize) {
 	ssc_var(obj, "sales_tax_frac",${sales_tax_frac});
 	ssc_var(obj, "cost_sf_fixed", ${cost_sf_fixed});
 	
-	ssc_var(obj, "opt_flux_penalty", 0.25); //not used with COBYLA -- ${opt_flux_penalty});
+	ssc_var(obj, "opt_flux_penalty", ${opt_flux_penalty}); //not used with COBYLA -- ${opt_flux_penalty});
 	ssc_var(obj, "opt_max_iter", ${opt_max_iter});
 	ssc_var(obj, "flux_max", ${flux_max});
 	ssc_var(obj, "check_max_flux", false);
@@ -3846,7 +3852,7 @@ function call_solarpilot(is_optimize) {
 	ssc_var(obj, "is_optimize", to_int(is_optimize));
 	ssc_var(obj, "opt_init_step", ${opt_init_step});
 	ssc_var(obj, "opt_conv_tol", ${opt_conv_tol});
-	ssc_var(obj, "opt_algorithm", 1); //always cobyla now... //${opt_algorithm});
+	ssc_var(obj, "opt_algorithm", ${opt_algorithm}); //always cobyla now... //${opt_algorithm});
 		
 	//ssc_dump( obj, 'solarpilot.lk' );
 	//msgbox("Dumping inputs to: " + homedir() + '/solarpilot.txt');
