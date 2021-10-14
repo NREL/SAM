@@ -656,6 +656,21 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	}
 }
 
+wxUIObject* CaseWindow::FindObject(const wxString& name, ActiveInputPage** ipage)
+{
+	auto aPage = GetInputPages();
+	for (auto &page : aPage)
+	{
+		SwitchToInputPage(page);
+		if (wxUIObject* obj = FindActiveObject(name, ipage))
+			return obj;
+	}
+
+	if (ipage) *ipage = 0;
+	return 0;
+}
+
+
 wxUIObject *CaseWindow::FindActiveObject( const wxString &name, ActiveInputPage **ipage )
 {
 	for( size_t i=0;i<m_currentActivePages.size();i++ )
@@ -812,6 +827,13 @@ void CaseWindow::DetachCurrentInputPage()
 	}
 
 	m_currentActivePages.clear();
+}
+
+wxString CaseWindow::GetInputPage()
+{
+	wxString input_page = m_inputPageList->GetStringSelection();
+	// do checks
+	return input_page;
 }
 
 wxArrayString CaseWindow::GetInputPages()

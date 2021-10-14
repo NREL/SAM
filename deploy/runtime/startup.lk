@@ -14,7 +14,7 @@ addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Host D
 addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
-addconfig( 'Physical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 addconfig( 'DSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
@@ -71,7 +71,7 @@ configopt( 'LCOE Calculator',             { 'long_name'='LCOE Calculator (FCR Me
 configopt( 'Residential',                 { 'tree_parent'='DISTRIBUTED', 'long_name'='Residential Owner',           	  'short_name'='Residential',      'description'='Renewable energy system displaces residential home electric load' } );
 configopt( 'Commercial',                  { 'tree_parent'='DISTRIBUTED','long_name'='Commercial Owner',        		  'short_name'='Commercial',       'description'='Renewable energy system displaces commercial building electric load' } );
 configopt( 'Third Party',                 { 'tree_parent'='DISTRIBUTED',  'long_name'='Third Party Owner - Host',           'short_name'='TPO Host',      'description'='Third party ownership from host perspective for PPA or lease agreement' } );
-configopt( 'Host Developer',              { 'tree_parent'='DISTRIBUTED',  'long_name'='Third Party - Host / Developer', 'short_name'='TPO Host/Developer',  'description'='Third party ownershop from host and developer perspective for PPA' } );
+configopt( 'Host Developer',              { 'tree_parent'='DISTRIBUTED',  'long_name'='Third Party - Host / Developer', 'short_name'='TPO Host-Developer',  'description'='Third party ownershop from host and developer perspective for PPA' } );
 configopt( 'Single Owner',                { 'tree_parent'='PPA', 'long_name'='Single Owner',                       'short_name'='Single owner',     'description'='Single owner PPA with constant DSCR and IRR target year, reserve accounts and depreciation allocations' } );
 configopt( 'Leveraged Partnership Flip',  { 'tree_parent'='PPA', 'long_name'='Partnership Flip with Debt',         'short_name'='Flip (debt)',      'description'='Developer/investor partnership flip PPA structure with debt' } );
 configopt( 'All Equity Partnership Flip', { 'tree_parent'='PPA', 'long_name'='Partnership Flip without Debt',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
@@ -141,11 +141,11 @@ function setup_pages_battery_life()
 	addpage([ [{'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}],
 			  [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}],
 			  [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]],
-	  		   {'sidebar'='Battery Life', 
-	  		    'help'='battery_life' , 
-	  		    'exclusive_var' = 'batt_life_excl', 
+	  		   {'sidebar'='Battery Life',
+	  		    'help'='battery_life' ,
+	  		    'exclusive_var' = 'batt_life_excl',
 	  		    'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true } );
-	
+
 	/*addpage([['Battery Replacements','Battery Life Options' ]],
 	  		   {'sidebar'='Battery Life', 'help'='battery_life' });*/
 
@@ -153,22 +153,22 @@ function setup_pages_battery_life()
 
 function setup_pages_battery_dispatch_btm()
 {
-	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], 
-	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], 
-		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], 
-		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], 
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ],
+	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
+		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
+		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
 		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
-			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 
-			      'exclusive_var' = 'batt_dispatch_excl', 
+			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
+			      'exclusive_var' = 'batt_dispatch_excl',
 			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
 }
 
 function setup_pages_battery_dispatch_fom()
 {
 	addpage( [
-		[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
+		[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ],
 		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
-		[{'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], 
+		[{'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
 		[{'name'='Battery Dispatch Manual', 'caption'='Manual'}],
 		],
 			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl',
@@ -179,7 +179,7 @@ function setup_pvwatts_battery_pages_behind_the_meter()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	addpage( [[ 'PVWatts', 'Battery Model Simple with REopt']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
-	setup_grid_page();
+	setup_grid_page_with_outage();
 }
 
 function setup_pvwatts_pages()
@@ -326,8 +326,16 @@ function setup_commercial_pages( mode ) // mode determines whether or not the bu
 
 function setup_grid_page()
 {
-  addpage( [[ 'Grid Interconnection', 'Grid Curtailment']],
-           { 'sidebar'='Grid Limits', 'help'='grid_limits' } );
+
+	addpage( [[ 'Grid Interconnection', 'Grid Curtailment']],
+           { 'sidebar'='Grid', 'help'='grid_limits' } );
+}
+
+function setup_grid_page_with_outage()
+{
+
+	addpage( [[ 'Grid Interconnection', 'Grid Curtailment', 'Grid Outage']],
+           { 'sidebar'='Grid', 'help'='grid_limits' } );
 }
 
 // note 'collapsed by default' does not seem to do anything. To set default behavior, set default value of collapsible_var. For example, to collapse description by default, use Defaults Manager to set ur_desc_is_shown = 0.
@@ -337,7 +345,7 @@ function setup_utility_rate()
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
 				{ 'name'='Utility Rate - Billing Demand for Energy Charge', 'caption'='Billing Demand for Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_billing_demand_is_shown', 'collapsed_by_default'=true },
-			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false }, 
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
 			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
 		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates' } );
 }
@@ -512,11 +520,11 @@ function setup_fuel_cell_pages_btm()
 	addpage([['Fuel Cell Dispatch',
 			'Battery Dispatch Behind the Meter',
 			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});*/
-	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], 
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], ['Battery Dispatch Empty'], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
 		{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM', 'Fuel Cell Dispatch Manual' ], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
-    setup_grid_page();
+    setup_grid_page_with_outage();
 }
 
 function setup_fuel_cell_pages_fom()
@@ -539,7 +547,7 @@ function setup_fuel_cell_pages_fom()
 	addpage([['Fuel Cell Dispatch',
 			'Battery Dispatch Front of Meter',
 			'Fuel Cell Dispatch Manual']], {'sidebar'='Dispatch', 'help'='fuelcell_dispatch'});*/
-	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], 
+	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
 		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}],
 		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}]],
 			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
@@ -806,14 +814,6 @@ setup_lcoefcr_pages();
 setconfig( 'Physical Trough', 'None' );
 setmodules( ['trough_physical', 'grid']);
 setup_csp_physical_trough_pages();
-
-setconfig( 'Physical Trough', 'Commercial' );
-setmodules( ['trough_physical', 'grid', 'utilityrate5', 'cashloan']);
-setup_csp_physical_trough_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Physical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
-addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Leveraged Partnership Flip' );
@@ -1090,7 +1090,7 @@ setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ],
 		[ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']], { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
 addpage( [[ 'Operating Costs Fuel Cell' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
-setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
+setup_commercial_pages(LOAD_SIMPLE_CRIT); //belpe not valid for commercial
 addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
 addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
@@ -1516,7 +1516,10 @@ function setup_MSPT_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
 	addpage( [[ 'MSPT System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
 	addpage( [[ 'Tower SolarPilot Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
-	addpage( [[ 'MSPT Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
+	addpage( [[ 'MSPT Receiver External' ], [ 'MSPT Receiver Cavity' ]],
+			{ 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver', 'exclusive_var'='receiver_type',
+			'exclusive_header_pages' = ['MSPT Receiver']} );
+	//addpage( [[ 'MSPT Receiver' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
 	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
@@ -1820,14 +1823,14 @@ setup_merchant_plant_pages();
 // Marine Energy ////////////////////////////////////////////////////////////////////
 function setup_mewave_pages(lcoe_fcr)
 {
-	addpage( [[ {'name'='Marine Wave Resource', 'caption'='Frequency of Occurence'}],[ {'name'='Marine Wave Resource Time Series', 'caption'='Time Series'}]], 
+	addpage( [[ {'name'='Marine Wave Resource', 'caption'='Frequency of Occurence'}],[ {'name'='Marine Wave Resource Time Series', 'caption'='Time Series'}]],
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_var'='wave_resource_model_choice' } );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	if (lcoe_fcr == 1) {
-		addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
-			{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'}, 
+		addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
+			{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
 			{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
 			{ 'sidebar'='Installation Costs: Device', 'help'='me_wave_capital_costs'} );
 		addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
@@ -1849,7 +1852,7 @@ function setup_mewave_pages(lcoe_fcr)
 			{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
 			{'sidebar'='Operating Costs','help'='oc_marine_energy'} );
 	}
-	
+
 }
 
 setconfig( 'MEwave', 'LCOE Calculator' );
@@ -1868,8 +1871,8 @@ function setup_metidal_pages()
 	addpage( [[ 'Marine Tidal Converter' ]], { 'sidebar'='Tidal Energy Converter', 'help'='me_tidal_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_tidal_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_tidal_losses' } );
-	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'}, 
-		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'}, 
+	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
+		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
 		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
 		{ 'sidebar'='Installation Costs: Device', 'help'='me_tidal_capital_costs'} );
 	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
@@ -1947,13 +1950,13 @@ function setup_pv_battery_pages(is_btm)
 	{
 		setup_pages_battery_cell_and_system(true); // true includes UI form for REopt
 		setup_pages_battery_life();
-		setup_pages_battery_dispatch_btm();	  	
+		setup_pages_battery_dispatch_btm();
 	}
 	else
 	{
 		setup_pages_battery_cell_and_system(false); // no REopt for FOM
 		setup_pages_battery_life();
-		setup_pages_battery_dispatch_fom();		
+		setup_pages_battery_dispatch_fom();
 	}
 	setup_grid_page();
 }
@@ -2044,9 +2047,9 @@ function setup_generic_battery_pages(is_btm) {
 	if (is_btm)
 	{
 		setup_pages_battery_cell_and_system(false); // false excludes UI form for REopt, only available for PV battery
-		setup_pages_battery_life();		  
-		setup_pages_battery_dispatch_btm();	
-	}	
+		setup_pages_battery_life();
+		setup_pages_battery_dispatch_btm();
+	}
 	else
 	{
 		setup_pages_battery_cell_and_system(false); // no REopt for FOM
