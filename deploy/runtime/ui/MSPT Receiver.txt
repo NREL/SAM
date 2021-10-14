@@ -1,69 +1,7 @@
 MSPT Receiver
-884
-632
-42
-Numeric
-
-1
-17
-Name
-5
-5
-D_rec
-X
-3
-258
-Y
-3
-252
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-3
+885
+498
+37
 GroupBox
 
 1
@@ -74,16 +12,16 @@ Name
 GroupBox1
 X
 3
-6
+438
 Y
 3
-123
+399
 Width
 3
-422
+437
 Height
 3
-182
+89
 Tool Tip
 5
 0
@@ -107,20 +45,20 @@ X
 6
 Y
 3
-309
+135
 Width
 3
 422
 Height
 3
-146
+173
 Tool Tip
 5
 0
 Caption
 5
-33
-Receiver Heat Transfer Properties
+46
+Receiver Material and Heat Transfer Properties
 Bold
 2
 1
@@ -143,14 +81,14 @@ Width
 438
 Height
 3
-317
+83
 Tool Tip
 5
 0
 Caption
 5
-18
-Materials and Flow
+25
+Heat Transfer Fluid (HTF)
 Bold
 2
 1
@@ -167,13 +105,13 @@ X
 6
 Y
 3
-459
+318
 Width
 3
 422
 Height
 3
-167
+170
 Tool Tip
 5
 0
@@ -197,7 +135,7 @@ X
 438
 Y
 3
-483
+249
 Width
 3
 438
@@ -214,68 +152,6 @@ Piping Losses
 Bold
 2
 1
-Numeric
-
-1
-17
-Name
-5
-8
-N_panels
-X
-3
-258
-Y
-3
-276
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-0
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4
 Label
 
 1
@@ -286,16 +162,16 @@ Name
 Optimization_Notice
 X
 3
-12
+444
 Y
 3
-141
+417
 Width
 3
 408
 Height
 3
-63
+39
 Tool Tip
 5
 0
@@ -578,47 +454,6 @@ Choice
 9
 Name
 5
-23
-csp.pt.rec.flow_pattern
-X
-3
-609
-Y
-3
-117
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Items
-6
-9
-1
-2
-3
-4
-5
-6
-7
-8
-9
-Selection
-3
-0
-TabOrder
-3
-26
-Choice
-
-1
-9
-Name
-5
 19
 csp.pt.rec.htf_type
 X
@@ -658,13 +493,13 @@ Name
 csp.pt.rec.material_type
 X
 3
-609
+258
 Y
 3
-93
+156
 Width
 3
-181
+130
 Height
 3
 21
@@ -696,7 +531,7 @@ X
 258
 Y
 3
-597
+456
 Width
 3
 100
@@ -758,7 +593,7 @@ X
 258
 Y
 3
-501
+360
 Width
 3
 100
@@ -820,7 +655,7 @@ X
 258
 Y
 3
-330
+180
 Width
 3
 100
@@ -882,7 +717,7 @@ X
 714
 Y
 3
-450
+213
 Width
 3
 100
@@ -944,7 +779,7 @@ X
 258
 Y
 3
-378
+228
 Width
 3
 100
@@ -1006,7 +841,7 @@ X
 258
 Y
 3
-573
+432
 Width
 3
 100
@@ -1068,7 +903,7 @@ X
 258
 Y
 3
-477
+336
 Width
 3
 100
@@ -1156,7 +991,7 @@ X
 714
 Y
 3
-354
+117
 Width
 3
 100
@@ -1218,13 +1053,13 @@ X
 438
 Y
 3
-330
+99
 Width
 3
 438
 Height
 3
-150
+144
 Tool Tip
 5
 0
@@ -1245,10 +1080,10 @@ Name
 h_tower
 X
 3
-258
+690
 Y
 3
-204
+459
 Width
 3
 100
@@ -1310,7 +1145,7 @@ X
 258
 Y
 3
-426
+276
 Width
 3
 100
@@ -1372,7 +1207,7 @@ X
 714
 Y
 3
-426
+189
 Width
 3
 100
@@ -1434,7 +1269,7 @@ X
 714
 Y
 3
-402
+165
 Width
 3
 100
@@ -1513,35 +1348,6 @@ System Design Parameters
 Bold
 2
 1
-Image
-
-1
-8
-Name
-5
-7
-pctFlow
-X
-3
-516
-Y
-3
-150
-Width
-3
-280
-Height
-3
-163
-Tool Tip
-5
-0
-Image
-7
-MSPT Receiver_pctFlow.png
-Centered
-2
-1
 Numeric
 
 1
@@ -1555,7 +1361,7 @@ X
 714
 Y
 3
-573
+339
 Width
 3
 100
@@ -1617,7 +1423,7 @@ X
 714
 Y
 3
-525
+291
 Width
 3
 100
@@ -1679,7 +1485,7 @@ X
 714
 Y
 3
-549
+315
 Width
 3
 100
@@ -1741,7 +1547,7 @@ X
 714
 Y
 3
-501
+267
 Width
 3
 100
@@ -1803,7 +1609,7 @@ X
 714
 Y
 3
-597
+363
 Width
 3
 100
@@ -1865,7 +1671,7 @@ X
 258
 Y
 3
-402
+252
 Width
 3
 100
@@ -1920,68 +1726,6 @@ Numeric
 17
 Name
 5
-10
-rec_height
-X
-3
-258
-Y
-3
-228
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-0
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-2
-Numeric
-
-1
-17
-Name
-5
 12
 rec_hl_perm2
 X
@@ -1989,7 +1733,7 @@ X
 714
 Y
 3
-378
+141
 Width
 3
 100
@@ -2051,7 +1795,7 @@ X
 258
 Y
 3
-549
+408
 Width
 3
 100
@@ -2113,7 +1857,7 @@ X
 258
 Y
 3
-525
+384
 Width
 3
 100
@@ -2175,7 +1919,7 @@ X
 258
 Y
 3
-354
+204
 Width
 3
 100
@@ -2225,21 +1969,7 @@ TabOrder
 3
 15
 
-61
-D_rec
-3
-1
-Receiver diameter
-m
-Tower and Receiver
-0
-2
-1
-1
-1
-1
-12.44
-Default
+57
 Flow_type
 3
 1
@@ -2253,20 +1983,6 @@ Tower and Receiver
 1
 1
 0
-Default
-N_panels
-3
-1
-Number of panels
- 
-Tower and Receiver
-0
-2
-1
-1
-1
-1
-24
 Default
 REC_COPY_Q_rec_des
 3
@@ -2324,62 +2040,61 @@ Tower and Receiver
 1
 0
 Default
-csp.pt.rec.cav_ap_height
+cav_offset
 3
 1
-Aperture height
  
-Tower and Receiver
+m
+ 
 0
 8
 1
 1
 1
 1
-0
+-987
 Default
-csp.pt.rec.cav_ap_hw_ratio
+cav_panel_width
 3
 1
-Aperture height to width ratio
  
-Tower and Receiver
-0
-2
-1
-1
-1
-1
-1.2
-Default
-csp.pt.rec.cav_lip_height_ratio
-3
-1
-Lip to height ratio
 m
-Tower and Receiver
+ 
 0
-2
+8
 1
 1
 1
 1
-0.1
+-987
 Default
-csp.pt.rec.flow_pattern
+cav_radius
 3
 1
-Flow pattern
  
-Tower and Receiver
-17
-1|2|3|4|5|6|7|8|9
-2
-1
-1
-1
-1
+m
+ 
 0
+8
+1
+1
+1
+1
+-987
+Default
+cav_rec_area
+3
+1
+ 
+m2
+ 
+0
+8
+1
+1
+1
+1
+-987
 Default
 csp.pt.rec.htf_c_avg
 3
@@ -2537,6 +2252,20 @@ Tower and Receiver
 1
 1
 0.85
+Default
+ext_rec_area
+3
+1
+ 
+m2
+ 
+0
+8
+1
+1
+1
+1
+-987
 Default
 f_rec_min
 3
@@ -2867,34 +2596,6 @@ Tower and Receiver
 1
 0
 Default
-rec_d_spec
-3
-1
-Aperture width
-m
-Tower and Receiver
-0
-2
-1
-1
-1
-1
-15
-Default
-rec_height
-3
-1
-Receiver height
-m
-Tower and Receiver
-0
-2
-1
-1
-1
-1
-15.49
-Default
 rec_hl_perm2
 3
 1
@@ -2965,21 +2666,6 @@ Tower and Receiver
 1
 1
 1
-Default
-receiver_type
-3
-1
-Receiver type
- 
-Tower and Receiver
-33
-External receiver|Cavity receiver
-9
-1
-1
-1
-1
-0
 Default
 riser_tm_mult
 3
@@ -3098,7 +2784,7 @@ Tower and Receiver
 0
 Default
 
-2954
+3149
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
@@ -3138,13 +2824,15 @@ equations{ '$MIMO$ MSPT_Receiver_Equations' } = define() {
 	data.t_htf_hot_des = ${T_htf_hot_des};
 	data.t_htf_cold_des = ${T_htf_cold_des};
 	
-	// csp.pt.rec.cav_ap_height
-	data.rec_d_spec = ${rec_d_spec};
-	data.csp_pt_rec_cav_ap_hw_ratio = ${csp.pt.rec.cav_ap_hw_ratio};
-	
 	// rec_aspect
 	data.d_rec = ${D_rec};
 	data.rec_height = ${rec_height};
+	
+	// cavity
+	data.cav_rec_height = ${cav_rec_height};
+	data.cav_rec_width = ${cav_rec_width};
+	data.n_cav_rec_panels = ${n_cav_rec_panels};
+	data.cav_rec_span = ${cav_rec_span};
 	
 	// piping_length
 	data.h_tower = ${h_tower};
@@ -3161,22 +2849,30 @@ equations{ '$MIMO$ MSPT_Receiver_Equations' } = define() {
 		//${csp.pt.rec.cav_panel_height} = -999.;   // not in Variables
 		${csp.pt.rec.max_flow_to_rec} = -999.;
 		${csp.pt.rec.htf_t_avg} = -999.;
-		${csp.pt.rec.cav_ap_height} = -999.;
 		${csp.pt.rec.htf_c_avg} = -999.;
 		${rec_aspect} = -999.;
 		${piping_length} = -999.;
 		${piping_loss_tot} = -999.;
+		${ext_rec_area} = -999.;
+		${cav_rec_area} = -999.;
+		${cav_panel_width} = -999.;
+		${cav_radius} = -999.;
+		${cav_offset} = -999.;
 	}
 	else {
 		//${csp.pt.rec.cav_lip_height} = data.csp_pt_rec_cav_lip_height;
 		//${csp.pt.rec.cav_panel_height} = data.csp_pt_rec_cav_panel_height;
 		${csp.pt.rec.max_flow_to_rec} = data.csp_pt_rec_max_flow_to_rec;
 		${csp.pt.rec.htf_t_avg} = data.csp_pt_rec_htf_t_avg;
-		${csp.pt.rec.cav_ap_height} = data.csp_pt_rec_cav_ap_height;
 		${csp.pt.rec.htf_c_avg} = data.csp_pt_rec_htf_c_avg;
 		${rec_aspect} = data.rec_aspect;
 		${piping_length} = data.piping_length;
 		${piping_loss_tot} = data.piping_loss_tot;
+		${ext_rec_area} = data.ext_rec_area;
+		${cav_rec_area} = data.cav_rec_area;
+		${cav_panel_width} = data.cav_panel_width;
+		${cav_radius} = data.cav_radius;
+		${cav_offset} = data.cav_offset;
 	}
 
 	return 0;
@@ -3188,11 +2884,6 @@ equations{ 'user_fluid' } = define() {
 
 equations{ 'tower_technology' } = define() {
 	return 0;	//MSPT
-};
-
-equations{ 'receiver_type' } = define()
-{
-	return 0;	// external receiver
 };
 
 equations{ 'REC_COPY_solarm' } = define() {
