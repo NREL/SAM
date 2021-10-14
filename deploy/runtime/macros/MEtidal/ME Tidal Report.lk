@@ -1,9 +1,9 @@
 //Marine Energy (ME) Model Macro
 
-//Mar 2020
+//Aug 2021
 
 /*@
-This macro generates a report summary for the system modeled in the existing Marine Energy Wave case. The additional user inputs are used to provide a description of the device and to inform a capture width ratio calculation.</a><br><br>
+This macro generates a report summary for the system modeled in the existing Marine Energy Tidal case. The additional user inputs are used to provide a description of the tidal energy converter (TEC).</a><br><br>
 
 
 <h5>Instructions:</h5>
@@ -15,19 +15,17 @@ This macro generates a report summary for the system modeled in the existing Mar
 <li> Select the foundation type that best describes the modeled device.<br>
 <li> Enter the structural mass of the device in metric tonnes. The structural mass includes:<br>
 <ul>
-<li> Any structural component that interacts with the wave environment, which may include housing or ballast if it is a major cost contributor.
+<li> Any structural component that interacts with the stream flow, which may include housing or ballast if it is a major cost contributor.
 <li> Any structural component used to resist forces in the power take-off system.
-<li> Foundations or other components that are rigidly connected to the WEC. <br>
+<li> Foundations or other components that are rigidly connected to the tidal energy converter. <br>
 </ul>
 <li> Select the primary structural material of the device. <br>
-<li> Enter the WEC's characteristic dimension in meters.
-<ul>
-<li>The characteristic dimension, otherwise known as the characteristic width, describes the active width or diameter of all the device components that make up the primary wave energy absorption mechanism. <br>
-</ul>
 <li> Select an option for device scale.
 <ul>
-<li> Select "Other", if the existing ME Wave case is modeling a scaled device. <br>
+<li> Select "Other", if the existing ME Tidal case is modeling a scaled device. <br>
 </ul>
+<li> Enter the resource name, resource location, resource latitude, and resource longitude. <br>
+<li> Select the seabed type from the dropdown for the resource location. <br>
 <li> Click 'Run macro' to generate the report that will open in your browser. If "Other" is selected for any input, you will be prompted to enter a custom description or value when the macro runs.To save the report, use the browser's print to PDF feature.
 </ol>
 @*/
@@ -37,15 +35,18 @@ This macro generates a report summary for the system modeled in the existing Mar
 //@ name=deviceName;type=text;label=Device Name;value=
 //@ name=deviceModel;type=text;label=Device Model;value=
 //@ name=deviceModelYear;type=number;label=Device Model Year;value=
-//@ name=deviceType;type=combo;value=Attenuator,Point Absorber,Oscillating Wave Surge,Oscillating Water Column,Overtopping/Terminator,Submerged Pressure Differential,Bulge Wave,Rotating Mass,Flexible Material,Other;label=Device Type
+//@ name=deviceType;type=combo;value=Horizontal Axis Turbine,Vertical Axis Turbine,Oscillating Hydrofoil,Enclosed Tips (Venturi),Tidal Kite,Archimedes Screw,Other;label=Device Type
 //@ name=deviceTRL;type=combo;value=1,2,3,4,5,6,7,8,9;label=TRL
 //@ name=ptoType;type=combo;value=Synchronous,Permanent Magnet Synchronous,Induction,Doubly Fed Induction,Other;label=PTO Type
 //@ name=foundationType;type=combo;value=Floating: Taut Mooring,Floating: Semi-Taut Mooring,Floating: Catenary Mooring,Floating: Dynaminc Positioning,Bottom Fixed: Gravity Based,Bottom Fixed: Pile Foundation,Other;label=Foundation Type
 //@ name=deviceMass;type=number;label=Structural Mass (t);value=
 //@ name=deviceMaterial;type=combo;value=Steel A-36,Steel Reinforced Concrete,High-density Polyethylene (HDPE),Coated Fabric,Aluminum - 5083,Fiberglass (E-Glass/Epoxy),Filament Wound Fiberglass,Other;label=Primary Structural Material
-//@ name=charDia;type=number;label=Characteristic Dimension (m);value=
 //@ name=deviceScale;type=combo;value=Full Scale,Other;label=Device Scale;
-
+//@ name=resourceName;type=text;label=Resource Name;value=
+//@ name=resourceLocation;type=text;label=Resource Location;value=
+//@ name=resourceLat;type=number;label=Resource Latitude;value=
+//@ name=resourceLong;type=number;label=Resource Longitude;value=
+//@ name=resourceSeabed;type=combo;value=Sand,Mud,Clay,Silt,Stones,Gravel,Pebbles,Cobbles,Rock/Rocky,Boulders,Coral/Coralline algae,Sand Over Mud,;label=Seabed Type;
 
 //check that the MEwave System and LCOE model are used, and that there is an active case
 
@@ -61,7 +62,7 @@ if (case == '')
 
 {
 
-	msgbox('You must set an active case, MEwave/LCOE Calculator.');
+	msgbox('You must set an active case, MEtidal/LCOE Calculator.');
 
 	exit;
 
@@ -69,11 +70,11 @@ if (case == '')
 
 config = configuration();
 
-if (config[0] != 'MEwave')
+if (config[0] != 'MEtidal')
 
 {
 
-	msgbox('The ME Wave report macro only works with MEwave System selected as the technology model.');
+	msgbox('The ME Tidal report macro only works with ME Tidal System selected as the technology model.');
 
 	exit;
 
@@ -83,7 +84,7 @@ if (config[1] != 'LCOE Calculator')
 
 {
 
-	msgbox('The ME Wave report macro only works with the LCOE Calculator selected as the financial model.');
+	msgbox('The ME Tidal report macro only works with the LCOE Calculator selected as the financial model.');
 
 	exit;
 
@@ -113,22 +114,19 @@ deviceModel = macro.deviceModel;
 deviceModelYear = macro.deviceModelYear;
 //outln(deviceModelYear);
 
-//get the device type
-
 deviceType = macro.deviceType;
 
 if (deviceType=='Other')
 
 {
-    deviceType = in('Enter the device type that best describes the wave energy converter.','','Enter Value');
+    deviceType = in('Enter the device type that best describes the tidal energy converter.','','Enter Value');
 }
 
 //outln('Device Type = '+ deviceType);
-// get device TRL
+
 deviceTRL = macro.deviceTRL;
 
 //get the PTO type
-
 ptoType = macro.ptoType;
 
 if (ptoType=='Other')
@@ -146,7 +144,7 @@ deviceScale = macro.deviceScale;
 if (deviceScale=='Other')
 
 {
-    deviceScale = in('Enter the scale for the device modeled in the existing ME Wave case as a fraction.','','Enter Value');
+    deviceScale = in('Enter the scale for the device modeled in the existing ME Tidal case as a fraction.','','Enter Value');
 }
 
 //outln('Device Scale = ' + deviceScale);
@@ -158,7 +156,7 @@ foundationType = macro.foundationType;
 if (foundationType=='Other')
 
 {
-    foundationType = in('Enter the foundation or mooring type for the device modeled in the existing ME Wave case.','','Enter Value');
+    foundationType = in('Enter the foundation or mooring type for the device modeled in the existing ME tidal case.','','Enter Value');
 }
 //outln('Foundation/Mooring type = ' + foundationType);
 
@@ -184,11 +182,26 @@ deviceMaterial = macro.deviceMaterial;
 if (deviceMaterial=='Other')
 
 {
-    deviceMaterial = in('Enter the primary structural material for the device modeled in the existing ME Wave case.','','Enter Value');
+    deviceMaterial = in('Enter the primary structural material for the device modeled in the existing ME Tidal case.','','Enter Value');
 }
 
 //outln('Device Material = ' + deviceMaterial);
 
+// get user inputs for resource
+resourceName = macro.resourceName;
+//outln(resourceName);
+
+resourceLocation = macro.resourceLocation;
+//outln(resourceLocation);
+
+resourceLat = macro.resourceLat;
+//outln(resourceLat);
+
+resourceLong = macro.resourceLong;
+//outln(resourceLong);
+
+resourceSeabed = macro.resourceSeabed;
+//outln(resourceSeabed);
 
 //get outputs for result summary from MEwave SAM run
 //get performance and financial outputs
@@ -210,9 +223,9 @@ totalLoss = get('loss_total');
 //outln('Total Losses assumed = ' + totalLoss);
 
 //get wave resource info
-
+/*
 waveResourceAvg = get('average_power_flux');
-//outln('Wave Resource Avgerage = '+ waveResourceAvg);
+outln('Wave Resource Avgerage = '+ waveResourceAvg);
 
 if (get('use_specific_wf_wave')==1)
 {
@@ -257,7 +270,7 @@ else
     seabed = get('sea_bed');
 
 }
-
+*/
 //get device info
 
 deviceRatedPower = get('device_rated_power');
@@ -265,30 +278,6 @@ deviceRatedPower = get('device_rated_power');
 
 deviceMeanPower = get('device_average_power');
 //outln('Device mean power = '+ deviceMeanPower);
-
-// get the characteristic diameter of the device
-
-charDia = macro.charDia;
-
-// Capture width calculation CW = P/J
-
-captureWidth = (deviceMeanPower/waveResourceAvg);
-//outln('CW = ' + captureWidth);
-
-if (charDia>0)
-{
-    captureWidthRatio = sprintf("%.1f",(captureWidth/charDia*100))+"%";
-    charDia = macro.charDia + " m";
-    //outln('Characteristic Diameter = ' + charDia);
-    //outln('CWR = ' + captureWidthRatio);
-}
-else
-{
-    captureWidthRatio = 'N/A';
-	charDia = 'N/A';
-    //outln('Characteristic Diameter = ' + charDia);
-    //outln('CWR = ' + captureWidthRatio);
-}
 
 
 //get array info
@@ -568,7 +557,7 @@ else
     costTypeResAcct = 'modeled';
 }
 
-//outln('Reserce account costs are a ' + costTypeResAcct + ' value.');
+//outln('Reserve account costs are a ' + costTypeResAcct + ' value.');
  
 //Electrical costs
 
@@ -652,63 +641,62 @@ else
 
 //function to determine the $ contribution to LCOE of a given capital cost
 
-/*function lcoe_fraction(cost)
+
+function lcoe_fraction(cost)
 
 {
 
     return (fcr * cost )/ aep;
 
-}*/
-powerMatrix = get('wave_power_matrix');
-//outln(powerMatrix);
-/*
-xValuesPower = '[0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5]';
-xValuesPower = "'"+ xValuesPower+"'";
-outln(xValuesPower);
+}
 
+//Get power curve data
 
-//yValuesPower = alloc(0,20);
-//for (i=0; i < 20; i++)
-//{
-    //yValuesPower[0][i] = sprintf("%.2f",(powerMatrix[i+1][0]));
-//}
+tidalPowerData = get('tidal_power_curve');
+//outln(tidalPowerData);
 
-yValuesPower = '[0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.25, 7.75, 8.25, 8.75, 9.25, 9.75]';
-//yValuesPower = "'"+ yValuesPower+"'";
-outln(yValuesPower);
-*/
+// Find number of rows in the tidal resource and tidal power data tables
+numberOfRows = #tidalPowerData;
+//outln(numberOfRows);
 
-zValuesPower = alloc(20,21);
-for (i=1; i < 21; i++)
-for (j=1; j < 22; j++)
+xValuesVelocity = alloc(numberOfRows);
+yValuesPower = alloc(numberOfRows);
+for (i=1; i < numberOfRows+1; i++)
+for (j=1; j < numberOfRows+1; j++)
 
 {
-    zValuesPower[i-1][j-1] = sprintf("%.2f",(powerMatrix[i][j]));
+    xValuesVelocity[i-1] = sprintf("%.1f",(tidalPowerData[i-1][0]));
+    yValuesPower[j-1] = sprintf("%.1f",(tidalPowerData[j-1][1]));
 }
-//outln(zValuesPower);
+//outln(xValuesVelocity);
+//outln(yValuesPower);
 
-resourceMatrix = get('wave_resource_matrix');
-//outln(resourceMatrix);
-zValuesResource = alloc(20,21);
-for (i=1; i < 21; i++)
-for (j=1; j < 22; j++)
+//Get tidal resource data
+
+tidalResource = get('tidal_resource');
+//outln(tidalResource);
+
+yValuesProb = alloc(numberOfRows);
+for (j=1; j < numberOfRows+1; j++)
 
 {
-    zValuesResource[i-1][j-1] = sprintf("%.2f",(resourceMatrix[i][j]));
+    yValuesProb[j-1] = ((tidalResource[j-1][1])*100);
 }
-//outln(zValuesResource);
+//outln(yValuesProb);
 
-aepMatrix = get('annual_energy_distribution');
-//outln(aepMatrix);
+// Find Average Resource Velocity
 
-zValuesAep = alloc(20,21);
-for (i=1; i < 21; i++)
-for (j=1; j < 22; j++)
+averageVelocity = alloc(numberOfRows);
+for (i=1; i < numberOfRows+1; i++)
+
 {
-    zValuesAep[i-1][j-1] = round(aepMatrix[i][j]);
+    averageVelocity[i-1] = ((tidalResource[i-1][0])*(tidalResource[i-1][1]));
 }
-//outln(zValuesAep);
+averageVelocity = sprintf("%.2f",(sum(averageVelocity)));
+//outln(averageVelocity);
 
+// get AEP as function of velocity
+yValuesAep = get('annual_energy_distribution');
 
 
 reportCode = 
@@ -745,7 +733,7 @@ reportCode =
     '#level3 {text-indent:3em;}'
     
     '.googleChart {display: flex; margin-top: 3em; margin-bottom: 3em; margin-left: auto; margin-right: auto;}'
-    '.pmContainer {display: flex; align-items: center; justify-content: center;}'
+    '.pcContainer {display: flex; align-items: center; justify-content: center;}'
     '.resContainer {display: flex; align-items: center; justify-content: center;}'
     '.aepContainer {display: flex; align-items: center; justify-content: center;}'
 
@@ -844,18 +832,18 @@ reportCode =
     '</script>'
     '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
     
-  '<title>SAM ME Wave Energy Report</title>'
+  '<title>SAM ME Tidal Energy Report</title>'
 
 '</head>'
 
 '<body>'
-    '<h1>System Advisor Model Wave Energy Project Summary</h1>'
+    '<h1>System Advisor Model Tidal Energy Project Summary</h1>'
     '<h1>Project: '+ currentCase +'</h1>'
 '<section>'
     '<h2>Company: '+ companyName +'</h2>'
     '<h3>Device Description</h3>'
     '<table>'
-         '<tr>'
+        '<tr>'
             '<th colspan="2">Device Description</th>'
         '</tr>'
         '<tr>'
@@ -871,7 +859,7 @@ reportCode =
             '<td>'+ deviceModelYear +'</td>'
         '</tr>'
         '<tr>'
-            '<td>WEC Type</td>'
+            '<td>Device Type</td>'
             '<td>'+ deviceType +'</td>'
         '</tr>'
         '<tr>'
@@ -891,22 +879,18 @@ reportCode =
             '<td>'+ deviceMaterial +'</td>'
         '</tr>'
         '<tr>'
-            '<td>Foundation and Mooring Type</td>'
+            '<td>Foundation Type</td>'
             '<td>'+ foundationType +'</td>'
         '</tr>'
         '<tr>'
-            '<td>Characteristic Dimension</td>'
-            '<td>'+ charDia +'</td>'
-        '</tr>'
-        '<tr>'
-            '<td>Technology Readiness Level</td>'
+            '<td>Device TRL</td>'
             '<td>'+ deviceTRL +'</td>'
         '</tr>'
     '</table>'
     '<h3>Device Performance</h3>'
     '<table>'
     
-    '<caption>*The device average power is calculated using the '+ resourceName +' resource.</caption>'
+    '<caption>*The device average power is calculated using the user defined resource.</caption>'
        
         '<tr>'
             '<th colspan="2">Device Performance</th>'
@@ -919,39 +903,30 @@ reportCode =
 	        '<td>*Device Average Power</td>'
             '<td>'+ sprintf("%.1f",deviceMeanPower) +' kW</td>'
         '</tr>'
-        '<tr>'
-            '<td>Capture Width Ratio</td>'
-            '<td>'+ captureWidthRatio +'</td>'
-        '</tr>'
     '</table>'
 '</section>'   
 '<section>'
 
-		'<div class="pmContainer">'
-        '<div id="powerMatrix"></div>'
+		'<div class="pcContainer">'
+        '<div id="powerCurve"></div>'
         '</div>'
         
         
         '<script>'
-            'var xValues = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5];'
-
-            'var yValues = [0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.25, 7.75, 8.25, 8.75, 9.25, 9.75];'
-
-            'var zValues = '+ zValuesPower +';'
-            
+            'var xValues = '+ xValuesVelocity +';'
+            'var yValues = '+ yValuesPower +';'
+       
             'var powerData = [{'
                 'x: xValues,'
                 'y: yValues,'
-                'z: zValues,'
-                'type: "heatmap",'
-                'colorscale: "Jet"'
+                'type: "bar",'
             '}];'
 
             'var layout = {'
-                'title: "Power Matrix (kW)",'
+                'title: "Device Power Curve",'
                 'annotations:[],'
-                'xaxis:{title: "Wave Period, Te (s)", ticksmode:"linear",tick0: 0.5, dtick: 1, side: "bottom"},'
-                'yaxis:{title: "Significant Wave Height, Hs (m)", ticksmode:"linear",tick0: 0.25, dtick: 0.5},'
+				'xaxis:{title: "Velocity(m/s)"},'
+                'yaxis:{title: "Power (kW)"},'
 			    'autosize: "false",'
 				'width: 900,'
                 'height: 700,'
@@ -960,35 +935,15 @@ reportCode =
             '};'   
             
             
-            'for (var i = 0; i < yValues.length; i++ ) {'
-                'for (var j = 0; j < xValues.length; j++ ) {'
-                    'var currentValue = zValues[i][j];'
-                    'if (currentValue != 0.0){var textColor = "white";}'
-                    'else {var textColor = "black";}'
-                    
-                    'var result = {'
-                            'xref: "x1",'
-                            'yref: "y1",'
-                            'x: xValues[j],'
-                            'y: yValues[i],'
-                            'text: zValues[i][j],'
-                            'font: {family: "Arial", size: 12, color: "rgb(50, 171, 96)"},'
-                            'showarrow: false,'
-                            'font: {color: textColor}'
-                    '};'
-                    'layout.annotations.push(result);'
-                '}'
-            '}'
-            
-          'Plotly.newPlot("powerMatrix", powerData,layout);'
+          'Plotly.newPlot("powerCurve", powerData,layout);'
         '</script>'
             
 '</section>'
 '<section>'
-    '<h2>Wave Resource</h2>'
+    '<h2>Tidal Resource</h2>'
     '<table>'
     '<tr>'
-            '<th colspan="2">Wave Resource Attributes</th>'
+            '<th colspan="2">Tidal Resource Attributes</th>'
         '</tr>'
         '<tr>'
             '<td>Resource Name</td>'
@@ -1000,83 +955,51 @@ reportCode =
         '</tr>'
         '<tr>'
             '<td>Latitude</td>'
-            '<td>'+ latitude +'</td>'
+            '<td>'+ resourceLat + '&#176 </td>'
         '</tr>'
         '<tr>'
             '<td>Longitude</td>'
-            '<td>'+ longitude +'</td>'
+            '<td>'+ resourceLong +'&#176</td>'
        ' </tr>'
         '<tr>'
-            '<td>Bouy Number</td>'
-            '<td>'+ buoyNumber +'</td>'
-        '</tr>'
-        '<tr>'
-            '<td>Bathymetry</td>'
-            '<td>'+ bathymetry +'</td>'
-        '</tr>'
-        '<tr>'
             '<td>Seabed</td>'
-            '<td>'+ seabed +'</td>'
+            '<td>'+ resourceSeabed +'</td>'
         '</tr>'
         '<tr>'
-            '<td>Average Power Flux</td>'
-            '<td>'+ sprintf("%.1f",waveResourceAvg) +' kW/m</td>'
+            '<td>Average Velocity</td>'
+            '<td>'+ averageVelocity +' m/s</td>'
         '</tr>'
     '</table>'
-    
+
     '<div class="resContainer">'
-    '<div id="resourceJPD"></div>'
+    '<div id="resourceProb"></div>'
     '</div>'
-
-        '<script>'
-            'var xValues = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5];'
-
-            'var yValues = [0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.25, 7.75, 8.25, 8.75, 9.25, 9.75];'
-
-            'var zValues = '+ zValuesResource +';'
-            
-            'var resourceData = [{'
+    '<script>'
+            'var xValues = '+ xValuesVelocity +';'
+            'var yValues = '+ yValuesProb +';'
+       
+            'var probData = [{'
                 'x: xValues,'
                 'y: yValues,'
-                'z: zValues,'
-                'type: "heatmap",'
-                'colorscale: "Jet"'
+                'type: "bar",'
             '}];'
 
-            'var resourceLayout = {'
-                'title: "Annual Resource Joint Probability Distribution",'
+            'var resLayout = {'
+                'title: "Velocity Distribution",'
                 'annotations:[],'
-                'xaxis:{title: "Wave Period, Te (s)", ticksmode:"linear",tick0: 0.5, dtick: 1, tickcolor: "#000", side: "bottom"},'
-                'yaxis:{title: "Significant Wave Height, Hs (m)", ticksmode:"linear",tick0: 0.25, dtick: 0.5, tickcolor: "#000"},'
-                'autosize: "false",'
-                'width: 900,'
-                'height: 650,'
-                'automargin: "false",'
+				'xaxis:{title: "Velocity(m/s)"},'
+                'yaxis:{title: "Probability (%)"},'
+			    'autosize: "false",'
+				'width: 900,'
+                'height: 700,'
+                'automargin: "true",'
+               
             '};'   
             
             
-            'for (var i = 0; i < yValues.length; i++ ) {'
-                'for (var j = 0; j < xValues.length; j++ ) {'
-                    'var currentValue = zValues[i][j];'
-                    'if (currentValue != 0.0){var textColor = "white";}'
-                    'else {var textColor = "black";}'
-                    
-                    'var result = {'
-                            'xref: "x1",'
-                            'yref: "y1",'
-                            'x: xValues[j],'
-                            'y: yValues[i],'
-                            'text: zValues[i][j],'
-                            'font: {family: "Arial", size: 12, color: "black"},'
-                            'showarrow: false,'
-                            'font: {color: textColor}'
-                    '};'
-                    'resourceLayout.annotations.push(result);'
-                '}'
-            '}'
-            
-          'Plotly.newPlot("resourceJPD", resourceData, resourceLayout);'
+          'Plotly.newPlot("resourceProb", probData,resLayout);'
         '</script>'
+    
 '</section>'
 '<section>'  
     '<h2>Array Design Parameters</h2>'
@@ -1102,8 +1025,6 @@ reportCode =
             '<td>'+ waterDepth +' m</td>'
         '</tr>'
 	'</table>'
-'</section>'
-'<section>'
     '<h2>System Cost Breakdown</h2>'
     '<table id="costTable">'
          '<tr>'
@@ -1254,7 +1175,7 @@ reportCode =
         '</tr>'
          '<tr>'
              '<td>Annual Energy Production</td>'
-             '<td>'+ sprintf("%,",aep) +' kW/hrs</td>'
+             '<td>'+ sprintf("%,",aep) +' kWh</td>'
          '</tr>'
          '<tr>'
             '<td>Capacity Factor</td>'
@@ -1266,35 +1187,32 @@ reportCode =
         '</tr>'
      '</table>'
      '<div class="aepContainer">'
-     '<div id="aepPlot"></div>'
-     '</div>'
-
-        '<script>'
-            'var xValues = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5];'
-
-            'var yValues = [0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.25, 7.75, 8.25, 8.75, 9.25, 9.75];'
-
-            'var zValues = '+ zValuesAep +';'
-            
+    '<div id="aepPlot"></div>'
+    '</div>'
+    '<script>'
+            'var xValues = '+ xValuesVelocity +';'
+            'var yValues = '+ yValuesAep +';'
+       
             'var aepData = [{'
                 'x: xValues,'
                 'y: yValues,'
-                'z: zValues,'
-                'type: "contour",'
-                'colorscale: "Jet"'
+                'type: "bar",'
             '}];'
 
             'var aepLayout = {'
-                'title: "Annual Energy Production (kWh)",'
-                'xaxis:{title: "Wave Period, Te (s)", ticksmode:"linear",tick0: 0.5, dtick: 1, tickcolor: "#000", side: "bottom"},'
-                'yaxis:{title: "Significant Wave Height, Hs (m)", ticksmode:"linear",tick0: 0.25, dtick: 0.5, tickcolor: "#000"},'
-                'autosize: "false",'
+                'title: "Annual Energy Production kWh/year",'
+                'annotations:[],'
+				'xaxis:{title: "Velocity (m/s)"},'
+                'yaxis:{title: "Energy (kWh)"},'
+			    'autosize: "false",'
 				'width: 900,'
                 'height: 700,'
-                'automargin: "false",'
+                'automargin: "true",'
+               
             '};'   
             
-          'Plotly.newPlot("aepPlot", aepData, aepLayout);'
+            
+          'Plotly.newPlot("aepPlot", aepData,aepLayout);'
         '</script>'
 '</section>'
 '<section>'
@@ -1319,7 +1237,7 @@ reportCode =
 
 '</body>'
 '<footer>'
-    '<p>This report was generated using the System Advisor Model ME Wave Report macro on:</P>'
+    '<p>This report was generated using the System Advisor Model ME Tidal Report macro on:</P>'
     '<p id="demo" ></p>'
 
         '<script>'
