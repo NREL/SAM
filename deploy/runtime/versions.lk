@@ -63,6 +63,7 @@ version_upgrade{'2021.7.27'} = define() {
 	old_temp_celsius = oldvalue('batt_room_temperature_celsius');
 	new_temp_vector = [];
 	if (is_batt_tech) {
+		message('The battery replacement and lifetime inputs are now on the new Battery Life input page. Battery life inputs change to the appropriate defaults when you change the battery type on the Battery Cell and System page and accept the default values.');
 		if (old_batt_thermal_choice == 0) { 
 			value('batt_thermal_choice', 1);
 			value('batt_room_temperature_vector', old_temp_celsius);
