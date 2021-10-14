@@ -1,0 +1,307 @@
+Battery Life Options
+1051
+167
+5
+GroupBox
+
+1
+8
+Name
+5
+19
+Battery Bank Sizing
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+162
+Tool Tip
+5
+0
+Caption
+5
+20
+Battery Life Options
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+13
+lbl_batt_chem
+X
+3
+384
+Y
+3
+75
+Width
+3
+624
+Height
+3
+48
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+21
+lbl_batt_life_message
+X
+3
+384
+Y
+3
+126
+Width
+3
+624
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 711
+X
+3
+15
+Y
+3
+24
+Width
+3
+990
+Height
+3
+48
+Tool Tip
+5
+0
+Caption
+5
+229
+The battery life model determines how battery capacity decreases over time. Capacity may decrease with the number of charge and discharge cycles (cycle degradation), with age regardless of cycling (calendar degradation), or both.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+18
+ui_batt_life_model
+X
+3
+42
+Y
+3
+72
+Width
+3
+339
+Height
+3
+78
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+Cycle and calendar degradation
+Li-ion NMC/Graphite
+Li-ion LMO/LTO
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+1
+
+1
+ui_batt_life_model
+3
+1
+Battery life model option for user interface
+0/1/2
+Battery Life
+65
+Cycle and calendar degradation|Li-ion NMC/Graphite|Li-ion LMO/LTO
+3
+1
+1
+1
+1
+0
+RadioChoice
+
+0
+2615
+on_load{'Battery Life Options'} = define() {
+	battery_type_message();
+	life_message();
+};
+
+on_change{'ui_batt_life_model'} = define(){
+	battery_type_message();
+	life_message();
+	set_batt_life_excl_var();
+};
+
+function set_batt_life_excl_var()
+{
+	value('batt_life_excl', value('ui_batt_life_model'));
+}
+
+function life_message()
+{
+	msg = '';
+	clr = 'Black';
+	options = ['Tables','Li-ion NMC/Graphite','Li-ion LMO/LTO'];
+	if ( ${batt_chem} == 0 )
+	{
+		msg = 'Only the Cycle and Calendar Degradation option is available for lead-acid and flow battery types.';
+	}
+	elseif ( ${ui_batt_life_model} == 0 )
+	{
+		msg = 'The Cycle and Calendar Degradation inputs below define battery degradation curves.';
+	}
+	else
+	{
+		msg = 'This option uses a special battery life model for the ' + options[${ui_batt_life_model}] + ' battery type that combines cycle and calendar degradation.';
+	}
+	property('lbl_batt_life_message','Caption',msg);
+	property('lbl_batt_life_message','TextColour',clr);
+}
+
+function battery_type_message()
+{
+	clr = 'Black';
+	msg = '';
+	types = ['Lead Acid: Flooded','Lead Acid: VRLA Gel','Lead Acid: VRLA AGM','Lead Acid: Custom','Lithium Ion: Lithium Manganese Oxide (LMO/Graphite)','Lithium Ion: Lithium Iron Phosphate (LFP/Graphite)','Lithium Ion: Lithium Cobalt Oxide (LCO/Graphite)','Lithium Ion: LMO/Lithium Titanate (LMO/LTO)','Lithium Ion: Nickel Manganese Cobalt Oxide (NMC/Graphite)','Lithium Ion: Nickel Cobalt Aluminum Oxide (NCA/Graphite)','Lithium Ion: Custom','Flow Battery: Vanadium','Flow Battery: Iron'];
+	if ( ${batt_chem} == 1 ) // Li-ion
+	{
+		if ( ${batt_type} == 7 ) // LMO/LTO
+		{
+			best_life = 'Li-ion LMO/LTO';
+			if ( ${ui_batt_life_model} != 2 ) { clr = 'Red'; }
+		}
+		elseif ( ${batt_type} == 8 ) // NMC/Graphite
+		{
+			best_life = 'Li-ion NMC/Graphite'; 
+			if ( ${ui_batt_life_model} != 1 ) { clr = 'Red'; }
+		}
+		else // other Li-ion types
+		{
+			best_life = 'empirical cycle and calendar degradation'; 
+			if ( ${ui_batt_life_model} != 0 || ${batt_calendar_choice} != 1 ) { clr = 'Red'; }
+		}
+	}
+	else // lead acid and flow
+	{
+		best_life = 'cycle degradation with no calendar degradation';
+		if ( ${ui_batt_life_model} != 0 || ${batt_calendar_choice} != 0 ) { clr = 'Red'; }
+	}
+	msg += 'The best battery life option for ' + types[${batt_type}] + ' (batt_type='+ ${batt_type}+')' + ' is ' + best_life + '.';
+	if ( clr == 'Red' ) { msg+=' Choose the appropriate battery life options here or reselect the battery type on the Battery Cell and System page to reset to the default options.'; }
+	property('lbl_batt_chem','Caption',msg);
+	property('lbl_batt_chem','TextColour',clr);
+}
