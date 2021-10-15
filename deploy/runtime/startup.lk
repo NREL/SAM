@@ -145,10 +145,6 @@ function setup_pages_battery_life()
 	  		    'help'='battery_life' ,
 	  		    'exclusive_var' = 'batt_life_excl',
 	  		    'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true } );
-
-	/*addpage([['Battery Replacements','Battery Life Options' ]],
-	  		   {'sidebar'='Battery Life', 'help'='battery_life' });*/
-
 }
 
 function setup_pages_battery_dispatch_btm()
@@ -508,7 +504,7 @@ function setup_fuel_cell_pages_btm()
 				   'Battery Current and Capacity',
 				   'Battery Configuration',
 				   'Battery Dispatch Common',
-				   {'name'='Battery Life', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
+				   {'name'='Battery Lifetime for Fuel Cell', 'caption'='Battery Life', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
 				   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 				   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 				   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
@@ -535,7 +531,7 @@ function setup_fuel_cell_pages_fom()
 				   'Battery Current and Capacity',
 				   'Battery Configuration',
 				   'Battery Dispatch Common',
-					{'name'='Battery Life', 'caption'='Battery Lifetime', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
+					{'name'='Battery Lifetime for Fuel Cell', 'caption'='Battery Life', 'collapsible'=true, 'collapsible_var'='battery_lifetime_shown'},
 				   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 				   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 				   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
