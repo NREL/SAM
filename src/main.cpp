@@ -2785,8 +2785,7 @@ void SamApp::LoadPythonConfig(){
     pythonConfig = ReadPythonConfig(GetPythonConfigPath() + "/python_config.json");
     if (CheckPythonInstalled(pythonConfig)){
         std::string python_path = GetPythonConfigPath();
-        if (!set_python_path(python_path.c_str()))
-            throw std::runtime_error("set_python_path error for directory " + python_path);
+		set_python_path(python_path.c_str());
         return;
     }
 }
@@ -2806,8 +2805,7 @@ void SamApp::InstallPython() {
     auto python_path = GetPythonConfigPath();
     // already installed and correctly configured
     if (CheckPythonInstalled(pythonConfig)){
-        if (!set_python_path(python_path.c_str()))
-            throw std::runtime_error("set_python_path error for directory " + python_path);
+		set_python_path(python_path.c_str());
         return;
     }
 
