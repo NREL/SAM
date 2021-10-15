@@ -523,9 +523,9 @@ Tool Tip
 batt_calendar_a
 3
 1
-a
+Battery empirical calendar life parameter a
 1/sqrt(day)
-Battery Lifetime
+Battery Life
 0
 2
 1
@@ -537,9 +537,9 @@ Numeric
 batt_calendar_b
 3
 1
-b
+Battery empirical calendar life parameter b
 K
-Battery Lifetime
+Battery Life
 0
 2
 1
@@ -551,9 +551,9 @@ Numeric
 batt_calendar_c
 3
 1
-c
+Battery empirical calendar life parameter c
 K
-Battery Lifetime
+Battery Life
 0
 2
 1
@@ -567,7 +567,7 @@ batt_calendar_choice
 1
 Calendar degradation options
  
-Battery Lifetime
+Battery Life
 21
 None|Empirical|Custom
 3
@@ -582,7 +582,7 @@ batt_calendar_lifetime_matrix
 3
 Calendar lifetime matrix
  
-Battery Lifetime
+Battery Life
 0
 3
 1
@@ -597,9 +597,9 @@ DataMatrix
 batt_calendar_q0
 3
 1
-q0
+Battery empirical calendar life parameter q0
 fraction
-Battery Lifetime
+Battery Life
 0
 0
 1
@@ -613,7 +613,7 @@ batt_lifetime_matrix
 3
 Lifetime matrix
  
-Battery Lifetime
+Battery Life
 0
 3
 1
@@ -641,7 +641,7 @@ equations{'batt_calendar_a'} = define() { return 0.00266; }; // 1/sqrt(day)
 equations{'batt_calendar_b'} = define() { return -7280; }; // K
 equations{'batt_calendar_c'} = define() { return 939; }; // K
 
-6617
+6497
 on_load{'Battery Life Cycle Calendar'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
 	on_change{'batt_calendar_choice'}();
@@ -649,15 +649,6 @@ on_load{'Battery Life Cycle Calendar'} = define() {
 	cycle_calendar_message();
 	value('batt_life_model',0);
 };
-/*
-// this is to display messages for fuel cell model
-on_change{'ui_batt_life_model'} = define() {
-	if ( technology() == 'Fuel Cell' )
-	{
-		cycle_calendar_message();
-	}	
-};
-*/
 
 on_change{'batt_calendar_lifetime_matrix'} = define(){
 	plot_calendar_life();
@@ -670,9 +661,12 @@ on_change{'batt_calendar_choice'} = define(){
 	// calendar degradation with lead acid or flow batteries may cause SSC error
 	if (${batt_calendar_choice} != 0 && ${batt_chem} !=1)
 	{
-		x = msgbox('Calendar Degradation\nThe Empirical calendar degradation model is not intended for the Lead Acid or Flow battery types.');
-		value('batt_calendar_choice', 0);
-		return;
+		x = yesno('Calendar Degradation\nThe Empirical degradation model is designed for Li-ion batteries, not Lead-acid or Flow batteries.\n\nDo you want to use it anyway?');
+		if ( !x )
+		{
+			value('batt_calendar_choice', 0);
+			return;
+		}	
 	}
 	
 	show('batt_calendar_lifetime_matrix', ${batt_calendar_choice} == 2);
