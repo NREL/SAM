@@ -234,7 +234,7 @@ Cycle and calendar degradation|Li-ion NMC/Graphite|Li-ion LMO/LTO
 RadioChoice
 
 0
-2961
+2932
 on_load{'Battery Life Options'} = define() {
 	battery_type_message();
 	life_message();
@@ -311,7 +311,7 @@ function battery_type_message()
 	}
 	else // lead acid and flow
 	{
-		best_life = 'cycle degradation with no calendar degradation';
+		best_life = 'cycle degradation';
 		if ( ${ui_batt_life_model} != 0 || ${batt_calendar_choice} != 0 ) { clr = 'Red'; }
 	}
 	msg += 'The best battery life option for ' + types[${batt_type}] + ' (batt_type='+ ${batt_type}+')' + ' is ' + best_life + '.';
