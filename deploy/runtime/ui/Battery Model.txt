@@ -277,13 +277,12 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12393
+12323
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
 	set_meter_position();
 	battsize_warning_check();
-	on_change{'batt_type'};
 };
 
 on_change{'batt_type'} = define()
@@ -326,9 +325,9 @@ on_change{'batt_type'} = define()
 	battsize_warning_check();
 
 	// Update inputs on Battery Life Options form
+	value('ui_batt_life_model', ${batt_life_model});
 	if (technology() != 'Fuel Cell' )
 	{
-		value('ui_batt_life_model', ${batt_life_model});
 		set_batt_life_excl_var();
 	}	
 
@@ -528,10 +527,7 @@ function set_batt_defaults_from_data(defs)
   	
 	// Lifetime
 	value('batt_life_model', cell_params.life_model);
-	if ( technology() != 'Fuel Cell' )
-	{
-		value('ui_batt_life_model', ${batt_life_model});
-	}	
+	value('ui_batt_life_model', ${batt_life_model});
 	value('batt_lifetime_matrix',cell_params.cycling_matrix);
 	
 	// turn calendar life model off

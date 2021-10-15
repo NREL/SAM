@@ -53,19 +53,29 @@ Some more examples:
 
 // this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
 version_upgrade{'2021.7.27'} = define() {
+
 	const cfg = config();
+	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ); // does not include fuel cell
+
+	// Battery lifetime updates
+	if ( cfg.tech == 'Fuel Cell' ) {
+		value('ui_batt_life_model',0);
+		value('batt_life_model',0);
+		message('The Battery Storage input page has a new option to choose a battery life model for different battery types. Be sure to check battery life model option when the file opens.','warning');
+	}
+	if ( is_batt_tech ) {
+		value('ui_batt_life_model',0);
+		value('batt_life_model',0);
+		message('The battery replacement and lifetime inputs are now on the new Battery Life input page with a new option to choose a battery life model for different battery types. Be sure to check battery life model option on the Battery Life page when the file opens.','warning');
+	}
 
 	//Battery Thermal remove weather file ambient temperature option
-	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ); // does not include fuel cell
 	old_batt_thermal_choice = oldvalue('batt_thermal_choice');
 	old_batt_single_temp = oldvalue('batt_room_temperature_single');
 	old_temp_vector = oldvalue('batt_room_temperature_vector');
 	old_temp_celsius = oldvalue('batt_room_temperature_celsius');
 	new_temp_vector = [];
 	if (is_batt_tech) {
-		value('ui_batt_life_model',0);
-		value('batt_life_model',0);
-		message('The battery replacement and lifetime inputs are now on the new Battery Life input page with a new option to choose a battery life model for different battery types. Be sure to check battery life model option on the Battery Life page when the file opens.','warning');
 		if (old_batt_thermal_choice == 0) { 
 			value('batt_thermal_choice', 1);
 			value('batt_room_temperature_vector', old_temp_celsius);
@@ -84,7 +94,6 @@ version_upgrade{'2021.7.27'} = define() {
 		}
 	}
 	
-	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' );
 	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' );
 	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
 	btm_options = ['Peak Shaving','Input Grid Power Targets','Input Battery Power Targets','Manual Dispatch','Price Signal Forecast'];

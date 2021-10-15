@@ -1059,12 +1059,6 @@ battery_energy_kwh
 1
 1
 0
-battery_lifetime_shown
-1
-1
-1
-1
-0
 battery_losses_shown
 1
 1
@@ -4624,6 +4618,12 @@ tz
 1
 1
 -7
+ui_batt_life_model
+1
+1
+1
+1
+1
 ui_pv_capacity
 1
 1

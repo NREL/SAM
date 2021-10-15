@@ -359,6 +359,54 @@ Label
 13
 Name
 5
+18
+lbl_cycle_calendar
+X
+3
+15
+Y
+3
+24
+Width
+3
+990
+Height
+3
+48
+Tool Tip
+5
+0
+Caption
+5
+302
+Use the options and tables below to define cycle degradation and calendar degradation curves. SAM automatically updates these inputs when you choose a battery type on the Battery Cell and System page. The empirical calendar degradation model is suitable for Lithium-ion batteries. See help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
 23
 lbl_empirical_equation1
 X
@@ -447,54 +495,6 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-13
-Name
-5
-10
-object 711
-X
-3
-15
-Y
-3
-24
-Width
-3
-990
-Height
-3
-48
-Tool Tip
-5
-0
-Caption
-5
-302
-Use the options and tables below to define cycle degradation and calendar degradation curves. SAM automatically updates these inputs when you choose a battery type on the Battery Cell and System page. The empirical calendar degradation model is suitable for Lithium-ion batteries. See help for details.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Plot
 
 1
@@ -641,19 +641,30 @@ equations{'batt_calendar_a'} = define() { return 0.00266; }; // 1/sqrt(day)
 equations{'batt_calendar_b'} = define() { return -7280; }; // K
 equations{'batt_calendar_c'} = define() { return 939; }; // K
 
-5211
+6617
 on_load{'Battery Life Cycle Calendar'} = define() {
 	on_change{'batt_lifetime_matrix'}(); 
 	on_change{'batt_calendar_choice'}();
 	on_change{'batt_calendar_lifetime_matrix'}();
+	cycle_calendar_message();
 	value('batt_life_model',0);
 };
+/*
+// this is to display messages for fuel cell model
+on_change{'ui_batt_life_model'} = define() {
+	if ( technology() == 'Fuel Cell' )
+	{
+		cycle_calendar_message();
+	}	
+};
+*/
 
 on_change{'batt_calendar_lifetime_matrix'} = define(){
 	plot_calendar_life();
 };
 
 on_change{'batt_calendar_choice'} = define(){
+
 	battery_type_message();
 	
 	// calendar degradation with lead acid or flow batteries may cause SSC error
@@ -678,6 +689,32 @@ on_change{'batt_calendar_choice'} = define(){
 	
 	plot_calendar_life();
 };
+
+function cycle_calendar_message()
+{
+	msg = 'Use the options and tables below to define cycle degradation and calendar degradation curves. SAM automatically updates these inputs when you choose a battery type on the Battery Cell and System page. The empirical calendar degradation model is suitable for Lithium-ion batteries. See help for details.';
+	clr = 'Black';
+	if ( technology() == 'Fuel Cell' && ${ui_batt_life_model} != 0 )
+	{
+		life_options = ['Cycle and Calendar Degradation','Li-ion NMC/Graphite','Li-ion LMO/LTO'];
+		msg = 'Disregard these inputs because the Cycle and Calendar degradation curves are not used for the ' + life_options[${ui_batt_life_model}] + ' option.';
+		clr = 'Red';
+	}
+	property('lbl_cycle_calendar', 'Caption', msg);
+	property('lbl_cycle_calendar', 'TextColour', clr);
+	enable_cycle_calendar_inputs();
+}
+
+function enable_cycle_calendar_inputs()
+{
+	is_calendar_life = ( ${ui_batt_life_model} == 0 );
+	enable('batt_lifetime_matrix',is_calendar_life);
+	enable('batt_calendar_lifetime_matrix',is_calendar_life);
+	enable('batt_calendar_choice',is_calendar_life);
+	show('plot_cap_vs_cycle',is_calendar_life);
+	show('batt_calendar_life_plot',is_calendar_life);
+	refresh();
+}
 
 function plot_calendar_life()
 {

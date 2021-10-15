@@ -1008,12 +1008,6 @@ battery_energy_kwh
 1
 1
 0
-battery_lifetime_shown
-1
-1
-1
-1
-0
 battery_losses_shown
 1
 1
@@ -4172,6 +4166,12 @@ ui_annual_load
 1
 1
 0
+ui_batt_life_model
+1
+1
+1
+1
+1
 ui_loan_amount
 1
 1

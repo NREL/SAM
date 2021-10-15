@@ -234,16 +234,30 @@ Cycle and calendar degradation|Li-ion NMC/Graphite|Li-ion LMO/LTO
 RadioChoice
 
 0
-2615
+2961
 on_load{'Battery Life Options'} = define() {
 	battery_type_message();
 	life_message();
+	// batt_life_model is set on battery life forms
+	// for exclusive tabs for batt techs except fuel cell
+	if ( technology()=='Fuel Cell' )
+	{
+		value('batt_life_model',${ui_batt_life_model});
+	}
 };
 
 on_change{'ui_batt_life_model'} = define(){
 	battery_type_message();
 	life_message();
-	set_batt_life_excl_var();
+	if ( technology() != 'Fuel Cell' )
+	{
+		set_batt_life_excl_var();
+	}	
+	else // fuel cell only
+	{
+		value('batt_life_model',${ui_batt_life_model});
+		cycle_calendar_message();
+	}
 };
 
 function set_batt_life_excl_var()
