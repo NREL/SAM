@@ -2492,7 +2492,7 @@ Physical Trough Thermal Storage
 0
 Numeric
 
-3965
+4011
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -2608,6 +2608,7 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	ssc_var(obj, "u_tank", ${u_tank});					//[-]
 	ssc_var(obj, "field_fluid", ${Fluid});
 	ssc_var(obj, "field_fl_props", ${field_fl_props});
+	ssc_var(obj, "dt_hot", ${dt_hot});					//[K]
 
 	ret = ssc_exec(obj, 'ui_tes_calcs');
 	
