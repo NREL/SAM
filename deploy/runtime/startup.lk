@@ -1950,7 +1950,7 @@ function setup_pv_battery_pages(is_btm)
 		setup_pages_battery_life();
 		setup_pages_battery_dispatch_fom();
 	}
-	setup_grid_page();
+	setup_grid_page_with_outage();
 }
 
 setconfig( 'PV Battery', 'Residential' );
@@ -2048,7 +2048,7 @@ function setup_generic_battery_pages(is_btm) {
 		setup_pages_battery_life();
 		setup_pages_battery_dispatch_fom();
 	}
-	setup_grid_page();
+	setup_grid_page_with_outage();
 }
 
 setconfig( 'Generic Battery', 'Residential' );
