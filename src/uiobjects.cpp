@@ -824,7 +824,8 @@ class wxUIToolTipCtrl : public wxUIObject
 public:
 	wxUIToolTipCtrl() {
 		AddProperty("Tips", new wxUIProperty(wxString("Type a tip here or define in runtime/help/tooltips.json")));
-	}
+        AddProperty("TipTitle", new wxUIProperty(wxString("Type a tip title here or define in runtime/help/tooltips.json")));
+    }
 	virtual wxString GetTypeName() { return "ToolTipCtrl"; }
 	virtual wxUIObject *Duplicate() { wxUIObject *o = new wxUIToolTipCtrl; o->Copy(this); return o; }
 	virtual bool IsNativeObject() { return true; }
@@ -849,7 +850,7 @@ public:
 			// use widget property values if not defined in json file
 			tt_name = Property("Name").GetString();
 			tt_tips = Property("Tips").GetString();
-			tt_title = "Information";
+			tt_title = Property("TipTitle").GetString();
 			json_file = SamApp::GetRuntimePath() + "/help/tooltips.json";
 			//json_items = "{\"tooltips\": [{\"name\":\"tt_mhk_mooring_cost\", \"title\" : \"Mooring, Foundation, and Substructure Cost\", \"tip\" : \"The mooring cost is awesome\"},{ \"name\":\"tt_mhk_powertakeoff_cost\",\"title\" : \"ower Take-Off System Cost\",\"tip\" : \"The power take-off cost is not awesome\" }]}";
 			if (tf.Open(json_file))
