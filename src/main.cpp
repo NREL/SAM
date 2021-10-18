@@ -2785,8 +2785,7 @@ void SamApp::LoadPythonConfig(){
     pythonConfig = ReadPythonConfig(GetPythonConfigPath() + "/python_config.json");
     if (CheckPythonInstalled(pythonConfig)){
         std::string python_path = GetPythonConfigPath();
-        if (!set_python_path(python_path.c_str()))
-            throw std::runtime_error("set_python_path error for directory " + python_path);
+		set_python_path(python_path.c_str());
         return;
     }
 }
@@ -2806,8 +2805,7 @@ void SamApp::InstallPython() {
     auto python_path = GetPythonConfigPath();
     // already installed and correctly configured
     if (CheckPythonInstalled(pythonConfig)){
-        if (!set_python_path(python_path.c_str()))
-            throw std::runtime_error("set_python_path error for directory " + python_path);
+		set_python_path(python_path.c_str());
         return;
     }
 
@@ -3018,7 +3016,7 @@ void ConfigDialog::PopulateTech()
 
 	// Manually add groups here - eventually move to startup.lk
 	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
-	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Battery Storage");
+	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
 	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
 	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
 

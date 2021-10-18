@@ -3601,7 +3601,21 @@ Heliostat Field
 0.7
 Numeric
 
-3093
+3285
+// Keep these solarpilot optimization settings hardcoded in ui
+// Then they will show up in lk script if user selects Shift+F5
+// If they are in SSC equations, they will overwrite user values
+equations{'opt_algorithm'} = define(){
+	return 1;
+};
+equations{'opt_flux_penalty'} = define(){
+	return 0.25;
+};
+
+
+equations{ 'land_max_calc' } = define() {
+	return ${land_max}*${THT}; };
+
 equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 	// land_max_calc
 	data.land_max = ${land_max};
@@ -3663,10 +3677,6 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 	
 	// dni_des_calc
 	data.dni_des = ${dni_des};
-	
-	// opt_algorithm
-	
-	// opt_flux_penalty
 
 	success = ssc_eqn("Tower_SolarPilot_Solar_Field_Equations", data);
 	if (!success) {
@@ -3685,8 +3695,6 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 		${land_max_calc} = -999.;
 		${land_min_calc} = -999.;
 		${n_hel} = -999.;
-		${opt_algorithm} = -999.;
-		${opt_flux_penalty} = -999.;
 		${q_design} = -999.;
 	}
 	else {
@@ -3704,16 +3712,14 @@ equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
 		${is_optimize} = data.is_optimize;
 		${land_max_calc} = data.land_max_calc;
 		${land_min_calc} = data.land_min_calc;
-		${n_hel} = data.n_hel;
-		${opt_algorithm} = data.opt_algorithm;
-		${opt_flux_penalty} = data.opt_flux_penalty;
+		${n_hel} = data.n_hel;		
 		${q_design} = data.q_design;
 	}
 	
 	return 0;
 };
 
-9114
+10806
 function update_button_status() {
 	/* 
 	This function updates the enable/disable status of the layout and 
@@ -3787,9 +3793,19 @@ function call_fluxbalance() {
 
 function call_solarpilot(is_optimize) {	
 
+	rec_type = ${receiver_type};
+
 	logmsg('btn_solarpilot');
 	obj = ssc_create();
 	ssc_var(obj, "solar_resource_file",${solar_resource_file});
+	ssc_var(obj, "receiver_type", ${receiver_type});
+	ssc_var(obj, "rec_height",${rec_height});
+	ssc_var(obj, "rec_aspect",${rec_aspect});
+	ssc_var(obj, "cav_rec_height", ${cav_rec_height});
+	ssc_var(obj, "cav_rec_width", ${cav_rec_width});
+	ssc_var(obj, "cav_rec_span", ${cav_rec_span});
+	ssc_var(obj, "n_cav_rec_panels", ${n_cav_rec_panels});
+	
 	ssc_var(obj, "helio_width",${helio_width});
 	ssc_var(obj, "helio_height",${helio_height});
 	ssc_var(obj, "helio_optical_error",${helio_optical_error_mrad}*1.E-3);
@@ -3797,8 +3813,6 @@ function call_solarpilot(is_optimize) {
 	ssc_var(obj, "dens_mirror",${dens_mirror});
 	ssc_var(obj, "helio_reflectance",${helio_reflectance});
 	ssc_var(obj, "rec_absorptance",${rec_absorptance});
-	ssc_var(obj, "rec_height",${rec_height});
-	ssc_var(obj, "rec_aspect",${rec_aspect});
 	ssc_var(obj, "rec_hl_perm2",${rec_hl_perm2});
 	ssc_var(obj, "q_design",${Q_rec_des});
 	ssc_var(obj, "dni_des", ${dni_des});
@@ -3830,7 +3844,7 @@ function call_solarpilot(is_optimize) {
 	ssc_var(obj, "sales_tax_frac",${sales_tax_frac});
 	ssc_var(obj, "cost_sf_fixed", ${cost_sf_fixed});
 	
-	ssc_var(obj, "opt_flux_penalty", 0.25); //not used with COBYLA -- ${opt_flux_penalty});
+	ssc_var(obj, "opt_flux_penalty", ${opt_flux_penalty}); //not used with COBYLA -- ${opt_flux_penalty});
 	ssc_var(obj, "opt_max_iter", ${opt_max_iter});
 	ssc_var(obj, "flux_max", ${flux_max});
 	ssc_var(obj, "check_max_flux", false);
@@ -3838,14 +3852,16 @@ function call_solarpilot(is_optimize) {
 	ssc_var(obj, "is_optimize", to_int(is_optimize));
 	ssc_var(obj, "opt_init_step", ${opt_init_step});
 	ssc_var(obj, "opt_conv_tol", ${opt_conv_tol});
-	ssc_var(obj, "opt_algorithm", 1); //always cobyla now... //${opt_algorithm});
+	ssc_var(obj, "opt_algorithm", ${opt_algorithm}); //always cobyla now... //${opt_algorithm});
 		
-	//ssc_dump( obj, homedir() + '/solarpilot.txt' );
+	//ssc_dump( obj, 'solarpilot.lk' );
 	//msgbox("Dumping inputs to: " + homedir() + '/solarpilot.txt');
 	
 	//save prior values as reference in case we're optimizing
 	H_rec0 = ${rec_height};
 	D_rec0 = H_rec0/${rec_aspect};
+	H_cav_rec0 = ${cav_rec_height};
+	cav_rec_ap_width0 = ${cav_rec_width};
 	THT0 = ${h_tower};	
 	np0 = #${helio_positions};
 	
@@ -3856,10 +3872,18 @@ function call_solarpilot(is_optimize) {
 	if (ret == 0)
 	{
 
-		H_rec = ssc_var(obj, "rec_height_opt");
-		aspect = ssc_var(obj, "rec_aspect_opt");
-		D_rec = H_rec/aspect;
+		H_rec = ssc_var(obj, "rec_height_opt");		
 		THT = ssc_var(obj, "h_tower_opt");
+		if(rec_type == 0){
+			aspect = ssc_var(obj, "rec_aspect_opt");
+			D_rec = H_rec/aspect;
+			cav_rec_ap_width = nan();
+		}
+		else if(rec_type == 1){
+			aspect = nan();
+			D_rec = nan();
+			cav_rec_ap_width = ssc_var(obj, "cav_rec_aper_width_opt");
+		}
 
 		if( ${tower_technology} == 1 )
 		{
@@ -3879,15 +3903,28 @@ function call_solarpilot(is_optimize) {
 				
 		if(is_optimize)
 		{
-			htm_str = 
-			"<html><body>"+
-			"<table><tr><td><b>Item</b></td><td><b>Units</b></td><td><b>Update Value</b></td><td><b>Previous</b></td></tr>" +
-			"<tr><td>" + "Receiver height"   + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(H_rec) + "</td><td bgcolor='#DBDBD7'>" + to_string(H_rec0) + "</td></tr>" +
-			"<tr><td>" + "Receiver diameter" + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(D_rec) + "</td><td bgcolor='#DBDBD7'>" + to_string(D_rec0) + "</td></tr>" +
-			"<tr><td>" + "Tower height"      + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(THT)   + "</td><td bgcolor='#DBDBD7'>" + to_string(THT0)   + "</td></tr>" +
-			"<tr><td>" + "Heliostat count"   + "</td><td>   </td><td bgcolor='#F2FF63'>" + to_string(np)    + "</td><td bgcolor='#DBDBD7'>" + to_string(np0)    + "</td></tr>" +
-			"</table>" +
-			"</body></html>";
+			if(rec_type == 0){
+				htm_str = 
+				"<html><body>"+
+				"<table><tr><td><b>Item</b></td><td><b>Units</b></td><td><b>Update Value</b></td><td><b>Previous</b></td></tr>" +
+				"<tr><td>" + "Receiver height"   + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(H_rec) + "</td><td bgcolor='#DBDBD7'>" + to_string(H_rec0) + "</td></tr>" +
+				"<tr><td>" + "Receiver diameter" + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(D_rec) + "</td><td bgcolor='#DBDBD7'>" + to_string(D_rec0) + "</td></tr>" +
+				"<tr><td>" + "Tower height"      + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(THT)   + "</td><td bgcolor='#DBDBD7'>" + to_string(THT0)   + "</td></tr>" +
+				"<tr><td>" + "Heliostat count"   + "</td><td>   </td><td bgcolor='#F2FF63'>" + to_string(np)    + "</td><td bgcolor='#DBDBD7'>" + to_string(np0)    + "</td></tr>" +
+				"</table>" +
+				"</body></html>";
+			}
+			else if(rec_type == 1){
+				htm_str = 
+				"<html><body>"+
+				"<table><tr><td><b>Item</b></td><td><b>Units</b></td><td><b>Update Value</b></td><td><b>Previous</b></td></tr>" +
+				"<tr><td>" + "Receiver height"   + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(H_rec) + "</td><td bgcolor='#DBDBD7'>" + to_string(H_cav_rec0) + "</td></tr>" +
+				"<tr><td>" + "Receiver aperture width" + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(cav_rec_ap_width) + "</td><td bgcolor='#DBDBD7'>" + to_string(cav_rec_ap_width0) + "</td></tr>" +
+				"<tr><td>" + "Tower height"      + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(THT)   + "</td><td bgcolor='#DBDBD7'>" + to_string(THT0)   + "</td></tr>" +
+				"<tr><td>" + "Heliostat count"   + "</td><td>   </td><td bgcolor='#F2FF63'>" + to_string(np)    + "</td><td bgcolor='#DBDBD7'>" + to_string(np0)    + "</td></tr>" +
+				"</table>" +
+				"</body></html>";
+			}
 			
 			html_dialog(htm_str, "Optimization summary", [400,200]);
 		
@@ -3908,10 +3945,16 @@ function call_solarpilot(is_optimize) {
 					value("d_rec", D_rec);
 				}
 				else
-				{
-					value("rec_height", H_rec);
+				{					
 					value("h_tower", THT);
-					value("D_rec", D_rec);				
+					if(rec_type == 0){
+						value("D_rec", D_rec);
+						value("rec_height", H_rec);				
+					}
+					else if(rec_type == 1){
+						value("cav_rec_width", cav_rec_ap_width);
+						value("cav_rec_height", H_rec);
+					}
 				}
 			}
 		}
