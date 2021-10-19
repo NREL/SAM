@@ -1,7 +1,7 @@
 Electric Load Crit
-850
-634
-65
+839
+534
+72
 Label
 
 1
@@ -12,10 +12,10 @@ Name
 Critical_label
 X
 3
-291
+714
 Y
 3
-177
+180
 Width
 3
 80
@@ -60,16 +60,16 @@ Name
 GroupBox1
 X
 3
-12
+6
 Y
 3
-9
+6
 Width
 3
 824
 Height
 3
-596
+521
 Tool Tip
 5
 0
@@ -90,10 +90,10 @@ Name
 Label1
 X
 3
-57
+480
 Y
 3
-201
+204
 Width
 3
 68
@@ -138,10 +138,10 @@ Name
 Label11
 X
 3
-57
+480
 Y
 3
-225
+228
 Width
 3
 68
@@ -186,10 +186,10 @@ Name
 Label111
 X
 3
-57
+480
 Y
 3
-249
+252
 Width
 3
 68
@@ -234,10 +234,10 @@ Name
 Label1111
 X
 3
-57
+480
 Y
 3
-273
+276
 Width
 3
 68
@@ -282,10 +282,10 @@ Name
 Label11111
 X
 3
-57
+480
 Y
 3
-297
+300
 Width
 3
 68
@@ -330,10 +330,10 @@ Name
 Label111111
 X
 3
-57
+480
 Y
 3
-321
+324
 Width
 3
 68
@@ -378,10 +378,10 @@ Name
 Label1111111
 X
 3
-57
+480
 Y
 3
-345
+348
 Width
 3
 68
@@ -426,10 +426,10 @@ Name
 Label11111111
 X
 3
-57
+480
 Y
 3
-369
+372
 Width
 3
 68
@@ -474,10 +474,10 @@ Name
 Label111111111
 X
 3
-57
+480
 Y
 3
-393
+396
 Width
 3
 68
@@ -522,10 +522,10 @@ Name
 Label1111111111
 X
 3
-57
+480
 Y
 3
-417
+420
 Width
 3
 68
@@ -570,10 +570,10 @@ Name
 Label11111111111
 X
 3
-57
+480
 Y
 3
-441
+444
 Width
 3
 68
@@ -618,10 +618,10 @@ Name
 Label111111111111
 X
 3
-57
+480
 Y
 3
-498
+501
 Width
 3
 68
@@ -666,10 +666,10 @@ Name
 Label11111111111138
 X
 3
-57
+480
 Y
 3
-465
+468
 Width
 3
 68
@@ -714,10 +714,10 @@ Name
 Label2
 X
 3
-72
+495
 Y
 3
-177
+180
 Width
 3
 137
@@ -762,10 +762,10 @@ Name
 Label2129
 X
 3
-210
+633
 Y
 3
-177
+180
 Width
 3
 80
@@ -800,54 +800,6 @@ AlignRight
 AlignTop
 2
 0
-Label
-
-1
-13
-Name
-5
-7
-Label41
-X
-3
-462
-Y
-3
-204
-Width
-3
-311
-Height
-3
-154
-Tool Tip
-5
-0
-Caption
-5
-187
-In Value mode, the growth rate applies to the previous year's annual kWh load starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 kWh value. See Help for details.
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 Numeric
 
 1
@@ -858,10 +810,10 @@ Name
 annual_crit
 X
 3
-291
+714
 Y
 3
-498
+501
 Width
 3
 79
@@ -920,10 +872,10 @@ Name
 annual_peak
 X
 3
-210
+633
 Y
 3
-498
+501
 Width
 3
 79
@@ -982,10 +934,10 @@ Name
 crit_1
 X
 3
-291
+714
 Y
 3
-201
+204
 Width
 3
 79
@@ -1044,10 +996,10 @@ Name
 crit_10
 X
 3
-291
+714
 Y
 3
-417
+420
 Width
 3
 79
@@ -1106,10 +1058,10 @@ Name
 crit_11
 X
 3
-291
+714
 Y
 3
-441
+444
 Width
 3
 79
@@ -1168,10 +1120,10 @@ Name
 crit_12
 X
 3
-291
+714
 Y
 3
-465
+468
 Width
 3
 79
@@ -1230,10 +1182,10 @@ Name
 crit_2
 X
 3
-291
+714
 Y
 3
-225
+228
 Width
 3
 79
@@ -1292,10 +1244,10 @@ Name
 crit_3
 X
 3
-291
+714
 Y
 3
-249
+252
 Width
 3
 79
@@ -1354,10 +1306,10 @@ Name
 crit_4
 X
 3
-291
+714
 Y
 3
-273
+276
 Width
 3
 79
@@ -1416,10 +1368,10 @@ Name
 crit_5
 X
 3
-291
+714
 Y
 3
-297
+300
 Width
 3
 79
@@ -1478,10 +1430,10 @@ Name
 crit_6
 X
 3
-291
+714
 Y
 3
-321
+324
 Width
 3
 79
@@ -1540,10 +1492,10 @@ Name
 crit_7
 X
 3
-291
+714
 Y
 3
-345
+348
 Width
 3
 79
@@ -1602,10 +1554,10 @@ Name
 crit_8
 X
 3
-291
+714
 Y
 3
-369
+372
 Width
 3
 79
@@ -1664,10 +1616,10 @@ Name
 crit_9
 X
 3
-291
+714
 Y
 3
-393
+396
 Width
 3
 79
@@ -1726,10 +1678,10 @@ Name
 energy_1
 X
 3
-129
+552
 Y
 3
-201
+204
 Width
 3
 79
@@ -1788,10 +1740,10 @@ Name
 energy_10
 X
 3
-129
+552
 Y
 3
-417
+420
 Width
 3
 79
@@ -1850,10 +1802,10 @@ Name
 energy_11
 X
 3
-129
+552
 Y
 3
-441
+444
 Width
 3
 79
@@ -1912,10 +1864,10 @@ Name
 energy_12
 X
 3
-129
+552
 Y
 3
-465
+468
 Width
 3
 79
@@ -1974,10 +1926,10 @@ Name
 energy_2
 X
 3
-129
+552
 Y
 3
-225
+228
 Width
 3
 79
@@ -2036,10 +1988,10 @@ Name
 energy_3
 X
 3
-129
+552
 Y
 3
-249
+252
 Width
 3
 79
@@ -2098,10 +2050,10 @@ Name
 energy_4
 X
 3
-129
+552
 Y
 3
-273
+276
 Width
 3
 79
@@ -2160,10 +2112,10 @@ Name
 energy_5
 X
 3
-129
+552
 Y
 3
-297
+300
 Width
 3
 79
@@ -2222,10 +2174,10 @@ Name
 energy_6
 X
 3
-129
+552
 Y
 3
-321
+324
 Width
 3
 79
@@ -2284,10 +2236,10 @@ Name
 energy_7
 X
 3
-129
+552
 Y
 3
-345
+348
 Width
 3
 79
@@ -2346,10 +2298,10 @@ Name
 energy_8
 X
 3
-129
+552
 Y
 3
-369
+372
 Width
 3
 79
@@ -2408,10 +2360,10 @@ Name
 energy_9
 X
 3
-129
+552
 Y
 3
-393
+396
 Width
 3
 79
@@ -2470,13 +2422,13 @@ Name
 escal_input_hourly
 X
 3
-564
+240
 Y
 3
-171
+150
 Width
 3
-100
+119
 Height
 3
 21
@@ -2485,8 +2437,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+18
+Load Growth (%/yr)
 UseSchedule
 2
 0
@@ -2513,10 +2465,10 @@ Name
 load_annual_total
 X
 3
-129
+552
 Y
 3
-498
+501
 Width
 3
 79
@@ -2575,10 +2527,10 @@ Name
 load_user_data
 X
 3
-234
+240
 Y
 3
-45
+96
 Width
 3
 119
@@ -2587,18 +2539,19 @@ Height
 24
 Tool Tip
 5
-0
+58
+Click Edit Array to import time series electric load data.
 Mode
 3
 1
 Label
 5
 15
-Load power (kW)
+Load Power (kW)
 Description
 5
-164
-The electric load is specified as the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour, in kWh.
+156
+The electric load power is the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour in kWh.
 TabOrder
 3
 3
@@ -2612,13 +2565,13 @@ Name
 normalize_to_utility_bill
 X
 3
-414
+48
 Y
 3
-45
+204
 Width
 3
-420
+312
 Height
 3
 24
@@ -2627,8 +2580,8 @@ Tool Tip
 0
 Caption
 5
-64
-Normalize supplied load profile to monthly electricity bill data
+44
+Scale electric load profile to monthly usage
 State
 2
 1
@@ -2642,19 +2595,96 @@ Divider
 Name
 5
 9
+object 21
+X
+3
+552
+Y
+3
+489
+Width
+3
+240
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+9
 object 22
 X
 3
-45
+33
 Y
 3
-141
+183
 Width
 3
-369
+390
 Height
 3
-25
+24
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+36
+Adjust Load Profile to Monthly Usage
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+11
+object 2211
+X
+3
+465
+Y
+3
+117
+Width
+3
+360
+Height
+3
+24
 Tool Tip
 5
 0
@@ -2681,19 +2711,19 @@ Divider
 Name
 5
 10
-object 229
+object 228
 X
 3
-441
+33
 Y
 3
-141
+75
 Width
 3
-351
+390
 Height
 3
-16
+24
 Tool Tip
 5
 0
@@ -2708,9 +2738,105 @@ Colour
 255
 Caption
 5
-17
-Annual Adjustment
+32
+Hourly or Subhourly Load Profile
 Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+468
+Y
+3
+141
+Width
+3
+357
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+118
+These monthly and annual values are calculated from the hourly or subhourly load profile and shown here for reference.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 714
+X
+3
+30
+Y
+3
+24
+Width
+3
+798
+Height
+3
+48
+Tool Tip
+5
+0
+Caption
+5
+253
+Electric load data describes the electricity usage of a building or facility for electricity bill calculations. Enter or import an hourly or subhourly load profile and use the adjustment options to scale the profile or to account for annual load growth.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
 2
 1
 Numeric
@@ -2723,10 +2849,10 @@ Name
 peak_1
 X
 3
-210
+633
 Y
 3
-201
+204
 Width
 3
 79
@@ -2785,10 +2911,10 @@ Name
 peak_10
 X
 3
-210
+633
 Y
 3
-417
+420
 Width
 3
 79
@@ -2847,10 +2973,10 @@ Name
 peak_11
 X
 3
-210
+633
 Y
 3
-441
+444
 Width
 3
 79
@@ -2909,10 +3035,10 @@ Name
 peak_12
 X
 3
-210
+633
 Y
 3
-465
+468
 Width
 3
 79
@@ -2971,10 +3097,10 @@ Name
 peak_2
 X
 3
-210
+633
 Y
 3
-225
+228
 Width
 3
 79
@@ -3033,10 +3159,10 @@ Name
 peak_3
 X
 3
-210
+633
 Y
 3
-249
+252
 Width
 3
 79
@@ -3095,10 +3221,10 @@ Name
 peak_4
 X
 3
-210
+633
 Y
 3
-273
+276
 Width
 3
 79
@@ -3157,10 +3283,10 @@ Name
 peak_5
 X
 3
-210
+633
 Y
 3
-297
+300
 Width
 3
 79
@@ -3219,10 +3345,10 @@ Name
 peak_6
 X
 3
-210
+633
 Y
 3
-321
+324
 Width
 3
 79
@@ -3281,10 +3407,10 @@ Name
 peak_7
 X
 3
-210
+633
 Y
 3
-345
+348
 Width
 3
 79
@@ -3343,10 +3469,10 @@ Name
 peak_8
 X
 3
-210
+633
 Y
 3
-369
+372
 Width
 3
 79
@@ -3405,10 +3531,10 @@ Name
 peak_9
 X
 3
-210
+633
 Y
 3
-393
+396
 Width
 3
 79
@@ -3467,19 +3593,20 @@ Name
 scale_factor
 X
 3
-234
+240
 Y
 3
-75
+123
 Width
 3
-118
+119
 Height
 3
 24
 Tool Tip
 5
-0
+89
+Type a fixed scaling factor to adjust the hourly load profile. Type a '1' for no scaling.
 Value
 1
 0
@@ -3519,6 +3646,114 @@ BackColour
 TabOrder
 3
 4
+ToolTipCtrl
+
+1
+7
+Name
+5
+12
+tt_load_data
+X
+3
+393
+Y
+3
+96
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+55
+Type a tip here or define in runtime/help/tooltips.json
+ToolTipCtrl
+
+1
+7
+Name
+5
+14
+tt_load_growth
+X
+3
+393
+Y
+3
+150
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+55
+Type a tip here or define in runtime/help/tooltips.json
+ToolTipCtrl
+
+1
+7
+Name
+5
+21
+tt_load_scale_monthly
+X
+3
+393
+Y
+3
+231
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+55
+Type a tip here or define in runtime/help/tooltips.json
+ToolTipCtrl
+
+1
+7
+Name
+5
+15
+tt_load_scaling
+X
+3
+393
+Y
+3
+123
+Width
+3
+24
+Height
+3
+24
+Tool Tip
+5
+0
+Tips
+5
+55
+Type a tip here or define in runtime/help/tooltips.json
 MonthlyFactor
 
 1
@@ -3529,10 +3764,10 @@ Name
 utility_bill_data
 X
 3
-633
+258
 Y
 3
-75
+231
 Width
 3
 102
@@ -3559,10 +3794,10 @@ Name
 visualize_load_data
 X
 3
-300
+534
 Y
 3
-552
+84
 Width
 3
 224
@@ -3580,11 +3815,11 @@ TabOrder
 3
 0
 
-45
+46
 annual_crit
 3
 1
-Annual Critical
+Annual critical electric load
 kWh
 Electric Load
 0
@@ -3598,7 +3833,7 @@ Default
 annual_peak
 3
 1
-Annual Peak
+Annual peak electric load power
 kW
 Electric Load
 0
@@ -3948,7 +4183,7 @@ Default
 escal_input_hourly
 3
 2
-Load growth rate
+Electric load annual growth rate
 %/yr
 Electric Load
 0
@@ -3962,7 +4197,7 @@ Default
 load
 3
 2
-Electric load power
+Scaled electric load power
 kW
 Electric Load
 0
@@ -3990,7 +4225,7 @@ Default
 load_user_data
 3
 2
-Energy usage
+Electric load power
 kW
 Electric Load
 0
@@ -4001,14 +4236,28 @@ Electric Load
 1
 0
 DataArray
+mpeak
+3
+2
+Monthly electric load peak power
+kW
+Electric load
+0
+8
+1
+2
+1
+1
+0
+Default
 normalize_to_utility_bill
 3
 1
- 
+Scale monthly electric load to monthly usage
  
 Electric Load
 0
-0
+1
 1
 1
 1
@@ -4186,7 +4435,7 @@ Default
 scale_factor
 3
 1
-Scaling factor (optional)
+Electric load scaling factor (optional)
  
 Electric Load
 0
@@ -4200,7 +4449,7 @@ Default
 utility_bill_data
 3
 2
-Monthly energy usage
+Monthly electricity usage for scaling
 kWh
 Electric Load
 0
@@ -4213,7 +4462,7 @@ Electric Load
 
 Default
 
-4284
+4303
 equations{ 'escal_other' } = define() {
 	return ${escal_input_hourly};
 };
@@ -4400,6 +4649,7 @@ equations{ '$MIMO$ elecload' } = define() {
 	${energy_12} = mload[11];
 	${peak_12} = mpeak[11];
 	${crit_12} = mcrit[11];
+	${mpeak} = mpeak;
 	${load} = load;
 	${load_annual_total} = sum(load)*tshr;
 	${annual_peak} = max(load);
@@ -4407,18 +4657,9 @@ equations{ '$MIMO$ elecload' } = define() {
 
 	return 0;
 };
-1524
-function show_crit(show_bool) {
-	for (i = 1; i < 13; i++) {
-		name = 'crit_' + to_string(i);
-		show(name, show_bool);
-	}
-	show('annual_crit', show_bool);
-	show('Critical_label', show_bool);
-	refresh();
-}
-
+1761
 on_load{'Electric Load Crit'} = define() {
+	property('escal_input_hourly','FixedLength',${analysis_period});
 	on_change{'normalize_to_utility_bill'}();
 	show_crit(0);
 };
@@ -4435,21 +4676,25 @@ on_change{'crit_load_type'} = define() {
 	enable( 'crit_load_pct', !opt);
 };
 
+on_change{'annual_crit'} = define() {
+	show_crit(is_crit());
+};
+
 on_change{'visualize_load_data'} = define() {
 	sc = ${scale_factor};
 	norm = ${normalize_to_utility_bill};
 	
 	L = ${load};
 	ts = 1.0/(#L / 8760); // timestep in hours
-	show_crit = ${crit_load_is_shown};
+	//show_crit = ${crit_load_is_shown};
 	
 	if ( sc == 1.0 && !norm )
 	{
-		if (show_crit) {
+		if (is_crit()) {
 			crit_load_ts = ${crit_load};
 			dview( 2, ts, "Electric Load", 
 			"Load power", "kW", 1.0, ${load},
-			"Critical load", "kW", 1.0, crit_load_ts);
+			"Critical load power", "kW", 1.0, crit_load_ts);
 		}
 		else{
 			dview( 1, ts, "Electric Load", 
@@ -4458,12 +4703,12 @@ on_change{'visualize_load_data'} = define() {
 	}
 	else
 	{
-		if (show_crit) {
+		if (is_crit()) {
 			crit_load_ts = ${crit_load};
 			dview( 3, ts, "Electric Load",
 			"User-entered load power", "kW", 1.0, ${load_user_data},
 			"Scaled load power", "kW", 1.0, ${load},
-			"Critical load", "kW", 1.0, crit_load_ts );
+			"Critical load power", "kW", 1.0, crit_load_ts );
 		}
 		else{
 			dview( 2, ts, "Electric Load",
@@ -4473,3 +4718,17 @@ on_change{'visualize_load_data'} = define() {
 			
 	}
 };
+
+function show_crit(show_bool) {
+	for (i = 1; i < 13; i++) {
+		name = 'crit_' + to_string(i);
+		show(name, show_bool);
+	}
+	show('annual_crit', show_bool);
+	show('Critical_label', show_bool);
+	refresh();
+}
+
+function is_crit() {
+	return ( ${crit_load_pct} > 0 || sum(${crit_load_user_data}) > 0 );
+}

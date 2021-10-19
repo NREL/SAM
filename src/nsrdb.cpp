@@ -550,6 +550,13 @@ void NSRDBDialog::GetResources()
 		return;
 	}
 
+    if (root.HasMember("error"))
+    {
+       wxJSONValue error_list = root.Item("error");
+       wxMessageBox( wxString::Format("NSRDB API error!\n\nMessage: %s\n\nCode: %s ", error_list.Item("message").AsString(), error_list.Item("code").AsString() ));
+       return;
+    }
+
 	wxJSONValue output_list = root["outputs"];
 
 	// format location to use in file name
@@ -573,24 +580,28 @@ void NSRDBDialog::GetResources()
 			wxString displayName = output_list[i_outputs]["displayName"].AsString();
 
 			wxString year = links_list[i_links]["year"].AsString();
-			wxString URL = links_list[i_links]["link"].AsString();
 			wxString interval = links_list[i_links]["interval"].AsString();
-			URL.Replace("yourapikey", "<SAMAPIKEY>");
+           // URL - minimum attributes for each endpoint
+            wxString URL = links_list[i_links]["link"].AsString();
+            URL.Replace("yourapikey", "<SAMAPIKEY>");
 			URL.Replace("youremail", "<USEREMAIL>");
-			// URL - minimum attributes for each type 
+            // specify attributes for each endpoint to minimize file size and to account for differences in attribute names
+            // newer endpoints use same attribute names, but some older ones do not, e.g., wind_speed vs wspd
 			wxString attributes = "";
 			if (name.Trim() == "psm3") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/
-				attributes = "&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,relative_humidity,wind_speed,wind_direction,surface_albedo";
+				attributes = "&utc=false&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,relative_humidity,wind_speed,wind_direction,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
 			else if (name.Trim() == "psm3-5min") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-5min-download/
-				attributes = "&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,relative_humidity,wind_speed,wind_direction,surface_albedo";
+				attributes = "&utc=false&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,relative_humidity,wind_speed,wind_direction,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
 			else if (name.Trim() == "psm3-tmy") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-tmy-download/
-				attributes = "&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo";
+				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
 			else if (name.Trim() == "suny-india") // https://developer.nrel.gov/docs/solar/nsrdb/suny-india-data-download/
-				attributes = "&attributes=dhi,dni,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,snow_depth,wdir,wspd";
+				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,snow_depth,wdir,wspd,clearsky_dhi,clearsky_dni,clearsky_ghi";
 			else if (name.Trim() == "msg-iodc") // https://developer.nrel.gov/docs/solar/nsrdb/meteosat-download/
-				attributes = "&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo";
-			else
-				attributes = ""; // use default attributes
+				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
+            else if (name.Trim() == "himawari") // https://developer.nrel.gov/docs/solar/nsrdb/himawari-download/
+                attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
+            else
+				attributes = ""; // downloads all attributes
 #ifdef __DEBUG__
 			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), /*type.c_str(),*/ year.c_str(), interval.c_str(), URL.c_str());
 #endif

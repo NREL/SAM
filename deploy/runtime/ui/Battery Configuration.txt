@@ -1,7 +1,7 @@
 Battery Configuration
 1053
-188
-8
+175
+9
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 1042
 Height
 3
-176
+170
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 batt_ac_dc_efficiency
 X
 3
-597
+777
 Y
 3
-84
+48
 Width
 3
 90
@@ -104,16 +104,16 @@ Name
 batt_ac_or_dc
 X
 3
-87
+27
 Y
 3
-54
+48
 Width
 3
-678
+225
 Height
 3
-27
+51
 Tool Tip
 5
 0
@@ -130,7 +130,7 @@ ShowCaptions
 1
 Horizontal
 2
-1
+0
 TabOrder
 3
 1
@@ -144,10 +144,10 @@ Name
 batt_dc_ac_efficiency
 X
 3
-597
+777
 Y
 3
-111
+75
 Width
 3
 90
@@ -206,10 +206,10 @@ Name
 batt_dc_dc_efficiency
 X
 3
-258
+456
 Y
 3
-84
+48
 Width
 3
 90
@@ -268,10 +268,10 @@ Name
 batt_inverter_efficiency_cutoff
 X
 3
-258
+456
 Y
 3
-111
+75
 Width
 3
 90
@@ -320,6 +320,68 @@ BackColour
 TabOrder
 3
 3
+Numeric
+
+1
+17
+Name
+5
+20
+batt_ui_inverter_eff
+X
+3
+456
+Y
+3
+102
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -330,13 +392,13 @@ Name
 lbl_dc_ac
 X
 3
-12
+15
 Y
 3
-24
+21
 Width
 3
-1032
+1026
 Height
 3
 24
@@ -377,16 +439,16 @@ Name
 lbl_dc_connected
 X
 3
-12
+306
 Y
 3
-138
+129
 Width
 3
-1029
+612
 Height
 3
-33
+36
 Tool Tip
 5
 0
@@ -415,13 +477,13 @@ AlignTop
 2
 1
 
-5
+6
 batt_ac_dc_efficiency
 3
 1
 AC to DC conversion efficiency
 %
-BatterySystem
+Battery Power Converters
 0
 2
 1
@@ -435,7 +497,7 @@ batt_ac_or_dc
 1
 Battery DC or AC connected
  
-BatterySystem
+Battery Power Converters
 0
 3
 1
@@ -449,7 +511,7 @@ batt_dc_ac_efficiency
 1
 DC to AC conversion efficiency
 %
-BatterySystem
+Battery Power Converters
 0
 2
 1
@@ -463,7 +525,7 @@ batt_dc_dc_efficiency
 1
 DC to DC conversion efficiency
 %
-BatterySystem
+Battery Power Converters
 0
 2
 1
@@ -477,7 +539,7 @@ batt_inverter_efficiency_cutoff
 1
 Inverter efficiency cutoff
 %
-BatterySystem
+Battery Power Converters
 0
 2
 1
@@ -486,9 +548,33 @@ BatterySystem
 1
 90
 Numeric
-
+batt_ui_inverter_eff
+3
+1
+PV inverter nominal efficiency
+%
+Battery Power Converters
 0
-1756
+8
+1
+1
+1
+1
+0
+Numeric
+
+445
+equations{'batt_ui_inverter_eff'} = define() {
+	// note PVWatts default inv_eff set to 96% in cmod_pvwattsv7.cpp var table
+	if ( technology() != 'PV Battery' ) { return 96; }	
+	inv_model = ${inverter_model};
+	if (inv_model == 0){ return ${inv_snl_eff_cec};		}
+	elseif (inv_model == 1) { return ${inv_ds_eff}; }
+	elseif (inv_model == 2) { return ${inv_pd_eff}; }
+	elseif (inv_model == 3) { return ${inv_cec_cg_eff_cec}; }
+	else { return 96; } 
+};
+1562
 on_load{'Battery Configuration'} = define()
 {
 	msg = '';
@@ -509,6 +595,9 @@ on_load{'Battery Configuration'} = define()
 on_change{'batt_ac_or_dc'} = define()
 {
 	enable_inputs();
+	if (is_dc_tech() && behind_the_meter()) {
+		enable_disable_powerflow_options();
+	}
 };
 
 function is_dc_tech()
@@ -525,11 +614,11 @@ function enable_inputs()
 		isdc = ( value('batt_ac_or_dc') == 0 );
 		enable('batt_dc_dc_efficiency', isdc);
 		enable('batt_inverter_efficiency_cutoff',isdc);
+		enable('batt_ui_inverter_eff',isdc);
 		enable('batt_ac_dc_efficiency', !isdc);
 		enable('batt_dc_ac_efficiency', !isdc);
 		
-		str = sprintf('%.3f',inv_eff());
-		if (isdc) { msg = 'Nominal PV inverter efficiency is ' + str + '%. The DC-connected battery stops charging or discharging when the inverter operating efficiency is less than the inverter efficiency cutoff.'; }
+		if (isdc) { msg = 'The DC-connected battery battery stops charging or discharging when the PV inverter operating efficiency is less than the inverter efficiency cutoff.'; }
 		else { msg = ''; }
 		property('lbl_dc_connected','Caption',msg);
 	}
@@ -538,25 +627,6 @@ function enable_inputs()
 		enable('batt_ac_or_dc',false);
 		enable('batt_dc_dc_efficiency',false);
 		enable('batt_inverter_efficiency_cutoff',false);
+		enable('batt_ui_inverter_eff',false);
 	}
 }
-
-function inv_eff() 
-{
-		inv_model = ${inverter_model};
-		if (inv_model == 0){
-			eff = ${inv_snl_eff_cec};
-		}
-		elseif (inv_model == 1){
-			eff = ${inv_ds_eff};
-		}
-		elseif (inv_model == 2){
-			eff = ${inv_pd_eff};
-		}
-		else {
-			eff = ${inv_cec_cg_eff_cec};
-		}
-		return eff;
-
-}
-

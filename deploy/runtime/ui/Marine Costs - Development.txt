@@ -1,6 +1,6 @@
 Marine Costs - Development
-917
-1428
+916
+1432
 105
 Label
 
@@ -5400,7 +5400,7 @@ closing_costs_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5414,7 +5414,7 @@ detailed_cost_choice_financing_incentive
 1
 Financing and incentives detailed cost choice 
  
-ME Cost Choice
+ME Costs - Development
 0
 3
 1
@@ -5428,7 +5428,7 @@ detailed_cost_choice_initial_engineering
 1
 Initial engineering detailed cost choice 
  
-ME Cost Choice
+ME Costs - Development
 0
 3
 1
@@ -5442,7 +5442,7 @@ detailed_cost_choice_interconnection
 1
 Interconnection and power marketing detailed cost choice 
  
-ME Cost Choice
+ME Costs - Development
 0
 3
 1
@@ -5456,7 +5456,7 @@ detailed_cost_choice_permitting_leasing
 1
 Permitting and leasing detailed cost choice 
  
-ME Cost Choice
+ME Costs - Development
 0
 3
 1
@@ -5470,7 +5470,7 @@ detailed_cost_choice_project_management
 1
 Project managmeent during development detailed cost choice 
  
-ME Cost Choice
+ME Costs - Development
 0
 3
 1
@@ -5484,7 +5484,7 @@ detailed_cost_choice_site_characterization
 1
 Site characterization detailed cost choice 
  
-ME Cost Choice
+ME Costs - Development
 0
 3
 1
@@ -5498,7 +5498,7 @@ detailed_cost_choice_site_selection
 1
 Site selection detailed cost choice
  
-ME Cost Choice
+ME Costs - Development
 0
 3
 1
@@ -5512,7 +5512,7 @@ development_cost
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5526,7 +5526,7 @@ development_cost_total
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5540,7 +5540,7 @@ development_override
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5554,7 +5554,7 @@ due_diligence_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5568,7 +5568,7 @@ engineering_certification_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5582,7 +5582,7 @@ environmental_scoping_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5596,7 +5596,7 @@ environmental_surveys_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5610,7 +5610,7 @@ feed_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5624,7 +5624,7 @@ financing_and_incentives_cost
 1
 Financing and incentives costs 
 $
-ME BoS Costs
+ME Costs - Development
 0
 3
 1
@@ -5638,7 +5638,7 @@ financing_and_incentives_cost_total
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5652,7 +5652,7 @@ financing_and_incentives_cost_total_check
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5666,7 +5666,7 @@ geological_and_bathymetry_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5680,7 +5680,7 @@ incentives_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5694,7 +5694,7 @@ initial_engineering_cost
 1
 Initial engineering costs 
 $ 
-ME BoS Costs
+ME Costs - Development
 0
 3
 1
@@ -5708,7 +5708,7 @@ initial_engineering_cost_total
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5722,7 +5722,7 @@ initial_engineering_cost_total_check
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5736,7 +5736,7 @@ interconnection_and_power_marketing_cost
 1
 Interconnection costs
 $ 
-ME BoS Costs
+ME Costs - Development
 0
 3
 1
@@ -5750,7 +5750,7 @@ interconnection_and_power_marketing_cost_total
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5764,7 +5764,7 @@ interconnection_and_power_marketing_cost_total_check
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5778,7 +5778,7 @@ interconnection_studies_and_fees_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5792,7 +5792,7 @@ itemized_check_development
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5806,7 +5806,7 @@ lease_acquisition_activities_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5820,7 +5820,7 @@ legal_support_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5834,7 +5834,7 @@ level_check
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5848,7 +5848,7 @@ level_value
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -5862,7 +5862,7 @@ onshore_interconnection_rights_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5876,7 +5876,7 @@ other_development_cost
 1
 Other development costs 
 $ 
-ME BoS Costs
+ME Costs - Development
 0
 3
 1
@@ -5890,7 +5890,7 @@ other_financing_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5904,7 +5904,7 @@ other_initial_engineering_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5918,7 +5918,7 @@ other_interconnection_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5932,7 +5932,7 @@ other_permitting_and_leasing_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5946,7 +5946,7 @@ other_project_management_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5960,7 +5960,7 @@ other_site_characterization_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5974,7 +5974,7 @@ other_site_selection_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -5988,7 +5988,7 @@ permit_acquisition_activities_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -6002,7 +6002,7 @@ permitting_and_leasing_cost
 1
 Permitting costs 
 $
-ME BoS Costs
+ME Costs - Development
 0
 3
 1
@@ -6016,7 +6016,7 @@ permitting_and_leasing_cost_total
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -6030,7 +6030,7 @@ permitting_and_leasing_cost_total_check
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -6044,7 +6044,7 @@ power_marketing_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -6058,7 +6058,7 @@ pre_feed_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -6072,7 +6072,7 @@ procurement_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -6086,7 +6086,7 @@ professional_advisory_services_cost
 1
 Professional adivsory services costs 
 $
-ME BoS Costs
+ME Costs - Development
 0
 3
 1
@@ -6100,7 +6100,7 @@ profit_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -6114,7 +6114,7 @@ project_management_during_development_cost
 1
 Project management costs 
 $
-ME BoS Costs
+ME Costs - Development
 0
 3
 1
@@ -6128,7 +6128,7 @@ project_management_during_development_cost_total
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -6142,7 +6142,7 @@ project_management_during_development_cost_total_check
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -6156,7 +6156,7 @@ resource_and_metocean_assessment_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -6170,7 +6170,7 @@ resource_assessment_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -6184,7 +6184,7 @@ salaries_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -6198,7 +6198,7 @@ sales_general_and_administrative_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1
@@ -6212,7 +6212,7 @@ site_characterization_cost
 1
 Site characterization costs
 $ 
-ME BoS Costs
+ME Costs - Development
 0
 3
 1
@@ -6226,7 +6226,7 @@ site_characterization_cost_total
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -6240,7 +6240,7 @@ site_characterization_cost_total_check
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -6254,7 +6254,7 @@ site_selection_cost
 1
 Site selection costs 
 $
-ME BoS Costs
+ME Costs - Development
 0
 3
 1
@@ -6268,7 +6268,7 @@ site_selection_cost_total
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -6282,7 +6282,7 @@ site_selection_cost_total_check
 1
  
  
- 
+ME Costs - Development
 0
 8
 1
@@ -6296,7 +6296,7 @@ stakeholder_outreach_cost
 1
  
  
- 
+ME Costs - Development
 0
 0
 1

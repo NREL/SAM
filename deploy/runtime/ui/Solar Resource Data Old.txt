@@ -1997,7 +1997,7 @@ equations{'file_name'} = define() {
 	// for compatibility with most SSC APIs
 	return ${solar_resource_file};
 };
-10429
+10424
 
 on_load{'Solar Resource Data'} = define() {
 	on_change{'use_specific_weather_file'}();
@@ -2020,9 +2020,9 @@ on_change{'solar_data_file_name'} = define() {
 	ssc_var( obj, 'file_name', wf );
 	if ( 0 == ssc_exec( obj, 'wfreader' ) )
 	{
-		value( 'annual_global', ssc_var(obj, 'annual_global') );
+		value( 'annual_global', ssc_var(obj, 'annual_glob') );
 		value( 'annual_beam', ssc_var(obj, 'annual_beam') );
-		value( 'annual_diffuse', ssc_var(obj, 'annual_diffuse') );
+		value( 'annual_diffuse', ssc_var(obj, 'annual_diff') );
 		value( 'annual_tdry', ssc_var(obj, 'annual_tdry') );
 		value( 'annual_wspd', ssc_var(obj, 'annual_wspd') );
 		value( 'annual_snow', ssc_var(obj, 'annual_snow') );

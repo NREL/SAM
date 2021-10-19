@@ -7,6 +7,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"equip1_reserve_cost": 0.25,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
@@ -27,6 +28,12 @@
 			"system_capacity": 20000
 		},
 		"SystemCosts": {
+			"add_om_num_types": 1,
+			"om_batt_capacity_cost": [0.000000],
+			"om_batt_fixed_cost": [0.000000],
+			"om_batt_nameplate": 4000,
+			"om_batt_replacement_cost": [293.840000],
+			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [13.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -35,7 +42,6 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [500.000000],
 			"om_replacement_cost_escal": 0
 		},
 		"TaxCreditIncentives": {
@@ -196,7 +202,7 @@
 			"system_capacity": 20000
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 2.99495e+06,
+			"construction_financing_cost": 2.99649e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -208,9 +214,8 @@
 			"sponsor_operating_margin": 20,
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 1,
-			"system_use_recapitalization": 0,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 1.49748e+08
+			"total_installed_cost": 1.49825e+08
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,
@@ -257,11 +262,18 @@
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6
 		},
+		"Battery": {
+			"battery_total_cost_lcos": 1.43848e+06
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
+		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 4000,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 200,
+			"battery_per_kWh": 293.84,
 			"en_batt": 1
 		}
 	}

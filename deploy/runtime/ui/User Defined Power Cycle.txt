@@ -1,7 +1,7 @@
 User Defined Power Cycle
-1009
-1072
-35
+1008
+1221
+41
 GroupBox
 
 1
@@ -45,7 +45,7 @@ X
 318
 Y
 3
-312
+432
 Width
 3
 501
@@ -122,7 +122,7 @@ X
 15
 Y
 3
-294
+414
 Width
 3
 965
@@ -149,23 +149,23 @@ Name
 object 417
 X
 3
-15
+12
 Y
 3
-159
+168
 Width
 3
 965
 Height
 3
-124
+229
 Tool Tip
 5
 0
 Caption
 5
-80
-Independent variable information calculated from power cycle data in table below
+68
+Variable information calculated from power cycle data in table below
 Bold
 2
 1
@@ -188,7 +188,7 @@ Width
 995
 Height
 3
-930
+1065
 Tool Tip
 5
 0
@@ -212,7 +212,7 @@ X
 180
 Y
 3
-366
+486
 Width
 3
 90
@@ -267,6 +267,68 @@ Numeric
 17
 Name
 5
+19
+ud_Q_dot_HTF_ND_des
+X
+3
+381
+Y
+3
+369
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 12
 ud_T_amb_des
 X
@@ -274,7 +336,7 @@ X
 855
 Y
 3
-366
+486
 Width
 3
 90
@@ -336,7 +398,7 @@ X
 855
 Y
 3
-204
+240
 Width
 3
 90
@@ -398,7 +460,7 @@ X
 855
 Y
 3
-390
+510
 Width
 3
 90
@@ -460,7 +522,7 @@ X
 855
 Y
 3
-228
+264
 Width
 3
 90
@@ -522,7 +584,7 @@ X
 855
 Y
 3
-414
+534
 Width
 3
 90
@@ -584,7 +646,7 @@ X
 855
 Y
 3
-342
+462
 Width
 3
 90
@@ -646,7 +708,7 @@ X
 855
 Y
 3
-180
+216
 Width
 3
 90
@@ -708,7 +770,7 @@ X
 186
 Y
 3
-204
+240
 Width
 3
 90
@@ -770,7 +832,7 @@ X
 180
 Y
 3
-390
+510
 Width
 3
 90
@@ -832,7 +894,7 @@ X
 186
 Y
 3
-228
+264
 Width
 3
 90
@@ -894,7 +956,7 @@ X
 180
 Y
 3
-414
+534
 Width
 3
 90
@@ -956,7 +1018,7 @@ X
 180
 Y
 3
-342
+462
 Width
 3
 90
@@ -1018,7 +1080,7 @@ X
 186
 Y
 3
-180
+216
 Width
 3
 90
@@ -1129,6 +1191,130 @@ BackColour
 TabOrder
 3
 4294967295
+Numeric
+
+1
+17
+Name
+5
+23
+ud_W_dot_cooling_ND_des
+X
+3
+648
+Y
+3
+345
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+21
+ud_W_dot_gross_ND_des
+X
+3
+381
+Y
+3
+345
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 CheckBox
 
 1
@@ -1142,7 +1328,7 @@ X
 243
 Y
 3
-312
+432
 Width
 3
 26
@@ -1236,7 +1422,7 @@ X
 183
 Y
 3
-453
+579
 Width
 3
 480
@@ -1326,7 +1512,7 @@ X
 489
 Y
 3
-204
+240
 Width
 3
 90
@@ -1388,7 +1574,7 @@ X
 489
 Y
 3
-366
+486
 Width
 3
 90
@@ -1450,7 +1636,7 @@ X
 489
 Y
 3
-228
+264
 Width
 3
 90
@@ -1512,7 +1698,7 @@ X
 489
 Y
 3
-390
+510
 Width
 3
 90
@@ -1574,7 +1760,7 @@ X
 489
 Y
 3
-414
+534
 Width
 3
 90
@@ -1636,7 +1822,7 @@ X
 489
 Y
 3
-342
+462
 Width
 3
 90
@@ -1698,7 +1884,7 @@ X
 489
 Y
 3
-180
+216
 Width
 3
 90
@@ -1720,6 +1906,68 @@ Format
 Decimals
 3
 2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+21
+ud_m_dot_water_ND_des
+X
+3
+648
+Y
+3
+369
+Width
+3
+90
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
 Prefix
 5
 0
@@ -1822,7 +2070,7 @@ X
 855
 Y
 3
-252
+288
 Width
 3
 90
@@ -1884,7 +2132,7 @@ X
 186
 Y
 3
-252
+288
 Width
 3
 90
@@ -1946,7 +2194,7 @@ X
 489
 Y
 3
-252
+288
 Width
 3
 90
@@ -1995,8 +2243,104 @@ BackColour
 TabOrder
 3
 4294967295
+Label
 
-29
+1
+13
+Name
+5
+18
+udpc_ind_var_label
+X
+3
+60
+Y
+3
+192
+Width
+3
+150
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+21
+Independent variables
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+16
+updc_d_var_label
+X
+3
+60
+Y
+3
+321
+Width
+3
+363
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+68
+Dependent variables at system design values of independent variables
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+
+33
 ud_COPY_T_HTF_des
 3
 1
@@ -2011,6 +2355,20 @@ Power Cycle
 1
 0
 Default
+ud_Q_dot_HTF_ND_des
+3
+1
+Normalized heat input
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Numeric
 ud_T_amb_des
 3
 1
@@ -2029,8 +2387,8 @@ ud_T_amb_des_calc
 3
 1
 Design ambient temperature
- 
- 
+°C
+Power Cycle
 0
 8
 1
@@ -2207,6 +2565,34 @@ Power Cycle
 1
 0
 Default
+ud_W_dot_cooling_ND_des
+3
+1
+Normalized cooling power
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Numeric
+ud_W_dot_gross_ND_des
+3
+1
+Normalized gross power
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Numeric
 ud_enable_gen_table
 3
 1
@@ -2350,6 +2736,20 @@ Power Cycle
 1
 0
 Default
+ud_m_dot_water_ND_des
+3
+1
+Normalized water use
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Numeric
 ud_m_dot_water_cool_des
 3
 1
@@ -2407,25 +2807,38 @@ Power Cycle
 0
 Default
 
-3091
-equations{ 'ud_W_dot_cool_calc' } = define(){
-	return ${P_ref}*${ud_f_W_dot_cool_des}/100.0; };
+2574
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
 	
 equations{ 'ud_m_dot_design' } = define(){
 	return 1.0; };
 	
+// Just UI indicator
+equations{ 'ud_W_dot_cool_calc' } = define(){
+	return ${P_ref}*${ud_f_W_dot_cool_des}/100.0; };
+
+// Just UI indicator
 equations{ 'ud_COPY_T_HTF_des' } = define(){
 	return ${T_htf_hot_des}; };
 
+// Just UI indicators
 equations{ '$MIMO$ ui_udpc_checks' } = define()
 {
 	obj = ssc_create();
 	ssc_var(obj, "ud_ind_od", ${ud_ind_od});
+	ssc_var(obj, "T_htf_des_in", ${ud_COPY_T_HTF_des});
 
 	ret = ssc_exec(obj, 'ui_udpc_checks');
 
-	if(ret==0)
-	{
+	if(ret==0) {
 		n_T_htf_calc = ssc_var(obj, "n_T_htf_pars");		//[MWt-hr]
 		T_htf_low = ssc_var(obj, "T_htf_low");
 		T_htf_des = ssc_var(obj, "T_htf_des");
@@ -2440,9 +2853,13 @@ equations{ '$MIMO$ ui_udpc_checks' } = define()
 		m_dot_low = ssc_var(obj, "m_dot_low");
 		m_dot_des = ssc_var(obj, "m_dot_des");
 		m_dot_high = ssc_var(obj, "m_dot_high");
+		
+		W_dot_gross_ND_des = ssc_var(obj, "W_dot_gross_ND_des");
+		Q_dot_HTF_ND_des = ssc_var(obj, "Q_dot_HTF_ND_des");
+		W_dot_cooling_ND_des = ssc_var(obj, "W_dot_cooling_ND_des");
+		m_dot_water_ND_des = ssc_var(obj, "m_dot_water_ND_des");
 	}
-	else
-	{
+	else {
 		n_T_htf_calc = 1./0.;
 		T_htf_low = 1./0.;
 		T_htf_des = 1./0.;
@@ -2457,6 +2874,11 @@ equations{ '$MIMO$ ui_udpc_checks' } = define()
 		m_dot_low = 1./0.;
 		m_dot_des = 1./0.;
 		m_dot_high = 1./0.;
+		
+		W_dot_gross_ND_des = 1./0.;
+		Q_dot_HTF_ND_des = 1./0.;
+		W_dot_cooling_ND_des = 1./0.;
+		m_dot_water_ND_des = 1./0.;
 	}
 	
 	${ud_n_T_htf_calc} = n_T_htf_calc;
@@ -2474,57 +2896,14 @@ equations{ '$MIMO$ ui_udpc_checks' } = define()
 	${ud_m_dot_des_calc} = m_dot_des;
 	${ud_m_dot_high_calc} = m_dot_high;
 	
+	${ud_W_dot_gross_ND_des} = W_dot_gross_ND_des;
+	${ud_Q_dot_HTF_ND_des} = Q_dot_HTF_ND_des;
+	${ud_W_dot_cooling_ND_des} = W_dot_cooling_ND_des;
+	${ud_m_dot_water_ND_des} = m_dot_water_ND_des;
+	
 	ssc_free( obj );
 };
 
-/*
-equations{ '$MIMO$ ui_tes_calcs' } = define()
-{
-	obj = ssc_create();
-
-	ssc_var(obj, "W_dot_pb_des", ${P_ref});			//[MWe]
-	ssc_var(obj, "eta_pb_des", ${design_eff});		//[-]
-	ssc_var(obj, "tes_hrs", ${tshours});			//[hrs]
-	ssc_var(obj, "T_HTF_hot", ${T_htf_hot_des});	//[C]
-	ssc_var(obj, "T_HTF_cold", ${T_htf_cold_des});	//[C]
-	ssc_var(obj, "TES_HTF_code", ${rec_htf});		//[-]
-	ssc_var(obj, "TES_HTF_props", ${field_fl_props});	//[-]
-	ssc_var(obj, "h_tank_min", ${h_tank_min});		//[m]
-	ssc_var(obj, "h_tank", ${h_tank});				//[m]
-	ssc_var(obj, "tank_pairs", ${tank_pairs});		//[-]
-	ssc_var(obj, "u_tank", ${u_tank});				//[-]
-
-	ret = ssc_exec(obj, 'ui_tes_calcs');
-	
-	if(ret==0)
-	{
-		q_tes_des = ssc_var(obj, "q_tes_des");		//[MWt-hr]
-		vol_one_temp_avail = ssc_var(obj, "vol_one_temp_avail");	//[m^3]
-		vol_one_temp_total = ssc_var(obj, "vol_one_temp_total");	//[m^3]
-		d_tank = ssc_var(obj, "d_tank");			//[m]
-		q_dot_loss = ssc_var(obj, "q_dot_loss");	//[MWt]
-		dens = ssc_var(obj, "HTF_dens");			//[kg/m^3]
-	}
-	else
-	{
-		q_tes_des = 1.0/0.0;
-		vol_one_temp_avail = 1.0/0.0;
-		vol_one_temp_total = 1.0/0.0;
-		d_tank = 1.0/0.0;
-		q_dot_loss = 1.0/0.0;
-		dens = 1.0/0.0;
-	}
-	
-	${Q_tes} = q_tes_des;
-	${tes_avail_vol} = vol_one_temp_avail;
-	${vol_tank} = vol_one_temp_total;
-	${csp.pt.tes.tank_diameter} = d_tank;
-	${q_dot_tes_est} = q_dot_loss;
-	${csp.pt.tes.htf_density} = dens;
-	
-	ssc_free( obj );	
-};
-*/
 3165
 on_load{'User Defined Power Cycle'} = define(){
 	on_change{'ud_enable_gen_table'}();

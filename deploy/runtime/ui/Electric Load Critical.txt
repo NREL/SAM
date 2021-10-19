@@ -1,7 +1,7 @@
 Electric Load Critical
-847
-178
-5
+832
+298
+10
 GroupBox
 
 1
@@ -12,7 +12,7 @@ Name
 GroupBox1
 X
 3
-12
+6
 Y
 3
 9
@@ -21,14 +21,14 @@ Width
 824
 Height
 3
-155
+282
 Tool Tip
 5
 0
 Caption
 5
-13
-Critical Load
+22
+Critical Electric Load
 Bold
 2
 1
@@ -42,23 +42,23 @@ Name
 Label4
 X
 3
-51
+18
 Y
 3
-33
+27
 Width
 3
 740
 Height
 3
-40
+54
 Tool Tip
 5
 0
 Caption
 5
-137
-When battery is enabled and critical loads are not zero, resiliency metrics are calculated using the critical load and system production.
+341
+The critical electric load is for systems with battery storage designed to meet resiliency requirements. Set the critical energy percentage to a non-zero value or specify hourly or subhourly critical load data to include resiliency metrics in the simulation results. Note that the resiliency calculations make the simulation run time longer.
 TextColour
 4
 0
@@ -80,6 +80,49 @@ AlignRight
 AlignTop
 2
 1
+SchedNumeric
+
+1
+12
+Name
+5
+20
+crit_load_escalation
+X
+3
+606
+Y
+3
+138
+Width
+3
+118
+Height
+3
+24
+Tool Tip
+5
+0
+Label
+5
+18
+Load Growth (%/yr)
+UseSchedule
+2
+1
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+119
+Type a critical load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -90,10 +133,10 @@ Name
 crit_load_pct
 X
 3
-534
+606
 Y
 3
-75
+84
 Width
 3
 118
@@ -152,16 +195,16 @@ Name
 crit_load_type
 X
 3
-183
+45
 Y
 3
-72
+84
 Width
 3
-174
+324
 Height
 3
-60
+51
 Tool Tip
 5
 0
@@ -171,8 +214,8 @@ Selection
 Items
 6
 2
-Percent
-Time Series
+Calculate critical load as percentage of electric load
+Use hourly or subhourly critical load data
 ShowCaptions
 2
 1
@@ -192,13 +235,13 @@ Name
 crit_load_user_data
 X
 3
-534
+606
 Y
 3
-105
+111
 Width
 3
-120
+118
 Height
 3
 24
@@ -210,8 +253,8 @@ Mode
 1
 Label
 5
-24
-Critical Load power (kW)
+15
+Load Power (kW)
 Description
 5
 197
@@ -219,8 +262,182 @@ The critical electric load during an outage period is specified as the average p
 TabOrder
 3
 3
+Label
 
+1
+13
+Name
+5
+17
+lbl_critical_load
+X
+3
+45
+Y
+3
+138
+Width
+3
+387
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
 4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+21
+Y
+3
+174
+Width
+3
+750
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+40
+Resiliency Calculations for Grid Outages
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+30
+Y
+3
+189
+Width
+3
+723
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+220
+Resiliency calculations can take a long time to run. If you specified grid outages on the Grid page, you can improve simulation run times by only calculating resiliency metrics for time steps when there is a grid outage.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+20
+run_resiliency_calcs
+X
+3
+39
+Y
+3
+234
+Width
+3
+330
+Height
+3
+54
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Calculate resiliency only for outage time steps (faster)
+Calculate resiliency for all time steps (slower)
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+
+6
 crit_load
 3
 2
@@ -235,14 +452,28 @@ Electric Load
 1
 0
 DataArray
+crit_load_escalation
+3
+2
+Critical load annual growth rate
+ 
+Electric Load
+0
+2
+1
+2
+1
+1
+0
+SchedNumeric
 crit_load_pct
 3
 1
-Critical Energy Percent
+Critical load percent of electric load
 %
 Electric Load
 0
-0
+2
 1
 1
 1
@@ -252,11 +483,12 @@ Numeric
 crit_load_type
 3
 1
- 
+Critical load choice
  
 Electric Load
-0
-4
+97
+Calculate critical load as percentage of electric load|Use hourly or subhourly critical load data
+1
 1
 1
 1
@@ -266,7 +498,7 @@ RadioChoice
 crit_load_user_data
 3
 2
-Critical Energy usage
+Critical load data
 kW
 Electric Load
 0
@@ -277,14 +509,32 @@ Electric Load
 1
 0
 DataArray
+run_resiliency_calcs
+3
+1
+Enable resilence calculations for every timestep
+0/1
+Electric Load
+105
+Calculate resiliency only for outage time steps (faster)|Calculate resiliency for all time steps (slower)
+5
+1
+1
+1
+1
+0
+RadioChoice
 
 0
-330
+1744
 on_load{'Electric Load Critical'} = define() {
 	on_change{'normalize_to_utility_bill'}();
-	enable( 'crit_load_user_data', false);
-	showing = ${crit_load_is_shown};
-	show_crit(showing);
+	on_change{'crit_load_type'}();
+	show_crit(is_crit()); // show_crit() and is_crit() defined on Electric Load Crit form
+	property('crit_load_escalation','FixedLength',${analysis_period});
+	enable_resiliency_calcs();
+	fuel_cell_check();
+	critical_load_message();
 };
 
 on_change{'crit_load_type'} = define() {
@@ -292,3 +542,46 @@ on_change{'crit_load_type'} = define() {
 	enable( 'crit_load_user_data', opt);
 	enable( 'crit_load_pct', !opt);
 };
+
+on_change{'crit_load_pct'} = define() {
+	fuel_cell_check();
+	critical_load_message();
+	enable_resiliency_calcs();	
+};
+
+on_change{'crit_load_user_data'} = define() {
+	fuel_cell_check();
+	critical_load_message();
+	enable_resiliency_calcs();
+};
+
+on_change{'run_resiliency_calcs'} = define() {
+	critical_load_message();
+};
+
+function fuel_cell_check() 
+{
+	if ( technology() == 'Fuel Cell' && is_crit() && ${en_batt} == 0 )
+	{
+		msgbox('Critical Load Requires Battery!\nYou have specified a critical load without enabling the battery on the Battery Storage page. To continue, either set the critical load percent and time series data to zero, or enable the battery.');
+	}
+}
+
+function critical_load_message()
+{
+	msg = '';
+	clr = 'Black';
+	if ( is_crit() && !is_grid_outage() ) // is_grid_outage() defined on Grid Outage form
+	{
+		msg = 'To calculate resiliency metrics, specify a grid outage and/or choose Calculate Resiliency for All Time Steps.';
+		clr = 'Red';
+	}
+	property('lbl_critical_load','Caption',msg);
+	property('lbl_critical_load','TextColour',clr);
+}
+
+function enable_resiliency_calcs()
+{
+	if ( !is_crit() ) { value('run_resiliency_calcs', 0); }
+	enable( 'run_resiliency_calcs', is_crit() ); // is_crit() defined on Electric Load Crit form
+}

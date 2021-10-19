@@ -76,13 +76,13 @@ TabOrder
 3
 1
 
-12
+13
 LeadAcid_q10
 3
 1
 Discharge rate 10-hour
 %
-BatteryCell
+Battery Chemistry
 0
 2
 1
@@ -96,7 +96,7 @@ LeadAcid_q10_computed
 1
 Discharge rate 10-hour calculated
 Ah
-BatteryCell
+Battery Chemistry
 0
 8
 1
@@ -110,7 +110,7 @@ LeadAcid_q20
 1
 Discharge rate 10-hour
 %
-BatteryCell
+Battery Chemistry
 0
 2
 1
@@ -124,7 +124,7 @@ LeadAcid_q20_computed
 1
 Discharge rate 10-hour calculated
 Ah
-BatteryCell
+Battery Chemistry
 0
 8
 1
@@ -138,7 +138,7 @@ LeadAcid_qn
 1
 Capacity at n-hour discharge rate
 %
-BatteryCell
+Battery Chemistry
 0
 1
 1
@@ -152,7 +152,7 @@ LeadAcid_qn_computed
 1
 Capacity at n-hour discharge rate calculated
 Ah
-BatteryCell
+Battery Chemistry
 0
 8
 1
@@ -166,7 +166,7 @@ LeadAcid_tn
 1
 Hours of storage
 hours
-BatteryCell
+Battery Chemistry
 0
 1
 1
@@ -180,7 +180,7 @@ batt_Qexp
 1
 Battery capacity exp
 Ah
-BatteryCell
+Battery Chemistry
 0
 9
 1
@@ -194,7 +194,7 @@ batt_Qnom
 1
 Battery capacity nominal
 Ah
-BatteryCell
+Battery Chemistry
 0
 9
 1
@@ -208,7 +208,7 @@ batt_chem
 1
 Battery chemistry options
  
-BatteryCell
+Battery Chemistry
 0
 9
 1
@@ -217,12 +217,26 @@ BatteryCell
 1
 1
 Default
+batt_life_model
+3
+1
+Battery life model option
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 batt_meter_position
 3
 1
 Battery meter position
  
-BatteryCell
+Battery Chemistry
 0
 0
 1
@@ -236,7 +250,7 @@ batt_type
 1
 Battery type
  
-BatteryCell
+Battery Chemistry
 449
 Lead Acid: Flooded|Lead Acid: VRLA Gel|Lead Acid: VRLA AGM|Lead Acid: Custom|Lithium Ion: Lithium Manganese Oxide (LMO/Graphite)|Lithium Ion: Lithium Iron Phosphate (LFP/Graphite)|Lithium Ion: Lithium Cobalt Oxide (LCO/Graphite)|Lithium Ion: LMO/Lithium Titanate (LMO/LTO)|Lithium Ion: Nickel Manganese Cobalt Oxide (NMC/Graphite)|Lithium Ion: Nickel Cobalt Aluminum Oxide (NCA/Graphite)|Lithium Ion: Custom|Flow Battery: Vanadium|Flow Battery: Iron
 2
@@ -263,13 +277,12 @@ equations{ 'batt_chem' } = define(){
 		return 3;
 };
 
-12095
+12323
 on_load{'Battery Model'} = define()
 {
 	set_chemistry();
 	set_meter_position();
 	battsize_warning_check();
-	on_change{'batt_type'};
 };
 
 on_change{'batt_type'} = define()
@@ -277,9 +290,9 @@ on_change{'batt_type'} = define()
 	type = value('batt_type');
 	
 	if (type != 3 && type != 10)
-		update_default = yesno('Replace inputs with default values for this battery type?');
+		{ update_default = yesno('Battery Type Change\nReplace inputs with default values for this battery type?'); }
 	else
-		update_default = false;
+		{ update_default = false; }
 	
 	islead = (value('batt_chem') == 0);
 	islithium = (value('batt_chem') == 1);
@@ -298,18 +311,26 @@ on_change{'batt_type'} = define()
 	
 	// lead acid
 	if (islead)
-		set_lead_acid(update_default);
+		{ set_lead_acid(update_default); }
 	// Lithium Ion
 	else if (islithium)
-		set_lithium_ion(update_default);
+		{ set_lithium_ion(update_default); }
 	// Vanadium Redox FLow
 	else if (isvanadium)
-		set_vanadium(update_default);
+		{ set_vanadium(update_default); }
 	// Iron Flow
 	else if (isiron)
-		set_iron(update_default);
+		{ set_iron(update_default); }
 
 	battsize_warning_check();
+
+	// Update inputs on Battery Life Options form
+	value('ui_batt_life_model', ${batt_life_model});
+	if (technology() != 'Fuel Cell' )
+	{
+		set_batt_life_excl_var();
+	}	
+
 };
 
 function is_flow()
@@ -424,7 +445,7 @@ function set_vanadium(update_default)
 	if (update_default)
 	{
 		if (${batt_type} == 11)
-			VRFB();
+			{ VRFB(); }
 	}
 }
 function set_iron(update_default)
@@ -488,6 +509,7 @@ function set_batt_defaults_from_data(defs)
 		value('batt_Vfull',cell_params.vfull);
 		value('batt_Vexp',cell_params.vexp);
 		value('batt_Vnom',cell_params.vnom);
+		value('batt_Vcut',cell_params.vcut);
 		value('batt_Qexp',cell_params.qexp);
 		value('batt_Vnom',cell_params.vnom);
 		
@@ -504,6 +526,8 @@ function set_batt_defaults_from_data(defs)
   	value('batt_bank_voltage', pack_params.nominal_voltage);
   	
 	// Lifetime
+	value('batt_life_model', cell_params.life_model);
+	value('ui_batt_life_model', ${batt_life_model});
 	value('batt_lifetime_matrix',cell_params.cycling_matrix);
 	
 	// turn calendar life model off
@@ -518,6 +542,7 @@ function set_batt_defaults_from_data(defs)
 	value('batt_losses_charging', zero_array);
 	value('batt_losses_discharging', zero_array);
 	value('batt_losses_idle', zero_array);
+
 }
 
 // Valve Regulated Lead Acid defaults
@@ -527,7 +552,7 @@ function lead_acid_defaults()
 	get_batt_data_from_file('BatteryStateful_LeadAcid.json');
 }
 
-// Lithium Manganese Oxide
+// Lithium Manganese Oxide / Graphite
 function LMO()
 {
 	// voltage curve
@@ -535,6 +560,7 @@ function LMO()
 	value('batt_Vfull',4.2);
 	value('batt_Vexp',4.1);
 	value('batt_Vnom',3.6);
+	value('batt_Vcut',2.772);
 	value('batt_Qfull',1.5);
 	value('batt_Qexp_percent',0.666);
 	value('batt_Qnom_percent',93.33);
@@ -550,8 +576,9 @@ function LMO()
 				[80, 500, 92], 
 				[80,1000,84] ];
 	value('batt_lifetime_matrix',lifetime);
+	value('batt_life_model', 0);
 }
-// Lithium iron phospate
+// Lithium Iron Phospate / Graphite
 function LFP()
 {
 	get_batt_data_from_file('BatteryStateful_LFPGraphite.json');
@@ -559,7 +586,7 @@ function LFP()
 	value('batt_specific_energy_per_mass',70);
 	value('batt_specific_energy_per_volume',82);
 }
-// Lithium cobalt Oxide
+// Lithium Cobalt Oxide / Graphite
 function LCO()
 {
 	// voltage curve
@@ -567,6 +594,7 @@ function LCO()
 	value('batt_Vfull',4.2);
 	value('batt_Vexp',4.15);
 	value('batt_Vnom',3.7);
+	value('batt_Vcut',2.772);
 	value('batt_Qfull',2.55);
 	value('batt_Qexp_percent',0.40);
 	value('batt_Qnom_percent',78.4);
@@ -582,34 +610,18 @@ function LCO()
 				 [80,150,93],
 				 [80,300,87] ];
 	value('batt_lifetime_matrix',lifetime);
+	value('batt_life_model', 0);
 }
-// Lithium titanate
+// Lithium Manganese Oxide / Lithium Titanate Oxide
 function LTO()
 {
-	// voltage curve
-	value('batt_C_rate',1);
-	value('batt_Vfull',2.8);
-	value('batt_Vexp',2.4);
-	value('batt_Vnom',2);
-	value('batt_Qfull',12);
-	value('batt_Qexp_percent',2.1);
-	value('batt_Qnom_percent',91.7);
-	value('batt_Vnom_default',2.3);
+	get_batt_data_from_file('BatteryStateful_LMOLTO.json');
+	
 	value('batt_specific_energy_per_mass',22);
 	value('batt_specific_energy_per_volume',14);
-		
-	// Lifetime
-	lifetime = [ [20,0,100],
-				 [20,10000,90],
-				 [20,20000,85.42],
-				 [20,30000, 83.33],
-				 [80,0,100],
-				 [80,2000,90],
-				 [80,4000,85.42],
-				 [80,6000, 83.33]];
-	value('batt_lifetime_matrix',lifetime);
 }
-// Lithium nickel cobalt
+
+// Lithium Nickel Manganese Cobalt Oxide / Graphite
 function NMC()
 {
 	get_batt_data_from_file('BatteryStateful_NMCGraphite.json');
@@ -617,7 +629,8 @@ function NMC()
 	value('batt_specific_energy_per_mass',101);
 	value('batt_specific_energy_per_volume',70);
 }
-// NMC
+
+// Lithium Nickel Cobalt Aluminum Oxide / Graphite
 function NCA()
 {
 	// voltage curve
@@ -626,6 +639,7 @@ function NCA()
 	value('batt_Vfull',4.2);
 	value('batt_Vexp',4.1);
 	value('batt_Vnom',3.6);
+	value('batt_Vcut',2.772);
 	value('batt_Qfull',55);
 	value('batt_Qexp_percent',1.8);
 	value('batt_Qnom_percent',98.2);
@@ -640,7 +654,9 @@ function NCA()
 				 [80,1000,80],
 				 [80,2000,60]];
 	value('batt_lifetime_matrix',lifetime);
+	value('batt_life_model', 0);
 }
+
 function lithium_ion_defaults()
 {
 

@@ -125,12 +125,6 @@ span.f_ListLast /* List Last */
 span.f_ListNoNumber /* List No Number */
 {
 }
-span.f_NewStyle /* New Style */
-{
- font-family: Verdana,Geneva,Arial,sans-serif;
- color: #ffffff;
- background-color: #ff0000;
-}
 span.f_Note /* Note */
 {
 }
@@ -416,12 +410,6 @@ p, p.p_Normal, div.p_Normal, li.p_Normal /* Normal */
  font-size: 10pt;
  text-indent: -24px;
  margin: 0 0 3px 72px;
-}
-.p_NewStyle /* New Style */
-{
- font-size: 10pt;
- text-align: center;
- margin: 12px 0 12px 0;
 }
 .p_Note /* Note */
 {

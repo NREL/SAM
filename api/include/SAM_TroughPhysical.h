@@ -389,22 +389,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_Row_Distance_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set SCADefocusArray: Collector defocus order [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarField_SCADefocusArray_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set SCAInfoArray: Receiver (,1) and collector (,2) type for each assembly in loop [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarField_SCAInfoArray_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
 	 * Set SCA_drives_elec: Tracking power, in Watts per SCA drive [W/m2-K]
 	 * options: None
 	 * constraints: None
@@ -891,14 +875,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_sf_rnr_wallthicks_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set solar_mult: Solar multiple [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarField_solar_mult_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set theta_dep: Deploy angle [deg]
@@ -1391,7 +1367,7 @@ extern "C"
 	 * Set dispatch_factor1: Dispatch payment factor 1
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1399,7 +1375,7 @@ extern "C"
 	 * Set dispatch_factor2: Dispatch payment factor 2
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1407,7 +1383,7 @@ extern "C"
 	 * Set dispatch_factor3: Dispatch payment factor 3
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1415,7 +1391,7 @@ extern "C"
 	 * Set dispatch_factor4: Dispatch payment factor 4
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1423,7 +1399,7 @@ extern "C"
 	 * Set dispatch_factor5: Dispatch payment factor 5
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1431,7 +1407,7 @@ extern "C"
 	 * Set dispatch_factor6: Dispatch payment factor 6
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1439,7 +1415,7 @@ extern "C"
 	 * Set dispatch_factor7: Dispatch payment factor 7
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1447,7 +1423,7 @@ extern "C"
 	 * Set dispatch_factor8: Dispatch payment factor 8
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1455,7 +1431,7 @@ extern "C"
 	 * Set dispatch_factor9: Dispatch payment factor 9
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1463,7 +1439,7 @@ extern "C"
 	 * Set dispatch_factors_ts: Dispatch payment factor array
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=1
+	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -1471,7 +1447,7 @@ extern "C"
 	 * Set dispatch_sched_weekday: 12x24 PPA pricing Weekday schedule
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1479,7 +1455,7 @@ extern "C"
 	 * Set dispatch_sched_weekend: 12x24 PPA pricing Weekend schedule
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1548,7 +1524,7 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_Tou_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ppa_multiplier_model: PPA multiplier model [0/1]
+	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
 	 * options: 0=diurnal,1=timestep
 	 * constraints: INTEGER,MIN=0
 	 * required if: ?=0
@@ -1570,6 +1546,14 @@ extern "C"
 	 * required if: ?=9e99
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set weekday_schedule: 12x24 CSP operation Time-of-Use Weekday schedule [-]
@@ -1594,6 +1578,32 @@ extern "C"
 	 * required if: is_wlim_series=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_wlim_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// FinancialModel parameters
+	//
+
+	/**
+	 * Set csp_financial_model:  [1-8]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_FinancialModel_csp_financial_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// Revenue parameters
+	//
+
+	/**
+	 * Set mp_energy_market_revenue: Energy market revenue input
+	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
+	 * constraints: None
+	 * required if: csp_financial_model=6&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	//
@@ -1694,6 +1704,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_Controller_custom_tes_pipe_sizes_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set disp_wlim_maxspec: disp_wlim_maxspec [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_disp_wlim_maxspec_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set has_hot_tank_bypass: Bypass valve connects field outlet to cold tank [-]
 	 * options: None
 	 * constraints: None
@@ -1708,6 +1726,30 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Controller_k_tes_loss_coeffs_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set non_solar_field_land_area_multiplier: non_solar_field_land_area_multiplier [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_non_solar_field_land_area_multiplier_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set specified_solar_multiple: specified_solar_multiple [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_specified_solar_multiple_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set specified_total_aperture: specified_total_aperture [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_specified_total_aperture_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tanks_in_parallel: Tanks are in parallel, not in series, with solar field [-]
@@ -1729,7 +1771,7 @@ extern "C"
 	 * Set tes_lengths: Custom TES lengths [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_lengths_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1748,6 +1790,22 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_wallthicks_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set trough_loop_control: trough_loop_control [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_trough_loop_control_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set use_solar_mult_or_aperture_area: Use solar multiple or total field aperture area [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_use_solar_mult_or_aperture_area_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
@@ -1846,10 +1904,6 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_Rough_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_Row_Distance_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_SolarField_SCADefocusArray_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_SolarField_SCAInfoArray_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_SCA_drives_elec_nget(SAM_table ptr, SAM_error *err);
 
@@ -1972,8 +2026,6 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_sf_rnr_lengths_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_sf_rnr_wallthicks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_SolarField_solar_mult_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_theta_dep_nget(SAM_table ptr, SAM_error *err);
 
@@ -2154,11 +2206,27 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysical_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_wlim_series_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * FinancialModel Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysical_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Revenue Getters
+	 */
+
+	SAM_EXPORT double* SAM_TroughPhysical_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**
@@ -2192,9 +2260,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Controller_custom_tes_pipe_sizes_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Controller_disp_wlim_maxspec_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_Controller_has_hot_tank_bypass_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Controller_k_tes_loss_coeffs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_non_solar_field_land_area_multiplier_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_specified_solar_multiple_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_specified_total_aperture_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Controller_tanks_in_parallel_nget(SAM_table ptr, SAM_error *err);
 
@@ -2205,6 +2281,10 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_Controller_tes_pump_coef_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Controller_tes_wallthicks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Controller_trough_loop_control_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_use_solar_mult_or_aperture_area_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2484,6 +2564,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_rh_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_sim_duration_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_solar_multiple_actual_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err);
 

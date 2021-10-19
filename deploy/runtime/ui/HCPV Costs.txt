@@ -1,7 +1,7 @@
 HCPV Costs
-791
-670
-97
+790
+722
+98
 GroupBox
 
 1
@@ -51,7 +51,7 @@ Width
 779
 Height
 3
-299
+281
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 6
 Y
 3
-570
+612
 Width
 3
 779
@@ -183,7 +183,7 @@ X
 546
 Y
 3
-498
+573
 Width
 3
 98
@@ -615,7 +615,7 @@ X
 375
 Y
 3
-498
+573
 Width
 3
 68
@@ -3046,7 +3046,7 @@ X
 645
 Y
 3
-621
+663
 Width
 3
 127
@@ -4740,7 +4740,7 @@ X
 444
 Y
 3
-498
+573
 Width
 3
 100
@@ -4803,7 +4803,7 @@ X
 645
 Y
 3
-498
+573
 Width
 3
 127
@@ -4866,7 +4866,7 @@ X
 273
 Y
 3
-498
+573
 Width
 3
 100
@@ -5178,7 +5178,7 @@ X
 36
 Y
 3
-594
+636
 Width
 3
 281
@@ -5211,6 +5211,36 @@ AlignRight
 2
 0
 AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+552
+Width
+3
+779
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+9
+Sales Tax
+Bold
 2
 1
 Numeric
@@ -5289,7 +5319,7 @@ X
 645
 Y
 3
-531
+510
 Width
 3
 127
@@ -5352,7 +5382,7 @@ X
 645
 Y
 3
-597
+639
 Width
 3
 127
@@ -5403,7 +5433,7 @@ TabOrder
 3
 59
 
-62
+61
 hcpv.cost.bos_equip.totalcost
 3
 1
@@ -6220,20 +6250,6 @@ HCPV Capital Costs
 1
 0.81
 Default
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-HCPV Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -6277,7 +6293,7 @@ HCPV Capital Costs
 0
 Default
 
-4883
+4811
 equations{ 'hcpv.cost.module.power' } = define() {
 	return ${hcpv.module.power}*0.001; };
 
@@ -6335,8 +6351,7 @@ equations{ 'total_indirect_cost' } = define() {
 +${hcpv.cost.engr.total}
 +${hcpv.cost.grid.total}
 +${hcpv.cost.land.total}
-+${hcpv.cost.landprep.total}
-+${hcpv.cost.sales_tax.total}; };
++${hcpv.cost.landprep.total}; };
 
 equations{ 'hcpv.cost.permitting.total' } = define() {
 	return ${hcpv.cost.permitting.percent}/100*${total_direct_cost} 
@@ -6398,15 +6413,13 @@ equations{ 'hcpv.cost.bos_equip.totalcost' } = define() {
 + ${hcpv.cost.modulearray.area}*${hcpv.cost.bos_equip_perarea}; };
 
 equations{ 'total_installed_cost' } = define() {
-	return ${total_direct_cost}+${total_indirect_cost}; };
+	return ${total_direct_cost}+${total_indirect_cost}+${hcpv.cost.sales_tax.total}; };
 
 equations{ 'hcpv.cost.engr.total' } = define() {
 	return ${hcpv.cost.engr.percent}/100*${total_direct_cost} 
 + ${hcpv.cost.modulearray.power}*1000*${hcpv.cost.engr.per_watt} 
 + ${hcpv.cost.engr.fixed}; };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 
 0

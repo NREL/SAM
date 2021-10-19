@@ -1,0 +1,498 @@
+Battery Dispatch Options FOM
+1053
+158
+8
+CheckBox
+
+1
+9
+Name
+5
+29
+batt_dispatch_auto_can_charge
+X
+3
+306
+Y
+3
+81
+Width
+3
+348
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+30
+Battery can charge from system
+State
+2
+1
+TabOrder
+3
+7
+CheckBox
+
+1
+9
+Name
+5
+33
+batt_dispatch_auto_can_clipcharge
+X
+3
+306
+Y
+3
+102
+Width
+3
+348
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+44
+Battery can charge from clipped system power
+State
+2
+0
+TabOrder
+3
+11
+CheckBox
+
+1
+9
+Name
+5
+37
+batt_dispatch_auto_can_fuelcellcharge
+X
+3
+306
+Y
+3
+123
+Width
+3
+348
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+33
+Battery can charge from fuel cell
+State
+2
+1
+TabOrder
+3
+8
+CheckBox
+
+1
+9
+Name
+5
+33
+batt_dispatch_auto_can_gridcharge
+X
+3
+306
+Y
+3
+60
+Width
+3
+348
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+28
+Battery can charge from grid
+State
+2
+0
+TabOrder
+3
+6
+RadioChoice
+
+1
+11
+Name
+5
+23
+batt_dispatch_choice_ui
+X
+3
+15
+Y
+3
+57
+Width
+3
+288
+Height
+3
+88
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+4
+Automated dispatch
+PV smoothing
+Dispatch to custom time series
+Manual dispatch
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+1
+Label
+
+1
+13
+Name
+5
+20
+lbl_dispatch_options
+X
+3
+15
+Y
+3
+21
+Width
+3
+918
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+23
+lbl_fom_warning_message
+X
+3
+657
+Y
+3
+60
+Width
+3
+381
+Height
+3
+83
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1042
+Height
+3
+150
+Tool Tip
+5
+0
+Caption
+5
+45
+Front-of-meter (FOM) Storage Dispatch Options
+Bold
+2
+1
+
+6
+batt_dispatch_auto_can_charge
+3
+1
+Battery can charge from power generation
+ 
+Battery Dispatch
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_auto_can_clipcharge
+3
+1
+Battery can charge from clipped power
+ 
+Battery Dispatch
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_auto_can_fuelcellcharge
+3
+1
+Battery can charge from fuel cell
+ 
+Battery Dispatch
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_auto_can_gridcharge
+3
+1
+Battery can charge from grid
+ 
+Battery Dispatch
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+batt_dispatch_choice
+3
+1
+Battery dispatch option
+ 
+Battery Dispatch
+0
+8
+1
+1
+1
+1
+0
+Default
+batt_dispatch_choice_ui
+3
+1
+Battery dispatch options FOM
+ 
+Battery Dispatch
+78
+Automated dispatch|PV smoothing|Dispatch to custom time series|Manual dispatch
+3
+1
+1
+1
+1
+3
+RadioChoice
+
+0
+3162
+on_load{'Battery Dispatch Options FOM'} = define() {
+	show_hide_charge_options();
+	enable_charge_from_clip();
+	warning_message();
+	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
+	{ 
+		msg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options.';
+		clr = 'red';
+	}
+	else
+	{
+		msg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';
+		clr = 'black';
+	}
+		
+	property('lbl_dispatch_options','Caption',msg);
+	property('lbl_dispatch_options','TextColour',clr);
+	
+};
+
+on_change{'batt_dispatch_choice_ui'} = define() {
+	enable_charge_from_clip();
+	show_hide_charge_options();
+	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
+};
+
+// hide charge options for manual dispatch
+function show_hide_charge_options()
+{
+	option = value('batt_dispatch_choice_ui');
+	if ( technology() == 'Fuel Cell' && value('en_batt') == 0  )
+	{ 
+		enable('batt_dispatch_choice_ui',false);
+		//Automated Dispatch Inputs
+		enable('automated_dispatch_choice', false);
+		enable('batt_cycle_cost', false);
+		enable('batt_cycle_cost_choice',false);
+		enable('batt_dispatch_update_frequency_hours', false);
+		enable('batt_look_ahead_hours', false);
+		enable('batt_user_specified_weather_file', false);
+		enable('batt_select_weather_file_forecast', false);
+		
+		//Custom time series inputs
+		enable('batt_custom_dispatch', false);
+		
+	}
+	else
+	{
+		show('batt_dispatch_auto_can_charge',option != 3);
+		show('batt_dispatch_auto_can_gridcharge', option !=3 );
+		show('batt_dispatch_auto_can_clipcharge', option != 3);
+		if (technology() == 'Fuel Cell') 
+		{ show('batt_dispatch_auto_can_fuelcellcharge', option !=3); }
+		else
+		{ show('batt_dispatch_auto_can_fuelcellcharge', false); }
+	}	
+	if (option == 3) {
+		value('batt_dispatch_auto_can_gridcharge', false);
+		enable('batt_dispatch_auto_can_gridcharge', false);
+	}
+}
+
+function enable_charge_from_clip()
+{
+	// enable charge from clipped power if dc-connected and automated dispatch
+	is_dc = (value('batt_ac_or_dc' ) == 0);
+	if ( is_dc && value('batt_dispatch_choice_ui') == 0 )
+	{ enable('batt_dispatch_auto_can_clipcharge', true); }
+	else 
+	{ 
+		enable('batt_dispatch_auto_can_clipcharge',false);
+		property('batt_dispatch_auto_can_clipcharge','State', 0);
+	} 
+	warning_message();
+}
+
+function warning_message() 
+{
+	is_dc = (value('batt_ac_or_dc' ) == 0);
+	color = 'black';
+	if ( is_dc )
+	{
+		msg = 'Battery is DC-connected.'; 
+	}
+	else
+	{ 
+		msg = 'Battery is AC-connected.'; 
+	}
+	msg = msg + ' Charging from clipped power is only available for automated dispatch and DC-connected batteries. See input under Power Converters on Battery Cell and System page.';
+	if ( value('batt_dispatch_choice_ui') == 2 ) 
+	{
+		msg = ''; 
+	}
+	/*
+	elseif ( value('batt_dispatch_choice_ui') == 3 ) 
+	{ 
+		if ( technology() != 'PV Battery' )
+		{
+			msg = 'The PV smoothing option only works for PV Battery configurations.';
+			color = 'red'; 
+		}	
+	}
+	*/
+	property('lbl_fom_warning_message','Caption',msg);
+	property('lbl_fom_warning_message','TextColour',color);
+}

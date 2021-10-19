@@ -1,7 +1,7 @@
 Battery REopt Optimization
 1055
 158
-5
+4
 Label
 
 1
@@ -27,8 +27,8 @@ Tool Tip
 0
 Caption
 5
-286
-Use from the current case the lat/lon from Location and Resource, System Design parameters, Subarray 1 losses, System Costs, Electricity Rates and Electric Load pages to determine for the current PV system design the optimal battery power, capacity and dispatch from the REopt Lite API.
+316
+Automatically size the battery bank and calculate an hour-by-hour dispatch schedule using the REopt Lite API web service. This sends values of SAM inputs to the service, runs a REopt optimization on the service, and modifies SAM battery size and dispatch inputs with results from the REopt run. See Help for details.
 TextColour
 4
 0
@@ -60,7 +60,7 @@ Name
 call_reopt
 X
 3
-510
+411
 Y
 3
 69
@@ -135,8 +135,8 @@ Tool Tip
 0
 Caption
 5
-137
-Note: REopt downloads its own weather file from the provided lat/lon and does not use the one provided on the Location and Resource page.
+101
+The REopt optimization uses a different weather file than the file on the Location and Resource page.
 TextColour
 4
 0
@@ -158,101 +158,25 @@ AlignRight
 AlignTop
 2
 1
-Numeric
-
-1
-17
-Name
-5
-18
-value_of_lost_load
-X
-3
-243
-Y
-3
-69
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-0
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-1
-
-1
-value_of_lost_load
-3
-1
-Value of lost load during outage
-$/kWh
-Battery REopt Optimization
-0
-2
-1
-1
-1
-1
-0
-Numeric
 
 0
-4282
+
+0
+4383
 on_change{'call_reopt'} = define()
 {
+	batt_kw_original = value("batt_bank_power");
+	batt_kwh_original = value("batt_bank_size");
 	dispatch_original_mode = value('batt_dispatch_choice'); //store original batt dispatch mode
-	value('batt_dispatch_choice',0); //set batt dispatch mode to 0 for ReOPT call
+	
 	wf_len = 60 / ${ui_step_minutes} * 8760;
 	load_len = #(${load});
 	if (wf_len != load_len) {
 		msgbox("Weather file and load number of records must be the same.");
-		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
 		exit;
 	}
 	if (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) {
 		msgbox("Simulation timestep must be 15, 30 or 60 minutes.");
-		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
 		exit;
 	}
 
@@ -264,7 +188,6 @@ on_change{'call_reopt'} = define()
 			refresh();
 		}
 		else {
-			value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
 			exit;
 		}
 	}
@@ -276,7 +199,6 @@ on_change{'call_reopt'} = define()
 			refresh();
 		}
 		else {
-			value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
 			exit;
 		}
 	}
@@ -284,6 +206,7 @@ on_change{'call_reopt'} = define()
 	// reset size to 0 to remove battery costs from total_installed_cost
 	value("batt_bank_power", 0);
 	value("batt_bank_size", 0); 
+	value('batt_dispatch_choice',0); //set batt dispatch mode to 0 for ReOPT call
 	
 	value('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf
 
@@ -297,6 +220,8 @@ on_change{'call_reopt'} = define()
 			msgbox("ReOpt Lite API timed out. Please try again later.");
 		}
 		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
 		exit;
 	}
 	
@@ -305,12 +230,16 @@ on_change{'call_reopt'} = define()
 	if (y.outputs == null || y.outputs.Scenario == null){
 		msgbox("Error in ReOpt response. Try again later or another system design.");
 		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
 		exit;
 	}
 
 	if (y.outputs.Scenario.status != "optimal"){
 		msgbox(y.outputs.Scenario.status);
 		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
 		exit;
 	}
 
@@ -327,6 +256,8 @@ on_change{'call_reopt'} = define()
 			value('batt_bank_size', 0.0);
 		}
 		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
 		exit;
 	}
 
@@ -336,6 +267,8 @@ on_change{'call_reopt'} = define()
 	apply = yesno(apply_str);
 	if (!apply) {
 		value('batt_dispatch_choice',dispatch_original_mode); //restore original dispatch mode on early exit from ReOPT
+		value("batt_bank_power", batt_kw_original);
+		value("batt_bank_size", batt_kwh_original); 
 		exit;
 	}
 

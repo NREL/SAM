@@ -4709,27 +4709,36 @@ Physical Trough Solar Field
 25
 Default
 
-9227
-/*
-Doesn't work to create functions in 'equations' section
-cspdtr_solf_userhtf_dens = define(tempC) {
-	return tempC *10;
-};
-*/
-equations{ 'FIELD_COPY_solar_mult' } = define() {
-	return ${solar_mult}; };
-	
+7309
+//
+//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
+//  INPUT AGGREGATOR EQUATIONS BELOW!
+//
+//   If the equations change an input value
+//   modify the below main MIMO or add one,
+//   referencing in ssc_equations.h
+//
+
+
+// Just UI indicator
 equations{ 'FIELD_COPY_I_bn_des' } = define() {
 	return ${I_bn_des}; };
-	
+
+// Just UI indicator	
 equations{ 'FIELD_COPY_T_loop_in_des' } = define() {
 	return ${T_loop_in_des}; };
 
+// Just UI indicator
 equations{ 'FIELD_COPY_T_loop_out' } = define() {
 	return ${T_loop_out}; };
-
+	
+// Just UI indicator
 equations{ 'FIELD_COPY_nLoops' } = define() {
 	return ${nLoops}; };
+	
+// Just UI indicator
+equations{ 'FIELD_COPY_solar_mult' } = define() {
+	return ${solar_mult}; };
 
 equations{ 'defocus' } = define() {
 	// setting the default and setting this value in the 'on_load' event don't
@@ -4737,39 +4746,22 @@ equations{ 'defocus' } = define() {
 	return 1;
 };
 
-equations{ 'max_field_flow_velocity' } = define() {
-	return ${m_dot_htfmax}*4/(${fluid_dens_outlet_temp} * pi() * 
-				pow( ${min_inner_diameter},2) );
-};
-
-equations{ 'min_field_flow_velocity' } = define() {
-	return ${m_dot_htfmin}*4/(${fluid_dens_inlet_temp} * pi() * 
-				pow(${min_inner_diameter},2) );
-};
-
+// Just combo converter
 equations{ 'fthrctrl' } = define() {
 	return ${combo_feather}+1;
 };
 
-equations{ 'field_htf_cp_avg' } = define() {
-	if (${combo_htf_type} < 10 )
-		return substance_specific_heat( ${Fluid}, 0.5*(${T_loop_in_des}+${T_loop_out}) );
-	else
-		return substance_userhtf(${field_fl_props},0.5*(${T_loop_in_des}+${T_loop_out}),"specific heat"); 
-		//return cspdtr_tes_userhtf( 1, 0.5*(${T_loop_in_des}+${T_loop_out}) );
-};
-
+// Just combo converter
 equations{ 'FieldConfig' } = define() {
-	if( ${combo_FieldConfig} == 0 )
-	{
+	if( ${combo_FieldConfig} == 0 )	{
 		return 1;
 	}
-	else
-	{
+	else {
 		return 2 * ${combo_FieldConfig};
 	}
 };
 
+// Just combo converter
 equations{ 'Fluid' } = define() {
 	return ?${combo_htf_type}
 	[
@@ -4787,399 +4779,181 @@ equations{ 'Fluid' } = define() {
 	];
 };
 
-equations{ 'min_inner_diameter' } = define() {
-	aLoopCtl = ${trough_loop_control};
+equations{ '$MIMO$ Physical_Trough_Solar_Field_Equations' } = define() {
 	
-	diam_inputs[0] = ${csp_dtr_hce_diam_absorber_inner_1};
-	diam_inputs[1] = ${csp_dtr_hce_diam_absorber_inner_2};
-	diam_inputs[2] = ${csp_dtr_hce_diam_absorber_inner_3};
-	diam_inputs[3] = ${csp_dtr_hce_diam_absorber_inner_4};
+	// field_htf_cp_avg
+	data.T_loop_in_des = ${T_loop_in_des};
+	data.T_loop_out = ${T_loop_out};
+	data.Fluid = ${Fluid};
+	data.field_fl_props = ${field_fl_props};
 
-	minval = diam_inputs[0];
+	// single_loop_aperature
+	data.trough_loop_control = ${trough_loop_control};
+	data.A_aperture = ${A_aperture};
 
-	for (i=0; i<aLoopCtl[0]; i++)
-	{
-		hce_t = min(max(aLoopCtl[i*3+2],1),4) - 1;
-		if (diam_inputs[hce_t]<minval)
-			minval = diam_inputs[hce_t];
+	// min_inner_diameter
+	data.D_2 = ${D_2};
+	
+	// csp_dtr_hce_design_heat_loss_1
+	data.HCE_FieldFrac = ${HCE_FieldFrac};
+	data.Design_loss = ${Design_loss};
+
+	// cspdtr_loop_hce_heat_loss
+	data.I_bn_des = ${I_bn_des};
+	data.L_SCA = ${L_SCA};
+
+	// csp_dtr_sca_calc_sca_eff_1
+	data.TrackingError = ${TrackingError};
+	data.GeomEffects = ${GeomEffects};
+	data.Rho_mirror_clean = ${Rho_mirror_clean};
+	data.Dirt_mirror = ${Dirt_mirror};
+	data.Error = ${Error};
+
+	// csp_dtr_hce_optical_eff_1
+	data.Shadowing = ${Shadowing};
+	data.Dirt_HCE = ${Dirt_HCE};
+	data.alpha_abs = ${alpha_abs};
+	data.Tau_envelope = ${Tau_envelope};
+
+	// loop_optical_efficiency
+	// <nothing new needed>
+
+	// SCAInfoArray
+	// <nothing new needed>
+
+	// SCADefocusArray
+	// <nothing new needed>
+
+	// max_field_flow_velocity
+	data.m_dot_htfmax = ${m_dot_htfmax};
+
+	// min_field_flow_velocity
+	data.m_dot_htfmin = ${m_dot_htfmin};
+
+	// total_loop_conversion_efficiency
+	// <nothing new needed>
+
+	// total_required_aperture_for_SM1
+	data.q_pb_design = ${q_pb_design};
+	
+	// required_number_of_loops_for_SM1
+	// <nothing new needed>
+
+	// nLoops
+	data.use_solar_mult_or_aperture_area = ${use_solar_mult_or_aperture_area};
+	data.specified_solar_multiple = ${specified_solar_multiple};
+	data.specified_total_aperture = ${specified_total_aperture};
+
+	// total_aperture
+	// <nothing new needed>
+
+	// field_thermal_output
+	// <nothing new needed>
+
+	// solar_mult
+	// <nothing new needed>
+
+	// Q_rec_des
+	// <nothing new needed>
+	
+	// tshours_sf
+	data.tshours = ${tshours};
+
+	// fixed_land_area
+	data.Row_Distance = ${Row_Distance};
+	data.W_aperture = ${W_aperture};
+
+	// total_land_area
+	data.non_solar_field_land_area_multiplier = ${non_solar_field_land_area_multiplier};
+
+	// total_tracking_power
+	data.nSCA = ${nSCA};
+	data.SCA_drives_elec = ${SCA_drives_elec};
+	
+	// K_cpnt
+	// <nothing new needed>
+
+	success = ssc_eqn("Physical_Trough_Solar_Field_Equations", data);
+	if (!success) {
+		${field_htf_cp_avg} = -999.;
+		${single_loop_aperature} = -999.;
+		${min_inner_diameter} = -999.;
+		${csp_dtr_hce_design_heat_loss_1} = -999;
+		${csp_dtr_hce_design_heat_loss_2} = -999;
+		${csp_dtr_hce_design_heat_loss_3} = -999;
+		${csp_dtr_hce_design_heat_loss_4} = -999;		
+		${cspdtr_loop_hce_heat_loss} = -999.;
+		${csp_dtr_sca_calc_sca_eff_1} = -999.;
+		${csp_dtr_sca_calc_sca_eff_2} = -999.;
+		${csp_dtr_sca_calc_sca_eff_3} = -999.;
+		${csp_dtr_sca_calc_sca_eff_4} = -999.;
+		${loop_optical_efficiency} = -999.;
+		${csp_dtr_hce_optical_eff_1} = -999;
+		${csp_dtr_hce_optical_eff_2} = -999;
+		${csp_dtr_hce_optical_eff_3} = -999;
+		${csp_dtr_hce_optical_eff_4} = -999;
+		${SCAInfoArray} = null;
+		${SCADefocusArray} = null;
+		${max_field_flow_velocity} = -999.;
+		${min_field_flow_velocity} = -999.;
+		${total_loop_conversion_efficiency} = -999.;
+		${total_required_aperture_for_SM1} = -999.;
+		${required_number_of_loops_for_SM1} = -999.;
+		${nLoops} = -999.;
+		${total_aperture} = -999.;
+		${field_thermal_output} = -999.;
+		${solar_mult} = -999.;
+		${Q_rec_des} = -999.;
+		${tshours_sf} = -999.;
+		${fixed_land_area} = -999.;
+		${total_land_area} = -999.;
+		${total_tracking_power} = -999.;
+		${K_cpnt} = null;
+		${D_cpnt} = null;
+		${L_cpnt} = null;
+		${Type_cpnt} = null;
+	}
+	else {
+		${field_htf_cp_avg} = data.field_htf_cp_avg;
+		${single_loop_aperature} = data.single_loop_aperature;
+		${min_inner_diameter} = data.min_inner_diameter;
+		${csp_dtr_hce_design_heat_loss_1} = data.csp_dtr_hce_design_heat_losses[0][0];
+		${csp_dtr_hce_design_heat_loss_2} = data.csp_dtr_hce_design_heat_losses[0][1];
+		${csp_dtr_hce_design_heat_loss_3} = data.csp_dtr_hce_design_heat_losses[0][2];
+		${csp_dtr_hce_design_heat_loss_4} = data.csp_dtr_hce_design_heat_losses[0][3];	
+		${cspdtr_loop_hce_heat_loss} = data.cspdtr_loop_hce_heat_loss;
+		${csp_dtr_sca_calc_sca_eff_1} = data.csp_dtr_sca_calc_sca_effs[0][0];
+		${csp_dtr_sca_calc_sca_eff_2} = data.csp_dtr_sca_calc_sca_effs[0][1];
+		${csp_dtr_sca_calc_sca_eff_3} = data.csp_dtr_sca_calc_sca_effs[0][2];
+		${csp_dtr_sca_calc_sca_eff_4} = data.csp_dtr_sca_calc_sca_effs[0][3];
+		${loop_optical_efficiency} = data.loop_optical_efficiency;
+		${csp_dtr_hce_optical_eff_1} = data.csp_dtr_hce_optical_effs[0][0];
+		${csp_dtr_hce_optical_eff_2} = data.csp_dtr_hce_optical_effs[0][1];
+		${csp_dtr_hce_optical_eff_3} = data.csp_dtr_hce_optical_effs[0][2];
+		${csp_dtr_hce_optical_eff_4} = data.csp_dtr_hce_optical_effs[0][3];
+		${SCAInfoArray} = data.scainfoarray;
+		${SCADefocusArray} = data.scadefocusarray;
+		${max_field_flow_velocity} = data.max_field_flow_velocity;
+		${min_field_flow_velocity} = data.min_field_flow_velocity;
+		${total_loop_conversion_efficiency} = data.total_loop_conversion_efficiency;
+		${total_required_aperture_for_SM1} = data.total_required_aperture_for_sm1;
+		${required_number_of_loops_for_SM1} = data.required_number_of_loops_for_sm1;
+		${nLoops} = data.nloops;
+		${total_aperture} = data.total_aperture;
+		${field_thermal_output} = data.field_thermal_output;
+		${solar_mult} = data.solar_mult;
+		${Q_rec_des} = data.q_rec_des;
+		${tshours_sf} = data.tshours_sf;
+		${fixed_land_area} = data.fixed_land_area;
+		${total_land_area} = data.total_land_area;
+		${total_tracking_power} = data.total_tracking_power;
+		${K_cpnt} = data.k_cpnt;
+		${D_cpnt} = data.d_cpnt;
+		${L_cpnt} = data.l_cpnt;
+		${Type_cpnt} = data.type_cpnt;
 	}
 	
-	return minval;
+	return 0;
 };
 
-equations{ 'single_loop_aperature' } = define() {
-	aLoop = ${trough_loop_control};
-	nsca = aLoop[0];
-	sca_ap[0] = ${csp_dtr_sca_aperture_1};
-	sca_ap[1] = ${csp_dtr_sca_aperture_2};
-	sca_ap[2] = ${csp_dtr_sca_aperture_3};
-	sca_ap[3] = ${csp_dtr_sca_aperture_4};
-
-	total_ap = 0;
-	for (i=0;i<nsca;i++)
-	{
-		sca_t = min(max(aLoop[1+i*3],1),4) - 1;
-		total_ap = total_ap + sca_ap[ sca_t ];
-	}
-
-	return total_ap;
-};
-
-// loop heat loss for total loop conversion efficiency
-equations{ 'cspdtr_loop_hce_heat_loss' } = define() {
-	aLoopCtl = ${trough_loop_control};
-	ncol = aLoopCtl[0];
-	
-	total_len = 0;
-	ibn = ${I_bn_des};
-
-	hce_hl[0] = ${csp_dtr_hce_design_heat_loss_1};
-	hce_hl[1] = ${csp_dtr_hce_design_heat_loss_2};
-	hce_hl[2] = ${csp_dtr_hce_design_heat_loss_3};
-	hce_hl[3] = ${csp_dtr_hce_design_heat_loss_4};
-
-	sca_len[0] = ${csp_dtr_sca_length_1};
-	sca_len[1] = ${csp_dtr_sca_length_2};
-	sca_len[2] = ${csp_dtr_sca_length_3};
-	sca_len[3] = ${csp_dtr_sca_length_4};
-
-	sca_ap[0] = ${csp_dtr_sca_aperture_1};
-	sca_ap[1] = ${csp_dtr_sca_aperture_2};
-	sca_ap[2] = ${csp_dtr_sca_aperture_3};
-	sca_ap[3] = ${csp_dtr_sca_aperture_4};
-
-	derate = 0;
-	for (i=0;i<ncol;i++)
-	{
-		sca_t = min(max(aLoopCtl[1+i*3],1),4) - 1;
-		hce_t = min(max(aLoopCtl[2+i*3],1),4) - 1;
-		total_len = total_len + sca_len[ sca_t ];
-		derate = derate + sca_len[ sca_t ] * (1 - ( hce_hl[ hce_t ] / ( ibn * sca_ap[sca_t] / sca_len[sca_t] ) ));
-	}
-
-	if (total_len != 0.0)
-		derate = derate/total_len;
-	else
-		derate = -777.7;
-
-	return derate;
-};
-
-equations{ 'total_aperture' } = define() {
-	return ${single_loop_aperature} * ${FIELD_COPY_nLoops}; };
-
-equations{ 'required_number_of_loops_for_SM1' } = define() {
-	return ceil(${total_required_aperture_for_SM1}/${single_loop_aperature}); };
-
-equations{ 'total_loop_conversion_efficiency' } = define() {
-	return ${loop_optical_efficiency}*${cspdtr_loop_hce_heat_loss}; 
-};
-
-equations{ 'loop_optical_efficiency' } = define() {
-	aLoopCtl = ${trough_loop_control};
-	if (#aLoopCtl != aLoopCtl[0]*3+1) return -888.8;
-	ncol = aLoopCtl[0];
-
-	// sca efficiency
-	sca_eff[0] = ${csp_dtr_sca_calc_sca_eff_1};
-	sca_eff[1] = ${csp_dtr_sca_calc_sca_eff_2};
-	sca_eff[2] = ${csp_dtr_sca_calc_sca_eff_3};
-	sca_eff[3] = ${csp_dtr_sca_calc_sca_eff_4};
-
-	sca_len[0] = ${csp_dtr_sca_length_1};
-	sca_len[1] = ${csp_dtr_sca_length_2};
-	sca_len[2] = ${csp_dtr_sca_length_3};
-	sca_len[3] = ${csp_dtr_sca_length_4};
-
-	total_len = 0;
-	weighted_sca_eff = 0.0;
-	for (i=0;i<ncol;i++)
-	{
-		sca_t = min(max(aLoopCtl[1+i*3],1),4) - 1;
-		total_len = total_len + sca_len[ sca_t ];
-		weighted_sca_eff = weighted_sca_eff + sca_len[ sca_t ] * sca_eff[ sca_t ];
-	}
-
-	if (total_len != 0.0)
-		weighted_sca_eff = weighted_sca_eff/total_len;
-	else
-		weighted_sca_eff = -777.7;
-
-	// hce efficiency
-	hce_eff[0] = ${csp_dtr_hce_optical_eff_1};
-	hce_eff[1] = ${csp_dtr_hce_optical_eff_2};
-	hce_eff[2] = ${csp_dtr_hce_optical_eff_3};
-	hce_eff[3] = ${csp_dtr_hce_optical_eff_4};
-
-	total_len = 0;
-	weighted_hce_eff = 0.0;
-	for (i=0;i<ncol;i++)
-	{
-		hce_t = min(max(aLoopCtl[2+i*3],1),4) - 1;
-		sca_t = min(max(aLoopCtl[1+i*3],1),4) - 1;
-		total_len = total_len + sca_len[ sca_t ];
-		weighted_hce_eff = weighted_hce_eff + sca_len[ sca_t ] * hce_eff[ hce_t ];
-	}
-
-	if (total_len != 0.0)
-		weighted_hce_eff = weighted_hce_eff/total_len;
-	else
-		weighted_hce_eff = -777.7;
-
-	return weighted_hce_eff*weighted_sca_eff; 
-};
-
-
-equations{ 'field_thermal_output' } = define() {
-	return ${I_bn_des}*${total_loop_conversion_efficiency}*${total_aperture}/1.E6;  // default now = 626.008
-	//return ${solar_mult}*${P_ref}/${eta_ref};   // default = 623.596
-};
-
-equations{ 'total_required_aperture_for_SM1' } = define() {
-	return ${q_pb_design}/( ${I_bn_des}*${total_loop_conversion_efficiency} )*1000000.0; 
-};
-
-equations{ 'total_land_area' } = define() {
-	return ${fixed_land_area} * ${non_solar_field_land_area_multiplier};
-};
-
-
-//max_collector_width defined on Physical Trough Collector Header page
-equations{ 'fixed_land_area' } = define() {
-	return ${total_aperture} * ${Row_Distance} / ${max_collector_width} * 0.0002471;
-};
-
-equations{ 'SCAInfoArray' } = define() {
-	a = ${trough_loop_control};
-	assemblies = a[0];
-	for (i=0; i<assemblies; i++)	{
-		//8.4.2016 twn: Switched column numbers
-		p1[i][1] = a[1+3*i];
-		p1[i][0] = a[2+3*i];
-	}
-
-	return p1;
-};
-
-equations{ 'SCADefocusArray' } = define() {
-	a = ${trough_loop_control};
-	assemblies = a[0];
-	for (i=0; i<assemblies; i++)	{
-		p1[i] = a[3+3*i];
-	}
-
-	return p1;
-};
-
-equations{ 'total_tracking_power' } = define() {
-	return ${nSCA}*${nLoops}*${SCA_drives_elec};
-};
-
-equations{ 'K_cpnt' } = define() {
-	K_cpnt_0 = [0.9, 0, 0.19, 0, 0.9, -1, -1, -1, -1, -1, -1];
-	K_cpnt_1 = [0, 0.6, 0.05, 0, 0.6, 0, 0.6, 0, 0.42, 0, 0.15];
-	K_cpnt_i = [0.05, 0, 0.42, 0, 0.6, 0, 0.6, 0, 0.42, 0, 0.15];
-	K_cpnt_x_2 = [0.05, 0, 0.42, 0, 0.6, 0, 0.6, 0, 0.15, 0.6, 0];
-	K_cpnt_x_1 = [0.9, 0, 0.19, 0, 0.9, -1, -1, -1, -1, -1, -1];
-
-	K = [];
-	K[0] = K_cpnt_0;
-	K[1] = K_cpnt_1;
-
-	for( i=0; i<${nSCA} - 1; i++) {
-		K[i + 2] = K_cpnt_i;
-	}
-
-	K[${nSCA} + 1] = K_cpnt_x_2;
-	K[${nSCA} + 2] = K_cpnt_x_1;
-
-	return K;
-};
-
-equations{ 'D_cpnt' } = define() {
-	D_cpnt_0 = [0.085, 0.0635, 0.085, 0.0635, 0.085, -1, -1, -1, -1, -1, -1];
-	D_cpnt_1 = [0.085, 0.085, 0.085, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.085];
-	D_cpnt_i = [0.085, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.085];
-	D_cpnt_x_2 = [0.085, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.0635, 0.085, 0.085, 0.085];
-	D_cpnt_x_1 = [0.085, 0.0635, 0.085, 0.0635, 0.085, -1, -1, -1, -1, -1, -1];
-
-	D = [];
-	D[0] = D_cpnt_0;
-	D[1] = D_cpnt_1;
-
-	for( i=0; i<${nSCA} - 1; i++) {
-		D[i + 2] = D_cpnt_i;
-	}
-
-	D[${nSCA} + 1] = D_cpnt_x_2;
-	D[${nSCA} + 2] = D_cpnt_x_1;
-
-	return D;
-};
-
-equations{ 'L_cpnt' } = define() {
-	L_cpnt_0 = [0, 0, 0, 0, 0, -1, -1, -1, -1, -1, -1];
-	L_cpnt_1 = [0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0];
-	L_cpnt_i = [0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0];
-	L_cpnt_x_2 = [0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0];
-	L_cpnt_x_1 = [0, 0, 0, 0, 0, -1, -1, -1, -1, -1, -1];
-
-	L = [];
-	L[0] = L_cpnt_0;
-	L[1] = L_cpnt_1;
-
-	for( i=0; i<${nSCA} - 1; i++) {
-		L[i + 2] = L_cpnt_i;
-	}
-
-	L[${nSCA} + 1] = L_cpnt_x_2;
-	L[${nSCA} + 2] = L_cpnt_x_1;
-
-	return L;
-};
-
-equations{ 'Type_cpnt' } = define() {
-	Type_cpnt_0 = [0, 1, 0, 1, 0, -1, -1, -1, -1, -1, -1];
-	Type_cpnt_1 = [1, 0, 0, 2, 0, 1, 0, 2, 0, 2, 0];
-	Type_cpnt_i = [0, 2, 0, 2, 0, 1, 0, 2, 0, 2, 0];
-	Type_cpnt_x_2 = [0, 2, 0, 2, 0, 1, 0, 2, 0, 0, 1];
-	Type_cpnt_x_1 = [0, 1, 0, 1, 0, -1, -1, -1, -1, -1, -1];
-
-	T = [];
-	T[0] = Type_cpnt_0;
-	T[1] = Type_cpnt_1;
-
-	for( i=0; i<${nSCA} - 1; i++) {
-		T[i + 2] = Type_cpnt_i;
-	}
-
-	T[${nSCA} + 1] = Type_cpnt_x_2;
-	T[${nSCA} + 2] = Type_cpnt_x_1;
-
-	return T;
-};
-
-3556
-on_load{'Physical Trough Solar Field'} = define() {
-	on_change{'combo_htf_type'}();
-	on_change{'trough_loop_control'}();
-	on_change{'fthrok'}();
-
-	//msgbox("value of 'assemblies_per_loop' is '" + ${assemblies_per_loop} + "'.");
-	//msgbox("value of 'loop_optical_efficiency' is '" + ${loop_optical_efficiency} + "'.");
-};
-
-on_change{'fthrok'} = define() {
-	bChecked = value('fthrok');
-    enable("combo_feather", bChecked);
-};
-
-function cspdtr_solf_userhtf_dens(temperatureC) {
-	// density is property 2
-	return cspdtr_solf_userhtf(2, temperatureC);
-}
-
-function cspdtr_solf_userhtf(col, temperatureC) {
-	aUserDefHTF = value("field_fl_props");
-	
-	rows = #aUserDefHTF;
-	cols = #aUserDefHTF[0];
-
-	if (cols != 7 || rows < 2 || col < 0 || col >= 7) return 1.0;
-	for (i=1;i<rows;i++)
-	{
-		if (aUserDefHTF[i][0] >= temperatureC)
-		{
-			/* interp and return */
-			xmin = aUserDefHTF[i-1][0];
-			xmax = aUserDefHTF[i][0];
-			ymin = aUserDefHTF[i-1][col];
-			ymax = aUserDefHTF[i][col];
-			if (xmax <= xmin) return 1.0;
-
-			percent = (temperatureC-xmin)/(xmax-xmin);
-			return ymin + percent*(ymax-ymin);
-		}
-	}
-
-	return aUserDefHTF[rows-1][col];
-}
-
-on_change{'combo_htf_type'} = define() {
-
-    bUserDefined = (value('combo_htf_type') == 10);
-    enable("field_fl_props", bUserDefined);
-    enable('field_htf_min_operating_temp',!bUserDefined);
-    enable('field_htf_max_operating_temp',!bUserDefined);
-    
-	// outlet temp and max field flow velocity
-	if (${combo_htf_type} < 10 )
-		fluid_dens_outlet_temp = substance_density( ${Fluid}, ${T_loop_out} );
-	else
-		fluid_dens_outlet_temp = cspdtr_solf_userhtf_dens( ${T_loop_out} );
-
-	value('fluid_dens_outlet_temp',fluid_dens_outlet_temp);
-	//max_field_flow_velocity = ${m_dot_htfmax}*4/(fluid_dens_outlet_temp * pi() * pow( ${min_inner_diameter},2) );
-	//value('max_field_flow_velocity',max_field_flow_velocity);
-
-	// inlet temp and min field flow velocity
-	if (${combo_htf_type} < 10 )
-		fluid_dens_inlet_temp = substance_density( ${Fluid}, ${T_loop_in_des} );
-	else
-		fluid_dens_inlet_temp = cspdtr_solf_userhtf_dens( ${T_loop_in_des} );
-
-	value('fluid_dens_inlet_temp',fluid_dens_inlet_temp);
-	//min_field_flow_velocity = ${m_dot_htfmin}*4/(fluid_dens_inlet_temp * pi() * pow(${min_inner_diameter},2) );
-	//value('min_field_flow_velocity',min_field_flow_velocity);
-	
-	// max operating temp
-	field_htf_max_operating_temp = ?${combo_htf_type}
-	[
-		593,/* fluid num 18 */
-		315,/* fluid num 19 */
-		500,/* fluid num 20 */
-		400,/* fluid num 21 */
-		538,/* fluid num 22 */
-		330,/* fluid num 23 */
-		330,/* fluid num 24 */
-		315,/* fluid num 30 */
-		345,/* fluid num 29 */
-		220,/* fluid num 31 */
-		0   /* user fluid */
-	];
-	value('field_htf_max_operating_temp',field_htf_max_operating_temp);
-	
-	// min operating temp
-	field_htf_min_operating_temp = ?${combo_htf_type}
-	[
-		238, /* fluid num 18 */
-		-12, /* fluid num 19 */
-		120, /* fluid num 20 */
-		12,  /* fluid num 21 */
-		142, /* fluid num 22 */
-		-35, /* fluid num 23 */
-		0,   /* fluid num 24 */
-		-45, /* fluid num 30 */
-		0,   /* fluid num 29 */
-		10,  /* fluid num 31 */
-		0    /* user fluid */
-	];
-	value('field_htf_min_operating_temp',field_htf_min_operating_temp);
-	
-	hx_derate_update_module();
-};
-
-on_change{"field_fl_props"} = define(){
-	hx_derate_update_module();
-
-};
-
-on_change{'trough_loop_control'} = define() {
-	//msgbox("assemblies_per_loop updated");
-
-	aLoopCtl = ${trough_loop_control};
-	if (#aLoopCtl != aLoopCtl[0]*3+1)
-		msgbox('Array from loop control has inconsistent values. (#values != array[0]*3+1)');
-	value('nSCA',aLoopCtl[0]);
-};
-
+0

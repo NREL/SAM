@@ -11,13 +11,8 @@
 #include "SAM_Pvsamv1.h"
 
 SAM_EXPORT int SAM_Pvsamv1_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("pvsamv1", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("pvsamv1", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Pvsamv1_SolarResource_albedo_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -1183,109 +1178,109 @@ SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_v_oc_ref_n
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_aisc_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_aisc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_aisc", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_area_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_area_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_area", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_bifacial_ground_clearance_height", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_bifacial_transmission_factor", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifaciality_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifaciality_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_bifaciality", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bvoc_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bvoc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_bvoc", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_celltech_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_celltech_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_celltech", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_gpmp_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_gpmp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_gpmp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_imp_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_imp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_imp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_is_bifacial", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_isc_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_isc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_isc", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_mounting_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_mounting_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_mounting", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_nser_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_nser_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_nser", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_standoff_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_standoff_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_standoff", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_tnoct_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_tnoct_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_tnoct", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_transient_thermal_model_unit_mass_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_transient_thermal_model_unit_mass_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_transient_thermal_model_unit_mass", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_vmp_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_vmp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_vmp", number);
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_voc_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_voc_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "6par_voc", number);
 	});
@@ -2575,18 +2570,6 @@ SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_current_discharge_max_nset(SAM_ta
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_cycle_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "batt_cycle_cost", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_cycle_cost_choice", number);
-	});
-}
-
 SAM_EXPORT void SAM_Pvsamv1_BatterySystem_batt_dc_ac_efficiency_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dc_ac_efficiency", number);
@@ -2713,6 +2696,18 @@ SAM_EXPORT void SAM_Pvsamv1_Load_crit_load_aset(SAM_table ptr, double* arr, int 
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Load_crit_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "crit_load_escalation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Load_grid_outage_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_outage", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_Load_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load", arr, length);
@@ -2722,6 +2717,12 @@ SAM_EXPORT void SAM_Pvsamv1_Load_load_aset(SAM_table ptr, double* arr, int lengt
 SAM_EXPORT void SAM_Pvsamv1_Load_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load_escalation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Load_run_resiliency_calcs_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "run_resiliency_calcs", number);
 	});
 }
 
@@ -2782,6 +2783,12 @@ SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_Qfull_flow_nset(SAM_table ptr, doub
 SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_Qnom_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_Qnom", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_Vcut_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_Vcut", number);
 	});
 }
 
@@ -2863,6 +2870,12 @@ SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_initial_SOC_nset(SAM_table ptr, dou
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_life_model_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_life_model", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_lifetime_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "batt_lifetime_matrix", mat, nrows, ncols);
@@ -2917,15 +2930,21 @@ SAM_EXPORT void SAM_Pvsamv1_BatteryCell_cap_vs_temp_mset(SAM_table ptr, double* 
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_auto_gridcharge_max_daily_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_auto_gridcharge_max_daily", number);
-	});
-}
-
 SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_custom_dispatch_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_custom_dispatch", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_cycle_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_cycle_cost_choice", number);
 	});
 }
 
@@ -2953,15 +2972,141 @@ SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_gridcharge_ns
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_charge_only_system_exceeds_load", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_choice_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_choice", number);
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_discharge_only_load_exceeds_system_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_discharge_only_load_exceeds_system", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_load_forecast_choice_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_load_forecast_choice", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_ac_lb", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_enable_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_ac_lb_enable", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_ub_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_ac_ub", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_ub_enable_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_ac_ub_enable", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_curtail_as_control_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_curtail_as_control", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_curtail_if_violation_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_curtail_if_violation", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_forecast_shift_periods_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_forecast_shift_periods", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_kf_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_kf", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ki_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_ki", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_kp_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_kp", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_max_ramp_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_max_ramp", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_nameplate_ac_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_nameplate_ac", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_short_forecast_enable_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_short_forecast_enable", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_soc_rest_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_soc_rest", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_timestep_multiplier_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_pvs_timestep_multiplier", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_update_frequency_hours_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_update_frequency_hours", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_wf_forecast_choice_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_wf_forecast_choice", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_load_ac_forecast_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_load_ac_forecast", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_load_ac_forecast_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_load_ac_forecast_escalation", arr, length);
 	});
 }
 
@@ -3199,6 +3344,30 @@ SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_tou_mat_mset(SAM_table ptr, d
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_percentages_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "ur_ec_billing_demand_lookback_percentages", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_ec_billing_demand_lookback_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_minimum_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_ec_billing_demand_minimum", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_enable_billing_demand_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_ec_enable_billing_demand", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "ur_ec_sched_weekday", mat, nrows, ncols);
@@ -3280,6 +3449,30 @@ SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ts_buy_rate_aset(SAM_table ptr, 
 SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ts_sell_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "ur_ts_sell_rate", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_yearzero_usage_peaks_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ur_yearzero_usage_peaks", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_GridLimits_enable_interconnection_limit_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "enable_interconnection_limit", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_GridLimits_grid_curtailment_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_curtailment", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "grid_interconnection_limit_kwac", number);
 	});
 }
 
@@ -5443,7 +5636,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_v_oc_ref
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_aisc_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_aisc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_aisc", &result))
@@ -5454,7 +5647,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_area_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_area", &result))
@@ -5465,7 +5658,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_ground_clearance_height_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_ground_clearance_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_bifacial_ground_clearance_height", &result))
@@ -5476,7 +5669,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifacial_transmission_factor_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_transmission_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_bifacial_transmission_factor", &result))
@@ -5487,7 +5680,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bifaciality_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifaciality_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_bifaciality", &result))
@@ -5498,7 +5691,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_bvoc_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bvoc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_bvoc", &result))
@@ -5509,7 +5702,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_celltech_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_celltech_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_celltech", &result))
@@ -5520,7 +5713,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_gpmp_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_gpmp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_gpmp", &result))
@@ -5531,7 +5724,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_imp_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_imp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_imp", &result))
@@ -5542,7 +5735,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_is_bifacial_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_is_bifacial_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_is_bifacial", &result))
@@ -5553,7 +5746,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_isc_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_isc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_isc", &result))
@@ -5564,7 +5757,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_mounting_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_mounting_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_mounting", &result))
@@ -5575,7 +5768,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_nser_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_nser_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_nser", &result))
@@ -5586,7 +5779,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_standoff_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_standoff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_standoff", &result))
@@ -5597,7 +5790,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_tnoct_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_tnoct_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_tnoct", &result))
@@ -5608,7 +5801,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_transient_thermal_model_unit_mass_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_transient_thermal_model_unit_mass_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_transient_thermal_model_unit_mass", &result))
@@ -5619,7 +5812,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_vmp_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_vmp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_vmp", &result))
@@ -5630,7 +5823,7 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_6par_voc_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_voc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "6par_voc", &result))
@@ -8011,29 +8204,6 @@ SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_current_discharge_max_nget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Pvsamv1_BatterySystem_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "batt_cycle_cost", length);
-	if (!result)
-		make_access_error("SAM_Pvsamv1", "batt_cycle_cost");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_cycle_cost_choice_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_cycle_cost_choice", &result))
-		make_access_error("SAM_Pvsamv1", "batt_cycle_cost_choice");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Pvsamv1_BatterySystem_batt_dc_ac_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8272,6 +8442,30 @@ SAM_EXPORT double* SAM_Pvsamv1_Load_crit_load_aget(SAM_table ptr, int* length, S
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Load_crit_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "crit_load_escalation", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "crit_load_escalation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Load_grid_outage_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_outage", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "grid_outage");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Load_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -8290,6 +8484,17 @@ SAM_EXPORT double* SAM_Pvsamv1_Load_load_escalation_aget(SAM_table ptr, int* len
 	result = ssc_data_get_array(ptr, "load_escalation", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "load_escalation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Load_run_resiliency_calcs_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "run_resiliency_calcs", &result))
+		make_access_error("SAM_Pvsamv1", "run_resiliency_calcs");
 	});
 	return result;
 }
@@ -8400,6 +8605,17 @@ SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_Qnom_nget(SAM_table ptr, SAM_erro
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_Qnom", &result))
 		make_access_error("SAM_Pvsamv1", "batt_Qnom");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_Vcut_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_Vcut", &result))
+		make_access_error("SAM_Pvsamv1", "batt_Vcut");
 	});
 	return result;
 }
@@ -8550,6 +8766,17 @@ SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_initial_SOC_nget(SAM_table ptr, S
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_life_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_life_model", &result))
+		make_access_error("SAM_Pvsamv1", "batt_life_model");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_BatteryCell_batt_lifetime_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -8653,23 +8880,35 @@ SAM_EXPORT double* SAM_Pvsamv1_BatteryCell_cap_vs_temp_mget(SAM_table ptr, int* 
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_auto_gridcharge_max_daily_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_auto_gridcharge_max_daily", &result))
-		make_access_error("SAM_Pvsamv1", "batt_auto_gridcharge_max_daily");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_custom_dispatch_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_custom_dispatch", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "batt_custom_dispatch");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_cycle_cost", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_cycle_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_cycle_cost_choice", &result))
+		make_access_error("SAM_Pvsamv1", "batt_cycle_cost_choice");
 	});
 	return result;
 }
@@ -8720,6 +8959,17 @@ SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_gridcharge_
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_charge_only_system_exceeds_load", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_charge_only_system_exceeds_load");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8731,11 +8981,233 @@ SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_choice_nget(SAM_tabl
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_discharge_only_load_exceeds_system_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_discharge_only_load_exceeds_system", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_discharge_only_load_exceeds_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_load_forecast_choice_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_load_forecast_choice", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_load_forecast_choice");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_ac_lb", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_ac_lb");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_lb_enable_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_ac_lb_enable", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_ac_lb_enable");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_ub_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_ac_ub", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_ac_ub");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ac_ub_enable_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_ac_ub_enable", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_ac_ub_enable");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_curtail_as_control_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_curtail_as_control", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_curtail_as_control");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_curtail_if_violation_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_curtail_if_violation", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_curtail_if_violation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_forecast_shift_periods_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_forecast_shift_periods", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_forecast_shift_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_kf_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_kf", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_kf");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_ki_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_ki", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_ki");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_kp_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_kp", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_kp");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_max_ramp_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_max_ramp", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_max_ramp");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_nameplate_ac_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_nameplate_ac", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_nameplate_ac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_short_forecast_enable_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_short_forecast_enable", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_short_forecast_enable");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_soc_rest_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_soc_rest", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_soc_rest");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_pvs_timestep_multiplier_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_pvs_timestep_multiplier", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_pvs_timestep_multiplier");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_update_frequency_hours_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dispatch_update_frequency_hours", &result))
 		make_access_error("SAM_Pvsamv1", "batt_dispatch_update_frequency_hours");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_wf_forecast_choice_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_wf_forecast_choice", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_wf_forecast_choice");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_load_ac_forecast_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_load_ac_forecast", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_load_ac_forecast");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_load_ac_forecast_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_load_ac_forecast_escalation", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_load_ac_forecast_escalation");
 	});
 	return result;
 }
@@ -9199,6 +9671,51 @@ SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_dc_tou_mat_mget(SAM_table ptr
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_percentages_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "ur_ec_billing_demand_lookback_percentages", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ur_ec_billing_demand_lookback_percentages");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_period_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_ec_billing_demand_lookback_period", &result))
+		make_access_error("SAM_Pvsamv1", "ur_ec_billing_demand_lookback_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_minimum_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_ec_billing_demand_minimum", &result))
+		make_access_error("SAM_Pvsamv1", "ur_ec_billing_demand_minimum");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_ec_enable_billing_demand_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_ec_enable_billing_demand", &result))
+		make_access_error("SAM_Pvsamv1", "ur_ec_enable_billing_demand");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9358,66 +9875,58 @@ SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ts_sell_rate_aget(SAM_table p
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Adj_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_yearzero_usage_peaks_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "6par_Adj", &result))
-		make_access_error("SAM_Pvsamv1", "6par_Adj");
+	result = ssc_data_get_array(ptr, "ur_yearzero_usage_peaks", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ur_yearzero_usage_peaks");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Il_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_GridLimits_enable_interconnection_limit_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "6par_Il", &result))
-		make_access_error("SAM_Pvsamv1", "6par_Il");
+	if (!ssc_data_get_number(ptr, "enable_interconnection_limit", &result))
+		make_access_error("SAM_Pvsamv1", "enable_interconnection_limit");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Io_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Pvsamv1_GridLimits_grid_curtailment_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "6par_Io", &result))
-		make_access_error("SAM_Pvsamv1", "6par_Io");
+	result = ssc_data_get_array(ptr, "grid_curtailment", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "grid_curtailment");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Rs_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Pvsamv1_GridLimits_grid_interconnection_limit_kwac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "6par_Rs", &result))
-		make_access_error("SAM_Pvsamv1", "6par_Rs");
+	if (!ssc_data_get_number(ptr, "grid_interconnection_limit_kwac", &result))
+		make_access_error("SAM_Pvsamv1", "grid_interconnection_limit_kwac");
 	});
 	return result;
 }
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_Rsh_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_lifetime_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "6par_Rsh", &result))
-		make_access_error("SAM_Pvsamv1", "6par_Rsh");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Pvsamv1_Outputs_6par_a_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "6par_a", &result))
-		make_access_error("SAM_Pvsamv1", "6par_a");
+	result = ssc_data_get_array(ptr, "ac_lifetime_loss", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ac_lifetime_loss");
 	});
 	return result;
 }
@@ -9429,6 +9938,18 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_ac_loss_nget(SAM_table ptr, SAM_error *err
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ac_loss", &result))
 		make_access_error("SAM_Pvsamv1", "ac_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_ac_perf_adj_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ac_perf_adj_loss", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "ac_perf_adj_loss");
 	});
 	return result;
 }
@@ -9549,17 +10070,6 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_inv_pso_loss_percent_nget(SAM_ta
 
 
 
-SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_inv_tdc_loss_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_ac_inv_tdc_loss_percent", &result))
-		make_access_error("SAM_Pvsamv1", "annual_ac_inv_tdc_loss_percent");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_lifetime_loss_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -9653,6 +10163,17 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_gross_nget(SAM_table ptr, SAM_er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_dc_gross", &result))
 		make_access_error("SAM_Pvsamv1", "annual_dc_gross");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_inv_tdc_loss_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_dc_inv_tdc_loss_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_dc_inv_tdc_loss_percent");
 	});
 	return result;
 }
@@ -9873,6 +10394,18 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_energy_nget(SAM_table ptr, SAM_erro
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
 		make_access_error("SAM_Pvsamv1", "annual_energy");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "annual_energy_distribution_time");
 	});
 	return result;
 }
@@ -10705,6 +11238,146 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_target_aget(SAM_table ptr, int
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_PV_ramp_interval_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_PV_ramp_interval", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_pvs_PV_ramp_interval");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_P_pv_ac_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_P_pv_ac", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_pvs_P_pv_ac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_battpower_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_battpower", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_pvs_battpower");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_battsoc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_battsoc", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_pvs_battsoc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_curtail_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_curtail", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_pvs_curtail");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_pvs_energy_to_grid_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_pvs_energy_to_grid_percent", &result))
+		make_access_error("SAM_Pvsamv1", "batt_pvs_energy_to_grid_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_pvs_energy_to_grid_percent_sam_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_pvs_energy_to_grid_percent_sam", &result))
+		make_access_error("SAM_Pvsamv1", "batt_pvs_energy_to_grid_percent_sam");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_forecast_pv_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_forecast_pv_energy", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_pvs_forecast_pv_energy");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_outpower_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_outpower", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_pvs_outpower");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_pvs_violation_count_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_pvs_violation_count", &result))
+		make_access_error("SAM_Pvsamv1", "batt_pvs_violation_count");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_pvs_violation_list_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_violation_list", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_pvs_violation_list");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_pvs_violation_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_pvs_violation_percent", &result))
+		make_access_error("SAM_Pvsamv1", "batt_pvs_violation_percent");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_q0_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10942,6 +11615,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_cdf_of_surviving_aget(SAM_table ptr, int*
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_crit_load_unmet_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "crit_load_unmet", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "crit_load_unmet");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_dc_degrade_factor_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11140,6 +11825,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_grid_to_load_aget(SAM_table ptr, int* len
 	result = ssc_data_get_array(ptr, "grid_to_load", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_interconnection_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "interconnection_loss", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "interconnection_loss");
 	});
 	return result;
 }
@@ -11355,6 +12052,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_grid_to_load_aget(SAM_table ptr, 
 	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "monthly_grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_interconnection_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_interconnection_loss", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "monthly_interconnection_loss");
 	});
 	return result;
 }
@@ -11710,6 +12419,72 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_shadedb_subarray4_shade_frac_aget(SAM_tab
 	result = ssc_data_get_array(ptr, "shadedb_subarray4_shade_frac", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "shadedb_subarray4_shade_frac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Adj_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "6par_Adj", &result))
+		make_access_error("SAM_Pvsamv1", "6par_Adj");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Il_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "6par_Il", &result))
+		make_access_error("SAM_Pvsamv1", "6par_Il");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Io_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "6par_Io", &result))
+		make_access_error("SAM_Pvsamv1", "6par_Io");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Rs_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "6par_Rs", &result))
+		make_access_error("SAM_Pvsamv1", "6par_Rs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_Rsh_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "6par_Rsh", &result))
+		make_access_error("SAM_Pvsamv1", "6par_Rsh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_sixpar_a_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "6par_a", &result))
+		make_access_error("SAM_Pvsamv1", "6par_a");
 	});
 	return result;
 }

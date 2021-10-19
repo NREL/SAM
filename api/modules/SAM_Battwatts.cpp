@@ -11,13 +11,8 @@
 #include "SAM_Battwatts.h"
 
 SAM_EXPORT int SAM_Battwatts_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("battwatts", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("battwatts", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Battwatts_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -103,9 +98,39 @@ SAM_EXPORT void SAM_Battwatts_Battery_load_aset(SAM_table ptr, double* arr, int 
 	});
 }
 
+SAM_EXPORT void SAM_Battwatts_Load_grid_outage_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_outage", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Battwatts_Load_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load_escalation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Battwatts_Load_run_resiliency_calcs_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "run_resiliency_calcs", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battwatts_GridLimits_enable_interconnection_limit_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "enable_interconnection_limit", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battwatts_GridLimits_grid_curtailment_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_curtailment", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Battwatts_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "grid_interconnection_limit_kwac", number);
 	});
 }
 
@@ -268,12 +293,81 @@ SAM_EXPORT double* SAM_Battwatts_Battery_load_aget(SAM_table ptr, int* length, S
 
 
 
+SAM_EXPORT double* SAM_Battwatts_Load_grid_outage_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_outage", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "grid_outage");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battwatts_Load_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "load_escalation", length);
 	if (!result)
 		make_access_error("SAM_Battwatts", "load_escalation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battwatts_Load_run_resiliency_calcs_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "run_resiliency_calcs", &result))
+		make_access_error("SAM_Battwatts", "run_resiliency_calcs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battwatts_GridLimits_enable_interconnection_limit_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "enable_interconnection_limit", &result))
+		make_access_error("SAM_Battwatts", "enable_interconnection_limit");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_GridLimits_grid_curtailment_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_curtailment", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "grid_curtailment");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battwatts_GridLimits_grid_interconnection_limit_kwac_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "grid_interconnection_limit_kwac", &result))
+		make_access_error("SAM_Battwatts", "grid_interconnection_limit_kwac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Battwatts", "annual_energy_distribution_time");
 	});
 	return result;
 }
@@ -600,6 +694,146 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_target_aget(SAM_table ptr, i
 
 
 
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_pvs_PV_ramp_interval_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_PV_ramp_interval", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_pvs_PV_ramp_interval");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_pvs_P_pv_ac_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_P_pv_ac", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_pvs_P_pv_ac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_pvs_battpower_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_battpower", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_pvs_battpower");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_pvs_battsoc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_battsoc", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_pvs_battsoc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_pvs_curtail_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_curtail", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_pvs_curtail");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battwatts_Outputs_batt_pvs_energy_to_grid_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_pvs_energy_to_grid_percent", &result))
+		make_access_error("SAM_Battwatts", "batt_pvs_energy_to_grid_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battwatts_Outputs_batt_pvs_energy_to_grid_percent_sam_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_pvs_energy_to_grid_percent_sam", &result))
+		make_access_error("SAM_Battwatts", "batt_pvs_energy_to_grid_percent_sam");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_pvs_forecast_pv_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_forecast_pv_energy", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_pvs_forecast_pv_energy");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_pvs_outpower_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_outpower", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_pvs_outpower");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battwatts_Outputs_batt_pvs_violation_count_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_pvs_violation_count", &result))
+		make_access_error("SAM_Battwatts", "batt_pvs_violation_count");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_pvs_violation_list_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_pvs_violation_list", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_pvs_violation_list");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battwatts_Outputs_batt_pvs_violation_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_pvs_violation_percent", &result))
+		make_access_error("SAM_Battwatts", "batt_pvs_violation_percent");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battwatts_Outputs_batt_q0_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -815,6 +1049,18 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_cdf_of_surviving_aget(SAM_table ptr, in
 
 
 
+SAM_EXPORT double* SAM_Battwatts_Outputs_crit_load_unmet_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "crit_load_unmet", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "crit_load_unmet");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battwatts_Outputs_fuelcell_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -899,6 +1145,18 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_grid_to_load_aget(SAM_table ptr, int* l
 
 
 
+SAM_EXPORT double* SAM_Battwatts_Outputs_interconnection_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "interconnection_loss", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "interconnection_loss");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battwatts_Outputs_market_sell_rate_series_yr1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -953,6 +1211,18 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_grid_to_load_aget(SAM_table ptr
 	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
 	if (!result)
 		make_access_error("SAM_Battwatts", "monthly_grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_interconnection_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_interconnection_loss", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "monthly_interconnection_loss");
 	});
 	return result;
 }

@@ -11,13 +11,8 @@
 #include "SAM_Ippppa.h"
 
 SAM_EXPORT int SAM_Ippppa_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("ippppa", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("ippppa", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_Ippppa_FinancialParameters_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -121,33 +116,45 @@ SAM_EXPORT void SAM_Ippppa_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table
 	});
 }
 
+SAM_EXPORT void SAM_Ippppa_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "fuelcell_annual_energy_discharged", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Ippppa_SystemCosts_om_batt_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_capacity_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Ippppa_SystemCosts_om_batt_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_fixed_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Ippppa_SystemCosts_om_batt_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_batt_nameplate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Ippppa_SystemCosts_om_batt_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_replacement_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Ippppa_SystemCosts_om_batt_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_variable_cost", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_capacity", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_capacity1", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity1_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "om_capacity1_nameplate", number);
-	});
-}
-
-SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity2_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_capacity2", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity2_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "om_capacity2_nameplate", number);
 	});
 }
 
@@ -160,18 +167,6 @@ SAM_EXPORT void SAM_Ippppa_SystemCosts_om_capacity_escal_nset(SAM_table ptr, dou
 SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fixed", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fixed1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_fixed1", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fixed2_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_fixed2", arr, length);
 	});
 }
 
@@ -190,6 +185,36 @@ SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuel_cost_aset(SAM_table ptr, double* 
 SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuel_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_fuel_cost_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuelcell_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_capacity_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuelcell_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_fixed_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuelcell_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fuelcell_nameplate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuelcell_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_replacement_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Ippppa_SystemCosts_om_fuelcell_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_variable_cost", arr, length);
 	});
 }
 
@@ -235,21 +260,9 @@ SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production_aset(SAM_table ptr, double*
 	});
 }
 
-SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_production1", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production1_values_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production1_values", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production2_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_production2", arr, length);
 	});
 }
 
@@ -262,18 +275,6 @@ SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production2_values_aset(SAM_table ptr,
 SAM_EXPORT void SAM_Ippppa_SystemCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_production_escal", number);
-	});
-}
-
-SAM_EXPORT void SAM_Ippppa_SystemCosts_om_replacement_cost1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_replacement_cost1", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Ippppa_SystemCosts_om_replacement_cost2_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_replacement_cost2", arr, length);
 	});
 }
 
@@ -1379,58 +1380,83 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_ta
 
 
 
+SAM_EXPORT double* SAM_Ippppa_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_annual_energy_discharged", length);
+	if (!result)
+		make_access_error("SAM_Ippppa", "fuelcell_annual_energy_discharged");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_capacity_cost", length);
+	if (!result)
+		make_access_error("SAM_Ippppa", "om_batt_capacity_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_batt_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_fixed_cost", length);
+	if (!result)
+		make_access_error("SAM_Ippppa", "om_batt_fixed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Ippppa_SystemCosts_om_batt_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_batt_nameplate", &result))
+		make_access_error("SAM_Ippppa", "om_batt_nameplate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_replacement_cost", length);
+	if (!result)
+		make_access_error("SAM_Ippppa", "om_batt_replacement_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_batt_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_variable_cost", length);
+	if (!result)
+		make_access_error("SAM_Ippppa", "om_batt_variable_cost");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_capacity", length);
 	if (!result)
 		make_access_error("SAM_Ippppa", "om_capacity");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity1_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_capacity1", length);
-	if (!result)
-		make_access_error("SAM_Ippppa", "om_capacity1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity1_nameplate_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "om_capacity1_nameplate", &result))
-		make_access_error("SAM_Ippppa", "om_capacity1_nameplate");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_capacity2_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_capacity2", length);
-	if (!result)
-		make_access_error("SAM_Ippppa", "om_capacity2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Ippppa_SystemCosts_om_capacity2_nameplate_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "om_capacity2_nameplate", &result))
-		make_access_error("SAM_Ippppa", "om_capacity2_nameplate");
 	});
 	return result;
 }
@@ -1454,30 +1480,6 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed_aget(SAM_table ptr, int* leng
 	result = ssc_data_get_array(ptr, "om_fixed", length);
 	if (!result)
 		make_access_error("SAM_Ippppa", "om_fixed");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed1_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_fixed1", length);
-	if (!result)
-		make_access_error("SAM_Ippppa", "om_fixed1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fixed2_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_fixed2", length);
-	if (!result)
-		make_access_error("SAM_Ippppa", "om_fixed2");
 	});
 	return result;
 }
@@ -1512,6 +1514,65 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_fuel_cost_escal_nget(SAM_table ptr, 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_fuel_cost_escal", &result))
 		make_access_error("SAM_Ippppa", "om_fuel_cost_escal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuelcell_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_capacity_cost", length);
+	if (!result)
+		make_access_error("SAM_Ippppa", "om_fuelcell_capacity_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuelcell_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_fixed_cost", length);
+	if (!result)
+		make_access_error("SAM_Ippppa", "om_fuelcell_fixed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Ippppa_SystemCosts_om_fuelcell_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fuelcell_nameplate", &result))
+		make_access_error("SAM_Ippppa", "om_fuelcell_nameplate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuelcell_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_replacement_cost", length);
+	if (!result)
+		make_access_error("SAM_Ippppa", "om_fuelcell_replacement_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_fuelcell_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_variable_cost", length);
+	if (!result)
+		make_access_error("SAM_Ippppa", "om_fuelcell_variable_cost");
 	});
 	return result;
 }
@@ -1598,36 +1659,12 @@ SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production_aget(SAM_table ptr, int*
 
 
 
-SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production1_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_production1", length);
-	if (!result)
-		make_access_error("SAM_Ippppa", "om_production1");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "om_production1_values", length);
 	if (!result)
 		make_access_error("SAM_Ippppa", "om_production1_values");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_production2_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_production2", length);
-	if (!result)
-		make_access_error("SAM_Ippppa", "om_production2");
 	});
 	return result;
 }
@@ -1651,30 +1688,6 @@ SAM_EXPORT double SAM_Ippppa_SystemCosts_om_production_escal_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_production_escal", &result))
 		make_access_error("SAM_Ippppa", "om_production_escal");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_replacement_cost1_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_replacement_cost1", length);
-	if (!result)
-		make_access_error("SAM_Ippppa", "om_replacement_cost1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Ippppa_SystemCosts_om_replacement_cost2_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_replacement_cost2", length);
-	if (!result)
-		make_access_error("SAM_Ippppa", "om_replacement_cost2");
 	});
 	return result;
 }

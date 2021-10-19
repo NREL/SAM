@@ -22,6 +22,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <algorithm>
 #include <memory>
+#include <cctype>
 
 #include <wx/datstrm.h>
 #include <wx/gauge.h>
@@ -464,8 +465,8 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	*/
 
 	// check that input order has same count as number of compute modules
-	if (simlist.size() != input_order.size())
-		m_errors.Add("input ordering failed");
+	//if (simlist.size() != input_order.size())
+	//	m_errors.Add("input ordering failed");
 	// can do inputs with compute module calls below
 	/*
 	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
@@ -484,7 +485,8 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 
 	// run compute modules in sequence (INOUT variables will be updated)
 //	for (size_t kk = 0; kk < simlist.size(); kk++)
-	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
+	// Issue SAM #614 - write out all inputs before first compute module is called so that INOUT are not overwritten inbetween compute module
+	for (size_t kk = 0; kk < input_order.size(); kk++)
 	{
 		for (size_t jj = 0; jj < input_order[kk].size(); jj++)
 		{
@@ -492,10 +494,16 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 			if (!Input(p_data, name, m_folder, array_matrix_threshold))
 				m_errors.Add(wxString::Format("Input %s write failed", name));
 		}
+	}
+	for (size_t kk = 0; kk < simlist.size(); kk++)
+	{
 		CreateSSCModule(simlist[kk]);
 		RunSSCModule(simlist[kk]);
 		FreeSSCModule();
 	}
+
+
+
 	// outputs - metrics for case
 	m_data.clear();
 	CodeGenCallbackContext cc(this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing);
@@ -2829,7 +2837,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		f = open(fn, 'rb'); \n");
 	fprintf(f, "		data = []; \n");
 	fprintf(f, "		for line in f : \n");
-	fprintf(f, "			data.extend([n for n in map(double, line.split(b','))])\n");
+	fprintf(f, "			data.extend([n for n in map(float, line.split(b','))])\n");
 	fprintf(f, "		f.close(); \n");
 	fprintf(f, "		return self.data_set_array(p_data, name, data); \n");
 	fprintf(f, "	def data_set_matrix(self,p_data,name,mat):\n");
@@ -2847,7 +2855,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		f = open(fn, 'rb'); \n");
 	fprintf(f, "		data = []; \n");
 	fprintf(f, "		for line in f : \n");
-	fprintf(f, "			lst = ([n for n in map(double, line.split(b','))])\n");
+	fprintf(f, "			lst = ([n for n in map(float, line.split(b','))])\n");
 	fprintf(f, "			data.append(lst);\n");
 	fprintf(f, "		f.close(); \n");
 	fprintf(f, "		return self.data_set_matrix(p_data, name, data); \n");
@@ -2876,7 +2884,7 @@ bool CodeGen_python::SupportingFiles()
 	fprintf(f, "		for r in range(nrows.value):\n");
 	fprintf(f, "			row = []\n");
 	fprintf(f, "			for c in range(ncols.value):\n");
-	fprintf(f, "				row.append( double(parr[idx]) )\n");
+	fprintf(f, "				row.append( float(parr[idx]) )\n");
 	fprintf(f, "				idx = idx + 1\n");
 	fprintf(f, "			mat.append(row)\n");
 	fprintf(f, "		return mat\n");
@@ -7651,6 +7659,42 @@ CodeGen_pySAM::CodeGen_pySAM(Case* cc, const wxString& folder) : m_case(cc), m_f
 	wxFileName::SplitPath(m_fullpath, &m_folder, &m_name, &m_ext);
 }
 
+std::string format_as_variable(std::string str){
+    std::replace(str.begin(), str.end(), '.', '_');
+    int first = str.substr(0, 1).c_str()[0];
+    if (isdigit(first)) {
+        std::string remaining = str.substr(1);
+        switch (first) {
+            case 48:
+                return "zero" + remaining;
+            case 49:
+                return "one" + remaining;
+            case 50:
+                return "two" + remaining;
+            case 51:
+                return "three" + remaining;
+            case 52:
+                return "four" + remaining;
+            case 53:
+                return "five" + remaining;
+            case 54:
+                return "six" + remaining;
+            case 55:
+                return "seven" + remaining;
+            case 56:
+                return "eight" + remaining;
+            case 57:
+                return "nine" + remaining;
+            default:
+                throw std::runtime_error("Unrecognized digit");
+        }
+    }
+    else {
+        if (!isalpha(first) && first != 95 /* "_" */)
+            throw std::runtime_error("Variable must begin with alphanumeric character or '_'.");
+    }
+    return str;
+}
 
 bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 {
@@ -7762,32 +7806,13 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 								cm_names.push_back(var_name);
 						}
 					}
-					//					else if (reqd == "*")
-					//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
 				}
 			}
-			/*
-			else if (var_type == SSC_OUTPUT)
-			{
-				wxString field;
-				int pos = name.Find(':');
-				if (pos != wxNOT_FOUND)
-				{
-					field = name.Mid(pos + 1);
-					name = name.Left(pos);
-				}
-
-				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != ssc_data_type)
-				{
-					if (!SSCTypeToSSC(ssc_data_type, p_data_output, name))
-						m_errors.Add("Error for output " + name);
-				}
-			}
-			*/
 		} // end of compute module variables
 		if (cm_names.size() > 0)
 			input_order.push_back(cm_names);
+		else // handled in all code generation except pySAM
+			input_order.push_back(std::vector<const char *>());
 	}
 
 
@@ -7800,37 +7825,6 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 	if (!SupportingFiles())
 		m_errors.Add("SupportingFiles failed");
 
-	/* old single unordered grouping of inputs
-	const char *name = ssc_data_first(p_data);
-	while (name)
-	{
-		if (!Input(p_data, name, m_folder, array_matrix_threshold))
-			m_errors.Add(wxString::Format("Input %s write failed",name));
-		name = ssc_data_next(p_data);
-	}
-	*/
-
-	// check that input order has same count as number of compute modules
-	if (simlist.size() != input_order.size())
-		m_errors.Add("input ordering failed");
-	// can do inputs with compute module calls below
-	/*
-	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
-	{
-		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
-		fprintf(m_fp, "\\ Compute module '%s' inputs;\n", simlist[k].c_str()); // TODO - if desired add comment for each language implementation
-		for (size_t jj = 0; jj < input_order[k].size(); jj++)
-		{
-			const char* name = input_order[k][jj];
-			if (!Input(p_data, name, m_folder, array_matrix_threshold))
-				m_errors.Add(wxString::Format("Input %s write failed", name));
-		}
-		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
-	}
-	*/
-
-	// run compute modules in sequence (INOUT variables will be updated)
-//	for (size_t kk = 0; kk < simlist.size(); kk++)
 	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
 	{
 
@@ -7849,6 +7843,8 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 			const char* name = input_order[kk][jj];
 			if (!Input(p_data, name, m_folder, array_matrix_threshold))
 				m_errors.Add(wxString::Format("Input %s write failed", name));
+			if (jj < input_order[kk].size() - 1)
+			    fprintf(m_fp, ",\n");
 		}
 //		CreateSSCModule(simlist[kk]);
 //		RunSSCModule(simlist[kk]);
@@ -7915,20 +7911,20 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 		pySAM_name = pySAM_name.substr(0, pySAM_name.Find("_") + 1) + pySAM_name.Mid(pos + 1);
 	}
 	pySAM_name.Replace('.', '_');
-
+    pySAM_name = format_as_variable(pySAM_name.ToStdString());
 
 	switch (type)
 	{
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "	\"%s\" : \"%s\",\n", (const char*)pySAM_name.c_str(), (const char*)str_value.c_str());
+		fprintf(m_fp, "	\"%s\" : \"%s\"", (const char*)pySAM_name.c_str(), (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
-		fprintf(m_fp, "	\"%s\" : %.17g,\n", (const char*)pySAM_name.c_str(), dbl_value);
+		fprintf(m_fp, "	\"%s\" : %.17g", (const char*)pySAM_name.c_str(), dbl_value);
 		break;
 	case SSC_ARRAY:
 		p = ::ssc_data_get_array(p_data, name, &len);
@@ -7942,7 +7938,7 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ],\n", dbl_value);
+			fprintf(m_fp, " %.17g ]", dbl_value);
 		}
 		break;
 	case SSC_MATRIX:
@@ -7965,7 +7961,7 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
-			fprintf(m_fp, " %.17g ] ],\n", dbl_value);
+			fprintf(m_fp, " %.17g ] ]", dbl_value);
 		}
 		// TODO tables in future
 	}
@@ -8174,8 +8170,7 @@ bool CodeGen_pySAM::SupportingFiles()
 
 bool CodeGen_pySAM::Footer()
 {
-	fprintf(m_fp, "	\"number_inputs\" : %d\n", m_num_inputs);
-	fprintf(m_fp, "}\n");
+	fprintf(m_fp, "\n}\n");
 	return true;
 }
 

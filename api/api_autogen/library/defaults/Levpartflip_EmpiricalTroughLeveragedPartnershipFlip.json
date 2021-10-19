@@ -9,6 +9,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -50,15 +51,13 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [4.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [0.000000],
-			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 5.28448e+08
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 30,
+			"itc_fed_percent": 26,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -221,7 +220,6 @@
 			"loan_moratorium": 0
 		},
 		"Recapitalization": {
-			"system_use_recapitalization": 0
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 2.064,
@@ -278,6 +276,12 @@
 			"tax_investor_postflip_tax_percent": 10,
 			"tax_investor_preflip_cash_percent": 98,
 			"tax_investor_preflip_tax_percent": 98
+		},
+		"Battery": {
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		},
 		"BatterySystem": {
 		}

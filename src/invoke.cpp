@@ -73,6 +73,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "stochastic.h"
 #include "codegencallback.h"
 #include "nsrdb.h"
+#include "combinecases.h"
+#include "wavetoolkit.h"
 #include "graph.h"
 
 std::mutex global_mu;
@@ -145,9 +147,9 @@ struct wfvec {
 	char const *units;
 };
 
-static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
+static void fcall_dview_wave_data_file( lk::invoke_t &cxt )
 {
-	LK_DOC("dview_solar", "Read a solar weather data file on disk (*.csv,*.tm2,*.tm3,*.epw,*.smw) and popup a frame with a data viewer.", "(string:filename):boolean");
+	LK_DOC("dview_wave", "Read a solar weather data file on disk (*.csv) and popup a frame with a data viewer.", "(string:filename):boolean");
 
 	wxString file( cxt.arg(0).as_string() );
 	if ( !wxFileExists( file ) ) {
@@ -155,12 +157,11 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 		return;
 	}
 
-
 	ssc_data_t pdata = ssc_data_create();
-	ssc_data_set_string(pdata, "file_name", (const char*)file.c_str());
-	ssc_data_set_number(pdata, "header_only", 0);
+    ssc_data_set_number(pdata, "wave_resource_model_choice", 1);
+    ssc_data_set_string(pdata, "wave_resource_filename_ts", (const char*)file.c_str());
 
-	if ( const char *err = ssc_module_exec_simple_nothread( "wfreader", pdata ) )
+	if ( const char *err = ssc_module_exec_simple_nothread( "wave_file_reader", pdata ) )
 	{
 		wxLogStatus("error scanning '" + file + "'");
 		cxt.error(err);
@@ -178,24 +179,14 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 
 	// this information is consistent with the variable definitions in the wfreader module
 	wfvec vars[] = {
-		{ "beam", "Beam irradiance - DNI", "W/m2" },
-		{ "diffuse","Diffuse irradiance - DHI", "W/m2" },
-		{ "global", "Global irradiance - GHI", "W/m2" },
-		{ "poa", "Plane of array irradiance -POA", "W/m2" },
-		{ "wspd", "Wind speed", "m/s" },
-		{ "wdir", "Wind direction", "deg" },
-		{ "tdry", "Dry bulb temp", "C" },
-		{ "twet", "Wet bulb temp", "C" },
-		{ "tdew", "Dew point temp", "C" },
-		{ "rhum", "Relative humidity", "%" },
-		{ "pres", "Pressure", "millibar" },
-		{ "snow", "Snow depth", "cm" },
-		{ "albedo", "Albedo", "fraction" },
+		{ "significant_wave_height", "Significant wave height", "m" },
+		{ "energy_period","Wave energy period", "s" },
 		{ 0, 0, 0 } };
 
-	ssc_number_t start, step; // start & step in seconds, then convert to hours
-	ssc_data_get_number( pdata, "start", &start ); start /= 3600;
-	ssc_data_get_number( pdata, "step", &step ); step /= 3600;
+    ssc_number_t start = 0;
+    ssc_number_t step = 3600 * 3; // start & step in seconds, then convert to hours
+	start /= 3600;
+	step /= 3600;
 
 	size_t i=0;
 	while( vars[i].name != 0 )
@@ -225,6 +216,88 @@ static void fcall_dview_solar_data_file( lk::invoke_t &cxt )
 	dview->DisplayTabs();
 
 	frame->Show();
+}
+
+static void fcall_dview_solar_data_file(lk::invoke_t& cxt)
+{
+    LK_DOC("dview_solar", "Read a solar weather data file on disk (*.csv,*.tm2,*.tm3,*.epw,*.smw) and popup a frame with a data viewer.", "(string:filename):boolean");
+
+    wxString file(cxt.arg(0).as_string());
+    if (!wxFileExists(file)) {
+        cxt.result().assign(0.0);
+        return;
+    }
+
+
+    ssc_data_t pdata = ssc_data_create();
+    ssc_data_set_string(pdata, "file_name", (const char*)file.c_str());
+    ssc_data_set_number(pdata, "header_only", 0);
+
+    if (const char* err = ssc_module_exec_simple_nothread("wfreader", pdata))
+    {
+        wxLogStatus("error scanning '" + file + "'");
+        cxt.error(err);
+        cxt.result().assign(0.0);
+        return;
+    }
+
+    wxFrame* frame = new wxFrame(SamApp::Window(), wxID_ANY, "Data Viewer: " + file, wxDefaultPosition, wxScaleSize(1000, 700),
+        (wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER));
+#ifdef __WXMSW__
+    frame->SetIcon(wxICON(appicon));
+#endif
+
+    wxDVPlotCtrl* dview = new wxDVPlotCtrl(frame, wxID_ANY);
+
+    // this information is consistent with the variable definitions in the wfreader module
+    wfvec vars[] = {
+        { "beam", "Beam irradiance - DNI", "W/m2" },
+        { "diff","Diffuse irradiance - DHI", "W/m2" },
+        { "glob", "Global irradiance - GHI", "W/m2" },
+        { "poa", "Plane of array irradiance -POA", "W/m2" },
+        { "wspd", "Wind speed", "m/s" },
+        { "wdir", "Wind direction", "deg" },
+        { "tdry", "Dry bulb temp", "C" },
+        { "twet", "Wet bulb temp", "C" },
+        { "tdew", "Dew point temp", "C" },
+        { "rhum", "Relative humidity", "%" },
+        { "pres", "Pressure", "millibar" },
+        { "snow", "Snow depth", "cm" },
+        { "albedo", "Albedo", "fraction" },
+        { 0, 0, 0 } };
+
+    ssc_number_t start, step; // start & step in seconds, then convert to hours
+    ssc_data_get_number(pdata, "start", &start); start /= 3600;
+    ssc_data_get_number(pdata, "step", &step); step /= 3600;
+
+    size_t i = 0;
+    while (vars[i].name != 0)
+    {
+        int len;
+        ssc_number_t* p = ssc_data_get_array(pdata, vars[i].name, &len);
+        if (p != 0 && len > 2)
+        {
+            std::vector<double> plot_data(len);
+            for (int j = 0; j < len; j++)
+                plot_data[j] = p[j];
+
+            wxDVArrayDataSet* dvset = new wxDVArrayDataSet(vars[i].label, vars[i].units, start, step, plot_data);
+            dvset->SetGroupName(wxFileNameFromPath(file));
+            dview->AddDataSet(dvset);
+        }
+
+        i++;
+    }
+
+    ssc_data_free(pdata);
+
+    dview->GetStatisticsTable()->RebuildDataViewCtrl();
+    if (i > 0)
+        dview->SelectDataIndex(0);
+
+    dview->DisplayTabs();
+
+    frame->Show();
 }
 
 static void fcall_logmsg( lk::invoke_t &cxt )
@@ -364,7 +437,10 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	wxString help = sidebar;
 	wxString exclusive_var;
 	bool exclusive_tabs = false;
+    bool exclusive_radio = false;
+    bool exclusive_hide = false;
 	std::vector<PageInfo> excl_header_pages;
+    std::vector<PageInfo> excl_footer_pages;
 
 	if ( cxt.arg_count() > 1 )
 	{
@@ -382,6 +458,12 @@ static void fcall_addpage( lk::invoke_t &cxt )
 		if ( lk::vardata_t *x = props.lookup("exclusive_tabs") )
 			exclusive_tabs = x->as_boolean();
 
+        if (lk::vardata_t* x = props.lookup("exclusive_radio"))
+            exclusive_radio = x->as_boolean();
+
+        if (lk::vardata_t* x = props.lookup("exclusive_hide"))
+            exclusive_hide = x->as_boolean();
+
 		if ( lk::vardata_t *x = props.lookup("exclusive_header_pages") )
 		{
 			lk::vardata_t &vec = x->deref();
@@ -397,8 +479,24 @@ static void fcall_addpage( lk::invoke_t &cxt )
 			}
 
 		}
+
+        if (lk::vardata_t* x = props.lookup("exclusive_footer_pages"))
+        {
+            lk::vardata_t& vec = x->deref();
+            if (vec.type() == lk::vardata_t::VECTOR)
+            {
+                for (size_t i = 0; i < vec.length(); i++)
+                {
+                    PageInfo pi;
+                    pi.Name = vec.index(i)->as_string();
+                    pi.Caption = pi.Name;
+                    excl_footer_pages.push_back(pi);
+                }
+            }
+
+        }
 	}
-	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs );
+	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs, exclusive_hide);
 }
 
 
@@ -589,7 +687,7 @@ static void fcall_metric_row(lk::invoke_t& cxt)
 				int deci = wxAtoi(decis[i]);
 				md.deci = deci;
 			}
-					
+
 			if ( i < thouseps.GetCount()) {
 				wxString mm = thouseps[i];
 				mm.MakeLower();
@@ -2109,6 +2207,322 @@ void fcall_nsrdbquery(lk::invoke_t &cxt)
 	cxt.result().hash_item("addfolder").assign(addfolder);
 }
 
+void fcall_combinecasesquery(lk::invoke_t& cxt)
+{
+	LK_DOC("combinecasesquery", "Creates the Combine Cases dialog box, lists all open cases, simulates selected cases and returns a combined generation profile", "(none) : string");
+	CombineCasesDialog dlgCombineCases(SamApp::Window(), "Combine Cases", cxt);
+	dlgCombineCases.CenterOnParent();
+	int code = dlgCombineCases.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+	//Return an empty string if the window was dismissed
+	if (code == wxID_CANCEL)
+	{
+		cxt.result().assign(wxEmptyString);
+		return;
+	}
+
+	int result = dlgCombineCases.GetResultCode();		// 0 = success, 1 = error
+
+	cxt.result().empty_hash();
+
+	// meta data
+	cxt.result().hash_item("result_code").assign(result);
+}
+
+void fcall_wavetoolkit(lk::invoke_t& cxt)
+{
+    LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
+    //Create the wind data object
+    WaveDownloadDialog dlgWave(SamApp::Window(), "Advanced Wave Download");
+    dlgWave.CenterOnParent();
+    int code = dlgWave.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+    //Return an empty string if the window was dismissed
+    if (code == wxID_CANCEL)
+    {
+        cxt.result().assign(wxEmptyString);
+        return;
+    }
+
+    //Get selected filename
+    wxString foldername = dlgWave.GetWeatherFolder();
+    wxString filename = dlgWave.GetWeatherFile();
+    wxString addfolder = dlgWave.GetAddFolder();
+
+    wxEasyCurlDialog ecd = wxEasyCurlDialog("Setting up location", 1);
+
+    //Get parameters from the dialog box for weather file download
+    wxString year;
+    wxArrayString multi_year;
+    wxArrayString years_final;
+    
+    years_final = dlgWave.GetMultiYear();
+    
+    double lat, lon;
+    ecd.Update(1, 50.0f);
+    if (dlgWave.IsAddressMode() == true)	//entered an address instead of a lat/long
+    {
+        if (!wxEasyCurl::GeoCodeDeveloper(dlgWave.GetAddress(), &lat, &lon, NULL, false))
+        {
+            ecd.Log("Failed to geocode address");
+            ecd.Finalize();
+            return;
+        }
+    }
+    else
+    {
+        lat = dlgWave.GetLatitude();
+        lon = dlgWave.GetLongitude();
+    }
+    ecd.Update(1, 100.0f);
+    ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
+
+
+    wxString location;
+    location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
+    location = location + "_";
+    wxArrayString filename_array;
+    filename_array.resize(years_final.Count());
+
+    //Create a folder to put the weather file in
+    wxString wfdir;
+    //wfdir = ::wxGetUserHome() + "/SAM Downloaded Weather Files";
+    wfdir = foldername;
+    if (!wxDirExists(wfdir)) wxFileName::Mkdir(wfdir, 511, ::wxPATH_MKDIR_FULL);
+
+
+    wxArrayString wfs;
+
+    //Create URL for each hub height file download
+    wxString url;
+    bool success = true;
+    wxArrayString urls, displaynames;
+    wxCSVData csv_main, csv;
+
+    //Create the filename
+    //filename = wfdir + "/" + location;
+
+    std::vector<wxEasyCurl*> curls;
+
+    for (size_t i = 0; i < years_final.Count(); i++)
+    {
+        url = SamApp::WebApi("wave_query");
+        url.Replace("<YEAR>", years_final[i]);
+        url.Replace("<LAT>", wxString::Format("%lg", lat));
+        url.Replace("<LON>", wxString::Format("%lg", lon));
+        wxEasyCurl* curl = new wxEasyCurl;
+        curls.push_back(curl);
+        urls.push_back(url);
+        displaynames.push_back(years_final[i]);
+        filename_array[i] = wfdir + "/" + location + "_" + years_final[i];
+    }
+
+    int nthread = years_final.Count();
+    nthread = 1;
+    // no need to create extra unnecessary threads
+    if (nthread > (int)urls.size()) nthread = (int)urls.size();
+
+    ecd.NewStage("Retrieving weather data", nthread);
+
+
+
+    std::vector<wxEasyCurlThread*> threads;
+    for (int i = 0; i < nthread; i++)
+    {
+        wxEasyCurlThread* t = new wxEasyCurlThread(i);
+        threads.push_back(t);
+        t->Create();
+    }
+
+    // round robin assign each simulation to a thread
+    size_t ithr = 0;
+    for (size_t i = 0; i < urls.size(); i++)
+    {
+        threads[ithr++]->Add(curls[i], urls[i], displaynames[i]);
+        if (ithr == threads.size())
+            ithr = 0;
+    }
+
+    // start the threads
+    for (int i = 0; i < nthread; i++)
+        threads[i]->Run();
+
+    size_t its = 0, its0 = 0;
+    unsigned long ms = 500; // 0.5s
+    // can time first download to get better estimate
+    float tot_time = 25 * (float)years_final.Count(); // 25 s guess based on test downloads
+    float per = 0.0f, act_time;
+    int curhh = 0;
+    wxString cur_hh = "";
+    wxString file_list = "";
+    int num_downloaded = 0;
+    while (1)
+    {
+        size_t i, num_finished = 0;
+        for (i = 0; i < threads.size(); i++)
+            if (!threads[i]->IsRunning())
+                num_finished++;
+
+        if (num_finished == threads.size())
+            break;
+
+        // threads still running so update interface
+        for (i = 0; i < threads.size(); i++)
+        {
+            wxString update;
+            per += (float)(ms) / (10 * tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
+            if (per > 100.0) per = (float)curhh / (float)years_final.Count() * 100.0 - 10.0; // reset 10%
+            ecd.Update(i, per, update);
+            wxArrayString msgs = threads[i]->GetNewMessages();
+            ecd.Log(msgs);
+            if (threads[i]->GetDataAsString() != cur_hh)
+            {
+                if (cur_hh != "")
+                { // adjust actual time based on first download
+                    act_time = (float)((its - its0) * ms) / 1000.0f;
+                    tot_time = act_time * (float)years_final.Count();
+                    its0 = its;
+                }
+                cur_hh = threads[i]->GetDataAsString();
+                ecd.Log("Downloading data for " + cur_hh + " hub height.");
+                per = (float)curhh / (float)years_final.Count() * 100.0;
+                curhh++;
+            }
+        }
+
+        wxGetApp().Yield();
+
+        // if dialog's cancel button was pressed, send cancel signal to all threads
+        if (ecd.Canceled())
+        {
+            for (i = 0; i < threads.size(); i++)
+                threads[i]->Cancel();
+            if (success)
+            {
+                ecd.Log("Download Cancelled.");
+                success = false;
+            }
+        }
+        its++;
+        ::wxMilliSleep(ms);
+    }
+
+    if (success)
+    {
+        size_t nok = 0;
+        // wait on the joinable threads
+        for (size_t i = 0; i < threads.size(); i++)
+        {
+            threads[i]->Wait();
+            nok += threads[i]->NOk();
+
+            // update final progress
+            float per = threads[i]->GetPercent();
+            ecd.Update(i, per);
+
+            // get any final simulation messages
+            wxArrayString msgs = threads[i]->GetNewMessages();
+            ecd.Log(msgs);
+        }
+
+        for (size_t i = 0; i < years_final.Count(); i++)
+        {
+            bool ok = curls[i]->Get(urls[i]);
+            // try without attributes
+            if (ok && (curls[i]->GetDataAsString().Length() < 1000))
+                ok = curls[i]->Get(urls[i]);
+            if (!ok)
+                wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.", "NSRDB Download Message", wxOK);
+            else if (curls[i]->GetDataAsString().Length() < 1000)
+                wxMessageBox("Weather file not available.\n\n" + urls[i] + "\n\n" + curls[i]->GetDataAsString(), "NSRDB Download Message", wxOK);
+            else
+            {
+                wxString fn = filename_array[i] + ".csv";
+                //fn = m_weatherFolder + "/" + fn;
+                file_list += filename_array[i] + "\n";
+                if (!curls[i]->WriteDataToFile(fn))
+                {
+                    wxMessageBox("Failed to write file.\n\n" + fn, "NSRDB Download Message", wxOK);
+                    //break;
+                }
+                num_downloaded++;
+            }
+
+            //if (pdlg.WasCancelled())
+              //  break;
+
+            /*
+            wxString wave_csv_data = curls[i]->GetDataAsString();
+            if (!csv.ReadString(wave_csv_data))
+            {
+                //			wxMessageBox(wxString::Format("Failed to read downloaded weather file %s.", filename));
+                ecd.Log(wxString::Format("Failed to read downloaded weather file %s.", filename));
+                success = false;
+            }
+            
+            filename_array[i] += ".csv";
+            if (!csv.WriteFile(filename_array[i]))
+            {
+                ecd.Log(wxString::Format("Failed to write downloaded weather file %s.", filename_array[i]));
+                ecd.Finalize();
+                return;
+            }
+            */
+        }
+        // write out combined hub height file
+        if (num_downloaded > 0)
+        {
+            if (wxDirExists(wfdir))
+            {
+                wxArrayString paths;
+                wxString buf;
+                if (SamApp::Settings().Read("wave_data_paths", &buf))
+                    paths = wxStringTokenize(buf, ";");
+                if (paths.Index(foldername) == wxNOT_FOUND)
+                {
+                    paths.Add(foldername);
+                    SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
+                }
+            }
+            if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NSRDB Download Message", wxOK);
+            //EndModal(wxID_OK);
+        }
+        
+    }
+
+
+
+    // delete all the thread objects
+    for (size_t i = 0; i < curls.size(); i++)
+        delete curls[i];
+    for (size_t i = 0; i < threads.size(); i++)
+        delete threads[i];
+
+    threads.clear();
+    curls.clear();
+    if (!success)
+    {
+        ecd.Finalize();
+        return;
+    }
+    /*
+    if (!csv_main.WriteFile(filename))
+    {
+        ecd.Log(wxString::Format("Failed to write downloaded weather file %s.", filename));
+        ecd.Finalize();
+        return;
+    }
+    */
+    cxt.result().empty_hash();
+
+    // meta data
+    cxt.result().hash_item("file").assign(filename);
+    cxt.result().hash_item("folder").assign(foldername);
+    cxt.result().hash_item("addfolder").assign(addfolder);
+    //Return the downloaded filename
+    
+}
+
 void fcall_windtoolkit(lk::invoke_t &cxt)
 {
 	LK_DOC("windtoolkit", "Creates the wind data download dialog box, downloads, decompresses, converts, and returns local file name for weather file", "(none) : string");
@@ -2350,7 +2764,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 
 void fcall_urdb_list_utilities(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_utilities", "Lists utility companies from the OpenEI Utility Rate Database.", "(none):string");
+	LK_DOC("urdb_list_utilities", "Returns a list of all utility company names in the OpenEI Utility Rate Database.", "(none):string");
 	wxArrayString names;
 	OpenEI api;
 	if (api.QueryUtilityCompanies(names))
@@ -2363,7 +2777,7 @@ void fcall_urdb_list_utilities(lk::invoke_t &cxt)
 
 void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_utilities_by_zip_code", "Lists utility companies from the OpenEI Utility Rate Database for zip code.", "(string:zip_code):string");
+	LK_DOC("urdb_list_utilities_by_zip_code", "Returns a list of utility company names for a given zip code from the OpenEI Utility Rate Database.", "(string:zip_code):array");
 	wxString zip_code = cxt.arg(0).as_string();
 	wxArrayString names;
 	OpenEI api;
@@ -2377,29 +2791,23 @@ void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &cxt)
 
 void fcall_urdb_list_rates(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_list_rates", "Lists rates for utility argument from OpenEI Utility Rate Database.", "(string:utility):string");
-	wxString utility = cxt.arg(0).as_string();
+	LK_DOC("urdb_list_rates", "Returns a list of rate names and GUIDs for a given utility company name from OpenEI Utility Rate Database.", "(string:utility):array");
+
+    wxString utility = cxt.arg(0).as_string();
 
 	std::vector<OpenEI::RateInfo> ratelist;
 	OpenEI api;
 
-	wxString urdb_utility_name = "";
-	// first resolve aliases
-	if (!api.ResolveUtilityName(utility, &urdb_utility_name))
-	{
-		cxt.result().assign(-1);
-		return;
-	}
-
-	if (api.QueryUtilityRates(urdb_utility_name, ratelist))
-	{
+    if (api.QueryUtilityRates(utility, ratelist))
+    {
 		cxt.result().empty_vector();
-		for (int i = 0; i<(int)ratelist.size(); i++)
+        
+        for (int i = 0; i<(int)ratelist.size(); i++)
 		{
 			cxt.result().vec_append(ratelist[i].Name);
 			cxt.result().vec_append(ratelist[i].GUID);
-		}
-	}
+        }
+    }
 	else
 		cxt.result().assign(-1);
 
@@ -2571,7 +2979,7 @@ void fcall_group_read(lk::invoke_t &cxt)
 
 void fcall_urdb_write(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_write", "Writes rate data from current case to a file.", "(string:filename):boolean");
+	LK_DOC("urdb_write", "Writes inputs from Electricity Rates page for the current case to a CSV file.", "(string:filename):boolean");
 
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -2612,7 +3020,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 
 void fcall_urdb_read(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_read", "Reads rate data from a file to the current case.", "(string:filename):boolean");
+	LK_DOC("urdb_read", "Loads rate data from a CSV file to the Electricity Rates page for the current case.", "(string:filename):boolean");
 
 	Case *c = SamApp::Window()->GetCurrentCase();
 	if ( !c ) return;
@@ -2869,7 +3277,7 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 
 void fcall_urdb_get(lk::invoke_t &cxt)
 {
-	LK_DOC("urdb_get", "Returns data for the specified rate schedule from the OpenEI Utility Rate Database.", "(string:guid):boolean");
+	LK_DOC("urdb_get", "Returns rate data from the OpenEI Utility Rate Database given a GUID.", "(string:guid):table");
 	wxString guid = cxt.arg(0).as_string();
 	if (guid.IsEmpty()) return;
 
@@ -2883,8 +3291,8 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().empty_hash();
 
         // meta data
-        cxt.result().hash_item("name").assign(rate.Header.Utility);
-        cxt.result().hash_item("schedule_name").assign(rate.Header.Name);
+        cxt.result().hash_item("utility").assign(rate.Header.Utility);
+        cxt.result().hash_item("name").assign(rate.Header.Name);
         cxt.result().hash_item("source").assign(rate.Header.Source);
         cxt.result().hash_item("description").assign(rate.Header.Description);
         cxt.result().hash_item("start_date").assign(rate.Header.StartDate);
@@ -2925,7 +3333,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		// URLs
 		cxt.result().hash_item("rateurl").assign(rate.Header.RateURL);
 		cxt.result().hash_item("jsonurl").assign(rate.Header.JSONURL);
-		
+
 		// metering option
 		// "Net Metering", "Net Billing Instantaneous", "Net Billing Hourly", or "Buy All Sell All"
 		if (rate.DgRules == "Net Metering")
@@ -2941,7 +3349,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
             cxt.result().hash_item("metering_option").assign(0.0);
             rate_notes.append(wxString::Format("Metering option not provided with rate data.\n"));
         }
-		
+
 		// fixed charges
 		//  "$/day", "$/month" or "$/year" TO DO handle $/day and $/year
         double fixed_charges = rate.FixedChargeFirstMeter + rate.FixedChargeAddlMeter;
@@ -3359,19 +3767,21 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 
 void fcall_showsettings( lk::invoke_t &cxt )
 {
-	LK_DOC("showsettings", "Show the settings dialog for either 'solar' or 'wind' data files.", "(string:type):boolean");
+	LK_DOC("showsettings", "Show the settings dialog for either 'solar', 'wind', or 'wave' data files.", "(string:type):boolean");
 	wxString type( cxt.arg(0).as_string().Lower() );
-	if ( type == "solar" ) cxt.result().assign( ShowSolarResourceDataSettings() ? 1.0 : 0.0 );
-	else if ( type == "wind" ) cxt.result().assign( ShowWindResourceDataSettings() ? 1.0 : 0.0 );
+    if (type == "solar") cxt.result().assign(ShowSolarResourceDataSettings() ? 1.0 : 0.0);
+    else if (type == "wind") cxt.result().assign(ShowWindResourceDataSettings() ? 1.0 : 0.0);
+    else if (type == "wave") cxt.result().assign(ShowWaveResourceDataSettings() ? 1.0 : 0.0);
 }
 
 void fcall_rescanlibrary( lk::invoke_t &cxt )
 {
-	LK_DOC("rescanlibrary", "Rescan the indicated resource data library ('solar' or 'wind' or 'wave') and update any library widgets.", "(string:type):boolean");
+	LK_DOC("rescanlibrary", "Rescan the indicated resource data library ('solar' or 'wind' or 'wave' or 'wave_ts') and update any library widgets.", "(string:type):boolean");
 	UICallbackContext &cc = *(UICallbackContext*)cxt.user_data();
 
 	wxString type(cxt.arg(0).as_string().Lower());
 	Library *reloaded = 0;
+    Library* reloaded2 = 0;
 
 	if ( type == "solar" )
 	{
@@ -3391,14 +3801,34 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		ScanWaveResourceData(wave_resource_db, true);
 		reloaded = Library::Load(wave_resource_db);
 	}
+    else if (type == "wave_ts")
+    {
+        wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
+        wxString wave_resource_db = SamApp::GetRuntimePath() + "../wave_resource/test_time_series_jpd.csv";
+        ScanWaveResourceTSData(wave_resource_ts_db, true);
+        //WaveResourceTSData_makeJPD(wave_resource_db, true);
+        reloaded = Library::Load(wave_resource_ts_db);
+        //reloaded2 = Library::Load(wave_resource_db);
+    }
+
 
 	if ( reloaded != 0 )
 	{
-		std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
-		for( size_t i=0;i<objs.size();i++ )
-			if ( LibraryCtrl *lc = objs[i]->GetNative<LibraryCtrl>() )
-				lc->ReloadLibrary();
+		if (&cc != NULL) {
+			std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+			for (size_t i = 0; i < objs.size(); i++)
+				if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
+					lc->ReloadLibrary();
+		}
 	}
+
+    if (reloaded2 != 0)
+    {
+        std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
+        for (size_t i = 0; i < objs.size(); i++)
+            if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
+                lc->ReloadLibrary();
+    }
 }
 
 void fcall_librarygetcurrentselection(lk::invoke_t &cxt)
@@ -4831,7 +5261,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
                                          "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
-                                         "total_installed_cost", "value_of_lost_load"};
+                                         "total_installed_cost"};
 
     copy_vars_into_ssc_data(pv_vars);
     copy_vars_into_ssc_data(batt_vars);
@@ -4877,8 +5307,10 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
     if (auto err_vd = results.lookup("messages"))
         throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
-    if (auto err_vd = results.lookup("error"))
-        throw lk::error_t(err_vd->as_string() );
+    if (auto err_vd = results.lookup("error")){
+        cxt.result().hash_item("error", err_vd->as_string());
+        return;
+    }
 
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
@@ -4887,7 +5319,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     cxt.result().hash_item("response", lk::vardata_t());
     lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result... This may take a few minutes.", "ReOpt Lite API",
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Polling for result...this may take a few minutes.", "ReOpt Lite API",
             wxCENTER, wxDefaultPosition, wxDefaultSize);
     dlg.Show();
     wxGetApp().Yield( true );
@@ -4921,7 +5353,7 @@ static void fcall_setup_landbosse(lk::invoke_t &cxt)
     if (SamApp::CheckPythonPackage("landbosse"))
         return;
 
-    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing the balance-of-system (BOS) cost model... Please note that it may take a few minutes to complete the initial installation. Once installed, you will be able to quickly estimate BOS costs using NREL's Land-based Balance-of-System Systems Engineering (LandBOSSE).\n"
+    MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Installing the balance-of-system (BOS) cost model. Please note that it may take a few minutes to complete the initial installation. Once installed, you will be able to quickly estimate BOS costs using NREL's Land-based Balance-of-System Systems Engineering (LandBOSSE).\n"
                                                     "\n"
                                                     "While you wait, please refer to Eberle et al. 2019 for more information about the methods that were used to develop LandBOSSE. It is important to note that the SAM user interface only includes a limited set of LandBOSSE inputs. If you would like to access more detailed inputs, please use the LandBOSSE model directly",
                         "Land-Based Balance of System Cost Model",
@@ -5033,6 +5465,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_case_name,
             fcall_dview,
             fcall_dview_solar_data_file,
+            fcall_dview_wave_data_file,
             fcall_pdfreport,
             fcall_pagenote,
             fcall_macrocall,
@@ -5191,6 +5624,8 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_current_at_voltage_sandia,
 		fcall_windtoolkit,
 		fcall_nsrdbquery,
+		fcall_combinecasesquery,
+        fcall_wavetoolkit,
 		fcall_openeiutilityrateform,
 		fcall_group_read,
 		fcall_group_write,

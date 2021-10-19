@@ -1,0 +1,740 @@
+Battery Dispatch Peak Shaving BTM
+1084
+473
+14
+Label
+
+1
+13
+Name
+5
+36
+batt_custom_weather_file_description
+X
+3
+18
+Y
+3
+147
+Width
+3
+918
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+171
+For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+28
+batt_cycle_cost_description6
+X
+3
+18
+Y
+3
+327
+Width
+3
+918
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+151
+For the Look Ahead to Custom Load option, provide a custom load profile to use for the dispatch forecast instead of the data on the Electric Load page.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+36
+batt_dispatch_load_escal_choice_peak
+X
+3
+315
+Y
+3
+357
+Width
+3
+180
+Height
+3
+47
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+2
+Match load escalation
+Enter custom escalation
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+RadioChoice
+
+1
+11
+Name
+5
+47
+batt_dispatch_load_forecast_choice_peak_shaving
+X
+3
+18
+Y
+3
+234
+Width
+3
+300
+Height
+3
+72
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+Perfect look ahead
+One day look behind
+Look ahead to custom load
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+SchedNumeric
+
+1
+12
+Name
+5
+46
+batt_dispatch_load_forecast_escal_peak_shaving
+X
+3
+651
+Y
+3
+363
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Label
+5
+15
+Growth Rate (%)
+UseSchedule
+2
+0
+ScheduleOnly
+2
+0
+FixedLength
+3
+4294967295
+Description
+5
+110
+Type a load growth rate (%) for each year. Each year's growth rate applies to the total annual load in Year 1.
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+46
+batt_select_weather_file_forecast_peak_shaving
+X
+3
+18
+Y
+3
+186
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+9
+Browse...
+TabOrder
+3
+6
+TextEntry
+
+1
+11
+Name
+5
+45
+batt_user_specified_weather_file_peak_shaving
+X
+3
+111
+Y
+3
+186
+Width
+3
+828
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+Divider
+
+1
+10
+Name
+5
+18
+batt_weather_label
+X
+3
+15
+Y
+3
+129
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+32
+Custom Weather File for Forecast
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+20
+batt_weather_label13
+X
+3
+15
+Y
+3
+213
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+21
+Load Forecast Horizon
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+19
+batt_weather_label2
+X
+3
+15
+Y
+3
+309
+Width
+3
+920
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+24
+Custom Load for Forecast
+Bold
+2
+1
+DataArray
+
+1
+10
+Name
+5
+36
+load_user_forecast_data_peak_shaving
+X
+3
+141
+Y
+3
+363
+Width
+3
+119
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+24
+Forecast load power (kW)
+Description
+5
+164
+The electric load is specified as the average power over the time interval.  For hourly load data, this is equivalent to entering energy usage in each hour, in kWh.
+TabOrder
+3
+3
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+1044
+Height
+3
+408
+Tool Tip
+5
+0
+Caption
+5
+29
+Peak Shaving Battery Dispatch
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+15
+Y
+3
+21
+Width
+3
+918
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+149
+Peak shaving attempts to reduce daily demand peaks based on the solar resource and load in either the previous 24-hour period or next 24-hour period.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+RadioChoice
+
+1
+11
+Name
+5
+33
+peak_shaving_batt_dispatch_choice
+X
+3
+15
+Y
+3
+48
+Width
+3
+303
+Height
+3
+73
+Tool Tip
+5
+0
+Selection
+3
+0
+Items
+6
+3
+One day look ahead (perfect)
+One day look behind
+Custom forecast
+ShowCaptions
+2
+1
+Horizontal
+2
+0
+TabOrder
+3
+4294967295
+
+7
+batt_dispatch_choice
+3
+1
+Peak shaving battery dispatch choice
+ 
+Battery Dispatch BTM Peak Shaving
+0
+8
+1
+1
+1
+1
+0
+Default
+batt_dispatch_load_escal_choice_peak
+3
+1
+Load growth option for custom load profile
+ 
+Battery Dispatch BTM Peak Shaving
+0
+3
+1
+1
+1
+1
+0
+RadioChoice
+batt_dispatch_load_forecast_choice_peak_shaving
+3
+1
+Load forecast horizon options 
+ 
+Battery Dispatch BTM Peak Shaving
+0
+3
+1
+1
+1
+1
+0
+RadioChoice
+batt_dispatch_load_forecast_escal_peak_shaving
+3
+2
+Load forecast growth rate
+ %/yr
+Battery Dispatch BTM Peak Shaving
+0
+0
+1
+2
+1
+1
+0
+SchedNumeric
+batt_user_specified_weather_file_peak_shaving
+3
+4
+Custom weather file for peak shaving forecast 
+ 
+Battery Dispatch BTM Peak Shaving
+0
+3
+1
+4
+0
+Default
+load_user_forecast_data_peak_shaving
+3
+2
+Custom load profile
+ kW
+Battery Dispatch BTM Peak Shaving
+0
+0
+1
+2
+1
+1
+0
+DataArray
+peak_shaving_batt_dispatch_choice
+3
+1
+Battery peak shaving options BTM
+ 
+Battery Dispatch BTM Peak Shaving
+64
+One day look ahead (perfect)|One day look behind|Custom forecast
+3
+1
+1
+1
+1
+0
+Default
+
+0
+2032
+on_load{'Battery Dispatch Peak Shaving BTM'}=define()
+{	
+	on_change{'peak_shaving_batt_dispatch_choice'};
+	peak_shaving_choice();
+	if (technology() == 'Fuel Cell') { toggle_dispatch(); }
+	show_hide_charge_options();		
+};
+
+on_change{'peak_shaving_batt_dispatch_choice'} = define() 
+{
+	peak_shaving_choice();
+};
+
+on_change{'batt_dispatch_load_escal_choice_peak'} = define() 
+{
+	peak_shaving_choice();
+};
+
+on_change{'batt_dispatch_load_forecast_choice_peak_shaving'} = define() 
+{
+	peak_shaving_choice();
+};
+
+on_change{'batt_select_weather_file_forecast_peak_shaving'}=define()
+{
+	file = choose_file( "", 'Choose a weather file', 
+			'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');
+	${batt_user_specified_weather_file_peak_shaving} = file;
+	run_forecast(file);
+};
+
+function peak_shaving_choice() 
+{
+	value('batt_dispatch_choice', 0);
+	choice = value('peak_shaving_batt_dispatch_choice');
+
+	// Turn on/off forecast input
+	//toggle_forecast();
+	enable('batt_select_weather_file_forecast_peak_shaving', choice == 2);
+	enable('batt_user_specified_weather_file_peak_shaving', choice == 2);
+
+	value('batt_dispatch_wf_forecast_choice', choice);
+	if (choice == 2)
+	{
+		ac_forecast = value("batt_pv_ac_forecast");
+		clipping_forecast = value("batt_pv_clipping_forecast");
+		if (#ac_forecast <= 1 || #clipping_forecast <= 1) { 
+			file = ${batt_user_specified_weather_file_peak_shaving};
+			if (file != "") {
+				run_forecast(file);
+			}
+		}
+	}
+	else {
+		${batt_pv_ac_forecast} = [0];
+		${batt_pv_clipping_forecast} = [0];
+	}
+	
+	load_choice = value("batt_dispatch_load_forecast_choice_peak_shaving");
+	enable('load_user_forecast_data_peak_shaving', load_choice == 2);
+	enable('batt_dispatch_load_escal_choice_peak', load_choice == 2);
+	enable('batt_dispatch_load_forecast_escal_peak_shaving', load_choice == 2 && ${batt_dispatch_load_escal_choice_peak} == 1);
+
+	value("batt_dispatch_load_forecast_choice", load_choice);
+	// Updates to load forecast vars happen in equations on Battery Dispatch Options BTM
+
+}

@@ -1,7 +1,7 @@
 Battery Bank Sizing
-1052
-235
-15
+1051
+313
+18
 GroupBox
 
 1
@@ -15,13 +15,13 @@ X
 6
 Y
 3
-0
+3
 Width
 3
 1042
 Height
 3
-225
+309
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 867
 Y
 3
-57
+141
 Width
 3
 90
@@ -107,7 +107,7 @@ X
 867
 Y
 3
-84
+168
 Width
 3
 90
@@ -162,6 +162,68 @@ Numeric
 17
 Name
 5
+18
+batt_bank_duration
+X
+3
+162
+Y
+3
+168
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+3
+Numeric
+
+1
+17
+Name
+5
 23
 batt_bank_ncells_serial
 X
@@ -169,7 +231,7 @@ X
 591
 Y
 3
-57
+141
 Width
 3
 90
@@ -231,7 +293,7 @@ X
 591
 Y
 3
-111
+195
 Width
 3
 90
@@ -293,7 +355,7 @@ X
 591
 Y
 3
-84
+168
 Width
 3
 90
@@ -352,10 +414,10 @@ Name
 batt_bank_power
 X
 3
-174
+162
 Y
 3
-84
+141
 Width
 3
 90
@@ -404,40 +466,6 @@ BackColour
 TabOrder
 3
 3
-Choice
-
-1
-9
-Name
-5
-21
-batt_bank_power_dc_ac
-X
-3
-330
-Y
-3
-84
-Width
-3
-54
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-2
-DC
-AC
-Selection
-3
-4294967295
-TabOrder
-3
-5
 Numeric
 
 1
@@ -448,10 +476,10 @@ Name
 batt_bank_size
 X
 3
-174
+162
 Y
 3
-57
+168
 Width
 3
 90
@@ -500,40 +528,46 @@ BackColour
 TabOrder
 3
 2
-Choice
+RadioChoice
 
 1
-9
+11
 Name
 5
 20
 batt_bank_size_dc_ac
 X
 3
-330
+321
 Y
 3
-57
+141
 Width
 3
-54
+90
 Height
 3
-24
+51
 Tool Tip
 5
+0
+Selection
+3
 0
 Items
 6
 2
-DC
-AC
-Selection
-3
-4294967295
+DC units
+AC units
+ShowCaptions
+2
+1
+Horizontal
+2
+0
 TabOrder
 3
-4
+4294967295
 Numeric
 
 1
@@ -547,7 +581,7 @@ X
 591
 Y
 3
-138
+222
 Width
 3
 90
@@ -596,6 +630,40 @@ BackColour
 TabOrder
 3
 9
+Choice
+
+1
+9
+Name
+5
+20
+batt_duration_choice
+X
+3
+255
+Y
+3
+168
+Width
+3
+51
+Height
+3
+24
+Tool Tip
+5
+0
+Items
+6
+2
+kWh
+h
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
 Label
 
 1
@@ -606,13 +674,13 @@ Name
 batt_parallel_label
 X
 3
-390
+411
 Y
 3
-84
+168
 Width
 3
-198
+177
 Height
 3
 24
@@ -654,13 +722,13 @@ Name
 batt_series_label
 X
 3
-390
+426
 Y
 3
-57
+141
 Width
 3
-198
+162
 Height
 3
 24
@@ -702,16 +770,16 @@ Name
 batt_size_choice
 X
 3
-57
+30
 Y
 3
-18
+90
 Width
 3
-714
+252
 Height
 3
-32
+50
 Tool Tip
 5
 0
@@ -728,7 +796,7 @@ ShowCaptions
 1
 Horizontal
 2
-1
+0
 TabOrder
 3
 1
@@ -742,23 +810,23 @@ Name
 batt_size_label
 X
 3
-12
+15
 Y
 3
-165
+21
 Width
 3
 1029
 Height
 3
-51
+36
 Tool Tip
 5
 0
 Caption
 5
-184
-Bank capacity and power fields are values measured before conversion and parasitic losses.  If specified in AC, the DC/AC conversion efficiency will be used to scale the battery size. 
+227
+Specify desired values for the nominal bank capacity and power for SAM to calculate the number of cells and strings, or specify the number of cells and strings yourself. Verify the battery size under Current and Capacity below.
 TextColour
 4
 0
@@ -780,8 +848,104 @@ AlignRight
 AlignTop
 2
 1
+Label
 
-11
+1
+13
+Name
+5
+8
+object 7
+X
+3
+30
+Y
+3
+258
+Width
+3
+984
+Height
+3
+45
+Tool Tip
+5
+0
+Caption
+5
+182
+Bank capacity and power fields are values measured before conversion and parasitic losses. If specified in AC, the DC/AC conversion efficiency will be used to scale the battery size.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+10
+object 717
+X
+3
+24
+Y
+3
+168
+Width
+3
+138
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+21
+Desired bank capacity
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+1
+AlignTop
+2
+0
+
+13
 batt_C_rate_max_charge_input
 3
 1
@@ -809,6 +973,20 @@ Battery Sizing
 1
 1
 0.5
+Default
+batt_bank_duration
+3
+1
+Desired bank duration
+hrs
+Battery Sizing
+0
+3
+1
+1
+1
+1
+0
 Default
 batt_bank_ncells_serial
 3
@@ -888,7 +1066,7 @@ Desired bank capacity
 kWh
 Battery Sizing
 0
-2
+3
 1
 1
 1
@@ -901,8 +1079,8 @@ batt_bank_size_dc_ac
 Battery desired bank capacity DC or AC
  
 Battery Sizing
-5
-DC|AC
+17
+DC units|AC units
 1
 1
 1
@@ -924,6 +1102,21 @@ Battery Sizing
 1
 100
 Numeric
+batt_duration_choice
+3
+1
+Specify bank capacity or duration
+ 
+Battery Sizing
+5
+kWh|h
+1
+1
+1
+1
+1
+0
+RadioChoice
 batt_size_choice
 3
 1
@@ -940,27 +1133,66 @@ Specify desired bank size|Specify cells
 0
 RadioChoice
 
-0
-1294
+83
+equations{'batt_bank_power_dc_ac'} = define() {
+	return ${batt_bank_size_dc_ac};
+};
+3194
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
 	set_bank_sizing();
+	//set_duration_choice();
+	is_cap = (value('batt_duration_choice') == 0);
+	
+	show('batt_bank_duration',!is_cap);
+	show('batt_bank_size',is_cap);
+	refresh();
 	
 	on_change{'batt_size_choice'};
 	on_change{'batt_bank_size'};
 	on_change{'batt_bank_power'};
 	on_change{'bank_bank_size_specify'};
+	on_change{'batt_duration_choice'};
+	on_change{'batt_bank_duration'};
 };
 on_change{'batt_size_choice'} = define()
 {
 	set_bank_sizing();
 	battsize_warning_check();
 };
-on_change{'batt_bank_size'} = define(){battsize_warning_check();};
-on_change{'batt_bank_power'} = define(){battsize_warning_check();};
+on_change{'batt_bank_size'} = define(){
+	battsize_warning_check();
+};
+on_change{'batt_bank_power'} = define(){
+	
+	is_cap = (value('batt_duration_choice') == 0);
+	if (!is_cap) {
+		bank_power = value('batt_bank_power');
+		bank_duration = value('batt_bank_duration');
+		bank_size = bank_power * bank_duration;
+		value('batt_bank_size',bank_size);
+	}
+	battsize_warning_check();
+		
+};
 on_change{'batt_bank_size_specify'} = define(){battsize_warning_check();};
-
+on_change{'batt_duration_choice'} = define()
+{
+	set_duration_choice();
+	battsize_warning_check();
+};
+on_change{'batt_bank_duration'} = define()
+{
+	
+	is_cap = (value('batt_duration_choice') == 0);
+	if (!is_cap) {
+		bank_power = value('batt_bank_power');
+		bank_duration = value('batt_bank_duration');
+		value('batt_bank_size',bank_power * bank_duration);
+	}
+	battsize_warning_check();
+};
 function set_bank_sizing()
 {
 	isauto = (value('batt_size_choice') == 0);
@@ -971,8 +1203,8 @@ function set_bank_sizing()
 	enable('batt_bank_power', isauto);
 	enable('batt_bank_voltage', isauto);
 	enable('batt_bank_size_dc_ac', isauto);
-	enable('batt_bank_power_dc_ac', isauto);
-
+	enable('batt_duration_choice', isauto);
+	enable('batt_bank_duration', isauto);
 	// manual specify
 	show('batt_bank_size_specify', isflow);
 	show('batt_C_rate_max_charge_input', !isflow);
@@ -981,6 +1213,7 @@ function set_bank_sizing()
 	enable('batt_bank_ncells_serial', !isauto);
 	enable('batt_bank_nstrings', !isauto);
 	enable('batt_bank_nseries_stacks', !isauto);
+	
 
 	if (isflow)
 		enable('batt_bank_size_specify', !isauto);
@@ -990,3 +1223,45 @@ function set_bank_sizing()
 		enable('batt_C_rate_max_discharge_input', !isauto);
 	}
 }
+
+function set_duration_choice()
+{
+	is_cap = (value('batt_duration_choice') == 0);
+	
+	show('batt_bank_duration',!is_cap);
+	show('batt_bank_size',is_cap);
+	bank_power = value('batt_bank_power');
+	bank_cap = value('batt_bank_size');
+	if (!is_cap)
+	{
+		duration = bank_cap / bank_power;
+		value('batt_bank_duration', duration);
+		bank_cap_calc = duration * bank_power;
+		value('batt_bank_size',bank_cap_calc);
+	}
+	else
+	{
+		duration = value('batt_bank_duration');
+		bank_cap_calc = duration * bank_power;
+		value('batt_bank_size', bank_cap_calc);
+	}
+	
+	refresh();
+}
+
+function calc_batt_size() {
+	is_cap = (value('batt_duration_choice') == 0);
+	if (is_cap) {
+		bank_cap = value('batt_bank_size');
+		bank_power = value('batt_bank_power');
+		bank_duration = bank_cap / bank_power;
+		value('batt_bank_duration',batt_duration);
+	}
+	else {
+		bank_duration = value('batt_bank_duration');
+		bank_power = value('batt_bank_power');
+		bank_cap = bank_power * bank_duration;
+		value('batt_bank_size', bank_cap);
+	}
+}
+	

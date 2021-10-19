@@ -9,6 +9,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -37,22 +38,18 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 215.864,
+			"system_capacity": 498.72,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_capacity": [16.000000],
+			"om_capacity": [19.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [0.000000],
-			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [500.000000],
-			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 352919
+			"total_installed_cost": 857424
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -220,8 +217,7 @@
 		},
 		"SystemOutput": {
 			"degradation": [0.000000],
-			"gen": [0],
-			"system_capacity": 215.864
+			"system_capacity": 498.72
 		},
 		"ReturnOnEquity": {
 			"roe_input": [0.000000]
@@ -230,7 +226,6 @@
 			"loan_moratorium": 0
 		},
 		"Recapitalization": {
-			"system_use_recapitalization": 0
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,
@@ -275,10 +270,16 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 7058.38
+			"construction_financing_cost": 17148.5
 		},
 		"BatterySystem": {
 			"en_batt": 0
+		},
+		"Battery": {
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		}
 	}
 }

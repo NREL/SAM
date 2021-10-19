@@ -8,7 +8,11 @@ This macro generates a report summary for the system modeled in the existing Mar
 
 <h5>Instructions:</h5>
 <ol>
-<li> Using the interface at the right, select the device type, power take-off (PTO) type, and the foundation and mooring type that best describes the modeled device. <br>
+<li> Using the interface at the right, enter the company name, device name, device model, and device model year.<br>
+<li> Select the device type from the dropdown that best describes the modeled device. <br>
+<li> Select the technology readiness level (TRL) that best desribes the modeled device.<br>
+<li> Select the power take-off (PTO) that best describes the modeled device.<br>
+<li> Select the foundation type that best describes the modeled device.<br>
 <li> Enter the structural mass of the device in metric tonnes. The structural mass includes:<br>
 <ul>
 <li> Any structural component that interacts with the wave environment, which may include housing or ballast if it is a major cost contributor.
@@ -29,9 +33,14 @@ This macro generates a report summary for the system modeled in the existing Mar
 @*/
 
 // Macro user interface widgets
+//@ name=companyName;type=text;label=Company Name;value=
+//@ name=deviceName;type=text;label=Device Name;value=
+//@ name=deviceModel;type=text;label=Device Model;value=
+//@ name=deviceModelYear;type=number;label=Device Model Year;value=
 //@ name=deviceType;type=combo;value=Attenuator,Point Absorber,Oscillating Wave Surge,Oscillating Water Column,Overtopping/Terminator,Submerged Pressure Differential,Bulge Wave,Rotating Mass,Flexible Material,Other;label=Device Type
-//@ name=ptoType;type=combo;value=Hydraulic System,Air Turbine,Hydro Turbine,Direct Mechanical Drive,Direct Electrical Drive,Electric Elastomer,Other;label=PTO Type
-//@ name=foundationType;type=combo;value=Floating: Single Point Mooring,Floating: Dynaminc Positioning,Floating: Spread Mooring,Bottom Fixed: Monopile,Bottom Fixed: Jacket,Other;label=Foundation/Mooring Type
+//@ name=deviceTRL;type=combo;value=1,2,3,4,5,6,7,8,9;label=TRL
+//@ name=ptoType;type=combo;value=Synchronous,Permanent Magnet Synchronous,Induction,Doubly Fed Induction,Other;label=PTO Type
+//@ name=foundationType;type=combo;value=Floating: Taut Mooring,Floating: Semi-Taut Mooring,Floating: Catenary Mooring,Floating: Dynaminc Positioning,Bottom Fixed: Gravity Based,Bottom Fixed: Pile Foundation,Other;label=Foundation Type
 //@ name=deviceMass;type=number;label=Structural Mass (t);value=
 //@ name=deviceMaterial;type=combo;value=Steel A-36,Steel Reinforced Concrete,High-density Polyethylene (HDPE),Coated Fabric,Aluminum - 5083,Fiberglass (E-Glass/Epoxy),Filament Wound Fiberglass,Other;label=Primary Structural Material
 //@ name=charDia;type=number;label=Characteristic Dimension (m);value=
@@ -88,6 +97,22 @@ currentCase = case_name();
 
 //get user inputs for device characteristics not required in SAM
 
+// get device related user inputs
+companyName = macro.companyName;
+//outln(companyName);
+
+deviceName = macro.deviceName;
+//outln(deviceName);
+
+deviceMake = macro.deviceMake;
+//outln(deviceMake);
+
+deviceModel = macro.deviceModel;
+//outln(deviceModel);
+
+deviceModelYear = macro.deviceModelYear;
+//outln(deviceModelYear);
+
 //get the device type
 
 deviceType = macro.deviceType;
@@ -99,6 +124,8 @@ if (deviceType=='Other')
 }
 
 //outln('Device Type = '+ deviceType);
+// get device TRL
+deviceTRL = macro.deviceTRL;
 
 //get the PTO type
 
@@ -656,7 +683,7 @@ for (i=1; i < 21; i++)
 for (j=1; j < 22; j++)
 
 {
-    zValuesPower[i-1][j-1] = sprintf("%.1f",(powerMatrix[i][j]));
+    zValuesPower[i-1][j-1] = sprintf("%.2f",(powerMatrix[i][j]));
 }
 //outln(zValuesPower);
 
@@ -667,7 +694,7 @@ for (i=1; i < 21; i++)
 for (j=1; j < 22; j++)
 
 {
-    zValuesResource[i-1][j-1] = sprintf("%.1f",(resourceMatrix[i][j]));
+    zValuesResource[i-1][j-1] = sprintf("%.2f",(resourceMatrix[i][j]));
 }
 //outln(zValuesResource);
 
@@ -825,11 +852,23 @@ reportCode =
     '<h1>System Advisor Model Wave Energy Project Summary</h1>'
     '<h1>Project: '+ currentCase +'</h1>'
 '<section>'
-    '<h2>Wave Energy Converter</h2>'
+    '<h2>Company: '+ companyName +'</h2>'
     '<h3>Device Description</h3>'
     '<table>'
-        '<tr>'
+         '<tr>'
             '<th colspan="2">Device Description</th>'
+        '</tr>'
+        '<tr>'
+            '<td>Device Name</td>'
+            '<td>'+ deviceName +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Device Model</td>'
+            '<td>'+ deviceModel +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Device Model Year</td>'
+            '<td>'+ deviceModelYear +'</td>'
         '</tr>'
         '<tr>'
             '<td>WEC Type</td>'
@@ -858,6 +897,10 @@ reportCode =
         '<tr>'
             '<td>Characteristic Dimension</td>'
             '<td>'+ charDia +'</td>'
+        '</tr>'
+        '<tr>'
+            '<td>Technology Readiness Level</td>'
+            '<td>'+ deviceTRL +'</td>'
         '</tr>'
     '</table>'
     '<h3>Device Performance</h3>'

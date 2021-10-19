@@ -11,13 +11,8 @@
 #include "SAM_TroughPhysicalCspSolver.h"
 
 SAM_EXPORT int SAM_TroughPhysicalCspSolver_execute(SAM_table data, int verbosity, SAM_error* err){
-	int n_err = 0;
-	translateExceptions(err, [&]{
-		n_err += SAM_module_exec("trough_physical_csp_solver", data, verbosity, err);
-	});
-	return n_err;
+	return SAM_module_exec("trough_physical_csp_solver", data, verbosity, err);
 }
-
 
 SAM_EXPORT void SAM_TroughPhysicalCspSolver_Weather_azimuth_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
@@ -3106,6 +3101,18 @@ SAM_EXPORT double SAM_TroughPhysicalCspSolver_Outputs_annual_energy_nget(SAM_tab
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_energy", &result))
 		make_access_error("SAM_TroughPhysicalCspSolver", "annual_energy");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalCspSolver", "annual_energy_distribution_time");
 	});
 	return result;
 }

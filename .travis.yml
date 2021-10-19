@@ -43,8 +43,7 @@ branches:
   only:
   - master
   - develop
-  - MHK
   - patch
-  - wind_pruf
+  - EPRI_Parametrics
   - Command_line_script
   - save_as_JSON

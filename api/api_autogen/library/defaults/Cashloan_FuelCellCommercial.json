@@ -2,6 +2,7 @@
 	"defaults": {
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"debt_fraction": 100,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
@@ -18,24 +19,26 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 2,
+			"om_batt_capacity_cost": [0.000000],
+			"om_batt_fixed_cost": [0.000000],
+			"om_batt_nameplate": 100.205,
+			"om_batt_replacement_cost": [0.000000],
+			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [16.000000],
-			"om_capacity1": [0.000000],
-			"om_capacity1_nameplate": 100.205,
-			"om_capacity2": [0.000000],
-			"om_capacity2_nameplate": 200,
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
-			"om_fixed1": [0.000000],
-			"om_fixed2": [0.000000],
 			"om_fixed_escal": 0,
 			"om_fuel_cost": [10.370000],
 			"om_fuel_cost_escal": 0,
+			"om_fuelcell_capacity_cost": [0.000000],
+			"om_fuelcell_fixed_cost": [0.000000],
+			"om_fuelcell_nameplate": 200,
+			"om_fuelcell_replacement_cost": [0.000000],
+			"om_fuelcell_variable_cost": [0.000000],
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [500.000000],
-			"om_replacement_cost2": [0.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 2.45151e+06
+			"total_installed_cost": 2.44922e+06
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -161,7 +164,7 @@
 			"batt_computed_bank_capacity": 100.205,
 			"batt_replacement_option": 0,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
+			"battery_per_kWh": 206.67,
 			"en_batt": 1
 		},
 		"FuelCell": {
@@ -179,6 +182,13 @@
 		"ThirdPartyOwnership": {
 			"elec_cost_with_system": [0],
 			"elec_cost_without_system": [0]
+		},
+		"Battery": {
+			"battery_total_cost_lcos": 0
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		}
 	}
 }

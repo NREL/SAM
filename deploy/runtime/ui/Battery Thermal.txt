@@ -466,8 +466,7 @@ Tool Tip
 0
 Items
 6
-3
-Use weather file ambient temperature
+2
 Enter a single fixed temperature
 Enter time series temperature data
 Selection
@@ -787,7 +786,7 @@ Name
 thermal_model_label5
 X
 3
-18
+15
 Y
 3
 21
@@ -832,7 +831,7 @@ batt_Cp
 1
 Specific heat Cp
 J/KgK
-BatteryCell
+Battery Thermal
 0
 2
 1
@@ -846,7 +845,7 @@ batt_h_to_ambient
 1
 Heat transfer coefficient h
 W/m2K
-BatteryCell
+Battery Thermal
 0
 2
 1
@@ -860,7 +859,7 @@ batt_mass
 1
 Battery mass
 kg
-BatteryCell
+Battery Thermal
 0
 8
 1
@@ -874,7 +873,7 @@ batt_room_temperature_celsius
 2
  Calculated environment temperature
 C
-BatteryCell
+Battery Thermal
 0
 8
 1
@@ -888,7 +887,7 @@ batt_room_temperature_single
 1
 Single environment temperature
 C
-BatteryCell
+Battery Thermal
 23
 Environment temperature
 2
@@ -903,7 +902,7 @@ batt_room_temperature_vector
 2
 Time series environment temperature
 C
-BatteryCell
+Battery Thermal
 17
 Temperature (C)|1
 0
@@ -918,7 +917,7 @@ batt_specific_energy_per_mass
 1
 Specific energy per mass
 Wh/kg
-BatteryCell
+Battery Thermal
 0
 2
 1
@@ -932,7 +931,7 @@ batt_specific_energy_per_volume
 1
 Specific energy per volume
 Wh/L
-BatteryCell
+Battery Thermal
 0
 2
 1
@@ -946,7 +945,7 @@ batt_surface_area
 1
 Battery surface area
 m
-BatteryCell
+Battery Thermal
 0
 10
 1
@@ -960,9 +959,9 @@ batt_thermal_choice
 1
 Environment temp option
  
-BatteryCell
-97
-Use weather file ambient temperature|Enter single fixed temperature|Enter time series temperature
+Battery Thermal
+60
+Enter single fixed temperature|Enter time series temperature
 0
 1
 1
@@ -975,7 +974,7 @@ batt_volume
 1
 Battery volume
 m3
-BatteryCell
+Battery Thermal
 0
 8
 1
@@ -989,7 +988,7 @@ cap_vs_temp
 3
 Capacity vs temperature
  
-BatteryCell
+Battery Thermal
 0
 1
 1
@@ -1062,14 +1061,14 @@ equations{'batt_room_temperature_celsius'} = define()
 	T_ambient = T;
 	
 	// Single value, scale to input size
-	if (${batt_thermal_choice} == 1){
+	if (${batt_thermal_choice} == 0){
 		T_room = ${batt_room_temperature_single};
 		for (i = 0; i < #T; i++){
 			T_ambient[i] = T_room;
 		}
 	}
 	// Input time series
-	if (${batt_thermal_choice} == 2){
+	if (${batt_thermal_choice} == 1){
 		T_room = ${batt_room_temperature_vector};
 		for (i = 0; i < #T_room; i++){
 			T_ambient[i] = T_room[i];
@@ -1077,7 +1076,7 @@ equations{'batt_room_temperature_celsius'} = define()
 	}
 	return T_ambient;
 };
-1418
+1424
 on_load{'Battery Thermal'} = define() {
 	on_change{'cap_vs_temp'}(); // update the plot
 	on_change{'batt_thermal_choice'}();
@@ -1089,13 +1088,14 @@ function show_thermal_options()
 	tech = technology();
 
 	// there is no weather data in generic model
+	/*
 	if ( strpos(lower(tech), 'generic')>-1 && ${batt_thermal_choice}==0){
 		${batt_thermal_choice} = 1;
 		msgbox( tech + ' model has no weather file!\nCannot set environment temperature to ambient temperature data from weather file.\nChoose either single fixed or time series for the environment temperature option.\nSetting option to default "Enter single fixed temperature" with value of ' + ${batt_room_temperature_single} +' degrees C.');
-	}
+	}*/
 
-	enable('batt_room_temperature_single', ${batt_thermal_choice}==1);
-	enable('batt_room_temperature_vector', ${batt_thermal_choice}==2);
+	enable('batt_room_temperature_single', ${batt_thermal_choice}==0);
+	enable('batt_room_temperature_vector', ${batt_thermal_choice}==1);
 }
 
 on_change{'batt_thermal_choice'} = define()

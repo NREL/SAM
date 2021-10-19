@@ -1,6 +1,6 @@
 Tower Capital Costs
-794
-871
+825
+869
 74
 GroupBox
 
@@ -12,13 +12,13 @@ Name
 GroupBox1
 X
 3
-6
+9
 Y
 3
 3
 Width
 3
-780
+812
 Height
 3
 566
@@ -42,13 +42,13 @@ Name
 GroupBox211
 X
 3
-6
+9
 Y
 3
 573
 Width
 3
-780
+812
 Height
 3
 200
@@ -72,13 +72,13 @@ Name
 GroupBox31
 X
 3
-6
+9
 Y
 3
 777
 Width
 3
-780
+812
 Height
 3
 89
@@ -390,7 +390,7 @@ Name
 csp.pt.cost.bop
 X
 3
-642
+654
 Y
 3
 396
@@ -453,7 +453,7 @@ Name
 csp.pt.cost.bop_per_kwe
 X
 3
-453
+459
 Y
 3
 396
@@ -515,7 +515,7 @@ Name
 csp.pt.cost.contingency
 X
 3
-642
+654
 Y
 3
 504
@@ -888,7 +888,7 @@ Name
 csp.pt.cost.epc.total
 X
 3
-645
+654
 Y
 3
 645
@@ -951,7 +951,7 @@ Name
 csp.pt.cost.fixed_sf
 X
 3
-453
+459
 Y
 3
 102
@@ -1013,7 +1013,7 @@ Name
 csp.pt.cost.fossil
 X
 3
-642
+654
 Y
 3
 372
@@ -1076,7 +1076,7 @@ Name
 csp.pt.cost.fossil_per_kwe
 X
 3
-453
+459
 Y
 3
 372
@@ -1138,7 +1138,7 @@ Name
 csp.pt.cost.heliostats
 X
 3
-642
+654
 Y
 3
 102
@@ -1263,7 +1263,7 @@ Name
 csp.pt.cost.heliostats_per_m2
 X
 3
-453
+459
 Y
 3
 78
@@ -1325,13 +1325,13 @@ Name
 csp.pt.cost.installed_per_capacity
 X
 3
-645
+654
 Y
 3
 825
 Width
 3
-133
+136
 Height
 3
 21
@@ -1698,7 +1698,7 @@ Name
 csp.pt.cost.plm.total
 X
 3
-645
+654
 Y
 3
 669
@@ -1761,7 +1761,7 @@ Name
 csp.pt.cost.power_block
 X
 3
-642
+654
 Y
 3
 420
@@ -1886,7 +1886,7 @@ Name
 csp.pt.cost.power_block_per_kwe
 X
 3
-453
+459
 Y
 3
 420
@@ -1948,7 +1948,7 @@ Name
 csp.pt.cost.receiver
 X
 3
-642
+654
 Y
 3
 285
@@ -2073,7 +2073,7 @@ Name
 csp.pt.cost.receiver.ref_area
 X
 3
-453
+459
 Y
 3
 261
@@ -2135,7 +2135,7 @@ Name
 csp.pt.cost.receiver.ref_cost
 X
 3
-453
+459
 Y
 3
 237
@@ -2197,7 +2197,7 @@ Name
 csp.pt.cost.receiver.scaling_exp
 X
 3
-453
+459
 Y
 3
 285
@@ -2321,7 +2321,7 @@ Name
 csp.pt.cost.sales_tax.total
 X
 3
-645
+654
 Y
 3
 708
@@ -2446,7 +2446,7 @@ Name
 csp.pt.cost.site_improvements
 X
 3
-642
+654
 Y
 3
 45
@@ -2509,7 +2509,7 @@ Name
 csp.pt.cost.site_improvements_per_m2
 X
 3
-453
+459
 Y
 3
 45
@@ -2571,7 +2571,7 @@ Name
 csp.pt.cost.storage
 X
 3
-642
+654
 Y
 3
 327
@@ -2634,7 +2634,7 @@ Name
 csp.pt.cost.storage_mwht
 X
 3
-126
+141
 Y
 3
 327
@@ -2696,7 +2696,7 @@ Name
 csp.pt.cost.storage_per_kwht
 X
 3
-453
+459
 Y
 3
 327
@@ -2820,7 +2820,7 @@ Name
 csp.pt.cost.tower
 X
 3
-642
+654
 Y
 3
 195
@@ -2883,7 +2883,7 @@ Name
 csp.pt.cost.tower.fixed
 X
 3
-453
+459
 Y
 3
 168
@@ -2945,7 +2945,7 @@ Name
 csp.pt.cost.tower.scaling_exp
 X
 3
-453
+459
 Y
 3
 195
@@ -3061,7 +3061,7 @@ Y
 27
 Width
 3
-600
+618
 Height
 3
 16
@@ -3100,7 +3100,7 @@ Y
 486
 Width
 3
-753
+768
 Height
 3
 16
@@ -3133,13 +3133,13 @@ Name
 object 2152
 X
 3
-24
+21
 Y
 3
 354
 Width
 3
-600
+618
 Height
 3
 16
@@ -3178,7 +3178,7 @@ Y
 306
 Width
 3
-600
+618
 Height
 3
 16
@@ -3217,7 +3217,7 @@ Y
 219
 Width
 3
-600
+618
 Height
 3
 16
@@ -3256,7 +3256,7 @@ Y
 123
 Width
 3
-600
+618
 Height
 3
 16
@@ -3289,7 +3289,7 @@ Name
 object 2159
 X
 3
-642
+652
 Y
 3
 447
@@ -3327,7 +3327,7 @@ Name
 object 2163
 X
 3
-642
+652
 Y
 3
 525
@@ -3365,7 +3365,7 @@ Name
 object 2164
 X
 3
-303
+308
 Y
 3
 66
@@ -3403,13 +3403,13 @@ Name
 object 2167
 X
 3
-24
+21
 Y
 3
 693
 Width
 3
-591
+618
 Height
 3
 16
@@ -3442,7 +3442,7 @@ Name
 object 2173
 X
 3
-645
+652
 Y
 3
 729
@@ -3480,7 +3480,7 @@ Name
 object 7
 X
 3
-480
+492
 Y
 3
 801
@@ -3528,7 +3528,7 @@ Name
 object 758
 X
 3
-480
+492
 Y
 3
 744
@@ -3576,7 +3576,7 @@ Name
 object 761
 X
 3
-480
+492
 Y
 3
 540
@@ -3624,7 +3624,7 @@ Name
 object 762
 X
 3
-480
+492
 Y
 3
 462
@@ -3672,7 +3672,7 @@ Name
 total_direct_cost
 X
 3
-642
+654
 Y
 3
 540
@@ -3735,7 +3735,7 @@ Name
 total_indirect_cost
 X
 3
-645
+654
 Y
 3
 744
@@ -3798,13 +3798,13 @@ Name
 total_installed_cost
 X
 3
-645
+654
 Y
 3
 801
 Width
 3
-133
+136
 Height
 3
 21
@@ -3861,7 +3861,7 @@ Name
 ui_direct_subtotal
 X
 3
-642
+654
 Y
 3
 462
@@ -4101,7 +4101,7 @@ TabOrder
 3
 4294967295
 
-52
+51
 csp.pt.cost.bop
 3
 1
@@ -4718,20 +4718,6 @@ Tower Capital Costs
 1
 0.01298
 Default
-system_use_recapitalization
-3
-1
-Enable geothermal recapitalization
- 
-Tower Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_direct_cost
 3
 1
@@ -4831,7 +4817,7 @@ Tower Capital Costs
 0
 Default
 
-5695
+5519
 // Get calculated UI values that are independent variables
 //    in cost calculations
 
@@ -4845,9 +4831,7 @@ equations{ 'csp.pt.cost.site_improvements_m2' } = define() {
 	
 	// Tower Height
 equations{'ui_tower_height'} = define() {
-	tech = technology();
-	if ( tech == 'MSPT' || tech == 'ISCC' ) return ${THT};
-	else if ( tech == 'DSPT' ) return ${h_tower};
+	return ${h_tower};
 };
 
 	// Receiver Height
@@ -4987,8 +4971,6 @@ equations{ '$MIMO$ ui_tower_cost_calcs' } = define()
 	ssc_free( obj );
 };
 
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 138
 on_load{"Molten Salt Tower Capital Costs"}=define()
 {

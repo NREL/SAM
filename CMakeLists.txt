@@ -4,8 +4,6 @@
 #
 #####################################################################################################################
 
-set(CMAKE_VERBOSE_MAKEFILE ON)
-
 cmake_minimum_required(VERSION 3.11)
 
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9" CACHE STRING "Minimum OS X deployment version")
@@ -21,6 +19,10 @@ endif()
 # Project Settings
 #
 #####################################################################################################################
+
+option(SAMAPI_EXPORT "Export of ssc binaries to the SAM_api directory; for Unix, compile ssc libraries for SAM_api" ON)
+
+option(SAM_SKIP_AUTOGEN "Skips the automatic regeneration of SAMAPI files from export_config" ON)
 
 Project(sam)
 
@@ -44,6 +46,7 @@ set(SAM_SRC
 	src/urdb.cpp
 	src/nsrdb.cpp
 	src/windtoolkit.cpp
+	src/wavetoolkit.cpp
 	src/gridsupport.cpp
 	src/macro.cpp
 	src/p50p90.cpp
@@ -76,7 +79,8 @@ set(SAM_SRC
 	src/shadingfactors.cpp
 	src/materials.cpp
 	src/codegenerator.cpp
-	src/pythonhandler.cpp src/pythonhandler.h)
+	src/pythonhandler.cpp src/pythonhandler.h
+	src/combinecases.cpp src/combinecases.h)
 
 
 #####################################################################################################################
@@ -270,6 +274,11 @@ if (UNIX)
         else()
             set(SSC_NAME ssc)
         endif()
+        if (SAMAPI_EXPORT)
+            set(SSC_NAME "lib${SSC_NAME}.so")
+        else()
+            set(SSC_NAME "${SSC_NAME}.dylib")
+        endif ()
         add_custom_command(
             TARGET ${SAM_EXE}
             POST_BUILD
@@ -281,7 +290,7 @@ if (UNIX)
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-SAM.plist ${SAM_APP}/Contents/Info.plist
             COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
             COMMAND cp ${SSC_SO} ${SAM_APP}/Contents/Frameworks
-            COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/Frameworks/${SSC_NAME}.dylib
+            COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/Frameworks/${SSC_NAME}
             COMMAND install_name_tool -change ${SSC_NAME}.dylib @executable_path/../Frameworks/${SSC_NAME}.dylib ${SAM_APP}/Contents/MacOS/${SAM_NAME}
         )
     else()

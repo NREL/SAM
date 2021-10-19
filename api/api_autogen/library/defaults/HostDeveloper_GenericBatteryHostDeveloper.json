@@ -9,6 +9,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -42,6 +43,12 @@
 			"term_tenor": 18
 		},
 		"SystemCosts": {
+			"add_om_num_types": 1,
+			"om_batt_capacity_cost": [0.000000],
+			"om_batt_fixed_cost": [0.000000],
+			"om_batt_nameplate": 19.2154,
+			"om_batt_replacement_cost": [232.290000],
+			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [16.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
@@ -50,15 +57,14 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [300.000000],
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 15337.1
+			"total_installed_cost": 15165
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": 26,
+			"itc_fed_percent": 0,
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": 1e+38,
@@ -220,7 +226,6 @@
 		},
 		"SystemOutput": {
 			"degradation": [0.000000],
-			"gen": [0],
 			"system_capacity": 215
 		},
 		"ReturnOnEquity": {
@@ -230,7 +235,6 @@
 			"loan_moratorium": 0
 		},
 		"Recapitalization": {
-			"system_use_recapitalization": 0
 		},
 		"TimeOfDelivery": {
 			"dispatch_factor1": 1,
@@ -275,14 +279,21 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 306.742
+			"construction_financing_cost": 303.299
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 4000,
+			"batt_computed_bank_capacity": 19.2154,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 300,
+			"battery_per_kWh": 232.29,
 			"en_batt": 1
+		},
+		"Battery": {
+			"battery_total_cost_lcos": 11707
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		}
 	}
 }
