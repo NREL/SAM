@@ -2059,7 +2059,7 @@ Specify total system loss
  
 PVWatts
 0
-2
+8
 1
 1
 1
