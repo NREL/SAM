@@ -42,31 +42,8 @@ function timestep_shift( file_name , time ){
 			txt = csvread(file_name);
 			//Since the csv file does not have a minute column, it will need to be added manually.
 			//Accordingly, the subsequent columns will need to be shifted one over. 
-			txt[2][4] = 'Minute'; txt[2][5] = 'GHI'; txt[2][6] = 'DNI'; txt[2][7] = 'DHI'; txt[2][8] = 'Tdry'; txt[2][9] = 'Twet'; txt[2][10] = 'RH'; txt[2][11] = 'Pres'; txt[2][12] = 'Wspd'; txt[2][13] = 'Wdir'; txt[2][14] = 'Albedo';
+			//txt[2][4] = 'Minute'; txt[2][5] = 'GHI'; txt[2][6] = 'DNI'; txt[2][7] = 'DHI'; txt[2][8] = 'Tdry'; txt[2][9] = 'Twet'; txt[2][10] = 'RH'; txt[2][11] = 'Pres'; txt[2][12] = 'Wspd'; txt[2][13] = 'Wdir'; txt[2][14] = 'Albedo';
 			
-			//Loop over each row in the csv file and store/shift values 
-			for (i = 3; i < 8763; i++){
-				//Putting appropriate values under the 'Albedo' column:
-				if(txt[i][13] >= 0 || txt[i][13] <=1)
-					txt[i][14] = txt[i][13];
-				else
-					txt[i][14] = 0;
-				
-				//Since the csv file does not have a minute column, it will need to be added manually.
-				//Accordingly, the subsequent columns will need to be shifted one over. 
-				txt[i][13] = txt[i][12];
-				txt[i][12] = txt[i][11];
-				txt[i][11] = txt[i][10];
-				txt[i][10] = txt[i][9];
-				txt[i][9] = txt[i][8];
-				txt[i][8] = txt[i][7];
-				txt[i][7] = txt[i][6];
-				txt[i][6] = txt[i][5];
-				txt[i][5] = txt[i][4];
-				
-				//Add Minute coloumn:
-				txt[i][4] = time;	
-			}
 			//outln(txt);
 			csvwrite(file_name, txt);
 			
