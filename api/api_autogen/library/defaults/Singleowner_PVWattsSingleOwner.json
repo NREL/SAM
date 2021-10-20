@@ -48,6 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"construction_financing_cost": 1.02764e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
@@ -88,13 +89,8 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [0.000000],
-			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"om_replacement_cost1": [500.000000],
-			"om_replacement_cost_escal": 0,
-			"system_use_recapitalization": 0,
 			"total_installed_cost": 5.13822e+07
 		},
 		"TaxCreditIncentives": {
@@ -282,6 +278,12 @@
 		"GridLimits": {
 			"grid_curtailment_price": [0.000000],
 			"grid_curtailment_price_esc": 0
+		},
+		"Battery": {
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		}
 	}
 }

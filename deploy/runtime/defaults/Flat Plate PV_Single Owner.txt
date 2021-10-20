@@ -1,5 +1,5 @@
 1
-888
+887
 6par_aisc
 1
 1
@@ -997,7 +997,7 @@ const_per_total1
 1
 1
 1
-1027690
+1.02769e+06
 const_per_total2
 1
 1
@@ -1057,13 +1057,13 @@ construction_financing_cost
 1
 1
 1
-1027690
+1.02769e+06
 contingency
 1
 1
 1
 1
-1245060
+1.24506e+06
 contingency_percent
 1
 1
@@ -1656,7 +1656,7 @@ engr_total
 1
 1
 1
-3500160
+3.50016e+06
 equip1_reserve_cost
 1
 1
@@ -1782,7 +1782,7 @@ grid_total
 1
 1
 1
-1500070
+1.50007e+06
 ibi_fed_amount
 1
 1
@@ -3160,7 +3160,7 @@ landprep_total
 1
 1
 1
-1000040
+1.00004e+06
 lat
 1
 1
@@ -3838,7 +3838,7 @@ sales_tax_total
 1
 1
 1
-2137340
+2.13734e+06
 sales_tax_value
 1
 1
@@ -4527,7 +4527,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 solution_mode_message
 1
 4
@@ -5487,12 +5488,6 @@ system_use_lifetime_output
 1
 1
 1
-system_use_recapitalization
-1
-1
-1
-1
-0
 term_int_rate
 1
 1
@@ -5539,7 +5534,7 @@ total_indirect_cost
 1
 1
 1
-6500290
+6.50029e+06
 total_installed_cost
 1
 1

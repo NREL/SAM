@@ -52,18 +52,63 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 // this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
-version_upgrade{'2021.6.2'} = define() {
+version_upgrade{'2021.7.27'} = define() {
 
 	const cfg = config();
-	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' );
+	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ); // does not include fuel cell
+
+	// Battery lifetime updates
+	if ( cfg.tech == 'Fuel Cell' ) {
+		value('ui_batt_life_model',0);
+		value('batt_life_model',0);
+		message('The Battery Storage input page has a new option to choose a battery life model for different battery types. Be sure to check battery life model option when the file opens.','warning');
+	}
+	if ( is_batt_tech ) {
+		value('ui_batt_life_model',0);
+		value('batt_life_model',0);
+		message('The battery replacement and lifetime inputs are now on the new Battery Life input page with a new option to choose a battery life model for different battery types. Be sure to check battery life model option on the Battery Life page when the file opens.','warning');
+	}
+
+	//Battery Thermal remove weather file ambient temperature option
+	old_batt_thermal_choice = oldvalue('batt_thermal_choice');
+	old_batt_single_temp = oldvalue('batt_room_temperature_single');
+	old_temp_vector = oldvalue('batt_room_temperature_vector');
+	old_temp_celsius = oldvalue('batt_room_temperature_celsius');
+	new_temp_vector = [];
+	if (is_batt_tech) {
+		if (old_batt_thermal_choice == 0) { 
+			value('batt_thermal_choice', 1);
+			value('batt_room_temperature_vector', old_temp_celsius);
+			//value('batt_room_temperature_celsius', value('batt_room_temperature_vector'));
+			message('The option to use ambient file weather dry-bulb temperature inputs as the battery room temperature has been removed. The weather file ambient temperatures for this case have been copied into the Time series environment array.', 'warning');
+		}
+		elseif (old_batt_thermal_choice == 1) {
+			value('batt_thermal_choice', 0);
+			value('batt_room_temperature_single', old_batt_single_temp);
+			message('The option to use ambient file weather dry-bulb temperature inputs as the battery room temperature has been removed.');
+		}
+		else {
+			value('batt_thermal_choice', 1);
+			value('batt_room_temperature_vector', old_temp_vector);
+			message('The option to use ambient file weather dry-bulb temperature inputs as the battery room temperature has been removed.');
+		}
+	}
+	
 	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' );
 	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
 	btm_options = ['Peak Shaving','Input Grid Power Targets','Input Battery Power Targets','Manual Dispatch','Price Signal Forecast'];
 	peak_shaving_options = ['One Day Look Ahead (Perfect)','One Day Look Behind'];
-	fom_options = ['Automated Dispatch','Dispatch to Custom Time Series','Manual Dispatch'];
+	fom_options = ['Automated Dispatch','PV Smoothing','Dispatch to Custom Time Series','Manual Dispatch'];
 	automated_options = ['Perfect Look Ahead','One Day Look Behind','Look Ahead to Custom Weather File'];
 	if ( is_batt_tech )
 	{
+		old_batt_pv_forecast = oldvalue('batt_pv_dc_forecast'); // array
+        value( 'batt_pv_ac_forecast', old_batt_pv_forecast );  // Often either doesn't exist or is [0], but if not display message for user
+        // Use sum instead of # since # is picky about this being an array
+        if (sum(old_batt_pv_forecast) > 1) {
+			message( 'Custom weather file forecasts for battery dispatch have changed from DC to AC power. Please re-import the forecast on the battery dispatch page to convert to AC power.' );
+        }
+        
 		if ( is_fom_fin )
 		{
 			old = oldvalue( 'batt_dispatch_choice');
@@ -71,10 +116,10 @@ version_upgrade{'2021.6.2'} = define() {
 			if ( old == 0 ) { new = 0; auto = 0; }
 			elseif ( old == 1 ) { new = 0; auto = 1; }
 			elseif ( old == 2 ) { new = 0; auto = 2; }
-			elseif ( old == 3 ) { new = 1; }
-			else { new = 2; } // old = 4
+			elseif ( old == 3 ) { new = 2; }
+			else { new = 3; } // old = 4
 			value( 'batt_dispatch_choice_ui', new );
-			if ( auto != 999 ) { value( 'automated_dispatch_choice', auto ); }
+			if ( auto != 999 ) { value( 'batt_dispatch_wf_forecast_choice', auto ); }
 			value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 			message( 'The inputs for front-of-meter battery dispatch options have been reorganized. The dispatch option for this case is ' + fom_options[new] + ?(auto==999)[' ' + automated_options[auto],''] + '. Please check the Battery Dispatch input page to make sure they are correct.' );
 			// check for custom weather file for forecast

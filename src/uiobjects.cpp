@@ -114,7 +114,8 @@ public:
 
 	virtual void OnNativeEvent()
 	{
-		/* nothing to do here ... */
+		if (AFSchedNumeric* sn = GetNative<AFSchedNumeric>())
+			Property("UseSchedule").Set(sn->UseSchedule());
 	}
 };
 

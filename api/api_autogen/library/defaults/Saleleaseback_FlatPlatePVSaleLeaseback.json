@@ -7,6 +7,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
+			"batt_salvage_percentage": 0,
 			"equip1_reserve_cost": 0.25,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
@@ -31,12 +32,8 @@
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
-			"om_fuel_cost": [0.000000],
-			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
-			"om_production_escal": 0,
-			"om_replacement_cost1": [500.000000],
-			"om_replacement_cost_escal": 0
+			"om_production_escal": 0
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -208,7 +205,6 @@
 			"sponsor_operating_margin": 20,
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 1,
-			"system_use_recapitalization": 0,
 			"tax_investor_required_lease_reserve": 6,
 			"total_installed_cost": 5.13845e+07
 		},
@@ -256,6 +252,12 @@
 		"OtherCapitalCosts": {
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6
+		},
+		"Battery": {
+		},
+		"ChargesByMonth": {
+		},
+		"Monthly": {
 		},
 		"BatterySystem": {
 			"en_batt": 0

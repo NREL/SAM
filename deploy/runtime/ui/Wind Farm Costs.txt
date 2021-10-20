@@ -1759,7 +1759,7 @@ TabOrder
 3
 4294967295
 
-20
+19
 bos_cost_fixed
 3
 1
@@ -1941,20 +1941,6 @@ Wind Capital Costs
 1
 0
 Default
-system_use_recapitalization
-3
-1
- 
- 
-Wind Capital Costs
-0
-8
-1
-1
-1
-1
-0
-Default
 total_installed_cost
 3
 1
@@ -2040,7 +2026,7 @@ Wind Capital Costs
 0
 Default
 
-1200
+1128
 equations{ 'reference_capacity' } = define() {
 	return ${system_capacity};
 };
@@ -2081,9 +2067,6 @@ equations { 'sales_tax_total' } = define() {
 	return (${turbine_cost_total} + ${bos_cost_total}) * 0.01 * 
 		${sales_tax_basis} * 0.01 * ${sales_tax_rate};
 };
-
-equations { 'system_use_recapitalization' } = define () {
-	return 0;};
 
 14090
 on_load{'Wind Farm Costs'} = define()
