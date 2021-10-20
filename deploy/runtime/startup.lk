@@ -409,16 +409,15 @@ function setup_merchant_plant_pages()
               {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
                {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
            { 'sidebar'='Financial Parameters', 'help'='fin_merchant_plant' }  );
-  /*addpage( [[ 'Financial Merchant Plant', 'Cambium API Data', 'Financial Capacity Payments']],
-            { 'sidebar'='Revenue', 'help'='revenue_merchant_plant' } );*/
-            
-  addpage( [ [{'name'='Financial Merchant Plant Energy Market Revenue', 'caption'='Energy Market Revenue' },'Cambium API Data', 'Financial Capacity Payments'],
-				[{'name'='Financial Merchant Plant Ancillary Service 1', 'caption'='Ancillary Service #1' },'Cambium API Tab UI'],
-				[{'name'='Financial Merchant Plant Ancillary Service 2', 'caption'='Ancillary Service #2' },'Cambium API Tab UI'],
-				[{'name'='Financial Merchant Plant Ancillary Service 3', 'caption'='Ancillary Service #3' },'Cambium API Tab UI'],
-				[{'name'='Financial Merchant Plant Ancillary Service 4', 'caption'='Ancillary Service #4' },'Cambium API Tab UI'] ],
-			{ 'sidebar'='Revenue', 'help'='revenue_merchant_plant', 'exclusive_var'='revenue_tab', 'exclusive_tabs'=true} );
 
+  addpage( [[{'name'='Financial Merchant Plant Energy Market Revenue', 'caption'='Energy Market'}],
+			[{'name'='Financial Merchant Plant Ancillary Service 1', 'caption'='Ancillary Service 1' }],
+			[{'name'='Financial Merchant Plant Ancillary Service 2', 'caption'='Ancillary Service 2' }],
+			[{'name'='Financial Merchant Plant Ancillary Service 3', 'caption'='Ancillary Service 3' }],
+			[{'name'='Financial Merchant Plant Ancillary Service 4', 'caption'='Ancillary Service 4' }]],
+			{ 'sidebar'='Revenue', 'help'='revenue_merchant_plant', 'exclusive_var'='revenue_tab',
+			  'exclusive_header_pages' = ['Financial Merchant Plant Description','Financial Capacity Payments','Cambium API Data'],  'exclusive_tabs'=true, 'exclusive_hide' = false} );
+			
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
   addpage( [['Financial Depreciation Detailed' ]],

@@ -1,6 +1,6 @@
 Financial Capacity Payments
-926
-220
+859
+175
 12
 Numeric
 
@@ -12,10 +12,10 @@ Name
 cp_battery_nameplate
 X
 3
-723
+663
 Y
 3
-186
+141
 Width
 3
 90
@@ -74,10 +74,10 @@ Name
 cp_capacity_credit_percent
 X
 3
-723
+663
 Y
 3
-132
+87
 Width
 3
 90
@@ -116,10 +116,10 @@ Name
 cp_capacity_payment_amount
 X
 3
-249
+372
 Y
 3
-135
+90
 Width
 3
 90
@@ -159,10 +159,10 @@ Name
 cp_capacity_payment_esc
 X
 3
-249
+372
 Y
 3
-162
+117
 Width
 3
 90
@@ -221,13 +221,13 @@ Name
 cp_capacity_payment_type
 X
 3
-39
+21
 Y
 3
 87
 Width
 3
-227
+167
 Height
 3
 48
@@ -261,13 +261,13 @@ Name
 cp_payment_esc_label
 X
 3
-63
+195
 Y
 3
-186
+141
 Width
 3
-342
+333
 Height
 3
 24
@@ -309,10 +309,10 @@ Name
 cp_payment_units
 X
 3
-339
+462
 Y
 3
-135
+90
 Width
 3
 65
@@ -357,10 +357,10 @@ Name
 cp_payment_units_dollars
 X
 3
-339
+462
 Y
 3
-135
+90
 Width
 3
 65
@@ -405,10 +405,10 @@ Name
 cp_system_nameplate
 X
 3
-723
+663
 Y
 3
-159
+114
 Width
 3
 90
@@ -476,14 +476,14 @@ Width
 850
 Height
 3
-212
+167
 Tool Tip
 5
 0
 Caption
 5
-21
-Capacity Payment Type
+17
+Capacity Payments
 Bold
 2
 1
@@ -497,13 +497,13 @@ Name
 object 7
 X
 3
-45
+192
 Y
 3
-138
+93
 Width
 3
-201
+177
 Height
 3
 24
@@ -560,8 +560,8 @@ Tool Tip
 0
 Caption
 5
-325
-For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), system nameplate capacity (MW), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.  The battery nameplate capacity is shown here for reference only. 
+438
+For projects that earn revenue from capacity payments, you can choose the capacity basis or fixed amount option. For the capacity basis option, the annual capacity payment is the product of the capacity payment amount ($/MW), system nameplate capacity (MW), and eligible percent of nameplate (%). For the fixed amount option, the capacity payment is the amount you enter.  The battery nameplate capacity is shown here for reference only. 
 TextColour
 4
 0
@@ -602,8 +602,8 @@ Numeric
 cp_capacity_credit_percent
 3
 2
-Capacity credit (eligible % of nameplate)
-%
+Capacity credit
+% of nameplate
 Capacity Payment
 0
 2
