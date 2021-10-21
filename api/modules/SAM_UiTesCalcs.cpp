@@ -44,6 +44,12 @@ SAM_EXPORT void SAM_UiTesCalcs_Common_field_fl_props_mset(SAM_table ptr, double*
 	});
 }
 
+SAM_EXPORT void SAM_UiTesCalcs_Common_field_fluid_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "field_fluid", number);
+	});
+}
+
 SAM_EXPORT void SAM_UiTesCalcs_Common_h_tank_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_tank", number);
@@ -56,9 +62,15 @@ SAM_EXPORT void SAM_UiTesCalcs_Common_h_tank_min_nset(SAM_table ptr, double numb
 	});
 }
 
-SAM_EXPORT void SAM_UiTesCalcs_Common_rec_htf_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_UiTesCalcs_Common_store_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_htf", number);
+		ssc_data_set_matrix(ptr, "store_fl_props", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_UiTesCalcs_Common_store_fluid_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "store_fluid", number);
 	});
 }
 
@@ -136,6 +148,17 @@ SAM_EXPORT double* SAM_UiTesCalcs_Common_field_fl_props_mget(SAM_table ptr, int*
 
 
 
+SAM_EXPORT double SAM_UiTesCalcs_Common_field_fluid_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "field_fluid", &result))
+		make_access_error("SAM_UiTesCalcs", "field_fluid");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -158,11 +181,23 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_h_tank_min_nget(SAM_table ptr, SAM_error
 
 
 
-SAM_EXPORT double SAM_UiTesCalcs_Common_rec_htf_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double* SAM_UiTesCalcs_Common_store_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "store_fl_props", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_UiTesCalcs", "store_fl_props");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_UiTesCalcs_Common_store_fluid_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_htf", &result))
-		make_access_error("SAM_UiTesCalcs", "rec_htf");
+	if (!ssc_data_get_number(ptr, "store_fluid", &result))
+		make_access_error("SAM_UiTesCalcs", "store_fluid");
 	});
 	return result;
 }
@@ -196,6 +231,17 @@ SAM_EXPORT double SAM_UiTesCalcs_Common_u_tank_nget(SAM_table ptr, SAM_error *er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "u_tank", &result))
 		make_access_error("SAM_UiTesCalcs", "u_tank");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_UiTesCalcs_Outputs_are_htfs_equal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "are_htfs_equal", &result))
+		make_access_error("SAM_UiTesCalcs", "are_htfs_equal");
 	});
 	return result;
 }

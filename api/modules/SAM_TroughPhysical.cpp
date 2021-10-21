@@ -866,12 +866,6 @@ SAM_EXPORT void SAM_TroughPhysical_TES_init_hot_htf_percent_nset(SAM_table ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysical_TES_is_hx_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_hx", number);
-	});
-}
-
 SAM_EXPORT void SAM_TroughPhysical_TES_store_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "store_fl_props", mat, nrows, ncols);
@@ -2935,17 +2929,6 @@ SAM_EXPORT double SAM_TroughPhysical_TES_init_hot_htf_percent_nget(SAM_table ptr
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "init_hot_htf_percent", &result))
 		make_access_error("SAM_TroughPhysical", "init_hot_htf_percent");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TroughPhysical_TES_is_hx_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_hx", &result))
-		make_access_error("SAM_TroughPhysical", "is_hx");
 	});
 	return result;
 }
