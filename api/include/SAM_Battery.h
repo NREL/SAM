@@ -601,7 +601,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryCell_batt_maximum_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_minimum_SOC: Minimum allowed state-of-charge [%]
+	 * Set batt_minimum_SOC: Minimum allowed state-of-charge during nominal operation [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -615,6 +615,14 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_modetime_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_minimum_outage_SOC: Minimum allowed state-of-charge during an outage [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_outage_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_resistance: Internal resistance [Ohm]
@@ -1677,6 +1685,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Battery_BatteryCell_batt_minimum_modetime_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_BatteryCell_batt_minimum_outage_SOC_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Battery_BatteryCell_batt_resistance_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_BatteryCell_batt_room_temperature_celsius_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2045,6 +2055,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battery_Outputs_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_cell_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2074,6 +2086,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_monthly_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
 

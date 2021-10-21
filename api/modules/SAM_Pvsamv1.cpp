@@ -2900,6 +2900,12 @@ SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_minimum_modetime_nset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_minimum_outage_SOC_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_minimum_outage_SOC", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_resistance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_resistance", number);
@@ -8822,6 +8828,17 @@ SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_minimum_modetime_nget(SAM_table p
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_minimum_outage_SOC_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_minimum_outage_SOC", &result))
+		make_access_error("SAM_Pvsamv1", "batt_minimum_outage_SOC");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_resistance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -11590,6 +11607,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_load_aget(SAM_table ptr, int* len
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_to_system_load", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "batt_to_system_load");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_voltage_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12049,6 +12078,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_batt_to_load_aget(SAM_table ptr, 
 	result = ssc_data_get_array(ptr, "monthly_batt_to_load", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "monthly_batt_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_batt_to_system_load", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "monthly_batt_to_system_load");
 	});
 	return result;
 }

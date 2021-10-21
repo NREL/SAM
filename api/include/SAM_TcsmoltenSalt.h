@@ -831,7 +831,7 @@ extern "C"
 	 * Set opt_algorithm: Optimization algorithm
 	 * options: None
 	 * constraints: None
-	 * required if: ?=0
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_opt_algorithm_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -882,6 +882,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_p_track_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set receiver_type: 0: external (default), 1; cavity
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_receiver_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set v_wind_max: Heliostat max wind velocity [m/s]
@@ -1012,6 +1020,46 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_height: Cavity receiver height [m]
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_passive_abs: Cavity receiver passive surface solar absorptance
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_passive_eps: Cavity receiver passive surface thermal emissivity
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_span: Cavity receiver span angle [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_width: Cavity receiver width [m]
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set crossover_shift: Number of panels shift in receiver crossover position
@@ -1172,6 +1220,14 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set n_cav_rec_panels: Cavity receiver number of panels
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set n_flux_days: Number of days in flux map lookup
@@ -2470,6 +2526,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_p_track_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_receiver_type_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_v_wind_max_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_washing_frequency_nget(SAM_table ptr, SAM_error *err);
@@ -2510,6 +2568,16 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_crossover_shift_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_csp_pt_rec_max_oper_frac_nget(SAM_table ptr, SAM_error *err);
@@ -2549,6 +2617,8 @@ extern "C"
 	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_fill_time_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_flux_days_nget(SAM_table ptr, SAM_error *err);
 
@@ -3168,6 +3238,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rh_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_sf_adjust_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_sim_cpu_run_time_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_solaz_aget(SAM_table ptr, int* length, SAM_error *err);
 

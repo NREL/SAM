@@ -1046,6 +1046,18 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_load_aget(SAM_table ptr, int* l
 
 
 
+SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_to_system_load", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "batt_to_system_load");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1232,6 +1244,18 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_load_aget(SAM_table ptr
 	result = ssc_data_get_array(ptr, "monthly_batt_to_load", length);
 	if (!result)
 		make_access_error("SAM_Battwatts", "monthly_batt_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_batt_to_system_load", length);
+	if (!result)
+		make_access_error("SAM_Battwatts", "monthly_batt_to_system_load");
 	});
 	return result;
 }

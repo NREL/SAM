@@ -20,12 +20,6 @@ SAM_EXPORT void SAM_Cashloan_FinancialParameters_analysis_period_nset(SAM_table 
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_FinancialParameters_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
-	});
-}
-
 SAM_EXPORT void SAM_Cashloan_FinancialParameters_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "debt_fraction", number);
@@ -1112,91 +1106,97 @@ SAM_EXPORT void SAM_Cashloan_ThirdPartyOwnership_elec_cost_without_system_aset(S
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Battery_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_LCOS_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_energy", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Battery_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_LCOS_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_from_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Battery_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_LCOS_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_discharge_energy", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Battery_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_LCOS_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_capacity_percent", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Battery_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_LCOS_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_LCOS_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "battery_total_cost_lcos", number);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Battery_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Cashloan_Battery_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Cashloan_Battery_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Cashloan_Battery_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Cashloan_Battery_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_system_to_grid", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_LCOS_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "charge_w_sys_ec_ym", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_LCOS_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_LCOS_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_LCOS_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_LCOS_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_LCOS_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_system_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_LCOS_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "true_up_credits_ym", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_ChargesByMonth_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "year1_monthly_ec_charge_with_system", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Cashloan_Monthly_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_LCOS_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_ec_charge_gross_with_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Monthly_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_LCOS_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_monthly_ec_charge_with_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_electricity_to_grid", arr, length);
 	});
@@ -1207,17 +1207,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_analysis_period_nget(SAM_tabl
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
 		make_access_error("SAM_Cashloan", "analysis_period");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Cashloan_FinancialParameters_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
-		make_access_error("SAM_Cashloan", "batt_salvage_percentage");
 	});
 	return result;
 }
@@ -3253,7 +3242,7 @@ SAM_EXPORT double* SAM_Cashloan_ThirdPartyOwnership_elec_cost_without_system_age
 
 
 
-SAM_EXPORT double* SAM_Cashloan_Battery_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
@@ -3265,7 +3254,7 @@ SAM_EXPORT double* SAM_Cashloan_Battery_batt_annual_charge_energy_aget(SAM_table
 
 
 
-SAM_EXPORT double* SAM_Cashloan_Battery_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_from_system", length);
@@ -3277,7 +3266,7 @@ SAM_EXPORT double* SAM_Cashloan_Battery_batt_annual_charge_from_system_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Cashloan_Battery_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_discharge_energy", length);
@@ -3289,7 +3278,7 @@ SAM_EXPORT double* SAM_Cashloan_Battery_batt_annual_discharge_energy_aget(SAM_ta
 
 
 
-SAM_EXPORT double* SAM_Cashloan_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Cashloan_LCOS_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
@@ -3301,7 +3290,18 @@ SAM_EXPORT double* SAM_Cashloan_Battery_batt_capacity_percent_aget(SAM_table ptr
 
 
 
-SAM_EXPORT double SAM_Cashloan_Battery_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Cashloan_LCOS_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
+		make_access_error("SAM_Cashloan", "batt_salvage_percentage");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Cashloan_LCOS_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "battery_total_cost_lcos", &result))
@@ -3312,67 +3312,7 @@ SAM_EXPORT double SAM_Cashloan_Battery_battery_total_cost_lcos_nget(SAM_table pt
 
 
 
-SAM_EXPORT double* SAM_Cashloan_Battery_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "grid_to_batt", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "grid_to_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Cashloan_Battery_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "monthly_batt_to_grid");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "monthly_grid_to_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "monthly_grid_to_load");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Cashloan_Battery_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "monthly_system_to_grid");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Cashloan_LCOS_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "charge_w_sys_ec_ym", nrows, ncols);
@@ -3384,7 +3324,67 @@ SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table
 
 
 
-SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Cashloan_LCOS_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "monthly_batt_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "monthly_grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "monthly_grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "monthly_system_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_LCOS_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "true_up_credits_ym", nrows, ncols);
@@ -3396,19 +3396,7 @@ SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mget(SAM_table
 
 
 
-SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_with_system", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "year1_monthly_ec_charge_with_system");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Cashloan_Monthly_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_gross_with_system", length);
@@ -3420,7 +3408,19 @@ SAM_EXPORT double* SAM_Cashloan_Monthly_year1_monthly_ec_charge_gross_with_syste
 
 
 
-SAM_EXPORT double* SAM_Cashloan_Monthly_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_with_system", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "year1_monthly_ec_charge_with_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_electricity_to_grid", length);

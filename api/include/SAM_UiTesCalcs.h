@@ -40,7 +40,7 @@ extern "C"
 	SAM_EXPORT void SAM_UiTesCalcs_Common_P_ref_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set T_htf_cold_des: Cold HTF temp (out of TES HX, if applicable) [C]
+	 * Set T_htf_cold_des: Cold design HTF temp into field [C]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -48,7 +48,7 @@ extern "C"
 	SAM_EXPORT void SAM_UiTesCalcs_Common_T_htf_cold_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set T_htf_hot_des: Hot HTF temp (into TES HX, if applicable) [C]
+	 * Set T_htf_hot_des: Hot design HTF temp from field [C]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -62,6 +62,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_UiTesCalcs_Common_design_eff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dt_hot: Heat exchanger approach temperature
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_UiTesCalcs_Common_dt_hot_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set field_fl_props: User defined field fluid prop data
@@ -147,6 +155,8 @@ extern "C"
 	SAM_EXPORT double SAM_UiTesCalcs_Common_T_htf_hot_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_UiTesCalcs_Common_design_eff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_UiTesCalcs_Common_dt_hot_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_UiTesCalcs_Common_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
