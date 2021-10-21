@@ -1,5 +1,5 @@
 1
-1085
+1086
 6par_aisc
 1
 1
@@ -1074,8 +1074,14 @@ batt_minimum_SOC
 1
 1
 1
-15
+30
 batt_minimum_modetime
+1
+1
+1
+1
+10
+batt_minimum_outage_SOC
 1
 1
 1
