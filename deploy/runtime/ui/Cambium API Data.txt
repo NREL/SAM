@@ -624,7 +624,7 @@ Cambium Download
 Choice
 
 0
-12961
+13062
 on_load{'Cambium API Data'} = define() {
 	// globals for api meta data
 	global project_uuid = '579698fe-5a38-4d7c-8611-d0c5969b2e54';
@@ -651,22 +651,32 @@ on_load{'Cambium API Data'} = define() {
 								['mp_enable_ancserv4','mp_ancserv4_revenue',
 								'mp_enable_ancserv4_percent_gen','mp_ancserv4_revenue_single','Ancillary Service 4']];
 
-	// make an api call (if necessary) to retrieve the metadata (takes a couple seconds)
-	if(value('cambium_meta_output') == '')
-		value('cambium_meta_output',curl(webapi('cambium_meta')));
-		
+	// make an api call
+	api_call = '0';
+	if ( value('cambium_meta_output') == '' )
+	{
+		api_call = curl(webapi('cambium_meta'));
+	}
+	
 	// if curl fails
-	if(value('cambium_meta_output') == '0' && cambium_enable)
+	if( api_call == 0 && cambium_enable)
 	{
 		cambium_enable = false;
-		msgbox('Cambium Error: No internet or error with the API itself; it will be disabled until internet is connected and this tab is reloaded.');
+		msgbox('Cambium Error\nA problem with your internet connection or the Cambium API\n'
+			 + 'is preventing SAM from downloading Cambium data.\n\n' 
+			 + 'Cambium inputs will be disabled until the problem is resolved.');
 	}
+	elseif(value('cambium_meta_output') == '' )
+	{
+		value('cambium_meta_output',api_call);
+	}	
+
 	// if html response
-	else if(ch(value('cambium_meta_output'),0) == '<' || ch(value('cambium_meta_output'),1) == '<')
+	if(ch(value('cambium_meta_output'),0) == '<' || ch(value('cambium_meta_output'),1) == '<')
 	{
 		display_cambium_error(value('cambium_meta_output'));
 	}
-	else if(cambium_enable)
+	elseif(cambium_enable)
 	{
 		api_meta_json = json_read(value('cambium_meta_output'));
 		// if json html response
@@ -1011,7 +1021,7 @@ update_dynamic_years = define() {
 
 // show html dialog errors returned from the API
 display_cambium_error = define(s) {
-	html_dialog(s,'Cambium Error from API:');
+	html_dialog(s,'Cambium Error from API',[600,400],true);
 };
 
 // true if item is in array
