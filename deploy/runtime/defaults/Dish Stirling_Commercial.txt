@@ -2214,7 +2214,7 @@ ur_description
 1
 4
 0
-ur_ec_billing_demand_lookback_percentages
+ur_billing_demand_lookback_percentages
 1
 3
 12
@@ -2232,19 +2232,19 @@ ur_ec_billing_demand_lookback_percentages
 60 0 
 60 0 
 
-ur_ec_billing_demand_lookback_period
+ur_billing_demand_lookback_period
 1
 1
 1
 1
 11
-ur_ec_billing_demand_minimum
+ur_billing_demand_minimum
 1
 1
 1
 1
 100
-ur_ec_enable_billing_demand
+ur_enable_billing_demand
 1
 1
 1

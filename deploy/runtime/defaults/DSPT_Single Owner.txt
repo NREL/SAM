@@ -9277,20 +9277,20 @@ ui_wacc
 1
 1
 7.10145
-ur_ec_billing_demand_lookback_percentages
+ur_billing_demand_lookback_percentages
 1
 2
 1
 12
 0 1 2 3 4 5 6 7 8 9 10 11 
 
-ur_ec_billing_demand_lookback_period
+ur_billing_demand_lookback_period
 1
 1
 1
 1
 11
-ur_ec_enable_billing_demand
+ur_enable_billing_demand
 1
 1
 1

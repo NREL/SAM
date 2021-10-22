@@ -206,10 +206,12 @@ DataMatrix
 Name
 5
 41
-ur_ec_billing_demand_lookback_percentages
+ur_billing_demand_lookback_percentages
+X
+
 X
 3
-24
+9
 Y
 3
 180
@@ -296,10 +298,12 @@ Numeric
 Name
 5
 36
-ur_ec_billing_demand_lookback_period
+ur_billing_demand_lookback_period
+X
+
 X
 3
-231
+9
 Y
 3
 105
@@ -358,10 +362,12 @@ Numeric
 Name
 5
 28
-ur_ec_billing_demand_minimum
+ur_billing_demand_minimum
+X
+
 X
 3
-231
+9
 Y
 3
 132
@@ -420,10 +426,12 @@ CheckBox
 Name
 5
 27
-ur_ec_enable_billing_demand
+ur_enable_billing_demand
+X
+
 X
 3
-33
+9
 Y
 3
 24
@@ -492,7 +500,7 @@ Electricity Rates - Billing Demand for Energy Charges
 1
 0
 Default
-ur_ec_billing_demand_lookback_percentages
+ur_billing_demand_lookback_percentages
 3
 3
 Ratchet demand charge rates
@@ -506,7 +514,7 @@ Electricity Rates - Billing Demand for Energy Charges
 1
 0
 Default
-ur_ec_billing_demand_lookback_period
+ur_billing_demand_lookback_period
 3
 1
 Lookback period
@@ -520,7 +528,7 @@ Electricity Rates - Billing Demand for Energy Charges
 1
 0
 Default
-ur_ec_billing_demand_minimum
+ur_billing_demand_minimum
 3
 1
 Minimum billing demand
@@ -534,7 +542,7 @@ Electricity Rates - Billing Demand for Energy Charges
 1
 0
 Default
-ur_ec_enable_billing_demand
+ur_enable_billing_demand
 3
 1
 Enable ratchet demand charges
@@ -564,7 +572,7 @@ Electricity Rates - Billing Demand for Energy Charges
 MonthlyFactor
 
 0
-2576
+2561
 on_load{'Utility Rate - Billing Demand for Energy Charge'} = define() {
 	enable_ratchet_demand_charges();
 	firstyear_demand_peaks_message();
@@ -616,16 +624,16 @@ function firstyear_demand_peaks_message() {
 	property('lbl_monthly_peaks_message','Caption',msg);
 }
 
-on_change{'ur_ec_enable_billing_demand'} = define() {
+on_change{'ur_enable_billing_demand'} = define() {
 	enable_ratchet_demand_charges();
 };
 
 function enable_ratchet_demand_charges()
 {
-	is_enabled = (value('ur_ec_enable_billing_demand')==1);
-	enable('ur_ec_billing_demand_lookback_percentages',is_enabled);
-	enable('ur_ec_billing_demand_lookback_period',is_enabled);
-	enable('ur_ec_billing_demand_minimum',is_enabled);
+	is_enabled = (value('ur_enable_billing_demand')==1);
+	enable('ur_billing_demand_lookback_percentages',is_enabled);
+	enable('ur_billing_demand_lookback_period',is_enabled);
+	enable('ur_billing_demand_minimum',is_enabled);
 	enable('ur_yearzero_usage_peaks',is_enabled);
 	show('lbl_monthly_peaks_message',is_enabled);
 	if ( is_btm() )
