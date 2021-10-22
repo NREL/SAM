@@ -1,4 +1,4 @@
-Utility Rate - Billing Demand for Energy Charge
+Utility Rate - Billing Demand
 1421
 447
 10
@@ -176,8 +176,8 @@ Tool Tip
 0
 Caption
 5
-495
-Billing demand for energy charges apply when the maximum usage units are in kWh/kW for one or more tiers in the Rates for Energy Charge table above. The Billing Demand by Month table determines how energy charges are calculated as a percentage of the monthly peak usage over the lookback period in months. Monthly peak usage in Year 0 is the peak demand by month before the system was installed, which SAM uses to calculate billing demand for the first year of the project. See Help for details.
+515
+Billing demand lookback can apply to the maximum usage of kWh/kW for one or more tiers in the Rates for Energy Charge table above, and/or the Demand Charge table below. The Billing Demand by Month table determines how energy charges are calculated as a percentage of the monthly peak usage over the lookback period in months. Monthly peak usage in Year 0 is the peak demand by month before the system was installed, which SAM uses to calculate billing demand for the first year of the project. See Help for details.
 TextColour
 4
 0
@@ -205,16 +205,14 @@ DataMatrix
 27
 Name
 5
-41
+38
 ur_billing_demand_lookback_percentages
 X
-
-X
 3
-9
+18
 Y
 3
-180
+177
 Width
 3
 1219
@@ -297,16 +295,14 @@ Numeric
 17
 Name
 5
-36
+33
 ur_billing_demand_lookback_period
 X
-
-X
 3
-9
+165
 Y
 3
-105
+108
 Width
 3
 90
@@ -361,16 +357,14 @@ Numeric
 17
 Name
 5
-28
+25
 ur_billing_demand_minimum
 X
-
-X
 3
-9
+165
 Y
 3
-132
+135
 Width
 3
 90
@@ -431,7 +425,7 @@ X
 
 X
 3
-9
+12
 Y
 3
 24
@@ -446,8 +440,8 @@ Tool Tip
 0
 Caption
 5
-40
-Enable billing demand for energy charges
+30
+Enable billing demand lookback
 State
 2
 0
