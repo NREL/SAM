@@ -1,5 +1,5 @@
 1
-485
+484
 adjust
 1
 5
@@ -1077,7 +1077,7 @@ forecast_price_signal_model
 1
 1
 1
-0
+1
 grid_curtailment
 1
 2
@@ -2822,7 +2822,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 state
 1
 4
@@ -2852,12 +2853,6 @@ system_capacity
 1
 1126.66
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1

@@ -1,5 +1,5 @@
 1
-534
+535
 CT
 1
 1
@@ -161,6 +161,12 @@ annual_wspd
 1
 1
 2.26213
+baseline_cost
+1
+1
+1
+1
+0
 batt_salvage_percentage
 1
 1
@@ -1089,7 +1095,7 @@ forecast_price_signal_model
 1
 1
 1
-0
+1
 fracture_angle
 1
 1
@@ -3022,7 +3028,8 @@ daggett_ca_34.865371_-116.783023_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv
 specified_pump_work_amount
 1
 1

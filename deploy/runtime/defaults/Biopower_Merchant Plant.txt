@@ -1,5 +1,5 @@
 1
-718
+717
 adjust
 1
 5
@@ -223196,7 +223196,8 @@ fargo_nd_46.9_-96.8_mts1_60_tmy
 solar_resource_file
 1
 4
-0
+35
+fargo_nd_46.9_-96.8_mts1_60_tmy.csv
 state
 1
 4
@@ -223226,12 +223227,6 @@ system_capacity
 1
 48535.6
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1

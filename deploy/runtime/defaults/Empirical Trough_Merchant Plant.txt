@@ -1,5 +1,5 @@
 1
-783
+782
 AntiFrPar
 1
 1
@@ -222787,7 +222787,8 @@ tucson_az_32.116521_-110.933042_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+48
+tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv
 state
 1
 4
@@ -222822,12 +222823,6 @@ system_use_lifetime_output
 1
 1
 0
-system_use_recapitalization
-1
-1
-1
-1
-0
 term_int_rate
 1
 1
@@ -222857,7 +222852,7 @@ total_indirect_cost
 1
 1
 1
-77579784
+59319460
 total_installed_cost
 1
 1

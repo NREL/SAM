@@ -1,5 +1,5 @@
 1
-341
+340
 adjust
 1
 5
@@ -944,7 +944,7 @@ forecast_price_signal_model
 1
 1
 1
-0
+1
 genericsys.cost.contingency
 1
 1
@@ -2006,12 +2006,6 @@ system_capacity
 1
 100000
 system_use_lifetime_output
-1
-1
-1
-1
-0
-system_use_recapitalization
 1
 1
 1
