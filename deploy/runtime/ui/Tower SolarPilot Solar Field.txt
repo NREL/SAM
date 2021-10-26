@@ -1,6 +1,6 @@
 Tower SolarPilot Solar Field
-843
-1144
+836
+1133
 58
 GroupBox
 
@@ -1157,7 +1157,7 @@ X
 456
 Y
 3
-1056
+1044
 Width
 3
 100
@@ -2105,7 +2105,7 @@ Colour
 Caption
 5
 25
-Design point availability
+Design-point Availability
 Bold
 2
 1
@@ -2181,8 +2181,8 @@ Colour
 255
 Caption
 5
-35
-Timeseries performance model losses
+30
+Time Series Performance Losses
 Bold
 2
 1
@@ -2199,10 +2199,10 @@ X
 9
 Y
 3
-954
+948
 Width
 3
-684
+825
 Height
 3
 180
@@ -2304,13 +2304,13 @@ Name
 object 75
 X
 3
-27
+21
 Y
 3
 975
 Width
 3
-555
+804
 Height
 3
 36
@@ -2319,8 +2319,8 @@ Tool Tip
 0
 Caption
 5
-190
-Availability losses reduce the solar field output to represent component outages, soiling, or other events. Design point availability is only used when SAM generates the solar field layout. 
+294
+Heliostat field availability losses reduce the solar field output to represent component outages, soiling, or other events. SAM applies the time series performance loss as part of the simulation calculations. It only uses the design-point availability when it generates the solar field layout. 
 TextColour
 4
 0
@@ -2761,7 +2761,7 @@ X
 105
 Y
 3
-1056
+1044
 Width
 3
 273
@@ -3229,7 +3229,7 @@ field_model_type
 1
 solar field model type
 0=design field and tower/receiver geometry 1=design field 2=user field, calculate performance 3=user performance maps vs solar position
- 
+Heliostat Field
 0
 8
 1
