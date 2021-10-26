@@ -44,6 +44,5 @@ branches:
   - master
   - develop
   - patch
-  - EPRI_Parametrics
   - Command_line_script
-  - save_as_JSON
+ 
