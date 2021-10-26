@@ -1,0 +1,87 @@
+Financial Merchant Plant Description
+858
+86
+2
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+850
+Height
+3
+81
+Tool Tip
+5
+0
+Caption
+5
+35
+Revenue for Merchant Plant Projects
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+15
+Y
+3
+24
+Width
+3
+834
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+392
+Merchant Plant projects earn revenue from capacity payments or by selling electricity at hourly or subhourly power prices. You can import price data from external models or databases, or download hourly data from the NREL Cambium database. SAM can model revenue from sales in the energy market and/or up to four ancillary service markets with optional capacity payments. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+0
+
+0
+0
