@@ -223,9 +223,6 @@ function cf_operating_expenses()
 	cfline( 'cf_insurance_expense', 0); 
    	if ( fin == 'Community Solar')
 	{
-		cfline( '' ); 
-		cfline('cf_community_solar_upfront', 0); //? move to investing activities
-		cfline('cf_community_solar_upfront_per_capacity', 0); //? move to investing activities
 		cfline('cf_community_solar_recurring_fixed', 0);
 		cfline('cf_community_solar_recurring_capacity',  0);
 		cfline('cf_community_solar_recurring_generation', 0);
@@ -395,12 +392,13 @@ function cf_operating_activities() // all PPA models except Sale Leaseback
 function cf_investing_activities()
 {
 	fin = financing();
-	has_debt = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'Host Developer' );
+	has_debt = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'Host Developer' || fin == 'Community Solar');
 	cfline( 'INVESTING ACTIVITIES', -1);
 	cfline('cost_prefinancing',0,-1,0);
 	if ( fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip') {	cfline('cost_equity_closing', 0,-1,0); }
 	if ( fin == 'Leveraged Partnership Flip' ) { cfline('sponsor_pretax_development', 0,-1,0); }
 	if ( fin == 'All Equity Partnership Flip' ) { cfline('cost_dev_fee_value', 0,-1,0); }
+	if ( fin == 'Community Solar' ) { cfline('cf_community_solar_upfront', 0,-1,0 ); cfline('cf_community_solar_upfront_per_capacity', 0,-1,0); }
 	if ( has_debt )
 	{
 		cfline('cost_debt_closing',0,-1,0); 
@@ -668,8 +666,8 @@ function cf_levelized_metrics()
 	has_roe = ( fin == 'Single Owner' || fin == 'Host Developer' );
 	has_ppa_revenue = ( fin != 'Community Solar');
 	cfline('AFTER-TAX LEVELIZED COE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1); 
-	cfline('cf_annual_costs', 0); 
-	cfline('cf_energy_value', 0); 
+	cfline('cf_annual_costs', 0);
+	if ( has_ppa_revenue ) { cfline('cf_energy_value', 0); }
 	cfline('cf_energy_net', 0);  
 	cfline( '' ); 
 	cfline('npv_annual_costs',0 ); 
@@ -901,10 +899,6 @@ function community_solar_intermediates()
 	cfline('cf_subscriber2_bill_credit_rate', 3); 
 	cfline('cf_subscriber3_bill_credit_rate', 3); 
 	cfline('cf_subscriber4_bill_credit_rate', 3); 
-	cfline('');
-	cfline('cf_recurring_fixed', 0); 
-	cfline('cf_recurring_capacity', 0); 
-	cfline('cf_recurring_generation', 0); 
 	cfline('');
 	cfline('cf_subscriber1_generation_payment', 0); 
 	cfline('cf_subscriber2_generation_payment', 0); 
