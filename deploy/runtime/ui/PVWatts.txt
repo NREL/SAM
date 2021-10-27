@@ -3024,7 +3024,7 @@ total_land_area
 1
 Total land area
 acres
- 
+PVWatts
 0
 9
 1
@@ -3038,9 +3038,9 @@ ui_array_land_area_acres
 1
 Array land area
 acres
- 
+PVWatts
 0
-5
+9
 1
 1
 1
@@ -3052,9 +3052,9 @@ ui_array_land_area_ha
 1
 Array land area
 ha
- 
+PVWatts
 0
-5
+9
 1
 1
 1
@@ -3066,9 +3066,9 @@ ui_array_land_area_m2
 1
 Array land area
 m²
- 
+PVWatts
 0
-4
+8
 1
 1
 1
@@ -3080,7 +3080,7 @@ ui_array_land_area_multiplier
 1
 Array land area multiplier
  
- 
+PVWatts
 0
 2
 1
@@ -3094,7 +3094,7 @@ ui_land_area_additional
 1
 Additional land area
  
- 
+PVWatts
 0
 2
 1
@@ -3107,8 +3107,8 @@ ui_land_area_additional_units
 3
 1
 Land area units
- 
- 
+0=acre,1=ha
+PVWatts
 8
 acres|ha
 3
@@ -3123,7 +3123,7 @@ ui_total_land_area_ha
 1
 Total land area
 ha
- 
+PVWatts
 0
 5
 1
