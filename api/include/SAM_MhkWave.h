@@ -311,6 +311,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_device_average_power_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_data_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_index_mat_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MhkWave_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -320,6 +322,8 @@ extern "C"
 	SAM_EXPORT double SAM_MhkWave_Outputs_numberHours_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkWave_Outputs_numberRecords_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MhkWave_Outputs_sig_wave_height_data_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MhkWave_Outputs_sig_wave_height_index_mat_aget(SAM_table ptr, int* length, SAM_error *err);
 

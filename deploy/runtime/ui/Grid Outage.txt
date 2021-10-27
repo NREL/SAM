@@ -1,0 +1,213 @@
+Grid Outage
+859
+141
+4
+DataArray
+
+1
+10
+Name
+5
+11
+grid_outage
+X
+3
+144
+Y
+3
+66
+Width
+3
+184
+Height
+3
+24
+Tool Tip
+5
+0
+Mode
+3
+1
+Label
+5
+3
+0/1
+Description
+5
+134
+Enter or import grid outage data for each time step for one year: 0 for time steps with no outage and 1 for time steps with an outage.
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+15
+lbl_grid_outage
+X
+3
+48
+Y
+3
+93
+Width
+3
+597
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+6
+Y
+3
+3
+Width
+3
+850
+Height
+3
+135
+Tool Tip
+5
+0
+Caption
+5
+11
+Grid Outage
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+object 73
+X
+3
+30
+Y
+3
+21
+Width
+3
+813
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+237
+For behind-the-meter (BTM) systems with battery storage and a critical load, you can define grid outages to see if the system can meet the critical load through the outage(s). Click Edit Array to specify outages over the analysis period.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+
+1
+grid_outage
+3
+2
+Grid outage
+0/1
+Grid
+0
+2
+1
+2
+1
+1
+0
+DataArray
+
+0
+776
+on_load{'Grid Outage'} = define() {
+	message = '';
+	color = 'Black';
+	// is_crit() defined in Electric Load Crit callback
+	// this will not work if Grid Outage form is used with a FOM configuration
+	if ( !is_crit() ) 
+	{
+		message = 'Modeling grid outages requires a critical load. Specify the critical load on the Electric Load page.';
+		color = 'Red';
+	}
+	property( 'lbl_grid_outage','Caption',message );
+	property( 'lbl_grid_outage','TextColour',color );
+	property( 'grid_outage','AnalysisPeriod', ${analysis_period} );
+	
+	if ( technology() == 'Fuel Cell' ) 
+	{
+		enable( 'grid_outage', is_crit() && ${en_batt} );
+	}
+	else
+	{
+		enable( 'grid_outage', is_crit() );
+	}
+};
+
+function is_grid_outage() // used on Electric Load Critical form
+{
+	return sum(${grid_outage}) > 0;
+}

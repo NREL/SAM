@@ -1574,6 +1574,12 @@ SAM_EXPORT void SAM_HostDeveloper_BatterySystem_en_batt_nset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_HostDeveloper_Battery_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_annual_charge_energy", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_HostDeveloper_Battery_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_from_system", arr, length);
@@ -4551,6 +4557,18 @@ SAM_EXPORT double SAM_HostDeveloper_BatterySystem_en_batt_nget(SAM_table ptr, SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_batt", &result))
 		make_access_error("SAM_HostDeveloper", "en_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Battery_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "batt_annual_charge_energy");
 	});
 	return result;
 }
