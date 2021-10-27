@@ -546,7 +546,7 @@ const_per_total1
 1
 1
 1
-1027640
+1.02764e+06
 const_per_total2
 1
 1
@@ -606,7 +606,7 @@ construction_financing_cost
 1
 1
 1
-1027640
+1.02764e+06
 contingency
 1
 1
@@ -648,7 +648,7 @@ cost_dev_fee_value
 1
 1
 1
-1541470
+1.54147e+06
 cost_equity_closing
 1
 1
@@ -1747,7 +1747,7 @@ land_area_value
 1
 1
 1
-0
+162.569
 land_fixed
 1
 1
@@ -2066,7 +2066,7 @@ modulearray_area
 1
 1
 1
-0
+657895
 modulearray_power
 1
 1
@@ -2646,6 +2646,12 @@ total_land_area
 1
 1
 162.569
+total_module_area
+1
+1
+1
+1
+657895
 tz
 1
 1
@@ -2664,12 +2670,6 @@ ui_array_land_area_ha
 1
 1
 65.7895
-ui_array_land_area_m2
-1
-1
-1
-1
-657895
 ui_array_land_area_multiplier
 1
 1

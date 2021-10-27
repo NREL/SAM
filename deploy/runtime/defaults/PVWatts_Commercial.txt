@@ -1126,7 +1126,7 @@ land_area_value
 1
 1
 1
-0
+1.75575
 land_fixed
 1
 1
@@ -1359,7 +1359,7 @@ modulearray_area
 1
 1
 1
-0
+7105.26
 modulearray_power
 1
 1
@@ -1921,6 +1921,12 @@ total_land_area
 1
 1
 1.75575
+total_module_area
+1
+1
+1
+1
+7105.26
 tz
 1
 1
@@ -1945,12 +1951,6 @@ ui_array_land_area_ha
 1
 1
 0.710526
-ui_array_land_area_m2
-1
-1
-1
-1
-7105.26
 ui_array_land_area_multiplier
 1
 1

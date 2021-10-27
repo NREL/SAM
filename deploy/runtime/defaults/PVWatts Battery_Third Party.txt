@@ -1043,6 +1043,12 @@ total_land_area
 1
 1
 0.0152583
+total_module_area
+1
+1
+1
+1
+61.7483
 tz
 1
 1
@@ -1067,12 +1073,6 @@ ui_array_land_area_ha
 1
 1
 0.00617483
-ui_array_land_area_m2
-1
-1
-1
-1
-61.7483
 ui_array_land_area_multiplier
 1
 1
