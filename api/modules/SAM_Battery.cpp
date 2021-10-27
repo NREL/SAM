@@ -3154,6 +3154,17 @@ SAM_EXPORT double* SAM_Battery_Outputs_annual_import_to_grid_energy_aget(SAM_tab
 
 
 
+SAM_EXPORT double SAM_Battery_Outputs_annual_outage_losses_unmet_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_outage_losses_unmet", &result))
+		make_access_error("SAM_Battery", "annual_outage_losses_unmet");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Battery_Outputs_average_battery_conversion_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4045,6 +4056,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_interconnection_loss_aget(SAM_tab
 
 
 
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_outage_losses_unmet", length);
+	if (!result)
+		make_access_error("SAM_Battery", "monthly_outage_losses_unmet");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battery_Outputs_monthly_system_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4087,6 +4110,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_outage_durations_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "outage_durations", length);
 	if (!result)
 		make_access_error("SAM_Battery", "outage_durations");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "outage_losses_unmet", length);
+	if (!result)
+		make_access_error("SAM_Battery", "outage_losses_unmet");
 	});
 	return result;
 }

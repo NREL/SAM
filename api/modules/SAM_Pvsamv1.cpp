@@ -10541,6 +10541,17 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_inv_tdcloss_nget(SAM_table ptr, SAM
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_outage_losses_unmet_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_outage_losses_unmet", &result))
+		make_access_error("SAM_Pvsamv1", "annual_outage_losses_unmet");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_beam_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -12192,6 +12203,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_interconnection_loss_aget(SAM_tab
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_outage_losses_unmet", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "monthly_outage_losses_unmet");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_poa_beam_eff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12329,6 +12352,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_outage_durations_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "outage_durations", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "outage_durations");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "outage_losses_unmet", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "outage_losses_unmet");
 	});
 	return result;
 }

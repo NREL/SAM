@@ -1873,12 +1873,36 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_flip_target_year_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set mp_ancserv1_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: mp_enable_ancserv1_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_ancserv1_revenue: Ancillary services 1 revenue input
 	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv1_revenue_single: Ancillary services 1 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: mp_enable_ancserv1_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv2_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: mp_enable_ancserv2_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_ancserv2_revenue: Ancillary services 2 revenue input
@@ -1889,12 +1913,44 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set mp_ancserv2_revenue_single: Ancillary services 2 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: mp_enable_ancserv2_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv3_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: mp_enable_ancserv3_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_ancserv3_revenue: Ancillary services 3 revenue input
 	 * options: Lifetime x 2 [Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv3_revenue_single: Ancillary services 3 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: mp_enable_ancserv3_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv4_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: mp_enable_ancserv4_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_ancserv4_revenue: Ancillary services 4 revenue input
@@ -1905,12 +1961,28 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set mp_ancserv4_revenue_single: Ancillary services 4 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: mp_enable_ancserv4_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
 	 * Set mp_enable_ancserv1: Enable ancillary services 1 Revenue [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mp_enable_ancserv1_percent_gen: Enable percent demand cleared capacity option for ancillary service 1 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_enable_ancserv2: Enable ancillary services 2 Revenue [0/1]
@@ -1921,12 +1993,28 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv2_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set mp_enable_ancserv2_percent_gen: Enable percent demand cleared capacity option for ancillary service 2 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_enable_ancserv3: Enable ancillary services 3 Revenue [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mp_enable_ancserv3_percent_gen: Enable percent demand cleared capacity option for ancillary service 3 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_enable_ancserv4: Enable ancillary services 4 Revenue [0/1]
@@ -1937,6 +2025,14 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv4_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set mp_enable_ancserv4_percent_gen: Enable percent demand cleared capacity option for ancillary service 4 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_enable_energy_market_revenue: Enable energy market revenue [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
@@ -1945,12 +2041,36 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set mp_enable_market_percent_gen: Enable percent demand cleared capacity option for market revenue [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_energy_market_revenue: Energy market revenue input
 	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_energy_market_revenue_single: Energy market revenue input
+	 * options: Lifetime x 1 [Price($/MWh)]
+	 * constraints: None
+	 * required if: mp_enable_market_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_energy_market_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_market_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: mp_enable_market_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -2836,25 +2956,55 @@ extern "C"
 
 	SAM_EXPORT double SAM_Merchantplant_Revenue_flip_target_year_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv1_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv2_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv4_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv4_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv2_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv4_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_market_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_energy_market_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_market_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
