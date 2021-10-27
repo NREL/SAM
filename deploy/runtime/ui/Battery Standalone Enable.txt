@@ -1,0 +1,61 @@
+Battery Standalone Enable
+396
+31
+1
+CheckBox
+
+1
+9
+Name
+5
+18
+en_standalone_batt
+X
+3
+6
+Y
+3
+3
+Width
+3
+384
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+25
+Enable standalone battery
+State
+2
+1
+TabOrder
+3
+4294967295
+
+1
+en_standalone_batt
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+
+0
+160
+on_load{'Battery Standalone Enable'} = define() {
+	show('en_standalone_batt',false);
+	// default is false so set true on load
+	value('en_standalone_batt',1);
+};

@@ -35,6 +35,7 @@ addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host 
 addconfig( 'PV Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
 addconfig( 'PVWatts Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer'] );
 addconfig( 'Generic Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
+addconfig( 'Standalone Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
 addconfig( 'Retired', ['None']);
 
 // tree_parent for performance models defined in PopulateTech() in main.cpp
@@ -45,6 +46,7 @@ configopt( 'High-X Concentrating PV',     { 'tree_parent'='PV', 'long_name'='Hig
 configopt( 'PV Battery',               { 'tree_parent'='BATT', 'long_name'='Detailed PV-Battery',       'short_name'='PV-Battery',     'description'='Detailed photovoltaic model with battery storage' } );
 configopt( 'PVWatts Battery',          { 'tree_parent'='BATT', 'long_name'='PVWatts-Battery',     'short_name'='PVWatts-Battery',     'description'='PVWatts system model with battery storage' } );
 configopt( 'Generic Battery',          { 'tree_parent'='BATT', 'long_name'='Generic System-Battery',    'short_name'='Generic-Battery',     'description'='Generic system model with battery storage' } );
+configopt( 'Standalone Battery',       { 'tree_parent'='BATT', 'long_name'='Generic Standalone Battery',    'short_name'='Standalone-Battery',     'description'='Generic standalone battery storage' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind',                                   'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass Combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
 configopt( 'Geothermal Power',            { 'long_name'='Geothermal',                             'short_name'='Geothermal',       'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
@@ -2132,6 +2134,82 @@ setup_generic_battery_pages(false);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
 addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+setup_sale_leaseback_pages( );
+
+// Standalone Battery /////////////////////////////////////////////////////////
+
+function setup_standalone_battery_pages(is_btm) {
+	addpage( [['Battery Standalone Enable']], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
+
+	if (is_btm)
+		setup_battery_pages_behind_the_meter();
+	else
+		setup_battery_pages_front_of_meter();
+
+	setup_grid_page();
+}
+
+setconfig( 'Standalone Battery', 'Residential' );
+setmodules( ['belpe', 'battery',  'grid', 'utilityrate5', 'cashloan']);
+setup_standalone_battery_pages(true);
+setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+addpage( [[ 'Generic System Battery Costs','O and M Costs Battery']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+setup_residential_pages( LOAD_BELPE_CRIT );
+
+setconfig( 'Standalone Battery', 'Commercial' );
+setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
+setup_standalone_battery_pages(true);
+setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+addpage( [[ 'Generic System Battery Costs','O and M Costs Battery']],{ 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+setup_commercial_pages( LOAD_SIMPLE_CRIT ); //does not include building load calculator
+
+setconfig( 'Standalone Battery', 'Third Party' );
+setmodules( ['belpe', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setup_standalone_battery_pages(true);
+setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+setup_thirdparty_pages( LOAD_BELPE_CRIT );
+
+setconfig( 'Standalone Battery', 'Host Developer' );
+setmodules( ['battery', 'grid', 'utilityrate5', 'host_developer']);
+setup_standalone_battery_pages(true);
+setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+addpage( [[ 'Generic System Battery Costs','O and M Costs Battery' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+setup_host_developer_pages( LOAD_SIMPLE_CRIT );
+
+setconfig( 'Standalone Battery', 'Single Owner' );
+setmodules( ['battery', 'grid', 'utilityrate5', 'singleowner']);
+setup_standalone_battery_pages(false);
+setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+addpage( [[ 'Generic System Battery Costs','O and M Costs Battery' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+setup_single_owner_pages( );
+setup_electricity_purchases();
+
+setconfig( 'Standalone Battery', 'Merchant Plant' );
+setmodules( ['battery', 'grid', 'merchantplant']);
+setup_standalone_battery_pages(false);
+setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+addpage( [[ 'Generic System Battery Costs','O and M Costs Battery' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+setup_merchant_plant_pages( );
+
+setconfig( 'Standalone Battery', 'Leveraged Partnership Flip' );
+setmodules( ['battery', 'grid', 'levpartflip']);
+setup_standalone_battery_pages(false);
+setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+addpage( [[ 'Generic System Battery Costs','O and M Costs Battery' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+setup_leveraged_partnership_flip_pages( );
+
+setconfig( 'Standalone Battery', 'All Equity Partnership Flip' );
+setmodules( ['battery', 'grid', 'equpartflip']);
+setup_standalone_battery_pages(false);
+setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+addpage( [[ 'Generic System Battery Costs','O and M Costs Battery' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
+setup_all_equity_partnership_flip_pages( );
+
+setconfig( 'Standalone Battery', 'Sale Leaseback' );
+setmodules( ['battery', 'grid', 'saleleaseback']);
+setup_standalone_battery_pages(false);
+setup_lifetime_page( DEGRADATION_AC_LIFETIME );
+addpage( [[ 'Generic System Battery Costs','O and M Costs Battery' ]], { 'sidebar'='System Costs', 'help'='generic_system_costs' } );
 setup_sale_leaseback_pages( );
 
 // PVWatts Battery /////////////////////////////////////////////////////////

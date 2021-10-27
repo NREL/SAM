@@ -142,4 +142,22 @@ Generic Battery,Merchant Plant,73190888,19.608706,NA,;
 Generic Battery,Leveraged Partnership Flip,73190888,24.984268,28.888752,; 
 Generic Battery,All Equity Partnership Flip,73190888,28.859419,34.666504,; 
 Generic Battery,Sale Leaseback,73190888,29.022760,34.666504,; 
+Standalone Battery,Residential,OVERWRITE	
+Standalone Battery,Residential,fail,fail,fail
+Standalone Battery,Commercial,OVERWRITE	
+Standalone Battery,Commercial,fail,fail,fail
+Standalone Battery,Third Party,OVERWRITE	
+Standalone Battery,Third Party,fail,fail,fail
+Standalone Battery,Host Developer,OVERWRITE	
+Standalone Battery,Host Developer,fail,fail,fail
+Standalone Battery,Single Owner,OVERWRITE	
+Standalone Battery,Single Owner,fail,fail,fail
+Standalone Battery,Merchant Plant,OVERWRITE	
+Standalone Battery,Merchant Plant,fail,fail,fail
+Standalone Battery,Leveraged Partnership Flip,OVERWRITE	
+Standalone Battery,Leveraged Partnership Flip,fail,fail,fail
+Standalone Battery,All Equity Partnership Flip,OVERWRITE	
+Standalone Battery,All Equity Partnership Flip,fail,fail,fail
+Standalone Battery,Sale Leaseback,OVERWRITE	
+Standalone Battery,Sale Leaseback,fail,fail,fail
 final_configuration_eof,none,NA,NA,NA,
