@@ -501,7 +501,7 @@ equations{ 'om_land_lease'} = define(){
 	{
 		for ( i=0; i<#${ui_land_lease}; i++)
 		{
-			x[i] = ${ui_land_lease}[i] * 2.47105;
+			x[i] = ${ui_land_lease}[i] / 2.47105;
 		}
 	}
 	else

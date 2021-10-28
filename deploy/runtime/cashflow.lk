@@ -226,7 +226,7 @@ function cf_operating_expenses()
 		cfline('cf_community_solar_recurring_fixed', 0);
 		cfline('cf_community_solar_recurring_capacity',  0);
 		cfline('cf_community_solar_recurring_generation', 0);
-		cfline('Land lease payments expense', -1, 0); // TO DO Move this to standard om expenses 
+		cfline('cf_land_lease_expense', 0); // TO DO Move this to standard om expenses 
 		cfline( '' ); 
 	}
 	if ( fin == "Residential" || fin == "Commercial" ) {cfline( 'cf_net_salvage_value', 0); }
