@@ -31,10 +31,17 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endif
 
 #include "pythonhandler.h"
+#include <ssc/../rapidjson/document.h>
+#include <ssc/../rapidjson/istreamwrapper.h>
+#include <ssc/../rapidjson/stringbuffer.h>
+#include <ssc/../rapidjson/writer.h>
+
+
 
 PythonConfig ReadPythonConfig(const std::string& configPath) {
     // load python configuration
-    Json::Value python_config_root;
+//    Json::Value python_config_root;
+    rapidjson::Document python_config_root;
     std::ifstream python_config_doc(configPath);
     if (python_config_doc.fail())
         throw std::runtime_error("Could not open " + configPath );
@@ -50,36 +57,46 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
 	}
 #endif
 
-    python_config_doc >> python_config_root;
+    //python_config_doc >> python_config_root;
+    rapidjson::IStreamWrapper iswc(python_config_doc);
+    python_config_root.ParseStream(iswc);
 
-    if (!python_config_root.isMember("miniconda_version"))
+    if (!python_config_root.HasMember("miniconda_version"))
         throw std::runtime_error("Missing key 'miniconda_version' in " + configPath);
-    if (!python_config_root.isMember("python_version"))
+    if (!python_config_root.HasMember("python_version"))
         throw std::runtime_error("Missing key 'python_version' in " + configPath);
-    if (!python_config_root.isMember("exec_path"))
+    if (!python_config_root.HasMember("exec_path"))
         throw std::runtime_error("Missing key 'exec_path' in " + configPath);
-    if (!python_config_root.isMember("pip_path"))
+    if (!python_config_root.HasMember("pip_path"))
         throw std::runtime_error("Missing key 'pip_path' in " + configPath);
-    if (!python_config_root.isMember("packages"))
+    if (!python_config_root.HasMember("packages"))
         throw std::runtime_error("Missing key 'packages' in " + configPath);
 
     std::vector<std::string> packages;
-    for (auto &i : python_config_root["packages"])
-        packages.push_back(i.asString());
+    for (auto &i : python_config_root["packages"].GetArray())
+        packages.push_back(i.GetString());
 
     std::unordered_map<std::string, std::string> options;
-    if (python_config_root.isMember("options")){
+    /*
+    if (python_config_root.isMember("options")) {
         Json::Value json_val = python_config_root["options"];
         Json::Value::Members members = json_val.getMemberNames();
-        for (auto const &name : members) {
-            options.insert({name, json_val[name].asString()});
+        for (auto const& name : members) {
+            options.insert({ name, json_val[name].asString() });
+        }
+    }
+    */
+    if (python_config_root.HasMember("options")){
+        rapidjson::Value json_val = python_config_root["options"].GetObjectW();
+        for (rapidjson::Value::ConstMemberIterator itr = json_val.MemberBegin(); itr != json_val.MemberEnd(); ++itr) {
+            options.insert({ itr->name.GetString(),itr->value.GetString() });
         }
     }
 
-    PythonConfig config = {python_config_root["python_version"].asString(),
-                           python_config_root["miniconda_version"].asString(),
-                           python_config_root["exec_path"].asString(),
-                           python_config_root["pip_path"].asString(),
+    PythonConfig config = {python_config_root["python_version"].GetString(),
+                           python_config_root["miniconda_version"].GetString(),
+                           python_config_root["exec_path"].GetString(),
+                           python_config_root["pip_path"].GetString(),
                            packages,
                            options};
 
@@ -89,7 +106,7 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
 void WritePythonConfig(const std::string& configPath, const PythonConfig& config){
     std::ofstream configFile;
     configFile.open(configPath);
-
+/*
     Json::Value configObj;
     configObj["python_version"] = config.pythonVersion;
     configObj["miniconda_version"] = config.minicondaVersion;
@@ -104,6 +121,25 @@ void WritePythonConfig(const std::string& configPath, const PythonConfig& config
     Json::StreamWriterBuilder builder;
     std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
     writer -> write(configObj, &configFile);
+    configFile.close();
+    */
+    rapidjson::Document configObj;
+    configObj["python_version"].SetString(config.pythonVersion.c_str(), configObj.GetAllocator());
+    configObj["miniconda_version"].SetString(config.minicondaVersion.c_str(), configObj.GetAllocator());
+    configObj["exec_path"].SetString( config.execPath.c_str(), configObj.GetAllocator());
+    configObj["pip_path"].SetString(config.pipPath.c_str(), configObj.GetAllocator());
+    configObj["packages"].SetArray();
+    for (auto& i : config.packages)
+        configObj["packages"].PushBack(rapidjson::Value(i.c_str(), configObj.GetAllocator()), configObj.GetAllocator());
+    for (auto& i : config.options)
+        configObj["options"][i.first.c_str()].SetString(i.second.c_str(), configObj.GetAllocator());
+
+
+    rapidjson::StringBuffer buffer;
+    buffer.Clear();
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    configObj.Accept(writer);
+    configFile << buffer.GetString();
     configFile.close();
 }
 
@@ -125,24 +161,25 @@ bool InstallPythonUnix(const std::string& path, const PythonConfig& config){
 
 PythonPackageConfig ReadPythonPackageConfig(const std::string& name, const std::string& configFile){
     // load python configuration
-    Json::Value python_config_root;
+    rapidjson::Document python_config_root;
     std::ifstream python_config_doc(configFile);
     if (python_config_doc.fail())
         throw std::runtime_error("Could not open " + configFile );
 
-    python_config_doc >> python_config_root;
+    rapidjson::IStreamWrapper iswc(python_config_doc);
+    python_config_root.ParseStream(iswc);
 
-    if (!python_config_root.isMember("min_python_version"))
+    if (!python_config_root.HasMember("min_python_version"))
         throw std::runtime_error("Missing key 'min_python_version' in " + configFile);
-    if (!python_config_root.isMember("run_cmd"))
+    if (!python_config_root.HasMember("run_cmd"))
         throw std::runtime_error("Missing key 'run_cmd' in " + configFile);
-    if (!python_config_root.isMember("version"))
+    if (!python_config_root.HasMember("version"))
         throw std::runtime_error("Missing key 'version' in " + configFile);
 
     PythonPackageConfig config = {name,
-                                  python_config_root["min_python_version"].asString(),
-                                  python_config_root["run_cmd"].asString(),
-                                  python_config_root["version"].asString()};
+                                  python_config_root["min_python_version"].GetString(),
+                                  python_config_root["run_cmd"].GetString(),
+                                  python_config_root["version"].GetString()};
 
     return config;
 }
