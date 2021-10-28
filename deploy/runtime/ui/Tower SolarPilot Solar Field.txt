@@ -1,7 +1,7 @@
 Tower SolarPilot Solar Field
-845
-1042
-55
+836
+1133
+58
 GroupBox
 
 1
@@ -45,13 +45,13 @@ X
 9
 Y
 3
-444
+438
 Width
 3
 392
 Height
 3
-278
+293
 Tool Tip
 5
 0
@@ -75,7 +75,7 @@ X
 408
 Y
 3
-579
+588
 Width
 3
 426
@@ -105,7 +105,7 @@ X
 408
 Y
 3
-723
+735
 Width
 3
 425
@@ -135,13 +135,13 @@ X
 9
 Y
 3
-726
+735
 Width
 3
 392
 Height
 3
-204
+210
 Tool Tip
 5
 0
@@ -225,7 +225,7 @@ X
 642
 Y
 3
-597
+606
 Width
 3
 99
@@ -287,7 +287,7 @@ X
 642
 Y
 3
-621
+630
 Width
 3
 99
@@ -349,7 +349,7 @@ X
 642
 Y
 3
-645
+654
 Width
 3
 99
@@ -411,7 +411,7 @@ X
 642
 Y
 3
-669
+678
 Width
 3
 99
@@ -473,7 +473,7 @@ X
 642
 Y
 3
-693
+702
 Width
 3
 99
@@ -535,7 +535,7 @@ X
 249
 Y
 3
-684
+675
 Width
 3
 138
@@ -567,7 +567,7 @@ X
 252
 Y
 3
-747
+759
 Width
 3
 100
@@ -629,7 +629,7 @@ X
 249
 Y
 3
-537
+528
 Width
 3
 100
@@ -691,7 +691,7 @@ X
 252
 Y
 3
-774
+786
 Width
 3
 100
@@ -753,7 +753,7 @@ X
 252
 Y
 3
-828
+840
 Width
 3
 100
@@ -815,7 +815,7 @@ X
 702
 Y
 3
-789
+801
 Width
 3
 100
@@ -877,7 +877,7 @@ X
 249
 Y
 3
-513
+504
 Width
 3
 100
@@ -1001,7 +1001,7 @@ X
 249
 Y
 3
-585
+576
 Width
 3
 100
@@ -1063,7 +1063,7 @@ X
 249
 Y
 3
-660
+651
 Width
 3
 138
@@ -1154,10 +1154,10 @@ Name
 helio_active_fraction
 X
 3
-702
+456
 Y
 3
-978
+1044
 Width
 3
 100
@@ -1219,7 +1219,7 @@ X
 252
 Y
 3
-855
+867
 Width
 3
 100
@@ -1281,7 +1281,7 @@ X
 249
 Y
 3
-489
+480
 Width
 3
 100
@@ -1373,7 +1373,7 @@ X
 249
 Y
 3
-561
+552
 Width
 3
 100
@@ -1522,10 +1522,10 @@ Name
 helio_reflectance
 X
 3
-702
+249
 Y
 3
-951
+702
 Width
 3
 100
@@ -1587,7 +1587,7 @@ X
 249
 Y
 3
-465
+456
 Width
 3
 100
@@ -1649,7 +1649,7 @@ X
 252
 Y
 3
-801
+813
 Width
 3
 100
@@ -1711,7 +1711,7 @@ X
 702
 Y
 3
-741
+753
 Width
 3
 100
@@ -1773,7 +1773,7 @@ X
 702
 Y
 3
-813
+825
 Width
 3
 100
@@ -1835,7 +1835,7 @@ X
 702
 Y
 3
-765
+777
 Width
 3
 100
@@ -1897,7 +1897,7 @@ X
 702
 Y
 3
-837
+849
 Width
 3
 100
@@ -1959,7 +1959,7 @@ X
 249
 Y
 3
-609
+600
 Width
 3
 100
@@ -2021,7 +2021,7 @@ X
 249
 Y
 3
-633
+624
 Width
 3
 100
@@ -2070,6 +2070,122 @@ BackColour
 TabOrder
 3
 4294967295
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+432
+Y
+3
+1023
+Width
+3
+213
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+25
+Design-point Availability
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+10
+object 214
+X
+3
+393
+Y
+3
+1017
+Width
+3
+21
+Height
+3
+106
+Tool Tip
+5
+0
+Orientation
+3
+1
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+10
+object 215
+X
+3
+30
+Y
+3
+1023
+Width
+3
+300
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+30
+Time Series Performance Losses
+Bold
+2
+1
 GroupBox
 
 1
@@ -2083,13 +2199,13 @@ X
 9
 Y
 3
-930
+948
 Width
 3
 825
 Height
 3
-102
+180
 Tool Tip
 5
 0
@@ -2113,7 +2229,7 @@ X
 408
 Y
 3
-864
+879
 Width
 3
 425
@@ -2188,23 +2304,23 @@ Name
 object 75
 X
 3
-300
+21
 Y
 3
-942
+975
 Width
 3
-210
+804
 Height
 3
-87
+36
 Tool Tip
 5
 0
 Caption
 5
-107
-Availability losses reduce the solar field output to represent component outages, soiling, or other events.
+294
+Heliostat field availability losses reduce the solar field output to represent component outages, soiling, or other events. SAM applies the time series performance loss as part of the simulation calculations. It only uses the design-point availability when it generates the solar field layout. 
 TextColour
 4
 0
@@ -2642,10 +2758,10 @@ Name
 sf_adjust
 X
 3
-21
+105
 Y
 3
-957
+1044
 Width
 3
 273
@@ -2756,7 +2872,7 @@ X
 657
 Y
 3
-903
+915
 Width
 3
 100
@@ -2818,7 +2934,7 @@ X
 657
 Y
 3
-879
+891
 Width
 3
 100
@@ -3113,7 +3229,7 @@ field_model_type
 1
 solar field model type
 0=design field and tower/receiver geometry 1=design field 2=user field, calculate performance 3=user performance maps vs solar position
- 
+Heliostat Field
 0
 8
 1
@@ -3158,7 +3274,7 @@ Heliostat availability
  
 Heliostat Field
 0
-2
+3
 1
 1
 1
