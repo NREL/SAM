@@ -1,7 +1,7 @@
 Marine Tidal Converter
 949
 1185
-12
+16
 GroupBox
 
 1
@@ -32,6 +32,96 @@ Tidal Energy Converter
 Bold
 2
 1
+GroupBox
+
+1
+8
+Name
+5
+11
+GroupBox213
+X
+3
+21
+Y
+3
+1116
+Width
+3
+912
+Height
+3
+54
+Tool Tip
+5
+0
+Caption
+5
+16
+Save / Load Data
+Bold
+2
+1
+Button
+
+1
+8
+Name
+5
+16
+btnLoadTidalData
+X
+3
+150
+Y
+3
+1137
+Width
+3
+111
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+17
+Load from file...
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+16
+btnSaveTidalData
+X
+3
+36
+Y
+3
+1137
+Width
+3
+111
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+15
+Save to file...
+TabOrder
+3
+4294967295
 Button
 
 1
@@ -330,6 +420,50 @@ Save Power Curve to Library
 TabOrder
 3
 4294967295
+TextEntry
+
+1
+11
+Name
+5
+21
+tidal_device_filename
+X
+3
+267
+Y
+3
+1137
+Width
+3
+654
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+0
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 DataMatrix
 
 1
@@ -349,7 +483,7 @@ Width
 300
 Height
 3
-775
+727
 Tool Tip
 5
 0
@@ -702,7 +836,7 @@ equations{ 'device_rated_power' } = define ()
 };
 
 
-3739
+4663
 function plot_device_curve()
 {
 	setplot('tidal_power_curve_plot');
@@ -851,4 +985,44 @@ on_change{'btn_add_remove_folders'} = define() {
 		update_library_folders( '' );
 	}
 	else { msgbox( 'Could not open window!\nWave Resource Data Folder Settings window not available.' ); }
+};
+
+on_change{'btnSaveTidalData'} = define() {
+	logmsg('running btnSaveTidalData');
+	file = choose_file( '', 'Save Tidal Device Data As', 
+		'Data Files (*.csv)|*.csv', true);
+		
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+		if (group_write('PV Module (CEC User Specified)',file))
+		{	
+			value( 'tidal_data_filename', file );
+			msgbox("Data saved! \n");
+		}
+		else
+		{
+			value( 'tidal_data_filename', "" );
+			msgbox("Data save failed! \n");
+		}
+	}
+};
+
+on_change{'btnLoadTidalData'} = define() {
+	logmsg('running btnLoadTidalData');
+	file = choose_file( '', 'Open Tidal Device Data File', 
+		'Data Files (*.csv)|*.csv');
+		
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+		if (group_read('PV Module (CEC User Specified)',file))
+		{	
+			value( 'tidal_data_filename', file );
+			msgbox("Data loaded! \n");
+		}
+		else
+		{
+			value( 'tidal_data_filename', "" );
+			msgbox("Data load failed! \n");
+		}
+	}
 };

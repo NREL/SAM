@@ -2900,29 +2900,44 @@ void fcall_group_write(lk::invoke_t &cxt)
 
 	wxCSVData csv;
 	int row = 0;
-	for (VarInfoLookup::iterator it = ci->Variables.begin();
-		it != ci->Variables.end();	++it)
-	{
-		VarInfo &vi = *(it->second);
-		// skip calculated and indicator values
-		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
-		if (vi.Group.Lower() == groupname.Lower())
+    if (groupname == "PV Module (CEC User Specified)") {
+        for (VarInfoLookup::iterator it = ci->Variables.begin();
+            it != ci->Variables.end();	++it)
+        {
+            VarInfo& vi = *(it->second);
+            // skip calculated and indicator values
+            if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
+            if (vi.Group.Lower() == groupname.Lower())
 
-		{
-			wxString var_name = it->first;
-			// get value
-			if (VarValue *vv = c->Values().Get(var_name))
-			{
-				// write out csv with first row var name and second row var values
-				wxString value = vv->AsString();
-				value.Replace("\n", ";;");
-				csv.Set(row, 0, var_name);
-				csv.Set(row, 1, value);
-				csv.Set(row, 2, vi.Label);
-				row++;
-			}
-		}
-	}
+            {
+                wxString var_name = it->first;
+                // get value
+                if (VarValue* vv = c->Values().Get(var_name))
+                {
+                    // write out csv with first row var name and second row var values
+                    wxString value = vv->AsString();
+                    value.Replace("\n", ";;");
+                    csv.Set(row, 0, var_name);
+                    csv.Set(row, 1, value);
+                    csv.Set(row, 2, vi.Label);
+                    row++;
+                }
+            }
+        }
+    }
+    else if (groupname == "ME Tidal Converter") {
+        if (VarValue* vv = c->Values().Get("tidal_power_curve")) {
+            wxString vel = "";
+            wxString power = "";
+            matrix_t<double> power_curve = vv->Matrix();
+            for (int r = 3; r < (int)vv->Rows(); r++) {
+                vel = wxString::Format("%g", power_curve.at(row-3, 0));
+                power = wxString::Format("%g", power_curve.at(row-3, 1));
+                csv.Set(row, 0, vel);
+                csv.Set(row, 1, power);
+            }
+        }
+    }
 	cxt.result().assign(csv.WriteFile(filename) ? 1.0 : 0.0);
 }
 
@@ -2942,33 +2957,59 @@ void fcall_group_read(lk::invoke_t &cxt)
 	bool ret_val = csv.ReadFile(filename);
 	if (ret_val)
 	{
-		wxArrayString errors;
-		wxArrayString list;
+        wxArrayString errors;
+        wxArrayString list;
+        if (groupname == "PV Module (CEC User Specified)") {
+            
 
-		for (row = 0; row < (int)csv.NumRows(); row++)
-		{
-			wxString var_name = csv.Get(row, 0);
-			// get value
-			wxString value = csv.Get(row, 1);
-			value.Replace(";;", "\n");
-			if (VarValue *vv = c->Values().Get(var_name))
-			{
-				if (!VarValue::Parse(vv->Type(), value, *vv))
-				{
-					errors.Add("Problem assigning " + var_name + " to " + value);
-					ret_val = false;
-				}
-				else
-					list.Add(var_name);
-			}
-			else
-			{// variable not found
-				errors.Add("Problem assigning " + var_name + " missing with " + value);
-				ret_val = false;
-			}
-		}
-		// this causes the UI and other variables to be updated
-		c->VariablesChanged(list);
+            for (row = 0; row < (int)csv.NumRows(); row++)
+            {
+                wxString var_name = csv.Get(row, 0);
+                // get value
+                wxString value = csv.Get(row, 1);
+                value.Replace(";;", "\n");
+                if (VarValue* vv = c->Values().Get(var_name))
+                {
+                    if (!VarValue::Parse(vv->Type(), value, *vv))
+                    {
+                        errors.Add("Problem assigning " + var_name + " to " + value);
+                        ret_val = false;
+                    }
+                    else
+                        list.Add(var_name);
+                }
+                else
+                {// variable not found
+                    errors.Add("Problem assigning " + var_name + " missing with " + value);
+                    ret_val = false;
+                }
+            }
+            // this causes the UI and other variables to be updated
+            c->VariablesChanged(list);
+        }
+        else if (groupname == "ME Tidal Converter") {
+            wxString tidal_power_curve = "";
+            wxString vel = "";
+            wxString power = "";
+            for (int r = 3; r < (int)csv.NumRows(); r++) {
+                tidal_power_curve += "[" + csv.Get(r, 0) + ";" + csv.Get(r, 1) + "]";
+            }
+            if (VarValue* vv = c->Values().Get("tidal_power_curve")) {
+                if (!VarValue::Parse(vv->Type(), tidal_power_curve, *vv))
+                {
+                    errors.Add("Problem assigning tidal_power_curve to" + tidal_power_curve);
+                    ret_val = false;
+                }
+                else
+                    list.Add(tidal_power_curve);
+            }
+            else
+            {// variable not found
+                errors.Add("Problem assigning tidal_power_curve to" + tidal_power_curve);
+                ret_val = false;
+            }
+
+        }
 	}
 	cxt.result().assign(ret_val ? 1.0 : 0.0);
 }
