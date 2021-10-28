@@ -465,8 +465,8 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	*/
 
 	// check that input order has same count as number of compute modules
-	if (simlist.size() != input_order.size())
-		m_errors.Add("input ordering failed");
+	//if (simlist.size() != input_order.size())
+	//	m_errors.Add("input ordering failed");
 	// can do inputs with compute module calls below
 	/*
 	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
@@ -486,7 +486,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	// run compute modules in sequence (INOUT variables will be updated)
 //	for (size_t kk = 0; kk < simlist.size(); kk++)
 	// Issue SAM #614 - write out all inputs before first compute module is called so that INOUT are not overwritten inbetween compute module
-	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
+	for (size_t kk = 0; kk < input_order.size(); kk++)
 	{
 		for (size_t jj = 0; jj < input_order[kk].size(); jj++)
 		{
@@ -495,7 +495,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 				m_errors.Add(wxString::Format("Input %s write failed", name));
 		}
 	}
-	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
+	for (size_t kk = 0; kk < simlist.size(); kk++)
 	{
 		CreateSSCModule(simlist[kk]);
 		RunSSCModule(simlist[kk]);
@@ -7806,32 +7806,13 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 								cm_names.push_back(var_name);
 						}
 					}
-					//					else if (reqd == "*")
-					//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
 				}
 			}
-			/*
-			else if (var_type == SSC_OUTPUT)
-			{
-				wxString field;
-				int pos = name.Find(':');
-				if (pos != wxNOT_FOUND)
-				{
-					field = name.Mid(pos + 1);
-					name = name.Left(pos);
-				}
-
-				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != ssc_data_type)
-				{
-					if (!SSCTypeToSSC(ssc_data_type, p_data_output, name))
-						m_errors.Add("Error for output " + name);
-				}
-			}
-			*/
 		} // end of compute module variables
 		if (cm_names.size() > 0)
 			input_order.push_back(cm_names);
+		else // handled in all code generation except pySAM
+			input_order.push_back(std::vector<const char *>());
 	}
 
 
@@ -7844,37 +7825,6 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 	if (!SupportingFiles())
 		m_errors.Add("SupportingFiles failed");
 
-	/* old single unordered grouping of inputs
-	const char *name = ssc_data_first(p_data);
-	while (name)
-	{
-		if (!Input(p_data, name, m_folder, array_matrix_threshold))
-			m_errors.Add(wxString::Format("Input %s write failed",name));
-		name = ssc_data_next(p_data);
-	}
-	*/
-
-	// check that input order has same count as number of compute modules
-	if (simlist.size() != input_order.size())
-		m_errors.Add("input ordering failed");
-	// can do inputs with compute module calls below
-	/*
-	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
-	{
-		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
-		fprintf(m_fp, "\\ Compute module '%s' inputs;\n", simlist[k].c_str()); // TODO - if desired add comment for each language implementation
-		for (size_t jj = 0; jj < input_order[k].size(); jj++)
-		{
-			const char* name = input_order[k][jj];
-			if (!Input(p_data, name, m_folder, array_matrix_threshold))
-				m_errors.Add(wxString::Format("Input %s write failed", name));
-		}
-		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
-	}
-	*/
-
-	// run compute modules in sequence (INOUT variables will be updated)
-//	for (size_t kk = 0; kk < simlist.size(); kk++)
 	for (size_t kk = 0; kk < simlist.size() && kk < input_order.size(); kk++)
 	{
 

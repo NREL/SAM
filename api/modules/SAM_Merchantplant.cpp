@@ -1598,6 +1598,12 @@ SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nset(SAM_
 	});
 }
 
+SAM_EXPORT void SAM_Merchantplant_Battery_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_annual_charge_energy", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Merchantplant_Battery_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_from_system", arr, length);
@@ -4637,6 +4643,18 @@ SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nget(SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cp_system_nameplate", &result))
 		make_access_error("SAM_Merchantplant", "cp_system_nameplate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "batt_annual_charge_energy");
 	});
 	return result;
 }

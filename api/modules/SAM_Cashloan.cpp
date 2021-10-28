@@ -1112,6 +1112,12 @@ SAM_EXPORT void SAM_Cashloan_ThirdPartyOwnership_elec_cost_without_system_aset(S
 	});
 }
 
+SAM_EXPORT void SAM_Cashloan_Battery_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_annual_charge_energy", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Cashloan_Battery_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_from_system", arr, length);
@@ -3241,6 +3247,18 @@ SAM_EXPORT double* SAM_Cashloan_ThirdPartyOwnership_elec_cost_without_system_age
 	result = ssc_data_get_array(ptr, "elec_cost_without_system", length);
 	if (!result)
 		make_access_error("SAM_Cashloan", "elec_cost_without_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_Battery_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "batt_annual_charge_energy");
 	});
 	return result;
 }

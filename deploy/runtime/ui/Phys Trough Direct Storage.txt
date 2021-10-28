@@ -1673,7 +1673,7 @@ Thermal Energy Storage
 0
 Numeric
 
-2058
+2154
 //
 //  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND
 //  INPUT AGGREGATOR EQUATIONS BELOW!
@@ -1709,12 +1709,14 @@ equations{ '$MIMO$ ui_tes_calcs' } = define()
 	ssc_var(obj, "tshours", ${tshours});				//[hrs]
 	ssc_var(obj, "T_htf_hot_des", ${T_loop_out});		//[C]
 	ssc_var(obj, "T_htf_cold_des", ${T_loop_in_des});	//[C]
-	ssc_var(obj, "rec_htf", ${Fluid});					//[-]
-	ssc_var(obj, "field_fl_props", ${field_fl_props});	//[-]
+	ssc_var(obj, "store_fluid", ${Fluid});					//[-]
+	ssc_var(obj, "store_fl_props", ${field_fl_props});	//[-]
 	ssc_var(obj, "h_tank_min", ${h_tank_min});			//[m]
 	ssc_var(obj, "h_tank", ${h_tank});					//[m]
 	ssc_var(obj, "tank_pairs", ${tank_pairs});			//[-]
 	ssc_var(obj, "u_tank", ${u_tank});					//[-]
+	ssc_var(obj, "field_fluid", ${Fluid});
+	ssc_var(obj, "field_fl_props", ${field_fl_props});
 
 	ret = ssc_exec(obj, 'ui_tes_calcs');
 	
