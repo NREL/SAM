@@ -73,6 +73,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "stochastic.h"
 #include "codegencallback.h"
 #include "nsrdb.h"
+#include "combinecases.h"
 #include "wavetoolkit.h"
 #include "graph.h"
 
@@ -2204,6 +2205,28 @@ void fcall_nsrdbquery(lk::invoke_t &cxt)
 	cxt.result().hash_item("file").assign(filename);
 	cxt.result().hash_item("folder").assign(foldername);
 	cxt.result().hash_item("addfolder").assign(addfolder);
+}
+
+void fcall_combinecasesquery(lk::invoke_t& cxt)
+{
+	LK_DOC("combinecasesquery", "Creates the Combine Cases dialog box, lists all open cases, simulates selected cases and returns a combined generation profile", "(none) : string");
+	CombineCasesDialog dlgCombineCases(SamApp::Window(), "Combine Cases", cxt);
+	dlgCombineCases.CenterOnParent();
+	int code = dlgCombineCases.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
+
+	//Return an empty string if the window was dismissed
+	if (code == wxID_CANCEL)
+	{
+		cxt.result().assign(wxEmptyString);
+		return;
+	}
+
+	int result = dlgCombineCases.GetResultCode();		// 0 = success, 1 = error
+
+	cxt.result().empty_hash();
+
+	// meta data
+	cxt.result().hash_item("result_code").assign(result);
 }
 
 void fcall_wavetoolkit(lk::invoke_t& cxt)
@@ -5601,6 +5624,7 @@ lk::fcall_t* invoke_uicallback_funcs()
 		fcall_current_at_voltage_sandia,
 		fcall_windtoolkit,
 		fcall_nsrdbquery,
+		fcall_combinecasesquery,
         fcall_wavetoolkit,
 		fcall_openeiutilityrateform,
 		fcall_group_read,
