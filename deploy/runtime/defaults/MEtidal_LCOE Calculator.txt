@@ -1,5 +1,5 @@
 1
-654
+656
 accumulators_cost
 1
 1
@@ -886,6 +886,11 @@ device_mooring
 4
 13
 Slack Mooring
+device_name
+1
+4
+9
+<invalid>
 device_pto_type
 1
 4
@@ -3480,6 +3485,11 @@ test_num
 1
 1
 0
+tidal_device_filename
+1
+4
+9
+<invalid>
 tidal_power_curve
 1
 3

@@ -1,7 +1,7 @@
 Marine Tidal Converter
 949
 1185
-16
+25
 GroupBox
 
 1
@@ -188,6 +188,398 @@ Numeric
 17
 Name
 5
+30
+device_characteristic_diameter
+X
+3
+789
+Y
+3
+963
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+11
+Name
+5
+17
+device_foundation
+X
+3
+792
+Y
+3
+1023
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+12
+device_label
+X
+3
+351
+Y
+3
+870
+Width
+3
+258
+Height
+3
+225
+Tool Tip
+5
+0
+Caption
+5
+227
+Fill in the Device information in the boxes on the right to define your device before clicking 'Save to file' to write a csv file with the device information. The device .csv files can then be accessed from the device library. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Numeric
+
+1
+17
+Name
+5
+11
+device_mass
+X
+3
+792
+Y
+3
+993
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+11
+Name
+5
+15
+device_material
+X
+3
+792
+Y
+3
+1083
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+11
+Name
+5
+14
+device_mooring
+X
+3
+792
+Y
+3
+1053
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+11
+Name
+5
+11
+device_name
+X
+3
+792
+Y
+3
+873
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+TextEntry
+
+1
+11
+Name
+5
+15
+device_pto_type
+X
+3
+792
+Y
+3
+933
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 18
 device_rated_power
 X
@@ -244,6 +636,50 @@ BackColour
 TabOrder
 3
 27
+TextEntry
+
+1
+11
+Name
+5
+16
+device_tech_type
+X
+3
+792
+Y
+3
+903
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Text
+5
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Library
 
 1
@@ -626,15 +1062,15 @@ AlignTop
 2
 1
 
-12
+14
 device_characteristic_diameter
 3
 1
- 
- 
+Characteristic Diameter
+m
  
 0
-8
+0
 1
 1
 1
@@ -644,11 +1080,11 @@ Default
 device_foundation
 3
 4
- 
+Foundation Type
  
  
 0
-8
+0
 1
 4
 9
@@ -657,11 +1093,11 @@ Default
 device_mass
 3
 1
- 
- 
+Mass
+kg
  
 0
-8
+0
 1
 1
 1
@@ -671,11 +1107,11 @@ Default
 device_material
 3
 4
- 
+Primary structural material
  
  
 0
-8
+0
 1
 4
 9
@@ -684,11 +1120,24 @@ Default
 device_mooring
 3
 4
- 
+ Mooring Type
  
  
 0
-8
+0
+1
+4
+9
+<invalid>
+Default
+device_name
+3
+4
+Device name
+ 
+ 
+0
+0
 1
 4
 9
@@ -697,11 +1146,11 @@ Default
 device_pto_type
 3
 4
- 
+PTO Type
  
  
 0
-8
+0
 1
 4
 9
@@ -724,11 +1173,11 @@ Numeric
 device_tech_type
 3
 4
- 
+Technology Type
  
  
 0
-8
+0
 1
 4
 9
@@ -775,6 +1224,19 @@ power_matrix_choice
 1
 0
 RadioChoice
+tidal_device_filename
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+Default
 tidal_power_curve
 3
 3
@@ -836,7 +1298,7 @@ equations{ 'device_rated_power' } = define ()
 };
 
 
-4663
+5496
 function plot_device_curve()
 {
 	setplot('tidal_power_curve_plot');
@@ -879,6 +1341,17 @@ function power_matrix_option()
 		property('tidal_power_curve', 'ShowButtons', 0);
 		show('lib_tidal_device', true);
 		show('save_power_curve_btn', false);
+		enable('btnSaveTidalData', false);
+		enable('btnLoadTidalData', false);
+		show('device_name', false);
+		show('device_tech_type', false);
+		show('device_pto_type', false);
+		show('device_characteristic_diameter', false);
+		show('device_mass', false);
+		show('device_foundation', false);
+		show('device_mooring', false);
+		show('device_material', false);
+		show('device_label', false);
 	}
 	else {
 		enable('tidal_power_curve', true);
@@ -886,6 +1359,17 @@ function power_matrix_option()
 		property('tidal_power_curve', 'ShowButtons', 1);
 		show('lib_tidal_device', false);
 		show('save_power_curve_btn', true);
+		enable('btnSaveTidalData', true);
+		enable('btnLoadTidalData', true);
+		show('device_name', true);
+		show('device_tech_type', true);
+		show('device_pto_type', true);
+		show('device_characteristic_diameter', true);
+		show('device_mass', true);
+		show('device_foundation', true);
+		show('device_mooring', true);
+		show('device_material', true);
+		show('device_label', true);
 	}
 	refresh('tidal_power_curve');
 	plot_device_curve();
@@ -898,11 +1382,13 @@ on_change{'save_power_curve_btn'} = define() {
 
 on_change{'tidal_power_curve'}=define()
 {
+	refresh('tidal_power_curve');
 	plot_device_curve();
 };
 
 on_load{'Marine Tidal Converter'}=define()
 {
+	power_matrix_option();
 	plot_device_curve();
 	//update_library_folders('');
 };
@@ -994,14 +1480,14 @@ on_change{'btnSaveTidalData'} = define() {
 		
 	if ( file != '' ) {
 		file = replace(file, '\\', '/');
-		if (group_write('PV Module (CEC User Specified)',file))
+		if (group_write('ME Tidal Converter',file))
 		{	
-			value( 'tidal_data_filename', file );
+			//value( 'tidal_data_filename', file );
 			msgbox("Data saved! \n");
 		}
 		else
 		{
-			value( 'tidal_data_filename', "" );
+			//value( 'tidal_data_filename', "" );
 			msgbox("Data save failed! \n");
 		}
 	}
@@ -1014,14 +1500,15 @@ on_change{'btnLoadTidalData'} = define() {
 		
 	if ( file != '' ) {
 		file = replace(file, '\\', '/');
-		if (group_read('PV Module (CEC User Specified)',file))
+		if (group_read('ME Tidal Converter',file))
 		{	
-			value( 'tidal_data_filename', file );
+			//value( 'tidal_data_filename', file );
 			msgbox("Data loaded! \n");
+			refresh('tidal_power_curve');
 		}
 		else
 		{
-			value( 'tidal_data_filename', "" );
+			//value( 'tidal_data_filename', "" );
 			msgbox("Data load failed! \n");
 		}
 	}

@@ -2926,16 +2926,50 @@ void fcall_group_write(lk::invoke_t &cxt)
         }
     }
     else if (groupname == "ME Tidal Converter") {
+        csv.Set(0, 0, "Name");
+        csv.Set(0, 1, "Technology Type");
+        csv.Set(0, 2, "PTO Type");
+        csv.Set(0, 3, "Characteristic Diameter");
+        csv.Set(0, 4, "Unballasted Structural Mass");
+        csv.Set(0, 5, "Foundation Type");
+        csv.Set(0, 6, "Mooring Type");
+        csv.Set(0, 7, "Primary Structure Material");
+        csv.Set(2, 0, "Velocity");
+        csv.Set(2, 1, "Power");
         if (VarValue* vv = c->Values().Get("tidal_power_curve")) {
             wxString vel = "";
             wxString power = "";
             matrix_t<double> power_curve = vv->Matrix();
             for (int r = 3; r < (int)vv->Rows(); r++) {
-                vel = wxString::Format("%g", power_curve.at(row-3, 0));
-                power = wxString::Format("%g", power_curve.at(row-3, 1));
-                csv.Set(row, 0, vel);
-                csv.Set(row, 1, power);
+                vel = wxString::Format("%g", power_curve.at(r-3, 0));
+                power = wxString::Format("%g", power_curve.at(r-3, 1));
+                csv.Set(r, 0, vel);
+                csv.Set(r, 1, power);
             }
+        }
+        if (VarValue* vv = c->Values().Get("device_name")) {
+            csv.Set(1, 0, vv->AsString());
+        }
+        if (VarValue* vv = c->Values().Get("device_tech_type")) {
+            csv.Set(1, 1, vv->AsString());
+        }
+        if (VarValue* vv = c->Values().Get("device_pto_type")) {
+            csv.Set(1, 2, vv->AsString());
+        }
+        if (VarValue* vv = c->Values().Get("device_characteristic_diameter")) {
+            csv.Set(1, 3, vv->AsString());
+        }
+        if (VarValue* vv = c->Values().Get("device_mass")) {
+            csv.Set(1, 4, vv->AsString());
+        }
+        if (VarValue* vv = c->Values().Get("device_foundation")) {
+            csv.Set(1, 5, vv->AsString());
+        }
+        if (VarValue* vv = c->Values().Get("device_mooring")) {
+            csv.Set(1, 6, vv->AsString());
+        }
+        if (VarValue* vv = c->Values().Get("device_material")) {
+            csv.Set(1, 7, vv->AsString());
         }
     }
 	cxt.result().assign(csv.WriteFile(filename) ? 1.0 : 0.0);
@@ -2955,10 +2989,11 @@ void fcall_group_read(lk::invoke_t &cxt)
 	wxCSVData csv;
 	int row = 0;
 	bool ret_val = csv.ReadFile(filename);
+    wxArrayString errors;
+    wxArrayString list;
 	if (ret_val)
 	{
-        wxArrayString errors;
-        wxArrayString list;
+        
         if (groupname == "PV Module (CEC User Specified)") {
             
 
@@ -2984,8 +3019,7 @@ void fcall_group_read(lk::invoke_t &cxt)
                     ret_val = false;
                 }
             }
-            // this causes the UI and other variables to be updated
-            c->VariablesChanged(list);
+            
         }
         else if (groupname == "ME Tidal Converter") {
             wxString tidal_power_curve = "";
@@ -3001,16 +3035,19 @@ void fcall_group_read(lk::invoke_t &cxt)
                     ret_val = false;
                 }
                 else
-                    list.Add(tidal_power_curve);
+                    list.Add("tidal_power_curve");
             }
             else
             {// variable not found
                 errors.Add("Problem assigning tidal_power_curve to" + tidal_power_curve);
                 ret_val = false;
             }
+            
 
         }
 	}
+    // this causes the UI and other variables to be updated
+    c->VariablesChanged(list);
 	cxt.result().assign(ret_val ? 1.0 : 0.0);
 }
 
