@@ -346,17 +346,19 @@ function setup_utility_rate()
 		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates' } );
 }
 
-// 'en_electricity_rates' is only an input available for single owner configurations
+// 'en_electricity_rates' is only an input available for FOM configurations
 function setup_electricity_purchases()
 {
-	addpage( [[ {'name'='Utility Rate - Enable', 'caption'='Use Retail Rates'},
-			    {'name'='Utility Rate - Flat', 'caption'='Use Retail Rates'},
+	
+	addpage( [[{'name'='Utility Rate - Empty','caption'='Use PPA Price'}],
+			  [{'name'='Utility Rate - Flat', 'caption'='Use Retail Rates'},
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
 			    { 'name'='Utility Rate - Billing Demand for Energy Charge', 'caption'='Billing Demand for Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_billing_demand_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false},
 			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
-		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases'});
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases', 'exclusive_header_pages'=['Utility Rate - Enable'], 'exclusive_var'='en_electricity_rates', 'exclusive_hide'=true } );
+
 }
 
 function setup_single_owner_pages()
@@ -748,7 +750,7 @@ setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
 setconfig( 'Flat Plate PV', 'Single Owner' );
 // TO DO include utilityrate5 for inverter nighttime consumption? update all PPA and Merchant Plant configs accordingly
 //setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner'] );
-setmodules( ['pvsamv1', 'grid', 'singleowner'] );
+setmodules( ['pvsamv1', 'grid', 'utilityrate5', 'singleowner'] );
 setup_flat_plate_pv_pages();
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Capital Costs' ],
