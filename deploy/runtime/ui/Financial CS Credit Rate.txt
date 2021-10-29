@@ -955,33 +955,33 @@ equations{'ui_cr_subscriber3_name'} = define() {
 equations{'ui_cr_subscriber4_name'} = define() {
 	return ${subscriber4_name};
 };
-1166
-on_load{'Financial CS Subscribers'} = define()
+1286
+on_load{'Financial CS Credit Rate'} = define()
 {
-	property('subscriber1_credit_rate','FixedLength',${analysis_period});
-	property('subscriber2_credit_rate','FixedLength',${analysis_period});
-	property('subscriber3_credit_rate','FixedLength',${analysis_period});
-	property('subscriber4_credit_rate','FixedLength',${analysis_period});
-	enable('subscriber1_credit_rate_escal', #${subscriber1_credit_rate} == 1 );
-	enable('subscriber2_credit_rate_escal', #${subscriber2_credit_rate} == 1 );
-	enable('subscriber3_credit_rate_escal', #${subscriber3_credit_rate} == 1 );
-	enable('subscriber4_credit_rate_escal', #${subscriber4_credit_rate} == 1 );
+	property('subscriber1_bill_credit_rate','FixedLength',${analysis_period});
+	property('subscriber2_bill_credit_rate','FixedLength',${analysis_period});
+	property('subscriber3_bill_credit_rate','FixedLength',${analysis_period});
+	property('subscriber4_bill_credit_rate','FixedLength',${analysis_period});
+	enable('subscriber1_bill_credit_rate_escal', #${subscriber1_bill_credit_rate} == 1 );
+	enable('subscriber2_bill_credit_rate_escal', #${subscriber2_bill_credit_rate} == 1 );
+	enable('subscriber3_bill_credit_rate_escal', #${subscriber3_bill_credit_rate} == 1 );
+	enable('subscriber4_bill_credit_rate_escal', #${subscriber4_bill_credit_rate} == 1 );
 };
 
-on_change{'subscriber1_credit_rate'} = define()
+on_change{'subscriber1_bill_credit_rate'} = define()
 {
-	enable('subscriber1_credit_rate_escal', #${subscriber1_credit_rate} == 1 );
+	enable('subscriber1_bill_credit_rate_escal', #${subscriber1_bill_credit_rate} == 1 );
 };
-on_change{'subscriber2_credit_rate'} = define()
+on_change{'subscriber2_bill_credit_rate'} = define()
 {
-	enable('subscriber2_credit_rate_escal', #${subscriber2_credit_rate} == 1 );
+	enable('subscriber2_bill_credit_rate_escal', #${subscriber2_bill_credit_rate} == 1 );
 };
-on_change{'subscriber3_credit_rate'} = define()
+on_change{'subscriber3_bill_credit_rate'} = define()
 {
-	enable('subscriber3_credit_rate_escal', #${subscriber3_credit_rate} == 1 );
+	enable('subscriber3_bill_credit_rate_escal', #${subscriber3_bill_credit_rate} == 1 );
 };
-on_change{'subscriber4_credit_rate'} = define()
+on_change{'subscriber4_bill_credit_rate'} = define()
 {
-	enable('subscriber4_credit_rate_escal', #${subscriber4_credit_rate} == 1 );
+	enable('subscriber4_bill_credit_rate_escal', #${subscriber4_bill_credit_rate} == 1 );
 };
 

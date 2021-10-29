@@ -168,8 +168,7 @@ Prefix
 0
 Suffix
 5
-2
- %
+0
 ThousandsSep
 2
 0
@@ -399,7 +398,7 @@ om_land_lease
 2
 Land lease cost
 $/acre
-Operating Costs
+Land Lease Costs
 0
 2
 1
@@ -413,7 +412,7 @@ om_land_lease_escal
 1
 Land lease escalation rate
 %/yr
-Operating Costs
+Land Lease Costs
 0
 2
 1
@@ -427,7 +426,7 @@ ui_land_area
 1
 Land area estimate
 acres
- 
+Land Lease Costs
 0
 4
 1
@@ -441,7 +440,7 @@ ui_land_area_ha
 1
 Land area estimate
 ha
- 
+Land Lease Costs
 0
 5
 1
@@ -455,7 +454,7 @@ ui_land_area_multiplier
 1
 Land area multiplier
  
- 
+Land Lease Costs
 0
 0
 1
@@ -468,8 +467,8 @@ ui_land_area_units
 3
 1
 Land area units
- 
- 
+0=$/acre,1=$/ha
+Land Lease Costs
 11
 $/acre|$/ha
 3
@@ -484,7 +483,7 @@ ui_land_lease
 2
 Annual land lease cost
  
- 
+Land Lease Costs
 0
 2
 1
