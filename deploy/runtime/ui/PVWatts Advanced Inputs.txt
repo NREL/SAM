@@ -1,7 +1,7 @@
 PVWatts Advanced Inputs
-605
-423
-8
+621
+549
+16
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 572
 Height
 3
-329
+515
 Tool Tip
 5
 0
@@ -32,192 +32,95 @@ Advanced Parameters
 Bold
 2
 1
-Numeric
+LossAdjustment
 
 1
-17
+7
 Name
 5
-12
-ac_nameplate
+6
+adjust
 X
 3
-204
+33
 Y
 3
-114
+447
 Width
 3
-90
+294
 Height
 3
-24
+72
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-2
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
 TabOrder
 3
-4
-Numeric
+24
+Button
 
 1
-17
+8
+Name
+5
+13
+edit_3d_scene
+X
+3
+318
+Y
+3
+339
+Width
+3
+210
+Height
+3
+30
+Tool Tip
+5
+0
+Caption
+5
+27
+Open 3D shade calculator...
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
 Name
 5
 11
-dc_ac_ratio
+en_snowloss
 X
 3
-204
+27
 Y
 3
-87
+129
 Width
 3
-90
+173
 Height
 3
 24
 Tool Tip
 5
 0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
+Caption
 5
-0
-Suffix
-5
-0
-ThousandsSep
+20
+Estimate snow losses
+State
 2
 1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
 TabOrder
 3
-3
-Numeric
-
-1
-17
-Name
-5
-7
-inv_eff
-X
-3
-204
-Y
-3
-141
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-5
+4294967295
 CheckBox
 
 1
@@ -228,10 +131,10 @@ Name
 module_is_bifacial
 X
 3
-201
+24
 Y
 3
-171
+48
 Width
 3
 135
@@ -251,72 +154,36 @@ State
 TabOrder
 3
 4294967295
-Choice
-
-1
-9
-Name
-5
-11
-module_type
-X
-3
-204
-Y
-3
-60
-Width
-3
-141
-Height
-3
-24
-Tool Tip
-5
-0
-Items
-6
-3
-Standard
-Premium
-Thin film
-Selection
-3
-4294967295
-TabOrder
-3
-2
 Label
 
 1
 13
 Name
 5
-10
-object 735
+16
+msg_pvwatts_snow
 X
 3
-348
+204
 Y
 3
-15
+129
 Width
 3
-231
+348
 Height
 3
-159
+48
 Tool Tip
 5
 0
 Caption
 5
-255
-SAM uses PVWatts Version 7, which is different from the online PVWatts Calculator version. SAM's results will likely be different from the online calculator's results until the online calculator is updated. See Help for information about PVWatts versions.
+0
 TextColour
 4
 255
-128
+0
 0
 255
 Bold
@@ -334,20 +201,376 @@ AlignRight
 AlignTop
 2
 1
+Divider
+
+1
+10
+Name
+5
+9
+object 22
+X
+3
+21
+Y
+3
+27
+Width
+3
+525
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+11
+Bifaciality
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+11
+object 2215
+X
+3
+21
+Y
+3
+381
+Width
+3
+525
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+19
+System Availability
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+13
+object 222823
+X
+3
+21
+Y
+3
+105
+Width
+3
+525
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+26
+Snow, Soiling, and Shading
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+12
+object 73132
+X
+3
+27
+Y
+3
+183
+Width
+3
+519
+Height
+3
+57
+Tool Tip
+5
+0
+Caption
+5
+181
+Soiling losses can be specified at a monthly resolution to be applied on the DC side of the system. This loss is in addition to any soiling losses defined as part of "Losses" above.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+13
+object 731321
+X
+3
+27
+Y
+3
+279
+Width
+3
+519
+Height
+3
+57
+Tool Tip
+5
+0
+Caption
+5
+143
+Shading losses are for shading by nearby objects. PVWatts calculates self-shading losses based on the system design and tracking options above.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+13
+object 731324
+X
+3
+24
+Y
+3
+402
+Width
+3
+546
+Height
+3
+42
+Tool Tip
+5
+0
+Caption
+5
+96
+System availability losses reduce the system output to represent system outages or other events.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+ShadingFactors
+
+1
+9
+Name
+5
+7
+shading
+X
+3
+177
+Y
+3
+339
+Width
+3
+135
+Height
+3
+30
+Tool Tip
+5
+0
+ShowDBOptions
+2
+0
+Description
+5
+0
+TabOrder
+3
+23
+MonthlyFactor
+
+1
+8
+Name
+5
+7
+soiling
+X
+3
+177
+Y
+3
+243
+Width
+3
+135
+Height
+3
+30
+Tool Tip
+5
+0
+Description
+5
+22
+Monthly soiling losses
+TabOrder
+3
+1
+CheckBox
+
+1
+9
+Name
+5
+13
+use_wf_albedo
+X
+3
+192
+Y
+3
+48
+Width
+3
+273
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+41
+Use albedo from weather file if available
+State
+2
+1
+TabOrder
+3
+4294967295
 Numeric
 
 1
 17
 Name
 5
-15
-system_capacity
+19
+user_entered_albedo
 X
 3
-204
+285
 Y
 3
-33
+75
 Width
 3
 90
@@ -397,7 +620,34 @@ TabOrder
 3
 1
 
+10
+adjust
+3
+5
+Performance adjustment factors
+ 
+PVWatts
+0
+1
+1
+5
+1
+0
+Default
+albedo
+3
 2
+Albedo
+ 
+PVWatts Advanced
+0
+0
+1
+2
+1
+1
+0
+Default
 bifaciality
 3
 0
@@ -409,6 +659,20 @@ bifaciality
 1
 0
  
+en_snowloss
+3
+1
+Estimate losses from snow
+ 
+PVWatts
+0
+3
+1
+1
+1
+1
+0
+Default
 module_is_bifacial
 3
 1
@@ -423,12 +687,157 @@ Module is bifacial
 1
 0
 Default
+shading
+3
+5
+Edit shading losses
+ 
+PVWatts
+0
+2
+1
+5
+1
+0
+Default
+shading_3d_scene
+3
+6
+3D shading scene
+ 
+PVWatts
+0
+0
+1
+6
+0
+ 
+soiling
+3
+2
+Monthly soiling losses
+ 
+Losses
+0
+2
+1
+2
+1
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
 
-99
+Default
+use_wf_albedo
+3
+1
+Use albedo in weather file if it exists
+ 
+Location and Resource
+0
+3
+1
+1
+1
+1
+0
+Default
+user_entered_albedo
+3
+1
+Constant albedo
+ 
+ 
+0
+2
+1
+1
+1
+1
+0.2
+Default
+
+226
 equations{'bifaciality'} = define() {
 	if (${module_is_bifacial}) return 0.65;
 	else return 0;
 };
 
+equations{'albedo'} = define() {
+	if (!${use_wf_albedo})
+		${albedo} = [${user_entered_albedo}];
+	else
+		${albedo} = null;
+};
 
-0
+
+1948
+function snow_loss_checks () {
+	msg_snow = '';
+	if ( isnan(value('annual_snow')) == true && value('en_snowloss') == 1 ) {
+		msg_snow = 'Weather file does not have snow depth data required to model snow losses. See Help for more information.';
+	}
+	property('msg_pvwatts_snow','Caption',msg_snow);
+	
+	if ( value('en_snowloss') == 1 && 
+	     value('loss_snow') !=0 && 
+	     isnan(value('annual_snow')) == false && 
+	     value('en_user_spec_losses') == 0 )
+	{
+		msgbox('Snow loss warning!\nThe snow loss model is enabled and the Snow input is set to ' + value('loss_snow') + '%. Set Snow to zero to avoid double-counting snow losses. Ignore this message to include losses from both the snow model and the Snow input value.');
+	}
+}
+
+on_change{'en_snowloss'} = define() {
+	snow_loss_checks();	
+};
+
+on_change{'loss_snow'} = define() {
+	snow_loss_checks();
+};
+
+on_change{'use_wf_albedo'} = define() {
+	enable('user_entered_albedo', (value('use_wf_albedo') == 0));
+};
+
+on_change{'edit_3d_scene'} = define() {
+	minute_step = 60;
+	if (varinfo("wf_nrecords"))
+	{
+		nrec = value("wf_nrecords");
+		if (!isnan(nrec) && (nrec > 0))
+		{
+			minute_step = 60 * 8760 / nrec;
+		}
+	}
+
+	x = editscene3d( 'shading_3d_scene', 
+		value('lat'), value('lon'), value('tz'), 
+		value('city') + ', ' + value('state')  , minute_step);
+// update 60 to timestep from weather file.	
+	if ( x.ierr == 0 )
+	{	
+		timestep = x.losses;
+//		msgbox("timestep = " + to_string(timestep));
+//		msgbox("x = " + to_string(x));
+		if (yesno('Update timeseries and diffuse shading losses with calculated values from 3D scene?'))
+		{
+			shad = value('shading');
+			shad.en_timestep = true;
+			shad.timestep = timestep;
+			// diffuse
+			shad.en_diff = true;
+			shad.diff = x.diffuse[0];
+
+			value('shading', shad );	
+		}
+	}
+	else
+	{
+		msgbox('Internal error: ' + x.message);
+	}
+};
+
+on_load{'PVWatts Advanced Inputs'} = define() {
+	enable('user_entered_albedo', (value('use_wf_albedo') == 0));
+};
+	
