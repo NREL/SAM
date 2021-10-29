@@ -419,10 +419,8 @@ CheckBox
 9
 Name
 5
-27
+24
 ur_enable_billing_demand
-X
-
 X
 3
 12
@@ -566,8 +564,8 @@ Electricity Rates - Billing Demand for Energy Charges
 MonthlyFactor
 
 0
-2561
-on_load{'Utility Rate - Billing Demand for Energy Charge'} = define() {
+2543
+on_load{'Utility Rate - Billing Demand'} = define() {
 	enable_ratchet_demand_charges();
 	firstyear_demand_peaks_message();
 };
