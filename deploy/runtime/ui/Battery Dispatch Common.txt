@@ -377,7 +377,7 @@ Bold
 2
 1
 
-4
+6
 batt_initial_SOC
 3
 1
@@ -434,9 +434,37 @@ Battery Charge Limits
 1
 10
 Numeric
+batt_pv_ac_forecast
+3
+2
+ 
+ 
+Battery Dispatch
+0
+0
+1
+2
+1
+1
+0
+Default
+batt_pv_clipping_forecast
+3
+2
+ 
+ 
+Battery Dispatch
+0
+0
+1
+2
+1
+1
+0
+Default
 
 0
-504
+1843
 on_load{'Battery Dispatch Common'} = define()
 {
 	check_soc();
@@ -456,4 +484,39 @@ function check_soc()
 	//logmsg('Show batt_SOC_warning: ' + show_soc_warning);
 	show('batt_SOC_warning', show_soc_warning);
 	refresh();
+}
+
+// Used by Battery Dispatch Automated FOM, Battery Dispatch PV Smoothing, Battery Dispatch Peak Shaving BTM, and Battery Dispatch Price Signal
+function run_forecast(file)
+{
+	logmsg('Forecast file: ' + file);
+	
+	user_specified_weather_file_old = ${user_specified_weather_file};
+	use_specific_weather_file_old = ${use_specific_weather_file};
+	solar_resource_file_old = ${solar_resource_file};
+	
+	if ( file != '' ) {
+		file = replace(file, '\\', '/');
+	}	
+
+	forecast_run = ssc_module_create_from_case('pvsamv1');
+	ssc_var(forecast_run, 'en_batt', false);
+	ssc_var(forecast_run, 'use_specific_weather_file', true);	
+	ssc_var(forecast_run, 'user_specified_weather_file', file);
+	ssc_var(forecast_run, 'solar_resource_file', file);	
+
+	logmsg('use_specific_weather_file: ' + ssc_var(forecast_run, 'use_specific_weather_file'));
+	logmsg('user_specified_weather_file: ' + ssc_var(forecast_run, 'user_specified_weather_file'));
+	logmsg('solar_resource_file: ' + ssc_var(forecast_run, 'solar_resource_file'));
+
+	status = ssc_exec(forecast_run, 'pvsamv1', {'show_dialog'=true, 'hold_dialog'=true});
+	
+	if (status != 0)
+		logmsg('Battery forecast run failed with error: ' + status);
+	else
+	{
+		${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');
+		${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');
+	}
+	ssc_free(forecast_run);
 }

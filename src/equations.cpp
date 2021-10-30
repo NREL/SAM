@@ -30,6 +30,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <lk/stdlib.h>
 #include <lk/eval.h>
 
+#include <ssc/sscapi.h> // for preprocessing
+
 #include "equations.h"
 
 
@@ -102,11 +104,126 @@ bool EqnDatabase::LoadFile( const wxString &file, wxArrayString *errors )
 	}
 	else return false;
 }
+
+bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
+{
+	// check text for preprocessing setup for design point calculations SAM issue #634
+	// prototype to be refactored if more equations added for preprocessing
+	// Check string for instances of replacements for equations
+	// will be lookup table for equations to be expanded before being parsed into inputs and outputs
+	wxString lookup = "//#ssc_auto_exec(";
+	size_t nposStart = text->Find(lookup); 
+	if (nposStart != wxNOT_FOUND)  {
+		// first part of string to keep
+		auto strPart1 = text->Mid(0, nposStart - 1);
+		auto strPart2 = text->Mid(nposStart, text->Length() - 1);
+		auto nposEnd = strPart2.Find("\n");
+		if (nposEnd == wxNOT_FOUND) {// line that equation on does not have \n (could also check for end of string)
+			errors->Add("Check equations script: " + lookup + " statement does not have newline at end.");
+			return false;
+		}
+		wxString strReplace = "";
+		// replacement string - refactor to collection of strings
+		wxString strFunc = strPart2.Mid(0, nposEnd);
+		strFunc.Replace(lookup, "");
+		strFunc.Replace("(", "");
+		strFunc.Replace(")", "");
+		strFunc.Replace(" ", "");
+		strFunc.Replace(";", "");
+		wxArrayString args = wxSplit(strFunc, ',');
+		/*
+		arg[0] = ssc_create() object name
+		arg[1] = compute module name
+		arg[2] = sim_type value
+
+		e.g. ssc_auto_exec(obj, 'etes_electric_resistance', 2);
+		*/
+
+		if (args.Count() != 3) {// specific to lookup function
+			errors->Add("Check equations script: " + lookup + " statement does not have 3 arguments.");
+			return false;
+		}
+		// expand function for use in equations to parse inputs and outputs
+		wxString cm = args[1];
+		cm.Replace("'", "");
+		ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
+		if (!p_mod)
+		{
+			errors->Add("could not create ssc module: " + cm);
+			return false;
+		}
+		ssc_data_t p_data = ssc_data_create();
+		// Assign the compute module with existing values
+		int pidx = 0;
+		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+		{
+			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+			int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+			wxString reqd(ssc_info_required(p_inf));
+			wxString uihint(ssc_info_uihint(p_inf));
+
+			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
+			{
+
+				// handle ssc variable names
+				// that are explicit field accesses"shading:mxh"
+				wxString field ="";
+				size_t pos = name.Find(':');
+				if (pos != wxNOT_FOUND)
+				{
+					field = name.Mid(pos + 1);
+					name = name.Left(pos);
+				}
+
+				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+				if (existing_type != data_type)
+				{
+					wxString ssc_var_name = name;
+					wxString lk_var_name = "${" + name + "}";
+					if (field != "") // 	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
+					{
+						ssc_var_name += ":" + field;
+						lk_var_name += "{'" + field + "'}";
+					}
+					/*
+					arg[0] = ssc_create() object name
+					arg[1] = compute module name
+					arg[2] = sim_type value
+					*/
+					strReplace += "\tssc_var(" + args[0] + ", \"" + ssc_var_name + "\"," + lk_var_name + ");\n";
+				}
+			}
+		}
+		ssc_module_free(p_mod);
+		ssc_data_free(p_data);
+
+		// set sim_type
+		strReplace += "\tssc_var(" + args[0] + ", \"sim_type\"," + args[2] + ");\n";
+
+		// update input string
+		strPart2 = strPart2.Mid(nposEnd, strPart2.Length() - 1);
+		*text = strPart1 + strReplace + strPart2;
+		return true;
+	}
+	
+	return true;
+}
+
+
+
 bool EqnDatabase::LoadScript( const wxString &text, wxArrayString *errors )
 {
-	lk::input_string in( text );
-	if ( Parse( in, errors ) ) return true;
-	else return false;
+// check text for preprocessing setup for design point calculations SAM issue #634
+	wxString txtPreprocess(text);
+	if (PreProcessScript(&txtPreprocess, errors)) {
+		//	lk::input_string in(text);
+		lk::input_string in(txtPreprocess);
+		if (Parse(in, errors)) return true;
+		else return false;
+	}
+	else
+		return false;
 }
 
 bool EqnDatabase::Parse( lk::input_base &in, wxArrayString *errors )

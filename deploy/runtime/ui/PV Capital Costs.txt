@@ -5256,7 +5256,7 @@ TabOrder
 3
 52
 
-60
+59
 bos_equip_fixed
 3
 1
@@ -6029,20 +6029,6 @@ Capital Costs
 1
 0
 Default
-system_use_recapitalization
-3
-1
- 
- 
-Capital Costs
-0
-0
-1
-1
-1
-1
-0
-Default
 test_calc
 3
 1
@@ -6100,7 +6086,7 @@ Capital Costs
 0
 Numeric
 
-4876
+4733
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6277,10 +6263,6 @@ equations{ 'total_direct_cost' } = define() {
 		+${install_margin_total}
 		+${contingency}; };
 		
-// set system_use_recapitalization = 0 for all techs except geothermal
-equations { 'system_use_recapitalization' } = define () {
-	return 0;
-};
 
 
 

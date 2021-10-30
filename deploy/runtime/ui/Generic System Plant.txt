@@ -1,7 +1,7 @@
 Generic System Plant
-788
-527
-19
+787
+547
+20
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 780
 Height
 3
-389
+410
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 6
 Y
 3
-393
+414
 Width
 3
 780
@@ -105,7 +105,7 @@ X
 357
 Y
 3
-423
+444
 Width
 3
 294
@@ -118,6 +118,36 @@ Tool Tip
 TabOrder
 3
 7
+Button
+
+1
+8
+Name
+5
+15
+btn_selectcases
+X
+3
+411
+Y
+3
+99
+Width
+3
+143
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+15
+Select cases...
+TabOrder
+3
+4294967295
 Numeric
 
 1
@@ -131,7 +161,7 @@ X
 432
 Y
 3
-297
+318
 Width
 3
 120
@@ -193,7 +223,7 @@ X
 453
 Y
 3
-363
+384
 Width
 3
 100
@@ -255,7 +285,7 @@ X
 453
 Y
 3
-207
+228
 Width
 3
 100
@@ -317,7 +347,7 @@ X
 411
 Y
 3
-102
+123
 Width
 3
 143
@@ -352,7 +382,7 @@ X
 432
 Y
 3
-249
+270
 Width
 3
 120
@@ -414,7 +444,7 @@ X
 432
 Y
 3
-273
+294
 Width
 3
 120
@@ -476,7 +506,7 @@ X
 453
 Y
 3
-339
+360
 Width
 3
 100
@@ -538,7 +568,7 @@ X
 48
 Y
 3
-129
+150
 Width
 3
 636
@@ -585,7 +615,7 @@ X
 48
 Y
 3
-321
+342
 Width
 3
 600
@@ -624,7 +654,7 @@ X
 48
 Y
 3
-228
+249
 Width
 3
 600
@@ -663,7 +693,7 @@ X
 48
 Y
 3
-189
+210
 Width
 3
 600
@@ -702,7 +732,7 @@ X
 21
 Y
 3
-423
+444
 Width
 3
 243
@@ -753,10 +783,10 @@ Y
 30
 Width
 3
-536
+413
 Height
 3
-44
+65
 Tool Tip
 5
 0
@@ -765,9 +795,10 @@ Selection
 0
 Items
 6
-2
+3
 Constant generation profile from nameplate capacity and capacity factor
 Import hourly or subhourly generation profile from file
+Generate production profiles from open cases
 ShowCaptions
 2
 1
@@ -790,7 +821,7 @@ X
 453
 Y
 3
-78
+99
 Width
 3
 100
@@ -852,7 +883,7 @@ X
 453
 Y
 3
-102
+123
 Width
 3
 100
@@ -1032,8 +1063,8 @@ spec_mode
 Generic system plant output specification mode
  
 Generic System Plant
-127
-Constant generation profile from nameplate capacity and capacity factor|Import hourly or subhourly generation profile from file
+172
+Constant generation profile from nameplate capacity and capacity factor|Import hourly or subhourly generation profile from file|Generate production profiles from open cases
 1
 1
 1
@@ -1152,7 +1183,7 @@ equations{ 'ui_step_minutes' } = define() {
 	}
 };
 
-1032
+1701
 on_load{"Generic System Plant"}=define(){
 	on_change{'spec_mode'}();
 	on_change{'system_capacity'}();
@@ -1167,16 +1198,38 @@ on_change{'system_capacity'}=define(){
 	check_inputs();
 };
 
+on_change{'btn_selectcases'} = define() {
+	if ( value('spec_mode') == 2 ) {
+		combine_cases();
+    }
+};
+
+// display window for combine cases
+function combine_cases()
+{
+	hash = combinecasesquery();
+	// meta data
+	if ( hash != '' )
+	{
+		result = hash{'result_code'};	// 0=success, 1=error
+	}
+}
 
 function check_inputs() {
 	mode = value('spec_mode');
+	show('system_capacity',
+		mode == 0 || mode == 1);
 	show('user_capacity_factor', 
 		mode == 0 );
 	show('energy_output_array',
-		mode == 1);
+		mode == 1 || mode == 2);
+	show('btn_selectcases',
+		mode == 2);
 	color = 'black';	
 	if ( mode == 1 )
-		txt = 'Click "Edit data" to import generation data from a file. After importing the data, type a value for the nameplate capacity, which SAM uses to calculate the capacity factor and dollar amounts from any costs or incentives expressed $/W. Use the calculated values below to help you choose a nameplate capacity value. See Help for details.';
+		txt = 'Click "Edit array..." to import generation data from a file. After importing the data, type a value for the nameplate capacity, which SAM uses to calculate the capacity factor and dollar amounts from any costs or incentives expressed $/W. Use the calculated values below to help you choose a nameplate capacity value. See Help for details.';
+	elseif ( mode == 2 )
+		txt = 'Click "Select cases..." to select open cases, simulate those cases and combine their generation profiles into a single profile to be used with this generic case. Click "Edit array..." to view or edit the combined simulated productions.';
 	else
 		txt = '';
 /*	if ( value('system_capacity')*0.9 > value('first_year_output_peak' ) ) {

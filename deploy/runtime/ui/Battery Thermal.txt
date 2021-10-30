@@ -466,8 +466,7 @@ Tool Tip
 0
 Items
 6
-3
-Use weather file ambient temperature
+2
 Enter a single fixed temperature
 Enter time series temperature data
 Selection
@@ -961,8 +960,8 @@ batt_thermal_choice
 Environment temp option
  
 Battery Thermal
-97
-Use weather file ambient temperature|Enter single fixed temperature|Enter time series temperature
+60
+Enter single fixed temperature|Enter time series temperature
 0
 1
 1
@@ -1062,14 +1061,14 @@ equations{'batt_room_temperature_celsius'} = define()
 	T_ambient = T;
 	
 	// Single value, scale to input size
-	if (${batt_thermal_choice} == 1){
+	if (${batt_thermal_choice} == 0){
 		T_room = ${batt_room_temperature_single};
 		for (i = 0; i < #T; i++){
 			T_ambient[i] = T_room;
 		}
 	}
 	// Input time series
-	if (${batt_thermal_choice} == 2){
+	if (${batt_thermal_choice} == 1){
 		T_room = ${batt_room_temperature_vector};
 		for (i = 0; i < #T_room; i++){
 			T_ambient[i] = T_room[i];
@@ -1077,7 +1076,7 @@ equations{'batt_room_temperature_celsius'} = define()
 	}
 	return T_ambient;
 };
-1418
+1424
 on_load{'Battery Thermal'} = define() {
 	on_change{'cap_vs_temp'}(); // update the plot
 	on_change{'batt_thermal_choice'}();
@@ -1089,13 +1088,14 @@ function show_thermal_options()
 	tech = technology();
 
 	// there is no weather data in generic model
+	/*
 	if ( strpos(lower(tech), 'generic')>-1 && ${batt_thermal_choice}==0){
 		${batt_thermal_choice} = 1;
 		msgbox( tech + ' model has no weather file!\nCannot set environment temperature to ambient temperature data from weather file.\nChoose either single fixed or time series for the environment temperature option.\nSetting option to default "Enter single fixed temperature" with value of ' + ${batt_room_temperature_single} +' degrees C.');
-	}
+	}*/
 
-	enable('batt_room_temperature_single', ${batt_thermal_choice}==1);
-	enable('batt_room_temperature_vector', ${batt_thermal_choice}==2);
+	enable('batt_room_temperature_single', ${batt_thermal_choice}==0);
+	enable('batt_room_temperature_vector', ${batt_thermal_choice}==1);
 }
 
 on_change{'batt_thermal_choice'} = define()

@@ -1288,7 +1288,7 @@ om_cost_input
 1
 Total Opex
 $/year
-ME O&M Costs
+ME Costs - Operation Maintenance
 0
 3
 1
@@ -1302,7 +1302,7 @@ om_cost_override
 1
 O&M cost override option
  
-ME Cost Choice
+ME Costs - Operation Maintenance
 0
 3
 1
@@ -1316,7 +1316,7 @@ total_bos_cost_lcoe
 1
 BOS cost
  
- 
+ME Costs - Operation Maintenance
 0
 9
 1
@@ -1330,7 +1330,7 @@ total_bos_cost_per_kw
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1344,7 +1344,7 @@ total_bos_cost_percent
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1358,7 +1358,7 @@ total_capital_cost_per_kw
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1372,7 +1372,7 @@ total_device_cost_lcoe
 1
 Device cost
  
- 
+ME Costs - Operation Maintenance
 0
 9
 1
@@ -1386,7 +1386,7 @@ total_device_cost_per_kw
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1400,7 +1400,7 @@ total_device_cost_percent
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1414,7 +1414,7 @@ total_financial_cost_lcoe
 1
 Financial cost
  
- 
+ME Costs - Operation Maintenance
 0
 9
 1
@@ -1428,7 +1428,7 @@ total_financial_cost_per_kw
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1442,7 +1442,7 @@ total_financial_cost_percent
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1456,7 +1456,7 @@ total_installed_cost_lcoe
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1470,7 +1470,7 @@ total_installed_cost_percent
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1484,7 +1484,7 @@ total_operating_cost
 1
  Total Opex
 $/year
- 
+ME Costs - Operation Maintenance
 0
 9
 1
@@ -1498,7 +1498,7 @@ total_operating_cost_mill
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1512,7 +1512,7 @@ total_operations_cost_lcoe
 1
 Operating cost (annual)
  
- 
+ME Costs - Operation Maintenance
 0
 9
 1
@@ -1526,7 +1526,7 @@ total_operations_cost_per_kw
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1540,7 +1540,7 @@ total_operations_cost_percent
 1
  
  
- 
+ME Costs - Operation Maintenance
 0
 8
 1
@@ -1663,10 +1663,8 @@ equations {'maintenance_we_shown'} = define() {
 
 
 
-1257
+1364
 on_load{'Marine Costs - O&M'} = define() {
-	on_change{'om_cost_override'};
-	override_om_cost();
 	
 	//Operations
 	show('operations_cost_total',value('operations_cost_method')==3);
@@ -1677,6 +1675,9 @@ on_load{'Marine Costs - O&M'} = define() {
 	show('maintenance_cost_total',value('maintenance_cost_method')==3);
 	show('maintenance_cost_input',value('maintenance_cost_method')!=3);
 	enable('maintenance_cost_input',value('maintenance_cost_method')!=2);
+	
+	on_change{'om_cost_override'};
+	override_om_cost();
 	
 	refresh();
 	
@@ -1697,11 +1698,13 @@ function override_om_cost() {
 	//Operations
 	enable('operations_cost_method',override_value!=1);
 	enable('operations_cost',override_value!=1);
+	enable('operations_cost_input',override_value!=1);
 	//show('operations_override_label',override_value==1);
 	
 	//Maintenance
 	enable('maintenance_cost_method',override_value!=1);
 	enable('maintenance_cost',override_value!=1);
+	enable('maintenance_cost_input',override_value!=1);
 	//show('maintenance_override_label',override_value==1);
 	
 	
