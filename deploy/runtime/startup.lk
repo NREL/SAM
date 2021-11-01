@@ -185,7 +185,7 @@ function setup_pages_standalone_battery_dispatch_fom()
 		[{'name'='Battery Dispatch Manual', 'caption'='Manual'}],
 		],
 			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl',
-			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 }
 
 function setup_pvwatts_battery_pages_behind_the_meter()

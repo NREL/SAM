@@ -201,7 +201,7 @@ Bold
 2
 1
 
-2
+3
 batt_dispatch_auto_can_gridcharge
 3
 1
@@ -216,6 +216,20 @@ batt_dispatch_auto_can_gridcharge
 1
 0
 CheckBox
+batt_dispatch_choice
+3
+1
+Battery dispatch option
+ 
+Battery Dispatch
+0
+8
+1
+1
+1
+1
+0
+Default
 batt_dispatch_choice_ui
 3
 1
@@ -232,10 +246,9 @@ batt_dispatch_choice_ui
 RadioChoice
 
 0
-2455
+2399
 on_load{'Battery Dispatch Options FOM'} = define() {
 	show_hide_charge_options();
-	enable_charge_from_clip();
 	warning_message();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
 	{ 
@@ -254,7 +267,6 @@ on_load{'Battery Dispatch Options FOM'} = define() {
 };
 
 on_change{'batt_dispatch_choice_ui'} = define() {
-	enable_charge_from_clip();
 	show_hide_charge_options();
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
@@ -287,7 +299,7 @@ function show_hide_charge_options()
 		else
 		{ show('batt_dispatch_auto_can_fuelcellcharge', false); }
 	}	
-	if (option == 3) {
+	if (option == 2) {
 		value('batt_dispatch_auto_can_gridcharge', false);
 		enable('batt_dispatch_auto_can_gridcharge', false);
 	}

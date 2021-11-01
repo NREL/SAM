@@ -1191,7 +1191,7 @@ TabOrder
 3
 6
 
-10
+11
 add_om_num_types
 3
 1
@@ -1332,13 +1332,31 @@ om_replacement_cost_escal
 1
 0
 Numeric
+system_capacity
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 
-144
+202
 equations{'om_batt_nameplate'} = define() {
 	return ${batt_computed_bank_capacity};
 };
 
 equations{ 'add_om_num_types'} = define(){
 	return 1;
+};
+
+equations{ 'system_capacity'} = define() {
+	return 0;
 };
 0
