@@ -22,10 +22,11 @@ def csv_to_dict(csvfile):
     return values
 
 if __name__ == "__main__":
+
     expected_filename = sys.argv[1]
     actual_filename = sys.argv[2]
     fail_on_output = sys.argv[3] == "true"
-    
+
     with open(expected_filename, "r") as datafile:
         expected_csv = csv.reader(datafile, delimiter=',', quotechar='\"')
         expected_values = csv_to_dict(expected_csv)
@@ -35,9 +36,15 @@ if __name__ == "__main__":
         actual_values = csv_to_dict(actual_csv)
         
     success = True
-    error = 0.001
+    error_base = 0.001
+    error_ETES = 0.01
     
     for key in expected_values:
+
+        error = error_base
+        if(key == 'ETES Single Owner'):
+            error = error_ETES
+
         try:
             ex_data = expected_values[key]
             act_data = actual_values[key]

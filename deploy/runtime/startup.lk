@@ -24,6 +24,7 @@ addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Lev
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 if ( en_iscc ) { addconfig( 'ISCC', ['Single Owner']); }
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
+addconfig( 'ETES', ['Single Owner']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
 addconfig( 'MEwave', ['LCOE Calculator', 'None']);
@@ -61,6 +62,7 @@ configopt( 'DSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresn
 configopt( 'MSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Molten Salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 if ( en_iscc ) { configopt( 'ISCC',       { 'tree_parent'='CSP', 'long_name'='Integrated Solar Combined Cycle',    'short_name'='Tower Salt ISCC',  'description'='A triple pressure NGCC cycle connected to a molten salt power tower solar field/receiver' } ); }
 configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',          'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'ETES',         				  { 'tree_parent'='BATT', 'long_name'='ETES',          'short_name'='ETES',       'description'='Electric thermal energy storage' } );
 configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MEwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
 configopt( 'MEtidal',                    { 'tree_parent'='ME', 'long_name'='Tidal',          'short_name'='Marine Tidal',         'description'='Marine energy tidal system' });
@@ -384,6 +386,29 @@ function setup_single_owner_pages()
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 }
 
+function setup_single_owner_Dispatch_pages()
+{
+  setting( { 'analysis_period_var'='cf_length' } );
+  addpage( [[ 'Financial Analysis Parameters',
+		      'Financial Tax and Insurance Rates',
+		      'Financial Salvage Value',
+		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
+               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+           { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+  addpage( [[ 'Financial Solution Mode Single Owner ETES',
+  			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Financial Curtailment Price', 'caption'='Curtailment Payments', 'collapsible'=true, 'collapsible_var'='revenue_curtailment_is_shown', 'collapsed_by_default'=true } ]],
+            { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
+  addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+  addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
+}
+
 function setup_merchant_plant_pages()
 {
   setting( { 'analysis_period_var'='cf_length' } );
@@ -554,6 +579,18 @@ function setup_fuel_cell_pages_fom()
 			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 	setup_grid_page();
+}
+
+function setup_etes_pages()
+{
+	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='trough_location_and_resource' } );
+	addpage( [['ETES System Design']], { 'sidebar'='System Design' } );
+	addpage( [['ETES Heater']], {'sidebar'='Heater' } );
+	addpage( [[ 'Rankine Cycle Air or Evaporative Cooling' ], [ 'User Defined Power Cycle' ]],
+			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
+			  'exclusive_header_pages' = ['ETES Power Block Common']} );
+	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
+	addpage( [[ 'ETES System Control' ]], { 'sidebar'='System Control', 'help'='mspt_system_control'});
 }
 
 function setup_csp_physical_trough_pages()
@@ -804,6 +841,23 @@ addpage( [[ 'PV Capital Costs' ],
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages( );
 setup_electricity_purchases();
+
+// ETES ///////
+setconfig('ETES', 'Single Owner');
+setmodules( ['etes_electric_resistance', 'singleowner']);
+setup_etes_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_single_owner_Dispatch_pages();
+
+//setconfig('ETES', 'Merchant Plant');
+//setmodules( ['etes_electric_resistance', 'merchantplant']);
+//setup_etes_pages();
+//setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+//addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
+//addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+//setup_merchant_plant_pages();
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
