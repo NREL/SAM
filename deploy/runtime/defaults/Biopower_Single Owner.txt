@@ -1,5 +1,5 @@
 1
-720
+721
 adjust
 1
 5
@@ -2475,7 +2475,7 @@ const_per_interest1
 1
 1
 1
-1.82285e+06
+1822850
 const_per_interest2
 1
 1
@@ -2535,7 +2535,7 @@ const_per_interest_total
 1
 1
 1
-1.82285e+06
+1822850
 const_per_months1
 1
 1
@@ -2668,7 +2668,7 @@ const_per_total1
 1
 1
 1
-3.6457e+06
+3645700
 const_per_total2
 1
 1
@@ -2728,7 +2728,7 @@ construction_financing_cost
 1
 1
 1
-3.6457e+06
+3645700
 cost_debt_closing
 1
 1
@@ -4352,6 +4352,13 @@ ui_wacc
 1
 1
 7.10145
+ur_dc_billing_demand_periods
+1
+3
+1
+2
+1 1 
+
 use_specific_weather_file
 1
 1

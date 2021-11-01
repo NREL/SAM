@@ -1,5 +1,5 @@
 1
-461
+462
 A_absorber
 1
 1
@@ -2775,6 +2775,13 @@ ur_billing_demand_lookback_period
 1
 1
 11
+ur_dc_billing_demand_periods
+1
+3
+1
+2
+1 1 
+
 ur_enable_billing_demand
 1
 1

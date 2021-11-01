@@ -1,7 +1,7 @@
 Utility Rate - Billing Demand
 1421
 447
-11
+12
 GroupBox
 
 1
@@ -122,13 +122,52 @@ Name
 object 21
 X
 3
+675
+Y
+3
+159
+Width
+3
+404
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+36
+Billing Demand by Time-of-use Period
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+11
+object 2111
+X
+3
 21
 Y
 3
 156
 Width
 3
-1232
+404
 Height
 3
 16
@@ -215,7 +254,7 @@ Y
 177
 Width
 3
-401
+575
 Height
 3
 258
@@ -423,22 +462,22 @@ Name
 ur_dc_billing_demand_periods
 X
 3
-540
+675
 Y
 3
-174
+180
 Width
 3
 374
 Height
 3
-262
+253
 Tool Tip
 5
 0
 PasteAppendRows
 2
-0
+1
 PasteAppendCols
 2
 0
@@ -468,24 +507,25 @@ ShadeC0
 0
 ShowCols
 2
-1
+0
 ShowColLabels
 2
 1
 ColLabels
 5
-0
+39
+Period,Included In Billing Demand (0/1)
 NumRowsLabel
 5
-5
-Rows:
+18
+Number of entries:
 NumColsLabel
 5
 5
 Cols:
 Layout
 3
-0
+1
 ChoiceColumn
 3
 4294967295
@@ -572,7 +612,7 @@ chk_update_peaks
 1
 Copy monthly peaks from Year 1 load data for Year 0 lookback period
  
-Electricity Rates - Billing Demand for Energy Charges
+Electricity Rates - Billing Demand
 0
 5
 1
@@ -586,7 +626,7 @@ ur_billing_demand_lookback_percentages
 3
 Ratchet demand charge rates
  
-Electricity Rates - Billing Demand for Energy Charges
+Electricity Rates - Billing Demand
 0
 1
 1
@@ -600,7 +640,7 @@ ur_billing_demand_lookback_period
 1
 Lookback period
 months
-Electricity Rates - Billing Demand for Energy Charges
+Electricity Rates - Billing Demand
 0
 0
 1
@@ -614,7 +654,7 @@ ur_billing_demand_minimum
 1
 Minimum billing demand
 kW
-Electricity Rates - Billing Demand for Energy Charges
+Electricity Rates - Billing Demand
 0
 0
 1
@@ -628,7 +668,7 @@ ur_dc_billing_demand_periods
 3
  
  
- 
+ Electricity Rates - Billing Demand
 0
 0
 1
@@ -636,13 +676,13 @@ ur_dc_billing_demand_periods
 1
 1
 0
-Default
+DataMatrix
 ur_enable_billing_demand
 3
 1
 Enable ratchet demand charges
  
-Electricity Rates - Billing Demand for Energy Charges
+Electricity Rates - Billing Demand
 0
 3
 1
@@ -650,13 +690,13 @@ Electricity Rates - Billing Demand for Energy Charges
 1
 1
 0
-Default
+DataMatrix
 ur_yearzero_usage_peaks
 3
 2
 Monthly peak demand in Year 0
 kW
-Electricity Rates - Billing Demand for Energy Charges
+Electricity Rates - Billing Demand
 0
 2
 1
@@ -667,7 +707,7 @@ Electricity Rates - Billing Demand for Energy Charges
 MonthlyFactor
 
 0
-2543
+2595
 on_load{'Utility Rate - Billing Demand'} = define() {
 	enable_ratchet_demand_charges();
 	firstyear_demand_peaks_message();
@@ -729,6 +769,7 @@ function enable_ratchet_demand_charges()
 	enable('ur_billing_demand_lookback_percentages',is_enabled);
 	enable('ur_billing_demand_lookback_period',is_enabled);
 	enable('ur_billing_demand_minimum',is_enabled);
+	enable('ur_dc_billing_demand_periods',is_enabled);
 	enable('ur_yearzero_usage_peaks',is_enabled);
 	show('lbl_monthly_peaks_message',is_enabled);
 	if ( is_btm() )
