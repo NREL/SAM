@@ -1601,6 +1601,8 @@ bool InputPageData::BuildDatabases()
 	m_eqns.Clear();
 	m_cbs.ClearAll();
 
+	// TODO - add m_eqnScript preprocess to expand compute module calls per Github SAM Issue#634 and PR#687
+
 	if ( !m_eqns.LoadScript( m_eqnScript ) )
 		return false;
 
