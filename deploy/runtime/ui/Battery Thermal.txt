@@ -1002,7 +1002,7 @@ Battery Thermal
 
 DataArray
 
-1614
+1785
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1019,7 +1019,8 @@ equations{'batt_surface_area'} = define()
 };
 equations{'batt_room_temperature_celsius'} = define()
 {
-	if ( strpos(lower(technology()),'generic')<0 )
+	if ( strpos(lower(technology()),'generic')<0 && 
+	strpos(lower(technology()),'standalone')<0)
 	{
 		solar_resource =  ${solar_resource_file};
 		if (file_exists(solar_resource))
@@ -1043,6 +1044,13 @@ equations{'batt_room_temperature_celsius'} = define()
 		else {
 			// unknown, perhaps solar resource callback isn't complete
 			return 0;
+		}
+	}
+	else if (technology() == "Standalone Battery") {
+		len = 8760;
+		T = [];
+		for (i = 0; i < len; i++){
+			T[i] = 20;
 		}
 	}
 	else {

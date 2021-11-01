@@ -1,6 +1,6 @@
 Battery Standalone Enable
-396
-31
+395
+35
 1
 CheckBox
 
@@ -40,11 +40,11 @@ TabOrder
 en_standalone_batt
 3
 1
+Enable standalone battery model
  
- 
- 
+Battery Standalone Enable
 0
-0
+141
 1
 1
 1
@@ -52,10 +52,28 @@ en_standalone_batt
 0
 Default
 
-0
-160
+176
+equations{'en_standalone_batt'} = define() {
+	t = technology();
+	// for battery configs, enable battery and hide input
+	if ( t != 'Standalone Battery')
+	{
+		return false;
+	}
+};
+417
 on_load{'Battery Standalone Enable'} = define() {
 	show('en_standalone_batt',false);
 	// default is false so set true on load
-	value('en_standalone_batt',1);
+	t = technology();
+	// for battery configs, enable battery and hide input
+	if ( t == 'Standalone Battery' )
+	{
+		${en_standalone_batt} = true;
+	}
+	// for fuel cell 'en_batt' is set by user, see exclusive var in Startup.lk
+	elseif( t != 'Fuel Cell' )
+	{
+		${en_standalone_batt} = false;
+	}
 };

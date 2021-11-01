@@ -671,9 +671,10 @@ Capacity Payment
 0
 Numeric
 
-357
+415
 equations{ 'cp_system_nameplate' } = define() {
-	return ${system_capacity}/1000;
+	if (technology() == "Standalone Battery") return 0;
+	else return ${system_capacity}/1000;
 };
 
 equations{ 'cp_battery_nameplate' } = define() {
