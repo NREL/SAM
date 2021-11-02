@@ -235,8 +235,8 @@ Colour
 255
 Caption
 5
-11
-Bifaciality
+22
+Bifaciality and Albedo
 Bold
 2
 1
@@ -534,7 +534,7 @@ Name
 use_wf_albedo
 X
 3
-192
+189
 Y
 3
 48
@@ -563,14 +563,14 @@ Numeric
 17
 Name
 5
-19
-user_entered_albedo
+30
+user_specified_constant_albedo
 X
 3
-285
+369
 Y
 3
-75
+72
 Width
 3
 90
@@ -637,11 +637,11 @@ Default
 albedo
 3
 2
-Albedo
+User-specified albedo
  
 PVWatts Advanced
 0
-0
+8
 1
 2
 1
@@ -730,7 +730,7 @@ Default
 use_wf_albedo
 3
 1
-Use albedo in weather file if it exists
+Use albedo from weather file
  
 Location and Resource
 0
@@ -739,12 +739,12 @@ Location and Resource
 1
 1
 1
-0
+1
 Default
-user_entered_albedo
+user_specified_constant_albedo
 3
 1
-Constant albedo
+User-specified constant albedo
  
  
 0
@@ -756,21 +756,18 @@ Constant albedo
 0.2
 Default
 
-226
+186
 equations{'bifaciality'} = define() {
 	if (${module_is_bifacial}) return 0.65;
 	else return 0;
 };
 
 equations{'albedo'} = define() {
-	if (!${use_wf_albedo})
-		${albedo} = [${user_entered_albedo}];
-	else
-		${albedo} = null;
+	${albedo} = [${user_specified_constant_albedo}];
 };
 
 
-1948
+1991
 function snow_loss_checks () {
 	msg_snow = '';
 	if ( isnan(value('annual_snow')) == true && value('en_snowloss') == 1 ) {
@@ -796,7 +793,7 @@ on_change{'loss_snow'} = define() {
 };
 
 on_change{'use_wf_albedo'} = define() {
-	enable('user_entered_albedo', (value('use_wf_albedo') == 0));
+	enable('user_specified_constant_albedo', (value('use_wf_albedo') == 0));
 };
 
 on_change{'edit_3d_scene'} = define() {
@@ -838,6 +835,7 @@ on_change{'edit_3d_scene'} = define() {
 };
 
 on_load{'PVWatts Advanced Inputs'} = define() {
-	enable('user_entered_albedo', (value('use_wf_albedo') == 0));
+	enable('user_specified_constant_albedo', (value('use_wf_albedo') == 0));
+	snow_loss_checks();
 };
 	
