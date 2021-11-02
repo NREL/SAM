@@ -1,6 +1,6 @@
 Battery Dispatch BTM Outage SOC
-1056
-96
+1049
+88
 4
 Numeric
 
@@ -12,7 +12,7 @@ Name
 batt_minimum_outage_SOC
 X
 3
-228
+276
 Y
 3
 24
@@ -74,16 +74,16 @@ Name
 lbl_outage_soc
 X
 3
-366
+396
 Y
 3
-18
+21
 Width
 3
-675
+645
 Height
 3
-43
+36
 Tool Tip
 5
 0
@@ -104,13 +104,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 GroupBox
 
 1
@@ -151,13 +151,13 @@ Name
 zero_outage_soc_warning
 X
 3
-21
+30
 Y
 3
-57
+60
 Width
 3
-818
+1010
 Height
 3
 24
@@ -166,8 +166,8 @@ Tool Tip
 0
 Caption
 5
-148
-Allowing the battery's SOC to go to zero during an outage may mean that the battery cannot recharge if the system comes back online before the grid.
+162
+Setting the minimum SOC during outage may prevent the battery from recharging if the battery is fully discharged and the system comes back online before the grid.
 TextColour
 4
 255
@@ -196,7 +196,7 @@ batt_minimum_outage_SOC
 1
  Minimum state of charge during outage
 %
- 
+Battery Dispatch
 0
 0
 1
@@ -207,7 +207,7 @@ batt_minimum_outage_SOC
 Numeric
 
 0
-915
+989
 on_load{'Battery Dispatch BTM Outage SOC'} = define() {
 	message = '';
 	color = 'Black';
@@ -215,8 +215,8 @@ on_load{'Battery Dispatch BTM Outage SOC'} = define() {
 	// this will not work if Grid Outage form is used with a FOM configuration
 	if ( !is_crit() ) 
 	{
-		message = 'The outage minimum SOC is only used with a critical load. Specify the critical load on the Electric Load page.';
-		color = 'Red';
+		message = 'Minimum state of charge during outage is only enabled when the critical load on the Electric Load page is not zero. You can ignore this input if you are not modeling a critical load.';
+		color = 'Black';
 		enable("batt_minimum_outage_SOC", false);
 	}
 	else {
