@@ -1,5 +1,5 @@
 1
-1089
+1090
 6par_aisc
 1
 1
@@ -526,6 +526,12 @@ batt_bank_size_specify
 1
 1
 0
+batt_bank_size_ui
+1
+1
+1
+1
+4000
 batt_bank_voltage
 1
 1
@@ -1335,13 +1341,13 @@ battery_total
 1
 1
 1
-1.43848e+06
+1438480
 battery_total_cost_lcos
 1
 1
 1
 1
-2.81046e+06
+2810460
 battery_voltage_shown
 1
 1
@@ -2159,7 +2165,7 @@ contingency
 1
 1
 1
-1.28821e+06
+1288210
 contingency_percent
 1
 1
@@ -2714,7 +2720,7 @@ engr_total
 1
 1
 1
-3.50016e+06
+3500160
 equip1_reserve_cost
 1
 1
@@ -2822,7 +2828,7 @@ grid_total
 1
 1
 1
-1.50007e+06
+1500070
 ibi_fed_amount
 1
 1
@@ -4200,7 +4206,7 @@ landprep_total
 1
 1
 1
-1.00004e+06
+1000040
 lat
 1
 1
@@ -224051,7 +224057,7 @@ sales_tax_total
 1
 1
 1
-2.21143e+06
+2211430
 sales_tax_value
 1
 1
@@ -225720,7 +225726,7 @@ total_battery_indirect_cost
 1
 1
 1
-1.30006e+06
+1300060
 total_dc_inverter_capacity
 1
 1
@@ -225738,7 +225744,7 @@ total_indirect_cost
 1
 1
 1
-6.50029e+06
+6500290
 total_installed_cost
 1
 1
