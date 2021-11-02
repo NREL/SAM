@@ -392,13 +392,13 @@ MultilineText
 1
 
 
-1174
+1494
 // This form is a copy of Financial Solution Flip Leaseback
 // so ppa_soln_mode radio button can have different labels
 // to indicated IRR target is for the tax investor for flip 
 // structures. Any updates should be made to both forms.
 
-on_load{'Financial Solution Mode Single Owner'} = define()
+on_load{'Financial Solution Mode Single Owner ETES'} = define()
 {
 	soln_mode_ctrl_refresh();
 	display_message();
@@ -419,7 +419,6 @@ on_change{'flip_target_year'} = define () {
 	display_message();
 };
 
-
 function display_message() 
 {
 	txt = '';
@@ -432,6 +431,11 @@ function display_message()
 	if ( financing() == 'Host Developer' ) 
 	{
 		txt += 'IRR is the developer internal rate of return. ';
+	}
+	elseif ( value('ppa_soln_mode') == 0 && value('en_electricity_rates') == 0 )
+	{
+		clr = 'red';
+		txt += 'The Specify IRR Target option is not available with the Use PPA Price option on Electricity Purchases page. Either change the option on the Electricity Purchases page or use the Specify PPA Price option.';
 	}
 	property('solution_mode_message','Caption',txt);
 	property('solution_mode_message','TextColour',clr);
