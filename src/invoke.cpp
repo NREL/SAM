@@ -2233,7 +2233,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 {
     LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
     //Create the wind data object
-    WaveDownloadDialog dlgWave(SamApp::Window(), "Advanced Wave Download");
+    WaveDownloadDialog dlgWave(SamApp::Window(), "Wave Resource Data Download");
     dlgWave.CenterOnParent();
     int code = dlgWave.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -2296,9 +2296,9 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
     wxString endpoint = dlgWave.GetEndpoint();
     wxString end_string = "";
-    if (endpoint == "West coast")
+    if (endpoint == "U.S. West Coast")
         end_string = "wave_query_west";
-    else if (endpoint == "Atlantic coast")
+    else if (endpoint == "U.S. Atlantic Coast")
         end_string = "wave_query_atlantic";
     else if (endpoint == "Hawaii")
         end_string = "wave_query_hawaii";

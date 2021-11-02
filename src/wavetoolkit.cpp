@@ -81,11 +81,11 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
 
     wxBoxSizer* szEndpoint = new wxBoxSizer(wxHORIZONTAL);
     wxArrayString endpoints;
-    endpoints.Add("West coast");
-    endpoints.Add("Atlantic coast");
+    endpoints.Add("U.S. West Coast");
+    endpoints.Add("U.S. Atlantic Coast");
     endpoints.Add("Hawaii");
 
-    wxString InitialValue = "West coast";
+    wxString InitialValue = "U.S. West Coast";
     cboEndpoint = new wxComboBox(this, ID_cboEndpoint, InitialValue, wxDefaultPosition, wxDefaultSize, endpoints, wxCB_READONLY);
     szEndpoint->Add(new wxStaticText(this, wxID_ANY, "Select dataset"), wxALL, 15);
     szEndpoint->Add(cboEndpoint, 0, wxALL, 5);
@@ -192,8 +192,7 @@ void WaveDownloadDialog::OnEvt( wxCommandEvent &e )
 	switch( e.GetId() )
 	{
 		case wxID_HELP:
-			SamApp::ShowHelp("nsrdb_advanced_download");
-            //SamApp::ShowHelp("wave_advanced_download");
+			SamApp::ShowHelp("wave_download");
 			break;
         case ID_radSingleYear:
         case ID_radMultiYear:
