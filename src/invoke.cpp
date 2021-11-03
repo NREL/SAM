@@ -56,7 +56,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ssc/sscapi.h>
 #include <ssc/ssc_equations.h>
-#include <json/json.h>
+
 
 #include "main.h"
 #include "case.h"
@@ -1739,6 +1739,265 @@ void fcall_ssc_create( lk::invoke_t &cxt )
 	LK_DOC( "ssc_create", "Create a new empty SSC data container object.", "(none):ssc-obj-ref" );
 	cxt.result().assign( cxt.env()->insert_object( new lkSSCdataObj ) );
 }
+
+
+void fcall_ssc_auto_exec(lk::invoke_t& cxt)
+{
+	LK_DOC("ssc_auto_exec", "Create data from the current case and run the specified compute module for a specified sim_type and returns a var table", "(ssc-obj-ref:data,string:compute_module_name,simulation type 1=full run,2=design point):ssc-obj-ref");
+	
+	if (cxt.arg_count() != 3) {
+		cxt.error("wrong number of argument specified " + cxt.arg_count());
+		return;
+	}
+
+	if (Case* c = SamApp::Window()->GetCurrentCase())
+	{
+
+		if (lkSSCdataObj* ssc = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+		{
+
+			// Create the ssc_data and compute module
+			wxString cm = cxt.arg(1).as_string();
+			//ssc_data_t p_data = ssc_data_create();
+			ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
+			if (!p_mod)
+			{
+				cxt.error("could not create ssc module: " + cm);
+				return;
+			}
+
+			// Assign the compute module with existing values
+			int pidx = 0;
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+			{
+				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+				wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+				wxString reqd(ssc_info_required(p_inf));
+
+				if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+				{
+					
+					// handle ssc variable names
+					// that are explicit field accesses"shading:mxh"
+					wxString field;
+					int pos = name.Find(':');
+					if (pos != wxNOT_FOUND)
+					{
+						field = name.Mid(pos + 1);
+						name = name.Left(pos);
+					}
+					
+
+					int existing_type = ssc_data_query(*ssc, ssc_info_name(p_inf));
+					if (existing_type != data_type)
+					{
+//						if (auto vv = cxt.env()->lookup(name, true))
+						if (auto vv = c->Values().Get(name))
+						{
+							
+							if (!field.IsEmpty())
+							{
+								if (vv->Type() != VV_TABLE)
+									cxt.error("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
+
+								bool do_copy_var = false;
+								if (reqd.Left(1) == "?")
+								{
+									// if the SSC variable is optional, check for the 'en_<field>' element in the table
+									if (VarValue* en_flag = vv->Table().Get("en_" + field))
+										if (en_flag->Boolean())
+											do_copy_var = true;
+								}
+								else do_copy_var = true;
+
+								if (do_copy_var)
+								{
+									if (VarValue* vv_field = vv->Table().Get(field))
+									{
+										if (!VarValueToSSC(vv_field, *ssc, name + ":" + field))
+											cxt.error("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+									}
+								}
+
+							}
+							//assign_lkvar_to_sscdata(cxt.arg(2).deref(), (const char*)name.ToUTF8(), *ssc);
+							
+							//if (!assign_lkvar_to_sscdata(vv->deref(), (const char*)name.ToUTF8(), *ssc))
+							if (!VarValueToSSC(vv,*ssc, name))
+								cxt.error("Error translating data from SAM UI to SSC for " + name);
+
+						}
+						else if (reqd == "*")
+							cxt.error("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
+					}
+				}
+			}
+
+			if (!assign_lkvar_to_sscdata(cxt.arg(2).deref(), "sim_type", *ssc))
+				cxt.error("Error translating data from SAM UI to SSC for 'sim_type'");
+
+
+			int result = ssc_module_exec(p_mod, *ssc);
+
+			if (result)
+			{
+				cxt.result().assign(0.0);
+			}
+			else
+			{
+				lk_string errors;
+				int idx = 0;
+				int ty = 0;
+				float tm = 0;
+				while (const char* msg = ssc_module_log(p_mod, idx++, &ty, &tm))
+				{
+					errors += lk_string(msg);
+				}
+
+				cxt.result().assign(errors);
+			}
+
+
+			ssc_module_free(p_mod);
+		}
+		else
+			cxt.error("invalid ssc-obj-ref");
+	}
+	else 
+		cxt.error("no active case");
+}
+
+
+
+void fcall_ssc_auto_exec_eqn(lk::invoke_t& cxt)
+{
+	LK_DOC("ssc_auto_exec_eqn", "Create data from the current case configuration and run the specified compute module for a specified sim_type and returns a var table", "(ssc-obj-ref:data,string:compute_module_name,simulation type 1=full run,2=design point):ssc-obj-ref");
+
+	if (cxt.arg_count() != 3) {
+		cxt.error("wrong number of argument specified " + cxt.arg_count());
+		return;
+	}
+
+	if (ConfigInfo* ci = SamApp::Config().CurrentConfig())
+	{
+
+		if (lkSSCdataObj* ssc = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+		{
+
+			// Create the ssc_data and compute module
+			wxString cm = cxt.arg(1).as_string();
+			ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
+			if (!p_mod)
+			{
+				cxt.error("could not create ssc module: " + cm);
+				return;
+			}
+
+			// Assign the compute module with existing values
+			int pidx = 0;
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+			{
+				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+				wxString name(ssc_info_name(p_inf)); // assumed to be non-null
+				wxString reqd(ssc_info_required(p_inf));
+
+				if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+				{
+
+					// handle ssc variable names
+					// that are explicit field accesses"shading:mxh"
+					wxString field;
+					int pos = name.Find(':');
+					if (pos != wxNOT_FOUND)
+					{
+						field = name.Mid(pos + 1);
+						name = name.Left(pos);
+					}
+
+
+					int existing_type = ssc_data_query(*ssc, ssc_info_name(p_inf));
+					if (existing_type != data_type)
+					{
+						//						if (auto vv = cxt.env()->lookup(name, true))
+						if (auto vi = ci->Variables.Lookup(name))
+						{
+							auto& vv = vi->DefaultValue;
+							if (!field.IsEmpty())
+							{
+								if (vi->Type != VV_TABLE)
+									cxt.error("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
+
+								bool do_copy_var = false;
+								if (reqd.Left(1) == "?")
+								{
+									// if the SSC variable is optional, check for the 'en_<field>' element in the table
+									if (VarValue* en_flag = vv.Table().Get("en_" + field))
+										if (en_flag->Boolean())
+											do_copy_var = true;
+								}
+								else do_copy_var = true;
+
+								if (do_copy_var)
+								{
+									if (VarValue* vv_field = vv.Table().Get(field))
+									{
+										if (!VarValueToSSC(vv_field, *ssc, name + ":" + field))
+											cxt.error("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+									}
+								}
+
+							}
+							//assign_lkvar_to_sscdata(cxt.arg(2).deref(), (const char*)name.ToUTF8(), *ssc);
+
+							//if (!assign_lkvar_to_sscdata(vv->deref(), (const char*)name.ToUTF8(), *ssc))
+							if (!VarValueToSSC(&vv, *ssc, name))
+								cxt.error("Error translating data from SAM UI to SSC for " + name);
+
+						}
+						else if (reqd == "*")
+							cxt.error("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
+					}
+				}
+			}
+
+			if (!assign_lkvar_to_sscdata(cxt.arg(2).deref(), "sim_type", *ssc))
+				cxt.error("Error translating data from SAM UI to SSC for 'sim_type'");
+
+
+			int result = ssc_module_exec(p_mod, *ssc);
+
+			if (result)
+			{
+				cxt.result().assign(0.0);
+			}
+			else
+			{
+				lk_string errors;
+				int idx = 0;
+				int ty = 0;
+				float tm = 0;
+				while (const char* msg = ssc_module_log(p_mod, idx++, &ty, &tm))
+				{
+					errors += lk_string(msg);
+				}
+
+				cxt.result().assign(errors);
+			}
+
+
+			ssc_module_free(p_mod);
+		}
+		else
+			cxt.error("invalid ssc-obj-ref");
+	}
+	else
+		cxt.error("no active case");
+}
+
+
+
 
 void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 {
@@ -5524,6 +5783,8 @@ lk::fcall_t* invoke_ssc_funcs()
 	static const lk::fcall_t vec[] = {
 		fcall_ssc_create,
 		fcall_ssc_module_create_from_case,
+		fcall_ssc_auto_exec,
+		fcall_ssc_auto_exec_eqn,
 		fcall_ssc_free,
 		fcall_ssc_dump,
 		fcall_ssc_var,

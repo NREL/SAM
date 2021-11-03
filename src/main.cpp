@@ -90,6 +90,7 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
+		{ 2021, 10, 27 }, // 2021.7.27 ssc 262 Cambium beta expires 10/27/2022
 		{ 2021, 7, 27 }, // 2021.7.27 ssc 259 EPRI Beta expires 7/27/2022
 		{ 2021, 7, 12 }, // 2021.7.12 ssc 258 EPRI Beta expires 7/12/2022
 		{ 2021, 6, 2 }, // 2021.6.2 ssc 257 EPRI Beta expires 6/2/2022
@@ -574,9 +575,12 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 		m_topBook->SetSelection( 1 ); // switch to cases view if currently in welcome window
 
 	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
-	c->SetConfiguration( tech, fin );
+//	c->SetConfiguration(tech, fin);
+	c->SetConfiguration(tech, fin, true);  // shj testing
 	c->LoadDefaults();
 	CreateCaseWindow( c );
+	// move recalculate all here after callback called and initialized
+	c->RecalculateAll();
 	return true;
 }
 
@@ -602,6 +606,11 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 	// when creating a new case, at least
 	// show the first input page
 	wxArrayString pages = win->GetInputPages();
+	// update all equations and callbacks by going through pages to handle indicators and calculated values updating from default files
+	Freeze();
+	for (auto &page : pages)
+		win->SwitchToInputPage(page);
+	Thaw();
 	if ( pages.size() > 0 )
 		win->SwitchToInputPage( pages[0] );
 
@@ -1599,6 +1608,8 @@ bool InputPageData::BuildDatabases()
 {
 	m_eqns.Clear();
 	m_cbs.ClearAll();
+
+	// TODO - add m_eqnScript preprocess to expand compute module calls per Github SAM Issue#634 and PR#687
 
 	if ( !m_eqns.LoadScript( m_eqnScript ) )
 		return false;
