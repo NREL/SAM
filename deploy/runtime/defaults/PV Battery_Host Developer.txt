@@ -1,5 +1,5 @@
 1
-1196
+1197
 6par_aisc
 1
 1
@@ -537,6 +537,12 @@ batt_bank_size_specify
 1
 1
 0
+batt_bank_size_ui
+1
+1
+1
+1
+20
 batt_bank_voltage
 1
 1

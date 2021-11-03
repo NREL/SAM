@@ -577,9 +577,12 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 		m_topBook->SetSelection( 1 ); // switch to cases view if currently in welcome window
 
 	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
-	c->SetConfiguration( tech, fin );
+//	c->SetConfiguration(tech, fin);
+	c->SetConfiguration(tech, fin, true);  // shj testing
 	c->LoadDefaults();
 	CreateCaseWindow( c );
+	// move recalculate all here after callback called and initialized
+	c->RecalculateAll();
 	return true;
 }
 
@@ -605,6 +608,11 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 	// when creating a new case, at least
 	// show the first input page
 	wxArrayString pages = win->GetInputPages();
+	// update all equations and callbacks by going through pages to handle indicators and calculated values updating from default files
+	Freeze();
+	for (auto &page : pages)
+		win->SwitchToInputPage(page);
+	Thaw();
 	if ( pages.size() > 0 )
 		win->SwitchToInputPage( pages[0] );
 
@@ -1602,6 +1610,8 @@ bool InputPageData::BuildDatabases()
 {
 	m_eqns.Clear();
 	m_cbs.ClearAll();
+
+	// TODO - add m_eqnScript preprocess to expand compute module calls per Github SAM Issue#634 and PR#687
 
 	if ( !m_eqns.LoadScript( m_eqnScript ) )
 		return false;
