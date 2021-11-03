@@ -42,7 +42,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PythonConfig ReadPythonConfig(const std::string& configPath) {
     // load python configuration
-//    Json::Value python_config_root;
     rapidjson::Document python_config_root;
     std::ifstream python_config_doc(configPath);
     if (python_config_doc.fail())
@@ -60,8 +59,6 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
 	}
 #endif
 
-    //python_config_doc >> python_config_root;
-//    rapidjson::IStreamWrapper iswc(python_config_doc);
     std::ostringstream tmp;
     tmp << python_config_doc.rdbuf();
     python_config_root.Parse(tmp.str().c_str());
@@ -82,15 +79,7 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
         packages.push_back(i.GetString());
 
     std::unordered_map<std::string, std::string> options;
-    /*
-    if (python_config_root.isMember("options")) {
-        Json::Value json_val = python_config_root["options"];
-        Json::Value::Members members = json_val.getMemberNames();
-        for (auto const& name : members) {
-            options.insert({ name, json_val[name].asString() });
-        }
-    }
-    */
+ 
     if (python_config_root.HasMember("options")){
         rapidjson::Value json_val = python_config_root["options"].GetObjectW();
         for (rapidjson::Value::ConstMemberIterator itr = json_val.MemberBegin(); itr != json_val.MemberEnd(); ++itr) {
@@ -111,34 +100,7 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
 void WritePythonConfig(const std::string& configPath, const PythonConfig& config){
     std::ofstream configFile;
     configFile.open(configPath);
-/*
-    Json::Value configObj;
-    configObj["python_version"] = config.pythonVersion;
-    configObj["miniconda_version"] = config.minicondaVersion;
-    configObj["exec_path"] = config.execPath;
-    configObj["pip_path"] = config.pipPath;
-    configObj["packages"] = Json::arrayValue;
-    for (auto &i : config.packages)
-        configObj["packages"].append(i);
-    for (auto &i : config.options)
-        configObj["options"][i.first] = i.second;
 
-    Json::StreamWriterBuilder builder;
-    std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
-    writer -> write(configObj, &configFile);
-    configFile.close();
-
-
-        root.SetObject();
-    for (auto const& it : *vt->get_hash()) {
-        root.AddMember(rapidjson::Value(it.first.c_str(), it.first.size(), root.GetAllocator()).Move(), ssc_var_to_json(it.second, root).Move(), root.GetAllocator());
-    }
-    rapidjson::StringBuffer buffer;
-    buffer.Clear();
-    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
-    root.Accept(writer);
-
-    */
     rapidjson::Document configObj;
     configObj.SetObject();
     configObj.AddMember(rapidjson::Value("python_version", configObj.GetAllocator()).Move(), rapidjson::Value(config.pythonVersion.c_str(), configObj.GetAllocator()).Move(), configObj.GetAllocator());
@@ -160,19 +122,7 @@ void WritePythonConfig(const std::string& configPath, const PythonConfig& config
     }
     configObj.AddMember(rapidjson::Value("options", configObj.GetAllocator()).Move(), json_val.Move(), configObj.GetAllocator());
 
-    /*
-    //configObj["python_version"].SetString(config.pythonVersion.c_str(), configObj.GetAllocator());
-    configObj["miniconda_version"].SetString(config.minicondaVersion.c_str(), configObj.GetAllocator());
-    configObj["exec_path"].SetString( config.execPath.c_str(), configObj.GetAllocator());
-    configObj["pip_path"].SetString(config.pipPath.c_str(), configObj.GetAllocator());
-    configObj["packages"].SetArray();
-    for (auto& i : config.packages)
-        configObj["packages"].PushBack(rapidjson::Value(i.c_str(), configObj.GetAllocator()), configObj.GetAllocator());
-    for (auto& i : config.options)
-        configObj["options"][i.first.c_str()].SetString(i.second.c_str(), configObj.GetAllocator());
-
-    */
-    rapidjson::StringBuffer buffer;
+     rapidjson::StringBuffer buffer;
     buffer.Clear();
     rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(buffer);
     configObj.Accept(writer);
@@ -203,8 +153,6 @@ PythonPackageConfig ReadPythonPackageConfig(const std::string& name, const std::
     if (python_config_doc.fail())
         throw std::runtime_error("Could not open " + configFile );
 
-//    rapidjson::IStreamWrapper iswc(python_config_doc);
-//    python_config_root.ParseStream(iswc);
     std::ostringstream tmp;
     tmp << python_config_doc.rdbuf();
     python_config_root.Parse(tmp.str().c_str());
