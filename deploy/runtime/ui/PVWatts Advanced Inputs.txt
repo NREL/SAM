@@ -626,7 +626,7 @@ adjust
 5
 Performance adjustment factors
  
-PVWatts
+PVWatts Advanced
 0
 1
 1
@@ -650,21 +650,24 @@ PVWatts Advanced
 Default
 bifaciality
 3
-0
+1
+Module bifaciality factor
  
- 
- 
+PVWatts Advanced
 0
-0
+8
+1
+1
+1
 1
 0
- 
+Default
 en_snowloss
 3
 1
 Estimate losses from snow
  
-PVWatts
+PVWatts Advanced
 0
 3
 1
@@ -678,7 +681,7 @@ module_is_bifacial
 1
 Module is bifacial
  
- 
+PVWatts Advanced
 0
 3
 1
@@ -692,7 +695,7 @@ shading
 5
 Edit shading losses
  
-PVWatts
+PVWatts Advanced
 0
 2
 1
@@ -705,7 +708,7 @@ shading_3d_scene
 6
 3D shading scene
  
-PVWatts
+PVWatts Advanced
 0
 0
 1
@@ -717,7 +720,7 @@ soiling
 2
 Monthly soiling losses
  
-Losses
+PVWatts Advanced
 0
 2
 1
@@ -732,7 +735,7 @@ use_wf_albedo
 1
 Use albedo from weather file
  
-Location and Resource
+PVWatts Advanced
 0
 3
 1
@@ -746,7 +749,7 @@ user_specified_constant_albedo
 1
 User-specified constant albedo
  
- 
+PVWatts Advanced
 0
 2
 1

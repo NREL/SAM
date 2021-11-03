@@ -110,6 +110,9 @@ batt_simple_enable
 0
 bifaciality
 1
+1
+1
+1
 0
 city
 1
