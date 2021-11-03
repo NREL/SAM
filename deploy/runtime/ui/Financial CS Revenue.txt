@@ -2285,7 +2285,7 @@ equations{'ui_subscriber3_name'} = define() {
 equations{'ui_subscriber4_name'} = define() {
 	return ${subscriber4_name};
 };
-4125
+4357
 on_load{'Financial CS Revenue'} = define()
 {
 	property('subscriber1_payment_annual','FixedLength',${analysis_period});
@@ -2367,7 +2367,7 @@ function duplicate_revenue_warning()
 	msg = '';
 	if ( sum(${subscriber1_payment_annual}) > 0 && sum(${subscriber1_payment_generation}) > 0 )
 	{ 
-		str += '1'; 
+		str += ? (${ui_subscriber1_name}=='') [${ui_subscriber1_name}, '1' ]; 
 	}
 	if ( sum(${subscriber2_payment_annual}) > 0 && sum(${subscriber2_payment_generation}) > 0 )
 	{ 
@@ -2375,7 +2375,7 @@ function duplicate_revenue_warning()
 		{ 
 			str += ', ';
 		} 
-		str += '2'; 
+		str += ? (${ui_subscriber2_name}=='') [${ui_subscriber2_name}, '2' ]; 
 	}
 	if ( sum(${subscriber3_payment_annual}) > 0 && sum(${subscriber3_payment_generation}) > 0 )
 	{ 
@@ -2383,7 +2383,7 @@ function duplicate_revenue_warning()
 		{ 
 			str += ', ';
 		} 
-		str += '3'; 
+		str += ? (${ui_subscriber3_name}=='') [${ui_subscriber3_name}, '3' ]; 
 	}
 	if ( sum(${subscriber4_payment_annual}) > 0 && sum(${subscriber4_payment_generation}) > 0 )
 	{ 
@@ -2391,7 +2391,7 @@ function duplicate_revenue_warning()
 		{ 
 			str += ', ';
 		} 
-		str += '4'; 
+		str += ? (${ui_subscriber4_name}=='') [${ui_subscriber4_name}, '4' ]; 
 	}
 	if ( str != '' ) 
 	{ 

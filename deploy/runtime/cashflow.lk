@@ -395,24 +395,24 @@ function cf_investing_activities()
 	has_debt = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'Host Developer' || fin == 'Community Solar');
 	cfline( 'INVESTING ACTIVITIES', -1);
 	cfline('cost_prefinancing',0,-1,0);
-	if ( fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip') {	cfline('cost_equity_closing', 0,-1,0); }
-	if ( fin == 'Leveraged Partnership Flip' ) { cfline('sponsor_pretax_development', 0,-1,0); }
-	if ( fin == 'All Equity Partnership Flip' ) { cfline('cost_dev_fee_value', 0,-1,0); }
-	if ( fin == 'Community Solar' ) { cfline('community_solar_upfront_cost', 0,-1,0 ); }
 	if ( has_debt )
 	{
 		cfline('cost_debt_closing',0,-1,0); 
 		cfline('cost_debt_upfront',0,-1,0); 
 	}
+	if ( fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip') {	cfline('cost_equity_closing', 0,-1,0); }
+	if ( fin == 'Leveraged Partnership Flip' ) { cfline('sponsor_pretax_development', 0,-1,0); }
+	if ( fin == 'All Equity Partnership Flip' ) { cfline('cost_dev_fee_value', 0,-1,0); }
 	cfline('construction_financing_cost',0,-1,0); 
 	cfline('cost_other_financing',0,-1,0);
+	if ( fin == 'Community Solar' ) { cfline('community_solar_upfront_cost', 0,-1,0 ); }
 	cfline('minus:', -1, 0);
+	cfline( 'ibi_total', 0,-1,0); 
+	cfline( 'cbi_total', 0,-1,0); 
 	if ( fin == 'Community Solar' ) 
 	{
 		cfline('community_solar_upfront_revenue', 0,-1,0); 
 	}
-	cfline( 'ibi_total', 0,-1,0); 
-	cfline( 'cbi_total', 0,-1,0); 
 	cfline('equals:', -1, 0); 
 	cfline('purchase_of_property', 0);
 	cfline('plus:', -1, 0);
@@ -1457,7 +1457,7 @@ function set_annual_values( xl )
 {
 	//export annual values to minimize rounding discrepancies between SAM and workbook 
 	fin = financing();
-	if ( fin == 'Single Owner' )
+	if ( fin == 'Single Owner' || fin == 'Community Solar')
 	{
 		xl_set( xl, output('cf_energy_sales'), 'EnergyToGrid');
 		xl_set( xl, output('cf_energy_purchases'), 'EnergyFromGrid');
@@ -1946,7 +1946,7 @@ cashflow_to_excel{ 'Community Solar' } = define()
 	xl = create_workbook( 'community_solar.xlsx' );
  	set_analysis_period();
 	set_debt_parameters( xl );
-	//set_annual_values( xl );
+	set_annual_values( xl );
 	//set_lcos( xl );
 	//set_solution_mode( xl );
 	set_construction_financing( xl );
