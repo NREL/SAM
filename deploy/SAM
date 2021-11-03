@@ -1,0 +1,5 @@
+#!/bin/sh
+cd /home/sjanzou/Public/Projects/GitHub/NREL/SAM/build/deploy
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/sjanzou/Public/Projects/GitHub/NREL/SAM/build/deploy/linux_64
+export GTK2_RC_FILES=/home/sjanzou/Public/Projects/GitHub/NREL/SAM/build/deploy/linux_64/GtkTheme/gtk-2.0/gtkrc 
+exec /home/sjanzou/Public/Projects/GitHub/NREL/SAM/build/deploy/linux_64/SAM.bin

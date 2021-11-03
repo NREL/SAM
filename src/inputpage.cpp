@@ -155,8 +155,8 @@ void ActiveInputPage::UpdateScale( wxDC *dc )
 		dpi = dc->GetPPI();
 	else
 	{
-		wxClientDC dc(this);
-		dpi = dc.GetPPI();
+		wxClientDC dctmp(this);
+		dpi = dctmp.GetPPI();
 	}
 
 	wxDevicePPIToScale( dpi, &m_scaleX, &m_scaleY );
@@ -253,7 +253,7 @@ void ActiveInputPage::Initialize()
 				}
 			}
 
-			if ( VarValue *vval = vals.Get( name ) )
+			if (VarValue *vval = vals.Get( name ) )
 				DataExchange( objs[i], *vval, VAR_TO_OBJ );
 		}
 	}
@@ -522,15 +522,15 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if (dir == VAR_TO_OBJ) da->Set(val.Array());
 		else val.Set(da->Get());
 	}
-	else if (AFDataLifetimeArrayButton *dl = obj->GetNative<AFDataLifetimeArrayButton>())
+	else if (AFDataLifetimeArrayButton *dla = obj->GetNative<AFDataLifetimeArrayButton>())
 	{
-	if (dir == VAR_TO_OBJ) dl->Set(val.Array());
-	else val.Set(dl->Get());
+	if (dir == VAR_TO_OBJ) dla->Set(val.Array());
+	else val.Set(dla->Get());
 	}
-	else if (AFDataLifetimeMatrixButton *dl = obj->GetNative<AFDataLifetimeMatrixButton>())
+	else if (AFDataLifetimeMatrixButton *dlm = obj->GetNative<AFDataLifetimeMatrixButton>())
 	{
-	if (dir == VAR_TO_OBJ) dl->Set(val.Matrix());
-	else val.Set(dl->Get());
+	if (dir == VAR_TO_OBJ) dlm->Set(val.Matrix());
+	else val.Set(dlm->Get());
 	}
 	else if (AFStringArrayButton *sa = obj->GetNative<AFStringArrayButton>())
 	{
@@ -542,10 +542,10 @@ bool ActiveInputPage::DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir )
 		if (dir == VAR_TO_OBJ) dm->SetData(val.Matrix());
 		else val.Set(dm->GetData());
 	}
-	else if (AFMonthByHourFactorCtrl *dm = obj->GetNative<AFMonthByHourFactorCtrl>())
+	else if (AFMonthByHourFactorCtrl *dmbh = obj->GetNative<AFMonthByHourFactorCtrl>())
 	{
-		if ( dir == VAR_TO_OBJ ) dm->SetData( val.Matrix() );
-		else val.Set( dm->GetData() );
+		if ( dir == VAR_TO_OBJ ) dmbh->SetData( val.Matrix() );
+		else val.Set( dmbh->GetData() );
 	}
 	else if ( ShadingButtonCtrl *sb = obj->GetNative<ShadingButtonCtrl>() )
 	{

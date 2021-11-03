@@ -1,5 +1,5 @@
 1
-608
+607
 LeadAcid_q10
 1
 1
@@ -263,6 +263,12 @@ batt_bank_size_specify
 1
 1
 0
+batt_bank_size_ui
+1
+1
+1
+1
+4000
 batt_bank_voltage
 1
 1

@@ -18,3 +18,5 @@ deploy/runtime/defaults/*.txt text eol=lf
 # Ensure those won't be messed up with
 *.jpg binary
 *.data binary
+
+*.zip diff=zip
