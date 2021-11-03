@@ -28,7 +28,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <fstream>
 
 #include <ssc/sscapi.h>
-#include <json/json.h>
 
 struct PythonConfig {
     std::string pythonVersion;

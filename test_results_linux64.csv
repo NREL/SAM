@@ -1,4 +1,19 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
+<<<<<<< HEAD
+Flat Plate PV,Residential,8740.773438,9.324888,NA,; 
+Flat Plate PV,Commercial,912000.062500,3.463692,NA,; 
+Flat Plate PV,Third Party,34963.093750,NA,NA,; 
+Flat Plate PV,Host Developer,912000.062500,14.828447,15.895262,; 
+Flat Plate PV,Single Owner,92995000,7.689339,8.118071,; 
+Flat Plate PV,Merchant Plant,92995000,6.959757,NA,; 
+Flat Plate PV,Leveraged Partnership Flip,92995000,7.838985,8.282077,; 
+Flat Plate PV,All Equity Partnership Flip,92995000,9.260207,10.467053,; 
+Flat Plate PV,Sale Leaseback,92995000,9.856671,10.891020,; 
+Flat Plate PV,LCOE Calculator,37226800,NA,NA,; 
+Flat Plate PV,None,8740.773438,NA,NA,; 
+PVWatts,Residential,6996.724121,9.939740,NA,; 
+PVWatts,Commercial,943704.187500,3.626138,NA,; 
+=======
 Flat Plate PV,Residential,8740.773438,8.755652,NA,; 
 Flat Plate PV,Commercial,912000.062500,3.139144,NA,; 
 Flat Plate PV,Third Party,34963.093750,NA,NA,; 
@@ -12,6 +27,7 @@ Flat Plate PV,LCOE Calculator,37226800,NA,NA,;
 Flat Plate PV,None,8740.773438,NA,NA,; 
 PVWatts,Residential,6996.724121,9.332971,NA,; 
 PVWatts,Commercial,943704.187500,3.286368,NA,; 
+>>>>>>> develop
 PVWatts,Third Party,6996.724121,NA,NA,; 
 PVWatts,Host Developer,943704.187500,14.690550,15.743791,; 
 PVWatts,Single Owner,87966056,7.918575,8.357705,; 
@@ -21,6 +37,17 @@ PVWatts,All Equity Partnership Flip,87966056,9.820335,11.885724,;
 PVWatts,Sale Leaseback,87966056,9.887414,10.200701,; 
 PVWatts,LCOE Calculator,35186964,NA,NA,; 
 PVWatts,None,6996.724121,NA,NA,; 
+<<<<<<< HEAD
+High-X Concentrating PV,Single Owner,2414380.500000,25.008635,27.010683,; 
+High-X Concentrating PV,Merchant Plant,2414380.500000,22.579948,NA,; 
+High-X Concentrating PV,Leveraged Partnership Flip,2414380.500000,26.721260,29.938101,; 
+High-X Concentrating PV,All Equity Partnership Flip,2414380.500000,32.800236,41.658268,; 
+High-X Concentrating PV,Sale Leaseback,2414380.500000,30.231569,31.622589,; 
+High-X Concentrating PV,LCOE Calculator,2414380.500000,NA,NA,; 
+High-X Concentrating PV,None,2414380.500000,NA,NA,; 
+Wind Power,Residential,8448.137695,17.980124,NA,; 
+Wind Power,Commercial,327921.750000,9.964700,NA,; 
+=======
 High-X Concentrating PV,Single Owner,2414380.500000,24.015430,25.953466,; 
 High-X Concentrating PV,Merchant Plant,2414380.500000,21.726938,NA,; 
 High-X Concentrating PV,Leveraged Partnership Flip,2414380.500000,25.661293,28.766224,; 
@@ -30,6 +57,7 @@ High-X Concentrating PV,LCOE Calculator,2414380.500000,NA,NA,;
 High-X Concentrating PV,None,2414380.500000,NA,NA,; 
 Wind Power,Residential,8448.137695,16.914196,NA,; 
 Wind Power,Commercial,327921.750000,9.214846,NA,; 
+>>>>>>> develop
 Wind Power,Single Owner,201595968,4.096293,4.392269,; 
 Wind Power,Merchant Plant,201595968,3.667531,NA,; 
 Wind Power,Leveraged Partnership Flip,201595968,4.198564,4.504210,; 
@@ -119,6 +147,30 @@ Generic System,All Equity Partnership Flip,756864000,32.812180,36.422478,;
 Generic System,Sale Leaseback,756864000,32.130512,35.256783,; 
 Generic System,LCOE Calculator,756864000,NA,NA,; 
 Generic System,None,756864000,NA,NA,; 
+<<<<<<< HEAD
+PV Battery,Residential,8586.731445,12.155871,NA,; 
+PV Battery,Commercial,911877.375000,4.594549,NA,; 
+PV Battery,Third Party,34797.308594,NA,NA,; 
+PV Battery,Host Developer,911877.375000,13.713057,10.808079,; 
+PV Battery,Single Owner,92851800,8.018615,9.770092,; 
+PV Battery,Merchant Plant,92851800,7.123851,NA,; 
+PV Battery,Leveraged Partnership Flip,92851800,8.129563,9.770092,; 
+PV Battery,All Equity Partnership Flip,92851800,9.528196,10.855659,; 
+PV Battery,Sale Leaseback,92851800,9.696984,9.770092,; 
+PVWatts Battery,Residential,8022.540527,12.701853,NA,; 
+PVWatts Battery,Commercial,943666.062500,4.604067,NA,; 
+PVWatts Battery,Third Party,8022.540527,NA,NA,; 
+PVWatts Battery,Host Developer,943666.062500,13.488603,10.830657,; 
+Generic Battery,Residential,6692.029785,58.621754,NA,; 
+Generic Battery,Commercial,361540.093750,24.837137,NA,; 
+Generic Battery,Third Party,6692.029785,NA,NA,; 
+Generic Battery,Host Developer,361540.093750,14.470060,10.830667,; 
+Generic Battery,Single Owner,73188808,20.644444,10.399786,; 
+Generic Battery,Merchant Plant,73188808,19.609224,NA,; 
+Generic Battery,Leveraged Partnership Flip,73188808,24.984722,28.888296,; 
+Generic Battery,All Equity Partnership Flip,73188808,28.859795,34.665955,; 
+Generic Battery,Sale Leaseback,73188808,29.023140,34.665955,; 
+=======
 PV Battery,Residential,8588.536133,11.205541,NA,; 
 PV Battery,Commercial,911877.375000,4.274710,NA,; 
 PV Battery,Third Party,34803.324219,NA,NA,; 
@@ -141,4 +193,5 @@ Generic Battery,Merchant Plant,73190792,19.608723,NA,;
 Generic Battery,Leveraged Partnership Flip,73190792,24.984285,28.888741,; 
 Generic Battery,All Equity Partnership Flip,73190792,28.859434,34.666489,; 
 Generic Battery,Sale Leaseback,73190792,29.022774,34.666489,; 
+>>>>>>> develop
 final_configuration_eof,none,NA,NA,NA,
