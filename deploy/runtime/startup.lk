@@ -392,6 +392,7 @@ function setup_community_solar_pages()
               'Financial CS Credit Rate',
               'Financial CS Revenue',
               'Financial CS Costs' ]], {'sidebar' = 'Community Solar', 'help' = 'fin_community_solar'} );
+}
 
 function setup_single_owner_Dispatch_pages()
 {
