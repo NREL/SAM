@@ -257,12 +257,6 @@ function empirical_trough_metrics()
 	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 }
 
-function ETES_metrics()
-{
-	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'annual_E_cycle_gross', {'label'='Annual cycle gross output (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MWh' } );
-}
-
 function MSPT_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
@@ -492,7 +486,6 @@ metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
 metrics{ 'Physical Trough IPH' } = define() { physical_trough_iph_metrics(); };
 metrics{ 'DSGL IPH' } = define() { dsgl_iph_metrics(); };
 metrics{ 'MSPT' } = define() { MSPT_metrics(); };
-metrics{ 'ETES' } = define() { ETES_metrics(); };
 metrics{ 'ISCC' } = define() { ISCC_metrics(); };
 metrics{ 'DSPT' } = define() { DSPT_metrics(); };
 metrics{ 'MSLF' } = define() { MSLF_metrics(); };

@@ -69,8 +69,6 @@ private:
 	void ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArrayString *outputs, bool in_assign_lhs = false );
 	bool AddEquation( const wxArrayString &inputs, const wxArrayString &outputs, lk::node_t *tree, bool result_is_output );
 
-	bool PreProcessScript(wxString *text, wxArrayString* errors = 0);
-
 };
 
 class EqnFastLookup 

@@ -466,6 +466,68 @@ BackColour
 TabOrder
 3
 3
+Numeric
+
+1
+17
+Name
+5
+14
+batt_bank_size
+X
+3
+162
+Y
+3
+168
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
 RadioChoice
 
 1
@@ -568,68 +630,6 @@ BackColour
 TabOrder
 3
 9
-Numeric
-
-1
-17
-Name
-5
-17
-batt_bank_size_ui
-X
-3
-162
-Y
-3
-168
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-1
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-2
 Choice
 
 1
@@ -945,7 +945,7 @@ AlignTop
 2
 0
 
-14
+13
 batt_C_rate_max_charge_input
 3
 1
@@ -1066,7 +1066,7 @@ Desired bank capacity
 kWh
 Battery Sizing
 0
-9
+3
 1
 1
 1
@@ -1102,20 +1102,6 @@ Battery Sizing
 1
 100
 Numeric
-batt_bank_size_ui
-3
-1
-Desired bank capacity
-kWh
-Battery Sizing
-0
-3
-1
-1
-1
-1
-0
-Default
 batt_duration_choice
 3
 1
@@ -1124,7 +1110,7 @@ Specify bank capacity or duration
 Battery Sizing
 5
 kWh|h
-3
+1
 1
 1
 1
@@ -1147,19 +1133,11 @@ Specify desired bank size|Specify cells
 0
 RadioChoice
 
-256
+83
 equations{'batt_bank_power_dc_ac'} = define() {
 	return ${batt_bank_size_dc_ac};
 };
-
-equations{'batt_bank_size'} = define() {
-	if (${batt_duration_choice}==0) {
-		return ${batt_bank_size_ui};
-	}
-	else
-		return ${batt_bank_power} * ${batt_bank_duration};
-};
-2885
+3194
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1168,7 +1146,7 @@ on_load{'Battery Bank Sizing'} = define()
 	is_cap = (value('batt_duration_choice') == 0);
 	
 	show('batt_bank_duration',!is_cap);
-	show('batt_bank_size_ui',is_cap);
+	show('batt_bank_size',is_cap);
 	refresh();
 	
 	on_change{'batt_size_choice'};
@@ -1187,7 +1165,16 @@ on_change{'batt_bank_size'} = define(){
 	battsize_warning_check();
 };
 on_change{'batt_bank_power'} = define(){
+	
+	is_cap = (value('batt_duration_choice') == 0);
+	if (!is_cap) {
+		bank_power = value('batt_bank_power');
+		bank_duration = value('batt_bank_duration');
+		bank_size = bank_power * bank_duration;
+		value('batt_bank_size',bank_size);
+	}
 	battsize_warning_check();
+		
 };
 on_change{'batt_bank_size_specify'} = define(){battsize_warning_check();};
 on_change{'batt_duration_choice'} = define()
@@ -1202,7 +1189,7 @@ on_change{'batt_bank_duration'} = define()
 	if (!is_cap) {
 		bank_power = value('batt_bank_power');
 		bank_duration = value('batt_bank_duration');
-		value('batt_bank_size_ui',bank_power * bank_duration);
+		value('batt_bank_size',bank_power * bank_duration);
 	}
 	battsize_warning_check();
 };
@@ -1242,19 +1229,21 @@ function set_duration_choice()
 	is_cap = (value('batt_duration_choice') == 0);
 	
 	show('batt_bank_duration',!is_cap);
-	show('batt_bank_size_ui',is_cap);
+	show('batt_bank_size',is_cap);
 	bank_power = value('batt_bank_power');
 	bank_cap = value('batt_bank_size');
 	if (!is_cap)
 	{
 		duration = bank_cap / bank_power;
 		value('batt_bank_duration', duration);
+		bank_cap_calc = duration * bank_power;
+		value('batt_bank_size',bank_cap_calc);
 	}
 	else
 	{
 		duration = value('batt_bank_duration');
 		bank_cap_calc = duration * bank_power;
-		value('batt_bank_size_ui', bank_cap_calc);
+		value('batt_bank_size', bank_cap_calc);
 	}
 	
 	refresh();
