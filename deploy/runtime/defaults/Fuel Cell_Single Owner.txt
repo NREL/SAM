@@ -1,5 +1,5 @@
 1
-815
+817
 LeadAcid_q10
 1
 1
@@ -351,7 +351,7 @@ batt_calendar_c
 1
 1
 1
-930
+939
 batt_calendar_choice
 1
 1
@@ -2275,7 +2275,7 @@ en_electricity_rates
 1
 1
 1
-1
+0
 en_snowloss
 1
 1
@@ -4630,6 +4630,12 @@ tz
 1
 1
 -7
+ui_batt_life_model
+1
+1
+1
+1
+0
 ui_electricity_rate_option
 1
 1
