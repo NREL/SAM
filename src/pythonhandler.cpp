@@ -23,6 +23,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <unordered_map>
 #include <future>
 #include <algorithm>
+#include <sstream>
+
 
 #ifdef __WXMSW__
 #pragma warning(disable: 4191)
@@ -34,7 +36,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ssc/../rapidjson/document.h>
 #include <ssc/../rapidjson/istreamwrapper.h>
 #include <ssc/../rapidjson/stringbuffer.h>
-#include <ssc/../rapidjson/writer.h>
+#include <ssc/../rapidjson/prettywriter.h>
 
 
 
@@ -45,6 +47,7 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
     std::ifstream python_config_doc(configPath);
     if (python_config_doc.fail())
         throw std::runtime_error("Could not open " + configPath );
+
 
 #ifdef __WXMSW__
 	// check for byte-order mark indicating UTF-8 and skip if it exists since it's not JSON-compatible
@@ -58,8 +61,10 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
 #endif
 
     //python_config_doc >> python_config_root;
-    rapidjson::IStreamWrapper iswc(python_config_doc);
-    python_config_root.ParseStream(iswc);
+//    rapidjson::IStreamWrapper iswc(python_config_doc);
+    std::ostringstream tmp;
+    tmp << python_config_doc.rdbuf();
+    python_config_root.Parse(tmp.str().c_str());
 
     if (!python_config_root.HasMember("miniconda_version"))
         throw std::runtime_error("Missing key 'miniconda_version' in " + configPath);
@@ -122,9 +127,41 @@ void WritePythonConfig(const std::string& configPath, const PythonConfig& config
     std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
     writer -> write(configObj, &configFile);
     configFile.close();
+
+
+        root.SetObject();
+    for (auto const& it : *vt->get_hash()) {
+        root.AddMember(rapidjson::Value(it.first.c_str(), it.first.size(), root.GetAllocator()).Move(), ssc_var_to_json(it.second, root).Move(), root.GetAllocator());
+    }
+    rapidjson::StringBuffer buffer;
+    buffer.Clear();
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    root.Accept(writer);
+
     */
     rapidjson::Document configObj;
-    configObj["python_version"].SetString(config.pythonVersion.c_str(), configObj.GetAllocator());
+    configObj.SetObject();
+    configObj.AddMember(rapidjson::Value("python_version", configObj.GetAllocator()).Move(), rapidjson::Value(config.pythonVersion.c_str(), configObj.GetAllocator()).Move(), configObj.GetAllocator());
+    configObj.AddMember(rapidjson::Value("miniconda_version", configObj.GetAllocator()).Move(), rapidjson::Value(config.minicondaVersion.c_str(), configObj.GetAllocator()).Move(), configObj.GetAllocator());
+    configObj.AddMember(rapidjson::Value("exec_path", configObj.GetAllocator()).Move(), rapidjson::Value(config.execPath.c_str(), configObj.GetAllocator()).Move(), configObj.GetAllocator());
+    configObj.AddMember(rapidjson::Value("pip_path", configObj.GetAllocator()).Move(), rapidjson::Value(config.pipPath.c_str(), configObj.GetAllocator()).Move(), configObj.GetAllocator());
+    // array
+    rapidjson::Value json_val;
+    json_val.SetArray();
+    for (auto& i : config.packages) {
+        json_val.PushBack(rapidjson::Value(i.c_str(), configObj.GetAllocator()), configObj.GetAllocator());
+    }
+    configObj.AddMember(rapidjson::Value("packages", configObj.GetAllocator()).Move(), json_val.Move(), configObj.GetAllocator());
+
+    json_val.Clear();
+    json_val.SetObject();
+    for (auto& i : config.options) {
+        json_val.AddMember(rapidjson::Value(i.first.c_str(), configObj.GetAllocator()).Move(), rapidjson::Value(i.second.c_str(), configObj.GetAllocator()).Move(), configObj.GetAllocator());
+    }
+    configObj.AddMember(rapidjson::Value("options", configObj.GetAllocator()).Move(), json_val.Move(), configObj.GetAllocator());
+
+    /*
+    //configObj["python_version"].SetString(config.pythonVersion.c_str(), configObj.GetAllocator());
     configObj["miniconda_version"].SetString(config.minicondaVersion.c_str(), configObj.GetAllocator());
     configObj["exec_path"].SetString( config.execPath.c_str(), configObj.GetAllocator());
     configObj["pip_path"].SetString(config.pipPath.c_str(), configObj.GetAllocator());
@@ -134,10 +171,10 @@ void WritePythonConfig(const std::string& configPath, const PythonConfig& config
     for (auto& i : config.options)
         configObj["options"][i.first.c_str()].SetString(i.second.c_str(), configObj.GetAllocator());
 
-
+    */
     rapidjson::StringBuffer buffer;
     buffer.Clear();
-    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+    rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(buffer);
     configObj.Accept(writer);
     configFile << buffer.GetString();
     configFile.close();
@@ -166,8 +203,12 @@ PythonPackageConfig ReadPythonPackageConfig(const std::string& name, const std::
     if (python_config_doc.fail())
         throw std::runtime_error("Could not open " + configFile );
 
-    rapidjson::IStreamWrapper iswc(python_config_doc);
-    python_config_root.ParseStream(iswc);
+//    rapidjson::IStreamWrapper iswc(python_config_doc);
+//    python_config_root.ParseStream(iswc);
+    std::ostringstream tmp;
+    tmp << python_config_doc.rdbuf();
+    python_config_root.Parse(tmp.str().c_str());
+
 
     if (!python_config_root.HasMember("min_python_version"))
         throw std::runtime_error("Missing key 'min_python_version' in " + configFile);
