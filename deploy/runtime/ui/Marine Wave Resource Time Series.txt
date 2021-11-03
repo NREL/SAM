@@ -259,8 +259,8 @@ Tool Tip
 0
 Caption
 5
-330
-The High Resolution Ocean Surface Wave Hindcast is a database with 30  years of 3-hour resolution wave data that you can download and add to your wave resource library.  Download the 3-hour? time series data file based on a specified year, a specified subset of a year, or the entire multi-year dataset for a particular location. 
+343
+The High Resolution Ocean Surface Wave Hindcast database contains 30 years of 3-hour wave data for the coastal United States that you can download and add to your wave resource library. Download the a time-series file based for a year or range of years. If your request fails or results in an error message, please try again until it succeeds.
 TextColour
 4
 0
