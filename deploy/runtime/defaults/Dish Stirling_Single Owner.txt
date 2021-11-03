@@ -1,5 +1,5 @@
 1
-462
+461
 A_absorber
 1
 1
@@ -2762,27 +2762,20 @@ ui_wacc
 1
 1
 7.10145
-ur_billing_demand_lookback_percentages
+ur_ec_billing_demand_lookback_percentages
 1
 2
 1
 12
 0 1 2 3 4 5 6 7 8 9 10 11 
 
-ur_billing_demand_lookback_period
+ur_ec_billing_demand_lookback_period
 1
 1
 1
 1
 11
-ur_dc_billing_demand_periods
-1
-3
-1
-2
-1 1 
-
-ur_enable_billing_demand
+ur_ec_enable_billing_demand
 1
 1
 1

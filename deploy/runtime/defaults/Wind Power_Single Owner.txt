@@ -1,5 +1,5 @@
 1
-601
+600
 a_error_test_number
 1
 1
@@ -4190,13 +4190,6 @@ ui_wacc
 1
 1
 6.70974
-ur_dc_billing_demand_periods
-1
-3
-1
-2
-1 1 
-
 use_specific_wf_wind
 1
 1
