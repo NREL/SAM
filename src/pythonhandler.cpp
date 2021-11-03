@@ -81,7 +81,7 @@ PythonConfig ReadPythonConfig(const std::string& configPath) {
     std::unordered_map<std::string, std::string> options;
  
     if (python_config_root.HasMember("options")){
-        rapidjson::Value json_val = python_config_root["options"].GetObjectW();
+        rapidjson::Value json_val = python_config_root["options"].GetObject();
         for (rapidjson::Value::ConstMemberIterator itr = json_val.MemberBegin(); itr != json_val.MemberEnd(); ++itr) {
             options.insert({ itr->name.GetString(),itr->value.GetString() });
         }
