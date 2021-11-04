@@ -1,6 +1,6 @@
 Operating Costs Standalone Battery
-863
-261
+828
+259
 24
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 6
 Width
 3
-845
+812
 Height
 3
 248
