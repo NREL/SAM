@@ -56,7 +56,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ssc/sscapi.h>
 #include <ssc/ssc_equations.h>
-
+#include <json/json.h>
 
 #include "main.h"
 #include "case.h"
