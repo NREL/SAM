@@ -1,7 +1,7 @@
 PVWatts Advanced Inputs
-621
-549
-16
+584
+604
+22
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 572
 Height
 3
-515
+593
 Tool Tip
 5
 0
@@ -42,22 +42,22 @@ Name
 adjust
 X
 3
-33
+36
 Y
 3
-447
+537
 Width
 3
 294
 Height
 3
-72
+57
 Tool Tip
 5
 0
 TabOrder
 3
-24
+8
 Button
 
 1
@@ -68,10 +68,10 @@ Name
 edit_3d_scene
 X
 3
-318
+315
 Y
 3
-339
+348
 Width
 3
 210
@@ -87,7 +87,7 @@ Caption
 Open 3D shade calculator...
 TabOrder
 3
-4294967295
+6
 CheckBox
 
 1
@@ -98,10 +98,10 @@ Name
 en_snowloss
 X
 3
-27
+33
 Y
 3
-129
+450
 Width
 3
 173
@@ -120,7 +120,7 @@ State
 1
 TabOrder
 3
-4294967295
+7
 CheckBox
 
 1
@@ -131,10 +131,10 @@ Name
 module_is_bifacial
 X
 3
-24
+33
 Y
 3
-48
+63
 Width
 3
 135
@@ -153,7 +153,7 @@ State
 0
 TabOrder
 3
-4294967295
+1
 Label
 
 1
@@ -164,13 +164,13 @@ Name
 msg_pvwatts_snow
 X
 3
-204
+213
 Y
 3
-129
+450
 Width
 3
-348
+330
 Height
 3
 48
@@ -211,7 +211,7 @@ Name
 object 22
 X
 3
-21
+18
 Y
 3
 27
@@ -235,8 +235,47 @@ Colour
 255
 Caption
 5
-22
-Bifaciality and Albedo
+11
+Bifaciality
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+11
+object 2211
+X
+3
+18
+Y
+3
+93
+Width
+3
+525
+Height
+3
+19
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+6
+Albedo
 Bold
 2
 1
@@ -250,10 +289,10 @@ Name
 object 2215
 X
 3
-21
+18
 Y
 3
-381
+495
 Width
 3
 525
@@ -289,10 +328,10 @@ Name
 object 222823
 X
 3
-21
+18
 Y
 3
-105
+198
 Width
 3
 525
@@ -313,8 +352,86 @@ Colour
 255
 Caption
 5
-26
-Snow, Soiling, and Shading
+7
+Soiling
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+14
+object 2228233
+X
+3
+18
+Y
+3
+294
+Width
+3
+525
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+25
+Shading by Nearby Objects
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+14
+object 2228234
+X
+3
+21
+Y
+3
+396
+Width
+3
+525
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+4
+Snow
 Bold
 2
 1
@@ -331,20 +448,20 @@ X
 27
 Y
 3
-183
+111
 Width
 3
 519
 Height
 3
-57
+36
 Tool Tip
 5
 0
 Caption
 5
-181
-Soiling losses can be specified at a monthly resolution to be applied on the DC side of the system. This loss is in addition to any soiling losses defined as part of "Losses" above.
+157
+Albedo is a measure of the reflectance of the ground. You can specify a fixed albedo value or albedo values from the weather file if it includes albedo data.
 TextColour
 4
 0
@@ -376,16 +493,16 @@ Name
 object 731321
 X
 3
-27
+24
 Y
 3
-279
+309
 Width
 3
 519
 Height
 3
-57
+36
 Tool Tip
 5
 0
@@ -420,6 +537,54 @@ Label
 13
 Name
 5
+14
+object 7313218
+X
+3
+24
+Y
+3
+411
+Width
+3
+519
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+134
+If you are using a weather file with snow depth data, you can enable the snow model to estimate losses due to snow covering the array.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
 13
 object 731324
 X
@@ -427,13 +592,109 @@ X
 24
 Y
 3
-402
+213
+Width
+3
+519
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+181
+Soiling losses can be specified at a monthly resolution to be applied on the DC side of the system. This loss is in addition to any soiling losses defined as part of "Losses" above.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+14
+object 7313247
+X
+3
+27
+Y
+3
+45
 Width
 3
 546
 Height
 3
-42
+18
+Tool Tip
+5
+0
+Caption
+5
+87
+Bifacial modules convert light on both the front and back of the module to electricity.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+14
+object 7313248
+X
+3
+27
+Y
+3
+513
+Width
+3
+546
+Height
+3
+18
 Tool Tip
 5
 0
@@ -472,10 +733,10 @@ Name
 shading
 X
 3
-177
+174
 Y
 3
-339
+348
 Width
 3
 135
@@ -493,7 +754,7 @@ Description
 0
 TabOrder
 3
-23
+5
 MonthlyFactor
 
 1
@@ -504,10 +765,10 @@ Name
 soiling
 X
 3
-177
+174
 Y
 3
-243
+252
 Width
 3
 135
@@ -523,7 +784,7 @@ Description
 Monthly soiling losses
 TabOrder
 3
-1
+4
 CheckBox
 
 1
@@ -534,10 +795,10 @@ Name
 use_wf_albedo
 X
 3
-189
+33
 Y
 3
-48
+150
 Width
 3
 273
@@ -556,7 +817,7 @@ State
 1
 TabOrder
 3
-4294967295
+2
 Numeric
 
 1
@@ -567,10 +828,10 @@ Name
 user_specified_constant_albedo
 X
 3
-369
+204
 Y
 3
-72
+174
 Width
 3
 90
@@ -618,7 +879,7 @@ BackColour
 255
 TabOrder
 3
-1
+3
 
 10
 adjust
