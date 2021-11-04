@@ -388,7 +388,9 @@ Automated dispatch|PV smoothing|Dispatch to custom time series|Manual dispatch
 3
 RadioChoice
 
-0
+84
+equations{'batt_dispatch_choice'} = define() {
+	return ${batt_dispatch_choice_ui};};
 3419
 on_load{'Battery Dispatch Options FOM'} = define() {
 	show_hide_charge_options();

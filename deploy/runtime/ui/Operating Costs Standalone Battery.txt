@@ -1241,7 +1241,7 @@ om_batt_nameplate
  
  
 0
-0
+8
 1
 1
 1
@@ -1347,7 +1347,7 @@ system_capacity
 0
 Default
 
-202
+230
 equations{'om_batt_nameplate'} = define() {
 	return ${batt_computed_bank_capacity};
 };
@@ -1357,6 +1357,6 @@ equations{ 'add_om_num_types'} = define(){
 };
 
 equations{ 'system_capacity'} = define() {
-	return 0;
+	return ${batt_ui_nominal_bank_power};
 };
 0
