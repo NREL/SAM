@@ -1124,7 +1124,7 @@ Specify bank capacity or duration
 Battery Sizing
 5
 kWh|h
-3
+1
 1
 1
 1
