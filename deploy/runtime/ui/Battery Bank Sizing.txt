@@ -1159,7 +1159,7 @@ equations{'batt_bank_size'} = define() {
 	else
 		return ${batt_bank_power} * ${batt_bank_duration};
 };
-2885
+2888
 on_load{'Battery Bank Sizing'} = define()
 {
 	set_chemistry();
@@ -1244,7 +1244,7 @@ function set_duration_choice()
 	show('batt_bank_duration',!is_cap);
 	show('batt_bank_size_ui',is_cap);
 	bank_power = value('batt_bank_power');
-	bank_cap = value('batt_bank_size');
+	bank_cap = value('batt_bank_size_ui');
 	if (!is_cap)
 	{
 		duration = bank_cap / bank_power;
