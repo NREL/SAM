@@ -111,7 +111,7 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     txtLon = new wxTextCtrl(this, ID_txtLon, "-124.2", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC));
 
 	wxString msg = "Use this window to list all weather files available from the USWave dataset for a given location, and choose files to download and add to your wave resource library.\n";
-	msg += "Type an address or latitude and longtitude, for example, \"eureka ca\" or \"40.842,-124.25\", and click Find to list available files.\n";
+	msg += "Type a latitude and longtitude, for example, \"40.842,-124.25\", and click Find to list available files.\n";
 	msg += "When the list appears, select the file or files you want to download, or use the filter and auto-select buttons to find and select files.\n";
 	msg += "Choose the download folder where you want SAM to save files, or use the default SAM Downloaded Weather Files folder.\n";
 	msg += "SAM automatically adds the folder to the list of folders it uses to populate your wave resource library.\n";
@@ -454,26 +454,10 @@ void WaveDownloadDialog::GetResources()
 			wxString interval = links_list[i_links]["interval"].AsString();
 			URL.Replace("yourapikey", "<SAMAPIKEY>");
 			URL.Replace("youremail", "<USEREMAIL>");
-			// URL - minimum attributes for each type 
-			wxString attributes = "";
-			if (name.Trim() == "psm3") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/
-				attributes = "&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,relative_humidity,wind_speed,wind_direction,surface_albedo";
-			else if (name.Trim() == "psm3-5min") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-5min-download/
-				attributes = "&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,relative_humidity,wind_speed,wind_direction,surface_albedo";
-			else if (name.Trim() == "psm3-tmy") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-tmy-download/
-				attributes = "&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo";
-			else if (name.Trim() == "suny-india") // https://developer.nrel.gov/docs/solar/nsrdb/suny-india-data-download/
-				attributes = "&attributes=dhi,dni,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,snow_depth,wdir,wspd";
-			else if (name.Trim() == "msg-iodc") // https://developer.nrel.gov/docs/solar/nsrdb/meteosat-download/
-				attributes = "&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo";
-			else
-				attributes = ""; // use default attributes
+			
 #ifdef __DEBUG__
 			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), /*type.c_str(),*/ year.c_str(), interval.c_str(), URL.c_str());
 #endif
-			
-			
-			
 		}
 	}
 }
