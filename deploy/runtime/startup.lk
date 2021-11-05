@@ -964,7 +964,7 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_ope
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
 setconfig( 'PVWatts', 'Leveraged Partnership Flip' );
-setmodules( ['pvwattsv8', 'grid', 'levpartflip']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'levpartflip']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -975,7 +975,7 @@ setup_leveraged_partnership_flip_pages();
 setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'All Equity Partnership Flip' );
-setmodules( ['pvwattsv8', 'grid', 'equpartflip']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'equpartflip']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -986,7 +986,7 @@ setup_all_equity_partnership_flip_pages();
 setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Sale Leaseback' );
-setmodules( ['pvwattsv8', 'grid', 'saleleaseback']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -997,7 +997,7 @@ setup_sale_leaseback_pages();
 setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Single Owner' );
-setmodules( ['pvwattsv8', 'grid', 'singleowner']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'singleowner']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -1008,7 +1008,7 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Merchant Plant' );
-setmodules( ['pvwattsv8', 'grid', 'merchantplant']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'merchantplant']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
