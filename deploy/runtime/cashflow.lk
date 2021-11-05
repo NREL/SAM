@@ -640,7 +640,6 @@ function cf_levelized_metrics()
 {
 	fin = financing();
 	tech = technology();
-	has_roe = ( fin == 'Single Owner' || fin == 'Host Developer' );
 	cfline('AFTER-TAX LEVELIZED COE AND PPA PRICE', -1); 
 	cfline('cf_annual_costs', 0); 
 	cfline('cf_energy_value', 0); 
@@ -655,8 +654,7 @@ function cf_levelized_metrics()
 	cfline('npv_energy_nom', 0); 
 	cfline('lppa_nom',2);
 	
-	if ((tech == "PV Battery" || tech == "PVWatts Battery" || tech == "Generic Battery" || tech == "Fuel Cell")
-		&& has_roe)
+	if ((tech == "PV Battery" || tech == "PVWatts Battery" || tech == "Generic Battery" || tech == "Fuel Cell"))
 	{
 		cfline( '' ); 
 		cfline('LCOS CALCULATIONS', -1);
@@ -673,16 +671,6 @@ function cf_levelized_metrics()
 		cfline('npv_energy_lcos_nom', 0);
 		cfline('lcos_nom', 2);
 		cfline('lcos_real', 2); 
-	}
-		
-	if ( has_roe ) 
-	{
-		cfline( '' ); 
-		cfline('RETURN ON EQUITY', -1); 
-		cfline('(For accounting purposes only)',-1);
-		cfline('cf_return_on_equity_input', 2,100); 
-		cfline('cf_return_on_equity_dollars', 0); 
-		cfline('cf_return_on_equity', 2); 
 	}
 	cfline('');
 }
