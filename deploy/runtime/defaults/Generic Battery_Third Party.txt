@@ -1,5 +1,5 @@
 1
-359
+360
 LeadAcid_q10
 1
 1
@@ -362,7 +362,7 @@ batt_calendar_c
 1
 1
 1
-930
+939
 batt_calendar_choice
 1
 1
@@ -1301,6 +1301,12 @@ en_range
 1
 1
 1
+en_standalone_batt
+1
+1
+1
+1
+0
 en_wash
 1
 1

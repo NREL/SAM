@@ -1,5 +1,5 @@
 1
-1056
+1057
 6par_aisc
 1
 1
@@ -566,7 +566,7 @@ batt_calendar_c
 1
 1
 1
-930
+939
 batt_calendar_choice
 1
 1
@@ -2166,6 +2166,12 @@ en_dc_lifetime_losses
 1
 0
 en_snow_model
+1
+1
+1
+1
+0
+en_standalone_batt
 1
 1
 1
