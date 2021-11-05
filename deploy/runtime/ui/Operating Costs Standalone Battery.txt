@@ -1,5 +1,5 @@
 Operating Costs Standalone Battery
-828
+824
 259
 24
 GroupBox
@@ -12,7 +12,7 @@ Name
 GroupBox1
 X
 3
-9
+6
 Y
 3
 6

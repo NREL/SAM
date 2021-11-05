@@ -1,5 +1,5 @@
 1
-488
+484
 LeadAcid_q10
 1
 1
@@ -450,7 +450,7 @@ batt_dispatch_update_frequency_hours
 1
 1
 1
-0
+1
 batt_dispatch_wf_forecast_choice
 1
 1
@@ -565,7 +565,7 @@ batt_look_ahead_hours
 1
 1
 1
-0
+18
 batt_loss_choice
 1
 1
@@ -870,7 +870,7 @@ battery_total_cost_lcos
 1
 1
 1
-1.43848e+06
+1.77472e+06
 battery_voltage_shown
 1
 1
@@ -1913,18 +1913,6 @@ genericsys.cost.installed_per_capacity
 1
 1.77472
 genericsys.cost.per_watt
-1
-1
-1
-1
-0
-genericsys.cost.plant
-1
-1
-1
-1
-0
-genericsys.cost.plant_scaled
 1
 1
 1
@@ -2994,12 +2982,6 @@ tod_library
 4
 16
 Uniform Dispatch
-total_battery_indirect_cost
-1
-1
-1
-1
-0
 total_direct_cost
 1
 1
@@ -3018,12 +3000,6 @@ total_installed_cost
 1
 1
 1.77472e+06
-total_system_indirect_cost
-1
-1
-1
-1
-203904
 ui_batt_life_model
 1
 1

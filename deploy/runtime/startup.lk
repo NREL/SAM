@@ -47,7 +47,7 @@ configopt( 'High-X Concentrating PV',     { 'tree_parent'='PV', 'long_name'='Hig
 configopt( 'PV Battery',               { 'tree_parent'='BATT', 'long_name'='Detailed PV-Battery',       'short_name'='PV-Battery',     'description'='Detailed photovoltaic model with battery storage' } );
 configopt( 'PVWatts Battery',          { 'tree_parent'='BATT', 'long_name'='PVWatts-Battery',     'short_name'='PVWatts-Battery',     'description'='PVWatts system model with battery storage' } );
 configopt( 'Generic Battery',          { 'tree_parent'='BATT', 'long_name'='Generic System-Battery',    'short_name'='Generic-Battery',     'description'='Generic system model with battery storage' } );
-configopt( 'Standalone Battery',       { 'tree_parent'='BATT', 'long_name'='Generic Standalone Battery',    'short_name'='Standalone-Battery',     'description'='Generic standalone battery storage' } );
+configopt( 'Standalone Battery',       { 'tree_parent'='BATT', 'long_name'='Standalone Battery',    'short_name'='Standalone-Battery',     'description'='Generic standalone battery storage' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind',                                   'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass Combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
 configopt( 'Geothermal Power',            { 'long_name'='Geothermal',                             'short_name'='Geothermal',       'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
@@ -163,6 +163,18 @@ function setup_pages_battery_dispatch_btm()
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
 			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+}
+
+function setup_pages_standalone_battery_dispatch_btm()
+{
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ],
+	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
+		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
+		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
+		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
+			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
+			      'exclusive_var' = 'batt_dispatch_excl',
+			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
 }
 
 function setup_pages_battery_dispatch_fom()
@@ -2217,7 +2229,7 @@ function setup_standalone_battery_pages(is_btm) {
 	if (is_btm) {
 		setup_pages_battery_cell_and_system(false); // false excludes UI form for REopt, only available for PV battery
 		setup_pages_battery_life();
-		setup_pages_battery_dispatch_btm();
+		setup_pages_standalone_battery_dispatch_btm();
 	}
 	else {
 		setup_pages_battery_cell_and_system(false); // false excludes UI form for REopt, only available for PV battery

@@ -669,7 +669,10 @@ One day look ahead (perfect)|One day look behind|Custom forecast
 0
 Default
 
-0
+86
+equations{'batt_dispatch_choice'} = define() {
+		return ${batt_dispatch_choice_ui};
+};
 2032
 on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	

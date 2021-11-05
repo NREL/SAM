@@ -1,6 +1,6 @@
-Battery Dispatch Standalone Options FOM
-1053
-158
+Battery Dispatch Standalone Options BTM
+1056
+188
 6
 CheckBox
 
@@ -12,13 +12,13 @@ Name
 batt_dispatch_auto_can_gridcharge
 X
 3
-306
+309
 Y
 3
 60
 Width
 3
-348
+346
 Height
 3
 21
@@ -48,13 +48,13 @@ X
 15
 Y
 3
-57
+60
 Width
 3
 288
 Height
 3
-88
+114
 Tool Tip
 5
 0
@@ -63,10 +63,12 @@ Selection
 0
 Items
 6
-3
-Automated dispatch
-Dispatch to custom time series
+5
+Peak shaving
+Input grid power targets
+Input battery power targets
 Manual dispatch
+Price signal forecast
 ShowCaptions
 2
 1
@@ -103,6 +105,53 @@ Caption
 5
 58
 Grid charging is required for standalone battery systems. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+23
+lbl_btm_warning_message
+X
+3
+657
+Y
+3
+60
+Width
+3
+384
+Height
+3
+111
+Tool Tip
+5
+0
+Caption
+5
+0
 TextColour
 4
 0
@@ -171,53 +220,6 @@ AlignRight
 AlignTop
 2
 1
-Label
-
-1
-13
-Name
-5
-23
-lbl_fom_warning_message
-X
-3
-657
-Y
-3
-60
-Width
-3
-381
-Height
-3
-83
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 GroupBox
 
 1
@@ -237,19 +239,19 @@ Width
 1042
 Height
 3
-150
+180
 Tool Tip
 5
 0
 Caption
 5
-45
-Front-of-meter (FOM) Storage Dispatch Options
+47
+Behind-the-meter (BTM) Storage Dispatch Options
 Bold
 2
 1
 
-3
+6
 batt_dispatch_auto_can_gridcharge
 3
 1
@@ -264,20 +266,6 @@ batt_dispatch_auto_can_gridcharge
 1
 0
 CheckBox
-batt_dispatch_choice
-3
-1
-Battery dispatch option
- 
-Battery Dispatch
-0
-8
-1
-1
-1
-1
-0
-Default
 batt_dispatch_choice_ui
 3
 1
@@ -290,20 +278,70 @@ batt_dispatch_choice_ui
 1
 1
 1
-0
+3
 RadioChoice
+batt_dispatch_load_forecast_choice
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_dispatch_wf_forecast_choice
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
+batt_load_ac_forecast
+3
+2
+ 
+ 
+ 
+0
+8
+1
+2
+1
+1
+0
+Default
+batt_load_ac_forecast_escalation
+3
+2
+ 
+ 
+ 
+0
+8
+1
+2
+1
+1
+0
+Default
 
-171
-equations{'batt_dispatch_choice'} = define() {
-	if (${batt_dispatch_choice_ui} == 0)
-		return ${batt_dispatch_choice_ui};
-	else
-		return ${batt_dispatch_choice_ui} + 1;
-};
-1981
-on_load{'Battery Dispatch Options FOM'} = define() {
+0
+2022
+on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
-	warning_message();
+	btm_warning_message();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
 	{ 
 		msg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options.';
@@ -314,7 +352,6 @@ on_load{'Battery Dispatch Options FOM'} = define() {
 		msg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';
 		clr = 'black';
 	}
-		
 	property('lbl_dispatch_options','Caption',msg);
 	property('lbl_dispatch_options','TextColour',clr);
 	value('batt_dispatch_auto_can_gridcharge', 1);
@@ -323,15 +360,19 @@ on_load{'Battery Dispatch Options FOM'} = define() {
 
 on_change{'batt_dispatch_choice_ui'} = define() {
 	show_hide_charge_options();
+	btm_warning_message();
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
-	
+
+on_change{'batt_dispatch_auto_can_charge'} = define() {
+	enable_disable_powerflow_options();
+};
 
 // hide charge options for manual dispatch
 function show_hide_charge_options()
 {
 	option = value('batt_dispatch_choice_ui');
-	if (option == 2) {
+	if (option == 3) {
 		value('batt_dispatch_auto_can_gridcharge', false);
 		enable('batt_dispatch_auto_can_gridcharge', false);
 		property('gridcharge_label', 'Caption', '');
@@ -339,36 +380,26 @@ function show_hide_charge_options()
 	else {
 		value('batt_dispatch_auto_can_gridcharge', true);
 		enable('batt_dispatch_auto_can_gridcharge', false);
-		property('gridcharge_label', 'Caption', 'Grid charging is required for standalone battery systems. ');
+		property('gridcharge_label', 'Caption', 'Grid charging is required for standalone battery systems.');
 	}
+	
+	
 }
 
-function warning_message() 
+
+function btm_warning_message() 
 {
 	is_dc = (value('batt_ac_or_dc' ) == 0);
 	color = 'black';
 	if ( is_dc )
 	{
-		msg = 'Battery is DC-connected.'; 
+		msg = 'Battery is DC-connected. The Charge From System Only When System Output Exceeds Load option is only available for AC-connected systems.'; 
 	}
 	else
 	{ 
 		msg = 'Battery is AC-connected.'; 
 	}
-	if ( value('batt_dispatch_choice_ui') == 2 ) 
-	{
-		msg = ''; 
-	}
-	/*
-	elseif ( value('batt_dispatch_choice_ui') == 3 ) 
-	{ 
-		if ( technology() != 'PV Battery' )
-		{
-			msg = 'The PV smoothing option only works for PV Battery configurations.';
-			color = 'red'; 
-		}	
-	}
-	*/
-	property('lbl_fom_warning_message','Caption',msg);
-	property('lbl_fom_warning_message','TextColour',color);
+	msg += ' See input under Power Converters on Battery Cell and System page.';
+	property('lbl_btm_warning_message','Caption',msg);
+	property('lbl_btm_warning_message','TextColour',color);
 }
