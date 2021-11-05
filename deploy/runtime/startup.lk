@@ -176,17 +176,24 @@ function setup_pages_battery_dispatch_fom()
 function setup_pvwatts_battery_pages_behind_the_meter()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-	addpage( [[ 'PVWatts', 'Battery Model Simple with REopt']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
+	addpage( [[ 'PVWatts', 
+	            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'},
+	            'Battery Model Simple with REopt' ]],
+	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 	setup_grid_page_with_outage();
 }
 
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-	addpage( [[ 'PVWatts']], { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
+	addpage( [[ 'PVWatts', 
+	            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
+	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 	setup_grid_page();
-
 }
+
 function setup_flat_plate_pv_pages()
 {
 	//addpage( [ ['AA Widgets'] ], { 'sidebar'='Widgets' } ); // use for widget testing
@@ -532,8 +539,6 @@ function setup_solar_water_heating_pages()
 
 function setup_fuel_cell_pages_btm()
 {
-
-
 	addpage([ [{'name'='Battery None','caption'='No Battery'}],
 				  [{'name'='Battery Model', 'caption'='Enable Battery'},
 				   'Battery Bank Sizing',
@@ -930,16 +935,16 @@ setup_electricity_purchases();
 
 // PVWatts /////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'LCOE Calculator' );
-setmodules( ['pvwattsv7', 'grid','lcoefcr']);
+setmodules( ['pvwattsv8', 'grid','lcoefcr']);
 setup_pvwatts_pages();
 setup_lcoefcr_pages();
 
 setconfig( 'PVWatts', 'None' );
-setmodules( ['pvwattsv7','grid']);
+setmodules( ['pvwattsv8','grid']);
 setup_pvwatts_pages();
 
 setconfig( 'PVWatts', 'Residential' );
-setmodules( ['pvwattsv7', 'belpe', 'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv8', 'belpe', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -949,7 +954,7 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_ope
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 setconfig( 'PVWatts', 'Commercial' );
-setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -959,7 +964,7 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_ope
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
 setconfig( 'PVWatts', 'Leveraged Partnership Flip' );
-setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'levpartflip']);
+setmodules( ['pvwattsv8', 'grid', 'levpartflip']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -970,7 +975,7 @@ setup_leveraged_partnership_flip_pages();
 setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'All Equity Partnership Flip' );
-setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'equpartflip']);
+setmodules( ['pvwattsv8', 'grid', 'equpartflip']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -981,7 +986,7 @@ setup_all_equity_partnership_flip_pages();
 setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Sale Leaseback' );
-setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'saleleaseback']);
+setmodules( ['pvwattsv8', 'grid', 'saleleaseback']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -992,7 +997,7 @@ setup_sale_leaseback_pages();
 setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Single Owner' );
-setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'singleowner']);
+setmodules( ['pvwattsv8', 'grid', 'singleowner']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -1003,7 +1008,7 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Merchant Plant' );
-setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'merchantplant']);
+setmodules( ['pvwattsv8', 'grid', 'merchantplant']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -1014,7 +1019,7 @@ setup_merchant_plant_pages();
 setup_electricity_purchases();
 
 setconfig( 'PVWatts', 'Host Developer' );
-setmodules( ['pvwattsv7', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'host_developer']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
@@ -1024,7 +1029,7 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_ope
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 setconfig( 'PVWatts', 'Third Party' );
-setmodules( ['pvwattsv7', 'belpe', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['pvwattsv8', 'belpe', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 setup_thirdparty_pages( LOAD_BELPE); //includes building load calculator by default in this function
@@ -1161,9 +1166,12 @@ setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
 // Fuel Cell /////////////////////////////////////////////////////////
 setconfig( 'Fuel Cell', 'Commercial');
-setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'cashloan'] );
+setmodules( ['pvwattsv8', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='fuelcell_pv_system' } );
+addpage( [[ 'PVWatts', 
+            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
+            { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_btm();
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ],
@@ -1174,9 +1182,12 @@ addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_ra
 addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
 setconfig( 'Fuel Cell', 'Single Owner');
-setmodules( ['pvwattsv7', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'singleowner']);
+setmodules( ['pvwattsv8', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-addpage( [[ 'PVWatts']], { 'sidebar'='PV System', 'help'='fuelcell_pv_system' } );
+addpage( [[ 'PVWatts', 
+            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
+            { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_fom();
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ],
@@ -2262,7 +2273,7 @@ setup_electricity_purchases();
 
 // PVWatts Battery /////////////////////////////////////////////////////////
 setconfig( 'PVWatts Battery', 'Residential' );
-setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv8', 'belpe', 'battwatts', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Battery Capital Costs' ],
@@ -2271,7 +2282,7 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_ope
 setup_residential_pages( LOAD_BELPE_CRIT ); //includes building load calculator
 
 setconfig( 'PVWatts Battery', 'Commercial' );
-setmodules( ['pvwattsv7', 'battwatts', 'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['pvwattsv8', 'battwatts', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Battery Capital Costs' ],
@@ -2280,7 +2291,7 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_ope
 setup_commercial_pages(LOAD_SIMPLE_CRIT); //belpe not valid for commercial
 
 setconfig( 'PVWatts Battery', 'Host Developer' );
-setmodules( ['pvwattsv7', 'battwatts', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['pvwattsv8', 'battwatts', 'grid', 'utilityrate5', 'host_developer']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Battery Capital Costs' ],
@@ -2289,7 +2300,7 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_ope
 setup_host_developer_pages( LOAD_SIMPLE_CRIT ); //includes building load calculator by default in this function
 
 setconfig( 'PVWatts Battery', 'Third Party' );
-setmodules( ['pvwattsv7', 'belpe', 'battwatts', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['pvwattsv8', 'belpe', 'battwatts', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_battery_pages_behind_the_meter();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 setup_thirdparty_pages( LOAD_BELPE_CRIT ); //includes building load calculator by default in this function
