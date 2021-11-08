@@ -48,7 +48,6 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"construction_financing_cost": 3.6457e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
@@ -285,11 +284,8 @@
 			"grid_curtailment_price": [0.000000],
 			"grid_curtailment_price_esc": 0
 		},
-		"Battery": {
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
+		"LCOS": {
+			"batt_salvage_percentage": 0
 		}
 	}
 }

@@ -560,7 +560,6 @@
 			"hot_tank_Thtr": 365,
 			"hot_tank_max_heat": 25,
 			"init_hot_htf_percent": 30,
-			"is_hx": 1,
 			"store_fl_props": [
 				[1.000000]
 			],

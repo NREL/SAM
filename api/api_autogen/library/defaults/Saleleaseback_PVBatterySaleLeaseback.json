@@ -7,7 +7,6 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"equip1_reserve_cost": 0.25,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
@@ -260,12 +259,9 @@
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 2.81046e+06
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 4000,

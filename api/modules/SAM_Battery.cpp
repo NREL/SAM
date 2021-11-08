@@ -434,6 +434,12 @@ SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_modetime_nset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_outage_SOC_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_minimum_outage_SOC", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_BatteryCell_batt_resistance_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_resistance", number);
@@ -1860,6 +1866,17 @@ SAM_EXPORT double SAM_Battery_BatteryCell_batt_minimum_modetime_nget(SAM_table p
 
 
 
+SAM_EXPORT double SAM_Battery_BatteryCell_batt_minimum_outage_SOC_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_minimum_outage_SOC", &result))
+		make_access_error("SAM_Battery", "batt_minimum_outage_SOC");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Battery_BatteryCell_batt_resistance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3080,6 +3097,39 @@ SAM_EXPORT double SAM_Battery_GridLimits_grid_interconnection_limit_kwac_nget(SA
 
 
 
+SAM_EXPORT double SAM_Battery_Outputs_annual_crit_load_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_crit_load", &result))
+		make_access_error("SAM_Battery", "annual_crit_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_Outputs_annual_crit_load_unmet_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_crit_load_unmet", &result))
+		make_access_error("SAM_Battery", "annual_crit_load_unmet");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_Outputs_annual_crit_load_unmet_percentage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_crit_load_unmet_percentage", &result))
+		make_access_error("SAM_Battery", "annual_crit_load_unmet_percentage");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battery_Outputs_annual_export_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3098,6 +3148,17 @@ SAM_EXPORT double* SAM_Battery_Outputs_annual_import_to_grid_energy_aget(SAM_tab
 	result = ssc_data_get_array(ptr, "annual_import_to_grid_energy", length);
 	if (!result)
 		make_access_error("SAM_Battery", "annual_import_to_grid_energy");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_Outputs_annual_outage_losses_unmet_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_outage_losses_unmet", &result))
+		make_access_error("SAM_Battery", "annual_outage_losses_unmet");
 	});
 	return result;
 }
@@ -3719,6 +3780,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_to_load_aget(SAM_table ptr, int* len
 
 
 
+SAM_EXPORT double* SAM_Battery_Outputs_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_to_system_load", length);
+	if (!result)
+		make_access_error("SAM_Battery", "batt_to_system_load");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3749,6 +3822,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_cdf_of_surviving_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "cdf_of_surviving", length);
 	if (!result)
 		make_access_error("SAM_Battery", "cdf_of_surviving");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_crit_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "crit_load", length);
+	if (!result)
+		make_access_error("SAM_Battery", "crit_load");
 	});
 	return result;
 }
@@ -3887,6 +3972,54 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_load_aget(SAM_table ptr, 
 
 
 
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_batt_to_system_load", length);
+	if (!result)
+		make_access_error("SAM_Battery", "monthly_batt_to_system_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_crit_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_crit_load", length);
+	if (!result)
+		make_access_error("SAM_Battery", "monthly_crit_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_crit_load_unmet_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_crit_load_unmet", length);
+	if (!result)
+		make_access_error("SAM_Battery", "monthly_crit_load_unmet");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_crit_load_unmet_percentage_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_crit_load_unmet_percentage", length);
+	if (!result)
+		make_access_error("SAM_Battery", "monthly_crit_load_unmet_percentage");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battery_Outputs_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3917,6 +4050,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_interconnection_loss_aget(SAM_tab
 	result = ssc_data_get_array(ptr, "monthly_interconnection_loss", length);
 	if (!result)
 		make_access_error("SAM_Battery", "monthly_interconnection_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_monthly_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_outage_losses_unmet", length);
+	if (!result)
+		make_access_error("SAM_Battery", "monthly_outage_losses_unmet");
 	});
 	return result;
 }
@@ -3965,6 +4110,18 @@ SAM_EXPORT double* SAM_Battery_Outputs_outage_durations_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "outage_durations", length);
 	if (!result)
 		make_access_error("SAM_Battery", "outage_durations");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_Outputs_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "outage_losses_unmet", length);
+	if (!result)
+		make_access_error("SAM_Battery", "outage_losses_unmet");
 	});
 	return result;
 }
