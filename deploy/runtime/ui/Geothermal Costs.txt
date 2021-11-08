@@ -2866,10 +2866,9 @@ Tool Tip
 0
 Items
 6
-3
-Low
-Med
-High
+2
+Large Diameter
+Small Diameter
 Selection
 3
 4294967295
@@ -4033,10 +4032,9 @@ Tool Tip
 0
 Items
 6
-3
-Low
-Med
-High
+2
+Large Diameter
+Small Diameter
 Selection
 3
 4294967295
@@ -6706,8 +6704,8 @@ geotherm.cost.inj_cost_curve
 Injection cost multiplier
  
 Geothermal Capital Costs
-12
-Low|Med|High
+29
+Large Diameter|Small Diameter
 3
 1
 1
@@ -7043,8 +7041,8 @@ geotherm.cost.prod_cost_curve
 Production cost multiplier
  
 Geothermal Capital Costs
-12
-Low|Med|High
+29
+Large Diameter|Small Diameter
 3
 1
 1
@@ -7613,7 +7611,7 @@ Geothermal Capital Costs
 0
 Numeric
 
-16095
+15997
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -7751,9 +7749,8 @@ equations{ 'geotherm.cost.surf_num_wells' } = define() {
 equations{ 'geotherm.cost.inj_per_well' } = define() {
 	return ?${geotherm.cost.inj_cost_curve}
 [
-580 * exp(0.0001188 * ${resource_depth} * 3.280839895) * 1000,
-580 * exp(0.0001490 * ${resource_depth} * 3.280839895) * 1000,
-580 * exp(0.0001893 * ${resource_depth} * 3.280839895) * 1000
+0.033 * pow(${resource_depth}, 2) + 350 * ${resource_depth} + 290000,
+0.033 * pow(${resource_depth}, 2) + 150 * ${resource_depth} + 290000
 ]; };
 
 equations{ 'total_installed_cost' } = define() {
@@ -7780,9 +7777,8 @@ equations{ 'geotherm.cost.pump_installation' } = define() {
 equations{ 'geotherm.cost.prod_per_well' } = define() {
 	return ?${geotherm.cost.prod_cost_curve}
 [
-580 * exp(0.0001188 * ${resource_depth} * 3.280839895) * 1000,
-580 * exp(0.0001490 * ${resource_depth} * 3.280839895) * 1000,
-580 * exp(0.0001893 * ${resource_depth} * 3.280839895) * 1000
+0.033 * pow(${resource_depth}, 2) + 350 * ${resource_depth} + 290000,
+0.033 * pow(${resource_depth}, 2) + 150 * ${resource_depth} + 290000
 ]; };
 
 equations{ 'geotherm.cost.prod_inj_num_wells' } = define() {
