@@ -399,8 +399,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvwattsv7_Outputs_elev_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvwattsv7_Outputs_estimated_rows_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_gh_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -430,6 +428,12 @@ extern "C"
 	SAM_EXPORT double SAM_Pvwattsv7_Outputs_solrad_annual_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_solrad_monthly_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_ss_beam_factor_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_ss_gnd_diffuse_factor_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_ss_sky_diffuse_factor_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_Pvwattsv7_Outputs_state_sget(SAM_table ptr, SAM_error *err);
 

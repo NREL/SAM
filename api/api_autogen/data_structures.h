@@ -168,7 +168,7 @@ static std::unordered_map<std::string, std::string> config_to_cmod_name = {
         {"DSLF", "TcslinearFresnel"},
         {"DSPT", "TcsdirectSteam"},
         {"EmpiricalTrough", "TcstroughEmpirical"},
-        {"ETES", "etes_electric_resistance"},
+        {"ETES", "EtesElectricResistance"},
         {"FlatPlatePV", "Pvsamv1"},
         {"FuelCell", "Fuelcell"},
         {"GenericCSPSystem", "TcsgenericSolar"},

@@ -31,11 +31,12 @@ SAM_EXPORT double SAM_TestUdPowerCycle_Common_q_pb_design_nget(SAM_table ptr, SA
 
 
 
-SAM_EXPORT double SAM_TestUdPowerCycle_Outputs_W_dot_fossil_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_TestUdPowerCycle_Outputs_udpc_table_out_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "W_dot_fossil", &result))
-		make_access_error("SAM_TestUdPowerCycle", "W_dot_fossil");
+	result = ssc_data_get_matrix(ptr, "udpc_table_out", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TestUdPowerCycle", "udpc_table_out");
 	});
 	return result;
 }

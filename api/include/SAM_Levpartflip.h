@@ -2995,8 +2995,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_annual_discharge_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_battery_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);

@@ -4,7 +4,7 @@
 			"albedo": [0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000],
 			"irrad_mode": 0,
 			"sky_model": 2,
-			"use_wf_albedo": 0
+			"use_wf_albedo": 1
 		},
 		"Losses": {
 			"acwiring_loss": 1,
@@ -362,6 +362,8 @@
 		"BatteryCell": {
 		},
 		"BatteryDispatch": {
+		},
+		"SystemCosts": {
 		},
 		"FuelCell": {
 		},
