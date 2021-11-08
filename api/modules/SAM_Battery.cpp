@@ -230,6 +230,12 @@ SAM_EXPORT void SAM_Battery_Load_crit_load_aset(SAM_table ptr, double* arr, int 
 	});
 }
 
+SAM_EXPORT void SAM_Battery_Load_crit_load_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "crit_load_escalation", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_Load_grid_outage_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "grid_outage", arr, length);
@@ -524,12 +530,6 @@ SAM_EXPORT void SAM_Battery_Losses_dcoptimizer_loss_nset(SAM_table ptr, double n
 	});
 }
 
-SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_auto_gridcharge_max_daily_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_auto_gridcharge_max_daily", number);
-	});
-}
-
 SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_custom_dispatch_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_custom_dispatch", arr, length);
@@ -572,9 +572,21 @@ SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_gridcharge_ns
 	});
 }
 
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_charge_only_system_exceeds_load", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_choice_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_choice", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_discharge_only_load_exceeds_system_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_discharge_only_load_exceeds_system", number);
 	});
 }
 
@@ -1468,6 +1480,18 @@ SAM_EXPORT double* SAM_Battery_Load_crit_load_aget(SAM_table ptr, int* length, S
 
 
 
+SAM_EXPORT double* SAM_Battery_Load_crit_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "crit_load_escalation", length);
+	if (!result)
+		make_access_error("SAM_Battery", "crit_load_escalation");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battery_Load_grid_outage_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2015,17 +2039,6 @@ SAM_EXPORT double SAM_Battery_Losses_dcoptimizer_loss_nget(SAM_table ptr, SAM_er
 
 
 
-SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_auto_gridcharge_max_daily_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_auto_gridcharge_max_daily", &result))
-		make_access_error("SAM_Battery", "batt_auto_gridcharge_max_daily");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_custom_dispatch_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2105,11 +2118,33 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_gridcharge_
 
 
 
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_charge_only_system_exceeds_load", &result))
+		make_access_error("SAM_Battery", "batt_dispatch_charge_only_system_exceeds_load");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dispatch_choice", &result))
 		make_access_error("SAM_Battery", "batt_dispatch_choice");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_discharge_only_load_exceeds_system_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_discharge_only_load_exceeds_system", &result))
+		make_access_error("SAM_Battery", "batt_dispatch_discharge_only_load_exceeds_system");
 	});
 	return result;
 }
