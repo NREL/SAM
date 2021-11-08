@@ -389,7 +389,7 @@ Automated dispatch|PV smoothing|Dispatch to custom time series|Manual dispatch
 RadioChoice
 
 0
-3162
+3209
 on_load{'Battery Dispatch Options FOM'} = define() {
 	show_hide_charge_options();
 	enable_charge_from_clip();
@@ -440,7 +440,7 @@ function show_hide_charge_options()
 	{
 		show('batt_dispatch_auto_can_charge',option != 3);
 		show('batt_dispatch_auto_can_gridcharge', option !=3 );
-		show('batt_dispatch_auto_can_clipcharge', option != 3);
+		show('batt_dispatch_auto_can_clipcharge', true);
 		if (technology() == 'Fuel Cell') 
 		{ show('batt_dispatch_auto_can_fuelcellcharge', option !=3); }
 		else
@@ -456,7 +456,7 @@ function enable_charge_from_clip()
 {
 	// enable charge from clipped power if dc-connected and automated dispatch
 	is_dc = (value('batt_ac_or_dc' ) == 0);
-	if ( is_dc && value('batt_dispatch_choice_ui') == 0 )
+	if ( is_dc && (value('batt_dispatch_choice_ui') == 0 || (value('batt_dispatch_choice_ui') == 3)))
 	{ enable('batt_dispatch_auto_can_clipcharge', true); }
 	else 
 	{ 
@@ -478,7 +478,7 @@ function warning_message()
 	{ 
 		msg = 'Battery is AC-connected.'; 
 	}
-	msg = msg + ' Charging from clipped power is only available for automated dispatch and DC-connected batteries. See input under Power Converters on Battery Cell and System page.';
+	msg = msg + ' Charging from clipped power is only available for automated or manual dispatch and DC-connected batteries. See input under Power Converters on Battery Cell and System page.';
 	if ( value('batt_dispatch_choice_ui') == 2 ) 
 	{
 		msg = ''; 
