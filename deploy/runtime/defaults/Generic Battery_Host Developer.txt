@@ -1,5 +1,5 @@
 1
-648
+650
 LeadAcid_q10
 1
 1
@@ -303,7 +303,7 @@ batt_calendar_c
 1
 1
 1
-930
+939
 batt_calendar_choice
 1
 1
@@ -2039,6 +2039,18 @@ dscr
 1
 1
 1.3
+dscr_limit_debt_fraction
+1
+1
+1
+1
+0
+dscr_maximum_debt_fraction
+1
+1
+1
+1
+100
 dscr_reserve_months
 1
 1

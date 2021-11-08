@@ -1,5 +1,5 @@
 1
-831
+833
 LeadAcid_q10
 1
 1
@@ -2265,6 +2265,18 @@ dscr
 1
 1
 0
+dscr_limit_debt_fraction
+1
+1
+1
+1
+0
+dscr_maximum_debt_fraction
+1
+1
+1
+1
+100
 dscr_reserve_months
 1
 1
