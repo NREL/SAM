@@ -338,7 +338,7 @@ batt_load_ac_forecast_escalation
 Default
 
 0
-2022
+2020
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	btm_warning_message();
@@ -374,7 +374,7 @@ function show_hide_charge_options()
 	option = value('batt_dispatch_choice_ui');
 	if (option == 3) {
 		value('batt_dispatch_auto_can_gridcharge', false);
-		enable('batt_dispatch_auto_can_gridcharge', false);
+		show('batt_dispatch_auto_can_gridcharge', false);
 		property('gridcharge_label', 'Caption', '');
 	}
 	else {

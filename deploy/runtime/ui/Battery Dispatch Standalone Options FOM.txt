@@ -300,7 +300,7 @@ equations{'batt_dispatch_choice'} = define() {
 	else
 		return ${batt_dispatch_choice_ui} + 1;
 };
-1981
+1979
 on_load{'Battery Dispatch Options FOM'} = define() {
 	show_hide_charge_options();
 	warning_message();
@@ -333,7 +333,7 @@ function show_hide_charge_options()
 	option = value('batt_dispatch_choice_ui');
 	if (option == 2) {
 		value('batt_dispatch_auto_can_gridcharge', false);
-		enable('batt_dispatch_auto_can_gridcharge', false);
+		show('batt_dispatch_auto_can_gridcharge', false);
 		property('gridcharge_label', 'Caption', '');
 	}
 	else {

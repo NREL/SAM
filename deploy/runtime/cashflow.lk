@@ -50,7 +50,7 @@ function is_batt_tech()
 	// may need to update to include PVWatts Battery, but as of 2020.2.29:
 	// no battery replacements for PVWatts Battery
 	// no retail purchases for PVWatts Battery because it is only behind-the-meter
-	x = ( tech == 'PV Battery' || 
+	x = ( tech == 'PV Battery' || tech == 'Standalone Battery' ||
 	      tech == 'Generic Battery' || 
 	      ( tech == 'Fuel Cell' && value('en_batt') == true ) 
 	    );
@@ -189,6 +189,7 @@ function cf_om_expenses()
                  tech != 'Wind Power' && 
                  tech != 'Biopower' &&
                  tech != 'PV Battery' &&
+                 tech != 'Standalone Battery' &&
                  tech != 'PVWatts Battery' &&
                  tech != 'Generic Battery' ); 
 	if ( fuel_tech == true ) { cfline('cf_om_fuel_expense', 2); }
@@ -655,7 +656,7 @@ function cf_levelized_metrics()
 	cfline('npv_energy_nom', 0); 
 	cfline('lppa_nom',2);
 	
-	if ((tech == "PV Battery" || tech == "PVWatts Battery" || tech == "Generic Battery" || tech == "Fuel Cell")
+	if ((tech == "PV Battery" || tech == "Standalone Battery" || tech == "PVWatts Battery" || tech == "Generic Battery" || tech == "Fuel Cell")
 		&& has_roe)
 	{
 		cfline( '' ); 
