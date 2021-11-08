@@ -65,7 +65,7 @@
 			"batt_calendar_a": 0.00266,
 			"batt_calendar_b": -7280,
 			"batt_calendar_c": 930,
-			"batt_calendar_choice": 0,
+			"batt_calendar_choice": 1,
 			"batt_calendar_lifetime_matrix": [
 				[0.000000, 100.000000],
 				[3650.000000, 80.000000],

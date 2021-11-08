@@ -638,6 +638,12 @@ SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_p_track_nset(SAM_table ptr, dou
 	});
 }
 
+SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_receiver_type_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "receiver_type", number);
+	});
+}
+
 SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_v_wind_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "v_wind_max", number);
@@ -725,6 +731,36 @@ SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_Flow_type_nset(SAM_table ptr,
 SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "N_panels", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_height", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_passive_abs", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_passive_eps", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_span", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_width", number);
 	});
 }
 
@@ -845,6 +881,12 @@ SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_fill_time_nset(SAM_table 
 SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "min_preheat_time", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "n_cav_rec_panels", number);
 	});
 }
 
@@ -2780,6 +2822,17 @@ SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_p_track_nget(SAM_table ptr, S
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_receiver_type_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "receiver_type", &result))
+		make_access_error("SAM_TcsmoltenSalt", "receiver_type");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_v_wind_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2939,6 +2992,61 @@ SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nget(SAM_table ptr
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "N_panels", &result))
 		make_access_error("SAM_TcsmoltenSalt", "N_panels");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_height", &result))
+		make_access_error("SAM_TcsmoltenSalt", "cav_rec_height");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_passive_abs", &result))
+		make_access_error("SAM_TcsmoltenSalt", "cav_rec_passive_abs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_passive_eps", &result))
+		make_access_error("SAM_TcsmoltenSalt", "cav_rec_passive_eps");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_span", &result))
+		make_access_error("SAM_TcsmoltenSalt", "cav_rec_span");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_width", &result))
+		make_access_error("SAM_TcsmoltenSalt", "cav_rec_width");
 	});
 	return result;
 }
@@ -3160,6 +3268,17 @@ SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nget(SAM_t
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "min_preheat_time", &result))
 		make_access_error("SAM_TcsmoltenSalt", "min_preheat_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "n_cav_rec_panels", &result))
+		make_access_error("SAM_TcsmoltenSalt", "n_cav_rec_panels");
 	});
 	return result;
 }
@@ -6425,6 +6544,17 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_sf_adjust_out_aget(SAM_table ptr, i
 	result = ssc_data_get_array(ptr, "sf_adjust_out", length);
 	if (!result)
 		make_access_error("SAM_TcsmoltenSalt", "sf_adjust_out");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_sim_cpu_run_time_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sim_cpu_run_time", &result))
+		make_access_error("SAM_TcsmoltenSalt", "sim_cpu_run_time");
 	});
 	return result;
 }

@@ -1873,12 +1873,36 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_flip_target_year_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set mp_ancserv1_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: mp_enable_ancserv1_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_ancserv1_revenue: Ancillary services 1 revenue input
 	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv1_revenue_single: Ancillary services 1 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: mp_enable_ancserv1_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv2_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: mp_enable_ancserv2_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_ancserv2_revenue: Ancillary services 2 revenue input
@@ -1889,12 +1913,44 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set mp_ancserv2_revenue_single: Ancillary services 2 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: mp_enable_ancserv2_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv3_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: mp_enable_ancserv3_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_ancserv3_revenue: Ancillary services 3 revenue input
 	 * options: Lifetime x 2 [Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv3_revenue_single: Ancillary services 3 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: mp_enable_ancserv3_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv4_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: mp_enable_ancserv4_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_ancserv4_revenue: Ancillary services 4 revenue input
@@ -1905,12 +1961,28 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set mp_ancserv4_revenue_single: Ancillary services 4 revenue input
+	 * options: Lifetime x 1[Price($/MWh)]
+	 * constraints: None
+	 * required if: mp_enable_ancserv4_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
 	 * Set mp_enable_ancserv1: Enable ancillary services 1 Revenue [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mp_enable_ancserv1_percent_gen: Enable percent demand cleared capacity option for ancillary service 1 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_enable_ancserv2: Enable ancillary services 2 Revenue [0/1]
@@ -1921,12 +1993,28 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv2_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set mp_enable_ancserv2_percent_gen: Enable percent demand cleared capacity option for ancillary service 2 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_enable_ancserv3: Enable ancillary services 3 Revenue [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mp_enable_ancserv3_percent_gen: Enable percent demand cleared capacity option for ancillary service 3 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_enable_ancserv4: Enable ancillary services 4 Revenue [0/1]
@@ -1937,6 +2025,14 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv4_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set mp_enable_ancserv4_percent_gen: Enable percent demand cleared capacity option for ancillary service 4 [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_enable_energy_market_revenue: Enable energy market revenue [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=1
@@ -1945,12 +2041,36 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set mp_enable_market_percent_gen: Enable percent demand cleared capacity option for market revenue [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_energy_market_revenue: Energy market revenue input
 	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_energy_market_revenue_single: Energy market revenue input
+	 * options: Lifetime x 1 [Price($/MWh)]
+	 * constraints: None
+	 * required if: mp_enable_market_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_energy_market_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_market_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: mp_enable_market_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Merchantplant_Revenue_mp_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -2200,7 +2320,7 @@ extern "C"
 
 
 	//
-	// Battery parameters
+	// LCOS parameters
 	//
 
 	/**
@@ -2209,7 +2329,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Merchantplant_Battery_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Merchantplant_LCOS_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_annual_charge_from_system: Battery annual energy charged from system [kWh]
@@ -2217,7 +2337,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Merchantplant_Battery_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Merchantplant_LCOS_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_annual_discharge_energy: Battery annual energy discharged [kWh]
@@ -2225,7 +2345,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Merchantplant_Battery_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Merchantplant_LCOS_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set batt_capacity_percent: Battery relative capacity to nameplate [%]
@@ -2233,7 +2353,15 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Merchantplant_Battery_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Merchantplant_LCOS_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set batt_salvage_percentage: Net pre-tax cash battery salvage value [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Merchantplant_LCOS_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set battery_total_cost_lcos: Battery total investment cost [$]
@@ -2241,52 +2369,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Merchantplant_Battery_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set grid_to_batt: Electricity to grid from battery [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Merchantplant_Battery_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_batt_to_grid: Energy to grid from battery [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Merchantplant_Battery_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_grid_to_batt: Energy to battery from grid [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Merchantplant_Battery_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_grid_to_load: Energy to load from grid [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Merchantplant_Battery_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set monthly_system_to_grid: Energy to grid from system [kWh]
-	 * options: None
-	 * constraints: LENGTH=12
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Merchantplant_Battery_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// ChargesByMonth parameters
-	//
+	SAM_EXPORT void SAM_Merchantplant_LCOS_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set charge_w_sys_ec_ym: Energy charge with system [$]
@@ -2294,7 +2377,47 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_Merchantplant_LCOS_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set grid_to_batt: Electricity to grid from battery [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_LCOS_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_batt_to_grid: Energy to grid from battery [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_grid_to_batt: Energy to battery from grid [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_grid_to_load: Energy to load from grid [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set monthly_system_to_grid: Energy to grid from system [kWh]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set true_up_credits_ym: Net annual true-up payments [$]
@@ -2302,20 +2425,7 @@ extern "C"
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set year1_monthly_ec_charge_with_system: Energy charge with system [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// Monthly parameters
-	//
+	SAM_EXPORT void SAM_Merchantplant_LCOS_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set year1_monthly_ec_charge_gross_with_system: Energy charge with system before credits [$/mo]
@@ -2323,7 +2433,15 @@ extern "C"
 	 * constraints: LENGTH=12
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Merchantplant_Monthly_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set year1_monthly_ec_charge_with_system: Energy charge with system [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set year1_monthly_electricity_to_grid: Electricity to/from grid [kWh/mo]
@@ -2331,7 +2449,7 @@ extern "C"
 	 * constraints: LENGTH=12
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_Merchantplant_Monthly_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -2838,25 +2956,55 @@ extern "C"
 
 	SAM_EXPORT double SAM_Merchantplant_Revenue_flip_target_year_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv1_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv2_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv4_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv4_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv2_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv4_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_market_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_energy_market_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_Revenue_mp_market_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2944,48 +3092,40 @@ extern "C"
 
 
 	/**
-	 * Battery Getters
+	 * LCOS Getters
 	 */
 
-	SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Merchantplant_Battery_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Merchantplant_LCOS_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Battery_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_Merchantplant_LCOS_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Battery_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Battery_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Battery_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Battery_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	/**
-	 * ChargesByMonth Getters
-	 */
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
-
-	/**
-	 * Monthly Getters
-	 */
-
-	SAM_EXPORT double* SAM_Merchantplant_Monthly_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Merchantplant_Monthly_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
