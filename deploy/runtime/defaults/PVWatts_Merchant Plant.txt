@@ -1,5 +1,5 @@
 1
-447
+445
 ac_nameplate
 1
 1
@@ -1662,7 +1662,7 @@ land_area_value
 1
 1
 1
-0
+162.569
 land_fixed
 1
 1
@@ -1897,7 +1897,7 @@ modulearray_area
 1
 1
 1
-0
+657895
 modulearray_power
 1
 1

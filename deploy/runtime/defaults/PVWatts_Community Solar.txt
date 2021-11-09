@@ -1,5 +1,5 @@
 1
-479
+477
 ac_nameplate
 1
 1
@@ -2227,12 +2227,6 @@ reserves_interest
 1
 1
 1.75
-roe_input
-1
-2
-1
-1
-0
 sales_tax_percent
 1
 1
@@ -2367,12 +2361,6 @@ show_ReserveAccounts
 1
 1
 1
-show_ReturnonEquity
-1
-1
-1
-1
-0
 show_construction_period
 1
 1
