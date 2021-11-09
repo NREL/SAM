@@ -1,6 +1,6 @@
 Marine Tidal Converter
-1071
-1064
+939
+1056
 8
 GroupBox
 
@@ -107,10 +107,10 @@ X
 15
 Y
 3
-48
+57
 Width
 3
-1000
+904
 Height
 3
 166
@@ -288,10 +288,10 @@ Name
 user_entered
 X
 3
-18
+15
 Y
 3
-69
+57
 Width
 3
 800
@@ -303,8 +303,8 @@ Tool Tip
 0
 Caption
 5
-419
-The WEC power matrix is a table of device electrical output power in kW for a range of significant wave heights (Hs) in meters and wave energy periods (Te) in seconds with bins that match the wave energy resource scatter diagram on the Wave Resource page. You can type values into the table by hand, import data from a comma-separated (CSV) text file, or paste data from your computer's clipboard. See Help for details.
+339
+The TEC power curve is an array of device electrical output power in kW for a range of tidal velocity in m/s with bins that match the velocity bins on the Tidal Resource page. You can type values into the array by hand, import data from a comma-separated (CSV) text file, or paste data from your computer's clipboard. See Help for details.
 TextColour
 4
 0
