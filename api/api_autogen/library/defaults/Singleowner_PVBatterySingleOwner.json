@@ -48,7 +48,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 1.0588e+06,
+			"construction_financing_cost": 1.05880e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,

@@ -11,7 +11,7 @@ if ( en_pvsamv3 ) addconfig( 'Photovoltaic', ['None'] );
 // PopulateTech() function in main.cpp.
 // order of financial models for each performance model determined by order of array items in second parameter of addconfig().
 addconfig( 'Flat Plate PV', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
-addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
+addconfig( 'PVWatts', [ 'Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Community Solar', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None' ] );
 addconfig( 'High-X Concentrating PV', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Wind Power', [ 'Residential', 'Commercial', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None'] );
 addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -41,7 +41,7 @@ addconfig( 'Retired', ['None']);
 // tree_parent for performance models defined in PopulateTech() in main.cpp
 if ( en_pvsamv3 ) {	configopt( 'Photovoltaic', {'tree_parent'='PV', 'long_name'='Photovoltaic (super detailed)', 'short_name'='Photovoltaic', 'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } ); }
 configopt( 'Flat Plate PV',               { 'tree_parent'='PV', 'long_name'='Detailed PV Model',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
-configopt( 'PVWatts',                     { 'tree_parent'='PV','long_name'='PVWatts',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V7 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1.' } );
+configopt( 'PVWatts',                     { 'tree_parent'='PV','long_name'='PVWatts',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V8 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1.' } );
 configopt( 'High-X Concentrating PV',     { 'tree_parent'='PV', 'long_name'='High Concentration PV',                  'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
 configopt( 'PV Battery',               { 'tree_parent'='BATT', 'long_name'='Detailed PV-Battery',       'short_name'='PV-Battery',     'description'='Detailed photovoltaic model with battery storage' } );
 configopt( 'PVWatts Battery',          { 'tree_parent'='BATT', 'long_name'='PVWatts-Battery',     'short_name'='PVWatts-Battery',     'description'='PVWatts system model with battery storage' } );
@@ -78,7 +78,8 @@ configopt( 'Single Owner',                { 'tree_parent'='PPA', 'long_name'='Si
 configopt( 'Leveraged Partnership Flip',  { 'tree_parent'='PPA', 'long_name'='Partnership Flip with Debt',         'short_name'='Flip (debt)',      'description'='Developer/investor partnership flip PPA structure with debt' } );
 configopt( 'All Equity Partnership Flip', { 'tree_parent'='PPA', 'long_name'='Partnership Flip without Debt',      'short_name'='Flip (no debt)',   'description'='Developer/investor partnership flip PPA structure without debt' } );
 configopt( 'Sale Leaseback',              { 'tree_parent'='PPA', 'long_name'='Sale Leaseback',                     'short_name'='Sale leaseback',   'description'='Sale leaseback partnership PPA structure' } );
-configopt( 'Merchant Plant',              { 'long_name'='Merchant Plant',                         'short_name'='Merchant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
+configopt( 'Merchant Plant',              { 'long_name'='Merchant Plant', 'short_name'='Merchant',     'description'='Merchant plant with constant DSCR and ancillary services revenue, reserve accounts and depreciation allocations' } );
+configopt( 'Community Solar',             { 'long_name'='Community Solar', 'short_name'='Community', 'description'='Community solar owner model' } );
 configopt( 'None',                        { 'long_name'='No Financial Model',                               'short_name'='No financial',     'description'='Run the performance model with no financial model' } );
 
 enum { LOAD_SIMPLE, LOAD_BELPE, LOAD_SIMPLE_CRIT, LOAD_BELPE_CRIT, NO_LOAD };
@@ -176,8 +177,8 @@ function setup_pages_battery_dispatch_fom()
 function setup_pvwatts_battery_pages_behind_the_meter()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-	addpage( [[ 'PVWatts', 
-	            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+	addpage( [[ 'PVWatts',
+	            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'},
 	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'},
 	            'Battery Model Simple with REopt' ]],
 	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
@@ -187,8 +188,8 @@ function setup_pvwatts_battery_pages_behind_the_meter()
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-	addpage( [[ 'PVWatts', 
-	            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+	addpage( [[ 'PVWatts',
+	            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'},
 	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
 	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 	setup_grid_page();
@@ -286,8 +287,7 @@ function setup_host_developer_pages(mode) // third party host-developer
 		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
               {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
-              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
-               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},   ]],
            { 'sidebar'='Financial Parameters', 'help'='fin_tpo_host_developer' }  );
   addpage( [[ 'Financial TOD Factors' ]], { 'sidebar'='Time of Delivery Factors', 'help'='tod_factors' });
 
@@ -377,14 +377,36 @@ function setup_single_owner_pages()
 		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
               {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
-              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
-               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'}]],
            { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
   addpage( [[ 'Financial Solution Mode Single Owner',
   			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Financial Curtailment Price', 'caption'='Curtailment Payments', 'collapsible'=true, 'collapsible_var'='revenue_curtailment_is_shown', 'collapsed_by_default'=true } ]],
             { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
+  addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+  addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
+}
+
+
+function setup_community_solar_pages()
+{
+  setting( { 'analysis_period_var'='cf_length' } );
+  addpage( [[ 'Financial CS Subscribers',
+              'Financial CS Credit Rate',
+              'Financial CS Revenue',
+              'Financial CS Costs' ]], {'sidebar' = 'Community Solar', 'help' = 'fin_community_solar'} );
+  addpage( [[ 'Financial Analysis Parameters',
+		      'Financial Tax and Insurance Rates',
+		      'Financial Salvage Value',
+		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+              {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+              {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
+               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+           { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
   addpage( [['Financial Depreciation Detailed' ]],
@@ -400,9 +422,14 @@ function setup_single_owner_Dispatch_pages()
 		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
               {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
-              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
-               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
            { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+ /*addpage( [[ 'Financial Solution Mode Single Owner',
+  			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Financial Curtailment Price', 'caption'='Curtailment Payments', 'collapsible'=true, 'collapsible_var'='revenue_curtailment_is_shown', 'collapsed_by_default'=true } ]],
+            { 'sidebar'='Revenue', 'help'='revenue_ppa' } ); */
+            
   addpage( [[ 'Financial Solution Mode Single Owner ETES',
   			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true },
@@ -414,6 +441,7 @@ function setup_single_owner_Dispatch_pages()
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 }
 
+
 function setup_merchant_plant_pages()
 {
   setting( { 'analysis_period_var'='cf_length' } );
@@ -423,8 +451,7 @@ function setup_merchant_plant_pages()
 		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
               {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
-              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
-               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
            { 'sidebar'='Financial Parameters', 'help'='fin_merchant_plant' }  );
 
   addpage( [[{'name'='Financial Merchant Plant Energy Market Revenue', 'caption'='Energy Market'}],
@@ -434,7 +461,7 @@ function setup_merchant_plant_pages()
 			[{'name'='Financial Merchant Plant Ancillary Service 4', 'caption'='Ancillary Service 4' }]],
 			{ 'sidebar'='Revenue', 'help'='revenue_merchant_plant', 'exclusive_var'='revenue_tab',
 			  'exclusive_header_pages' = ['Financial Merchant Plant Description','Financial Capacity Payments','Cambium API Data'],  'exclusive_tabs'=true, 'exclusive_hide' = false} );
-			
+
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
   addpage( [['Financial Depreciation Detailed' ]],
@@ -988,6 +1015,16 @@ addpage( [[ 'PV Capital Costs' ],
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
 
+setconfig( 'PVWatts', 'Community Solar' );
+setmodules( ['pvwattsv7', 'grid', 'communitysolar']);
+setup_pvwatts_pages();
+setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+addpage( [[ 'PV Capital Costs' ],
+	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
+	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_community_solar_pages();
+
 setconfig( 'PVWatts', 'Merchant Plant' );
 setmodules( ['pvwattsv8', 'grid', 'merchantplant']);
 setup_pvwatts_pages();
@@ -1143,8 +1180,8 @@ setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 setconfig( 'Fuel Cell', 'Commercial');
 setmodules( ['pvwattsv8', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-addpage( [[ 'PVWatts', 
-            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+addpage( [[ 'PVWatts',
+            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'},
             {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
             { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_btm();
@@ -1159,8 +1196,8 @@ addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_loa
 setconfig( 'Fuel Cell', 'Single Owner');
 setmodules( ['pvwattsv8', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-addpage( [[ 'PVWatts', 
-            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+addpage( [[ 'PVWatts',
+            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'},
             {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
             { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_fom();

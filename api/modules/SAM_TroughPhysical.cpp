@@ -1154,6 +1154,12 @@ SAM_EXPORT void SAM_TroughPhysical_Tou_wlim_series_aset(SAM_table ptr, double* a
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_inventory_incentive", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysical_FinancialModel_csp_financial_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp_financial_model", number);
@@ -3475,6 +3481,17 @@ SAM_EXPORT double* SAM_TroughPhysical_Tou_wlim_series_aget(SAM_table ptr, int* l
 
 
 
+SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_inventory_incentive", &result))
+		make_access_error("SAM_TroughPhysical", "disp_inventory_incentive");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TroughPhysical_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4265,6 +4282,18 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_qsfsu_expected_aget(SAM_table
 
 
 
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_rel_mip_gap", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "disp_rel_mip_gap");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_rev_expected_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4307,6 +4336,18 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_solve_time_aget(SAM_table ptr
 	result = ssc_data_get_array(ptr, "disp_solve_time", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "disp_solve_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_subopt_flag", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "disp_subopt_flag");
 	});
 	return result;
 }

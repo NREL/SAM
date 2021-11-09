@@ -118,7 +118,7 @@ Tool Tip
 Caption
 5
 9
-Salex Tax
+Sales Tax
 Bold
 2
 1
