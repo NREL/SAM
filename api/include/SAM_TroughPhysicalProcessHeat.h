@@ -1423,6 +1423,19 @@ extern "C"
 
 
 	//
+	// SystemControl parameters
+	//
+
+	/**
+	 * Set disp_inventory_incentive: Dispatch storage terminal inventory incentive multiplier
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// System parameters
 	//
 
@@ -1840,6 +1853,13 @@ extern "C"
 
 
 	/**
+	 * SystemControl Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * System Getters
 	 */
 
@@ -1903,6 +1923,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Outputs_annual_field_freeze_protection_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalProcessHeat_Outputs_annual_gross_energy_nget(SAM_table ptr, SAM_error *err);
@@ -1924,6 +1946,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_e_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_e_dot_field_int_energy_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Outputs_hour_day_aget(SAM_table ptr, int* length, SAM_error *err);
 

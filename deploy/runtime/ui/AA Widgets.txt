@@ -268,16 +268,19 @@ Height
 24
 Tool Tip
 5
-0
+13
+Tool Tip test
 Mode
 3
 0
 Label
 5
-0
+10
+Label test
 Description
 5
-0
+16
+Description test
 TabOrder
 3
 4294967295
@@ -366,7 +369,8 @@ Label
 0
 Description
 5
-0
+16
+Test description
 TabOrder
 3
 4294967295
@@ -531,7 +535,8 @@ ShowDBOptions
 0
 Description
 5
-0
+4
+test
 TabOrder
 3
 4294967295
@@ -604,7 +609,7 @@ Legend
 LossAdjustment
 
 1
-7
+8
 Name
 5
 9
@@ -627,6 +632,9 @@ Tool Tip
 TabOrder
 3
 4294967295
+Description
+5
+0
 TableData
 
 1

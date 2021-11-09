@@ -523,10 +523,10 @@ MultilineText
 1
 
 
-1303
+1485
 // This form is a copy of Financial Solution Flip Leaseback
 // so ppa_soln_mode radio button can have different labels
-// to indicated IRR target is for the tax investor for flip 
+// to indicate IRR target is for the tax investor for flip 
 // structures. Any updates should be made to both forms.
 
 on_load{'Financial Solution Mode Single Owner'} = define()
@@ -550,7 +550,6 @@ on_change{'flip_target_year'} = define () {
 	display_message();
 };
 
-
 function display_message() 
 {
 	txt = '';
@@ -563,6 +562,10 @@ function display_message()
 	if ( financing() == 'Host Developer' ) 
 	{
 		txt += 'IRR is the developer internal rate of return. ';
+	}
+	elseif( financing() == 'Community Solar' )
+	{
+		txt += 'Set PPA price or IRR target to zero if project only earns revenue from subscription payments on the Community Solar page.';
 	}
 	property('solution_mode_message','Caption',txt);
 	property('solution_mode_message','TextColour',clr);

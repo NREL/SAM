@@ -1,3 +1,25 @@
+/**
+BSD-3-Clause
+Copyright 2019 Alliance for Sustainable Energy, LLC
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met :
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
+or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
 #include <iostream>
 #include <set>
 
@@ -20,6 +42,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Biomass", "Biomass combustion for electricity generation"},
             {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
             {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
+            {"ETES", "Electric thermal energy storage"},
             {"Fuelcell", "Fuel cell model"},
             {"GenericSystem", "Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input"},
             {"Geothermal", "Geothermal power model for hydrothermal and EGS systems with flash or binary conversion"},
@@ -36,7 +59,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Pvsamv1", "Detailed photovoltaic system model with separate components for module and inverter"},
             {"Pvwattsv5", "PVWatts photovoltaic system model with simple inputs"},
             {"Pvwattsv5Lifetime", "PVWatts photovoltaic system model for multi-year lifetime analysis"},
-			{"Pvwattsv7", "Photovoltaic system using basic NREL PVWatts V7 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1."},
+			{"Pvwattsv8", "Photovoltaic system using basic NREL PVWatts V8 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1."},
             {"Saleleaseback", "PPA sale leaseback partnership financial model"},
             {"Sco2AirCooler", "Supercritical CO2 Power Cycle Air Cooler"},
             {"Sco2CspSystem", "Supercritical CO2 Power Cycle Design and Off-Design Simulation"},
@@ -669,9 +692,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     if (cmod_it != root->m_eqn_entries.end()){
         auto func_map = cmod_it->second;
         for (const auto& func_it : func_map){
-            fx_file << "\t\t{\"" << func_it.first << "\", (PyCFunction)" << func_it.second.name;
-            fx_file << ", METH_VARARGS | METH_KEYWORDS,\n"
-                       "\t\t\t" << func_it.second.name << "_doc},\n";
+            if (func_it.second.PySAM_export) {
+                fx_file << "\t\t{\"" << func_it.first << "\", (PyCFunction)" << func_it.second.name;
+                fx_file << ", METH_VARARGS | METH_KEYWORDS,\n"
+                           "\t\t\t" << func_it.second.name << "_doc},\n";
+            }
         }
     }
 

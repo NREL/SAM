@@ -1,5 +1,5 @@
 1
-600
+598
 a_error_test_number
 1
 1
@@ -3683,12 +3683,6 @@ revenue_curtailment_is_shown
 1
 1
 0
-roe_input
-1
-2
-1
-1
-0
 rotor_diameter
 1
 1
@@ -3767,12 +3761,6 @@ show_ReserveAccounts
 1
 1
 1
-show_ReturnonEquity
-1
-1
-1
-1
-0
 show_construction_period
 1
 1

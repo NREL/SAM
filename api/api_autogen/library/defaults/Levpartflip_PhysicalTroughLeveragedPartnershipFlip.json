@@ -275,11 +275,8 @@
 			"tax_investor_preflip_cash_percent": 98,
 			"tax_investor_preflip_tax_percent": 98
 		},
-		"Battery": {
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
+		"LCOS": {
+			"batt_salvage_percentage": 0
 		},
 		"BatterySystem": {
 		}

@@ -1,5 +1,5 @@
 1
-1191
+1190
 A_aperture
 1
 2
@@ -1791,12 +1791,6 @@ csp.dtr.tes.htf_min_opt_temp
 1
 1
 238
-csp.dtr.tes.hx_derate
-1
-1
-1
-1
-0.965753
 csp.dtr.tes.min_fluid_volume
 1
 1
