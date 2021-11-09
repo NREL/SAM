@@ -271,11 +271,19 @@ extern "C"
 	 * Outputs Getters
 	 */
 
+	SAM_EXPORT double SAM_Battwatts_Outputs_annual_crit_load_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_annual_crit_load_unmet_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_annual_crit_load_unmet_percentage_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battwatts_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_annual_export_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_annual_import_to_grid_energy_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_annual_outage_losses_unmet_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battwatts_Outputs_average_battery_conversion_efficiency_nget(SAM_table ptr, SAM_error *err);
 
@@ -381,11 +389,15 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_cell_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_cdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_crit_load_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -411,11 +423,21 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_crit_load_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_crit_load_unmet_percentage_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_interconnection_loss_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_system_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -424,6 +446,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_Outputs_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_pdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
 

@@ -91,6 +91,8 @@ static SamApp::ver releases[] = {
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
 		{ 2021, 10, 27 }, // 2021.7.27 ssc 262 Cambium beta expires 10/27/2022
+		{ 2021, 9, 10 }, // 2021.9.10 ssc 261 Community Solar Beta expires 9/10/2022
+		{ 2021, 9, 7 }, // 2021.9.7 ssc 260 Community Solar Beta expires 9/7/2022
 		{ 2021, 7, 27 }, // 2021.7.27 ssc 259 EPRI Beta expires 7/27/2022
 		{ 2021, 7, 12 }, // 2021.7.12 ssc 258 EPRI Beta expires 7/12/2022
 		{ 2021, 6, 2 }, // 2021.6.2 ssc 257 EPRI Beta expires 6/2/2022

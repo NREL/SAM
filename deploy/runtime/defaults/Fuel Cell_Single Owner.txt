@@ -856,7 +856,7 @@ batt_minimum_SOC
 1
 1
 1
-15
+30
 batt_minimum_modetime
 1
 1
