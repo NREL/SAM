@@ -1,5 +1,5 @@
 1
-442
+449
 ac_nameplate
 1
 1
@@ -689,6 +689,13 @@ depr_sta_type
 1
 1
 1
+dispatch_manual_btm_discharge_to_grid
+1
+2
+1
+6
+0 0 0 0 0 0 
+
 elev
 1
 1
@@ -2001,6 +2008,48 @@ ptc_sta_term
 1
 1
 10
+pv.storage.p1.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
+pv.storage.p2.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
+pv.storage.p3.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
+pv.storage.p4.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
+pv.storage.p5.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
+pv.storage.p6.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv_capex_cost_choice
 1
 1

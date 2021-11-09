@@ -1,5 +1,5 @@
 1
-764
+771
 LeadAcid_q10
 1
 1
@@ -1590,6 +1590,13 @@ depr_sta_type
 1
 1
 1
+dispatch_manual_btm_discharge_to_grid
+1
+2
+1
+6
+0 0 0 0 0 0 
+
 dispatch_manual_charge
 1
 2
@@ -3587,7 +3594,7 @@ property_assessed_value
 1
 1
 1
-2.44922e+06
+2449220
 property_tax_rate
 1
 1
@@ -3642,6 +3649,13 @@ pv.storage.p1.discharge
 1
 1
 0
+pv.storage.p1.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p1.gridcharge
 1
 1
@@ -3660,6 +3674,13 @@ pv.storage.p2.discharge
 1
 1
 0
+pv.storage.p2.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p2.gridcharge
 1
 1
@@ -3678,6 +3699,13 @@ pv.storage.p3.discharge
 1
 1
 1
+pv.storage.p3.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p3.gridcharge
 1
 1
@@ -3696,6 +3724,13 @@ pv.storage.p4.discharge
 1
 1
 0
+pv.storage.p4.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p4.gridcharge
 1
 1
@@ -3714,6 +3749,13 @@ pv.storage.p5.discharge
 1
 1
 0
+pv.storage.p5.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p5.gridcharge
 1
 1
@@ -3732,6 +3774,13 @@ pv.storage.p6.discharge
 1
 1
 0
+pv.storage.p6.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p6.gridcharge
 1
 1
@@ -4037,7 +4086,7 @@ thermal_load_annual_total
 1
 1
 1
-7.6463e+06
+7646300
 thermal_load_escalation
 1
 2
@@ -4197,7 +4246,7 @@ total_installed_cost
 1
 1
 1
-2.44922e+06
+2449220
 total_land_area
 1
 1
@@ -4269,13 +4318,13 @@ ui_loan_amount
 1
 1
 1
-2.44922e+06
+2449220
 ui_net_capital_cost
 1
 1
 1
 1
-2.44922e+06
+2449220
 ui_pv_capacity
 1
 1

@@ -1,5 +1,5 @@
 1
-252
+259
 Monthly_util
 1
 2
@@ -377,6 +377,13 @@ degradation
 1
 1
 0
+dispatch_manual_btm_discharge_to_grid
+1
+2
+1
+6
+0 0 0 0 0 0 
+
 elev
 1
 1
@@ -963,6 +970,48 @@ ppa_price
 1
 1
 0.1
+pv.storage.p1.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
+pv.storage.p2.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
+pv.storage.p3.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
+pv.storage.p4.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
+pv.storage.p5.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
+pv.storage.p6.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pvwatts.advanced.is_shown
 1
 1

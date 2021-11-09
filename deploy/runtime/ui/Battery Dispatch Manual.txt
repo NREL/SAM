@@ -1,7 +1,7 @@
 Battery Dispatch Manual
 1051
 554
-51
+58
 Label
 
 1
@@ -1380,13 +1380,13 @@ Name
 batt_manual_dispatch_label
 X
 3
-522
+585
 Y
 3
 36
 Width
 3
-519
+454
 Height
 3
 36
@@ -1428,7 +1428,7 @@ Name
 btn_copy_schedule
 X
 3
-543
+585
 Y
 3
 216
@@ -1530,16 +1530,16 @@ Name
 lbl_copy_schedule
 X
 3
-522
+585
 Y
 3
-150
+135
 Width
 3
-519
+455
 Height
 3
-66
+70
 Tool Tip
 5
 0
@@ -1568,6 +1568,54 @@ AlignRight
 AlignTop
 2
 1
+Label
+
+1
+13
+Name
+5
+21
+lbl_to_grid_discharge
+X
+3
+471
+Y
+3
+57
+Width
+3
+45
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+8
+To grid?
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 GroupBox
 
 1
@@ -1604,8 +1652,8 @@ Label
 13
 Name
 5
-10
-object 731
+12
+object 73157
 X
 3
 363
@@ -1764,6 +1812,38 @@ CheckBox
 9
 Name
 5
+29
+pv.storage.p1.dischargetogrid
+X
+3
+471
+Y
+3
+81
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
 24
 pv.storage.p1.gridcharge
 X
@@ -1854,6 +1934,38 @@ State
 TabOrder
 3
 9
+CheckBox
+
+1
+9
+Name
+5
+29
+pv.storage.p2.dischargetogrid
+X
+3
+471
+Y
+3
+108
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
 CheckBox
 
 1
@@ -1956,6 +2068,38 @@ CheckBox
 9
 Name
 5
+29
+pv.storage.p3.dischargetogrid
+X
+3
+471
+Y
+3
+135
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
 24
 pv.storage.p3.gridcharge
 X
@@ -2046,6 +2190,38 @@ State
 TabOrder
 3
 19
+CheckBox
+
+1
+9
+Name
+5
+29
+pv.storage.p4.dischargetogrid
+X
+3
+471
+Y
+3
+162
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
 CheckBox
 
 1
@@ -2148,6 +2324,38 @@ CheckBox
 9
 Name
 5
+29
+pv.storage.p5.dischargetogrid
+X
+3
+471
+Y
+3
+189
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
 24
 pv.storage.p5.gridcharge
 X
@@ -2244,6 +2452,38 @@ CheckBox
 9
 Name
 5
+29
+pv.storage.p6.dischargetogrid
+X
+3
+471
+Y
+3
+216
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
 24
 pv.storage.p6.gridcharge
 X
@@ -2271,7 +2511,7 @@ TabOrder
 3
 27
 
-37
+44
 batt_discharge_percent_1
 3
 1
@@ -2440,6 +2680,20 @@ Battery Dispatch Manual
 1
 100
 Numeric
+dispatch_manual_btm_discharge_to_grid
+3
+2
+Battery manual allow discharge to grid array
+ 
+Battery Dispatch Manual
+0
+9
+1
+2
+1
+1
+0
+Default
 dispatch_manual_charge
 3
 2
@@ -2590,6 +2844,20 @@ Battery Dispatch Manual
 1
 0
 CheckBox
+pv.storage.p1.dischargetogrid
+3
+1
+Battery allow discharge to grid Period 1
+ 
+Battery Dispatch Manual
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 pv.storage.p1.gridcharge
 3
 1
@@ -2624,6 +2892,20 @@ pv.storage.p2.discharge
 Battery allow discharge Period 2
  
 Battery Dispatch Manual
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+pv.storage.p2.dischargetogrid
+3
+1
+ 
+ 
+ 
 0
 3
 1
@@ -2674,6 +2956,20 @@ Battery Dispatch Manual
 1
 1
 CheckBox
+pv.storage.p3.dischargetogrid
+3
+1
+ 
+ 
+ 
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 pv.storage.p3.gridcharge
 3
 1
@@ -2708,6 +3004,20 @@ pv.storage.p4.discharge
 Battery allow discharge Period 4
  
 Battery Dispatch Manual
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+pv.storage.p4.dischargetogrid
+3
+1
+ 
+ 
+ 
 0
 3
 1
@@ -2758,6 +3068,20 @@ Battery Dispatch Manual
 1
 0
 CheckBox
+pv.storage.p5.dischargetogrid
+3
+1
+ 
+ 
+ 
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 pv.storage.p5.gridcharge
 3
 1
@@ -2800,6 +3124,20 @@ Battery Dispatch Manual
 1
 0
 CheckBox
+pv.storage.p6.dischargetogrid
+3
+1
+ 
+ 
+ 
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 pv.storage.p6.gridcharge
 3
 1
@@ -2815,7 +3153,7 @@ Battery Dispatch Manual
 0
 CheckBox
 
-2263
+2555
 equations{ 'dispatch_manual_charge' } = define() {
 	return [ ${pv.storage.p1.charge},
 	${pv.storage.p2.charge},
@@ -2842,6 +3180,16 @@ equations{ 'dispatch_manual_gridcharge' } = define() {
 	${pv.storage.p5.gridcharge},
 	${pv.storage.p6.gridcharge} ];
 };
+
+equations{ 'dispatch_manual_btm_discharge_to_grid' } = define() {
+	return [ ${pv.storage.p1.dischargetogrid},
+	${pv.storage.p2.dischargetogrid},
+	${pv.storage.p3.dischargetogrid},
+	${pv.storage.p4.dischargetogrid},
+	${pv.storage.p5.dischargetogrid},
+	${pv.storage.p6.dischargetogrid} ];
+};
+
 equations{ 'dispatch_manual_percent_discharge'} = define() {
 	count = 0;
 	discharge_array = ${dispatch_manual_discharge};
@@ -2898,12 +3246,13 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-6403
+7102
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	value('batt_dispatch_choice', 3);
 	show_label();
 	toggle_dispatch();
+	show_hide_grid_discharge(behind_the_meter());
 		
 	on_change{'pv.storage.p1.discharge'};
 	on_change{'pv.storage.p2.discharge'};
@@ -2954,7 +3303,8 @@ function behind_the_meter()
 	btm = false;
 	if (financing() == 'Residential' || 
 		financing() == 'Commercial' || 
-		financing() == 'Third Party')
+		financing() == 'Third Party' ||
+		financing() == 'Host Developer')
 		{ btm = true; }
 	return btm;
 }
@@ -2975,6 +3325,16 @@ function toggle_discharge_percent()
 	enable('batt_discharge_percent_4', (value('pv.storage.p4.discharge')==1));
 	enable('batt_discharge_percent_5', (value('pv.storage.p5.discharge')==1));
 	enable('batt_discharge_percent_6', (value('pv.storage.p6.discharge')==1));
+
+
+	if (behind_the_meter()) {
+		enable('pv.storage.p1.dischargetogrid', (value('pv.storage.p1.discharge')==1));
+		enable('pv.storage.p2.dischargetogrid', (value('pv.storage.p2.discharge')==1));
+		enable('pv.storage.p3.dischargetogrid', (value('pv.storage.p3.discharge')==1));
+		enable('pv.storage.p4.dischargetogrid', (value('pv.storage.p4.discharge')==1));
+		enable('pv.storage.p5.dischargetogrid', (value('pv.storage.p5.discharge')==1));
+		enable('pv.storage.p6.dischargetogrid', (value('pv.storage.p6.discharge')==1));
+	}
 }
 function toggle_gridcharge_percent()
 {
@@ -2984,6 +3344,17 @@ function toggle_gridcharge_percent()
 	enable('batt_gridcharge_percent_4', (value('pv.storage.p4.gridcharge')==1));
 	enable('batt_gridcharge_percent_5', (value('pv.storage.p5.gridcharge')==1));
 	enable('batt_gridcharge_percent_6', (value('pv.storage.p6.gridcharge')==1));
+
+}
+
+function show_hide_grid_discharge(is_btm) {
+	show('lbl_to_grid_discharge',is_btm);
+	show('pv.storage.p1.dischargetogrid',is_btm);
+	show('pv.storage.p2.dischargetogrid',is_btm);
+	show('pv.storage.p3.dischargetogrid',is_btm);
+	show('pv.storage.p4.dischargetogrid',is_btm);
+	show('pv.storage.p5.dischargetogrid',is_btm);
+	show('pv.storage.p6.dischargetogrid',is_btm);
 }
 
 function toggle_dispatch()
@@ -3020,21 +3391,8 @@ function toggle_dispatch()
 			toggle_discharge_percent();
 			toggle_gridcharge_percent();
 		}
-		toggle_dispatch_target();
-		//toggle_custom_dispatch();
-		//enable_auto_inputs_btm(mode == 5); // Price signal dispatch
 	}
 }
-
-function toggle_dispatch_target()
-{
-	mode = ${batt_dispatch_choice};
-	if (mode != 1)
-		enable_target_inputs(false);
-	else
-		enable_target_inputs(true);
-}
-
 
 function enable_grid_charge(on_off)
 {
