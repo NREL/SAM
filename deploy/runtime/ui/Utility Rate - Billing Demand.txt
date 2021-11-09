@@ -1,0 +1,840 @@
+Utility Rate - Billing Demand
+1414
+447
+13
+GroupBox
+
+1
+8
+Name
+5
+10
+GroupBox31
+X
+3
+9
+Y
+3
+3
+Width
+3
+1403
+Height
+3
+440
+Tool Tip
+5
+0
+Caption
+5
+23
+Billing Demand Lookback
+Bold
+2
+1
+CheckBox
+
+1
+9
+Name
+5
+16
+chk_update_peaks
+X
+3
+357
+Y
+3
+90
+Width
+3
+459
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+75
+Use monthly peaks from Year 1 electric load data for Year 0 lookback period
+State
+2
+1
+TabOrder
+3
+4294967295
+Label
+
+1
+13
+Name
+5
+25
+lbl_monthly_peaks_message
+X
+3
+834
+Y
+3
+90
+Width
+3
+408
+Height
+3
+51
+Tool Tip
+5
+0
+Caption
+5
+0
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+675
+Y
+3
+156
+Width
+3
+722
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+36
+Billing Demand by Time-of-use Period
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+11
+object 2111
+X
+3
+21
+Y
+3
+156
+Width
+3
+608
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+23
+Billing Demand by Month
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+1089
+Y
+3
+180
+Width
+3
+300
+Height
+3
+64
+Tool Tip
+5
+0
+Caption
+5
+124
+This table must have one row for each TOU period defined in the Demand Rates by Time-of-use Period and/or Tiers table below.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+object 76
+X
+3
+33
+Y
+3
+51
+Width
+3
+1206
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+315
+The billing demand lookback inputs determine how SAM calculates the billing demand, or peak kW value, from previous month peak load values for demand charges (below) with ratcheting demand, and for any energy charges (above) that have kWh/kW units with billing demand based on past peak usage. See Help for details.
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+DataMatrix
+
+1
+27
+Name
+5
+38
+ur_billing_demand_lookback_percentages
+X
+3
+39
+Y
+3
+177
+Width
+3
+575
+Height
+3
+258
+Tool Tip
+5
+0
+PasteAppendRows
+2
+1
+PasteAppendCols
+2
+0
+ShowButtons
+2
+1
+ShowRows
+2
+0
+ShowRowLabels
+2
+1
+RowLabels
+5
+47
+Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
+ShadeR0C0
+2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
+ShadeC0
+2
+0
+ShowCols
+2
+0
+ShowColLabels
+2
+1
+ColLabels
+5
+63
+Billing Demand Percentage (%),Consider Actual Peak Demand (0/1)
+NumRowsLabel
+5
+15
+Number entries:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+1
+ChoiceColumn
+3
+4294967295
+Choices
+5
+0
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+0
+Numeric
+
+1
+17
+Name
+5
+33
+ur_billing_demand_lookback_period
+X
+3
+165
+Y
+3
+90
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+25
+ur_billing_demand_minimum
+X
+3
+165
+Y
+3
+117
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+DataMatrix
+
+1
+27
+Name
+5
+28
+ur_dc_billing_demand_periods
+X
+3
+690
+Y
+3
+177
+Width
+3
+374
+Height
+3
+253
+Tool Tip
+5
+0
+PasteAppendRows
+2
+1
+PasteAppendCols
+2
+0
+ShowButtons
+2
+1
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
+ShadeC0
+2
+0
+ShowCols
+2
+0
+ShowColLabels
+2
+1
+ColLabels
+5
+39
+Period,Included In Billing Demand (0/1)
+NumRowsLabel
+5
+18
+Number of entries:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+1
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+0
+CheckBox
+
+1
+9
+Name
+5
+24
+ur_enable_billing_demand
+X
+3
+21
+Y
+3
+24
+Width
+3
+258
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+30
+Enable billing demand lookback
+State
+2
+0
+TabOrder
+3
+4294967295
+MonthlyFactor
+
+1
+8
+Name
+5
+23
+ur_yearzero_usage_peaks
+X
+3
+564
+Y
+3
+117
+Width
+3
+96
+Height
+3
+24
+Tool Tip
+5
+0
+Description
+5
+34
+Monthly peak demand in Year 0 (kW)
+TabOrder
+3
+4294967295
+
+7
+chk_update_peaks
+3
+1
+Copy monthly peaks from Year 1 load data for Year 0 lookback period
+ 
+Electricity Rates - Billing Demand
+0
+5
+1
+1
+1
+1
+0
+Default
+ur_billing_demand_lookback_percentages
+3
+3
+Ratchet demand charge rates
+ 
+Electricity Rates - Billing Demand
+0
+1
+1
+3
+1
+1
+0
+Default
+ur_billing_demand_lookback_period
+3
+1
+Lookback period
+months
+Electricity Rates - Billing Demand
+0
+0
+1
+1
+1
+1
+0
+Default
+ur_billing_demand_minimum
+3
+1
+Minimum billing demand
+kW
+Electricity Rates - Billing Demand
+0
+0
+1
+1
+1
+1
+0
+Default
+ur_dc_billing_demand_periods
+3
+3
+ 
+ 
+ Electricity Rates - Billing Demand
+0
+0
+1
+3
+1
+1
+0
+DataMatrix
+ur_enable_billing_demand
+3
+1
+Enable ratchet demand charges
+ 
+Electricity Rates - Billing Demand
+0
+3
+1
+1
+1
+1
+0
+DataMatrix
+ur_yearzero_usage_peaks
+3
+2
+Monthly peak demand in Year 0
+kW
+Electricity Rates - Billing Demand
+0
+2
+1
+2
+1
+1
+0
+MonthlyFactor
+
+0
+2685
+on_load{'Utility Rate - Billing Demand'} = define() {
+	enable_ratchet_demand_charges();
+	firstyear_demand_peaks_message();
+};
+
+on_change{'chk_update_peaks'} = define() {
+	is_update_peaks_from_load = value('chk_update_peaks');
+	enable('ur_yearzero_usage_peaks', !is_update_peaks_from_load);
+	if ( is_btm() && is_update_peaks_from_load) 
+	{
+		if ( value('ur_yearzero_usage_peaks') != value('mpeak'))
+		{ 
+			ok = yesno('Overwrite Year 0 monthly peak demand?\nClick Yes to replace Year 0 monthly peak demand with Year 1 values from the Electricity Load page.\n\nClick No to cancel.');
+			if ( ok ) { value('ur_yearzero_usage_peaks',value('mpeak')); }
+		}
+	}
+	firstyear_demand_peaks_message();
+};
+
+on_change{'ur_yearzero_usage_peaks'} = define() {
+	firstyear_demand_peaks_message();
+};
+
+function is_btm() {
+	return ( financing() != "Single Owner" );
+}
+
+function firstyear_demand_peaks_message() {
+	msg = 'Click Edit Values to enter monthly peak demand for Year 0, which is the lookback period for Year 1.';
+	if ( !is_btm() )
+	{
+		msg = 'No electric load data available. Billing demand calculated based on usage for battery charging and self consumption. ' + msg;
+	}
+	elseif ( value('load_model') != 1 ) // load_model is null for FOM
+	{
+		msg = 'No load data available. ' + msg;
+	}
+	else // peak demand data is available from load page
+	{
+        if ( value('ur_yearzero_usage_peaks') == value('mpeak') )
+        { 
+            msg = 'Monthly peak demand for Year 0 is the same as the Year 1 load data. Click Edit Values to enter different values for Year 0.'; 
+            if ( value('chk_update_peaks') == 1 )
+            {
+                msg += ' Clear the check box to enable Edit Values.';
+            }
+        }
+    }
+	property('lbl_monthly_peaks_message','Caption',msg);
+}
+
+on_change{'ur_enable_billing_demand'} = define() {
+	enable_ratchet_demand_charges();
+};
+
+function enable_ratchet_demand_charges()
+{
+	is_enabled = (value('ur_enable_billing_demand')==1);
+	enable('ur_billing_demand_lookback_percentages',is_enabled);
+	enable('ur_billing_demand_lookback_period',is_enabled);
+	enable('ur_billing_demand_minimum',is_enabled);
+	enable('ur_dc_billing_demand_periods',is_enabled);
+	enable('ur_yearzero_usage_peaks',is_enabled);
+	show('lbl_monthly_peaks_message',is_enabled);
+	if ( is_btm() )
+	{
+		// calculated monthly peaks data only available from UI
+		// for "Input Time Series Load Data" option
+		enable('chk_update_peaks',( is_enabled && value('load_model') == 1) );
+	}
+	else // no load data for fom configs
+	{
+		value('chk_update_peaks', 0);
+		show('chk_update_peaks', false );
+	}	
+	refresh();
+}
+
+function demand_charge_tou_message(){
+	msg = '';
+	x = value('ur_dc_tou_mat');
+}
