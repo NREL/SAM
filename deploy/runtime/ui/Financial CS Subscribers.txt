@@ -1655,7 +1655,7 @@ equations{'ui_share_kw_4'} = define() {
 	return ${subscriber4_share}[0]/100 * ${system_capacity};
 };
 
-1629
+1614
 on_load{'Financial CS Subscribers'} = define()
 {
 	property('subscriber1_share','FixedLength',${analysis_period});
@@ -1694,7 +1694,7 @@ function subscriber_share_message()
 {
 	if ( ${ui_total_unsubscribed_share} < 0 )
 	{
-		msg = 'The project is oversubscribed by ' + -${ui_total_unsubscribed_share} + '% in Year 1! Reduce the anchor, general, or subsidized subscriber subscription rate.'; 
+		msg = 'The project is oversubscribed by ' + -${ui_total_unsubscribed_share} + '% in Year 1! Reduce the subscriber share for one or more subscribers.'; 
 		color = 'red';
 	}
 	else

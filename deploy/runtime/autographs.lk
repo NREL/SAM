@@ -107,7 +107,7 @@ function cs_graphs()
 	if ( sum(value('subscriber2_share')) > 0 ) { str += ',' + 'cf_subscriber2_share_fraction'; }
 	if ( sum(value('subscriber3_share')) > 0 ) { str += ',' + 'cf_subscriber3_share_fraction'; }
 	if ( sum(value('subscriber4_share')) > 0 ) { str += ',' + 'cf_subscriber4_share_fraction'; }
-	agraph( str,'Subscriber Share of System','Year','Fraction of Nameplate Capacity',-1,true,true,'bottom',1);
+	agraph( str,'Subscriber Share of System','Year','Fraction of Nameplate Capacity',-1,false,true,'bottom',1);
 	agraph( 'cf_subscriber1_net_benefit_cumulative','Subscriber 1 Cumulative Net Benefit','Year','$',-1,true,false);
 	if ( sum(value('subscriber2_share')) > 0 ) { agraph( 'cf_subscriber2_net_benefit_cumulative','Subscriber 2 Cumulative Net Benefit','Year','$',-1,true,false ); }
 	if ( sum(value('subscriber3_share')) > 0 ) { agraph( 'cf_subscriber3_net_benefit_cumulative','Subscriber 3 Cumulative Net Benefit','Year','$',-1,true,false ); }
