@@ -201,8 +201,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+7
+$/kW-yr
 UseSchedule
 2
 0
@@ -307,8 +307,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+4
+$/yr
 UseSchedule
 2
 0
@@ -413,8 +413,8 @@ Tool Tip
 0
 Label
 5
-5
-Value
+7
+$/MMBtu
 UseSchedule
 2
 0
@@ -427,7 +427,7 @@ FixedLength
 Description
 5
 120
-Type a variable fuel cost ($/MMBTU) for each year. SAM does not apply inflation or escalation to the values you specify.
+Type a variable fuel cost ($/MMBtu) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 7
@@ -520,7 +520,7 @@ Tool Tip
 Label
 5
 5
-Value
+$/MWh
 UseSchedule
 2
 0
@@ -533,7 +533,7 @@ FixedLength
 Description
 5
 113
-Type a variable cost ($/kWh) for each year. SAM does not apply inflation or escalation to the values you specify.
+Type a variable cost ($/MWh) for each year. SAM does not apply inflation or escalation to the values you specify.
 TabOrder
 3
 5
@@ -716,4 +716,30 @@ Operating Costs
 Numeric
 
 0
-0
+855
+on_load{'Operating Costs Fuel'} = define() {
+	enable( 'om_capacity_escal',#${om_capacity}==1);
+	enable( 'om_fixed_escal',#${om_fixed}==1);
+	enable( 'om_production_escal',#${om_production}==1);
+	enable( 'om_fuel_cost_escal',#${om_fuel_cost}==1);
+	property( 'om_capacity','FixedLength',${analysis_period});
+	property( 'om_fixed','FixedLength',${analysis_period});
+	property( 'om_production','FixedLength',${analysis_period});
+	property( 'om_fuel_cost','FixedLength',${analysis_period});
+};
+
+on_change{'om_capacity'} = define() {
+	enable( 'om_capacity_escal',#${om_capacity}==1);
+};
+
+on_change{'om_fixed'} = define() {
+	enable( 'om_fixed_escal',#${om_fixed}==1);
+};
+
+on_change{'om_production'} = define() {
+	enable( 'om_production_escal',#${om_production}==1);
+};
+
+on_change{'om_fuel_cost'} = define() {
+	enable( 'om_fuel_cost_escal',#${om_fuel_cost}==1);
+};

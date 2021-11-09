@@ -1,5 +1,9 @@
 1
+<<<<<<< HEAD
 548
+=======
+539
+>>>>>>> d79b48d0d49debf1669f053bb74d29ca7771e945
 LeadAcid_q10
 1
 1
@@ -1060,13 +1064,13 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_total_cost_lcos
 1
 1
 1
 1
-1438480
+1.43848e+06
 battery_voltage_shown
 1
 1
@@ -1273,7 +1277,7 @@ const_per_interest1
 1
 1
 1
-1498250
+1.49825e+06
 const_per_interest2
 1
 1
@@ -1333,7 +1337,7 @@ const_per_interest_total
 1
 1
 1
-1498250
+1.49825e+06
 const_per_months1
 1
 1
@@ -1466,7 +1470,7 @@ const_per_total1
 1
 1
 1
-2996490
+2.99649e+06
 const_per_total2
 1
 1
@@ -1526,7 +1530,7 @@ construction_financing_cost
 1
 1
 1
-2996490
+2.99649e+06
 conv_eff
 1
 1
@@ -222216,12 +222220,6 @@ revenue_tab
 1
 1
 3.23791e-317
-roe_input
-1
-2
-1
-1
-0
 sales_tax_rate
 1
 1
@@ -222258,12 +222256,6 @@ show_ReserveAccounts
 1
 1
 1
-show_ReturnonEquity
-1
-1
-1
-1
-0
 show_construction_period
 1
 1

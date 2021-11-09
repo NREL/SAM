@@ -1,5 +1,5 @@
 1
-447
+445
 ac_nameplate
 1
 1
@@ -1662,7 +1662,7 @@ land_area_value
 1
 1
 1
-0
+162.569
 land_fixed
 1
 1
@@ -1897,7 +1897,7 @@ modulearray_area
 1
 1
 1
-0
+657895
 modulearray_power
 1
 1
@@ -221404,12 +221404,6 @@ revenue_tab
 1
 1
 3.23791e-317
-roe_input
-1
-2
-1
-1
-0
 sales_tax_percent
 1
 1
@@ -221544,12 +221538,6 @@ show_ReserveAccounts
 1
 1
 1
-show_ReturnonEquity
-1
-1
-1
-1
-0
 show_construction_period
 1
 1

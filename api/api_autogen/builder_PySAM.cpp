@@ -42,6 +42,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Biomass", "Biomass combustion for electricity generation"},
             {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
             {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
+            {"ETES", "Electric thermal energy storage"},
             {"Fuelcell", "Fuel cell model"},
             {"GenericSystem", "Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input"},
             {"Geothermal", "Geothermal power model for hydrothermal and EGS systems with flash or binary conversion"},
@@ -58,7 +59,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Pvsamv1", "Detailed photovoltaic system model with separate components for module and inverter"},
             {"Pvwattsv5", "PVWatts photovoltaic system model with simple inputs"},
             {"Pvwattsv5Lifetime", "PVWatts photovoltaic system model for multi-year lifetime analysis"},
-			{"Pvwattsv7", "Photovoltaic system using basic NREL PVWatts V7 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1."},
+			{"Pvwattsv8", "Photovoltaic system using basic NREL PVWatts V8 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1."},
             {"Saleleaseback", "PPA sale leaseback partnership financial model"},
             {"Sco2AirCooler", "Supercritical CO2 Power Cycle Air Cooler"},
             {"Sco2CspSystem", "Supercritical CO2 Power Cycle Design and Off-Design Simulation"},
@@ -691,9 +692,11 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     if (cmod_it != root->m_eqn_entries.end()){
         auto func_map = cmod_it->second;
         for (const auto& func_it : func_map){
-            fx_file << "\t\t{\"" << func_it.first << "\", (PyCFunction)" << func_it.second.name;
-            fx_file << ", METH_VARARGS | METH_KEYWORDS,\n"
-                       "\t\t\t" << func_it.second.name << "_doc},\n";
+            if (func_it.second.PySAM_export) {
+                fx_file << "\t\t{\"" << func_it.first << "\", (PyCFunction)" << func_it.second.name;
+                fx_file << ", METH_VARARGS | METH_KEYWORDS,\n"
+                           "\t\t\t" << func_it.second.name << "_doc},\n";
+            }
         }
     }
 
