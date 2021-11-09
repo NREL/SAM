@@ -1034,6 +1034,12 @@ SAM_EXPORT void SAM_TroughPhysicalProcessHeat_Tou_wlim_series_aset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalProcessHeat_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_inventory_incentive", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalProcessHeat_System_aux_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "aux_array", arr, length);
@@ -2996,6 +3002,17 @@ SAM_EXPORT double* SAM_TroughPhysicalProcessHeat_Tou_wlim_series_aget(SAM_table 
 	result = ssc_data_get_array(ptr, "wlim_series", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysicalProcessHeat", "wlim_series");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalProcessHeat_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_inventory_incentive", &result))
+		make_access_error("SAM_TroughPhysicalProcessHeat", "disp_inventory_incentive");
 	});
 	return result;
 }

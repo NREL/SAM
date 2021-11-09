@@ -41,7 +41,7 @@ addconfig( 'Retired', ['None']);
 // tree_parent for performance models defined in PopulateTech() in main.cpp
 if ( en_pvsamv3 ) {	configopt( 'Photovoltaic', {'tree_parent'='PV', 'long_name'='Photovoltaic (super detailed)', 'short_name'='Photovoltaic', 'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } ); }
 configopt( 'Flat Plate PV',               { 'tree_parent'='PV', 'long_name'='Detailed PV Model',                'short_name'='Photovoltaic',     'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
-configopt( 'PVWatts',                     { 'tree_parent'='PV','long_name'='PVWatts',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V7 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1.' } );
+configopt( 'PVWatts',                     { 'tree_parent'='PV','long_name'='PVWatts',                 'short_name'='PVWatts',          'description'='Photovoltaic system using basic NREL PVWatts V8 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1.' } );
 configopt( 'High-X Concentrating PV',     { 'tree_parent'='PV', 'long_name'='High Concentration PV',                  'short_name'='HCPV',             'description'='Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model' } );
 configopt( 'PV Battery',               { 'tree_parent'='BATT', 'long_name'='Detailed PV-Battery',       'short_name'='PV-Battery',     'description'='Detailed photovoltaic model with battery storage' } );
 configopt( 'PVWatts Battery',          { 'tree_parent'='BATT', 'long_name'='PVWatts-Battery',     'short_name'='PVWatts-Battery',     'description'='PVWatts system model with battery storage' } );
@@ -159,7 +159,7 @@ function setup_pages_battery_dispatch_btm()
 		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
-			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch BTM Outage SOC', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
 }
 
 function setup_pages_battery_dispatch_fom()
@@ -177,8 +177,8 @@ function setup_pages_battery_dispatch_fom()
 function setup_pvwatts_battery_pages_behind_the_meter()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-	addpage( [[ 'PVWatts', 
-	            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+	addpage( [[ 'PVWatts',
+	            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'},
 	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'},
 	            'Battery Model Simple with REopt' ]],
 	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
@@ -188,8 +188,8 @@ function setup_pvwatts_battery_pages_behind_the_meter()
 function setup_pvwatts_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-	addpage( [[ 'PVWatts', 
-	            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+	addpage( [[ 'PVWatts',
+	            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'},
 	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
 	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 	setup_grid_page();
@@ -574,6 +574,7 @@ function setup_fuel_cell_pages_btm()
 				   'Battery Current and Capacity',
 				   'Battery Configuration',
 				   'Battery Dispatch Common',
+				   'Battery Dispatch BTM Outage SOC',
 				   'Battery Life Options',
 				   'Battery Life Cycle Calendar',
 				   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
@@ -1183,8 +1184,8 @@ setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 setconfig( 'Fuel Cell', 'Commercial');
 setmodules( ['pvwattsv8', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-addpage( [[ 'PVWatts', 
-            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+addpage( [[ 'PVWatts',
+            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'},
             {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
             { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_btm();
@@ -1199,8 +1200,8 @@ addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_loa
 setconfig( 'Fuel Cell', 'Single Owner');
 setmodules( ['pvwattsv8', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
-addpage( [[ 'PVWatts', 
-            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'}, 
+addpage( [[ 'PVWatts',
+            {'name'='PVWatts Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pvwatts_land_area_is_shown'},
             {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
             { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
 setup_fuel_cell_pages_fom();

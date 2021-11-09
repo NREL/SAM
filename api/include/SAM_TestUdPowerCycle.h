@@ -51,7 +51,7 @@ extern "C"
 	 * Outputs Getters
 	 */
 
-	SAM_EXPORT double SAM_TestUdPowerCycle_Outputs_W_dot_fossil_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_TestUdPowerCycle_Outputs_udpc_table_out_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */
