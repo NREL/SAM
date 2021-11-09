@@ -1,5 +1,5 @@
 1
-648
+649
 LeadAcid_q10
 1
 1
@@ -303,7 +303,7 @@ batt_calendar_c
 1
 1
 1
-930
+939
 batt_calendar_choice
 1
 1
@@ -742,8 +742,14 @@ batt_minimum_SOC
 1
 1
 1
-15
+30
 batt_minimum_modetime
+1
+1
+1
+1
+10
+batt_minimum_outage_SOC
 1
 1
 1
@@ -3478,12 +3484,6 @@ reserves_interest
 1
 1
 1.75
-roe_input
-1
-2
-1
-1
-0
 run_resiliency_calcs
 1
 1
@@ -3532,12 +3532,6 @@ show_ReserveAccounts
 1
 1
 1
-show_ReturnonEquity
-1
-1
-1
-1
-0
 show_construction_period
 1
 1

@@ -9,7 +9,6 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -286,12 +285,9 @@
 			"battery_per_kWh": 206.67,
 			"en_batt": 1
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 64878.1
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		}
 	}
 }

@@ -1889,6 +1889,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_qsfsu_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_rev_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_solve_iter_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -1898,6 +1900,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_solve_time_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalCspSolver_Outputs_disp_solve_time_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalCspSolver_Outputs_disp_tes_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
