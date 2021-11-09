@@ -1,5 +1,5 @@
 1
-435
+433
 adjust
 1
 5
@@ -2156,12 +2156,6 @@ reserves_interest
 1
 1
 1.75
-roe_input
-1
-2
-1
-1
-0
 sales_tax_rate
 1
 1
@@ -2199,12 +2193,6 @@ show_DebtConstDSCR
 1
 0
 show_ReserveAccounts
-1
-1
-1
-1
-0
-show_ReturnonEquity
 1
 1
 1

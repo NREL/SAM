@@ -527,7 +527,7 @@ equations{'batt_load_ac_forecast_escalation'} = define()
 		return [0];
 	}
 };
-2802
+3110
 on_load{'Battery Dispatch Options BTM'} = define() {
 	show_hide_charge_options();
 	enable_disable_powerflow_options();
@@ -588,15 +588,25 @@ function show_hide_charge_options()
 
 function enable_disable_powerflow_options()
 {
-	// 1 is AC
-	ac_or_dc = value('batt_ac_or_dc');
-	if (ac_or_dc == 0) {
-		// This option is only relevant to AC, uncheck for DC
-		value('batt_dispatch_charge_only_system_exceeds_load', 0);
+	if (value('en_batt') == 0) {
+		// Disable these inputs for the fuel cell case
+		enable('batt_dispatch_discharge_only_load_exceeds_system', false);
 		enable('batt_dispatch_charge_only_system_exceeds_load', false);
+
 	}
 	else {
-		enable('batt_dispatch_charge_only_system_exceeds_load', ${batt_dispatch_auto_can_charge} == 1);
+		enable('batt_dispatch_discharge_only_load_exceeds_system', true);
+
+		// 1 is AC
+		ac_or_dc = value('batt_ac_or_dc');
+		if (ac_or_dc == 0) {
+			// This option is only relevant to AC, uncheck for DC
+			value('batt_dispatch_charge_only_system_exceeds_load', 0);
+			enable('batt_dispatch_charge_only_system_exceeds_load', false);
+		}
+		else {
+			enable('batt_dispatch_charge_only_system_exceeds_load', ${batt_dispatch_auto_can_charge} == 1);
+		}
 	}
 }
 

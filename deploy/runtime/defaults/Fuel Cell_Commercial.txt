@@ -792,6 +792,12 @@ batt_minimum_modetime
 1
 1
 10
+batt_minimum_outage_SOC
+1
+1
+1
+1
+10
 batt_num_cells
 1
 1

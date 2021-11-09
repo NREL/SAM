@@ -856,7 +856,7 @@ batt_minimum_SOC
 1
 1
 1
-15
+30
 batt_minimum_modetime
 1
 1
@@ -4376,12 +4376,6 @@ revenue_curtailment_is_shown
 1
 1
 0
-roe_input
-1
-2
-1
-1
-0
 sales_tax_percent
 1
 1
@@ -4440,12 +4434,6 @@ show_DebtConstDSCR
 1
 0
 show_ReserveAccounts
-1
-1
-1
-1
-0
-show_ReturnonEquity
 1
 1
 1

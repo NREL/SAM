@@ -20,12 +20,6 @@ SAM_EXPORT void SAM_EtesElectricResistance_SolarResource_solar_resource_file_sse
 	});
 }
 
-SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_F_wc_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "F_wc", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_bop_par_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "bop_par", number);
@@ -56,6 +50,102 @@ SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_bop_par_f_nset(SAM_tabl
 	});
 }
 
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_csu_cost", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_down_time_min_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_down_time_min", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_frequency_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_frequency", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_horizon_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_horizon", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_hsu_cost_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_hsu_cost", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_max_iter_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_max_iter", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_mip_gap_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_mip_gap", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_pen_delta_w_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_pen_delta_w", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_reporting", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_spec_bb_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_spec_bb", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_spec_presolve_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_spec_presolve", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_spec_scaling_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_spec_scaling", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_steps_per_hour", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_time_weighting_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_time_weighting", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_timeout", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_up_time_min_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_up_time_min", number);
+	});
+}
+
 SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_dispatch", number);
@@ -65,6 +155,12 @@ SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_is_dispatch_nset(SAM_ta
 SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pb_fixed_par", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_sim_type_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "sim_type", number);
 	});
 }
 
@@ -89,6 +185,12 @@ SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_time_stop_nset(SAM_tabl
 SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_vacuum_arrays_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "vacuum_arrays", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_FinancialModel_etes_financial_model_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "etes_financial_model", number);
 	});
 }
 
@@ -272,12 +374,6 @@ SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_cold_tank_max_heat_nse
 	});
 }
 
-SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_csp_pt_tes_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "csp.pt.tes.init_hot_htf_percent", number);
-	});
-}
-
 SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_h_tank_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_tank", number);
@@ -287,6 +383,12 @@ SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_h_tank_nset(SAM_table 
 SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_h_tank_min_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "h_tank_min", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_hot_htf_code_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hot_htf_code", number);
 	});
 }
 
@@ -308,9 +410,9 @@ SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_tank_pairs_nset(SAM_ta
 	});
 }
 
-SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_tes_fl_code_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_tes_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "tes_fl_code", number);
+		ssc_data_set_number(ptr, "tes_init_hot_htf_percent", number);
 	});
 }
 
@@ -320,9 +422,27 @@ SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_u_tank_nset(SAM_table 
 	});
 }
 
-SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_ud_tes_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_ud_hot_htf_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "ud_tes_fl_props", mat, nrows, ncols);
+		ssc_data_set_matrix(ptr, "ud_hot_htf_props", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_Heater_f_q_dot_des_allowable_su_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "f_q_dot_des_allowable_su", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_Heater_f_q_dot_heater_min_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "f_q_dot_heater_min", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_Heater_hrs_startup_at_max_rate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hrs_startup_at_max_rate", number);
 	});
 }
 
@@ -401,6 +521,18 @@ SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_sched_
 SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ppa_multiplier_model", number);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "mp_energy_market_revenue", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_EtesElectricResistance_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ppa_price_input", arr, length);
 	});
 }
 
@@ -614,18 +746,6 @@ SAM_EXPORT const char* SAM_EtesElectricResistance_SolarResource_solar_resource_f
 
 
 
-SAM_EXPORT double* SAM_EtesElectricResistance_SystemControl_F_wc_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "F_wc", length);
-	if (!result)
-		make_access_error("SAM_EtesElectricResistance", "F_wc");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_bop_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -681,6 +801,182 @@ SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_bop_par_f_nget(SAM_ta
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_csu_cost", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_csu_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_down_time_min_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_down_time_min", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_down_time_min");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_frequency_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_frequency", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_frequency");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_horizon_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_horizon", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_horizon");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_hsu_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_hsu_cost", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_hsu_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_max_iter_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_max_iter", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_max_iter");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_mip_gap_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_mip_gap", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_mip_gap");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_pen_delta_w_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_pen_delta_w", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_pen_delta_w");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_reporting_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_reporting", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_reporting");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_spec_bb_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_spec_bb", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_spec_bb");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_spec_presolve_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_spec_presolve", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_spec_presolve");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_spec_scaling_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_spec_scaling", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_spec_scaling");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_steps_per_hour_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_steps_per_hour", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_steps_per_hour");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_time_weighting_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_time_weighting", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_time_weighting");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_timeout_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_timeout", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_timeout");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_up_time_min_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_up_time_min", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_up_time_min");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_is_dispatch_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -697,6 +993,17 @@ SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_pb_fixed_par_nget(SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pb_fixed_par", &result))
 		make_access_error("SAM_EtesElectricResistance", "pb_fixed_par");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sim_type", &result))
+		make_access_error("SAM_EtesElectricResistance", "sim_type");
 	});
 	return result;
 }
@@ -741,6 +1048,17 @@ SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_vacuum_arrays_nget(SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "vacuum_arrays", &result))
 		make_access_error("SAM_EtesElectricResistance", "vacuum_arrays");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_FinancialModel_etes_financial_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "etes_financial_model", &result))
+		make_access_error("SAM_EtesElectricResistance", "etes_financial_model");
 	});
 	return result;
 }
@@ -1078,17 +1396,6 @@ SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_cold_tank_max_heat_n
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_csp_pt_tes_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "csp.pt.tes.init_hot_htf_percent", &result))
-		make_access_error("SAM_EtesElectricResistance", "csp.pt.tes.init_hot_htf_percent");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_h_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1105,6 +1412,17 @@ SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_h_tank_min_nget(SAM_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "h_tank_min", &result))
 		make_access_error("SAM_EtesElectricResistance", "h_tank_min");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_hot_htf_code_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hot_htf_code", &result))
+		make_access_error("SAM_EtesElectricResistance", "hot_htf_code");
 	});
 	return result;
 }
@@ -1144,11 +1462,11 @@ SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_tank_pairs_nget(SAM_
 
 
 
-SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_tes_fl_code_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_tes_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "tes_fl_code", &result))
-		make_access_error("SAM_EtesElectricResistance", "tes_fl_code");
+	if (!ssc_data_get_number(ptr, "tes_init_hot_htf_percent", &result))
+		make_access_error("SAM_EtesElectricResistance", "tes_init_hot_htf_percent");
 	});
 	return result;
 }
@@ -1166,12 +1484,45 @@ SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_u_tank_nget(SAM_tabl
 
 
 
-SAM_EXPORT double* SAM_EtesElectricResistance_ThermalStorage_ud_tes_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_EtesElectricResistance_ThermalStorage_ud_hot_htf_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "ud_tes_fl_props", nrows, ncols);
+	result = ssc_data_get_matrix(ptr, "ud_hot_htf_props", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_EtesElectricResistance", "ud_tes_fl_props");
+		make_access_error("SAM_EtesElectricResistance", "ud_hot_htf_props");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Heater_f_q_dot_des_allowable_su_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_q_dot_des_allowable_su", &result))
+		make_access_error("SAM_EtesElectricResistance", "f_q_dot_des_allowable_su");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Heater_f_q_dot_heater_min_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_q_dot_heater_min", &result))
+		make_access_error("SAM_EtesElectricResistance", "f_q_dot_heater_min");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Heater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hrs_startup_at_max_rate", &result))
+		make_access_error("SAM_EtesElectricResistance", "hrs_startup_at_max_rate");
 	});
 	return result;
 }
@@ -1318,6 +1669,30 @@ SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_ppa_multiplie
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_multiplier_model", &result))
 		make_access_error("SAM_EtesElectricResistance", "ppa_multiplier_model");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "mp_energy_market_revenue");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ppa_price_input", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "ppa_price_input");
 	});
 	return result;
 }
@@ -1687,6 +2062,76 @@ SAM_EXPORT double SAM_EtesElectricResistance_FinancialParameters_sales_tax_rate_
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_E_heater_su_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "E_heater_su_des", &result))
+		make_access_error("SAM_EtesElectricResistance", "E_heater_su_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_Q_tes_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "Q_tes_des", &result))
+		make_access_error("SAM_EtesElectricResistance", "Q_tes_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_cycle_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_htf_cycle_in", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "T_htf_cycle_in");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_cycle_out_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_htf_cycle_out", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "T_htf_cycle_out");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_heater_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_htf_heater_in", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "T_htf_heater_in");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_heater_out_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_htf_heater_out", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "T_htf_heater_out");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1711,12 +2156,105 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_tes_hot_aget(SAM_table p
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_V_tes_htf_avail_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "V_tes_htf_avail", &result))
+		make_access_error("SAM_EtesElectricResistance", "V_tes_htf_avail");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_V_tes_htf_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "V_tes_htf_total", &result))
+		make_access_error("SAM_EtesElectricResistance", "V_tes_htf_total");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_W_dot_bop_design_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "W_dot_bop_design", &result))
+		make_access_error("SAM_EtesElectricResistance", "W_dot_bop_design");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_bop_parasitics_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "W_dot_bop_parasitics", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "W_dot_bop_parasitics");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_cooling_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "W_dot_cycle_cooling", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "W_dot_cycle_cooling");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_gross_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "W_dot_cycle_gross", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "W_dot_cycle_gross");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_htf_pump_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "W_dot_cycle_htf_pump", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "W_dot_cycle_htf_pump");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_net_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "W_dot_cycle_net", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "W_dot_cycle_net");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_fixed_parasitics_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "W_dot_fixed_parasitics", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "W_dot_fixed_parasitics");
 	});
 	return result;
 }
@@ -1857,11 +2395,358 @@ SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_energy_full_availabi
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_bop_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "bop_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "bop_cost_calc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesElectricResistance_Outputs_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "construction_financing_cost", &result))
 		make_access_error("SAM_EtesElectricResistance", "construction_financing_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_contingency_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "contingency_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "contingency_cost_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_htf_cycle_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_htf_cycle_des", &result))
+		make_access_error("SAM_EtesElectricResistance", "cp_htf_cycle_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cycle_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cycle_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "cycle_cost_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_d_tank_tes_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "d_tank_tes", &result))
+		make_access_error("SAM_EtesElectricResistance", "d_tank_tes");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_dens_store_htf_at_T_ave_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dens_store_htf_at_T_ave", &result))
+		make_access_error("SAM_EtesElectricResistance", "dens_store_htf_at_T_ave");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_direct_subtotal_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "direct_subtotal_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "direct_subtotal_cost_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_iter_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_iter_ann", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_iter_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_obj_relax_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_obj_relax", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_obj_relax");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_objective_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_objective", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_objective");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_objective_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_objective_ann", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_objective_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_pceff_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_pceff_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_pceff_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_presolve_nconstr_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_presolve_nconstr", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_presolve_nconstr");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_presolve_nconstr_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_presolve_nconstr_ann", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_presolve_nconstr_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_presolve_nvar_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_presolve_nvar", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_presolve_nvar");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_presolve_nvar_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_presolve_nvar_ann", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_presolve_nvar_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qpbsu_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_qpbsu_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_qpbsu_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsf_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_qsf_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_qsf_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsfprod_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_qsfprod_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_qsfprod_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsfsu_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_qsfsu_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_qsfsu_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_rel_mip_gap", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_rel_mip_gap");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_rev_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_rev_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_rev_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_solve_iter_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_solve_iter", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_solve_iter");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_solve_state_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_solve_state", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_solve_state");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_solve_state_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_solve_state_ann", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_solve_state_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_solve_time_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_solve_time", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_solve_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_solve_time_ann_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_solve_time_ann", &result))
+		make_access_error("SAM_EtesElectricResistance", "disp_solve_time_ann");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_subopt_flag", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_subopt_flag");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_tes_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_tes_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_tes_expected");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_wpb_expected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "disp_wpb_expected", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "disp_wpb_expected");
 	});
 	return result;
 }
@@ -1880,12 +2765,162 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_e_ch_tes_aget(SAM_table pt
 
 
 
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_elec_purchase_price_mult_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "elec_purchase_price_mult", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "elec_purchase_price_mult");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_epc_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "epc_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "epc_cost_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_eta_cycle_gross_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "eta_cycle_gross", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "eta_cycle_gross");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_eta_cycle_net_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "eta_cycle_net", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "eta_cycle_net");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_flip_target_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "flip_target_percent", &result))
+		make_access_error("SAM_EtesElectricResistance", "flip_target_percent");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_heater_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "heater_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "heater_cost_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_installed_per_cap_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "installed_per_cap_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "installed_per_cap_cost_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_land_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "land_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "land_cost_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_balance_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_balance", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "m_dot_balance");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_htf_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_htf_cycle", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "m_dot_htf_cycle");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_htf_cycle_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_htf_cycle_des", &result))
+		make_access_error("SAM_EtesElectricResistance", "m_dot_htf_cycle_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_htf_heater_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_htf_heater", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "m_dot_htf_heater");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_water_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_water_cycle", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "m_dot_water_cycle");
 	});
 	return result;
 }
@@ -1910,6 +2945,88 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_mass_tes_hot_aget(SAM_tabl
 	result = ssc_data_get_array(ptr, "mass_tes_hot", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "mass_tes_hot");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "n_op_modes", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "n_op_modes");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "nameplate", &result))
+		make_access_error("SAM_EtesElectricResistance", "nameplate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "op_mode_1", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "op_mode_1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_op_mode_2_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "op_mode_2", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "op_mode_2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_op_mode_3_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "op_mode_3", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "op_mode_3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ppa_soln_mode", &result))
+		make_access_error("SAM_EtesElectricResistance", "ppa_soln_mode");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_balance_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_balance", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "q_balance");
 	});
 	return result;
 }
@@ -1964,6 +3081,17 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_dc_tes_aget(SAM_tabl
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_q_dot_heater_design_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "q_dot_heater_design", &result))
+		make_access_error("SAM_EtesElectricResistance", "q_dot_heater_design");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_heater_startup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1982,6 +3110,17 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_heater_to_htf_aget(S
 	result = ssc_data_get_array(ptr, "q_dot_heater_to_htf", length);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "q_dot_heater_to_htf");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_q_dot_loss_tes_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "q_dot_loss_tes_des", &result))
+		make_access_error("SAM_EtesElectricResistance", "q_dot_loss_tes_des");
 	});
 	return result;
 }
@@ -2012,11 +3151,56 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_tes_losses_aget(SAM_
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_q_pb_design_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "q_pb_design", &result))
+		make_access_error("SAM_EtesElectricResistance", "q_pb_design");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_sales_tax_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sales_tax_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "sales_tax_cost_calc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesElectricResistance_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_EtesElectricResistance", "system_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tdry", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "tdry");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_tes_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "tes_cost_calc");
 	});
 	return result;
 }
@@ -2035,11 +3219,68 @@ SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_time_hr_aget(SAM_table ptr
 
 
 
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_direct_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_direct_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "total_direct_cost_calc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_indirect_cost_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_indirect_cost_calc", &result))
+		make_access_error("SAM_EtesElectricResistance", "total_indirect_cost_calc");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
 		make_access_error("SAM_EtesElectricResistance", "total_installed_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_tou_period_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tou_period", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "tou_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_Outputs_tshours_heater_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tshours_heater", &result))
+		make_access_error("SAM_EtesElectricResistance", "tshours_heater");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "twet", length);
+	if (!result)
+		make_access_error("SAM_EtesElectricResistance", "twet");
 	});
 	return result;
 }
