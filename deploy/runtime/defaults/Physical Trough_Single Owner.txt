@@ -1,5 +1,5 @@
 1
-1191
+1187
 A_aperture
 1
 2
@@ -6266,12 +6266,6 @@ revenue_curtailment_is_shown
 1
 1
 0
-roe_input
-1
-2
-1
-1
-0
 sales_tax_rate
 1
 1
@@ -6363,12 +6357,6 @@ show_DebtConstDSCR
 1
 1
 show_ReserveAccounts
-1
-1
-1
-1
-1
-show_ReturnonEquity
 1
 1
 1
