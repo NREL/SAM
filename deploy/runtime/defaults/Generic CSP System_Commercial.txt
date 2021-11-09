@@ -397,7 +397,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 city
 1
 4
