@@ -52,9 +52,20 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 // this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
-version_upgrade{'2021.7.27'} = define() {
+version_upgrade{'2021.10.27'} = define() {
 
 	const cfg = config();
+	
+	if(cfg.tech == 'MSPT') {
+		message('The Molten Salt Power Tower Model now uses a piping heat loss coefficient in units of W/m2-K to calculate piping thermal losses, ' +
+		'which replaces units of W/m in the previous versions. This new convention allows the performance model to calculate new piping losses ' +
+		'as the receiver thermal power and design temperatures vary. We found that the old W/m default value, 10200, ' + 
+		'in the default case corresponded to a W/m2-K value of around 13, which we think is likely too high for insulated piping, so we set the new W/m default value to 2. ' +
+		'For this reason, we do not attempt to convert the W/m value from your file ' +
+		'to the new W/m2-K input, and it will be set to the default value. ' +
+		'Please review this input on the Tower and Receiver page and modify it as necessary for your design. ');
+	}
+	
 	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ); // does not include fuel cell
 
 	// Battery lifetime updates
