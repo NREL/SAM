@@ -349,7 +349,7 @@ function setup_utility_rate()
 	addpage( [[ 'Utility Rate - Flat',
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
-				{ 'name'='Utility Rate - Billing Demand for Energy Charge', 'caption'='Billing Demand for Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_billing_demand_is_shown', 'collapsed_by_default'=true },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
 			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
 		     { 'sidebar'='Electricity Rates', 'help'='electricity_rates' } );
@@ -362,7 +362,7 @@ function setup_electricity_purchases()
 			  [{'name'='Utility Rate - Flat', 'caption'='Use Retail Rates'},
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
-			    { 'name'='Utility Rate - Billing Demand for Energy Charge', 'caption'='Billing Demand for Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand Calculation', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
 			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false},
 			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
 		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases', 'exclusive_var'='en_electricity_rates' } );
@@ -404,8 +404,7 @@ function setup_community_solar_pages()
 		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
               {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
-              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'},
-               {'name'='Financial Return on Equity', 'caption'='Return on Equity','collapsible'=true,'collapsible_var'='show_ReturnonEquity', 'collapsed_by_default'=true}  ]],
+              {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
            { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
@@ -476,7 +475,6 @@ function setup_leveraged_partnership_flip_pages()
 			  'Financial Analysis Parameters',
 			  'Financial Tax and Insurance Rates',
 			  'Financial Salvage Value',
-//		      {'name'='Financial Debt Constant DSCR','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
 		      {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
               {'name'='Financial Cost of Financing Flip Leaseback', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
               {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period'},
