@@ -1,5 +1,5 @@
 1
-1088
+1089
 6par_aisc
 1
 1
@@ -830,7 +830,7 @@ batt_dispatch_choice
 1
 1
 1
-3
+0
 batt_dispatch_choice_ui
 1
 1
@@ -7019,7 +7019,6 @@ vdcmax_inverter
 1
 1
 480
-
 wf_nrecords
 1
 1

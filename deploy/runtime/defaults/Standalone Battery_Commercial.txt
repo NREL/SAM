@@ -1463,12 +1463,6 @@ federal_tax_rate
 1
 1
 21
-generic_degradation
-1
-2
-1
-1
-0
 genericsys.cost.contingency
 1
 1
@@ -2577,6 +2571,30 @@ ur_annual_min_charge
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+1
+1
+0
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+0
+ur_billing_demand_minimum
+1
+1
+1
+1
+0
 ur_cr_sched
 1
 3
@@ -2605,6 +2623,12 @@ ur_cr_tou_mat
 3 1 1e+38 0 
 4 1 1e+38 0 
 
+ur_dc_billing_demand_periods
+1
+3
+1
+1
+0
 ur_dc_enable
 1
 1
@@ -2726,48 +2750,6 @@ ur_description
 1
 4
 0
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-100
-ur_ec_enable_billing_demand
-1
-1
-1
-1
-0
 ur_ec_is_shown
 1
 1
@@ -2827,6 +2809,12 @@ ur_en_ts_buy_rate
 1
 0
 ur_en_ts_sell_rate
+1
+1
+1
+1
+0
+ur_enable_billing_demand
 1
 1
 1
