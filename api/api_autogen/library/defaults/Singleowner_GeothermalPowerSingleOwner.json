@@ -76,7 +76,6 @@
 			"property_tax_rate": 1,
 			"real_discount_rate": 6.4,
 			"reserves_interest": 1.75,
-			"roe_input": [0.000000],
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 34788.7,
