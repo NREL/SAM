@@ -1,5 +1,5 @@
 1
-557
+558
 a_error_test_number
 1
 1
@@ -3280,7 +3280,7 @@ substation_cost
 1
 1
 1
-3129500
+3.1295e+06
 substructCont
 1
 1

@@ -190,7 +190,7 @@ equations{'en_electricity_rates'} = define ()
 {
 	return ${ui_electricity_rate_option};
 };
-797
+866
 on_load{'Utility Rate - Enable'} = define() 
 {
 	purchases_option_message();
@@ -199,6 +199,7 @@ on_load{'Utility Rate - Enable'} = define()
 on_change{'ui_utility_rate_option'} = define()
 {
 	purchases_option_message();
+	value('en_electricity_rates', value('ui_electricity_rate_option'));
 };
 
 function purchases_option_message()

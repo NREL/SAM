@@ -1,5 +1,5 @@
 1
-773
+774
 A_aperture
 1
 1
@@ -1221,7 +1221,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4462600
+4.4626e+06
 csp.mslf.cost.power_plant
 1
 1
