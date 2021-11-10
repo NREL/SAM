@@ -1,5 +1,5 @@
 1
-539
+541
 LeadAcid_q10
 1
 1
@@ -1123,7 +1123,7 @@ capacity_factor_calc
 1
 1
 1
-41.856
+19.2
 cbi_fed_amount
 1
 1
@@ -2032,7 +2032,7 @@ first_year_output
 1
 1
 1
-73331712
+33638400
 first_year_output_peak
 1
 1
@@ -222316,4 +222316,4 @@ user_capacity_factor
 1
 1
 1
-43.6
+20
