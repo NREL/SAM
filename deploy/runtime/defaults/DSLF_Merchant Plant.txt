@@ -3186,6 +3186,18 @@ dscr
 1
 1
 1.3
+dscr_limit_debt_fraction
+1
+1
+1
+1
+0
+dscr_maximum_debt_fraction
+1
+1
+1
+1
+100
 dscr_reserve_months
 1
 1
@@ -223406,12 +223418,6 @@ rho_mirror_clean
 0.935 
 0.935 
 
-roe_input
-1
-2
-1
-1
-0
 sales_tax_rate
 1
 1
@@ -223502,12 +223508,6 @@ show_ReserveAccounts
 1
 1
 1
-show_ReturnonEquity
-1
-1
-1
-1
-0
 show_construction_period
 1
 1

@@ -45,14 +45,6 @@ extern "C"
 	//
 
 	/**
-	 * Set F_wc: TOU array of fractions indicating wet cooling share for hybrid cooling
-	 * options: None
-	 * constraints: None
-	 * required if: pc_config=0
-	 */
-	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_F_wc_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set bop_par: Balance of plant parasitic power fraction [MWe/MWcap]
 	 * options: None
 	 * constraints: None
@@ -93,6 +85,134 @@ extern "C"
 	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_bop_par_f_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set disp_csu_cost: Cycle startup cost [$/MWe-cycle/start]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_down_time_min: Minimum time requirement for cycle to not generate power [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_down_time_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_frequency: Frequency for dispatch optimization calculations [hour]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_frequency_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_horizon: Time horizon for dispatch optimization [hour]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_horizon_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_hsu_cost: Heater startup cost [$/MWe-cycle/start]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_hsu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_max_iter: Max number of dispatch optimization iterations
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_max_iter_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_mip_gap: Dispatch optimization solution tolerance
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_mip_gap_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_pen_delta_w: Dispatch cycle production change penalty [$/MWe-change]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_pen_delta_w_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_reporting: Dispatch optimization reporting level
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_bb: Dispatch optimization B&B heuristic
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_spec_bb_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_spec_presolve_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_scaling: Dispatch optimization scaling heuristic
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_spec_scaling_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_steps_per_hour: Time steps per hour for dispatch optimization calculations
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_time_weighting: Dispatch optimization future time discounting factor
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_time_weighting_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_timeout: Max dispatch optimization solve duration [s]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_up_time_min: Minimum time requirement for cycle to generate power [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_disp_up_time_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set is_dispatch: Allow dispatch optimization?
 	 * options: None
 	 * constraints: None
@@ -107,6 +227,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set sim_type: 1 (default): timeseries, 2: design only
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_sim_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set time_start: Simulation start time [s]
@@ -139,6 +267,19 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_SystemControl_vacuum_arrays_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// FinancialModel parameters
+	//
+
+	/**
+	 * Set etes_financial_model:  [1-8]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_FinancialModel_etes_financial_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -268,7 +409,7 @@ extern "C"
 	//
 
 	/**
-	 * Set CT: Condensor type: 1=evaporative, 2=air, 3=hybrid
+	 * Set CT: Condensor type: 1=evaporative, 2=air
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=0
@@ -406,14 +547,6 @@ extern "C"
 	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_cold_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set csp.pt.tes.init_hot_htf_percent: Initial fraction of available volume that is hot [%]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_csp_pt_tes_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set h_tank: Total height of tank (height of HTF when tank is full) [m]
 	 * options: None
 	 * constraints: None
@@ -428,6 +561,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_h_tank_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hot_htf_code: Receiver HTF, 17=Salt (60% NaNO3, 40% KNO3) 10=Salt (46.5% LiF 11.5% NaF 42% KF) 50=Lookup tables
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_hot_htf_code_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set hot_tank_Thtr: Minimum allowable hot tank HTF temperature [C]
@@ -454,12 +595,12 @@ extern "C"
 	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_tank_pairs_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set tes_fl_code: Receiver HTF, 17=Salt (60% NaNO3, 40% KNO3) 10=Salt (46.5% LiF 11.5% NaF 42% KF) 50=Lookup tables
+	 * Set tes_init_hot_htf_percent: Initial fraction of available volume that is hot [%]
 	 * options: None
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_tes_fl_code_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_tes_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set u_tank: Loss coefficient from the tank [W/m2-K]
@@ -470,12 +611,41 @@ extern "C"
 	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_u_tank_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ud_tes_fl_props: User-defined TES fluid property data [-]
+	 * Set ud_hot_htf_props: User-defined TES fluid property data [-]
 	 * options: None
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_ud_tes_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_EtesElectricResistance_ThermalStorage_ud_hot_htf_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
+	//
+	// Heater parameters
+	//
+
+	/**
+	 * Set f_q_dot_des_allowable_su: Fraction of design power allowed during startup [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_Heater_f_q_dot_des_allowable_su_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set f_q_dot_heater_min: Minimum allowable heater output as fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_Heater_f_q_dot_heater_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hrs_startup_at_max_rate: Duration of startup at max startup power [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_Heater_hrs_startup_at_max_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -486,7 +656,7 @@ extern "C"
 	 * Set dispatch_factor1: Dispatch payment factor 1
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -494,7 +664,7 @@ extern "C"
 	 * Set dispatch_factor2: Dispatch payment factor 2
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -502,7 +672,7 @@ extern "C"
 	 * Set dispatch_factor3: Dispatch payment factor 3
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -510,7 +680,7 @@ extern "C"
 	 * Set dispatch_factor4: Dispatch payment factor 4
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -518,7 +688,7 @@ extern "C"
 	 * Set dispatch_factor5: Dispatch payment factor 5
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -526,7 +696,7 @@ extern "C"
 	 * Set dispatch_factor6: Dispatch payment factor 6
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -534,7 +704,7 @@ extern "C"
 	 * Set dispatch_factor7: Dispatch payment factor 7
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -542,7 +712,7 @@ extern "C"
 	 * Set dispatch_factor8: Dispatch payment factor 8
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -550,15 +720,15 @@ extern "C"
 	 * Set dispatch_factor9: Dispatch payment factor 9
 	 * options: None
 	 * constraints: None
-	 * required if: ?=1
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array
+	 * Set dispatch_factors_ts: Dispatch payment factor timeseries array
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=1
+	 * required if: ppa_multiplier_model=1&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -566,7 +736,7 @@ extern "C"
 	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
 	 * options: None
 	 * constraints: None
-	 * required if: ?=[[1]]
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -574,7 +744,7 @@ extern "C"
 	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
 	 * options: None
 	 * constraints: None
-	 * required if: ?=[[1]]
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -585,6 +755,27 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_EtesElectricResistance_TimeOfDeliveryFactors_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// Revenue parameters
+	//
+
+	/**
+	 * Set mp_energy_market_revenue: Energy market revenue input
+	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
+	 * constraints: None
+	 * required if: etes_financial_model=6&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ppa_price_input: PPA prices - yearly [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_EtesElectricResistance_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -877,8 +1068,6 @@ extern "C"
 	 * SystemControl Getters
 	 */
 
-	SAM_EXPORT double* SAM_EtesElectricResistance_SystemControl_F_wc_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_bop_par_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_bop_par_0_nget(SAM_table ptr, SAM_error *err);
@@ -889,9 +1078,43 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_bop_par_f_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_down_time_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_frequency_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_horizon_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_hsu_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_max_iter_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_mip_gap_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_pen_delta_w_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_reporting_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_spec_presolve_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_spec_scaling_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_time_weighting_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_timeout_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_disp_up_time_min_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_time_start_nget(SAM_table ptr, SAM_error *err);
 
@@ -900,6 +1123,13 @@ extern "C"
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_time_stop_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_SystemControl_vacuum_arrays_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * FinancialModel Getters
+	 */
+
+	SAM_EXPORT double SAM_EtesElectricResistance_FinancialModel_etes_financial_model_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -986,11 +1216,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_cold_tank_max_heat_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_csp_pt_tes_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_h_tank_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_h_tank_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_hot_htf_code_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_hot_tank_Thtr_nget(SAM_table ptr, SAM_error *err);
 
@@ -998,11 +1228,22 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_tank_pairs_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_tes_fl_code_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_tes_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_ThermalStorage_u_tank_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_EtesElectricResistance_ThermalStorage_ud_tes_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double* SAM_EtesElectricResistance_ThermalStorage_ud_hot_htf_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+
+	/**
+	 * Heater Getters
+	 */
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Heater_f_q_dot_des_allowable_su_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Heater_f_q_dot_heater_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Heater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -1034,6 +1275,15 @@ extern "C"
 	SAM_EXPORT double* SAM_EtesElectricResistance_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_EtesElectricResistance_TimeOfDeliveryFactors_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Revenue Getters
+	 */
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -1121,11 +1371,39 @@ extern "C"
 	 * Outputs Getters
 	 */
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_E_heater_su_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_Q_tes_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_cycle_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_cycle_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_heater_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_htf_heater_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_T_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_V_tes_htf_avail_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_V_tes_htf_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_W_dot_bop_design_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_bop_parasitics_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_cooling_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_gross_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_htf_pump_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_cycle_net_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_fixed_parasitics_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_W_dot_heater_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1151,15 +1429,115 @@ extern "C"
 
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_annual_energy_full_availability_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_bop_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_construction_financing_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_contingency_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cp_htf_cycle_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_cycle_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_d_tank_tes_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_dens_store_htf_at_T_ave_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_direct_subtotal_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_iter_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_obj_relax_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_objective_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_objective_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_pceff_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_presolve_nconstr_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_presolve_nconstr_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_presolve_nvar_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_presolve_nvar_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qpbsu_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsf_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsfprod_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_qsfsu_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_rev_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_solve_iter_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_solve_state_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_solve_state_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_solve_time_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_disp_solve_time_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_tes_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_disp_wpb_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_e_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_elec_purchase_price_mult_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_epc_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_eta_cycle_gross_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_eta_cycle_net_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_flip_target_percent_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_heater_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_installed_per_cap_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_land_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_balance_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_htf_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_m_dot_htf_cycle_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_htf_heater_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_m_dot_water_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_mass_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_mass_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_op_mode_2_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_op_mode_3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_balance_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -1169,19 +1547,41 @@ extern "C"
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_dc_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_q_dot_heater_design_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_heater_startup_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_heater_to_htf_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_q_dot_loss_tes_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_tes_heater_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_q_dot_tes_losses_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_q_pb_design_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_sales_tax_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_tes_cost_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_direct_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_indirect_cost_calc_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_tou_period_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_EtesElectricResistance_Outputs_tshours_heater_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_EtesElectricResistance_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */
