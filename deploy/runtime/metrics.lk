@@ -66,7 +66,14 @@ function so_metrics()
 	metric( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_debt', {'label'='Size of debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	if ( value('debt_option')==0 ) metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
+	if ( value('debt_option')==0 )
+	{
+		metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
+	}
+	else
+	{
+		metric( 'debt_fraction', {'label'='Debt Percent','mode'='f', 'deci'='2', 'post'='%' } );
+	}	
 }
 
 function mp_metrics()
@@ -80,7 +87,14 @@ function mp_metrics()
 	metric( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_debt', {'label'='Size of debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	if ( value('debt_option')==0 ) metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
+	if ( value('debt_option')==0 )
+	{
+		metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
+	}
+	else
+	{
+		metric( 'debt_fraction', {'label'='Debt Percent','mode'='f', 'deci'='2', 'post'='%' } );
+	}
 }
 
 function aepf_metrics()
@@ -118,7 +132,14 @@ function lpf_metrics()
 	metric( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 	metric( 'size_of_debt', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
-	if ( value('debt_option')==0 ) metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
+	if ( value('debt_option')==0 )
+	{
+		metric( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2' } );
+	}
+	else
+	{
+		metric( 'debt_fraction', {'label'='Debt Percent','mode'='f', 'deci'='2', 'post'='%' } );
+	}
 }
 
 function cs_metrics()
