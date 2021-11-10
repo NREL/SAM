@@ -3200,6 +3200,18 @@ SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mset(S
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_SystemCosts_om_batt_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_batt_replacement_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_SystemCosts_om_replacement_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_replacement_cost_escal", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_FuelCell_fuelcell_power_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "fuelcell_power", arr, length);
@@ -9391,6 +9403,29 @@ SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mge
 	result = ssc_data_get_matrix(ptr, "dispatch_manual_sched_weekend", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "dispatch_manual_sched_weekend");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_batt_replacement_cost", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "om_batt_replacement_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_replacement_cost_escal", &result))
+		make_access_error("SAM_Pvsamv1", "om_replacement_cost_escal");
 	});
 	return result;
 }

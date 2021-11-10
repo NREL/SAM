@@ -88,7 +88,7 @@ Tool Tip
 Caption
 5
 9
-Salex Tax
+Sales Tax
 Bold
 2
 1
@@ -6086,7 +6086,7 @@ Capital Costs
 0
 Numeric
 
-4733
+4635
 equations{ 'engr_total' } = define() {
 	return ${engr_percent}/100*${total_direct_cost}
 			+ ${modulearray_power}*1000*${engr_per_watt} 
@@ -6126,8 +6126,7 @@ equations{ 'contingency' } = define() {
 };
 
 equations{ 'land_area_value' } = define() {
-	if ( technology() == "PVWatts" ) return 0;
-	else return ${total_land_area};
+	return ${total_land_area};
 };
 
 equations{ 'inverter_power' } = define() {
@@ -6213,8 +6212,7 @@ equations{ 'inverterarray_power' } = define() {
 	return ${inverter_power}*${inverter_num_units}; };
 
 equations{ 'modulearray_area' } = define() {
-	if ( technology() == 'PVWatts' ) return 0;
-	else return ${total_module_area};
+	return ${total_module_area};
 };
 
 equations{ 'total_indirect_cost' } = define() {
@@ -6268,27 +6266,4 @@ equations{ 'total_direct_cost' } = define() {
 
 
 
-668
-on_load{"PV Capital Costs"}=define()
-{
-	//capex_table_enable();
-	//on_change{'capex_table_button'};
-	//capex_table_option();
-	is_detailed_pv = ( technology() != "PVWatts" );
-	show("land_area_value",is_detailed_pv);
-	show("land_per_acre",is_detailed_pv);
-	show("landprep_per_acre",is_detailed_pv);
-//	show("lbl_land_purchase",is_detailed_pv);
-//	show("lbl_land_preparation",is_detailed_pv);
-	show("lbl_land_plus",is_detailed_pv);
-	show("lbl_cost_per_area",is_detailed_pv);
-	show("lbl_cost_per_area_plus",is_detailed_pv);
-	show("bos_equip_perarea",is_detailed_pv);
-	show("install_labor_perarea",is_detailed_pv);
-	show("install_margin_perarea",is_detailed_pv);
-};
-
-
-	
-	
-
+0

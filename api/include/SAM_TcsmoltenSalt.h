@@ -49,128 +49,6 @@ extern "C"
 
 
 	//
-	// FinancialModel parameters
-	//
-
-	/**
-	 * Set csp_financial_model:  [1-8]
-	 * options: None
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialModel_csp_financial_model_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// TimeOfDeliveryFactors parameters
-	//
-
-	/**
-	 * Set dispatch_factor1: Dispatch payment factor 1
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor2: Dispatch payment factor 2
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor3: Dispatch payment factor 3
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor4: Dispatch payment factor 4
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor5: Dispatch payment factor 5
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor6: Dispatch payment factor 6
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor7: Dispatch payment factor 7
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor8: Dispatch payment factor 8
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor9: Dispatch payment factor 9
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
-	 * options: 0=diurnal,1=timestep
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
 	// SystemControl parameters
 	//
 
@@ -439,6 +317,14 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_parallel_htr: Does plant include a HTF heater parallel to solar field?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_parallel_htr_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
 	 * options: None
 	 * constraints: None
@@ -549,6 +435,128 @@ extern "C"
 	 * required if: is_wlim_series=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_wlim_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// FinancialModel parameters
+	//
+
+	/**
+	 * Set csp_financial_model:  [1-8]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialModel_csp_financial_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// TimeOfDeliveryFactors parameters
+	//
+
+	/**
+	 * Set dispatch_factor1: Dispatch payment factor 1
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor2: Dispatch payment factor 2
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor3: Dispatch payment factor 3
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor4: Dispatch payment factor 4
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor5: Dispatch payment factor 5
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor6: Dispatch payment factor 6
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor7: Dispatch payment factor 7
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor8: Dispatch payment factor 8
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factor9: Dispatch payment factor 9
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factors_ts: Dispatch payment factor array
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
+	 * options: 0=diurnal,1=timestep
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1753,6 +1761,43 @@ extern "C"
 
 
 	//
+	// ParallelHeater parameters
+	//
+
+	/**
+	 * Set f_q_dot_des_allowable_su: Fraction of design power allowed during startup [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_des_allowable_su_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set f_q_dot_heater_min: Minimum allowable heater output as fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_heater_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set heater_mult: Heater multiple relative to design cycle thermal power [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_heater_mult_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hrs_startup_at_max_rate: Duration of startup at max startup power [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_ParallelHeater_hrs_startup_at_max_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// ThermalStorage parameters
 	//
 
@@ -2304,44 +2349,6 @@ extern "C"
 
 
 	/**
-	 * FinancialModel Getters
-	 */
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * TimeOfDeliveryFactors Getters
-	 */
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
 	 * SystemControl Getters
 	 */
 
@@ -2411,6 +2418,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_parallel_htr_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_wlim_series_nget(SAM_table ptr, SAM_error *err);
@@ -2438,6 +2447,44 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_wlim_series_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * FinancialModel Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * TimeOfDeliveryFactors Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2760,6 +2807,19 @@ extern "C"
 
 
 	/**
+	 * ParallelHeater Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_des_allowable_su_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_f_q_dot_heater_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_heater_mult_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_ParallelHeater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * ThermalStorage Getters
 	 */
 
@@ -2951,6 +3011,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_T_cond_out_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_T_htf_heater_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_T_htf_heater_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_T_panel_out_max_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_T_pc_in_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2980,6 +3044,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_T_wall_riser_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_T_warm_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_W_dot_heater_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_W_cooling_tower_nget(SAM_table ptr, SAM_error *err);
 
@@ -3105,6 +3171,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_disp_qsfsu_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_disp_rev_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_disp_solve_iter_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3114,6 +3182,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_disp_solve_time_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_disp_solve_time_ann_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_disp_tes_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3156,6 +3226,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_m_dot_cycle_to_field_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_m_dot_field_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_m_dot_htf_heater_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_m_dot_pc_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3206,6 +3278,10 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_est_tes_ch_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_est_tes_dc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_heater_startup_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_heater_to_htf_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_pc_max_aget(SAM_table ptr, int* length, SAM_error *err);
 

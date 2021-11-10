@@ -4941,18 +4941,6 @@ SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_annual_discharge_lcos_aget(SAM_tab
 
 
 
-SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_batt_replacement_cost", length);
-	if (!result)
-		make_access_error("SAM_Levpartflip", "cf_batt_replacement_cost");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_battery_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

@@ -1060,13 +1060,13 @@ battery_total
 1
 1
 1
-1438480
+1.43848e+06
 battery_total_cost_lcos
 1
 1
 1
 1
-1438480
+1.43848e+06
 battery_voltage_shown
 1
 1
@@ -1088,7 +1088,7 @@ capacity_factor_calc
 1
 1
 1
-96
+19.2
 cbi_fed_amount
 1
 1
@@ -1238,13 +1238,13 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 const_per_interest1
 1
 1
 1
 1
-1498250
+1.49825e+06
 const_per_interest2
 1
 1
@@ -1304,7 +1304,7 @@ const_per_interest_total
 1
 1
 1
-1498250
+1.49825e+06
 const_per_months1
 1
 1
@@ -1437,7 +1437,7 @@ const_per_total1
 1
 1
 1
-2996490
+2.99649e+06
 const_per_total2
 1
 1
@@ -1497,7 +1497,7 @@ construction_financing_cost
 1
 1
 1
-2996490
+2.99649e+06
 conv_eff
 1
 1
@@ -2016,6 +2016,18 @@ dscr
 1
 1
 1.3
+dscr_limit_debt_fraction
+1
+1
+1
+1
+0
+dscr_maximum_debt_fraction
+1
+1
+1
+1
+100
 dscr_reserve_months
 1
 1
@@ -2111,7 +2123,7 @@ first_year_output
 1
 1
 1
-168192000
+33638400
 first_year_output_peak
 1
 1
@@ -3254,12 +3266,6 @@ revenue_curtailment_is_shown
 1
 1
 0
-roe_input
-1
-2
-1
-1
-0
 sales_tax_rate
 1
 1
@@ -3296,12 +3302,6 @@ show_ReserveAccounts
 1
 1
 1
-show_ReturnonEquity
-1
-1
-1
-1
-0
 show_construction_period
 1
 1
@@ -3413,6 +3413,42 @@ ur_annual_min_charge
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+0
 ur_cr_sched
 1
 3
@@ -3440,6 +3476,13 @@ ur_cr_tou_mat
 2 1 1e+38 0 
 3 1 1e+38 0 
 4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+1
+2
+1 1 
 
 ur_dc_enable
 1
@@ -3560,48 +3603,6 @@ ur_description
 1
 4
 0
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-0
-ur_ec_enable_billing_demand
-1
-1
-1
-1
-0
 ur_ec_is_shown
 1
 1
@@ -3658,6 +3659,12 @@ ur_en_ts_buy_rate
 1
 0
 ur_en_ts_sell_rate
+1
+1
+1
+1
+0
+ur_enable_billing_demand
 1
 1
 1
@@ -3829,11 +3836,11 @@ ur_yearzero_usage_peaks
 2
 1
 12
-0 0 0 0 0 0 0 0 0 0 0 0 
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
 
 user_capacity_factor
 1
 1
 1
 1
-100
+20
