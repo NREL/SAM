@@ -3631,7 +3631,7 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 
         // Unsupported units
         if (!rate.EnergyUnits.IsEmpty()) {
-            rate_notes.append(wxString::Format("SAM does not model energy charges with %s units. Energy charges are set with kWh units, which may not represent the actual rate.", rate.EnergyUnits));
+            rate_notes.append(wxString::Format("SAM does not model tiered energy rates with %s for maximum usage units. The default kWh units may not accurately represent the actual rate.", rate.EnergyUnits));
         }
 
 		// schedules
