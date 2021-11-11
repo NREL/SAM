@@ -1,5 +1,5 @@
 1
-552
+554
 LeadAcid_q10
 1
 1
@@ -1123,7 +1123,7 @@ capacity_factor_calc
 1
 1
 1
-41.856
+19.2
 cbi_fed_amount
 1
 1
@@ -1944,6 +1944,18 @@ dscr
 1
 1
 1.3
+dscr_limit_debt_fraction
+1
+1
+1
+1
+0
+dscr_maximum_debt_fraction
+1
+1
+1
+1
+100
 dscr_reserve_months
 1
 1
@@ -2027,7 +2039,7 @@ first_year_output
 1
 1
 1
-73331712
+33638400
 first_year_output_peak
 1
 1
@@ -222389,4 +222401,4 @@ user_capacity_factor
 1
 1
 1
-43.6
+20
