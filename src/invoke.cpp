@@ -3629,6 +3629,11 @@ void fcall_urdb_get(lk::invoke_t &cxt)
         else if (rate.MinCharge > 0 )
             rate_notes.append(wxString::Format("SAM does not model minimum charge rate of %f with %s units.\n", rate.MinCharge, rate.MinChargeUnits));
 
+        // Unsupported units
+        if (!rate.EnergyUnits.IsEmpty()) {
+            rate_notes.append(wxString::Format("SAM does not model energy charges with %s units. Energy charges are set with kWh units, which may not represent the actual rate.", rate.EnergyUnits));
+        }
+
 		// schedules
 		if (!applydiurnalschedule(cxt, "ec_sched_weekday", rate.EnergyWeekdaySchedule)) return;
 		if (!applydiurnalschedule(cxt, "ec_sched_weekend", rate.EnergyWeekendSchedule)) return;
