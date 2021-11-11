@@ -60,7 +60,7 @@ version_upgrade{'2021.10.27'} = define() {
 		message('We have changed the units for the piping heat loss coefficient for the Molten Salt Power Tower Model from W/m to W/m2-K.' +
 		'This new convention allows the performance model to calculate piping thermal losses ' +
 		'as the receiver thermal power and design temperatures vary. We found that the old default value of 10,200 W/m ' + 
-		'correspondeds to about 13 W/m2-K, which we think is too high for insulated piping, so we chose a new default value of 2 W/m2-K. ' +
+		'corresponds to about 13 W/m2-K, which we think is too high for insulated piping, so we chose a new default value of 2 W/m2-K. ' +
 		'We are changing the piping heat loss coefficient value in your file of ' + oldvalue('piping_loss') + 
 		' W/m to the default value of 2 W/m2-K. Please review this input on the Tower and Receiver page and modify it as necessary for your design.');
 	}
