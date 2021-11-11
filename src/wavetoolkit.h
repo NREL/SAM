@@ -52,7 +52,6 @@ public:
 	};
 
     bool IsAddressMode();
-    wxString GetEndpoint();
     bool IsSingleYear();
     wxString GetAddress();
     double GetLatitude();
@@ -131,16 +130,13 @@ private:
 	void GetResources();
 	void RefreshList(size_t );
 	size_t SelectItems( wxString, wxCheckBox * );
+    wxRadioButton* radAddress;
+    wxRadioButton* radLatLon;
     wxRadioButton* radSingleYear;
     wxRadioButton* radMultiYear;
-    wxRadioButton* radAllYear;
-    wxRadioButton* radHawaii;
     wxTextCtrl* txtAddress, * txtLat, * txtLon;
-    wxTextCtrl* txtSingleYear, * txtStartYear, * txtEndYear;
     wxListBox* lstYears;
-    wxCheckBox* all_years_chk;
-    wxComboBox* cboEndpoint;
-    wxComboBox* cboSingleYear;
+    wxComboBox* cboYears;
 	std::vector<LinkInfo> m_links;
 	wxString m_weatherFile;
 	wxString m_weatherFolder;

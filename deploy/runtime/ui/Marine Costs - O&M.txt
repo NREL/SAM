@@ -1663,7 +1663,7 @@ equations {'maintenance_we_shown'} = define() {
 
 
 
-1370
+1364
 on_load{'Marine Costs - O&M'} = define() {
 	
 	//Operations
@@ -1696,17 +1696,15 @@ function override_om_cost() {
 	show('total_operating_cost',override_value!=1);
 	
 	//Operations
-	enable('operations_cost_method',override_value==0);
-	if (value('operations_cost_method') < 2) {
-		enable('operations_cost_input', override_value==0);
-	}
+	enable('operations_cost_method',override_value!=1);
+	enable('operations_cost',override_value!=1);
+	enable('operations_cost_input',override_value!=1);
 	//show('operations_override_label',override_value==1);
 	
 	//Maintenance
-	enable('maintenance_cost_method',override_value==0);
-	if (value('maintenance_cost_method') < 2) {
-		enable('maintenance_cost_input', override_value==0);
-	}
+	enable('maintenance_cost_method',override_value!=1);
+	enable('maintenance_cost',override_value!=1);
+	enable('maintenance_cost_input',override_value!=1);
 	//show('maintenance_override_label',override_value==1);
 	
 	

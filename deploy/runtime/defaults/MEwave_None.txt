@@ -1,5 +1,5 @@
 1
-73
+67
 array_sizing_mode
 1
 1
@@ -36,8 +36,8 @@ United States
 data_source
 1
 4
-21
-Sandia; SAND2014-9040
+20
+PNNL; PNNL-SA-150805
 desired_array_size
 1
 1
@@ -104,19 +104,7 @@ distance_to_shore
 1
 1
 1
-0
-distance_to_shore_file
-1
-1
-1
-1
-0
-distance_to_shore_input
-1
-1
-1
-1
-0
+5000
 energy_period
 1
 2
@@ -129,7 +117,7 @@ export_cable_length
 1
 1
 1
-0
+5555
 export_cable_redundancy
 1
 1
@@ -208,17 +196,11 @@ location
 4
 28
 Humboldt Bay - DOE Reference
-location_id
-1
-1
-1
-1
-0
 location_ts
 1
 4
-25
-lat34.52_lon-120.69__2010
+28
+Humboldt Bay - DOE Reference
 lon
 1
 1
@@ -291,7 +273,8 @@ NDBC 46212
 notes
 1
 4
-0
+4
+None
 number_devices
 1
 1
@@ -321,7 +304,7 @@ riser_cable_length
 1
 1
 1
-0
+82.5
 row_spacing
 1
 1
@@ -357,12 +340,6 @@ tz
 1
 1
 -7
-use_wavefile_spacing
-1
-1
-1
-1
-0
 user_input_devices_per_row
 1
 1
@@ -407,19 +384,7 @@ water_depth
 1
 1
 1
-0
-water_depth_file
-1
-1
-1
-1
-0
-water_depth_input
-1
-1
-1
-1
-0
+50
 wave_device_name
 1
 4
@@ -455,8 +420,7 @@ wave_power_matrix
 wave_resource_filename
 1
 4
-37
-Humboldt_California_Wave-Resource.csv
+0
 wave_resource_filename_ts
 1
 4
@@ -499,4 +463,4 @@ year
 2
 1
 1
-0
+2010
