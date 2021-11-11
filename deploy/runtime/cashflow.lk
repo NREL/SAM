@@ -190,7 +190,6 @@ function cf_om_expenses()
 			cfline('cf_utility_bill', 0 ); 
 		}
 	}
-	*/
 	if (tech == 'Fuel Cell')
 	{
 		cfline( 'cf_om_fixed1_expense,cf_om_capacity1_expense', 2); 
