@@ -1014,7 +1014,7 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_ope
 setup_single_owner_pages();
 
 setconfig( 'PVWatts', 'Community Solar' );
-setmodules( ['pvwattsv7', 'grid', 'communitysolar']);
+setmodules( ['pvwattsv8', 'grid', 'communitysolar']);
 setup_pvwatts_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 addpage( [[ 'PV Capital Costs' ],
