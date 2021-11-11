@@ -225,9 +225,6 @@
 			"degradation": [0.000000],
 			"system_capacity": 498.72
 		},
-		"ReturnOnEquity": {
-			"roe_input": [0.000000]
-		},
 		"Moratorium": {
 			"loan_moratorium": 0
 		},
