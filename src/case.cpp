@@ -803,7 +803,7 @@ bool Case::SetConfiguration( const wxString &tech, const wxString &fin, bool sil
 	{
 		lk::env_t *env = it->second->Callbacks().GetEnv();
 		lk_string key;
-		lk::vardata_t *val;
+		lk::vardata_t *val = NULL;
 		bool has_more = env->first( key, val );
 		while( has_more )
 		{
