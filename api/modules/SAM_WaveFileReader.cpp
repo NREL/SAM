@@ -155,6 +155,17 @@ SAM_EXPORT double* SAM_WaveFileReader_Outputs_day_aget(SAM_table ptr, int* lengt
 
 
 
+SAM_EXPORT double SAM_WaveFileReader_Outputs_distance_to_shore_file_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "distance_to_shore_file", &result))
+		make_access_error("SAM_WaveFileReader", "distance_to_shore_file");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_WaveFileReader_Outputs_energy_period_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -184,6 +195,17 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lat", &result))
 		make_access_error("SAM_WaveFileReader", "lat");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_WaveFileReader_Outputs_location_id_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "location_id", &result))
+		make_access_error("SAM_WaveFileReader", "location_id");
 	});
 	return result;
 }
@@ -324,6 +346,17 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_tz_nget(SAM_table ptr, SAM_error *e
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tz", &result))
 		make_access_error("SAM_WaveFileReader", "tz");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_WaveFileReader_Outputs_water_depth_file_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "water_depth_file", &result))
+		make_access_error("SAM_WaveFileReader", "water_depth_file");
 	});
 	return result;
 }

@@ -38,6 +38,30 @@ SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_annual_min_charge_nset(SAM_
 	});
 }
 
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_billing_demand_lookback_percentages_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "ur_billing_demand_lookback_percentages", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_billing_demand_lookback_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_billing_demand_minimum_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_billing_demand_minimum", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_dc_billing_demand_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "ur_dc_billing_demand_periods", mat, nrows, ncols);
+	});
+}
+
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_dc_enable_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_dc_enable", number);
@@ -68,30 +92,6 @@ SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_dc_tou_mat_mset(SAM_table p
 	});
 }
 
-SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_ec_billing_demand_lookback_percentages_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "ur_ec_billing_demand_lookback_percentages", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_ec_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "ur_ec_billing_demand_lookback_period", number);
-	});
-}
-
-SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_ec_billing_demand_minimum_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "ur_ec_billing_demand_minimum", number);
-	});
-}
-
-SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_ec_enable_billing_demand_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "ur_ec_enable_billing_demand", number);
-	});
-}
-
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_ec_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "ur_ec_sched_weekday", mat, nrows, ncols);
@@ -119,6 +119,12 @@ SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_en_ts_buy_rate_nset(SAM_tab
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_en_ts_sell_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_en_ts_sell_rate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_enable_billing_demand_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_enable_billing_demand", number);
 	});
 }
 
@@ -269,6 +275,52 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_annual_min_charge_nget(SA
 
 
 
+SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_billing_demand_lookback_percentages_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "ur_billing_demand_lookback_percentages", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "ur_billing_demand_lookback_percentages");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_billing_demand_lookback_period_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_billing_demand_lookback_period", &result))
+		make_access_error("SAM_Utilityrate5", "ur_billing_demand_lookback_period");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_billing_demand_minimum_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_billing_demand_minimum", &result))
+		make_access_error("SAM_Utilityrate5", "ur_billing_demand_minimum");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_billing_demand_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "ur_dc_billing_demand_periods", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "ur_dc_billing_demand_periods");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_dc_enable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -328,51 +380,6 @@ SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_dc_tou_mat_mget(SAM_tabl
 
 
 
-SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ec_billing_demand_lookback_percentages_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "ur_ec_billing_demand_lookback_percentages", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Utilityrate5", "ur_ec_billing_demand_lookback_percentages");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_ec_billing_demand_lookback_period_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ur_ec_billing_demand_lookback_period", &result))
-		make_access_error("SAM_Utilityrate5", "ur_ec_billing_demand_lookback_period");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_ec_billing_demand_minimum_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ur_ec_billing_demand_minimum", &result))
-		make_access_error("SAM_Utilityrate5", "ur_ec_billing_demand_minimum");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_ec_enable_billing_demand_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ur_ec_enable_billing_demand", &result))
-		make_access_error("SAM_Utilityrate5", "ur_ec_enable_billing_demand");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Utilityrate5_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -425,6 +432,17 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_en_ts_sell_rate", &result))
 		make_access_error("SAM_Utilityrate5", "ur_en_ts_sell_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_enable_billing_demand_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_enable_billing_demand", &result))
+		make_access_error("SAM_Utilityrate5", "ur_enable_billing_demand");
 	});
 	return result;
 }

@@ -55,6 +55,8 @@
 			"debt_option": 1,
 			"debt_percent": 50,
 			"dscr": 1.3,
+			"dscr_limit_debt_fraction": 0,
+			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 6,
 			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,

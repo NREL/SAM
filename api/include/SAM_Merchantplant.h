@@ -104,6 +104,22 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set dscr_limit_debt_fraction: Limit debt fraction [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_limit_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dscr_maximum_debt_fraction: Maximum debt fraction [%]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=100
+	 */
+	SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_maximum_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set dscr_reserve_months: Debt service reserve account [months P&I]
 	 * options: None
 	 * constraints: MIN=0
@@ -270,14 +286,6 @@ extern "C"
 	 * required if: ?=1.75
 	 */
 	SAM_EXPORT void SAM_Merchantplant_FinancialParameters_reserves_interest_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set roe_input: Return on equity
-	 * options: None
-	 * constraints: None
-	 * required if: ?=20
-	 */
-	SAM_EXPORT void SAM_Merchantplant_FinancialParameters_roe_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set salvage_percentage: Net pre-tax cash salvage value [%]
@@ -2495,6 +2503,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_limit_debt_fraction_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_maximum_debt_fraction_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_reserve_months_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_FinancialParameters_equip1_reserve_cost_nget(SAM_table ptr, SAM_error *err);
@@ -2536,8 +2548,6 @@ extern "C"
 	SAM_EXPORT double SAM_Merchantplant_FinancialParameters_real_discount_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_FinancialParameters_reserves_interest_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Merchantplant_FinancialParameters_roe_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_FinancialParameters_salvage_percentage_nget(SAM_table ptr, SAM_error *err);
 
@@ -3273,8 +3283,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_insurance_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_lcog_costs_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_Merchantplant_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_net_salvage_value_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3404,12 +3412,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_receivables_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_total_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_return_on_equity_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_return_on_equity_dollars_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_return_on_equity_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_salvage_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -4006,18 +4008,6 @@ extern "C"
 	SAM_EXPORT double SAM_Merchantplant_Outputs_lcoe_nom_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_lcoe_real_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_depr_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_loan_int_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_om_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_roe_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_wc_int_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_lcoptc_fed_nom_nget(SAM_table ptr, SAM_error *err);
 
