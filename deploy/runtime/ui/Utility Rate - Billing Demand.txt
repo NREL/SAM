@@ -755,23 +755,14 @@ Electricity Rates - Billing Demand
 MonthlyFactor
 
 0
-2685
+2850
 on_load{'Utility Rate - Billing Demand'} = define() {
 	enable_ratchet_demand_charges();
 	firstyear_demand_peaks_message();
 };
 
 on_change{'chk_update_peaks'} = define() {
-	is_update_peaks_from_load = value('chk_update_peaks');
-	enable('ur_yearzero_usage_peaks', !is_update_peaks_from_load);
-	if ( is_btm() && is_update_peaks_from_load) 
-	{
-		if ( value('ur_yearzero_usage_peaks') != value('mpeak'))
-		{ 
-			ok = yesno('Overwrite Year 0 monthly peak demand?\nClick Yes to replace Year 0 monthly peak demand with Year 1 values from the Electricity Load page.\n\nClick No to cancel.');
-			if ( ok ) { value('ur_yearzero_usage_peaks',value('mpeak')); }
-		}
-	}
+	check_update_year_one_peaks();
 	firstyear_demand_peaks_message();
 };
 
@@ -783,6 +774,18 @@ function is_btm() {
 	return ( financing() != "Single Owner" );
 }
 
+function check_update_year_one_peaks() {
+	is_update_peaks_from_load = value('chk_update_peaks');
+	enable('ur_yearzero_usage_peaks', !is_update_peaks_from_load);
+	if ( is_btm() && is_update_peaks_from_load) 
+	{
+		if ( value('ur_yearzero_usage_peaks') != value('mpeak'))
+		{ 
+			ok = yesno('Overwrite Year 0 monthly peak demand?\nClick Yes to replace Year 0 monthly peak demand with Year 1 values from the Electricity Load page.\n\nClick No to cancel.');
+			if ( ok ) { value('ur_yearzero_usage_peaks',value('mpeak')); }
+		}
+	}	
+}
 function firstyear_demand_peaks_message() {
 	msg = 'Click Edit Values to enter monthly peak demand for Year 0, which is the lookback period for Year 1.';
 	if ( !is_btm() )
@@ -809,6 +812,10 @@ function firstyear_demand_peaks_message() {
 
 on_change{'ur_enable_billing_demand'} = define() {
 	enable_ratchet_demand_charges();
+	if (is_btm()) {
+		check_update_year_one_peaks();
+		firstyear_demand_peaks_message();
+	}
 };
 
 function enable_ratchet_demand_charges()
