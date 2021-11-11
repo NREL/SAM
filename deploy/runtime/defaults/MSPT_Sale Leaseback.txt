@@ -150,7 +150,7 @@ Q_tes
 1
 1
 1
-2791.26
+nan
 REC_COPY_Q_rec_des
 1
 1
@@ -1288,7 +1288,7 @@ csp.pt.tes.htf_density
 1
 1
 1
-1808.48
+nan
 csp.pt.tes.init_hot_htf_percent
 1
 1
@@ -1306,7 +1306,7 @@ csp.pt.tes.tank_diameter
 1
 1
 1
-38.7698
+nan
 csp.pt.tes.tc_fill_dens
 1
 1
@@ -12047,18 +12047,18 @@ piping_length_mult
 1
 1
 2.6
-piping_loss
+piping_loss_coefficient
 1
 1
 1
 1
-10200
+2
 piping_loss_tot
 1
 1
 1
 1
-5130.51
+789.262
 plant_spec_cost
 1
 1
@@ -12172,7 +12172,7 @@ q_dot_tes_est
 1
 1
 1
-0.729384
+nan
 q_pb_design
 1
 1
@@ -12575,7 +12575,7 @@ tes_avail_vol
 1
 1
 1
-12985.8
+nan
 tes_spec_cost
 1
 1
@@ -13189,7 +13189,7 @@ vol_tank
 1
 1
 1
-14166.4
+nan
 washing_frequency
 1
 1
