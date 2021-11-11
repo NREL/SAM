@@ -26,6 +26,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/textctrl.h>
 #include <wx/filename.h>
 #include <wx/hyperlink.h>
+#include <wx/clipbrd.h>
+#include <wx/busyinfo.h>
+
 
 #include <wex/snaplay.h>
 #include <wex/extgrid.h>
@@ -45,12 +48,13 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "results.h"
 
 enum { ID_SELECT_FOLDER = wxID_HIGHEST+494,
-	ID_SIMULATE };
+	ID_SIMULATE, ID_COPYTABLE };
 
 BEGIN_EVENT_TABLE( P50P90Form, wxPanel )
 	EVT_BUTTON( ID_SELECT_FOLDER, P50P90Form::OnSelectFolder )
-	EVT_BUTTON( ID_SIMULATE, P50P90Form::OnSimulate )
-END_EVENT_TABLE()	
+	EVT_BUTTON(ID_SIMULATE, P50P90Form::OnSimulate)
+	EVT_BUTTON(ID_COPYTABLE, P50P90Form::OnCopyTable)
+END_EVENT_TABLE()
 
 
 P50P90Form::P50P90Form( wxWindow *parent, Case *cc )
@@ -76,6 +80,8 @@ P50P90Form::P50P90Form( wxWindow *parent, Case *cc )
 	sizer_top->AddSpacer( 20 );
 	sizer_top->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
 	sizer_top->Add( m_puser, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
+
+	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
 
 	m_layout = new wxSnapLayout( this, wxID_ANY );
 
@@ -474,9 +480,84 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 	m_layout->AutoLayout();
 }
 
-void P50P90Form::OnSelectFolder( wxCommandEvent & )
+void P50P90Form::OnSelectFolder(wxCommandEvent&)
 {
 	wxString dir = wxDirSelector("Choose weather file folder", m_folder->GetValue());
-	if ( !dir.IsEmpty() )
-		m_folder->ChangeValue( dir );
+	if (!dir.IsEmpty())
+		m_folder->ChangeValue(dir);
 }
+
+void P50P90Form::OnCopyTable(wxCommandEvent&)
+{
+	wxBusyInfo busy("Processing data table... please wait");
+	wxString dat = "";
+	GetTextData(dat, '\t');
+
+	// strip commas per request from Paul 5/23/12 meeting
+	dat.Replace(",", "");
+
+	if (wxTheClipboard->Open())
+	{
+		wxTheClipboard->Clear();
+		wxTheClipboard->SetData(new wxTextDataObject(dat));
+		wxTheClipboard->Close();
+	}
+}
+
+void P50P90Form::GetTextData(wxString& dat, char sep, bool withHeader)
+{
+	dat = wxEmptyString;
+	if (!m_grid)
+		return;
+
+	wxGridTableBase* m_grid_data = m_grid->GetTable();
+//	size_t approxbytes = (m_grid_data->GetNumberRows() +1) * 15 * (m_grid_data->GetNumberCols()+1);
+//	dat.Alloc(approxbytes);
+
+	int c;
+	wxString label = "";
+	if (sep == ',')
+		dat += '"' + label + '"';
+	else
+		dat += label;
+	dat += sep;
+	// column header
+	if (withHeader) {
+		for (c = 0; c < m_grid_data->GetNumberCols(); c++)
+		{
+			label = m_grid_data->GetColLabelValue(c);
+			label.Replace('\n', " | ");
+
+			if (sep == ',')
+				dat += '"' + label + '"';
+			else
+				dat += label;
+
+			if (c < m_grid_data->GetNumberCols() - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
+	}
+	// data
+	for (int r = 0; r < m_grid_data->GetNumberRows(); r++)
+	{
+		auto rowlabel =  m_grid_data->GetRowLabelValue(r);
+		if (sep == ',')
+			dat += '"' + rowlabel + '"';
+		else
+			dat += rowlabel;
+		dat += sep;
+
+		for (c = 0; c < m_grid_data->GetNumberCols(); c++)
+		{
+			dat += m_grid_data->GetValue(r, c);
+
+			if (c < m_grid_data->GetNumberCols() - 1)
+				dat += sep;
+			else
+				dat += '\n';
+		}
+	}
+}
+
