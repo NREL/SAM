@@ -2481,7 +2481,7 @@ const_per_interest1
 1
 1
 1
-1.82285e+06
+1822850
 const_per_interest2
 1
 1
@@ -2541,7 +2541,7 @@ const_per_interest_total
 1
 1
 1
-1.82285e+06
+1822850
 const_per_months1
 1
 1
@@ -2674,7 +2674,7 @@ const_per_total1
 1
 1
 1
-3.6457e+06
+3645700
 const_per_total2
 1
 1
@@ -2734,7 +2734,7 @@ construction_financing_cost
 1
 1
 1
-3.6457e+06
+3645700
 cost_debt_closing
 1
 1
@@ -4121,7 +4121,7 @@ ppa_soln_mode
 1
 1
 1
-0
+1
 prop_tax_assessed_decline
 1
 1

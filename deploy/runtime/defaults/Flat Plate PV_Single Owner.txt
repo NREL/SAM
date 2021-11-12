@@ -1,5 +1,5 @@
 1
-953
+965
 6par_aisc
 1
 1
@@ -3737,7 +3737,7 @@ ppa_soln_mode
 1
 1
 1
-0
+1
 prop_tax_assessed_decline
 1
 1
@@ -6209,7 +6209,7 @@ use_wf_albedo
 1
 1
 1
-1
+0
 user_specified_weather_file
 1
 4

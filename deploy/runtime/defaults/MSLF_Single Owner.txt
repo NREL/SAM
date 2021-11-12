@@ -1528,7 +1528,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4.4626e+06
+4462600
 csp.mslf.cost.power_plant
 1
 1
@@ -4047,7 +4047,7 @@ ppa_soln_mode
 1
 1
 1
-0
+1
 pressure_mode
 1
 1

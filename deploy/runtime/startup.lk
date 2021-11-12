@@ -743,7 +743,7 @@ setup_merchant_plant_pages();
 setup_electricity_purchases();
 
 setconfig( 'Empirical Trough', 'Leveraged Partnership Flip' );
-setmodules( ['tcstrough_empirical', 'utilityrate5', 'utilityrate5', 'levpartflip']);
+setmodules( ['tcstrough_empirical', 'utilityrate5', 'levpartflip']);
 setup_csp_empirical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Empirical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
@@ -881,6 +881,7 @@ setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
 addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_Dispatch_pages();
+setup_electricity_purchases();
 
 //setconfig('ETES', 'Merchant Plant');
 //setmodules( ['etes_electric_resistance', 'merchantplant']);

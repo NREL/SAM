@@ -333,7 +333,7 @@ AlignTop
 2
 1
 
-4
+5
 flip_target_year
 3
 1
@@ -376,6 +376,20 @@ PPA Price and IRR
 1
 0
 SchedNumeric
+ppa_soln_mode
+3
+1
+ 
+ 
+ 
+0
+0
+1
+1
+1
+1
+0
+Default
 solution_mode_message
 3
 4
@@ -389,8 +403,9 @@ PPA Price and IRR
 0
 MultilineText
 
-1
-
+53
+equations{'ppa_soln_mode'} = define() {
+	return 1;};
 
 1494
 // This form is a copy of Financial Solution Flip Leaseback
