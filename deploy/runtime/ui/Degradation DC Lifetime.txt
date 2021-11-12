@@ -148,8 +148,8 @@ Tool Tip
 0
 Caption
 5
-164
-In Value mode, the degradation rate is compounded annually starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details.
+161
+In Value mode, the degradation rate is applied linearly starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details.
 TextColour
 4
 0
