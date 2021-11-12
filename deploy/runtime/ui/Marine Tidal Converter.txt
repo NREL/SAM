@@ -123,8 +123,8 @@ Library
 Tidal Energy Converters
 Fields
 5
-137
-Name,Technology Type,PTO Type,Characteristic Diameter,Unballasted Structural Mass,Foundation Type,Mooring Type,Primary Structure Material
+127
+Name,Technology Type,PTO Type,TEC Architype,Unballasted Structural Mass,Foundation Type,Mooring Type,Primary Structure Material
 DataMatrix
 
 1
@@ -418,20 +418,6 @@ ColorMap
 0
 
 13
-device_characteristic_diameter
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 device_foundation
 3
 4
@@ -512,6 +498,19 @@ ME Tidal Converter
 1
 100
 Numeric
+device_tec_architype
+3
+4
+ 
+ 
+ 
+0
+8
+1
+4
+9
+<invalid>
+Default
 device_tech_type
 3
 4
@@ -649,7 +648,7 @@ equations{ 'tidal_power_curve' } = define()
 		return ${lib_tidal_power_curve};
 };
 
-1752
+1973
 function plot_device_curve()
 {
 	setplot('tidal_power_curve_plot');
@@ -684,6 +683,16 @@ on_change{'tidal_power_curve'}=define()
 	plot_device_curve();
 };
 
+on_change{'lib_tidal_power_curve'} = define() {
+	plot_device_curve();
+	refresh('lib_tidal_power_curve');
+};
+
+on_change{'user_tidal_power_curve'} = define() {
+	plot_device_curve();
+	refresh('user_tidal_power_curve');
+};
+
 on_load{'Marine Tidal Converter'}=define()
 {
 	update_controls();
@@ -712,6 +721,7 @@ on_change{'library_or_input_tidal'} = define()
 {
 	update_controls();
 };
+
 /*
 on_change{'lib_tidal_device'} = define()
 {
