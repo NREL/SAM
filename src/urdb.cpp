@@ -159,8 +159,11 @@ void OpenEI::RateData::Reset()
 	for (i = 0; i < 12; i++)
 	{
 		Unused.FuelAdjustmentsMonthly[i] = 0.0;
-		Unused.DemandRatchetPercentage[i] = 0.0;
-	}
+        Unused.LookbackMonths[i] = 0;
+    }
+
+    Unused.LookbackPercent = 0.0;
+    Unused.LookbackRange = 0;
 
 	Unused.ServiceType = "";
 	Unused.DemandWindow = 0;
@@ -497,13 +500,19 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 		rate.Unused.DemandWindow = dw.AsDouble();
 	}
 
-	wxJSONValue dmp = val.Item("demandratchetpercentage");
-	if (dmp.Size() > 0)
-	{
-		rate.Unused.HasUnusedItems = true;
-		for (int i = 0; i < 12; i++)
-			rate.Unused.DemandRatchetPercentage[i] = dmp[i].AsDouble();
-	}
+    wxJSONValue lm = val.Item("lookbackmonths");
+    if (lm.Size() > 0)
+    {
+        rate.Unused.HasUnusedItems = true;
+        for (int i = 0; i < 12; i++)
+            rate.Unused.LookbackMonths[i] = lm[i].AsBool();
+    }
+
+    wxJSONValue lp = val.Item("lookbackpercent");
+    rate.Unused.LookbackPercent = lp.AsDouble();
+
+    wxJSONValue lr = val.Item("lookbackrange");
+    rate.Unused.LookbackRange = lr.AsInt();
 
 	// energy, fixed, and demand attributes
 
