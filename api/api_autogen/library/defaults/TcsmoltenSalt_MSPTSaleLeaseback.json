@@ -8977,7 +8977,7 @@
 			"n_flux_days": 8,
 			"piping_length_const": 0,
 			"piping_length_mult": 2.6,
-			"piping_loss": 10200,
+			"piping_loss_coefficient": 2,
 			"preheat_flux": 50,
 			"rec_absorptance": 0.94,
 			"rec_height": 21.6029,
