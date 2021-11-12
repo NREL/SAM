@@ -3587,7 +3587,7 @@ property_assessed_value
 1
 1
 1
-2449220
+2.44922e+06
 property_tax_rate
 1
 1
@@ -4037,7 +4037,7 @@ thermal_load_annual_total
 1
 1
 1
-7646300
+7.6463e+06
 thermal_load_escalation
 1
 2
@@ -4197,7 +4197,7 @@ total_installed_cost
 1
 1
 1
-2449220
+2.44922e+06
 total_land_area
 1
 1
@@ -4269,13 +4269,13 @@ ui_loan_amount
 1
 1
 1
-2449220
+2.44922e+06
 ui_net_capital_cost
 1
 1
 1
 1
-2449220
+2.44922e+06
 ui_pv_capacity
 1
 1
@@ -4623,7 +4623,7 @@ ur_lookback_percent
 1
 1
 0
-ur_lookback_range 
+ur_lookback_range
 1
 1
 1

@@ -635,7 +635,7 @@ batt_calendar_c
 1
 1
 1
-930
+939
 batt_calendar_choice
 1
 1
@@ -6867,7 +6867,7 @@ ur_lookback_percent
 1
 1
 0
-ur_lookback_range 
+ur_lookback_range
 1
 1
 1

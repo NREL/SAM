@@ -3256,7 +3256,7 @@ substation_cost
 1
 1
 1
-3124540
+3.12454e+06
 substructCont
 1
 1
@@ -3795,7 +3795,7 @@ ur_lookback_percent
 1
 1
 0
-ur_lookback_range 
+ur_lookback_range
 1
 1
 1

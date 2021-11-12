@@ -440,7 +440,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-6115490
+6.11549e+06
 genericsys.cost.epc.percent
 1
 1
@@ -452,7 +452,7 @@ genericsys.cost.epc.total
 1
 1
 1
-6115490
+6.11549e+06
 genericsys.cost.installed_per_capacity
 1
 1
@@ -512,7 +512,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-2446190
+2.44619e+06
 genericsys.cost.sales_tax.value
 1
 1
@@ -1382,7 +1382,7 @@ total_indirect_cost
 1
 1
 1
-8255910
+8.25591e+06
 total_installed_cost
 1
 1
@@ -1742,7 +1742,7 @@ ur_lookback_percent
 1
 1
 0
-ur_lookback_range 
+ur_lookback_range
 1
 1
 1

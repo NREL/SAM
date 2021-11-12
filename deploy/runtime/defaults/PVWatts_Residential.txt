@@ -1229,7 +1229,7 @@ land_area_value
 1
 1
 1
-0
+0.0130055
 land_fixed
 1
 1
@@ -1552,7 +1552,7 @@ modulearray_area
 1
 1
 1
-0
+52.6316
 modulearray_power
 1
 1
@@ -2534,7 +2534,7 @@ ur_lookback_percent
 1
 1
 0
-ur_lookback_range 
+ur_lookback_range
 1
 1
 1

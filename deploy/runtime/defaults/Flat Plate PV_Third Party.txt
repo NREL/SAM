@@ -2799,7 +2799,8 @@ phoenix_az_33.450495_-111.983688_psmv3_60_tmy
 solar_resource_file
 1
 4
-0
+49
+phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv
 spe_a
 1
 1
@@ -4211,13 +4212,13 @@ ur_lookback_percent
 1
 1
 1
-0
-ur_lookback_range 
+3.33506e-317
+ur_lookback_range
 1
 1
 1
 1
-0
+3.33506e-317
 ur_metering_option
 1
 1

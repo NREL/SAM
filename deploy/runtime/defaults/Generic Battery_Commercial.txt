@@ -303,7 +303,7 @@ batt_calendar_c
 1
 1
 1
-930
+939
 batt_calendar_choice
 1
 1
@@ -2471,7 +2471,7 @@ property_assessed_value
 1
 1
 1
-1551310
+1.55131e+06
 property_tax_rate
 1
 1
@@ -2711,7 +2711,7 @@ total_direct_cost
 1
 1
 1
-1366790
+1.36679e+06
 total_indirect_cost
 1
 1
@@ -2723,7 +2723,7 @@ total_installed_cost
 1
 1
 1
-1551310
+1.55131e+06
 total_system_indirect_cost
 1
 1
@@ -2753,7 +2753,7 @@ ui_net_capital_cost
 1
 1
 1
-1551310
+1.55131e+06
 ui_pv_capacity
 1
 1
@@ -3095,7 +3095,7 @@ ur_lookback_percent
 1
 1
 0
-ur_lookback_range 
+ur_lookback_range
 1
 1
 1

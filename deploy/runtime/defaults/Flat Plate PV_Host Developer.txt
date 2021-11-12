@@ -6188,13 +6188,13 @@ ur_lookback_percent
 1
 1
 1
-0
-ur_lookback_range 
+3.33506e-317
+ur_lookback_range
 1
 1
 1
 1
-0
+3.33506e-317
 ur_metering_option
 1
 1
