@@ -173,6 +173,22 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_FinancialParameters_dscr_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set dscr_limit_debt_fraction: Limit debt fraction [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Levpartflip_FinancialParameters_dscr_limit_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dscr_maximum_debt_fraction: Maximum debt fraction [%]
+	 * options: None
+	 * constraints: MIN=0
+	 * required if: ?=100
+	 */
+	SAM_EXPORT void SAM_Levpartflip_FinancialParameters_dscr_maximum_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set dscr_reserve_months: Debt service reserve account [months P&I]
 	 * options: None
 	 * constraints: MIN=0
@@ -2376,6 +2392,10 @@ extern "C"
 	SAM_EXPORT double SAM_Levpartflip_FinancialParameters_debt_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Levpartflip_FinancialParameters_dscr_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Levpartflip_FinancialParameters_dscr_limit_debt_fraction_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Levpartflip_FinancialParameters_dscr_maximum_debt_fraction_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Levpartflip_FinancialParameters_dscr_reserve_months_nget(SAM_table ptr, SAM_error *err);
 

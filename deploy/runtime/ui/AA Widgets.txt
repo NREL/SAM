@@ -609,7 +609,7 @@ Legend
 LossAdjustment
 
 1
-8
+7
 Name
 5
 9
@@ -632,9 +632,6 @@ Tool Tip
 TabOrder
 3
 4294967295
-Description
-5
-0
 TableData
 
 1

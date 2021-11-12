@@ -41,6 +41,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Belpe", "Electric load calculator for residential buildings"},
             {"Biomass", "Biomass combustion for electricity generation"},
             {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
+            {"Communitysolar", "Community solar owner financial model"},
             {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
             {"ETES", "Electric thermal energy storage"},
             {"Fuelcell", "Fuel cell model"},

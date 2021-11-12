@@ -93,11 +93,15 @@ extern "C"
 
 	SAM_EXPORT double* SAM_WaveFileReader_Outputs_day_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_WaveFileReader_Outputs_distance_to_shore_file_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_WaveFileReader_Outputs_energy_period_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_WaveFileReader_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_WaveFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_WaveFileReader_Outputs_location_id_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_WaveFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *err);
 
@@ -122,6 +126,8 @@ extern "C"
 	SAM_EXPORT const char* SAM_WaveFileReader_Outputs_state_sget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_WaveFileReader_Outputs_tz_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_WaveFileReader_Outputs_water_depth_file_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_WaveFileReader_Outputs_wave_resource_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 

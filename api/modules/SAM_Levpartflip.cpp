@@ -116,6 +116,18 @@ SAM_EXPORT void SAM_Levpartflip_FinancialParameters_dscr_nset(SAM_table ptr, dou
 	});
 }
 
+SAM_EXPORT void SAM_Levpartflip_FinancialParameters_dscr_limit_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dscr_limit_debt_fraction", number);
+	});
+}
+
+SAM_EXPORT void SAM_Levpartflip_FinancialParameters_dscr_maximum_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dscr_maximum_debt_fraction", number);
+	});
+}
+
 SAM_EXPORT void SAM_Levpartflip_FinancialParameters_dscr_reserve_months_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dscr_reserve_months", number);
@@ -1870,6 +1882,28 @@ SAM_EXPORT double SAM_Levpartflip_FinancialParameters_dscr_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dscr", &result))
 		make_access_error("SAM_Levpartflip", "dscr");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Levpartflip_FinancialParameters_dscr_limit_debt_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dscr_limit_debt_fraction", &result))
+		make_access_error("SAM_Levpartflip", "dscr_limit_debt_fraction");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Levpartflip_FinancialParameters_dscr_maximum_debt_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dscr_maximum_debt_fraction", &result))
+		make_access_error("SAM_Levpartflip", "dscr_maximum_debt_fraction");
 	});
 	return result;
 }
