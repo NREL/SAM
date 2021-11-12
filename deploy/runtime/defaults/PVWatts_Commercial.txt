@@ -1,5 +1,5 @@
 1
-401
+403
 ac_nameplate
 1
 1
@@ -2212,13 +2212,6 @@ ur_demand_min
 1
 1
 0
-ur_demand_ratchet_percentage
-1
-2
-1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
 ur_demand_window
 1
 1
@@ -2349,6 +2342,24 @@ ur_has_unused_items
 1
 0
 ur_is_default
+1
+1
+1
+1
+0
+ur_lookback_months
+1
+2
+1
+1
+0
+ur_lookback_percent
+1
+1
+1
+1
+0
+ur_lookback_range 
 1
 1
 1
