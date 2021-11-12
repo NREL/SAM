@@ -81,7 +81,7 @@ P50P90Form::P50P90Form( wxWindow *parent, Case *cc )
 	sizer_top->Add( label , 0, wxLEFT|wxRIGHT|wxALIGN_CENTER_VERTICAL, 0 );
 	sizer_top->Add( m_puser, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
 
-	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
+	sizer_top->Add(new wxMetroButton(this, ID_COPYTABLE, "Copy table to clipboard", wxNullBitmap, wxDefaultPosition, wxDefaultSize), 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
 
 	m_layout = new wxSnapLayout( this, wxID_ANY );
 
