@@ -40,8 +40,10 @@ public:
 
 protected:
 
-	void OnSimulate( wxCommandEvent & );
+	void OnCopyTable(wxCommandEvent&);
+	void OnSimulate(wxCommandEvent&);
 	void OnSelectFolder( wxCommandEvent & );
+	void GetTextData(wxString& dat, char sep, bool withHeader = true);
 
 private:
 	Case *m_case;

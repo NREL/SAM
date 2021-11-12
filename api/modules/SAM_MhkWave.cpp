@@ -523,6 +523,18 @@ SAM_EXPORT double SAM_MhkWave_Outputs_device_average_power_nget(SAM_table ptr, S
 
 
 
+SAM_EXPORT double* SAM_MhkWave_Outputs_energy_hourly_kWh_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "energy_hourly_kWh", length);
+	if (!result)
+		make_access_error("SAM_MhkWave", "energy_hourly_kWh");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -553,18 +565,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_gen_aget(SAM_table ptr, int* length, SAM_
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
 		make_access_error("SAM_MhkWave", "gen");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_MhkWave_Outputs_hourly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "hourly_energy", length);
-	if (!result)
-		make_access_error("SAM_MhkWave", "hourly_energy");
 	});
 	return result;
 }
