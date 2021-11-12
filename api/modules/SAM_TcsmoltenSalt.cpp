@@ -920,6 +920,12 @@ SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_nset(SAM_table pt
 	});
 }
 
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "piping_loss_coefficient", number);
+	});
+}
+
 SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_preheat_flux_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "preheat_flux", number);
@@ -3364,6 +3370,17 @@ SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_nget(SAM_table 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "piping_loss", &result))
 		make_access_error("SAM_TcsmoltenSalt", "piping_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "piping_loss_coefficient", &result))
+		make_access_error("SAM_TcsmoltenSalt", "piping_loss_coefficient");
 	});
 	return result;
 }

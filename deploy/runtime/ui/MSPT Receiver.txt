@@ -1540,8 +1540,8 @@ Numeric
 17
 Name
 5
-11
-piping_loss
+23
+piping_loss_coefficient
 X
 3
 714
@@ -2510,11 +2510,11 @@ Tower and Receiver
 1
 1
 Default
-piping_loss
+piping_loss_coefficient
 3
 1
 Piping heat loss coefficient
-Wt/m
+Wt/m²-K
 Tower and Receiver
 0
 2
@@ -2522,7 +2522,7 @@ Tower and Receiver
 1
 1
 1
-35
+2
 Default
 piping_loss_tot
 3
@@ -2784,7 +2784,7 @@ Tower and Receiver
 0
 Default
 
-3149
+3173
 equations{ 'rec_htf' } = define() {
 	return ?${csp.pt.rec.htf_type}
 	[
@@ -2841,7 +2841,7 @@ equations{ '$MIMO$ MSPT_Receiver_Equations' } = define() {
 	
 	// piping_loss_tot
 	data.piping_length = nan();		// intermediate output for later input
-	data.piping_loss = ${piping_loss};
+	data.piping_loss_coefficient = ${piping_loss_coefficient};
 	
 	success = ssc_eqn("MSPT_Receiver_Equations", data);
 	if (!success) {

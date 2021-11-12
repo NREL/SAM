@@ -1313,14 +1313,17 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     csv(0, 0) = "Name";
     csv(2, 0) = "[0]";
 
-    csv(0, 1) = "City";
-    csv(2, 1) = "city";
+    csv(0, 1) = "Location ID";
+    csv(2, 1) = "location_id";
 
-    csv(0, 2) = "State";
-    csv(2, 2) = "state";
+    csv(0, 2) = "Distance to shore";
+    csv(1, 2) = "m";
+    csv(2, 2) = "distance_to_shore_file";
 
-    csv(0, 3) = "Country";
-    csv(2, 3) = "country";
+    csv(0, 3) = "Water depth";
+    csv(1, 3) = "m";
+    csv(2, 3) = "water_depth_file";
+
 
     csv(0, 4) = "Latitude";
     csv(1, 4) = "deg";
@@ -1395,17 +1398,16 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
                 wxFileName ff(wf);
                 ff.Normalize();
 
-                if ((str = ssc_data_get_string(pdata, "name")) != 0)
-                    csv(row, 0) = wxString(str);
+                csv(row, 0) = ff.GetName();
 
-                if ((str = ssc_data_get_string(pdata, "city")) != 0)
-                    csv(row, 1) = wxString(str);
+                if (ssc_data_get_number(pdata, "location_id", &val))
+                    csv(row, 1) = wxString::Format("%g", val);
 
-                if ((str = ssc_data_get_string(pdata, "state")) != 0)
-                    csv(row, 2) = wxString(str);
+                if (ssc_data_get_number(pdata, "distance_to_shore_file", &val))
+                    csv(row, 2) = wxString::Format("%g", val);
 
-                if ((str = ssc_data_get_string(pdata, "country")) != 0)
-                    csv(row, 3) = wxString(str);
+                if (ssc_data_get_number(pdata, "water_depth_file", &val))
+                    csv(row, 3) = wxString::Format("%g", val);
 
                 if (ssc_data_get_number(pdata, "lat", &val))
                     csv(row, 4) = wxString::Format("%g", val);

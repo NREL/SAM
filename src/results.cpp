@@ -743,7 +743,7 @@ void ResultsViewer::Setup(Simulation* sim)
 
                 value = md.scale * (double)vv->Value();
 
-                if (isnan(value))
+                if (std::isnan(value))
                     sval = vv->AsString();
                 else
                 {
@@ -809,7 +809,7 @@ void ResultsViewer::Setup(Simulation* sim)
                                 {
                                     value = mr.metrics[icol].scale * vv->Value();
 
-                                    if (isnan(value))
+                                    if (std::isnan(value))
                                         sval = vv->AsString();
                                     else
                                     {

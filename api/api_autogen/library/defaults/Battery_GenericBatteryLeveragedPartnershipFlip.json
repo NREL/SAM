@@ -58,7 +58,7 @@
 			"batt_Vnom_default": 3.6,
 			"batt_calendar_a": 0.00266,
 			"batt_calendar_b": -7280,
-			"batt_calendar_c": 930,
+			"batt_calendar_c": 939,
 			"batt_calendar_choice": 1,
 			"batt_calendar_lifetime_matrix": [
 				[0.000000, 100.000000],
