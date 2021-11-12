@@ -606,9 +606,9 @@ function setup_fuel_cell_pages_btm()
 				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
 	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
-		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], ['Battery Dispatch Empty'], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
+		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], ['Fuel Cell Dispatch Manual'], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
 		{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
-			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM', 'Fuel Cell Dispatch Manual' ], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
     setup_grid_page_with_outage();
 }
 
@@ -629,9 +629,10 @@ function setup_fuel_cell_pages_fom()
 					]],
 				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
-	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
-		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}],
-		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}]],
+	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
+		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
+		[ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
+		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}]],
 			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 	setup_grid_page();
