@@ -194,6 +194,18 @@ SAM_EXPORT void SAM_Singleowner_FinancialParameters_dscr_nset(SAM_table ptr, dou
 	});
 }
 
+SAM_EXPORT void SAM_Singleowner_FinancialParameters_dscr_limit_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dscr_limit_debt_fraction", number);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_FinancialParameters_dscr_maximum_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dscr_maximum_debt_fraction", number);
+	});
+}
+
 SAM_EXPORT void SAM_Singleowner_FinancialParameters_dscr_reserve_months_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dscr_reserve_months", number);
@@ -317,12 +329,6 @@ SAM_EXPORT void SAM_Singleowner_FinancialParameters_real_discount_rate_nset(SAM_
 SAM_EXPORT void SAM_Singleowner_FinancialParameters_reserves_interest_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "reserves_interest", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_FinancialParameters_roe_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "roe_input", arr, length);
 	});
 }
 
@@ -2100,6 +2106,28 @@ SAM_EXPORT double SAM_Singleowner_FinancialParameters_dscr_nget(SAM_table ptr, S
 
 
 
+SAM_EXPORT double SAM_Singleowner_FinancialParameters_dscr_limit_debt_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dscr_limit_debt_fraction", &result))
+		make_access_error("SAM_Singleowner", "dscr_limit_debt_fraction");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Singleowner_FinancialParameters_dscr_maximum_debt_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dscr_maximum_debt_fraction", &result))
+		make_access_error("SAM_Singleowner", "dscr_maximum_debt_fraction");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Singleowner_FinancialParameters_dscr_reserve_months_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2326,18 +2354,6 @@ SAM_EXPORT double SAM_Singleowner_FinancialParameters_reserves_interest_nget(SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "reserves_interest", &result))
 		make_access_error("SAM_Singleowner", "reserves_interest");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_FinancialParameters_roe_input_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "roe_input", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "roe_input");
 	});
 	return result;
 }
@@ -6191,18 +6207,6 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_insurance_expense_aget(SAM_table p
 
 
 
-SAM_EXPORT double* SAM_Singleowner_Outputs_cf_lcog_costs_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_lcog_costs", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "cf_lcog_costs");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Singleowner_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6988,42 +6992,6 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_reserve_total_aget(SAM_table ptr, 
 	result = ssc_data_get_array(ptr, "cf_reserve_total", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "cf_reserve_total");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Outputs_cf_return_on_equity_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "cf_return_on_equity");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Outputs_cf_return_on_equity_dollars_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity_dollars", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "cf_return_on_equity_dollars");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Outputs_cf_return_on_equity_input_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity_input", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "cf_return_on_equity_input");
 	});
 	return result;
 }
@@ -10991,72 +10959,6 @@ SAM_EXPORT double SAM_Singleowner_Outputs_lcoe_real_nget(SAM_table ptr, SAM_erro
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoe_real", &result))
 		make_access_error("SAM_Singleowner", "lcoe_real");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog", &result))
-		make_access_error("SAM_Singleowner", "lcog");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_depr_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_depr", &result))
-		make_access_error("SAM_Singleowner", "lcog_depr");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_loan_int_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_loan_int", &result))
-		make_access_error("SAM_Singleowner", "lcog_loan_int");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_om_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_om", &result))
-		make_access_error("SAM_Singleowner", "lcog_om");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_roe_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_roe", &result))
-		make_access_error("SAM_Singleowner", "lcog_roe");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_wc_int_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_wc_int", &result))
-		make_access_error("SAM_Singleowner", "lcog_wc_int");
 	});
 	return result;
 }
