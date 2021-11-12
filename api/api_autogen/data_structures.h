@@ -163,6 +163,7 @@ static std::unordered_map<std::string, std::string> config_to_cmod_name = {
         {"Belpe", "Belpe"},
         {"Biopower", "Biomass"},
         {"Commercial", "Commercial"},
+        {"CommunitySolar", "Communitysolar"},
         {"DishStirling", "Tcsdish"},
         {"DSGLIPH", "LinearFresnelDsgIph"},
         {"DSLF", "TcslinearFresnel"},

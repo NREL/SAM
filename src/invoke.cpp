@@ -2492,7 +2492,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 {
     LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
     //Create the wind data object
-    WaveDownloadDialog dlgWave(SamApp::Window(), "Advanced Wave Download");
+    WaveDownloadDialog dlgWave(SamApp::Window(), "Wave Resource Data Download");
     dlgWave.CenterOnParent();
     int code = dlgWave.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -2519,27 +2519,17 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     
     double lat, lon;
     ecd.Update(1, 50.0f);
-    if (dlgWave.IsAddressMode() == true)	//entered an address instead of a lat/long
-    {
-        if (!wxEasyCurl::GeoCodeDeveloper(dlgWave.GetAddress(), &lat, &lon, NULL, false))
-        {
-            ecd.Log("Failed to geocode address");
-            ecd.Finalize();
-            return;
-        }
-    }
-    else
-    {
-        lat = dlgWave.GetLatitude();
-        lon = dlgWave.GetLongitude();
-    }
+   
+    lat = dlgWave.GetLatitude();
+    lon = dlgWave.GetLongitude();
+    
     ecd.Update(1, 100.0f);
     ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
 
 
     wxString location;
     location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
-    location = location + "_";
+    location = location;
     wxArrayString filename_array;
     filename_array.resize(years_final.Count());
 
@@ -2563,9 +2553,18 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
     std::vector<wxEasyCurl*> curls;
 
+    wxString endpoint = dlgWave.GetEndpoint();
+    wxString end_string = "";
+    if (endpoint == "U.S. West Coast")
+        end_string = "wave_query_west";
+    else if (endpoint == "U.S. Atlantic Coast")
+        end_string = "wave_query_atlantic";
+    else if (endpoint == "Hawaii")
+        end_string = "wave_query_hawaii";
+
     for (size_t i = 0; i < years_final.Count(); i++)
     {
-        url = SamApp::WebApi("wave_query");
+        url = SamApp::WebApi(end_string);
         url.Replace("<YEAR>", years_final[i]);
         url.Replace("<LAT>", wxString::Format("%lg", lat));
         url.Replace("<LON>", wxString::Format("%lg", lon));
@@ -2611,8 +2610,8 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     // can time first download to get better estimate
     float tot_time = 25 * (float)years_final.Count(); // 25 s guess based on test downloads
     float per = 0.0f, act_time;
-    int curhh = 0;
-    wxString cur_hh = "";
+    int year_int = 0;
+    wxString year_string = "";
     wxString file_list = "";
     int num_downloaded = 0;
     while (1)
@@ -2630,22 +2629,22 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         {
             wxString update;
             per += (float)(ms) / (10 * tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
-            if (per > 100.0) per = (float)curhh / (float)years_final.Count() * 100.0 - 10.0; // reset 10%
+            if (per > 100.0) per = (float)year_int / (float)years_final.Count() * 100.0 - 10.0; // reset 10%
             ecd.Update(i, per, update);
             wxArrayString msgs = threads[i]->GetNewMessages();
             ecd.Log(msgs);
-            if (threads[i]->GetDataAsString() != cur_hh)
+            if (threads[i]->GetDataAsString() != year_string)
             {
-                if (cur_hh != "")
+                if (year_string != "")
                 { // adjust actual time based on first download
                     act_time = (float)((its - its0) * ms) / 1000.0f;
                     tot_time = act_time * (float)years_final.Count();
                     its0 = its;
                 }
-                cur_hh = threads[i]->GetDataAsString();
-                ecd.Log("Downloading data for " + cur_hh + " hub height.");
-                per = (float)curhh / (float)years_final.Count() * 100.0;
-                curhh++;
+                year_string = threads[i]->GetDataAsString();
+                ecd.Log("Downloading data for year " + year_string);
+                per = (float)year_int / (float)years_final.Count() * 100.0;
+                year_int++;
             }
         }
 
@@ -2731,6 +2730,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         // write out combined hub height file
         if (num_downloaded > 0)
         {
+            /*
             if (wxDirExists(wfdir))
             {
                 wxArrayString paths;
@@ -2742,7 +2742,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                     paths.Add(foldername);
                     SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
                 }
-            }
+            }*/
             if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NSRDB Download Message", wxOK);
             //EndModal(wxID_OK);
         }
@@ -3628,6 +3628,11 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 			cxt.result().hash_item("annual_min_charge").assign(rate.MinCharge);
         else if (rate.MinCharge > 0 )
             rate_notes.append(wxString::Format("SAM does not model minimum charge rate of %f with %s units.\n", rate.MinCharge, rate.MinChargeUnits));
+
+        // Unsupported units
+        if (!rate.EnergyUnits.IsEmpty()) {
+            rate_notes.append(wxString::Format("SAM does not model tiered energy rates with %s for maximum usage units. The default kWh units may not accurately represent the actual rate.", rate.EnergyUnits));
+        }
 
 		// schedules
 		if (!applydiurnalschedule(cxt, "ec_sched_weekday", rate.EnergyWeekdaySchedule)) return;

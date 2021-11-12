@@ -225,8 +225,8 @@ Tool Tip
 0
 Caption
 5
-278
-Click Download and enter location information for your project site. SAM downloads wind resource data as an .srw file from the NREL WIND Toolkit and stores it in the Downloaded Weather Files folder on your computer shown under "Use a weather file stored on your computer" below.
+369
+Click Download and enter location information for your project site. SAM downloads wind resource data as an .srw file from the NREL WIND Toolkit and stores it in the Downloaded Weather Files folder on your computer shown under "Use a weather file stored on your computer" below.  If your request fails or results in an error message, please try again until it succeeds.
 TextColour
 4
 0
