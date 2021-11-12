@@ -150,7 +150,7 @@ Q_tes
 1
 1
 1
-nan
+2791.26
 REC_COPY_Q_rec_des
 1
 1
@@ -1294,7 +1294,7 @@ csp.pt.tes.htf_density
 1
 1
 1
-nan
+1808.48
 csp.pt.tes.init_hot_htf_percent
 1
 1
@@ -1312,7 +1312,7 @@ csp.pt.tes.tank_diameter
 1
 1
 1
-nan
+38.7698
 csp.pt.tes.tc_fill_dens
 1
 1
@@ -12220,7 +12220,7 @@ q_dot_tes_est
 1
 1
 1
-nan
+0.729384
 q_pb_design
 1
 1
@@ -12643,7 +12643,7 @@ tes_avail_vol
 1
 1
 1
-nan
+12985.8
 tes_spec_cost
 1
 1
@@ -13666,7 +13666,7 @@ vol_tank
 1
 1
 1
-nan
+14166.4
 washing_frequency
 1
 1
