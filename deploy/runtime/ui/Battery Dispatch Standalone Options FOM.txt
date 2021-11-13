@@ -1,7 +1,7 @@
 Battery Dispatch Standalone Options FOM
 1053
 158
-6
+5
 CheckBox
 
 1
@@ -75,54 +75,6 @@ Horizontal
 0
 TabOrder
 3
-1
-Label
-
-1
-13
-Name
-5
-16
-gridcharge_label
-X
-3
-306
-Y
-3
-84
-Width
-3
-348
-Height
-3
-45
-Tool Tip
-5
-0
-Caption
-5
-58
-Grid charging is required for standalone battery systems. 
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
 1
 Label
 
@@ -300,8 +252,8 @@ equations{'batt_dispatch_choice'} = define() {
 	else
 		return ${batt_dispatch_choice_ui} + 1;
 };
-1979
-on_load{'Battery Dispatch Options FOM'} = define() {
+1838
+on_load{'Battery Dispatch Standalone Options FOM'} = define() {
 	show_hide_charge_options();
 	warning_message();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
@@ -334,12 +286,10 @@ function show_hide_charge_options()
 	if (option == 2) {
 		value('batt_dispatch_auto_can_gridcharge', false);
 		show('batt_dispatch_auto_can_gridcharge', false);
-		property('gridcharge_label', 'Caption', '');
 	}
 	else {
 		value('batt_dispatch_auto_can_gridcharge', true);
 		enable('batt_dispatch_auto_can_gridcharge', false);
-		property('gridcharge_label', 'Caption', 'Grid charging is required for standalone battery systems. ');
 	}
 }
 

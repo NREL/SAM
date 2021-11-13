@@ -1,5 +1,5 @@
 1
-1085
+1086
 6par_aisc
 1
 1
@@ -2101,14 +2101,14 @@ dispatch_manual_charge
 2
 1
 6
-1 1 0 0 0 0 
+1 0 0 0 0 0 
 
 dispatch_manual_discharge
 1
 2
 1
 6
-0 0 1 1 0 0 
+0 1 0 0 0 0 
 
 dispatch_manual_gridcharge
 1
