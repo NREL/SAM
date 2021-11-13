@@ -80,6 +80,30 @@ extern "C"
 	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cant_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set cav_rec_height: Cavity receiver height [m]
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cav_rec_height_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_span: Cavity receiver span angle [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cav_rec_span_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_width: Cavity receiver width [m]
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_cav_rec_width_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set check_max_flux: Check max flux at design point
 	 * options: None
 	 * constraints: None
@@ -240,6 +264,14 @@ extern "C"
 	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_land_spec_cost_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set n_cav_rec_panels: Cavity receiver number of panels
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_n_cav_rec_panels_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set n_facet_x: Number of heliostat facets - X
 	 * options: None
 	 * constraints: None
@@ -283,7 +315,7 @@ extern "C"
 	 * Set opt_algorithm: Optimization algorithm
 	 * options: None
 	 * constraints: None
-	 * required if: ?=0
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_opt_algorithm_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -336,10 +368,10 @@ extern "C"
 	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_absorptance_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set rec_aspect: Receiver aspect ratio (H/W) [frac]
+	 * Set rec_aspect: External receiver aspect ratio (H/W) [frac]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: receiver_type=0
 	 */
 	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_aspect_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -352,10 +384,10 @@ extern "C"
 	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_cost_exp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set rec_height: Receiver height [m]
+	 * Set rec_height: External receiver height [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: receiver_type=0
 	 */
 	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_height_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -382,6 +414,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_rec_ref_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set receiver_type: 0: external (default), 1; cavity
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_receiver_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set sales_tax_frac: Percent of cost to which sales tax applies [%]
@@ -448,6 +488,12 @@ extern "C"
 
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cant_type_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cav_rec_height_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cav_rec_span_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_cav_rec_width_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_check_max_flux_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_contingency_rate_nget(SAM_table ptr, SAM_error *err);
@@ -488,6 +534,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_land_spec_cost_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_cav_rec_panels_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_facet_x_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_n_facet_y_nget(SAM_table ptr, SAM_error *err);
@@ -524,6 +572,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_rec_ref_cost_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_receiver_type_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_sales_tax_frac_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Solarpilot_SolarPILOT_sales_tax_rate_nget(SAM_table ptr, SAM_error *err);
@@ -544,6 +594,8 @@ extern "C"
 	SAM_EXPORT double SAM_Solarpilot_Outputs_area_sf_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Solarpilot_Outputs_base_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Solarpilot_Outputs_cav_rec_aper_width_opt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Solarpilot_Outputs_cost_land_tot_nget(SAM_table ptr, SAM_error *err);
 

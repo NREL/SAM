@@ -1,5 +1,5 @@
 1
-507
+524
 LeadAcid_q10
 1
 1
@@ -303,7 +303,7 @@ batt_calendar_c
 1
 1
 1
-930
+939
 batt_calendar_choice
 1
 1
@@ -469,12 +469,24 @@ batt_discharge_percent_6
 1
 1
 25
+batt_dispatch_auto_btm_can_discharge_to_grid
+1
+1
+1
+1
+3.33505e-317
 batt_dispatch_auto_can_charge
 1
 1
 1
 1
 1
+batt_dispatch_auto_can_clipcharge
+1
+1
+1
+1
+3.33505e-317
 batt_dispatch_auto_can_fuelcellcharge
 1
 1
@@ -742,8 +754,14 @@ batt_minimum_SOC
 1
 1
 1
-15
+30
 batt_minimum_modetime
+1
+1
+1
+1
+10
+batt_minimum_outage_SOC
 1
 1
 1
@@ -1185,7 +1203,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 conv_eff
 1
 1
@@ -1362,19 +1380,26 @@ derate
 1
 1
 4
+dispatch_manual_btm_discharge_to_grid
+1
+2
+1
+6
+0 0 0 0 0 0 
+
 dispatch_manual_charge
 1
 2
 1
 6
-1 0 0 0 0 0 
+1 1 0 0 0 0 
 
 dispatch_manual_discharge
 1
 2
 1
 6
-0 1 0 0 0 0 
+0 0 1 1 0 0 
 
 dispatch_manual_gridcharge
 1
@@ -2520,6 +2545,13 @@ pv.storage.p1.discharge
 1
 1
 0
+pv.storage.p1.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p1.gridcharge
 1
 1
@@ -2538,6 +2570,13 @@ pv.storage.p2.discharge
 1
 1
 1
+pv.storage.p2.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p2.gridcharge
 1
 1
@@ -2556,6 +2595,13 @@ pv.storage.p3.discharge
 1
 1
 0
+pv.storage.p3.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p3.gridcharge
 1
 1
@@ -2574,6 +2620,13 @@ pv.storage.p4.discharge
 1
 1
 0
+pv.storage.p4.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p4.gridcharge
 1
 1
@@ -2592,6 +2645,13 @@ pv.storage.p5.discharge
 1
 1
 0
+pv.storage.p5.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p5.gridcharge
 1
 1
@@ -2610,6 +2670,13 @@ pv.storage.p6.discharge
 1
 1
 0
+pv.storage.p6.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p6.gridcharge
 1
 1
@@ -2736,6 +2803,42 @@ ui_batt_life_model
 1
 1
 1
+ui_copy_batt_discharge_percent_1
+1
+1
+1
+1
+25
+ui_copy_batt_discharge_percent_2
+1
+1
+1
+1
+25
+ui_copy_batt_discharge_percent_3
+1
+1
+1
+1
+25
+ui_copy_batt_discharge_percent_4
+1
+1
+1
+1
+25
+ui_copy_batt_discharge_percent_5
+1
+1
+1
+1
+25
+ui_copy_batt_discharge_percent_6
+1
+1
+1
+1
+25
 ui_loan_amount
 1
 1
@@ -2772,6 +2875,42 @@ ur_annual_min_charge
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+100
 ur_cr_sched
 1
 3
@@ -2799,6 +2938,14 @@ ur_cr_tou_mat
 2 1 1e+38 0 
 3 1 1e+38 0 
 4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+2
+2
+1 1 
+2 1 
 
 ur_dc_enable
 1
@@ -2921,48 +3068,6 @@ ur_description
 1
 4
 0
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-100
-ur_ec_enable_billing_demand
-1
-1
-1
-1
-0
 ur_ec_is_shown
 1
 1
@@ -3022,6 +3127,12 @@ ur_en_ts_buy_rate
 1
 0
 ur_en_ts_sell_rate
+1
+1
+1
+1
+0
+ur_enable_billing_demand
 1
 1
 1

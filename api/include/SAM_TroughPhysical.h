@@ -1183,14 +1183,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_TES_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set is_hx: Heat exchanger (HX) exists (1=yes, 0=no) [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_TES_is_hx_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set store_fl_props: User defined storage fluid property data [-]
 	 * options: None
 	 * constraints: None
@@ -1578,6 +1570,19 @@ extern "C"
 	 * required if: is_wlim_series=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_wlim_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// SystemControl parameters
+	//
+
+	/**
+	 * Set disp_inventory_incentive: Dispatch storage terminal inventory incentive multiplier
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -2111,8 +2116,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_TES_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysical_TES_is_hx_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TroughPhysical_TES_store_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_TES_store_fluid_nget(SAM_table ptr, SAM_error *err);
@@ -2213,6 +2216,13 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_wlim_series_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * SystemControl Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2375,6 +2385,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_qsfsu_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_rev_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_solve_iter_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2382,6 +2394,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_solve_state_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_solve_time_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_tes_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 

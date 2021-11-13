@@ -152,12 +152,6 @@ SAM_EXPORT void SAM_Singleowner_FinancialParameters_analysis_period_nset(SAM_tab
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_FinancialParameters_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
-	});
-}
-
 SAM_EXPORT void SAM_Singleowner_FinancialParameters_construction_financing_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "construction_financing_cost", number);
@@ -197,6 +191,18 @@ SAM_EXPORT void SAM_Singleowner_FinancialParameters_debt_percent_nset(SAM_table 
 SAM_EXPORT void SAM_Singleowner_FinancialParameters_dscr_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dscr", number);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_FinancialParameters_dscr_limit_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dscr_limit_debt_fraction", number);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_FinancialParameters_dscr_maximum_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dscr_maximum_debt_fraction", number);
 	});
 }
 
@@ -323,12 +329,6 @@ SAM_EXPORT void SAM_Singleowner_FinancialParameters_real_discount_rate_nset(SAM_
 SAM_EXPORT void SAM_Singleowner_FinancialParameters_reserves_interest_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "reserves_interest", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_FinancialParameters_roe_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "roe_input", arr, length);
 	});
 }
 
@@ -1676,91 +1676,97 @@ SAM_EXPORT void SAM_Singleowner_GridLimits_grid_curtailment_price_esc_nset(SAM_t
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_Battery_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_LCOS_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_energy", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_Battery_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_LCOS_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_from_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_Battery_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_LCOS_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_discharge_energy", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_Battery_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_LCOS_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_capacity_percent", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_Battery_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_LCOS_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_LCOS_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "battery_total_cost_lcos", number);
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_Battery_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Battery_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Battery_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Battery_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Battery_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_system_to_grid", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_LCOS_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "charge_w_sys_ec_ym", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_ChargesByMonth_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_LCOS_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_LCOS_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_LCOS_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_LCOS_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_LCOS_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_system_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_LCOS_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "true_up_credits_ym", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_ChargesByMonth_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "year1_monthly_ec_charge_with_system", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Monthly_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_LCOS_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_ec_charge_gross_with_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Singleowner_Monthly_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Singleowner_LCOS_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_monthly_ec_charge_with_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_electricity_to_grid", arr, length);
 	});
@@ -2023,17 +2029,6 @@ SAM_EXPORT double SAM_Singleowner_FinancialParameters_analysis_period_nget(SAM_t
 
 
 
-SAM_EXPORT double SAM_Singleowner_FinancialParameters_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
-		make_access_error("SAM_Singleowner", "batt_salvage_percentage");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Singleowner_FinancialParameters_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2105,6 +2100,28 @@ SAM_EXPORT double SAM_Singleowner_FinancialParameters_dscr_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dscr", &result))
 		make_access_error("SAM_Singleowner", "dscr");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Singleowner_FinancialParameters_dscr_limit_debt_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dscr_limit_debt_fraction", &result))
+		make_access_error("SAM_Singleowner", "dscr_limit_debt_fraction");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Singleowner_FinancialParameters_dscr_maximum_debt_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dscr_maximum_debt_fraction", &result))
+		make_access_error("SAM_Singleowner", "dscr_maximum_debt_fraction");
 	});
 	return result;
 }
@@ -2337,18 +2354,6 @@ SAM_EXPORT double SAM_Singleowner_FinancialParameters_reserves_interest_nget(SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "reserves_interest", &result))
 		make_access_error("SAM_Singleowner", "reserves_interest");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_FinancialParameters_roe_input_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "roe_input", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "roe_input");
 	});
 	return result;
 }
@@ -4858,7 +4863,7 @@ SAM_EXPORT double SAM_Singleowner_GridLimits_grid_curtailment_price_esc_nget(SAM
 
 
 
-SAM_EXPORT double* SAM_Singleowner_Battery_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Singleowner_LCOS_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
@@ -4870,7 +4875,7 @@ SAM_EXPORT double* SAM_Singleowner_Battery_batt_annual_charge_energy_aget(SAM_ta
 
 
 
-SAM_EXPORT double* SAM_Singleowner_Battery_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Singleowner_LCOS_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_from_system", length);
@@ -4882,7 +4887,7 @@ SAM_EXPORT double* SAM_Singleowner_Battery_batt_annual_charge_from_system_aget(S
 
 
 
-SAM_EXPORT double* SAM_Singleowner_Battery_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Singleowner_LCOS_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_discharge_energy", length);
@@ -4894,7 +4899,7 @@ SAM_EXPORT double* SAM_Singleowner_Battery_batt_annual_discharge_energy_aget(SAM
 
 
 
-SAM_EXPORT double* SAM_Singleowner_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Singleowner_LCOS_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
@@ -4906,7 +4911,18 @@ SAM_EXPORT double* SAM_Singleowner_Battery_batt_capacity_percent_aget(SAM_table 
 
 
 
-SAM_EXPORT double SAM_Singleowner_Battery_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Singleowner_LCOS_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
+		make_access_error("SAM_Singleowner", "batt_salvage_percentage");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Singleowner_LCOS_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "battery_total_cost_lcos", &result))
@@ -4917,67 +4933,7 @@ SAM_EXPORT double SAM_Singleowner_Battery_battery_total_cost_lcos_nget(SAM_table
 
 
 
-SAM_EXPORT double* SAM_Singleowner_Battery_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "grid_to_batt", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "grid_to_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Battery_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "monthly_batt_to_grid");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Battery_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "monthly_grid_to_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Battery_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "monthly_grid_to_load");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Battery_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "monthly_system_to_grid");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Singleowner_LCOS_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "charge_w_sys_ec_ym", nrows, ncols);
@@ -4989,7 +4945,67 @@ SAM_EXPORT double* SAM_Singleowner_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_ta
 
 
 
-SAM_EXPORT double* SAM_Singleowner_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Singleowner_LCOS_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_LCOS_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "monthly_batt_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_LCOS_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "monthly_grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_LCOS_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "monthly_grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_LCOS_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "monthly_system_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_LCOS_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "true_up_credits_ym", nrows, ncols);
@@ -5001,19 +5017,7 @@ SAM_EXPORT double* SAM_Singleowner_ChargesByMonth_true_up_credits_ym_mget(SAM_ta
 
 
 
-SAM_EXPORT double* SAM_Singleowner_ChargesByMonth_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_with_system", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "year1_monthly_ec_charge_with_system");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Monthly_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Singleowner_LCOS_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_gross_with_system", length);
@@ -5025,7 +5029,19 @@ SAM_EXPORT double* SAM_Singleowner_Monthly_year1_monthly_ec_charge_gross_with_sy
 
 
 
-SAM_EXPORT double* SAM_Singleowner_Monthly_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Singleowner_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_with_system", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "year1_monthly_ec_charge_with_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_electricity_to_grid", length);
@@ -5177,18 +5193,6 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_annual_discharge_lcos_aget(SAM_tab
 	result = ssc_data_get_array(ptr, "cf_annual_discharge_lcos", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "cf_annual_discharge_lcos");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Outputs_cf_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_batt_replacement_cost", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "cf_batt_replacement_cost");
 	});
 	return result;
 }
@@ -6203,18 +6207,6 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_insurance_expense_aget(SAM_table p
 
 
 
-SAM_EXPORT double* SAM_Singleowner_Outputs_cf_lcog_costs_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_lcog_costs", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "cf_lcog_costs");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Singleowner_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7000,42 +6992,6 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_reserve_total_aget(SAM_table ptr, 
 	result = ssc_data_get_array(ptr, "cf_reserve_total", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "cf_reserve_total");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Outputs_cf_return_on_equity_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "cf_return_on_equity");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Outputs_cf_return_on_equity_dollars_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity_dollars", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "cf_return_on_equity_dollars");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Singleowner_Outputs_cf_return_on_equity_input_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity_input", length);
-	if (!result)
-		make_access_error("SAM_Singleowner", "cf_return_on_equity_input");
 	});
 	return result;
 }
@@ -11003,72 +10959,6 @@ SAM_EXPORT double SAM_Singleowner_Outputs_lcoe_real_nget(SAM_table ptr, SAM_erro
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoe_real", &result))
 		make_access_error("SAM_Singleowner", "lcoe_real");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog", &result))
-		make_access_error("SAM_Singleowner", "lcog");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_depr_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_depr", &result))
-		make_access_error("SAM_Singleowner", "lcog_depr");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_loan_int_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_loan_int", &result))
-		make_access_error("SAM_Singleowner", "lcog_loan_int");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_om_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_om", &result))
-		make_access_error("SAM_Singleowner", "lcog_om");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_roe_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_roe", &result))
-		make_access_error("SAM_Singleowner", "lcog_roe");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Outputs_lcog_wc_int_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_wc_int", &result))
-		make_access_error("SAM_Singleowner", "lcog_wc_int");
 	});
 	return result;
 }

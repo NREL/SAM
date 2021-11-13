@@ -123,6 +123,7 @@ public:
 		matrix_t<double> EnergyStructure;
 		double EnergyWeekdaySchedule[12][24];
 		double EnergyWeekendSchedule[12][24];
+        wxString EnergyUnits; // Empty string if units are supported, contains units name if unsupported
 	};
 
 	bool QueryUtilityCompanies(wxArrayString &names, wxString *err=NULL);
