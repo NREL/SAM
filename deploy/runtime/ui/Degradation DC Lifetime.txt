@@ -1,7 +1,7 @@
 Degradation DC Lifetime
-791
-114
-4
+795
+118
+5
 GroupBox
 
 1
@@ -81,6 +81,54 @@ Label
 13
 Name
 5
+20
+degrad_sched_warning
+X
+3
+441
+Y
+3
+72
+Width
+3
+342
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+88
+There is a non-zero degradation in Year 1. Degradation will not be applied until Year 2.
+TextColour
+4
+255
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
 19
 degradation_message
 X
@@ -148,8 +196,8 @@ Tool Tip
 0
 Caption
 5
-164
-In Value mode, the degradation rate is compounded annually starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details.
+161
+In Value mode, the degradation rate is applied linearly starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details.
 TextColour
 4
 0
@@ -227,4 +275,18 @@ equations {'system_use_lifetime_output'} = define() {
 equations {'degradation'} = define() {
 	return [0];
 };
-0
+329
+function display_warning()
+{
+	displayflag = false;
+	dcd = value('dc_degradation');
+	if (#dcd > 1 && dcd[0] != 0) displayflag = true;
+	show('degrad_sched_warning', displayflag);
+	refresh();
+}
+
+on_change{'dc_degradation'} = define()
+	{ display_warning(); };
+	
+on_load{'Degradation DC Lifetime'} = define()
+	{ display_warning(); };
