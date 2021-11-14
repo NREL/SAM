@@ -1,5 +1,5 @@
 1
-775
+774
 A_aperture
 1
 1
@@ -1221,7 +1221,7 @@ csp.mslf.cost.plm.total
 1
 1
 1
-4.4626e+06
+4462600
 csp.mslf.cost.power_plant
 1
 1
@@ -4641,6 +4641,12 @@ ur_demand_min
 1
 1
 400
+ur_demand_reactive_power_charge
+1
+1
+1
+1
+0
 ur_demand_window
 1
 1
@@ -4780,18 +4786,6 @@ ur_is_default
 ur_lookback_months
 1
 2
-1
-1
-0
-ur_lookback_percent
-1
-1
-1
-1
-0
-ur_lookback_range
-1
-1
 1
 1
 0

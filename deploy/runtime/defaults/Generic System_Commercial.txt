@@ -1,5 +1,5 @@
 1
-296
+295
 adjust
 1
 5
@@ -440,7 +440,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-6.11549e+06
+6115490
 genericsys.cost.epc.percent
 1
 1
@@ -452,7 +452,7 @@ genericsys.cost.epc.total
 1
 1
 1
-6.11549e+06
+6115490
 genericsys.cost.installed_per_capacity
 1
 1
@@ -512,7 +512,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-2.44619e+06
+2446190
 genericsys.cost.sales_tax.value
 1
 1
@@ -1382,7 +1382,7 @@ total_indirect_cost
 1
 1
 1
-8.25591e+06
+8255910
 total_installed_cost
 1
 1
@@ -1595,6 +1595,12 @@ ur_demand_min
 1
 1
 100
+ur_demand_reactive_power_charge
+1
+1
+1
+1
+0
 ur_demand_window
 1
 1
@@ -1733,18 +1739,6 @@ ur_is_default
 ur_lookback_months
 1
 2
-1
-1
-0
-ur_lookback_percent
-1
-1
-1
-1
-0
-ur_lookback_range
-1
-1
 1
 1
 0
