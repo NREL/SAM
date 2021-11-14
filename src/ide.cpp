@@ -1034,7 +1034,7 @@ bool ExFormData::GetMetaData( const wxString &name,
 }
 
 
-#define SEARCH( TT, MESSG ) if ( (TT).Lower().Find( text ) >= 0 ) tc->AppendText( MESSG + wxString("\n") )
+#define SEARCH( TT, MESSG, tc ) if ( (TT).Lower().Find( text ) >= 0 ) tc->AppendText( MESSG + wxString("\n") )
 
 void UIEditorPanel::OnTextFind( wxCommandEvent & )
 {
@@ -1073,55 +1073,65 @@ void UIEditorPanel::OnTextFind( wxCommandEvent & )
 	{
 		gau->SetValue( ii );
 		ipd.Clear();
-		wxFFileInputStream is( files[ii] );
+		wxFFileInputStream is( files[ii], "r");
+		bool bff = is.IsOk();
+
+
 #ifdef UI_BINARY
-		if ( !is.IsOk() || !ipd.Read( is ) )
+		bool bread = ipd.Read(is, ui_path);
+//		if ( !is.IsOk() || !ipd.Read( is ) )
 #else
-		if (!is.IsOk() || !ipd.Read_text(is, ui_path))
+		bool bread = ipd.Read_text(is, ui_path);
+//		if (!is.IsOk() || !ipd.Read_text(is, ui_path))
 #endif
-			tc->AppendText( "Error reading " + files[ii] );
-		
-		wxFileName ff(files[ii]);
-		wxString name( ff.GetName() );
-		ipd.Form().SetName( name );
+		if (bff && bread) {
 
-		// form and associated data loaded, now search everything we can think of
-		SEARCH( name, "form: " + name );
-		wxUIFormData &form = ipd.Form();
-		size_t n;
-		wxUIObject **objs = form.GetObjects( &n );
-		for( size_t i=0;i<n;i++ )
-		{
-			SEARCH( objs[i]->GetTypeName(), "form object: " + name + ".object{" + objs[i]->GetName() +"} = " + objs[i]->GetTypeName() );
-			SEARCH( objs[i]->GetName(), "form object: " + name + ".object{" + objs[i]->GetName() +"}");
-			wxArrayString props = objs[i]->Properties();
-			for( size_t k=0;k<props.size();k++ )
+
+			wxFileName ff(files[ii]);
+			wxString name(ff.GetName());
+			ipd.Form().SetName(name);
+
+			// form and associated data loaded, now search everything we can think of
+			SEARCH(name, "form: " + name, tc);
+			wxUIFormData& form = ipd.Form();
+			size_t n;
+			wxUIObject** objs = form.GetObjects(&n);
+			for (size_t i = 0; i < n; i++)
 			{
-				wxString pstr( objs[i]->Property( props[k] ).AsString() );
-				wxString prefix( name + ".object{" + objs[i]->GetName() + "}." + props[k] );
-				SEARCH( props[k], prefix );
-				SEARCH( pstr, prefix + ": " + pstr );
+				SEARCH(objs[i]->GetTypeName(), "form object: " + name + ".object{" + objs[i]->GetName() + "} = " + objs[i]->GetTypeName(), tc);
+				SEARCH(objs[i]->GetName(), "form object: " + name + ".object{" + objs[i]->GetName() + "}", tc);
+				wxArrayString props = objs[i]->Properties();
+				for (size_t k = 0; k < props.size(); k++)
+				{
+					wxString pstr(objs[i]->Property(props[k]).AsString());
+					wxString prefix(name + ".object{" + objs[i]->GetName() + "}." + props[k]);
+					SEARCH(props[k], prefix, tc);
+					SEARCH(pstr, prefix + ": " + pstr, tc);
+				}
 			}
+
+			VarDatabase& vdb = ipd.Variables();
+			for (VarDatabase::iterator it = vdb.begin(); it != vdb.end(); ++it)
+			{
+				wxString prefix(name + ".variable{" + it->first + "}");
+				SEARCH(it->first, prefix, tc);
+				SEARCH(it->second->Label, prefix + ".label: " + it->second->Label, tc);
+				SEARCH(it->second->Units, prefix + ".units: " + it->second->Units, tc);
+				SEARCH(it->second->Group, prefix + ".group: " + it->second->Group, tc);
+				SEARCH(it->second->DefaultValue.AsString(), prefix + ".default: " + it->second->DefaultValue.AsString(), tc);
+			}
+
+			wxArrayString lines = wxStringTokenize(ipd.EqnScript(), "\n");
+			for (size_t i = 0; i < lines.size(); i++)
+				SEARCH(lines[i], name + wxString::Format(".script[%d]: ", (int)(i + 1)) + lines[i], tc);
+
+			wxArrayString lines2 = wxStringTokenize(ipd.CbScript(), "\n");
+			for (size_t i = 0; i < lines2.size(); i++)
+				SEARCH(lines2[i], name + wxString::Format(".callback[%d]: ", (int)(i + 1)) + lines2[i], tc);
+
 		}
-
-		VarDatabase &vdb = ipd.Variables();
-		for( VarDatabase::iterator it = vdb.begin(); it!=vdb.end();++it)
-		{
-			wxString prefix(name + ".variable{" + it->first + "}");
-			SEARCH( it->first, prefix );
-			SEARCH( it->second->Label, prefix + ".label: " + it->second->Label );
-			SEARCH( it->second->Units, prefix + ".units: " + it->second->Units );
-			SEARCH( it->second->Group, prefix + ".group: " + it->second->Group );
-			SEARCH( it->second->DefaultValue.AsString(), prefix + ".default: " + it->second->DefaultValue.AsString() );			
-		}
-
-		wxArrayString lines = wxStringTokenize(ipd.EqnScript(), "\n");
-		for( size_t i=0;i<lines.size();i++ )
-			SEARCH( lines[i], name + wxString::Format(".script[%d]: ",i+1) + lines[i] );
-
-		lines = wxStringTokenize( ipd.CbScript(), "\n" );
-		for( size_t i=0;i<lines.size();i++ )
-			SEARCH( lines[i], name + wxString::Format(".callback[%d]: ",i+1) + lines[i] );
+		else
+			tc->AppendText("Error reading " + files[ii]);
 	}	
 
 	gau->SetValue(0);

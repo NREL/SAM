@@ -1,0 +1,4169 @@
+AAATower SolarPilot Solar Field - Copy
+836
+1133
+58
+GroupBox
+
+1
+8
+Name
+5
+9
+GroupBox1
+X
+3
+9
+Y
+3
+6
+Width
+3
+824
+Height
+3
+431
+Tool Tip
+5
+0
+Caption
+5
+15
+Heliostat Field
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+11
+GroupBox118
+X
+3
+9
+Y
+3
+438
+Width
+3
+392
+Height
+3
+293
+Tool Tip
+5
+0
+Caption
+5
+20
+Heliostat Properties
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+GroupBox1a
+X
+3
+408
+Y
+3
+588
+Width
+3
+426
+Height
+3
+144
+Tool Tip
+5
+0
+Caption
+5
+23
+Atmospheric Attenuation
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+9
+GroupBox4
+X
+3
+408
+Y
+3
+735
+Width
+3
+425
+Height
+3
+143
+Tool Tip
+5
+0
+Caption
+5
+30
+Solar Field Layout Constraints
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+GroupBox51
+X
+3
+9
+Y
+3
+735
+Width
+3
+392
+Height
+3
+210
+Tool Tip
+5
+0
+Caption
+5
+9
+Land Area
+Bold
+2
+1
+Button
+
+1
+8
+Name
+5
+12
+btn_optimize
+X
+3
+303
+Y
+3
+336
+Width
+3
+86
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+9
+Calculate
+TabOrder
+3
+4294967295
+Button
+
+1
+8
+Name
+5
+14
+btn_solarpilot
+X
+3
+303
+Y
+3
+309
+Width
+3
+86
+Height
+3
+28
+Tool Tip
+5
+0
+Caption
+5
+9
+Calculate
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+7
+c_atm_0
+X
+3
+642
+Y
+3
+606
+Width
+3
+99
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+7
+c_atm_1
+X
+3
+642
+Y
+3
+630
+Width
+3
+99
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+7
+c_atm_2
+X
+3
+642
+Y
+3
+654
+Width
+3
+99
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+7
+c_atm_3
+X
+3
+642
+Y
+3
+678
+Width
+3
+99
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+10
+c_atm_info
+X
+3
+642
+Y
+3
+702
+Width
+3
+99
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+1
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+9
+cant_type
+X
+3
+249
+Y
+3
+675
+Width
+3
+138
+Height
+3
+21
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+25
+csp.pt.sf.fixed_land_area
+X
+3
+252
+Y
+3
+759
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+23
+Numeric
+
+1
+17
+Name
+5
+24
+csp.pt.sf.heliostat_area
+X
+3
+249
+Y
+3
+528
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+5
+Numeric
+
+1
+17
+Name
+5
+30
+csp.pt.sf.land_overhead_factor
+X
+3
+252
+Y
+3
+786
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+24
+Numeric
+
+1
+17
+Name
+5
+25
+csp.pt.sf.total_land_area
+X
+3
+252
+Y
+3
+840
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+25
+Numeric
+
+1
+17
+Name
+5
+22
+csp.pt.sf.tower_height
+X
+3
+702
+Y
+3
+801
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+17
+Numeric
+
+1
+17
+Name
+5
+11
+dens_mirror
+X
+3
+249
+Y
+3
+504
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+3
+Numeric
+
+1
+17
+Name
+5
+12
+dni_des_calc
+X
+3
+642
+Y
+3
+552
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+11
+error_equiv
+X
+3
+249
+Y
+3
+576
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Choice
+
+1
+9
+Name
+5
+10
+focus_type
+X
+3
+249
+Y
+3
+651
+Width
+3
+138
+Height
+3
+21
+Tool Tip
+5
+0
+Items
+6
+0
+Selection
+3
+4294967295
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+15
+hel_stow_deploy
+X
+3
+642
+Y
+3
+456
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+9
+Numeric
+
+1
+17
+Name
+5
+21
+helio_active_fraction
+X
+3
+456
+Y
+3
+1044
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+7
+Numeric
+
+1
+17
+Name
+5
+14
+helio_area_tot
+X
+3
+252
+Y
+3
+867
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+25
+Numeric
+
+1
+17
+Name
+5
+12
+helio_height
+X
+3
+249
+Y
+3
+480
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+2
+GroupBox
+
+1
+8
+Name
+5
+9
+helio_ops
+X
+3
+408
+Y
+3
+438
+Width
+3
+426
+Height
+3
+144
+Tool Tip
+5
+0
+Caption
+5
+19
+Heliostat Operation
+Bold
+2
+1
+Numeric
+
+1
+17
+Name
+5
+24
+helio_optical_error_mrad
+X
+3
+249
+Y
+3
+552
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+8
+DataMatrix
+
+1
+27
+Name
+5
+15
+helio_positions
+X
+3
+21
+Y
+3
+27
+Width
+3
+368
+Height
+3
+262
+Tool Tip
+5
+0
+PasteAppendRows
+2
+1
+PasteAppendCols
+2
+0
+ShowButtons
+2
+1
+ShowRows
+2
+1
+ShowRowLabels
+2
+0
+RowLabels
+5
+0
+ShadeR0C0
+2
+0
+VerticalLabel
+5
+0
+HorizontalLabel
+5
+0
+ShadeC0
+2
+0
+ShowCols
+2
+0
+ShowColLabels
+2
+1
+ColLabels
+5
+34
+X Position, Y Position, Z Position
+NumRowsLabel
+5
+11
+Heliostats:
+NumColsLabel
+5
+5
+Cols:
+Layout
+3
+1
+ChoiceColumn
+3
+4294967295
+Choices
+5
+15
+Choice1,Choice2
+HideColumn
+3
+4294967295
+ShowColumn
+3
+4294967295
+ColorMap
+2
+0
+Numeric
+
+1
+17
+Name
+5
+17
+helio_reflectance
+X
+3
+249
+Y
+3
+702
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+6
+Numeric
+
+1
+17
+Name
+5
+11
+helio_width
+X
+3
+249
+Y
+3
+456
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+1
+Numeric
+
+1
+17
+Name
+5
+14
+land_area_base
+X
+3
+252
+Y
+3
+813
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+8
+land_max
+X
+3
+702
+Y
+3
+753
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+15
+Numeric
+
+1
+17
+Name
+5
+13
+land_max_calc
+X
+3
+702
+Y
+3
+825
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+18
+Numeric
+
+1
+17
+Name
+5
+8
+land_min
+X
+3
+702
+Y
+3
+777
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+16
+Numeric
+
+1
+17
+Name
+5
+13
+land_min_calc
+X
+3
+702
+Y
+3
+849
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+19
+Numeric
+
+1
+17
+Name
+5
+9
+n_facet_x
+X
+3
+249
+Y
+3
+600
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+9
+n_facet_y
+X
+3
+249
+Y
+3
+624
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Divider
+
+1
+10
+Name
+5
+9
+object 21
+X
+3
+432
+Y
+3
+1023
+Width
+3
+213
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+25
+Design-point Availability
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+10
+object 214
+X
+3
+393
+Y
+3
+1017
+Width
+3
+21
+Height
+3
+106
+Tool Tip
+5
+0
+Orientation
+3
+1
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+0
+Bold
+2
+1
+Divider
+
+1
+10
+Name
+5
+10
+object 215
+X
+3
+30
+Y
+3
+1023
+Width
+3
+300
+Height
+3
+16
+Tool Tip
+5
+0
+Orientation
+3
+0
+Colour
+4
+120
+120
+120
+255
+Caption
+5
+30
+Time Series Performance Losses
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+8
+object 4
+X
+3
+9
+Y
+3
+948
+Width
+3
+825
+Height
+3
+180
+Tool Tip
+5
+0
+Caption
+5
+28
+Heliostat Field Availability
+Bold
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+10
+object 424
+X
+3
+408
+Y
+3
+879
+Width
+3
+425
+Height
+3
+66
+Tool Tip
+5
+0
+Caption
+5
+14
+Mirror Washing
+Bold
+2
+1
+Label
+
+1
+13
+Name
+5
+8
+object 7
+X
+3
+21
+Y
+3
+369
+Width
+3
+375
+Height
+3
+63
+Tool Tip
+5
+0
+Caption
+5
+152
+Solar field geometry optimization calculates the number of heliostats above, and tower height, receiver height and diameter on Tower and Receiver page. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+9
+object 75
+X
+3
+21
+Y
+3
+975
+Width
+3
+804
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+294
+Heliostat field availability losses reduce the solar field output to represent component outages, soiling, or other events. SAM applies the time series performance loss as part of the simulation calculations. It only uses the design-point availability when it generates the solar field layout. 
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+GroupBox
+
+1
+8
+Name
+5
+7
+opt_box
+X
+3
+411
+Y
+3
+315
+Width
+3
+411
+Height
+3
+111
+Tool Tip
+5
+0
+Caption
+5
+21
+Optimization Settings
+Bold
+2
+1
+Numeric
+
+1
+17
+Name
+5
+12
+opt_conv_tol
+X
+3
+675
+Y
+3
+390
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+5
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+13
+opt_init_step
+X
+3
+675
+Y
+3
+342
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+12
+opt_max_iter
+X
+3
+675
+Y
+3
+366
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+15
+override_layout
+X
+3
+21
+Y
+3
+309
+Width
+3
+281
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+48
+Generate heliostat layout using tower dimensions
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
+12
+override_opt
+X
+3
+21
+Y
+3
+336
+Width
+3
+279
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+46
+Optimize heliostat layout and tower dimensions
+State
+2
+0
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+7
+p_start
+X
+3
+642
+Y
+3
+504
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+10
+Numeric
+
+1
+17
+Name
+5
+7
+p_track
+X
+3
+642
+Y
+3
+528
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+10
+LossAdjustment
+
+1
+7
+Name
+5
+9
+sf_adjust
+X
+3
+105
+Y
+3
+1044
+Width
+3
+273
+Height
+3
+70
+Tool Tip
+5
+0
+TabOrder
+3
+4294967295
+Plot
+
+1
+6
+Name
+5
+6
+sfplot
+X
+3
+411
+Y
+3
+27
+Width
+3
+406
+Height
+3
+285
+Tool Tip
+5
+0
+Numeric
+
+1
+17
+Name
+5
+10
+v_wind_max
+X
+3
+642
+Y
+3
+480
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+0
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+10
+Numeric
+
+1
+17
+Name
+5
+17
+washing_frequency
+X
+3
+657
+Y
+3
+915
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+0
+Format
+3
+0
+Decimals
+3
+0
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+20
+water_usage_per_wash
+X
+3
+657
+Y
+3
+891
+Width
+3
+100
+Height
+3
+21
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+2
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+
+52
+A_sf_UI
+3
+1
+Total reflective area
+m²
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+I_bn_des
+3
+1
+ 
+ 
+Heliostat Field
+0
+8
+1
+1
+1
+1
+950
+Default
+c_atm_0
+3
+1
+Polynomial coefficient 0
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.006789
+Default
+c_atm_1
+3
+1
+Polynomial coefficient 1
+1/km
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.1046
+Default
+c_atm_2
+3
+1
+Polynomial coefficient 2
+1/km²
+Heliostat Field
+0
+2
+1
+1
+1
+1
+-0.017
+Default
+c_atm_3
+3
+1
+Polynomial coefficient 3
+1/km³
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.002845
+Default
+c_atm_info
+3
+1
+Average attenuation loss
+%
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+cant_type
+3
+1
+Heliostat canting method
+ 
+Heliostat Field
+52
+None|On-axis|Equinox|Summer Solstice|Winter Solstice
+2
+1
+1
+1
+1
+1
+Default
+check_max_flux
+3
+1
+check_max_flux (not used in UI)
+ 
+Heliostat Field
+0
+0
+1
+1
+1
+1
+0
+Default
+csp.pt.sf.fixed_land_area
+3
+1
+Non-solar field land area
+acres
+Heliostat Field
+0
+2
+1
+1
+1
+1
+44.5
+Default
+csp.pt.sf.heliostat_area
+3
+1
+Single heliostat area
+m²
+Heliostat Field
+0
+8
+1
+1
+1
+1
+148.55
+Default
+csp.pt.sf.land_overhead_factor
+3
+1
+Solar field land area multiplier
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+1.3
+Default
+csp.pt.sf.total_land_area
+3
+1
+Total land area
+acres
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+csp.pt.sf.tower_height
+3
+1
+Tower height
+m
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+dens_mirror
+3
+1
+Ratio of reflective area to profile
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0
+Default
+dni_des_calc
+3
+1
+Design-point DNI
+W/m²
+Heliostat Field
+0
+8
+1
+1
+1
+1
+950
+Default
+error_equiv
+3
+1
+Reflected image conical error
+mrad
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+field_model_type
+3
+1
+solar field model type
+0=design field and tower/receiver geometry 1=design field 2=user field, calculate performance 3=user performance maps vs solar position
+Heliostat Field
+0
+8
+1
+1
+1
+1
+2
+Default
+focus_type
+3
+1
+Heliostat focusing method
+ 
+Heliostat Field
+10
+Flat|Ideal
+2
+1
+1
+1
+1
+1
+Default
+hel_stow_deploy
+3
+1
+Heliostat stow/deploy angle
+deg
+Heliostat Field
+0
+2
+1
+1
+1
+1
+8
+Default
+helio_active_fraction
+3
+1
+Heliostat availability
+ 
+Heliostat Field
+0
+3
+1
+1
+1
+1
+0.99
+Default
+helio_area_tot
+3
+1
+Total heliostat reflective area
+m²
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+helio_height
+3
+1
+Heliostat height
+m
+Heliostat Field
+0
+2
+1
+1
+1
+1
+12.188
+Default
+helio_optical_error_mrad
+3
+1
+Image error (slope, single-axis)
+mrad
+Heliostat Field
+0
+2
+1
+1
+1
+1
+1.53
+Default
+helio_positions
+3
+3
+User-specified field
+ 
+Heliostat Field
+0
+1
+1
+3
+1
+3
+0 0 0 
+
+DataMatrix
+helio_reflectance
+3
+1
+Mirror reflectance and soiling
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.95
+Default
+helio_width
+3
+1
+Heliostat width
+m
+Heliostat Field
+0
+2
+1
+1
+1
+1
+12.188
+Default
+is_optimize
+3
+1
+ 
+ 
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+land_area_base
+3
+1
+Base land area
+acres
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+land_max
+3
+1
+Max. heliostat distance to tower height ratio
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+7.5
+Default
+land_max_calc
+3
+1
+Maximum distance from tower
+m
+Heliostat Field
+0
+8
+1
+1
+1
+1
+1150
+Default
+land_min
+3
+1
+Min. heliostat distance to tower height ratio
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.75
+Default
+land_min_calc
+3
+1
+Minimum distance from tower
+m
+Heliostat Field
+0
+8
+1
+1
+1
+1
+75
+Default
+n_azi
+3
+1
+Number of azimuth angle data points in file
+ 
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+n_facet_x
+3
+1
+Number of heliostat facets - X
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+2
+Default
+n_facet_y
+3
+1
+Number of heliostat facets - Y
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+8
+Default
+n_hel
+3
+1
+Number of heliostats
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+8629
+Default
+n_zen
+3
+1
+Number of zenith angle data points in file
+ 
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+opt_algorithm
+3
+1
+Optimization algorithm
+ 
+Heliostat Field
+45
+BOBYQA|COBYLA|NEWOUA|Nelder-Mead|Subplex|RSGS
+2
+1
+1
+1
+1
+1
+Default
+opt_conv_tol
+3
+1
+Optimization convergence tolerance
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.001
+Default
+opt_flux_penalty
+3
+1
+Over-flux objective penalty factor
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.35
+Default
+opt_init_step
+3
+1
+Initial optimization step size
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.05
+Default
+opt_max_iter
+3
+1
+Maximum optimization iterations
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+200
+Default
+override_layout
+3
+1
+Always layout automatically
+ 
+Heliostat Field
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+override_opt
+3
+1
+Always optimize
+ 
+Heliostat Field
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+p_start
+3
+1
+Heliostat startup energy
+kWe-hr
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.025
+Numeric
+p_track
+3
+1
+Heliostat tracking power
+kWe
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.055
+Numeric
+q_design
+3
+1
+ 
+ 
+Heliostat Field
+0
+8
+1
+1
+1
+1
+0
+Default
+sf_adjust
+3
+5
+Field output adjustment
+ 
+Heliostat Field
+0
+1
+1
+5
+1
+0
+LossAdjustment
+v_wind_max
+3
+1
+Wind stow speed
+m/s
+Heliostat Field
+0
+2
+1
+1
+1
+1
+15
+Default
+washing_frequency
+3
+1
+Washes per year
+ 
+Heliostat Field
+0
+2
+1
+1
+1
+1
+63
+Numeric
+water_usage_per_wash
+3
+1
+Water usage per wash
+L/m²,aper.
+Heliostat Field
+0
+2
+1
+1
+1
+1
+0.7
+Numeric
+
+3143
+equations{'opt_algorithm'} = define(){
+	return 1;
+};
+equations{'opt_flux_penalty'} = define(){
+	return 0.25;
+};
+
+
+equations{ 'land_max_calc' } = define() {
+	return ${land_max}*${THT}; };
+
+equations{ '$MIMO$ Tower_SolarPilot_Solar_Field_Equations' } = define() {
+	// land_max_calc
+	data.land_max = ${land_max};
+	data.h_tower = ${h_tower};
+	
+	// test 
+	x= ${rec_aspect};
+	y= ${a_new_value};
+	// n_hel
+	data.helio_positions = ${helio_positions};
+	
+	// csp_pt_sf_heliostat_area
+	data.helio_height = ${helio_height};
+	data.helio_width = ${helio_width};
+	data.dens_mirror = ${dens_mirror};
+
+	// csp_pt_sf_total_reflective_area
+	data.n_hel = nan();		// -> calculated from above
+	data.csp_pt_sf_heliostat_area = nan();
+	
+	// land_min_calc
+	data.land_min = ${land_min};
+	data.h_tower = ${h_tower};
+	
+	// csp_pt_sf_total_land_area
+	data.csp_pt_sf_fixed_land_area = ${csp.pt.sf.fixed_land_area};
+	data.land_area_base = ${land_area_base};
+	data.csp_pt_sf_land_overhead_factor = ${csp.pt.sf.land_overhead_factor};
+	
+	// A_sf_UI
+	data.helio_width = ${helio_width};
+	data.helio_height = ${helio_height};
+	data.dens_mirror = ${dens_mirror};
+	data.n_hel = nan();
+	
+	// helio_area_tot
+	data.a_sf_UI = nan();
+	
+	// csp_pt_sf_tower_height
+	data.h_tower = ${h_tower};
+	
+	// c_atm_info
+	data.helio_positions = ${helio_positions};
+	data.c_atm_0 = ${c_atm_0};
+	data.c_atm_1 = ${c_atm_1};
+	data.c_atm_2 = ${c_atm_2};
+	data.c_atm_3 = ${c_atm_3};
+	data.h_tower = ${h_tower};
+	
+	// error_equiv
+	data.helio_optical_error_mrad = ${helio_optical_error_mrad};
+	
+	// is_optimize
+	data.override_opt = ${override_opt};
+	
+	// field_model_type
+	data.is_optimize = nan();
+	data.override_layout = ${override_layout};
+	
+	// q_design
+	data.q_rec_des = ${Q_rec_des};
+	
+	// dni_des_calc
+	data.dni_des = ${dni_des};
+
+	success = ssc_eqn("Tower_SolarPilot_Solar_Field_Equations", data);
+	if (!success) {
+		${A_sf_UI} = -999.;
+		${c_atm_info} = -999.;
+		${csp.pt.sf.heliostat_area} = -999.;
+		${csp.pt.sf.total_land_area} = -999.;
+		// There is no corresponding variable, error if you try to set:
+		//${csp.pt.sf.total_reflective_area} = -999.;
+		${csp.pt.sf.tower_height} = -999.;
+		${dni_des_calc} = -999.;
+		${error_equiv} = -999.;
+		${field_model_type} = -999.;
+		${helio_area_tot} = -999.;
+		${is_optimize} = -999.;
+		${land_max_calc} = -999.;
+		${land_min_calc} = -999.;
+		${n_hel} = -999.;
+		${q_design} = -999.;
+	}
+	else {
+		${A_sf_UI} = data.a_sf_ui;
+		${c_atm_info} = data.c_atm_info;
+		${csp.pt.sf.heliostat_area} = data.csp_pt_sf_heliostat_area;
+		${csp.pt.sf.total_land_area} = data.csp_pt_sf_total_land_area;
+		// There is no corresponding variable, error if you try to set:
+		//${csp.pt.sf.total_reflective_area} = data.csp_pt_sf_total_reflective_area;
+		${csp.pt.sf.tower_height} = data.csp_pt_sf_tower_height;
+		${dni_des_calc} = data.dni_des_calc;
+		${error_equiv} = data.error_equiv;
+		${field_model_type} = data.field_model_type;
+		${helio_area_tot} = data.helio_area_tot;
+		${is_optimize} = data.is_optimize;
+		${land_max_calc} = data.land_max_calc;
+		${land_min_calc} = data.land_min_calc;
+		${n_hel} = data.n_hel;		
+		${q_design} = data.q_design;
+	}
+	
+	return 0;
+};
+
+
+10850
+function update_button_status() {
+	/* 
+	This function updates the enable/disable status of the layout and 
+	optimization controls.
+	*/
+	disable_opt = ${override_opt} == 1;
+	disable_layout = ${override_layout} == 1;
+	
+	enable("btn_optimize", ! disable_opt);
+	enable("override_layout", ! disable_opt);
+	enable("btn_solarpilot", !(disable_opt || disable_layout));
+	enable("helio_positions", !(disable_opt || disable_layout));
+}
+
+function call_fluxbalance() {
+	if( ${tower_technology} != 1 )
+		return;
+	
+	// This function calculates an aggregate receiver maximum flux
+	// based on the maximum flux from each of the 3 DSG receivers.
+	// It returns this value, as well as the fraction of the total
+	// receiver height allocated to each receiver
+	
+	obj = ssc_create();
+	
+	ssc_var(obj, "P_HP_in", ${P_boil_des});
+	ssc_var(obj, "P_HP_out", ${P_rh_ref});
+	ssc_var(obj, "T_sh_out_ref", ${T_sh_out_des});
+	ssc_var(obj, "T_rh_out_ref", ${T_rh_out_des});
+	ssc_var(obj, "P_cycle_des", ${demand_var});
+	ssc_var(obj, "eta_cycle_des", ${design_eff});
+	ssc_var(obj, "rh_frac_ref", ${rh_frac_ref});
+	ssc_var(obj, "CT", ${csp.pbns.condenser_type});
+	ssc_var(obj, "dT_cooling_ref", ${dT_cw_ref});
+	ssc_var(obj, "T_approach", ${T_approach});
+	ssc_var(obj, "T_amb_des", ${T_amb_des});
+	ssc_var(obj, "T_ITD_des", ${T_ITD_des});
+	ssc_var(obj, "Q_rec_des", ${q_rec_des});
+	ssc_var(obj, "max_flux_b", ${csp.dst.max_b_flux});
+	ssc_var(obj, "max_flux_sh", ${csp.dst.max_sh_flux});
+	ssc_var(obj, "max_flux_rh", ${csp.dst.max_rh_flux});
+	ssc_var(obj, "b_q_loss_flux", ${b_q_loss_flux});
+	ssc_var(obj, "sh_q_loss_flux", ${sh_q_loss_flux});
+	ssc_var(obj, "rh_q_loss_flux", ${rh_q_loss_flux});
+	
+	logmsg("Direct Steam Receiver max flux calculations");
+	
+	ret = ssc_exec(obj, 'dsg_flux_preprocess', {'show_dialog'=true, 'hold_dialog'=true});
+	
+	if(ret != 0)
+	{
+		msgbox("Direct Steam Receiver max flux calculations failed");
+		ssc_free( obj );
+		return;
+	}
+	
+	f_h_b = ssc_var(obj, "f_b");
+	f_h_sh = ssc_var(obj, "f_sh");
+	f_h_rh = ssc_var(obj, "f_rh");
+	flux_max = ssc_var(obj, "max_flux");
+	
+	logmsg("Target average maximum flux is " + to_string(flux_max) + " kW/m2");
+	
+	value("f_h_b", f_h_b);
+	value("f_h_sh", f_h_sh);
+	value("f_h_rh", f_h_rh);
+	value("flux_max", flux_max); 	//set the equivalent max flux 
+	
+	ssc_free( obj );
+}
+
+function call_solarpilot(is_optimize) {	
+
+	rec_type = ${receiver_type};
+
+	logmsg('btn_solarpilot');
+	obj = ssc_create();
+	ssc_var(obj, "solar_resource_file",${solar_resource_file});
+	ssc_var(obj, "receiver_type", ${receiver_type});
+	ssc_var(obj, "rec_height",${rec_height});
+	ssc_var(obj, "rec_aspect",${rec_aspect});
+	ssc_var(obj, "rec_aspect",${a_new_value});
+	ssc_var(obj, "cav_rec_height", ${cav_rec_height});
+	ssc_var(obj, "cav_rec_width", ${cav_rec_width});
+	ssc_var(obj, "cav_rec_span", ${cav_rec_span});
+	ssc_var(obj, "n_cav_rec_panels", ${n_cav_rec_panels});
+	
+	ssc_var(obj, "helio_width",${helio_width});
+	ssc_var(obj, "helio_height",${helio_height});
+	ssc_var(obj, "helio_optical_error",${helio_optical_error_mrad}*1.E-3);
+	ssc_var(obj, "helio_active_fraction",${helio_active_fraction});
+	ssc_var(obj, "dens_mirror",${dens_mirror});
+	ssc_var(obj, "helio_reflectance",${helio_reflectance});
+	ssc_var(obj, "rec_absorptance",${rec_absorptance});
+	ssc_var(obj, "rec_hl_perm2",${rec_hl_perm2});
+	ssc_var(obj, "q_design",${Q_rec_des});
+	ssc_var(obj, "dni_des", ${dni_des});
+	ssc_var(obj, "land_max",${land_max});
+	ssc_var(obj, "land_min",${land_min});
+	ssc_var(obj, "h_tower",${h_tower});
+	ssc_var(obj, "c_atm_0",${c_atm_0});
+	ssc_var(obj, "c_atm_1",${c_atm_1});
+	ssc_var(obj, "c_atm_2",${c_atm_2});
+	ssc_var(obj, "c_atm_3",${c_atm_3});
+	ssc_var(obj, "n_facet_x",${n_facet_x});
+	ssc_var(obj, "n_facet_y",${n_facet_y});
+	ssc_var(obj, "cant_type",${cant_type});
+	ssc_var(obj, "focus_type",${focus_type});
+	ssc_var(obj, "calc_fluxmaps", 0);
+	ssc_var(obj, "tower_fixed_cost",${tower_fixed_cost});
+	ssc_var(obj, "tower_exp",${tower_exp});
+	ssc_var(obj, "rec_ref_cost",${rec_ref_cost});
+	ssc_var(obj, "rec_ref_area",${rec_ref_area});
+	ssc_var(obj, "rec_cost_exp",${rec_cost_exp});
+	ssc_var(obj, "site_spec_cost",${site_spec_cost});
+	ssc_var(obj, "heliostat_spec_cost",${heliostat_spec_cost});
+	ssc_var(obj, "plant_spec_cost",${plant_spec_cost});
+	ssc_var(obj, "bop_spec_cost",${bop_spec_cost});
+	ssc_var(obj, "tes_spec_cost",${tes_spec_cost});
+	ssc_var(obj, "land_spec_cost",${land_spec_cost});
+	ssc_var(obj, "contingency_rate",${contingency_rate});
+	ssc_var(obj, "sales_tax_rate",${sales_tax_rate});
+	ssc_var(obj, "sales_tax_frac",${sales_tax_frac});
+	ssc_var(obj, "cost_sf_fixed", ${cost_sf_fixed});
+	
+	ssc_var(obj, "opt_flux_penalty", ${opt_flux_penalty}); //not used with COBYLA -- ${opt_flux_penalty});
+	ssc_var(obj, "opt_max_iter", ${opt_max_iter});
+	ssc_var(obj, "flux_max", ${flux_max});
+	ssc_var(obj, "check_max_flux", false);
+	
+	ssc_var(obj, "is_optimize", to_int(is_optimize));
+	ssc_var(obj, "opt_init_step", ${opt_init_step});
+	ssc_var(obj, "opt_conv_tol", ${opt_conv_tol});
+	ssc_var(obj, "opt_algorithm", ${opt_algorithm}); //always cobyla now... //${opt_algorithm});
+		
+	//ssc_dump( obj, 'solarpilot.lk' );
+	//msgbox("Dumping inputs to: " + homedir() + '/solarpilot.txt');
+	
+	//save prior values as reference in case we're optimizing
+	H_rec0 = ${rec_height};
+	D_rec0 = H_rec0/${rec_aspect};
+	H_cav_rec0 = ${cav_rec_height};
+	cav_rec_ap_width0 = ${cav_rec_width};
+	THT0 = ${h_tower};	
+	np0 = #${helio_positions};
+	
+	//execute solarpilot
+	logmsg("Solar Pilot running");
+	ret = ssc_exec(obj, "solarpilot", {'show_dialog'=true, 'hold_dialog'=true});
+	
+	if (ret == 0)
+	{
+
+		H_rec = ssc_var(obj, "rec_height_opt");		
+		THT = ssc_var(obj, "h_tower_opt");
+		if(rec_type == 0){
+			aspect = ssc_var(obj, "rec_aspect_opt");
+			D_rec = H_rec/aspect;
+			cav_rec_ap_width = nan();
+		}
+		else if(rec_type == 1){
+			aspect = nan();
+			D_rec = nan();
+			cav_rec_ap_width = ssc_var(obj, "cav_rec_aper_width_opt");
+		}
+
+		if( ${tower_technology} == 1 )
+		{
+			h_boiler = ${f_h_b}*H_rec;
+			h_sh = ${f_h_sh}*H_rec;
+			h_rh = ${f_h_rh}*H_rec;
+			
+			value("h_boiler", h_boiler);
+			value("h_sh", h_sh);
+			value("h_rh", h_rh);
+		}
+		
+		// The following code is applicable to both MSPT and DSG
+		
+		hp = ssc_var(obj, "heliostat_positions");
+		np = #hp;
+				
+		if(is_optimize)
+		{
+			if(rec_type == 0){
+				htm_str = 
+				"<html><body>"+
+				"<table><tr><td><b>Item</b></td><td><b>Units</b></td><td><b>Update Value</b></td><td><b>Previous</b></td></tr>" +
+				"<tr><td>" + "Receiver height"   + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(H_rec) + "</td><td bgcolor='#DBDBD7'>" + to_string(H_rec0) + "</td></tr>" +
+				"<tr><td>" + "Receiver diameter" + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(D_rec) + "</td><td bgcolor='#DBDBD7'>" + to_string(D_rec0) + "</td></tr>" +
+				"<tr><td>" + "Tower height"      + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(THT)   + "</td><td bgcolor='#DBDBD7'>" + to_string(THT0)   + "</td></tr>" +
+				"<tr><td>" + "Heliostat count"   + "</td><td>   </td><td bgcolor='#F2FF63'>" + to_string(np)    + "</td><td bgcolor='#DBDBD7'>" + to_string(np0)    + "</td></tr>" +
+				"</table>" +
+				"</body></html>";
+			}
+			else if(rec_type == 1){
+				htm_str = 
+				"<html><body>"+
+				"<table><tr><td><b>Item</b></td><td><b>Units</b></td><td><b>Update Value</b></td><td><b>Previous</b></td></tr>" +
+				"<tr><td>" + "Receiver height"   + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(H_rec) + "</td><td bgcolor='#DBDBD7'>" + to_string(H_cav_rec0) + "</td></tr>" +
+				"<tr><td>" + "Receiver aperture width" + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(cav_rec_ap_width) + "</td><td bgcolor='#DBDBD7'>" + to_string(cav_rec_ap_width0) + "</td></tr>" +
+				"<tr><td>" + "Tower height"      + "</td><td> m </td><td bgcolor='#F2FF63'>" + to_string(THT)   + "</td><td bgcolor='#DBDBD7'>" + to_string(THT0)   + "</td></tr>" +
+				"<tr><td>" + "Heliostat count"   + "</td><td>   </td><td bgcolor='#F2FF63'>" + to_string(np)    + "</td><td bgcolor='#DBDBD7'>" + to_string(np0)    + "</td></tr>" +
+				"</table>" +
+				"</body></html>";
+			}
+			
+			html_dialog(htm_str, "Optimization summary", [400,200]);
+		
+			/*if( yesno("Optimization successful!\n"
+				+ "Rec. height=" + to_string(H_rec) + " [m]  -- (was " + to_string(H_rec0) + ")\n"
+				+ "Rec. diameter=" + to_string(D_rec) + " [m]  -- (was " + to_string(D_rec0) + ")\n"
+				+ "Tower height=" + to_string(THT) + " [m]  -- (was " + to_string(THT0) + ")\n"
+				+ "# heliostats=" + to_string(np) + " -- (was " + to_string(np0) + ")\n"
+				+ " [m]\n\n Update to this design?") )*/
+			if( yesno("Update optimized values?") )
+			{
+				value("helio_positions", hp);
+				
+				if( ${tower_technology} == 1 )
+				{
+					value("rec_height", H_rec);
+					value("h_tower", THT);
+					value("d_rec", D_rec);
+				}
+				else
+				{					
+					value("h_tower", THT);
+					if(rec_type == 0){
+						value("D_rec", D_rec);
+						value("rec_height", H_rec);				
+					}
+					else if(rec_type == 1){
+						value("cav_rec_width", cav_rec_ap_width);
+						value("cav_rec_height", H_rec);
+					}
+				}
+			}
+		}
+		else
+		{
+			value("helio_positions", hp);
+			msgbox("Heliostat field positions updated!");
+		}
+		logmsg("Solar Pilot Successful");
+		
+	}
+	else
+	{
+		msgbox("Heliostat field positions update failed: " + ret);
+		logmsg("Heliostat field positions update failed: " + ret);
+	}
+	
+	ssc_free( obj );
+}
+
+//--- button callbacks ----
+on_load{"Tower SolarPilot Solar Field"} = define() {
+	on_change{"helio_positions"}();	
+	on_change{"override_layout"}();
+	on_change{"override_opt"}();
+};
+
+on_change{ 'helio_positions' } = define() {
+	//update the land area calculation and set vars
+	logmsg('layoutarea');
+	
+	hp = ${helio_positions};
+	obj = ssc_create();
+	ssc_var(obj, "positions", hp);
+	
+	ret = ssc_exec(obj, 'layoutarea');
+	if(ret == 0)
+	{
+		landbase = ssc_var(obj, "area");
+		value("land_area_base", landbase);
+	}
+	else
+	{
+		msgbox("Land area update failed: " + ret);
+		logmsg("Land area update failed: " + ret);
+	}
+	
+	ssc_free(obj);
+	
+	// update plot
+	clearplot( 'sfplot' ); // switches active plot to 'sfplot' also
+	
+	n = #hp;
+	x = alloc(n);
+	y = alloc(n);
+	for( i=0;i<n;i++ )
+	{
+		x[i] = hp[i][0];
+		y[i] = hp[i][1];
+	}
+	
+	plot( x, y, {'type'='scatter', 'series'='Heliostat Field'} );
+	axis('x1', {'label'='Position, east-west (m)'});
+	axis('y1', {'label'='Position, north-south (m)'});
+	plotopt( {'legend'=false, 'coarse'=true, 'fine'=false } );
+	
+};
+
+
+on_change{'btn_optimize'} = define() {
+	//Do the steam receiver flux balancing here ---
+	if( ${tower_technology} == 1)
+	{
+		call_fluxbalance();
+	}
+	//------------------------
+	call_solarpilot(1);
+
+};
+
+on_change{'btn_solarpilot'} = define() {
+
+	call_solarpilot(0);
+};
+
+
+on_change{"override_layout"} = define() {
+	update_button_status();
+};
+
+on_change{"override_opt"} = define() {
+	update_button_status();
+};
+
