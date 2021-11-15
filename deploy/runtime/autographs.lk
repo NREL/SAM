@@ -31,7 +31,9 @@ function heatmap_graphs()
 //**************Categories of graphs for financials**************************
 function rescom_financial_graphs()
 {
-	agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh', -1, true, true, 'bottom'  );
+	if (technology() != "Standalone Battery") { //No monthly_energy for standalone battery
+		agraph( 'monthly_energy,year1_monthly_load', 'Monthly Energy and Load', '', 'kWh', -1, true, true, 'bottom'  );
+	}
 	agraph( 'cf_after_tax_cash_flow', 'After Tax Cash Flow- System Lifetime', '', '$' );
 	agraph( 'cf_energy_net', 'Annual Energy Production', 'Year', 'kWh', -1, true, false,'bottom' );
 }
