@@ -50,10 +50,20 @@ function is_batt_tech()
 	// may need to update to include PVWatts Battery, but as of 2020.2.29:
 	// no battery replacements for PVWatts Battery
 	// no retail purchases for PVWatts Battery because it is only behind-the-meter
+	tech = technology();
 	x = ( tech == 'PV Battery' || 
 	      tech == 'Generic Battery' || 
-	      ( tech == 'Fuel Cell' && value('en_batt') == true ) 
-	    );
+	      ( tech == 'Fuel Cell' && value('en_batt') == true ) );
+	return x;
+}
+
+function is_ppa_fin()
+{
+	fin = financing();
+	x = ( fin == 'Single Owner' || 
+	      fin == 'Leveraged Partnership Flip' || 
+	      fin == 'All Equity Partnership Flip' ||
+	      fin == 'Sale Leaseback' );
 	return x;
 }
 
@@ -184,11 +194,12 @@ function cf_om_expenses()
     if ( is_batt_tech() )
 	{
 		cfline( 'cf_battery_replacement_cost', 0);
-		// electricity purchases to charge battery only available for Single Owner as of 2020.2.29
-		if ( fin == 'Single Owner' ) 
-		{
-			cfline('cf_utility_bill', 0 ); 
-		}
+	}
+	// electricity purchases to charge battery or meet nighttime consumption only available for battery, Detailed PV with PPA models
+	// CSP uses PPA price for nighttime consumption
+	if ( is_batt_tech() || ( is_ppa_fin() && tech == 'Flat Plate PV' )  ) 
+	{
+		cfline('cf_utility_bill', 0 ); 
 	}
 	if (tech == 'Fuel Cell')
 	{
