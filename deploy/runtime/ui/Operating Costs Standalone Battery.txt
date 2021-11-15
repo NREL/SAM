@@ -1191,7 +1191,7 @@ TabOrder
 3
 6
 
-13
+11
 add_om_num_types
 3
 1
@@ -1202,20 +1202,6 @@ Operating Costs
 0
 1
 1
-1
-1
-0
-Default
-degradation
-3
-2
- 
- 
- 
-0
-8
-1
-2
 1
 1
 0
@@ -1360,22 +1346,8 @@ system_capacity
 1
 0
 Default
-system_use_lifetime_output
-3
-1
- 
- 
- 
-0
-8
-1
-1
-1
-1
-0
-Default
 
-355
+232
 equations{'om_batt_nameplate'} = define() {
 	return ${batt_computed_bank_capacity};
 };
@@ -1388,11 +1360,5 @@ equations{ 'system_capacity'} = define() {
 	return ${batt_ui_nominal_bank_power};
 };
 
-equations {'degradation'} = define() {
-	return [0];
-};
 
-equations {'system_use_lifetime_output'} = define() {
-	return 1;
-};
 0

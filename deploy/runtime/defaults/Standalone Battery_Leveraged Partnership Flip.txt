@@ -864,13 +864,13 @@ battery_total
 1
 1
 1
-1.43848e+06
+1438480
 battery_total_cost_lcos
 1
 1
 1
 1
-1.77472e+06
+1774720
 battery_voltage_shown
 1
 1
@@ -1193,7 +1193,7 @@ const_per_principal1
 1
 1
 1
-1.77472e+06
+1774720
 const_per_principal2
 1
 1
@@ -1223,7 +1223,7 @@ const_per_principal_total
 1
 1
 1
-1.77472e+06
+1774720
 const_per_total1
 1
 1
@@ -2772,7 +2772,7 @@ property_assessed_value
 1
 1
 1
-1.77472e+06
+1774720
 property_tax_rate
 1
 1
@@ -2838,7 +2838,7 @@ pv.storage.p1.gridcharge
 1
 1
 1
-0
+1
 pv.storage.p2.charge
 1
 1
@@ -3088,7 +3088,7 @@ total_direct_cost
 1
 1
 1
-1.5104e+06
+1510400
 total_indirect_cost
 1
 1
@@ -3100,7 +3100,7 @@ total_installed_cost
 1
 1
 1
-1.77472e+06
+1774720
 ui_batt_life_model
 1
 1

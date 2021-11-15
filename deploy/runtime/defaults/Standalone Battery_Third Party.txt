@@ -1,5 +1,5 @@
 1
-353
+355
 LeadAcid_q10
 1
 1
@@ -1092,6 +1092,12 @@ crit_load_user_data
 1
 1
 0
+degradation
+1
+2
+1
+1
+0
 dispatch_manual_btm_discharge_to_grid
 1
 2
@@ -1763,6 +1769,12 @@ run_resiliency_calcs
 1
 0
 scale_factor
+1
+1
+1
+1
+1
+system_use_lifetime_output
 1
 1
 1

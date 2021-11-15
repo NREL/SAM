@@ -342,6 +342,13 @@ function generic_battery_metrics()
 	metric( 'batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%' } ); 
 }
 
+function standalone_battery_metrics() 
+{
+	metric( 'average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%' } );
+	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
+	metric( 'batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%' } ); 
+}
+
 function generic_csp_metrics() 
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
@@ -523,6 +530,7 @@ metrics{ 'MEtidal' } = define() { MEtidal_metrics(); };
 metrics{ 'PV Battery' } = define() { pv_battery_metrics(); };
 metrics{ 'Generic Battery' } = define() { generic_battery_metrics(); };
 metrics{ 'PVWatts Battery' } = define() { pvwatts_battery_metrics(); };
+metrics{ 'Standalone Battery' } = define() {standalone_battery_metrics(); };
 
 // Financial Metrics
 metrics{ 'Residential' } = define() { rescom_metrics(); };
