@@ -3577,11 +3577,12 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("isdefault").assign(rate.Unused.IsDefault);
 		cxt.result().hash_item("servicetype").assign(rate.Unused.ServiceType);
 		cxt.result().hash_item("demandwindow").assign(rate.Unused.DemandWindow);
-		for (int i = 0; i < 12; i++)
+        cxt.result().hash_item("demandreactivepowercharge").assign(rate.Unused.DemandReactivePowerCharge);
+        for (int i = 0; i < 12; i++)
 		{
 			cxt.result().hash_item(wxString::Format("fueladjustmentsmonthly%d", i)).assign(rate.Unused.FuelAdjustmentsMonthly[i]);
-			cxt.result().hash_item(wxString::Format("demandratchetpercentage%d", i)).assign(rate.Unused.DemandRatchetPercentage[i]);
-		}
+            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.Unused.LookbackMonths[i]);
+        }
 		if (!applydiurnalschedule(cxt, "cr_sched", rate.Unused.CoincidentSchedule)) return;
 		if (!copy_mat(cxt, "cr_tou_mat", rate.Unused.CoincidentRateStructure)) return;
 
@@ -3647,6 +3648,9 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("dc_enable").assign(1.0);
 		if (!copy_mat(cxt, "dc_flat_mat", rate.DemandFlatStructure)) return;
 		if (!copy_mat(cxt, "dc_tou_mat", rate.DemandTOUStructure)) return;
+
+        cxt.result().hash_item("lookbackpercent").assign(rate.LookbackPercent);
+        cxt.result().hash_item("lookbackrange").assign(rate.LookbackRange);
 
         cxt.result().hash_item("ratenotes").assign(rate_notes);
 
