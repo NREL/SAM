@@ -1295,7 +1295,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-10058
+10098
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
 	show('msg_unused_items', value('ur_has_unused_items'));
@@ -1587,6 +1587,7 @@ on_change{'btnQueryOpenEI'} = define() {
 	if ( has_billing_demand_adjustments )
 	{
 		msgbox('Billing Demand Notice.\nThis rate includes billing demand adjustments and/or demand ratchets that may not be accurately reflected in the data downloaded from the URDB. Please check the information in the Description under Description and Applicability and the fields under Unused and review the rate sheet to be sure the billing demand inputs are correct.');
+		value('ur_billing_demand_minimum',0);
 		value('ur_desc_is_shown',true);
 		value('ur_unused_is_shown',true);
 	}
