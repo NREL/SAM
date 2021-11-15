@@ -1,5 +1,5 @@
 1
-1058
+1085
 6par_aisc
 1
 1
@@ -566,7 +566,7 @@ batt_calendar_c
 1
 1
 1
-930
+939
 batt_calendar_choice
 1
 1
@@ -732,12 +732,24 @@ batt_discharge_percent_6
 1
 1
 25
+batt_dispatch_auto_btm_can_discharge_to_grid
+1
+1
+1
+1
+3.33505e-317
 batt_dispatch_auto_can_charge
 1
 1
 1
 1
 1
+batt_dispatch_auto_can_clipcharge
+1
+1
+1
+1
+3.33505e-317
 batt_dispatch_auto_can_fuelcellcharge
 1
 1
@@ -2077,19 +2089,26 @@ desired_size
 1
 1
 500
+dispatch_manual_btm_discharge_to_grid
+1
+2
+1
+6
+0 0 0 0 0 0 
+
 dispatch_manual_charge
 1
 2
 1
 6
-1 0 0 0 0 0 
+1 1 0 0 0 0 
 
 dispatch_manual_discharge
 1
 2
 1
 6
-0 1 0 0 0 0 
+0 0 1 1 0 0 
 
 dispatch_manual_gridcharge
 1
@@ -4384,6 +4403,13 @@ pv.storage.p1.discharge
 1
 1
 0
+pv.storage.p1.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p1.gridcharge
 1
 1
@@ -4402,6 +4428,13 @@ pv.storage.p2.discharge
 1
 1
 1
+pv.storage.p2.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p2.gridcharge
 1
 1
@@ -4420,6 +4453,13 @@ pv.storage.p3.discharge
 1
 1
 0
+pv.storage.p3.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p3.gridcharge
 1
 1
@@ -4438,6 +4478,13 @@ pv.storage.p4.discharge
 1
 1
 0
+pv.storage.p4.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p4.gridcharge
 1
 1
@@ -4456,6 +4503,13 @@ pv.storage.p5.discharge
 1
 1
 0
+pv.storage.p5.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p5.gridcharge
 1
 1
@@ -4474,6 +4528,13 @@ pv.storage.p6.discharge
 1
 1
 0
+pv.storage.p6.dischargetogrid
+1
+1
+1
+6
+0 0 0 0 0 0 
+
 pv.storage.p6.gridcharge
 1
 1
@@ -5412,6 +5473,12 @@ subarray1_backtrack
 1
 1
 0
+subarray1_cross_axis_slope
+1
+1
+1
+1
+3.33506e-317
 subarray1_dcloss
 1
 1
@@ -5532,6 +5599,18 @@ subarray1_shading
 5
 1
 0
+subarray1_slope_azm
+1
+1
+1
+1
+0
+subarray1_slope_tilt
+1
+1
+1
+1
+0
 subarray1_soiling
 1
 2
@@ -5593,6 +5672,12 @@ subarray2_backtrack
 1
 1
 0
+subarray2_cross_axis_slope
+1
+1
+1
+1
+3.33506e-317
 subarray2_dcloss
 1
 1
@@ -5719,6 +5804,18 @@ subarray2_shading
 5
 1
 0
+subarray2_slope_azm
+1
+1
+1
+1
+0
+subarray2_slope_tilt
+1
+1
+1
+1
+0
 subarray2_soiling
 1
 2
@@ -5780,6 +5877,12 @@ subarray3_backtrack
 1
 1
 0
+subarray3_cross_axis_slope
+1
+1
+1
+1
+3.33506e-317
 subarray3_dcloss
 1
 1
@@ -5906,6 +6009,18 @@ subarray3_shading
 5
 1
 0
+subarray3_slope_azm
+1
+1
+1
+1
+0
+subarray3_slope_tilt
+1
+1
+1
+1
+0
 subarray3_soiling
 1
 2
@@ -5967,6 +6082,12 @@ subarray4_backtrack
 1
 1
 0
+subarray4_cross_axis_slope
+1
+1
+1
+1
+3.33506e-317
 subarray4_dcloss
 1
 1
@@ -6091,6 +6212,18 @@ subarray4_shade_mode
 subarray4_shading
 1
 5
+1
+0
+subarray4_slope_azm
+1
+1
+1
+1
+0
+subarray4_slope_tilt
+1
+1
+1
 1
 0
 subarray4_soiling
@@ -6274,6 +6407,42 @@ ui_batt_life_model
 1
 1
 1
+ui_copy_batt_discharge_percent_1
+1
+1
+1
+1
+25
+ui_copy_batt_discharge_percent_2
+1
+1
+1
+1
+25
+ui_copy_batt_discharge_percent_3
+1
+1
+1
+1
+25
+ui_copy_batt_discharge_percent_4
+1
+1
+1
+1
+25
+ui_copy_batt_discharge_percent_5
+1
+1
+1
+1
+25
+ui_copy_batt_discharge_percent_6
+1
+1
+1
+1
+25
 ui_loan_amount
 1
 1
@@ -6845,7 +7014,6 @@ vdcmax_inverter
 1
 1
 800
-
 wf_nrecords
 1
 1
