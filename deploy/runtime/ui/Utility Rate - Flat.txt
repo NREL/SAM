@@ -1308,16 +1308,8 @@ Sell Rate ($/kWh)|1
 0
 DataArray
 
-176
-equations{'is_btm'} = define() {
-	value = financing();
-	if (value == "Commercial" || value == "Residential" ||
-		value == "Host Developer") {
-			return 1;
-	}
-	else return 0;
-};
-9046
+0
+10098
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
 	show('msg_unused_items', value('ur_has_unused_items'));
@@ -1568,23 +1560,33 @@ on_change{'btnQueryOpenEI'} = define() {
 	value( 'ur_dc_enable', hash{'dc_enable'});
 	on_change{'ur_dc_enable'}(); // invoke callback for ur_ec_enable to set up enable/disable of widgets
 	
-	
 	// schedules
 	value ('ur_ec_sched_weekday', hash{'ec_sched_weekday'});
 	value ('ur_ec_sched_weekend', hash{'ec_sched_weekend'});
 	value ('ur_dc_sched_weekday', hash{'dc_sched_weekday'});
 	value ('ur_dc_sched_weekend', hash{'dc_sched_weekend'});
-//	msgbox('weekday' + hash{'ec_sched_weekday'});
 
 	value('ur_ec_tou_mat', hash{'ec_tou_mat'});
 	value('ur_dc_tou_mat', hash{'dc_tou_mat'});
 	value('ur_dc_flat_mat', hash{'dc_flat_mat'});
+
+	// billing demand
+	lbp = [];
+	for ( i=0; i<12; i++ )
+	{
+		lbp[i][0] = hash{'lookbackpercent'};
+		lbp[i][1] = 0;
+	}	
+	value('ur_billing_demand_lookback_percentages',lbp);
+	value('ur_billing_demand_lookback_period',hash{'lookbackrange'});
+	has_billing_demand_adjustments = ( hash{'lookbackpercent'} > 0 || hash{'lookbackrange'} > 0 ); 
 
 	// unused items
 	value('ur_has_unused_items',hash{'hasunuseditems'});
 	value('ur_is_default',hash{'isdefault'});
 	value('ur_service_type',hash{'servicetype'});
 	value('ur_demand_window',hash{'demandwindow'});
+	value('ur_demand_reactive_power_charge',hash{'demandreactivepowercharge'});
 	arr = [];
 	for ( i=0; i<12; i++ )
 	{
@@ -1594,16 +1596,57 @@ on_change{'btnQueryOpenEI'} = define() {
 	arr = [];
 	for ( i=0; i<12; i++ )
 	{
-		arr[i] = hash{'demandratchetpercentage'+to_string(i)};
+		arr[i] = hash{'lookbackmonths'+to_string(i)};
 	}
-	value('ur_demand_ratchet_percentage', arr);
+	value('ur_lookback_months', arr);
 	value('ur_cr_sched', hash{'cr_sched'});
 	value('ur_cr_tou_mat', hash{'cr_tou_mat'});
 	value('ur_energy_attrs', hash{'energyattrs'});
 	value('ur_demand_attrs', hash{'demandattrs'});
 	value('ur_fixed_attrs', hash{'fixedattrs'});
+	x = is_demand();
+	value('ur_dc_enable', x );
+	x = is_billing_demand();
+	value('ur_enable_billing_demand', x );
+	value('ur_billing_demand_is_shown', x );
 	show('msg_unused_items', value('ur_has_unused_items'));
 	refresh();
-
-	msgbox('OpenEI rate applied! \n');
+	if ( has_billing_demand_adjustments )
+	{
+		msgbox('Billing Demand Notice.\nThis rate includes billing demand adjustments and/or demand ratchets that may not be accurately reflected in the data downloaded from the URDB. Please check the information in the Description under Description and Applicability and the fields under Unused and review the rate sheet to be sure the billing demand inputs are correct.');
+		value('ur_billing_demand_minimum',0);
+		value('ur_desc_is_shown',true);
+		value('ur_unused_is_shown',true);
+	}
+	msgbox('Rate data from OpenEI URDB applied!\n');
 };
+
+function is_demand()
+{
+	dc_tou = value('ur_dc_tou_mat');
+	sum_dc_tou = 0;
+	for ( i=0; i<#dc_tou; i++ )
+	{
+		sum_dc_tou += dc_tou[i][3];
+	}
+
+	dc_flat = value('ur_dc_flat_mat');
+	sum_dc_flat = 0;
+	for ( i=0; i<#dc_flat; i++ )
+	{
+		sum_dc_tou += dc_flat[i][3];
+	}
+
+	return ( sum_dc_tou + sum_dc_flat ) > 0;
+}
+
+function is_billing_demand()
+{
+	bd = value('ur_billing_demand_lookback_percentages');
+	sum_bd = 0;
+	for ( i=0; i<#bd; i++ )
+	{
+		sum_bd += bd[i][0];
+	}
+	return sum_bd > 0;
+}
