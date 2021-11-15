@@ -1468,7 +1468,7 @@ bool VarValue::Read( const lk::vardata_t &val, bool change_type )
 	case lk::vardata_t::NUMBER:
 		if ( Type() == VV_NUMBER || change_type )
 		{
-			Set( (float) val.as_number() );
+			Set( val.as_number() );
 			ok = true;
 		}
 		break;
