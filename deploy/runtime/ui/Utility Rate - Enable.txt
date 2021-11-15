@@ -185,18 +185,14 @@ Use PPA or market prices|Use retail electricity rate(s)
 0
 RadioChoice
 
-89
-equations{'en_electricity_rates'} = define ()
-{
-	return ${ui_electricity_rate_option};
-};
-866
+0
+870
 on_load{'Utility Rate - Enable'} = define() 
 {
 	purchases_option_message();
 };
 
-on_change{'ui_utility_rate_option'} = define()
+on_change{'ui_electricity_rate_option'} = define()
 {
 	purchases_option_message();
 	value('en_electricity_rates', value('ui_electricity_rate_option'));
