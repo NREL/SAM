@@ -7611,7 +7611,7 @@ Geothermal Capital Costs
 0
 Numeric
 
-15997
+16034
 equations{ 'geotherm.cost.pump_per_pump' } = define() {
 	return ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };
 
@@ -7722,7 +7722,8 @@ equations{ 'geotherm.cost.inj_drill' } = define() {
 	return  ${geotherm.cost.inj_per_well} * ${geotherm.cost.inj_num_wells}; };
 
 equations{ 'geotherm.cost.contingency' } = define() {
-	return ${geotherm.cost.contingency_percent}/100*${geotherm.cost.capital_total}; };
+	return ${geotherm.cost.contingency_percent}/100*(${geotherm.cost.capital_total}-
+		${geotherm.cost.prod_inj_drill}); };
 
 equations{ 'geotherm.cost.pump_depth' } = define() {
 	return ${pump_depth}; };
