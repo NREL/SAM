@@ -735,8 +735,10 @@ CodeGen_lk::CodeGen_lk(Case *cc, const wxString &folder) : CodeGen_Base(cc, fold
 
 bool CodeGen_lk::Output(ssc_data_t)
 {
-	for (size_t ii = 0; ii < m_data.size(); ii++)
-		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
+	for (size_t ii = 0; ii < m_data.size(); ii++) {
+		wxString outs =  m_data[ii].label + m_data[ii].pre + m_data[ii].post;
+		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)outs.c_str(), (const char*)m_data[ii].var.c_str());
+	}
 	return true;
 }
 
