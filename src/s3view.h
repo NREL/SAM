@@ -29,10 +29,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/clrpicker.h>
 #include <wx/propgrid/propgrid.h>
 
-#ifdef __WXOSX__
-#define VIEW_USE_OVERLAY 1
-#include <wx/overlay.h>
-#endif
+//#ifdef __WXOSX__
+//#define VIEW_USE_OVERLAY 1
+//#include <wx/overlay.h>
+//#endif
 
 #include "s3objects.h"
 #include "s3engine.h"
