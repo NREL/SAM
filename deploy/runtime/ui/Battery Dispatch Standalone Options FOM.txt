@@ -201,7 +201,7 @@ Bold
 2
 1
 
-5
+6
 batt_dispatch_auto_can_gridcharge
 3
 1
@@ -258,6 +258,20 @@ degradation
 1
 0
 Default
+en_batt
+3
+1
+Enable battery model
+ 
+ 
+0
+9
+1
+1
+1
+1
+0
+Default
 system_use_lifetime_output
 3
 1
@@ -273,7 +287,7 @@ system_use_lifetime_output
 0
 Default
 
-295
+345
 equations{'batt_dispatch_choice'} = define() {
 	if (${batt_dispatch_choice_ui} == 0)
 		return ${batt_dispatch_choice_ui};
@@ -287,6 +301,10 @@ equations{'system_use_lifetime_output'} = define() {
 
 equations {'degradation'} = define() {
 	return [0];
+};
+
+equations {'en_batt'} = define() {
+	return 1;
 };
 1838
 on_load{'Battery Dispatch Standalone Options FOM'} = define() {

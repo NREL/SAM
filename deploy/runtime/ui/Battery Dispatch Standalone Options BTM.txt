@@ -236,7 +236,7 @@ Bold
 2
 1
 
-9
+10
 batt_dispatch_auto_btm_can_discharge_to_grid
 3
 1
@@ -349,6 +349,20 @@ degradation
 1
 0
 Default
+en_batt
+3
+1
+Enable battery model
+ 
+ 
+0
+9
+1
+1
+1
+1
+1
+Default
 system_use_lifetime_output
 3
 1
@@ -364,13 +378,17 @@ system_use_lifetime_output
 0
 Default
 
-122
+172
 equations{'system_use_lifetime_output'} = define() {
 	return 1;
 };
 
 equations {'degradation'} = define() {
 	return [0];
+};
+
+equations {'en_batt'} = define() {
+	return 1;
 };
 1915
 on_load{'Battery Dispatch Standalone Options BTM'} = define() {
