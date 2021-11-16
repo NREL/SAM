@@ -822,8 +822,8 @@ batt_dispatch_load_forecast_choice_psd
 Load forecast horizon options for price signal forecast
  
 Battery Dispatch Price Signal
-63
-Perfect look ahead|One day look ahead|Look ahead to custom load
+64
+Perfect look ahead|One day look behind|Look ahead to custom load
 1
 1
 1

@@ -1310,7 +1310,7 @@ void ArrayPopupDialog::GetParametricTextData(wxString& dat, char sep)
 		for (int c = 0; c < m_grid_data->GetNumberCols(); c++)
 		{
 			if (c == 0) {
-				dat += GetTitle();
+				dat += '"' + GetTitle() + '"';
 				wxString colHeader = m_grid_data->GetColLabelValue(c);
 				if (colHeader != "Index") {// single values
 					dat += " - ";
