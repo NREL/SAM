@@ -1,5 +1,5 @@
 1
-554
+555
 a_error_test_number
 1
 1
@@ -2316,6 +2316,12 @@ interconnect_voltage
 1
 1
 137
+is_btm
+1
+1
+1
+1
+1
 itc_fed_amount
 1
 1
@@ -3256,7 +3262,7 @@ substation_cost
 1
 1
 1
-3124540
+3.12454e+06
 substructCont
 1
 1
@@ -3340,7 +3346,7 @@ transmission_cost
 1
 1
 1
-4246268
+4.24627e+06
 transportation_cost
 1
 1

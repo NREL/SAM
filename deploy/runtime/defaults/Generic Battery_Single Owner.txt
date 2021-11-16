@@ -1,5 +1,5 @@
 1
-622
+625
 LeadAcid_q10
 1
 1
@@ -1088,7 +1088,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+96
 cbi_fed_amount
 1
 1
@@ -1401,7 +1401,7 @@ const_per_principal1
 1
 1
 1
-149824720
+149825000
 const_per_principal2
 1
 1
@@ -1431,7 +1431,7 @@ const_per_principal_total
 1
 1
 1
-149824720
+149825000
 const_per_total1
 1
 1
@@ -2124,7 +2124,7 @@ first_year_output
 1
 1
 1
-33638400
+168192000
 first_year_output_peak
 1
 1
@@ -2160,7 +2160,7 @@ genericsys.cost.contingency
 1
 1
 1
-6071924
+6071920
 genericsys.cost.contingency_percent
 1
 1
@@ -2178,7 +2178,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-12751040
+12751000
 genericsys.cost.epc.percent
 1
 1
@@ -2190,7 +2190,7 @@ genericsys.cost.epc.total
 1
 1
 1
-12751040
+12751000
 genericsys.cost.installed_per_capacity
 1
 1
@@ -2226,7 +2226,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-4462864
+4462860
 genericsys.cost.plm.percent
 1
 1
@@ -2238,7 +2238,7 @@ genericsys.cost.plm.total
 1
 1
 1
-4462864
+4462860
 genericsys.cost.sales_tax.percent
 1
 1
@@ -2250,7 +2250,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-5100416
+5100420
 genericsys.cost.sales_tax.value
 1
 1
@@ -2568,6 +2568,12 @@ insurance_rate
 1
 1
 0.5
+is_btm
+1
+1
+1
+1
+0
 itc_fed_amount
 1
 1
@@ -3080,7 +3086,7 @@ property_assessed_value
 1
 1
 1
-149824720
+149825000
 property_tax_rate
 1
 1
@@ -3413,25 +3419,25 @@ total_direct_cost
 1
 1
 1
-127510400
+127510000
 total_indirect_cost
 1
 1
 1
 1
-17213904
+17213900
 total_installed_cost
 1
 1
 1
 1
-149824720
+149825000
 total_system_indirect_cost
 1
 1
 1
 1
-17213904
+17213900
 ui_batt_life_model
 1
 1
@@ -3474,6 +3480,12 @@ ui_copy_batt_discharge_percent_6
 1
 1
 25
+ui_electricity_rate_option
+1
+1
+1
+1
+0
 ui_pv_capacity
 1
 1
@@ -3925,9 +3937,8 @@ ur_yearzero_usage_peaks
 1
 2
 1
-12
-234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
-
+1
+0
 user_capacity_factor
 1
 1
