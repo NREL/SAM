@@ -1,5 +1,5 @@
 1
-436
+437
 adjust
 1
 5
@@ -1076,13 +1076,13 @@ first_year_output
 1
 1
 1
-73469696
+7.34697e+07
 first_year_output_peak
 1
 1
 1
 1
-9318.83
+9318.84
 fixed_plant_input
 1
 1

@@ -1,5 +1,5 @@
 1
-617
+618
 FossilFill
 1
 2
@@ -437,7 +437,7 @@ const_per_interest1
 1
 1
 1
-27069440
+2.70694e+07
 const_per_interest2
 1
 1
@@ -497,7 +497,7 @@ const_per_interest_total
 1
 1
 1
-27069440
+2.70694e+07
 const_per_months1
 1
 1
@@ -594,7 +594,7 @@ const_per_principal1
 1
 1
 1
-676736000
+6.76736e+08
 const_per_principal2
 1
 1
@@ -624,13 +624,13 @@ const_per_principal_total
 1
 1
 1
-676736000
+6.76736e+08
 const_per_total1
 1
 1
 1
 1
-33836800
+3.38368e+07
 const_per_total2
 1
 1
@@ -690,7 +690,7 @@ construction_financing_cost
 1
 1
 1
-33836800
+3.38368e+07
 cost_debt_closing
 1
 1
@@ -773,7 +773,7 @@ csp.gss.cost.contingency
 1
 1
 1
-36853752
+3.68538e+07
 csp.gss.cost.contingency_percent
 1
 1
@@ -809,7 +809,7 @@ csp.gss.cost.epc.total
 1
 1
 1
-73233672
+7.32337e+07
 csp.gss.cost.fossil_backup
 1
 1
@@ -869,7 +869,7 @@ csp.gss.cost.plm.total
 1
 1
 1
-17632964
+1.7633e+07
 csp.gss.cost.power_plant
 1
 1
@@ -899,7 +899,7 @@ csp.gss.cost.sales_tax.total
 1
 1
 1
-22533438
+2.25334e+07
 csp.gss.cost.sales_tax.value
 1
 1
@@ -911,7 +911,7 @@ csp.gss.cost.site_improvements
 1
 1
 1
-19029234
+1.90292e+07
 csp.gss.cost.site_improvements.area
 1
 1
@@ -929,7 +929,7 @@ csp.gss.cost.solar_field
 1
 1
 1
-285438496
+2.85439e+08
 csp.gss.cost.solar_field.area
 1
 1
@@ -947,7 +947,7 @@ csp.gss.cost.storage
 1
 1
 1
-63614456
+6.36145e+07
 csp.gss.cost.storage.cost_per_kwht
 1
 1
@@ -2796,7 +2796,7 @@ property_assessed_value
 1
 1
 1
-676736000
+6.76736e+08
 property_tax_rate
 1
 1
@@ -3114,19 +3114,19 @@ total_direct_cost
 1
 1
 1
-563335936
+5.63336e+08
 total_indirect_cost
 1
 1
 1
 1
-90866640
+9.08666e+07
 total_installed_cost
 1
 1
 1
 1
-676736000
+6.76736e+08
 track_mode
 1
 1
@@ -3573,13 +3573,12 @@ ur_demand_min
 1
 1
 400
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -3710,6 +3709,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

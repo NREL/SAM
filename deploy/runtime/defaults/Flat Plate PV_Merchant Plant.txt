@@ -1,5 +1,5 @@
 1
-962
+963
 6par_aisc
 1
 1
@@ -357,7 +357,7 @@ bos_equip_total
 1
 1
 1
-10000444
+1.00004e+07
 calculated_dcac_ratio
 1
 1
@@ -1002,7 +1002,7 @@ const_per_principal1
 1
 1
 1
-51384528
+5.13845e+07
 const_per_principal2
 1
 1
@@ -1032,7 +1032,7 @@ const_per_principal_total
 1
 1
 1
-51384528
+5.13845e+07
 const_per_total1
 1
 1
@@ -2071,7 +2071,7 @@ install_labor_total
 1
 1
 1
-5500244
+5.50024e+06
 install_margin_fixed
 1
 1
@@ -2095,13 +2095,13 @@ install_margin_total
 1
 1
 1
-3000133
+3.00013e+06
 installed_per_capacity
 1
 1
 1
 1
-1.02764
+1.02765
 insurance_rate
 1
 1
@@ -2913,7 +2913,7 @@ inverter_total
 1
 1
 1
-2500111
+2.50011e+06
 inverterarray_power
 1
 1
@@ -3152,7 +3152,7 @@ mera_cost1
 1
 1
 1
-12500555
+1.25006e+07
 mera_cost2
 1
 1
@@ -3238,7 +3238,7 @@ module_total
 1
 1
 1
-20500910
+2.05009e+07
 module_width
 1
 1
@@ -3262,7 +3262,7 @@ modulearray_power_w
 1
 1
 1
-50002220
+5.00022e+07
 months_receivables_reserve
 1
 1
@@ -222707,7 +222707,7 @@ property_assessed_value
 1
 1
 1
-51384528
+5.13845e+07
 property_tax_rate
 1
 1
@@ -224507,7 +224507,7 @@ subtotal_direct
 1
 1
 1
-41501840
+4.15018e+07
 system_capacity
 1
 1
@@ -224555,7 +224555,7 @@ total_direct_cost
 1
 1
 1
-42746896
+4.27469e+07
 total_indirect_cost
 1
 1
@@ -224567,7 +224567,7 @@ total_installed_cost
 1
 1
 1
-51384528
+5.13845e+07
 total_inverter_capacity
 1
 1
@@ -224870,9 +224870,9 @@ ur_demand_min
 1
 1
 0
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
+1
 1
 1
 0
@@ -225005,6 +225005,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

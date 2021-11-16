@@ -1,5 +1,5 @@
 1
-295
+296
 adjust
 1
 5
@@ -404,13 +404,13 @@ first_year_output
 1
 1
 1
-35591988
+3.5592e+07
 first_year_output_peak
 1
 1
 1
 1
-9318.83
+9318.84
 fixed_plant_input
 1
 1
@@ -488,7 +488,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-2140420
+2.14042e+06
 genericsys.cost.plm.percent
 1
 1
@@ -500,7 +500,7 @@ genericsys.cost.plm.total
 1
 1
 1
-2140420
+2.14042e+06
 genericsys.cost.sales_tax.percent
 1
 1
@@ -1262,7 +1262,7 @@ property_assessed_value
 1
 1
 1
-71856952
+7.1857e+07
 property_tax_rate
 1
 1
@@ -1394,7 +1394,7 @@ total_installed_cost
 1
 1
 1
-71856952
+7.1857e+07
 ui_annual_load
 1
 1
@@ -1406,13 +1406,13 @@ ui_loan_amount
 1
 1
 1
-43114172
+4.31142e+07
 ui_net_capital_cost
 1
 1
 1
 1
-71856952
+7.1857e+07
 ui_step_minutes
 1
 1

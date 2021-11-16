@@ -1,5 +1,5 @@
 1
-848
+849
 AntiFrPar
 1
 1
@@ -89,7 +89,7 @@ CtPar
 1
 1
 1
-1.89199
+1.892
 CtParF0
 1
 1
@@ -1348,7 +1348,7 @@ const_per_interest1
 1
 1
 1
-21363512
+2.13635e+07
 const_per_interest2
 1
 1
@@ -1408,7 +1408,7 @@ const_per_interest_total
 1
 1
 1
-21363512
+2.13635e+07
 const_per_months1
 1
 1
@@ -1505,7 +1505,7 @@ const_per_principal1
 1
 1
 1
-534087808
+5.34088e+08
 const_per_principal2
 1
 1
@@ -1535,13 +1535,13 @@ const_per_principal_total
 1
 1
 1
-534087808
+5.34088e+08
 const_per_total1
 1
 1
 1
 1
-26704390
+2.67044e+07
 const_per_total2
 1
 1
@@ -1601,7 +1601,7 @@ construction_financing_cost
 1
 1
 1
-26704390
+2.67044e+07
 cooling_tower_operation_mode
 1
 1
@@ -1690,7 +1690,7 @@ csp.tr.cost.contingency
 1
 1
 1
-29865010
+2.9865e+07
 csp.tr.cost.contingency_percent
 1
 1
@@ -1726,7 +1726,7 @@ csp.tr.cost.epc.total
 1
 1
 1
-50215884
+5.02159e+07
 csp.tr.cost.fossil_backup
 1
 1
@@ -1804,7 +1804,7 @@ csp.tr.cost.plm.total
 1
 1
 1
-9103577
+9.10358e+06
 csp.tr.cost.power_plant
 1
 1
@@ -1834,7 +1834,7 @@ csp.tr.cost.sales_tax.total
 1
 1
 1
-18260322
+1.82603e+07
 csp.tr.cost.sales_tax.value
 1
 1
@@ -1846,7 +1846,7 @@ csp.tr.cost.site_improvements
 1
 1
 1
-21939496
+21939495
 csp.tr.cost.site_improvements.area
 1
 1
@@ -1864,7 +1864,7 @@ csp.tr.cost.solar_field
 1
 1
 1
-131636968
+131636970
 csp.tr.cost.solar_field.area
 1
 1
@@ -1882,7 +1882,7 @@ csp.tr.cost.storage
 1
 1
 1
-109411760
+1.09412e+08
 csp.tr.cost.storage.cost_per_kwht
 1
 1
@@ -222668,7 +222668,7 @@ property_assessed_value
 1
 1
 1
-534087808
+5.34088e+08
 property_tax_rate
 1
 1
@@ -222870,19 +222870,19 @@ total_direct_cost
 1
 1
 1
-456508032
+4.56508e+08
 total_indirect_cost
 1
 1
 1
 1
-59319460
+5.93195e+07
 total_installed_cost
 1
 1
 1
 1
-534087808
+5.34088e+08
 track_mode
 1
 1
@@ -223388,7 +223388,7 @@ ui_hce_hl_term_4
 1
 1
 1
-40822832
+40822830
 ui_hce_name
 1
 4
@@ -223455,7 +223455,7 @@ ui_hce_thermloss_weighted_m2
 1
 1
 1
-36.1006
+36.1005
 ui_hce_weighted_optical_efficiency
 1
 1
@@ -223467,7 +223467,7 @@ ui_hce_weighted_thermal_losses
 1
 1
 1
-36.1006
+36.1005
 ui_land_multiplier
 1
 1
@@ -223858,13 +223858,12 @@ ur_demand_min
 1
 1
 400
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -223995,6 +223994,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

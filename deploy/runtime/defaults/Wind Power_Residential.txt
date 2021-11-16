@@ -1,5 +1,5 @@
 1
-554
+555
 a_error_test_number
 1
 1
@@ -3346,7 +3346,7 @@ transmission_cost
 1
 1
 1
-4246268
+4.24627e+06
 transportation_cost
 1
 1

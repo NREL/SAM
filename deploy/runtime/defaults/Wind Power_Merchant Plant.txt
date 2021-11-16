@@ -1,5 +1,5 @@
 1
-663
+664
 a_error_test_number
 1
 1
@@ -222973,7 +222973,7 @@ total_obos_cost
 1
 1
 1
-746300352
+7.463e+08
 total_obos_cost_per_kw
 1
 1
@@ -223321,13 +223321,12 @@ ur_demand_min
 1
 1
 0
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -223457,6 +223456,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

@@ -1309,7 +1309,7 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-10098
+10562
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
 	show('msg_unused_items', value('ur_has_unused_items'));

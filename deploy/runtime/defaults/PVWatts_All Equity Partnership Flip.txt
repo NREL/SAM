@@ -1,5 +1,5 @@
 1
-507
+508
 ac_nameplate
 1
 1
@@ -528,7 +528,7 @@ const_per_principal1
 1
 1
 1
-51382248
+51382250
 const_per_principal2
 1
 1
@@ -558,13 +558,13 @@ const_per_principal_total
 1
 1
 1
-51382248
+51382250
 const_per_total1
 1
 1
 1
 1
-1027640
+1027645
 const_per_total2
 1
 1
@@ -624,7 +624,7 @@ construction_financing_cost
 1
 1
 1
-1027640
+1027645
 contingency
 1
 1
@@ -654,7 +654,7 @@ cost_dev_fee_value
 1
 1
 1
-1541470
+1.54147e+06
 cost_equity_closing
 1
 1
@@ -1127,7 +1127,7 @@ engr_total
 1
 1
 1
-3500000
+3.5e+06
 equip1_reserve_cost
 1
 1
@@ -1641,7 +1641,7 @@ inverterarray_power_w
 1
 1
 1
-41666668
+4.16667e+07
 is_advanced
 1
 1
@@ -2354,7 +2354,7 @@ property_assessed_value
 1
 1
 1
-51382248
+51382250
 property_tax_rate
 1
 1
@@ -2648,7 +2648,7 @@ total_installed_cost
 1
 1
 1
-51382248
+51382250
 total_land_area
 1
 1
@@ -2877,13 +2877,12 @@ ur_demand_min
 1
 1
 0
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -3013,6 +3012,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

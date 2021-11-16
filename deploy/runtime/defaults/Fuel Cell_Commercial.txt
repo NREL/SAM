@@ -1,5 +1,5 @@
 1
-768
+769
 LeadAcid_q10
 1
 1
@@ -4221,7 +4221,7 @@ total_land_area
 1
 1
 1
-0.699047
+0.699048
 total_module_area
 1
 1
@@ -4251,7 +4251,7 @@ ui_array_land_area_acres
 1
 1
 1
-0.699047
+0.699048
 ui_array_land_area_ha
 1
 1
