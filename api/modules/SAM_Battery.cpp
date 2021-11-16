@@ -200,6 +200,12 @@ SAM_EXPORT void SAM_Battery_BatterySystem_en_batt_nset(SAM_table ptr, double num
 	});
 }
 
+SAM_EXPORT void SAM_Battery_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_standalone_batt", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_BatterySystem_om_replacement_cost1_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_replacement_cost1", arr, length);
@@ -554,6 +560,12 @@ SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_cycle_cost_choice_nset(SAM_tabl
 	});
 }
 
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_btm_can_discharge_to_grid_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_auto_btm_can_discharge_to_grid", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_charge_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_auto_can_charge", number);
@@ -749,6 +761,12 @@ SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_target_power_aset(SAM_table ptr
 SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_target_power_monthly_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_target_power_monthly", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_BatteryDispatch_dispatch_manual_btm_discharge_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dispatch_manual_btm_discharge_to_grid", arr, length);
 	});
 }
 
@@ -1446,6 +1464,17 @@ SAM_EXPORT double SAM_Battery_BatterySystem_en_batt_nget(SAM_table ptr, SAM_erro
 
 
 
+SAM_EXPORT double SAM_Battery_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_standalone_batt", &result))
+		make_access_error("SAM_Battery", "en_standalone_batt");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battery_BatterySystem_om_replacement_cost1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2109,6 +2138,17 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_cycle_cost_choice_nget(SAM_ta
 
 
 
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_btm_can_discharge_to_grid_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_auto_btm_can_discharge_to_grid", &result))
+		make_access_error("SAM_Battery", "batt_dispatch_auto_btm_can_discharge_to_grid");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2472,6 +2512,18 @@ SAM_EXPORT double* SAM_Battery_BatteryDispatch_batt_target_power_monthly_aget(SA
 	result = ssc_data_get_array(ptr, "batt_target_power_monthly", length);
 	if (!result)
 		make_access_error("SAM_Battery", "batt_target_power_monthly");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Battery_BatteryDispatch_dispatch_manual_btm_discharge_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dispatch_manual_btm_discharge_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Battery", "dispatch_manual_btm_discharge_to_grid");
 	});
 	return result;
 }

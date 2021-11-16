@@ -1,5 +1,5 @@
 1
-502
+503
 LeadAcid_q10
 1
 1
@@ -1746,6 +1746,12 @@ dscr_reserve_months
 1
 1
 0
+en_batt
+1
+1
+1
+1
+1
 en_standalone_batt
 1
 1

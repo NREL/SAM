@@ -2142,6 +2142,14 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_BatterySystem_en_batt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set en_standalone_batt: Enable standalone battery storage model [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Merchantplant_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set grid_to_batt: Electricity to battery from grid [kW]
 	 * options: None
 	 * constraints: None
@@ -3034,6 +3042,8 @@ extern "C"
 	SAM_EXPORT double SAM_Merchantplant_BatterySystem_battery_per_kWh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_BatterySystem_en_batt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_BatterySystem_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
