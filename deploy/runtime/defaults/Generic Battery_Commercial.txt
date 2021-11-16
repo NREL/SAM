@@ -2755,6 +2755,12 @@ system_capacity
 1
 1
 215
+system_capacity_combined
+1
+1
+1
+1
+0
 system_use_lifetime_output
 1
 1
