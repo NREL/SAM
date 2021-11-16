@@ -1,7 +1,7 @@
 Financial Solution Mode Single Owner ETES
 859
-134
-7
+101
+5
 GroupBox
 
 1
@@ -21,14 +21,14 @@ Width
 850
 Height
 3
-128
+92
 Tool Tip
 5
 0
 Caption
 5
-13
-Solution Mode
+38
+Base PPA Price and IRR Evaluation Year
 Bold
 2
 1
@@ -42,10 +42,10 @@ Name
 flip_target_year
 X
 3
-495
+702
 Y
 3
-33
+30
 Width
 3
 60
@@ -94,45 +94,6 @@ BackColour
 TabOrder
 3
 3
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-570
-Y
-3
-15
-Width
-3
-279
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-15
-Escalation Rate
-Bold
-2
-1
 Label
 
 1
@@ -143,7 +104,7 @@ Name
 object 7
 X
 3
-579
+252
 Y
 3
 54
@@ -191,7 +152,7 @@ Name
 ppa_escalation
 X
 3
-723
+396
 Y
 3
 30
@@ -253,7 +214,7 @@ Name
 ppa_price_input
 X
 3
-231
+84
 Y
 3
 30
@@ -285,15 +246,7 @@ Description
 TabOrder
 3
 4294967295
-Label
 
-1
-13
-Name
-5
-21
-solution_mode_message
-X
 3
 18
 Y
@@ -337,7 +290,7 @@ AlignTop
 flip_target_year
 3
 1
-IRR target year
+IRR evaluation year
  
 PPA Price and IRR
 0
