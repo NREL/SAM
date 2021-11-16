@@ -743,6 +743,10 @@ void ResultsViewer::Setup(Simulation* sim)
 
                 value = md.scale * (double)vv->Value();
 
+                slab = md.label;
+                if (slab.IsEmpty())
+                    slab = m_sim->GetLabel(md.var);
+
                 if (std::isnan(value))
                     sval = vv->AsString();
                 else
@@ -752,11 +756,7 @@ void ResultsViewer::Setup(Simulation* sim)
                     else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
                     else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
 
-                    slab = md.label;
-                    if (slab.IsEmpty())
-                        slab = m_sim->GetLabel(md.var);
-
-                    wxString post = md.post;
+                     wxString post = md.post;
                     if (post.IsEmpty())
                         post = " " + m_sim->GetUnits(md.var);
 
