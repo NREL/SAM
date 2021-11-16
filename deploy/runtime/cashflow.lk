@@ -50,11 +50,37 @@ function is_batt_tech()
 	// may need to update to include PVWatts Battery, but as of 2020.2.29:
 	// no battery replacements for PVWatts Battery
 	// no retail purchases for PVWatts Battery because it is only behind-the-meter
+	tech = technology();
 	x = ( tech == 'PV Battery' || tech == 'Standalone Battery' ||
 	      tech == 'Generic Battery' || 
-	      ( tech == 'Fuel Cell' && value('en_batt') == true ) 
-	    );
+	      ( tech == 'Fuel Cell' && value('en_batt') == true ) );
 	return x;
+}
+
+function is_fom_fin()
+{
+	fin = financing();
+	x = ( fin == 'Single Owner' || 
+	      fin == 'Leveraged Partnership Flip' || 
+	      fin == 'All Equity Partnership Flip' ||
+	      fin == 'Sale Leaseback' ||
+	      fin == 'Merchant Plant');
+	return x;
+}
+
+function is_fuel_tech()
+{
+	tech = technology();
+	x = ( tech != 'Flat Plate PV' &&  
+          tech != 'PVWatts' &&  
+		  tech != 'High-X Concentrating PV' &&  
+          tech != 'Solar Water Heating' &&  
+          tech != 'Wind Power' && 
+          tech != 'Biopower' &&
+          tech != 'PV Battery' &&
+          tech != 'PVWatts Battery' &&
+          tech != 'Generic Battery' ); 
+     return x;     
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -113,6 +139,7 @@ function cf_revenue()
 	if ( fin == 'Merchant Plant' )
 	{
 		cfline( 'cf_energy_market_revenue', 0); 
+		cfline( 'cf_energy_purchases_value', 0); 
 		cfline( 'cf_ancillary_services_1_revenue', 0); 
 		cfline( 'cf_ancillary_services_2_revenue', 0); 
 		cfline( 'cf_ancillary_services_3_revenue', 0); 
@@ -141,8 +168,8 @@ function cf_revenue()
 	{
 		cfline( 'cf_ppa_price' , -2 );
 		cfline( 'cf_energy_value', 0); 
+		cfline( 'cf_energy_purchases_value', 0); 
 	}
-
 
 	if (tech == 'Fuel Cell')
 	{
@@ -179,16 +206,14 @@ function cf_om_expenses()
     tech = technology();
     fin = financing(); 
 
-    // should be ok to delete:
-    //ppa_merchant_fin = (fin == 'Host Developer' || fin == 'Single Owner' || fin == 'Merchant Plant' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' );
     if ( is_batt_tech() )
 	{
 		cfline( 'cf_battery_replacement_cost', 0);
-		// electricity purchases to charge battery only available for Single Owner as of 2020.2.29
-		if ( fin == 'Single Owner' ) 
-		{
-			cfline('cf_utility_bill', 0 ); 
-		}
+	}
+
+	if ( is_fom_fin() ) 
+	{
+		cfline('cf_utility_bill', 0 ); 
 	}
 	if (tech == 'Fuel Cell')
 	{
@@ -674,7 +699,7 @@ function cf_levelized_metrics()
 	cfline('AFTER-TAX LEVELIZED COE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1); 
 	cfline('cf_annual_costs', 0);
 	if ( has_ppa_revenue ) { cfline('cf_energy_value', 0); }
-	cfline('cf_energy_net', 0);  
+	cfline('cf_energy_sales', 0);  
 	cfline( '' ); 
 	cfline('npv_annual_costs',0 ); 
 	cfline('npv_energy_nom', 0); 

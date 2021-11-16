@@ -1,5 +1,5 @@
 1
-549
+616
 LeadAcid_q10
 1
 1
@@ -1060,13 +1060,13 @@ battery_total
 1
 1
 1
-1.43848e+06
+1438480
 battery_total_cost_lcos
 1
 1
 1
 1
-1.43848e+06
+1438480
 battery_voltage_shown
 1
 1
@@ -1088,7 +1088,7 @@ capacity_factor_calc
 1
 1
 1
-41.856
+19.2
 cbi_fed_amount
 1
 1
@@ -1233,12 +1233,18 @@ cbi_uti_tax_sta
 1
 1
 1
+chk_update_peaks
+1
+1
+1
+1
+0
 const_per_interest1
 1
 1
 1
 1
-1.49825e+06
+1498250
 const_per_interest2
 1
 1
@@ -1298,7 +1304,7 @@ const_per_interest_total
 1
 1
 1
-1.49825e+06
+1498250
 const_per_months1
 1
 1
@@ -1395,7 +1401,7 @@ const_per_principal1
 1
 1
 1
-149824720
+149825000
 const_per_principal2
 1
 1
@@ -1425,13 +1431,13 @@ const_per_principal_total
 1
 1
 1
-149824720
+149825000
 const_per_total1
 1
 1
 1
 1
-2.99649e+06
+2996490
 const_per_total2
 1
 1
@@ -1491,7 +1497,7 @@ construction_financing_cost
 1
 1
 1
-2.99649e+06
+2996490
 conv_eff
 1
 1
@@ -1509,13 +1515,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-1.19245e+06
+1192450
 cost_dev_fee_value
 1
 1
 1
 1
-4.49474e+06
+4494740
 cost_equity_closing
 1
 1
@@ -2013,7 +2019,11 @@ en_batt
 1
 1
 1
+<<<<<<< HEAD
 en_standalone_batt
+=======
+en_electricity_rates
+>>>>>>> develop
 1
 1
 1
@@ -2090,7 +2100,7 @@ first_year_output
 1
 1
 1
-73331712
+33638400
 first_year_output_peak
 1
 1
@@ -2126,7 +2136,7 @@ genericsys.cost.contingency
 1
 1
 1
-6071924
+6071920
 genericsys.cost.contingency_percent
 1
 1
@@ -2144,7 +2154,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-12751040
+12751000
 genericsys.cost.epc.percent
 1
 1
@@ -2156,7 +2166,7 @@ genericsys.cost.epc.total
 1
 1
 1
-12751040
+12751000
 genericsys.cost.installed_per_capacity
 1
 1
@@ -2192,7 +2202,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-4462864
+4462860
 genericsys.cost.plm.percent
 1
 1
@@ -2204,7 +2214,7 @@ genericsys.cost.plm.total
 1
 1
 1
-4462864
+4462860
 genericsys.cost.sales_tax.percent
 1
 1
@@ -2216,7 +2226,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-5100416
+5100420
 genericsys.cost.sales_tax.value
 1
 1
@@ -2522,6 +2532,12 @@ insurance_rate
 1
 1
 0.5
+is_btm
+1
+1
+1
+1
+0
 itc_fed_amount
 1
 1
@@ -3022,7 +3038,7 @@ property_assessed_value
 1
 1
 1
-149824720
+149825000
 property_tax_rate
 1
 1
@@ -3215,6 +3231,12 @@ pv.storage.p6.gridcharge
 1
 1
 0
+rate_escalation
+1
+2
+1
+1
+0
 real_discount_rate
 1
 1
@@ -3297,6 +3319,12 @@ system_capacity
 1
 1
 20000
+system_capacity_combined
+1
+1
+1
+1
+0
 system_use_lifetime_output
 1
 1
@@ -3349,31 +3377,31 @@ total_direct_cost
 1
 1
 1
-127510400
+127510000
 total_indirect_cost
 1
 1
 1
 1
-17213904
+17213900
 total_installed_cost
 1
 1
 1
 1
-149824720
+149825000
 total_system_indirect_cost
 1
 1
 1
 1
-17213904
+17213900
 ui_batt_life_model
 1
 1
 1
 1
-1
+0
 ui_copy_batt_discharge_percent_1
 1
 1
@@ -3410,6 +3438,12 @@ ui_copy_batt_discharge_percent_6
 1
 1
 25
+ui_electricity_rate_option
+1
+1
+1
+1
+0
 ui_pv_capacity
 1
 1
@@ -3422,9 +3456,431 @@ ui_step_minutes
 1
 1
 60
+ur_annual_min_charge
+1
+1
+1
+1
+0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+0
+ur_cr_sched
+1
+3
+1
+1
+0
+ur_cr_tou_mat
+1
+3
+1
+1
+0
+ur_dc_billing_demand_periods
+1
+3
+1
+2
+1 1 
+
+ur_dc_enable
+1
+1
+1
+1
+0
+ur_dc_flat_mat
+1
+3
+12
+4
+0 1 1e+38 0 
+1 1 1e+38 0 
+2 1 1e+38 0 
+3 1 1e+38 0 
+4 1 1e+38 0 
+5 1 1e+38 0 
+6 1 1e+38 0 
+7 1 1e+38 0 
+8 1 1e+38 0 
+9 1 1e+38 0 
+10 1 1e+38 0 
+11 1 1e+38 0 
+
+ur_dc_is_shown
+1
+1
+1
+1
+1
+ur_dc_sched_weekday
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_dc_sched_weekend
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_dc_tou_mat
+1
+3
+2
+4
+1 1 1e+38 0 
+2 1 1e+38 0 
+
+ur_demand_attrs
+1
+4
+0
+ur_demand_history
+1
+1
+1
+1
+0
+ur_demand_max
+1
+1
+1
+1
+0
+ur_demand_min
+1
+1
+1
+1
+0
+ur_demand_reactive_power_charge
+1
+1
+1
+1
+0
+ur_demand_window
+1
+1
+1
+1
+0
+ur_desc_is_shown
+1
+1
+1
+1
+0
+ur_description
+1
+4
+0
+ur_ec_is_shown
+1
+1
+1
+1
+1
+ur_ec_sched_weekday
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_ec_sched_weekend
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_ec_tou_mat
+1
+3
+1
+6
+1 1 1e+38 0 0.06 0 
+
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
+ur_en_ts_sell_rate
+1
+1
+1
+1
+0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
+ur_end_date
+1
+4
+5
+empty
+ur_energy_attrs
+1
+4
+0
+ur_energy_history
+1
+1
+1
+1
+0
+ur_energy_max
+1
+1
+1
+1
+0
+ur_energy_min
+1
+1
+1
+1
+0
+ur_fixed_attrs
+1
+4
+0
+ur_fuel_adjustments_monthly
+1
+2
+1
+1
+0
+ur_has_unused_items
+1
+1
+1
+1
+0
+ur_is_default
+1
+1
+1
+1
+0
+ur_lookback_months
+1
+2
+1
+1
+0
+ur_metering_option
+1
+1
+1
+1
+4
+ur_monthly_fixed_charge
+1
+1
+1
+1
+0
+ur_monthly_min_charge
+1
+1
+1
+1
+0
+ur_name
+1
+4
+0
+ur_nm_credit_month
+1
+1
+1
+1
+11
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
+ur_nm_yearend_sell_rate
+1
+1
+1
+1
+0
+ur_phase_wiring
+1
+4
+0
+ur_rate_notes
+1
+4
+0
+ur_ratedata_filename
+1
+4
+0
+ur_schedule_name
+1
+4
+5
+empty
+ur_service_type
+1
+4
+0
+ur_source
+1
+4
+5
+empty
+ur_start_date
+1
+4
+5
+empty
+ur_ts_buy_rate
+1
+2
+1
+1
+0
+ur_ts_sell_rate
+1
+2
+1
+1
+0
+ur_unused_is_shown
+1
+1
+1
+1
+0
+ur_uri
+1
+4
+5
+empty
+ur_utility
+1
+4
+5
+empty
+ur_voltage_category
+1
+4
+0
+ur_voltage_max
+1
+1
+1
+1
+0
+ur_voltage_min
+1
+1
+1
+1
+0
+ur_yearzero_usage_peaks
+1
+2
+1
+1
+0
 user_capacity_factor
 1
 1
 1
 1
-43.6
+20

@@ -1,5 +1,5 @@
 1
-291
+292
 adjust
 1
 5
@@ -782,6 +782,12 @@ insurance_rate
 1
 1
 1
+is_btm
+1
+1
+1
+1
+1
 itc_fed_amount
 1
 1
@@ -1347,6 +1353,12 @@ system_capacity
 1
 1
 200
+system_capacity_combined
+1
+1
+1
+1
+0
 system_use_lifetime_output
 1
 1

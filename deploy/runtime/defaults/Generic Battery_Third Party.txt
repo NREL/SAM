@@ -1505,6 +1505,12 @@ inflation_rate
 1
 1
 2.5
+is_btm
+1
+1
+1
+1
+0
 lease_escalation
 1
 1
@@ -1934,6 +1940,12 @@ system_capacity
 1
 1
 4
+system_capacity_combined
+1
+1
+1
+1
+0
 system_use_lifetime_output
 1
 1

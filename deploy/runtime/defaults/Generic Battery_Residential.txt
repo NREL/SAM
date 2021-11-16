@@ -1723,7 +1723,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-4132.33
+4132.32
 genericsys.cost.epc.percent
 1
 1
@@ -1735,7 +1735,7 @@ genericsys.cost.epc.total
 1
 1
 1
-4132.33
+4132.32
 genericsys.cost.installed_per_capacity
 1
 1
@@ -2107,6 +2107,12 @@ insurance_rate
 1
 1
 0
+is_btm
+1
+1
+1
+1
+1
 itc_fed_amount
 1
 1
@@ -2950,6 +2956,12 @@ system_capacity
 1
 1
 4
+system_capacity_combined
+1
+1
+1
+1
+0
 system_use_lifetime_output
 1
 1

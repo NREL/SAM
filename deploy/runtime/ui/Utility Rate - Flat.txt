@@ -1094,7 +1094,21 @@ TabOrder
 3
 3
 
-14
+15
+is_btm
+3
+1
+ 
+ 
+ 
+0
+8
+1
+1
+1
+1
+0
+Default
 rate_escalation
 3
 2
@@ -1295,19 +1309,32 @@ Sell Rate ($/kWh)|1
 DataArray
 
 0
-10098
+10562
 on_load{'Utility Rate - Flat'} = define(){
 	set_metering_billing_inputs(); 
 	show('msg_unused_items', value('ur_has_unused_items'));
+	refresh();
 };
 
-function is_fom_batt()
+function is_fom_bool()
 {
+	/*
 	is_batt_tech = ( technology() == 'PV Battery' 
 					|| technology() == 'Generic Battery' 
 					|| technology() == 'Fuel Cell');
-	is_fom = ( financing() == 'Single Owner' );
-	return ( is_batt_tech && is_fom );
+	*/
+	//No longer just for batteries
+	is_fom = ( financing() == 'Single Owner'
+				|| financing() == 'Sale Leaseback'
+				|| financing() == 'Leveraged Partnership Flip'
+				|| financing() == 'All Equity Partnership Flip');
+	return ( is_fom );
+}
+
+function is_merchant_plant() 
+{
+	is_mp = financing() == "Merchant Plant";
+	return (is_mp);
 }
 
 // set inputs on Utility Rate - Energy Charge form
@@ -1338,11 +1365,11 @@ function set_ec_schedule_inputs()
 		{
 			property('ur_ec_tou_mat','ShowColumn',4);
 		}
-		if (en_ts_sell || is_fom_batt() )
+		if (en_ts_sell || is_fom_bool() || is_merchant_plant() )
 		{
 			property('ur_ec_tou_mat','HideColumn',5);
 		}
-		elseif ( !is_fom_batt() )
+		elseif ( !is_fom_bool() || !is_merchant_plant() )
 		{
 			property('ur_ec_tou_mat','ShowColumn',5);
 		}
@@ -1368,17 +1395,17 @@ function set_ec_schedule_inputs()
 function set_metering_billing_inputs()
 {	
 	eme = value('ur_metering_option');
-	enable('ur_metering_option', !is_fom_batt());
-	enable('ur_en_ts_sell_rate', !is_fom_batt());
-	enable('ur_ts_sell_rate', !is_fom_batt());
-	show('lbl_metering_option',is_fom_batt());
+	enable('ur_metering_option', !is_fom_bool() && !is_merchant_plant());
+	enable('ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant());
+	enable('ur_ts_sell_rate', !is_fom_bool() && !is_merchant_plant());
+	show('lbl_metering_option',is_fom_bool() && !is_merchant_plant());
 	enable( 'ur_nm_yearend_sell_rate', eme==0 );
 	enable( 'ur_nm_credit_rollover', eme==0 );
 	enable( 'ur_nm_credit_month', eme==0 || eme==1 || eme==3 );
 	if (eme==2 || eme==3|| eme==4)
 	{
-		enable( 'ur_en_ts_sell_rate', !is_fom_batt() );
-		enable( 'ur_ts_sell_rate', value('ur_en_ts_sell_rate') && !is_fom_batt() );
+		enable( 'ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant() );
+		enable( 'ur_ts_sell_rate', value('ur_en_ts_sell_rate') && (!is_fom_bool() && !is_merchant_plant()) );
 		enable( 'ur_en_ts_buy_rate', true );
 		enable( 'ur_ts_buy_rate', value('ur_en_ts_buy_rate') );
 	}
@@ -1469,7 +1496,7 @@ on_change{'btnLoadRateData'} = define() {
 			value( 'ur_ratedata_filename', '' );
 			msgbox('Failed to load rate data from file!\nPlease check that it is correctly formatted. You can save the current rate to file to see what the file format looks like.');
 		}
-		if ( value('ur_metering_option') != 4 && is_fom_batt() )
+		if ( value('ur_metering_option') != 4 && is_fom_bool() )
 		{
 			metering_options = ['Net energy metering','Net Energy Metering with $ Credits','Net Billing','Net Billing with Carryover to Next Month','Buy All / Sell All'];
 			msgbox('Metering option not valid for FOM Battery!\nThe rate data you are loading uses the ' + metering_options[value('ur_metering_option')] + ' metering option. Front-of-meter systems with storage require the Buy All / Sell All metering option with no sell rates. Changing metering option to Buy All / Sell All. Please check the rate data to verify that it is appropriate for your analysis.');
@@ -1529,7 +1556,7 @@ on_change{'btnQueryOpenEI'} = define() {
 	value ('ur_annual_min_charge', hash{'annual_min_charge'});
 	
 	// metering option
-	if ( !is_fom_batt() ) {value('ur_metering_option',hash{'metering_option'});	}
+	if ( !is_fom_bool() ) {value('ur_metering_option',hash{'metering_option'});	}
 	value( 'ur_dc_enable', hash{'dc_enable'});
 	on_change{'ur_dc_enable'}(); // invoke callback for ur_ec_enable to set up enable/disable of widgets
 	

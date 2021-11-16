@@ -523,7 +523,7 @@ MultilineText
 1
 
 
-1485
+1829
 // This form is a copy of Financial Solution Flip Leaseback
 // so ppa_soln_mode radio button can have different labels
 // to indicate IRR target is for the tax investor for flip 
@@ -533,6 +533,7 @@ on_load{'Financial Solution Mode Single Owner'} = define()
 {
 	soln_mode_ctrl_refresh();
 	display_message();
+	on_change{'ppa_soln_mode'};
 };
 
 on_change{'ppa_soln_mode'} = define()
@@ -566,6 +567,11 @@ function display_message()
 	elseif( financing() == 'Community Solar' )
 	{
 		txt += 'Set PPA price or IRR target to zero if project only earns revenue from subscription payments on the Community Solar page.';
+	}
+	elseif ( value('ppa_soln_mode') == 0 && value('en_electricity_rates') == 0 )
+	{
+		clr = 'red';
+		txt += 'The Specify IRR Target option is not available with the Use PPA Price option on Electricity Purchases page. Either change the option on the Electricity Purchases page or use the Specify PPA Price option.';
 	}
 	property('solution_mode_message','Caption',txt);
 	property('solution_mode_message','TextColour',clr);

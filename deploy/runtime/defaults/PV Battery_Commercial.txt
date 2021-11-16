@@ -3591,7 +3591,7 @@ inverter_total
 1
 1
 1
-59846.3
+59846.4
 inverterarray_power
 1
 1
@@ -3616,6 +3616,12 @@ is_advanced
 1
 1
 0
+is_btm
+1
+1
+1
+1
+1
 itc_fed_amount
 1
 1
@@ -6310,7 +6316,7 @@ total_battery_indirect_cost
 1
 1
 1
-54859.1
+54859.2
 total_dc_inverter_capacity
 1
 1

@@ -2190,17 +2190,12 @@ void StochasticPanel::Simulate()
 
 	SimulationDialog tpd( "Preparing simulations...", nthread );
 
-//	std::vector<Simulation*> sims;
 	for (size_t i = 0; i < m_sims.size(); i++)
 		delete m_sims[i];
 	
 	m_sims.clear();
 
-
-
 	int count_sims = 1;
-
-
 
 	for (int i = 0; i < m_sd.N; i++)
 	{
@@ -2213,11 +2208,6 @@ void StochasticPanel::Simulate()
 
 			if (iname == m_weather_folder_varname)
 			{
-				// find nearest weather file to input vector sum value
-//				int ndx = (int)input_data(i, j);
-//				if ((ndx < 0) || (ndx >= m_weather_files.Count()))
-//					continue;
-//				wxString weatherFile = m_folder->GetValue() + "/" + m_weather_files[ndx];
 				wxString weather_file;
 				if (!GetWeatherFileForSum(m_input_data(i, j), &weather_file))
 					continue;
@@ -2244,8 +2234,6 @@ void StochasticPanel::Simulate()
 
 		if (tpd.Canceled())
 		{
-			for (size_t i = 0; i<m_sims.size(); i++)
-				delete m_sims[i];
 			return;
 		}
 		count_sims++;
@@ -2257,7 +2245,7 @@ void StochasticPanel::Simulate()
 
 	if ( nthread > (int)m_sims.size() ) nthread = m_sims.size();
 	tpd.NewStage("Calculating...", nthread);
-
+	
 	size_t nok = 0;
 	if ( m_useThreads->GetValue() )
 	{
