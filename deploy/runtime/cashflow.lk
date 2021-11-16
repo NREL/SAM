@@ -690,7 +690,7 @@ function cf_levelized_metrics()
 	cfline('AFTER-TAX LEVELIZED COE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1); 
 	cfline('cf_annual_costs', 0);
 	if ( has_ppa_revenue ) { cfline('cf_energy_value', 0); }
-	cfline('cf_energy_net', 0);  
+	cfline('cf_energy_sales', 0);  
 	cfline( '' ); 
 	cfline('npv_annual_costs',0 ); 
 	cfline('npv_energy_nom', 0); 
