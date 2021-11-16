@@ -128,6 +128,18 @@ SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_sky_model_nset(SAM_table ptr, 
 	});
 }
 
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_slope_azm_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "slope_azm", number);
+	});
+}
+
+SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "slope_tilt", number);
+	});
+}
+
 SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_tamb_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tamb", number);
@@ -369,6 +381,28 @@ SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_sky_model_nget(SAM_table ptr
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sky_model", &result))
 		make_access_error("SAM_Irradproc", "sky_model");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_slope_azm_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "slope_azm", &result))
+		make_access_error("SAM_Irradproc", "slope_azm");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_slope_tilt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "slope_tilt", &result))
+		make_access_error("SAM_Irradproc", "slope_tilt");
 	});
 	return result;
 }
