@@ -269,6 +269,18 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 								"Combine Cases Message", wxOK, this);
 							return;
 						}
+                        else if (fmod(8760, hourly_energy_this.ncells()) == 0 && (8760 / hourly_energy_this.ncells()) > 1) { //Three hour gen outputs for marine energy
+                            matrix_t<double> hourly_energy_multi_hour = hourly_energy_this;
+                            hourly_energy_this.resize(1, 8760);
+                            int hour_iter = 8760 / hourly_energy_multi_hour.ncells();
+                            for (size_t n = 0; n < 2920; n++) {
+                                for (size_t h = (hour_iter); h > 0 ; h--) {
+                                    hourly_energy_this[n * hour_iter + (hour_iter - h)] = hourly_energy_multi_hour[n];
+                                    
+                                }
+                            }
+
+                        }
 
 						for (int i = 0; i < 8760; i++) {
 							if (constant_generation) {

@@ -519,6 +519,22 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_rotlim_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set subarray1_slope_azm: Sub-array 1 terrain azimuth [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray1_slope_tilt: Sub-array 1 terrain tilt [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subarray1_tilt: Sub-array 1 Tilt [deg]
 	 * options: 0=horizontal,90=vertical
 	 * constraints: MIN=0,MAX=90
@@ -613,6 +629,22 @@ extern "C"
 	 * required if: ?=45
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_rotlim_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray2_slope_azm: Sub-array 2 terrain azimuth [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray2_slope_tilt: Sub-array 2 terrain tilt [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set subarray2_tilt: Sub-array 2 Tilt [deg]
@@ -711,6 +743,22 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_rotlim_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set subarray3_slope_azm: Sub-array 3 terrain azimuth [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray3_slope_tilt: Sub-array 3 terrain tilt [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subarray3_tilt: Sub-array 3 Tilt [deg]
 	 * options: 0=horizontal,90=vertical
 	 * constraints: MIN=0,MAX=90
@@ -805,6 +853,22 @@ extern "C"
 	 * required if: ?=45
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_rotlim_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray4_slope_azm: Sub-array 4 terrain azimuth [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray4_slope_tilt: Sub-array 4 terrain tilt [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set subarray4_tilt: Sub-array 4 Tilt [deg]
@@ -4094,6 +4158,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set batt_dispatch_auto_btm_can_discharge_to_grid: Behind the meter battery can discharge to grid? [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_btm_can_discharge_to_grid_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set batt_dispatch_auto_can_charge: System charging allowed for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
@@ -4102,7 +4174,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_clipcharge: Battery can charge from clipped power for automated dispatch? [0/1]
+	 * Set batt_dispatch_auto_can_clipcharge: Battery can charge from clipped power? [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4356,6 +4428,14 @@ extern "C"
 	 * required if: en_batt=1&batt_meter_position=0&batt_dispatch_choice=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_target_power_monthly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set dispatch_manual_btm_discharge_to_grid: Periods 1-6 behind the meter discharging to grid allowed?
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_dispatch_choice=3&batt_meter_position=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_btm_discharge_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set dispatch_manual_charge: Periods 1-6 charging from system allowed?
@@ -4984,6 +5064,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_rotlim_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_slope_azm_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_slope_tilt_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_tilt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_tilt_eq_lat_nget(SAM_table ptr, SAM_error *err);
@@ -5007,6 +5091,10 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_nstrings_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_rotlim_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_slope_azm_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_slope_tilt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_tilt_nget(SAM_table ptr, SAM_error *err);
 
@@ -5032,6 +5120,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_rotlim_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_slope_azm_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_slope_tilt_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_tilt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_tilt_eq_lat_nget(SAM_table ptr, SAM_error *err);
@@ -5055,6 +5147,10 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_nstrings_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_rotlim_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_slope_azm_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_slope_tilt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_tilt_nget(SAM_table ptr, SAM_error *err);
 
@@ -5949,6 +6045,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_btm_can_discharge_to_grid_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_charge_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nget(SAM_table ptr, SAM_error *err);
@@ -6014,6 +6112,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_target_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_target_power_monthly_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_btm_discharge_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_charge_aget(SAM_table ptr, int* length, SAM_error *err);
 
