@@ -671,7 +671,7 @@ Capacity Payment
 0
 Numeric
 
-357
+415
 equations{ 'cp_system_nameplate' } = define() {
 	return ${system_capacity}/1000;
 };
@@ -682,6 +682,8 @@ equations{ 'cp_battery_nameplate' } = define() {
 		{ x = ${batt_computed_bank_capacity}/1000; }
 	elseif ( t == 'PVWatts Battery' )	
 		{ x = ${batt_simple_kwh}/1000; }
+	elseif ( t == 'ETES' )
+		{ x = ${cp_system_nameplate}; }
 	else 
 		{ x = 0; }
 	return x;	

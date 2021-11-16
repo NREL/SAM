@@ -28,7 +28,7 @@ addconfig( 'ETES', ['Single Owner']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'Fuel Cell', ['Commercial', 'Single Owner']);
 addconfig( 'MEwave', ['LCOE Calculator', 'None']);
-addconfig( 'MEtidal', ['LCOE Calculator']);
+addconfig( 'MEtidal', ['LCOE Calculator', 'None']);
 addconfig( 'Geothermal Power', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator', 'None']);
 addconfig( 'Biopower', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -431,8 +431,7 @@ function setup_single_owner_Dispatch_pages()
 
   addpage( [[ 'Financial Solution Mode Single Owner ETES',
   			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
-			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true },
-			    { 'name'='Financial Curtailment Price', 'caption'='Curtailment Payments', 'collapsible'=true, 'collapsible_var'='revenue_curtailment_is_shown', 'collapsed_by_default'=true } ]],
+			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true } ]],
             { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
   addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
@@ -579,9 +578,9 @@ function setup_fuel_cell_pages_btm()
 				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
 	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
-		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], ['Battery Dispatch Empty'], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
+		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], ['Fuel Cell Dispatch Manual'], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
 		{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
-			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM', 'Fuel Cell Dispatch Manual' ], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
     setup_grid_page_with_outage();
 }
 
@@ -602,9 +601,10 @@ function setup_fuel_cell_pages_fom()
 					]],
 				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
-	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
-		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}],
-		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}]],
+	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
+		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
+		[ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
+		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}]],
 			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 	setup_grid_page();
@@ -1965,33 +1965,39 @@ setconfig( 'MEwave', 'None' );
 setmodules( ['wave_file_reader', 'mhk_wave']);
 setup_mewave_pages(0);
 
-function setup_metidal_pages()
+function setup_metidal_pages(lcoe_fcr)
 {
 	addpage( [[ 'Marine Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='me_tidal_resource' } );
 	addpage( [[ 'Marine Tidal Converter' ]], { 'sidebar'='Tidal Energy Converter', 'help'='me_tidal_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_tidal_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_tidal_losses' } );
-	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
-		{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
-		{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
-		{ 'sidebar'='Installation Costs: Device', 'help'='me_tidal_capital_costs'} );
-	addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
-		{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
-		{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
-		{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Cost Breakdown','collapsible'=true,'collapsible_var'='site_access_shown'},
-		{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Cost Breakdown','collapsible'=true,'collapsible_var'='assem_install_shown'},
-		{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
-		{ 'sidebar'='Installation Costs: BOS','help'='me_tidal_capital_costs'} );
-	addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Financial Itemized','caption' = 'Reserve Accounts Cost Breakdown', 'collapsible' = true,'collapsible_var'='financial_itemized_shown'}]],
-		{'sidebar'='Installation Costs: Financial','help'='me_tidal_capital_costs'});
-	addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Cost Breakdown','collapsible'=true,'collapsible_var'='opex_we_shown'},
-		{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
-		{'sidebar'='Operating Costs','help'='me_tidal_capital_costs'} );
+	if (lcoe_fcr == 1) {
+		addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
+			{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
+			{'name'='Marine Costs - Mooring','caption'='Mooring, Foundation, and Substructure Cost Breakdown','collapsible'=true,'collapsible_var'='mooring_shown'}]],
+			{ 'sidebar'='Installation Costs: Device', 'help'='me_tidal_capital_costs'} );
+		addpage( [[ 'Marine Costs - BoS',{'name'='Marine Costs - Development','caption' = 'Development Cost Breakdown','collapsible'=true,'collapsible_var'='development_shown'},
+			{'name'='Marine Costs - E&M','caption' = 'Engineering and Management Cost Breakdown','collapsible'=true,'collapsible_var'='e&m_shown'},
+			{'name'='Marine Costs - Electrical Infrastructure','caption' = 'Electrical Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='elec_infrac_shown'},
+			{'name'='Marine Costs - Site Access, Port & Staging','caption'= 'Site Access, Port and Staging Cost Breakdown','collapsible'=true,'collapsible_var'='site_access_shown'},
+			{'name'='Marine Costs - Assembly & Installation','caption'= 'Assembly and Installation Cost Breakdown','collapsible'=true,'collapsible_var'='assem_install_shown'},
+			{'name'='Marine Costs - Other Infrastructure','caption' = 'Other Infrastructure Cost Breakdown','collapsible'=true,'collapsible_var'='assem_other_infras_shown'} ]],
+			{ 'sidebar'='Installation Costs: BOS','help'='me_tidal_capital_costs'} );
+		addpage( [[ 'Marine Costs - Financial',{'name'='Marine Costs - Financial Itemized','caption' = 'Reserve Accounts Cost Breakdown', 'collapsible' = true,'collapsible_var'='financial_itemized_shown'}]],
+			{'sidebar'='Installation Costs: Financial','help'='me_tidal_capital_costs'});
+		addpage( [[ 'Marine Costs - O&M', {'name'='Marine Costs - Operations','caption'='Operations Cost Breakdown','collapsible'=true,'collapsible_var'='opex_we_shown'},
+			{'name'='Marine Costs - Maintenance','caption'='Maintenance Cost Breakdown','collapsible'=true,'collapsible_var'='maintenance_we_shown'} ]],
+			{'sidebar'='Operating Costs','help'='me_tidal_capital_costs'} );
+	}
 }
 setconfig( 'MEtidal', 'LCOE Calculator' );
 setmodules( ['mhk_tidal', 'lcoefcr']);
-setup_metidal_pages();
+setup_metidal_pages(1);
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
+
+setconfig( 'MEtidal', 'None' );
+setmodules( ['mhk_tidal'] );
+setup_metidal_pages(0);
 
 if ( en_pvsamv3 )
 {

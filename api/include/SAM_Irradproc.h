@@ -184,6 +184,22 @@ extern "C"
 	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_sky_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set slope_azm: Terrain azimuth [deg]
+	 * options: None
+	 * constraints: MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set slope_tilt: Terrain slope [deg]
+	 * options: None
+	 * constraints: MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Irradproc_IrradianceProcessor_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set tamb: Ambient Temperature (dry bulb temperature) [°C]
 	 * options: None
 	 * constraints: None
@@ -265,6 +281,10 @@ extern "C"
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_rotlim_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_sky_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_slope_azm_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_slope_tilt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Irradproc_IrradianceProcessor_tamb_nget(SAM_table ptr, SAM_error *err);
 

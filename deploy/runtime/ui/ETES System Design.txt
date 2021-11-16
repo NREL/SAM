@@ -408,7 +408,7 @@ Format
 0
 Decimals
 3
-0
+1
 Prefix
 5
 0
@@ -665,7 +665,7 @@ Format
 0
 Decimals
 3
-0
+1
 Prefix
 5
 0
@@ -727,7 +727,7 @@ Format
 0
 Decimals
 3
-0
+1
 Prefix
 5
 0
@@ -912,7 +912,7 @@ Default
 P_ref
 3
 1
-Design turbine gross output
+Cycle power (not including cooling parasitics)
 MWe
 System Design
 0
@@ -1178,7 +1178,7 @@ Default
 gross_net_conversion_factor
 3
 1
-Estimated gross to net conversion factor
+Estimated cycle to plant conversion factor
  
 System Design
 0
@@ -1206,7 +1206,7 @@ Default
 nameplate
 3
 1
-Estimated net output at design (nameplate)
+Estimated plant output at design (nameplate)
 MWe
 System Design
 0

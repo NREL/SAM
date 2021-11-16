@@ -146,6 +146,7 @@
 			"batt_look_ahead_hours": 18,
 			"batt_pv_ac_forecast": [0.000000],
 			"batt_pv_clipping_forecast": [0.000000],
+			"dispatch_manual_btm_discharge_to_grid": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"dispatch_manual_charge": [1.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"dispatch_manual_discharge": [0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"dispatch_manual_gridcharge": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],

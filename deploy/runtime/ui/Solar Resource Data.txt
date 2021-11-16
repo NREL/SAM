@@ -2624,7 +2624,7 @@ equations{'ui_step_minutes'} = define() {
 	return(${step}/60);
 };
 
-32883
+32890
 on_load{'Solar Resource Data'} = define() {
 	//msgbox('on load');
 	//hide legacy data for 2020.2.29 Patch 3
@@ -2756,10 +2756,13 @@ on_change{'btn_download'} = define() {
 // also return msg string description if invalid
 function test_decimal_degrees( loc_in ) 
 {
-	str = replace( loc_in, ', ', ',' );
-	//if ( strpos(str,',') < 0 ) { str = replace( loc_in, ' ', ',' ); }
-	str = replace( loc_in, ' ', ',' );
-	arr = split( str, ',' );
+	// if no comma, replace first space in string with comma
+	if ( strpos(loc_in,',') < 0 ) 
+	{ 
+		x = strpos( ' ' );
+		ch( loc_in, x, ',' ); 
+	}
+	arr = split( loc_in, ',' );
 	msg = 'For geocoding: ';
 	if ( #arr == 2 ) // loc_in may be a lat/lon pair
 	{
@@ -2779,7 +2782,7 @@ function test_decimal_degrees( loc_in )
 		}
 		elseif ( !is_string && !is_out_of_range )
 		{
-			loc_out = str;
+			loc_out = loc_in;
 			msg += '\"' + loc_in + '\"' + ' appears to be a valid lat/lon pair in Decimal Degrees.';
 		}
 		else
