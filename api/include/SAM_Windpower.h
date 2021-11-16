@@ -146,6 +146,14 @@ extern "C"
 	//
 
 	/**
+	 * Set max_turbine_override: Override the max number of turbines for wake modeling [numTurbines]
+	 * options: set new max num turbines
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Windpower_Farm_max_turbine_override_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set system_capacity: Nameplate capacity [kW]
 	 * options: None
 	 * constraints: MIN=0
@@ -443,6 +451,8 @@ extern "C"
 	/**
 	 * Farm Getters
 	 */
+
+	SAM_EXPORT double SAM_Windpower_Farm_max_turbine_override_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Farm_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
