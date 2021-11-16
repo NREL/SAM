@@ -1560,7 +1560,7 @@ flip_target_year
 1
 1
 1
-10
+20
 gross_net_conversion_factor
 1
 1
@@ -2446,7 +2446,7 @@ ppa_price_input
 2
 1
 1
-0
+0.1
 ppa_soln_mode
 1
 1
