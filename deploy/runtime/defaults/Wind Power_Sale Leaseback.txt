@@ -3463,7 +3463,7 @@ ppa_soln_mode
 1
 1
 1
-0
+1
 project_management_usd
 1
 1
@@ -3955,7 +3955,7 @@ total_obos_cost
 1
 1
 1
-7.463e+08
+746300000
 total_obos_cost_per_kw
 1
 1

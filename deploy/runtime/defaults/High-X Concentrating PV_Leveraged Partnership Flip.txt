@@ -532,7 +532,7 @@ const_per_principal1
 1
 1
 1
-6.07946e+06
+6079460
 const_per_principal2
 1
 1
@@ -562,7 +562,7 @@ const_per_principal_total
 1
 1
 1
-6.07946e+06
+6079460
 const_per_total1
 1
 1
@@ -1513,7 +1513,7 @@ hcpv.cost.module.totalcost
 1
 1
 1
-3.15464e+06
+3154640
 hcpv.cost.modulearray.area
 1
 1
@@ -2761,7 +2761,7 @@ property_assessed_value
 1
 1
 1
-6.07946e+06
+6079460
 property_tax_rate
 1
 1
@@ -2978,7 +2978,7 @@ total_direct_cost
 1
 1
 1
-5.50025e+06
+5500250
 total_indirect_cost
 1
 1
@@ -2990,7 +2990,7 @@ total_installed_cost
 1
 1
 1
-6.07946e+06
+6079460
 tz
 1
 1
