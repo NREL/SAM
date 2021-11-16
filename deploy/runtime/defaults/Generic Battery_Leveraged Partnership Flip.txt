@@ -1,5 +1,5 @@
 1
-627
+628
 LeadAcid_q10
 1
 1
@@ -3367,6 +3367,12 @@ system_capacity
 1
 1
 20000
+system_capacity_combined
+1
+1
+1
+1
+0
 system_use_lifetime_output
 1
 1

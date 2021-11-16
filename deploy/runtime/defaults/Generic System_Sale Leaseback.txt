@@ -1,5 +1,5 @@
 1
-394
+395
 adjust
 1
 5
@@ -2006,6 +2006,12 @@ system_capacity
 1
 1
 100000
+system_capacity_combined
+1
+1
+1
+1
+0
 system_use_lifetime_output
 1
 1
