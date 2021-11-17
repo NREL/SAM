@@ -51,7 +51,7 @@ function is_batt_tech()
 	// no battery replacements for PVWatts Battery
 	// no retail purchases for PVWatts Battery because it is only behind-the-meter
 	tech = technology();
-	x = ( tech == 'PV Battery' || 
+	x = ( tech == 'PV Battery' || tech == 'Standalone Battery' ||
 	      tech == 'Generic Battery' || 
 	      ( tech == 'Fuel Cell' && value('en_batt') == true ) );
 	return x;
@@ -221,8 +221,17 @@ function cf_om_expenses()
 		cfline( 'cf_fuelcell_replacement_cost', 0);
 		cfline( 'cf_om_fixed2_expense,cf_om_capacity2_expense', 2); 
 	}
-
-	if ( is_fuel_tech() == true ) { cfline('cf_om_fuel_expense', 2); }
+    fuel_tech = ( tech != 'Flat Plate PV' &&  
+                 tech != 'PVWatts' &&  
+                 tech != 'High-X Concentrating PV' &&  
+                 tech != 'Solar Water Heating' &&  
+                 tech != 'Wind Power' && 
+                 tech != 'Biopower' &&
+                 tech != 'PV Battery' &&
+                 tech != 'Standalone Battery' &&
+                 tech != 'PVWatts Battery' &&
+                 tech != 'Generic Battery' ); 
+	if ( fuel_tech == true ) { cfline('cf_om_fuel_expense', 2); }
 	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_1_expense', 0); }
 	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_2_expense', 0); }
 	// do not use recapitalization until geothermal issues resolved
@@ -704,7 +713,8 @@ function cf_levelized_metrics()
 		cfline('lppa_nom',2);
 	}
 	
-	if ((tech == "PV Battery" || tech == "PVWatts Battery" || tech == "Generic Battery" || tech == "Fuel Cell"))
+	if ((tech == "PV Battery" || tech == "Standalone Battery" || tech == "PVWatts Battery" || tech == "Generic Battery" || tech == "Fuel Cell")
+		&& has_roe)
 	{
 		cfline( '' ); 
 		cfline('LCOS CALCULATIONS', -1);

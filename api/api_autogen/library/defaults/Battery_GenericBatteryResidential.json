@@ -34,7 +34,8 @@
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_surface_area": 1.59649,
-			"en_batt": 1
+			"en_batt": 1,
+			"en_standalone_batt": 0
 		},
 		"SystemOutput": {
 		},
@@ -134,7 +135,7 @@
 			"batt_dispatch_auto_can_fuelcellcharge": 0,
 			"batt_dispatch_auto_can_gridcharge": 0,
 			"batt_dispatch_charge_only_system_exceeds_load": 1,
-			"batt_dispatch_choice": 3,
+			"batt_dispatch_choice": 0,
 			"batt_dispatch_discharge_only_load_exceeds_system": 1,
 			"batt_dispatch_load_forecast_choice": 0,
 			"batt_dispatch_wf_forecast_choice": 0,

@@ -1,5 +1,5 @@
 1
-378
+380
 LeadAcid_q10
 1
 1
@@ -1326,6 +1326,12 @@ en_range
 1
 1
 1
+en_standalone_batt
+1
+1
+1
+1
+0
 en_wash
 1
 1

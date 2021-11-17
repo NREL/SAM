@@ -1,5 +1,5 @@
 1
-1182
+1183
 6par_aisc
 1
 1
@@ -2705,6 +2705,12 @@ en_electricity_rates
 1
 0
 en_snow_model
+1
+1
+1
+1
+0
+en_standalone_batt
 1
 1
 1

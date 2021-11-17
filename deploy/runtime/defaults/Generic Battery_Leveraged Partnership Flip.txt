@@ -1,5 +1,5 @@
 1
-628
+629
 LeadAcid_q10
 1
 1
@@ -1088,7 +1088,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+96
 cbi_fed_amount
 1
 1
@@ -2070,6 +2070,12 @@ en_electricity_rates
 1
 1
 1
+1
+en_standalone_batt
+1
+1
+1
+1
 0
 enable_interconnection_limit
 1
@@ -2142,7 +2148,7 @@ first_year_output
 1
 1
 1
-33638400
+168192000
 first_year_output_peak
 1
 1
@@ -3949,4 +3955,4 @@ user_capacity_factor
 1
 1
 1
-20
+43.6

@@ -36,6 +36,7 @@ addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host 
 addconfig( 'PV Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
 addconfig( 'PVWatts Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer'] );
 addconfig( 'Generic Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
+addconfig( 'Standalone Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
 addconfig( 'Retired', ['None']);
 
 // tree_parent for performance models defined in PopulateTech() in main.cpp
@@ -46,6 +47,7 @@ configopt( 'High-X Concentrating PV',     { 'tree_parent'='PV', 'long_name'='Hig
 configopt( 'PV Battery',               { 'tree_parent'='BATT', 'long_name'='Detailed PV-Battery',       'short_name'='PV-Battery',     'description'='Detailed photovoltaic model with battery storage' } );
 configopt( 'PVWatts Battery',          { 'tree_parent'='BATT', 'long_name'='PVWatts-Battery',     'short_name'='PVWatts-Battery',     'description'='PVWatts system model with battery storage' } );
 configopt( 'Generic Battery',          { 'tree_parent'='BATT', 'long_name'='Generic System-Battery',    'short_name'='Generic-Battery',     'description'='Generic system model with battery storage' } );
+configopt( 'Standalone Battery',       { 'tree_parent'='BATT', 'long_name'='Standalone Battery',    'short_name'='Battery',     'description'='Generic standalone battery storage' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind',                                   'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass Combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
 configopt( 'Geothermal Power',            { 'long_name'='Geothermal',                             'short_name'='Geothermal',       'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
@@ -124,6 +126,7 @@ function setup_pages_battery_cell_and_system(is_reopt)
 			  {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
+			  'Battery Standalone Enable',
 			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm' } );
 	}
 	else
@@ -135,6 +138,7 @@ function setup_pages_battery_cell_and_system(is_reopt)
 			  {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
+			  'Battery Standalone Enable',
 			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm' } );
 	}
 }
@@ -162,6 +166,18 @@ function setup_pages_battery_dispatch_btm()
 			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch BTM Outage SOC', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
 }
 
+function setup_pages_standalone_battery_dispatch_btm()
+{
+	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ],
+	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
+		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
+		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
+		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
+			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
+			      'exclusive_var' = 'batt_dispatch_excl',
+			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+}
+
 function setup_pages_battery_dispatch_fom()
 {
 	addpage( [
@@ -172,6 +188,17 @@ function setup_pages_battery_dispatch_fom()
 		],
 			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+}
+
+function setup_pages_standalone_battery_dispatch_fom()
+{
+	addpage( [
+		[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ],
+		[{'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
+		[{'name'='Battery Dispatch Manual', 'caption'='Manual'}],
+		],
+			{ 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl',
+			  'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 }
 
 function setup_pvwatts_battery_pages_behind_the_meter()
@@ -2313,6 +2340,85 @@ addpage( [[ 'Generic System Battery Costs' ]], { 'sidebar'='Installation Costs',
 addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_sale_leaseback_pages( );
 setup_electricity_purchases();
+
+// Standalone Battery /////////////////////////////////////////////////////////
+
+function setup_standalone_battery_pages(is_btm) {
+	if (is_btm) {
+		setup_pages_battery_cell_and_system(false); // false excludes UI form for REopt, only available for PV battery
+		setup_pages_battery_life();
+		setup_pages_standalone_battery_dispatch_btm();
+	}
+	else {
+		setup_pages_battery_cell_and_system(false); // false excludes UI form for REopt, only available for PV battery
+		setup_pages_battery_life();
+		setup_pages_standalone_battery_dispatch_fom();
+	}
+
+	setup_grid_page();
+}
+
+setconfig( 'Standalone Battery', 'Residential' );
+setmodules( ['belpe', 'battery',  'grid', 'utilityrate5', 'cashloan']);
+setup_standalone_battery_pages(true);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+setup_residential_pages( LOAD_BELPE_CRIT );
+
+setconfig( 'Standalone Battery', 'Commercial' );
+setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
+setup_standalone_battery_pages(true);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+setup_commercial_pages( LOAD_SIMPLE_CRIT ); //does not include building load calculator
+
+setconfig( 'Standalone Battery', 'Third Party' );
+setmodules( ['belpe', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setup_standalone_battery_pages(true);
+setup_thirdparty_pages( LOAD_BELPE_CRIT );
+
+setconfig( 'Standalone Battery', 'Host Developer' );
+setmodules( ['battery', 'grid', 'utilityrate5', 'host_developer']);
+setup_standalone_battery_pages(true);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+setup_host_developer_pages( LOAD_SIMPLE_CRIT );
+
+setconfig( 'Standalone Battery', 'Single Owner' );
+setmodules( ['battery', 'grid', 'utilityrate5', 'singleowner']);
+setup_standalone_battery_pages(false);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+setup_single_owner_pages( );
+setup_electricity_purchases();
+
+setconfig( 'Standalone Battery', 'Merchant Plant' );
+setmodules( ['battery', 'grid', 'merchantplant']);
+setup_standalone_battery_pages(false);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+setup_merchant_plant_pages( );
+
+setconfig( 'Standalone Battery', 'Leveraged Partnership Flip' );
+setmodules( ['battery', 'grid', 'levpartflip']);
+setup_standalone_battery_pages(false);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+setup_leveraged_partnership_flip_pages( );
+
+setconfig( 'Standalone Battery', 'All Equity Partnership Flip' );
+setmodules( ['battery', 'grid', 'equpartflip']);
+setup_standalone_battery_pages(false);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+setup_all_equity_partnership_flip_pages( );
+
+setconfig( 'Standalone Battery', 'Sale Leaseback' );
+setmodules( ['battery', 'grid', 'saleleaseback']);
+setup_standalone_battery_pages(false);
+addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+setup_sale_leaseback_pages( );
 
 // PVWatts Battery /////////////////////////////////////////////////////////
 setconfig( 'PVWatts Battery', 'Residential' );

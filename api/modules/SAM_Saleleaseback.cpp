@@ -1586,6 +1586,12 @@ SAM_EXPORT void SAM_Saleleaseback_BatterySystem_en_batt_nset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_Saleleaseback_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_standalone_batt", number);
+	});
+}
+
 SAM_EXPORT double SAM_Saleleaseback_Revenue_ppa_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4512,6 +4518,17 @@ SAM_EXPORT double SAM_Saleleaseback_BatterySystem_en_batt_nget(SAM_table ptr, SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_batt", &result))
 		make_access_error("SAM_Saleleaseback", "en_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Saleleaseback_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_standalone_batt", &result))
+		make_access_error("SAM_Saleleaseback", "en_standalone_batt");
 	});
 	return result;
 }

@@ -1,5 +1,5 @@
 1
-1228
+1229
 6par_aisc
 1
 1
@@ -2817,6 +2817,12 @@ en_dc_lifetime_losses
 1
 0
 en_snow_model
+1
+1
+1
+1
+0
+en_standalone_batt
 1
 1
 1

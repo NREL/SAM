@@ -1,5 +1,5 @@
 1
-526
+528
 LeadAcid_q10
 1
 1
@@ -1053,7 +1053,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+96
 cbi_fed_amount
 1
 1
@@ -1463,6 +1463,12 @@ en_batt
 1
 1
 1
+en_standalone_batt
+1
+1
+1
+1
+0
 enable_interconnection_limit
 1
 1
@@ -1576,7 +1582,7 @@ first_year_output
 1
 1
 1
-361613
+1808064
 first_year_output_peak
 1
 1
@@ -2496,7 +2502,7 @@ property_assessed_value
 1
 1
 1
-1.55131e+06
+1551310
 property_tax_rate
 1
 1
@@ -2784,7 +2790,7 @@ total_direct_cost
 1
 1
 1
-1.36679e+06
+1366790
 total_indirect_cost
 1
 1
@@ -2796,7 +2802,7 @@ total_installed_cost
 1
 1
 1
-1.55131e+06
+1551310
 total_system_indirect_cost
 1
 1
@@ -2862,7 +2868,7 @@ ui_net_capital_cost
 1
 1
 1
-1.55131e+06
+1551310
 ui_pv_capacity
 1
 1
