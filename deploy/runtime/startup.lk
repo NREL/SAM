@@ -58,7 +58,7 @@ configopt( 'PV Battery',                  { 'tree_parent'='BATT', 'long_name'='D
 configopt( 'PVWatts Battery',             { 'tree_parent'='BATT', 'long_name'='PVWatts-Battery',     'short_name'='PVWatts-Battery',     'description'='PVWatts system model with battery storage' } );
 configopt( 'Generic Battery',             { 'tree_parent'='BATT', 'long_name'='Generic System-Battery',    'short_name'='Generic-Battery',     'description'='Generic system model with battery storage' } );
 configopt( 'Standalone Battery',          { 'tree_parent'='BATT', 'long_name'='Standalone Battery',    'short_name'='Battery',     'description'='Generic standalone battery storage' } );
-configopt( 'ETES',         				  { 'tree_parent'='BATT', 'long_name'='Electric TES',          'short_name'='ETES',       'description'='Electric thermal energy storage' } );
+configopt( 'ETES',         				  { 'tree_parent'='BATT', 'long_name'='Electric Thermal Energy Storage',          'short_name'='ETES',       'description'='Electric thermal energy storage' } );
 configopt( 'Wind Power',                  { 'long_name'='Wind',                                   'short_name'='Wind',             'description'='Small or large wind power system' } );
 configopt( 'Biopower',                    { 'long_name'='Biomass Combustion',                     'short_name'='Biopower',         'description'='Biomass combustion for electricity generation' } );
 configopt( 'Geothermal Power',            { 'long_name'='Geothermal',                             'short_name'='Geothermal',       'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
@@ -918,7 +918,7 @@ setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='pt_system_costs'});
 addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_Dispatch_pages();
-setup_electricity_purchases();
+//setup_electricity_purchases();
 
 //setconfig('ETES', 'Merchant Plant');
 //setmodules( ['etes_electric_resistance', 'merchantplant']);
