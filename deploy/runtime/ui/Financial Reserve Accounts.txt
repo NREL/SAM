@@ -1671,16 +1671,25 @@ Reserve Accounts
 1.75
 Numeric
 
-298
+658
 
 equations{ 'mera_cost1' } = define() {
-	return ${system_capacity}*${equip1_reserve_cost}*1000; };
+	if (technology() == "Standalone Battery") 
+		return ${batt_ui_nominal_bank_power}*${equip1_reserve_cost}*1000; 
+	else
+		return ${system_capacity}*${equip1_reserve_cost}*1000; };
 
 equations{ 'mera_cost2' } = define() {
-	return ${system_capacity}*${equip2_reserve_cost}*1000; };
+	if (technology() == "Standalone Battery") 
+		return ${batt_ui_nominal_bank_power}*${equip2_reserve_cost}*1000; 
+	else
+		return ${system_capacity}*${equip2_reserve_cost}*1000; };
 
 equations{ 'mera_cost3' } = define() {
-	return ${system_capacity}*${equip3_reserve_cost}*1000; };
+	if (technology() == "Standalone Battery") 
+		return ${batt_ui_nominal_bank_power}*${equip3_reserve_cost}*1000; 
+	else
+		return ${system_capacity}*${equip3_reserve_cost}*1000; };
 
 
 163

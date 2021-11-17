@@ -6628,6 +6628,18 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_rec_inc_aget(SAM_table ptr, i
 
 
 
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_dot_reflection_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_reflection_loss", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "q_dot_reflection_loss");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_q_heater_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

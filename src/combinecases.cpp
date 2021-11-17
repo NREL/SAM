@@ -269,6 +269,18 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 								"Combine Cases Message", wxOK, this);
 							return;
 						}
+                        else if (fmod(8760, hourly_energy_this.ncells()) == 0 && (8760 / hourly_energy_this.ncells()) > 1) { //Three hour gen outputs for marine energy
+                            matrix_t<double> hourly_energy_multi_hour = hourly_energy_this;
+                            hourly_energy_this.resize(1, 8760);
+                            int hour_iter = 8760 / hourly_energy_multi_hour.ncells();
+                            for (size_t n = 0; n < 2920; n++) {
+                                for (size_t h = (hour_iter); h > 0 ; h--) {
+                                    hourly_energy_this[n * hour_iter + (hour_iter - h)] = hourly_energy_multi_hour[n];
+                                    
+                                }
+                            }
+
+                        }
 
 						for (int i = 0; i < 8760; i++) {
 							if (constant_generation) {
@@ -378,12 +390,15 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					}
 
 					// Set the generic system performance parameters
-					m_generic_case->Values().Get("system_capacity")->Set(nameplate);
-					m_generic_case->Values().Get("spec_mode")->Set(2);		// specify the third radio button
-					m_generic_case->Values().Get("derate")->Set(0);			// no additional losses- losses were computed in the individual models
-					m_generic_case->Values().Get("heat_rate")->Set(0);		// no fuel costs- accounted for in O&M fuel costs from subsystem cash flows
+					m_generic_case->Values().Get("system_capacity_combined")->Set(nameplate);	// the shown and editable 'Nameplate capacity' widget that also
+																								//  sets the hidden 'Nameplate capacity' widget value
+					m_generic_case->Values().Get("system_capacity")->Set(nameplate);			// the actual used system_capacity, which corresponds to the
+																								//  'Nameplate capacity' widget that is hidden when combining cases
+					m_generic_case->Values().Get("spec_mode")->Set(2);							// specify the third radio button
+					m_generic_case->Values().Get("derate")->Set(0);								// no additional losses- losses were computed in the individual models
+					m_generic_case->Values().Get("heat_rate")->Set(0);							// no fuel costs- accounted for in O&M fuel costs from subsystem cash flows
 					m_generic_case->Values().Get("energy_output_array")->Set(hourly_energy.data(), hourly_energy.ncells());
-					m_generic_case->VariableChanged("energy_output_array"); // triggers UI update
+					m_generic_case->VariableChanged("energy_output_array");						// triggers UI update
 
 					bool overwrite_capital = m_chkOverwriteCapital->IsChecked();
 					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {

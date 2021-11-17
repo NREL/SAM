@@ -524,7 +524,7 @@ MultilineText
 1
 
 
-1181
+1601
 // This form is a copy of Financial Solution Mode Single Owner
 // so ppa_soln_mode radio button can have different labels
 // to indicated IRR target is for the tax investor.
@@ -551,7 +551,6 @@ on_change{'flip_target_year'} = define () {
 	display_message();
 };
 
-
 function display_message() 
 {
 	txt = '';
@@ -561,7 +560,16 @@ function display_message()
 		txt += 'IRR target year is greater than the analysis period. ';
 		clr = 'red';
 	}
-	property('solution_mode_message','caption',txt);
+	if ( financing() == 'Host Developer' ) 
+	{
+		txt += 'IRR is the developer internal rate of return. ';
+	}
+	elseif ( value('ppa_soln_mode') == 0 && value('en_electricity_rates') == 0 )
+	{
+		clr = 'red';
+		txt += 'The Specify IRR Target option is not available with the Use PPA Price option on Electricity Purchases page. Either change the option on the Electricity Purchases page or use the Specify PPA Price option.';
+	}
+	property('solution_mode_message','Caption',txt);
 	property('solution_mode_message','TextColour',clr);
 }
 

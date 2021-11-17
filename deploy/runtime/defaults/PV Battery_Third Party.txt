@@ -1,5 +1,5 @@
 1
-883
+886
 6par_aisc
 1
 1
@@ -1906,6 +1906,12 @@ en_snow_model
 1
 1
 0
+en_standalone_batt
+1
+1
+1
+1
+0
 en_wash
 1
 1
@@ -2919,6 +2925,12 @@ irrad_mode
 1
 0
 is_advanced
+1
+1
+1
+1
+0
+is_btm
 1
 1
 1
@@ -5485,13 +5497,12 @@ ur_demand_min
 1
 1
 0
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -5624,6 +5635,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

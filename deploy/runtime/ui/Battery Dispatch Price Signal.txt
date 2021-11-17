@@ -822,8 +822,8 @@ batt_dispatch_load_forecast_choice_psd
 Load forecast horizon options for price signal forecast
  
 Battery Dispatch Price Signal
-63
-Perfect look ahead|One day look ahead|Look ahead to custom load
+64
+Perfect look ahead|One day look behind|Look ahead to custom load
 1
 1
 1
@@ -887,7 +887,7 @@ Battery Dispatch Price Signal
 DataArray
 
 0
-2370
+2703
 on_load{'Battery Dispatch Price Signal'}=define()
 {	
 	psd_forecast_choice();
@@ -924,6 +924,11 @@ function enable_auto_inputs_btm(on_off)
 on_change{'batt_dispatch_wf_forecast_choice_psd'} = define() 
 {
 	psd_forecast_choice() ;
+	if (technology() == "Standalone Battery" && value('batt_dispatch_wf_forecast_choice_psd') == 2) {
+		msgbox("Standalone batteries do not take weather files as an input. Please select a different forecast option.");
+		enable('batt_select_weather_file_forecast_psd', false);
+		enable('batt_user_specified_weather_file_psd', false);
+	}
 };
 
 on_change{'batt_dispatch_load_forecast_choice_psd'} = define()

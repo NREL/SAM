@@ -1,5 +1,5 @@
 1
-832
+835
 LeadAcid_q10
 1
 1
@@ -3356,6 +3356,12 @@ is_advanced
 1
 1
 0
+is_btm
+1
+1
+1
+1
+0
 itc_fed_amount
 1
 1
@@ -4165,7 +4171,7 @@ ppa_soln_mode
 1
 1
 1
-0
+1
 prop_tax_assessed_decline
 1
 1
@@ -4697,7 +4703,13 @@ ui_batt_life_model
 1
 1
 1
+0
+ui_electricity_rate_option
 1
+1
+1
+1
+0
 ui_land_area_additional
 1
 1
@@ -4909,13 +4921,12 @@ ur_demand_min
 1
 1
 100
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -5047,6 +5058,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

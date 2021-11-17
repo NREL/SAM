@@ -1,5 +1,5 @@
 1
-665
+669
 LeadAcid_q10
 1
 1
@@ -1053,7 +1053,7 @@ capacity_factor_calc
 1
 1
 1
-19.2
+96
 cbi_fed_amount
 1
 1
@@ -2088,6 +2088,12 @@ en_batt
 1
 1
 1
+en_standalone_batt
+1
+1
+1
+1
+0
 enable_interconnection_limit
 1
 1
@@ -2249,7 +2255,7 @@ first_year_output
 1
 1
 1
-361613
+1808064
 first_year_output_peak
 1
 1
@@ -2699,6 +2705,12 @@ insurance_rate
 1
 1
 0
+is_btm
+1
+1
+1
+1
+1
 itc_fed_amount
 1
 1
@@ -3633,6 +3645,12 @@ system_capacity
 1
 1
 215
+system_capacity_combined
+1
+1
+1
+1
+0
 system_use_lifetime_output
 1
 1
@@ -3928,13 +3946,12 @@ ur_demand_min
 1
 1
 0
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -4067,6 +4084,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

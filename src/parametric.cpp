@@ -1224,7 +1224,7 @@ void ParametricViewer::SaveToCSV()
 		if (VarValue* vv = m_grid_data->GetVarValue(0, col)) {
 			wxString dat;
 			if (vv->Type() == VV_STRING) {
-				dat = m_grid_data->GetColLabelValue(col);
+				dat = '"' + m_grid_data->GetColLabelValue(col) + '"';
 
 				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
 					dat += "," + m_grid_data->GetValue(row, col);

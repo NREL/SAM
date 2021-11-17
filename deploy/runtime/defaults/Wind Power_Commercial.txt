@@ -1,5 +1,5 @@
 1
-557
+559
 a_error_test_number
 1
 1
@@ -2352,6 +2352,12 @@ interconnect_voltage
 1
 1
 137
+is_btm
+1
+1
+1
+1
+1
 itc_fed_amount
 1
 1
@@ -3274,7 +3280,7 @@ substation_cost
 1
 1
 1
-3129500
+3.1295e+06
 substructCont
 1
 1
@@ -3358,7 +3364,7 @@ transmission_cost
 1
 1
 1
-4246268
+4.24627e+06
 transportation_cost
 1
 1
@@ -3676,13 +3682,12 @@ ur_demand_min
 1
 1
 0
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -3812,6 +3817,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0
