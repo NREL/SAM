@@ -57,6 +57,58 @@ function is_batt_tech()
 	return x;
 }
 
+function is_fom_fin()
+{
+	fin = financing();
+	x = ( fin == 'Single Owner' || 
+	      fin == 'Leveraged Partnership Flip' || 
+	      fin == 'All Equity Partnership Flip' ||
+	      fin == 'Sale Leaseback' ||
+	      fin == 'Merchant Plant');
+	return x;
+}
+
+function is_debt_fin()
+{
+	fin = financing();
+	x = ( fin == 'Single Owner' || 
+		  fin == 'Host Developer' || 
+		  fin == 'Leveraged Partnership Flip' || 
+		  fin == 'Merchant Plant' ||
+		  fin == 'Community Solar' );
+	return x;
+}
+
+function is_land_lease_tech()
+{
+	tech = technology();
+	x = ( tech == 'PVWatts' ||
+		  tech == 'Flat Plate PV' ||
+		  tech == 'Empirical Trough' ||
+		  tech == 'MSPT' ||
+		  tech == 'Generic CSP System' ||
+		  tech == 'MSLF' ||
+		  tech == 'DSLF' ||
+		  tech == 'High-X Concentrating PV' ||
+		  tech == 'Physical Trough' );
+	return x;
+}
+
+function is_fuel_tech()
+{
+	tech = technology();
+	x = ( tech != 'Flat Plate PV' &&  
+          tech != 'PVWatts' &&  
+		  tech != 'High-X Concentrating PV' &&  
+          tech != 'Solar Water Heating' &&  
+          tech != 'Wind Power' && 
+          tech != 'Biopower' &&
+          tech != 'PV Battery' &&
+          tech != 'PVWatts Battery' &&
+          tech != 'Generic Battery' ); 
+     return x;     
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Functions for Results page cash flow tab
 ////////////////////////////////////////////////////////////////////////////////
@@ -87,10 +139,10 @@ function cf_savings()
 	cfline('minus:', -1, 0); 
 	cfline( 'elec_cost_with_system', 0); 
 	cfline('equals:', -1, 0);
-	if ( fin == "Host Developer" ) { cfline( 'annual_energy_value', 0); }
+	if ( fin == 'Host Developer' ) { cfline( 'annual_energy_value', 0); }
 	else { cfline( 'cf_energy_value', 0); }
 	if (tech == 'Fuel Cell') { cfline( 'cf_thermal_value', 0); }	
-	if ( fin == "Host Developer" )
+	if ( fin == 'Host Developer' )
 	{
 		cfline( '' );
 		cfline( 'cf_ppa_price' , -2 );
@@ -108,12 +160,12 @@ function cf_revenue()
 {
 	tech = technology();
 	fin = financing();
-	has_debt = ( fin == 'Single Owner' ) || ( fin == 'Host Developer' ) || ( fin == 'Leveraged Parntership Flip' ) || ( fin == 'Community Solar' );
 	cfline( 'REVENUE', -1);
 	if ( fin == 'Merchant Plant' )
 	{
 		cfline( 'cf_energy_market_revenue', 0); 
-		cfline( 'cf_ancillary_services_1_revenue', 0); 
+ 		cfline( 'cf_energy_purchases_value', 0);
+ 		cfline( 'cf_ancillary_services_1_revenue', 0); 
 		cfline( 'cf_ancillary_services_2_revenue', 0); 
 		cfline( 'cf_ancillary_services_3_revenue', 0); 
 		cfline( 'cf_ancillary_services_4_revenue', 0); 
@@ -140,7 +192,8 @@ function cf_revenue()
 	else
 	{
 		cfline( 'cf_ppa_price' , -2 );
-		cfline( 'cf_energy_value', 0); 
+		cfline( 'cf_energy_value', 0);
+ 		cfline( 'cf_energy_purchases_value', 0);  
 	}
 
 
@@ -148,7 +201,7 @@ function cf_revenue()
 	{
 		cfline( 'cf_thermal_value', 0);
 	}
-	if ( has_debt )
+	if ( is_debt_fin() )
 	{
 		is_pbi_for_ds = ( value('pbi_fed_for_ds')==1 || value('pbi_sta_for_ds')==1 || value('pbi_uti_for_ds')==1 || value('pbi_oth_for_ds')==1 );
 		if ( is_pbi_for_ds )
@@ -174,21 +227,21 @@ function cf_revenue()
 
 function cf_om_expenses() 
 { 
-	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
-	
     tech = technology();
     fin = financing(); 
 
-    // should be ok to delete:
-    //ppa_merchant_fin = (fin == 'Host Developer' || fin == 'Single Owner' || fin == 'Merchant Plant' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' );
+	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
+	if ( is_land_lease_tech() )
+	{
+		cfline('cf_land_lease_expense', 0);
+	}
     if ( is_batt_tech() )
 	{
 		cfline( 'cf_battery_replacement_cost', 0);
-		// electricity purchases to charge battery only available for Single Owner as of 2020.2.29
-		if ( fin == 'Single Owner' ) 
-		{
-			cfline('cf_utility_bill', 0 ); 
-		}
+	}
+	if ( is_fom_fin() ) 
+	{
+		cfline('cf_utility_bill', 0 ); 
 	}
 	if (tech == 'Fuel Cell')
 	{
@@ -196,16 +249,7 @@ function cf_om_expenses()
 		cfline( 'cf_fuelcell_replacement_cost', 0);
 		cfline( 'cf_om_fixed2_expense,cf_om_capacity2_expense', 2); 
 	}
-    fuel_tech = ( tech != 'Flat Plate PV' &&  
-                 tech != 'PVWatts' &&  
-                 tech != 'High-X Concentrating PV' &&  
-                 tech != 'Solar Water Heating' &&  
-                 tech != 'Wind Power' && 
-                 tech != 'Biopower' &&
-                 tech != 'PV Battery' &&
-                 tech != 'PVWatts Battery' &&
-                 tech != 'Generic Battery' ); 
-	if ( fuel_tech == true ) { cfline('cf_om_fuel_expense', 2); }
+	if ( is_fuel_tech() == true ) { cfline('cf_om_fuel_expense', 2); }
 	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_1_expense', 0); }
 	if ( tech == 'Biopower' ) { cfline( 'cf_om_opt_fuel_2_expense', 0); }
 	// do not use recapitalization until geothermal issues resolved
@@ -223,7 +267,6 @@ function cf_operating_expenses()
 	cfline( 'cf_insurance_expense', 0); 
    	if ( fin == 'Community Solar')
 	{
-		cfline('cf_land_lease_expense', 0); // TO DO Move this to standard operating expenses 
 		cfline('cf_community_solar_recurring_fixed', 0);
 		cfline('cf_community_solar_recurring_capacity',  0);
 		cfline('cf_community_solar_recurring_generation', 0);
@@ -368,11 +411,10 @@ function cf_after_tax_cash_flow()
 function cf_operating_activities() // all PPA models except Sale Leaseback
 {
 	fin = financing();
-	has_debt = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'Host Developer' );
 	cfline( 'OPERATING ACTIVITIES', -1 ); 
 	cfline( 'cf_ebitda', 0); 
 	cfline( 'cf_reserve_interest', 0); 
-	if ( has_debt )
+	if ( is_debt_fin() )
 	{
 		isnot_pbi_for_ds = ( value('pbi_fed_for_ds')==0 || value('pbi_sta_for_ds')==0 || value('pbi_uti_for_ds')==0 || value('pbi_oth_for_ds')==0 );
 		if ( isnot_pbi_for_ds )
@@ -392,10 +434,9 @@ function cf_operating_activities() // all PPA models except Sale Leaseback
 function cf_investing_activities()
 {
 	fin = financing();
-	has_debt = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'Host Developer' || fin == 'Community Solar');
 	cfline( 'INVESTING ACTIVITIES', -1);
 	cfline('cost_prefinancing',0,-1,0);
-	if ( has_debt )
+	if ( is_debt_fin() )
 	{
 		cfline('cost_debt_closing',0,-1,0); 
 		cfline('cost_debt_upfront',0,-1,0); 
@@ -416,7 +457,7 @@ function cf_investing_activities()
 	cfline('equals:', -1, 0); 
 	cfline('purchase_of_property', 0);
 	cfline('plus:', -1, 0);
-	if ( has_debt ) { cfline('cf_project_dsra', 0); }
+	if ( is_debt_fin() ) { cfline('cf_project_dsra', 0); }
 	cfline('cf_project_wcra', 0); 
 	cfline('cf_project_receivablesra', 0); 
 	cfline('cf_project_me1ra', 0); 
@@ -433,13 +474,12 @@ function cf_investing_activities()
 function cf_financing_activities() // all PPA models except Sale Leaseback
 {
 	fin = financing();
-	has_debt = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'Host Developer' );
 	cfline('FINANCING ACTIVITIES', -1); 
 	cfline( 'issuance_of_equity',0); 
-	if ( has_debt ) { cfline( 'size_of_debt', 0); }
+	if ( is_debt_fin() ) { cfline( 'size_of_debt', 0); }
 	cfline( 'ibi_total', 0); 
 	cfline( 'cbi_total', 0);
-	if ( has_debt )
+	if ( is_debt_fin() )
 	{ 
 		cfline('minus:', -1, 0);	 
 		cfline('cf_debt_payment_principal', 0); 
@@ -711,7 +751,6 @@ function cf_levelized_metrics()
 function cf_income_tax()
 {
 	fin = financing();
-	has_debt = ( fin == 'Single Owner' ) || ( fin == 'Host Developer' ) || ( fin == 'Leveraged Parntership Flip' ); 
 	if ( fin == 'Sale Leaseback' )
 	{
 		cfline('DEVELOPER (LESSEE) INCOME TAXES', -1); 
@@ -775,7 +814,7 @@ function cf_income_tax()
 		cfline('ibi_statax_total', 0, 1, 1); 
 		cfline('cbi_statax_total', 0, 1, 1); 
 		cfline('minus:', -1, 0); 
-		if ( has_debt) {cfline('cf_debt_payment_interest', 0); }	
+		if ( is_debt_fin()) {cfline('cf_debt_payment_interest', 0); }	
 		cfline('cf_stadepr_total', 0); 
 		cfline('equals:', -1, 0); 
 		cfline('cf_statax_income_with_incentives', 0); 
@@ -793,7 +832,7 @@ function cf_income_tax()
 		cfline('cbi_fedtax_total', 0, 1, 1); 
 		cfline('cf_pbi_fedtax_total', 0); 
 		cfline('minus:', -1, 0); 
-		if ( has_debt) { cfline('cf_debt_payment_interest', 0); }
+		if ( is_debt_fin()) { cfline('cf_debt_payment_interest', 0); }
 		cfline('cf_feddepr_total', 0); 
 		cfline('equals:', -1, 0); 
 		cfline('cf_fedtax_income_with_incentives', 0); 
@@ -807,12 +846,11 @@ function cf_income_tax()
 function cf_reserves()
 {
 	fin = financing();
-	has_debt = ( fin == 'Single Owner' ) || ( fin == 'Host Developer' ) || ( fin == 'Leveraged Parntership Flip' );
 	cfline('RESERVES', -1); 
 	cfline('cf_funding_om', 0); 
 	cfline('cf_disbursement_om', 0); 
 	cfline('cf_reserve_om', 0); 
-	if ( has_debt )
+	if ( is_debt_fin() )
 	{
 		cfline( '' ); 
 		cfline('cf_funding_debtservice', 0); 
