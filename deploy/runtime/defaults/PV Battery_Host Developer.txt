@@ -1,5 +1,5 @@
 1
-1229
+1226
 6par_aisc
 1
 1
@@ -363,12 +363,6 @@ annual_wspd
 1
 1
 1.78648
-array_area
-1
-1
-1
-1
-2622.65
 batt_C_rate
 1
 1
@@ -7201,12 +7195,6 @@ tod_library
 4
 16
 Uniform Dispatch
-total_area
-1
-1
-1
-1
-2622.65
 total_battery_indirect_cost
 1
 1
@@ -7243,12 +7231,6 @@ total_inverter_capacity
 1
 1
 419.02
-total_land_area
-1
-1
-1
-1
-2.16019
 total_module_area
 1
 1

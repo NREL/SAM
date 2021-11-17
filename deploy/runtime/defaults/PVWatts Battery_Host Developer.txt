@@ -1,5 +1,5 @@
 1
-586
+587
 ac_nameplate
 1
 1
@@ -2869,13 +2869,13 @@ pv_capex_cost_choice
 1
 1
 0
-pvwatts.advanced.is_shown
+pv_land_area_is_shown
 1
 1
 1
 1
 0
-pvwatts_land_area_is_shown
+pvwatts.advanced.is_shown
 1
 1
 1
@@ -3181,6 +3181,12 @@ ui_total_land_area_ha
 1
 1
 0.710527
+ui_total_module_area
+1
+1
+1
+1
+7105.26
 ui_wacc
 1
 1

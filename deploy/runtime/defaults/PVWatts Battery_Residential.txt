@@ -1,5 +1,5 @@
 1
-475
+476
 Monthly_util
 1
 2
@@ -2191,13 +2191,13 @@ pv_capex_cost_choice
 1
 1
 0
-pvwatts.advanced.is_shown
+pv_land_area_is_shown
 1
 1
 1
 1
 0
-pvwatts_land_area_is_shown
+pvwatts.advanced.is_shown
 1
 1
 1
@@ -2470,6 +2470,12 @@ ui_total_land_area_ha
 1
 1
 0.00617483
+ui_total_module_area
+1
+1
+1
+1
+61.7483
 ui_wacc
 1
 1

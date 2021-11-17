@@ -1,5 +1,5 @@
 1
-886
+883
 6par_aisc
 1
 1
@@ -422,12 +422,6 @@ annual_wspd
 1
 1
 1.78648
-array_area
-1
-1
-1
-1
-91.336
 batt_C_rate
 1
 1
@@ -5133,12 +5127,6 @@ system_use_lifetime_output
 1
 1
 1
-total_area
-1
-1
-1
-1
-91.336
 total_dc_inverter_capacity
 1
 1
@@ -5151,12 +5139,6 @@ total_inverter_capacity
 1
 1
 15.4
-total_land_area
-1
-1
-1
-1
-0.0752304
 total_module_area
 1
 1

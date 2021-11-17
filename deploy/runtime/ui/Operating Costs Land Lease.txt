@@ -493,7 +493,7 @@ Land Lease Costs
 0
 SchedNumeric
 
-1128
+1152
 // om_land_lease in $/acre
 equations{ 'om_land_lease'} = define(){
 	if ( ${ui_land_area_units} == 1 )
@@ -520,7 +520,7 @@ equations{ 'land_area' } = define() {
 	elseif ( tech == 'MSLF') { land_area = ${csp.mslf.cost.total_land_area}; }
 	elseif ( tech == 'DSLF') { land_area = ${csp.lf.cost.total_land_area}; }	
 	elseif ( tech == 'High-X Concentrating PV') { land_area = ${hcpv.array.total_land_area}; }
-	elseif ( tech == 'Flat Plate PV' || tech == 'PVWatts' || tech == 'Physical Trough' )  { land_area = ${total_land_area}; }
+	elseif ( tech == 'Flat Plate PV' || tech == 'PVWatts' || tech == 'Physical Trough' || tech == 'PV Battery' )  { land_area = ${total_land_area}; }
 	else { land_area = 0; }
 	return land_area;
 };

@@ -1,5 +1,5 @@
 1
-1118
+1115
 6par_aisc
 1
 1
@@ -432,12 +432,6 @@ annual_wspd
 1
 1
 1.78648
-array_area
-1
-1
-1
-1
-22.834
 batt_C_rate
 1
 1
@@ -6483,12 +6477,6 @@ system_use_lifetime_output
 1
 1
 1
-total_area
-1
-1
-1
-1
-22.834
 total_battery_indirect_cost
 1
 1
@@ -6525,12 +6513,6 @@ total_inverter_capacity
 1
 1
 3.85
-total_land_area
-1
-1
-1
-1
-0.0188076
 total_module_area
 1
 1
