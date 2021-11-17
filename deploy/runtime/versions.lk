@@ -113,6 +113,15 @@ version_upgrade{'2021.10.27'} = define() {
 	automated_options = ['Perfect Look Ahead','One Day Look Behind','Look Ahead to Custom Weather File'];
 	if ( is_batt_tech )
 	{
+		old_duration_choice = oldvalue('batt_duration_choice');
+		old_duration_kwh = oldvalue('batt_bank_size');
+		
+		// Use != because some r0 and r1 files don't have batt_duration_choice
+		if (old_duration_choice != 1) {
+			value('batt_bank_size_ui', old_duration_kwh);
+		}
+		// If duration choice is 1 the callbacks will update the file properly
+	
 		old_batt_pv_forecast = oldvalue('batt_pv_dc_forecast'); // array
         value( 'batt_pv_ac_forecast', old_batt_pv_forecast );  // Often either doesn't exist or is [0], but if not display message for user
         // Use sum instead of # since # is picky about this being an array
