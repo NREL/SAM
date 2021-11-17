@@ -1,5 +1,5 @@
 1
-494
+495
 LeadAcid_q10
 1
 1
@@ -1856,6 +1856,12 @@ inflation_rate
 1
 2.5
 insurance_rate
+1
+1
+1
+1
+0
+is_btm
 1
 1
 1
