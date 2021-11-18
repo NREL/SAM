@@ -1586,12 +1586,6 @@ SAM_EXPORT void SAM_Merchantplant_BatterySystem_grid_to_batt_aset(SAM_table ptr,
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "en_electricity_rates", number);
-	});
-}
-
 SAM_EXPORT void SAM_Merchantplant_SystemOutput_annual_energy_pre_curtailment_ac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "annual_energy_pre_curtailment_ac", number);
@@ -1607,12 +1601,6 @@ SAM_EXPORT void SAM_Merchantplant_SystemOutput_degradation_aset(SAM_table ptr, d
 SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "gen_purchases", arr, length);
 	});
 }
 
@@ -1805,18 +1793,6 @@ SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_ec_charge_with_system_aset(
 SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_electricity_to_grid", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_net_billing_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "net_billing_credits_ym", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "nm_dollars_applied_ym", mat, nrows, ncols);
 	});
 }
 
@@ -4755,17 +4731,6 @@ SAM_EXPORT double* SAM_Merchantplant_BatterySystem_grid_to_batt_aget(SAM_table p
 
 
 
-SAM_EXPORT double SAM_Merchantplant_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
-		make_access_error("SAM_Merchantplant", "en_electricity_rates");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_Merchantplant_SystemOutput_annual_energy_pre_curtailment_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4795,18 +4760,6 @@ SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_aget(SAM_table ptr, int* l
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "gen");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "gen_purchases", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "gen_purchases");
 	});
 	return result;
 }
@@ -5179,30 +5132,6 @@ SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_electricity_to_grid_aget
 	result = ssc_data_get_array(ptr, "year1_monthly_electricity_to_grid", length);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "year1_monthly_electricity_to_grid");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "net_billing_credits_ym", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "net_billing_credits_ym");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "nm_dollars_applied_ym", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "nm_dollars_applied_ym");
 	});
 	return result;
 }
@@ -5708,18 +5637,6 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_net_aget(SAM_table ptr, i
 	result = ssc_data_get_array(ptr, "cf_energy_net", length);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "cf_energy_net");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_purchases_value_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_purchases_value", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_energy_purchases_value");
 	});
 	return result;
 }
@@ -7027,18 +6944,6 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_total_revenue_aget(SAM_table ptr
 	result = ssc_data_get_array(ptr, "cf_total_revenue", length);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "cf_total_revenue");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_util_escal_rate", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_util_escal_rate");
 	});
 	return result;
 }

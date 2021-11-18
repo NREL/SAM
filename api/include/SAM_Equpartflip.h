@@ -1750,33 +1750,12 @@ extern "C"
 	SAM_EXPORT void SAM_Equpartflip_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set gen_purchases: Electricity from grid [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set system_capacity: System nameplate capacity [kW]
 	 * options: None
 	 * constraints: MIN=1e-3
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Equpartflip_SystemOutput_system_capacity_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// ElectricityRates parameters
-	//
-
-	/**
-	 * Set en_electricity_rates: Enable electricity rates for grid purchase [0/1]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Equpartflip_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1931,19 +1910,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Equpartflip_TimeOfDelivery_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// UtilityBill parameters
-	//
-
-	/**
-	 * Set utility_bill_w_sys: Electricity bill with system [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_UtilityBill_utility_bill_w_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -2217,27 +2183,6 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Equpartflip_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// ChargesByMonth parameters
-	//
-
-	/**
-	 * Set net_billing_credits_ym: Net billing credit [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_ChargesByMonth_net_billing_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set nm_dollars_applied_ym: Net metering credit [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Equpartflip_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	//
@@ -2757,16 +2702,7 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Equpartflip_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Equpartflip_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_Equpartflip_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * ElectricityRates Getters
-	 */
-
-	SAM_EXPORT double SAM_Equpartflip_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2813,13 +2749,6 @@ extern "C"
 	SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_TimeOfDelivery_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * UtilityBill Getters
-	 */
-
-	SAM_EXPORT double* SAM_Equpartflip_UtilityBill_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2910,15 +2839,6 @@ extern "C"
 
 
 	/**
-	 * ChargesByMonth Getters
-	 */
-
-	SAM_EXPORT double* SAM_Equpartflip_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-
-	/**
 	 * BatterySystem Getters
 	 */
 
@@ -2960,8 +2880,6 @@ extern "C"
 	SAM_EXPORT double SAM_Equpartflip_Outputs_cbi_total_uti_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_annual_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_annual_costs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_annual_discharge_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3050,8 +2968,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_oct_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_sep_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_purchases_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3352,10 +3268,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_tax_investor_pretax_npv_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_total_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_utility_bill_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_Outputs_cost_financing_nget(SAM_table ptr, SAM_error *err);
 
@@ -3982,8 +3894,6 @@ extern "C"
 	SAM_EXPORT double SAM_Equpartflip_Outputs_lppa_real_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_Outputs_nominal_discount_rate_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Equpartflip_Outputs_npv_annual_costs_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Equpartflip_Outputs_npv_annual_costs_lcos_nget(SAM_table ptr, SAM_error *err);
 

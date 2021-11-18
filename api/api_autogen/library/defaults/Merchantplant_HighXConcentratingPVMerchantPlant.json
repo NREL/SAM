@@ -255,9 +255,6 @@
 		},
 		"BatterySystem": {
 		},
-		"ElectricityRates": {
-			"en_electricity_rates": 0
-		},
 		"SystemOutput": {
 			"degradation": [0.500000],
 			"gen": [0],
@@ -280,8 +277,6 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
-		},
-		"ChargesByMonth": {
 		},
 		"GridLimits": {
 		}

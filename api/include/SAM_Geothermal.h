@@ -184,14 +184,6 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_design_temp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dt_prod_well: Temperature loss in production well [C]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_dt_prod_well_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set eta_ref: Desgin conversion efficiency [%]
 	 * options: None
 	 * constraints: None
@@ -657,8 +649,6 @@ extern "C"
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_delta_pressure_equip_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_design_temp_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_dt_prod_well_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_eta_ref_nget(SAM_table ptr, SAM_error *err);
 

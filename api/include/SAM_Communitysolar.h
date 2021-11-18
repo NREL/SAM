@@ -1992,14 +1992,6 @@ extern "C"
 	SAM_EXPORT void SAM_Communitysolar_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set gen_purchases: Electricity from grid [kW]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Communitysolar_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set gen_without_battery: Electricity to or from the renewable system, without the battery [kW]
 	 * options: None
 	 * constraints: None
@@ -2659,27 +2651,6 @@ extern "C"
 	SAM_EXPORT void SAM_Communitysolar_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
-	//
-	// ChargesByMonth parameters
-	//
-
-	/**
-	 * Set net_billing_credits_ym: Net billing credit [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Communitysolar_ChargesByMonth_net_billing_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set nm_dollars_applied_ym: Net metering credit [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Communitysolar_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-
 	/**
 	 * FinancialParameters Getters
 	 */
@@ -3204,8 +3175,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Communitysolar_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Communitysolar_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Communitysolar_SystemOutput_gen_without_battery_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err);
@@ -3396,15 +3365,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Communitysolar_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * ChargesByMonth Getters
-	 */
-
-	SAM_EXPORT double* SAM_Communitysolar_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Communitysolar_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**
@@ -3826,8 +3786,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_unsubscribed_share_fraction_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_unsubscribed_share_of_generation_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_utility_bill_aget(SAM_table ptr, int* length, SAM_error *err);
 

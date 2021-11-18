@@ -3,7 +3,7 @@
 		"Revenue": {
 			"ppa_escalation": 1,
 			"ppa_price_input": [0.130000],
-			"ppa_soln_mode": 1
+			"ppa_soln_mode": 0
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -198,9 +198,6 @@
 			"gen": [0],
 			"system_capacity": 99999.9
 		},
-		"ElectricityRates": {
-			"en_electricity_rates": 0
-		},
 		"Recapitalization": {
 		},
 		"TimeOfDelivery": {
@@ -245,8 +242,6 @@
 			"ppa_multiplier_model": 0,
 			"system_use_lifetime_output": 0
 		},
-		"UtilityBill": {
-		},
 		"ConstructionFinancing": {
 			"construction_financing_cost": 2.73407e+07
 		},
@@ -272,8 +267,6 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
-		},
-		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 		}

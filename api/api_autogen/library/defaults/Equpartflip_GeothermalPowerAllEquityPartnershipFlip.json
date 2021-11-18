@@ -3,7 +3,7 @@
 		"Revenue": {
 			"ppa_escalation": 1,
 			"ppa_price_input": [0.080000],
-			"ppa_soln_mode": 1
+			"ppa_soln_mode": 0
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -26,7 +26,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 32683.1
+			"system_capacity": 34788.7
 		},
 		"SystemCosts": {
 			"om_capacity": [175.000000],
@@ -35,7 +35,7 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 1.00165e+08
+			"total_installed_cost": 1.15551e+08
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -194,13 +194,10 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0.000000],
-			"system_capacity": 32683.1
-		},
-		"ElectricityRates": {
-			"en_electricity_rates": 0
+			"system_capacity": 34788.7
 		},
 		"Recapitalization": {
-			"system_recapitalization_cost": 1.30482e+07,
+			"system_recapitalization_cost": 1.87716e+07,
 			"system_use_recapitalization": 1
 		},
 		"TimeOfDelivery": {
@@ -245,10 +242,8 @@
 			"ppa_multiplier_model": 0,
 			"system_use_lifetime_output": 1
 		},
-		"UtilityBill": {
-		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 5.80957e+06
+			"construction_financing_cost": 6.70196e+06
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -272,8 +267,6 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
-		},
-		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 		}

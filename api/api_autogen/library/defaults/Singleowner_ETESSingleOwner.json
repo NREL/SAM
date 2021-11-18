@@ -42,8 +42,7 @@
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 1,
-			"ppa_price_input": [0.100000],
-			"ppa_soln_mode": 1
+			"ppa_price_input": [0.100000]
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -79,7 +78,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 110975,
+			"system_capacity": 103500,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
@@ -258,7 +257,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 110975
+			"system_capacity": 103500
 		},
 		"UtilityBill": {
 		},
@@ -268,19 +267,19 @@
 		"FuelCell": {
 		},
 		"CapacityPayments": {
-			"cp_battery_nameplate": 110.975,
+			"cp_battery_nameplate": 0,
 			"cp_capacity_credit_percent": [0.000000],
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,
 			"cp_capacity_payment_type": 0,
-			"cp_system_nameplate": 110.975
+			"cp_system_nameplate": 103.5
 		},
 		"GridLimits": {
+			"grid_curtailment_price": [0.000000],
+			"grid_curtailment_price_esc": 0
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
-		},
-		"ChargesByMonth": {
 		}
 	}
 }

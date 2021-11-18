@@ -5,7 +5,7 @@
 			"flip_target_year": 9,
 			"ppa_escalation": 1,
 			"ppa_price_input": [0.160000],
-			"ppa_soln_mode": 1
+			"ppa_soln_mode": 0
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -222,9 +222,6 @@
 			"gen": [0],
 			"system_capacity": 48535.6
 		},
-		"ElectricityRates": {
-			"en_electricity_rates": 0
-		},
 		"Moratorium": {
 			"loan_moratorium": 0
 		},
@@ -272,10 +269,8 @@
 			"ppa_multiplier_model": 0,
 			"system_use_lifetime_output": 0
 		},
-		"UtilityBill": {
-		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 3.76237e+06
+			"construction_financing_cost": 3.76236e+06
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -290,8 +285,6 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
-		},
-		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 		}
