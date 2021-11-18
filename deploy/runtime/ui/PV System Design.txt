@@ -1,7 +1,7 @@
 PV System Design
-891
-1084
-117
+882
+984
+113
 GroupBox
 
 1
@@ -89,36 +89,6 @@ Caption
 5
 27
 DC Sizing and Configuration
-Bold
-2
-1
-GroupBox
-
-1
-8
-Name
-5
-9
-GroupBox7
-X
-3
-9
-Y
-3
-981
-Width
-3
-872
-Height
-3
-89
-Tool Tip
-5
-0
-Caption
-5
-30
-Estimate of Overall Land Usage
 Bold
 2
 1
@@ -834,7 +804,7 @@ Width
 860
 Height
 3
-62
+50
 Tool Tip
 5
 0
@@ -854,54 +824,6 @@ Bold
 FontSize
 3
 0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
-8
-Label214
-X
-3
-330
-Y
-3
-993
-Width
-3
-533
-Height
-3
-66
-Tool Tip
-5
-0
-Caption
-5
-169
-SAM uses the total land area only when you specify a $/acre cost on the System Costs page: Total land area = total module area ÷ GCR × 0.0002471 (1 m² = 0.0002471 acre).
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-4294967295
 WordWrap
 2
 1
@@ -5670,68 +5592,6 @@ Numeric
 17
 Name
 5
-10
-total_area
-X
-3
-771
-Y
-3
-84
-Width
-3
-82
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-9999
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-11
-Numeric
-
-1
-17
-Name
-5
 26
 total_dc_inverter_capacity
 X
@@ -5856,88 +5716,26 @@ Numeric
 17
 Name
 5
-15
-total_land_area
-X
-3
-144
-Y
-3
-1029
-Width
-3
-100
-Height
-3
-21
-Tool Tip
-5
-0
-Value
-1
-9999
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-1
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-52
-Numeric
-
-1
-17
-Name
-5
 17
 total_module_area
 X
 3
-144
+771
 Y
 3
-1005
+84
 Width
 3
-99
+82
 Height
 3
-21
+24
 Tool Tip
 5
 0
 Value
 1
-9999
+0
 Mode
 3
 1
@@ -5946,7 +5744,7 @@ Format
 0
 Decimals
 3
-1
+3
 Prefix
 5
 0
@@ -6099,27 +5897,13 @@ TabOrder
 3
 17
 
-93
-array_area
-3
-1
-Array Land Area
-m2
-PV System Design
-0
-8
-1
-1
-1
-1
-0
-Default
+90
 batt_max_power
 3
 1
 Battery maximum power
 kWdc
-Battery
+PV System Design
 0
 8
 1
@@ -6300,7 +6084,7 @@ subarray1_azimuth
 3
 1
 Azimuth 1
-deg
+degrees
 PV System Design
 0
 3
@@ -6327,9 +6111,9 @@ CheckBox
 subarray1_cross_axis_slope
 3
 1
- 
- 
- 
+Cross-axis slope 1
+degrees
+PV System Design
 0
 0
 1
@@ -6445,31 +6229,31 @@ Numeric
 subarray1_slope_azm
 3
 1
- 
- 
- 
+Slope azimuth 1
+degrees
+PV System Design
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+Numeric
 subarray1_slope_tilt
 3
 1
- 
- 
- 
+Slope tilt 1
+degrees
+PV System Design
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+Numeric
 subarray1_string_vmp
 3
 1
@@ -6502,7 +6286,7 @@ subarray1_tilt
 3
 1
 Tilt 1
-deg
+degrees
 PV System Design
 0
 3
@@ -6545,7 +6329,7 @@ subarray2_azimuth
 3
 1
 Azimuth 2
-deg
+degrees
 PV System Design
 0
 3
@@ -6572,9 +6356,9 @@ CheckBox
 subarray2_cross_axis_slope
 3
 1
- 
- 
- 
+Cross-axis slope 2
+degrees
+PV System Design
 0
 0
 1
@@ -6587,7 +6371,7 @@ subarray2_enable
 3
 1
 Enable subarray 2
- 
+degrees
 PV System Design
 0
 3
@@ -6699,31 +6483,31 @@ Numeric
 subarray2_slope_azm
 3
 1
- 
- 
- 
+Slope azimuth 2
+degrees
+PV System Design
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+Numeric
 subarray2_slope_tilt
 3
 1
- 
- 
- 
+Slope tilt 2
+degrees
+PV System Design
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+Numeric
 subarray2_string_vmp
 3
 1
@@ -6826,9 +6610,9 @@ CheckBox
 subarray3_cross_axis_slope
 3
 1
- 
- 
- 
+Cross-axis slope 3
+degrees
+PV System Design
 0
 0
 1
@@ -6953,31 +6737,31 @@ Numeric
 subarray3_slope_azm
 3
 1
- 
- 
- 
+Slope azimuth 3
+degrees
+PV System Design
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+Numeric
 subarray3_slope_tilt
 3
 1
- 
- 
- 
+Slope tilt 3
+degrees
+PV System Design
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+Numeric
 subarray3_string_vmp
 3
 1
@@ -7010,7 +6794,7 @@ subarray3_tilt
 3
 1
 Tilt 3
-deg
+degrees
 PV System Design
 0
 3
@@ -7053,7 +6837,7 @@ subarray4_azimuth
 3
 1
 Azimuth 4
-deg
+degrees
 PV System Design
 0
 3
@@ -7080,9 +6864,9 @@ CheckBox
 subarray4_cross_axis_slope
 3
 1
- 
- 
- 
+Cross-axis slope 4
+degrees
+PV System Design
 0
 0
 1
@@ -7207,31 +6991,31 @@ Numeric
 subarray4_slope_azm
 3
 1
- 
- 
- 
+Slope azimuth 4
+degrees
+PV System Design
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+Numeric
 subarray4_slope_tilt
 3
 1
- 
- 
- 
+Slope tilt 4
+degrees
+PV System Design
 0
-0
+3
 1
 1
 1
 1
 0
-Default
+Numeric
 subarray4_string_vmp
 3
 1
@@ -7264,7 +7048,7 @@ subarray4_tilt
 3
 1
 Tilt 4
-deg
+degrees
 PV System Design
 0
 3
@@ -7317,20 +7101,6 @@ PV System Design
 1
 0
 Numeric
-total_area
-3
-1
-Total module area
-m²
-PV System Design
-0
-8
-1
-1
-1
-1
-0
-Numeric
 total_dc_inverter_capacity
 3
 1
@@ -7359,26 +7129,12 @@ PV System Design
 1
 0
 Numeric
-total_land_area
-3
-1
-Total land area
-acres
-PV System Design
-0
-8
-1
-1
-1
-1
-0
-Numeric
 total_module_area
 3
 1
 Total module area
 m²
-PV System Design
+ 
 0
 8
 1
@@ -7416,7 +7172,7 @@ PV System Design
 0
 Numeric
 
-11400
+11576
 equations{ '$MIMO$ pv_size_array' } = define()
 {
 	if (${enable_auto_size}==1)
@@ -7510,6 +7266,10 @@ equations{ 'total_modules' } = define() {
 
 	return a; };
 
+equations{ 'total_module_area' } = define() {
+	return ?${module_model} [ ${spe_area}, ${cec_area}, ${6par_area}, ${snl_area}, ${sd11par_area} ] * ${total_modules};
+};
+
 equations{ 'system_capacity' } = define() {
 	return ?${module_model}
 [
@@ -7520,7 +7280,7 @@ equations{ 'system_capacity' } = define() {
 	${sd11par_Pmp0}
 ] 
 	* ${total_modules} / 1000; };
-	
+/*	
 equations{ 'total_area' } = define() {
 	return ?${module_model}
 [
@@ -7534,7 +7294,7 @@ equations{ 'total_area' } = define() {
 
 equations{ 'total_module_area' } = define() {
 	return ${total_area};
-};
+};*/
 
 equations{ 'calculated_dcac_ratio' } = define() {
 	return ${system_capacity} /${total_inverter_capacity} ;
@@ -7693,7 +7453,7 @@ equations{ 'num_strings_total' } = define() {
 		+ (?${subarray2_enable}[0,${subarray2_nstrings}])
 		+ (?${subarray3_enable}[0,${subarray3_nstrings}])
 		+ (?${subarray4_enable}[0,${subarray4_nstrings}]) ; };
-
+/*
 equations{ 'total_land_area' } = define() {
 	area = ?${module_model}
 	[
@@ -7712,7 +7472,7 @@ equations{ 'total_land_area' } = define() {
 
 equations{ 'array_area' } = define() {
 	return ${total_area}; };
-
+*/
 equations{ 'layout_warning'} = define(){
 
 	message = '';
