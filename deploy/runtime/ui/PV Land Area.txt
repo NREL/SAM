@@ -1,6 +1,6 @@
-PVWatts Land Area
-584
-187
+PV Land Area
+883
+182
 13
 Label
 
@@ -11,10 +11,10 @@ Name
 0
 X
 3
-192
+189
 Y
 3
-153
+147
 Width
 3
 168
@@ -65,10 +65,10 @@ Y
 6
 Width
 3
-573
+872
 Height
 3
-180
+174
 Tool Tip
 5
 0
@@ -89,10 +89,10 @@ Name
 object 7
 X
 3
-360
+357
 Y
 3
-54
+48
 Width
 3
 90
@@ -143,10 +143,10 @@ Y
 21
 Width
 3
-549
+846
 Height
 3
-33
+24
 Tool Tip
 5
 0
@@ -185,10 +185,10 @@ Name
 object 79
 X
 3
-453
+450
 Y
 3
-54
+48
 Width
 3
 90
@@ -233,72 +233,10 @@ Name
 total_land_area
 X
 3
-360
+357
 Y
 3
-153
-Width
-3
-90
-Height
-3
-24
-Tool Tip
-5
-0
-Value
-1
-0
-Mode
-3
-1
-Format
-3
-0
-Decimals
-3
-3
-Prefix
-5
-0
-Suffix
-5
-0
-ThousandsSep
-2
-1
-Editable
-2
-1
-ForeColour
-4
-0
-0
-0
-255
-BackColour
-4
-255
-255
-255
-255
-TabOrder
-3
-4294967295
-Numeric
-
-1
-17
-Name
-5
-17
-total_module_area
-X
-3
-201
-Y
-3
-72
+147
 Width
 3
 90
@@ -357,10 +295,10 @@ Name
 ui_array_land_area_acres
 X
 3
-360
+357
 Y
 3
-75
+69
 Width
 3
 90
@@ -419,10 +357,10 @@ Name
 ui_array_land_area_ha
 X
 3
-453
+450
 Y
 3
-75
+69
 Width
 3
 90
@@ -481,10 +419,10 @@ Name
 ui_array_land_area_multiplier
 X
 3
-201
+198
 Y
 3
-99
+93
 Width
 3
 90
@@ -543,10 +481,10 @@ Name
 ui_land_area_additional
 X
 3
-201
+198
 Y
 3
-126
+120
 Width
 3
 90
@@ -605,10 +543,10 @@ Name
 ui_land_area_additional_units
 X
 3
-294
+291
 Y
 3
-126
+120
 Width
 3
 57
@@ -639,10 +577,72 @@ Name
 ui_total_land_area_ha
 X
 3
-453
+450
 Y
 3
-153
+147
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+20
+ui_total_module_area
+X
+3
+198
+Y
+3
+66
 Width
 3
 90
@@ -696,25 +696,11 @@ TabOrder
 total_land_area
 3
 1
-Total land area
-acres
-PVWatts Land Area
+Total land area estimate
+ 
+PV Land Area
 0
 9
-1
-1
-1
-1
-0
-Numeric
-total_module_area
-3
-1
-Total module area estimate
-m²
-PVWatts Land Area
-0
-8
 1
 1
 1
@@ -726,7 +712,7 @@ ui_array_land_area_acres
 1
 Array land area
 acres
-PVWatts Land Area
+PV Land Area
 0
 9
 1
@@ -740,7 +726,7 @@ ui_array_land_area_ha
 1
 Array land area
 ha
-PVWatts Land Area
+PV Land Area
 0
 9
 1
@@ -754,7 +740,7 @@ ui_array_land_area_multiplier
 1
 Array land area multiplier
  
-PVWatts Land Area
+PV Land Area
 0
 2
 1
@@ -768,7 +754,7 @@ ui_land_area_additional
 1
 Additional land area
  
-PVWatts Land Area
+PV Land Area
 0
 2
 1
@@ -782,7 +768,7 @@ ui_land_area_additional_units
 1
 Land area units
 0=acre,1=ha
-PVWatts Land Area
+PV Land Area
 8
 acres|ha
 3
@@ -797,9 +783,23 @@ ui_total_land_area_ha
 1
 Total land area
 ha
-PVWatts Land Area
+PV Land Area
 0
-5
+9
+1
+1
+1
+1
+0
+Numeric
+ui_total_module_area
+3
+1
+Total module area estimate
+m²
+PV Land Area
+0
+8
 1
 1
 1
@@ -807,10 +807,9 @@ PVWatts Land Area
 0
 Numeric
 
-724
-equations{ 'total_module_area' } = define() {
-	eff = ?${module_type}[0.19,0.21,0.18]; // [standard,premium,thin film], see cmod_pvwattsv7.cpp module.stc_eff for each module.type
-	return ${system_capacity} / eff / ${gcr}; 
+581
+equations{ 'ui_total_module_area' } = define() {
+	return ${total_module_area};
 };
 
 equations{ 'ui_array_land_area_acres' } = define() {
