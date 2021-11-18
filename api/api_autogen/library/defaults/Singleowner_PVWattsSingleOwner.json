@@ -44,7 +44,7 @@
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
 			"ppa_price_input": [0.100000],
-			"ppa_soln_mode": 0
+			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -254,6 +254,7 @@
 		"BatterySystem": {
 		},
 		"ElectricityRates": {
+			"en_electricity_rates": 0
 		},
 		"SystemOutput": {
 			"degradation": [0.500000],
@@ -281,6 +282,8 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
+		},
+		"ChargesByMonth": {
 		}
 	}
 }

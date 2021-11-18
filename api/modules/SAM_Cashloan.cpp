@@ -1070,6 +1070,90 @@ SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aset(SAM_tab
 	});
 }
 
+SAM_EXPORT void SAM_Cashloan_ChargesByMonth_charge_w_sys_dc_tou_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "charge_w_sys_dc_tou_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "charge_w_sys_ec_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_ChargesByMonth_charge_w_sys_fixed_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "charge_w_sys_fixed_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_ChargesByMonth_net_billing_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "net_billing_credits_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "nm_dollars_applied_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "true_up_credits_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_ChargesByMonth_utility_bill_w_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "utility_bill_w_sys", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Battery_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "batt_capacity_percent", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Battery_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Battery_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Battery_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_TimeSeries_year1_hourly_dc_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_hourly_dc_with_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_TimeSeries_year1_hourly_e_fromgrid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_hourly_e_fromgrid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_TimeSeries_year1_hourly_ec_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_hourly_ec_with_system", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Cashloan_SystemOutput_annual_energy_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "annual_energy_value", arr, length);
@@ -1091,6 +1175,12 @@ SAM_EXPORT void SAM_Cashloan_SystemOutput_degradation_aset(SAM_table ptr, double
 SAM_EXPORT void SAM_Cashloan_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "gen", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen_purchases", arr, length);
 	});
 }
 
@@ -3176,6 +3266,174 @@ SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aget(SAM_
 
 
 
+SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_dc_tou_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "charge_w_sys_dc_tou_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Cashloan", "charge_w_sys_dc_tou_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "charge_w_sys_ec_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Cashloan", "charge_w_sys_ec_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_fixed_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "charge_w_sys_fixed_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Cashloan", "charge_w_sys_fixed_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "net_billing_credits_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Cashloan", "net_billing_credits_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "nm_dollars_applied_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Cashloan", "nm_dollars_applied_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "true_up_credits_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Cashloan", "true_up_credits_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "utility_bill_w_sys");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "batt_capacity_percent");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_Battery_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "monthly_batt_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "monthly_grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "monthly_grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_dc_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_hourly_dc_with_system", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "year1_hourly_dc_with_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_e_fromgrid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_hourly_e_fromgrid", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "year1_hourly_e_fromgrid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_ec_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_hourly_ec_with_system", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "year1_hourly_ec_with_system");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3218,6 +3476,18 @@ SAM_EXPORT double* SAM_Cashloan_SystemOutput_gen_aget(SAM_table ptr, int* length
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
 		make_access_error("SAM_Cashloan", "gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_purchases", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "gen_purchases");
 	});
 	return result;
 }
@@ -4160,6 +4430,18 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_operating_expenses_aget(SAM_table ptr
 
 
 
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_parasitic_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_parasitic_cost", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_parasitic_cost");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_payback_with_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4448,6 +4730,30 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_thermal_value_aget(SAM_table ptr, int
 
 
 
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_util_escal_rate", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_util_escal_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_utility_bill_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_utility_bill", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_utility_bill");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_value_added_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4487,6 +4793,18 @@ SAM_EXPORT double SAM_Cashloan_Outputs_first_cost_nget(SAM_table ptr, SAM_error 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "first_cost", &result))
 		make_access_error("SAM_Cashloan", "first_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_purchases", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "gen_purchases");
 	});
 	return result;
 }

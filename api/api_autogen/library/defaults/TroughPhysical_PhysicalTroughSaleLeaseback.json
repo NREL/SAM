@@ -658,6 +658,12 @@
 		"FinancialModel": {
 			"csp_financial_model": 4
 		},
+		"FinancialSolutionMode": {
+			"ppa_soln_mode": 1
+		},
+		"ElectricityRates": {
+			"en_electricity_rates": 0
+		},
 		"Revenue": {
 		},
 		"System": {
