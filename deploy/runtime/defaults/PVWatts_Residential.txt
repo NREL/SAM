@@ -2106,7 +2106,7 @@ system_capacity
 1
 1
 1
-4
+6.4
 system_use_lifetime_output
 1
 1

@@ -501,7 +501,7 @@ batt_bank_power
 1
 1
 1
-1000
+20000
 batt_bank_power_dc_ac
 1
 1
@@ -513,7 +513,7 @@ batt_bank_size
 1
 1
 1
-4000
+80000
 batt_bank_size_dc_ac
 1
 1
@@ -531,7 +531,7 @@ batt_bank_size_ui
 1
 1
 1
-4000
+80000
 batt_bank_voltage
 1
 1
@@ -960,7 +960,7 @@ batt_h_to_ambient
 1
 1
 1
-15
+100
 batt_initial_SOC
 1
 1
@@ -1311,13 +1311,13 @@ battery_per_kW
 1
 1
 1
-263.12
+233.17
 battery_per_kWh
 1
 1
 1
 1
-293.84
+241.79
 battery_power
 1
 1
@@ -1341,13 +1341,13 @@ battery_total
 1
 1
 1
-1.43848e+06
+1438480
 battery_total_cost_lcos
 1
 1
 1
 1
-2.81046e+06
+2810460
 battery_voltage_shown
 1
 1
@@ -1383,13 +1383,13 @@ bos_equip_total
 1
 1
 1
-1.00004e+07
+10000400
 calculated_dcac_ratio
 1
 1
 1
 1
-1.20255
+1.29876
 cap_vs_temp
 1
 3
@@ -2034,7 +2034,7 @@ const_per_principal1
 1
 1
 1
-5.29402e+07
+52940200
 const_per_principal2
 1
 1
@@ -2064,13 +2064,13 @@ const_per_principal_total
 1
 1
 1
-5.29402e+07
+52940200
 const_per_total1
 1
 1
 1
 1
-1.0588e+06
+1058800
 const_per_total2
 1
 1
@@ -2130,13 +2130,13 @@ construction_financing_cost
 1
 1
 1
-1.0588e+06
+1058800
 contingency
 1
 1
 1
 1
-1.28821e+06
+1288210
 contingency_percent
 1
 1
@@ -2172,7 +2172,7 @@ cost_dev_fee_value
 1
 1
 1
-1.58821e+06
+1588210
 cost_equity_closing
 1
 1
@@ -2667,36 +2667,36 @@ dispatch_manual_sched
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
 
 dispatch_manual_sched_weekend
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
 
 dispatch_sched_weekday
 1
@@ -2794,7 +2794,7 @@ en_electricity_rates
 1
 1
 1
-0
+1
 en_snow_model
 1
 1
@@ -2848,7 +2848,7 @@ engr_total
 1
 1
 1
-3.50016e+06
+3500160
 equip1_reserve_cost
 1
 1
@@ -2962,7 +2962,7 @@ grid_total
 1
 1
 1
-1.50007e+06
+1500070
 ibi_fed_amount
 1
 1
@@ -3318,7 +3318,7 @@ install_labor_total
 1
 1
 1
-5.50024e+06
+5500240
 install_margin_fixed
 1
 1
@@ -3342,7 +3342,7 @@ install_margin_total
 1
 1
 1
-3.00013e+06
+3000130
 installed_per_capacity
 1
 1
@@ -4136,7 +4136,7 @@ inverter_count
 1
 1
 1
-54
+50
 inverter_model
 1
 1
@@ -4160,7 +4160,7 @@ inverter_total
 1
 1
 1
-2.50011e+06
+2500110
 inverterarray_power
 1
 1
@@ -4346,7 +4346,7 @@ landprep_total
 1
 1
 1
-1.00004e+06
+1000040
 lat
 1
 1
@@ -4489,7 +4489,7 @@ mera_cost1
 1
 1
 1
-1.25006e+07
+12500600
 mera_cost2
 1
 1
@@ -4575,7 +4575,7 @@ module_total
 1
 1
 1
-2.05009e+07
+20500900
 module_width
 1
 1
@@ -4599,7 +4599,7 @@ modulearray_power_w
 1
 1
 1
-5.00022e+07
+50002200
 months_receivables_reserve
 1
 1
@@ -4671,7 +4671,7 @@ om_batt_replacement_cost
 2
 1
 1
-293.84
+241.79
 om_batt_variable_cost
 1
 2
@@ -4929,7 +4929,7 @@ ppa_soln_mode
 1
 1
 1
-1
+0
 prop_tax_assessed_decline
 1
 1
@@ -4947,7 +4947,7 @@ property_assessed_value
 1
 1
 1
-5.29402e+07
+52940200
 property_tax_rate
 1
 1
@@ -5192,7 +5192,7 @@ sales_tax_total
 1
 1
 1
-2.21143e+06
+2211430
 sales_tax_value
 1
 1
@@ -6256,7 +6256,7 @@ subarray1_tilt
 1
 1
 1
-30
+0
 subarray1_tilt_eq_lat
 1
 1
@@ -6268,7 +6268,7 @@ subarray1_track_mode
 1
 1
 1
-0
+1
 subarray1_tracking_loss
 1
 1
@@ -6895,7 +6895,7 @@ subtotal_direct
 1
 1
 1
-4.29403e+07
+42940300
 system_capacity
 1
 1
@@ -6966,7 +6966,7 @@ total_battery_indirect_cost
 1
 1
 1
-1.30006e+06
+1300060
 total_dc_inverter_capacity
 1
 1
@@ -6978,19 +6978,19 @@ total_direct_cost
 1
 1
 1
-4.42285e+07
+44228500
 total_indirect_cost
 1
 1
 1
 1
-6.50029e+06
+6500290
 total_installed_cost
 1
 1
 1
 1
-5.29402e+07
+52940200
 total_inverter_capacity
 1
 1
@@ -7020,13 +7020,13 @@ total_system_indirect_cost
 1
 1
 1
-5.20023e+06
+5200230
 total_system_installed_cost
 1
 1
 1
 1
-5.01298e+07
+50129800
 transformer_load_loss
 1
 1
