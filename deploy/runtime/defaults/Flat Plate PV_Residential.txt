@@ -948,7 +948,7 @@ dcoptimizer_loss
 1
 1
 1
-0
+1
 debt_fraction
 1
 1
@@ -4275,7 +4275,7 @@ subarray1_mismatch_loss
 1
 1
 1
-2
+0
 subarray1_mod_orient
 1
 1
@@ -4480,7 +4480,7 @@ subarray2_mismatch_loss
 1
 1
 1
-2
+0
 subarray2_mod_orient
 1
 1
@@ -4685,7 +4685,7 @@ subarray3_mismatch_loss
 1
 1
 1
-2
+0
 subarray3_mod_orient
 1
 1
@@ -4890,7 +4890,7 @@ subarray4_mismatch_loss
 1
 1
 1
-2
+0
 subarray4_mod_orient
 1
 1
