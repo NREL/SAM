@@ -64,7 +64,13 @@ BEGIN_EVENT_TABLE( ValueEditor, wxPanel )
 END_EVENT_TABLE()
 
 ValueEditor::ValueEditor( wxWindow *parent )
-	: wxPanel( parent )
+	: wxPanel( parent ),
+    m_type(NULL),
+    m_text(NULL),
+    m_matrix(NULL),
+    m_fields(NULL),
+    m_addField(NULL), m_removeField(NULL), m_editField(NULL), m_clearTable(NULL),
+    m_valLabel(NULL), m_tabLabel(NULL)
 {
 	m_type = new wxChoice( this, ID_TYPE );
 	for( size_t i=0;i<=VV_BINARY;i++ )
@@ -280,7 +286,11 @@ END_EVENT_TABLE()
 
 
 DefaultsManager::DefaultsManager( wxWindow *parent )
-	: wxPanel( parent )
+	: wxPanel( parent ),
+    m_varName(NULL), m_value(NULL),
+    m_output(NULL), m_configList(NULL),
+    m_techList(NULL), m_finList(NULL),
+    m_changeType(NULL), m_enableAdd(NULL)
 {
 	m_varName = new wxTextCtrl( this, wxID_ANY, wxEmptyString );
 	
