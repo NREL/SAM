@@ -519,6 +519,22 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_rotlim_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set subarray1_slope_azm: Sub-array 1 terrain azimuth [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray1_slope_tilt: Sub-array 1 terrain tilt [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subarray1_tilt: Sub-array 1 Tilt [deg]
 	 * options: 0=horizontal,90=vertical
 	 * constraints: MIN=0,MAX=90
@@ -613,6 +629,22 @@ extern "C"
 	 * required if: ?=45
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_rotlim_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray2_slope_azm: Sub-array 2 terrain azimuth [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray2_slope_tilt: Sub-array 2 terrain tilt [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set subarray2_tilt: Sub-array 2 Tilt [deg]
@@ -711,6 +743,22 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_rotlim_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set subarray3_slope_azm: Sub-array 3 terrain azimuth [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray3_slope_tilt: Sub-array 3 terrain tilt [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subarray3_tilt: Sub-array 3 Tilt [deg]
 	 * options: 0=horizontal,90=vertical
 	 * constraints: MIN=0,MAX=90
@@ -805,6 +853,22 @@ extern "C"
 	 * required if: ?=45
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_rotlim_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray4_slope_azm: Sub-array 4 terrain azimuth [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_slope_azm_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray4_slope_tilt: Sub-array 4 terrain tilt [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_slope_tilt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set subarray4_tilt: Sub-array 4 Tilt [deg]
@@ -2724,12 +2788,44 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_beta_voc_spec_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set mlm_bifacial_ground_clearance_height: Module ground clearance height [m]
+	 * options: None
+	 * constraints: None
+	 * required if: module_model=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mlm_bifacial_transmission_factor: Bifacial transmission factor [0-1]
+	 * options: None
+	 * constraints: None
+	 * required if: module_model=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_bifacial_transmission_factor_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mlm_bifaciality: Bifaciality factor [%]
+	 * options: None
+	 * constraints: None
+	 * required if: module_model=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_bifaciality_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mlm_groundRelfectionFraction: Ground reflection fraction [-]
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=5
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_groundRelfectionFraction_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mlm_is_bifacial: Modules are bifacial [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: module_model=5
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_is_bifacial_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mlm_mu_n: Temperature coefficient of gamma [1/K]
@@ -3969,7 +4065,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_maximum_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_minimum_SOC: Minimum allowed state-of-charge [%]
+	 * Set batt_minimum_SOC: Minimum allowed state-of-charge during nominal operation [%]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -3983,6 +4079,14 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_minimum_modetime_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_minimum_outage_SOC: Minimum allowed state-of-charge during an outage [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryCell_batt_minimum_outage_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set batt_resistance: Internal resistance [Ohm]
@@ -4054,6 +4158,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set batt_dispatch_auto_btm_can_discharge_to_grid: Behind the meter battery can discharge to grid? [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_btm_can_discharge_to_grid_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set batt_dispatch_auto_can_charge: System charging allowed for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
@@ -4062,7 +4174,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_auto_can_clipcharge: Battery can charge from clipped power for automated dispatch? [0/1]
+	 * Set batt_dispatch_auto_can_clipcharge: Battery can charge from clipped power? [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -4318,6 +4430,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_target_power_monthly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set dispatch_manual_btm_discharge_to_grid: Periods 1-6 behind the meter discharging to grid allowed?
+	 * options: None
+	 * constraints: None
+	 * required if: en_batt=1&batt_dispatch_choice=3&batt_meter_position=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_btm_discharge_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set dispatch_manual_charge: Periods 1-6 charging from system allowed?
 	 * options: None
 	 * constraints: None
@@ -4380,6 +4500,27 @@ extern "C"
 	 * required if: en_batt=1&batt_dispatch_choice=3
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
+	//
+	// SystemCosts parameters
+	//
+
+	/**
+	 * Set om_batt_replacement_cost: Replacement cost 1 [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemCosts_om_batt_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemCosts_om_replacement_cost_escal_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -4557,6 +4698,38 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_annual_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set ur_billing_demand_lookback_percentages: Billing demand lookback percentages by month and consider actual peak demand
+	 * options: 12x2
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_billing_demand_lookback_percentages_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_billing_demand_lookback_period: Billing demand lookback period [mn]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=12
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_billing_demand_minimum: Minimum billing demand
+	 * options: None
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_billing_demand_minimum_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_dc_billing_demand_periods: Billing demand applicability to a given demand charge time of use period
+	 * options: None
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_billing_demand_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
 	 * Set ur_dc_enable: Enable demand charge [0/1]
 	 * options: None
 	 * constraints: BOOLEAN
@@ -4597,38 +4770,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_dc_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ur_ec_billing_demand_lookback_percentages: Billing demand lookback percentages by month and consider actual peak demand
-	 * options: 12x2
-	 * constraints: None
-	 * required if: ur_ec_enable_billing_demand=1
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_percentages_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ur_ec_billing_demand_lookback_period: Billing demand lookback period [mn]
-	 * options: None
-	 * constraints: INTEGER,MIN=0,MAX=12
-	 * required if: ur_ec_enable_billing_demand=1
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ur_ec_billing_demand_minimum: Minimum billing demand
-	 * options: None
-	 * constraints: None
-	 * required if: ur_ec_enable_billing_demand=1
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_minimum_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ur_ec_enable_billing_demand: Enable billing demand for energy charges [0/1]
-	 * options: 0=disable,1=enable
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_ec_enable_billing_demand_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set ur_ec_sched_weekday: Energy charge weekday schedule
 	 * options: 12x24
 	 * constraints: None
@@ -4667,6 +4808,14 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_en_ts_sell_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_enable_billing_demand: Enable billing demand ratchets [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_enable_billing_demand_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ur_metering_option: Metering options [0=net energy metering,1=net energy metering with $ credits,2=net billing,3=net billing with carryover to next month,4=buy all - sell all]
@@ -4744,7 +4893,7 @@ extern "C"
 	 * Set ur_yearzero_usage_peaks: Peak usage by month for year zero
 	 * options: 12
 	 * constraints: None
-	 * required if: ur_ec_enable_billing_demand=1
+	 * required if: ur_enable_billing_demand=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_yearzero_usage_peaks_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -4915,6 +5064,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_rotlim_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_slope_azm_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_slope_tilt_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_tilt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_tilt_eq_lat_nget(SAM_table ptr, SAM_error *err);
@@ -4938,6 +5091,10 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_nstrings_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_rotlim_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_slope_azm_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_slope_tilt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_tilt_nget(SAM_table ptr, SAM_error *err);
 
@@ -4963,6 +5120,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_rotlim_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_slope_azm_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_slope_tilt_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_tilt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_tilt_eq_lat_nget(SAM_table ptr, SAM_error *err);
@@ -4986,6 +5147,10 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_nstrings_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_rotlim_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_slope_azm_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_slope_tilt_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_tilt_nget(SAM_table ptr, SAM_error *err);
 
@@ -5500,7 +5665,15 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_beta_voc_spec_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_bifacial_ground_clearance_height_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_bifacial_transmission_factor_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_bifaciality_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_groundRelfectionFraction_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_is_bifacial_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_mu_n_nget(SAM_table ptr, SAM_error *err);
 
@@ -5849,6 +6022,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_minimum_modetime_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_minimum_outage_SOC_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_BatteryCell_batt_resistance_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryCell_batt_room_temperature_celsius_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -5869,6 +6044,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_cycle_cost_choice_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_btm_can_discharge_to_grid_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_charge_nget(SAM_table ptr, SAM_error *err);
 
@@ -5936,6 +6113,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_batt_target_power_monthly_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_btm_discharge_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_charge_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_discharge_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -5951,6 +6130,15 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_BatteryDispatch_dispatch_manual_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+
+	/**
+	 * SystemCosts Getters
+	 */
+
+	SAM_EXPORT double* SAM_Pvsamv1_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -6007,6 +6195,14 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_annual_min_charge_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_billing_demand_lookback_percentages_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_billing_demand_lookback_period_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_billing_demand_minimum_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_dc_billing_demand_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_dc_enable_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_dc_flat_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
@@ -6017,14 +6213,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_dc_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_percentages_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_lookback_period_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_ec_billing_demand_minimum_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_ec_enable_billing_demand_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_ElectricityRates_ur_ec_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
@@ -6034,6 +6222,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_en_ts_buy_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_enable_billing_demand_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_metering_option_nget(SAM_table ptr, SAM_error *err);
 
@@ -6107,6 +6297,12 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_ac_wiring_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_crit_load_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_crit_load_unmet_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_crit_load_unmet_percentage_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_battery_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_diodes_loss_nget(SAM_table ptr, SAM_error *err);
@@ -6172,6 +6368,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_inv_psoloss_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_inv_tdcloss_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_outage_losses_unmet_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_poa_beam_eff_nget(SAM_table ptr, SAM_error *err);
 
@@ -6359,6 +6557,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_voltage_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_voltage_cell_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -6368,6 +6568,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_capacity_factor_ac_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_crit_load_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -6435,6 +6637,14 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_batt_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_batt_to_system_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_crit_load_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_crit_load_unmet_percentage_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_dc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -6444,6 +6654,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_interconnection_loss_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_monthly_poa_beam_eff_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -6468,6 +6680,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_nameplate_dc_rating_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_pdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
 

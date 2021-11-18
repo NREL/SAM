@@ -48,7 +48,6 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"construction_financing_cost": 2.99649e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
@@ -56,6 +55,8 @@
 			"debt_option": 1,
 			"debt_percent": 60,
 			"dscr": 1.3,
+			"dscr_limit_debt_fraction": 0,
+			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 6,
 			"equip1_reserve_cost": 0.25,
 			"equip1_reserve_freq": 12,
@@ -77,7 +78,6 @@
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
 			"reserves_interest": 1.75,
-			"roe_input": [0.000000],
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 20000,
@@ -266,7 +266,8 @@
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 293.84,
-			"en_batt": 1
+			"en_batt": 1,
+			"en_standalone_batt": 0
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0
@@ -295,12 +296,9 @@
 			"grid_curtailment_price": [0.000000],
 			"grid_curtailment_price_esc": 0
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 1.43848e+06
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		}
 	}
 }

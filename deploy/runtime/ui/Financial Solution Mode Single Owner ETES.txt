@@ -1,7 +1,7 @@
 Financial Solution Mode Single Owner ETES
 859
-134
-7
+101
+5
 GroupBox
 
 1
@@ -21,14 +21,14 @@ Width
 850
 Height
 3
-128
+92
 Tool Tip
 5
 0
 Caption
 5
-13
-Solution Mode
+38
+Base PPA Price and IRR Evaluation Year
 Bold
 2
 1
@@ -42,10 +42,10 @@ Name
 flip_target_year
 X
 3
-495
+702
 Y
 3
-33
+30
 Width
 3
 60
@@ -94,45 +94,6 @@ BackColour
 TabOrder
 3
 3
-Divider
-
-1
-10
-Name
-5
-9
-object 21
-X
-3
-570
-Y
-3
-15
-Width
-3
-279
-Height
-3
-16
-Tool Tip
-5
-0
-Orientation
-3
-0
-Colour
-4
-120
-120
-120
-255
-Caption
-5
-15
-Escalation Rate
-Bold
-2
-1
 Label
 
 1
@@ -143,7 +104,7 @@ Name
 object 7
 X
 3
-579
+252
 Y
 3
 54
@@ -191,7 +152,7 @@ Name
 ppa_escalation
 X
 3
-723
+396
 Y
 3
 30
@@ -253,7 +214,7 @@ Name
 ppa_price_input
 X
 3
-231
+84
 Y
 3
 30
@@ -285,59 +246,12 @@ Description
 TabOrder
 3
 4294967295
-Label
-
-1
-13
-Name
-5
-21
-solution_mode_message
-X
-3
-18
-Y
-3
-78
-Width
-3
-834
-Height
-3
-48
-Tool Tip
-5
-0
-Caption
-5
-0
-TextColour
-4
-255
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
 
 4
 flip_target_year
 3
 1
-IRR target year
+IRR evaluation year
  
 PPA Price and IRR
 0
@@ -376,29 +290,32 @@ PPA Price and IRR
 1
 0
 SchedNumeric
-solution_mode_message
+ppa_soln_mode
 3
-4
-UI message for solution mode 1
+1
+PPA solution mode
  
 PPA Price and IRR
 0
-5
+8
 1
-4
+1
+1
+1
 0
-MultilineText
+Default
 
-1
+53
+equations{'ppa_soln_mode'} = define() {
+	return 1;};
 
-
-1174
+1493
 // This form is a copy of Financial Solution Flip Leaseback
 // so ppa_soln_mode radio button can have different labels
 // to indicated IRR target is for the tax investor for flip 
 // structures. Any updates should be made to both forms.
 
-on_load{'Financial Solution Mode Single Owner'} = define()
+on_load{'Financial Solution Mode Single Owner ETES'} = define()
 {
 	soln_mode_ctrl_refresh();
 	display_message();
@@ -419,7 +336,6 @@ on_change{'flip_target_year'} = define () {
 	display_message();
 };
 
-
 function display_message() 
 {
 	txt = '';
@@ -432,6 +348,11 @@ function display_message()
 	if ( financing() == 'Host Developer' ) 
 	{
 		txt += 'IRR is the developer internal rate of return. ';
+	}
+	elseif ( value('ppa_soln_mode') == 0 && value('en_electricity_rates') == 0 )
+	{
+		clr = 'red';
+		txt += 'The Specify IRR Target option is not available with the Use PPA Price option on Electricity Purchases page. Either change the option on the Electricity Purchases page or use the Specify PPA Price option.';
 	}
 	property('solution_mode_message','Caption',txt);
 	property('solution_mode_message','TextColour',clr);

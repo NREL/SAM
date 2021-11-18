@@ -2,9 +2,9 @@
 	"defaults": {
 		"SimpleLCOE": {
 			"annual_energy": 0,
-			"capital_cost": 4.49935e+08,
+			"capital_cost": 1.38925e+07,
 			"fixed_charge_rate": 0.108,
-			"fixed_operating_cost": 1.77049e+07,
+			"fixed_operating_cost": 1.36208e+06,
 			"variable_operating_cost": 0
 		}
 	}

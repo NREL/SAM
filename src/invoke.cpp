@@ -56,7 +56,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ssc/sscapi.h>
 #include <ssc/ssc_equations.h>
-
+#include <json/json.h>
 
 #include "main.h"
 #include "case.h"
@@ -604,6 +604,109 @@ static void fcall_codegen_metric(lk::invoke_t &cxt)
 	}
 }
 
+static void fcall_codegen_metric_table(lk::invoke_t& cxt)
+{
+	LK_DOC("metric_table", "Add an output metric table to the current configuration. Options include headers", "(string:tableName, [table:options]):none");
+	if (CodeGenCallbackContext* ci = static_cast<CodeGenCallbackContext*>(cxt.user_data()))
+	{
+		// no processing here - can add table name if desired. Add additional output metrics from metric_row
+	}
+}
+
+static void fcall_codegen_metric_row(lk::invoke_t& cxt)
+{
+	LK_DOC("metric_row", "Add an output metric row to the current configuration. Options include mode(s),deci(s),thousep(s),pre(s),post(s),label,scale(s)", "(string:variable(s)), [table:options]):none");
+
+	if (CodeGenCallbackContext* ci = static_cast<CodeGenCallbackContext*>(cxt.user_data()))
+	{
+//		MetricRow mr;
+		wxArrayString vars = wxSplit(cxt.arg(0).as_string(), ',');
+		wxArrayString labels, modes, decis, thouseps, pres, posts, scales;
+
+		if (cxt.arg_count() > 1)
+		{
+			lk::vardata_t& opts = cxt.arg(1).deref();
+			if (lk::vardata_t* x = opts.lookup("mode")) {
+				modes = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("deci")) {
+				decis = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("thousep")) {
+				thouseps = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("pre"))
+				pres = wxSplit(x->as_string(), ',');
+
+			if (lk::vardata_t* x = opts.lookup("post"))
+				posts = wxSplit(x->as_string(), ',');
+
+			if (lk::vardata_t* x = opts.lookup("scale")) {
+				scales = wxSplit(x->as_string(), ',');
+			}
+
+			if (lk::vardata_t* x = opts.lookup("label"))
+				labels = wxSplit(x->as_string(), ',');
+
+		}
+
+
+		for (size_t i = 0; i < vars.GetCount(); i++) {
+			CodeGenData md;
+			md.var = vars[i];
+
+			if (i < modes.GetCount())
+			{
+				wxString mm = modes[i];
+				mm.MakeLower();
+				if (mm == "f") md.mode = 'f';
+				else if (mm == "e")md.mode = 'e';
+				else if (mm == "h") md.mode = 'h';
+			}
+
+			if (i < decis.GetCount()) {
+				int deci = wxAtoi(decis[i]);
+				md.deci = deci;
+			}
+
+			if (i < thouseps.GetCount()) {
+				wxString mm = thouseps[i];
+				mm.MakeLower();
+				if (mm == "f") md.thousep = false;
+				else md.thousep = true;
+			}
+
+			if (i < pres.GetCount()) {
+				md.pre = pres[i];
+			}
+
+			if (i < posts.GetCount()) {
+				md.post = posts[i];
+			}
+
+			if (i < scales.GetCount()) {
+				double scale = wxAtof(scales[i]);
+				md.scale = scale;
+			}
+
+			if (i < labels.GetCount()) {
+				md.label = labels[i];
+			}
+			else if (labels.GetCount() > 0) {
+				md.label = labels[i];
+			}
+
+
+			ci->GetCodeGen_Base()->AddData(md);
+		}
+
+	}
+}
+
+
 static void fcall_metric_table(lk::invoke_t& cxt)
 {
 	LK_DOC("metric_table", "Add an output metric table to the current configuration. Options include headers", "(string:tableName, [table:options]):none");
@@ -711,64 +814,6 @@ static void fcall_metric_row(lk::invoke_t& cxt)
 			mr.metrics.push_back(md);
 		}
 
-/*		MetricRow mr;
-		mr.vars = wxSplit(cxt.arg(0).as_string(),',');
-
-		if (cxt.arg_count() > 1)
-		{
-			lk::vardata_t& opts = cxt.arg(1).deref();
-
-			if (lk::vardata_t* x = opts.lookup("mode"))	{
-				wxArrayString modes = wxSplit(x->as_string(), ',');
-				for (size_t i = 0; i < modes.GetCount(); i++) {
-					wxString mm = modes[i];
-					mm.MakeLower();
-					if (mm == "f") mr.modes.push_back('f');
-					else if (mm == "e")mr.modes.push_back('e');
-					else if (mm == "h") mr.modes.push_back('h');
-					else mr.modes.push_back('g');
-				}
-			}
-
-			if (lk::vardata_t* x = opts.lookup("deci")) {
-				wxArrayString decis = wxSplit(x->as_string(), ',');
-				for (size_t i = 0; i < decis.GetCount(); i++) {
-					int deci = wxAtoi(decis[i]);
-					mr.decis.push_back(deci);
-				}
-			}
-
-			if (lk::vardata_t* x = opts.lookup("thousep")) {
-				wxArrayString thouseps = wxSplit(x->as_string(), ',');
-				for (size_t i = 0; i < thouseps.GetCount(); i++) {
-					wxString mm = thouseps[i];
-					mm.MakeLower();
-					if (mm == "f") mr.thouseps.push_back(false);
-					else mr.thouseps.push_back(true);
-				}
-			}
-
-			if (lk::vardata_t* x = opts.lookup("pre"))
-				mr.pres = wxSplit(x->as_string(),',');
-
-			if (lk::vardata_t* x = opts.lookup("post"))
-				mr.posts = wxSplit(x->as_string(), ',');
-
-			if (lk::vardata_t* x = opts.lookup("label"))
-				mr.label = x->as_string();
-
-			if (lk::vardata_t* x = opts.lookup("scale")) {
-				wxArrayString scales = wxSplit(x->as_string(), ',');
-				for (size_t i = 0; i < scales.GetCount(); i++) {
-					double scale = wxAtof(scales[i]);
-					mr.scales.push_back(scale);
-				}
-			}
-
-			if (lk::vardata_t* x = opts.lookup("tableName"))
-				mr.tableName = x->as_string().MakeLower();
-		}
-*/
 		ci->GetResultsViewer()->AddMetricRow(mr);
 	}
 }
@@ -813,8 +858,6 @@ static void fcall_metric( lk::invoke_t &cxt )
 			if ( lk::vardata_t *x = opts.lookup("scale") )
 				md.scale = x->as_number();
 
-//			if (lk::vardata_t* x = opts.lookup("tableName"))
-//				md.tableName = x->as_string().MakeLower();
 		}
 
 		ci->GetResultsViewer()->AddMetric( md );
@@ -2492,7 +2535,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 {
     LK_DOC("wavetoolkit", "Creates the Wave data download dialog box, lists all avaialble resource files, downloads multiple solar resource files, and returns local file name for weather file", "(none) : string");
     //Create the wind data object
-    WaveDownloadDialog dlgWave(SamApp::Window(), "Advanced Wave Download");
+    WaveDownloadDialog dlgWave(SamApp::Window(), "Wave Resource Data Download");
     dlgWave.CenterOnParent();
     int code = dlgWave.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -2519,27 +2562,17 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     
     double lat, lon;
     ecd.Update(1, 50.0f);
-    if (dlgWave.IsAddressMode() == true)	//entered an address instead of a lat/long
-    {
-        if (!wxEasyCurl::GeoCodeDeveloper(dlgWave.GetAddress(), &lat, &lon, NULL, false))
-        {
-            ecd.Log("Failed to geocode address");
-            ecd.Finalize();
-            return;
-        }
-    }
-    else
-    {
-        lat = dlgWave.GetLatitude();
-        lon = dlgWave.GetLongitude();
-    }
+   
+    lat = dlgWave.GetLatitude();
+    lon = dlgWave.GetLongitude();
+    
     ecd.Update(1, 100.0f);
     ecd.Log(wxString::Format("Retrieving data at lattitude = %.2lf and longitude = %.2lf", lat, lon));
 
 
     wxString location;
     location.Printf("lat%.2lf_lon%.2lf_", lat, lon);
-    location = location + "_";
+    location = location;
     wxArrayString filename_array;
     filename_array.resize(years_final.Count());
 
@@ -2563,9 +2596,18 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
     std::vector<wxEasyCurl*> curls;
 
+    wxString endpoint = dlgWave.GetEndpoint();
+    wxString end_string = "";
+    if (endpoint == "U.S. West Coast")
+        end_string = "wave_query_west";
+    else if (endpoint == "U.S. Atlantic Coast")
+        end_string = "wave_query_atlantic";
+    else if (endpoint == "Hawaii")
+        end_string = "wave_query_hawaii";
+
     for (size_t i = 0; i < years_final.Count(); i++)
     {
-        url = SamApp::WebApi("wave_query");
+        url = SamApp::WebApi(end_string);
         url.Replace("<YEAR>", years_final[i]);
         url.Replace("<LAT>", wxString::Format("%lg", lat));
         url.Replace("<LON>", wxString::Format("%lg", lon));
@@ -2611,8 +2653,8 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
     // can time first download to get better estimate
     float tot_time = 25 * (float)years_final.Count(); // 25 s guess based on test downloads
     float per = 0.0f, act_time;
-    int curhh = 0;
-    wxString cur_hh = "";
+    int year_int = 0;
+    wxString year_string = "";
     wxString file_list = "";
     int num_downloaded = 0;
     while (1)
@@ -2630,22 +2672,22 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         {
             wxString update;
             per += (float)(ms) / (10 * tot_time); // 1/10 = 100 (percent) / (1000 ms/s)
-            if (per > 100.0) per = (float)curhh / (float)years_final.Count() * 100.0 - 10.0; // reset 10%
+            if (per > 100.0) per = (float)year_int / (float)years_final.Count() * 100.0 - 10.0; // reset 10%
             ecd.Update(i, per, update);
             wxArrayString msgs = threads[i]->GetNewMessages();
             ecd.Log(msgs);
-            if (threads[i]->GetDataAsString() != cur_hh)
+            if (threads[i]->GetDataAsString() != year_string)
             {
-                if (cur_hh != "")
+                if (year_string != "")
                 { // adjust actual time based on first download
                     act_time = (float)((its - its0) * ms) / 1000.0f;
                     tot_time = act_time * (float)years_final.Count();
                     its0 = its;
                 }
-                cur_hh = threads[i]->GetDataAsString();
-                ecd.Log("Downloading data for " + cur_hh + " hub height.");
-                per = (float)curhh / (float)years_final.Count() * 100.0;
-                curhh++;
+                year_string = threads[i]->GetDataAsString();
+                ecd.Log("Downloading data for year " + year_string);
+                per = (float)year_int / (float)years_final.Count() * 100.0;
+                year_int++;
             }
         }
 
@@ -2731,6 +2773,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
         // write out combined hub height file
         if (num_downloaded > 0)
         {
+            /*
             if (wxDirExists(wfdir))
             {
                 wxArrayString paths;
@@ -2742,7 +2785,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                     paths.Add(foldername);
                     SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
                 }
-            }
+            }*/
             if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NSRDB Download Message", wxOK);
             //EndModal(wxID_OK);
         }
@@ -3577,11 +3620,12 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("isdefault").assign(rate.Unused.IsDefault);
 		cxt.result().hash_item("servicetype").assign(rate.Unused.ServiceType);
 		cxt.result().hash_item("demandwindow").assign(rate.Unused.DemandWindow);
-		for (int i = 0; i < 12; i++)
+        cxt.result().hash_item("demandreactivepowercharge").assign(rate.Unused.DemandReactivePowerCharge);
+        for (int i = 0; i < 12; i++)
 		{
 			cxt.result().hash_item(wxString::Format("fueladjustmentsmonthly%d", i)).assign(rate.Unused.FuelAdjustmentsMonthly[i]);
-			cxt.result().hash_item(wxString::Format("demandratchetpercentage%d", i)).assign(rate.Unused.DemandRatchetPercentage[i]);
-		}
+            cxt.result().hash_item(wxString::Format("lookbackmonths%d", i)).assign(rate.Unused.LookbackMonths[i]);
+        }
 		if (!applydiurnalschedule(cxt, "cr_sched", rate.Unused.CoincidentSchedule)) return;
 		if (!copy_mat(cxt, "cr_tou_mat", rate.Unused.CoincidentRateStructure)) return;
 
@@ -3629,6 +3673,11 @@ void fcall_urdb_get(lk::invoke_t &cxt)
         else if (rate.MinCharge > 0 )
             rate_notes.append(wxString::Format("SAM does not model minimum charge rate of %f with %s units.\n", rate.MinCharge, rate.MinChargeUnits));
 
+        // Unsupported units
+        if (!rate.EnergyUnits.IsEmpty()) {
+            rate_notes.append(wxString::Format("SAM does not model tiered energy rates with %s for maximum usage units. The default kWh units may not accurately represent the actual rate.", rate.EnergyUnits));
+        }
+
 		// schedules
 		if (!applydiurnalschedule(cxt, "ec_sched_weekday", rate.EnergyWeekdaySchedule)) return;
 		if (!applydiurnalschedule(cxt, "ec_sched_weekend", rate.EnergyWeekendSchedule)) return;
@@ -3642,6 +3691,9 @@ void fcall_urdb_get(lk::invoke_t &cxt)
 		cxt.result().hash_item("dc_enable").assign(1.0);
 		if (!copy_mat(cxt, "dc_flat_mat", rate.DemandFlatStructure)) return;
 		if (!copy_mat(cxt, "dc_tou_mat", rate.DemandTOUStructure)) return;
+
+        cxt.result().hash_item("lookbackpercent").assign(rate.LookbackPercent);
+        cxt.result().hash_item("lookbackrange").assign(rate.LookbackRange);
 
         cxt.result().hash_item("ratenotes").assign(rate_notes);
 
@@ -5841,6 +5893,8 @@ lk::fcall_t* invoke_codegencallback_funcs()
 {
 	static const lk::fcall_t vec[] = {
 		fcall_codegen_metric,
+		fcall_codegen_metric_table,
+		fcall_codegen_metric_row,
 			0 };
 	return (lk::fcall_t*)vec;
 }

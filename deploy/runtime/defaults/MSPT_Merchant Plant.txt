@@ -1,5 +1,5 @@
 1
-709
+776
 A_sf_UI
 1
 1
@@ -150,7 +150,7 @@ Q_tes
 1
 1
 1
-nan
+2791.26
 REC_COPY_Q_rec_des
 1
 1
@@ -719,6 +719,12 @@ check_max_flux
 1
 1
 0
+chk_update_peaks
+1
+1
+1
+1
+0
 city
 1
 4
@@ -741,7 +747,7 @@ const_per_interest1
 1
 1
 1
-26938622
+2.69386e+07
 const_per_interest2
 1
 1
@@ -801,7 +807,7 @@ const_per_interest_total
 1
 1
 1
-26938622
+2.69386e+07
 const_per_months1
 1
 1
@@ -898,7 +904,7 @@ const_per_principal1
 1
 1
 1
-673465536
+6.73466e+08
 const_per_principal2
 1
 1
@@ -928,13 +934,13 @@ const_per_principal_total
 1
 1
 1
-673465536
+6.73466e+08
 const_per_total1
 1
 1
 1
 1
-33673276
+3.36733e+07
 const_per_total2
 1
 1
@@ -994,7 +1000,7 @@ construction_financing_cost
 1
 1
 1
-33673276
+3.36733e+07
 contingency_rate
 1
 1
@@ -1077,7 +1083,7 @@ csp.pt.cost.contingency
 1
 1
 1
-36598896
+3.65989e+07
 csp.pt.cost.epc.fixed
 1
 1
@@ -1107,7 +1113,7 @@ csp.pt.cost.epc.total
 1
 1
 1
-72727232
+7.27272e+07
 csp.pt.cost.fossil
 1
 1
@@ -1119,7 +1125,7 @@ csp.pt.cost.heliostats
 1
 1
 1
-177667632
+1.77668e+08
 csp.pt.cost.heliostats_m2
 1
 1
@@ -1179,7 +1185,7 @@ csp.pt.cost.receiver
 1
 1
 1
-85191944
+8.51919e+07
 csp.pt.cost.receiver.area
 1
 1
@@ -1191,7 +1197,7 @@ csp.pt.cost.sales_tax.total
 1
 1
 1
-22377610
+2.23776e+07
 csp.pt.cost.sales_tax.value
 1
 1
@@ -1203,7 +1209,7 @@ csp.pt.cost.site_improvements
 1
 1
 1
-20304872
+2.03049e+07
 csp.pt.cost.site_improvements_m2
 1
 1
@@ -1215,7 +1221,7 @@ csp.pt.cost.storage
 1
 1
 1
-61407768
+6.14078e+07
 csp.pt.cost.storage_mwht
 1
 1
@@ -1233,7 +1239,7 @@ csp.pt.cost.tower
 1
 1
 1
-25319158
+2.53192e+07
 csp.pt.par.calc.aux
 1
 1
@@ -1347,7 +1353,7 @@ csp.pt.tes.htf_density
 1
 1
 1
-nan
+1808.48
 csp.pt.tes.init_hot_htf_percent
 1
 1
@@ -1365,7 +1371,7 @@ csp.pt.tes.tank_diameter
 1
 1
 1
-nan
+38.7698
 csp.pt.tes.tc_fill_dens
 1
 1
@@ -1838,6 +1844,18 @@ dscr
 1
 1
 1.3
+dscr_limit_debt_fraction
+1
+1
+1
+1
+0
+dscr_maximum_debt_fraction
+1
+1
+1
+1
+100
 dscr_reserve_months
 1
 1
@@ -1850,6 +1868,12 @@ elev
 1
 1
 561
+en_electricity_rates
+1
+1
+1
+1
+0
 enable_interconnection_limit
 1
 1
@@ -11257,8 +11281,8 @@ ibi_uti_percent_tax_sta
 in_location
 1
 4
-63
-Type a location name, street address, or latitude and longitude
+67
+Type a location name, street address, or lat,lon in decimal degrees
 in_location_list
 1
 4
@@ -11295,6 +11319,12 @@ insurance_rate
 1
 0.5
 is_advanced
+1
+1
+1
+1
+0
+is_btm
 1
 1
 1
@@ -231090,18 +231120,18 @@ piping_length_mult
 1
 1
 2.6
-piping_loss
+piping_loss_coefficient
 1
 1
 1
 1
-10200
+2
 piping_loss_tot
 1
 1
 1
 1
-5130.51
+789.262
 plant_spec_cost
 1
 1
@@ -231137,7 +231167,7 @@ property_assessed_value
 1
 1
 1
-673465536
+6.73466e+08
 property_tax_rate
 1
 1
@@ -231191,7 +231221,7 @@ q_dot_tes_est
 1
 1
 1
-nan
+0.729384
 q_pb_design
 1
 1
@@ -231246,6 +231276,12 @@ radiator_unitcost
 1
 1
 13
+rate_escalation
+1
+2
+1
+1
+0
 real_discount_rate
 1
 1
@@ -231342,12 +231378,6 @@ riser_tm_mult
 1
 1
 1
-roe_input
-1
-2
-1
-1
-0
 sales_tax_frac
 1
 1
@@ -231432,12 +231462,6 @@ show_ReserveAccounts
 1
 1
 1
-show_ReturnonEquity
-1
-1
-1
-1
-0
 show_construction_period
 1
 1
@@ -231598,7 +231622,7 @@ tes_avail_vol
 1
 1
 1
-nan
+12985.8
 tes_spec_cost
 1
 1
@@ -231646,19 +231670,19 @@ total_direct_cost
 1
 1
 1
-559440256
+5.5944e+08
 total_indirect_cost
 1
 1
 1
 1
-114025248
+1.14025e+08
 total_installed_cost
 1
 1
 1
 1
-673465536
+6.73466e+08
 tower_exp
 1
 1
@@ -232096,7 +232120,7 @@ ui_direct_subtotal
 1
 1
 1
-522841376
+5.22841e+08
 ui_disp_1_turbout
 1
 1
@@ -232151,6 +232175,12 @@ ui_disp_9_turbout
 1
 1
 1
+ui_electricity_rate_option
+1
+1
+1
+1
+0
 ui_heliostat_height
 1
 1
@@ -232185,6 +232215,415 @@ ui_wacc
 1
 1
 7.10145
+ur_annual_min_charge
+1
+1
+1
+1
+0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+1
+1
+0
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+0
+ur_billing_demand_minimum
+1
+1
+1
+1
+0
+ur_cr_sched
+1
+3
+1
+1
+0
+ur_cr_tou_mat
+1
+3
+1
+1
+0
+ur_dc_billing_demand_periods
+1
+3
+1
+1
+0
+ur_dc_enable
+1
+1
+1
+1
+0
+ur_dc_flat_mat
+1
+3
+12
+4
+0 1 1e+38 0 
+1 1 1e+38 0 
+2 1 1e+38 0 
+3 1 1e+38 0 
+4 1 1e+38 0 
+5 1 1e+38 0 
+6 1 1e+38 0 
+7 1 1e+38 0 
+8 1 1e+38 0 
+9 1 1e+38 0 
+10 1 1e+38 0 
+11 1 1e+38 0 
+
+ur_dc_is_shown
+1
+1
+1
+1
+1
+ur_dc_sched_weekday
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_dc_sched_weekend
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_dc_tou_mat
+1
+3
+2
+4
+1 1 1e+38 0 
+2 1 1e+38 0 
+
+ur_demand_attrs
+1
+4
+0
+ur_demand_history
+1
+1
+1
+1
+0
+ur_demand_max
+1
+1
+1
+1
+0
+ur_demand_min
+1
+1
+1
+1
+0
+ur_demand_reactive_power_charge
+1
+1
+1
+1
+0
+ur_demand_window
+1
+1
+1
+1
+0
+ur_desc_is_shown
+1
+1
+1
+1
+0
+ur_description
+1
+4
+0
+ur_ec_is_shown
+1
+1
+1
+1
+1
+ur_ec_sched_weekday
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_ec_sched_weekend
+1
+3
+12
+24
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+
+ur_ec_tou_mat
+1
+3
+1
+6
+1 1 1e+38 0 0.06 0 
+
+ur_en_ts_buy_rate
+1
+1
+1
+1
+0
+ur_en_ts_sell_rate
+1
+1
+1
+1
+0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
+ur_end_date
+1
+4
+5
+empty
+ur_energy_attrs
+1
+4
+0
+ur_energy_history
+1
+1
+1
+1
+0
+ur_energy_max
+1
+1
+1
+1
+0
+ur_energy_min
+1
+1
+1
+1
+0
+ur_fixed_attrs
+1
+4
+0
+ur_fuel_adjustments_monthly
+1
+2
+1
+1
+0
+ur_has_unused_items
+1
+1
+1
+1
+0
+ur_is_default
+1
+1
+1
+1
+0
+ur_lookback_months
+1
+2
+1
+1
+0
+ur_metering_option
+1
+1
+1
+1
+4
+ur_monthly_fixed_charge
+1
+1
+1
+1
+0
+ur_monthly_min_charge
+1
+1
+1
+1
+0
+ur_name
+1
+4
+0
+ur_nm_credit_month
+1
+1
+1
+1
+0
+ur_nm_credit_rollover
+1
+1
+1
+1
+0
+ur_nm_yearend_sell_rate
+1
+1
+1
+1
+0
+ur_phase_wiring
+1
+4
+0
+ur_rate_notes
+1
+4
+0
+ur_ratedata_filename
+1
+4
+0
+ur_schedule_name
+1
+4
+5
+empty
+ur_service_type
+1
+4
+0
+ur_source
+1
+4
+5
+empty
+ur_start_date
+1
+4
+5
+empty
+ur_ts_buy_rate
+1
+2
+1
+1
+0
+ur_ts_sell_rate
+1
+2
+1
+1
+0
+ur_unused_is_shown
+1
+1
+1
+1
+0
+ur_uri
+1
+4
+5
+empty
+ur_utility
+1
+4
+5
+empty
+ur_voltage_category
+1
+4
+0
+ur_voltage_max
+1
+1
+1
+1
+0
+ur_voltage_min
+1
+1
+1
+1
+0
+ur_yearzero_usage_peaks
+1
+2
+1
+1
+0
 use_specific_weather_file
 1
 1
@@ -232213,7 +232652,7 @@ vol_tank
 1
 1
 1
-nan
+14166.4
 washing_frequency
 1
 1
@@ -232231,36 +232670,36 @@ weekday_schedule
 3
 12
 24
-6 6 6 6 6 6 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 
-6 6 6 6 6 6 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 
-6 6 6 6 6 6 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 
-6 6 6 6 6 6 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 
-6 6 6 6 6 6 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 
-3 3 3 3 3 3 3 3 2 2 2 2 1 1 1 1 1 1 2 2 2 3 3 3 
-3 3 3 3 3 3 3 3 2 2 2 2 1 1 1 1 1 1 2 2 2 3 3 3 
-3 3 3 3 3 3 3 3 2 2 2 2 1 1 1 1 1 1 2 2 2 3 3 3 
-3 3 3 3 3 3 3 3 2 2 2 2 1 1 1 1 1 1 2 2 2 3 3 3 
-6 6 6 6 6 6 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 
-6 6 6 6 6 6 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 
-6 6 6 6 6 6 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 5 5 5 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
 weekend_schedule
 1
 3
 12
 24
-6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
-6 6 6 6 6 6 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 
 wf_nrecords
 1

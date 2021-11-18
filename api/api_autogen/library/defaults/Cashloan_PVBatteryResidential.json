@@ -2,7 +2,6 @@
 	"defaults": {
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"debt_fraction": 100,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
@@ -154,7 +153,8 @@
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 316.31,
-			"en_batt": 1
+			"en_batt": 1,
+			"en_standalone_batt": 0
 		},
 		"FuelCell": {
 		},
@@ -170,12 +170,9 @@
 			"elec_cost_with_system": [0],
 			"elec_cost_without_system": [0]
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 9618.6
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		}
 	}
 }

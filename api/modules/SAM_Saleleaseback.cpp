@@ -62,12 +62,6 @@ SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_analysis_period_nset(SAM_t
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
-	});
-}
-
 SAM_EXPORT void SAM_Saleleaseback_FinancialParameters_equip1_reserve_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "equip1_reserve_cost", number);
@@ -1460,91 +1454,97 @@ SAM_EXPORT void SAM_Saleleaseback_OtherCapitalCosts_months_working_reserve_nset(
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_Battery_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_LCOS_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_energy", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_Battery_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_LCOS_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_from_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_Battery_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_LCOS_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_discharge_energy", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_Battery_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_LCOS_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_capacity_percent", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_Battery_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_LCOS_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_LCOS_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "battery_total_cost_lcos", number);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_Battery_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Saleleaseback_Battery_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Saleleaseback_Battery_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Saleleaseback_Battery_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Saleleaseback_Battery_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_system_to_grid", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Saleleaseback_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_LCOS_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "charge_w_sys_ec_ym", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_ChargesByMonth_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_LCOS_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_LCOS_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_LCOS_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_LCOS_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_LCOS_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_system_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_LCOS_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "true_up_credits_ym", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_ChargesByMonth_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "year1_monthly_ec_charge_with_system", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Saleleaseback_Monthly_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_LCOS_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_ec_charge_gross_with_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Saleleaseback_Monthly_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Saleleaseback_LCOS_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_monthly_ec_charge_with_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_electricity_to_grid", arr, length);
 	});
@@ -1583,6 +1583,12 @@ SAM_EXPORT void SAM_Saleleaseback_BatterySystem_battery_per_kWh_nset(SAM_table p
 SAM_EXPORT void SAM_Saleleaseback_BatterySystem_en_batt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_batt", number);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_standalone_batt", number);
 	});
 }
 
@@ -1669,17 +1675,6 @@ SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_analysis_period_nget(SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_period", &result))
 		make_access_error("SAM_Saleleaseback", "analysis_period");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Saleleaseback_FinancialParameters_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
-		make_access_error("SAM_Saleleaseback", "batt_salvage_percentage");
 	});
 	return result;
 }
@@ -4271,7 +4266,7 @@ SAM_EXPORT double SAM_Saleleaseback_OtherCapitalCosts_months_working_reserve_nge
 
 
 
-SAM_EXPORT double* SAM_Saleleaseback_Battery_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
@@ -4283,7 +4278,7 @@ SAM_EXPORT double* SAM_Saleleaseback_Battery_batt_annual_charge_energy_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Saleleaseback_Battery_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_from_system", length);
@@ -4295,7 +4290,7 @@ SAM_EXPORT double* SAM_Saleleaseback_Battery_batt_annual_charge_from_system_aget
 
 
 
-SAM_EXPORT double* SAM_Saleleaseback_Battery_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_discharge_energy", length);
@@ -4307,7 +4302,7 @@ SAM_EXPORT double* SAM_Saleleaseback_Battery_batt_annual_discharge_energy_aget(S
 
 
 
-SAM_EXPORT double* SAM_Saleleaseback_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
@@ -4319,7 +4314,18 @@ SAM_EXPORT double* SAM_Saleleaseback_Battery_batt_capacity_percent_aget(SAM_tabl
 
 
 
-SAM_EXPORT double SAM_Saleleaseback_Battery_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Saleleaseback_LCOS_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
+		make_access_error("SAM_Saleleaseback", "batt_salvage_percentage");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Saleleaseback_LCOS_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "battery_total_cost_lcos", &result))
@@ -4330,67 +4336,7 @@ SAM_EXPORT double SAM_Saleleaseback_Battery_battery_total_cost_lcos_nget(SAM_tab
 
 
 
-SAM_EXPORT double* SAM_Saleleaseback_Battery_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "grid_to_batt", length);
-	if (!result)
-		make_access_error("SAM_Saleleaseback", "grid_to_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Saleleaseback_Battery_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
-	if (!result)
-		make_access_error("SAM_Saleleaseback", "monthly_batt_to_grid");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Saleleaseback_Battery_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
-	if (!result)
-		make_access_error("SAM_Saleleaseback", "monthly_grid_to_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Saleleaseback_Battery_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
-	if (!result)
-		make_access_error("SAM_Saleleaseback", "monthly_grid_to_load");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Saleleaseback_Battery_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
-	if (!result)
-		make_access_error("SAM_Saleleaseback", "monthly_system_to_grid");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Saleleaseback_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "charge_w_sys_ec_ym", nrows, ncols);
@@ -4402,7 +4348,67 @@ SAM_EXPORT double* SAM_Saleleaseback_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Saleleaseback_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "monthly_batt_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "monthly_grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "monthly_grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "monthly_system_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "true_up_credits_ym", nrows, ncols);
@@ -4414,19 +4420,7 @@ SAM_EXPORT double* SAM_Saleleaseback_ChargesByMonth_true_up_credits_ym_mget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Saleleaseback_ChargesByMonth_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_with_system", length);
-	if (!result)
-		make_access_error("SAM_Saleleaseback", "year1_monthly_ec_charge_with_system");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Saleleaseback_Monthly_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_gross_with_system", length);
@@ -4438,7 +4432,19 @@ SAM_EXPORT double* SAM_Saleleaseback_Monthly_year1_monthly_ec_charge_gross_with_
 
 
 
-SAM_EXPORT double* SAM_Saleleaseback_Monthly_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_with_system", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "year1_monthly_ec_charge_with_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_electricity_to_grid", length);
@@ -4512,6 +4518,17 @@ SAM_EXPORT double SAM_Saleleaseback_BatterySystem_en_batt_nget(SAM_table ptr, SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_batt", &result))
 		make_access_error("SAM_Saleleaseback", "en_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Saleleaseback_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_standalone_batt", &result))
+		make_access_error("SAM_Saleleaseback", "en_standalone_batt");
 	});
 	return result;
 }
@@ -4647,18 +4664,6 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_annual_discharge_lcos_aget(SAM_t
 	result = ssc_data_get_array(ptr, "cf_annual_discharge_lcos", length);
 	if (!result)
 		make_access_error("SAM_Saleleaseback", "cf_annual_discharge_lcos");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_batt_replacement_cost", length);
-	if (!result)
-		make_access_error("SAM_Saleleaseback", "cf_batt_replacement_cost");
 	});
 	return result;
 }

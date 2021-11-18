@@ -68,6 +68,18 @@ SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_nset(SAM_table ptr, d
 	});
 }
 
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_limit_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dscr_limit_debt_fraction", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_maximum_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dscr_maximum_debt_fraction", number);
+	});
+}
+
 SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_reserve_months_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dscr_reserve_months", number);
@@ -191,12 +203,6 @@ SAM_EXPORT void SAM_Merchantplant_FinancialParameters_real_discount_rate_nset(SA
 SAM_EXPORT void SAM_Merchantplant_FinancialParameters_reserves_interest_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "reserves_interest", number);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_FinancialParameters_roe_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "roe_input", arr, length);
 	});
 }
 
@@ -1376,9 +1382,27 @@ SAM_EXPORT void SAM_Merchantplant_Revenue_flip_target_year_nset(SAM_table ptr, d
 	});
 }
 
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv1_percent_gen", number);
+	});
+}
+
 SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv1_revenue", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv1_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "mp_ancserv1_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv2_percent_gen", number);
 	});
 }
 
@@ -1388,9 +1412,33 @@ SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv2_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "mp_ancserv2_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv3_percent_gen", number);
+	});
+}
+
 SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv3_revenue", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv3_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "mp_ancserv3_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv4_percent_gen", number);
 	});
 }
 
@@ -1400,9 +1448,21 @@ SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_revenue_mset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_ancserv4_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "mp_ancserv4_revenue_single", mat, nrows, ncols);
+	});
+}
+
 SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mp_enable_ancserv1", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv1_percent_gen", number);
 	});
 }
 
@@ -1412,9 +1472,21 @@ SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv2_nset(SAM_table ptr,
 	});
 }
 
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv2_percent_gen", number);
+	});
+}
+
 SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv3_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mp_enable_ancserv3", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv3_percent_gen", number);
 	});
 }
 
@@ -1424,15 +1496,39 @@ SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv4_nset(SAM_table ptr,
 	});
 }
 
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_ancserv4_percent_gen", number);
+	});
+}
+
 SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mp_enable_energy_market_revenue", number);
 	});
 }
 
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_enable_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_enable_market_percent_gen", number);
+	});
+}
+
 SAM_EXPORT void SAM_Merchantplant_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_energy_market_revenue", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_energy_market_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "mp_energy_market_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_Revenue_mp_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_market_percent_gen", number);
 	});
 }
 
@@ -1475,6 +1571,12 @@ SAM_EXPORT void SAM_Merchantplant_BatterySystem_battery_per_kWh_nset(SAM_table p
 SAM_EXPORT void SAM_Merchantplant_BatterySystem_en_batt_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_batt", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_BatterySystem_en_standalone_batt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_standalone_batt", number);
 	});
 }
 
@@ -1598,91 +1700,97 @@ SAM_EXPORT void SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nset(SAM_
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Battery_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LCOS_batt_annual_charge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_energy", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Battery_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LCOS_batt_annual_charge_from_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_charge_from_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Battery_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LCOS_batt_annual_discharge_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_annual_discharge_energy", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Battery_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LCOS_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_capacity_percent", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Battery_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LCOS_batt_salvage_percentage_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_salvage_percentage", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_battery_total_cost_lcos_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "battery_total_cost_lcos", number);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Battery_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_Battery_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_Battery_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_Battery_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_Battery_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "monthly_system_to_grid", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LCOS_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "charge_w_sys_ec_ym", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LCOS_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_batt_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_batt_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_grid_to_batt_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_batt", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_grid_to_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_grid_to_load", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_monthly_system_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_system_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "true_up_credits_ym", mat, nrows, ncols);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "year1_monthly_ec_charge_with_system", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Merchantplant_Monthly_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_ec_charge_gross_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_ec_charge_gross_with_system", arr, length);
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_Monthly_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_ec_charge_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "year1_monthly_ec_charge_with_system", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_electricity_to_grid", arr, length);
 	});
@@ -1793,6 +1901,28 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dscr", &result))
 		make_access_error("SAM_Merchantplant", "dscr");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_limit_debt_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dscr_limit_debt_fraction", &result))
+		make_access_error("SAM_Merchantplant", "dscr_limit_debt_fraction");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_FinancialParameters_dscr_maximum_debt_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dscr_maximum_debt_fraction", &result))
+		make_access_error("SAM_Merchantplant", "dscr_maximum_debt_fraction");
 	});
 	return result;
 }
@@ -2025,18 +2155,6 @@ SAM_EXPORT double SAM_Merchantplant_FinancialParameters_reserves_interest_nget(S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "reserves_interest", &result))
 		make_access_error("SAM_Merchantplant", "reserves_interest");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_FinancialParameters_roe_input_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "roe_input", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "roe_input");
 	});
 	return result;
 }
@@ -4226,12 +4344,46 @@ SAM_EXPORT double SAM_Merchantplant_Revenue_flip_target_year_nget(SAM_table ptr,
 
 
 
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv1_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_ancserv1_percent_gen");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv1_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv1_revenue", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "mp_ancserv1_revenue");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv1_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "mp_ancserv1_revenue_single", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "mp_ancserv1_revenue_single");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv2_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_ancserv2_percent_gen");
 	});
 	return result;
 }
@@ -4250,12 +4402,58 @@ SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv2_revenue_mget(SAM_table 
 
 
 
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv2_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "mp_ancserv2_revenue_single", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "mp_ancserv2_revenue_single");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv3_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_ancserv3_percent_gen");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv3_revenue", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "mp_ancserv3_revenue");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv3_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "mp_ancserv3_revenue_single", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "mp_ancserv3_revenue_single");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv4_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_ancserv4_percent_gen");
 	});
 	return result;
 }
@@ -4274,11 +4472,34 @@ SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv4_revenue_mget(SAM_table 
 
 
 
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_ancserv4_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "mp_ancserv4_revenue_single", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "mp_ancserv4_revenue_single");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mp_enable_ancserv1", &result))
 		make_access_error("SAM_Merchantplant", "mp_enable_ancserv1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv1_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv1_percent_gen");
 	});
 	return result;
 }
@@ -4296,11 +4517,33 @@ SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv2_nget(SAM_table pt
 
 
 
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv2_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv2_percent_gen");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mp_enable_ancserv3", &result))
 		make_access_error("SAM_Merchantplant", "mp_enable_ancserv3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv3_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv3_percent_gen");
 	});
 	return result;
 }
@@ -4318,11 +4561,33 @@ SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv4_nget(SAM_table pt
 
 
 
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_ancserv4_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_ancserv4_percent_gen");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_energy_market_revenue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "mp_enable_energy_market_revenue", &result))
 		make_access_error("SAM_Merchantplant", "mp_enable_energy_market_revenue");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_enable_market_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_enable_market_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_enable_market_percent_gen");
 	});
 	return result;
 }
@@ -4335,6 +4600,29 @@ SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_energy_market_revenue_mget(SAM_t
 	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "mp_energy_market_revenue");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_Revenue_mp_energy_market_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue_single", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "mp_energy_market_revenue_single");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_Revenue_mp_market_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_market_percent_gen", &result))
+		make_access_error("SAM_Merchantplant", "mp_market_percent_gen");
 	});
 	return result;
 }
@@ -4414,6 +4702,17 @@ SAM_EXPORT double SAM_Merchantplant_BatterySystem_en_batt_nget(SAM_table ptr, SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_batt", &result))
 		make_access_error("SAM_Merchantplant", "en_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_standalone_batt", &result))
+		make_access_error("SAM_Merchantplant", "en_standalone_batt");
 	});
 	return result;
 }
@@ -4649,7 +4948,7 @@ SAM_EXPORT double SAM_Merchantplant_CapacityPayments_cp_system_nameplate_nget(SA
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_energy", length);
@@ -4661,7 +4960,7 @@ SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_charge_energy_aget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_charge_from_system", length);
@@ -4673,7 +4972,7 @@ SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_charge_from_system_aget
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_annual_discharge_energy", length);
@@ -4685,7 +4984,7 @@ SAM_EXPORT double* SAM_Merchantplant_Battery_batt_annual_discharge_energy_aget(S
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_LCOS_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "batt_capacity_percent", length);
@@ -4697,7 +4996,18 @@ SAM_EXPORT double* SAM_Merchantplant_Battery_batt_capacity_percent_aget(SAM_tabl
 
 
 
-SAM_EXPORT double SAM_Merchantplant_Battery_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Merchantplant_LCOS_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_salvage_percentage", &result))
+		make_access_error("SAM_Merchantplant", "batt_salvage_percentage");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Merchantplant_LCOS_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "battery_total_cost_lcos", &result))
@@ -4708,67 +5018,7 @@ SAM_EXPORT double SAM_Merchantplant_Battery_battery_total_cost_lcos_nget(SAM_tab
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Battery_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "grid_to_batt", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "grid_to_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Battery_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "monthly_batt_to_grid");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Battery_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "monthly_grid_to_batt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Battery_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "monthly_grid_to_load");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Battery_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "monthly_system_to_grid");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_LCOS_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "charge_w_sys_ec_ym", nrows, ncols);
@@ -4780,7 +5030,67 @@ SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_LCOS_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_batt_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "monthly_batt_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_batt", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "monthly_grid_to_batt");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_grid_to_load", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "monthly_grid_to_load");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_system_to_grid", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "monthly_system_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "true_up_credits_ym", nrows, ncols);
@@ -4792,19 +5102,7 @@ SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_true_up_credits_ym_mget(SAM_
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_with_system", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "year1_monthly_ec_charge_with_system");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Monthly_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_gross_with_system", length);
@@ -4816,7 +5114,19 @@ SAM_EXPORT double* SAM_Merchantplant_Monthly_year1_monthly_ec_charge_gross_with_
 
 
 
-SAM_EXPORT double* SAM_Merchantplant_Monthly_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_ec_charge_with_system", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "year1_monthly_ec_charge_with_system");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "year1_monthly_electricity_to_grid", length);
@@ -5039,18 +5349,6 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_annual_discharge_lcos_aget(SAM_t
 	result = ssc_data_get_array(ptr, "cf_annual_discharge_lcos", length);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "cf_annual_discharge_lcos");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_batt_replacement_cost", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_batt_replacement_cost");
 	});
 	return result;
 }
@@ -5639,18 +5937,6 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_insurance_expense_aget(SAM_table
 	result = ssc_data_get_array(ptr, "cf_insurance_expense", length);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "cf_insurance_expense");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_lcog_costs_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_lcog_costs", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_lcog_costs");
 	});
 	return result;
 }
@@ -6430,42 +6716,6 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_reserve_total_aget(SAM_table ptr
 	result = ssc_data_get_array(ptr, "cf_reserve_total", length);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "cf_reserve_total");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_return_on_equity_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_return_on_equity");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_return_on_equity_dollars_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity_dollars", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_return_on_equity_dollars");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_return_on_equity_input_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_return_on_equity_input", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_return_on_equity_input");
 	});
 	return result;
 }
@@ -9764,72 +10014,6 @@ SAM_EXPORT double SAM_Merchantplant_Outputs_lcoe_real_nget(SAM_table ptr, SAM_er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lcoe_real", &result))
 		make_access_error("SAM_Merchantplant", "lcoe_real");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog", &result))
-		make_access_error("SAM_Merchantplant", "lcog");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_depr_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_depr", &result))
-		make_access_error("SAM_Merchantplant", "lcog_depr");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_loan_int_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_loan_int", &result))
-		make_access_error("SAM_Merchantplant", "lcog_loan_int");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_om_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_om", &result))
-		make_access_error("SAM_Merchantplant", "lcog_om");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_roe_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_roe", &result))
-		make_access_error("SAM_Merchantplant", "lcog_roe");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Merchantplant_Outputs_lcog_wc_int_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lcog_wc_int", &result))
-		make_access_error("SAM_Merchantplant", "lcog_wc_int");
 	});
 	return result;
 }

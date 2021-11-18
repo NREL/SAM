@@ -48,7 +48,6 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 30,
-			"batt_salvage_percentage": 0,
 			"construction_financing_cost": 0,
 			"cost_debt_closing": 0,
 			"cost_debt_fee": 0,
@@ -56,6 +55,8 @@
 			"debt_option": 1,
 			"debt_percent": 50,
 			"dscr": 0,
+			"dscr_limit_debt_fraction": 0,
+			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 0,
 			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 0,
@@ -77,7 +78,6 @@
 			"property_tax_rate": 1,
 			"real_discount_rate": 5.5,
 			"reserves_interest": 1.75,
-			"roe_input": [0.000000],
 			"salvage_percentage": 0,
 			"state_tax_rate": [0.000000],
 			"system_capacity": 200,
@@ -302,12 +302,9 @@
 			"grid_curtailment_price": [0.000000],
 			"grid_curtailment_price_esc": 0
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 0
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		}
 	}
 }

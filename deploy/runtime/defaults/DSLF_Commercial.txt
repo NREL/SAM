@@ -1,5 +1,5 @@
 1
-714
+717
 A_aperture
 1
 3
@@ -768,7 +768,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 city
 1
 4
@@ -802,7 +802,7 @@ csp.lf.cost.contingency
 1
 1
 1
-21231214
+2.12312e+07
 csp.lf.cost.contingency_percent
 1
 1
@@ -844,7 +844,7 @@ csp.lf.cost.epc.total
 1
 1
 1
-35698768
+3.56988e+07
 csp.lf.cost.fossil_backup
 1
 1
@@ -868,7 +868,7 @@ csp.lf.cost.htf_system
 1
 1
 1
-30774912
+3.07749e+07
 csp.lf.cost.htf_system.area
 1
 1
@@ -952,7 +952,7 @@ csp.lf.cost.sales_tax.total
 1
 1
 1
-12981371
+1.29814e+07
 csp.lf.cost.sales_tax.value
 1
 1
@@ -982,7 +982,7 @@ csp.lf.cost.solar_field
 1
 1
 1
-131892480
+1.31892e+08
 csp.lf.cost.solar_field.area
 1
 1
@@ -1000,19 +1000,19 @@ csp.lf.cost.total_direct
 1
 1
 1
-324534272
+3.24534e+08
 csp.lf.cost.total_indirect
 1
 1
 1
 1
-39175176
+3.91752e+07
 csp.lf.cost.total_installed
 1
 1
 1
 1
-376690816
+3.76691e+08
 csp.lf.cost.total_land_area
 1
 1
@@ -3133,6 +3133,12 @@ is_advanced
 1
 1
 0
+is_btm
+1
+1
+1
+1
+1
 is_multgeom
 1
 1
@@ -3673,7 +3679,7 @@ property_assessed_value
 1
 1
 1
-376690816
+3.76691e+08
 property_tax_rate
 1
 1
@@ -3980,13 +3986,13 @@ total_direct_cost
 1
 1
 1
-39175176
+3.91752e+07
 total_installed_cost
 1
 1
 1
 1
-376690816
+3.76691e+08
 track_mode
 1
 1
@@ -4010,13 +4016,13 @@ ui_loan_amount
 1
 1
 1
-376690816
+3.76691e+08
 ui_net_capital_cost
 1
 1
 1
 1
-376690816
+3.76691e+08
 ui_step_minutes
 1
 1
@@ -4035,6 +4041,42 @@ ur_annual_min_charge
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+100
 ur_cr_sched
 1
 3
@@ -4062,6 +4104,14 @@ ur_cr_tou_mat
 2 1 1e+38 0 
 3 1 1e+38 0 
 4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+2
+2
+1 1 
+2 1 
 
 ur_dc_enable
 1
@@ -4161,13 +4211,12 @@ ur_demand_min
 1
 1
 400
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -4183,48 +4232,6 @@ ur_desc_is_shown
 ur_description
 1
 4
-0
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-100
-ur_ec_enable_billing_demand
-1
-1
-1
-1
 0
 ur_ec_is_shown
 1
@@ -4290,6 +4297,12 @@ ur_en_ts_sell_rate
 1
 1
 0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
 ur_end_date
 1
 4
@@ -4337,6 +4350,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

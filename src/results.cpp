@@ -740,23 +740,29 @@ void ResultsViewer::Setup(Simulation* sim)
             double value = 0.0;
             if (VarValue* vv = m_sim->GetValue(md.var))
             {
-                value = md.scale * (double)vv->Value();
 
-                int deci = md.deci;
-                if (md.mode == 'g') deci = wxNUMERIC_GENERIC;
-                else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
-                else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
+                value = md.scale * (double)vv->Value();
 
                 slab = md.label;
                 if (slab.IsEmpty())
                     slab = m_sim->GetLabel(md.var);
 
-                wxString post = md.post;
-                if (post.IsEmpty())
-                    post = " " + m_sim->GetUnits(md.var);
+                if (std::isnan(value))
+                    sval = vv->AsString();
+                else
+                {
+                    int deci = md.deci;
+                    if (md.mode == 'g') deci = wxNUMERIC_GENERIC;
+                    else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
+                    else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
 
-                sval = wxNumericFormat(value, wxNUMERIC_REAL,
-                    deci, md.thousep, md.pre, post);
+                     wxString post = md.post;
+                    if (post.IsEmpty())
+                        post = " " + m_sim->GetUnits(md.var);
+
+                    sval = wxNumericFormat(value, wxNUMERIC_REAL,
+                        deci, md.thousep, md.pre, post);
+                }
             }
             metrics(i + 1, 0) = slab;
             metrics(i + 1, 1) = sval;
@@ -803,17 +809,22 @@ void ResultsViewer::Setup(Simulation* sim)
                                 {
                                     value = mr.metrics[icol].scale * vv->Value();
 
-                                    int deci = mr.metrics[icol].deci;
-                                    if (mr.metrics[icol].mode == 'g') deci = wxNUMERIC_GENERIC;
-                                    else if (mr.metrics[icol].mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
-                                    else if (mr.metrics[icol].mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
+                                    if (std::isnan(value))
+                                        sval = vv->AsString();
+                                    else
+                                    {
+                                        int deci = mr.metrics[icol].deci;
+                                        if (mr.metrics[icol].mode == 'g') deci = wxNUMERIC_GENERIC;
+                                        else if (mr.metrics[icol].mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
+                                        else if (mr.metrics[icol].mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
 
-                                    wxString post = mr.metrics[icol].post;
-                                    if (post.IsEmpty())
-                                        post = " " + m_sim->GetUnits(mr.metrics[icol].var);
+                                        wxString post = mr.metrics[icol].post;
+                                        if (post.IsEmpty())
+                                            post = " " + m_sim->GetUnits(mr.metrics[icol].var);
 
-                                    sval = wxNumericFormat(value, wxNUMERIC_REAL,
+                                        sval = wxNumericFormat(value, wxNUMERIC_REAL,
                                         deci, mr.metrics[icol].thousep, mr.metrics[icol].pre, post);
+                                    }
                                 }
                                 metrics(iMetrics + 1, icol + 1) = sval;
                             }

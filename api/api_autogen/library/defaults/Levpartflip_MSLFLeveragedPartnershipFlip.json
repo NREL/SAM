@@ -16,6 +16,8 @@
 			"debt_option": 1,
 			"debt_percent": 50,
 			"dscr": 1.3,
+			"dscr_limit_debt_fraction": 0,
+			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 6,
 			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,
@@ -277,11 +279,8 @@
 			"tax_investor_preflip_cash_percent": 98,
 			"tax_investor_preflip_tax_percent": 98
 		},
-		"Battery": {
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
+		"LCOS": {
+			"batt_salvage_percentage": 0
 		},
 		"BatterySystem": {
 		}

@@ -1,7 +1,7 @@
 Battery Dispatch Manual
-1051
-554
-51
+1053
+645
+66
 Label
 
 1
@@ -12,13 +12,13 @@ Name
 AllowChargeFromExcessSolarLabel
 X
 3
-99
+135
 Y
 3
-36
+69
 Width
 3
-111
+78
 Height
 3
 42
@@ -56,54 +56,6 @@ Label
 13
 Name
 5
-21
-AllowDischargingLabel
-X
-3
-363
-Y
-3
-36
-Width
-3
-129
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-9
-Discharge
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-1
-FontSize
-3
-0
-WordWrap
-2
-1
-AlignRight
-2
-0
-AlignTop
-2
-1
-Label
-
-1
-13
-Name
-5
 15
 Battery_weekday
 X
@@ -111,7 +63,7 @@ X
 21
 Y
 3
-252
+336
 Width
 3
 483
@@ -159,7 +111,7 @@ X
 561
 Y
 3
-252
+336
 Width
 3
 483
@@ -204,10 +156,10 @@ Name
 ForceChargingLabel
 X
 3
-219
+237
 Y
 3
-36
+69
 Width
 3
 132
@@ -248,17 +200,17 @@ Label
 13
 Name
 5
-29
-Percent of rated to discharge
+31
+Percent of rated to discharge22
 X
 3
-411
+438
 Y
 3
-57
+90
 Width
 3
-75
+65
 Height
 3
 21
@@ -267,8 +219,8 @@ Tool Tip
 0
 Caption
 5
-10
-% capacity
+8
+Rate (%)
 TextColour
 4
 0
@@ -300,13 +252,13 @@ Name
 Percent of rated to discharge37
 X
 3
-267
+282
 Y
 3
-57
+90
 Width
 3
-75
+65
 Height
 3
 21
@@ -315,8 +267,8 @@ Tool Tip
 0
 Caption
 5
-10
-% capacity
+8
+Rate (%)
 TextColour
 4
 0
@@ -348,10 +300,10 @@ Name
 Period1
 X
 3
-24
+60
 Y
 3
-81
+111
 Width
 3
 69
@@ -396,10 +348,10 @@ Name
 Period2
 X
 3
-24
+60
 Y
 3
-108
+138
 Width
 3
 69
@@ -444,10 +396,10 @@ Name
 Period3
 X
 3
-24
+60
 Y
 3
-135
+165
 Width
 3
 69
@@ -492,10 +444,10 @@ Name
 Period4
 X
 3
-24
+60
 Y
 3
-162
+192
 Width
 3
 69
@@ -540,10 +492,10 @@ Name
 Period5
 X
 3
-24
+60
 Y
 3
-189
+219
 Width
 3
 69
@@ -588,10 +540,10 @@ Name
 Period6
 X
 3
-24
+60
 Y
 3
-216
+246
 Width
 3
 69
@@ -636,10 +588,10 @@ Name
 batt_discharge_percent_1
 X
 3
-411
+438
 Y
 3
-81
+111
 Width
 3
 42
@@ -698,10 +650,10 @@ Name
 batt_discharge_percent_2
 X
 3
-411
+438
 Y
 3
-108
+138
 Width
 3
 42
@@ -760,10 +712,10 @@ Name
 batt_discharge_percent_3
 X
 3
-411
+438
 Y
 3
-135
+165
 Width
 3
 42
@@ -822,10 +774,10 @@ Name
 batt_discharge_percent_4
 X
 3
-411
+438
 Y
 3
-162
+192
 Width
 3
 42
@@ -884,10 +836,10 @@ Name
 batt_discharge_percent_5
 X
 3
-411
+438
 Y
 3
-189
+219
 Width
 3
 42
@@ -946,10 +898,10 @@ Name
 batt_discharge_percent_6
 X
 3
-411
+438
 Y
 3
-216
+246
 Width
 3
 42
@@ -1008,10 +960,10 @@ Name
 batt_gridcharge_percent_1
 X
 3
-267
+282
 Y
 3
-81
+111
 Width
 3
 42
@@ -1070,10 +1022,10 @@ Name
 batt_gridcharge_percent_2
 X
 3
-267
+282
 Y
 3
-108
+138
 Width
 3
 42
@@ -1132,10 +1084,10 @@ Name
 batt_gridcharge_percent_3
 X
 3
-267
+282
 Y
 3
-135
+165
 Width
 3
 42
@@ -1194,10 +1146,10 @@ Name
 batt_gridcharge_percent_4
 X
 3
-267
+282
 Y
 3
-162
+192
 Width
 3
 42
@@ -1256,10 +1208,10 @@ Name
 batt_gridcharge_percent_5
 X
 3
-267
+282
 Y
 3
-189
+219
 Width
 3
 42
@@ -1318,10 +1270,10 @@ Name
 batt_gridcharge_percent_6
 X
 3
-267
+282
 Y
 3
-216
+246
 Width
 3
 42
@@ -1380,13 +1332,13 @@ Name
 batt_manual_dispatch_label
 X
 3
-522
+15
 Y
 3
-36
+24
 Width
 3
-519
+1012
 Height
 3
 36
@@ -1395,8 +1347,8 @@ Tool Tip
 0
 Caption
 5
-122
-For each enabled charge or discharge period the "% capacity" is the percentage of available capacity in a given time step.
+250
+For each dispatch period, choose options to allow charging or discharging, and set the charge/discharge rate as a percent of available storage capacity. Use the Weekday and Weekend schedules to define the times for each of up to six dispatch periods.
 TextColour
 4
 0
@@ -1428,10 +1380,10 @@ Name
 btn_copy_schedule
 X
 3
-543
+24
 Y
 3
-216
+294
 Width
 3
 363
@@ -1443,8 +1395,8 @@ Tool Tip
 0
 Caption
 5
-37
-Copy Schedules from TOU/TOD Schedules
+33
+Copy Schedules from TOU Schedules
 TabOrder
 3
 33
@@ -1461,7 +1413,7 @@ X
 21
 Y
 3
-273
+357
 Width
 3
 483
@@ -1497,7 +1449,7 @@ X
 561
 Y
 3
-273
+357
 Width
 3
 483
@@ -1526,27 +1478,75 @@ Label
 13
 Name
 5
-17
-lbl_copy_schedule
+3
+lbl
 X
 3
-522
+237
 Y
 3
-150
+90
 Width
 3
-519
+42
 Height
 3
-66
+21
 Tool Tip
 5
 0
 Caption
 5
-306
-Use the Copy Schedules button to overwrite the weekday and weekend schedules with schedules from either 1) energy charge schedules from the Electricity Rates page for behind-the-meter applications, or 2) TOD PPA price multipliers on the Revenue or Financial Parameters page for front-of-meter applications.
+5
+Allow
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+17
+lbl_copy_schedule
+X
+3
+393
+Y
+3
+294
+Width
+3
+650
+Height
+3
+36
+Tool Tip
+5
+0
+Caption
+5
+164
+Use the Copy Schedules button to overwrite the weekday and weekend schedules with schedules from either the energy charge schedules from the Electricity Rates page.
 TextColour
 4
 0
@@ -1568,6 +1568,246 @@ AlignRight
 AlignTop
 2
 1
+Label
+
+1
+13
+Name
+5
+21
+lbl_discharge_options
+X
+3
+393
+Y
+3
+69
+Width
+3
+132
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+17
+Discharge to load
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+21
+lbl_discharge_to_grid
+X
+3
+543
+Y
+3
+69
+Width
+3
+132
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+17
+Discharge to grid
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+1
+FontSize
+3
+0
+WordWrap
+2
+1
+AlignRight
+2
+0
+AlignTop
+2
+1
+Label
+
+1
+13
+Name
+5
+28
+lbl_discharge_to_grid_option
+X
+3
+588
+Y
+3
+90
+Width
+3
+65
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+8
+Rate (%)
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+28
+lbl_discharge_to_load_option
+X
+3
+393
+Y
+3
+90
+Width
+3
+42
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+5
+Allow
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
+Label
+
+1
+13
+Name
+5
+21
+lbl_to_grid_discharge
+X
+3
+543
+Y
+3
+90
+Width
+3
+42
+Height
+3
+21
+Tool Tip
+5
+0
+Caption
+5
+5
+Allow
+TextColour
+4
+0
+0
+0
+255
+Bold
+2
+0
+FontSize
+3
+0
+WordWrap
+2
+0
+AlignRight
+2
+0
+AlignTop
+2
+0
 GroupBox
 
 1
@@ -1587,7 +1827,7 @@ Width
 1042
 Height
 3
-546
+633
 Tool Tip
 5
 0
@@ -1598,102 +1838,6 @@ Manual Dispatch
 Bold
 2
 1
-Label
-
-1
-13
-Name
-5
-10
-object 731
-X
-3
-363
-Y
-3
-57
-Width
-3
-45
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-5
-Allow
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-10
-object 738
-X
-3
-219
-Y
-3
-57
-Width
-3
-45
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-5
-Allow
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-0
-AlignTop
-2
-0
 CheckBox
 
 1
@@ -1704,10 +1848,10 @@ Name
 pv.storage.p1.charge
 X
 3
-99
+141
 Y
 3
-81
+111
 Width
 3
 33
@@ -1736,13 +1880,13 @@ Name
 pv.storage.p1.discharge
 X
 3
-363
+414
 Y
 3
-81
+111
 Width
 3
-33
+21
 Height
 3
 24
@@ -1764,17 +1908,49 @@ CheckBox
 9
 Name
 5
+29
+pv.storage.p1.dischargetogrid
+X
+3
+564
+Y
+3
+111
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
 24
 pv.storage.p1.gridcharge
 X
 3
-219
+258
 Y
 3
-81
+111
 Width
 3
-33
+21
 Height
 3
 24
@@ -1800,10 +1976,10 @@ Name
 pv.storage.p2.charge
 X
 3
-99
+141
 Y
 3
-108
+138
 Width
 3
 33
@@ -1832,13 +2008,13 @@ Name
 pv.storage.p2.discharge
 X
 3
-363
+414
 Y
 3
-108
+138
 Width
 3
-33
+21
 Height
 3
 24
@@ -1860,17 +2036,49 @@ CheckBox
 9
 Name
 5
+29
+pv.storage.p2.dischargetogrid
+X
+3
+564
+Y
+3
+138
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
 24
 pv.storage.p2.gridcharge
 X
 3
-219
+258
 Y
 3
-108
+138
 Width
 3
-33
+21
 Height
 3
 24
@@ -1896,10 +2104,10 @@ Name
 pv.storage.p3.charge
 X
 3
-99
+141
 Y
 3
-135
+165
 Width
 3
 33
@@ -1928,13 +2136,13 @@ Name
 pv.storage.p3.discharge
 X
 3
-363
+414
 Y
 3
-135
+165
 Width
 3
-33
+21
 Height
 3
 24
@@ -1956,17 +2164,49 @@ CheckBox
 9
 Name
 5
+29
+pv.storage.p3.dischargetogrid
+X
+3
+564
+Y
+3
+165
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
 24
 pv.storage.p3.gridcharge
 X
 3
-219
+258
 Y
 3
-135
+165
 Width
 3
-33
+21
 Height
 3
 24
@@ -1992,10 +2232,10 @@ Name
 pv.storage.p4.charge
 X
 3
-99
+141
 Y
 3
-162
+192
 Width
 3
 33
@@ -2024,13 +2264,13 @@ Name
 pv.storage.p4.discharge
 X
 3
-363
+414
 Y
 3
-162
+192
 Width
 3
-33
+21
 Height
 3
 24
@@ -2052,17 +2292,49 @@ CheckBox
 9
 Name
 5
+29
+pv.storage.p4.dischargetogrid
+X
+3
+564
+Y
+3
+192
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
 24
 pv.storage.p4.gridcharge
 X
 3
-219
+258
 Y
 3
-162
+192
 Width
 3
-33
+21
 Height
 3
 24
@@ -2088,10 +2360,10 @@ Name
 pv.storage.p5.charge
 X
 3
-99
+141
 Y
 3
-189
+219
 Width
 3
 33
@@ -2120,13 +2392,13 @@ Name
 pv.storage.p5.discharge
 X
 3
-363
+414
 Y
 3
-189
+219
 Width
 3
-33
+21
 Height
 3
 24
@@ -2148,17 +2420,49 @@ CheckBox
 9
 Name
 5
+29
+pv.storage.p5.dischargetogrid
+X
+3
+564
+Y
+3
+219
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
 24
 pv.storage.p5.gridcharge
 X
 3
-219
+258
 Y
 3
-189
+219
 Width
 3
-33
+21
 Height
 3
 24
@@ -2184,10 +2488,10 @@ Name
 pv.storage.p6.charge
 X
 3
-99
+141
 Y
 3
-216
+246
 Width
 3
 33
@@ -2216,13 +2520,13 @@ Name
 pv.storage.p6.discharge
 X
 3
-363
+414
 Y
 3
-216
+246
 Width
 3
-33
+21
 Height
 3
 24
@@ -2244,17 +2548,49 @@ CheckBox
 9
 Name
 5
+29
+pv.storage.p6.dischargetogrid
+X
+3
+564
+Y
+3
+246
+Width
+3
+21
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+0
+State
+2
+0
+TabOrder
+3
+4294967295
+CheckBox
+
+1
+9
+Name
+5
 24
 pv.storage.p6.gridcharge
 X
 3
-219
+258
 Y
 3
-216
+246
 Width
 3
-33
+21
 Height
 3
 24
@@ -2270,8 +2606,380 @@ State
 TabOrder
 3
 27
+Numeric
 
-37
+1
+17
+Name
+5
+32
+ui_copy_batt_discharge_percent_1
+X
+3
+588
+Y
+3
+111
+Width
+3
+42
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+5
+Numeric
+
+1
+17
+Name
+5
+32
+ui_copy_batt_discharge_percent_2
+X
+3
+588
+Y
+3
+138
+Width
+3
+42
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+10
+Numeric
+
+1
+17
+Name
+5
+32
+ui_copy_batt_discharge_percent_3
+X
+3
+588
+Y
+3
+165
+Width
+3
+42
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+15
+Numeric
+
+1
+17
+Name
+5
+32
+ui_copy_batt_discharge_percent_4
+X
+3
+588
+Y
+3
+192
+Width
+3
+42
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+20
+Numeric
+
+1
+17
+Name
+5
+32
+ui_copy_batt_discharge_percent_5
+X
+3
+588
+Y
+3
+219
+Width
+3
+42
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+25
+Numeric
+
+1
+17
+Name
+5
+32
+ui_copy_batt_discharge_percent_6
+X
+3
+588
+Y
+3
+246
+Width
+3
+42
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+30
+
+50
 batt_discharge_percent_1
 3
 1
@@ -2440,6 +3148,20 @@ Battery Dispatch Manual
 1
 100
 Numeric
+dispatch_manual_btm_discharge_to_grid
+3
+2
+Battery manual allow discharge to grid array
+ 
+Battery Dispatch Manual
+0
+9
+1
+2
+1
+1
+0
+Default
 dispatch_manual_charge
 3
 2
@@ -2590,6 +3312,20 @@ Battery Dispatch Manual
 1
 0
 CheckBox
+pv.storage.p1.dischargetogrid
+3
+1
+Battery allow discharge to grid Period 1
+ 
+Battery Dispatch Manual
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 pv.storage.p1.gridcharge
 3
 1
@@ -2622,6 +3358,20 @@ pv.storage.p2.discharge
 3
 1
 Battery allow discharge Period 2
+ 
+Battery Dispatch Manual
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+pv.storage.p2.dischargetogrid
+3
+1
+Battery allow discharge to grid Period 2
  
 Battery Dispatch Manual
 0
@@ -2674,6 +3424,20 @@ Battery Dispatch Manual
 1
 1
 CheckBox
+pv.storage.p3.dischargetogrid
+3
+1
+Battery allow discharge to grid Period 3
+ 
+Battery Dispatch Manual
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 pv.storage.p3.gridcharge
 3
 1
@@ -2706,6 +3470,20 @@ pv.storage.p4.discharge
 3
 1
 Battery allow discharge Period 4
+ 
+Battery Dispatch Manual
+0
+3
+1
+1
+1
+1
+0
+CheckBox
+pv.storage.p4.dischargetogrid
+3
+1
+Battery allow discharge to grid Period 4
  
 Battery Dispatch Manual
 0
@@ -2758,6 +3536,20 @@ Battery Dispatch Manual
 1
 0
 CheckBox
+pv.storage.p5.dischargetogrid
+3
+1
+Battery allow discharge to grid Period 5
+ 
+Battery Dispatch Manual
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 pv.storage.p5.gridcharge
 3
 1
@@ -2800,6 +3592,20 @@ Battery Dispatch Manual
 1
 0
 CheckBox
+pv.storage.p6.dischargetogrid
+3
+1
+Battery allow discharge to grid Period 6
+ 
+Battery Dispatch Manual
+0
+3
+1
+1
+1
+1
+0
+CheckBox
 pv.storage.p6.gridcharge
 3
 1
@@ -2814,8 +3620,92 @@ Battery Dispatch Manual
 1
 0
 CheckBox
+ui_copy_batt_discharge_percent_1
+3
+1
+Battery discharge to grid rate Period 1
+%
+Battery Dispatch Manual
+0
+9
+1
+1
+1
+1
+0
+Numeric
+ui_copy_batt_discharge_percent_2
+3
+1
+Battery discharge to grid rate Period 2
+%
+Battery Dispatch Manual
+0
+9
+1
+1
+1
+1
+0
+Numeric
+ui_copy_batt_discharge_percent_3
+3
+1
+Battery discharge to grid rate Period 3
+%
+Battery Dispatch Manual
+0
+9
+1
+1
+1
+1
+0
+Numeric
+ui_copy_batt_discharge_percent_4
+3
+1
+Battery discharge to grid rate Period 4
+%
+Battery Dispatch Manual
+0
+9
+1
+1
+1
+1
+0
+Numeric
+ui_copy_batt_discharge_percent_5
+3
+1
+Battery discharge to grid rate Period 5
+%
+Battery Dispatch Manual
+0
+9
+1
+1
+1
+1
+0
+Numeric
+ui_copy_batt_discharge_percent_6
+3
+1
+Battery discharge to grid rate Period 6
+%
+Battery Dispatch Manual
+0
+9
+1
+1
+1
+1
+0
+Numeric
 
-2263
+3156
 equations{ 'dispatch_manual_charge' } = define() {
 	return [ ${pv.storage.p1.charge},
 	${pv.storage.p2.charge},
@@ -2842,6 +3732,16 @@ equations{ 'dispatch_manual_gridcharge' } = define() {
 	${pv.storage.p5.gridcharge},
 	${pv.storage.p6.gridcharge} ];
 };
+
+equations{ 'dispatch_manual_btm_discharge_to_grid' } = define() {
+	return [ ${pv.storage.p1.dischargetogrid},
+	${pv.storage.p2.dischargetogrid},
+	${pv.storage.p3.dischargetogrid},
+	${pv.storage.p4.dischargetogrid},
+	${pv.storage.p5.dischargetogrid},
+	${pv.storage.p6.dischargetogrid} ];
+};
+
 equations{ 'dispatch_manual_percent_discharge'} = define() {
 	count = 0;
 	discharge_array = ${dispatch_manual_discharge};
@@ -2898,12 +3798,39 @@ equations{ 'dispatch_manual_percent_gridcharge'} = define() {
 	return ret_array;
 };
 
-6403
+equations{'ui_copy_batt_discharge_percent_1'} = define() {
+	return ${batt_discharge_percent_1};
+};
+
+equations{'ui_copy_batt_discharge_percent_2'} = define() {
+	return ${batt_discharge_percent_2};
+};
+
+equations{'ui_copy_batt_discharge_percent_3'} = define() {
+	return ${batt_discharge_percent_3};
+};
+
+equations{'ui_copy_batt_discharge_percent_4'} = define() {
+	return ${batt_discharge_percent_4};
+};
+
+equations{'ui_copy_batt_discharge_percent_5'} = define() {
+	return ${batt_discharge_percent_5};
+};
+
+equations{'ui_copy_batt_discharge_percent_6'} = define() {
+	return ${batt_discharge_percent_6};
+};
+
+
+9578
 on_load{'Battery Dispatch Manual'}=define()
 {	
 	value('batt_dispatch_choice', 3);
 	show_label();
+	show('standalone_batt_label', false);
 	toggle_dispatch();
+	show_hide_grid_discharge(behind_the_meter());
 		
 	on_change{'pv.storage.p1.discharge'};
 	on_change{'pv.storage.p2.discharge'};
@@ -2918,6 +3845,26 @@ on_load{'Battery Dispatch Manual'}=define()
 	on_change{'pv.storage.p4.gridcharge'};
 	on_change{'pv.storage.p5.gridcharge'};
 	on_change{'pv.storage.p6.gridcharge'};
+	
+	if(is_assigned('en_standalone_batt') && value('en_standalone_batt')==1) {
+		value('pv.storage.p1.charge', 0);
+		value('pv.storage.p2.charge', 0);
+		value('pv.storage.p3.charge', 0);
+		value('pv.storage.p4.charge', 0);
+		value('pv.storage.p5.charge', 0);
+		value('pv.storage.p6.charge', 0);
+		enable('pv.storage.p1.charge', false);
+		enable('pv.storage.p2.charge', false);
+		enable('pv.storage.p3.charge', false);
+		enable('pv.storage.p4.charge', false);
+		enable('pv.storage.p5.charge', false);
+		enable('pv.storage.p6.charge', false);
+		show('standalone_batt_label', true);
+	}
+	
+	refresh();
+		
+	
 
 };
 
@@ -2954,7 +3901,8 @@ function behind_the_meter()
 	btm = false;
 	if (financing() == 'Residential' || 
 		financing() == 'Commercial' || 
-		financing() == 'Third Party')
+		financing() == 'Third Party' ||
+		financing() == 'Host Developer')
 		{ btm = true; }
 	return btm;
 }
@@ -2975,6 +3923,23 @@ function toggle_discharge_percent()
 	enable('batt_discharge_percent_4', (value('pv.storage.p4.discharge')==1));
 	enable('batt_discharge_percent_5', (value('pv.storage.p5.discharge')==1));
 	enable('batt_discharge_percent_6', (value('pv.storage.p6.discharge')==1));
+
+
+	if (behind_the_meter()) {
+		enable('pv.storage.p1.dischargetogrid', (value('pv.storage.p1.discharge')==1));
+		enable('pv.storage.p2.dischargetogrid', (value('pv.storage.p2.discharge')==1));
+		enable('pv.storage.p3.dischargetogrid', (value('pv.storage.p3.discharge')==1));
+		enable('pv.storage.p4.dischargetogrid', (value('pv.storage.p4.discharge')==1));
+		enable('pv.storage.p5.dischargetogrid', (value('pv.storage.p5.discharge')==1));
+		enable('pv.storage.p6.dischargetogrid', (value('pv.storage.p6.discharge')==1));
+
+		if (value('pv.storage.p1.discharge') == 0) { value('pv.storage.p1.dischargetogrid', 0); }
+		if (value('pv.storage.p2.discharge') == 0) { value('pv.storage.p2.dischargetogrid', 0); }
+		if (value('pv.storage.p3.discharge') == 0) { value('pv.storage.p3.dischargetogrid', 0); }
+		if (value('pv.storage.p4.discharge') == 0) { value('pv.storage.p4.dischargetogrid', 0); }
+		if (value('pv.storage.p5.discharge') == 0) { value('pv.storage.p5.dischargetogrid', 0); }
+		if (value('pv.storage.p6.discharge') == 0) { value('pv.storage.p6.dischargetogrid', 0); }
+	}
 }
 function toggle_gridcharge_percent()
 {
@@ -2984,6 +3949,40 @@ function toggle_gridcharge_percent()
 	enable('batt_gridcharge_percent_4', (value('pv.storage.p4.gridcharge')==1));
 	enable('batt_gridcharge_percent_5', (value('pv.storage.p5.gridcharge')==1));
 	enable('batt_gridcharge_percent_6', (value('pv.storage.p6.gridcharge')==1));
+
+}
+
+function show_hide_grid_discharge(is_btm) {
+	if ( is_btm ) 
+	{
+		property('lbl_discharge_options','Caption','Discharge to load');
+		//property('lbl_discharge_to_load_option','Caption','Load');
+		property('lbl_copy_schedule','Caption','Use the Copy Schedules button to overwrite the weekday and weekend schedules with schedules from the energy charge schedules from the Electricity Rates page.');
+		property('btn_copy_schedule','Caption','Copy Schedules from TOU Electricity Rates');
+	}
+	else 
+	{
+		property('lbl_discharge_options','Caption','Discharge to grid');
+		//property('lbl_discharge_to_load_option','Caption','');
+		property('lbl_copy_schedule','Caption','Use the Copy Schedules button to overwrite the weekday and weekend schedules with schedules from TOD PPA price multipliers on the Revenue or Financial Parameters page.');
+		property('btn_copy_schedule','Caption','Copy Schedules from TOD Power Price Multipliers');
+	}
+	show('lbl_to_grid_discharge',is_btm);
+	show('pv.storage.p1.dischargetogrid',is_btm);
+	show('pv.storage.p2.dischargetogrid',is_btm);
+	show('pv.storage.p3.dischargetogrid',is_btm);
+	show('pv.storage.p4.dischargetogrid',is_btm);
+	show('pv.storage.p5.dischargetogrid',is_btm);
+	show('pv.storage.p6.dischargetogrid',is_btm);
+	show('lbl_discharge_to_grid',is_btm);
+	show('lbl_discharge_to_grid_option',is_btm);
+	show('ui_copy_batt_discharge_percent_1',is_btm);
+	show('ui_copy_batt_discharge_percent_2',is_btm);
+	show('ui_copy_batt_discharge_percent_3',is_btm);
+	show('ui_copy_batt_discharge_percent_4',is_btm);
+	show('ui_copy_batt_discharge_percent_5',is_btm);
+	show('ui_copy_batt_discharge_percent_6',is_btm);
+	refresh();
 }
 
 function toggle_dispatch()
@@ -3020,21 +4019,8 @@ function toggle_dispatch()
 			toggle_discharge_percent();
 			toggle_gridcharge_percent();
 		}
-		toggle_dispatch_target();
-		//toggle_custom_dispatch();
-		//enable_auto_inputs_btm(mode == 5); // Price signal dispatch
 	}
 }
-
-function toggle_dispatch_target()
-{
-	mode = ${batt_dispatch_choice};
-	if (mode != 1)
-		enable_target_inputs(false);
-	else
-		enable_target_inputs(true);
-}
-
 
 function enable_grid_charge(on_off)
 {

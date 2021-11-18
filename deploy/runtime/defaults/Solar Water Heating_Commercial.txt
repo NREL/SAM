@@ -1,5 +1,5 @@
 1
-370
+373
 FRUL
 1
 1
@@ -328,7 +328,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 city
 1
 4
@@ -925,6 +925,12 @@ is_advanced
 1
 1
 0
+is_btm
+1
+1
+1
+1
+1
 itc_fed_amount
 1
 1
@@ -1803,6 +1809,42 @@ ur_annual_min_charge
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+100
 ur_cr_sched
 1
 3
@@ -1830,6 +1872,14 @@ ur_cr_tou_mat
 2 1 1e+38 0 
 3 1 1e+38 0 
 4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+2
+2
+1 1 
+2 1 
 
 ur_dc_enable
 1
@@ -1929,13 +1979,12 @@ ur_demand_min
 1
 1
 100
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -1951,48 +2000,6 @@ ur_desc_is_shown
 ur_description
 1
 4
-0
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-100
-ur_ec_enable_billing_demand
-1
-1
-1
-1
 0
 ur_ec_is_shown
 1
@@ -2058,6 +2065,12 @@ ur_en_ts_sell_rate
 1
 1
 0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
 ur_end_date
 1
 4
@@ -2104,6 +2117,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0

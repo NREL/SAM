@@ -20,9 +20,6 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#define __LOAD_AS_JSON__ 1
-
-
 #include <wx/sizer.h>
 #include <wx/textctrl.h>
 #include <wx/checklst.h>
@@ -38,8 +35,6 @@ static wxString GetDefaultsFile( const wxString &t, const wxString &f )
 {	
 #ifdef UI_BINARY
 	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f;
-#elif defined(__LOAD_AS_JSON__)
-	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".json";
 #else
 	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f + ".txt";
 #endif
@@ -69,7 +64,13 @@ BEGIN_EVENT_TABLE( ValueEditor, wxPanel )
 END_EVENT_TABLE()
 
 ValueEditor::ValueEditor( wxWindow *parent )
-	: wxPanel( parent )
+	: wxPanel( parent ),
+    m_type(NULL),
+    m_text(NULL),
+    m_matrix(NULL),
+    m_fields(NULL),
+    m_addField(NULL), m_removeField(NULL), m_editField(NULL), m_clearTable(NULL),
+    m_valLabel(NULL), m_tabLabel(NULL)
 {
 	m_type = new wxChoice( this, ID_TYPE );
 	for( size_t i=0;i<=VV_BINARY;i++ )
@@ -272,7 +273,7 @@ void ValueEditor::OnEditField( wxCommandEvent & )
 
 
 enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY, ID_LOAD, ID_CONFIGS, 
-	ID_POPUP_first, ID_CHECK_ALL, ID_UNCHECK_ALL, ID_CHECK_SELECTED, ID_UNCHECK_SELECTED, ID_SAVE_TEXT, ID_SAVE_JSON,ID_SAVE_BINARY, ID_POPUP_last };
+	ID_POPUP_first, ID_CHECK_ALL, ID_UNCHECK_ALL, ID_CHECK_SELECTED, ID_UNCHECK_SELECTED, ID_SAVE_TEXT, ID_SAVE_BINARY, ID_POPUP_last };
 
 BEGIN_EVENT_TABLE( DefaultsManager, wxPanel )
 	EVT_BUTTON( ID_QUERY, DefaultsManager::OnQuery )
@@ -285,7 +286,11 @@ END_EVENT_TABLE()
 
 
 DefaultsManager::DefaultsManager( wxWindow *parent )
-	: wxPanel( parent )
+	: wxPanel( parent ),
+    m_varName(NULL), m_value(NULL),
+    m_output(NULL), m_configList(NULL),
+    m_techList(NULL), m_finList(NULL),
+    m_changeType(NULL), m_enableAdd(NULL)
 {
 	m_varName = new wxTextCtrl( this, wxID_ANY, wxEmptyString );
 	
@@ -369,7 +374,6 @@ void DefaultsManager::OnPopupMenu( wxCommandEvent &evt )
 		break;
 	case ID_SAVE_BINARY:
 	case ID_SAVE_TEXT:
-	case ID_SAVE_JSON:
 		OnSaveAsType(evt);
 		break;
 	}
@@ -385,8 +389,6 @@ void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
 			bool success = true;
 #ifdef UI_BINARY
 			if (!tab.Read(file))
-#elif defined(__LOAD_AS_JSON__)
-			if (!tab.Read_JSON(file.ToStdString()))
 #else
 			if (!tab.Read_text(file))
 #endif
@@ -403,25 +405,6 @@ void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
 			{
 				file = SamApp::GetRuntimePath() + "/defaults/" + m_techList[i] + "_" + m_finList[i] + ".txt";
 				success = tab.Write_text(file);
-			}
-			else if (evt.GetId() == ID_SAVE_JSON)
-			{
-				file = SamApp::GetRuntimePath() + "/defaults/" + m_techList[i] + "_" + m_finList[i] + ".json";
-				auto &cfgdb = SamApp::Config();
-				auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
-				if (pci != NULL) {
-					auto vil = pci->Variables;
-					wxArrayString asCalculated, asIndicator;
-					for (auto& var : vil) {
-						if (var.second->Flags & VF_CHANGE_MODEL) 
-							continue;
-						else if (var.second->Flags & VF_CALCULATED)
-							asCalculated.push_back(var.first);
-						else if (var.second->Flags & VF_INDICATOR) 
-							asIndicator.push_back(var.first);
-					}
-					success = tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator);
-				}
 			}
 			else
 				Log(wxString::Format("invalid event ID: %d", evt.GetId()));
@@ -442,7 +425,7 @@ void DefaultsManager::OnListRightClick( wxMouseEvent & )
 	menu.AppendSeparator();
 //	menu.Append(ID_SAVE_BINARY, "Save checked as binary");
 //	menu.Append(ID_SAVE_TEXT, "Save checked as text");
-	menu.Append(ID_SAVE_JSON, "Save checked");
+	menu.Append(ID_SAVE_TEXT, "Save checked");
 	PopupMenu( &menu );
 }
 
@@ -467,9 +450,7 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 		VarTable tab;
 #ifdef UI_BINARY
-		if ( !tab.Read( file ))		
-#elif defined(__LOAD_AS_JSON__)
-		if (!tab.Read_JSON(file.ToStdString()))
+		if ( !tab.Read( file ))			
 #else
 		if (!tab.Read_text(file))
 #endif
@@ -498,8 +479,6 @@ void DefaultsManager::OnLoad( wxCommandEvent & )
 	VarTable tab;
 #ifdef UI_BINARY
 	if (!tab.Read(file))
-#elif defined(__LOAD_AS_JSON__)
-	if (!tab.Read_JSON(file.ToStdString()))
 #else
 	if (!tab.Read_text(file))
 #endif
@@ -535,8 +514,6 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 		VarTable tab;
 #ifdef UI_BINARY
 		if (!tab.Read(file))
-#elif defined(__LOAD_AS_JSON__)
-		if (!tab.Read_JSON(file.ToStdString()))
 #else
 		if (!tab.Read_text(file))
 #endif
@@ -605,22 +582,6 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 		{
 #ifdef UI_BINARY
 			if (!tab.Write(file))
-#elif defined(__LOAD_AS_JSON__)
-			wxArrayString asCalculated, asIndicator;
-			auto& cfgdb = SamApp::Config();
-			auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
-			if (pci != NULL) {
-				auto vil = pci->Variables;
-				for (auto& var : vil) {
-					if (var.second->Flags & VF_CHANGE_MODEL) 
-						continue;
-					else if (var.second->Flags & VF_CALCULATED)
-						asCalculated.push_back(var.first);
-					else if (var.second->Flags & VF_INDICATOR)
-						asIndicator.push_back(var.first);
-				}
-			}
-			if (!tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
 #else
 			if (!tab.Write_text(file))
 #endif
@@ -647,8 +608,6 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 		VarTable tab;
 #ifdef UI_BINARY
 		if ( !tab.Read( file ) )
-#elif defined(__LOAD_AS_JSON__)
-		if (!tab.Read_JSON(file.ToStdString()))
 #else
 		if (!tab.Read_text(file))
 #endif
@@ -663,22 +622,6 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 
 #ifdef UI_BINARY
 			if (!tab.Write(file))
-#elif defined(__LOAD_AS_JSON__)
-			wxArrayString asCalculated, asIndicator;
-			auto& cfgdb = SamApp::Config();
-			auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
-			if (pci != NULL) {
-				auto vil = pci->Variables;
-				for (auto& var : vil) {
-					if (var.second->Flags & VF_CHANGE_MODEL)
-						continue;
-					else if (var.second->Flags & VF_CALCULATED)
-						asCalculated.push_back(var.first);
-					else if (var.second->Flags & VF_INDICATOR)
-						asIndicator.push_back(var.first);
-				}
-			}
-			if (!tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
 #else
 			if (!tab.Write_text(file))
 #endif

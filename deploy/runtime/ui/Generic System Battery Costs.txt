@@ -3809,9 +3809,12 @@ Generic Battery Capital Costs
 0
 Default
 
-2469
+2537
 equations{ 'nameplate_capacity' } = define() {
-	return ${system_capacity}; };
+	if (technology() == "Standalone Battery")
+		return 0;
+	else
+		return ${system_capacity}; };
 
 equations{ 'battery_energy' } = define() {
 	return ${batt_computed_bank_capacity}; };
@@ -3827,7 +3830,7 @@ equations{ 'total_installed_cost' } = define() {
 	return ${total_direct_cost}+${total_indirect_cost}+${genericsys.cost.sales_tax.total}; };
 
 equations{ 'genericsys.cost.installed_per_capacity' } = define() {
-	return ${total_installed_cost}/${system_capacity}/1000; };
+	return ${total_installed_cost}/${nameplate_capacity}/1000; };
 
 equations{ 'genericsys.cost.epc.nonfixed' } = define() {
 	return ${total_direct_cost}*${genericsys.cost.epc.percent}/100; };
@@ -3863,7 +3866,7 @@ equations{ 'genericsys.cost.plm.total' } = define() {
 	return ${genericsys.cost.plm.fixed}+${genericsys.cost.plm.nonfixed}; };
 
 equations{ 'genericsys.cost.plant_scaled' } = define() {
-	return ${system_capacity}*1000*${genericsys.cost.per_watt};
+	return ${nameplate_capacity}*1000*${genericsys.cost.per_watt};
 };
 
 equations {'battery_total_cost_lcos' } = define() {
@@ -3880,8 +3883,8 @@ equations{'total_system_indirect_cost'} = define() {
 
 
 
-243
-on_load{'PV Battery O and M Costs'} = define() {
+247
+on_load{'Generic System Battery Costs'} = define() {
 	tech = technology();
 	generic = (tech == "Generic Battery");
 	if (generic) {

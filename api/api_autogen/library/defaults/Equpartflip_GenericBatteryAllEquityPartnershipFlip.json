@@ -272,19 +272,17 @@
 			"sponsor_cap_recovery_mode": 0,
 			"sponsor_cap_recovery_year": 3
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 1.43848e+06
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 4000,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 293.84,
-			"en_batt": 1
+			"en_batt": 1,
+			"en_standalone_batt": 0
 		}
 	}
 }

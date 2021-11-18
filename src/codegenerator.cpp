@@ -555,19 +555,11 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Python 2");						// 4
 	code_languages.Add("Python 3");						// 5
 	code_languages.Add("Java");							// 6
-	code_languages.Add("Android Studio (Android)");		// 7
-//#ifdef __WXMSW__
-	code_languages.Add("C#");							// 8
-	code_languages.Add("VBA");							// 9
-//#endif
-//#ifdef __WXMAC__
-    code_languages.Add("XCode Swift (iOS)");			// 8 (10)
-//#endif
-//#ifdef __WXGTK__
-	code_languages.Add("PHP 5");						// 8 (11)
-	code_languages.Add("PHP 7");						// 9 (12)
-//#endif
-	code_languages.Add("PySAM JSON");					// 10 (13)
+	code_languages.Add("C#");							// 8 7
+	code_languages.Add("VBA");							// 9 8
+	code_languages.Add("PHP 5");						// 8 (11) 7 (9)
+	code_languages.Add("PHP 7");						// 9 (12) 8 (10)
+	code_languages.Add("PySAM JSON");					// 10 (13) 9 (11)
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -663,45 +655,28 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".java";
 		cg = std::make_shared < CodeGen_java>(c, fn);
 	}
-    else if (lang == 7) // Android Studio Android
-    {
-        fn += ".cpp"; // ndk jni file
-        cg = std::make_shared < CodeGen_android>(c, fn);
-    }
-//#ifdef __WXMSW__
-	else if (lang == 8) // c#
+
+	else if (lang == 7) // c#
 	{
 		fn += ".cs";
 		cg = std::make_shared < CodeGen_csharp>(c, fn);
 	}
-	else if (lang == 9) // vba
+	else if (lang == 8) // vba
 	{
 		fn += ".bas";
 		cg = std::make_shared < CodeGen_vba>(c, fn);
 	}
-//#endif
-//#ifdef __WXMAC__
-//	else if (lang == 8) // Swift iOS
-	else if (lang == 10) // Swift iOS
-	{
-        fn += ".swift";
-        cg = std::make_shared < CodeGen_ios>(c, fn);
-    }
-//#endif
-//#ifdef __WXGTK__
-//	else if (lang == 8) // php
-	else if (lang == 11) // php
+	else if (lang == 9) // php
 	{
 		fn += ".php";
 		cg = std::make_shared < CodeGen_php5>(c, fn);
 	}
-//	else if (lang == 9) // php
-	else if (lang == 12) // php
+	else if (lang == 10) // php
 	{
 		fn += ".php";
 		cg = std::make_shared < CodeGen_php7>(c, fn);
 	}
-	else if (lang == 13) // PySAM JSON
+	else if (lang == 11) // PySAM JSON
 	{
 		fn += ".json";
 		std::shared_ptr<CodeGen_pySAM> pySAM = std::make_shared < CodeGen_pySAM>(c, fn);
@@ -760,8 +735,10 @@ CodeGen_lk::CodeGen_lk(Case *cc, const wxString &folder) : CodeGen_Base(cc, fold
 
 bool CodeGen_lk::Output(ssc_data_t)
 {
-	for (size_t ii = 0; ii < m_data.size(); ii++)
-		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
+	for (size_t ii = 0; ii < m_data.size(); ii++) {
+		wxString outs =  m_data[ii].label + m_data[ii].pre + m_data[ii].post;
+		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)outs.c_str(), (const char*)m_data[ii].var.c_str());
+	}
 	return true;
 }
 

@@ -9,13 +9,14 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
 			"debt_option": 1,
 			"debt_percent": 60,
 			"dscr": 1.3,
+			"dscr_limit_debt_fraction": 0,
+			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 6,
 			"equip1_reserve_cost": 0.25,
 			"equip1_reserve_freq": 12,
@@ -228,9 +229,6 @@
 			"degradation": [0.000000],
 			"system_capacity": 215
 		},
-		"ReturnOnEquity": {
-			"roe_input": [0.000000]
-		},
 		"Moratorium": {
 			"loan_moratorium": 0
 		},
@@ -286,14 +284,12 @@
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 232.29,
-			"en_batt": 1
+			"en_batt": 1,
+			"en_standalone_batt": 0
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 11707
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		}
 	}
 }

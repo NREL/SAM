@@ -669,8 +669,11 @@ One day look ahead (perfect)|One day look behind|Custom forecast
 0
 Default
 
-0
-2032
+86
+equations{'batt_dispatch_choice'} = define() {
+		return ${batt_dispatch_choice_ui};
+};
+2384
 on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 {	
 	on_change{'peak_shaving_batt_dispatch_choice'};
@@ -682,6 +685,11 @@ on_load{'Battery Dispatch Peak Shaving BTM'}=define()
 on_change{'peak_shaving_batt_dispatch_choice'} = define() 
 {
 	peak_shaving_choice();
+	if (technology() == "Standalone Battery" && value('peak_shaving_batt_dispatch_choice')==2) {
+		msgbox("Standalone battery systems do not take weather files as an input. Please select a different forecast option.");
+		enable('batt_select_weather_file_forecast_peak_shaving', false);
+		enable('batt_user_specified_weather_file_peak_shaving', false);
+	}
 };
 
 on_change{'batt_dispatch_load_escal_choice_peak'} = define() 

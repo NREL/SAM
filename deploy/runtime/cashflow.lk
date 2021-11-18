@@ -50,11 +50,37 @@ function is_batt_tech()
 	// may need to update to include PVWatts Battery, but as of 2020.2.29:
 	// no battery replacements for PVWatts Battery
 	// no retail purchases for PVWatts Battery because it is only behind-the-meter
-	x = ( tech == 'PV Battery' || 
+	tech = technology();
+	x = ( tech == 'PV Battery' || tech == 'Standalone Battery' ||
 	      tech == 'Generic Battery' || 
-	      ( tech == 'Fuel Cell' && value('en_batt') == true ) 
-	    );
+	      ( tech == 'Fuel Cell' && value('en_batt') == true ) );
 	return x;
+}
+
+function is_fom_fin()
+{
+	fin = financing();
+	x = ( fin == 'Single Owner' || 
+	      fin == 'Leveraged Partnership Flip' || 
+	      fin == 'All Equity Partnership Flip' ||
+	      fin == 'Sale Leaseback' ||
+	      fin == 'Merchant Plant');
+	return x;
+}
+
+function is_fuel_tech()
+{
+	tech = technology();
+	x = ( tech != 'Flat Plate PV' &&  
+          tech != 'PVWatts' &&  
+		  tech != 'High-X Concentrating PV' &&  
+          tech != 'Solar Water Heating' &&  
+          tech != 'Wind Power' && 
+          tech != 'Biopower' &&
+          tech != 'PV Battery' &&
+          tech != 'PVWatts Battery' &&
+          tech != 'Generic Battery' ); 
+     return x;     
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -108,11 +134,12 @@ function cf_revenue()
 {
 	tech = technology();
 	fin = financing();
-	has_debt = ( fin == 'Single Owner' ) || ( fin == 'Host Developer' ) || ( fin == 'Leveraged Parntership Flip' );
+	has_debt = ( fin == 'Single Owner' ) || ( fin == 'Host Developer' ) || ( fin == 'Leveraged Parntership Flip' ) || ( fin == 'Community Solar' );
 	cfline( 'REVENUE', -1);
 	if ( fin == 'Merchant Plant' )
 	{
 		cfline( 'cf_energy_market_revenue', 0); 
+		cfline( 'cf_energy_purchases_value', 0); 
 		cfline( 'cf_ancillary_services_1_revenue', 0); 
 		cfline( 'cf_ancillary_services_2_revenue', 0); 
 		cfline( 'cf_ancillary_services_3_revenue', 0); 
@@ -120,7 +147,7 @@ function cf_revenue()
 		cfline( 'cf_curtailment_value', 0); 
 		cfline( 'cf_capacity_payment', 0); 
 	}
-	elseif ( fin == "Single Owner" )
+	elseif ( fin == 'Single Owner' ) // Community solar does not earn additional project revenue
 	{
 		cfline( 'cf_ppa_price' , -2 );
 		cfline( 'cf_energy_sales_value', 0); 
@@ -129,14 +156,25 @@ function cf_revenue()
 		cfline( 'cf_curtailment_value', 0); 
 		cfline( 'cf_capacity_payment', 0); 
 	}
+	elseif ( fin == 'Community Solar')
+	{
+		cfline('cf_community_solar_subscriber1_revenue', 0);
+		cfline('cf_community_solar_subscriber2_revenue', 0);
+		cfline('cf_community_solar_subscriber3_revenue',  0);
+		cfline('cf_community_solar_subscriber4_revenue',  0);
+		cfline('cf_community_solar_unsubscribed_revenue', 0);
+	}
 	else
 	{
 		cfline( 'cf_ppa_price' , -2 );
 		cfline( 'cf_energy_value', 0); 
+		cfline( 'cf_energy_purchases_value', 0); 
 	}
 
 	if (tech == 'Fuel Cell')
+	{
 		cfline( 'cf_thermal_value', 0);
+	}
 	if ( has_debt )
 	{
 		is_pbi_for_ds = ( value('pbi_fed_for_ds')==1 || value('pbi_sta_for_ds')==1 || value('pbi_uti_for_ds')==1 || value('pbi_oth_for_ds')==1 );
@@ -163,18 +201,19 @@ function cf_revenue()
 
 function cf_om_expenses() 
 { 
-	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0); 
+	cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
+	
     tech = technology();
     fin = financing(); 
-    ppa_merchant_fin = (fin == 'Host Developer' || fin == 'Single Owner' || fin == 'Merchant Plant' || fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip' || fin == 'Sale Leaseback' );
+
     if ( is_batt_tech() )
 	{
 		cfline( 'cf_battery_replacement_cost', 0);
-		// electricity purchases to charge battery only available for Single Owner as of 2020.2.29
-		if ( fin == 'Single Owner' ) 
-		{
-			cfline('cf_utility_bill', 0 ); 
-		}
+	}
+
+	if ( is_fom_fin() ) 
+	{
+		cfline('cf_utility_bill', 0 ); 
 	}
 	if (tech == 'Fuel Cell')
 	{
@@ -189,6 +228,7 @@ function cf_om_expenses()
                  tech != 'Wind Power' && 
                  tech != 'Biopower' &&
                  tech != 'PV Battery' &&
+                 tech != 'Standalone Battery' &&
                  tech != 'PVWatts Battery' &&
                  tech != 'Generic Battery' ); 
 	if ( fuel_tech == true ) { cfline('cf_om_fuel_expense', 2); }
@@ -207,6 +247,14 @@ function cf_operating_expenses()
     cf_om_expenses(); 
 	cfline( 'cf_property_tax_expense', 0); 
 	cfline( 'cf_insurance_expense', 0); 
+   	if ( fin == 'Community Solar')
+	{
+		cfline('cf_land_lease_expense', 0); // TO DO Move this to standard operating expenses 
+		cfline('cf_community_solar_recurring_fixed', 0);
+		cfline('cf_community_solar_recurring_capacity',  0);
+		cfline('cf_community_solar_recurring_generation', 0);
+		cfline( '' ); 
+	}
 	if ( fin == "Residential" || fin == "Commercial" ) {cfline( 'cf_net_salvage_value', 0); }
 	if ( fin == 'Sale Leaseback' ) { cfline('cf_sponsor_margin', 0); }
 	cfline( 'cf_operating_expenses', 0); 
@@ -370,21 +418,27 @@ function cf_operating_activities() // all PPA models except Sale Leaseback
 function cf_investing_activities()
 {
 	fin = financing();
-	has_debt = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'Host Developer' );
+	has_debt = ( fin == 'Single Owner' || fin == 'Leveraged Partnership Flip' || fin == 'Host Developer' || fin == 'Community Solar');
 	cfline( 'INVESTING ACTIVITIES', -1);
 	cfline('cost_prefinancing',0,-1,0);
-	if ( fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip') {	cfline('cost_equity_closing', 0,-1,0); }
-	if ( fin == 'Leveraged Partnership Flip' ) { cfline('sponsor_pretax_development', 0,-1,0); }
-	if ( fin == 'All Equity Partnership Flip' ) { cfline('cost_dev_fee_value', 0,-1,0); }
 	if ( has_debt )
 	{
 		cfline('cost_debt_closing',0,-1,0); 
 		cfline('cost_debt_upfront',0,-1,0); 
 	}
+	if ( fin == 'Leveraged Partnership Flip' || fin == 'All Equity Partnership Flip') {	cfline('cost_equity_closing', 0,-1,0); }
+	if ( fin == 'Leveraged Partnership Flip' ) { cfline('sponsor_pretax_development', 0,-1,0); }
+	if ( fin == 'All Equity Partnership Flip' ) { cfline('cost_dev_fee_value', 0,-1,0); }
 	cfline('construction_financing_cost',0,-1,0); 
 	cfline('cost_other_financing',0,-1,0);
+	if ( fin == 'Community Solar' ) { cfline('community_solar_upfront_cost', 0,-1,0 ); }
+	cfline('minus:', -1, 0);
 	cfline( 'ibi_total', 0,-1,0); 
 	cfline( 'cbi_total', 0,-1,0); 
+	if ( fin == 'Community Solar' ) 
+	{
+		cfline('community_solar_upfront_revenue', 0,-1,0); 
+	}
 	cfline('equals:', -1, 0); 
 	cfline('purchase_of_property', 0);
 	cfline('plus:', -1, 0);
@@ -641,21 +695,25 @@ function cf_levelized_metrics()
 	fin = financing();
 	tech = technology();
 	has_roe = ( fin == 'Single Owner' || fin == 'Host Developer' );
-	cfline('AFTER-TAX LEVELIZED COE AND PPA PRICE', -1); 
-	cfline('cf_annual_costs', 0); 
-	cfline('cf_energy_value', 0); 
-	cfline('cf_energy_net', 0);  
+	has_ppa_revenue = ( fin != 'Community Solar');
+	cfline('AFTER-TAX LEVELIZED COE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1); 
+	cfline('cf_annual_costs', 0);
+	if ( has_ppa_revenue ) { cfline('cf_energy_value', 0); }
+	cfline('cf_energy_sales', 0);  
 	cfline( '' ); 
 	cfline('npv_annual_costs',0 ); 
 	cfline('npv_energy_nom', 0); 
 	cfline('lcoe_nom',2); 
 	
-	cfline( '' );
-	cfline('npv_ppa_revenue', 0); 
-	cfline('npv_energy_nom', 0); 
-	cfline('lppa_nom',2);
+	if ( has_ppa_revenue )
+	{
+		cfline( '' );
+		cfline('npv_ppa_revenue', 0); 
+		cfline('npv_energy_nom', 0); 
+		cfline('lppa_nom',2);
+	}
 	
-	if ((tech == "PV Battery" || tech == "PVWatts Battery" || tech == "Generic Battery" || tech == "Fuel Cell")
+	if ((tech == "PV Battery" || tech == "Standalone Battery" || tech == "PVWatts Battery" || tech == "Generic Battery" || tech == "Fuel Cell")
 		&& has_roe)
 	{
 		cfline( '' ); 
@@ -673,16 +731,6 @@ function cf_levelized_metrics()
 		cfline('npv_energy_lcos_nom', 0);
 		cfline('lcos_nom', 2);
 		cfline('lcos_real', 2); 
-	}
-		
-	if ( has_roe ) 
-	{
-		cfline( '' ); 
-		cfline('RETURN ON EQUITY', -1); 
-		cfline('(For accounting purposes only)',-1);
-		cfline('cf_return_on_equity_input', 2,100); 
-		cfline('cf_return_on_equity_dollars', 0); 
-		cfline('cf_return_on_equity', 2); 
 	}
 	cfline('');
 }
@@ -858,6 +906,68 @@ function depreciation_tables()
 	cfrow('Total,depr_fedbas_percent_total,depr_alloc_total,depr_fedbas_ibi_reduc_total,depr_fedbas_cbi_reduc_total,depr_fedbas_prior_itc_total,itc_fed_qual_total,depr_fedbas_percent_qual_total,depr_fedbas_percent_amount_total,itc_disallow_fed_percent_total,depr_fedbas_fixed_amount_total,itc_disallow_fed_fixed_total,depr_fedbas_itc_sta_reduction_total,depr_fedbas_itc_fed_reduction_total,depr_fedbas_after_itc_total,depr_fedbas_first_year_bonus_total,depr_fedbas_total'); 
 } 
  
+function community_solar_intermediates()
+{
+	cfline('COMMUNITY SOLAR DETAIL', -1); 
+	cfline('');
+	cfline('cf_subscriber1_share_fraction', 4); 
+	cfline('cf_subscriber2_share_fraction', 4); 
+	cfline('cf_subscriber3_share_fraction', 4); 
+	cfline('cf_subscriber4_share_fraction', 4); 
+	cfline('cf_unsubscribed_share_fraction', 4); 
+	cfline('');
+	cfline('cf_subscriber1_bill_credit_rate', 3); 
+	cfline('cf_subscriber2_bill_credit_rate', 3); 
+	cfline('cf_subscriber3_bill_credit_rate', 3); 
+	cfline('cf_subscriber4_bill_credit_rate', 3); 
+	cfline('');
+	cfline('cf_subscriber1_generation_payment', 0); 
+	cfline('cf_subscriber2_generation_payment', 0); 
+	cfline('cf_subscriber3_generation_payment', 0); 
+	cfline('cf_subscriber4_generation_payment', 0); 
+	cfline('');
+	cfline('cf_subscriber1_share_of_generation', 0); 
+	cfline('cf_subscriber2_share_of_generation', 0); 
+	cfline('cf_subscriber3_share_of_generation', 0); 
+	cfline('cf_subscriber4_share_of_generation', 0); 
+	cfline('cf_unsubscribed_share_of_generation', 0); 
+	cfline('');
+	cfline('cf_subscriber1_revenue_generation', 0); 
+	cfline('cf_subscriber2_revenue_generation', 0); 
+	cfline('cf_subscriber3_revenue_generation', 0); 
+	cfline('cf_subscriber4_revenue_generation', 0); 
+	cfline('cf_community_solar_unsubscribed_revenue', 0); 
+	cfline('');
+	cfline('cf_subscriber1_revenue_upfront', 0); 
+	cfline('cf_subscriber2_revenue_upfront', 0); 
+	cfline('cf_subscriber3_revenue_upfront', 0); 
+	cfline('cf_subscriber4_revenue_upfront', 0); 
+	cfline('');
+	cfline('cf_subscriber1_revenue_annual_payment', 0); 
+	cfline('cf_subscriber2_revenue_annual_payment', 0); 
+	cfline('cf_subscriber3_revenue_annual_payment', 0); 
+	cfline('cf_subscriber4_revenue_annual_payment', 0); 
+	cfline('');
+	cfline('cf_subscriber1_bill_credit_amount', 0); 
+	cfline('cf_subscriber2_bill_credit_amount', 0); 
+	cfline('cf_subscriber3_bill_credit_amount', 0); 
+	cfline('cf_subscriber4_bill_credit_amount', 0); 
+	cfline('');
+	cfline('cf_subscriber1_cost_of_participation', 0); 
+	cfline('cf_subscriber2_cost_of_participation', 0); 
+	cfline('cf_subscriber3_cost_of_participation', 0); 
+	cfline('cf_subscriber4_cost_of_participation', 0); 
+	cfline('');
+	cfline('cf_subscriber1_net_benefit', 0); 
+	cfline('cf_subscriber2_net_benefit', 0); 
+	cfline('cf_subscriber3_net_benefit', 0); 
+	cfline('cf_subscriber4_net_benefit', 0); 
+	cfline('');
+	cfline('cf_subscriber1_net_benefit_cumulative', 0); 
+	cfline('cf_subscriber2_net_benefit_cumulative', 0); 
+	cfline('cf_subscriber3_net_benefit_cumulative', 0); 
+	cfline('cf_subscriber4_net_benefit_cumulative', 0); 
+}
  
 ////////////////////////////////////////////////////////////////////////////////
 // Functions for send to Excel with equations
@@ -1190,7 +1300,27 @@ function set_om(xl) {
 	}
 	else { xl_set( xl, 'Fuel cell O&M costs not yet implemented. Cash flow send-to-Excel for Commercial does not acount for fuel cell-specific operating costs.', 'om_fixed1' ); } // in case we add other financial models for fuel cell
 	
-} 
+}
+
+function set_land_lease(xl)
+{
+	// all land area values in acres
+	send_excel( xl, 'total_land_area');
+	x = value('om_land_lease');
+	if ( #x == 1 )  
+	{ 
+		send_excel( xl, 'om_land_lease'); 
+		send_excel( xl, 'om_land_lease_escal'); 
+	} 
+	else  
+	{ 
+		xl_set( xl, x, 'AnnualLandLease'); 
+		xl_set( xl, 'n/a', 'om_land_lease'); 
+		xl_set( xl, 'n/a', 'om_land_lease_escal'); 
+	}	 
+
+}
+ 
  
 function set_rescom(xl) 
 { 
@@ -1343,7 +1473,7 @@ function set_annual_values( xl )
 {
 	//export annual values to minimize rounding discrepancies between SAM and workbook 
 	fin = financing();
-	if ( fin == 'Single Owner' )
+	if ( fin == 'Single Owner' || fin == 'Community Solar')
 	{
 		xl_set( xl, output('cf_energy_sales'), 'EnergyToGrid');
 		xl_set( xl, output('cf_energy_purchases'), 'EnergyFromGrid');
@@ -1627,7 +1757,26 @@ cashflow{ 'Single Owner' } = define()
     cf_reserves(); 
 	depreciation_tables(); 
  
-}; 
+};
+
+cashflow{ 'Community Solar' } = define()  
+{ 
+	//cf_formatting_examples();
+	cf_production();
+	cf_revenue();
+	cf_operating_expenses();
+	cf_earnings();
+	cf_project_cash_flows();
+	cf_returns();
+	cf_levelized_metrics();
+	cf_income_tax();
+	cf_incentives(); 
+	cf_debt_repayment();
+	cf_debt_sizing();	 
+    cf_reserves(); 
+	community_solar_intermediates();
+	depreciation_tables(); 
+};  
 
 cashflow{ 'Merchant Plant' } = define()  
 { 
@@ -1806,6 +1955,133 @@ cashflow_to_excel{ 'Single Owner' } = define()
 	set_reserves( xl );
 	set_taxes_insurance(xl); 
 	set_system_cost_salvage( xl );
+};
+
+cashflow_to_excel{ 'Community Solar' } = define()  
+{
+	xl = create_workbook( 'community_solar.xlsx' );
+ 	set_analysis_period();
+	set_debt_parameters( xl );
+	set_annual_values( xl );
+	//set_lcos( xl );
+	//set_solution_mode( xl );
+	set_construction_financing( xl );
+	set_incentives(xl);
+	set_om( xl );
+	set_land_lease( xl ); 
+	set_fuel( xl ); 
+	set_analysis_parameters( xl );
+	set_cost_of_financing( xl );
+	set_depreciation_detailed ( xl );
+	set_reserves( xl );
+	set_taxes_insurance(xl); 
+	set_system_cost_salvage( xl );
+	// asd
+	send_excel( xl, 'cs_cost_upfront');
+	send_excel( xl, 'cs_cost_upfront_per_capacity');
+	x = value( 'cs_cost_recurring_fixed');
+	if ( #x == 1 )  
+	{ 
+		send_excel( xl, 'cs_cost_recurring_fixed'); 
+		send_excel( xl, 'cs_cost_recurring_fixed_escal'); 
+	} 
+	else  
+	{ 
+		xl_set( xl, x, 'AnnualCSCostRecurringFixed'); 
+		xl_set( xl, 'n/a', 'cs_cost_recurring_fixed'); 
+		xl_set( xl, 'n/a', 'cs_cost_recurring_fixed_escal'); 
+	}
+	x = value( 'cs_cost_recurring_capacity');
+	if ( #x == 1 )  
+	{ 
+		send_excel( xl, 'cs_cost_recurring_capacity'); 
+		send_excel( xl, 'cs_cost_recurring_capacity_escal'); 
+	} 
+	else  
+	{ 
+		xl_set( xl, x, 'AnnualCSCostRecurringCapacity'); 
+		xl_set( xl, 'n/a', 'cs_cost_recurring_capacity'); 
+		xl_set( xl, 'n/a', 'cs_cost_recurring_capacity_escal'); 
+	}
+	x = value( 'cs_cost_recurring_generation');
+	if ( #x == 1 )  
+	{ 
+		send_excel( xl, 'cs_cost_recurring_generation'); 
+		send_excel( xl, 'cs_cost_recurring_generation_escal'); 
+	} 
+	else  
+	{ 
+		xl_set( xl, x, 'AnnualCSCostRecurringGeneration'); 
+		xl_set( xl, 'n/a', 'cs_cost_recurring_generation'); 
+		xl_set( xl, 'n/a', 'cs_cost_recurring_generation_escal'); 
+	}
+	x = value( 'unsubscribed_payment_generation');
+	if ( #x == 1 )  
+	{ 
+		send_excel( xl, 'unsubscribed_payment_generation'); 
+		send_excel( xl, 'unsubscribed_payment_generation_escal'); 
+	} 
+	else  
+	{ 
+		xl_set( xl, x, 'AnnualUnsubscribedPaymentGeneration'); 
+		xl_set( xl, 'n/a', 'unsubscribed_payment_generation'); 
+		xl_set( xl, 'n/a', 'unsubscribed_payment_generation_escal'); 
+	}
+	for ( i=1; i<=4; i++ )
+	{
+		prefix = 'subscriber' + i;
+		if ( value( prefix + '_name' ) != ''  ) { send_excel( xl, prefix + '_name' ); }
+		send_excel( xl, prefix + '_payment_upfront');
+		xl_set( xl, output('cf_' + prefix + '_share_fraction'), 'cf_' + prefix + '_share_fraction' );
+		x = value( prefix + '_share');
+		if ( #x == 1 )  
+		{ 
+			send_excel( xl, prefix + '_share'); 
+			send_excel( xl, prefix + '_growth'); 
+		} 
+		else  
+		{ 
+			xl_set( xl, x, 'AnnualSubscriber' + i + 'Share'); 
+			xl_set( xl, 'n/a', prefix + '_share'); 
+			xl_set( xl, 'n/a', prefix + '_growth'); 
+		}
+		x = value( prefix + '_bill_credit_rate');
+		if ( #x == 1 )  
+		{ 
+			send_excel( xl, prefix + '_bill_credit_rate'); 
+			send_excel( xl, prefix + '_bill_credit_rate_escal'); 
+		} 
+		else  
+		{ 
+			xl_set( xl, x, 'AnnualSubscriber' + i + 'BillCreditRate'); 
+			xl_set( xl, 'n/a', prefix + '_bill_credit_rate'); 
+			xl_set( xl, 'n/a', prefix + '_bill_credit_rate_escal'); 
+		}
+		x = value( prefix + '_payment_annual');
+		if ( #x == 1 )  
+		{ 
+			send_excel( xl, prefix + '_payment_annual'); 
+			send_excel( xl, prefix + '_payment_annual_escal'); 
+		} 
+		else  
+		{ 
+			xl_set( xl, x, 'AnnualSubscriber' + i + 'PaymentAnnual'); 
+			xl_set( xl, 'n/a', prefix + '_payment_annual'); 
+			xl_set( xl, 'n/a', prefix + '_payment_annual_escal'); 
+		}
+		x = value( prefix + '_payment_generation');
+		if ( #x == 1 )  
+		{ 
+			send_excel( xl, prefix + '_payment_generation'); 
+			send_excel( xl, prefix + '_payment_generation_escal'); 
+		} 
+		else  
+		{ 
+			xl_set( xl, x, 'AnnualSubscriber' + i + 'PaymentGeneration'); 
+			xl_set( xl, 'n/a', prefix + '_payment_generation'); 
+			xl_set( xl, 'n/a', prefix + '_payment_generation_escal'); 
+		}
+	}	
 };
  
 cashflow_to_excel{ 'Host Developer' } = define()  

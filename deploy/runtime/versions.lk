@@ -52,9 +52,19 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 // this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
-version_upgrade{'2021.7.27'} = define() {
+version_upgrade{'2021.10.27'} = define() {
 
 	const cfg = config();
+	
+	if(cfg.tech == 'MSPT') {
+		message('We have changed the units for the piping heat loss coefficient for the Molten Salt Power Tower Model from W/m to W/m2-K.' +
+		'This new convention allows the performance model to calculate piping thermal losses ' +
+		'as the receiver thermal power and design temperatures vary. We found that the old default value of 10,200 W/m ' + 
+		'corresponds to about 13 W/m2-K, which we think is too high for insulated piping, so we chose a new default value of 2 W/m2-K. ' +
+		'We are changing the piping heat loss coefficient value in your file of ' + oldvalue('piping_loss') + 
+		' W/m to the default value of 2 W/m2-K. Please review this input on the Tower and Receiver page and modify it as necessary for your design.');
+	}
+	
 	is_batt_tech = ( cfg.tech == 'PV Battery' || cfg.tech == 'Generic Battery' ); // does not include fuel cell
 
 	// Battery lifetime updates
@@ -66,6 +76,7 @@ version_upgrade{'2021.7.27'} = define() {
 	if ( is_batt_tech ) {
 		value('ui_batt_life_model',0);
 		value('batt_life_model',0);
+		value('batt_life_excl', value('ui_batt_life_model'));
 		message('The battery replacement and lifetime inputs are now on the new Battery Life input page with a new option to choose a battery life model for different battery types. Be sure to check battery life model option on the Battery Life page when the file opens.','warning');
 	}
 
@@ -139,6 +150,14 @@ version_upgrade{'2021.7.27'} = define() {
 			value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 			message( 'The inputs for behind-the-meter battery dispatch options have been reorganized. The dispatch option for this case is ' + btm_options[new] + ?(peak_shaving==999)[' ' + peak_shaving_options[peak_shaving],''] + '. Please check the Battery Dispatch input page to make sure they are correct.' );
 		}
+	}
+	
+	//warn users about upgrade to dc_degradation from compounding to linear
+	if (cfg.tech == 'Flat Plate PV' && cfg.fin != 'LCOE Calculator' && cfg.fin != 'None')
+	{
+		dc_degradation = value('dc_degradation');
+		if (#dc_degradation == 1 && dc_degradation[0] != 0)
+			message('We have changed the functionality of the DC degradation input to apply linearly instead of compounding year over year.', 'warning');
 	}
 };
 

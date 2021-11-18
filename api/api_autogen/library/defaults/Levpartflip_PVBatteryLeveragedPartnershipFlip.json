@@ -16,6 +16,8 @@
 			"debt_option": 1,
 			"debt_percent": 60,
 			"dscr": 1.3,
+			"dscr_limit_debt_fraction": 0,
+			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 6,
 			"equip1_reserve_cost": 0.25,
 			"equip1_reserve_freq": 12,
@@ -282,19 +284,17 @@
 			"tax_investor_preflip_cash_percent": 98,
 			"tax_investor_preflip_tax_percent": 98
 		},
-		"Battery": {
+		"LCOS": {
+			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 2.81046e+06
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
 		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 4000,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 293.84,
-			"en_batt": 1
+			"en_batt": 1,
+			"en_standalone_batt": 0
 		}
 	}
 }

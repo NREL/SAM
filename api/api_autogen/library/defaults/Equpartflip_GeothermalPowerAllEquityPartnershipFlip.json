@@ -265,11 +265,8 @@
 			"sponsor_cap_recovery_mode": 0,
 			"sponsor_cap_recovery_year": 3
 		},
-		"Battery": {
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
+		"LCOS": {
+			"batt_salvage_percentage": 0
 		},
 		"BatterySystem": {
 		}

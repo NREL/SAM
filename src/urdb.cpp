@@ -124,8 +124,7 @@ void OpenEI::RateData::Reset()
 
 	HasDemandCharge = false;
 	DemandRateUnit = "kW"; // TODO update to handle different values
-	DemandReactivePower = 1.0;
-	
+    DemandReactivePower = 1.0;
 	DemandFlatStructure.resize_fill(12, 4, 0);
 
 	for (i = 0; i < 12; i++)
@@ -152,6 +151,9 @@ void OpenEI::RateData::Reset()
 		}
 	}
 
+    LookbackPercent = 0.0;
+    LookbackRange = 0;
+
 	// unused items
 
 	Unused.IsDefault = false;
@@ -159,8 +161,8 @@ void OpenEI::RateData::Reset()
 	for (i = 0; i < 12; i++)
 	{
 		Unused.FuelAdjustmentsMonthly[i] = 0.0;
-		Unused.DemandRatchetPercentage[i] = 0.0;
-	}
+        Unused.LookbackMonths[i] = 0;
+    }
 
 	Unused.ServiceType = "";
 	Unused.DemandWindow = 0;
@@ -181,7 +183,7 @@ void OpenEI::RateData::Reset()
 
 	Unused.CoincidentRateUnit.Empty();
 	
-	Unused.DemandReactivePowerCharge = 0;
+	Unused.DemandReactivePowerCharge = 0.0;
 
 }
 
@@ -472,15 +474,17 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Applicability.voltagecategory = json_string(val.Item("voltagecategory"));
 	rate.Applicability.phasewiring = json_string(val.Item("phasewiring"));
 
-	// Unused Items
+	// Unused Items, set HasUnusedItems to true for items that would affect bill calculation
 
 	rate.Unused.HasUnusedItems = false;
 
 	wxJSONValue isd = val.Item("is_default");
-	rate.Unused.IsDefault = isd.AsBool();
+    if ( isd.IsBool() )
+        rate.Unused.IsDefault = isd.AsBool();
 
 	wxJSONValue st = val.Item("servicetype");
-	rate.Unused.ServiceType = st.AsString();
+    if ( st.IsString())
+	    rate.Unused.ServiceType = st.AsString();
 
 	wxJSONValue fam = val.Item("fueladjustmentsmonthly");
 	if (fam.Size() > 0)
@@ -491,19 +495,26 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	}
 
 	wxJSONValue dw = val.Item("demandwindow");
-	if (dw.Size() > 0)
+	if (dw.IsDouble())
 	{
 		rate.Unused.HasUnusedItems = true;
 		rate.Unused.DemandWindow = dw.AsDouble();
 	}
 
-	wxJSONValue dmp = val.Item("demandratchetpercentage");
-	if (dmp.Size() > 0)
-	{
-		rate.Unused.HasUnusedItems = true;
-		for (int i = 0; i < 12; i++)
-			rate.Unused.DemandRatchetPercentage[i] = dmp[i].AsDouble();
-	}
+    wxJSONValue lm = val.Item("lookbackmonths");
+    if (lm.Size() > 0)
+    {
+        rate.Unused.HasUnusedItems = true;
+        for (int i = 0; i < 12; i++)
+            rate.Unused.LookbackMonths[i] = lm[i].AsBool();
+    }
+
+  wxJSONValue drpc = val.Item("demandreactivepowercharge");
+   if (drpc.IsDouble() )
+   {
+       rate.Unused.HasUnusedItems = true;
+       rate.Unused.DemandReactivePowerCharge = drpc.AsDouble();
+   }
 
 	// energy, fixed, and demand attributes
 
@@ -641,6 +652,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 				double sell = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
 				double adj = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
 				wxString units = json_string(ers_tier[tier].Item("unit"));
+                rate.EnergyUnits = "";
 				int iunits = 0; // assume kWh if units not provided
 				if (units.Lower() == "kwh")
 					iunits = 0;
@@ -650,6 +662,10 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 					iunits = 2;
 				else if (units.Lower() == "kwh/kw daily")
 					iunits = 3;
+                else {
+                    rate.Unused.HasUnusedItems = true;
+                    rate.EnergyUnits = units;
+                }
 				rate.EnergyStructure.at(es_row, 0) = period + 1;
 				rate.EnergyStructure.at(es_row, 1) = tier + 1;
 				rate.EnergyStructure.at(es_row, 2) = max;
@@ -667,7 +683,14 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	// Demand Charge
 	rate.HasDemandCharge = true;
 	rate.DemandRateUnit = json_string( val.Item("demandrateunit") );
-	rate.DemandReactivePower = json_double( val.Item("demandreactivepowercharge") );
+
+    wxJSONValue lp = val.Item("lookbackpercent");
+    if ( lp.IsDouble() )
+        rate.LookbackPercent = lp.AsDouble() * 100;
+
+    wxJSONValue lr = val.Item("lookbackrange");
+    if ( lr.IsInt() )
+        rate.LookbackRange = lr.AsInt();
 
 	int num_months = 0;
 	wxJSONValue fdm_periods = val.Item("flatdemandmonths");

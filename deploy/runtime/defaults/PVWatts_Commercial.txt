@@ -1,5 +1,5 @@
 1
-384
+403
 ac_nameplate
 1
 1
@@ -42,6 +42,12 @@ periods
 1
 1
 1
+albedo
+1
+2
+1
+1
+0.2
 analysis_period
 1
 1
@@ -126,6 +132,12 @@ batt_salvage_value
 1
 0
 batt_simple_enable
+1
+1
+1
+1
+0
+bifaciality
 1
 1
 1
@@ -358,7 +370,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 city
 1
 4
@@ -1037,6 +1049,12 @@ is_advanced
 1
 1
 0
+is_btm
+1
+1
+1
+1
+1
 itc_fed_amount
 1
 1
@@ -1126,7 +1144,7 @@ land_area_value
 1
 1
 1
-0
+1.75575
 land_fixed
 1
 1
@@ -1330,6 +1348,12 @@ module_costunits
 1
 1
 0
+module_is_bifacial
+1
+1
+1
+1
+0
 module_num_units
 1
 1
@@ -1359,7 +1383,7 @@ modulearray_area
 1
 1
 1
-0
+7105.26
 modulearray_power
 1
 1
@@ -1745,6 +1769,18 @@ pv_capex_cost_choice
 1
 1
 0
+pvwatts.advanced.is_shown
+1
+1
+1
+1
+0
+pvwatts_land_area_is_shown
+1
+1
+1
+1
+0
 rate_escalation
 1
 2
@@ -1820,6 +1856,13 @@ show_tax_credits
 1
 1
 1
+soiling
+1
+2
+1
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 solar_data_file_name
 1
 4
@@ -1915,6 +1958,18 @@ total_installed_cost
 1
 1
 928396
+total_land_area
+1
+1
+1
+1
+1.75575
+total_module_area
+1
+1
+1
+1
+7105.26
 tz
 1
 1
@@ -1922,6 +1977,36 @@ tz
 1
 -7
 ui_annual_load
+1
+1
+1
+1
+0
+ui_array_land_area_acres
+1
+1
+1
+1
+1.75575
+ui_array_land_area_ha
+1
+1
+1
+1
+0.710526
+ui_array_land_area_multiplier
+1
+1
+1
+1
+1
+ui_land_area_additional
+1
+1
+1
+1
+0
+ui_land_area_additional_units
 1
 1
 1
@@ -1945,6 +2030,12 @@ ui_step_minutes
 1
 1
 60
+ui_total_land_area_ha
+1
+1
+1
+1
+0.710527
 ui_wacc
 1
 1
@@ -1957,6 +2048,42 @@ ur_annual_min_charge
 1
 1
 0
+ur_billing_demand_is_shown
+1
+1
+1
+1
+0
+ur_billing_demand_lookback_percentages
+1
+3
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
+ur_billing_demand_lookback_period
+1
+1
+1
+1
+11
+ur_billing_demand_minimum
+1
+1
+1
+1
+100
 ur_cr_sched
 1
 3
@@ -1984,6 +2111,14 @@ ur_cr_tou_mat
 2 1 1e+38 0 
 3 1 1e+38 0 
 4 1 1e+38 0 
+
+ur_dc_billing_demand_periods
+1
+3
+2
+2
+1 1 
+2 1 
 
 ur_dc_enable
 1
@@ -2083,13 +2218,12 @@ ur_demand_min
 1
 1
 0
-ur_demand_ratchet_percentage
+ur_demand_reactive_power_charge
 1
-2
 1
-12
-5 5 5 5 5 5 5 5 5 5 5 5 
-
+1
+1
+0
 ur_demand_window
 1
 1
@@ -2105,48 +2239,6 @@ ur_desc_is_shown
 ur_description
 1
 4
-0
-ur_ec_billing_demand_is_shown
-1
-1
-1
-1
-0
-ur_ec_billing_demand_lookback_percentages
-1
-3
-12
-2
-60 0 
-60 0 
-60 0 
-60 0 
-60 0 
-95 1 
-95 1 
-95 1 
-95 1 
-60 0 
-60 0 
-60 0 
-
-ur_ec_billing_demand_lookback_period
-1
-1
-1
-1
-11
-ur_ec_billing_demand_minimum
-1
-1
-1
-1
-100
-ur_ec_enable_billing_demand
-1
-1
-1
-1
 0
 ur_ec_is_shown
 1
@@ -2212,6 +2304,12 @@ ur_en_ts_sell_rate
 1
 1
 0
+ur_enable_billing_demand
+1
+1
+1
+1
+0
 ur_end_date
 1
 4
@@ -2258,6 +2356,12 @@ ur_has_unused_items
 ur_is_default
 1
 1
+1
+1
+0
+ur_lookback_months
+1
+2
 1
 1
 0
@@ -2387,6 +2491,18 @@ use_specific_weather_file
 1
 1
 0
+use_wf_albedo
+1
+1
+1
+1
+1
+user_specified_constant_albedo
+1
+1
+1
+1
+0.2
 user_specified_weather_file
 1
 4

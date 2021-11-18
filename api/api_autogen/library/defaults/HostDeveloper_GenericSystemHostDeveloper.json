@@ -9,13 +9,14 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"batt_salvage_percentage": 0,
 			"cost_debt_closing": 0,
 			"cost_debt_fee": 0,
 			"cost_other_financing": 0,
 			"debt_option": 1,
 			"debt_percent": 50,
 			"dscr": 0,
+			"dscr_limit_debt_fraction": 0,
+			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 0,
 			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 0,
@@ -221,9 +222,6 @@
 			"degradation": [0.000000],
 			"system_capacity": 9707.12
 		},
-		"ReturnOnEquity": {
-			"roe_input": [0.000000]
-		},
 		"Moratorium": {
 			"loan_moratorium": 0
 		},
@@ -277,11 +275,8 @@
 		"BatterySystem": {
 			"en_batt": 0
 		},
-		"Battery": {
-		},
-		"ChargesByMonth": {
-		},
-		"Monthly": {
+		"LCOS": {
+			"batt_salvage_percentage": 0
 		}
 	}
 }
