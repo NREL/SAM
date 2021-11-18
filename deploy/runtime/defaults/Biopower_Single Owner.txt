@@ -112,7 +112,7 @@ biopwr.cost.boiler.cost_per_kw
 1
 1
 1
-750
+800
 biopwr.cost.boiler_capacity
 1
 1
@@ -136,7 +136,7 @@ biopwr.cost.bop_per_kw
 1
 1
 1
-480
+510
 biopwr.cost.cap_per_boiler
 1
 1
@@ -172,7 +172,7 @@ biopwr.cost.dryer_per_kw
 1
 1
 1
-140
+150
 biopwr.cost.epc.fixed
 1
 1
@@ -208,7 +208,7 @@ biopwr.cost.equipment.cost_per_kw
 1
 1
 1
-270
+290
 biopwr.cost.equipment_capacity
 1
 1
@@ -262,7 +262,7 @@ biopwr.cost.prep_per_cap
 1
 1
 1
-330
+350
 biopwr.cost.sales_tax.percent
 1
 1
@@ -310,7 +310,7 @@ biopwr.cost.turbine_per_kw
 1
 1
 1
-510
+540
 biopwr.emissions.avoided_cred
 1
 1

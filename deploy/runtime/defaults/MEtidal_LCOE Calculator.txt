@@ -311,7 +311,7 @@ c_construction_interest
 1
 1
 1
-0
+3.5
 c_debt_percent
 1
 1

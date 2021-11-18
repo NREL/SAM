@@ -1860,7 +1860,7 @@ c_construction_interest
 1
 1
 1
-8
+3.5
 c_debt_percent
 1
 1
@@ -2074,7 +2074,7 @@ ui_capital_cost_capacity
 1
 1
 1
-3928
+3994
 ui_capital_cost_fixed
 1
 1
