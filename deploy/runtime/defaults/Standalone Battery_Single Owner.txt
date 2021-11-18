@@ -2551,7 +2551,7 @@ nominal_discount_rate
 9.06
 om_batt_capacity_cost
 1
-1
+2
 1
 1
 15

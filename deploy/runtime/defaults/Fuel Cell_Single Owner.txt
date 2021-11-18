@@ -3838,7 +3838,7 @@ nominal_discount_rate
 8.1375
 om_batt_capacity_cost
 1
-1
+2
 1
 1
 10
@@ -3868,7 +3868,7 @@ om_batt_variable_cost
 0
 om_capacity
 1
-1
+2
 1
 1
 13
@@ -3910,7 +3910,7 @@ om_fuel_price_units
 0
 om_fuelcell_capacity_cost
 1
-1
+2
 1
 1
 27

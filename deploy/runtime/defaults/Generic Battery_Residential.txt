@@ -2370,7 +2370,7 @@ normalize_to_utility_bill
 0
 om_batt_capacity_cost
 1
-1
+2
 1
 1
 10
@@ -2400,10 +2400,10 @@ om_batt_variable_cost
 0
 om_capacity
 1
+2
 1
 1
-1
-20
+10
 om_capacity_escal
 1
 1
