@@ -870,13 +870,13 @@ c_nominal_interest_rate
 1
 1
 1
-5
+4
 c_tax_rate
 1
 1
 1
 1
-40
+28
 calc_design_pipe_vals
 1
 1

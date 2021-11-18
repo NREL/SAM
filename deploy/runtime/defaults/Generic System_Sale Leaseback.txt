@@ -250,7 +250,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -1925,7 +1925,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 sale_leaseback_message
 1
 4

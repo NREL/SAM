@@ -401,7 +401,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -2502,7 +2502,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 revenue_TOD_is_shown
 1
 1
@@ -2742,7 +2742,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
