@@ -1013,7 +1013,7 @@ setup_pvwatts_pages();
 setconfig( 'PVWatts', 'Residential' );
 setmodules( ['pvwattsv8', 'belpe', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
-setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
@@ -1023,7 +1023,7 @@ setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 setconfig( 'PVWatts', 'Commercial' );
 setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'cashloan']);
 setup_pvwatts_pages();
-setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
@@ -1033,7 +1033,7 @@ setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 setconfig( 'PVWatts', 'Leveraged Partnership Flip' );
 setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'levpartflip']);
 setup_pvwatts_pages();
-setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
@@ -1044,7 +1044,7 @@ setup_electricity_purchases();
 setconfig( 'PVWatts', 'All Equity Partnership Flip' );
 setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'equpartflip']);
 setup_pvwatts_pages();
-setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
@@ -1055,7 +1055,7 @@ setup_electricity_purchases();
 setconfig( 'PVWatts', 'Sale Leaseback' );
 setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_pvwatts_pages();
-setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
@@ -1066,7 +1066,7 @@ setup_electricity_purchases();
 setconfig( 'PVWatts', 'Single Owner' );
 setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'singleowner']);
 setup_pvwatts_pages();
-setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
@@ -1077,7 +1077,7 @@ setup_electricity_purchases();
 setconfig( 'PVWatts', 'Community Solar' );
 setmodules( ['pvwattsv8', 'grid', 'communitysolar']);
 setup_pvwatts_pages();
-setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
@@ -1087,7 +1087,7 @@ setup_community_solar_pages();
 setconfig( 'PVWatts', 'Merchant Plant' );
 setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'merchantplant']);
 setup_pvwatts_pages();
-setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
@@ -1098,7 +1098,7 @@ setup_electricity_purchases();
 setconfig( 'PVWatts', 'Host Developer' );
 setmodules( ['pvwattsv8', 'grid', 'utilityrate5', 'host_developer']);
 setup_pvwatts_pages();
-setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv'} );
@@ -1108,7 +1108,7 @@ setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator b
 setconfig( 'PVWatts', 'Third Party' );
 setmodules( ['pvwattsv8', 'belpe', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_pvwatts_pages();
-setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
+setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 setup_thirdparty_pages( LOAD_BELPE); //includes building load calculator by default in this function
 
 // Wind Power //////////////////////////////////////////////////////////////////
