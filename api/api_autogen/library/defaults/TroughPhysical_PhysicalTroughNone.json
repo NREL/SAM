@@ -619,6 +619,10 @@
 		"FinancialModel": {
 			"csp_financial_model": 8
 		},
+		"FinancialSolutionMode": {
+		},
+		"ElectricityRates": {
+		},
 		"Revenue": {
 		},
 		"System": {

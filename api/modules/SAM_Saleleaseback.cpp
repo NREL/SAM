@@ -1250,9 +1250,21 @@ SAM_EXPORT void SAM_Saleleaseback_SystemOutput_gen_aset(SAM_table ptr, double* a
 	});
 }
 
+SAM_EXPORT void SAM_Saleleaseback_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "gen_purchases", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Saleleaseback_SystemOutput_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_electricity_rates", number);
 	});
 }
 
@@ -1442,6 +1454,12 @@ SAM_EXPORT void SAM_Saleleaseback_TimeOfDelivery_ppa_multiplier_model_nset(SAM_t
 	});
 }
 
+SAM_EXPORT void SAM_Saleleaseback_UtilityBill_utility_bill_w_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "utility_bill_w_sys", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Saleleaseback_OtherCapitalCosts_months_receivables_reserve_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "months_receivables_reserve", number);
@@ -1547,6 +1565,18 @@ SAM_EXPORT void SAM_Saleleaseback_LCOS_year1_monthly_ec_charge_with_system_aset(
 SAM_EXPORT void SAM_Saleleaseback_LCOS_year1_monthly_electricity_to_grid_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "year1_monthly_electricity_to_grid", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_ChargesByMonth_net_billing_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "net_billing_credits_ym", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Saleleaseback_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "nm_dollars_applied_ym", mat, nrows, ncols);
 	});
 }
 
@@ -3888,11 +3918,34 @@ SAM_EXPORT double* SAM_Saleleaseback_SystemOutput_gen_aget(SAM_table ptr, int* l
 
 
 
+SAM_EXPORT double* SAM_Saleleaseback_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_purchases", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "gen_purchases");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Saleleaseback_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_Saleleaseback", "system_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Saleleaseback_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
+		make_access_error("SAM_Saleleaseback", "en_electricity_rates");
 	});
 	return result;
 }
@@ -4244,6 +4297,18 @@ SAM_EXPORT double SAM_Saleleaseback_TimeOfDelivery_ppa_multiplier_model_nget(SAM
 
 
 
+SAM_EXPORT double* SAM_Saleleaseback_UtilityBill_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "utility_bill_w_sys");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Saleleaseback_OtherCapitalCosts_months_receivables_reserve_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4450,6 +4515,30 @@ SAM_EXPORT double* SAM_Saleleaseback_LCOS_year1_monthly_electricity_to_grid_aget
 	result = ssc_data_get_array(ptr, "year1_monthly_electricity_to_grid", length);
 	if (!result)
 		make_access_error("SAM_Saleleaseback", "year1_monthly_electricity_to_grid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "net_billing_credits_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "net_billing_credits_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "nm_dollars_applied_ym", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "nm_dollars_applied_ym");
 	});
 	return result;
 }
@@ -5192,6 +5281,18 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_sep_aget(SAM_table pt
 	result = ssc_data_get_array(ptr, "cf_energy_net_sep", length);
 	if (!result)
 		make_access_error("SAM_Saleleaseback", "cf_energy_net_sep");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_purchases_value_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_purchases_value", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "cf_energy_purchases_value");
 	});
 	return result;
 }
@@ -7087,6 +7188,30 @@ SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_total_revenue_aget(SAM_table ptr
 	result = ssc_data_get_array(ptr, "cf_total_revenue", length);
 	if (!result)
 		make_access_error("SAM_Saleleaseback", "cf_total_revenue");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_util_escal_rate", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "cf_util_escal_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_utility_bill_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_utility_bill", length);
+	if (!result)
+		make_access_error("SAM_Saleleaseback", "cf_utility_bill");
 	});
 	return result;
 }
@@ -10541,6 +10666,17 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_nominal_discount_rate_nget(SAM_table
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nominal_discount_rate", &result))
 		make_access_error("SAM_Saleleaseback", "nominal_discount_rate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Saleleaseback_Outputs_npv_annual_costs_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "npv_annual_costs", &result))
+		make_access_error("SAM_Saleleaseback", "npv_annual_costs");
 	});
 	return result;
 }

@@ -205,6 +205,9 @@
 			"gen": [0],
 			"system_capacity": 20000
 		},
+		"ElectricityRates": {
+			"en_electricity_rates": 1
+		},
 		"Recapitalization": {
 		},
 		"TimeOfDelivery": {
@@ -249,6 +252,8 @@
 			"ppa_multiplier_model": 0,
 			"system_use_lifetime_output": 1
 		},
+		"UtilityBill": {
+		},
 		"ConstructionFinancing": {
 			"construction_financing_cost": 2.99649e+06
 		},
@@ -275,6 +280,8 @@
 		"LCOS": {
 			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 1.43848e+06
+		},
+		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 4000,

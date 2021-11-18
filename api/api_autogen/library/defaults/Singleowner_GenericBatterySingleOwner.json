@@ -299,6 +299,8 @@
 		"LCOS": {
 			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 1.43848e+06
+		},
+		"ChargesByMonth": {
 		}
 	}
 }
