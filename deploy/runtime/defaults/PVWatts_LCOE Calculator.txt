@@ -1,5 +1,5 @@
 1
-109
+110
 ac_nameplate
 1
 1
@@ -404,13 +404,13 @@ module_type
 1
 1
 0
-pvwatts.advanced.is_shown
+pv_land_area_is_shown
 1
 1
 1
 1
 0
-pvwatts_land_area_is_shown
+pvwatts.advanced.is_shown
 1
 1
 1
@@ -621,6 +621,12 @@ ui_total_land_area_ha
 1
 1
 26.3158
+ui_total_module_area
+1
+1
+1
+1
+263158
 ui_variable_operating_cost
 1
 1
