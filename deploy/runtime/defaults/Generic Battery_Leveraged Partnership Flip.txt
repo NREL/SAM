@@ -2094,13 +2094,13 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -2579,7 +2579,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 is_btm
 1
 1
@@ -2825,10 +2825,10 @@ nominal_discount_rate
 9.06
 om_batt_capacity_cost
 1
-2
 1
 1
-0
+1
+10
 om_batt_fixed_cost
 1
 2
@@ -2855,7 +2855,7 @@ om_batt_variable_cost
 0
 om_capacity
 1
-2
+1
 1
 1
 13

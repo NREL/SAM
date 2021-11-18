@@ -1053,13 +1053,13 @@ equip1_reserve_cost
 1
 1
 1
-0.05
+0.1
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -1507,7 +1507,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 inv_eff
 1
 1
@@ -1919,10 +1919,10 @@ nominal_discount_rate
 9.06
 om_capacity
 1
-2
 1
 1
-17
+1
+13
 om_capacity_escal
 1
 1

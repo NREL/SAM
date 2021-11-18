@@ -2183,13 +2183,13 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -3007,10 +3007,10 @@ normalize_to_utility_bill
 0
 om_batt_capacity_cost
 1
-2
 1
 1
-0
+1
+10
 om_batt_fixed_cost
 1
 2
@@ -3037,7 +3037,7 @@ om_batt_variable_cost
 0
 om_capacity
 1
-2
+1
 1
 1
 16

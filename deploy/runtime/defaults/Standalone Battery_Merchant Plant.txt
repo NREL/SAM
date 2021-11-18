@@ -1781,7 +1781,7 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0
 equip1_reserve_freq
 1
 1
@@ -221523,10 +221523,10 @@ nominal_discount_rate
 9.06
 om_batt_capacity_cost
 1
-2
 1
 1
-0
+1
+15
 om_batt_fixed_cost
 1
 2

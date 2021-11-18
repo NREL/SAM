@@ -1076,7 +1076,7 @@ first_year_output
 1
 1
 1
-7.34697e+07
+73469700
 first_year_output_peak
 1
 1

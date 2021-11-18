@@ -2326,7 +2326,7 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0
 equip1_reserve_freq
 1
 1
@@ -222973,7 +222973,7 @@ total_obos_cost
 1
 1
 1
-7.463e+08
+746300000
 total_obos_cost_per_kw
 1
 1

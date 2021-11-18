@@ -1201,13 +1201,13 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0.1
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -1697,7 +1697,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 inv_eff
 1
 1
@@ -2243,10 +2243,10 @@ normalize_to_utility_bill
 0
 om_capacity
 1
-2
 1
 1
-19
+1
+16
 om_capacity_escal
 1
 1
