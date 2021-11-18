@@ -1919,6 +1919,80 @@ extern "C"
 
 
 	//
+	// TimeSeries parameters
+	//
+
+	/**
+	 * Set year1_hourly_dc_with_system: Demand charge with system (year 1 hourly) [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_TimeSeries_year1_hourly_dc_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set year1_hourly_e_fromgrid: Electricity from grid (year 1 hourly) [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_TimeSeries_year1_hourly_e_fromgrid_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set year1_hourly_ec_with_system: Energy charge with system (year 1 hourly) [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_TimeSeries_year1_hourly_ec_with_system_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// ChargesByMonth parameters
+	//
+
+	/**
+	 * Set charge_w_sys_ec_ym: Energy charge with system [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_ChargesByMonth_charge_w_sys_ec_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set charge_w_sys_fixed_ym: Fixed monthly charge with system [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_ChargesByMonth_charge_w_sys_fixed_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set net_billing_credits_ym: Net billing credit [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_ChargesByMonth_net_billing_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set nm_dollars_applied_ym: Net metering credit [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set true_up_credits_ym: Net annual true-up payments [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_ChargesByMonth_true_up_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
+	//
 	// SystemOutput parameters
 	//
 
@@ -1929,6 +2003,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_HostDeveloper_SystemOutput_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set gen_purchases: Electricity from grid [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set system_capacity: System nameplate capacity [kW]
@@ -2813,10 +2895,38 @@ extern "C"
 
 
 	/**
+	 * TimeSeries Getters
+	 */
+
+	SAM_EXPORT double* SAM_HostDeveloper_TimeSeries_year1_hourly_dc_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_TimeSeries_year1_hourly_e_fromgrid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_TimeSeries_year1_hourly_ec_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * ChargesByMonth Getters
+	 */
+
+	SAM_EXPORT double* SAM_HostDeveloper_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_ChargesByMonth_charge_w_sys_fixed_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+
+	/**
 	 * SystemOutput Getters
 	 */
 
 	SAM_EXPORT double* SAM_HostDeveloper_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_HostDeveloper_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
@@ -3149,6 +3259,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_operating_expenses_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_parasitic_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_payback_with_expenses_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_pbi_fedtax_total_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3342,6 +3454,8 @@ extern "C"
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_state_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_total_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_HostDeveloper_Outputs_cost_debt_upfront_nget(SAM_table ptr, SAM_error *err);
 
@@ -3822,6 +3936,8 @@ extern "C"
 	SAM_EXPORT double SAM_HostDeveloper_Outputs_flip_target_irr_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_HostDeveloper_Outputs_flip_target_year_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_HostDeveloper_Outputs_host_nominal_discount_rate_nget(SAM_table ptr, SAM_error *err);
 

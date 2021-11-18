@@ -198,6 +198,9 @@
 			"gen": [0],
 			"system_capacity": 50002.2
 		},
+		"ElectricityRates": {
+			"en_electricity_rates": 0
+		},
 		"SaleLeaseback": {
 			"construction_financing_cost": 1.0588e+06,
 			"cost_dev_fee_percent": 3,
@@ -255,6 +258,8 @@
 			],
 			"ppa_multiplier_model": 0
 		},
+		"UtilityBill": {
+		},
 		"OtherCapitalCosts": {
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6
@@ -262,6 +267,8 @@
 		"LCOS": {
 			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 2.81046e+06
+		},
+		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 4000,
