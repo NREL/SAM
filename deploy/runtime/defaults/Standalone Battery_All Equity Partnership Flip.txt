@@ -3115,7 +3115,7 @@ ui_electricity_rate_option
 1
 1
 1
-0
+1
 ur_annual_min_charge
 1
 1
