@@ -3163,7 +3163,7 @@ ui_electricity_rate_option
 1
 1
 1
-0
+1
 ui_wacc
 1
 1
