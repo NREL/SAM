@@ -47,6 +47,11 @@
 			"om_production_escal": 0,
 			"total_installed_cost": 1.02764e+06
 		},
+		"LandLease": {
+			"land_area": 3.25138,
+			"om_land_lease": [0.000000],
+			"om_land_lease_escal": 0
+		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
@@ -268,11 +273,6 @@
 			"subscriber4_share": [0.000000],
 			"unsubscribed_payment_generation": [0.030000],
 			"unsubscribed_payment_generation_escal": 0
-		},
-		"LandLease": {
-			"om_land_lease": [0.000000],
-			"om_land_lease_escal": 0,
-			"total_land_area": 3.25138
 		},
 		"FuelCell": {
 		},

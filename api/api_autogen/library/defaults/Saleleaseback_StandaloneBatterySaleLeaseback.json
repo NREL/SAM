@@ -38,6 +38,8 @@
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0
 		},
+		"LandLease": {
+		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,

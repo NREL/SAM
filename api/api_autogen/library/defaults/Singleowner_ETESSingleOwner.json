@@ -93,6 +93,8 @@
 			"system_use_recapitalization": 0,
 			"total_installed_cost": 3.13823e+08
 		},
+		"LandLease": {
+		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,

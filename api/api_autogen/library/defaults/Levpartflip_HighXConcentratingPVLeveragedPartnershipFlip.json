@@ -53,6 +53,11 @@
 			"om_production_escal": 0,
 			"total_installed_cost": 6.07946e+06
 		},
+		"LandLease": {
+			"land_area": 6.22692,
+			"om_land_lease": [100.000000],
+			"om_land_lease_escal": 1
+		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,

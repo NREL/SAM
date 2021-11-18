@@ -803,6 +803,35 @@ extern "C"
 
 
 	//
+	// LandLease parameters
+	//
+
+	/**
+	 * Set land_area: Total land area [acres]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_LandLease_land_area_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_land_lease: Land lease cost [$/acre]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_LandLease_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_land_lease_escal: Land lease cost escalation [%/yr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_LandLease_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// TaxCreditIncentives parameters
 	//
 
@@ -2689,6 +2718,17 @@ extern "C"
 
 
 	/**
+	 * LandLease Getters
+	 */
+
+	SAM_EXPORT double SAM_Singleowner_LandLease_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_LandLease_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_LandLease_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * TaxCreditIncentives Getters
 	 */
 
@@ -3354,6 +3394,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_funding_receivables_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_insurance_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err);
 

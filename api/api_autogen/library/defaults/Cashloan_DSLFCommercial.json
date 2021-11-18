@@ -27,6 +27,11 @@
 			"om_production_escal": 0,
 			"total_installed_cost": 3.76691e+08
 		},
+		"LandLease": {
+			"land_area": 347.641,
+			"om_land_lease": [0.000000],
+			"om_land_lease_escal": 0
+		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
 			"depr_fed_sl_years": 7,

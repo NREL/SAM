@@ -37,6 +37,8 @@
 			"om_production_escal": 0,
 			"total_installed_cost": 6.48e+07
 		},
+		"LandLease": {
+		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,

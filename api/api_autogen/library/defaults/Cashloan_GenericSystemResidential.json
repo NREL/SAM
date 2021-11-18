@@ -29,6 +29,8 @@
 			"om_production_escal": 0,
 			"total_installed_cost": 2.184e+06
 		},
+		"LandLease": {
+		},
 		"Depreciation": {
 		},
 		"TaxCreditIncentives": {

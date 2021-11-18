@@ -107,6 +107,11 @@
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 2.322e+06
 		},
+		"LandLease": {
+			"land_area": 0,
+			"om_land_lease": [0.000000],
+			"om_land_lease_escal": 0
+		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,

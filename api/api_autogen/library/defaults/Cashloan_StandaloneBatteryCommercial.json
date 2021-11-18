@@ -29,6 +29,8 @@
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 13951.8
 		},
+		"LandLease": {
+		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
 			"depr_fed_sl_years": 7,

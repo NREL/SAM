@@ -31,6 +31,8 @@
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 4870.81
 		},
+		"LandLease": {
+		},
 		"Depreciation": {
 		},
 		"TaxCreditIncentives": {

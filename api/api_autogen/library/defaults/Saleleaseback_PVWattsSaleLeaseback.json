@@ -34,6 +34,11 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0
 		},
+		"LandLease": {
+			"land_area": 162.569,
+			"om_land_lease": [100.000000],
+			"om_land_lease_escal": 1
+		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
