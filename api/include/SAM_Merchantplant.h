@@ -630,6 +630,35 @@ extern "C"
 
 
 	//
+	// LandLease parameters
+	//
+
+	/**
+	 * Set land_area: Total land area [acres]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Merchantplant_LandLease_land_area_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_land_lease: Land lease cost [$/acre]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Merchantplant_LandLease_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_land_lease_escal: Land lease cost escalation [%/yr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Merchantplant_LandLease_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// TaxCreditIncentives parameters
 	//
 
@@ -2159,6 +2188,19 @@ extern "C"
 
 
 	//
+	// ElectricityRates parameters
+	//
+
+	/**
+	 * Set en_electricity_rates: Enable electricity rates for grid purchase [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Merchantplant_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// SystemOutput parameters
 	//
 
@@ -2185,6 +2227,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set gen_purchases: Electricity from grid [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_purchases_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set system_capacity: System nameplate capacity [kW]
@@ -2469,6 +2519,27 @@ extern "C"
 
 
 	//
+	// ChargesByMonth parameters
+	//
+
+	/**
+	 * Set net_billing_credits_ym: Net billing credit [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_net_billing_credits_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set nm_dollars_applied_ym: Net metering credit [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Merchantplant_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
+	//
 	// GridLimits parameters
 	//
 
@@ -2645,6 +2716,17 @@ extern "C"
 	SAM_EXPORT double SAM_Merchantplant_SystemCosts_system_use_recapitalization_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_SystemCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * LandLease Getters
+	 */
+
+	SAM_EXPORT double SAM_Merchantplant_LandLease_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_LandLease_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Merchantplant_LandLease_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -3049,6 +3131,13 @@ extern "C"
 
 
 	/**
+	 * ElectricityRates Getters
+	 */
+
+	SAM_EXPORT double SAM_Merchantplant_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * SystemOutput Getters
 	 */
 
@@ -3057,6 +3146,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Merchantplant_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
@@ -3146,6 +3237,15 @@ extern "C"
 	SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * ChargesByMonth Getters
+	 */
+
+	SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**
@@ -3243,6 +3343,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_energy_purchases_value_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_custom_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_feddepr_macrs_15_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3292,6 +3394,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_funding_receivables_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_insurance_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Merchantplant_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err);
 
@@ -3460,6 +3564,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_total_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_utility_bill_aget(SAM_table ptr, int* length, SAM_error *err);
 

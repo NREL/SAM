@@ -164,7 +164,6 @@ function cf_revenue()
 	if ( fin == 'Merchant Plant' )
 	{
 		cfline( 'cf_energy_market_revenue', 0);
- 		cfline( 'cf_energy_purchases_value', 0);
  		cfline( 'cf_ancillary_services_1_revenue', 0);
 		cfline( 'cf_ancillary_services_2_revenue', 0);
 		cfline( 'cf_ancillary_services_3_revenue', 0);
@@ -176,8 +175,6 @@ function cf_revenue()
 	{
 		cfline( 'cf_ppa_price' , -2 );
 		cfline( 'cf_energy_sales_value', 0);
-		cfline( 'cf_energy_purchases_value', 0);
-		cfline( 'cf_energy_value', 0);
 		cfline( 'cf_curtailment_value', 0);
 		cfline( 'cf_capacity_payment', 0);
 	}
@@ -193,7 +190,6 @@ function cf_revenue()
 	{
 		cfline( 'cf_ppa_price' , -2 );
 		cfline( 'cf_energy_value', 0);
- 		cfline( 'cf_energy_purchases_value', 0);
 	}
 
 	if (tech == 'Fuel Cell')
@@ -1492,7 +1488,6 @@ function set_annual_values( xl )
 		xl_set( xl, output('cf_ppa_price'), 'AnnualPPAPrice');
 		xl_set( xl, output('cf_energy_curtailed'), 'CurtailedEnergy');
 		xl_set( xl, output('cf_energy_sales_value'), 'GrossRevenue');
-		xl_set( xl, output('cf_energy_purchases_value'), 'RevenueSelfConsumption');
 		xl_set( xl, output('cf_capacity_payment'), 'AnnualCapacityRevenue');
 		xl_set( xl, output('cf_curtailment_value'), 'AnnualCurtailmentRevenue');
 	}

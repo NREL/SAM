@@ -1688,6 +1688,18 @@ SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_water_cool_des_
 	});
 }
 
+SAM_EXPORT void SAM_TcsmoltenSalt_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ppa_soln_mode", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_electricity_rates", number);
+	});
+}
+
 SAM_EXPORT void SAM_TcsmoltenSalt_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_energy_market_revenue", mat, nrows, ncols);
@@ -4780,6 +4792,28 @@ SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_water_cool_de
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ud_m_dot_water_cool_des", &result))
 		make_access_error("SAM_TcsmoltenSalt", "ud_m_dot_water_cool_des");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ppa_soln_mode", &result))
+		make_access_error("SAM_TcsmoltenSalt", "ppa_soln_mode");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
+		make_access_error("SAM_TcsmoltenSalt", "en_electricity_rates");
 	});
 	return result;
 }

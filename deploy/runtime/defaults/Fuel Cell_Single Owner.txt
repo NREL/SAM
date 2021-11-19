@@ -304,7 +304,7 @@ batt_bank_power
 1
 1
 1
-50
+12000
 batt_bank_power_dc_ac
 1
 1
@@ -316,7 +316,7 @@ batt_bank_size
 1
 1
 1
-100
+24000
 batt_bank_size_dc_ac
 1
 1
@@ -334,7 +334,7 @@ batt_bank_size_ui
 1
 1
 1
-100
+24000
 batt_bank_voltage
 1
 1
@@ -1083,13 +1083,13 @@ battery_per_kW
 1
 1
 1
-263.12
+233.17
 battery_per_kWh
 1
 1
 1
 1
-293.84
+241.79
 battery_power
 1
 1

@@ -357,7 +357,7 @@ calculated_dcac_ratio
 1
 1
 1
-1.20255
+1.3528
 capex_table_ac_cost_per_w
 1
 1
@@ -2974,7 +2974,7 @@ inverter_count
 1
 1
 1
-54
+48
 inverter_model
 1
 1

@@ -20,6 +20,7 @@
 			"decline_type": 0,
 			"delta_pressure_equip": 40,
 			"design_temp": 200,
+			"dt_prod_well": 0,
 			"eta_ref": 0.17,
 			"excess_pressure_pump": 50,
 			"fracture_angle": 15,
@@ -43,7 +44,7 @@
 			"nameplate": 30000,
 			"num_fractures": 6,
 			"num_wells": 3,
-			"num_wells_getem": 4.31975,
+			"num_wells_getem": 6.37731,
 			"pb_bd_frac": 0.013,
 			"plant_efficiency_input": 80,
 			"pump_efficiency": 67.5,
@@ -69,8 +70,8 @@
 			"temp_decline_max": 30,
 			"temp_decline_rate": 0.5,
 			"ui_calculations_only": 0,
-			"well_diameter": 12.25,
-			"well_flow_rate": 110,
+			"well_diameter": 10,
+			"well_flow_rate": 70,
 			"wet_bulb_temp": 15
 		},
 		"AdjustmentFactors": {
