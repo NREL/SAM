@@ -3013,8 +3013,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_net_sep_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_purchases_value_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Saleleaseback_Outputs_cf_feddepr_custom_aget(SAM_table ptr, int* length, SAM_error *err);

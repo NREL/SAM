@@ -5412,18 +5412,6 @@ SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_net_sep_aget(SAM_table ptr,
 
 
 
-SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_purchases_value_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_purchases_value", length);
-	if (!result)
-		make_access_error("SAM_Equpartflip", "cf_energy_purchases_value");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Equpartflip_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

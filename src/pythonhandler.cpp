@@ -108,21 +108,21 @@ void WritePythonConfig(const std::string& configPath, const PythonConfig& config
     configObj.AddMember(rapidjson::Value("exec_path", configObj.GetAllocator()).Move(), rapidjson::Value(config.execPath.c_str(), configObj.GetAllocator()).Move(), configObj.GetAllocator());
     configObj.AddMember(rapidjson::Value("pip_path", configObj.GetAllocator()).Move(), rapidjson::Value(config.pipPath.c_str(), configObj.GetAllocator()).Move(), configObj.GetAllocator());
     // array
-    rapidjson::Value json_val;
-    json_val.SetArray();
+    rapidjson::Value json_arr;
+    json_arr.SetArray();
     for (auto& i : config.packages) {
-        json_val.PushBack(rapidjson::Value(i.c_str(), configObj.GetAllocator()), configObj.GetAllocator());
+        json_arr.PushBack(rapidjson::Value(i.c_str(), configObj.GetAllocator()), configObj.GetAllocator());
     }
-    configObj.AddMember(rapidjson::Value("packages", configObj.GetAllocator()).Move(), json_val.Move(), configObj.GetAllocator());
-
-    json_val.Clear();
-    json_val.SetObject();
+    configObj.AddMember(rapidjson::Value("packages", configObj.GetAllocator()).Move(), json_arr.Move(), configObj.GetAllocator());
+    // object
+    rapidjson::Value json_obj;
+    json_obj.SetObject();
     for (auto& i : config.options) {
-        json_val.AddMember(rapidjson::Value(i.first.c_str(), configObj.GetAllocator()).Move(), rapidjson::Value(i.second.c_str(), configObj.GetAllocator()).Move(), configObj.GetAllocator());
+        json_obj.AddMember(rapidjson::Value(i.first.c_str(), configObj.GetAllocator()).Move(), rapidjson::Value(i.second.c_str(), configObj.GetAllocator()).Move(), configObj.GetAllocator());
     }
-    configObj.AddMember(rapidjson::Value("options", configObj.GetAllocator()).Move(), json_val.Move(), configObj.GetAllocator());
+    configObj.AddMember(rapidjson::Value("options", configObj.GetAllocator()).Move(), json_obj.Move(), configObj.GetAllocator());
 
-     rapidjson::StringBuffer buffer;
+    rapidjson::StringBuffer buffer;
     buffer.Clear();
     rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(buffer);
     configObj.Accept(writer);

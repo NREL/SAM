@@ -286,7 +286,7 @@
 			"construction_financing_cost": 18179
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 206.67
+			"battery_per_kWh": 196.76
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,

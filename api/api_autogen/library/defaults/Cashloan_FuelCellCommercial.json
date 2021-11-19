@@ -21,7 +21,7 @@
 			"om_batt_capacity_cost": [0.000000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 100.205,
-			"om_batt_replacement_cost": [0.000000],
+			"om_batt_replacement_cost": [196.760000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [16.000000],
 			"om_capacity_escal": 0,
@@ -165,7 +165,7 @@
 			"batt_computed_bank_capacity": 100.205,
 			"batt_replacement_option": 0,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 206.67,
+			"battery_per_kWh": 196.76,
 			"en_batt": 1
 		},
 		"FuelCell": {
