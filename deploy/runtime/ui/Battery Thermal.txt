@@ -166,7 +166,7 @@ Name
 batt_mass
 X
 3
-441
+480
 Y
 3
 318
@@ -451,7 +451,7 @@ Name
 batt_surface_area
 X
 3
-441
+480
 Y
 3
 408
@@ -671,7 +671,7 @@ Name
 batt_volume
 X
 3
-441
+480
 Y
 3
 375
@@ -829,7 +829,7 @@ Y
 348
 Width
 3
-246
+266
 Height
 3
 24
@@ -957,7 +957,7 @@ Name
 thermal_model_label
 X
 3
-9
+25
 Y
 3
 489
