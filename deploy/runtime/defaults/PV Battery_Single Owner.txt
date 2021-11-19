@@ -4725,7 +4725,7 @@ om_land_lease_escal
 1
 1
 1
-1
+0
 om_production
 1
 2
@@ -7170,7 +7170,7 @@ ui_land_lease
 2
 1
 1
-100
+0
 ui_pv_capacity
 1
 1
@@ -7419,10 +7419,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -7515,7 +7514,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1
