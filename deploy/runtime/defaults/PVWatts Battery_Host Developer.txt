@@ -1,5 +1,5 @@
 1
-590
+587
 ac_nameplate
 1
 1
@@ -178,18 +178,6 @@ batt_simple_meter_position
 1
 1
 0
-batt_unit_capacity
-1
-1
-1
-1
-400
-batt_unit_surface_area
-1
-1
-1
-1
-30
 battery_energy
 1
 1
@@ -514,12 +502,6 @@ city
 4
 1
 -
-compute_as_cube
-1
-1
-1
-1
-0
 const_per_interest1
 1
 1
@@ -682,7 +664,7 @@ const_per_principal1
 1
 1
 1
-1.44935e+06
+1449350
 const_per_principal2
 1
 1
@@ -712,7 +694,7 @@ const_per_principal_total
 1
 1
 1
-1.44935e+06
+1449350
 const_per_total1
 1
 1
@@ -2838,7 +2820,7 @@ property_assessed_value
 1
 1
 1
-1.44935e+06
+1449350
 property_tax_rate
 1
 1
@@ -3061,7 +3043,7 @@ subtotal_direct
 1
 1
 1
-1.10803e+06
+1108030
 system_capacity
 1
 1
@@ -3108,7 +3090,7 @@ total_direct_cost
 1
 1
 1
-1.15235e+06
+1152350
 total_indirect_cost
 1
 1
@@ -3120,7 +3102,7 @@ total_installed_cost
 1
 1
 1
-1.44935e+06
+1449350
 total_land_area
 1
 1
