@@ -270,7 +270,7 @@ batt_bank_power
 1
 1
 1
-5
+3
 batt_bank_power_dc_ac
 1
 1
@@ -282,7 +282,7 @@ batt_bank_size
 1
 1
 1
-10
+6
 batt_bank_size_dc_ac
 1
 1
@@ -300,7 +300,7 @@ batt_bank_size_ui
 1
 1
 1
-10
+6
 batt_bank_voltage
 1
 1
