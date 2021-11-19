@@ -3,7 +3,7 @@
 		"Revenue": {
 			"ppa_escalation": 1,
 			"ppa_price_input": [0.050000],
-			"ppa_soln_mode": 0
+			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -38,6 +38,8 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"total_installed_cost": 1.092e+09
+		},
+		"LandLease": {
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -198,6 +200,9 @@
 			"gen": [0],
 			"system_capacity": 100000
 		},
+		"ElectricityRates": {
+			"en_electricity_rates": 0
+		},
 		"Recapitalization": {
 		},
 		"TimeOfDelivery": {
@@ -242,6 +247,8 @@
 			"ppa_multiplier_model": 0,
 			"system_use_lifetime_output": 0
 		},
+		"UtilityBill": {
+		},
 		"ConstructionFinancing": {
 			"construction_financing_cost": 2.184e+07
 		},
@@ -267,6 +274,8 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
+		},
+		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 			"en_batt": 0
