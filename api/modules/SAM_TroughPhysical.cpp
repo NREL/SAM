@@ -1166,6 +1166,18 @@ SAM_EXPORT void SAM_TroughPhysical_FinancialModel_csp_financial_model_nset(SAM_t
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ppa_soln_mode", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "en_electricity_rates", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysical_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_energy_market_revenue", mat, nrows, ncols);
@@ -3497,6 +3509,28 @@ SAM_EXPORT double SAM_TroughPhysical_FinancialModel_csp_financial_model_nget(SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp_financial_model", &result))
 		make_access_error("SAM_TroughPhysical", "csp_financial_model");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ppa_soln_mode", &result))
+		make_access_error("SAM_TroughPhysical", "ppa_soln_mode");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
+		make_access_error("SAM_TroughPhysical", "en_electricity_rates");
 	});
 	return result;
 }

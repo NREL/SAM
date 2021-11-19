@@ -18,6 +18,8 @@ Please delete options that are not relevant.
 
 ## Checklist:
 
+If you have added a new compute module in a SSC pull request related to this one, be sure to check the [Process Requirements](https://github.com/NREL/SAM/wiki/Compute-modules-in-SAM).
+
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas

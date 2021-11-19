@@ -3,7 +3,7 @@
 		"FinancialParameters": {
 			"analysis_period": 25,
 			"batt_salvage_percentage": 0,
-			"construction_financing_cost": 6.70196e+06,
+			"construction_financing_cost": 5.80957e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -35,7 +35,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 34788.7,
+			"system_capacity": 32683.1,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
@@ -46,9 +46,11 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"system_recapitalization_cost": 1.87716e+07,
+			"system_recapitalization_cost": 1.30482e+07,
 			"system_use_recapitalization": 1,
-			"total_installed_cost": 1.15551e+08
+			"total_installed_cost": 1.00165e+08
+		},
+		"LandLease": {
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -257,10 +259,13 @@
 		},
 		"BatterySystem": {
 		},
+		"ElectricityRates": {
+			"en_electricity_rates": 0
+		},
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0.000000],
-			"system_capacity": 34788.7
+			"system_capacity": 32683.1
 		},
 		"UtilityBill": {
 		},
@@ -275,10 +280,12 @@
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,
 			"cp_capacity_payment_type": 0,
-			"cp_system_nameplate": 34.7887
+			"cp_system_nameplate": 32.6831
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
+		},
+		"ChargesByMonth": {
 		},
 		"GridLimits": {
 		}

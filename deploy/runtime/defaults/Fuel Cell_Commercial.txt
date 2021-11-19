@@ -293,7 +293,7 @@ batt_bank_duration
 1
 1
 1
-2
+4
 batt_bank_ncells_serial
 1
 1
@@ -317,7 +317,7 @@ batt_bank_power
 1
 1
 1
-50
+300
 batt_bank_power_dc_ac
 1
 1
@@ -329,7 +329,7 @@ batt_bank_size
 1
 1
 1
-100
+1200
 batt_bank_size_dc_ac
 1
 1
@@ -347,7 +347,7 @@ batt_bank_size_ui
 1
 1
 1
-100
+1200
 batt_bank_voltage
 1
 1
@@ -1050,13 +1050,13 @@ battery_per_kW
 1
 1
 1
-629.47
+832.8
 battery_per_kWh
 1
 1
 1
 1
-206.67
+196.76
 battery_power
 1
 1
@@ -3221,7 +3221,7 @@ om_batt_replacement_cost
 2
 1
 1
-0
+196.76
 om_batt_variable_cost
 1
 2
@@ -3605,7 +3605,7 @@ property_assessed_value
 1
 1
 1
-2.44922e+06
+2449220
 property_tax_rate
 1
 1
@@ -4055,7 +4055,7 @@ thermal_load_annual_total
 1
 1
 1
-7.6463e+06
+7646300
 thermal_load_escalation
 1
 2
@@ -4215,7 +4215,7 @@ total_installed_cost
 1
 1
 1
-2.44922e+06
+2449220
 total_land_area
 1
 1
@@ -4287,13 +4287,13 @@ ui_loan_amount
 1
 1
 1
-2.44922e+06
+2449220
 ui_net_capital_cost
 1
 1
 1
 1
-2.44922e+06
+2449220
 ui_pv_capacity
 1
 1

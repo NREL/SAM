@@ -482,7 +482,7 @@ batt_bank_duration
 1
 1
 1
-2
+4
 batt_bank_ncells_serial
 1
 1
@@ -506,7 +506,7 @@ batt_bank_power
 1
 1
 1
-10
+300
 batt_bank_power_dc_ac
 1
 1
@@ -518,7 +518,7 @@ batt_bank_size
 1
 1
 1
-20
+1200
 batt_bank_size_dc_ac
 1
 1
@@ -536,7 +536,7 @@ batt_bank_size_ui
 1
 1
 1
-20
+1200
 batt_bank_voltage
 1
 1
@@ -1269,13 +1269,13 @@ battery_per_kW
 1
 1
 1
-629.47
+832.8
 battery_per_kWh
 1
 1
 1
 1
-206.67
+196.76
 battery_power
 1
 1
@@ -4024,7 +4024,7 @@ om_batt_replacement_cost
 2
 1
 1
-206.67
+196.76
 om_batt_variable_cost
 1
 2
