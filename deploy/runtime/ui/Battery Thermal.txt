@@ -1,7 +1,7 @@
 Battery Thermal
-1051
-439
-16
+1054
+633
+20
 GroupBox
 
 1
@@ -21,7 +21,7 @@ Width
 1042
 Height
 3
-428
+559
 Tool Tip
 5
 0
@@ -166,7 +166,7 @@ Name
 batt_mass
 X
 3
-486
+480
 Y
 3
 318
@@ -392,7 +392,7 @@ X
 210
 Y
 3
-345
+375
 Width
 3
 90
@@ -441,6 +441,68 @@ BackColour
 TabOrder
 3
 7
+Numeric
+
+1
+17
+Name
+5
+17
+batt_surface_area
+X
+3
+480
+Y
+3
+408
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+1
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
 Choice
 
 1
@@ -481,14 +543,138 @@ Numeric
 17
 Name
 5
+18
+batt_unit_capacity
+X
+3
+210
+Y
+3
+408
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
+22
+batt_unit_surface_area
+X
+3
+210
+Y
+3
+438
+Width
+3
+90
+Height
+3
+24
+Tool Tip
+5
+0
+Value
+1
+0
+Mode
+3
+1
+Format
+3
+0
+Decimals
+3
+3
+Prefix
+5
+0
+Suffix
+5
+0
+ThousandsSep
+2
+1
+Editable
+2
+1
+ForeColour
+4
+0
+0
+0
+255
+BackColour
+4
+255
+255
+255
+255
+TabOrder
+3
+4294967295
+Numeric
+
+1
+17
+Name
+5
 11
 batt_volume
 X
 3
-486
+480
 Y
 3
-345
+375
 Width
 3
 90
@@ -627,6 +813,39 @@ ShowColumn
 ColorMap
 2
 0
+CheckBox
+
+1
+9
+Name
+5
+15
+compute_as_cube
+X
+3
+72
+Y
+3
+348
+Width
+3
+266
+Height
+3
+24
+Tool Tip
+5
+0
+Caption
+5
+36
+Compute battery surface area as cube
+State
+2
+1
+TabOrder
+3
+4294967295
 Divider
 
 1
@@ -738,10 +957,10 @@ Name
 thermal_model_label
 X
 3
-9
+25
 Y
 3
-372
+489
 Width
 3
 699
@@ -825,7 +1044,7 @@ AlignTop
 2
 1
 
-12
+15
 batt_Cp
 3
 1
@@ -944,7 +1163,7 @@ batt_surface_area
 3
 1
 Battery surface area
-m
+m2
 Battery Thermal
 0
 10
@@ -969,6 +1188,34 @@ Enter single fixed temperature|Enter time series temperature
 1
 0
 Choice
+batt_unit_capacity
+3
+1
+Energy capacity of one module
+kWh
+Battery Thermal
+0
+2
+1
+1
+1
+1
+400
+Numeric
+batt_unit_surface_area
+3
+1
+Surface area of one module
+m2
+Battery Thermal
+0
+2
+1
+1
+1
+1
+30
+Numeric
 batt_volume
 3
 1
@@ -1001,8 +1248,22 @@ Battery Thermal
 40 104 
 
 DataArray
+compute_as_cube
+3
+1
+ 
+ 
+Battery Thermal
+0
+2
+1
+1
+1
+1
+1
+CheckBox
 
-1785
+1909
 equations{'batt_mass'} = define()
 {
 	return (${batt_computed_bank_capacity}*1000)/${batt_specific_energy_per_mass};
@@ -1014,8 +1275,12 @@ equations{'batt_volume'} = define()
 };
 equations{'batt_surface_area'} = define()
 {
-	// assume cube
-	return pow(${batt_volume},2/3) * 6;
+	if (${compute_as_cube} == 1) {
+		return pow(${batt_volume},2/3) * 6;
+	}
+	else {
+		return ${batt_computed_bank_capacity} * ${batt_unit_surface_area} / ${batt_unit_capacity};
+	}
 };
 equations{'batt_room_temperature_celsius'} = define()
 {
@@ -1084,11 +1349,12 @@ equations{'batt_room_temperature_celsius'} = define()
 	}
 	return T_ambient;
 };
-1424
+1812
 on_load{'Battery Thermal'} = define() {
 	on_change{'cap_vs_temp'}(); // update the plot
 	on_change{'batt_thermal_choice'}();
 	show_thermal_options();
+	toggle_surface_area_calcs();
 };
 
 function show_thermal_options()
@@ -1104,6 +1370,15 @@ function show_thermal_options()
 
 	enable('batt_room_temperature_single', ${batt_thermal_choice}==0);
 	enable('batt_room_temperature_vector', ${batt_thermal_choice}==1);
+}
+
+
+function toggle_surface_area_calcs()
+{
+	enable("batt_specific_energy_per_volume", ${compute_as_cube} == 1);
+	enable("batt_volume", ${compute_as_cube} == 1);
+	enable("batt_unit_capacity", ${compute_as_cube} == 0);
+	enable("batt_unit_surface_area", ${compute_as_cube} == 0);	
 }
 
 on_change{'batt_thermal_choice'} = define()
@@ -1131,3 +1406,8 @@ on_change{ 'cap_vs_temp' } = define() {
 	axis( 'x1', {'label'='Temperature (C)', 'min'=Tmin-Tadj, 'max'=Tmax+Tadj});
 	axis( 'y1', {'label'='Effective capacity (%)', 'min'=0, 'max'=110});
 };
+
+on_change{ 'compute_as_cube' } = define() {
+	toggle_surface_area_calcs();
+};
+

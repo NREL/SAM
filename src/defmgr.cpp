@@ -1,22 +1,22 @@
 /**
 BSD-3-Clause
 Copyright 2019 Alliance for Sustainable Energy, LLC
-Redistribution and use in source and binary forms, with or without modification, are permitted provided 
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
 that the following conditions are met :
-1.	Redistributions of source code must retain the above copyright notice, this list of conditions 
+1.	Redistributions of source code must retain the above copyright notice, this list of conditions
 and the following disclaimer.
-2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+2.	Redistributions in binary form must reproduce the above copyright notice, this list of conditions
 and the following disclaimer in the documentation and/or other materials provided with the distribution.
-3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse 
+3.	Neither the name of the copyright holder nor the names of its contributors may be used to endorse
 or promote products derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES 
-DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, 
-OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.IN NO EVENT SHALL THE COPYRIGHT HOLDER, CONTRIBUTORS, UNITED STATES GOVERNMENT OR UNITED STATES
+DEPARTMENT OF ENERGY, NOR ANY OF THEIR EMPLOYEES, BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+OR CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
@@ -29,10 +29,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "main.h"
 #include "casewin.h"
 #include "defmgr.h"
- 
+
 
 static wxString GetDefaultsFile( const wxString &t, const wxString &f )
-{	
+{
 #ifdef UI_BINARY
 	return SamApp::GetRuntimePath() + "/defaults/" + t + "_" + f;
 #else
@@ -41,7 +41,7 @@ static wxString GetDefaultsFile( const wxString &t, const wxString &f )
 }
 
 static wxString GetTypeStr( int type )
-{	
+{
 	if ( type <= VV_BINARY && type >=0  )
 		return vv_strtypes[type];
 	else
@@ -83,7 +83,7 @@ ValueEditor::ValueEditor( wxWindow *parent )
 	m_matrix->ShowRowLabels( true );
 
 	m_fields = new wxListBox( this, ID_FIELDS );
-	
+
 	wxBoxSizer *sizer_top = new wxBoxSizer( wxHORIZONTAL );
 	sizer_top->Add( new wxStaticText(this, wxID_ANY, "Data type:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 	sizer_top->Add( m_type, 0, wxALL|wxALIGN_CENTER_VERTICAL, 3 );
@@ -104,12 +104,12 @@ ValueEditor::ValueEditor( wxWindow *parent )
 	wxBoxSizer *sizer_bot = new wxBoxSizer( wxHORIZONTAL );
 	sizer_bot->Add( m_matrix, 1, wxALL|wxEXPAND, 2 );
 	sizer_bot->Add( sizer_tab, 1, wxALL|wxEXPAND, 2 );
-	
+
 	wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 	sizer->Add( sizer_top, 0, wxALL|wxEXPAND, 0 );
 	sizer->Add( sizer_bot, 1, wxALL|wxEXPAND, 0 );
 	SetSizer( sizer );
-	
+
 	VarValue nil;
 	Set( nil );
 }
@@ -192,10 +192,10 @@ void ValueEditor::OnCommand( wxCommandEvent &evt )
 		UpdateFormUI();
 		ValueToForm();
 		break;
-	case ID_VALUE:		
+	case ID_VALUE:
 		if ( !VarValue::Parse( m_val.Type(), m_text->GetValue(), m_val ) )
 			m_text->SetForegroundColour( *wxRED );
-		else if ( m_text->GetForegroundColour() != *wxBLACK ) 
+		else if ( m_text->GetForegroundColour() != *wxBLACK )
 			m_text->SetForegroundColour( *wxBLACK );
 		break;
 	case ID_MATRIX:
@@ -252,14 +252,14 @@ void ValueEditor::OnEditField( wxCommandEvent & )
 {
 	wxString name = m_fields->GetStringSelection();
 	if ( name.IsEmpty() ) return;
-	
+
 	VarValue *vv = m_val.Table().Get(name);
 	if ( !vv )
 	{
 		wxMessageBox("Could not locate field in table: " + name );
 		return;
 	}
-	
+
 	wxDialog dlg( this, wxID_ANY, "Edit field: " + name, wxDefaultPosition, wxScaleSize(600,400), wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 	ValueEditor *ve = new ValueEditor( &dlg );
 	ve->Set( *vv );
@@ -272,7 +272,7 @@ void ValueEditor::OnEditField( wxCommandEvent & )
 }
 
 
-enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY, ID_LOAD, ID_CONFIGS, 
+enum { ID_QUERY = wxID_HIGHEST+392, ID_LOOKUP_VAR, ID_DELETE, ID_MODIFY, ID_LOAD, ID_CONFIGS,
 	ID_POPUP_first, ID_CHECK_ALL, ID_UNCHECK_ALL, ID_CHECK_SELECTED, ID_UNCHECK_SELECTED, ID_SAVE_TEXT, ID_SAVE_BINARY, ID_POPUP_last };
 
 BEGIN_EVENT_TABLE( DefaultsManager, wxPanel )
@@ -289,16 +289,16 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 	: wxPanel( parent ),
     m_varName(NULL), m_value(NULL),
     m_output(NULL), m_configList(NULL),
-    m_techList(NULL), m_finList(NULL),
+    m_techList(), m_finList(),
     m_changeType(NULL), m_enableAdd(NULL)
 {
 	m_varName = new wxTextCtrl( this, wxID_ANY, wxEmptyString );
-	
+
 	m_value = new ValueEditor( this );
 
 	m_changeType = new wxCheckBox( this, wxID_ANY, "Change data type?" );
 	m_enableAdd = new wxCheckBox( this, wxID_ANY, "Add variable?" );
-	
+
 	m_output = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxBORDER_NONE );
 	m_output->SetForegroundColour( *wxLIGHT_GREY );
 	m_output->SetBackgroundColour( "NAVY" );
@@ -313,18 +313,18 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 	button_sizer1->Add( new wxStaticText( this, wxID_ANY, "Variable name:"), 0, wxALL|wxALIGN_CENTER_VERTICAL, 4);
 	button_sizer1->Add( m_varName, 1, wxALL|wxEXPAND, 4 );
 	button_sizer1->Add( new wxButton( this, ID_LOOKUP_VAR, "Lookup" ), 0, wxALL, 2 );
-	button_sizer1->Add( new wxButton( this, ID_QUERY, "Query" ), 0, wxALL, 2 );	
-	button_sizer1->Add( new wxButton( this, ID_DELETE, "Delete" ), 0, wxALL, 2 );	
+	button_sizer1->Add( new wxButton( this, ID_QUERY, "Query" ), 0, wxALL, 2 );
+	button_sizer1->Add( new wxButton( this, ID_DELETE, "Delete" ), 0, wxALL, 2 );
 	button_sizer1->Add( m_changeType, 0, wxALL|wxALIGN_CENTER_VERTICAL, 0 );
 	button_sizer1->Add( m_enableAdd, 0, wxALL|wxALIGN_CENTER_VERTICAL, 2 );
 	button_sizer1->Add( new wxButton(this, ID_MODIFY, "Modify"), 0, wxALL, 2 );
 	button_sizer1->Add( new wxButton(this, ID_LOAD, "Load"), 0, wxALL, 2 );
-	
+
 	wxBoxSizer *right_sizer = new wxBoxSizer( wxVERTICAL );
 	right_sizer->Add( button_sizer1, 0, wxALL|wxEXPAND, 4 );
 	right_sizer->Add( m_value, 1, wxALL|wxEXPAND, 0 );
 	right_sizer->Add( m_output, 2, wxALL|wxEXPAND, 0 );
-	
+
 	wxBoxSizer *sizer = new wxBoxSizer( wxHORIZONTAL );
 	sizer->Add( m_configList, 0, wxALL|wxEXPAND, 0 );
 	sizer->Add( right_sizer, 1, wxALL|wxEXPAND, 0 );
@@ -340,7 +340,7 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 		for (int j=0;j<(int)fl.Count();j++)
 		{
 			wxString item = tl[i] + "," + fl[j];
-			
+
 			m_techList.Add( tl[i] );
 			m_finList.Add( fl[j] );
 
@@ -353,7 +353,7 @@ DefaultsManager::DefaultsManager( wxWindow *parent )
 		}
 	}
 
-	m_output->AppendText( wxString::Format("%d total configurations, %d defaults files missing.\n", 
+	m_output->AppendText( wxString::Format("%d total configurations, %d defaults files missing.\n",
 					(int) m_configList->GetCount(), (int) m_configList->GetCount()-num_defaults) );
 }
 
@@ -446,11 +446,11 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 	for (int i=0;i<(int)m_configList->GetCount();i++)
 	{
 		if (!m_configList->IsChecked(i)) continue;
-		
+
 		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 		VarTable tab;
 #ifdef UI_BINARY
-		if ( !tab.Read( file ))			
+		if ( !tab.Read( file ))
 #else
 		if (!tab.Read_text(file))
 #endif
@@ -460,7 +460,7 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 		}
 
 		wxString name( m_varName->GetValue() );
-		
+
 		if ( VarValue *vv = tab.Get( name ) )
 			Log("'" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
 	}
@@ -487,7 +487,7 @@ void DefaultsManager::OnLoad( wxCommandEvent & )
 		return;
 	}
 
-	wxString name( m_varName->GetValue() );		
+	wxString name( m_varName->GetValue() );
 	if( VarValue *vv = tab.Get( name ) )
 	{
 		m_value->Set( *vv );
@@ -500,7 +500,7 @@ void DefaultsManager::OnLoad( wxCommandEvent & )
 void DefaultsManager::OnModify( wxCommandEvent & )
 {
 	ClearLog();
-	
+
 
 	bool en_change = m_changeType->GetValue();
 	int datatype = m_value->GetType();
@@ -509,7 +509,7 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 	for (int i=0;i<(int)m_configList->GetCount();i++)
 	{
 		if (!m_configList->IsChecked(i)) continue;
-				
+
 		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
 		VarTable tab;
 #ifdef UI_BINARY
@@ -524,7 +524,7 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 
 		wxString name( m_varName->GetValue() );
 		bool needs_write = false;
-		
+
 		VarValue *vv = tab.Get( name );
 
 		if ( !vv && m_enableAdd->GetValue() )
@@ -535,7 +535,7 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 		}
 
 
-		if ( !vv ) 
+		if ( !vv )
 			continue;
 
 		if ( en_change && vv->Type() != datatype )
@@ -550,16 +550,16 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 			vv->Copy( value );
 			needs_write = true;
 
-			if ( vv->Type() == VV_NUMBER 
-				|| vv->Type() == VV_STRING 
-				|| vv->Type() == VV_MATRIX 
-				|| vv->Type() == VV_TABLE 
+			if ( vv->Type() == VV_NUMBER
+				|| vv->Type() == VV_STRING
+				|| vv->Type() == VV_MATRIX
+				|| vv->Type() == VV_TABLE
 				|| vv->Type() == VV_BINARY )
 			{
 				Log("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
 			}
 			else if ( vv->Type() == VV_ARRAY )
-			{	
+			{
 				size_t arrlen;
 				double *arr = value.Array( & arrlen );
 				wxString s("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = ");
@@ -571,8 +571,8 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 					s += "...";
 				}
 				else
-					s += vv->AsString();	
-			
+					s += vv->AsString();
+
 				Log("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + s );
 
 			}
@@ -588,13 +588,13 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 				Log("file write error: " + file );
 		}
 	}
-	
+
 }
 
 void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 {
 	wxString name( m_varName->GetValue() );
-	
+
 	if (wxYES!=wxMessageBox("Are you sure you want to remove '" + name + "' from selected configurations?", "Query", wxYES_NO))
 		return;
 
@@ -604,7 +604,7 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 	{
 		if (!m_configList->IsChecked(i)) continue;
 		wxString file = GetDefaultsFile(m_techList[i], m_finList[i]);
-		
+
 		VarTable tab;
 #ifdef UI_BINARY
 		if ( !tab.Read( file ) )
