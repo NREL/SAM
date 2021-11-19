@@ -3125,7 +3125,7 @@ ur_dc_enable
 1
 1
 1
-0
+4.45015e-307
 ur_dc_flat_mat
 1
 3
@@ -3371,7 +3371,7 @@ ur_monthly_fixed_charge
 1
 1
 1
-0
+4.45015e-307
 ur_monthly_min_charge
 1
 1
