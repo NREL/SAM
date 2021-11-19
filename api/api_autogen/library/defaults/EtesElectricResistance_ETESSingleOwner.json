@@ -30,7 +30,7 @@
 			"T_htf_cold_des": 290,
 			"T_htf_hot_des": 574,
 			"design_eff": 0.412,
-			"gross_net_conversion_factor": 0.9,
+			"gross_net_conversion_factor": 0.965,
 			"heater_mult": 2.4,
 			"tshours": 10
 		},
@@ -346,7 +346,7 @@
 			"sales_tax_rate": 5
 		},
 		"AdjustmentFactors": {
-			"constant": 4
+			"constant": 0
 		}
 	}
 }

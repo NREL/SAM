@@ -52,6 +52,8 @@
 			"om_production_escal": 0,
 			"total_installed_cost": 857424
 		},
+		"LandLease": {
+		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
@@ -215,6 +217,19 @@
 			"elec_cost_with_system": [0],
 			"elec_cost_without_system": [0],
 			"host_real_discount_rate": 6.4
+		},
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
+		},
+		"ChargesByMonth": {
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			]
 		},
 		"SystemOutput": {
 			"degradation": [0.000000],

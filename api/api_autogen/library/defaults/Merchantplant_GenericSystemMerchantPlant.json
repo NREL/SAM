@@ -50,6 +50,8 @@
 			"om_production_escal": 0,
 			"total_installed_cost": 1.092e+09
 		},
+		"LandLease": {
+		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
 			"itc_fed_amount_deprbas_fed": 1,
@@ -258,6 +260,9 @@
 		"BatterySystem": {
 			"en_batt": 0
 		},
+		"ElectricityRates": {
+			"en_electricity_rates": 0
+		},
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
@@ -280,6 +285,8 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
+		},
+		"ChargesByMonth": {
 		},
 		"GridLimits": {
 		}

@@ -44,7 +44,7 @@
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
 			"ppa_price_input": [0.050000],
-			"ppa_soln_mode": 0
+			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 30,
@@ -106,6 +106,11 @@
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 2.322e+06
+		},
+		"LandLease": {
+			"land_area": 0,
+			"om_land_lease": [0.000000],
+			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -305,6 +310,8 @@
 		"LCOS": {
 			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 0
+		},
+		"ChargesByMonth": {
 		}
 	}
 }
