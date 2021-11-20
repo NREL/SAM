@@ -1257,7 +1257,7 @@ loan_rate
 1
 1
 1
-5
+4
 loan_term
 1
 1
@@ -1420,7 +1420,7 @@ om_capacity
 2
 1
 1
-19
+16
 om_capacity_escal
 1
 1

@@ -4040,7 +4040,7 @@ loan_rate
 1
 1
 1
-5
+4
 loan_term
 1
 1
@@ -4202,7 +4202,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+10
 om_batt_fixed_cost
 1
 2

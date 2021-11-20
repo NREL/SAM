@@ -411,7 +411,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -1201,13 +1201,13 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0.1
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -1697,7 +1697,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 inv_eff
 1
 1
@@ -2246,7 +2246,7 @@ om_capacity
 2
 1
 1
-19
+16
 om_capacity_escal
 1
 1
@@ -2654,7 +2654,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 sales_tax_percent
 1
 1
@@ -2811,7 +2811,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1

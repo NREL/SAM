@@ -1,5 +1,5 @@
 1
-843
+846
 LeadAcid_q10
 1
 1
@@ -1037,6 +1037,18 @@ batt_ui_nominal_bank_power
 1
 1
 50.1026
+batt_unit_capacity
+1
+1
+1
+1
+400
+batt_unit_surface_area
+1
+1
+1
+1
+30
 batt_user_specified_weather_file
 1
 4
@@ -1445,6 +1457,12 @@ city
 4
 1
 -
+compute_as_cube
+1
+1
+1
+1
+3.33506e-317
 const_per_interest1
 1
 1
@@ -1480,7 +1498,7 @@ const_per_interest_rate1
 1
 1
 1
-0
+3.5
 const_per_interest_rate2
 1
 1
@@ -2360,13 +2378,13 @@ equip1_reserve_cost
 1
 1
 1
-0
+0.1
 equip1_reserve_freq
 1
 1
 1
 1
-0
+15
 equip2_reserve_cost
 1
 1
@@ -3307,7 +3325,7 @@ insurance_rate
 1
 1
 1
-1
+0
 inv_eff
 1
 1
@@ -3841,7 +3859,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+10
 om_batt_fixed_cost
 1
 2
@@ -3871,7 +3889,7 @@ om_capacity
 2
 1
 1
-50
+15
 om_capacity_escal
 1
 1
@@ -3913,7 +3931,7 @@ om_fuelcell_capacity_cost
 2
 1
 1
-0
+27
 om_fuelcell_fixed_cost
 1
 2
@@ -4183,7 +4201,7 @@ ppa_price_input
 2
 1
 1
-0.05
+0.048
 ppa_soln_mode
 1
 1
@@ -4393,7 +4411,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 revenue_TOD_is_shown
 1
 1
@@ -4562,7 +4580,7 @@ term_int_rate
 1
 1
 1
-0
+4
 term_tenor
 1
 1

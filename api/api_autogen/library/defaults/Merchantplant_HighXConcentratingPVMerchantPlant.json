@@ -13,8 +13,8 @@
 			"dscr_limit_debt_fraction": 0,
 			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 6,
-			"equip1_reserve_cost": 0.25,
-			"equip1_reserve_freq": 12,
+			"equip1_reserve_cost": 0.1,
+			"equip1_reserve_freq": 15,
 			"equip2_reserve_cost": 0,
 			"equip2_reserve_freq": 15,
 			"equip3_reserve_cost": 0,
@@ -23,7 +23,7 @@
 			"equip_reserve_depr_sta": 0,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 0.5,
+			"insurance_rate": 0,
 			"loan_moratorium": 0,
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6,
@@ -32,11 +32,11 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.75,
+			"reserves_interest": 1.25,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 1126.66,
-			"term_int_rate": 7,
+			"term_int_rate": 4,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
@@ -51,7 +51,7 @@
 		"LandLease": {
 			"land_area": 6.22692,
 			"om_land_lease": [100.000000],
-			"om_land_lease_escal": 1
+			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,

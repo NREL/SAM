@@ -512,7 +512,7 @@ batt_dispatch_auto_can_gridcharge
 1
 1
 1
-0
+1
 batt_dispatch_choice
 1
 1
@@ -2189,7 +2189,7 @@ loan_rate
 1
 1
 1
-5
+4
 loan_term
 1
 1
@@ -2232,7 +2232,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+15
 om_batt_fixed_cost
 1
 2

@@ -50,7 +50,7 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 908951
+			"total_installed_cost": 1.44935e+06
 		},
 		"LandLease": {
 		},
@@ -283,14 +283,14 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 18179
+			"construction_financing_cost": 28987
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 206.67
+			"battery_per_kWh": 196.76
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 64614.1
+			"battery_total_cost_lcos": 584228
 		}
 	}
 }

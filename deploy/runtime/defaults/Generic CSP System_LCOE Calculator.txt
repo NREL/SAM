@@ -274,13 +274,13 @@ c_nominal_interest_rate
 1
 1
 1
-8
+4
 c_tax_rate
 1
 1
 1
 1
-40
+28
 capital_cost
 1
 1

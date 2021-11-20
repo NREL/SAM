@@ -604,7 +604,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -8921,7 +8921,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 rh_frac_ref
 1
 1
@@ -9169,7 +9169,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -9324,7 +9324,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_metering_option
 1

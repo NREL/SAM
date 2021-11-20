@@ -2959,13 +2959,13 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0.1
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -4851,7 +4851,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+10
 om_batt_fixed_cost
 1
 2
@@ -4881,7 +4881,7 @@ om_capacity
 2
 1
 1
-19
+16
 om_capacity_escal
 1
 1
