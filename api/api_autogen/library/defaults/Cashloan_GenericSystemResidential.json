@@ -6,7 +6,7 @@
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
 			"insurance_rate": 1,
-			"loan_rate": 7.5,
+			"loan_rate": 4,
 			"loan_term": 25,
 			"market": 0,
 			"mortgage": 1,

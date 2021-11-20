@@ -3335,8 +3335,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_purchases_value_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_sales_value_aget(SAM_table ptr, int* length, SAM_error *err);

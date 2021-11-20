@@ -7,7 +7,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"equip1_reserve_cost": 0.25,
+			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
 			"equip2_reserve_freq": 15,
@@ -22,7 +22,7 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.75,
+			"reserves_interest": 1.25,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 48535.6
 		},
