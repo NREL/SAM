@@ -4695,7 +4695,7 @@ om_capacity
 2
 1
 1
-13
+15
 om_capacity_escal
 1
 1
@@ -4947,7 +4947,7 @@ ppa_price_input
 2
 1
 1
-0.09
+0.055
 ppa_soln_mode
 1
 1
