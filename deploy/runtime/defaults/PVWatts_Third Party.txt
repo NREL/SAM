@@ -1,5 +1,5 @@
 1
-229
+230
 Monthly_util
 1
 2
@@ -217,12 +217,18 @@ dc_ac_ratio
 1
 1
 1.2
+dc_degradation
+1
+2
+1
+1
+0
 degradation
 1
 2
 1
 1
-0.5
+0
 elev
 1
 1
@@ -907,7 +913,7 @@ system_use_lifetime_output
 1
 1
 1
-0
+1
 tilt
 1
 1

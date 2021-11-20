@@ -1,11 +1,11 @@
 1
-479
+480
 ac_nameplate
 1
 1
 1
 1
-833.333
+769.231
 adjust
 1
 5
@@ -365,7 +365,7 @@ const_per_interest1
 1
 1
 1
-10276.5
+8991.89
 const_per_interest2
 1
 1
@@ -425,7 +425,7 @@ const_per_interest_total
 1
 1
 1
-10276.5
+8991.89
 const_per_months1
 1
 1
@@ -558,7 +558,7 @@ const_per_total1
 1
 1
 1
-20552.9
+19268.3
 const_per_total2
 1
 1
@@ -618,7 +618,7 @@ construction_financing_cost
 1
 1
 1
-20552.9
+19268.3
 contingency
 1
 1
@@ -708,6 +708,12 @@ dc_ac_ratio
 1
 1
 1.3
+dc_degradation
+1
+2
+1
+1
+0
 debt_message
 1
 4
@@ -729,7 +735,7 @@ degradation
 2
 1
 1
-0.5
+0
 depr_alloc_custom_percent
 1
 1
@@ -1531,7 +1537,7 @@ inverter_power
 1
 1
 1
-833.333
+769.231
 inverter_total
 1
 1
@@ -1543,13 +1549,13 @@ inverterarray_power
 1
 1
 1
-833.333
+769.231
 inverterarray_power_w
 1
 1
 1
 1
-833333
+769231
 is_advanced
 1
 1
@@ -1817,7 +1823,7 @@ mera_cost1
 1
 1
 1
-50000
+100000
 mera_cost2
 1
 1
@@ -2690,7 +2696,7 @@ system_use_lifetime_output
 1
 1
 1
-0
+1
 term_int_rate
 1
 1
@@ -2906,7 +2912,7 @@ ui_wacc
 1
 1
 1
-6.70974
+5.38728
 unsubscribed_payment_generation
 1
 2

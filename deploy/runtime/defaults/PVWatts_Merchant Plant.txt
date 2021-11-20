@@ -1,11 +1,11 @@
 1
-521
+522
 ac_nameplate
 1
 1
 1
 1
-41666.7
+38461.5
 adjust
 1
 5
@@ -406,7 +406,7 @@ const_per_interest1
 1
 1
 1
-513822
+449595
 const_per_interest2
 1
 1
@@ -466,7 +466,7 @@ const_per_interest_total
 1
 1
 1
-513822
+449595
 const_per_months1
 1
 1
@@ -599,7 +599,7 @@ const_per_total1
 1
 1
 1
-1027645
+963417
 const_per_total2
 1
 1
@@ -659,7 +659,7 @@ construction_financing_cost
 1
 1
 1
-1027645
+963417
 contingency
 1
 1
@@ -737,6 +737,12 @@ dc_ac_ratio
 1
 1
 1.3
+dc_degradation
+1
+2
+1
+1
+0
 debt_message
 1
 4
@@ -758,7 +764,7 @@ degradation
 2
 1
 1
-0.5
+0
 depr_alloc_custom_percent
 1
 1
@@ -1082,7 +1088,7 @@ engr_total
 1
 1
 1
-3500000
+3.5e+06
 equip1_reserve_cost
 1
 1
@@ -1572,7 +1578,7 @@ inverter_power
 1
 1
 1
-41666.7
+38461.5
 inverter_total
 1
 1
@@ -1584,13 +1590,13 @@ inverterarray_power
 1
 1
 1
-41666.7
+38461.5
 inverterarray_power_w
 1
 1
 1
 1
-41666700
+3.84615e+07
 is_advanced
 1
 1
@@ -1864,7 +1870,7 @@ mera_cost1
 1
 1
 1
-12500000
+5000000
 mera_cost2
 1
 1
@@ -221147,7 +221153,7 @@ om_land_lease
 2
 1
 1
-100
+0
 om_land_lease_escal
 1
 1
@@ -221669,7 +221675,7 @@ system_use_lifetime_output
 1
 1
 1
-0
+1
 term_int_rate
 1
 1
@@ -221807,7 +221813,7 @@ ui_wacc
 1
 1
 1
-6.70974
+5.38728
 ur_annual_min_charge
 1
 1

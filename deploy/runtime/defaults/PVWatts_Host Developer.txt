@@ -1,5 +1,5 @@
 1
-544
+545
 ac_nameplate
 1
 1
@@ -381,7 +381,7 @@ const_per_interest1
 1
 1
 1
-9283.96
+8123.46
 const_per_interest2
 1
 1
@@ -441,7 +441,7 @@ const_per_interest_total
 1
 1
 1
-9283.96
+8123.46
 const_per_months1
 1
 1
@@ -574,7 +574,7 @@ const_per_total1
 1
 1
 1
-18567.9
+17407.4
 const_per_total2
 1
 1
@@ -634,7 +634,7 @@ construction_financing_cost
 1
 1
 1
-18567.9
+17407.4
 contingency
 1
 1
@@ -676,6 +676,12 @@ dc_ac_ratio
 1
 1
 1.2
+dc_degradation
+1
+2
+1
+1
+0
 debt_message
 1
 4
@@ -697,7 +703,7 @@ degradation
 2
 1
 1
-0.5
+0
 depr_alloc_custom_percent
 1
 1
@@ -2128,7 +2134,7 @@ mera_cost1
 1
 1
 1
-135000
+54000
 mera_cost2
 1
 1
@@ -2805,7 +2811,7 @@ system_use_lifetime_output
 1
 1
 1
-0
+1
 term_int_rate
 1
 1
@@ -2924,7 +2930,7 @@ ui_wacc
 1
 1
 1
-6.70974
+5.38728
 ur_annual_min_charge
 1
 1
