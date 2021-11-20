@@ -5730,7 +5730,10 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
     bool success = ssc_module_exec(module, landbosse_data);
 
     if (!success){
-        std::string error = std::string(ssc_data_get_string(landbosse_data, "errors"));
+		auto x = ssc_data_get_string(landbosse_data, "errors");
+		std::string error;
+		if (x != NULL) 
+			error = x;
         if (error.empty())
             error = std::string(ssc_module_log(module, 0, nullptr, nullptr));
         ssc_data_free(landbosse_data);
