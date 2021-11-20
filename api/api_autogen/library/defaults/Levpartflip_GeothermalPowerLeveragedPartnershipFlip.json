@@ -19,7 +19,7 @@
 			"dscr_limit_debt_fraction": 0,
 			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 6,
-			"equip1_reserve_cost": 0.25,
+			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
 			"equip2_reserve_freq": 15,
@@ -37,11 +37,11 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 1,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.75,
+			"reserves_interest": 1.25,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 34162.2,
-			"term_int_rate": 7,
+			"term_int_rate": 4,
 			"term_tenor": 18
 		},
 		"SystemCosts": {

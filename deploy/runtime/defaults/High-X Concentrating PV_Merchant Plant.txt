@@ -444,7 +444,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -571,7 +571,7 @@ const_per_principal1
 1
 1
 1
-6.07946e+06
+6079460
 const_per_principal2
 1
 1
@@ -601,7 +601,7 @@ const_per_principal_total
 1
 1
 1
-6.07946e+06
+6079460
 const_per_total1
 1
 1
@@ -1042,13 +1042,13 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0.1
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -1420,7 +1420,7 @@ hcpv.cost.module.totalcost
 1
 1
 1
-3.15464e+06
+3154640
 hcpv.cost.modulearray.area
 1
 1
@@ -1934,7 +1934,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 inv_cec_date
 1
 4
@@ -2548,7 +2548,7 @@ om_land_lease_escal
 1
 1
 1
-1
+0
 om_production
 1
 2
@@ -2732,7 +2732,7 @@ property_assessed_value
 1
 1
 1
-6.07946e+06
+6079460
 property_tax_rate
 1
 1
@@ -2792,7 +2792,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 revenue_tab
 1
 1
@@ -2905,7 +2905,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -2917,7 +2917,7 @@ total_direct_cost
 1
 1
 1
-5.50025e+06
+5500250
 total_indirect_cost
 1
 1
@@ -2929,7 +2929,7 @@ total_installed_cost
 1
 1
 1
-6.07946e+06
+6079460
 tz
 1
 1
@@ -2965,7 +2965,7 @@ ui_land_lease
 2
 1
 1
-100
+0
 ui_step_minutes
 1
 1
@@ -3095,10 +3095,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -3191,7 +3190,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

@@ -22,7 +22,7 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.75,
+			"reserves_interest": 1.25,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 99900
 		},
@@ -37,7 +37,7 @@
 		"LandLease": {
 			"land_area": 821.511,
 			"om_land_lease": [100.000000],
-			"om_land_lease_escal": 1
+			"om_land_lease_escal": 0
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,

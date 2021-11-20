@@ -1,5 +1,5 @@
 1
-558
+561
 LeadAcid_q10
 1
 1
@@ -1020,6 +1020,18 @@ batt_ui_nominal_bank_power
 1
 1
 4.80384
+batt_unit_capacity
+1
+1
+1
+1
+400
+batt_unit_surface_area
+1
+1
+1
+1
+30
 batt_user_specified_weather_file_peak_shaving
 1
 4
@@ -1268,6 +1280,12 @@ cbi_uti_tax_sta
 1
 1
 chk_update_peaks
+1
+1
+1
+1
+1
+compute_as_cube
 1
 1
 1
@@ -2324,7 +2342,7 @@ loan_rate
 1
 1
 1
-5
+4
 loan_term
 1
 1
@@ -2373,7 +2391,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+10
 om_batt_fixed_cost
 1
 2
@@ -2403,7 +2421,7 @@ om_capacity
 2
 1
 1
-20
+10
 om_capacity_escal
 1
 1

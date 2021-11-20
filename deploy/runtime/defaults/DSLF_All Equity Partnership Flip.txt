@@ -773,7 +773,7 @@ const_per_interest1
 1
 1
 1
-1.49811e+07
+14981100
 const_per_interest2
 1
 1
@@ -803,7 +803,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -833,7 +833,7 @@ const_per_interest_total
 1
 1
 1
-1.49811e+07
+14981100
 const_per_months1
 1
 1
@@ -930,7 +930,7 @@ const_per_principal1
 1
 1
 1
-3.74527e+08
+374527000
 const_per_principal2
 1
 1
@@ -960,13 +960,13 @@ const_per_principal_total
 1
 1
 1
-3.74527e+08
+374527000
 const_per_total1
 1
 1
 1
 1
-1.87263e+07
+18726300
 const_per_total2
 1
 1
@@ -1026,7 +1026,7 @@ construction_financing_cost
 1
 1
 1
-1.87263e+07
+18726300
 cost_dev_fee_percent
 1
 1
@@ -1038,13 +1038,13 @@ cost_dev_fee_tax_liability
 1
 1
 1
-2.98086e+06
+2980860
 cost_dev_fee_value
 1
 1
 1
 1
-1.12358e+07
+11235800
 cost_equity_closing
 1
 1
@@ -1085,7 +1085,7 @@ csp.lf.cost.contingency
 1
 1
 1
-2.11081e+07
+21108100
 csp.lf.cost.contingency_percent
 1
 1
@@ -1127,7 +1127,7 @@ csp.lf.cost.epc.total
 1
 1
 1
-3.54918e+07
+35491800
 csp.lf.cost.fossil_backup
 1
 1
@@ -1151,7 +1151,7 @@ csp.lf.cost.htf_system
 1
 1
 1
-2.90163e+07
+29016300
 csp.lf.cost.htf_system.area
 1
 1
@@ -1205,7 +1205,7 @@ csp.lf.cost.plm.total
 1
 1
 1
-3.47641e+06
+3476410
 csp.lf.cost.power_plant
 1
 1
@@ -1235,7 +1235,7 @@ csp.lf.cost.sales_tax.total
 1
 1
 1
-1.29061e+07
+12906100
 csp.lf.cost.sales_tax.value
 1
 1
@@ -1265,7 +1265,7 @@ csp.lf.cost.solar_field
 1
 1
 1
-1.31892e+08
+131892000
 csp.lf.cost.solar_field.area
 1
 1
@@ -1283,19 +1283,19 @@ csp.lf.cost.total_direct
 1
 1
 1
-3.22653e+08
+322653000
 csp.lf.cost.total_indirect
 1
 1
 1
 1
-3.89682e+07
+38968200
 csp.lf.cost.total_installed
 1
 1
 1
 1
-3.74527e+08
+374527000
 csp.lf.cost.total_land_area
 1
 1
@@ -4120,7 +4120,7 @@ om_land_lease_escal
 1
 1
 1
-1
+0
 om_production
 1
 2
@@ -4330,7 +4330,7 @@ property_assessed_value
 1
 1
 1
-3.74527e+08
+374527000
 property_tax_rate
 1
 1
@@ -4414,7 +4414,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 rh_frac_ref
 1
 1
@@ -4694,13 +4694,13 @@ total_direct_cost
 1
 1
 1
-3.89682e+07
+38968200
 total_installed_cost
 1
 1
 1
 1
-3.74527e+08
+374527000
 track_mode
 1
 1
@@ -4742,7 +4742,7 @@ ui_land_lease
 2
 1
 1
-100
+0
 ui_step_minutes
 1
 1
@@ -4880,10 +4880,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -4976,7 +4975,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

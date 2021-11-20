@@ -1348,7 +1348,7 @@ const_per_interest1
 1
 1
 1
-2.13635e+07
+21363500
 const_per_interest2
 1
 1
@@ -1378,7 +1378,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -1408,7 +1408,7 @@ const_per_interest_total
 1
 1
 1
-2.13635e+07
+21363500
 const_per_months1
 1
 1
@@ -1505,7 +1505,7 @@ const_per_principal1
 1
 1
 1
-5.34088e+08
+534088000
 const_per_principal2
 1
 1
@@ -1535,13 +1535,13 @@ const_per_principal_total
 1
 1
 1
-5.34088e+08
+534088000
 const_per_total1
 1
 1
 1
 1
-2.67044e+07
+26704400
 const_per_total2
 1
 1
@@ -1601,7 +1601,7 @@ construction_financing_cost
 1
 1
 1
-2.67044e+07
+26704400
 cooling_tower_operation_mode
 1
 1
@@ -1690,7 +1690,7 @@ csp.tr.cost.contingency
 1
 1
 1
-2.9865e+07
+29865000
 csp.tr.cost.contingency_percent
 1
 1
@@ -1726,7 +1726,7 @@ csp.tr.cost.epc.total
 1
 1
 1
-5.02159e+07
+50215900
 csp.tr.cost.fossil_backup
 1
 1
@@ -1804,7 +1804,7 @@ csp.tr.cost.plm.total
 1
 1
 1
-9.10358e+06
+9103580
 csp.tr.cost.power_plant
 1
 1
@@ -1834,7 +1834,7 @@ csp.tr.cost.sales_tax.total
 1
 1
 1
-1.82603e+07
+18260300
 csp.tr.cost.sales_tax.value
 1
 1
@@ -1882,7 +1882,7 @@ csp.tr.cost.storage
 1
 1
 1
-1.09412e+08
+109412000
 csp.tr.cost.storage.cost_per_kwht
 1
 1
@@ -222492,7 +222492,7 @@ om_land_lease_escal
 1
 1
 1
-1
+0
 om_production
 1
 2
@@ -222686,7 +222686,7 @@ property_assessed_value
 1
 1
 1
-5.34088e+08
+534088000
 property_tax_rate
 1
 1
@@ -222752,7 +222752,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 revenue_tab
 1
 1
@@ -222870,7 +222870,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -222888,19 +222888,19 @@ total_direct_cost
 1
 1
 1
-4.56508e+08
+456508000
 total_indirect_cost
 1
 1
 1
 1
-5.93195e+07
+59319500
 total_installed_cost
 1
 1
 1
 1
-5.34088e+08
+534088000
 track_mode
 1
 1
@@ -223509,7 +223509,7 @@ ui_land_lease
 2
 1
 1
-100
+0
 ui_land_multiplier
 1
 1
@@ -223807,7 +223807,7 @@ ur_dc_enable
 1
 1
 1
-1
+0
 ur_dc_flat_mat
 1
 3
@@ -223871,12 +223871,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
+1
 4
-4
-1 1 100 16.7315 
-1 2 1e+38 11.6005 
-2 1 100 7.0005 
-2 2 1e+38 4.9135 
+1 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -223969,7 +223966,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1
@@ -224056,7 +224053,7 @@ ur_monthly_fixed_charge
 1
 1
 1
-39.72
+0
 ur_monthly_min_charge
 1
 1

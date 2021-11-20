@@ -1,5 +1,5 @@
 1
-623
+626
 LeadAcid_q10
 1
 1
@@ -990,6 +990,18 @@ batt_ui_nominal_bank_power
 1
 1
 999.999
+batt_unit_capacity
+1
+1
+1
+1
+400
+batt_unit_surface_area
+1
+1
+1
+1
+30
 batt_user_specified_weather_file
 1
 4
@@ -1274,6 +1286,12 @@ chk_update_peaks
 1
 1
 4.94066e-323
+compute_as_cube
+1
+1
+1
+1
+0
 const_per_interest1
 1
 1
@@ -1309,7 +1327,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -2003,13 +2021,13 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -2482,7 +2500,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 is_btm
 1
 1
@@ -221795,7 +221813,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+10
 om_batt_fixed_cost
 1
 2
@@ -221825,7 +221843,7 @@ om_capacity
 2
 1
 1
-13
+25
 om_capacity_escal
 1
 1
@@ -222251,7 +222269,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 revenue_tab
 1
 1
@@ -222335,7 +222353,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -222568,10 +222586,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -222664,7 +222681,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

@@ -2449,7 +2449,7 @@ loan_rate
 1
 1
 1
-7.5
+4
 loan_term
 1
 1
@@ -3262,7 +3262,7 @@ substation_cost
 1
 1
 1
-3.12454e+06
+3124540
 substructCont
 1
 1
@@ -3346,7 +3346,7 @@ transmission_cost
 1
 1
 1
-4.24627e+06
+4246270
 transportation_cost
 1
 1

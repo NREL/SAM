@@ -207,17 +207,23 @@ if ( ppa_model && overwrite_inputs )
 		outln( 'Changing TOD Factor mode to from \"TOD factors by schedule\" to \"TOD factors by time step.\"' );
 		set('ppa_multiplier_model',1);
 	}
-	set('ppa_price_input',[0.001]); // convert Cambium $/MWh to SAM $/kWh
+	set('ppa_price_input',[1]);
 	set('revenue_TOD_is_shown',true);
+	for ( i=0; i<#price_data; i++ )
+	{ price_data[i] *= 0.001; } // convert Cambium $/MWh to SAM $/kWh
 	set('dispatch_factors_ts',price_data);
 	show_page('Revenue');	
 	focusto('dispatch_factors_ts');
-	pagenote('Time series price data set to data from Cambium API. PPA price set to $0.001/kWh to convert Cambium $/MWh to SAM $/kWh.\n\n' + IN
+	pagenote('Time series price data set to data from Cambium API converted from $/MWh to $/kWh. PPA price set to $1/kWh.\n\n' + IN
 	          + '\n\nClick Edit Array to see the data.');
+}
+elseif ( !overwrite_inputs )
+{
+	msgbox('Inputs not modified.\nRun the macro again to choose different data.');
 }
 else
 {
-	msgbox('Current case is not a PPA financial model\nThe current case, ' + case_name() + ',\n uses the ' + config[1] + ' financial model.');
+	msgbox('Current case is not a PPA financial model.\nThe current case, ' + case_name() + ',\n uses the ' + config[1] + ' financial model.');
 }
 
 
