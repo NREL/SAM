@@ -323,7 +323,7 @@
 			"tes_spec_cost": 22
 		},
 		"FinancialParameters": {
-			"const_per_interest_rate1": 4,
+			"const_per_interest_rate1": 3.5,
 			"const_per_interest_rate2": 0,
 			"const_per_interest_rate3": 0,
 			"const_per_interest_rate4": 0,

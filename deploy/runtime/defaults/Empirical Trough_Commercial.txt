@@ -1348,7 +1348,7 @@ csp.tr.cost.contingency
 1
 1
 1
-2.95556e+07
+29555600
 csp.tr.cost.contingency_percent
 1
 1
@@ -1384,7 +1384,7 @@ csp.tr.cost.epc.total
 1
 1
 1
-4.96956e+07
+49695600
 csp.tr.cost.fossil_backup
 1
 1
@@ -1462,7 +1462,7 @@ csp.tr.cost.plm.total
 1
 1
 1
-8.90324e+06
+8903240
 csp.tr.cost.power_plant
 1
 1
@@ -1492,7 +1492,7 @@ csp.tr.cost.sales_tax.total
 1
 1
 1
-1.80711e+07
+18071100
 csp.tr.cost.sales_tax.value
 1
 1
@@ -1540,7 +1540,7 @@ csp.tr.cost.storage
 1
 1
 1
-1.09412e+08
+109412000
 csp.tr.cost.storage.cost_per_kwht
 1
 1
@@ -2713,7 +2713,7 @@ loan_rate
 1
 1
 1
-5
+4
 loan_term
 1
 1
@@ -3052,7 +3052,7 @@ property_assessed_value
 1
 1
 1
-5.28448e+08
+528448000
 property_tax_rate
 1
 1
@@ -3224,19 +3224,19 @@ total_direct_cost
 1
 1
 1
-4.51778e+08
+451778000
 total_indirect_cost
 1
 1
 1
 1
-5.85988e+07
+58598800
 total_installed_cost
 1
 1
 1
 1
-5.28448e+08
+528448000
 track_mode
 1
 1
@@ -3881,7 +3881,7 @@ ui_loan_amount
 1
 1
 1
-5.28448e+08
+528448000
 ui_max_therm_input
 1
 1
@@ -3905,7 +3905,7 @@ ui_net_capital_cost
 1
 1
 1
-5.28448e+08
+528448000
 ui_par_antifreeze_const
 1
 1

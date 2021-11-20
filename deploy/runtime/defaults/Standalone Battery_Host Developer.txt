@@ -1,5 +1,5 @@
 1
-636
+639
 LeadAcid_q10
 1
 1
@@ -444,7 +444,7 @@ batt_dispatch_auto_can_gridcharge
 1
 1
 1
-0
+1
 batt_dispatch_choice
 1
 1
@@ -877,6 +877,18 @@ batt_ui_nominal_bank_power
 1
 1
 9.60768
+batt_unit_capacity
+1
+1
+1
+1
+400
+batt_unit_surface_area
+1
+1
+1
+1
+30
 batt_user_specified_weather_file_peak_shaving
 1
 4
@@ -1124,6 +1136,12 @@ chk_update_peaks
 1
 1
 0
+compute_as_cube
+1
+1
+1
+1
+0
 const_per_interest1
 1
 1
@@ -1159,7 +1177,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -2083,7 +2101,7 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0
 equip1_reserve_freq
 1
 1
@@ -2852,7 +2870,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+15
 om_batt_fixed_cost
 1
 2
@@ -3374,7 +3392,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 run_resiliency_calcs
 1
 1
@@ -3456,7 +3474,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1

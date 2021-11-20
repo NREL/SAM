@@ -1,5 +1,5 @@
 1
-358
+361
 LeadAcid_q10
 1
 1
@@ -501,7 +501,7 @@ batt_dispatch_auto_can_gridcharge
 1
 1
 1
-0
+1
 batt_dispatch_choice
 1
 1
@@ -922,6 +922,18 @@ batt_ui_nominal_bank_power
 1
 1
 4.80384
+batt_unit_capacity
+1
+1
+1
+1
+400
+batt_unit_surface_area
+1
+1
+1
+1
+30
 batt_user_specified_weather_file_peak_shaving
 1
 4
@@ -983,6 +995,12 @@ chk_update_peaks
 1
 1
 0
+compute_as_cube
+1
+1
+1
+1
+1
 crit_1
 1
 1

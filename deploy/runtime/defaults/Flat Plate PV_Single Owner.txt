@@ -351,7 +351,7 @@ bos_equip_total
 1
 1
 1
-1.00004e+07
+10000400
 calculated_dcac_ratio
 1
 1
@@ -834,7 +834,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -961,7 +961,7 @@ const_per_principal1
 1
 1
 1
-5.13845e+07
+51384500
 const_per_principal2
 1
 1
@@ -991,13 +991,13 @@ const_per_principal_total
 1
 1
 1
-5.13845e+07
+51384500
 const_per_total1
 1
 1
 1
 1
-1.02769e+06
+1027690
 const_per_total2
 1
 1
@@ -1057,13 +1057,13 @@ construction_financing_cost
 1
 1
 1
-1.02769e+06
+1027690
 contingency
 1
 1
 1
 1
-1.24506e+06
+1245060
 contingency_percent
 1
 1
@@ -1674,19 +1674,19 @@ engr_total
 1
 1
 1
-3.50016e+06
+3500160
 equip1_reserve_cost
 1
 1
 1
 1
-0.25
+0.1
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -1800,7 +1800,7 @@ grid_total
 1
 1
 1
-1.50007e+06
+1500070
 ibi_fed_amount
 1
 1
@@ -2156,7 +2156,7 @@ install_labor_total
 1
 1
 1
-5.50024e+06
+5500240
 install_margin_fixed
 1
 1
@@ -2180,7 +2180,7 @@ install_margin_total
 1
 1
 1
-3.00013e+06
+3000130
 installed_per_capacity
 1
 1
@@ -2192,7 +2192,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 inv_cec_cg_c0
 1
 1
@@ -2998,7 +2998,7 @@ inverter_total
 1
 1
 1
-2.50011e+06
+2500110
 inverterarray_power
 1
 1
@@ -3190,7 +3190,7 @@ landprep_total
 1
 1
 1
-1.00004e+06
+1000040
 lat
 1
 1
@@ -3333,7 +3333,7 @@ mera_cost1
 1
 1
 1
-1.25006e+07
+12500600
 mera_cost2
 1
 1
@@ -3419,7 +3419,7 @@ module_total
 1
 1
 1
-2.05009e+07
+20500900
 module_width
 1
 1
@@ -3443,7 +3443,7 @@ modulearray_power_w
 1
 1
 1
-5.00022e+07
+50002200
 months_receivables_reserve
 1
 1
@@ -3497,7 +3497,7 @@ om_capacity
 2
 1
 1
-17
+15
 om_capacity_escal
 1
 1
@@ -3527,7 +3527,7 @@ om_land_lease_escal
 1
 1
 1
-1
+0
 om_production
 1
 2
@@ -3743,7 +3743,7 @@ ppa_price_input
 2
 1
 1
-0.1
+0.048
 ppa_soln_mode
 1
 1
@@ -3767,7 +3767,7 @@ property_assessed_value
 1
 1
 1
-5.13845e+07
+51384500
 property_tax_rate
 1
 1
@@ -3850,7 +3850,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 revenue_TOD_is_shown
 1
 1
@@ -3886,7 +3886,7 @@ sales_tax_total
 1
 1
 1
-2.13734e+06
+2137340
 sales_tax_value
 1
 1
@@ -5589,7 +5589,7 @@ subtotal_direct
 1
 1
 1
-4.15018e+07
+41501800
 system_capacity
 1
 1
@@ -5607,7 +5607,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -5630,19 +5630,19 @@ total_direct_cost
 1
 1
 1
-4.27469e+07
+42746900
 total_indirect_cost
 1
 1
 1
 1
-6.50029e+06
+6500290
 total_installed_cost
 1
 1
 1
 1
-5.13845e+07
+51384500
 total_inverter_capacity
 1
 1
@@ -5756,7 +5756,7 @@ ui_land_lease
 2
 1
 1
-100
+0
 ui_step_minutes
 1
 1
@@ -5984,10 +5984,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -6080,7 +6079,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

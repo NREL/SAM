@@ -1,5 +1,5 @@
 1
-564
+567
 LeadAcid_q10
 1
 1
@@ -426,7 +426,7 @@ batt_dispatch_auto_can_gridcharge
 1
 1
 1
-0
+1
 batt_dispatch_choice
 1
 1
@@ -793,6 +793,18 @@ batt_ui_nominal_bank_power
 1
 1
 60000
+batt_unit_capacity
+1
+1
+1
+1
+400
+batt_unit_surface_area
+1
+1
+1
+1
+30
 batt_user_specified_weather_file
 1
 4
@@ -1037,6 +1049,12 @@ chk_update_peaks
 1
 1
 0
+compute_as_cube
+1
+1
+1
+1
+0
 const_per_interest1
 1
 1
@@ -1072,7 +1090,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -1829,7 +1847,7 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0
 equip1_reserve_freq
 1
 1
@@ -2505,7 +2523,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+15
 om_batt_fixed_cost
 1
 2
@@ -2943,7 +2961,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 sales_tax_rate
 1
 1
@@ -3115,7 +3133,7 @@ ui_electricity_rate_option
 1
 1
 1
-0
+1
 ur_annual_min_charge
 1
 1
@@ -3233,10 +3251,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -3329,7 +3346,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1
