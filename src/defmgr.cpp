@@ -286,11 +286,7 @@ END_EVENT_TABLE()
 
 
 DefaultsManager::DefaultsManager( wxWindow *parent )
-	: wxPanel( parent ),
-    m_varName(NULL), m_value(NULL),
-    m_output(NULL), m_configList(NULL),
-    m_techList(), m_finList(),
-    m_changeType(NULL), m_enableAdd(NULL)
+	: wxPanel( parent )
 {
 	m_varName = new wxTextCtrl( this, wxID_ANY, wxEmptyString );
 
