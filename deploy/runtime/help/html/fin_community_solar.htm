@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Community Solar</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "fin_community_solar.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#FFFFFF; color:#0072C6;">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Community Solar</span></h1>
+
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Text"><span class="f_Text">The Community Solar financial model is for a project that earns revenue from payments by subscribers for a share of the project. The model is from the project owner's perspective. The project owner is a single entity that owns, operates, and maintains the system, and benefits from any tax credits or or cash incentives. Cost and financial assumptions for the community solar project are on the following input pages:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Cost of installing the system, including equipment purchases, labor, permitting etc. on the <a href="cc_pv.htm" class="topiclink">Installation Costs</a> page.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Cost of operating the system including maintenance, equipment replacements, and land lease costs on the <a href="oc_operating.htm" class="topiclink">Operating Costs</a> page.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Financial assumptions including analysis period, inflation and discount rates, state and federal income tax rates, project term debt, construction financing interest, and reserve account funding on the <a href="fin_single_owner.htm" class="topiclink">Financial Parameters</a> page.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Tax credits and tax incentives on the <a href="incentives.htm" class="topiclink">Incentives</a> page.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Depreciation on the <a href="depreciation.htm" class="topiclink">Depreciation</a> page.</span></p><p class="p_List" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_List">Costs associated with managing the community solar project itself are on the Community Solar page.</span></p><p class="p_ListLast" style="text-indent: 0; padding-left: 24px; margin-left: 24px;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:24px;margin-left:-24px">&#8226;</span><span class="f_ListLast">Subscriber payments are defined on the Community Solar page.</span></p><p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">This initial implementation of the Community Solar model is only available with the PVWatts performance model. It will be made available with the Detailed PV, PV Battery, and PVWatts Battery models in a future version or update to this version.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Text">The community solar financial model is based on annual cash flows, so be sure to convert monthly amounts to annual as appropriate</span></p>
+<p class="p_Text"><span class="f_Text">SAM can model a community solar project with up to four subscriber classes. Each subscriber class pays to participate in the community solar project. For each subscriber class, SAM can model a one-time up-front payment, annual fixed payments, or annual payments per unit of electricity generated by the system. The project earns revenue from these payments to cover the cost of installing and operating the system and of managing the community solar project.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Subscriber Share</span></h4>
+<p class="p_Text"><span class="f_Text">The subscriber share is the portion of the project subscribed by an entire subscriber class. A subscriber class may consist of a single subscriber or a group of subscribers that pay the same subscription rates and get the same benefit from the project. </span></p>
+<p class="p_Text"><span class="f_Text">For each of up to four subscriber classes, assign a name, share of the system, and optional growth rate.</span></p>
+<p class="p_Text"><span class="f_Text">The </span><span class="f_CHInterfaceElement">Subscriber x Share of generation</span><span class="f_Text"> variable shows the resulting subscription rate for each subscriber in the results. SAM also lists the subscriber share in the project cash flow.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Subscriber Name</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses numbers to keep track of the subscriber classes (Subscriber 1, Subscriber 2, Subscriber 3, and Subscriber 4). You can assign a name to each subscriber class to help you keep track of your inputs, but only the subscriber class number appears in variable names in the results.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For example, for a project with two subscriber classes, you could name Subscriber 1 &quot;Anchor,&quot; and Subscriber 2 &nbsp;&quot;General.&quot; The rows on the Community Solar input page will show the names you assigned, but the variable names in results will use &quot;Subscriber 1&quot; in anchor subscriber variables, and &quot;Subscriber 2&quot; for general subscriber variables. The &quot;Subscriber Metrics By Class&quot; table on the Summary tab of the Results page shows the subscriber name and number.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="ss-communitsolar-classnames" width="602" height="178" style="margin:0 auto 0 auto;width:602px;height:178px;border:none" src="ss-communitsolar-classnames.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">% of system</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The subscriber share is a percentage of the total system capacity in kW representing the share of the project for each subscriber class in Year 1 when the system starts generating electricity. The sum of subscriber shares may not exceed 100%.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If the sum of subscriber shares is less than 100%, SAM treats the remaining capacity as unsubscribed. If the project receives payments for unsubscribed generation, assign the unsubscribed generation rate under </span><span class="f_CHInterfaceElement">Subscription Revenue</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">You can specify the subscriber share as a single percentage with an optional growth rate, or as a table of percentages by year. Click the <img alt="SS_AnnSched-valschedbutton" width="23" height="24" style="margin:0;width:23px;height:24px;border:none" src="ss_annsched-valschedbutton.png"/> button to switch between a single value and an <a href="edit_data_table_column.htm" class="topiclink">annual schedule</a>.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span> <span class="f_Note">For any year that the total subscription rate exceeds 100%, SAM adjusts the subscription rates so that the total is 100% for the remainder of the analysis period, assuming that the subscription rates do not change once the project is completely subscribed.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">kW in first year</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The subscriber share expressed in kW of system capacity. This is a calculated value that you cannot change. SAM calculates the value by multiplying the subscriber share percentage by the </span><span class="f_CHInterfaceElement">Total system capacity</span><span class="f_VariableDescription">. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total system capacity</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The system's nameplate capacity from the System Design page. For photovoltaic systems, the nameplate capacity is in DC kW.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Growth %/yr</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The subscriber share annual growth rate. Use a positive value for an annual increase in subscriptions, and a negative value for an annual decrease in subscriptions. SAM disables the growth rate input when you enter the subscriber share as a table of annual percentages.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total unsubscribed capacity</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The difference between the total system capacity and the total subscribed capacity in Year 1. If you specify subscription rates that change from year to year, the unsubscribed capacity changes accordingly.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Subscriber Bill Credits</span></h4>
+<p class="p_Text"><span class="f_Text">Subscriber bill credits represent the value of each subscriber class's share of the electricity generated by the system at the bill credit rate. SAM uses this value to calculate the <a href="mtf_npv.htm#communitysolar" class="topiclink">subscriber net present value (NPV)</a>. You can ignore subscriber bill credits if your analysis does not involve evaluating the subscriber class NPV.</span></p>
+<p class="p_Text"><span class="f_Text">The </span><span class="f_CHInterfaceElement">Bill credit for Subscriber x class</span><span class="f_Text"> and </span><span class="f_CHInterfaceElement">Subscriber x Bill credit rate</span><span class="f_Text"> variables show the bill credit rates in the results. SAM also lists the bill credit rate and amount in the project cash flow.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">$/kWh</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The subscription rate in $/kWh of the subscriber class's share annual electricity generated by the system. You can specify the bill credit rate as a single value with an optional annual escalation rate, or as a table of percentages by year. Click the <img alt="SS_AnnSched-valschedbutton" width="23" height="24" style="margin:0;width:23px;height:24px;border:none" src="ss_annsched-valschedbutton.png"/> button to switch between a single value and an <a href="edit_data_table_column.htm" class="topiclink">annual schedule</a>.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Escalation (%/yr</span><span class="f_Text">)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM assumes that the bill credit rate increases annually at the inflation rate from the <a href="fin_single_owner.htm" class="topiclink">Financial Parameters</a> page. You can specify an additional increase using the annual escalation rate, or remove the effect of inflation by setting the escalation rate to the negative value of the inflation rate. SAM disables the bill credit rate input when you enter the rate as a table of annual values instead of a single value.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Subscription Revenue</span></h4>
+<p class="p_Text"><span class="f_Text">Subscription revenue is revenue earned by the community solar project from payments made by subscribers to the project.</span></p>
+<p class="p_Text"><span class="f_Text">The </span><span class="f_CHInterfaceElement">Revenue from Subscriber x ... </span><span class="f_Text">variables in the results show revenue from subscription payments in the results and in the project cash flow. The total revenue amounts are shown in the main part of the cash flow, and the detail by subscriber class is shown at the bottom of the cash flow table.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM allows the community solar project to earn subscription revenue from combinations of different types of payments. For example, it allows the project to earn revenue from both an annual fixed payment and an annual generation payments even when that might not be realistic. Be careful to choose the subscription revenue options that best represent the project you are modeling.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Up-front, Year Zero $</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A payment made by subscribers in Year zero of the project, before the system starts generating electricity. SAM treats this payment as a reduction in the total purchase of property value in the cash flow.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Annual, $/yr</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Annual fixed payments made by subscribers to the project in Years one through the analysis period.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Generation, $/kWh</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Annual rate in $/kWh of the subscriber class's share of annual electricity generated by the system for payments by subscribers to the project.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Escalation, $/yr</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM assumes that annual payments increase annually at the inflation rate from the <a href="fin_single_owner.htm" class="topiclink">Financial Parameters</a> page. You can specify an additional increase using the annual escalation rate, or remove the effect of inflation by setting the escalation rate to the negative value of the inflation rate. SAM disables the escalation rate input as appropriate when you enter annual or generation rates as tables of annual values instead of single values.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Unsubscribed, $/kWh</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Annual rate in $/kWh of the unsubscribed share of annual electricity generated by the system for payments received by the project by the utility company, often at the utility's avoided cost rate. Set this value to zero if the project does not receive payments for unsubscribed generation.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Up-front and Recurring Costs</span></h4>
+<p class="p_Text"><span class="f_Text">Up-front and recurring costs are costs for managing the community solar project. These costs are in addition to the installation, operating, and debt-related costs.</span></p>
+<p class="p_Text"><span class="f_Text">The following variables in the results show the community solar costs: </span><span class="f_CHInterfaceElement">Community solar recurring total fixed cost</span><span class="f_Text">, </span><span class="f_CHInterfaceElement">Community solar total recurring cost by capacity</span><span class="f_Text">, </span><span class="f_CHInterfaceElement">Community solar total recurring cost by generation</span><span class="f_Text">, </span><span class="f_CHInterfaceElement">Community solar total up-front fixed cost</span><span class="f_Text">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Up-front fixed cost, $</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A one time cost to the project that is included to the project's total purchase of property in Year zero of the cash flow.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Up-front cost by capacity , $/kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost per unit of total system capacity. It is a one time cost to the project that is included to the project's total purchase of property in Year zero of the cash flow.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Recurring annual fixed cost, $/yr</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed annual cost that is treated as an operating expense in the project cash flow. You can specify any of the recurring costs either as a single value with an optional escalation rate, or as a table of percentages by year. Click the <img alt="SS_AnnSched-valschedbutton" width="23" height="24" style="margin:0;width:23px;height:24px;border:none" src="ss_annsched-valschedbutton.png"/> button to switch between a single value and an <a href="edit_data_table_column.htm" class="topiclink">annual schedule</a>.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Recurring annual cost by capacity, $/kW-yr</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed annual cost that scales with the total system capacity. It is treated as an operating expense in the project cash flow.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Recurring annual cost by generation, $/MWh</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">An annual cost that varies with the system's total annual generation. It is treated as an operating expense in the project cash flow.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Escalation, $/yr</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM assumes that recurring costs increase annually at the inflation rate from the <a href="fin_single_owner.htm" class="topiclink">Financial Parameters</a> page. You can specify an additional increase using the annual escalation rate, or remove the effect of inflation by setting the escalation rate to the negative value of the inflation rate. SAM disables the escalation rate input as appropriate when you enter the cost as a table of annual values instead of single values.</span></p>
+
+</td></tr></table>
+
+</body>
+</html>
