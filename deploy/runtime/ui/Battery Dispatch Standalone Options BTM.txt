@@ -390,7 +390,7 @@ equations {'degradation'} = define() {
 equations {'en_batt'} = define() {
 	return 1;
 };
-1915
+1810
 on_load{'Battery Dispatch Standalone Options BTM'} = define() {
 	show_hide_charge_options();
 	btm_warning_message();
@@ -422,12 +422,10 @@ function show_hide_charge_options()
 {
 	option = value('batt_dispatch_choice_ui');
 	if (option == 3) {
-		value('batt_dispatch_auto_can_gridcharge', false);
 		enable('batt_dispatch_auto_can_gridcharge', false);
 		enable('batt_dispatch_auto_btm_can_discharge_to_grid', false);
 	}
 	else {
-		value('batt_dispatch_auto_can_gridcharge', true);
 		enable('batt_dispatch_auto_can_gridcharge', false);
 		enable('batt_dispatch_auto_btm_can_discharge_to_grid', true);
 	}
