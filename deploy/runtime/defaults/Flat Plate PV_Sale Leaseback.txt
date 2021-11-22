@@ -4866,7 +4866,7 @@ subarray1_tilt
 1
 1
 1
-30
+0
 subarray1_tilt_eq_lat
 1
 1
@@ -4878,7 +4878,7 @@ subarray1_track_mode
 1
 1
 1
-0
+1
 subarray1_tracking_loss
 1
 1
@@ -5071,7 +5071,7 @@ subarray2_tilt
 1
 1
 1
-20
+0
 subarray2_tilt_eq_lat
 1
 1
@@ -5083,7 +5083,7 @@ subarray2_track_mode
 1
 1
 1
-0
+1
 subarray2_tracking_loss
 1
 1
@@ -5276,7 +5276,7 @@ subarray3_tilt
 1
 1
 1
-20
+0
 subarray3_tilt_eq_lat
 1
 1
@@ -5288,7 +5288,7 @@ subarray3_track_mode
 1
 1
 1
-0
+1
 subarray3_tracking_loss
 1
 1
@@ -5481,7 +5481,7 @@ subarray4_tilt
 1
 1
 1
-20
+0
 subarray4_tilt_eq_lat
 1
 1
@@ -5493,7 +5493,7 @@ subarray4_track_mode
 1
 1
 1
-0
+1
 subarray4_tracking_loss
 1
 1
