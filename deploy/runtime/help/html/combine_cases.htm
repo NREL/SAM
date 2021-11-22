@@ -38,7 +38,13 @@
 
 <!-- Placeholder for topic body. -->
 <table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
-<p class="p_Text"><span class="f_Text">Combine Cases</span></p>
+<p class="p_Text"><span class="f_Text">The Combine Cases window allows you to choose cases to treat as a combined system. SAM calculates a time series generation profile by adding up the Year 1 power generation data for each case that you choose to use as input to either the Generic System or Generic Battery model. This makes it possible to model a project that involves a combination of different kinds of systems.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Select cases</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose the cases you want to combine. This requires that your SAM file have one Generic System or Generic Battery case and at least two other cases. For example, you could use a file with a Generic System, Detailed PV, and Wind case to combine the output of a PV and wind system.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Overwrite installation and operating costs with combined cases costs</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option if you want SAM to replace the total installed cost and operating costs inputs with costs calculated by adding up the costs in the different cases.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Annual AC degradation rate for all cases, %/year</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Enter a value for the annual degradation rate to use for the combined system. Combine Cases only considers the first year of data from each case. The degradation rate will account for any degradation you expect in the combined system output from year to year.</span></p>
 
 </td></tr></table>
 
