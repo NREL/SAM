@@ -226063,7 +226063,7 @@ ui_electricity_rate_option
 1
 1
 1
-0
+1
 ui_land_area_additional
 1
 1
