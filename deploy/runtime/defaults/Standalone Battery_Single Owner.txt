@@ -1860,7 +1860,7 @@ en_electricity_rates
 1
 1
 1
-1
+0
 en_standalone_batt
 1
 1
@@ -3181,7 +3181,7 @@ ui_electricity_rate_option
 1
 1
 1
-1
+0
 ui_wacc
 1
 1

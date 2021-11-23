@@ -2883,7 +2883,7 @@ inverter_count
 1
 1
 1
-48
+50
 inverter_model
 1
 1

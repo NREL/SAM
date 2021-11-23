@@ -2122,7 +2122,7 @@ losses_user
 1
 1
 1
-20.95
+14
 mera_cost1
 1
 1
