@@ -3074,7 +3074,7 @@ ppa_escalation
 1
 1
 1
-0.5
+1
 ppa_multiplier_model
 1
 1

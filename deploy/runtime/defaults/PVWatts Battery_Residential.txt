@@ -931,7 +931,7 @@ gcr
 1
 1
 1
-0.4
+0.3
 grid_curtailment
 1
 2
