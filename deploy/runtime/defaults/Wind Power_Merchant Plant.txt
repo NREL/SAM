@@ -141,7 +141,7 @@ bos_cost_per_kw
 1
 1
 1
-350
+338
 bos_cost_per_turbine
 1
 1
@@ -222805,7 +222805,7 @@ system_capacity
 1
 1
 1
-48000
+200000
 system_use_lifetime_output
 1
 1
@@ -223111,7 +223111,7 @@ turbine_cost_per_kw
 1
 1
 1
-1000
+965
 turbine_cost_per_turbine
 1
 1
@@ -223789,7 +223789,7 @@ wind_farm_num_turbines
 1
 1
 1
-32
+80
 wind_farm_sizing_mode
 1
 1
@@ -224002,7 +224002,7 @@ wind_turbine_kw_rating
 1
 1
 1
-1500
+2500
 wind_turbine_kw_rating_from_lib
 1
 1
@@ -224071,7 +224071,7 @@ wind_turbine_rotor_diameter
 1
 1
 1
-77
+100
 wind_turbine_rotor_diameter_from_lib
 1
 1
@@ -224087,8 +224087,8 @@ wind_turbine_rotor_diameter_input
 wind_turbine_selection
 1
 4
-9
-GE 1.5sle
+8
+GE 2.5xl
 windfarm.farm.layout_angle
 1
 1
@@ -224106,7 +224106,7 @@ windfarm.farm.number_of_rows
 1
 1
 1
-4
+10
 windfarm.farm.offset
 1
 1
