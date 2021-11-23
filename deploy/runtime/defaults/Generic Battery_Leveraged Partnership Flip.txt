@@ -2088,7 +2088,7 @@ en_electricity_rates
 1
 1
 1
-1
+0
 en_standalone_batt
 1
 1

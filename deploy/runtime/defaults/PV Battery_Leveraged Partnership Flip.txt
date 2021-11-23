@@ -2806,7 +2806,7 @@ en_electricity_rates
 1
 1
 1
-1
+0
 en_snow_model
 1
 1
@@ -7152,7 +7152,7 @@ ui_electricity_rate_option
 1
 1
 1
-1
+0
 ui_land_area_additional
 1
 1
