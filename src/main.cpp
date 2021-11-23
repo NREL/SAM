@@ -90,7 +90,8 @@ static SamApp::ver releases[] = {
 //intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 //please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 //the top version should always be the current working version
-		{ 2021, 10, 27 }, // 2021.7.27 ssc 262 Cambium beta expires 10/27/2022
+		{ 2021, 11, 22 }, // 2021.11.22 ssc 263 release candidate beta expires 11/22/2022
+		{ 2021, 10, 27 }, // 2021.10.27 ssc 262 Cambium beta expires 10/27/2022
 		{ 2021, 9, 10 }, // 2021.9.10 ssc 261 Community Solar Beta expires 9/10/2022
 		{ 2021, 9, 7 }, // 2021.9.7 ssc 260 Community Solar Beta expires 9/7/2022
 		{ 2021, 7, 27 }, // 2021.7.27 ssc 259 EPRI Beta expires 7/27/2022
@@ -1355,7 +1356,9 @@ public:
 		// dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
 		//dc.SetBackground(wxBrush(wxColour(197, 5, 12))); // Wisconsin Badgers #c5055c = rgb(197, 5, 12) from https://www.rapidtables.com/convert/color/hex-to-rgb.html and https://brand.wisc.edu/web/colors/
 		// dc.SetBackground(wxBrush(wxColour(255, 117, 24))); // Testing Autumn (Pumpkin) color
-		dc.SetBackground(wxBrush(wxColour(151, 69, 21))); // Burnt Orange from Brian 11/12/2020
+		//dc.SetBackground(wxBrush(wxColour(151, 69, 21))); // Burnt Orange from Brian 11/12/2020
+        dc.SetBackground(wxBrush(wxColour(4, 16, 96))); // Navy Blue (Matt's birthday 4/16/96) 11/22/21
+
 		dc.Clear();
 
 		double scaleX, scaleY;

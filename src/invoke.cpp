@@ -56,7 +56,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ssc/sscapi.h>
 #include <ssc/ssc_equations.h>
-#include <json/json.h>
+
 
 #include "main.h"
 #include "case.h"
@@ -2733,9 +2733,9 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
             if (ok && (curls[i]->GetDataAsString().Length() < 1000))
                 ok = curls[i]->Get(urls[i]);
             if (!ok)
-                wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.", "NSRDB Download Message", wxOK);
+                wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NREL Hindcast Wave Data web service may be down.", "NREL Hindcast Wave Data Download Message", wxOK);
             else if (curls[i]->GetDataAsString().Length() < 1000)
-                wxMessageBox("Weather file not available.\n\n" + urls[i] + "\n\n" + curls[i]->GetDataAsString(), "NSRDB Download Message", wxOK);
+                wxMessageBox("Weather file not available.\n\n" + urls[i] + "\n\n" + curls[i]->GetDataAsString(), "Wave Resource Download Message", wxOK);
             else
             {
                 wxString fn = filename_array[i] + ".csv";
@@ -2743,7 +2743,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 file_list += filename_array[i] + "\n";
                 if (!curls[i]->WriteDataToFile(fn))
                 {
-                    wxMessageBox("Failed to write file.\n\n" + fn, "NSRDB Download Message", wxOK);
+                    wxMessageBox("Failed to write file.\n\n" + fn, "NREL Hindcast Wave Data Download Message", wxOK);
                     //break;
                 }
                 num_downloaded++;
@@ -2786,7 +2786,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                     SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
                 }
             }*/
-            if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NSRDB Download Message", wxOK);
+            if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your solar resource library:\n\n" + file_list, "NREL Hindcast Wave Data Download Message", wxOK);
             //EndModal(wxID_OK);
         }
         
@@ -5730,7 +5730,10 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
     bool success = ssc_module_exec(module, landbosse_data);
 
     if (!success){
-        std::string error = std::string(ssc_data_get_string(landbosse_data, "errors"));
+		auto x = ssc_data_get_string(landbosse_data, "errors");
+		std::string error;
+		if (x != NULL) 
+			error = x;
         if (error.empty())
             error = std::string(ssc_module_log(module, 0, nullptr, nullptr));
         ssc_data_free(landbosse_data);

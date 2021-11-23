@@ -5,7 +5,7 @@
 			"flip_target_year": 20,
 			"ppa_escalation": 0.5,
 			"ppa_price_input": [0.250000],
-			"ppa_soln_mode": 1
+			"ppa_soln_mode": 0
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -19,8 +19,8 @@
 			"dscr_limit_debt_fraction": 0,
 			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 6,
-			"equip1_reserve_cost": 0.25,
-			"equip1_reserve_freq": 12,
+			"equip1_reserve_cost": 0,
+			"equip1_reserve_freq": 15,
 			"equip2_reserve_cost": 0,
 			"equip2_reserve_freq": 15,
 			"equip3_reserve_cost": 0,
@@ -29,7 +29,7 @@
 			"equip_reserve_depr_sta": 0,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 0.5,
+			"insurance_rate": 0,
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6,
 			"payment_option": 0,
@@ -37,21 +37,21 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.75,
+			"reserves_interest": 1.25,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 20000,
-			"term_int_rate": 7,
+			"term_int_rate": 4,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [0.000000],
+			"om_batt_capacity_cost": [10.000000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 4000,
-			"om_batt_replacement_cost": [293.840000],
+			"om_batt_replacement_cost": [241.790000],
 			"om_batt_variable_cost": [0.000000],
-			"om_capacity": [13.000000],
+			"om_capacity": [25.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -61,6 +61,8 @@
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 1.49825e+08
+		},
+		"LandLease": {
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -225,6 +227,9 @@
 			"gen": [0],
 			"system_capacity": 20000
 		},
+		"ElectricityRates": {
+			"en_electricity_rates": 1
+		},
 		"Moratorium": {
 			"loan_moratorium": 0
 		},
@@ -272,6 +277,8 @@
 			"ppa_multiplier_model": 0,
 			"system_use_lifetime_output": 1
 		},
+		"UtilityBill": {
+		},
 		"ConstructionFinancing": {
 			"construction_financing_cost": 2.99649e+06
 		},
@@ -290,11 +297,13 @@
 			"batt_salvage_percentage": 0,
 			"battery_total_cost_lcos": 1.43848e+06
 		},
+		"ChargesByMonth": {
+		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 4000,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 293.84,
+			"battery_per_kWh": 241.79,
 			"en_batt": 1,
 			"en_standalone_batt": 0
 		}

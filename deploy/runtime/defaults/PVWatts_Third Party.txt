@@ -1,5 +1,5 @@
 1
-228
+229
 Monthly_util
 1
 2
@@ -809,13 +809,13 @@ ppa_price
 1
 1
 0.1
-pvwatts.advanced.is_shown
+pv_land_area_is_shown
 1
 1
 1
 1
 0
-pvwatts_land_area_is_shown
+pvwatts.advanced.is_shown
 1
 1
 1
@@ -980,6 +980,12 @@ ui_total_land_area_ha
 1
 1
 0.00526316
+ui_total_module_area
+1
+1
+1
+1
+52.6316
 ur_annual_min_charge
 1
 1

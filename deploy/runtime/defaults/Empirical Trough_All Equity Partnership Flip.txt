@@ -1,5 +1,5 @@
 1
-843
+850
 AntiFrPar
 1
 1
@@ -1343,7 +1343,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -2775,6 +2775,12 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area
+1
+1
+1
+1
+890.324
 lat
 1
 1
@@ -3456,6 +3462,18 @@ om_fuel_cost_escal
 1
 1
 0
+om_land_lease
+1
+2
+1
+1
+100
+om_land_lease_escal
+1
+1
+1
+1
+0
 om_production
 1
 2
@@ -3733,7 +3751,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 sales_tax_rate
 1
 1
@@ -4494,6 +4512,30 @@ ui_hce_weighted_thermal_losses
 1
 1
 36.1005
+ui_land_area_ha
+1
+1
+1
+1
+360.302
+ui_land_area_multiplier
+1
+1
+1
+1
+0
+ui_land_area_units
+1
+1
+1
+1
+0
+ui_land_lease
+1
+2
+1
+1
+0
 ui_land_multiplier
 1
 1
@@ -4833,10 +4875,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -4929,7 +4970,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

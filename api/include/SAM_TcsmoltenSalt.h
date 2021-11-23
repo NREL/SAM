@@ -2335,6 +2335,32 @@ extern "C"
 
 
 	//
+	// FinancialSolutionMode parameters
+	//
+
+	/**
+	 * Set ppa_soln_mode: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// ElectricityRates parameters
+	//
+
+	/**
+	 * Set en_electricity_rates: Enable electricity rates for grid purchase [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// Revenue parameters
 	//
 
@@ -2978,6 +3004,20 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_ind_od_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_water_cool_des_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * FinancialSolutionMode Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * ElectricityRates Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

@@ -18,7 +18,7 @@
 			"dscr_limit_debt_fraction": 0,
 			"dscr_maximum_debt_fraction": 100,
 			"dscr_reserve_months": 0,
-			"equip1_reserve_cost": 0.25,
+			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
 			"equip2_reserve_freq": 15,
@@ -36,25 +36,27 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 1,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.75,
+			"reserves_interest": 1.25,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 9.60768,
-			"term_int_rate": 7,
+			"term_int_rate": 4,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [0.000000],
+			"om_batt_capacity_cost": [15.000000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 19.2154,
-			"om_batt_replacement_cost": [232.290000],
+			"om_batt_replacement_cost": [196.760000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity_escal": 0,
 			"om_fixed_escal": 0,
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 15165
+		},
+		"LandLease": {
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -220,6 +222,19 @@
 			"elec_cost_without_system": [0],
 			"host_real_discount_rate": 6.4
 		},
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
+		},
+		"ChargesByMonth": {
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			]
+		},
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"system_capacity": 9.60768
@@ -278,7 +293,7 @@
 			"batt_computed_bank_capacity": 19.2154,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 232.29,
+			"battery_per_kWh": 196.76,
 			"en_batt": 1,
 			"en_standalone_batt": 1
 		},

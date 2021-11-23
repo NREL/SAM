@@ -1,5 +1,5 @@
 1
-623
+626
 LeadAcid_q10
 1
 1
@@ -214,7 +214,7 @@ batt_bank_duration
 1
 1
 1
-4
+2
 batt_bank_ncells_serial
 1
 1
@@ -238,7 +238,7 @@ batt_bank_power
 1
 1
 1
-1000
+10000
 batt_bank_power_dc_ac
 1
 1
@@ -250,7 +250,7 @@ batt_bank_size
 1
 1
 1
-4000
+20000
 batt_bank_size_dc_ac
 1
 1
@@ -268,7 +268,7 @@ batt_bank_size_ui
 1
 1
 1
-4000
+20000
 batt_bank_voltage
 1
 1
@@ -697,7 +697,7 @@ batt_h_to_ambient
 1
 1
 1
-15
+100
 batt_initial_SOC
 1
 1
@@ -990,6 +990,18 @@ batt_ui_nominal_bank_power
 1
 1
 999.999
+batt_unit_capacity
+1
+1
+1
+1
+400
+batt_unit_surface_area
+1
+1
+1
+1
+30
 batt_user_specified_weather_file
 1
 4
@@ -1036,13 +1048,13 @@ battery_per_kW
 1
 1
 1
-263.12
+233.17
 battery_per_kWh
 1
 1
 1
 1
-293.84
+241.79
 battery_power
 1
 1
@@ -1060,13 +1072,13 @@ battery_total
 1
 1
 1
-1.43848e+06
+1438480
 battery_total_cost_lcos
 1
 1
 1
 1
-1.43848e+06
+1438480
 battery_voltage_shown
 1
 1
@@ -1274,12 +1286,18 @@ chk_update_peaks
 1
 1
 4.94066e-323
+compute_as_cube
+1
+1
+1
+1
+0
 const_per_interest1
 1
 1
 1
 1
-1.49825e+06
+1498250
 const_per_interest2
 1
 1
@@ -1309,7 +1327,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -1339,7 +1357,7 @@ const_per_interest_total
 1
 1
 1
-1.49825e+06
+1498250
 const_per_months1
 1
 1
@@ -1436,7 +1454,7 @@ const_per_principal1
 1
 1
 1
-1.49825e+08
+149825000
 const_per_principal2
 1
 1
@@ -1466,13 +1484,13 @@ const_per_principal_total
 1
 1
 1
-1.49825e+08
+149825000
 const_per_total1
 1
 1
 1
 1
-2.99649e+06
+2996490
 const_per_total2
 1
 1
@@ -1532,7 +1550,7 @@ construction_financing_cost
 1
 1
 1
-2.99649e+06
+2996490
 conv_eff
 1
 1
@@ -1913,36 +1931,36 @@ dispatch_manual_sched
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
 
 dispatch_manual_sched_weekend
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
 
 dscr
 1
@@ -2003,13 +2021,13 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -2087,7 +2105,7 @@ genericsys.cost.contingency
 1
 1
 1
-6.07192e+06
+6071920
 genericsys.cost.contingency_percent
 1
 1
@@ -2105,7 +2123,7 @@ genericsys.cost.epc.nonfixed
 1
 1
 1
-1.2751e+07
+12751000
 genericsys.cost.epc.percent
 1
 1
@@ -2117,7 +2135,7 @@ genericsys.cost.epc.total
 1
 1
 1
-1.2751e+07
+12751000
 genericsys.cost.installed_per_capacity
 1
 1
@@ -2153,7 +2171,7 @@ genericsys.cost.plm.nonfixed
 1
 1
 1
-4.46286e+06
+4462860
 genericsys.cost.plm.percent
 1
 1
@@ -2165,7 +2183,7 @@ genericsys.cost.plm.total
 1
 1
 1
-4.46286e+06
+4462860
 genericsys.cost.sales_tax.percent
 1
 1
@@ -2177,7 +2195,7 @@ genericsys.cost.sales_tax.total
 1
 1
 1
-5.10042e+06
+5100420
 genericsys.cost.sales_tax.value
 1
 1
@@ -2482,7 +2500,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 is_btm
 1
 1
@@ -221795,7 +221813,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+10
 om_batt_fixed_cost
 1
 2
@@ -221813,7 +221831,7 @@ om_batt_replacement_cost
 2
 1
 1
-293.84
+241.79
 om_batt_variable_cost
 1
 2
@@ -221825,7 +221843,7 @@ om_capacity
 2
 1
 1
-13
+25
 om_capacity_escal
 1
 1
@@ -222041,7 +222059,7 @@ property_assessed_value
 1
 1
 1
-1.49825e+08
+149825000
 property_tax_rate
 1
 1
@@ -222251,7 +222269,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 revenue_tab
 1
 1
@@ -222335,7 +222353,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -222353,25 +222371,25 @@ total_direct_cost
 1
 1
 1
-1.2751e+08
+127510000
 total_indirect_cost
 1
 1
 1
 1
-1.72139e+07
+17213900
 total_installed_cost
 1
 1
 1
 1
-1.49825e+08
+149825000
 total_system_indirect_cost
 1
 1
 1
 1
-1.72139e+07
+17213900
 ui_batt_life_model
 1
 1
@@ -222568,10 +222586,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -222664,7 +222681,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

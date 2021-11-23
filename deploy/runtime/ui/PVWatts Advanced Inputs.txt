@@ -1,6 +1,6 @@
 PVWatts Advanced Inputs
-584
-604
+884
+603
 22
 GroupBox
 
@@ -18,7 +18,7 @@ Y
 6
 Width
 3
-572
+872
 Height
 3
 593
@@ -42,10 +42,10 @@ Name
 adjust
 X
 3
-36
+60
 Y
 3
-537
+540
 Width
 3
 294
@@ -68,10 +68,10 @@ Name
 edit_3d_scene
 X
 3
-315
+318
 Y
 3
-348
+366
 Width
 3
 210
@@ -98,7 +98,7 @@ Name
 en_snowloss
 X
 3
-33
+39
 Y
 3
 450
@@ -131,10 +131,10 @@ Name
 module_is_bifacial
 X
 3
-33
+39
 Y
 3
-63
+84
 Width
 3
 135
@@ -214,10 +214,10 @@ X
 18
 Y
 3
-27
+42
 Width
 3
-525
+837
 Height
 3
 19
@@ -253,10 +253,10 @@ X
 18
 Y
 3
-93
+120
 Width
 3
-525
+837
 Height
 3
 19
@@ -295,7 +295,7 @@ Y
 495
 Width
 3
-525
+837
 Height
 3
 19
@@ -331,10 +331,10 @@ X
 18
 Y
 3
-198
+222
 Width
 3
-525
+837
 Height
 3
 16
@@ -370,10 +370,10 @@ X
 18
 Y
 3
-294
+318
 Width
 3
-525
+837
 Height
 3
 16
@@ -406,13 +406,13 @@ Name
 object 2228234
 X
 3
-21
+18
 Y
 3
-396
+408
 Width
 3
-525
+837
 Height
 3
 16
@@ -448,20 +448,20 @@ X
 27
 Y
 3
-111
+138
 Width
 3
-519
+825
 Height
 3
-36
+24
 Tool Tip
 5
 0
 Caption
 5
-157
-Albedo is a measure of the reflectance of the ground. You can specify a fixed albedo value or albedo values from the weather file if it includes albedo data.
+156
+Albedo is a measure of the reflectance of the ground. Specify either a fixed albedo value or albedo values from the weather file if it includes albedo data.
 TextColour
 4
 0
@@ -493,16 +493,16 @@ Name
 object 731321
 X
 3
-24
+27
 Y
 3
-309
+336
 Width
 3
-519
+828
 Height
 3
-36
+24
 Tool Tip
 5
 0
@@ -544,13 +544,13 @@ X
 24
 Y
 3
-411
+423
 Width
 3
-519
+825
 Height
 3
-36
+24
 Tool Tip
 5
 0
@@ -592,10 +592,10 @@ X
 24
 Y
 3
-213
+237
 Width
 3
-519
+831
 Height
 3
 36
@@ -640,13 +640,13 @@ X
 27
 Y
 3
-45
+60
 Width
 3
-546
+825
 Height
 3
-18
+24
 Tool Tip
 5
 0
@@ -691,10 +691,10 @@ Y
 513
 Width
 3
-546
+825
 Height
 3
-18
+24
 Tool Tip
 5
 0
@@ -736,7 +736,7 @@ X
 174
 Y
 3
-348
+366
 Width
 3
 135
@@ -768,7 +768,7 @@ X
 174
 Y
 3
-252
+276
 Width
 3
 135
@@ -795,10 +795,10 @@ Name
 use_wf_albedo
 X
 3
-33
+39
 Y
 3
-150
+165
 Width
 3
 273
@@ -831,7 +831,7 @@ X
 204
 Y
 3
-174
+192
 Width
 3
 90

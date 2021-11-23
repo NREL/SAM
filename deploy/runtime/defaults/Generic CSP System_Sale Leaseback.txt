@@ -1,5 +1,5 @@
 1
-605
+612
 FossilFill
 1
 2
@@ -432,7 +432,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -2345,6 +2345,12 @@ itoth
 1
 1
 0
+land_area
+1
+1
+1
+1
+1843.45
 lat
 1
 1
@@ -2557,6 +2563,18 @@ om_fuel_cost
 1
 0
 om_fuel_cost_escal
+1
+1
+1
+1
+0
+om_land_lease
+1
+2
+1
+1
+100
+om_land_lease_escal
 1
 1
 1
@@ -2838,7 +2856,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 sale_leaseback_message
 1
 4
@@ -3361,6 +3379,30 @@ ui_electricity_rate_option
 1
 1
 0
+ui_land_area_ha
+1
+1
+1
+1
+746.017
+ui_land_area_multiplier
+1
+1
+1
+1
+0
+ui_land_area_units
+1
+1
+1
+1
+0
+ui_land_lease
+1
+2
+1
+1
+0
 ui_step_minutes
 1
 1
@@ -3498,10 +3540,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -3594,7 +3635,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

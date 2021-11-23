@@ -6,7 +6,7 @@
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
 			"insurance_rate": 1,
-			"loan_rate": 6.235,
+			"loan_rate": 4,
 			"loan_term": 30,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
@@ -26,6 +26,11 @@
 			"om_production": [4.000000],
 			"om_production_escal": 0,
 			"total_installed_cost": 3.76691e+08
+		},
+		"LandLease": {
+			"land_area": 347.641,
+			"om_land_lease": [0.000000],
+			"om_land_lease_escal": 0
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
@@ -150,6 +155,24 @@
 		"BatterySystem": {
 		},
 		"FuelCell": {
+		},
+		"ChargesByMonth": {
+			"charge_w_sys_dc_tou_ym": [
+[0]			],
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			],
+			"utility_bill_w_sys": [0]
+		},
+		"Battery": {
+		},
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
 		},
 		"SystemOutput": {
 			"annual_energy_value": [0],

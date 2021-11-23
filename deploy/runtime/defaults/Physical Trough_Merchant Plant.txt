@@ -1,5 +1,5 @@
 1
-1253
+1260
 A_aperture
 1
 2
@@ -1261,7 +1261,7 @@ const_per_interest1
 1
 1
 1
-2.24881e+07
+22488100
 const_per_interest2
 1
 1
@@ -1291,7 +1291,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -1321,7 +1321,7 @@ const_per_interest_total
 1
 1
 1
-2.24881e+07
+22488100
 const_per_months1
 1
 1
@@ -1418,7 +1418,7 @@ const_per_principal1
 1
 1
 1
-5.62202e+08
+562202000
 const_per_principal2
 1
 1
@@ -1448,13 +1448,13 @@ const_per_principal_total
 1
 1
 1
-5.62202e+08
+562202000
 const_per_total1
 1
 1
 1
 1
-2.81101e+07
+28110100
 const_per_total2
 1
 1
@@ -1514,7 +1514,7 @@ construction_financing_cost
 1
 1
 1
-2.81101e+07
+28110100
 cost_debt_closing
 1
 1
@@ -1597,7 +1597,7 @@ csp.dtr.cost.contingency
 1
 1
 1
-3.15149e+07
+31514900
 csp.dtr.cost.contingency_percent
 1
 1
@@ -1639,7 +1639,7 @@ csp.dtr.cost.epc.total
 1
 1
 1
-5.299e+07
+52990000
 csp.dtr.cost.fossil_backup
 1
 1
@@ -1717,7 +1717,7 @@ csp.dtr.cost.plm.total
 1
 1
 1
-8.21511e+06
+8215110
 csp.dtr.cost.power_plant
 1
 1
@@ -1747,7 +1747,7 @@ csp.dtr.cost.sales_tax.total
 1
 1
 1
-1.92691e+07
+19269100
 csp.dtr.cost.sales_tax.value
 1
 1
@@ -1795,7 +1795,7 @@ csp.dtr.cost.storage
 1
 1
 1
-1.15989e+08
+115989000
 csp.dtr.cost.storage.cost_per_kwht
 1
 1
@@ -4065,7 +4065,7 @@ direct_subtotal
 1
 1
 1
-4.50212e+08
+450212000
 disp_csu_cost
 1
 1
@@ -5104,6 +5104,12 @@ k_tes_loss_coeffs
 11
 0 0 0 0 0 0 0 0 0 0 0 
 
+land_area
+1
+1
+1
+1
+821.511
 lat
 1
 1
@@ -224859,6 +224865,18 @@ om_fixed_escal
 1
 1
 0
+om_land_lease
+1
+2
+1
+1
+100
+om_land_lease_escal
+1
+1
+1
+1
+0
 om_production
 1
 2
@@ -225072,7 +225090,7 @@ property_assessed_value
 1
 1
 1
-5.62202e+08
+562202000
 property_tax_rate
 1
 1
@@ -225220,7 +225238,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 revenue_tab
 1
 1
@@ -225489,7 +225507,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -225573,19 +225591,19 @@ total_direct_cost
 1
 1
 1
-4.81727e+08
+481727000
 total_indirect_cost
 1
 1
 1
 1
-6.12051e+07
+61205100
 total_installed_cost
 1
 1
 1
 1
-5.62202e+08
+562202000
 total_land_area
 1
 1
@@ -226441,6 +226459,30 @@ ui_epsilon_4_3
 1
 1
 1
+ui_land_area_ha
+1
+1
+1
+1
+332.454
+ui_land_area_multiplier
+1
+1
+1
+1
+0
+ui_land_area_units
+1
+1
+1
+1
+0
+ui_land_lease
+1
+2
+1
+1
+0
 ui_receiver_description
 1
 4
@@ -226575,10 +226617,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -226671,7 +226712,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

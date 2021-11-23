@@ -887,7 +887,7 @@ Battery Dispatch Price Signal
 DataArray
 
 0
-2703
+2776
 on_load{'Battery Dispatch Price Signal'}=define()
 {	
 	psd_forecast_choice();
@@ -950,11 +950,11 @@ function psd_forecast_choice()
 {
 	value('batt_dispatch_choice', 4);
 	choice = value('batt_dispatch_wf_forecast_choice_psd');
-
+	tech = (technology() == "Standalone Battery");
 	// Turn on/off forecast input
 	//toggle_forecast();
-	enable('batt_select_weather_file_forecast_psd', choice == 2);
-	enable('batt_user_specified_weather_file_psd', choice == 2);
+	enable('batt_select_weather_file_forecast_psd', choice == 2 && tech == 0);
+	enable('batt_user_specified_weather_file_psd', choice == 2 && tech == 0);
 
 	value('batt_dispatch_wf_forecast_choice', choice);
 	if (choice == 2)

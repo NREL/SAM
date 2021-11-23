@@ -30,7 +30,7 @@ if (SAMAPI_EXPORT)
 	add_subdirectory(api)
 endif()
 
-include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs $ENV{SSCDIR}/jsoncpp/include)
+include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs )
 
 set(SAM_SRC
 	src/ide.cpp

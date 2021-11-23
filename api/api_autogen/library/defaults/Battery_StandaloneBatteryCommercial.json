@@ -128,8 +128,8 @@
 			"batt_cycle_cost": [0.100000],
 			"batt_cycle_cost_choice": 0,
 			"batt_dispatch_auto_btm_can_discharge_to_grid": 0,
-			"batt_dispatch_auto_can_gridcharge": 0,
-			"batt_dispatch_choice": 3,
+			"batt_dispatch_auto_can_gridcharge": 1,
+			"batt_dispatch_choice": 0,
 			"batt_dispatch_load_forecast_choice": 0,
 			"batt_dispatch_wf_forecast_choice": 0,
 			"batt_load_ac_forecast": [0.000000],
@@ -175,7 +175,7 @@
 			]
 		},
 		"SystemCosts": {
-			"om_batt_replacement_cost": [232.290000],
+			"om_batt_replacement_cost": [196.760000],
 			"om_replacement_cost_escal": 0
 		},
 		"FuelCell": {

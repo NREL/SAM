@@ -1,5 +1,5 @@
 1
-779
+786
 A_sf_UI
 1
 1
@@ -742,7 +742,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -11571,6 +11571,12 @@ k_panel
 1
 1
 235
+land_area
+1
+1
+1
+1
+1892.04
 land_area_base
 1
 1
@@ -11884,6 +11890,18 @@ om_fixed
 1
 0
 om_fixed_escal
+1
+1
+1
+1
+0
+om_land_lease
+1
+2
+1
+1
+100
+om_land_lease_escal
 1
 1
 1
@@ -12416,7 +12434,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 revenue_TOD_is_shown
 1
 1
@@ -12677,7 +12695,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -13259,6 +13277,30 @@ ui_heliostat_height
 1
 1
 12.2
+ui_land_area_ha
+1
+1
+1
+1
+765.683
+ui_land_area_multiplier
+1
+1
+1
+1
+0
+ui_land_area_units
+1
+1
+1
+1
+0
+ui_land_lease
+1
+2
+1
+1
+0
 ui_msg
 1
 4
@@ -13404,10 +13446,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -13500,7 +13541,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

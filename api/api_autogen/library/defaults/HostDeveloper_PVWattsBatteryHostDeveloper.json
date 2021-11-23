@@ -50,7 +50,9 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 908951
+			"total_installed_cost": 1.44935e+06
+		},
+		"LandLease": {
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -216,6 +218,19 @@
 			"elec_cost_without_system": [0],
 			"host_real_discount_rate": 6.4
 		},
+		"TimeSeries": {
+			"year1_hourly_dc_with_system": [0],
+			"year1_hourly_e_fromgrid": [0],
+			"year1_hourly_ec_with_system": [0]
+		},
+		"ChargesByMonth": {
+			"charge_w_sys_fixed_ym": [
+[0]			],
+			"net_billing_credits_ym": [
+[0]			],
+			"nm_dollars_applied_ym": [
+[0]			]
+		},
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"system_capacity": 540
@@ -268,14 +283,14 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 18179
+			"construction_financing_cost": 28987
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 206.67
+			"battery_per_kWh": 196.76
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 64614.1
+			"battery_total_cost_lcos": 584228
 		}
 	}
 }

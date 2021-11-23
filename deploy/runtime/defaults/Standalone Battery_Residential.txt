@@ -1,5 +1,5 @@
 1
-525
+528
 LeadAcid_q10
 1
 1
@@ -281,7 +281,7 @@ batt_bank_power
 1
 1
 1
-5
+3
 batt_bank_power_dc_ac
 1
 1
@@ -293,7 +293,7 @@ batt_bank_size
 1
 1
 1
-10
+6
 batt_bank_size_dc_ac
 1
 1
@@ -311,7 +311,7 @@ batt_bank_size_ui
 1
 1
 1
-10
+6
 batt_bank_voltage
 1
 1
@@ -512,7 +512,7 @@ batt_dispatch_auto_can_gridcharge
 1
 1
 1
-0
+1
 batt_dispatch_choice
 1
 1
@@ -945,6 +945,18 @@ batt_ui_nominal_bank_power
 1
 1
 4.80384
+batt_unit_capacity
+1
+1
+1
+1
+400
+batt_unit_surface_area
+1
+1
+1
+1
+30
 batt_user_specified_weather_file_peak_shaving
 1
 4
@@ -995,13 +1007,13 @@ battery_per_kW
 1
 1
 1
-263.12
+3380.22
 battery_per_kWh
 1
 1
 1
 1
-293.84
+273.52
 battery_power
 1
 1
@@ -1192,6 +1204,12 @@ chk_update_peaks
 1
 1
 0
+compute_as_cube
+1
+1
+1
+1
+1
 crit_1
 1
 1
@@ -1586,7 +1604,7 @@ genericsys.cost.contingency_percent
 1
 1
 1
-5
+0
 genericsys.cost.epc.fixed
 1
 1
@@ -1604,7 +1622,7 @@ genericsys.cost.epc.percent
 1
 1
 1
-10
+0
 genericsys.cost.epc.total
 1
 1
@@ -1640,7 +1658,7 @@ genericsys.cost.plm.percent
 1
 1
 1
-3.5
+0
 genericsys.cost.plm.total
 1
 1
@@ -2171,7 +2189,7 @@ loan_rate
 1
 1
 1
-5
+4
 loan_term
 1
 1
@@ -2214,7 +2232,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+15
 om_batt_fixed_cost
 1
 2
@@ -2232,7 +2250,7 @@ om_batt_replacement_cost
 2
 1
 1
-333.81
+273.52
 om_batt_variable_cost
 1
 2

@@ -1,5 +1,5 @@
 1
-501
+508
 ac_nameplate
 1
 1
@@ -401,7 +401,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -677,7 +677,7 @@ dc_ac_ratio
 1
 1
 1
-1.2
+1.3
 degradation
 1
 2
@@ -1103,13 +1103,13 @@ equip1_reserve_cost
 1
 1
 1
-0.25
+0.1
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -1569,7 +1569,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 inv_eff
 1
 1
@@ -1708,6 +1708,12 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area
+1
+1
+1
+1
+162.569
 land_area_value
 1
 1
@@ -2068,7 +2074,7 @@ om_capacity
 2
 1
 1
-17
+15
 om_capacity_escal
 1
 1
@@ -2082,6 +2088,18 @@ om_fixed
 1
 0
 om_fixed_escal
+1
+1
+1
+1
+0
+om_land_lease
+1
+2
+1
+1
+100
+om_land_lease_escal
 1
 1
 1
@@ -2300,7 +2318,7 @@ ppa_price_input
 2
 1
 1
-0.1
+0.048
 ppa_soln_mode
 1
 1
@@ -2373,13 +2391,13 @@ pv_capex_cost_choice
 1
 1
 0
-pvwatts.advanced.is_shown
+pv_land_area_is_shown
 1
 1
 1
 1
 0
-pvwatts_land_area_is_shown
+pvwatts.advanced.is_shown
 1
 1
 1
@@ -2402,7 +2420,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 sale_leaseback_message
 1
 4
@@ -2570,12 +2588,6 @@ tax_investor_required_lease_reserve
 1
 1
 6
-test_calc
-1
-1
-1
-1
-0
 tilt
 1
 1
@@ -2659,6 +2671,30 @@ ui_land_area_additional_units
 1
 1
 0
+ui_land_area_ha
+1
+1
+1
+1
+65.7895
+ui_land_area_multiplier
+1
+1
+1
+1
+0
+ui_land_area_units
+1
+1
+1
+1
+0
+ui_land_lease
+1
+2
+1
+1
+0
 ui_step_minutes
 1
 1
@@ -2671,6 +2707,12 @@ ui_total_land_area_ha
 1
 1
 65.7895
+ui_total_module_area
+1
+1
+1
+1
+657895
 ur_annual_min_charge
 1
 1
@@ -2788,10 +2830,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -2884,7 +2925,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

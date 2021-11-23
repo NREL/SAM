@@ -1,5 +1,5 @@
 1
-1189
+1205
 6par_aisc
 1
 1
@@ -352,12 +352,6 @@ annual_wspd
 1
 1
 1.78648
-array_area
-1
-1
-1
-1
-262950
 batt_C_rate
 1
 1
@@ -501,7 +495,7 @@ batt_bank_power
 1
 1
 1
-1000
+20000
 batt_bank_power_dc_ac
 1
 1
@@ -513,7 +507,7 @@ batt_bank_size
 1
 1
 1
-4000
+80000
 batt_bank_size_dc_ac
 1
 1
@@ -531,7 +525,7 @@ batt_bank_size_ui
 1
 1
 1
-4000
+80000
 batt_bank_voltage
 1
 1
@@ -960,7 +954,7 @@ batt_h_to_ambient
 1
 1
 1
-15
+100
 batt_initial_SOC
 1
 1
@@ -1259,6 +1253,18 @@ batt_ui_nominal_bank_power
 1
 1
 999.999
+batt_unit_capacity
+1
+1
+1
+1
+400
+batt_unit_surface_area
+1
+1
+1
+1
+30
 batt_user_specified_weather_file
 1
 4
@@ -1311,13 +1317,13 @@ battery_per_kW
 1
 1
 1
-263.12
+233.17
 battery_per_kWh
 1
 1
 1
 1
-293.84
+241.79
 battery_power
 1
 1
@@ -1341,13 +1347,13 @@ battery_total
 1
 1
 1
-1.43848e+06
+1438480
 battery_total_cost_lcos
 1
 1
 1
 1
-2.81046e+06
+2810460
 battery_voltage_shown
 1
 1
@@ -1383,13 +1389,13 @@ bos_equip_total
 1
 1
 1
-1.00004e+07
+10000400
 calculated_dcac_ratio
 1
 1
 1
 1
-1.20255
+1.29876
 cap_vs_temp
 1
 3
@@ -1872,6 +1878,12 @@ city
 4
 1
 -
+compute_as_cube
+1
+1
+1
+1
+0
 const_per_interest1
 1
 1
@@ -1907,7 +1919,7 @@ const_per_interest_rate1
 1
 1
 1
-4
+3.5
 const_per_interest_rate2
 1
 1
@@ -2034,7 +2046,7 @@ const_per_principal1
 1
 1
 1
-5.29402e+07
+52940200
 const_per_principal2
 1
 1
@@ -2064,13 +2076,13 @@ const_per_principal_total
 1
 1
 1
-5.29402e+07
+52940200
 const_per_total1
 1
 1
 1
 1
-1.0588e+06
+1058800
 const_per_total2
 1
 1
@@ -2130,13 +2142,13 @@ construction_financing_cost
 1
 1
 1
-1.0588e+06
+1058800
 contingency
 1
 1
 1
 1
-1.28821e+06
+1288210
 contingency_percent
 1
 1
@@ -2172,7 +2184,7 @@ cost_dev_fee_value
 1
 1
 1
-1.58821e+06
+1588210
 cost_equity_closing
 1
 1
@@ -2667,36 +2679,36 @@ dispatch_manual_sched
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
 
 dispatch_manual_sched_weekend
 1
 3
 12
 24
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 
 
 dispatch_sched_weekday
 1
@@ -2794,7 +2806,7 @@ en_electricity_rates
 1
 1
 1
-0
+1
 en_snow_model
 1
 1
@@ -2848,19 +2860,19 @@ engr_total
 1
 1
 1
-3.50016e+06
+3500160
 equip1_reserve_cost
 1
 1
 1
 1
-0.25
+0.1
 equip1_reserve_freq
 1
 1
 1
 1
-12
+15
 equip2_reserve_cost
 1
 1
@@ -2962,7 +2974,7 @@ grid_total
 1
 1
 1
-1.50007e+06
+1500070
 ibi_fed_amount
 1
 1
@@ -3318,7 +3330,7 @@ install_labor_total
 1
 1
 1
-5.50024e+06
+5500240
 install_margin_fixed
 1
 1
@@ -3342,7 +3354,7 @@ install_margin_total
 1
 1
 1
-3.00013e+06
+3000130
 installed_per_capacity
 1
 1
@@ -3354,7 +3366,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 inv_cec_cg_c0
 1
 1
@@ -4136,7 +4148,7 @@ inverter_count
 1
 1
 1
-54
+50
 inverter_model
 1
 1
@@ -4160,7 +4172,7 @@ inverter_total
 1
 1
 1
-2.50011e+06
+2500110
 inverterarray_power
 1
 1
@@ -4275,18 +4287,24 @@ itc_sta_percent_maxvalue
 1
 1
 1e+38
+land_area
+1
+1
+1
+1
+64.9763
 land_area_capex
 1
 1
 1
 1
-216.583
+64.9763
 land_area_value
 1
 1
 1
 1
-216.583
+64.9763
 land_fixed
 1
 1
@@ -4346,7 +4364,7 @@ landprep_total
 1
 1
 1
-1.00004e+06
+1000040
 lat
 1
 1
@@ -4489,7 +4507,7 @@ mera_cost1
 1
 1
 1
-1.25006e+07
+12500600
 mera_cost2
 1
 1
@@ -4575,7 +4593,7 @@ module_total
 1
 1
 1
-2.05009e+07
+20500900
 module_width
 1
 1
@@ -4599,7 +4617,7 @@ modulearray_power_w
 1
 1
 1
-5.00022e+07
+50002200
 months_receivables_reserve
 1
 1
@@ -4653,7 +4671,7 @@ om_batt_capacity_cost
 2
 1
 1
-0
+10
 om_batt_fixed_cost
 1
 2
@@ -4671,7 +4689,7 @@ om_batt_replacement_cost
 2
 1
 1
-293.84
+241.79
 om_batt_variable_cost
 1
 2
@@ -4683,7 +4701,7 @@ om_capacity
 2
 1
 1
-17
+15
 om_capacity_escal
 1
 1
@@ -4697,6 +4715,18 @@ om_fixed
 1
 0
 om_fixed_escal
+1
+1
+1
+1
+0
+om_land_lease
+1
+2
+1
+1
+100
+om_land_lease_escal
 1
 1
 1
@@ -4923,13 +4953,13 @@ ppa_price_input
 2
 1
 1
-0.09
+0.055
 ppa_soln_mode
 1
 1
 1
 1
-1
+0
 prop_tax_assessed_decline
 1
 1
@@ -4947,7 +4977,7 @@ property_assessed_value
 1
 1
 1
-5.29402e+07
+52940200
 property_tax_rate
 1
 1
@@ -5152,6 +5182,12 @@ pv_capex_cost_choice
 1
 1
 0
+pv_land_area_is_shown
+1
+1
+1
+1
+0
 rate_escalation
 1
 2
@@ -5174,7 +5210,7 @@ reserves_interest
 1
 1
 1
-1.75
+1.25
 sales_tax_percent
 1
 1
@@ -5192,7 +5228,7 @@ sales_tax_total
 1
 1
 1
-2.21143e+06
+2211430
 sales_tax_value
 1
 1
@@ -6256,7 +6292,7 @@ subarray1_tilt
 1
 1
 1
-30
+0
 subarray1_tilt_eq_lat
 1
 1
@@ -6268,7 +6304,7 @@ subarray1_track_mode
 1
 1
 1
-0
+1
 subarray1_tracking_loss
 1
 1
@@ -6895,7 +6931,7 @@ subtotal_direct
 1
 1
 1
-4.29403e+07
+42940300
 system_capacity
 1
 1
@@ -6943,7 +6979,7 @@ term_int_rate
 1
 1
 1
-7
+4
 term_tenor
 1
 1
@@ -6955,18 +6991,12 @@ tod_library
 4
 16
 Uniform Dispatch
-total_area
-1
-1
-1
-1
-262950
 total_battery_indirect_cost
 1
 1
 1
 1
-1.30006e+06
+1300060
 total_dc_inverter_capacity
 1
 1
@@ -6978,19 +7008,19 @@ total_direct_cost
 1
 1
 1
-4.42285e+07
+44228500
 total_indirect_cost
 1
 1
 1
 1
-6.50029e+06
+6500290
 total_installed_cost
 1
 1
 1
 1
-5.29402e+07
+52940200
 total_inverter_capacity
 1
 1
@@ -7002,7 +7032,7 @@ total_land_area
 1
 1
 1
-216.583
+64.9763
 total_module_area
 1
 1
@@ -7020,13 +7050,13 @@ total_system_indirect_cost
 1
 1
 1
-5.20023e+06
+5200230
 total_system_installed_cost
 1
 1
 1
 1
-5.01298e+07
+50129800
 transformer_load_loss
 1
 1
@@ -7057,6 +7087,24 @@ tz
 1
 1
 -7
+ui_array_land_area_acres
+1
+1
+1
+1
+64.9763
+ui_array_land_area_ha
+1
+1
+1
+1
+26.295
+ui_array_land_area_multiplier
+1
+1
+1
+1
+1
 ui_batt_life_model
 1
 1
@@ -7102,6 +7150,42 @@ ui_copy_batt_discharge_percent_6
 ui_electricity_rate_option
 1
 1
+1
+1
+0
+ui_land_area_additional
+1
+1
+1
+1
+0
+ui_land_area_additional_units
+1
+1
+1
+1
+0
+ui_land_area_ha
+1
+1
+1
+1
+26.295
+ui_land_area_multiplier
+1
+1
+1
+1
+0
+ui_land_area_units
+1
+1
+1
+1
+0
+ui_land_lease
+1
+2
 1
 1
 0
@@ -7189,6 +7273,18 @@ ui_subarray4_row_spacing
 1
 1
 11.101
+ui_total_land_area_ha
+1
+1
+1
+1
+26.295
+ui_total_module_area
+1
+1
+1
+1
+262950
 ui_wacc
 1
 1
@@ -7325,10 +7421,9 @@ ur_dc_sched_weekend
 ur_dc_tou_mat
 1
 3
-2
+1
 4
 1 1 1e+38 0 
-2 1 1e+38 0 
 
 ur_demand_attrs
 1
@@ -7421,7 +7516,7 @@ ur_ec_tou_mat
 3
 1
 6
-1 1 1e+38 0 0.06 0 
+1 1 1e+38 0 0.045 0 
 
 ur_en_ts_buy_rate
 1

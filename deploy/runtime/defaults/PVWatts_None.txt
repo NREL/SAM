@@ -1,5 +1,5 @@
 1
-80
+81
 ac_nameplate
 1
 1
@@ -323,13 +323,13 @@ module_type
 1
 1
 0
-pvwatts.advanced.is_shown
+pv_land_area_is_shown
 1
 1
 1
 1
 0
-pvwatts_land_area_is_shown
+pvwatts.advanced.is_shown
 1
 1
 1
@@ -464,6 +464,12 @@ ui_total_land_area_ha
 1
 1
 0.00526316
+ui_total_module_area
+1
+1
+1
+1
+52.6316
 use_specific_weather_file
 1
 1

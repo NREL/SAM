@@ -3,11 +3,11 @@
 		"Revenue": {
 			"ppa_escalation": 1,
 			"ppa_price_input": [0.040000],
-			"ppa_soln_mode": 0
+			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"equip1_reserve_cost": 0.25,
+			"equip1_reserve_cost": 0,
 			"equip1_reserve_freq": 12,
 			"equip2_reserve_cost": 0,
 			"equip2_reserve_freq": 15,
@@ -22,7 +22,7 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.75,
+			"reserves_interest": 1.25,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 48000
 		},
@@ -33,6 +33,8 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0
+		},
+		"LandLease": {
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": 0,
@@ -191,6 +193,9 @@
 			"gen": [0],
 			"system_capacity": 48000
 		},
+		"ElectricityRates": {
+			"en_electricity_rates": 0
+		},
 		"SaleLeaseback": {
 			"construction_financing_cost": 1.296e+06,
 			"cost_dev_fee_percent": 3,
@@ -248,12 +253,16 @@
 			],
 			"ppa_multiplier_model": 0
 		},
+		"UtilityBill": {
+		},
 		"OtherCapitalCosts": {
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
+		},
+		"ChargesByMonth": {
 		},
 		"BatterySystem": {
 		}
