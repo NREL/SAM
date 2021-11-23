@@ -4,7 +4,7 @@
 			"albedo": [0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000],
 			"irrad_mode": 0,
 			"sky_model": 2,
-			"use_wf_albedo": 0
+			"use_wf_albedo": 1
 		},
 		"Losses": {
 			"acwiring_loss": 1,
@@ -55,7 +55,7 @@
 		},
 		"SystemDesign": {
 			"enable_mismatch_vmax_calc": 0,
-			"inverter_count": 48,
+			"inverter_count": 50,
 			"subarray1_azimuth": 180,
 			"subarray1_backtrack": 0,
 			"subarray1_gcr": 0.3,
@@ -303,7 +303,7 @@
 			"inv_pd_paco": 4000,
 			"inv_snl_eff_cec": 97.5869,
 			"inv_snl_paco": 770000,
-			"inverter_count": 48,
+			"inverter_count": 50,
 			"inverter_model": 0,
 			"mppt_hi_inverter": 820,
 			"mppt_low_inverter": 545
@@ -438,8 +438,7 @@
 			"ur_billing_demand_lookback_period": 11,
 			"ur_billing_demand_minimum": 100,
 			"ur_dc_billing_demand_periods": [
-				[1.000000, 1.000000],
-				[2.000000, 1.000000]
+				[1.000000, 1.000000]
 			],
 			"ur_dc_enable": 0,
 			"ur_dc_flat_mat": [
@@ -529,7 +528,7 @@
 			"ur_nm_yearend_sell_rate": 0,
 			"ur_ts_buy_rate": [0.000000],
 			"ur_ts_sell_rate": [0.000000],
-			"ur_yearzero_usage_peaks": [0.000000]
+			"ur_yearzero_usage_peaks": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 		},
 		"GridLimits": {
 			"enable_interconnection_limit": 0,

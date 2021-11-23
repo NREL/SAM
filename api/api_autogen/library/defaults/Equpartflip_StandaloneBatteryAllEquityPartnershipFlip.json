@@ -203,7 +203,7 @@
 			"system_capacity": 60000
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 1
+			"en_electricity_rates": 0
 		},
 		"Recapitalization": {
 		},
