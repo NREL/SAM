@@ -755,7 +755,7 @@ Electricity Rates - Billing Demand
 MonthlyFactor
 
 0
-3091
+3259
 on_load{'Utility Rate - Billing Demand'} = define() {
 	enable_ratchet_demand_charges();
 	check_update_year_one_peaks(true);
@@ -772,7 +772,11 @@ on_change{'ur_yearzero_usage_peaks'} = define() {
 };
 
 function is_btm() {
-	return ( financing() != "Single Owner" );
+	return ( financing() != "Single Owner"
+	&& financing() != "Merchant Plant" &&
+	financing() != "Sale Leaseback" &&
+	financing() != 'Leveraged Partnership Flip' &&
+	financing() != 'All Equity Partnership Flip');
 }
 
 function check_update_year_one_peaks(is_on_load) {
