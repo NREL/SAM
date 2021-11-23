@@ -9,11 +9,11 @@
 			"system_use_lifetime_output": 0
 		},
 		"SystemDesign": {
-			"array_type": 0,
+			"array_type": 2,
 			"azimuth": 180,
 			"batt_simple_enable": 0,
 			"bifaciality": 0,
-			"dc_ac_ratio": 1.3,
+			"dc_ac_ratio": 1.34,
 			"en_snowloss": 0,
 			"gcr": 0.4,
 			"inv_eff": 96,
@@ -21,7 +21,7 @@
 			"module_type": 0,
 			"soiling": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"system_capacity": 50000,
-			"tilt": 33
+			"tilt": 0
 		},
 		"AdjustmentFactors": {
 			"constant": 0
