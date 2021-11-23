@@ -15,7 +15,7 @@ To use the script:
   1. Create or open a PV Battery or Generic Battery case in SAM.
   2. Run the script.
 
-Written and tested in SAM 2020.11.29
+Tested in SAM 2021.12.02
 
 */
 
