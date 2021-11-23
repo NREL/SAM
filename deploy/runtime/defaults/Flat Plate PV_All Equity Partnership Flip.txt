@@ -5878,7 +5878,7 @@ ur_dc_is_shown
 1
 1
 1
-1
+0
 ur_dc_sched_weekday
 1
 3
