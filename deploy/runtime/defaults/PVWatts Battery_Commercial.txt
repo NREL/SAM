@@ -5,7 +5,7 @@ ac_nameplate
 1
 1
 1
-450
+469.57
 adjust
 1
 5
@@ -117,7 +117,7 @@ array_type
 1
 1
 1
-0
+1
 azimuth
 1
 1
@@ -636,7 +636,7 @@ dc_ac_ratio
 1
 1
 1
-1.2
+1.15
 debt_fraction
 1
 1
