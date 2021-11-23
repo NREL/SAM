@@ -1282,7 +1282,7 @@ TabOrder
 3
 4294967295
 
-14
+9
 om_cost_input
 3
 1
@@ -1325,34 +1325,6 @@ ME Costs - Operation Maintenance
 1
 0
 Default
-total_bos_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_capital_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
 total_device_cost_lcoe
 3
 1
@@ -1367,20 +1339,6 @@ ME Costs - Operation Maintenance
 1
 0
 Default
-total_device_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
 total_financial_cost_lcoe
 3
 1
@@ -1389,20 +1347,6 @@ Financial cost
 ME Costs - Operation Maintenance
 0
 9
-1
-1
-1
-1
-0
-Default
-total_financial_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
 1
 1
 1
@@ -1459,20 +1403,6 @@ Operating cost (annual)
 ME Costs - Operation Maintenance
 0
 9
-1
-1
-1
-1
-0
-Default
-total_operations_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
 1
 1
 1
