@@ -1549,7 +1549,7 @@ inverterarray_power_w
 1
 1
 1
-1.53846e+06
+1538460
 is_advanced
 1
 1
@@ -1811,7 +1811,7 @@ losses_user
 1
 1
 1
-15
+14
 mera_cost1
 1
 1
