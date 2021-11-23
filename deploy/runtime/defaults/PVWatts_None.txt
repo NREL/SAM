@@ -481,7 +481,7 @@ use_wf_albedo
 1
 1
 1
-0
+1
 user_specified_constant_albedo
 1
 1
