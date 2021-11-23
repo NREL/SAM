@@ -19,7 +19,7 @@
 	4. Set the value of the grid_target variable below to the value you want
 	to use in the time series array for the grid power target array.
 	
-	Tested in SAM 2020.2.29 r2.
+	Tested in SAM 2021.12.02.
 */
 ////////////////////////////////////////////////////////////////////////////////
 
