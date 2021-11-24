@@ -464,12 +464,14 @@ Battery Dispatch
 Default
 
 0
-1843
+1928
 on_load{'Battery Dispatch Common'} = define()
 {
 	check_soc();
 	on_change{'batt_maximum_SOC'};
 	on_change{'batt_minimum_SOC'};
+	if (technology() == "Standalone Battery")
+		enable('batt_minimum_modetime', false);
 };
 on_change{'batt_maximum_SOC'} =define(){ check_soc(); };
 on_change{'batt_minimum_SOC'} =define(){ check_soc(); };

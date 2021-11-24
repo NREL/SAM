@@ -1949,8 +1949,10 @@ equations{'batt_dispatch_pvs_battery_rte'} = define() {
 		}
 	};
 
-4425
+4652
 on_load{'Battery Dispatch PV Smoothing'} = define() {
+	if (technology() == "Generic Battery")
+		msgbox('The PV Smoothing dispatch algorithm was designed to dispatch the battery to smooth photovoltaic array output. This model was not intended for use with generic power systems.');
 	on_change{'batt_dispatch_pvs_timestep_multiplier'}();
 	on_change{'batt_dispatch_pvs_ac_ub_enable'}();
 	on_change{'batt_dispatch_pvs_ac_lb_enable'}();
