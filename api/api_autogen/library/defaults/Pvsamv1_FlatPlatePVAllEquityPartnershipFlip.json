@@ -416,7 +416,7 @@
 			],
 			"dispatch_tod_factors": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
 			"ppa_multiplier_model": 0,
-			"ppa_price_input": [0.048000]
+			"ppa_price_input": [0.040000]
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000],

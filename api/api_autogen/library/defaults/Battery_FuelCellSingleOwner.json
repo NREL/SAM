@@ -25,7 +25,7 @@
 			"batt_losses_discharging": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_losses_idle": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"batt_mass": 507.805,
-			"batt_meter_position": 0,
+			"batt_meter_position": 1,
 			"batt_power_charge_max_kwac": 52.1902,
 			"batt_power_charge_max_kwdc": 50.1026,
 			"batt_power_discharge_max_kwac": 48.0984,
