@@ -5,7 +5,7 @@ Run simulations over a range of flat energy buy rates for a parametric study.
 This script sets energy charge inputs for a simple flat buy rate and runs a
 set of simulations over a range of flat rates.
 
-Written in SAM 2020.11.29 r2
+Written in SAM 2020.11.29 r2 tested in SAM 2021.12.02
 
 */
 

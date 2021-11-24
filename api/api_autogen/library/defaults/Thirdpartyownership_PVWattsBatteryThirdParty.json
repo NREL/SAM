@@ -15,7 +15,7 @@
 			"gen": [0]
 		},
 		"AnnualOutput": {
-			"degradation": [0.000000],
+			"degradation": [0.500000],
 			"system_use_lifetime_output": 0
 		},
 		"CashFlow": {
