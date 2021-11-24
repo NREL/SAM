@@ -850,7 +850,7 @@ batt_meter_position
 1
 1
 1
-0
+1
 batt_minimum_SOC
 1
 1
