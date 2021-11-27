@@ -73,6 +73,7 @@ public:
 
 	wxString GetCurrentContext();
 	void UpdatePageNote();
+	void CheckAndUpdateNotes(const wxArrayString& inputPageHelpContext);
 	bool HasPageNote( const wxString &id );
 	void ShowPageNote( );
 	void SetPageNote( const wxString &text );
