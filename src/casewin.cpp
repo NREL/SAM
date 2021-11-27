@@ -1153,6 +1153,8 @@ void CaseWindow::UpdateConfiguration()
 	// erase current set of forms, and rebuild the forms for this case
 	m_forms.Clear();
 	
+
+	wxArrayString inputPageHelpContext; // valid ids for the current configuration
 	// update input page list (sidebar)
 	for( size_t i=0;i<m_pageGroups.size();i++ )
 	{
@@ -1164,10 +1166,34 @@ void CaseWindow::UpdateConfiguration()
 		UpdatePageListForConfiguration( group->ExclusiveHeaderPages, cfg );
 
 		m_inputPageList->Add( m_pageGroups[i]->SideBarLabel, i == m_pageGroups.size()-1, m_pageGroups[i]->HelpContext );
+
+		inputPageHelpContext.push_back(m_pageGroups[i]->HelpContext);
 	}
+
+	// check for orphaned notes and if any found add to first page per Github issue 796
+	CheckAndUpdateNotes(inputPageHelpContext);
 
 	Layout();
 
+}
+
+void CaseWindow::CheckAndUpdateNotes(const wxArrayString & inputPageHelpContext)
+{
+	const auto& allCaseNotes = m_case->Notes();
+	wxArrayString orphanedNotesIds;
+	for (const auto& note : allCaseNotes) {
+		if (inputPageHelpContext.Index(note.first, false, false) == wxNOT_FOUND)
+			orphanedNotesIds.push_back(note.first);
+	}
+	if ((orphanedNotesIds.Count() > 0) && (inputPageHelpContext.Count() > 0)) {
+		wxString firstNote = m_case->RetrieveNote(inputPageHelpContext[0]);
+		for (const auto& orphanedPageNoteId : orphanedNotesIds) {
+			wxString addNote = m_case->RetrieveNote(orphanedPageNoteId);
+			firstNote += "\n" + addNote;
+			m_case->SaveNote(orphanedPageNoteId, wxEmptyString);
+		}
+		m_case->SaveNote(inputPageHelpContext[0], firstNote);
+	}
 }
 
 
