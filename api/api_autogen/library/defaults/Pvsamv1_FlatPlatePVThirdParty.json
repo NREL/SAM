@@ -55,7 +55,7 @@
 		},
 		"SystemDesign": {
 			"enable_mismatch_vmax_calc": 0,
-			"inverter_count": 4,
+			"inverter_count": 1,
 			"subarray1_azimuth": 180,
 			"subarray1_backtrack": 0,
 			"subarray1_gcr": 0.3,
@@ -303,7 +303,7 @@
 			"inv_pd_paco": 4000,
 			"inv_snl_eff_cec": 96.8527,
 			"inv_snl_paco": 5330,
-			"inverter_count": 4,
+			"inverter_count": 1,
 			"inverter_model": 0,
 			"mppt_hi_inverter": 500,
 			"mppt_low_inverter": 320

@@ -1189,7 +1189,8 @@ void CaseWindow::CheckAndUpdateNotes(const wxArrayString & inputPageHelpContext)
 		wxString firstNote = m_case->RetrieveNote(inputPageHelpContext[0]);
 		for (const auto& orphanedPageNoteId : orphanedNotesIds) {
 			wxString addNote = m_case->RetrieveNote(orphanedPageNoteId);
-			firstNote += "\n" + addNote;
+			if (addNote != wxEmptyString) 
+				firstNote += "\n" + addNote;
 			m_case->SaveNote(orphanedPageNoteId, wxEmptyString);
 		}
 		m_case->SaveNote(inputPageHelpContext[0], firstNote);
