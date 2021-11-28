@@ -656,7 +656,7 @@ Battery Dispatch FOM Automated
 TextEntry
 
 0
-3291
+2908
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
@@ -668,10 +668,6 @@ on_load{'Battery Dispatch Automated FOM'}=define()
 		toggle_dispatch();
 	}
 	show_hide_charge_options();
-	if ( value('ppa_soln_mode') == 0 )
-	{
-		msgbox('Specify IRR Target not available for automated dispatch.\nThe automated battery dispatch options require the Specify PPA Price option on the Revenue or Financial Parameters page.\n\nPlease change Specify IRR Target to Specify PPA Price and enter a PPA price and optional escalation rate\nto use the Automated Dispatch options.' );
-	}
 };
 
 on_change{'batt_dispatch_wf_forecast_choice'}=define()
