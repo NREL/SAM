@@ -389,7 +389,7 @@ Automated dispatch|PV smoothing|Dispatch to custom time series|Manual dispatch
 RadioChoice
 
 0
-4002
+4149
 on_load{'Battery Dispatch Options FOM'} = define() {
 	show_hide_charge_options();
 	check_auto_ppa();
@@ -429,9 +429,7 @@ function check_auto_ppa()
 	{
 		ppa_mode = value('ppa_soln_mode');
 		if (ppa_mode == 0) {
-			msgbox('Automated dispatch does not work with the Specify IRR target PPA mode. Changing the PPA solution mode to Specify PPA price');
-			value('ppa_soln_mode', 1);
-			refresh('ppa_soln_mode');
+			msgbox('Specify IRR Target not available for automated dispatch.\nThe automated battery dispatch options require the Specify PPA Price option on the Revenue or Financial Parameters page.\n\nPlease change Specify IRR Target to Specify PPA Price and specify a PPA price and optional escalation rate\nto use the Automated Dispatch options.');
 		}
 	}
 }
