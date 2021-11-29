@@ -306,9 +306,10 @@ equations {'degradation'} = define() {
 equations {'en_batt'} = define() {
 	return 1;
 };
-1838
+2274
 on_load{'Battery Dispatch Standalone Options FOM'} = define() {
 	show_hide_charge_options();
+	check_auto_ppa();
 	warning_message();
 	if ( technology() == 'Fuel Cell' && value('en_batt') == 0 )
 	{ 
@@ -329,9 +330,23 @@ on_load{'Battery Dispatch Standalone Options FOM'} = define() {
 
 on_change{'batt_dispatch_choice_ui'} = define() {
 	show_hide_charge_options();
+	check_auto_ppa();
 	value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 };
 	
+function check_auto_ppa()
+{
+	dispatch = value('batt_dispatch_choice_ui');
+	if (dispatch == 0 && financing() != "Merchant Plant") 
+	{
+		ppa_mode = value('ppa_soln_mode');
+		if (ppa_mode == 0) {
+			msgbox('Automated dispatch does not work with the Specify IRR target PPA mode. Changing the PPA solution mode to Specify PPA price');
+			value('ppa_soln_mode', 1);
+			refresh('ppa_soln_mode');
+		}
+	}
+}
 
 // hide charge options for manual dispatch
 function show_hide_charge_options()
