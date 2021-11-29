@@ -656,7 +656,7 @@ Battery Dispatch FOM Automated
 TextEntry
 
 0
-2908
+2910
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
@@ -757,7 +757,7 @@ function invalid_option_message()
 {
  	if ((technology() == 'Standalone Battery' || technology() == 'Generic Battery') && value('batt_dispatch_wf_forecast_choice')==2) 
 	{
-		msgbox('Invalid dispatch choice.\nLook ahead to custom weather file is only available for PV battery configurations.\nPlease choose a different automated dispatch option.');
+		msgbox('Invalid dispatch choice.\nLook ahead to custom weather file is only available for PV battery configurations.\n\nPlease choose a different automated dispatch option.');
 		enable('batt_select_weather_file_forecast', false);
 		enable('batt_user_specified_weather_file', false);
 	}
