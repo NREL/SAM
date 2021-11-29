@@ -617,7 +617,7 @@ function setup_fuel_cell_pages_btm()
 				   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 				   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}
 					]],
-				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
+				  { 'sidebar'='Battery Storage', 'help'='battery_storage_btm', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
 	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		[{'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], ['Fuel Cell Dispatch Manual'], [{'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
@@ -641,7 +641,7 @@ function setup_fuel_cell_pages_fom()
 				   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 				   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}
 					]],
-				  { 'sidebar'='Battery Storage', 'help'='battery_model', 'exclusive_var'='en_batt'} );
+				  { 'sidebar'='Battery Storage', 'help'='battery_storage_fom', 'exclusive_var'='en_batt'} );
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
 	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
 		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
@@ -2378,14 +2378,14 @@ setconfig( 'Standalone Battery', 'Residential' );
 setmodules( ['belpe', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(true);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
-addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_residential_pages( LOAD_BELPE_CRIT );
 
 setconfig( 'Standalone Battery', 'Commercial' );
 setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(true);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
-addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_commercial_pages( LOAD_SIMPLE_CRIT ); //does not include building load calculator
 
 setconfig( 'Standalone Battery', 'Third Party' );
@@ -2397,14 +2397,14 @@ setconfig( 'Standalone Battery', 'Host Developer' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'host_developer']);
 setup_standalone_battery_pages(true);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
-addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_host_developer_pages( LOAD_SIMPLE_CRIT );
 
 setconfig( 'Standalone Battery', 'Single Owner' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'singleowner']);
 setup_standalone_battery_pages(false);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
-addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_single_owner_pages( );
 setup_electricity_purchases();
 
@@ -2412,7 +2412,7 @@ setconfig( 'Standalone Battery', 'Merchant Plant' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'merchantplant']);
 setup_standalone_battery_pages(false);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
-addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_merchant_plant_pages( );
 setup_electricity_purchases();
 
@@ -2420,7 +2420,7 @@ setconfig( 'Standalone Battery', 'Leveraged Partnership Flip' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'levpartflip']);
 setup_standalone_battery_pages(false);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
-addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_leveraged_partnership_flip_pages( );
 setup_electricity_purchases();
 
@@ -2428,7 +2428,7 @@ setconfig( 'Standalone Battery', 'All Equity Partnership Flip' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'equpartflip']);
 setup_standalone_battery_pages(false);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
-addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_all_equity_partnership_flip_pages( );
 setup_electricity_purchases();
 
@@ -2436,7 +2436,7 @@ setconfig( 'Standalone Battery', 'Sale Leaseback' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_standalone_battery_pages(false);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='standalone_battery_system_costs' } );
-addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_operating' } );
+addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
 setup_sale_leaseback_pages( );
 setup_electricity_purchases();
 
