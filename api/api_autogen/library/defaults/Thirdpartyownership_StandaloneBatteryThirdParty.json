@@ -21,7 +21,7 @@
 		"CashFlow": {
 			"lease_escalation": 0,
 			"lease_price": 0,
-			"ppa_escalation": 0,
+			"ppa_escalation": 1,
 			"ppa_price": 0
 		},
 		"ElectricityCost": {

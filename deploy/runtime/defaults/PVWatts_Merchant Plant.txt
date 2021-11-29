@@ -106,7 +106,7 @@ array_type
 1
 1
 1
-0
+2
 azimuth
 1
 1
@@ -1153,7 +1153,7 @@ gcr
 1
 1
 1
-0.4
+0.3
 grid_curtailment
 1
 2
@@ -1858,7 +1858,7 @@ losses_user
 1
 1
 1
-15
+14
 mera_cost1
 1
 1
@@ -221687,7 +221687,7 @@ tilt
 1
 1
 1
-33
+0
 total_direct_cost
 1
 1
@@ -221823,21 +221823,33 @@ ur_billing_demand_is_shown
 ur_billing_demand_lookback_percentages
 1
 3
-1
-1
-0
+12
+2
+60 0 
+60 0 
+60 0 
+60 0 
+60 0 
+95 1 
+95 1 
+95 1 
+95 1 
+60 0 
+60 0 
+60 0 
+
 ur_billing_demand_lookback_period
 1
 1
 1
 1
-0
+11
 ur_billing_demand_minimum
 1
 1
 1
 1
-0
+100
 ur_cr_sched
 1
 3
@@ -221870,8 +221882,9 @@ ur_dc_billing_demand_periods
 1
 3
 1
-1
-0
+2
+1 1 
+
 ur_dc_enable
 1
 1
@@ -222230,8 +222243,9 @@ ur_yearzero_usage_peaks
 1
 2
 1
-1
-0
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 use_specific_weather_file
 1
 1
