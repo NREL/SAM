@@ -7226,8 +7226,9 @@ ur_yearzero_usage_peaks
 1
 2
 1
-1
-0
+12
+1.85407 1.76038 1.81704 2.29535 2.68522 4.05075 4.30453 4.19724 3.6658 2.55071 1.71415 1.87435 
+
 use_specific_weather_file
 1
 1
@@ -7239,7 +7240,7 @@ use_wf_albedo
 1
 1
 1
-0
+1
 user_specified_weather_file
 1
 4

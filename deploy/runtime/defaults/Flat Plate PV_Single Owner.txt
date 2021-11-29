@@ -2978,7 +2978,7 @@ inverter_count
 1
 1
 1
-48
+50
 inverter_model
 1
 1
@@ -3747,7 +3747,7 @@ ppa_price_input
 2
 1
 1
-0.048
+0.04
 ppa_soln_mode
 1
 1
@@ -4954,7 +4954,7 @@ subarray1_tilt
 1
 1
 1
-30
+0
 subarray1_tilt_eq_lat
 1
 1
@@ -4966,7 +4966,7 @@ subarray1_track_mode
 1
 1
 1
-0
+1
 subarray1_tracking_loss
 1
 1
@@ -5159,7 +5159,7 @@ subarray2_tilt
 1
 1
 1
-20
+0
 subarray2_tilt_eq_lat
 1
 1
@@ -5171,7 +5171,7 @@ subarray2_track_mode
 1
 1
 1
-0
+1
 subarray2_tracking_loss
 1
 1
@@ -5364,7 +5364,7 @@ subarray3_tilt
 1
 1
 1
-20
+0
 subarray3_tilt_eq_lat
 1
 1
@@ -5376,7 +5376,7 @@ subarray3_track_mode
 1
 1
 1
-0
+1
 subarray3_tracking_loss
 1
 1
@@ -5569,7 +5569,7 @@ subarray4_tilt
 1
 1
 1
-20
+0
 subarray4_tilt_eq_lat
 1
 1
@@ -5581,7 +5581,7 @@ subarray4_track_mode
 1
 1
 1
-0
+1
 subarray4_tracking_loss
 1
 1
@@ -5914,10 +5914,9 @@ ur_cr_tou_mat
 ur_dc_billing_demand_periods
 1
 3
-2
+1
 2
 1 1 
-2 1 
 
 ur_dc_enable
 1
@@ -5948,7 +5947,7 @@ ur_dc_is_shown
 1
 1
 1
-1
+0
 ur_dc_sched_weekday
 1
 3
@@ -6277,8 +6276,9 @@ ur_yearzero_usage_peaks
 1
 2
 1
-1
-0
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 use_specific_weather_file
 1
 1
@@ -6290,7 +6290,7 @@ use_wf_albedo
 1
 1
 1
-0
+1
 user_specified_weather_file
 1
 4

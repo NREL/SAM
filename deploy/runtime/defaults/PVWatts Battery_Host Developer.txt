@@ -5,7 +5,7 @@ ac_nameplate
 1
 1
 1
-450
+469.57
 adjust
 1
 5
@@ -117,7 +117,7 @@ array_type
 1
 1
 1
-0
+1
 azimuth
 1
 1
@@ -913,7 +913,7 @@ dc_ac_ratio
 1
 1
 1
-1.2
+1.15
 debt_message
 1
 4
@@ -935,7 +935,7 @@ degradation
 2
 1
 1
-0
+0.5
 depr_alloc_custom_percent
 1
 1
@@ -1528,7 +1528,7 @@ gcr
 1
 1
 1
-0.4
+0.3
 grid_curtailment
 1
 2
@@ -2366,7 +2366,7 @@ losses_user
 1
 1
 1
-20.95
+14
 mera_cost1
 1
 1

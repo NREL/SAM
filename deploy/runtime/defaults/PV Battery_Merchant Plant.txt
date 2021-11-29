@@ -2715,7 +2715,7 @@ en_electricity_rates
 1
 1
 1
-1
+0
 en_snow_model
 1
 1
@@ -226247,7 +226247,7 @@ ur_billing_demand_minimum
 1
 1
 1
-0
+100
 ur_cr_sched
 1
 3
@@ -226296,7 +226296,7 @@ ur_dc_is_shown
 1
 1
 1
-1
+0
 ur_dc_sched_weekday
 1
 3
@@ -226625,8 +226625,9 @@ ur_yearzero_usage_peaks
 1
 2
 1
-1
-0
+12
+0 0 0 0 0 0 0 0 0 0 0 0 
+
 use_specific_weather_file
 1
 1
@@ -226638,7 +226639,7 @@ use_wf_albedo
 1
 1
 1
-0
+1
 user_specified_weather_file
 1
 4
