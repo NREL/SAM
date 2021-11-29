@@ -1,9 +1,9 @@
 {
 	"defaults": {
 		"Revenue": {
-			"ppa_escalation": 0.5,
+			"ppa_escalation": 1,
 			"ppa_price_input": [0.055000],
-			"ppa_soln_mode": 0
+			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -209,7 +209,7 @@
 			"system_capacity": 50002.2
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 1
+			"en_electricity_rates": 0
 		},
 		"Recapitalization": {
 		},

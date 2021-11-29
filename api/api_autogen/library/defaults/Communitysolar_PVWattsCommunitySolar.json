@@ -2,7 +2,7 @@
 	"defaults": {
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 20552.9,
+			"construction_financing_cost": 38536.7,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -34,7 +34,7 @@
 			"reserves_interest": 1.25,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 1000,
+			"system_capacity": 2000,
 			"term_int_rate": 4,
 			"term_tenor": 18
 		},
@@ -45,10 +45,10 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 1.02764e+06
+			"total_installed_cost": 2.05529e+06
 		},
 		"LandLease": {
-			"land_area": 3.25138,
+			"land_area": 6.50277,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -219,7 +219,7 @@
 		"SystemOutput": {
 			"degradation": [0.500000],
 			"gen": [0],
-			"system_capacity": 1000
+			"system_capacity": 2000
 		},
 		"UtilityBill": {
 		},

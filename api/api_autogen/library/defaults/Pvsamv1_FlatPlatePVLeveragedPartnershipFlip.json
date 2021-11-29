@@ -4,7 +4,7 @@
 			"albedo": [0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000],
 			"irrad_mode": 0,
 			"sky_model": 2,
-			"use_wf_albedo": 0
+			"use_wf_albedo": 1
 		},
 		"Losses": {
 			"acwiring_loss": 1,
@@ -55,7 +55,7 @@
 		},
 		"SystemDesign": {
 			"enable_mismatch_vmax_calc": 0,
-			"inverter_count": 48,
+			"inverter_count": 50,
 			"subarray1_azimuth": 180,
 			"subarray1_backtrack": 0,
 			"subarray1_gcr": 0.3,
@@ -66,9 +66,9 @@
 			"subarray1_rotlim": 45,
 			"subarray1_slope_azm": 0,
 			"subarray1_slope_tilt": 0,
-			"subarray1_tilt": 30,
+			"subarray1_tilt": 0,
 			"subarray1_tilt_eq_lat": 0,
-			"subarray1_track_mode": 0,
+			"subarray1_track_mode": 1,
 			"subarray2_azimuth": 180,
 			"subarray2_backtrack": 0,
 			"subarray2_enable": 0,
@@ -80,9 +80,9 @@
 			"subarray2_rotlim": 45,
 			"subarray2_slope_azm": 0,
 			"subarray2_slope_tilt": 0,
-			"subarray2_tilt": 20,
+			"subarray2_tilt": 0,
 			"subarray2_tilt_eq_lat": 0,
-			"subarray2_track_mode": 0,
+			"subarray2_track_mode": 1,
 			"subarray3_azimuth": 180,
 			"subarray3_backtrack": 0,
 			"subarray3_enable": 0,
@@ -94,9 +94,9 @@
 			"subarray3_rotlim": 45,
 			"subarray3_slope_azm": 0,
 			"subarray3_slope_tilt": 0,
-			"subarray3_tilt": 20,
+			"subarray3_tilt": 0,
 			"subarray3_tilt_eq_lat": 0,
-			"subarray3_track_mode": 0,
+			"subarray3_track_mode": 1,
 			"subarray4_azimuth": 180,
 			"subarray4_backtrack": 0,
 			"subarray4_enable": 0,
@@ -108,9 +108,9 @@
 			"subarray4_rotlim": 45,
 			"subarray4_slope_azm": 0,
 			"subarray4_slope_tilt": 0,
-			"subarray4_tilt": 20,
+			"subarray4_tilt": 0,
 			"subarray4_tilt_eq_lat": 0,
-			"subarray4_track_mode": 0,
+			"subarray4_track_mode": 1,
 			"system_capacity": 50002.2
 		},
 		"Shading": {
@@ -303,7 +303,7 @@
 			"inv_pd_paco": 4000,
 			"inv_snl_eff_cec": 97.5869,
 			"inv_snl_paco": 770000,
-			"inverter_count": 48,
+			"inverter_count": 50,
 			"inverter_model": 0,
 			"mppt_hi_inverter": 820,
 			"mppt_low_inverter": 545
@@ -416,18 +416,29 @@
 			],
 			"dispatch_tod_factors": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
 			"ppa_multiplier_model": 0,
-			"ppa_price_input": [0.048000]
+			"ppa_price_input": [0.040000]
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000],
 			"ur_annual_min_charge": 0,
 			"ur_billing_demand_lookback_percentages": [
-				[0.000000]
+				[60.000000, 0.000000],
+				[60.000000, 0.000000],
+				[60.000000, 0.000000],
+				[60.000000, 0.000000],
+				[60.000000, 0.000000],
+				[95.000000, 1.000000],
+				[95.000000, 1.000000],
+				[95.000000, 1.000000],
+				[95.000000, 1.000000],
+				[60.000000, 0.000000],
+				[60.000000, 0.000000],
+				[60.000000, 0.000000]
 			],
-			"ur_billing_demand_lookback_period": 0,
-			"ur_billing_demand_minimum": 0,
+			"ur_billing_demand_lookback_period": 11,
+			"ur_billing_demand_minimum": 100,
 			"ur_dc_billing_demand_periods": [
-				[0.000000]
+				[1.000000, 1.000000]
 			],
 			"ur_dc_enable": 0,
 			"ur_dc_flat_mat": [
@@ -517,7 +528,7 @@
 			"ur_nm_yearend_sell_rate": 0,
 			"ur_ts_buy_rate": [0.000000],
 			"ur_ts_sell_rate": [0.000000],
-			"ur_yearzero_usage_peaks": [0.000000]
+			"ur_yearzero_usage_peaks": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 		},
 		"GridLimits": {
 			"enable_interconnection_limit": 0,

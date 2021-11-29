@@ -671,7 +671,7 @@ Capacity Payment
 0
 Numeric
 
-415
+472
 equations{ 'cp_system_nameplate' } = define() {
 	if (technology() == "Standalone Battery") return 0;
 	else return ${system_capacity}/1000;
@@ -685,7 +685,7 @@ equations{ 'cp_battery_nameplate' } = define() {
 		{ x = ${batt_simple_kwh}/1000; }
 	elseif ( t == 'ETES' )
 		{ x = ${cp_system_nameplate}; }
-	else 
+	else
 		{ x = 0; }
 	return x;	
 };
