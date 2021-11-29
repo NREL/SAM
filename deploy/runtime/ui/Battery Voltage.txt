@@ -1211,7 +1211,7 @@ equations{'batt_ui_bank_voltage'} = define()
 
 equations{'batt_ui_cell_voltage'} = define() 
 { return ${batt_Vnom_default}; };
-7549
+7623
 on_load{'Battery Voltage'} = define()
 {
 	set_voltage_choice( false );
@@ -1269,6 +1269,8 @@ function set_voltage_choice( is_update_default )
 	// vanadium flow model only uses nominal voltage as input
 	enable('batt_Vnom', is_electrochemical && !is_vanadium_flow);
 	enable('batt_Vcut', is_electrochemical && !is_vanadium_flow);
+	if (!(is_electrochemical && !is_vanadium_flow))
+		value('batt_Vcut', 0);
 	enable('batt_C_rate', is_electrochemical && !is_vanadium_flow );
 	enable('batt_Vfull', is_electrochemical && !is_vanadium_flow);
 	enable('batt_Vexp', is_electrochemical && !is_vanadium_flow);
