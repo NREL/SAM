@@ -389,7 +389,7 @@ Automated dispatch|PV smoothing|Dispatch to custom time series|Manual dispatch
 RadioChoice
 
 0
-4149
+3892
 on_load{'Battery Dispatch Options FOM'} = define() {
 	show_hide_charge_options();
 	check_auto_ppa();
