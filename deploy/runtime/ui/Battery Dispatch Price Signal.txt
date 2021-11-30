@@ -1,6 +1,6 @@
 Battery Dispatch Price Signal
-1092
-572
+1060
+647
 19
 SchedNumeric
 
@@ -15,7 +15,7 @@ X
 339
 Y
 3
-513
+609
 Width
 3
 114
@@ -57,7 +57,7 @@ X
 339
 Y
 3
-486
+582
 Width
 3
 198
@@ -91,13 +91,13 @@ X
 21
 Y
 3
-447
+525
 Width
 3
-918
+1002
 Height
 3
-36
+51
 Tool Tip
 5
 0
@@ -136,13 +136,13 @@ Name
 batt_cycle_cost_description6
 X
 3
-18
+21
 Y
 3
-345
+423
 Width
 3
-918
+1011
 Height
 3
 24
@@ -184,16 +184,16 @@ Name
 batt_cycle_cost_description615
 X
 3
-15
+12
 Y
 3
-171
+201
 Width
 3
-918
+1023
 Height
 3
-36
+39
 Tool Tip
 5
 0
@@ -232,16 +232,16 @@ Name
 batt_cycle_costs_label
 X
 3
-21
+18
 Y
 3
-423
+498
 Width
 3
 920
 Height
 3
-16
+20
 Tool Tip
 5
 0
@@ -271,10 +271,10 @@ Name
 batt_dispatch_load_escal_choice_psd
 X
 3
-315
+327
 Y
 3
-375
+450
 Width
 3
 180
@@ -311,10 +311,10 @@ Name
 batt_dispatch_load_forecast_choice_psd
 X
 3
-15
+12
 Y
 3
-255
+318
 Width
 3
 300
@@ -352,10 +352,10 @@ Name
 batt_dispatch_load_forecast_escal_psd
 X
 3
-651
+732
 Y
 3
-381
+456
 Width
 3
 100
@@ -398,7 +398,7 @@ X
 15
 Y
 3
-84
+102
 Width
 3
 300
@@ -439,13 +439,13 @@ X
 15
 Y
 3
-210
+258
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -469,13 +469,13 @@ X
 105
 Y
 3
-210
+258
 Width
 3
 828
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -510,10 +510,10 @@ Name
 batt_weather_label
 X
 3
-12
+9
 Y
 3
-234
+297
 Width
 3
 920
@@ -552,7 +552,7 @@ X
 15
 Y
 3
-69
+81
 Width
 3
 920
@@ -591,7 +591,7 @@ X
 12
 Y
 3
-156
+183
 Width
 3
 920
@@ -630,7 +630,7 @@ X
 15
 Y
 3
-327
+399
 Width
 3
 920
@@ -666,16 +666,16 @@ Name
 load_user_forecast_data_psd
 X
 3
-138
+150
 Y
 3
-378
+453
 Width
 3
 119
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -712,7 +712,7 @@ Width
 1042
 Height
 3
-544
+637
 Tool Tip
 5
 0
@@ -736,7 +736,7 @@ X
 12
 Y
 3
-18
+24
 Width
 3
 1001

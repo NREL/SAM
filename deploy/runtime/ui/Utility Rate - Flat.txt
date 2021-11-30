@@ -1,6 +1,6 @@
 Utility Rate - Flat
-1412
-538
+1414
+586
 27
 GroupBox
 
@@ -45,7 +45,7 @@ X
 9
 Y
 3
-464
+492
 Width
 3
 565
@@ -105,7 +105,7 @@ X
 9
 Y
 3
-414
+441
 Width
 3
 565
@@ -135,13 +135,13 @@ X
 9
 Y
 3
-213
+210
 Width
 3
 1403
 Height
 3
-198
+225
 Tool Tip
 5
 0
@@ -165,7 +165,7 @@ X
 576
 Y
 3
-414
+441
 Width
 3
 833
@@ -195,7 +195,7 @@ X
 612
 Y
 3
-465
+492
 Width
 3
 791
@@ -297,7 +297,7 @@ Width
 153
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -357,7 +357,7 @@ Width
 153
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -381,13 +381,13 @@ X
 18
 Y
 3
-354
+372
 Width
 3
-471
+600
 Height
 3
-51
+48
 Tool Tip
 5
 0
@@ -477,7 +477,7 @@ X
 873
 Y
 3
-438
+465
 Width
 3
 75
@@ -520,7 +520,7 @@ X
 231
 Y
 3
-504
+531
 Width
 3
 75
@@ -579,7 +579,7 @@ Name
 ur_en_ts_buy_rate
 X
 3
-519
+663
 Y
 3
 342
@@ -612,7 +612,7 @@ Name
 ur_en_ts_sell_rate
 X
 3
-519
+663
 Y
 3
 288
@@ -654,7 +654,7 @@ Width
 346
 Height
 3
-113
+128
 Tool Tip
 5
 0
@@ -691,7 +691,7 @@ X
 231
 Y
 3
-429
+456
 Width
 3
 75
@@ -753,7 +753,7 @@ X
 231
 Y
 3
-477
+504
 Width
 3
 75
@@ -812,7 +812,7 @@ Name
 ur_nm_credit_month
 X
 3
-714
+858
 Y
 3
 261
@@ -856,7 +856,7 @@ Name
 ur_nm_credit_rollover
 X
 3
-834
+978
 Y
 3
 234
@@ -889,7 +889,7 @@ Name
 ur_nm_yearend_sell_rate
 X
 3
-714
+858
 Y
 3
 234
@@ -994,7 +994,7 @@ Width
 617
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1029,7 +1029,7 @@ Name
 ur_ts_buy_rate
 X
 3
-714
+858
 Y
 3
 369
@@ -1038,7 +1038,7 @@ Width
 184
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1066,7 +1066,7 @@ Name
 ur_ts_sell_rate
 X
 3
-714
+858
 Y
 3
 315
@@ -1075,7 +1075,7 @@ Width
 184
 Height
 3
-24
+28
 Tool Tip
 5
 0

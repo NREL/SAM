@@ -102,7 +102,7 @@ Name
 frequency_sum
 X
 3
-1014
+1068
 Y
 3
 927
@@ -348,7 +348,7 @@ Name
 max_frequency
 X
 3
-195
+249
 Y
 3
 927
@@ -410,7 +410,7 @@ Name
 max_frequency_Hs
 X
 3
-456
+510
 Y
 3
 927
@@ -472,7 +472,7 @@ Name
 max_frequency_Te
 X
 3
-771
+825
 Y
 3
 927
@@ -534,7 +534,7 @@ Name
 wave_resource_filename
 X
 3
-222
+279
 Y
 3
 312

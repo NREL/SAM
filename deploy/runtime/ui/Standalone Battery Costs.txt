@@ -1248,13 +1248,13 @@ Name
 genericsys.cost.sales_tax.percent
 X
 3
-234
+267
 Y
 3
 321
 Width
 3
-100
+60
 Height
 3
 21
@@ -1373,13 +1373,13 @@ Name
 genericsys.cost.sales_tax.value
 X
 3
-423
+444
 Y
 3
 321
 Width
 3
-100
+60
 Height
 3
 21
@@ -2261,7 +2261,7 @@ Name
 object 743
 X
 3
-615
+621
 Y
 3
 27
@@ -2309,7 +2309,7 @@ Name
 object 7432
 X
 3
-615
+621
 Y
 3
 51

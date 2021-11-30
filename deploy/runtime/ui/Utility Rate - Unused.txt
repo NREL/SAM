@@ -560,13 +560,13 @@ X
 186
 Y
 3
-117
+114
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -652,13 +652,13 @@ X
 186
 Y
 3
-144
+141
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
