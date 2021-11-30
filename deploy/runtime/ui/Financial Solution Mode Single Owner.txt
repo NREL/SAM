@@ -523,28 +523,29 @@ MultilineText
 1
 
 
-2169
-// This form is a copy of Financial Solution Flip Leaseback
+2017
+// This form is a copy of Financial Solution Mode Single Owner
 // so ppa_soln_mode radio button can have different labels
-// to indicate IRR target is for the tax investor for flip 
-// structures. Any updates should be made to both forms.
+// to indicated IRR target is for the tax investor.
+// Any updates should be made to both forms.
 
-on_load{'Financial Solution Mode Single Owner'} = define()
+on_load{'Financial Solution Mode Flip Leaseback'} = define()
 {
 	soln_mode_ctrl_refresh();
-	if (technology() == "PV Battery" || technology() == "Generic Battery" 
-	|| technology() == "Standalone Battery" || technology() == "Fuel Cell") {
+	if ((technology() == "PV Battery" || technology() == "Generic Battery" 
+	|| technology() == "Standalone Battery" || technology() == "Fuel Cell") &&
+	financing() != "Host Developer") {
 		check_auto_ppa();
 	}
 	display_message();
-	on_change{'ppa_soln_mode'};
 };
 
 on_change{'ppa_soln_mode'} = define()
 {
 	soln_mode_ctrl_refresh();
-	if (technology() == "PV Battery" || technology() == "Generic Battery" 
-	|| technology() == "Standalone Battery" || technology() == "Fuel Cell") {
+	if ((technology() == "PV Battery" || technology() == "Generic Battery" 
+	|| technology() == "Standalone Battery" || technology() == "Fuel Cell") &&
+	financing() != "Host Developer") {
 		check_auto_ppa();
 	}
 	display_message();
@@ -571,10 +572,6 @@ function display_message()
 	if ( financing() == 'Host Developer' ) 
 	{
 		txt += 'IRR is the developer internal rate of return. ';
-	}
-	elseif( financing() == 'Community Solar' )
-	{
-		txt += 'Set PPA price or IRR target to zero if project only earns revenue from subscription payments on the Community Solar page.';
 	}
 	elseif ( value('ppa_soln_mode') == 0 && value('en_electricity_rates') == 0 )
 	{
