@@ -2303,11 +2303,11 @@ Numeric
 spe_data_filename
 3
 4
- 
+ Simple efficiency module model data file name
  
  
 0
-0
+1
 1
 4
 0
@@ -2399,11 +2399,11 @@ Numeric
 spe_is_bifacial
 3
 1
- 
+Use Bifacial Modules
  
 PV Module (Simple Efficiency)
 0
-2
+3
 1
 1
 1

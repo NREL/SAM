@@ -2475,11 +2475,11 @@ TabOrder
 iec61853_test_data
 3
 3
- 
+Matrix of test data for IEC 61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 3
 28
@@ -2531,11 +2531,11 @@ Numeric
 sd11par_AMa1
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2545,11 +2545,11 @@ Numeric
 sd11par_AMa2
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2559,11 +2559,11 @@ Numeric
 sd11par_AMa3
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
@@ -2573,11 +2573,11 @@ Numeric
 sd11par_AMa4
 3
 1
- 
+Air mass modifiers for IEC-61853 model
  
 IEC-68153 PV Module Model
 0
-0
+1
 1
 1
 1
