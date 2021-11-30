@@ -1,6 +1,6 @@
 Marine Costs - Financial Itemized
-918
-218
+923
+208
 18
 Label
 
@@ -12,10 +12,10 @@ Name
 capex_check
 X
 3
-33
+147
 Y
 3
-207
+252
 Width
 3
 90
@@ -188,7 +188,7 @@ X
 33
 Y
 3
-240
+249
 Width
 3
 90
@@ -280,10 +280,10 @@ Name
 itemized_check_reserve_accounts
 X
 3
-42
+282
 Y
 3
-204
+255
 Width
 3
 90
@@ -716,7 +716,7 @@ TabOrder
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 36
@@ -739,10 +739,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 39
@@ -765,10 +769,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 35
@@ -791,10 +799,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 30
@@ -817,6 +829,10 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 
 4
 financial_override_check

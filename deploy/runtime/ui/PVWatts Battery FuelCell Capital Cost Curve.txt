@@ -1,6 +1,6 @@
 PVWatts Battery FuelCell Capital Cost Curve
-826
-257
+830
+308
 13
 Numeric
 
@@ -15,7 +15,7 @@ X
 660
 Y
 3
-114
+171
 Width
 3
 90
@@ -78,7 +78,7 @@ X
 660
 Y
 3
-141
+198
 Width
 3
 90
@@ -141,7 +141,7 @@ X
 660
 Y
 3
-87
+144
 Width
 3
 90
@@ -204,7 +204,7 @@ X
 660
 Y
 3
-168
+225
 Width
 3
 90
@@ -267,7 +267,7 @@ X
 435
 Y
 3
-168
+225
 Width
 3
 225
@@ -315,7 +315,7 @@ X
 435
 Y
 3
-141
+198
 Width
 3
 225
@@ -360,13 +360,13 @@ Name
 capex_table_total_label19
 X
 3
-504
+474
 Y
 3
-114
+171
 Width
 3
-156
+186
 Height
 3
 24
@@ -408,13 +408,13 @@ Name
 capex_table_total_label2
 X
 3
-504
+477
 Y
 3
-87
+144
 Width
 3
-156
+183
 Height
 3
 24
@@ -459,7 +459,7 @@ X
 468
 Y
 3
-210
+267
 Width
 3
 192
@@ -507,7 +507,7 @@ X
 630
 Y
 3
-195
+252
 Width
 3
 144
@@ -551,7 +551,7 @@ Width
 812
 Height
 3
-246
+291
 Tool Tip
 5
 0
@@ -581,7 +581,7 @@ Width
 759
 Height
 3
-63
+108
 Tool Tip
 5
 0
@@ -623,7 +623,7 @@ X
 660
 Y
 3
-210
+267
 Width
 3
 90

@@ -132,16 +132,16 @@ Name
 btnCalcCoefficients
 X
 3
-777
+792
 Y
 3
-24
+21
 Width
 3
 164
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -162,7 +162,7 @@ Name
 btnLoadCECInvData
 X
 3
-180
+192
 Y
 3
 930
@@ -171,7 +171,7 @@ Width
 153
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -192,7 +192,7 @@ Name
 btnSaveCECInvData
 X
 3
-21
+30
 Y
 3
 930
@@ -201,7 +201,7 @@ Width
 153
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -626,7 +626,7 @@ Width
 864
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -661,7 +661,7 @@ Name
 inv_cec_cg_idcmax
 X
 3
-447
+432
 Y
 3
 531
@@ -723,7 +723,7 @@ Name
 inv_cec_cg_mppt_hi
 X
 3
-873
+846
 Y
 3
 531
@@ -785,7 +785,7 @@ Name
 inv_cec_cg_mppt_low
 X
 3
-672
+633
 Y
 3
 531
@@ -1324,7 +1324,7 @@ Name
 inv_cec_cg_vdcmax
 X
 3
-252
+243
 Y
 3
 531

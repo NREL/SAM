@@ -228,7 +228,7 @@ Name
 batt_bank_ncells_serial
 X
 3
-591
+609
 Y
 3
 141
@@ -290,7 +290,7 @@ Name
 batt_bank_nseries_stacks
 X
 3
-591
+609
 Y
 3
 195
@@ -352,7 +352,7 @@ Name
 batt_bank_nstrings
 X
 3
-591
+609
 Y
 3
 168
@@ -516,7 +516,7 @@ Name
 batt_bank_size_specify
 X
 3
-591
+609
 Y
 3
 222
@@ -674,13 +674,13 @@ Name
 batt_parallel_label
 X
 3
-411
+414
 Y
 3
 168
 Width
 3
-177
+192
 Height
 3
 24
@@ -722,7 +722,7 @@ Name
 batt_series_label
 X
 3
-426
+444
 Y
 3
 141
@@ -773,7 +773,7 @@ X
 30
 Y
 3
-90
+84
 Width
 3
 252
@@ -819,7 +819,7 @@ Width
 1029
 Height
 3
-36
+60
 Tool Tip
 5
 0
@@ -906,13 +906,13 @@ Name
 object 717
 X
 3
-24
+15
 Y
 3
 168
 Width
 3
-138
+147
 Height
 3
 24

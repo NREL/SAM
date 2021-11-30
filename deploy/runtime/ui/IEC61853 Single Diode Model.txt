@@ -12,16 +12,16 @@ Name
 btn_calc_iec65153_par
 X
 3
-324
+330
 Y
 3
-315
+318
 Width
 3
 159
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -45,13 +45,13 @@ X
 321
 Y
 3
-636
+627
 Width
 3
 135
 Height
 3
-24
+28
 Tool Tip
 5
 0

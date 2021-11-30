@@ -695,8 +695,8 @@ static void fcall_codegen_metric_row(lk::invoke_t& cxt)
 			if (i < labels.GetCount()) {
 				md.label = labels[i];
 			}
-			else if (labels.GetCount() > 0) {
-				md.label = labels[i];
+			else if (labels.GetCount() > 0) { // take first label
+				md.label = labels[0];
 			}
 
 

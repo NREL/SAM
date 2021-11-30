@@ -68,7 +68,7 @@ Width
 233
 Height
 3
-65
+83
 Tool Tip
 5
 0
@@ -725,16 +725,16 @@ Name
 copy_schedule
 X
 3
-414
+420
 Y
 3
-21
+18
 Width
 3
 261
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1319,7 +1319,7 @@ Y
 24
 Width
 3
-268
+340
 Height
 3
 24

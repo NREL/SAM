@@ -453,7 +453,7 @@ function MEwave_metrics()
 
 	if (financing()  != "None") {
 		metric_table('Table2', {'headers'='Category,Cost,Cost per capacity,LCOE'});
-		metric_row( 'total_installed_cost,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='0,0,2', 'thousep'='true,true,true', 'pre'=' $,,', 'post'= ' , $/kW, $/kWh', 'tableName'='Table2' });
+		metric_row( 'capital_cost,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='0,0,2', 'thousep'='true,true,true', 'pre'=' $,,', 'post'= ' , $/kW, $/kWh', 'tableName'='Table2' });
 		metric_row( 'device_costs_total,total_device_cost_per_kw,total_device_cost_kwh', {'label'='-  Device cost', 'mode'='f,f,f', 'deci'='0,0,2', 'thousep'='true,true,true', 'pre'=' $,,', 'post'= ' , $/kW, $/kWh', 'tableName'='Table2' });
 		metric_row( 'balance_of_system_cost_total,total_bos_cost_per_kw,total_bos_cost_kwh', {'label'='-  Balance of system cost', 'mode'='f,f,f', 'deci'='0,0,2', 'thousep'='true,true,true', 'pre'=' $,,', 'post'= ' , $/kW, $/kWh', 'tableName'='Table2' });
 		metric_row( 'financial_cost_total,total_financial_cost_per_kw,total_financial_cost_kwh', {'label'='-  Financial cost', 'mode'='f,f,f', 'deci'='0,0,2', 'thousep'='true,true,true', 'pre'=' $,,', 'post'= ' , $/kW, $/kWh', 'tableName'='Table2' });
@@ -483,7 +483,7 @@ function MEtidal_metrics()
 	}
 	if (financing() != "None") {
 		metric_table('Table2', {'headers'='Category,Costs,Costs per capacity,LCOE'});
-		metric_row( 'total_installed_cost,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' , $/kW, $/kWh', 'pre'='$,,','tableName'='Table2' });
+		metric_row( 'capital_cost,total_capital_cost_per_kw,total_capital_cost_kwh', {'label'='Capital cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' , $/kW, $/kWh', 'pre'='$,,','tableName'='Table2' });
 		metric_row( 'device_costs_total,total_device_cost_per_kw,total_device_cost_kwh', {'label'='-  Device cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' , $/kW, $/kWh', 'pre'='$,,','tableName'='Table2' });
 		metric_row( 'balance_of_system_cost_total,total_bos_cost_per_kw,total_bos_cost_kwh', {'label'='-  Balance of system cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' , $/kW, $/kWh','pre'='$,,', 'tableName'='Table2' });
 		metric_row( 'financial_cost_total,total_financial_cost_per_kw,total_financial_cost_kwh', {'label'='-  Financial cost', 'mode'='f,f,f', 'deci'='2,0,2', 'thousep'='true,true,true', 'post'= ' , $/kW, $/kWh', 'pre'='$,,', 'tableName'='Table2' });
