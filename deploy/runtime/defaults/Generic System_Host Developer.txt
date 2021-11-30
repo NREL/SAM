@@ -2237,7 +2237,7 @@ state_tax_rate
 2
 1
 1
-0
+7
 system_capacity
 1
 1

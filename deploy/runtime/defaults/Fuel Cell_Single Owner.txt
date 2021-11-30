@@ -2576,7 +2576,7 @@ federal_tax_rate
 2
 1
 1
-0
+21
 file_name
 1
 4
@@ -4545,7 +4545,7 @@ state_tax_rate
 2
 1
 1
-0
+7
 station_id
 1
 4
