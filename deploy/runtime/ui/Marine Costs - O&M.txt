@@ -1282,7 +1282,7 @@ TabOrder
 3
 4294967295
 
-19
+9
 om_cost_input
 3
 1
@@ -1325,48 +1325,6 @@ ME Costs - Operation Maintenance
 1
 0
 Default
-total_bos_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_bos_cost_percent
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_capital_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
 total_device_cost_lcoe
 3
 1
@@ -1375,34 +1333,6 @@ Device cost
 ME Costs - Operation Maintenance
 0
 9
-1
-1
-1
-1
-0
-Default
-total_device_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_device_cost_percent
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
 1
 1
 1
@@ -1423,49 +1353,7 @@ ME Costs - Operation Maintenance
 1
 0
 Default
-total_financial_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_financial_cost_percent
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
 total_installed_cost_lcoe
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_installed_cost_percent
 3
 1
  
@@ -1521,36 +1409,8 @@ ME Costs - Operation Maintenance
 1
 0
 Default
-total_operations_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_operations_cost_percent
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
 
-2923
+282
 equations {'total_operating_cost'} = define() {
 	if (${om_cost_override}!=1)
 	{
@@ -1564,93 +1424,6 @@ equations {'total_operating_cost'} = define() {
 
 equations {'total_operating_cost_mill'} = define() {
 	return ${total_operating_cost}/1000000;
-};
-
-equations {'total_capital_cost_per_kw'} = define() {
-	return ${total_installed_cost}/${system_capacity};
-};
-
-equations {'total_device_cost_per_kw'} = define() {
-	return ${device_costs_total}/${system_capacity};
-};
-
-equations {'total_bos_cost_per_kw'} = define() {
-	return ${balance_of_system_cost_total}/${system_capacity};
-};
-
-equations {'total_financial_cost_per_kw'} = define() {
-	return ${financial_cost_total}/${system_capacity};
-};
-
-equations {'total_operations_cost_per_kw'} = define() {
-	return ${total_operating_cost}/${system_capacity};
-};
-
-equations {'total_installed_cost_percent'} = define() {
-	return ${total_installed_cost}/(${total_installed_cost}+${total_operating_cost});
-};
-
-equations {'total_device_cost_percent'} = define() {
-	return ${device_costs_total}/(${total_installed_cost}+${total_operating_cost});
-};
-
-equations {'total_bos_cost_percent'} = define() {
-	return ${balance_of_system_cost_total}/(${total_installed_cost}+${total_operating_cost});
-};
-
-equations {'total_financial_cost_percent'} = define() {
-	return ${financial_cost_total}/(${total_installed_cost}+${total_operating_cost});
-};
-
-equations {'total_operations_cost_percent'} = define() {
-	return ${total_operating_cost}/(${total_installed_cost}+${total_operating_cost});
-};
-
-/*equations {'total_installed_cost_lcoe'} = define() {
-	return (${fixed_charge_rate}*${total_installed_cost}/${annual_energy})/
-	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};
-
-equations {'total_device_cost_lcoe'} = define() {
-	return (${fixed_charge_rate}*${device_costs_total}/${annual_energy})/
-	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};
-
-equations {'total_bos_cost_lcoe'} = define() {
-	return (${fixed_charge_rate}*${balance_of_system_cost_total}/${annual_energy})/
-	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};
-
-equations {'total_financial_cost_lcoe'} = define() {
-	return (${fixed_charge_rate}*${financial_cost_total}/${annual_energy})/
-	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};
-
-equations {'total_operations_cost_lcoe'} = define(){
-	return (${total_operating_cost}/${annual_energy})/
-	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};*/
-
-equations {'opex_we_shown'} = define() {
-	if (${operations_cost_method}==3) 
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-};
-
-equations {'maintenance_we_shown'} = define() {
-	if (${maintenance_cost_method}==3)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
 };
 
 
