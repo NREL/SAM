@@ -437,8 +437,8 @@ Numeric
 batt_pv_ac_forecast
 3
 2
- 
- 
+AC forecast values for battery dispatch 
+kW
 Battery Dispatch
 0
 0
@@ -451,8 +451,8 @@ Default
 batt_pv_clipping_forecast
 3
 2
- 
- 
+Clipped PV values for battery dispatch 
+kWdc
 Battery Dispatch
 0
 0
