@@ -639,17 +639,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_bos_cost_lcoe_nget(SAM_table ptr, SA
 
 
 
-SAM_EXPORT double SAM_MhkWave_Outputs_total_bos_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_bos_cost_per_kw", &result))
-		make_access_error("SAM_MhkWave", "total_bos_cost_per_kw");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -666,17 +655,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_lcoe_nget(SAM_table ptr
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_capital_cost_lcoe", &result))
 		make_access_error("SAM_MhkWave", "total_capital_cost_lcoe");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_capital_cost_per_kw", &result))
-		make_access_error("SAM_MhkWave", "total_capital_cost_per_kw");
 	});
 	return result;
 }
@@ -705,17 +683,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_lcoe_nget(SAM_table ptr,
 
 
 
-SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_device_cost_per_kw", &result))
-		make_access_error("SAM_MhkWave", "total_device_cost_per_kw");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -738,17 +705,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_lcoe_nget(SAM_table p
 
 
 
-SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_financial_cost_per_kw", &result))
-		make_access_error("SAM_MhkWave", "total_financial_cost_per_kw");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_om_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -765,17 +721,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_om_cost_lcoe_nget(SAM_table ptr, SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_om_cost_lcoe", &result))
 		make_access_error("SAM_MhkWave", "total_om_cost_lcoe");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MhkWave_Outputs_total_operations_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_operations_cost_per_kw", &result))
-		make_access_error("SAM_MhkWave", "total_operations_cost_per_kw");
 	});
 	return result;
 }

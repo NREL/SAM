@@ -74,12 +74,6 @@ SAM_EXPORT void SAM_MhkTidal_MHKTidal_number_devices_nset(SAM_table ptr, double 
 	});
 }
 
-SAM_EXPORT void SAM_MhkTidal_MHKTidal_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "system_capacity", number);
-	});
-}
-
 SAM_EXPORT void SAM_MhkTidal_MHKTidal_tidal_power_curve_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "tidal_power_curve", mat, nrows, ncols);
@@ -202,17 +196,6 @@ SAM_EXPORT double SAM_MhkTidal_MHKTidal_number_devices_nget(SAM_table ptr, SAM_e
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "number_devices", &result))
 		make_access_error("SAM_MhkTidal", "number_devices");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MhkTidal_MHKTidal_system_capacity_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_capacity", &result))
-		make_access_error("SAM_MhkTidal", "system_capacity");
 	});
 	return result;
 }
@@ -388,17 +371,6 @@ SAM_EXPORT double SAM_MhkTidal_Outputs_total_bos_cost_lcoe_nget(SAM_table ptr, S
 
 
 
-SAM_EXPORT double SAM_MhkTidal_Outputs_total_bos_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_bos_cost_per_kw", &result))
-		make_access_error("SAM_MhkTidal", "total_bos_cost_per_kw");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_MhkTidal_Outputs_total_capital_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -415,17 +387,6 @@ SAM_EXPORT double SAM_MhkTidal_Outputs_total_capital_cost_lcoe_nget(SAM_table pt
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_capital_cost_lcoe", &result))
 		make_access_error("SAM_MhkTidal", "total_capital_cost_lcoe");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MhkTidal_Outputs_total_capital_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_capital_cost_per_kw", &result))
-		make_access_error("SAM_MhkTidal", "total_capital_cost_per_kw");
 	});
 	return result;
 }
@@ -454,17 +415,6 @@ SAM_EXPORT double SAM_MhkTidal_Outputs_total_device_cost_lcoe_nget(SAM_table ptr
 
 
 
-SAM_EXPORT double SAM_MhkTidal_Outputs_total_device_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_device_cost_per_kw", &result))
-		make_access_error("SAM_MhkTidal", "total_device_cost_per_kw");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_MhkTidal_Outputs_total_financial_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -487,17 +437,6 @@ SAM_EXPORT double SAM_MhkTidal_Outputs_total_financial_cost_lcoe_nget(SAM_table 
 
 
 
-SAM_EXPORT double SAM_MhkTidal_Outputs_total_financial_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_financial_cost_per_kw", &result))
-		make_access_error("SAM_MhkTidal", "total_financial_cost_per_kw");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double SAM_MhkTidal_Outputs_total_om_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -514,17 +453,6 @@ SAM_EXPORT double SAM_MhkTidal_Outputs_total_om_cost_lcoe_nget(SAM_table ptr, SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "total_om_cost_lcoe", &result))
 		make_access_error("SAM_MhkTidal", "total_om_cost_lcoe");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_MhkTidal_Outputs_total_operations_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_operations_cost_per_kw", &result))
-		make_access_error("SAM_MhkTidal", "total_operations_cost_per_kw");
 	});
 	return result;
 }
