@@ -1,7 +1,7 @@
 {
 	"defaults": {
 		"MHKTidal": {
-			"balance_of_system_cost_total": 8.54201e+06,
+			"balance_of_system_cost_total": 8.542e+06,
 			"device_costs_total": 4.23112e+06,
 			"financial_cost_total": 1.11936e+06,
 			"fixed_charge_rate": 0.108,

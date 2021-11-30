@@ -98,7 +98,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -470,7 +470,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -824,7 +824,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
@@ -1007,10 +1007,10 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
-3
+2
 Prefix
 5
 0
