@@ -170,7 +170,7 @@ grid_outage
 3
 2
 Grid outage
-0/1
+0 - no outage (grid on) / 1 - outage (grid off)
 Grid
 0
 2
