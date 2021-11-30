@@ -205,9 +205,9 @@ Bold
 batt_dispatch_auto_can_gridcharge
 3
 1
- 
- 
- 
+Battery can charge from grid
+0/1
+Battery Dispatch
 0
 0
 1
@@ -233,9 +233,9 @@ Default
 batt_dispatch_choice_ui
 3
 1
+Battery dispatch options FOM
  
- 
- 
+Battery Dispatch
 0
 0
 1
