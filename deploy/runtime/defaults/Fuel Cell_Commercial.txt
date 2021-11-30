@@ -167,7 +167,7 @@ array_type
 1
 1
 1
-0
+1
 azimuth
 1
 1
@@ -1418,7 +1418,7 @@ chk_update_peaks
 1
 1
 1
-4.94066e-323
+1
 city
 1
 4
@@ -1561,7 +1561,7 @@ dc_ac_ratio
 1
 1
 1
-1.2
+1.15
 dc_degradation
 1
 2
@@ -2322,7 +2322,7 @@ gcr
 1
 1
 1
-0.4
+0.3
 grid_curtailment
 1
 2
@@ -2759,7 +2759,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 inv_eff
 1
 1
@@ -4785,8 +4785,9 @@ ur_yearzero_usage_peaks
 1
 2
 1
-1
-0
+12
+234.676 173.422 172.007 191.434 198.295 236.469 274.231 260.336 226.751 185.123 156.2 184.05 
+
 use_specific_weather_file
 1
 1

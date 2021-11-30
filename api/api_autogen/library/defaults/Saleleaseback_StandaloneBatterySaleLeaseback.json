@@ -1,9 +1,9 @@
 {
 	"defaults": {
 		"Revenue": {
-			"ppa_escalation": 0.5,
-			"ppa_price_input": [0.300000],
-			"ppa_soln_mode": 0
+			"ppa_escalation": 1,
+			"ppa_price_input": [0.550000],
+			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -17,7 +17,7 @@
 			"equip_reserve_depr_sta": 0,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 0.5,
+			"insurance_rate": 0,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 1,
@@ -198,7 +198,7 @@
 			"system_capacity": 60000
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 1
+			"en_electricity_rates": 0
 		},
 		"SaleLeaseback": {
 			"construction_financing_cost": 1.77709e+06,

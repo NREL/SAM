@@ -1,6 +1,6 @@
 Utility Rate - Billing Demand
-1414
-447
+1420
+493
 13
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 1403
 Height
 3
-440
+479
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 357
 Y
 3
-90
+129
 Width
 3
 459
@@ -78,7 +78,7 @@ X
 834
 Y
 3
-90
+129
 Width
 3
 408
@@ -125,13 +125,13 @@ X
 675
 Y
 3
-156
+195
 Width
 3
 722
 Height
 3
-16
+20
 Tool Tip
 5
 0
@@ -164,13 +164,13 @@ X
 21
 Y
 3
-156
+195
 Width
 3
 608
 Height
 3
-16
+20
 Tool Tip
 5
 0
@@ -203,7 +203,7 @@ X
 1089
 Y
 3
-180
+219
 Width
 3
 300
@@ -257,7 +257,7 @@ Width
 1206
 Height
 3
-36
+60
 Tool Tip
 5
 0
@@ -299,7 +299,7 @@ X
 39
 Y
 3
-177
+216
 Width
 3
 575
@@ -389,7 +389,7 @@ X
 165
 Y
 3
-90
+129
 Width
 3
 90
@@ -451,7 +451,7 @@ X
 165
 Y
 3
-117
+156
 Width
 3
 90
@@ -513,13 +513,13 @@ X
 690
 Y
 3
-177
+216
 Width
 3
 374
 Height
 3
-253
+258
 Tool Tip
 5
 0
@@ -636,13 +636,13 @@ X
 564
 Y
 3
-117
+156
 Width
 3
 96
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -755,7 +755,7 @@ Electricity Rates - Billing Demand
 MonthlyFactor
 
 0
-3091
+3259
 on_load{'Utility Rate - Billing Demand'} = define() {
 	enable_ratchet_demand_charges();
 	check_update_year_one_peaks(true);
@@ -772,7 +772,11 @@ on_change{'ur_yearzero_usage_peaks'} = define() {
 };
 
 function is_btm() {
-	return ( financing() != "Single Owner" );
+	return ( financing() != "Single Owner"
+	&& financing() != "Merchant Plant" &&
+	financing() != "Sale Leaseback" &&
+	financing() != 'Leveraged Partnership Flip' &&
+	financing() != 'All Equity Partnership Flip');
 }
 
 function check_update_year_one_peaks(is_on_load) {

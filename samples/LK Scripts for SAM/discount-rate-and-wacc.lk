@@ -3,7 +3,7 @@
 // such that payback periods show effects of all WACC parameters
 //
 // Script written by Steven Janzou using SAM 2016.7.21 beta, September 27, 2016
-// Tested and modified for SAM 2020.11.29
+// Tested and modified for SAM 2021.12.02
 //
 
 //set the current SAM case (optional if you have one set up)
@@ -29,7 +29,7 @@ for(rl=0;rl<11;rl++)
 // effective tax rate	
 	te=ts+(1-ts)*tf;
 // debt fraction
-	fd=get('debt_fraction')/100;
+	fd=get('debt_percent')/100;
 // inflation	
 	ri=get('inflation_rate')/100;
 // calculate real discount rate to set using wacc=dr

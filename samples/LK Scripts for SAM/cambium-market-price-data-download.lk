@@ -18,7 +18,7 @@ SAM case:
 
 1. Set the Solution Mode on the Revenue page to "Specify PPA price."
 
-2. Set the he PPA price to $0.001/kWh (Cambium data is in $/MWh, so this
+2. Set the PPA price to $0.001/kWh (Cambium data is in $/MWh, so this
    converts the data from $/MWh to $/kWh.)
    
 3. Expand the Time of Delivery panel on the Revenue page and sets the TOD option
@@ -29,7 +29,7 @@ SAM case:
    
 To use the script, click Run above and follow the prompts.
 
-Written in SAM 2020.11.29. Last tested in SAM 2020.11.29.
+Written in SAM 2020.11.29. Last tested in SAM 2021.12.02.
 
 */
 

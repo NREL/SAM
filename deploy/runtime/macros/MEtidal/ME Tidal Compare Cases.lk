@@ -664,7 +664,7 @@ if (num_cases ==2)
 {
 //Get change in capex, opex, and aep contribution for two case comparison
 
-	if (lcoe[1]>lcoe[0])
+	if (lcoe[1]>=lcoe[0])
 	{
 	baselineCase = 1;
 	advancedCase = 0;

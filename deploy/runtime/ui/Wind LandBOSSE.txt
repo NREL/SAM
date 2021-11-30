@@ -77,13 +77,13 @@ X
 15
 Y
 3
-393
+390
 Width
 3
 162
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -104,16 +104,16 @@ Name
 btn_bos_run
 X
 3
-15
+18
 Y
 3
-315
+312
 Width
 3
 162
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -754,13 +754,13 @@ Name
 en_landbosse
 X
 3
-33
+15
 Y
 3
 66
 Width
 3
-321
+351
 Height
 3
 24
@@ -2406,13 +2406,13 @@ Name
 object 7
 X
 3
-360
+384
 Y
 3
 66
 Width
 3
-450
+435
 Height
 3
 24

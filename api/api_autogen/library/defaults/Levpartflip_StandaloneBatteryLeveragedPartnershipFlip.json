@@ -3,9 +3,9 @@
 		"Revenue": {
 			"flip_target_percent": 11,
 			"flip_target_year": 20,
-			"ppa_escalation": 0.5,
-			"ppa_price_input": [0.250000],
-			"ppa_soln_mode": 0
+			"ppa_escalation": 1,
+			"ppa_price_input": [0.550000],
+			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
@@ -29,7 +29,7 @@
 			"equip_reserve_depr_sta": 0,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 1,
+			"insurance_rate": 0,
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6,
 			"payment_option": 0,
@@ -223,7 +223,7 @@
 			"system_capacity": 60000
 		},
 		"ElectricityRates": {
-			"en_electricity_rates": 1
+			"en_electricity_rates": 0
 		},
 		"Moratorium": {
 			"loan_moratorium": 0

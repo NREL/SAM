@@ -1,7 +1,7 @@
 Physical Trough Capital Costs
 792
 642
-66
+65
 GroupBox
 
 1
@@ -359,54 +359,6 @@ Caption
 5
 1
 $
-TextColour
-4
-0
-0
-0
-255
-Bold
-2
-0
-FontSize
-3
-0
-WordWrap
-2
-0
-AlignRight
-2
-1
-AlignTop
-2
-0
-Label
-
-1
-13
-Name
-5
-7
-Label51
-X
-3
-99
-Y
-3
-519
-Width
-3
-155
-Height
-3
-21
-Tool Tip
-5
-0
-Caption
-5
-15
-Sales tax basis
 TextColour
 4
 0
@@ -2071,13 +2023,13 @@ Name
 csp.dtr.cost.sales_tax.percent
 X
 3
-258
+291
 Y
 3
 519
 Width
 3
-100
+60
 Height
 3
 21
@@ -2196,13 +2148,13 @@ Name
 csp.dtr.cost.sales_tax.value
 X
 3
-447
+465
 Y
 3
 519
 Width
 3
-100
+60
 Height
 3
 21
@@ -4080,7 +4032,7 @@ Sales tax basis, percent of total direct cost
 %
 Physical Trough Capital Costs
 0
-3
+2
 1
 1
 1

@@ -128,16 +128,16 @@ Name
 btn_selectcases
 X
 3
-411
+456
 Y
 3
-126
+102
 Width
 3
 143
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -161,7 +161,7 @@ X
 432
 Y
 3
-345
+351
 Width
 3
 120
@@ -344,16 +344,16 @@ Name
 energy_output_array
 X
 3
-411
+456
 Y
 3
-150
+132
 Width
 3
 143
 Height
 3
-21
+28
 Tool Tip
 5
 0
@@ -444,7 +444,7 @@ X
 432
 Y
 3
-321
+324
 Width
 3
 120
@@ -565,16 +565,16 @@ Name
 import_message
 X
 3
-48
+18
 Y
 3
-177
+198
 Width
 3
-636
+750
 Height
 3
-57
+36
 Tool Tip
 5
 0
@@ -780,13 +780,13 @@ X
 48
 Y
 3
-30
+24
 Width
 3
-413
+689
 Height
 3
-65
+71
 Tool Tip
 5
 0
@@ -818,10 +818,10 @@ Name
 system_capacity
 X
 3
-453
+456
 Y
 3
-126
+129
 Width
 3
 100
@@ -880,7 +880,7 @@ Name
 system_capacity_combined
 X
 3
-453
+456
 Y
 3
 102
@@ -942,10 +942,10 @@ Name
 user_capacity_factor
 X
 3
-453
+456
 Y
 3
-150
+156
 Width
 3
 100

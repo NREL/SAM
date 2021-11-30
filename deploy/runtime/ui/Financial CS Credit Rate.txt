@@ -48,7 +48,7 @@ Y
 60
 Width
 3
-99
+117
 Height
 3
 24
@@ -90,10 +90,10 @@ Name
 object 74
 X
 3
-18
+21
 Y
 3
-18
+21
 Width
 3
 828

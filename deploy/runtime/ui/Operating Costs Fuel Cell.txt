@@ -1,6 +1,6 @@
 Operating Costs Fuel Cell
-951
-258
+957
+269
 48
 GroupBox
 
@@ -42,7 +42,7 @@ Name
 Label1
 X
 3
-777
+816
 Y
 3
 24
@@ -426,7 +426,7 @@ Name
 Label26
 X
 3
-585
+600
 Y
 3
 24
@@ -522,7 +522,7 @@ Name
 Label28
 X
 3
-219
+222
 Y
 3
 24
@@ -618,7 +618,7 @@ Name
 fc_fuel_cost
 X
 3
-585
+600
 Y
 3
 168
@@ -667,7 +667,7 @@ Y
 144
 Width
 3
-111
+126
 Height
 3
 21
@@ -715,7 +715,7 @@ Y
 120
 Width
 3
-45
+54
 Height
 3
 21
@@ -763,7 +763,7 @@ Y
 120
 Width
 3
-111
+126
 Height
 3
 21
@@ -805,13 +805,13 @@ Name
 object 715
 X
 3
-678
+693
 Y
 3
 96
 Width
 3
-39
+45
 Height
 3
 21
@@ -853,13 +853,13 @@ Name
 object 717
 X
 3
-678
+693
 Y
 3
 72
 Width
 3
-39
+54
 Height
 3
 21
@@ -1003,7 +1003,7 @@ Y
 96
 Width
 3
-39
+54
 Height
 3
 21
@@ -1045,7 +1045,7 @@ Name
 object 729
 X
 3
-678
+693
 Y
 3
 48
@@ -1195,7 +1195,7 @@ Y
 72
 Width
 3
-39
+51
 Height
 3
 21
@@ -1237,13 +1237,13 @@ Name
 object 74
 X
 3
-678
+693
 Y
 3
 144
 Width
 3
-39
+48
 Height
 3
 21
@@ -1285,13 +1285,13 @@ Name
 object 76
 X
 3
-678
+693
 Y
 3
 120
 Width
 3
-105
+123
 Height
 3
 21
@@ -1422,7 +1422,7 @@ X
 375
 Y
 3
-48
+45
 Width
 3
 90
@@ -1610,7 +1610,7 @@ Name
 om_capacity_escal
 X
 3
-786
+825
 Y
 3
 96
@@ -1716,7 +1716,7 @@ Name
 om_fixed_escal
 X
 3
-786
+825
 Y
 3
 72
@@ -1779,7 +1779,7 @@ Name
 om_fuel_cost_escal
 X
 3
-786
+825
 Y
 3
 168
@@ -1842,7 +1842,7 @@ Name
 om_fuel_price_units
 X
 3
-678
+693
 Y
 3
 168
@@ -1876,7 +1876,7 @@ Name
 om_fuelcell_capacity_cost
 X
 3
-585
+600
 Y
 3
 96
@@ -1919,7 +1919,7 @@ Name
 om_fuelcell_fixed_cost
 X
 3
-585
+600
 Y
 3
 72
@@ -1962,7 +1962,7 @@ Name
 om_fuelcell_nameplate
 X
 3
-585
+600
 Y
 3
 48
@@ -2024,7 +2024,7 @@ Name
 om_fuelcell_replacement_cost
 X
 3
-585
+600
 Y
 3
 144
@@ -2067,7 +2067,7 @@ Name
 om_fuelcell_variable_cost
 X
 3
-585
+600
 Y
 3
 120
@@ -2153,7 +2153,7 @@ Name
 om_production_escal
 X
 3
-786
+825
 Y
 3
 120
@@ -2216,7 +2216,7 @@ Name
 om_replacement_cost_escal
 X
 3
-786
+825
 Y
 3
 144
@@ -2282,7 +2282,7 @@ X
 219
 Y
 3
-48
+45
 Width
 3
 90
