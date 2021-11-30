@@ -656,30 +656,24 @@ Battery Dispatch FOM Automated
 TextEntry
 
 0
-2894
+2910
 on_load{'Battery Dispatch Automated FOM'}=define()
 {	
 	// fom = front of meter
 	value('batt_dispatch_choice', 0);
-	on_change{'batt_dispatch_wf_forecast_choice'};
 	toggle_dispatch_fom_automated();
-	if (technology() == "Fuel Cell")
+	invalid_option_message();
+	if (technology() == 'Fuel Cell')
+	{
 		toggle_dispatch();
-	//on_change{'batt_dispatch_choice'};
-	//on_change{'batt_select_weather_file_forecast'};
-	//on_change{'batt_cycle_cost_choice'};
+	}
 	show_hide_charge_options();
 };
 
 on_change{'batt_dispatch_wf_forecast_choice'}=define()
 { 
-	
 	toggle_dispatch_fom_automated();
-	if (technology() == "Standalone Battery" && value('batt_dispatch_wf_forecast_choice')==2) {
-		msgbox("Standalone battery systems do not take weather files as an input. Please select a different forecast option.");
-		enable('batt_select_weather_file_forecast', false);
-		enable('batt_user_specified_weather_file', false);
-	}
+	invalid_option_message();
 };
 
 on_change{'batt_select_weather_file_forecast'}=define()
@@ -743,7 +737,6 @@ function toggle_dispatch_fom_automated()
 	
 }
 
-
 function enable_auto_inputs_fom(on_off)
 {
 	enable('batt_auto_gridcharge_max_daily', on_off);
@@ -758,4 +751,14 @@ function enable_non_manual_inputs_fom(on_off)
 	enable('batt_dispatch_auto_can_gridcharge', on_off);
 	enable('batt_dispatch_auto_can_charge', on_off);
 	//enable('batt_dispatch_auto_can_clipcharge', value('ui_batt_is_dc'));
+}
+
+function invalid_option_message()
+{
+ 	if ((technology() == 'Standalone Battery' || technology() == 'Generic Battery') && value('batt_dispatch_wf_forecast_choice')==2) 
+	{
+		msgbox('Invalid dispatch choice.\nLook ahead to custom weather file is only available for PV battery configurations.\n\nPlease choose a different automated dispatch option.');
+		enable('batt_select_weather_file_forecast', false);
+		enable('batt_user_specified_weather_file', false);
+	}
 }
