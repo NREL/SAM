@@ -1431,7 +1431,7 @@ Name
 ui_fixed_charge_rate
 X
 3
-159
+174
 Y
 3
 303

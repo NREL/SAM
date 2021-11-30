@@ -1,6 +1,6 @@
 Battery Dispatch BTM Outage SOC
-1049
-88
+1052
+134
 4
 Numeric
 
@@ -110,7 +110,7 @@ AlignRight
 0
 AlignTop
 2
-1
+0
 GroupBox
 
 1
@@ -130,7 +130,7 @@ Width
 1042
 Height
 3
-84
+123
 Tool Tip
 5
 0
@@ -160,7 +160,7 @@ Width
 1010
 Height
 3
-24
+57
 Tool Tip
 5
 0
@@ -182,13 +182,13 @@ FontSize
 0
 WordWrap
 2
-0
+1
 AlignRight
 2
 0
 AlignTop
 2
-0
+1
 
 1
 batt_minimum_outage_SOC

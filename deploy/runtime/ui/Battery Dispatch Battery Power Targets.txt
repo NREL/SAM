@@ -1,6 +1,6 @@
 Battery Dispatch Battery Power Targets
-1050
-101
+1057
+129
 3
 DataArray
 
@@ -12,10 +12,10 @@ Name
 batt_custom_dispatch
 X
 3
-264
+279
 Y
 3
-60
+84
 Width
 3
 117
@@ -55,10 +55,10 @@ Y
 21
 Width
 3
-918
+1023
 Height
 3
-36
+48
 Tool Tip
 5
 0
@@ -106,7 +106,7 @@ Width
 1042
 Height
 3
-96
+123
 Tool Tip
 5
 0

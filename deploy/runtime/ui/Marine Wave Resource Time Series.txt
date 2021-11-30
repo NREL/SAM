@@ -12,16 +12,16 @@ Name
 Hyperlink2
 X
 3
-27
+57
 Y
 3
-546
+558
 Width
 3
-847
+1165
 Height
 3
-21
+30
 Tool Tip
 5
 0
@@ -46,7 +46,7 @@ Name
 btnScanLibrary_ts
 X
 3
-672
+915
 Y
 3
 27
@@ -55,7 +55,7 @@ Width
 150
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -169,13 +169,13 @@ X
 27
 Y
 3
-510
+522
 Width
 3
 234
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -247,10 +247,10 @@ X
 24
 Y
 3
-459
+465
 Width
 3
-846
+1245
 Height
 3
 43
@@ -328,7 +328,7 @@ Y
 30
 Width
 3
-644
+860
 Height
 3
 21
@@ -455,7 +455,7 @@ Width
 1270
 Height
 3
-132
+159
 Tool Tip
 5
 0

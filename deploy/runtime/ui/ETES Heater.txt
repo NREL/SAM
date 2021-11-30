@@ -15,13 +15,13 @@ X
 438
 Y
 3
-9
+3
 Width
 3
 438
 Height
 3
-92
+120
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 HEATER_COPY_E_heater_su_des
 X
 3
-276
+384
 Y
 3
-201
+204
 Width
 3
 100
@@ -387,10 +387,10 @@ Name
 f_q_dot_des_allowable_su
 X
 3
-276
+384
 Y
 3
-153
+156
 Width
 3
 100
@@ -449,10 +449,10 @@ Name
 f_q_dot_heater_min
 X
 3
-276
+384
 Y
 3
-225
+228
 Width
 3
 100
@@ -511,10 +511,10 @@ Name
 hrs_startup_at_max_rate
 X
 3
-276
+384
 Y
 3
-177
+180
 Width
 3
 100
@@ -576,13 +576,13 @@ X
 6
 Y
 3
-132
+123
 Width
 3
-422
+869
 Height
 3
-129
+144
 Tool Tip
 5
 0
@@ -606,13 +606,13 @@ X
 6
 Y
 3
-9
+3
 Width
 3
 422
 Height
 3
-114
+120
 Tool Tip
 5
 0

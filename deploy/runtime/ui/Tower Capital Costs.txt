@@ -1824,7 +1824,7 @@ Name
 csp.pt.cost.power_block_mwe
 X
 3
-141
+150
 Y
 3
 372
@@ -2634,7 +2634,7 @@ Name
 csp.pt.cost.storage_mwht
 X
 3
-141
+123
 Y
 3
 327
