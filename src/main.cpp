@@ -283,6 +283,7 @@ MainWindow::MainWindow()
 #endif
 
 #ifdef __WXOSX__
+    SetWindowVariant(wxWINDOW_VARIANT_LARGE);
 	wxMenu *fileMenu = new wxMenu;
 	fileMenu->Append( wxID_NEW, "New project\tCtrl-N" );
 	fileMenu->Append( ID_NEW_SCRIPT, "New script" );
