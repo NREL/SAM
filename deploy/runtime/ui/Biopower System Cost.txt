@@ -12,16 +12,16 @@ Name
 GroupBox1
 X
 3
-9
+6
 Y
 3
-6
+4294967293
 Width
 3
 780
 Height
 3
-242
+254
 Tool Tip
 5
 0
@@ -2509,7 +2509,7 @@ Width
 341
 Height
 3
-36
+45
 Tool Tip
 5
 0

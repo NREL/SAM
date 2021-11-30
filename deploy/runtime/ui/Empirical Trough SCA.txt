@@ -5,7 +5,7 @@ Empirical Trough SCA
 Numeric
 
 1
-16
+17
 Name
 5
 16
@@ -22,6 +22,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -64,7 +67,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -81,6 +84,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -123,7 +129,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -140,6 +146,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -182,7 +191,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -199,6 +208,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -241,7 +253,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -258,6 +270,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -300,7 +315,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 5
@@ -317,6 +332,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -359,7 +377,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -376,6 +394,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -418,7 +439,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -435,6 +456,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -477,7 +501,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 8
@@ -494,6 +518,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -536,7 +563,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 6
@@ -553,6 +580,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -595,7 +625,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 7
@@ -612,6 +642,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -654,7 +687,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -671,6 +704,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -713,7 +749,7 @@ TabOrder
 GroupBox
 
 1
-7
+8
 Name
 5
 8
@@ -730,6 +766,9 @@ Width
 Height
 3
 234
+Tool Tip
+5
+0
 Caption
 5
 41
@@ -740,7 +779,7 @@ Bold
 GroupBox
 
 1
-7
+8
 Name
 5
 9
@@ -757,6 +796,9 @@ Width
 Height
 3
 219
+Tool Tip
+5
+0
 Caption
 5
 38
@@ -767,7 +809,7 @@ Bold
 Library
 
 1
-7
+8
 Name
 5
 11
@@ -784,6 +826,9 @@ Width
 Height
 3
 186
+Tool Tip
+5
+0
 Library
 5
 21
@@ -795,7 +840,7 @@ Name,SCA Length,Aperture,Aperture Area,Focal Len,IAM Coefficient F0,IAM Coeffici
 Numeric
 
 1
-16
+17
 Name
 5
 10
@@ -812,6 +857,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -854,7 +902,7 @@ TabOrder
 Numeric
 
 1
-16
+17
 Name
 5
 20
@@ -871,6 +919,9 @@ Width
 Height
 3
 21
+Tool Tip
+5
+0
 Value
 1
 0
@@ -913,7 +964,7 @@ TabOrder
 CheckBox
 
 1
-8
+9
 Name
 5
 22
@@ -930,6 +981,9 @@ Width
 Height
 3
 24
+Tool Tip
+5
+0
 Caption
 5
 0

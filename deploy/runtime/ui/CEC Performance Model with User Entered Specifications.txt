@@ -623,7 +623,7 @@ Width
 896
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -2011,7 +2011,7 @@ Width
 111
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -2041,7 +2041,7 @@ Width
 111
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -2145,16 +2145,16 @@ Name
 object 14
 X
 3
-27
+33
 Y
 3
-762
+783
 Width
 3
 498
 Height
 3
-21
+30
 Tool Tip
 5
 0
@@ -2227,7 +2227,7 @@ Width
 609
 Height
 3
-96
+108
 Tool Tip
 5
 0
@@ -2335,7 +2335,7 @@ Width
 498
 Height
 3
-60
+66
 Tool Tip
 5
 0
@@ -2431,7 +2431,7 @@ Width
 312
 Height
 3
-78
+87
 Tool Tip
 5
 0

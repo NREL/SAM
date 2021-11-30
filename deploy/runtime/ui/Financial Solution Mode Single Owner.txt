@@ -523,7 +523,7 @@ MultilineText
 1
 
 
-1867
+2169
 // This form is a copy of Financial Solution Flip Leaseback
 // so ppa_soln_mode radio button can have different labels
 // to indicate IRR target is for the tax investor for flip 
@@ -532,7 +532,10 @@ MultilineText
 on_load{'Financial Solution Mode Single Owner'} = define()
 {
 	soln_mode_ctrl_refresh();
-	check_auto_ppa();
+	if (technology() == "PV Battery" || technology() == "Generic Battery" 
+	|| technology() == "Standalone Battery" || technology() == "Fuel Cell") {
+		check_auto_ppa();
+	}
 	display_message();
 	on_change{'ppa_soln_mode'};
 };
@@ -540,7 +543,10 @@ on_load{'Financial Solution Mode Single Owner'} = define()
 on_change{'ppa_soln_mode'} = define()
 {
 	soln_mode_ctrl_refresh();
-	check_auto_ppa();
+	if (technology() == "PV Battery" || technology() == "Generic Battery" 
+	|| technology() == "Standalone Battery" || technology() == "Fuel Cell") {
+		check_auto_ppa();
+	}
 	display_message();
 };
 

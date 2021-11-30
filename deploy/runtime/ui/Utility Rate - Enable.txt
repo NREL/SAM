@@ -1,6 +1,6 @@
 Utility Rate - Enable
-1413
-131
+1418
+200
 4
 Label
 
@@ -21,7 +21,7 @@ Width
 1380
 Height
 3
-42
+72
 Tool Tip
 5
 0
@@ -69,7 +69,7 @@ Width
 1403
 Height
 3
-123
+180
 Tool Tip
 5
 0
@@ -90,10 +90,10 @@ Name
 lbl_electricity_purchases_options
 X
 3
-225
+228
 Y
 3
-69
+114
 Width
 3
 480
@@ -137,10 +137,10 @@ Name
 ui_electricity_rate_option
 X
 3
-24
+27
 Y
 3
-69
+114
 Width
 3
 198

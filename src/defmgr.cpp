@@ -65,12 +65,12 @@ END_EVENT_TABLE()
 
 ValueEditor::ValueEditor( wxWindow *parent )
 	: wxPanel( parent ),
-    m_type(NULL),
-    m_text(NULL),
-    m_matrix(NULL),
-    m_fields(NULL),
-    m_addField(NULL), m_removeField(NULL), m_editField(NULL), m_clearTable(NULL),
-    m_valLabel(NULL), m_tabLabel(NULL)
+    m_type(nullptr),
+    m_text(nullptr),
+    m_matrix(nullptr),
+    m_fields(nullptr),
+    m_addField(nullptr), m_removeField(nullptr), m_editField(nullptr), m_clearTable(nullptr),
+    m_valLabel(nullptr), m_tabLabel(nullptr)
 {
 	m_type = new wxChoice( this, ID_TYPE );
 	for( size_t i=0;i<=VV_BINARY;i++ )

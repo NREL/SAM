@@ -1,6 +1,6 @@
 MSPT Receiver
-885
-498
+884
+527
 37
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 437
 Height
 3
-89
+116
 Tool Tip
 5
 0
@@ -111,7 +111,7 @@ Width
 422
 Height
 3
-170
+197
 Tool Tip
 5
 0
@@ -168,10 +168,10 @@ Y
 417
 Width
 3
-408
+423
 Height
 3
-39
+63
 Tool Tip
 5
 0
@@ -971,7 +971,7 @@ Width
 107
 Height
 3
-27
+28
 Tool Tip
 5
 0
@@ -1080,10 +1080,10 @@ Name
 h_tower
 X
 3
-690
+687
 Y
 3
-459
+483
 Width
 3
 100

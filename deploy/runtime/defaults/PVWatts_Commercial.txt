@@ -1000,7 +1000,7 @@ insurance_rate
 1
 1
 1
-0.5
+0
 inv_eff
 1
 1

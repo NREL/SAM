@@ -1,6 +1,6 @@
 Financial Merchant Plant Description
-858
-86
+1024
+142
 2
 GroupBox
 
@@ -18,10 +18,10 @@ Y
 3
 Width
 3
-850
+1000
 Height
 3
-81
+130
 Tool Tip
 5
 0
@@ -42,16 +42,16 @@ Name
 object 7
 X
 3
-15
+18
 Y
 3
-24
+33
 Width
 3
-834
+975
 Height
 3
-54
+90
 Tool Tip
 5
 0
