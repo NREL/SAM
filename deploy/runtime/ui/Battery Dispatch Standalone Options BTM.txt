@@ -296,9 +296,9 @@ Default
 batt_dispatch_wf_forecast_choice
 3
 1
+ Selects the generation forecast used by battery dispatch
  
- 
- 
+Battery Dispatch
 0
 0
 1
@@ -325,7 +325,7 @@ batt_load_ac_forecast_escalation
 3
 2
 Battery load AC forecast load escalation rate
-%
+%/yr
 Battery Dispatch
 0
 8
@@ -353,7 +353,7 @@ en_batt
 3
 1
 Enable battery model
- 
+0/1
  
 0
 9
@@ -367,7 +367,7 @@ system_use_lifetime_output
 3
 1
  
- 
+0/1
  
 0
 8
