@@ -1,6 +1,6 @@
 Marine Costs - O&M
-919
-323
+920
+351
 25
 Label
 
@@ -15,7 +15,7 @@ X
 789
 Y
 3
-198
+231
 Width
 3
 90
@@ -62,7 +62,7 @@ X
 789
 Y
 3
-162
+195
 Width
 3
 90
@@ -109,7 +109,7 @@ X
 684
 Y
 3
-198
+231
 Width
 3
 100
@@ -172,7 +172,7 @@ X
 561
 Y
 3
-198
+231
 Width
 3
 100
@@ -234,7 +234,7 @@ X
 240
 Y
 3
-198
+231
 Width
 3
 190
@@ -270,7 +270,7 @@ X
 438
 Y
 3
-198
+231
 Width
 3
 100
@@ -333,7 +333,7 @@ X
 561
 Y
 3
-198
+231
 Width
 3
 100
@@ -396,7 +396,7 @@ X
 540
 Y
 3
-132
+165
 Width
 3
 120
@@ -444,7 +444,7 @@ X
 645
 Y
 3
-228
+261
 Width
 3
 171
@@ -488,7 +488,7 @@ Width
 900
 Height
 3
-306
+333
 Tool Tip
 5
 0
@@ -512,7 +512,7 @@ X
 231
 Y
 3
-132
+165
 Width
 3
 198
@@ -560,7 +560,7 @@ X
 288
 Y
 3
-243
+276
 Width
 3
 396
@@ -611,10 +611,10 @@ Y
 36
 Width
 3
-822
+861
 Height
 3
-87
+111
 Tool Tip
 5
 0
@@ -656,7 +656,7 @@ X
 66
 Y
 3
-198
+231
 Width
 3
 174
@@ -704,7 +704,7 @@ X
 429
 Y
 3
-132
+165
 Width
 3
 108
@@ -752,7 +752,7 @@ X
 666
 Y
 3
-132
+165
 Width
 3
 117
@@ -800,7 +800,7 @@ X
 66
 Y
 3
-162
+195
 Width
 3
 174
@@ -848,7 +848,7 @@ X
 684
 Y
 3
-243
+276
 Width
 3
 100
@@ -911,7 +911,7 @@ X
 465
 Y
 3
-279
+312
 Width
 3
 252
@@ -944,7 +944,7 @@ X
 684
 Y
 3
-162
+195
 Width
 3
 100
@@ -1007,7 +1007,7 @@ X
 561
 Y
 3
-162
+195
 Width
 3
 100
@@ -1069,7 +1069,7 @@ X
 240
 Y
 3
-162
+195
 Width
 3
 190
@@ -1105,7 +1105,7 @@ X
 438
 Y
 3
-162
+195
 Width
 3
 100
@@ -1168,7 +1168,7 @@ X
 561
 Y
 3
-162
+195
 Width
 3
 100
@@ -1231,7 +1231,7 @@ X
 684
 Y
 3
-243
+276
 Width
 3
 100
@@ -1282,7 +1282,7 @@ TabOrder
 3
 4294967295
 
-19
+9
 om_cost_input
 3
 1
@@ -1325,48 +1325,6 @@ ME Costs - Operation Maintenance
 1
 0
 Default
-total_bos_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_bos_cost_percent
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_capital_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
 total_device_cost_lcoe
 3
 1
@@ -1375,34 +1333,6 @@ Device cost
 ME Costs - Operation Maintenance
 0
 9
-1
-1
-1
-1
-0
-Default
-total_device_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_device_cost_percent
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
 1
 1
 1
@@ -1423,49 +1353,7 @@ ME Costs - Operation Maintenance
 1
 0
 Default
-total_financial_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_financial_cost_percent
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
 total_installed_cost_lcoe
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_installed_cost_percent
 3
 1
  
@@ -1521,36 +1409,8 @@ ME Costs - Operation Maintenance
 1
 0
 Default
-total_operations_cost_per_kw
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
-total_operations_cost_percent
-3
-1
- 
- 
-ME Costs - Operation Maintenance
-0
-8
-1
-1
-1
-1
-0
-Default
 
-2923
+282
 equations {'total_operating_cost'} = define() {
 	if (${om_cost_override}!=1)
 	{
@@ -1564,93 +1424,6 @@ equations {'total_operating_cost'} = define() {
 
 equations {'total_operating_cost_mill'} = define() {
 	return ${total_operating_cost}/1000000;
-};
-
-equations {'total_capital_cost_per_kw'} = define() {
-	return ${total_installed_cost}/${system_capacity};
-};
-
-equations {'total_device_cost_per_kw'} = define() {
-	return ${device_costs_total}/${system_capacity};
-};
-
-equations {'total_bos_cost_per_kw'} = define() {
-	return ${balance_of_system_cost_total}/${system_capacity};
-};
-
-equations {'total_financial_cost_per_kw'} = define() {
-	return ${financial_cost_total}/${system_capacity};
-};
-
-equations {'total_operations_cost_per_kw'} = define() {
-	return ${total_operating_cost}/${system_capacity};
-};
-
-equations {'total_installed_cost_percent'} = define() {
-	return ${total_installed_cost}/(${total_installed_cost}+${total_operating_cost});
-};
-
-equations {'total_device_cost_percent'} = define() {
-	return ${device_costs_total}/(${total_installed_cost}+${total_operating_cost});
-};
-
-equations {'total_bos_cost_percent'} = define() {
-	return ${balance_of_system_cost_total}/(${total_installed_cost}+${total_operating_cost});
-};
-
-equations {'total_financial_cost_percent'} = define() {
-	return ${financial_cost_total}/(${total_installed_cost}+${total_operating_cost});
-};
-
-equations {'total_operations_cost_percent'} = define() {
-	return ${total_operating_cost}/(${total_installed_cost}+${total_operating_cost});
-};
-
-/*equations {'total_installed_cost_lcoe'} = define() {
-	return (${fixed_charge_rate}*${total_installed_cost}/${annual_energy})/
-	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};
-
-equations {'total_device_cost_lcoe'} = define() {
-	return (${fixed_charge_rate}*${device_costs_total}/${annual_energy})/
-	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};
-
-equations {'total_bos_cost_lcoe'} = define() {
-	return (${fixed_charge_rate}*${balance_of_system_cost_total}/${annual_energy})/
-	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};
-
-equations {'total_financial_cost_lcoe'} = define() {
-	return (${fixed_charge_rate}*${financial_cost_total}/${annual_energy})/
-	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};
-
-equations {'total_operations_cost_lcoe'} = define(){
-	return (${total_operating_cost}/${annual_energy})/
-	((${fixed_charge_rate}*${total_installed_cost}+${total_operating_cost})/${annual_energy})*100;
-};*/
-
-equations {'opex_we_shown'} = define() {
-	if (${operations_cost_method}==3) 
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-};
-
-equations {'maintenance_we_shown'} = define() {
-	if (${maintenance_cost_method}==3)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
 };
 
 

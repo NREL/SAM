@@ -6594,7 +6594,7 @@ TabOrder
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 26
@@ -6618,10 +6618,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 28
@@ -6644,10 +6648,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 19
@@ -6671,10 +6679,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 20
@@ -6697,10 +6709,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
@@ -6723,10 +6739,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 37
@@ -6749,10 +6769,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 24
@@ -6775,10 +6799,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 30
@@ -6801,10 +6829,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
@@ -6827,10 +6859,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 26
@@ -6853,10 +6889,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 23
@@ -6879,10 +6919,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 24
@@ -6905,10 +6949,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 28
@@ -6931,10 +6979,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
@@ -6957,10 +7009,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 28
@@ -6983,10 +7039,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
@@ -7010,10 +7070,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 24
@@ -7036,10 +7100,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 32
@@ -7063,10 +7131,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
@@ -7090,6 +7162,10 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 
 90
 array_cable_system_cost

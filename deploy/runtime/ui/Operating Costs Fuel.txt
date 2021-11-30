@@ -141,13 +141,13 @@ X
 519
 Y
 3
-45
+21
 Width
 3
 295
 Height
 3
-95
+119
 Tool Tip
 5
 0

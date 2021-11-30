@@ -1,6 +1,6 @@
 Battery Replacements
-1052
-151
+1053
+216
 5
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 1042
 Height
 3
-146
+203
 Tool Tip
 5
 0
@@ -45,7 +45,7 @@ X
 624
 Y
 3
-73
+111
 Width
 3
 90
@@ -107,7 +107,7 @@ X
 27
 Y
 3
-70
+108
 Width
 3
 249
@@ -148,7 +148,7 @@ X
 624
 Y
 3
-100
+141
 Width
 3
 90
@@ -191,7 +191,7 @@ Width
 1002
 Height
 3
-49
+76
 Tool Tip
 5
 0

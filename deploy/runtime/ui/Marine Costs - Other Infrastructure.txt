@@ -954,7 +954,7 @@ TabOrder
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 27
@@ -978,10 +978,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 30
@@ -1005,10 +1009,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 42
@@ -1032,10 +1040,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 30
@@ -1059,10 +1071,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 29
@@ -1086,10 +1102,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 39
@@ -1112,10 +1132,14 @@ Tool Tip
 Tips
 5
 0
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 43
@@ -1139,10 +1163,14 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 ToolTipCtrl
 
 1
-7
+8
 Name
 5
 34
@@ -1166,6 +1194,10 @@ Tips
 5
 55
 Type a tip here or define in runtime/help/tooltips.json
+TipTitle
+5
+61
+Type a tip title here or define in runtime/help/tooltips.json
 
 11
 dedicated_om_vessel_cost

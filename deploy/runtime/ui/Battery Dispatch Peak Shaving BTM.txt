@@ -18,10 +18,10 @@ Y
 147
 Width
 3
-918
+1026
 Height
 3
-36
+45
 Tool Tip
 5
 0
@@ -60,13 +60,13 @@ Name
 batt_cycle_cost_description6
 X
 3
-18
+24
 Y
 3
-327
+366
 Width
 3
-918
+1023
 Height
 3
 24
@@ -108,10 +108,10 @@ Name
 batt_dispatch_load_escal_choice_peak
 X
 3
-315
+321
 Y
 3
-357
+396
 Width
 3
 180
@@ -148,10 +148,10 @@ Name
 batt_dispatch_load_forecast_choice_peak_shaving
 X
 3
-18
+21
 Y
 3
-234
+264
 Width
 3
 300
@@ -189,10 +189,10 @@ Name
 batt_dispatch_load_forecast_escal_peak_shaving
 X
 3
-651
+780
 Y
 3
-363
+402
 Width
 3
 100
@@ -235,13 +235,13 @@ X
 18
 Y
 3
-186
+198
 Width
 3
 90
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -265,13 +265,13 @@ X
 111
 Y
 3
-186
+198
 Width
 3
 828
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -345,10 +345,10 @@ Name
 batt_weather_label13
 X
 3
-15
+18
 Y
 3
-213
+243
 Width
 3
 920
@@ -384,10 +384,10 @@ Name
 batt_weather_label2
 X
 3
-15
+21
 Y
 3
-309
+348
 Width
 3
 920
@@ -423,16 +423,16 @@ Name
 load_user_forecast_data_peak_shaving
 X
 3
-141
+147
 Y
 3
-363
+402
 Width
 3
 119
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -469,7 +469,7 @@ Width
 1044
 Height
 3
-408
+450
 Tool Tip
 5
 0
@@ -493,10 +493,10 @@ X
 15
 Y
 3
-21
+27
 Width
 3
-918
+1017
 Height
 3
 24

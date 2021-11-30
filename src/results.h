@@ -86,7 +86,7 @@ static std::map<wxString, wxString> group_by_name;
 
 class ResultsCallbackContext  : public CaseCallbackContext
 {
-	ResultsViewer *m_resview;
+	ResultsViewer *m_resview = nullptr;
 public:
 	ResultsCallbackContext( ResultsViewer *rv, const wxString &desc = wxEmptyString );	
 	ResultsViewer *GetResultsViewer();
@@ -170,7 +170,7 @@ public:
 	wxString GetCurrentContext() const;
 	
 private:	
-	Simulation *m_sim;
+	Simulation *m_sim = nullptr;
 
 	std::vector<MetricData> m_metrics;
 	std::vector<MetricTable> m_metricTables;
@@ -178,31 +178,28 @@ private:
 	std::vector<CashFlowLine> m_cashflow;
 	std::vector<AutoGraph> m_autographs;
 
-	wxSnapLayout *m_summaryLayout;
-	MetricsTable *m_metricsTable;	
-	wxScrolledWindow *m_lossDiagramScroller;
-	LossDiagramCtrl *m_lossDiagram;
-	TabularBrowser *m_tables;
-	wxExtGridCtrl *m_cashFlowTable;
-	wxExtGridCtrl *m_depreciationTable;
-	wxSplitterWindow *m_cf_splitter;
-	wxPanel *m_cf_top_panel;
-	wxPanel *m_cf_bottom_panel;
+	wxSnapLayout *m_summaryLayout = nullptr;
+	MetricsTable *m_metricsTable = nullptr;
+	wxScrolledWindow *m_lossDiagramScroller = nullptr;
+	LossDiagramCtrl *m_lossDiagram = nullptr;
+	TabularBrowser *m_tables = nullptr;
+	wxExtGridCtrl *m_cashFlowTable = nullptr;
+	wxExtGridCtrl *m_depreciationTable = nullptr;
+	wxSplitterWindow *m_cf_splitter = nullptr;
+	wxPanel *m_cf_top_panel = nullptr;
+	wxPanel *m_cf_bottom_panel = nullptr;
 
-	GraphViewer *m_graphViewer;
-	UncertaintiesViewer *m_uncertaintiesViewer;
+	GraphViewer *m_graphViewer = nullptr;
+	UncertaintiesViewer *m_uncertaintiesViewer = nullptr;
 
 	std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
-	wxDVTimeSeriesCtrl *m_timeSeries;
-	//wxDVTimeSeriesCtrl *m_dailySeries;
-	wxDVDMapCtrl *m_dMap;
-	wxDVProfileCtrl *m_profilePlots;
-	wxDVStatisticsTableCtrl *m_statTable;
-	wxDVPnCdfCtrl *m_pnCdf;
-	//wxDVDCCtrl *m_durationCurve;
-	//wxDVScatterPlotCtrl *m_scatterPlot;
+	wxDVTimeSeriesCtrl *m_timeSeries = nullptr;
+	wxDVDMapCtrl *m_dMap = nullptr;
+	wxDVProfileCtrl *m_profilePlots = nullptr;
+	wxDVStatisticsTableCtrl *m_statTable = nullptr;
+	wxDVPnCdfCtrl *m_pnCdf = nullptr;
 
-	wxTextCtrl *m_messages;
+	wxTextCtrl *m_messages = nullptr;
 
 	void AddDataSet( wxDVTimeSeriesDataSet *ds, const wxString &group = wxEmptyString, bool update_ui = true );
 	void RemoveAllDataSets();
@@ -267,7 +264,7 @@ public:
 	wxExtGridCtrl* GetPage();
 
 private:	
-	Simulation *m_sim;
+	Simulation *m_sim = nullptr;
 
 	void OnCommand(wxCommandEvent &evt);
 	void OnVarSel(wxCommandEvent &evt);
@@ -283,7 +280,7 @@ private:
 
 	typedef std::map<ArraySizeKey, wxArrayString, ArraySizeKeyCompare> VariableMap;
 
-	wxAuiNotebook *m_notebook;
+	wxAuiNotebook *m_notebook = nullptr;
 	std::map<ArraySizeKey, wxExtGridCtrl*, ArraySizeKeyCompare> m_gridMap;
 	std::map<ArraySizeKey, ResultsTable*, ArraySizeKeyCompare> m_gridTableMap;
 	std::map<ArraySizeKey, wxString, ArraySizeKeyCompare> m_tabLabelsMap;
@@ -293,10 +290,10 @@ private:
 	size_t m_numberOfTabs;
 	ArraySizeKey m_lastSize;
 
-	wxExtGridCtrl *m_grid;
-	ResultsTable *m_gridTable;
-	wxDVSelectionListCtrl *m_varSel;
-	wxSearchCtrl *m_varSearch;
+	wxExtGridCtrl *m_grid = nullptr;
+	ResultsTable *m_gridTable = nullptr;
+	wxDVSelectionListCtrl *m_varSel = nullptr;
+	wxSearchCtrl *m_varSearch = nullptr;
 	
 	wxArrayString m_names;
 	wxArrayString m_selectedVars;
@@ -309,7 +306,7 @@ private:
 
 class TimeSeriesData : public wxDVTimeSeriesDataSet
 {
-	double *m_pdata;
+	double *m_pdata = nullptr;
 	size_t m_len;
 	double m_tsHour;
 	wxString m_label, m_units;

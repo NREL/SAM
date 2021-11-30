@@ -1,6 +1,6 @@
 Operating Costs Land Lease
 828
-168
+200
 8
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 812
 Height
 3
-158
+188
 Tool Tip
 5
 0
@@ -42,10 +42,10 @@ Name
 land_area
 X
 3
-279
+273
 Y
 3
-84
+99
 Width
 3
 100
@@ -113,7 +113,7 @@ Width
 777
 Height
 3
-54
+69
 Tool Tip
 5
 0
@@ -152,10 +152,10 @@ Name
 object 79
 X
 3
-525
+522
 Y
 3
-84
+99
 Width
 3
 90
@@ -200,10 +200,10 @@ Name
 om_land_lease_escal
 X
 3
-279
+276
 Y
 3
-132
+159
 Width
 3
 100
@@ -262,10 +262,10 @@ Name
 ui_land_area_ha
 X
 3
-423
+420
 Y
 3
-84
+99
 Width
 3
 100
@@ -324,13 +324,13 @@ Name
 ui_land_area_units
 X
 3
-381
+378
 Y
 3
-108
+129
 Width
 3
-90
+117
 Height
 3
 21
@@ -358,10 +358,10 @@ Name
 ui_land_lease
 X
 3
-279
+276
 Y
 3
-108
+129
 Width
 3
 100

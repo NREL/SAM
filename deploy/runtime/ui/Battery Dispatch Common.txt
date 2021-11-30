@@ -1,6 +1,6 @@
 Battery Dispatch Common
-1049
-90
+1053
+142
 7
 Label
 
@@ -21,7 +21,7 @@ Width
 378
 Height
 3
-69
+93
 Tool Tip
 5
 0
@@ -365,7 +365,7 @@ Width
 1042
 Height
 3
-84
+126
 Tool Tip
 5
 0

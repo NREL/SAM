@@ -1,6 +1,6 @@
 Degradation DC Lifetime
-795
-118
+791
+158
 5
 GroupBox
 
@@ -21,7 +21,7 @@ Width
 780
 Height
 3
-107
+140
 Tool Tip
 5
 0
@@ -85,16 +85,16 @@ Name
 degrad_sched_warning
 X
 3
-441
+21
 Y
 3
-72
+114
 Width
 3
-342
+765
 Height
 3
-36
+27
 Tool Tip
 5
 0
