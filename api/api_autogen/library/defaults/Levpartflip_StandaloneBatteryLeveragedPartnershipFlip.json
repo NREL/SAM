@@ -29,7 +29,7 @@
 			"equip_reserve_depr_sta": 0,
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
-			"insurance_rate": 1,
+			"insurance_rate": 0,
 			"months_receivables_reserve": 0,
 			"months_working_reserve": 6,
 			"payment_option": 0,
