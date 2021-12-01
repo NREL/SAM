@@ -1960,7 +1960,7 @@ federal_tax_rate
 2
 1
 1
-21
+15
 foundation_cost
 1
 1

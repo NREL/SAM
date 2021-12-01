@@ -1586,7 +1586,7 @@ federal_tax_rate
 2
 1
 1
-21
+15
 floor_area
 1
 1

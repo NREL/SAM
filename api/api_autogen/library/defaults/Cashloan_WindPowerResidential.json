@@ -3,7 +3,7 @@
 		"FinancialParameters": {
 			"analysis_period": 25,
 			"debt_fraction": 80,
-			"federal_tax_rate": [21.000000],
+			"federal_tax_rate": [15.000000],
 			"inflation_rate": 2.5,
 			"insurance_rate": 0,
 			"loan_rate": 4,
