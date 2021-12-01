@@ -237,7 +237,7 @@ Battery dispatch options FOM
  
 Battery Dispatch
 0
-0
+3
 1
 1
 1
