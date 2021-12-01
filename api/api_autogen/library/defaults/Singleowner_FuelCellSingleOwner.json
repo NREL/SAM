@@ -66,7 +66,7 @@
 			"equip3_reserve_freq": 0,
 			"equip_reserve_depr_fed": 0,
 			"equip_reserve_depr_sta": 0,
-			"federal_tax_rate": [0.000000],
+			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
 			"insurance_rate": 0,
 			"loan_moratorium": 0,
@@ -79,7 +79,7 @@
 			"real_discount_rate": 5.5,
 			"reserves_interest": 1.25,
 			"salvage_percentage": 0,
-			"state_tax_rate": [0.000000],
+			"state_tax_rate": [7.000000],
 			"system_capacity": 200,
 			"term_int_rate": 4,
 			"term_tenor": 0
