@@ -2305,7 +2305,7 @@ spe_data_filename
 4
  
  
- 
+PV Module (Simple Efficiency)
 0
 0
 1
@@ -2584,7 +2584,7 @@ step_spe
 1
  
  
- 
+PV Module (Simple Efficiency)
 0
 8
 1

@@ -7134,7 +7134,7 @@ total_module_area
 1
 Total module area
 m²
- 
+PV System Design
 0
 8
 1

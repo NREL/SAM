@@ -222,7 +222,7 @@ batt_life_model
 1
 Battery life model option
  
- 
+Battery Chemistry
 0
 8
 1

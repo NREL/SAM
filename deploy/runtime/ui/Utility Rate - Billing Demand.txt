@@ -716,7 +716,7 @@ ur_dc_billing_demand_periods
 3
  
  
- Electricity Rates - Billing Demand
+Electricity Rates - Billing Demand
 0
 0
 1
