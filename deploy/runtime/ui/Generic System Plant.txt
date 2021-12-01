@@ -128,10 +128,10 @@ Name
 btn_selectcases
 X
 3
-456
+252
 Y
 3
-102
+141
 Width
 3
 143
@@ -344,10 +344,10 @@ Name
 energy_output_array
 X
 3
-456
+252
 Y
 3
-132
+111
 Width
 3
 143
@@ -565,16 +565,16 @@ Name
 import_message
 X
 3
-18
+21
 Y
 3
-198
+183
 Width
 3
 750
 Height
 3
-36
+51
 Tool Tip
 5
 0
@@ -818,10 +818,10 @@ Name
 system_capacity
 X
 3
-456
+600
 Y
 3
-129
+111
 Width
 3
 100
@@ -880,10 +880,10 @@ Name
 system_capacity_combined
 X
 3
-456
+600
 Y
 3
-102
+159
 Width
 3
 100
@@ -942,10 +942,10 @@ Name
 user_capacity_factor
 X
 3
-456
+600
 Y
 3
-156
+135
 Width
 3
 100
@@ -1151,7 +1151,7 @@ Numeric
 system_capacity_combined
 3
 1
-Nameplate capacity
+Combined nameplate capacity
 kWe
 Generic System Plant
 0
@@ -1259,7 +1259,7 @@ equations{ 'ui_step_minutes' } = define() {
 	}
 };
 
-1865
+1875
 on_load{"Generic System Plant"}=define(){
 	on_change{'spec_mode'}();
 	on_change{'system_capacity'}();
@@ -1296,15 +1296,15 @@ function combine_cases()
 
 function check_inputs() {
 	mode = value('spec_mode');
-	show('system_capacity',
+	enable('system_capacity',
 		mode == 0 || mode == 1);
-	show('user_capacity_factor', 
+	enable('user_capacity_factor', 
 		mode == 0 );
-	show('energy_output_array',
+	enable('energy_output_array',
 		mode == 1 || mode == 2);
-	show('btn_selectcases',
+	enable('btn_selectcases',
 		mode == 2);
-	show('system_capacity_combined',
+	enable('system_capacity_combined',
 		mode == 2);
 	color = 'black';	
 	if ( mode == 1 )
