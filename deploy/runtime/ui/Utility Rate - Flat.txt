@@ -1098,11 +1098,11 @@ TabOrder
 is_btm
 3
 1
+Behind-the-meter battery flag
  
- 
- 
+Electricity Rates - General
 0
-8
+9
 1
 1
 1

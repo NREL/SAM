@@ -2762,7 +2762,7 @@ Numeric
 1
 Adjust
 %
- 
+PV Module (CEC User Specified)
 0
 4
 1
@@ -2776,7 +2776,7 @@ Default
 1
 Il
 A
- 
+PV Module (CEC User Specified)
 0
 4
 1
@@ -2790,7 +2790,7 @@ Default
 1
 Io
 A
- 
+PV Module (CEC User Specified)
 0
 4
 1
@@ -2804,7 +2804,7 @@ Default
 1
 Rs
 Ohm
- 
+PV Module (CEC User Specified)
 0
 4
 1
@@ -2818,7 +2818,7 @@ Default
 1
 Rsh
 Ohm 
- 
+PV Module (CEC User Specified)
 0
 4
 1
@@ -2832,7 +2832,7 @@ Default
 1
 a
 V
- 
+PV Module (CEC User Specified)
 0
 4
 1
