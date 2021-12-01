@@ -4,7 +4,7 @@
 			"flip_target_percent": 11,
 			"flip_target_year": 9,
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.160000],
+			"ppa_price_input": [0.120000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
