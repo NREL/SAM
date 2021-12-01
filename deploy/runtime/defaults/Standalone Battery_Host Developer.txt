@@ -939,7 +939,7 @@ battery_per_kW
 1
 1
 1
-832.8
+405.56
 battery_per_kWh
 1
 1
@@ -2197,7 +2197,7 @@ genericsys.cost.epc.fixed
 1
 1
 1
-0
+256585
 genericsys.cost.epc.nonfixed
 1
 1

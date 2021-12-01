@@ -1070,7 +1070,7 @@ battery_indirect_cost_percent
 1
 1
 1
-0
+55.35
 battery_losses_shown
 1
 1
@@ -1082,7 +1082,7 @@ battery_per_kW
 1
 1
 1
-3380.22
+1576.03
 battery_per_kWh
 1
 1
@@ -1735,7 +1735,7 @@ genericsys.cost.epc.fixed
 1
 1
 1
-0
+5411.56
 genericsys.cost.epc.nonfixed
 1
 1

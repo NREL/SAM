@@ -1269,7 +1269,7 @@ battery_indirect_cost_percent
 1
 1
 1
-20
+48.33
 battery_losses_shown
 1
 1
@@ -1281,7 +1281,7 @@ battery_per_kW
 1
 1
 1
-832.8
+405.56
 battery_per_kWh
 1
 1
@@ -2309,7 +2309,7 @@ engr_fixed
 1
 1
 1
-0
+256585
 engr_per_watt
 1
 1
