@@ -12423,7 +12423,7 @@ constant
 1
 1
 1
-0
+1
 en_hourly
 1
 1
@@ -12448,7 +12448,7 @@ periods
 3
 1
 1
-2.37152e-322
+0
 sf_excess
 1
 1
