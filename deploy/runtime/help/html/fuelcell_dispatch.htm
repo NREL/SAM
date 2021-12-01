@@ -190,7 +190,9 @@
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Automated dispatch</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Automated dispatch dispatches the battery to maximize revenue from power sales.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">PV smoothing</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">PV smoothing dispatches the battery for photovoltaic-battery systems to limit power ramp rates at the grid interconnection point. This option is only available for PV Battery and Fuel Cell - PV - Battery systems.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">PV smoothing dispatches the battery for photovoltaic-battery systems to limit power ramp rates at the grid interconnection point.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Dispatch to custom time series</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Dispatch the battery according to time series charge and discharge power values you provide. Use this option when you know exactly how you want the battery to charge and discharge</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Manual dispatch</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">No automation. You specify the timing of battery charges and discharges using up to six dispatch periods and a set of weekday and weekend hourly profiles by month.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Charge Options</span></h4>
@@ -232,7 +234,7 @@
 <td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The PV smoothing algorithm dispatches the battery to reduce rapid fluctuations in a photovoltaic-battery system's output that can occur on partly cloudy days.</span></p>
 <p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
 <span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">The PV smoothing algorithms requires a simulation time step of 15 minutes or smaller. The simulation time step is determined by the temporal resolution of the weather file. You can download 15-minute and 5-minute weather data from the NREL National Solar Radiation Database by choosing the </span><span class="f_CHInterfaceElement">Advanced download</span><span class="f_Note"> option on the <a href="pv_location_and_resource.htm" class="topiclink">Location and Resource</a> page, or you can convert data from an hourly weather file to subhourly time steps using the &quot;Solar Resource Interpolation&quot; <a href="macros.htm" class="topiclink">macro</a>.</span><br />
+<span class="f_Note">The PV smoothing algorithms requires a simulation time step of 15 minutes or smaller. For SAM's photovoltaic models, the simulation time step is determined by the temporal resolution of the weather file. You can download 15-minute and 5-minute weather data from the NREL National Solar Radiation Database by choosing the </span><span class="f_CHInterfaceElement">Advanced download</span><span class="f_Note"> option on the <a href="pv_location_and_resource.htm" class="topiclink">Location and Resource</a> page, or you can convert data from an hourly weather file to subhourly time steps using the &quot;Solar Resource Interpolation&quot; <a href="macros.htm" class="topiclink">macro</a>.</span><br />
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">When you choose the PV smoothing dispatch option, be sure to check the charge options to allow the battery to charge from the system, grid or both.</span><br />
 <span class="f_Note">&nbsp;</span><br />
