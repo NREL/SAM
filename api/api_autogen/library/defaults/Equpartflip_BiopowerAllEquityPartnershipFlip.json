@@ -2,7 +2,7 @@
 	"defaults": {
 		"Revenue": {
 			"ppa_escalation": 1,
-			"ppa_price_input": [0.160000],
+			"ppa_price_input": [0.120000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
