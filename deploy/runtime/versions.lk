@@ -52,7 +52,7 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 // this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
-version_upgrade{'2021.11.30'} = define() {
+version_upgrade{'2021.12.2'} = define() {
 
 	const cfg = config();
 	
@@ -139,6 +139,7 @@ version_upgrade{'2021.11.30'} = define() {
 			elseif ( old == 3 ) { new = 2; }
 			else { new = 3; } // old = 4
 			value( 'batt_dispatch_choice_ui', new );
+			value( 'batt_dispatch_choice', new ); // Github SAM issue 818 without having to click on Dispatch page after upgrading.
 			if ( auto != 999 ) { value( 'batt_dispatch_wf_forecast_choice', auto ); }
 			value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 			message( 'The inputs for front-of-meter battery dispatch options have been reorganized. The dispatch option for this case is ' + fom_options[new] + ?(auto==999)[' ' + automated_options[auto],''] + '. Please check the Battery Dispatch input page to make sure they are correct.' );
