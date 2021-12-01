@@ -270,7 +270,7 @@ Format
 0
 Decimals
 3
-1
+3
 Prefix
 5
 0
@@ -518,7 +518,7 @@ Format
 0
 Decimals
 3
-1
+3
 Prefix
 5
 0
@@ -1828,7 +1828,7 @@ Suffix
 0
 ThousandsSep
 2
-0
+1
 Editable
 2
 1

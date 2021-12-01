@@ -536,7 +536,7 @@ Format
 0
 Decimals
 3
-1
+0
 Prefix
 5
 0
@@ -4326,7 +4326,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
@@ -4484,7 +4484,7 @@ Value
 0
 Mode
 3
-1
+0
 Format
 3
 0
