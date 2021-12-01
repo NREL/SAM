@@ -1351,7 +1351,7 @@ battery_per_kW
 1
 1
 1
-3380.22
+1576.03
 battery_per_kWh
 1
 1
@@ -2385,7 +2385,7 @@ engr_fixed
 1
 1
 1
-0
+3.33505e-317
 engr_per_watt
 1
 1
