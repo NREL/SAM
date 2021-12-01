@@ -379,9 +379,9 @@ p, p.p_Normal, div.p_Normal, li.p_Normal /* Normal */
  font-size: 100%;
  font-weight: normal;
  text-align: left;
- text-indent: 0;
+ text-indent: -19px;
  padding: 0 0 0 0;
- margin: 6px 0 6px 0;
+ margin: 6px 0 6px 19px;
 }
 .p_ImageCaption /* Image Caption */
 {
