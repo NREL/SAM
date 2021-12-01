@@ -112,6 +112,14 @@ extern "C"
 	SAM_EXPORT void SAM_MhkTidal_MHKTidal_number_devices_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set system_capacity: System Nameplate Capacity [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_system_capacity_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set tidal_power_curve: Power curve of tidal energy device as function of stream speeds [kW]
 	 * options: None
 	 * constraints: None
@@ -160,6 +168,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_MhkTidal_MHKTidal_number_devices_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_system_capacity_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_MhkTidal_MHKTidal_tidal_power_curve_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MhkTidal_MHKTidal_tidal_resource_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
@@ -195,21 +205,31 @@ extern "C"
 
 	SAM_EXPORT double SAM_MhkTidal_Outputs_total_bos_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_bos_cost_per_kw_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_MhkTidal_Outputs_total_capital_cost_kwh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkTidal_Outputs_total_capital_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_capital_cost_per_kw_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkTidal_Outputs_total_device_cost_kwh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkTidal_Outputs_total_device_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_device_cost_per_kw_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_MhkTidal_Outputs_total_financial_cost_kwh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkTidal_Outputs_total_financial_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_financial_cost_per_kw_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_MhkTidal_Outputs_total_om_cost_kwh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkTidal_Outputs_total_om_cost_lcoe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MhkTidal_Outputs_total_operations_cost_per_kw_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */
