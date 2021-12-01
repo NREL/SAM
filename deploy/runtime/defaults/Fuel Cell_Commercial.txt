@@ -1824,7 +1824,7 @@ engr_fixed
 1
 1
 1
-256585
+3.33505e-317
 engr_per_battkw
 1
 1

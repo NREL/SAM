@@ -1070,7 +1070,7 @@ battery_indirect_cost_percent
 1
 1
 1
-55.35
+20
 battery_losses_shown
 1
 1
@@ -1735,7 +1735,7 @@ genericsys.cost.epc.fixed
 1
 1
 1
-5411.56
+3.33505e-317
 genericsys.cost.epc.nonfixed
 1
 1
