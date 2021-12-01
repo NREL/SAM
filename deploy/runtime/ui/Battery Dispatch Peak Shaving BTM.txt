@@ -643,7 +643,7 @@ load_user_forecast_data_peak_shaving
 3
 2
 Custom load profile
- kW
+kW
 Battery Dispatch BTM Peak Shaving
 0
 0
