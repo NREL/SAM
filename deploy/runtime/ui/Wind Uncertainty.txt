@@ -309,7 +309,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -586,7 +586,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -896,7 +896,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1516,7 +1516,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1578,7 +1578,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1640,7 +1640,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1918,7 +1918,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -2228,7 +2228,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3292,7 +3292,6 @@ Caption
 5
 532
 All uncertainty components and subcomponents are assumed to be random normally-distributed (i.e. have Gaussian error distributions), and subsequently the uncertainties quoted correspond to standard deviations. These are expressed as dimensionless quantities, as a percentage in terms of either mean wind speed or energy.  A speed-to-energy “sensitivity factor”, 𝛿 (%ΔE/%ΔWS), is used to relate uncertainty in mean wind speed (% WS) to uncertainty in energy (%E), simply as a multiplier of the standard deviation in mean wind speed.
-
 TextColour
 4
 0
@@ -3738,7 +3737,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -4110,7 +4109,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -4668,7 +4667,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -4916,7 +4915,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -5164,7 +5163,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
