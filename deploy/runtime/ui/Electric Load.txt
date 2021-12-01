@@ -258,7 +258,7 @@ Format
 0
 Decimals
 3
-0
+3
 Prefix
 5
 0
