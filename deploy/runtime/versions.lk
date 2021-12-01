@@ -52,7 +52,7 @@ Some more examples:
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 // this is for the Fall 2021 release. change version number to current internal version number for development, and change to release version when it is ready.
-version_upgrade{'2021.10.27'} = define() {
+version_upgrade{'2021.12.2'} = define() {
 
 	const cfg = config();
 	
@@ -139,6 +139,7 @@ version_upgrade{'2021.10.27'} = define() {
 			elseif ( old == 3 ) { new = 2; }
 			else { new = 3; } // old = 4
 			value( 'batt_dispatch_choice_ui', new );
+			value( 'batt_dispatch_choice', new ); // Github SAM issue 818 without having to click on Dispatch page after upgrading.
 			if ( auto != 999 ) { value( 'batt_dispatch_wf_forecast_choice', auto ); }
 			value('batt_dispatch_excl', value('batt_dispatch_choice_ui'));
 			message( 'The inputs for front-of-meter battery dispatch options have been reorganized. The dispatch option for this case is ' + fom_options[new] + ?(auto==999)[' ' + automated_options[auto],''] + '. Please check the Battery Dispatch input page to make sure they are correct.' );
@@ -167,6 +168,30 @@ version_upgrade{'2021.10.27'} = define() {
 		dc_degradation = value('dc_degradation');
 		if (#dc_degradation == 1 && dc_degradation[0] != 0)
 			message('We have changed the functionality of the DC degradation input to apply linearly instead of compounding year over year.', 'warning');
+	}
+	
+	//warn users for FOM financial models about electricity purchases page being added- all configs now fail with current defaults
+	if (cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback') //not a problem for merchant plant
+	{
+		if (value('ppa_soln_mode') == 0)
+		{
+			message('The PPA financial models have been updated to account for electricity purchases for parasitic loads. The default option is to purchase electricity at the PPA price, '
+			'but that option cannot be used when the PPA is calculated to achieve a specified IRR target. Please visit the Electricity Purchases page to set a rate, '
+			'or the Revenue page to change the solution mode to "Specify PPA Price".' , 'error');
+		}
+	}
+	
+	//add a warning for upgrade to AR panels
+	if(cfg.tech == 'Flat Plate PV' || cfg.tech == 'PVWatts' || cfg.tech == 'PV Battery' || cfg.tech == 'PVWatts Battery' || cfg.tech == 'Fuel Cell')
+	{
+		message('We have changed the assumptions within all PV models to assume that the modules have an anti-reflective coating. Please see the Release Notes for details.', 'warning');
+	}
+	
+	//add a notice about upgrade to pvwatts version
+	if (cfg.tech == 'PVWatts' || cfg.tech == 'PVWatts Battery' || cfg.tech == 'Fuel Cell')
+	{
+		message('This version of SAM updates the PVWatts model to the latest version, pvwattsv8. Results will change compared to previous versions. '
+		'Please see Help for a link to a detailed description of model updates.', 'warning');
 	}
 };
 

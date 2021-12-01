@@ -508,16 +508,16 @@ Name
 btn_calc_q_heat_sink
 X
 3
-624
+621
 Y
 3
-165
+162
 Width
 3
 177
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -573,13 +573,13 @@ X
 444
 Y
 3
-195
+189
 Width
 3
 405
 Height
 3
-16
+20
 Tool Tip
 5
 0

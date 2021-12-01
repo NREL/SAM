@@ -3669,7 +3669,7 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_4
 3
 1
@@ -3683,7 +3683,7 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_5
 3
 1
@@ -3697,7 +3697,7 @@ Battery
 1
 1
 100
- 
+Default
 batt_gridcharge_percent_6
 3
 1
@@ -3711,7 +3711,7 @@ Battery
 1
 1
 100
- 
+Default
 dispatch_manual_charge
 3
 2
@@ -4229,11 +4229,11 @@ Numeric
 pv.storage.p1.charge
 3
 1
- 
+ Battery allow charge from system Period 1
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4243,11 +4243,11 @@ Default
 pv.storage.p1.discharge
 3
 1
- 
+ Battery allow discharge Period 1
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4257,11 +4257,11 @@ Default
 pv.storage.p1.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 1
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4271,11 +4271,11 @@ Default
 pv.storage.p2.charge
 3
 1
- 
+ Battery allow charge from system Period 2
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4285,11 +4285,11 @@ Default
 pv.storage.p2.discharge
 3
 1
- 
+ Battery allow discharge Period 2
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4299,11 +4299,11 @@ Default
 pv.storage.p2.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 2
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4313,11 +4313,11 @@ Default
 pv.storage.p3.charge
 3
 1
- 
+ Battery allow charge from system Period 3
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4327,11 +4327,11 @@ Default
 pv.storage.p3.discharge
 3
 1
- 
+ Battery allow discharge Period 3
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4341,11 +4341,11 @@ Default
 pv.storage.p3.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 3
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4355,11 +4355,11 @@ Default
 pv.storage.p4.charge
 3
 1
- 
+ Battery allow charge from system Period 4
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4369,11 +4369,11 @@ Default
 pv.storage.p4.discharge
 3
 1
- 
+ Battery allow discharge Period 4
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4383,11 +4383,11 @@ Default
 pv.storage.p4.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 4
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4397,11 +4397,11 @@ Default
 pv.storage.p5.charge
 3
 1
- 
+ Battery allow charge from system Period 5
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4411,11 +4411,11 @@ Default
 pv.storage.p5.discharge
 3
 1
- 
+ Battery allow discharge Period 5
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4425,11 +4425,11 @@ Default
 pv.storage.p5.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 5
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4439,11 +4439,11 @@ Default
 pv.storage.p6.charge
 3
 1
- 
+ Battery allow charge from system Period 6
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4453,11 +4453,11 @@ Default
 pv.storage.p6.discharge
 3
 1
- 
+ Battery allow discharge Period 6
  
 Battery
 0
-0
+1
 1
 1
 1
@@ -4467,11 +4467,11 @@ Default
 pv.storage.p6.gridcharge
 3
 1
- 
+ Battery allow charge from grid Period 6
  
 Battery
 0
-0
+1
 1
 1
 1

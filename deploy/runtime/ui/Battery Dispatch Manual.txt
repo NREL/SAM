@@ -12,13 +12,13 @@ Name
 AllowChargeFromExcessSolarLabel
 X
 3
-135
+129
 Y
 3
 69
 Width
 3
-78
+99
 Height
 3
 42
@@ -1341,7 +1341,7 @@ Width
 1012
 Height
 3
-36
+42
 Tool Tip
 5
 0
@@ -1389,7 +1389,7 @@ Width
 363
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -1533,13 +1533,13 @@ X
 393
 Y
 3
-294
+282
 Width
 3
 650
 Height
 3
-36
+48
 Tool Tip
 5
 0

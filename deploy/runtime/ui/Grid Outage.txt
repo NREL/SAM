@@ -1,6 +1,6 @@
 Grid Outage
-859
-141
+863
+159
 4
 DataArray
 
@@ -12,16 +12,16 @@ Name
 grid_outage
 X
 3
-144
+147
 Y
 3
-66
+78
 Width
 3
 184
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -30,12 +30,12 @@ Mode
 1
 Label
 5
-3
-0/1
+20
+0=no outage/1=outage
 Description
 5
-134
-Enter or import grid outage data for each time step for one year: 0 for time steps with no outage and 1 for time steps with an outage.
+155
+Enter or import grid outage data for each time step for one year: 0 for time steps with no outage (grid on) and 1 for time steps with an outage (grid off).
 TabOrder
 3
 4294967295
@@ -49,16 +49,16 @@ Name
 lbl_grid_outage
 X
 3
-48
+21
 Y
 3
-93
+114
 Width
 3
-597
+789
 Height
 3
-36
+27
 Tool Tip
 5
 0
@@ -105,7 +105,7 @@ Width
 850
 Height
 3
-135
+150
 Tool Tip
 5
 0
@@ -135,7 +135,7 @@ Width
 813
 Height
 3
-36
+45
 Tool Tip
 5
 0
@@ -170,7 +170,7 @@ grid_outage
 3
 2
 Grid outage
-0/1
+0=no outage (grid on) / 1=outage (grid off)
 Grid
 0
 2

@@ -1,6 +1,6 @@
 Financial Merchant Plant Energy Market Revenue
-859
-125
+1027
+150
 6
 CheckBox
 
@@ -18,7 +18,7 @@ Y
 30
 Width
 3
-219
+252
 Height
 3
 24
@@ -51,7 +51,7 @@ Y
 57
 Width
 3
-273
+306
 Height
 3
 51
@@ -85,16 +85,16 @@ Name
 mp_energy_market_revenue
 X
 3
-591
+687
 Y
 3
-30
+24
 Width
 3
 184
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -137,16 +137,16 @@ Name
 mp_energy_market_revenue_single
 X
 3
-591
+687
 Y
 3
-57
+60
 Width
 3
 184
 Height
 3
-24
+28
 Tool Tip
 5
 0
@@ -189,10 +189,10 @@ Name
 mp_market_percent_gen
 X
 3
-591
+687
 Y
 3
-84
+96
 Width
 3
 90
@@ -257,10 +257,10 @@ Y
 3
 Width
 3
-850
+1000
 Height
 3
-118
+130
 Tool Tip
 5
 0
