@@ -952,7 +952,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -1014,7 +1014,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3052,7 +3052,7 @@ Name
 ui_subarray1_length_side
 X
 3
-340
+339
 Y
 3
 516
@@ -3073,7 +3073,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3176,7 +3176,7 @@ Name
 ui_subarray1_row_spacing
 X
 3
-340
+339
 Y
 3
 564
@@ -3197,7 +3197,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3259,7 +3259,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3383,7 +3383,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3445,7 +3445,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3569,7 +3569,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3631,7 +3631,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
@@ -3755,7 +3755,7 @@ Mode
 1
 Format
 3
-1
+0
 Decimals
 3
 3
