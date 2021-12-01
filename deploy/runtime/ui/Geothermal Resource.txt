@@ -1213,7 +1213,7 @@ Name
 resource_potential
 X
 3
-651
+648
 Y
 3
 30

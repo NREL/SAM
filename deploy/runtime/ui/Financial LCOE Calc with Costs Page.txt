@@ -613,7 +613,7 @@ Mode
 1
 Format
 3
-0
+1
 Decimals
 3
 3
@@ -1366,7 +1366,7 @@ Format
 0
 Decimals
 3
-0
+2
 Prefix
 5
 0
